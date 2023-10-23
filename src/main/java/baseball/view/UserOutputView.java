@@ -13,7 +13,7 @@ public class UserOutputView {
         System.out.println(HELLO_GAME);
     }
 
-    public void restartGame() {
+    public void printRestartGame() {
         System.out.println(RESTART_GAME);
     }
 

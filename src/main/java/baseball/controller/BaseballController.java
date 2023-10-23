@@ -39,7 +39,7 @@ public class BaseballController {
     }
 
     private void restartGame() {
-        userOutputView.restartGame();
+        userOutputView.printRestartGame();
         String isContinueByUserInput = userInputView.isContinueGameByUserInput();
         UserInputEnum userInputEnum = UserInputEnum.fromString(isContinueByUserInput);
 
