@@ -1,35 +1,36 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class GamePlay {
-    private Computer computer;
-
     private Compare compare;
 
-    public void isFinished() {
-        this.computer = new Computer();
+    public void run() {
+        this.compare = new Compare(0, 0);
         do {
             start();
         } while (restart());
     }
 
     public void start() {
+        Computer computer = new Computer();
+        Player player = new Player();
+//        List<Integer> comNum = computer.getNumbers();// 컴퓨터 랜덤 수 생성
+        List<Integer> comNum = List.of(1, 2, 3);    // 테스트용
         printStartMsg();    // 게임 시작 문구 출력
-        computer.getNumbers();// 컴퓨터 랜덤 수 생성
-        pritUserInput();    // 사용자 입력 문구 출력
-        getUserInput();     // 사용자 입력 받기
+        do {
+            List<Integer> userInput = player.getUserInput();  // 사용자 입력 받아서 진행
+            compare.compareNum(comNum, userInput);
+            System.out.println(compare.getResultMsg()); // 결과 메세지 출력
+        } while (!compare.isEnd());
     }
 
     private void printStartMsg() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private void pritUserInput() {
-        System.out.print("숫자를 입력해주세요 :");
-    }
-
-    private String getUserInput() {
+    private String getUserInput() { // 재시작용 유저 입력
         return Console.readLine();
     }
 
@@ -39,7 +40,7 @@ public class GamePlay {
             printRestartMsg();
             input = Integer.parseInt(getUserInput());
         }
-        // 에러 메시지 출력
+        printRestartKeyError(); // 에러 메세지 출력
         return (input == 1);
     }
 
@@ -51,4 +52,7 @@ public class GamePlay {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    private void printRestartKeyError() {
+        System.out.println("1, 2만 입력 가능합니다. 다시 입력해주세요.");
+    }
 }

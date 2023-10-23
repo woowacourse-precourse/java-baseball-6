@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Compare {
     private int strike;
     private int ball;
@@ -9,14 +11,14 @@ public class Compare {
         this.ball = ball;
     }
 
-    public Compare compareNum(String computer, String player) {
+    public Compare compareNum(List<Integer> computer, List<Integer> player) {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < computer.length(); i++) {
-            if (computer.charAt(i) == player.charAt(i)) {   // 위치와 숫자 다 맞으면 스트라이크
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i) == player.get(i)) {   // 위치와 숫자 다 맞으면 스트라이크
                 strike++;
-            } else if (computer.contains(Character.toString(player.charAt(i)))) {   // 숫자만 포함되어 있으면 볼
+            } else if (computer.contains(player.get(i))) {   // 숫자만 포함되어 있으면 볼
                 ball++;
             }
         }
@@ -44,5 +46,4 @@ public class Compare {
         }
         return false;
     }
-
 }

@@ -1,21 +1,24 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
-    private String userInput;
+    private List<Integer> userInput;
 
-    public String getUserInput() {
+    public List<Integer> getUserInput() {
         printUserInputPrompt();
-        userInput = Console.readLine();
-        if (!isValidInput(userInput)) {
+        String input = Console.readLine();
+        if (!isValidInput(input)) {
             throw new IllegalArgumentException("입력값이 잘못되었습니다.");
         }
+        userInput = convertToList(input);
         return userInput;
     }
 
     private void printUserInputPrompt() {
-        System.out.print("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private boolean isValidInput(String input) {
@@ -52,6 +55,14 @@ public class Player {
             }
         }
         return true;
+    }
+
+    private List<Integer> convertToList(String input) { // 문자열을 리스트로 변환
+        List<Integer> list = new ArrayList<>();
+        for (char c : input.toCharArray()) {
+            list.add(Character.getNumericValue(c));
+        }
+        return list;
     }
 
 }
