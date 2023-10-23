@@ -2,6 +2,10 @@ package baseball.game;
 
 import baseball.type.MainSpeaker;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
@@ -9,12 +13,12 @@ public class Game {
     private String theAnswer;
     private boolean isAnswer;
 
+
     public void start() {
         System.out.println(MainSpeaker.GAME_START.getMainCall());
         isReady = true;
         while (isReady) {
-            GameInitializer gameInitializer = new GameInitializer();
-            theAnswer = gameInitializer.makeAnswer();
+            theAnswer = makeAnswer();
             System.out.println("answer: " + theAnswer);    // 테스트용
 
             isAnswer = false;
@@ -24,8 +28,19 @@ public class Game {
         }
     }
 
+    private String makeAnswer() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer.toString().replaceAll("[^0-9]", "");
+    }
+
     private void play() {
-        System.out.println(MainSpeaker.GUESS_NUMBER.getMainCall());
+        System.out.print(MainSpeaker.GUESS_NUMBER.getMainCall());
         String guessNum = Console.readLine();
         GameException.validateInput(guessNum);
         Counter counter = new Counter();
