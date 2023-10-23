@@ -27,12 +27,12 @@ public class BaseballGameController {
             Baseballs computer = createComputer();
 
             while (gameStatus.isNotClear()) {
-                gameStatus = play(computer);
+                Baseballs player = createPlayer();
+                gameStatus = play(computer, player);
             }
-
             outputView.printGameEnd();
-            GameCommand gameCommand = getGameCommand();
-            gameStatus = GameStatus.from(gameCommand);
+
+            gameStatus = restartOrEnd();
         }
     }
 
@@ -42,22 +42,22 @@ public class BaseballGameController {
         return new Baseballs(generatedNumbers);
     }
 
-    private GameStatus play(Baseballs computer) {
-        Baseballs player = createPlayer();
-        int ballCount = computer.getBallCount(player);
-        int strikeCount = computer.getStrikeCount(player);
-        outputView.printBallAndStrike(ballCount, strikeCount);
-        return GameStatus.from(strikeCount);
-    }
-
     private Baseballs createPlayer() {
         int playerNumber = inputView.readPlayerNumber();
         List<Integer> numbers = Converter.convertIntToList(playerNumber);
         return new Baseballs(numbers);
     }
 
-    private GameCommand getGameCommand() {
+    private GameStatus play(Baseballs computer, Baseballs player) {
+        int ballCount = computer.getBallCount(player);
+        int strikeCount = computer.getStrikeCount(player);
+        outputView.printBallAndStrike(ballCount, strikeCount);
+        return GameStatus.from(strikeCount);
+    }
+
+    private GameStatus restartOrEnd() {
         int command = inputView.readGameCommand();
-        return GameCommand.from(command);
+        GameCommand gameCommand = GameCommand.from(command);
+        return GameStatus.from(gameCommand);
     }
 }
