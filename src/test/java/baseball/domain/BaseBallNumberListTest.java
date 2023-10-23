@@ -23,4 +23,11 @@ public class BaseBallNumberListTest {
                 new BaseBallNumberList(new NumericString(
                         "41").toList()));
     }
+
+    @Test
+    @DisplayName("같은 숫자가 존재 할시 IllegalArgumentException이 발생한다")
+    public void should_throwsIllegalArgumentException_when_haveASameNumber() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new BaseBallNumberList(List.of(1,4,1)));
+    }
 }
