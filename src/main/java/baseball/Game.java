@@ -24,7 +24,7 @@ public class Game {
     public void start() {
         GameStatus gameStatus = GameStatus.RESTART;
         while (gameStatus == GameStatus.RESTART) {
-            playRound(generateComputerNumberString());
+            playGameRound(generateComputerNumberString());
             gameStatus = determineRestart();
         }
     }
@@ -33,7 +33,7 @@ public class Game {
         return new RandomComputerNumberGenerator().toString();
     }
 
-    private void playRound(String computerNumberString) {
+    private void playGameRound(String computerNumberString) {
         Result result = new Result(COUNT_ZERO, COUNT_ZERO);
         while (result.strikeCount != GAME_END_CONDITION) {
             result = makeResultCount(userInput.readNumberString(), computerNumberString);
