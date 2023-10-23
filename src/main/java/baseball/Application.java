@@ -184,6 +184,11 @@ class GameManager {
         return userGuessResult.getFirst() == 3;
     }
 
+    private void setUpBeforeRestartGame() {
+        user.userLoses();
+        computer.regenerateRandomNumbers();
+    }
+
     public void run() {
         printComputerGeneratedNumbers();
         printGameStartMessage();
@@ -204,8 +209,7 @@ class GameManager {
                 }
                 switch (user.getUserInput()) {
                     case "1":
-                        user.userLoses();
-                        computer.regenerateRandomNumbers();
+                        setUpBeforeRestartGame();
                         continue;
                     case "2":
                         continue;
@@ -219,7 +223,7 @@ class GameManager {
 }
 
 public class Application {
-    
+
     public static void main(String[] args) {
         final GameManager gameManager = new GameManager();
         gameManager.run();
