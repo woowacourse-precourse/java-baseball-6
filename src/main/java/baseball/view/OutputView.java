@@ -4,6 +4,8 @@ import baseball.domain.hints.HintType;
 
 import java.util.Map;
 
+import static baseball.domain.hints.HintType.*;
+
 public final class OutputView {
 
 
@@ -16,14 +18,14 @@ public final class OutputView {
     }
 
     public void displayHint(Map<HintType, Integer> hintMap) {
-        if (hintMap.containsKey(HintType.BALL)) {
-            System.out.print(hintMap.get(HintType.BALL) + HintType.BALL.getName() + " ");
+        if (hintMap.containsKey(BALL)) {
+            System.out.print(hintMap.get(BALL) + BALL.getName() + " ");
         }
-        if (hintMap.containsKey(HintType.STRIKE)) {
-            System.out.print(hintMap.get(HintType.STRIKE) + HintType.STRIKE.getName() + " ");
+        if (hintMap.containsKey(STRIKE)) {
+            System.out.print(hintMap.get(STRIKE) + STRIKE.getName() + " ");
         }
-        if (hintMap.containsKey(HintType.NOTHING)) {
-            System.out.print(HintType.NOTHING.getName());
+        if (hintMap.containsKey(NOTHING)) {
+            System.out.print(NOTHING.getName());
         }
         System.out.println();
     }
