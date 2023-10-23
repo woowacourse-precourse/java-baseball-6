@@ -7,9 +7,9 @@
 ![image](flowchart.png)
 
 
-## 기능 목록
+#경# 기능 목록
 
-### 1. 문제 생성 - setNums
+### 1. 문제 생성(setNums)
 
 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 1~9 사이의 **서로 다른 임의의 수 3개를 선택**한다.
 
@@ -33,7 +33,7 @@ return computer;
 </div>
 </details>
 
-### 2. 사용자로부터 입력 값을 받아 검증한다. - requestNums
+### 2. 사용자로부터 입력 값을 받아 검증한다(requestNums)
 
 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자로부터 숫자 3개를 입력받는다.
 
@@ -76,7 +76,7 @@ String input = readLine();
 </div>
 </details>
 
-### 3. 스트라이크/볼을 판단한다.
+### 3. 스트라이크/볼을 판단한다
 
 사용자로부터 입력 받은 input 배열과 컴퓨터에서 생성한 answer를 비교한다.
 
@@ -101,7 +101,7 @@ long ball = IntStream.range(0, input.length)
 </div>
 </details>
 
-###  4. 결과를 판정한다. - judge
+###  4. 결과를 판정한다(judge)
 
 4-1. 스트라이크와 볼이 모두 0이면, "낫싱"을 출력한다.
 
@@ -128,7 +128,7 @@ private static void judge(long ball, long strike) {
 </div>
 </details>
 
-### 5. 게임 프로세스의 종료 여부를 확인한다. - requestRestart
+### 5. 게임 프로세스의 종료 여부를 확인한다(requestRestart)
 
 
 3 스트라이크면 게임을 종료한 뒤, 사용자로부터 게임 재시작 여부를 입력받는다. 
