@@ -30,7 +30,7 @@ public class Computer {
         long strikeCount = gameNumber.matchCount(userGameNumber);
         long ballCount = Math.abs(strikeCount - matchCount);
         if(strikeCount == 0 && ballCount == 0){
-            return Map.of(GameResult.NOTHING,0L);
+            return Map.of(GameResult.NOTHING, matchCount);
         }
         return Map.of(GameResult.STRIKE, strikeCount, GameResult.BALL, ballCount);
 
