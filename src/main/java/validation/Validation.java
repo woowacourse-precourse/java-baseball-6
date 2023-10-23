@@ -2,7 +2,6 @@ package validation;
 
 import static validation.Constant.*;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.Set;
 

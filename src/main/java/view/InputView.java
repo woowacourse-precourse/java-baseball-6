@@ -1,9 +1,6 @@
 package view;
 
 import static validation.Constant.INPUT_MESSAGE;
-import static validation.Constant.QUIT;
-import static validation.Constant.RESTART;
-import static validation.Constant.WRONG_RESTART_INPUT;
 
 import camp.nextstep.edu.missionutils.Console;
 import validation.Validation;

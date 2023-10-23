@@ -2,6 +2,7 @@ package game;
 
 import static validation.Constant.*;
 
+import java.util.List;
 import model.PlayerInput;
 import model.Answer;
 import view.InputView;
@@ -9,11 +10,9 @@ import view.OutputView;
 
 public class Game {
     private final Answer answer;
-    private PlayerInput playerInput;
 
     public Game() {
         answer = new Answer();
-        answer.setAnswerNumber();
         OutputView.printAnswer(answer.getAnswerNumber());
     }
 
@@ -27,6 +26,7 @@ public class Game {
     }
 
     private void start() {
+        PlayerInput playerInput;
         do {
             playerInput = new PlayerInput(InputView.setPlayerInput());
         } while (!equalToAnswer(playerInput.getPlayerInput()));
@@ -54,9 +54,10 @@ public class Game {
     }
 
     private int getStrike(int[] inputNumber) {
+        List<Integer> answerNumber = answer.getAnswerNumber();
         int strike = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (samePosition(inputNumber[i], answer.getAnswerNumber().get(i))) {
+            if (samePosition(inputNumber[i], answerNumber.get(i))) {
                 strike++;
             }
         }
@@ -71,9 +72,10 @@ public class Game {
     }
 
     private int getBall(int[] inputNumber) {
+        List<Integer> answerNumber = answer.getAnswerNumber();
         int ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (isInAnswer(inputNumber[i], answer.getAnswerNumber().get(i))) {
+            if (isInAnswer(inputNumber[i], answerNumber.get(i))) {
                 ball++;
             }
         }
@@ -81,7 +83,8 @@ public class Game {
     }
 
     private boolean isInAnswer(int ithInput, int ithAnswer) {
-        if (ithInput != ithAnswer && answer.getAnswerNumber().contains(ithInput)) {
+        List<Integer> answerInput = answer.getAnswerNumber();
+        if (ithInput != ithAnswer && answerInput.contains(ithInput)) {
             return true;
         }
         return false;
