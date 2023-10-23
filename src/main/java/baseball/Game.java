@@ -7,7 +7,7 @@ public class Game {
     private User user;
     private Result result;
 
-    public void run() {
+    public void start() {
         System.out.println(GAME_START_MESSAGE);
         setGame();
         playGame();
@@ -32,7 +32,7 @@ public class Game {
     private void askRetry() {
         GameCommand gameCommand = user.inputGameCommand();
         if(gameCommand.isRetry()){
-            run();
+            start();
         }
     }
 }
