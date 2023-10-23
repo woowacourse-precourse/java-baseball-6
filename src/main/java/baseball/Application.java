@@ -29,9 +29,8 @@ public class Application {
             String user_input = Console.readLine();
             num = Integer.parseInt(user_input);
 
-            
-
-            if (num < 100 || num > 999) {
+            if (num < 100 || num > 999) 
+            {
                 throw new IllegalArgumentException("입력한 숫자가 잘못되었습니다.");
             }
             
@@ -52,8 +51,6 @@ public class Application {
         {
             for(int j=0;j<3;j++)
             {
-                //System.out.println(A.get(i));
-                //System.out.println(B.get(j));
                 if(A.get(i)==B.get(j))
                 {
                     if(i==j)
@@ -71,13 +68,18 @@ public class Application {
         {
             System.out.printf("낫싱\n");
         }
+        else if(strike==3)
+        {
+            System.out.printf("%d스트라이크\n", strike);
+        }
         else
         {
-            System.out.printf("%d 볼 %d 스트라이크\n", ball, strike);
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         }
         return strike;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // TODO: 프로그램 구현
         ArrayList<Integer> computer = new ArrayList<>();
         ArrayList<Integer> user_data = new ArrayList<>();
@@ -90,12 +92,9 @@ public class Application {
         {
             System.out.println("숫자 야구 게임을 시작합니다.");
             Random_num(computer);
-            while(cnt_num != 3)
-            {
-                
+            while(cnt_num != 3) 
+            {    
                 Enter_number(scanner, user_data);
-                System.out.print(computer);
-                System.out.print(user_data);
                 cnt_num = Compare_num(computer, user_data);
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -106,7 +105,8 @@ public class Application {
                 String user_input = Console.readLine();
                 game_flag = Integer.parseInt(user_input);
                 
-                if (game_flag < 1 || game_flag > 2) {
+                if (game_flag < 1 || game_flag > 2) 
+                {
                     throw new IllegalArgumentException("입력한 숫자가 잘못되었습니다.");
                 }
             }
