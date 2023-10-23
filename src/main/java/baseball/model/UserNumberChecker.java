@@ -9,7 +9,7 @@ public class UserNumberChecker {
         return userNumber;
     } // private 접근 제어하는 userNumber의 값을 변경하지 않고 다른 패키지 혹은 클래스에서 갖고 오기 위한 getter
 
-    public UserNumberChecker(String userNumber) {
+    public void updateUserNumber(String userNumber) {
         isLengthCorrect(userNumber);
         isSingleDigit(userNumber);
         isDuplicatedNumber(userNumber);

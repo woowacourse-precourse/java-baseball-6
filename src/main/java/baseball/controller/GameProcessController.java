@@ -17,17 +17,18 @@ public class GameProcessController {
     public GameProcessController() {
         answer = new RandomNumberCreator();
         answer.setRandomNumber(); // 랜덤 숫자 생성
-
+        userNumber = new UserNumberChecker();
         grade = new UserNumberGrader(); // 채점 기능 생성
-
-        userNumber = new UserNumberChecker(UserInputView.setInputNumber());
+        clear = new IsGameClear(grade);
     }
 
-    // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복
+    // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복(재귀 메소드?)
     public void startGame() {
         do {
-            userNumber.getUserNumber();
-            gradeMessage(gradeBallStrike());
+            userNumber.updateUserNumber(UserInputView.setInputNumber()); // 사용자 입력을 받는 부분
+            gradeMessage(gradeBallStrike()); // 볼과 스트라이크를 계산해서 채점 결과를 출력하는 부분
+//            System.out.println(endGame());
+//            System.out.println(userNumber.getUserNumber());
         } while (!endGame());
     }
 
