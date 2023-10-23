@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
 import baseball.exception.BallException;
 import baseball.exception.ReGameException;
 import baseball.service.GameService;
@@ -12,6 +14,8 @@ import java.util.List;
 
 
 public class GameController {
+    Computer computer;
+    Player player;
     private final GameOutput output = new GameOutput();
     private final UserInput input = new UserInput();
     private final BallException ballException = new BallException();
@@ -19,6 +23,7 @@ public class GameController {
     private final ReGameException reGameException = new ReGameException();
 
     public void start(){
+        createComputerBall();
         output.printGameStart();
         gameProcess();
     }
@@ -26,6 +31,7 @@ public class GameController {
     public void gameProcess() {
         String number = input.inputUserNumber();
         ballException.validation(number);
+        createPlayerBall(number);
         gameResult();
     }
 
@@ -44,7 +50,26 @@ public class GameController {
     }
 
     public void gameRestart(){
+        createComputerBall();
         gameProcess();
     }
 
+    private void createComputerBall(){
+        List<Integer> ballList = new ArrayList<>();
+        while (ballList.size() < 3){
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!ballList.contains(randomNumber)){
+                ballList.add(randomNumber);
+            }
+        }
+        computer = new Computer(ballList);
+    }
+
+    private void createPlayerBall(String number){
+        List<Integer> ballList = new ArrayList<>();
+        for (char num : number.toCharArray()) {
+            ballList.add(num - '0');
+        }
+        player = new Player(ballList);
+    }
 }
