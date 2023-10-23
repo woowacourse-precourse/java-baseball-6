@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+  private static final int INPUT_SIZE = 3;
   public static void main(String[] args) {
     // TODO: 프로그램 구현
 
@@ -20,7 +22,7 @@ public class Application {
     int ball=0, strike=0, pos=0;
     int restart = 0;
 
-    while (strike != 3) {
+    while (strike != INPUT_SIZE) {
       ball = 0;
       strike = 0;
       pos = 0;
@@ -30,7 +32,7 @@ public class Application {
 
       verifiedInput(num);
 
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < INPUT_SIZE; i++) {
         int m = Character.getNumericValue(num.charAt(i));
         int index = computer.indexOf(m);
         if (index != -1) {
@@ -45,7 +47,7 @@ public class Application {
 
       getHint(ball, strike);//입력한 수에 대한 결과 출력
 
-      if (strike == 3) {//3개의 숫자를 모두 맞힐경우
+      if (strike == INPUT_SIZE) {//3개의 숫자를 모두 맞힐경우
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         restart = Integer.parseInt(readLine());
@@ -64,11 +66,11 @@ public class Application {
     if (!num.chars().allMatch(Character::isDigit)) {//숫자인지 확인
       throw new IllegalArgumentException("숫자를 입력 해야 합니다.");
     }
-    if (num.length() != 3) {//3자리 수인지 확인
+    if (num.length() != INPUT_SIZE) {//3자리 수인지 확인
       throw new IllegalArgumentException("세자리 수를 입력 해야 합니다.");
     }
 
-    for (int i = 0; i < 2; i++) {//중복된 숫자로 이루어져 있는지 확인
+    for (int i = 0; i < INPUT_SIZE-1; i++) {//중복된 숫자로 이루어져 있는지 확인
       String s1 = num.substring(i, i + 1);
       String s2 = num.substring(i + 1);
       if (s2.contains(s1)) {
@@ -95,7 +97,7 @@ public class Application {
 
   private static List<Integer> createAnswer() {
     List<Integer> computer = new ArrayList<>();
-    while (computer.size() < 3) {
+    while (computer.size() < INPUT_SIZE) {
       int randomNumber = Randoms.pickNumberInRange(1, 9);
       if (!computer.contains(randomNumber)) {
         computer.add(randomNumber);
