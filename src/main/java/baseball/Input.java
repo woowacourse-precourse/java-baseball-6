@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Input {
 
@@ -16,6 +18,23 @@ public class Input {
         if (inputs.size() != 3) {
             throw new IllegalArgumentException();
         }
+        if (hasDuplicateElements(inputs)) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    boolean hasDuplicateElements(List<Integer> list) {
+        Map<Object, Integer> elementCounts = new HashMap<>();
+
+        for (Object element : list) {
+            elementCounts.put(element, elementCounts.getOrDefault(element, 0) + 1);
+            if (elementCounts.get(element) > 1) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     List<Integer> getNumber() {
