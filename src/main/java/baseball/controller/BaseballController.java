@@ -25,13 +25,12 @@ public class BaseballController {
 
     public void run() {
         outputView.printStartMessage();
-        while (true) {
+        RetryStatus retryStatus = RetryStatus.KEEP_GOING;
+
+        while (retryStatus.isKeepGoing()) {
             baseballService.saveRandomNumbers();
             play();
-            final RetryStatus retryStatus = checkRetry();
-            if (retryStatus.isFinish()) {
-                break;
-            }
+            retryStatus = checkRetry();
         }
     }
 
@@ -42,12 +41,11 @@ public class BaseballController {
     }
 
     private void play() {
-        while (true) {
+        ResultStatus resultStatus = ResultStatus.CONTINUE;
+
+        while (resultStatus.isContinue()) {
             final BallCount ballCount = attempt();
-            final ResultStatus resultStatus = ballCount.checkResultStatus();
-            if (resultStatus.isSuccess()) {
-                break;
-            }
+            resultStatus = ballCount.checkResultStatus();
         }
     }
 
