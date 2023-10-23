@@ -14,8 +14,26 @@ public class User {
 
     public void inputNumber() {
         String input = Console.readLine();
-        for (String s : input.split("")) {
-            numbers.add(Integer.parseInt(s));
+        char[] inputCharArray = input.toCharArray();
+        validateInput(inputCharArray);
+    }
+
+    private void validateInput(char[] arr) {
+        validateInputLength(arr);
+        validateInputType(arr);
+    }
+
+    private void validateInputLength(char[] arr) {
+        if (arr.length != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateInputType(char[] arr) {
+        for (char c : arr) {
+            if (Character.isDigit(c)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
