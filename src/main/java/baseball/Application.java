@@ -24,21 +24,26 @@ public class Application {
         }
         return ballCount;
     }
+    private static List<Integer> generateRandomNumber() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return numbers;
+
+    }
 
     public static void main(String[] args) {
 
         while (true) {
-            // 컴퓨터가 서로 다른 3자리를 뽑는 기능
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+
+            List<Integer> computer = generateRandomNumber();
 
             while (true) {
-                System.out.println("숫자를 입력해주세요 : ");
+                System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> player = InputConverter.convert(Console.readLine());
 
                 int strikeCount = validateStrike(computer, player);
@@ -68,8 +73,5 @@ public class Application {
                 break;
             }
         }
-
-
     }
-
 }
