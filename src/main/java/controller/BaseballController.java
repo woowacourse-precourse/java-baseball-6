@@ -18,8 +18,8 @@ package controller;
 
 import model.CalculateResult;
 import model.CreateRandomNumber;
+import model.InputRestartOrEnd;
 import view.InputView;
-import view.RestartOrEndView;
 import view.ResultView;
 import view.StartView;
 import vo.AnswerBall;
@@ -43,7 +43,7 @@ public class BaseballController {
                     break;
                 }
             }
-        } while (RestartOrEndView.userInput());
+        } while (InputRestartOrEnd.userInput());
 
     }
 }
