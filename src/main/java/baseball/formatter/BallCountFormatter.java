@@ -9,8 +9,8 @@ public class BallCountFormatter {
     private static final String BLANK_DELIMITER = " ";
 
     public String format(final BallCount ballCount) {
-        final long ballNum = ballCount.getBallNum();
-        final long strikeNum = ballCount.getStrikeNum();
+        final long ballNum = ballCount.countBall();
+        final long strikeNum = ballCount.countStrike();
 
         return getFormattedOutput(ballNum, strikeNum);
     }

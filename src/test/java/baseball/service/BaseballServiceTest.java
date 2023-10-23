@@ -49,8 +49,8 @@ class BaseballServiceTest {
                     baseballService.checkAnswer(new AttemptNumbers(List.of(1, 2, 3)));
 
             // then
-            assertThat(ballCount.getStrikeNum()).isEqualTo(3);
-            assertThat(ballCount.getBallNum()).isZero();
+            assertThat(ballCount.countStrike()).isEqualTo(3);
+            assertThat(ballCount.countBall()).isZero();
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.SUCCESS);
         }
 
@@ -65,8 +65,8 @@ class BaseballServiceTest {
                     baseballService.checkAnswer(new AttemptNumbers(List.of(4, 5, 6)));
 
             // then
-            assertThat(ballCount.getStrikeNum()).isZero();
-            assertThat(ballCount.getBallNum()).isZero();
+            assertThat(ballCount.countStrike()).isZero();
+            assertThat(ballCount.countBall()).isZero();
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.CONTINUE);
         }
 
@@ -81,8 +81,8 @@ class BaseballServiceTest {
                     baseballService.checkAnswer(new AttemptNumbers(List.of(1, 4, 2)));
 
             // then
-            assertThat(ballCount.getStrikeNum()).isOne();
-            assertThat(ballCount.getBallNum()).isOne();
+            assertThat(ballCount.countStrike()).isOne();
+            assertThat(ballCount.countBall()).isOne();
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.CONTINUE);
         }
 
@@ -97,8 +97,8 @@ class BaseballServiceTest {
                     baseballService.checkAnswer(new AttemptNumbers(List.of(3, 4, 2)));
 
             // then
-            assertThat(ballCount.getStrikeNum()).isZero();
-            assertThat(ballCount.getBallNum()).isEqualTo(2);
+            assertThat(ballCount.countStrike()).isZero();
+            assertThat(ballCount.countBall()).isEqualTo(2);
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.CONTINUE);
         }
     }

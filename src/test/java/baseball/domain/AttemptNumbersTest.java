@@ -29,8 +29,8 @@ class AttemptNumbersTest {
 
             // then
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.SUCCESS);
-            assertThat(ballCount.getStrikeNum()).isEqualTo(3);
-            assertThat(ballCount.getBallNum()).isZero();
+            assertThat(ballCount.countStrike()).isEqualTo(3);
+            assertThat(ballCount.countBall()).isZero();
         }
 
         @Test
@@ -45,8 +45,8 @@ class AttemptNumbersTest {
 
             // then
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.CONTINUE);
-            assertThat(ballCount.getStrikeNum()).isZero();
-            assertThat(ballCount.getBallNum()).isZero();
+            assertThat(ballCount.countStrike()).isZero();
+            assertThat(ballCount.countBall()).isZero();
         }
 
         @Test
@@ -61,8 +61,8 @@ class AttemptNumbersTest {
 
             // then
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.CONTINUE);
-            assertThat(ballCount.getStrikeNum()).isZero();
-            assertThat(ballCount.getBallNum()).isEqualTo(3);
+            assertThat(ballCount.countStrike()).isZero();
+            assertThat(ballCount.countBall()).isEqualTo(3);
         }
 
         @Test
@@ -77,8 +77,8 @@ class AttemptNumbersTest {
 
             // then
             assertThat(ballCount.checkResultStatus()).isEqualTo(ResultStatus.CONTINUE);
-            assertThat(ballCount.getStrikeNum()).isOne();
-            assertThat(ballCount.getBallNum()).isEqualTo(2);
+            assertThat(ballCount.countStrike()).isOne();
+            assertThat(ballCount.countBall()).isEqualTo(2);
         }
     }
 }

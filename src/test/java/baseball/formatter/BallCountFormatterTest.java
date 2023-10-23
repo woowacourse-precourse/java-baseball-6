@@ -49,7 +49,7 @@ class BallCountFormatterTest {
             assertThat(formatted)
                     .contains(
                             String.format(
-                                    BallCountMessage.STRIKE.toValue(), ballCount.getStrikeNum()));
+                                    BallCountMessage.STRIKE.toValue(), ballCount.countStrike()));
         }
 
         @Test
@@ -65,7 +65,7 @@ class BallCountFormatterTest {
             // then
             assertThat(formatted)
                     .contains(
-                            String.format(BallCountMessage.BALL.toValue(), ballCount.getBallNum()));
+                            String.format(BallCountMessage.BALL.toValue(), ballCount.countBall()));
         }
 
         @Test
@@ -82,8 +82,8 @@ class BallCountFormatterTest {
             assertThat(formatted)
                     .contains(
                             String.format(
-                                    BallCountMessage.STRIKE.toValue(), ballCount.getStrikeNum()),
-                            String.format(BallCountMessage.BALL.toValue(), ballCount.getBallNum()));
+                                    BallCountMessage.STRIKE.toValue(), ballCount.countStrike()),
+                            String.format(BallCountMessage.BALL.toValue(), ballCount.countBall()));
         }
     }
 }

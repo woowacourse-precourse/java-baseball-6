@@ -23,7 +23,7 @@ class BallCountTest {
                 new BallCount(List.of(StrikeBall.STRIKE, StrikeBall.STRIKE, StrikeBall.NONE));
 
         // when
-        final long strikeNum = ballCount.getStrikeNum();
+        final long strikeNum = ballCount.countStrike();
 
         // then
         assertThat(strikeNum).isEqualTo(2);
@@ -37,7 +37,7 @@ class BallCountTest {
                 new BallCount(List.of(StrikeBall.STRIKE, StrikeBall.BALL, StrikeBall.NONE));
 
         // when
-        final long strikeNum = ballCount.getStrikeNum();
+        final long strikeNum = ballCount.countStrike();
 
         // then
         assertThat(strikeNum).isOne();

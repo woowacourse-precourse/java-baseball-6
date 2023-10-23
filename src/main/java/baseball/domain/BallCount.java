@@ -26,16 +26,16 @@ public final class BallCount {
         return ballCount.size() != BALL_COUNT_SIZE;
     }
 
-    public long getStrikeNum() {
+    public long countStrike() {
         return values.stream().filter(StrikeBall::isStrike).count();
     }
 
-    public long getBallNum() {
+    public long countBall() {
         return values.stream().filter(StrikeBall::isBall).count();
     }
 
     public ResultStatus checkResultStatus() {
-        if (getStrikeNum() == BALL_COUNT_SIZE) {
+        if (countStrike() == BALL_COUNT_SIZE) {
             return ResultStatus.SUCCESS;
         }
         return ResultStatus.CONTINUE;
