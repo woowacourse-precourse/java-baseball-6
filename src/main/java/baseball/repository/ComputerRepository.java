@@ -14,9 +14,7 @@ public class ComputerRepository {
     private final Map<String, List<Integer>> store = new HashMap<>();
 
     public ComputerRepository() {
-        System.out.println("=====컴퓨터 초기화 시작=====");
         store.put(COMPUTER, null);
-        System.out.println("=====컴퓨터 초기화 완료=====");
     }
 
     private void setStore(String key, List<Integer> obj) {

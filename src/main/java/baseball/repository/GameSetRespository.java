@@ -17,13 +17,13 @@ public class GameSetRespository {
 
     // 해당 리포지토리는 최초 생성 될 때만 초기화
     static {
-        // 게임 설정 초기화
-        System.out.println("=====게임 설정 초기화 시작=====");
-        gameStatusBegin();  // 게임 상태 초기화
         saveGameSet(CAPACITY_STR, 3);
         saveGameSet(BEGIN_RANGE, 1);
         saveGameSet(END_RANGE, 9);
-        System.out.println("=====게임 설정 초기화 완료=====");
+    }
+
+    public GameSetRespository() {
+        gameStatusBegin();  // 게임 상태 초기화
     }
 
     public static void saveGameSet(String key, Integer num) {
