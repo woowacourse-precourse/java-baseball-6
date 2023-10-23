@@ -41,11 +41,15 @@ public class Game {
         ArrayList<Integer> parsingNumber = new ArrayList<>();
 
         for(char parsedChar : inputNumber.toCharArray()){
-            if(parsedChar < '1'){
+            if(Character.isDigit(parsedChar)){
+                int number = Character.getNumericValue(parsedChar);
+                if(number <= 0)
+                    throw new IllegalArgumentException();
+                parsingNumber.add(number);
+            }
+            if(!Character.isDigit(parsedChar)){
                 throw new IllegalArgumentException();
             }
-            int number = Character.getNumericValue(parsedChar);
-            parsingNumber.add(number);
         }
         return parsingNumber;
     }
