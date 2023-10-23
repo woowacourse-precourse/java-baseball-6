@@ -45,11 +45,15 @@ public class GameController {
     }
 
     private void initUserNumber(String userNumberReadLine) {
-        List<BallNumber> ballNumberList = convertInputToBallNumberList(userNumberReadLine);
+        try {
+            List<BallNumber> ballNumberList = convertInputToBallNumberList(userNumberReadLine);
 
-        validDuplicate(ballNumberList);
+            validDuplicate(ballNumberList);
 
-        userNumber = new BaseballNumber(ballNumberList);
+            userNumber = new BaseballNumber(ballNumberList);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("입력값이 잘못되었습니다.");
+        }
     }
 
     private void validDuplicate(List<BallNumber> ballNumberList) {
