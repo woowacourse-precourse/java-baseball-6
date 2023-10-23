@@ -7,6 +7,7 @@
  * DATE             AUTHOR           NOTE
  * ----------------------------------------------------------------
  * 2023-10-23       손준형           최초 생성
+ * 2023-10-23       손준형           record 타입 변경
  * </pre>
  *
  * @author 손준형
@@ -19,6 +20,4 @@ package vo;
 import java.util.List;
 
 public record AnswerBall(List<Integer> answerBall) {
-
-
 }
