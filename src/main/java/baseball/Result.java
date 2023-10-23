@@ -1,6 +1,10 @@
 package baseball;
 
-import static baseball.Constant.*;
+import static baseball.Constant.BALL_STRING;
+import static baseball.Constant.NOTHING_STRING;
+import static baseball.Constant.NUMBER_COUNT;
+import static baseball.Constant.STRIKE_STRING;
+import static baseball.Constant.SUCCESS_MESSAGE;
 
 public class Result {
     private int strike;

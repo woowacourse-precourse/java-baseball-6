@@ -1,10 +1,14 @@
 package baseball;
 
+import static baseball.Constant.END_RANGE;
+import static baseball.Constant.INPUT_MESSAGE;
+import static baseball.Constant.NUMBER_COUNT;
+import static baseball.Constant.START_RANGE;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import static baseball.Constant.*;
 
 public class Game {
     private List<Integer> computer = new ArrayList<>();
@@ -12,30 +16,28 @@ public class Game {
     public Game() {
         while (computer.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-            if (!isContainedNumber(randomNumber))
+            if (!isContainedNumber(randomNumber)) {
                 computer.add(randomNumber);
-        }
-
-        for (Integer x : computer) {  // 정답 확인용
-            System.out.print(x+" ");
+            }
         }
     }
 
     public void play() {
         String inputString;
         boolean is3Strike = false;
-
         do {
             System.out.print(INPUT_MESSAGE);
-            inputString = Console.readLine().replace(" ",""); // 공백 실수 허용
+            inputString = Console.readLine().replace(" ", ""); // 공백 실수 허용
             Player player = new Player(inputString);
-            is3Strike = checkResult(player.getPlayer());
+            is3Strike = checkResult(player.getPlayerList());
         } while (!is3Strike);
     }
 
     private boolean isContainedNumber(int randomNumber) {
         for (Integer x : computer) {
-            if (x == randomNumber) return true;
+            if (x == randomNumber) {
+                return true;
+            }
         }
         return false;
     }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
-    private List<Integer> playerList  = new ArrayList<>();
+    private List<Integer> playerList = new ArrayList<>();
 
     public Player(String inputString) {
         checkNumberLength(inputString);
@@ -14,12 +14,12 @@ public class Player {
         checkNumberDuplicate(inputString);
 
         for (int i = 0; i < inputString.length(); i++) {
-            playerList.add(Integer.valueOf(inputString.substring(i,i+1)));
+            playerList.add(Integer.valueOf(inputString.substring(i, i + 1)));
         }
     }
 
-    public List<Integer> getPlayer() {
-        return playerList;
+    public List<Integer> getPlayerList() {
+        return new ArrayList<>(playerList); // Return a copy of the internal list to ensure immutability
     }
 
     private void checkNumberLength(String inputString) {

@@ -1,7 +1,10 @@
 package baseball;
 
+import static baseball.Constant.RESTART_MESSAGE;
+import static baseball.Constant.RESTART_STRING;
+import static baseball.Constant.TERMINATE_STRING;
+
 import camp.nextstep.edu.missionutils.Console;
-import static baseball.Constant.*;
 
 public class Application {
     public static void main(String[] args) {
