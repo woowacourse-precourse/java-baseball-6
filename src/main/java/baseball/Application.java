@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,11 +36,29 @@ public class Application {
             System.out.println("user = " + user);
 
             System.out.println("countStrike(computer, user) = " + countStrike(computer, user));
-
+            System.out.println("countBall(computer, user) = " + countBall(computer, user));
+            
             // TODO 게임 종료 판단 기능 추가 시 삭제
             break;
         }
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
+    }
+
+    /**
+     * 컴퓨터와 유저의 숫자 리스트를 비교해 볼 수를 판별하여 반환한다.
+     * 
+     * @param computer 컴퓨터가 고른 숫자 리스트
+     * @param user 유저가 고른 숫자 리스트
+     * @return 카운트한  수
+     */
+    private static Integer countBall(List<Integer> computer, List<Integer> user){
+        Integer result = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if(user.contains(computer.get(i)) && user.indexOf(computer.get(i)) != i){
+                result++;
+            }
+        }
+        return result;
     }
 
     /**
