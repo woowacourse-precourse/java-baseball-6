@@ -58,6 +58,6 @@
 - [X] Input 객체
 - [X] InputValidator 객체
 - [X] ComputerNumber 객체
-- [ ] PlayerNumber 객체
+- [X] PlayerNumber 객체
 - [ ] BaseballGame 객체
 - [ ] GameUtil 객체
