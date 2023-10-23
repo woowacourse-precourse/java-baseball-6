@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.ComputerRandomNumber.computerRandomNumber;
-import static baseball.InputValidator.validateInput;
 import static baseball.MessageManager.*;
 
 public class Application {
@@ -12,19 +10,22 @@ public class Application {
         getStartingMessage();
         while(true){
             boolean play = PlayBaseballGame.play();
+
             if(play){
+                break;
+            }
+            getRestartOrEndMessage();
+            String input = Console.readLine();
+            try {
+                InputValidator.containOneOrTwo(input);
+            } catch (IllegalArgumentException e) {
+                System.err.println(e.getMessage());
+                break;
+            }
+            if (!input.equals("1")) {
                 break;
             }
         }
 
     }
 }
-
-
-
-
-
-
-
-
-

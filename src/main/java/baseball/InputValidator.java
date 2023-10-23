@@ -29,4 +29,11 @@ public class InputValidator {
             throw new IllegalArgumentException("1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 입력해 주세요");
         }
     }
+
+    public static void containOneOrTwo(String input) throws IllegalArgumentException {
+        if (!("1".equals(input) || "2".equals(input))) {
+            throw new IllegalArgumentException("입력값은 1 또는 2여야 합니다.");
+        }
+    }
+
 }
