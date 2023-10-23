@@ -30,7 +30,6 @@ public class BaseballGameMachine {
     }
 
     public void gameProcess() {
-//        Referee referee = new Referee(numberGenerator.generateRandomAnswerList());
         referee.setAnswerList(numberGenerator.generateRandomAnswerList());
         System.out.println(referee.getAnswerList());
         boolean success = false;
@@ -46,10 +45,6 @@ public class BaseballGameMachine {
     }
 
     public boolean isSuccess(List<Integer> gameResult) {
-        if (gameResult == null) {
-            return false;
-        }
-
         final int ball = gameResult.get(0);
         final int strike = gameResult.get(1);
         if (ball == 0 && strike == 3) {

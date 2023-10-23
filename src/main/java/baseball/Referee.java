@@ -9,9 +9,6 @@ public class Referee {
     private final int BALL = 1;
     private final int NOTHING = 0;
 
-//    public Referee(List<Integer> answerList) {
-//        this.answerList = new ArrayList<>(answerList);
-//    }
     public List<Integer> judgeUserInput(List<Integer> userInput) {
         int ball = 0;
         int strike = 0;
@@ -23,9 +20,6 @@ public class Referee {
             if (result == STRIKE) {
                 strike += 1;
             }
-        }
-        if (ball == 0 && strike == 0) {
-            return null;
         }
         return List.of(ball, strike);
     }

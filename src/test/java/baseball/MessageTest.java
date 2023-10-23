@@ -70,7 +70,7 @@ class MessageTest {
         //given
         Message message = new Message();
         //when
-        final String nothingResult = message.result(null);
+        final String nothingResult = message.result(List.of(0, 0));
         //then
         assertThat(nothingResult).isEqualTo("낫싱");
     }
