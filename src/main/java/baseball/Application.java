@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // 컴퓨터가 번호를 3개 세팅한다.
         List<Integer> computer = new ArrayList<>();
         setRandomNumberToComputer(computer);
 
@@ -24,7 +23,6 @@ public class Application {
             if (score.hasWinScore()) {
                 String inputNum = input.getGameExitOrRestartInput();
                 if (Integer.parseInt(inputNum) == 1) {
-                    // 컴퓨터 번호 리셋
                     computer = new ArrayList<>();
                     setRandomNumberToComputer(computer);
                 }
