@@ -16,20 +16,19 @@ public class Application {
         List<Integer> inputNumbers = getInputNumbers();
         System.out.println(inputNumbers);
 
-
         System.out.println(getAnswer(randomNumbers, inputNumbers));
+        System.out.println(getStrikeCount(randomNumbers, inputNumbers));
 
+    }
+
+    private static int getStrikeCount(List<Integer> randomNumbers, List<Integer> inputNumbers) {
         int strikeCount = 0;
         for (int index=0; index<3; index++){
             if (randomNumbers.get(index).equals(inputNumbers.get(index))) {
                 strikeCount++;
             }
         }
-
-        System.out.println(strikeCount);
-
-
-
+        return strikeCount;
     }
 
     private static boolean getAnswer(List<Integer> randomNumbers, List<Integer> inputNumbers) {
