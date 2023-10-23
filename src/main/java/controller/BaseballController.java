@@ -29,7 +29,7 @@ import vo.UserBall;
 public class BaseballController {
     public static void startBaseball() {
         StartView.startView();
-        while (true) {
+        do {
             AnswerBall answerBall = new AnswerBall(CreateRandomNumber.createRandomNumber());
 
             while (true) {
@@ -43,10 +43,7 @@ public class BaseballController {
                     break;
                 }
             }
-            if (!RestartOrEndView.userInput()) {
-                break;
-            }
-        }
+        } while (RestartOrEndView.userInput());
 
     }
 }
