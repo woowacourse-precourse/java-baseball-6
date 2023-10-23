@@ -1,7 +1,5 @@
 package baseball.service.handler;
 
-import static baseball.service.Game.NUMBER_OF_DIGITS;
-
 import camp.nextstep.edu.missionutils.Randoms;
 
 
@@ -14,8 +12,8 @@ public class Computer {
      * @param start_range : startRange
      * @param end_range   : endRange
      */
-    public Computer(int start_range, int end_range) {
-        this.computer_number = getRandomNumber(start_range, end_range);
+    public Computer(int start_range, int end_range, int number_of_digits) {
+        this.computer_number = getRandomNumber(start_range, end_range, number_of_digits);
     }
 
     /**
@@ -28,10 +26,10 @@ public class Computer {
      * @param end_range   : 끝나는 범위
      * @return String : random number
      */
-    private String getRandomNumber(int start_range, int end_range) {
+    private String getRandomNumber(int start_range, int end_range, int number_of_digits) {
         StringBuilder number = new StringBuilder();
 
-        while (number.length() < NUMBER_OF_DIGITS) {
+        while (number.length() < number_of_digits) {
             int randomNumber = Randoms.pickNumberInRange(start_range, end_range);
             if (!(number.toString()).contains(String.valueOf(randomNumber))) {
                 //randomNumber이 number에 없을 경우 append
