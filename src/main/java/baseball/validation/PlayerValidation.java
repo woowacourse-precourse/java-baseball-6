@@ -48,11 +48,11 @@ public class PlayerValidation {
     public static Integer checkAnswerNumber(String number) {
         isCheckNumber(number);
         isCheckSize(number, answerNumberSize);
-        ischeckOneOrTwo(number);
+        isCheckOneOrTwo(number);
         return Integer.parseInt(number);
     }
 
-    public static void ischeckOneOrTwo(String number) {
+    public static void isCheckOneOrTwo(String number) {
         if(!(number.equals("1") || number.equals("2"))){
             throw new IllegalArgumentException(IS_NOT_INPUT_ERROR_MESSAGE);
         }
