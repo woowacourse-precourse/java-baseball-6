@@ -21,8 +21,8 @@
   - 두 개의 배열을 비교하여 내부의 Int값 중 동일한 값이 있는지 확인하는 기능 `NumberController.compareNumberList`
     - 동일한 값이 있을 경우 배열의 인덱스 값도 같은지 확인하는 기능
   - 입력값과 정답을 비교하여 '스트라이크', '볼', '낫싱'을 출력하는 기능
-  - 예외케이스를 확인하여 `IllegalArgumentException`을 발생시키는 기능
+  - 예외케이스를 확인하여 `IllegalArgumentException`을 발생시키는 기능: `ExceptionController`
     - 예외케이스
-      - 정답 숫자 입력값이 세자리 숫자가 아닌 경우
-      - 정답 숫자 각자리 숫자 중 동일한 숫자가 있는 경우(ex. 111, 755, 443, 828 등)
-      - 게임이 끝난 후 입력 값으로 1과 2 외의 숫자가 입력된 경우
+      - 정답 숫자 입력값이 세자리 숫자가 아닌 경우: `ExceptionController.validateThreeDigitNumber` 
+      - ~~정답 숫자 각자리 숫자 중 동일한 숫자가 있는 경우(ex. 111, 755, 443, 828 등)~~
+      - 게임이 끝난 후 입력 값으로 1과 2 외의 숫자가 입력된 경우: `ExceptionController.validateGameProgressNumber`
