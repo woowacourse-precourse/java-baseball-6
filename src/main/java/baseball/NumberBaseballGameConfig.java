@@ -21,4 +21,33 @@ public class NumberBaseballGameConfig {
     public static final String ERROR_TYPE = "입력의 타입이 잘못되었습니다.";
     public static final String ERROR_RANGE = "입력의 범위가 잘못되었습니다.";
     public static final String ERROR_DUPLICATE = "중복된 숫자가 입력되었습니다.";
+
+    // 의존 객체 관리
+    private final InputReader inputReader;
+    private final Referee referee;
+    private final RandomNumberGenerator randomNumberGenerator;
+    private final Announcer announcer;
+
+    public NumberBaseballGameConfig() {
+        this.inputReader = new InputReader(new GuessedNumberValidator(), new ContinueModeNumberValidator());
+        this.referee = new Referee();
+        this.randomNumberGenerator = new RandomNumberGenerator();
+        this.announcer = new Announcer();
+    }
+
+    public InputReader getInputReader() {
+        return inputReader;
+    }
+
+    public Referee getReferee() {
+        return referee;
+    }
+
+    public RandomNumberGenerator getRandomNumberGenerator() {
+        return randomNumberGenerator;
+    }
+
+    public Announcer getAnnouncer() {
+        return announcer;
+    }
 }
