@@ -1,7 +1,6 @@
 package baseball.domain;
 
-import baseball.strategy.DuplicateAllowancePolicy;
-import baseball.strategy.NumberGeneratePolicy;
+import baseball.controller.dto.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +9,16 @@ public abstract class Computer {
 
     protected final List<Integer> numbers = new ArrayList<>();
 
-    public List<Integer> generateNumbers(NumberGeneratePolicy numberGeneratePolicy, DuplicateAllowancePolicy duplicateAllowancePolicy, int numberCount) {
+    public List<Integer> generateNumbers(Rule rule, int numberCount) {
         while (numbers.size() < numberCount) {
-            generateEachNumber(numberGeneratePolicy, duplicateAllowancePolicy);
+            generateEachNumber(rule);
         }
         return numbers;
     }
 
-    private void generateEachNumber(NumberGeneratePolicy numberGeneratePolicy, DuplicateAllowancePolicy duplicateAllowancePolicy) {
-        int number = numberGeneratePolicy.generate();
-        if (!duplicateAllowancePolicy.canBeDuplicated() && numbers.contains(number)) { // 중복 불가이고 이미 존재하는 숫자이면
+    private void generateEachNumber(Rule rule) {
+        int number = rule.generateNumber();
+        if (rule.canNotBeDuplicated() && numbers.contains(number)) {
             return;
         }
         numbers.add(number);
