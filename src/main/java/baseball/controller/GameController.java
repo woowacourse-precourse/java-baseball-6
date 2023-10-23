@@ -5,8 +5,8 @@ import static baseball.model.enums.GameMessage.INPUT_RESTART_OR_EXIT_MESSAGE;
 
 import baseball.model.input.RestartOrExitInput;
 import baseball.model.numbers.AnswerGenerator;
+import baseball.model.numbers.RandomAnswerGenerator;
 import baseball.model.numbers.GameNumbers;
-import baseball.model.score.ScoreCalculator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -15,7 +15,7 @@ public class GameController {
     private boolean isRunning;
 
     public GameController() {
-        this.answerGenerator = new AnswerGenerator();
+        this.answerGenerator = new RandomAnswerGenerator();
         this.isRunning = true;
     }
 

@@ -1,11 +1,11 @@
 package baseball.controller;
 
-import baseball.model.numbers.AnswerGenerator;
+import baseball.model.numbers.RandomAnswerGenerator;
 import baseball.model.numbers.GameNumbers;
 import org.junit.jupiter.api.Test;
 
-class AnswerGeneratorTest {
-    AnswerGenerator answerGenerator = new AnswerGenerator();
+class RandomAnswerGeneratorTest {
+    RandomAnswerGenerator randomAnswerGenerator = new RandomAnswerGenerator();
 
     @Test
     void generateAnser() {
@@ -13,7 +13,7 @@ class AnswerGeneratorTest {
 
         for (int i = 0; i < 10; i++) {
             // when
-            GameNumbers gameNumbers = answerGenerator.generateAnswer();
+            GameNumbers gameNumbers = randomAnswerGenerator.generateAnswer();
             System.out.printf("%2d%2d%2d\n", gameNumbers.get(0), gameNumbers.get(1), gameNumbers.get(2));
             System.out.println("-------------------");
         }
