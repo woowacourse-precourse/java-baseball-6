@@ -10,12 +10,24 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
         char[] guessNumberArray = guessNumberString.toCharArray();
+        isGuessNumberSame(guessNumberArray);
+        isGuessNumberCharacter(guessNumberArray);
+        return;
+    }
+
+    private void isGuessNumberCharacter(char[] guessNumberArray) {
         for (char c : guessNumberArray) {
             if (!isCharNumber(c)) {
                 throw new IllegalArgumentException();
             }
         }
-        return;
+    }
+
+    private void isGuessNumberSame(char[] guessNumberArray) {
+        if (guessNumberArray[0] == guessNumberArray[1] || guessNumberArray[1] == guessNumberArray[2]
+                || guessNumberArray[2] == guessNumberArray[0]) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void isValidReGameOptionNumber(String reGameNumberString) throws IllegalArgumentException {
