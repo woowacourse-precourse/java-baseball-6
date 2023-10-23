@@ -1,35 +1,40 @@
 package baseball;
 
-import static baseball.Application.userNumbers;
+import static baseball.Application.userRandomBalls;
 
 public class Validator {
     final String regex = "[0-9]+";
-    public void check(String userInputNumber){
-        if(userNumbers.isEmpty()) initUserNumbers();
-        if(userInputNumber.matches(regex) && checkSize(userInputNumber) && checkNumber(userInputNumber)){
-            makeUserInputNumber(userInputNumber);
+    public void checkUserInputRandomBalls(String input){
+        if(userRandomBalls.isEmpty()) initUserRandomBalls();
+        if(input.matches(regex) && checkSize(input) && checkZero(input)){
+            successInput(input);
         }
-        else{
-            throw new IllegalArgumentException();
-        }
+        else    throw new IllegalArgumentException();
     }
 
-    private boolean checkNumber(String userInputNumber) {
+    public void checkUserRestart(String input){
+        if(input.matches(regex) && input.length() == 1 && checkZero(input)){
+            successInput(input);
+        }
+        else throw new IllegalArgumentException();
+    }
+
+    private boolean checkZero(String userInputNumber) {
         String[] tmp = userInputNumber.split("");
-        for(int i=0; i<3; i++){
+        for(int i=0; i<userInputNumber.length(); i++){
             if(stoi(tmp[i])==0)    return false;
         }
         return true;
     }
 
-    public boolean checkSize(String userInputNumber){
+    private boolean checkSize(String userInputNumber){
         return stoi(userInputNumber) >= 100 && stoi(userInputNumber) < 1000;
     }
 
-    public void makeUserInputNumber(String userInputNumber) {
+    private void successInput(String userInputNumber) {
         String[] userInputNumbers = userInputNumber.split("");
         for (int i = 0; i < 3; i++) {
-            userNumbers.set(i,stoi(userInputNumbers[i]));
+            userRandomBalls.set(i,stoi(userInputNumbers[i]));
         }
     }
 
@@ -37,9 +42,9 @@ public class Validator {
         return Integer.parseInt(userInputNumber);
     }
 
-    private void initUserNumbers() {
+    private void initUserRandomBalls() {
         for(int i=0; i<3; i++){
-            userNumbers.add(i);
+            userRandomBalls.add(i);
         }
     }
 }

@@ -1,27 +1,32 @@
 package baseball;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static List<Integer> randomBalls = new ArrayList<>();
-    static List<Integer> userNumbers = new ArrayList<>();
-    static int flag = 0;
+    static List<Integer> computerRandomBalls = new ArrayList<>();
+    static List<Integer> userRandomBalls = new ArrayList<>();
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");   // 나중에 enum이나 따로 클래스를 지정해서 하는걸
-        MakeRandomBall makeRandomBall = new MakeRandomBall();
-        PlayGame playGame = new PlayGame();
+        ViewResult viewResult = new ViewResult();
+        System.out.println(viewResult.start);
+
+        gameStart();
+    }
+
+    private static void gameStart() {
+        Score score = new Score();
+        UserRandomBalls userRandomBalls = new UserRandomBalls();
+        ComputerRandomBalls computerRandomBalls = new ComputerRandomBalls();
         Validator validator = new Validator();
-        CompareTwoNumbers compareTwoNumbers = new CompareTwoNumbers();
-        randomBalls = makeRandomBall.outputRandomBall();
+
+        Application.computerRandomBalls = computerRandomBalls.outputRandomBall();
 
         while(true){
-            validator.check(playGame.inputRandomBall());
-            int result = compareTwoNumbers.play();
+            validator.checkUserInputRandomBalls(userRandomBalls.input());
+            int result = score.play();
             if(result == 1){
-                randomBalls.clear();
-                randomBalls = makeRandomBall.outputRandomBall();
+                Application.computerRandomBalls.clear();
+                Application.computerRandomBalls = computerRandomBalls.outputRandomBall();
             }
             else if(result == 2){
                 break;
