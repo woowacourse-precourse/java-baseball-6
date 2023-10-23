@@ -93,5 +93,5 @@
 
 - ❌ restartOrExitGame 메서드 구현
     - 플레이어가 입력한 값을 받아옴
-- ❌ validateRestartInput 메서드 구현
+- ✅ validateRestartInput 메서드 구현
     - 플레이어가 입력한 값을 검증 

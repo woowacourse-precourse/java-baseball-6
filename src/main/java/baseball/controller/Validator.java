@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Validator {
 
     public static boolean validateInputIsNumber(String input) {
@@ -33,4 +35,10 @@ public class Validator {
         return true;
     }
 
+    public static boolean validateRestartInput(String input) {
+        if (Console.readLine() != "1" || Console.readLine() != "2") {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        return true;
+    }
 }
