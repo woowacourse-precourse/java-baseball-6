@@ -21,14 +21,9 @@ public class Application {
     static boolean isEnd;
     static final String NOT_VALID_NUMBER = "3자리의 숫자만 입력 가능합니다.";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         println(GAME_START_MESSAGE);
-        try {
-            baseballGame();
-        }catch (IOException | IllegalArgumentException ioException){
-            ioException.printStackTrace();
-        }
-
+        baseballGame();
     }
 
     private static void baseballGame() throws IOException {
