@@ -21,4 +21,17 @@ class ValidationServiceTest {
         assertDoesNotThrow(() -> validationService.isThreeDigits(validString));
     }
 
+    @DisplayName("0이 포함되어 있을 때 에러를 반환하는가?")
+    @Test
+    public void testErrorReturnedWhenZeroIsPresent() {
+        //given
+        ValidationService validationService = new ValidationService();
+        //when
+        String invalidString = "012";
+        String validString = "123";
+        //then
+        assertThrows(IllegalArgumentException.class, () -> validationService.hasNoZero(invalidString));
+        assertDoesNotThrow(() -> validationService.hasNoZero(validString));
+    }
+
 }

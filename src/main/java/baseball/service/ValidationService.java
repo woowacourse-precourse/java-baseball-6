@@ -20,7 +20,7 @@ public class ValidationService {
         }
     }
 
-    private void hasNoZero(String str) {
+    public void hasNoZero(String str) {
         if (str.contains("0")) {
             exceptionHandler.throwIfNumberHasZero();
         }
