@@ -33,4 +33,9 @@ public class InputValidator {
         }
     }
 
+    public static void validateRestartNumber(String stringNumber) {
+        if (!stringNumber.equals(Rule.RESTART_NUMBER) && !stringNumber.equals(Rule.EXIT_NUMBER)) {
+            throw new IllegalArgumentException("재시작을 원하신다면 1, 종료를 원하신다면 2를 입력하세요.");
+        }
+    }
 }
