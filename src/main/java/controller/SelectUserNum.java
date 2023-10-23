@@ -1,18 +1,22 @@
-package baseball;
+package controller;
+import model.User;
 
 public class SelectUserNum {
     private static final int MAX_RANGE_OF_NUM = 57;//ASCII 9
     private static final int MIN_RANGE_OF_NUM = 49;//ASCII 1
     private char[] selectUsers;
+
+    private User user;
     public SelectUserNum(char[] selectUsers) {
         isValid(selectUsers);
-        checkDuplication(selectUsers);
-
         this.selectUsers = selectUsers;
+
+        user = new User(selectUsers);
     }
 
     private void isValid(char[] selectUsers) {
         validateSelectNum(selectUsers);
+        checkDuplication(selectUsers);
     }
 
     private void validateSelectNum(char[] selectUsers) {
@@ -34,7 +38,7 @@ public class SelectUserNum {
         return false;
     }
 
-    public char[] getterSelectUserNum() {
-        return selectUsers;
+    public User returnSelectUserNum() {
+        return user;
     }
 }

@@ -1,10 +1,12 @@
 package controller;
 import camp.nextstep.edu.missionutils.Randoms;
+import model.Computer;
 
-public final class SelectComputerNum {
-    private final char[] selectComputers = new char[3];
+public class SelectComputerNum {
+    private char[] selectComputers = new char[3];
+    private Computer computer;
 
-    public void randomlySelectComputerNum() {
+    public Computer randomlySelectComputerNum() {
         for (int i = 0 ; i < selectComputers.length ; i++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -14,6 +16,8 @@ public final class SelectComputerNum {
             }
             selectComputers[i] = (char)(randomNumber + '0');
         }
+        computer = new Computer(selectComputers);//model object 생성
+        return computer;
     }
 
     private boolean checkDuplication(char randomNumber) {
@@ -27,9 +31,5 @@ public final class SelectComputerNum {
             return false;
         }
         return true;//duplication true
-    }
-
-    public char[] getterSelectComputerNum() {
-        return selectComputers.clone();
     }
 }
