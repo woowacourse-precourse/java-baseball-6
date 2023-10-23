@@ -51,6 +51,7 @@
         - 사용자의 입력값을 BallInput에 저장하는 메서드
         - RandumNumber를 가져오는 메서드
         - RandumNumber와 BallInput을 비교해 BallHint를 리턴하는 메서드
+        - 게임을 초기화하는 메서드
 
 ## UserInterface
 
