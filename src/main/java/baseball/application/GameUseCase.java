@@ -1,6 +1,6 @@
 package baseball.application;
 
-import baseball.domain.NumericString;
+import baseball.controller.NumericString;
 
 public interface GameUseCase {
 
