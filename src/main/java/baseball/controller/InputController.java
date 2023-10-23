@@ -10,6 +10,23 @@ public class InputController {
         validate(inputString);
         return inputString;
     }
+    public String reGameInput() {
+        String inputString = Console.readLine();
+        validateRegame(inputString);
+        return inputString;
+    }
+
+    private void validateRegame(String inputString) {
+        try {
+            Integer.parseInt(inputString);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        if (inputString.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validate(String input) {
         checkIsNum(input);
         checkLength(input);
