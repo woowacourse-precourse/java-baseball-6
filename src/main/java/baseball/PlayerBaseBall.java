@@ -18,7 +18,7 @@ public class PlayerBaseBall {
                 .collect(Collectors.toList());
     }
 
-    public List<Ball> getNumberOfBall() {
+    public List<Ball> getBalls() {
         return Collections.unmodifiableList(balls);
     }
 }
