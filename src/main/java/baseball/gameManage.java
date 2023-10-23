@@ -11,10 +11,8 @@ public class gameManage implements gameManageInterface {
         try {
             play();
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e);
+            return;
         }
-
-
     }
 
     public List<Integer> selectComputerNumber() {
@@ -28,18 +26,32 @@ public class gameManage implements gameManageInterface {
         return computer;
     }
 
-    public Integer selectPlayerNumber() {
+    public void selectPlayerNumber(playerEntity playerEntity) {
         System.out.println("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
+
         if (playerNumber.length() > 3) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
 
-        return Integer.parseInt(playerNumber);
+        List<Integer> intOfPlayerNumber = stringToIntArray(playerNumber);
+        playerEntity.setHumanNumber(intOfPlayerNumber);
+    }
+
+    public List<Integer> stringToIntArray(String playerNumber) {
+        List<Integer> digits = new ArrayList<>();
+        for (int i = 0; i < playerNumber.length(); i++) {
+            digits.add(playerNumber.charAt(i) - '0');
+        }
+        return digits;
     }
 
     public void play() {
         List<Integer> computerNumber = selectComputerNumber();
+        playerEntity playerEntity = new playerEntity();
+        while (true) {
+            selectPlayerNumber(playerEntity);
+        }
 
     }
 }
