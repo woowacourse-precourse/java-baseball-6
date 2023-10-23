@@ -32,15 +32,16 @@ public class InputNumber {
         return playerNumber;
     }
 
-    public boolean getInputStatus() {
+    public int getInputStatus() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String s = Console.readLine();
-        int status = Integer.parseInt(s);
+        String input = Console.readLine();
+        return getStatus(input);
+    }
+
+    public int getStatus(String input) {
+        int status = Integer.parseInt(input);
         ValidationStatus.ValidationStatus(status);
-        if (status == 1) {
-            return true;
-        }
-        return false;
+        return status;
     }
 
 

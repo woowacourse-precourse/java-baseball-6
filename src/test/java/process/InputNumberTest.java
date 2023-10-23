@@ -78,4 +78,18 @@ public class InputNumberTest {
                 .hasMessage("서로 다른 숫자를 입력해주세요.");
 
     }
+
+    @Test
+    @DisplayName("재실행 시, 1 또는 2 값을 넣지 않았을 경우")
+    public void checkInputRestart() throws Exception {
+        // given
+        String input = "3";
+
+        // then
+        Assertions.assertThatThrownBy(() -> inputNumber.getStatus(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자 1(재실행) 또는 2(종료)만 입력해주세요.");
+
+
+    }
 }
