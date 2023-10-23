@@ -26,4 +26,8 @@ public class CompareNumber {
             }
         }
     }
+
+    public void computeBallWithoutStrike() {
+        ball = strike - ball;
+    }
 }
