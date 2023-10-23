@@ -79,4 +79,21 @@ public class BaseballGame {
             throw new IllegalArgumentException("중복된 숫자는 입력이 불가능합니다. 입력한 값 : " + playerStr);
         }
     }
+
+    //스트라이크, 볼 계산
+    public void playGame(String playerStr, List<Integer> computer){
+        this.computerNum = computer;
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        List<Integer> playerNum = BaseballGame.playerNum(playerStr);
+        for(int i = 0; i < computerNum.size(); i++){
+            if(computerNum.get(i).equals(playerNum.get(i)))
+                strikeCount++;
+            else if(playerNum.contains(computerNum.get(i)))
+                ballCount++;
+        }
+        this.strikeCount = strikeCount;
+        this.ballCount = ballCount;
+    }
 }
