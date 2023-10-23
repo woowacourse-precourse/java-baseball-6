@@ -15,6 +15,10 @@ public class GameNumbers {
         this.numbers = numbers;
     }
 
+    public int getNumberByIndex(int index) {
+        return numbers.get(index);
+    }
+
     private static void validate(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumberRange(numbers);
