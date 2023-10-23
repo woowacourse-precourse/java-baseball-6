@@ -22,20 +22,21 @@ public interface Scenario {
         ScenarioResultType execute();
     }
 
-    record ConditionalScenario(ScenarioAction scenarioAction, Map<ScenarioResultType, Supplier<Scenario>> scenarioMap) implements Scenario {
+    record ConditionalScenario(
+            ScenarioAction scenarioAction,
+            Map<ScenarioResultType, Supplier<Scenario>> scenarioMap
+    ) implements Scenario {
         @Override
         public void play() {
             Optional.ofNullable(scenarioMap.get(scenarioAction.execute()))
-                    .ifPresent(scenarioSupplier -> scenarioSupplier.get().play());
+                    .map(Supplier::get)
+                    .ifPresent(Scenario::play);
         }
-
-
     }
 
     class ConditionalScenarioBuilder {
 
         private final Map<ScenarioResultType, Supplier<Scenario>> scenarioMap = new HashMap<>();
-
 
         public ConditionalScenarioBuilder previous(Supplier<Scenario> scenarioSupplier) {
             this.scenarioMap.put(ScenarioResultType.PREVIOUS, scenarioSupplier);
