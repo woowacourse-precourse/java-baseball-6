@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+//이전 코드
 public class Game {
     List<Integer> computer = new ArrayList<>();
     List<Integer> user = new ArrayList<>();
@@ -33,7 +34,7 @@ public class Game {
             if (!computer.contains(n))
                 computer.add(n);
         }
-        System.out.println("컴퓨터 숫자 확인용: " + computer);
+        //System.out.println("컴퓨터 숫자 확인용: " + computer);
     }
 
     //2. 사용자 값 입력 받기(같을 때까지)
@@ -97,6 +98,7 @@ public class Game {
         if (checkExeption(isContinue, 1))
             throw new IllegalArgumentException();
     }
+
     public boolean checkExeption(String s, int n) {
         //길이 체크(공통)
         if(s.length() != n)
