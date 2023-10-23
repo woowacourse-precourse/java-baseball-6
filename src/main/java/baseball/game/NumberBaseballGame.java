@@ -8,6 +8,7 @@ public class NumberBaseballGame {
     private static final int RETRY_NUMBER = 1;
     private final Computer computer;
     private GameNumbers answer;
+    private GameState gameState;
 
     public NumberBaseballGame() {
         this.computer = new Computer();
@@ -21,18 +22,19 @@ public class NumberBaseballGame {
 
     private void setGame() {
         answer = computer.generateAnswer();
+        gameState = GameState.PLAY;
     }
 
     private void playGame() {
         OutputView.printStartGame();
 
-        while (true) {
+        while (gameState == GameState.PLAY) {
             GameNumbers userNumbers = InputView.readUserNumbers();
             Hint hint = computer.getHint(userNumbers);
             OutputView.printHint(hint);
 
             if (isAllStrike(hint.getStrike())) {
-                break;
+                gameState = GameState.END;
             }
         }
     }
