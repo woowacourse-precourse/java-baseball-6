@@ -1,6 +1,6 @@
 package baseball.model;
 
-public final class MsgConst {
+public final class MsgConstant {
 
     public static final String WELCOME_MSG = "숫자 야구 게임을 시작합니다.";
 
