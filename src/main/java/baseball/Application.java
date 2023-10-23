@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    // 게임에 사용되는 3자리 숫자 배열 정의
     private boolean isGameOver = false;
 
     public static void main(String[] args) {
@@ -26,17 +25,23 @@ public class Application {
         while (!isGameOver) {
             int[] playerNumbers = getPlayerNumbers();
 
-            String result = checkStrikesOrBall(randomNumbers, playerNumbers);
-            System.out.println(result);
+            try {
+                String result = checkStrikesOrBall(randomNumbers, playerNumbers);
+                System.out.println(result);
 
-            if (result.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                isGameOver = !askForRestart();
+                if (result.equals("3스트라이크")) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    isGameOver = !askForRestart();
 
-                if (!isGameOver) {
-                    randomNumbers = generateRandomNumbers(); // 게임이 재시작되면 새로운 randomNumbers 생성
+                    if (!isGameOver) {
+                        randomNumbers = generateRandomNumbers(); // 게임이 재시작되면 새로운 randomNumbers 생성
+                    }
                 }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                isGameOver = true;
             }
+
         }
     }
 
