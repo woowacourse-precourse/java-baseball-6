@@ -14,13 +14,13 @@ public class MessageConverter {
     private static final String NOTHING = "낫싱";
     private static final int NUMBER_SIZE = 3;
 
-    private Map<String, Integer> resultMessage;
+    private static Map<String, Integer> resultMessage;
 
     /*
     * ConcurrentHashMap 초기화 메서드
     * */
-    private void initializeResultMessage() {
-        this.resultMessage = new ConcurrentHashMap<>() {
+    private static void initializeResultMessage() {
+        resultMessage = new ConcurrentHashMap<>() {
             {
                 put(STRIKE, 0);
                 put(BALL, 0);
@@ -33,7 +33,7 @@ public class MessageConverter {
     * @Param input 플레이어의 숫자
     * @Param computerNumber 컴퓨터의 숫자
     * */
-    public Map<String, Integer> getResultMessage(List<Integer> input, List<Integer> computerNumber) {
+    public static Map<String, Integer> getResultMessage(List<Integer> input, List<Integer> computerNumber) {
         initializeResultMessage();
 
         for(int index = 0; index < NUMBER_SIZE; index++) {
@@ -49,7 +49,7 @@ public class MessageConverter {
      * @Param computerNumber 컴퓨터의 숫자
      * @Param index 리스트의 인덱스
      * */
-    private void getStrikeOrBall(List<Integer> input, List<Integer> computerNumber, Integer index) {
+    private static void getStrikeOrBall(List<Integer> input, List<Integer> computerNumber, Integer index) {
         if (input.get(index).equals(computerNumber.get(index))) {
            resultMessage.put(STRIKE, resultMessage.get(STRIKE) + 1);
         }
