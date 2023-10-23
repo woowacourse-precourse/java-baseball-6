@@ -1,9 +1,13 @@
 package baseball;
 
-public class Player {
+import camp.nextstep.edu.missionutils.Console;
 
-    public void getInput() {
-        //입력 받기
+public class Player {
+    private String input;
+
+    public String getInput() {
+        input = Console.readLine();
+        return input;
     }
 
 }
