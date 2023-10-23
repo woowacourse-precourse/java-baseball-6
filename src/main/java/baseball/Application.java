@@ -71,7 +71,6 @@ public class Application {
             }
         }
         // 정답이 아니라면, 힌트 출력해주는 로직
-
         else{
             if(ballSum > 0){
                 System.out.print(ballSum);
@@ -81,7 +80,11 @@ public class Application {
                 System.out.print(strikeSum);
                 System.out.print("스트라이크");
             }
-            System.out.println();
+            if(strikeSum == 0 && ballSum == 0){
+                System.out.println("낫싱");
+            } else{
+                System.out.println();
+            }
             //같은 정답으로 다시 실행하는 로직
             numberBaseball(answer);
         }
@@ -100,8 +103,6 @@ public class Application {
         }
         numberBaseball(answer);
     }
-
-
 
     public static void main(String[] args) {
         // 숫자 야구 진행 기능
