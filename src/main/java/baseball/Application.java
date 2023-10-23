@@ -2,7 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        Output output = new Output();
-        output.printEndGame();
+        Input input = new Input();
+        input.enterGameNumber();
     }
 }
