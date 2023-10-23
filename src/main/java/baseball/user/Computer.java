@@ -58,6 +58,10 @@ public class Computer {
 
         System.out.println(sj);
 
+        checkStrikeOut(strikeCount);
+    }
+
+    private void checkStrikeOut(int strikeCount) {
         if (strikeCount > 2) {
             isStrikeOut = true;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
