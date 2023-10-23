@@ -10,7 +10,45 @@ public class Hint {
         this.inputNumbers = inputNumbers;
     }
 
-    public int countStrikes() {
+    public String checkAnswer() {
+        if (countStrikes() == INPUT_LENGTH) {
+            return "3스트라이크";
+        }
+        return null;
+    }
+
+    private String checkStrikes() {
+        int strikes = countStrikes();
+        if (strikes == 0) {
+            return null;
+        }
+        return strikes + "스트라이크";
+    }
+
+    private String checkBalls() {
+        int balls = countBalls();
+        if (balls == 0) {
+            return null;
+        }
+        return balls + "볼";
+    }
+
+    public String createHintMessage() {
+        String strikeMessage = checkStrikes();
+        String ballMessage = checkBalls();
+        String hintMessage;
+        if (strikeMessage == null && ballMessage == null) {
+            return "낫싱";
+        }
+        if (strikeMessage != null) {
+            hintMessage = ballMessage + " " + strikeMessage;
+        } else {
+            hintMessage = ballMessage;
+        }
+        return hintMessage;
+    }
+
+    private int countStrikes() {
         int strikes = 0;
 
         for (int i = 0; i < INPUT_LENGTH; i++) {
@@ -25,7 +63,7 @@ public class Hint {
         return gameNumber.getNumber(index) == inputNumbers.getNumber(index);
     }
 
-    public int countBalls() {
+    private int countBalls() {
         int balls = 0;
 
         for (int i = 0; i < INPUT_LENGTH; i++) {
@@ -35,7 +73,7 @@ public class Hint {
         }
         return balls;
     }
-    
+
     private boolean isBall(int index) {
         int number = gameNumber.getNumber(index);
 
