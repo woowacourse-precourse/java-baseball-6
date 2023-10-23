@@ -26,18 +26,12 @@ public class BaseBallGameController {
         }
     }
 
-    public String inputRetry() {
-        try {
-            systemMessage.askRetryMessage();
-            String userInput = readLine();
+    public String inputRetry() throws IllegalArgumentException {
+        systemMessage.askRetryMessage();
+        String userInput = readLine();
 
-            validator.retryValidation(userInput);
+        validator.retryValidation(userInput);
 
-            return userInput;
-
-        } catch (IllegalArgumentException e) {
-            systemMessage.inputErrorMessage();
-            return null;
-        }
+        return userInput;
     }
 }
