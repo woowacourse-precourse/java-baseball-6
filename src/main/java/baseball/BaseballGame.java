@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
-    private int randomNum;
     private String answerComputer;
+    final int MAX_ANSWER_LENGTH = 3;
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -13,21 +13,23 @@ public class BaseballGame {
         boolean isPlaying = true;
 
         initAnswer();
+
         String answerPlayer;
 
         String messageScore;
+
         System.out.print("생성된 숫자는 " + answerComputer + "\n");
         do {
 
             System.out.print("숫자를 입력해주세요 : ");
             answerPlayer = Console.readLine();
-
+            exceptLengthInvalid(answerPlayer, MAX_ANSWER_LENGTH);
             messageScore = countStrikeBallHits(answerPlayer, answerComputer);
 
             System.out.println(messageScore);
 
             if (answerPlayer.equals(answerComputer)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("3개의 숫자 를 모두 맞히셨습니다! 게임 종료");
                 isPlaying = restartGame();
             }
         } while (isPlaying);
@@ -82,6 +84,13 @@ public class BaseballGame {
             isRestart = false;
         }
         return isRestart;
+
+    }
+
+    public void exceptLengthInvalid(String source, int exclusive) {
+        if (source.length() != exclusive) {
+            throw new IllegalArgumentException("입력값의 길이는 " + Integer.toString(exclusive) + " 과(와) 같아야 합니다.");
+        }
 
     }
 }
