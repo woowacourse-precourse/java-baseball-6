@@ -37,7 +37,7 @@ public class BaseballGame {
     }
 
     private static List<Integer> generateUserNumbers() {
-        String userNumbersToString = InputView.startInput();
+        String userNumbersToString = InputView.getUserNumber();
         return UserNumberGenerator.makeUserNumberToList(userNumbersToString);
     }
 

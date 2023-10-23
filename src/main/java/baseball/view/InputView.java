@@ -12,7 +12,7 @@ public class InputView {
         System.out.println(FIRST_START);
     }
 
-    public static String startInput() {
+    public static String getUserNumber() {
         System.out.println(INPUT_NUM);
         String inputNum = Console.readLine();
         InputValidation.verifyInputNum(inputNum);
