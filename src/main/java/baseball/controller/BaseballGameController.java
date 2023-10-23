@@ -8,10 +8,10 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    public static final String ALL_STRIKE = "3";
-    public static final int STRIKE_COUNT_RESULT = 1;
-    public static final String RESTART_GAME = "1";
-    public static final String END_GAME = "2";
+    private static final String ALL_STRIKE = "3";
+    private static final int STRIKE_COUNT_RESULT = 1;
+    private static final String RESTART_GAME = "1";
+    private static final String END_GAME = "2";
 
 
     private BaseballGame baseballGame;

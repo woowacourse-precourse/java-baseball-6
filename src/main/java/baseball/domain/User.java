@@ -25,6 +25,7 @@ public class User {
 
 
     public List<Integer> updateStringToListUser(String userNumber){
+        this.userNumber = new ArrayList<>();
         for(char c : userNumber.toCharArray())
             this.userNumber.add((c-'0'));
         return this.userNumber;
