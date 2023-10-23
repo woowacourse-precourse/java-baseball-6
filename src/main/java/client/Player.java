@@ -13,6 +13,7 @@ public class Player {
     }
 
     public void start() {
+        Output.printMessage(MessageConstants.GAME_START_MESSAGE);
         do {
             play();
             Output.printMessage(MessageConstants.GAME_FINISH_MESSAGE);
