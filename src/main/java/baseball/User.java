@@ -11,6 +11,7 @@ public class User {
         try {
             userNumberStr = Console.readLine();
             isNotInteger(userNumberStr);
+            isNotThreeLength(userNumberStr);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             // 게임 종료 구현
@@ -31,6 +32,12 @@ public class User {
             Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수가 아닌 값을 입력하였습니다.");
+        }
+    }
+
+    public static void isNotThreeLength(String str) throws IllegalArgumentException {
+        if (str.length() != 3) {
+            throw new IllegalArgumentException("3자리 이상 혹은 이하의 갑을 입력하였습니다.");
         }
     }
 }
