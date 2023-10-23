@@ -26,6 +26,11 @@ public class OutputViewTest extends NsTest {
         return CompareNumber.compareNumberList(user_number, computer_number);
     }
 
+    private GameScore onlyStrikeGameScore(){
+        List<Integer> user_number = List.of(1, 2, 4);
+        return CompareNumber.compareNumberList(user_number,computer_number);
+    }
+
     @Test
     void 볼만_맞춘경우_출력_값_테스트(){
         //given
@@ -36,6 +41,18 @@ public class OutputViewTest extends NsTest {
 
         //then
         assertThat(output()).isEqualTo("3볼");
+    }
+
+    @Test
+    void 스트라이크만_맞춘경우_출력_값_테스트(){
+        //given
+        GameScore game_score = onlyStrikeGameScore();
+
+        //when
+        CheckGameResult.checkGameScore(game_score,game_coin);
+
+        //then
+        assertThat(output()).isEqualTo("2스트라이크");
     }
 
     @Override
