@@ -6,8 +6,8 @@ import java.util.HashSet;
 
 public class PlayGame {
 
-    private int ball;
-    private int strike;
+    public int ball;
+    public int strike;
 
     public void startGame() {
         System.out.println("숫자를 입력해주세요 : ");
@@ -15,6 +15,8 @@ public class PlayGame {
         validateInput(originalInput);
         ArrayList<Integer> userNumberList = inputToArrayList(originalInput);
         ArrayList<Integer> answerNumbers = GenerateNum.makeAnswer();
+        this.ball = Rule.countBalls(answerNumbers, userNumberList);
+        this.strike = Rule.countStrikes(answerNumbers, userNumberList);
     }
 
     public ArrayList<Integer> inputToArrayList(String numInput) {
@@ -64,6 +66,23 @@ public class PlayGame {
             if (c == '0') {
                 throw new IllegalArgumentException("0을 입력하지 말아주세요");
             }
+        }
+    }
+
+    public void printScore() {
+        if (this.strike == 0 && this.ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (this.strike > 0 && this.ball > 0) {
+            System.out.printf("%d볼 %d스트라이크", this.ball, this.strike);
+            return;
+        }
+        if (this.strike > 0) {
+            System.out.printf("%d스트라이크", this.strike);
+        }
+        if (this.ball > 0) {
+            System.out.printf("%d볼", this.ball);
         }
     }
 }
