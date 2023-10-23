@@ -4,10 +4,11 @@ package baseball.version2.controller;
 import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
 import static baseball.version2.Constants.Value.THREE_STRIKE;
 
+import baseball.version2.domain.Score;
+import baseball.version2.dto.ComputerAnswerDto;
 import baseball.version2.service.Service;
 import baseball.version2.view.InputView;
 import baseball.version2.view.OutView;
-import java.util.ArrayList;
 
 public class Controller {
 
@@ -26,16 +27,15 @@ public class Controller {
         outView.printStart();
     }
 
-    public void settingGame() {
-        ArrayList<Integer> computerAnswer = service.getComputerAnswer();
-        service.saveComputerAnswer(computerAnswer);
+    public int[] settingGame() {
+        ComputerAnswerDto computerAnswerDto = service.getComputerAnswer();
+        return computerAnswerDto.getAnswer();
     }
 
-    public boolean startGame() {
+    public boolean startGame(int[] computerAnswer) {
         int[] playerAnswer = inputView.getPlayerAnswer(ANSWER_ARRAY_SIZE);
-        service.compareTwoAnswer(playerAnswer);
-        int strike = outView.printResult(service.getResult());
-        service.initScoreRepository();
+        Score score = service.compareTwoAnswer(playerAnswer, computerAnswer);
+        int strike = outView.printResult(score);
         if (strike == THREE_STRIKE) {
             return true;
         }

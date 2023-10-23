@@ -16,10 +16,10 @@ public class Game {
         controller.runGame();
         int continueDecision = CONTINUE_NUMBER;
         while (continueDecision == CONTINUE_NUMBER) {
-            controller.settingGame();
+            int[] computerAnswer = controller.settingGame();
             boolean isCorrect = false;
             while (!isCorrect) {
-                isCorrect = controller.startGame();
+                isCorrect = controller.startGame(computerAnswer);
             }
             continueDecision = controller.isContinue();
         }

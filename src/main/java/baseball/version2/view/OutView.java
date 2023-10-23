@@ -1,9 +1,13 @@
 package baseball.version2.view;
 
-import static baseball.version2.Constants.Phrases.*;
+import static baseball.version2.Constants.Phrases.BALL_PHRASES;
+import static baseball.version2.Constants.Phrases.NOTHING_PHRASES;
+import static baseball.version2.Constants.Phrases.START_PHRASES;
+import static baseball.version2.Constants.Phrases.STRIKE_PHRASES;
+import static baseball.version2.Constants.Phrases.THREE_STRIKE_PHRASES;
 import static baseball.version2.Constants.Value.THREE_STRIKE;
 
-import baseball.version2.dto.ScoreDto;
+import baseball.version2.domain.Score;
 
 public class OutView {
 
@@ -11,9 +15,9 @@ public class OutView {
         System.out.println(START_PHRASES);
     }
 
-    public int printResult(ScoreDto scoreDto) {
-        int ball = scoreDto.getBall();
-        int strike = scoreDto.getStrike();
+    public int printResult(Score score) {
+        int ball = score.getBall();
+        int strike = score.getStrike();
         if (ball == 0 && strike == 0) {
             printNothing();
         }
