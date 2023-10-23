@@ -39,11 +39,8 @@ class InputReaderTest {
     void typeIncorrectInputSizeOfGameInput() {
         String input = "1234";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> inputList = inputReader.readUserGameInput();
+            inputReader.validateGameInputSize(input);
         });
     }
 
@@ -52,11 +49,8 @@ class InputReaderTest {
     void typeIncorrectInputTypeOfGameInput() {
         String input = "12a";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> inputList = inputReader.readUserGameInput();
+            inputReader.validateGameInputType(input);
         });
     }
 
@@ -65,24 +59,18 @@ class InputReaderTest {
     void typeIncorrectInputDuplicationOfGameInput() {
         String input = "122";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> inputList = inputReader.readUserGameInput();
+            inputReader.validateGameInputDuplicationOfNumber(input);
         });
     }
 
     @Test
-    @DisplayName("게임 진행 중 입력의 숫자가 공백일 때 예외 발생 테스트")
+    @DisplayName("입력의 숫자가 공백일 때 예외 발생 테스트")
     void typeIncorrectInputEmptyOfGameInput() {
         String input = "";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            List<Integer> inputList = inputReader.readUserGameInput();
+            inputReader.validateAllInputIsEmpty(input);
         });
     }
 
@@ -91,11 +79,8 @@ class InputReaderTest {
     void typeIncorrectInputSizeOfGameFinishInput() {
         String input = "123";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            int restart = inputReader.readUserGameFinishInput();
+            inputReader.validateGameFinishInputSize(input);
         });
     }
 
@@ -104,11 +89,8 @@ class InputReaderTest {
     void typeIncorrectInputTypeOfGameFinishInput() {
         String input = "a";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            int restart = inputReader.readUserGameFinishInput();
+            inputReader.validateGameFinishInputType(input);
         });
     }
 
@@ -117,24 +99,9 @@ class InputReaderTest {
     void typeIncorrectInputRangeOfGameFinishInput() {
         String input = "3";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         assertThrows(IllegalArgumentException.class, () -> {
-            int restart = inputReader.readUserGameFinishInput();
+            inputReader.validateGameFinishInputType(input);
         });
     }
-
-    @Test
-    @DisplayName("게임 종료 후 입력의 숫자가 공백일 때 예외 발생 테스트")
-    void typeIncorrectInputEmptyOfGameFinishInput() {
-        String input = "";
-
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            int restart = inputReader.readUserGameFinishInput();
-        });
-    }
+    
 }
