@@ -72,7 +72,7 @@ public class Application {
         String[] tempNumber;
         boolean isValid;
 
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         Number = Console.readLine();
         isValid = isValidNumber(Number);
 
@@ -94,7 +94,7 @@ public class Application {
         }
 
         for (char ch : input.toCharArray()) {
-            if (ch < 1 || ch > 9) {
+            if (ch < '1' || ch > '9') {
                 return false;
             }
         }
