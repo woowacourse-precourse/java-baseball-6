@@ -15,7 +15,7 @@ public class GameController {
     private final InputView inputView = InputView.getInstance();
     private final OutputView outputView = OutputView.getInstance();
 
-    public void startGame() {
+    public void run() {
         do {
             Player computer = prepareComputer();
 
