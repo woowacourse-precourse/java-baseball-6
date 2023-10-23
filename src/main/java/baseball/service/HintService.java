@@ -1,5 +1,7 @@
 package baseball.service;
 
+import static baseball.domain.Constants.NUMBER_OF_BASEBALL;
+
 import baseball.domain.BaseballNumbers;
 
 public class HintService {
@@ -42,7 +44,7 @@ public class HintService {
     public boolean isCorrect(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
         int strikeCount = computerNumber.getStrikeCount(inputNumber);
 
-        if (strikeCount == 3) {
+        if (strikeCount == NUMBER_OF_BASEBALL) {
             return true;
         }
 
