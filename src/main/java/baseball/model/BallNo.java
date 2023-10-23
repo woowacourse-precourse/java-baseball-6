@@ -9,11 +9,11 @@ public class BallNo {
     private final int number;
 
     public BallNo(int number) {
-        validateNo(number);
+        validate(number);
         this.number = number;
     }
 
-    private void validateNo(int number) {
+    private void validate(int number) {
         if (number < FIRST_NO || number > END_NO) {
             throw new IllegalArgumentException(WRONG_RANGE_OF_NUMBER);
         }
