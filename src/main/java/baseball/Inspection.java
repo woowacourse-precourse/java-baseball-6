@@ -39,14 +39,12 @@ public class Inspection {
             }
         }
     }
-
     //입력예외테스트
     public void inputExceptionTest(String input){
         lengthCheck(input);
         duplicateCheck (input);
         rangeCheck(input);
     }
-
     //입력 및 오류검출 메서드 (출력 : 문자열)
     public String userInput() {
         System.out.print("1부터 9 사이의 정수 3개를 입력하세요 : ");
@@ -54,18 +52,9 @@ public class Inspection {
         inputExceptionTest(input);
         return input;
     }
-    //사용자 입력값 오류검사 후 정수형 배열 변환
-    public int[] userInputToArr(){
-        String userInput = userInput();
-        int[] userInputArr = userInput.chars().map(Character::getNumericValue).toArray();
-        return userInputArr;
-    }
-
     public List<Integer> userInputToList(){
         String userInput = userInput();
         List<Integer> userInputList =userInput.chars().mapToObj(Character::getNumericValue).collect(Collectors.toList());
         return userInputList;
     }
-
-
 }

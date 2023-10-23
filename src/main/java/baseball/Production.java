@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Production {
     Inspection inspection=new Inspection();
-    Production production = new Production();
+
     Game game = new Game();
     //컴퓨터 패 생성
 
