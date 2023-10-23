@@ -17,6 +17,14 @@ public class Player {
     return input.equals("1");
   }
 
+  private boolean isDuplicate(String input) {
+    for (Character ch : input.toCharArray()) {
+      if (input.contains(String.valueOf(ch)))
+        return true;
+    }
+    return false;
+  }
+
   public boolean userInputNumbers(final int[] flag) {
     String input = Console.readLine();
     setInput(input);
@@ -32,7 +40,7 @@ public class Player {
         return false;
       }
     }
-    return true;
+    return !isDuplicate(input);
   }
 
   public boolean checkSwingResult(int correctNumber, int index) {
