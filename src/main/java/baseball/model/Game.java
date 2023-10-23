@@ -4,6 +4,7 @@ package baseball.model;
 import static baseball.model.GameNumbers.NUMBERS_SIZE;
 import static baseball.model.GameNumbers.createRandomGameNumbers;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Game {
@@ -12,8 +13,20 @@ public class Game {
     private final GameNumbers computerGameNumbers = createRandomGameNumbers();
     private Result result = new Result();
 
-    public void updateUserNumbers(GameNumbers userGameNumbers) {
-        this.userGameNumbers = userGameNumbers;
+    public GameNumbers getComputerGameNumbers() {
+        return this.computerGameNumbers;
+    }
+
+    public Result getResult() {
+        return this.result;
+    }
+
+    public void setUserNumbers(List<Integer> userNumbers) {
+        this.userGameNumbers = new GameNumbers(userNumbers);
+    }
+
+    public void setResult() {
+        this.result = new Result();
     }
 
     public void play() {
@@ -32,15 +45,7 @@ public class Game {
         }
     }
 
-    public void resetResult() {
-        this.result = new Result();
-    }
-
     public boolean isRunning() {
         return this.result.getStrike() < NUMBERS_SIZE;
-    }
-
-    public Result getResult() {
-        return this.result;
     }
 }
