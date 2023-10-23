@@ -27,6 +27,7 @@ public class Balls {
         this.size=0;
     }
 
+    //value = target인 index 찾아 반환
     public int get_index(int target){
         if(balls.contains(target)){
             return balls.indexOf(target);

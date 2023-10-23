@@ -16,6 +16,7 @@ public class Guess extends Balls {
         this.nothing = this.size;
     }
 
+    // index = locate 인 공 값 반환
     public int get_ball(int locate) {
         return this.balls.get(locate);
     }

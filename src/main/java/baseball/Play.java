@@ -33,6 +33,7 @@ public class Play {
     public int check_balls(Balls goal, Guess user_ball) {
         // 사용자 추측값 검증하기
         int locate = 0;
+        String result="";
         while (locate < goal.size) {
             // 입력값 중 target ball 설정
             int ball = user_ball.get_ball(locate);
@@ -41,24 +42,26 @@ public class Play {
 
             if (goal_index >= 0) {
                 if (goal_index == locate) {
-                    user_ball.add_score("strike");
+                    result = "strike";
                 }
                 if(goal_index != locate){
-                    user_ball.add_score("ball");
+                    result = "ball";
                 }
             }
             if (goal_index == -1) {
-                user_ball.add_score("nothing");
+                result = "nothing";
             }
             locate++;
+            user_ball.add_score(result);
         }
         return get_result(user_ball);
     }
 
     public int get_result(Guess user_ball) {
+        int play_mode=0; // 게임 계속 진행
         if (user_ball.the_number_of("nothing") == 0) {
             System.out.println("낫싱");
-            return 0;
+            return play_mode;
         }
         int strike = user_ball.the_number_of("strike");
         int ball = user_ball.the_number_of("ball");
@@ -66,16 +69,16 @@ public class Play {
         if (ball == 0) {
             System.out.println(strike + "스트라이크");
             if (strike == 3) {
-                return 3;
+                return play_mode=3; //정답 맞춤, end_balls() 실행
             }
-            return 0;
+            return play_mode;
         }
         if (strike == 0) {
             System.out.println(ball + "볼");
-            return 0;
+            return play_mode;
         }
         System.out.println(ball + "볼 " + strike + "스트라이크");
-        return 0;
+        return play_mode;
     }
 
 
@@ -84,7 +87,7 @@ public class Play {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int user_input = Integer.parseInt(Console.readLine());
-        return user_input;
+        int play_mode = Integer.parseInt(Console.readLine());
+        return play_mode;
     }
 }
