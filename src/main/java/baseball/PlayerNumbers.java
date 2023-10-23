@@ -16,6 +16,10 @@ public class PlayerNumbers {
         return Collections.unmodifiableList(clonedPlayerNumbers);
     }
 
+    public Integer getPlayerNumberAtIndex(int index) {
+        return getPlayerNumbers().get(index);
+    }
+
     private List<Integer> createPlayerNumbers() {
         String inputValue = Input.inputPlayerNumbers();
         checkValidValue(inputValue);

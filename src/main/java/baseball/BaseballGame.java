@@ -23,7 +23,7 @@ public class BaseballGame {
         setComputerNumbers();
         do {
             inputPlayerNumbers();
-            strikeBallCounter.countStrikeAndBall(playerNumbers.getPlayerNumbers(), computerNumbers.getComputerNumbers());
+            strikeBallCounter.countStrikeAndBall(playerNumbers, computerNumbers);
         } while(!strikeBallCounter.isGameClear());
     }
 

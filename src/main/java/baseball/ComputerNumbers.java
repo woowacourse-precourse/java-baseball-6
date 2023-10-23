@@ -17,6 +17,10 @@ public class ComputerNumbers {
         return Collections.unmodifiableList(clonedComputerNumbers);
     }
 
+    public Integer getComputerNumberAtIndex(int index) {
+        return getComputerNumbers().get(index);
+    }
+
     private List<Integer> createComputerNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         do {
