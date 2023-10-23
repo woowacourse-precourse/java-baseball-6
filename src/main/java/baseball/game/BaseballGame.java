@@ -25,7 +25,7 @@ public class BaseballGame {
         List<Integer> computer = randomNumber.getNumbers();
         List<Integer> user = ballInput.getBalls();
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i).equals(user.get(i)))) {
+            if (computer.get(i).equals(user.get(i))) {
                 ballHint.increaseStrike();
                 user.set(i, 0);
             }
