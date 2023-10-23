@@ -57,7 +57,7 @@ class Pitching {
     int[] inputNumber;
 
     Pitching(Ball ball) {
-        int input = ball.readingMove();
+        int input = ball.getInputNumber();
         this.inputNumber = ball.getDigitsArray(input);
     }
 }
@@ -67,10 +67,10 @@ class Ball {
     static final int NUMBER_DIGIT = 3;
     int number;
 
-    int readingMove() {
+    int getInputNumber() {
         number = Integer.parseInt(Console.readLine());
 
-        if (!Validate.verifyTripleDigit(number)) {
+        if (!Validate.verifyTripleDigit(number) || !Validate.verifyEachDigitDuplicate(number)) {
             return number;
         } else {
             throw new IllegalArgumentException("올바른 입력 형식이 아닙니다.");
@@ -94,6 +94,22 @@ class Validate {
     public static boolean verifyTripleDigit(int number) {
         return String.valueOf(number).length() != 3;
     }
+
+    public static boolean verifyEachDigitDuplicate(int number) {
+        boolean[] digitSeen = new boolean[10];
+
+        while (number > 0) {
+            int digit = number % 10;
+            if (digitSeen[digit]) {
+                return false;
+            }
+            digitSeen[digit] = true;
+            number /= 10;
+        }
+        return true;
+    }
+
+
 }
 
 class Referee {
