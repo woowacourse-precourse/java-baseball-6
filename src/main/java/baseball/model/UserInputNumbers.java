@@ -30,21 +30,32 @@ public class UserInputNumbers {
             Number userInputNumber = userNumberList.get(i);
             Number randomNumber = randomNumberList.get(i);
 
-            if (userInputNumber.equals(randomNumber)) {
+            if (isStrike(userInputNumber, randomNumber)) {
                 strikeCount += 1;
             }
         }
         return strikeCount;
     }
 
+
     public int countBalls(RandomNumbers randomNumbers) {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
         for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
             Number userInputNumber = userNumberList.get(i);
-            if (randomNumberList.contains(userInputNumber) && !randomNumberList.get(i).equals(userInputNumber)) {
+            Number randomNumber = randomNumberList.get(i);
+
+            if (isBall(randomNumberList, userInputNumber, randomNumber)) {
                 ballCount += 1;
             }
         }
         return ballCount;
+    }
+
+    private boolean isStrike(Number userInputNumber, Number randomNumber) {
+        return userInputNumber.equals(randomNumber);
+    }
+
+    private boolean isBall(List<Number> randomNumberList, Number userInputNumber, Number randomNumber) {
+        return randomNumberList.contains(userInputNumber) && !isStrike(randomNumber, userInputNumber);
     }
 }
