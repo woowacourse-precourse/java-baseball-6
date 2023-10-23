@@ -5,6 +5,7 @@ import baseball.entity.User;
 import baseball.view.SystemInputMessage;
 import baseball.view.SystemOutputMessage;
 import camp.nextstep.edu.missionutils.Console;
+import global.Constants;
 import global.utils.ParseUtil;
 import global.utils.RandomUtil;
 
@@ -15,6 +16,7 @@ public class BaseballService {
         User user;
         ParseUtil parseUtil;
         SystemOutputMessage systemOutputMessage = new SystemOutputMessage();
+        Constants constants = new Constants();
 
         public void initGame(int size, int start, int end) {
                 SystemInputMessage.showInitGameMessage();
@@ -68,5 +70,18 @@ public class BaseballService {
 
         public void endGame() {
                 systemOutputMessage.showGameOverMessage();
+        }
+
+        public boolean askRetry() {
+                SystemInputMessage.showRetryMessage();
+                return getInputNumber() == constants.RETRY;
+        }
+
+        private int getInputNumber() {
+                int input = Integer.parseInt(Console.readLine());
+                if (input == 0 || input > constants.GAME_OVER) {
+                        throw new IllegalArgumentException();
+                }
+                return input;
         }
 }

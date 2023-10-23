@@ -12,6 +12,7 @@ public class BaseballController {
                 initGame(constants.SIZE, constants.START_NUMBER, constants.END_NUMBER);
                 startGame();
                 endGame();
+                retry();
         }
 
         private void initGame(int size, int start, int end) {
@@ -24,6 +25,10 @@ public class BaseballController {
 
         private void endGame() {
                 baseballService.endGame();
+        }
+
+        private void retry() {
+                if(baseballService.askRetry()) run();
         }
 
 
