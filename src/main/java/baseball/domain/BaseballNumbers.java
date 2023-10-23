@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BaseballNumbers {
     private static final int ZERO_COUNT = 0;
@@ -12,15 +11,12 @@ public class BaseballNumbers {
         this.baseballNumbers = baseballNumbers;
     }
 
-    public BaseballNumbers(String input) {
-        this.baseballNumbers = convertToNumbers(input);
-    }
-
-    private List<BaseballNumber> convertToNumbers(String input) {
-        return input.chars()
+    public static BaseballNumbers convertToBaseballNumbers(String input) {
+        List<BaseballNumber> baseballNumbers = input.chars()
                 .mapToObj(Character::getNumericValue)
                 .map(BaseballNumber::new)
-                .collect(Collectors.toList());
+                .toList();
+        return new BaseballNumbers(baseballNumbers);
     }
 
     public Score calculateScore(BaseballNumbers inputBaseballNumbers) {
