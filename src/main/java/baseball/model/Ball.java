@@ -1,5 +1,8 @@
 package baseball.model;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class Ball {
     public static final int START_RANGE = 1;
     public static final int END_RANGE = 9;
@@ -32,4 +35,24 @@ public class Ball {
     public int hashCode() {
         return getNum();
     }
+
+    public List<BallStatus> checkBalls(int thisIndex, Balls balls) {
+        return IntStream.range(0, balls.size())
+                .mapToObj((targetIndex) ->
+                        this.checkBall(balls.getBall(targetIndex), thisIndex, targetIndex))
+                .toList();
+    }
+
+    private BallStatus checkBall(Ball targetBall, int thisIndex, int targetIndex) {
+        if (this.equals(targetBall) && thisIndex == targetIndex) {
+            return BallStatus.STRIKE;
+        }
+
+        if (this.equals(targetBall) && thisIndex != targetIndex) {
+            return BallStatus.BALL;
+        }
+
+        return BallStatus.NOTHING;
+    }
+
 }

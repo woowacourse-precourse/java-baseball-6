@@ -24,4 +24,12 @@ public class Balls {
     public List<Ball> getBalls() {
         return balls;
     }
+
+    public int size() {
+        return balls.size();
+    }
+
+    public Ball getBall(int i) {
+        return balls.get(i);
+    }
 }
