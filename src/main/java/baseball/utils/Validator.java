@@ -1,11 +1,17 @@
 package baseball.utils;
 
-import baseball.MessageType;
+import baseball.enums.MessageType;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
-    private static final int NUMBER_LENGTH = 3;
+    public static final int NUMBER_LENGTH = 3;
+
+    public static void validateInput(String input) {
+        validateLength(input);
+        validateRange(input);
+        validateNoDuplication(input);
+    }
 
     public static void validateLength(String input) {
         if (input.length() != NUMBER_LENGTH) {
@@ -30,12 +36,6 @@ public class Validator {
         if (inputs.size() != input.length()) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 중복 되지 않는 정수를 입력해주세요.");
         }
-    }
-
-    public static void validateInput(String input) {
-        validateLength(input);
-        validateRange(input);
-        validateNoDuplication(input);
     }
 
     public static void validateEndInput(String input) {
