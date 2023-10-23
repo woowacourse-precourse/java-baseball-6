@@ -1,15 +1,48 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computer = new ArrayList<>();
-        getRandomsNumber(computer);
-        System.out.println(computer);
+        List<Integer> answerNumber= new ArrayList<>();
+        getRandomsNumber(answerNumber);
+        System.out.println(answerNumber);
+        System.out.println(Constant.START_MESSAGE);
+        System.out.print(Constant.INPUT_MESSAGE);
+        String userInput = readLine();
+        validateInput(userInput);
+        System.out.println(userInput);
+    }
+
+    public static void validateInput(String userInput) {
+        if (!userInput.matches("\\d+")) {
+            throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
+        }
+
+        if (userInput.length() != Constant.NUMBER_COUNT) {
+            throw new IllegalArgumentException("입력이 숫자 3개가 아닙니다.");
+        }
+
+        if (hasDuplicateDigits(userInput)) {
+            throw new IllegalArgumentException("입력에 중복된 숫자가 있습니다.");
+        }
+    }
+
+    public static boolean hasDuplicateDigits(String input) {
+        HashSet<Character> uniqueNumber = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            if (uniqueNumber.contains(c)) {
+                return true;
+            }
+            uniqueNumber.add(c);
+        }
+        return false;
     }
 
     private static void getRandomsNumber(List<Integer> computer) {
