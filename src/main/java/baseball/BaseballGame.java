@@ -1,24 +1,20 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-/**
- * 1. 변수 및 원시 타입 감싸는 거 생각 2. 일급 컬렉션
- */
 public class BaseballGame {
-    private final Map<Integer, Integer> computerNumber = new HashMap<>();
-    private Map<Integer, Integer> userNumber = new HashMap<>();
-    // 원시 타입 -> 클래스로 묶기
-//    private int ball = 0;
-//    private int strike = 0;
-    private final Count strike = new Count(0);
-    private final Count ball = new Count(0);
+    private final ComputerNumber computerNumber;
+    private final UserNumber userNumber;
+    private final Count strike;
+    private final Count ball;
+
+    public BaseballGame() {
+        this.computerNumber = new ComputerNumber();
+        this.userNumber = new UserNumber();
+        this.strike = new Count();
+        this.ball = new Count();
+    }
 
     /**
      * 게임 시작
@@ -32,7 +28,7 @@ public class BaseballGame {
      * 게임 실행 함수 : 컴퓨터 랜덤수 생성 -> 반복 (사용자 입력 -> 값 비교 -> 결과 출력) -> 재시작 여부
      */
     private void run() {
-        createComputerNumber();
+        computerNumber.createComputerNumber();
         do {
             userInput();
         } while (compareValues());
@@ -55,19 +51,6 @@ public class BaseballGame {
         throw new IllegalArgumentException(" 1 또는 2 를 입력해야합니다.");
     }
 
-    /**
-     * 컴퓨터 랜덤 수 생성 기능
-     */
-    private void createComputerNumber() {
-        int i = 1;
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.containsValue(randomNumber)) {
-                computerNumber.put(i, randomNumber);
-                i++;
-            }
-        }
-    }
 
     /**
      * 사용자 입력 받는 기능 입력 값으로 받는 수에 대한 예외 포함.
@@ -75,28 +58,21 @@ public class BaseballGame {
     private void userInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
-        if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException("입력값의 길이는 3이어야 합니다.");
-        }
+        sizeValidate(inputNumber);
+        duplicateValidate(inputNumber);
+        userNumber.inputUserNumber(inputNumber);
+    }
+
+    private void duplicateValidate(String inputNumber) {
         if (inputNumber.chars().distinct().count() != inputNumber.length()) {
             throw new IllegalArgumentException("중복된 값이 포함되었습니다.");
         }
-        userNumber = inputUserNumber(inputNumber);
     }
 
-    private static Map<Integer, Integer> inputUserNumber(String inputNumber) {
-        return IntStream.rangeClosed(1, 3)
-                .boxed()
-                .collect(Collectors.toMap(
-                        i -> i,
-                        i -> {
-                            char digit = inputNumber.charAt(i - 1);
-                            if (digit <= 48 || digit >= 58) {
-                                throw new IllegalArgumentException("0 또는 숫자가 아닌 값이 포함되었습니다.");
-                            }
-                            return Character.getNumericValue(digit);
-                        }
-                ));
+    private void sizeValidate(String inputNumber) {
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException("입력값의 길이는 3이어야 합니다.");
+        }
     }
 
     /**
@@ -107,16 +83,15 @@ public class BaseballGame {
     private boolean compareValues() {
         for (int i = 0; i < 3; i++) {
             // Strike case
-            if (userNumber.containsValue(computerNumber.get(i + 1)) && Objects.equals(userNumber.get(i + 1),
-                    computerNumber.get(i + 1))) {
-//                strike++;
+            if (userNumber.getValue().containsValue(computerNumber.getValue().get(i + 1)) && Objects.equals(
+                    userNumber.getValue().get(i + 1),
+                    computerNumber.getValue().get(i + 1))) {
                 strike.addValue();
-
             }
             // ball case
-            if (userNumber.containsValue(computerNumber.get(i + 1)) && !Objects.equals(userNumber.get(i + 1),
-                    computerNumber.get(i + 1))) {
-//                ball++;
+            if (userNumber.getValue().containsValue(computerNumber.getValue().get(i + 1)) && !Objects.equals(
+                    userNumber.getValue().get(i + 1),
+                    computerNumber.getValue().get(i + 1))) {
                 ball.addValue();
             }
         }
@@ -129,32 +104,39 @@ public class BaseballGame {
      * @return true : 숫자를 맞추기 위해 입력 반복 ,false: 정답인 경우
      */
     private boolean printResult() {
-        if (strike.getValue() == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            clearBallData();
-            computerNumber.clear();
-            userNumber.clear();
-            return false;
-        }
+        // 볼, 스트라이크 혼합 경우
         if (ball.getValue() != 0 && strike.getValue() != 0) {
             System.out.println(ball.getValue() + "볼 " + strike.getValue() + "스트라이크");
-            clearBallData();
-            return true;
         }
+        // 스트라이크만 있을 경우
         if (ball.getValue() == 0 && strike.getValue() != 0) {
             System.out.println(strike.getValue() + "스트라이크");
-            clearBallData();
-            return true;
+            // 모두 맞췄을 때
+            if (strike.getValue() == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                clearBallData();
+                clearNumberData();
+                return false;
+            }
         }
-        if (ball.getValue() != 0) {
+        // 볼만 있을 경우
+        if (ball.getValue() != 0 && strike.getValue() == 0) {
             System.out.println(ball.getValue() + "볼 ");
-            clearBallData();
-            return true;
         }
-        System.out.println("낫싱");
+        // 낫씽일 경우
+        if (ball.getValue() == 0 && strike.getValue() == 0) {
+            System.out.println("낫싱");
+        }
         clearBallData();
         return true;
+    }
+
+    /**
+     * 랜덤 수 및 사용자 입력 값 clear
+     */
+    private void clearNumberData() {
+        computerNumber.getValue().clear();
+        userNumber.getValue().clear();
     }
 
     /**
@@ -164,6 +146,5 @@ public class BaseballGame {
         ball.setValue(0);
         strike.setValue(0);
     }
-
 
 }

@@ -4,8 +4,8 @@ public class Count {
 
     private int value;
 
-    public Count (int value) {
-        this.value = value;
+    public Count() {
+        this.value = 0;
     }
 
     public int getValue() {
