@@ -48,10 +48,10 @@ public class Game {
     }
 
     private static void checkNumeric(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
