@@ -20,6 +20,7 @@ public class Computer {
                 computerNumber.add(randomNumber);
             }
         }
+        System.out.println(computerNumber);
     }
 
     public List<Integer> getComputerNumber() {
