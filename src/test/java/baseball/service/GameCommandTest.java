@@ -21,8 +21,8 @@ class GameCommandTest {
 	@DisplayName("게임 종료/재시작 입력 검증 통과")
 	void givenInput_whenValidateGameCommand_thenThrowIllegalArgumentException(String input) {
 		assertThatThrownBy(() -> GameCommand.validate(input))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("1(재시작) 또는 2(종료)를 입력해주세요.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("1(재시작) 또는 2(종료)를 입력해주세요.");
 	}
 
 }

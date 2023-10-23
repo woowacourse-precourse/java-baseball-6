@@ -10,8 +10,7 @@ class ComputerTest {
 	@Test
 	@DisplayName("컴퓨터의 Balls 생성")
 	void whenCreateComputer_thenNoException() {
-		assertThatNoException()
-			.isThrownBy(Computer::new);
+		assertThatNoException().isThrownBy(Computer::new);
 	}
 
 }

@@ -30,24 +30,24 @@ class BallsTest {
 	@DisplayName("3자리 게임 숫자 검증 예외 처리: 범위를 벗어난 경우")
 	void givenNumbers_whenValidateNumberRange_thenThrowIllegalArgumentException() {
 		assertThatThrownBy(() -> new Balls(List.of(1, 0, 9)))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("1 부터 9 사이의 숫자가 아닙니다.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("1 부터 9 사이의 숫자가 아닙니다.");
 	}
 
 	@Test
 	@DisplayName("3자리 게임 숫자 검증 예외 처리: 3개의 숫자가 아닌 경우")
 	void givenNumbers_whenValidateSize_thenThrowIllegalArgumentException() {
 		assertThatThrownBy(() -> new Balls(List.of(1, 2)))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("3개의 숫자가 아닙니다.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("3개의 숫자가 아닙니다.");
 	}
 
 	@Test
 	@DisplayName("3자리 게임 숫자 검증 예외 처리: 중복 숫자가 존재하는 경우")
 	void givenNumbers_whenValidateDuplication_thenThrowIllegalArgumentException() {
 		assertThatThrownBy(() -> new Balls(List.of(1, 9, 1)))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("중복된 숫자가 존재합니다.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("중복된 숫자가 존재합니다.");
 	}
 
 }

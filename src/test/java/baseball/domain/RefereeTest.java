@@ -41,9 +41,9 @@ class RefereeTest {
 
 	private static Stream<Arguments> compareData() {
 		return Stream.of(
-			Arguments.of(List.of(1, 4, 5), 1, 0),
-			Arguments.of(List.of(2, 4, 5), 0, 1),
-			Arguments.of(List.of(1, 3, 5), 1, 1)
+				Arguments.of(List.of(1, 4, 5), 1, 0),
+				Arguments.of(List.of(2, 4, 5), 0, 1),
+				Arguments.of(List.of(1, 3, 5), 1, 1)
 		);
 	}
 
@@ -63,10 +63,10 @@ class RefereeTest {
 
 	private static Stream<Arguments> notifyGameResultData() {
 		return Stream.of(
-			Arguments.of(List.of(1, 4, 5), "1스트라이크"),
-			Arguments.of(List.of(2, 4, 5), "1볼"),
-			Arguments.of(List.of(1, 3, 5), "1볼 1스트라이크"),
-			Arguments.of(List.of(4, 5, 6), "낫싱")
+				Arguments.of(List.of(1, 4, 5), "1스트라이크"),
+				Arguments.of(List.of(2, 4, 5), "1볼"),
+				Arguments.of(List.of(1, 3, 5), "1볼 1스트라이크"),
+				Arguments.of(List.of(4, 5, 6), "낫싱")
 		);
 	}
 

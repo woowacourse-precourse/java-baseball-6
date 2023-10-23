@@ -18,8 +18,8 @@ class PlayerTest {
 	@ValueSource(strings = {"12삼", "1@3", "12e"})
 	void givenInput_whenValidateNumber_thenThrowIllegalArgumentException(String input) {
 		assertThatThrownBy(() -> new Player(input))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("숫자가 아닙니다.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("숫자가 아닙니다.");
 	}
 
 }

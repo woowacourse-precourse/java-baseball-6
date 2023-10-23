@@ -19,7 +19,7 @@ public class Computer {
 		List<Integer> numbers = new ArrayList<>();
 		while (numbers.size() < BallsRule.BALLS_SIZE.getValue()) {
 			int randomNumber = Randoms.pickNumberInRange(
-				BallsRule.MIN_NUMBER.getValue(), BallsRule.MAX_NUMBER.getValue());
+					BallsRule.MIN_NUMBER.getValue(), BallsRule.MAX_NUMBER.getValue());
 			if (!numbers.contains(randomNumber)) {
 				numbers.add(randomNumber);
 			}

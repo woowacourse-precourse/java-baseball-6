@@ -18,7 +18,7 @@ public class Ball {
 
 	public boolean isBall(final Ball ball) {
 		return this.ballNumber.equals(ball.ballNumber)
-			&& !this.ballPosition.equals(ball.ballPosition);
+				&& !this.ballPosition.equals(ball.ballPosition);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class Ball {
 		}
 		Ball ball = (Ball)o;
 		return Objects.equals(ballNumber, ball.ballNumber)
-			&& Objects.equals(ballPosition, ball.ballPosition);
+				&& Objects.equals(ballPosition, ball.ballPosition);
 	}
 
 	@Override

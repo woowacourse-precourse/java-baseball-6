@@ -32,10 +32,10 @@ class GameResultMessageTest {
 
 	private static Stream<Arguments> createMessageData() {
 		return Stream.of(
-			Arguments.of(new Balls(List.of(2, 8, 9)), "1볼"),
-			Arguments.of(new Balls(List.of(8, 2, 9)), "1스트라이크"),
-			Arguments.of(new Balls(List.of(9, 2, 1)), "1볼 1스트라이크"),
-			Arguments.of(new Balls(List.of(7, 8, 9)), "낫싱")
+				Arguments.of(new Balls(List.of(2, 8, 9)), "1볼"),
+				Arguments.of(new Balls(List.of(8, 2, 9)), "1스트라이크"),
+				Arguments.of(new Balls(List.of(9, 2, 1)), "1볼 1스트라이크"),
+				Arguments.of(new Balls(List.of(7, 8, 9)), "낫싱")
 		);
 	}
 

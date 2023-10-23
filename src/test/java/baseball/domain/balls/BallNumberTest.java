@@ -42,8 +42,8 @@ class BallNumberTest {
 	@DisplayName("1자리 게임 숫자의 숫자 검증 예외 처리: 숫자 범위")
 	void givenNumber_whenValidate_thenThrownIllegalArgumentException(int number) {
 		assertThatThrownBy(() -> new BallNumber(number))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("1 부터 9 사이의 숫자가 아닙니다.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("1 부터 9 사이의 숫자가 아닙니다.");
 	}
 
 }

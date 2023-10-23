@@ -43,8 +43,8 @@ class BallPositionTest {
 	@DisplayName("1자리 게임 숫자의 위치 검증 예외 처리: 위치 범위")
 	void givenWrongPosition_whenValidate_thenThrowIllegalArgumentException(int position) {
 		assertThatThrownBy(() -> new BallPosition(position))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("0 부터 2 사이의 숫자가 아닙니다.");
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("0 부터 2 사이의 숫자가 아닙니다.");
 	}
 
 }
