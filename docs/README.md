@@ -4,7 +4,7 @@
    - 게임시작 문구 출력
       - "숫자 야구 게임을 시작합니다."
 ## 2. 컴퓨터 숫자 생성
-   - `gerateUnique3DigitNum()`메서드 구현
+   - `generateUnique3DigitNum()`메서드 구현
      - 1에서 9까지의 숫자중 서로 다른 세자리 숫자를 생성한 리스트를 만든다.
      - `camp.nextstep.edu.missionutils.Randoms` 의 `pickNumberInRange()`를 사용하여 랜덤넘버를 생성.
      - 생성된 랜덤넘버의 중복성을 검사하고 리스트에 추가
@@ -27,6 +27,7 @@
       - 인덱스가 같고 값도 같을경우 strike 개수를 추가한다.
 ## 6. 게임 결과 출력
    - `printGameResult()` 메서드 구현
+     - ball의 개수와 strike의 개수를 입력받아 게임의 결과를 출력
      - ball의 개수와 strike의 개수가 모두 0일경우 "낫싱" 출력
      - ball의 개수만 0일 경우 "(strike개수)스트라이크" 출력
      - strike의 개수만 0일 경우 "(ball개수)볼" 출력
