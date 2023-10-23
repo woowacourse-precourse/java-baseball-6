@@ -30,7 +30,7 @@ public class GameController {
         boolean roundOngoing = ROUND_ONGOING;
         generateAnswer();
         while (roundOngoing) {
-            System.out.println(INPUT_NUMBER_MESSAGE);
+            System.out.print(INPUT_NUMBER_MESSAGE);
             Guess playerGuess = player.makeGuess();
             String resultString = generateResultString(playerGuess);
             System.out.println(resultString);
