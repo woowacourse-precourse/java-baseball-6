@@ -19,8 +19,8 @@ package view;
 import vo.ResultBall;
 
 public class ResultView {
-    private int strike;
-    private int ball;
+    private static int strike;
+    private static int ball;
 
     public ResultView(ResultBall resultBall) {
         strike = resultBall.getStrike();
