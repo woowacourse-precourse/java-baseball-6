@@ -11,9 +11,9 @@ import java.util.List;
 
 
 public class Application {
-    public static void main(String[] args) {
 
-        // 랜덤으로 서로 다른 수 3개 생성
+    // 랜덤으로 서로 다른 수 3개 생성
+    public static List<Integer> getComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = pickNumberInRange(1, 9);
@@ -21,6 +21,12 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        return computer;
+    }
+
+    public static void main(String[] args) {
+
+        List<Integer> computer = getComputer();
 
         System.out.println(GAME_START.getMessage());
         String input;
@@ -38,14 +44,8 @@ public class Application {
                 System.out.println(NEW_GAME_OR_END.getMessage());
                 input = readLine();
                 answer = checkValidation.checkAnswerValidation(input); // 1 or 2 or -1
-                if (answer == 1) { // 게임 종료
-                    computer = new ArrayList<>();
-                    while (computer.size() < 3) {
-                        int randomNumber = pickNumberInRange(1, 9);
-                        if (!computer.contains(randomNumber)) {
-                            computer.add(randomNumber);
-                        }
-                    }
+                if (answer == 1) { // 새로운 게임 시작
+                    computer = getComputer();
                 }
             }
         }

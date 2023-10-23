@@ -32,15 +32,18 @@ public class Hint {
         if (strike == 3) {
             System.out.println(CORRECT_AND_END_THE_GAME.getMessage());
             return 1;
-        } else if (strike + ball == 0) {
+        }
+        if (strike + ball == 0) {
             sb.append(NOTHING.getMessage());
-        } else if (strike == 0) {
+        }
+        if (ball != 0) {
             sb.append(ball).append(BALL.getMessage());
-        } else if (ball == 0) {
+        }
+        if (strike != 0) {
+            if (ball != 0) {
+                sb.append(" ");
+            }
             sb.append(strike).append(STRIKE.getMessage());
-        } else {
-            sb.append(ball).append(BALL.getMessage()).append(" ")
-                    .append(strike).append(STRIKE.getMessage());
         }
         System.out.println(sb);
         return -1;
