@@ -13,12 +13,23 @@ public class GameProgressController {
 
     public void progressGame() {
         boolean progressState = true;
-
         while (progressState) {
             outputView.printGameStart();
             saveComputerGenerateNumbers();
             userGuessing();
+            progressState = userRestartOrExit(inputView.getUserRestartOrExitNumber());
         }
+    }
+
+    private boolean userRestartOrExit(String userInputString) {
+        int userInputRestartOrExitNumber = userInputValidator.userInputRestartOrExitValidate(userInputString);
+        if (userInputRestartOrExitNumber == 1) {
+            return true;
+        }
+        if (userInputRestartOrExitNumber == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 
     private void userGuessing() {
