@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public final class AnswerGenerator {
+final class AnswerGenerator {
     private static final int MIN = 1;
     private static final int MAX = 9;
 
-    public static int randomAnswer() {
+    static int randomAnswer() {
         Set<Integer> randomNumbers = new HashSet<>();
         while (randomNumbers.size() < BaseBall.DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
@@ -19,9 +19,5 @@ public final class AnswerGenerator {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
         return Integer.parseInt(randomNumberString);
-    }
-
-    public static int generate(String wantAnswer) {
-        return Integer.parseInt(wantAnswer);
     }
 }
