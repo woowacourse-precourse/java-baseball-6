@@ -24,16 +24,16 @@ public class ComputerNumbers {
 
     private List<Integer> createComputerNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        do {
+        while (!isValidDigit(randomNumbers)) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (isNumbersNotDuplicate(randomNumbers, randomNumber)) {
+            if (isNumberNotDuplicate(randomNumbers, randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
-        } while(!isValidDigit(randomNumbers));
+        }
         return randomNumbers;
     }
 
-    private boolean isNumbersNotDuplicate(List<Integer> numbers, int number) {
+    private boolean isNumberNotDuplicate(List<Integer> numbers, int number) {
         return !numbers.contains(number);
     }
 
