@@ -24,8 +24,8 @@
 4. controller
    - Controller.java: 야구 게임의 주요 로직 제어
 
-5. exception
-   - InvalidInputException.java: 유효하지 않은 입력에 대한 예외처리
+5. util
+   - InputValidator : 입력에 대한 유효성 검사
 
 6. constants
    - Constant.java: 상수값 저장
