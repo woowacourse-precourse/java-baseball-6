@@ -6,7 +6,7 @@ abstract class NumberFromUser<T> {
 
     protected T value;
 
-    public T getValue(String msg) throws IllegalArgumentException {
+    public T getValue(OutMessage msg) throws IllegalArgumentException {
         final String input = getInputString(msg);
         value = convertToReturnType(input);
         if (!validate()) {
@@ -16,8 +16,8 @@ abstract class NumberFromUser<T> {
         return value;
     }
 
-    protected String getInputString(String msg) {
-        System.out.print(msg);
+    protected String getInputString(OutMessage msg) {
+        System.out.print(msg.getMsg());
         return Console.readLine();
     }
 
