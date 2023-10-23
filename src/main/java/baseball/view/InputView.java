@@ -13,4 +13,10 @@ public class InputView {
     public void startGame() {
         System.out.println(START_MESSAGE);
     }
+
+    public String inputPlayerNumber() {
+        System.out.println(INPUT_MESSAGE);
+        String playerNumber = Console.readLine();
+        return playerNumber;
+    }
 }
