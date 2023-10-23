@@ -11,12 +11,12 @@ public class RandomNumbersGenerator {
     private static final int NUMBER_RANGE_END = 9;
 
     public ArrayList<Integer> generateNumbers() {
-        HashSet<Integer> setcomputernumbers = new HashSet<>();
-        while (setcomputernumbers.size() < COMPUTERNUMBERS_LENGTH) {
-            int randomnuber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
-            setcomputernumbers.add(randomnuber);
+        HashSet<Integer> setComputerNumbers = new HashSet<>();
+        while (setComputerNumbers.size() < COMPUTERNUMBERS_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
+            setComputerNumbers.add(randomNumber);
         }
-        return new ArrayList<>(setcomputernumbers);
+        return new ArrayList<>(setComputerNumbers);
     }
 
 }
