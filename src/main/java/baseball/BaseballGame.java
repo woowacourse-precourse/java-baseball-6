@@ -10,27 +10,30 @@ public class BaseballGame {
     public int strike = 0, ball = 0;
     Validator validator = new Validator();
 
-    public void startGame() {
-        setGame();
-        runGame();
-    }
-    public void setGame() {
+    public void startSystem() {
         sayStart();
+        runGames();
+        sayEnd();
     }
-    public void runGame(){
+    public void runGames(){
+        runOneGame();
+        if (determineRestart()) {
+            runGames();
+            return; // sayEnd 중복 호출 방지
+        }
+    }
+    public void runOneGame() {
         setBallStrikeZero();
         List<Integer> computer = getRandomThreeNum();
         while (strike != 3) {
-            setBallStrikeZero();
-            List<Integer> user = getThreeNum();
-            calculateBallStrike(user, computer);
-            sayBallStrike(ball, strike);
+            runOneRound(computer);
         }
-        if (determineRestart()) {
-            runGame();
-            return; // sayEnd 중복 호출 방지
-        }
-        sayEnd();
+    }
+    public void runOneRound(List<Integer> computer) {
+        setBallStrikeZero();
+        List<Integer> user = getThreeNum();
+        calculateBallStrike(user, computer);
+        sayBallStrike(ball, strike);
     }
     // 게임 시작
     public void sayStart(){
