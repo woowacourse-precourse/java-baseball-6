@@ -12,6 +12,7 @@ public class User {
     }
 
     public void inputNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
         String[] strArr = str.split("");
         for (String s : strArr) {
