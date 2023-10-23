@@ -18,6 +18,7 @@ public class BaseballGame {
         sayStart();
     }
     public void runGame(){
+        setBallStrikeZero();
         List<Integer> computer = getRandomThreeNum();
         while (strike != 3) {
             setBallStrikeZero();
@@ -25,7 +26,6 @@ public class BaseballGame {
             calculateBallStrike(user, computer);
             sayBallStrike(ball, strike);
         }
-        strike = 0; ball = 0;
         if (determineRestart()) {
             runGame();
             return; // sayEnd 중복 호출 방지
@@ -36,12 +36,12 @@ public class BaseballGame {
     public void sayStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
-    // strike, ball 0으로 초기화하기
+    // strike, ball 0으로 초기화
     public void setBallStrikeZero() {
         ball = 0;
         strike = 0;
     }
-    // computer로부터 input 받기
+    // 1~9 수 중 3개의 중복되지 않은 수 리턴
     public List<Integer> getRandomThreeNum(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -53,7 +53,7 @@ public class BaseballGame {
         System.out.println(computer);
         return computer;
     }
-    // 유저로부터 3자리 수 받기
+    //  1~9 수 중 중복되지 않은 수 3개 input 받기
     public List<Integer> getThreeNum() throws IllegalArgumentException{
         List<Integer> user = new ArrayList<>();
 
@@ -75,14 +75,20 @@ public class BaseballGame {
     public void calculateBallStrike(List<Integer>user, List<Integer>computer){
         setBallStrikeZero();
         for (int i=0; i<user.size(); i++) {
-            for (int j=0; j< computer.size(); j++) {
-                if (user.get(i).equals(computer.get(j))) {
-                    if (i == j) {
-                        strike += 1;
-                    } else {
-                        ball += 1;
-                    }
-                }
+            int number = user.get(i);
+            determineBallOrStrike(number, i, computer);
+        }
+    }
+    // ball인지 strike인지 판별 (같은 수 찾으면 더이상 볼 필요 없으므로 반복문 탈출)
+    public void determineBallOrStrike(Integer number, int i, List<Integer>computer) {
+        for (int j=0; j<computer.size(); j++) {
+            Integer numberInList = computer.get(j);
+            if (number.equals(numberInList) && i == j) {
+                strike += 1;
+                break;
+            } else if (number.equals(numberInList) && i != j){
+                ball += 1;
+                break;
             }
         }
     }
