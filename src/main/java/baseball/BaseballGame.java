@@ -37,7 +37,7 @@ public class BaseballGame {
     }
 
     private void validateRetryExit(String playerChoice) {
-        if (!Objects.equals(playerChoice, RETRY_NUMBER) ||
+        if (!Objects.equals(playerChoice, RETRY_NUMBER) &&
                 !Objects.equals(playerChoice, EXIT_NUMBER)) {
             throw new IllegalArgumentException("1, 2만 입력할 수 있습니다.");
         }
