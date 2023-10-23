@@ -27,7 +27,6 @@ public class Controller {
         System.out.println("컴퓨터: " + computerNumber);
 
         while (!gameResult.isGameEnded()) {
-
             List<Integer> playerNumber = getPlayerInput();
 
             gameResult = model.evaluatePlayerInput(computerNumber, playerNumber);
@@ -36,7 +35,6 @@ public class Controller {
 
             gameResult.resetCounts();
         }
-
         askForRestart(gameResult);
     }
 
