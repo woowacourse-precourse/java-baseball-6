@@ -10,11 +10,6 @@ public class Hint {
         this.ball = ball;
     }
 
-    public Hint() {
-        this.strike = 0;
-        this.ball = 0;
-    }
-
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) {
@@ -28,14 +23,6 @@ public class Hint {
         } else {
             throw new RuntimeException("볼과 스트라이크가 음수입니다.");
         }
-    }
-
-    public void increaseBall() {
-        ball++;
-    }
-
-    public void increaseStrike() {
-        strike++;
     }
 
     public boolean isAnswer() {
