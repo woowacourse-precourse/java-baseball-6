@@ -23,4 +23,8 @@ public class baseballView {
     public void resultConsole(String result) { //결과 판단 부분
         System.out.println(result);
     }
+
+    public void closeConsole() {
+        Console.close();
+    }
 }

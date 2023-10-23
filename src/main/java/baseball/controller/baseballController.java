@@ -25,6 +25,7 @@ public class baseballController {
                 flag = false;
             }
         }
+        view.closeConsole();
     }
 
     public void playBall() {
@@ -41,6 +42,7 @@ public class baseballController {
                 break;
             }
         }
+
     }
 
     private void raiseException(String insert) { //예외처리 검증
