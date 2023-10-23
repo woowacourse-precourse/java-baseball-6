@@ -6,30 +6,15 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: inputview랑 outputview 분리
 public class GameView {
     public void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public List<Integer> getNumbers() {
-
+    public String getNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        String line = Console.readLine();
-        validateNumbers(line);
-
-        List<Integer> res = new ArrayList<>();
-        for(char c : line.toCharArray()) {
-            res.add(Character.getNumericValue(c));
-        }
-
-        return res;
-
-    }
-
-    private void validateNumbers(String numbers) {
-        for(char c : numbers.toCharArray()) {
-            if(!Character.isDigit(c)) throw new IllegalArgumentException();
-        }
+        return Console.readLine();
     }
 
     public void printScore(BaseballScore score) {

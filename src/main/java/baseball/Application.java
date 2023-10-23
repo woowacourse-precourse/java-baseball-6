@@ -4,6 +4,7 @@ import baseball.Domain.Baseball;
 import baseball.Domain.BaseballScore;
 import baseball.Service.GameService;
 import baseball.View.GameView;
+import baseball.utils.InputConverter;
 
 import java.util.List;
 
@@ -34,8 +35,8 @@ public class Application {
     private void cycle(Baseball base) {
 
         while(true) {
-            List<Integer> number = gameView.getNumbers();
-            Baseball now = gameService.buildBaseball(number);
+            List<Integer> numbers = InputConverter.convertToIntegerList(gameView.getNumbers());
+            Baseball now = gameService.buildBaseball(numbers);
             BaseballScore score = base.compare(now);
             gameView.printScore(score);
 
