@@ -16,13 +16,20 @@ public class BaseBallOutputDevice {
 
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println(EMPTY_MESSAGE);
-        } else if (ballCount == 0) {
-            System.out.println(strikeCount + STRIKE_MESSAGE);
-        } else if (strikeCount == 0) {
-            System.out.println(ballCount + BALL_MESSAGE);
-        } else {
-            System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
+            return;
         }
+
+        if (ballCount == 0) {
+            System.out.println(strikeCount + STRIKE_MESSAGE);
+            return;
+        }
+
+        if (strikeCount == 0) {
+            System.out.println(ballCount + BALL_MESSAGE);
+            return;
+        }
+
+        System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
     }
 
     public void printStartMessage() {
