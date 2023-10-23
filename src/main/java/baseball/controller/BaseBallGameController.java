@@ -22,24 +22,25 @@ public class BaseBallGameController implements Game {
 
         StringBuilder result = new StringBuilder();
         if (report.haveBall()) {
-            writeBall(report, result);
+            result.append(writeBall(report));
         }
 
         if (report.haveStrike()) {
-            writeStrike(report, result);
+            result.append(writeStrike(report));
         }
 
         return result.toString();
     }
 
-    private void writeBall(BaseBallResult execution, StringBuilder result) {
-        result.append(execution.getBall()).append(Hint.BALL);
+    private String writeBall(BaseBallResult report) {
+        return String.format("%d%s", report.getBall(), Hint.BALL);
     }
 
-    private void writeStrike(BaseBallResult execution, StringBuilder result) {
-        if (!result.isEmpty()) {
-            result.append(" ");
+    private String writeStrike(BaseBallResult report) {
+        String result = "";
+        if (report.haveBall()) {
+            result = " ";
         }
-        result.append(execution.getStrike()).append(Hint.STRIKE);
+        return result + String.format("%d%s", report.getStrike(), Hint.STRIKE);
     }
 }
