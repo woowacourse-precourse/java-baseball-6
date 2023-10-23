@@ -9,10 +9,10 @@ public class GameView {
         return Console.readLine();
     }
     public static void printStrike(){
-        System.out.println("스트라이크");
+        System.out.println("스트라이크 ");
     }
     public static void printBall(){
-        System.out.println("볼");
+        System.out.println("볼 ");
     }
     public static void printNothingNumber(){
         System.out.println("낫싱");
