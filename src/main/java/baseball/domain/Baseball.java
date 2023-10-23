@@ -60,8 +60,7 @@ public class Baseball {
         for (int i = 0; i < insertUserNumber.size(); i++) {
             int currentComputerNumber = computerNumber.get(i);
             int currentUserNumber = insertUserNumber.get(i);
-            if (!checkStrike(currentComputerNumber, currentUserNumber)
-                    && computerNumber.contains(currentUserNumber)) {
+            if (!checkStrike(currentComputerNumber, currentUserNumber) && computerNumber.contains(currentUserNumber)) {
                 ballCount++;
             }
         }

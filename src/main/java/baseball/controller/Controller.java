@@ -34,8 +34,7 @@ public class Controller {
 
     private void init() {
         baseball = new Baseball();
-        List<Integer> insertComputerNumber = baseball.getComputerNumber();
-        System.out.println("insertComputerNumber = " + insertComputerNumber);
+        baseball.getComputerNumber();
         OutputView.printStartGame();
     }
 
@@ -74,7 +73,7 @@ public class Controller {
                 int convertInt = Integer.parseInt(userInput);
                 userAnswer.add(convertInt);
             } catch (NumberFormatException e) {
-                throw new NumberFormatException(ErrorMessage.USER_INSERT_ONLY_NUMBER.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.USER_INSERT_ONLY_NUMBER.getMessage());
             }
         }
         return userAnswer;
