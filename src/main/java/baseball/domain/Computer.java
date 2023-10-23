@@ -11,44 +11,38 @@ public class Computer {
         this.baseballNumber = baseballNumber;
     }
 
-    public int countStrikes(String player) {
+    public int countStrikes(String playerBaseballNumber) {
         int count = 0;
-
-        for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
-            char targetNumber = player.charAt(i);
-
-            if (isStrike(targetNumber, i)) {
+        for (int index = 0; index < BASEBALL_NUMBERS_SIZE; index++) {
+            char targetNumber = playerBaseballNumber.charAt(index);
+            if (isStrike(targetNumber, index)) {
                 count += 1;
             }
         }
-
         return count;
     }
 
-    public int countBalls(String player) {
+    public int countBalls(String playerBaseballNumber) {
         int count = 0;
-
-        for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
-            int findIndex = findNumberIndex(player, i);
-
-            if (isBall(findIndex, i)) {
+        for (int index = 0; index < BASEBALL_NUMBERS_SIZE; index++) {
+            int findIndex = findBaseballNumberIndex(playerBaseballNumber, index);
+            if (isBall(findIndex, index)) {
                 count += 1;
             }
         }
-
         return count;
     }
 
-    private boolean isBall(int target, int i) {
-        return target != INVALID_INDEX && target != i;
+    private boolean isBall(int targetNumber, int index) {
+        return targetNumber != INVALID_INDEX && targetNumber != index;
     }
 
-    private boolean isStrike(int target, int i) {
-        return target == baseballNumber.charAt(i);
+    private boolean isStrike(int targetNumber, int index) {
+        return targetNumber == this.baseballNumber.charAt(index);
     }
 
-    private int findNumberIndex(String player, int i) {
-        char targetNumber = player.charAt(i);
+    private int findBaseballNumberIndex(String playerBaseballNumber, int index) {
+        char targetNumber = playerBaseballNumber.charAt(index);
         return baseballNumber.indexOf(targetNumber);
     }
 }
