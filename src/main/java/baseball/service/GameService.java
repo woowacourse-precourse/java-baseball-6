@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.domain.Computer;
-import baseball.domain.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -9,23 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Game {
-    private boolean endOrNot = true;
-    public Game(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+public class GameService {
+    private static boolean endOrNot = true;
+    public static void startGame(){
+        initStartGame();
         while(endOrNot) {
-            startGame();
+            startOneGame();
             exitGame();
         }
         System.out.println("게임 종료");
     }
 
-    public void startGame(){
+    public static void startOneGame(){
         Computer computer = new Computer();
         boolean oneGameFinished = false;
         List<Integer> computerNumber = computer.getComputerNumber();
         while(!oneGameFinished) {
-            //User user = new User();
             System.out.print("숫자를 입력해주세요 : ");
             ArrayList<Integer> userNumber = parsingInputNumber(InputView.Input());
             List<Integer> gameResult = playGame(computerNumber, userNumber);
@@ -34,7 +32,7 @@ public class Game {
         }
     }
 
-    public ArrayList<Integer> parsingInputNumber(String inputNumber){
+    public static ArrayList<Integer> parsingInputNumber(String inputNumber){
         // 예외 처리 Exception class 고려해 보기
         if(inputNumber.length() != 3)
             throw new IllegalArgumentException();
@@ -54,14 +52,14 @@ public class Game {
         return parsingNumber;
     }
 
-    public void exitGame(){
+    public static void exitGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         if(InputView.Input().equals("2")){
-            this.endOrNot = false;
+            endOrNot = false;
         }
     }
 
-    public List<Integer> playGame(List<Integer> computerNumber, List<Integer> userNumber){
+    public static List<Integer> playGame(List<Integer> computerNumber, List<Integer> userNumber){
         long strike = (int)IntStream.range(0, 3)
                 .filter(i -> computerNumber.get(i).equals(userNumber.get(i)))
                 .count();
@@ -71,5 +69,10 @@ public class Game {
                 .count();
 
         return List.of((int)strike, (int)ball);
+    }
+
+    public static void initStartGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        endOrNot = true;
     }
 }
