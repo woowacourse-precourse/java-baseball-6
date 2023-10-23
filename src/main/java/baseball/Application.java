@@ -10,6 +10,7 @@ import java.util.List;
 public class Application {
     private int strikeValue = 0;
     private int ballValue = 0;
+
     public List<Integer> selectRandomNumber(List<Integer> computerNumber){
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -38,7 +39,6 @@ public class Application {
             }
         }
     }
-
 
     public boolean isVictory(int strikeValue){
         if (strikeValue == 3){
@@ -74,7 +74,6 @@ public class Application {
         }
     }
 
-
     public void checkDuplicateNumber(String myNumber){
         HashMap<String,Integer> countNumber = new HashMap<>();
         for(int i = 0; i < myNumber.length(); i++){
@@ -104,9 +103,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
         Application baseballGame = new Application();
-
-
-
         System.out.print("숫자를 입력해주세요 : ");
 
         List<Integer> computerNumber = new ArrayList<>();
@@ -131,7 +127,6 @@ public class Application {
                 if (startNumOrEndNum == 1){
                     computerNumber.clear();
                     computerNumber = baseballGame.selectRandomNumber(computerNumber);
-
                 }
                 isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
             }
