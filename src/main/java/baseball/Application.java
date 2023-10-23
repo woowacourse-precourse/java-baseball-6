@@ -40,7 +40,7 @@ public class Application {
             // 숫자를 3개 모두 맞혔을 경우 게임 종료
             if (strikeCount.equals(3)) {
                 printGameOverMessage();
-                if (restartOrFinish().equals(1)) {
+                if (restartOrFinish().equals("1")) {
                     continue;
                 } else {
                     break;
@@ -64,13 +64,13 @@ public class Application {
      *
      * @return 유저의 선택(번호)
      */
-    private static Integer restartOrFinish() {
-        Integer result;
+    private static String restartOrFinish() {
+        String result;
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            result = scanner.nextInt();
+            result = scanner.next();
 
-            if(result.equals(1) || result.equals(2)) break;
+            if(result.equals("1") || result.equals("2")) break;
             System.out.print("잘못 입력하셨습니다. 다시 입력해주세요. ");
         }
         return result;
