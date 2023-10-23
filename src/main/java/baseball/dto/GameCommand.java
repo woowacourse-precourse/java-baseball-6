@@ -20,6 +20,6 @@ public enum GameCommand {
                 return command;
             }
         }
-        throw new IllegalArgumentException(String.format(ERROR_INVALID_COMMAND+"%s",input));
+        throw new IllegalArgumentException(ERROR_INVALID_COMMAND);
     }
 }

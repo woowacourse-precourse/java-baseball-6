@@ -22,10 +22,11 @@ public class Score {
     }
 
     public String getScoreToString() {
-        StringBuilder sb = new StringBuilder();
-        if (ball == 0 && strike == 0)
+        if (ball == 0 && strike == 0) {
             return GAME_SCORE_NOTHING;
+        }
 
+        StringBuilder sb = new StringBuilder();
         if (ball > 0) {
             sb.append(String.format(GAME_SCORE_BALL, ball));
         }

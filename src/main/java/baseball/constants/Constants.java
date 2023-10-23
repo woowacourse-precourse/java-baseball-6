@@ -4,7 +4,8 @@ public final class Constants {
     public static final String ERROR_INVALID_NUMBER = "[ERROR] 잘못된 숫자를 입력하셨습니다. ";
     public static final String ERROR_INVALID_COMMAND = "[ERROR] 잘못된 커멘드 명령어를 입력하셨습니다.";
     public static final int NUMBER_SIZE = 3;
-
+    public static final int NUMBER_RANGE_START = 1;
+    public static final int NUMBER_RANGE_END = 9;
     public static final String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
     public static final String GAME_NUMBER_INPUT_STRING = "숫자를 입력해주세요 : ";
     public static final String GAME_END_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
