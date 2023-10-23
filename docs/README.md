@@ -85,7 +85,7 @@ Ball
 - isCorrectBall
 - getHint
 
-View (interface)
+View
 
 - print
 - printString
