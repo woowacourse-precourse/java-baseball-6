@@ -36,4 +36,18 @@ public class Player {
     }
   }
 
+  /**
+   * 사용자에게 재시작 여부를 1(재시작), 2(종료)
+   * 1, 2 이외의 숫자를 입력한 경우 IllegalArgumentException
+   */
+  public boolean getRestart(int input) throws IllegalArgumentException {
+    if (input == 1) {
+      return true;
+    } else if (input == 2) {
+      return false;
+    } else {
+      throw new IllegalArgumentException();
+    }
+  }
+
 }
