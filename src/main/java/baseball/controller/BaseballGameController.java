@@ -1,8 +1,10 @@
 package baseball.controller;
 
-import baseball.vo.Baseball;
+import java.util.ArrayList;
+
 import baseball.view.Hint;
 import baseball.view.UserChoice;
+import baseball.vo.Baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGameController {
@@ -100,11 +102,20 @@ public class BaseballGameController {
     }
 
     public void computerNumbering() {
-        StringBuilder computerNumberStr = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
+        ArrayList<Character> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            computerNumberStr.append(randomNumber);
+            char randomChar = (char) (randomNumber + '0');
+            if (!computerNumber.contains(randomChar)) {
+                computerNumber.add(randomChar);
+            }
         }
+
+        StringBuilder computerNumberStr = new StringBuilder();
+        for (char c : computerNumber) {
+            computerNumberStr.append(c);
+        }
+
         b.setComputerNumber(computerNumberStr.toString());
     }
 
