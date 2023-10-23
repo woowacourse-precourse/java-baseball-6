@@ -5,21 +5,22 @@ import java.util.List;
 
 public class Validation {
 
-    public void validateInputLength(String input, int value) {
+    public static void validateInputStyle(String input, int validLength) {
+        Validation.validateInputLength(input, validLength);
+        Validation.validateNumber(input);
+    }
+
+    public static void validateInputLength(String input, int value) {
         if (input.length() != value) {
             throw new IllegalArgumentException(value + " 자리를 입력해야 합니다.");
         }
     }
 
-    public void validateOneOrTwo(int inputNum) {
-        if (inputNum != 1 && inputNum != 2) {
-            throw new IllegalArgumentException("1 또는 2 만 입력해야 합니다.");
-        }
-    }
+    public static void validateNumber(String input) {
+        char[] arr = input.toCharArray();
 
-    public void validateNumber(List<String> input) {
-        for (String s : input) {
-            int inputNum = Integer.parseInt(s);
+        for (char c : arr) {
+            int inputNum = Character.getNumericValue(c);
 
             if (inputNum < 1 || inputNum > 9) {
                 throw new IllegalArgumentException("1 ~ 9 범위의 숫자만 입력해야 합니다.");
@@ -27,24 +28,22 @@ public class Validation {
         }
     }
 
-    public void validateDuplication(List<String> input) {
+    public static void validateOneOrTwo(int inputNum) {
+        if (inputNum != 1 && inputNum != 2) {
+            throw new IllegalArgumentException("1 또는 2 만 입력해야 합니다.");
+        }
+    }
+
+    public static void validateDuplication(String input) {
+        List<String> stringList = List.of(input.split(""));
         List<String> check = new ArrayList<>();
 
-        for (String s : input) {
+        for (String s : stringList) {
             if (check.contains(s)) {
                 throw new IllegalArgumentException("입력값은 중복될 수 없습니다.");
             }
 
             check.add(s);
         }
-    }
-
-    public void validateInputList(String input, int value) {
-        validateInputLength(input, value);
-
-        List<String> stringList = List.of(input.split(""));
-
-        validateNumber(stringList);
-        validateDuplication(stringList);
     }
 }

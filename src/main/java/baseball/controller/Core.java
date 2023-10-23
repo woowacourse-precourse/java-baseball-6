@@ -12,18 +12,19 @@ public class Core {
     public void run() {
         Generator generator = new Generator();
         View view = new View();
-        Validation validation = new Validation();
 
         List<Integer> answer = generator.generateAnswer(LIST_LEN);
+        System.out.println(answer);
         boolean playing = true;
 
         while (playing) {
             view.askNumber();
 
-            String listInput = Console.readLine();
-            validation.validateInputList(listInput, LIST_LEN);
+            String input = Console.readLine();
+            Validation.validateInputStyle(input, LIST_LEN);
+            Validation.validateDuplication(input);
 
-            List<Integer> inputList = generator.generateInputList(listInput);
+            List<Integer> inputList = generator.generateNumericInputList(input);
 
             Result result = makeResult(inputList, answer);
 

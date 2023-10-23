@@ -23,18 +23,16 @@ public class Game {
             view.showClosing();
             view.askOneOrTwo();
 
-            running = checkContinue();
+            String input = Console.readLine();
+            running = checkContinue(input);
         }
     }
 
-    public boolean checkContinue() {
-        Validation validation = new Validation();
-
-        String input = Console.readLine();
-        validation.validateInputLength(input, 1);
+    public boolean checkContinue(String input) {
+        Validation.validateInputStyle(input, 1);
 
         int inputNum = Integer.parseInt(input);
-        validation.validateOneOrTwo(inputNum);
+        Validation.validateOneOrTwo(inputNum);
 
         return inputNum == CONTINUE;
     }

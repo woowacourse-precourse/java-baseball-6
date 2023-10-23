@@ -59,8 +59,10 @@ class ApplicationTest extends NsTest {
     void validateDuplication() {
         // given
         Validation validation = new Validation();
-        List<String> case1 = List.of("1", "2", "3");
-        List<String> case2 = List.of("1", "1", "2");
+        String case1 = "123";
+        String case2 = "112";
+        String case3 = "a23";
+        String case4 = "a2a";
 
         // when
         Throwable result1 = catchThrowable(() -> {
@@ -69,19 +71,28 @@ class ApplicationTest extends NsTest {
         Throwable result2 = catchThrowable(() -> {
             validation.validateDuplication(case2);
         });
+        Throwable result3 = catchThrowable(() -> {
+            validation.validateDuplication(case3);
+        });
+        Throwable result4 = catchThrowable(() -> {
+            validation.validateDuplication(case4);
+        });
 
         // then
         assertThat(result1).as("valid list").doesNotThrowAnyException();
         assertThat(result2).as("invalid with duplication").isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).as("valid list").doesNotThrowAnyException();
+        assertThat(result4).as("invalid with duplication").isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void validateNumber() {
         // given
         Validation validation = new Validation();
-        List<String> case1 = List.of("1", "2", "3");
-        List<String> case2 = List.of("0", "1", "2");
-        List<String> case3 = List.of("-1", "1", "2");
+        String case1 = "123";
+        String case2 = "012";
+        String case3 = "abc";
+        String case4 = "-112";
 
         // when
         Throwable result1 = catchThrowable(() -> {
@@ -93,11 +104,15 @@ class ApplicationTest extends NsTest {
         Throwable result3 = catchThrowable(() -> {
             validation.validateNumber(case3);
         });
+        Throwable result4 = catchThrowable(() -> {
+            validation.validateNumber(case4);
+        });
 
         // then
         assertThat(result1).as("valid list").doesNotThrowAnyException();
         assertThat(result2).as("invalid with 0").isInstanceOf(IllegalArgumentException.class);
-        assertThat(result3).as("invalid with -1").isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).as("invalid with NaN").isInstanceOf(IllegalArgumentException.class);
+        assertThat(result4).as("invalid with NaN").isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -151,16 +166,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateInputList() {
+    void generateNumericInputList() {
         // given
         Generator generator = new Generator();
         String case1 = "123";
+        String case2 = "1234";
 
         // when
-        List<Integer> result1 = generator.generateInputList(case1);
+        List<Integer> result1 = generator.generateNumericInputList(case1);
+        List<Integer> result2 = generator.generateNumericInputList(case2);
 
         // then
-        assertThat(result1.size()).as("list size").isEqualTo(case1.length());
+        assertThat(result1).as("case1").isEqualTo(List.of(1, 2, 3));
+        assertThat(result2).as("case2").isEqualTo(List.of(1, 2, 3, 4));
     }
 
     @Test

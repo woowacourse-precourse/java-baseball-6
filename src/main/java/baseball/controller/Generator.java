@@ -22,7 +22,7 @@ public class Generator {
         return answerList;
     }
 
-    public List<Integer> generateInputList(String input) {
+    public List<Integer> generateNumericInputList(String input) {
         int inputLen = input.length();
 
         List<Integer> inputList = new ArrayList<>();
