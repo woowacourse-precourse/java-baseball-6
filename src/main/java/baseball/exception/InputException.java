@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 public class InputException {
-    public static final int RANDOM_MIX_NUMBER = 1;
-    public static final int RANDOM_MAX_NUMBER = 9;
+    private static final int RANDOM_MIX_NUMBER = 1;
+    private static final int RANDOM_MAX_NUMBER = 9;
     private static final String LENGTH_ERROR_MESSAGE = "3글자가 아닙니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "중복된 숫자가 있습니다.";
     private static final String OUT_OF_RANGE_ERROR_MESSAGE = "1~9의 범위를 벗어난 숫자가 있습니다.";

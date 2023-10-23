@@ -22,4 +22,7 @@ public class OutputView {
     public static void restartAndGameOverPrint(){
         System.out.println(RESATRT_OR_GAMEOVER_MESSAGE);
     }
+    public static void gameResultPrint(String result){
+        System.out.println(result);
+    }
 }
