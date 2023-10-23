@@ -11,15 +11,9 @@ import java.util.Objects;
 
 public class GameController {
 
-    private final NumberService numberService;
-    private final InputView inputView;
-    private final OutputView outputView;
-
-    public GameController(NumberService numberService, InputView inputView, OutputView outputView) {
-        this.numberService = numberService;
-        this.inputView = inputView;
-        this.outputView = outputView;
-    }
+    private final NumberService numberService = NumberService.getInstance();
+    private final InputView inputView = InputView.getInstance();
+    private final OutputView outputView = OutputView.getInstance();
 
     public void startGame() {
         do {

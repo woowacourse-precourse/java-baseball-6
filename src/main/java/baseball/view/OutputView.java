@@ -8,6 +8,12 @@ import baseball.domain.Hint;
 
 public class OutputView {
 
+    private static final OutputView instance = new OutputView();
+
+    public static OutputView getInstance() {
+        return instance;
+    }
+
     public void printReadMessage() {
         System.out.print(TYPE_NUMBER.getMessage());
     }

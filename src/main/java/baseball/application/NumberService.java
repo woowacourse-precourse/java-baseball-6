@@ -11,6 +11,12 @@ import java.util.Set;
 
 public class NumberService {
 
+    private static final NumberService instance = new NumberService();
+
+    public static NumberService getInstance() {
+        return instance;
+    }
+
     public List<Integer> getRandomNumber() {
         Set<Integer> numberSet = new HashSet<>();
         while (numberSet.size() < 3) {
@@ -21,8 +27,8 @@ public class NumberService {
     }
 
     public Hint getHint(Player computer, Player player) {
-        List<Integer> computerNumber = computer.getNumbers();
-        List<Integer> playerNumber = player.getNumbers();
+        List<Integer> computerNumber = computer.getNumberList();
+        List<Integer> playerNumber = player.getNumberList();
         Hint hint = new Hint();
 
         compareNumber(computerNumber, playerNumber, hint);

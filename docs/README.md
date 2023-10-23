@@ -57,3 +57,4 @@
 ### 기타
 
 - [x] ViewService의 기능을 InputView와 OutputView로 각각 분리한다.
+- [x] NumberService와 InputView, OutputView에 싱글톤 패턴을 적용한다.
