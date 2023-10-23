@@ -1,8 +1,25 @@
 package baseball;
 
-public class Application {
-    public static void main(String[] args) {
+import baseball.controller.BaseballGameController;
+import baseball.domain.User;
+import baseball.servcie.BaseballGameService;
+import baseball.validation.BaseballGameValidation;
+import baseball.view.BaseballGameView;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
+public class Application {
+
+    public static void main(String[] args) {
+        BaseballGameView baseballGameView = new BaseballGameView();
+        BaseballGameService baseballGameService = new BaseballGameService(new User(), new BaseballGameValidation(), baseballGameView);
+        BaseballGameController baseballGameController = new BaseballGameController(baseballGameService, baseballGameView);
+
+        boolean gameContinue = true;
+
+        while(gameContinue){
+            baseballGameController.startGame();
+            gameContinue = baseballGameController.checkRestartGame();
+        }
+
     }
 }
