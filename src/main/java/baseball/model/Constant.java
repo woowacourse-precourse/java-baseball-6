@@ -16,6 +16,8 @@ public final class Constant {
     public final static int NUMBER_RANGE_START = 1;
     public final static int NUMBER_RANGE_END = 9;
 
+    public final static boolean ON_GOING = true;
+    public final static boolean FINISHED = false;
     public final static String REPLAY_GAME = "1";
     public final static String END_GAME = "2";
 }

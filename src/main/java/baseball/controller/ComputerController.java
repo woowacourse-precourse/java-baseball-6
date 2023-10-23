@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ComputerController {
 
-    private DecimalNumber decimalNumber;
+    DecimalNumber decimalNumber;
 
     public ComputerController(DecimalNumber decimalNumber) {
         this.decimalNumber = decimalNumber;
