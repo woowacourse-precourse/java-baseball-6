@@ -1,6 +1,12 @@
-package baseball;
+package BaseballGame;
+
+import static Utills.Messages.*;
+import static Utills.Check.*;
+import static Utills.Define.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -16,7 +22,7 @@ public class BaseballGame {
         }
     }
     public static void run(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        gameStartMessage();
         BaseballGame game;
         do{
             game = new BaseballGame();
@@ -26,7 +32,7 @@ public class BaseballGame {
     private void play(){
         String answer;
         do {
-            System.out.print("숫자를 입력해 주세요 : ");
+            inputRequestMessage();
             answer = Console.readLine();
             checkIsValidAnswer(answer);
         }while(isEnd(answer));
@@ -37,37 +43,13 @@ public class BaseballGame {
         int ball = countBall(answers);
         int strike = countStrike(answers);
         ball -= strike;
+
         gameMessage(ball,strike);
+
         return !(strike == answer.length());
     }
 
-    private void gameMessage(int ball, int strike){
-        noneBallAndStrikeMessage(ball, strike);
-        ballMessage(ball);
-        strikeMessage(strike);
-        System.out.println();
-    }
-    private void gameReStartMessage(){
-        System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
-        System.out.println("게임 종료");
-        System.out.println("게임을 새로 시작하러면 1, 종료하려면 2를 입력하세요.");
-    }
-    private void noneBallAndStrikeMessage(int ball, int strike){
-        if(ball == 0 && strike ==0){
-            System.out.println("낫싱");
-        }
-    }
 
-    private void ballMessage(int ball){
-        if (ball != 0) {
-            System.out.print(ball + "볼 ");
-        }
-    }
-    private void strikeMessage(int strike){
-        if (strike != 0) {
-            System.out.print(strike + "스트라이크");
-        }
-    }
 
     private int countBall(int[] answers){
         int ball = 0;
@@ -95,26 +77,15 @@ public class BaseballGame {
         return intList;
     }
 
-    private void checkIsValidAnswer(String answers) {
-        checkStringlength(answers);
-        checkIsZeroToNine(answers);
-    }
-    private void checkIsZeroToNine(String answers){
-        for (int i = 0; i < answers.length(); i++) {
-            if (answers.charAt(i) < '0' || answers.charAt(i) > '9') {
-                throw new IllegalArgumentException(answers);
-            }
-        }
-    }
-    private void checkStringlength(String answers){
-        if(answers.length() != 3) {
-            throw new IllegalArgumentException();
-        }
+    private boolean reStart(){
+        gameReStartMessage();
+        String reQuest = Console.readLine();
+        return reStartRequset(reQuest);
     }
     private boolean reStartRequset(String a){
-        if(Objects.equals(a, "1")){
+        if(Objects.equals(a, ReStart)){
             return true;
-        }else if(Objects.equals(a, "2")){
+        }else if(Objects.equals(a, Quit)){
             return false;
         }
         else{
@@ -123,9 +94,4 @@ public class BaseballGame {
     }
 
 
-    private boolean reStart(){
-        gameReStartMessage();
-        String reQuest = Console.readLine();
-        return reStartRequset(reQuest);
-    }
 }
