@@ -16,7 +16,7 @@ public class InputView {
         return inputNum;
     }
 
-    public static String endInput() {
+    public static String askToPlayAgain() {
         System.out.println(Constant.IS_RESTART);
         return Console.readLine();
     }

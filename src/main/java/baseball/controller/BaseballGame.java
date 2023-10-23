@@ -9,11 +9,11 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGame {
-    public void gameStart() {
+    public void startGame() {
         InputView.firstStart();
         do {
             playOneGame();
-        } while (isFinish());
+        } while (wantToPlayAgain());
     }
 
     private static void playOneGame() {
@@ -40,8 +40,8 @@ public class BaseballGame {
         return UserNumberGenerator.makeUserNumberToList(userNumbersToString);
     }
 
-    private static boolean isFinish() {
-        String restart = InputView.endInput();
+    private static boolean wantToPlayAgain() {
+        String restart = InputView.askToPlayAgain();
         return restart.equals(Constant.RESTART);
     }
 }
