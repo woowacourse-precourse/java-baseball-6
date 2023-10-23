@@ -7,20 +7,24 @@ public class ValidateInputNumber {
 
     public boolean validateWithRegex(String inputNumber) {
         if (!Pattern.matches("^[0-9]{3}$", inputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("only numbers can be entered");
         }
         return true;
     }
 
     public void validateResult(List<Integer> inputNumberList) {
-        if (!validateCount(inputNumberList) || !validateDuplicate(inputNumberList)) {
-            throw new IllegalArgumentException();
+        if (!validateCount(inputNumberList)) {
+            throw new IllegalArgumentException("the number is out of range.");
+        }
+
+        if (!validateDuplicate(inputNumberList)) {
+            throw new IllegalArgumentException("the numbers are duplicated");
         }
     }
 
     private boolean validateCount(List<Integer> inputNumberList) {
         if (inputNumberList.size() != 3) {
-            throw new IllegalArgumentException();
+            return false;
         }
         return true;
     }

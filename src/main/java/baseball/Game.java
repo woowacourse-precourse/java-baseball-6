@@ -57,7 +57,7 @@ public class Game {
         if (Integer.parseInt(number) == 1) {
             gameStart();
         } else if (Integer.parseInt(number) != 2) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input number should be 1 or 2");
         }
     }
 }
