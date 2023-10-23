@@ -1,7 +1,10 @@
 package baseball.service;
 
+import static baseball.enums.MessageEnum.*;
+
 import baseball.dto.BallCountDto;
 import baseball.dto.GameResultDto;
+import baseball.enums.MessageEnum;
 
 public class GameResultService {
 
@@ -14,19 +17,15 @@ public class GameResultService {
     private String createBallCountMessage(int strike, int ball) {
         String message = "";
         if (strike == 0 && ball == 0) {
-            message = "낫싱";
-            return message;
-        }
-        if (strike != 0 && ball != 0) {
-            message = String.format("%d볼 %d스트라이크", ball, strike);
-            return message;
-        }
-        if (strike != 0) {
-            message = String.format("%d스트라이크", strike);
+            message = NOTHING.show();
         }
         if (ball != 0) {
-            message = String.format("%d볼", ball);
+            message += ball + BALL.show()+ " ";
         }
+        if (strike != 0) {
+            message += strike + STRIKE.show();
+        }
+
         return message;
 
     }

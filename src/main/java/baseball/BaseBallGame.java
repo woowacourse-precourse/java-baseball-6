@@ -1,7 +1,11 @@
 package baseball;
 
+import static baseball.enums.MessageEnum.GAME_END;
+import static baseball.enums.MessageEnum.GAME_START;
+
 import baseball.controller.Computer;
 import baseball.dto.GameResultDto;
+import baseball.enums.MessageEnum;
 import baseball.exception.RetryInputException;
 import baseball.view.BallCountMessageOutputView;
 import baseball.view.NumbersInputView;
@@ -12,8 +16,9 @@ public class BaseBallGame {
     Computer computer;
 
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START);
         do {
+            computer = new Computer();
             playGame();
 
         } while(isRetry());
@@ -32,13 +37,13 @@ public class BaseBallGame {
     }
 
     private void playGame() {
-        computer = new Computer();
+
 
         InputPlayerNumber();
         GameResultDto gameResult = getGameResult();
         BallCountMessageOutputView.printBallCountMessage(gameResult.showMessage());
         if (gameResult.checkEnd()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(GAME_END);
             return;
         }
         playGame();
