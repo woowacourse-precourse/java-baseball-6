@@ -11,6 +11,10 @@ public class Command {
         validate();
     }
 
+    public boolean replay() {
+        return command.equals(REPLAY_COMMAND);
+    }
+
     private void validate() {
         if (!inRange()) {
             throw new IllegalArgumentException(
@@ -20,9 +24,5 @@ public class Command {
 
     private boolean inRange() {
         return command.equals(REPLAY_COMMAND) || command.equals(NOT_REPLAY_COMMAND);
-    }
-
-    public boolean replay() {
-        return command.equals(REPLAY_COMMAND);
     }
 }
