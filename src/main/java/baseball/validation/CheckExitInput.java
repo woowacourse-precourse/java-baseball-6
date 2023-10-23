@@ -1,7 +1,7 @@
 package baseball.validation;
 
 public class CheckExitInput {
-    public void checkValidationOfExit(String in) {
+    public void checkValidationOfExit(String in) throws IllegalArgumentException {
         if (!isOneOrTwo(in)) {
             throw new IllegalArgumentException();
         }

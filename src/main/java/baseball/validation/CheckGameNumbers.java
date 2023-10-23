@@ -29,7 +29,7 @@ class DifferentEachOtherException extends IllegalArgumentException {
 
 
 public class CheckGameNumbers {
-    public void checkValidationOfNums(String in) {
+    public void checkValidationOfNums(String in) throws IllegalArgumentException {
         try {
             checkExceptions(in);
         } catch (IllegalArgumentException e) {
