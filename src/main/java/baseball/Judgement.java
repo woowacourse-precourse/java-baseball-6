@@ -21,7 +21,9 @@ public class Judgement {
         }
     }
     private void countStrike(Numbers userNumbers, Numbers computerNumbers, int index){
-        if(userNumbers.getNumberByIndex(index) == computerNumbers.getNumberByIndex(index)) strikeCount++;
+        Number userNumber = userNumbers.getNumberByIndex(index);
+        Number computerNumber = computerNumbers.getNumberByIndex(index);
+        if(userNumber.isSame(computerNumber)) strikeCount++;
     }
     private void countBallOneByOne(Numbers userNumbers, Numbers computerNumbers, int userIndex){
         for(int computerIndex = 0; computerIndex < 3; computerIndex++){
@@ -29,8 +31,8 @@ public class Judgement {
             countBall(userNumbers.getNumberByIndex(userIndex), computerNumbers.getNumberByIndex(computerIndex));
         }
     }
-    private void countBall(int userNumber, int computerNumber){
-        if(userNumber == computerNumber){
+    private void countBall(Number userNumber, Number computerNumber){
+        if(userNumber.isSame(computerNumber)){
             ballCount++;
         }
     }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Numbers {
-    private List<Integer> numbers;
+    private List<Number> numbers;
     Numbers(){
         numbers = new ArrayList<>();
         setRandomNumbers();
@@ -19,7 +19,7 @@ public class Numbers {
         for(int i = 0; i < 3; i++){
             int number = numberInput.getNumberByIndex(i);
             validateDuplicatedNumber(number);
-            numbers.add(number);
+            numbers.add(new Number(number));
         }
     }
     private void setRandomNumbers(){
@@ -27,7 +27,7 @@ public class Numbers {
         while(numbers.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(checkDuplicated(visitedNumberArray, randomNumber)) continue;
-            numbers.add(randomNumber);
+            numbers.add(new Number(randomNumber));
         }
     }
     private boolean checkDuplicated(boolean[] duplicateCheck, int num){
@@ -40,7 +40,7 @@ public class Numbers {
             throw new IllegalArgumentException("중복되지 않는 숫자를 입력해주세요");
         }
     }
-    public int getNumberByIndex(int index){
+    public Number getNumberByIndex(int index){
         return numbers.get(index);
     }
 }
