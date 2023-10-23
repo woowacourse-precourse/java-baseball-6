@@ -23,6 +23,10 @@ public class GameNumbers {
         return numbers.contains(number);
     }
 
+    public int size() {
+        return numbers.size();
+    }
+
     private static void validate(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumberRange(numbers);
