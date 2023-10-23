@@ -27,7 +27,6 @@ public class StartGame {
         while (gameStart != END_GAME) {
             randomNumber();             // 숫자에 대한 랜덤값 넣기
             inputUserNumber();          // 유저가 숫자 정보를 입력
-
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
