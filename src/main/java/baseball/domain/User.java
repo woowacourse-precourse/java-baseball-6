@@ -19,8 +19,10 @@ public class User {
     }
 
     public void inputUserNumber() {
-        userNumbers = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
+
+        userNumbers = new ArrayList<>();
         try {
             for (int i = 0; i < number.length(); i++) {
                 userNumbers.add(Integer.parseInt(Character.toString(number.charAt(i))));
