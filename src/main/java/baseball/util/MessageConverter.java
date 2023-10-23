@@ -14,13 +14,13 @@ public class MessageConverter {
     private static final String NOTHING = "낫싱";
     private static final int NUMBER_SIZE = 3;
 
-    private static Map<String, Integer> resultMessage;
+    private static Map<String, Integer> resultMessageMap;
 
     /*
     * ConcurrentHashMap 초기화 메서드
     * */
     private static void initializeResultMessage() {
-        resultMessage = new ConcurrentHashMap<>() {
+        resultMessageMap = new ConcurrentHashMap<>() {
             {
                 put(STRIKE, 0);
                 put(BALL, 0);
@@ -40,7 +40,7 @@ public class MessageConverter {
             getStrikeOrBall(input, computerNumber, index);
         }
 
-        return resultMessage;
+        return resultMessageMap;
     }
 
     /*
@@ -51,11 +51,11 @@ public class MessageConverter {
      * */
     private static void getStrikeOrBall(List<Integer> input, List<Integer> computerNumber, Integer index) {
         if (input.get(index).equals(computerNumber.get(index))) {
-           resultMessage.put(STRIKE, resultMessage.get(STRIKE) + 1);
+           resultMessageMap.put(STRIKE, resultMessageMap.get(STRIKE) + 1);
         }
 
         if (input.contains(computerNumber.get(index)) && !input.get(index).equals(computerNumber.get(index))) {
-            resultMessage.put(BALL, resultMessage.get(BALL) + 1);
+            resultMessageMap.put(BALL, resultMessageMap.get(BALL) + 1);
         }
     }
 
