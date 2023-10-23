@@ -5,16 +5,19 @@ import java.util.stream.Collectors;
 
 public class UserInputValidator {
 
-    public List<Integer> isValidUserInput(String userInput) {
-        if (userInput == null
+    public List<Integer> validateUserInput(String userInput) {
+        if (isInvalidInput(userInput)) {
+            throw new IllegalArgumentException("Invalid user input");
+        }
+        return parseUserInput(userInput);
+    }
+
+    private boolean isInvalidInput(String userInput) {
+        return userInput == null
                 || userInput.trim().isEmpty()
                 || !userInput.matches("^[0-9]{3}$")
                 || Integer.parseInt(userInput) < 0
-                || hasDuplicateDigits(userInput)) {
-            throw new IllegalArgumentException();
-        }else{
-            return userInputSlice(Integer.parseInt(userInput));
-        }
+                || hasDuplicateDigits(userInput);
     }
 
     private boolean hasDuplicateDigits(String userInput) {
@@ -23,8 +26,8 @@ public class UserInputValidator {
                 .count() != userInput.length();
     }
 
-    private List<Integer> userInputSlice(int userInput) {
-        return String.valueOf(userInput).chars()
+    private List<Integer> parseUserInput(String userInput) {
+        return userInput.chars()
                 .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList());

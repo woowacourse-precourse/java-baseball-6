@@ -12,7 +12,7 @@ public class InputValidatorTest {
     public void testIsValidUserInputValidInput() {
         UserInputValidator validator = new UserInputValidator();
 
-        List<Integer> result = validator.isValidUserInput("123");
+        List<Integer> result = validator.validateUserInput("123");
 
         assertNotNull(result);
         Set<Integer> uniqueSet = new HashSet<>(result);
@@ -30,6 +30,6 @@ public class InputValidatorTest {
     }
 
     private void assertInvalidInput(UserInputValidator validator, String input) {
-        assertThrows(IllegalArgumentException.class, () -> validator.isValidUserInput(input));
+        assertThrows(IllegalArgumentException.class, () -> validator.validateUserInput(input));
     }
 }
