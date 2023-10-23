@@ -41,7 +41,6 @@ public class BaseBallGameController {
     }
 
     public void inputUserNumber(){ // 유저 정보 넣기
-        OutputView.inputUserNumber();
         userNumber = new UserNumber(InputView.inputUserNumber());
     }
 
@@ -59,7 +58,6 @@ public class BaseBallGameController {
     }
 
     public void GameOver(){
-        OutputView.gameOver();
         String value = InputView.inputGameOverOrRestart();
         if("1".equals(value)){
             isRestartedGame = true;
