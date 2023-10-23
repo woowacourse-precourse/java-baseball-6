@@ -2,6 +2,7 @@ package domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,5 +24,25 @@ class NumberTest {
             }
         }
         assertTrue(result);
+    }
+
+    @Test
+    void 점수_계산이_올바르게_진행되는가() {
+        List<Integer> goalNumbers = Number.getGoalNumbers();
+        List<Number> numbers = List.of(
+                new Number(goalNumbers.get(0)),
+                new Number(goalNumbers.get(1)),
+                new Number(goalNumbers.get(2))
+                );
+        assertEquals(3, Number.getStrike(numbers));
+        assertEquals(0, Number.getBall(numbers));
+
+        numbers = List.of(
+                new Number(goalNumbers.get(1)),
+                new Number(goalNumbers.get(0)),
+                new Number(goalNumbers.get(2))
+        );
+        assertEquals(1, Number.getStrike(numbers));
+        assertEquals(2, Number.getBall(numbers));
     }
 }
