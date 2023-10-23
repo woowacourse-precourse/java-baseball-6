@@ -1,10 +1,8 @@
 package baseball.domain;
 
-public class ComparisonResult {
+import static baseball.constant.ResultMessage.*;
 
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
+public class ComparisonResult {
 
     private final String message;
     private int strikeCount;
@@ -14,7 +12,6 @@ public class ComparisonResult {
         compare(player, computer);
         message = makeCompareMessage();
     }
-
 
     private void compare(PlayerNumber player, ComputerNumber computer) {
         for (int i = 0; i < 3; i++) {
@@ -31,19 +28,18 @@ public class ComparisonResult {
 
     private String makeCompareMessage() {
         if (ballCount == 0 && strikeCount == 0) {
-            return NOTHING;
+            return NOTHING_MESSAGE;
         }
 
-        String makeMessage = "";
+        if (0 < ballCount && 0 < strikeCount) {
+            return String.format(BALL_STRIKE_MESSAGE, ballCount, strikeCount);
+        }
         if (0 < ballCount) {
-            makeMessage += (ballCount + BALL + " ");
+            return String.format(BALL_ONLY_MESSAGE, ballCount);
         }
-        if (0 < strikeCount) {
-            makeMessage += (strikeCount + STRIKE);
-        }
-
-        return makeMessage;
+        return String.format(STRIKE_ONLY_MESSAGE, strikeCount);
     }
+
 
     public boolean isGameEnd() {
         return strikeCount == 3;
