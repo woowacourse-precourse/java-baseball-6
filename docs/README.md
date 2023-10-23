@@ -5,6 +5,7 @@ camp 자체 라이브러리인지!- 외부에서 작동안함 우테코안에서
 1. camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현
 2. Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 3. 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
+4. 다하고 test/java/baseball방만들고 ApplicationTest 직접 하면서 상태확인하기 
 
 자바 기본요구사항
 1. 블럭들여쓰기 스페이스 4
