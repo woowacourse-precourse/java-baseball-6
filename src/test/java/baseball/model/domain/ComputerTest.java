@@ -14,7 +14,7 @@ class ComputerTest {
     @DisplayName("상대방의 역할인 컴퓨터가 1부터 9까지 서로 다른 수로 이루어진 3자리의 랜덤 수를 리턴합니다.")
     void 세자리랜덤수리턴() {
         ComputerNumbersGenerator computerNumbersGenerator = new ComputerNumbersGeneratorImp();
-        Computer computer = new Computer(computerNumbersGenerator);
+        Computer computer = Computer.from(computerNumbersGenerator);
 
         List<Integer> randomNumbers = computer.getComputerNumbers();
 

@@ -8,10 +8,14 @@ public class Player {
     private List<Integer> playerNumbers;
     private PlayerNumbersValidator playerNumbersValidator;
 
-    public Player(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
+    private Player(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
         this.playerNumbersValidator = playerNumbersValidator;
         playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         this.playerNumbers = parsePlayerNumbers(inputNumbers);
+    }
+
+    public static Player of(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
+        return new Player(inputNumbers, playerNumbersValidator);
     }
 
     public List<Integer> getPlayerNumbers() {

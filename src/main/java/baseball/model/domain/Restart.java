@@ -6,10 +6,14 @@ public class Restart {
     private Integer restartOption;
     private RestartOptionValidator restartOptionValidator;
 
-    public Restart(String inputOption, RestartOptionValidator restartOptionValidator) {
+    private Restart(String inputOption, RestartOptionValidator restartOptionValidator) {
         this.restartOptionValidator = restartOptionValidator;
         restartOptionValidator.validateRestartOption(inputOption);
         this.restartOption = parseRestartOption(inputOption);
+    }
+
+    public static Restart of(String inputOption, RestartOptionValidator restartOptionValidator) {
+        return new Restart(inputOption, restartOptionValidator);
     }
 
     public Integer getRestartOption() {

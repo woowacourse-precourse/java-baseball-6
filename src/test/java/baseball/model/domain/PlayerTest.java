@@ -16,7 +16,7 @@ public class PlayerTest {
     void 사용자입력수리턴() {
         PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
         String inputNumbers = "123";
-        Player player = new Player(inputNumbers, playerNumbersValidator);
+        Player player = Player.of(inputNumbers, playerNumbersValidator);
 
         List<Integer> playerNumbers = player.getPlayerNumbers();
 

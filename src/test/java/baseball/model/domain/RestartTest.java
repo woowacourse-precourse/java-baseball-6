@@ -13,7 +13,7 @@ public class RestartTest {
     void 사용자입력수리턴() {
         RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
         String option = "1";
-        Restart restart = new Restart(option, restartOptionValidator);
+        Restart restart = Restart.of(option, restartOptionValidator);
 
         Integer restartNumbers = restart.getRestartOption();
 

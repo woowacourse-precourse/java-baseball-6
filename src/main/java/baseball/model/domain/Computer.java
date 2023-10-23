@@ -7,9 +7,13 @@ public class Computer {
     private List<Integer> computerNumbers;
     private ComputerNumbersGenerator computerNumbersGenerator;
 
-    public Computer(ComputerNumbersGenerator computerNumbersGenerator) {
+    private Computer(ComputerNumbersGenerator computerNumbersGenerator) {
         this.computerNumbersGenerator = computerNumbersGenerator;
         computerNumbers = computerNumbersGenerator.generateComputerNumbers();
+    }
+
+    public static Computer from(ComputerNumbersGenerator computerNumbersGenerator) {
+        return new Computer(computerNumbersGenerator);
     }
 
     public List<Integer> getComputerNumbers() {

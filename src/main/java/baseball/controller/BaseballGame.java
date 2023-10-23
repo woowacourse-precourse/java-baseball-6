@@ -19,7 +19,7 @@ public class BaseballGame {
     private Computer computer;
     private Player player;
     private Restart restart;
-    
+
     private final ComputerNumbersGenerator computerNumbersGenerator;
     private final PlayerNumbersValidator playerNumbersValidator;
     private final NumbersComparator numberComparator;
@@ -62,13 +62,13 @@ public class BaseballGame {
     }
 
     private void initializeGame() {
-        computer = new Computer(computerNumbersGenerator);
+        computer = Computer.from(computerNumbersGenerator);
         player = null;
         restart = null;
     }
 
     private void getNumbersFromPlayer() {
-        player = new Player(InputView.setGameInput(), playerNumbersValidator);
+        player = Player.of(InputView.setGameInput(), playerNumbersValidator);
     }
 
     private int[] getCompareResult() {
@@ -110,7 +110,7 @@ public class BaseballGame {
     }
 
     private void getRestartOptionFromPlayer() {
-        restart = new Restart(InputView.setRestartInput(), restartOptionValidator);
+        restart = Restart.of(InputView.setRestartInput(), restartOptionValidator);
     }
 
     private boolean isRestart() {
