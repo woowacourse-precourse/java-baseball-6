@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputNumber {
+    private final String NUMBER_TYPE_ERROR_MESSAGE = "숫자만 입력해주세요.";
     private InputNumber() {
     }
 
@@ -14,29 +15,23 @@ public class InputNumber {
         return new InputNumber();
     }
 
-    public String input() {
-        String input = Console.readLine();
-        return input;
-    }
-
     public List<Integer> inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        String input = input();
+        String input = Console.readLine();
         return getNumbers(input);
     }
 
     public int inputStatus() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = input();
+        String input = Console.readLine();
         return getStatus(input);
     }
 
     public List<Integer> getNumbers(String input) {
-        inputNumber();
         List<Integer> playerNumber = new ArrayList<>();
         for (char ch : input.toCharArray()) {
-            String str = String.valueOf(ch);
-            int num = ValidationNumber.validationNumberType(str);
+            String value = String.valueOf(ch);
+            int num = stringToInt(value);
             playerNumber.add(num);
         }
         ValidationNumber.validateNumbers(playerNumber);
@@ -44,9 +39,17 @@ public class InputNumber {
     }
 
     public int getStatus(String input) {
-        int status = ValidationNumber.validationNumberType(input);
+        int status = stringToInt(input);
         ValidationNumber.validationStatus(status);
         return status;
+    }
+
+    public int stringToInt(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(NUMBER_TYPE_ERROR_MESSAGE);
+        }
     }
 
 }
