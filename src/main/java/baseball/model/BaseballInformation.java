@@ -11,14 +11,13 @@ public class BaseballInformation {
 
 
 	public BaseballInformation(){
-		initNumber();
 	}
 
 	//random 3자리 수 초기화
-	private void initNumber(){
+	public void initNumber(){
 		answerNumber = "";
 		while(answerNumber.length()<numberCount){
-			String newDigit = Integer.toString(Randoms.pickNumberInRange(0, 9));
+			String newDigit = Integer.toString(Randoms.pickNumberInRange(1, 9));
 			if(answerNumber.contains(String.valueOf(newDigit))==false) {
 				answerNumber += newDigit;
 			}

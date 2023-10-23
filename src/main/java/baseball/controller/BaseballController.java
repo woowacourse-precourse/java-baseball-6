@@ -14,15 +14,18 @@ public class BaseballController {
 	private NumberValidator numberValidator = new NumberValidator();
 
 	public void playGame() {
+		baseballInformation.initNumber();
 		answerNumber = baseballInformation.getAnswerNumber();
 
 		while(answerNumber.equals(inputNumber) == false){
 			Output.printInputNumMessage();
 			inputNumber = Input.getNumber();
+
 			numberValidator.validateInputNumber(inputNumber, baseballInformation.getNumberCount());
 
+
 			baseballInformation.compareAndSetStrikeBallCount(inputNumber);
-			Output.printResult(baseballInformation);
+			Output.printHint(baseballInformation);
 		}
 
 	}

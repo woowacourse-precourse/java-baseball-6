@@ -8,28 +8,29 @@ public class NumberValidator {
 	private static final int MENU_COUNT = 2;
 
 	public void validateInputNumber(String inputNumber, int numberCount){
-		try{
-			if(inputNumber.length() != numberCount ||hasDuplicateDigits(inputNumber)||isInteger(inputNumber)==false){
-				throw new IllegalArgumentException();
-			}
-		}catch (IllegalStateException e){
-			System.exit(1);
+		if(inputNumber.length() != numberCount ||hasDuplicateDigits(inputNumber)||isInteger(inputNumber)==false||containsZero(inputNumber)){
+			throw new IllegalArgumentException();
 		}
 	}
 
 	public void validateMenu(String menu){
-		try{
-			if(isInteger(menu)==false|| Integer.parseInt(menu) > MENU_COUNT|| Integer.parseInt(menu) <=0 ){
-				throw new IllegalArgumentException();
-			}
-		}catch (IllegalStateException e){
-			System.exit(1);
+		if(isInteger(menu)==false|| Integer.parseInt(menu) > MENU_COUNT|| Integer.parseInt(menu) <=0 ){
+			throw new IllegalArgumentException();
 		}
 	}
 
-	public static boolean isInteger(String str) {
+	public static boolean containsZero(String str) {
+		for (char c : str.toCharArray()) {
+			if (c == '0') {
+				return true; // 0을 발견하면 true를 반환
+			}
+		}
+		return false; // 0을 발견하지 못하면 false를 반환
+	}
+
+	public static boolean isInteger(String number) {
 		try {
-			Integer.parseInt(str); // 문자열을 정수로 변환 시도
+			Integer.parseInt(number);
 			return true; // 변환이 성공하면 정수로만 구성되어 있다고 판단
 		} catch (NumberFormatException e) {
 			return false; // 변환이 실패하면 정수로만 구성되어 있지 않다고 판단

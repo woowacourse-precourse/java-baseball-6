@@ -28,7 +28,6 @@ public class MainController {
 			String input = Input.getMenu();
 			numberValidator.validateMenu(input);
 			menu = Integer.parseInt(input);
-
 		}while(menu!=END_MENU);
 	}
 }
