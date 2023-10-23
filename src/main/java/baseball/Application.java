@@ -9,6 +9,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static List<Integer> answer = new ArrayList<>();
+    public static List<Integer> inputList = new ArrayList<>();
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -42,14 +44,19 @@ public class Application {
         }
     }
 
+    public static void splitNumber(String input){
+        inputList.clear();
+        int i=0;
+        while(inputList.size()<3){
+            inputList.add(Integer.valueOf(input.split("")[i]));
+            i++;
+        }
+    }
+
     public static String checkNumber(String input){
         String result="";
-        int inputNumber = Integer.valueOf(input);
-        List<Integer> inputList = new ArrayList<>();
-        inputList.add(inputNumber/100);
-        inputNumber%=100;
-        inputList.add(inputNumber/10);
-        inputList.add(inputNumber%10);
+        splitNumber(input);
+
         int strike = 0;
         int ball = 0;
         for(int i=0;i<3;i++){
