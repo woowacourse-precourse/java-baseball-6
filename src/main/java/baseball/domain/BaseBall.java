@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.beans.BeanProperty;
 
 public class BaseBall {
     private final int number;
@@ -42,9 +41,5 @@ public class BaseBall {
     @Override
     public int hashCode(){
         return this.number;
-    }
-
-    public int getNumber() {
-        return number;
     }
 }

@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.domain.BaseBalls;
-import baseball.domain.NumberGenerator;
 import baseball.domain.ReGameCommand;
 import baseball.domain.RoundResult;
 import baseball.view.GameView;
