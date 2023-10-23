@@ -112,6 +112,8 @@ public class Application {
         computerNumber = baseballGame.selectRandomNumber(computerNumber);
 
         while (!isExit){
+            baseballGame.strike = 0;
+            baseballGame.ball = 0;
             String myNumber = Console.readLine();
             baseballGame.checkOnlyInterger(myNumber);
             baseballGame.checkDuplicateNumber(myNumber);
