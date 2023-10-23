@@ -5,6 +5,7 @@ import java.util.List;
 import baseball.models.User;
 
 import static baseball.utils.Constants.ANSWER_LENGTH;
+import static baseball.utils.Constants.RESTART_INPUT_LENGTH;
 
 import baseball.utils.InputValidator;
 
@@ -24,22 +25,32 @@ public class UserAction {
 
     public void inputAnswer(){
         String userAnswer = InputViewer.requestUserAnswer();
-        requestValidateInput(userAnswer);
+        requestValidateAnswer(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             user.saveNumber(userAnswer.charAt(i));
         }
     }
 
     public void inputRestartFactor(){
+        int mind;
         String userInput = InputViewer.requestUserRestartFactor();
-        InputValidator.validateRestartInput(userInput);
-        int mind = Integer.parseInt(userInput);
+        mind = requestValidateRestartFactor(userInput);
         user.changeMind(mind);
     }
 
-    public void requestValidateInput(String userAnswer){
-        InputValidator.validateAnswerLength(userAnswer);
+    public void requestValidateAnswer(String userAnswer){
+        InputValidator.validateInputLength(userAnswer, ANSWER_LENGTH);
         InputValidator.validateIsDistinct(userAnswer);
+    }
+
+    public int requestValidateRestartFactor(String userInput){
+        int mind;
+        InputValidator.validateInputLength(userInput, RESTART_INPUT_LENGTH);
+        InputValidator.validateIsCharacterDigit(userInput.charAt(0));
+        mind = Integer.parseInt(userInput);
+        InputValidator.validateRestartInput(mind);
+
+        return mind;
     }
 
     public List<Integer> showNumberList(){
