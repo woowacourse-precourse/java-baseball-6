@@ -124,6 +124,18 @@ public class Model{
 
     public int inputRestartOrExit(){
         String inputNum = Console.readLine();
+        isValidRestartInput(inputNum);
         return Integer.parseInt(inputNum);
     }
+
+    public void isValidRestartInput(String input){
+        isNotValid(input);
+    }
+    public void isNotValid(String input){
+        int number = Integer.parseInt(input);
+        if(number != 1 && number != 2){
+            throw new IllegalArgumentException(ERR_SENTENCE);
+        }
+    }
+
 }
