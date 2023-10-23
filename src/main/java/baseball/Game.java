@@ -10,6 +10,13 @@ public class Game {
 
     public void startGame() {
         View.printStartGameMessage();
+        gaming();
+    }
+
+    private void gaming() {
+        List<Integer> answerNumberList = computer.createAnswerNumberList();
+        gamingUtilWin(answerNumberList);
+        View.printGameEndMessage();
     }
 
     private void gamingUtilWin(List<Integer> answerNumberList) {
