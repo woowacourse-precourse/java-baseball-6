@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class BaseballCollection {
@@ -66,20 +65,20 @@ public class BaseballCollection {
 
     private void validateLength(List<Integer> baseballs) {
         if (baseballs.size() != DEFAULT_CAPACITY) {
-            throw new IllegalArgumentException("길이가 다른 입력입니다,");
+            throw new IllegalArgumentException(String.format("길이 %d으로 입력해야 합니다. 현재 길이: %d", DEFAULT_CAPACITY, baseballs.size()));
         }
     }
 
     private void validateUniqueNumbers(List<Integer> baseballs, String number) {
         if (baseballs.size() != number.length()) {
-            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException(String.format("%s에 중복된 숫자가 존재합니다.", baseballs));
         }
     }
 
     private void validateRange(List<Integer> baseballs) {
         for (Integer baseball : baseballs) {
             if (!isInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, baseball)) {
-                throw new IllegalArgumentException("범위를 벗어난 숫자가 존재합니다.");
+                throw new IllegalArgumentException(String.format("%d은 범위를 벗어난 숫자입니다.", baseball));
             }
         }
     }
@@ -88,7 +87,7 @@ public class BaseballCollection {
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닌 문자가 존재합니다.", e);
+            throw new IllegalArgumentException(String.format("%s는 숫자가 아닌 문자입니다.", target), e);
         }
     }
 
