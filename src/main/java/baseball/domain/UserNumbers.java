@@ -2,7 +2,6 @@ package baseball.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserNumbers extends Numbers {
 
@@ -19,7 +18,7 @@ public class UserNumbers extends Numbers {
     private static List<Integer> mapToIntegers(final String userInput) {
         return Arrays.stream(userInput.split(""))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     static private class NumbersValidator {

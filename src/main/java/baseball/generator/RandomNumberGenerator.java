@@ -2,7 +2,6 @@ package baseball.generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RandomNumberGenerator {
@@ -11,6 +10,6 @@ public class RandomNumberGenerator {
         return Stream.generate(() -> Randoms.pickNumberInRange(1, 9))
                 .distinct()
                 .limit(countToGenerate)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
