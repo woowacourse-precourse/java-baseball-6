@@ -26,7 +26,7 @@ public class Validation {
         }
     }
 
-    private static void validateRestartNumberLength(String number) {
+    private void validateRestartNumberLength(String number) {
         if (number.length() != NumberConstant.RESTART_INPUT_LENGTH.getNumber()) {
             throw new IllegalArgumentException(ValidateException.RESTART_INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
@@ -46,9 +46,9 @@ public class Validation {
         }
     }
 
-    private static void findDuplicateNumber(String number, int i, int j) {
-        if (i != j) {
-            if (number.charAt(i) == number.charAt(j)) {
+    private static void findDuplicateNumber(String number, int index1, int index2) {
+        if (index1 != index2) {
+            if (number.charAt(index1) == number.charAt(index2)) {
                 throw new IllegalArgumentException(ValidateException.DUPLICATE_NUMBER_EXCEPTION.getMsg());
             }
         }
