@@ -1,6 +1,5 @@
 package baseball.object.number.generator;
 
-import baseball.object.number.generator.NumbersGenerator;
 import java.util.List;
 
 public class OneTwoThreeOrFakeNumberGenerator implements NumbersGenerator {
