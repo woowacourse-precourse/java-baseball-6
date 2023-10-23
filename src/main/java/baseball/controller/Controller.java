@@ -20,7 +20,7 @@ public class Controller {
             computer.prepareGame();
             playGame();
             end = view.inputEnd();
-        } while (end.equals(FIN));
+        } while (end.equals(RESTART));
         view.closeConsole();
     }
 
