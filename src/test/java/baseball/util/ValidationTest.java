@@ -4,6 +4,7 @@ import static baseball.util.Validation.MAX_INPUT_LENGTH;
 import static baseball.util.Validation.containsLetter;
 import static baseball.util.Validation.containsZero;
 import static baseball.util.Validation.duplicateNumber;
+import static baseball.util.Validation.isOneOrTwo;
 import static baseball.util.Validation.validLength;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -46,6 +47,16 @@ class ValidationTest {
 
         for (String str : testArr) {
             assertThatThrownBy(() -> duplicateNumber(str)).isInstanceOf(
+                    IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void 문자열_1_또는_2_여부_테스트() {
+        String[] testArr = {"0", "3", "4", "5", "6", "7", "8", "9"};
+
+        for (String str : testArr) {
+            assertThatThrownBy(() -> isOneOrTwo(str)).isInstanceOf(
                     IllegalArgumentException.class);
         }
     }
