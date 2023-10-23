@@ -47,6 +47,39 @@ class PitcherTest {
     }
 
     @Test
-    void restart() {
+    @DisplayName("restart 메서드에 1이 입력된 경우")
+    void letUsRestart() {
+        Pitcher pitcher = Pitcher.enter();
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        boolean result = pitcher.restart();
+
+        assertTrue(result);
+    }
+
+    @Test
+    @DisplayName("restart 메서드에 2가 입력된 경우")
+    void doNotRestart() {
+        Pitcher pitcher = Pitcher.enter();
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        boolean result = pitcher.restart();
+
+        assertFalse(result);
+    }
+
+    @Test
+    @DisplayName("restart 메서드 예외 케이스")
+    void restartException() {
+        Pitcher pitcher = Pitcher.enter();
+        String input = "12";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(pitcher::restart).isInstanceOf(IllegalArgumentException.class);
     }
 }
