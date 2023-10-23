@@ -139,7 +139,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        if (inputLength == 3 && inputNumber.matches("0")) {
+        if (inputLength == 3 && inputNumber.contains("0")) {
             throw new IllegalArgumentException();
         }
 
