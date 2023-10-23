@@ -24,7 +24,6 @@ public class BaseballGame {
     }
 
     public void gameStart() {
-
         // 게임 초기 설정
         ballStrikeCounter.resetBallStrike();
 
@@ -36,7 +35,7 @@ public class BaseballGame {
     }
 
     public void inGame() {
-        while (true) {
+        while (!ballStrikeCounter.isThreeStrike()) {
             // 사용자 값 입력
             userInputMessage();
             UserNumber userNumber = new UserNumber(userInput());
