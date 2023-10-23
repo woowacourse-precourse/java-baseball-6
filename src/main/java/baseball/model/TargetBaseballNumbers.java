@@ -29,46 +29,46 @@ public class TargetBaseballNumbers {
         return new TargetBaseballNumbers(Collections.unmodifiableList(uniqueBaseballNumbers));
     }
 
-    public GameResult calculateGameResult(final List<Integer> inputPlayerNumbers) {
-        List<BaseballNumber> userBaseballNumbers = convertInputValueToBaseballNumbers(inputPlayerNumbers);
+    public GameResult calculateGameResult(final List<Integer> inputNumbers) {
+        List<BaseballNumber> playerBaseballNumbers = convertInputToBaseballNumbers(inputNumbers);
 
-        if (baseballNumbers.size() != userBaseballNumbers.size()) {
+        if (baseballNumbers.size() != playerBaseballNumbers.size()) {
             throw new IllegalArgumentException();
         }
 
-        return createGameResult(userBaseballNumbers);
+        return createGameResult(playerBaseballNumbers);
     }
 
-    private List<BaseballNumber> convertInputValueToBaseballNumbers(final List<Integer> playerNumbers) {
-        verifyDuplicates(playerNumbers);
+    private List<BaseballNumber> convertInputToBaseballNumbers(final List<Integer> inputNumbers) {
+        verifyDuplicates(inputNumbers);
 
-        return playerNumbers.stream()
+        return inputNumbers.stream()
                 .map(BaseballNumber::new)
                 .toList();
     }
 
-    private void verifyDuplicates(final List<Integer> numbers) {
-        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+    private void verifyDuplicates(final List<Integer> inputPlayerNumbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(inputPlayerNumbers);
 
-        if (uniqueNumbers.size() != numbers.size()) {
+        if (uniqueNumbers.size() != inputPlayerNumbers.size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private GameResult createGameResult(List<BaseballNumber> userBaseballNumbers) {
+    private GameResult createGameResult(List<BaseballNumber> playerBaseballNumbers) {
         int correctCount = 0;
         int similarCount = 0;
 
         for (int i = 0; i < baseballNumbers.size(); i++) {
             BaseballNumber computerBaseballNumber = baseballNumbers.get(i);
-            BaseballNumber userBaseballNumber = userBaseballNumbers.get(i);
+            BaseballNumber playerBaseballNumber = playerBaseballNumbers.get(i);
 
-            if (computerBaseballNumber.equals(userBaseballNumber)) {
+            if (computerBaseballNumber.equals(playerBaseballNumber)) {
                 correctCount++;
                 continue;
             }
 
-            if (baseballNumbers.contains(userBaseballNumber)) {
+            if (baseballNumbers.contains(playerBaseballNumber)) {
                 similarCount++;
             }
         }
