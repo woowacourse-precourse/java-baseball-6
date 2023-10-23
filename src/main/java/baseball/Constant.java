@@ -1,4 +1,4 @@
-package baseball.gameutil;
+package baseball;
 
 public class Constant {
 

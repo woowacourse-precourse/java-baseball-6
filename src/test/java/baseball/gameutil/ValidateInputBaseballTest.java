@@ -1,8 +1,8 @@
 package baseball.gameutil;
 
-import baseball.game.validate.ValidateInput;
-import baseball.game.validate.ValidateInputGame;
-import baseball.game.validate.ValidateInputRerun;
+import baseball.gameutil.validate.ValidateInput;
+import baseball.gameutil.validate.ValidateInputGame;
+import baseball.gameutil.validate.ValidateInputRerun;
 import baseball.message.MessageString;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

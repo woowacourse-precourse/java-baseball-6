@@ -1,6 +1,6 @@
-package baseball.game.validate;
+package baseball.gameutil.validate;
 
-import baseball.gameutil.Constant;
+import baseball.Constant;
 import baseball.message.MessageString;
 
 public class ValidateInputGame extends ValidateInputCommon implements ValidateInput {

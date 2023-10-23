@@ -1,6 +1,6 @@
 package baseball.message;
 
-import baseball.gameutil.Constant;
+import baseball.Constant;
 
 public class MessageString {
 

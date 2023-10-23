@@ -1,13 +1,12 @@
 package baseball.game;
 
-import baseball.game.validate.ValidateInput;
-import baseball.gameutil.Constant;
+import baseball.Constant;
 import baseball.gameutil.GameInputConverter;
+import baseball.gameutil.InputMod;
 import baseball.gameutil.NumberGenerator;
 import baseball.gameutil.ResultStringGenerator;
 import baseball.gameutil.Score;
 import baseball.gameutil.ScoreCalculator;
-import baseball.io.Input;
 import baseball.io.Output;
 import baseball.message.MessageString;
 import java.util.List;
@@ -43,7 +42,7 @@ public class BaseballGame implements Game {
             runOneGame();
             output.print(MessageString.RESTART_MSG);
             output.print(MessageString.NEW_LINE);
-            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(1);
+            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(InputMod.RERUN);
 
             if (convertedUserInput.get(0) == Constant.RESTART_END) {
                 break;
@@ -58,7 +57,7 @@ public class BaseballGame implements Game {
 
         while (true) {
             output.print(MessageString.PROMT_MSG);
-            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(3);
+            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(InputMod.GAME);
 
             Score score = scoreCalculator.calScore(convertedUserInput, computerInput);
             output.print(resultStringGenerator.result(score));

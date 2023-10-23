@@ -1,7 +1,7 @@
 package baseball.gameutil;
 
-import baseball.game.validate.ValidateInput;
-import baseball.game.validate.ValidateInputFactory;
+import baseball.gameutil.validate.ValidateInput;
+import baseball.gameutil.validate.ValidateInputFactory;
 import baseball.io.Input;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class GameInputConverterBaseball implements GameInputConverter {
     }
 
     @Override
-    public List<Integer> convertBaseballInput(Integer mod) {
+    public List<Integer> convertBaseballInput(InputMod mod) {
         String checkedInput = getCleanInput(mod);
 
         return checkedInput.chars()
@@ -23,7 +23,7 @@ public class GameInputConverterBaseball implements GameInputConverter {
             .toList();
     }
 
-    private String getCleanInput(Integer mod) {
+    private String getCleanInput(InputMod mod) {
         ValidateInput validator = ValidateInputFactory.getValidateInput(mod);
         return validator.validate(input.getInput());
     }
