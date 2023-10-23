@@ -1,6 +1,7 @@
 package baseball.entity;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -13,7 +14,13 @@ public class Game {
     }
 
     private void initAnswer() {
-        List<Integer> integers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> integers = new ArrayList<>();
+        while (integers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!integers.contains(randomNumber)) {
+                integers.add(randomNumber);
+            }
+        }
         this.answer = "";
         for (Integer integer : integers) {
             this.answer += integer.toString();
