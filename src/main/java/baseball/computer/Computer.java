@@ -9,7 +9,7 @@ public class Computer {
     private static final int MIN_GAME_NUMBER_RANGE = 1;
     private static final int MAX_GAME_NUMBER_RANGE = 9;
 
-    public List<Integer> generateAnswer() {
+    public GameNumbers generateAnswer() {
         List<Integer> answer = new ArrayList<>();
 
         while (answer.size() != GAME_NUMBER_SIZE) {
@@ -21,7 +21,7 @@ public class Computer {
 
             answer.add(randomNumber);
         }
-        return answer;
+        return new GameNumbers(answer);
     }
 
     private static int pickRandomNumber() {
