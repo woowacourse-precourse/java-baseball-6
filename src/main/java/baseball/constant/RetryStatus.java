@@ -3,7 +3,7 @@ package baseball.constant;
 import java.util.Arrays;
 
 public enum RetryStatus {
-    RETRY(1),
+    KEEP_GOING(1),
     FINISH(2);
 
     private final Integer retryCommand;
@@ -23,7 +23,7 @@ public enum RetryStatus {
         return this.retryCommand;
     }
 
-    public boolean isFinish() {
-        return this == FINISH;
+    public boolean isKeepGoing() {
+        return this == KEEP_GOING;
     }
 }

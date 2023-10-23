@@ -24,7 +24,7 @@ class RetryStatusTest {
             final RetryStatus retryStatus = RetryStatus.valueOfCommand(command);
 
             // then
-            assertThat(retryStatus).isEqualTo(RetryStatus.RETRY);
+            assertThat(retryStatus).isEqualTo(RetryStatus.KEEP_GOING);
         }
 
         @Test
