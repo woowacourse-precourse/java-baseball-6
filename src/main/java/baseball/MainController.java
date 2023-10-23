@@ -1,16 +1,12 @@
 package baseball;
 
+import baseball.model.Computer;
+import baseball.model.GameData;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
 public class MainController {
-
-    private Validator validator;
-
-    public MainController(Validator validator) {
-        this.validator = validator;
-    }
 
     public void run() {
         OutputView.printMessage("숫자 야구 게임을 시작합니다.");
@@ -26,13 +22,16 @@ public class MainController {
     }
 
     private GameData initGameData() {
-        return new GameData(new Computer());
+        return new GameData(new Computer(Utils.createUniqueNumberList(
+                GameOption.BASEBALL_SIZE,
+                GameOption.BASEBALL_START_NUMBER,
+                GameOption.BASEBALL_END_NUMBER)));
     }
 
     private void proceedGame(GameData gameData) {
         while (true) {
             List<Integer> trial = Utils.splitNumberToDigitList(InputView.inputNumber("숫자를 입력해주세요 : "));
-            validator.validatedBaseballNumber(trial);
+            Validator.validatedBaseballNumber(trial);
             List<Integer> trialResult = gameData.computer().calculateResult(trial);
             OutputView.printResult(trialResult);
             if (isThreeStrike(trialResult)) {
@@ -51,7 +50,7 @@ public class MainController {
 
     private boolean isRestartGame() {
         int inputValue = InputView.inputNumber("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        validator.validatedRestart(inputValue);
+        Validator.validatedRestart(inputValue);
         return inputValue == 1;
     }
 }

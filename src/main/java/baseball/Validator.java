@@ -4,16 +4,16 @@ import java.util.List;
 
 public class Validator {
 
-    public void validatedBaseballNumber(List<Integer> baseballNumber) {
+    public static void validatedBaseballNumber(List<Integer> baseballNumber) {
         validateListInRange(baseballNumber, GameOption.BASEBALL_START_NUMBER, GameOption.BASEBALL_END_NUMBER);
         validateSameNumber(baseballNumber);
     }
 
-    private void validateListInRange(List<Integer> list, int start, int end) {
+    private static void validateListInRange(List<Integer> list, int start, int end) {
         list.forEach(number -> validateInRange(number, start, end));
     }
 
-    private void validateInRange(int number, int start, int end) {
+    private static void validateInRange(int number, int start, int end) {
         if (!Utils.isInRange(number, start, end)) {
             throw new IllegalArgumentException("허용되지 않는 값입니다. " + number);
         }
@@ -28,7 +28,7 @@ public class Validator {
         }
     }
 
-    public void validatedRestart(int inputValue) {
+    public static void validatedRestart(int inputValue) {
         validateInRange(inputValue, 1, 2);
     }
 }
