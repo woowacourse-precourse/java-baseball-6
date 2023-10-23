@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GameController {
     private final Computer computer;
@@ -23,6 +24,7 @@ public class GameController {
         targetNumbers = computer.generateRandomNumbers();
         while (!isGameOver) {
             List<Integer> userGuess = input.getUserGuess();
+            Map<String, Integer> result = computer.compareNumbers(targetNumbers, userGuess);
         }
     }
 }
