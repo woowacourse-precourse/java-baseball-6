@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.feature.GenerateRandomNumber;
 import java.util.List;
 
 public class Game {

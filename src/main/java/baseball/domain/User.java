@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -10,8 +10,7 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         checkInput(input);
-        List<Integer> user = modifyStringToList(input);
-        return user;
+        return modifyStringToList(input);
     }
 
     private List<Integer> modifyStringToList(String input) {

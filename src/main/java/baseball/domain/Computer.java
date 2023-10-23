@@ -1,5 +1,7 @@
-package baseball;
+package baseball.domain;
 
+import baseball.feature.GamePrint;
+import baseball.feature.StrikeBallCount;
 import java.util.List;
 
 public class Computer {

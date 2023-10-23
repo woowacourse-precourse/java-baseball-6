@@ -1,4 +1,4 @@
-package baseball;
+package baseball.feature;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -17,5 +17,5 @@ public class StrikeBallCount {
                         user.get(i)))
                 .count();
     }
-    
+
 }
