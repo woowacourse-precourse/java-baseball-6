@@ -8,6 +8,7 @@ public class Controller{
     private List<Integer> playerNum = new ArrayList<>();
     private boolean flag = false;
     private static final String ANSWER_SENTENCE = "3개의 숫자를 모두 맞히셨습니다 ! 게임 종료";
+    private static final String THREE_STRIKE = "3스트라이크 ";
 
     Model model = new Model();
     View view = new View();
@@ -29,7 +30,8 @@ public class Controller{
     }
     public void sendHint(String hint){
         view.printHint(hint);
-        if (hint.equals(ANSWER_SENTENCE)){
+        if (hint.equals(THREE_STRIKE)){
+            view.printEndGame();
             sendRestartOrExit();
         }
     }
@@ -46,6 +48,7 @@ public class Controller{
         }
 
     }
+
 
 
 }
