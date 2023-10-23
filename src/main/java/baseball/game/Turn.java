@@ -1,11 +1,11 @@
-package baseball.object.game;
+package baseball.game;
 
 import baseball.io.Output;
-import baseball.object.generic.BallCount;
-import baseball.object.number.BaseballNumbers;
-import baseball.object.number.WinningNumbers;
-import baseball.object.number.generator.BaseballNumbersGenerator;
-import baseball.object.number.generator.WinningNumbersGenerator;
+import baseball.collaborator.generic.BallCount;
+import baseball.collaborator.number.BaseballNumbers;
+import baseball.collaborator.number.WinningNumbers;
+import baseball.collaborator.number.generator.BaseballNumbersGenerator;
+import baseball.collaborator.number.generator.WinningNumbersGenerator;
 
 public class Turn {
 

@@ -1,4 +1,4 @@
-package baseball.object.game;
+package baseball.game;
 
 import baseball.io.Input;
 import baseball.io.Output;
@@ -33,10 +33,13 @@ public class BaseballGame {
         Output.consoleLine(GAME_START_MESSAGE);
     }
 
+    // TODO : 리터럴 상수 제거할 것
     private void announceWin() {
         Output.consoleLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    // TODO : 과도한 상수 사용 -> enum으로 교체
+    // TODO : Input.consoleLine() -> consoleNumber()로 교체
     private void askRestart() {
         Output.consoleLine(GAME_RESTART_MESSAGE);
         String inputRestart = Input.consoleLine();
