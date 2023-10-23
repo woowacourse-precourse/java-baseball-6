@@ -16,7 +16,7 @@ public class ConsoleAttacker implements Attacker {
 	}
 
 	@Override
-	public Balls getBalls() {
+	public Balls attack() {
 		if (Objects.isNull(balls)) {
 			throw new NotInitializeBallException();
 		}

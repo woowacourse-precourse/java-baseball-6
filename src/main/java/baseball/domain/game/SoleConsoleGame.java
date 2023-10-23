@@ -36,7 +36,7 @@ public class SoleConsoleGame extends SoleGame {
 	protected Balls getBalls() {
 		List<Long> numbers = getSelector().selectNumbers();
 		attacker.initialize(BallGenerator.generate(numbers));
-		return attacker.getBalls();
+		return attacker.attack();
 	}
 
 	@Override

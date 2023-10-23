@@ -6,5 +6,5 @@ import baseball.exception.rutime.NotInitializeBallException;
 
 public interface Attacker extends Player {
 
-    Balls getBalls() throws NotInitializeBallException;
+    Balls attack() throws NotInitializeBallException;
 }
