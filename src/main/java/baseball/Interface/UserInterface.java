@@ -1,14 +1,22 @@
 package baseball.Interface;
 
 import baseball.game.BaseballGame;
-import java.util.Scanner;
+import java.io.Console;
 
 public class UserInterface {
-    private final Scanner scanner;
+    private final Console console;
     private final BaseballGame baseballGame;
 
-    public UserInterface(Scanner scanner, BaseballGame baseballGame) {
-        this.scanner = scanner;
+    public UserInterface(Console console, BaseballGame baseballGame) {
+        this.console = console;
         this.baseballGame = baseballGame;
     }
+
+    public void start() {
+        startGame
+        while (true) {
+            System.out.println();
+        }
+    }
+
 }

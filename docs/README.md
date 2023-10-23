@@ -60,12 +60,11 @@
     - 사용자의 입력을 받는 스캐너
     - BaseballGame
 - 생성자
-- Scanner와 BaseballGame을 주입받는 생성자
+    - Scanner와 BaseballGame을 주입받는 생성자
 - 메서드
-    - 멤버변수를 외부에서 주입받는 생성자
     - 프로그램을 시작하는메서드
-    - 사용자 입력을받는 메서드
     - 게임을 시작하는메서드
+    - 사용자 입력을받는 메서드
 
 ## Application
 
