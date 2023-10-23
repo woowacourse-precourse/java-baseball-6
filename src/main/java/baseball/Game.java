@@ -8,7 +8,7 @@ public class Game {
     public static ArrayList<Integer> userNumber = new ArrayList<>(); // 유저 숫자 저장을 위한 arraylist
     public static int strikeCount = 0; // 스트라이크 갯수 저장을 위한 변수
     public static int ballCount = 0; // 볼 갯수 저장을 위한 변수
-    public void GameStart() {
+    public void gameStart() {
 
         Computer computer = new Computer();
         User user = new User();
@@ -21,7 +21,7 @@ public class Game {
 
         while(true){
             // 스트라이크, 볼, 유저 숫자 초기화
-            InitializationGameSetting();
+            initializationGameSetting();
 
             System.out.print("숫자를 입력해주세요 : ");
             //유저 숫자 입력 받는 메서드
@@ -42,7 +42,7 @@ public class Game {
 
     }
     // 스트라이크, 볼, 유저 숫자 초기화 메서드
-    public void InitializationGameSetting(){
+    public void initializationGameSetting(){
         strikeCount = 0;
         ballCount = 0;
         userNumber = new ArrayList<>();
