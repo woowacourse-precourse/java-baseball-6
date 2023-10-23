@@ -1,12 +1,18 @@
 package baseball;
 
-import baseball.trasaction.BaseballGameTransaction;
+import baseball.io.Output;
+import baseball.object.game.BaseballGame;
 
 public class Application {
 
     public static void main(String[] args) {
-        BaseballGameTransaction gameTransaction = new BaseballGameTransaction();
-        gameTransaction.run();
+        try {
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.play();
+        } catch (IllegalArgumentException e) {
+            Output.consoleLine("예외가 발생하여 어플리케이션을 종료합니다.");
+            throw e;
+        }
     }
 
 }
