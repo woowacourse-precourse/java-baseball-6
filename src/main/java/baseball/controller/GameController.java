@@ -46,8 +46,7 @@ public class GameController {
         }
         InputView.printCheat(computerNumbers);
         InputView.printRequestingInput();
-        BaseballNumbers userNumbers = InputView.getUserNumbers();
-        return userNumbers;
+        return InputView.getUserNumbers();
     }
 
     private void restartOrNot(String input) {
