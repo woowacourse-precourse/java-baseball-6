@@ -37,13 +37,13 @@ public class Computer {
     }
 
     public void printHint(GameResult result) {
-        if (result.getBalls() > 0) {
-            System.out.print(result.getBalls() + "볼 ");
+        if (result.balls() > 0) {
+            System.out.print(result.balls() + "볼 ");
         }
-        if (result.getStrikes() > 0) {
-            System.out.print(result.getStrikes() + "스트라이크");
+        if (result.strikes() > 0) {
+            System.out.print(result.strikes() + "스트라이크");
         }
-        if (result.getBalls() == 0 && result.getStrikes() == 0) {
+        if (result.balls() == 0 && result.strikes() == 0) {
             System.out.print("낫싱");
         }
         System.out.println();

@@ -6,8 +6,8 @@ import java.util.*;
 
 public class BaseballGameManger {
 
-    private User user;
-    private Computer computer;
+    private final User user;
+    private final Computer computer;
 
     public BaseballGameManger(User user, Computer computer) {
         this.user = user;
