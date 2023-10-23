@@ -21,6 +21,8 @@ public abstract class Message {
     public static final String STRIKE = "STRIKE";
     public static final String BALL = "BALL";
     public static final String NOTHING = "NOTHING";
+    public static final String COMPUTER = "COMPUTER";
+    public static final String PLAYER = "PLAYER";
 
     // 야구 게임 자릿수
     public static final int COUNT = 3;
