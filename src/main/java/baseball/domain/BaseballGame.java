@@ -18,6 +18,7 @@ public class BaseballGame {
         while (true) {
             List<Integer> baseballNumbers = this.generateBaseballNumbers();
             List<Integer> playerNumbers = this.pickThreeNumbers();
+            int[] hits = this.checkHitsResult(baseballNumbers, playerNumbers);
         }
     }
 
@@ -47,5 +48,19 @@ public class BaseballGame {
         }
 
         return inputNumbers.stream().toList();
+    }
+
+    private int[] checkHitsResult(List<Integer> baseballNumbers, List<Integer> playerNumbers) {
+        int[] hits = new int[2];
+
+        for (int i = 0; i < baseballNumbers.size(); i++) {
+            if (baseballNumbers.get(i).equals(playerNumbers.get(i))) {
+                hits[1] += 1;
+            }
+            if (baseballNumbers.contains(playerNumbers.get(i))) {
+                hits[0] += 1;
+            }
+        }
+        return hits;
     }
 }
