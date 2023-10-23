@@ -26,27 +26,28 @@ class BaseballGameManager{
     }
 
     public void start() throws IllegalArgumentException {
-        do{
-            prepareForNewGame();
-            view.startGameAnnouncement();           // 게임 시작시 문자열을 출력합니다.
+        while(!model.checkGameFinish()){            // User가 2를 입력하는 경우까지 시행한다.
+            prepareForNewGame();                    // 새로운 게임의 시작을 위해 일부 변수를 초기화합니다.
             loadNewGame();                          // 새로운 게임을 시작합니다.
-            getUserFinishInput();                   // 유저에게 게임의 재시작 여부를 묻습니다.
-        }while(!model.checkGameFinish());            // User가 2를 입력하는 경우까지 시행한다.
-    }
-
-    public void loadNewGame() throws IllegalArgumentException {
-        while(model.getStrikeCount() != 3) {
-            view.promptUserForRoundGuess();         // 유저에게 숫자 입력을 안내합니다.
-            getUserNumberInput();                   // 유저에게 숫자를 입력받아 Model의 userNumber Array에 넣습니다.
-            model.calculateScore();                 // 해당 라운드의 점수를 계산합니다.
-            printRoundScore();
+            getUserFinishOrRestart();               // 유저에게 게임의 재시작/종료 여부를 묻습니다.
         }
     }
 
     public void prepareForNewGame(){
-        model.setFinishNumbers();
-        model.resetScores();
-        model.generateComputerNumbers();
+        view.startGameAnnouncement();               // 게임 시작시 문자열을 출력합니다.
+        model.resetComputerNumbers();               // 게임에서 사용할 컴퓨터의 숫자를 초기화합니다.
+        model.generateComputerNumbers();            // 게임에서 사용할 컴퓨터의 숫자를 새로 생성합니다.
+        model.resetScores();                        // 라운드의 점수 계산전 이전 라운드의 점수를 초기화합니다.
+    }
+
+    public void loadNewGame() throws IllegalArgumentException {
+        do{
+            model.resetScores();                    // 라운드의 점수 계산전 이전 라운드의 점수를 초기화합니다.
+            view.promptUserForRoundGuess();         // 유저에게 숫자 입력을 안내합니다.
+            getUserNumberInput();                   // 유저에게 숫자를 입력받아 Model의 userNumber Array에 넣습니다.
+            model.calculateScore();                 // 해당 라운드의 점수를 계산합니다.
+            printRoundScore();                      // 해당 라운드의 점수를 출력합니다.
+        }while(model.getStrikeCount() != 3);        // 스트라이크가 3개가 될 때까지 진행합니다.
     }
 
     public void getUserNumberInput() throws IllegalArgumentException {
@@ -57,8 +58,8 @@ class BaseballGameManager{
         model.roundNumberConvertIntToArraylist();
     }
 
-    public void getUserFinishInput() throws IllegalArgumentException{
-        view.prinfFinishAnnouncement();
+    public void getUserFinishOrRestart() throws IllegalArgumentException{
+        view.printFinishAnnouncement();
         model.readLineFinishInput();
         model.checkUserFinishNumberLength();
         model.finishNumberConvertStringToInt();
@@ -81,49 +82,44 @@ class BaseballGameManager{
 // Model
 class BaseballGame {
 
-    // Variables
+    // Constant
+    public static final int ROUND_SIZE = 3;
+    public static final int FINISH_SIZE = 1;
+    public static final int GAME_FINISH = 2;
+    public static final int GAME_RESTART = 1;
 
-    List<Integer> computerNumbers;
-    List<Integer> userNumbers;
-    List<Integer> finishNumbers;
-    int strikeCount;
-    int ballCount;
-    int gameFinish;
-    int userInputInteger;
-    String userFinishInput;
-    String userRoundInput;
+    // Variables
+    private List<Integer> computerNumbers;
+    private List<Integer> userNumbers;
+    private int strikeCount;
+    private int ballCount;
+    private int gameFinish;
+    private int userInputInteger;
+    private String userFinishInput;
+    private String userRoundInput;
 
     public BaseballGame() {
         this.computerNumbers = new ArrayList<>();
         this.userNumbers = new ArrayList<>();
-        this.finishNumbers = new ArrayList<>();
         this.strikeCount = 0;
         this.ballCount = 0;
-        this.gameFinish = 1;
+        this.gameFinish = 3;
         this.userInputInteger = 0;
         this.userFinishInput = null;
         this.userRoundInput = null;
     }
 
     // Methods
-
     public boolean checkGameFinish(){
-        return gameFinish == 2;
-    }
-
-    public void setFinishNumbers(){
-        if(finishNumbers.isEmpty()) {
-            finishNumbers.add(1);
-            finishNumbers.add(2);
-        }
+        return this.gameFinish == 2;
     }
 
     public void readLineFinishInput(){
-        userFinishInput = Console.readLine();
+        this.userFinishInput = Console.readLine();
     }
 
     public void checkUserFinishNumberLength() throws IllegalArgumentException{
-        if(userFinishInput.length() != 1){
+        if(userFinishInput.length() != FINISH_SIZE){
             throw new IllegalArgumentException();
         }
     }
@@ -131,10 +127,9 @@ class BaseballGame {
     public void finishNumberConvertStringToInt() throws IllegalArgumentException{
         try{
             int userFinishInputInt = Integer.parseInt(userFinishInput);
-            if(finishNumbers.contains(userFinishInputInt))
-                gameFinish = userFinishInputInt;
-            if(!finishNumbers.contains(userFinishInputInt))
+            if( userFinishInputInt != GAME_RESTART && userFinishInputInt != GAME_FINISH )
                 throw new IllegalArgumentException();
+            this.gameFinish = userFinishInputInt;
         }
         catch ( NumberFormatException | NullPointerException e) {
             throw new IllegalArgumentException();
@@ -142,18 +137,18 @@ class BaseballGame {
     }
 
     public void readLineRoundInput(){
-        userRoundInput = Console.readLine();
+        this.userRoundInput = Console.readLine();
     }
 
     public void checkUserRoundNumberLength() throws IllegalArgumentException{
-        if(userRoundInput.length() != 3){
+        if(userRoundInput.length() != ROUND_SIZE){
             throw new IllegalArgumentException();
         }
     }
 
     public void roundNumberConvertStringToInt() throws IllegalArgumentException{
         try {
-            userInputInteger = Integer.parseInt(userRoundInput);
+            this.userInputInteger = Integer.parseInt(userRoundInput);
         }
         catch ( NumberFormatException | NullPointerException e) {
             throw new IllegalArgumentException();
@@ -175,10 +170,6 @@ class BaseballGame {
         userNumbers.clear();
     }
 
-    public void resetComputerNumbers(){
-        computerNumbers.clear();
-    }
-
     public boolean checkUserNumberForDuplicates(int insertNumber){
         return userNumbers.contains(insertNumber);
     }
@@ -188,23 +179,26 @@ class BaseballGame {
     }
 
     public void generateComputerNumbers() {
-        if(!computerNumbers.isEmpty()){
-            resetComputerNumbers();
-        }
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < ROUND_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
+        System.out.println(computerNumbers);
+    }
+
+    public void resetComputerNumbers(){
+        if(!computerNumbers.isEmpty()){
+            computerNumbers.clear();
+        }
     }
 
     public void calculateScore(){
-        resetScores();
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < ROUND_SIZE; index++) {
             int indexUserNumber = userNumbers.get(index);
             int indexComputerNumber = computerNumbers.get(index);
-            if(indexUserNumber == indexComputerNumber) {
+            if( indexComputerNumber == indexUserNumber){
                 incrementStrikeCount();
             }
             if(computerNumbers.contains(indexUserNumber) && indexComputerNumber != indexUserNumber){
@@ -212,6 +206,7 @@ class BaseballGame {
             }
         }
     }
+
 
     public void incrementStrikeCount() {
         strikeCount += 1;
@@ -222,8 +217,8 @@ class BaseballGame {
     }
 
     public void resetScores() {
-        strikeCount = 0;
-        ballCount = 0;
+        this.strikeCount = 0;
+        this.ballCount = 0;
     }
 
     public int getStrikeCount() {
@@ -242,7 +237,7 @@ class OutputView{
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void prinfFinishAnnouncement(){
+    public void printFinishAnnouncement(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
