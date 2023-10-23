@@ -36,8 +36,8 @@ public class BaseballGame {
         while (true) {
             List<Integer> inputNumberList = inputBaseballNumberList();
             BaseballCount baseballCount = checkBaseballResult(answerNumberList, inputNumberList);
-            printBaseballResult(baseballCount);
-            if (baseballCount.getStrike() == 3) {
+            baseballCount.printBaseballResult();
+            if (baseballCount.isAllStrike()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -109,20 +109,5 @@ public class BaseballGame {
             }
         }
         return ball;
-    }
-
-    private void printBaseballResult(BaseballCount baseballCount) {
-        if (baseballCount.getStrike() == 0 && baseballCount.getBall() == 0) {
-            System.out.println("낫싱");
-        } else if (baseballCount.getStrike() > 0 || baseballCount.getBall() > 0) {
-            StringBuilder stringBuilder = new StringBuilder();
-            if (baseballCount.getBall() != 0) {
-                stringBuilder.append(baseballCount.getBall()).append("볼 ");
-            }
-            if (baseballCount.getStrike() != 0) {
-                stringBuilder.append(baseballCount.getStrike()).append("스트라이크");
-            }
-            System.out.println(stringBuilder.toString().trim());
-        }
     }
 }
