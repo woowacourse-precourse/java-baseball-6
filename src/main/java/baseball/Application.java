@@ -6,10 +6,10 @@ import baseball.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         OutputView.printStart();
-        GameController gameController = GameController.getInstance();
+        boolean continueRunning = true;
 
-        while (gameController.isWantRestart()) {
-            gameController.run();
+        while (continueRunning) {
+            continueRunning = GameController.run();
         }
     }
 }
