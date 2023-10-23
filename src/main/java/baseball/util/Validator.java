@@ -1,12 +1,11 @@
-package baseball.validation;
+package baseball.util;
 
 import baseball.constant.NumberConst;
-import baseball.util.MessageUtil;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputValidator {
+public class Validator {
     // TODO: 입력받은 값의 유효성 검사
     private static final int validationMaxValue = NumberConst.MAX_INPUT_VALUE; // 입력 받은 값의 최대 값
     private static final int validationMinValue = NumberConst.MIN_INPUT_VALUE; // 입력 받은 값의 최소 값
@@ -19,7 +18,7 @@ public class InputValidator {
      * 매개변수 : 입력 받은 값(문자열)
      * 반환 값 : 리스트(숫자)
      */
-    private List<Integer> convertStringToList(String input) {
+    private static List<Integer> convertStringToList(String input) {
         // TODO: String 타입을 List 타입으로 변환하여 반환
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
@@ -32,10 +31,10 @@ public class InputValidator {
      * 반환 값 : 입력 받은 문자열을 리스트로 변환하여 반환
      * 1. 입력받은 값이 숫자만 포함하고 있는지 확인
      * 2. 중복 숫자 있는지 확인 용도
-     * 3. 3자리 초과 혹은 미만 값 입력
+     * 3. inputNumLength 자리 초과 혹은 미만 값 입력
      * 유효성 검사 실패 시 IllegalArgumentException 발생
      */
-    public List<Integer> validateInputValueAndReturnList(String inputValue) {
+    public static List<Integer> validateInputValueAndReturnList(String inputValue) {
         // TODO: 입력받은 값 유효성 검사
         List<Integer> result;
 
@@ -44,13 +43,18 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
 
-        validateInputIsNumeric(inputValue); // 입력받은 값이 숫자만 있는지 확인
+        // 입력받은 값이 숫자만 있는지 확인
+        validateInputIsNumeric(inputValue);
 
-        result = convertStringToList(inputValue); // 숫자만 있을 경우 String 타입을 List<Integer> 타입으로 변경
-        validateInputIsOneToNine(result); // 입력받은 값 중 1부터 9사이만 존재하는지 확인
+        // 숫자만 있을 경우 String 타입을 List<Integer> 타입으로 변경
+        result = convertStringToList(inputValue);
+        // 입력받은 값 중 validationMaxValue 부터 validationMinValue 사이만 존재하는지 확인
+        validateInputIsOneToNine(result);
 
-        validateInputDuplicated(result); // 입력받은 값 중 중복 숫자가 있는지 확인
-        validateInputLength(result); // 입력받은 값이 3글자 초과 혹은 미만인지 확인
+        // 입력받은 값 중 중복 숫자가 있는지 확인
+        validateInputDuplicated(result);
+        // 입력받은 값이 inputNumLength 자리 초과 혹은 미만인지 확인
+        validateInputLength(result);
 
         return result;
     }
@@ -75,7 +79,7 @@ public class InputValidator {
      */
     private static void validateInputDuplicated(List<Integer> inputValue) {
         // TODO: 입력받은 값 중복 숫자 유효성 검사
-        if (inputValue.size() != inputValue.stream().distinct().count()) {
+        if (inputValue.size() != inputValue.stream().distinct().count()) { // 전체 사이즈와 중복 제거된 사이즈 비교
             MessageUtil.printDuplicatedInputNumber();
             throw new IllegalArgumentException();
         }
@@ -103,8 +107,8 @@ public class InputValidator {
     private static void validateInputIsNumeric(String inputValue) {
         // TODO: 입력받은 값이 숫자인지 유효성 검사
         try {
-            Integer.parseInt(inputValue);
-        } catch (NumberFormatException exception) {
+            Integer.parseInt(inputValue); // 숫자 변환
+        } catch (NumberFormatException exception) { // 숫자 변환 시 NumberFormatException 발생 : 숫자가 아닌 문자가 포함된 경우
             MessageUtil.printInvalidNumeric();
             throw new IllegalArgumentException();
         }
