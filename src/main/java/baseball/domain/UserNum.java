@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class UserNum {
+    private static final int USER_NUM_SIZE = 3;
+    private static final int ZERO = 0;
     private List<Integer> number;
 
     public UserNum() {
@@ -26,13 +28,13 @@ public class UserNum {
     }
 
     private void checkLength() {
-        if (number.size() != 3) {
+        if (number.size() != USER_NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
     private void checkContainZero() {
-        if (number.contains(0)) {
+        if (number.contains(ZERO)) {
             throw new IllegalArgumentException();
         }
     }
@@ -40,7 +42,7 @@ public class UserNum {
     private void duplicateNumCheck() {
         HashSet<Integer> checkSet = new HashSet<>(number);
 
-        if (checkSet.size() != 3) {
+        if (checkSet.size() != USER_NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
