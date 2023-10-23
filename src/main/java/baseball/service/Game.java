@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.dto.Score;
-import baseball.util.RandomNumberGenerator;
+import baseball.util.RandomNumGenerator;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.platform.commons.util.StringUtils;
 
@@ -21,27 +21,36 @@ public class Game {
         this.score = score;
     }
 
-    public Game() {
-        this(new Computer(RandomNumberGenerator.getRandom3Number()), new Score());
+    public Game(RandomNumGenerator gameNumberGenerator) {
+        this(new Computer(gameNumberGenerator.getRandomNumber()), new Score());
     }
 
     public void playGame() {
         while (score.getStatus() == PLAY) {
-            System.out.println(GAME_NUMBER_INPUT_STRING);
-            List<Integer> userNum = getUserNums(Console.readLine());
-            score = computer.getScore(userNum);
+            System.out.print(GAME_NUMBER_INPUT_STRING);
+            score = getOneRoundScore(Console.readLine());
             System.out.println(score.getScoreToString());
         }
-
         System.out.println(GAME_END_STRING);
-        System.out.println(GAME_RESTART_INPUT);
+    }
+
+    private Score getOneRoundScore(String input) {
+        List<Integer> userNum = getValidUserNums(input);
+        return computer.getScore(userNum);
     }
 
 
-    public List<Integer> getUserNums(String readLine) {
+    public List<Integer> getValidUserNums(String readLine) {
+        validUserNumbers(readLine);
+        return getUserNumbers(readLine);
+    }
+
+    private static void validUserNumbers(String readLine) {
         if (StringUtils.isBlank(readLine) || readLine.length() != NUMBER_SIZE) //잚못된 개수의 문자를 입력한 경우
             throw new IllegalArgumentException(ERROR_INVALID_NUMBER);
+    }
 
+    private static List<Integer> getUserNumbers(String readLine) {
         List<Integer> nums = new ArrayList<>();
         for (char num : readLine.toCharArray()) {
             if (!Character.isDigit(num)) {
