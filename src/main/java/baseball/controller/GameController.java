@@ -16,6 +16,10 @@ public class GameController {
 
 	public void run() {
 		OutputView.printStartGuide();
+		play();
+	}
+
+	private void play() {
 		playBaseBallGame();
 		replayOrExitGame();
 	}
@@ -42,8 +46,7 @@ public class GameController {
 	private void replayOrExitGame() {
 		String replayCommandInput = getReplayCommandInput();
 		if (gameService.isReplay(replayCommandInput)) {
-			playBaseBallGame();
-			replayOrExitGame();
+			play();
 		}
 	}
 
