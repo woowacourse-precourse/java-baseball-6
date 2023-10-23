@@ -39,7 +39,8 @@ public class OutputView {
         appendIfNonZero(status, ballCount, BALL);
         appendIfNonZero(status, strikeCount, STRIKE);
 
-        return status.toString().trim();
+        return status.toString()
+                .trim();
     }
 
     private void appendIfNonZero(final StringBuilder status, final int count, final String symbol) {
