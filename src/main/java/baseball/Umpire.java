@@ -8,6 +8,13 @@ public class Umpire {
     private Integer ball = 0;
     private boolean nothing = false;
 
+    public Umpire(){}
+    public Umpire(Integer strike, Integer ball, boolean nothing) {
+        this.strike = strike;
+        this.ball = ball;
+        this.nothing = nothing;
+    }
+
     public Integer getStrike() {
         return strike;
     }

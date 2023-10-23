@@ -1,23 +1,26 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         // TODO: 프로그램 구현
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        GameManager gameManager = new GameManager();
         Computer computer = new Computer();
-        List<Integer> answer = computer.createAnswer();
 
-        ArrayList<Integer> trial = new ArrayList<>();
-        trial.add(3);
-        trial.add(6);
-        trial.add(9);
+        try{
 
-        Umpire umpire = new Umpire();
+            gameManager.startGame(computer);
 
-        umpire.judge(answer,trial);
-        System.out.println(answer);
-        System.out.println("Strike : "+umpire.getStrike() +", ball : " + umpire.getBall() + ", nothing : "+ umpire.isNothing());
+        } catch (IOException e){
+
+            throw new IllegalArgumentException(e);
+        }
+
     }
 }
