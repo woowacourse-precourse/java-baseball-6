@@ -33,9 +33,13 @@ public class User {
     private void validType(String input) {
         for (int i = 0; i < input.length(); i++) {
             int type = input.charAt(i) - '0';
-            if (type < START_NUMBER_INT || type > END_NUMBER_INT) {
-                throw new IllegalArgumentException("exist non-numeric type");
-            }
+            isNumericType(type);
+        }
+    }
+
+    private void isNumericType(int type) {
+        if (type < START_NUMBER_INT || type > END_NUMBER_INT) {
+            throw new IllegalArgumentException("exist non-numeric type");
         }
     }
 
