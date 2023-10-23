@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.service.handler;
 
 
 public class InputValidator {

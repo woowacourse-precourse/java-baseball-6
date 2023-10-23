@@ -2,8 +2,6 @@ package baseball.service.handler;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.service.InputValidator;
-
 public class Player {
 
     private String player_number = "";
