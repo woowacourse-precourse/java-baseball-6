@@ -12,6 +12,7 @@ public class Constant {
     public static class PlayGame{
         public static final String PLAY_START_MESSAGE = "숫자를 입력해주세요 : ";
         public static final String CROP_UNIT = "";
+        public static final String BLANK = " ";
         public static final int NUMBER_LENGTH = 3;
         public static final String STRIKE_STRING = "스트라이크";
         public static final String BALL_STRING = "볼";

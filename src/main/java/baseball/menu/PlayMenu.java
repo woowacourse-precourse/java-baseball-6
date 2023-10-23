@@ -19,9 +19,9 @@ public class PlayMenu {
             String inputNumber = readNumber();
             List<Integer> numbers = checkNumberException(inputNumber);
             int strike = checkStrike(randomNumber, numbers, visited);
-            if(strike == NUMBER_LENGTH) return;
             int ball = checkBall(randomNumber, numbers, visited);
             printAnswer(strike, ball);
+            if(strike == NUMBER_LENGTH) return;
         }
     }
 
@@ -44,7 +44,7 @@ public class PlayMenu {
     // 숫자 에러 처리
     private static List<Integer> checkNumberException(String inputNumber) {
         // 숫자가 3자리가 아닌 경우
-        if(inputNumber.length() > NUMBER_LENGTH) throw new IllegalArgumentException();
+        if(inputNumber.length() != NUMBER_LENGTH) throw new IllegalArgumentException();
         List<Integer> numbers = new ArrayList<>();
         // 같은 값을 입력하거나 숫자가 아닌 값을 입력한 경우
         try{
@@ -85,8 +85,8 @@ public class PlayMenu {
 
     // 결과값 출력
     private void printAnswer(int strike, int ball) {
+        if(ball != 0) System.out.print(ball +BALL_STRING + BLANK);
         if(strike != 0) System.out.print(strike +STRIKE_STRING);
-        if(ball != 0) System.out.print(ball +BALL_STRING);
         if (strike == 0 && ball == 0)System.out.print(NOTHING_STRING);
         System.out.println();
     }
