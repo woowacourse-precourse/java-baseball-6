@@ -1,8 +1,8 @@
 package baseball.api;
 
 public class Count {
-    int strikeCount = 0;
-    int ballCount = 0;
+    private int strikeCount = 0;
+    private int ballCount = 0;
 
     public void incrementStrikeCount(){
         strikeCount++;

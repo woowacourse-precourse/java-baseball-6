@@ -21,7 +21,7 @@ public class GameStarter {
         this.gameHelper = gameHelper;
     }
 
-    public GameHelper run() throws IllegalArgumentException{
+    public GameHelper run() throws IllegalArgumentException {
         if (!retryFlag){
             System.out.println(START_MESSAGE);
         }
@@ -45,7 +45,7 @@ public class GameStarter {
                 .forEach(i -> processGuessDigit(input, result, i));
     }
 
-    private void processGuessDigit(String input, String result, int index){
+    private void processGuessDigit(String input, String result, int index) {
         char inputChar = input.charAt(index);
         char resultChar = result.charAt(index);
 

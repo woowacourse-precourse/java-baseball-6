@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 public class RequestChecker {
     private static final int NUMBER_LENGTH = 3;
 
-    public static String gameRequest() throws IllegalArgumentException{
+    public static String gameRequest() throws IllegalArgumentException {
         String input = Console.readLine();
         validateUserInput(input);
         return input;
     }
 
-    private static void validateUserInput(String input) throws IllegalArgumentException{
+    private static void validateUserInput(String input) throws IllegalArgumentException {
         if (!isNumericAndThreeDigits(input)){
             throw new IllegalArgumentException("사용자의 입력값은 3자리 수이며 1-9까지의 값만 가능합니다.");
         } else if (!hasDuplicateDigits(input)) {
@@ -29,7 +29,7 @@ public class RequestChecker {
         return false;
     }
 
-    private static boolean hasDuplicateDigits(String input){
+    private static boolean hasDuplicateDigits(String input) {
         int length = input.chars()
                 .mapToObj(Integer::valueOf)
                 .collect(Collectors.toSet())
@@ -38,7 +38,7 @@ public class RequestChecker {
         return length == NUMBER_LENGTH ? true : false;
     }
 
-    public static String retryRequest(){
+    public static String retryRequest() {
         return Console.readLine();
     }
 }
