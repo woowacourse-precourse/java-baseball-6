@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class GameController {
 
@@ -26,8 +25,7 @@ public class GameController {
     while (true) {
       System.out.print("숫자를 입력해주세요 : ");
 
-      Scanner scanner = new Scanner(System.in);
-      int inputNum = scanner.nextInt();
+      Integer inputNum = Integer.parseInt(Console.readLine());
       List<Integer> inputNumList = numberController.splitter(inputNum);
 
       Map<String, Integer> report = numberController.compareNumberList(resultNumList, inputNumList);
@@ -40,7 +38,7 @@ public class GameController {
 
         while (true) {
           System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-          gameStatusNumber = scanner.nextInt();
+          gameStatusNumber = Integer.parseInt(Console.readLine());
 
           if(gameStatusNumber != 1 && gameStatusNumber != 2) {
             System.out.println("잘못된 숫자를 입력하셨습니다.");
