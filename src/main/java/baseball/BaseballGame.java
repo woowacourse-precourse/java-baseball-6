@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.BufferedReader;
@@ -49,22 +50,28 @@ public class BaseballGame {
      * (2) 사용자 입력
      */
     public void guess() {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            String userInput;
+        try {
+            String userInput = null;
             do {
                 System.out.print("숫자를 입력해주세요 : ");
-                userInput = br.readLine();
+                userInput = Console.readLine();
                 Validator.validateUserInput(userInput);
+                System.out.println(ScoreJudge.judgeScore(generatedAnswers, userInput));
             } while (!isCorrectAnswer(userInput));
-        } catch (IOException e) {
-            System.out.println(e.toString());
         } catch (IllegalArgumentException e) {
             System.out.println(e.toString());
         }
     }
 
+    /**
+     * (3) 정답 여부 판정
+     */
     public boolean isCorrectAnswer(String userInput) {
-        return userInput.equals(collectAnswers());
+        if (userInput.equals(collectAnswers())) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
     }
 
     /**
