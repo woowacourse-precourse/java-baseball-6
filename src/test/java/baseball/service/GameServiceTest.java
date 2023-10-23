@@ -20,31 +20,21 @@ class GameServiceTest {
 
     @Test
     void 사용자_문자열_파싱테스트_길이오류() {
-        //given
         String input = "1234";
-        //when
-
-        //then
         assertThatThrownBy(() -> gameService.parseInput(input))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("제한길이");
     }
 
     @Test
     void 사용자_문자열_파싱테스트_숫자가_아닌_문자입력() {
-        //given
         String input = "1a4";
-        //when
-        //then
         assertThatThrownBy(() -> gameService.parseInput(input))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("숫자형식이 아닙니다.");
     }
 
     @Test
     void 사용자_문자열_파싱테스트_중복숫자입력() {
-        //given
         String input = "113";
-        //when
-        //then
         assertThatThrownBy(() -> gameService.parseInput(input))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("중복");
     }
@@ -52,11 +42,8 @@ class GameServiceTest {
 
     @Test
     void 사용자_문자열_파싱테스트_파싱_성공() {
-        //given
         String input = "123";
-        //when
         List<Integer> parsedInput = gameService.parseInput(input);
-        //then
         assertThat(parsedInput).containsExactly(1,2,3);
     }
 
