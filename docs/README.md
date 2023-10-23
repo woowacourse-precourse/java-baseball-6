@@ -59,7 +59,8 @@
 - isNothing 메소드
   - 사용자 입력과 컴퓨터 입력을 비교한 결과 같은 수가 전혀 없으면 낫싱이라 판단한다.
   - return 타입은 boolean형이다. 
-
+- baseballGameServiceStart 메소드
+  - 컴퓨터의 3자리 난수를 생성하고, 사용자 입력과 비교하는 일련의 과정을 처리한다.  
 ### Validation 
 사용자의 입력을 검증한다. 
 예외가 발생하는 경우 `IllegalArgumentException` 을 발생시키고 애플리케이션을 종료한다.
