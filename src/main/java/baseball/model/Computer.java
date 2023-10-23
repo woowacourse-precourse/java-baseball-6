@@ -1,6 +1,7 @@
 package baseball.model;
 
-import baseball.utils.NumberUtils;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Arrays;
 import static baseball.utils.Constants.*;
 
@@ -24,13 +25,11 @@ public class Computer {
         int times = 0;
 
         while(times < BALL_MAX) {
-            Integer v = NumberUtils.random();
-            if(v > ZERO && v < RANGE_END) {
-                if(!exist[v]) {
-                    this.answerSequence[times] = v;
-                    exist[v] = true;
-                    times += 1;
-                }
+            int v = Randoms.pickNumberInRange(ZERO+1, RANGE_END-1);
+            if(!exist[v]) {
+                this.answerSequence[times] = v;
+                exist[v] = true;
+                times += 1;
             }
         }
     }

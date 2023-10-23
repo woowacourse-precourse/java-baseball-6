@@ -4,9 +4,9 @@ import static baseball.utils.Constants.*;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.utils.MessageUtils;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 
 public class BaesballGame {
@@ -18,11 +18,8 @@ public class BaesballGame {
     private Integer strike;
     private Boolean isGameInProgress;
 
-    private final Scanner sc;
 
-
-    public BaesballGame(Scanner scanner) {
-        this.sc = scanner;
+    public BaesballGame() {
         this.isGameInProgress = true;
 
         this.computer = new Computer();
@@ -35,13 +32,13 @@ public class BaesballGame {
 
         while(this.isGameInProgress) {
             MessageUtils.enterNumber();
-            String answer = sc.next();
+            String answer = Console.readLine();
             player.setAnswer(answer);
 
             this.compare();
             if(this.isMaxStrike()) {
                 MessageUtils.restartOrQuit();
-                String restartFlag = sc.next();
+                String restartFlag = Console.readLine();
                 if(restartFlag.equals(GAME_FLAG_START)) {
                     this.isGameInProgress = true;
                     computer.setAnswer();
