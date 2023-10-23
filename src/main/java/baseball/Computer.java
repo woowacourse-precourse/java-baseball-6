@@ -23,15 +23,17 @@ public class Computer {
         return false;
     }
 
-    private static void checkResult(String userInput){
+    private static void checkResult(String userInput, int[] numberInfo){
         int tempNumber;
+        baseballFlag[0] = 0;
+        baseballFlag[1] = 0;
         for (int i = 0; i < SIZE; i++){
             tempNumber = Integer.parseInt(userInput.charAt(i) + "");
-            updateFlag(tempNumber, i);
+            updateFlag(tempNumber, i, numberInfo);
         }
     }
 
-    private static void updateFlag(int userInput, int digit){
+    private static void updateFlag(int userInput, int digit, int[] numbers){
         for (int currentDigit = 0; currentDigit < SIZE; currentDigit++){
             if (digit == currentDigit && userInput == numbers[currentDigit]) {
                 baseballFlag[0] += 1; // strike
@@ -42,6 +44,9 @@ public class Computer {
                 return;
             }
         }
+    }
+    public void getComputerNumber(){
+        System.out.println("" + numbers[0] + numbers[1] + numbers[2]);
     }
     public static void gameStart(Computer alice){
         User coh = new User();

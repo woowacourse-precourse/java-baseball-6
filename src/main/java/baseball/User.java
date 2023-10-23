@@ -3,12 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    private static final int SIZE = 3;
-    private static final int USERFLAG = 1;
+    private static final int INPUT_SIZE = 3;
+    private static final int FLAG_SIZE = 1;
     public String getUserInput(){
         Message.getStartMsg();
         String userInput = Console.readLine();
-        if (!isLenError(userInput, SIZE))
+        if (!isLenError(userInput, INPUT_SIZE))
             throw new IllegalArgumentException("Invalid Length: " + userInput);
         if (!isWordError(userInput))
             throw new IllegalArgumentException("Word error is occurred : " + userInput);
@@ -18,11 +18,15 @@ public class User {
     }
     static public int newGameFlag(){
         String userInput = Console.readLine();
-        if (!isLenError(userInput, USERFLAG))
+        int num;
+        if (!isLenError(userInput, FLAG_SIZE))
             throw new IllegalArgumentException("Invalid Length: " + userInput);
         if (!isWordError(userInput))
             throw new IllegalArgumentException("Word error is occurred : " + userInput);
-        return Integer.parseInt(userInput);
+        num = Integer.parseInt(userInput);
+        if (num < 1 || 2 < num)
+            throw new IllegalArgumentException("range error is occurred : " + num);
+        return num;
     }
     static private boolean isLenError(String input, int size){
         return input.length() == size;
