@@ -1,30 +1,41 @@
 package baseball.controller;
 
-import static baseball.model.NumberRule.NUMBER_RANGE_END;
-import static baseball.model.NumberRule.NUMBER_RANGE_START;
 import static baseball.model.NumberRule.NUMBER_SIZE;
 
 import baseball.model.DecimalNumber;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class ComputerController {
 
-    public void initComputer(DecimalNumber decimalNumber) {
-        decimalNumber.setComputer(generateRandomNum());
+    private DecimalNumber decimalNumber;
+    private OutputView outputView;
+
+
+    public ComputerController(DecimalNumber decimalNumber, OutputView outputView) {
+        this.decimalNumber = decimalNumber;
+        this.outputView = outputView;
     }
 
+    public void initComputer() {
+        decimalNumber.setComputer();
+    }
 
-    private List<Integer> generateRandomNum() {
-        List<Integer> computer = new ArrayList<>();
+    public void checkAnswer() {
+        List<Integer> computer = decimalNumber.getComputer();
+        List<Integer> user = decimalNumber.getUser();
 
-        while (computer.size() < NUMBER_SIZE.getNumber()) {
-            int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START.getNumber(), NUMBER_RANGE_END.getNumber());
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < NUMBER_SIZE.getNumber(); i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strike++;
+            } else if (computer.contains(user.get(i))) {
+                ball++;
             }
         }
-        return computer;
+
+        outputView.printHint(ball, strike);
     }
 }
