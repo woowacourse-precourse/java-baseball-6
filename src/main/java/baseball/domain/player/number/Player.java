@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Player {
-    private static final int BASEBALL_NUMBERS_LIMIT_SIZE = 3;
+    public static final int BASEBALL_NUMBERS_LIMIT_SIZE = 3;
     private List<Number> numbers;
 
     private Player(List<Number> numbers) {
