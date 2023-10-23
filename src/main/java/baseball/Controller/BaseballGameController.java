@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.Model.ComputerNumberPicker;
+import baseball.Model.UserNumberPicker;
 import baseball.View.InputView;
 import baseball.View.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -19,6 +20,7 @@ public class BaseballGameController {
     public void playOneRoundGame() {
 //        do {
             int[] computer = new ComputerNumberPicker().computer;
+            int[] user = new UserNumberPicker().user;
 
 //        } while ();
     }
