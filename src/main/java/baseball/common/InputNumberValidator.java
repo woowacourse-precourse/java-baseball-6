@@ -26,7 +26,7 @@ public class InputNumberValidator {
     private static boolean isNumber(String inputNumber) {
         for(int i = 0; i< inputNumber.length(); i++) {
             char number = inputNumber.charAt(i);
-            if(number < Character.forDigit(NumberConstants.NUMBER_RANGE_MIN.getValue(), 10) || number > Character.forDigit(NUMBER_RANGE_MAX.getValue(), 10)) {
+            if(number < Character.forDigit(NumberConstants.NUMBER_RANGE_MIN.getValue(), 10) || number > Character.forDigit(NumberConstants.NUMBER_RANGE_MAX.getValue(), 10)) {
                 return false;
             }
         }
@@ -35,7 +35,9 @@ public class InputNumberValidator {
     }
 
     private static boolean isThreeLetters(String inputNumber) {
-        if(inputNumber.isEmpty() || inputNumber.length() != 3) return false;
+        if(inputNumber.isEmpty() || inputNumber.length() != 3) {
+            return false;
+        }
         return true;
     }
 
@@ -44,7 +46,9 @@ public class InputNumberValidator {
 
         for(int i=0; i<inputNumber.length(); i++) {
             int number = Character.getNumericValue(inputNumber.charAt(i));
-            if(isContained[number]) return false;
+            if(isContained[number]) {
+                return false;
+            }
             isContained[number] = true;
         }
 

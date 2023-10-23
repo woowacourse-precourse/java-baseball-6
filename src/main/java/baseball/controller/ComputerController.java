@@ -73,7 +73,8 @@ public class ComputerController {
     }
 
     public BallAndStrikeCount getBallAndStrikeCount(ComputerNumber computerNumber, String inputNumber) {
-        int ballCount = 0, strikeCount = 0;
+        int ballCount = 0;
+        int strikeCount = 0;
         int[] computerNumberIndex = computerNumber.getNumberIndex();
 
         for(int i=0; i<inputNumber.length(); i++) {
