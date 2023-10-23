@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class InputConsole {
     public String readPrediction(){
@@ -15,7 +16,7 @@ public class InputConsole {
 
     public String readUserIntentionForNewGame(){
         String input = Console.readLine();
-        if (input == "1" || input == "2"){
+        if (Objects.equals(input, "1") || Objects.equals(input, "2")){
             return input;
         } else throw new IllegalArgumentException("게임 재시작 여부는 1과 2만 받을 수 있습니다.");
     }
