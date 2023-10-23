@@ -13,12 +13,13 @@ public class Game {
         // computer 초기화
         List<Integer> computer = initializeComputer();
 
-        // 숫자 야구 게임
+        // 숫자 입력 및 컴퓨터 야구공 초기화
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         List<Integer> balls = resolveInputBalls(input);
 
+        // 스트라이크, 볼 카운트
         int strikeCount = 0;
         int ballCount = 0;
 
@@ -30,6 +31,18 @@ public class Game {
             }
         }
 
+        // 게임 결과 처리
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        }
+
+        if (strikeCount == 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount != 0 && ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
     }
 
     private List<Integer> initializeComputer() {
