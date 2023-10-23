@@ -30,4 +30,20 @@ class BaseballServiceTest {
         //then
         assertThat(baseballService.startGame(input, randomNumber)).isTrue();
     }
+
+    @DisplayName("countStrike 메소드가 스트라이크 수를 정확하게 계산하는가?")
+    @Test
+    public void testCountStrike_CorrectlyCountsStrikes() {
+        //given
+        BaseballService baseballService = new BaseballService();
+        //when
+        String input1 = String.valueOf(321);
+        String randomNumber1 = String.valueOf(321);
+
+        String input2 = String.valueOf(172);
+        String randomNumber2 = String.valueOf(182);
+        //then
+        assertThat(baseballService.countStrike(randomNumber1, input1)).isEqualTo(3);
+        assertThat(baseballService.countStrike(randomNumber2, input2)).isEqualTo(2);
+    }
 }
