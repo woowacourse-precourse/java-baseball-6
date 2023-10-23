@@ -16,5 +16,5 @@ public class Constants {
     public static final String INPUT_GAME_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static final String FIND_COMMAND_ERROR = "1또는 2를 입력해야 합니다.";
-
+    public static final String NUMBERS_SIZE_ERROR = "3자리 숫자만을 허용합니다.";
 }
