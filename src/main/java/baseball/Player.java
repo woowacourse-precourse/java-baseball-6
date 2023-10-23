@@ -19,19 +19,26 @@ public class Player {
     }
 
     private static void checkInputFormat(String input) {
-        // 숫자형식 확인
+        checkNumeric(input);
+        checkDigitSize(input);
+        checkDuplicate(input);
+    }
+
+    private static void checkNumeric(String input) {
         try {
             Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
 
-        // 3자릿수 확인
+    private static void checkDigitSize(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+    }
 
-        // 중복된 숫자 확인
+    private static void checkDuplicate(String input) {
         Set<Character> set = new HashSet<>();
         for (char ch : input.toCharArray()) {
             if (!set.add(ch)) {

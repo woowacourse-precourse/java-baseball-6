@@ -28,7 +28,7 @@ public class Game {
     }
 
     private boolean checkRestart() {
-        boolean isReStarted = true;
+        boolean isRestarted = true;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
@@ -36,22 +36,27 @@ public class Game {
         checkInputFormat(input);
 
         if (input.equals("2")) {
-            isReStarted = false;
+            isRestarted = false;
         }
 
-        return isReStarted;
+        return isRestarted;
     }
 
-    private static void checkInputFormat(String s) {
-        // 숫자 형식 확인
+    private static void checkInputFormat(String input) {
+        checkNumeric(input);
+        checkOneOrTwo(input);
+    }
+
+    private static void checkNumeric(String input) {
         try {
-            Integer.parseInt(s);
+            Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
 
-        // 1 or 2 인지 확인
-        if (!(s.equals("1") || s.equals("2"))) {
+    private static void checkOneOrTwo(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException();
         }
     }
