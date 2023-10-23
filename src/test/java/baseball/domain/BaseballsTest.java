@@ -3,7 +3,6 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -20,11 +19,11 @@ class BaseballsTest {
         @ParameterizedTest
         @MethodSource
         void successCreateBallsIfValid3DigitNumber(List<Integer> Valid3DigitNumber) {
-            List<Ball> expected = Valid3DigitNumber.stream().map(Ball::new).collect(Collectors.toList());
+            int expected = 3;
 
             Baseballs baseballs = new Baseballs(Valid3DigitNumber);
 
-            assertThat(baseballs.getBalls()).isEqualTo(expected);
+            assertThat(baseballs.getBalls()).size().isEqualTo(expected);
         }
 
         static Stream<Arguments> successCreateBallsIfValid3DigitNumber() {

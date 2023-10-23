@@ -18,7 +18,7 @@ public enum GameStatus {
     }
 
     private static boolean isAllStrike(int strikeCount) {
-        return strikeCount == Baseballs.BALLS_SIZE;
+        return strikeCount == Ball.MAX_POSITION;
     }
 
     public boolean isNotClear() {

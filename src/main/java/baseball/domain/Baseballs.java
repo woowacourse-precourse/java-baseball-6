@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Baseballs {
-    private static final String INVALID_SIZE_NUMBER = "세 자리 숫자를 입력해주세요";
-    public static final int START_POSITION = 0;
-    public static final int BALLS_SIZE = 3;
-
+    private static final String INVALID_SIZE = "세 자리 숫자를 입력해주세요";
     private final List<Ball> balls;
 
     public Baseballs(List<Integer> numbers) {
@@ -17,44 +14,35 @@ public class Baseballs {
 
     private void validate(List<Integer> numbers) {
         if (isInvalidSize(numbers)) {
-            throw new IllegalArgumentException(INVALID_SIZE_NUMBER);
+            throw new IllegalArgumentException(INVALID_SIZE);
         }
     }
 
     private boolean isInvalidSize(List<Integer> numbers) {
-        return numbers.size() != BALLS_SIZE;
+        return numbers.size() != Ball.MAX_POSITION;
     }
 
     private List<Ball> toBalls(List<Integer> numbers) {
-        return numbers.stream()
-                .map(Ball::new)
+        return IntStream.range(Ball.MIN_POSITION, Ball.MAX_POSITION)
+                .mapToObj(position -> new Ball(numbers.get(position), position))
                 .toList();
     }
 
     public int getBallCount(Baseballs player) {
-        List<Ball> playerBalls = player.getBalls();
-        return (int) IntStream.range(START_POSITION, BALLS_SIZE)
-                .filter(position -> !isSamePositionAndSameNumber(position, playerBalls.get(position)))
-                .filter(position -> ballsContains(playerBalls.get(position)))
+        return (int) player.getBalls().stream()
+                .filter(playerBall -> balls.stream()
+                        .anyMatch(ball -> ball.isBall(playerBall)))
                 .count();
     }
 
     public int getStrikeCount(Baseballs player) {
-        List<Ball> playerBalls = player.getBalls();
-        return (int) IntStream.range(START_POSITION, BALLS_SIZE)
-                .filter(position -> isSamePositionAndSameNumber(position, playerBalls.get(position)))
+        return (int) player.getBalls().stream()
+                .filter(playerBall -> balls.stream()
+                        .anyMatch(ball -> ball.isStrike(playerBall)))
                 .count();
     }
 
     public List<Ball> getBalls() {
         return balls;
-    }
-
-    private boolean isSamePositionAndSameNumber(int position, Ball ball) {
-        return balls.get(position).equals(ball);
-    }
-
-    private boolean ballsContains(Ball ball) {
-        return balls.contains(ball);
     }
 }

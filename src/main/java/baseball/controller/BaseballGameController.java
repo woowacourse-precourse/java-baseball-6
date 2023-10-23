@@ -38,7 +38,7 @@ public class BaseballGameController {
 
     private Baseballs createComputer() {
         List<Integer> generatedNumbers =
-                NumberGenerator.generateUniqueNumbers(Ball.LOWER_LIMIT, Ball.UPPER_LIMIT, Baseballs.BALLS_SIZE);
+                NumberGenerator.generateUniqueNumbers(Ball.LOWER_LIMIT, Ball.UPPER_LIMIT, Ball.MAX_POSITION);
         return new Baseballs(generatedNumbers);
     }
 
