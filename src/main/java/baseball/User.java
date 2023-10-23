@@ -11,7 +11,7 @@ public class User {
         try {
             userNumber = Console.readLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 값을 입력하였습니다.");
+            System.out.println("정수가 아닌 값을 입력하였습니다.");
             // 게임 종료 구현
         }
     }
