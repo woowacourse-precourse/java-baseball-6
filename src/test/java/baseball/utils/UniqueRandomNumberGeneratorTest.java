@@ -1,4 +1,4 @@
-package baseball.generator;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
@@ -13,9 +13,10 @@ class UniqueRandomNumberGeneratorTest {
     static final int TRY_TEST_COUNT = 100;  // 테스팅 횟수 (랜덤성 고려)
 
     /**
-     * 리스트 내에 중복된 숫자가 존재하는지 확인한다.
+     * 리스트 내에 중복된 숫자가 존재하는지 확인합니다.
+     *
      * @param numbers 검증 대상 정수형 리스트
-     * @return 중복된 숫자가 존재할 경우 true, 존재하지 않을 경우 false
+     * @return 중복된 숫자가 존재하면 true, 존재하지 않을 경우 false를 반환합니다.
      */
     public boolean hasDuplicates(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);

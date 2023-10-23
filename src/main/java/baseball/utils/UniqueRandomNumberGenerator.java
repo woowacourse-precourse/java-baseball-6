@@ -1,4 +1,4 @@
-package baseball.generator;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,7 +12,7 @@ public class UniqueRandomNumberGenerator {
      * @param startOfRange 난수 범위의 시작
      * @param endOfRange   난수 범위의 끝
      * @param digitCount   생성할 난수의 길이
-     * @return 고유한 난수로 이루어진 리스트
+     * @return 고유한 난수로 이루어진 리스트를 반환합니다.
      */
     public static List<Integer> generateUniqueRandomNumbers(final int startOfRange,
                                                             final int endOfRange,
