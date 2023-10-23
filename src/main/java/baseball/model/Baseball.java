@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.validator.BaseballValidator;
+import java.util.Collection;
 import java.util.List;
 
 public class Baseball {
@@ -9,13 +10,13 @@ public class Baseball {
 
     private final List<BaseballNumber> baseballNumbers;
 
-    private Baseball(List<Integer> baseballNumbers) {
+    private Baseball(Collection<Integer> baseballNumbers) {
         this.baseballNumbers = baseballNumbers.stream()
                 .map(BaseballNumber::new)
                 .toList();
     }
 
-    public static Baseball from(List<Integer> baseballNumbers) {
+    public static Baseball from(Collection<Integer> baseballNumbers) {
         BaseballValidator.validateLength(baseballNumbers);
         BaseballValidator.validateUnique(baseballNumbers);
 
