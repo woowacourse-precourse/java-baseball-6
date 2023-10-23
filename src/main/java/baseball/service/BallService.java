@@ -5,9 +5,7 @@ import baseball.model.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BallService {
 
@@ -16,40 +14,32 @@ public class BallService {
     public BaseballNumber generateRandomNum() {
         List<BallNumber> ballNumberList = new ArrayList<>();
         while (ballNumberList.size() < 3) {
-            BallNumber ballNumber = new BallNumber(Randoms.pickNumberInRange(1, 9));
-
-            if (!ballNumberList.contains(ballNumber)) {
-                ballNumberList.add(ballNumber);
-            }
+            addBallNumberToList(ballNumberList, Randoms.pickNumberInRange(1, 9));
         }
 
         return new BaseballNumber(ballNumberList);
     }
 
     public BaseballNumber initUserNumber(String inputReadLine) {
-        validInputSize(inputReadLine);
-
         List<BallNumber> ballNumberList = new ArrayList<>();
-
         char[] charArray = inputReadLine.toCharArray();
         for (char c : charArray) {
-            BallNumber ballNumber = new BallNumber(Character.getNumericValue(c));
-            ballNumberList.add(ballNumber);
+            addBallNumberToList(ballNumberList, Character.getNumericValue(c));
         }
-        validDuplicateBallNumber(ballNumberList);
+        validSize(ballNumberList.size());
 
         return new BaseballNumber(ballNumberList);
     }
 
-    private void validInputSize(String inputReadLine) {
-        if (inputReadLine.length() != 3) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT);
+    private void addBallNumberToList(List<BallNumber> ballNumberList, int num) {
+        BallNumber ballNumber = new BallNumber(num);
+        if (!ballNumberList.contains(ballNumber)) {
+            ballNumberList.add(ballNumber);
         }
     }
 
-    private void validDuplicateBallNumber(List<BallNumber> ballNumberList) {
-        Set<BallNumber> ballNumberSet = new HashSet<>(ballNumberList);
-        if (ballNumberSet.size() != ballNumberList.size()) {
+    private void validSize(int size) {
+        if (size != 3) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT);
         }
     }
