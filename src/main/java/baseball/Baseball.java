@@ -1,7 +1,8 @@
 package baseball;
 
+import baseball.core.Computer;
 import baseball.core.Core;
-import baseball.validation.Validator;
+import baseball.core.Player;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,18 +13,19 @@ import static baseball.constant.NumberConstant.*;
 import static baseball.constant.MessageConstant.*;
 
 public class Baseball {
-    private final Validator validator = new Validator();
     private final Core core = new Core();
+    private final Player player = new Player();
+    private final Computer computer = new Computer();
 
     public void startBaseball() {
-        List<Integer> computerNumber = getComputerNumber();
+        List<Integer> computerNumber = computer.getComputerNumber();
         //System.out.println(computerNumber);
         System.out.println(START_BASEBALL_MSG);
         boolean restartFlag = true;
 
         while(restartFlag) {
             System.out.print(PLEASE_INPUT_MSG);
-            List<Integer> playerNumber = getPlayerNumber();
+            List<Integer> playerNumber = player.getPlayerNumber();
             int strikeCount = core.countStrike(computerNumber, playerNumber);
             int ballCount = core.countBall(computerNumber, playerNumber);
             core.printBaseballResult(strikeCount, ballCount);
@@ -36,28 +38,11 @@ public class Baseball {
 
     }
 
-    public List<Integer> getPlayerNumber() {
-        String input = Console.readLine();
-        List<Integer> player = validator.validateInputNumber(input);
-
-        return player;
-    }
-    public List<Integer> getComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < INPUT_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MINIMUM_RANGE_NUMBER, MAXIMUM_RANGE_NUMBER);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
     public boolean isRestartOrExit() {
         System.out.println(RESTART_OR_EXIT_MSG);
-        int number = Integer.parseInt(Console.readLine());
+        int choice = Integer.parseInt(Console.readLine());
 
-        if (number == RESTART_NUM) {
+        if (choice == RESTART_NUM) {
             startBaseball();
         }
 
