@@ -4,54 +4,58 @@ import baseball.application.BaseBallGame;
 import baseball.controller.BaseBallGameController;
 import baseball.controller.Game;
 import baseball.domain.BaseBallNumberList;
-import baseball.ui.InputUserInterface;
-import baseball.ui.OutputUserInterface;
+import baseball.ui.UIFacade;
 
 public class BaseBallGameManager implements GameManager {
 
-    private final InputUserInterface inputUI;
-    private final OutputUserInterface outputUI;
+    private final UIFacade ui;
     private final RandomNumberGenerator randomNumberGenerator;
     private boolean exit;
 
-    public BaseBallGameManager(InputUserInterface inputUI, OutputUserInterface outputUI,
+    public BaseBallGameManager(UIFacade ui,
             RandomNumberGenerator randomNumberGenerator) {
-        this.inputUI = inputUI;
-        this.outputUI = outputUI;
+        this.ui = ui;
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
     @Override
+    public void exit() {
+        exit = true;
+    }
+
+    @Override
     public void execute() {
-        outputUI.print(GameOutputTemplate.FIRST_START.toString());
+        ui.print(GameOutputTemplate.FIRST_START.toString());
         executePerform();
     }
 
     private void executePerform() {
-        exit = false;
+        initExit();
         Game game = new BaseBallGameController(
                 new BaseBallGame(new BaseBallNumberList(
                         randomNumberGenerator.pickUniqueNumbersInRange(1, 9, 3)
                 ),
                         this));
 
-        while (!exit) {
-            outputUI.print(GameOutputTemplate.INPUT.toString());
-            outputUI.print(game.play(inputUI.intercept()) + "\n");
+        while (!isExit()) {
+            ui.print(GameOutputTemplate.INPUT.toString());
+            ui.print(game.play(ui.intercept()) + "\n");
         }
 
-        outputUI.print(GameOutputTemplate.EXIT.toString());
-        outputUI.print(GameOutputTemplate.REPLAY.toString());
+        ui.print(GameOutputTemplate.EXIT.toString());
+        ui.print(GameOutputTemplate.REPLAY.toString());
 
-        Command command = new Command(inputUI.intercept());
+        Command command = new Command(ui.intercept());
         if (command.replay()) {
             executePerform();
         }
     }
 
+    private void initExit() {
+        exit = false;
+    }
 
-    @Override
-    public void exit() {
-        exit = true;
+    private boolean isExit() {
+        return exit;
     }
 }
