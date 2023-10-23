@@ -2,6 +2,8 @@ package baseball.controller;
 
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
+import baseball.model.service.PlayerNumbersValidator;
+import baseball.model.service.PlayerNumbersValidatorImp;
 import baseball.utils.NumbersComparator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -9,11 +11,13 @@ import baseball.view.OutputView;
 public class BaseballGame {
     private final Computer computer;
     private final NumbersComparator numberComparator;
+    private final PlayerNumbersValidator playerNumbersValidator;
     private Player player;
 
     public BaseballGame() {
         computer = new Computer();
         numberComparator = new NumbersComparator();
+        playerNumbersValidator = new PlayerNumbersValidatorImp();
     }
 
     public void start() {
@@ -25,7 +29,7 @@ public class BaseballGame {
     }
 
     public void getNumbersFromPlayer() {
-        player = new Player(InputView.setGameInput());
+        player = new Player(InputView.setGameInput(), playerNumbersValidator);
         player.getPlayerNumbers();
     }
 

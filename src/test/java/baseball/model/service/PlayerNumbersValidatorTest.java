@@ -7,8 +7,6 @@ import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_RANGE_IN
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,10 +15,10 @@ class PlayerNumbersValidatorTest {
     @DisplayName("숫자를 입력하지 않아 예외가 발생합니다.")
     void 숫자이외입력예외() {
         PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        String numbers = "12A";
+        String inputNumbers = "12A";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.isNonNumber(numbers);
+            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         });
 
         assertEquals(PLAYER_NUMBERS_NON_NUMBER, exception.getMessage());
@@ -30,10 +28,10 @@ class PlayerNumbersValidatorTest {
     @DisplayName("세 자리를 입력하지 않아 예외가 발생합니다.")
     void 갯수입력예외() {
         PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        List<Integer> numbers = Arrays.asList(1, 2);
+        String inputNumbers = "12";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.isLengthCorrect(numbers);
+            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         });
 
         assertEquals(PLAYER_NUMBERS_LENGTH_INVALID, exception.getMessage());
@@ -43,10 +41,10 @@ class PlayerNumbersValidatorTest {
     @DisplayName("1에서 9 범위를 입력하지 않아 예외가 발생합니다.")
     void 범위입력예외() {
         PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        List<Integer> numbers = Arrays.asList(1, 2, 0);
+        String inputNumbers = "120";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.isRange(numbers);
+            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         });
 
         assertEquals(PLAYER_NUMBERS_RANGE_INVALID, exception.getMessage());
@@ -56,10 +54,10 @@ class PlayerNumbersValidatorTest {
     @DisplayName("서로 다른 수를 입력하지 않아 예외가 발생합니다.")
     void 중복입력예외() {
         PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        List<Integer> numbers = Arrays.asList(1, 2, 2);
+        String inputNumbers = "122";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.isDuplicate(numbers);
+            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         });
 
         assertEquals(PLAYER_NUMBERS_DUPLICATED, exception.getMessage());
