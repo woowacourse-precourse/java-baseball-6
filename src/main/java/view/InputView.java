@@ -24,7 +24,7 @@ public class InputView {
 
     private static void checkInputLength(String userInput) {
         if (userInput.length() != 3) {
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
     }
 
