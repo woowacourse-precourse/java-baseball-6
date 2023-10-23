@@ -20,20 +20,29 @@ public class GameController {
     public void StartBaseballGame() {
         BaseballNumbers computerNumber = gameService.generateComputerNumber();
         gameView.startGame();
+        playBaseballGame(computerNumber);
+    }
+
+    private void playBaseballGame(BaseballNumbers computerNumber) {
         while (!stopGame) {
             String userInput = gameView.getUserInput();
             BaseballNumbers userInputNumber = new BaseballNumbers(userInput);
             String hintMessage = hintService.createHintMessage(computerNumber, userInputNumber);
             gameView.printHintMessage(hintMessage);
-            if (hintService.isCorrect(computerNumber, userInputNumber)) {
-                int gameType = gameView.endGame();
-                if (gameType == 1) {
-                    computerNumber = gameService.generateComputerNumber();
-                }
-                if (gameType == 2) {
-                    stopGame = true;
-                }
+            computerNumber = manageGameResult(computerNumber, userInputNumber);
+        }
+    }
+
+    private BaseballNumbers manageGameResult(BaseballNumbers computerNumber, BaseballNumbers userInputNumber) {
+        if (hintService.isCorrect(computerNumber, userInputNumber)) {
+            int gameType = gameView.endGame();
+            if (gameType == 1) {
+                computerNumber = gameService.generateComputerNumber();
+            }
+            if (gameType == 2) {
+                stopGame = true;
             }
         }
+        return computerNumber;
     }
 }
