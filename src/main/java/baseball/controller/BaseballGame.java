@@ -5,6 +5,7 @@ import static baseball.view.OutputView.gameStartMessage;
 import static baseball.view.OutputView.printCelebrate;
 import static baseball.view.OutputView.userInputMessage;
 
+import baseball.Application;
 import baseball.model.BallStrikeCounter;
 import baseball.model.ComputerNumber;
 import baseball.model.RetryCheck;
@@ -24,33 +25,29 @@ public class BaseballGame {
 
     public void gameStart() {
 
-        this.ballStrikeCounter.resetBallStrike();
+        // 게임 초기 설정
+        ballStrikeCounter.resetBallStrike();
 
-        gameStartMessage();
-
-        //랜덥 값 생성
+        // 랜덥 값 생성
         computerNumber = ComputerNumber.makeComputerNumber();
 
-        //게임 시작
-        inGame();
-
-        //재시작 여부 입력
-        retryCheck();
+        // 게임 시작 메시지 출력
+        gameStartMessage();
     }
 
     public void inGame() {
         while (true) {
-            //사용자 값 입력
+            // 사용자 값 입력
             userInputMessage();
             UserNumber userNumber = new UserNumber(userInput());
 
-            //볼, 스트라이크 카운트
+            // 볼, 스트라이크 카운트
             ballStrikeCounter.countBallStrike(userNumber.getInputNumber(), computerNumber);
 
-            //볼, 스트라이크 값 출력
+            // 볼, 스트라이크 값 출력
             OutputView.printBallStrike(ballStrikeCounter.toString());
 
-            //3스트라이크 시 while 종료
+            // 3스트라이크 시 while 종료
             if (ballStrikeCounter.isThreeStrike()) {
                 break;
             }
@@ -66,7 +63,7 @@ public class BaseballGame {
         RetryCheck retryCheck = new RetryCheck(userInput());
 
         if (retryCheck.isRetry()) {
-            this.gameStart();
+            Application.main(new String[]{});
         }
     }
 }
