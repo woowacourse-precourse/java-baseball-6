@@ -9,13 +9,18 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
+        //숫자 야구 게임 시작
         begin();
     }
 
+    //숫자 야구 게임 시작
     private static void begin() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computer = new ArrayList<>();
+
+        //맞춰야 할 임의의 세 자리 수 생성
         makingNumbers(computer);
 
         boolean repeat = true;
@@ -37,7 +42,7 @@ public class Application {
             input.add(Integer.parseInt(readLine.substring(2, 3)));
 
 
-            //count the number of ball and strike
+            //ball과 strike 갯수
             int ball = 0;
             int strike = 0;
 
@@ -51,13 +56,17 @@ public class Application {
                 }
             }
 
+            //"낫싱", "스트라이크", "볼" 출력
             repeat = printResult(repeat, ball, strike);
 
         }
 
+        //게임을 새로 시작할 것인지, 종료할 것인지
         restart(repeat);
     }
 
+
+    //맞춰야 할 임의의 세 자리 수 생성
     private static void makingNumbers(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -68,6 +77,7 @@ public class Application {
         }
     }
 
+    //"낫싱", "스트라이크", "볼" 출력
     private static boolean printResult(boolean repeat, int ball, int strike) {
         if (strike == 3) {
             System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -84,6 +94,7 @@ public class Application {
         return repeat;
     }
 
+    //게임을 새로 시작할 것인지, 종료할 것인지
     private static void restart(boolean repeat) {
         if (!repeat) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
