@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.Scanner;
 
-public class gamePlay {
+public class GamePlay {
     public void isFinished() {
         // TODO. 게임 플레이 구현하기 (종료 및 재시작)
         start();
