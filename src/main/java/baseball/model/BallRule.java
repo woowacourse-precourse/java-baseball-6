@@ -12,31 +12,31 @@ public class BallRule implements GameRule {
         String[] computerValues = computerNumber.split("");
         String[] userValues = userNumber.split("");
 
-        boolean[] match = recordMatchedPositions(computerValues, userValues);
+        boolean[] strikeRecord = recordStrikePositions(computerValues, userValues);
 
-        Set<String> onlyComputerSet = createUniqueNumberSet(computerValues, match);
-        Set<String> onlyUserSet = createUniqueNumberSet(userValues, match);
+        Set<String> onlyComputerSet = createUniqueNumberSetExceptStrike(computerValues, strikeRecord);
+        Set<String> onlyUserSet = createUniqueNumberSetExceptStrike(userValues, strikeRecord);
 
         onlyComputerSet.retainAll(onlyUserSet);
 
         return onlyComputerSet.size();
     }
 
-    private boolean[] recordMatchedPositions(final String[] computerValues, final String[] userValues) {
-        boolean[] match = new boolean[computerValues.length];
+    private boolean[] recordStrikePositions(final String[] computerValues, final String[] userValues) {
+        boolean[] strikeRecord = new boolean[computerValues.length];
 
         for (int i = 0; i < computerValues.length; i++) {
             if (computerValues[i].equals(userValues[i])) {
-                match[i] = true;
+                strikeRecord[i] = true;
             }
         }
 
-        return match;
+        return strikeRecord;
     }
 
-    private Set<String> createUniqueNumberSet(final String[] numbers, final boolean[] match) {
+    private Set<String> createUniqueNumberSetExceptStrike(final String[] numbers, final boolean[] strikeRecord) {
         return IntStream.range(0, numbers.length)
-                .filter(index -> !match[index])
+                .filter(index -> !strikeRecord[index])
                 .mapToObj(index -> numbers[index])
                 .collect(Collectors.toCollection(HashSet::new));
     }
