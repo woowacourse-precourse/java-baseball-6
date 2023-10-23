@@ -8,7 +8,7 @@ public class UserInputValidator {
         int[] userInput = new int[3];
 
         while (true) {
-            System.out.print("숫자를 입력해주세요: ");
+            System.out.print("숫자를 입력해주세요 : ");
             String input = scanner.nextLine();
 
             if (input.length() != 3) {

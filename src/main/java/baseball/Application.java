@@ -11,13 +11,14 @@ public class Application {
 
         do {
             if (!first_check) {
-                System.out.print("게임을 다시 시작하시겠습니까? (Y/N): ");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String restartInput = scanner.next();
-
-                if (!restartInput.equalsIgnoreCase("Y") && !restartInput.equalsIgnoreCase("N")) {
+                if (!restartInput.equalsIgnoreCase("1") && !restartInput.equalsIgnoreCase("2")) {
                     System.out.println("잘못 입력하셨습니다.");
-                } else if (restartInput.equalsIgnoreCase("N")) {
-                    break; // 게임 종료
+                    continue;
+                } else if (restartInput.equalsIgnoreCase("2")) {
+                    scanner.close();
+                    break;
                 }
             }
 

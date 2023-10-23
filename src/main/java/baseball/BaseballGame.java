@@ -19,7 +19,8 @@ public class BaseballGame {
             System.out.println(result.toString());
         } while (!isGameWon(userGuess));
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 (시도 횟수: " + attempts + ")");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 ");
+        System.out.println("당신의 총 게임 시도 횟수 : " + attempts + "");
     }
 
     private GameResult calculateGameResult(int[] userGuess) {
