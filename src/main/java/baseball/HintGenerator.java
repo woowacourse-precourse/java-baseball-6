@@ -4,6 +4,10 @@ import java.util.List;
 
 public class HintGenerator {
     private static final int SIZE = 3;
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+    private static final String SPACE = " ";
 
     public String getHint(List<Integer> computerNumber, List<Integer> playerNumber) { // 볼 or 스트라이크 or 낫싱 결과 계산
         int strikeCount = 0;
@@ -26,17 +30,17 @@ public class HintGenerator {
         StringBuilder sb = new StringBuilder();
         if (ballCount > 0) {
             sb.append(ballCount);
-            sb.append("볼");
+            sb.append(BALL);
         }
         if (ballCount > 0 && strikeCount > 0) {
-            sb.append(" ");
+            sb.append(SPACE);
         }
         if (strikeCount > 0) {
             sb.append(strikeCount);
-            sb.append("스트라이크");
+            sb.append(STRIKE);
         }
         if (ballCount == 0 && strikeCount == 0) {
-            sb.append("낫싱");
+            sb.append(NOTHING);
         }
         return sb.toString();
     }
