@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.util.ExceptionMessage.INVALID_GAME_COMMAND;
+
 import java.util.Arrays;
 
 public enum GameStatus {
@@ -26,6 +28,7 @@ public enum GameStatus {
         return Arrays.stream(GameStatus.values())
                 .filter(gameStatus -> gameStatus.getGameCommand().equals(gameCommand))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("1 또는 2를 입력해야 합니다."));
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_GAME_COMMAND.getMessage()));
     }
+
 }

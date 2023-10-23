@@ -1,6 +1,9 @@
 package baseball.util;
 
 import static baseball.util.Constants.BALL_AMOUNT;
+import static baseball.util.ExceptionMessage.INVALID_LENGTH;
+import static baseball.util.ExceptionMessage.INVALID_NUMBER_RANGE;
+import static baseball.util.ExceptionMessage.INVALID_NUMERIC_INPUT;
 
 import java.util.regex.Pattern;
 
@@ -9,18 +12,18 @@ public class ValidationUtils {
 
     public static String validUserNumber(String userInput) {
         if (!parseInt(userInput)) {
-            throw new IllegalArgumentException("입력은 숫자만 가능합니다.");
+            throw new IllegalArgumentException(INVALID_NUMERIC_INPUT.getMessage());
         }
         if (!validLength(userInput)) {
-            throw new IllegalArgumentException("숫자는 세자리만 입력 가능합니다.");
+            throw new IllegalArgumentException(INVALID_LENGTH.getMessage());
         }
-        if (!validNumber(userInput)) {
-            throw new IllegalArgumentException("숫자는 1부터 9까지만 입력이 가능합니다.");
+        if (!validNumberRange(userInput)) {
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMessage());
         }
         return userInput;
     }
 
-    private static boolean validNumber(String userInput) {
+    private static boolean validNumberRange(String userInput) {
         return NUMBER_REGEX.matcher(userInput).matches();
     }
 
