@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Computer {
     private String targetNumber;
+    private int ballCount;
+    private int strikeCount;
 
     private void generateTargetNumber() {
         StringBuilder targetNumber = new StringBuilder();
@@ -20,5 +22,32 @@ public class Computer {
         }
 
         this.targetNumber = targetNumber.toString();
+    }
+
+    private void checkInputNumber(String inputNumber) {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            String value = String.valueOf(inputNumber.charAt(i));
+            if (!targetNumber.contains(value)) {
+                continue;
+            }
+
+            if (isStrike(value, i)) {
+                strikeCount++;
+                continue;
+            }
+            ballCount++;
+        }
+
+        this.ballCount = ballCount;
+        this.strikeCount = strikeCount;
+    }
+
+    private boolean isStrike(String value, int index) {
+        int targetIndex = targetNumber.indexOf(value);
+
+        return targetIndex == index;
     }
 }
