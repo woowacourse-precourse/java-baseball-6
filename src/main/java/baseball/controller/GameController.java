@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.entity.Game;
+import baseball.entity.Input;
 import baseball.entity.Player;
 import baseball.entity.Result;
 
@@ -37,11 +38,15 @@ public class GameController {
 
     public boolean baseballGame() {
         outputController.printNotice(INPUT);
-        player.setInputString(inputController.playerInput());
-        System.out.println(player.getInputString());
-        game.printAnswer();
+        Input input = inputController.playerInput();
+        player.setInputString(input.getInputString());
+
+        System.out.println(player.getInputString()); //임시용
+        game.printAnswer(); //임시용
+
         Result result = game(player, game);
-        System.out.println(result.strike +" "+result.ball);
+        System.out.println(result.strike +" "+result.ball); //임시용
+
         outputController.printResult(result.strike, result.ball);
         if (result.isAnswer) {
             outputController.printNoticeln(ANSWER);
@@ -52,8 +57,8 @@ public class GameController {
 
     public void re() {
         outputController.printNoticeln(AFTER);
-        String regame = inputController.reGameInput();
-        if (regame.equals("1") ){
+        Input input = inputController.playerInput();
+        if (input.getInputString().equals("1") ){
             start();
         }
     }
