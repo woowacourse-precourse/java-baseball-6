@@ -5,8 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseballNumber {
     Integer number;
 
+    final int MIN_NUMBER = 1;
+    final int MAX_NUMBER = 9;
+
     public BaseballNumber() {
-        this.number = Randoms.pickNumberInRange(1, 9);
+        this.number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
     public BaseballNumber (char c) {
@@ -16,7 +19,7 @@ public class BaseballNumber {
         } catch (Exception e) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
-        if(number < 1 || number > 9) {
+        if(number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException("1~9 사이의 숫자를 입력해주세요");
         }
         this.number = number;
