@@ -64,6 +64,8 @@ public class Application {
             String restart = Console.readLine();
             if ("1".equals(restart)) {
                 startBaseball();
+            } else if("2".equals(restart)) {
+                System.out.println("게임 종료");
             }
         }
     }
