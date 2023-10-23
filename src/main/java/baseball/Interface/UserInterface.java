@@ -4,11 +4,10 @@ import baseball.game.BaseballGame;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInterface {
-    private final Console console;
+    private Console console;
     private final BaseballGame baseballGame;
 
-    public UserInterface(Console console, BaseballGame baseballGame) {
-        this.console = console;
+    public UserInterface(BaseballGame baseballGame) {
         this.baseballGame = baseballGame;
     }
 
