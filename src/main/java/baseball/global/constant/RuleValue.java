@@ -1,4 +1,5 @@
 package baseball.global.constant;
 
-public enum RuleValue {
+public class RuleValue {
+    public static final int BASEBALL_NUMBER_SIZE = 3;
 }
