@@ -1,21 +1,25 @@
 package baseball.player;
 
+import static baseball.common.Constants.endInclusive;
+import static baseball.common.Constants.numDigit;
+import static baseball.common.Constants.startInclusive;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ComputerPlayer {
-    private static final int startInclusive = 1;
-    private static final int endInclusive = 9;
-    private static final int digits = 3;
-    private HashSet<Integer> computer = new HashSet<>();
+    private HashSet<Integer> computer;
 
     public ComputerPlayer() {
         pickNumber();
     }
 
     public void pickNumber() {
-        clear();
-        while(computer.size() < digits) {
+        computer = new LinkedHashSet<>();
+        while(computer.size() < numDigit) {
             int randomNum = Randoms.pickNumberInRange(startInclusive, endInclusive);
             computer.add(randomNum);
         }
@@ -23,5 +27,9 @@ public class ComputerPlayer {
 
     public void clear() {
         this.computer.clear();
+    }
+
+    public List<Integer> getComputerNumber() {
+        return computer.stream().collect(Collectors.toList());
     }
 }
