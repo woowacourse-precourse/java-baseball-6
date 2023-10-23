@@ -66,7 +66,6 @@ public class CommonController {
 
         if(mode==1) {
 
-
             //singleton 패턴
             if(easyService==null) {
                 easyService = new EasyService();
@@ -74,8 +73,7 @@ public class CommonController {
             }
             //정답 생성
             easyService.createRandomNumber();
-            easyController.beginnerModeInGameInRecursion(easyService);
-
+            easyController.easyModeInGameInRecursion(easyService);
 
         }
         else if(mode==2) {
