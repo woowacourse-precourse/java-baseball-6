@@ -27,12 +27,11 @@ public class Game {
         boolean is3Strike = false;
 
         do {
-            System.out.print(GET_NUMBER_MESSAGE);
+            System.out.print(INPUT_MESSAGE);
             inputString = Console.readLine().replace(" ",""); // 공백 실수 허용
             Player player = new Player(inputString);
             is3Strike = checkResult(player.getPlayer());
         } while (!is3Strike);
-
     }
 
     private boolean isContainedNumber(int randomNumber) {
@@ -43,15 +42,13 @@ public class Game {
     }
 
     private boolean checkResult(List<Integer> playerList) {
-        int strike= getStrike(playerList);
+        int strike = getStrike(playerList);
         int ball = getBall(playerList) - strike;
 
         Result result = new Result(strike, ball);
-        System.out.println(result.getResultString());
-
+        System.out.println(result.getHintString());
         return result.is3Strike();
     }
-
 
     private int getStrike(List<Integer> playerList) {
         int strike = 0;
@@ -61,7 +58,6 @@ public class Game {
                 strike++;
             }
         }
-
         return strike;
     }
 
@@ -73,7 +69,6 @@ public class Game {
                 ball++;
             }
         }
-
         return ball;
     }
 }

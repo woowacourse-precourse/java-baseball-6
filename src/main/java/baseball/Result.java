@@ -11,7 +11,7 @@ public class Result {
         this.ball = ball;
     }
 
-    public String getResultString() {
+    public String getHintString() {
         if (strike == 0 && ball == 0) {
             return NOTHING_STRING;
         }
