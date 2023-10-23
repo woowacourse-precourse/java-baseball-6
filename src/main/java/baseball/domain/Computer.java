@@ -11,7 +11,6 @@ public class Computer {
     private Computer(List<Integer> numbers){
         this.numbers = numbers;
     }
-
     public static Computer create(){
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {

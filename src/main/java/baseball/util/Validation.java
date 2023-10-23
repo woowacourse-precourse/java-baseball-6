@@ -4,24 +4,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validation {
+    private static final String ERROR_MESSAGE = "입력값이 잘못되었습니다";
+    public static void validateInput(String numberStr){
+        if(!verifyInputNumbers(numberStr)){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
 
 //    사용자가 컴퓨터의 수를 맞추기 위해 입력한 값에 대한 검증
-    public boolean verifyInputNumbers(String numberStr){
+    private static boolean verifyInputNumbers(String numberStr){
         return isThreeDigits(numberStr) && isNumbers(numberStr) && isDuplicate(numberStr);
     }
 
     //    사용자가 입력한 값이 3자리 수인지 검증
-    private boolean isThreeDigits(String numberStr){
+    private static boolean isThreeDigits(String numberStr){
         return numberStr.length() == 3;
     }
 
     //    입력한 값이 숫자인지 검증
-    private boolean isNumbers(String numberStr){
+    private static boolean isNumbers(String numberStr){
         return numberStr.matches("^[1-9]+$");
     }
 
     //    중복된 값이 있는지 검증
-    private boolean isDuplicate(String numberStr){
+    private static boolean isDuplicate(String numberStr){
         int length = numberStr.length();
         Set<Character> characterSet = new HashSet<>();
 
@@ -32,7 +39,7 @@ public class Validation {
     }
 
 //  게임 재시작에 대한 입력값 검증
-    public boolean verifyRestartInput(int number){
+    public static boolean verifyRestartInput(int number){
         return (number != 1) && (number !=2);
     }
 
