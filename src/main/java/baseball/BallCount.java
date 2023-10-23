@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class BallCount {
     private int strikeCount;
     private int ballCount;
@@ -12,25 +14,24 @@ public class BallCount {
         return ballCount;
     }
 
-    public void calculate(String computerNumber, String userNumber) {
+    public void calculate(List<Integer> computerNumber, List<Integer> userNumber) {
         calculateStrikeCount(computerNumber, userNumber);
         calculateBallCount(computerNumber, userNumber);
     }
 
-    private void calculateStrikeCount(String computerNumber, String userNumber) {
+    private void calculateStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         strikeCount = 0;
         for (int i = 0; i < 3; i++) {
-            if (computerNumber.charAt(i) == userNumber.charAt(i)) {
+            if (computerNumber.get(i) == userNumber.get(i)) {
                 strikeCount++;
             }
         }
     }
 
-    private void calculateBallCount(String computerNumber, String userNumber) {
+    private void calculateBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
         ballCount = 0;
         for (int i = 0; i < 3; i++) {
-            if (computerNumber.charAt(i) != userNumber.charAt(i)
-                    && computerNumber.contains(String.valueOf(userNumber.charAt(i)))) {
+            if (computerNumber.get(i) != userNumber.get(i) && computerNumber.contains(userNumber.get(i))) {
                 ballCount++;
             }
         }
