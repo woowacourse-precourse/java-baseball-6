@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.TargetNumber;
+import baseball.model.TargetBaseballNumbers;
 import baseball.model.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -20,7 +20,7 @@ public class BaseballGameController {
         outputView.gameStart();
 
         while (true) {
-            matchingNumber(TargetNumber.randomInstance(BASEBALL_NUMBER_SIZE));
+            matchingNumber(TargetBaseballNumbers.randomInstance(BASEBALL_NUMBER_SIZE));
 
             if (isWantStopGame()) {
                 break;
@@ -28,11 +28,11 @@ public class BaseballGameController {
         }
     }
 
-    private void matchingNumber(TargetNumber computerNumber) {
+    private void matchingNumber(TargetBaseballNumbers computerNumbers) {
         while (true) {
             List<Integer> playerNumber = requestNumber();
             verifyInputNumber(playerNumber);
-            GameResult gameResult = computerNumber.calculateGameResult(playerNumber);
+            GameResult gameResult = computerNumbers.calculateGameResult(playerNumber);
 
             outputView.showGameResult(gameResult);
 

@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class TargetNumber {
+public class TargetBaseballNumbers {
     private final List<BaseballNumber> baseballNumbers;
 
-    private TargetNumber(final List<BaseballNumber> baseballNumbers) {
+    private TargetBaseballNumbers(final List<BaseballNumber> baseballNumbers) {
         this.baseballNumbers = baseballNumbers;
     }
 
-    public static TargetNumber randomInstance(final int size) {
+    public static TargetBaseballNumbers randomInstance(final int size) {
         List<BaseballNumber> uniqueBaseballNumbers = new ArrayList<>();
 
         while (uniqueBaseballNumbers.size() < size) {
@@ -26,7 +26,7 @@ public class TargetNumber {
             uniqueBaseballNumbers.add(randomBaseballNumber);
         }
 
-        return new TargetNumber(Collections.unmodifiableList(uniqueBaseballNumbers));
+        return new TargetBaseballNumbers(Collections.unmodifiableList(uniqueBaseballNumbers));
     }
 
     public GameResult calculateGameResult(final List<Integer> inputPlayerNumbers) {
