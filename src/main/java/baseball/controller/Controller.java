@@ -58,8 +58,7 @@ public class Controller {
             validateUserAnswerInput(userAnswer);
             return userAnswer;
         } catch (IllegalArgumentException e) {
-            OutputView.printError(e.getMessage());
-            return generateUserAnswer();
+            throw new IllegalArgumentException(ErrorMessage.USER_INSERT_NUMBER_NOT_DUPLICATION.getMessage());
         }
     }
 
