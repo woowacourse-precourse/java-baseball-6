@@ -2,28 +2,33 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        String continueBaseball = "1";
-
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (continueBaseball.equals("1")) {
-            startBaseball();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            continueBaseball = Console.readLine();
-        }
+
+        startBaseball();
+
         System.out.println("게임 종료");
     }
 
     public static void startBaseball() {
-        List<Integer> answerNumberList = createBaseballAnswerNumberList();
-        playBaseball(answerNumberList);
+        String continueBaseball = "1";
+
+        while (continueBaseball.equals("1")) {
+            List<Integer> answerNumberList = createBaseballAnswerNumberList();
+            playBaseball(answerNumberList);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            continueBaseball = Console.readLine();
+        }
     }
 
-    public static List<Integer> createBaseballAnswerNumberList() {
+    private static List<Integer> createBaseballAnswerNumberList() {
         List<Integer> answerNumberList = new ArrayList<>();
         while (answerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -34,7 +39,7 @@ public class Application {
         return answerNumberList;
     }
 
-    public static void playBaseball(List<Integer> answerNumberList) {
+    private static void playBaseball(List<Integer> answerNumberList) {
         while (true) {
             List<Integer> inputNumberList = inputBaseballNumberList();
             int[] baseballCount = checkBaseballResult(answerNumberList, inputNumberList);
@@ -46,14 +51,14 @@ public class Application {
         }
     }
 
-    public static List<Integer> inputBaseballNumberList() {
+    private static List<Integer> inputBaseballNumberList() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
         validateBaseballNumbers(inputString);
         return parseIntegerList(inputString);
     }
 
-    public static void validateBaseballNumbers(String inputString) {
+    private static void validateBaseballNumbers(String inputString) {
         boolean isValid = true;
         String message = "";
         if (inputString.length() != 3) {
@@ -81,7 +86,7 @@ public class Application {
         }
     }
 
-    public static List<Integer> parseIntegerList(String inputString) {
+    private static List<Integer> parseIntegerList(String inputString) {
         List<Integer> baseballNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             baseballNumberList.add(inputString.charAt(i) - '0');
@@ -90,13 +95,13 @@ public class Application {
         return baseballNumberList;
     }
 
-    public static int[] checkBaseballResult(List<Integer> answerNumberList, List<Integer> inputNumberList) {
+    private static int[] checkBaseballResult(List<Integer> answerNumberList, List<Integer> inputNumberList) {
         int strike = 0, ball = 0;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 boolean isCorrect = answerNumberList.get(i) == inputNumberList.get(j);
-                if(isCorrect) {
+                if (isCorrect) {
                     if (i == j) {
                         strike++;
                     } else {
@@ -105,20 +110,18 @@ public class Application {
                 }
             }
         }
-
         return new int[]{strike, ball};
     }
 
-    public static void printBaseballResult(int[] baseballCount) {
-        if(baseballCount[0] == 0 && baseballCount[1] == 0) {
+    private static void printBaseballResult(int[] baseballCount) {
+        if (baseballCount[0] == 0 && baseballCount[1] == 0) {
             System.out.println("낫싱");
-        }
-        else if(baseballCount[0] > 0 || baseballCount[1] > 0) {
+        } else if (baseballCount[0] > 0 || baseballCount[1] > 0) {
             StringBuilder stringBuilder = new StringBuilder();
-            if(baseballCount[1] != 0) {
+            if (baseballCount[1] != 0) {
                 stringBuilder.append(baseballCount[1]).append("볼 ");
             }
-            if(baseballCount[0] != 0) {
+            if (baseballCount[0] != 0) {
                 stringBuilder.append(baseballCount[0]).append("스트라이크");
             }
             System.out.println(stringBuilder.toString().trim());
