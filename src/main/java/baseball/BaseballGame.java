@@ -44,4 +44,10 @@ public class BaseballGame {
             }
         }
     }
+
+    private static void showStrikeCount(int[] compareResult) {
+        if (compareResult[1] != 0) {
+            System.out.println(compareResult[1] + "스트라이크");
+        }
+    }
 }
