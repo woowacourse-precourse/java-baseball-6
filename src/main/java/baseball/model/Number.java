@@ -27,6 +27,13 @@ public class Number {
         }
     }
 
+    public boolean checkSuccess(ArrayList<Integer> inputNumber) {
+        if (getStrikeCount(inputNumber) != 3) {
+            return false;
+        }
+        return true;
+    }
+
     public int getStrikeCount(ArrayList<Integer> inputNumber) {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
