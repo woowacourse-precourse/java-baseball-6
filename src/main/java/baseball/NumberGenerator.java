@@ -27,6 +27,14 @@ public class NumberGenerator {
         return playerNumber;
     }
 
+    private List<Integer> stringToList(String num) { // 검증된 숫자를 list 타입으로 변환
+        List<Integer> list = new ArrayList<>();
+        for (char c : num.toCharArray()) {
+            list.add(c - '0');
+        }
+        return list;
+    }
+
     private String inputNumber() { // 사용자로부터 번호를 입력받고 예외 케이스 검사
         String num = Console.readLine();
         if (!isValidNumber(num)) {
@@ -48,13 +56,5 @@ public class NumberGenerator {
             return false;
         }
         return true;
-    }
-
-    private List<Integer> stringToList(String num) { // 검증된 숫자를 list 타입으로 변환
-        List<Integer> list = new ArrayList<>();
-        for (char c : num.toCharArray()) {
-            list.add(c - '0');
-        }
-        return list;
     }
 }
