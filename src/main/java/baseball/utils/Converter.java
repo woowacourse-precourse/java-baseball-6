@@ -1,6 +1,6 @@
 package baseball.utils;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Converter {
@@ -9,10 +9,8 @@ public class Converter {
     private Converter() {}
 
     public static List<Integer> convertIntToList(int number) {
-        List<Integer> list = new ArrayList<>();
-        for (String n : String.valueOf(number).split(INT_SEPARATOR)) {
-            list.add(Integer.parseInt(n));
-        }
-        return list;
+        return Arrays.stream(String.valueOf(number).split(INT_SEPARATOR))
+                .map(Integer::parseInt)
+                .toList();
     }
 }
