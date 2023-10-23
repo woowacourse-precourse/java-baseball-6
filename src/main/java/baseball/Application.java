@@ -17,26 +17,36 @@ public class Application {
             // 컴퓨터가 숫자 3개를 고른다.
             List<Integer> computer = chooseNumByComputer();
 
-            while (true) {
-                // 유저로부터 숫자 3개를 입력받는다.
-                // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
-                if (!User.inputAnswerStr()) {
-                    isApplicationEnd = true;
-                    throw new IllegalArgumentException();
-                }
-
-                // 이번 라운드 게임 결과 출력 및 숫자를 3개 모두 맞혔을 경우 게임 종료
-                if (printRoundResult(computer, User.getNumberList())) {
-                    printGameOverMessage();
-                    if (isUserWantFinish()) {
-                        isApplicationEnd = true;
-                    }
-                    break;
-                }
-            }
+            // 게임 라운드 진행
+            playGameRound(computer);
         } while (!isApplicationEnd);
 
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
+    }
+
+    /**
+     * 유저가 정답을 맞출때까지 게임 라운드를 진행한다.
+     *
+     * @param computer 현재 게임의 정답 (숫자 리스트)
+     */
+    private static void playGameRound(List<Integer> computer) {
+        while (true) {
+            // 유저로부터 숫자 3개를 입력받는다.
+            // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
+            if (!User.inputAnswerStr()) {
+                isApplicationEnd = true;
+                throw new IllegalArgumentException();
+            }
+
+            // 이번 라운드 게임 결과 출력 및 숫자를 3개 모두 맞혔을 경우 게임 종료
+            if (printRoundResult(computer, User.getNumberList())) {
+                printGameOverMessage();
+                if (isUserWantFinish()) {
+                    isApplicationEnd = true;
+                }
+                break;
+            }
+        }
     }
 
     /**
