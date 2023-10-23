@@ -62,53 +62,45 @@ public class GameProcessor {
         return strike;
     }
 
-    private List<Integer> ballStrikeList(Data data) {
-        List<Integer> ballStrike = data.getResultList();
+    public Boolean validateFullStrike(Data data) {
+        boolean isFullStrike = false;
+        if (data.getStrike() == DIGIT_LENGTH_LIMIT) {
+            isFullStrike = true;
+        }
+        return isFullStrike;
+    }
+
+    public String generateResultText(Data data, MessageManager messageManager) {
         List<String> userNumberList = generateUserNumberList(data);
         List<String> randomNumberList = generateRandomNumberList(data);
 
         int ball = calculateBall(userNumberList, randomNumberList);
         int strike = calculateStrike(userNumberList, randomNumberList);
 
-        ballStrike.set(0, ball);
-        ballStrike.set(1, strike);
+        data.setBall(ball);
+        data.setStrike(strike);
+        data.setIsCompleteAnswer(validateFullStrike(data));
 
-        return ballStrike;
-    }
-
-    public Boolean validateCompleteAnswer(Data data) {
-        boolean isCompleteAnswer = false;
-        if (data.getResultList().get(1) == DIGIT_LENGTH_LIMIT) {
-            isCompleteAnswer = true;
-        }
-        return isCompleteAnswer;
-    }
-
-    public String generateResultText(Data data, MessageManager messageManager) {
         String resultText;
         StringBuilder resultTextBuilder = new StringBuilder();
-        List<Integer> resultList = ballStrikeList(data);
 
-        data.setResultList(resultList);
-        data.setIsCompleteAnswer(validateCompleteAnswer(data));
-
-        if (resultList.get(0) > 0 && resultList.get(1) > 0) {
-            resultTextBuilder.append(resultList.get(0));
-            resultTextBuilder.append(messageManager.getSameNumberMessage());
+        if (ball > 0 && strike > 0) {
+            resultTextBuilder.append(ball);
+            resultTextBuilder.append(messageManager.getBallText());
             resultTextBuilder.append(" ");
-            resultTextBuilder.append(resultList.get(1));
-            resultTextBuilder.append(messageManager.getSameDigitMessage());
+            resultTextBuilder.append(strike);
+            resultTextBuilder.append(messageManager.getStrikeText());
         }
-        if (resultList.get(0) > 0 && resultList.get(1) == 0) {
-            resultTextBuilder.append(resultList.get(0));
-            resultTextBuilder.append(messageManager.getSameNumberMessage());
+        if (ball > 0 && strike == 0) {
+            resultTextBuilder.append(ball);
+            resultTextBuilder.append(messageManager.getBallText());
         }
-        if (resultList.get(0) == 0 && resultList.get(1) > 0) {
-            resultTextBuilder.append(resultList.get(1));
-            resultTextBuilder.append(messageManager.getSameDigitMessage());
+        if (ball == 0 && strike > 0) {
+            resultTextBuilder.append(strike);
+            resultTextBuilder.append(messageManager.getStrikeText());
         }
-        if (resultList.get(0) == 0 && resultList.get(1) == 0) {
-            resultTextBuilder.append(messageManager.getWrongMessage());
+        if (ball == 0 && strike == 0) {
+            resultTextBuilder.append(messageManager.getNothingText());
         }
 
         resultText = resultTextBuilder.toString();
@@ -117,10 +109,10 @@ public class GameProcessor {
     }
 
     public boolean illegalArgumentException(Data data) {
-        boolean error = false;
+        boolean isError = false;
         if ((data.getUserNumber().length()) != DIGIT_LENGTH_LIMIT) {
-            error = true;
+            isError = true;
         }
-        return error;
+        return isError;
     }
 }

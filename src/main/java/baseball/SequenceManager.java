@@ -14,7 +14,7 @@ public class SequenceManager {
 
     public void proceedMainGame() {
         while (!data.getIsCompleteAnswer() && data.getIsNoError()) {
-            data.setUserNumber(messageManager.getUserAnswerNumber());
+            data.setUserNumber(messageManager.getInputNumber());
 
             if (gameProcessor.illegalArgumentException(data)) {
                 data.setIsNoError(false);
@@ -26,19 +26,19 @@ public class SequenceManager {
     }
 
     public void proceedOutro() {
-        if (gameProcessor.validateCompleteAnswer(data) && data.getIsNoError()) {
-            System.out.println(messageManager.getOutroMessage());
+        if (gameProcessor.validateFullStrike(data) && data.getIsNoError()) {
+            System.out.println(messageManager.getFullStrikeText());
         }
 
         if (validateRestart() && data.getIsNoError()) {
-            String continueResponse = messageManager.getUserContinueResponse();
-            data.setWillRestartResponse(continueResponse);
+            String continueResponse = messageManager.getContinueResponse();
+            data.setRestartResponse(continueResponse);
         }
     }
 
     public boolean validateRestart() {
         boolean restart = true;
-        if (data.getWillRestartResponse().equals(CLOSEGAMEINPUT) || !data.getIsNoError()) {
+        if (data.getRestartResponse().equals(CLOSEGAMEINPUT) || !data.getIsNoError()) {
             restart = false;
         }
         return restart;

@@ -2,67 +2,67 @@ package baseball;
 
 public class Messages {
 
-    private String introMessage = "숫자 야구 게임을 시작합니다.";
-    private String inputMessage = "숫자를 입력해주세요 : ";
-    private String sameNumberMessage = "볼";
-    private String sameDigitMessage = "스트라이크";
-    private String wrongMessage = "낫싱";
-    private String outroMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private String willRestartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private String introText = "숫자 야구 게임을 시작합니다.";
+    private String inputText = "숫자를 입력해주세요 : ";
+    private String ballText = "볼";
+    private String strikeText = "스트라이크";
+    private String nothingText = "낫싱";
+    private String fullStrikeText = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private String willRestartText = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public String getIntroMessage() {
-        return introMessage;
+    public String getIntroText() {
+        return introText;
     }
 
-    public void setIntroMessage(String introMessage) {
-        this.introMessage = introMessage;
+    public void setIntroText(String introText) {
+        this.introText = introText;
     }
 
-    public String getInputMessage() {
-        return inputMessage;
+    public String getInputText() {
+        return inputText;
     }
 
-    public void setInputMessage(String inputMessage) {
-        this.inputMessage = inputMessage;
+    public void setInputText(String inputText) {
+        this.inputText = inputText;
     }
 
-    public String getSameNumberMessage() {
-        return sameNumberMessage;
+    public String getBallText() {
+        return ballText;
     }
 
-    public void setSameNumberMessage(String sameNumberMessage) {
-        this.sameNumberMessage = sameNumberMessage;
+    public void setBallText(String ballText) {
+        this.ballText = ballText;
     }
 
-    public String getSameDigitMessage() {
-        return sameDigitMessage;
+    public String getStrikeText() {
+        return strikeText;
     }
 
-    public void setSameDigitMessage(String sameDigitMessage) {
-        this.sameDigitMessage = sameDigitMessage;
+    public void setStrikeText(String strikeText) {
+        this.strikeText = strikeText;
     }
 
-    public String getWrongMessage() {
-        return wrongMessage;
+    public String getNothingText() {
+        return nothingText;
     }
 
-    public void setWrongMessage(String wrongMessage) {
-        this.wrongMessage = wrongMessage;
+    public void setNothingText(String nothingText) {
+        this.nothingText = nothingText;
     }
 
-    public String getOutroMessage() {
-        return outroMessage;
+    public String getFullStrikeText() {
+        return fullStrikeText;
     }
 
-    public void setOutroMessage(String outroMessage) {
-        this.outroMessage = outroMessage;
+    public void setFullStrikeText(String fullStrikeText) {
+        this.fullStrikeText = fullStrikeText;
     }
 
-    public String getWillRestartMessage() {
-        return willRestartMessage;
+    public String getWillRestartText() {
+        return willRestartText;
     }
 
-    public void setWillRestartMessage(String willRestartMessage) {
-        this.willRestartMessage = willRestartMessage;
+    public void setWillRestartText(String willRestartText) {
+        this.willRestartText = willRestartText;
     }
 }

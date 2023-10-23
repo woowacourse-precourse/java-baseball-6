@@ -1,31 +1,29 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Data {
 
     private final List<String> RANDOMNUMBERLIST = new ArrayList<>();
-    private final List<Integer> RESULTLIST = Arrays.asList(0, 0);
-    private final String WILLRESTARTRESPONSE = "-1";
+    private final String RESTARTRESPONSE = "-1";
     private final boolean ISNOERROR = true;
-    private final boolean ISCOMPLETEANSWER = false;
+    private final boolean ISFULLSTRIKE = false;
     private String userNumber;
     private List<String> userNumberList;
     private int randomNumber;
     private List<String> randomNumberList;
-    private List<Integer> resultList;
-    private String willRestartResponse;
+    private int ball;
+    private int strike;
+    private String restartResponse;
     private boolean isNoError;
-    private boolean isCompleteAnswer;
+    private boolean isFullStrike;
 
     public Data() {
         this.randomNumberList = RANDOMNUMBERLIST;
-        this.resultList = RESULTLIST;
         this.isNoError = ISNOERROR;
-        this.willRestartResponse = WILLRESTARTRESPONSE;
-        this.isCompleteAnswer = ISCOMPLETEANSWER;
+        this.restartResponse = RESTARTRESPONSE;
+        this.isFullStrike = ISFULLSTRIKE;
     }
 
     public String getUserNumber() {
@@ -60,28 +58,36 @@ public class Data {
         this.randomNumberList = randomNumberList;
     }
 
-    public List<Integer> getResultList() {
-        return resultList;
+    public int getBall() {
+        return ball;
     }
 
-    public void setResultList(List<Integer> resultList) {
-        this.resultList = resultList;
+    public void setBall(int ball) {
+        this.ball = ball;
     }
 
-    public String getWillRestartResponse() {
-        return willRestartResponse;
+    public int getStrike() {
+        return strike;
     }
 
-    public void setWillRestartResponse(String willRestartResponse) {
-        this.willRestartResponse = willRestartResponse;
+    public void setStrike(int strike) {
+        this.strike = strike;
+    }
+
+    public String getRestartResponse() {
+        return restartResponse;
+    }
+
+    public void setRestartResponse(String restartResponse) {
+        this.restartResponse = restartResponse;
     }
 
     public boolean getIsCompleteAnswer() {
-        return isCompleteAnswer;
+        return isFullStrike;
     }
 
     public void setIsCompleteAnswer(boolean completeAnswer) {
-        isCompleteAnswer = completeAnswer;
+        isFullStrike = completeAnswer;
     }
 
     public boolean getIsNoError() {
