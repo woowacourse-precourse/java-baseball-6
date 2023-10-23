@@ -12,7 +12,17 @@ public class PlayerNumber {
     }
 
     //플레이어가 입력한 숫자 반환
-    public void getPlayerNumber(List<Integer> numbers){
-        playerNumberList = new ArrayList<>(numbers);
+    public List<Integer> getPlayerNumber() {
+        return playerNumberList;
+    }
+
+    public void setPlayerNumber(String playerInput) {
+        playerNumberList.clear();
+
+        for(int i = 0; i <3; i++){
+            char digitChar = playerInput.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            playerNumberList.add(digit);
+        }
     }
 }
