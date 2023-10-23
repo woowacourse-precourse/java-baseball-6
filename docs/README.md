@@ -15,9 +15,7 @@
 플레이어는 정답을 맞힐 때까지, 서로 다른 3개의 숫자를 입력한다.    
 만약 플레이어가 잘못된 값을 입력하면, IllegalArgumentException을 발생시킨다.
 - 입력은 문제에서 주어진 라이브러리를 이용한다.
-  - camp.nextstep.edu.missionutils.Console의 readLine()  
-
-
+  - camp.nextstep.edu.missionutils.Console의 readLine()
 
 ### 3. 두 값 비교
 컴퓨터가 생성한 숫자와 플레이어가 입력한 숫자가 같은지 비교한다.
@@ -36,11 +34,13 @@
 3) (1)-(2)를 하면 ball의 값이다.
 4) strike와 ball 모두 0이면, nothing이다.
 ```
+
+### 4. 결과 출력
 - 게임 결과를 양식에 맞게 출력한다.
 - strike 3개가 나오면, 플레이어는 정답을 맞힌 것이다. 기능 4)로 넘어가서 게임을 재시작할지 물어본다.
 - 정답을 못 맞히면, 기능 2)로 돌아가서 입력값을 새로 받는다.
 
-### 4. 게임 재시작
+### 5. 게임 재시작
 플레이어가 정답을 맞히면, 게임 재시작 여부를 묻는다.   
 이 또한 missionutils 라이브러리를 이용하여 입력값을 받는다.  
 잘못된 값을 입력한 경우, IllegalArgumentException을 발생시킨다.
