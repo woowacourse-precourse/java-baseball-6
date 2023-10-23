@@ -1,11 +1,14 @@
 package view.processing;
 
+import static utils.GameConstant.BALL;
+import static utils.GameConstant.NOTHING;
+import static utils.GameConstant.STRIKE;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static utils.GameConstant.*;
+public final class Convertor {
 
-public class Convertor {
     public Convertor() {
     }
 

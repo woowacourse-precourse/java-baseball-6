@@ -5,7 +5,8 @@ import model.player.User;
 import model.referee.GameScoreboard;
 import model.referee.Referee;
 
-public class GameStarter {
+public final class GameStarter {
+
     public GameStarter() {
     }
 

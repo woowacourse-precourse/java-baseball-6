@@ -1,6 +1,5 @@
 package controller;
 
-import static utils.GameConstant.INPUT_PROMPT_MESSAGE;
 import static utils.GameConstant.QUIT_GAME;
 
 import java.util.List;
@@ -12,7 +11,8 @@ import utils.BaseballNumberUtils;
 import view.InputView;
 import view.OutputView;
 
-public class NumberBaseballController {
+public final class NumberBaseballController {
+
     private final GameController gameController;
     private final InputView inputView;
     private final OutputView outputView;

@@ -2,7 +2,8 @@ package model.referee;
 
 import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
 
-public class GameScoreboard {
+public final class GameScoreboard {
+
     private final int strike;
     private final int ball;
 

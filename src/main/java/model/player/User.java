@@ -2,7 +2,8 @@ package model.player;
 
 import java.util.List;
 
-public class User extends Player {
+public final class User extends Player {
+
     private User(List<Integer> numbers) {
         super(numbers);
     }

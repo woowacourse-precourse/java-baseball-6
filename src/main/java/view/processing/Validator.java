@@ -1,13 +1,18 @@
 package view.processing;
 
+import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
+import static utils.GameErrorMessage.DUPLICATE_NUMBER_ERROR_MESSAGE;
+import static utils.GameErrorMessage.ERROR_ONLY_NUMBERS_ALLOWED;
+import static utils.GameErrorMessage.EXCEEDING_COUNT_ERROR_MESSAGE;
+import static utils.GameErrorMessage.INVALID_LENGTH_MESSAGE;
+import static utils.GameErrorMessage.NULL_INPUT_MESSAGE;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
-import static utils.GameErrorMessage.*;
+public final class Validator {
 
-public class Validator {
     public Validator() {
     }
 

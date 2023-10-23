@@ -2,7 +2,8 @@ package model.system;
 
 import model.referee.GameScoreboard;
 
-public class GameTerminator {
+public final class GameTerminator {
+
     public GameTerminator() {
     }
 

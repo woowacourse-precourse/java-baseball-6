@@ -1,12 +1,12 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import view.processing.Convertor;
 import view.processing.Validator;
 
-import java.util.List;
+public final class InputView {
 
-public class InputView {
     private final Convertor convertor;
     private final Validator validator;
 
