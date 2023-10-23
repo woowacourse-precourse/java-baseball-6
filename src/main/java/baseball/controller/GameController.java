@@ -20,16 +20,18 @@ public class GameController {
         while (true) {
             // 1회 게임 시작
             gameRound();
-
             // 재시작/종료 선택
-            OutputView.restartDecision();
-            String userInput = InputView.getUserInput();
-            Restart restart = Restart.restartFactory(userInput);
-            int decision = restart.getDecision();
-            if (decision != RESTART) {
+            if (askRestart() != RESTART) {
                 break;
             }
         }
+    }
+
+    private static int askRestart() {
+        OutputView.restartDecision();
+        String userInput = InputView.getUserInput();
+        Restart restart = Restart.restartFactory(userInput);
+        return restart.getDecision();
     }
 
     public void gameRound() {
@@ -37,9 +39,7 @@ public class GameController {
         List<Integer> computerNumber = GeneratorNumber.generateComputerNumber();
         while (true) {
             OutputView.scanNumber();
-            String userInput = InputView.getUserInput();
-            // 사용자 숫자 생성
-            List<Integer> userNumber = GeneratorNumber.generateUserNumber(userInput);
+            List<Integer> userNumber = getUserInput();
 
             GameRound gameRound = GameRound.gameProcessFactory(computerNumber, userNumber);
             String result = gameRound.choose();
@@ -50,5 +50,11 @@ public class GameController {
                 break; // 3스트라이크시 내부 루프(라운드) 종료
             }
         }
+    }
+
+    private static List<Integer> getUserInput() {
+        String userInput = InputView.getUserInput();
+        // 사용자 숫자 생성
+        return GeneratorNumber.generateUserNumber(userInput);
     }
 }
