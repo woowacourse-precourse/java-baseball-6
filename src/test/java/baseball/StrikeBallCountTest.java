@@ -16,7 +16,7 @@ class StrikeBallCountTest {
     @Test
     void 스트라이크_갯수_증가_테스트() {
         strikeBallCount.settingStrikeBallCount();
-        strikeBallCount.plusStringCount();
+        strikeBallCount.plusStrikeCount();
         Assertions.assertThat(1).isEqualTo(strikeBallCount.getStrike());
     }
 
