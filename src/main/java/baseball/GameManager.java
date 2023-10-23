@@ -5,9 +5,9 @@ import java.util.List;
 public class GameManager {
 
     private ResultMapper resultMapper;
-    private boolean isGameOver
+    private boolean isGameOver;
 
-    public GameManager(ResultMapper resultMapper, boolean isGameOver) {
+    public GameManager(ResultMapper resultMapper) {
         this.resultMapper = resultMapper;
         this.isGameOver = false;
     }
@@ -18,8 +18,14 @@ public class GameManager {
         while(!isGameOver) {
             Result result = comparing.compareNumbers(readLine, computer);
             String resultForUi = resultMapper.getResult(result.getEqualsNumber(), result.getEqualsPosition());
+            System.out.println(resultForUi);
 
-            isGameOver = result.getEqualsNumber() == 3 && result.getEqualsPosition() == 3;
+            isGameOver = verifyGameState(result);
         }
     }
+
+    public boolean verifyGameState(Result result) {
+        return result.getEqualsNumber() == 3 && result.getEqualsPosition() == 3;
+    }
+
 }
