@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ValidationService {
-    private final ExceptionHandler exceptionHandler = new ExceptionHandler();
 
     public void isValidNumber(String str) {
         isThreeDigits(str);
@@ -16,13 +15,13 @@ public class ValidationService {
 
     public void isThreeDigits(String str) {
         if (!(str.length() == 3)) {
-            exceptionHandler.throwIfNumberLengthNotThree();
+            ExceptionHandler.throwIfNumberLengthNotThree();
         }
     }
 
     public void hasNoZero(String str) {
         if (str.contains("0")) {
-            exceptionHandler.throwIfNumberHasZero();
+            ExceptionHandler.throwIfNumberHasZero();
         }
     }
 
@@ -32,7 +31,7 @@ public class ValidationService {
 
         for (char digit : digits) {
             if (uniqueSet.contains(digit)) {
-                exceptionHandler.throwIfNumberIsDuplicated();
+                ExceptionHandler.throwIfNumberIsDuplicated();
             }
             uniqueSet.add(digit);
         }
@@ -40,7 +39,7 @@ public class ValidationService {
 
     public void isNumeric(String str) {
         if (!str.matches("\\d+")) {
-            exceptionHandler.throwIfStringIsNotNumeric();
+            ExceptionHandler.throwIfStringIsNotNumeric();
         }
     }
 }
