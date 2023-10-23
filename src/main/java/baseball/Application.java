@@ -1,9 +1,9 @@
 package baseball;
 
 public class Application {
-    
     public static void main(String[] args) throws IllegalArgumentException {
-        Game.gameStart();
+        // 게임 스타트
+        Game baseballGame = new Game();
+        baseballGame.baseballStart();
     }
-
 }
