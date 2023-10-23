@@ -28,6 +28,7 @@ public class InputView {
     public static final int NUMBER_SIZE = 3;
 
     public static List<Integer> userInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         List<Integer> userNumber = new ArrayList<>();
