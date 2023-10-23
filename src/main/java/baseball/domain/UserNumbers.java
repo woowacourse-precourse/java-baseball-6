@@ -10,9 +10,9 @@ public class UserNumbers extends Numbers {
         super(numbers);
     }
 
-    public static UserNumbers createUserNumbers(final String userInputNumber) {
-        NumbersValidator.validate(userInputNumber);
-        List<Integer> userNumbers = Arrays.stream(userInputNumber.split(""))
+    public static UserNumbers createUserNumbers(final String userInput) {
+        NumbersValidator.validate(userInput);
+        List<Integer> userNumbers = Arrays.stream(userInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return new UserNumbers(userNumbers);
@@ -20,48 +20,50 @@ public class UserNumbers extends Numbers {
 
     static private class NumbersValidator {
 
-        private static void validate(final String userInputNumber) {
-            validateLength(userInputNumber);
-            validateInteger(userInputNumber);
-            validateRandomNumber(userInputNumber);
+        private static void validate(final String inputNumber) {
+            validateLength(inputNumber);
+            validateInteger(inputNumber);
+            validateRandomNumber(inputNumber);
         }
 
-        private static void validateInteger(final String userInputNumber) {
+        private static void validateLength(final String userInput) {
+            if (userInput.length() != NUMBER_LENGTH) {
+                throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
+            }
+        }
+
+        private static void validateInteger(final String userInput) {
             try {
-                Integer.parseInt(userInputNumber);
+                Integer.parseInt(userInput);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("숫자만 입력해야 합니다.");
             }
         }
 
-        private static void validateLength(final String userInputNumber) {
-            if (userInputNumber.length() != NUMBER_LENGTH) {
-                throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
-            }
-        }
-
-        private static void validateRandomNumber(final String userInputNumber) {
-            String[] userNumbers = userInputNumber.split("");
+        private static void validateRandomNumber(final String userInput) {
+            List<String> userNumbers = Arrays.asList(userInput.split(""));
             if (isDuplicated(userNumbers)) {
                 throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
             }
             validateZeroNumber(userNumbers);
         }
 
-        private static void validateZeroNumber(final String[] userNumbers) {
-            if (isZero(userNumbers)) {
+        private static void validateZeroNumber(final List<String> userNumbers) {
+            if (containsZero(userNumbers)) {
                 throw new IllegalArgumentException("숫자는 1~9 사이의 숫자만 입력할 수 있습니다.");
             }
         }
 
-        private static boolean isZero(final String[] userNumbers) {
-            return userNumbers[0].equals("0") || userNumbers[1].equals("0") || userNumbers[2].equals("0");
+        private static boolean isDuplicated(final List<String> userNumbers) {
+            return userNumbers.size() != userNumbers.stream()
+                    .distinct()
+                    .toList()
+                    .size();
         }
 
-        private static boolean isDuplicated(final String[] userNumbers) {
-            return userNumbers[0].equals(userNumbers[1])
-                    || userNumbers[1].equals(userNumbers[2])
-                    || userNumbers[0].equals(userNumbers[2]);
+        private static boolean containsZero(final List<String> userNumbers) {
+            return userNumbers.stream()
+                    .anyMatch("0"::equals);
         }
 
     }

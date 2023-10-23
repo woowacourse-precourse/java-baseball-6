@@ -1,16 +1,16 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.dto.GameResult;
 import baseball.generator.GameResultMessageGenerator;
 import baseball.generator.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.domain.Computer;
-import baseball.dto.GameResult;
 
 public class BaseballGame {
 
-    public static final String RESTART = "1";
-    public static final String END_GAME = "2";
+    private static final String RESTART = "1";
+    private static final String END_GAME = "2";
 
     private final Computer baseballComputer = new Computer();
 
