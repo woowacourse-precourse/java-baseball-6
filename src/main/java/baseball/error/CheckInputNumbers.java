@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class CheckInputNumbers {
+    public static final int INPUT_NUMBER_MAX_LENGTH = 3;
     public static final int CHAR_TO_INT_CONVERT_NUMBER = 48;
     public static final char RANDOM_NUMBER_RANGE_START = '0';
     public static final char RANDOM_NUMBER_RANGE_END = '9';
@@ -16,7 +17,7 @@ public class CheckInputNumbers {
 
 
     public static void checkLength(String input){
-        if(input.length() != 3){
+        if(input.length() != INPUT_NUMBER_MAX_LENGTH){
             throw new IllegalArgumentException(LENGTH_EXCEPTION_MESSAGE);
         }
     }
