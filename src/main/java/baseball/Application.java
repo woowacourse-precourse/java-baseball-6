@@ -116,8 +116,8 @@ class GameLauncher {
     boolean checkNumber(int n) {
         if (n == 1 || n == 2 || ((n / 100 != (n / 10) % 10) && ((n / 10) % 10 != n % 10) && (n / 100 != n % 10))) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 }
