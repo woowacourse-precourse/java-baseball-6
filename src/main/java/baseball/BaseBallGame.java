@@ -42,25 +42,20 @@ public class BaseBallGame {
 
     private void play() {
         do {
-            try {
-                List<Integer> num = Util.getNumber();
-                compare(num);
+            List<Integer> num = Util.getNumber();
+            compare(num);
 
-                if (strike == 0 && ball == 0) {
-                    System.out.println("낫싱");
-                } else if (strike > 0 && ball > 0) {
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                } else if (ball > 0) {
-                    System.out.println(ball + "볼");
-                } else {
-                    if (strike == 3) {
-                        end = true;
-                    }
-                    System.out.println(strike + "스트라이크");
+            if (strike == 0 && ball == 0) {
+                System.out.println("낫싱");
+            } else if (strike > 0 && ball > 0) {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            } else if (ball > 0) {
+                System.out.println(ball + "볼");
+            } else {
+                if (strike == 3) {
+                    end = true;
                 }
-
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println(strike + "스트라이크");
             }
         } while (!end);
     }
