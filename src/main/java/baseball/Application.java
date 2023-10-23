@@ -30,22 +30,23 @@ public class Application {
 
     private static List<Integer> parse(String input) {
         List<Integer> parsedInput = new ArrayList<>();
-        try {
-            if (input.length() != 3) {
-                throw new IllegalArgumentException();
-            }
-            List<String> listedInput = Arrays.asList(input);
-            while(parsedInput.size() < 3) {
-                int number = Integer.parseInt(listedInput.remove(0));
-                if (!parsedInput.contains(number)) {
-                    parsedInput.add(number);
-                } else {
-                    throw new IllegalArgumentException();
-                }
-            }
-        } catch (Exception e) {
+
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+
+        String[] listedInput = input.split("");
+
+        for (String strNumber : listedInput) {
+            int number = Integer.parseInt(strNumber);
+
+            if (!parsedInput.contains(number)) {
+                parsedInput.add(number);
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+
         return parsedInput;
     }
 
