@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트001() {
+    void 예외_테스트_길이3미만() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트002() {
+    void 예외_테스트_동일한숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("111"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트003() {
+    void 예외_테스트_0을포함() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("012"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트004() {
+    void 예외_테스트_문자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("d12"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -61,11 +61,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트005() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    void 예외_테스트_commandNumberException() {
+        final Illegalcheck illegalcheck = new Illegalcheck();
+
+        assertThatThrownBy(() -> illegalcheck.commandCheck(3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력값은 1 or 2 입니다.");
     }
 
     @Override
