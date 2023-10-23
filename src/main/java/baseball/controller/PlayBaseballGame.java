@@ -1,20 +1,20 @@
 package baseball.controller;
 
-import baseball.domain.Ball;
-import baseball.service.Computer;
-import baseball.service.Player;
+import baseball.domain.Computer;
+import baseball.service.ComputerService;
+import baseball.service.PlayerService;
 
 public class PlayBaseballGame {
-    private final Computer computer = new Computer();
-    private final Player player = new Player();
-    private Ball computerNumber;
+    private final ComputerService computer = new ComputerService();
+    private final PlayerService player = new PlayerService();
+    private final Computer computerNumber = new Computer();
 
     public void play() {
-        computerNumber = computer.createRandomNumber();
+        computerNumber.setComputerNumber(computer.createRandomNumber());
+
         boolean isReplay = true;
         while (isReplay) {
             String playNumber = player.inputPlayerNumber();
         }
     }
-
 }
