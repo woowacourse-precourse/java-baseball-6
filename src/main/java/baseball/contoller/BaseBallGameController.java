@@ -30,6 +30,7 @@ public class BaseBallGameController {
     }
     private void startNewGame() {
         Computer computer = new Computer();
+        computer.generateComputerNumber();
         boolean continueSign = true;
         while (continueSign) {
             List<String> inputString = inputView.readPlayerNumber();

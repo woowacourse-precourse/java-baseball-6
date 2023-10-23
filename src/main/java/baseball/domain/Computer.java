@@ -10,15 +10,14 @@ public class Computer {
     private static final int MAXIMUM_NUMBER = 9;
     private static final int MINIMUM_NUMBER = 1;
 
-    private final List<Integer> computerList;
+    private List<Integer> computerList;
 
 
 
     public Computer(){
-        this.computerList = generateComputerNumber();
     }
 
-    private List<Integer> generateComputerNumber() {
+    public void generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < INPUT_LENGTH) {
             int randomNumber = generateRandomNumber();
@@ -26,7 +25,7 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+        this.computerList = computer;
     }
 
     private int generateRandomNumber(){
