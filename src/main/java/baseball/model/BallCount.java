@@ -5,7 +5,7 @@ public class BallCount {
     private final int strike;
     private final int ball;
 
-    public BallCount(int strike, int ball) {
+    public BallCount(final int strike, final int ball) {
         this.strike = strike;
         this.ball = ball;
     }
