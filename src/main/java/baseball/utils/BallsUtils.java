@@ -21,12 +21,12 @@ public final class BallsUtils {
         return convertIntegersToBalls(integers);
     }
 
-    public static Balls convertIntegersToBalls(List<Integer> integers) {
+    private static Balls convertIntegersToBalls(List<Integer> integers) {
         List<Ball> balls = BallsUtils.convertIntegersToBallList(integers);
         return new Balls(balls);
     }
 
-    public static List<Ball> convertIntegersToBallList(List<Integer> integers) {
+    private static List<Ball> convertIntegersToBallList(List<Integer> integers) {
         return IntStream.range(0, integers.size())
                 .mapToObj(i -> {
                     int value = integers.get(i);
