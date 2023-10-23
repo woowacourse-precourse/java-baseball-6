@@ -59,6 +59,7 @@ public class ShootBall {
 
     }
 
+    //(5)번 기능 구현
     public int[] getNumbers(){return numbers;}
     public boolean baseballReferee(ShootBall inputBall){
         int strike=0,ball=0;
@@ -74,11 +75,13 @@ public class ShootBall {
         if(ball !=0)
             System.out.print(ball+"볼 " );
         if(strike !=0)
-            System.out.print(strike+"스트라이크 ");
+            System.out.print(strike+"스트라이크\n");
         if(ball==0 && strike==0)
-            System.out.print("낫싱");
-        if(strike==3)
+            System.out.print("낫싱\n");
+        if(strike==3){
             result = true;
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        }
         return result;
     }
 }
