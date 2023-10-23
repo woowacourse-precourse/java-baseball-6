@@ -142,3 +142,16 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---------------------------------------------------------------------------------------------------------------------
+기능 목록
+1. Numberbaseball - 프로그램의 실행. 실행 단계에 따라 필요한 객체를 생성하고, 결과를 출력해주는 클래스.
+   (GamePlay) - 게임의 실행을 담당, 각 클래스들의 객체를 생성하고 필요한 기능들을 실행.
+   (ShowScore) - 게임의 현재 스코어를 출력.
+   (RestartGame) - 사용자에게 게임을 한번 더 할 것인지 확인 후 프로그램 재실행 or 종료.
+2. GameNumber - 사용자의 입력을 담당하고, 컴퓨터의 숫자 생성 등 프로그램에서 필요한 숫자에 관련된 기능을 담당하는 클래스.
+   (inputUserNumber) - 사용자의 숫자를 입력받고, 예외처리
+   (createComputerNumber) - 컴퓨터의 숫자 생성.
+   (inputRestart) - 사용자의 게임 재시작 의견을 입력받는 기능.
+3. GameScore - 게임의 스코어를 계산해주고 결과를 저장하고있는 클래스
+   (updateScore) - 게임의 현재 스코어를 계산해주는 기능.

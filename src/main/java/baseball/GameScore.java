@@ -8,6 +8,8 @@ public class GameScore {
     public void updateScore(String computerNumber, String userNumber) {
         int strike = 0;
         int ball = 0;
+        this.strike = 0;
+        this.ball = 0;
 
         if(computerNumber.equals(userNumber))
             this.strike = 3;
