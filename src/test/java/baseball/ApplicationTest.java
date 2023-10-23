@@ -42,7 +42,7 @@ class ApplicationTest extends NsTest {
     @Nested
     class InputVerification {
         @DisplayName("숫자야구 입력시 3자리 숫자를 입력하지 않는다면 예외가 발생한다.")
-        @ParameterizedTest(name = "[{index} 차]시도: input: {0}")
+        @ParameterizedTest(name = "[{index}차]시도: input: {0}")
         @ValueSource(strings = {"1", "12", "1234", "1aa", "12a", "abc", "  "})
         void failInputForBaseballNumber(String input){
             //given
@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
         }
 
         @DisplayName("게임 재시작 여부 입력시 1또는 2가 아닌 수를 입력하면 예외가 발생한다.")
-        @ParameterizedTest(name = "[{index} 차]시도: input: {0}")
+        @ParameterizedTest(name = "[{index}차]시도: input: {0}")
         @ValueSource(strings = {"12", "english", "한글", "aaaa", "1a", " "})
         void failInputForRedo(String input){
             //given
