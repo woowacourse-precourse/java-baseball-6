@@ -6,7 +6,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
-            BaseballGame.start();
-        } while (!BaseballGame.endCheck());
+            BaseballGame.play();
+        } while (!BaseballGame.checkGameEnd());
     }
 }

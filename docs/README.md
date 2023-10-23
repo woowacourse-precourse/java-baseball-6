@@ -2,46 +2,52 @@
 
 - main()
     - 숫자 야구 게임 시작
-    - 게임이 끝난 경우 재시작/종료를 구분하는 숫자 입력 시 예외 발생
 
 ## 2. BaseballGame
 
 - BaseballGame 싱글톤 객체로 관리
-- play()
-    - 실제 숫자 야구 로직 들어 있음
-- endCheck()
-    - 숫자 야구 한판이 끝난 후 재시작할지 종료할 지 판단하는 메서드
-- setComputerNumber()
-    - 컴퓨터 숫자 세팅
-    - checkDuplicationAndSetNumber(List<Integer> computer, int randomNumber)
-        - 컴퓨터 숫자 중복 검사 후 세팅
-- setMyNumber()
-    - 내 숫자 세팅
-- compareNumber(List, List)
-    - 컴퓨터의 숫자와 내 숫자 비교
-- printResult(Result)
+- void play()
+    - 싱글톤 객체의 playing() 메서드 호출
+- void playing()
+    - 실제 게임 진행 로직
+    - 컴퓨터 숫자 세팅 -> 사용자 숫자 세팅 -> 숫자 비교 -> 결과 출력 -> 정답 확인
+- List setComputerNumber()
+    - 컴퓨터 숫자 중복 검사 및 세팅 후 List로 반환
+    - Randoms.pickNumberInRange() 사용
+- List setUserNumber()
+    - 사용자 숫자 세팅 후 List로 반환
+    - **_InputChecker_** 를 이용해 사용자 입력 검사
+- Result compareNumber(List, List)
+    - 컴퓨터의 숫자 List, 사용자 숫자 List를 파라미터로 전달
+    - 컴퓨터의 숫자와 사용자 숫자를 비교하는 메서드
+    - 같은 숫자가 있을 때 자리도 같으면 스트라이크 개수 증가, 자리가 다르면 볼 개수 증가
+    - 스트라이크 개수와 볼 개수가 담긴 **_Result_** 객체 반환
+- void printResult(Result)
     - result에 들어있는 ball, strike 개수를 요구사항에 맞춰 출력
-- isMyNumberCorrect(Result result)
-    - result가 3스트라이트면 게임을 종료할 수 있도록 true 반환
+    - StringBuilder 사용
+- boolean checkGameEnd()
+    - 숫자 야구 한판이 끝난 후 재시작할지 종료할지 판단하는 메서드
+    - **_InputChecker_** 를 이용해 사용자 입력 검사
 
 ## 3. Constant
 
 - 상수 전용 클래스
-- RESTART_NUMBER: 1
-- END_NUMBER: 2
-- RESTART_OR_END_INPUT_LENGTH: 게임 완료 후 재시작 or 게임 종료 여부 결정 시 입력 숫자 길이(1)
-- MY_NUMBER_INPUT_LENGTH : 게임 진행 시 숫자 길이(3)
+- RESTART_NUMBER: "1"
+- END_NUMBER: "2"
+- NUMBER_LENGTH : 게임 진행 시 숫자 길이(3)
 
 ## 4. InputChecker</h2>
 
 - 입력 예외 처리용 객체
-- checkMyNumber(String input)
+- void checkUserNumber(String)
     - 게임 중 숫자 입력 예외 체크
     - 정규 표현식 활용(1부터 9까지의 서로 다른 3개의 숫자)
-- checkRestartNumber(String input)
+- void checkRestartNumber(String)
     - 게임 종료 후 재시작 여부 확인 숫자 입력 예외 체크
     - 정규 표현식 활용(1 또는 2)
 
-<h2>5. Result</h2>
+## 5. Result
 
 - ball, strike 변수를 위한 DTO
+- boolean isNothing(): 스트라이크, 볼 둘 다 0이면 true 반환
+- boolean isCorrect(): 3스트라이크(정답)이면 true 반환
