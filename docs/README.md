@@ -82,9 +82,9 @@
         - [x] 숫자형 userInputNumbers 변환
     - [x] 각 경우에 따른 오류 메시지 전달
         - [x] IllegalArgumentException 발생 후 종료
-- [ ] userRestartOrExitString -> 숫자형 userRestartOrExitNumber 변환
-    - [ ] 데이터 유효성 검사
-        - [ ] 1 또는 2의 입력값인지 확인
+- [x] userInputRestartOrExitString -> 숫자형 userInputRestartOrExitNumber 변환
+    - [x] 데이터 유효성 검사
+        - [x] 1 또는 2의 입력값인지 확인
 
 4. RandomUtility
 - [x] 난수 생성
