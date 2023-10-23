@@ -7,25 +7,32 @@ import baseball.domain.User;
 public class GameService {
 
     private String computerNumber;
-    private String userNumber;
+    private final UserService userService; // UserService를 멤버 변수로 변경
 
-    public void gameStart(){
+    public GameService(UserService userService) {
+        this.userService = userService; // UserService를 생성자에서 주입받음
+    }
+
+    public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void gameInitialize(){
+    public void gameInitialize() {
         Computer computer = new Computer();
         computerNumber = computer.getNumber();
     }
 
-    public void gameOn(){
-        User user = new User();
-        userNumber = user.getNumber();
-
-        if (!gameScoreCalculate()) gameOn();
+    public void gameOn() {
+        boolean gameContinue = true;
+        while (gameContinue) {
+            String userInput = userService.readUserNumber(); // userService 사용
+            User user = new User(userInput);
+            String userNumber = user.getNumber(); // 지역 변수로 변경
+            gameContinue = !gameScoreCalculate(userNumber);
+        }
     }
 
-    private boolean gameScoreCalculate() {
+    private boolean gameScoreCalculate(String userNumber) {
         int strikes = 0;
         int balls = 0;
 

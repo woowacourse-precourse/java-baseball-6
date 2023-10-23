@@ -1,11 +1,13 @@
 package baseball;
 
 import baseball.Service.GameService;
+import baseball.Service.UserService;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
+    UserService userService = new UserService();
     public void game(){
-        GameService gameService = new GameService();
+        GameService gameService = new GameService(userService);
 
         boolean keepPlaying = true;
 
