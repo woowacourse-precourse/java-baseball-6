@@ -36,7 +36,7 @@ public class ResultView {
     }
 
     public boolean isValid() {
-        return 0 <= strike && strike <= 2 && 0 <= ball && ball <= 2;
+        return 0 <= strike && strike <= 3 && 0 <= ball && ball <= 3;
     }
 
     public void View() {
