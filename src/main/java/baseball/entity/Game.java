@@ -21,13 +21,16 @@ public class Game {
                 return gameNumbers;
         }
 
-        public void initGame() {
+        public void initBaseBall() {
                 strikeCount = 0;
                 ballCount = 0;
         }
 
-        public void initBaseBall() {
-                strikeCount = 0;
-                ballCount = 0;
+        public void increaseStrikeCount() {
+                strikeCount += 1;
+        }
+
+        public void increaseBallCount() {
+                ballCount += 1;
         }
 }
