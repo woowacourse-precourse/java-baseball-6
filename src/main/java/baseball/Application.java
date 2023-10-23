@@ -14,7 +14,11 @@ public class Application {
         List<Integer> randomNumbers = getRandomNumbers();
         System.out.println(randomNumbers);
 
+        List<Integer> inputNumbers = getInputNumbers();
+        System.out.println(inputNumbers);
+    }
 
+    private static List<Integer> getInputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
 
         StringTokenizer st = new StringTokenizer(readLine(), " ");
@@ -22,8 +26,9 @@ public class Application {
         while (st.hasMoreTokens()) {
             inputNumbers.add(Integer.parseInt(st.nextToken()));
         }
-        System.out.println(inputNumbers);
+        return inputNumbers;
     }
+
     private static List<Integer> getRandomNumbers() {
         // get random numbers from 1 to 9
         List<Integer> randomNumbers = new ArrayList<>();
