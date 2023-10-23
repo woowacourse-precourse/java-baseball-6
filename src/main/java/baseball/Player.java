@@ -17,13 +17,12 @@ public class Player {
 
         String input = Console.readLine();
         validator.validateInput(input);
-        
+
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             playerNumber.add(Character.getNumericValue(input.charAt(i)));
         }
     }
 
-    // ball 과 strike 가져오는 부분을 좀 수정
     public int[] checkStrikeAndBall(List<Integer> computerNumber) {
         int[] result = new int[2];
         for (int i = 0; i < NUMBER_LENGTH; i++) {
