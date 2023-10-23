@@ -1,7 +1,5 @@
 package baseball.people;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Pitcher {
 
     Pitcher() {
@@ -11,10 +9,7 @@ public class Pitcher {
         return new Pitcher();
     }
 
-    public int[] pitch() {
-        System.out.print("숫자를 입력해주세요 : ");
-
-        String input = Console.readLine();
+    public int[] pitch(String input) {
         if (!isValidInput(input)) {
             throw new IllegalArgumentException();
         }
@@ -26,10 +21,7 @@ public class Pitcher {
         return numbers;
     }
 
-    public boolean restart() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-        String input = Console.readLine();
-
+    public boolean restart(String input) {
         if (input.equals("1")) {
             return true;
         }
