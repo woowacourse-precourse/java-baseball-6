@@ -23,6 +23,16 @@ public class Game {
                 System.out.print("숫자를 입력해주세요: ");
                 List<Integer> predictNumbers = Utility.input();
                 checkPredictNumber(predictNumbers);
+
+                if (this.strike == 0 && this.ball == 0) {
+                    System.out.println("낫싱");
+                } else if (this.strike == 0 && this.ball != 0) {
+                    System.out.println(this.ball + "볼");
+                } else if (this.strike != 0 && this.ball == 0) {
+                    System.out.println(this.strike + "스트라이크");
+                } else if (this.strike != 0 && this.ball != 0) {
+                    System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+                }
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
