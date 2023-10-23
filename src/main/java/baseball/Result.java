@@ -11,22 +11,27 @@ public class Result {
     private Integer strike;
     private Integer ball;
 
-    public Result(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        this.strike = checkStrike(computerNumbers, userNumbers);
-        this.ball = checkBall(computerNumbers, userNumbers);
+    public Result() {
+        this.strike = EMPTY_COUNT;
+        this.ball = EMPTY_COUNT;
     }
 
-    private Integer checkStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        return (int) IntStream.range(0, userNumbers.size())
+    public void checkResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        checkStrike(userNumbers, computerNumbers);
+        checkBall(userNumbers, computerNumbers);
+    }
+
+    private void checkStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        strike = (int) IntStream.range(0, userNumbers.size())
                 .filter(i -> userNumbers.get(i).equals(computerNumbers.get(i)))
                 .count();
     }
 
-    private Integer checkBall(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        Set<Integer> setNumbers = new HashSet<>(userNumbers);
-        Set<Integer> setCompareNumbers = new HashSet<>(computerNumbers);
-        setNumbers.retainAll(setCompareNumbers);
-        return setNumbers.size() - checkStrike(userNumbers, computerNumbers);
+    private void checkBall(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        long ballCount = IntStream.range(0, userNumbers.size())
+                .filter(i -> computerNumbers.contains(userNumbers.get(i)) && !userNumbers.get(i).equals(computerNumbers.get(i)))
+                .count();
+        ball = (int) ballCount;
     }
 
     public boolean isNothing() {
@@ -54,6 +59,14 @@ public class Result {
             stringBuilder.append(strike + STRIKE);
         }
         return stringBuilder.toString();
+    }
+
+    public Integer getStrike() {
+        return strike;
+    }
+
+    public Integer getBall() {
+        return ball;
     }
 }
 
