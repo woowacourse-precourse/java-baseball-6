@@ -1,7 +1,8 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Balls {
 
@@ -9,25 +10,22 @@ public class Balls {
 
     public Balls(List<Integer> list) {
         if (list.size() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자로 구성된 3자리 숫자를 입력해주세요.");
         }
 
         this.balls = makeBallList(list);
     }
 
     private List<Ball> makeBallList(List<Integer> list) {
-        List<Ball> ballList = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-            ballList.add(new Ball(list.get(i), (i + 1)));
-        }
-        return ballList;
+        return IntStream.range(0, list.size())
+                .mapToObj(i -> new Ball(list.get(i), (i + 1)))
+                .collect(Collectors.toList());
     }
 
     public BallResultEnum play(Ball ball) {
 
         return balls.stream()
-                .map(comBall -> ball.play(comBall))
+                .map(ball::play)
                 .filter(ballResultEnum -> ballResultEnum != BallResultEnum.NOTHING)
                 .findFirst()
                 .orElse(BallResultEnum.NOTHING);

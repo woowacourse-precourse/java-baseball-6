@@ -16,7 +16,7 @@ public class Ball {
 
     private int limitCheck(int ball) {
         if (ball > MAX_BALL || ball < MIN_BALL) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1~9 사이의 숫자를 입력해 주세요.");
         }
         return ball;
     }
@@ -34,8 +34,12 @@ public class Ball {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Ball ball1 = (Ball) o;
         return ball == ball1.ball && position == ball1.position;
     }

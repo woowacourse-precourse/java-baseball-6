@@ -62,6 +62,8 @@ public class Game {
 
             String finishCheck = Console.readLine();
 
+            checkFinishNumData(finishCheck);
+
             if (finishCheck.equals(String.valueOf(RESTART_NUM))) {
                 restart = true;
                 computer.clear();
@@ -69,6 +71,12 @@ public class Game {
                 checkFinishNum = FINISH_NUM;
                 System.out.println("게임 종료");
             }
+        }
+    }
+
+    private void checkFinishNumData(String finishCheck) {
+        if (!finishCheck.equals("1") && !finishCheck.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해 주세요.");
         }
     }
 
