@@ -46,4 +46,17 @@ class ValidationServiceTest {
         assertThrows(IllegalArgumentException.class, () -> validationService.hasUniqueDigits(invalidString));
         assertDoesNotThrow(() -> validationService.hasUniqueDigits(validString));
     }
+
+    @DisplayName("숫자가 아닌 다른 문자가 있을 때 에러를 반환하는가?")
+    @Test
+    public void testErrorReturnedWhenNonNumericCharactersPresent() {
+        //given
+        ValidationService validationService = new ValidationService();
+        //when
+        String invalidString = "a12";
+        String validString = "978";
+        //then
+        assertThrows(IllegalArgumentException.class, () -> validationService.isNumeric(invalidString));
+        assertDoesNotThrow(() -> validationService.isNumeric(validString));
+    }
 }
