@@ -15,17 +15,17 @@ public class Computer {
     }
 
     public int[] setRandomNums() {
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> numbers = new HashSet<>();
+        int idx = 0;
 
-        int count = 0;
-        while (set.size() < SIZE) {
+        while (numbers.size() < SIZE) {
             int r = Randoms.pickNumberInRange(1, 9);
-            set.add(r);
+            numbers.add(r);
         }
 
-        for (Integer num : set) {
-            arr[count] = num;
-            count += 1;
+        for (Integer num : numbers) {
+            arr[idx] = num;
+            idx += 1;
         }
         return arr;
     }
@@ -33,7 +33,6 @@ public class Computer {
     public void resetNums() {
         arr = setRandomNums();
     }
-
 
     // set 을 사용하지 않으니 타임오버 예외가 발생하였다.
 //    public int[] setRandomNum() {
