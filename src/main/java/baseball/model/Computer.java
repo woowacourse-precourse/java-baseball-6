@@ -8,9 +8,10 @@ public class Computer {
     static final int MAX_NUMBER = 9;
     static final int MIN_NUMBER = 1;
     static final int LENGTH_NUMBER = 3;
-    private List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers;
 
     public void setNumbers() {
+        numbers = new ArrayList<>();
         while (numbers.size() < LENGTH_NUMBER) {
             int number = getRamdomNumber();
             if (!numbers.contains(number)) {
