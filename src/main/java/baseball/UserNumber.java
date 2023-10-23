@@ -15,7 +15,7 @@ public class UserNumber {
     /**
      * 사용자가 숫자를 입력하고 Map 으로 변환, 예외 처리
      *
-     * @param inputNumber(타입 : String) : 사용자 입력값
+     * @param inputNumber String : 사용자 입력값
      */
     public void inputUserNumber(String inputNumber) {
         this.value = IntStream.rangeClosed(1, 3)
