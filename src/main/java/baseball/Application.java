@@ -25,8 +25,43 @@ public class Application {
         List<Integer> user;
         do {
             String input = Console.readLine();
-        } while (false);
             user = parse(input);
+        } while (isStrikeOut(computer, user));
+    }
+
+    private static Boolean isStrikeOut(List<Integer> computer, List<Integer> user) {
+        int strike = 0;
+        int ball = 0;
+
+        for(Integer c:computer) {
+            if (user.contains(c)) {
+                if (user.indexOf(c) == computer.indexOf(c)) {
+                    strike++;
+                } else {
+                    ball++;
+                }
+            }
+        }
+
+        ArrayList<String> results = new ArrayList<>();
+        if (ball!=0) {
+            results.add(String.format("%d볼", ball));
+        }
+        if (strike!=0) {
+            results.add(String.format("%d스트라이크", strike));
+        }
+
+        if (results.size()!=0) {
+            System.out.println(String.join(" ", results));
+        } else {
+            System.out.println("낫싱");
+        }
+
+        if (strike==3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        return true;
     }
 
     private static List<Integer> parse(String input) {
