@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,23 +12,75 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        boolean playAgain = true;
         List<Integer> answerNumber = new ArrayList<>();
         Map<String, Integer> gameStatus = new HashMap<String, Integer>() {{
             put("BALL_COUNT", 0);
             put("STRIKE_COUNT", 0);
         }};
+        String againInput = "";
         String userInput = "";
+        while (playAgain) {
+            game(answerNumber, gameStatus, userInput);
+            nextGameMessage();
+            againInput = readLine();
+            playAgain = isPlayAgain(againInput);
+        }
+    }
+
+    private static void game(List<Integer> answerNumber, Map<String, Integer> gameStatus, String userInput) {
+        clearStatus(gameStatus);
         getRandomsNumber(answerNumber);
         System.out.println(answerNumber);
         System.out.println(Constant.START_MESSAGE);
-        System.out.print(Constant.INPUT_MESSAGE);
-        userInput = readLine();
-        validateInput(userInput);
-        getGameStatus(answerNumber, gameStatus, userInput);
-        System.out.println("스트라이크"+ gameStatus.get("STRIKE_COUNT"));
-        System.out.println("볼"+ gameStatus.get("BALL_COUNT"));
+
+        while (gameStatus.get("STRIKE_COUNT") != Constant.NUMBER_COUNT) {
+            System.out.print(Constant.INPUT_MESSAGE);
+            userInput = readLine();
+            validateInput(userInput);
+            clearStatus(gameStatus);
+            getGameStatus(answerNumber, gameStatus, userInput);
+            generateMessage(gameStatus);
+        }
     }
 
+    private static void nextGameMessage() {
+        System.out.println(Constant.SUCCESS_MESSAGE);
+        System.out.println(Constant.END_MESSAGE);
+    }
+
+    private static void clearStatus(Map<String, Integer> gameStatus) {
+        gameStatus.clear();
+        gameStatus.put("BALL_COUNT", 0);
+        gameStatus.put("STRIKE_COUNT", 0);
+    }
+
+    private static boolean isPlayAgain(String userInput) {
+        boolean playAgain;
+        if (Constant.GAME_RESTART.equals(userInput)) {
+            playAgain = true;
+        } else if (Constant.GAME_END.equals(userInput)) {
+            playAgain = false;
+        } else {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+        }
+        return playAgain;
+    }
+
+    private static void generateMessage(Map<String, Integer> gameStatus) {
+        int ballCount = gameStatus.get("BALL_COUNT");
+        int strikeCount = gameStatus.get("STRIKE_COUNT");
+
+        if (ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        } else if (ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount > 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
     private static void getGameStatus(List<Integer> answerNumber, Map<String, Integer> setStatus,
         String userInput) {
         for (int i = 0; i < Constant.NUMBER_COUNT; i++) {
@@ -70,6 +121,7 @@ public class Application {
     }
 
     private static void getRandomsNumber(List<Integer> computer) {
+        computer.clear();
         while (computer.size() < Constant.NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(Constant.START_NUM, Constant.END_NUM);
             if (!computer.contains(randomNumber)) {
@@ -81,12 +133,9 @@ public class Application {
     static class Constant {
         public static final int START_NUM = 1;
         public static final int END_NUM = 9;
-        public static final int GAME_RESTART = 1;
-        public static final int GAME_END = 2;
+        public static final String GAME_RESTART = "1";
+        public static final String GAME_END = "2";
         public static final int NUMBER_COUNT = 3;
-        public static final String BALL = "볼";
-        public static final String STRIKE = "스트라이크";
-        public static final String NOTHING = "낫싱";
         public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
         public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
         public static final String SUCCESS_MESSAGE = Constant.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
