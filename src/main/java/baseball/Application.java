@@ -41,6 +41,32 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        HashMap<Integer, Integer> map = new HashMap();
+        
+        for (int k = 0; k < user.size(); k++) {
+            map.put(computer.get(k), user.get(k));
+        }
+        int ball = 0;
+        int strike = 0;
+        for (int m = 0; m < user.size(); m++) {
+            if (map.containsKey(user.get(m)) == true) {
+                ball++;
+                if (user.get(m) == map.get(user.get(m))) {
+                    ball--;
+                    strike++;
+                }
+            }
+        }
+        switch (strike) {
+
+            default:
+                if (ball == 0 && strike == 0) {
+                    System.out.println("낫싱");
+                    break;
+                }
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+
     }
 
 }
