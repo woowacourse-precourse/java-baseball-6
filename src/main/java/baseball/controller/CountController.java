@@ -1,40 +1,58 @@
 package baseball.controller;
 
-import baseball.model.AnswerNumber;
 import baseball.model.InputNumber;
 
-import static baseball.controller.GameController.answerNumber;
+import static baseball.controller.GameController.ANSWER_NUMBER;
 
 public class CountController {
+
+    private static final int NUMBER_OF_DIGITS = 3;
 
     public int getStrikeCount(InputNumber inputNumber) {
         int strikeCount = 0;
 
-        for (int i = 0; i < answerNumber.getRandomNumber().size(); i++) {
-            int elementOfAnswer = answerNumber.getRandomNumber().get(i);
+        for (int i = 0; i < ANSWER_NUMBER.getRandomNumber().size(); i++) {
+            int elementOfAnswer = ANSWER_NUMBER.getRandomNumber().get(i);
             int elementOfInput = inputNumber.getInputNumber().get(i);
 
             if (elementOfAnswer == elementOfInput) {
                 strikeCount++;
             }
         }
-        System.out.println("스트라이크: " + strikeCount);
         return strikeCount;
     }
 
     public int getBallCount(InputNumber inputNumber) {
         int ballCount = 0;
 
-        for (int i = 0; i < answerNumber.getRandomNumber().size(); i++) {
-            int elementOfAnswer = answerNumber.getRandomNumber().get(i);
+        for (int i = 0; i < ANSWER_NUMBER.getRandomNumber().size(); i++) {
+            int elementOfAnswer = ANSWER_NUMBER.getRandomNumber().get(i);
             int elementOfInput = inputNumber.getInputNumber().get(i);
 
-            if (elementOfAnswer != elementOfInput && answerNumber.getRandomNumber().contains(elementOfInput)) {
+            if (elementOfAnswer != elementOfInput && ANSWER_NUMBER.getRandomNumber().contains(elementOfInput)) {
                 ballCount++;
             }
         }
-        System.out.println("볼: " + ballCount);
         return ballCount;
+    }
+
+    public String getHintMessage(InputNumber inputNumber) {
+        StringBuilder output = new StringBuilder();
+        int ballCount = getBallCount(inputNumber);
+        int strikeCount = getStrikeCount(inputNumber);
+
+        if (ballCount != 0) {
+            output.append(getBallCount(inputNumber) + "볼 ");
+        }
+
+        if (strikeCount != 0 && strikeCount != NUMBER_OF_DIGITS) {
+            output.append(getStrikeCount(inputNumber) + "스트라이크");
+        }
+
+        if (output.isEmpty()) {
+            return "낫싱";
+        }
+        return output.toString();
     }
 
 }
