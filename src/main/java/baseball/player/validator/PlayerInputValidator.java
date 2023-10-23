@@ -1,4 +1,4 @@
-package baseball.validator;
+package baseball.player.validator;
 
 public enum PlayerInputValidator {
     VALIDATOR;

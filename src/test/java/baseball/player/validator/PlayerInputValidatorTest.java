@@ -1,4 +1,4 @@
-package baseball.validator;
+package baseball.player.validator;
 
 import org.junit.jupiter.api.Test;
 
