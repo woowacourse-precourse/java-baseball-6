@@ -20,7 +20,7 @@ public class Balls {
 		this.balls = mapToBalls(numbers);
 	}
 
-	public void validate(final List<Integer> numbers) {
+	private void validate(final List<Integer> numbers) {
 		validateNumberRange(numbers);
 		validateNumbersSize(numbers);
 		validateDuplication(numbers);
