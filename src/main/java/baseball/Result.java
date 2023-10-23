@@ -20,6 +20,24 @@ public class Result {
         }
     }
 
+    public String isResult() {
+        String result = "";
+
+        if (isNothing()) {
+            result = "낫싱";
+        }
+
+        if (ball != 0) {
+            result += ball + "볼 ";
+        }
+
+        if (strike != 0) {
+            result += strike + "스트라이크";
+        }
+
+        return result;
+    }
+
     private boolean isExistedIndex(char number, List<Character> randomNubers) {
         return randomNubers.indexOf(number) != -1;
     }

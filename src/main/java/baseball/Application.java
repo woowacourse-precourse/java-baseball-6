@@ -23,5 +23,11 @@ public class Application {
         List<Character> userNumbers = Parsing.parseIntoList(userInput);
 
         List<Character> randomNumbers = RandomMaker.makeRandomNumbers();
+
+        Result result = new Result();
+
+        result.calculate(userNumbers, randomNumbers);
+
+        System.out.println(result.isResult());
     }
 }
