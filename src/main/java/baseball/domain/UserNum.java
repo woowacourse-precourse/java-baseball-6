@@ -15,13 +15,14 @@ public class UserNum {
 
     public void setNum(String enterNum) {
         this.number = strToList(enterNum);
+        validation();
     }
 
     public List<Integer> getNum() {
         return number;
     }
 
-    public void validation() {
+    private void validation() {
         checkLength();
         checkContainZero();
         duplicateNumCheck();
