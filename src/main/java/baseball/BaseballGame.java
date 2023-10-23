@@ -58,6 +58,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         this.userInput = readLine();
+        Array.checkArrayNumber(this.userInput);
         Array.checkOneOrTwo(this.userInput);
 
         if (this.userInput.equals("1")) { // 1이면 게임 다시
@@ -76,25 +77,26 @@ public class BaseballGame {
         if (strike == 0 && ball == 0) { // 같은 수가 전혀 없으면
             System.out.println("낫싱");
         }
-        if (strike == 3) { // 3개의 숫자를 모두 맞히면
+        if (strike == 3 && ball == 0) { // 3개의 숫자를 모두 맞히면
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             isContinue = startNewGame();
         }
-        if (ball > 0 && strike == 0) { // 볼만 있을 경우
-            System.out.println(ball + "볼");
-        }
-        if (strike > 0 && ball == 0) { // 스트라이크만 있을 경우
-            System.out.println(strike + "스트라이크");
-        }
-        if (strike > 0 && ball > 0) { // 볼, 스트라이크 둘 다 있으면
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        // 볼만 있을 경우
+        // 스트라이크만 있을 경우
+        // 볼, 스트라이크 둘 다 있으면
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
+            if (strike > 0) {
+                System.out.print(strike + "스트라이크");
+            }
+            System.out.println();
         }
 
         if (Objects.equals(isContinue, "1")) {
             play();
-        } else {
+        } else if ((Objects.equals(isContinue, "2"))) {
             return;
         }
 
