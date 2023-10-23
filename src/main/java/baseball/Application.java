@@ -18,9 +18,9 @@ public class Application {
             // sellect computer num
             PrintClass.printGetNum();
             String uvs = Console.readLine();//get num from user by String format
-            uv = myapp.checkDup(//check dupilication
+            uv = CheckClass.checkDup(//check dupilication
                     myapp.changeStrToList(//change str to list + check integer
-                    myapp.checkLength(uvs, 3)//check length
+                    CheckClass.checkLength(uvs, 3)//check length
                     )
             );
 
@@ -29,7 +29,7 @@ public class Application {
             if(score.strike == 3) {
                 PrintClass.printEndGame();
                 PrintClass.printGetRestartNum();
-                state = myapp.getRestartNum();//get user's opinion about restart
+                state = StartEnd.ConvertFromStr(Console.readLine());//get user's opinion about restart
                 if(state == StartEnd.end)
                     break;
                 cv = myapp.getCV();
@@ -46,39 +46,6 @@ public class Application {
             }
         }
         return computer;
-    }
-
-    public List<Integer> checkDup(List<Integer> cv){
-        if(cv.size() > 10)
-            throw new IllegalArgumentException();
-        Set<Integer> set = new TreeSet<>();
-
-        for(int i=1;i<=9;i++)
-            set.add(i);
-
-        for (Integer value : cv) {
-            if (!set.contains(value))
-                throw new IllegalArgumentException();
-            set.remove(value);
-        }
-
-        return cv;
-    }
-
-    public StartEnd getRestartNum(){
-        int ret = Integer.parseInt(Console.readLine());
-        if(ret == 1)
-            return StartEnd.start;
-        else if(ret == 2)
-            return StartEnd.end;
-        else
-            throw new IllegalArgumentException();
-    }
-
-    public String checkLength(String str, int length){
-        if(str.length() != length)
-            throw new IllegalArgumentException();
-        return str;
     }
 
     public List<Integer> changeStrToList(String uvi){
