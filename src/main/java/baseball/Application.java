@@ -10,8 +10,12 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        System.out.println();
+        play();
 
+
+    }
+
+    public static void play(){
         ArrayList<Integer> computerNumList = RandomNumber.randomNumber();
 
         ArrayList<Integer> userNumList = UserInput.userInput();

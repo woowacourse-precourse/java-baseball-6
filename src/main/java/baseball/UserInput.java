@@ -11,7 +11,8 @@ public class UserInput {
 
         System.out.print("숫자를 입력해주세요 : ");
 
-        String userStr = Console.readLine();
+        String userStr = "";
+        userStr = Console.readLine();
 
         // 사용자 입력값 오류 검사
         vaildLenth(userStr);

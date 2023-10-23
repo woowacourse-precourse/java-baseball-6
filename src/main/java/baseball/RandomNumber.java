@@ -19,7 +19,6 @@ public class RandomNumber {
             }
         }
 
-        System.out.println(randomNum);
         return randomNum;
     }
 }
