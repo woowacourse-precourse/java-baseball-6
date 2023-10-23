@@ -8,7 +8,7 @@ import java.util.List;
 public class Computer {
     private List<Integer> number;
 
-    Computer () {
+    public Computer () {
         number = new ArrayList<>();
     }
 
