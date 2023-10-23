@@ -20,12 +20,7 @@ G --> |illegal|I((에러 및 종료));
 G --> |no|H((종료));
 ```
 
-# 커스터마이징
-1. 시간제한 만들기
-    - 요구사항 및 테스트와 맞지 않아 어려워 보임
-2. 클래스 분리하기
-
-# Class Diagram
+# Class Diagram _(draft)_
 ```mermaid
 classDiagram
 class Main
