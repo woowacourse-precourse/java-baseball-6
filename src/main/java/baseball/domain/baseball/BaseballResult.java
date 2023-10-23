@@ -1,12 +1,14 @@
-package baseball.domain;
+package baseball.domain.baseball;
 
-import static baseball.domain.Const.FINISH_STRIKE_COUNT;
+import baseball.domain.Output;
 
-public class Result {
+import static baseball.domain.baseball.BaseballConst.FINISH_STRIKE_COUNT;
+
+public class BaseballResult {
     private int ball;
     private int strike;
 
-    public Result(int ball, int strike) {
+    public BaseballResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }
@@ -31,13 +33,13 @@ public class Result {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (getBall() == 0 && getStrike() == 0) {
-            sb.append(Const.NOTHING_MESSAGE);
+            sb.append(BaseballConst.NOTHING_MESSAGE);
         } else {
             if (getBall() != 0) {
-                sb.append(getBall()).append(Const.BALL_MESSAGE);
+                sb.append(getBall()).append(BaseballConst.BALL_MESSAGE);
             }
             if (getStrike() != 0) {
-                sb.append(getStrike()).append(Const.STRIKE_MESSAGE);
+                sb.append(getStrike()).append(BaseballConst.STRIKE_MESSAGE);
             }
         }
 
@@ -48,7 +50,7 @@ public class Result {
         System.out.println(this);
 
         if (getStrike() == FINISH_STRIKE_COUNT) {
-            Output.printMessageWithLine(Const.STRIKE_GAME_FINISH_MESSAGE);
+            Output.printMessageWithLine(BaseballConst.STRIKE_GAME_FINISH_MESSAGE);
         }
     }
 

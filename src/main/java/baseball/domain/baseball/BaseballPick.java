@@ -1,17 +1,17 @@
-package baseball.domain;
+package baseball.domain.baseball;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class GameNumber {
+public class BaseballPick {
 
     private static final int GAME_NUMBER_SIZE = 3;
 
     private final List<Integer> numbers;
 
-    public GameNumber(List<Integer> numbers) {
+    public BaseballPick(List<Integer> numbers) {
         this.numbers = numbers;
         validateSize();
         validateDuplicate();
@@ -39,18 +39,16 @@ public class GameNumber {
         }
     }
 
-    public Integer get(int index) {
+    public Integer get(final int index) {
         return numbers.get(index);
     }
 
-    public boolean isContain(Integer value) {
+    public boolean isContain(final Integer value) {
         return numbers.contains(value);
     }
 
-    public Result match(
-            final GameNumber other
-    ) {
-        Result result = new Result(0, 0);
+    public BaseballResult match(final BaseballPick other) {
+        BaseballResult result = new BaseballResult(0, 0);
         for (int i = 0; i < GAME_NUMBER_SIZE; i++) {
             boolean isExist = this.isContain(other.get(i));
             boolean isRightOrder = Objects.equals(this.get(i), other.get(i));
@@ -60,5 +58,12 @@ public class GameNumber {
 
         }
         return result;
+    }
+
+    public void print() {
+        for (Integer value: this.numbers) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
     }
 }

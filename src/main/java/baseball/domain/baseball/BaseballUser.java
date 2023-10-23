@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.domain.baseball;
 
+import baseball.domain.baseball.BaseballPick;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
@@ -7,9 +8,9 @@ import java.util.List;
 
 import static baseball.domain.Validator.validateInput;
 
-public class User {
+public class BaseballUser {
 
-    private GameNumber number;
+    private BaseballPick number;
 
     public void pickNumber() {
         String input = Console.readLine();
@@ -17,10 +18,10 @@ public class User {
         List<Integer> numberPick = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .toList();
-        number = new GameNumber(numberPick);
+        number = new BaseballPick(numberPick);
     }
 
-    public GameNumber getNumber() {
+    public BaseballPick getNumber() {
         return number;
     }
 
