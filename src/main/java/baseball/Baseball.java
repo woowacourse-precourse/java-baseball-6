@@ -108,12 +108,27 @@ public class Baseball {
         return com;
     }
 
+    /* 111, 222 같은 연속된 숫자가 입력되었는지 확인*/
+    boolean checkRepeat(String num){
+        for(int i = 0; i<3; i++) {
+            int count = 0;
+            char ch = num.charAt(i);
+            for (int j = 0; j<3;j++){
+                if (num.charAt(j) == ch){
+                    count ++;
+                }
+            }
+            if (count > 1){
+                return true;
+            }
+        }
+        return false;
+    }
 
     int startGame(int end) {
         // 한 게임당 초기화
         String com = makeRandomNum();
         boolean isFinish = false;
-
 
         if (IS_TEST) {
             System.out.println("answer: " + com);
@@ -121,18 +136,21 @@ public class Baseball {
         // 게임 시작
         // while (게임 진행되는 동안)
         while (!isFinish) {
+            // strike, ball 초기화
             clear();
             // 입력
             System.out.print("숫자를 입력해주세요 : ");
             String num = Console.readLine();
             inputException(num);
+            if (checkRepeat(num)){
+                System.out.println("연속된 숫자가 입력되었습니다.");
+                continue;
+            }
 
             count(num, com);
 
             // 종료할 지 말지
-            boolean ischeck = check();
-
-            if (ischeck) {
+            if (check()) {
                 end = restartException();
                 if (end == 1) {
                     isFinish = true;
@@ -140,11 +158,9 @@ public class Baseball {
                     break;
                 }
             }
-
         }
         return end;
     }
-
 
 }
 
