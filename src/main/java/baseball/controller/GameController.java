@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -16,9 +17,11 @@ public class GameController {
 
     public void play() {
         outputView.printGameStart();
-        List<Integer> randomNumbers = Computer.createRandomNumbers();
-        Computer computer = Computer.createComputerByNumber(randomNumbers);
-        List<Integer> getComputerNumber = computer.getComputerNumber();
-        System.out.println(getComputerNumber);
+        Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
+        List<Integer> computerNumber = computer.getComputerNumber();
+        System.out.println(computerNumber);
+        Player player = Player.createNyNumber(inputView.readPlayerNumber());
+        System.out.println(player.getPlayerNumber());
+
     }
 }
