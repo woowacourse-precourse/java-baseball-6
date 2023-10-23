@@ -7,12 +7,20 @@ public record Result(int ballCount, int strikeCount) {
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
 
+    public boolean isAllStrike() {
+        return BASEBALLS_SIZE == strikeCount;
+    }
+
     @Override
-    public final String toString() {
+    public String toString() {
         if (ballCount == ZERO_COUNT && strikeCount == ZERO_COUNT) {
             return NO_COUNT_MESSAGE;
         }
 
+        return generateBallStrikeMessage();
+    }
+
+    private String generateBallStrikeMessage() {
         StringBuilder sb = new StringBuilder();
         if (ballCount != ZERO_COUNT) {
             sb.append(ballCount).append(BALL_MESSAGE);
@@ -25,10 +33,6 @@ public record Result(int ballCount, int strikeCount) {
             sb.append(strikeCount).append(STRIKE_MESSAGE);
         }
         return sb.toString();
-    }
-
-    public final boolean isAllStrike() {
-        return BASEBALLS_SIZE == strikeCount;
     }
 }
 
