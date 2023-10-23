@@ -8,7 +8,7 @@ import java.util.List;
 public class ComputerController {
     private Computer computer = new Computer();
 
-    public void generateRandomNumbers() {
+    public List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -16,6 +16,6 @@ public class ComputerController {
                 numbers.add(randomNumber);
             }
         }
-        computer.saveNumbers(numbers);
+        return numbers;
     }
 }
