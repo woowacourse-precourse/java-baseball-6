@@ -8,14 +8,17 @@ import baseball.domain.player.defender.value.BallCount;
 import baseball.domain.player.defender.value.Results;
 import baseball.domain.player.defender.value.StrikeCount;
 import baseball.domain.player.value.Ball;
+import baseball.domain.player.value.Balls;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class DefenderTest {
+
+	private final Balls RESULT_BALLS =
+		new Balls(List.of(Ball.of(1L), Ball.of(2L), Ball.of(3L)));
 
 	@DisplayName("방어자가 숫자를 비교한다.")
 	@ParameterizedTest
@@ -35,11 +38,10 @@ class DefenderTest {
 		List<Long> numbers = List.of(n1, n2, n3);
 		List<Ball> balls = numbers.stream().map(Ball::of).collect(Collectors.toList());
 		Defender defender = new Computer();
-		defender.initialize(balls);
+		defender.initialize(new Balls(balls));
 
 		// when
-		Results results =
-			defender.compareBalls(Stream.of(1L, 2L, 3L).map(Ball::of).collect(Collectors.toList()));
+		Results results = defender.compareBalls(RESULT_BALLS);
 
 		// then
 		assertEquals(new StrikeCount(strikeCount), results.getStrikeCount());
