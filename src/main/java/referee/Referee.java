@@ -15,10 +15,10 @@ public class Referee {
     private final BaseballPlayer user;
     private final BaseballScore score;
 
-    public Referee(BaseballPlayer computer, BaseballPlayer user, BaseballScore score) {
+    public Referee(BaseballPlayer computer, BaseballPlayer user) {
         this.computer = computer;
         this.user = user;
-        this.score = score;
+        this.score = new BaseballScore();
     }
 
     public void playBall() {
