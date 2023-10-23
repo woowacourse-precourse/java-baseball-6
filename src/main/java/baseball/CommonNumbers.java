@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This represents a general form of a series of 3 integers ranging from 1 to 9.
+ */
 public class CommonNumbers implements Numbers {
     private List<Integer> numContainer;
 
     /**
-     * @param intStr should pass the validation check of Validator.
+     * @param intStr should have already passed through the validation check of Validator before
+     *               being provided as the argument.
      *               intStr will be considered as a string of the following form:
      *               1. length of 3
      *               2. consists of only integers
