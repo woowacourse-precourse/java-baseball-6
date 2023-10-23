@@ -32,6 +32,7 @@ public class BaseBallGame {
             IsLength(userString);
             IsInteger();
             IsOverlap(userInteger);
+            IsZero();
         }
         StopGamePrint();
     }
@@ -76,6 +77,12 @@ public class BaseBallGame {
                 throw new IllegalArgumentException("같은 숫자가 중복된 값입니다.");
             }
             user.add(userNumber);
+        }
+    }
+    // 입력값 1~9숫자인지 판별 함수
+    public void IsZero() {
+        if (user.contains(0)) {
+            throw new IllegalArgumentException("1~9 숫자 이외의 값입니다.");
         }
     }
 }
