@@ -6,6 +6,8 @@ import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.constants.BaseballGameConstants.*;
+
 public class GameController {
 
     private final GameService gameService;
@@ -35,7 +37,7 @@ public class GameController {
     }
 
     private boolean isRestart(String option) {
-        return option.equals("1");
+        return option.equals(RESTART_OPTION);
     }
 
 
@@ -50,7 +52,7 @@ public class GameController {
     }
 
     private boolean isSuccess(GameResult result) {
-        return result.getStrike() == 3;
+        return result.getStrike() == THREE;
     }
 
     private void gameInit() {

@@ -1,9 +1,11 @@
 package baseball.domain;
 
+import static baseball.constants.BaseballGameConstants.ZERO;
+
 public class GameResult {
 
-    private int strike = 0;
-    private int ball = 0;
+    private int strike = ZERO;
+    private int ball = ZERO;
 
     public void strike() {
         strike++;
@@ -22,14 +24,14 @@ public class GameResult {
     }
 
     public boolean isNothing() {
-        return strike == 0 && ball == 0;
+        return strike == ZERO && ball == ZERO;
     }
 
     public boolean hasBall() {
-        return ball != 0;
+        return ball != ZERO;
     }
 
     public boolean hasStrike() {
-        return strike != 0;
+        return strike != ZERO;
     }
 }

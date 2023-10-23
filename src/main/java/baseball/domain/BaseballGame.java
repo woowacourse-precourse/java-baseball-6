@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constants.BaseballGameConstants.*;
+
 public class BaseballGame {
 
-    private static final int START_RANGE_NUMBER = 1;
-    private static final int END_RANGE_NUMBER = 9;
     private List<Integer> numbers = new ArrayList<>();
 
     public BaseballGame() {
@@ -19,7 +19,7 @@ public class BaseballGame {
     }
 
     public void init() {
-        while (numbers.size() < 3) {
+        while (numbers.size() < GAME_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE_NUMBER,END_RANGE_NUMBER);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
@@ -31,7 +31,7 @@ public class BaseballGame {
     public GameResult compare(String inputNumbers) {
         String[] splitInputNumbers = inputNumbers.split("");
         GameResult result = new GameResult();
-        for (int i = 0; i < 3; i++) {
+        for (int i = ZERO; i < GAME_NUMBER_SIZE; i++) {
             if (numbers.get(i) == toInt(splitInputNumbers[i])) {
                 result.strike();
                 continue;

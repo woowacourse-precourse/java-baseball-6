@@ -2,6 +2,8 @@ package baseball.validator;
 
 import java.util.HashSet;
 
+import static baseball.constants.BaseballGameConstants.*;
+
 public class Validator {
     public static void isValidNumbers(String numbers) {
         if(!isValidDigit(numbers)){
@@ -23,10 +25,10 @@ public class Validator {
      *  hasZero()로 예외 처리를 해준다.
      */
     public static boolean hasZero(String numbers) {
-        return numbers.contains("0");
+        return numbers.contains(STRING_ZERO);
     }
     public static boolean isValidDigit(String numbers) {
-        return numbers.length() == 3;
+        return numbers.length() == GAME_NUMBER_SIZE;
     }
 
     public static boolean hasDuplicate(String numbers) {
@@ -50,7 +52,7 @@ public class Validator {
     }
 
     public static void isValidGameOption(String input) {
-        if (!(input.equals("1") || input.equals("2"))) {
+        if (!(input.equals(RESTART_OPTION) || input.equals(END_OPTION))) {
             throw new IllegalArgumentException("게임 재시작은 1,종료는 2를 입력하세요. 잘못된 값이 입력되었습니다.");
         }
     }
