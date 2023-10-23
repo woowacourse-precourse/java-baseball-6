@@ -33,9 +33,9 @@ public class Application {
     }
 
     public static List<Integer> stringToList(String input) {
-        char [] strChar = input.toCharArray();
+        char[] strChar = input.toCharArray();
         List<Integer> userNum = new ArrayList<Integer>();
-        for (int i=0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             int n = Character.getNumericValue(strChar[i]);
             userNum.add(n);
         }
@@ -54,7 +54,32 @@ public class Application {
                 throw new IllegalArgumentException();
             } else {
                 List<Integer> userNum = stringToList(input);
-                System.out.println(userNum+""+computerNum);
+                System.out.println(userNum + "" + computerNum);
+                int strike = 0;
+                int ball = 0;
+                for (int i = 0; i < userNum.size(); i++) {
+                    if (userNum.get(i).equals(computerNum.get(i))) {
+                        strike++;
+                    } else if(computerNum.contains(userNum.get(i))){
+                        ball++;
+                    }
+                }
+                if (strike == 3){
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    String again = Console.readLine();
+
+
+                }
+                if (ball>0){
+                    System.out.println(ball + "볼");
+                }
+                if (strike>0){
+                    System.out.println(strike + "스트라이크");
+                }
+
+
+
             }
         }
 
