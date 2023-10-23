@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.core.CompareNumber;
 import baseball.core.GenerateNumberList;
-import org.junit.jupiter.api.DisplayName;
+import baseball.property.GameScore;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
-public class CoreTest {
+public class CoreTest extends NsTest {
 
     @Test
     void 컴퓨터_랜덤_숫자_생성_옳바른_개수만큼_생성하는지_테스트(){
@@ -40,7 +42,23 @@ public class CoreTest {
     private List<Integer> generateNumberListMethodCall(int generate_cnt){
         return GenerateNumberList.generateRandomNumberToComputer(generate_cnt);
     }
+
     @Test
-    void test(){
+    void 유저_리스트와_컴퓨터_리스트_값_비교_볼_테스트(){
+        //given
+        List<Integer> user = List.of(1, 2, 3);
+        List<Integer> computer = List.of(3, 1, 2);
+
+        //when
+        GameScore game_score = CompareNumber.compareNumberList(user, computer);
+
+        //then
+        assertThat(game_score.getBall_count()).isEqualTo(3);
+        assertThat(game_score.getStrike_count()).isEqualTo(0);
+    }
+
+    @Override
+    protected void runMain() {
+
     }
 }
