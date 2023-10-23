@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.Constant.END_NUMBER;
 import static baseball.Constant.MY_NUMBER_INPUT_LENGTH;
@@ -30,9 +32,10 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int input = InputChecker.checkAndMakeNumber(Console.readLine());
+        String input = Console.readLine();
+        InputChecker.checkRestartNumber(input);
 
-        if (input == END_NUMBER) {
+        if (input.equals("2")) {
             return true;
         }
 
@@ -69,7 +72,10 @@ public class BaseballGame {
     private List<Integer> setMyNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        return InputChecker.checkAndMakeList(input);
+        InputChecker.checkMyNumber(input);
+        return Arrays.stream(input.split(""))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 
     private Result compareNumber(List<Integer> computerNumber, List<Integer> myNumber) {

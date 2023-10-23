@@ -14,34 +14,15 @@ public class InputChecker {
     private static final int ASCII_CODE_ONE = 49;
     private static final int ASCII_CODE_NINE = 57;
 
-    private static InputChecker inputChecker;
-
     private InputChecker() {
     }
 
-    private static InputChecker getInstance() {
-        if (inputChecker == null) {
-            inputChecker = new InputChecker();
-        }
-        return inputChecker;
-    }
-
-    public static List<Integer> checkAndMakeList(String input) {
-        getInstance().checkMyNumber(input);
-        return Arrays.stream(input.split("")).map(Integer::valueOf).collect(Collectors.toList());
-    }
-
-    public static int checkAndMakeNumber(String input) {
-        getInstance().checkRestartNumber(input);
-        return Integer.valueOf(input);
-    }
-
-    public void checkMyNumber(String input) {
+    public static void checkMyNumber(String input) {
         if (input.length() != MY_NUMBER_INPUT_LENGTH) {
             throw new IllegalArgumentException("3개의 다른 수를 입력하세요.");
         }
 
-        if (Arrays.stream(input.split("")).collect(Collectors.toSet()).size() != 3) {
+        if (Arrays.stream(input.split("")).collect(Collectors.toSet()).size() != MY_NUMBER_INPUT_LENGTH) {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
 
@@ -52,7 +33,7 @@ public class InputChecker {
         }
     }
 
-    public void checkRestartNumber(String input) {
+    public static void checkRestartNumber(String input) {
         if (input.length() != RESTART_OR_END_INPUT_LENGTH) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }
