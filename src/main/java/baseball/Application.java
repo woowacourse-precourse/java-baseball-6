@@ -8,18 +8,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
 
-    //  힌트를 출력하는 로직
-    public static void numberBaseball (){
-
-        //정답 생성
-        List<Integer> answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
-
+    public static void numberBaseball(List<Integer> answer){
         //사용자 입력값 받기
         System.out.print("숫자를 입력해주세요 : ");
         String inputValue = readLine();
@@ -74,26 +63,50 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String retryValue = readLine();
             if (Integer.parseInt(String.valueOf(retryValue)) == 1){
-                numberBaseball ();
+                game();
             } else if (Integer.parseInt(String.valueOf(retryValue)) == 2){
                 //종료
             } else {
                 throw new IllegalArgumentException();
             }
         }
-        //  정답이 아니라면, 힌트 출력해주는 로직
+        // 정답이 아니라면, 힌트 출력해주는 로직
 
+        else{
+            if(ballSum > 0){
+                System.out.print(ballSum);
+                System.out.print("볼 ");
+            }
+            if(strikeSum > 0){
+                System.out.print(strikeSum);
+                System.out.print("스트라이크");
+            }
+            System.out.println();
+            //같은 정답으로 다시 실행하는 로직
+            numberBaseball(answer);
         }
+
+    }
+
+    //  힌트를 출력하는 로직
+    public static void game (){
+        //정답 생성
+        List<Integer> answer = new ArrayList<>();
+        while (answer.size() < 3) {
+            int randomNumber = pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
+        numberBaseball(answer);
+    }
 
 
 
     public static void main(String[] args) {
-        //입력은 camp.nextstep.edu.missionutils.Console의 readLine() 활용
-        //랜덤값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberRange() 활용
-
         // 숫자 야구 진행 기능
         try {
-            numberBaseball();
+            game();
         } catch(IllegalArgumentException e){
             System.err.println("입력값이 올바르지 않습니다.");
         }
