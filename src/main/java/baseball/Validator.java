@@ -16,6 +16,16 @@ public class Validator {
         }
     }
 
+    public void validateRestartInput(String input) {
+        if (isNotOneOrTwo(input)) {
+            throw new IllegalArgumentException("1과 2 이외의 숫자는 입력할 수 없습니다.");
+        }
+    }
+
+    public boolean isNotOneOrTwo(String input) {
+        return !input.equals("1") && !input.equals("2");
+    }
+
     private boolean isContainingZero(String input) {
         return input.contains("0");
     }

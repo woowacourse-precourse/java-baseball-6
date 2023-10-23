@@ -46,6 +46,8 @@ public class Game {
 
         String restartInput = Console.readLine();
 
+        validator.validateRestartInput(restartInput);
+
         if (restartInput.equals("1")) {
             game();
         }
