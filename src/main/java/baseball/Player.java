@@ -11,6 +11,10 @@ public class Player {
         this.numbers = numbers;
     }
 
+    public int getNumberAt(int index) {
+        return numbers.get(index);
+    }
+
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplication(numbers);
