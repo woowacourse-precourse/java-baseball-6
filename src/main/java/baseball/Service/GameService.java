@@ -26,9 +26,10 @@ public class GameService {
     public void playGame(int size, int startInclusive, int endInclusive) {
         int strike = 0;
         systemMessage.printGameStart();
-        while (true) {
+        while (strike != 3) {
             play();
             printGameResult(game.getStrike(), game.getBall());
+            strike = game.getStrike();
         }
     }
 
@@ -67,13 +68,11 @@ public class GameService {
         return retry;
     }
 
-    private boolean printGameResult(int strike, int ball) {
+    private void printGameResult(int strike, int ball) {
         PrintGameResult printGameResult = new PrintGameResult();
         printGameResult.printGameResult(strike, ball);
         if (strike == 3) {
             systemMessage.printGameOver();
-            return false;
         }
-        return true;
     }
 }
