@@ -63,8 +63,12 @@ public class InputView {
 
     private void isValueOneOrTwo(String input) {
         int gameCode = Integer.parseInt(input);
-        if (gameCode != GameConstant.NEW_GAME_CODE && Integer.parseInt(input) != GameConstant.END_GAME_CODE) {
+        if (isValidGameCode(gameCode)) {
             throw new IllegalArgumentException("1과 2중 입력해야 합니다.");
         }
+    }
+
+    private boolean isValidGameCode(int gameCode) {
+        return gameCode != GameConstant.NEW_GAME_CODE && gameCode != GameConstant.END_GAME_CODE;
     }
 }
