@@ -2,10 +2,12 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.message.Message.*;
+
 public class InputView {
 
     public String inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_NUMBER.getMessage());
         return Console.readLine();
     }
 
