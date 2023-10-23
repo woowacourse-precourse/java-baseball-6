@@ -14,4 +14,11 @@ public class Player {
 
         return player;
     }
+
+    public int getRestartOrExitNumber() {
+        String choice = Console.readLine();
+        validator.validateRestartOrExitNumber(choice);
+
+        return Integer.parseInt(choice);
+    }
 }
