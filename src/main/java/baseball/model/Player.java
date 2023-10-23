@@ -1,17 +1,14 @@
 package baseball.model;
 
-import baseball.view.Input;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.HashSet;
 
 public class Player {
-    private final List<Character> playerNumber;
+    private List<Character> playerNumber;
 
-    public Player() {
-        String input = Input.userNumber();
+    public Player(String input) {
         validate(input);
         this.playerNumber = convertToCharList(input);
     }
@@ -38,17 +35,17 @@ public class Player {
 
     private List<Character> convertToCharList(String input) {
         List<Character> list = new ArrayList<>();
+
         for (char ch : input.toCharArray()) {
             list.add(ch);
         }
+
         return list;
     }
 
     public String getPlayerNumber() {
-        StringBuilder sb = new StringBuilder();
-        for (char ch : playerNumber) {
-            sb.append(ch);
-        }
-        return sb.toString();
+        return playerNumber.stream()
+                .map(String::valueOf)
+                .reduce("", (s1, s2) -> s1 + s2);
     }
 }
