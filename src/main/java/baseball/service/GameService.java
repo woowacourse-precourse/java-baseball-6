@@ -1,15 +1,15 @@
 package baseball.service;
 
+import baseball.model.GameResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchService {
+public class GameService {
     private int ball;
     private int strike;
-    private List<Integer> result;
-    public List<Integer> getResult(List<Integer> comNumber, List<Integer> userNumber) {
+    public GameResult getResult(List<Integer> comNumber, List<Integer> userNumber) {
         // 초기화
-        result = new ArrayList<>();
         ball = 0;
         strike = 0;
 
@@ -22,9 +22,6 @@ public class MatchService {
             }
         }
 
-        result.add(ball);
-        result.add(strike);
-
-        return result;
+        return new GameResult(ball, strike);
     }
 }
