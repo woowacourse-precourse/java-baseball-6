@@ -6,6 +6,24 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class EasyController extends CommonController {
 
+    //초보 모드 인게임 재귀 함수
+    public void beginnerModeInGameInRecursion(EasyService easyService){
+
+        if(yesNoInReqursion(easyService).equals("y")) {
+            System.out.println((easyService.getHintCount() + 1) + "번째 숫자는" +
+                    easyService.hintWithPossibleNumber() + "입니다!");
+            easyService.plusHintCount();
+        }
+
+        beforeInGame(easyService);
+        if(!afterInGame(easyService)) beginnerModeInGameInRecursion(easyService);
+
+        //힌트 카운트 초기화
+        easyService.resetHintCount();
+        return;
+    }
+
+
     //yes no 재귀함수
     private String yesNoInReqursion(EasyService easyService){
 

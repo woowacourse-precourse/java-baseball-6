@@ -2,6 +2,8 @@ package baseball.common.controller;
 
 
 import baseball.common.service.CommonNumberService;
+import baseball.easy.controller.EasyController;
+import baseball.easy.service.EasyService;
 import baseball.hard.controller.HardController;
 import baseball.hard.service.HardService;
 import baseball.normal.controller.NormalController;
@@ -13,10 +15,10 @@ import java.util.concurrent.TimeoutException;
 public class CommonController {
 
     private HashMap<Integer,String> modeMap;
-    /*
-    private BeginnerService beginnerService;
-    private BeginnerController beginnerController;
-    */
+
+    private EasyService easyService;
+    private EasyController easyController;
+
     private NormalService normalService;
     private NormalController normalController;
     private HardService hardService;
@@ -64,17 +66,17 @@ public class CommonController {
 
         if(mode==1) {
 
-            /*
+
             //singleton 패턴
-            if(beginnerService==null) {
-                beginnerService = new BeginnerService();
-                beginnerController = new BeginnerController();
+            if(easyService==null) {
+                easyService = new EasyService();
+                easyController = new EasyController();
             }
             //정답 생성
-            beginnerService.createRandomNumber();
-            beginnerController.beginnerModeInGameInRecursion(beginnerService);
+            easyService.createRandomNumber();
+            easyController.beginnerModeInGameInRecursion(easyService);
 
-             */
+
         }
         else if(mode==2) {
 
