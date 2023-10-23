@@ -8,12 +8,17 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * 1. 변수 및 원시 타입 감싸는 거 생각 2. 일급 컬렉션
+ */
 public class BaseballGame {
     private final Map<Integer, Integer> computerNumber = new HashMap<>();
     private Map<Integer, Integer> userNumber = new HashMap<>();
     // 원시 타입 -> 클래스로 묶기
-    private int ball = 0;
-    private int strike = 0;
+//    private int ball = 0;
+//    private int strike = 0;
+    private final Count strike = new Count(0);
+    private final Count ball = new Count(0);
 
     /**
      * 게임 시작
@@ -76,7 +81,11 @@ public class BaseballGame {
         if (inputNumber.chars().distinct().count() != inputNumber.length()) {
             throw new IllegalArgumentException("중복된 값이 포함되었습니다.");
         }
-        userNumber = IntStream.rangeClosed(1, 3)
+        userNumber = inputUserNumber(inputNumber);
+    }
+
+    private static Map<Integer, Integer> inputUserNumber(String inputNumber) {
+        return IntStream.rangeClosed(1, 3)
                 .boxed()
                 .collect(Collectors.toMap(
                         i -> i,
@@ -100,11 +109,15 @@ public class BaseballGame {
             // Strike case
             if (userNumber.containsValue(computerNumber.get(i + 1)) && Objects.equals(userNumber.get(i + 1),
                     computerNumber.get(i + 1))) {
-                strike++;
+//                strike++;
+                strike.addValue();
+
             }
+            // ball case
             if (userNumber.containsValue(computerNumber.get(i + 1)) && !Objects.equals(userNumber.get(i + 1),
                     computerNumber.get(i + 1))) {
-                ball++;
+//                ball++;
+                ball.addValue();
             }
         }
         return printResult();
@@ -116,7 +129,7 @@ public class BaseballGame {
      * @return true : 숫자를 맞추기 위해 입력 반복 ,false: 정답인 경우
      */
     private boolean printResult() {
-        if (strike == 3) {
+        if (strike.getValue() == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             clearBallData();
@@ -124,18 +137,18 @@ public class BaseballGame {
             userNumber.clear();
             return false;
         }
-        if (ball != 0 && strike != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        if (ball.getValue() != 0 && strike.getValue() != 0) {
+            System.out.println(ball.getValue() + "볼 " + strike.getValue() + "스트라이크");
             clearBallData();
             return true;
         }
-        if (ball == 0 && strike != 0) {
-            System.out.println(strike + "스트라이크");
+        if (ball.getValue() == 0 && strike.getValue() != 0) {
+            System.out.println(strike.getValue() + "스트라이크");
             clearBallData();
             return true;
         }
-        if (ball != 0) {
-            System.out.println(ball + "볼 ");
+        if (ball.getValue() != 0) {
+            System.out.println(ball.getValue() + "볼 ");
             clearBallData();
             return true;
         }
@@ -148,8 +161,8 @@ public class BaseballGame {
      * 컴퓨터 랜덤 수와 사용자 입력값 비교 결과 후 ball, strike 초기화
      */
     private void clearBallData() {
-        ball = 0;
-        strike = 0;
+        ball.setValue(0);
+        strike.setValue(0);
     }
 
 
