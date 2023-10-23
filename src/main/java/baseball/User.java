@@ -5,6 +5,8 @@ import java.util.List;
 
 public class User {
     List<Integer> number = new ArrayList<>();
+    int ball;
+    int strike;
 
     public List<Integer> getNumber() {
         return number;
@@ -36,5 +38,21 @@ public class User {
             return false;
         }
         return true;
+    }
+
+    public int getBall() {
+        return this.ball;
+    }
+
+    public void addBall() {
+        this.ball++;
+    }
+
+    public int getStrike() {
+        return this.strike;
+    }
+
+    public void addStrike() {
+        this.strike++;
     }
 }
