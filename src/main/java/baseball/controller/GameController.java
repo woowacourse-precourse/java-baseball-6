@@ -45,24 +45,28 @@ public class GameController {
             int ballCount = calculator.countBall(randomNumber, inputNumber);
             int strikeCount = calculator.countStrike(randomNumber, inputNumber);
 
-            if (strikeCount == 0 && ballCount == 0) {
-                view.printResultNothing();
-            }
-
-            if (ballCount != 0 && strikeCount == 0) {
-                view.printResultBall(ballCount);
-            }
-
-            if (ballCount == 0 && strikeCount != 0) {
-                view.printResultStrike(strikeCount);
-            }
-
-            if (ballCount != 0 && strikeCount != 0) {
-                view.printResultBallAndStrike(ballCount, strikeCount);
-            }
+            printGameResult(ballCount, strikeCount);
 
         } while (!calculator.isThreeStrike(randomNumber, inputNumber));
 
+    }
+
+    private void printGameResult(int ballCount, int strikeCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            view.printResultNothing();
+        }
+
+        if (ballCount != 0 && strikeCount == 0) {
+            view.printResultBall(ballCount);
+        }
+
+        if (ballCount == 0 && strikeCount != 0) {
+            view.printResultStrike(strikeCount);
+        }
+
+        if (ballCount != 0 && strikeCount != 0) {
+            view.printResultBallAndStrike(ballCount, strikeCount);
+        }
     }
 
     public boolean isEndGame() {
