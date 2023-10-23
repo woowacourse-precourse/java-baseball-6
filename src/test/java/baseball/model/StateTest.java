@@ -15,7 +15,7 @@ class StateTest {
     @Test
     void 재시작_입력이_들어오면_true를_반환한다() {
         // given
-        State restartState = State.RESTART;
+        State restartState = State.PLAY;
 
         // when
         final boolean result = State.isMoreGame(restartState);
