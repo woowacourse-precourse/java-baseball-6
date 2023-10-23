@@ -5,5 +5,8 @@ public class Application {
         // TODO: 프로그램 구현
         NumberBaseball game = new NumberBaseball();
         game.printMessage();
+
+        game.setInputNumberMessage();
+        game.getNumberFromUser();
     }
 }
