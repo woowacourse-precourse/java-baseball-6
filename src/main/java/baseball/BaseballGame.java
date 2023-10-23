@@ -14,7 +14,6 @@ public class BaseballGame {
         }while (confirmGameRestart());
     }
 
-    //게임 진행
     private void proses() {
         BallArray ballArray;
         computer.setRandomBallArray();
@@ -25,7 +24,6 @@ public class BaseballGame {
         } while (isGameOverWithStrikeCount(ballArray)); //3스트라이크 일 경우 종료
     }
 
-    //게임 재시작 여부
     private boolean confirmGameRestart() {
         OutView.restartGamePrint();
         return InputView.promptForNumbers() == 1;
