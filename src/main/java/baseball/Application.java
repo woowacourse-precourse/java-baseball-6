@@ -9,20 +9,6 @@ import java.util.ArrayList;
 import java.util.Set;
 public class Application {
     public static void main(String[] args) {
-        /**String input = Console.readLine();
-        if(input.length() != 3){
-            System.exit(0);
-        }
-        List<Integer> userNumberList = new ArrayList<Integer>();
-        for(int i = 0; i < input.length(); i++){
-            if(!('1' <= input.charAt(i) && input.charAt(i) <= '9') || userNumberList.contains((int) input.charAt(i))){
-                System.exit(0);
-            }
-            else{
-                userNumberList.add((int) input.charAt(i));
-            }
-        } */
-
 
         List<Integer> computer = new ArrayList<Integer>();
         while(computer.size() < 3){
@@ -38,20 +24,22 @@ public class Application {
             if(input.length() != 3){
                 System.exit(0);
             }
-            List<Integer> userNumberList = new ArrayList<Integer>();
+            List<Integer> user = new ArrayList<Integer>();
             for(int i = 0; i < input.length(); i++){
-                if(!('1' <= input.charAt(i) && input.charAt(i) <= '9') || userNumberList.contains((int) input.charAt(i))){
+                char character = input.charAt(i);
+                int number = (int) (character - '0');
+                if(!('1' <= character && character <= '9') || user.contains(number)){
                     System.exit(0);
                 }
                 else{
-                    userNumberList.add((int) (input.charAt(i) - '0'));
+                    user.add(number);
                 }
             }
 
             int ball = 0;
             int strike = 0;
-            for(int i = 0; i < userNumberList.size(); i++){
-                int num = userNumberList.get(i);
+            for(int i = 0; i < user.size(); i++){
+                int num = user.get(i);
                 if(computer.contains(num)){
                     if(computer.indexOf(num) == i)
                         strike++;
