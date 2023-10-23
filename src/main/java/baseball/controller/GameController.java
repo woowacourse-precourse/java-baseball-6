@@ -13,22 +13,34 @@ public class GameController {
     private ComputerController computerController = new ComputerController(decimalNumber, outputView);
 
     public void run() {
-        Boolean isSuccess = true;
+        Boolean play = true;
 
         //게임 재시작 여부 판단
-        while (isSuccess) {
-            outputView.printGame(START.getMessage());
+        while (play) {
+            outputView.printGuide(START.getMessage());
             computerController.initComputer();
-
-            //메서드 분리 필요
-            while (isSuccess) {
-                String inputNumber = inputView.inputGameIng();
-                decimalNumber.setUser(inputNumber);
-                computerController.checkAnswer();
-            }
-
-            //종료 코드 필요
+            playing();
+            play = replay();
         }
     }
 
+    private void playing() {
+        Boolean isSuccess = true;
+
+        while (isSuccess) {
+            String inputNumber = inputView.inputGameNumber();
+            decimalNumber.setUser(inputNumber);
+            isSuccess = computerController.checkAnswer();
+        }
+    }
+
+    private Boolean replay() {
+        String inputNumber = inputView.inputReplayNumber();
+        //유효성 검사 필요
+        //enum으로 뺄지 말지 생각
+        if (inputNumber.equals("1")) {
+            return true;
+        }
+        return false;
+    }
 }

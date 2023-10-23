@@ -21,7 +21,7 @@ public class ComputerController {
         decimalNumber.setComputer();
     }
 
-    public void checkAnswer() {
+    public Boolean checkAnswer() {
         List<Integer> computer = decimalNumber.getComputer();
         List<Integer> user = decimalNumber.getUser();
 
@@ -37,5 +37,10 @@ public class ComputerController {
         }
 
         outputView.printHint(ball, strike);
+
+        if (strike == NUMBER_SIZE.getNumber()) {
+            return false;
+        }
+        return true;
     }
 }
