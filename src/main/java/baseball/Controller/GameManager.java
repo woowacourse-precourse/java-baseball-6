@@ -9,6 +9,7 @@ import baseball.view.OutputView;
 import java.util.List;
 
 import static baseball.Application.*;
+import static baseball.system.SystemConstant.GAME_DIGIT;
 
 public class GameManager {
 
@@ -42,6 +43,6 @@ public class GameManager {
     public boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//true이면, 게임 종료하기 위한 단계로 간다.
         Score userScore = Referee.makeScore(user, computer);
         outputView.printResult(userScore);
-        return userScore.getStrike() == NUM_DIGITS;
+        return userScore.getStrike() == GAME_DIGIT;
     }
 }

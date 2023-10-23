@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.domain.dto.Score;
 
-import static baseball.Application.NUM_DIGITS;
+
 
 public final class OutputView {
     private final String BALL = "볼";

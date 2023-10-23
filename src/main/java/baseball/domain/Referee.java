@@ -4,7 +4,8 @@ import baseball.domain.dto.Score;
 
 import java.util.List;
 
-import static baseball.Application.NUM_DIGITS;
+import static baseball.system.SystemConstant.GAME_DIGIT;
+
 
 public final class Referee {
 
@@ -20,7 +21,7 @@ public final class Referee {
 
     private static int makeBallCount(List<Integer> userNumber, List<Integer> computerNumber){
         int numBalls=0;
-        for(int i=0;i<NUM_DIGITS;i++){
+        for(int i=0;i<GAME_DIGIT;i++){
             if(userNumber.get(i)!=computerNumber.get(i) && computerNumber.contains(userNumber.get(i))){
                 numBalls++;
             }
@@ -30,7 +31,7 @@ public final class Referee {
 
     private static int makeStrikeCount(List<Integer> userNumber, List<Integer> computerNumber){
         int numStrikes=0;
-        for(int i=0;i<NUM_DIGITS;i++){
+        for(int i=0;i<GAME_DIGIT;i++){
             if(userNumber.get(i)==computerNumber.get(i)){
                 numStrikes++;
             }

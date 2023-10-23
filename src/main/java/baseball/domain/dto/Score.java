@@ -1,6 +1,7 @@
 package baseball.domain.dto;
 
-import static baseball.Application.NUM_DIGITS;
+
+import static baseball.system.SystemConstant.GAME_DIGIT;
 
 public class Score {
 
@@ -22,7 +23,7 @@ public class Score {
     }
 
     public boolean isGameOver(){
-        return strike == NUM_DIGITS;
+        return strike == GAME_DIGIT;
     }
 
     public boolean isZeroPoint(){

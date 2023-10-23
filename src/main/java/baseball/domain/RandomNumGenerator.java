@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Application.NUM_DIGITS;
+import static baseball.system.SystemConstant.GAME_DIGIT;
 
 public final class RandomNumGenerator {
 
@@ -18,7 +18,7 @@ public final class RandomNumGenerator {
     public static List<Integer> generateComputerRandomThreeDigitNumber(){
 
         List<Integer> computer = new ArrayList<>();
-        while(computer.size() <NUM_DIGITS ){
+        while(computer.size() <GAME_DIGIT ){
             int randomNumber = makeRandomDigit();
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);

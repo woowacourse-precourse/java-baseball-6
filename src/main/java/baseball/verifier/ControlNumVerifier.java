@@ -2,6 +2,9 @@ package baseball.verifier;
 
 import baseball.system.ExceptionMessage;
 
+import static baseball.system.SystemConstant.GAME_EXIT_CODE;
+import static baseball.system.SystemConstant.GAME_RESTART_CODE;
+
 public class ControlNumVerifier implements Verifier {
     @Override
     public void check(String input) throws IllegalArgumentException {
@@ -19,7 +22,7 @@ public class ControlNumVerifier implements Verifier {
 
     private void checkRange(String input){//1 또는 2가 아닌 모둔 숫자는 예외처리.
         int control = Integer.parseInt(input);
-        if(control != 1 && control != 2){
+        if(control != GAME_RESTART_CODE && control != GAME_EXIT_CODE){
             throw new IllegalArgumentException(ExceptionMessage.UNKNOWN_CONTROL_INPUT);
         }
     }

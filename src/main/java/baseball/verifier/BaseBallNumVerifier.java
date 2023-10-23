@@ -5,7 +5,7 @@ import baseball.system.ExceptionMessage;
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.Application.NUM_DIGITS;
+import static baseball.system.SystemConstant.GAME_DIGIT;
 
 public class BaseBallNumVerifier implements Verifier {
     @Override
@@ -16,7 +16,7 @@ public class BaseBallNumVerifier implements Verifier {
     }
 
     private void checkThreeDigits(String input){
-        if(input.length() != NUM_DIGITS){
+        if(input.length() != GAME_DIGIT){
             throw new IllegalArgumentException(ExceptionMessage.NOT_THREE_DIGITS);
         }
     }
