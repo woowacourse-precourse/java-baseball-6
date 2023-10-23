@@ -5,6 +5,7 @@ import baseball.model.BaseballGameCountsMessage;
 import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
 import baseball.view.GameView;
+import baseball.view.InputView;
 
 public class BaseballGame {
     private final ComputerNumber computer;
@@ -22,7 +23,7 @@ public class BaseballGame {
         GameView.printGameStartMessage();
 
         while (true) {
-            UserNumber user = new UserNumber(GameView.getUserInput());
+            UserNumber user = new UserNumber(InputView.getUserInput());
 
             BaseballGameCounts baseballGameCounts = new BaseballGameCounts(computer, user);
 

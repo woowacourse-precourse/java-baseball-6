@@ -1,7 +1,5 @@
 package baseball.view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import baseball.model.BaseballGameCountsMessage;
 
 public class GameView {
@@ -15,11 +13,6 @@ public class GameView {
 
     public static void printGameWinMessage() {
         System.out.println(GAME_WIN_MESSAGE);
-    }
-
-    public static String getUserInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return readLine();
     }
 
     public static void printBaseballGameCountsMessage(BaseballGameCountsMessage message) {
