@@ -16,19 +16,26 @@ public class BaseballGame {
 
             while (true) {
                 outputWriter.printInputMessage();
-                List<Integer> expect = inputReader.readUserGameInput();
+                List<Integer> userInput = inputReader.readUserGameInput();
 
-                int[] result = baseballReferee.scoreInput(goal, expect);
+                int[] result = baseballReferee.scoreInput(goal, userInput);
                 outputWriter.printResultOfInput(result[0], result[1]);
 
-                if (result[1] == 3) break;
+                if (isThreeStrike(result[1])) break;
             }
 
             outputWriter.printGameFinishMessage();
-            int restart = inputReader.readUserGameFinishInput();
 
-            if(restart == 2) break;
+            if(!isRestart(inputReader.readUserGameFinishInput())) break;
         }
 
+    }
+
+    private static boolean isThreeStrike(int strike){
+        return strike == 3;
+    }
+
+    private static boolean isRestart(int restart){
+        return restart == 1;
     }
 }

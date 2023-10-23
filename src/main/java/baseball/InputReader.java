@@ -11,6 +11,7 @@ public class InputReader {
     public List<Integer> readUserGameInput(){
         String input = Console.readLine();
 
+        validateAllInputIsEmpty(input);
         validateGameInputSize(input);
         validateGameInputType(input);
         validateGameInputDuplicationOfNumber(input);
@@ -21,6 +22,7 @@ public class InputReader {
     public int readUserGameFinishInput(){
         String input = Console.readLine();
 
+        validateAllInputIsEmpty(input);
         validateGameFinishInputSize(input);
         validateGameFinishInputType(input);
 
@@ -38,8 +40,11 @@ public class InputReader {
                 .toList();
     }
 
+    private void validateAllInputIsEmpty(String input){
+        if (input.isEmpty()) throw new IllegalArgumentException("input can't be empty.");
+    }
     private void validateGameFinishInputSize(String input){
-        if (input.length() != 1) throw new IllegalArgumentException("input's size have to be 1");
+        if (input.length() != 1) throw new IllegalArgumentException("input's size have to be 1.");
     }
 
     private void validateGameFinishInputType(String input){
@@ -47,7 +52,7 @@ public class InputReader {
     }
 
     private void validateGameInputSize(String input){
-        if(input.length() != 3) throw new IllegalArgumentException("input's size have to be 3");
+        if(input.length() != 3) throw new IllegalArgumentException("input's size have to be 3.");
     }
 
     private void validateGameInputType(String input){

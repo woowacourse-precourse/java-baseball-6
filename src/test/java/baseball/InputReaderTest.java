@@ -1,8 +1,6 @@
 package baseball;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -16,6 +14,7 @@ class InputReaderTest {
     @BeforeAll
     static void setUp(){
         inputReader = new InputReader();
+
     }
 
     @Test
@@ -33,7 +32,7 @@ class InputReaderTest {
         assertEquals(3, inputList.get(2));
     }
 
-    @Test()
+    @Test
     @DisplayName("게임 진행 중 3자리 숫자가 아닐 때 예외 발생 테스트")
     void typeIncorrectInputSizeOfGameInput(){
         String input = "1234";
@@ -87,8 +86,22 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 종료 후 입력의 숫자가 1자리가 아닐 때 예외 발생 테스트")
-    void typeIncorrectInputSizeOfGameFinishInput(){
+    void typeIncorrectInputSizeOfGameFinishInput() {
         String input = "123";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            int restart = inputReader.readUserGameFinishInput();
+        });
+    }
+
+    @Test
+    @DisplayName("게임 종료 후 입력이 숫자가 아닐 때 예외 발생 테스트")
+    void typeIncorrectInputTypeOfGameFinishInput() {
+        String input = "a";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -99,9 +112,9 @@ class InputReaderTest {
     }
 
     @Test
-    @DisplayName("게임 종료 후 입력이  숫자가 아닐 때 예외 발생 테스트")
-    void typeIncorrectInputTypeOfGameFinishInput(){
-        String input = "a";
+    @DisplayName("게임 종료 후 입력이 1과 2가 아닐 때 예외 발생 테스트")
+    void typeIncorrectInputRangeOfGameFinishInput(){
+        String input = "3";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
