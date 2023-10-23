@@ -8,7 +8,8 @@ public enum Message {
     INVALID_VALUE("[ERROR] : 잘못된 값이 입력되었습니다."),
     THREE_NUMBERS_REQUIRED("[ERROR] : 숫자를 3개 입력해 주세요."),
     NUMBER_RANGE("[ERROR] : 1에서 9 사이의 숫자만 입력해주세요."),
-    UNIQUE_NUMBERS("[ERROR] : 중복되지 않은 숫자를 입력해주세요.");
+    UNIQUE_NUMBERS("[ERROR] : 중복되지 않은 숫자를 입력해주세요."),
+    INVALID_RESTART_OPTION("[ERROR] : 1과 2만 입력해주세요.");
 
 
     private final String message;

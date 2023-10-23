@@ -1,27 +1,23 @@
 package baseball;
 
-public class RestartOption {
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
-    private final String restartOption;
+import java.util.Arrays;
 
-    public RestartOption(String restartOption) {
-        this.restartOption = restartOption;
-        validateInput();
+public enum RestartOption {
+    RESTART("1", true),
+    EXIT("2", false);
+    private final String optionCode;
+    private final boolean isRestart;
+
+    RestartOption(String optionCode, boolean isRestart) {
+        this.optionCode = optionCode;
+        this.isRestart = isRestart;
     }
 
-    private void validateInput() {
-        if (!restartOption.equals(RESTART) && !restartOption.equals(EXIT)) {
-            throw new IllegalArgumentException(Message.INVALID_VALUE.getMessage());
-        }
+    public static boolean isRestart(String optionCode) {
+        return Arrays.stream(values())
+                .filter(option -> option.optionCode.equals(optionCode))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(Message.INVALID_RESTART_OPTION.getMessage()))
+                .isRestart;
     }
-
-    public boolean isRestart() {
-        if (restartOption.equals(RESTART)) {
-            return true;
-        }
-        return false;
-    }
-
-
 }

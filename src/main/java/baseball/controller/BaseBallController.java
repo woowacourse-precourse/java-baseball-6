@@ -12,14 +12,13 @@ public class BaseBallController {
     private Judge judge;
     private User user;
     private ScoreBoard scoreBoard;
-    private RestartOption restartOption;
 
     public void playGame() {
         OutputView.startGameMessage();
         do {
             judge = new Judge(RandomNumberGenerator.createRandomNumber());
             run();
-        } while (restartOption.isRestart());
+        } while (RestartOption.isRestart(InputView.inputRestartOption()));
     }
 
     private void run() {
@@ -29,6 +28,5 @@ public class BaseBallController {
             OutputView.showScoreBoard(scoreBoard);
         } while (!scoreBoard.isThreeStrike());
         OutputView.gameOverMessage();
-        restartOption = new RestartOption(InputView.inputRestartOption());
     }
 }
