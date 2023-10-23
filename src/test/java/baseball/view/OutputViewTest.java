@@ -91,4 +91,17 @@ class OutputViewTest {
         String expectedOutput = "낫싱\n";
         assertThat(outContent.toString()).isEqualTo(expectedOutput);
     }
+
+    @DisplayName("게임 시작을 알리는 메시지를 출력한다.")
+    @Test
+    void printGameOver() {
+        // given
+
+        // when
+        outputView.printGameOver();
+
+        // then
+        String expectedOutput = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+        assertThat(outContent.toString()).isEqualTo(expectedOutput);
+    }
 }
