@@ -6,7 +6,6 @@ import baseball.view.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -14,29 +13,52 @@ public class GameController {
     public void run() {
         OutputView.printStartGame();
         List<Integer> computerNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        recursiveGame(computerNumbers);
+    }
+
+    private void recursiveGame(List<Integer> computerNumbers) {
         OutputView.printInputNumber();
         List<Integer> numbers = InputView.inputNumber();
         GameResult gameResult = checkResult(numbers, computerNumbers);
         OutputView.printGameResult(gameResult);
+
+        if (isGameOver(gameResult)) {
+            return;
+        }
+
+        recursiveGame(computerNumbers);
+    }
+
+    private boolean isGameOver(GameResult gameResult) {
+        if (gameResult.getStrike() == 3) {
+            return true;
+        }
+        return false;
     }
 
     private GameResult checkResult(List<Integer> numbers, List<Integer> computerNumbers) {
-         int strike = 0;
-         int ball = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            Ball player = new Ball(i, numbers.get(i));
-            Ball computer = new Ball(i, computerNumbers.get(i));
-            MatchResult matchResult = player.match(computer);
+        for (Integer a :
+                computerNumbers) {
+            System.out.println(a);
+        }
 
-            if (matchResult.isStrike()){
-                strike++;
-            }
-            if (matchResult.isBall()) {
-                ball++;
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < numbers.size(); i++) {
+            Integer player = numbers.get(i);
+            for (int j = 0; j < computerNumbers.size(); j++) {
+                Integer computer = computerNumbers.get(j);
+                if (i == j && player.equals(computer)){
+                    strike++;
+                }
+                if (i != j && player.equals(computer)){
+                    ball++;
+                }
             }
         }
-        GameResult gameResult = new GameResult(strike, ball);
-        return gameResult;
+
+        return new GameResult(strike, ball);
     }
 
 }

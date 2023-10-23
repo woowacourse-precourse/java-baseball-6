@@ -2,12 +2,12 @@ package baseball.domain;
 
 public class Ball {
 
-    private final int number;
     private final int position;
+    private final int number;
 
-    public Ball(int number, int position) {
-        this.number = number;
+    public Ball(int position, int number) {
         this.position = position;
+        this.number = number;
     }
 
     public MatchResult match(Ball otherBall) {
@@ -27,14 +27,14 @@ public class Ball {
     }
 
     public boolean isBall(Ball otherBall) {
-        return !isSamePosition(otherBall) && isSameNumber(otherBall);
+        return isSameNumber(otherBall) && !isSamePosition(otherBall);
     }
 
     private boolean isSameNumber(Ball otherBall) {
-        return this.position == otherBall.position;
+        return this.number == otherBall.number;
     }
 
     private boolean isSamePosition(Ball otherBall) {
-        return this.number == otherBall.number;
+        return this.position == otherBall.position;
     }
 }
