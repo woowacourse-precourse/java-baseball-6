@@ -7,7 +7,6 @@ import java.util.Set;
 public class NumberException {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-    private static final int NUMBER_LENGTH = 3;
 
     public static void numberException(String inputNumbers) {
         validateNumberLength(inputNumbers);
@@ -16,8 +15,8 @@ public class NumberException {
     }
 
     private static void validateNumberLength(String inputNumbers) {
-        if(inputNumbers.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException("\nError: " + NUMBER_LENGTH + "개의 숫자를 입력해 주세요.");
+        if(inputNumbers.length() != ComputerNumber.LENGTH) {
+            throw new IllegalArgumentException("\nError: " +  ComputerNumber.LENGTH + "개의 숫자를 입력해 주세요.");
         }
     }
 
