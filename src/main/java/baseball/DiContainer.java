@@ -1,23 +1,20 @@
 package baseball;
 
-import java.util.List;
-
 public class DiContainer {
 
     public ComputerController computerController() {
-        return new ComputerController(view(), validation());
+        return new ComputerController();
     }
 
-    public Validate validation() {
+    public UserController userController() {
+        return new UserController(gameService());
+    }
+
+    public GameService gameService() {
+        return new GameService(validation());
+    }
+
+    public Validation validation() {
         return new Validation();
     }
-
-    public View view() {
-        return new ComputerView();
-    }
-
-    public List<Integer> answerList() {
-        return new Computer().makeAnswerList();
-    }
-    
 }
