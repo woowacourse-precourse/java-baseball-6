@@ -1,9 +1,12 @@
 package baseball.domain;
 
+import baseball.util.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BaseballGame {
 
@@ -14,6 +17,7 @@ public class BaseballGame {
     public void start() {
         while (true) {
             List<Integer> baseballNumbers = this.generateBaseballNumbers();
+            List<Integer> playerNumbers = this.pickThreeNumbers();
         }
     }
 
@@ -26,5 +30,22 @@ public class BaseballGame {
             }
         }
         return numbers;
+    }
+
+    private List<Integer> pickThreeNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
+        Set<Integer> inputNumbers = new HashSet<>();
+        for (String number : input.split("")) {
+            int numberInteger = Integer.parseInt(number);
+            inputNumbers.add(numberInteger);
+        }
+
+        if (inputNumbers.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        return inputNumbers.stream().toList();
     }
 }
