@@ -19,19 +19,19 @@ public class GameController {
         initGame();
     }
 
-    public void initGame() {
+    private void initGame() {
         this.gameService = new GameService(RandomUtils.getRandomNumbers(GAME_SIZE, DIGIT_START, DIGIT_END));
         getUserInput();
     }
 
-    public void getUserInput() {
+    private void getUserInput() {
         View.gameInput();
         String userInputString = Console.readLine();
         List<Integer> userInpuNumbers = gameService.parseInput(userInputString);
         getResult(userInpuNumbers);
     }
 
-    public void getResult(List<Integer> userInputNumbers) {
+    private void getResult(List<Integer> userInputNumbers) {
         GameResult gameResult = gameService.calculateGameResult(userInputNumbers);
         View.gameResult(gameResult);
         if (gameResult.isAnswer(GAME_SIZE)) {
@@ -41,7 +41,7 @@ public class GameController {
         getUserInput();
     }
 
-    public void endGame() {
+    private void endGame() {
         View.gameEnd(GAME_SIZE);
         String responseRetry = Console.readLine();
         if (responseRetry.equals(RETRY_GAME)) {
