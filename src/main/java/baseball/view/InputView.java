@@ -1,5 +1,6 @@
 package baseball.view;
 
+import static baseball.model.ExceptionMessage.NUMBER_FORMAT_EXCEPTION_MESSAGE;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
@@ -52,7 +53,11 @@ public class InputView {
     }
 
     private int convertToInt(String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MESSAGE);
+        }
     }
 
     private void validateGameRestart(String rawGameRestart) {
