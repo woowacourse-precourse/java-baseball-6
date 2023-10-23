@@ -30,9 +30,7 @@ public class GameService {
         int ballCount = 0;
         int strikeCount = 0;
         List<Integer> randomNumbers = gameInfo.getRandomNumbers();
-        List<Integer> integers = userInput.chars()
-                .mapToObj(Character::getNumericValue)
-                .toList();
+        List<Integer> integers = stringToList(userInput);
         for (int i = 0; i < randomNumbers.size(); i++) {
             for (int j = 0; j < integers.size(); j++) {
                 if (i == j && randomNumbers.get(i).equals(integers.get(j))) {
@@ -63,5 +61,11 @@ public class GameService {
             outputResult.append(SUCCESS_MSG);
         }
         return outputResult;
+    }
+
+    public List<Integer> stringToList(String userInput) {
+        return userInput.chars()
+                .mapToObj(Character::getNumericValue)
+                .toList();
     }
 }
