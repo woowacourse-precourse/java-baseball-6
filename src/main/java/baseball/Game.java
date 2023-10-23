@@ -9,21 +9,11 @@ public class Game {
     User user = new User();
 
     public void startGame() {
-        gaming();
+        runGame();
         askToPlayAgain();
     }
 
-    private void askToPlayAgain() {
-        View.printPlayAgain();
-
-        if (user.getNumberForPlayAgain() == 1) {
-            startGame();
-        }else {
-            return;
-        }
-    }
-
-    private void gaming() {
+    private void runGame() {
         List<Integer> answerNumberList = computer.createAnswerNumberList();
         gamingUtilWin(answerNumberList);
         View.printGameEndMessage();
@@ -65,6 +55,16 @@ public class Game {
             View.printStrikeMessage(strike);
         } else {
             View.printBallAndStrikeMessage(ball, strike);
+        }
+    }
+
+    private void askToPlayAgain() {
+        View.printPlayAgain();
+
+        if (user.getNumberForPlayAgain() == 1) {
+            startGame();
+        }else {
+            return;
         }
     }
 }
