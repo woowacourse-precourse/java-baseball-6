@@ -14,14 +14,6 @@ public class BaseBallNumberList {
         validateRange();
     }
 
-    private void validateRange() {
-        int min = 1;
-        int max = 9;
-        if (numbers.stream().anyMatch((i) -> i < min || max < i)) {
-            throw new IllegalArgumentException("1~9 사이 숫자만 사용해 주세요");
-        }
-    }
-
     public int countSameNumber(BaseBallNumberList baseBallNumberList) {
         return (int) baseBallNumberList.numbers.stream()
                 .filter(o -> numbers.stream().anyMatch(o::equals)).count();
@@ -33,6 +25,18 @@ public class BaseBallNumberList {
 
     public int size() {
         return BASE_BALL_NUMBERS_SIZE;
+    }
+
+    private void validateRange() {
+        int min = 1;
+        int max = 9;
+        if (notInRange(min, max)) {
+            throw new IllegalArgumentException("1~9 사이 숫자만 사용해 주세요");
+        }
+    }
+
+    private boolean notInRange(int min, int max) {
+        return numbers.stream().anyMatch((i) -> i < min || max < i);
     }
 
     private void validateSameItem() {
