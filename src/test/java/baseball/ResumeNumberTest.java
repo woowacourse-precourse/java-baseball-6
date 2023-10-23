@@ -27,4 +27,9 @@ public class ResumeNumberTest {
             resumeNumber.updateNumber("a");
         });
     }
+
+    @Test
+    void 재시작_또는_종료값은_1이_될_수_있다() {
+        resumeNumber.updateNumber("1");
+    }
 }
