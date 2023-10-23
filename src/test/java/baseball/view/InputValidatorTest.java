@@ -22,6 +22,7 @@ class InputValidatorTest {
     @ValueSource(strings = {"", " "})
     @ParameterizedTest
     void 빈값을_넣으면_예외가_발생한다(String input) {
-        assertThrows(IllegalArgumentException.class, () -> inputValidator.validateInput(input));
+        assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.validateInput(input));
     }
 }

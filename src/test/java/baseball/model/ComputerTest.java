@@ -2,7 +2,7 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.util.StubNumberGenerator;
+import baseball.helper.StubNumberGenerator;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +25,7 @@ class ComputerTest {
 
     @CsvSource({"1, 2, 3, 3", "1, 3, 2,1 ", "5, 6, 7, 0", "1, 2, 5, 2"})
     @ParameterizedTest
-    void 스트라이크갯수를_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
+    void 스트라이크갯수를_비교하여_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
         // given
         List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
 
@@ -38,7 +38,7 @@ class ComputerTest {
 
     @CsvSource({"1, 2, 3, 0", "1, 3, 2, 2 ", "5, 6, 7, 0", "9, 2, 1, 1"})
     @ParameterizedTest
-    void 볼갯수를_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
+    void 볼갯수를_비교하여_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
         // given
         List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
 

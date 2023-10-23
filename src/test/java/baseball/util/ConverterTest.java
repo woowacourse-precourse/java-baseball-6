@@ -12,12 +12,12 @@ class ConverterTest {
     void 스트링을_정수형_리스트로_변환한다() {
         // given
         String input = "123";
-        List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
+        List<Integer> expected = Arrays.asList(1, 2, 3);
 
         // when
-        List<Integer> numbers = Converter.convertStringToIntegerList(input);
+        List<Integer> result = Converter.convertStringToIntegerList(input);
 
         // then
-        assertThat(numbers).isEqualTo(inputNumbers);
+        assertThat(result).isEqualTo(expected);
     }
 }

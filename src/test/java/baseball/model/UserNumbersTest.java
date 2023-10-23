@@ -21,14 +21,14 @@ class UserNumbersTest {
     void 입력으로_리스트를_만든다() {
         // given
         String input = "123";
-        List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
+        List<Integer> expected = Arrays.asList(1, 2, 3);
         UserNumbers userNumbers = UserNumbers.createFromInput(input);
 
         // when
-        List<Integer> numbers = userNumbers.getSelectedNumbers();
+        List<Integer> result = userNumbers.getSelectedNumbers();
 
         // then
-        assertThat(numbers).isEqualTo(inputNumbers);
+        assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest(name = "{index}: {2}")
