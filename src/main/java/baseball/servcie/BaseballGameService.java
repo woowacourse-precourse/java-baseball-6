@@ -12,6 +12,7 @@ public class BaseballGameService {
 
     private final int NO_HIT = 0;
     private final int ALL_STRIKE = 3;
+    private final String NEW_GAME = "1";
     private final BaseballGameValidation baseballGameValidation;
     private final User user;
 
@@ -39,7 +40,7 @@ public class BaseballGameService {
 
         baseballGameValidation.validateString(checkString);
 
-        return (checkString.equals("1"));
+        return (checkString.equals(NEW_GAME));
 
     }
 
