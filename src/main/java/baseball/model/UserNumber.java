@@ -43,8 +43,8 @@ public class UserNumber {
 
     private void validateDuplicate(List<Integer> userNumber) {
         Set checkDuplication = new HashSet();
-        for (int i = 0; i < userNumber.size(); i++) {
-            checkDuplication.add(userNumber.get(i));
+        for (int number : userNumber) {
+            checkDuplication.add(number);
         }
         if (checkDuplication.size() != USER_NUMBER_SIZE) {
             throw new IllegalArgumentException();
