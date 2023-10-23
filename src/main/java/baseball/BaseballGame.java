@@ -19,7 +19,9 @@ public class BaseballGame {
 	public int getBall() {
 		for (int i = 0; i < 3; i++) {
 		    for (int j = 0; j < 3; j++) {
-		    	this.ball ++;
+		    	if(this.userAnswer.get(i) == this.answer.get(j)) {
+					this.ball ++;
+				}
 		    }
 		}
 		return this.ball - this.strike;
