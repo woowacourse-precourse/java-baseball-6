@@ -1,8 +1,8 @@
 package baseball.domain.ball;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum GameStatus {
     UNKNOWN("_"),
@@ -10,11 +10,8 @@ public enum GameStatus {
     EXIT("2");
 
     private static final Map<String, GameStatus> enumMap =
-            Arrays.stream(values())
-                    .collect(Collectors.toMap(
-                            gameStatus -> gameStatus.input,
-                            gameStatus -> gameStatus
-                    ));
+            Stream.of(values())
+                    .collect(Collectors.toMap(e -> e.input, e -> e));
     private final String input;
 
     GameStatus(final String input) {
