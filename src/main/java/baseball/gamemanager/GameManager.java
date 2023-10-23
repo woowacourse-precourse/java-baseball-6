@@ -61,10 +61,22 @@ public class GameManager {
   public void start() {
     randomNumber = randomNumberGenerator.generateNumber();
 
-    // TODO 랜덤 숫자 생성 로직 수정
-    duplicateNumberValidator.validate(randomNumber);
-    numberContainZeroValidator.validate(randomNumber);
-    numberRangeValidator.validate(randomNumber);
+    while (!isAllowedNumber(randomNumber)) {
+      randomNumber = randomNumberGenerator.generateNumber();
+    }
+
+  }
+
+  private boolean isAllowedNumber(int[] randomNumber) {
+    try {
+      duplicateNumberValidator.validate(randomNumber);
+      numberContainZeroValidator.validate(randomNumber);
+      numberRangeValidator.validate(randomNumber);
+
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
   }
 
   public void requestUserInput() {
