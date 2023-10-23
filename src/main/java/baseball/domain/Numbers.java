@@ -3,7 +3,7 @@ package baseball.domain;
 import static baseball.domain.NumbersValidator.*;
 
 import java.util.List;
-
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Numbers {
@@ -25,6 +25,13 @@ public class Numbers {
 	public int countStrike(Numbers inputNumbers) {
 		return (int)IntStream.range(0, NUMBERS_LENGTH)
 			.filter(i -> numbers.get(i).equals(inputNumbers.numbers.get(i)))
+			.count();
+	}
+
+	public int countBall(Numbers inputNumbers) {
+		return (int)IntStream.range(0, NUMBERS_LENGTH)
+			.filter(i -> numbers.contains(inputNumbers.numbers.get(i)))
+			.filter(i -> !Objects.equals(numbers.get(i), inputNumbers.numbers.get(i)))
 			.count();
 	}
 }
