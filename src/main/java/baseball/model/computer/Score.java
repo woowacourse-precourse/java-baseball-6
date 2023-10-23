@@ -9,6 +9,9 @@ public class Score {
     private static final Integer INIT_STRIKE_SCORE = 0;
     private static final Integer INIT_BALL_SCORE = 0;
 
+    private static final Integer FIRST_INDEX = 0;
+    private static final Integer LAST_INDEX = 3;
+
     private Integer strike;
     private Integer ball;
 
@@ -40,14 +43,14 @@ public class Score {
     }
 
     private Integer calculateStrike(List<Integer> playerInput, List<Integer> answer) {
-        return (int) IntStream.range(0, answer.size())
+        return (int) IntStream.range(FIRST_INDEX, LAST_INDEX)
                 .filter(index -> playerInput.get(index)
                         .equals(answer.get(index)))
                 .count();
     }
 
     private Integer calculateBall(List<Integer> playerInput, List<Integer> answer) {
-        return (int) IntStream.range(0, answer.size())
+        return (int) IntStream.range(FIRST_INDEX, LAST_INDEX)
                 .filter(index -> excludeStrike(playerInput, answer, index) && includeBall(playerInput, answer, index))
                 .count();
     }
