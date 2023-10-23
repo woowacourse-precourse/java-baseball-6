@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.dto.RestartOrExitNumberDto;
 import baseball.model.RestartOrExitNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -23,5 +24,18 @@ public class RestartOrExitNumberTest {
 
         Assertions.assertThatThrownBy(() -> new RestartOrExitNumber(restartOrExitNumber))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("게임의 재시작을 나타내는 숫자 1 혹은 완전한 종료를 나타내는 숫자 2가 들어오면 유효성 검사를 정상적으로 통과하는지 테스트한다. ")
+    void testCorrectRestartOrExitNumber() {
+        int restartNumber = 1;
+        int exitNumber = 2;
+
+        RestartOrExitNumberDto restart = new RestartOrExitNumberDto(restartNumber);
+        RestartOrExitNumberDto exit = new RestartOrExitNumberDto(exitNumber);
+
+        Assertions.assertThat(restart.getRestartOrExitNumber()).isEqualTo(restartNumber);
+        Assertions.assertThat(exit.getRestartOrExitNumber()).isEqualTo(exitNumber);
     }
 }
