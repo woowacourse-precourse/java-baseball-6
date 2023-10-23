@@ -27,14 +27,16 @@ public class Baseball {
 
     }
 
-    public static String[] inputThreeNums() { // 3. 사용자로부터 숫자 3개를 입력받는 메서드
+    public static String inputThreeNums() { // 3. 사용자로부터 숫자 3개를 입력받는 메서드
         String inputNums;
         System.out.println("숫자를 입력해주세요 : ");
         inputNums = Console.readLine();
-
-        String[] listedInputNums = inputNums.split("");
-        return listedInputNums;
+        return inputNums;
     }
 
+    public static String[] stringToArray(String inputString) { // 7. 사용자가 입력한 3개의 숫자를 배열로 변환하는 메서드
+        String[] listedInputNums = inputString.split("");
+        return listedInputNums;
+    }
 
 }
