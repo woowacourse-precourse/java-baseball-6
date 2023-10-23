@@ -15,6 +15,8 @@ public class ValidationTest extends NsTest {
     void 사용자_게임_입력_값_공백_예외_테스트(){
         //given
         String input_value="";
+
+        //when
         assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[Err] 입력 값이 빈 문자열입니다.");
