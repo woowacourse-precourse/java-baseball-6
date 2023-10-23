@@ -19,7 +19,7 @@ public class Player {
     }
 
     public List<Integer> getPlayerList() {
-        return new ArrayList<>(playerList); // Return a copy of the internal list to ensure immutability
+        return new ArrayList<>(playerList);
     }
 
     private void checkNumberLength(String inputString) {
