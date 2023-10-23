@@ -1,4 +1,4 @@
-package game;
+package baseball.game;
 
 import static baseball.constant.NumberConstants.COUNT_ZERO;
 import static baseball.output.GameOutput.printNewLine;

@@ -1,6 +1,6 @@
 package baseball;
 
-import game.Game;
+import baseball.game.Game;
 
 public class Application {
 
