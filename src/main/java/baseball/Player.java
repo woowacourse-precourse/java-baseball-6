@@ -20,13 +20,13 @@ public class Player {
   }
 
   private boolean isDuplicate(String input) {
-      return input.chars()
-          .mapToObj(ch -> (char)ch)
-          .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-          .values()
-          .stream()
-          .anyMatch(count -> count > 1);
-    }
+    return input.chars()
+        .mapToObj(ch -> (char) ch)
+        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+        .values()
+        .stream()
+        .anyMatch(count -> count > 1);
+  }
 
   public boolean userInputNumbers(final int[] flag) {
     String input = Console.readLine();
