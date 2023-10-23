@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class Computer {
@@ -11,6 +12,21 @@ public class Computer {
     private static final int LOWER_INCLUSIVE = 1;
     private static final int UPPER_INCLUSIVE = 9;
     private List<Integer> numbers;
+    private int ballCount;
+    private int strikeCount;
+
+    public void resetCount() {
+        ballCount = 0;
+        strikeCount = 0;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 
     public void generateRandomNumbers() {
         Set<Integer> randomNumbers = new HashSet<>();
@@ -20,5 +36,25 @@ public class Computer {
             randomNumbers.add(randomNumber);
         }
         numbers = new ArrayList<>(randomNumbers);
+    }
+
+    public void countScore(List<Integer> playerNumbers) {
+        for (int index = 0; index < 3; index++) {
+            Integer playerNumber = playerNumbers.get(index);
+
+            if (isStrike(index, playerNumber)) {
+                strikeCount++;
+            } else if (isBall(playerNumber)) {
+                ballCount++;
+            }
+        }
+    }
+
+    private boolean isBall(Integer playerNumber) {
+        return numbers.contains(playerNumber);
+    }
+
+    private boolean isStrike(Integer index, Integer playerNumber) {
+        return Objects.equals(numbers.get(index), playerNumber);
     }
 }
