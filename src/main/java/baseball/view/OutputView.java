@@ -23,10 +23,13 @@ public class OutputView {
             System.out.print("낫싱");
         }
         System.out.println();
-        if (strike == Constant.NUMBER_LENGTH) {
-            System.out.println(Constant.FINISH_GAME);
-        }
     }
 
-
+    public boolean isEndGame() {
+        if (strike == Constant.NUMBER_LENGTH) {
+            System.out.println(Constant.FINISH_GAME);
+            return true;
+        }
+        return false;
+    }
 }

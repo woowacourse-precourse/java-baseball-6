@@ -12,18 +12,20 @@ public class BaseballGame {
     public void gameStart() {
         InputView.firstStart();
         do {
-            OneGameStart();
+            playOneGame();
         } while (isFinish());
     }
 
-    private static void OneGameStart() {
+    private static void playOneGame() {
         List<Integer> answerNumbers = generateRandomNumbers();
+
         while (true) {
             List<Integer> userNumbers = generateUserNumbers();
             CountStrikeAndBall countStrikeAndBall = new CountStrikeAndBall(answerNumbers, userNumbers);
             OutputView outputView = new OutputView(countStrikeAndBall);
             outputView.printBallAndStrike();
-            if (outputView.strike == Constant.NUMBER_LENGTH) {
+
+            if (outputView.isEndGame()) {
                 break;
             }
         }
