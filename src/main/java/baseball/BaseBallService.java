@@ -17,7 +17,7 @@ public class BaseBallService {
     comNums = new ComNums(createComNums());
     comNums.getComNums().stream().forEach(System.out::println);
     do{
-      result = baseBallPlay.play(comNums.getComNums());
+      result = baseBallPlay.play(comNums);
     }while( result != 3);
     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
   }

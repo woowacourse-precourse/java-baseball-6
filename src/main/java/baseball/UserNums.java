@@ -10,4 +10,10 @@ public class UserNums {
   public List<Integer> getUserNums(){
     return userNums;
   }
+  public boolean contains(int num){
+    return userNums.contains(num);
+  }
+  public int get(int i) {
+    return userNums.get(i);
+  }
 }

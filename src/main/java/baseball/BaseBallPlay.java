@@ -10,15 +10,15 @@ public class BaseBallPlay {
   private Strike strike;
   private Ball ball;
   private UserNums userNums ;
-  public int play(List<Integer> com){
+  public int play(ComNums comNums){
     System.out.println(ENTER_INPUT_MESSAGE);
     this.userNums = new UserNums(createUserNums());
     this.strike = new Strike(0);
     this.ball = new Ball(0);
-    for(int i = 0; i < com.size(); i++) {
-      if(userNums.getUserNums().contains(com.get(i)) && userNums.getUserNums().get(i) == com.get(i)){
+    for(int i = 0; i < comNums.size(); i++) {
+      if(userNums.contains(comNums.get(i)) && userNums.get(i) == comNums.get(i)){
         strike.increase();
-      } else if (userNums.getUserNums().contains(com.get(i)) && userNums.getUserNums().get(i) != com.get(i)) {
+      } else if (userNums.contains(comNums.get(i)) && userNums.get(i) != comNums.get(i)) {
         ball.increase();
       }
     }
