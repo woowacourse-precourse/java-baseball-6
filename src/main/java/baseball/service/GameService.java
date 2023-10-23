@@ -44,8 +44,7 @@ public class GameService {
     }
 
     private boolean isBall(BaseballNumbers computerNumbers, BaseballNumbers userNumbers, int index) {
-        int number = userNumbers.get(index);
-        return computerNumbers.contains(number) && !isStrike(computerNumbers, userNumbers, index);
+        return computerNumbers.contains(userNumbers.get(index)) && !isStrike(computerNumbers, userNumbers, index);
     }
 
     private boolean isStrike(BaseballNumbers computerNumbers, BaseballNumbers userNumbers, int index) {
