@@ -14,7 +14,7 @@
 
 - 입력 기능
     - [ ] 사용자의 입력을 받는 기능 (`amp.nextstep.edu.missionutils.Console`)
-        - [ ] 사용자가 유추하는 정답을 입력 받는 기능
+        - [x] 사용자가 유추하는 정답을 입력 받는 기능
         - [ ] 재시작할 지 종료할 지 결정하는 숫자를 입력 받는 기능
         - [ ] 입력 받은 String을 Integer 형으로 변환하는 기능
     - 잘못된 입력시 예외를 던지는 기능 (`IllegalArgumentException`)

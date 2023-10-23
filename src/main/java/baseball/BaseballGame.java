@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class BaseballGame {
@@ -27,5 +29,6 @@ public class BaseballGame {
 
     private void play() {
         System.out.println(PRINT_USER_INPUT);
+        String userAnswer = Console.readLine();
     }
 }
