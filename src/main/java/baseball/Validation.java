@@ -5,6 +5,19 @@ import java.util.List;
 
 public class Validation {
 
+    public boolean runException(String num, String option) {
+        boolean flag = true;
+        try {
+            if (!isValidate(num, option)) {
+                throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 게임을 종료합니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            flag = false;
+        }
+        return flag;
+    }
+
     public boolean isValidate(String num, String option) {
         boolean flag = true;
         // 게임 진행중 입력
@@ -19,17 +32,6 @@ public class Validation {
                 flag = false;
             }
         }
-        // 유효하지 않은 입력 값일 경우
-        try {
-            if (!flag) {
-                throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 게임을 종료합니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-            System.exit(1);
-
-        }
-
         return flag;
     }
 
