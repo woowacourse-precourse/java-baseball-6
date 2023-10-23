@@ -1,10 +1,10 @@
 package baseball.util;
 
+import baseball.constant.GameConstant;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class InputUtil {
 
@@ -39,7 +39,9 @@ public class InputUtil {
 
     //서로다른 3가지 숫자인지 체크
     private boolean isValidString(String input) {
-        return input.matches("^(?!.*(.).*\\1)[1-9]{3}$");
+        String regex = "^(?!.*(.).*\\1)[" + GameConstant.GAME_START_INCLUSIVE +
+                "-" + GameConstant.GAME_END_INCLUSIVE + "]{" + GameConstant.NUMBER_COUNT + "}$";
+        return input.matches(regex);
     }
 
     private boolean isValidReplayCommand(String replayCommand) {
