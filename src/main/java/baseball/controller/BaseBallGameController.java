@@ -6,7 +6,6 @@ import baseball.utils.Utils;
 import baseball.validator.InputValidate;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.List;
 
 public class BaseBallGameController {
@@ -35,24 +34,25 @@ public class BaseBallGameController {
 
     public void run() {
         outputView.printStartMessage();
-        boolean isRestart = false;
+        boolean shouldStartGame = true;
 
-        do {
+        while (shouldStartGame) {
             startGame();
+
             outputView.printFinishMessage();
             outputView.printRestartOrEndMessage();
+
             String userGameCommand = inputView.getUserGameCommand();
             inputValidate.validateGameCommand(userGameCommand);
             if (userGameCommand.equals(RESTART_COMMAND)) {
-                isRestart = true;
+                shouldStartGame = true;
+                continue;
             }
 
             if (userGameCommand.equals(END_COMMAND)) {
-                isRestart = false;
+                shouldStartGame = false;
             }
-
-        } while (isRestart);
-
+        }
     }
 
     private void startGame() {
@@ -73,10 +73,12 @@ public class BaseBallGameController {
         }
     }
 
+    // 새로운 랜덤 숫자 모음 생성
     private void updateRandomNumber() {
         computerRandomNumbers = new ComputerRandomNumbers();
     }
 
+    // 게임 진행시 사용자의 숫자 모음 입력을 검증
     private void validateInput(String userInput) {
         inputValidate.validateNumeric(userInput);
         inputValidate.validateLength(userInput);
