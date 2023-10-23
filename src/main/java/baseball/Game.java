@@ -56,7 +56,7 @@ public class Game {
 
     private int countSameNumber(int userIndex_i) {
         for(int computerIndex_j = 0; computerIndex_j < INPUT_LENGTH; computerIndex_j++) {
-            if(user.userInput[computerIndex_j] == computer.computerNumber[computerIndex_j]) {
+            if(user.userInput[userIndex_i] == computer.computerNumber[computerIndex_j]) {
                 return 1;
             }
         }
