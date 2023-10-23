@@ -9,16 +9,32 @@ public class NumberBaseballGame {
     private static final String INPUT_MSG = "숫자를 입력해주세요 :";
 
 
-    void PlayBall() {
+    void playBall() {
         System.out.printf(GAME_START_MSG);
         boolean isGaming = true;
         while (isGaming) {
             Umpire umpire = new Umpire();
-            isGaming = StartInning(umpire);
+            isGaming = startInning(umpire);
         }
     }
 
-    private static boolean ChoicePlayGameToUser() {
+    private static boolean startInning(Umpire umpire) {
+
+        while (!Umpire.isCorrect()) {
+            List<Integer> pitchBall;
+            String input;
+
+            System.out.println(INPUT_MSG);
+            input = camp.nextstep.edu.missionutils.Console.readLine();
+            pitchBall = choicePitchBall(input);
+            umpire.pitch(pitchBall);
+
+        }
+        System.out.printf(GAME_OVER_MSG);
+        return choicePlayGameToUser();
+    }
+
+    private static boolean choicePlayGameToUser() {
         String userChoice = camp.nextstep.edu.missionutils.Console.readLine();
 
         if (userChoice.equals("1")) {
@@ -30,23 +46,7 @@ public class NumberBaseballGame {
         throw new IllegalArgumentException("잘못된 입력 입니다.");
     }
 
-    private static boolean StartInning(Umpire umpire) {
-
-        while (!Umpire.IsCorrect()) {
-            List<Integer> pitchBall;
-            String input;
-
-            System.out.println(INPUT_MSG);
-            input = camp.nextstep.edu.missionutils.Console.readLine();
-            pitchBall = ChoicePitchBall(input);
-            umpire.Pitch(pitchBall);
-
-        }
-        System.out.printf(GAME_OVER_MSG);
-        return ChoicePlayGameToUser();
-    }
-
-    private static List<Integer> ChoicePitchBall(String input) {
+    private static List<Integer> choicePitchBall(String input) {
         //입력값 컨버젼
         List<Integer> guess = new ArrayList<>();
 

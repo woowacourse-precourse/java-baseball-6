@@ -10,15 +10,15 @@ public class Umpire {
     private static boolean isCorrect;
 
     Umpire() {
-        this.strikeZone = MakeStrikeZone();
+        this.strikeZone = makeStrikeZone();
         isCorrect = false;
     }
 
-    public static boolean IsCorrect() {
+    public static boolean isCorrect() {
         return isCorrect;
     }
 
-    private static List<Integer> MakeStrikeZone() {
+    private static List<Integer> makeStrikeZone() {
         List<Integer> strikeZone = new ArrayList<>();
 
         while (strikeZone.size() < 3) {
@@ -30,25 +30,26 @@ public class Umpire {
         return strikeZone;
     }
 
-    public void Pitch(List<Integer> guess) {
+    public void pitch(List<Integer> guess) {
         HashMap<String, Integer> result = new HashMap<>();
         result.put("스트라이크", 0);
         result.put("볼", 0);
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == j && strikeZone.get(i).equals(guess.get(j))) {
+        for (int guessIdx = 0; guessIdx < 3; guessIdx++) {
+            int containIndex = strikeZone.indexOf(guess.get(guessIdx));
+            if (containIndex != -1) {
+                if (containIndex == guessIdx) {
                     result.put("스트라이크", result.get("스트라이크") + 1);
                 }
-                if (i != j && strikeZone.get(i).equals(guess.get(j))) {
+                if (containIndex == guessIdx) {
                     result.put("볼", result.get("볼") + 1);
                 }
             }
         }
-        PitchCall(result);
+        pitchCall(result);
     }
 
-    private void PitchCall(HashMap<String, Integer> pitchResult) {
+    private void pitchCall(HashMap<String, Integer> pitchResult) {
         //결과 출력
         String resultMsg;
         String resultBallCount = "";
