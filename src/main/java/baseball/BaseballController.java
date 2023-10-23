@@ -22,10 +22,7 @@ public class BaseballController {
 
             String randomNum = baseballView.inputRandomNum();
 
-            // 플레이어가 입력한 수가 3자리 수가 아닌 경우 예외처리
-            if (randomNum.length()!=3) {
-                throw new IllegalArgumentException();
-            }
+            baseballException.isLengthValid(randomNum);
 
             // 플레이어가 입력한 수에 중복되는 수가 존재할 경우 예외처리
             if (baseballException.isDuplicationExist(randomNum)){

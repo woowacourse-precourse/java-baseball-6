@@ -29,4 +29,11 @@ public class BaseballException {
         }
     }
 
+    public void isLengthValid(String randomNum){
+        // 플레이어가 입력한 수가 3자리 수가 아닌 경우 예외처리
+        if (randomNum.length()!=3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
