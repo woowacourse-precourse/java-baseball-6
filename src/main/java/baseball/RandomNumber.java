@@ -12,11 +12,11 @@ public class RandomNumber {
     }
 
     public List<Integer> getRandomNumbers(){
-        List<Integer> computer = new ArrayList<>();
+        List<Integer> randomNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            computer.add(Randoms.pickNumberInRange(1, 9));
+            randomNumberList.add(Randoms.pickNumberInRange(1, 9));
         }
-        validation.isNumberDuplicate(computer);
-        return computer;
+        validation.isNumberDuplicate(randomNumberList);
+        return randomNumberList;
     }
 }
