@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 class ExceptionHandlerTest {
 
-    // 게임 시작 입력 테스트
     @Test
     @DisplayName("유효한 입력 테스트")
     public void testHandleStartValid() {
