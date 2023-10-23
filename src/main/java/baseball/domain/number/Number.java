@@ -1,6 +1,8 @@
 package baseball.domain.number;
 
 public class Number {
+    private final static int MIN_NUMBER = 1;
+    private final static int MAX_NUMBER = 9;
     private int firstNumber;
 
     private int secondNumber;
@@ -32,7 +34,7 @@ public class Number {
         return new Number(firstNumber, secondNumber, thirdNumber);
     }
     private static void checkNumberRange(int number) {
-        if (number < 0 || number > 9) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException("1~9 사이의 값만 입력하여야 합니다.");
         }
     }
