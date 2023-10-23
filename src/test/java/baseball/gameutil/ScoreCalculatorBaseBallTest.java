@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 
 public class ScoreCalculatorBaseBallTest {
 
+
+
+
     @Test
     public void 낫_씽(){
         //given

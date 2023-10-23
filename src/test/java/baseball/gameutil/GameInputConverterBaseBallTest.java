@@ -5,12 +5,10 @@ import baseball.gameutil.converter.GameInputConverterBaseball;
 import baseball.io.Input;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class GameInputConverterBaseBallTest {
 
-    @Disabled
     @Test
     void 변환_테스트(){
         //given

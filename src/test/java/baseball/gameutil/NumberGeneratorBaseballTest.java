@@ -11,9 +11,9 @@ public class NumberGeneratorBaseballTest {
     @Test
     void 랜덤_숫자_생성() {
         //given
-        Integer start = 1;
-        Integer end = 5;
-        Integer count = 3;
+        int start = 1;
+        int end = 5;
+        int count = 3;
         NumberGenerator numberGenerator = new NumberGeneratorBaseball();
         //when
         List<Integer> test = numberGenerator.generate(
