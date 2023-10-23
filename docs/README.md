@@ -34,9 +34,9 @@
 - [x] 사용자로부터 숫자를 입력 받는 함수(readInputNumbers)를 구현
     - [x] camp.nextstep.edu.missionutils.Console 클래스를 사용
     - [x] 입력한 문자열을 반환
-- [ ] PlayerController에서 입력값 유효성 검사 함수 구현
+- [x] PlayerController에서 입력값 유효성 검사 함수 구현
     - [x] 입력에 숫자 (1 ~ 9)가 아닌 다른 문자가 포함된 경우
-    - [ ] 입력의 길이가 3이 아닌 경우
+    - [x] 입력의 길이가 3이 아닌 경우
     - [x] 같은 수를 중복해서 입력한 경우
     - [x] 3자리의 수가 담긴 List<Integer>를 반환
 
