@@ -48,7 +48,6 @@
 
 - ✅ getInputNumberMessage 메서드 구현
     - 플레이어에게 숫자를 입력 받고 리턴
-    -
 
 ## ✅ 재시작 여부 입력 메시지 출력 및 입력 기능
 
@@ -61,6 +60,22 @@
 
 - ❌ getPlayerInputNumber 메서드 구현
     - 서로 다른 3자리의 수를 입력 받아 숫자 리스트 생성
+
+## ❌ 입력한 수 검증
+
+- ❌ validateUserInput 메서드 구현
+    - String형식의 숫자를 받아와 잘못된 값을 입력할 경우 IllegalArgumentException 발생후 종료
+- ❌ validateInputIsNumber 메서드 구현
+    - 입력한 값들이 다 숫자인지 검증
+- ❌ validateInputLength 메서드 구현
+    - 입력한 값들의 숫자 자릿수가 3인지 검증
+- ❌ validateUserInput 메서드 구현
+    - 자릿수 마다 다른 숫자로 이루어졌는지 검증
+
+## ❌ 입력한 값 리스트 변환
+
+- ❌ convertStringToList 메서드 구현
+    - String 형식을 List로 변환
 
 ## ❌ 게임 시작 기능
 
