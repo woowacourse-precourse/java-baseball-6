@@ -6,22 +6,23 @@ import java.util.Hashtable;
 
 public class RandomNumber {
     private Hashtable<Integer, Integer> RandomNumberTable;
-    public RandomNumber(){
 
-    }
+    public RandomNumber(){}
+
     public void generateRandomNumber(){
         RandomNumberTable = new Hashtable<>();
         int sequenceNumber = 0;
 
         while (sequenceNumber != GameSettings.NUM_DIGITS){
             int randomDigit = pickNumberInRange(GameSettings.MIN_RANDOM_NUMBER, GameSettings.MAX_RANDOM_NUMBER);
+
             if (!RandomNumberTable.containsKey(randomDigit)){
                 RandomNumberTable.put(randomDigit, sequenceNumber);
                 sequenceNumber++;
-                System.out.print(randomDigit);
+//                System.out.print(randomDigit);
             }
         }
-        System.out.println();
+//        System.out.println();
     }
 
     public PitchingResult checkPitchingResult(int pitchingNumber, int pitchingSequenceNumber){
@@ -35,11 +36,10 @@ public class RandomNumber {
     }
 
     private boolean isBall(int pitchingNumber){
-
         return RandomNumberTable.containsKey(pitchingNumber);
     }
-    private boolean isStrike(int pitchingNumber, int pitchingSequenceNumber){
 
+    private boolean isStrike(int pitchingNumber, int pitchingSequenceNumber){
         return RandomNumberTable.get(pitchingNumber) == pitchingSequenceNumber;
     }
 }

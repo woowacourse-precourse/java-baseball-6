@@ -5,11 +5,12 @@ import java.util.Iterator;
 public class BaseballModel {
     private RandomNumber randomNumber;
     private AttemptResult attemptResult;
+
     public BaseballModel(){
         this.randomNumber = new RandomNumber();
-        this.randomNumber.generateRandomNumber();
-
         this.attemptResult = new AttemptResult();
+
+        this.randomNumber.generateRandomNumber();
     }
 
     public void restart(){
@@ -18,14 +19,19 @@ public class BaseballModel {
 
     public AttemptResult getAttemptResult(Iterator<Integer> playerGuessIterator) {
         attemptResult.reset();
-        int pitchingSequence = 0;
+        int guessNumberSequence = 0;
+
         while (playerGuessIterator.hasNext()){
-            PitchingResult pitchingResult = randomNumber.checkPitchingResult(playerGuessIterator.next(), pitchingSequence++);
+            int playerGuessNumber = playerGuessIterator.next();
+            PitchingResult pitchingResult = randomNumber.checkPitchingResult(playerGuessNumber, guessNumberSequence);
+            guessNumberSequence++;
+
             if (pitchingResult == PitchingResult.STRIKE){
-                attemptResult.addStrikeCount();
+                attemptResult.incrementStrikeCount();
             }
+
             if (pitchingResult == PitchingResult.BALL){
-                attemptResult.addBallCount();
+                attemptResult.incrementBallCount();
             }
         }
         return attemptResult;

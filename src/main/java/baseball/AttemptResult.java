@@ -1,8 +1,8 @@
 package baseball;
 
 public class AttemptResult {
-    int strikeCount;
-    int ballCount;
+    private int strikeCount;
+    private int ballCount;
 
     public AttemptResult(){
         this.reset();
@@ -14,17 +14,17 @@ public class AttemptResult {
     }
 
 
-    int getStrikeCount(){
+    public int getStrikeCount(){
         return this.strikeCount;
     }
 
-    int getBallCount(){
+    public int getBallCount(){
         return this.ballCount;
     }
-    public void addStrikeCount(){
+    public void incrementStrikeCount(){
         this.strikeCount++;
     }
-    public void addBallCount(){
+    public void incrementBallCount(){
         this.ballCount++;
     }
 

@@ -1,11 +1,13 @@
 package baseball;
 
 import java.util.Iterator;
+
 public class BaseballController {
     private BaseballView view;
     private BaseballModel model;
     private PlayerInputHandler<Iterator<Integer>> playerGuessHandler;
     private PlayerInputHandler<RoundEndAction> roundEndActionHandler;
+
     public BaseballController(BaseballView view, BaseballModel model){
         this.view = view;
         this.model = model;
@@ -16,27 +18,23 @@ public class BaseballController {
     public void play(){
         view.displayStartMessage();
 
-
         while(true){
             String playerGuess = view.getPlayerGuess();
             playerGuessHandler.handle(playerGuess);
             Iterator<Integer> guessNumberListIterator = playerGuessHandler.getHandledResult();
-
             AttemptResult attemptResult = model.getAttemptResult(guessNumberListIterator);
-
             view.displayAttemptResult(attemptResult.toString());
 
             if (isThreeStrike(attemptResult)){
                 view.displayRoundEndMessage();
-                String stringRoundEndAction = view.getRoundEndAction();
 
+                String stringRoundEndAction = view.getRoundEndAction();
                 roundEndActionHandler.handle(stringRoundEndAction);
                 RoundEndAction roundEndAction = roundEndActionHandler.getHandledResult();
 
                 if (roundEndAction == RoundEndAction.QUIT){
                     break;
-                }
-                else if (roundEndAction == RoundEndAction.CONTINUE){
+                } else if (roundEndAction == RoundEndAction.CONTINUE){
                     model.restart();
                 }
             }

@@ -5,9 +5,9 @@ import java.util.Iterator;
 
 public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>> {
     private ArrayList<Integer> playerGuessNumberList;
-    public PlayerGuessHandler(){
 
-    }
+    public PlayerGuessHandler(){}
+
     public void handle(String playerGuessNumbers){
         playerGuessNumberList = new ArrayList<>();
 
@@ -20,6 +20,7 @@ public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>>
 
             int playerGuessNumber = characterNumber - '0';
             isInList(playerGuessNumber);
+
             playerGuessNumberList.add(playerGuessNumber);
         }
     }
@@ -29,13 +30,14 @@ public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>>
             throw new IllegalArgumentException();
         }
     }
+
     private void isInList(int playerGuessNumber){
         if (playerGuessNumberList.contains(playerGuessNumber)){
             throw new IllegalArgumentException();
         }
     }
-    private void isCharNumberInRange(char charNumber){
 
+    private void isCharNumberInRange(char charNumber){
         if (charNumber < GameSettings.MIN_INPUT_CHARACTER || charNumber > GameSettings.MAX_INPUT_CHARACTER){
             throw new IllegalArgumentException();
         }
