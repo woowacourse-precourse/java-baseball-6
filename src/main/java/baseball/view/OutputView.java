@@ -24,18 +24,31 @@ public class OutputView {
 
     public void printResult(GameResult gameResult) {
         StringBuilder result = new StringBuilder();
-        if (gameResult.hasBall()) {
-            result.append(gameResult.getBallCount());
-            result.append(BALL_MESSAGE);
-        }
-        if (gameResult.hasStrike()) {
-            result.append(gameResult.getStrikeCount());
-            result.append(STRIKE_MESSAGE);
-        }
-        if (gameResult.isNothing()) {
-            result.append(NOTHING_MESSAGE);
-        }
+        result.append(getBallMessage(gameResult));
+        result.append(getStrikeMessage(gameResult));
+        result.append(getNothingMessage(gameResult));
         System.out.println(result);
+    }
+
+    private String getBallMessage(GameResult gameResult) {
+        if (gameResult.hasBall()) {
+            return gameResult.getBallCount() + BALL_MESSAGE;
+        }
+        return "";
+    }
+
+    private String getStrikeMessage(GameResult gameResult) {
+        if (gameResult.hasStrike()) {
+            return gameResult.getStrikeCount() + STRIKE_MESSAGE;
+        }
+        return "";
+    }
+
+    private String getNothingMessage(GameResult gameResult) {
+        if (gameResult.isNothing()) {
+            return NOTHING_MESSAGE;
+        }
+        return "";
     }
 
     public void printGameOver() {

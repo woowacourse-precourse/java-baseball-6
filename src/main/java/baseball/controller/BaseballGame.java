@@ -14,10 +14,6 @@ public class BaseballGame {
         this.gameStatus = gameStatus;
     }
 
-    public static BaseballGame from(Balls answerBalls) {
-        return new BaseballGame(answerBalls, GameStatus.PLAYING);
-    }
-
     public boolean isPlaying() {
         return GameStatus.isPlaying(gameStatus);
     }
@@ -30,5 +26,9 @@ public class BaseballGame {
         if (gameResult.isThreeStrike()) {
             gameStatus = GameStatus.WIN;
         }
+    }
+
+    public static BaseballGame from(Balls answerBalls) {
+        return new BaseballGame(answerBalls, GameStatus.PLAYING);
     }
 }
