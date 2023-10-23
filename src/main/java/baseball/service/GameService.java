@@ -38,19 +38,44 @@ public class GameService {
     }
 
     private Map<String, Integer> getBallAndStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
+        Map<String, Integer> ballAndStrikeCount = ballAndStrikeCountInitialization();
+        ballAndStrikeCount(computerNumber, userNumber, ballAndStrikeCount);
+        return ballAndStrikeCount;
+    }
+
+    private Map<String, Integer> ballAndStrikeCountInitialization() {
         Map<String, Integer> ballAndStrikeCount = new HashMap<>();
         ballAndStrikeCount.put("ballCount", BALL_COUNT_INITIAL_VALUE);
         ballAndStrikeCount.put("strikeCount", STRIKE_COUNT_INITIAL_VALUE);
+        return ballAndStrikeCount;
+    }
+
+    private void ballAndStrikeCount(List<Integer> computerNumber, List<Integer> userNumber,
+                                    Map<String, Integer> ballAndStrikeCount) {
         for (int i = 0; i < userNumber.size(); i++) {
-            if (computerNumber.contains(userNumber.get(i)) && computerNumber.get(i) != userNumber.get(i)) {
-                ballAndStrikeCount.put("ballCount", ballAndStrikeCount.get("ballCount") + BALL_COUNT_INCREASE_VALUE);
+            if (isBall(computerNumber, userNumber, i)) {
+                increaseBallCount(ballAndStrikeCount);
             }
-            if (computerNumber.get(i) == userNumber.get(i)) {
-                ballAndStrikeCount.put("strikeCount",
-                        ballAndStrikeCount.get("strikeCount") + STRIKE_COUNT_INCREASE_VALUE);
+            if (isStrike(computerNumber, userNumber, i)) {
+                increaseStrikeCount(ballAndStrikeCount);
             }
         }
-        return ballAndStrikeCount;
+    }
+
+    private boolean isBall(List<Integer> computerNumber, List<Integer> userNumber, int index) {
+        return (computerNumber.contains(userNumber.get(index))) && (computerNumber.get(index) != userNumber.get(index));
+    }
+
+    private void increaseBallCount(Map<String, Integer> ballAndStrikeCount) {
+        ballAndStrikeCount.put("ballCount", ballAndStrikeCount.get("ballCount") + BALL_COUNT_INCREASE_VALUE);
+    }
+
+    private boolean isStrike(List<Integer> computerNumber, List<Integer> userNumber, int index) {
+        return computerNumber.get(index) == userNumber.get(index);
+    }
+
+    private void increaseStrikeCount(Map<String, Integer> ballAndStrikeCount) {
+        ballAndStrikeCount.put("strikeCount", ballAndStrikeCount.get("strikeCount") + STRIKE_COUNT_INCREASE_VALUE);
     }
 
     private String getResultMessage(Map<String, Integer> ballAndStrikeCount) {
