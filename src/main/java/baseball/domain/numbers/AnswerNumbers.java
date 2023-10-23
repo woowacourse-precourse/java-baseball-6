@@ -7,12 +7,12 @@ public final class AnswerNumbers {
 
     private final List<Integer> answerNumbers;
 
-    List<Integer> getAnswerNumbers() {
-        return answerNumbers;
-    }
-
     private AnswerNumbers(List<Integer> answerNumbers) {
         this.answerNumbers = answerNumbers;
+    }
+
+    List<Integer> getAnswerNumbers() {
+        return answerNumbers;
     }
 
     public static AnswerNumbers createAnswerNumbers(NumberGenerator numberGenerator) {
