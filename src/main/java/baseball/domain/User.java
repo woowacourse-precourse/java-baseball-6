@@ -14,13 +14,13 @@ public class User {
         userNumber = new ArrayList<>();
     }
 
-    public List<Integer> enterNum() {
+    public List<Integer> enterNumber() {
         String input = Console.readLine();
         validLength(input);
         validType(input);
         validRange(input);
         validDuplication(input);
-        insertNum(input);
+        insertNumber(input);
         return userNumber;
     }
 
@@ -66,7 +66,7 @@ public class User {
         return answer;
     }
 
-    private void insertNum(String input) {
+    private void insertNumber(String input) {
         for (int i = 0; i < input.length(); i++) {
             int num = Integer.valueOf(input.charAt(i) - '0');
             userNumber.add(num);

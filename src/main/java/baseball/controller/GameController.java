@@ -11,10 +11,10 @@ public class GameController {
     private UserService userService;
     private JudgeService judgeService;
 
-    public GameController(ComputerService computerService, UserService userService ,JudgeService judgeService) {
+    public GameController(ComputerService computerService, UserService userService, JudgeService judgeService) {
         this.computerService = computerService;
         this.userService = userService;
-        this. judgeService = judgeService;
+        this.judgeService = judgeService;
     }
 
     public void playGame() {
@@ -37,7 +37,7 @@ public class GameController {
         userService.resetInput();
     }
 
-    public boolean check() {
+    public boolean checkRestartOrQuit() {
         String s = Console.readLine();
         switch (s) {
             case "1":
