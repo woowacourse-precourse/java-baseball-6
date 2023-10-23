@@ -7,11 +7,13 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
     public static StringNumbers getUserBaseballNumbersString() {
         OutputView.printEnterNumber();
-        return new StringNumbers(Console.readLine());
+        String input = Console.readLine();
+        return new StringNumbers(input.trim());
     }
 
     public static GameRestartOrNot getGameRestartOrNot() {
         OutputView.printAnswer();
-        return new GameRestartOrNot(Console.readLine());
+        String input = Console.readLine();
+        return new GameRestartOrNot(input.trim());
     }
 }
