@@ -12,10 +12,6 @@ import static baseball.Baseballs.BASEBALLS_SIZE;
 public class Computer {
     private Baseballs baseballs;
 
-    public Computer(Baseballs baseballs) {
-        this.baseballs = createBaseballs();
-    }
-
     public Baseballs createBaseballs() {
         try {
             List<Baseball> baseballs = new ArrayList<>();

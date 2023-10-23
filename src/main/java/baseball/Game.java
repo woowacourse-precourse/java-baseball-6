@@ -11,7 +11,7 @@ public class Game {
     private GameStatus gameStatus;
 
     public Game() {
-        this.computer = new Computer(null);
+        this.computer = new Computer();
         this.gameScreen = new GameScreen();
         this.gameStatus = IN_PROGRESS;
     }
