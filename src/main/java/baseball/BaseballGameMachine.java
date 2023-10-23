@@ -10,7 +10,7 @@ public class BaseballGameMachine {
     private InputValidation inputValidation = new InputValidation();
     private Referee referee = new Referee();
 
-    public String userInput() {
+    public String playerInput() {
         return Console.readLine();
     }
 
@@ -24,7 +24,7 @@ public class BaseballGameMachine {
             display(message.start() + '\n');
             gameProcess();
             display(message.requestRetryOrEnd() + '\n');
-            gameEnd = newGameOrEnd(userInput());
+            gameEnd = isGameEnd(playerInput());
         }
         display(message.gameEnd() + '\n');
     }
@@ -36,8 +36,10 @@ public class BaseballGameMachine {
         while (!success) {
             display(message.requestInput());
 
-            List<Integer> userInput = inputValidation.validateUserInput(userInput());
-            List<Integer> gameResult = referee.judgeUserInput(userInput);
+            String playerInput = playerInput();
+            inputValidation.validatePlayerInput(playerInput);
+            List<Integer> userAnswer = inputValidation.convertUserInput(playerInput);
+            List<Integer> gameResult = referee.judgeUserInput(userAnswer);
 
             display(message.result(gameResult) + '\n');
             success = isSuccess(gameResult);
@@ -53,8 +55,8 @@ public class BaseballGameMachine {
         return false;
     }
 
-    public boolean newGameOrEnd(String input) {
-        int userInput = inputValidation.validateNewGameRequest(input);
+    public boolean isGameEnd(String playerInput) {
+        final int userInput = inputValidation.validateGameEndRequestInput(playerInput);
         if (userInput == 2) {
             return true;
         }

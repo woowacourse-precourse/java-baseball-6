@@ -3,11 +3,9 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputValidationTest {
 
@@ -19,7 +17,7 @@ class InputValidationTest {
         //when
         final String containSpaceUserInput = "12 4";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputString(containSpaceUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputValue(containSpaceUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("공백 없이 오직 숫자만 입력해주시기 바랍니다.");
     }
@@ -32,7 +30,7 @@ class InputValidationTest {
         //when
         final String containCommaUserInput = "2,87";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputString(containCommaUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputValue(containCommaUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("콤마 없이 오직 숫자만 입력해주시기 바랍니다.");
     }
@@ -45,7 +43,7 @@ class InputValidationTest {
         //when
         final String overLengthUserInput = "1792";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputString(overLengthUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputValue(overLengthUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
@@ -58,7 +56,7 @@ class InputValidationTest {
         //when
         final String lessLengthUserInput = "79";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputString(lessLengthUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputValue(lessLengthUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
@@ -71,7 +69,7 @@ class InputValidationTest {
         //when
         final String duplicatedNumber = "119";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputNumber(duplicatedNumber))
+        assertThatThrownBy(() -> inputValidation.validateThreeEachNumber(duplicatedNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 중복하지 않고 입력해주시기 바랍니다.");
     }
@@ -85,10 +83,10 @@ class InputValidationTest {
         final String alphabetCharacterInput = "1c9";
         final String koreanCharacterInput = "2ㅍ1";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputNumber(alphabetCharacterInput))
+        assertThatThrownBy(() -> inputValidation.validateThreeEachNumber(alphabetCharacterInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만을 입력해주시기 바랍니다.");
-        assertThatThrownBy(() -> inputValidation.validateInputNumber(koreanCharacterInput))
+        assertThatThrownBy(() -> inputValidation.validateThreeEachNumber(koreanCharacterInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만을 입력해주시기 바랍니다.");
     }
@@ -101,7 +99,7 @@ class InputValidationTest {
         //when
         final String zeroNumber = "140";
         //then
-        assertThatThrownBy(() -> inputValidation.validateInputNumber(zeroNumber))
+        assertThatThrownBy(() -> inputValidation.validateThreeEachNumber(zeroNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
     }
@@ -115,7 +113,8 @@ class InputValidationTest {
         final String userInput = "437";
         final List<Integer> parsedUserInput = List.of(4, 3, 7);
         //then
-        assertThat(inputValidation.validateUserInput(userInput)).isEqualTo(parsedUserInput);
+        inputValidation.validatePlayerInput(userInput);
+        assertThat(inputValidation.convertUserInput(userInput)).isEqualTo(parsedUserInput);
     }
 
     @DisplayName("유효한 input 값 정수 리스트로 변환하는 테스트")
@@ -126,12 +125,18 @@ class InputValidationTest {
         //when
         final String userInput = "437";
         //then
-        assertThat(inputValidation.userInputToList(userInput)).isEqualTo(List.of(4, 3, 7));
+        assertThat(inputValidation.convertUserInput(userInput)).isEqualTo(List.of(4, 3, 7));
     }
 
-    @DisplayName("게임 성공시 유저가 게임을 진행할지, 종료할지에 대한 요구 input의 유효성을 판단하는 테스트")
+//    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 input에 영어가 포함되었을 때의 테스트")
+//    @Test
+//    void containAlphaCharacterInUserInputTest() {
+//        //given
+//        InputValidation inputValidation = new InputValidation();
+//    }
+//
     @Test
-    void validateNewGameOrEndUserInputTest() {
+    void validateGameEndRequestInputTest() {
         //given
         InputValidation inputValidation = new InputValidation();
         //when
@@ -142,18 +147,18 @@ class InputValidationTest {
         final String fifthUserInput = "ㅁ";
         final String lastUserInput = "123";
         //then
-        assertThat(inputValidation.validateNewGameRequest(firstUserInput)).isEqualTo(1);
-        assertThat(inputValidation.validateNewGameRequest(secondUserInput)).isEqualTo(2);
-        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(thirdUserInput))
+        assertThat(inputValidation.validateGameEndRequestInput(firstUserInput)).isEqualTo(1);
+        assertThat(inputValidation.validateGameEndRequestInput(secondUserInput)).isEqualTo(2);
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(thirdUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 혹은 2를 입력해주세요.");
-        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(forthUserInput))
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(forthUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력해주세요");
-        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(fifthUserInput))
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(fifthUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력해주세요");
-        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(lastUserInput))
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(lastUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("한자리 숫자 입력해주세요.");
     }

@@ -21,7 +21,7 @@ class BaseballGameMachineTest {
 
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        String input = baseballGameMachine.userInput();
+        String input = baseballGameMachine.playerInput();
         //then
         assertThat(inputLine).isEqualTo(input);
     }
@@ -67,7 +67,7 @@ class BaseballGameMachineTest {
         //when
         final String userInput = "1";
         //then
-        assertThat(baseballGameMachine.newGameOrEnd(userInput)).isEqualTo(false);
+        assertThat(baseballGameMachine.isGameEnd(userInput)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 2일 때, 새 게임의 여부를 판단하는 테스트")
@@ -78,6 +78,6 @@ class BaseballGameMachineTest {
         //when
         final String userInput = "2";
         //then
-        assertThat(baseballGameMachine.newGameOrEnd(userInput)).isEqualTo(true);
+        assertThat(baseballGameMachine.isGameEnd(userInput)).isEqualTo(true);
     }
 }
