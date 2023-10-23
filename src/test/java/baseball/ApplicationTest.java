@@ -252,6 +252,46 @@ class ApplicationTest extends NsTest {
         assertThat(result8).isEqualTo(3);
     }
 
+    @DisplayName("볼 개수 세는 테스트")
+    @Test
+    void countBallTest() {
+        // given
+        final int size = 3;
+        final List<Integer> computer = Arrays.asList(1, 3, 5);
+
+        final List<Integer> user1 = Arrays.asList(2, 4, 8); // 0 ball
+
+        final List<Integer> user2 = Arrays.asList(9, 8, 1); // 1 ball
+        final List<Integer> user3 = Arrays.asList(9, 1, 8); // 1 ball
+        final List<Integer> user4 = Arrays.asList(7, 5, 8); // 1 ball
+
+        final List<Integer> user5 = Arrays.asList(3, 5, 9); // 2 ball
+        final List<Integer> user6 = Arrays.asList(9, 1, 3); // 2 ball
+        final List<Integer> user7 = Arrays.asList(5, 9, 1); // 2 ball
+
+        final List<Integer> user8 = Arrays.asList(3, 5, 1); // 3 ball
+
+        // when
+        final int result1 = Player.countBall(computer, user1, 3);
+        final int result2 = Player.countBall(computer, user2, 3);
+        final int result3 = Player.countBall(computer, user3, 3);
+        final int result4 = Player.countBall(computer, user4, 3);
+        final int result5 = Player.countBall(computer, user5, 3);
+        final int result6 = Player.countBall(computer, user6, 3);
+        final int result7 = Player.countBall(computer, user7, 3);
+        final int result8 = Player.countBall(computer, user8, 3);
+
+        // then
+        assertThat(result1).isEqualTo(0);
+        assertThat(result2).isEqualTo(1);
+        assertThat(result3).isEqualTo(1);
+        assertThat(result4).isEqualTo(1);
+        assertThat(result5).isEqualTo(2);
+        assertThat(result6).isEqualTo(2);
+        assertThat(result7).isEqualTo(2);
+        assertThat(result8).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
