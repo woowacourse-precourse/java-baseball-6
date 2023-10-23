@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +44,9 @@ public class Application {
 
     private static void printResult(int strike, int ball) {
         if (strike == 3) {
+            System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else if (ball > 0 && strike > 0) {
+        } else if ((ball > 0) && (strike > 0) && (strike < 3)) {
             System.out.println(ball + "볼" + " " + strike + "스트라이크");
         } else if (ball > 0) {
             System.out.println(ball + "볼");
