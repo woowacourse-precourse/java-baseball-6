@@ -3,8 +3,6 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 
-
-
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -16,30 +14,25 @@ public class Application {
             String userInput = Console.readLine();
             CheckException checkException = new CheckException();
 
-            try {
-                if (checkException.error(userInput)) throw new IllegalArgumentException();
-            } catch (IllegalArgumentException e) {
-                break;
-            }
+
+            if (checkException.error(userInput)) throw new IllegalArgumentException();
+
 
             Output output = new Output();
-            output.setScore(computerNumber,userInput);
+            output.setScore(computerNumber, userInput);
             output.printOutput();
 
             if (output.userWin()) {
-               output.printGameEnd();
+                output.printGameEnd();
                 String continueOrEnd = Console.readLine();
 
                 InputContinueOrEnd inputContinueOrEnd = new InputContinueOrEnd();
 
-                try {
-                    if (inputContinueOrEnd.error(continueOrEnd)) throw new IllegalArgumentException();
-                } catch (IllegalArgumentException e) {
-                    break;
-                }
+                if (inputContinueOrEnd.error(continueOrEnd)) throw new IllegalArgumentException();
 
-               if(inputContinueOrEnd.quit(continueOrEnd))break;
-               computerNumber=new Init().getComputerNumber();
+
+                if (inputContinueOrEnd.quit(continueOrEnd)) break;
+                computerNumber = new Init().getComputerNumber();
             }
         }
 
