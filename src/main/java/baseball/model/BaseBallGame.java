@@ -28,6 +28,11 @@ public class BaseBallGame {
         return new BallCount(strike.get(), ball.get());
     }
 
+    public BallCount play(String inputAnswer) {
+        BaseBallNumber inputBaseBallNumber = BaseBallNumber.parse(inputAnswer);
+
+        return calculateStrikeAndBall(inputBaseBallNumber);
+    }
 
     public boolean isCorrectedAnswer(int digit, BallCount ballCount) {
         return ballCount.getStrike() == digit && ballCount.getBall() == 0;
