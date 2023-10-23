@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import baseball.constants.GameStatus;
 import baseball.dto.BaseballDto;
+import baseball.dto.ReplayDto;
 import baseball.model.Baseball;
 import baseball.model.BaseballGameResult;
 import baseball.service.BaseballService;
@@ -17,12 +19,16 @@ public class BaseballController {
     }
 
     public void run() {
-        boolean start = true;
-        while (start) {
-            Baseball answer = baseballService.createAnswerBaseball();
+        boolean play = true;
+        while (play) {
+            Baseball answer = createAnswer();
             playGame(answer);
-            start = isRestart();
+            play = willReplay();
         }
+    }
+
+    private Baseball createAnswer() {
+        return baseballService.createAnswerBaseball();
     }
 
     private void playGame(Baseball answer) {
@@ -31,8 +37,8 @@ public class BaseballController {
         while (!isClear) {
             baseballView.startGame();
 
-            String number = baseballView.inputNumber();
-            BaseballDto baseballDto = new BaseballDto(number);
+            String numberInput = baseballView.inputNumber();
+            BaseballDto baseballDto = new BaseballDto(numberInput);
             Baseball guess = baseballDto.toBaseball();
 
             BaseballGameResult result = baseballService.calculateResult(answer, guess);
@@ -43,8 +49,11 @@ public class BaseballController {
         baseballView.clearGame();
     }
 
-    private boolean isRestart() {
-        //TODO Auto-generated
-        return false;
+    private boolean willReplay() {
+        String replayInput = baseballView.replayGame();
+        ReplayDto replayDto = new ReplayDto(replayInput);
+
+        return replayDto.replay()
+                .equals(GameStatus.REPLAY.getCode());
     }
 }

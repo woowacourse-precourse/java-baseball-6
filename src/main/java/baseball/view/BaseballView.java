@@ -30,4 +30,9 @@ public class BaseballView {
     public void clearGame() {
         writer.writeLine(Message.GAME_CLEAR.getValue());
     }
+
+    public String replayGame() {
+        writer.write(Message.INPUT_REPLAY.getValue());
+        return reader.readLine();
+    }
 }
