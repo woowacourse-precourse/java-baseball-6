@@ -8,8 +8,8 @@ public class Player {
 
     public void setPlayerNumbers(String number) {
         this.playerNumbers = Arrays.stream(number.split(""))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .toList();
+                    .mapToInt(Integer::parseInt)
+                    .boxed()
+                    .toList();
     }
 }

@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,9 +30,12 @@ public class NumberException {
     }
 
     private static void validateNumberRange(String inputNumbers) {
-        String[] numbers = inputNumbers.split("");
-        for (int i=0;i<numbers.length;i++) {
-            if (Integer.parseInt(numbers[i]) < MIN_NUMBER || Integer.parseInt(numbers[i]) > MAX_NUMBER) {
+        int[] numbers = Arrays.stream(inputNumbers.split(""))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
+
+        for (Integer number : numbers) {
+            if (number < MIN_NUMBER || number > MAX_NUMBER) {
                 throw new IllegalArgumentException("\nError : 1부터 9까지의 범위를 가진 숫자를 입력해 주세요.");
             }
         }

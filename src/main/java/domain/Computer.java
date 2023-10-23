@@ -21,7 +21,6 @@ public class Computer {
                 computerNumbers.add(randomNumber);
             }
         }
-        System.out.println("computerNumbers = " + computerNumbers);
     }
 
     public Map<String, Integer> getResult(List<Integer> playerNumbers) {
