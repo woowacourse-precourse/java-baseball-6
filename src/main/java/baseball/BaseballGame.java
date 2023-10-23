@@ -3,7 +3,7 @@ package baseball;
 import static baseball.Constant.END_MESSAGE;
 import static baseball.Constant.EXIT;
 import static baseball.Constant.INPUT_NUMBERS_MESSAGE;
-import static baseball.Constant.INPUT_RETRY_MESSAGE;
+import static baseball.Constant.INPUT_RETRY_EXIT_MESSAGE;
 import static baseball.Constant.RETRY;
 import static baseball.Constant.START_MESSAGE;
 
@@ -19,7 +19,7 @@ public class BaseballGame {
         do {
             playSingleGame();
             playerView.output(END_MESSAGE);
-            playerView.output(INPUT_RETRY_MESSAGE);
+            playerView.output(INPUT_RETRY_EXIT_MESSAGE);
         } while (isRetry());
     }
 
