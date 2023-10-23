@@ -14,16 +14,20 @@ public class Computer {
         int i = 0;
 
         while(i != 3) {
-            int randomNumber = Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX);
-
-            if(usedNumbers[randomNumber]) {
-                continue;
-            }
+            int randomNumber = checkUsedNumber(usedNumbers);
 
             usedNumbers[randomNumber] = true;
             computerNumber[i] = randomNumber;
             i++;
         }
+    }
+
+    private int checkUsedNumber(boolean[] usedNumbers) {
+        int randomNumber = Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX);
+        if(usedNumbers[randomNumber]) {
+            checkUsedNumber(usedNumbers);
+        }
+        return randomNumber;
     }
 
 
