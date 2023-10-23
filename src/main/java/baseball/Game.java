@@ -16,12 +16,6 @@ public class Game {
     public void gameStart() {
         System.out.println(GAME_START_MESSAGE);
         computerNumber = numberGenerator.setComputerNumber(); // 최초 컴퓨터 번호 셋팅
-
-        for (int i : computerNumber) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-
         while (!exit) {
             playerNumber = numberGenerator.setPlayerNumber(); // 플레이어 번호 셋팅
             String hint = hintGenerator.getHint(computerNumber, playerNumber); // Hint 결과 확인
