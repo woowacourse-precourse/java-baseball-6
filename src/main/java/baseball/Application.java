@@ -8,12 +8,7 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
-
-        try {
-            app.startGame();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        app.startGame();
     }
 
     // 게임 실행 메서드
@@ -25,23 +20,17 @@ public class Application {
         while (!isGameOver) {
             int[] playerNumbers = getPlayerNumbers();
 
-            try {
-                String result = checkStrikesOrBall(randomNumbers, playerNumbers);
-                System.out.println(result);
+            String result = checkStrikesOrBall(randomNumbers, playerNumbers);
+            System.out.println(result);
 
-                if (result.equals("3스트라이크")) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    isGameOver = !askForRestart();
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                isGameOver = !askForRestart();
 
-                    if (!isGameOver) {
-                        randomNumbers = generateRandomNumbers(); // 게임이 재시작되면 새로운 randomNumbers 생성
-                    }
+                if (!isGameOver) {
+                    randomNumbers = generateRandomNumbers(); // 게임이 재시작되면 새로운 randomNumbers 생성
                 }
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                isGameOver = true;
             }
-
         }
     }
 
@@ -117,14 +106,24 @@ public class Application {
         String input = Console.readLine();
 
         if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요. 게임 종료");
         }
 
         for (int i = 0; i < 3; i++) {
             char playerNumber = input.charAt(i);
             if (playerNumber < '1' || playerNumber > '9') {
-                throw new IllegalArgumentException("1부터 9 사이의 숫자를 입력하세요.");
+                throw new IllegalArgumentException("범위밖의 숫자를 입력하였습니다. 게임 종료");
             }
+
+            int numericValue = Character.getNumericValue(playerNumber);
+
+            if (numericValue <= 0) {
+                throw new IllegalArgumentException("0 이하의 숫자는 입력할 수 없습니다. 게임 종료");
+            }
+            if (containsNumber(playerNumbers, numericValue)) {
+                throw new IllegalArgumentException("중복된 숫자를 입력하였습니다. 게임 종료");
+            }
+
             playerNumbers[i] = Character.getNumericValue(playerNumber);
         }
         return playerNumbers;
