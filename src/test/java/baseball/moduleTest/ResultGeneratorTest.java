@@ -1,5 +1,6 @@
-package baseball;
+package baseball.moduleTest;
 
+import baseball.dto.GameResult;
 import baseball.generator.ResultGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,23 +18,23 @@ class ResultGeneratorTest {
 
         List<Integer> computerNumbers = List.of(1,2,3);
 
-        List<Integer> strikeBall = //3스트라이크
+        GameResult gameResult = //3스트라이크
                 resultGenerator.makeResult(List.of(1,2,3),computerNumbers);
-        Assertions.assertEquals(strikeBall,List.of(3,0));
+        Assertions.assertEquals(gameResult,new GameResult(3,0));
 
-        strikeBall = //낫싱
+        gameResult = //낫싱
                 resultGenerator.makeResult(List.of(6,4,7),computerNumbers);
-        Assertions.assertEquals(strikeBall,List.of(0,0));
+        Assertions.assertEquals(gameResult,new GameResult(0,0));
 
 
-        strikeBall = //2볼
+        gameResult = //2볼
                 resultGenerator.makeResult(List.of(5,1,2),computerNumbers);
-        Assertions.assertEquals(strikeBall,List.of(0,2));
+        Assertions.assertEquals(gameResult,new GameResult(0,2));
 
 
-        strikeBall = //1스트라이크 1볼
+        gameResult = //1스트라이크 1볼
                 resultGenerator.makeResult(List.of(1,3,0),computerNumbers);
-        Assertions.assertEquals(strikeBall,List.of(1,1));
+        Assertions.assertEquals(gameResult,new GameResult(1,1));
 
     }
 }

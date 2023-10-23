@@ -1,6 +1,8 @@
 package baseball.view;
 
 
+import baseball.dto.GameResult;
+
 public class OutputView {
     public void printStartMessage(){
         System.out.print(GameMessage.GAME_START_MESSAGE.getMessage());
@@ -18,7 +20,7 @@ public class OutputView {
         System.out.print(GameMessage.RESTART_CHOICE_MESSAGE.getMessage());
     }
 
-    public void printResultMessage(int strike, int ball){
-        System.out.println(ResultFormatter.formatResult(strike,ball));
+    public void printResultMessage(GameResult gameResult){
+        System.out.println(ResultFormatter.formatResult(gameResult.strike(),gameResult.ball()));
     }
 }

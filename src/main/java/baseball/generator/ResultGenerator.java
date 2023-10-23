@@ -1,9 +1,11 @@
 package baseball.generator;
 
+import baseball.dto.GameResult;
+
 import java.util.List;
 
 public class ResultGenerator {
-    public List<Integer> makeResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    public GameResult makeResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int strike =0;
         int ball =0;
         for (int i = 0; i < userNumbers.size(); i++) {
@@ -16,6 +18,6 @@ public class ResultGenerator {
             if(computerNumbers.contains(thisUserNumber))
                 ball++;
         }
-        return List.of(strike,ball);
+        return new GameResult(strike,ball);
     }
 }
