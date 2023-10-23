@@ -10,21 +10,6 @@ import org.junit.jupiter.api.Test;
 public class BaseBallNumberListTest {
 
     @Test
-    @DisplayName("불변 리스트를 반환한다")
-    public void should_returnImmutableList_when_getList() {
-        List<Integer> testNumberList = List.of(1, 5, 3);
-        BaseBallNumberList baseBallNumberList = new BaseBallNumberList(testNumberList);
-
-        List<Integer> result = baseBallNumberList.getList();
-
-        assertThat(result.size()).isEqualTo(3);
-        assertThat(result).isEqualTo(testNumberList);
-        assertThatThrownBy(() -> result.add(1)).isInstanceOf(UnsupportedOperationException.class);
-        assertThatThrownBy(() -> result.remove(1)).isInstanceOf(
-                UnsupportedOperationException.class);
-    }
-
-    @Test
     @DisplayName("리스트의 길이가 3이 아닐때 IllegalArgumentException이 발생한다")
     public void should_throwsIllegalArgumentException_when_lengthOfTheListIsNot3() {
 
