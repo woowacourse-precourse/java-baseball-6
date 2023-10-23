@@ -24,10 +24,10 @@ public class BaseballGame {
     }
 
     public void run() {
-        List<Integer> correctAnswer = computer.createCorrectAnswer();
-        System.out.println(PRINT_GAME_START);
         do {
-            play();
+            System.out.println(PRINT_GAME_START);
+            List<Integer> correctAnswer = computer.createCorrectAnswer();
+            play(correctAnswer);
         } while (restart());
     }
 
@@ -35,13 +35,14 @@ public class BaseballGame {
 
     }
 
-    private void play() {
+    private void play(List<Integer> correctAnswer) {
         System.out.print(PRINT_USER_INPUT);
         List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
                 .map(input -> convertStringToInteger(input))
                 .toList();
         validAnswerDigit(userAnswer);
         validAnswerDistint(userAnswer);
+
     }
 
     private void validAnswerDistint(List<Integer> userAnswer) {
