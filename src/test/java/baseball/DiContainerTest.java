@@ -15,7 +15,7 @@ class DiContainerTest {
         DiContainer diContainer = new DiContainer();
 
         //when
-        ComputerController computerController = diContainer.ComputerController();
+        ComputerController computerController = diContainer.computerController();
 
         //then
         assertThat(computerController).isNotNull();
@@ -29,9 +29,8 @@ class DiContainerTest {
         DiContainer diContainer = new DiContainer();
 
         //when
-        ComputerController computerControllerForMakeDI = diContainer.ComputerController();
-        ComputerController computerControllerForNew = new ComputerController(new ComputerView(),
-                new ComputerValidation(new Computer().makeAnswerList()));
+        ComputerController computerControllerForMakeDI = diContainer.computerController();
+        ComputerController computerControllerForNew = new ComputerController();
 
         //then
         assertThat(computerControllerForMakeDI).isInstanceOf(computerControllerForNew.getClass());
