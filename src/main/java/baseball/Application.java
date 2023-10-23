@@ -119,7 +119,7 @@ public class Application {
             isContinue = false;
         }
 
-        result = new Result(message.trim(), isContinue);
+        result = new Result(message.trim().concat("\n"), isContinue);
 
         return result;
     }
