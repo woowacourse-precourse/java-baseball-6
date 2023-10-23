@@ -109,7 +109,7 @@ public class Application {
         try {
             game();
         } catch(IllegalArgumentException e){
-            System.err.println("입력값이 올바르지 않습니다.");
+            throw new IllegalArgumentException();
         }
 
     }
