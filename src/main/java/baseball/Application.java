@@ -158,7 +158,7 @@ public class Application {
      * @return 유저가 입력한 문자열
      */
     private static String getUserInputStr() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         return scanner.next();
     }
 
