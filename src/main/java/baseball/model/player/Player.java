@@ -7,9 +7,9 @@ public class Player {
     private GuessNumber guessNumber;
     private GameStateNumber gameStateNumber;
 
-    public Player() {
-        this.guessNumber = new GuessNumber();
-        this.gameStateNumber = GameStateNumber.DEFAULT;
+    public Player(GuessNumber guessNumber, GameStateNumber gameStateNumber) {
+        this.guessNumber = guessNumber;
+        this.gameStateNumber = gameStateNumber;
     }
 
     public void inputGuessNumber() {

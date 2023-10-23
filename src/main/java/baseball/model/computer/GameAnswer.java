@@ -10,8 +10,12 @@ public class GameAnswer {
     private final static Integer FIRST_NUMBER = 1;
     private final static Integer LAST_NUMBER = 9;
 
-    private List<Integer> answer = new ArrayList<>();
-    
+    private List<Integer> answer;
+
+    public GameAnswer() {
+        this.answer = new ArrayList<>();
+    }
+
     public void makeAnswer() {
         answer.clear();
         while (answer.size() < BALL_SIZE) {

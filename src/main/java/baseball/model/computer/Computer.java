@@ -4,8 +4,13 @@ import java.util.List;
 
 public class Computer {
 
-    private GameAnswer gameAnswer = new GameAnswer();
-    private Score score = new Score();
+    private GameAnswer gameAnswer;
+    private Score score;
+
+    public Computer(GameAnswer gameAnswer, Score score) {
+        this.gameAnswer = gameAnswer;
+        this.score = score;
+    }
 
     public void makeAnswer() {
         gameAnswer.makeAnswer();

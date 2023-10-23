@@ -12,6 +12,11 @@ public class Score {
     private Integer strike;
     private Integer ball;
 
+    public Score() {
+        this.strike = INIT_STRIKE_SCORE;
+        this.ball = INIT_BALL_SCORE;
+    }
+
     public void initScore() {
         this.strike = INIT_STRIKE_SCORE;
         this.ball = INIT_BALL_SCORE;
