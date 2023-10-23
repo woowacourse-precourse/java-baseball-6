@@ -6,10 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserServiceTest {
     private UserService userService;
@@ -18,7 +16,7 @@ class UserServiceTest {
     @BeforeEach
     public void beforeEach(){
         memoryUserRepository = new MemoryUserRepository();
-        userService = new UserService();
+        userService = new UserService(memoryUserRepository);
     }
 
     @AfterEach

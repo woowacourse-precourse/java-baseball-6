@@ -2,6 +2,9 @@ package baseball.controller;
 
 import baseball.domain.Game;
 import baseball.domain.User;
+import baseball.repository.GameRepository;
+import baseball.repository.MemoryGameRepository;
+import baseball.repository.MemoryUserRepository;
 import baseball.service.GameService;
 import baseball.service.MessageService;
 import baseball.service.NumberService;
@@ -19,11 +22,11 @@ public class GameController {
     private final NumberService numberService;
     private User user;
 
-    public GameController() {
+    public GameController(MemoryGameRepository gameRepository, MemoryUserRepository userRepository) {
         this.messageService = new MessageService();
         this.numberService = new NumberService();
-        this.gameService = new GameService();
-        this.userService = new UserService();
+        this.gameService = new GameService(gameRepository);
+        this.userService = new UserService(userRepository);
     }
 
     public void startProgram(){

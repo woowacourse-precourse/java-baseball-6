@@ -1,17 +1,18 @@
 package baseball.service;
 
 import baseball.domain.User;
+import baseball.repository.MemoryGameRepository;
 import baseball.repository.MemoryUserRepository;
 import baseball.repository.UserRepository;
 
 import java.util.Optional;
 
 public class UserService {
-    private final UserRepository userRepository;
+    private final MemoryUserRepository userRepository;
 
 
-    public UserService() {
-        this.userRepository = new MemoryUserRepository();
+    public UserService(MemoryUserRepository memoryUserRepository) {
+        this.userRepository = memoryUserRepository;
     }
 
     /* 유저 등록 */

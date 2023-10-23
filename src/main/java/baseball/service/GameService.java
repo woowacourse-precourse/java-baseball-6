@@ -10,8 +10,8 @@ import java.util.Optional;
 public class GameService {
     private final MemoryGameRepository gameRepository;
 
-    public GameService() {
-        this.gameRepository = new MemoryGameRepository();
+    public GameService(MemoryGameRepository gameRepository) {
+        this.gameRepository = gameRepository;
     }
 
     /* 새로운 게임 생성 */
