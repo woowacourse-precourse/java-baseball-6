@@ -35,7 +35,11 @@ public class BaseballController {
             while (true) {
                 UserBall userBall = new UserBall(InputView.userInput());
                 ResultBall resultBall = Result.getResult(answerBall, userBall);
-                if (ResultView.resultView(resultBall)) {
+
+                ResultView resultView = new ResultView(resultBall);
+                resultView.View();
+
+                if (resultView.isThreeStrikes()) {
                     break;
                 }
             }

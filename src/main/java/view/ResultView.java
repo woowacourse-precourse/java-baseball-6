@@ -19,21 +19,36 @@ package view;
 import vo.ResultBall;
 
 public class ResultView {
+    private int strike;
+    private int ball;
 
-    public static Boolean resultView(ResultBall resultBall) {
-        int strike = resultBall.getStrike();
-        int ball = resultBall.getBall();
-        if (strike == 3) {
+    public ResultView(ResultBall resultBall) {
+        strike = resultBall.getStrike();
+        ball = resultBall.getBall();
+    }
+
+    public boolean isThreeStrikes() {
+        return strike == 3;
+    }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    public boolean isValid() {
+        return 0 <= strike && strike <= 2 && 0 <= ball && ball <= 2;
+    }
+
+    public void View() {
+        if (isThreeStrikes()) {
             System.out.println(
                     "3스트라이크\n"
                             + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
                             + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return true;
-        } else if (strike == 0 && ball == 0) {
+        } else if (isNothing()) {
             System.out.println("낫싱");
-        } else if (0 <= strike && strike <= 2 && 0 <= ball && ball <= 2) {
+        } else if (isValid()) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-        return false;
     }
 }
