@@ -2,8 +2,8 @@ package baseball.domain;
 
 import static baseball.controller.GameController.NUMBER_SIZE;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Number {
 	private String number;
@@ -34,26 +34,26 @@ public class Number {
 	}
 
 	private void validateDuplication(String number) {
-		Map<Character, Integer> checkMap = new HashMap<>();
+		Set<Character> checkSet = new HashSet<>();
 
+		initCheckSet(checkSet, number);
+		checkDuplication(checkSet);
+	}
+
+	private void initCheckSet(Set<Character> checkSet, String number) {
 		for(char checkNumber : number.toCharArray()) {
-			initCheckMap(checkMap, checkNumber);
-			checkDuplication(checkMap, checkNumber);
+			checkSet.add(checkNumber);
 		}
 	}
 
-	private void initCheckMap(Map<Character, Integer> checkMap, char checkNumber) {
-		int checkNumberCount = checkMap.getOrDefault(checkNumber, 0);
-		checkMap.put(checkNumber, checkNumberCount + 1);
-	}
-
-	private void checkDuplication(Map<Character, Integer> checkMap, char checkNumber) {
-		if(isDuplicated(checkMap, checkNumber)) {
+	private void checkDuplication(Set<Character> checkSet) {
+		if(isDuplicated(checkSet)) {
 			throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
 		}
 	}
 
-	private boolean isDuplicated(Map<Character, Integer> checkMap, char checkNumber) {
-		return checkMap.get(checkNumber) > 1;
+	private boolean isDuplicated(Set<Character> checkSet) {
+		return checkSet.size() != NUMBER_SIZE;
 	}
+
 }
