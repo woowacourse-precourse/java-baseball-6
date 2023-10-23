@@ -21,10 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateRandomNumber {
+    public static final int MIN_NUMBER = 1;
+    public static final int NUMBER_SIZE = 3;
+    public static final int MAX_NUMBER = 9;
+
     public static List<Integer> createRandomNumber() {
         List<Integer> number = new ArrayList<>();
-        while (number.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (number.size() < NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!number.contains(randomNumber)) {
                 number.add(randomNumber);
             }
