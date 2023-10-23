@@ -21,15 +21,6 @@ public class Baseball {
         do {
             ArrayList<Integer> answerNumberList = initRandomNumberList();
 
-            /**
-             * 디버깅용 상대정답 코드
-             */
-            System.out.print("정답 : ");
-            for( int num : answerNumberList){
-                System.out.print(num + " ");
-            }
-            System.out.println();
-
             inputNumberList = getNumberInputList();
 
             while(!checkGameScore(answerNumberList, inputNumberList)){
