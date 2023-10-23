@@ -45,7 +45,7 @@
 #### BaseBallNumberList
 
 - [x] 숫자 입력시 3자리 수가 아닐 시 IllegalArgumentException
-- [ ] 3개의 숫자중 같은 숫자 존재 시 IllegalArgumentException
+- [x] 3개의 숫자중 같은 숫자 존재 시 IllegalArgumentException
 
 ### UI
 
