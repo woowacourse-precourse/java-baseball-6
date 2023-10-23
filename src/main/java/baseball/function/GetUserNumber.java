@@ -2,7 +2,6 @@ package baseball.function;
 
 import baseball.view.Message;
 import camp.nextstep.edu.missionutils.Console;
-import baseball.function.ChkDigit;
 
 public class GetUserNumber {
     public static int[] getUserNumber() throws IllegalArgumentException {
@@ -14,7 +13,7 @@ public class GetUserNumber {
         chkDigit.ChkSize(input);
 
 
-        int inputnum[] = new int[3];
+        int []inputnum  = new int[3];
         for (int i = 0; i < 3; i++) {
             inputnum[i] = input.charAt(i) - '0';
         }

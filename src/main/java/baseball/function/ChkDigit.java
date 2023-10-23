@@ -18,7 +18,7 @@ public class ChkDigit {
     }
 
     public void ChkIsNum(String Number) throws IllegalArgumentException{
-        if (!Number.matches("[0-9]+")){
+        if (!Number.matches("[1-9]+")){
             throw new IllegalArgumentException();
         }
     }

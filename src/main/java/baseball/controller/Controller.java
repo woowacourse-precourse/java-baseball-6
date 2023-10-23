@@ -28,7 +28,7 @@ public class Controller {
         this.rule = new Rule(resultNum, gameCount);
     }
     public void play(){
-        boolean isWrong = true;
+
         while(true){
             gameCount.initGame();
             resultNum.setUserNumber(userNumber.getUserNumber());
