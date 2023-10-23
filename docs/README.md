@@ -111,13 +111,10 @@
 
 ```🌱 View```
 
-- FirstGamePlayerInputView ✔️
+- GamePlayerInputView ✔️
     - 플레이어의 숫자 입력 처리 담당
         - 플레이어의 입력을 실제로 받고, 입력을 save한다.
-
-- NextGamePlayerInputView ✔️
-    - **이전 게임 종료 후, 다음에 이어지는 게임**에서의 플레이어 숫자 입력 처리 담당
-        - 플레이어의 입력을 실제로 받고, 입력을 save한다.
+        - 이전 게임 종료 후, 다음에 이어지는 게임에서의 플레이어의 입력도 이전과 동일하므로 view를 합친다.
 
 - GameScoreView ✔️
     - 숫자 야구 게임의 플레이 상황에 따른 적절한 결과 출력 담당
