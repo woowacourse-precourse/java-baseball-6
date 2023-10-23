@@ -117,16 +117,23 @@ public class NumberBaseball {
     public void setComputerResult(int ball, int strike) {
         StringBuilder result = new StringBuilder();
 
+        if (ball == 0 && strike == 0) {
+            result.append(Result.NOTHING_RESULT.getResult()).append("\n");
+            String computerResult = result.toString();
+            computer.setResult(computerResult);
+            return;
+        }
+
         if (ball != 0) {
             result.append(ball).append(Result.BALL_RESULT.getResult());
         }
 
-        if (strike != 0) {
-            result.append(strike).append(Result.STRIKE_RESULT.getResult());
+        if (ball != 0 && strike != 0) {
+            result.append(" ").append(strike).append(Result.STRIKE_RESULT.getResult());
         }
 
-        if (ball == 0 && strike == 0) {
-            result.append(Result.NOTHING_RESULT.getResult());
+        if (ball == 0 && strike != 0) {
+            result.append(strike).append(Result.STRIKE_RESULT.getResult());
         }
 
         if (strike == 3) {

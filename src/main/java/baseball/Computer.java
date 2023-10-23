@@ -12,7 +12,13 @@ public class Computer {
         return number;
     }
 
+    public void resetNumber() {
+        number.clear();
+    }
+
     public void setRandomNumber() {
+        resetNumber();
+
         while (number.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!number.contains(randomNumber)) {
