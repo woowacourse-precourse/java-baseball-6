@@ -8,21 +8,19 @@ import java.util.Set;
 import static constant.MessageList.*;
 public class PlayerNumber {
     // TODO: 사용자 서로 다른 3자리 수 입력시 예외사항 처리
-    private String playerNum;
+    public String playerNumber;
 
-    public PlayerNumber(String playerNum){
-        if (validateLength(playerNum) && validateNumberRange(playerNum) && validateDuplicateNumber(playerNum)){
-            this.playerNum = playerNum;
+    public PlayerNumber(String playerInput){
+        if (validateAll(playerInput)){
+            this.playerNumber = playerInput;
         }
     }
 
-    public List<Integer> getPlayerNum(){
-        List<Integer> playerNum_array = new ArrayList<>();
-        for (int i=0; i<3; i++){
-            int tmp = playerNum.charAt(i);
-            playerNum_array.add(tmp);
+    public boolean validateAll(String playerInput){
+        if (validateLength(playerInput) && validateNumberRange(playerInput) && validateDuplicateNumber(playerInput)){
+            return true;
         }
-        return playerNum_array;
+        return false;
     }
 
 

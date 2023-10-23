@@ -27,7 +27,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("컴퓨터 랜덤값 생성")
-    void generateComputerRandomNumbers(){
+    void generateComputerRandomNumber(){
         ComputerNumber computerNumber = new ComputerNumber();
         computerNumber.generateComputerNumber();
     }
@@ -35,9 +35,9 @@ class ApplicationTest extends NsTest {
     @DisplayName("사용자 입력 예외사항 처리")
     @ParameterizedTest
     @ValueSource(strings = {"31","i","3a6","abc","012","311",""," "})
-    void validatePlayerNumber(String input) {
+    void validatePlayerNumber(String playerInput) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> new PlayerNumber(input))
+                assertThatThrownBy(() -> new PlayerNumber(playerInput))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

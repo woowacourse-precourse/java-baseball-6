@@ -8,7 +8,7 @@ public class Comparer {
         resetCount();
         checkBall(computerNum, playerNum);
         checkStrike(computerNum, playerNum);
-        strikeExceptBall();
+        isBallExpectStrike();
 
         return new int[] {ballCount, strikeCount};
     }
@@ -31,7 +31,7 @@ public class Comparer {
             }
         }
     }
-    public void strikeExceptBall(){
+    public void isBallExpectStrike(){
         ballCount = ballCount - strikeCount;
     }
 }
