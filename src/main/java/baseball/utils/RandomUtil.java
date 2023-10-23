@@ -8,15 +8,16 @@ import java.util.List;
 public class RandomUtil {
     public List<Integer> createRandomList() {
         List<Integer> randomNumbers = new ArrayList<>();
+        boolean[] visited = new boolean[10];
 
-        for (int i = 0; i < 3; i++) {
-            while (true) {
-                int randNum = Randoms.pickNumberInRange(1, 9);
-                if (!randomNumbers.contains(randNum)) {
-                    randomNumbers.add(randNum);
-                    break;
-                }
+        for (int i = 0; i < 3; ) {
+            int randNum = Randoms.pickNumberInRange(1, 9);
+            if (visited[randNum]) {
+                continue;
             }
+            visited[randNum] = true;
+            randomNumbers.add(randNum);
+            i++;
         }
 
         return randomNumbers;
