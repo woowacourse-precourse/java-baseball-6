@@ -37,7 +37,7 @@ public class GameProcessor {
         return userNumberList;
     }
 
-    private String calculateStrike(Data data, List<String> userNumberList,
+    private String calculateStrike(List<String> userNumberList,
             List<String> randomNumberList) {
         int strike = 0;
 
@@ -49,7 +49,7 @@ public class GameProcessor {
         return String.valueOf(strike);
     }
 
-    private String calculateBall(Data data, List<String> userNumberList,
+    private String calculateBall(List<String> userNumberList,
             List<String> randomNumberList) {
         int ball = 0;
 
@@ -65,12 +65,12 @@ public class GameProcessor {
     }
 
     private List<String> calculateStrikeBall(Data data) {
-        List<String> strikeBall = Arrays.asList("0", "0");
+        List<String> strikeBall = data.getAnswerList();
         List<String> userNumberList = generateUserNumberList(data);
         List<String> randomNumberList = generateRandomNumberList(data);
 
-        String strike = calculateStrike(data, userNumberList, randomNumberList);
-        String ball = calculateBall(data, userNumberList, randomNumberList);
+        String strike = calculateStrike(userNumberList, randomNumberList);
+        String ball = calculateBall(userNumberList, randomNumberList);
 
         strikeBall.set(0, strike);
         strikeBall.set(1, ball);
