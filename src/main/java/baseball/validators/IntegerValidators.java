@@ -1,6 +1,6 @@
 package baseball.validators;
 
-public final class ValueRangeValidator {
+public final class IntegerValidators {
 
     public static void validateRange(int value, int minValue, int maxValue) {
         boolean isUnderValue = value < minValue;
