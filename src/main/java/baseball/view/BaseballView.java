@@ -20,14 +20,14 @@ public class BaseballView {
 
     public void printGameResult(Score score) {
         StringBuilder sb = new StringBuilder();
-        if (score.getBall() == 0 && score.getStrike() == 0) {
+        if (score.ball() == 0 && score.strike() == 0) {
             sb.append("낫싱");
         } else {
-            if (score.getBall() > 0) {
-                sb.append(score.getBall()).append("볼").append(' ');
+            if (score.ball() > 0) {
+                sb.append(score.ball()).append("볼").append(' ');
             }
-            if (score.getStrike() > 0) {
-                sb.append(score.getStrike()).append("스트라이크");
+            if (score.strike() > 0) {
+                sb.append(score.strike()).append("스트라이크");
             }
         }
         System.out.println(sb);
