@@ -1,16 +1,19 @@
 package baseball;
 
-import static baseball.Message.BALL;
-import static baseball.Message.COUNT;
-import static baseball.Message.END_MSG;
-import static baseball.Message.INPUT_MSG;
-import static baseball.Message.LAST_RANGE;
-import static baseball.Message.NOTHING;
-import static baseball.Message.REGAME_MSG;
-import static baseball.Message.START_MSG;
-import static baseball.Message.START_RANGE;
-import static baseball.Message.STRIKE;
+import static baseball.message.Message.BALL;
+import static baseball.message.Message.COUNT;
+import static baseball.message.Message.END_MSG;
+import static baseball.message.Message.INPUT_MSG;
+import static baseball.message.Message.LAST_RANGE;
+import static baseball.message.Message.NOTHING;
+import static baseball.message.Message.REGAME_MSG;
+import static baseball.message.Message.START_MSG;
+import static baseball.message.Message.START_RANGE;
+import static baseball.message.Message.STRIKE;
 
+import baseball.message.PrintMessage;
+import baseball.utils.CheckUtils;
+import baseball.utils.RandomNumberUtils;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashMap;

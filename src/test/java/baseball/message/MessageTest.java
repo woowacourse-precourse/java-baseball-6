@@ -1,12 +1,12 @@
-package baseball;
+package baseball.message;
 
-import static baseball.Message.BALL_MSG;
-import static baseball.Message.END_MSG;
-import static baseball.Message.INPUT_MSG;
-import static baseball.Message.NON_MSG;
-import static baseball.Message.REGAME_MSG;
-import static baseball.Message.START_MSG;
-import static baseball.Message.STRIKE_MSG;
+import static baseball.message.Message.BALL_MSG;
+import static baseball.message.Message.END_MSG;
+import static baseball.message.Message.INPUT_MSG;
+import static baseball.message.Message.NON_MSG;
+import static baseball.message.Message.REGAME_MSG;
+import static baseball.message.Message.START_MSG;
+import static baseball.message.Message.STRIKE_MSG;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;

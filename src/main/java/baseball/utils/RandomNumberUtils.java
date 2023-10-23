@@ -1,6 +1,6 @@
-package baseball;
+package baseball.utils;
 
-import static baseball.Message.COUNT;
+import static baseball.message.Message.COUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

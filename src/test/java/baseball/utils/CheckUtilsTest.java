@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

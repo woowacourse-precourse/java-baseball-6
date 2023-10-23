@@ -1,8 +1,8 @@
-package baseball;
+package baseball.message;
 
-import static baseball.Message.BALL_MSG;
-import static baseball.Message.NON_MSG;
-import static baseball.Message.STRIKE_MSG;
+import static baseball.message.Message.BALL_MSG;
+import static baseball.message.Message.NON_MSG;
+import static baseball.message.Message.STRIKE_MSG;
 
 public class PrintMessage {
 
