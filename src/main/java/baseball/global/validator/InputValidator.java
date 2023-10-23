@@ -1,5 +1,6 @@
 package baseball.global.validator;
 
+import baseball.global.constant.GameCode;
 import baseball.global.constant.RuleValue;
 import baseball.global.message.ExceptionMessage;
 
@@ -11,10 +12,15 @@ import static baseball.global.message.ExceptionMessage.*;
 
 public class InputValidator {
 
-    private void validateInput(String playerInput){
+    public void validateBaseballNumberInput(String playerInput){
         validateInputNumeric(playerInput);
         validateInputSize(playerInput);
         validateInputDistinct(playerInput);
+    }
+
+    public void validateGameCodeInput(String playerInput){
+        validateInputNumeric(playerInput);
+        validateIsExistGameCode(playerInput);
     }
 
     private void validateInputNumeric(String playerInput){
@@ -36,6 +42,13 @@ public class InputValidator {
         Set<String> distinctStringSet = new HashSet<>(Arrays.asList(seperatedString));
         if(distinctStringSet.size() != playerInput.length()){
             throw new IllegalArgumentException(INPUT_NOT_DISTINCT.getMessage());
+        }
+    }
+
+    private void validateIsExistGameCode(String playerInput){
+        int integerInput = Integer.parseInt(playerInput);
+        if(integerInput != GameCode.QUIT_CODE && integerInput != GameCode.RESTART_CODE){
+            throw new IllegalArgumentException(INPUT_UNDEFINED.getMessage());
         }
     }
 }
