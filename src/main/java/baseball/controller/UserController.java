@@ -1,4 +1,6 @@
-package baseball;
+package baseball.controller;
+
+import baseball.domain.GameService;
 
 public class UserController {
     private final GameService gameService;
