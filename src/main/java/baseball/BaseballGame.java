@@ -7,11 +7,11 @@ import java.util.*;
 import static model.BaseballData.*;
 
 public class BaseballGame {
-    static List<Integer> computerNumber;
-    static List<Integer> myNumber;
-    static boolean finish = true;
-    static int ball;
-    static int strike;
+    List<Integer> computerNumber;
+    List<Integer> myNumber;
+    boolean finish = true;
+    int ball;
+    int strike;
 
     /**
      * 게임 결과 기능

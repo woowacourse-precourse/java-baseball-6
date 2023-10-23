@@ -11,13 +11,13 @@ public class RunGame {
 
 
     public void playBaseballGame() {
-        BaseballGame.computerNumber = BaseballNumber.makeBaseballNumber();
-        BaseballGame.finish = true;
+        baseballGame.computerNumber = BaseballNumber.makeBaseballNumber();
+        baseballGame.finish = true;
         outputView.gameStart();
 
-        while (BaseballGame.finish) { // 게임이 끝날때까지 반복
+        while (baseballGame.finish) { // 게임이 끝날때까지 반복
             outputView.gameNumer();
-            BaseballGame.myNumber = inputView.inputBaseBall();
+            baseballGame.myNumber = inputView.inputBaseBall();
             baseballGame.gameResult();
         }
 

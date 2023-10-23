@@ -9,12 +9,12 @@ import static model.BaseballData.*;
 import static view.InputView.changeInteger;
 
 public class ExceptionModel {
-    static final String IS_NUMBER = "[ERROR] 숫자를 입력하세요.";
-    static final String NUMBER_VALID = "[ERROR] 1 ~ 9 사이의 숫자를 입력하세요.";
-    static final String THREE_NUMBER = "[ERROR] 숫자를 3개 입력하세요.";
-    static final String OTHER_NUMBER = "[ERROR] 서로 다른 숫자 3개를 입력하세요.";
-    static final String ONE_NUMBER = "[ERROR] 숫자를 1개 입력하세요.";
-    static final String RETRY_NUMBER = "[ERROR] 1 또는 2를 입력하세요.";
+    final String IS_NUMBER = "[ERROR] 숫자를 입력하세요.";
+    final String NUMBER_VALID = "[ERROR] 1 ~ 9 사이의 숫자를 입력하세요.";
+    final String THREE_NUMBER = "[ERROR] 숫자를 3개 입력하세요.";
+    final String OTHER_NUMBER = "[ERROR] 서로 다른 숫자 3개를 입력하세요.";
+    final String ONE_NUMBER = "[ERROR] 숫자를 1개 입력하세요.";
+    final String RETRY_NUMBER = "[ERROR] 1 또는 2를 입력하세요.";
 
     /**
      * 야구공 유효성 검사
