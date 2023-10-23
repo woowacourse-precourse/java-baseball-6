@@ -11,10 +11,11 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Application {
+
     public static void main(String[] args) {
         BaseballGameController baseballGameController = new BaseballGameController(
                 new Computer(new GameAnswer(), new Score()),
-                new Player(new GuessNumber(), GameStateNumber.DEFAULT),
+                new Player(new GuessNumber(), new GameStateNumber()),
                 new InputView(),
                 new OutputView());
         baseballGameController.start();

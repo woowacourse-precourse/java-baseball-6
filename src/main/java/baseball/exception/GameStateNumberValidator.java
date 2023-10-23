@@ -12,14 +12,14 @@ public class GameStateNumberValidator {
         return false;
     }
 
-    private static boolean isLengthOne(String input) {
+    public static boolean isLengthOne(String input) {
         if (input.length() != 1) {
             throw new IllegalArgumentException(LENGTH_NOT_ONE_MSG);
         }
         return true;
     }
 
-    private static boolean isEqualToOneOrTwo(String input) {
+    public static boolean isEqualToOneOrTwo(String input) {
         if (input.charAt(0) != '1' && input.charAt(0) != '2') {
             throw new IllegalArgumentException(NOT_ONE_AND_TWO_MSG);
         }

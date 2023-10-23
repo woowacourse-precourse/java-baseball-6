@@ -17,11 +17,12 @@ public class GameAnswer {
     }
 
     public void makeAnswer() {
-        answer.clear();
-        while (answer.size() < BALL_SIZE) {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < BALL_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(FIRST_NUMBER, LAST_NUMBER);
-            addIfNotInList(answer, randomNumber);
+            addIfNotInList(computer, randomNumber);
         }
+        this.answer = computer;
     }
 
     private void addIfNotInList(List<Integer> answer, int randomNumber) {

@@ -6,11 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -31,7 +29,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("입력값에 0이 있을 시 예외 발생")
     void 예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("012"))

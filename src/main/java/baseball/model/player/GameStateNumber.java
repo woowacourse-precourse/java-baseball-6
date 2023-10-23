@@ -4,15 +4,10 @@ import static baseball.exception.GameStateNumberValidator.isGameStateNumberValid
 
 import camp.nextstep.edu.missionutils.Console;
 
-public enum GameStateNumber {
-
-    DEFAULT(0), RESTART(1), EXIT(2);
-
+public class GameStateNumber {
+    
+    private static final Integer EXIT = 2;
     private Integer stateNumber;
-
-    GameStateNumber(Integer stateNumber) {
-        this.stateNumber = stateNumber;
-    }
 
     public void input() {
         String input = Console.readLine();
@@ -27,7 +22,7 @@ public enum GameStateNumber {
     }
 
     public boolean isExit() {
-        if (this.stateNumber == EXIT.stateNumber) {
+        if (this.stateNumber == EXIT) {
             return true;
         }
         return false;
