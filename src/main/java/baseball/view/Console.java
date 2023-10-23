@@ -37,7 +37,7 @@ public class Console {
     }
 
     public void printGameResult(int strikeCount, int ballCount) {
-        GameResult result = GameResult.calculate(strikeCount, ballCount);
+        GameResult result = GameResult.from(strikeCount, ballCount);
 
         switch (result) {
             case NOTHING -> output.print("낫싱");
@@ -45,7 +45,6 @@ public class Console {
             case STRIKE -> output.print(strikeCount + "스트라이크");
             case OTHER -> output.print(MessageFormat.format("{0}볼 {1}스트라이크", ballCount, strikeCount));
         }
-
     }
 
 }

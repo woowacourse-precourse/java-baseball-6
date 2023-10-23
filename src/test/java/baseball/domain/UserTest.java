@@ -95,6 +95,4 @@ class UserTest {
         assertThat(user1).doesNotHaveSameHashCodeAs(user2);
     }
 
-
-
 }
