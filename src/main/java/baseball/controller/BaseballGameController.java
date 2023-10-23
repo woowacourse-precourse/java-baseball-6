@@ -21,11 +21,9 @@ public class BaseballGameController {
         do {
             InputView.printInputNumberMessage();
             user.createUserNumber(InputView.readUserNumberInput());
-            String result = baseballGame.compareTwoNumbers(user.getUserNumber());
-            String [] results = baseballGame.splitCountResult(result);
+            String []results = baseballGame.compareTwoNumbers(user.getUserNumber());
             new OutputView(results);
             gameResult(results);
-
         } while (RestartFlag);
 
     }

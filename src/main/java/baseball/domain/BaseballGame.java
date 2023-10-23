@@ -20,7 +20,7 @@ public class BaseballGame {
         return computerNumber;
     }
 
-    public String compareTwoNumbers(String userNumber) {
+    public String[] compareTwoNumbers(String userNumber) {
 
         int strikeCount = 0;
         int ballCount = 0;
@@ -37,17 +37,10 @@ public class BaseballGame {
 
         String result = ballCount + "," + strikeCount;
 
-        return result;
+        return result.split(",");
+
 
     }
-    public String[] splitCountResult(String result) {
-
-        String[] results = result.split(",");
-
-        return results;
-
-    }
-
 
 
 
