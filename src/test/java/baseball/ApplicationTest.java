@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.service.RandomNumberGenerator;
 import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
