@@ -50,7 +50,7 @@ public class NumberGenerator {
         return true;
     }
 
-    public List<Integer> stringToList(String num) { // 검증된 숫자를 list 타입으로 변환
+    private List<Integer> stringToList(String num) { // 검증된 숫자를 list 타입으로 변환
         List<Integer> list = new ArrayList<>();
         for (char c : num.toCharArray()) {
             list.add(c - '0');
