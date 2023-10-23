@@ -4,7 +4,7 @@ public enum ResultStatus {
     SUCCESS,
     CONTINUE;
 
-    public boolean isSuccess() {
-        return this == SUCCESS;
+    public boolean isContinue() {
+        return this == CONTINUE;
     }
 }
