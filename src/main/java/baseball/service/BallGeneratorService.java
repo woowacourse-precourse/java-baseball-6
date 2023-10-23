@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
 import static baseball.domain.Ball.*;
 
 public class BallGeneratorService {
+
     public Balls generateRandomBalls() {
         return new Balls(createRandomBalls(generateRandomBallNumbers()));
     }
@@ -38,7 +39,7 @@ public class BallGeneratorService {
 
     private List<Ball> convertStringToBalls(String playerGuess) {
         if (playerGuess == null || playerGuess.isBlank()) {
-            throw new IllegalArgumentException("입력은 숫자만 포함해야 합니다.");
+            throw new IllegalArgumentException("입력값은 공백이 들어갈 수 없습니다.");
         }
 
         return IntStream.range(0, playerGuess.length())

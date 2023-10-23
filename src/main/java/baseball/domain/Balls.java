@@ -7,7 +7,9 @@ import java.util.Set;
 import static baseball.domain.Ball.*;
 
 public class Balls {
+
     private static final String ERROR_MESSAGE = "입력한 숫자는 1에서 9 사이의 중복되지 않는 3자리여야 합니다.";
+
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
@@ -30,7 +32,6 @@ public class Balls {
     }
 
     private boolean isBall(int index, Balls playerBalls) {
-        // index 위치의 컴퓨터 공과 플레이어 공의 번호를 비교하여 볼인지 확인
         boolean isNotStrike = !isStrike(index, playerBalls);
         boolean isContainsOtherBall = this.containsOtherBall(playerBalls.getBall(index));
         return isNotStrike && isContainsOtherBall;

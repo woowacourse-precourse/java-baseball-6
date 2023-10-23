@@ -3,6 +3,7 @@ package baseball.domain;
 import static baseball.domain.Ball.BALL_SIZE;
 
 public record GameResult(int balls, int strikes) {
+
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
@@ -11,10 +12,10 @@ public record GameResult(int balls, int strikes) {
         if (isNothing()) {
             return NOTHING;
         }
-        else if (isOnlyBall()) {
+        if (isOnlyBall()) {
             return balls + BALL;
         }
-        else if (isOnlyStrike()) {
+        if (isOnlyStrike()) {
             return strikes + STRIKE;
         }
 
