@@ -33,7 +33,7 @@ public class ComputerNumber {
     }
 
     //게임 재시작 메서드
-    public void reset(){
+    public void resetGame(){
         generateRandomNumber();
     }
 
