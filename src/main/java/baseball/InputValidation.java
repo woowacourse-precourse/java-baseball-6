@@ -29,6 +29,7 @@ public class InputValidation {
 
     public void validateInputNumber(String input) throws IllegalArgumentException {
         Set<Character> charSet = input.chars().mapToObj(c -> (char)c).collect(Collectors.toSet());
+
         if (charSet.size() != 3) {
             throw new IllegalArgumentException("숫자를 중복하지 않고 입력해주시기 바랍니다.");
         }
@@ -58,11 +59,9 @@ public class InputValidation {
     }
 
     public List<Integer> userInputToList(String userInput) {
-        List<Integer> userInputList = new ArrayList<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            char c = userInput.charAt(i);
-            userInputList.add(Character.getNumericValue(c));
-        }
+        List<Integer> userInputList = userInput.chars()
+                .mapToObj(c -> Character.getNumericValue((char) c))
+                .collect(Collectors.toList());
         return userInputList;
     }
 }
