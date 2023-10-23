@@ -30,6 +30,7 @@ public enum GameResultMessage {
         return this.message;
     }
 
+    // 게임 종료 조건을 조회하기 위한 메서드 추가
     public static int getTargetCode() {
         return STRIKE_3.getCode();
     }
