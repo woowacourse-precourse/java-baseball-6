@@ -10,10 +10,10 @@ public class Application {
     public static void main(String[] args) {
         //게임 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
-
+        Scanner sc = new Scanner(System.in);
         int playing = 1;
 
-        Scanner sc = new Scanner(System.in);
+
 
         while (playing == 1) {
             //랜덤 숫자 생성
@@ -26,6 +26,7 @@ public class Application {
             }
 
 
+
             //사용자 숫자 입력(맞을 때까지 반복)
             int ans = 0;
 
@@ -35,6 +36,7 @@ public class Application {
 
                 System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> user = new ArrayList<>();
+
                 String input = sc.next();
 
                 for (String num : input.split("")) {
@@ -83,17 +85,17 @@ public class Application {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
                 }
             }
-        }
-        //게임 재시작 여부 확인
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String playAgain = sc.next();
+            //게임 재시작 여부 확인
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String playAgain = sc.next();
 
-        if(playAgain.equals("1")) {
-            main(args);
-        } else if (playAgain.equals("2")) {
-            playing = 0;
-        } else {
-            throw new IllegalArgumentException();
+            if(playAgain.equals("1")) {
+                playing = 1;
+            } else if (playAgain.equals("2")) {
+                playing = 0;
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
