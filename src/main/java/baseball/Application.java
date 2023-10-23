@@ -9,6 +9,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.util.PrintUtils.printMessage;
+import static baseball.util.PrintUtils.println;
+
 public class Application {
     private static boolean isGameToBeContinued = true;
 
@@ -95,7 +98,7 @@ public class Application {
         String ballMessage = (score.getBallCount() != 0) ? score.getBallCount() + Message.BALL.getMessage() : "";
         String strikeMessage = (score.getStrikeCount() != 0) ? score.getStrikeCount() + Message.STRIKE.getMessage() : "";
 
-        System.out.println((ballMessage + " " + strikeMessage).trim());
+        println((ballMessage + " " + strikeMessage));
     }
 
     private static void printIfStrikeOutFrom(Score score) {
@@ -108,9 +111,5 @@ public class Application {
         printMessage(Message.GAME_END_PROMPT);
 
         isGameToBeContinued = !Console.readLine().equals(GameOverSignal.FINISH.getNumber());
-    }
-
-    private static void printMessage(Message message) {
-        System.out.println(message.getMessage());
     }
 }
