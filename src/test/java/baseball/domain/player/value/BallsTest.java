@@ -81,7 +81,7 @@ class BallsTest {
         // when
         List<Ball> filteredBalls = new ArrayList<>();
         for (int i = 0; i < target.size(); i++) {
-            Ball ball = target.getBalls().get(i);
+            Ball ball = target.getBall(i);
             if (source.isContain(ball)) {
                 filteredBalls.add(ball);
             }

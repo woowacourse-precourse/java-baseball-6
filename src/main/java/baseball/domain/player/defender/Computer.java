@@ -43,10 +43,9 @@ public class Computer implements Defender {
 	private List<Result> calculateResult(Balls target) {
 		List<Result> results = new ArrayList<>();
 		Long targetSize = target.size();
-		List<Ball> balls = target.getBalls();
 		for (int i = 0; i < targetSize; i++) {
-			Ball ball = balls.get(i);
-			if (this.balls.isPosition(ball, (long) i)) {
+			Ball ball = target.getBall(i);
+			if (balls.isPosition(ball, (long) i)) {
 				results.add(Result.STRIKE);
 				continue;
 			}

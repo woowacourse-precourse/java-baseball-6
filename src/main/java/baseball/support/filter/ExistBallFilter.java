@@ -19,9 +19,8 @@ public class ExistBallFilter {
 
 	public static Balls filter(Balls source, Balls target) {
 		List<Ball> filteredBalls = new ArrayList<>();
-		List<Ball> balls = target.getBalls();
 		for (int i = 0; i < target.size(); i++) {
-			Ball ball = balls.get(i);
+			Ball ball = target.getBall(i);
 			if (source.isContain(ball)) {
 				filteredBalls.add(ball);
 			}
