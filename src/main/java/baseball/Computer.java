@@ -10,22 +10,22 @@ import java.util.Set;
 import static baseball.Constants.*;
 
 public class Computer {
-    private final List<Integer> numbers;
+    private final Numbers numbers;
 
     public Computer() {
         this.numbers = generateNumbers();
     }
 
-    private List<Integer> generateNumbers() {
-        Set<Integer> uniqueNumbers = new HashSet<>();
-        while (uniqueNumbers.size() < NUMBERS_SIZE) {
+    private Numbers generateNumbers() {
+        Set<Integer> randomNumbers = new HashSet<>();
+        while (randomNumbers.size() < NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_MIN_RANGE, NUMBER_MAX_RANGE);
-            uniqueNumbers.add(randomNumber);
+            randomNumbers.add(randomNumber);
         }
-        return new ArrayList<>(uniqueNumbers);
+        return new Numbers(new ArrayList<>(randomNumbers));
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return numbers.getNumbers();
     }
 }
