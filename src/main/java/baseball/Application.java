@@ -9,17 +9,17 @@ public class Application {
     public static void startBaseball() {
         int strike = 0;
 
+        // 게임 시작 문구 출력
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        // 컴퓨터가 1~9까지의 서로 다른 임의의 수 3개 선택
+        String computer = "";
+        for (int i=0;i<3;i++) {
+            computer+= Integer.toString(Randoms.pickNumberInRange(1, 9));
+        }
+
         // 3스트라이크가 될 때까지 반복
         while (strike<3) {
-
-            // 게임 시작 문구 출력
-            System.out.println("숫자 야구 게임을 시작합니다.");
-
-            // 컴퓨터가 1~9까지의 서로 다른 임의의 수 3개 선택
-            String computer = "";
-            for (int i=0;i<3;i++) {
-                computer+= Integer.toString(Randoms.pickNumberInRange(1, 9));
-            }
 
             // 플레이어에게 숫자 입력받기
             System.out.println("숫자를 입력해주세요 : ");
