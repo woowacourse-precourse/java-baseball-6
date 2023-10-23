@@ -20,7 +20,7 @@ public class Application {
             }
             while (true) {
                if (input.length() !=3) {
-                   throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+                   throw new IllegalArgumentException("세 개의 숫자를 입력해주세요.");
                }
                try {
                    Integer.parseInt(input);
