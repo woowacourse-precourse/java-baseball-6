@@ -5,6 +5,34 @@ import java.util.List;
 
 public class Validation {
 
+    public boolean isValidate(String num, String option) {
+        boolean flag = true;
+        // 게임 진행중 입력
+        if (option.equals("gaming")) {
+            if (!isNotNull(num) || !isDigitInput(num) || !isThreeLength(num) || !isEachUnique(num)) {
+                flag = false;
+            }
+        }
+        // 게임 종료 후 입력
+        else if (option.equals("game over")) {
+            if (!isNotNull(num) || !isDigitInput(num) || !isOneLength(num) || !isOneOrTwo(num)) {
+                flag = false;
+            }
+        }
+        // 유효하지 않은 입력 값일 경우
+        try {
+            if (!flag) {
+                throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 게임을 종료합니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            System.exit(1);
+
+        }
+
+        return flag;
+    }
+
     public boolean isNotNull(String num) {
         boolean flag = true;
 
