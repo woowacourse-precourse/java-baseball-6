@@ -7,7 +7,7 @@ import java.util.Set;
 import static baseball.service.NumberGenerator.NUMBER_COUNT;
 import static baseball.util.ErrorMessage.*;
 
-public abstract class GameNumber {
+public class GameNumber {
 
     public GameNumber(List<Integer> number) {
         checkNumber(number);
