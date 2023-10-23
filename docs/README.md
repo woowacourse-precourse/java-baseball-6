@@ -31,9 +31,9 @@
 
 ### 게임 플레이어의 숫자 입력 기능
 
-- [ ] 사용자로부터 숫자를 입력 받는 함수(readNumbers)를 구현
-    - [ ] camp.nextstep.edu.missionutils.Console 클래스를 사용
-    - [ ] 입력한 문자열을 반환
+- [x] 사용자로부터 숫자를 입력 받는 함수(readNumbers)를 구현
+    - [x] camp.nextstep.edu.missionutils.Console 클래스를 사용
+    - [x] 입력한 문자열을 반환
 - [ ] PlayerController에서 입력값 유효성 검사 함수 구현
     - [ ] 입력에 숫자 (1 ~ 9)가 아닌 다른 문자가 포함된 경우
     - [ ] 입력의 길이가 3이 아닌 경우
