@@ -1,15 +1,12 @@
 package baseball.ServiceTest;
 
-import baseball.service.GameService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import baseball.service.GameService;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class GameServiceTest {
 
@@ -19,7 +16,7 @@ public class GameServiceTest {
         //given
         List<Integer> parsedInputNumber = GameService.parsingInputNumber("123");
         //when
-        List<Integer> expected = List.of(1,2,3);
+        List<Integer> expected = List.of(1, 2, 3);
         //then
         assertEquals(parsedInputNumber, expected);
     }
@@ -49,4 +46,18 @@ public class GameServiceTest {
         });
     }
 
+    @Test
+    @DisplayName("스트라이크와 볼 갯수의 반환값 검증")
+    public void 스트라이크_볼_갯수_비교() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(1, 3, 9);
+
+        //when
+        List<Integer> result = GameService.playGame(computerNumber, userNumber);
+
+        //then
+        assertEquals(1, result.get(0)); // strike 1
+        assertEquals(1, result.get(1)); // ball 1
+    }
 }
