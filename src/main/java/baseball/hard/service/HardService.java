@@ -12,7 +12,6 @@ public class HardService extends CommonNumberService {
     public boolean isCountOver(int count){
         return count > COUNT_LIMIT;
     }
-
     //timeover 체크
     public boolean isTimeOver(long time){
         return time - inputStartTime <= TIME_LIMIT;
