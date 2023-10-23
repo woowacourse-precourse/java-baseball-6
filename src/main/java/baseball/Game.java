@@ -1,14 +1,17 @@
 package baseball;
 
 import static baseball.constant.NumberConstants.COUNT_ZERO;
-import static baseball.constant.NumberConstants.EXIT_NUMBER_STRING;
 import static baseball.constant.NumberConstants.GAME_END_CONDITION;
-import static baseball.constant.NumberConstants.RESTART_NUMBER_STRING;
-import static baseball.output.GameOutput.*;
+import static baseball.output.GameOutput.printCorrectBallCount;
+import static baseball.output.GameOutput.printCorrectStrikeCount;
+import static baseball.output.GameOutput.printNewLine;
+import static baseball.output.GameOutput.printStrikeThree;
+import static baseball.output.GameOutput.printlnEndMessage;
+import static baseball.output.GameOutput.printlnNothing;
+import static baseball.output.GameOutput.printlnStartMessage;
 
 import baseball.computer.RandomComputerNumberGenerator;
 import baseball.user.UserInput;
-import java.util.Objects;
 
 public class Game {
 
@@ -19,15 +22,11 @@ public class Game {
     }
 
     public void start() {
-        String gameStatus = RESTART_NUMBER_STRING;
-        while (isEqualToRestartNumberString(gameStatus)) {
+        GameStatus gameStatus = GameStatus.RESTART;
+        while (gameStatus == GameStatus.RESTART) {
             playRound(generateComputerNumberString());
-            gameStatus = wantsToRestart();
+            gameStatus = determineRestart();
         }
-    }
-
-    private boolean isEqualToRestartNumberString(String gameStatus) {
-        return Objects.equals(gameStatus, RESTART_NUMBER_STRING);
     }
 
     private String generateComputerNumberString() {
@@ -90,17 +89,17 @@ public class Game {
         printNewLine();
     }
 
-    private String wantsToRestart() {
-        String gameStatus = userInput.readOneOrTwo();
-        if (isEqualToRestartNumberString(gameStatus)) {
-            return RESTART_NUMBER_STRING;
+    private GameStatus determineRestart() {
+        GameStatus gameStatus = GameStatus.chooseStatus(userInput.readOneOrTwo());
+        if (gameStatus == GameStatus.EXIT) {
+            printlnEndMessage();
         }
 
-        printlnEndMessage();
-        return EXIT_NUMBER_STRING;
+        return gameStatus;
     }
 
     private record Result(int strikeCount, int ballCount) {
+
         boolean isNothing() {
             return strikeCount == COUNT_ZERO && ballCount == COUNT_ZERO;
         }
