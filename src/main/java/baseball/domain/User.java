@@ -8,6 +8,19 @@ public class User {
     private String userNumber;
 
 
+    public void createUserNumber(String userNumber){
+        this.userNumber = userNumber;
+        validateUserNumber(userNumber);
+    }
+
+
+
+    public String getUserNumber(){
+        return this.userNumber;
+    }
+
+
+
     public void validateUserNumber(String userNumber) {
         if (userNumber.length() != 3) throw new IllegalArgumentException();
 
@@ -24,7 +37,6 @@ public class User {
                 }
             }
         }
-        this.userNumber = userNumber;
     }
 
 

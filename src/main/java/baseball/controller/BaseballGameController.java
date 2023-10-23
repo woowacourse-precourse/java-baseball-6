@@ -16,14 +16,12 @@ public class BaseballGameController {
     }
 
     public void gameStart() {
-        String userNumber;
         this.baseballGame=new BaseballGame();
         this.user = new User();
         do {
             InputView.printInputNumberMessage();
-            userNumber = InputView.readUserNumberInput();
-            user.validateUserNumber(userNumber);
-            String result = baseballGame.compareTwoNumbers(userNumber);
+            user.createUserNumber(InputView.readUserNumberInput());
+            String result = baseballGame.compareTwoNumbers(user.getUserNumber());
             String [] results = baseballGame.splitCountResult(result);
             new OutputView(results);
             gameResult(results);
