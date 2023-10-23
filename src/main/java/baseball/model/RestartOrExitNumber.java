@@ -19,6 +19,6 @@ public class RestartOrExitNumber {
     }
 
     private boolean isCorrectNumber(int restartOrExitNumber) {
-        return (restartOrExitNumber != GAME_RESTART_NUMBER) || (restartOrExitNumber != GAME_EXIT_NUMBER);
+        return (restartOrExitNumber != GAME_RESTART_NUMBER) && (restartOrExitNumber != GAME_EXIT_NUMBER);
     }
 }
