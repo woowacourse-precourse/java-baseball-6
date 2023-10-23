@@ -11,13 +11,13 @@ public class Computer {
     }
 
     public Boolean compareStrike(Player player, int idx) {
-        Integer playerNumber = player.getNumber(idx);
-        return this.numbers.get(idx).equals(playerNumber);
+        int playerNumber = player.getNumber(idx);
+        return numbers.get(idx).equals(playerNumber);
     }
 
     public Boolean compareBall(Player player, int idx) {
-        Integer playerNumber = player.getNumber(idx);
-        return this.numbers.contains(playerNumber) && !this.numbers.get(idx).equals(playerNumber);
+        int playerNumber = player.getNumber(idx);
+        return numbers.contains(playerNumber) && !numbers.get(idx).equals(playerNumber);
     }
 
     public Computer resetOrMaintain(GameState state, NumberGenerator numberGenerator) {
