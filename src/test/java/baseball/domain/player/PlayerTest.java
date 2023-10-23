@@ -42,4 +42,16 @@ class PlayerTest {
                 .isThrownBy(() -> Player.createByIntegerNumbers(inputNumbers))
                 .withMessage("중복된 숫자는 입력될 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("중복된 숫자가 입력되지 않으면 정상적으로 생성되어야 한다.")
+    public void createPlayerWithNonDuplicateNumbers() {
+        List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
+
+        // when
+        Player player = Player.createByIntegerNumbers(inputNumbers);
+
+        // then
+        assertThat(player).isNotNull();
+    }
 }
