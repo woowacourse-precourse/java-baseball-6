@@ -1,7 +1,7 @@
 package baseball;
 
 public class ResultMapper {
-    public String getResult(int equalsNumber, int equalsPosition) {
+    public static String getResult(int equalsNumber, int equalsPosition) {
         if (equalsNumber == 3 && equalsPosition == 3) {
             return "3스트라이크";
         }

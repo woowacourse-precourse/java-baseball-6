@@ -17,4 +17,5 @@ public class Result {
     public int getEqualsPosition() {
         return equalsPosition;
     }
+
 }
