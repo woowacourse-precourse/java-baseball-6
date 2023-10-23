@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.controller.baseballController;
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        baseballController baseballcontroller = new baseballController();
+        baseballcontroller.run();
     }
 }
