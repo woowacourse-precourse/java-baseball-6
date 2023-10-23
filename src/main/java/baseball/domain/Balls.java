@@ -1,7 +1,9 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Balls {
 
@@ -26,8 +28,9 @@ public class Balls {
     }
 
     public void convertToBalls(String nums) {
-        checkNum(nums);
         checkNumberLength(nums);
+        checkNum(nums);
+        checkDuplicates(nums);
 
         String[] numbers = nums.split("");
 
@@ -35,6 +38,15 @@ public class Balls {
             int ball = Integer.parseInt(num);
             checkContainZero(ball);
             addBall(ball);
+        }
+    }
+
+    private void checkDuplicates(String nums) {
+        Set<Character> deDuplication = new HashSet<>();
+        for (Character num : nums.toCharArray()) {
+            if (!deDuplication.add(num)) {
+                throw new IllegalArgumentException("서로 다른 정수를 입력해야 합니다.");
+            }
         }
     }
 
