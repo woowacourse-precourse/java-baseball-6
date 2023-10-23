@@ -8,7 +8,15 @@ public class GameManager {
         return gameMode;
     }
 
-    public void setGameMode(String mode) {
+    public void setPlayMode(String mode) {
         this.gameMode = GameMode.of(mode);
+    }
+
+    public boolean isEndMode() {
+        return this.gameMode == GameMode.END;
+    }
+
+    public void setEndMode() {
+        this.gameMode = GameMode.END;
     }
 }

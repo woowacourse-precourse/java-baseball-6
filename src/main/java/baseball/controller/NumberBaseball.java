@@ -5,8 +5,8 @@ import baseball.model.GameManager;
 import baseball.model.User;
 import baseball.service.GameService;
 import baseball.utils.RandomNumberGenerator;
-import baseball.view.Input;
-import baseball.view.Print;
+import baseball.view.InputView;
+import baseball.view.ResultView;
 
 public class NumberBaseball {
 
@@ -14,10 +14,10 @@ public class NumberBaseball {
         Computer computer = new Computer(new RandomNumberGenerator());
         User user = new User();
         GameManager gameManager = new GameManager();
-        Input input = new Input();
-        Print print = new Print();
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
         GameService gameService = new GameService();
 
-        return new GameController(computer, user, gameManager, input, print, gameService);
+        return new GameController(computer, user, gameManager, inputView, resultView, gameService);
     }
 }

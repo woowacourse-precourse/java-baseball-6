@@ -16,7 +16,7 @@ public class Computer {
     }
 
     // 컴퓨터가 서로 다른 3가지 수 생성
-    public void generate() {
+    public void generateNumbers() {
         List<Integer> randomNumber = numberGenerator.generateNumberInRange();
         for (Integer integer : randomNumber) {
             comNumber.add(integer);
