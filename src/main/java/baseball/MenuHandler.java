@@ -10,7 +10,15 @@ public class MenuHandler {
     public MenuHandler(Computer computer, Communicator communicator) {
         this.computer = computer;
         this.communicator = communicator;
-        initialHandle();
+    }
+
+    public void tryHandle() {
+        try {
+            initialHandle();
+            handle();
+        } catch (RuntimeException exception) {
+            communicator.printException(exception);
+        }
     }
 
     private void initialHandle() {
@@ -18,7 +26,7 @@ public class MenuHandler {
         runGame();
     }
 
-    public void handle() {
+    private void handle() {
         boolean runningFlag = true;
         while (runningFlag) {
             Menu menu = communicator.instructMenu();
