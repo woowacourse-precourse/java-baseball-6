@@ -1,20 +1,23 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-public class NumberBaseballTest {
+public class NumberBaseballTest extends NsTest {
     private final String 재시작명령 = "1";
     private final String 종료명령 = "2";
     private final String[] 예외명령들 = {"3", "ㄱ", "&", "a", "!"};
 
-    public void play() {
+    public void play(String command) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
 
-        while (isContinue(종료명령)) {
+        while (isContinue(command)) {
             startGame();
         }
     }
@@ -48,6 +51,13 @@ public class NumberBaseballTest {
     }
 
     @Test
+    void 재시작후_종료(){
+        assertSimpleTest(()->{
+            run( 재시작명령, 종료명령);
+        });
+    }
+
+    @Test
     void 게임_재시작_정상() {
         boolean normalCommand = isContinue(재시작명령);
 
@@ -68,4 +78,8 @@ public class NumberBaseballTest {
         }
     }
 
+    @Override
+    protected void runMain() {
+        play(readLine());
+    }
 }
