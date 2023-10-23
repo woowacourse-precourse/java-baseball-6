@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballManager {
-
     private List<Integer> ballNumbersList;
     private final int NUMBER_SIZE = Constant.fixed_Number_Size;
 
