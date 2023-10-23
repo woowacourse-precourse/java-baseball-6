@@ -1,5 +1,8 @@
 package baseball.model;
 
+import static baseball.ErrorMessage.DUPLICATED_NUMBER;
+import static baseball.ErrorMessage.INVALID_SIZE;
+import static baseball.ErrorMessage.NOT_NUMBER;
 import static baseball.NumericRange.COUNT;
 
 import java.util.ArrayList;
@@ -27,20 +30,20 @@ public class UserNumbers {
                 .map(Integer::parseInt)
                 .toList();
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
         }
     }
 
     private static void validateDuplicate(final List<Integer> inputNumbers) {
         int numbersSize = new HashSet<>(inputNumbers).size();
         if (inputNumbers.size() > numbersSize) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
     }
 
     private static void validateNumbersSize(final List<Integer> inputNumbers) {
         if (inputNumbers.size() != COUNT.getNumber()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_SIZE.getMessage());
         }
     }
 

@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.ErrorMessage.INVALID_INPUT;
+
 public class GameContinueNumber {
 
     private static final String CONTINUE_NUMBER = "1";
@@ -26,7 +28,7 @@ public class GameContinueNumber {
 
     private void validateNumber(final String number) {
         if (isValidNumberInput(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
     }
 
