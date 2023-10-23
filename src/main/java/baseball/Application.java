@@ -32,6 +32,9 @@ public class Application {
 
                 application.printResult(isNothing, strikeCount, ballCount);
                 isGameTermination = application.checkGameTermination(strikeCount);
+                if (isGameTermination) {
+                    application.executeRestartOrTerminate();
+                }
             }
         }
     }
@@ -118,6 +121,18 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    public void executeRestartOrTerminate() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
+
+        // Todo: 입력값 유효성 검사
+
+        if (choice.equals("2")) {
+            System.out.println("프로그램을 종료합니다.");
+            System.exit(0);
+        }
     }
 
     public void checkPlayerInputValidity(String input) {
