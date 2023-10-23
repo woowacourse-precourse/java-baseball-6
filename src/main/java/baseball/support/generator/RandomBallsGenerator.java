@@ -1,6 +1,6 @@
 package baseball.support.generator;
 
-import baseball.domain.player.value.Ball;
+import baseball.domain.player.value.Balls;
 import baseball.exception.state.UtilityClassConstructorException;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class RandomBallsGenerator {
 		throw new UtilityClassConstructorException();
 	}
 
-	public static List<Ball> generate(Long size) {
+	public static Balls generate(Long size) {
 		List<Long> numbers = new ArrayList<>();
 		while (numbers.size() < size) {
 			long randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
