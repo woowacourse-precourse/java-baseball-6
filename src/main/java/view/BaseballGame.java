@@ -1,7 +1,9 @@
 package view;
 
+import java.util.List;
 import number.ComputerNumber;
 import number.ComputerNumberGenerator;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 
@@ -14,5 +16,6 @@ public class BaseballGame {
         ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
         ComputerNumber computerNumber = computerNumberGenerator.createComputerNumber();
 
+        
     }
 }
