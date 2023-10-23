@@ -26,7 +26,7 @@ public class Application {
                 String userInput = Console.readLine();
 
                 if (!isValidInput(userInput)) {
-                    System.out.println("잘못 입력했습니다.");
+                    System.out.println("잘못된 입력입니다. 다시 입력하세요.");
                     continue;
                 }
 
@@ -35,8 +35,15 @@ public class Application {
                         .collect(Collectors.toList());
 
                 compareNumbers(userNumbers);
+                printResult(ballCount, strikeCount);
             }
-        }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            continueGame = askForRestart();
+
+        } while (continueGame);
+
+        System.out.println("게임을 종료합니다. 감사합니다.");
     }
 
 
@@ -95,6 +102,21 @@ public class Application {
                 System.out.printf("%d 스트라이크", strike);
             }
             System.out.println();
+        }
+
+        public static boolean askForRestart() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            while (true) {
+                String userInput = Console.readLine();
+                if("1".equals(userInput)) {
+                    return true;
+                } else if ("2".equals(userInput)) {
+                    return false;
+                } else {
+                    System.out.println("잘못된 입력입니다. 다시 입력하세요.");
+                }
+            }
         }
 
     }
