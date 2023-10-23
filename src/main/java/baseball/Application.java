@@ -65,6 +65,27 @@ public class Application {
         }
     }
 
+    static boolean checkInput() {
+        String input = Console.readLine();
+
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        } else if (input.charAt(0) != '1' && input.charAt(0) != '2') {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        return input.charAt(0) == '2';
+    }
+
+    static boolean checkResult(Result result, List<Integer> computer) {
+        if (result.getStrike() == 3) {
+            computer.clear();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return checkInput();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -77,7 +98,9 @@ public class Application {
             Result result = evaluate(player, computer);
 
             printResult(result);
-            break;
+            if (checkResult(result, computer)) {
+                break;
+            }
         }
     }
 }
