@@ -6,6 +6,8 @@ import java.util.Set;
 
 public class BaseballException {
 
+    private BaseballService baseballService = new BaseballService();
+
     // 중복 검사 함수
     public boolean isDuplicationExist(String randomNum) {
         ArrayList<Character> randomNumList = new ArrayList<Character>();
@@ -20,12 +22,10 @@ public class BaseballException {
     }
 
     // 문자열이 모두 숫자로만 이루어져있는지 검사하는 함수
-    public boolean isCharacterExist(String randomNum) {
-        try{
-            Integer.parseInt(randomNum);
-            return false;
-        } catch(NumberFormatException e){
-            return true;
+    public void isCharinString(String randomNum) {
+        // 플레이어가 입력한 수에 문자가 있는 경우 예외처리
+        if (baseballService.isCharacterExist(randomNum)){
+            throw new IllegalArgumentException();
         }
     }
 

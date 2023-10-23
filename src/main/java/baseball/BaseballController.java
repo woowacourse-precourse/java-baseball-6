@@ -24,13 +24,10 @@ public class BaseballController {
 
             baseballException.isLengthValid(randomNum);
 
-            // 플레이어가 입력한 수에 중복되는 수가 존재할 경우 예외처리
-            if (baseballException.isDuplicationExist(randomNum)){
-                throw new IllegalArgumentException();
-            }
+            baseballException.isCharinString(randomNum);
 
             // 플레이어가 입력한 수에 문자가 있는 경우 예외처리
-            if (baseballException.isCharacterExist(randomNum)){
+            if (baseballService.isCharacterExist(randomNum)){
                 throw new IllegalArgumentException();
             }
 
