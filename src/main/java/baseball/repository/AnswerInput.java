@@ -47,9 +47,6 @@ public class AnswerInput {
     public void inputNumber() {
         System.out.print(Constants.ASK_GAME_NUMBER);
         String answer = Console.readLine();
-//        if (answer.contains(" ")) {
-//            answer = answer.replaceAll(" ", "");
-//        }
         if (isValidInputNumberFormat(answer)) {
             InputExceptionError.throwIllegalArgumentException();
         }
