@@ -10,47 +10,28 @@ import org.junit.jupiter.api.Test;
 public class ComputerTest {
 
     @Test
-    void 컴퓨터_숫자비교_Strike_테스트() {
-        Computer computer = new Computer(Arrays.asList(1, 2, 3));
+    void initNumbers_길이_제한_테스트() {
+        Computer computer = new Computer();
 
-        List<Integer> testNumbers = new ArrayList<>(Arrays.asList(1, 2, 3));
+        computer.initNumbers();
 
-        int[] expected = {3, 0};
+        List<Integer> numbers = computer.getNumbers();
+        int resultLength = BaseballValues.MAX_NUMBER_LENGTH.getValue();
 
-        assertThat(computer.compareNumber(testNumbers)).isEqualTo(expected);
+        assertThat(numbers.size()).isEqualTo(resultLength);
     }
 
     @Test
-    void 컴퓨터_숫자비교_Ball_테스트() {
-        Computer computer = new Computer(Arrays.asList(1, 2, 3));
+    void initNumbers_중복_숫자_검증() {
 
-        List<Integer> testNumbers = new ArrayList<>(Arrays.asList(4, 1, 2));
+        List<Integer> duplicationNumbers = new ArrayList<>(Arrays.asList(1, 1, 1));
 
-        int[] expected = {0, 2};
+        Computer computer = new Computer(duplicationNumbers);
 
-        assertThat(computer.compareNumber(testNumbers)).isEqualTo(expected);
+        computer.initNumbers();
+
+        List<Integer> numbers = computer.getNumbers();
+
+        assertThat(numbers).isNotIn(1);
     }
-
-    @Test
-    void 컴퓨터_숫자비교_StrikeAndBall_테스트() {
-        Computer computer = new Computer(Arrays.asList(1, 2, 3));
-
-        List<Integer> testNumbers = new ArrayList<>(Arrays.asList(1, 3, 2));
-
-        int[] expected = {1, 2};
-
-        assertThat(computer.compareNumber(testNumbers)).isEqualTo(expected);
-    }
-
-    @Test
-    void 컴퓨터_숫자비교_낫싱_테스트() {
-        Computer computer = new Computer(Arrays.asList(1, 2, 3));
-
-        List<Integer> testNumbers = new ArrayList<>(Arrays.asList(4, 7, 9));
-
-        int[] expected = {0, 0};
-
-        assertThat(computer.compareNumber(testNumbers)).isEqualTo(expected);
-    }
-
 }
