@@ -15,6 +15,10 @@ public class BaseBallGameController {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
     private static final Converter converter = new Converter();
+    private static final int INPUT_LENGTH = 3;
+    private static final int MAXIMUM_NUMBER = 9;
+    private static final int MINIMUM_NUMBER = 1;
+
 
     public void run() {
         outputView.printStartMessage();
@@ -42,13 +46,16 @@ public class BaseBallGameController {
 
     private List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < INPUT_LENGTH) {
+            int randomNumber = generateRandomNumber();
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
         return computer;
+    }
+    private int generateRandomNumber(){
+        return Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
     }
 
     private boolean isEnd(int sign) {
