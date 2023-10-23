@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.controller.GameController.NUMBER_SIZE;
+
 import baseball.util.Parser;
 
 public class Hint {
@@ -20,13 +22,17 @@ public class Hint {
 		return strike == size;
 	}
 
-	private void compare(TargetNumber targetNumber, InputNumber inputNumber) {
-		String input = inputNumber.getNumber();
-		String target = targetNumber.getNumber();
+	private void compare(TargetNumber target, InputNumber input) {
+		String targetNumber = target.getNumber();
+		String inputNumber = input.getNumber();
 
-		for (int i = 0; i < input.length(); i++) {
-			char inputDigit = input.charAt(i);
+		compare(targetNumber, inputNumber);
+	}
+
+	private void compare(String target, String input) {
+		for (int i = 0; i < NUMBER_SIZE; i++) {
 			char targetDigit = target.charAt(i);
+			char inputDigit = input.charAt(i);
 
 			if (inputDigit == targetDigit) {
 				strike++;
