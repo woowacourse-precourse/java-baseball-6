@@ -46,7 +46,7 @@ public class BaseballController {
     }
 
     private Computer initializeComputer() {
-        messageService.startGame();
+        messageService.announceStartGame();
         return computerService.create();
     }
 }

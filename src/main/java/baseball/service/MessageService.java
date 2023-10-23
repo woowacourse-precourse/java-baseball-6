@@ -13,7 +13,7 @@ public class MessageService {
     private static final String STRIKES_MESSAGE = "스트라이크";
 
 
-    public void startGame() {
+    public void announceStartGame() {
         System.out.println(START_GAME_MASSAGE);
     }
 
