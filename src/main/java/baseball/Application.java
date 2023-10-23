@@ -32,6 +32,21 @@ public class Application {
         return true;
     }
 
+    public static boolean isValidRestart(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        if (input.matches("^[1-2]")) {
+            if (input.equals("1")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
+
     public static List<Integer> stringToList(String input) {
         char[] strChar = input.toCharArray();
         List<Integer> userNum = new ArrayList<Integer>();
@@ -47,37 +62,41 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNum = randomNumMaker();
-        while (true) {
+        boolean game = true;
+        while (game) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (!isValidNumber(input)) {
                 throw new IllegalArgumentException();
             } else {
                 List<Integer> userNum = stringToList(input);
-                System.out.println(userNum + "" + computerNum);
                 int strike = 0;
                 int ball = 0;
                 for (int i = 0; i < userNum.size(); i++) {
                     if (userNum.get(i).equals(computerNum.get(i))) {
                         strike++;
-                    } else if(computerNum.contains(userNum.get(i))){
+                    } else if (computerNum.contains(userNum.get(i))) {
                         ball++;
                     }
                 }
-                if (strike == 3){
+                if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String again = Console.readLine();
+                    if (isValidRestart(again)) {
+                        computerNum = randomNumMaker();
 
+                    } else {
+                        game = false;
+                    }
 
                 }
-                if (ball>0){
+                if (ball > 0) {
                     System.out.println(ball + "볼");
                 }
-                if (strike>0){
+                if (strike > 0) {
                     System.out.println(strike + "스트라이크");
                 }
-
 
 
             }
