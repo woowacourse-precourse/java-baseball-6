@@ -3,8 +3,6 @@ package baseball.domain;
 import static baseball.utils.Utility.convertStringToIntegerList;
 
 import baseball.ui.ConsoleInput;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class User implements IPlayer {
@@ -23,34 +21,14 @@ public class User implements IPlayer {
         this.numbers = generateInputNumber(NUMBER_BALLS);
     }
 
-    @Override
-    public Response respondsTo(IPlayer opponentUser) {
-        int strikeCount = 0;
-        int ballCount = 0;
-        int index = 0;
-
-        for (int ball : numbers) {
-            if (opponentUser.checkIfIsStrike(ball, index++)) {
-                ++strikeCount;
-            } else if (opponentUser.checkIfIsBall(ball)) {
-                ++ballCount;
-            }
-        }
-
-        return new Response(new ArrayList<>(Arrays.asList(strikeCount, ballCount)), NUMBER_BALLS);
-    }
-
-    @Override
     public boolean checkIfIsStrike(int ball, int index) {
         return numbers.get(index) == ball;
     }
 
-    @Override
     public boolean checkIfIsBall(int ball) {
         return numbers.contains(ball);
     }
 
-    @Override
     public int countNumberBalls() {
         return numbers.size();
     }

@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
-    private static IPlayer user;
+    private static User user;
     private static InputStream originalSystemIn;
     private static final int NUMBER_BALLS = 3;
 
