@@ -21,12 +21,12 @@ public class Game {
             String hint = hintGenerator.getHint(computerNumber, playerNumber); // Hint 결과 확인
             System.out.println(hint);
             if (hint.equals(STRIKE3)) {
-                decideNextStep();
+                gameOver();
             }
         }
     }
 
-    public void decideNextStep() {
+    public void gameOver() {
         System.out.println(GAME_OVER_MESSAGE);
         String num = Console.readLine();
         if (!num.equals("1") && !num.equals("2")) { // 예외 처리
