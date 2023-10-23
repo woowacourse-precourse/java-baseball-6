@@ -9,8 +9,8 @@ public abstract class Computer {
 
     protected final List<Integer> numbers = new ArrayList<>();
 
-    public List<Integer> generateNumbers(Rule rule, int numberCount) {
-        while (numbers.size() < numberCount) {
+    public List<Integer> generateNumbers(Rule rule) {
+        while (numbers.size() < rule.digits()) {
             generateEachNumber(rule);
         }
         return numbers;
