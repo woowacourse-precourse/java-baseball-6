@@ -24,7 +24,7 @@ public class Game {
         Computer computer = new Computer();
         List<Integer> computerNumber = computer.getComputerNumber();
         while(true) {
-            User user = new User();
+            //User user = new User();
             System.out.print("숫자를 입력해주세요 : ");
             ArrayList<Integer> userNumber = parsingInputNumber(InputView.Input());
             List<Integer> gameResult = playGame(computerNumber, userNumber);
