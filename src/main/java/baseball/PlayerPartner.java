@@ -6,15 +6,16 @@ public class PlayerPartner {
     private int answer = 0;
     private boolean[] answerSheet = new boolean[10];
 
-    public PlayerPartner(){}
+    public PlayerPartner() {
+    }
 
     private void writeAnswer() {
         StringBuffer stringAnswer = new StringBuffer();
 
-        while(stringAnswer.length() < 3){
+        while (stringAnswer.length() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
 
-            if(!this.answerSheet[number]){
+            if (!this.answerSheet[number]) {
                 this.answerSheet[number] = true;
                 stringAnswer.append(number);
             }
@@ -23,12 +24,12 @@ public class PlayerPartner {
         this.answer = Integer.parseInt(stringAnswer.toString());
     }
 
-    public void startGame(){
+    public void startGame() {
         writeAnswer();
 
         int strikeCount = 0;
 
-        while(isContinue(strikeCount)){
+        while (isContinue(strikeCount)) {
             int playerNumbers = Player.nextNumberOf().getNumber();
             strikeCount = getStrikeCount(playerNumbers);
             int ballCount = getBallCount(playerNumbers, strikeCount);
@@ -40,11 +41,11 @@ public class PlayerPartner {
     private int getStrikeCount(int playerNumbers) {
         int strikeCount = 0;
         int standardNumbers = this.answer;
-        while(playerNumbers % 10 > 0){
+        while (playerNumbers % 10 > 0) {
             int playerNumber = playerNumbers % 10;
             int partnerNumber = standardNumbers % 10;
 
-            if(playerNumber == partnerNumber){
+            if (playerNumber == partnerNumber) {
                 strikeCount++;
             }
 
@@ -58,10 +59,10 @@ public class PlayerPartner {
     private int getBallCount(int playerNumbers, int strikeCount) {
         int matchCount = 0;
 
-        while(playerNumbers % 10 > 0){
+        while (playerNumbers % 10 > 0) {
             int playerNumber = playerNumbers % 10;
 
-            if(this.answerSheet[playerNumber]){
+            if (this.answerSheet[playerNumber]) {
                 matchCount++;
             }
 

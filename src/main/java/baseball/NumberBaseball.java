@@ -3,11 +3,11 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class NumberBaseball {
-    public void play(){
+    public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         new PlayerPartner().startGame();
 
-        while(isContinue()){
+        while (isContinue()) {
             new PlayerPartner().startGame();
         }
     }
@@ -18,7 +18,7 @@ public class NumberBaseball {
 
         String command = readLine();
 
-        if(command.equals("1")){
+        if (command.equals("1")) {
             System.out.println(command);
             return true;
         }
