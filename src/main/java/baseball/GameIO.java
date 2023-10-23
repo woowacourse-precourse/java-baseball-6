@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class GameIO {
 
     public static void gameResultPrint(int strikeCount, int ballCount) {
@@ -31,6 +33,25 @@ public class GameIO {
 
     static void gameInputPrint() {
         System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    static Balls scanGameBalls() {
+        String ballsStr = Console.readLine();
+        validationInput(ballsStr);
+
+        return new Balls(
+                new Ball(ballsStr.charAt(0) - '0')
+                , new Ball(ballsStr.charAt(1) - '0')
+                , new Ball(ballsStr.charAt(2) - '0'));
+    }
+
+    private static void validationInput(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("3자리가 아닙니다.");
+        }
+        if (!input.matches("[1-9]+")) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
     }
 
 }
