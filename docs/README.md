@@ -19,12 +19,12 @@
     - [x] 유저의 입력값과 정답을 비교하여 볼과 스트라이크 계산 구현
 
 
-- [ ] 유저가 보게될 View 클래스 구현 (Narrator)
-    - [ ] 게임 시작 메시지 출력 구현
-    - [ ] 게임 끝 메시지 출력 구현
-    - [ ] 숫자 입력 메시지 출력 구현
-    - [ ] 게임 재시작 메시지 출력 구현
-    - [ ] BallStrikeCalculator가 전달한 Score 출력 구현
+- [x] 유저가 보게될 View 클래스 구현 (Narrator)
+    - [x] 게임 시작 메시지 출력 구현
+    - [x] 게임 끝 메시지 출력 구현
+    - [x] 숫자 입력 메시지 출력 구현
+    - [x] 게임 재시작 메시지 출력 구현
+    - [x] BallStrikeCalculator가 전달한 Score 출력 구현
 
 
 - [ ] 숫자야구를 컨트롤하는 Controller 클래스 구현 (BaseballController)
