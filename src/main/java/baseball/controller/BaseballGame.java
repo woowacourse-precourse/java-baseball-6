@@ -2,18 +2,18 @@ package baseball.controller;
 
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
-import baseball.utils.CompareNumber;
+import baseball.utils.NumberComparator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class NumberBaseball {
+public class BaseballGame {
     private final Computer computer;
-    private final CompareNumber compareNumber;
+    private final NumberComparator numberComparator;
     private Player player;
 
-    public NumberBaseball() {
+    public BaseballGame() {
         computer = new Computer();
-        compareNumber = new CompareNumber();
+        numberComparator = new NumberComparator();
     }
 
     public void start() {
@@ -30,7 +30,7 @@ public class NumberBaseball {
     }
 
     public int[] getCompareResult() {
-        return compareNumber.getCompareNumberResult(computer.getComputerNumbers(), player.getPlayerNumbers());
+        return numberComparator.getCompareNumberResult(computer.getComputerNumbers(), player.getPlayerNumbers());
     }
 
     public void printHint(int[] count) {
@@ -65,7 +65,7 @@ public class NumberBaseball {
     }
 
     public boolean isContinue() {
-        if (compareNumber.isCorrect()) {
+        if (numberComparator.isCorrect()) {
             OutputView.printGameClear();
             return false;
         }

@@ -1,23 +1,23 @@
 package baseball.model.domain;
 
-import baseball.model.service.RestartNumber;
-import baseball.model.service.RestartNumberImpl;
+import baseball.model.service.RestartOptionValidator;
+import baseball.model.service.RestartOptionValidatorImp;
 
 public class Restart {
-    private Integer restartNumber;
+    private Integer restartOption;
 
-    public Restart(String inputNumber) {
-        RestartNumber restartNumber = new RestartNumberImpl();
-        restartNumber.isNonNumber(inputNumber);
-        restartNumber.isLengthCorrect(inputNumber);
+    public Restart(String inputOption) {
+        RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
+        restartOptionValidator.isNonNumber(inputOption);
+        restartOptionValidator.isLengthCorrect(inputOption);
 
-        Integer convertNumber = convertNumber(inputNumber);
-        restartNumber.isRange(convertNumber);
-        this.restartNumber = convertNumber(inputNumber);
+        Integer convertNumber = convertNumber(inputOption);
+        restartOptionValidator.isRange(convertNumber);
+        this.restartOption = convertNumber(inputOption);
     }
 
-    public Integer getRestartNumber() {
-        return restartNumber;
+    public Integer getRestartOption() {
+        return restartOption;
     }
 
     public Integer convertNumber(String inputNumber) {

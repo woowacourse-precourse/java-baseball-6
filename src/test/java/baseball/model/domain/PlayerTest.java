@@ -1,6 +1,6 @@
 package baseball.model.domain;
 
-import static baseball.model.constants.Constant.NUMBER_SIZE;
+import static baseball.model.constants.GameConstants.PLAYER_NUMBERS_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -18,6 +18,6 @@ public class PlayerTest {
         List<Integer> playerNumbers = player.getPlayerNumbers();
 
         assertNotNull(numbers);
-        assertEquals(NUMBER_SIZE, playerNumbers.size());
+        assertEquals(PLAYER_NUMBERS_SIZE, playerNumbers.size());
     }
 }

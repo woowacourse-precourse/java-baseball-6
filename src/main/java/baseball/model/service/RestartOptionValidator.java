@@ -1,6 +1,6 @@
 package baseball.model.service;
 
-public interface RestartNumber {
+public interface RestartOptionValidator {
     void isNonNumber(String inputNumber);
 
     void isLengthCorrect(String inputNumber);

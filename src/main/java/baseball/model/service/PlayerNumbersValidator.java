@@ -2,7 +2,7 @@ package baseball.model.service;
 
 import java.util.List;
 
-public interface PlayerNumber {
+public interface PlayerNumbersValidator {
     void isNonNumber(String inputNumbers);
 
     void isLengthCorrect(List<Integer> convertNumbers);

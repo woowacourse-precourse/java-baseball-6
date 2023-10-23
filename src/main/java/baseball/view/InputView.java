@@ -1,7 +1,7 @@
 package baseball.view;
 
-import static baseball.model.constants.Constant.GAME_INPUT_PHRASE;
-import static baseball.model.constants.Constant.GAME_RESTART_PHRASE;
+import static baseball.model.constants.GameConstants.GAME_INPUT_PHRASE;
+import static baseball.model.constants.GameConstants.GAME_RESTART_PHRASE;
 
 import camp.nextstep.edu.missionutils.Console;
 

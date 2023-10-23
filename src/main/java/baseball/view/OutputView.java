@@ -1,10 +1,10 @@
 package baseball.view;
 
-import static baseball.model.constants.Constant.BALL;
-import static baseball.model.constants.Constant.GAME_CLEAR_PHRASE;
-import static baseball.model.constants.Constant.GAME_START_PHRASE;
-import static baseball.model.constants.Constant.NOTHING;
-import static baseball.model.constants.Constant.STRIKE;
+import static baseball.model.constants.GameConstants.BALL;
+import static baseball.model.constants.GameConstants.GAME_CLEAR_PHRASE;
+import static baseball.model.constants.GameConstants.GAME_START_PHRASE;
+import static baseball.model.constants.GameConstants.NOTHING;
+import static baseball.model.constants.GameConstants.STRIKE;
 
 public class OutputView {
     public static void printGameStart() {

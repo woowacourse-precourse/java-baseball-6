@@ -2,7 +2,7 @@ package baseball.utils;
 
 import java.util.List;
 
-public class CompareNumber {
+public class NumberComparator {
     private int ball;
     private int strike;
 

@@ -1,7 +1,7 @@
 package baseball.model.domain;
 
-import baseball.model.service.PlayerNumber;
-import baseball.model.service.PlayerNumberImpl;
+import baseball.model.service.PlayerNumbersValidator;
+import baseball.model.service.PlayerNumbersValidatorImp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +9,13 @@ public class Player {
     private List<Integer> playerNumbers;
 
     public Player(String inputNumbers) {
-        PlayerNumber playerNumber = new PlayerNumberImpl();
-        playerNumber.isNonNumber(inputNumbers);
+        PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
+        playerNumbersValidator.isNonNumber(inputNumbers);
 
         List<Integer> convertNumbers = convertNumbers(inputNumbers);
-        playerNumber.isLengthCorrect(convertNumbers);
-        playerNumber.isRange(convertNumbers);
-        playerNumber.isDuplicate(convertNumbers);
+        playerNumbersValidator.isLengthCorrect(convertNumbers);
+        playerNumbersValidator.isRange(convertNumbers);
+        playerNumbersValidator.isDuplicate(convertNumbers);
         this.playerNumbers = convertNumbers;
     }
 
