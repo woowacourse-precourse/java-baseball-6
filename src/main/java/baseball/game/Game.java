@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.domain.Answer;
+import baseball.domain.User;
 import baseball.type.MainSpeaker;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,14 +11,14 @@ import java.util.List;
 
 public class Game {
 
-    private boolean isReady;
     private String theAnswer;
     Answer answer = new Answer();
+    User user = new User();
 
     public void start() {
         System.out.println(MainSpeaker.GAME_START.getMainCall());
-        isReady = true;
-        while (isReady) {
+        user.setReady(true);
+        while (user.isReady()) {
             theAnswer = makeAnswer();
             System.out.println("answer: " + theAnswer);    // 테스트용
 
@@ -55,9 +56,9 @@ public class Game {
             System.out.println(MainSpeaker.ONE_MORE_GAME.getMainCall());
             int playOrStop = Integer.parseInt(Console.readLine());
             if (playOrStop == 1) {
-                isReady = true;
+                user.setReady(true);
             } else if (playOrStop == 2) {
-                isReady = false;
+                user.setReady(false);
             }
         }
     }
