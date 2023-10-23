@@ -7,18 +7,21 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Baseball {
+    PrintMessage printMessage = new PrintMessage();
+    ValidateNumber validateNumber = new ValidateNumber();
+    ComputerNumber computerNumber = new ComputerNumber();
+
+    public void StartGame() {
+        //1. 게임 시작
+        printMessage.startMessage();
+    }
     public void PlayGame() {
-        PrintMessage printMessage = new PrintMessage();
-        ValidateNumber validateNumber = new ValidateNumber();
-        ComputerNumber computerNumber = new ComputerNumber();
+
         boolean end = false;
         boolean game = false;
         int strike;
         int ball;
         String answer;
-
-        //1. 게임 시작
-        printMessage.startMessage();
 
         //2. 게임 진행
         while (!end) {
