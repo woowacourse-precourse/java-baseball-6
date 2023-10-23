@@ -12,7 +12,7 @@ public class Battle {
                 RerunOrNot.reGameStart();
                 break;
             }
-            List<Integer> newUserBalls = UserBalls.inputBalls(); // 게
+            List<Integer> newUserBalls = UserBalls.inputBalls(); // 정답이 아닐 시, 값 입력과 결과 판단을 계속 진행 
             result = Score.calculation(newUserBalls, computerBalls);
         }
     }
