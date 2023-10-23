@@ -79,24 +79,58 @@ public class GameService {
     }
 
     private String getResultMessage(Map<String, Integer> ballAndStrikeCount) {
-        String resultMessage = new String();
-        if ((ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE)) {
-            resultMessage = "낫싱";
+        StringBuilder resultMessage = new StringBuilder();
+        getNothingMessage(ballAndStrikeCount, resultMessage);
+        getBallMessage(ballAndStrikeCount, resultMessage);
+        getStrikeMessage(ballAndStrikeCount, resultMessage);
+        getBallAndStrikeMessage(ballAndStrikeCount, resultMessage);
+        return resultMessage.toString();
+    }
+
+    private void getNothingMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
+        if (isNothing(ballAndStrikeCount)) {
+            resultMessage.append("낫싱");
         }
-        if ((ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE)) {
-            resultMessage = ballAndStrikeCount.get("strikeCount") + "스트라이크";
+    }
+
+    private boolean isNothing(Map<String, Integer> ballAndStrikeCount) {
+        return (ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE) &&
+                (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE);
+    }
+
+    private void getBallMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
+        if (isOnlyBall(ballAndStrikeCount)) {
+            resultMessage.append(ballAndStrikeCount.get("ballCount") + "볼");
         }
-        if ((ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE)) {
-            resultMessage = ballAndStrikeCount.get("ballCount") + "볼";
+    }
+
+    private boolean isOnlyBall(Map<String, Integer> ballAndStrikeCount) {
+        return (ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE) &&
+                (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE);
+    }
+
+    private void getStrikeMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
+        if (isOnlyStrike(ballAndStrikeCount)) {
+            resultMessage.append(ballAndStrikeCount.get("strikeCount") + "스트라이크");
         }
-        if ((ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE)) {
-            resultMessage = ballAndStrikeCount.get("ballCount") + "볼 " +
-                    ballAndStrikeCount.get("strikeCount") + "스트라이크";
+    }
+
+    private boolean isOnlyStrike(Map<String, Integer> ballAndStrikeCount) {
+        return (ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE) &&
+                (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE);
+    }
+
+    private void getBallAndStrikeMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
+        if (isBallAndStrike(ballAndStrikeCount)) {
+            resultMessage.append(ballAndStrikeCount.get("ballCount"))
+                    .append("볼 ")
+                    .append(ballAndStrikeCount.get("strikeCount"))
+                    .append("스트라이크");
         }
-        return resultMessage;
+    }
+
+    private boolean isBallAndStrike(Map<String, Integer> ballAndStrikeCount) {
+        return (ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE) &&
+                (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE);
     }
 }
