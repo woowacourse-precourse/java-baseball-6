@@ -22,14 +22,15 @@ public class Game {
 
     public void startGame(){
         Computer computer = new Computer();
+        boolean oneGameFinished = false;
         List<Integer> computerNumber = computer.getComputerNumber();
-        while(true) {
+        while(!oneGameFinished) {
             //User user = new User();
             System.out.print("숫자를 입력해주세요 : ");
             ArrayList<Integer> userNumber = parsingInputNumber(InputView.Input());
             List<Integer> gameResult = playGame(computerNumber, userNumber);
             if(OutputView.outputResult(gameResult))
-                break;
+                oneGameFinished = true;
         }
     }
 
