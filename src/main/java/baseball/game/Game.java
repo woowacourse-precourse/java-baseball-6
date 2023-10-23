@@ -1,31 +1,46 @@
 package baseball.game;
 
+import baseball.domain.Answer;
 import baseball.type.MainSpeaker;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
     private boolean isReady;
     private String theAnswer;
-    private boolean isAnswer;
+    Answer answer = new Answer();
 
     public void start() {
         System.out.println(MainSpeaker.GAME_START.getMainCall());
         isReady = true;
         while (isReady) {
-            GameInitializer gameInitializer = new GameInitializer();
-            theAnswer = gameInitializer.makeAnswer();
+            theAnswer = makeAnswer();
             System.out.println("answer: " + theAnswer);    // 테스트용
 
-            isAnswer = false;
-            while (!isAnswer) {
+            answer.setCorrect(false);
+            while (!answer.isCorrect()) {
                 play();
             }
         }
     }
 
+    private String makeAnswer() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer.toString().replaceAll("[^0-9]", "");
+    }
+
     private void play() {
-        System.out.println(MainSpeaker.GUESS_NUMBER.getMainCall());
+        System.out.print(MainSpeaker.GUESS_NUMBER.getMainCall());
         String guessNum = Console.readLine();
         GameException.validateInput(guessNum);
         Counter counter = new Counter();
@@ -35,7 +50,7 @@ public class Game {
 
     private void playAgain(int resultCount) {
         if (resultCount == 3) {
-            isAnswer = true;
+            answer.setCorrect(true);
             System.out.println(MainSpeaker.CORRECT_ANSWER.getMainCall());
             System.out.println(MainSpeaker.ONE_MORE_GAME.getMainCall());
             int playOrStop = Integer.parseInt(Console.readLine());
