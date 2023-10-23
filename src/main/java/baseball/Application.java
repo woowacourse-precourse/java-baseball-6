@@ -11,35 +11,31 @@ public class Application {
 }
 
 class BaseballGame {
-    private final ComputerNumberCreator computerNumberCreator = new ComputerNumberCreator();
-    private final Ball ball = new Ball();
-    private final Judge judge = new Judge();
-    private final Result result = new Result();
-    private final Message message = new Message();
+    static int retry = 1;
+    static int[] computerNumberArray;
+    private static boolean gameEnd = false;
+    private static final ComputerNumberCreator computerNumberCreator = new ComputerNumberCreator();
+    private static final Ball ball = new Ball();
+    private static final Judge judge = new Judge();
+    private static final Result result = new Result();
+    private static final Message message = new Message();
+    private static Pitching pitching;
 
     void start() {
-        int retry = 1;
+        mound();
+        game();
+    }
+
+    private static void mound() {
+        retry = 1;
         message.printStartMessage();
+    }
 
+    private static void game() {
         while (retry == 1) {
-            boolean gameEnded = false;
+            beforePitch();
 
-            int[] computerNumberArray = computerNumberCreator.createComputerNumber();
-
-            while (!gameEnded) {
-                message.printInputMessage();
-
-                Pitching pitching = new Pitching(ball);
-                Referee refree = new Referee(computerNumberArray, pitching, judge);
-
-                int[] outcome = refree.result;
-                result.printResult(outcome);
-
-                if (outcome[0] == 3) {
-                    message.printEndMessage();
-                    gameEnded = true;
-                }
-            }
+            pitch();
 
             message.printRestartMessage();
 
@@ -48,9 +44,43 @@ class BaseballGame {
             if (retry == 2) {
                 break;
             }
-
         }
     }
+
+    private static int[] beforePitch() {
+        gameEnd = false;
+        computerNumberArray = computerNumberCreator.createComputerNumber();
+        return computerNumberArray;
+    }
+
+    private static void pitch() {
+        while (!gameEnd) {
+            int[] outcome = judge(computerNumberArray, inning());
+
+            if (outcome[0] == 3) {
+                message.printEndMessage();
+                gameEnd = true;
+            }
+        }
+    }
+
+    private static Pitching inning() {
+        message.printInputMessage();
+        Pitching pitching = new Pitching(ball);
+
+        return pitching;
+    }
+
+    private static int[] judge(int[] computerNumberArray, Pitching pitching) {
+        Referee refree = new Referee(computerNumberArray, pitching, judge);
+
+        int[] outcome = refree.result;
+        result.printResult(outcome);
+
+        return outcome;
+    }
+
+
 }
 
 class Pitching {
