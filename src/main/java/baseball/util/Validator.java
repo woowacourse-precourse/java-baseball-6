@@ -2,8 +2,9 @@ package baseball.util;
 
 import baseball.config.Config;
 import baseball.domain.Command;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
     public static boolean isInvalid(List<Integer> userNumbers) {
@@ -28,14 +29,10 @@ public class Validator {
     }
 
     private static boolean hasDuplicatedNumbers(List<Integer> userNumbers) {
-        List<Integer> temp = new ArrayList<>();
-        for (int number : userNumbers) {
-            if (temp.contains(number)) {
-                return true;
-            }
-            temp.add(number);
-        }
-        return false;
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        return userNumbers.stream()
+                .anyMatch(number -> !uniqueNumbers.add(number));
     }
 
 }
