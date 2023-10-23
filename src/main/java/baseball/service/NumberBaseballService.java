@@ -38,6 +38,10 @@ public class NumberBaseballService {
         }
     }
 
+    public String getHintMessage() {
+        return player.createHintMessage();
+    }
+
     public boolean isCompleted() {
         return player.isCompleted();
     }
