@@ -4,45 +4,50 @@ import baseball.constant.Message;
 import baseball.domain.GameResult;
 
 public class OutputView {
+
+    public void printMessage(Message message) {
+        System.out.println(message.getMessage());
+    }
+
+    public void printMessageWithoutLineChange(Message message) {
+        System.out.print(message.getMessage());
+    }
+
+    public void print(String message) {
+        System.out.println(message);
+    }
+
     public void startGame() {
-        System.out.println(Message.START.getMessage());
+        printMessage(Message.START);
     }
 
     public void requestNumber() {
-        System.out.print(Message.REQUEST_NUMBER.getMessage());
+        printMessageWithoutLineChange(Message.REQUEST_NUMBER);
     }
 
     public void endGame() {
-        System.out.println(Message.END.getMessage());
+        printMessage(Message.END);
     }
 
     public void restartOrQuit() {
-        System.out.println(Message.RESTART_OR_QUIT.getMessage());
-    }
-
-    public void invalidInputMessage(String message) {
-        System.out.println(message);
-    }
-
-    public void showMessage(String message) {
-        System.out.println(message);
+        printMessage(Message.RESTART_OR_QUIT);
     }
 
     public void result(GameResult result) {
         int strikes = result.getStrikes();
         int balls = result.getBalls();
-        StringBuilder message = new StringBuilder();
+        StringBuilder output = new StringBuilder();
 
         if (strikes == 0 && balls == 0) {
-            message.append(Message.NOTHING.getMessage());
+            output.append(Message.NOTHING.getMessage());
         } else {
             if (balls > 0) {
-                message.append(balls).append(Message.BALL.getMessage()).append(Message.BLANK.getMessage());
+                output.append(Message.BALL.format(balls));
             }
             if (strikes > 0) {
-                message.append(strikes).append(Message.STRIKE.getMessage());
+                output.append(Message.STRIKE.format(strikes));
             }
         }
-        System.out.println(message);
+        print(output.toString());
     }
 }
