@@ -29,7 +29,7 @@ public class BaseballController {
         } while (askToContinue());
     }
 
-    public boolean askToContinue() {
+    private boolean askToContinue() {
         String optionNumber = Console.readLine();
         return playerService.selectOption(optionNumber);
     }
