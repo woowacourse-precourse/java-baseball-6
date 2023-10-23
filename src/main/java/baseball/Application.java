@@ -4,6 +4,7 @@ public class Application {
     public static void main(String[] args) {
         Computer computer = new Computer();
         User user = new User();
+        Game game = new Game();
 
         // 상대방(컴퓨터)은 1에서 9까지 서로 다른 임의의 수(랜덤) 3개를 선택
         computer.selectRandomNumber();
@@ -13,5 +14,7 @@ public class Application {
         user.selectUserNumber();
 
         // TODO: 입력한 숫자에 대한 결과 출력
+        game.play(computer, user);
+        System.out.println(game.getGameResult());
     }
 }

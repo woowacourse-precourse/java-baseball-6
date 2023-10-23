@@ -16,6 +16,14 @@ public class Computer {
         }
     }
 
+    public int getComputerNumber(int index){
+        return computer.get(index);
+    }
+
+    public boolean isComputerContains(int number){
+        return computer.contains(number);
+    }
+
     public void printComputerNumber(){
         System.out.println("Computer.printComputerNumber");
         for (Integer num : computer) {

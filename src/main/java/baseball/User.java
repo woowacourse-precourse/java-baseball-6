@@ -25,6 +25,10 @@ public class User {
         }
     }
 
+    public int getUserNumber(int index){
+        return user.get(index);
+    }
+
     public void printUserNumber(){
         System.out.println("User.printUserNumber");
         for (Integer num : user) {
