@@ -4,10 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ValidationUtils {
-    public ValidationUtils(String inputNumbers){
+    public ValidationUtils(){}
+    public String validateNumbers(String inputNumbers){
         checkSize(inputNumbers);
         checkRange(inputNumbers);
         checkDuplicate(inputNumbers);
+        return inputNumbers;
     }
     private void checkSize(String inputNumbers){
         if (inputNumbers.length() != 3){

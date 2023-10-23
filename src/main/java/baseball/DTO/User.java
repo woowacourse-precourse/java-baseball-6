@@ -7,8 +7,9 @@ import java.util.List;
 public class User {
     List<Integer> userNumbers;
 
-    public User(String inputNumbers){
-        new ValidationUtils(inputNumbers);
+     public User(String inputNumbers){
+        ValidationUtils validationUtils = new ValidationUtils();
+        userNumbers = validationUtils.validateNumbers(inputNumbers);
     }
 
     public List<Integer> getUserNumbers() {
