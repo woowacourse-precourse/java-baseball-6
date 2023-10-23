@@ -4,6 +4,7 @@ public class InputValidator {
 
     private static final String INVALID_INPUT_MESSAGE = "올바른 입력이 아닙니다.";
 
+    //인스턴스화 방지
     private InputValidator() {
         throw new AssertionError();
     }
