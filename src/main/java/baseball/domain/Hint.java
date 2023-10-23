@@ -1,5 +1,11 @@
 package baseball.domain;
 
+import static baseball.constant.HintMessage.NOTHING;
+import static baseball.constant.HintMessage.ONLY_BALL;
+import static baseball.constant.HintMessage.ONLY_STRIKE;
+import static java.lang.String.format;
+import static java.lang.String.join;
+
 import java.util.ArrayList;
 
 public class Hint {
@@ -26,24 +32,15 @@ public class Hint {
     }
 
     public boolean isStrikeExist() {
-        if (strike > 0) {
-            return true;
-        }
-        return false;
+        return strike > 0;
     }
 
     public boolean isBallExist() {
-        if (ball > 0) {
-            return true;
-        }
-        return false;
+        return ball > 0;
     }
 
     public boolean isThreeStrike() {
-        if (strike == 3) {
-            return true;
-        }
-        return false;
+        return strike == 3;
     }
 
     public String toString() {
