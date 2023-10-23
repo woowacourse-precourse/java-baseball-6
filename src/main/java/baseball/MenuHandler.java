@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class MenuHandler {
     private final Computer computer;
@@ -16,6 +17,11 @@ public class MenuHandler {
             handle();
         } catch (RuntimeException exception) {
             Communicator.printException(exception);
+
+            if (exception.getClass().equals(NoSuchElementException.class)) {
+                throw new IllegalArgumentException(exception.getMessage());
+            }
+
             throw exception;
         }
     }
