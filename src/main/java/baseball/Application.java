@@ -11,6 +11,7 @@ public class Application {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String SPACE = " ";
     private static final String CONTINUE_GAME = "1";
     private static final String EXIT_GAME = "2";
     private static final String CONTINUE_EXIT_MESSAGE
@@ -177,7 +178,7 @@ public class Application {
         }
         printBall(ball);
         if ((ball > 0) && (strike > 0)) {
-            System.out.print(" ");
+            System.out.print(SPACE);
         }
         printStrike(strike);
         System.out.println();
