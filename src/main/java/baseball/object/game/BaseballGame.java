@@ -19,12 +19,12 @@ public class BaseballGame {
 
     public void play() {
         announceGameStart();
+
         while (isStart) {
             Turn turn = new Turn();
             turn.play();
 
             announceWin();
-
             askRestart();
         }
     }
