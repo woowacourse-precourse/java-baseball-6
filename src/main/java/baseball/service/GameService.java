@@ -20,12 +20,16 @@ public class GameService {
     public List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < COMPUTER_NUMBER_SIZE) {
-            int number = pickNumberInRange(COMPUTER_NUMBER_START_RANGE, COMPUTER_NUMBER_END_RANGE);
-            if (!computerNumber.contains(number)) {
-                computerNumber.add(number);
-            }
+            addNumber(computerNumber);
         }
         return computerNumber;
+    }
+
+    private void addNumber(List<Integer> computerNumber) {
+        int number = pickNumberInRange(COMPUTER_NUMBER_START_RANGE, COMPUTER_NUMBER_END_RANGE);
+        if (!computerNumber.contains(number)) {
+            computerNumber.add(number);
+        }
     }
 
     public String getCompareResult(List<Integer> computerNumber, List<Integer> userNumber) {
