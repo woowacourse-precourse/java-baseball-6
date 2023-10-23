@@ -43,6 +43,22 @@ public class GameController {
         return result;
     }
 
+    // 결과 출력
+    public static void printResult(Result result) {
+        int ball = result.getBall();
+        int strike = result.getStrike();
+
+        if (ball != 0 && strike != 0) {
+            System.out.println(Announcement.ballAndStrike(ball, strike));
+        } else if (ball != 0) {
+            System.out.println(Announcement.ball(ball));
+        } else if (strike != 0) {
+            System.out.println(Announcement.strike(strike));
+        } else {
+            System.out.println(Announcement.nothing());
+        }
+    }
+
     public static boolean isWin(Result result) {
         if (result.getStrike() == INPUT_LENGTH) {
             return true;

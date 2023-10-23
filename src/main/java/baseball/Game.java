@@ -25,6 +25,7 @@ public class Game extends GameController {
         while (!isWin(result)) {
             String input = getInGameInput();
             result = recordResult(input, answer);
+            printResult(result);
         }
     }
 }
