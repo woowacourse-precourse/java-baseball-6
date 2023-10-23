@@ -43,7 +43,6 @@ public class InputNumbers {
 
   private void isDistinct(final String input) {
     int distinctCount = (int) input.chars()
-        .map(Character::getNumericValue)
         .distinct()
         .count();
     if (input.length() != distinctCount) {
