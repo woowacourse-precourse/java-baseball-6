@@ -17,7 +17,7 @@ public class BallHint {
 
     public void IncreaseBall() {
         if (this.ball < 3) {
-            this.strike += 1;
+            this.ball += 1;
         }
     }
 
