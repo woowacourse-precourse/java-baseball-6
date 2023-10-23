@@ -22,14 +22,10 @@ public class BaseballGame {
         boolean completeNumber = false;
         while (!completeNumber) {
             String player = GameView.printInputNumber();
-            if (!playerNumbers.validatedNumber(player)) {
-                throw new IllegalArgumentException();
-            }
+            playerNumbers.validatedNumber(player);
             completeNumber = compareNumber(computer, player);
-
         }
         if (setGame()) {
-
             run();
         } else {
             gameView.printExitGame();

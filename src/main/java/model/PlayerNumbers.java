@@ -6,8 +6,10 @@ public class PlayerNumbers {
         return "";
     }
 
-    public boolean validatedNumber(String playerNumbers) {
-        return countNumber(playerNumbers) && duplicatedNumbers(playerNumbers) && isNumber(playerNumbers);
+    public void validatedNumber(String playerNumbers) {
+        if (!countNumber(playerNumbers) && duplicatedNumber(playerNumbers) && isNumber(playerNumbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isNumber(String playerNumbers) {
@@ -19,7 +21,7 @@ public class PlayerNumbers {
         return true;
     }
 
-    private boolean duplicatedNumbers(String playerNumbers) {
+    private boolean duplicatedNumber(String playerNumbers) {
         for (int i = 0; i < playerNumbers.length(); i++) {
             for (int j = i + 1; j < playerNumbers.length(); j++) {
                 if (playerNumbers.charAt(i) == playerNumbers.charAt(j)) {
