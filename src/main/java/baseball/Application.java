@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Scanner;
 
 public class Application {
 
@@ -13,7 +14,8 @@ public class Application {
     // 먼저 숫자 야구 게임에 대한 메인 함수를 만들었습니다.
     public static void playNumberBaseballGame() {
         //Console이 private이라 액세스 불가능한 오류 발생 중
-        Console console = new Console();
+        //Console console = new Console();
+        Scanner scanner = new Scanner(System.in);
         boolean isGameOver = false;
 
         while (!isGameOver) {
@@ -24,7 +26,8 @@ public class Application {
             //int attempts = 0;
             while (true) {
                 // 역시나 private으로 인한 오류 발생 중!!
-                String input = console.readLine("숫자를 입력해주세요: ");
+                //String input = console.readLine("숫자를 입력해주세요: ");
+                String input = scanner.nextLine();
 
                 if (!isValidInput(input)) { // 하단에 구현해두었습니다.
                     throw new IllegalArgumentException("잘못된 입력입니다. 1부터 9까지 서로 다른 숫자로 이루어진 3자리 숫자를 입력하세요.");
@@ -51,15 +54,11 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
-
-//                attempts++;
-//                if (attempts >= 10) {
-//                    System.out.println("10번 시도했지만 아직 승리하지 못했습니다. 컴퓨터의 숫자는 " + computerNumbers[0] + computerNumbers[1] + computerNumbers[2] + "입니다.");
-//                    break;
-//                }
             }
 
-            String playAgain = console.readLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            //console이 private이라서 오류 발생 중!!
+            //String playAgain = console.readLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            String playAgain = scanner.nextLine();
             if (playAgain.equals("2")) {
                 isGameOver = true;
             }
