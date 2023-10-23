@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.core.CheckGameResult;
 import baseball.core.CompareNumber;
 import baseball.core.GenerateNumberList;
+import baseball.property.GameCondition;
 import baseball.property.GameScore;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -69,6 +71,20 @@ public class CoreTest extends NsTest {
         //then
         assertThat(game_score.getBall_count()).isEqualTo(2);
         assertThat(game_score.getStrike_count()).isEqualTo(1);
+    }
+
+    @Test
+    void 유저_3스트라이크_시_게임종료_테스트(){
+        //given
+        List<Integer> user = List.of(1, 2, 3);
+        List<Integer> computer = List.of(1, 2, 3);
+        GameCondition game_coin=GameCondition.CONTINUE;
+
+        //when
+        GameScore game_score = CompareNumber.compareNumberList(user, computer);
+        game_coin = CheckGameResult.checkGameScore(game_score, game_coin);
+        //then
+        assertThat(game_coin).isEqualTo(GameCondition.FINISH);
     }
 
     @Test
