@@ -6,16 +6,14 @@ public class ComputerNumbers {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
     private static final int MAX_NUMBER_LENGTH = 3;
+    private static String randomNumbers;
 
     public static String createNumbers() {
-        String randomNumbers = "";
+        randomNumbers = "";
         while (randomNumbers.length() < 3) {
             String randomNumber = getRandomNumbers();
-            if (checkDuplicate(randomNumbers, randomNumber)) {
-                continue;
-            } else {
-                randomNumbers += randomNumber;
-            }
+            randomNumbers += checkDuplicate(randomNumbers, randomNumber);
+
         }
         return randomNumbers;
     }
@@ -25,8 +23,11 @@ public class ComputerNumbers {
         return randomNumber;
     }
 
-    private static boolean checkDuplicate(String randomNumbers, String randomNumber) {
-        return randomNumbers.contains(String.valueOf(randomNumber));
+    private static String checkDuplicate(String randomNumbers, String randomNumber) {
+        if (!randomNumbers.contains(randomNumber)) {
+            return randomNumber;
+        }
+        return "";
     }
 
 }
