@@ -6,29 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Character> computerNumber;
+    private List<Character> computerNumber;
 
     public Computer() {
-        this.computerNumber = createNumber();
+        generateRandomNumber();
     }
 
-    private List<Character> createNumber() {
-        List<Character> computerNumber = new ArrayList<>();
+    private void generateRandomNumber() {
+        computerNumber = new ArrayList<>();
+
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             char randomNumberChar = (char) (randomNumber + '0');
+
             if (!computerNumber.contains(randomNumberChar)) {
                 computerNumber.add(randomNumberChar);
             }
         }
-        return computerNumber;
     }
 
     public String getComputerNumber() {
-        StringBuilder sb = new StringBuilder();
-        for (char ch : computerNumber) {
-            sb.append(ch);
-        }
-        return sb.toString();
+        return computerNumber.stream()
+                .map(String::valueOf)
+                .reduce("", (s1, s2) -> s1 + s2);
     }
 }
