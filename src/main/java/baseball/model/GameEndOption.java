@@ -11,12 +11,12 @@ public class GameEndOption {
     }
 
     private void validateOption(String number) {
-        if (!number.equals(RESET_COMMAND) && !number.equals(END_COMMAND)) {
+        if (!RESET_COMMAND.equals(number) && !END_COMMAND.equals(number)) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
     }
 
     public boolean isReset() {
-        return resetNumber.equals(RESET_COMMAND);
+        return RESET_COMMAND.equals(resetNumber);
     }
 }
