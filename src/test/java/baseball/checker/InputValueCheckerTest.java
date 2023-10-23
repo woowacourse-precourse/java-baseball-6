@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static baseball.checker.InputValueChecker.*;
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("InputValueChecker 테스트")
 public class InputValueCheckerTest {
     @Nested
     @DisplayName("사용자로부터 입력 받은 값의 유효성을 파악한다")

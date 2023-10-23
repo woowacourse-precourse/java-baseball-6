@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static baseball.checker.BaseBallChecker.*;
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("BaseBallChecker 테스트")
 public class BaseBallCheckerTest {
     @Nested
     @DisplayName("사용자로부터 입력 받은 값에 따라서 결과를 반환한다")
