@@ -57,7 +57,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        checkPlayerInputValidity(input);
+        checkPlayerNumberValidity(input);
 
         for (int i = 0; i < 3; i++) {
             playerNumbers.add(input.charAt(i) - '0');
@@ -124,10 +124,12 @@ public class Application {
     }
 
     public void executeRestartOrTerminate() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String choice = Console.readLine();
+        String choice = null;
 
-        // Todo: 입력값 유효성 검사
+        do {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            choice = Console.readLine();
+        } while (!isGameControlInputValid(choice));
 
         if (choice.equals("2")) {
             System.out.println("프로그램을 종료합니다.");
@@ -135,8 +137,8 @@ public class Application {
         }
     }
 
-    public void checkPlayerInputValidity(String input) {
-        if (isNull(input) || input.isEmpty() || !isLengthThree(input) || !hasUniqueElementsOnly(input)) {
+    public void checkPlayerNumberValidity(String input) {
+        if (isStringEmpty(input) || !isLengthThree(input) || !hasUniqueElementsOnly(input)) {
             throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
         }
 
@@ -147,8 +149,8 @@ public class Application {
         }
     }
 
-    public boolean isNull(String string) {
-        return string == null;
+    public boolean isStringEmpty(String string) {
+        return string == null || string.isEmpty();
     }
 
     public boolean isLengthThree(String string) {
@@ -168,5 +170,24 @@ public class Application {
 
     public boolean isNumberInRange(int number, int start, int end) {
         return number >= start && number <= end;
+    }
+
+    public boolean isGameControlInputValid(String choice) {
+        if (isStringEmpty(choice)) {
+            System.out.println("값이 입력되지 않았습니다.");
+            return false;
+        }
+
+        if (choice.length() > 1) {
+            System.out.println("하나의 값만 입력할 수 있습니다.");
+            return false;
+        }
+
+        if (!isNumberInRange(choice.charAt(0) - '0', 1, 2)) {
+            System.out.println("숫자 1 또는 2만 입력할 수 있습니다.");
+            return false;
+        }
+
+        return true;
     }
 }
