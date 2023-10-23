@@ -35,11 +35,8 @@ public class InputView {
     }
 
     private void isValidDigitRange(String input) {
-        for (char eachChar : input.toCharArray()) {
-            int eachDigit = Character.getNumericValue(eachChar);
-            if (isNotValidRangeForEachDigit(eachDigit)) {
-                throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
-            }
+        if (input.contains(NumberConstant.ZERO)) {
+            throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
         }
     }
 
@@ -69,10 +66,6 @@ public class InputView {
         if (isNotValidGameCode(gameCode)) {
             throw new IllegalArgumentException("1과 2중 입력해야 합니다.");
         }
-    }
-
-    private boolean isNotValidRangeForEachDigit(int eachDigit) {
-        return eachDigit < NumberConstant.MIN_VALUE || eachDigit > NumberConstant.MAX_VALUE;
     }
 
     private boolean isNotValidGameCode(int gameCode) {
