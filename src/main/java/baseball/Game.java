@@ -32,4 +32,8 @@ public class Game extends GameController {
 
         this.terminate = checkTerminate();
     }
+
+    public boolean getTerminate() {
+        return this.terminate;
+    }
 }
