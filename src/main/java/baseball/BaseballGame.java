@@ -15,5 +15,16 @@ public class BaseballGame {
     public void run() {
         List<Integer> correctAnswer = computer.createCorrectAnswer();
         System.out.println(PRINT_GAME_START);
+        do {
+            play();
+        } while (restart());
+    }
+
+    private boolean restart() {
+
+    }
+
+    private void play() {
+
     }
 }
