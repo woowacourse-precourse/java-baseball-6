@@ -13,7 +13,7 @@ public class NumberList {
             Number number = new Number(c);
             this.add(number);
         }
-        this.ValidateCountLimit();
+        this.validateCountLimit();
     }
 
     public NumberList() {
@@ -21,12 +21,12 @@ public class NumberList {
     }
 
     public void add(Number number) {
-        this.ValidateUpperCountLimit();
-        this.ValidateDuplicate(number);
+        this.validateUpperCountLimit();
+        this.validateDuplicate(number);
         numbers.add(number);
     }
 
-    public void ValidateDuplicate(Number number) {
+    public void validateDuplicate(Number number) {
         for (int i = 0; i < this.numbers.size() - 1; i++) {
             if (number.equals(numbers.get(i))) {
                 throw new IllegalArgumentException("Numbers are duplicated.");
@@ -34,13 +34,13 @@ public class NumberList {
         }
     }
 
-    public void ValidateCountLimit() {
+    public void validateCountLimit() {
         if (numbers.size() != BASEBALL_NUM_COUNT) {
             throw new IllegalArgumentException("The number entered is not BASEBALL_NUM_COUNT.");
         }
     }
 
-    public void ValidateUpperCountLimit() {
+    public void validateUpperCountLimit() {
         if (numbers.size() >= BASEBALL_NUM_COUNT) {
             throw new IllegalArgumentException("Input that exceeds BASEBALL_NUM_COUNT.");
         }

@@ -5,18 +5,18 @@ public class Number {
 
     public Number(char num) {
         if (Character.isDigit(num)) {
-            this.num = ValidateZero(Character.getNumericValue(num));
+            this.num = validateZero(Character.getNumericValue(num));
         } else {
             throw new IllegalArgumentException("is not digit");
         }
     }
 
     public Number(int num) {
-        ValidateZero(num);
+        validateZero(num);
         this.num = num;
     }
 
-    public int ValidateZero(int num) {
+    public int validateZero(int num) {
         if (num == 0) {
             throw new IllegalArgumentException("0 is not allowed.");
         }

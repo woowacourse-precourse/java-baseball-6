@@ -9,7 +9,6 @@ public class Game {
     public GameStatus status;
     NumberList computerNumberList;
 
-
     public Game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.status = GameStatus.START;
@@ -18,17 +17,17 @@ public class Game {
     /**
      * 상태에 따른 게임 진행
      */
-    public void Next() {
+    public void next() {
         switch (this.status) {
-            case START -> this.Ready();
-            case PROCEEDING -> this.Proceed();
+            case START -> this.ready();
+            case PROCEEDING -> this.proceed();
             case END -> this.choiceReStart();
             default -> throw new IllegalStateException("Unexpected value: " + this.status);
         }
     }
 
     /**
-     * 사용자에게 입력받은 값을 검증하고 재시작과 종료로 상태변화
+     * 사용자에게 입력받은 값을 검증하고 START와 EXIT로 상태변환
      */
     public void choiceReStart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -50,12 +49,12 @@ public class Game {
     /**
      * 3개의 숫자를 모두 맞출 때까지 사용자에게 숫자 입력을 받습니다.
      */
-    public void Proceed() {
+    public void proceed() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             NumberList userNumberList = new NumberList(userInput);
-            if (CompareNumbers(userNumberList)) {
+            if (compareNumbers(userNumberList)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 this.status = GameStatus.END;
                 break;
@@ -63,7 +62,10 @@ public class Game {
         }
     }
 
-    public boolean CompareNumbers(NumberList numberList) {
+    /**
+     * 사용자가 입력한 숫자리스트와 컴퓨터의 숫자리스트와 비교하여 볼, 스트라이크를 판별합니다.
+     */
+    public boolean compareNumbers(NumberList numberList) {
         int ballCount = 0;
         int strikeCount = 0;
         for (int i = 0; i < BASEBALL_NUM_COUNT; i++) {
@@ -79,11 +81,14 @@ public class Game {
                 }
             }
         }
-        this.PrintResult(ballCount, strikeCount);
+        this.printResult(ballCount, strikeCount);
         return strikeCount == BASEBALL_NUM_COUNT;
     }
 
-    public void PrintResult(int ballCount, int strikeCount) {
+    /**
+     * 볼, 스트라이크 판별 결과를 출력합니다.
+     */
+    public void printResult(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         } else {
@@ -97,13 +102,17 @@ public class Game {
         }
     }
 
-    public void Ready() {
+    /**
+     * 컴퓨터의 숫자리스트를 초기화하고 PROCEEDING상태로 상태변환합니다.
+     */
+    public void ready() {
         this.computerNumberList = new NumberList();
         while (computerNumberList.numbers.size() < BASEBALL_NUM_COUNT) {
             Number number = new Number(pickNumberInRange(1, 9));
             try {
                 computerNumberList.add(number);
             } catch (IllegalArgumentException ignored) {
+                //숫자 중복을 제외하고 다른 예외가 나오지 않기 때문에 괜찮습니다.
             }
         }
         this.status = GameStatus.PROCEEDING;
