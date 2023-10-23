@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.gamenumber.GameNumber;
+import baseball.domain.gamenumber.GameNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.gamenumber;
 
 public class GameNumbersValidator {
     private static final String VALID_NUMBER_LENGTH = String.format("^\\d{%d}$", GameNumbers.LENGTH);

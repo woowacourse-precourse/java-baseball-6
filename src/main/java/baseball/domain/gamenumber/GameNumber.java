@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.gamenumber;
 
 import java.util.stream.Stream;
 

@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.gamenumber.GameNumbers;
+
 public class GameSet {
     private final GameNumbers computerGameNumbers;
     private boolean isSetEnd;
