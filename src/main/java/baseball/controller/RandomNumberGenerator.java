@@ -7,8 +7,8 @@ import baseball.system.SystemConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.stream.IntStream;
 
-public class RandomNumberGenerator {
-    public static BallNumber generate() {
+class RandomNumberGenerator {
+    static BallNumber generate() {
         return new BallNumber(IntStream
                 .generate(() ->
                         Randoms.pickNumberInRange(1, 9))
