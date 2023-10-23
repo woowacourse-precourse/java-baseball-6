@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GameController {
     private static List<Integer> computerNumber;
-    private static UserNumber userNumber;
+    private static List<Integer> userNumber;
     private static HintCalculator hintCalculator;
 
     public static void proceedGame() {
@@ -63,7 +63,7 @@ public class GameController {
     }
 
     private static void showHint() {
-        hintCalculator = new HintCalculator(userNumber.getNumber(),computerNumber);
+        hintCalculator = new HintCalculator(userNumber,computerNumber);
         OutputView.printHint(getHintMessage());
     }
 
@@ -72,7 +72,8 @@ public class GameController {
     }
 
     private static void setUserNumber() {
-        userNumber = new UserNumber(getUserNumber());
+        UserNumber user = new UserNumber(getUserNumber());
+        userNumber = user.getNumber();
     }
 
     private static String getUserNumber() {
@@ -80,7 +81,8 @@ public class GameController {
     }
 
     private static void setComputerNumber() {
-        computerNumber = new ComputerNumber();
+        ComputerNumber computer = new ComputerNumber();
+        computerNumber = computer.getNumber();
     }
 
     private static void showStartMessage() {
