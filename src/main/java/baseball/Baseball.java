@@ -16,32 +16,38 @@ public class Baseball {
     private final Core core = new Core();
     private final Player player = new Player();
     private final Computer computer = new Computer();
+    private List<Integer> computerNumber;
 
     public void startBaseball() {
         System.out.println(START_BASEBALL_MSG);
-        boolean restartFlag = true;
+        computerNumber = computer.getComputerNumber();
+        boolean startFlag = true;
 
-        while(restartFlag) {
+        while(startFlag) {
             System.out.print(PLEASE_INPUT_MSG);
-            List<Integer> computerNumber = computer.getComputerNumber();
             List<Integer> playerNumber = player.getPlayerNumber();
             int strikeCount = core.countStrike(computerNumber, playerNumber);
             int ballCount = core.countBall(computerNumber, playerNumber);
             core.printBaseballResult(strikeCount, ballCount);
-
-            if(strikeCount == MAX_STRIKE) {
-                System.out.println(END_BASEBALL_MSG);
-                System.out.println(RESTART_OR_EXIT_MSG);
-                restartFlag = isRestartOrExit();
-            }
+            startFlag = checkBaseballEnd(strikeCount);
         }
 
+    }
+
+    public boolean checkBaseballEnd(int strike) {
+        if(strike == MAX_STRIKE) {
+            System.out.println(END_BASEBALL_MSG);
+            System.out.println(RESTART_OR_EXIT_MSG);
+            return isRestartOrExit();
+        }
+        return true;
     }
 
     public boolean isRestartOrExit() {
         int choice = player.getRestartOrExitNumber();
 
         if (choice == RESTART_NUM) {
+            computerNumber = computer.getComputerNumber();
             return true;
         }
 
