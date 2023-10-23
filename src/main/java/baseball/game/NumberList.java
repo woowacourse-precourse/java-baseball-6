@@ -1,10 +1,11 @@
 package baseball.game;
 
+import static baseball.game.Constant.BASEBALL_NUM_COUNT;
+
 import java.util.ArrayList;
 
 public class NumberList {
     ArrayList<Number> numbers;
-    static int MAX_NUM_LEN = 3;
 
     public NumberList(String inputString) {
         this.numbers = new ArrayList<>();
@@ -33,16 +34,14 @@ public class NumberList {
         }
     }
 
-    public void ValidateCount() {
-        if (numbers.size() >= MAX_NUM_LEN) {
-            throw new IllegalArgumentException("Input that exceeds MAX_NUM_LEN.");
     public void ValidateCountLimit() {
-        if (numbers.size() != MAX_NUM_LEN) {
+        if (numbers.size() != BASEBALL_NUM_COUNT) {
             throw new IllegalArgumentException("The number entered is not BASEBALL_NUM_COUNT.");
         }
     }
 
     public void ValidateUpperCountLimit() {
+        if (numbers.size() >= BASEBALL_NUM_COUNT) {
             throw new IllegalArgumentException("Input that exceeds BASEBALL_NUM_COUNT.");
         }
     }

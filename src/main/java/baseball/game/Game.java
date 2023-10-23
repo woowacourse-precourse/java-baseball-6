@@ -1,5 +1,6 @@
 package baseball.game;
 
+import static baseball.game.Constant.BASEBALL_NUM_COUNT;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -44,7 +45,7 @@ public class Game {
 
     public void Ready() {
         this.computerNumberList = new NumberList();
-        while (computerNumberList.numbers.size() <= NumberList.MAX_NUM_LEN) {
+        while (computerNumberList.numbers.size() < BASEBALL_NUM_COUNT) {
             Number number = new Number(pickNumberInRange(1, 9));
             try {
                 computerNumberList.add(number);
