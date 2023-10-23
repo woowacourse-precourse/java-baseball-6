@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.ui.ConsoleOutput;
+import baseball.utils.Utility;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,10 +9,13 @@ import java.util.List;
 
 public class Computer implements IPlayer {
 
+    private final ConsoleOutput CONSOLE_OUTPUT;
     private final int NUMBER_BALLS;
     private List<Integer> numbers;
+    private Response response;
 
-    public Computer(final int NUMBER_BALLS) {
+    public Computer(ConsoleOutput consoleOutput, final int NUMBER_BALLS) {
+        CONSOLE_OUTPUT = consoleOutput;
         this.NUMBER_BALLS = NUMBER_BALLS;
         this.numbers = generateRandomNumber(NUMBER_BALLS);
     }
@@ -18,38 +23,6 @@ public class Computer implements IPlayer {
     @Override
     public void generatePlayerNumber(int NUMBER_BALLS) {
         numbers = generateRandomNumber(NUMBER_BALLS);
-    }
-
-    @Override
-    public Response respondsTo(IPlayer opponentUser) {
-        int strikeCount = 0;
-        int ballCount = 0;
-        int index = 0;
-
-        for (int ball : numbers) {
-            if (opponentUser.checkIfIsStrike(ball, index++)) {
-                ++strikeCount;
-            } else if (opponentUser.checkIfIsBall(ball)) {
-                ++ballCount;
-            }
-        }
-
-        return new Response(new ArrayList<>(Arrays.asList(strikeCount, ballCount)), NUMBER_BALLS);
-    }
-
-    @Override
-    public boolean checkIfIsStrike(int ball, int index) {
-        return numbers.get(index) == ball;
-    }
-
-    @Override
-    public boolean checkIfIsBall(int ball) {
-        return numbers.contains(ball);
-    }
-
-    @Override
-    public int countNumberBalls() {
-        return numbers.size();
     }
 
     private List<Integer> generateRandomNumber(int NUMBER_BALLS) {
@@ -61,6 +34,33 @@ public class Computer implements IPlayer {
             }
         }
         return randomNumbers;
+    }
+
+    public boolean respondsTo(User user) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        int index = 0;
+
+        for (int ball : numbers) {
+            if (user.checkIfIsStrike(ball, index++)) {
+                ++strikeCount;
+            } else if (user.checkIfIsBall(ball)) {
+                ++ballCount;
+            }
+        }
+
+        response = new Response(new ArrayList<>(Arrays.asList(strikeCount, ballCount)), NUMBER_BALLS);
+        announceResult();
+
+        return response.isEnded();
+    }
+
+    public int countNumberBalls() {
+        return numbers.size();
+    }
+
+    private void announceResult() {
+        CONSOLE_OUTPUT.printMessage(Utility.convertResponseToResult(response));
     }
 
 }
