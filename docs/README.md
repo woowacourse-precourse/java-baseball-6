@@ -16,6 +16,8 @@
 - domain
   - Balls
   - Computer
+- message
+  - Message
 - service
   - game
 - util
