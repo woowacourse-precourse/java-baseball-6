@@ -12,6 +12,7 @@ public class UserInputValidator {
     private static final String WRONG_ANSWER_LENGTH_MESSAGE = "세 자리의 숫자를 입력해주세요.";
     private static final String WRONG_RANGE_STRING_MESSAGE = "한 자리는 1에서 9까지의 숫자만 입력할 수 있습니다.";
     private static final String DUPLICATED_STRING_MESSAGE = "세 자리 모두 서로 다른 숫자를 입력해주세요.";
+    private static final String WRONG_RANGE_RESET_STRING_MESSAGE = "1 또는 2를 입력해주세요.";
     private static final char NUMERIC_RANGE_START_CHAR = '1';
     private static final char NUMERIC_RANGE_END_CHAR = '9';
 
@@ -32,6 +33,13 @@ public class UserInputValidator {
         }
 
         return convertStringToIntegerList(userInputString);
+    }
+
+    public int userInputRestartOrExitValidate(String userInputString) {
+        if (!isOneOrTwo(userInputString)) {
+            throw new IllegalArgumentException(WRONG_RANGE_RESET_STRING_MESSAGE);
+        }
+        return Integer.parseInt(userInputString);
     }
 
     public boolean isThreeNumbers(String userInputString) {
@@ -55,6 +63,13 @@ public class UserInputValidator {
             return false;
         }
         return true;
+    }
+
+    public boolean isOneOrTwo(String userInputString) {
+        if (userInputString.equals("1") || userInputString.equals("2")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isNotDuplicate(String userInputString) {
