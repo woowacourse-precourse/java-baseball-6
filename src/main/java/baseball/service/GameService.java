@@ -9,7 +9,6 @@ public class GameService {
 
     private final NumberGenerator numberGenerator = new NumberGenerator();
 
-    private Player player;
     private Computer computer;
     private Judgement judgement;
 
@@ -18,16 +17,13 @@ public class GameService {
         judgement = new Judgement();
     }
 
+    public void playGame(String number) {
+        Player player = new Player(number);
+        judgement.judge(computer, player);
+    }
+
     public boolean isGameOver() {
         return judgement.isAllStrike();
-    }
-
-    public void makePlayer(String inputNumber) {
-        player = new Player(inputNumber);
-    }
-
-    public void judge() {
-        judgement.judge(computer, player);
     }
 
     public Judgement getJudgement() {

@@ -19,9 +19,7 @@ public class GameController {
 
             while (!gameService.isGameOver()) {
                 output.showInputMessage();
-                gameService.makePlayer(input.readNumber());
-
-                gameService.judge();
+                gameService.playGame(input.readNumber());
                 output.showGameResult(gameService.getJudgement());
             }
 
