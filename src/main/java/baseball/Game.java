@@ -7,15 +7,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class Game {
-    private List<Integer> computer = new ArrayList<>();
+    private List<Integer> computer;
     private List<Integer> player;
 
     public Game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        setComputer();
+
     }
 
     public void run() {
+        setComputer();
         player = new ArrayList<>();
 
         getPlayer();
@@ -52,12 +53,13 @@ public class Game {
         String input = Console.readLine();
         player = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            player.add((int) input.charAt(i));
+            player.add(input.charAt(i)-'0');
         }
     }
 
     // 임의의 수 3개를 생성
     private void setComputer() {
+        computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
