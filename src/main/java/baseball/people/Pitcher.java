@@ -1,8 +1,15 @@
-package baseball;
+package baseball.people;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class Pitcher {
+
+    Pitcher() {
+    }
+
+    public static Pitcher enter() {
+        return new Pitcher();
+    }
 
     public int[] pitch() {
         System.out.print("숫자를 입력해주세요 : ");
