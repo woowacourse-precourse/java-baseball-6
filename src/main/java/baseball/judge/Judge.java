@@ -13,7 +13,15 @@ public class Judge {
         String result = "";
 
         if (userNum.length != 3) {
-            throw new IllegalArgumentException("3자리의 수를 입력해 주세요.");
+            throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해 주세요.");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                if (userNum[i] == userNum[j]) {
+                    throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해 주세요.");
+                }
+            }
         }
 
         int strikes = 0;
