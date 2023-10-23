@@ -10,42 +10,33 @@ public class Computer {
     private static final int MIN_NUMBER = BaseballValues.MIN_NUMBER.getValue();
     private static final int MAX_NUMBER = BaseballValues.MAX_NUMBER.getValue();
 
-    private List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers;
 
     Computer() {
-        while (this.numbers.size() < MAX_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
+        this.numbers = new ArrayList<>();
     }
 
     Computer(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
-    int[] compareNumber(List<Integer> userNumber) {
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 
-        int[] result = {0, 0};
+    void initNumbers() {
 
-        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            int myNumber = userNumber.get(i);
+        numbers.clear();
 
-            for (int j = 0; j < MAX_NUMBER_LENGTH; j++) {
-                int computerNumber = this.numbers.get(j);
-                if (myNumber == computerNumber) {
-                    if (i == j) {
-                        result[0]++;
-                    } else {
-                        result[1]++;
-                    }
-
-                    break;
-                }
-            }
+        while (this.numbers.size() < MAX_NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            addNumberInNumbersNotDuplication(randomNumber);
         }
+    }
 
-        return result;
+    private void addNumberInNumbersNotDuplication(int randomNumber) {
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 }
