@@ -20,7 +20,6 @@ public class Baseball implements Game{
         computer = new ArrayList<>();
         this.inputHandler = inputHandler;
         this.outputHandler = outputHandler;
-        initGame();
     }
 
     @Override
