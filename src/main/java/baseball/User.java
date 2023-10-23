@@ -8,14 +8,15 @@ import java.util.stream.Collectors;
 import static baseball.Constants.*;
 
 public class User {
+    private List<Integer> numbers;
 
-    public static List<Integer> inputNumbers() {
+    public void inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String input = Console.readLine();
-        return parseIntegers(input);
+        numbers = parseIntegers(input);
     }
 
-    private static List<Integer> parseIntegers(String input) {
+    private List<Integer> parseIntegers(String input) {
         return input.chars()
                 .map(Character::getNumericValue)
                 .boxed()
