@@ -25,6 +25,11 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String randomNum = Console.readLine();
 
+            // 플레이어가 입력한 수가 3자리 수가 아닌 경우 예외처리
+            if (randomNum.length()!=3) {
+                throw new IllegalArgumentException();
+            }
+
             strike = 0;
             int ball = 0;
 
