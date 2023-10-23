@@ -1,7 +1,8 @@
 package baseball.controller;
 
+import baseball.model.dto.RestartFlag;
 import baseball.model.dto.Score;
-import baseball.model.entity.BaseballNumber;
+import baseball.model.entity.Baseball;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutView;
@@ -15,11 +16,11 @@ public class GameController {
     public void startGame() {
         outView.printGameStart();
         playGame();
-        if(restartMessage.equals("1")) {
-            restartMessage = "2";
+        if(RestartFlag.isRestart(restartMessage)) {
+            restartMessage = RestartFlag.END.getNumbertoString();
             playGame();
         }
-        if(restartMessage.equals("2")) {
+        if(!RestartFlag.isEnd(restartMessage)) {
             outView.printGameEnd();
         }
     }
@@ -29,7 +30,7 @@ public class GameController {
         calculateResult(getInputNumbers());
     }
 
-    private void calculateResult(BaseballNumber inputNumbers) {
+    private void calculateResult(Baseball inputNumbers) {
         Score score = gameService.calculateResult(inputNumbers);
         outView.printResult(score);
         if (score.isGameEnd()) {
@@ -38,16 +39,17 @@ public class GameController {
         }
         calculateResult(getInputNumbers());
     }
+
     private void printEndAndAskRestart() {
         outView.printGameEnd();
         outView.printGameRestartMessage();
         restartMessage = getInputMessage();
     }
 
-    private BaseballNumber getInputNumbers(){
+    private Baseball getInputNumbers(){
         outView.printInputNumberMessage();
-        String input = getInputMessage();
-        return new BaseballNumber(input);
+        String BaseballNumber = getInputMessage();
+        return new Baseball(BaseballNumber);
     }
 
     private String getInputMessage() {
