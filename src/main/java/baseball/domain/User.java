@@ -11,13 +11,14 @@ public class User {
         userNumber = new ArrayList<>();
     }
 
-    public void enterNum() {
+    public List<Integer> enterNum() {
         String input = Console.readLine();
         validLength(input);
         validType(input);
         validRange(input);
         validDuplication(input);
         insertNum(input);
+        return userNumber;
     }
 
     private void validLength(String input) {
@@ -68,9 +69,5 @@ public class User {
     public void reset() {
         userNumber.clear();
     }
-
-    public List<Integer> getUserNumber() {
-        return userNumber;
-    }
-
+    
 }

@@ -11,8 +11,7 @@ public class UserService {
     }
 
     public List<Integer> generateInput() {
-        user.enterNum();
-        return user.getUserNumber();
+        return user.enterNum();
     }
 
     public void resetInput() {
