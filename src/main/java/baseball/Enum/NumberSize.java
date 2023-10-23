@@ -1,6 +1,6 @@
 package baseball.Enum;
 
-public enum ConsoleNumberSizeEnum {
+public enum NumberSize {
     START_INCLUSIVE(0, "시작 숫자"),
     END_INCLUSIVE(9, "끝 숫자"),
     MAX_SIZE(3, "최대 크기");
@@ -8,7 +8,7 @@ public enum ConsoleNumberSizeEnum {
     private final int size;
     private final String description;
 
-    ConsoleNumberSizeEnum(int size, String description) {
+    NumberSize(int size, String description) {
         this.size = size;
         this.description = description;
     }

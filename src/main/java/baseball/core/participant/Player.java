@@ -1,11 +1,8 @@
 package baseball.core.participant;
 
-import baseball.Enum.ParticipantEnum;
 import baseball.core.NumberPicker;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Player implements Participant {
 

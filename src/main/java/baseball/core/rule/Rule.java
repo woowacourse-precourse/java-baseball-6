@@ -4,6 +4,6 @@ import baseball.core.rule.PickedNumbers;
 
 public interface Rule {
 
-    void calculatePoints(PickedNumbers pickedNumbers);
+    ScoreResult calculatePoints(PickedNumbers pickedNumbers);
 
 }

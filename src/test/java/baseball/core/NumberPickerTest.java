@@ -2,8 +2,8 @@ package baseball.core;
 
 
 import baseball.exception.IllegalCountException;
-import baseball.exception.IllegalRangeException;
 import baseball.exception.IllegalTypeException;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,19 +31,22 @@ class NumberPickerTest {
         NumberPicker numberPicker = new NumberPicker();
 
         //when
-        List<Integer> results = numberPicker.picConsoleNumber("2 1 9");
+        List<Integer> results = numberPicker.picConsoleNumber("219");
 
         //then
         Assertions.assertThat(results).contains(2,1,9);
         Assertions.assertThat(results).size().isEqualTo(3);
 
-        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1 2 11"))
-                .isInstanceOf(IllegalRangeException.class);
-
-        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1 2 9 4"))
+        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1294"))
                 .isInstanceOf(IllegalCountException.class);
 
-        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1 2 9 ㄴ"))
+        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("ssss"))
             .isInstanceOf(IllegalTypeException.class);
+    }
+
+    @Test
+    void st() {
+        int i = Randoms.pickNumberInRange(0, 9);
+        System.out.println("i = " + i);
     }
 }

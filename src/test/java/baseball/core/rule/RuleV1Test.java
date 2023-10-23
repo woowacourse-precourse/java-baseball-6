@@ -18,8 +18,7 @@ class RuleV1Test {
         RuleV1 scoreStrategyV1 = RuleV1.makeScoreStrategy();
 
         //when
-        scoreStrategyV1.calculatePoints(pickedNumbers);
-        ScoreResult scoreResult = scoreStrategyV1.getScoreResult();
+        ScoreResult scoreResult = scoreStrategyV1.calculatePoints(pickedNumbers);
 
         //then
         Assertions.assertThat(scoreResult.getStrikeCount()).isEqualTo(3);
@@ -37,8 +36,7 @@ class RuleV1Test {
         RuleV1 scoreStrategyV1 = RuleV1.makeScoreStrategy();
 
         //when
-        scoreStrategyV1.calculatePoints(pickedNumbers);
-        ScoreResult scoreResult = scoreStrategyV1.getScoreResult();
+        ScoreResult scoreResult = scoreStrategyV1.calculatePoints(pickedNumbers);
 
         //then
         Assertions.assertThat(scoreResult.getStrikeCount()).isEqualTo(1);
@@ -56,8 +54,7 @@ class RuleV1Test {
         RuleV1 scoreStrategyV1 = RuleV1.makeScoreStrategy();
 
         //when
-        scoreStrategyV1.calculatePoints(pickedNumbers);
-        ScoreResult scoreResult = scoreStrategyV1.getScoreResult();
+        ScoreResult scoreResult = scoreStrategyV1.calculatePoints(pickedNumbers);
 
         //then
         Assertions.assertThat(scoreResult.getStrikeCount()).isEqualTo(0);
