@@ -2,9 +2,17 @@ package baseball.service;
 
 import baseball.domain.Balls;
 import baseball.domain.Computer;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Game {
+
+    private static final int SUCCESS_CONDITION = 3;
+    private static final int NOTHING_CONDITION = 0;
+    private static final int RESTART_NUMBER = 1;
+
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     private Computer computer;
     private Balls userBalls;
@@ -16,8 +24,7 @@ public class Game {
 
     public void inputUserBalls() {
         userBalls = new Balls();
-        System.out.print("숫자를 입력해주세요 : ");
-        String balls = Console.readLine();
+        String balls = inputView.inputNumber();
         userBalls.convertToBalls(balls);
     }
 
@@ -30,16 +37,16 @@ public class Game {
     }
 
     public boolean isThreeStrike(int strike) {
-        if (strike == 3) {
-            System.out.println("3스트라이크");
+        if (strike == SUCCESS_CONDITION) {
+            outputView.outputStrikeResult(SUCCESS_CONDITION);
             return true;
         }
         return false;
     }
 
     public boolean isNothing(int ball) {
-        if (ball == 0) {
-            System.out.println("낫싱");
+        if (ball == NOTHING_CONDITION) {
+            outputView.outputNothing();
             return true;
         }
         return false;
@@ -47,29 +54,29 @@ public class Game {
 
     public void outputResult(int ball, int strike) {
         if (ball == 0) {
-            System.out.println(strike+"스트라이크");
+            outputView.outputStrikeResult(strike);
             return;
         }
         if (strike == 0) {
-            System.out.println(ball+"볼");
+            outputView.outputBallResult(ball);
             return;
         }
-        System.out.println(ball+"볼 "+strike+"스트라이크");
+        outputView.outputBallAndStrikeResult(ball, strike);
     }
 
     public void outputGameSuccess() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        outputView.outputGameSuccess();
     }
 
     public void outputRestartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        outputView.outputRestartGame();
     }
 
     public void outputGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        outputView.outputGameStart();
     }
 
     public boolean inputRestartNumber() {
-        return Integer.parseInt(Console.readLine()) == 1;
+        return Integer.parseInt(inputView.inputRestartNum()) == RESTART_NUMBER;
     }
 }
