@@ -26,10 +26,10 @@ public class BaseballController {
 
     public void startPlayGame() {
         computer.drawComputerNumber();
-        matchGame();
+        enterPlayer();
     }
 
-    public void matchGame() {
+    public void enterPlayer() {
         while(true){
             player.inputPlayerNumber(InputView.playerNumber());
             referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());
