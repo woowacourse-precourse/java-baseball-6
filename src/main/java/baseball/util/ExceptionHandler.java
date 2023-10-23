@@ -1,6 +1,6 @@
 package baseball.util;
 
-public class ExceptionHandler {
+public final class ExceptionHandler {
     public static void throwIfNumberLengthNotThree() {
         throw new IllegalArgumentException("숫자의 길이는 3이어야 합니다.");
     }
