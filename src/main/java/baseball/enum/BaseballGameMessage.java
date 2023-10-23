@@ -9,11 +9,13 @@ public enum BaseballGameMessage {
 
     private final String message;
 
-    BaseballGameMessage(String message) { this.message = message; }
-    
+    BaseballGameMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String toString() {
         return message;
     }
-    
+
 }

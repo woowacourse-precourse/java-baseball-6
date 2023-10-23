@@ -12,7 +12,7 @@ public class BaseBallService {
 
     public List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < NUMBER_OF_DIGITS ) {
+        while (computer.size() < NUMBER_OF_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);

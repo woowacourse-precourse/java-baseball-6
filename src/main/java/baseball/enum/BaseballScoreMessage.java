@@ -8,7 +8,9 @@ public enum BaseballScoreMessage {
 
     private final String message;
 
-    BaseballScoreMessage(String message) { this.message = message; }
+    BaseballScoreMessage(String message) {
+        this.message = message;
+    }
 
     public String getMessageWithCount(int count) {
         return count + this.message;

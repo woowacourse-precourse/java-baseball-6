@@ -10,7 +10,7 @@ public class BaseballInputView {
     public List<Integer> userGuessInput() {
         String input = Console.readLine();
         validateInputLength(input);
-        
+
         List<Integer> userInput = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             char currentChar = input.charAt(i);
