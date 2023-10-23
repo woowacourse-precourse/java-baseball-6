@@ -17,7 +17,6 @@ public class Initialize {
                 answer.add(randomNumber);
             }
         }
-        System.out.println("정답: " + answer);
         return answer;
     }
 }
