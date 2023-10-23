@@ -34,8 +34,10 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
             String input = Console.readLine();
 
-            if (!input.equals("1")) {
+            if (input.equals("2")) {
                 break;
+            } else if (!input.equals("1")) {
+                throw new IllegalArgumentException("잘못된 입력입니다. 애플리케이션을 종료합니다.");
             }
         }
     }
