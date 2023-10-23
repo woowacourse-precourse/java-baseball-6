@@ -13,3 +13,5 @@
 * feat: 기능 구현
 * docs: 리드미 생성/수정
 * fix: 에러 수정
+* refactor: 구조 수정
+* chore: 자잘한 코드 수정
