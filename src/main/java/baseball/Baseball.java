@@ -54,14 +54,15 @@ public class Baseball {
 
     private void checkSameNumber() {
         for (int i = 0; i < NUMBERS_SIZE; i++) {
-            int computerNumber = computer.getComputerNumber(i);
-            int userNumber = user.getUserNumber(i);
+            incrementStrikeOrBall(computer.getComputerNumber(i), user.getUserNumber(i));
+        }
+    }
 
-            if (computerNumber == userNumber) {
-                strike++;
-            } else if (computer.isContainsNumber(userNumber)) {
-                ball++;
-            }
+    private void incrementStrikeOrBall(int computerNumber, int userNumber) {
+        if (computerNumber == userNumber) {
+            strike++;
+        } else if (computer.isContainsNumber(userNumber)) {
+            ball++;
         }
     }
 }
