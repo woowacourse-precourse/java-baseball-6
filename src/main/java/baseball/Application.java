@@ -28,9 +28,26 @@ public class Application {
                 System.out.printf("숫자를 입력해주세요 : ");
                 input = Console.readLine();
                 if(isValidInput(input)){
-                    System.out.println("유효");
+                    //3. 비교기능
+                    for(int i=0; i<input.length(); i++){
+                        int tmp = Integer.parseInt(String.valueOf(input.charAt(i)));
+                        if(computer.contains(tmp)){
+                            if(computer.get(i).equals(tmp)){
+                                strike++;
+                            } else {
+                                ball++;
+                            }
+                        }
+                    }
+
+                    //3. 출력기능
+                    if(ball!=0){System.out.printf("%d볼 ",ball);}
+                    if(strike!=0){System.out.printf("%d스트라이크",strike);}
+                    if(ball==0&&strike==0){System.out.print("낫싱");}
+                    System.out.println();
+                    ball=0; strike=0;//다음 비교를 위해 ball strike 수 초기화
                 } else {
-                    System.out.println("무효");
+                    throw new IllegalArgumentException("유효하지 않은 입력 발생");//2.2 유효판별 종료기능
                 }
             }
         }
