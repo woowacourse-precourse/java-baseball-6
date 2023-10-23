@@ -6,15 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class InputView {
-
-    private int executionCount = 0;
+    private boolean isFirstInput = true;
 
     public List<Integer> inputBallNumbers() {
-        if (executionCount++ == 0) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-        }
-        System.out.print("숫자를 입력해주세요 : ");
-
+        printInputBallNumbersMessage();
         return Arrays.stream(readLine().split(""))
                 .map(Integer::parseInt)
                 .toList();
@@ -31,6 +26,14 @@ public final class InputView {
         }
 
         return status;
+    }
+
+    private void printInputBallNumbersMessage() {
+        if (isFirstInput) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            isFirstInput = false;
+        }
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private String readLine() {
