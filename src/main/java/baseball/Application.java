@@ -21,6 +21,14 @@ public class Application {
         return answer;
     }
 
+    private static List<Integer> parseUserInput(String input) {
+        List<Integer> userInput = new ArrayList<>(3);
+        for (int i = 0; i < 3; i++) {
+            userInput.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return userInput;
+    }
+
     private static int[] checkAnswer(List<Integer> answer, List<Integer> userInput) {
         int[] count = new int[2];
         for (int i = 0; i < 3; i++) {
