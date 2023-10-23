@@ -16,19 +16,14 @@ public class User {
     public void setUserInput() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        checkInputLength(input);
         checkInputType(input);
         checkDuplicateInput(input);
+
         for(int i = 0; i < INPUT_LENGTH; i++){
             this.userInput[i] = Character.getNumericValue(input.charAt(i));
         }
     }
 
-    private void checkInputLength(String input) {
-        if(input.length() != INPUT_LENGTH) {
-            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
-        }
-    }
     private void checkInputType(String input) {
         if(!input.matches(INPUT_REGEX)) {
             throw  new IllegalArgumentException(INPUT_ERROR_MESSAGE);
@@ -37,6 +32,7 @@ public class User {
 
     private void checkDuplicateInput(String input) {
         Set<Character> uniqueInput = new HashSet<>();
+
         for(char c : input.toCharArray()) {
             if (!uniqueInput.add(c)){
                 throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);

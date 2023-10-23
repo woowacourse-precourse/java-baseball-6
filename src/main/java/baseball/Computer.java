@@ -15,9 +15,11 @@ public class Computer {
 
         while(i != 3) {
             int randomNumber = Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX);
-            if(usedNumbers[randomNumber]){
+
+            if(usedNumbers[randomNumber]) {
                 continue;
             }
+
             usedNumbers[randomNumber] = true;
             computerNumber[i] = randomNumber;
             i++;
