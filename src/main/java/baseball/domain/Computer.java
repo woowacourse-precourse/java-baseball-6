@@ -8,9 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    private static final int END = 2;
     private String targetNumber;
     private int ballCount;
     private int strikeCount;
+
+    public void run() {
+        boolean isGameEnd = false;
+        while (!isGameEnd) {
+            int command = gameStart();
+
+            if (command == END) {
+                isGameEnd = true;
+            }
+        }
+    }
 
     public int gameStart() {
         generateTargetNumber();
