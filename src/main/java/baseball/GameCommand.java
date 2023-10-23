@@ -1,5 +1,9 @@
 package baseball;
 
+import java.util.Arrays;
+
+import static baseball.Constants.FIND_COMMAND_ERROR;
+
 public enum GameCommand {
     RETRY(1),
     QUIT(2);
@@ -8,5 +12,12 @@ public enum GameCommand {
 
     GameCommand(Integer command) {
         this.command = command;
+    }
+
+    public static GameCommand findByCommand(Integer input) {
+        return Arrays.stream(GameCommand.values())
+                .filter(gameCommand -> gameCommand.command == input)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(FIND_COMMAND_ERROR));
     }
 }
