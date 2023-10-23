@@ -7,7 +7,7 @@ import java.util.Set;
 public class GameManager {
     private static final int FIXED_PLAYER_NUMBERS_LENGTH = 3;
     private static final int NOTHING = 0;
-    private static final int INCREMENT = 1;
+    private static final int INCREMENT_VALUE = 1;
     private static final int WINNING_STRIKE_COUNT = 3;
 
 
@@ -39,13 +39,22 @@ public class GameManager {
             int playerNumber = playerNumbers.charAt(i) - '0';
             int computerNumber = computerNumbers.get(i);
             if (playerNumber == computerNumber) {
-                strikeCount += INCREMENT;
+                strikeCount += INCREMENT_VALUE;
             }
             if (playerNumber != computerNumber && computerNumbers.contains(playerNumber)) {
-                ballCount += INCREMENT;
+                ballCount += INCREMENT_VALUE;
             }
         }
+        printResult(strikeCount, ballCount);
 
+        if(strikeCount == WINNING_STRIKE_COUNT) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        return true;
+    }
+
+    private static void printResult(int strikeCount, int ballCount) {
         if (strikeCount != NOTHING && ballCount == NOTHING) {
             System.out.println(strikeCount + "스트라이크");
         }
@@ -58,11 +67,5 @@ public class GameManager {
         if (strikeCount == NOTHING && ballCount == NOTHING) {
             System.out.println("낫싱");
         }
-
-        if(strikeCount == WINNING_STRIKE_COUNT) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return false;
-        }
-        return true;
     }
 }
