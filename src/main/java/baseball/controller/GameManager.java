@@ -8,7 +8,7 @@ import baseball.view.InputHandler;
 import baseball.view.OutputHandler;
 
 public class GameManager {
-    BallNumber computerNumber;
+    private final BallNumber computerNumber;
 
     GameManager() {
         computerNumber = RandomNumberGenerator.generate();
