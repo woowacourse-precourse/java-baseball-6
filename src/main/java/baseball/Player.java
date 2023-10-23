@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,9 +12,6 @@ public class Player {
 
     private final int MAX_LENGTH = 3;
     private final String INITIAL_MESSAGE = "숫자를 입력해주세요 : ";
-    private final String NUMBERS_LENGTH_ERROR = "3개의 수를 입력해주세요.";
-    private final String DUPLICATE_NUMBER_ERROR = "중복된 숫자는 허용되지 않습니다.";
-    private final String NOT_NUMBER_ERROR = "숫자만 입력해주세요.";
     private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3,3}");
     private static final String START = "1";
     private static final String END = "9";
@@ -48,7 +46,7 @@ public class Player {
 
     private void validateNumbersLength(String numbers) {
         if (numbers.length() != MAX_LENGTH) {
-            throw new IllegalArgumentException(NUMBERS_LENGTH_ERROR);
+            throw new IllegalArgumentException(ExceptionMessage.NUMBERS_LENGTH_ERROR.getMessage());
         }
     }
 
@@ -58,7 +56,7 @@ public class Player {
         for (char c : numbers.toCharArray()) {
 
             if (numberSet.contains(c)) {
-                throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
+                throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER_ERROR.getMessage());
             }
             numberSet.add(c);
         }
@@ -67,7 +65,7 @@ public class Player {
 
     private void validateNumbersType(String numbers) {
         if (!PLAYER_REGEX.matcher(numbers).matches()) {
-            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMBER_ERROR.getMessage());
         }
     }
 

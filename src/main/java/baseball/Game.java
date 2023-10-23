@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,7 +110,7 @@ public class Game {
         List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{"1", "2"}));
         boolean inputValidation = inputList.contains(checkInput);
         if (!inputValidation) {
-            throw new IllegalArgumentException("Please answer 1 or 2.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE_ERROR.getMessage());
         }
     }
 
