@@ -2,18 +2,13 @@ package baseball.domain;
 
 import java.util.HashMap;
 
-public class BaseballRepository {
+public class BaseballResultRepository {
     private Integer strike;
     private Integer ball;
     private static HashMap<String, Integer> baseball = new HashMap<>();
-    private static final BaseballRepository instance = new BaseballRepository();
+    private static final BaseballResultRepository instance = new BaseballResultRepository();
 
-    public BaseballRepository(Integer strike, Integer ball) {
-        baseball.put("strike", strike);
-        baseball.put("ball", ball);
-    }
-
-    public BaseballRepository() {
+    public BaseballResultRepository() {
         baseball.put("strike", 0);
         baseball.put("ball", 0);
     }
@@ -46,7 +41,7 @@ public class BaseballRepository {
         setStrike(baseball.get("strike")+1);
     }
 
-    public static BaseballRepository getInstance() {
+    public static BaseballResultRepository getInstance() {
         return instance;
     }
 

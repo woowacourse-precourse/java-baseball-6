@@ -2,20 +2,20 @@ package baseball.application.result;
 
 import baseball.application.PrintStateApplication;
 import baseball.application.numbers.GenerateAnswerApplication;
-import baseball.domain.BaseballRepository;
+import baseball.domain.BaseballResultRepository;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GetResultApplication {
     boolean isContinue;
     boolean isCorrect;
-    private BaseballRepository baseballRepository = BaseballRepository.getInstance();
+    private BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
     private GenerateAnswerApplication generateAnswerController = new GenerateAnswerApplication();
     public GetResultApplication() {
     }
 
     public boolean getResult() {
         boolean answer = false;
-        isCorrect = isCorrectNumbers(baseballRepository.getBall(), baseballRepository.getStrike());
+        isCorrect = isCorrectNumbers(baseballResultRepository.getBall(), baseballResultRepository.getStrike());
         if (isCorrect) {
 
             PrintStateApplication.printEndState();

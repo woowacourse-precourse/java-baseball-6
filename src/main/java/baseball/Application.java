@@ -19,7 +19,6 @@ public class Application {
         PrintStateApplication.printStartState();
 
         while (true){
-
             PrintStateApplication.printInputState();
             getUserAnwerController = new GetUserAnswerApplication();
             calculateResultController = new CalculateResultApplication();

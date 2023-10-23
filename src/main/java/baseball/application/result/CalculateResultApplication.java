@@ -4,7 +4,7 @@ import baseball.domain.*;
 
 public class CalculateResultApplication {
 
-    private static BaseballRepository baseballRepository = BaseballRepository.getInstance();
+    private static BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
     private AnswerNumberRepository answerNumberRepository = AnswerNumberRepository.getInstance();
     private UserNumberRepository userNumberRepository = UserNumberRepository.getInstance();
 
@@ -15,19 +15,19 @@ public class CalculateResultApplication {
     }
 
     private void calculateResult() {
-        baseballRepository.clear();
+        baseballResultRepository.clear();
         for (int i = 0; i < 3; i++) {
             // 개수
             if (userNumberRepository.contain(answerNumberRepository.findById(i))) {
-                baseballRepository.addBall();
+                baseballResultRepository.addBall();
             }
             // 위치
             if (userNumberRepository.findById(i).equals(answerNumberRepository.findById(i))) {
-                baseballRepository.subBall();
-                baseballRepository.addStrike();
+                baseballResultRepository.subBall();
+                baseballResultRepository.addStrike();
             }
         }
-        System.out.println("ball: " + baseballRepository.getBall() + ", strike : " + baseballRepository.getStrike());
+        System.out.println("ball: " + baseballResultRepository.getBall() + ", strike : " + baseballResultRepository.getStrike());
     }
 
 
