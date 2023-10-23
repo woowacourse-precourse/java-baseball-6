@@ -8,7 +8,7 @@ public class PlayerChoice {
         value = Integer.parseInt(input);
     }
 
-    private void validateChoice(String input) {g
+    private void validateChoice(String input) {
         int choice = Integer.parseInt(input);
         if ((choice != 1) && (choice != 2)) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력해주세요.");
