@@ -3,6 +3,8 @@ package Validation;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.Application.NUMBER_LENGTH;
+
 public class Validation {
     public void inputLengthIsZero(String input) {
         if(input.equals("")){
@@ -10,12 +12,12 @@ public class Validation {
         }
     }
     public void inputLengthIsOver(String input){
-        if(input.length()>3){
+        if(input.length()>NUMBER_LENGTH){
             throw new IllegalArgumentException();
         }
     }
     public void inputLengthIsUnder(String input){
-        if(input.length()<3){
+        if(input.length()<NUMBER_LENGTH){
             throw  new IllegalArgumentException();
         }
     }
@@ -32,7 +34,7 @@ public class Validation {
         for(int i =0; i< input.length(); i++){
             set.add(input.charAt(i));
         }
-        if(set.size()<3){
+        if(set.size()<NUMBER_LENGTH){
             throw new IllegalArgumentException();
         }
     }
