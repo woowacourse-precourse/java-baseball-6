@@ -22,7 +22,7 @@ public class ComputerTest {
     }
 
     @Test
-    void initNumbers_중복_숫자_검증() {
+    void initNumbers_중복_숫자_테스트() {
 
         List<Integer> duplicationNumbers = new ArrayList<>(Arrays.asList(1, 1, 1));
 
