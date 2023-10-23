@@ -6,13 +6,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseballController {
 
     private BaseballException baseballException = new BaseballException();
+    private BaseballView baseballView = new BaseballView();
 
     // 게임 시작 함수
     public void startBaseball() {
         int strike = 0;
 
-        // 게임 시작 문구 출력
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        baseballView.printBaseballStart();
 
         // 컴퓨터가 1~9까지의 서로 다른 임의의 수 3개 선택
         String computer = "";
