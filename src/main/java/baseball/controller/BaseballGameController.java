@@ -9,7 +9,7 @@ import baseball.view.OutputView;
 public class BaseballGameController {
 
     public static final String ALL_STRIKE = "3";
-    public static final int STRIKE_COUNT_RESULT=1;
+    public static final int STRIKE_COUNT_RESULT = 1;
     public static final String RESTART_GAME = "1";
     public static final String END_GAME = "2";
 
@@ -22,11 +22,11 @@ public class BaseballGameController {
     }
 
     public void gameStart() {
-        this.baseballGame=new BaseballGame();
+        this.baseballGame = new BaseballGame();
         do {
             InputView.printInputNumberMessage();
             User user = new User(InputView.readUserNumberInput());
-            String []results = baseballGame.compareTwoNumbers(user.getUserNumber());
+            String[] results = baseballGame.compareTwoNumbers(user.getUserNumber());
             new OutputView(results);
             gameResult(results);
         } while (RestartFlag);
@@ -34,7 +34,7 @@ public class BaseballGameController {
     }
 
 
-    public void gameResult(String [] results){
+    public void gameResult(String[] results) {
 
         if (results[STRIKE_COUNT_RESULT].equals(ALL_STRIKE)) {
             OutputView.printAnswerMessage();
@@ -47,7 +47,7 @@ public class BaseballGameController {
     }
 
 
-    public void restartGame(String input){
+    public void restartGame(String input) {
         if (input.equals(RESTART_GAME)) {
             baseballGame.createComputerNumber();
         }

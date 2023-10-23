@@ -24,11 +24,11 @@ public class BaseballGame {
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < userNumber.length(); i++) {
-            if (userNumber.charAt(i) - '0' == computerNumber.get(i)) {
+            if (userNumber.charAt(i) - '0' == this.computerNumber.get(i)) {
                 strikeCount++;
                 continue;
             }
-            if (computerNumber.contains(userNumber.charAt(i) - '0')) {
+            if (this.computerNumber.contains(userNumber.charAt(i) - '0')) {
                 ballCount++;
             }
         }
