@@ -1,14 +1,11 @@
 package baseball.model;
 
-import baseball.util.NumberConstant;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserInputNumbers {
 
     private final List<Number> userNumberList;
-    private int strikeCount = 0;
-    private int ballCount = 0;
 
     public UserInputNumbers(String userInput) {
         this.userNumberList = userInputToNumbers(userInput);
@@ -23,38 +20,8 @@ public class UserInputNumbers {
         return numberList;
     }
 
-    public int countStrikes(RandomNumbers randomNumbers) {
-        List<Number> randomNumberList = randomNumbers.getRandomNumbers();
-        for (int i = 0; i < NumberConstant.LENGTH; i++) {
-            Number userInputNumber = userNumberList.get(i);
-            Number randomNumber = randomNumberList.get(i);
 
-            if (isStrike(userInputNumber, randomNumber)) {
-                strikeCount += 1;
-            }
-        }
-        return strikeCount;
-    }
-
-
-    public int countBalls(RandomNumbers randomNumbers) {
-        List<Number> randomNumberList = randomNumbers.getRandomNumbers();
-        for (int i = 0; i < NumberConstant.LENGTH; i++) {
-            Number userInputNumber = userNumberList.get(i);
-            Number randomNumber = randomNumberList.get(i);
-
-            if (isBall(randomNumberList, userInputNumber, randomNumber)) {
-                ballCount += 1;
-            }
-        }
-        return ballCount;
-    }
-
-    private boolean isStrike(Number userInputNumber, Number randomNumber) {
-        return userInputNumber.equals(randomNumber);
-    }
-
-    private boolean isBall(List<Number> randomNumberList, Number userInputNumber, Number randomNumber) {
-        return randomNumberList.contains(userInputNumber) && !isStrike(randomNumber, userInputNumber);
+    public List<Number> getUserNumberList() {
+        return userNumberList;
     }
 }

@@ -26,8 +26,8 @@ public class Strikes {
         List<Number> userInputNumberList = userInputNumbers.getUserNumberList();
 
         for (int i = 0; i < NumberConstant.LENGTH; i++) {
-            Number userInputNumber = userInputNumberList.get(i);
             Number randomNumber = randomNumberList.get(i);
+            Number userInputNumber = userInputNumberList.get(i);
 
             if (isStrike(userInputNumber, randomNumber)) {
                 counts += 1;
