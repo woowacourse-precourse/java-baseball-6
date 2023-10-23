@@ -1,4 +1,4 @@
-package baseball.core.print;
+package baseball.core.utils;
 
 import baseball.core.code.Message;
 
