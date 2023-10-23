@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 import static baseball.Constants.*;
 
 public class User {
-    private List<Integer> numbers;
+    private Numbers numbers;
 
     public void inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String input = Console.readLine();
-        numbers = parseIntegers(input);
+        numbers = new Numbers(parseIntegers(input));
     }
 
     public GameCommand inputGameCommand() {
@@ -34,6 +34,6 @@ public class User {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return numbers.getNumbers();
     }
 }

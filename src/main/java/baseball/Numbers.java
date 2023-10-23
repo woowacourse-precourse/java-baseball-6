@@ -37,4 +37,8 @@ public class Numbers {
             throw new IllegalArgumentException(NUMBERS_DUPLICATE_ERROR);
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
