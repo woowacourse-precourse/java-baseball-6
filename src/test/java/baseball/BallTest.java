@@ -25,7 +25,7 @@ class BallTest {
     void test3() {
         Ball ball = new Ball(1, 1);
 
-        assertThat(ball.play(new Ball(1, 2))).isEqualTo("볼");
+        assertThat(ball.play(new Ball(1, 2))).isEqualTo(BallResultEnum.BALL);
     }
 
     @Test
@@ -33,7 +33,7 @@ class BallTest {
     void test4() {
         Ball ball = new Ball(1, 1);
 
-        assertThat(ball.play(new Ball(1, 1))).isEqualTo("스트라이크");
+        assertThat(ball.play(new Ball(1, 1))).isEqualTo(BallResultEnum.STRIKE);
     }
 
     @Test
@@ -41,6 +41,6 @@ class BallTest {
     void test5() {
         Ball ball = new Ball(1, 1);
 
-        assertThat(ball.play(new Ball(2, 1))).isEqualTo("낫싱");
+        assertThat(ball.play(new Ball(2, 1))).isEqualTo(BallResultEnum.NOTHING);
     }
 }

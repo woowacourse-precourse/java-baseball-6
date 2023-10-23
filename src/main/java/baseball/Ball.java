@@ -21,15 +21,15 @@ public class Ball {
         return ball;
     }
 
-    public String play(Ball userBall) {
+    public BallResultEnum play(Ball userBall) {
         if (this.equals(userBall)) {
-            return "스트라이크";
+            return BallResultEnum.STRIKE;
         }
 
         if (userBall.ball == this.ball) {
-            return "볼";
+            return BallResultEnum.BALL;
         }
-        return "낫싱";
+        return BallResultEnum.NOTHING;
     }
 
     @Override

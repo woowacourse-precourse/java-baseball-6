@@ -12,36 +12,34 @@ public class Balls {
             throw new IllegalArgumentException();
         }
 
+        this.balls = makeBallList(list);
+    }
+
+    private List<Ball> makeBallList(List<Integer> list) {
         List<Ball> ballList = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++) {
             ballList.add(new Ball(list.get(i), (i + 1)));
         }
-        this.balls = ballList;
+        return ballList;
     }
 
-    public String play(Ball ball) {
+    public BallResultEnum play(Ball ball) {
 
-        for (int i = 0; i < balls.size(); i++) {
-            if (ball.play(balls.get(i)) == "스트라이크") {
-                return "스트라이크";
-            }
-
-            if (ball.play(balls.get(i)) == "볼") {
-                return "볼";
-            }
-        }
-
-
-        return "낫싱";
+        return balls.stream()
+                .map(comBall -> ball.play(comBall))
+                .filter(ballResultEnum -> ballResultEnum != BallResultEnum.NOTHING)
+                .findFirst()
+                .orElse(BallResultEnum.NOTHING);
     }
 
     public PlayResult play(Balls userBalls) {
 
         PlayResult playResult = new PlayResult();
+
         balls.stream()
-                .map(ball -> userBalls.play(ball))
-                .forEach(result -> playResult.result(result));
+                .map(userBalls::play)
+                .forEach(playResult::result);
 
         return playResult;
     }
