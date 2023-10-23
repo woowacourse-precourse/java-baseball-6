@@ -1,10 +1,10 @@
 package baseball.model;
 
-import static baseball.Constant.PLAY_NUMBER_DIGIT;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static baseball.Constant.PLAY_NUMBER_DIGIT;
 
 public class PlayNumber {
 

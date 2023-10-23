@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.Constant.PLAY_NUMBER_DIGIT;
-
 import baseball.model.GameRule;
 import baseball.model.PlayNumber;
 import baseball.model.RandomNumber;
@@ -13,15 +11,16 @@ import baseball.view.InputView;
 import baseball.view.ResultView;
 import baseball.view.StartView;
 
+import static baseball.Constant.PLAY_NUMBER_DIGIT;
+
 public class GameController {
 
-    private ResumeNumber resumeNumber;
     private final InputView inputView;
     private final GameRule ballRule;
     private final GameRule strikeRule;
+    private ResumeNumber resumeNumber;
 
     public GameController(final InputView inputView, final GameRule ballRule, final GameRule strikeRule) {
-        this.resumeNumber = ResumeNumber.createDefault();
         this.inputView = inputView;
         this.ballRule = ballRule;
         this.strikeRule = strikeRule;

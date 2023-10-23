@@ -1,8 +1,8 @@
 package baseball.model;
 
-import static baseball.Constant.PLAY_NUMBER_DIGIT;
-
 import camp.nextstep.edu.missionutils.Randoms;
+
+import static baseball.Constant.PLAY_NUMBER_DIGIT;
 
 public class RandomNumber {
 
