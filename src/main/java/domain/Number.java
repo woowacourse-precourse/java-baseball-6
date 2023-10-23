@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Number {
     private final int num;
-    public static final int numberCount = 3;
+    public static final int NUMBER_COUNT = 3;
 
-    private static final int minimumNumber = 1;
-    private static final int maximumNumber = 9;
-    private static final List<Integer> goalNumbers = new ArrayList<>(numberCount);
+    private static final int MINIMUM_NUMBER = 1;
+    private static final int MAXIMUM_NUMBER = 9;
+    private static final List<Integer> goalNumbers = new ArrayList<>(NUMBER_COUNT);
 
     public Number(int num) {
         this.num = num;
@@ -23,10 +23,10 @@ public class Number {
 
     private static void resetGoalNumbers() {
         goalNumbers.clear();
-        for (int i = 0; i < numberCount; i++) {
+        for (int i = 0; i < NUMBER_COUNT; i++) {
             int randomNumber;
             do {
-                randomNumber = Randoms.pickNumberInRange(minimumNumber, maximumNumber);
+                randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
             } while (goalNumbers.contains(randomNumber));
             goalNumbers.add(randomNumber);
         }
@@ -42,8 +42,8 @@ public class Number {
 
     private static List<Integer> getScore(List<Number> numbers) {
         int strike = 0, ball = 0;
-        for (int i = 0; i < numberCount; i++) {
-            for (int j = 0; j < numberCount; j++) {
+        for (int i = 0; i < NUMBER_COUNT; i++) {
+            for (int j = 0; j < NUMBER_COUNT; j++) {
                 if (numbers.get(i).num == goalNumbers.get(j)) {
                     if (i == j) {
                         strike++;

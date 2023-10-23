@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
+    private static final int NUMBER_COUNT = 3;
+    private static final int RESTART_ANSWER = 1;
+    private static final int SHUTDOWN_ANSWER = 2;
     public static List<Integer> inputNumbers() {
         List<Integer> convertedNumber = new ArrayList<>();
         String input = Console.readLine();
-        if (input.length() != 3) {
+        if (input.length() != NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < input.length(); i++) {
@@ -29,10 +32,10 @@ public class InputView {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        if (input == 1) {
+        if (input == RESTART_ANSWER) {
             return true;
         }
-        if (input == 2) {
+        if (input == SHUTDOWN_ANSWER) {
             return false;
         }
         throw new IllegalArgumentException();

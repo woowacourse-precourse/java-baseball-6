@@ -3,6 +3,8 @@ package view;
 import constant.Message;
 
 public class OutputView {
+    private static final char NEWLINE_CHARACTER = '\n';
+
     public static void startGame() {
         System.out.print(Message.GAME_START.getMessage());
     }
@@ -24,7 +26,7 @@ public class OutputView {
         if (ball == 0 && strike == 0) {
             message.append(Message.NOTHING.getMessage());
         }
-        message.append('\n');
+        message.append(NEWLINE_CHARACTER);
         System.out.print(message);
     }
 
