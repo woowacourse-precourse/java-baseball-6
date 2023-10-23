@@ -19,7 +19,7 @@ class ApplicationTest extends NsTest {
 
     @BeforeEach
     void playing_변수_초기화() {
-        GameController.playing = true;
+        GameController.setPlayingTrue();
     }
 
     @Test

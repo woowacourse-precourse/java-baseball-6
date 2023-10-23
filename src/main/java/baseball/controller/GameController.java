@@ -11,7 +11,7 @@ public class GameController {
 
     GameService service = new GameService();
     BaseballNumbers computerNumbers;
-    public static boolean playing = true;
+    private static boolean playing = true;
 
     public void init() {
         computerNumbers = service.generateNumbers();
@@ -44,6 +44,10 @@ public class GameController {
         if (Command.isRestart(input)) {
             init();
         }
+    }
+
+    public static void setPlayingTrue() {
+        playing = true;
     }
 
 
