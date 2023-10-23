@@ -6,6 +6,14 @@ import java.util.*;
 
 public class BaseballGameManger {
 
+    private User user;
+    private Computer computer;
+
+    public BaseballGameManger(User user, Computer computer) {
+        this.user = user;
+        this.computer = computer;
+    }
+
     public int menuChoice() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int menu = Integer.parseInt(Console.readLine());
@@ -16,8 +24,6 @@ public class BaseballGameManger {
     }
 
     public void playBaseballGame() {
-        Computer computer = new Computer();
-        User user = new User();
         List<Integer> computerNumbers = computer.generateRandomNumbers();
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean gameOver = false;
@@ -25,8 +31,8 @@ public class BaseballGameManger {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             try {
-                List<Integer> userNumber = user.changeStringToIntegerList(userInput);
-                Map<String,Integer> gameResult = user.checkGuess(computerNumbers, userNumber);
+                List<Integer> getUserGuess = user.changeStringToIntegerList(userInput);
+                Map<String,Integer> gameResult = user.checkGuess(computerNumbers, getUserGuess);
                 gameOver = computer.printHint(gameResult);
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException("올바른 입력이 아닙니다. 서로 다른 3자리 숫자를 입력하세요.");
