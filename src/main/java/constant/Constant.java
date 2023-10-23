@@ -16,4 +16,7 @@ public class Constant {
     public static String BALL_STRING = "볼";
     public static String STRIKE_STRING = "스트라이크";
     public static String NOTHING_STRING = "낫싱";
+
+    public static String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다!";
+    public static String END_MESSAAGE = "게임 종료";
 }

@@ -7,6 +7,7 @@ import static constant.ErrorMessage.*;
 import static utils.InputValidator.validateUserInput;
 import static utils.InputValidator.changeToIntArray;
 import static utils.Printer.printResult;
+import static utils.Printer.printSuccess;
 
 public class Game {
 
@@ -33,8 +34,9 @@ public class Game {
         int strike = countStrike(userGuess);
         int ball = countContain(userGuess) - strike;
         printResult(ball,strike);
-        
+
         if (strike == 3) {
+            printSuccess();
             return true;
         }
         return false;

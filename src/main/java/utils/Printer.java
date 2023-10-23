@@ -18,5 +18,9 @@ public class Printer {
         if (ball != 0 && strike != 0)
             System.out.println(ball + BALL_STRING + " " + strike + STRIKE_STRING);
     }
+
+    public static void printSuccess() {
+        System.out.println(SUCCESS_MESSAGE + " " + END_MESSAAGE);
+    }
 }
 
