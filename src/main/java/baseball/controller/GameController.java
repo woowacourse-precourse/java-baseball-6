@@ -38,7 +38,7 @@ public class GameController {
 
         inputNumber.setQuitNumber(inputView.getRestartOrQuitInput());
 
-        if (!isQuitted(inputNumber)) {
+        if (!isQuit(inputNumber)) {
             startGame();
         }
 
@@ -52,7 +52,7 @@ public class GameController {
         return false;
     }
 
-    public boolean isQuitted(InputNumber inputNumber) {
+    public boolean isQuit(InputNumber inputNumber) {
         if (inputNumber.getQuitNumber().equals("2")) {
             return true;
         }
