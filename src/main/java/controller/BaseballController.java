@@ -16,8 +16,8 @@
 
 package controller;
 
+import model.CalculateResult;
 import model.CreateRandomNumber;
-import model.Result;
 import view.InputView;
 import view.RestartOrEndView;
 import view.ResultView;
@@ -34,7 +34,7 @@ public class BaseballController {
 
             while (true) {
                 UserBall userBall = new UserBall(InputView.userInput());
-                ResultBall resultBall = Result.getResult(answerBall, userBall);
+                ResultBall resultBall = CalculateResult.getResult(answerBall, userBall);
 
                 ResultView resultView = new ResultView(resultBall);
                 resultView.View();

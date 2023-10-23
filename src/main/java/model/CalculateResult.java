@@ -24,7 +24,7 @@ import vo.AnswerBall;
 import vo.ResultBall;
 import vo.UserBall;
 
-public class Result {
+public class CalculateResult {
     public static final int NUMBER_SIZE = 3;
 
     public static ResultBall getResult(AnswerBall answerBall, UserBall userBall) {
