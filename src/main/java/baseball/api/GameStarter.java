@@ -22,14 +22,14 @@ public class GameStarter {
     }
 
     public GameHelper run() throws IllegalArgumentException {
-        if (!retryFlag){
+        if (!retryFlag) {
             System.out.println(START_MESSAGE);
         }
-        while (true){
+        while (true) {
             System.out.print(PLAY_MESSAGE);
             respondToUserGuess();
             Computer.hintMessage(count.getStrikeCount(), count.getBallCount());
-            if(isResult()){
+            if(isResult()) {
                 System.out.println(COMPLETE_MESSAGE);
                 System.out.println(END_MESSAGE);
                 return gameHelper;

@@ -11,7 +11,7 @@ public class GameHelper {
 
     public void retryGame() throws IllegalArgumentException {
         SupportedRetryRequest request = RequestChecker.retryRequest();
-        if(request.isFlag()){
+        if(request.isFlag()) {
             reStartGame().run().retryGame();
         }
     }

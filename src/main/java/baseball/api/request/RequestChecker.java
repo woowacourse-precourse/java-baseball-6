@@ -15,7 +15,7 @@ public class RequestChecker {
     }
 
     private static void validateUserInput(String input) throws IllegalArgumentException {
-        if (!isNumericAndThreeDigits(input)){
+        if (!isNumericAndThreeDigits(input)) {
             throw new IllegalArgumentException("사용자의 입력값은 3자리 수이며 1-9까지의 값만 가능합니다.");
         } else if (!hasDuplicateDigits(input)) {
             throw new IllegalArgumentException("입력값은 중복되면 안됩니다.");
@@ -23,7 +23,7 @@ public class RequestChecker {
     }
 
     private static boolean isNumericAndThreeDigits(String input) {
-        if (Pattern.matches("^[1-9]{3}$",input)){
+        if (Pattern.matches("^[1-9]{3}$",input)) {
             return true;
         }
         return false;
