@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -20,6 +21,14 @@ public class InputView {
             throw new IllegalArgumentException("올바른 입력이 아닙니다.");
         }
         List<Integer> ballNumbers = Arrays.stream(value.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        CheckDifferentNumbers(ballNumbers);
         return ballNumbers;
+    }
+
+    private static void CheckDifferentNumbers(List<Integer> ballNumbers) {
+        Set<Integer> differentNumbers = ballNumbers.stream().collect(Collectors.toSet());
+        if (differentNumbers.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 3자리 수를 입력하세요.");
+        }
     }
 }
