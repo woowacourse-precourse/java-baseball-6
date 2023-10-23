@@ -15,7 +15,7 @@ class RetryStatusTest {
     class valueOfCommand {
 
         @Test
-        @DisplayName("1인 경우 RETRY를 반환한다")
+        @DisplayName("1인 경우 KEEP_GOING을 반환하는가")
         void oneToRetry() {
             // given
             final Integer command = 1;
@@ -28,7 +28,7 @@ class RetryStatusTest {
         }
 
         @Test
-        @DisplayName("2인 경우 FINISH를 반환한다")
+        @DisplayName("2인 경우 FINISH를 반환하는가")
         void twoToFinish() {
             // given
             final Integer command = 2;

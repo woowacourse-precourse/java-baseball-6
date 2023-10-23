@@ -15,7 +15,7 @@ class NumberTest {
     class Equals {
 
         @Test
-        @DisplayName("동일한 숫자를 가진 경우 true를 반환한다")
+        @DisplayName("동일한 숫자를 가진 경우 true를 반환하는가")
         void equalValue() {
             // given
             final Number value = new Number(1);
@@ -29,7 +29,7 @@ class NumberTest {
         }
 
         @Test
-        @DisplayName("다른 숫자를 가진 경우 false를 반환한다")
+        @DisplayName("다른 숫자를 가진 경우 false를 반환하는가")
         void differentValue() {
             // given
             final Number value = new Number(1);
