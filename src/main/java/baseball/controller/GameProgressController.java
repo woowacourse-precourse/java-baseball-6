@@ -29,7 +29,9 @@ public class GameProgressController {
             isAnswer = computerController.checkUserInputWithAnswer(gameNumber.getUserInputNumbers(), gameNumber.getComputerGenerateNumbers());
             outputView.printHint(computerController.createHintMessage());
         }
-
+        if (isAnswer) {
+            outputView.printGameFinish();
+        }
     }
 
     private void saveComputerGenerateNumbers() {
