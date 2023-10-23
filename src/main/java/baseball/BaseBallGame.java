@@ -31,6 +31,7 @@ public class BaseBallGame {
             userString = InputNum();
             IsLength(userString);
             IsInteger();
+            IsOverlap(userInteger);
         }
         StopGamePrint();
     }
@@ -63,6 +64,18 @@ public class BaseBallGame {
             userInteger = Integer.parseInt(userString);
         }catch(NumberFormatException ex){
             throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
+    }
+    //중복 확인 함수
+    public void IsOverlap(int n){
+        user = new ArrayList<>();
+        while(user.size() < 3){
+            int userNumber = n%10;
+            n=n/10;
+            if (user.contains(userNumber)) {
+                throw new IllegalArgumentException("같은 숫자가 중복된 값입니다.");
+            }
+            user.add(userNumber);
         }
     }
 }
