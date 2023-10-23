@@ -3,6 +3,8 @@ package baseball.view;
 import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class InputView {
 
     public static boolean askExit() {
@@ -15,5 +17,16 @@ public class InputView {
         }
 
         return false;
+    }
+
+    public static List<Integer> askUserNumbers() {
+
+        String userString = Console.readLine();
+
+        Util.validateUserString(userString);
+
+        List<Integer> userNumbers = Util.stringToIntegerList(userString);
+
+        return userNumbers;
     }
 }
