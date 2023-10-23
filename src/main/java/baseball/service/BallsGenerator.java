@@ -18,7 +18,7 @@ public class BallsGenerator {
     }
 
     public List<Balls> generateComputerNumbers() {
-        List<Integer> numbers = generateUniqueNumbers();
+        List<Integer> numbers = generateThreeUniqueNumbers();
         List<Balls> computers = new ArrayList<>();
 
         for (int i = 0; i < numbers.size(); i++) {
@@ -36,15 +36,18 @@ public class BallsGenerator {
         return ballsList;
     }
 
-    private List<Integer> generateUniqueNumbers() {
+    private List<Integer> generateThreeUniqueNumbers() {
         List<Integer> numbers = new ArrayList<>();
-
         while (numbers.size() < MAX_BALL_SIZE) {
-            int randomNumber = generateRandomBall();
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            addUniqueNumbers(numbers);
         }
         return numbers;
+    }
+
+    private void addUniqueNumbers(List<Integer> numbers) {
+        int randomNumber = generateRandomBall();
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 }
