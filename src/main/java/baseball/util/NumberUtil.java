@@ -1,5 +1,12 @@
 package baseball.util;
 
+import static baseball.constant.ErrorMessage.INPUT_EMPTY;
+import static baseball.constant.ErrorMessage.INPUT_LENGTH_INVALID;
+import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_INTEGER;
+import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_IN_RANGE;
+import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_POSITIVE_INTEGER;
+import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_UNIQUE;
+
 import java.util.List;
 
 public class NumberUtil {
@@ -25,31 +32,32 @@ public class NumberUtil {
 
     protected static void validateEmpty(String number) {
         if (number.isEmpty()) {
-            throw new IllegalArgumentException("입력값은 비어있지 않아야 합니다.");
+            throw new IllegalArgumentException(INPUT_EMPTY.getMessage());
         }
     }
 
     protected static void validateLength(String number) {
         if (number.length() != 3) {
-            throw new IllegalArgumentException("입력값은 3자리이어야 합니다.");
+            throw new IllegalArgumentException(INPUT_LENGTH_INVALID.getMessage());
         }
     }
 
     protected static void validateNumber(String number) {
         if (number.chars().anyMatch(ch -> !Character.isDigit(ch))) {
-            throw new IllegalArgumentException("입력값은 정수이어야 합니다.");
+            throw new IllegalArgumentException(INPUT_NUMBER_NOT_INTEGER.getMessage());
         }
     }
 
     protected static void validateSign(String number) {
         if (number.charAt(0) == '-') {
-            throw new IllegalArgumentException("입력값은 양의 정수이어야 합니다.");
+            throw new IllegalArgumentException(INPUT_NUMBER_NOT_POSITIVE_INTEGER.getMessage());
         }
     }
 
     protected static void validateRange(String number) {
-        if (number.chars().anyMatch(n -> n < '1' || n > '9')) {
-            throw new IllegalArgumentException("입력되는 각 숫자는 1 이상 9 이하의 정수로 이루어져야 합니다.");
+        if (number.chars()
+                .anyMatch(n -> n < '1' || n > '9')) {
+            throw new IllegalArgumentException(INPUT_NUMBER_NOT_IN_RANGE.getMessage());
         }
     }
 
@@ -57,7 +65,7 @@ public class NumberUtil {
         if (number.chars()
                 .distinct()
                 .count() != number.length()) {
-            throw new IllegalArgumentException("입력되는 각 숫자는 서로 다른 숫자이어야 합니다.");
+            throw new IllegalArgumentException(INPUT_NUMBER_NOT_UNIQUE.getMessage());
         }
     }
 }
