@@ -2,11 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BaseballGame {
 
     private final Computer computer;
+
+    private static final String SEPARATOR = "";
 
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
@@ -31,7 +34,9 @@ public class BaseballGame {
 
     private void play() {
         System.out.println(PRINT_USER_INPUT);
-        String userAnswer = Console.readLine();
+        List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
+                .map(input -> convertStringToInteger(input))
+                .toList();
     }
 
     private Integer convertStringToInteger(String input) {
