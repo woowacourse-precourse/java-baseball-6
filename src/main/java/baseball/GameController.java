@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.computer.Answer;
 import baseball.computer.Computer;
 import baseball.player.Guess;
 import baseball.player.Player;
@@ -30,6 +31,7 @@ public class GameController {
     private void startRound(Computer computer) {
         boolean isRoundOngoing = ROUND_ONGOING;
         while (isRoundOngoing) {
+            Answer answer = computer.generateAnswer();
             isRoundOngoing = decideRoundOngoing(submitGuessAndGetResult(computer));
         }
         System.out.println(ROUND_OVER_MESSAGE);

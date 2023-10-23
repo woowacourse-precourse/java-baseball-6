@@ -17,7 +17,7 @@ public class Guess {
         List<Character> playerInputAsChars = strToCharacterList(playerInput);
         checkInvalidLength(playerInputAsChars);
         checkInvalidInput(playerInputAsChars);
-        checkDuplicateInput(playerInputAsChars);
+        checkDuplicateDigit(playerInputAsChars);
         this.playerGuess = playerInputAsChars;
     }
 
@@ -45,7 +45,7 @@ public class Guess {
         }
     }
 
-    private void checkDuplicateInput(List<Character> playerInputAsChars) {
+    private void checkDuplicateDigit(List<Character> playerInputAsChars) {
         Set<Character> playerInputAsSet = new HashSet<>(playerInputAsChars);
         if (playerInputAsChars.size() != playerInputAsSet.size()) {
             throw new IllegalArgumentException();
