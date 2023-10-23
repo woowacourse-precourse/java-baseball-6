@@ -16,4 +16,10 @@ public class Input {
         }
         return numbers;
     }
+
+    public static boolean GameEndFlag() {
+        String input = Console.readLine();
+        InputValidation.GameEnd(input);
+        return input.equals("1");
+    }
 }
