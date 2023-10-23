@@ -31,6 +31,10 @@ public class GameController {
         String userNumbersInput = InputView.readUserInput();
         RoundResult roundResult = gameSetService.playRound(userNumbersInput);
 
+        printRoundResult(roundResult);
+    }
+    
+    private static void printRoundResult(RoundResult roundResult) {
         if (roundResult.isNothing()) {
             OutputView.printNothingResult();
             return;
