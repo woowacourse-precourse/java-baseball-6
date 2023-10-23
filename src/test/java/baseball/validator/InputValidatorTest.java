@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class InputValidatorTest {
 
     @Test
-    @DisplayName("유효하지 않은 값을 입력하는 경우")
+    @DisplayName("게임 재시작 여부 입력에서 유효하지 않은 값을 입력하는 경우")
     void validateCheckRestartGameInput() {
         String input = "0";
 
