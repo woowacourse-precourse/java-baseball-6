@@ -10,7 +10,11 @@ public class Rule {
     private final DuplicateAllowancePolicy duplicateAllowancePolicy;
     private final NumberDigitPolicy numberDigitPolicy;
 
-    public Rule(NumberGeneratePolicy numberGeneratePolicy, DuplicateAllowancePolicy duplicateAllowancePolicy, NumberDigitPolicy numberDigitPolicy) {
+    public Rule(
+            NumberGeneratePolicy numberGeneratePolicy,
+            DuplicateAllowancePolicy duplicateAllowancePolicy,
+            NumberDigitPolicy numberDigitPolicy
+    ) {
         this.numberGeneratePolicy = numberGeneratePolicy;
         this.duplicateAllowancePolicy = duplicateAllowancePolicy;
         this.numberDigitPolicy = numberDigitPolicy;
