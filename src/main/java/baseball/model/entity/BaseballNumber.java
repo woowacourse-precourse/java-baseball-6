@@ -1,7 +1,6 @@
 package baseball.model.entity;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Objects;
 
 public class BaseballNumber {
     Integer number;
