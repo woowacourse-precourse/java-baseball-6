@@ -46,9 +46,9 @@
 
 - ### Test 
   - [ ] BaseballService 에 대한 테스트
-    - [ ] calculate 에 대한 테스트 점검!
-      - [ ] strike 잘 나오는지!
-      - [ ] ball 잘 나오는지!
+    - [X] calculate 에 대한 테스트 점검!
+      - [X] strike 잘 나오는지!
+      - [X] ball 잘 나오는지!
 
 
 ---
