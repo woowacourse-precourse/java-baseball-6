@@ -4,33 +4,32 @@ import java.util.List;
 import java.util.Objects;
 
 public class CountResult {
-
     public static int ball;
     public static int strike;
 
-//    public static int resultCount(List<Integer> computer, List<Integer> input) {
-//        countingBall(computer, input);
-//        countingStrike(computer, input);
-//    }
+    // countingResult는 CountingBall과 CountingStrike를 합쳐놓은 메서드
+    public static void countingResult(List<Integer> computerAns, List<Integer> userInput) {
+        countingBall(computerAns, userInput);
+        countingStrike(computerAns, userInput);
+    }
 
-    public static int countingBall(List<Integer> computer, List<Integer> input) {
+    private static int countingBall(List<Integer> computerAns, List<Integer> userInput) {
         ball = 0;
-        for (int i = 0; i < computer.size(); i++) {
-            if (computer.contains(input.get(i)) && !computer.get(i).equals(input.get(i))) {
+        for (int i = 0; i < computerAns.size(); i++) {
+            if (computerAns.contains(userInput.get(i)) && !computerAns.get(i).equals(userInput.get(i))) {
                 ball++;
             }
         }
         return ball;
     }
 
-    public static int countingStrike(List<Integer> computer, List<Integer> input) {
+    public static int countingStrike(List<Integer> computerAns, List<Integer> userInput) {
         strike = 0;
-        for (int i = 0; i < computer.size(); i++) {
-            if (Objects.equals(computer.get(i), input.get(i))) {
+        for (int i = 0; i < computerAns.size(); i++) {
+            if (Objects.equals(computerAns.get(i), userInput.get(i))) {
                 strike++;
             }
         }
         return strike;
     }
-
 }
