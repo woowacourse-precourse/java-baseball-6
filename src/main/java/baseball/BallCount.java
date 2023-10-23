@@ -6,7 +6,6 @@ import static baseball.GameClient.BALL_LENGTH;
  * 스트라이크, 볼 개수를 저장하는 클래스.
  */
 public class BallCount {
-
     private final String MESSAGE_BALL = "볼";
     private final String MESSAGE_STRIKE = "스트라이크";
     private final String MESSAGE_NOTHING = "낫싱";
