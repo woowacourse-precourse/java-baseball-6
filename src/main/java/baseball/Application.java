@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -11,7 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
         do {
             //게임 시작
-        } while (true); //게임 재시작 여부
+        } while (restartGame());
     }
 
     private static List<Integer> createRandomNumber() {
@@ -75,5 +76,17 @@ public class Application {
             return false;
         }
         return true;
+    }
+
+    private static boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerDecision = Console.readLine();
+        if (playerDecision.equals("1")) {
+            return true;
+        }
+        if (playerDecision.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("입력은 1 또는 2이어야 합니다.");
     }
 }
