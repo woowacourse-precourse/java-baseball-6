@@ -255,7 +255,7 @@ public class Library {
 }
 ```
 
-### **4\. 모든 원시값과 문자열을 포장한다.**
+### **4\. 일급 클래스를 사용한다.**
 
 #### **First Class Collections (Collections should only contain other objects, not methods)**
 
