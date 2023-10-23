@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,6 +11,21 @@ public class Computer {
     private String targetNumber;
     private int ballCount;
     private int strikeCount;
+
+    public int gameStart() {
+        generateTargetNumber();
+
+        while (true) {
+            OutputView.printGameStartMessage();
+            String inputNumber = InputView.readUserNumber();
+            checkInputNumber(inputNumber);
+            OutputView.printResultMessage(ballCount, strikeCount);
+
+            if (strikeCount == 3) {
+                return InputView.readGameEndCommand();
+            }
+        }
+    }
 
     private void generateTargetNumber() {
         StringBuilder targetNumber = new StringBuilder();
