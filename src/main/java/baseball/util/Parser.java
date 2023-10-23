@@ -1,18 +1,9 @@
 package baseball.util;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Parser {
 	private static final String STRIKE = "스트라이크";
 	private static final String BALL = "볼";
 	private static final String NOTHING = "낫싱";
-
-	public static String parseNumberListToString(List<Integer> fromList) {
-		return fromList.stream()
-			.map(String::valueOf)
-			.collect(Collectors.joining());
-	}
 
 	public static String parseHintToString(int strike, int ball) {
 		if (strike == 0 && ball == 0) {
