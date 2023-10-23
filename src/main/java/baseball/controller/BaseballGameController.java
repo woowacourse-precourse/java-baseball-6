@@ -41,13 +41,19 @@ public class BaseballGameController {
             }
         } while (restart());
     }
-
+    
+    /*
+     * 	유저가 고른 숫자가 룰에 맞는지 검증 
+     */
     public void userChoiceInput() {
         userNumber = UserChoice.usersNumbering();
-
       
         if (isDifferentThreeNumber(userNumber)) {
-            throw new IllegalArgumentException("중복된 숫자를 입력했습니다. 3개의 서로 다른 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해주세요.");
+        }
+        
+        if (userNumber.contains("0")) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
         }
 
         for (int i = 0; i < userNumber.length(); i++) {
@@ -57,7 +63,10 @@ public class BaseballGameController {
             }
         }
     }
-
+    
+    /*
+     * 	3개의 숫자가 중복되지 않도록 예외발생 기능
+     */
     private boolean isDifferentThreeNumber(String number) {
         for (int i = 0; i < number.length(); i++) {
             char differentNum = number.charAt(i);
@@ -70,7 +79,7 @@ public class BaseballGameController {
 
     public void choiceFail() {
         if (userNumber.length() != 3 || !userNumber.matches("\\d{3}")) {
-            throw new IllegalArgumentException("입력을 잘못하셨습니다. 3자리 숫자를 입력해주세요");
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요");
         }
     }
 
