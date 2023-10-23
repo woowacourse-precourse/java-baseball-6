@@ -19,16 +19,29 @@ public class BaseballGame {
     private Computer computer;
     private Player player;
     private Restart restart;
+    
     private final ComputerNumbersGenerator computerNumbersGenerator;
     private final PlayerNumbersValidator playerNumbersValidator;
     private final NumbersComparator numberComparator;
     private final RestartOptionValidator restartOptionValidator;
 
-    public BaseballGame() {
-        computerNumbersGenerator = new ComputerNumbersGeneratorImp();
-        playerNumbersValidator = new PlayerNumbersValidatorImp();
-        numberComparator = new NumbersComparator();
-        restartOptionValidator = new RestartOptionValidatorImp();
+    private BaseballGame(ComputerNumbersGenerator computerNumbersGenerator,
+                         PlayerNumbersValidator playerNumbersValidator,
+                         NumbersComparator numbersComparator,
+                         RestartOptionValidator restartOptionValidator) {
+        this.computerNumbersGenerator = computerNumbersGenerator;
+        this.playerNumbersValidator = playerNumbersValidator;
+        this.numberComparator = numbersComparator;
+        this.restartOptionValidator = restartOptionValidator;
+    }
+
+    public static BaseballGame create() {
+        return new BaseballGame(
+                new ComputerNumbersGeneratorImp(),
+                new PlayerNumbersValidatorImp(),
+                new NumbersComparator(),
+                new RestartOptionValidatorImp()
+        );
     }
 
     public void startGame() {
@@ -54,15 +67,15 @@ public class BaseballGame {
         restart = null;
     }
 
-    void getNumbersFromPlayer() {
+    private void getNumbersFromPlayer() {
         player = new Player(InputView.setGameInput(), playerNumbersValidator);
     }
 
-    int[] getCompareResult() {
+    private int[] getCompareResult() {
         return numberComparator.getCompareNumberResult(computer.getComputerNumbers(), player.getPlayerNumbers());
     }
 
-    void printHint(int[] count) {
+    private void printHint(int[] count) {
         printBallCount(count);
         printStrikeCount(count);
         printNothing(count);
@@ -92,7 +105,7 @@ public class BaseballGame {
         }
     }
 
-    boolean isContinue() {
+    private boolean isContinue() {
         return !numberComparator.isCorrect();
     }
 
@@ -100,7 +113,7 @@ public class BaseballGame {
         restart = new Restart(InputView.setRestartInput(), restartOptionValidator);
     }
 
-    public boolean isRestart() {
+    private boolean isRestart() {
         return restart.getRestartOption().equals(RESTART_OPTION);
     }
 }
