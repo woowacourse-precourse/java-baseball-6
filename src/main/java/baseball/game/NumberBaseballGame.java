@@ -4,6 +4,8 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class NumberBaseballGame {
+    private static final int GAME_NUMBER_SIZE = 3;
+    private static final int RETRY_NUMBER = 1;
     private final Computer computer;
     private final InputView inputView;
     private final OutputView outputView;
@@ -33,16 +35,20 @@ public class NumberBaseballGame {
             Hint hint = computer.getHint(userNumbers);
             outputView.printHint(hint);
 
-            if (hint.getStrike() == 3) {
+            if (isAllStrike(hint.getStrike())) {
                 break;
             }
         }
     }
 
+    private boolean isAllStrike(int strike) {
+        return strike == GAME_NUMBER_SIZE;
+    }
+
     private void endGame() {
         outputView.printEndGame();
-        
-        if (inputView.readRetryNumber() == 1) {
+
+        if (inputView.readRetryNumber() == RETRY_NUMBER) {
             run();
         }
     }
