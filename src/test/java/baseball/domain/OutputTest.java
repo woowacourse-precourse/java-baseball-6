@@ -1,10 +1,8 @@
 package baseball.domain;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class OutputTest {
 
@@ -15,16 +13,16 @@ class OutputTest {
         //Given
         int[] oneStrikeOneBall = {1, 1};
         int[] twoStrikeTwoBall = {2, 2};
-        int[] threeStrike = {3,0};
+        int[] threeStrike = {3, 0};
 
         //When
-        int test1 = output.printResult(oneStrikeOneBall);
-        int test2 = output.printResult(twoStrikeTwoBall);
-        int test3 = output.printResult(threeStrike);
+        boolean test1 = output.printResult(oneStrikeOneBall);
+        boolean test2 = output.printResult(twoStrikeTwoBall);
+        boolean test3 = output.printResult(threeStrike);
 
         //Then
-        assertThat(test1).isEqualTo(1);
-        assertThat(test2).isEqualTo(2);
-        assertThat(test3).isEqualTo(3);
+        assertThat(test1).isEqualTo(true);
+        assertThat(test2).isEqualTo(true);
+        assertThat(test3).isEqualTo(false);
     }
 }
