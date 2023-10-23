@@ -11,7 +11,7 @@ public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>>
     public void handle(String playerGuessNumbers){
         this.playerGuessNumberList = new ArrayList<>();
 
-        if (playerGuessNumbers.length() != BaseballController.NUMBER_OF_DIGITS){
+        if (playerGuessNumbers.length() != GameSettings.NUM_DIGITS){
             throw new IllegalArgumentException();
         }
 
@@ -30,7 +30,7 @@ public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>>
     }
     private void isPlayerNumberInRange(char playerGuessNumber){
 
-        if (playerGuessNumber < BaseballController.MIN_INPUT_CHARACTER || playerGuessNumber > BaseballController.MAX_INPUT_CHARACTER){
+        if (playerGuessNumber < GameSettings.MIN_INPUT_CHARACTER || playerGuessNumber > GameSettings.MAX_INPUT_CHARACTER){
             throw new IllegalArgumentException();
         }
     }

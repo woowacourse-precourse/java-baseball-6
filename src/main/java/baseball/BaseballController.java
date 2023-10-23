@@ -6,11 +6,6 @@ public class BaseballController {
     private BaseballModel model;
     private PlayerInputHandler<Iterator<Integer>> playerGuessHandler;
     private PlayerInputHandler<RoundEndAction> roundEndActionHandler;
-
-    public static final int NUMBER_OF_DIGITS = 3;
-    public static final char MIN_INPUT_CHARACTER = '1';
-    public static final char MAX_INPUT_CHARACTER = '9';
-
     public BaseballController(BaseballView view, BaseballModel model){
         this.view = view;
         this.model = model;
@@ -50,6 +45,6 @@ public class BaseballController {
     }
 
     private boolean isThreeStrike(AttemptResult attemptResult){
-        return attemptResult.getStrikeCount() == NUMBER_OF_DIGITS;
+        return attemptResult.getStrikeCount() == GameSettings.NUM_DIGITS;
     }
 }
