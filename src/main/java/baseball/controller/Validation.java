@@ -15,7 +15,6 @@ public class Validation {
     public static void validateNumberString(String input, int validLen) {
         Validation.validateInputStyle(input, validLen);
         Validation.validateDuplication(input);
-
     }
 
     public static void validateInputStyle(String input, int validLen) {

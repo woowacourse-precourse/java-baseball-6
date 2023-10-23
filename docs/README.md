@@ -39,6 +39,25 @@
 
 ## 검증 기능
 
+- [x] validateOneOrTwo
+    - 입력 문자열이 1 또는 2 인지 확인하는 메서드
+    - 파라미터: 입력 문자열, 유효 길이
+    - 반환: 없음
+    - 로직
+        - validateInputStyle()로 입력 문자열의 형식 확인
+        - 입력 문자열을 숫자로 변환
+        - validateOneOrTwoNumber()로 숫자값 확인
+
+
+- [x] validateNumberString
+    - 입력 문자열이 유효 길이의 숫자 문자열인지 확인하는 메서드
+    - 파라미터: 입력 문자열, 유효 길이
+    - 반환: 없음
+    - 로직
+        - validateInputSytle()로 입력 문자열의 형식 확인
+        - validateDuplication으로 입력 문자열의 중복값 확인
+
+
 - [x] validInputStyle
     - 입력 문자열의 길이와 숫자 형식인지 검사하는 메서드
     - 파라미터: 입력 문자열, 유효 길이
