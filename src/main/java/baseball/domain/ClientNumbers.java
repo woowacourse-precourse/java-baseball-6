@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.exception.InputNeitherRestartNorExit;
 import baseball.exception.InputNotNumber;
 import baseball.exception.InputNumberNotUnique;
 import baseball.exception.InputSizeNot3;

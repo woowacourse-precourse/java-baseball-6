@@ -19,7 +19,8 @@ public class Game implements Numbers {
         while(ongoing) {
             InputView.printInputMsg(); // 숫자를 입력해주세요 :
 
-            ClientNumbers clientNumbers = InputView.makeClientNumbers();
+            ClientNumbers clientNumbers = InputView.makeClientNumbers(Console.readLine());
+
             Info info = clientNumbers.compareWithComputerNumbers(computerNumbers); // error
             ongoing = info.printMsgByUsingInfo();
         }
