@@ -6,7 +6,9 @@ import static baseball.utils.Message.*;
 
 public abstract class OutputView {
 
-    private OutputView() {}
+    private OutputView() {
+        throw new AssertionError();
+    }
 
     public static void printGameStartView() {
         System.out.println(START_GAME_MESSAGE.getMessage());
