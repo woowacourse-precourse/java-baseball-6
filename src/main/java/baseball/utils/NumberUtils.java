@@ -5,10 +5,7 @@ import java.util.List;
 
 public class NumberUtils {
 
-    /**
-     * int -> list<integer> 변환 메서드
-     */
-    public static List<Integer> getDigit(int number) {
+    public static List<Integer> getDigits(int number) {
 
         List<Integer> digits = new ArrayList<>();
 
@@ -21,16 +18,5 @@ public class NumberUtils {
         digits.add(digit3);
 
         return digits;
-    }
-
-    /**
-     * string -> int 변환 메서드
-     */
-    public static int parseInt(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 정수를 입력해주세요.");
-        }
     }
 }
