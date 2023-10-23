@@ -42,6 +42,17 @@ public class Application {
                         || numbers.get(1) == input.charAt(2) - '0' ) {
                     ball++;
                 }
+                String information = "";
+                if (ball != 0) {
+                    information = ball + "볼 ";
+                }
+                if (strike != 0) {
+                    information += strike + "스트라이크";
+                }
+                if (information.isEmpty()) {
+                    information = "낫싱";
+                }
+                System.out.println(information);
             }
         }
     }
