@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.game.Game;
+import baseball.game.GameLogic;
 import baseball.game.GameUI;
 import baseball.validators.LengthValidator;
 import baseball.validators.NoDuplicateValidator;
@@ -17,7 +18,9 @@ public class Application {
 
         List<Validator> validators = Arrays.asList(new LengthValidator(), new NoDuplicateValidator(), new RangeValidator());
         GameUI gameUI = new GameUI();
-        Game game = new Game(validators, gameUI);
+        GameLogic gameLogic = new GameLogic(validators);
+        Game game = new Game(gameUI, gameLogic);
+
         game.startGame();
     }
 }

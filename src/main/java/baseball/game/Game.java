@@ -2,59 +2,22 @@ package baseball.game;
 
 import baseball.Computer;
 import baseball.User;
-import baseball.validators.Validator;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static baseball.game.GameUI.displayCorrectAnswerMessage;
 
 public class Game {
     private User user;
     private Computer computer;
-    private final List<Validator> validators;
     private final GameUI gameUI;
+    private final GameLogic gameLogic;
 
-    public Game(List<Validator> validators, GameUI gameUI) {
+    public Game(GameUI gameUI, GameLogic gameLogic) {
         this.computer = new Computer();
         this.user = new User();
-        this.validators = validators;
         this.gameUI = gameUI;
+        this.gameLogic = gameLogic;
     }
-
-    private void validateUserInput() {
-        for (Validator validator : validators) {
-            validator.validate(user.getUserNumber());
-        }
-    }
-
-    public int countStrike() {
-        int result = 0;
-        String userNumber = user.getUserNumber();
-        ArrayList<Integer> computerNumber = computer.getComputerNumber();
-
-        for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) - 48 == computerNumber.get(i)) {
-                result++;
-            }
-        }
-        return result;
-    }
-
-    public int countBall() {
-        int result = 0;
-        String userNumber = user.getUserNumber();
-        ArrayList<Integer> computerNumber = computer.getComputerNumber();
-
-        for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) - 48 != computerNumber.get(i) && computerNumber.contains(userNumber.charAt(i) - 48)) {
-                result++;
-            }
-        }
-        return result;
-    }
-
 
     private static boolean isWantToQuitGame() {
         int exitCommand = Integer.parseInt(Console.readLine());
@@ -62,51 +25,11 @@ public class Game {
     }
 
     private String inferHint() {
-        int strike = countStrike();
-        int ball = countBall();
-        return getResult(strike, ball);
+        int strike = gameLogic.countStrike(user.getUserNumber(), computer.getComputerNumber());
+        int ball = gameLogic.countBall(user.getUserNumber(), computer.getComputerNumber());
+        return gameLogic.generateHintFromResult(strike, ball);
     }
 
-    private String getResult(int strike, int ball) {
-        if (isNothing(strike, ball)) {
-            return GameHintType.NOTHING.getLabel();
-        }
-
-        return joinGameResults(strike, ball);
-    }
-
-    private String joinGameResults(int strike, int ball) {
-        List<String> results = new ArrayList<>();
-
-        addGameResultToList(results, GameHintType.BALL, ball);
-        addGameResultToList(results, GameHintType.STRIKE, strike);
-
-        return String.join(" ", results);
-    }
-
-    private void addGameResultToList(List<String> results, GameHintType hintType, int count) {
-        String result = getGameResult(hintType, count);
-        if (!result.isEmpty()) {
-            results.add(result);
-        }
-    }
-
-    private String getGameResult(GameHintType hintType, int count) {
-        if (count <= 0) return "";
-
-        return switch (hintType) {
-            case STRIKE, BALL -> String.format("%d%s", count, hintType.getLabel());
-            case NOTHING -> "";
-        };
-    }
-
-    private boolean isNothing(int strike, int ball) {
-        return strike == 0 && ball == 0;
-    }
-
-    private boolean isAnswer(String hint) {
-        return hint.equals("3스트라이크");
-    }
 
     private void playBaseBallGame() {
         gameUI.displayStartGame();
@@ -115,12 +38,12 @@ public class Game {
             try {
                 gameUI.diplayUserInput();
                 user.inputUserNumber();
-                validateUserInput();
+                gameLogic.validateUserInput(user.getUserNumber());
 
                 String hint = inferHint();
-                gameUI.displayHint(hint);
+                gameUI.displayHint(inferHint());
 
-                if (isAnswer(hint)) {
+                if (gameLogic.isAnswer(hint)) {
                     displayCorrectAnswerMessage();
                     if (isWantToQuitGame()) {
                         break;
