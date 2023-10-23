@@ -27,6 +27,21 @@ public class Application {
                 } catch (Exception e) {
                     throw new IllegalArgumentException("숫자가 아닌 값은 입력할 수 없습니다.");
                 }
+                int strike = 0;
+                for (int i = 0; i < 3; i++) {
+                    if (numbers.get(i) == input.charAt(i) - '0' ) {
+                        strike++;
+                    }
+                }
+                int ball = 0;
+                if (numbers.get(0) == input.charAt(1) - '0'
+                        || numbers.get(0) == input.charAt(2) - '0' ) {
+                    ball++;
+                }
+                if (numbers.get(1) == input.charAt(0) - '0'
+                        || numbers.get(1) == input.charAt(2) - '0' ) {
+                    ball++;
+                }
             }
         }
     }
