@@ -1,9 +1,6 @@
 package baseball;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.NotExtensible;
 
 import java.io.ByteArrayInputStream;
 
@@ -18,14 +15,14 @@ public class ExceptionTest {
     void 유저입력예외처리테스트_길이가3이아닌입력(){
         inputStringToSystemIn("12 ");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getUserInput();
+            display.getUserNumbers();
         });
     }
     @Test
     void 유저입력예외처리테스트_숫자가아닌입력(){
         inputStringToSystemIn("12d");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getUserInput();
+            display.getUserNumbers();
         });
     }
     @Test

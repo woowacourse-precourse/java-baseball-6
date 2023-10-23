@@ -20,7 +20,7 @@ public class Computer {
         duplicateCheck[num] = true;
         return false;
     }
-    public Judgement getJudgement(int[] userInput){
-        return new Judgement(userInput, computerNumbers);
+    public Judgement getJudgement(int[] userNumbers){
+        return new Judgement(userNumbers, computerNumbers);
     }
 }

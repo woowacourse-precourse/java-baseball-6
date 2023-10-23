@@ -29,32 +29,32 @@ public class Display {
             return;
         }
     }
-    public int[] getUserInput(){
+    public int[] getUserNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
-        return getSplitedUserInput(Console.readLine());
+        return getSplitedUserNumbers(Console.readLine());
     }
-    private int[] getSplitedUserInput(String input){
-        int[] result = new int[3];
-        String trimInput = input.trim();
-        Validation.validateUserInputSize(trimInput);
-        char[] userInputs = trimInput.toCharArray();
+    private int[] getSplitedUserNumbers(String userInput){
+        int[] userNumbers = new int[3];
+        String trimUserInput = userInput.trim();
+        Validation.validateUserInputSize(trimUserInput);
+        char[] userCharNumbers = trimUserInput.toCharArray();
         boolean[] numberCheckArray = new boolean[10];
         for(int i = 0; i < 3; i++){
-            Validation.validateIsNumber(userInputs[i]);
-            Validation.validateDuplicatedNumber(numberCheckArray, userInputs[i]);
-            result[i] = userInputs[i] - '0';
+            Validation.validateIsNumber(userCharNumbers[i]);
+            Validation.validateDuplicatedNumber(numberCheckArray, userCharNumbers[i]);
+            userNumbers[i] = userCharNumbers[i] - '0';
         }
-        return result;
+        return userNumbers;
     }
     public boolean getRestartInput(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         boolean oneOrTwo = getOneOrTwo(Console.readLine());
         return oneOrTwo;
     }
-    private boolean getOneOrTwo(String input){
-        String trimInput = input.trim();
-        Validation.validateOneOrTwo(trimInput);
-        if(trimInput.equals("1")){
+    private boolean getOneOrTwo(String userInput){
+        String trimUserInput = userInput.trim();
+        Validation.validateOneOrTwo(trimUserInput);
+        if(trimUserInput.equals("1")){
             return true;
         }
         printEndText();

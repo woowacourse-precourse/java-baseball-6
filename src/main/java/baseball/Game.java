@@ -12,7 +12,7 @@ public class Game {
         computer.initComputerNumbers();
         Judgement judgeResult;
         do{
-            int[] userInputs = display.getUserInput();
+            int[] userInputs = display.getUserNumbers();
             judgeResult = computer.getJudgement(userInputs);
             judgeResult.printResult();
         }
