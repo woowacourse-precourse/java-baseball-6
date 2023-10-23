@@ -15,8 +15,8 @@ public class GameController {
     }
 
     public void startGame() {
+        view.showStartGame();
         do {
-            view.showStartGame();
             playGame();
         } while (isRestart());
     }
