@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public int strike = 0;
     public int ball = 0;
@@ -19,18 +21,16 @@ public class Application {
         while (true) {
             computer.clear();
             generateRandom();
-            System.out.println("computer : " + computer.toString());
+//            System.out.println("computer : " + computer.toString());
 
             user.clear();
             while (true) {
                 getUserInput();
-                System.out.println("user : " + user.toString());
+//                System.out.println("user : " + user.toString());
 
                 if (judgeStrike()) {
-                    System.out.println();
                     System.out.println(strike + "스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println();
                     break;
                 } else {
                     if (strike == 0 & ball == 0) {
@@ -47,8 +47,8 @@ public class Application {
                     user.clear();
                 }
             }
-
             if (!reGame()) {
+                System.out.println("게임 종료");
                 break;
             }
         }
@@ -66,8 +66,9 @@ public class Application {
 
     public void getUserInput() {
         user.clear(); // 기존 입력을 지우고 새로운 입력을 받기 위해 리스트 초기화
-        System.out.print("숫자를 입력해주세요: ");
-        String userInput = sc.nextLine();
+        System.out.println("숫자를 입력해주세요: ");
+        String userInput = readLine();
+
         List<Integer> input = new ArrayList<>();
 
         for (int i = 0; i < userInput.length(); i++) {
@@ -86,13 +87,15 @@ public class Application {
             }
         }
 
-        try {
+        //try catch 를 하면 오히려 이 에러 타입이 안뜬다. 그래서 그냥 다 제거해야했다.
+//        try {
             validateUserInput(input);
             user.addAll(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.exit(1);
-        }
+//        } catch (IllegalArgumentException e) {
+//            System.out.println(e.getMessage());
+////            System.exit(1);
+//        }
+//        sc.close();
     }
 
 
@@ -112,16 +115,20 @@ public class Application {
 
     public boolean reGame() {
         while (true) {
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-            int n = sc.nextInt();
-            if (n == 1) {
-                return true;
-            } else if (n == 2) {
-                return false;
-            } else {
-                System.out.println("잘못된 입력입니다. 1 또는 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+                String n = readLine();
+                int num = Integer.parseInt(n);
+//                sc.nextLine(); // 개행 문자를 소비하여 다음 입력을 올바르게 처리
+
+                if (num == 1) {
+                    return true;
+                } else if (num == 2) {
+                    return false;
+                } else {
+                    System.out.println("잘못된 입력입니다. 1 또는 2를 입력하세요.");
+                }
             }
-        }
+
     }
 
     public void validateUserInput(List<Integer> input) {
