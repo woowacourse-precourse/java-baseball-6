@@ -17,7 +17,7 @@ public class ValidationTest extends NsTest {
         String input_value="";
 
         //when
-        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,input_length))
+        assertThatThrownBy(()->GameValidation.verifyForGameValue(input_value,input_length))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[Err] 입력 값이 빈 문자열입니다.");
     }
@@ -27,7 +27,8 @@ public class ValidationTest extends NsTest {
         //given
         String input_value = "1234";
 
-        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,input_length))
+        //when
+        assertThatThrownBy(()->GameValidation.verifyForGameValue(input_value,input_length))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[Err] 입력 값의 길이가 초과 또는 부족입니다.");
     }
