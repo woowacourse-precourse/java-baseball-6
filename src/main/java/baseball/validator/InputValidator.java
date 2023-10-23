@@ -7,4 +7,7 @@ public class InputValidator {
         }
     }
 
+    public static void validatePlayerInput(String input) {
+
+    }
 }
