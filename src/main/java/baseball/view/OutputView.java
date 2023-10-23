@@ -2,18 +2,20 @@ package baseball.view;
 
 import baseball.util.OutputMessage;
 
+import static baseball.util.MagicNumber.MIN_SIZE;
+
 public class OutputView {
 
     public void printResult(int strike, int ball) {
-        if(strike == 0 && ball == 0) {
+        if(strike == MIN_SIZE.getNumber() && ball == MIN_SIZE.getNumber()) {
             System.out.println(OutputMessage.NOTHING.getMessage());
             return;
         }
-        if(strike == 0) {
+        if(strike == MIN_SIZE.getNumber()) {
             System.out.println(OutputMessage.BALL.getMessage(ball));
             return;
         }
-        if(ball == 0) {
+        if(ball == MIN_SIZE.getNumber()) {
             System.out.println(OutputMessage.STRIKE.getMessage(strike));
             return;
         }
