@@ -57,7 +57,7 @@ public class Game {
                     this.systemConsole.close();
                     break;
                 } else {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException(this.gameMessage.retryErrorMessage());
                 }
             }
         }

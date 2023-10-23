@@ -15,4 +15,8 @@ public interface IMessage {
     String gameOverMessage();
 
     String retryMessage();
+
+    String retryErrorMessage();
+
+    
 }
