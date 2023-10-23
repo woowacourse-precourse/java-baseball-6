@@ -24,6 +24,19 @@ public class CoreTest {
         assertThat(computer.size()).isEqualTo(3);
     }
 
+    @Test
+    void 사용자_입력_값_리스트_변경_테스트(){
+        //given
+        String user_input_value="123";
+
+        //when
+        List<Integer> user = GenerateNumberList.generateInputValueToUser(user_input_value);
+
+        //then
+        assertThat(user.size()).isEqualTo(3);
+        assertThat(user).isInstanceOf(List.class);
+    }
+
     private List<Integer> generateNumberListMethodCall(int generate_cnt){
         return GenerateNumberList.generateRandomNumberToComputer(generate_cnt);
     }
