@@ -23,6 +23,7 @@ public class Game {
 
     private void createComputerNumber() {
         int randomNumber;
+        computer.clear();
 
         while (computer.size() < 3) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -33,13 +34,34 @@ public class Game {
         }
     }
 
-    private void inputUserNumber() {
-        String[] userInput = readLine().split("");
+    private boolean isNumber(char number) {
+        if (number >= '1' && number <= '9') {
+            return true;
+        }
 
+        return false;
+    }
+
+    public void checkBaseballNumberValid(String baseballNumber) {
+        if (baseballNumber.length() == 3
+                && isNumber(baseballNumber.charAt(0))
+                && isNumber(baseballNumber.charAt(1))
+                && isNumber(baseballNumber.charAt(2))){
+            return;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    private void inputUserNumber() {
+        String input = readLine();
+        checkBaseballNumberValid(input);
+
+        String[] userNumber = input.split("");
         user.clear();
 
         for (int index = 0; index < 3; index++) {
-            user.add(Integer.parseInt(userInput[index]));
+            user.add(Integer.parseInt(userNumber[index]));
         }
     }
 
@@ -48,9 +70,11 @@ public class Game {
 
         if (userInput.equals("1")) {
             return true;
+        } else if (userInput.equals("2")) {
+            return false;
         }
 
-        return false;
+        throw new IllegalArgumentException();
     }
 
     public void play(){
@@ -68,7 +92,6 @@ public class Game {
 
                 if (isRetry()) {               //정답을 맞힌 후 게임 종료 여부를 입력 받음
                     createComputerNumber();
-                    script.startGame();
                 } else {
                     break;
                 }
