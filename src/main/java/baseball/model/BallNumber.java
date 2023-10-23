@@ -1,13 +1,17 @@
 package baseball.model;
 
 public class BallNumber {
-    private final int MIN_NUMBER = 1;
-    private final int MAX_NUMBER = 9;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
     private int number;
 
     public BallNumber(int number) {
         validateBallNumberRange(number);
         this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     private void validateBallNumberRange(int number) {
