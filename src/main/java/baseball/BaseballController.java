@@ -1,6 +1,5 @@
-package baseball.controller;
+package baseball;
 
-import baseball.BaseballService;
 import baseball.util.UserInputEnum;
 import baseball.util.common.Common;
 import baseball.util.dto.Baseball;
@@ -58,7 +57,7 @@ public class BaseballController {
 
     private void getUserNumber() {
         String inputUserNumberString = userInputView.inputUserNumber();
-        baseballService.getUserNumber(inputUserNumberString);
+        baseballService.initUserModel(inputUserNumberString);
     }
 
     private boolean compareUserInputByComputerNumber() {

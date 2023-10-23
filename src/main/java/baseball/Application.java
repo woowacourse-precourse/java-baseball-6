@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.controller.BaseballController;
 import baseball.util.exception.TerminateApplicationException;
 import baseball.view.UserInputView;
 import baseball.view.UserOutputView;

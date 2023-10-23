@@ -11,7 +11,7 @@ import java.util.List;
 public class BaseballService {
 
     private ComputerModel computerModel;
-    private final UserModel userModel = new UserModel();
+    private UserModel userModel;
 
     public BaseballService() {
     }
@@ -20,8 +20,8 @@ public class BaseballService {
         computerModel = new ComputerModel(createNonDuplicatedNumber());
     }
 
-    public void getUserNumber(String inputUserNumberString) {
-        userModel.initUserInputBySplitDigits(inputUserNumberString);
+    public void initUserModel(String inputUserNumberString) {
+        userModel = new UserModel(createUserInputBySplitDigits(inputUserNumberString));
     }
 
     public Baseball compareUserInputByComputerNumber() {
@@ -58,5 +58,17 @@ public class BaseballService {
         return splitDigitsFromRandomNumber;
     }
 
+    private List<Integer> createUserInputBySplitDigits(String stringUserInput) {
+        List<Integer> splitDigitsFromUserInput = new ArrayList<>();
+
+        for (int i = 0; i < stringUserInput.length(); i++) {
+            int number = Character.getNumericValue(stringUserInput.charAt(i));
+            if (!splitDigitsFromUserInput.contains(number)) {
+                splitDigitsFromUserInput.add(number);
+            }
+        }
+
+        return splitDigitsFromUserInput;
+    }
 
 }
