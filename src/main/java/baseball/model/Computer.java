@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> computerNumber;
-
     private static final int numberSize = 3;
     private static final int startNumber = 1;
     private static final int endNumber = 9;
