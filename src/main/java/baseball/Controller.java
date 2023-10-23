@@ -20,7 +20,8 @@ public class Controller {
             judgeView judgeView = new judgeView();
             String computer = randomComputer.getComputerRandomNumber();
             user = service.userInput();
-            judgeView.judgeBaseball(computer, user);
+            int[] resultBaseball = service.judgeBaseball(computer, user);
+            judgeView.countResult(resultBaseball);
 
             if (judgeView.countThreeStrike()) {
                 judgeView.victoryScore();
