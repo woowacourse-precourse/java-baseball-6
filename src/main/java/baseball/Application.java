@@ -27,8 +27,8 @@ public class Application {
             List<Integer> number = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
 
-            String playerInput = Console.readLine();
-            int guess = Integer.parseInt(playerInput);
+            String playerInput = Console.readLine(); // 사용자로부터 숫자입력을 받는 변수를 선언함
+            int guess = Integer.parseInt(playerInput); // String에서 int로 형변환 하여 새로운 변수에 저장
 
             number.add(guess / 100); // 백의 자리 number ArrayList에 add()
             number.add((guess % 100) / 10); // 십의 자리 number ArrayList에 add()
@@ -70,8 +70,8 @@ public class Application {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String what = Console.readLine(); // 재시작 여부를 저장할 변수를 선언하고 사용자로 부터 입력받음
-                int select = Integer.parseInt(what);
+                String what = Console.readLine(); // 재시작 여부를 저장할 변수를 선언하고 사용자로부터 입력받음
+                int select = Integer.parseInt(what); // String에서 int로 변수를 형변환 하여 새로운 변수에 저장
 
                 if (select == 2) { // 입력받은 값이 2일 경우
                     break; // break를 시켜 while문을 벗어나서 게임종료
