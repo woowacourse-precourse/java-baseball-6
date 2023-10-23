@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.AppConfig;
 import baseball.member.ComputerNumbers;
 import baseball.member.RestartOption;
 import baseball.member.PlayerNumbers;
