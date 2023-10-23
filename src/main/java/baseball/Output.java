@@ -12,8 +12,19 @@ public class Output {
     public static void printEndMessage() {
         System.out.println(END_MESSAGE);
     }
-    
+
     public static void printNothingMessage() {
         System.out.println(NOTHING_MESSAGE);
+    }
+
+    public static void printGameResult(int ballCount, int strikeCount) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (ballCount > 0) {
+            stringBuilder.append(ballCount).append("볼 ");
+        }
+        if (strikeCount > 0) {
+            stringBuilder.append(strikeCount).append("스트라이크");
+        }
+        System.out.println(stringBuilder);
     }
 }
