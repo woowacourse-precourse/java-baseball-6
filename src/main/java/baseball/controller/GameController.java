@@ -6,6 +6,8 @@ import java.util.List;
 
 public class GameController {
 
+    private NumberFormat computerNumber;
+    private NumberFormat userNumber;
     public static void printInitMessage(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -27,5 +29,13 @@ public class GameController {
         else if (strikeCount > 0)
             System.out.println(strikeCount + "스트라이크");
         else System.out.println("낫싱");
+    }
+
+    public void setComputerNumber(NumberFormat computerNumber) {
+        this.computerNumber = computerNumber;
+    }
+
+    public void setUserNumber(NumberFormat userNumber) {
+        this.userNumber = userNumber;
     }
 }
