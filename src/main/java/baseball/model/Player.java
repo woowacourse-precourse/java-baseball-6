@@ -24,6 +24,46 @@ public class Player {
         this.ballCount++;
     }
 
-    
+
+    public String createHintMessage() {
+        StringBuilder gameResult = new StringBuilder();
+
+        if (isNothing()) {
+            return "낫싱";
+        }
+
+        if (isStrike()) {
+            return strikeCount + "스트라이크";
+        }
+
+        if (isBall()) {
+            gameResult.append(ballCount + "볼");
+        }
+        if (isStrikeWithBall()) {
+            gameResult.append(" " + strikeCount + "스트라이크");
+        }
+
+        return gameResult.toString();
+    }
+
+    public boolean isCompleted() {
+        return strikeCount == Rule.MAX_LENGTH;
+    }
+
+    public boolean isNothing() {
+        return ballCount + strikeCount == 0;
+    }
+
+    public boolean isStrike() {
+        return isCompleted() || strikeCount > 0 && ballCount == 0;
+    }
+
+    public boolean isStrikeWithBall() {
+        return strikeCount > 0 && ballCount > 0;
+    }
+
+    public boolean isBall() {
+        return ballCount > 0;
+    }
 }
 
