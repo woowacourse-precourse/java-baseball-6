@@ -1,4 +1,4 @@
-package baseball.domain.converter;
+package baseball.util.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
