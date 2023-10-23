@@ -13,8 +13,9 @@ public class GameFlowManagementService {
         return gameQuit;
     }
 
-    public void nextGameFlow(Computer computer) {
-        nextGameSetup(nextGamePlayerInputView.nextGameSetup(), computer);
+    public void nextGameFlow(Computer computer) { //이 메서드 내에서 selectGameRestart 변수 전달할 수 있도록 리팩토링
+        int selectGameRestart = nextGamePlayerInputView.nextGameSetup();
+        nextGameSetup(selectGameRestart, computer);
     }
 
     public void nextGameSetup(int selectGameRestart, Computer computer) {
