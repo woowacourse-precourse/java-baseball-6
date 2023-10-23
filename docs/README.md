@@ -74,7 +74,11 @@
   - 사용자로부터 받은 입력이 숫자가 아닌 경우 예외를 발생시킨다.
 - duplicateNumber 메소드
   - 사용자로부터 받은 입력의 자릿수 중 중복되는 수가 있는 경우 예외를 발생시킨다.
-    
+- userGameStartValidation 메소드
+  - 게임을 시작할 때 사용자의 입력을 검증한다.
+- userGameRestartOrEndValidation 메소드
+  - 게임을 종료 또는 재시작하기 위해 사용자의 입력 받을 때 그 입력을 검증한다. 
+  
 ### Converter
 특정 자료형을 다른 자료형으로 변환한다. 
 - stringToIntList
