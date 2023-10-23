@@ -19,6 +19,8 @@ public class BaseballController {
         do {
             playRound();
         } while (!isEnd());
+        gameOver();
+    }
     }
 
     private void playRound() {
@@ -39,6 +41,10 @@ public class BaseballController {
 
     private boolean isEnd() {
         return Number.getStrike(numbers) == 3;
+    }
+
+    private static void gameOver() {
+        OutputView.gameOver();
     }
 
     public boolean restartGame() {
