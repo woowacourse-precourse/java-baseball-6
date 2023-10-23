@@ -10,12 +10,17 @@ import java.util.stream.IntStream;
 
 public class Baseball {
 
+    private final static int MAX_RANDOM_CHARACTERS = 3;
+    private final static int MIN_RANDOM_NUMBER = 1;
+    private final static int MAX_RANDOM_NUMBER = 9;
+
+
     private final String randomNumber = generateRandomNumber();
 
     private String generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < MAX_RANDOM_CHARACTERS) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
