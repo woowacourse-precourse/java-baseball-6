@@ -22,8 +22,10 @@ public class GameProcessController {
         clear = new IsGameClear(grade);
     }
 
-    // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복
     public void startGame() {
+//        do {
+//            gameLogic();
+//        } while (retryGame());
         do {
             userNumber.updateUserNumber(UserInputView.setInputNumber()); // 사용자 입력을 받는 부분
             gradeMessage(gradeBallStrike()); // 볼과 스트라이크를 계산해서 채점 결과를 출력하는 부분
@@ -31,6 +33,26 @@ public class GameProcessController {
 //            System.out.println(userNumber.getUserNumber());
         } while (!endGame());
     }
+
+//    public static boolean retryGame() {
+//        RetryGame retryNumber = new RetryGame(UserInputView.setInputRetry());
+//
+//        if (retryNumber.getRetryNumber().equals("1")) {
+//            return true;
+//        }
+//
+//        return false;
+//    }
+
+    // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복
+//    public void gameLogic() {
+//        do {
+//            userNumber.updateUserNumber(UserInputView.setInputNumber()); // 사용자 입력을 받는 부분
+//            gradeMessage(gradeBallStrike()); // 볼과 스트라이크를 계산해서 채점 결과를 출력하는 부분
+////            System.out.println(endGame());
+////            System.out.println(userNumber.getUserNumber());
+//        } while (!endGame());
+//    }
 
 
     // 게임 클리어 여부
@@ -101,4 +123,5 @@ public class GameProcessController {
             MessageOutputView.endGameMessage();
         }
     }
+
 }

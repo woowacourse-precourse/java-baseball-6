@@ -9,8 +9,8 @@ public class RetryGame {
     } // 외부에서 쓰려는 getter
 
     public RetryGame(String retryNum) {
-        isCorrectRetryNumber(retryNum); // 제대로 누르면 아무런 작동 x
         this.retryNum = retryNum;
+        isCorrectRetryNumber(retryNum); // 제대로 누르면 아무런 작동 x
     }
 
     // 1이나 2 안 누를 경우 에러
