@@ -12,7 +12,7 @@ public class InputView {
         return input;
     }
 
-    public boolean readGameRestart() {
+    public static boolean readGameRestart() {
         System.out.println(GAME_RESTART_NUMBER);
         String selectInput = Console.readLine();
         if (selectInput.equals("1")) {
