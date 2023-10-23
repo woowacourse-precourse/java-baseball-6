@@ -4,20 +4,21 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class PlayerPartner {
+public class PlayerPartner extends NumberClassifier{
     private int answer = 0;
     private boolean[] answerSheet = new boolean[10];
 
     public PlayerPartner() {
+
     }
 
     private void writeAnswer() {
         StringBuffer stringAnswer = new StringBuffer();
 
-        while (stringAnswer.length() < 3) {
+        while(stringAnswer.length() < 3){
             int number = Randoms.pickNumberInRange(1, 9);
 
-            if (!this.answerSheet[number]) {
+            if(!this.answerSheet[number]){
                 this.answerSheet[number] = true;
                 stringAnswer.append(number);
             }
@@ -29,49 +30,22 @@ public class PlayerPartner {
     public void startGame() {
         writeAnswer();
 
-        int strikeCount = 0;
-
-        while (isContinue(strikeCount)) {
+        while (isContinue(getStrikeCount())) {
             int playerNumbers = Player.nextNumberOf(readLine()).getNumber();
-            strikeCount = getStrikeCount(playerNumbers);
-            int ballCount = getBallCount(playerNumbers, strikeCount);
+            writeBallsCount(playerNumbers, this.answer);
 
-            printBallStatus(strikeCount, ballCount);
+            printBallStatus(getStrikeCount(), getBallCount());
         }
     }
 
-    private int getStrikeCount(int playerNumbers) {
-        int strikeCount = 0;
-        int standardNumbers = this.answer;
-        while (playerNumbers % 10 > 0) {
-            int playerNumber = playerNumbers % 10;
-            int partnerNumber = standardNumbers % 10;
-
-            if (playerNumber == partnerNumber) {
-                strikeCount++;
-            }
-
-            playerNumbers /= 10;
-            standardNumbers /= 10;
-        }
-
-        return strikeCount;
+    @Override
+    protected boolean checkStrike(int playerNumber, int partnerNumber) {
+        return playerNumber == partnerNumber;
     }
 
-    private int getBallCount(int playerNumbers, int strikeCount) {
-        int matchCount = 0;
-
-        while (playerNumbers % 10 > 0) {
-            int playerNumber = playerNumbers % 10;
-
-            if (this.answerSheet[playerNumber]) {
-                matchCount++;
-            }
-
-            playerNumbers /= 10;
-        }
-
-        return matchCount - strikeCount;
+    @Override
+    protected boolean checkBallStrike(int playerNumber) {
+        return this.answerSheet[playerNumber];
     }
 
     private boolean isContinue(int strikeCount) {

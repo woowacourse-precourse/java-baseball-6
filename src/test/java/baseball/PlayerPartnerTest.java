@@ -26,46 +26,25 @@ public class PlayerPartnerTest {
 
     static abstract class NumberClassifier {
 
-        static int[] ballsCount = new int[2];
+        private int ballCount = 0;
+        private int strikeCount = 0;
 
         protected int getBallCount(){
-            return ballsCount[0];
+            return ballCount;
         }
 
         protected int getStrikeCount(){
-            return ballsCount[1];
+            return strikeCount;
         }
 
-        protected void setBallsCount(int playerNumbers, int partnerNumbers) {
-            int allCount = 0;
-            int strikeCount = 0;
-            int ballCount = 0;
+        protected void writeBallsCount(int playerNumbers, int partnerNumbers) {
+            int[] ballsCount = getBallsCount(playerNumbers, partnerNumbers);
+            int allCount = ballsCount[0];
+            int strikeCount = ballsCount[1];
+            int ballCount = getBallCount(allCount, strikeCount);
 
-            while (playerNumbers % 10 > 0) {
-                int playerNumber = playerNumbers % 10;
-                int partnerNumber = partnerNumbers % 10;
-
-                if (checkStrike(playerNumber, partnerNumber)) {
-                    strikeCount++;
-                }
-
-                if (checkBallStrike(playerNumber)) {
-                    allCount++;
-                }
-
-                playerNumbers /= 10;
-                partnerNumbers /= 10;
-            }
-
-            ballCount = getBallCount(allCount, strikeCount);
-
-            this.ballsCount[0] = ballCount;
-            this.ballsCount[1] = strikeCount;
+            setBallsCount(strikeCount, ballCount);
         }
-
-        protected abstract boolean checkStrike(int playerNumber, int partnerNumber);
-
-        protected abstract boolean checkBallStrike(int playerNumber);
 
         private int getBallCount(int allMatchCount, int strikeCount) {
             if (allMatchCount - strikeCount < 0) {
@@ -74,6 +53,37 @@ public class PlayerPartnerTest {
                 return allMatchCount - strikeCount;
             }
         }
+
+        private void setBallsCount(int strikeCount, int ballCount) {
+            this.strikeCount = strikeCount;
+            this.ballCount = ballCount;
+        }
+
+        private int[] getBallsCount(int playerNumbers, int partnerNumbers){
+            int[] ballsCount = new int[2];
+
+            while (playerNumbers % 10 > 0) {
+                int playerNumber = playerNumbers % 10;
+                int partnerNumber = partnerNumbers % 10;
+
+                if (checkBallStrike(playerNumber)) {
+                    ballsCount[0]++;
+                }
+
+                if (checkStrike(playerNumber, partnerNumber)) {
+                    ballsCount[1]++;
+                }
+
+                playerNumbers /= 10;
+                partnerNumbers /= 10;
+            }
+
+            return ballsCount;
+        }
+
+        protected abstract boolean checkStrike(int playerNumber, int partnerNumber);
+
+        protected abstract boolean checkBallStrike(int playerNumber);
     }
 
     static class PlayerPartner extends NumberClassifier {
@@ -83,6 +93,7 @@ public class PlayerPartnerTest {
         public PlayerPartner() {
         }
 
+        // 테스트 필요
         private void writeAnswer() {
             // List<Integer> answers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
             List<Integer> answers = 정답들;
@@ -102,7 +113,7 @@ public class PlayerPartnerTest {
 
             while (isContinue(strikeCount)) {
                 int playerNumbers = Player.nextNumberOf(readLine()).getNumber();
-                setBallsCount(playerNumbers, this.answer);
+                writeBallsCount(playerNumbers, this.answer);
 
                 printBallStatus(getStrikeCount(), getBallCount());
             }
@@ -151,7 +162,7 @@ public class PlayerPartnerTest {
             int 플레이어_숫자 = 볼스트라이크[i];
             int 스트라이크개수 = 스트라이크갯수들[i];
             int 볼개수 = 볼갯수들[i];
-            playerPartner.setBallsCount(플레이어_숫자, playerPartner.answer);
+            playerPartner.writeBallsCount(플레이어_숫자, playerPartner.answer);
 
             assertThat(playerPartner.getStrikeCount()).isEqualTo(스트라이크개수);
             assertThat(playerPartner.getBallCount()).isEqualTo(볼개수);

@@ -23,6 +23,7 @@ public class NumberBaseball {
         checkRight(command);
 
         if (command.equals("1")) {
+            System.out.println("1");
             return true;
         }
 
