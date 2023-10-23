@@ -59,7 +59,7 @@ public class Game {
     private int[] compareUserInput(int[] userInput) {
         int[] ret = new int[]{0, 0};
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            for (int j = i; j < NUMBER_SIZE; j++) {
+            for (int j = 0; j < NUMBER_SIZE; j++) {
                 if (target.get(i) != userInput[j]) continue;
                 if (i == j) ret[0]++;
                 else ret[1]++;
