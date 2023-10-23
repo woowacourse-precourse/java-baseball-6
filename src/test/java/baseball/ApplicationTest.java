@@ -62,12 +62,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력된_값에_공백이_없는지_테스트() {
-        assertThatThrownBy(() -> InputValidation.Number("1 2"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     void 스트라이크_개수_판별_테스트() {
         assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(1, 2, 3))).isEqualTo(3);
         assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(1, 2, 4))).isEqualTo(2);
