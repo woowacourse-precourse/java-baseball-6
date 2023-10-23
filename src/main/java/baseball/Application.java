@@ -13,12 +13,11 @@ public class Application {
         Restart restart = new Restart();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
             user.inputUserNumber();
 
-            count.compare(computer.getRandomNumbers(), user.getUserNumbers());
-            count.showStatus();
+            count.countAndShow(computer.getRandomNumbers(), user.getUserNumbers());
 
             if (count.checkStrike() && restart.doRestart()) {
                 computer = new Computer();
