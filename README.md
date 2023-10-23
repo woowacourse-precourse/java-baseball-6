@@ -1,144 +1,129 @@
-# 미션 - 숫자 야구
+# 숫자 야구 게임
 
-## 🔍 진행 방식
+### 설계 구조
+**Main.java**
 
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만든다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
+static void main 함수 위치
 
-## 📮 미션 제출 방법
+**gameRunner/GameMachine.java**
 
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+게임을 실행 할 수 있는 함수가 담긴 클래스
+여러개의 숫자야구게임(BaseBallGame)을 실행 할 수 있다.
 
-## 🚨 과제 제출 전 체크 리스트 - 0점 방지
+**gameRunner/BaseBallGame.java**
 
-- 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
-- **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
+하나의 숫자야구게임을 실행 할 수 있다.
+하나의 숫자야구게임에는 하나의 숫자 야구 그룹 정답(AnswerBaseBalls)을 가지고 있다.
 
-### 테스트 실행 가이드
+**domain/baseBalls/BaseBalls.java**
 
-- 터미널에서 `java -version`을 실행하여 Java 버전이 17인지 확인한다.
-  Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 17로 실행되는지 확인한다.
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,
-  Windows 사용자의 경우 `gradlew.bat clean test` 또는 `./gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+하나의 숫자 야구 그룹(BaseBalls)은 여러 개의 야구볼(OneBaseBalls)로 이루어져 있다.
 
-```
-BUILD SUCCESSFUL in 0s
+```json
+[{"number":3, "position": 1}, 
+ {"number":7, "position": 2},
+ {"number":2, "position": 3}]
 ```
 
----
+**domain/baseBalls/AnswerBaseBalls.java**
 
-## 🚀 기능 요구 사항
+하나의 숫자 야구 그룹이라는 속성을 가지므로 BaseBalls를 상속받는다.
+이 숫자 야구 그룹은 숫자 생성기 (GameNumberGenerator)로 생성된다.
 
-기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
+**domain/baseBalls/QuestionBaseBalls.java**
 
-- 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
-    - 예) 상대방(컴퓨터)의 수가 425일 때
-        - 123을 제시한 경우 : 1스트라이크
-        - 456을 제시한 경우 : 1볼 1스트라이크
-        - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
-  결과를 출력한다.
-- 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
-- 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+하나의 숫자 야구 그룹이라는 속성을 가지므로 BaseBalls를 상속받는다.
+입력받은 ```List<Integer>``` 값을 이용하여 숫자 야구 그룹을 생성한다.
+AnswerBaseBalls를 인자로 넣었을 경우,  매칭 결과를 알려주는 함수를 가지고 있다.
+이 때 결과를 알려주는 로직이, QuestionBaseBalls의 멤버변수를 변경하기 때문에 매칭 결과를 알려주는 함수가 Answer가 아니라 Question에 존재한다.
 
-### 입출력 요구 사항
+**domain/baseBalls/QuestionBaseBalls.Result.java**
 
-#### 입력
+Question 숫자 야구 그룹을 인자로 들어온 Answer 숫자 야구 그룹과 매칭 한후 판단 결과를 저장하고 있다.
 
-- 서로 다른 3자리의 수
-- 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
+**domain/OneBaseBall.java**
 
-#### 출력
+하나의 야구볼은 number와 position으로 이루어져 있다.
+이때 position을 멤버변수로 설정한 이유는, OneBaseBall이 모여서 List화 되었는데 한 개의 값이 사라지게 되면, 인덱스로 position을 판단하는게 불명확하다고 판단했기 때문이다.
 
-- 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
-
-```
-1볼 1스트라이크
+```json
+{"number":3, "position": 1}
 ```
 
-- 하나도 없는 경우
+**domain/BaseBallNumber.java**
+
+야구볼의 숫자는 무조껀 1~9 사이의 수이어야 하기 때문에, 유저로부터 들어온 Input에 대한 validation을 진행한다.
+
+**generator/GameNumbersGenerator.java**
+
+숫자 생성기의 interface이다.
+
+**generator/RandomGameNumbersGenerator.java**
+
+숫자 생성기의 구현체이며, BaseBallGame이 갖고있는 GAME_NUMBERS_SIZE만큼의 ```List<Integer>```를 반환한다.
+
+**generator/CustomGameNumbersGenerator.java** // 테스트코트
+
+숫자 생성기의 구현체이며, Random 테스트가 어려운 점 때문에,  만들어졌다. 유저가 인자로 넣은 리스트를 반환한다.
+
+**io/InputView.java**
+
+게임시 유저에게 입력을 받을때의 함수들을 저장한다.
+
+**io/OutputView.java**
+
+게임시 인자로 받은 값의 출력을 해야할 때의 함수들을 저장한다.
+
+**parsing/NumberParsing.java**
+
+숫자로 이루어진 String을 Integer타입의 리스트로 파싱한다
+InputView에서 받은 String을 QuestionBaseBall로 생성해야 했기 때문에 리스트로 변환해주는 작업이 필요했다. Util의 기능을 가지고 있으므로 static 함수로 만들었다.
+
+### 구현할 기능 목록 : 나의 세미 이슈!
+
+- [x] 1 : 컴퓨터가 게임을 하나 생성하기 : gameRunner.BaseBallGame.class
+- [x] 2 : 3개의 숫자, 순서 배열을 하나로 묶는 단위 : domain.baseBalls.BaseBalls.class
+- [x] 3 : 한개의 숫자의 단위 - 1~9 검증 : BaseBallNumber.class
+- [x] 4 : gameRunner.BaseBallGame 클래스 하나에는 하나의 정답 domain.baseBalls.BaseBalls 객체가 들어간다.
+- [x] 5 : 사용자로부터 GameNumbers를 입력 받기위한 출력문이 있다.
+- [x] 6 : 사용자로부터 GameNumbers를 입력받는다.
+- [x] 7 : BaseBallGame의 메소드로 들어온 domain.baseBalls.BaseBalls 객체의 결과를 리턴한다 10번과 중복
+- [x] 8 : 리턴한 메소드를 받아서 결과를 출력한다.
+- [x] 9 : 게임을 재시작하기 위한 사용자로부터의 입력을 받는다.
+- [x] 10 : 숫자 판단의 결과인 스트라이크 볼 나싱을 분류하기 위한 객체 QuestionResult.java를 만들었다.
+- [x] 11 : 컴퓨터가 랜덤한 domain.baseBalls.BaseBalls.class를 생성할 때 영향을 주는 Generator 만들기
+- [x] 12 : 한개의 BaseBall은 위치와 숫자로 이루어짐 : domain.OneBaseBall.class
+- [x] 13 : BaseBall은 Answer이냐, Question이냐에 따라 로직이 나뉘므로 상속으로 해결한다.
+- [x] 14 : BaseBallNumber의 equal 로직을 오버라이드
+- [x] 15 : 두개의 OneBaseBall사이의 strike ball 관계를 파악한다.
+
+### 기능 요구사항
+
+1. 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다
+2. 같은 수가 같은 자리에 있으면 스트라이크, 다른자리에 있으면 볼, 같은수가 전혀 없으면 포볼 또는 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(캄퓨터)의 수를 맞추면 승리한다.
+   예) 상대방(컴퓨터)의 수가 425일 때, 123을 제시한 경우 : 1 스트라이크, 456을 제시하는 경우 : 1 스트라이크 1볼, 789를 제시하는 경우 : 낫싱
+3. 위 숫자 야구게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한 결과를 출력한다.
+4. 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
+5. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
+
+
+
+### 프로그램 실행 결과
 
 ```
-낫싱
-```
-
-- 3개의 숫자를 모두 맞힐 경우
-
-```
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-```
-
-- 게임 시작 문구 출력
-
-```
-숫자 야구 게임을 시작합니다.
-``` 
-
-#### 실행 결과 예시
-
-```
-숫자 야구 게임을 시작합니다.
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-숫자를 입력해주세요 : 145
+숫자를 입력해 주세요: 123
+1 스트라이크 1볼
+숫자를 입력해주세요: 145
 1볼
-숫자를 입력해주세요 : 671
+숫자를 입력해주세요: 671
 2볼
-숫자를 입력해주세요 : 216
-1스트라이크
-숫자를 입력해주세요 : 713
-3스트라이크
+숫자를 입력해주세요: 216
+1 스트라이크
+숫자를 입력해주세요: 713
+3 스트라이크
 3개의 숫자를 모두 맞히셨습니다! 게임 종료
 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
 1
-숫자를 입력해주세요 : 123
-1볼
-...
+숫자를 입력해주세요: 123
+1 스트라이크 1볼
 ```
-
----
-
-## 🎯 프로그래밍 요구 사항
-
-- JDK 17 버전에서 실행 가능해야 한다. **JDK 17에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- 프로그램 실행의 시작점은 `Application`의 `main()`이다.
-- `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
-- [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
-
-### 라이브러리
-
-- `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-
-#### 사용 예시
-
-```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
-        computer.add(randomNumber);
-    }
-}
-```
-
----
-
-## ✏️ 과제 진행 요구 사항
-
-- 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
-- **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
