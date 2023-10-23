@@ -10,6 +10,9 @@ public class Constants {
     public static final int RESTART = 1;
     public static final int QUIT = 2;
 
+    public static final int STRIKE_INDEX = 0;
+    public static final int BALL_INDEX = 1;
+
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";

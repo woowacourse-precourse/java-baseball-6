@@ -8,8 +8,8 @@ public class OutputView {
 
     public static void showGameResult(int[] strikeAndBallCount) {
 
-        int strikeCount = strikeAndBallCount[0];
-        int ballCount = strikeAndBallCount[1];
+        int strikeCount = strikeAndBallCount[Constants.STRIKE_INDEX];
+        int ballCount = strikeAndBallCount[Constants.BALL_INDEX];
 
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println(Constants.NOTHING);
