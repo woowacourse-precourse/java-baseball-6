@@ -11,14 +11,14 @@ public class Validator {
 
     public static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != GAME_NUMBER_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBERS_SIZE_ERROR_MESSAGE);
         }
     }
 
     public static void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_GAME_NUMBER_RANGE || number > MAX_GAME_NUMBER_RANGE) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_ERROR_MESSAGE);
             }
         }
     }
@@ -27,7 +27,7 @@ public class Validator {
         Set<Integer> target = new HashSet<>(numbers);
 
         if (target.size() != numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
@@ -35,13 +35,13 @@ public class Validator {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }
 
     public static void validateRetryNumber(String userInput) {
         if (!userInput.equals("1") && !userInput.equals("2")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.RETRY_FORMAT_ERROR_MESSAGE);
         }
     }
 }

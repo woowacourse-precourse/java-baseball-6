@@ -20,10 +20,6 @@ public class GameNumbers {
         return Collections.unmodifiableList(numbers);
     }
 
-    public boolean isContain(int number) {
-        return numbers.contains(number);
-    }
-
     public int size() {
         return numbers.size();
     }
