@@ -6,8 +6,8 @@ public class GameResult {
     private final int strikes;
     private final int balls;
 
-    private static final int INITIAL_STRIKES = 0;
-    private static final int INITIAL_BALLS = 0;
+    private static final int INITIAL_STRIKES = Constant.ZERO.getConstant();
+    private static final int INITIAL_BALLS = Constant.ZERO.getConstant();
     private final int NUMBER_SIZE = Constant.NUMBER_SIZE.getConstant();
 
     public static GameResult initialResult() {
