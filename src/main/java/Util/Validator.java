@@ -1,5 +1,6 @@
 package Util;
 
+import Model.BaseballNumberConstants;
 import View.RetryView.Message;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,19 +17,16 @@ public class Validator {
         if (!isDuplicationNumberInput(userInput)) {
             throw new IllegalArgumentException("중복된 숫자를 입력하지마세요.");
         }
-    }
-
-    public static void validateInputLength(String userInput, int expectedLength) {
-        if (userInput.length() != expectedLength) {
-            throw new IllegalArgumentException(expectedLength + "개의 숫자를 입력하세요.");
+        if (!validateInputLength(userInput)) {
+            throw new IllegalArgumentException(BaseballNumberConstants.INPUT_MAX + "개의 숫자를 입력하세요.");
         }
     }
 
-    public static void validateMenuChoice(String choice) {
-        if (!choice.equals(Message.RETRYGAME.getMessage()) && !choice.equals(
-                Message.ENDGAME.getMessage())) {
-            throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+    private static boolean validateInputLength(String userInput) {
+        if (userInput.length() != BaseballNumberConstants.INPUT_MAX_COUNTS) {
+            return false;
         }
+        return true;
     }
 
     private static boolean isValidNumberInput(String input) {
@@ -37,7 +35,6 @@ public class Validator {
         }
         return true;
     }
-
 
     private static boolean isDuplicationNumberInput(String input) {
         Set<Character> seen = new HashSet<>();
@@ -50,4 +47,10 @@ public class Validator {
         return true;
     }
 
+    public static void validateRetryNumberChoice(String choice) {
+        if (!choice.equals(Message.RETRYGAME.getMessage()) && !choice.equals(
+                Message.ENDGAME.getMessage())) {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+        }
+    }
 }
