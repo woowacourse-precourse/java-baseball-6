@@ -18,11 +18,15 @@ public class Game {
         int continueDecision = CONTINUE_NUMBER;
         while (continueDecision == CONTINUE_NUMBER) {
             ComputerAnswerDto computerAnswer = controller.settingGame();
-            boolean isCorrect = false;
-            while (!isCorrect) {
-                isCorrect = controller.startGame(computerAnswer);
-            }
+            playGame(computerAnswer);
             continueDecision = controller.isContinue();
+        }
+    }
+
+    private void playGame(ComputerAnswerDto computerAnswer) {
+        boolean isCorrect = false;
+        while (!isCorrect) {
+            isCorrect = controller.startGame(computerAnswer);
         }
     }
 }
