@@ -1,16 +1,11 @@
 package baseball.view;
 
-import baseball.model.Computer;
-
 public class OutputView {
     public static void printGameStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void printResult(Computer computer) {
-        int ballCount = computer.getBallCount();
-        int strikeCount = computer.getStrikeCount();
-
+    public static void printResult(int ballCount, int strikeCount) {
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
         } else if (strikeCount == 3) {
