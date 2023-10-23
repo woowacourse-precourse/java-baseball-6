@@ -96,4 +96,37 @@ public class BaseballGame {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }
+
+    private boolean threeStrikes(){
+        return strikeCount == 3;
+    }
+    private boolean nothing(){
+        return (strikeCount == 0 && ballCount == 0);
+    }
+    private boolean ballAndStrike(){
+        return (strikeCount != 0 && ballCount != 0);
+    }
+    private boolean ballOnly(){
+        return (strikeCount == 0 && ballCount != 0);
+    }
+    private boolean strikeOnly(){
+        return (strikeCount != 0 && ballCount == 0);
+    }
+
+    //스트라이크와 볼 수에 따라 결과를 표시
+    public boolean showResult() {
+        boolean result = false;
+        if (threeStrikes()) {
+            System.out.println("3스트라이크");
+            result = true;
+        } else if (nothing())
+            System.out.println("낫싱");
+        else if (ballAndStrike())
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        else if (ballOnly())
+            System.out.println(ballCount + "볼");
+        else if (strikeOnly())
+            System.out.println(strikeCount + "스트라이크");
+        return result;
+    }
 }
