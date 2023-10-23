@@ -15,7 +15,7 @@ public class BaseballGame {
     static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private int strike;
     private int ball;
-    private Computer computer;
+    private final Computer computer;
 
     public BaseballGame(){
         computer = new Computer();
