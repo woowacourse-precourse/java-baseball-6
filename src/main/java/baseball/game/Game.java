@@ -2,10 +2,10 @@ package baseball.game;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.util.Print;
 import baseball.util.Utility;
 import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -14,7 +14,7 @@ public class Game {
     private int ball = 0;
 
     public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Print.showIntro();
 
         String restartOrExitNumber = "1";
 
@@ -23,29 +23,21 @@ public class Game {
             this.strike = 0;
             this.ball = 0;
             this.computer = Utility.assignComputerRandomNumber();
-            System.out.println("computer: " + this.computer);
+//            System.out.println("computer: " + this.computer);
 
             while (this.strike != 3) {
-                System.out.print("숫자를 입력해주세요: ");
+                Print.showPredictUserInput();
+
                 List<Integer> predictNumbers = Utility.input();
                 checkPredictNumber(predictNumbers);
 
-                if (this.strike == 0 && this.ball == 0) {
-                    System.out.println("낫싱");
-                } else if (this.strike == 0 && this.ball != 0) {
-                    System.out.println(this.ball + "볼");
-                } else if (this.strike != 0 && this.ball == 0) {
-                    System.out.println(this.strike + "스트라이크");
-                } else if (this.strike != 0 && this.ball != 0) {
-                    System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
-                }
-
+                Print.showPredictResult(this.strike, this.ball);
             }
 
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Print.showGameOver();
 
             do {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                Print.showRestartOrExitInput();
                 restartOrExitNumber = readLine();
             }
             while (!Validation.checkRestartOrExitNumber(restartOrExitNumber));
