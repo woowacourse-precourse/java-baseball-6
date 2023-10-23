@@ -14,15 +14,14 @@ public class Application {
         while(true){
             isMatch = false;
             createRandomNumber();
+
             while(!isMatch){
                 System.out.print("숫자를 입력해주세요 : ");
                 try{
                     int userInp = Integer.parseInt(Console.readLine());
-
-                    if((userInp < 111 || userInp > 999) || checkDuplicate(userInp)){
+                    if( checkRange(userInp) || checkDuplicateNumber(userInp)){
                         throw new IllegalArgumentException();
                     }
-
                     compareNumber(userInp);
 
                 }catch (Exception e){
@@ -37,10 +36,10 @@ public class Application {
                 if(userSelect == 2){
                     System.out.println("게임 종료");
                     break;
-                }else if(userSelect < 1 || userSelect > 2){
+                }else if(userSelect != 1){
                     throw new IllegalArgumentException();
                 }
-            }catch (IllegalStateException e) {
+            }catch (Exception e) {
                 throw new IllegalArgumentException();
             }
         }
@@ -93,7 +92,7 @@ public class Application {
         }
     }
 
-    private static boolean checkDuplicate(int userInp){
+    private static boolean checkDuplicateNumber(int userInp){
         boolean numCheck[] = new boolean[10];
         int copyInp = userInp;
         for(int i = 0; i < 3; i++){
@@ -109,5 +108,7 @@ public class Application {
         return false;
     }
 
-
+    private static boolean checkRange(int userInp){
+        return userInp < 111 || userInp > 999;
+    }
 }
