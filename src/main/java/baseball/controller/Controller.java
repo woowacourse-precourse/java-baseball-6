@@ -7,11 +7,17 @@ public class Controller {
 
     private final static Computer computer = new Computer();
     private final static View view = new View();
+    private final static String FIN = "1";
 
     public void start() {
+        String end;
         view.printStart();
-        computer.prepareGame();
-        playGame();
+        do {
+            computer.prepareGame();
+            playGame();
+            end = view.inputEnd();
+        } while (end.equals(FIN));
+        view.closeConsole();
     }
 
     private void playGame() {
