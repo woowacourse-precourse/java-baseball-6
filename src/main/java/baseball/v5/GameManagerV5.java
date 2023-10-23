@@ -1,0 +1,89 @@
+package baseball.v5;
+
+import baseball.v5.player.PlayerManagerV5;
+import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+
+
+// 게임의 로직과 진행을 관리하는 클래스
+public class GameManagerV5 {
+
+    // 주어진 컴퓨터와 사용자를 이용하여 게임을 진행하는 메서드
+    public static void playGame(PlayerManagerV5 playerManager) {
+        // 컴퓨터의 숫자 설정
+        List<Integer> computerNums = playerManager.getComputerNums();
+
+        // 게임 결과 초기화
+        String gameResult = "";
+
+        // 3스트라이크가 아닐 때까지 반복
+        while (!"3스트라이크".equals(gameResult)) {
+            // 플레이어의 숫자 설정
+            List<Integer> challengerNums = playerManager.getChallengerNums();
+
+            // 게임 결과 계산
+            gameResult = playAndResult(computerNums, challengerNums);
+            System.out.println(gameResult);
+        }
+    }
+    // 컴퓨터와 사용자의 숫자를 비교하여 결과(스트라이크, 볼, 낫싱)를 반환하는 메서드
+    public static String playAndResult(List<Integer> computerNums, List<Integer> challengerNums) {
+
+        int strike = 0;
+        int ball = 0;
+
+        // 스트라이크 판정
+        for (int i = 0; i < 3; i++) {
+            if (computerNums.get(i) == challengerNums.get(i)) {
+                strike++;
+            }
+        }
+        // 볼 판정
+        for (int i = 0; i < 3; i++) {
+            if (computerNums.contains(challengerNums.get(i))) {
+                if (computerNums.get(i) != challengerNums.get(i)) {
+                    ball++;
+                }
+            }
+        }
+
+        // 최종 결과 및 낫싱 판정
+        StringBuilder result = new StringBuilder();
+
+        if (ball > 0) {
+            result.append(ball).append("볼");
+        }
+
+        if (strike > 0) {
+            if (result.length() > 0) {
+                result.append(" ");
+            }
+            result.append(strike).append("스트라이크");
+        }
+
+        if (strike == 0 && ball == 0) {
+            result.append("낫싱");
+        }
+
+        return result.toString();
+
+    }
+    // 게임의 진행 의사를 묻는 메서드
+    public static boolean askContinue() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if ("1".equals(input)) {
+            return true;
+        } else if ("2".equals(input)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void stop() {
+        return;
+    }
+
+}
