@@ -16,9 +16,10 @@ public class BaseballNumber {
 
         List<BallNumber> userBallNumberList = userNumber.baseballNumberList;
         for (int i = 0; i < baseballNumberList.size(); i++) {
-            BallNumber thisBallNumber = baseballNumberList.get(i);
+            BallNumber computerBallNumber = baseballNumberList.get(i);
             BallNumber userBallNumber = userBallNumberList.get(i);
-            if (thisBallNumber.getValue() == userBallNumber.getValue()) {
+
+            if (computerBallNumber.getValue() == userBallNumber.getValue()) {
                 strike++;
             } else if (baseballNumberList.contains(userBallNumber)) {
                 ball++;

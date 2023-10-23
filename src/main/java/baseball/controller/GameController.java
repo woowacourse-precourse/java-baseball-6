@@ -23,11 +23,10 @@ public class GameController {
 
     public void playGame() {
         BaseballNumber computerNumber = generateComputerNumber();
-        BaseballNumber userNumber;
 
         while (true) {
             String userNumberReadLine = view.inputUserNumber();
-            userNumber = ballService.initUserNumber(userNumberReadLine);
+            BaseballNumber userNumber = ballService.initUserNumber(userNumberReadLine);
 
             Result result = computerNumber.compare(userNumber);
             view.showGameResult(result);
