@@ -32,6 +32,10 @@ public class OutputView {
         printStrikeAndBall(gameResult);
     }
 
+    public static void printGameEnd(){
+        System.out.println(GAME_END_MESSAGE);
+    }
+
     public static void printNoting(GameResult gameResult) {
         if (gameResult.isBallZero() && gameResult.isStrikeZero()){
             System.out.println(NOTING_MESSAGE);

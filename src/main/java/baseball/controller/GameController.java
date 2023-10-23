@@ -36,6 +36,7 @@ public class GameController {
 
     private boolean isGameOver(GameResult gameResult) {
         if (gameResult.getStrike() == 3) {
+            OutputView.printGameEnd();
             return true;
         }
         return false;
