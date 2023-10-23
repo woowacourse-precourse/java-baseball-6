@@ -49,8 +49,9 @@ public class PlayMenu {
         // 같은 값을 입력하거나 숫자가 아닌 값을 입력한 경우
         try{
             Arrays.stream(inputNumber.split(CROP_UNIT)).forEach(i -> {
-                if (numbers.contains(Integer.parseInt(i))) throw new IllegalArgumentException();
-                else numbers.add(Integer.parseInt(i));
+                int num = Integer.parseInt(i);
+                if (numbers.contains(num) || num == 0) throw new IllegalArgumentException();
+                else numbers.add(num);
             });
         }catch (NumberFormatException e){ // 숫자가 아닌 다른 값을 입력한 경우
             throw new IllegalArgumentException();
