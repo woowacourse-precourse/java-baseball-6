@@ -5,10 +5,12 @@ public class Score {
     int ball;
     boolean isGameEnd = false;
 
+    final int MAX_STRIKE = 3;
+
     public Score(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
-        if(strike == 3) {
+        if(strike == MAX_STRIKE) {
             isGameEnd = true;
         }
     }
