@@ -77,6 +77,25 @@ class ApplicationTest extends NsTest {
         assertThat(computerNumberList.size()).isEqualTo(new HashSet<>(computerNumberList).size());
     }
 
+    @DisplayName("사용자 입력을 숫자 리스트로 변환하는 메서드 테스트")
+    @Test
+    void stringArrToIntegerListTest() {
+        // given
+        final String input1 = "123";
+        final String input2 = "654";
+        final String input3 = "369";
+
+        // when
+        final List<Integer> result1 = Player.stringArrToIntegerList(input1);
+        final List<Integer> result2 = Player.stringArrToIntegerList(input2);
+        final List<Integer> result3 = Player.stringArrToIntegerList(input3);
+
+        // then
+        assertThat(result1).isEqualTo(Arrays.asList(1, 2, 3));
+        assertThat(result2).isEqualTo(Arrays.asList(6, 5, 4));
+        assertThat(result3).isEqualTo(Arrays.asList(3, 6, 9));
+    }
+
     @DisplayName("사용자 숫자 입력 정상처리 테스트")
     @Test
     void userNumberListRangeTest() {
