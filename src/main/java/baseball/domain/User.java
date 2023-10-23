@@ -6,9 +6,9 @@ import java.util.stream.Stream;
 
 public class User {
 
-    public static final int COLLECT_USER_INPUT = 3;
-    public static final int USER_START_NUMBER = 1;
-    public static final int USER_END_NUMBER = 9;
+    private static final int COLLECT_USER_INPUT = 3;
+    private static final int USER_START_NUMBER = 1;
+    private static final int USER_END_NUMBER = 9;
 
     private List<Integer>userNumber;
 
