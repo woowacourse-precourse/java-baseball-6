@@ -8,7 +8,7 @@ public class ComputerNumber {
   public List<Integer> ComputerNumber(){
 
     List<Integer> com_num = new ArrayList<>();
-    while (com_num.size() < 3) {
+    while (com_num.size() < Application.size) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         if (!com_num.contains(randomNumber)) {
             com_num.add(randomNumber);

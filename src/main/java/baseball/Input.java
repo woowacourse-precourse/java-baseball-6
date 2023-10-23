@@ -12,19 +12,19 @@ public class Input {
     String input = Console.readLine();
     List<Integer> Input_num = new ArrayList<>();
 
-    for(String number : input.split("")) {
+    for (String number : input.split("")) {
       Input_num.add(Integer.parseInt(number));
     }
     exception_Length(input);
 
     return Input_num;
-  }   
-  
-  public void exception_Length(String s){
-    if(s.length() != Application.size) {
-        throw new IllegalArgumentException("세자리 수보다 크거나 작음");
+  }
+
+  public void exception_Length(String s) {
+    if (s.length() != Application.size) {
+      throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
     }
     System.out.println();
-}
+  }
 }
 
