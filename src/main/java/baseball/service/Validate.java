@@ -4,7 +4,7 @@ public class Validate {
     private static final int NUMBER_SIZE = 3;
     private static final int SIGNAL_SIZE = 1;
 
-    public void validate(String num) /*throws IllegalArgumentException*/ {
+    public void validate(String num) {
 
         validateLength(num);
         validateRange(num);

@@ -31,6 +31,7 @@ public class Application {
                 try {
                     validator.validate(num);
                 } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
                     throw e;
                 }
                 player.setInput(num);
@@ -45,6 +46,7 @@ public class Application {
             try {
                 validator.validateForRestart(restart);
             } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
                 throw e;
             }
             if (restart.equals(END)) {
