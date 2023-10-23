@@ -1,7 +1,6 @@
 package baseball.model.baseball;
 
 import baseball.constants.message.BaseballMessage;
-import baseball.constants.BaseballRole;
 import baseball.model.player.Player;
 
 import java.util.List;
@@ -10,19 +9,19 @@ public class BaseballManager {
 
     private static final int NO_COUNT = 0;
     private final BaseballGame baseballGame;
-    private int ball;
-    private int strike;
+    private final Ball ball;
+    private final Strike strike;
 
     public BaseballManager() {
         this.baseballGame = new BaseballGame();
-        this.ball = NO_COUNT;
-        this.strike = NO_COUNT;
+        this.ball = new Ball(NO_COUNT);
+        this.strike = new Strike(NO_COUNT);
     }
 
     public void updateBallAndStrike(Player player){
         List<Integer> baseballNumbers = baseballGame.getBaseballNumbers();
-        this.ball = (int)player.compareBallCount(baseballNumbers);
-        this.strike = (int)player.compareStrikeCount(baseballNumbers);
+        ball.updateBallCount(player.compareBallCount(baseballNumbers));
+        strike.updateStrikeCount(player.compareStrikeCount(baseballNumbers));
     }
 
     public String statusBallAndStrike(){
@@ -34,25 +33,25 @@ public class BaseballManager {
     }
 
     private void appendNothing(StringBuilder message) {
-        if (ball == NO_COUNT && strike == NO_COUNT){
+        if (ball.isNoCountBall() && strike.isNoCountStrike()){
             message.append(BaseballMessage.NOTHING);
         }
     }
 
     private void appendBallCount(StringBuilder message) {
-        if (ball != NO_COUNT){
+        if (ball.isBall()){
             message.append(ball).append(BaseballMessage.BALL).append(BaseballMessage.BLANK);
         }
     }
 
     private void appendStrikeCount(StringBuilder message) {
-        if (strike != NO_COUNT){
+        if (strike.isStrike()){
             message.append(strike).append(BaseballMessage.STRIKE);
         }
     }
 
     public boolean isThreeStrike(){
-        return strike != BaseballRole.THREE_STRIKE.getValue();
+        return strike.isThreeStrike();
     }
 
 }
