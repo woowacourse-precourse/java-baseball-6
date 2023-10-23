@@ -1,7 +1,6 @@
 package baseball.game;
 
 import baseball.message.GameMessages;
-import baseball.service.BaseballRandomCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
 import baseball.vo.RestartDecisionCode;
@@ -9,13 +8,11 @@ import java.util.ArrayList;
 
 public class GameLauncher {
     private final Game baseballGames;
-    private final BaseballRandomCodeService baseballRandomCodeService;
     private final ValidateJudgeService validateJudgeService;
 
-    public GameLauncher(Game baseballGames, BaseballRandomCodeService randomCodeService,
+    public GameLauncher(Game baseballGames,
                         ValidateJudgeService validateJudgeService) {
         this.baseballGames = baseballGames;
-        this.baseballRandomCodeService = randomCodeService;
         this.validateJudgeService = validateJudgeService;
     }
 
@@ -37,8 +34,7 @@ public class GameLauncher {
     private boolean baseballGame(BaseballCode baseballCode) {
         GameMessages restartComment = GameMessages.RESTART_COMMENT;
         RestartDecisionCode decisionCode = new RestartDecisionCode(null);
-        BaseballCode baseballCodes = baseballCode.makeNewBaseballCode(
-                baseballRandomCodeService.makeRandomCodeList());
+        BaseballCode baseballCodes = baseballCode.makeNewBaseballCode();
         baseballGames.playBaseball(baseballCodes);
         System.out.println(restartComment.getMessage());
         RestartDecisionCode restartDecisionCode = decisionCode.makeRestartDecisionCode();
