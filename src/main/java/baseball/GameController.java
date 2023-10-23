@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 /**
  * The class which controls a flow of game.
  * After a game end, the GameController is no more in use.
@@ -35,27 +37,23 @@ public class GameController {
     private StepResult check(Numbers guess) {
         int strike = 0;
         int ball = 0;
-        if (guess.firstNumber() == targetNumber.firstNumber()) {
-            strike++;
-        }
-        if (guess.secondNumber() == targetNumber.secondNumber()) {
-            strike++;
-        }
-        if (guess.thirdNumber() == targetNumber.thirdNumber()) {
-            strike++;
-        }
-        if (guess.firstNumber() == targetNumber.secondNumber()
-                || guess.firstNumber() == targetNumber.thirdNumber()) {
-            ball++;
-        }
-        if (guess.secondNumber() == targetNumber.firstNumber()
-                || guess.secondNumber() == targetNumber.thirdNumber()) {
-            ball++;
-        }
-        if (guess.thirdNumber() == targetNumber.secondNumber()
-                || guess.thirdNumber() == targetNumber.firstNumber()) {
-            ball++;
+        List<Integer> guessNumbers = guess.allNumbers();
+        List<Integer> targetNumbers = targetNumber.allNumbers();
+        for (int i = 0; i < guessNumbers.size(); i++) {
+            int g = guessNumbers.get(i);
+            strike += (equals(g, targetNumbers.get(i)))
+                    ? 1
+                    : 0;
+            int targetNumbersSize = targetNumbers.size();
+            ball += (equals(g, targetNumbers.get((i + 1) % targetNumbersSize))
+                    || equals(g, targetNumbers.get((i + 2) % targetNumbersSize)))
+                    ? 1
+                    : 0;
         }
         return new StepResult(ball, strike);
+    }
+
+    private boolean equals(int num1, int num2) {
+        return num1 == num2;
     }
 }
