@@ -1,13 +1,11 @@
 package baseball.gameLogic;
 
 import baseball.models.Computer;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.utils.RandomNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.utils.Constants.*;
-import static baseball.utils.RandomNumberGenerator.pickRandomNumberValidRange;
 
 /*
   Computer의 행동들을 수행하는 클래스
@@ -21,7 +19,7 @@ public class ComputerAction {
 
     public void generateNumber(){
         while (computer.getListSize() < ANSWER_LENGTH){
-            int randomNumber = pickRandomNumberValidRange();
+            int randomNumber = RandomNumberGenerator.pickRandomNaturalNumber();
             List<Integer> randomNumberList = showNumberList();
 
             if (!randomNumberList.contains(randomNumber))

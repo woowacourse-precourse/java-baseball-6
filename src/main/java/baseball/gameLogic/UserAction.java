@@ -6,12 +6,9 @@ import baseball.models.User;
 
 import static baseball.utils.Constants.ANSWER_LENGTH;
 
-import static baseball.utils.InputValidator.validateAnswerLength;
-import static baseball.utils.InputValidator.validateIsDistinct;
-import static baseball.utils.InputValidator.validateRestartInput;
+import baseball.utils.InputValidator;
 
-import static baseball.userInterface.InputViewer.requestUserAnswer;
-import static baseball.userInterface.InputViewer.requestUserRestartFactor;
+import baseball.userInterface.InputViewer;
 
 /*
  User의 행동들을 수행하는 클래스
@@ -27,17 +24,17 @@ public class UserAction {
 
 
     public void inputAnswer(){
-        String userAnswer = requestUserAnswer();
-        validateAnswerLength(userAnswer.length());
-        validateIsDistinct(userAnswer);
+        String userAnswer = InputViewer.requestUserAnswer();
+        InputValidator.validateAnswerLength(userAnswer.length());
+        InputValidator.validateIsDistinct(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             user.saveNumber(userAnswer.charAt(i));
         }
     }
 
     public void inputRestartFactor(){
-        String userMind = requestUserRestartFactor();
-        user.changeMind(validateRestartInput(userMind));
+        String userMind = InputViewer.requestUserRestartFactor();
+        user.changeMind(InputValidator.validateRestartInput(userMind));
     }
 
     public List<Integer> showNumberList(){

@@ -2,20 +2,19 @@ package baseball.userInterface;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.userInterface.MessageViewer.printInputRequestMsg;
-import static baseball.userInterface.MessageViewer.printRestartInputRequestMsg;
+import baseball.userInterface.MessageViewer;
 
 /*
  입력을 담당하는 클래스
  */
 public class InputViewer {
     public static String requestUserAnswer(){
-        printInputRequestMsg();
+        MessageViewer.printInputRequestMsg();
         return Console.readLine();
     }
 
     public static String requestUserRestartFactor(){
-        printRestartInputRequestMsg();
+        MessageViewer.printRestartInputRequestMsg();
         return Console.readLine();
     }
 }

@@ -1,10 +1,10 @@
 package baseball.gameLogic;
 
 import baseball.models.Score;
+import baseball.userInterface.MessageViewer;
 
 import java.util.List;
 
-import static baseball.userInterface.MessageViewer.*;
 import static baseball.utils.Constants.*;
 
 /*
@@ -44,12 +44,12 @@ public class NumberBaseBall {
      */
     public void run(){
         generateComputerNumber();
-        printStartMsg();
+        MessageViewer.printStartMsg();
 
         while (gameStatus == WANNA_KEEP_PLAYING){
             getUserAnswer();
             getScore();
-            printResultMsg(score.ballCount, score.strikeCount);
+            MessageViewer.printResultMsg(score.ballCount, score.strikeCount);
             checkKeepPlaying();
         }
     }
@@ -70,7 +70,7 @@ public class NumberBaseBall {
         userAction.clearAnswer();
 
         if (score.strikeCount == MAX_STRIKES) {
-            printGameEndMsg();
+            MessageViewer.printGameEndMsg();
 
             userAction.inputRestartFactor();
             gameStatus = userAction.showMind();

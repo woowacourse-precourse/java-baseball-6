@@ -13,7 +13,7 @@ import static baseball.utils.Constants.*;
  5. 재시작 구분 입력이 1 혹은 2가 맞는지
  */
 
-public final class InputValidator {
+public class InputValidator {
 
     private InputValidator(){
     }

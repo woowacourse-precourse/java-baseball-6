@@ -1,8 +1,6 @@
 package baseball.userInterface;
 
- import static baseball.utils.Constants.MAX_STRIKES;
- import static baseball.utils.Constants.WANNA_KEEP_PLAYING;
- import static baseball.utils.Constants.WANNA_END;
+import static baseball.utils.Constants.*;
 
 /*
  화면 출력을 담당하는 클래스

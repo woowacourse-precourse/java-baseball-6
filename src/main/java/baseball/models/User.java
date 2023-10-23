@@ -3,8 +3,7 @@ package baseball.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.utils.Constants.*;
-import static baseball.utils.InputValidator.validateAnswerCharacter;
+import baseball.utils.InputValidator;
 
 /*
  유저의 변수들을 기억하는 클래스
@@ -18,7 +17,7 @@ public class User {
     private int mind;
 
     public void saveNumber(char userAnswerChar){
-        int digit = validateAnswerCharacter(userAnswerChar);
+        int digit = InputValidator.validateAnswerCharacter(userAnswerChar);
         numberList.add(digit);
     }
 
