@@ -18,14 +18,14 @@ public class ValidateInputNumber {
         }
     }
 
-    public boolean validateCount(List<Integer> inputNumberList) {
+    private boolean validateCount(List<Integer> inputNumberList) {
         if (inputNumberList.size() != 3) {
             throw new IllegalArgumentException();
         }
         return true;
     }
 
-    public boolean validateDuplicate(List<Integer> inputNumberList) {
+    private boolean validateDuplicate(List<Integer> inputNumberList) {
         for (int i = 0; i < 2; i++) {
             for (int j = i + 1; j < 3; j++) {
                 if (inputNumberList.get(i) == inputNumberList.get(j)) {
