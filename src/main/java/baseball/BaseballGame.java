@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.Computer.*;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -101,7 +100,7 @@ public class BaseballGame {
             System.out.println("낫싱");
             return;
         }
-        System.out.println(stringBuilder.toString());
+        System.out.println(stringBuilder);
     }
 
 }
