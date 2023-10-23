@@ -38,6 +38,10 @@ public class NumberBaseballService {
         }
     }
 
+    public boolean isCompleted() {
+        return player.isCompleted();
+    }
+
     private boolean isStrike(int playerNumber, int computerNumber) {
         return playerNumber == computerNumber;
     }
