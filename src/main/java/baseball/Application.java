@@ -14,9 +14,13 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         GameController gameController = new GameController(new GameStarter(), new GameTerminator());
-        InputView inputView = new InputView(new Convertor(), new Validator());
+        Convertor convertor = new Convertor();
+        Validator validator = new Validator();
+
         NumberBaseballController numberBaseBallController = new NumberBaseballController(gameController,
-            inputView, new OutputView());
+                new InputView(convertor, validator),
+                new OutputView(convertor, validator));
+
         numberBaseBallController.run();
     }
 }

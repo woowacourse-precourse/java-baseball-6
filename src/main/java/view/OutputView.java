@@ -1,15 +1,19 @@
 package view;
 
-import static utils.GameConstant.BALL;
+import view.processing.Convertor;
+import view.processing.Validator;
+
 import static utils.GameConstant.GAME_RESTART_OR_QUIT_PROMPT;
 import static utils.GameConstant.GAME_START_MESSAGE;
 import static utils.GameConstant.GAME_WIN_MESSAGE;
-import static utils.GameConstant.NOTHING;
-import static utils.GameConstant.STRIKE;
 
 public class OutputView {
+    private final Convertor convertor;
+    private final Validator validator;
 
-    public OutputView() {
+    public OutputView(Convertor convertor, Validator validator) {
+        this.convertor = convertor;
+        this.validator = validator;
     }
 
     public void write(String message) {
@@ -20,25 +24,13 @@ public class OutputView {
         write(GAME_START_MESSAGE);
     }
 
-    public void missonClear() {
+    public void missionClear() {
         write(GAME_WIN_MESSAGE);
         write(GAME_RESTART_OR_QUIT_PROMPT);
     }
 
     public void hint(int strike, int ball) {
-        StringBuilder builder = new StringBuilder();
-        if (ball > 0) {
-            builder.append(ball).append(BALL);
-            if (strike > 0) {
-                builder.append(" ");
-            }
-        }
-        if (strike > 0) {
-            builder.append(strike).append(STRIKE);
-        }
-        if (builder.isEmpty()) {
-            builder.append(NOTHING);
-        }
-        write(builder.toString());
+        String hintMessage = convertor.ballCountToHint(strike, ball);
+        write(hintMessage);
     }
 }

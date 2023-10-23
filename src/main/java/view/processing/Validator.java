@@ -2,16 +2,16 @@ package view.processing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
 import static utils.GameErrorMessage.INVALID_LENGTH_MESSAGE;
+import static utils.GameErrorMessage.NULL_INPUT_MESSAGE;
 
 public class Validator {
 
     public boolean isBaseballNumber(String input) {
-        if (input == null) {
-            return false;
-        }
+        Objects.requireNonNull(input, NULL_INPUT_MESSAGE);
 
         if (input.length() != BASEBALL_GAME_NUMBER_LENGTH) {
             throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
