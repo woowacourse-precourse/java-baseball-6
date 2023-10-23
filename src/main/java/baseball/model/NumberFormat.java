@@ -22,4 +22,25 @@ public class NumberFormat {
           List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
           return new NumberFormat(randomNumberList);
      }
+
+     public static NumberFormat createNumberFormat(int num) throws IllegalArgumentException {
+          List<Integer> numberList = new ArrayList<>();
+          while (num > 0){
+               numberList.add(num%10);
+               num/=10;
+          }
+
+          if (!validateFormat(numberList)) throw new IllegalArgumentException();
+
+          Collections.reverse(numberList);
+          return new NumberFormat(numberList);
+     }
+
+     private static boolean validateFormat(List<Integer> list){
+          return list.size() == DIGIT_CONSTRAINT;
+     }
+
+     public List<Integer> getNumberList() {
+          return numberList.stream().collect(Collectors.toUnmodifiableList());
+     }
 }
