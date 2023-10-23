@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static baseball.domain.Ball.*;
 
@@ -40,8 +41,8 @@ public class BallGeneratorService {
             throw new IllegalArgumentException("입력은 숫자만 포함해야 합니다.");
         }
 
-        return playerGuess.chars()
-                .mapToObj(ballNumber -> new Ball(Character.getNumericValue(ballNumber)))
+        return IntStream.range(0, playerGuess.length())
+                .mapToObj(index -> new Ball(playerGuess.charAt(index) - '0'))
                 .collect(Collectors.toList());
     }
 }
