@@ -29,7 +29,8 @@ public class UserAction {
         String userAnswer = InputViewer.requestUserAnswer();
         requestValidateAnswer(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
-            user.saveNumber(userAnswer.charAt(i));
+            int digit = requestValidateCharacter(userAnswer.charAt(i));
+            user.saveNumber(digit);
         }
     }
 
@@ -43,6 +44,14 @@ public class UserAction {
     public void requestValidateAnswer(String userAnswer){
         InputValidator.validateInputLength(userAnswer, ANSWER_LENGTH);
         InputValidator.validateIsDistinct(userAnswer);
+    }
+
+    public int requestValidateCharacter(char userAnswerChar){
+        int digit;
+        InputValidator.validateIsCharacterDigit(userAnswerChar);
+        digit = Character.getNumericValue(userAnswerChar);
+        InputValidator.validateDigitRange(digit);
+        return digit;
     }
 
     public int requestValidateRestartFactor(String userInput){

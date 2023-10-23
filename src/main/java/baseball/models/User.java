@@ -14,20 +14,12 @@ public class User {
     private final List<Integer> numberList = new ArrayList<>();
     private int mind;
 
-    public void saveNumber(char userAnswerChar){
-        numberList.add(requestValidateCharacter(userAnswerChar));
+    public void saveNumber(int number){
+        numberList.add(number);
     }
 
     public void changeMind(int restartInt){
         mind = restartInt;
-    }
-
-    public int requestValidateCharacter(char userAnswerChar){
-        int digit;
-        InputValidator.validateIsCharacterDigit(userAnswerChar);
-        digit = Character.getNumericValue(userAnswerChar);
-        InputValidator.validateDigitRange(digit);
-        return digit;
     }
 
     public List<Integer> showNumberList(){
