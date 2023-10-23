@@ -28,3 +28,5 @@
 ### 사용자 클래스 (Player)
 - [x] 사용자의 숫자를 입력받아 List로 분리하여 반환한다. (getNumbers)
 - [x] 사용자가 게임을 더 진행할지 확인한다. (checkRestartOrQuit)
+### 컴퓨터 클래스 (Computer)
+- [x] 컴퓨터의 랜덤 숫자를 생성한다. (generateNumbers)
