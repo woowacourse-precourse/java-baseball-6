@@ -15,6 +15,6 @@ public class OutputView {
     }
 
     public String printSuccess() {
-        return NUMBER_OF_DIGITS + "스트라이크\n" + NUMBER_OF_DIGITS + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        return NUMBER_OF_DIGITS + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     }
 }

@@ -45,12 +45,12 @@ public class CountController {
             output.append(getBallCount(inputNumber) + "볼 ");
         }
 
-        if (strikeCount != 0 && strikeCount != NUMBER_OF_DIGITS) {
+        if (strikeCount != 0) {
             output.append(getStrikeCount(inputNumber) + "스트라이크");
         }
 
         if (output.isEmpty()) {
-            return "낫싱";
+            output.append("낫싱");
         }
         return output.toString();
     }
