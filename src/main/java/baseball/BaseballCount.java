@@ -1,12 +1,12 @@
 package baseball;
 
 public class BaseballCount {
-    private final int ball;
     private final int strike;
+    private final int ball;
 
-    public BaseballCount(int ball, int strike) {
-        this.ball = ball;
+    public BaseballCount(int strike, int ball) {
         this.strike = strike;
+        this.ball = ball;
     }
 
     public int getBall() {

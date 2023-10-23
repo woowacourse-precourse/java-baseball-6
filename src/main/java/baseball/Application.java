@@ -42,9 +42,9 @@ public class Application {
     private static void playBaseball(List<Integer> answerNumberList) {
         while (true) {
             List<Integer> inputNumberList = inputBaseballNumberList();
-            int[] baseballCount = checkBaseballResult(answerNumberList, inputNumberList);
+            BaseballCount baseballCount = checkBaseballResult(answerNumberList, inputNumberList);
             printBaseballResult(baseballCount);
-            if (baseballCount[0] == 3) {
+            if (baseballCount.getStrike() == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -95,7 +95,7 @@ public class Application {
         return baseballNumberList;
     }
 
-    private static int[] checkBaseballResult(List<Integer> answerNumberList, List<Integer> inputNumberList) {
+    private static BaseballCount checkBaseballResult(List<Integer> answerNumberList, List<Integer> inputNumberList) {
         int strike = 0, ball = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -110,19 +110,19 @@ public class Application {
                 }
             }
         }
-        return new int[]{strike, ball};
+        return new BaseballCount(strike, ball);
     }
 
-    private static void printBaseballResult(int[] baseballCount) {
-        if (baseballCount[0] == 0 && baseballCount[1] == 0) {
+    private static void printBaseballResult(BaseballCount baseballCount) {
+        if (baseballCount.getStrike() == 0 && baseballCount.getBall() == 0) {
             System.out.println("낫싱");
-        } else if (baseballCount[0] > 0 || baseballCount[1] > 0) {
+        } else if (baseballCount.getStrike() > 0 || baseballCount.getBall() > 0) {
             StringBuilder stringBuilder = new StringBuilder();
-            if (baseballCount[1] != 0) {
-                stringBuilder.append(baseballCount[1]).append("볼 ");
+            if (baseballCount.getBall() != 0) {
+                stringBuilder.append(baseballCount.getBall()).append("볼 ");
             }
-            if (baseballCount[0] != 0) {
-                stringBuilder.append(baseballCount[0]).append("스트라이크");
+            if (baseballCount.getStrike() != 0) {
+                stringBuilder.append(baseballCount.getStrike()).append("스트라이크");
             }
             System.out.println(stringBuilder.toString().trim());
         }
