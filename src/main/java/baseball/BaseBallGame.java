@@ -12,11 +12,11 @@ public class BaseBallGame {
     Computer computer;
 
     public void run() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            computer = new Computer();
             playGame();
 
-        } while(isRetry() == true);
+        } while(isRetry());
     }
 
     private void InputPlayerNumber() {
@@ -28,31 +28,20 @@ public class BaseBallGame {
     }
 
     private boolean isRetry() {
-        String userInput = RetryInputView.input();
-
-        if (userInput.equals("1")) {
-            return true;
-        }
-        if (userInput.equals("2")) {
-            return false;
-        }
-
-        throw new RetryInputException();
-
+        return computer.checkRetry(RetryInputView.input());
     }
 
     private void playGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        computer = new Computer();
 
-        while (true) {
-            InputPlayerNumber();
-            GameResultDto gameResult = getGameResult();
-            BallCountMessageOutputView.printBallCountMessage(gameResult.showMessage());
-            if (gameResult.showIsEnd() == true) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return;
-            }
+        InputPlayerNumber();
+        GameResultDto gameResult = getGameResult();
+        BallCountMessageOutputView.printBallCountMessage(gameResult.showMessage());
+        if (gameResult.checkEnd()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
         }
+        playGame();
 
     }
 }

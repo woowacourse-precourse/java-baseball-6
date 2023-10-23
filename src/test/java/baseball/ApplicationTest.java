@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.RetryInputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,13 @@ class ApplicationTest extends NsTest {
     @Test
     void numberDuplicationTest() {
         assertThatThrownBy(() -> runException("133")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("재시작 시 1이나 2이외의 숫자를 입력했을 때 예외 발생")
+    @Test
+    void retryInputTest() {
+
+
     }
 
 

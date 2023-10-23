@@ -10,7 +10,7 @@ public class GameResultDto {
     }
 
 
-    public boolean showIsEnd() {
+    public boolean checkEnd() {
         return isEnd;
     }
     public String showMessage() {

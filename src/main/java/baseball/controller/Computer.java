@@ -5,6 +5,7 @@ import baseball.domain.PlayerNumbers;
 import baseball.dto.BallCountDto;
 import baseball.dto.GameResultDto;
 import baseball.dto.NumbersStringDto;
+import baseball.exception.RetryInputException;
 import baseball.service.BallCountService;
 import baseball.service.GameResultService;
 
@@ -31,6 +32,17 @@ public class Computer {
     private BallCountDto calculateBallCount() {
         BallCountService ballCountService = new BallCountService();
         return ballCountService.calculateBallCount(playerNumbers, computerNumbers);
+    }
+
+    public boolean checkRetry(String retryInput) {
+        if (retryInput.equals("1")) {
+            return true;
+        }
+        if (retryInput.equals("2")) {
+            return false;
+        }
+        throw new RetryInputException();
+
     }
 
 }

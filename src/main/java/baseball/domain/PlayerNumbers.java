@@ -29,9 +29,9 @@ public class PlayerNumbers implements Numbers{
             throw new NumbersInputException();
         }
         return numbersString.chars()
-                .mapToObj(number -> Character.getNumericValue((char)number))
-                .map(Number::new)
-                .toList();
+                            .mapToObj(number -> Character.getNumericValue((char)number))
+                            .map(Number::new)
+                            .toList();
 
     }
 
