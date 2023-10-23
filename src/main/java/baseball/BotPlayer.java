@@ -12,7 +12,7 @@ public class BotPlayer {
         this.botNumbers = botNumbers;
     }
 
-    public List<Integer> generateNumbers() {
+    public List<Integer> generateBotNumbers() {
         while (botNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!botNumbers.contains(randomNumber)) {

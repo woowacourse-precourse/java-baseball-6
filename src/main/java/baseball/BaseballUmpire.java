@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BaseballUmpire {
 
-    public static GameStatus judge(List<Integer> botNumbers, List<Integer> playerNumbers) {
+    public static GameStatus judgeGameStatus(List<Integer> botNumbers, List<Integer> playerNumbers) {
 
         int strikes = 0;
         int balls = 0;

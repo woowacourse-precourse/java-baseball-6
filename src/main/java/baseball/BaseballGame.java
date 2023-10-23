@@ -11,17 +11,16 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         GameStatus gameStatus = GameStatus.ONGOING;
         BotPlayer botPlayer = new BotPlayer(new ArrayList<>());
-        List<Integer> botNumbers = botPlayer.generateNumbers();
+        List<Integer> botNumbers = botPlayer.generateBotNumbers();
 
         do {
-            List<Integer> integers = Player.inputPlayerNumbers();
-            GameStatus status = BaseballUmpire.judge(botNumbers, integers);
-            gameStatus = status;
+            List<Integer> playerNumbers = Player.getPlayerInputNumbers();
+            gameStatus = BaseballUmpire.judgeGameStatus(botNumbers, playerNumbers);
         } while (gameStatus == GameStatus.ONGOING);
-        restartGame();
+        askForRestartOrExit();
     }
 
-    private void restartGame() {
+    private void askForRestartOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
