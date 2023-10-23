@@ -29,7 +29,7 @@ public class InputView {
     }
 
     private void isTripleDigit(String input) {
-        if (input.length() < NumberConstant.LENGTH) {
+        if (input.length() != NumberConstant.LENGTH) {
             throw new IllegalArgumentException("세 자리의 입력값이 아닙니다.");
         }
     }
