@@ -47,11 +47,7 @@ public class GameManager {
         }
         printResult(strikeCount, ballCount);
 
-        if(strikeCount == WINNING_STRIKE_COUNT) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return false;
-        }
-        return true;
+        return checkThreeStrike(strikeCount);
     }
 
     private static void printResult(int strikeCount, int ballCount) {
@@ -67,5 +63,13 @@ public class GameManager {
         if (strikeCount == NOTHING && ballCount == NOTHING) {
             System.out.println("낫싱");
         }
+    }
+
+    private static boolean checkThreeStrike(int strikeCount) {
+        if(strikeCount == WINNING_STRIKE_COUNT) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        return true;
     }
 }
