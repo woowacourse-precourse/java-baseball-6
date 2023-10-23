@@ -10,7 +10,7 @@ public class Computer {
     private static final int MAX_NUMBER = 9;
     private static final int NUMBER_LENGTH = 3;
 
-    String computerRandomNumber;
+    private String computerRandomNumber;
 
     public Computer() {
     }
