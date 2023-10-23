@@ -9,7 +9,6 @@ import java.util.List;
 import static utils.GameErrorMessage.INVALID_CONVERT_MESSAGE;
 
 public class InputView {
-
     private final Convertor convertor;
     private final Validator validator;
 

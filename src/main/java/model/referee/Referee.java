@@ -6,7 +6,6 @@ import model.player.Computer;
 import model.player.User;
 
 public class Referee {
-
     private final User user;
     private final Computer computer;
 

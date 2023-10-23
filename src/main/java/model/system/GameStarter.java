@@ -6,6 +6,8 @@ import model.referee.GameScoreboard;
 import model.referee.Referee;
 
 public class GameStarter {
+    public GameStarter() {
+    }
 
     public GameScoreboard start(Computer computer, User user) {
         Referee referee = Referee.create(user, computer);

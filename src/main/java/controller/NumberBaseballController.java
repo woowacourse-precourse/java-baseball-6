@@ -13,7 +13,6 @@ import view.InputView;
 import view.OutputView;
 
 public class NumberBaseballController {
-
     private final GameController gameController;
     private final InputView inputView;
     private final OutputView outputView;
@@ -41,7 +40,7 @@ public class NumberBaseballController {
             playGame(computer);
             return;
         }
-        outputView.missonClear();
+        outputView.missionClear();
     }
 
     private boolean isUserWantToQuit() {

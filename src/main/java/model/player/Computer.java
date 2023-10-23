@@ -3,7 +3,6 @@ package model.player;
 import java.util.List;
 
 public class Computer extends Player {
-
     private Computer(List<Integer> numbers) {
         super(numbers);
     }
