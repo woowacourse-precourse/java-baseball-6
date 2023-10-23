@@ -42,9 +42,10 @@ public class Game {
         String str_choice = Console.readLine();
 
         //TODO : 예외처리 작업 -> str_choice가 1또는 2가 아닐때, str_choce의 size가 1이 아닐 때, 숫자가 아닐 때;
-
+        Error.is_Not_number(str_choice);
 
         int choice = Integer.parseInt(str_choice);
+        Error.exit_error_check(choice);
 
         return choice == 1;
     }

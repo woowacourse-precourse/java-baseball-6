@@ -27,4 +27,10 @@ public class Error {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void exit_error_check(int exit_num) {
+        if(exit_num != 1 && exit_num != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
