@@ -21,7 +21,7 @@ public class BaseballController {
     private void playRound() {
         do {
             player.setPlayerNumbers(InputView.inputPlayerNumbers());
-            OutputView.printResult(computer.countAndGetResult(player));
-        } while (!player.isWin);
+            OutputView.printResult(computer.getResult(player.playerNumbers));
+        } while (!computer.isPlayerWin);
     }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Player {
     public static List<Integer> playerNumbers;
-    public static boolean isWin = false;
 
     public void setPlayerNumbers(String number) {
         this.playerNumbers = Arrays.stream(number.split(""))
