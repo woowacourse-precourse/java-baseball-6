@@ -8,4 +8,8 @@ public class User {
     private User(List<Integer> userNumber) {
         this.userNumber = userNumber;
     }
+
+    public List<Integer> getUserNumber() {
+        return userNumber;
+    }
 }

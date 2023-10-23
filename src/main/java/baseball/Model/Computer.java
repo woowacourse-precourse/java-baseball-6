@@ -23,4 +23,11 @@ public class Computer {
         return new ArrayList<>(numbers);
     }
 
+    /**
+     * Getter로 조건을 검사하지말고 결과를 반환하게 하라
+     */
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
+    }
+
 }
