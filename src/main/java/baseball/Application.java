@@ -2,10 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 public class Application {
@@ -59,30 +58,22 @@ public class Application {
     }
 
     private static void validateBaseballNumbers(String inputString) {
-        boolean isValid = true;
-        String message = "";
-        if (inputString.length() != 3) {
-            isValid = false;
-            message = "3자리 숫자를 입력해야 합니다.";
-        }
+        validateInputLength(inputString);
+        validateInputContentRange(inputString);
+    }
 
-        Set<Character> set = new HashSet<>();
+    private static void validateInputLength(String inputString) {
+        if (inputString == null || inputString.length() != 3) {
+            throw new IllegalArgumentException("입력은 3자리 숫자만 가능합니다.");
+        }
+    }
+
+    private static void validateInputContentRange(String inputString) {
         for (int i = 0; i < 3; i++) {
             char c = inputString.charAt(i);
             if (c < '1' || c > '9') {
-                isValid = false;
-                message = "각 자리는 1~9사이의 숫자로 입력해야 합니다.";
+                throw new IllegalArgumentException("각 자리는 1~9사이의 숫자로 입력해야 합니다.");
             }
-            set.add(c);
-        }
-
-        if (set.size() != 3) {
-            isValid = false;
-            message = "서로 다른 숫자를 입력해야 합니다.";
-        }
-
-        if (!isValid) {
-            throw new IllegalArgumentException(message);
         }
     }
 
