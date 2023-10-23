@@ -61,4 +61,12 @@ public class Application {
             throw new IllegalArgumentException("입력값의 길이가 올바르지 않습니다.");
         }
     }
+
+    private static void validateReset(String reset) {
+        if (reset.length() != 1) {
+            throw new IllegalArgumentException("입력이 유효하지 않습니다.");
+        } else if (!reset.equals("1") && !reset.equals("2")) {
+            throw new IllegalArgumentException("입력이 유효하지 않습니다.");
+        }
+    }
 }
