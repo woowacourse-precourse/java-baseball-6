@@ -10,8 +10,35 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        playBaseballGame();
     }
 
+    private static void playBaseballGame() {
+        while(true) {
+            List<Integer> randomNumber = createRandomNumber();
+            checkUserNumber(randomNumber);
+        }
+    }
+
+    private static void checkUserNumber(List<Integer> randomNumber) {
+        while (true) {
+            List<Integer> userNumber = getUserNumber();
+            int ball = 0;
+            int strike = 0;
+
+            for (int i = 0; i < 3; i++) {
+                if (randomNumber.get(i).equals(userNumber.get(i))) {
+                    strike += 1;
+                } else if (randomNumber.contains(userNumber.get(i))) {
+                    ball += 1;
+                }
+            }
+
+            if (strike == 3) {
+                break;
+            }
+        }
+    }
     private static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
