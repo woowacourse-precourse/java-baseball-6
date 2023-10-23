@@ -21,9 +21,11 @@ public class GameNumber {
     public GameNumber() {
         generateRandomizeNumber();
     }
-    private void validateDuplicateNumber(int number){
-        if(board.contains(number))
+
+    private void validateDuplicateNumber(int number) {
+        if (board.contains(number)) {
             throw new IllegalArgumentException();
+        }
     }
 
     private void validateNumber(String number) {
@@ -54,9 +56,9 @@ public class GameNumber {
     private void printGameScore(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if (strike == 0 && ball != 0) {
+        } else if (strike == 0) {
             System.out.println(ball + "볼");
-        } else if (strike != 0 && ball == 0) {
+        } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
