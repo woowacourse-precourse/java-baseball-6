@@ -1,8 +1,12 @@
 package baseball;
 
+import baseball.domain.GameResult;
 import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -22,53 +26,79 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 세자리가_아닌_입력_예외_테스트() {
+    void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    @Test
-    void 유효하지_않은_입력_테스트() {
-        Player player = new Player();
-        String invalidInput = "0";
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
+}
 
+class PlayerTest {
+
+    private Player player;
+
+    @BeforeEach
+    void setUp() {
+        player = new Player();
+    }
+
+    @Test
+    void 유효한_입력_반환_테스트() {
+        String input = "123";
+        assertThat(player.getInputNumber(input)).containsExactly(1, 2, 3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"12a", "1234", "0"})
+    void 유효하지_않은_입력_예외_테스트(String invalidInput) {
         assertThatThrownBy(() -> player.getInputNumber(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
     @Test
     void 유효한_재시작_옵션_테스트() {
-        Player player = new Player();
         String validOption = "1";
-
-        int result = player.receiveRetryOption(validOption);
-
-        assertThat(result).isEqualTo(1);
+        assertThat(player.receiveRetryOption(validOption)).isEqualTo(1);
     }
 
-    @Test
-    void 유효하지_않은_재시작_옵션_예외_테스트() {
-        Player player = new Player();
-        String invalidOption = "3";
-
+    @ParameterizedTest
+    @ValueSource(strings = {"3", "abc"})
+    void 유효하지_않은_재시작_옵션_예외_테스트(String invalidOption) {
         assertThatThrownBy(() -> player.receiveRetryOption(invalidOption))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+}
+
+
+class GameResultTest {
 
     @Test
-    void 숫자가_아닌_재시작_옵션_테스트() {
-        Player player = new Player();
-        String invalidOption = "abc";
-
-        assertThatThrownBy(() -> player.receiveRetryOption(invalidOption))
-                .isInstanceOf(IllegalArgumentException.class);
+    void 게임_초기_결과_테스트() {
+        GameResult gameResult = GameResult.initialResult();
+        assertThat(gameResult.getStrikes()).isEqualTo(0);
+        assertThat(gameResult.getBalls()).isEqualTo(0);
+        assertThat(gameResult.isGameOver()).isFalse();
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+    @Test
+    void 게임_종료_결과_테스트() {
+        GameResult gameResult = new GameResult(3, 0);
+        assertThat(gameResult.getStrikes()).isEqualTo(3);
+        assertThat(gameResult.getBalls()).isEqualTo(0);
+        assertThat(gameResult.isGameOver()).isTrue();
+    }
+
+    @Test
+    void 게임_진행중_결과_테스트() {
+        GameResult gameResult = new GameResult(1, 1);
+        assertThat(gameResult.getStrikes()).isEqualTo(1);
+        assertThat(gameResult.getBalls()).isEqualTo(1);
+        assertThat(gameResult.isGameOver()).isFalse();
     }
 }
