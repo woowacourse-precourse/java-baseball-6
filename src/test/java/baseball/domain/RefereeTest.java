@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -14,13 +15,20 @@ import baseball.domain.balls.Balls;
 
 class RefereeTest {
 
+	private Referee referee;
+	private Balls computerBalls;
+
+	@BeforeEach
+	void init() {
+		referee = new Referee();
+		computerBalls = new Balls(List.of(1, 2, 3));
+	}
+
 	@ParameterizedTest
 	@MethodSource("compareData")
 	@DisplayName("게임 숫자를 비교해 결과를 생성")
 	void givenTwoBalls_whenCompare_thenReturnGameResult(List<Integer> numbers, int strikeResult, int ballResult) {
 		// given
-		Referee referee = new Referee();
-		Balls computerBalls = new Balls(List.of(1, 2, 3));
 		Balls playerBalls = new Balls(numbers);
 
 		// when
@@ -44,8 +52,6 @@ class RefereeTest {
 	@DisplayName("게임 결과를 메시지로 생성")
 	void givenGameResult_whenNotifyGameResult_thenReturnMessage(List<Integer> numbers, String expected) {
 		// given
-		Referee referee = new Referee();
-		Balls computerBalls = new Balls(List.of(1, 2, 3));
 		Balls playerBalls = new Balls(numbers);
 
 		// when
