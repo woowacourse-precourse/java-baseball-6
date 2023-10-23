@@ -4,9 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Baseball {
     private final UserInputNumber userInputNumber;
+    private static final Integer GAME_NUMBER_SIZE = 3;
+    private static final Integer RESTART_NUMBER = 1;
+    private static final Integer MIN_GAME_NUMBER = 1;
+    private static final Integer MAX_GAME_NUMBER = 9;
 
     public Baseball() {
         userInputNumber = new UserInputNumber();
@@ -36,7 +41,7 @@ public class Baseball {
 
     private boolean isSuccessGame(BaseBallNumber answerNumber, BaseBallNumber userNumber) {
         Integer strikeCount = answerNumber.getStrikeCount(userNumber);
-        if (strikeCount == 3) {
+        if (Objects.equals(strikeCount, GAME_NUMBER_SIZE)) {
             OutputStatement.THREE_STRIKE.printOutput();
             return true;
         }
@@ -63,8 +68,8 @@ public class Baseball {
 
     private BaseBallNumber generateNumber() {
         List<Integer> numberList = new ArrayList<>();
-        while (numberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (numberList.size() < GAME_NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_GAME_NUMBER, MAX_GAME_NUMBER);
             if (!numberList.contains(randomNumber)) {
                 numberList.add(randomNumber);
             }
@@ -89,6 +94,6 @@ public class Baseball {
             throw new IllegalArgumentException();
         }
         int restartNumber = Integer.parseInt(inputNumber);
-        return restartNumber == 1;
+        return restartNumber == RESTART_NUMBER;
     }
 }
