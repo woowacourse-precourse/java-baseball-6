@@ -10,7 +10,7 @@ public class InputParser {
     private static final boolean RESTART = true;
     private static final boolean END = false;
 
-    public static List<Integer> parseUserNumberStringToList(String userNumber) {
+    public static List<Integer> parseUserNumber(String userNumber) {
         List<Integer> userNumbers = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             char number = userNumber.charAt(i);
