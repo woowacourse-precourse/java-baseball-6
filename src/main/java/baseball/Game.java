@@ -171,7 +171,7 @@ class Game {
     }
 
     private void checkRestartInputError(String restartInput) throws IllegalArgumentException {
-        List<String> correctAnswer = List.of("1", "2");
+        final List<String> correctAnswer = List.of("1", "2");
 
         if (correctAnswer.contains(restartInput) == false) {
             throw new IllegalArgumentException();
