@@ -5,16 +5,15 @@ import java.util.List;
 import java.util.Set;
 
 public class GameManager {
-    private static final int FIXED_PLAYER_NUMBERS_LENGTH = 3;
-    private static final int NOTHING = 0;
-    private static final int INCREMENT_VALUE = 1;
-    private static final int WINNING_STRIKE_COUNT = 3;
+    private final int FIXED_PLAYER_NUMBERS_LENGTH = 3;
+    private final int NOTHING = 0;
+    private final int INCREMENT_VALUE = 1;
+    private final int WINNING_STRIKE_COUNT = 3;
 
+    private final char MIN_INPUT_VALUE = '1';
+    private final char MAX_INPUT_VALUE = '9';
 
-    private static final char MIN_INPUT_VALUE = '1';
-    private static final char MAX_INPUT_VALUE = '9';
-
-    public static void validPlayerNumbers(String playerNumbers) {
+    public void validPlayerNumbers(String playerNumbers) {
         if (playerNumbers.length() != FIXED_PLAYER_NUMBERS_LENGTH) {
             throw new IllegalArgumentException("입력은 " + FIXED_PLAYER_NUMBERS_LENGTH + "자리 숫자이어야 합니다.");
         }
@@ -32,7 +31,7 @@ public class GameManager {
         }
     }
 
-    public static boolean compareNumbers(List<Integer> computerNumbers, String playerNumbers) {
+    public boolean compareNumbers(List<Integer> computerNumbers, String playerNumbers) {
         int strikeCount = NOTHING;
         int ballCount = NOTHING;
         for (int i=0; i<playerNumbers.length(); i++) {
@@ -50,7 +49,7 @@ public class GameManager {
         return checkThreeStrike(strikeCount);
     }
 
-    private static void printResult(int strikeCount, int ballCount) {
+    private void printResult(int strikeCount, int ballCount) {
         if (strikeCount != NOTHING && ballCount == NOTHING) {
             System.out.println(strikeCount + "스트라이크");
         }
@@ -65,7 +64,7 @@ public class GameManager {
         }
     }
 
-    private static boolean checkThreeStrike(int strikeCount) {
+    private boolean checkThreeStrike(int strikeCount) {
         if(strikeCount == WINNING_STRIKE_COUNT) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
