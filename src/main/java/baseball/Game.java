@@ -31,6 +31,10 @@ public class Game {
         result.calculate(userNumbers, randomNumbers);
 
         System.out.println(result.isResult());
+
+        if (!result.isResult().equals("3스트라이크")) {
+            play();
+        }
     }
 
     private void end() {
