@@ -41,4 +41,18 @@ public class InputNumbers {
             }
         }
     }
+
+    public int getNumber(int index) {
+        InputNumber number = inputNumbers.get(index);
+        return (number.getInputNumber());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder inputString = new StringBuilder();
+        for (InputNumber number : inputNumbers) {
+            inputString.append(number.toString());
+        }
+        return inputString.toString();
+    }
 }
