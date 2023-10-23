@@ -7,7 +7,7 @@ import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class BaseBall {
+public class BaseBallGame {
     public void start() {
         Computer computer = new Computer();
         List<Integer> computerNum = computer.makeRandomNumbers();
