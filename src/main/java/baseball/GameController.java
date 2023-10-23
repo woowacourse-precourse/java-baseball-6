@@ -57,52 +57,83 @@ public class GameController {
     }
 
     public void checkAnswer(String input) {
+        validateInput(input);
+
+        List<Integer> answer = convertInputToList(input);
+
+        int strike = calculateStrikes(answer);
+        int ball = calculateBalls(answer);
+
+        printResult(strike, ball);
+    }
+
+    private void validateInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+    }
 
-        int strike = 0;
-        int ball = 0;
+    private List<Integer> convertInputToList(String input) {
         List<Integer> answer = new ArrayList<>();
-
         for (int i = 0; i < input.length(); i++) {
             answer.add(input.charAt(i) - '0');
         }
+        return answer;
+    }
+
+    private int calculateStrikes(List<Integer> answer) {
+        int strike = 0;
         for (int i = 0; i < answer.size(); i++) {
             if (answer.get(i) == computer.get(i)) {
                 strike++;
-            } else if (computer.contains(answer.get(i))) {
+            }
+        }
+        return strike;
+    }
+
+    private int calculateBalls(List<Integer> answer) {
+        int ball = 0;
+        for (int i = 0; i < answer.size(); i++) {
+            if (!answer.get(i).equals(computer.get(i)) && computer.contains(answer.get(i))) {
                 ball++;
             }
         }
-       printResult(strike, ball);
-
+        return ball;
     }
 
     private void printResult(int strike, int ball) {
-        if(strike == 0 && ball == 0) {
-            gameView.printMessage(GameModel.NOTHING);
-        } else if (strike == 0 && ball != 0) {
-            gameView.printMessage(GameModel.BALL);
-        } else if (strike != 0 && ball == 0) {
-            gameView.printMessage(GameModel.STRIKE);
-        } else if (strike != 0 && ball != 0) {
-            System.out.println(ball + GameModel.BALL + strike + GameModel.STRIKE);
-        } else if (strike == 3 && ball == 0) {
-            gameView.printMessage(GameModel.END_MESSAGE);
+       displayResult(strike, ball);
 
-        }
-        if(strike == 3) {
-            isStarted = false;
-            gameView.printMessage(GameModel.ASK_RESTART);
-            input = Console.readLine();
-            isStarted(input);
-
+        if (strike == 3) {
+            endGame();
         } else {
-            gameView.printMessage(GameModel.ASK_NUMBERS);
-            input = Console.readLine();
-            checkAnswer(input);
+            continueGame();
         }
+    }
+
+    private void displayResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            gameView.printMessage(GameModel.NOTHING);
+        } else if (strike == 0) {
+            gameView.printMessage(ball + GameModel.BALL);
+        } else if (ball == 0) {
+            gameView.printMessage(strike + GameModel.STRIKE);
+        } else {
+            gameView.printMessage(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+
+    private void endGame() {
+        isStarted = false;
+        gameView.printMessage(GameModel.ASK_RESTART);
+        input = Console.readLine();
+        isStarted(input);
+    }
+
+    private void continueGame() {
+        gameView.printMessage(GameModel.ASK_NUMBERS);
+        input = Console.readLine();
+        checkAnswer(input);
     }
 }
 
