@@ -5,16 +5,20 @@ import java.util.List;
 
 public class Computer {
 
-    private final NumberGenerator numberGenerator;
-    private final ScoreCalculator scoreCalculator;
+    private GameAnswer gameAnswer;
+    private ScoreCalculator scoreCalculator;
 
     public Computer() {
-        this.numberGenerator = new NumberGenerator();
+        this.gameAnswer = new GameAnswer();
         this.scoreCalculator = new ScoreCalculator();
     }
 
-    public List<Integer> generateNumber() {
-        return numberGenerator.getGeneratedNumbers();
+    public void makeAnswer() {
+        gameAnswer.makeAnswer();
+    }
+    
+    public List<Integer> getGameAnswer() {
+        return gameAnswer.getAnswer();
     }
 
     public Score getScore(List<Integer> playerInput, List<Integer> answer) {

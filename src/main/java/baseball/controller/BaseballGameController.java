@@ -28,7 +28,8 @@ public class BaseballGameController {
     public void start() {
         printStartMessage();
         while (!player.continueGame()) {
-            playOneRound(computer.generateNumber(), new Score(INIT_STRIKE, INIT_BALL));
+            computer.makeAnswer();
+            playOneRound(computer.getGameAnswer(), new Score(INIT_STRIKE, INIT_BALL));
             player.inputGameStateNumber();
         }
     }
