@@ -15,6 +15,27 @@ public class MenuHandler {
 
     private void initialHandle() {
         communicator.printStart();
+        runGame();
+    }
+
+    public void handle() {
+        boolean runningFlag = true;
+        while (runningFlag) {
+            Menu menu = communicator.instructMenu();
+            runningFlag = switch (menu) {
+                case START -> {
+                    runGame();
+                    yield true;
+                }
+                case TERMINATE -> {
+                    communicator.printTerminate();
+                    yield false;
+                }
+            };
+        }
+    }
+
+    private void runGame() {
         computer.decideAnswer();
 
         boolean isOver = false;
@@ -23,23 +44,6 @@ public class MenuHandler {
             Map<String, Integer> counts = computer.count(inputNumbers);
             communicator.printResult(counts);
             isOver = isCorrect(counts.get("strikeCount"));
-        }
-    }
-
-    public void handle() {
-        Menu menu = communicator.instructMenu();
-        switch (menu) {
-            case START -> {
-                computer.decideAnswer();
-                boolean isOver = false;
-                while (!isOver) {
-                    List<Integer> inputNumbers = communicator.instructInputNumbers();
-                    Map<String, Integer> counts = computer.count(inputNumbers);
-                    communicator.printResult(counts);
-                    isOver = isCorrect(counts.get("strikeCount"));
-                }
-            }
-            case TERMINATE -> communicator.printTerminate();
         }
     }
 
