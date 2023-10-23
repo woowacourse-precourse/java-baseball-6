@@ -6,7 +6,11 @@ import java.util.List;
 public class BaseballGame {
 
     private List<Integer> computerNumber;
-    private List<Integer> userNumber;
+
+    public BaseballGame(){
+        Computer computer = new Computer();
+        this.computerNumber = computer.randomComputerNumber();
+    }
 
 
     public List<Integer> createComputerNumber() {
