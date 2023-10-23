@@ -27,23 +27,28 @@ public class Output {
 
     private String assembleResult(Judgement judgement) {
         StringBuilder result = new StringBuilder();
+        appendBall(judgement, result);
+        appendStrike(judgement, result);
 
+        if (result.length() == 0) {
+            return NOTHING.toString();
+        }
+        return result.toString();
+    }
+
+    private void appendBall(Judgement judgement, StringBuilder result) {
         if (judgement.hasBall()) {
             result.append(judgement.getBall()).append(BALL);
         }
+    }
 
+    private void appendStrike(Judgement judgement, StringBuilder result) {
         if (judgement.hasStrike()) {
             if (0 < result.length()) {
                 result.append(" ");
             }
             result.append(judgement.getStrike()).append(STRIKE);
         }
-
-        if (result.length() == 0) {
-            return NOTHING.toString();
-        }
-
-        return result.toString();
     }
 
     public void showGameOver() {
