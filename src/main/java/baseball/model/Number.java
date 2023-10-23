@@ -47,7 +47,7 @@ public class Number {
     public int getBallCount(ArrayList<Integer> inputNumber) {
         int ball = 0;
         for (int i = 0; i < 3; i++) {
-            if (number.get(i).equals(inputNumber.get(i))) {
+            if (number.contains(inputNumber.get(i)) && !number.get(i).equals(inputNumber.get(i))) {
                 ball++;
             }
         }
