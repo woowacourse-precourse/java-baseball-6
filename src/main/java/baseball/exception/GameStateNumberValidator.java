@@ -5,6 +5,9 @@ public class GameStateNumberValidator {
     private static final String LENGTH_NOT_ONE_MSG = "한 글자만 입력 가능합니다.";
     private static final String NOT_ONE_AND_TWO_MSG = "1 또는 2만 입력 가능합니다.";
 
+    private GameStateNumberValidator() {
+    }
+
     public static boolean isGameStateNumberValid(String input) {
         if (isLengthOne(input) && isEqualToOneOrTwo(input)) {
             return true;
