@@ -1,14 +1,20 @@
 package baseball.util;
 
+import static baseball.util.Constants.BALL_LENGTH;
+
 import java.util.regex.Pattern;
 
 public class ValidationRules implements ValidationRule {
     private static final Pattern NUMBER_REGEX = Pattern.compile("^[1-9]+$");
 
+    public static ValidationRules createValidationRules() {
+        return new ValidationRules();
+    }
+
     @Override
     public void FormatValidationRule(String playerNumber) {
         if (!NUMBER_REGEX.matcher(playerNumber).matches()) {
-            throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC.getMessage());
         }
     }
 
@@ -17,14 +23,18 @@ public class ValidationRules implements ValidationRule {
         try {
             Integer.parseInt(playerNumber);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("T입력 범위를 초과했습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_IN_RANGE.getMessage());
         }
     }
 
     @Override
     public void LengthValidationRule(String playerNumber) {
-        if (playerNumber.length() != 3) {
-            throw new IllegalArgumentException("세 자리 자연수를 입력해 주세요.");
+        if (isLengthThree(playerNumber)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_LENGTH.getMessage());
         }
+    }
+
+    private static boolean isLengthThree(String playerNumber) {
+        return playerNumber.length() != BALL_LENGTH;
     }
 }

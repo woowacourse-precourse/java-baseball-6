@@ -16,12 +16,15 @@ public class GameController {
     }
 
     public void play() {
-        outputView.printGameStart();
-        Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
-        List<Integer> computerNumber = computer.getComputerNumber();
-        System.out.println(computerNumber);
-        Player player = Player.createNyNumber(inputView.readPlayerNumber());
-        System.out.println(player.getPlayerNumber());
-
+        try {
+            outputView.printGameStart();
+            Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
+            List<Integer> computerNumber = computer.getComputerNumber();
+            System.out.println(computerNumber);
+            Player player = Player.createNyNumber(inputView.readPlayerNumber());
+            System.out.println(player.getPlayerNumber());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
