@@ -1,21 +1,22 @@
 package baseball.model;
 
-import static baseball.util.InputValidator.isInputNumbersValid;
 import static baseball.util.InputValidator.isRestartOrExitValid;
-import static baseball.util.StringToIntegerListConverter.StringToList;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Player {
 
-    private List<Integer> numbers;
+    private GuessNumber guessNumber;
     private Integer restartOrExit;
 
+    public Player() {
+        this.guessNumber = new GuessNumber();
+        this.restartOrExit = null;
+    }
+
     public void inputNumbers() {
-        String input = Console.readLine();
-        validateInputNumbers(input);
-        this.numbers = StringToList(input);
+        guessNumber.guess();
     }
 
     public void inputRestartOrExit() {
@@ -24,23 +25,17 @@ public class Player {
         this.restartOrExit = Integer.parseInt(input);
     }
 
-    private void validateInputNumbers(String input) {
-        if (!isInputNumbersValid(input)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     private void validateInputRestartOrExit(String input) {
         if (!isRestartOrExitValid(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public Integer getRestartOrExit() {
         return restartOrExit;
+    }
+
+    public List<Integer> getNumbers() {
+        return guessNumber.getNumbers();
     }
 }
