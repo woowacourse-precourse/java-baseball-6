@@ -16,20 +16,20 @@ public class GameController {
 
 	public void run() {
 		OutputView.printStartGuide();
-		play();
+		playBaseballGame();
 	}
 
-	private void play() {
-		playBaseBallGame();
+	private void playBaseballGame() {
+		playBaseballGameOnce();
 		replayOrExitGame();
 	}
 
-	private void playBaseBallGame() {
+	private void playBaseballGameOnce() {
 		final Computer computer = gameService.createComputer();
-		repeatBaseBallGamePlaying(computer);
+		repeatBaseballGamePlayingUntilEnding(computer);
 	}
 
-	private void repeatBaseBallGamePlaying(final Computer computer) {
+	private void repeatBaseballGamePlayingUntilEnding(final Computer computer) {
 		String gameResultMessage = "";
 		while (!gameService.isEnded(gameResultMessage)) {
 			final Player player = new Player(getNumbersInput());
@@ -46,7 +46,7 @@ public class GameController {
 	private void replayOrExitGame() {
 		String replayCommandInput = getReplayCommandInput();
 		if (gameService.isReplay(replayCommandInput)) {
-			play();
+			playBaseballGame();
 		}
 	}
 
