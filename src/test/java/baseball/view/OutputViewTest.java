@@ -66,6 +66,15 @@ class OutputViewTest {
             org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(strikeCount + STRIKE.getMessage());
         }
 
+        @DisplayName("볼이 출력되어야 한다")
+        @ParameterizedTest
+        @ValueSource(ints = {1, 2, 3})
+        public void 볼이_출력되어야_한다(int ballCount) {
+            OutputView.printBallCount(ballCount);
+            org.assertj.core.api.Assertions.assertThat(output.toString()).isEqualTo(ballCount + BALL.getMessage());
+        }
+
+
 
     }
 
