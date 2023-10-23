@@ -3,8 +3,7 @@ package baseball.validator;
 
 import baseball.global.exception.BaseballException;
 
-import static baseball.global.GameConfig.EXIT_FLAG;
-import static baseball.global.GameConfig.RESTART_FLAG;
+import static baseball.global.GameConfig.*;
 import static baseball.global.exception.ErrorMessage.*;
 
 public class InputValidator {
@@ -60,7 +59,7 @@ public class InputValidator {
     }
 
     private static boolean isValidLength(final String number) {
-        return number.length() == 3;
+        return number.length() == NUMBER_LENGTH.getValue();
     }
 
     private static boolean isValidNumber(final String number) {
