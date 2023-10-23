@@ -2,7 +2,8 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballGame baseballGame = new BaseballGame();
-        baseballGame.startBaseballGame();
+        Game game = new Game();
+        game.play();
     }
 }
+
