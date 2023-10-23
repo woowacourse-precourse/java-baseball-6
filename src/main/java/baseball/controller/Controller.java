@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import static baseball.model.State.RESTART;
+import static baseball.model.State.PLAY;
 import static baseball.model.State.createWith;
 import static baseball.model.State.isMoreGame;
 import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
@@ -17,10 +17,12 @@ import java.util.List;
 
 public class Controller {
 
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String NEW_LINE = "\n";
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다." + NEW_LINE;
     private static final String GUESS_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String WINNING_MESSAGE = BASEBALL_GAME_NUMBER_DIGIT.getValue() + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String RESTART_OR_FINISH_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String WINNING_MESSAGE =
+            BASEBALL_GAME_NUMBER_DIGIT.getValue() + "개의 숫자를 모두 맞히셨습니다! 게임 종료" + NEW_LINE;
+    private static final String RESTART_OR_FINISH_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." + NEW_LINE;
 
     private final ConsoleInputView consoleInputView;
     private final ConsoleOutputView consoleOutputView;
@@ -31,8 +33,8 @@ public class Controller {
     }
 
     public void start() {
-        consoleOutputView.printLine(START_MESSAGE);
-        State state = RESTART;
+        consoleOutputView.print(START_MESSAGE);
+        State state = PLAY;
         while (isMoreGame(state)) {
             play();
             state = askMoreGame();
@@ -46,7 +48,7 @@ public class Controller {
             guessNumbers = getGuessNumbers();
             getResult(computer, guessNumbers);
         }
-        consoleOutputView.printLine(WINNING_MESSAGE);
+        consoleOutputView.print(WINNING_MESSAGE);
     }
 
     private List<Integer> getGuessNumbers() {
@@ -63,7 +65,7 @@ public class Controller {
     }
 
     private State askMoreGame() {
-        consoleOutputView.printLine(RESTART_OR_FINISH_MESSAGE);
+        consoleOutputView.print(RESTART_OR_FINISH_MESSAGE);
         String stateNumber = consoleInputView.readLine();
         return createWith(stateNumber);
     }
