@@ -1,5 +1,12 @@
 package baseball;
 
+import static baseball.constant.PrintMessage.BALL;
+import static baseball.constant.PrintMessage.GAME_START_MESSAGE;
+import static baseball.constant.PrintMessage.INPUT_NUMBER_MESSAGE;
+import static baseball.constant.PrintMessage.NO_MATCHING;
+import static baseball.constant.PrintMessage.STRIKE;
+import static baseball.constant.PrintMessage.SUCCESS_GAME_MESSAGE;
+
 import baseball.dto.StrikeBallCnt;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.io.BufferedReader;
@@ -10,6 +17,7 @@ import java.util.List;
 
 public class Application {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static boolean isEnd;
     static final String NOT_VALID_NUMBER = "3자리의 숫자만 입력 가능합니다.";
 
     public static void main(String[] args) {
@@ -24,15 +32,24 @@ public class Application {
 
     private static void baseballGame() throws IOException {
         List<Integer> answerNumber = createAnswerNumber();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        println(GAME_START_MESSAGE);
 
         String input;
-        while (true){
-            System.out.print("숫자를 입력해주세요 : ");
+        while (!isEnd){
+            print(INPUT_NUMBER_MESSAGE);
             input = br.readLine();
             checkValidNumber(input);
             StrikeBallCnt result = getResult(input, answerNumber);
+            printResult(result);
         }
+    }
+
+    private static void print(String message) {
+        System.out.print(message);
+    }
+
+    private static void println(String message) {
+        System.out.println(message);
     }
 
     private static StrikeBallCnt getResult(String input, List<Integer> answer) {
@@ -49,6 +66,27 @@ public class Application {
         }
 
         return new StrikeBallCnt(strikeCnt, ballCnt);
+
+    }
+
+    private static void printResult(StrikeBallCnt strikeBallCnt) {
+        int strikeCnt = strikeBallCnt.getStrikeCnt();
+        int ballCnt = strikeBallCnt.getBallCnt();
+
+        if (ballCnt > 0){
+            println(ballCnt + BALL + " ");
+        }
+        if (strikeCnt > 0){
+            println(strikeCnt + STRIKE);
+        }
+
+        if(strikeCnt == 0 && ballCnt == 0){
+            println(NO_MATCHING);
+        }
+        if(strikeCnt == 3){
+            isEnd = true;
+            println(SUCCESS_GAME_MESSAGE);
+        }
 
     }
 
