@@ -108,7 +108,7 @@ public class BaseBallGame {
             throw new IllegalArgumentException("1-9로 만들어진 숫자가 아닙니다.");
         }
 
-        if (!checkDifferentNum(userNum)) { // 유저가 입력한 각 자리 숫자가 달라야 함 // TODO - 요구사항 확인
+        if (!checkDifferentNum(userNum)) { // 유저가 입력한 각 자리 숫자가 달라야 함
             throw new IllegalArgumentException("유저가 입력한 숫자는 서로 다른 3자리 숫자여야 합니다.");
         }
 
