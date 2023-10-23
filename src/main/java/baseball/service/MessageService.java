@@ -21,17 +21,17 @@ public class MessageService {
         System.out.print(INPUT_NUMBER_MESSAGE);
     }
 
-    public void printGameResult(int balls, int strikes) {
+    public void printGameResult(int countBalls, int countStrikes) {
         StringBuilder sb = new StringBuilder();
 
-        if (balls == 0 && strikes == 0) {
+        if (isNothing(countBalls, countStrikes)) {
             sb.append(NOTHING_MESSAGE);
         }
-        if (balls > 0) {
-            sb.append(String.format("%d%s ", balls, BALLS_MESSAGE));
+        if (hasBall(countBalls)) {
+            sb.append(String.format("%d%s ", countBalls, BALLS_MESSAGE));
         }
-        if (strikes > 0) {
-            sb.append(String.format("%d%s", strikes, STRIKES_MESSAGE));
+        if (hasStrike(countStrikes)) {
+            sb.append(String.format("%d%s", countStrikes, STRIKES_MESSAGE));
         }
 
         String result = sb.toString().trim();
@@ -41,5 +41,17 @@ public class MessageService {
     public void announceThreeStrikes() {
         System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", BASEBALL_NUMBERS_SIZE);
         System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.%n", RESTART_OPTION, TURN_OFF_OPTION);
+    }
+
+    private boolean hasStrike(int strikes) {
+        return strikes > 0;
+    }
+
+    private boolean hasBall(int balls) {
+        return balls > 0;
+    }
+
+    private boolean isNothing(int balls, int strikes) {
+        return balls == 0 && strikes == 0;
     }
 }

@@ -24,14 +24,14 @@ public class PlayerNumberValidator {
     private void validateInteger(String number) {
         for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
-            if (!Character.isDigit(c)) {
+            if (!isNumber(c)) {
                 throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
             }
         }
     }
 
     private void validateSize(String number) {
-        if (number.length() != BASEBALL_NUMBERS_SIZE) {
+        if (isValidateSize(number)) {
             throw new IllegalArgumentException(INVALID_SIZE_MESSAGE);
         }
     }
@@ -39,8 +39,7 @@ public class PlayerNumberValidator {
     private void validateRange(String number) {
         for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
-            int targetNumber = Character.getNumericValue(c);
-            if (targetNumber < BASEBALL_MIN_NUMBER || targetNumber > BASEBALL_MAX_NUMBER) {
+            if (!isValidateRange(c)) {
                 throw new IllegalArgumentException(INVALID_RANGE_MESSAGE);
             }
         }
@@ -59,5 +58,18 @@ public class PlayerNumberValidator {
         if (number.length() != sb.length()) {
             throw new IllegalArgumentException(INVALID_DUPLICATE_MESSAGE);
         }
+    }
+
+    private boolean isValidateRange(char c) {
+        int targetNumber = Character.getNumericValue(c);
+        return BASEBALL_MIN_NUMBER <= targetNumber && targetNumber <= BASEBALL_MAX_NUMBER;
+    }
+
+    private boolean isValidateSize(String number) {
+        return number.length() != BASEBALL_NUMBERS_SIZE;
+    }
+
+    private boolean isNumber(char c) {
+        return Character.isDigit(c);
     }
 }

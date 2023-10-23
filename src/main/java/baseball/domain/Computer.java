@@ -22,7 +22,7 @@ public class Computer {
         for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
             char targetNumber = player.charAt(i);
 
-            if (targetNumber == number.charAt(i)) {
+            if (isStrike(targetNumber, i)) {
                 count += 1;
             }
         }
@@ -36,12 +36,20 @@ public class Computer {
         for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
             int findIndex = findNumberIndex(player, i);
 
-            if (findIndex != INVALID_INDEX && findIndex != i) {
+            if (isBall(findIndex, i)) {
                 count += 1;
             }
         }
 
         return count;
+    }
+
+    private boolean isBall(int target, int i) {
+        return target != INVALID_INDEX && target != i;
+    }
+
+    private boolean isStrike(int target, int i) {
+        return target == number.charAt(i);
     }
 
     private int findNumberIndex(String player, int i) {
