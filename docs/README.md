@@ -4,9 +4,9 @@
 
 ---
 
-![클래스다이어그램v2.png](images%2F%ED%81%B4%EB%9E%98%EC%8A%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8v2.png)
+![클래스다이어그램v3.png](images%2F%ED%81%B4%EB%9E%98%EC%8A%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8v3.png)
 
-## ✏️기능목록
+## ✏️클래스별 기능목록
 
 ---
 
@@ -74,9 +74,3 @@
 ### Balls
 
 ### Strikes
-
-<br>
-
-## 최종 클래스 다이어그램
-
----
