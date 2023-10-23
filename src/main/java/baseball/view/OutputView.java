@@ -18,11 +18,11 @@ public class OutputView {
         System.out.println(ballCount + "볼");
     }
 
-    public static void printStrikeAndBallMessage(int strikeCount, int ballCount) {
+    public static void printStrikeAndBallHintMessage(int strikeCount, int ballCount) {
         System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
     }
 
-    public static void printNothingMessage() {
+    public static void printNothingHintMessage() {
         System.out.println("낫싱");
     }
 }
