@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int SIZE = 3;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int start = 1;
         while (start == 1) {
             List<Integer> answer = createAnswer();
             int[] count = new int[2];
-            while (count[1] != 3) {
+            while (count[1] != SIZE) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
                 validateUserInput(input);
@@ -28,8 +30,8 @@ public class Application {
                 } else {
                     System.out.printf("%d볼 %d스트라이크%n", count[0], count[1]);
                 }
-                if (count[1] == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (count[1] == SIZE) {
+                    System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", SIZE);
                 }
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -41,8 +43,8 @@ public class Application {
     }
 
     private static List<Integer> createAnswer() {
-        List<Integer> answer = new ArrayList<>(3);
-        while (answer.size() < 3) {
+        List<Integer> answer = new ArrayList<>(SIZE);
+        while (answer.size() < SIZE) {
             int number = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(number)) {
                 answer.add(number);
@@ -52,8 +54,8 @@ public class Application {
     }
 
     private static List<Integer> parseUserInput(String input) {
-        List<Integer> userInput = new ArrayList<>(3);
-        for (int i = 0; i < 3; i++) {
+        List<Integer> userInput = new ArrayList<>(SIZE);
+        for (int i = 0; i < SIZE; i++) {
             userInput.add(Character.getNumericValue(input.charAt(i)));
         }
         return userInput;
@@ -61,12 +63,12 @@ public class Application {
 
     private static int[] checkAnswer(List<Integer> answer, List<Integer> userInput) {
         int[] count = new int[2];
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < SIZE; i++) {
             if (answer.get(i).equals(userInput.get(i))) {
                 count[1]++;
                 continue;
             }
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < SIZE; j++) {
                 if (i != j && answer.get(i).equals(userInput.get(j))) {
                     count[0]++;
                     break;
@@ -87,7 +89,7 @@ public class Application {
                 }
             }
         }
-        if (input.length() != 3) {
+        if (input.length() != SIZE) {
             throw new IllegalArgumentException("입력값의 길이가 올바르지 않습니다.");
         }
     }
