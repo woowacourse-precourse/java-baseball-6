@@ -8,7 +8,7 @@ public class GameGuideOutput {
     }
 
     public static void inputBaseBall() {
-        out.println("숫자를 입력해주세요 : ");
+        out.print("숫자를 입력해주세요 : ");
     }
 
     public static void gameEnd() {
