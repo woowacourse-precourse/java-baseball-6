@@ -14,7 +14,7 @@
 - 매직넘버 모두 추출하기
 - 객체지향적으로 잘 설계되었는 지 확인하기
     - 객체지향 생활체조 참고하기
-- static 메소드, 상수들 모두 static import 하기
+- static 메소드, 상수들 static import 하기
 
 ---
 
@@ -148,6 +148,7 @@
         - Ball
         - BallCounts
         - Computer
+        - Option
         - Referee
     - constants
         - 상수
@@ -155,6 +156,7 @@
     - util
         - 여러 기능과 관련된 클래스
         - CountsMessage
+        - ErrorDetector
         - RandomNumbersGenerator
     - view
         - Input, Output
