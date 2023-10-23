@@ -45,7 +45,8 @@
     - ~~입력도 배열로 만들기~~
     - ~~입력 숫자를 반복문 돌면서 자리가 같은지 아닌지 확인하기~~
     - 아니면 둘 다 스트링으로 하고 index로 접근할 수 있으면 그렇게 하기
-    - string은 indexOf()를 사용할 수 있음., 아니면 이중 for문 쓰기
+    - ~~string은 indexOf()를 사용할 수 있음~~
+    - 이중 for문 사용하기
 - [x]  볼: 숫자만 맞는 것, 스트라이크: 숫자도 맞고 자리도 맞고
 - [ ]  [https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/jav](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javㅁ)a  자바 스타일 가이드
     - [x]  테스트 위한 output 관리하는 변수(상수) 생성
@@ -121,12 +122,12 @@
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 - [x]  3자리 숫자에 0 포함되면 다시 입력하라 하는지 아님 예외 넘기는지
     - 예외 처리
-- [ ]  공백이 들어간 입력이 들어온다면?
-    - `1 2 3`
-    - `123  `
-    - `   123`
-- [ ]  연속된 숫자가 들어온다면?
+- [x]  공백이 들어간 입력이 들어온다면?
+    - `1 2 3`, `123  `, `   123`
+    - 예외 처리
+- [x]  연속된 숫자가 들어온다면?
     - `111`
+    - 새롭게 입력을 받도록 수정
       
       ![image](https://github.com/muyaaho/java-baseball-6/assets/76798969/beb949ce-d969-46d8-bfa8-c44e5e78e751)
 
@@ -134,7 +135,8 @@
 
 ## 확인
 
-- [ ]  제출 전 테스트 가이드 사용
+- [x]  제출 전 테스트 가이드 사용
 - [x]  요구 사항에 명시된 출력 값이 나왔는지 확인
-- [ ]  커밋 메시지는 `소문자: 영어 내용` 으로 작성
+- [ ]  테스트를 위해 정답을 출력하는 **`IS_TEST` 변수 false로 수정하고 제출**
+- [x]  커밋 메시지는 `소문자: 영어 내용` 으로 작성
 - [ ]  [미션 제출 방법](https://github.com/muyaaho/java-baseball-6#-%EB%AF%B8%EC%85%98-%EC%A0%9C%EC%B6%9C-%EB%B0%A9%EB%B2%95) 확인해서 제출, pull & request, 사이트 제출
