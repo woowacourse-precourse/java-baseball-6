@@ -1,10 +1,11 @@
 package baseball.util.converter;
 
+import baseball.application.converter.StringConverter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StringConverter {
+public class InputStringConverter implements StringConverter {
 
     private static final String ERROR_MESSAGE_NOT_INT = "입력값이 정수가 아닙니다.";
 
