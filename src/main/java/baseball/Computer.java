@@ -13,7 +13,7 @@ public class Computer {
             }
         }
 
-//        System.out.println(randomNumbers); // 확인용
+        System.out.println(randomNumbers); // 확인용
     }
 
     public List<Integer> getRandomNumbers() {
