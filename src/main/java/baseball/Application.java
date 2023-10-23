@@ -14,7 +14,7 @@ public class Application {
     }
 
     private static void playBaseballGame() {
-        while(true) {
+        while (true) {
             List<Integer> randomNumber = createRandomNumber();
             checkUserNumber(randomNumber);
         }
@@ -33,12 +33,27 @@ public class Application {
                     ball += 1;
                 }
             }
-
+            printResult(strike, ball);
             if (strike == 3) {
                 break;
             }
         }
     }
+
+    private static void printResult(int strike, int ball) {
+        if (strike == 3) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+        } else if (ball > 0 && strike > 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (ball > 0) {
+            System.out.println(ball + "볼");
+        } else if (strike > 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
+
     private static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
