@@ -9,6 +9,13 @@ public class PlayGame {
     public int ball;
     public int strike;
 
+    public void run() {
+        while (strike != 3) {
+            startGame();
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     public void startGame() {
         System.out.println("숫자를 입력해주세요 : ");
         String originalInput = Console.readLine();
@@ -17,6 +24,7 @@ public class PlayGame {
         ArrayList<Integer> answerNumbers = GenerateNum.makeAnswer();
         this.ball = Rule.countBalls(answerNumbers, userNumberList);
         this.strike = Rule.countStrikes(answerNumbers, userNumberList);
+        printScore();
     }
 
     public ArrayList<Integer> inputToArrayList(String numInput) {
