@@ -12,6 +12,9 @@ public class Player {
     private static final String RESTART_NUM = "1";
     private static final String END_NUM = "2";
     private static final String VALID_DIGIT_REGEX = "^[1-9]{3}$";
+    private static final String LENGTH_EXCEPTION = "알맞지 않은 길이의 숫자가 입력되었습니다.";
+    private static final String DUPLICATED_NUMBER_EXCEPTION = "중복된 숫자가 입력되었습니다";
+    private static final String INVALID_DIGIT_EXCEPTION = "1-9 외의 숫자가 입력되었습니다.";
 
     private List<String> playerInput;
     private String endInput;
@@ -37,7 +40,7 @@ public class Player {
 
     private void validateLength(String input){
         if(input.length() != INPUT_LENGTH){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LENGTH_EXCEPTION);
         }
     }
 
@@ -48,7 +51,7 @@ public class Player {
             char ch = input.charAt(i);
 
             if(existedCharacter.contains(ch)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(DUPLICATED_NUMBER_EXCEPTION);
             }
 
             existedCharacter.add(ch);
@@ -57,7 +60,7 @@ public class Player {
 
     private void validateOnlyNumber(String input){
         if(!input.matches(VALID_DIGIT_REGEX)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_DIGIT_EXCEPTION);
         }
     }
 
