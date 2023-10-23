@@ -2,11 +2,14 @@ package baseball.service;
 
 import baseball.domain.GameResult;
 import baseball.view.OutputView;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GameService {
 
     public GameService() {
+
     }
 
     public boolean isGameOver(GameResult gameResult) {
@@ -18,10 +21,7 @@ public class GameService {
     }
 
     public GameResult checkResult(List<Integer> numbers, List<Integer> computerNumbers) {
-        if (numbers.size() != 3){
-            throw new IllegalArgumentException();
-        }
-
+        validate(numbers);
         int strike = 0;
         int ball = 0;
 
@@ -39,5 +39,23 @@ public class GameService {
         }
 
         return new GameResult(strike, ball);
+    }
+
+    private static void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicateNumbers(numbers);
+    }
+
+    private static void validateDuplicateNumbers(List<Integer> numbers) {
+        Set<Integer> checkDuplicateNumbers = new HashSet<>(numbers);
+        if (checkDuplicateNumbers.size() != 3) {
+            throw new IllegalArgumentException("중복된 수가 있습니다.");
+        }
+    }
+
+    private static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("숫자의 사이즈가 맞지 않습니다.");
+        }
     }
 }

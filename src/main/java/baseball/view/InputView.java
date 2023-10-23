@@ -9,12 +9,11 @@ public class InputView {
 
     public static List<Integer> inputNumber() {
         String numberString = Console.readLine();
-        System.out.println(numberString);
         String[] splitNumberString = numberString.split("");
         return mapToInteger(splitNumberString);
     }
 
-    private static List<Integer> mapToInteger(String[] splitNumberString) {
+    private static List<Integer> mapToInteger(String[] splitNumberString) throws IllegalArgumentException{
         return Arrays.stream(splitNumberString)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
