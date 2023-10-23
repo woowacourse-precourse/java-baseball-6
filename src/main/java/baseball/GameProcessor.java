@@ -26,7 +26,6 @@ public class GameProcessor {
 
     private List<String> generateUserNumberList(Data data) {
         List<String> userNumberList = new ArrayList<>();
-
         String userNumberString = data.getUserAnswerNumber();
 
         for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
@@ -79,7 +78,7 @@ public class GameProcessor {
 
     public Boolean validateCompleteAnswer(Data data) {
         boolean isCompleteAnswer = false;
-        if (data.getAnswerCountList().get(0).equals("3")) {
+        if (data.getAnswerCountList().get(0).equals(String.valueOf(DIGIT_LENGTH_LIMIT))) {
             isCompleteAnswer = true;
         }
         return isCompleteAnswer;
