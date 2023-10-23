@@ -12,7 +12,7 @@ public class ValidationNumber {
     private final static String DUPLICATE_ERROR_MESSAGE = "서로 다른 숫자를 입력해주세요.";
     private final static String NUMBER_TYPE_ERROR_MESSAGE = "숫자만 입력해주세요.";
 
-    public static void validationRange(List<Integer> numbers) {
+    private static void validationRange(List<Integer> numbers) {
         for (int number : numbers
         ) {
             if (number < MIN_NUMBER || number > MAX_NUMBER) {
@@ -21,13 +21,13 @@ public class ValidationNumber {
         }
     }
 
-    public static void validationSize(List<Integer> numbers) {
+    private static void validationSize(List<Integer> numbers) {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
     }
 
-    public static void validationDuplicateNumber(List<Integer> numbers) {
+    private static void validationDuplicateNumber(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != 3) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
