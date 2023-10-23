@@ -17,10 +17,14 @@ public class NumberUtil {
 
     }
 
-    public static List<Integer> converStringToList(String numberString) {
+    public static List<Integer> convertStringToList(String numberString) {
         return numberString.chars()
                 .mapToObj(Character::getNumericValue)
                 .toList();
+    }
+
+    public static String convertListToString(List<Integer> numberList) {
+        return String.join("", (CharSequence) numberList);
     }
 
     public static void validate(String number) {
