@@ -8,7 +8,7 @@ public class AnswerChecker {
     private AnswerChecker() {
     }
 
-    public static String answerCheckResult(final List<Integer> computer, final List<Integer> user) {
+    public static String result(final List<Integer> computer, final List<Integer> user) {
 
         int strike = isStrike(computer, user);
         int ball = isBall(computer, user);
