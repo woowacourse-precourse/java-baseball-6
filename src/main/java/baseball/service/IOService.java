@@ -1,5 +1,6 @@
-package baseball;
+package baseball.service;
 
+import baseball.constant.Message;
 import camp.nextstep.edu.missionutils.Console;
 
 public class IOService {

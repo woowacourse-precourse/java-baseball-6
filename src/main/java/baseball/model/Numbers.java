@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.dto.NumbersScoreDto;
 import java.util.List;
 
 public class Numbers {

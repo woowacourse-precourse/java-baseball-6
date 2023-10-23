@@ -1,4 +1,6 @@
-package baseball;
+package baseball.dto;
+
+import baseball.model.Score;
 
 public class NumbersScoreDto {
     private int strike;
