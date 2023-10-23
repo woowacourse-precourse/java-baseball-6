@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballFunction {
-    public static List<Integer> genNum(){
+    public List<Integer> genNum(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,12 +17,21 @@ public class BaseballFunction {
         return computer;
     }
 
-    public static List<Integer> getNum(){
+    public List<Integer> getNum(){
         List<Integer> player = new ArrayList<>();
-        int input = Integer.parseInt(Console.readLine());
+        int input;
+
+        System.out.print("숫자를 입력해주세요 : ");
+
+        try {
+            input = Integer.parseInt(Console.readLine());
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
         if (input>=1000){
             throw new IllegalArgumentException();
         }
+
         player.add(input/100);
         player.add((input%100)/10);
         player.add(input%10);
@@ -30,7 +39,7 @@ public class BaseballFunction {
         return player;
     }
 
-    public static Score compare(List<Integer> computer, List<Integer> player){
+    public Score compare(List<Integer> computer, List<Integer> player){
         int strike = 0;
         int ball = 0;
 
@@ -44,7 +53,7 @@ public class BaseballFunction {
         return new Score(strike, ball);
     }
 
-    public static void printScore(Score score){
+    public void printScore(Score score){
         boolean isNotiong = score.strike == 0 & score.ball == 0;
         if (isNotiong){
             System.out.println("낫싱");
@@ -59,8 +68,5 @@ public class BaseballFunction {
             System.out.println(score.strike+"스트라이크");
             return;
         }
-    }
-    public static void main(String[] args) {
-        printScore(compare(genNum(),getNum()));
     }
 }
