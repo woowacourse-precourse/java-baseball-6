@@ -24,17 +24,29 @@ public class Computer {
         generateNumber();
 
         //게임 play
+        while (true) {
+
             //숫자를 입력해주세요 :
+            printer.printInputMent();
+
             //입력된 숫자 받기
+            String guessString = Console.readLine();
 
             // *잘못된 값 입력시 예외를 반환하고 종료하는 기능
+            List<Integer> guessNumber = checkInputFormat(guessString);
 
             // *입력한 숫자를 사용해 결과를 반환하는 기능
+            boolean isCorrect = checkGuess(guessNumber);
 
             // 3스트라이크인 경우 break
+            if (isCorrect) {
+                printer.printFinishMent();
+                break;
+            }
 
+        }
         //사용자로부터 재시작 숫자 받아서 리턴하기
-        return false;
+        return checkReplay();
     }
 
     //랜덤하게 숫자 생성하는 기능
