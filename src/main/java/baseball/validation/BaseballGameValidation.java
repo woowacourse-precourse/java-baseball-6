@@ -23,4 +23,8 @@ public class BaseballGameValidation {
         if (baseBallNumberStr.chars().distinct().count() != SIZE_COUNT)
             throw new IllegalArgumentException();
     }
+
+    public boolean checkDigit(char baseballChar){
+        return (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0);
+    }
 }

@@ -64,7 +64,7 @@ public class BaseballGameService {
         List<Integer> baseballNumbers = new ArrayList<>();
 
         for (char baseballChar : baseBallString.toCharArray())
-            if (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0)
+            if (baseballGameValidation.checkDigit(baseballChar))
                 baseballNumbers.add(Character.getNumericValue(baseballChar));
 
         return baseballNumbers;
