@@ -13,6 +13,14 @@ public class InputView {
         return new GameNumbers(Parser.stringToList(userInput));
     }
 
+    public int readRetryNumber() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = readLineWithoutGap();
+        validateRetryNumber(userInput);
+
+        return Integer.parseInt(userInput);
+    }
+
     private String readLineWithoutGap() {
         return Console.readLine().trim();
     }
@@ -21,6 +29,12 @@ public class InputView {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRetryNumber(String userInput) {
+        if (!userInput.equals("1") && !userInput.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
