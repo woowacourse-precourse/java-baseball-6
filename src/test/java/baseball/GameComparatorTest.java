@@ -1,13 +1,13 @@
 package baseball;
 
-import baseball.controller.Comparator;
+import baseball.controller.GameComparator;
 import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ComparatorTest {
+public class GameComparatorTest {
 
-    Comparator comparator = new Comparator();
+    GameComparator gameComparator = new GameComparator();
 
     ArrayList<Integer> computerNumber = new ArrayList<>();
     ArrayList<Integer> playerInput = new ArrayList<>();
@@ -21,7 +21,7 @@ public class ComparatorTest {
         playerInput.add(4);
         playerInput.add(5);
         playerInput.add(6);
-        Assertions.assertThat(comparator.isNothing(computerNumber, playerInput)).isEqualTo(true);
+        Assertions.assertThat(gameComparator.isNothing(computerNumber, playerInput)).isEqualTo(true);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class ComparatorTest {
         playerInput.add(1);
         playerInput.add(2);
         playerInput.add(3);
-        Assertions.assertThat(comparator.isEndGame(computerNumber, playerInput)).isEqualTo(true);
+        Assertions.assertThat(gameComparator.isEndGame(computerNumber, playerInput)).isEqualTo(true);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ComparatorTest {
         playerInput.add(3);
         playerInput.add(1);
         playerInput.add(5);
-        Assertions.assertThat(comparator.countBalls(computerNumber, playerInput)).isEqualTo(2);
+        Assertions.assertThat(gameComparator.countBalls(computerNumber, playerInput)).isEqualTo(2);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ComparatorTest {
         playerInput.add(1);
         playerInput.add(2);
         playerInput.add(5);
-        Assertions.assertThat(comparator.countStrikes(computerNumber, playerInput)).isEqualTo(2);
+        Assertions.assertThat(gameComparator.countStrikes(computerNumber, playerInput)).isEqualTo(2);
     }
 
 }

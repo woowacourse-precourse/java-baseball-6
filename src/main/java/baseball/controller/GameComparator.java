@@ -3,7 +3,7 @@ package baseball.controller;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Comparator {
+public class GameComparator {
 
     public boolean isNothing(ArrayList<Integer> computerNumber, ArrayList<Integer> playerInput) {
         HashSet<Integer> set = new HashSet<>(computerNumber);

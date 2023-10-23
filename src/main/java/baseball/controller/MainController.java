@@ -20,7 +20,7 @@ public class MainController {
     Validator validator = new Validator();
     RandomNumbersGenerator randomNumbersGenerator = new RandomNumbersGenerator();
     PlayerInputController playerInputController = new PlayerInputController(validator);
-    Comparator comparator = new Comparator();
+    GameComparator gameComparator = new GameComparator();
 
     public MainController() {
         state = INIT_CODE;
@@ -37,7 +37,7 @@ public class MainController {
     private void processInputAndCompare() {
         while (true) {
             processPlayerInput();
-            if (comparator.isEndGame(gameData.getComputerNumber(), gameData.getPlayerInput())) {
+            if (gameComparator.isEndGame(gameData.getComputerNumber(), gameData.getPlayerInput())) {
                 checkReplay();
                 return;
             }
@@ -64,13 +64,13 @@ public class MainController {
     }
 
     private void processComperater() {
-        boolean nothing = comparator.isNothing(gameData.getComputerNumber(), gameData.getPlayerInput());
+        boolean nothing = gameComparator.isNothing(gameData.getComputerNumber(), gameData.getPlayerInput());
         int ballCount = NO_COUNT;
         int strikeCount = NO_COUNT;
 
         if (!nothing) {
-            ballCount = comparator.countBalls(gameData.getComputerNumber(), gameData.getPlayerInput());
-            strikeCount = comparator.countStrikes(gameData.getComputerNumber(), gameData.getPlayerInput());
+            ballCount = gameComparator.countBalls(gameData.getComputerNumber(), gameData.getPlayerInput());
+            strikeCount = gameComparator.countStrikes(gameData.getComputerNumber(), gameData.getPlayerInput());
         }
 
         outputView.printHint(ballCount, strikeCount);
