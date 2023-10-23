@@ -39,6 +39,7 @@ public class GameExecutor {
             if("2".equals(input)){
                 break;
             }
+            game = new BaseballGame(getRandomNumbers());
         }
     }
 

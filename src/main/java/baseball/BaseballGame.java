@@ -19,6 +19,10 @@ public class BaseballGame {
         consoleLogger.print("숫자 야구 게임을 시작합니다.\n");
     }
 
+    public void sayBi(ConsoleLogger consoleLogger) {
+        consoleLogger.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+    }
+
     public void run(ConsoleInput consoleInput, ConsoleLogger consoleLogger) {
         while (true) {
             consoleLogger.print("숫자를 입력해주세요 :");
@@ -28,9 +32,9 @@ public class BaseballGame {
             if (numbers.equals(otherNumbers)) {
                 break;
             }
-            BaseballHint hint = numbers.getHintFrom(otherNumbers);
-
+            consoleLogger.print(numbers.getHintFrom(otherNumbers).toString());
         }
+        sayBi(consoleLogger);
     }
 
     private static void checkInputs(String s) {

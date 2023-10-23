@@ -9,13 +9,13 @@ public class BaseballNumber {
     private final int[] numbers;
 
     BaseballNumber(int[] numbers) {
-        this.numbers = numbers;
+        this.numbers = Arrays.copyOf(numbers, numbers.length);
         checkNumbers();
     }
 
     public static BaseballNumber ofString(String inputString) {
         int[] numbers = Arrays.stream(inputString
-                        .split(" "))
+                        .split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
         return new BaseballNumber(numbers);
@@ -39,7 +39,7 @@ public class BaseballNumber {
         }
         BaseballNumber otherNumber = (BaseballNumber) other;
 
-        return numbers.equals(otherNumber.getNumbers());
+        return Arrays.equals(numbers, otherNumber.getNumbers());
     }
 
     private void checkNumbers() {
