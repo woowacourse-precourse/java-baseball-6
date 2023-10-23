@@ -22,11 +22,6 @@ public class Computer {
                 }
             }
         }};
-        System.out.println("정답은 ");
-        for (int x : answerList) {
-            System.out.print(x);
-        }
-        System.out.println();
         answer = new NumberList(answerList);
     }
 

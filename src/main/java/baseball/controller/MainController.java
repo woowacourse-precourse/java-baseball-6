@@ -1,22 +1,18 @@
 package baseball.controller;
 
-import baseball.view.OutputView;
+import java.util.List;
 
 public class MainController {
-    private boolean isRunning = false;
-    BaseballGameController baseballGameController;
+    private List<GameController> gameControllerList;
 
-    public MainController(boolean isRunning) {
-        this.isRunning = isRunning;
+    private void init() {
+        gameControllerList.add(new BaseballGameController(true));
     }
 
-    public void startProgram() {
-        OutputView.printStartProgramMessage();
-        while (isRunning) {
-            baseballGameController = new BaseballGameController();
-            baseballGameController.startGame();
-
-            isRunning = baseballGameController.whetherRestart();
+    public void start() {
+        init();
+        for (GameController gameController : gameControllerList) {
+            gameController.start();
         }
     }
 }

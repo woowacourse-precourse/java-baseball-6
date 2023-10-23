@@ -3,7 +3,7 @@ package baseball.view;
 import baseball.model.Hint;
 
 public class OutputView {
-    public static void printStartProgramMessage() {
+    public static void printStartGameMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 

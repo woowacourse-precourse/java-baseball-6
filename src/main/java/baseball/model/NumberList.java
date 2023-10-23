@@ -11,9 +11,18 @@ public class NumberList {
 
     public NumberList(List<Integer> numberList) {
         Validator.validateSize(numberList, 3);
-        validateRepeatedNumber(numberList);
         validateIsInRange(numberList);
+        validateRepeatedNumber(numberList);
         this.numberList = numberList;
+    }
+
+    public NumberList(String numberString) {
+        this.numberList = new ArrayList<>() {{
+            for (int i = 0; i < numberString.length(); i++) {
+                int number = numberString.charAt(i) - '0';
+                add(number);
+            }
+        }};
     }
 
     public int size() {
@@ -22,16 +31,6 @@ public class NumberList {
 
     public Integer get(int index) {
         return numberList.get(index);
-    }
-
-    public static NumberList stringToNumberList(String numberString) {
-        List<Integer> numberList = new ArrayList<>() {{
-            for (int i = 0; i < numberString.length(); i++) {
-                int number = numberString.charAt(i) - '0';
-                add(number);
-            }
-        }};
-        return new NumberList(numberList);
     }
 
     private void validateRepeatedNumber(List<Integer> numberList) {

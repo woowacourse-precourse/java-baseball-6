@@ -19,7 +19,7 @@ public class myTest extends NsTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        OutputView.printStartProgramMessage();
+        OutputView.printStartGameMessage();
         assertThat(outContent.toString()).contains("숫자 야구 게임을 시작합니다.");
         System.setOut(standardOut);
     }
