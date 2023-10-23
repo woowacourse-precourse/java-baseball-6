@@ -8,16 +8,20 @@ class TargetNumber {
     private TargetNumber() {
         number = this.getRandomNumber();
     }
+
     private TargetNumber(int a, int b, int c) {
         this.number[0] = a;
         this.number[1] = b;
         this.number[2] = c;
     }
+
     /*
     TargetNumber 객체를 생성하는 정적 팩토리 메서드.
      */
     public static TargetNumber generate(int a, int b, int c) {
-        if (isValidNumber(a) && isValidNumber(b) && isValidNumber(c)) return new TargetNumber(a, b, c);
+        if (isValidNumber(a) && isValidNumber(b) && isValidNumber(c)) {
+            return new TargetNumber(a, b, c);
+        }
         return new TargetNumber();
     }
 
@@ -31,11 +35,15 @@ class TargetNumber {
     public boolean[] has(int num, int idx) {
         boolean[] check = new boolean[2];
 
-        if (!isValidNumber(num) || !isValidIndex(idx)) return check;
+        if (!isValidNumber(num) || !isValidIndex(idx)) {
+            return check;
+        }
 
         for (int i = 0; i < 3; i++) {
             if (number[i] == num) {
-                if (i == idx) check[1] = true;
+                if (i == idx) {
+                    check[1] = true;
+                }
                 check[0] = true;
                 break;
             }
@@ -48,7 +56,9 @@ class TargetNumber {
         int[] answer = new int[3];
         for (int i = 0; i < 3; i++) {
             int value = Randoms.pickNumberInRange(1, 9);
-            while (duplicationCheck[value]) value = Randoms.pickNumberInRange(1, 9);
+            while (duplicationCheck[value]) {
+                value = Randoms.pickNumberInRange(1, 9);
+            }
             duplicationCheck[value] = true;
             answer[i] = value;
         }

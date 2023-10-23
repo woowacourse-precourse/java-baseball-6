@@ -18,8 +18,12 @@ public class Referee {
         int[] judgment = new int[2];
         for (int i = 0; i < 3; i++) {
             boolean[] check = targetNumber.has(numbers[i], i);
-            if (check[0]) judgment[0]++;
-            if (check[1]) judgment[1]++;
+            if (check[0]) {
+                judgment[0]++;
+            }
+            if (check[1]) {
+                judgment[1]++;
+            }
         }
 
         declare(judgment);

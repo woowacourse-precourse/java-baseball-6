@@ -15,7 +15,7 @@ class TargetNumberTest {
 
         boolean[] isUsed = new boolean[10];
         int count = 0;
-        for (int i:randomNumbers) {
+        for (int i : randomNumbers) {
             if (!isUsed[i]) {
                 count++;
                 isUsed[i] = true;
