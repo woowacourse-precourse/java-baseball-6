@@ -45,7 +45,7 @@ public class NumberBaseballGame {
             speaker(REQUEST_NUMBER_MESSAGE);
 
             String userLine = userInput.getUserInput();
-            List<Integer> userNumbers = inputValidation.validateAnsConvertUserNumbers(userLine);
+            List<Integer> userNumbers = inputValidation.validateAndConvertUserNumbers(userLine);
             List<Integer> answer = answerMaker.getAnswer();
             List<Integer> ballAndStrikeCount = computer.countScore(answer, userNumbers);
             int strikeCount = ballAndStrikeCount.get(1);

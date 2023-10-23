@@ -19,7 +19,7 @@ class InputValidationTest {
         //given
         String input = "3 69";
         //when
-        List<Integer> result = inputValidation.validateAnsConvertUserNumbers(input);
+        List<Integer> result = inputValidation.validateAndConvertUserNumbers(input);
         //then
         assertThat(result).isEqualTo(List.of(3, 6, 9));
     }
@@ -31,10 +31,10 @@ class InputValidationTest {
         //given
 
         //when
-        List<Integer> result = inputValidation.validateAnsConvertUserNumbers(input);
+        List<Integer> result = inputValidation.validateAndConvertUserNumbers(input);
         //then
 //        System.out.println(input);
-        assertThatThrownBy(() -> inputValidation.validateAnsConvertUserNumbers(input))
+        assertThatThrownBy(() -> inputValidation.validateAndConvertUserNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

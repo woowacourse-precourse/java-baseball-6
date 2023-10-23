@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class InputValidation {
 
-    public List<Integer> validateAnsConvertUserNumbers(String input) throws IllegalArgumentException {
+    public List<Integer> validateAndConvertUserNumbers(String input) throws IllegalArgumentException {
         String trimmed = deleteSpace(input);
 
         validateLength(trimmed);
