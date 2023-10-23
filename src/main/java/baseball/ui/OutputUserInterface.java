@@ -2,5 +2,5 @@ package baseball.ui;
 
 public interface OutputUserInterface {
 
-    void print(String s);
+    void print(String output);
 }
