@@ -13,14 +13,14 @@ public class GameService {
         List<Integer> input;
 
         do {
-            printInput();
+            printInputForm();
             input = readInputNumber(NUMBER_SET_SIZE);
         } while (!checkResult(answer, input, NUMBER_SET_SIZE, CORRECT_STRIKE_NUM));
 
         printCorrectAnswer();
     }
 
-    private static boolean checkResult(List<Integer> answer, List<Integer> input, int size, int correct) {
+    private static boolean checkResult(List<Integer> answer, List<Integer> input, int size, int correctStrike) {
         int ball = 0;
         int strike = 0;
 
@@ -33,9 +33,9 @@ public class GameService {
             }
         }
 
-        printAnswerCheckResult(ball, strike);
+        printCheckResult(ball, strike);
 
-        return strike == correct;
+        return strike == correctStrike;
     }
 
     public static boolean isRestart() {

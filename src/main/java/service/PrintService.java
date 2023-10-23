@@ -7,11 +7,11 @@ public class PrintService {
          System.out.println(START_APPLICATION_MESSAGE);
      }
 
-     public static void printInput() {
-         System.out.print(INPUT_MESSAGE);
+     public static void printInputForm() {
+         System.out.print(INPUT_FORM_MESSAGE);
      }
 
-     public static void printAnswerCheckResult(int ball, int strike) {
+     public static void printCheckResult(int ball, int strike) {
          if (ball == 0 && strike == 0)
              System.out.print(NOTHING_STRING);
 
