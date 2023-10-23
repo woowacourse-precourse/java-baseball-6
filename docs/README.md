@@ -4,7 +4,7 @@
 
 ## View
 
-### 사용자에게 입력 받아야 하는 경우(InputView)
+### 사용자에게 입력 받아야 하는 화면(InputView)
 - [ ] 3자리 수를 입력(숫자를 입력해주세요)
     - [ ] 예외처리 상황(IllegalArgumentException 발생 후 종료)
         - [ ] 숫자가 아닌 경우
@@ -21,7 +21,7 @@
 - [ ] 힌트 여부 문구 출력(볼, 스트라이크 여부)
 - [ ] 정답 문구 출력
 
-## Controller
+## Controller(View와 Model를 연결하는 역할)
 - [ ] OutputView로 시작 문구 출력하기
 - [ ] InputView을 통해 3자리 숫자 입력받기
 - [ ] Model의 힌트 관련 로직 처리하기
