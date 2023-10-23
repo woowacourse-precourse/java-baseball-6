@@ -13,7 +13,7 @@ public class Validation {
 
     // 올바른 사이즈인지 확인합니다.
     private void validateSize(char[] target, int inputType) {
-        if (target.length == inputType) {
+        if (target.length != inputType) {
             throw new IllegalArgumentException(inputType + "개의 숫자를 입력해야 합니다.");
         }
     }
@@ -32,7 +32,6 @@ public class Validation {
         if (inputType == 1) {
             return;
         }
-
         HashMap<Character, Integer> hashMap = new HashMap<>();
         for (char chr : target) {
             hashMap.put(chr, 0);
@@ -47,7 +46,6 @@ public class Validation {
         if (inputType == 3) {
             return;
         }
-
         if (!(target[0] == ('1')) && !(target[0] == ('2'))) {
             throw new IllegalArgumentException("1, 2 중 하나를 입력해야 합니다.");
         }
