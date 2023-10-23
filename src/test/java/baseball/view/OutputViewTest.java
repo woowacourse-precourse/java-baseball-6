@@ -26,7 +26,7 @@ class OutputViewTest {
 
     @DisplayName("1볼 1스트라이크")
     @Test
-    void printBallAndStrike() {
+    void print_BallAndStrike() {
         // given
         GameResult gameResult = new GameResult(1, 1);
 
@@ -40,7 +40,7 @@ class OutputViewTest {
 
     @DisplayName("2볼")
     @Test
-    void printBall() {
+    void print_Ball() {
         // given
         GameResult gameResult = new GameResult(2, 0);
 
@@ -54,7 +54,7 @@ class OutputViewTest {
 
     @DisplayName("1스트라이크")
     @Test
-    void printStrike() {
+    void print_Strike() {
         // given
         GameResult gameResult = new GameResult(0, 1);
 
@@ -68,7 +68,7 @@ class OutputViewTest {
 
     @DisplayName("낫싱")
     @Test
-    void printNothing() {
+    void print_Nothing() {
         // given
         GameResult gameResult = new GameResult(0, 0);
 
