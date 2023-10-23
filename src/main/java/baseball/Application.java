@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,20 +15,24 @@ public class Application {
         String reGame = "1";
         String stop = "2";
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(reGame.equals("1")){
-            baseball();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String reStart = Console.readLine();
-            if(reStart.equals(stop)){
-                break;
+        try {
+            while (reGame.equals("1")) {
+                baseball();
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String reStart = Console.readLine();
+                if (reStart.equals(stop)) {
+                    break;
+                }
             }
+        } catch (IllegalArgumentException e){
+            System.out.println("잘못 입력하셨습니다. 게임이 종료 됩니다.");
         }
 
 
 
     }
 
-    private static void baseball() {
+    private static void baseball() throws IllegalArgumentException {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -34,7 +40,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
         int strike = 0;
         int ball = 0;
         boolean nothing = false;
@@ -42,9 +47,23 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
             String playerInput = Console.readLine();
+            if(playerInput.length() != 3){
+                throw new IllegalArgumentException();
+            }
             int[] playerNumber = new int[3];
+
             for (int i = 0; i < 3; i++) {
-                playerNumber[i] = playerInput.charAt(i) - '0';
+                playerNumber[i] = playerInput.charAt(i)-'0';
+                int checkInteger = playerNumber[i];
+                if(checkInteger == 0  || checkInteger > 9){
+                    throw new IllegalArgumentException();
+                }
+            }
+            int[] checkDuplication = Arrays.stream(playerNumber)
+                    .distinct()
+                    .toArray();
+            if(checkDuplication.length != playerNumber.length){
+                throw  new IllegalArgumentException();
             }
 
 
