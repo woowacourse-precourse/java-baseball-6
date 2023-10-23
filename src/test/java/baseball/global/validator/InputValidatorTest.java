@@ -14,7 +14,7 @@ class InputValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"12a", "1a2", "a12"})
+    @ValueSource(strings = {"12a", "1a2", "a12", "테스트"})
     @DisplayName("숫자 이외의 값 입력에 대한 예외 처리 테스트")
     void validateInputNumericTest(String playerInput) {
         assertThrows(IllegalArgumentException.class,
@@ -35,5 +35,13 @@ class InputValidatorTest {
     void validateInputDistinctTest(String playerInput) {
         assertThrows(IllegalArgumentException.class,
                 () -> validator.validateBaseballNumberInput(playerInput),"숫자를 중복하여 입력할 수 없습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "7", "11", "333", "test", "테스트"})
+    @DisplayName("GameCode 클래스가 관리하는 코드 이외의 값 입력에 대한 예외 처리 테스트")
+    void validateIsExistGameCodeTest(String playerInput) {
+        assertThrows(IllegalArgumentException.class,
+                () -> validator.validateBaseballNumberInput(playerInput),"정의되지 않은 입력값입니다.");
     }
 }
