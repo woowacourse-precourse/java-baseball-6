@@ -11,16 +11,11 @@ public class NumbersComparator {
         strikeCount(computerNumbers, playerNumbers);
         ballCount(computerNumbers, playerNumbers);
         ballExceptStrike();
-
         return new int[]{ball, strike};
     }
 
     public boolean isCorrect() {
-        if (strike == 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return strike == 3;
     }
 
     private void resetCount() {
