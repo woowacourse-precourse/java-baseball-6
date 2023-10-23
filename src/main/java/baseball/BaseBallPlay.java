@@ -1,9 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
-
 public class BaseBallPlay {
     private final String ENTER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static Strike strike;
@@ -53,27 +49,6 @@ public class BaseBallPlay {
     }
 
     public void createUserNums() {
-        List<String> user_str_list = List.of(Console.readLine().split(""));
-        int num = 0;
-        if (user_str_list.size() > 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
-        }
-        List<Integer> user_int_list = new ArrayList<>();
-        for (String str : user_str_list) {
-            if (str.equals("0")) {
-                throw new IllegalArgumentException("1 ~ 9 값을 입력해주세요");
-            }
-            try {
-                num = Integer.parseInt(str);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("숫자만 입력해주세요.");
-            }
-            if (user_int_list.contains(num)) {
-                throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해주세요.");
-            } else {
-                user_int_list.add(num);
-            }
-        }
-        userNums = new UserNums(user_int_list);
+        userNums = new UserNums();
     }
 }
