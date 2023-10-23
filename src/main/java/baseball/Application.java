@@ -40,10 +40,10 @@ public class Application {
         // get numbers from user input
         System.out.print("숫자를 입력해주세요 : ");
 
-        StringTokenizer st = new StringTokenizer(readLine(), " ");
+        String input = readLine();
         List<Integer> inputNumbers = new ArrayList<>();
-        while (st.hasMoreTokens()) {
-            inputNumbers.add(Integer.parseInt(st.nextToken()));
+        for (int index=0; index<3; index++){
+             inputNumbers.add(Integer.parseInt(input.substring(index, index+1)));
         }
         return inputNumbers;
     }
