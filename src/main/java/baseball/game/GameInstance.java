@@ -26,8 +26,11 @@ public class GameInstance {
     private int ballCnt = 0;
 
     public void game() {
-        startGame();
-        // restartGame();
+        while(true) {
+            if(destroy) break;
+            startGame();
+            restartGame();
+        }
     }
 
     public void startGame() {
@@ -45,7 +48,6 @@ public class GameInstance {
     public void printResult() {
         StringBuilder sb = new StringBuilder();
 
-
         if (ballCnt == 0 && strikeCnt == 0) sb.append("낫싱");
         if (ballCnt > 0) sb.append(ballCnt).append("볼 ");
         if (strikeCnt > 0) sb.append(strikeCnt).append("스트라이크 ");
@@ -58,8 +60,9 @@ public class GameInstance {
     public void calculateStrikeBall() {
         List<Integer> userNumber = userPlayer.getUserNumber();
         List<Integer> computerNumber = computerPlayer.getComputerNumber();
-        int strike = 0;
-        int ball = 0;
+
+        int strike = 0, ball = 0;
+
         for(int idx = 0; idx < numDigit; idx++) {
             if(userNumber.get(idx).equals(computerNumber.get(idx)))  strike++;
             else if(computerNumber.contains(userNumber.get(idx))) ball++;
@@ -72,16 +75,17 @@ public class GameInstance {
     private static final String RESTART_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private int mode = 0;
-//    public void restartGame() {
-//        System.out.println(RESTART_GAME_MESSAGE);
-//        mode = Integer.parseInt(Console.readLine());
-//        Console.close();
-//        if(mode == 1) startGame();
-//    }
+    private boolean destroy = false;
+    public void restartGame() {
+        System.out.println(RESTART_GAME_MESSAGE);
+        mode = Integer.parseInt(Console.readLine());
+        if(mode == 2) destroy = true;
+    }
 
     public void initGame() {
         computerPlayer.pickNumber();
         strikeCnt = 0;
         ballCnt = 0;
+        destroy = false;
     }
 }
