@@ -58,4 +58,12 @@ public class Validator {
             }
         }
     }
+
+    public void validateRestartOrExitNumber(String input) {
+        int choice = Integer.parseInt(input);
+
+        if (choice != RESTART_NUM || choice != EXIT_NUM) {
+            throw new IllegalArgumentException(INVALID_CHOICE_EXCEPTION_MSG);
+        }
+    }
 }
