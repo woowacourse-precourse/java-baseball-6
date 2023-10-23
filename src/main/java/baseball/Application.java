@@ -27,7 +27,18 @@ public class Application {
         while (strike != 3) {
             List<Integer> user = getUserNumber();
             ball = countBall(computer, user);
+            strike = countStrike(computer, user);
         }
+    }
+
+    private static int countStrike(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.get(i) == user.get(i)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private static int countBall(List<Integer> computer, List<Integer> user) {
