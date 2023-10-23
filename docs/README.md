@@ -23,7 +23,7 @@
 - GameResult
 - RestartGame
 - Application
----
+
 ## Computer
 #### 컴퓨터 숫자 Random 값 생성
 > #### randomNumber()
