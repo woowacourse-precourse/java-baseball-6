@@ -21,7 +21,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트1() {
+    void 입력_4자리이상_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -29,28 +29,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
+    void 숫자1부터9확인_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("101"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
-    void 예외_테스트3() {
+    void 숫자확인_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("asd"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
-    void 예외_테스트4() {
+    void 긴문자열_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("21oen21nkn2edqwdqw0dqwh09hwq0dhwqdhwq0diqwcoqshcasnckjasnkcasasnkcsanckaskcnajsnkasnckasjjkn3"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
-    void 엔터_입력_테스트() {
+    void 엔터입력_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("\n"))
                         .isInstanceOf(IllegalArgumentException.class)
