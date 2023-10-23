@@ -82,8 +82,13 @@ Ball
 
 - createRandomBall
 - isCorrectBall
-- getHint
+- makeHint
 - getCurrentHint
+
+Hint
+
+- isStrike
+- toString
 
 View
 
