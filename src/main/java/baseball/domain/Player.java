@@ -20,6 +20,7 @@ public class Player {
     private void validate(String input) {
         validateSize(input);
         validateDuplicate(input);
+        validateZeroContain(input);
     }
 
     private void validateSize(String input) {
@@ -35,13 +36,23 @@ public class Player {
         }
     }
 
+    private void validateZeroContain(String input) {
+        String replace = input.replace("0", "");
+        if (replace.length() != input.length()) {
+            throw new IllegalArgumentException(ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN);
+        }
+    }
+
     private List<Integer> toNumbers(String input) {
         return Arrays.stream(input.split(""))
                 .map(IntegerConvertor::toInteger)
                 .toList();
     }
 
-    public Integer getNumber(int idx) {
+    public int getNumber(int idx) {
+        if (idx >= NUMBER_SIZE) {
+            throw new IllegalArgumentException(ErrorMessages.INDEX_OUT_OF_RANGE);
+        }
         return this.numbers.get(idx);
     }
 }
