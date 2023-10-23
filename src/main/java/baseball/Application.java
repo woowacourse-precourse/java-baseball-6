@@ -5,13 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         List<Integer> computerNumbers = generateNumber();
 
         int[] result = playGameWithGetGuessNumber(computerNumbers);
@@ -60,8 +60,10 @@ public class Application {
             }
             if (result[0] > 0 && result[1] == 0) {
                 System.out.println(result[0] + "볼");
-            } else if (result[0] == 0 && result[1] > 1) {
+            } else if (result[0] == 0 && result[1] > 0) {
                 System.out.println(result[1] + "스트라이크");
+            } else if (result[0] > 0 && result[1] > 0) {
+                System.out.println(result[0] + "볼" + result[1] + "스트라이크");
             } else {
                 System.out.println("낫싱");
             }
