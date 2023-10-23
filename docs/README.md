@@ -56,9 +56,9 @@
 
 [x] 결과 출력 - Communicator
 
-[] 게임 종료 후 메뉴 출력 - Communicator
+[x] 게임 종료 후 메뉴 출력 - Communicator
 
-[] 시스템 종료 - Application
+[x] 시스템 종료 - MenuHandler
 
 [] 예외 처리
 
