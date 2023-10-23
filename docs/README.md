@@ -130,10 +130,15 @@
 ---
 
 - [ &nbsp; ]  게임 정상 종료 기능
-- [ &nbsp; ]  게임 비정상 종료 기능
+- [ V ]  게임 비정상 종료 기능
     - 사용자가 잘못된 값을 입력하는 경우에 해당
-        
-        → `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
+        - 숫자 야구 진행 간 `Console.readLine();` 에서 숫자 외 입력 시
+        - 숫자 야구 진행 간 `Console.readLine();` 에서 사용자 숫자 3개 입력이 아닐 시
+        - 숫자 야구 진행 간 `Console.readLine();` 에서 중복된 입력 시
+        - 게임 종료 `endPhrase()` 후, 입력 시 1, 2 이외의 입력 시
+        - 숫자 야구 진행 간 `Console.readLine();` 에서 숫자 `0` 입력 시
+    
+      → `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
         
 
 ---
