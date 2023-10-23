@@ -26,9 +26,8 @@
 
 ## 구현 기능 목록
 
-- [ ] num 객체 - int 변수 3개
-- [ ] user 객체 - num, inputNum()
-- [ ] computer 객체 - num, initNum()
+- [ ] num - int 변수 3개,
+    - [ ] compareNum()
 - [ ] baseballGameService
     - [ ] initNum() : user, computer num 생성
     - [ ] compareNum() : user, computer num 비교
