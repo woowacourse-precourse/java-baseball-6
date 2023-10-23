@@ -40,12 +40,12 @@ public class Game {
         }
     }
 
-    private static boolean isBall(List<BaseballNumber> computerBasballNumberList, BaseballNumber userNumber, int userNumberIdx) {
-        return computerBasballNumberList.contains(userNumber) && computerBasballNumberList.indexOf(userNumber) != userNumberIdx;
+    private static boolean isBall(List<BaseballNumber> computerBaseballNumberList, BaseballNumber userNumber, int userNumberIdx) {
+        return computerBaseballNumberList.contains(userNumber) && computerBaseballNumberList.indexOf(userNumber) != userNumberIdx;
     }
 
-    private static boolean isStrike(List<BaseballNumber> computerBasballNumberList, BaseballNumber userNumber, int userNumberIdx) {
-        return computerBasballNumberList.contains(userNumber) && computerBasballNumberList.indexOf(userNumber) == userNumberIdx;
+    private static boolean isStrike(List<BaseballNumber> computerBaseballNumberList, BaseballNumber userNumber, int userNumberIdx) {
+        return computerBaseballNumberList.contains(userNumber) && computerBaseballNumberList.indexOf(userNumber) == userNumberIdx;
     }
 
     public boolean isGameOver() {
