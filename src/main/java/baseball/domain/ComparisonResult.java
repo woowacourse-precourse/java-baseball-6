@@ -1,18 +1,18 @@
 package baseball.domain;
 
-public class CompareValue {
+public class ComparisonResult {
 
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NOTHING_MESSAGE = "낫싱";
 
-    private final String message;
+    private final String ResultMessage;
     private int strikeCount;
     private int ballCount;
 
-    public CompareValue(PlayerNumber player, ComputerNumber computer) {
+    public ComparisonResult(PlayerNumber player, ComputerNumber computer) {
         compare(player, computer);
-        message = makeCompareMessage();
+        ResultMessage = makeCompareMessage();
     }
 
 
@@ -31,15 +31,15 @@ public class CompareValue {
 
     private String makeCompareMessage() {
         if (ballCount == 0 && strikeCount == 0) {
-            return NOTHING;
+            return NOTHING_MESSAGE;
         }
 
         String makeMessage = "";
         if (0 < ballCount) {
-            makeMessage += (ballCount + BALL + " ");
+            makeMessage += (ballCount + BALL_MESSAGE + " ");
         }
         if (0 < strikeCount) {
-            makeMessage += (strikeCount + STRIKE);
+            makeMessage += (strikeCount + STRIKE_MESSAGE);
         }
 
         return makeMessage;
@@ -49,7 +49,7 @@ public class CompareValue {
         return strikeCount == 3;
     }
 
-    public String getMessage() {
-        return message;
+    public String getResultMessage() {
+        return ResultMessage;
     }
 }
