@@ -7,24 +7,31 @@ import baseball.service.ComputerService;
 import baseball.service.MessageService;
 import baseball.service.PlayerService;
 import baseball.validator.BaseballValidator;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballController {
 
     private final ComputerService computerService;
     private final PlayerService playerService;
     private final MessageService messageService;
+    private final BaseballValidator baseballValidator;
 
     public BaseballController() {
-        BaseballValidator baseballValidator = new BaseballValidator();
-        this.messageService = new MessageService();
+        this.baseballValidator = new BaseballValidator();
         this.computerService = new ComputerService(baseballValidator);
-        this.playerService = new PlayerService(baseballValidator);
+        this.playerService = new PlayerService();
+        this.messageService = new MessageService();
     }
 
     public void start() {
         do {
             playGame(initializeComputer());
-        } while (playerService.askToContinue());
+        } while (askToContinue());
+    }
+
+    public boolean askToContinue() {
+        String optionNumber = Console.readLine();
+        return playerService.selectOption(optionNumber);
     }
 
     private void playGame(Computer computer) {
@@ -33,14 +40,20 @@ public class BaseballController {
         while (strikes != BASEBALL_THREE_STRIKES) {
             messageService.inputPlayerNumber();
 
-            String playerBaseballNumber = playerService.receiveBaseballNumber();
-            balls = computer.countBalls(playerBaseballNumber);
-            strikes = computer.countStrikes(playerBaseballNumber);
+            String baseballNumber = receiveBaseballNumber();
+            balls = computer.countBalls(baseballNumber);
+            strikes = computer.countStrikes(baseballNumber);
 
             messageService.printGameResult(balls, strikes);
         }
 
         messageService.announceThreeStrikes();
+    }
+
+    private String receiveBaseballNumber() {
+        String baseballNumber = Console.readLine();
+        baseballValidator.validate(baseballNumber);
+        return baseballNumber;
     }
 
     private Computer initializeComputer() {
