@@ -12,15 +12,24 @@
         - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
     - 사용 예시
 
-
+```
+List<Integer> computer = new ArrayList<>();
+while (computer.size() < 3) {
+    int randomNumber = Randoms.pickNumberInRange(1, 9);
+    if (!computer.contains(randomNumber)) {
+        computer.add(randomNumber);
+    }
+}
+```
 - 게임 시작마다 새로 숫자 선택
-
 ---
 
 ### 🃏 게임 진행자 기능
 
 - 게임 시작 문구 출력 : `startGame()`
-
+```
+숫자 야구 게임을 시작합니다.
+```
 
 - 게임 진행 : `playGame()`
     - 숫자 판단
@@ -33,7 +42,9 @@
 ### 👨‍💻 사용자 기능
 
 - 숫자 입력 : `insertNum()`
-
+```
+숫자를 입력해주세요 : 123
+```
 
     - 게임 진행자 - 게임 진행
     - 정답 맞출 때까지 반복해서 입력
