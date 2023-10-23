@@ -9,6 +9,8 @@ https://st-lab.tistory.com/92
 -- 변수 숫자가 아니어도 오류 // 미완성
 -- tochararray 변환해서 length 3자리 이상일경우 IllegalArgumentException
 https://cheershennah.tistory.com/147
+
+https://www.freecodecamp.org/korean/news/java-string-to-int-how-to-convert-a-string-to-an-integer/
 완료
 -- asdf넣으면 입력오류 // 미완성
 2. 3자리의 수가 서로 다른 수인지 확인하는 객체 1==2? 2==3? 1==3? 
@@ -23,8 +25,10 @@ https://webclub.tistory.com/166
 5. 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수를 입력 객체
 -- 변수 오류일경우 IllegalArgumentException
 
-https://geojun.tistory.com/36 흠 중복값 제거하는 방법
+https://geojun.tistory.com/36 흠 중복값 set으로 제거하는 방법
+https://tosuccess.tistory.com/145 중복값 set으로 제거하는 방법2
 https://e-you.tistory.com/214 랜덤시드
+https://velog.io/@mquat/git-git%EA%B3%BC-github-wrap-up git 사용법
 
 🚀 기능 요구 사항
 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
@@ -49,6 +53,16 @@ Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다.
 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다. 테스트가 실패할 경우 0점 처리한다.
 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 
+라이브러리
+camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
+Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+https://velog.io/@im_chaedong/Intellij-%EC%97%90%EC%84%9C-java.lang-%EA%B0%99%EC%9D%80-%EA%B8%B0%EB%B3%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B3%B4%EB%8A%94-%EB%B0%A9%EB%B2%95
+라이브러리 확인방법
+https://mainia.tistory.com/2323
+리스트!
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=heartflow89&logNo=220964832916
+final뜻
 
 ✏️ 과제 진행 요구 사항
 미션은 java-baseball-6 저장소를 Fork & Clone해 시작한다.
