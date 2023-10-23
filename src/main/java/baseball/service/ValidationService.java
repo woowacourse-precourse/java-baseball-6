@@ -26,7 +26,7 @@ public class ValidationService {
         }
     }
 
-    private void hasUniqueDigits(String str) {
+    public void hasUniqueDigits(String str) {
         char[] digits = str.toCharArray();
         Set<Character> uniqueSet = new HashSet<>();
 

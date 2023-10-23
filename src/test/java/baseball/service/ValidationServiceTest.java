@@ -34,4 +34,16 @@ class ValidationServiceTest {
         assertDoesNotThrow(() -> validationService.hasNoZero(validString));
     }
 
+    @DisplayName("중복된 숫자가 있을 때 에러를 반환하는가?")
+    @Test
+    public void testErrorReturnedWhenDuplicateNumbersPresent() {
+        //given
+        ValidationService validationService = new ValidationService();
+        //when
+        String invalidString = "112";
+        String validString = "123";
+        //then
+        assertThrows(IllegalArgumentException.class, () -> validationService.hasUniqueDigits(invalidString));
+        assertDoesNotThrow(() -> validationService.hasUniqueDigits(validString));
+    }
 }
