@@ -34,7 +34,7 @@ public class Game {
     }
 
     private void playRound(String computerNumberString) {
-        Result result = new Result(0, 0);
+        Result result = new Result(COUNT_ZERO, COUNT_ZERO);
         while (result.strikeCount != GAME_END_CONDITION) {
             result = makeResultCount(userInput.readNumberString(), computerNumberString);
             displayResult(result);
