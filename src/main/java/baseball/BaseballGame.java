@@ -1,6 +1,11 @@
 package baseball;
 
-import static baseball.PlayerView.*;
+import static baseball.Constant.END_MESSAGE;
+import static baseball.Constant.EXIT;
+import static baseball.Constant.INPUT_NUMBERS_MESSAGE;
+import static baseball.Constant.INPUT_RETRY_MESSAGE;
+import static baseball.Constant.RETRY;
+import static baseball.Constant.START_MESSAGE;
 
 import java.util.Objects;
 
@@ -33,12 +38,12 @@ public class BaseballGame {
     private boolean isRetry() {
         String playerChoice = playerView.input();
         validateRetryExit(playerChoice);
-        return playerChoice.equals(RETRY_NUMBER);
+        return playerChoice.equals(RETRY);
     }
 
     private void validateRetryExit(String playerChoice) {
-        if (!Objects.equals(playerChoice, RETRY_NUMBER) &&
-                !Objects.equals(playerChoice, EXIT_NUMBER)) {
+        if (!Objects.equals(playerChoice, RETRY) &&
+                !Objects.equals(playerChoice, EXIT)) {
             throw new IllegalArgumentException("1, 2만 입력할 수 있습니다.");
         }
     }

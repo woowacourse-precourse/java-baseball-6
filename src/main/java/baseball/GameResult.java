@@ -1,6 +1,8 @@
 package baseball;
 
-import static baseball.PlayerView.*;
+import static baseball.Constant.BALL;
+import static baseball.Constant.NOTHING;
+import static baseball.Constant.STRIKE;
 
 public class GameResult {
     private int ballCount;
