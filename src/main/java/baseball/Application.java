@@ -13,9 +13,10 @@ public class Application {
 
         boolean startGame = true;
         while (startGame) {
-            String computerNumberStr = makeComputerNumber();
-            playGame(computerNumberStr);
+            String computerNumberStr = makeComputerNumber(); // 정답으로 사용할 서로 다른 3자리 수 생성
+            playGame(computerNumberStr); // 입력값이 정답과 일치할 때까지 게임 진행
 
+            // 정답을 입력한 경우 게임 재시작 or 종료를 선택
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String userDecision = readLine();
             if (userDecision.equals("2")) {
@@ -28,6 +29,7 @@ public class Application {
         }
     }
 
+    // 서로 다른 3자리 수를 생성하고 문자열 형태로 반환
     public static String makeComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -40,35 +42,36 @@ public class Application {
         return Integer.toString(computerNumber);
     }
 
+    // 입력값이 정답(computerNumberStr)과 같을 때까지 (입력 - 정답과 비교 - 결과 출력)을 반복
     public static void playGame(String computerNumberStr) {
-        // (숫자 입력 --> 정답과 비교 --> 결과 출력) 반복
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userNumberStr = readLine();
 
-            // 3개 숫자 모두 같으면 바로 종료
+            // 입력값이 정답과 같으면 반복 종료
             if (userNumberStr.equals(computerNumberStr)) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
-            checkInputError(userNumberStr);
-            compareNumber(computerNumberStr, userNumberStr);
+            checkInputError(userNumberStr); // 입력값이 서로 다른 3자리 수인지 확인
+            compareNumber(computerNumberStr, userNumberStr); // 정답과 입력값을 비교한 결과 출력
         }
     }
 
+    // 입력값(userNumberStr)이 서로 다른 3자리의 숫자가 아닐 경우 IllegalArgumentException 발생
     public static void checkInputError(String userNumberStr) {
-        // 숫자가 아닐 때 입력 오류 발생
+        // 숫자가 아닐 때
         try {
             Integer.parseInt(userNumberStr);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-        // 3자리가 아닐때 입력 오류 발생
+        // 3자리가 아닐때
         if (userNumberStr.length() != 3) {
             throw new IllegalArgumentException();
         }
-        // 같은 숫자가 있을 때 입력 오류 발생
+        // 같은 숫자가 있을 때
         char digit1 = userNumberStr.charAt(0);
         char digit2 = userNumberStr.charAt(1);
         char digit3 = userNumberStr.charAt(2);
@@ -77,14 +80,14 @@ public class Application {
         }
     }
 
+    // 정답(computerNumberStr)과 입력값(userNumberStr)을 비교한 결과를 출력
     public static void compareNumber(String computerNumberStr, String userNumberStr) {
-        // 입력값과 정답을 비교하고 결과에 따라 스트라이크, 볼 개수 세기
+        // 입력값과 정답을 한 자리씩 비교하고 결과에 따라 스트라이크, 볼 개수 세기
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < computerNumberStr.length(); i++) {
             char computerDigit = computerNumberStr.charAt(i);
             char userDigit = userNumberStr.charAt(i);
-
             if (userDigit == computerDigit) {
                 strike++; // 같은 자리, 같은 수 --> 스트라이크
             } else if (computerNumberStr.contains(String.valueOf(userDigit))) {
@@ -98,7 +101,7 @@ public class Application {
             System.out.println(strike + "스트라이크");
         } else if (ball > 0) {
             System.out.println(ball + "볼");
-        } else {
+        } else { // 스트라이크, 볼 모두 1개 이상이 아닐 때
             System.out.println("낫싱");
         }
     }
