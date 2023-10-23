@@ -28,6 +28,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임종료_후_종료() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
     void 숫자_비교_테스트() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNum = new ArrayList<>(Arrays.asList(1, 3, 4));
