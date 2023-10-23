@@ -12,7 +12,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             playSingleRound();
-        } while (getContinueGame() == 1);
+        } while (getContinueGame());
     }
 
     private static void playSingleRound() {
@@ -190,7 +190,7 @@ public class Application {
         }
     }
 
-    private static int getContinueGame() {
+    private static boolean getContinueGame() {
         String choice;
 
         System.out.print("게임을 새로 시작하려면 " + CONTINUE_GAME);
@@ -199,7 +199,7 @@ public class Application {
         if (!isValidChoice(choice)) {
             throw (new IllegalArgumentException());
         }
-        return (stringToInt(choice));
+        return (choice.equals(CONTINUE_GAME));
     }
 
     private static boolean isValidChoice(String choice) {
