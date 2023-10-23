@@ -3,15 +3,15 @@ package baseball;
 public class Application {
 
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
+        SequenceManager sequenceManager = new SequenceManager();
 
-        while (gameManager.validateRestart()) {
+        while (sequenceManager.validateRestart()) {
 
-            gameManager.proceedIntro();
+            sequenceManager.proceedIntro();
 
-            gameManager.proceedMainGame();
+            sequenceManager.proceedMainGame();
 
-            gameManager.proceedOutro();
+            sequenceManager.proceedOutro();
         }
     }
 }

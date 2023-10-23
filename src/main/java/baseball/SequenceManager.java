@@ -1,8 +1,6 @@
 package baseball;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-public class GameManager {
+public class SequenceManager {
 
     private MessageManager messageManager = new MessageManager();
     private Data data = new Data();
@@ -14,25 +12,24 @@ public class GameManager {
     }
 
     public void proceedMainGame() {
-        IllegalArgumentException e = new IllegalArgumentException("게임 종료");
         while (!data.getIsCompleteAnswer() && data.getIsNoError()) {
             data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
 
             if (gameProcessor.illegalArgumentException(data)) {
                 data.setIsNoError(false);
-                throw e;
+                throw new IllegalArgumentException("게임 종료");
             }
 
             messageManager.showAnswer(data, gameProcessor, messageManager);
         }
     }
 
-    public boolean validateAnswerComplete() {
+    public boolean validateCompleteAnswer() {
         return gameProcessor.validateCompleteAnswer(data);
     }
 
     public void proceedOutro() {
-        if (validateAnswerComplete() && data.getIsNoError()) {
+        if (validateCompleteAnswer() && data.getIsNoError()) {
             System.out.println(messageManager.getOutroMessage());
         }
 
