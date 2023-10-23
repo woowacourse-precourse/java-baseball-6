@@ -4,7 +4,7 @@ import baseball.Domain.Computer;
 import baseball.Domain.Player;
 import baseball.Service.GameFlowManagementService;
 import baseball.Service.GameNumberCheckService;
-import baseball.View.FirstGamePlayerInputView;
+import baseball.View.GamePlayerInputView;
 import baseball.View.GameScoreView;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class BaseballGameController {
     private Player player;
     private GameFlowManagementService gameFlowManagementService;
     private GameNumberCheckService gameNumberCheckService;
-    private FirstGamePlayerInputView firstGamePlayerInputView;
+    private GamePlayerInputView gamePlayerInputView;  //First와 Next 게임의 view를 하나로 합침
     private GameScoreView gameScoreView;
     private List<Integer> countStrikeBall;
 
@@ -26,7 +26,7 @@ public class BaseballGameController {
         player = new Player();
         gameFlowManagementService = new GameFlowManagementService();
         gameNumberCheckService = new GameNumberCheckService();
-        firstGamePlayerInputView = new FirstGamePlayerInputView();
+        gamePlayerInputView = new GamePlayerInputView();
         gameScoreView = new GameScoreView();
         countStrikeBall = new ArrayList<>();
     }
@@ -39,7 +39,7 @@ public class BaseballGameController {
     }
 
     public void playerNumbers() {
-        player.setPlayerNumbers(firstGamePlayerInputView.setPlayerNumbers());
+        player.setPlayerNumbers(gamePlayerInputView.setPlayerNumbers());
     }
 
     public void calculateCountStrikeBall() {
