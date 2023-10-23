@@ -12,7 +12,6 @@ public class Controller {
         view.printStart();
         computer.prepareGame();
         playGame();
-        view.closeConsole();
     }
 
     private void playGame() {
