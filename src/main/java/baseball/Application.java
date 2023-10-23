@@ -15,17 +15,17 @@ public class Application {
         while(PlayAgain){
             // 결과와 컴퓨터의 임의의 3자리수 변수 지정
             String result = "";
+            // CreateRandomNumber를 통해 순서도 1번 실행
             List<Integer> computer = randomNumber.MakeRandomNumber();
-            // 입력한 값에 대해서 결과를 나타낸다.
-            // eqeals를 통해 result가 "3스트라이크"가 아닐 경우 숫자를 계속해서 입력하도록 한다.
+            // 순서도 5번의 정답이 맞지 않을 경우 계속해서 반복한다.
             while(!result.equals("3스트라이크")){
-                List<Integer> input = readline.ReadPlayerNumber();
-                result = checkStrike.CheckStrikeCount(computer, input);
-                System.out.println(result);
+                List<Integer> input = readline.ReadPlayerNumber(); // Readline을 통해서 순서도 2번 실행
+                result = checkStrike.CheckStrikeCount(computer, input); // CheckStrike를 통해 순서도 3번과 4번을 실행
+                System.out.println(result); // 순서도 5번 : 결과 값 출력
             }
             // 숫자를 맞췄을 경우 게임이 종료된다.
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            // 계속해서 게임을 할지 물어 본다.
+            // Replay를 통해 순서도 6번을 실행
             PlayAgain = replay.ReplayGame();
         }
     }
