@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.util.GameConstant;
+
 public class OutputView {
 
     public void printStartGame() {
@@ -18,7 +20,7 @@ public class OutputView {
         }
         if (onlyStrikes(ballCount, strikeCount)) {
             System.out.println(strikeCount + "스트라이크");
-            if (strikeCount != 3) {
+            if (strikeCount != GameConstant.GAME_END_STRIKE_COUNT) {
                 askForNumber();
             }
             return;

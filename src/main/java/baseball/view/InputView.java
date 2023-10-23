@@ -44,8 +44,11 @@ public class InputView {
     }
 
     private void hasNoDuplicates(String input) {
-        char[] inputArray = input.toCharArray();
-        if (inputArray[0] == inputArray[1] || inputArray[1] == inputArray[2] || inputArray[0] == inputArray[2]) {
+        long distinctCharsCount = input.chars()
+                .distinct()
+                .count();
+
+        if (distinctCharsCount < NumberConstant.LENGTH) {
             throw new IllegalArgumentException("중복된 값이 존재합니다.");
         }
     }
