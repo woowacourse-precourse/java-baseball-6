@@ -34,17 +34,16 @@ public class Application {
 
                 int resultNum = checkNum(userInputNums, computerInputNums);
 
+                printGameResult(resultNum);
+                
                 if (resultNum % 10 == 3) {
-                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! ");          
                         coin = reStart();
                         break;
                 }
-                if (resultNum / 10 != 0) System.out.print(resultNum / 10 + "볼 ");
-                if (resultNum % 10 != 0) System.out.print(resultNum % 10 + "스트라이크 ");
-                if (resultNum == 0) System.out.print("낫싱");
-                System.out.println();
             }
         }
+        System.out.println("게임 종료");
     }
 
         private ArrayList<Integer> randomInputNums() {
@@ -119,6 +118,16 @@ public class Application {
             }
 
             return coin;
+        }
+
+        private void printGameResult(int num) {
+            String gameResult = "";
+
+            if (num / 10 != 0) gameResult += num / 10 + "볼 ";
+            if (num % 10 != 0) gameResult += num % 10 + "스트라이크 ";
+            if (num == 0) gameResult += "낫싱";
+            System.out.println(gameResult.strip());
+            
         }
     }
 
