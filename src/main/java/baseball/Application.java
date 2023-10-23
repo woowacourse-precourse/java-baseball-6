@@ -17,7 +17,8 @@ public class Application {
             getRestartOrEndMessage();
             String input = Console.readLine();
             try {
-                InputValidator.containOneOrTwo(input);
+                InputValidator.restartEndValidateInput(input);
+                System.out.println(input);
             } catch (IllegalArgumentException e) {
                 System.err.println(e.getMessage());
                 break;

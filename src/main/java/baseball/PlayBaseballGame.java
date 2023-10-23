@@ -23,7 +23,6 @@ public class PlayBaseballGame {
             }
             System.out.println(targetNumber);
         }
-        System.out.println("targetNumber");
         return play;
     }
 }

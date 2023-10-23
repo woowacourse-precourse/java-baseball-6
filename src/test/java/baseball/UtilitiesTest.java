@@ -14,4 +14,6 @@ class UtilitiesTest {
         String str2 = "Bye";
         Assertions.assertEquals(combineStrings(str1, str2), str1 + str2 );
     }
+
+    @Test
 }
