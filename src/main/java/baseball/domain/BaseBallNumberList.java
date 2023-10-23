@@ -11,6 +11,15 @@ public class BaseBallNumberList {
         this.numbers = numbers;
         validateSize();
         validateSameItem();
+        validateRange();
+    }
+
+    private void validateRange() {
+        int min = 1;
+        int max = 9;
+        if (numbers.stream().anyMatch((i) -> i < min || max < i)) {
+            throw new IllegalArgumentException("1~9 사이 숫자만 사용해 주세요");
+        }
     }
 
     public int countSameNumber(BaseBallNumberList baseBallNumberList) {
@@ -27,11 +36,15 @@ public class BaseBallNumberList {
     }
 
     private void validateSameItem() {
-        if (haveSameItem()) throw new IllegalArgumentException("중복된 값을 입력하지 말아 주세요");
+        if (haveSameItem()) {
+            throw new IllegalArgumentException("중복된 값을 입력하지 말아 주세요");
+        }
     }
 
     private void validateSize() {
-        if (haveThreeItems()) throw new IllegalArgumentException("숫자를 3개를 입력해주세요");
+        if (haveThreeItems()) {
+            throw new IllegalArgumentException("숫자를 3개를 입력해주세요");
+        }
     }
 
     private boolean haveThreeItems() {
