@@ -37,4 +37,20 @@ public class Application {
         }
         return count;
     }
+
+    private static void validateUserInput(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException("숫자가 아닌 입력값이 존재합니다.");
+            }
+            for (int j = i + 1; j < input.length(); j++) {
+                if (input.charAt(i) == input.charAt(j)) {
+                    throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+                }
+            }
+        }
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("입력값의 길이가 올바르지 않습니다.");
+        }
+    }
 }
