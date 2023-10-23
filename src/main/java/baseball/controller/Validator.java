@@ -33,10 +33,10 @@ public class Validator {
         return true;
     }
 
-    public static boolean validateRestartInput(String input) {
+    public static String validateRestartInput(String input) {
         if (input != "1" || input != "2") {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
-        return true;
+        return input;
     }
 }
