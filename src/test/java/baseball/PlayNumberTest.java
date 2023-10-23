@@ -12,4 +12,11 @@ public class PlayNumberTest {
             PlayNumber playNumber = PlayNumber.from("1234");
         });
     }
+
+    @Test
+    void 플레이_숫자는_숫자여야만_한다() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            PlayNumber playNumber = PlayNumber.from("12a");
+        });
+    }
 }
