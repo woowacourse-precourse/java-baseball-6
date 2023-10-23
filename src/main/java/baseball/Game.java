@@ -7,6 +7,8 @@ public class Game {
     private Result result = new Result();
     private Validator validator = new Validator();
 
+    private List<Character> randomNumbers;
+
     public void game() {
         start();
         play();
@@ -15,6 +17,8 @@ public class Game {
 
     private void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
+        resetRandomNumbers();
     }
 
     private void play() {
@@ -25,8 +29,6 @@ public class Game {
         validator.validate(userInput);
 
         List<Character> userNumbers = Parsing.parseIntoList(userInput);
-
-        List<Character> randomNumbers = RandomMaker.makeRandomNumbers();
 
         result.calculate(userNumbers, randomNumbers);
 
@@ -41,5 +43,9 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private void resetRandomNumbers() {
+        randomNumbers = RandomMaker.makeRandomNumbers();
     }
 }
