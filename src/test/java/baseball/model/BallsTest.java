@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BallsTest {
 
@@ -49,6 +48,16 @@ public class BallsTest {
     
     @Nested
     class compareThreeBalls {
+
+        @Test
+        void play_3strike() {
+            PlayResult result = answers.play(new Balls(List.of(4, 2, 5)));
+            assertAll(
+                    () -> assertEquals(result.getBall(), 0),
+                    () -> assertEquals(result.getStrike(), 3),
+                    () -> assertFalse(result.isContinue())
+            );
+        }
 
         @Test
         void play_1strike() {
