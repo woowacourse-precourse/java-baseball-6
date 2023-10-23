@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
+
+    private final static Integer numberCount = 3;
     private static Scanner scanner = new Scanner(System.in);
 
     private static Boolean isApplicationEnd = false;
@@ -22,12 +24,13 @@ public class Application {
             while (true) {
                 String userInputStr = getUserInputStr();
 
-                // 유저의 입력이 숫자로만 이루어지지 않았을 경우 애플리케이션 종료
+                // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
                 if (!isUserInputValidate(userInputStr)) {
                     try {
                         throw new IllegalArgumentException();
                     } catch (IllegalArgumentException e) {
                         e.printStackTrace();
+                        isApplicationEnd = true;
                         break;
                     }
                 }
@@ -143,7 +146,7 @@ public class Application {
      */
     private static List<Integer> chooseNumByComputer() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < numberCount) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -178,12 +181,22 @@ public class Application {
     }
 
     /**
-     * 유저가 입력한 문자열이 모두 숫자이면 true return
+     * 유저가 입력한 문자열이 올바르면 true return
+     *
+     * @param userInput 유저가 입력한 문자열
+     * @return 유저가 입력한 문자열이 올바르면 true 아니면 false
+     */
+    private static boolean isUserInputValidate(String userInput) {
+        return (isUserInputAllNumbers(userInput) && userInput.length() == numberCount);
+    }
+
+    /**
+     * 유저가 입력한 문장열이 모두 숫자로 이루어졌으면 true return
      *
      * @param userInput 유저가 입력한 문자열
      * @return 유저가 입력한 문자열이 모두 숫자이면 true 아니면 false
      */
-    private static boolean isUserInputValidate(String userInput) {
+    private static boolean isUserInputAllNumbers(String userInput){
         for (int i = 0; i < userInput.length(); i++) {
             if (!Character.isDigit(userInput.charAt(i))) return false;
         }
