@@ -7,6 +7,8 @@ public class BaseballNumber {
 
     // 3개의 숫자를 리스트로 저장하는 기능
     // 리스트가 현재 3개라는 보장이 없기 때문에 3개라는 것을 보장하기 위한 제약이 필요한 상태
+    // 컴퓨터 숫자는 RandomBaseballNumberGenerator에서 반드시 3자리만 생성하기 때문에 따로 예외 처리 불필요
+    // 따라서 유저 입력을 3개만 받도록 제약할 필요가 있음.
     BaseballNumber(List<Integer> baseballNumberList){
         this.baseballNumberList = baseballNumberList;
     }
