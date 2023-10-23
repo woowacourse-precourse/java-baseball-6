@@ -6,6 +6,7 @@ import static baseball.GameClient.RANGE_MINIMUM_VALUE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  * <p>같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 제공한다.
  */
 public class Computer {
-    private List<Integer> answerNumbers;
+    private List<Integer> answerNumbers = createAnswer();
 
     public void refreshAnswer() {
         this.answerNumbers = createAnswer();
@@ -35,9 +36,11 @@ public class Computer {
 
     private List<Integer> createAnswer() {
         List<Integer> answerNumbers = new ArrayList<>();
-        while (answerNumbers.size() < BALL_LENGTH) {
+        HashSet<Integer> chosenNumbers = new HashSet<>();
+        while (chosenNumbers.size() < BALL_LENGTH) {
             int pickedNumber = Randoms.pickNumberInRange(RANGE_MINIMUM_VALUE, RANGE_MAXIMUM_VALUE);
-            if (!answerNumbers.contains(pickedNumber)) {
+            if (!chosenNumbers.contains(pickedNumber)) {
+                chosenNumbers.add(pickedNumber);
                 answerNumbers.add(pickedNumber);
             }
         }
