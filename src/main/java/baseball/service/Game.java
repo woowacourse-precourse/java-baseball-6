@@ -14,6 +14,7 @@ public class Game {
     }
 
     public void inputUserBalls() {
+        System.out.print("숫자를 입력해주세요 : ");
         String balls = Console.readLine();
         userBalls.convertToBalls(balls);
     }
