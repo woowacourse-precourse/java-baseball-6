@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.constant.NumberConstants.COUNT_ZERO;
 import static baseball.constant.NumberConstants.EXIT_NUMBER_STRING;
 import static baseball.constant.NumberConstants.GAME_END_CONDITION;
 import static baseball.constant.NumberConstants.RESTART_NUMBER_STRING;
@@ -74,11 +75,11 @@ public class Game {
             return;
         }
 
-        if (result.ballCount > 0) {
+        if (result.ballCount > COUNT_ZERO) {
             printCorrectBallCount(result.ballCount);
         }
 
-        if (result.strikeCount > 0) {
+        if (result.strikeCount > COUNT_ZERO) {
             printCorrectStrikeCount(result.strikeCount);
         }
 
@@ -97,7 +98,7 @@ public class Game {
 
     private record Result(int strikeCount, int ballCount) {
         boolean isNothing() {
-            return strikeCount == 0 && ballCount == 0;
+            return strikeCount == COUNT_ZERO && ballCount == COUNT_ZERO;
         }
     }
 
