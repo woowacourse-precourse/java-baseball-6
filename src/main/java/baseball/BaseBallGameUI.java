@@ -19,26 +19,26 @@ public class BaseBallGameUI {
     }
 
     public void printResult(int ballCount, int strikeCount) {
-        if(ballCount == 0 && strikeCount != 0) {
+        if (ballCount == 0 && strikeCount != 0) {
             System.out.println(strikeCount + "스트라이크");
         }
-        if(strikeCount == 3) {
+        if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             restartGame();
         }
-        else if(strikeCount == 0 && ballCount != 0) {
+        if (strikeCount == 0 && ballCount != 0) {
             System.out.println(ballCount + "볼");
         }
-        else if(ballCount != 0 && strikeCount != 0) {
+        if (ballCount != 0 && strikeCount != 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
-        else if(ballCount == 0 && strikeCount== 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         }
     }
 
     public void isOneOrTwo(int inputValueToInt) {
-        if(inputValueToInt != 2 && inputValueToInt != 1) {
+        if (inputValueToInt != 2 && inputValueToInt != 1) {
             throw new IllegalArgumentException();
         }
     }
@@ -49,10 +49,10 @@ public class BaseBallGameUI {
         int inputValueToInt = Integer.parseInt(inputValue);
         isOneOrTwo(inputValueToInt);
 
-        if(inputValueToInt == 2) {
+        if (inputValueToInt == 2) {
             setButton(false);
         }
-        if(inputValueToInt == 1) {
+        if (inputValueToInt == 1) {
             startGame();
         }
     }
@@ -61,7 +61,7 @@ public class BaseBallGameUI {
         Computer computer = new Computer();
         // System.out.println(computer.getComputerBall());
 
-        while(button) {
+        while (button) {
             inputPlayerNum();
             String inputValue = readLine();
             Player player = new Player(inputValue);
