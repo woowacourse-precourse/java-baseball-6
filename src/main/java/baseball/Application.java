@@ -41,6 +41,9 @@ public class Application {
                 Integer strikeCount = countStrike(computer, user);
                 Integer ballCount = countBall(computer, user);
 
+                // 이번 라운드 게임 결과 출력
+                printRoundResult(strikeCount, ballCount);
+
                 // 숫자를 3개 모두 맞혔을 경우 게임 종료
                 if (strikeCount.equals(3)) {
                     printGameOverMessage();
@@ -53,6 +56,25 @@ public class Application {
         } while (!isApplicationEnd);
 
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
+    }
+
+    /**
+     * 스트라이크 갯수와 볼 갯수를 출력한다.
+     *
+     * @param strikeCount 스트라이크 갯수
+     * @param ballCount 볼 갯수
+     */
+    private static void printRoundResult(Integer strikeCount, Integer ballCount){
+        if (ballCount > 0){
+            System.out.print(ballCount.toString() + "볼 ");
+        }
+        if(strikeCount > 0){
+            System.out.print(strikeCount.toString() + "스트라이크");
+        }
+        if(ballCount == 0 && strikeCount == 0){
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 
     /**
