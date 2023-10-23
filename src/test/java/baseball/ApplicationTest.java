@@ -21,7 +21,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 숫자입력_예외_테스트() {
         // 3개 보다 많은 숫자
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -40,6 +40,18 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 게임결과판정_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "123", "356", "135");
+                    assertThat(output()).contains("낫싱", "1볼 1스트라이크", "2볼", "3스트라이크");
+                },
+                1, 3, 5, 1, 3, 5, 1, 3, 5, 1, 3, 5
+        );
+    }
+
 
     @Override
     public void runMain() {
