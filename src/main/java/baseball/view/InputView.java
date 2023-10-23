@@ -15,10 +15,14 @@ public class InputView {
 
     public static String inputPositiveNumber() {
         String inputString = Console.readLine();
+        validateInput(inputString);
+        return inputString;
+    }
+
+    private static void validateInput(String inputString) {
         validateBlankString(inputString);
         validateNumber(inputString);
         validatePositiveNumber(inputString);
-        return inputString;
     }
 
     private static void validateBlankString(String string) {
