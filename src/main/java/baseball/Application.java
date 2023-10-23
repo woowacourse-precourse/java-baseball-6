@@ -45,4 +45,39 @@ public class Application {
 
         return userNumbers;
     }
+
+    private boolean checkNumbers(List<Integer> computerNumbers, int userNumbers) {
+        String answer = "";
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int compareNumber = userNumbers / (int) Math.pow(10, 2 - i);
+            if (!computerNumbers.contains(compareNumber)) {
+                continue;
+            }
+            if (computerNumbers.indexOf(compareNumber) == i) {
+                strikes += 1;
+            } else {
+                balls += 1;
+            }
+        }
+
+        if (balls == 0 && strikes == 0) {
+            answer += "낫싱";
+        }
+        if (balls > 0) {
+            answer += (balls + "볼 ");
+        }
+        if (strikes > 0) {
+            answer += (strikes + "스트라이크");
+        }
+
+        System.out.println(answer);
+
+        if (strikes == 3) {
+            return true;
+        }
+        return false;
+    }
 }
