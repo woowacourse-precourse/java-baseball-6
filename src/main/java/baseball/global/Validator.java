@@ -1,4 +1,4 @@
-package baseball;
+package baseball.global;
 
 import static baseball.Application.userRandomBalls;
 

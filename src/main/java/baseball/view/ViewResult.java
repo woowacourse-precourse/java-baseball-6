@@ -1,5 +1,7 @@
-package baseball;
+package baseball.view;
 
+import baseball.global.Validator;
+import baseball.model.Score;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ViewResult {
@@ -15,25 +17,25 @@ public class ViewResult {
     public final int end = 2;
     Validator validator = new Validator();
     public int printResult(Score.ScoreBoard scoreBoard) {
-        if(scoreBoard.strike == 3){
+        if(scoreBoard.getStrike() == 3){
             endGame();
             String choice = Console.readLine();
             validator.checkUserChoice(choice);
 
-            if(stoi(choice) == 1)   return 1;
-            else if(stoi(choice) == 2)  return 2;
+            if(stoi(choice) == restart)   return restart;
+            else if(stoi(choice) == end)  return end;
         }
-        else if(scoreBoard.strike >= 1 && scoreBoard.ball >= 1){
-            System.out.println(scoreBoard.ball + ball + " "+ scoreBoard.strike + strike);
+        else if(scoreBoard.getStrike() >= 1 && scoreBoard.getBall() >= 1){
+            System.out.println(scoreBoard.getBall() + ball + " "+ scoreBoard.getStrike() + strike);
         }
-        else if(scoreBoard.strike == 0 && scoreBoard.ball == 0){
+        else if(scoreBoard.getStrike() == 0 && scoreBoard.getBall() == 0){
             System.out.println(nothing);
         }
-        else if(scoreBoard.strike == 0 && scoreBoard.ball >= 1){
-            System.out.println(scoreBoard.ball + ball);
+        else if(scoreBoard.getStrike() == 0 && scoreBoard.getBall() >= 1){
+            System.out.println(scoreBoard.getBall() + ball);
         }
-        else if(scoreBoard.strike >= 1 && scoreBoard.ball == 0){
-            System.out.println(scoreBoard.strike + strike);
+        else if(scoreBoard.getStrike() >= 1 && scoreBoard.getBall() == 0){
+            System.out.println(scoreBoard.getStrike() + strike);
         }
         return 3;
     }

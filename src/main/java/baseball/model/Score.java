@@ -1,4 +1,6 @@
-package baseball;
+package baseball.model;
+
+import baseball.view.ViewResult;
 
 import java.util.Objects;
 
@@ -6,12 +8,20 @@ import static baseball.Application.computerRandomBalls;
 import static baseball.Application.userRandomBalls;
 
 public class Score {
-    static class ScoreBoard {
+    public static class ScoreBoard {
         int strike;
         int ball;
-        ScoreBoard(int strike, int ball){
+        public ScoreBoard(int strike, int ball){
             this.strike = strike;
             this.ball = ball;
+        }
+
+        public int getStrike() {
+            return strike;
+        }
+
+        public int getBall() {
+            return ball;
         }
     }
     ViewResult viewResult = new ViewResult();

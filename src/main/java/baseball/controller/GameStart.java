@@ -1,4 +1,9 @@
-package baseball;
+package baseball.controller;
+
+import baseball.*;
+import baseball.global.Validator;
+import baseball.model.Score;
+import baseball.view.ViewResult;
 
 public class GameStart {
     public static void Start() {

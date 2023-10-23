@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.view.ViewResult;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserRandomBalls {
