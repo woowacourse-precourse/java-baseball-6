@@ -15,15 +15,15 @@ public class CompareNumber {
 
     private static void printResult() {
         String result = "";
-        if (strike > 0) {
-            result += strike + "스트라이크";
+        if (ball > 0) {
+            result += ball + "볼";
         }
 
-        if (ball > 0) {
+        if (strike > 0) {
             if (!result.isEmpty()){
                 result += " ";
             }
-            result += ball + "볼";
+            result += strike + "스트라이크";
         }
 
         if (result.isEmpty()){
