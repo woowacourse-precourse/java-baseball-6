@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class User {
     private List<Integer> userNumber;
-    private List<Integer> inputNumber;
 
     private final int VALIDATE_SIZE = 3;
+
+    public User() {
+        this.userNumber = new ArrayList<>();
+    }
 
     // controller에서 userNumber를 로직 처리를 하기 위해
     public List<Integer> getUserNumber() {
@@ -19,42 +21,29 @@ public class User {
 
     // view에서 받은 input을 user 모델에서 갖고 있기 위함
     public void setUserNumber(String input) {
-        validateInputNumber(input);
-        stringToList(input);
-        makeUserNumber();
+        resetUserNumber();  // userNumber 초기화
+        // input된 숫자 검증
+        if(validateInputNumber(input)) {
+            generateUserNumber(input);   // generate
+        }
     }
 
-    public void resetUserNumber() {
+    private void resetUserNumber() {
         if(userNumber != null) {
             userNumber.clear();
         }
     }
 
-    // inputNumber가 검증이 되면 userNumber에 넣기
-
-    private void makeUserNumber() {
-        userNumber = new ArrayList<>();
-
-        for (Integer integer : inputNumber) {
-            userNumber.add(integer);
-        }
-    }
-    // String to List<Integer>
-
-    public void stringToList(String input) {
-        inputNumber = new ArrayList<>();
-
-        inputNumber.add(Integer.valueOf(input.substring(0, 1)));
-        inputNumber.add(Integer.valueOf(input.substring(1, 2)));
-        inputNumber.add(Integer.valueOf(input.substring(2, 3)));
+    // userNumber 생성
+    private void generateUserNumber(String input) {
+        userNumber.add(Integer.valueOf(input.substring(0, 1)));
+        userNumber.add(Integer.valueOf(input.substring(1, 2)));
+        userNumber.add(Integer.valueOf(input.substring(2, 3)));
     }
 
     // inputNumber 검증
-    public boolean validateInputNumber(String input) {
-        if(validateNumberSize(input) && validateNumberRange(input) && validateNumberDuplicate(input)) {
-            return true;
-        } else
-            return false;
+    private boolean validateInputNumber(String input) {
+        return validateNumberSize(input) && validateNumberRange(input) && validateNumberDuplicate(input);
     }
 
     // input size 검증
@@ -66,7 +55,7 @@ public class User {
     }
 
     // 0 - 9 사이의 숫자인지
-    public boolean validateNumberRange(String input) {
+    private boolean validateNumberRange(String input) {
         if(!input.matches("[1-9]+")) {
             throw new IllegalArgumentException("1-9 사이의 숫자로 구성되지 않았습니다.");
         }
@@ -74,11 +63,10 @@ public class User {
     }
 
     // HashSet을 이용한 List 중복제거
-    public boolean validateNumberDuplicate(String input) {
+    private boolean validateNumberDuplicate(String input) {
         List<Integer> inputList = input.chars()
                 .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList());
+                .boxed().toList();
 
         Set<Integer> uniqueNumbers = new HashSet<>(inputList);
 
