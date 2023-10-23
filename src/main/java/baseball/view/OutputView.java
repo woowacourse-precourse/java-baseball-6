@@ -1,11 +1,18 @@
 package baseball.view;
 
 import baseball.constant.OutputMessage;
+import baseball.model.dto.BaseballGameResult;
 
 public class OutputView {
 
-    public static void showResult(String result) {
-        System.out.println(result);
+    private final OutputConverter outputConverter;
+
+    public OutputView() {
+        this.outputConverter = new OutputConverter();
+    }
+    public void showResult(BaseballGameResult baseballGameResult) {
+        String resultMessage = outputConverter.convertMessage(baseballGameResult);
+        System.out.println(resultMessage);
     }
 
     public void printStartGame() {

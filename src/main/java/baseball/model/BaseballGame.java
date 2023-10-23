@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.constant.OutputMessage;
 import baseball.model.collection.RandomNumbers;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -22,48 +21,10 @@ public class BaseballGame {
     public boolean updateGameCompare(Player player) {
         compareBall(player.getInputNumbers());
         compareStrike(player.getInputNumbers());
-        return checkStike();
+        return isThreeStrike();
     }
 
-    public String showResult() {
-        StringBuilder stringBuilder = new StringBuilder();
-        isBall(stringBuilder);
-        isStrike(stringBuilder);
-        isBallAndStrike(stringBuilder);
-        isGameOver(stringBuilder);
-        return stringBuilder.toString();
-    }
-
-    private void isBall(StringBuilder stringBuilder) {
-        if (ball != NO_COUNT) {
-            stringBuilder.append(ball);
-            stringBuilder.append(OutputMessage.BALL);
-            stringBuilder.append(OutputMessage.SPACE);
-        }
-    }
-
-    private void isStrike(StringBuilder stringBuilder) {
-        if (strike != NO_COUNT) {
-            stringBuilder.append(strike);
-            stringBuilder.append(OutputMessage.STRIKE);
-        }
-    }
-
-    private void isBallAndStrike(StringBuilder stringBuilder) {
-        if (ball == NO_COUNT && strike == NO_COUNT) {
-            stringBuilder.append(OutputMessage.NOTHING);
-            stringBuilder.append(OutputMessage.SPACE);
-        }
-    }
-
-    private void isGameOver(StringBuilder stringBuilder) {
-        if (strike == THREE_STRIKE) {
-            stringBuilder.append(OutputMessage.LINE_BREAK);
-            stringBuilder.append(OutputMessage.THREE_STRIKE_MESSAGE);
-        }
-    }
-
-    private boolean checkStike() {
+    private boolean isThreeStrike() {
         if (strike == THREE_STRIKE) {
             return true;
         }
@@ -84,5 +45,9 @@ public class BaseballGame {
                 .mapToObj(randomNum::get).toList();
         this.ball = compareBall.size();
     }
+
+    public int getBall() { return ball; }
+
+    public int getStrike() { return strike; }
 }
 

@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.BaseballGame;
 import baseball.model.Player;
+import baseball.model.dto.BaseballGameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -36,8 +37,8 @@ public class BaseballController {
             String inputNumber = inputView.inputNumber();
             player.updateNumbers(inputNumber);
             boolean endGameSign = baseballGame.updateGameCompare(player);
-            String gameResult = baseballGame.showResult();
-            OutputView.showResult(gameResult);
+            BaseballGameResult baseballGameResult = BaseballGameResult.from(baseballGame);
+            outputView.showResult(baseballGameResult);
             if (isGameEnd(endGameSign)) {
                 break;
             }
