@@ -11,7 +11,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         do {
-            //게임 시작
+            playGame();
         } while (restartGame());
     }
 
@@ -24,6 +24,17 @@ public class Application {
             }
         }
         return computerNumbers;
+    }
+
+    private static void playGame() {
+        List<Integer> computerNumbers = createRandomNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String playerNumbers;
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            playerNumbers = Console.readLine();
+            validPlayerNumbers(playerNumbers);
+        } while (compareNumber(computerNumbers, playerNumbers));
     }
 
     private static void validPlayerNumbers(String playerNumbers) {
