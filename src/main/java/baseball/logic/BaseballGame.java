@@ -8,10 +8,13 @@ import java.util.List;
 
 public class BaseballGame {
     private List<Integer> computerNumbers;
-
+    private int countStrike;
+    private int countBall;
 
     public BaseballGame() {
         this.computerNumbers = new ArrayList<>();
+        this.countStrike = 0;
+        this.countBall = 0;
     }
 
     public void play() {
@@ -21,6 +24,7 @@ public class BaseballGame {
         Player player = new Player();
         while (true) {
             player.guess();
+            markNumber(player.getGuessNumbers()); // 채점
         }
     }
 
@@ -34,4 +38,23 @@ public class BaseballGame {
         System.out.println("컴퓨터 숫자: "+ computerNumbers);
         return computerNumbers;
     }
+
+    private void markNumber(List<Integer> guessNumbers) {
+        for (int i = 0; i < 3; i++) {
+            System.out.println("검사중인 숫자: " + guessNumbers.get(i));
+            // 스트라이크 검사
+            int guessNumber = guessNumbers.get(i);
+            if (guessNumber == computerNumbers.get(i)) {
+                countStrike++;
+            }
+            // 볼 검사
+            if (guessNumber == computerNumbers.get((i + 1) % 3)) {
+                countBall++;
+            }
+            if (guessNumber == computerNumbers.get((i + 2) % 3)) {
+                countBall++;
+            }
+        }
+    }
+
 }
