@@ -1,7 +1,5 @@
-package baseball;
+package baseball.domain.player;
 
-import baseball.domain.player.BaseballGameParticipant;
-import baseball.domain.player.BaseballPlayer;
 import baseball.domain.game.ContinueAnswer;
 import baseball.mock.FakeGameConsoleReader;
 import baseball.util.GameConsole;
