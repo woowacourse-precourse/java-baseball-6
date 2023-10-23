@@ -4,25 +4,33 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     private static final int SIZE = 3;
-    public String userInput(){
+    private static final int USERFLAG = 1;
+    public String getUserInput(){
         Message.getStartMsg();
         String userInput = Console.readLine();
-        if (!checkLenError(userInput))
+        if (!isLenError(userInput, SIZE))
             throw new IllegalArgumentException("Invalid Length: " + userInput);
-        if (!checkWordError(userInput))
+        if (!isWordError(userInput))
             throw new IllegalArgumentException("Word error is occurred : " + userInput);
-        if (!checkDupError(userInput))
+        if (!isDupError(userInput))
             throw new IllegalArgumentException("Duplication Error is occurred : " + userInput);
         return userInput;
     }
-
-    static boolean checkLenError(String input){
-        return input.length() == 3;
+    static public int newGameFlag(){
+        String userInput = Console.readLine();
+        if (!isLenError(userInput, USERFLAG))
+            throw new IllegalArgumentException("Invalid Length: " + userInput);
+        if (!isWordError(userInput))
+            throw new IllegalArgumentException("Word error is occurred : " + userInput);
+        return Integer.parseInt(userInput);
+    }
+    static private boolean isLenError(String input, int size){
+        return input.length() == size;
     }
 
-    static boolean checkWordError(String input){
+    static private boolean isWordError(String input){
         char word;
-        for(int i = 0; i < SIZE; i++) {
+        for(int i = 0; i < input.length(); i++) {
             word = input.charAt(i);
             if(!Character.isDigit(word))
                 return false;
@@ -30,7 +38,7 @@ public class User {
         return true;
     }
 
-    static boolean checkDupError(String input){
+    static private boolean isDupError(String input){
         int[] tempArr = new int[SIZE];
         int tempNumber;
         for (int i = 0; i < SIZE; i++){

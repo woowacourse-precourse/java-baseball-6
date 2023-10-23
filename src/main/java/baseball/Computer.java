@@ -6,7 +6,7 @@ public class Computer {
     private static final int SIZE = 3;
     private final static int[] baseballFlag = {0, 0};
     private final static int[] numbers = new int[SIZE];
-    public Computer() {
+    Computer() {
         int randomNumber;
         for (int i = 0; i < SIZE;){
             randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,7 +23,7 @@ public class Computer {
         return false;
     }
 
-    private void checkResult(String userInput){
+    private static void checkResult(String userInput){
         int tempNumber;
         for (int i = 0; i < SIZE; i++){
             tempNumber = Integer.parseInt(userInput.charAt(i) + "");
@@ -31,7 +31,7 @@ public class Computer {
         }
     }
 
-    private void updateFlag(int userInput, int digit){
+    private static void updateFlag(int userInput, int digit){
         for (int currentDigit = 0; currentDigit < SIZE; currentDigit++){
             if (digit == currentDigit && userInput == numbers[currentDigit]) {
                 baseballFlag[0] += 1; // strike
@@ -43,7 +43,20 @@ public class Computer {
             }
         }
     }
-    public static void game(Computer answer){
-
+    public static void gameStart(Computer alice){
+        User coh = new User();
+        String userInput = coh.getUserInput();
+        checkResult(userInput);
+        Message.makeMessage(baseballFlag);
+        if (baseballFlag[0] != SIZE){
+            Computer.gameStart(alice);
+            return;
+        }
+        Message.getSuccessMsg();
+        Message.newGameMsg();
+        if (User.newGameFlag() == 1){
+            Computer newGame = new Computer();
+            Computer.gameStart(newGame);
+        }
     }
 }
