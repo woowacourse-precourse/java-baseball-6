@@ -10,7 +10,7 @@ public class Guess {
     private static final char MAX_ALLOWABLE_DIGIT = '9';
     private static final int VALID_NUMBER_LENGTH = 3;
 
-    private final List<Character> playerGuess;
+    private final List<Character> guess;
 
     public Guess(String playerInput) {
         checkNullInput(playerInput);
@@ -18,7 +18,7 @@ public class Guess {
         checkInvalidLength(playerInputAsChars);
         checkInvalidInput(playerInputAsChars);
         checkDuplicateDigit(playerInputAsChars);
-        this.playerGuess = playerInputAsChars;
+        guess = playerInputAsChars;
     }
 
     private void checkNullInput(String playerInput) {
@@ -60,7 +60,7 @@ public class Guess {
         return characterList;
     }
 
-    public List<Character> getPlayerGuessAsChars() {
-        return playerGuess;
+    public List<Character> getGuessAsChars() {
+        return guess;
     }
 }
