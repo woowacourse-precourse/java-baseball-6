@@ -1,5 +1,8 @@
 package baseball.view;
 
+import static baseball.constant.SystemMessage.GAME_END;
+import static baseball.constant.SystemMessage.GAME_RESTART;
+import static baseball.constant.SystemMessage.TYPE_NUMBER;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.domain.Hint;
@@ -7,7 +10,7 @@ import baseball.domain.Hint;
 public class ViewService {
 
     public void printReadMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(TYPE_NUMBER.getMessage());
     }
 
     public String readNumber() {
@@ -23,11 +26,11 @@ public class ViewService {
     }
 
     private void printGameEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        printRetryMessage();
+        System.out.println(GAME_END.getMessage());
+        printRestartMessage();
     }
 
-    public void printRetryMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public void printRestartMessage() {
+        System.out.println(GAME_RESTART.getMessage());
     }
 }
