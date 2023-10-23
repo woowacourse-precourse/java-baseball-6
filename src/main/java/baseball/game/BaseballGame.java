@@ -19,7 +19,7 @@ public class BaseballGame implements Game {
 
         do {
 
-            Balls answerBalls = BallsUtils.generateRandomBalls();
+            Balls answerBalls = BallsUtils.generateRandomBalls(1,9,3);
 
             do {
 
