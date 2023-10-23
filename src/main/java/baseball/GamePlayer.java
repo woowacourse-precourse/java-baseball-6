@@ -1,25 +1,22 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 
-public class GamePlayer {
+public class GameParticipant {
     private String playerGuessedNumber;
     private GameStatus playerStatus;
-    private Game game;
+    private GameManager game;
 
     public GamePlayer(){
         this.playerStatus = GameStatus.PLAYING;
-        this.game = new Game();
+        this.game = new GameManager();
     }
     public void playGameByRequest(){
         while(playerStatus == GameStatus.PLAYING){
             this.playerGuessedNumber = Console.readLine();
             if (isValidForm(this.playerGuessedNumber)){
-                this.playerStatus = game.comparePlayerNumberWithComputer(this.playerGuessedNumber);
-                sendNumberToGame(this.playerGuessedNumber);
+                game.setPlayerGuessedNumber(this.playerGuessedNumber);
             }
             else{
                 throw new IllegalArgumentException();
