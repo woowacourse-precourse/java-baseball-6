@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.model.TargetNumber;
-import baseball.model.StopGameDecisionHelper;
 import baseball.model.GameResult;
 import baseball.view.ConsoleInputView;
 import baseball.view.ConsoleOutputView;
@@ -34,7 +33,7 @@ public class BaseballGameController {
             verifyInputNumber(inputNumber);
             GameResult gameResult = computerNumber.calculateGameResult(inputNumber);
 
-            consoleOutputView.writeMessage(gameResult.toString());
+            consoleOutputView.showGameResult(gameResult);
 
             if (gameResult.isPerfectGame(BASEBALL_NUMBER_SIZE)) {
                 consoleOutputView.goodGame(BASEBALL_NUMBER_SIZE);
@@ -55,8 +54,7 @@ public class BaseballGameController {
     }
 
     private boolean isWantStopGame() {
-        consoleOutputView.moreGame(StopGameDecisionHelper.MORE_NUMBER, StopGameDecisionHelper.END_NUMBER);
-        int inputMoreGameNumber = Integer.parseInt(consoleInputView.request());
-        return StopGameDecisionHelper.getDecision(inputMoreGameNumber);
+        consoleOutputView.moreGame(consoleInputView.moreGameText(), consoleInputView.stopGameText());
+        return consoleInputView.isWantStopGame();
     }
 }
