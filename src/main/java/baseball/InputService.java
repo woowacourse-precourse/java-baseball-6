@@ -3,16 +3,22 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class InputService {
+    private final ValidateService validateService;
+
+    public InputService() {
+        this.validateService = new ValidateService();
+    }
+
     public List<Integer> input() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputValue = Console.readLine();
 
         // 입력값 검증
-        if(!validateLength(inputValue) || !validateType(inputValue) || !validateDuplicateValue(inputValue)) {
+        if(!validateService.validateLength(inputValue) || !validateService.validateType(inputValue)
+                || !validateService.validateDuplicateValue(inputValue)) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
 
@@ -21,30 +27,6 @@ public class InputService {
         mapping(inputValue, inputValueList);
 
         return inputValueList;
-    }
-
-    // 입력값의 길이를 검증하는 로직
-    private Boolean validateLength(String inputValue) {
-        if (inputValue.length() != 3) return false;
-        return true;
-    }
-
-    // 입력값의 타입을 검증하는 로직
-    private Boolean validateType(String inputValue) {
-        for (int i = 0; i < 3; i++) {
-            int intValue = inputValue.charAt(i) - 48;
-            if (!(1 <= intValue && intValue <= 9)) return false;
-        }
-        return true;
-    }
-
-    // 입력값의 중복을 검증하는 로직
-    private Boolean validateDuplicateValue(String inputValue) {
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < 3; i++) {
-            if(!set.add(inputValue.charAt(i) - 48)) return false;
-        }
-        return true;
     }
 
     // 입력값을 List<Integer>로 매핑하는 로직
