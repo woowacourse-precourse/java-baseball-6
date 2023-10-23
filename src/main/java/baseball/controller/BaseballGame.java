@@ -22,7 +22,7 @@ public class BaseballGame {
         GameView.printGameStartMessage();
 
         while (true) {
-            UserNumber user = GameView.getUserInput();
+            UserNumber user = new UserNumber(GameView.getUserInput());
 
             BaseballGameCounts baseballGameCounts = new BaseballGameCounts(computer, user);
 
