@@ -33,7 +33,4 @@ public class distinguishNum implements Distinguish{
     private boolean checkBall(List<Integer> answer, int user){
         return answer.contains(user);
     }
-
-
-
 }

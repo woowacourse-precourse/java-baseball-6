@@ -12,7 +12,7 @@ public class checkthreenum implements Checknum {
             Integer.parseInt(num);
             return true;
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("??? ???? ????? ???.");
         }
     }
 
@@ -21,7 +21,7 @@ public class checkthreenum implements Checknum {
         if(num.length() == 3){
             return true;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("??? 3?? ??? ????? ???.");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class checkthreenum implements Checknum {
             int oneDigit = c - '0';
 
             if(!digit.contains(oneDigit)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("??? ???? ???? ? ???.");
             }
 
             digit.remove(digit.indexOf(oneDigit));
