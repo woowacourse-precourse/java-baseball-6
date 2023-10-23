@@ -22,7 +22,7 @@ public class Validate {
     public static boolean verifyEachDigitInRange(int number) {
         while (number > 0) {
             int digit = number % 10;
-            if (digit < 1 || digit > 9) {
+            if (digit < 1) {
                 return false;
             }
             number /= 10;

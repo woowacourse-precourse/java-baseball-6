@@ -40,10 +40,9 @@ public class BaseballGame {
         }
     }
 
-    private static int[] standBy() {
+    private static void standBy() {
         gameEnd = false;
         computerNumberArray = computerNumberCreator.createComputerNumber();
-        return computerNumberArray;
     }
 
     private static void pitch() {
@@ -59,9 +58,8 @@ public class BaseballGame {
 
     private static Pitching inning() {
         message.printInputMessage();
-        Pitching pitching = new Pitching(ball);
 
-        return pitching;
+        return new Pitching(ball);
     }
 
     private static int[] judge(int[] computerNumberArray, Pitching pitching) {
