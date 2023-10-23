@@ -1,4 +1,6 @@
-package baseball;
+package baseball.controller;
+
+import baseball.config.DiContainer;
 
 public class ComputerController {
 
