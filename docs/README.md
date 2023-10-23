@@ -79,7 +79,7 @@
 
 📝**설명**: 사용자의 상태와 입력을 관리하는 클래스
 
-- [ ]  숫자 입력 받기
+- [x]  숫자 입력 받기
     - `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용
 - [ ]  게임 재시작 여부 입력 받기
     - `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용
