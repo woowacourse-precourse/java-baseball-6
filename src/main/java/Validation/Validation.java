@@ -38,4 +38,15 @@ public class Validation {
             throw new IllegalArgumentException();
         }
     }
+    public void userGameStartValidation(String input){
+        inputLengthIsZero(input);
+        inputIsNotNumber(input);
+        inputLengthIsOver(input);
+        inputLengthIsUnder(input);
+        duplicateNumber(input);
+    }
+    public void userGameRestartOrEndValidation(String input){
+        inputLengthIsZero(input);
+        inputIsNotNumber(input);
+    }
 }
