@@ -7,7 +7,7 @@ public enum OutputMessage {
     STRIKE("%d스트라이크\n"),
     BALL_STRIKE("%d볼 %d스트라이크\n");
 
-    private String message;
+    private final String message;
 
     OutputMessage(String message) {
         this.message = message;

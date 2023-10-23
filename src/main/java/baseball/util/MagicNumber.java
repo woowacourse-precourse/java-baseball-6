@@ -9,7 +9,7 @@ public enum MagicNumber {
     MIN_NUMBER(1),
     MAX_NUMBER(9);
 
-    private int number;
+    private final int number;
 
     MagicNumber(int number) {
         this.number = number;
