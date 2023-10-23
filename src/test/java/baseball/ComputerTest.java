@@ -4,22 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ComputerTest {
 
-  @DisplayName("난수는 항상 3자리 숫자여야 한다")
   @Test
-  void always_3_digit() {
+  void 난수는_항상_3자리의_숫자여야_한다() {
     Computer computer = new Computer();
     String generatedNumber = String.valueOf(computer.randomNumber);
     assertEquals(3, generatedNumber.length());
   }
 
-  @DisplayName("난수는 항상 서로 다른 숫자로 이뤄져 있다")
   @Test
-  void always_different_number() {
+  void 난수는_항상_서로_다른_숫자로_이뤄져야_한다() {
     Computer computer = new Computer();
     Set<Character> set = new HashSet<>();
 
@@ -32,9 +29,8 @@ class ComputerTest {
     assertEquals(generatedNumber.length(), set.size());
   }
 
-  @DisplayName("난수로 이뤄진 숫자는 항상 1에서 9사이에 있다")
   @Test
-  void always_between_1_and_9_() {
+  void 난수는_항상_1과_9사이에_있다() {
     Computer computer = new Computer();
     String generatedNumber = String.valueOf(computer.randomNumber);
     boolean result = true;
