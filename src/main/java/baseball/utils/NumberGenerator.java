@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 public class NumberGenerator {
 
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final int NUMBER_LENGTH = 3;
+    private final int MIN_NUMBER = 1;
+    private final int MAX_NUMBER = 9;
+    private final int NUMBER_LENGTH = 3;
 
-    public static List<Integer> generateNumbers() {
+    public List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < NUMBER_LENGTH) {
