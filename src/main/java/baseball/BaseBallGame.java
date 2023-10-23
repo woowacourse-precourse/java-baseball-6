@@ -6,9 +6,14 @@ public class BaseBallGame {
     private Player player;
 
     public void play() {
-        System.out.print(GameMessage.NUMBER_INPUT);
-        GameResult result = computer.calculateGameResult(player.getInputAnswer());
-        System.out.println(result.toString());
+        Boolean isGameEnd = false;
+        while (!isGameEnd) {
+            System.out.print(GameMessage.NUMBER_INPUT);
+            GameResult result = computer.calculateGameResult(player.getInputAnswer());
+            System.out.println(result.toString());
+            isGameEnd = result.isAnswer();
+        }
+        System.out.println(Computer.NUMBER_DIGIT.toString() + GameMessage.GAME_END);
     }
 
     public BaseBallGame() {

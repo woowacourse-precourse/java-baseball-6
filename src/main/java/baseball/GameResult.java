@@ -15,6 +15,10 @@ public class GameResult {
         this.strikeCount = strikeCount;
     }
 
+    public Boolean isAnswer() {
+        return strikeCount == Computer.NUMBER_DIGIT;
+    }
+
     @Override
     public String toString() {
         if (ballCount == 0 && strikeCount == 0) {
