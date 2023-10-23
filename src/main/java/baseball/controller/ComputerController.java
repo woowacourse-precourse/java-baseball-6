@@ -9,10 +9,10 @@ import baseball.view.OutputView;
 
 public class ComputerController {
     public static final String BALL_MESSAGE = "볼";
-    public static final String SPACE_MESSAGE = " ";
-    public static final String BLANK_MESSAGE = "";
     public static final String STRIKE_MESSAGE = "스트라이크";
     public static final String NOTHING_MESSAGE = "낫싱";
+    public static final String SPACE_MESSAGE = " ";
+    public static final String BLANK_MESSAGE = "";
     public static final int SUCCESS_GAME_STRIKE_NUMBER = 3;
 
     ComputerNumber computerNumber;
