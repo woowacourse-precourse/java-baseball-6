@@ -8,7 +8,13 @@ import java.util.List;
 
 public class GameController {
 
-    public static List<Integer> generateRandomBaseball() {
+    private StartView startView;
+
+    public GameController(StartView startView) {
+        this.startView = startView;
+    }
+
+    public List<Integer> generateRandomBaseball() {
         List<Integer> computerList = new ArrayList<>();
         while (computerList.size() < GameConstants.NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
