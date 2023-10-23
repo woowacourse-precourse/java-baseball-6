@@ -1,5 +1,7 @@
 package baseball.domain.number;
 
+import baseball.exception.number.NumberOutOfRangeException;
+
 public class Number {
     private final static int MIN_NUMBER = 1;
     private final static int MAX_NUMBER = 9;
@@ -35,7 +37,7 @@ public class Number {
     }
     private static void checkNumberRange(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException("1~9 사이의 값만 입력하여야 합니다.");
+            throw new NumberOutOfRangeException();
         }
     }
 }
