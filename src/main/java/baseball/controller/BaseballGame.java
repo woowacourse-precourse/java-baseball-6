@@ -6,37 +6,24 @@ import baseball.model.NumberInput;
 import baseball.model.PlayResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-
-    private static final Scanner SCANNER = new Scanner(System.in);
     private final Computer computer = new Computer();
 
     public void playGame() {
         InputView.printStartOfGame();
+        newGame();
+    }
+
+    private void newGame() {
         Balls answerBalls = new Balls(computer.createRandomNumbers());
 
         playGameUntilCorrect(answerBalls);
 
         OutputView.printEndOfGame();
-        InputView.askRetry();
 
         askRetry();
-    }
-
-    private Balls getBalls() {
-        try {
-            return new Balls(getInput());
-        } catch (IllegalArgumentException e) {
-            return getBalls();
-        }
-    }
-
-    private NumberInput getInput() {
-        InputView.demandInput();
-        return NumberInput.of(SCANNER.nextLine());
     }
 
     private PlayResult playGameUntilCorrect(Balls answerBalls) {
@@ -50,19 +37,29 @@ public class BaseballGame {
         return playGameUntilCorrect(answerBalls);
     }
 
+    private Balls getBalls() {
+        return new Balls(getInput());
+    }
+
+    private NumberInput getInput() {
+        InputView.demandInput();
+        return NumberInput.of(Console.readLine());
+    }
+
     private void askRetry() {
-        String input = SCANNER.nextLine().trim();
+        InputView.askRetry();
+        String input = Console.readLine().trim();
 
         if (input.equals("2")) {
             return;
         }
 
         if (input.equals("1")) {
-            playGame();
+            newGame();
             return;
         }
 
-        InputView.askRetry();
-        askRetry();
+//        InputView.askRetry();
+//        askRetry();
     }
 }

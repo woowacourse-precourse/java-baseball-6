@@ -62,7 +62,7 @@ public class BallsTest {
         assertThat(balls.getBalls()).containsExactlyElementsOf(ballList);
     }
 
-    @DisplayName("Balls끼리 비교 : 3STRIKE")
+    @DisplayName("Balls끼리 비교 : 3스트라이크")
     @ParameterizedTest
     @CsvSource({"123,123", "345,345", "496,496"})
     public void compareBallWithBalls_3STRIKE(String nums1, String nums2) throws Exception {
@@ -77,7 +77,7 @@ public class BallsTest {
         assertThat(playResult.toString()).isEqualTo("3스트라이크");
     }
 
-    @DisplayName("Balls끼리 비교 : 2STRIKE")
+    @DisplayName("Balls끼리 비교 : 2스트라이크")
     @ParameterizedTest
     @CsvSource({"123,124", "312,412", "964,974"})
     public void compareBallWithBalls_2STRIKE(String nums1, String nums2) throws Exception {
@@ -92,7 +92,7 @@ public class BallsTest {
         assertThat(playResult.toString()).isEqualTo("2스트라이크");
     }
 
-    @DisplayName("Balls끼리 비교 : 1STRIKE 1BALL")
+    @DisplayName("Balls끼리 비교 : 1볼 1스트라이크")
     @ParameterizedTest
     @CsvSource({"345,374", "123,325", "912,993"})
     public void compareBallWithBalls_1STRIKE_1BALL(String nums1, String nums2) throws Exception {
@@ -104,10 +104,10 @@ public class BallsTest {
         PlayResult playResult = balls1.checkBalls(balls2);
 
         //then
-        assertThat(playResult.toString()).isEqualTo("1스트라이크 1볼");
+        assertThat(playResult.toString()).isEqualTo("1볼 1스트라이크");
     }
 
-    @DisplayName("Balls끼리 비교 : 1STRIKE 2BALL")
+    @DisplayName("Balls끼리 비교 : 2볼 1스트라이크")
     @ParameterizedTest
     @CsvSource({"123,132", "312,321", "965,996"})
     public void compareBallWithBalls_1STRIKE_2BALL(String nums1, String nums2) throws Exception {
@@ -119,10 +119,10 @@ public class BallsTest {
         PlayResult playResult = balls1.checkBalls(balls2);
 
         //then
-        assertThat(playResult.toString()).isEqualTo("1스트라이크 2볼");
+        assertThat(playResult.toString()).isEqualTo("2볼 1스트라이크");
     }
 
-    @DisplayName("Balls끼리 비교 : 1BALL")
+    @DisplayName("Balls끼리 비교 : 1볼")
     @ParameterizedTest
     @CsvSource({"123,561", "312,296", "965,257"})
     public void compareBallWithBalls_1BALL(String nums1, String nums2) throws Exception {

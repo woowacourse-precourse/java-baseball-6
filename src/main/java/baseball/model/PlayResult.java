@@ -29,7 +29,7 @@ public class PlayResult {
         }
 
         if (strikeCount != 0 && ballCount != 0) {
-            return strikeCount + STRIKE_STRING + SPACE + ballCount + BALL_STRING;
+            return ballCount + BALL_STRING + SPACE + strikeCount + STRIKE_STRING;
         }
 
         if (strikeCount == 0 && ballCount != 0) {

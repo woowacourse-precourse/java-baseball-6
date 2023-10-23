@@ -27,7 +27,7 @@ public class NumberInputTest {
         //when, then
         assertThatThrownBy(() -> new NumberInput(illegalFormat))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("빈 값이 입력되었습니다. 3자리 숫자를 입력해주세요");
+                .hasMessageContaining("3자리 숫자를 입력해주세요");
     }
 
     @DisplayName("1-9로 이루어진 3자리 수를 입력받기 예외 : 숫자가 아닌 문자가 포함된 경우 IllegalArgumentException을 던진다.")
