@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.service.BaseballService;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class BaseballController {
     public void playGame() {
         int cntStrike, cntBall;
         String number;
-        while(true) {
+        while (true) {
             number = view.inputNumber();
             cntStrike = baseballService.checkStrike(number, computer);
             cntBall = baseballService.checkBall(number, computer);
