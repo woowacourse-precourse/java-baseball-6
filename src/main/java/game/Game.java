@@ -1,7 +1,9 @@
 package game;
 
+import java.io.IOException;
+
 public interface Game {
-    Object gameInit();
-    void gamePlay();
+    void gameInit();
+    void gamePlay() throws IOException;
     void gameExit();
 }
