@@ -1,23 +1,22 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import view.GameView;
+import view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class PlayerNumber {
 
-    private static String playerNumber;
+    private static String playerNumbers;
     public static boolean isWin = false;
 
-    public static void inputPlayerNumber() {
-        GameView.printInputMessage();
-        NumberException.numberException(playerNumber = Console.readLine());
+    public void setPlayerNumbers(String number) {
+        this.playerNumbers = number;
     }
 
     public List<Integer> getPlayerNumberToList() {
-        return Arrays.stream(playerNumber.split("")).toList()
+        return Arrays.stream(playerNumbers.split("")).toList()
                 .stream().mapToInt(Integer :: parseInt)
                 .boxed().toList();
     }
