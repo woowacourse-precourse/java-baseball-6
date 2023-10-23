@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class Application {
 
-    // 중복 검사 함수
+    // 중복 검사 함
     public static boolean isDuplicationExist(String randomNum) {
         ArrayList<Character> randomNumList = new ArrayList<Character>();
         for (int i=0; i<3; i++){
@@ -18,9 +18,18 @@ public class Application {
         }
         Set<Character> randNumSet = new HashSet<>(randomNumList);
         if (randNumSet.size()!=3) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public static boolean isCharacterExist(String randomNum) {
+        try{
+            Integer.parseInt(randomNum);
+            return false;
+        } catch(NumberFormatException e){
+            return true;
+        }
     }
 
     // 게임 시작 함수
@@ -49,7 +58,12 @@ public class Application {
             }
 
             // 플레이어가 입력한 수에 중복되는 수가 존재할 경우 예외처리
-            if (!isDuplicationExist(randomNum)){
+            if (isDuplicationExist(randomNum)){
+                throw new IllegalArgumentException();
+            }
+
+            // 플레이어가 입력한 수에 문자가 있는 경우 예외처리
+            if (isCharacterExist(randomNum)){
                 throw new IllegalArgumentException();
             }
 
