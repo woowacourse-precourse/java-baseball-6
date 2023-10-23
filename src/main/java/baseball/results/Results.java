@@ -1,9 +1,10 @@
 package baseball.results;
 
-import baseball.balls.Balls;
 import baseball.utils.ResultsUtils;
 
 public class Results {
+
+    private final int BALL_COUNT = 3;
 
     private int strikeCount = 0;
     private int ballCount = 0;
@@ -30,7 +31,7 @@ public class Results {
     }
 
     public boolean isAnswer() {
-        return strikeCount == Balls.BALL_COUNT;
+        return strikeCount == BALL_COUNT;
     }
 
 }

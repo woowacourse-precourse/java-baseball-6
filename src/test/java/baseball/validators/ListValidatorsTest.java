@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ListDistinctValidateTest {
+public class ListValidatorsTest {
 
     private final int SIZE = 3;
 

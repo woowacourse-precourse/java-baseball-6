@@ -2,32 +2,32 @@ package baseball.utils;
 
 import baseball.balls.Ball;
 import baseball.balls.Balls;
-import baseball.utils.BallsUtils;
-import java.util.List;
-import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class BallsUtilsTest {
 
     @Test
-    void convertIntegersToBallList_성공() {
+    void 문자열_Balls_변환_테스트() {
         // given
-        List<Integer> integers = IntStream.rangeClosed(1, Balls.BALL_COUNT)
-                .boxed()
-                .toList();
+        String string = "123";
+        Ball ball1 = new Ball(1, 0);
+        Ball ball2 = new Ball(2, 1);
+        Ball ball3 = new Ball(3, 2);
+        Ball ball4 = new Ball(4, 2);
 
         // when
-        List<Ball> balls = BallsUtils.convertIntegersToBallList(integers);
+        Balls balls = BallsUtils.convertStringToBalls(string);
+        boolean hasBall1 = balls.hasSameBall(ball1);
+        boolean hasBall2 = balls.hasSameBall(ball2);
+        boolean hasBall3 = balls.hasSameBall(ball3);
+        boolean hasBall4 = balls.hasSameBall(ball4);
 
         // then
-        IntStream.range(0, Balls.BALL_COUNT)
-                .forEach(i -> {
-                    Ball ball = balls.get(i);
-                    int expectedValue = i + 1;
-                    int expectedIndex = i;
-                    Ball expectedBall = new Ball(expectedValue, expectedIndex);
-                    Assertions.assertTrue(ball.equals(expectedBall));
-                });
+        Assertions.assertTrue(hasBall1);
+        Assertions.assertTrue(hasBall2);
+        Assertions.assertTrue(hasBall3);
+        Assertions.assertFalse(hasBall4);
     }
+
 }

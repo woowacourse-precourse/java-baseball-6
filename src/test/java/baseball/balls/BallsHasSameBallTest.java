@@ -1,65 +1,70 @@
 package baseball.balls;
 
-import baseball.testUtils.BallsGeneratorUtil;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class BallsHasSameBallTest {
 
+    private Balls balls;
+
+    @BeforeEach
+    void setup() {
+        List<Ball> balls = List.of(
+                new Ball(1, 0),
+                new Ball(2, 1),
+                new Ball(3, 2)
+        );
+        this.balls = new Balls(balls);
+    }
+
     @Test
     void 같은_값의_공_포함() {
         // given
-        Balls balls = BallsGeneratorUtil.generateBalls();
+        Ball ball = new Ball(2, 0);
 
         // when
-        int expectedBallValue = BallValue.MIN_VALUE;
-        int expectedBallIndex = 1;
-        Ball expectedBall = new Ball(expectedBallValue, expectedBallIndex);
+        boolean hasSameValueBall = balls.hasSameValueBall(ball);
 
         // then
-        Assertions.assertTrue(balls.hasSameValueBall(expectedBall));
+        Assertions.assertTrue(hasSameValueBall);
     }
 
     @Test
     void 같은_값의_공_미포함() {
         // given
-        Balls balls = BallsGeneratorUtil.generateBalls();
+        Ball ball = new Ball(4, 0);
 
         // when
-        int expectedBallValue = BallValue.MAX_VALUE;
-        int expectedBallIndex = 1;
-        Ball expectedBall = new Ball(expectedBallValue, expectedBallIndex);
+        boolean hasSameValueBall = balls.hasSameValueBall(ball);
 
         // then
-        Assertions.assertFalse(balls.hasSameValueBall(expectedBall));
+        Assertions.assertFalse(hasSameValueBall);
     }
 
     @Test
     void 같은_공_포함() {
         // given
-        Balls balls = BallsGeneratorUtil.generateBalls();
+        Ball ball = new Ball(1, 0);
 
         // when
-        int expectedBallValue = BallValue.MIN_VALUE;
-        int expectedBallIndex = 0;
-        Ball expectedBall = new Ball(expectedBallValue, expectedBallIndex);
+        boolean hasSameBall = balls.hasSameBall(ball);
 
         // then
-        Assertions.assertTrue(balls.hasSameValueBall(expectedBall));
+        Assertions.assertTrue(hasSameBall);
     }
 
     @Test
     void 같은_공_미포함() {
         // given
-        Balls balls = BallsGeneratorUtil.generateBalls();
+        Ball ball = new Ball(2, 0);
 
         // when
-        int expectedBallValue = BallValue.MAX_VALUE;
-        int expectedBallIndex = Balls.BALL_COUNT - 1;
-        Ball expectedBall = new Ball(expectedBallValue, expectedBallIndex);
+        boolean hasSameBall = balls.hasSameBall(ball);
 
         // then
-        Assertions.assertFalse(balls.hasSameValueBall(expectedBall));
+        Assertions.assertFalse(hasSameBall);
     }
 
 }
