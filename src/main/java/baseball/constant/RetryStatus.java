@@ -6,21 +6,21 @@ public enum RetryStatus {
     KEEP_GOING(1),
     FINISH(2);
 
-    private final Integer retryCommand;
+    private final Integer command;
 
-    RetryStatus(final Integer retryCommand) {
-        this.retryCommand = retryCommand;
+    RetryStatus(final Integer command) {
+        this.command = command;
     }
 
     public static RetryStatus valueOfCommand(final Integer command) {
         return Arrays.stream(values())
-                .filter(value -> value.retryCommand.equals(command))
+                .filter(value -> value.command.equals(command))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public Integer toRetryCommand() {
-        return this.retryCommand;
+    public Integer toCommand() {
+        return this.command;
     }
 
     public boolean isKeepGoing() {

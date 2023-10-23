@@ -7,7 +7,7 @@ public enum GameMessage {
     RETRY_INPUT_REQUEST(
             String.format(
                     "게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.",
-                    RetryStatus.KEEP_GOING.toRetryCommand(), RetryStatus.FINISH.toRetryCommand()));
+                    RetryStatus.KEEP_GOING.toCommand(), RetryStatus.FINISH.toCommand()));
 
     private final String message;
 
