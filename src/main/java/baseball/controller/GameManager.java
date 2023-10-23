@@ -6,10 +6,10 @@ import baseball.domain.RoundResult;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameController {
+public class GameManager {
     private BaseBalls answers;
 
-    public GameController(){
+    public GameManager(){
     }
 
     public void play(){
