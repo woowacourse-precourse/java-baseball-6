@@ -1,16 +1,15 @@
 package baseball.domain.user;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class UserTest {
     private final static User user = new User();
@@ -61,9 +60,8 @@ class UserTest {
 
         try {
             // WHEN
-            user.parseUserAnswer(userAnswer);
-            List<Integer> userInputs = user.getUserAnswerInputs();
-            boolean hasParsedCorrectly = userInputs.equals(expectedAnswers);
+            List<Integer> parsedUserAnswer = User.parseUserAnswer(userAnswer);
+            boolean hasParsedCorrectly = parsedUserAnswer.equals(expectedAnswers);
 
             // THEN
             assertThat(hasParsedCorrectly).isEqualTo(true);
