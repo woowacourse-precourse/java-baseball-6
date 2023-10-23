@@ -2,6 +2,9 @@ package game;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static constant.Constant.*;
+import static constant.ErrorMessage.*;
+
 public class Game {
 
     static Computer computer;
@@ -15,13 +18,21 @@ public class Game {
         } while (game.restart());
     }
 
-    public void startNewGame() {
+    private void startNewGame() {
 
     }
 
-    public boolean restart() {
+    private boolean restart() {
+        System.out.println(RESTART_MESSAGE);
 
-        return true;
+        String InputString = Console.readLine();
+        if (InputString.equals(RESTARTING_INPUT)) {
+            return true;
+        } else if (InputString.equals(TERMINATING_INPUT)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException(wrongInput);
     }
 }
 
