@@ -18,7 +18,7 @@ public class GameService {
 		setTargetNumber();
 		do {
 			askInput();
-			printOutput(getResult());
+			printOutput(getHint());
 		} while(!checkWin());
 	}
 
@@ -32,15 +32,15 @@ public class GameService {
 	}
 
 	private boolean checkWin() {
-		return hint.isWin(NUMBER_SIZE);
+		return hint.isWin();
 	}
 
 	private void setTargetNumber() {
 		targetNumber = TargetNumber.create(NUMBER_SIZE);
 	}
 
-	private String getResult() {
+	private String getHint() {
 		hint = Hint.create(targetNumber, inputNumber);
-		return hint.getResult();
+		return hint.getHint();
 	}
 }

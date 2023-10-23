@@ -14,12 +14,12 @@ public class Hint {
 		return hint;
 	}
 
-	public String getResult() {
+	public String getHint() {
 		return Parser.parseHintToString(strike, ball);
 	}
 
-	public boolean isWin(int size) {
-		return strike == size;
+	public boolean isWin() {
+		return strike == NUMBER_SIZE;
 	}
 
 	private void compare(TargetNumber target, InputNumber input) {
@@ -34,14 +34,18 @@ public class Hint {
 			char targetDigit = target.charAt(i);
 			char inputDigit = input.charAt(i);
 
-			if (inputDigit == targetDigit) {
-				strike++;
-				continue;
-			}
-
-			if (target.contains(String.valueOf(inputDigit))) {
-				ball++;
-			}
+			checkPosition(target, targetDigit, inputDigit);
 		}
 	}
-}
+
+	private void checkPosition(String target, char targetDigit, char inputDigit) {
+		if (inputDigit == targetDigit) {
+			strike++;
+			return;
+		}
+
+		if (target.contains(String.valueOf(inputDigit))) {
+			ball++;
+		}
+	}
+ }
