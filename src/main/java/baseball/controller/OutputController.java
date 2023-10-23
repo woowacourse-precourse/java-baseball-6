@@ -10,11 +10,30 @@ public class OutputController {
     public final static String BALL = "볼";
     public final static String NOTHING = "낫싱";
     public final static String ANSWER ="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public void cliOutputln(String ment) {
+    public void printNoticeln(String ment) {
         System.out.println(ment);
     }
 
-    public void cliOutput(String ment) {
+    public void printNotice(String ment) {
         System.out.print(ment);
+    }
+
+    public void printResult(int strike,int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println(NOTHING);
+            return;
+        }
+        if (ball != 0) {
+            System.out.print(ball + BALL);
+        }
+
+        if (strike == 0) {
+            System.out.println("");
+            return;
+        } else {
+            System.out.print(" ");
+        }
+        System.out.println(strike + STRIKE);
+
     }
 }
