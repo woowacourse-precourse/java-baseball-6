@@ -99,10 +99,8 @@ public class Application {
     }
 
     private static void validateReset(String reset) {
-        if (reset.length() != 1) {
-            throw new IllegalArgumentException("입력이 유효하지 않습니다.");
-        } else if (!reset.equals("1") && !reset.equals("2")) {
-            throw new IllegalArgumentException("입력이 유효하지 않습니다.");
+        if (!reset.equals("1") && !reset.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }
     }
 }
