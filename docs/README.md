@@ -81,7 +81,7 @@
 
 - [x]  숫자 입력 받기
     - `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용
-- [ ]  게임 재시작 여부 입력 받기
+- [x]  게임 재시작 여부 입력 받기
     - `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용
 
 ### InputValidator.java
@@ -91,6 +91,6 @@
 - [x]  입력 받은 숫자 유효성 검증하기
     - 서로 다른 3자리의 수 인지 확인
     - 유효하지 않으면 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
-- [ ]  입력 받은 재시작 여부 유효성 검증하기
+- [x]  입력 받은 재시작 여부 유효성 검증하기
     - 1이나 2인지 확인
     - 유효하지 않으면 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
