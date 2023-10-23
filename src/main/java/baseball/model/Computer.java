@@ -9,14 +9,18 @@ public class Computer {
 
     private List<Integer> computerNumber;
 
+    private static final int numberSize = 3;
+    private static final int startNumber = 1;
+    private static final int endNumber = 9;
+
     public List<Integer> getComputerNumber() {
         return computerNumber;
     }
 
     public void drawComputerNumber(){
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < numberSize) {
+            int randomNumber = Randoms.pickNumberInRange(startNumber, endNumber);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
