@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.model.Command;
 import baseball.model.Computer;
 import baseball.model.Judgement;
 import baseball.model.NumberGenerator;
@@ -28,5 +29,9 @@ public class GameService {
 
     public Judgement getJudgement() {
         return judgement;
+    }
+
+    public boolean restartsGame(String number) {
+        return Command.find(number).equals(Command.RESTART);
     }
 }

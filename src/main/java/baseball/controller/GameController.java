@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.model.Command;
 import baseball.service.GameService;
 import baseball.view.Input;
 import baseball.view.Output;
@@ -14,7 +13,7 @@ public class GameController {
     public void play() {
         output.showStartMessage();
 
-        while (true) {
+        do {
             gameService.init();
 
             while (!gameService.isGameOver()) {
@@ -25,11 +24,6 @@ public class GameController {
 
             output.showGameOver();
             output.showGameRestartMessage();
-
-            Command command = Command.find(input.readNumber());
-            if (command.equals(Command.EXIT)) {
-                return;
-            }
-        }
+        } while (gameService.restartsGame(input.readNumber()));
     }
 }
