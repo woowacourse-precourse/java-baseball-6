@@ -7,7 +7,7 @@
 
       
 
-- ✅ 컴퓨터가 추출한 숫자를 모두 맞혔는지 아닌지 판단 후 정답 출력하는 ```checkAnswerStrikeAndBall()``` 함수
+- ✅ 컴퓨터가 추출한 숫자를 모두 맞혔는지 아닌지 판단 후 정답 출력하는 ```displayBaseballGameResult()``` 함수
   - strike == 0 이고 ball == 0인경우 
     - 낫싱 출력
   - strike == 3 이고 ball == 0 인경우
