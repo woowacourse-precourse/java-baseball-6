@@ -11,6 +11,7 @@ public class Game {
         System.out.println(GAME_START_MESSAGE);
         setGame();
         playGame();
+        askRetry();
     }
 
     private void setGame() {
@@ -26,5 +27,12 @@ public class Game {
             result.printResult();
         }
         System.out.println(FINISH_GAME_MESSAGE);
+    }
+
+    private void askRetry() {
+        GameCommand gameCommand = user.inputGameCommand();
+        if(gameCommand.equals(GameCommand.RETRY)){
+            run();
+        }
     }
 }

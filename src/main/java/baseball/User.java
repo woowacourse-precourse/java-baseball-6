@@ -16,11 +16,21 @@ public class User {
         numbers = parseIntegers(input);
     }
 
+    public GameCommand inputGameCommand() {
+        System.out.println(INPUT_GAME_COMMAND_MESSAGE);
+        String input = Console.readLine();
+        return GameCommand.findByCommand(parseInteger(input));
+    }
+
     private List<Integer> parseIntegers(String input) {
         return input.chars()
                 .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    private Integer parseInteger(String input) {
+        return Integer.parseInt(input);
     }
 
     public List<Integer> getNumbers() {
