@@ -5,7 +5,7 @@ import baseball.validator.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.domain.Const.FIXED_ANSWER_CIPHERS;
+import static baseball.domain.Const.*;
 
 public class GamePlayer {
     private final Validator validator = new Validator();
@@ -34,7 +34,7 @@ public class GamePlayer {
 
         // 숫자 중에 0이 포함이 안 됐는지 검증
         for (int i = 0; i < FIXED_ANSWER_CIPHERS; i++) {
-            validator.validateInRange(Character.getNumericValue(inputtedNumbers.charAt(i)), 1, 9);
+            validator.validateInRange(Character.getNumericValue(inputtedNumbers.charAt(i)), FROM_NUMBER, TO_NUMBER);
         }
 
         return parsedValidatedInt;
