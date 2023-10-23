@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,26 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 유효한_재시작_옵션_테스트() {
+        Player player = new Player();
+        String validOption = "1";
+
+        int result = player.receiveRetryOption(validOption);
+
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    void 유효하지_않은_재시작_옵션_예외_테스트() {
+        Player player = new Player();
+        String invalidOption = "3";
+
+        assertThatThrownBy(() -> player.receiveRetryOption(invalidOption))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Override
     public void runMain() {
