@@ -12,10 +12,14 @@ public class UserNumbers extends Numbers {
 
     public static UserNumbers createUserNumbers(final String userInput) {
         NumbersValidator.validate(userInput);
-        List<Integer> userNumbers = Arrays.stream(userInput.split(""))
+        List<Integer> userNumbers = mapToIntegers(userInput);
+        return new UserNumbers(userNumbers);
+    }
+
+    private static List<Integer> mapToIntegers(final String userInput) {
+        return Arrays.stream(userInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        return new UserNumbers(userNumbers);
     }
 
     static private class NumbersValidator {

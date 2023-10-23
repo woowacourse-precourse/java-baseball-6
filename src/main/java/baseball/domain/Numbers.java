@@ -22,18 +22,21 @@ public class Numbers {
 
     private int calculateStrikeCount(final Numbers inputNumbers) {
         return (int) IntStream.range(0, NUMBER_LENGTH)
-                .filter(i -> isSameNumber(numbers.get(i), inputNumbers.numbers.get(i)))
+                .filter(i -> isStrike(numbers.get(i), inputNumbers.numbers.get(i)))
                 .count();
     }
 
     private int calculateBallCount(final Numbers inputNumbers) {
         return (int) IntStream.range(0, NUMBER_LENGTH)
-                .filter(i -> !isSameNumber(numbers.get(i), inputNumbers.numbers.get(i))
-                        && numbers.contains(inputNumbers.numbers.get(i)))
+                .filter(i -> isBall(numbers.get(i), inputNumbers.numbers.get(i)))
                 .count();
     }
 
-    private boolean isSameNumber(final int computerNumber, final int inputNumber) {
+    private boolean isStrike(final int computerNumber, final int inputNumber) {
         return Objects.equals(computerNumber, inputNumber);
+    }
+
+    private boolean isBall(final int computerNumber, final int inputNumber) {
+        return !isStrike(computerNumber, inputNumber) && numbers.contains(inputNumber);
     }
 }
