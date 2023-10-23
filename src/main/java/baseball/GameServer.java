@@ -9,12 +9,12 @@ final class GameServer {
         Output.printGameStart();
         while (true) {
             playGame();
-            if (score.isThreeStrike()) {
-                if(!askRetry().retry) break;
-                computer.prepareGameRetry();
+            if (isGameClear()) {
+                if(endGame()) break;
+                retry();
             }
         }
-        endGame();
+        closeGame();
     }
 
     private void playGame() {
@@ -24,13 +24,21 @@ final class GameServer {
         Output.printGameScore(score.getResultInKorean());
     }
 
-    private Command askRetry() {
-        Output.printGameClear();
-        Output.printAskingRetry();
-        return Command.getCommand(Input.receiveInput());
+    private boolean isGameClear() {
+        return score.isThreeStrike();
     }
 
-    private void endGame() {
+    private void retry() {
+        computer.prepareGameRetry();
+    }
+
+    private boolean endGame() {
+        Output.printGameClear();
+        Output.printAskingRetry();
+        return !Command.getCommand(Input.receiveInput()).retry;
+    }
+
+    private void closeGame() {
         Input.stopReceivingInput();
     }
 }
