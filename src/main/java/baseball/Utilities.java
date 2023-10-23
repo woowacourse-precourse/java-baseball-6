@@ -6,5 +6,9 @@ public class Utilities {
         return target + input;
     }
 
+    public static int stringLength(String str) {
+        return str.length();
+    }
+
 
 }

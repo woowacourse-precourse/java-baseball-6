@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Utilities.combineStrings;
+import static baseball.Utilities.stringLength;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UtilitiesTest {
@@ -16,4 +17,8 @@ class UtilitiesTest {
     }
 
     @Test
+    public void stringLengthTest() {
+        String str = "123456";
+        Assertions.assertEquals(stringLength(str), 6);
+    }
 }
