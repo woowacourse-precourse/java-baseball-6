@@ -71,6 +71,19 @@ public class PlayerTest extends NsTest {
   }
 
   @Test
+  public void checkDuplicatedNumber() {
+    System.setIn(new ByteArrayInputStream("111\n".getBytes()));
+    Player player = new Player();
+
+    assertSimpleTest(
+        () -> {
+          boolean isValid = player.validateNumericInput(Console.readLine(), IN_GAME);
+          assertFalse(isValid);
+        }
+    );
+  }
+
+  @Test
   public void invalidaNotNumbers() {
     System.setIn(new ByteArrayInputStream("abcd\n".getBytes()));
     Player player = new Player();
