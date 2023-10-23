@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.domain.GameRestartOption;
 import baseball.domain.RoundResult;
 import baseball.domain.GameSet;
 import baseball.service.GameService;
@@ -12,13 +11,10 @@ public class GameController {
 
     public static void startGame() {
         OutputView.printStartMessage();
-        GameRestartOption gameRestartOption;
 
         do {
             startGameSet();
-            OutputView.printGameRestartMessage();
-            gameRestartOption = GameRestartOption.from(InputView.readUserInput());
-        } while (gameRestartOption.isRestart());
+        } while (determineGameRestart());
     }
 
     private static void startGameSet() {
@@ -41,5 +37,11 @@ public class GameController {
         }
 
         OutputView.printBallAndStrikeResult(roundResult);
+    }
+
+    private static boolean determineGameRestart() {
+        OutputView.printGameRestartMessage();
+        String restartOption = InputView.readUserInput();
+        return GameService.isRestart(restartOption);
     }
 }
