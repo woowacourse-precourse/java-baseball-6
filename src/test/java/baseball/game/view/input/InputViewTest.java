@@ -3,6 +3,7 @@ package baseball.game.view.input;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.game.controller.dto.NumberListDto;
 import baseball.game.view.exception.CharacterNotNumberException;
 import baseball.game.view.exception.NotMenuOptionException;
 import baseball.game.view.exception.NumberContainsZeroException;
@@ -21,8 +22,8 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
 
         InputView inputView = new InputView(in);
-
-        assertThat(inputView.getGuessNumbers())
+        NumberListDto userInputNumbers = inputView.getGuessNumbers();
+        assertThat(userInputNumbers.getNumberList())
                 .contains(1, 2, 3);
     }
 

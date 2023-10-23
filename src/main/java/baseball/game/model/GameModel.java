@@ -1,13 +1,17 @@
 package baseball.game.model;
 
+import baseball.game.controller.dto.NumberListDto;
 import baseball.game.model.dto.RoundResult;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 랜덤 숫자 생성과 라운드 결과를 계산하는 클래스
+ */
 public class GameModel {
 
-    public List<Integer> generateRandomAnswer() {
+    public NumberListDto generateRandomAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -15,12 +19,15 @@ public class GameModel {
                 answer.add(randomNumber);
             }
         }
-        return answer;
+        return new NumberListDto(answer);
     }
 
-    public RoundResult calculateRoundResult(List<Integer> answerList, List<Integer> guessList) {
+    public RoundResult calculateRoundResult(NumberListDto answer, NumberListDto guess) {
         int ballCount = 0;
         int strikeCount = 0;
+
+        List<Integer> answerList = answer.getNumberList();
+        List<Integer> guessList = guess.getNumberList();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

@@ -1,7 +1,11 @@
 package baseball.game.view.input;
 
-import baseball.game.view.exception.*;
-
+import baseball.game.controller.dto.NumberListDto;
+import baseball.game.view.exception.CharacterNotNumberException;
+import baseball.game.view.exception.DuplicatedNumberException;
+import baseball.game.view.exception.NotMenuOptionException;
+import baseball.game.view.exception.NumberContainsZeroException;
+import baseball.game.view.exception.SizeNotMatchException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +14,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * 유저의 입력을 받는 클래스
+ * 유저의 입력을 받는 클래스 유저의 입력이 올바르지 않을 경우 RuntimeException 발생
  */
 public class InputView {
 
@@ -20,7 +24,7 @@ public class InputView {
         this.scanner = new Scanner(inputStream);
     }
 
-    public List<Integer> getGuessNumbers() {
+    public NumberListDto getGuessNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String rawInput = scanner.nextLine();
 
@@ -42,7 +46,7 @@ public class InputView {
         throw new NotMenuOptionException();
     }
 
-    private List<Integer> convertOrThrow(String rawInput) {
+    private NumberListDto convertOrThrow(String rawInput) {
         List<String> stringList = List.of(rawInput.split(""));
         List<Integer> numberList = new ArrayList<>();
 
@@ -56,7 +60,7 @@ public class InputView {
 
         checkNumberList(numberList);
 
-        return numberList;
+        return new NumberListDto(numberList);
     }
 
     private void checkNumberList(List<Integer> numberList) {
