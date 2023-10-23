@@ -32,19 +32,15 @@ public class InputVerifier {
     }
 
     private static void checkDigitRange(String inRange) {
-        if (outOfDigitRange(inRange)) {
+        inRange.chars()
+                .map(Character::getNumericValue)
+                .forEach(InputVerifier::outOfEachDigitRange);
+    }
+
+    private static void outOfEachDigitRange(int comp) {
+        if (comp < SystemConstant.MIN_NUMBER_EACH_DIGIT || comp > SystemConstant.MAX_NUMBER_EACH_DIGIT) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_HAS_ZERO);
         }
-    }
-
-    private static boolean outOfDigitRange(String inRange) {
-        return inRange.chars()
-                .map(Character::getNumericValue)
-                .anyMatch(InputVerifier::outOfEachDigitRange);
-    }
-
-    private static boolean outOfEachDigitRange(int comp) {
-        return comp < SystemConstant.MIN_NUMBER_EACH_DIGIT || comp > SystemConstant.MAX_NUMBER_EACH_DIGIT;
     }
 
     private static void checkDistinct(String isDistinct) {
