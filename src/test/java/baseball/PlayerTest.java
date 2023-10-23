@@ -21,11 +21,6 @@ public class PlayerTest extends NsTest {
     System.setIn(originalSystemIn);
   }
 
-  @Test
-  public void test() {
-    System.out.println("test");
-  }
-
   @Test()
   public void invalidThreeNumbers() {
     System.setIn(new ByteArrayInputStream("1234\n".getBytes()));
@@ -81,6 +76,7 @@ public class PlayerTest extends NsTest {
           assertFalse(isValid);
         }
     );
+    Console.close();
   }
 
   @Test
@@ -98,8 +94,6 @@ public class PlayerTest extends NsTest {
         }
     );
     Console.close();
-
-
   }
 
   public void runMain() {
