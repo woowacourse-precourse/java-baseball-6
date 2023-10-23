@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class PlayerTest {
     @Test
     @DisplayName("4개 이상의 수가 입력될 경우 Exception이 발생해야 한다.")
-    void createExceptionByOutOfInputSize() {
+    void checkExceptionByOutOfInputSize() {
         // given
         List<Integer> input = Arrays.asList(1, 2, 3, 4);
 
@@ -19,5 +19,15 @@ class PlayerTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Player.createByIntegerNumbers(input))
                 .withMessageMatching("3개 이상 입력될 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("중복된 숫자가 입력될 경우 Exception이 발생해야 한다.")
+    public void checkExceptionForDuplicateNumbers() {
+        List<Integer> inputNumbers = Arrays.asList(1, 2, 2);
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Player.createByIntegerNumbers(inputNumbers))
+                .withMessage("중복된 숫자는 입력될 수 없습니다.");
     }
 }
