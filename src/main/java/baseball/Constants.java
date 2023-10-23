@@ -17,4 +17,5 @@ public class Constants {
 
     public static final String FIND_COMMAND_ERROR = "1또는 2를 입력해야 합니다.";
     public static final String NUMBERS_SIZE_ERROR = "3자리 숫자만을 허용합니다.";
+    public static final String NUMBER_RANGE_ERROR = "숫자는 1부터 9까지만 허용합니다.";
 }

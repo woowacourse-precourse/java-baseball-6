@@ -16,4 +16,13 @@ public class Numbers {
             throw new IllegalArgumentException(NUMBERS_SIZE_ERROR);
         }
     }
+
+    private void validateNumberRange(List<Integer> numbers) {
+        numbers.stream()
+                .forEach(number -> {
+                    if (number < NUMBER_MIN_RANGE || number > NUMBER_MAX_RANGE) {
+                        throw new IllegalArgumentException(NUMBER_RANGE_ERROR);
+                    }
+                });
+    }
 }
