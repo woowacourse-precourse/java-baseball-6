@@ -19,14 +19,17 @@ public class Application {
 
         while (true) {
             view.printUserInput();
-            int[] input_number = controller.stringToIntArray(controller.numberInput());
+            String input_str = controller.numberInput();
+            int[] input_number = controller.stringToIntArray(input_str);
             model.setInput_number(input_number);
             controller.exceptionUserInput(model.getInput_number());
 
             int[] strike_ball = controller.checkStrikeAndBall(model.getInput_number(), model.getComputer_number());
-            view.printStrikeBall(strike_ball);
+            model.setBall_count(strike_ball[0]);
+            model.setStrike_count(strike_ball[1]);
+            view.printStrikeBall(model.getStrike_count(), model.getBall_count());
 
-            if(strike_ball[STRIKE_INDEX] == SIZE) {
+            if(model.getStrike_count() == SIZE) {
                 view.printGameRestart();
                 String restart_number = controller.numberInput();
                 if(restart_number.equals(RESTART_FLAG)) {
