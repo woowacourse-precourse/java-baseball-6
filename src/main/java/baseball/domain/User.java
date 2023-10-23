@@ -12,6 +12,8 @@ public class User {
 
     private static final int THREE_NUMBER = 3;
 
+    private static final int OVER_RANGE_NUMBER = 0;
+
     public List<Integer> getUserNumbers() {
         return userNumbers;
     }
@@ -32,7 +34,7 @@ public class User {
     public void validate(List<Integer> userNumbers) {
         checkDuplication(userNumbers);
         checkLength(userNumbers);
-
+        checkRange(userNumbers);
     }
 
     public void checkDuplication(List<Integer> userNumbers) {
@@ -45,6 +47,12 @@ public class User {
     public void checkLength(List<Integer> userNumbers) {
         if (userNumbers.size() != THREE_NUMBER) {
             throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
+        }
+    }
+
+    public void checkRange(List<Integer> userNumbers){
+        if(userNumbers.contains(OVER_RANGE_NUMBER)){
+            throw new IllegalArgumentException("1부터 9까지의 숫자를 입력하세요.");
         }
     }
 
