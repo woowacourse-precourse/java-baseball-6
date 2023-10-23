@@ -10,10 +10,11 @@ public class GameManager {
 
     public GameManager() {
         OutputView.printStartMessage();
-        generatedNumber = new BaseBalls(new BallNumberGenerator().generateBallNumber());
     }
 
     public void startGame() {
+        List<Integer> generate  = new BallNumberGenerator().generateBallNumber();
+        generatedNumber = new BaseBalls(DataTypeChanger.compareNumberFormat(generate));
         inputNumber();
     }
 
@@ -48,7 +49,6 @@ public class GameManager {
     private void endOrRestart() {
         int option = UserInput.endOrRestart(new Validator());
         if (option == 1) {
-            generatedNumber = new BaseBalls(new BallNumberGenerator().generateBallNumber());
             startGame();
         }
         if (option == 2) {
