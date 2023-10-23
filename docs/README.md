@@ -18,7 +18,7 @@
 ### 컴퓨터의 숫자 생성 기능
 
 - [ ] 컴퓨터의 숫자를 생성하는 함수(generateRandomNumbers)를 구현
-    - [ ] camp.nextstep.edu.missionutils.Randoms 클래스를 사용
+    - [x] camp.nextstep.edu.missionutils.Randoms 클래스를 사용
     - [ ] 1부터 9까지의 수 중에서 중복 없이 3자리의 수가 만들어지도록 설계
     - [ ] 3자리의 수가 담긴 List<Integer>를 반환
 - [x] 생성한 숫자를 저장하는 함수 (saveNumbers)를 구현
