@@ -10,8 +10,6 @@ public class PlayerNumber {
         String inputNumber = Console.readLine();
         List<Integer> player = new ArrayList<>();
 
-        exception_ExceedLength(inputNumber);
-
         for(int i=0;i<3;i++) {
             player.add(Integer.parseInt(inputNumber.substring(i,i+1)));
         }
