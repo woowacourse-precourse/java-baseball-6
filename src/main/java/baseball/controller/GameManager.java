@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Rule;
 import baseball.service.NumberBaseballService;
 import baseball.validation.InputValidator;
 import baseball.view.InputView;
@@ -38,5 +39,17 @@ public class GameManager {
         }
 
         outputView.printSuccessMessage();
+
+        endOrRestart();
+    }
+
+    private void endOrRestart() {
+        String isRestart = inputView.enterRestartGame();
+
+        InputValidator.validateRestartNumber(isRestart);
+
+        if (isRestart.equals(Rule.RESTART_NUMBER)) {
+            startGame();
+        }
     }
 }
