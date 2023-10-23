@@ -54,7 +54,7 @@ public class Controller {
         }
     }
 
-    
+
     private void playRound() {
         BaseballNumbers userBaseballNumbers = getUserBaseballNumbers();
         JudgeResult judgeResult = game.judge(userBaseballNumbers);

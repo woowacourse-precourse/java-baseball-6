@@ -30,7 +30,7 @@ public class BaseballNumbers {
     }
 
     public static BaseballNumbers createRandomBaseballNumbers() {
-        List<BaseballNumber> baseballNumbers =  new ArrayList<>();
+        List<BaseballNumber> baseballNumbers = new ArrayList<>();
         while (baseballNumbers.size() < NUMBERS_LENGTH) {
             addUniqueRandomNumber(baseballNumbers);
         }
@@ -54,9 +54,7 @@ public class BaseballNumbers {
 
     @Override
     public String toString() {
-        return "BaseballNumbers{" +
-                "baseballNumbers=" + baseballNumbers +
-                '}';
+        return "BaseballNumbers{" + "baseballNumbers=" + baseballNumbers + '}';
     }
 
     public List<BaseballNumber> getBaseballNumbers() {
