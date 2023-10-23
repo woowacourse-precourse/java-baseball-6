@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Set;
 
 public class InputView {
+    public static final int NUMBER_SIZE = 3;
+
     public static List<Integer> userInput() {
         String input = Console.readLine();
 
@@ -33,7 +35,7 @@ public class InputView {
         }
 
         Set<Integer> duplicateTest = Set.copyOf(userNumber);
-        if (duplicateTest.size() != 3) {
+        if (duplicateTest.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
         if (duplicateTest.contains(0)) {
