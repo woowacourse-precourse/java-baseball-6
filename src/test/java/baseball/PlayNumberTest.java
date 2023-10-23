@@ -19,4 +19,11 @@ public class PlayNumberTest {
             PlayNumber playNumber = PlayNumber.from("12a");
         });
     }
+
+    @Test
+    void 플레이_숫자는_중복되면_안된다() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            PlayNumber playNumber = PlayNumber.from("111");
+        });
+    }
 }
