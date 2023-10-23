@@ -1,5 +1,10 @@
 package baseball.repository;
 
+import static baseball.message.Message.BEGIN_RANGE;
+import static baseball.message.Message.CAPACITY_STR;
+import static baseball.message.Message.END_RANGE;
+import static baseball.message.Message.GAME_STATUS_STR;
+
 import java.util.HashMap;
 
 public class GameSetRespository {
@@ -15,9 +20,9 @@ public class GameSetRespository {
         // 게임 설정 초기화
         System.out.println("=====게임 설정 초기화 시작=====");
         gameStatusBegin();  // 게임 상태 초기화
-        saveGameSet("capacity", 3);
-        saveGameSet("beginRange", 1);
-        saveGameSet("endRange", 9);
+        saveGameSet(CAPACITY_STR, 3);
+        saveGameSet(BEGIN_RANGE, 1);
+        saveGameSet(END_RANGE, 9);
         System.out.println("=====게임 설정 초기화 완료=====");
     }
 
@@ -27,21 +32,21 @@ public class GameSetRespository {
 
     public static Integer getGameSet(String key) {
         if (!gameSetStore.containsKey(key)) {
-            throw new IllegalArgumentException("해당 옵션은 존재하지 않는 옵션 입니다.");
+            throw new IllegalArgumentException("해당 옵션은 존재 하지 않는 옵션 입니다.");
         }
         return gameSetStore.get(key);
     }
 
     public static boolean isGameStatus() {
-        return gameStatus.get("status");
+        return gameStatus.get(GAME_STATUS_STR);
     }
 
     public static void gameStatusBegin() {
-        gameStatus.put("status", true);
+        gameStatus.put(GAME_STATUS_STR, true);
     }
 
     public static void gameStatusEnd() {
-        gameStatus.put("status", false);
+        gameStatus.put(GAME_STATUS_STR, false);
     }
 
 }
