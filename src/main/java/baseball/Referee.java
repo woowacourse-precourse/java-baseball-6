@@ -34,6 +34,9 @@ public class Referee {
     numbers = givenNumbers;
   }
 
+  private void announceStrikeAndBall(int strike, int ball) {
+    System.out.println(ball + "볼 " + strike + "스트라이크");
+  }
   public int determine(Player player) {
 
     ball = 0;
@@ -54,7 +57,7 @@ public class Referee {
     } else if (ball == 0 && strike != 0) {
       System.out.println(strike + "스트라이크");
     } else {
-      System.out.println(ball + "볼 " + strike + "스트라이크");
+      announceStrikeAndBall(strike, ball);
     }
     if (strike == 3) {
       announceGameFinish();
