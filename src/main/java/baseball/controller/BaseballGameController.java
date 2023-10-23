@@ -8,7 +8,6 @@ import baseball.view.OutputView;
 public class BaseballGameController {
 
     private BaseballGame baseballGame;
-    private User user;
     private Boolean RestartFlag = true;
 
     public BaseballGameController() {
@@ -17,10 +16,9 @@ public class BaseballGameController {
 
     public void gameStart() {
         this.baseballGame=new BaseballGame();
-        this.user = new User();
         do {
             InputView.printInputNumberMessage();
-            user.createUserNumber(InputView.readUserNumberInput());
+            User user = new User(InputView.readUserNumberInput());
             String []results = baseballGame.compareTwoNumbers(user.getUserNumber());
             new OutputView(results);
             gameResult(results);

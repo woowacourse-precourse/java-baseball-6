@@ -7,6 +7,10 @@ public class User {
 
     private String userNumber;
 
+    public User(String userNumber){
+        this.userNumber = userNumber;
+        validateUserNumber(userNumber);
+    }
 
     public void createUserNumber(String userNumber){
         this.userNumber = userNumber;
