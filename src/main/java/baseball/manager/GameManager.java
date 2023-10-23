@@ -28,9 +28,7 @@ public class GameManager {
             game.playGame();
             outputHandler.printMessage(INPUT_RESTART_MESSAGE);
             restart = inputHandler.scanInteger();
-            if (!InputValidation.isRestartInput(restart)) {
-                throw new IllegalArgumentException();
-            }
+            InputValidation.validRestartInput(restart);
         } while (restart == INPUT_RESTART);
     }
 }

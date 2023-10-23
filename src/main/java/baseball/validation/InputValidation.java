@@ -12,12 +12,26 @@ import java.util.Set;
 
 public final class InputValidation {
 
-    public static Boolean validExpectedNums(List<Integer> expectedNums) {
-        return isSizeThree(expectedNums) && isInRange(expectedNums) && !isDuplicate(expectedNums);
+    public static void validExpectedNums(List<Integer> expectedNums) {
+        if (!isSizeThree(expectedNums) || !isInRange(expectedNums) || isDuplicate(expectedNums)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public static Boolean isRestartInput(int input) {
-        return input == INPUT_RESTART || input == INPUT_STOP;
+    public static int validParseNumeric(String input) {
+        int res;
+        try {
+            res = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return res;
+    }
+
+    public static void validRestartInput(int input) {
+        if (input != INPUT_RESTART && input != INPUT_STOP) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static Boolean isSizeThree(List<Integer> target) {
