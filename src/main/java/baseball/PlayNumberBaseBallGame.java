@@ -49,7 +49,7 @@ public class PlayNumberBaseBallGame {
     private static void compareNumbers(List<Integer> answerList, List<Integer> playerAnswer) {
         for(int i = 0; i < NUMBER_SIZE; ++i){
             int currentNumber = playerAnswer.get(i);
-            /* 현 상태에 대한 값을  */
+            /* 현 상태에 대한 값을 정리 */
             if(!answerList.contains(currentNumber)){
                 continue;
             }
