@@ -47,4 +47,7 @@ public class ComparingInput {
         }
     }
 
+    public int getStrike() {
+        return strike;
+    }
 }
