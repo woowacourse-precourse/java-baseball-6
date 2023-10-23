@@ -1,4 +1,9 @@
-package baseball;
+package baseball.controller;
+
+import baseball.model.Number;
+import baseball.model.Result;
+import baseball.service.BaseballGameService;
+import baseball.util.ConsoleIO;
 
 public class BaseballGameController {
     private final BaseballGameService baseballGameService;

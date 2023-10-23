@@ -1,5 +1,10 @@
-package baseball;
+package baseball.service;
 
+import baseball.model.Computer;
+import baseball.model.EndOption;
+import baseball.model.Number;
+import baseball.model.Player;
+import baseball.model.Result;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
