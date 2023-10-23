@@ -11,10 +11,10 @@ public class NumberBaseBallComputer extends Computer {
 
         for (int index = 0; index < numbers.size(); index++) {
             int number = numbers.get(index);
-            if (user.contains(number) && user.isSamePosition(number, index)) {
+            if (user.isStrike(number, index)) {
                 strikeCount++;
             }
-            if (user.contains(number) && !user.isSamePosition(number, index)) {
+            if (user.isBall(number, index)) {
                 ballCount++;
             }
         }

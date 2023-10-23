@@ -50,6 +50,22 @@ public class User {
         return numbers.length != duplicateRemovedNumber.size();
     }
 
+    public boolean isStrike(int number, int index) {
+        return this.contains(number) && this.isSamePosition(number, index);
+    }
+
+    public boolean isBall(int number, int index) {
+        return this.contains(number) && !this.isSamePosition(number, index);
+    }
+
+    private boolean contains(int number) {
+        return input.contains(String.valueOf(number));
+    }
+
+    private boolean isSamePosition(int number, int index) {
+        return input.charAt(index) == String.valueOf(number).charAt(0);
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
