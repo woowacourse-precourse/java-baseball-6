@@ -20,15 +20,15 @@ public class BaseballGame {
         return computerNumber;
     }
 
-    public String[] compareTwoNumbers(String userNumber) {
+    public String[] compareTwoNumbers(List<Integer> userNumber) {
         int strikeCount = 0;
         int ballCount = 0;
-        for (int i = 0; i < userNumber.length(); i++) {
-            if (userNumber.charAt(i) - '0' == this.computerNumber.get(i)) {
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (userNumber.get(i) == this.computerNumber.get(i)) {
                 strikeCount++;
                 continue;
             }
-            if (this.computerNumber.contains(userNumber.charAt(i) - '0')) {
+            if (this.computerNumber.contains(userNumber.get(i))) {
                 ballCount++;
             }
         }

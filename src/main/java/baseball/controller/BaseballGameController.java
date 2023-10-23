@@ -15,6 +15,7 @@ public class BaseballGameController {
 
 
     private BaseballGame baseballGame;
+    private User user;
     private Boolean RestartFlag = true;
 
     public BaseballGameController() {
@@ -23,9 +24,10 @@ public class BaseballGameController {
 
     public void gameStart() {
         this.baseballGame = new BaseballGame();
+        this.user = new User();
         do {
             InputView.printInputNumberMessage();
-            User user = new User(InputView.readUserNumberInput());
+            user.createUserNumber(InputView.readUserNumberInput());
             String[] results = baseballGame.compareTwoNumbers(user.getUserNumber());
             new OutputView(results);
             gameResult(results);
@@ -35,7 +37,6 @@ public class BaseballGameController {
 
 
     public void gameResult(String[] results) {
-
         if (results[STRIKE_COUNT_RESULT].equals(ALL_STRIKE)) {
             OutputView.printAnswerMessage();
             OutputView.printRestartGameMessage();
