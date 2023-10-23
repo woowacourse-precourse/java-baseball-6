@@ -1,6 +1,6 @@
 package baseball;
 
-public class CheckingAnswer {
+public class CheckingInput {
 
     /*
     2️⃣ 잘못된 값을 검사하는 기능
