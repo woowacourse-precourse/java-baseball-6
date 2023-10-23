@@ -12,4 +12,8 @@ public class Constant {
     public static String REQUEST_INPUT = "숫자를 입력해주세요 : ";
 
     public static int NORMAL_LENGTH = 3;
+
+    public static String BALL_STRING = "볼";
+    public static String STRIKE_STRING = "스트라이크";
+    public static String NOTHING_STRING = "낫싱";
 }
