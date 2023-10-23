@@ -1,6 +1,6 @@
 package baseball.application;
 
-import baseball.entity.Baseball;
+import baseball.domain.Baseball;
 import baseball.view.OutputView;
 
 import static baseball.utils.InputUtil.*;
