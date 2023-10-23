@@ -2,9 +2,9 @@
 
 ## 💌&nbsp;&nbsp;목차
 
-- [💌&nbsp;&nbsp;목차](#목차)
 - [📦&nbsp;&nbsp;패키지 구조](#패키지-구조)
 - [✨&nbsp;&nbsp;기능 구현 목록](#기능-구현-목록)
+- [🎨&nbsp;&nbsp;구현 간 고민했던 내용들](#구현-간-고민했던-내용들)
 
 ---
 
@@ -17,21 +17,6 @@
         <th align="center">Class</th>
         <th align="center">Description</th>
     </tr>
-    <tr>
-        <td><b>📃&nbsp;&nbsp;global</b></td>
-        <td><b>GameConfig</b></td>
-        <td>전역으로 작용하는 설정<br/>(숫자 길이 제약, 뽑을 숫자 범위) Enum</td>
-    </tr>
-    <tr>
-        <td rowspan="2"><b>&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;exception</b></td>
-        <td><b>BaseballException</b></td>
-        <td>전역으로 처리하는 예외상황에 대한 Exception 클래스<br/></td>
-    </tr>
-    <tr>
-        <td><b>ErrorMessage</b></td>
-        <td>각 예외 상황에서 전역으로 던져질 예외의 메세지 Enum</td>
-    </tr>
-    <tr><td colspan="3"></td></tr>
     <tr>
         <td><b>🕹&nbsp;&nbsp;controller</b></td>
         <td><b>Game</b></td>
@@ -49,14 +34,29 @@
         <td>Ball Count와 Strike Count에 대한 결과 클래스</td>
     </tr>
     <tr>
-        <td rowspan="2"><b>&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;exception</b></td>
+        <td><b>&nbsp;&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;/ constants</b></td>
         <td><b>ResultType</b></td>
         <td>볼, 스트라이크, 볼&스트라이크 상황에 대한 <br/>출력 방법이 정의된 열거형 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
+        <td><b>📃&nbsp;&nbsp;global</b></td>
+        <td><b>GameConfig</b></td>
+        <td>전역으로 작용하는 설정<br/>(숫자 길이 제약, 뽑을 숫자 범위) Enum</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b>&nbsp;&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;/ exception</b></td>
+        <td><b>BaseballException</b></td>
+        <td>전역으로 처리하는 예외상황에 대한 Exception 클래스<br/></td>
+    </tr>
+    <tr>
+        <td><b>ErrorMessage</b></td>
+        <td>각 예외 상황에서 전역으로 던져질 예외의 메세지 Enum</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
         <td><b>✅&nbsp;&nbsp;validator</b></td>
-        <td><b>NumberValidator</b></td>
+        <td><b>InputValidator</b></td>
         <td>사용자가 입력하는 숫자에 대한 제약조건 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
@@ -70,7 +70,7 @@
         <td>사용자에게 다양한 응답을 출력하기 위한 Output View 클래스</td>
     </tr>
     <tr>
-        <td><b>&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;constants</b></td>
+        <td><b>&nbsp;&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;/ constants</b></td>
         <td><b>StaticNotice</b></td>
         <td>사용자에게 응답할 정적 메세지를 담은 열거형 클래스</td>
     </tr>
@@ -79,7 +79,7 @@
         <td colspan="3" align="center"><b>Image</b></td>
     </tr>
     <tr>
-        <td colspan="3"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/9cf30277-2b69-4781-a80e-dfa9325598d7" width="99%"></td>
+        <td colspan="3"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/f37d479a-d211-4c79-93cf-c0a4be1a7443" width="99%"></td>
     </tr>
 
 </table>
@@ -112,3 +112,27 @@
         - `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
             - 입력받은 input이 1과 2가 아닌 숫자일 경우 예외처리
             - 입력값에 따라 게임을 재시작하거나 종료한다.
+
+---
+
+## 🎨&nbsp;&nbsp;구현 간 고민했던 내용들
+
+- (유연한 설계) input 숫자의 범위가 변하더라도(1~9), 자리수가 변하더라도 대응이 손쉽게 가능해야 한다.</br>
+  `GameConfig` 파일에서 `NUMBER_LENGTH` 변수의 value를 변경해 손쉽게 변경이 가능하다.
+
+  <div align="center">
+
+<table>
+    <tr>
+        <th align="center">숫자 3자리(Default)</th>
+        <th align="center">숫자 4자리</th>
+        <th align="center">숫자 5자리</th>
+    </tr>
+    <tr>
+        <td align="center"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/0b5b10f6-357f-4274-9b42-ea68d18edf85" height="50%"/></td>
+        <td align="center"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/33d19627-775a-4d56-b2c1-88c186a95336" height="50%"/></td>
+        <td align="center"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/e41b3fc0-2d6f-4f6c-abe4-f765abcb7aad" height="50%"/></td>
+    </tr>
+</table>
+    
+---
