@@ -1,17 +1,17 @@
 package baseball.model;
 
 public class SuccessCheck {
-    private final Compare compare;
+    private final CompareNumber compareNumber;
 
     public SuccessCheck() {
-        compare = new Compare();
+        compareNumber = new CompareNumber();
     }
 
     public int[] CheckOfSuccess(String computerNumber, String playerNumber) {
-        return compare.getStrikeAndBall(computerNumber, playerNumber);
+        return compareNumber.getStrikeAndBall(computerNumber, playerNumber);
     }
 
     public boolean isSuccess() {
-        return compare.isStrike() == 3;
+        return compareNumber.isStrike() == 3;
     }
 }

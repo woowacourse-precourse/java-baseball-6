@@ -9,14 +9,14 @@ public class ComputerNumber {
     private String computerNumber;
 
     public ComputerNumber() {
-        setComputerNumber();
+        createComputerNumber();
     }
 
     public String getComputerNumber() {
         return computerNumber;
     }
 
-    public void setComputerNumber() {
+    public void createComputerNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         while (randomNumber.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
@@ -24,7 +24,6 @@ public class ComputerNumber {
                 randomNumber.add(randomNum);
             }
         }
-
         this.computerNumber = randomNumber.toString().replaceAll("[^0-9]", "");
     }
 }

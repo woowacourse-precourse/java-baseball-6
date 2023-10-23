@@ -19,7 +19,7 @@ public class GameManage {
     public void gameStart() {
         do {
             getNumOfPlayer();
-            printResult(getCompareNumber());
+            printResult(getResult());
         } while (!isDone());
     }
 
@@ -27,7 +27,7 @@ public class GameManage {
         playerNum = new PlayerNumber(Input.setPlayerNumber());
     }
 
-    public int[] getCompareNumber() {
+    public int[] getResult() {
         return successCheck.CheckOfSuccess(computerNum.getComputerNumber(), playerNum.playerNumber());
     }
 
