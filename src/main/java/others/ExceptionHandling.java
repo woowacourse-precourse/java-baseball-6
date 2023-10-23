@@ -1,5 +1,7 @@
 package others;
 
+import java.util.Objects;
+
 public class ExceptionHandling {
     private static final int numberOfNumbers = 3;
 
@@ -40,6 +42,16 @@ public class ExceptionHandling {
             } else {
                 throw new IllegalArgumentException("입력한 수가 중복됩니다. 게임을 종료합니다.");
             }
+        }
+    }
+
+    public static boolean restartException(final String restart) {
+        if (Objects.equals(restart, "1")) {
+            return true;
+        } else if (Objects.equals(restart, "2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하셔야 합니다. 게임을 종료합니다.");
         }
     }
 }
