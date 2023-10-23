@@ -34,19 +34,26 @@ public class GameService {
     }
 
     public static List<Integer> parsingInputNumber(String inputNumber) {
-        // 예외 처리 Exception class 고려해 보기
-        if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException("입력 숫자는 3개여야 합니다.");
-        }
         ArrayList<Integer> parsingNumber = new ArrayList<>();
+        validateInputNumber(inputNumber);
 
         for (char parsedChar : inputNumber.toCharArray()) {
-            if (!Character.isDigit(parsedChar) || parsedChar == '0') {
-                throw new IllegalArgumentException("1부터 9까지의 범위를 가진 유효한 숫자가 입력되어야 합니다.");
-            }
+            validateParsedChar(parsedChar);
             parsingNumber.add(Character.getNumericValue(parsedChar));
         }
         return parsingNumber;
+    }
+
+    public static void validateInputNumber(String inputNumber) {
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException("입력 숫자는 3개여야 합니다.");
+        }
+    }
+
+    public static void validateParsedChar(char parsedChar) {
+        if (!Character.isDigit(parsedChar) || parsedChar == '0') {
+            throw new IllegalArgumentException("1부터 9까지의 범위를 가진 유효한 숫자가 입력되어야 합니다.");
+        }
     }
 
     public static void exitGame() {
