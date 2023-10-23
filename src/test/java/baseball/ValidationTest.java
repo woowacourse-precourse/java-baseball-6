@@ -77,6 +77,18 @@ public class ValidationTest extends NsTest {
                 .hasMessage("[Err] 입력 값은 1부터 9사이의 숫자여야합니다.");
     }
 
+    @Test
+    void 사용자_재도전_입력_값_1또는_2의_값이_아닌_경우_예외_테스트(){
+        //given
+        String input_value = "3";
+        int retry_input_length = 1;
+
+        //when
+        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,retry_input_length))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[Err] 게임을 새로시작 혹은 종료하기 위해선 1 또는 2 값을 입력하여야합니다.");
+    }
+
     @ParameterizedTest
     @DisplayName("사용자 게임 입력 값 예외 통합 테스트")
     @ValueSource(strings = {"1234","12","1 3","12a","222","012",""})
