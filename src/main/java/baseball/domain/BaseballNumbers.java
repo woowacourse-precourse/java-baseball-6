@@ -13,7 +13,7 @@ public class BaseballNumbers {
 
     public static void validate(List<Integer> baseballNumbers) {
         if (Validator.isInvalid(baseballNumbers)) {
-            throw new IllegalArgumentException(Errors.MSG_EXCEPTION_INVALID_INPUT);
+            throw new IllegalArgumentException(Errors.getInvalidInputMessage());
         }
     }
 

@@ -10,7 +10,7 @@ public class Config {
 
     static {
         if (MAX_NUMBERS == 0 || (START_INCLUSIVE + MAX_NUMBERS - 1) > END_INCLUSIVE || MAX_NUMBERS > END_INCLUSIVE) {
-            throw new IllegalArgumentException(Errors.MSG_EXCEPTION_INVALID_RANGE);
+            throw new IllegalArgumentException(Errors.getInvalidRangeMessage());
         }
     }
 
