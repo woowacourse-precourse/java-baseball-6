@@ -5,15 +5,28 @@ import java.util.List;
 
 
 public class Game {
+    public static final String STRING_GAME_START = "숫자 야구 게임을 시작합니다.";
+    public static final String STRING_GAME_CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String STRING_GAME_EXIT = "게임을 종료합니다.";
+    public static final String STRING_GAME_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String INPUT_RESTART_NUMBER = "1";
+    public static final String INPUT_EXIT_NUMBER = "2";
+    public static final String STRING_STRIKE = "스트라이크";
+    public static final String STRING_BALL = "볼";
+    public static final String STRING_NOTHING = "낫싱";
+    User user = new User();
+    String EXCEPTION_MESSAGE = user.EXCEPTION_MESSAGE;
+
     int strike;
     int ball;
     List<Integer> computerNum;
     int userNum;
     private boolean isPlaying = true;
     Computer computer = new Computer();
-    User user = new User();
+
 
     public void gamePlay() {
+        System.out.println(STRING_GAME_START);
         computer.setComputerNum();
         while (isPlaying) {
             user.setUserNum();
@@ -42,32 +55,32 @@ public class Game {
 
     void call() {
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.println(STRING_NOTHING);
         } else if (strike == 3) {
             isPlaying = false;
-            System.out.println(strike + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(strike + STRING_STRIKE);
+            System.out.println(STRING_GAME_CLEAR);
             newGameOrExit();
         } else if (strike == 0) {
-            System.out.println(ball + "볼");
+            System.out.println(ball + STRING_BALL);
         } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.println(strike + STRING_STRIKE);
         } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(ball + STRING_BALL + " " + strike + STRING_STRIKE);
         }
     }
 
     void newGameOrExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(STRING_GAME_RESTART);
         String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(INPUT_RESTART_NUMBER)) {
             isPlaying = true;
             gamePlay();
-        } else if (input.equals("2")) {
+        } else if (input.equals(INPUT_EXIT_NUMBER)) {
             isPlaying = false;
-            System.out.println("게임을 종료합니다.");
+            System.out.println(STRING_GAME_EXIT);
         } else {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 }

@@ -3,13 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+    public static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
+
+    public static final String EXCEPTION_MESSAGE = "잘못된 입력값입니다.";
 
     private Integer userNum;
 
     private String REGEXP_USER_NUM = "^[1-9]{3}$";
 
     public void setUserNum() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(OUTPUT_ENTER_NUMBER);
         String input = Console.readLine();
         checkUserNum(input);
     }
@@ -26,7 +29,7 @@ public class User {
         if (input.matches(REGEXP_USER_NUM) && isSameDigit1 && isSameDigit2 && isSameDigit3) {
             userNum = Integer.parseInt(input);
         } else {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 
