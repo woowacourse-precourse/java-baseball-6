@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Balls;
 import baseball.model.RandomNumbers;
 import baseball.model.Strikes;
 import baseball.model.UserInputNumbers;
@@ -30,7 +31,7 @@ public class BaseBallController {
             String userInput = inputView.inputNumber();
             userInputNumbers = new UserInputNumbers(userInput);
             strikeCount = new Strikes(randomNumbers, userInputNumbers).getStrikeCount();
-            ballCount = userInputNumbers.countBalls(randomNumbers);
+            ballCount = new Balls(randomNumbers, userInputNumbers).getBallCount();
             outputView.printCountForBallsAndStrikes(ballCount, strikeCount);
         } while (strikeCount != GameConstant.GAME_END_STRIKE_COUNT);
         outputView.printEndGame();
