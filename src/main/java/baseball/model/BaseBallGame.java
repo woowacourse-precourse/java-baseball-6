@@ -27,4 +27,9 @@ public class BaseBallGame {
 
         return new BallCount(strike.get(), ball.get());
     }
+
+
+    public boolean isCorrectedAnswer(int digit, BallCount ballCount) {
+        return ballCount.getStrike() == digit && ballCount.getBall() == 0;
+    }
 }
