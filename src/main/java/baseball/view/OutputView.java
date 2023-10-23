@@ -8,8 +8,8 @@ public class OutputView {
     }
 
     public void printHint(Hint hint) {
-        int ball = 0;
-        int strike = 0;
+        int ball = hint.getBall();
+        int strike = hint.getStrike();
 
         if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
