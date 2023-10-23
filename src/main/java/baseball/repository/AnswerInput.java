@@ -26,14 +26,7 @@ public class AnswerInput {
         return answerNumber;
     }
 
-    private Boolean isLength(String checkNumber) {
-        if (checkNumber.length() != 3) {
-            return true;
-        }
-        return false;
-    }
-
-    private Boolean isStringChars(String checkNumber) {
+    private Boolean isInputNumberForm(String checkNumber) {
         if (!checkNumber.matches(Constants.ANSWER_NUMBER_PATTERN)) {
             return true;
         }
@@ -55,10 +48,7 @@ public class AnswerInput {
         System.out.println(Constants.ASK_GAME_NUMBER);
         String answer = Console.readLine();
         answer.replaceAll(" ", "");
-        if (isStringChars(answer)) {
-            InputExceptionError.throwIllegalArgumentException();
-        }
-        if (isLength(answer)) {
+        if (isInputNumberForm(answer)) {
             InputExceptionError.throwIllegalArgumentException();
         }
         if (isDuplicateChars(answer)) {
