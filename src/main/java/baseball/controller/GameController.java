@@ -5,21 +5,21 @@ import baseball.domain.Game;
 import baseball.domain.GameResult;
 import baseball.service.BallGeneratorService;
 import baseball.service.GameService;
-import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
+
+    private final InputController inputController;
     private final OutputView outputView;
-    private final InputView inputView;
     private final GameService gameService;
     private final BallGeneratorService ballGeneratorService;
 
-    public GameController(OutputView outputView,
-                          InputView inputView,
+    public GameController(InputController inputController,
+                          OutputView outputView,
                           GameService gameService,
                           BallGeneratorService ballGeneratorService) {
+        this.inputController = inputController;
         this.outputView = outputView;
-        this.inputView = inputView;
         this.gameService = gameService;
         this.ballGeneratorService = ballGeneratorService;
     }
@@ -44,12 +44,11 @@ public class GameController {
     }
 
     private Balls getPlayerBalls() {
-        return ballGeneratorService.generatePlayerBalls(inputView.requestPlayerGuess());
+        return ballGeneratorService.generatePlayerBalls(inputController.requestPlayerGuess());
     }
 
     private boolean restartGame() {
         outputView.inputGameRestartMessage();
-        return gameService.restartGame(inputView.requestRestartChoice());
+        return gameService.restartGame(inputController.requestRestartChoice());
     }
-
 }
