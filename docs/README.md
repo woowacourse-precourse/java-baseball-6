@@ -105,7 +105,7 @@ __Comparator__
 
 __PlayerInputController__
 - [x] handlePlayerInput
-  * 사용자 입력의 공백을 제거
+  * 플레이어 입력의 공백을 제거
   * validatePlayerInput에 넣고 Arraylist를 생성한 후 값을 넣고 반환
 
   
@@ -124,9 +124,9 @@ private static int count = 0;
 
 3.[x]  processInputAndCompare
     - inputView.printNumberRequest호출
-    - 사용자 입력받아 playerFirstInput변수에 저장
-    - handlePlayerInput으로 사용자 입력 변환
-    - 모델에 사용자 입력 저장
+    - 플레이어의 입력받아 playerFirstInput변수에 저장
+    - handlePlayerInput으로 플레이어의 입력 변환
+    - 모델에 플레이어의 입력 저장
    
 
 3. [x] checkReplay
