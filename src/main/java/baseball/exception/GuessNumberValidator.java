@@ -1,23 +1,14 @@
-package baseball.util;
+package baseball.exception;
 
-public class InputValidator {
+public class GuessNumberValidator {
 
     private static final String LENGTH_NOT_THREE_MSG = "입력의 길이가 3이 아닙니다";
     private static final String INCLUDE_CHAR_MSG = "입력에 문자가 포함되어 있습니다.";
     private static final String NOT_BETWEEN_ONE_AND_NINE_MSG = "입력값이 1~9 사이의 숫자가 아닙니다.";
     private static final String DUPLICATE_CHAR_MSG = "입력에 중복된 값이 존재합니다";
-    private static final String LENGTH_NOT_ONE_MSG = "한 글자만 입력 가능합니다.";
-    private static final String NOT_ONE_AND_TWO_MSG = "1 또는 2만 입력 가능합니다.";
 
-    public static boolean isInputNumbersValid(String input) {
+    public static boolean isGuessNumbersValid(String input) {
         if (isLengthThree(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isGameStateNumberValid(String input) {
-        if (isLengthOne(input) && isEqualToOneOrTwo(input)) {
             return true;
         }
         return false;
@@ -47,20 +38,6 @@ public class InputValidator {
     private static boolean isNotDuplicate(String input) {
         if (input.chars().distinct().count() != input.length()) {
             throw new IllegalArgumentException(DUPLICATE_CHAR_MSG);
-        }
-        return true;
-    }
-
-    private static boolean isLengthOne(String input) {
-        if (input.length() != 1) {
-            throw new IllegalArgumentException(LENGTH_NOT_ONE_MSG);
-        }
-        return true;
-    }
-
-    private static boolean isEqualToOneOrTwo(String input) {
-        if (input.charAt(0) != '1' && input.charAt(0) != '2') {
-            throw new IllegalArgumentException(NOT_ONE_AND_TWO_MSG);
         }
         return true;
     }

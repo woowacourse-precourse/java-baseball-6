@@ -1,6 +1,6 @@
 package baseball.model.player;
 
-import static baseball.util.InputValidator.isInputNumbersValid;
+import static baseball.exception.GuessNumberValidator.isGuessNumbersValid;
 import static baseball.util.StringToIntegerListConverter.StringToList;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -22,7 +22,7 @@ public class GuessNumber {
     }
 
     private void validateInputNumbers(String input) {
-        if (!isInputNumbersValid(input)) {
+        if (!isGuessNumbersValid(input)) {
             throw new IllegalArgumentException();
         }
     }

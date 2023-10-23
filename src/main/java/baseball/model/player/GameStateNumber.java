@@ -1,6 +1,6 @@
 package baseball.model.player;
 
-import static baseball.util.InputValidator.isGameStateNumberValid;
+import static baseball.exception.GameStateNumberValidator.isGameStateNumberValid;
 
 import camp.nextstep.edu.missionutils.Console;
 
