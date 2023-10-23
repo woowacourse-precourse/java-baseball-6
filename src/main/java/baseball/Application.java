@@ -19,6 +19,7 @@ public class Application {
     }
 
     private static List<Integer> getInputNumbers() {
+        // get numbers from user input
         System.out.print("숫자를 입력해주세요 : ");
 
         StringTokenizer st = new StringTokenizer(readLine(), " ");
