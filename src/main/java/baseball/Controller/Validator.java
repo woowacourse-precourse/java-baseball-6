@@ -7,9 +7,10 @@ public class Validator {
 
     private static final String PLEASE_INPUT_THREENUMBER = "3개의 수를 입력해야합니다";
     private static final String PLEASE_INPUT_NUMBER = "숫자만 입력해야 합니다";
+    private static final String PLEASE_INPUT_ONE_TO_NINE_NUMBER = "1-9사이의 숫자만 입력해야 합니다";
     private static final String PLEASE_INPUT_NOT_DUPLICATION = "중복되지 않는 3개의 수를 입력해야합니다";
     private static final String PLEASE_INPUT_ONE_OR_TWO = "1혹은 2를 입력하세요";
-    private static final String NUMBER_RANGE = "[0-9]+";
+    private static final String NUMBER_RANGE = "[1-9]+";
     private static final int INPUT_NUMBER_SIZE = 3;
     private static final int RESTART_GAME_NUMBER = 1;
     private static final int GAME_END_NUMBER = 2;
@@ -34,7 +35,7 @@ public class Validator {
     private void validateInputContent(String[] numbers) {
         for (String number : numbers) {
             if (!number.matches(NUMBER_RANGE)) {
-                throw new IllegalArgumentException(PLEASE_INPUT_NUMBER);
+                throw new IllegalArgumentException(PLEASE_INPUT_ONE_TO_NINE_NUMBER);
             }
         }
     }

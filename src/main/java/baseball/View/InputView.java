@@ -13,7 +13,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String  printGameEnd() {
+    public String printGameEnd() {
         System.out.println(GAME_END_MESSAGE);
         System.out.println(CHECK_RESTART_GAME_MESSAGE);
         return Console.readLine();
