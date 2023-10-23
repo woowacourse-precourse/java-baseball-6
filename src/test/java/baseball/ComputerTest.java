@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest extends NsTest {
@@ -31,18 +30,18 @@ public class ComputerTest extends NsTest {
     void 숫자_비교_힌트_낫싱() {
         List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
         List<Integer> playerNumbers = Arrays.asList(1, 2, 3);
-        int result = comparator.getResult(playerNumbers, computerNumbers);
 
-        assertThat(result).isEqualTo(5);
+        comparator.compare(playerNumbers, computerNumbers);
+        assertThat(comparator.getBallCount()).isEqualTo(0);
+        assertThat(comparator.getStrikeCount()).isEqualTo(0);
     }
 
     @Test
     void 숫자_비교_힌트_볼() {
         List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
         List<Integer> playerNumbers = Arrays.asList(8, 2, 7);
-        int result = comparator.getResult(playerNumbers, computerNumbers);
 
-        assertThat(result).isEqualTo(2);
+        comparator.compare(playerNumbers, computerNumbers);
         assertThat(comparator.getBallCount()).isEqualTo(2);
     }
 
@@ -50,19 +49,16 @@ public class ComputerTest extends NsTest {
     void 숫자_비교_힌트_스트라이크() {
         List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
         List<Integer> playerNumbers = Arrays.asList(7, 2, 1);
-        int result = comparator.getResult(playerNumbers, computerNumbers);
-
-        assertThat(result).isEqualTo(1);
-        assertThat(comparator.getStrikeCount()).isEqualTo(1);
+        comparator.compare(playerNumbers, computerNumbers);
+        assertThat(comparator.getBallCount()).isEqualTo(0);
     }
 
     @Test
     void 숫자_비교_힌트_볼_스트라이크() {
         List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
         List<Integer> playerNumbers = Arrays.asList(7, 9, 1);
-        int result = comparator.getResult(playerNumbers, computerNumbers);
 
-        assertThat(result).isEqualTo(4);
+        comparator.compare(playerNumbers, computerNumbers);
         assertThat(comparator.getStrikeCount()).isEqualTo(1);
         assertThat(comparator.getBallCount()).isEqualTo(1);
     }
@@ -71,9 +67,8 @@ public class ComputerTest extends NsTest {
     void 숫자_비교_정답() {
         List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
         List<Integer> playerNumbers = Arrays.asList(7, 8, 9);
-        int result = comparator.getResult(playerNumbers, computerNumbers);
 
-        assertThat(result).isEqualTo(3);
+        comparator.compare(playerNumbers, computerNumbers);
         assertThat(comparator.getStrikeCount()).isEqualTo(3);
     }
 
