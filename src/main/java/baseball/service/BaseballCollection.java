@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BaseballCollection {
     private final int DEFAULT_CAPACITY = 3;
@@ -102,29 +103,30 @@ public class BaseballCollection {
                 .noneMatch(playerBalls.baseball::contains);
     }
 
-    // 기능: 같은 수가 같은 자리에 있는 스트라이크의 개수 세기
     public int calculateStrikeCount(BaseballCollection playerBalls) {
-        int strikeCount = 0;
-        for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
-            int playerBall = playerBalls.baseball.get(ballPosition);
-            int computerBall = this.baseball.get(ballPosition);
-            if (this.baseball.contains(playerBall) && playerBall == computerBall) {
-                strikeCount++;
-            }
-        }
-        return strikeCount;
+        return (int) IntStream.range(0, DEFAULT_CAPACITY)
+                .filter(index -> isStrike(this.baseball.get(index), playerBalls.baseball.get(index)))
+                .count();
     }
 
     // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
     public int calculateBallCount(BaseballCollection playerBalls) {
-        int ballCount = 0;
-        for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
-            int playerBall = playerBalls.baseball.get(ballPosition);
-            int computerBall = this.baseball.get(ballPosition);
-            if (this.baseball.contains(playerBall) && playerBall != computerBall) {
-                ballCount++;
-            }
+        return (int) IntStream.range(0, DEFAULT_CAPACITY)
+                .filter(index -> isBall(this.baseball.get(index), playerBalls.baseball.get(index)))
+                .count();
+    }
+
+    private boolean isStrike(int computerBall, int playerBall) {
+        if (this.baseball.contains(playerBall) && playerBall == computerBall) {
+            return true;
         }
-        return ballCount;
+        return false;
+    }
+
+    private boolean isBall(int computerBall, int playerBall) {
+        if (this.baseball.contains(playerBall) && playerBall != computerBall) {
+            return true;
+        }
+        return false;
     }
 }
