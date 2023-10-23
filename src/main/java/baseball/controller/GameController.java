@@ -21,10 +21,9 @@ public class GameController {
 
     public void start() {
         OutputView.println(GAME_START_MESSAGE.getMessage());
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
         while (isRunning) {
             GameNumbers answer = answerGenerator.generateAnswer();
-            BaseballGame baseballGame = new BaseballGame(answer, scoreCalculator);
+            BaseballGame baseballGame = new BaseballGame(answer);
 
             baseballGame.runGame();
 

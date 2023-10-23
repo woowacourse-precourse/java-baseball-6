@@ -11,12 +11,10 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGame {
-    private final ScoreCalculator scoreCalculator;
     private final GameNumbers answer;
     private boolean isRunning;
 
-    public BaseballGame(GameNumbers answer, ScoreCalculator scoreCalculator) {
-        this.scoreCalculator = scoreCalculator;
+    public BaseballGame(GameNumbers answer) {
         this.answer = answer;
         isRunning = true;
     }
@@ -28,7 +26,7 @@ public class BaseballGame {
 
             GameNumbers playerNumbers = new GameNumbers(input.parseInputToIntegerList());
 
-            Score score = scoreCalculator.calculateScore(playerNumbers, answer);
+            Score score = ScoreCalculator.calculateScore(playerNumbers, answer);
             OutputView.println(score.toString());
             checkThreeStrike(score);
         }
