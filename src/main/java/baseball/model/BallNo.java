@@ -1,10 +1,12 @@
 package baseball.model;
 
+import baseball.Setting;
+
 import java.util.Objects;
 
 public class BallNo {
-    private static final int FIRST_NO = 1;
-    private static final int END_NO = 9;
+    private static final int FIRST_NO = Setting.FIRST_NO.get();
+    private static final int END_NO = Setting.END_NO.get();
     private static final String WRONG_RANGE_OF_NUMBER = "[ERROR] 야구공은 1에서 9사이의 숫자만 가능합니다.";
     private final int number;
 
