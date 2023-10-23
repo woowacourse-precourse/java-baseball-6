@@ -134,4 +134,8 @@ public class BaseBallGame {
     public void StrikePrint(){
         System.out.println(strike+"스트라이크");
     }
+    //볼&스트라이크 개수 출력 함수
+    public void BallAndStrikePrint(){
+        System.out.println(ball+"볼 "+strike+"스트라이크");
+    }
 }
