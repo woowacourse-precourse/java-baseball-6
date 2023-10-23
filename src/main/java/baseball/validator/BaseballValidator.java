@@ -1,13 +1,13 @@
 package baseball.validator;
 
-import static baseball.constant.BaseballConstant.BASEBALL_MAX_NUMBER;
-import static baseball.constant.BaseballConstant.BASEBALL_MIN_NUMBER;
-import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+import static baseball.game.BaseballConstant.BASEBALL_MAX_NUMBER;
+import static baseball.game.BaseballConstant.BASEBALL_MIN_NUMBER;
+import static baseball.game.BaseballConstant.BASEBALL_NUMBERS_SIZE;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayerNumberValidator {
+public class BaseballValidator {
 
     private static final String INVALID_NUMBER_MESSAGE = "숫자를 입력해주세요.";
     private static final String INVALID_SIZE_MESSAGE = "허용되지 않는 자릿수입니다.";

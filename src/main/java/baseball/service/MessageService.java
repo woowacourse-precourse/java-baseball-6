@@ -1,8 +1,8 @@
 package baseball.service;
 
-import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
-import static baseball.constant.BaseballConstant.RESTART_OPTION;
-import static baseball.constant.BaseballConstant.TURN_OFF_OPTION;
+import static baseball.game.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+import static baseball.game.BaseballConstant.RESTART_OPTION;
+import static baseball.game.BaseballConstant.TURN_OFF_OPTION;
 
 public class MessageService {
 

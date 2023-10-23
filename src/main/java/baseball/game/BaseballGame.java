@@ -1,28 +1,28 @@
-package baseball.controller;
+package baseball.game;
 
-import static baseball.constant.BaseballConstant.BASEBALL_THREE_STRIKES;
-import static baseball.constant.BaseballConstant.RESTART_OPTION;
-import static baseball.constant.BaseballConstant.TURN_OFF_OPTION;
+import static baseball.game.BaseballConstant.BASEBALL_THREE_STRIKES;
+import static baseball.game.BaseballConstant.RESTART_OPTION;
+import static baseball.game.BaseballConstant.TURN_OFF_OPTION;
 
 import baseball.domain.Computer;
 import baseball.service.MessageService;
-import baseball.validator.PlayerNumberValidator;
+import baseball.validator.BaseballValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-public class BaseballController {
+public class BaseballGame {
 
     private static final String WRONG_CHOICE_MESSAGE = "잘못된 선택입니다.";
 
     private final MessageService messageService;
-    private final PlayerNumberValidator playerNumberValidator;
+    private final BaseballValidator baseballValidator;
 
 
-    public BaseballController() {
+    public BaseballGame() {
         this.messageService = new MessageService();
-        this.playerNumberValidator = new PlayerNumberValidator();
+        this.baseballValidator = new BaseballValidator();
     }
 
-    public void startGame() {
+    public void start() {
         do {
             initGame();
             playGame();
@@ -67,7 +67,7 @@ public class BaseballController {
         messageService.inputPlayerNumber();
         String number = Console.readLine();
 
-        playerNumberValidator.validate(number);
+        baseballValidator.validate(number);
 
         return number;
     }
