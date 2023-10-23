@@ -46,15 +46,17 @@ public class InputValidation {
         if (!Character.isDigit(input.charAt(0))) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
+
         int inputValue = Character.getNumericValue(input.charAt(0));
+
         if (inputValue < 1 || inputValue > 2) {
             throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
         }
         return inputValue;
     }
 
-    public List<Integer> convertUserInput(String userInput) {
-        List<Integer> convertedList = userInput.chars()
+    public List<Integer> convertPlayerInput(String playerInput) {
+        List<Integer> convertedList = playerInput.chars()
                 .mapToObj(c -> Character.getNumericValue((char) c))
                 .collect(Collectors.toList());
         return convertedList;

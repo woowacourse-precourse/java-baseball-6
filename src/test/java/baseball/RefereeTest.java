@@ -6,22 +6,21 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RefereeTest {
 
-    @DisplayName("감독 클래스를 생성했을 때, 맴버 변수로 정답 리스트를 가지고 있는지에 대한 테스트")
+    @DisplayName("정답 리스트를 감독 클래스 맴버변수로 set해주는 테스트")
     @Test
     void constructorTest() {
         //given
         List<Integer> answerList = List.of(3, 8, 6);
         //when
         Referee referee = new Referee();
-        referee.setAnswerList(answerList);
+        referee.setAnswer(answerList);
         //then
-        assertThat(referee.getAnswerList()).isEqualTo(answerList);
-        assertThat(referee.getAnswerList().size()).isEqualTo(3);
-        assertThat(referee.getAnswerList()).isEqualTo(answerList);
+        assertThat(referee.getAnswer()).isEqualTo(answerList);
+        assertThat(referee.getAnswer().size()).isEqualTo(3);
+        assertThat(referee.getAnswer()).isEqualTo(answerList);
     }
 
     @DisplayName("볼을 판정하는 테스트")
@@ -33,7 +32,7 @@ class RefereeTest {
         int thirdNumber = 2;
         List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
         Referee referee = new Referee();
-        referee.setAnswerList(answerList);
+        referee.setAnswer(answerList);
         //when
         int result = referee.judgeNumber(firstNumber, 1);
         //then
@@ -49,7 +48,7 @@ class RefereeTest {
         int thirdNumber = 2;
         List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
         Referee referee = new Referee();
-        referee.setAnswerList(answerList);
+        referee.setAnswer(answerList);
         //when
         int result = referee.judgeNumber(thirdNumber, 2);
         //then
@@ -66,7 +65,7 @@ class RefereeTest {
         int notExistNumber = 5;
         List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
         Referee referee = new Referee();
-        referee.setAnswerList(answerList);
+        referee.setAnswer(answerList);
         //when
         int result = referee.judgeNumber(notExistNumber, 2);
         //then
@@ -75,27 +74,27 @@ class RefereeTest {
 
     @DisplayName("유저 inputList 전체 판정하는 테스트")
     @Test
-    void judgeUserInputTest() {
+    void judgePlayerAnswerTest() {
         //given
         List<Integer> answerList = List.of(3, 7, 6);
         Referee referee = new Referee();
-        referee.setAnswerList(answerList);
-        List<Integer> userInput1 = List.of(3, 7, 6);
-        List<Integer> userInput2 = List.of(7, 6, 3);
-        List<Integer> userInput3 = List.of(3, 6, 7);
-        List<Integer> userInput4 = List.of(2, 1, 8);
-        List<Integer> userInput5 = List.of(3, 6, 1);
+        referee.setAnswer(answerList);
+        List<Integer> playerAnswer1 = List.of(3, 7, 6);
+        List<Integer> playerAnswer2 = List.of(7, 6, 3);
+        List<Integer> playerAnswer3 = List.of(3, 6, 7);
+        List<Integer> playerAnswer4 = List.of(2, 1, 8);
+        List<Integer> playerAnswer5 = List.of(3, 6, 1);
         //when
-        List<Integer> result1 = referee.judgeUserInput(userInput1);
-        List<Integer> result2 = referee.judgeUserInput(userInput2);
-        List<Integer> result3 = referee.judgeUserInput(userInput3);
-        List<Integer> result4 = referee.judgeUserInput(userInput4);
-        List<Integer> result5 = referee.judgeUserInput(userInput5);
+        List<Integer> result1 = referee.judgePlayerInput(playerAnswer1);
+        List<Integer> result2 = referee.judgePlayerInput(playerAnswer2);
+        List<Integer> result3 = referee.judgePlayerInput(playerAnswer3);
+        List<Integer> result4 = referee.judgePlayerInput(playerAnswer4);
+        List<Integer> result5 = referee.judgePlayerInput(playerAnswer5);
         //then
         assertThat(result1).isEqualTo(List.of(0, 3));
         assertThat(result2).isEqualTo(List.of(3, 0));
         assertThat(result3).isEqualTo(List.of(2, 1));
-        assertThat(result4).isEqualTo(null);
+        assertThat(result4).isEqualTo(List.of(0 ,0));
         assertThat(result5).isEqualTo(List.of(1, 1));
     }
 }

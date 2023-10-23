@@ -3,16 +3,18 @@ package baseball;
 import java.util.List;
 
 public class Referee {
-    private List<Integer> answerList;
+    private List<Integer> answer;
     private final int STRIKE = 2;
     private final int BALL = 1;
     private final int NOTHING = 0;
 
-    public List<Integer> judgeUserInput(List<Integer> userInput) {
+    public List<Integer> judgePlayerInput(List<Integer> playerInput) {
         int ball = 0;
         int strike = 0;
-        for (int i = 0; i < answerList.size(); i++) {
-            final int result = judgeNumber(userInput.get(i), i);
+
+        for (int i = 0; i < answer.size(); i++) {
+            final int result = judgeNumber(playerInput.get(i), i);
+
             if (result == BALL) {
                 ball += 1;
             }
@@ -23,19 +25,22 @@ public class Referee {
         return List.of(ball, strike);
     }
 
-    public int judgeNumber(int userNumber, int index) {
-        if (answerList.get(index) == userNumber) {
+    public int judgeNumber(int playerNumber, int index) {
+        if (answer.get(index) == playerNumber) {
             return STRIKE;
         }
-        if (answerList.contains(userNumber)) {
+        if (answer.contains(playerNumber)) {
             return BALL;
         }
         return NOTHING;
     }
-    public void setAnswerList(List<Integer> answerList) {
-        this.answerList = answerList;
+
+    public void setAnswer(List<Integer> answer) {
+        this.answer = answer;
     }
-    public List<Integer> getAnswerList() {
-        return answerList;
+
+    //test를 위한 getter
+    public List<Integer> getAnswer() {
+        return answer;
     }
 }

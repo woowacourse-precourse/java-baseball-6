@@ -9,15 +9,17 @@ public class NumberGenerator {
     private final int MAX_NUMBER = 9;
     private final int MIN_NUMBER = 1;
 
-    public List<Integer> generateRandomAnswerList() {
-        List<Integer> answerList = new ArrayList<>();
-        while (answerList.size() < 3) {
+    public List<Integer> generateRandomAnswer() {
+        List<Integer> answer = new ArrayList<>();
+
+        while (answer.size() < 3) {
             final int randomNumber = generateRandomNumber();
-            if (!answerList.contains(randomNumber)) {
-                answerList.add(randomNumber);
+
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
             }
         }
-        return answerList;
+        return answer;
     }
 
     public int generateRandomNumber() {

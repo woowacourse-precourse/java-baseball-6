@@ -31,7 +31,7 @@ class NumberGeneratorTest {
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
         for (int i = 0; i < 1000; i++) {
-            final List<Integer> randomList = numberGenerator.generateRandomAnswerList();
+            final List<Integer> randomList = numberGenerator.generateRandomAnswer();
             //then
             System.out.println(randomList);
         }
@@ -54,7 +54,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        final List<Integer> randomNumberList = numberGenerator.generateRandomAnswerList();
+        final List<Integer> randomNumberList = numberGenerator.generateRandomAnswer();
         //then
         randomNumberList.forEach(randomNumber -> assertThat(randomNumber).isBetween(1, 9));
         assertThat(randomNumberList.size()).isEqualTo(3);
@@ -66,7 +66,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        final List<Integer> randomNumberList = numberGenerator.generateRandomAnswerList();
+        final List<Integer> randomNumberList = numberGenerator.generateRandomAnswer();
         //given
         final Set<Integer> integerSet = new HashSet<>(randomNumberList);
         assertThat(integerSet.size()).isEqualTo(3);

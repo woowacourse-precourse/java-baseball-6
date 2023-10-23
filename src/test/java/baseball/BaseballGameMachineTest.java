@@ -21,7 +21,7 @@ class BaseballGameMachineTest {
 
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        String input = baseballGameMachine.playerInput();
+        String input = baseballGameMachine.getInputLine();
         //then
         assertThat(inputLine).isEqualTo(input);
     }
@@ -32,9 +32,9 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final List<Integer> userInputResult = List.of(0, 3);
+        final List<Integer> playerAnswer = List.of(0, 3);
         //then
-        assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(true);
+        assertThat(baseballGameMachine.isSuccess(playerAnswer)).isEqualTo(true);
     }
 
     @DisplayName("유저 input이 낫싱 일때, 게임 성공을 판단하는 테스트")
@@ -43,9 +43,9 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final List<Integer> userInputResult = List.of(0, 0);
+        final List<Integer> playerAnswer = List.of(0, 0);
         //then
-        assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(false);
+        assertThat(baseballGameMachine.isSuccess(playerAnswer)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 3 스트라이크 아닐 경우, 게임 성공을 판단하는 테스트")
@@ -54,9 +54,9 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final List<Integer> userInputResult = List.of(1, 2);
+        final List<Integer> playerAnswer = List.of(1, 2);
         //then
-        assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(false);
+        assertThat(baseballGameMachine.isSuccess(playerAnswer)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 1일 때, 새로운 게임의 여부를 판단하는 테스트")
@@ -65,9 +65,9 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final String userInput = "1";
+        final String playerResponse = "1";
         //then
-        assertThat(baseballGameMachine.isGameEnd(userInput)).isEqualTo(false);
+        assertThat(baseballGameMachine.isGameEnd(playerResponse)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 2일 때, 게임 종료 여부를 판단하는 테스트")
@@ -76,8 +76,8 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final String userInput = "2";
+        final String playerResponse = "2";
         //then
-        assertThat(baseballGameMachine.isGameEnd(userInput)).isEqualTo(true);
+        assertThat(baseballGameMachine.isGameEnd(playerResponse)).isEqualTo(true);
     }
 }

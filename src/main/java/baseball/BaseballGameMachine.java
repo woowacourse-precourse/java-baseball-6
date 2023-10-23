@@ -10,7 +10,7 @@ public class BaseballGameMachine {
     private InputValidation inputValidation = new InputValidation();
     private Referee referee = new Referee();
 
-    public String playerInput() {
+    public String getInputLine() {
         return Console.readLine();
     }
 
@@ -20,28 +20,29 @@ public class BaseballGameMachine {
 
     public void play() {
         boolean gameEnd = false;
+
         while (!gameEnd) {
             display(message.start() + '\n');
             gameProcess();
             display(message.requestRetryOrEnd() + '\n');
-            gameEnd = isGameEnd(playerInput());
+
+            gameEnd = isGameEnd(getInputLine());
         }
         display(message.gameEnd() + '\n');
     }
 
     public void gameProcess() {
-        referee.setAnswerList(numberGenerator.generateRandomAnswerList());
-        System.out.println(referee.getAnswerList());
         boolean success = false;
+
+        referee.setAnswer(numberGenerator.generateRandomAnswer());
         while (!success) {
             display(message.requestInput());
-
-            String playerInput = playerInput();
+            String playerInput = getInputLine();
             inputValidation.validatePlayerInput(playerInput);
-            List<Integer> userAnswer = inputValidation.convertUserInput(playerInput);
-            List<Integer> gameResult = referee.judgeUserInput(userAnswer);
-
+            List<Integer> playerAnswer = inputValidation.convertPlayerInput(playerInput);
+            List<Integer> gameResult = referee.judgePlayerInput(playerAnswer);
             display(message.result(gameResult) + '\n');
+
             success = isSuccess(gameResult);
         }
     }
@@ -49,6 +50,7 @@ public class BaseballGameMachine {
     public boolean isSuccess(List<Integer> gameResult) {
         final int ball = gameResult.get(0);
         final int strike = gameResult.get(1);
+
         if (ball == 0 && strike == 3) {
             return true;
         }
@@ -56,8 +58,9 @@ public class BaseballGameMachine {
     }
 
     public boolean isGameEnd(String playerInput) {
-        final int userInput = inputValidation.validateGameEndRequestInput(playerInput);
-        if (userInput == 2) {
+        final int convertedValue = inputValidation.validateGameEndRequestInput(playerInput);
+
+        if (convertedValue == 2) {
             return true;
         }
         return false;
