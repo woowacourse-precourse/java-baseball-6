@@ -5,6 +5,7 @@ import baseball.constants.message.ErrorMessage;
 public enum BaseballRole {
     MAX_BASEBALL_NUMBER_SIZE(3),
     THREE_STRIKE(3),
+    NO_COUNT(0),
     MIN_BASEBALL_NUMBER(1),
     MAX_BASEBALL_NUMBER(9),
     GAME_RESTART(1),

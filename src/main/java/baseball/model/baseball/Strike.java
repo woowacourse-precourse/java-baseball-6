@@ -4,8 +4,6 @@ import baseball.constants.BaseballRole;
 
 public class Strike {
 
-    private static final int NO_COUNT = 0;
-
     private int strikeCount;
 
     public Strike(int count) {
@@ -17,11 +15,11 @@ public class Strike {
     }
 
     public boolean isNoCountStrike(){
-        return strikeCount == NO_COUNT;
+        return strikeCount == BaseballRole.NO_COUNT.getValue();
     }
 
     public boolean isStrike(){
-        return strikeCount != NO_COUNT;
+        return strikeCount != BaseballRole.NO_COUNT.getValue();
     }
 
     public boolean isThreeStrike(){

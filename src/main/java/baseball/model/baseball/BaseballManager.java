@@ -1,5 +1,6 @@
 package baseball.model.baseball;
 
+import baseball.constants.BaseballRole;
 import baseball.constants.message.BaseballMessage;
 import baseball.model.player.Player;
 
@@ -7,15 +8,14 @@ import java.util.List;
 
 public class BaseballManager {
 
-    private static final int NO_COUNT = 0;
     private final BaseballGame baseballGame;
     private final Ball ball;
     private final Strike strike;
 
     public BaseballManager() {
         this.baseballGame = new BaseballGame();
-        this.ball = new Ball(NO_COUNT);
-        this.strike = new Strike(NO_COUNT);
+        this.ball = new Ball(BaseballRole.NO_COUNT.getValue());
+        this.strike = new Strike(BaseballRole.NO_COUNT.getValue());
     }
 
     public void updateBallAndStrike(Player player){

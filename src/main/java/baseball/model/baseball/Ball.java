@@ -1,8 +1,9 @@
 package baseball.model.baseball;
 
+import baseball.constants.BaseballRole;
+
 public class Ball {
 
-    private static final int NO_COUNT = 0;
     private int ballCount;
 
     public Ball(int count) {
@@ -14,11 +15,11 @@ public class Ball {
     }
 
     public boolean isNoCountBall(){
-        return ballCount == NO_COUNT;
+        return ballCount == BaseballRole.NO_COUNT.getValue();
     }
 
     public boolean isBall(){
-        return ballCount != NO_COUNT;
+        return ballCount != BaseballRole.NO_COUNT.getValue();
     }
 
     @Override
