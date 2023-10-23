@@ -2,15 +2,19 @@ package baseball.utils;
 
 
 public class ParseUserInput {
-    public int[] getUserNumbers(String userInput, int size) {
+    public int[] getUserNumbers(String userInput, int size) throws IllegalArgumentException {
         return checkInput(userInput, size);
     }
 
-    private static int[] checkInput(String userInput, int size) {
-        if (userInput.length() < 3) {
+    private static int[] checkInput(String userInput, int size) throws IllegalArgumentException {
+        try {
+            if (userInput.length() < size) {
+
+            }
+            return processInput(userInput, size);
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException();
         }
-        return processInput(userInput, size);
     }
 
     private static int[] processInput(String userInput, int size) throws IllegalArgumentException {
@@ -32,4 +36,5 @@ public class ParseUserInput {
     private static boolean checkRange(int userNums) {
         return 0 <= userNums && userNums <= 9;
     }
+
 }
