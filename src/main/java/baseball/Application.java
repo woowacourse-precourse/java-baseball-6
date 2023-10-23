@@ -160,11 +160,8 @@ class GameManager {
         return true;
     }
 
-    private boolean validateUserInput(int userInput) {
-        if (userInput == 1) {
-            return true;
-        }
-        if (userInput == 2) {
+    private boolean validateUserInputForRestartGame(String userInput) {
+        if (userInput.equals("1") || userInput.equals("2")) {
             return true;
         }
         return false;
@@ -218,7 +215,7 @@ class GameManager {
             if (checkGuessStageEnd()) {
                 user.win();
                 printGameRestartMessage();
-                if (!validateUserInput(Integer.parseInt(user.readInput()))) {
+                if (!validateUserInputForRestartGame(user.readInput())) {
                     throw new IllegalArgumentException();
                 }
                 switch (this.getUserInputVal()) {
