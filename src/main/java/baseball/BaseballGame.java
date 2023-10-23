@@ -1,28 +1,23 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
 
-    private List<Integer> answer;
-    private boolean keepGame = true;
+    private final Answer answer;
+    private Boolean keepGame;
+
+    public BaseballGame() {
+        answer = new Answer();
+        keepGame = true;
+    }
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        generateAnswer();
+        answer.generate();
         gameLoop();
-    }
-    public void generateAnswer() {
-        answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
     }
 
     public void gameLoop() {
@@ -38,27 +33,20 @@ public class BaseballGame {
 
     private List<Integer> stringToList(String string) {
         List<Integer> list = new ArrayList<>();
-
-        for (int i = 0; i < string.length(); i++) {
-            char c = string.charAt(i);
-            list.add(Character.getNumericValue(c));
-        }
+        string.chars().forEach(c -> list.add(Character.getNumericValue(c)));
 
         return list;
     }
 
     private void processRound(List<Integer> playerInputList) {
-        int strike = 0;
-        int ball = 0;
+        int strike;
+        int ball;
 
+        List<Integer> list = answer.calculateStrikeAndBall(playerInputList);
 
-        for (int i = 0; i < 3; i++) {
-            if (playerInputList.get(i).equals(answer.get(i))) {
-                strike += 1;
-            } else if (answer.contains(playerInputList.get(i))) {
-                ball += 1;
-            }
-        }
+        strike = list.get(0);
+        ball = list.get(1);
+
         printResult(strike, ball);
     }
 
@@ -84,7 +72,7 @@ public class BaseballGame {
         String playerInput = Console.readLine();
 
         if (playerInput.equals("1")) {
-            generateAnswer();
+            answer.generate();
             keepGame = true;
         } else if (playerInput.equals("2")) {
             keepGame = false;
