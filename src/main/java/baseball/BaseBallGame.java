@@ -7,6 +7,8 @@ public class BaseBallGame {
     public List<Integer> user;
     private String userString;
     private int userInteger;
+    private int strike;
+    private int ball;
     private boolean cycle = true;
 
     //상대방(컴퓨터)의 수 생성 함수
@@ -27,6 +29,7 @@ public class BaseBallGame {
     public void Play(){
         StartGamePrint();
         while(cycle) {
+            Reset();
             StartPrint();
             userString = InputNum();
             IsLength(userString);
@@ -84,5 +87,10 @@ public class BaseBallGame {
         if (user.contains(0)) {
             throw new IllegalArgumentException("1~9 숫자 이외의 값입니다.");
         }
+    }
+    //점수 초기화 함수
+    public void Reset(){
+        strike = 0;
+        ball = 0;
     }
 }
