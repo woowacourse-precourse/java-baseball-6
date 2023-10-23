@@ -14,6 +14,20 @@ public class BaseballGame implements Game{
     public BaseballGame() {
     }
 
+    private int generateAnswerNumber() {
+        // 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)
+        List<Integer> computer = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        while (computer.size() < 3){
+            int pickedNumber = pickNumberInRange(1, 9);
+            if (!computer.contains(pickedNumber)) {
+                computer.add(pickedNumber);
+                sb.append(pickedNumber);
+            }
+        }
+        return Integer.parseInt(sb.toString());
+    }
+
     @Override
     public void startAnnounce(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -115,26 +129,12 @@ public class BaseballGame implements Game{
         return checkInputNumber(inputString);
     }
 
-    private int generateAnswerNumber() {
-        // 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)
-        List<Integer> computer = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        while (computer.size() < 3){
-            int pickedNumber = pickNumberInRange(1, 9);
-            if (!computer.contains(pickedNumber)) {
-                computer.add(pickedNumber);
-                sb.append(pickedNumber);
-            }
-        }
-        return Integer.parseInt(sb.toString());
-    }
-
     // 고민: 예외를 어디서 catch해야 할까? 나는 여기서 다 해야 한다고 생각한다. 결국 모두 인풋값 검증시 발생한 예외니까.
     private int checkInputNumber(String inputString) {
         int number;
         try {
             // 검증1: int로 파싱 가능해야 한다.
-            number = getNumber(inputString);
+            number = parseNumber(inputString);
             // 검증1: 사용자 인풋이 3자리여야 한다.
             checkInputLength(inputString);
             // 검증2: "0"이 포함되지 않아야 한다.
@@ -147,7 +147,7 @@ public class BaseballGame implements Game{
         return number;
     }
 
-    private int getNumber(String inputString) throws IllegalArgumentException {
+    private int parseNumber(String inputString) throws IllegalArgumentException {
         int number;
         try {
             number = Integer.parseInt(inputString);
