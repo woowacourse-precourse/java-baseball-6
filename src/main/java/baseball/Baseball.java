@@ -10,7 +10,7 @@ public class Baseball {
 
     private static final int NUM_DIGIT = 3;
     private static final int MIN = 100;
-    private static final int MAX = 100;
+    private static final int MAX = 1000;
 
     //전체 게임 플레이
     public void play() {
