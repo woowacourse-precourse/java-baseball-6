@@ -15,14 +15,14 @@ class UserInputViewTest {
     private static final String VALID_IS_DUPLICATE = "중복된 값이 들어갔습니다.";
 
     private static final String VALID_IS_NULL = "빈 값이 들어갔습니다.";
-    private UserInputView userInputView = new UserInputView();
+    private final UserInputView userInputView = new UserInputView();
 
 
     @Test
     void 빈숫자를_전달하면_예외처리() {
         systemIn(" ");
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> userInputView.inputUserNumber()
+                userInputView::inputUserNumber
                 , "공백이 전달되었습니다.");
 
         assertEquals(VALID_IS_NULL, exception.getMessage());
@@ -34,7 +34,7 @@ class UserInputViewTest {
     void 빈값을_전달하면_예외처리() {
         systemIn("");
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> userInputView.inputUserNumber()
+                userInputView::inputUserNumber
                 , "빈값이 전달되었습니다.");
 
         assertEquals(VALID_IS_NULL, exception.getMessage());
@@ -45,7 +45,7 @@ class UserInputViewTest {
     void 문자를_전달하면_예외처리() {
         systemIn("ab1");
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> userInputView.inputUserNumber()
+                userInputView::inputUserNumber
                 , "문자가 입력되었습니다.");
 
         assertEquals(VALID_IS_NUM, exception.getMessage());
@@ -57,7 +57,7 @@ class UserInputViewTest {
         systemIn("113");
 
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> userInputView.inputUserNumber()
+                userInputView::inputUserNumber
                 , "중복된 숫자가 입력되었습니다.");
 
         assertEquals(VALID_IS_DUPLICATE, exception.getMessage());
@@ -67,7 +67,7 @@ class UserInputViewTest {
     @Test
     void 정상적인_문자_입력() {
         systemIn("123");
-        Assertions.assertDoesNotThrow(() -> userInputView.inputUserNumber());
+        Assertions.assertDoesNotThrow(userInputView::inputUserNumber);
         backupSystem();
     }
 
