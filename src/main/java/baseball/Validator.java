@@ -6,16 +6,23 @@ public class Validator {
     final String regex = "[0-9]+";
     public void check(String input){
         if(userRandomBalls.isEmpty()) initUserRandomBalls();
-        if(input.matches(regex) && checkSize(input) && checkZero(input)){
+        if(checkBlank(input) && checkSize(input) && input.matches(regex) && checkZero(input)){
             successInput(input);
         }
         else    throw new IllegalArgumentException();
     }
 
     public void checkUserChoice(String input){
-        if (!input.matches(regex) || input.length() != 1 || !checkZero(input)) {
+        if (checkBlank(input) && !input.matches(regex) || input.length() != 1 || !checkZero(input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean checkBlank(String userInputNumber){
+        if (userInputNumber == null || userInputNumber.trim().isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
     private boolean checkZero(String userInputNumber) {
