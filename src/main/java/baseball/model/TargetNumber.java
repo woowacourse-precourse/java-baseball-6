@@ -7,43 +7,43 @@ import java.util.List;
 import java.util.Set;
 
 public class TargetNumber {
-    private final List<Number> numbers;
+    private final List<BaseballNumber> baseballNumbers;
 
-    private TargetNumber(final List<Number> numbers) {
-        this.numbers = numbers;
+    private TargetNumber(final List<BaseballNumber> baseballNumbers) {
+        this.baseballNumbers = baseballNumbers;
     }
 
     public static TargetNumber randomInstance(final int size) {
-        List<Number> uniqueNumbers = new ArrayList<>();
+        List<BaseballNumber> uniqueBaseballNumbers = new ArrayList<>();
 
-        while (uniqueNumbers.size() < size) {
-            Number randomNumber = Number.createRandomNumber();
+        while (uniqueBaseballNumbers.size() < size) {
+            BaseballNumber randomBaseballNumber = BaseballNumber.createRandomNumber();
 
-            if (uniqueNumbers.contains(randomNumber)) {
+            if (uniqueBaseballNumbers.contains(randomBaseballNumber)) {
                 continue;
             }
 
-            uniqueNumbers.add(randomNumber);
+            uniqueBaseballNumbers.add(randomBaseballNumber);
         }
 
-        return new TargetNumber(Collections.unmodifiableList(uniqueNumbers));
+        return new TargetNumber(Collections.unmodifiableList(uniqueBaseballNumbers));
     }
 
     public GameResult calculateGameResult(final List<Integer> inputPlayerNumbers) {
-        List<Number> userNumbers = convertInputValueToBaseballNumbers(inputPlayerNumbers);
+        List<BaseballNumber> userBaseballNumbers = convertInputValueToBaseballNumbers(inputPlayerNumbers);
 
-        if (numbers.size() != userNumbers.size()) {
+        if (baseballNumbers.size() != userBaseballNumbers.size()) {
             throw new IllegalArgumentException();
         }
 
-        return createGameResult(userNumbers);
+        return createGameResult(userBaseballNumbers);
     }
 
-    private List<Number> convertInputValueToBaseballNumbers(final List<Integer> playerNumbers) {
+    private List<BaseballNumber> convertInputValueToBaseballNumbers(final List<Integer> playerNumbers) {
         verifyDuplicates(playerNumbers);
 
         return playerNumbers.stream()
-                .map(Number::new)
+                .map(BaseballNumber::new)
                 .toList();
     }
 
@@ -55,20 +55,20 @@ public class TargetNumber {
         }
     }
 
-    private GameResult createGameResult(List<Number> userNumbers) {
+    private GameResult createGameResult(List<BaseballNumber> userBaseballNumbers) {
         int correctCount = 0;
         int similarCount = 0;
 
-        for (int i = 0; i < numbers.size(); i++) {
-            Number computerNumber = numbers.get(i);
-            Number userNumber = userNumbers.get(i);
+        for (int i = 0; i < baseballNumbers.size(); i++) {
+            BaseballNumber computerBaseballNumber = baseballNumbers.get(i);
+            BaseballNumber userBaseballNumber = userBaseballNumbers.get(i);
 
-            if (computerNumber.equals(userNumber)) {
+            if (computerBaseballNumber.equals(userBaseballNumber)) {
                 correctCount++;
                 continue;
             }
 
-            if (numbers.contains(userNumber)) {
+            if (baseballNumbers.contains(userBaseballNumber)) {
                 similarCount++;
             }
         }
