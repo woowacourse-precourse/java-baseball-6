@@ -31,4 +31,11 @@ public class Validation {
         return characterSet.size() == length;
     }
 
+//  게임 재시작에 대한 입력값 검증
+    public boolean verifyRestartInput(int number){
+        return (number != 1) && (number !=2);
+    }
+
+
+
 }
