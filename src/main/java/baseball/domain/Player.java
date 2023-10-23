@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.constant.Regex;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
@@ -33,9 +34,9 @@ public class Player {
     public int receiveRetryOption() {
         outputView.restartOrQuit();
         int option;
-        while(true) {
+        while (true) {
             String input = inputView.receiveInputNumber();
-            if (input.matches("[12]")) {
+            if (Regex.ONE_OR_TWO.matches(input)) {
                 option = Integer.parseInt(input);
                 break;
             }
@@ -52,8 +53,8 @@ public class Player {
     }
 
     private boolean isValid(String input) {
-        if (!input.matches("^[1-9]{3}$") || !hasNoDuplicateDigits(input)) {
-            outputView.showMessage("비정상적인 입력입니다. 게임이 종료됩니다.");
+        if (!Regex.ONE_TO_NINE.matches(input) || !hasNoDuplicateDigits(input)) {
+//            outputView.printMessage("비정상적인 입력입니다. 게임이 종료됩니다.");
             throw new IllegalArgumentException();
         }
         return true;
