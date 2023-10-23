@@ -13,4 +13,10 @@ public class InputValidation {
             throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
         }
     }
+
+    public static void GameEnd(String input) {
+        if (!input.matches("^[1-2]*$")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
+    }
 }
