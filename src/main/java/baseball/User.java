@@ -10,8 +10,9 @@ public class User {
     public void inputUserNumber() {
         try {
             userNumberStr = Console.readLine();
+            isNotInteger(userNumberStr);
         } catch (IllegalArgumentException e) {
-            System.out.println("정수가 아닌 값을 입력하였습니다.");
+            System.out.println(e.getMessage());
             // 게임 종료 구현
         }
     }
@@ -23,5 +24,13 @@ public class User {
         user.add((userNumber % 100) / 10);             // 10의 자리
         user.add(userNumber % 10);                     // 1의 자리
         return user;
+    }
+
+    public static void isNotInteger(String str) throws IllegalArgumentException {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수가 아닌 값을 입력하였습니다.");
+        }
     }
 }
