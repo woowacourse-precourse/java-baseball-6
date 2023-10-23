@@ -4,11 +4,8 @@ public class BaseBallGame {
     private final UserInput userInput;
     private final Random random;
     private final Hint hint;
-
     private boolean correct = false;
-
-    private boolean restart = false;
-
+    
     public BaseBallGame(UserInput userInput, Random random, Hint hint) {
         this.userInput = userInput;
         this.random = random;
@@ -22,7 +19,7 @@ public class BaseBallGame {
         String randomNumber = null;
 
         // 재시작을 하지 않을 때까지 반복
-        while (!restart) {
+        while (true) {
             correct = false;
             // 숫자를 맞출때 까지 반복
             while (!correct) {
@@ -42,12 +39,17 @@ public class BaseBallGame {
                 }
             }
             // 게임 재시작 입력 받기
-            String restartNumber = userInput.receiveRestartNumber();
-            if(restartNumber.equals("2")) break;
+            if(!isRestart()) break;
             randomNumber = null;
         }
 
 
+    }
+
+    // 게임 재시작 여부 확인
+    private boolean isRestart() {
+        String restartNumber = userInput.receiveRestartNumber();
+        return restartNumber.equals("1");
     }
 
     // 3개의 숫자를 모두 맞혔는지 여부를 반환하는 함수
