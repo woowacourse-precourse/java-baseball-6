@@ -1,22 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+public class Validation {
+    private static final int START_INCLUSIVE = Constants.START_INCLUSIVE;
+    private static final int END_INCLUSIVE = Constants.END_INCLUSIVE;
+    private static final int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
+    private static final String START = Constants.START;
+    private static final String QUIT = Constants.QUIT;
 
-public class Player {
-    public static String input;
-    int START_INCLUSIVE = Constants.START_INCLUSIVE;
-    int END_INCLUSIVE = Constants.END_INCLUSIVE;
-    int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
-
-    public void setInput() {
-        String input = Console.readLine();
-
-        // 유효성 검사 후 통과 못하면 에러 후 리턴
-        validateInput(input);
-        Player.input = input;
-    }
-
-    private void validateInput(String input) {
+    public void validateNumberInput(String input) {
         // 입력값이 3자리 숫자인지 확인
         if (input.length() != ANSWER_DIGIT) {
             throw new IllegalArgumentException();
@@ -36,6 +27,12 @@ public class Player {
                     throw new IllegalArgumentException();
                 }
             }
+        }
+    }
+
+    public void validateGameStatusInput(String gameStatusInput) {
+        if (!gameStatusInput.equals(START) && !gameStatusInput.equals(QUIT)) {
+            throw new IllegalArgumentException();
         }
     }
 }
