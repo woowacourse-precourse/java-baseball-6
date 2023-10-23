@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class Game {
 
-    private GameNumbers userGameNumbers;
     private final GameNumbers computerGameNumbers = createRandomGameNumbers();
+    private GameNumbers userGameNumbers;
     private Result result = new Result();
 
     public GameNumbers getComputerGameNumbers() {
