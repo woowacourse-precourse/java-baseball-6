@@ -24,6 +24,11 @@ public class BaseballGame {
         return this.randomNumber;
     }
 
+
+    public BallInput getBallInput() {
+        return this.ballInput;
+    }
+
     public void resetGame() {
         randomNumber.randomNumberGenerator();
         ballHint.resetHint();
