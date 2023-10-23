@@ -3,20 +3,23 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 public class StartOrQuitGame {
 
-    public static void startOrQuitGame(){
+        public static void startOrQuitGame(){
 
-        String input = "";
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        input = Console.readLine();
+            String input = "";
 
-        while (true) {
-            if ("1".equals(input)) {
-                Application.play();
-
-            } else if ("2".equals(input)){
-                break;
+            while (true) {
+                input = Console.readLine();
+                if ("1".equals(input)) {
+                    Application.play();
+                    break;
+                } else if ("2".equals(input)) {
+                    System.out.println("게임을 종료합니다.");
+                    break;
+                } else {
+                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                }
             }
         }
-
-    }
 }
