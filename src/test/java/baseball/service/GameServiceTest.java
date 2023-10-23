@@ -32,9 +32,6 @@ class GameServiceTest {
         assertFalse(gameService.isGameOver(gameResult3));
     }
 
-//    @Test
-//    void checkResult() {
-//    }
     @Test
     @DisplayName("숫자 게임 매치 결과 정상일 때 확인")
     void checkResultSuccess() {
@@ -46,5 +43,17 @@ class GameServiceTest {
         assertEquals(gameResult.getStrike(), mockGameResult.getStrike());
         assertEquals(gameResult.getBall(), mockGameResult.getBall());
     }
+
+    @Test
+    @DisplayName("플레이어로 부터 잘못된 값이 넘어왔을 때 오류처리")
+    void checkResultThrowException() {
+        List<Integer> player = List.of(1, 2, 3, 4);
+        List<Integer> computer = List.of(1, 2, 3);
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameService.checkResult(player, computer);
+        });
+
+    }
+
 
 }
