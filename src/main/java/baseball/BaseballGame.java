@@ -19,7 +19,7 @@ public class BaseballGame {
 
         newAnswer[0] = Randoms.pickNumberInRange(1, 9);
 
-        for (int i = 0; i<2; i++) {
+        for (int i = 0; i < 2; i++) {
             do {
                 index = Randoms.pickNumberInRange(0, 9);
             } while (checkNums(newAnswer, index));
@@ -34,16 +34,16 @@ public class BaseballGame {
         while (true) {
             int[] userAnswer = new int[3];
             System.out.print("숫자를 입력해주세요 : ");
-                String input = Console.readLine();
-                if (input.length() != 3) {
+            String input = Console.readLine();
+            if (input.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+            for (int i = 0; i < 3; i++) {
+                char index = input.charAt(i);
+                if (checkNums(userAnswer, Character.getNumericValue(index))) {
                     throw new IllegalArgumentException();
                 }
-                for (int i=0; i<3; i++) {
-                    char index = input.charAt(i);
-                    if (checkNums(userAnswer, Character.getNumericValue(index))) {
-                        throw new IllegalArgumentException();
-                    }
-                    userAnswer[i] = Character.getNumericValue(index);
+                userAnswer[i] = Character.getNumericValue(index);
             }
             if (checkAnswer(this.answer, userAnswer)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -59,25 +59,20 @@ public class BaseballGame {
     public boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        try {
-            int restart = Integer.parseInt(Console.readLine());
-            if (restart != 1 && restart != 2) {
-                throw new IllegalArgumentException();
-            } else if (restart == 1) {
-                this.answer = generateAnswer();
-                return true;
-            } else {
-                return false;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        int restart = Integer.parseInt(Console.readLine());
+        if (restart != 1 && restart != 2) {
+            throw new IllegalArgumentException();
+        } else if (restart == 1) {
+            this.answer = generateAnswer();
+            return true;
         }
+
         return false;
     }
 
     //서로 다른 수인지 검사 합니다.
     public boolean checkNums(int[] nums, int num) {
-        for (int i=0; i<nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (nums[i] == num) {
                 return true;
             }
@@ -90,12 +85,12 @@ public class BaseballGame {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             if (answer[i] == userAnswer[i]) {
                 strikeCount++;
             }
 
-            for (int j=0; j<3; j++) {
+            for (int j = 0; j < 3; j++) {
                 if (answer[i] == userAnswer[j] && i != j) {
                     ballCount++;
                 }
@@ -111,11 +106,11 @@ public class BaseballGame {
             System.out.print(ballCount + "볼 ");
         }
 
-        if (strikeCount >0) {
-            System.out.print(strikeCount+"스트라이크");
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크");
         }
 
-        if (strikeCount == 0 && ballCount == 0 ){
+        if (strikeCount == 0 && ballCount == 0) {
             System.out.print("낫싱");
         }
 
