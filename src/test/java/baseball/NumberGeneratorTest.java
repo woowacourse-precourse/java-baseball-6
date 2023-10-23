@@ -15,7 +15,7 @@ class NumberGeneratorTest {
 
     @Test
     void 개수가_세개인지_체크한다() {
-        assertThat(randomNumbers).hasSize(3);
+        assertThat(randomNumbers).hasSize(CREATE_LENGTH);
     }
 
     @Test
@@ -28,8 +28,9 @@ class NumberGeneratorTest {
     @Test
     void 랜덤값의_범위가_1부터_9까지인지_체크한다() {
         for(Integer number : randomNumbers) {
-            assertThat(number).isGreaterThanOrEqualTo(NumberGenerator.MIN_RANDOM_NUMBER);
-            assertThat(number).isLessThanOrEqualTo(NumberGenerator.MAX_RANDOM_NUMBER);
+            assertThat(number)
+                    .isGreaterThanOrEqualTo(NumberGenerator.MIN_RANDOM_NUMBER)
+                    .isLessThanOrEqualTo(NumberGenerator.MAX_RANDOM_NUMBER);
         }
     }
 
