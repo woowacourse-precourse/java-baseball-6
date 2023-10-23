@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Core {
 
-    final int LIST_LEN = 3;
-
-    Generator generator = new Generator();
-    View view = new View();
-    Validation validation = new Validation();
+    private final int LIST_LEN = 3;
 
     public void run() {
+        Generator generator = new Generator();
+        View view = new View();
+        Validation validation = new Validation();
+
         List<Integer> answer = generator.generateAnswer(LIST_LEN);
         boolean playing = true;
 

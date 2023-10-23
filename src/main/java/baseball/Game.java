@@ -7,17 +7,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    final int CONTINUE = 1;
-
-    View view = new View();
-    Core core = new Core();
-    Validation validation = new Validation();
-
     public void launch() {
+        View view = new View();
+
         view.showOpening();
         boolean running = true;
 
         while (running) {
+            Core core = new Core();
+
             core.run();
 
             view.showClosing();
@@ -28,12 +26,15 @@ public class Game {
     }
 
     public boolean checkContinue() {
+        Validation validation = new Validation();
+
         String input = Console.readLine();
         validation.validateInputLength(input, 1);
 
         int inputNum = Integer.parseInt(input);
         validation.validateOneOrTwo(inputNum);
 
+        int CONTINUE = 1;
         return inputNum == CONTINUE;
     }
 }
