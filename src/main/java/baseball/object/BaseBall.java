@@ -29,7 +29,6 @@ public class BaseBall {
             else {
                 printResult(result);
             }
-
         }
     }
 
