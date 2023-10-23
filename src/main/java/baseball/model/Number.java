@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.view.outputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
@@ -30,8 +31,10 @@ public class Number {
     public boolean checkSuccess(ArrayList<Integer> inputNumber) {
         if (getStrikeCount(inputNumber) != 3) {
             return false;
+        } else {
+            outputView.displayExitMessage();
+            return true;
         }
-        return true;
     }
 
     public int getStrikeCount(ArrayList<Integer> inputNumber) {
