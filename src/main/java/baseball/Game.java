@@ -1,68 +1,101 @@
 package baseball;
 
+import static baseball.constant.NumberConstants.EXIT_NUMBER_STRING;
+import static baseball.constant.NumberConstants.GAME_END_CONDITION;
 import static baseball.constant.NumberConstants.RESTART_NUMBER_STRING;
-import static baseball.constant.NumberConstants.THREE_LENGTH;
-import static baseball.output.GameOutput.printCorrectBallCount;
-import static baseball.output.GameOutput.printCorrectStrikeCount;
-import static baseball.output.GameOutput.printStrikeThree;
-import static baseball.output.GameOutput.printlnEndMessage;
+import static baseball.output.GameOutput.*;
 
 import baseball.computer.RandomComputerNumberGenerator;
-import baseball.output.GameOutput;
 import baseball.user.UserInput;
 import java.util.Objects;
 
 public class Game {
 
-    public static void start() {
-        GameOutput.printlnStartMessage();
+    private final UserInput userInput = new UserInput();
+
+    public void start() {
+        printlnStartMessage();
+
         String gameStatus = RESTART_NUMBER_STRING;
-
-        String computerNumberString = new RandomComputerNumberGenerator().toString();
-
         while (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
-            UserInput userInput = new UserInput();
-            String userNumberString = userInput.inputNumberString();
+            playRound(generateComputerNumberString());
+            gameStatus = wantsToRestart();
+        }
+    }
 
-            int strikeCount = 0;
-            int ballCount = 0;
-            for (int i = 0; i < THREE_LENGTH; i++) {
-                if (userNumberString.charAt(i) == computerNumberString.charAt(i)) {
-                    strikeCount += 1;
-                    continue;
-                }
+    private String generateComputerNumberString() {
+        return new RandomComputerNumberGenerator().toString();
+    }
 
-                if (computerNumberString.contains(Character.toString(userNumberString.charAt(i)))) {
-                    ballCount += 1;
-                }
+    private void playRound(String computerNumberString) {
+        Result result = new Result(0, 0);
+        while (result.strike != GAME_END_CONDITION) {
+            result = makeResultCount(userInput.readNumberString(), computerNumberString);
+            displayResult(result);
+        }
+
+        printStrikeThree(result.strike);
+    }
+
+    private Result makeResultCount(String userNumberString, String computerNumberString) {
+        int strikeCount = countStrikes(userNumberString, computerNumberString);
+        int ballCount = countBallsIncludingStrikes(userNumberString, computerNumberString) - strikeCount;
+
+        return new Result(strikeCount, ballCount);
+    }
+
+    private int countStrikes(String userNumberString, String computerNumberString) {
+        int count = 0;
+        for (int i = 0; i < userNumberString.length(); i++) {
+            if (userNumberString.charAt(i) == computerNumberString.charAt(i)) {
+                count++;
             }
+        }
 
-            if (strikeCount == 0 && ballCount == 0) {
-                GameOutput.printlnNothing();
-                continue;
+        return count;
+    }
+
+    private int countBallsIncludingStrikes(String userNumberString, String computerNumberString) {
+        int count = 0;
+        for (char c : userNumberString.toCharArray()) {
+            if (computerNumberString.contains(Character.toString(c))) {
+                count++;
             }
+        }
 
-            if (strikeCount == 3) {
-                printStrikeThree(strikeCount);
-                gameStatus = userInput.inputOneOrTwo();
-                if (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
-                    computerNumberString = new RandomComputerNumberGenerator().toString();
-                    continue;
-                }
+        return count;
+    }
 
-                printlnEndMessage();
-                break;
-            }
+    private void displayResult(Result result) {
+        if (result.isNothing()) {
+            printlnNothing();
+            return;
+        }
 
-            if (ballCount > 0) {
-                printCorrectBallCount(ballCount);
-            }
+        if (result.ball > 0) {
+            printCorrectBallCount(result.ball);
+        }
 
-            if (strikeCount > 0) {
-                printCorrectStrikeCount(strikeCount);
-            }
+        if (result.strike > 0) {
+            printCorrectStrikeCount(result.strike);
+        }
 
-            System.out.println();
+        printNewLine();
+    }
+
+    private String wantsToRestart() {
+        String gameStatus = userInput.readOneOrTwo();
+        if (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
+            return RESTART_NUMBER_STRING;
+        }
+
+        printlnEndMessage();
+        return EXIT_NUMBER_STRING;
+    }
+
+    private record Result(int strike, int ball) {
+        boolean isNothing() {
+            return strike == 0 && ball == 0;
         }
     }
 
