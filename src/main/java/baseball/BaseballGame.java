@@ -10,6 +10,9 @@ public class BaseballGame {
     //게임을 생성 합니다.
     public BaseballGame() {
         this.answer = generateAnswer();
+        for (int i = 0; i < 3; i++) {
+            System.out.print(answer[i]);
+        }
     }
 
     //정답을 생성 합니다.
@@ -22,8 +25,9 @@ public class BaseballGame {
         for (int i = 0; i < 2; i++) {
             do {
                 index = Randoms.pickNumberInRange(0, 9);
-            } while (checkNums(newAnswer, index));
-            newAnswer[i + 1] = index;
+                newAnswer[i + 1] = index;
+            } while (checkNums(newAnswer));
+
         }
         return newAnswer;
     }
@@ -40,11 +44,15 @@ public class BaseballGame {
             }
             for (int i = 0; i < 3; i++) {
                 char index = input.charAt(i);
-                if (checkNums(userAnswer, Character.getNumericValue(index))) {
-                    throw new IllegalArgumentException();
-                }
+//                if (checkNums(userAnswer, Character.getNumericValue(index))) {
+//                    throw new IllegalArgumentException();
+//                }
                 userAnswer[i] = Character.getNumericValue(index);
             }
+            if (checkNums(userAnswer)) {
+                throw new IllegalArgumentException();
+            }
+
             if (checkAnswer(this.answer, userAnswer)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 if (!restart()) {
@@ -71,13 +79,17 @@ public class BaseballGame {
     }
 
     //서로 다른 수인지 검사 합니다.
-    public boolean checkNums(int[] nums, int num) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == num) {
-                return true;
-            }
-        }
-        return false;
+//    public boolean checkNums(int[] nums, int num) {
+//        for (int i = 0; i < nums.length; i++) {
+//            if (nums[i] == num) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
+    public boolean checkNums(int[] nums) {
+        return nums[0] == nums[1] || nums[1] == nums[2] || nums[2] == nums[0];
     }
 
     //컴퓨터의 답과 사용자의 입력 값을 비교 합니다.
