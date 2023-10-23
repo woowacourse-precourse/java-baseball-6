@@ -57,10 +57,10 @@
 ## UserInterface
 
 - 멤버변수
-    - 사용자의 입력을 받는 스캐너
+    - 사용자의 입력을 받는 Console
     - BaseballGame
 - 생성자
-    - Scanner와 BaseballGame을 주입받는 생성자
+    - Console과 BaseballGame을 주입받는 생성자
 - 메서드
     - 프로그램을 시작하는메서드
     - 게임을 시작하는메서드
