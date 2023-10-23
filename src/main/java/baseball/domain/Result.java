@@ -3,9 +3,12 @@ package baseball.domain;
 import static baseball.domain.numberBalls.NumberBallsConstant.NUMBER_COUNT;
 
 public class Result {
-    public static final String STRIKE_STRING = "스트라이크";
-    public static final String BALL_STRING = "볼";
-    public static final String NON_STRING = "낫싱";
+    private static final String STRIKE_STRING = "스트라이크";
+    private static final String BALL_STRING = "볼";
+    private static final String NON_STRING = "낫싱";
+    private static final String BLANK = " ";
+    private static final String EMPTY = "";
+
 
     private Integer ball;
     private Integer strike;
@@ -39,48 +42,30 @@ public class Result {
      */
     @Override
     public String toString() {
-        if (isNon()) {
+        String result = getBallString() + BLANK + getStrikeString();
+        result = result.trim();
+
+        if (result.isEmpty()) {
             return NON_STRING;
         }
 
-        return getBallStrikeString();
-    }
-
-    private String getBallStrikeString() {
-        String resultString = "";
-
-        if (isBallPresent()) {
-            resultString += getBallString();
-        }
-
-        if (isStrikePresent()) {
-            if (isBallPresent()) {
-                resultString += " ";
-            }
-            resultString += getStrikeString();
-        }
-
-        return resultString;
-    }
-
-    private boolean isNon() {
-        return !isStrikePresent() && !isBallPresent();
+        return result;
     }
 
     private String getStrikeString() {
+        if (strike.equals(0)) {
+            return EMPTY;
+        }
+
         return strike + STRIKE_STRING;
     }
 
     private String getBallString() {
+        if (ball.equals(0)) {
+            return EMPTY;
+        }
+
         return ball + BALL_STRING;
-    }
-
-    private boolean isStrikePresent() {
-        return !strike.equals(0);
-    }
-
-    private boolean isBallPresent() {
-        return !ball.equals(0);
     }
 
     public boolean isContinue() {
