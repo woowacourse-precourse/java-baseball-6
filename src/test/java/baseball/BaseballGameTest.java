@@ -18,7 +18,7 @@ public class BaseballGameTest {
     @Test
     void 사용자_숫자_길이_테스트(){
         String input = "0";
-        assertThatThrownBy(()-> InputException.lenException(input))
+        assertThatThrownBy(()-> InputException.lengthException(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test

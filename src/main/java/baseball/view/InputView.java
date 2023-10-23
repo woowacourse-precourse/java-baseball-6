@@ -11,7 +11,7 @@ public class InputView {
         String input = Console.readLine();
 
         notNumericException(input);
-        lenException(input);
+        lengthException(input);
 
         List<Integer> playerNumbers = new ArrayList<>();
         for(String num : input.split("")) {
@@ -23,6 +23,8 @@ public class InputView {
 
         return playerNumbers;
     }
+
+
     public static boolean inputRestartDecision(){
         String input = Console.readLine();
 

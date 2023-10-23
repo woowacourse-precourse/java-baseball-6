@@ -11,9 +11,17 @@ public class BaseballController {
     private static final String GAME_OVER_CONDITION = "3스트라이크";
     public static void startGame(){
         OutputView.gameStartPrint();
-        List<Integer> computer = Computer.createRandomNumbers();
-        playGame(computer);
-        restartOrEndGame();
+        boolean continueGame = true;
+        while(continueGame) {
+            List<Integer> computer = Computer.createRandomNumbers();
+            playGame(computer);
+
+            OutputView.correctInputPrint();
+            OutputView.restartAndGameOverPrint();
+
+            continueGame = InputView.inputRestartDecision();
+        }
+        OutputView.gameOverPrint();
     }
     private static void playGame(List<Integer> computer){
         String result;
@@ -24,9 +32,5 @@ public class BaseballController {
             result = compare.generateResult();
             OutputView.gameResultPrint(result);
         } while(!result.equals(GAME_OVER_CONDITION));
-    }
-    private static void restartOrEndGame(){
-        OutputView.correctInputPrint();
-        OutputView.restartAndGameOverPrint();
     }
 }
