@@ -1,8 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 /*
