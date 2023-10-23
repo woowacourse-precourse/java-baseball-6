@@ -1,29 +1,37 @@
 package baseball.validator;
 
 
+import baseball.domain.exception.BaseballException;
+
+import static baseball.domain.exception.ErrorMessage.*;
+
 public class NumberValidator {
     public static void validateNumberLength(final String number) {
         if (!isValidLength(number)) {
-            throw new IllegalArgumentException("number Length is different from the system setting");
+            throw BaseballException.of(INVALID_LENGTH);
         }
     }
 
     public static void validateContainDuplicatedNumber(final String number) {
         if (!isUniqueNumber(number)) {
-            throw new IllegalArgumentException("number cannot contain duplicated numbers");
+            throw BaseballException.of(DUPLICATED_NUMBER);
         }
     }
 
     public static void validateContainOnlyNumber(final String number) {
         if (!isValidNumber(number)) {
-            throw new IllegalArgumentException("number cannot contain any letters");
+            throw BaseballException.of(CONTAIN_LETTER);
         }
     }
 
     public static void validateEmpty(final String number) {
-        if (number.isEmpty()) {
-            throw new IllegalArgumentException("number cannot be empty");
+        if (isEmpty(number)) {
+            throw BaseballException.of(EMPTY_NUMBER);
         }
+    }
+
+    private static boolean isEmpty(String number) {
+        return number.isEmpty();
     }
 
     private static boolean isValidLength(final String number) {
