@@ -3,7 +3,6 @@ package baseball;
 import static baseball.Constants.IN_GAME;
 import static baseball.Constants.RE_GAME;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
