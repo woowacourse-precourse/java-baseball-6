@@ -7,12 +7,15 @@ import java.util.regex.Pattern;
 
 public class GameController {
 
-    private static final String INPUT_ERROR_MESSAGE = "잘못된 입력값입니다.";
+    private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String SUCCESS_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_ERROR_MESSAGE = "잘못된 입력값 입니다.";
     private static final Pattern pattern = Pattern.compile("([1-9]{3,3})");
     private String computerNumber;
 
     public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_GAME_MESSAGE);
 
         Computer computer = new Computer();
         computerNumber = computer.getComputerRandomNumber();
@@ -61,8 +64,8 @@ public class GameController {
             }
 
             if (result.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println(SUCCESS_GAME_MESSAGE);
+                System.out.println(RESTART_GAME_MESSAGE);
                 String restart = Console.readLine();
 
                 if (restart.equals("1")) {
