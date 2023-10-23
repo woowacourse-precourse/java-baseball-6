@@ -60,6 +60,4 @@ public class Validation {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
-
-
 }
