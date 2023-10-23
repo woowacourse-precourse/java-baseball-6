@@ -22,6 +22,7 @@ public class GameController {
     }
 
     public void start() {
+        view.printStartMessage();
         do {
             startGame();
             playGame();
@@ -30,7 +31,6 @@ public class GameController {
 
 
     public void startGame() {
-        view.printStartMessage();
         List<Integer> random = randomNumberGenerator.generateRandomNumber();
         this.randomNumber = new Number(random);
     }
