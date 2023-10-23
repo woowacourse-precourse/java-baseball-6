@@ -4,14 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class ContinueNumber {
 
-    public Boolean getContinueNumber() {
+    public String getContinueNumber() {
         String continueNumber = getReadLine();
-        if (continueNumber.equals("1")) {
-            return true;
-        } else if (continueNumber.equals("2")) {
-            return false;
-        }
-        return false;
+        checkContinueNumber(continueNumber);
+        return continueNumber;
     }
 
     private String getReadLine() {
