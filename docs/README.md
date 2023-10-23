@@ -2,13 +2,42 @@
     <img src="./woowacourse_logo.jpg" alt="우아한테크코스" width="600px">
 </p>
 
-# 프리코스 미션 1주차 - 숫자 야구 게임 <span align="center"><img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mlb.svg" /></span>
+# ⚾ 프리코스 미션 1주차 - 숫자 야구 게임 <span align="center"><img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mlb.svg" /></span>
 
 숫자 야구 게임은 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임입니다.
 
 ---
 
-# 📋 기능 목록 📋
+# 🌲폴더 구조
+
+```
+main
+└─java
+└─baseball
+│  Application.java
+│
+├─dto
+│      AnswerNumber.java
+│      BallScore.java
+│      GameNumber.java
+│      Hint.java
+│      StrikeScore.java
+│
+├─repository
+│      AnswerInput.java
+│      GameNumberMaker.java
+│      GameScore.java
+│
+└─services
+Constants.java
+Game.java
+InputExceptionError.java
+
+```
+
+---
+
+# 📋 기능 목록
 
 ## 💻 기능 1 - 게임 생성 [✅]
 
