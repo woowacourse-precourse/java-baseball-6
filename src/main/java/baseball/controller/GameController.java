@@ -42,14 +42,15 @@ public class GameController {
     private void setAndSaveUserNumbers() {
         String userInput = gameView.inputUserNumber();
         validationUtil.validate(userInput);
+        numberModel.setUserNumbers(makeList(userInput));
+    }
 
-        // String -> List<Integer> 형식 변환. TODO: 메소드 분리
+    private List<Integer> makeList(String userInput) {
         List<Integer> userNumbers = new ArrayList<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            int convertedNum = Character.getNumericValue(userInput.charAt(i));
-            userNumbers.add(convertedNum);
+        for (char ch : userInput.toCharArray()) {
+            userNumbers.add(Character.getNumericValue(ch));
         }
-        numberModel.setUserNumbers(userNumbers);
+        return userNumbers;
     }
 
     private boolean checkResult(List<Integer> result) {
