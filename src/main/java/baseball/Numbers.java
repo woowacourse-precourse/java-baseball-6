@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static baseball.Constants.*;
 
@@ -24,5 +26,12 @@ public class Numbers {
                         throw new IllegalArgumentException(NUMBER_RANGE_ERROR);
                     }
                 });
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> setNumbers = new HashSet<>(numbers);
+        if (setNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException(NUMBERS_DUPLICATE_ERROR);
+        }
     }
 }
