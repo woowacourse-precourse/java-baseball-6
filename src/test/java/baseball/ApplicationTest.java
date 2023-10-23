@@ -1,14 +1,21 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -24,6 +31,33 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"asd", "                 ", "&@!&asd", "12A"})
+    void 예외_테스트_문자_입력(String input) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"120", "051", "000", "102"})
+    void 예외_테스트_0_입력(String input) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"122", "414", "555", "522"})
+    void 예외_테스트_중복_숫자_입력(String input) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

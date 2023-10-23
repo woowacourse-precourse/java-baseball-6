@@ -7,6 +7,7 @@ public class OutputView {
     private static final String BALL_TEXT = "볼";
     private static final String STRIKE_TEXT = "스트라이크";
     private static final String NOTHING_TEXT = "낫싱";
+    public static final String SPACE = " ";
 
     public OutputView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -30,7 +31,7 @@ public class OutputView {
         if (gameStatus.isNotBallCntZero()) {
             result.append(gameStatus.getBallCnt())
                     .append(BALL_TEXT)
-                    .append(" ");
+                    .append(SPACE);
         }
     }
 

@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.*;
 import baseball.service.GameService;
+import baseball.util.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -20,7 +21,7 @@ public class GameController {
     }
 
     public void playGame() {
-        RandomNumber randomNumber = RandomNumber.create();
+        RandomNumber randomNumber = generateRandomNumber();
 
         while (!gameStatus.isEnd()) {
             GameNumberSet gameNumberSet = createGameNumberSet(randomNumber);
@@ -31,6 +32,10 @@ public class GameController {
                 handleGameEnd(randomNumber, gameStatus);
             }
         }
+    }
+
+    private static RandomNumber generateRandomNumber() {
+        return RandomNumber.create(RandomNumberGenerator.generate());
     }
 
     private GameNumberSet createGameNumberSet(RandomNumber randomNumber) {
@@ -50,7 +55,7 @@ public class GameController {
         RetryCommand command = inputView.getCommand();
 
         if (command.isRetry()) {
-            randomNumber.reset();
+            randomNumber.reset(RandomNumberGenerator.generate());
             gameStatus.reset();
         }
     }
