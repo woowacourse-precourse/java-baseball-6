@@ -29,5 +29,5 @@
 
 - [ ] 숫자야구를 컨트롤하는 Controller 클래스 구현 (BaseballController)
     - [x] 실제 숫자야구의 로직을 수행하는 playBaseBall 메서드 구현
-    - [ ] 여러 요소들을 활용하여 게임을 구동하는 runGame 메서드 구현
-        - [ ] 게임 종료 후 재시작/종료를 구분하는 gamePlayFlag 설정
+    - [x] 여러 요소들을 활용하여 게임을 구동하는 runGame 메서드 구현
+        - [x] 게임 종료 후 재시작/종료를 구분하는 gamePlayFlag 설정

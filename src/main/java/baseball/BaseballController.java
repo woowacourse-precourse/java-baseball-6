@@ -14,6 +14,25 @@ public class BaseballController {
     private UserAnswerInputValidator userAnswerInputValidator = new UserAnswerInputValidator();
     private GameRetryInputValidator gameRetryInputValidator = new GameRetryInputValidator();
 
+    // 게임 시작
+    public void runGame(){
+        // 시작 멘트
+        narrator.startGame();
+        // 게임시작 플래그
+        String gamePlayFlag = PLAY_CONTINUE;
+        while (gamePlayFlag.equals(PLAY_CONTINUE)){
+            // 숫자야구 플레이
+            playBaseBall();
+
+            // 재시작 멘트
+            narrator.retryGame();
+            gamePlayFlag = Console.readLine().trim();
+
+            // 유저가 올바른 재시작 값을 넣었나 체크
+            gameRetryInputValidator.validateInput(gamePlayFlag);
+        }
+    }
+
     private void playBaseBall(){
         //서로 다른 3자리의 수 생성(답)
         int[] computerAnswer = randomNumberGenerator.makeComputerAnswer();
