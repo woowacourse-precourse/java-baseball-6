@@ -1,5 +1,6 @@
 package baseball;
 
+import javax.security.auth.callback.CallbackHandler;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +20,18 @@ public class Application {
         return "숫자 야구 게임을 시작합니다.";
     }
     //TODO : convertToList 메소드 만들기
+    public List<Character> convertToList(String str) {
+        List<Character> list = new ArrayList<>();
+        for(int i = 0; i<str.length(); i++){
+            list.add(str.charAt(i));
+        }
+        return list;
+    }
     public int countStrike(String answer, String input) {
         int strikeCnt = 0;
 
-        List<Character> answerList = new ArrayList<>();
-        List<Character> inputList = new ArrayList<>();
-        for(int i = 0; i<3; i++){
-            answerList.add(answer.charAt(i));
-            inputList.add(input.charAt(i));
-        }
+        List<Character> answerList = convertToList(answer);
+        List<Character> inputList = convertToList(input);
 
         for(int i = 0; i<3; i++) {
             if (answerList.get(i).equals(inputList.get(i))) {
@@ -38,12 +42,8 @@ public class Application {
     }
     public int countBall(String answer, String input) {
         int ballCnt = 0;
-        List<Character> answerList = new ArrayList<>();
-        List<Character> inputList = new ArrayList<>();
-        for(int i = 0; i<3; i++){
-            answerList.add(answer.charAt(i));
-            inputList.add(input.charAt(i));
-        }
+        List<Character> answerList = convertToList(answer);
+        List<Character> inputList = convertToList(input);
 
         for(int i = 0; i<3; i++) {
             for(int j = 0; j<3; j++) {
@@ -81,8 +81,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         switch (choice){
-            case "1" ->{
-                countStrike(answer,input); }
+            case "1" ->{showBaseballOutcome(answer,input); }
             case "2" ->{break;}
             default -> {checkExitChoiceValidation();}
         }

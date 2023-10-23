@@ -46,4 +46,4 @@
 ### 3. 리팩토링  
 1. countCommonNumbers() 메소드 이름을 countBall() 로 변경
 2. compareDigitNumbers() 메소드 이름을 countStrike() 로 변경
-3. String 변수를 arrayList로 변환해주는 converToList() 메소드 추가 구현
+3. String 변수를 arrayList로 변환하는 convertToList() 메소드 추가 구현
