@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import static baseball.constant.BaseballConstant.BASEBALL_THREE_STRIKES;
+import static baseball.constant.BaseballConstant.RESTART_OPTION;
+import static baseball.constant.BaseballConstant.TURN_OFF_OPTION;
+
 import baseball.domain.Computer;
 import baseball.service.MessageService;
 import baseball.validator.PlayerNumberValidator;
@@ -7,12 +11,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballController {
 
-    private static final int RESTART_OPTION = 1;
-    private static final int TURN_OFF_OPTION = 2;
-    private static final int BASEBALL_THREE_STRIKES = 3;
+    private static final String WRONG_CHOICE_MESSAGE = "잘못된 선택입니다.";
 
     private final MessageService messageService;
     private final PlayerNumberValidator playerNumberValidator;
+
 
     public BaseballController() {
         this.messageService = new MessageService();
@@ -39,7 +42,7 @@ public class BaseballController {
             case TURN_OFF_OPTION -> {
                 return false;
             }
-            default -> throw new IllegalArgumentException("잘못된 선택입니다.");
+            default -> throw new IllegalArgumentException(WRONG_CHOICE_MESSAGE);
         }
     }
 

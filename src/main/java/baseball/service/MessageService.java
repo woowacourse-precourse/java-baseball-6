@@ -1,10 +1,10 @@
 package baseball.service;
 
-public class MessageService {
+import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+import static baseball.constant.BaseballConstant.RESTART_OPTION;
+import static baseball.constant.BaseballConstant.TURN_OFF_OPTION;
 
-    private static final int RESTART_GAME_NUMBER = 1;
-    private static final int END_GAME_NUMBER = 2;
-    private static final int BASEBALL_NUMBERS_SIZE = 3;
+public class MessageService {
 
     private static final String START_GAME_MASSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
@@ -40,6 +40,6 @@ public class MessageService {
 
     public void announceThreeStrikes() {
         System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", BASEBALL_NUMBERS_SIZE);
-        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.%n", RESTART_GAME_NUMBER, END_GAME_NUMBER);
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.%n", RESTART_OPTION, TURN_OFF_OPTION);
     }
 }

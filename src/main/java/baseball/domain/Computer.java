@@ -1,13 +1,13 @@
 package baseball.domain;
 
+import static baseball.constant.BaseballConstant.BASEBALL_MAX_NUMBER;
+import static baseball.constant.BaseballConstant.BASEBALL_MIN_NUMBER;
+import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
 
 public class Computer {
-
-    private static final int BASEBALL_NUMBERS_SIZE = 3;
-    private static final int BASEBALL_MIN_NUMBER = 1;
-    private static final int BASEBALL_MAX_NUMBER = 9;
 
     private final String number;
 
