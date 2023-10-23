@@ -19,11 +19,12 @@ public class GameController {
         proceedGame();
     }
 
-    public void proceedGame() { //임시로 테스트 케이스 작성
+    public void proceedGame() {
+        InputNumber inputNumber = new InputNumber();
+
         int i = 0;
         do {
-            //뷰로 입력 받기
-            InputNumber inputNumber = new InputNumber();
+            //뷰로 입력 받기 - 임시로 테스트 케이스 작성
             inputNumber.setInputNumber("516");
             System.out.println("사용자 입력: " + inputNumber.getInputNumber());
 
@@ -41,5 +42,11 @@ public class GameController {
         return false;
     }
 
+    public boolean isQuitted(InputNumber inputNumber) {
+        if (inputNumber.getQuitNumber().equals("2")) {
+            return true;
+        }
+        return false;
+    }
 }
 
