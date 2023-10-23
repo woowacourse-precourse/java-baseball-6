@@ -4,6 +4,7 @@ import baseball.game.GameManager;
 
 public class Game {
     private GameManager gameManager;
+
     public Game() {
         this.gameManager = new GameManager();
     }

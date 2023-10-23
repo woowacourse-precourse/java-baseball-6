@@ -8,4 +8,7 @@ public class GameConst {
     public static final int ALL_STRIKE = 3; //게임이 종료되는 스트라이크 개수
     public static final int WANT_RESTART = 1; //재시작을 위한 값
     public static final int WANT_END = 2; //종료를 위한 값
+
+    public GameConst() {
+    }
 }
