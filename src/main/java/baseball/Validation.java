@@ -13,4 +13,14 @@ public class Validation {
 
         return flag;
     }
+
+    public boolean isThreeLength(String num) {
+        boolean flag = true;
+
+        if (num.length() != 3) {
+            flag = false;
+        }
+
+        return flag;
+    }
 }
