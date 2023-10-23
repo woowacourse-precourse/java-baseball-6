@@ -13,9 +13,11 @@ public class Game {
 
     private final UserInput userInput = new UserInput();
 
-    public void start() {
+    public Game() {
         printlnStartMessage();
+    }
 
+    public void start() {
         String gameStatus = RESTART_NUMBER_STRING;
         while (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
             playRound(generateComputerNumberString());
