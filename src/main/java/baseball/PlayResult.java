@@ -19,11 +19,11 @@ public class PlayResult {
     private EnumMap<CompareResult, Long> mapResults(
             final List<CompareResult> compareResults
     ) {
-        return compareResults.stream()
-                .collect(groupingBy(result -> result,
-                        () -> new EnumMap<>(CompareResult.class),
-                        counting())
-                );
+        return compareResults.stream().collect(groupingBy(
+                result -> result,
+                () -> new EnumMap<>(CompareResult.class),
+                counting()
+        ));
     }
 
     public boolean isNothing() {

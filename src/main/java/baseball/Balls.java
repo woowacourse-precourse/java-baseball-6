@@ -1,9 +1,10 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Balls {
 
@@ -28,7 +29,7 @@ public class Balls {
     }
 
     private void validateDuplicate(final List<Integer> numbers) {
-        final HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
+        final Set<Integer> uniqueNumbers = new HashSet<>(numbers);
 
         if (numbers.size() != uniqueNumbers.size()) {
             throw new IllegalArgumentException();
@@ -36,12 +37,9 @@ public class Balls {
     }
 
     private List<Ball> mapBallNumbers(final List<Integer> numbers) {
-        final List<Ball> balls = new ArrayList<>();
-
-        for (int i = 0; i < BALL_NUMBERS_SIZE; i++) {
-            balls.add(new Ball(numbers.get(i), i));
-        }
-        return balls;
+        return IntStream.range(0, BALL_NUMBERS_SIZE)
+                .mapToObj(i -> new Ball(numbers.get(i), i))
+                .toList();
     }
 
     public PlayResult compareAll(final Balls other) {
