@@ -18,13 +18,12 @@ public class Baseball {
     private final Computer computer = new Computer();
 
     public void startBaseball() {
-        List<Integer> computerNumber = computer.getComputerNumber();
-        //System.out.println(computerNumber);
         System.out.println(START_BASEBALL_MSG);
         boolean restartFlag = true;
 
         while(restartFlag) {
             System.out.print(PLEASE_INPUT_MSG);
+            List<Integer> computerNumber = computer.getComputerNumber();
             List<Integer> playerNumber = player.getPlayerNumber();
             int strikeCount = core.countStrike(computerNumber, playerNumber);
             int ballCount = core.countBall(computerNumber, playerNumber);
@@ -32,6 +31,7 @@ public class Baseball {
 
             if(strikeCount == MAX_STRIKE) {
                 System.out.println(END_BASEBALL_MSG);
+                System.out.println(RESTART_OR_EXIT_MSG);
                 restartFlag = isRestartOrExit();
             }
         }
