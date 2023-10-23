@@ -1,13 +1,25 @@
 # 기능 목록 단위
 
+## 커밋 컨벤션
+
+```text
+docs : 문서, 요구사항 수정
+feat : 새로운 기능 추가
+fix : 에러 수정
+style : 코드 포멧팅 (코드의 들여쓰기, 공백, 줄바꿈, 변수 및 함수명의 명명 규칙을 따르는 등의 작업)
+refactor :코드 리팩토링
+test : 테스트 추가
+refactor : 로직을 변경하지 않으면서 코드 품질을 향상시키는 작업(변수명, 매직넘버, 함수 재사용성 높이기, 불필요한 중첩 제거)
+```
+
 ## ⌨️ 입력
 
 ### Number
 1. 사용자가 입력할때 `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 입력해야 한다.
     1. 서로 다른 3자리의 수
 2. [예외] 1~9 이외에 숫자가 들어오면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-3. [예외] 3자리수에 딱 맞게 들어오지 않으면 IllegalArgumentException을 발생시킨 후애플리케이션은 종료되어야 한다.
-4. [예외] 입력된 숫자 중 중복된 숫자가 있으면 IllegalArgumentException을 발생시킨 후애플리케이션은 종료되어야 한다.
+3. [예외] 3자리수에 딱 맞게 들어오지 않으면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
+4. [예외] 입력된 숫자 중 중복된 숫자가 있으면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 ### Computer
 
