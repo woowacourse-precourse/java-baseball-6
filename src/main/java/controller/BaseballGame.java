@@ -24,36 +24,51 @@ public class BaseballGame {
             if (!playerNumbers.validatedNumber(player)) {
                 throw new IllegalArgumentException();
             }
-            completeNumber = compareNumber(computer,player);
+            completeNumber = compareNumber(computer, player);
 
         }
-        if(setGame()){
+        if (setGame()) {
             run();
-        }else{
-            return;
+        } else {
         }
 
 
     }
 
     private boolean compareNumber(String computer, String player) {
-        int ball = ballCount(computer,player);
-        int strike = strikeCount(computer,player);
-        if(strike==3){
+        int ball = ballCount(computer, player);
+        int strike = strikeCount(computer, player);
+        if (strike == 3) {
             return true;
-        }else{
-            System.out.print(ball);
-            gameView.printBall();
-            System.out.print(strike);
-            gameView.printStrike();
+        } else if (ball == 0 && strike == 0) {
+            GameView.printNothingNumber();
             return false;
+        } else {
+            isBallCount(ball);
+            isStrikeCount(strike);
+            System.out.println();
+            return false;
+        }
+    }
+
+    private void isBallCount(int ball) {
+        if (ball > 0) {
+            System.out.print(ball);
+            GameView.printBall();
+        }
+    }
+
+    private void isStrikeCount(int strike) {
+        if (strike > 0) {
+            System.out.print(strike);
+            GameView.printStrike();
         }
     }
 
     private int strikeCount(String computer, String player) {
         int strike = 0;
-        for(int i=0;i<computer.length();i++){
-            if(computer.charAt(i)==player.charAt(i)){
+        for (int i = 0; i < computer.length(); i++) {
+            if (computer.charAt(i) == player.charAt(i)) {
                 strike++;
             }
         }
@@ -61,10 +76,10 @@ public class BaseballGame {
     }
 
     private int ballCount(String computer, String player) {
-        int ball =0;
-        for(int i=0;i<computer.length();i++){
-            for(int j=0;j<player.length();j++){
-                if(i!=j&&computer.charAt(i)==player.charAt(j)){
+        int ball = 0;
+        for (int i = 0; i < computer.length(); i++) {
+            for (int j = 0; j < player.length(); j++) {
+                if (i != j && computer.charAt(i) == player.charAt(j)) {
                     ball++;
                 }
             }

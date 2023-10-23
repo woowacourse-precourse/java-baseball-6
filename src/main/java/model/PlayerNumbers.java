@@ -11,8 +11,8 @@ public class PlayerNumbers {
     }
 
     private boolean isNumber(String playerNumbers) {
-        for(int i=0;i<playerNumbers.length();i++){
-            if(playerNumbers.charAt(i)<48||playerNumbers.charAt(i)>57){
+        for (int i = 0; i < playerNumbers.length(); i++) {
+            if (playerNumbers.charAt(i) < 48 || playerNumbers.charAt(i) > 57) {
                 return false;
             }
         }
