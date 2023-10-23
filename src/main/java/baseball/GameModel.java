@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 public class GameModel {
-    private List<String> computerNum;
+    private final List<String> computerNum;
 
     public GameModel() {
         this.computerNum = createComputerNumber();
