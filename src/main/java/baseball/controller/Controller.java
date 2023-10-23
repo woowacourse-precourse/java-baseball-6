@@ -1,15 +1,14 @@
 package baseball.controller;
 
 import static baseball.model.State.PLAY;
-import static baseball.model.State.createWith;
 import static baseball.model.State.isMoreGame;
 import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
-import static baseball.util.Converter.convertStringToIntegerList;
 
 import baseball.model.Computer;
 import baseball.model.GuessNumber;
 import baseball.model.State;
 import baseball.util.BaseBallGameNumberGenerator;
+import baseball.util.Converter;
 import baseball.view.ConsoleInputView;
 import baseball.view.ConsoleOutputView;
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class Controller {
     private List<Integer> getGuessNumbers() {
         consoleOutputView.print(GUESS_NUMBER_INPUT_MESSAGE);
         String guessNumbers = consoleInputView.readLine();
-        GuessNumber guess = new GuessNumber(convertStringToIntegerList(guessNumbers));
+        GuessNumber guess = new GuessNumber(Converter.stringToIntegerList(guessNumbers));
         return guess.guessNumbers();
     }
 
@@ -67,6 +66,6 @@ public class Controller {
     private State askMoreGame() {
         consoleOutputView.print(RESTART_OR_FINISH_MESSAGE);
         String stateNumber = consoleInputView.readLine();
-        return createWith(stateNumber);
+        return State.createWith(stateNumber);
     }
 }
