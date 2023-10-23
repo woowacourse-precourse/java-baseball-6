@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.GameManager;
 import baseball.domain.BaseBallNumberList;
+import baseball.domain.NumericString;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +27,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult baseBallResult = baseBallGame.execute(new BaseBallNumberList(List.of(1, 4, 5)));
+        BaseBallResult baseBallResult = baseBallGame.execute(new NumericString("145"));
 
         //then
         assertThat(baseBallResult.getStrike()).isEqualTo(1);
@@ -41,7 +42,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult baseBallResult = baseBallGame.execute(new BaseBallNumberList(List.of(1, 2, 5)));
+        BaseBallResult baseBallResult = baseBallGame.execute(new NumericString("125"));
 
         //then
         assertThat(baseBallResult.getStrike()).isEqualTo(2);
@@ -56,7 +57,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult baseBallResult = baseBallGame.execute(new BaseBallNumberList(List.of(1, 2, 3)));
+        BaseBallResult baseBallResult = baseBallGame.execute(new NumericString("123"));
 
         //then
         assertThat(baseBallResult.getStrike()).isEqualTo(3);
@@ -70,7 +71,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        baseBallGame.execute(new BaseBallNumberList(List.of(1, 2, 3)));
+        baseBallGame.execute(new NumericString("123"));
 
         //then
         assertThat(testGameManager.isExit()).isTrue();
@@ -84,7 +85,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new BaseBallNumberList(List.of(4, 5, 1)));
+        BaseBallResult result = baseBallGame.execute(new NumericString("451"));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -100,7 +101,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new BaseBallNumberList(List.of(2, 5, 1)));
+        BaseBallResult result = baseBallGame.execute(new NumericString("251"));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -116,7 +117,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new BaseBallNumberList(List.of(2, 3, 1)));
+        BaseBallResult result = baseBallGame.execute(new NumericString(("231")));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -132,7 +133,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new BaseBallNumberList(List.of(4, 5, 6)));
+        BaseBallResult result = baseBallGame.execute(new NumericString("456"));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);

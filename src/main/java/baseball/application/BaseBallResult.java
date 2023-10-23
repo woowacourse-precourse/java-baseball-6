@@ -17,4 +17,16 @@ public class BaseBallResult {
     public int getBall() {
         return ball;
     }
+
+    public boolean isNoting() {
+        return strike == 0 && ball == 0;
+    }
+
+    public boolean haveBall() {
+        return ball != 0;
+    }
+
+    public boolean haveStrike() {
+        return strike != 0;
+    }
 }

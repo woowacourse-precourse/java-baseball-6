@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
-import baseball.domain.BaseBallNumberList;
+import baseball.domain.NumericString;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -82,7 +82,7 @@ public class BaseBallGameControllerTest {
         }
 
         @Override
-        public BaseBallResult execute(BaseBallNumberList playerInput) {
+        public BaseBallResult execute(NumericString playerInput) {
             return baseBallResult;
         }
     }

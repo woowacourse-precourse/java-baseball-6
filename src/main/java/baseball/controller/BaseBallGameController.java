@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
-import baseball.domain.BaseBallNumberList;
 import baseball.domain.NumericString;
 
 public class BaseBallGameController {
@@ -14,9 +13,25 @@ public class BaseBallGameController {
     }
 
     public String play(String input) {
-        BaseBallResult execution = gameUseCase.execute(
-                new BaseBallNumberList(new NumericString(input).toList()));
+        BaseBallResult execution = gameUseCase.execute(new NumericString(input));
 
-        return execution.getStrike()+"스트라이크";
+        if (execution.isNoting()) {
+            return "낫싱";
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        if (execution.haveBall()) {
+            result.append(execution.getBall()).append("볼");
+        }
+
+        if (execution.haveStrike()) {
+            if (!result.isEmpty()) {
+                result.append(" ");
+            }
+            result.append(execution.getStrike()).append("스트라이크");
+        }
+
+        return result.toString();
     }
 }

@@ -2,6 +2,7 @@ package baseball.application;
 
 import baseball.GameManager;
 import baseball.domain.BaseBallNumberList;
+import baseball.domain.NumericString;
 import java.util.stream.Stream;
 
 public class BaseBallGame implements GameUseCase {
@@ -15,9 +16,11 @@ public class BaseBallGame implements GameUseCase {
     }
 
     @Override
-    public BaseBallResult execute(BaseBallNumberList playerInput) {
-        int strike = getStrike(playerInput);
-        int ball = getBall(strike,playerInput);
+    public BaseBallResult execute(NumericString playerInput) {
+        BaseBallNumberList playerBaseBallNumberList = new BaseBallNumberList(playerInput.toList());
+
+        int strike = getStrike(playerBaseBallNumberList);
+        int ball = getBall(strike, playerBaseBallNumberList);
 
         if (isExit(strike)) {
             gameManager.exit();
@@ -31,11 +34,11 @@ public class BaseBallGame implements GameUseCase {
 
     private int getBall(int strike, BaseBallNumberList playerInput) {
         int count = computer.countSameNumber(playerInput);
-        return count-strike;
+        return count - strike;
     }
 
     private int getStrike(BaseBallNumberList playerInput) {
         Stream<Integer> stream = Stream.iterate(0, i -> i + 1).limit(computer.size());
-        return (int)stream.filter(index->computer.equalAt(index,playerInput)).count();
+        return (int) stream.filter(index -> computer.equalAt(index, playerInput)).count();
     }
 }
