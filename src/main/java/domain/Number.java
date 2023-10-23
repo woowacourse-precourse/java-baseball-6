@@ -43,18 +43,25 @@ public class Number {
     private static List<Integer> getScore(List<Number> numbers) {
         int strike = 0, ball = 0;
         for (int i = 0; i < NUMBER_COUNT; i++) {
-            for (int j = 0; j < NUMBER_COUNT; j++) {
-                if (numbers.get(i).num == goalNumbers.get(j)) {
-                    if (i == j) {
-                        strike++;
-                    }
-                    if (i != j) {
-                        ball++;
-                    }
-                }
+            if (isStrike(numbers, i)) {
+                strike++;
+            }
+            if (isBall(numbers, i)){
+                ball++;
             }
         }
         return List.of(strike, ball);
+    }
+
+    private static boolean isStrike(List<Number> numbers, int idx) {
+        return goalNumbers.get(idx) == numbers.get(idx).num;
+    }
+
+    private static boolean isBall(List<Number> numbers, int idx) {
+        if (goalNumbers.contains(numbers.get(idx).num)) {
+            return goalNumbers.get(idx) != numbers.get(idx).num;
+        }
+        return false;
     }
 
     // Test Method
