@@ -1,4 +1,4 @@
-package baseball;
+package baseball.parsenum;
 
 public class ParseNum {
     public static int[] parseInput(String input) {
