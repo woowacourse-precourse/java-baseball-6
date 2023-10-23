@@ -2,15 +2,15 @@ package baseball;
 
 public class View {
 
-    public void opening() {
+    public void printGameStartingMsg() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void input() {
+    public void printInputMessage() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void score(Score score) {
+    public void printScore(Score score) {
         if (score.hasWinScore()) {
             System.out.println(String.format("%s스트라이크", score.getStrike()));
             System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");

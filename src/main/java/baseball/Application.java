@@ -14,9 +14,9 @@ public class Application {
         setRandomNumberToComputer(computer);
 
         View view = new View();
-        view.opening();
+        view.printGameStartingMsg();
         while (true) {
-            view.input();
+            view.printInputMessage();
             final String inputNumberStr = Console.readLine();
             // 입력을 제대로 못받을 경우 예외 던진다. ( 현재는 무조건 3글자만 )
             if (inputNumberStr.length() != 3) {
@@ -24,7 +24,7 @@ public class Application {
             }
             Score score = getCompareResultWithInputNumberAndComputerNumber(
                     inputNumberStr, computer);
-            view.score(score);
+            view.printScore(score);
             if (score.hasWinScore()) {
                 String input = Console.readLine();
                 if (!List.of("1", "2").contains(input)) {
