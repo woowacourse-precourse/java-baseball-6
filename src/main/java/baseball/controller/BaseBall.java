@@ -19,7 +19,6 @@ public class BaseBall {
     }
 
     public static void oneGame() {
-        outputView.displayNewGameMessage();
         Number num = new Number();
         num.getComputerRandomNumber();
         ArrayList<Integer> answer = num.getNumber();
@@ -34,6 +33,7 @@ public class BaseBall {
 
     public static void playGame() {
         String restartOrExitAnswer = "";
+        outputView.displayNewGameMessage();
         do {
             oneGame();
             restartOrExitAnswer = Validator.validateRestartInput(inputView.getInputRestartMessage());
