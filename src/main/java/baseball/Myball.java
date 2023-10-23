@@ -8,6 +8,10 @@ public class Myball {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
 
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
         for (int i = 0; i < 3; i++) {
             numbers[i] = input.charAt(i) - '0';
         }
