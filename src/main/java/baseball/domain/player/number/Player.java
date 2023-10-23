@@ -1,5 +1,6 @@
 package baseball.domain.player.number;
 
+import baseball.exception.player.DuplicateNumberException;
 import baseball.exception.player.InputSizeException;
 
 import java.util.HashSet;
@@ -31,7 +32,7 @@ public class Player {
     private static void checkForDuplicateNumbers(List<Integer> inputNumbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(inputNumbers);
         if (uniqueNumbers.size() != inputNumbers.size()) {
-            throw new IllegalArgumentException("중복된 숫자는 입력될 수 없습니다.");
+            throw new DuplicateNumberException();
         }
     }
 }
