@@ -46,6 +46,6 @@ public class StrikeBallCountableImpl implements StrikeBallCountable {
     }
 
     public boolean isGameClear() {
-        return strike== BaseballGameController.GAME_NUMBER_DIGIT;
+        return strike == BaseballGameController.GAME_NUMBER_DIGIT;
     }
 }
