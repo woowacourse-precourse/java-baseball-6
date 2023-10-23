@@ -20,12 +20,6 @@ public class Utility {
         }
     }
 
-    public static void checkIfIsValidCommand(List<String> gameCommand, final String number) {
-        if (!gameCommand.contains(number)) {
-            throw new IllegalArgumentException("올바른 명령어가 아닙니다.");
-        }
-    }
-
     public static List<Integer> convertStringToIntegerList(String input) {
         return input.chars()
             .filter(Character::isDigit)

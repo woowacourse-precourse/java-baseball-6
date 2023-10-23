@@ -3,8 +3,6 @@ package baseball.utils;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class UtilityTest {
@@ -51,37 +49,6 @@ class UtilityTest {
         assertThatThrownBy(() -> Utility.checkIfIsValidLength(numberBalls, input))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("공의 개수는 " + numberBalls + "개를 입력해야 합니다.");
-    }
-
-    @Test
-    void 올바른_게임_명령어를_입력하면_예외가_발생하지_않음() {
-        // given
-        String input = "1";
-        List<String> gameCommand = new ArrayList<>();
-
-        // when
-        gameCommand.add("1");
-        gameCommand.add("2");
-
-        // then
-        assertThatCode(() -> Utility.checkIfIsValidCommand(gameCommand, input))
-            .doesNotThrowAnyException();;
-    }
-
-    @Test
-    void 올바르지_않은_게임_명령어를_입력하면_예외가_발생함() {
-        // given
-        String input = "3";
-        List<String> gameCommand = new ArrayList<>();
-
-        // when
-        gameCommand.add("1");
-        gameCommand.add("2");
-
-        // then
-        assertThatThrownBy(() -> Utility.checkIfIsValidCommand(gameCommand, input))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("올바른 명령어가 아닙니다.");
     }
 
 }
