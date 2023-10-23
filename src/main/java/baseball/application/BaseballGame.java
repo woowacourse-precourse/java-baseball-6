@@ -1,11 +1,13 @@
 package baseball.application;
 
 import baseball.domain.CheckMachine;
+import baseball.domain.NumberGenerator;
 import baseball.domain.Player;
 import baseball.domain.Referee;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,31 +18,38 @@ public class BaseballGame {
     CheckMachine checkMachine = new CheckMachine();
     ResultView resultView = new ResultView();
     Referee referee = new Referee(resultView);
+    NumberGenerator numberGenerator = new NumberGenerator();
 
+    private List<Integer> generatedAnswer = new ArrayList<>();
+    private List<Integer> pickNumbers = new ArrayList<>();
+    boolean correct = false;
 
-    private List<Integer> generatedAnswer;
-    public BaseballGame(List<Integer> generatedAnswer) {
-        this.generatedAnswer = generatedAnswer;
-    }
     public void play() {
-        // 사용자에게 답변 받기
+        start();
+        numberGenerator.generateAnswer();
+        while(!player.isGameEnd()) {
+            getInputNumber();
+            getResult();
+            askNextGame();
+        }
+    }
+    public void start() {
+        inputView.printStartGame();
+        inputView.printAskInputNumber();
+    }
+    public void getInputNumber() {
         String[] input = inputView.inputNumber();
-
-        // 입력받은 숫자를 리스트에 저장
-        List<Integer> pickNumbers = player.storeNumber(input);
-
-        // 정답과 사용자 답변 비교
+        pickNumbers = player.storeNumber(input);
+    }
+    public void getResult() {
         String result = checkMachine.checkAnswer(generatedAnswer, pickNumbers);
-
-        // 결과 표현
         resultView.showResult(result);
-
-        // 정답 맞는지 확인
-        boolean correct = referee.isOut(result);
-        if(correct) {
+        correct = referee.isOut(result);
+    }
+    public void askNextGame() {
+        if (correct) {
+            inputView.printAskGameEnd();
             player.isGameEnd();
         }
-
-
     }
 }

@@ -4,7 +4,6 @@ import baseball.view.ResultView;
 
 public class Referee {
     private ResultView resultView;
-    private String result = "";
 
     public Referee(ResultView resultView) {
         this.resultView = resultView;

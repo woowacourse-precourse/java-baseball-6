@@ -8,7 +8,6 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 public class Player {
-    // 답변 리스트 저장 필드
     List<Integer> pickNumbers =  new ArrayList<>();
     InputView inputView;
 
@@ -16,7 +15,6 @@ public class Player {
         this.inputView = inputView;
     }
 
-    // 답변 저장
     public List<Integer> storeNumber(String[] picksToArray) {
         for(String pick : picksToArray) {
             int parsedPick = parseInt(pick);
@@ -26,7 +24,7 @@ public class Player {
     }
 
     public boolean isGameEnd() {
-        String gameRestart = inputView.askForGameEnd();
+        String gameRestart = inputView.askGameEnd();
         return gameRestart.equals("1");
     }
 }

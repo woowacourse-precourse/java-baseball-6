@@ -9,7 +9,7 @@ public class CheckMachine {
         int strike = 0;
         int ball = 0;
         String result;
-        for(int i = 0; i<GameRules.INPUT_LIMIT.getBalls(); i++) {
+        for(int i = 0; i<GameRules.INPUT_LIMIT.getValue(); i++) {
             if(ballCount.isStrike(generatedAnswer, pickNumbers)) {
                 ballCount.plusStrike();
             }else if(ballCount.isBall(generatedAnswer, pickNumbers)) {

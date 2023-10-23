@@ -6,11 +6,11 @@ public enum GameRules {
     END(9),
     // 3개의 숫자를 입력받는다.
     INPUT_LIMIT(3);
-    private final int balls;
-    GameRules(int balls) {
-        this.balls = balls;
+    private final int value;
+    GameRules(int value) {
+        this.value = value;
     }
-    public int getBalls() {
-        return balls;
+    public int getValue() {
+        return value;
     }
 }
