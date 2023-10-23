@@ -7,4 +7,8 @@ public class OutputView {
     public static void printCorrectAnswer() {
         System.out.println(THREE_STRIKE_MESSAGE);
     }
+
+    public static void printStrikeOrBall(String result) {
+        System.out.println(result);
+    }
 }
