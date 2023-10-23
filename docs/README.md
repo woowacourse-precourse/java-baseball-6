@@ -62,7 +62,7 @@
 - [x]  정답 생성하기
     - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 무작위로 생성
     - `camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`를 활용
-- [ ]  정답과 입력 받은 숫자를 비교하여 결과 계산하기
+- [x]  정답과 입력 받은 숫자를 비교하여 결과 계산하기
     - 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 전혀 없으면 낫싱
 
 ### GameResult.java

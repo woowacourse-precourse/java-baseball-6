@@ -7,7 +7,7 @@ public class BaseBallGame {
 
     public void play() {
         System.out.print(GameMessage.NUMBER_INPUT);
-        String inputAnswer = player.getInputAnswer();
+        GameResult result = computer.calculateGameResult(player.getInputAnswer());
     }
 
     public BaseBallGame() {
