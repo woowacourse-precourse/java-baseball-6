@@ -1,11 +1,7 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
-//맞혀야 되는 수를 저장하는 모델
 public class Pitcher {
     private List<Integer> pitcherNum;
 

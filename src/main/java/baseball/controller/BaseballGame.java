@@ -13,12 +13,14 @@ public class BaseballGame {
 
     public static void pitcherPitch() {
         List<Integer> pitcherNum = new ArrayList<>();
+
         while (pitcherNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!pitcherNum.contains(randomNumber)) {
                 pitcherNum.add(randomNumber);
             }
         }
+
         pitcher.setPitcherNum(pitcherNum);
     }
 
@@ -30,6 +32,8 @@ public class BaseballGame {
 
     public static String compareNumbers(String hitterString) {
         String result = "";
+        int strikes, balls;
+
         List<Integer> pitcherList = pitcher.getPitcherNum();
         List<Integer> hitterList = hitterSwing(hitterString);
         Referee referee = new Referee();
@@ -41,18 +45,20 @@ public class BaseballGame {
                 referee.setBalls();
             }
         }
-        if (referee.getStrikes() > 0 && referee.getBalls() > 0) {
-            result = referee.getBalls() + "볼" + " " + referee.getStrikes() + "스트라이크";
-        } else if (referee.getStrikes() > 0) {
-            result = referee.getStrikes() + "스트라이크";
-        } else if (referee.getBalls() > 0) {
-            result = referee.getBalls() + "볼";
+
+        strikes = referee.getStrikes();
+        balls = referee.getBalls();
+
+        if (strikes > 0 && balls > 0) {
+            result = balls + "볼" + " " + strikes + "스트라이크";
+        } else if (strikes > 0) {
+            result = strikes + "스트라이크";
+        } else if (balls > 0) {
+            result = balls + "볼";
         } else {
             result = "낫싱";
         }
 
         return result;
     }
-
-
 }

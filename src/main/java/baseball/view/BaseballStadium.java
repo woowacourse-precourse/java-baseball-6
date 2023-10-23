@@ -4,10 +4,7 @@ import baseball.controller.BaseballGame;
 import baseball.controller.Foul;
 import camp.nextstep.edu.missionutils.Console;
 
-//유저에게 보이는 UI를 제공하고 입력 받음
 public class BaseballStadium {
-
-
     public static void run() {
         String start = "1";
 
@@ -24,10 +21,8 @@ public class BaseballStadium {
             result = "";
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            start = Foul.validateInputContine(contineGame());
+            start = contineGame();
         }
-
-
     }
 
     public static String inputNum() {
@@ -39,9 +34,8 @@ public class BaseballStadium {
 
     public static String contineGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        return Console.readLine();
+        String input = Console.readLine();
+        Foul.validateInputContine(input);
+        return input;
     }
-
-
 }
