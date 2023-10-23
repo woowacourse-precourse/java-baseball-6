@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import static baseball.model.Constant.FINISHED;
 import static baseball.model.Constant.NUMBER_SIZE;
+import static baseball.model.Constant.RUNNING;
 
 import baseball.model.DecimalNumber;
 import baseball.view.OutputView;
@@ -36,8 +38,8 @@ public class ComputerController {
         OutputView.printHint(ball, strike);
 
         if (strike == NUMBER_SIZE) {
-            return false;
+            return FINISHED;
         }
-        return true;
+        return RUNNING;
     }
 }

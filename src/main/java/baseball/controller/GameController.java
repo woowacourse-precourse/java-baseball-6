@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import static baseball.model.Constant.FINISHED;
-import static baseball.model.Constant.ON_GOING;
 import static baseball.model.Constant.REPLAY_GAME;
+import static baseball.model.Constant.RUNNING;
 import static baseball.model.Constant.START;
 
 import baseball.model.DecimalNumber;
@@ -10,27 +10,32 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    DecimalNumber decimalNumber = new DecimalNumber();
-    ComputerController computerController = new ComputerController(decimalNumber);
+    DecimalNumber decimalNumber;
+    ComputerController computerController;
+
+    public GameController(DecimalNumber decimalNumber, ComputerController computerController) {
+        this.decimalNumber = decimalNumber;
+        this.computerController = computerController;
+    }
 
     public void run() {
-        boolean play = ON_GOING;
+        boolean status = RUNNING;
 
-        while (play) {
+        while (status == RUNNING) {
             OutputView.printGuide(START);
             computerController.initComputer();
             playing();
-            play = replay();
+            status = replay();
         }
     }
 
     private void playing() {
-        boolean isFailed = ON_GOING;
+        boolean status = RUNNING;
 
-        while (isFailed) {
+        while (status == RUNNING) {
             String inputNumber = InputView.inputGameNumber();
             decimalNumber.setUser(inputNumber);
-            isFailed = computerController.checkAnswer();
+            status = computerController.checkAnswer();
         }
     }
 
@@ -39,7 +44,7 @@ public class GameController {
         Validation.validationReplayNumber(inputNumber);
 
         if (inputNumber.equals(REPLAY_GAME)) {
-            return ON_GOING;
+            return RUNNING;
         }
         return FINISHED;
     }

@@ -1,8 +1,10 @@
 package baseball.controller;
 
+import static baseball.model.Constant.END_GAME;
 import static baseball.model.Constant.NUMBER_RANGE_END;
 import static baseball.model.Constant.NUMBER_RANGE_START;
 import static baseball.model.Constant.NUMBER_SIZE;
+import static baseball.model.Constant.REPLAY_GAME;
 import static baseball.model.Constant.WRONG_OVERLAP_NUMBER;
 import static baseball.model.Constant.WRONG_RANGE_NUMBER;
 import static baseball.model.Constant.WRONG_SIZE_NUMBER;
@@ -20,7 +22,7 @@ public class Validation {
     }
 
     public static void validationReplayNumber(String number) {
-        if (!(number.equals("1") || number.equals("2"))) {
+        if (!(number.equals(REPLAY_GAME) || number.equals(END_GAME))) {
             throw new IllegalArgumentException();
         }
     }
