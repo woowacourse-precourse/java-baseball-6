@@ -4,7 +4,9 @@ import baseball.domain.Computer;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class GameService {
@@ -36,6 +38,7 @@ public class GameService {
     public static List<Integer> parsingInputNumber(String inputNumber) {
         ArrayList<Integer> parsingNumber = new ArrayList<>();
         validateInputNumberLength(inputNumber);
+        validateInputNumberDuplicate(inputNumber);
 
         for (char parsedChar : inputNumber.toCharArray()) {
             validateParsedChar(parsedChar);
@@ -47,6 +50,16 @@ public class GameService {
     public static void validateInputNumberLength(String inputNumber) {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("입력 숫자는 3개여야 합니다.");
+        }
+    }
+
+    public static void validateInputNumberDuplicate(String inputNumber) {
+        Set<Character> inputNumberDuplicate = new HashSet<>();
+        for (char parsedChar : inputNumber.toCharArray()) {
+            if (inputNumberDuplicate.contains(parsedChar)) {
+                throw new IllegalArgumentException("입력된 숫자는 중복을 가질 수 없습니다.");
+            }
+            inputNumberDuplicate.add(parsedChar);
         }
     }
 
