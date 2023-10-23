@@ -9,7 +9,7 @@ public class GameService {
         for (int i=0; i<computer.size(); i++){
             Integer computerBall = computer.get(i);
             Integer playerBall = player.get(i);
-            if (computerBall == playerBall) result += 1;
+            if (computerBall.equals(playerBall)) result += 1;
         }
 
         return result;
