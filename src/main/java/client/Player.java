@@ -1,9 +1,9 @@
 package client;
 
-import baseball.Input;
-import baseball.Output;
 import constants.MessageConstants;
 import game.Computer;
+import util.Input;
+import util.Output;
 
 public class Player {
 

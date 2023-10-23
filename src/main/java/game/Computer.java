@@ -1,7 +1,7 @@
 package game;
 
-import baseball.Output;
 import client.Ball;
+import util.Output;
 
 public class Computer {
 
