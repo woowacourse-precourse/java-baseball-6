@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +16,7 @@ class MessageConverterTest {
 
     @Test
     void Map_String_변환하기() {
-        Map<String, Integer> testMap = MessageConverter.getResultMessage(List.of(1, 2, 3), List.of(2, 1, 3));
+        Map<String, Integer> testMap = MessageConverter.getResultMessage(List.of(1, 2, 3), List.of(0, 5, 9));
         System.out.println(MessageConverter.getResultMessageToString(testMap));
     }
 }
