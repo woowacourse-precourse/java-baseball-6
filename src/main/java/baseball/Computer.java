@@ -13,6 +13,7 @@ public class Computer {
     private static final int ANSWER_DIGIT = 3;
 
     public List<Integer> createCorrectAnswer() {
+        correctAnswer.clear();
         while (correctAnswer.size() < ANSWER_DIGIT) {
             int pickedNumberInRange = Randoms.pickNumberInRange(NUMBER_START_RANGE, NUMBER_END_RANGE);
             if (!correctAnswer.contains(pickedNumberInRange)) {
