@@ -7,6 +7,9 @@ public class GuessNumberValidator {
     private static final String NOT_BETWEEN_ONE_AND_NINE_MSG = "입력값이 1~9 사이의 숫자가 아닙니다.";
     private static final String DUPLICATE_CHAR_MSG = "입력에 중복된 값이 존재합니다";
 
+    private GuessNumberValidator() {
+    }
+
     public static boolean isGuessNumbersValid(String input) {
         if (isLengthThree(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
             return true;
