@@ -19,53 +19,64 @@
     </tr>
     <tr>
         <td><b>📃&nbsp;&nbsp;global</b></td>
-        <td>GameConfig</td>
-        <td>전역으로 작용하는 설정<br/>(숫자 길이 제약, 뽑을 숫자 범위) Enum 파일</td>
+        <td><b>GameConfig</b></td>
+        <td>전역으로 작용하는 설정<br/>(숫자 길이 제약, 뽑을 숫자 범위) Enum</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b>&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;exception</b></td>
+        <td><b>BaseballException</b></td>
+        <td>전역으로 처리하는 예외상황에 대한 Exception 클래스<br/></td>
+    </tr>
+    <tr>
+        <td><b>ErrorMessage</b></td>
+        <td>각 예외 상황에서 전역으로 던져질 예외의 메세지 Enum</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
         <td><b>🕹&nbsp;&nbsp;controller</b></td>
-        <td>Game</td>
+        <td><b>Game</b></td>
         <td>게임 로직을 메인으로 동작하는 컨트롤러 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="3"><b>💻&nbsp;&nbsp;domain</b></td>
-        <td>Number</td>
+        <td rowspan="2"><b>💻&nbsp;&nbsp;domain</b></td>
+        <td><b>Number</b></td>
         <td>사용자에게 입력받는 숫자와, 컴퓨터가 생성하는 숫자 클래스
         </td>
     </tr>
     <tr>
-        <td>Result</td>
+        <td><b>Result</b></td>
         <td>Ball Count와 Strike Count에 대한 결과 클래스</td>
     </tr>
     <tr>
-        <td>ResultType</td>
-        <td>볼, 스트라이크, 볼&스트라이크 상황에 대한 <br/>출력 방법이 정의된 Enum 클래스</td>
+        <td rowspan="2"><b>&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;exception</b></td>
+        <td><b>ResultType</b></td>
+        <td>볼, 스트라이크, 볼&스트라이크 상황에 대한 <br/>출력 방법이 정의된 열거형 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
         <td><b>✅&nbsp;&nbsp;validator</b></td>
-        <td>NumberValidator</td>
+        <td><b>NumberValidator</b></td>
         <td>사용자가 입력하는 숫자에 대한 제약조건 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="3"><b>💬&nbsp;&nbsp;view</b></td>
-        <td>InputView</td>
+        <td rowspan="2"><b>💬&nbsp;&nbsp;view</b></td>
+        <td><b>InputView</b></td>
         <td>사용자 요청을 받기 위한 Input View 클래스</td>
     </tr>
     <tr>
-        <td>OutputView</td>
+        <td><b>OutputView</b></td>
         <td>사용자에게 다양한 응답을 출력하기 위한 Output View 클래스</td>
     </tr>
     <tr>
-        <td>PrintMessage</td>
-        <td>사용자에게 응답할 정적 메세지를 담은 열거형 Enum 클래스</td>
+        <td><b>&nbsp;&nbsp;&nbsp;↘️&nbsp;&nbsp;constants</b></td>
+        <td><b>StaticNotice</b></td>
+        <td>사용자에게 응답할 정적 메세지를 담은 열거형 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td colspan="3" align="center"><b>Image</b></center></td>
+        <td colspan="3" align="center"><b>Image</b></td>
     </tr>
     <tr>
         <td colspan="3"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/9cf30277-2b69-4781-a80e-dfa9325598d7" width="99%"></td>
