@@ -50,15 +50,19 @@ public class PlayNumberBaseBallGame {
         for(int i = 0; i < NUMBER_SIZE; ++i){
             int currentNumber = playerAnswer.get(i);
             /* 현 상태에 대한 값을 정리 */
-            if(!answerList.contains(currentNumber)){
-                continue;
-            }
-            if(answerList.get(i) == currentNumber){
-                ++strike;
-                continue;
-            }
-            ++ball;
+            checkStatus(answerList, currentNumber, i);
         }
+    }
+
+    private static void checkStatus(List<Integer> answerList, int currentNumber, int index){
+        if(!answerList.contains(currentNumber)){
+            return;
+        }
+        if(answerList.get(index) == currentNumber){
+            ++strike;
+            return;
+        }
+        ++ball;
     }
 
     private static void displayResult() {
