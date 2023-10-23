@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Umpire {
 
@@ -20,7 +20,7 @@ public class Umpire {
         return nothing;
     }
 
-    public void judge(ArrayList<Integer> answer, ArrayList<Integer> trial) {
+    public void judge(List<Integer> answer, List<Integer> trial) {
 
         for (int i = 0; i < trial.size(); i++) {
 
