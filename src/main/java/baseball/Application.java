@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class Application {
 
     private static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        
+
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -21,5 +22,21 @@ public class Application {
             }
         }
         return computer;
-    };
+    }
+
+    private static List<Integer> getUserNumber() {
+        List<Integer> userNumber = new ArrayList<>();
+        String Number;
+        String[] tempNumber;
+
+        System.out.println("숫자를 입력해주세요 : ");
+        Number = Console.readLine();
+
+        tempNumber = Number.split("");
+        for (String s : tempNumber) {
+            userNumber.add(Integer.parseInt(s));
+        }
+
+        return userNumber;
+    }
 }
