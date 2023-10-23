@@ -65,4 +65,11 @@ public class Validator {
     return resultTable;
   }
 
+  public boolean answerOfProgress(String answer) {
+    if(answer.equals("1")) {
+      return true;
+    }
+    return false;
+  }
+
 }

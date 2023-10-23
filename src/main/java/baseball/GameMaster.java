@@ -5,11 +5,19 @@ import java.util.Map;
 
 public class GameMaster {
 
-  boolean isContinued;
+  boolean shouldContinueRound;
+  boolean isCorrectAnswerFound;
   int inputNumber;
 
+  public GameMaster() {
+    this.shouldContinueRound = true;
+  }
+
+  public void init() {
+    this.isCorrectAnswerFound = false;
+  }
+
   public void start() {
-    this.isContinued = true;
     System.out.println("숫자 야구 게임을 시작합니다.");
   }
 
@@ -18,13 +26,13 @@ public class GameMaster {
     this.inputNumber = Integer.parseInt(Console.readLine());
   }
 
-  public void checkResult(String result) {
+  public String checkResult(String result) {
     System.out.println(result);
     if(result.equals("3스트라이크")) {
       System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-      String answer = progressOrNot();
-      //TODO: answer를 validator로 보내서 입력값이 올바른지 검증한다.
+      return progressOrNot();
     }
+    return null;
   }
 
   public String progressOrNot() {
@@ -49,4 +57,9 @@ public class GameMaster {
 
     return sb.toString();
   }
+
+  public void oneMoreRound(boolean status) {
+    this.shouldContinueRound = status;
+  }
+
 }
