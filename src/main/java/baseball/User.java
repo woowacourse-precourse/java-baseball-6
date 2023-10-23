@@ -1,16 +1,19 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
-    private int userNumber;
+    private String userNumber;
 
     public void inputUserNumber() {
-        Scanner scanner = new Scanner(System.in);
-        userNumber = scanner.nextInt();
-        scanner.close();
+        try {
+            userNumber = Console.readLine();
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값을 입력하였습니다.");
+            // 게임 종료 구현
+        }
     }
 
     public List<Integer> convertInputToList() {
