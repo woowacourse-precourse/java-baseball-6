@@ -1,12 +1,12 @@
 package baseball;
 
-import static baseball.Constants.validLength;
+import static baseball.Constants.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class GameRule {
-    public static int countBallAndStrike(String computeNumber, String userNumber){
+    public static int countBallAndStrike(String computeNumber, String userNumber) {
 
         char[] computeNumberArray = computeNumber.toCharArray();
         char[] userNumberArray = userNumber.toCharArray();
@@ -26,26 +26,29 @@ public class GameRule {
         return computeNumberHS.size();
     }
 
-    public  static  int countStrike(String computeNumber, String userNumber){
+    public static int countStrike(String computeNumber, String userNumber) {
         int cntS = 0;
-        for(int i=0; i < validLength; i++){
-            if(computeNumber.charAt(i) == userNumber.charAt(i)){
+        for (int i=0; i < validLength; i++) {
+            if (computeNumber.charAt(i) == userNumber.charAt(i)) {
                 cntS++;
             }
         }
         return cntS;
     }
 
-    public static String hintProvider(int cntB, int cntS){
-        if(cntB == 0 && cntS == 0){
-            return "낫싱";
+    public static String hintProvider(int cntB, int cntS) {
+        if (cntS == 3) {
+            return hintAllStrikeMessage;
         }
-        if(cntB == 0){
-            return "%d스트라이크".formatted(cntS);
+        if (cntB == 0 && cntS == 0) {
+            return hintNothingMessage;
         }
-        if(cntS == 0){
-            return  "%d볼".formatted(cntB);
+        if (cntB == 0) {
+            return hintStrikeMessageFormat.formatted(cntS);
         }
-        return "%d볼 %d스트라이크".formatted(cntB, cntS);
+        if (cntS == 0) {
+            return hintBallMessageFormat.formatted(cntB);
+        }
+        return hintBallStrikeMessageFormat.formatted(cntB, cntS);
     }
 }

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ExceptionHandler {
-    public static boolean isAllDigit(String str){
+    public static boolean isAllDigit(String str) {
         // 모두 숫자인지 확인
         for (char c : str.toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -15,13 +15,15 @@ public class ExceptionHandler {
         }
         return true;
     }
-    public static boolean isValidLength(String str){
+
+    public static boolean isValidLength(String str) {
         return str.length() == validLength;
     }
+
     public static boolean isValidNumber(String str) {
         // validLength 자리가 1~9로 이루어졌는지 확인
         String pattern = "^[1-9]{%d}$";
-        String regex = String.format(pattern, validLength);
+        String regex = pattern.formatted(validLength);
         if (!str.matches(regex)) {
             return false;
         }
@@ -34,5 +36,17 @@ public class ExceptionHandler {
             set.add(ch);
         }
         return true;
+    }
+
+    public static void raiseException(String userNumber) {
+        if(!ExceptionHandler.isAllDigit(userNumber)){
+            throw new IllegalArgumentException("숫자가 아닌 입력이 들어왔습니다.");
+        }
+        if(!ExceptionHandler.isValidLength(userNumber)){
+            throw new IllegalArgumentException("3자리를 초과한 숫자가 입력으로 들어왔습니다.");
+        }
+        if(!ExceptionHandler.isValidNumber(userNumber)){
+            throw new IllegalArgumentException("0이 포함되거나 중복된 숫자가 입력으로 들어왔습니다.");
+        }
     }
 }
