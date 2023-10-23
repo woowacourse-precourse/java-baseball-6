@@ -18,18 +18,6 @@ public class GameResult {
         return tryResults;
     }
 
-    public GameStatus checkGameWin() {
-        if (isThreeStrike()) {
-            return GameStatus.WIN;
-        }
-        return GameStatus.PLAYING;
-    }
-
-    private boolean isThreeStrike() {
-        return tryResults.stream()
-            .allMatch(tryResult -> tryResult == TryResult.STRIKE);
-    }
-
     public boolean hasStrike() {
         return tryResults.contains(TryResult.STRIKE);
     }
@@ -52,5 +40,10 @@ public class GameResult {
         return (int) tryResults.stream()
             .filter(tryResult -> tryResult == TryResult.BALL)
             .count();
+    }
+
+    public boolean isThreeStrike() {
+        return tryResults.stream()
+            .allMatch(tryResult -> tryResult == TryResult.STRIKE);
     }
 }
