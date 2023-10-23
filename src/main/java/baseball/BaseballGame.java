@@ -1,10 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballGame {
     public void startBaseball() {
@@ -12,7 +8,7 @@ public class BaseballGame {
 
         String continueBaseball = "1";
         while (continueBaseball.equals("1")) {
-            List<Integer> answerNumberList = createBaseballAnswerNumberList();
+            BaseballNumber answerNumberList = createBaseballAnswerNumberList();
             playBaseball(answerNumberList);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             continueBaseball = Console.readLine();
@@ -21,21 +17,14 @@ public class BaseballGame {
         System.out.println("게임 종료");
     }
 
-    private List<Integer> createBaseballAnswerNumberList() {
-        List<Integer> answerNumberList = new ArrayList<>();
-        while (answerNumberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerNumberList.contains(randomNumber)) {
-                answerNumberList.add(randomNumber);
-            }
-        }
-        return answerNumberList;
+    private BaseballNumber createBaseballAnswerNumberList() {
+        return BaseballNumber.createComputerNumber();
     }
 
-    private void playBaseball(List<Integer> answerNumberList) {
+    private void playBaseball(BaseballNumber computerNumber) {
         while (true) {
-            List<Integer> inputNumberList = inputBaseballNumberList();
-            BaseballCount baseballCount = checkBaseballResult(answerNumberList, inputNumberList);
+            BaseballNumber userNumber = inputBaseballNumber();
+            BaseballCount baseballCount = checkBaseballResult(computerNumber, userNumber);
             baseballCount.printBaseballResult();
             if (baseballCount.isAllStrike()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -44,66 +33,36 @@ public class BaseballGame {
         }
     }
 
-    private List<Integer> inputBaseballNumberList() {
+    private BaseballNumber inputBaseballNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
-        validateBaseballNumbers(inputString);
-        return parseIntegerList(inputString);
+        return BaseballNumber.createNumberByString(inputString);
     }
 
-    private void validateBaseballNumbers(String inputString) {
-        validateInputLength(inputString);
-        validateInputContentRange(inputString);
-    }
-
-    private void validateInputLength(String inputString) {
-        if (inputString == null || inputString.length() != 3) {
-            throw new IllegalArgumentException("입력은 3자리 숫자만 가능합니다.");
-        }
-    }
-
-    private void validateInputContentRange(String inputString) {
-        for (int i = 0; i < 3; i++) {
-            char c = inputString.charAt(i);
-            if (c < '1' || c > '9') {
-                throw new IllegalArgumentException("각 자리는 1~9사이의 숫자로 입력해야 합니다.");
-            }
-        }
-    }
-
-    private List<Integer> parseIntegerList(String inputString) {
-        List<Integer> baseballNumberList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            baseballNumberList.add(inputString.charAt(i) - '0');
-        }
-
-        return baseballNumberList;
-    }
-
-    private BaseballCount checkBaseballResult(List<Integer> answerNumberList, List<Integer> inputNumberList) {
-        int strike = checkStrikeCount(answerNumberList, inputNumberList);
-        int ball = checkBallCount(answerNumberList, inputNumberList);
+    private BaseballCount checkBaseballResult(BaseballNumber computerNumber, BaseballNumber userNumber) {
+        int strike = checkStrikeCount(computerNumber, userNumber);
+        int ball = checkBallCount(computerNumber, userNumber);
         return new BaseballCount(strike, ball);
     }
 
-    private int checkStrikeCount(List<Integer> answerNumberList, List<Integer> inputNumberList) {
+    private int checkStrikeCount(BaseballNumber computerNumber, BaseballNumber userNumber) {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
-            if (answerNumberList.get(i).equals(inputNumberList.get(i))) {
+            if (computerNumber.get(i) == userNumber.get(i)) {
                 strike++;
             }
         }
         return strike;
     }
 
-    private int checkBallCount(List<Integer> answerNumberList, List<Integer> inputNumberList) {
+    private int checkBallCount(BaseballNumber computerNumber, BaseballNumber userNumber) {
         int ball = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (i == j) {
                     continue;
                 }
-                if(answerNumberList.get(i).equals(inputNumberList.get(j))) {
+                if (computerNumber.get(i) == userNumber.get(j)) {
                     ball++;
                 }
             }
