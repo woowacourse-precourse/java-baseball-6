@@ -1,6 +1,5 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +17,7 @@ public class UserInputNumbers {
                 .mapToObj(each -> new Number(Character.getNumericValue(each)))
                 .collect(Collectors.toList());
     }
-    
+
     public List<Number> getUserNumberList() {
         return userNumberList;
     }
