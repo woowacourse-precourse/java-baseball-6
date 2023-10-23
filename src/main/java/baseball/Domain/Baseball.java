@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Baseball {
 
-    private Map<Integer, Integer> dict;
+    private List<Integer> numbers;
 
     public Baseball(List<Integer> numbers) {
         build(numbers);
@@ -15,9 +15,7 @@ public class Baseball {
     private void build(List<Integer> numbers) {
         validateSize(numbers);
         validateZero(numbers);
-
-        dict = new HashMap<>();
-        for(int i=0;i<3;i++) dict.put(numbers.get(i), i);
+        this.numbers = numbers;
     }
 
     private static void validateZero(List<Integer> numbers) {
@@ -29,26 +27,37 @@ public class Baseball {
     }
 
     public BaseballScore compare(Baseball baseball) {
-
-        int ball = 0, strike = 0;
-        for(Map.Entry<Integer, Integer> pair : dict.entrySet()) {
-            int number = pair.getKey(), index = pair.getValue();
-            if(baseball.contains(number)) {
-                if(baseball.isStrike(number, index)) strike++;
-                else ball++;
-            }
-        }
-
+        int ball = countBall(baseball);
+        int strike = countStrike(baseball);
         return new BaseballScore(ball, strike);
+    }
 
+    private int countBall(Baseball baseball) {
+        int cnt = 0;
+        for(int i = 0; i < 3; i++) {
+            if(baseball.isBall(numbers.get(i), i)) cnt++;
+        }
+        return cnt;
+    }
+
+    private int countStrike(Baseball baseball) {
+        int cnt = 0;
+        for(int i = 0; i < 3; i++) {
+            if(baseball.isStrike(numbers.get(i), i)) cnt++;
+        }
+        return cnt;
     }
 
     private boolean contains(int number) {
-        return dict.containsKey(number);
+        return numbers.contains(number);
     }
 
     private boolean isStrike(int number, int index) {
-        return dict.get(number) == index;
+        return numbers.indexOf(number) == index;
+    }
+
+    private boolean isBall(int number, int index) {
+        return numbers.indexOf(number) != index;
     }
 
 }
