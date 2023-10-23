@@ -16,19 +16,14 @@ public class NBGameController {
     private NumberValidation numberValidation;
     private NumberTypeConvertor numberTypeConvertor;
 
-    private NBGameController() {
+    public NBGameController() {
         in = new InputView();
         out = new OutputView();
         numberValidation = new NumberValidation();
         numberTypeConvertor = new NumberTypeConvertor();
-        start();
     }
 
-    public static void run() {
-        new NBGameController();
-    }
-
-    private void start() {
+    public void run() {
         // 게임 시작 메세지 출력하기
         out.displayStartMessage();
 
@@ -36,6 +31,12 @@ public class NBGameController {
         Computer computer = Computer.generateRandomNumber();
         out.displayList(computer.getComputerNumber());
 
+        startGame(computer);
+        // 게임 종료 메세지 출력하기
+        out.displayEndMessage();
+    }
+
+    private void startGame(Computer computer) {
         int strike = 0;
         // 게임 반복하기
         while (is3Strike(strike)) {
@@ -59,8 +60,6 @@ public class NBGameController {
             // update strike
             strike = pitched.get("strike");
         }
-        // 게임 종료 메세지 출력하기
-        out.displayEndMessage();
     }
 
     private boolean is3Strike(int strike) {
