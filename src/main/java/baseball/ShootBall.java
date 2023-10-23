@@ -14,6 +14,7 @@ public class ShootBall {
 
     //(3)번 기능
     public void inputNumGenerator(){
+        System.out.print("숫자를 입력해주세요");
         String input = Console.readLine();
         validNumInspect(input);
         int input_num;
@@ -21,7 +22,8 @@ public class ShootBall {
             input_num = input.charAt(i) - '0';
             numbers[input_num]= i+1;
         }
-        //TODO:scanner close 하기 -23.10.22
+
+        Console.close();
     }
 
     //(2)번 기능
