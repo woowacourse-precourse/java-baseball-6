@@ -1,14 +1,14 @@
 package baseball.util;
 
-import baseball.Baseball;
 import java.util.Arrays;
+import java.util.List;
 
 public class Converter {
 
-
-    public static void toIntegerList(String str) {
-        Baseball.userNum = Arrays.stream(str.trim().split(""))
+    public static List<Integer> toIntegerList(String str) {
+        List<Integer> intList = Arrays.stream(str.trim().split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed().toList();
+        return intList;
     }
 }
