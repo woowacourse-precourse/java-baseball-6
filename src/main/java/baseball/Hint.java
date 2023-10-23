@@ -33,4 +33,8 @@ public class Hint {
         strike++;
     }
 
+    public boolean isAnswer() {
+        return strike == 3 && ball == 0;
+    }
+
 }
