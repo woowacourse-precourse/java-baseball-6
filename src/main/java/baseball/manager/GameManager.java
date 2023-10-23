@@ -1,12 +1,14 @@
 package baseball.manager;
 
+import static baseball.constant.Constants.GAME_START_MESSAGE;
+import static baseball.constant.Constants.INPUT_RESTART;
+import static baseball.constant.Constants.INPUT_RESTART_MESSAGE;
+
 import baseball.io.InputHandler;
 import baseball.io.OutputHandler;
 import baseball.model.Baseball;
 import baseball.model.Game;
 import baseball.validation.InputValidation;
-
-import static baseball.constant.Constants.*;
 
 public class GameManager {
     private final InputHandler inputHandler;
@@ -30,7 +32,9 @@ public class GameManager {
             game.playGame();
             outputHandler.printMessage(INPUT_RESTART_MESSAGE);
             restart = inputHandler.scanInteger();
-            if(!InputValidation.isRestartInput(restart)) throw new IllegalArgumentException();
+            if (!InputValidation.isRestartInput(restart)) {
+                throw new IllegalArgumentException();
+            }
         } while (restart == INPUT_RESTART);
     }
 }
