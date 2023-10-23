@@ -11,7 +11,7 @@ public class BaseBallService {
 
     public void exec() {
         GameResult gameResult;
-        baseBallPlay.createComNums();
+        BaseBallPlay.createComNums();
         do {
             gameResult = new GameResult(baseBallPlay.play());
         } while (gameResult.get() != 3);
