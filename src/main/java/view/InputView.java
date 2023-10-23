@@ -9,6 +9,7 @@ public class InputView {
     private static final int NUMBER_COUNT = 3;
     private static final int RESTART_ANSWER = 1;
     private static final int SHUTDOWN_ANSWER = 2;
+
     public static List<Integer> inputNumbers() {
         List<Integer> convertedNumber = new ArrayList<>();
         String input = Console.readLine();
@@ -44,12 +45,14 @@ public class InputView {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        if (input == RESTART_ANSWER) {
-            return true;
-        }
-        if (input == SHUTDOWN_ANSWER) {
-            return false;
-        }
-        throw new IllegalArgumentException();
+        return restartWhether(input);
+    }
+
+    private static boolean restartWhether(int input) {
+        return switch (input) {
+            case RESTART_ANSWER -> true;
+            case SHUTDOWN_ANSWER -> false;
+            default -> throw new IllegalArgumentException();
+        };
     }
 }
