@@ -110,7 +110,8 @@ class Computer {
         return numbers;
     }
 
-    public Pair<Integer, Integer> getUserGuessResult(String userGuess) {
+
+    public Pair<Integer, Integer> judgeUserGuess(String userGuess) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < userGuess.length(); i++) {
@@ -124,15 +125,15 @@ class Computer {
         return new Pair<Integer, Integer>(strike, ball);
     }
 
-    public void printUserGuessResult(Pair<Integer, Integer> userGuessResult) {
-        if (userGuessResult.getFirst() == 0 && userGuessResult.getSecond() == 0) {
+    public void printUserGuessJudgementResult(Pair<Integer, Integer> userGuessJudgement) {
+        if (userGuessJudgement.getFirst() == 0 && userGuessJudgement.getSecond() == 0) {
             System.out.printf("낫싱\n");
-        } else if (userGuessResult.getFirst() == 0) {
-            System.out.printf("%d볼\n", userGuessResult.getSecond());
-        } else if (userGuessResult.getSecond() == 0) {
-            System.out.printf("%d스트라이크\n", userGuessResult.getFirst());
+        } else if (userGuessJudgement.getFirst() == 0) {
+            System.out.printf("%d볼\n", userGuessJudgement.getSecond());
+        } else if (userGuessJudgement.getSecond() == 0) {
+            System.out.printf("%d스트라이크\n", userGuessJudgement.getFirst());
         } else {
-            System.out.printf("%d볼 %d스트라이크\n", userGuessResult.getSecond(), userGuessResult.getFirst());
+            System.out.printf("%d볼 %d스트라이크\n", userGuessJudgement.getSecond(), userGuessJudgement.getFirst());
         }
     }
 
@@ -151,12 +152,12 @@ class Computer {
 class GameManager {
     private final User user;
     private final Computer computer;
-    private Pair<Integer, Integer> userGuessResult;
+    private Pair<Integer, Integer> userGuessJudgement;
 
     public GameManager() {
         this.user = new User();
         this.computer = new Computer();
-        this.userGuessResult = null;
+        this.userGuessJudgement = null;
     }
 
     private void printComputerGeneratedNumbers() {
@@ -181,7 +182,7 @@ class GameManager {
     }
 
     private boolean didGameEnd() {
-        return userGuessResult.getFirst() == 3;
+        return userGuessJudgement.getFirst() == 3;
     }
 
     private void setUpBeforeRestartGame() {
@@ -198,8 +199,8 @@ class GameManager {
             if (!user.isUserInputValidInGame()) {
                 throw new IllegalArgumentException();
             }
-            userGuessResult = computer.getUserGuessResult(user.getUserInput());
-            computer.printUserGuessResult(userGuessResult);
+            userGuessJudgement = computer.judgeUserGuess(user.getUserInput());
+            computer.printUserGuessJudgementResult(userGuessJudgement);
             if (didGameEnd()) {
                 user.userWins();
                 printGameRestartMessage();
