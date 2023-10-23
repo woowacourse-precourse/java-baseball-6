@@ -1,10 +1,6 @@
 package baseball.view;
 
-import static baseball.Constant.END_WANT;
-import static baseball.Constant.PLAY_WANT;
-
 import baseball.model.PlayNumber;
-import baseball.validator.ResumeValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleInputView implements InputView {
@@ -16,9 +12,8 @@ public class ConsoleInputView implements InputView {
     }
 
     @Override
-    public int readMoreAnswer() {
-        String number = Console.readLine();
-        ResumeValidator.assertResumeInput(number, PLAY_WANT.getValue(), END_WANT.getValue());
-        return Integer.parseInt(number);
+    public String readMoreAnswer() {
+        String answer = Console.readLine();
+        return answer;
     }
 }

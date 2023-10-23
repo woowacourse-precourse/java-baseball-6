@@ -53,7 +53,7 @@ public class GameController {
         EndView.end();
         AskView.printAskResume();
 
-        int resumeAnswer = inputView.readMoreAnswer();
+        String resumeAnswer = inputView.readMoreAnswer();
         resumeNumber.updateNumber(resumeAnswer);
     }
 
