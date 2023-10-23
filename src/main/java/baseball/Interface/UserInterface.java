@@ -4,7 +4,6 @@ import baseball.game.BaseballGame;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInterface {
-    private Console console;
     private final BaseballGame baseballGame;
 
     public UserInterface(BaseballGame baseballGame) {
@@ -17,7 +16,7 @@ public class UserInterface {
             baseballGame.resetGame(); // 분리해서 더 명확하게 작성할 부분 발견
             startGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = console.readLine();
+            String input = Console.readLine();
             if (input.equals("2")) {
                 break;
             }
@@ -31,7 +30,7 @@ public class UserInterface {
     private void startGame() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String input = console.readLine();
+            String input = Console.readLine();
             baseballGame.saveInput(input);
             baseballGame.compareNumber();
             baseballGame.printBallHint();
