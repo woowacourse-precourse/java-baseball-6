@@ -25,4 +25,13 @@ public class UserAnswerInputValidator implements InputValidator{
             throw new IllegalArgumentException(USER_ANSWER_INPUT_THREE_LENGTH_EXCEPTION);
         }
     }
+
+    public void keepDigit(String input) {
+        //숫자가 아닌경우 IllegalArgumentException 발생
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException(USER_ANSWER_INPUT_DIGIT_EXCEPTION);
+            }
+        }
+    }
 }
