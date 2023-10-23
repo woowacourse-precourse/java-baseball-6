@@ -79,4 +79,17 @@ public class Application {
             }
         }
     }
+
+    private static String askPlayerChoice(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
+        isValidChoice(choice);
+        return choice;
+    }
+
+    private static void isValidChoice(String choice){
+        if(!(choice.equals("1") || choice.equals("2"))){
+            throw new IllegalArgumentException("사용자의 입력이 1또는 2가 아닙니다. 게임을 종료합니다.");
+        }
+    }
 }
