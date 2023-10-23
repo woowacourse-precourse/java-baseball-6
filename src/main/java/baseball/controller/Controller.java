@@ -13,23 +13,28 @@ public class Controller {
     private final Service service = new Service();
 
     public void run() {
-        outputView.startMention();
-        service.initComputer();
-        Result result = null;
+        while (true) {
+            outputView.startMention();
+            service.initComputer();
+            Result result = null;
+            gamePlay();
+            outputView.gameOverMention();
+            if (!willContinue()) break;
+        }
+    }
+
+    private void gamePlay() {
+        Result result;
         do {
             String inputtedNumbers = inputView.inputNumbers();
             result = service.calculateResult(inputtedNumbers);
             outputView.printResult(result);
         } while (!result.isAllStrike());
-        outputView.gameOverMention();
-        willContinue();
     }
 
-    private void willContinue() {
+    private boolean willContinue() {
         String answerString = inputView.inputIfContinue();
         ContinueAnswer continueAnswer = service.generateContinueAnswer(answerString);
-        if (continueAnswer.ifContinue()) {
-            run();
-        }
+        return continueAnswer.ifContinue();
     }
 }

@@ -26,10 +26,8 @@
   * void printGameOver()
 * Controller
   * void run()
-    * -> OutputView.startMention() call
-    * -> Service
-  * void willContinue()
-  * void exit()
+  * private void gamePlay()
+  * private void willContinue()
 * Service
   * void initComputer()
   * private void initData(String inputtedNumbers)
