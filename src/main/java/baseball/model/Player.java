@@ -9,7 +9,7 @@ public class Player {
 
     public Player() {
         this.guessNumber = new GuessNumber();
-        this.restartOrExit = RestartOrExit.NONE;
+        this.restartOrExit = RestartOrExit.DEFAULT;
     }
 
     public void inputNumbers() {

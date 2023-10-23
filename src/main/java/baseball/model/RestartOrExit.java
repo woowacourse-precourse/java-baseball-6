@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public enum RestartOrExit {
 
-    NONE(0), RESTART(1), EXIT(2);
+    DEFAULT(0), RESTART(1), EXIT(2);
 
     private Integer restartOrExit;
 
