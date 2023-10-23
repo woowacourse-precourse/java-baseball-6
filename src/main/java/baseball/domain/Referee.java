@@ -28,13 +28,9 @@ public final class Referee {
     }
 
     private static int makeStrikeCount(List<Integer> userNumber, List<Integer> computerNumber){
-        int numStrikes=0;
-        for(int i=0;i<GAME_DIGIT;i++){
-            if(userNumber.get(i)==computerNumber.get(i)){
-                numStrikes++;
-            }
-        }
-        return numStrikes;
+        return (int) IntStream.range(0, GAME_DIGIT)
+                .filter(i -> userNumber.get(i) == computerNumber.get(i))
+                .count();
     }
 
 }
