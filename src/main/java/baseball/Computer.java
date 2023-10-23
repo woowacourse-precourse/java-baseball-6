@@ -1,18 +1,25 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Computer {
-    private static final int LOWER_NUMBER_RANGE = 1;
-    private static final int UPPER_NUMBER_RANGE = 3;
+    private static final int MAX_SIZE = 3;
 
-    public Baseballs createComputerNumbers(final NumberCreator numberCreator) {
-        List<Integer> numbers = IntStream.rangeClosed(LOWER_NUMBER_RANGE, UPPER_NUMBER_RANGE)
-                .map(number -> numberCreator.create())
-                .boxed()
-                .toList();
+    private final NumberCreator numberCreator;
 
+    public Computer(final NumberCreator numberCreator) {
+        this.numberCreator = numberCreator;
+    }
+
+    public Baseballs createComputerNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < MAX_SIZE) {
+            int randomNumber = numberCreator.create();
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
         return new Baseballs(numbers);
     }
 }
