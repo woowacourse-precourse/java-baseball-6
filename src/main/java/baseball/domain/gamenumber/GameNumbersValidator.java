@@ -1,6 +1,6 @@
 package baseball.domain.gamenumber;
 
-public class GameNumbersValidator {
+class GameNumbersValidator {
     private static final String VALID_NUMBER_LENGTH = String.format("^\\d{%d}$", GameNumbers.LENGTH);
 
     private GameNumbersValidator() {}
