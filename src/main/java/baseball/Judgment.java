@@ -15,24 +15,24 @@ public class Judgment {
         initJudgment();
     }
 
-    private void initJudgment(){
+    private void initJudgment() {
         strike = 0;
         ball = 0;
     }
 
-    public void judgeStrike(){
-        for(int index = 0; index < 3; index++){
-            if(computer.get(index).equals(user.get(index))){
+    public void judgeStrike() {
+        for (int index = 0; index < 3; index++) {
+            if (computer.get(index).equals(user.get(index))) {
                 strike += 1;
             }
         }
     }
 
-    private boolean isBall(int currentIndex){
+    private boolean isBall(int currentIndex) {
         int userNumber = user.get(currentIndex);
 
-        for(int index = 0; index < 3; index++){
-            if(index != currentIndex && computer.get(index).equals(userNumber)){
+        for (int index = 0; index < 3; index++) {
+            if (index != currentIndex && computer.get(index).equals(userNumber)) {
                 return true;
             }
         }
@@ -40,16 +40,16 @@ public class Judgment {
         return false;
     }
 
-    public void judgeBall(){
-        for(int index = 0; index < 3; index++){
-            if(isBall(index)){
+    public void judgeBall() {
+        for (int index = 0; index < 3; index++) {
+            if (isBall(index)) {
                 ball += 1;
             }
         }
     }
 
-    public boolean isUserWin(){
-        if(strike == 3){
+    public boolean isUserWin() {
+        if (strike == 3) {
             initJudgment();
             return true;
         }
@@ -58,17 +58,17 @@ public class Judgment {
         return false;
     }
 
-    public void judge(){
+    public void judge() {
         judgeStrike();
         judgeBall();
 
-        if(strike == 0 && ball == 0){
+        if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if(strike == 0){
+        } else if (strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
-        } else{
+        } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }

@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class Game {
         if (baseballNumber.length() == 3
                 && isNumber(baseballNumber.charAt(0))
                 && isNumber(baseballNumber.charAt(1))
-                && isNumber(baseballNumber.charAt(2))){
+                && isNumber(baseballNumber.charAt(2))) {
             return;
         }
 
@@ -77,7 +78,7 @@ public class Game {
         throw new IllegalArgumentException();
     }
 
-    public void play(){
+    public void play() {
         createComputerNumber();    //컴퓨터 난수 생성
         script.startGame();
 
