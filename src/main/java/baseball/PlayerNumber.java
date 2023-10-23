@@ -17,4 +17,8 @@ public class PlayerNumber {
         int third = Character.getNumericValue(input.charAt(2));
         playerNumbers = new ArrayList<>(Arrays.asList(first, second, third));
     }
+
+    public int getIndexNumber(int index) {
+        return playerNumbers.get(index);
+    }
 }

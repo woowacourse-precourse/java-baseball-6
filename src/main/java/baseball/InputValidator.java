@@ -2,7 +2,6 @@ package baseball;
 
 public class InputValidator {
 
-
     public void validate(String stringInput) {
         if (isInputIsNum(stringInput) || stringInput.length() != 3) {
             throw new IllegalArgumentException();

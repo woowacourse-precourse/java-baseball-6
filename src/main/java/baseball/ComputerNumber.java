@@ -22,4 +22,13 @@ public class ComputerNumber {
         }
         computerNumbers = randoms;
     }
+
+    public boolean isNumberContains(int number) {
+        return computerNumbers.contains(number);
+    }
+
+    public int getNumberIndex(int number) {
+        return computerNumbers.indexOf(number);
+    }
+
 }
