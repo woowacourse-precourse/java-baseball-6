@@ -19,7 +19,7 @@ public class Application {
                 PitchResult pitchResult = new PitchResult(randomNumber, validation);
                 pitchResult.judgePitch(inputString);
                 pitchResult.printPitchResult();
-                if (pitchResult.getRestartNumber() == 2) {
+                if (pitchResult.getRestartNumber() == GameOption.QUIT_GAME.getOption()) {
                     break;
                 }
             }
