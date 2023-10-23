@@ -1,19 +1,19 @@
 package baseball.controller;
 
+import baseball.model.CompareNumber;
 import baseball.model.ComputerNumber;
 import baseball.model.PlayerNumber;
-import baseball.model.SuccessCheck;
 import baseball.view.Input;
 import baseball.view.Output;
 
 public class GameManage {
     private final ComputerNumber computerNum;
     private PlayerNumber playerNum;
-    private final SuccessCheck successCheck;
+    private final CompareNumber compareNumber;
 
     public GameManage() {
         computerNum = new ComputerNumber();
-        successCheck = new SuccessCheck();
+        compareNumber = new CompareNumber();
     }
 
     public void gameStart() {
@@ -28,7 +28,7 @@ public class GameManage {
     }
 
     public int[] getResult() {
-        return successCheck.CheckOfSuccess(computerNum.getComputerNumber(), playerNum.playerNumber());
+        return compareNumber.getStrikeAndBall(computerNum.getComputerNumber(), playerNum.getPlayerNumber());
     }
 
     public void printResult(int[] compareResult) {
@@ -65,7 +65,7 @@ public class GameManage {
     }
 
     public boolean isDone() {
-        if (successCheck.isSuccess()) {
+        if (compareNumber.isStrike()) {
             Output.gameSuccess();
             return true;
         } else {

@@ -16,8 +16,8 @@ public class CompareNumber {
         return new int[]{ball, strike};
     }
 
-    public int isStrike() {
-        return strike;
+    public boolean isStrike() {
+        return strike == 3;
     }
 
     public void countAll(String computerNumber, String playerNumber) {

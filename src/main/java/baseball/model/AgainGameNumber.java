@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.Objects;
 
 public class AgainGameNumber {
-    String againNumber;
+    private final String againNumber;
 
     public AgainGameNumber(String againNumber) {
         AgainNumberCheck(againNumber);

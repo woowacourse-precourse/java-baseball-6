@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public record PlayerNumber(String playerNumber) {
-    public PlayerNumber {
+public class PlayerNumber {
+    private final String playerNumber;
 
+    public PlayerNumber(String playerNumber) {
         isInteger(playerNumber);
         isLengthThree(playerNumber);
         isDifferentNum(playerNumber);
+        this.playerNumber = playerNumber;
 
+    }
+
+    public String getPlayerNumber() {
+        return playerNumber;
     }
 
     public void isLengthThree(String number) throws IllegalArgumentException {
