@@ -11,6 +11,7 @@ public class NumberConstants {
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 9;
     public static final int GAME_END_CONDITION = 3;
+    public static final int COUNT_ZERO = 0;
 
     private NumberConstants() {
         throw new AssertionError(CANNOT_INSTANTIATE);
