@@ -7,20 +7,20 @@
 >### 랜덤 숫자 생성
 >
 >---
->-[ ] 첫 번째, 두 번째, 세 번째 자리수 구분
+>-[x] 첫 번째, 두 번째, 세 번째 자리수 구분
 >
 >##### 조건
->-[ ] 세 숫자가 중복되지 않는다.
->-[ ] 숫자는 1부터 9까지
->-[ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()사용
+>-[x] 세 숫자가 중복되지 않는다.
+>-[x] 숫자는 1부터 9까지
+>-[x] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()사용
 >
 >### 사용자 숫자 입력
 >
 >
 >---
->-[ ] 첫 번째, 두 번째, 세 번째 자리수 구분
+>-[x] 첫 번째, 두 번째, 세 번째 자리수 구분
 >##### 조건
->-[ ] camp.nextstep.edu.missionutils.Console의 readline() 사용
+>-[x] camp.nextstep.edu.missionutils.Console의 readline() 사용
 >### 사용자 숫자 판단
 >
 >
@@ -55,14 +55,14 @@
 >
 >----
 >### Score
->-[ ] baseball게임의 ball, strike로 이루어진 점수 데이터가 저장된다.
+>-[x] baseball게임의 ball, strike로 이루어진 점수 데이터가 저장된다.
 >
 >## View
 >
 >---
 >### BaseBallGame
 >-[ ] 게임 run
->-[ ] user의 숫자 입력 받아오기
+>-[x] user의 숫자 입력 받아오기
 >-[ ] 정답을 맞출 때까지 게임 반복하기
 >-[ ] 정답을 맞추면 게임을 종료하고, 다시 시작할지, 프로그램을 종료할지 묻기
 >##### 조건
@@ -77,7 +77,7 @@
 >---
 >### NumberController
 >-[ ] 숫자 관련 연산.
->-[ ] 받아온 user의 숫자 변환하여 저장하기.
->-[ ] computer의 랜덤 숫자 생성하기.
+>-[x] 받아온 user의 숫자 변환하여 저장하기.
+>-[x] computer의 랜덤 숫자 생성하기.
 >### CheckNumberController
 >-[ ] user의 숫자와 computer의 숫자를 비교하고 score를 매겨 저장

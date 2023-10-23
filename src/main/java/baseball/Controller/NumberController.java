@@ -21,4 +21,15 @@ public class NumberController {
         return uniqueNumbers.toArray(new Integer[0]);
 
     }
+    public Integer[] getUserNumber(String userInput) {
+        Integer[] userNumbers = {0,0,0};
+        int userInputInteger = Integer.parseInt(userInput);
+
+        //유저의 답 추출. 자릿수별로 변수를 만든다.
+        userNumbers[0] = userInputInteger / 100;
+        userNumbers[1] = userInputInteger % 100 / 10;
+        userNumbers[2] = userInputInteger % 10;
+
+        return userNumbers;
+    }
 }

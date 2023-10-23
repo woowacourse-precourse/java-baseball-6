@@ -16,9 +16,17 @@ public class BaseballGame {
             System.out.println("숫자 야구 게임을 시작합니다.");
             randomNumbers=numbers.createRandomNumber();
 
+            readUserNumber();
+
         }
     }
-
+    public void readUserNumber(){
+        while (true) {
+            System.out.println("숫자를 입력해주세요 :");
+            String userSay = readLine();
+            userNumbers=numbers.getUserNumber(userSay);
+        }
+    }
 
 
 }
