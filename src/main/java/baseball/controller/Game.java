@@ -12,20 +12,25 @@ import java.util.Map;
 public class Game {
     private final int GAME_OVER_CONDITION = 3;
     private final OutputView outputView;
+    private final InputView inputView;
     private final Computer computer;
 
 
     public Game() {
         outputView = new OutputView();
+        inputView = new InputView();
         computer = generateComputer();
     }
 
     public void play(List<Integer> userNumbers) {
         GameNumber userGameNumber = new GameNumber(userNumbers);
         Map<GameResult, Long> result = computer.compare(userGameNumber);
+        outputView.printGameResult(result);
         if (!checkGameOver(result)) {
-            play(InputView.inputNumbers());
+            play(inputView.inputGameNumbers());
+            return ;
         }
+        outputView.printGameFinish();
     }
 
 
