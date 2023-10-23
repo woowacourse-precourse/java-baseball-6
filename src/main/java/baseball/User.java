@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Game.QuitInput;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
@@ -7,56 +8,78 @@ public class User {
 
     }
 
-    public String getInput() {
-        // 엔터 전까지 한 줄 입력 받음
+    public String getGameInput() {
         String input = Console.readLine();
 
-        if (!isInputRight(input)) {
+        if (!isGameInputRight(input)) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
         return input;
     }
 
-    private boolean isInputRight(String input) {
-        boolean[] used = new boolean[9];
-
-        if (input.length() != 3)
+    private boolean isGameInputRight(String input) {
+        if (!isInputLenRight(input, 3))
             return false;
 
-        for (int i = 0; i < 3; i++) {
-            char tmp = input.charAt(i);
-            int num = tmp - '0';
+        if (!isInputNumber(input))
+            return false;
 
-            if (!Character.isDigit(tmp) || num == 0)
-                return false;
-
-            if (used[num - 1])
-                return false;
-
-            used[num - 1] = true;
-        }
+        if (!isInputValueDiff(input))
+            return false;
 
         return true;
     }
 
     public String getQuitInput() {
-        // 엔터 전까지 한 줄 입력 받음
         String input = Console.readLine();
 
         if (!isQuitInputRight(input)) {
-            throw new IllegalArgumentException("잘못된 입력입니다.2");
+            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
         return input;
     }
 
     private boolean isQuitInputRight(String input) {
-        if (input.length() != 1)
+        if (!isInputLenRight(input, 1))
             return false;
 
-        if (!input.equals("1") && !input.equals("2"))
+        if (!input.equals(QuitInput.RESTART) && !input.equals(QuitInput.QUIT))
             return false;
+
+        return true;
+    }
+
+    private boolean isInputLenRight(String input, int len) {
+        if (input.length() != len)
+            return false;
+
+        return true;
+    }
+
+    private boolean isInputNumber(String input) {
+        for (int i = 0; i < 3; i++) {
+            char c = input.charAt(i);
+
+            if (!Character.isDigit(c) || c == '0')
+                return false;
+        }
+
+        return true;
+    }
+
+    private boolean isInputValueDiff(String input) {
+        boolean[] used = new boolean[9];
+
+        for (int i = 0; i < 3; i++) {
+            int num = input.charAt(i) - '0';
+
+            if (used[num - 1])
+                return false;
+
+            used[num - 1] = true;
+        }
 
         return true;
     }
