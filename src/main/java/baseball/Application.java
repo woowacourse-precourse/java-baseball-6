@@ -17,19 +17,30 @@ public class Application {
 
         boolean continueGame = true;
         while (continueGame) {
-            List<Integer> computerNumbers = generateRandomNumbers();
-
-            boolean correctAnswer = false;
-            while (!correctAnswer) {
-                System.out.print("숫자를 입력해주세요 : ");
-                String inputNumbers = Console.readLine();
-                validateInput(inputNumbers);
-
-                correctAnswer = playGame(computerNumbers, convertInputToNumbers(inputNumbers));
-            }
-
-            continueGame = askContinue();
+            continueGame = startNewRound();
         }
+    }
+
+    /* 새로운 게임 반복 */
+    private static boolean startNewRound() {
+        List<Integer> computerNumbers = generateRandomNumbers();
+
+        boolean correctAnswer = false;
+        while (!correctAnswer) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumbers = Console.readLine();
+            validateInput(inputNumbers);
+
+            List<Integer> playerNumbers = convertInputToNumbers(inputNumbers);
+
+            correctAnswer = checkIfPlayerWins(computerNumbers, playerNumbers);
+
+            if (!correctAnswer) {
+                continue;
+            }
+            return askContinue();
+        }
+        return true;
     }
 
     /* 랜덤 컴퓨터 숫자 생성 */
@@ -44,8 +55,8 @@ public class Application {
         return computer;
     }
 
-    /* 게임 시작 */
-    private static boolean playGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    /* 맞췄는지 체크 */
+    private static boolean checkIfPlayerWins(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
         if (strikeCount == 3) {
             System.out.println("3스트라이크");
