@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.util.Utility;
 import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -36,8 +38,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력_예외처리_테스트() {
-        assertThat(Validation.checkUserInput("223")).isEqualTo(true);
-
+        assertThat(Validation.checkUserInput("abc")).isEqualTo(false);
     }
 
     @Test
@@ -46,4 +47,5 @@ class ApplicationTest extends NsTest {
                 "112"
         )).isEqualTo(false);
     }
+
 }

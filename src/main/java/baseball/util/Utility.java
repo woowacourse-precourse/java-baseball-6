@@ -24,9 +24,10 @@ public class Utility {
     }
     public static List<Integer> input() {
         String userInput = readLine();
+        String targetInput = userInput.trim();
 
-        if (Validation.checkUserInput(userInput)) {
-            return string2IntegerArrayList(userInput);
+        if (Validation.checkUserInput(targetInput)) {
+            return string2IntegerArrayList(targetInput);
         } else {
             throw new IllegalArgumentException();
         }

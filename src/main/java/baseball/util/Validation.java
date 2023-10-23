@@ -3,23 +3,25 @@ package baseball.util;
 import java.util.regex.Pattern;
 
 public class Validation {
-    private static final String REGEXP_PATTERN_NUMBER = "^[\\d]*$";
+    private static final String REGEXP_PATTERN_NUMBER = "^\\d*$";
 
+    /**
+     * userInput은 문자열 앞 뒤 공백이 제거된 문자열만 들어온다.
+     */
     public static boolean checkUserInput(String userInput) {
-        String target = userInput.trim();
-        if (target.length() != 3) {
+        if (userInput.length() != 3) {
             return false;
         }
 
-        if (target.contains("0")) {
+        if (userInput.contains("0")) {
             return false;
         }
 
-        if (!checkDuplicatedNumber(target)) {
+        if (!checkDuplicatedNumber(userInput)) {
             return false;
         }
 
-        return Pattern.matches(REGEXP_PATTERN_NUMBER, target);
+        return Pattern.matches(REGEXP_PATTERN_NUMBER, userInput);
     }
 
     public static boolean checkDuplicatedNumber(String input) {
