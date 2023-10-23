@@ -7,9 +7,13 @@ public class Application {
     public static void main(String[] args) {
         RandomNumber randomNumber = new RandomNumber();
         InputNumber inputNumber = new InputNumber();
-//        System.out.println(randomNumber.createRanArr());
-        int[]  a = inputNumber.createInputArr();
-        inputNumber.checkNum(a);
+        CompareNumber compareNumber = new CompareNumber();
+
+
+        int[] a = inputNumber.createInputArr();
+        int[] b = randomNumber.createRanArr();
+        compareNumber.compareNumber(a,b);
+
     }
 
 
