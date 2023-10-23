@@ -27,7 +27,7 @@ public class Communicator {
         String inputString = Console.readLine();
         Validator.validateInputString(inputString);
 
-        for (int i=0; i<inputString.length(); i++) {
+        for (int i = 0; i < inputString.length(); i++) {
             char input = inputString.charAt(i);
             Validator.validateInputNumber(inputNumbers, input);
             inputNumbers.add(Character.getNumericValue(input));
