@@ -6,6 +6,20 @@ import java.util.*;
 
 public class Computer {
 
+    //  TODO(5) - 사용자의 입력을 받아, 게임 한번 더 할건지 물어보는 것에 대한 맞는 입력인지 검사하기
+    public boolean checkTryAgain(String userNum) { // 한번 더 할건지
+        final String REGEX = "[1-2]+";
+        if (userNum.length() != 1) { // 3자리수가 아닌경우,
+            throw new IllegalArgumentException();
+        }
+        if (!userNum.matches(REGEX)){ // 1-9로 만들어진 숫자가 아닌경우
+            throw new IllegalArgumentException("1-9로 만들어진 숫자가 아닙니다.");
+        }
+
+        return Integer.parseInt(userNum) == 1;
+    }
+
+
     //  TODO(4) - 사용자의 입력과 컴퓨터의 입력을 검사하기
     public int[] ismatch(List<Integer> computerNum, List<Integer> userNum) {
         int[] resultList = new int[3];
