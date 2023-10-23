@@ -2,10 +2,11 @@ package baseball;
 
 public class BaseballGameView {
 
-    public void print(int[] result){
-        int strike = result[0];
-        int ball = result[1];
-        int size = result[2];
+    public void print(BaseBallGameModel model){
+        int[] ballCount = model.getBallCount();
+        int strike = ballCount[0];
+        int ball = ballCount[1];
+        int size = model.getSize();
 
         if(strike == 0 && ball == 0) {
             System.out.print("낫싱");

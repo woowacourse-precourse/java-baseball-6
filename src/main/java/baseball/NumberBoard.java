@@ -1,6 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import random.RandomArray;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NumberBoard {
     private static final int START_RANGE = 0;
@@ -12,27 +15,40 @@ public class NumberBoard {
         this.answer = answer;
     }
 
-    public static int[] makeRandomBoard() {
-        int[] array = new int[SIZE];
-        boolean[] used = new boolean[END_RANGE - START_RANGE + 1];
-        int index = 0;
-        while(index != SIZE) {
-            int randomNum = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-            index = pickUniqueNumber(array, used, index, randomNum);
-        }
-        return array;
+    public NumberBoard(String input) {
+        validateInput(input, SIZE);
+        int[] inputToArray = inputToArray(input);
+        this.answer = inputToArray;
     }
 
-    private static int pickUniqueNumber(int[] array, boolean[] used, int index, int randomNum) {
-        if (!used[randomNum]) {
-            array[index] = randomNum;
-            used[randomNum] = true;
-            index++;
-        }
-        return index;
+    public static NumberBoard makeRandomBoard(){
+        return new NumberBoard(RandomArray.makeRandomArray(START_RANGE,END_RANGE,SIZE));
     }
 
-    public int posNumber(int index){
+    private static int[] inputToArray(String input) {
+        int[] inputToArray = input.chars()
+                .map(i -> i - '0')
+                .toArray();
+        return inputToArray;
+    }
+    private void validateInput(String input, int size){
+        if (validateInputByTypeSize(input, size) || nonDuplicateNumber(input, size)) {
+            throw new IllegalArgumentException("길이가 " + size + "인 중복되지 않는 숫자를 입력해주세요.");
+        }
+    }
+    private static boolean nonDuplicateNumber(String input, int size) {
+        return input.chars()
+                .distinct()
+                .count() != size;
+    }
+    private static boolean validateInputByTypeSize(String input, int size) {
+        String regex = String.format("[0-9]{%d}", size);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return !matcher.matches();
+    }
+
+    public int get(int index){
         return answer[index];
     }
 
