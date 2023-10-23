@@ -8,11 +8,10 @@ import java.util.stream.Collectors;
 public final class AnswerGenerator {
     private static final int MIN = 1;
     private static final int MAX = 9;
-    private static final int DIGITS = 3;
 
     public static int randomAnswer() {
         Set<Integer> randomNumbers = new HashSet<>();
-        while (randomNumbers.size() < DIGITS) {
+        while (randomNumbers.size() < BaseBall.DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
             randomNumbers.add(randomNumber);
         }
