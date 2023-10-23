@@ -1,5 +1,6 @@
 package baseball.service;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,22 +23,13 @@ public class BaseballCollection {
 
     // 기능: 사용자의 공을 입력 받고 생성한다
     private List<Integer> createPlayerBalls(String numbers) {
-        validate(numbers);
-        return mapToList(numbers);
+        return createValidBaseballs(numbers);
     }
 
     // 기능: 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택
     private List<Integer> createComputerBalls(NumberGenerator numberGenerator) {
         String numbers = createUniqueNumbers(numberGenerator);
-        validate(numbers);
-        return mapToList(numbers);
-    }
-
-    private List<Integer> mapToList(String target) {
-        return target
-                .chars()
-                .mapToObj(Character::getNumericValue)
-                .collect(Collectors.toList());
+        return createValidBaseballs(numbers);
     }
 
     private String createUniqueNumbers(NumberGenerator numberGenerator) {
@@ -55,7 +47,7 @@ public class BaseballCollection {
     }
 
     private void appendIfUniqueNumber(int number, StringBuilder target, Set<Integer> usedNumbers) {
-        if(!usedNumbers.contains(number)) {
+        if (!usedNumbers.contains(number)) {
             target.append(number);
             usedNumbers.add(number);
         }
@@ -93,44 +85,35 @@ public class BaseballCollection {
         return ballCount;
     }
 
-    private void validate(String number) {
-        validateLength(number, DEFAULT_CAPACITY);
-        validateNumeric(number);
-        validateUnique(number);
-        validateRange(number, BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
+    private List<Integer> createValidBaseballs(String number) {
+        List<Integer> baseballs = Arrays.stream(number.split(""))
+                .map(this::parseToInt)
+                .distinct()
+                .collect(Collectors.toList());
+        validateUniqueNumbers(baseballs);
+        validateRange(baseballs);
+        return baseballs;
     }
 
-    // 기능: length 자릿수로 입력해야 한다
-    private void validateLength(String input, int length) {
-        if (input.length() != length) {
-            throw new IllegalArgumentException(length + " 자릿수로 입력해야 합니다.");
+    private void validateUniqueNumbers(List<Integer> baseballs) {
+        if (baseballs.size() != DEFAULT_CAPACITY) {
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
     }
 
-    // 기능: 숫자만 입력해야 한다
-    private void validateNumeric(String input) {
-        boolean onlyNumeric = Pattern.matches("^[\\d]*$", input);
-        if (!onlyNumeric) {
-            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
-        }
-    }
-
-    // 기능: 서로 다른 숫자로만 입력해야 한다
-    private void validateUnique(String input) {
-        Set<Character> uniqueNums = new HashSet<>();
-        for (int numberIdx = 0; numberIdx < input.length(); numberIdx++) {
-            uniqueNums.add(input.charAt(numberIdx));
-        }
-        if (uniqueNums.size() != 3) {
-            throw new IllegalArgumentException("서로 다른 숫자만 입력해야 합니다.");
-        }
-    }
-
-    private void validateRange(String baseBalls, int start, int end) {
-        for (char baseball : baseBalls.toCharArray()) {
-            if (!isInRange(start, end, baseball - '0')) {
-                throw new IllegalArgumentException(String.format("%d~%d 범위의 숫자만 허용됩니다.", start, end));
+    private void validateRange(List<Integer> baseballs) {
+        for (Integer baseball : baseballs) {
+            if (!isInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, baseball)) {
+                throw new IllegalArgumentException("범위를 벗어난 숫자가 존재합니다.");
             }
+        }
+    }
+
+    private int parseToInt(String target) {
+        try {
+            return Integer.parseInt(target);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닌 문자가 존재합니다.", e);
         }
     }
 
