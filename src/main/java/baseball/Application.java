@@ -25,6 +25,7 @@ public class Application {
                 int strikeCount = application.calculateStrikeCount();
                 int ballCount = application.calculateBallCount();
                 boolean isNothing = application.checkNothing(strikeCount, ballCount);
+                application.printResult(isNothing, strikeCount, ballCount);
             }
         }
     }
@@ -88,6 +89,20 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    public void printResult(boolean isNothing, int strikeCount, int ballCount) {
+        if (!isNothing) {
+            if (ballCount > 0) {
+                System.out.print(ballCount + "볼 ");
+            }
+            if (strikeCount > 0) {
+                System.out.print(strikeCount + "스트라이크");
+            }
+            System.out.println();
+        } else if (isNothing) {
+            System.out.println("낫싱");
+        }
     }
 
     public void isValidCheck(String input) {
