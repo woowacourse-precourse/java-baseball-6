@@ -16,8 +16,9 @@ public enum GameStatus {
     }
 
     public static GameStatus getStatus(int progress) {
-        if (PROGRESS.progress == progress)
+        if (PROGRESS.progress == progress) {
             return PROGRESS;
+        }
         return END;
     }
 }
