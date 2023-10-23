@@ -28,7 +28,7 @@ public class Game {
 
     public String getResultString() {
         if (isWin()) {
-            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return "3스트라이크";
         }
 
         String result = "";

@@ -5,8 +5,8 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("실행 시작");
         GameController gameController = new GameController();
-        gameController.startGame();
-        gameController.endGame();
+        gameController.run();
+
 
     }
 }
