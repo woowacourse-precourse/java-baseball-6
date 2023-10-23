@@ -32,7 +32,7 @@ public class Controller {
 
         while (!gameResult.isGameOver()) {
             outputView.requestNumber();
-            String playerInput = inputView.receiveInputNumber();
+            String playerInput = inputView.getInputNumber();
             List<Integer> playerNumber = player.getInputNumber(playerInput);
             gameResult = baseball.checkInput(computerNumber, playerNumber);
             outputView.result(gameResult);
@@ -40,7 +40,7 @@ public class Controller {
 
         outputView.endGame();
         outputView.restartOrQuit();
-        String retryOptionInput = inputView.receiveInputNumber();
+        String retryOptionInput = inputView.getInputNumber();
         int option = player.receiveRetryOption(retryOptionInput);
 
         if (option == RESTART) {
