@@ -58,15 +58,13 @@
 ## UserInterface
 
 - 멤버변수
-    - 사용자의 입력을 받는 Console
     - BaseballGame
 - 생성자
-    - Console과 BaseballGame을 주입받는 생성자
+    - BaseballGame을 주입받는 생성자
 - 메서드
     - 프로그램을 시작하는메서드
     - 게임을 시작하는메서드
 
 ## Application
 
-스캐너와 프로그램 로직을
-UserInterface에 주입해서 실행한다
+BaseballGame을 UserInterface에 주입해서 실행한다
