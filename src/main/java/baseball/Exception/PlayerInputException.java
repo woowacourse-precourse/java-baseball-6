@@ -24,9 +24,12 @@ public class PlayerInputException {
             throw new IllegalArgumentException("수는 3개까지만 입력이 가능합니다.");
         }
     }
-
-
-    public void notConsistSolelyOfNumberCase(String numberCasesOfString) { //숫자의 범위(1~9) 초과 여부 체크
+    /*
+    숫자의 범위(1~9) 초과 여부 체크
+    여기에서 문자 등의 숫자가 아닌 값을 입력한 경우도 숫자의 범위를 초과하는 것의 예외에 들어가는 것으로 구성함
+     */
+    
+    public void notConsistSolelyOfNumberCase(String numberCasesOfString) {
         for (int i = 0; i < numberCasesOfString.length(); i++) {
             if (!numberCasesOfString.matches(NUMBER_REGEX)) {
                 throw new IllegalArgumentException("1~9 범위 내의 '숫자'만 입력해야 합니다.");
