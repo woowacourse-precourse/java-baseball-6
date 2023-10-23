@@ -11,19 +11,19 @@ public class BaseballGame {
         BaseballGame.runningGame = runningGame;
     }
 
-    public void gameProcess() {
+    public void getGame() {
         GetNumbers gn = new GetNumbers();
         List<Integer> computerNum = gn.getRandomNumber();
-        checkGame(computerNum);
+        getGameProcess(computerNum);
     }
 
-    public void checkGame(List<Integer> computer) {
+    public void getGameProcess(List<Integer> computer) {
         while (runningGame) {
-            checkGameProcess(computer);
+            getGameResult(computer);
         }
     }
 
-    public void checkGameProcess(List<Integer> computer) {
+    public void getGameResult(List<Integer> computer) {
         GetNumbers gn = new GetNumbers();
         List<Integer> user = gn.getUserInput();
         int ballCount = 0;
@@ -38,7 +38,7 @@ public class BaseballGame {
             }
         }
 
-        checkGameResult(ballCount, strikeCount);
+        checkCountResult(ballCount, strikeCount);
     }
 
     public int selectExit() {
@@ -51,7 +51,7 @@ public class BaseballGame {
         return selectNum;
     }
 
-    public void checkGameResult(int ballCount, int strikeCount) {
+    public void checkCountResult(int ballCount, int strikeCount) {
         StringBuilder result = new StringBuilder();
 
         if (strikeCount == MAX_NUM_LENGTH) {
@@ -59,7 +59,7 @@ public class BaseballGame {
             System.out.println(result);
             int userSelectNum = selectExit();
             if (userSelectNum == 1) {
-                gameProcess();
+                getGame();
             }
             if (userSelectNum == -1) {
                 runningGame = false;
@@ -67,11 +67,11 @@ public class BaseballGame {
             return;
         }
 
-        getResultMessage(result, ballCount, strikeCount);
+        getCountMessage(result, ballCount, strikeCount);
         System.out.println(result.toString().trim());
     }
 
-    public void getResultMessage(StringBuilder result, int ballCount, int strikeCount) {
+    public void getCountMessage(StringBuilder result, int ballCount, int strikeCount) {
         if (ballCount > 0) {
             result.append(ballCount).append("볼 ");
         }
