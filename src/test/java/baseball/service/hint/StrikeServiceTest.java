@@ -1,16 +1,16 @@
-package baseball.service;
+package baseball.service.hint;
 
 import baseball.domain.Baseball;
-import baseball.service.hint.BallService;
+import baseball.service.hint.StrikeService;
 import baseball.util.IntegerListUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BallServiceTest {
+public class StrikeServiceTest {
 
-    private final BallService ballService = BallService.getInstance();
+    private final StrikeService strikeService = StrikeService.getInstance();
     private Baseball computerBaseball;
     private Baseball inputBaseball;
 
@@ -21,39 +21,39 @@ public class BallServiceTest {
     }
 
     @Test
-    void count_zeroBall() {
+    void count_zeroStrike() {
         //given
         computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
         inputBaseball.setValues(IntegerListUtil.parseIntegerList("456"));
 
         //when
-        int count = ballService.count(computerBaseball, inputBaseball);
+        int count = strikeService.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
     }
 
     @Test
-    void count_zeroBall_samePlace() {
+    void count_zeroStrike_differentPlace() {
+        //given
+        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
+        inputBaseball.setValues(IntegerListUtil.parseIntegerList("451"));
+
+        //when
+        int count = strikeService.count(computerBaseball, inputBaseball);
+
+        //then
+        assertThat(count).isZero();
+    }
+
+    @Test
+    void count_oneStrike() {
         //given
         computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
         inputBaseball.setValues(IntegerListUtil.parseIntegerList("156"));
 
         //when
-        int count = ballService.count(computerBaseball, inputBaseball);
-
-        //then
-        assertThat(count).isZero();
-    }
-
-    @Test
-    void count_oneBall() {
-        //given
-        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
-        inputBaseball.setValues(IntegerListUtil.parseIntegerList("256"));
-
-        //when
-        int count = ballService.count(computerBaseball, inputBaseball);
+        int count = strikeService.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isOne();

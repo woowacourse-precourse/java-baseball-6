@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.service.hint;
 
 import baseball.domain.Baseball;
 import baseball.service.hint.NothingService;
