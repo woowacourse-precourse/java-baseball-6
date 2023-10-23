@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.number.GameNumber;
+import baseball.number.GameNumberGenerator;
 import baseball.printer.ConsoleGamePrinter;
 import baseball.printer.GamePrinter;
 import baseball.receiver.ConsoleGameReceiver;
@@ -19,26 +20,28 @@ public class GameManager {
     }
 
     public void run() {
-        // 게임 시작
+        gamePrinter.greet();
 
-        // 반복문
-        // 게임 숫자 생성
-        // playBall()
-        // 재시작 숫자 요청
+        boolean restartStatus = true;
 
+        while (restartStatus) {
+            GameNumber gameNumber = new GameNumber(GameNumberGenerator.generateGameNumber());
+            playBall(gameNumber);
+//            restartStatus = askRestartGame();
+        }
     }
 
     private void playBall(GameNumber gameNumber) {
         // 반복문
         // 입력 요청
         // checkUserNumber();
-            // true -> 게임 끝
-            // false -> 계속 진행
+        // true -> 게임 끝
+        // false -> 계속 진행
     }
 
     private boolean checkUserNumber(GameNumber gameNumber, GameNumber userNumber) {
         // userNumber 유효성 체크
-         calculateBallCount(gameNumber, userNumber);
+        calculateBallCount(gameNumber, userNumber);
         return true;
     }
 
