@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class PlayerPartner {
@@ -30,7 +32,7 @@ public class PlayerPartner {
         int strikeCount = 0;
 
         while (isContinue(strikeCount)) {
-            int playerNumbers = Player.nextNumberOf().getNumber();
+            int playerNumbers = Player.nextNumberOf(readLine()).getNumber();
             strikeCount = getStrikeCount(playerNumbers);
             int ballCount = getBallCount(playerNumbers, strikeCount);
 
