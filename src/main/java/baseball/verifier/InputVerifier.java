@@ -39,7 +39,7 @@ public class InputVerifier {
 
     private static void outOfEachDigitRange(int comp) {
         if (comp < SystemConstant.MIN_NUMBER_EACH_DIGIT || comp > SystemConstant.MAX_NUMBER_EACH_DIGIT) {
-            throw new IllegalArgumentException(SystemException.EXCEPTION_HAS_ZERO);
+            throw new IllegalArgumentException(SystemException.EXCEPTION_EACH_DIGIT_RANGE);
         }
     }
 
