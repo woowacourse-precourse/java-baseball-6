@@ -15,7 +15,8 @@ public class InputView {
 		try {
 			outputView.printInputMent();
 			int inputNumber = Integer.parseInt(Console.readLine());
-			if (!(validator.checkDigit(inputNumber) && validator.checkDuplication(inputNumber) && validator.checkNumber(inputNumber))) {
+			if (!(validator.checkDigit(inputNumber)
+					&& validator.checkDuplication(inputNumber) && validator.checkNumber(inputNumber))) {
 				throw new IllegalArgumentException();
 			}
 			return inputNumber;
