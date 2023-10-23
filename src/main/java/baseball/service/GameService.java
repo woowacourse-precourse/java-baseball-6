@@ -10,6 +10,8 @@ import java.util.List;
 public class GameService {
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private Game game;
+    private final String INPUT_RETRY_GAME = "1";
+    private final String INPUT_END_GAME = "2";
 
     public void initGame() {
         List<Integer> programNumbers = numberGenerator.generateNumbers();
@@ -44,10 +46,10 @@ public class GameService {
         InputView.requestInputRestart();
         String input = Console.readLine();
 
-        if(input.equals("1")) {
+        if(input.equals(INPUT_RETRY_GAME)) {
             return false;
         }
-        if(input.equals("2")) {
+        if(input.equals(INPUT_END_GAME)) {
             return true;
         }
 
