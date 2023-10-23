@@ -27,6 +27,7 @@ public class Application {
 
     public static void main(String[] args) {
         String userInput;
+        List<Integer> testResult;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumberList = getNewRandomNumberList();
@@ -34,10 +35,10 @@ public class Application {
             userInput = getInputOnGame();
             inputValidationCheck(userInput);
             userNumberList = numericString2List(userInput);
-            List<Integer> testResult = userAnswerTesting();
+            testResult = userAnswerTesting();
             printTestResult(testResult);
 
-        }while(!isUserAnswerCorrect());
+        }while(!isUserAnswerCorrect(testResult));
 
         System.out.println("게임이 종료되었습니다.");
     }
@@ -46,9 +47,9 @@ public class Application {
      * 정답을 모두 맞추었는지 확인
      * @return 사용자 입력이 정답인 경우 true
      */
-    public static boolean isUserAnswerCorrect() {
+    public static boolean isUserAnswerCorrect(List<Integer> testResult) {
         int count;
-        count = userNumberList.get(BallType.STRIKE.value);
+        count = testResult.get(BallType.STRIKE.value);
         return count == LENGTH_OF_CORRECTION_ANSWER;
     }
 
