@@ -42,6 +42,13 @@ class OutputViewTest {
             org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(RESTART_GAME_MESSAGE.getMessage());
         }
 
+        @Test
+        @DisplayName("게임 종료 문구가 출력되어야 한다")
+        public void 게임_종료_문구가_출력되어야_한다() {
+            OutputView.printEndGame();
+            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(END_GAME_MESSAGE.getMessage());
+        }
+
     }
 
 
