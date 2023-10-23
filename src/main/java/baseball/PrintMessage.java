@@ -13,8 +13,7 @@ public class PrintMessage {
      */
     public void hint(int strike, int ball, boolean nothing) {
         if (nothing == true) {
-            System.out.println("낫싱");
-            return;
+            System.out.print("낫싱");
         }
         if (ball != 0) {
             System.out.print(ball + "볼 ");
