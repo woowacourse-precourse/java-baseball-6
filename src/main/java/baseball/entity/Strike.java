@@ -11,7 +11,7 @@ public class Strike {
         this.count++;
     }
 
-    public void resetScore() {
+    public void resetCount() {
         this.count = 0;
     }
 }
