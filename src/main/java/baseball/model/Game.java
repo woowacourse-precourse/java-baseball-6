@@ -21,6 +21,7 @@ public class Game {
         List<BaseballNumber> userNumberList = userBaseballNumbers.getBaseballNumbers();
         for (int userNumberIdx = 0; userNumberIdx < BaseballNumbers.NUMBERS_LENGTH; userNumberIdx++) {
             BaseballNumber userNumber = userNumberList.get(userNumberIdx);
+
             if (isStrike(computerBaseballNumberList, userNumber, userNumberIdx)) {
                 result.strike();
             }
@@ -29,10 +30,14 @@ public class Game {
             }
         }
 
+        checkGameOver(result);
+        return result;
+    }
+
+    private void checkGameOver(JudgeResult result) {
         if (result.getStrike() == STRIKE_COUNT_PER_OUT) {
             isGameOver = true;
         }
-        return result;
     }
 
     private static boolean isBall(List<BaseballNumber> computerBasballNumberList, BaseballNumber userNumber, int userNumberIdx) {
