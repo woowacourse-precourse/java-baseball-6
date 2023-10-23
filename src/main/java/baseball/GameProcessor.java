@@ -64,7 +64,7 @@ public class GameProcessor {
     }
 
     private List<String> calculateStrikeBall(Data data) {
-        List<String> strikeBall = data.getAnswerList();
+        List<String> strikeBall = data.getAnswerCountList();
         List<String> userNumberList = generateUserNumberList(data);
         List<String> randomNumberList = generateRandomNumberList(data);
 
@@ -79,7 +79,7 @@ public class GameProcessor {
 
     public Boolean validateCompleteAnswer(Data data) {
         boolean isCompleteAnswer = false;
-        if (data.getAnswerList().get(0).equals("3")) {
+        if (data.getAnswerCountList().get(0).equals("3")) {
             isCompleteAnswer = true;
         }
         return isCompleteAnswer;
@@ -115,7 +115,7 @@ public class GameProcessor {
             answerTextBuilder.append(messageManager.getWrongMessage());
         }
 
-        data.setAnswerList(answerList);
+        data.setAnswerCountList(answerList);
         data.setIsCompleteAnswer(validateCompleteAnswer(data));
 
         answerText = answerTextBuilder.toString();

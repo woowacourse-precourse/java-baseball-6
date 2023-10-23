@@ -7,7 +7,7 @@ import java.util.List;
 public class Data {
 
     private final List<String> RANDOMNUMBERLIST = new ArrayList<>();
-    private final List<String> ANSWERLIST = Arrays.asList("0", "0");
+    private final List<String> ANSWERCOUNTLIST = Arrays.asList("0", "0");
     private final String WILLRESTARTRESPONSE = "-1";
     private final boolean ISNOERROR = true;
     private final boolean ISCOMPLETEANSWER = false;
@@ -15,14 +15,14 @@ public class Data {
     private List<String> userAnswerNumberList;
     private int randomNumber;
     private List<String> randomNumberList;
-    private List<String> answerList;
+    private List<String> answerCountList;
     private String willRestartResponse;
     private boolean isNoError;
     private boolean isCompleteAnswer;
 
     public Data() {
         this.randomNumberList = RANDOMNUMBERLIST;
-        this.answerList = ANSWERLIST;
+        this.answerCountList = ANSWERCOUNTLIST;
         this.isNoError = ISNOERROR;
         this.willRestartResponse = WILLRESTARTRESPONSE;
         this.isCompleteAnswer = ISCOMPLETEANSWER;
@@ -60,12 +60,12 @@ public class Data {
         this.randomNumberList = randomNumberList;
     }
 
-    public List<String> getAnswerList() {
-        return answerList;
+    public List<String> getAnswerCountList() {
+        return answerCountList;
     }
 
-    public void setAnswerList(List<String> answerList) {
-        this.answerList = answerList;
+    public void setAnswerCountList(List<String> answerCountList) {
+        this.answerCountList = answerCountList;
     }
 
     public String getWillRestartResponse() {
