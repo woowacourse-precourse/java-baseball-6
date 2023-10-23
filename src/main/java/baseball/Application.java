@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,26 +34,60 @@ public class Application {
             System.out.println("computer = " + computer);
             System.out.println("user = " + user);
 
-            System.out.println("countStrike(computer, user) = " + countStrike(computer, user));
-            System.out.println("countBall(computer, user) = " + countBall(computer, user));
-            
-            // TODO 게임 종료 판단 기능 추가 시 삭제
-            break;
+            Integer strikeCount = countStrike(computer, user);
+            Integer ballCount = countBall(computer, user);
+
+            // 숫자를 3개 모두 맞혔을 경우 게임 종료
+            if (strikeCount.equals(3)) {
+                printGameOverMessage();
+                if (restartOrFinish().equals(1)) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
         }
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
     }
 
     /**
+     * 게임 종료 문구를 출력한다.
+     */
+    private static void printGameOverMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    /**
+     * 게임을 재시작할 지, 종료할 지 유저의 입력을 받는다.
+     * 1. 재시작
+     * 2. 종료
+     *
+     * @return 유저의 선택(번호)
+     */
+    private static Integer restartOrFinish() {
+        Integer result;
+        while(true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            result = scanner.nextInt();
+
+            if(result.equals(1) || result.equals(2)) break;
+            System.out.print("잘못 입력하셨습니다. 다시 입력해주세요. ");
+        }
+        return result;
+    }
+
+
+    /**
      * 컴퓨터와 유저의 숫자 리스트를 비교해 볼 수를 판별하여 반환한다.
-     * 
+     *
      * @param computer 컴퓨터가 고른 숫자 리스트
-     * @param user 유저가 고른 숫자 리스트
+     * @param user     유저가 고른 숫자 리스트
      * @return 카운트한  수
      */
-    private static Integer countBall(List<Integer> computer, List<Integer> user){
+    private static Integer countBall(List<Integer> computer, List<Integer> user) {
         Integer result = 0;
         for (int i = 0; i < computer.size(); i++) {
-            if(user.contains(computer.get(i)) && user.indexOf(computer.get(i)) != i){
+            if (user.contains(computer.get(i)) && user.indexOf(computer.get(i)) != i) {
                 result++;
             }
         }
