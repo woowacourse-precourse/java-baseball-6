@@ -25,12 +25,12 @@ public class Computer {
         return new GameNumbers(answer);
     }
 
-    public Hint getHint(List<Integer> user) {
+    public Hint getHint(GameNumbers user) {
         int ball = 0;
         int strike = 0;
 
         for (int i = 0; i < GAME_NUMBER_SIZE; i++) {
-            int userNumber = user.get(i);
+            int userNumber = user.getNumberByIndex(i);
             int computerNumber = answer.get(i);
 
             if (answer.contains(userNumber) && userNumber != computerNumber) {
