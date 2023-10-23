@@ -33,10 +33,10 @@ public class GameServiceImpl implements GameService {
 
     private HintDTO judge(List<Integer> numbers, int[] inputNumbers) {
         referee.judge(numbers, inputNumbers);
-        return build();
+        return buildHint();
     }
 
-    private HintDTO build() {
+    private HintDTO buildHint() {
         HintDTO judge = referee.isNothing() ? buildNothing() : buildJudge();
         referee.clearCount();
         return judge;
@@ -47,20 +47,34 @@ public class GameServiceImpl implements GameService {
     }
 
     private HintDTO buildJudge() {
-        String ballMessage = buildBallMsg();
-        String strikeMessage = buildStrikeMsg();
-        if (strikeMessage != "") {
-            ballMessage += WHITE_SPACE;
+        StringBuffer buffer = new StringBuffer();
+        buffer = buildBallMsg(buffer);
+        buffer = buildStrikeMsg(buffer);
+        return new HintDTO(referee.isAllStrike(), buffer.toString());
+    }
+
+    private StringBuffer buildStrikeMsg(StringBuffer buffer) {
+        int strikeCount = referee.getStrike();
+
+        if (strikeCount != 0) {
+            if (!buffer.isEmpty()) {
+                buffer.append(WHITE_SPACE);
+            }
+
+            return buffer.append(strikeCount + STRIKE_STATUS_MESSAGE);
         }
-        return new HintDTO(referee.isAllStrike(), ballMessage + strikeMessage);
+
+        return buffer;
     }
 
-    private String buildStrikeMsg() {
-        return referee.getStrike() != 0 ? referee.getStrike() + STRIKE_STATUS_MESSAGE : "";
-    }
+    private StringBuffer buildBallMsg(StringBuffer buffer) {
+        int ballCount = referee.getBall();
 
-    private String buildBallMsg() {
-        return referee.getBall() != 0 ? referee.getBall() + BALL_STATUS_MESSAGE : "";
+        if (ballCount != 0) {
+            return buffer.append(ballCount + BALL_STATUS_MESSAGE);
+        }
+
+        return buffer;
     }
 
 }
