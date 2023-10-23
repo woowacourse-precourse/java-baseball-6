@@ -14,4 +14,10 @@ public class ModuleTest {
         Assertions.assertEquals(computerNumber.size(), 3);
     }
 
+    @Test
+    void 입력값_길이_확인() {
+        UserNumber userNumber = new UserNumber();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.TestFunction("1234"));
+    }
+
 }

@@ -12,7 +12,17 @@ public class UserNumber {
         return userNumber;
     }
 
-    public String getReadLine() {
+    private String getReadLine() {
         return Console.readLine();
+    }
+
+    private void checkLength(String word) {
+        if (word.length() != 3) {
+            throw new IllegalArgumentException("입력한 수가 3자리가 아닙니다.");
+        }
+    }
+
+    public void TestFunction(String word) {
+        checkLength(word);
     }
 }
