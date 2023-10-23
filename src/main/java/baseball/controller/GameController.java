@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Balls;
 import baseball.model.PlayResult;
+import baseball.model.RestartOption;
 import baseball.util.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -29,5 +30,13 @@ public class GameController {
             result = com.play(user);
             outputView.printResult(result);
         }
+        end();
+    }
+
+    private void end() {
+        outputView.printGameClear();
+        RestartOption option = inputView.readRestartCommand();
+
+        if (option.isRestart()) start();
     }
 }

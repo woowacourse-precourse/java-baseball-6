@@ -21,4 +21,8 @@ public enum RestartOption {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT));
     }
+
+    public boolean isRestart() {
+        return this == RESTART;
+    }
 }
