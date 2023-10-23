@@ -33,4 +33,12 @@ class NumberBaseballGameOutputViewTest {
         outputView.printStartGameMessage(gameName);
         assertEquals(gameName + START_GAME_MESSAGE + "\r\n", outContent.toString());
     }
+
+    @Test
+    void 숫자_입력을_요청하는_메시지가_올바르게_출력되는지_테스트() {
+        NumberBaseballGameOutputView outputView = new NumberBaseballGameOutputView();
+        String printMessage = "숫자를 입력해주세요.";
+        outputView.printNumberInputRequest();
+        assertEquals(printMessage + "\r\n", outContent.toString());
+    }
 }
