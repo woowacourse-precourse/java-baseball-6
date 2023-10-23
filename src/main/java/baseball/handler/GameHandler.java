@@ -8,15 +8,24 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameHandler {
-    private final UserInputHandler userInputHandler = new UserInputHandler();
-    private final ComputerNumberGenerator gameSession = new ComputerNumberGenerator();
-    private final OutputView outputView = new OutputView();
-    private final ResultGenerator resultGenerator = new ResultGenerator();
-    private final InputValidator inputValidator = new InputValidator();
+    private final UserInputHandler userInputHandler;
+    private final ComputerNumberGenerator computerNumberGenerator;
+    private final OutputView outputView;
+    private final ResultGenerator resultGenerator;
+    private final InputValidator inputValidator;
     private List<Integer> computerNumbers;
 
+    public GameHandler(UserInputHandler userInputHandler, ComputerNumberGenerator computerNumberGenerator,
+                       OutputView outputView, ResultGenerator resultGenerator,InputValidator inputValidator) {
+        this.userInputHandler = userInputHandler;
+        this.computerNumberGenerator = computerNumberGenerator;
+        this.outputView = outputView;
+        this.resultGenerator = resultGenerator;
+        this.inputValidator = inputValidator;
+    }
+
     public void initializeGameSession(){
-        computerNumbers = gameSession.makeUniqueNumbers();
+        computerNumbers = computerNumberGenerator.makeUniqueNumbers();
         outputView.printStartMessage();
     }
 
