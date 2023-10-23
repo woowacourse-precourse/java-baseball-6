@@ -23,7 +23,7 @@ public class GameService {
         int ballCount = getBallAndStrikeCountList(computerNumber, inputNumber).get(0);
         int strikeCount = getBallAndStrikeCountList(computerNumber, inputNumber).get(1);
 
-        return mappingHintMessage(ballCount, strikeCount);
+        return Message.mappingHintMessage(ballCount, strikeCount);
     }
 
     private List<Integer> getBallAndStrikeCountList(List<Integer> computerNumber, List<Integer> inputNumber) {
@@ -57,38 +57,4 @@ public class GameService {
         return 0;
     }
 
-    private Message mappingHintMessage(int ballCount, int strikeCount) {
-        if (ballCount == 1 && strikeCount == 0) {
-            return Message.ONE_BALL;
-        }
-        if (ballCount == 1 && strikeCount == 1) {
-            return Message.ONE_BALL_ONE_STRIKE;
-        }
-        if (ballCount == 1 && strikeCount == 2) {
-            return Message.ONE_BALL_TWO_STRIKE;
-        }
-        if (ballCount == 2 && strikeCount == 0) {
-            return Message.TWO_BALL;
-        }
-        if (ballCount == 2 && strikeCount == 1) {
-            return Message.TWO_BALL_ONE_STRIKE;
-        }
-        if (ballCount == 3 && strikeCount == 0) {
-            return Message.THREE_BALL;
-        }
-        if (ballCount == 0 && strikeCount == 1) {
-            return Message.ONE_STRIKE;
-        }
-        if (ballCount == 0 && strikeCount == 2) {
-            return Message.TWO_STRIKE;
-        }
-        if (ballCount == 0 && strikeCount == 3) {
-            return Message.THREE_STRIKE;
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            return Message.NOTHING;
-        }
-
-        throw new IllegalArgumentException("힌트 메시지에 오류가 발생하였습니다.");
-    }
 }
