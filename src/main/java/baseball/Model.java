@@ -12,7 +12,7 @@ public class Model{
     private static final String BALL_SENTENCE = "볼 ";
     private static final String STRIKE_SENTENCE = "스트라이크 ";
     private static final String NOTING_SENTENCE = "낫싱 ";
-    private static final String ANSWER_SENTENCE = "3개의 숫자를 모두 맞히셨습니다 ! 게임 종료";
+
     private static final String ERR_SENTENCE = "유효하지 않은 숫자입니다.";
     View view = new View();
     public List<Integer> initComputerNum(){
@@ -100,9 +100,6 @@ public class Model{
     }
     public String initHint(int ball, int strike){
         String message = "";
-        if (strike == NUM_SIZE){
-            return ANSWER_SENTENCE;
-        }
         if (ball != 0){
             if (strike != 0){
                 message = ball + BALL_SENTENCE + strike + STRIKE_SENTENCE;
