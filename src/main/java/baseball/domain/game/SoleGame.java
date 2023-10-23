@@ -32,7 +32,8 @@ public abstract class SoleGame extends BasicGame {
 	@Override
 	protected void execute() {
 		while (true) {
-			getViewer().print(GuideMessage.INPUT_NUMBER);
+			Viewer viewer = getViewer();
+			viewer.print(GuideMessage.INPUT_NUMBER);
 			Balls balls = getBalls();
 
 			Results results = play(balls);
@@ -40,7 +41,7 @@ public abstract class SoleGame extends BasicGame {
 			StrikeCount strikeCount = results.getStrikeCount();
 			BallCount ballCount = results.getBallCount();
 
-			getViewer().print(strikeCount, ballCount);
+			viewer.print(strikeCount, ballCount);
 
 			if (strikeCount.isThreeStrike()) {
 				break;
