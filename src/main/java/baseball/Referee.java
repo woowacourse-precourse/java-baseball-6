@@ -19,6 +19,7 @@ public class Referee {
   public void announceGameStart() {
     System.out.println("숫자 야구 게임을 시작합니다.");
   }
+
   private void announceGameFinish() {
     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
   }
@@ -34,17 +35,23 @@ public class Referee {
       System.out.println(strike + "스트라이크");
     }
   }
+
+  private void announceStrikeAndBall(int strike, int ball) {
+    System.out.println(ball + "볼 " + strike + "스트라이크");
+  }
+
   public void inputGameNumbersMessage() {
     System.out.print("숫자를 입력해주세요 : ");
+  }
+
+  public void announceGameRestart() {
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
   }
 
   public void setGivenNumbers(List<Integer> givenNumbers) {
     numbers = givenNumbers;
   }
 
-  private void announceStrikeAndBall(int strike, int ball) {
-    System.out.println(ball + "볼 " + strike + "스트라이크");
-  }
   public int determine(Player player) {
 
     ball = 0;
