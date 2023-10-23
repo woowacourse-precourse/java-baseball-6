@@ -34,6 +34,7 @@ public class Game {
         }
     }
 
+    //사용자의 숫자를 기준으로 판단
     void isStrikeOrBall() {
         computerNum = computer.getComputerNum();
         userNum = user.getUserNum();
@@ -41,7 +42,7 @@ public class Game {
         ball = 0;
         String userNumString = Integer.toString(userNum);
         for (int i = 0; i < computerNum.size(); i++) {
-            int userDigit = Integer.parseInt(userNumString.charAt(i) + ""); // 문자를 정수로 변환
+            int userDigit = Integer.parseInt(userNumString.charAt(i) + "");
             if (computerNum.contains(userDigit)) {
                 if (computerNum.get(i) == userDigit) {
                     strike++;
@@ -60,7 +61,7 @@ public class Game {
             isPlaying = false;
             System.out.println(strike + STRING_STRIKE);
             System.out.println(STRING_GAME_CLEAR);
-            newGameOrExit();
+            gameRestart();
         } else if (strike == 0) {
             System.out.println(ball + STRING_BALL);
         } else if (ball == 0) {
@@ -70,7 +71,7 @@ public class Game {
         }
     }
 
-    void newGameOrExit() {
+    void gameRestart() {
         System.out.println(STRING_GAME_RESTART);
         String input = Console.readLine();
         if (input.equals(INPUT_RESTART_NUMBER)) {

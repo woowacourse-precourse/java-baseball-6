@@ -4,11 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     public static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
-
     public static final String EXCEPTION_MESSAGE = "잘못된 입력값입니다.";
-
     private Integer userNum;
-
     private String REGEXP_USER_NUM = "^[1-9]{3}$";
 
     public void setUserNum() {
@@ -23,10 +20,13 @@ public class User {
     }
 
     public void checkUserNum(String input) {
-        boolean isSameDigit1 = input.charAt(0) != input.charAt(1);
-        boolean isSameDigit2 = input.charAt(0) != input.charAt(2);
-        boolean isSameDigit3 = input.charAt(1) != input.charAt(2);
-        if (input.matches(REGEXP_USER_NUM) && isSameDigit1 && isSameDigit2 && isSameDigit3) {
+        boolean isDifferentDigit1 = input.charAt(0) != input.charAt(1);
+        boolean isDifferentDigit2 = input.charAt(0) != input.charAt(2);
+        boolean isDifferentDigit3 = input.charAt(1) != input.charAt(2);
+        if (input.matches(REGEXP_USER_NUM)
+                && isDifferentDigit1
+                && isDifferentDigit2
+                && isDifferentDigit3) {
             userNum = Integer.parseInt(input);
         } else {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
