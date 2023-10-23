@@ -18,8 +18,7 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-
-        secretNumbers = computer;
+        setSecretNumbers(computer);
         return secretNumbers;
 
 

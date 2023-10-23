@@ -6,7 +6,5 @@ public class Application {
         System.out.println("실행 시작");
         GameController gameController = new GameController();
         gameController.run();
-
-
     }
 }

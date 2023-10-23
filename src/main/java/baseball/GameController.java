@@ -1,5 +1,12 @@
 package baseball;
 
+import static baseball.GameConstants.COUNT;
+import static baseball.GameConstants.ENDGAME_MSG;
+import static baseball.GameConstants.END_INCLUSIVE;
+import static baseball.GameConstants.INPUT_MSG;
+import static baseball.GameConstants.START_INCLUSIVE;
+import static baseball.GameConstants.START_MSG;
+
 import baseball.domain.Computer;
 import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Console;
@@ -8,16 +15,8 @@ import java.util.List;
 
 public class GameController {
 
-    private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
-    private static final String INPUT_MSG = "숫자를 입력해주세요 : ";
-    private static final String ENDGAME_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
-    private static final int START_INCLUSIVE = 1;
-    private static final int END_INCLUSIVE = 9;
-    private static final int COUNT = 3;
-
     private Computer computer;
     Boolean isWin = false;
-    int targetCount = 3;
     final int REPLAY = 1;
 
     public GameController() {
@@ -35,16 +34,14 @@ public class GameController {
         List<Integer> randomNumbers = computer.generateRandomNumbers(START_INCLUSIVE, END_INCLUSIVE, COUNT);
         //List<Integer> randomNumbers = pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT);
         System.out.println("randomNumbers !!!!!!!!!!!!!!!!!!!!!!!= " + randomNumbers);
-        computer.setSecretNumbers(randomNumbers);
+        //computer.setSecretNumbers(randomNumbers);
         System.out.println("###randomNumbers = " + randomNumbers);
         // user input 받기
 
         do {
             String userInput = readUserInput(INPUT_MSG);
-            //System.out.println("###userInput = " + userInput);
+            System.out.println(userInput);
             List<Integer> userInputNumbers = parseStringNumbers(userInput);
-
-            System.out.println(userInputNumbers);
 
             if (userInputNumbers.size() != COUNT) {
                 throw new IllegalArgumentException();
@@ -55,8 +52,6 @@ public class GameController {
             if (game.isWin()) {
                 isWin = true;
             }
-
-//            System.out.println("game.isWin() = " + game.isWin());
             System.out.println(game.getResultString());
 
         } while (isWin == false);
