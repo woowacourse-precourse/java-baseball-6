@@ -1,17 +1,20 @@
 package baseball;
 
-import baseball.dto.Score;
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static baseball.enums.GameOverSignal.FINISH;
-import static baseball.enums.Message.*;
+import static baseball.enums.Message.END_MESSAGE;
+import static baseball.enums.Message.GAME_END_PROMPT;
+import static baseball.enums.Message.INPUT_NUMBER_PROMPT;
+import static baseball.enums.Message.NOTHING;
+import static baseball.enums.Message.START_MESSAGE;
 import static baseball.util.PrintUtils.printMessage;
 import static baseball.util.PrintUtils.println;
 import static baseball.util.ValidationUtils.validateInput;
+
+import baseball.dto.Score;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     private static boolean isGameToBeContinued = true;

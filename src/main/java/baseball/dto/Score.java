@@ -16,26 +16,6 @@ public class Score {
         return new ScoreBuilder();
     }
 
-    public static class ScoreBuilder {
-        private int ballCount;
-
-        private int strikeCount;
-
-        public ScoreBuilder ballCount(int ballCount) {
-            this.ballCount = ballCount;
-            return this;
-        }
-
-        public ScoreBuilder strikeCount(int strikeCount) {
-            this.strikeCount = strikeCount;
-            return this;
-        }
-
-        public Score build() {
-            return new Score(this);
-        }
-    }
-
     public int getBallCount() {
         return ballCount;
     }
@@ -70,5 +50,25 @@ public class Score {
 
     public boolean isNothing() {
         return this.getStrikeCount() + this.getBallCount() == 0;
+    }
+
+    public static class ScoreBuilder {
+        private int ballCount;
+
+        private int strikeCount;
+
+        public ScoreBuilder ballCount(int ballCount) {
+            this.ballCount = ballCount;
+            return this;
+        }
+
+        public ScoreBuilder strikeCount(int strikeCount) {
+            this.strikeCount = strikeCount;
+            return this;
+        }
+
+        public Score build() {
+            return new Score(this);
+        }
     }
 }

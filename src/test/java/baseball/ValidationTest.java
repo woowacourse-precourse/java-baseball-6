@@ -1,14 +1,20 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import camp.nextstep.edu.missionutils.Console;
+import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 public class ValidationTest {
+    private static void command(String... args) {
+        System.setIn(
+                new ByteArrayInputStream(
+                        String.join("\n", args).getBytes()
+                ));
+    }
+
     @Test
     void throwExceptionIfInputIsAlphabet() {
         String alphabetInput = "abc";
@@ -35,13 +41,6 @@ public class ValidationTest {
         final String longNumbers = "23553";
         command(longNumbers);
         assertThatThrownBy(() -> Application.main(new String[]{})).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    private static void command(String... args) {
-        System.setIn(
-                new ByteArrayInputStream(
-                        String.join("\n", args).getBytes()
-                ));
     }
 
     @AfterEach
