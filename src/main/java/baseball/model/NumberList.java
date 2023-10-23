@@ -35,8 +35,7 @@ public class NumberList {
     }
 
     private void validateIsInRange(List<Integer> numberList) {
-        for (int i = 0; i < numberList.size(); i++) {
-            int number = numberList.get(i);
+        for (int number : numberList) {
             Validator.validateInRange(number, 1, 9);
         }
     }
