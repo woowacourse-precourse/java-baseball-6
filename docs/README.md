@@ -1,3 +1,21 @@
+https://www.youtube.com/watch?v=ogaXW6KPc8I
+
+자바 사용 경험과 더불어, 코드 컨벤션, 클린 코딩 등 많은 것이 부족한 나였다.
+그래서 많은 서칭을 하다보니, 위의 우테코 관련 영상을 보게 되었고, 이에 따라 코드를 짜도록 함.
+
+model은 controller 와 view에 의존하지 않아야 한다.
+model 내부에 controller와 view에 관련된 코드가 있으면 안된다.
+
+view는 model에만 의존해야하고 controller에는 의존하면 안된다.
+view 내부에 model의 코드만 있을 수 있고, controller의 코드가 있으면 안된다.
+
+view가 model로부터 데이터를 받을 때는 사용자마다 다르게 보여주어야 하는 데이터에서만 받아야한다.
+
+controller는 model과 view에 의존해도 된다.
+controller 내부에는 model과 view의 코드가 있을 수 있다.
+
+view가 model로부터 데이터를 받을 때, 반드시 controller에서 받아야 한다.
+
 구현할 기능 목록
 
 컴퓨터
@@ -24,4 +42,3 @@ if 사용자가 입력한 숫자 == 컴퓨터가 생성한 숫자
 
 코드 컨벤션에 익숙치 않은 나로서는 처음부터 이를 지키면서 코딩을 하는것보다,
 일단 기능을 다 구현하고, 이를 분리하면서 수정하는게 더 나을 것 같다고 판단.
-
