@@ -1,5 +1,5 @@
 package baseball.domain;
-import java.util.*;
+import java.util.List;
 public class CompareNumbers {
     private List<Integer> computer;
     private List<Integer> player;

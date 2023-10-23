@@ -14,6 +14,7 @@ public class BaseballController {
         List<Integer> computer = Computer.createRandomNumbers();
         CompareNumbers compare;
         do{
+            OutputView.playerInputPrint();
             List<Integer> player = InputView.inputPlayerNumbers();
             compare = new CompareNumbers(computer, player);
             result = compare.generateResult();

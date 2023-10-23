@@ -1,6 +1,8 @@
 package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Computer {
     private static final int RANDOM_MIX_NUMBER = 1;
@@ -11,8 +13,7 @@ public class Computer {
         randomNumbers = new ArrayList<>();
         while(randomNumbers.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(RANDOM_MIX_NUMBER, RANDOM_MAX_NUMBER);
-            if(!randomNumbers.contains(randomNumber))
-                randomNumbers.add(randomNumber);
+            if(!randomNumbers.contains(randomNumber)) randomNumbers.add(randomNumber);
         }
         return randomNumbers;
     }

@@ -1,14 +1,13 @@
 package baseball.view;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.exception.InputException.*;
 
 public class InputView {
 
     public static List<Integer> inputPlayerNumbers(){
-
-        OutputView.playerInputPrint();
         String input = Console.readLine();
 
         notNumericException(input);
@@ -26,14 +25,11 @@ public class InputView {
     }
     public static boolean inputRestartDecision(){
         String input = Console.readLine();
+
         notNumericException(input);
         gameDecisionException(input);
 
-        if(input.equals("1")) return true;
-        if(input.equals("2")) {
-            OutputView.gameOverPrint();
-            return false;
-        }
+        if(input.equals("1")) { return true; }
         return false;
     }
 }
