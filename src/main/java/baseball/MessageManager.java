@@ -18,7 +18,7 @@ public class MessageManager extends Messages {
     }
 
     public void showAnswer(Data data, GameProcessor gameProcessor, MessageManager messageManager) {
-        System.out.println(gameProcessor.generateAnswerText(data, messageManager));
+        System.out.println(gameProcessor.generateResultText(data, messageManager));
     }
 
     public String getUserContinueResponse() {

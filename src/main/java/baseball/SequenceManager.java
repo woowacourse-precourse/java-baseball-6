@@ -14,7 +14,7 @@ public class SequenceManager {
 
     public void proceedMainGame() {
         while (!data.getIsCompleteAnswer() && data.getIsNoError()) {
-            data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
+            data.setUserNumber(messageManager.getUserAnswerNumber());
 
             if (gameProcessor.illegalArgumentException(data)) {
                 data.setIsNoError(false);

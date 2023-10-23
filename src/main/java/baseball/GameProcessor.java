@@ -26,31 +26,31 @@ public class GameProcessor {
 
     private List<String> generateUserNumberList(Data data) {
         List<String> userNumberList = new ArrayList<>();
-        String userNumberString = data.getUserAnswerNumber();
+        String userNumberString = data.getUserNumber();
 
         for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
             char digitChar = userNumberString.charAt(i);
             userNumberList.add(String.valueOf(digitChar));
         }
+        data.setUserNumberList(userNumberList);
         return userNumberList;
     }
 
-    private String calculateBall(List<String> userNumberList,
+    private int calculateBall(List<String> userNumberList,
             List<String> randomNumberList) {
         int ball = 0;
 
         for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
             for (int j = 0; j < DIGIT_LENGTH_LIMIT; j++) {
-                if (userNumberList.get(i).equals(randomNumberList.get(j))) {
+                if (userNumberList.get(i).equals(randomNumberList.get(j)) && i != j) {
                     ball++;
-                    break;
                 }
             }
         }
-        return String.valueOf(ball);
+        return ball;
     }
 
-    private String calculateStrike(List<String> userNumberList,
+    private int calculateStrike(List<String> userNumberList,
             List<String> randomNumberList) {
         int strike = 0;
 
@@ -59,76 +59,68 @@ public class GameProcessor {
                 strike++;
             }
         }
-        return String.valueOf(strike);
+        return strike;
     }
 
-    private List<String> calculateStrikeBall(Data data) {
-        List<String> strikeBall = data.getAnswerCountList();
+    private List<Integer> ballStrikeList(Data data) {
+        List<Integer> ballStrike = data.getResultList();
         List<String> userNumberList = generateUserNumberList(data);
         List<String> randomNumberList = generateRandomNumberList(data);
 
-        String strike = calculateStrike(userNumberList, randomNumberList);
-        String ball = calculateBall(userNumberList, randomNumberList);
+        int ball = calculateBall(userNumberList, randomNumberList);
+        int strike = calculateStrike(userNumberList, randomNumberList);
 
-        strikeBall.set(0, strike);
-        strikeBall.set(1, ball);
+        ballStrike.set(0, ball);
+        ballStrike.set(1, strike);
 
-        return strikeBall;
+        return ballStrike;
     }
 
     public Boolean validateCompleteAnswer(Data data) {
         boolean isCompleteAnswer = false;
-        if (data.getAnswerCountList().get(0).equals(String.valueOf(DIGIT_LENGTH_LIMIT))) {
+        if (data.getResultList().get(1) == DIGIT_LENGTH_LIMIT) {
             isCompleteAnswer = true;
         }
         return isCompleteAnswer;
     }
 
-    public String generateAnswerText(Data data, MessageManager messageManager) {
-        String answerText;
-        StringBuilder answerTextBuilder = new StringBuilder();
-        List<String> answerList = calculateStrikeBall(data);
+    public String generateResultText(Data data, MessageManager messageManager) {
+        String resultText;
+        StringBuilder resultTextBuilder = new StringBuilder();
+        List<Integer> resultList = ballStrikeList(data);
 
-        if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) > 0) {
-            if (Integer.parseInt(answerList.get(0)) != 3
-                    && (Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0)))
-                    > 0) {
-                answerTextBuilder.append(String.valueOf(
-                        Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
-                answerTextBuilder.append(messageManager.getSameNumberMessage());
-                answerTextBuilder.append(" ");
-            }
-            answerTextBuilder.append(answerList.get(0));
-            answerTextBuilder.append(messageManager.getSameDigitMessage());
-        }
-        if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) == 0) {
-            answerTextBuilder.append(answerList.get(0));
-            answerTextBuilder.append(messageManager.getSameDigitMessage());
-        }
-        if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) > 0) {
-            answerTextBuilder.append(String.valueOf(
-                    Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
-            answerTextBuilder.append(messageManager.getSameNumberMessage());
-        }
-        if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) == 0) {
-            answerTextBuilder.append(messageManager.getWrongMessage());
-        }
-
-        data.setAnswerCountList(answerList);
+        data.setResultList(resultList);
         data.setIsCompleteAnswer(validateCompleteAnswer(data));
 
-        answerText = answerTextBuilder.toString();
+        if (resultList.get(0) > 0 && resultList.get(1) > 0) {
+            resultTextBuilder.append(resultList.get(0));
+            resultTextBuilder.append(messageManager.getSameNumberMessage());
+            resultTextBuilder.append(" ");
+            resultTextBuilder.append(resultList.get(1));
+            resultTextBuilder.append(messageManager.getSameDigitMessage());
+        }
+        if (resultList.get(0) > 0 && resultList.get(1) == 0) {
+            resultTextBuilder.append(resultList.get(0));
+            resultTextBuilder.append(messageManager.getSameNumberMessage());
+        }
+        if (resultList.get(0) == 0 && resultList.get(1) > 0) {
+            resultTextBuilder.append(resultList.get(1));
+            resultTextBuilder.append(messageManager.getSameDigitMessage());
+        }
+        if (resultList.get(0) == 0 && resultList.get(1) == 0) {
+            resultTextBuilder.append(messageManager.getWrongMessage());
+        }
 
-        return answerText;
+        resultText = resultTextBuilder.toString();
+
+        return resultText;
     }
 
     public boolean illegalArgumentException(Data data) {
         boolean error = false;
-        if ((data.getUserAnswerNumber().length()) != 3) {
+        if ((data.getUserNumber().length()) != DIGIT_LENGTH_LIMIT) {
             error = true;
         }
         return error;
     }
-
-
 }

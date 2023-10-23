@@ -7,41 +7,41 @@ import java.util.List;
 public class Data {
 
     private final List<String> RANDOMNUMBERLIST = new ArrayList<>();
-    private final List<String> ANSWERCOUNTLIST = Arrays.asList("0", "0");
+    private final List<Integer> RESULTLIST = Arrays.asList(0, 0);
     private final String WILLRESTARTRESPONSE = "-1";
     private final boolean ISNOERROR = true;
     private final boolean ISCOMPLETEANSWER = false;
-    private String userAnswerNumber;
-    private List<String> userAnswerNumberList;
+    private String userNumber;
+    private List<String> userNumberList;
     private int randomNumber;
     private List<String> randomNumberList;
-    private List<String> answerCountList;
+    private List<Integer> resultList;
     private String willRestartResponse;
     private boolean isNoError;
     private boolean isCompleteAnswer;
 
     public Data() {
         this.randomNumberList = RANDOMNUMBERLIST;
-        this.answerCountList = ANSWERCOUNTLIST;
+        this.resultList = RESULTLIST;
         this.isNoError = ISNOERROR;
         this.willRestartResponse = WILLRESTARTRESPONSE;
         this.isCompleteAnswer = ISCOMPLETEANSWER;
     }
 
-    public String getUserAnswerNumber() {
-        return userAnswerNumber;
+    public String getUserNumber() {
+        return userNumber;
     }
 
-    public void setUserAnswerNumber(String userAnswerNumber) {
-        this.userAnswerNumber = userAnswerNumber;
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
     }
 
-    public List<String> getUserAnswerNumberList() {
-        return userAnswerNumberList;
+    public List<String> getUserNumberList() {
+        return userNumberList;
     }
 
-    public void setUserAnswerNumberList(List<String> userAnswerNumberList) {
-        this.userAnswerNumberList = userAnswerNumberList;
+    public void setUserNumberList(List<String> userNumberList) {
+        this.userNumberList = userNumberList;
     }
 
     public int getRandomNumber() {
@@ -60,12 +60,12 @@ public class Data {
         this.randomNumberList = randomNumberList;
     }
 
-    public List<String> getAnswerCountList() {
-        return answerCountList;
+    public List<Integer> getResultList() {
+        return resultList;
     }
 
-    public void setAnswerCountList(List<String> answerCountList) {
-        this.answerCountList = answerCountList;
+    public void setResultList(List<Integer> resultList) {
+        this.resultList = resultList;
     }
 
     public String getWillRestartResponse() {
