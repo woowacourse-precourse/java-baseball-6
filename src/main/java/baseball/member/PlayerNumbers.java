@@ -5,6 +5,7 @@ import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlayerNumbers {
     private final List<Integer> playerNumbers;
@@ -30,18 +31,13 @@ public class PlayerNumbers {
 
     private void checkValidValue(String inputValue) {
         if(!(isNumeric(inputValue) && isZeroNotIncluded(inputValue)
-        && isValidDigit(inputValue) && isNumbersNotDuplicate(inputValue))) {
+        && isValidDigit(inputValue) && isNotDuplicate(inputValue))) {
             throw new IllegalArgumentException("유효하지 않은 입력 형식입니다.");
         }
     }
 
     private boolean isNumeric(String inputValue) {
-        try {
-            Integer.parseInt(inputValue);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        return inputValue.chars().allMatch(Character::isDigit);
     }
 
     private boolean isZeroNotIncluded(String inputValue) {
@@ -52,24 +48,16 @@ public class PlayerNumbers {
         return inputValue.length() == BaseballGameController.GAME_NUMBER_DIGIT;
     }
 
-    private boolean isNumbersNotDuplicate(String inputValue) {
-        StringBuilder stringForCheckingDuplicate = new StringBuilder();
-        for (char number : inputValue.toCharArray()) {
-            if(stringForCheckingDuplicate.toString().contains(String.valueOf(number))) {
-                return false;
-            }
-            stringForCheckingDuplicate.append(number);
-        }
-        return true;
+    private boolean isNotDuplicate(String inputValue) {
+        return inputValue.chars()
+                .distinct()
+                .count() == inputValue.length();
     }
 
     private List<Integer> convertStringToIntegerList(String inputValue) {
-        List<Integer> numbers = new ArrayList<>();
-        for (int numbersIndex = 0; numbersIndex < inputValue.length(); numbersIndex++) {
-            char digitChar = inputValue.charAt(numbersIndex);
-            int digitNumber = Character.getNumericValue(digitChar);
-            numbers.add(digitNumber);
-        }
-        return numbers;
+        return inputValue.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
