@@ -1,9 +1,9 @@
 package baseball;
 
 import baseball.controller.NumberBaseBallGame;
-import baseball.strategy.ForbidDuplicationPolicy;
-import baseball.strategy.RandomNumberGeneratePolicy;
-import baseball.strategy.ThreeDigitPolicy;
+import baseball.policy.ForbidDuplicationPolicy;
+import baseball.policy.RandomNumberGeneratePolicy;
+import baseball.policy.ThreeDigitPolicy;
 import baseball.view.MissionUtilsInputView;
 import baseball.view.PrintStreamOutputView;
 

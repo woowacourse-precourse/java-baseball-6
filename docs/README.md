@@ -82,7 +82,7 @@
   - (행위) 사용자가 입력한 값이 유효한 값인지 검증해야 한다.
 
 
-**Strategy**
+**Policy**
  - NumberGeneratorPolicy (숫자 생성 정책)
    - 1~9 범위의 수를 생성하는 정책을 가진다.
  - DuplicateAllowancePolicy (중복 허용 정책)

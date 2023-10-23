@@ -1,4 +1,4 @@
-package baseball.strategy;
+package baseball.policy;
 
 public class ThreeDigitPolicy implements DigitPolicy {
 

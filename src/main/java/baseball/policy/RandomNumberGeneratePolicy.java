@@ -1,4 +1,4 @@
-package baseball.strategy;
+package baseball.policy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

@@ -1,8 +1,8 @@
 package baseball.domain;
 
-import baseball.strategy.DuplicateAllowancePolicy;
-import baseball.strategy.DigitPolicy;
-import baseball.strategy.NumberGeneratePolicy;
+import baseball.policy.DuplicateAllowancePolicy;
+import baseball.policy.DigitPolicy;
+import baseball.policy.NumberGeneratePolicy;
 
 public class Rule {
 
