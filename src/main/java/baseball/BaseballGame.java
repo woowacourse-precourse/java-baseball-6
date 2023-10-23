@@ -217,7 +217,6 @@ class BaseModel {
             if (first == second) {
                 strike++;
             }
-
         }
         return new int[]{(6 - temp.size() - strike), strike};
     }
