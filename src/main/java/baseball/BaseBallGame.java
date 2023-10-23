@@ -40,6 +40,7 @@ public class BaseBallGame {
             IsZero();
             IsStrike();
             IsBall();
+            Result();
         }
         StopGamePrint();
     }
@@ -141,5 +142,18 @@ public class BaseBallGame {
     //낫싱 출력 함수
     public void NothingPrint(){
         System.out.println("낫싱");
+    }
+    //비교 결과 출력 함수
+    public void Result(){
+        if(ball==0 && strike==0){
+            NothingPrint();
+        }
+        else if(ball !=0 && strike != 0){
+            BallAndStrikePrint();
+        }else if(ball !=0 ){
+            BallPrint();
+        }else{
+            StrikePrint();
+        }
     }
 }
