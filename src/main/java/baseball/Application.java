@@ -1,9 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,6 +16,23 @@ public class Application {
                 if (!computerNumbers.contains(randomNumber)) {
                     computerNumbers.add(randomNumber);
                 }
+            }
+
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+
+                String inputNumber = Console.readLine();
+                if (!inputNumber.matches("^[123456789]{3}$")) {
+                    throw new IllegalArgumentException("올바르지 않은 입력값 입니다.");
+                }
+                List<Integer> toList = Arrays.stream(inputNumber.split(""))
+                        .map(Integer::parseInt)
+                        .toList();
+                HashSet<Integer> set = new HashSet<>(toList);
+                if (set.size() != 3) {
+                    throw new IllegalArgumentException("올바르지 않은 입력값 입니다.");
+                }
+
             }
         }
     }
