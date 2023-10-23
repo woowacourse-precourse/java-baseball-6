@@ -23,7 +23,7 @@ public class Config {
     }
 
     public static boolean isInvalidRange(int input) {
-        return input < getStartInclusive() || input > Config.getEndInclusive();
+        return input < getStartInclusive() || input > getEndInclusive();
     }
 
     public static int getEndInclusive() {
