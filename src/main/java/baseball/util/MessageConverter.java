@@ -13,6 +13,7 @@ public class MessageConverter {
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
     private static final int NUMBER_SIZE = 3;
+    private static final int DEFAULT_NUMBER = 0;
 
     private static Map<String, Integer> resultMessageMap;
 
@@ -22,8 +23,8 @@ public class MessageConverter {
     private static void initializeResultMessage() {
         resultMessageMap = new ConcurrentHashMap<>() {
             {
-                put(STRIKE, 0);
-                put(BALL, 0);
+                put(STRIKE, DEFAULT_NUMBER);
+                put(BALL, DEFAULT_NUMBER);
             }
         };
     }
@@ -59,4 +60,27 @@ public class MessageConverter {
         }
     }
 
+    /*
+     * 스트라이크 볼 개수를 map에서 String으로 변환하는 메서드
+     * @Param resultMessageMap 플레이어와 컴퓨터의 숫자를 비교한 map 결과값
+     * */
+    public static String getResultMessageToString(Map<String, Integer> resultMessageMap) {
+        Integer ballInt = resultMessageMap.get(BALL);
+        Integer strikeInt = resultMessageMap.get(STRIKE);
+        StringBuilder resultBuilder = new StringBuilder();
+
+        if (ballInt == DEFAULT_NUMBER && strikeInt == DEFAULT_NUMBER) {
+            return NOTHING;
+        }
+
+        if (ballInt > DEFAULT_NUMBER) {
+            resultBuilder.append(ballInt).append(BALL).append(" ");
+        }
+
+        if (strikeInt > DEFAULT_NUMBER) {
+            resultBuilder.append(strikeInt).append(STRIKE);
+        }
+
+        return resultBuilder.toString().trim();
+    }
 }
