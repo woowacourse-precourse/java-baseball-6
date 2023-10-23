@@ -18,4 +18,9 @@ public class User {
 
         return userThreeDigitNumber;
     }
+
+    public int getNumberForPlayAgain(){
+        int number = Integer.parseInt(Console.readLine());
+        return number;
+    }
 }
