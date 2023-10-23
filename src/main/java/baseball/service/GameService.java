@@ -18,6 +18,10 @@ public class GameService {
     }
 
     public GameResult checkResult(List<Integer> numbers, List<Integer> computerNumbers) {
+        if (numbers.size() != 3){
+            throw new IllegalArgumentException();
+        }
+
         int strike = 0;
         int ball = 0;
 
