@@ -1,9 +1,6 @@
 package baseball;
 
-import baseball.util.Utility;
-import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;

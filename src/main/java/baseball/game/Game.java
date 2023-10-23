@@ -19,32 +19,41 @@ public class Game {
         String restartOrExitNumber = "1";
 
         while (restartOrExitNumber.equals("1")) {
-
-            this.strike = 0;
-            this.ball = 0;
-            this.computer = Utility.assignComputerRandomNumber();
-//            System.out.println("computer: " + this.computer);
-
-            while (this.strike != 3) {
-                Print.showPredictUserInput();
-
-                List<Integer> predictNumbers = Utility.input();
-                checkPredictNumber(predictNumbers);
-
-                Print.showPredictResult(this.strike, this.ball);
-            }
-
-            Print.showGameOver();
-
-            do {
-                Print.showRestartOrExitInput();
-                restartOrExitNumber = readLine();
-            }
-            while (!Validation.checkRestartOrExitNumber(restartOrExitNumber));
-
+            initGame();
+            playGame();
+            restartOrExitNumber = gameOver();
         }
 
         Console.close();
+    }
+
+    private static String gameOver() {
+        String restartOrExitNumber;
+        Print.showGameOver();
+
+        do {
+            Print.showRestartOrExitInput();
+            restartOrExitNumber = readLine();
+        }
+        while (!Validation.checkRestartOrExitNumber(restartOrExitNumber));
+        return restartOrExitNumber;
+    }
+
+    private void initGame() {
+        this.strike = 0;
+        this.ball = 0;
+        this.computer = Utility.assignComputerRandomNumber();
+    }
+
+    private void playGame() {
+        while (this.strike != 3) {
+            Print.showPredictUserInput();
+
+            List<Integer> predictNumbers = Utility.input();
+            checkPredictNumber(predictNumbers);
+
+            Print.showPredictResult(this.strike, this.ball);
+        }
     }
 
     private void checkPredictNumber(List<Integer> predictNumbers) {
