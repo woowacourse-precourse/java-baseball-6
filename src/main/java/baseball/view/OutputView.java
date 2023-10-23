@@ -4,7 +4,7 @@ import baseball.utils.Message;
 
 import static baseball.utils.Message.*;
 
-public abstract class OutputView {
+public class OutputView {
 
     private OutputView() {
         throw new AssertionError();
