@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserBalls {
+
     public static List<Integer> inputBalls(){
-        System.out.println("숫자를 입력하세요 :");
+
+        System.out.print("숫자를 입력해주세요 : ");
 
         List<Integer> userBalls = new ArrayList<>();
         String inputBall = Console.readLine();
