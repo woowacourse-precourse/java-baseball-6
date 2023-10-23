@@ -8,11 +8,11 @@ public class Game {
 
     private final Validation validation = new Validation();
     private final Processing processing = new Processing();
-    List<Integer> computerNumbers;
+    List<Integer> computer;
 
     public Game(){
         RandomNumber randomNumber = new RandomNumber();
-        computerNumbers = randomNumber.getRandomNumbers();
+        computer = randomNumber.getRandomNumbers();
 //        System.out.println("컴퓨터 랜덤숫자: " + computerNumbers);
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -27,11 +27,11 @@ public class Game {
         List<Integer> userInputNumbers = processing.convertStringToInteger(userInputValue);
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
-                if (userInputNumbers.get(i).equals(computerNumbers.get(i))){
+                if (userInputNumbers.get(i).equals(computer.get(i))){
                     strikes++;
                     break;
                 }
-                if (userInputNumbers.get(i).equals(computerNumbers.get(j))){
+                if (userInputNumbers.get(i).equals(computer.get(j))){
                     balls++;
                     break;
                 }
