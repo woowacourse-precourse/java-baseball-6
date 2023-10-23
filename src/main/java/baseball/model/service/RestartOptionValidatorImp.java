@@ -9,7 +9,13 @@ import static baseball.model.constants.GameConstants.RESTART_OPTION_SIZE;
 
 public class RestartOptionValidatorImp implements RestartOptionValidator {
     @Override
-    public void isNonNumber(String inputOption) {
+    public void validateRestartOption(String inputOption) {
+        isNumber(inputOption);
+        isLength(inputOption);
+        isRange(inputOption);
+    }
+
+    private void isNumber(String inputOption) {
         for (int i = 0; i < inputOption.length(); i++) {
             if (!Character.isDigit(inputOption.charAt(i))) {
                 throw new IllegalArgumentException(RESTART_OPTION_NON_NUMBER);
@@ -17,16 +23,15 @@ public class RestartOptionValidatorImp implements RestartOptionValidator {
         }
     }
 
-    @Override
-    public void isLengthCorrect(String inputOption) {
+    private void isLength(String inputOption) {
         if (inputOption.length() != RESTART_OPTION_SIZE) {
             throw new IllegalArgumentException(RESTART_OPTION_LENGTH_INVALID);
         }
     }
 
-    @Override
-    public void isRange(Integer convertOption) {
-        if (convertOption < RESTART_OPTION_MIN_VALUE || convertOption > RESTART_OPTION_MAX_VALUE) {
+    private void isRange(String inputOption) {
+        int num = Integer.parseInt(inputOption);
+        if (num < RESTART_OPTION_MIN_VALUE || num > RESTART_OPTION_MAX_VALUE) {
             throw new IllegalArgumentException(RESTART_OPTION_RANGE_INVALID);
         }
     }

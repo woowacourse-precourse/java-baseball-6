@@ -17,7 +17,7 @@ class RestartOptionValidatorTest {
         String option = "A";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            restartOptionValidator.isNonNumber(option);
+            restartOptionValidator.validateRestartOption(option);
         });
 
         assertEquals(RESTART_OPTION_NON_NUMBER, exception.getMessage());
@@ -30,7 +30,7 @@ class RestartOptionValidatorTest {
         String option = "12";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            restartOptionValidator.isLengthCorrect(option);
+            restartOptionValidator.validateRestartOption(option);
         });
 
         assertEquals(RESTART_OPTION_LENGTH_INVALID, exception.getMessage());
@@ -40,10 +40,10 @@ class RestartOptionValidatorTest {
     @DisplayName("1 또는 2를 입력하지 않아 예외가 발생합니다.")
     void 범위입력예외() {
         RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
-        Integer option = 3;
+        String option = "3";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            restartOptionValidator.isRange(option);
+            restartOptionValidator.validateRestartOption(option);
         });
 
         assertEquals(RESTART_OPTION_RANGE_INVALID, exception.getMessage());

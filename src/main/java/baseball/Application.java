@@ -4,6 +4,8 @@ import static baseball.model.constants.GameConstants.RESTART_OPTION;
 
 import baseball.controller.BaseballGame;
 import baseball.model.domain.Restart;
+import baseball.model.service.RestartOptionValidator;
+import baseball.model.service.RestartOptionValidatorImp;
 import baseball.view.InputView;
 
 public class Application {
@@ -16,7 +18,8 @@ public class Application {
     }
 
     public static boolean setRestart() {
-        Restart restart = new Restart(InputView.setRestartInput());
+        RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
+        Restart restart = new Restart(InputView.setRestartInput(), restartOptionValidator);
         if (restart.getRestartOption().equals(RESTART_OPTION)) {
             return true;
         }
