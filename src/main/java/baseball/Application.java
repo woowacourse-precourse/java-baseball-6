@@ -21,8 +21,11 @@ public class Application {
             while (game) {
                 System.out.println("숫자 야구 게임을 시작합니다.");
                 System.out.print("숫자를 입력해주세요 : ");
-                String num = String.valueOf(Console.readLine());
-
+                String num  = Console.readLine();
+                //IllegalArgumentException
+                if (num.length()!=3){
+                    throw  new IllegalArgumentException("세자리 수를 입력하세요");
+                }
                 List<Integer> me = new ArrayList<>();
                 for (int i = 0; i < num.length(); i++) {
                     char currentCharacter = num.charAt(i);
