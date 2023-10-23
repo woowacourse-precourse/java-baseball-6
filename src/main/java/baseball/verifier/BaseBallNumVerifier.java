@@ -9,7 +9,7 @@ public class BaseBallNumVerifier implements Verifier {
     @Override
     public void check(String input) throws IllegalArgumentException {
         checkThreeDigits(input);
-        checkNumeric(input);
+        checkOneToNine(input);
         checkDistinct(input);
     }
 
@@ -18,10 +18,8 @@ public class BaseBallNumVerifier implements Verifier {
             throw new IllegalArgumentException("3개의 수를 입력하지 않았습니다.");
         }
     }
-    private void checkNumeric(String input){
-        try{
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
+    private void checkOneToNine(String input){
+        if(!input.matches("^[1-9]+$")){
             throw new IllegalArgumentException("1~9사이 수가 아닌 값을 입력하였습니다.");
         }
     }
