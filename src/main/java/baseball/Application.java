@@ -74,10 +74,7 @@ public class Application {
         return "1".equals(restart);
     }
 
-    /**
-     * 컴퓨터의 수를 생성
-     * @return 1~9까지의 숫자 3개가 담긴 리스트
-     */
+
     public static List<Integer> getRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBER_LENGTH){
@@ -94,22 +91,11 @@ public class Application {
      * @return 1~9까지의 숫자 3개가 담긴 리스트
      */
     public static List<Integer> getUserNumbers() {
-        List<Integer> numbers = new ArrayList<>();
 
         String input = getUserInput(INPUT_MESSAGE);
-        if (input.length() > NUMBER_LENGTH){
-            throw new IllegalArgumentException();
-        }
 
-        for (int i = 0; i < input.length(); i++){
-            char c = input.charAt(i);
-            if (Character.isDigit(c) && 49 <= (int) c && 57 >= (int) c && !numbers.contains(Character.getNumericValue(c))){
-                numbers.add(Character.getNumericValue(c));
-            } else {
-                throw new IllegalArgumentException();
-            }
-        }
-        return numbers;
+        User user = new User(input);
+        return user.getNumbers();
     }
 
     /**
