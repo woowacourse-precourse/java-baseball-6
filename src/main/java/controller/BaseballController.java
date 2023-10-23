@@ -15,12 +15,15 @@ public class BaseballController {
     }
 
     public void playGame() {
-        Number.reset();
+        resetGame();
         do {
             playRound();
         } while (!isEnd());
         gameOver();
     }
+
+    private static void resetGame() {
+        Number.reset();
     }
 
     private void playRound() {
