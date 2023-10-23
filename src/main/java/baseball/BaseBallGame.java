@@ -5,7 +5,7 @@ import java.util.Map;
 public class BaseBallGame {
     private final Input input;
     private final Output output;
-    private Computer computer;
+    private final Computer computer;
 
     public BaseBallGame() {
         this.input = new Input();
@@ -23,8 +23,7 @@ public class BaseBallGame {
                 gameFirstStarted = false;
             }
 
-            computer = new Computer();
-            computer.pickNumbers();
+            computer.pickSecretNumbers();
 
             while (true) {
                 int[] guessNumbers = input.readGuessNumbers();
