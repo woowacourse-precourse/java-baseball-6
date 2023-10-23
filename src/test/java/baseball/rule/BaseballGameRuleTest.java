@@ -20,8 +20,8 @@ class BaseballGameRuleTest {
 
         Result result = rule.check(new GameNumber(userNumbers), new Computer(computerNumbers));
 
-        Assertions.assertThat(result.getStrike()).isEqualTo(strike);
-        Assertions.assertThat(result.getBall()).isEqualTo(ball);
+        Assertions.assertThat(result.strike()).isEqualTo(strike);
+        Assertions.assertThat(result.ball()).isEqualTo(ball);
     }
 
     private static Stream<Arguments> provideNumbersAndResult() {

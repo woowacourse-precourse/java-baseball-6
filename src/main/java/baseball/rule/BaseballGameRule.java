@@ -2,6 +2,7 @@ package baseball.rule;
 
 import baseball.computer.Computer;
 import baseball.domain.number.GameNumber;
+import baseball.domain.number.NumberConstants;
 import baseball.domain.result.Result;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +14,7 @@ public class BaseballGameRule implements Rule {
         List<Integer> computerNumbers = computer.getGameNumbers();
         Integer ball = 0;
         Integer strike = 0;
-        for (int digitIndex = 0; digitIndex < computerNumbers.size(); digitIndex++) {
+        for (int digitIndex = 0; digitIndex < NumberConstants.NUMBERS_LENGTH; digitIndex++) {
             int searchedIndex = userNumbers.findDigitIndex(computerNumbers.get(digitIndex));
             if (isStrike(searchedIndex, digitIndex)) {
                 strike++;

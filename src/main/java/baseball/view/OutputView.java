@@ -19,7 +19,7 @@ public class OutputView {
 
     public void showResult(Result result) {
         showBall(result);
-        if (result.getBall() > 0 && result.getStrike() > 0) {
+        if (result.ball() > 0 && result.strike() > 0) {
             System.out.print(" ");
         }
         showStrike(result);
@@ -32,19 +32,19 @@ public class OutputView {
     }
 
     private void showBall(Result result) {
-        if (result.getBall() > 0) {
-            System.out.print(result.getBall() + Messages.BALL);
+        if (result.ball() > 0) {
+            System.out.print(result.ball() + Messages.BALL);
         }
     }
 
     private void showStrike(Result result) {
-        if (result.getStrike() > 0) {
-            System.out.print(result.getStrike() + Messages.STRIKE);
+        if (result.strike() > 0) {
+            System.out.print(result.strike() + Messages.STRIKE);
         }
     }
 
     private void showNothing(Result result) {
-        if (result.getStrike() == 0 && result.getBall() == 0) {
+        if (result.strike() == 0 && result.ball() == 0) {
             System.out.print(Messages.NOTHING);
         }
     }
