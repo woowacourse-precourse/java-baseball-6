@@ -11,19 +11,19 @@ public class BaseballNumbers {
     public final List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
-        validNumbersSize(baseballNumbers);
-        validDuplication(baseballNumbers);
+        validateNumbersSize(baseballNumbers);
+        validateDuplication(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }
 
-    private void validDuplication(List<BaseballNumber> baseballNumbers) {
+    private void validateDuplication(List<BaseballNumber> baseballNumbers) {
         int distinctSize = new HashSet<>(baseballNumbers).size();
         if (distinctSize != baseballNumbers.size()) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXIST);
         }
     }
 
-    private void validNumbersSize(List<BaseballNumber> baseballNumbers) {
+    private void validateNumbersSize(List<BaseballNumber> baseballNumbers) {
         if (baseballNumbers.size() != NUMBERS_LENGTH) {
             throw new IllegalArgumentException(OUT_OF_LENGTH);
         }

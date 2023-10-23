@@ -36,12 +36,12 @@ public class Controller {
     private boolean shouldRestart() {
         int restartNum;
         String restartInput = view.getRestartInput();
-        validOneOrTwo(restartInput);
+        validateOneOrTwo(restartInput);
         restartNum = Integer.parseInt(restartInput);
         return restartNum == RESTART;
     }
 
-    private static void validOneOrTwo(String restartInput) {
+    private static void validateOneOrTwo(String restartInput) {
         if (!restartInput.matches(ONE_OR_TWO_REGEXP)) {
             throw new IllegalArgumentException(RESTART_INPUT_ERROR);
         }
@@ -63,7 +63,7 @@ public class Controller {
 
     private BaseballNumbers getUserBaseballNumbers() {
         String userInput = view.getUserNumberInput();
-        validDigitPattern(userInput);
+        validateDigitPattern(userInput);
         return baseballNumbersByUser(userInput);
     }
 
@@ -77,7 +77,7 @@ public class Controller {
         return new BaseballNumbers(baseballNumberList);
     }
 
-    private static void validDigitPattern(String userInput) {
+    private static void validateDigitPattern(String userInput) {
         if (!isDigit(userInput)) {
             throw new IllegalArgumentException(NUMBER_INPUT_ERROR);
         }

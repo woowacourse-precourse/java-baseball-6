@@ -26,10 +26,14 @@ public class BaseballNumber {
 
     public static BaseballNumber of(int number) {
         BaseballNumber baseballNumber = NUMBERS.get(number);
+        validateNumberInRange(baseballNumber);
+        return baseballNumber;
+    }
+
+    private static void validateNumberInRange(BaseballNumber baseballNumber) {
         if(baseballNumber == null) {
             throw new IllegalArgumentException(BASEBALL_NUMBER_OUT_OF_RANGE);
         }
-        return baseballNumber;
     }
 
     public static BaseballNumber pickRandom() {
