@@ -17,6 +17,10 @@ public class Application {
             if (digits.contains(digit)) {
                 throw new IllegalArgumentException("중복되지 않은 3자리 숫자를 입력하세요.");
             }
+//            if (digit == 0) {
+            if (digit == '0') {
+                throw new IllegalArgumentException("1부터 9까지의 수 중 골라주세요.");
+            }
             digits.add(digit);
         }
         System.out.println(digits);
