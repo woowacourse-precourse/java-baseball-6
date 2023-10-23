@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 public class myTest extends NsTest {
     @Test
-    void 순서1_출력_테스트() {
+    void 게임시작_출력_테스트() {
         PrintStream standardOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -25,7 +25,7 @@ public class myTest extends NsTest {
     }
 
     @Test
-    void 순서3_예외_테스트() {
+    void 중복숫자_예외_테스트() {
         String[] args = {"999"};
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
@@ -39,7 +39,7 @@ public class myTest extends NsTest {
     }
 
     @Test
-    void 순서4_출력_테스트() {
+    void 힌트_출력_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("789", "235", "145", "321", "123", "2");
@@ -50,7 +50,7 @@ public class myTest extends NsTest {
     }
 
     @Test
-    void 순서5_출력_테스트() {
+    void 게임종료_출력_테스트() {
         PrintStream standardOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -61,7 +61,7 @@ public class myTest extends NsTest {
     }
 
     @Test
-    void 순서6_재시작_테스트() {
+    void 게임_재시작_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
