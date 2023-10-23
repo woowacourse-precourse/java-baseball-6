@@ -1,6 +1,10 @@
 package baseball;
 
+import static baseball.ErrorMessage.*;
+
 public class Validator {
+
+
     public static boolean isDigitsUnique(String number) {
         int numericValue = Integer.parseInt(number);
         int hundredsPlace = numericValue / 100;
@@ -26,5 +30,24 @@ public class Validator {
             return true;
         }
         return false;
+    }
+
+    public static boolean isContainZero(String number) {
+        return number.contains("0");
+    }
+
+    public static void validateUserNumber(String userNumber) {
+        if (!isNumber(userNumber)) {
+            throw new IllegalArgumentException(NOT_NUMERIC.getMessage());
+        }
+        if (!isInRange(userNumber, 100, 999)) {
+            throw new IllegalArgumentException(OUT_OF_RANGE.getMessage());
+        }
+        if (!isDigitsUnique(userNumber)) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
+        }
+        if (isContainZero(userNumber)) {
+            throw new IllegalArgumentException(ZERO_CONTAIN.getMessage());
+        }
     }
 }
