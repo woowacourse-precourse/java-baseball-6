@@ -19,21 +19,14 @@ public class Application {
         Game game;
         Player player;
 
-        while (true) {
+        game = new Game();
+        player  = new Player();
 
-            game = new Game();
+        game.printAnswer();
+        GameController gameController = new GameController(inputController,outputController,game,player);
 
-            player  = new Player();
-
-            game.printAnswer();
-            GameController gameController = new GameController(inputController,outputController,game,player);
-
-            gameController.baseballGame();
-
-            if (!gameController.re()) {
-                break;
-            }
-        }
+        gameController.start();
     }
-
 }
+
+

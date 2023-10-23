@@ -21,36 +21,47 @@ public class GameController {
         this.player = player;
     }
 
-    public void baseballGame() {
-
-        while (true) {
-            outputController.printNotice(INPUT);
-            player.setInputString(inputController.playerInput());
-            Result result = game(player, game);
-
-            outputController.printResult(result.strike, result.ball);
-            if (result.isAnswer) {
-                outputController.printNoticeln(ANSWER);
-                return;
-            }
-        }
-
+    public void before() {
+        game.initAnswer();
     }
 
-    public boolean re() {
-        outputController.printNoticeln(AFTER);
-        String regame = inputController.reGameInput();
-        if (regame.equals("1") ){
+    public void start() {
+        before();
+        boolean gameResult=false;
+        while (!gameResult) {
+            gameResult = baseballGame();
+        }
+        re();
+    }
+
+
+    public boolean baseballGame() {
+        outputController.printNotice(INPUT);
+        player.setInputString(inputController.playerInput());
+        System.out.println(player.getInputString());
+        game.printAnswer();
+        Result result = game(player, game);
+        System.out.println(result.strike +" "+result.ball);
+        outputController.printResult(result.strike, result.ball);
+        if (result.isAnswer) {
+            outputController.printNoticeln(ANSWER);
             return true;
         }
         return false;
+    }
+
+    public void re() {
+        outputController.printNoticeln(AFTER);
+        String regame = inputController.reGameInput();
+        if (regame.equals("1") ){
+            start();
+        }
     }
 
     public Result game(Player player,Game game) {
         player.setStrikeCount(game.countStrike(player.getInputString()));
         player.setBallCount(game.countBall(player.getInputString()));
         player.setGameWin(game.isAnswer(player.getInputString()));
-
         return new Result(player.isGameWin(), player.getStrikeCount(), player.getBallCount());
     }
 }

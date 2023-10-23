@@ -9,11 +9,10 @@ public class Game {
     private boolean finished;
 
     public Game() {
-        initAnswer();
         finished = false;
     }
 
-    private void initAnswer() {
+    public void initAnswer() {
         List<Integer> integers = new ArrayList<>();
         while (integers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
