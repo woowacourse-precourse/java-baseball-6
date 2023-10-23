@@ -31,9 +31,9 @@ public class Application {
         String gameStartMessage = "숫자 야구 게임을 시작합니다.\n";
         String continueOrEndMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
 
-        while (isContinue) {
-            output(gameStartMessage);
+        output(gameStartMessage);
 
+        while (isContinue) {
             computer = generateRandomNumber();
 
             repeatRound(computer);
