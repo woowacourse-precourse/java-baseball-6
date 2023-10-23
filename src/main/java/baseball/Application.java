@@ -3,7 +3,25 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Application {
+
+    // 중복 검사 함수
+    public static boolean isDuplicationExist(String randomNum) {
+        ArrayList<Character> randomNumList = new ArrayList<Character>();
+        for (int i=0; i<3; i++){
+            randomNumList.add(randomNum.charAt(i));
+        }
+        Set<Character> randNumSet = new HashSet<>(randomNumList);
+        if (randNumSet.size()!=3) {
+            return false;
+        }
+        return true;
+    }
 
     // 게임 시작 함수
     public static void startBaseball() {
@@ -27,6 +45,11 @@ public class Application {
 
             // 플레이어가 입력한 수가 3자리 수가 아닌 경우 예외처리
             if (randomNum.length()!=3) {
+                throw new IllegalArgumentException();
+            }
+
+            // 플레이어가 입력한 수에 중복되는 수가 존재할 경우 예외처리
+            if (!isDuplicationExist(randomNum)){
                 throw new IllegalArgumentException();
             }
 
