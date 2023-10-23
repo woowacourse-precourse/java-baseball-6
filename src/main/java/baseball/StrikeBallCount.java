@@ -9,7 +9,7 @@ public class StrikeBallCount {
         ball = 0;
     }
 
-    public void plusStringCount() {
+    public void plusStrikeCount() {
         strike++;
     }
 
