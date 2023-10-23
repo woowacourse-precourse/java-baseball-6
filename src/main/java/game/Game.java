@@ -35,7 +35,7 @@ public class Game {
         System.out.println(REQUEST_INPUT);
         String userInput = Console.readLine();
         validateUserInput(userInput);
-        
+
         return userInput;
     }
 

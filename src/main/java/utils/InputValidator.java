@@ -23,7 +23,7 @@ public class InputValidator {
     private static void validateInputRange(String userInput) {
         for (int i = 0; i < NORMAL_LENGTH; i++) {
             char c = userInput.charAt(i);
-            if (c <= '1' || c >= '9') {
+            if (c < '1' || c > '9') {
                 throw new IllegalArgumentException(wrongRangeInput);
             }
         }
