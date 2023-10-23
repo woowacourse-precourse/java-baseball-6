@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class InputValidation {
     public List<Integer> validateUserInput(String input) throws IllegalArgumentException {
@@ -27,11 +28,7 @@ public class InputValidation {
     }
 
     public void validateInputNumber(String input) throws IllegalArgumentException {
-        Set<Character> charSet = new HashSet<Character>();
-        charSet.add(input.charAt(0));
-        charSet.add(input.charAt(1));
-        charSet.add(input.charAt(2));
-
+        Set<Character> charSet = input.chars().mapToObj(c -> (char)c).collect(Collectors.toSet());
         if (charSet.size() != 3) {
             throw new IllegalArgumentException("숫자를 중복하지 않고 입력해주시기 바랍니다.");
         }
