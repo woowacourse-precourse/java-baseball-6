@@ -28,6 +28,7 @@ public class Application {
         List<Integer> computer = createRandomNumbers();
         List<Integer> user;
         do {
+            System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             user = parse(input);
         } while (isStrikeOut(computer, user));
