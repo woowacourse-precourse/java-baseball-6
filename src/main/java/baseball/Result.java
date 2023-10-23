@@ -33,6 +33,10 @@ public class Result {
         return strike == EMPTY_COUNT && ball == EMPTY_COUNT;
     }
 
+    public boolean isThreeStrike() {
+        return strike == STRIKE_OUT_SIZE;
+    }
+
     public void printResult() {
         if (isNothing()) {
             System.out.println(NOTHING);
