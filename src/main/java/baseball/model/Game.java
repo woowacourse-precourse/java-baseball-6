@@ -6,9 +6,14 @@ public class Game {
     private final char[] randNumber;
 
     private Game() {
+        int[] array = new int[10];
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
-            sb.append(pickNumberInRange(1, 9));
+        while (sb.length() != 3) {
+            int pickNumber = pickNumberInRange(1, 9);
+            if (array[pickNumber] == 0) {
+                array[pickNumber] = 1;
+                sb.append(pickNumber);
+            }
         }
         this.randNumber = sb.toString().toCharArray();
     }
