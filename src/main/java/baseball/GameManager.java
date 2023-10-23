@@ -7,6 +7,7 @@ public class GameManager {
     public void start() {
         System.out.println(GameMessage.GAME_START);
         baseBallGame.play();
+        System.out.println(GameMessage.RETRY_INPUT);
     }
 
     public GameManager() {
