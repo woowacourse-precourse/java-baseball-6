@@ -13,7 +13,17 @@ public class Pitch extends DefaultData{
         if (!(inputNumberList.size() == MAX_LENGTH)) {
             throw new IllegalArgumentException();
         }
+        validateNumbers(inputNumberList);
         setNumberList(inputNumberList);
+    }
+
+    private void validateNumbers(List<Integer> numbers) {
+        long uniqueCount = numbers.stream()
+                .distinct()
+                .count();
+        if (uniqueCount != MAX_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
     public List<Integer> getPitches() {
         return numberList;
