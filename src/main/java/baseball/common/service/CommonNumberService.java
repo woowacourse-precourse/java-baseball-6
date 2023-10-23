@@ -149,4 +149,6 @@ public class CommonNumberService {
         count = 1;
     }
 
+    public int getNumberLength(){return NUMBER_LENGTH;}
+
 }
