@@ -7,15 +7,10 @@ public class ValidatorTest {
     Validator validator = new Validator();
 
     /**
-     *   - 아무 것도 입력하지 않는 경우 (null)
-     *   - 입력의 길이가 3보다 크거나 작은 경우
-     *   - 숫자가 아닌 값을 포함하는 경우
-     *   - 같은 수를 여러개 포함하는 경우
-     *   - 범위를 벗어난 수를 포함하는 경우 (숫자 중 0을 포함하는 경우)
-     *   - 이 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
+     * guess()시 사용자의 입력값 검증
      */
     @Test
-    void 사용자가_아무것도_입력하지_않으면_예외발생() {
+    void 입력값이_null이면_예외발생() {
         // given
         String userInput = null;
 
@@ -71,6 +66,51 @@ public class ValidatorTest {
     private void assertValidation(String userInput) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             validator.validateUserInput(userInput);
+        });
+    }
+
+    /**
+     * restart()시 사용자의 입력 검증
+     */
+    @Test
+    void restart시_입력값이_null이면_예외발생() {
+        // given
+        String userInput = null;
+
+        // when, then
+        assertRestartValidation(userInput);
+    }
+
+    @Test
+    void restart시_사용자_입력의_길이가_1보다_크면_예외발생() {
+        // given
+        String userInput = "123";
+
+        // when, then
+        assertRestartValidation(userInput);
+    }
+
+    @Test
+    void restart시_사용자_입력의_길이가_1보다_작으면_예외발생() {
+        // given
+        String userInput = "";
+
+        // when, then
+        assertRestartValidation(userInput);
+    }
+
+    @Test
+    void restart시_사용자_입력이_숫자가_아닌_값을_포함하면_예외발생() {
+        // given
+        String userInput = "a";
+
+        // when, then
+        assertRestartValidation(userInput);
+    }
+
+    private void assertRestartValidation(String userInput) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            validator.validateRestartInput(userInput);
         });
     }
 }
