@@ -1,11 +1,15 @@
 package baseball.game.controller;
 
+import baseball.game.controller.dto.NumberListDto;
 import baseball.game.model.GameModel;
 import baseball.game.model.dto.RoundResult;
 import baseball.game.view.input.InputView;
 import baseball.game.view.output.OutputView;
-import java.util.List;
 
+
+/**
+ * 숫자 야구 게임의 흐름을 담당하는 클래스
+ */
 public class BaseballGameController {
 
     private final InputView userInput;
@@ -29,11 +33,11 @@ public class BaseballGameController {
     }
 
     private void startRound() {
-        List<Integer> answerNumbers = gameModel.generateRandomAnswer();
+        NumberListDto answer = gameModel.generateRandomAnswer();
 
         while (true) {
-            List<Integer> guessNumbers = userInput.getGuessNumbers();
-            RoundResult roundResult = gameModel.calculateRoundResult(answerNumbers, guessNumbers);
+            NumberListDto guess = userInput.getGuessNumbers();
+            RoundResult roundResult = gameModel.calculateRoundResult(answer, guess);
             userOutput.printResult(roundResult);
 
             if (roundResult.getStrikeCount() == 3) {

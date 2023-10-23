@@ -2,7 +2,9 @@ package baseball.game.view.output;
 
 import baseball.game.model.dto.RoundResult;
 
-
+/**
+ * 게임 결과를 유저에게 출력하는 클래스
+ */
 public class OutputView {
 
     public void printResult(RoundResult roundResult) {
