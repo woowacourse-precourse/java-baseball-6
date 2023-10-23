@@ -9,32 +9,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static baseball.core.code.ErrorMessage.*;
+import static baseball.core.code.Message.*;
+
 
 public class Application {
 
     public static final int STANDARD_NUMBER = 3;
 
     public static void main(String[] args) {
-        palyGame();
+        playGame();
 
         // 6. 게임 새로 시작 및 종료 문구 출력
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        MessagePrinter.print(GAME_RESTART_OR_QUIT);
 
         // 7. 게임 새로 시작 또는 종료 기능 구현
         String input = Console.readLine();
         switch (input) {
             case "1":
-                palyGame();
+                playGame();
                 break;
             case "2":
                 break;
             default:
-                throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+                throw new IllegalArgumentException(INPUT_ONLY_1_OR_2.getDescription());
         }
 
     }
 
-    private static void palyGame() {
+    private static void playGame() {
         // 1. 시작 메시지 출력
         MessagePrinter.print(Message.START);
 
@@ -52,7 +55,7 @@ public class Application {
         }
 
         // 5. 3개 숫자가 모두 동일한 경우 안내 멘트 출력 후 게임 종료 처리
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        MessagePrinter.print(GAME_OVER);
     }
 
     private static boolean compare(List<Integer> computerNumbers, String input) {
@@ -72,19 +75,19 @@ public class Application {
         }
 
         String resultMessage = getResultMessage(strikeCount, ballCount);
-        System.out.println(resultMessage);
+        MessagePrinter.print(resultMessage);
 
         return strikeCount == STANDARD_NUMBER;
     }
 
     private static String getResultMessage(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
-            return "낫싱";
+            return NOTHING.getDescription();
         }
 
         String resultMessage = "";
         if (ballCount != 0) {
-            resultMessage = ballCount + "볼";
+            resultMessage = ballCount + BALL.getDescription();
         }
 
         if (ballCount != 0 && strikeCount!= 0) {
@@ -92,7 +95,7 @@ public class Application {
         }
 
         if (strikeCount != 0) {
-            resultMessage += strikeCount + "스트라이크";
+            resultMessage += strikeCount + STRIKE.getDescription();
         }
         return resultMessage;
     }
@@ -104,22 +107,22 @@ public class Application {
     private static void validInput(String input) {
         // 입력 값 유효성 체크
         if (input.isBlank()) {
-            throw new IllegalArgumentException("숫자를 입력 해야 합니다.");
+            throw new IllegalArgumentException(INPUT_NOT_BLANK.getDescription());
         }
 
         try {
             Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(INPUT_NOT_NUMBER.getDescription());
         }
 
         if (input.length() != STANDARD_NUMBER) {
-            throw new IllegalArgumentException("숫자는 " + STANDARD_NUMBER + "자리로 입력 해야 합니다.");
+            throw new IllegalArgumentException(INPUT_ONLY_3.getDescription());
         }
 
         long distinctRemoveStringCount = Arrays.asList(input.split("")).stream().distinct().count();
         if (distinctRemoveStringCount != input.length()) {
-            throw new IllegalArgumentException("숫자는 중복 될 수 없습니다.");
+            throw new IllegalArgumentException(INPUT_NOT_DUPLICATED.getDescription());
         }
     }
 
