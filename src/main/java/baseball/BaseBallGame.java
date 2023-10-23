@@ -6,6 +6,7 @@ public class BaseBallGame {
     public List<Integer> computer;
     public List<Integer> user;
     private String userString;
+    private int userInteger;
     private boolean cycle = true;
 
     //상대방(컴퓨터)의 수 생성 함수
@@ -28,6 +29,8 @@ public class BaseBallGame {
         while(cycle) {
             StartPrint();
             userString = InputNum();
+            IsLength(userString);
+            IsInteger();
         }
         StopGamePrint();
     }
@@ -52,6 +55,14 @@ public class BaseBallGame {
     public void IsLength(String s){
         if(s.length() !=3){
             throw new IllegalArgumentException("세자리 수가 아닙니다.");
+        }
+    }
+    // 입력값 숫자 판별 함수
+    public void IsInteger(){
+        try{
+            userInteger = Integer.parseInt(userString);
+        }catch(NumberFormatException ex){
+            throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
 }
