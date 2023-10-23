@@ -3,6 +3,7 @@ package baseball.game;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.util.Utility;
+import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,13 @@ public class Game {
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요");
-            restartOrExitNumber = readLine();
+
+            do {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                restartOrExitNumber = readLine();
+            }
+            while (!Validation.checkRestartOrExitNumber(restartOrExitNumber));
+
         }
 
         Console.close();

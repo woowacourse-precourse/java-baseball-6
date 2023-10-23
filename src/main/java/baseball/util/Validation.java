@@ -24,6 +24,9 @@ public class Validation {
         return Pattern.matches(REGEXP_PATTERN_NUMBER, userInput);
     }
 
+    public static boolean checkRestartOrExitNumber(String input) {
+        return (input.equals("1") || input.equals("2"));
+    }
     public static boolean checkDuplicatedNumber(String input) {
         for (int i = 0; i < input.length(); i++) {
             char target = input.charAt(i);
