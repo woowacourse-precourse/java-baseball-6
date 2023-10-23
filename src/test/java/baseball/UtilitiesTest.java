@@ -3,6 +3,11 @@ package baseball;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import static baseball.Utilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,5 +32,12 @@ class UtilitiesTest {
         String[] expected = {"t", "o", "g", "g", "l", "e"};
         String[] result = stringSplitToCharactersArray(str);
         Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void arrayToSetTest() {
+        String[] array = {"t", "o", "g", "g", "l", "e"};
+        Set<String> expectedSet = new HashSet<>(Arrays.asList("t", "o", "g", "l", "e"));
+        Assertions.assertEquals(expectedSet, arrayToSet(array));
     }
 }

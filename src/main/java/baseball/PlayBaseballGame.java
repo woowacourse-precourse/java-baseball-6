@@ -13,8 +13,9 @@ public class PlayBaseballGame {
             try {
                 InputValidator.validateInput(input);
             } catch (IllegalArgumentException e) {
+
                System.err.println(e.getMessage());
-               play = true;
+
                break;
             }
             if (input.equalsIgnoreCase(targetNumber)) {

@@ -18,7 +18,6 @@ public class Application {
             String input = Console.readLine();
             try {
                 InputValidator.restartEndValidateInput(input);
-                System.out.println(input);
             } catch (IllegalArgumentException e) {
                 System.err.println(e.getMessage());
                 break;
