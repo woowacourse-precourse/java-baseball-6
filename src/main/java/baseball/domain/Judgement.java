@@ -1,4 +1,5 @@
 package baseball.domain;
+
 import java.util.List;
 
 public class Judgement {
@@ -9,12 +10,11 @@ public class Judgement {
         int ball = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (opponent.get(i) == player.get(i)) {
-                ++strike;
-            }
-            if (opponent.contains(player.get(i))) {
-                ++ball;
-            };
+            boolean isStrike = (opponent.get(i) == player.get(i));
+            strike += Boolean.compare(isStrike, false);
+
+            boolean isBall = (opponent.contains(player.get(i)));
+            ball += Boolean.compare(isBall, false);
         }
         return new int[]{strike, ball - strike};
     }
