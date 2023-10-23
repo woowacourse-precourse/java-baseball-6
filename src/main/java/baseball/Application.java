@@ -14,49 +14,53 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        int answer = 1;
+        BaseballGame game = new BaseballGame();
 
-        while (answer != 2) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
+        game.start();
 
-            Computer computer = new Computer();
-
-            int strike = 0;
-            int ball = 0;
-
-            while (strike != 3) {
-
-                List<Integer> my = inputNumbers();
-
-                int[] compareResult = computer.compareNumber(my);
-
-                strike = compareResult[0];
-                ball = compareResult[1];
-
-                String resultMessage = makeResultMessage(strike, ball);
-
-                System.out.println(resultMessage);
-            }
-
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            try {
-                String inputAnswer = readLine();
-
-                if (inputAnswer.length() != 1) {
-                    throw new IllegalArgumentException("잘못 입력하셨습니다.");
-                }
-
-                answer = Integer.parseInt(inputAnswer);
-
-                if (answer != 1 && answer != 2) {
-                    throw new IllegalArgumentException("잘못 입력하셨습니다.");
-                }
-
-            } catch (Exception e) {
-                throw new IllegalArgumentException("잘못 입력하셨습니다.");
-            }
-        }
+//        int answer = 1;
+//
+//        while (answer != 2) {
+//            System.out.println("숫자 야구 게임을 시작합니다.");
+//
+//            Computer computer = new Computer();
+//
+//            int strike = 0;
+//            int ball = 0;
+//
+//            while (strike != 3) {
+//
+//                List<Integer> my = inputNumbers();
+//
+//                int[] compareResult = computer.compareNumber(my);
+//
+//                strike = compareResult[0];
+//                ball = compareResult[1];
+//
+//                String resultMessage = makeResultMessage(strike, ball);
+//
+//                System.out.println(resultMessage);
+//            }
+//
+//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//
+//            try {
+//                String inputAnswer = readLine();
+//
+//                if (inputAnswer.length() != 1) {
+//                    throw new IllegalArgumentException("잘못 입력하셨습니다.");
+//                }
+//
+//                answer = Integer.parseInt(inputAnswer);
+//
+//                if (answer != 1 && answer != 2) {
+//                    throw new IllegalArgumentException("잘못 입력하셨습니다.");
+//                }
+//
+//            } catch (Exception e) {
+//                throw new IllegalArgumentException("잘못 입력하셨습니다.");
+//            }
+//        }
     }
 
     static List<Integer> inputNumbers() {
