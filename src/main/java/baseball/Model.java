@@ -16,7 +16,7 @@ public class Model {
         this.gameResult = gameResult;
     }
 
-    public List<Integer> generateRandomNumber() {
+    public List<Integer> generateRandomNumbers() {
 
         List<Integer> randomNumbers = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class Model {
         return randomNumbers;
     }
 
-    public GameResult calculateScore(List<Integer> computerNumber, List<Integer> playerNumber) {
+    public GameResult evaluatePlayerInput(List<Integer> computerNumber, List<Integer> playerNumber) {
 
         for (int i = 0; i < computerNumber.size(); i++) {
             if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
@@ -40,15 +40,15 @@ public class Model {
             }
         }
 
-        updateGameStatus(gameResult);
+        checkGameEnded(gameResult);
 
         return gameResult;
     }
 
-    private void updateGameStatus(GameResult gameResult) {
+    private void checkGameEnded(GameResult gameResult) {
 
         if (gameResult.getStrike().getCount() == MAX_STRIKES) {
-            gameResult.setGameEnded();
+            gameResult.endGame();
         }
     }
 
