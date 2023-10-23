@@ -1,25 +1,27 @@
 package baseball.service;
 
-import java.util.List;
-
 public class GameService {
-    public int strikeResult(List<Integer> computer, List<Integer> player){
+    public int strikeResult(String computer, String player){
         int result = 0;
+        char[] computerBall = computer.toCharArray();
+        char[] playerBall = player.toCharArray();
 
-        for (int i=0; i<computer.size(); i++){
-            Integer computerBall = computer.get(i);
-            Integer playerBall = player.get(i);
-            if (computerBall.equals(playerBall)) result += 1;
+        for (int i=0; i<computerBall.length; i++){
+            if (computerBall[i] == playerBall[i]) result += 1;
         }
 
         return result;
     }
 
-    public int ballResult(List<Integer> computer, List<Integer> player){
+    public int ballResult(String computer, String player){
+        int result = 0;
         int strike = strikeResult(computer, player);
+        String[] playerBall = player.split("");
 
-        computer.retainAll(player);
+        for (int i=0; i< playerBall.length; i++){
+            if (computer.contains(playerBall[i])) result += 1;
+        }
 
-        return computer.size() - strike;
+        return result - strike;
     }
 }

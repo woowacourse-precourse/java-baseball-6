@@ -19,9 +19,9 @@ class GameControllerTest {
         }
 
         Computer computer = new Computer(ballList);
-        List<Integer> computerBall = computer.getBallList();
+        String ballNumber = computer.getBallNumber();
 
-        assertThat(computerBall.size()).isEqualTo(3);
+        assertThat(ballNumber.length()).isEqualTo(3);
     }
 
     @Test
@@ -33,8 +33,8 @@ class GameControllerTest {
         }
 
         Player player = new Player(ballList);
-        List<Integer> playerBall = player.getBallList();
+        String ballNumber = player.getBallNumber();
 
-        assertThat(playerBall.size()).isEqualTo(3);
+        assertThat(ballNumber.length()).isEqualTo(3);
     }
 }

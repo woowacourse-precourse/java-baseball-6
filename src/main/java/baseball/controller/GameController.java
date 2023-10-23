@@ -36,8 +36,8 @@ public class GameController {
     }
 
     public void gameResult(){
-        List<Integer> computerBall = computer.getBallList();
-        List<Integer> playerBall = player.getBallList();
+        String computerBall = computer.getBallNumber();
+        String playerBall = player.getBallNumber();
         int strikeResult = gameService.strikeResult(computerBall, playerBall);
         int ballResult = gameService.ballResult(computerBall, playerBall);
 

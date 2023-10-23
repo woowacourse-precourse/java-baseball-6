@@ -9,7 +9,7 @@ public class Player {
         this.ballList = ballList;
     }
 
-    public List<Integer> getBallList() {
-        return ballList;
+    public String getBallNumber(){
+        return String.format("%d%d%d", ballList.get(0), ballList.get(1), ballList.get(2));
     }
 }
