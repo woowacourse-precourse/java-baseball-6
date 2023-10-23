@@ -25,11 +25,13 @@ public class InputProcessor {
     }
 
     private void validateUserChoice(String userInput) {
+        inputValidator.validateNotNull(userInput);
         inputValidator.validateIsInteger(userInput);
         inputValidator.validateChoice(userInput);
     }
 
     private void validateUserGuess(String userInput) {
+        inputValidator.validateNotNull(userInput);
         inputValidator.validateIsInteger(userInput);
         inputValidator.validateLength(userInput);
         inputValidator.validateNoDuplicate(userInput);

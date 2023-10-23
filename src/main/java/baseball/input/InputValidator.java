@@ -5,6 +5,11 @@ import baseball.view.ErrorMessage;
 public class InputValidator {
     private static final int EXPECTED_DIGIT=3;
 
+    public void validateNotNull(String userInput){
+        if(userInput.isEmpty())
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NULL.getMessage());
+    }
+
     public void validateIsInteger(String userInput){
         try{
             Integer.parseInt(userInput);
