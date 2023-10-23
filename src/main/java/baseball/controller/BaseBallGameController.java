@@ -38,7 +38,7 @@ public class BaseBallGameController {
             String gameResult = baseBallService.getGameResult(targetNumber, userInput).toString();
             baseballOutputView.printGameResult(gameResult);
 
-            if (gameResult.equals("3스트라이크")) {
+            if (BaseballGameMessage.isThreeStrikes(gameResult)) {
                 System.out.println(BaseballGameMessage.GAME_OVER);
                 break;
             }
