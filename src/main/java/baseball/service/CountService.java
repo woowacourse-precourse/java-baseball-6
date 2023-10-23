@@ -22,6 +22,7 @@ public class CountService {
     private int calculateBallCount(ComputerNumber computerNumber, PlayerNumber playerNumber) {
         return (int) IntStream.range(0, computerNumber.size())
                 .filter(i -> computerNumber.isContainNumber(playerNumber, i))
+                .filter(i -> !computerNumber.isSamePosition(playerNumber, i))
                 .count();
     }
 }
