@@ -29,7 +29,7 @@ public class Score {
         return getStrike() == THREE_STRIKE;
     }
 
-    public void calculateScore(List<Integer> playerInput, List<Integer> answer) {
+    public void calculate(List<Integer> playerInput, List<Integer> answer) {
         this.strike = calculateStrike(playerInput, answer);
         this.ball = calculateBall(playerInput, answer);
     }

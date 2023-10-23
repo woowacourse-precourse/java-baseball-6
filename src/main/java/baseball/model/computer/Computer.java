@@ -4,13 +4,8 @@ import java.util.List;
 
 public class Computer {
 
-    private GameAnswer gameAnswer;
-    private Score score;
-
-    public Computer() {
-        this.gameAnswer = new GameAnswer();
-        this.score = new Score();
-    }
+    private GameAnswer gameAnswer = new GameAnswer();
+    private Score score = new Score();
 
     public void makeAnswer() {
         gameAnswer.makeAnswer();
@@ -21,7 +16,7 @@ public class Computer {
     }
 
     public void calculateScore(List<Integer> playerInput) {
-        score.calculateScore(playerInput, getGameAnswer());
+        score.calculate(playerInput, getGameAnswer());
     }
 
     public Score getScore() {

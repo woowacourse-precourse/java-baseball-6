@@ -9,17 +9,10 @@ public class BaseballGameController {
 
     private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
 
-    private final Computer computer;
-    private final Player player;
-    private final InputView inputView;
-    private final OutputView outputView;
-
-    public BaseballGameController() {
-        this.computer = new Computer();
-        this.player = new Player();
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-    }
+    private final Computer computer = new Computer();
+    private final Player player = new Player();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public void start() {
         printStartMessage();
