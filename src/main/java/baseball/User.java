@@ -10,10 +10,13 @@ public class User {
     private static final Pattern pattern = Pattern.compile("([1-9]{3,3})");
     private static final String INPUT_LENGTH_ERROR_MESSAGE = "3자리수를 입력해주세요.";
     private static final String INPUT_DIGIT_ERROR_MESSAGE = "숫자가 아닌 값이 입력되었습니다.";
-    String userInputNumber;
+    private String userInputNumber;
+
+    public User() {
+    }
 
     public void setUserInputNumber() {
-        System.out.println(USER_INPUT_NUMBER_MESSAGE);
+        System.out.print(USER_INPUT_NUMBER_MESSAGE);
         String inputNumber = Console.readLine();
         validateInputNumber(inputNumber);
         this.userInputNumber = inputNumber;
@@ -39,11 +42,4 @@ public class User {
             throw new IllegalArgumentException(INPUT_LENGTH_ERROR_MESSAGE);
         }
     }
-
-    // test method
-    public void setUserInputNumber(String inputNumber) {
-        System.out.println(USER_INPUT_NUMBER_MESSAGE);
-        this.userInputNumber = inputNumber;
-    }
-
 }
