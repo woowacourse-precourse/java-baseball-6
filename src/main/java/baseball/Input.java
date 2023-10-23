@@ -1,0 +1,20 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Console;
+
+public class Input {
+
+    public static String readLine() {
+        String input = Console.readLine();
+        validateNumber(input);
+        return input;
+    }
+
+    private static void validateNumber(final String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+        }
+    }
+}
