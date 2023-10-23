@@ -11,9 +11,20 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
-        BallsValidators.validateBallCount(balls);
-        ListValidators.validateDistinct(values());
-        ListValidators.validateDistinct(indexs());
+
+        ListValidators.validateSize(balls, BALL_COUNT);
+
+        ListValidators.validateDistinct(
+                balls.stream()
+                        .map(Ball::getValue)
+                        .toList()
+        );
+
+        ListValidators.validateDistinct(
+                balls.stream()
+                        .map(Ball::getIndex)
+                        .toList());
+
         this.balls = balls;
     }
 
@@ -29,18 +40,6 @@ public class Balls {
 
     public List<Ball> getBalls() {
         return balls;
-    }
-
-    private List<BallValue> values() {
-        return balls.stream()
-                .map(Ball::getValue)
-                .toList();
-    }
-
-    private List<BallIndex> indexs() {
-        return balls.stream()
-                .map(Ball::getIndex)
-                .toList();
     }
 
 }
