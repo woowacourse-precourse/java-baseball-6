@@ -87,6 +87,8 @@
    - 1~9 범위의 수를 생성하는 정책을 가진다.
  - DuplicateAllowancePolicy (중복 허용 정책)
    - 중복을 허용하는 정책을 가진다.
+ - NumberDigitPolicy (숫자 자리수 정책)
+   - 몇 자리의 숫자를 생성할 것인지 정책을 가진다.
 
 ## 개선사항
 - mvc 패턴으로 어댑터 핸들러, dispatcher servlet, dto 까지 과정을 분리시키기? -> 너무 오버 엔지니어링..?
