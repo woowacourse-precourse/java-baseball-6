@@ -20,7 +20,7 @@ public class GameController {
         Player player = initPlayer();
         startGame(game, player);
 
-        if(inputView.inputRestartNumber().equals("1")) {
+        if(isRestartNumber()) {
             startProgram();
         }
     }
@@ -71,5 +71,9 @@ public class GameController {
         }
 
         outputView.outputBallStrike(game.getBallNumber(), game.getStrikeNumber());
+    }
+
+    private boolean isRestartNumber() {
+        return inputView.inputRestartNumber().equals("1");
     }
 }
