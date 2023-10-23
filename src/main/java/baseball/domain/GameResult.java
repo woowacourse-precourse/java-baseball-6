@@ -1,5 +1,10 @@
 package baseball.domain;
 
+import baseball.util.MagicNumber;
+
+import static baseball.util.MagicNumber.MAX_SIZE;
+import static baseball.util.MagicNumber.MIN_SIZE;
+
 public class GameResult {
 
     private int strike;
@@ -24,7 +29,7 @@ public class GameResult {
     }
 
     public void validateStrikeBall(int number) {
-        if(number > 3 || number < 0) {
+        if(number > MAX_SIZE.getNumber() || number < MIN_SIZE.getNumber()) {
             throw new IllegalArgumentException("스트라이크 또는 볼은 0~3 사이입니다.");
         }
     }

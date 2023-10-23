@@ -2,8 +2,11 @@ package baseball.controller;
 
 import baseball.domain.ComputerNumber;
 import baseball.domain.UserNumber;
+import baseball.util.MagicNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import static baseball.util.MagicNumber.RESTART;
 
 public class GameController {
 
@@ -22,7 +25,7 @@ public class GameController {
         inputView.printStart();
         startInspection();
 
-        return inputView.printEnd() == 1;
+        return inputView.printEnd() == RESTART.getNumber();
     }
 
     public void startInspection() {

@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.util.MagicNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
+
+import static baseball.util.MagicNumber.*;
 
 public class ComputerNumber {
 
@@ -21,8 +24,8 @@ public class ComputerNumber {
     public List<Integer> makeNumber() {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
-        while (uniqueNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (uniqueNumbers.size() < MAX_SIZE.getNumber()) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER.getNumber(), MAX_NUMBER.getNumber());
             uniqueNumbers.add(randomNumber);
         }
 
@@ -35,19 +38,19 @@ public class ComputerNumber {
     }
 
     public int verifyStrike(List<Integer> answer, List<Integer> userNumber) {
-        return (int) IntStream.range(0, userNumber.size())
+        return (int) IntStream.range(MIN_SIZE.getNumber(), userNumber.size())
                 .filter(i -> answer.get(i).equals(userNumber.get(i)))
                 .count();
     }
 
     public int verifyBall(List<Integer> answer, List<Integer> userNumber) {
-        return (int) IntStream.range(0, userNumber.size())
+        return (int) IntStream.range(MIN_SIZE.getNumber(), userNumber.size())
                 .filter(i -> !answer.get(i).equals(userNumber.get(i)) && answer.contains(userNumber.get(i)))
                 .count();
     }
 
     public boolean verifyEnd() {
-        return gameResult.getStrike() == 3;
+        return gameResult.getStrike() == MAX_SIZE.getNumber();
     }
 
     public int getStrike() {

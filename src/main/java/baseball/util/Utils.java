@@ -3,6 +3,9 @@ package baseball.util;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.util.MagicNumber.QUIT;
+import static baseball.util.MagicNumber.RESTART;
+
 public class Utils {
 
     public static List<Integer> stringToList(String number) {
@@ -18,7 +21,7 @@ public class Utils {
     }
 
     public static void validateEndNumber(int number) {
-        if(number < 1 || number > 2) {
+        if(number < RESTART.getNumber() || number > QUIT.getNumber()) {
             throw new IllegalArgumentException("1, 2 만 입력 가능합니다");
         }
     }
