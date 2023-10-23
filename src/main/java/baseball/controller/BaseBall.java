@@ -7,8 +7,8 @@ import baseball.service.PrintService;
 import java.util.List;
 
 public class BaseBall {
-    GameService gameService = new GameService();
-    PrintService printService = new PrintService();
+    private final GameService gameService = new GameService();
+    private final PrintService printService = new PrintService();
 
     public void playBall(){
         printService.printBeforeStart();
