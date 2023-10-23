@@ -1,7 +1,6 @@
 package baseball.view;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class OutputView {
 
@@ -20,18 +19,18 @@ public class OutputView {
         int strikeCount = resultStrike.get("strike");
         int ballCount = resultStrike.get("ball");
 
-        if(ballCount == 0 && strikeCount == 0){
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         } else {
-            if(ballCount != 0){
-                System.out.print(ballCount + "볼"+ " " );
+            if (ballCount != 0) {
+                System.out.print(ballCount + "볼" + " ");
             }
-            if(strikeCount != 0){
+            if (strikeCount != 0) {
                 System.out.println(strikeCount + "스트라이크");
             }
         }
         System.out.println();
-        if(strikeCount == 3){
+        if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println();
         }

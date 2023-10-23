@@ -7,7 +7,7 @@ public class InputView {
     private InputView() {
     }
 
-    public static String commandUserInput(){
+    public static String commandUserInput() {
         return Console.readLine();
     }
 }

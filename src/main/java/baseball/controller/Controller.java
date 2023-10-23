@@ -7,7 +7,6 @@ import baseball.view.OutputView;
 
 import java.util.*;
 
-// Controller -> model <-> View
 public class Controller {
 
     private static final String GAME_END_INPUT = "1";
