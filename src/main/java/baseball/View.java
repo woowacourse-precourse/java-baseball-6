@@ -18,7 +18,11 @@ public class View {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
-    public static void printBallMessage(int ball){
-        System.out.println(ball+"볼");
+    public static void printBallMessage(int ball) {
+        System.out.println(ball + "볼");
+    }
+
+    public static void printStrikeMessage(int strike) {
+        System.out.println(strike + "스트라이크");
     }
 }
