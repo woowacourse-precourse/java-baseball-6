@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Validation {
     public boolean isDigitInput(String num) {
         boolean flag = true;
@@ -29,6 +32,23 @@ public class Validation {
 
         if (num.length() != 1) {
             flag = false;
+        }
+
+        return flag;
+    }
+
+    public boolean isEachUnique(String num) {
+        boolean flag = true;
+        List<Character> nums = new ArrayList<>();
+
+        for (int i = 0; i < num.length(); i++) {
+            char c = num.charAt(i);
+
+            if (nums.contains(c)) {
+                flag = false;
+                break;
+            }
+            nums.add(c);
         }
 
         return flag;
