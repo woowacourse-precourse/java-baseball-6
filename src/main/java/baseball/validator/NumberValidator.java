@@ -9,7 +9,7 @@ public class NumberValidator {
 
 	public void validateInputNumber(String inputNumber, int numberCount){
 		try{
-			if(inputNumber.length() != numberCount ||hasDuplicateDigits(inputNumber)==false||isInteger(inputNumber)==false){
+			if(inputNumber.length() != numberCount ||hasDuplicateDigits(inputNumber)||isInteger(inputNumber)==false){
 				throw new IllegalArgumentException();
 			}
 		}catch (IllegalStateException e){
