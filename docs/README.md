@@ -33,3 +33,16 @@
   - 범위_벗어난_사용자_입력
   - 중복된_사용자_입력
   - 숫자가_아닌_사용자_입력
+
+## 프로그램 구조
+- controller
+  - `GameController`: 주입된 난수를 기반으로 게임 진행
+- model
+  - `NumberModel`: 컴퓨터와 사용자의 숫자 저장
+- service
+  - `GameService`: 게임 진행에 필요한 주요 로직
+- utils
+  - `RandomUtil`: 조건에 맞는 난수 생성
+  - `ValidationUtil`: 사용자 입력의 유효성 검증
+- view
+  - `GameView`: 콘솔을 통해 사용자와 상호작용(입/출력)
