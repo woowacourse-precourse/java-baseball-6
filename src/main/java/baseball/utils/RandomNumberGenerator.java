@@ -7,9 +7,9 @@ import java.util.List;
 
 public class RandomNumberGenerator implements NumberGenerator{
 
-    private int MIN_NUMBER = 1;
-    private int MAX_NUMBER = 9;
-    private int NUMBER_SIZE = 3;
+    private final int MIN_NUMBER = 1;
+    private final int MAX_NUMBER = 9;
+    private final int NUMBER_SIZE = 3;
 
     @Override
     public List<Integer> generateNumberInRange() {
