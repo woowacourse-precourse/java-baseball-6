@@ -12,7 +12,7 @@ public class Baseball {
         inputThreeNums();
     }
 
-    public static void pickThreeNumbers() { // 1. 컴퓨터가 가질 3개의 값을 초기화하는 메서드
+    public static List<Integer> pickThreeNumbers() { // 1. 컴퓨터가 가질 3개의 값을 초기화하는 메서드
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -20,7 +20,7 @@ public class Baseball {
                 computer.add(randomNumber);
             }
         }
-        System.out.println("computer = " + computer);
+        return computer;
     }
 
     public void endGame() { // 2. 게임을 종료하는 메서드
