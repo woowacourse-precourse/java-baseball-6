@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    // 게임에 사용되는 3자리 숫자 배열 정의
     private boolean isGameOver = false;
 
     public static void main(String[] args) {
@@ -20,18 +21,25 @@ public class Application {
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        int[] randomNumbers = generateRandomNumbers(); // 게임 시작 시 한 번만 생성
+
         while (!isGameOver) {
-            int[] playerNumbers = getPlayerNumbers(); // 플레이어
-            int[] randomNumbers = generateRandomNumbers(); // 컴퓨터
+            int[] playerNumbers = getPlayerNumbers();
 
             String result = checkStrikesOrBall(randomNumbers, playerNumbers);
             System.out.println(result);
+
             if (result.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                isGameOver = !askForRestart(); // 물어보고 재시작 여부를 확인
+                isGameOver = !askForRestart();
+
+                if (!isGameOver) {
+                    randomNumbers = generateRandomNumbers(); // 게임이 재시작되면 새로운 randomNumbers 생성
+                }
             }
         }
     }
+
 
     // 게임 재시작 여부를 물어보는 메서드
     private boolean askForRestart() {
@@ -87,10 +95,15 @@ public class Application {
     private int[] generateRandomNumbers() {
         int[] randomNumbers = new int[3];
         for (int i = 0; i < 3; i++) {
-            randomNumbers[i] = Randoms.pickNumberInRange(1, 9);
+            int random;
+            do {
+                random = Randoms.pickNumberInRange(1, 9);
+            } while (containsNumber(randomNumbers, random));
+            randomNumbers[i] = random;
         }
-        return randomNumbers; // 난수 배열을 반환
+        return randomNumbers;
     }
+
 
     // 플레이어로 부터 숫자를 받는 메서드
     private int[] getPlayerNumbers() {
