@@ -61,12 +61,5 @@ public class Result {
         return stringBuilder.toString();
     }
 
-    public Integer getStrike() {
-        return strike;
-    }
-
-    public Integer getBall() {
-        return ball;
-    }
 }
 
