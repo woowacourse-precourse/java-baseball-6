@@ -10,54 +10,61 @@ import java.util.Set;
 public class CheckValidation {
 
     public int checkAnswerValidation(String answer) {
-
-        if (answer.equals("1")) { // 새로운 게임 시작
+        // 새로운 게임 시작
+        if (answer.equals("1")) {
             return 1;
         }
-        if (answer.equals("2")) { // 게임 종료
-            System.out.println(END_PROGRAM.getMessage());
+        // 게임 종료
+        if (answer.equals("2")) {
+            System.out.println(END_PROGRAM.getMsg());
             return 2;
         }
-        // 유효하지 않은 입력
-        throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+        throw new IllegalArgumentException(INVALID_INPUT.getMsg());
     }
 
     public void checkNumberValidation(String input) {
-        // 문자열 배열로 치환
-        String[] inputArr = input.split("");
-        checkIfNumber(inputArr);
-        checkLength(inputArr);
-        checkIfDuplicated(inputArr);
+        // 1. 입력값이 숫자인지 확인
+        checkIfNumber(input);
+        // 2. 입력 길이 3인지 확인
+        checkLength(input);
+        // 3. 중복값을 입력했는지 확인
+        checkIfDuplicated(input);
         return;
     }
 
-    // 입력값이 숫자인지 확인
-    private void checkIfNumber(String[] strArr) {
+    // 1. 입력값이 숫자인지 확인
+    private void checkIfNumber(String input) {
+        // 문자열 배열로 치환
+        String[] inputArr = input.split("");
         String num = "123456789";
-        for (String s : strArr) {
+        for (String s : inputArr) {
             if (!num.contains(s)) {
-                throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+                throw new IllegalArgumentException(INVALID_INPUT.getMsg());
             }
         }
         return;
     }
 
-    // 입력 길이 3인지 확인
-    private void checkLength(String[] strArr) {
-        if (strArr.length != 3) {
-            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+    // 2. 입력 길이 3인지 확인
+    private void checkLength(String input) {
+        // 문자열 배열로 치환
+        String[] inputArr = input.split("");
+        if (inputArr.length != 3) {
+            throw new IllegalArgumentException(INVALID_INPUT.getMsg());
         }
         return;
     }
 
-    // 중복값을 입력했는지 확인
-    private void checkIfDuplicated(String[] strArr) {
+    // 3. 중복값을 입력했는지 확인
+    private void checkIfDuplicated(String input) {
+        // 문자열 배열로 치환
+        String[] inputArr = input.split("");
         Set<String> set = new HashSet<>();
-        for (String s : strArr) {
+        for (String s : inputArr) {
             set.add(s);
         }
         if (set.size() != 3) {
-            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(INVALID_INPUT.getMsg());
         }
         return;
     }

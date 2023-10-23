@@ -9,18 +9,12 @@ import java.util.List;
 
 
 public class Hint {
-    private List<Integer> computer;
-    private String[] inputArr;
-
-    public Hint(List<Integer> computer, String input) {
-        this.computer = computer;
-        this.inputArr = input.split("");
-    }
-
-    public int checkNumber() {
+    public int checkNumber(List<Integer> computer, String input) {
+        String[] inputArr = input.split("");
         StringBuilder sb = new StringBuilder();
         int strike = 0;
         int ball = 0;
+
         for (int i = 0; i < computer.size(); i++) {
             int num = Integer.parseInt(inputArr[i]);
             if (computer.get(i) == num) {
@@ -29,21 +23,25 @@ public class Hint {
                 ball += 1;
             }
         }
+        // 정답
         if (strike == 3) {
-            System.out.println(CORRECT_AND_END_THE_GAME.getMessage());
+            System.out.println(CORRECT_AND_END_THE_GAME.getMsg());
             return 1;
         }
+        // 낫싱
         if (strike + ball == 0) {
-            sb.append(NOTHING.getMessage());
+            sb.append(NOTHING.getMsg());
         }
+        // 볼
         if (ball != 0) {
-            sb.append(ball).append(BALL.getMessage());
+            sb.append(ball).append(BALL.getMsg());
         }
+        // 스트라이크
         if (strike != 0) {
-            if (ball != 0) {
+            if (ball != 0) { // 볼 & 스트라이크
                 sb.append(" ");
             }
-            sb.append(strike).append(STRIKE.getMessage());
+            sb.append(strike).append(STRIKE.getMsg());
         }
         System.out.println(sb);
         return -1;

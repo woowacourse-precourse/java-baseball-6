@@ -12,13 +12,13 @@ public enum Enum {
     NEW_GAME_OR_END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     END_PROGRAM("프로그램이 완전히 종료되었습니다. 게임을 하고 싶으면 다시실행 해주세요.");
 
-    private final String message;
+    private final String msg;
 
-    Enum(String message) {
-        this.message = message;
+    Enum(String msg) {
+        this.msg = msg;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 }
