@@ -11,7 +11,7 @@ public class NumberInput {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
     }
-    public char getNumberByIndex(int index){
-        return numberInput.charAt(index);
+    public int getNumberByIndex(int index){
+        return numberInput.charAt(index) - '0';
     }
 }

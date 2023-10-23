@@ -12,8 +12,8 @@ public class Game {
         computer.initComputerNumbers();
         Judgement judgeResult;
         do{
-            int[] userInputs = display.getUserNumbers();
-            judgeResult = computer.getJudgement(userInputs);
+            Numbers userNumbers = display.getUserNumbers();
+            judgeResult = computer.getJudgement(userNumbers);
             judgeResult.printResult();
         }
         while(!judgeResult.isOut());

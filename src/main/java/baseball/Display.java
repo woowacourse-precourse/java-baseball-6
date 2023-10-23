@@ -29,22 +29,10 @@ public class Display {
             return;
         }
     }
-    public int[] getUserNumbers(){
+    public Numbers getUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        return getSplitedUserNumbers(Console.readLine());
-    }
-    private int[] getSplitedUserNumbers(String userInput){
-        int[] userNumbers = new int[3];
-        String trimUserInput = userInput.trim();
-        Validation.validateUserInputSize(trimUserInput);
-        char[] userCharNumbers = trimUserInput.toCharArray();
-        boolean[] numberCheckArray = new boolean[10];
-        for(int i = 0; i < 3; i++){
-            Validation.validateIsNumber(userCharNumbers[i]);
-            Validation.validateDuplicatedNumber(numberCheckArray, userCharNumbers[i]);
-            userNumbers[i] = userCharNumbers[i] - '0';
-        }
-        return userNumbers;
+        NumberInput numberInput = new NumberInput(Console.readLine().trim());
+        return new Numbers(numberInput);
     }
     public boolean getRestartInput(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
