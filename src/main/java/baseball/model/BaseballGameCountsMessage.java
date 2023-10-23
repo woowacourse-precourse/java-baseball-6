@@ -1,7 +1,5 @@
 package baseball.model;
 
-import java.util.Objects;
-
 public class BaseballGameCountsMessage {
     private String message;
 
@@ -19,12 +17,6 @@ public class BaseballGameCountsMessage {
         if (ballCounts > 0) {
             editMessage(String.format("%d볼 ", ballCounts));
         }
-
-
-    }
-
-    public void printMessage() {
-        System.out.println(Objects.requireNonNullElse(message, "낫싱"));
     }
 
     public void editMessage(String frag) {
@@ -33,5 +25,9 @@ public class BaseballGameCountsMessage {
         } else {
             this.message = frag + this.message;
         }
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 }
