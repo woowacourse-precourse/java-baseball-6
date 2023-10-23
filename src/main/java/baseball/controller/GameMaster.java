@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.user.Computer;
+import baseball.user.Player;
 
 public class GameMaster {
 
@@ -9,5 +10,8 @@ public class GameMaster {
 
         Computer computer = new Computer();
         computer.generateBaseballNumbers();
+
+        Player player = new Player();
+        player.inputBaseballNumbers();
     }
 }
