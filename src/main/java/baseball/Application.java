@@ -1,17 +1,32 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<Integer> computer = new ArrayList<>();
+        getRandomsNumber(computer);
+        System.out.println(computer);
+    }
 
+    private static void getRandomsNumber(List<Integer> computer) {
+        while (computer.size() < Constant.NUMBER_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(Constant.START_NUM, Constant.END_NUM);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
     }
 
     static class Constant {
         public static final int START_NUM = 1;
-        public static final int END_NUM = 0;
+        public static final int END_NUM = 9;
         public static final int GAME_RESTART = 1;
         public static final int GAME_END = 2;
-        public static final int NUMBER_COUNT =3;
+        public static final int NUMBER_COUNT = 3;
         public static final String BALL = "볼";
         public static final String STRIKE = "스트라이크";
         public static final String NOTHING = "낫싱";
