@@ -38,7 +38,7 @@ class BaseballGame{
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
         char[] inputDigits = userInput.toCharArray();
-        // 예외 처리
+        Exception.checkUserInput(inputDigits);
 
         for(int idx = 0; idx < 3; idx++){
             userNumbers[idx] = inputDigits[idx] - '0';
