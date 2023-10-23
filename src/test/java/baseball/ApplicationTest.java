@@ -346,6 +346,51 @@ class ApplicationTest extends NsTest {
         assertThat(result7.toString().strip()).isEqualTo("2볼 1스트라이크");
     }
 
+    @DisplayName("게임 재시작/종료 입력 예외 처리 메서드 테스트")
+    @Test
+    public void selectRestartOrExitExceptionTest() {
+        // given
+        final String input1 = "0";
+        final String input2 = "3";
+        final String input3 = "yes";
+        final String input4 = "no";
+        final String input5 = "!";
+
+        // when
+        final Throwable throwable1 = catchThrowable(() -> {
+            Player.isOneOrTwo(input1);
+        });
+        final Throwable throwable2 = catchThrowable(() -> {
+            Player.isOneOrTwo(input2);
+        });
+        final Throwable throwable3 = catchThrowable(() -> {
+            Player.isOneOrTwo(input3);
+        });
+        final Throwable throwable4 = catchThrowable(() -> {
+            Player.isOneOrTwo(input4);
+        });
+        final Throwable throwable5 = catchThrowable(() -> {
+            Player.isOneOrTwo(input5);
+        });
+
+        // then
+        assertThat(throwable1)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+        assertThat(throwable2)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+        assertThat(throwable3)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+        assertThat(throwable4)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+        assertThat(throwable5)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
