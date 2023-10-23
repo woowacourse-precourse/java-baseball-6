@@ -8,13 +8,13 @@ public class Computer {
     private final static int[] numbers = new int[SIZE];
     public Computer() {
         int randomNumber;
-        for (int i = 0; i < SIZE; i++){
+        for (int i = 0; i < SIZE;){
             randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!checkDup(numbers, randomNumber))
-                numbers[i] = randomNumber;
+            if (!isDup(numbers, randomNumber))
+                numbers[i++] = randomNumber;
         }
     }
-    private boolean checkDup(int[] numberOfArr, int randomNumber){
+    public static boolean isDup(int[] numberOfArr, int randomNumber){
         //Make Code About check duplication.
         for (int number : numberOfArr){
             if (randomNumber == number)

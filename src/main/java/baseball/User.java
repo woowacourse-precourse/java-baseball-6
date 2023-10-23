@@ -31,9 +31,14 @@ public class User {
     }
 
     static boolean checkDupError(String input){
-        int number;
+        int[] tempArr = new int[SIZE];
+        int tempNumber;
         for (int i = 0; i < SIZE; i++){
-
+            tempNumber = Integer.parseInt(input.charAt(i) + "");
+            if (Computer.isDup(tempArr, tempNumber))
+                return false;
+            tempArr[i] = tempNumber;
         }
+        return true;
     }
 }
