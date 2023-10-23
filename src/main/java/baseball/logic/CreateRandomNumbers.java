@@ -16,7 +16,7 @@ public class CreateRandomNumbers {
         this.answerNumbers = setRandomNumbers();
     }
 
-    public List<Integer> setRandomNumbers(){
+    public List<Integer> setRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < RANDOM_NUMBER_MAX_LENGTH) {

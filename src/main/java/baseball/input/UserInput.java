@@ -10,7 +10,8 @@ import java.util.List;
 public class UserInput {
     static List<Integer> userInput = new ArrayList<>();
     static String input;
-    public static List<Integer> inputNumbers(){
+
+    public static List<Integer> inputNumbers() {
         Message.printInputMessage();
         input = Console.readLine();
         CheckInputNumbers.checkLength(input);
