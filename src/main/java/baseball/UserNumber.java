@@ -30,6 +30,11 @@ public class UserNumber {
                 ));
     }
 
+    /**
+     * 문자가 1~9 사이 숫자 인지 검증 함수
+     *
+     * @param digit : 입력받은 문자열의 문자 하나
+     */
     private void numberValidate(char digit) {
         if (digit <= 48 || digit >= 58) {
             throw new IllegalArgumentException("0 또는 숫자가 아닌 값이 포함되었습니다.");

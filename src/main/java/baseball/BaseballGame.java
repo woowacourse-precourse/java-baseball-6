@@ -25,7 +25,7 @@ public class BaseballGame {
     }
 
     /**
-     * 게임 실행 함수 : 컴퓨터 랜덤수 생성 -> 반복 (사용자 입력 -> 값 비교 -> 결과 출력) -> 재시작 여부
+     * 게임 실행 함수 : 컴퓨터 랜덤수 생성 -> 게임 반복 (사용자 입력 -> 값 비교 -> 결과 출력) -> 재시작 여부
      */
     private void run() {
         computerNumber.createComputerNumber();
@@ -53,7 +53,7 @@ public class BaseballGame {
 
 
     /**
-     * 사용자 입력 받는 기능 입력 값으로 받는 수에 대한 예외 포함.
+     * 사용자 입력 받는 기능
      */
     private void userInput() {
         System.out.println("숫자를 입력해주세요 : ");
@@ -63,12 +63,22 @@ public class BaseballGame {
         userNumber.inputUserNumber(inputNumber);
     }
 
+    /**
+     * 사용자 입력 값 중 중복 검사
+     *
+     * @param inputNumber : 사용자 입력 숫자
+     */
     private void duplicateValidate(String inputNumber) {
         if (inputNumber.chars().distinct().count() != inputNumber.length()) {
             throw new IllegalArgumentException("중복된 값이 포함되었습니다.");
         }
     }
 
+    /**
+     * 사용자 입력 값 길이 검사
+     *
+     * @param inputNumber : 사용자 입력 숫자
+     */
     private void sizeValidate(String inputNumber) {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("입력값의 길이는 3이어야 합니다.");
