@@ -1,6 +1,10 @@
 package baseball.controller;
 
-import baseball.domain.*;
+import baseball.domain.BallNumbers;
+import baseball.domain.GameResult;
+import baseball.domain.RandomBallNumberGenerator;
+import baseball.domain.dto.BallNumbersDTO;
+import baseball.domain.dto.RestartDTO;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

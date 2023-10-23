@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.dto;
 
 import static baseball.util.MessageConst.RESTART_FORMAT_EXCEPTION;
 
