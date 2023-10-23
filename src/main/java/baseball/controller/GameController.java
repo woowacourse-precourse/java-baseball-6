@@ -34,10 +34,9 @@ public class GameController {
             String hintMessage = outputView.printHint(countController.getHintMessage(inputNumber));
             System.out.println(hintMessage);
 
-        } while (!isDone(inputNumber)); //!isDone 검증 메서드
+        } while (!isDone(inputNumber));
 
-        //뷰로 입력 받기 - 임시로 테스트 케이스 작성
-        inputNumber.setQuitNumber("2");
+        inputNumber.setQuitNumber(inputView.getRestartOrQuitInput());
 
         if (!isQuitted(inputNumber)) {
             startGame();
