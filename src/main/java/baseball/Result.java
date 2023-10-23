@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-import static baseball.Constants.EMPTY_COUNT;
+import static baseball.Constants.*;
 
 public class Result {
     private Integer strike;
@@ -31,6 +31,25 @@ public class Result {
 
     public boolean isNothing() {
         return strike == EMPTY_COUNT && ball == EMPTY_COUNT;
+    }
+
+    public void printResult() {
+        if (isNothing()) {
+            System.out.println(NOTHING);
+            return;
+        }
+        System.out.println(toStringResult(ball, strike));
+    }
+
+    private static String toStringResult(Integer ball, Integer strike) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (ball != EMPTY_COUNT) {
+            stringBuilder.append(ball + BALL);
+        }
+        if (strike != EMPTY_COUNT) {
+            stringBuilder.append(strike + STRIKE);
+        }
+        return stringBuilder.toString();
     }
 }
 
