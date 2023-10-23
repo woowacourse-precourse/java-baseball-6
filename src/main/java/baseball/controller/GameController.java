@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.view.GameResult;
+import baseball.domain.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
