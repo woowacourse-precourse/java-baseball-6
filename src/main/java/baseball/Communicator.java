@@ -39,16 +39,19 @@ public class Communicator {
     }
 
     public void printResult(Map<String, Integer> counts) {
-        //TODO: hard coded string to something else + fix format to print ball and strike in one line
+        //TODO: hard coded string to something else
         int ballCount = counts.get("ballCount");
+        String result = "";
         if (ballCount > 0) {
-            System.out.println(ballCount + "볼");
+            result += ballCount + "볼 ";
         }
 
         int strikeCount = counts.get("strikeCount");
         if (strikeCount > 0) {
-            System.out.println(strikeCount + "스트라이크");
+            result += strikeCount + "스트라이크";
         }
+
+        System.out.println(result);
 
         if (strikeCount == 3) {
             System.out.println(USER_WIN_MESSAGE);
