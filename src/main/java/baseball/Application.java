@@ -1,8 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -17,6 +19,28 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
+        System.out.print("숫자를 입력해주세요 : ");
+        String userNumber = Console.readLine();
+
+        List<Integer> user = new ArrayList<>();
+        for (int i = 0; i < userNumber.length(); i++) {
+            int temp = userNumber.charAt(i) - '0';
+
+            if ((temp >= 1 && temp <= 9 && user.size() < 3 && !(user.contains(temp)))) {
+                user.add(temp);
+
+            }
+            else {
+                throw new IllegalArgumentException();
+            }
+
+        }
+        
+        if (!(user.size() == 3)) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
 }
