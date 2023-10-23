@@ -25,10 +25,11 @@ public final class InputValidation {
     }
 
     private static Boolean isInRange(List<Integer> target) {
-        for (int t : target) {
-            if (t < INPUT_NUM_MIN || t > INPUT_NUM_MAX) {
-                return false;
-            }
+        int count = (int) target.stream()
+                .filter(t -> t < INPUT_NUM_MIN || t > INPUT_NUM_MAX)
+                .count();
+        if (count != 0) {
+            return false;
         }
         return true;
     }

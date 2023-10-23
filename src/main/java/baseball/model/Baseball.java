@@ -9,6 +9,7 @@ import baseball.io.OutputHandler;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Baseball implements Game {
 
@@ -51,19 +52,16 @@ public class Baseball implements Game {
     }
 
     private ResultScoreBoard compareExpect(List<Integer> expectedNums) {
-        int ball = 0;
-        int strike = 0;
-        for (int i = 0; i < INPUT_MAX_SIZE; i++) {
-            // 값이 있으면 일단 ball
-            if (computer.contains(expectedNums.get(i))) {
-                ball++;
-            }
-            // 값이 자리까지 같으면 ball->strike
-            if (computer.get(i) == expectedNums.get(i)) {
-                strike++;
-                ball--;
-            }
-        }
+        int ball = (int) expectedNums.stream()
+                .filter(computer::contains)
+                .count();
+
+        int strike = (int) IntStream.range(0, INPUT_MAX_SIZE)
+                .filter(i -> computer.get(i) == expectedNums.get(i))
+                .count();
+
+        ball -= strike;
+
         return new ResultScoreBoard(strike, ball);
     }
 }
