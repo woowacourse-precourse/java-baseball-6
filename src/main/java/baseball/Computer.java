@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static baseball.Validator.isUniqueDigits;
+import static baseball.Validator.isDigitsUnique;
 
 public class Computer {
     private String randomNumber;
@@ -14,11 +14,9 @@ public class Computer {
     }
 
     public void generateRandomNumber() {
-        int number = 0;
         do {
-            number = Randoms.pickNumberInRange(startRange, endRange);
-        } while(!isUniqueDigits(number));
-        randomNumber = Integer.toString(number);
+            randomNumber = Integer.toString(Randoms.pickNumberInRange(startRange, endRange));
+        } while (!isDigitsUnique(randomNumber));
     }
 
 

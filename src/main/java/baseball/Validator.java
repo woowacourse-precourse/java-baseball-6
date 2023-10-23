@@ -1,13 +1,15 @@
 package baseball;
 
 public class Validator {
-    public static boolean isUniqueDigits(int number){
-        int hundredDigit = number /100;
-        int tenDigit = (number / 10) % 10;
-        int oneDigit = number % 10;
+    public static boolean isDigitsUnique(String number) {
+        int numericValue = Integer.parseInt(number);
+        int hundredsPlace = numericValue / 100;
+        int tensPlace = (numericValue / 10) % 10;
+        int onesPlace = numericValue % 10;
 
-        return hundredDigit != tenDigit || tenDigit != oneDigit || oneDigit != hundredDigit;
+        return hundredsPlace != tensPlace || tensPlace != onesPlace || onesPlace != hundredsPlace;
     }
+
 
     public static boolean isNumber(String userNumber) {
         try {
