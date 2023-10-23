@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class PlayerTest {
@@ -20,6 +21,17 @@ class PlayerTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Player.createByIntegerNumbers(input))
                 .withMessageMatching("3개 이상의 공이 입력될 수 없습니다.");
+    }
+    @Test
+    @DisplayName("3개의 수가 입력될 경우 정상적으로 생성되어야 한다.")
+    public void createPlayerWithThreeNumbers() {
+        List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
+
+        // when
+        Player player = Player.createByIntegerNumbers(inputNumbers);
+
+        // then
+        assertThat(player).isNotNull();
     }
     @Test
     @DisplayName("중복된 숫자가 입력될 경우 Exception이 발생해야 한다.")
