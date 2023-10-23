@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public class Number {
     public final int num;
