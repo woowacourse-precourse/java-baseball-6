@@ -39,9 +39,9 @@ public class GameController {
 
     private void judge(List<Integer> number, String playInput) {
         for (int i = 0; i < playInput.length(); i++) {
-            int asdf = Character.getNumericValue(playInput.charAt(i));
-            if(isStrike(number, asdf, i)) strike++;
-            else if(isBall(number, asdf)) ball++;
+            int inputDigit = Character.getNumericValue(playInput.charAt(i));
+            if(isStrike(number, inputDigit, i)) strike++;
+            else if(isBall(number, inputDigit)) ball++;
         }
     }
 
