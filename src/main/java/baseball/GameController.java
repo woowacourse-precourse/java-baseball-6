@@ -7,10 +7,10 @@ import java.util.List;
 
 public class GameController {
 
-    public PrintMessage printMessage = new PrintMessage();
-    public List<Integer> computer = new ArrayList<>();  // 컴퓨터(정답) 번호
-    public List<Integer> user = new ArrayList<>();  // 유저가 입력한 번호
-    public int status = 1;   // 야구 게임의 상태가 새로 시작(1) 인지, 종료(2) 인지 구분
+    private PrintMessage printMessage = new PrintMessage();
+    private List<Integer> computer = new ArrayList<>();  // 컴퓨터(정답) 번호
+    private List<Integer> user = new ArrayList<>();  // 유저가 입력한 번호
+    private int status = 1;   // 야구 게임의 상태가 새로 시작(1) 인지, 종료(2) 인지 구분
     public void start() {
         printMessage.start();
 
@@ -23,8 +23,6 @@ public class GameController {
         GameTool gameTool = new GameTool();
         Exception exception = new Exception();
         computer = gameTool.generatedRandomNumbers(3); // 3개 랜덤 숫자 생성
-        // 테스트
-        System.out.println(computer);
 
         while(true) {
             printMessage.requestNumber();
