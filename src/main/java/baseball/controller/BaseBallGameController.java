@@ -19,9 +19,12 @@ public class BaseBallGameController {
 
     private Game baseBallGame(Game game) {
         inputNumber(game);
-        baseBallGameService.countBall(game);
-        baseBallGameService.countStrike(game);
+        countAndSet(game);
         outputView.printResult(game);
+        return isCorrectAndRestart(game);
+    }
+
+    private Game isCorrectAndRestart(Game game) {
         if (baseBallGameService.isCorrect(game)) {
             outputView.finishMessage();
             if (inputView.getRestartInput().equals("1")) {
@@ -31,6 +34,11 @@ public class BaseBallGameController {
             }
         }
         return baseBallGame(game);
+    }
+
+    private void countAndSet(Game game) {
+        baseBallGameService.countBall(game);
+        baseBallGameService.countStrike(game);
     }
 
     private Game initGame() {
