@@ -81,7 +81,7 @@ public class BaseBallGameControllerTest {
         }
 
         @Override
-        public BaseBallResult execute(NumericString playerInput) {
+        public BaseBallResult umpire(NumericString playerInput) {
             return baseBallResult;
         }
     }

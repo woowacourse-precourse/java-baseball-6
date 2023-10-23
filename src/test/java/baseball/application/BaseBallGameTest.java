@@ -27,7 +27,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult baseBallResult = baseBallGame.execute(new NumericString("145"));
+        BaseBallResult baseBallResult = baseBallGame.umpire(new NumericString("145"));
 
         //then
         assertThat(baseBallResult.getStrike()).isEqualTo(1);
@@ -42,7 +42,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult baseBallResult = baseBallGame.execute(new NumericString("125"));
+        BaseBallResult baseBallResult = baseBallGame.umpire(new NumericString("125"));
 
         //then
         assertThat(baseBallResult.getStrike()).isEqualTo(2);
@@ -57,7 +57,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult baseBallResult = baseBallGame.execute(new NumericString("123"));
+        BaseBallResult baseBallResult = baseBallGame.umpire(new NumericString("123"));
 
         //then
         assertThat(baseBallResult.getStrike()).isEqualTo(3);
@@ -71,7 +71,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        baseBallGame.execute(new NumericString("123"));
+        baseBallGame.umpire(new NumericString("123"));
 
         //then
         assertThat(testGameManager.isExit()).isTrue();
@@ -85,7 +85,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new NumericString("451"));
+        BaseBallResult result = baseBallGame.umpire(new NumericString("451"));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -101,7 +101,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new NumericString("251"));
+        BaseBallResult result = baseBallGame.umpire(new NumericString("251"));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -117,7 +117,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new NumericString(("231")));
+        BaseBallResult result = baseBallGame.umpire(new NumericString(("231")));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -133,7 +133,7 @@ public class BaseBallGameTest {
                 testGameManager);
 
         //when
-        BaseBallResult result = baseBallGame.execute(new NumericString("456"));
+        BaseBallResult result = baseBallGame.umpire(new NumericString("456"));
 
         //then
         assertThat(result.getStrike()).isEqualTo(0);

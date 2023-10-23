@@ -16,7 +16,7 @@ public class BaseBallGame implements GameUseCase {
     }
 
     @Override
-    public BaseBallResult execute(NumericString playerInput) {
+    public BaseBallResult umpire(NumericString playerInput) {
         BaseBallNumberList playerBaseBallNumberList = new BaseBallNumberList(playerInput.toList());
 
         int strike = getStrike(playerBaseBallNumberList);

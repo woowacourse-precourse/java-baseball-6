@@ -13,7 +13,7 @@ public class BaseBallGameController {
     }
 
     public String play(String input) {
-        BaseBallResult report = gameUseCase.execute(new NumericString(input));
+        BaseBallResult report = gameUseCase.umpire(new NumericString(input));
 
         if (report.isNoting()) {
             return Hint.NOTHING.toString();
