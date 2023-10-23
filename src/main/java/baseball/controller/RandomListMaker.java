@@ -11,12 +11,24 @@ public class RandomListMaker {
 
     public static List<Integer> generateRandomNumbers(){
         List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() != LIST_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUM_IN_RANGE, MAXIMUM_NUM_IN_RANGE);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+        while (!isFull(computerNumber)) {
+            int randomNumber = getRandomNumberInRange();
+            containNumberInList(computerNumber, randomNumber);
         }
         return computerNumber;
+    }
+
+    private static boolean isFull(List<Integer> computerNumber) {
+        return computerNumber.size() == LIST_SIZE;
+    }
+
+    private static int getRandomNumberInRange() {
+        return Randoms.pickNumberInRange(MINIMUM_NUM_IN_RANGE, MAXIMUM_NUM_IN_RANGE;
+    }
+
+    private static void containNumberInList(List<Integer> computerNumber, int randomNumber) {
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
+        }
     }
 }
