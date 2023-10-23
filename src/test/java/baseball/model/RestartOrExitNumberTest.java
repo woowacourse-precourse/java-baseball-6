@@ -1,7 +1,6 @@
-package baseball.domain;
+package baseball.model;
 
 import baseball.dto.RestartOrExitNumberDto;
-import baseball.model.RestartOrExitNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
