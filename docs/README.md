@@ -25,3 +25,6 @@
 - [x] 사용자가 입력한 값이 서로 다른 수로 이루어진 숫자인지 판별한다. (isNumber)
 ### 사용자가 입력한 숫자를 List로 분리해주는 유틸리티 클래스 (PlayerInputUtils)
 - [x] 사용자가 입력한 숫자를 List로 분리하여 반환한다. (convertInputToList)
+### 사용자 클래스 (Player)
+- [x] 사용자의 숫자를 입력받아 List로 분리하여 반환한다. (getNumbers)
+- [x] 사용자가 게임을 더 진행할지 확인한다. (checkRestartOrQuit)
