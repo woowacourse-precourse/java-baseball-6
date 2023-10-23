@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.domain.scoringnumbers.Balls;
 import baseball.domain.scoringnumbers.Strikes;
+import baseball.system.SystemConstant;
 
 public class GameScore {
     public Strikes numberOfStrikes;
@@ -17,7 +18,6 @@ public class GameScore {
     }
 
     public boolean isStrikesAllOfBalls() {
-        return numberOfStrikes.isStrikeAllOfBalls();
-        //TODO 2023 10 22 의미없이 2중으로 연결된 메서드를 어떻게 해결하면 좋을지 고민
+        return numberOfStrikes.getValue() == SystemConstant.MAXIMUM_DIGIT;
     }
 }
