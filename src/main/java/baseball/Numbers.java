@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Numbers {
-    List<Integer> numbers;
+    private List<Integer> numbers;
     Numbers(){
         numbers = new ArrayList<>();
         setRandomNumbers();

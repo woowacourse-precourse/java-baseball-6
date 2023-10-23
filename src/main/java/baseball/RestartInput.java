@@ -1,7 +1,7 @@
 package baseball;
 
 public class RestartInput {
-    String restartInput;
+    private String restartInput;
     RestartInput(String restartInput){
         validateOneOrTwo(restartInput);
         this.restartInput = restartInput;
