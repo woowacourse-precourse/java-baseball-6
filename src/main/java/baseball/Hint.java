@@ -20,23 +20,6 @@ public class Hint {
         return strike == Constants.GAME_WIN;
     }
 
-    public String getHint() {
-        String hintMessage = "";
-        if (isBallAndStrike(ball, strike)) {
-            hintMessage = ball + Constants.BALL_MESSAGE + strike + Constants.STRIKE_MESSAGE;
-        }
-        if (isBall(ball, strike)) {
-            hintMessage = ball + Constants.BALL_MESSAGE;
-        }
-        if (isStrike(ball, strike)) {
-            hintMessage = strike + Constants.STRIKE_MESSAGE;
-        }
-        if (isNothing(ball, strike)) {
-            hintMessage = Constants.NOTHING_MESSAGE;
-        }
-        return hintMessage;
-    }
-
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         for (int i = 0; i < Constants.NUMBERS_SIZE; i++) {
             if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
@@ -64,5 +47,22 @@ public class Hint {
 
     private boolean isNothing(int ball, int strike) {
         return (ball == 0) && (strike == 0);
+    }
+
+    public String getHint() {
+        String hintMessage = "";
+        if (isBallAndStrike(ball, strike)) {
+            hintMessage = ball + Constants.BALL_MESSAGE + strike + Constants.STRIKE_MESSAGE;
+        }
+        if (isBall(ball, strike)) {
+            hintMessage = ball + Constants.BALL_MESSAGE;
+        }
+        if (isStrike(ball, strike)) {
+            hintMessage = strike + Constants.STRIKE_MESSAGE;
+        }
+        if (isNothing(ball, strike)) {
+            hintMessage = Constants.NOTHING_MESSAGE;
+        }
+        return hintMessage;
     }
 }

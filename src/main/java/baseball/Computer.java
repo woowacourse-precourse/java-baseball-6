@@ -13,10 +13,6 @@ public class Computer {
         this.computerNumbers = computerNumbers;
     }
 
-    public List<Integer> getComputer() {
-        return computerNumbers;
-    }
-
     public static Computer create() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < Constants.NUMBERS_SIZE) {
@@ -24,6 +20,10 @@ public class Computer {
             addNumber(randomNumbers, randomNumber);
         }
         return new Computer(randomNumbers);
+    }
+
+    public List<Integer> getComputer() {
+        return computerNumbers;
     }
 
     private static int generateRandomNumber() {
