@@ -34,7 +34,8 @@ public class Validator {
     }
 
     public static String validateRestartInput(String input) {
-        if (input != "1" || input != "2") {
+        System.out.println(input);
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
         return input;
