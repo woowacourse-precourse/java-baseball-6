@@ -88,4 +88,19 @@ public class Computer {
         return false;
     }
 
+    //정답을 맞췄을 시 사용자의 입력을 받아 재시작을 확인하는 기능
+    public boolean checkReplay(){
+        String replayNumberString = Console.readLine();
+        int replayNumber = -1;
+
+        try {
+            replayNumber = Integer.parseInt(replayNumberString);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        } finally {
+            if (replayNumber == 1) return true;
+            if (replayNumber == 2) return false;
+            throw new IllegalArgumentException();
+        }
+    }
 }
