@@ -14,13 +14,11 @@ public class BaseballGame {
     public void startSystem() {
         sayStart();
         runGames();
-        sayEnd();
     }
     public void runGames(){
         runOneGame();
         if (determineRestart()) {
             runGames();
-            return; // sayEnd 중복 호출 방지
         }
     }
     public void runOneGame() {
@@ -29,6 +27,7 @@ public class BaseballGame {
         while (strike != Constant.numberOfInput) {
             runOneRound(computer);
         }
+        sayEndGame();
     }
     public void runOneRound(List<Integer> computer) {
         setBallStrikeZero();
@@ -111,8 +110,8 @@ public class BaseballGame {
         System.out.println();
     }
     // 게임 종료 (3스트라이크 시)
-    public void sayEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    public void sayEndGame() {
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Constant.numberOfInput);
     }
     // 게임 새로 시작 할 지 정하기
     public Boolean determineRestart() throws IllegalArgumentException{
