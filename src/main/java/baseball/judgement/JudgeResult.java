@@ -6,31 +6,34 @@ import baseball.ball.status.BallStatus;
 import java.util.List;
 
 public class JudgeResult {
-    private int strike = 0;
-    private int ball = 0;
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
+    private int strikeCount = 0;
+    private int ballCount = 0;
 
     public String getResult(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         judgeBalls(playerNumbers, computerNumbers);
         
         String ballCount = getBallCount();
 
-        strike = 0;
-        ball = 0;
+        strikeCount = 0;
+        this.ballCount = 0;
         
         return ballCount;
     }
 
     private String getBallCount() {
-        if (strike == 0 && ball == 0) {
-            return "낫싱";
+        if (strikeCount == 0 && ballCount == 0) {
+            return NOTHING;
         }
-        if (strike == 0) {
-            return ball + "볼";
+        if (strikeCount == 0) {
+            return ballCount + BALL;
         }
-        if (ball == 0) {
-            return strike + "스트라이크";
+        if (ballCount == 0) {
+            return strikeCount + STRIKE;
         }
-        return ball + "볼 " + strike + "스트라이크";
+        return ballCount + BALL + " " + strikeCount + STRIKE;
     }
 
     private void judgeBalls(List<Integer> playerNumbers, List<Integer> computerNumbers) {
@@ -44,8 +47,8 @@ public class JudgeResult {
 
     private void countBallStatus(BallStatus ballStatus) {
         switch (ballStatus) {
-            case STRIKE -> strike++;
-            case BALL -> ball++;
+            case STRIKE -> strikeCount++;
+            case BALL -> ballCount++;
         }
     }
 }
