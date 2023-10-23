@@ -8,12 +8,12 @@ import java.util.Set;
 
 public class Validation {
     public static void inputValidationCheck(String inputString) {
-        verifyLength(inputString);
+        validateLength(inputString);
         isNumericString(inputString);
         hasDuplicateInteger(inputString);
     }
 
-    private static void verifyLength(String input) throws IllegalArgumentException {
+    private static void validateLength(String input) throws IllegalArgumentException {
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException(WRONG_INPUT_SIZE);
         }
@@ -39,12 +39,9 @@ public class Validation {
         }
     }
 
-    public static int askRestart() throws IllegalArgumentException {
-        int inputNumber = Integer.parseInt(Console.readLine());
-
-        if (inputNumber > QUIT || inputNumber < RESTART) {
+    public static void validateRestart(int restart) throws IllegalArgumentException {
+        if (restart > QUIT || restart < RESTART) {
             throw new IllegalArgumentException(WRONG_RESTART_INPUT);
         }
-        return inputNumber;
     }
 }

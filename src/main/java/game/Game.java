@@ -2,13 +2,10 @@ package game;
 
 import static validation.Constant.*;
 
-import camp.nextstep.edu.missionutils.Console;
 import model.PlayerInput;
-import validation.Validation;
-
-import java.util.List;
-
 import model.Answer;
+import view.InputView;
+import view.OutputView;
 
 public class Game {
     private final Answer answer;
@@ -17,15 +14,11 @@ public class Game {
     public Game() {
         answer = new Answer();
         answer.setAnswerNumber();
-        printAnswer(answer.getAnswerNumber());
-    }
-
-    private static void printAnswer(List<Integer> inputAnswer) {
-        System.out.println("answer : " + inputAnswer);
+        OutputView.printAnswer(answer.getAnswerNumber());
     }
 
     public static void set() {
-        printStartString();
+        OutputView.printStartString();
         Game game;
         do {
             game = new Game();
@@ -33,24 +26,10 @@ public class Game {
         } while (game.restart());
     }
 
-    private static void printStartString() {
-        System.out.println(START_MESSAGE);
-    }
-
     private void start() {
-        GuessAnswer();
-    }
-
-
-    private void GuessAnswer() {
         do {
-            playerInput = new PlayerInput(Console.readLine());
+            playerInput = new PlayerInput(InputView.setPlayerInput());
         } while (!equalToAnswer(playerInput.getPlayerInput()));
-    }
-
-    private String userInput() {
-        System.out.print(INPUT_MESSAGE);
-        return Console.readLine();
     }
 
     private boolean equalToAnswer(String inputNumber) {
@@ -58,7 +37,7 @@ public class Game {
         int strike = getStrike(intInputNumber);
         int ball = getBall(intInputNumber);
 
-        printResult(strike, ball);
+        OutputView.printResult(strike, ball);
         if (endGame(strike)) {
             return true;
         }
@@ -108,39 +87,6 @@ public class Game {
         return false;
     }
 
-    private void printResult(int strike, int ball) {
-        printBall(ball);
-        printStrike(strike);
-
-        if (isNothing(strike, ball)) {
-            printNothing();
-        }
-        System.out.println();
-    }
-
-    private boolean isNothing(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    private void printNothing() {
-        System.out.print(NOTHING);
-    }
-
-    private void printBall(int ball) {
-        if (ball > 0) {
-            System.out.print(ball + BALL);
-        }
-    }
-
-    private void printStrike(int strike) {
-        if (strike > 0) {
-            System.out.print(strike + STRIKE);
-        }
-    }
-
     private boolean endGame(int strike) {
         if (strike == STRIKE_SUCCESS) {
             System.out.println(END_GAME_MESSAGE);
@@ -151,7 +97,7 @@ public class Game {
 
     private boolean restart() {
         System.out.println(RESTART_MESSAGE);
-        int inputNumber = Validation.askRestart();
+        int inputNumber = InputView.setRestartInput();
 
         if (inputNumber == RESTART) {
             return true;
