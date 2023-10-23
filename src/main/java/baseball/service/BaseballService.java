@@ -11,6 +11,7 @@ public class BaseballService {
         int ball = countBall(randomNumber, input);
 
         if (strike == 3) {
+            outputView.printThreeStrike(strike);
             return false;
         } else {
             printResult(strike, (ball - strike));

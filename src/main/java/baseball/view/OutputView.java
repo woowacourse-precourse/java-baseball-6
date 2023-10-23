@@ -6,7 +6,6 @@ public class OutputView {
     }
 
     public void endGame() {
-        System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -24,5 +23,9 @@ public class OutputView {
 
     public void printStrikeAndBall(int strike, int ball) {
         System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
+    public void printThreeStrike(int strike) {
+        System.out.println(strike + "스트라이크");
     }
 }
