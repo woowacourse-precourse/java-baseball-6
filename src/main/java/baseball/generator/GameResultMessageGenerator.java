@@ -19,13 +19,13 @@ public class GameResultMessageGenerator {
         if (gameResult.isZeroBall()) {
             return createStrikeMessage(gameResult, "");
         }
-        return createStrikeMessage(gameResult, String.format(BALL_MESSAGE, gameResult.getBall()));
+        return createStrikeMessage(gameResult, String.format(BALL_MESSAGE, gameResult.ball()));
     }
 
     private static String createStrikeMessage(final GameResult gameResult, final String ballMessage) {
         if (gameResult.isZeroStrike()) {
             return ballMessage;
         }
-        return String.format(ballMessage + STRIKE_MESSAGE, gameResult.getStrike());
+        return String.format(ballMessage + STRIKE_MESSAGE, gameResult.strike());
     }
 }

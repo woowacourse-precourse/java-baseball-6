@@ -1,24 +1,8 @@
 package baseball.dto;
 
-public class GameResult {
+public record GameResult(int strike, int ball) {
 
     private static final int WIN_COUNT = 3;
-
-    private int strike;
-    private int ball;
-
-    public GameResult(final int strike, final int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
 
     public boolean isZeroStrike() {
         return strike == 0;

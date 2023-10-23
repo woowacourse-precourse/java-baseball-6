@@ -30,8 +30,8 @@ class ComputerTest {
 
         // then
         assertAll(
-                () -> assertThat(result.getStrike()).isEqualTo(1),
-                () -> assertThat(result.getBall()).isEqualTo(2)
+                () -> assertThat(result.strike()).isEqualTo(1),
+                () -> assertThat(result.ball()).isEqualTo(2)
         );
     }
 
