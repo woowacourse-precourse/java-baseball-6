@@ -19,9 +19,7 @@ public class Controller {
 
             // 유저 숫자 입력
             String userNumber = view.getUserInput();
-            model.setUserNumber(userNumber);
-            model.setStrikes();
-            model.setBalls();
+            modifyModel(userNumber);
 
             // 유저와 컴퓨터 숫자 계산
             model.calculateResult();
@@ -39,6 +37,12 @@ public class Controller {
 
     public boolean gameIsOVer() {
         return view.playAgain();
+    }
+
+    public void modifyModel(String userNumber){
+        model.setUserNumber(userNumber);
+        model.setStrikes();
+        model.setBalls();
     }
 
 }

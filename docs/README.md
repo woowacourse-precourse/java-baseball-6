@@ -15,6 +15,9 @@
   - 게임을 실행 시킵니다.
 - void gameIsOver()
   - 게임을 그만 할 건지를 조사합니다.
+- void modifyModel()
+  - 유저의 숫자를 입력합니다.
+  - 스트라이크와 볼의 숫자를 0으로 초기화 합니다.
 
 ### GameView
 - void startGame()
