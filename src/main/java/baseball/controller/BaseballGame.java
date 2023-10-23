@@ -29,20 +29,19 @@ public class BaseballGame {
             OutputView.printResult(computer);
 
             if (computer.getStrikeCount() == STRIKE_THRESHOLD) {
-                restartOrExitGame();
+                isExit = restartOrExitGame();
             }
         }
     }
 
-    public void restartOrExitGame() {
+    private boolean restartOrExitGame() {
         OutputView.printGameExitMessage();
         int restartOrExitNumber = InputView.inputRestartOrExitNumber();
 
-        if (restartOrExitNumber == 2) {
-            isExit = true;
-        } else if (restartOrExitNumber == 1) {
-            isExit = false;
+        if (restartOrExitNumber == 1) {
             computer.generateRandomNumbers();
+            return false;
         }
+        return true;
     }
 }
