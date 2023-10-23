@@ -13,7 +13,7 @@ public class Player {
      */
     private int[] playerNumberBall;
     /**
-     * 게임이 끝난 후, 재시작 유무
+     * 게임이 끝난 후, 재시작 여부
      */
     private String condition = "";
 
