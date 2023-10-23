@@ -13,7 +13,8 @@ public enum OutputMessage {
 
     private final String message;
 
-    private OutputMessage(String message) {
-        this.message = message;
-    }
+    private OutputMessage(String message) { this.message = message; }
+
+    @Override
+    public String toString() { return message;}
 }
