@@ -42,6 +42,13 @@ public class Application {
         boolean isThreeStrikes = computerController.checkUserInputWithAnswer(validatedUserInputNumbers, computerGenerateNumbers);
         System.out.println(isThreeStrikes);
 
+        String hintMessage = computerController.createHintMessage();
+        outputView.printHint(hintMessage);
+        computerController.initStrikeAndBallCount();
+
+        hintMessage = computerController.createHintMessage();
+        outputView.printHint(hintMessage);
+
         outputView.printGameFinish();
     }
 }
