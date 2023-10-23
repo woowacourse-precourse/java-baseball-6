@@ -24,6 +24,7 @@ public class BaseBallGame {
         StartGamePrint();
         while(cycle) {
             StartPrint();
+            userString = InputNum();
         }
         StopGamePrint();
     }
@@ -38,5 +39,10 @@ public class BaseBallGame {
     //숫자 입력 알림 함수
     public void StartPrint(){
         System.out.print("숫자를 입력해주세요 : ");
+    }
+    //플레이어 숫자 입력 함수
+    public String InputNum(){
+        String player = Console.readLine();
+        return player;
     }
 }
