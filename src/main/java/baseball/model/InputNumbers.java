@@ -10,6 +10,7 @@ public class InputNumbers {
     public InputNumbers(String input) {
         checkSize(input);
         createCharToInt(input);
+        checkSameNumbers();
     }
 
     private void checkSize(String input) {
@@ -23,6 +24,21 @@ public class InputNumbers {
             char tmpNumber = input.charAt(i);
             InputNumber inputNumber = new InputNumber(tmpNumber);
             inputNumbers.add(inputNumber);
+        }
+    }
+
+    private void checkSameNumbers() {
+        for (int i = 0; i < inputNumbers.size() - 1; i++) {
+            checkNextNumber(i);
+        }
+    }
+
+    private void checkNextNumber(int index) {
+        InputNumber currentNumber = inputNumbers.get(index);
+        for (int j = index + 1; j < inputNumbers.size(); j++) {
+            if (currentNumber.equals(inputNumbers.get(j))) {
+                throw new IllegalArgumentException("입력된 값에 중복된 숫자가 있어요");
+            }
         }
     }
 }
