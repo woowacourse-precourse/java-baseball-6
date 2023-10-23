@@ -1,6 +1,8 @@
 package baseball;
 
-import static baseball.status.ErrorCode.*;
+import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
+import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
+import static baseball.status.ErrorCode.INVALID_LENGTH_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -23,11 +25,11 @@ class GameTest {
     void validationInputTest2() {
         Game game = new Game();
         IllegalArgumentException exception = assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("12"));
+                IllegalArgumentException.class, () -> game.getIntegerInput("12"));
         IllegalArgumentException exception2 = assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("1"));
+                IllegalArgumentException.class, () -> game.getIntegerInput("1"));
         IllegalArgumentException exception3 = assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput(""));
+                IllegalArgumentException.class, () -> game.getIntegerInput(""));
 
         assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception.getMessage());
         assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception2.getMessage());
@@ -39,7 +41,7 @@ class GameTest {
     void validationInputTest3() {
         Game game = new Game();
         IllegalArgumentException exception = assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("1234"));
+                IllegalArgumentException.class, () -> game.getIntegerInput("1234"));
 
         assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception.getMessage());
     }
@@ -47,13 +49,13 @@ class GameTest {
     @Test
     @DisplayName("잘못된 입력_숫자 대신 문자인 경우")
     void validationInputTest4() {
-        Game game =new Game();
-        IllegalArgumentException exception =assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("12a"));
-        IllegalArgumentException exception2 =assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("1.5"));
-        IllegalArgumentException exception3 =assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("pen"));
+        Game game = new Game();
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class, () -> game.getIntegerInput("12a"));
+        IllegalArgumentException exception2 = assertThrows(
+                IllegalArgumentException.class, () -> game.getIntegerInput("1.5"));
+        IllegalArgumentException exception3 = assertThrows(
+                IllegalArgumentException.class, () -> game.getIntegerInput("pen"));
 
         assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception.getMessage());
         assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
@@ -63,9 +65,9 @@ class GameTest {
     @Test
     @DisplayName("잘못된 입력_1 ~ 9에 해당하지 않는 경우")
     void validationInputTest5() {
-        Game game =new Game();
-        IllegalArgumentException exception =assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("120"));
+        Game game = new Game();
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class, () -> game.getIntegerInput("120"));
 
         assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception.getMessage());
     }
@@ -73,11 +75,11 @@ class GameTest {
     @Test
     @DisplayName("잘못된 입력_중복된 숫자가 존재하는 경우")
     void validationInputTest6() {
-        Game game =new Game();
-        IllegalArgumentException exception =assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("151"));
-        IllegalArgumentException exception2 =assertThrows(
-            IllegalArgumentException.class, ()->game.getIntegerInput("133"));
+        Game game = new Game();
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class, () -> game.getIntegerInput("151"));
+        IllegalArgumentException exception2 = assertThrows(
+                IllegalArgumentException.class, () -> game.getIntegerInput("133"));
 
         assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception.getMessage());
         assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
