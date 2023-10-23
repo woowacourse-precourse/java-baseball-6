@@ -1,4 +1,5 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
@@ -7,7 +8,7 @@ public class Player {
     int END_INCLUSIVE = Constants.END_INCLUSIVE;
     int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
 
-    public void setInput(){
+    public void setInput() {
         String input = Console.readLine();
 
         // 유효성 검사 후 통과 못하면 에러 후 리턴
