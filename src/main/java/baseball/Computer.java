@@ -1,10 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements Player {
-    @Override
+public class Computer {
+    List<Integer> number = new ArrayList<>();
+
     public List<Integer> getNumber() {
         return number;
     }
@@ -17,5 +19,4 @@ public class Computer implements Player {
             }
         }
     }
-
 }

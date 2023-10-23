@@ -1,9 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class User implements Player {
-    @Override
+public class User {
+    List<Integer> number = new ArrayList<>();
+
     public List<Integer> getNumber() {
         return number;
     }
