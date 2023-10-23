@@ -55,7 +55,7 @@
     - 게임오버가 되었는지 확인해주는 함수
 
 ## 진행 사항
-- [ ] Input 객체
+- [X] Input 객체
 - [ ] InputValidator 객체
 - [ ] ComputerNumber 객체
 - [ ] PlayerNumber 객체
