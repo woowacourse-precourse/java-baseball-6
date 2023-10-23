@@ -1,7 +1,6 @@
 package baseball.version2.object;
 
 public class Score {
-
     private int ball;
     private int strike;
 
@@ -17,5 +16,4 @@ public class Score {
     public int getStrike() {
         return strike;
     }
-
 }

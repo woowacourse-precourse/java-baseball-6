@@ -6,7 +6,6 @@ import baseball.version2.controller.Controller;
 import baseball.version2.dto.ComputerAnswerDto;
 
 public class Game {
-
     private final Controller controller;
 
     public Game() {
@@ -29,5 +28,4 @@ public class Game {
             isCorrect = controller.startGame(computerAnswer);
         }
     }
-
 }

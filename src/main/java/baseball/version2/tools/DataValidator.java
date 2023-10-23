@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class DataValidator {
-
     public void validatePlayerAnswer(int[] playerAnswerArray) {
         if (isContainZero(playerAnswerArray) || isDuplicate(playerAnswerArray)) {
             throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
@@ -40,5 +39,4 @@ public class DataValidator {
             throw new IllegalArgumentException(DECISION_ERROR_PHRASES);
         }
     }
-
 }

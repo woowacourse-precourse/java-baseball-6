@@ -11,7 +11,6 @@ import baseball.version2.view.InputView;
 import baseball.version2.view.OutView;
 
 public class Controller {
-
     private final Service service;
     private final InputView inputView;
     private final OutView outView;
@@ -35,6 +34,7 @@ public class Controller {
         PlayerAnswerDto playerAnswer = inputView.getPlayerAnswer(ANSWER_ARRAY_SIZE);
         Score score = service.compareTwoAnswer(playerAnswer, computerAnswer);
         int strike = outView.printResult(score);
+
         if (strike == THREE_STRIKE) {
             return true;
         }
@@ -44,5 +44,4 @@ public class Controller {
     public int isContinue() {
         return inputView.getPlayerDecision();
     }
-
 }

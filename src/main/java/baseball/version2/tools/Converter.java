@@ -7,7 +7,6 @@ import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 
 public class Converter {
-
     public int[] convertStringToArray(String[] answerStringArray, int[] answerArray) {
         int answerOrder = 0;
 

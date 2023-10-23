@@ -14,7 +14,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Service {
-
     private static int[] computerAnswer;
     private final Converter converter;
 
@@ -25,6 +24,7 @@ public class Service {
     public ComputerAnswerDto getComputerAnswer() {
         ArrayList<Integer> randomNumbers = new ArrayList<>();
         ComputerAnswerDto computerAnswerDto = new ComputerAnswerDto();
+
         while (randomNumbers.size() < ANSWER_ARRAY_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(RANGE_START_NUMBER, RANGE_END_NUMBER);
             if (!randomNumbers.contains(randomNumber)) {
@@ -32,6 +32,7 @@ public class Service {
             }
         }
         int[] convertedAnswer = converter.convertListToArray(randomNumbers);
+
         computerAnswerDto.setAnswer(convertedAnswer);
         return computerAnswerDto;
     }
@@ -41,6 +42,7 @@ public class Service {
         int[] playerAnswer = playerAnswerDto.getAnswer();
         int ball = 0;
         int strike = 0;
+
         for (int i = 0; i < ANSWER_ARRAY_SIZE; i++) {
             ScoreDto scoreDto = checkPlayerValueAndComputerAnswer(playerAnswer, i);
             ball += scoreDto.getBall();
@@ -51,6 +53,7 @@ public class Service {
 
     private ScoreDto checkPlayerValueAndComputerAnswer(int[] playerAnswer, int i) {
         ScoreDto scoreDto = new ScoreDto();
+
         for (int j = 0; j < ANSWER_ARRAY_SIZE; j++) {
             if (playerAnswer[i] == computerAnswer[j] && i == j) {
                 scoreDto.setStrike(scoreDto.getStrike() + 1);
@@ -61,5 +64,4 @@ public class Service {
         }
         return scoreDto;
     }
-
 }

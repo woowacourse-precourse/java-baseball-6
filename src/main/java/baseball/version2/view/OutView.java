@@ -10,7 +10,6 @@ import static baseball.version2.constants.Value.THREE_STRIKE;
 import baseball.version2.object.Score;
 
 public class OutView {
-
     public void printStart() {
         System.out.println(START_PHRASES);
     }
@@ -18,6 +17,7 @@ public class OutView {
     public int printResult(Score score) {
         int ball = score.getBall();
         int strike = score.getStrike();
+
         if (ball == 0 && strike == 0) {
             printNothing();
         }

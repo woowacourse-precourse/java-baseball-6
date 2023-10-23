@@ -15,5 +15,4 @@ public class Phrases {
     // 에러 메세지
     public final static String ANSWER_ERROR_PHRASES = "1~9까지의 서로 다른 세 자리 숫자만 입력하세요";
     public final static String DECISION_ERROR_PHRASES = "1 또는 2를 입력해주세요";
-
 }

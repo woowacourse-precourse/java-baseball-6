@@ -18,11 +18,13 @@ public class InputView {
     }
 
     public PlayerAnswerDto getPlayerAnswer(int arraySize) {
-        PlayerAnswerDto playerAnswer = new PlayerAnswerDto();
         System.out.print(INSERT_ANSWER_PHRASES);
+
         String inputValue = Console.readLine();
         int[] answerArray = convertPlayerInput(arraySize, inputValue);
         dataValidator.validatePlayerAnswer(answerArray);
+
+        PlayerAnswerDto playerAnswer = new PlayerAnswerDto();
         playerAnswer.setAnswer(answerArray);
         return playerAnswer;
     }
@@ -30,16 +32,18 @@ public class InputView {
     private int[] convertPlayerInput(int arraySize, String inputValue) {
         String[] answerStringArray = inputValue.split("");
         int[] answerArray = new int[arraySize];
+
         answerArray = converter.convertStringToArray(answerStringArray, answerArray);
         return answerArray;
     }
 
     public int getPlayerDecision() {
         System.out.println(SELECT_CONTINUE_PHRASES);
+
         String playerDecision = Console.readLine();
         int decision = converter.convertStringToInt(playerDecision);
-        dataValidator.validateDecision(decision);
 
+        dataValidator.validateDecision(decision);
         return decision;
     }
 

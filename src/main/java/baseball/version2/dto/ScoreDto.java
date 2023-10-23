@@ -1,7 +1,6 @@
 package baseball.version2.dto;
 
 public class ScoreDto {
-
     private int ball;
     private int strike;
 
@@ -25,5 +24,4 @@ public class ScoreDto {
     public void setStrike(int strike) {
         this.strike = strike;
     }
-
 }
