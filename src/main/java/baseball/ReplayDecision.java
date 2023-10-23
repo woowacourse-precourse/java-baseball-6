@@ -6,13 +6,14 @@ public class ReplayDecision {
 	
 	public void valueOutOfBound() {
 		
-		try {
+		//try {
 			throw new IllegalArgumentException("1,2중 하나만 입력해주세요");
 			
-		} catch(IllegalArgumentException e) {
-			System.out.println(e.toString());
-			return;
-		}
+		//} catch(IllegalArgumentException e) {
+			//System.out.println(e.toString());
+			//e.printStackTrace();
+			//return;
+		//}
 	}
 	
 	public ReplayDecision() {

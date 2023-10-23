@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 import DTO.ComputerDto;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -7,6 +9,7 @@ public class Game {
 
 	private final ProcessMembers proc=new ProcessMembers();
 	private String result;
+	//private List<Integer> computer;
 	
 	public void runGame() {
 
@@ -22,6 +25,7 @@ public class Game {
     			return;
 	    	
 	    	this.result=proc.inspection(com.getComputer(),input);
+    		//this.result=proc.inspection(this.computer,input);
 	    	
 	    	System.out.println(this.result);
 	    	
