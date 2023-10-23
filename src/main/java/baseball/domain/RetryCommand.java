@@ -5,10 +5,10 @@ public enum RetryCommand {
     RETRY("1"),
     QUIT("2");
 
-    final String number;
+    final String content;
 
-    RetryCommand(String number) {
-        this.number = number;
+    RetryCommand(String content) {
+        this.content = content;
     }
 
     public boolean isRetry() {
@@ -16,7 +16,7 @@ public enum RetryCommand {
     }
 
     public String getNumber() {
-        return number;
+        return content;
     }
 
 }

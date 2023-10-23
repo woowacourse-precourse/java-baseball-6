@@ -1,11 +1,17 @@
 package baseball.domain;
 
+import static baseball.service.NumberGenerator.NUMBER_COUNT;
+
 public class GameResult {
 
     private int ballCount;
     private int strikeCount;
 
     public GameResult() {
+        initCount();
+    }
+
+    public void initCount() {
         this.ballCount = 0;
         this.strikeCount = 0;
     }
@@ -20,16 +26,11 @@ public class GameResult {
     }
 
     public boolean isThreeStrike() {
-        return this.strikeCount == 3;
+        return this.strikeCount == NUMBER_COUNT;
     }
 
     public boolean isNotThreeStrike() {
-        return strikeCount != 3;
-    }
-
-    public void reset() {
-        this.ballCount = 0;
-        this.strikeCount = 0;
+        return strikeCount != NUMBER_COUNT;
     }
 
     public int getBallCount() {

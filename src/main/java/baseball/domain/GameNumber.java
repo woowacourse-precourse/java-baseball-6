@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.service.NumberGenerator.NUMBER_COUNT;
 import static baseball.util.ErrorMessage.*;
 
 public record GameNumber(List<Integer> number) {
@@ -32,7 +33,7 @@ public record GameNumber(List<Integer> number) {
     }
 
     private void checkLength(List<Integer> number) {
-        if (number.size() != 3) {
+        if (number.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException(LENGTH_ERROR);
         }
     }
@@ -52,9 +53,13 @@ public record GameNumber(List<Integer> number) {
 
     private void checkNegative(List<Integer> number) {
         for (Integer i : number) {
-            if (i < 0) {
+            if (isNegative(i)) {
                 throw new IllegalArgumentException(NEGATIVE_ERROR);
             }
         }
+    }
+
+    private static boolean isNegative(Integer i) {
+        return i < 0;
     }
 }

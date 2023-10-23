@@ -75,7 +75,7 @@ public class GameResultTest {
         gameResult.updateCount(strike);
         gameResult.updateCount(ball);
 
-        gameResult.reset();
+        gameResult.initCount();
 
         //then
         assertThat(gameResult.getStrikeCount()).isEqualTo(0);

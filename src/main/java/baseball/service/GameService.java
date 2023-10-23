@@ -26,16 +26,16 @@ public class GameService {
 
     private Judgement checkNumber(GameNumber answerNumber, GameNumber userNumber, int index) {
         int indexNumber = userNumber.getNumberOfIndex(index);
-        boolean isContain = answerNumber.isContain(indexNumber);
+        boolean isContains = answerNumber.isContain(indexNumber);
         boolean isInPlace = answerNumber.isInPlace(index, indexNumber);
-        return Judgement.judge(isContain, isInPlace);
+        return Judgement.judge(isContains, isInPlace);
     }
 
     public boolean isNotDone() {
         return gameResult.isNotThreeStrike();
     }
 
-    public void resetResult() {
-        gameResult.reset();
+    public void setCountZero() {
+        gameResult.initCount();
     }
 }

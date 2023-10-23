@@ -5,11 +5,11 @@ public enum Judgement {
     BALL,
     NOTHING;
 
-    public static Judgement judge(boolean isContain, boolean isInPlace) {
-        if (isContain && isInPlace) {
+    public static Judgement judge(boolean isContains, boolean isInPlace) {
+        if (isContains && isInPlace) {
             return STRIKE;
         }
-        if (isContain) {
+        if (isContains) {
             return BALL;
         }
         return NOTHING;
