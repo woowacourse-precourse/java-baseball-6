@@ -1,4 +1,4 @@
-package baseball;
+package game;
 
 import static baseball.constant.NumberConstants.RESTART_NUMBER_STRING;
 
