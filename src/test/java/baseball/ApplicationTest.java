@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -290,6 +293,57 @@ class ApplicationTest extends NsTest {
         assertThat(result6).isEqualTo(2);
         assertThat(result7).isEqualTo(2);
         assertThat(result8).isEqualTo(3);
+    }
+
+    @DisplayName("결과 출력 메서드 테스트")
+    @Test
+    void printResultTest() {
+        // given
+        final List<Integer> strikeBallCnt1 = List.of(0, 0); // 낫싱
+        final List<Integer> strikeBallCnt2 = List.of(0, 1); // 1볼
+        final List<Integer> strikeBallCnt3 = List.of(0, 2); // 2볼
+        final List<Integer> strikeBallCnt4 = List.of(1, 0); // 1스트라이크
+        final List<Integer> strikeBallCnt5 = List.of(2, 0); // 2스트라이크
+        final List<Integer> strikeBallCnt6 = List.of(3, 0); // 3스트라이크
+        final List<Integer> strikeBallCnt7 = List.of(1, 2); // 2볼 1스트라이크
+
+        // when
+        final OutputStream result1 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result1));
+        Player.printResult(strikeBallCnt1.get(0), strikeBallCnt1.get(1));
+
+        final OutputStream result2 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result2));
+        Player.printResult(strikeBallCnt2.get(0), strikeBallCnt2.get(1));
+
+        final OutputStream result3 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result3));
+        Player.printResult(strikeBallCnt3.get(0), strikeBallCnt3.get(1));
+
+        final OutputStream result4 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result4));
+        Player.printResult(strikeBallCnt4.get(0), strikeBallCnt4.get(1));
+
+        final OutputStream result5 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result5));
+        Player.printResult(strikeBallCnt5.get(0), strikeBallCnt5.get(1));
+
+        final OutputStream result6 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result6));
+        Player.printResult(strikeBallCnt6.get(0), strikeBallCnt6.get(1));
+
+        final OutputStream result7 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result7));
+        Player.printResult(strikeBallCnt7.get(0), strikeBallCnt7.get(1));
+
+        // then
+        assertThat(result1.toString().strip()).isEqualTo("낫싱");
+        assertThat(result2.toString().strip()).isEqualTo("1볼");
+        assertThat(result3.toString().strip()).isEqualTo("2볼");
+        assertThat(result4.toString().strip()).isEqualTo("1스트라이크");
+        assertThat(result5.toString().strip()).isEqualTo("2스트라이크");
+        assertThat(result6.toString().strip()).isEqualTo("3스트라이크");
+        assertThat(result7.toString().strip()).isEqualTo("2볼 1스트라이크");
     }
 
     @Override
