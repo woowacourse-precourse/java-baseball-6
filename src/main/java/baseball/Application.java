@@ -9,7 +9,7 @@ public class Application {
         while (isContinue) {
             gameUtil.receiveUserInput();
 
-            if (gameUtil.checkUserInput()) {
+            if (gameUtil.compareUserInputWithAnswer()) {
                 if (!gameUtil.checkIsContinue()) isContinue = false;
                 else {
                     gameUtil.settingGame();

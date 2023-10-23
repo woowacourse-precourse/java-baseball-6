@@ -55,7 +55,7 @@ public class GameUtil {
         }
     }
 
-    public Boolean checkUserInput() {
+    public Boolean compareUserInputWithAnswer() {
         Integer ballCount = findBall(this.userInput, this.answer);
         Integer strikeCount = findStrike(this.userInput, this.answer);
 
