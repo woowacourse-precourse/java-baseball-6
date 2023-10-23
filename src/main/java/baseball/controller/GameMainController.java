@@ -8,31 +8,35 @@ public class GameMainController {
 
     private static final String THREESTRIKE = "3스트라이크";
 
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final GameService gameService = new GameService();
+
     public GameMainController() {
-        InputView.startBaseballGame();
+        inputView.startBaseballGame();
     }
 
-    public static void startGame() {
+    public void startGame() {
         boolean gameEnd = false;
         while (!gameEnd) {
-            GameService.setGame();
+            gameService.setGame();
             playGame();
             gameEnd = endGame();
         }
     }
 
-    public static void playGame() {
-        while (!GameService.playGame().equals(THREESTRIKE)) {
-            String result = GameService.playGame();
-            OutputView.printStrikeOrBall(result);
+    public void playGame() {
+        while (!gameService.playGame().equals(THREESTRIKE)) {
+            String result = gameService.playGame();
+            outputView.printStrikeOrBall(result);
         }
 
-        OutputView.printStrikeOrBall(THREESTRIKE);
+        outputView.printStrikeOrBall(THREESTRIKE);
         OutputView.printCorrectAnswer();
     }
 
-    public static boolean endGame() {
-        InputView.requestGameState();
-        return GameService.endGame();
+    public boolean endGame() {
+        inputView.requestGameState();
+        return gameService.endGame();
     }
 }

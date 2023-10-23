@@ -15,12 +15,12 @@ public class MessageConverter {
     private static final int NUMBER_SIZE = 3;
     private static final int DEFAULT_NUMBER = 0;
 
-    private static Map<String, Integer> resultMessageMap;
+    private Map<String, Integer> resultMessageMap;
 
     /*
     * ConcurrentHashMap 초기화 메서드
     * */
-    private static void initializeResultMessage() {
+    private void initializeResultMessage() {
         resultMessageMap = new ConcurrentHashMap<>() {
             {
                 put(STRIKE, DEFAULT_NUMBER);
@@ -34,7 +34,7 @@ public class MessageConverter {
     * @Param input 플레이어의 숫자
     * @Param computerNumber 컴퓨터의 숫자
     * */
-    public static Map<String, Integer> getResultMessage(List<Integer> input, List<Integer> computerNumber) {
+    public Map<String, Integer> getResultMessage(List<Integer> input, List<Integer> computerNumber) {
         initializeResultMessage();
 
         for(int index = 0; index < NUMBER_SIZE; index++) {
@@ -50,7 +50,7 @@ public class MessageConverter {
      * @Param computerNumber 컴퓨터의 숫자
      * @Param index 리스트의 인덱스
      * */
-    private static void getStrikeOrBall(List<Integer> input, List<Integer> computerNumber, Integer index) {
+    private void getStrikeOrBall(List<Integer> input, List<Integer> computerNumber, Integer index) {
         if (input.get(index).equals(computerNumber.get(index))) {
            resultMessageMap.put(STRIKE, resultMessageMap.get(STRIKE) + 1);
         }
@@ -64,7 +64,7 @@ public class MessageConverter {
      * 스트라이크 볼 개수를 map에서 String으로 변환하는 메서드
      * @Param resultMessageMap 플레이어와 컴퓨터의 숫자를 비교한 map 결과값
      * */
-    public static String getResultMessageToString(Map<String, Integer> resultMessageMap) {
+    public String getResultMessageToString(Map<String, Integer> resultMessageMap) {
         Integer ballInt = resultMessageMap.get(BALL);
         Integer strikeInt = resultMessageMap.get(STRIKE);
         StringBuilder resultBuilder = new StringBuilder();

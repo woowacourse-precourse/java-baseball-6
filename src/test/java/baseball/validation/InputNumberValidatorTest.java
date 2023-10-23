@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputNumberValidatorTest {
 
+    private InputNumberValidator inputNumberValidator = new InputNumberValidator();
+
     @Test
     void 전체검증_메서드2() {
         String correctExample = "316";
@@ -15,11 +17,11 @@ class InputNumberValidatorTest {
         String uncorrectExampleByType = "안1";
         String uncorrectExampleByDuplicate = "112";
 
-        assertTrue(InputNumberValidator.convertStrToList(correctExample) instanceof List<Integer>);
+        assertTrue(inputNumberValidator.convertStrToList(correctExample) instanceof List<Integer>);
 
-        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputNumber(uncorrectExampleBySize));
-        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputNumber(uncorrectExampleByType));
-        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputNumber(uncorrectExampleByDuplicate));
+        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateInputNumber(uncorrectExampleBySize));
+        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateInputNumber(uncorrectExampleByType));
+        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateInputNumber(uncorrectExampleByDuplicate));
     }
 
 //    @Test
@@ -35,7 +37,7 @@ class InputNumberValidatorTest {
     @Test
     void String을_List로_변환() {
         String example = "316";
-        assertTrue(InputNumberValidator.convertStrToList(example) instanceof List<Integer>);
+        assertTrue(inputNumberValidator.convertStrToList(example) instanceof List<Integer>);
     }
 
 //    @Test

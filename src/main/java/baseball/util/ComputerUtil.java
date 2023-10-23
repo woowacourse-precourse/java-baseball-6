@@ -15,7 +15,7 @@ public class ComputerUtil {
     /*
     * 3자리 숫자 생성 (중복X)
     * */
-    public static List<Integer> generateComputerNumber() {
+    public List<Integer> generateComputerNumber() {
         LinkedHashSet<Integer> computerNumber = new LinkedHashSet<>();
 
         while (computerNumber.size() < NUMBER_SIZE) {

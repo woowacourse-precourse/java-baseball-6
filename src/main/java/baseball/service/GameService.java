@@ -14,29 +14,34 @@ public class GameService {
     private static final Integer STOP = 2;
     private static List<Integer> computerNumber;
 
+    private final ComputerUtil computerUtil = new ComputerUtil();
+    private final UserUtil userUtil = new UserUtil();
+    private final MessageConverter messageConverter = new MessageConverter();
+    private final InputNumberValidator inputNumberValidator = new InputNumberValidator();
+
     /*
      * 게임 초기설정 메서드
      * */
-    public static void setGame() {
-        computerNumber = ComputerUtil.generateComputerNumber();
+    public void setGame() {
+        computerNumber = computerUtil.generateComputerNumber();
     }
 
     /*
      * 게임 진행 메서드
      * */
-    public static String playGame() {
-        String input = UserUtil.getUserNumber();
-        List<Integer> inputList = InputNumberValidator.validateInputNumber(input);
-        Map<String, Integer> resultMap = MessageConverter.getResultMessage(inputList, computerNumber);
-        return MessageConverter.getResultMessageToString(resultMap);
+    public String playGame() {
+        String input = userUtil.getUserNumber();
+        List<Integer> inputList = inputNumberValidator.validateInputNumber(input);
+        Map<String, Integer> resultMap = messageConverter.getResultMessage(inputList, computerNumber);
+        return messageConverter.getResultMessageToString(resultMap);
     }
 
     /*
     * 게임 종료 메서드
     * true : 게임 종료 false : 재시작
     * */
-    public static boolean endGame() {
-        String input = UserUtil.getUserNumber();
+    public boolean endGame() {
+        String input = userUtil.getUserNumber();
 
         return Objects.equals(input, STOP);
     }

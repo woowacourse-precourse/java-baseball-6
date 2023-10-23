@@ -18,7 +18,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값(String) 전체 검증 메서드
      * @Param input 플레이어의 숫자
      * */
-    public static List<Integer> validateInputNumber(String input) {
+    public List<Integer> validateInputNumber(String input) {
         validateInputSize(input);
         validateInputType(input);
         validateInputDuplication(input);
@@ -30,7 +30,7 @@ public class InputNumberValidator {
     * 플레이어의 입력값(String)을 List로 변환하는 메서드
     * @Param input 플레이어의 숫자
     * */
-    public static List<Integer> convertStrToList(String input) {
+    public List<Integer> convertStrToList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -40,7 +40,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 3자리 수인지 확인
      * @Param input 플레이어의 숫자
      * */
-    private static void validateInputSize(String input) {
+    private void validateInputSize(String input) {
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
@@ -50,7 +50,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 숫자인지 확인
      * @Param input 플레이어의 숫자
      * */
-    private static void validateInputType(String input) {
+    private void validateInputType(String input) {
         if (!input.matches(REGEX)) {
             throw new IllegalArgumentException();
         }
@@ -60,7 +60,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 중복인지 확인
      * @Param input 플레이어의 숫자
      * */
-    private static void validateInputDuplication(String input) {
+    private void validateInputDuplication(String input) {
         Set<Character> duplicateCheckSet = new HashSet<>();
         for (char c : input.toCharArray()) {
             duplicateCheckSet.add(c);

@@ -7,7 +7,7 @@ public class UserUtil {
     /*
     * 플레이어는 숫자를 입력한다.
     * */
-    public static String getUserNumber() {
+    public String getUserNumber() {
         return Console.readLine();
     }
 
