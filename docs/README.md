@@ -4,7 +4,7 @@
 
 ## BaseballPlayer
 
-숫자 야구 참여자들의 추상 클래스
+숫자 야구 참여자들의 인터페이스
 
 - 사용자의 입력을 받는 `inputBaseballNumbers()`
 
@@ -12,7 +12,7 @@
 
 ## User
 
-`BaseballPlayer` 의 자손 클래스
+`BaseballPlayer` 의 구현체
 
 - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 이용하여 구현한 `inputBaseballNumbers()`
 
@@ -20,7 +20,7 @@
 
 ## Computer
 
-`BaseballPlayer` 의 자손 클래스
+`BaseballPlayer` 의 구현체
 
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 이용하여 구현한 `inputBaseballNumbers()`
 
@@ -28,7 +28,7 @@
 
 ## BaseballNumbers
 
-`List<BaseballNumber>`를 래핑한 일급 컬렉션
+`List<Integer>`를 래핑한 일급 컬렉션
 
 - 리스트 크기를 반환해주는 `size()`
 - 리스트에 존재하는 `BaseballNumber`를 가져오는 `get(int index)`
