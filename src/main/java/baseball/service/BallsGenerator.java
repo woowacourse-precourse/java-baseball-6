@@ -17,18 +17,6 @@ public class BallsGenerator {
         return Randoms.pickNumberInRange(MINIMUM_RANDOM_NUMBER, MAXIMUM_RANDOM_NUMBER);
     }
 
-    private List<Integer> generateUniqueNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size() < MAX_BALL_SIZE) {
-            int randomNumber = generateRandomBall();
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        return numbers;
-    }
-
     public List<Balls> generateComputerNumbers() {
         List<Integer> numbers = generateUniqueNumbers();
         List<Balls> computers = new ArrayList<>();
@@ -46,5 +34,17 @@ public class BallsGenerator {
             ballsList.add(new Balls(Integer.parseInt(values.get(i)), i));
         }
         return ballsList;
+    }
+
+    private List<Integer> generateUniqueNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+
+        while (numbers.size() < MAX_BALL_SIZE) {
+            int randomNumber = generateRandomBall();
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return numbers;
     }
 }

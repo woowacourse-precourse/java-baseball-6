@@ -11,6 +11,19 @@ public class Referee {
     private static final int MAX_BALL_SIZE = 3;
     private static final int ZERO = 0;
 
+    public BallCounter judgeGame(List<Balls> computerBalls, List<Balls> playerBalls) {
+        BallCounter ballCounter = new BallCounter(ZERO, ZERO);
+
+        for (Balls computerBall : computerBalls) {
+            checkPlayerBalls(computerBall, playerBalls, ballCounter);
+        }
+        return ballCounter;
+    }
+
+    public boolean isEndGameCondition(BallCounter ballCounter) {
+        return ballCounter.getStrikeCount() == MAX_BALL_SIZE;
+    }
+
     private BallStatus checkBallStatus(Balls computer, Balls player) {
         if (computer.getLocation() == player.getLocation() && computer.getNumber() == player.getNumber()) {
             return BallStatus.STRIKE;
@@ -19,15 +32,6 @@ public class Referee {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
-    }
-
-    public BallCounter judgeGame(List<Balls> computerBalls, List<Balls> playerBalls) {
-        BallCounter ballCounter = new BallCounter(ZERO, ZERO);
-
-        for (Balls computerBall : computerBalls) {
-            checkPlayerBalls(computerBall, playerBalls, ballCounter);
-        }
-        return ballCounter;
     }
 
     private void checkPlayerBalls(Balls computerBall, List<Balls> playerBalls, BallCounter ballCounter) {
@@ -46,7 +50,4 @@ public class Referee {
         }
     }
 
-    public boolean isEndGameCondition(BallCounter ballCounter) {
-        return ballCounter.getStrikeCount() == MAX_BALL_SIZE;
-    }
 }
