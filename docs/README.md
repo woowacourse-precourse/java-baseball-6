@@ -28,7 +28,7 @@
   - [ ] Game 클래스
   - [ ] Pitcher 클래스
   - [ ] Referee 클래스
-  - [ ] TargetNumber 클래스
+  - ~~TargetNumber 클래스~~
 - [ ] public 메서드 주석 추가하기
 - [ ] 리팩토링
 
