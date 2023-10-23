@@ -20,8 +20,8 @@ public class User {
         checkInputType(input);
         checkDuplicateInput(input);
 
-        for(int i = 0; i < INPUT_LENGTH; i++){
-            userInput[i] = Character.getNumericValue(input.charAt(i));
+        for(int userIndex_i = 0; userIndex_i < INPUT_LENGTH; userIndex_i++){
+            userInput[userIndex_i] = Character.getNumericValue(input.charAt(userIndex_i));
         }
     }
 
@@ -34,13 +34,13 @@ public class User {
     private void checkDuplicateInput(String input) {
         Set<Character> uniqueInput = new HashSet<>();
 
-        for(char c : input.toCharArray()) {
-            hasDuplicateCharacter(uniqueInput, c);
+        for(char userDigit : input.toCharArray()) {
+            hasDuplicateCharacter(uniqueInput, userDigit);
         }
     }
 
-    private void hasDuplicateCharacter(Set<Character> uniqueInput, char c) {
-        if(!uniqueInput.add(c)) {
+    private void hasDuplicateCharacter(Set<Character> uniqueInput, char userDigit) {
+        if(!uniqueInput.add(userDigit)) {
             throw  new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
     }

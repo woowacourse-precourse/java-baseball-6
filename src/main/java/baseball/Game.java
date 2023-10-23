@@ -28,21 +28,21 @@ public class Game {
     private void checkStrike() {
         strikeCount = 0;
 
-        for(int i = 0; i < INPUT_LENGTH; i++) {
-            countStrike(i);
+        for(int numberIndex_i = 0; numberIndex_i < INPUT_LENGTH; numberIndex_i++) {
+            countStrike(numberIndex_i);
         }
     }
 
-    private void countStrike(int i) {
-        if(user.userInput[i] == computer.computerNumber[i]) {
+    private void countStrike(int numberIndex_i) {
+        if(user.userInput[numberIndex_i] == computer.computerNumber[numberIndex_i]) {
             strikeCount++;
         }
     }
-    private void checkBall(){
+    private void checkBall() {
         ballCount = 0;
 
-        for(int i = 0; i < INPUT_LENGTH; i ++){
-            ballCount += countSameNumber(i);
+        for(int userIndex_i = 0; userIndex_i < INPUT_LENGTH; userIndex_i++){
+            ballCount += countSameNumber(userIndex_i);
         }
 
         if(strikeCount > 0) {
@@ -50,9 +50,9 @@ public class Game {
         }
     }
 
-    private int countSameNumber(int i) {
-        for(int j = 0; j < INPUT_LENGTH; j++) {
-            if(user.userInput[i] == computer.computerNumber[j]) {
+    private int countSameNumber(int userIndex_i) {
+        for(int computerIndex_j = 0; computerIndex_j < INPUT_LENGTH; computerIndex_j++) {
+            if(user.userInput[computerIndex_j] == computer.computerNumber[computerIndex_j]) {
                 return 1;
             }
         }

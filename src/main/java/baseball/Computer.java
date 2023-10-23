@@ -11,14 +11,14 @@ public class Computer {
 
     public void setComputerNumber() {
         boolean[] usedNumbers = new boolean[RANGE_MAX + 1];
-        int i = 0;
+        int randomNumber_i = 0;
 
-        while(i != 3) {
+        while(randomNumber_i != 3) {
             int randomNumber = checkUsedNumber(usedNumbers);
 
             usedNumbers[randomNumber] = true;
-            computerNumber[i] = randomNumber;
-            i++;
+            computerNumber[randomNumber_i] = randomNumber;
+            randomNumber_i++;
         }
     }
 
