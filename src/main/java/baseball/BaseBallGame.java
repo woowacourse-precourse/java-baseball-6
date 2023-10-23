@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -61,8 +62,7 @@ public class BaseBallGame {
     }
 
     private static List<Integer> getInput() {
-        Scanner sc = new Scanner(System.in);
-        String st = sc.next();
+        String st = Console.readLine();
         String[] arr = st.split("");
 
         List<Integer> input = new ArrayList<>();
@@ -105,7 +105,7 @@ public class BaseBallGame {
     }
 
     private static boolean askWhetherToEnd() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt() == 2;
+        String st = Console.readLine();
+        return Integer.parseInt(st) == 2;
     }
 }
