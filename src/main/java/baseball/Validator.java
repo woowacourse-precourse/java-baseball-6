@@ -36,4 +36,16 @@ public class Validator {
         }
         return guessedNumbers;
     }
+
+    public int validateAndParseNextCommand(String str) throws IllegalArgumentException {
+        if (!isOneOrTwo(str)) throw new IllegalArgumentException("1 혹은 2만 입력해야합니다.");
+        return Integer.parseInt(str);
+    }
+
+    private boolean isOneOrTwo(String str) {
+        String regex = "^[12]$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
 }
