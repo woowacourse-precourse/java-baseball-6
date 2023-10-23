@@ -1,18 +1,20 @@
 package baseball.Controller;
 
-import baseball.domain.RandomNumGenerator;
-import baseball.domain.Referee;
+import baseball.domain.BaseballGame;
 import baseball.domain.dto.Score;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
 import static baseball.system.SystemConstant.GAME_DIGIT;
+import static baseball.system.SystemConstant.GAME_EXIT_CODE;
 
 public class GameManager {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+
+    private final BaseballGame baseballGame = new BaseballGame();
 
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public void playGame() {
@@ -23,23 +25,23 @@ public class GameManager {
     private void doGameUntilUserQuit() {
         int control;
         do {
-            List<Integer> computer = RandomNumGenerator.generateComputerRandomThreeDigitNumber();
-            doGameLoopUntilGameOver(computer);
+            baseballGame.initComputerNumber();
+            doGameLoopUntilGameOver();
             control = inputView.readGameControlInput();
-        } while (control != 2) ;
+        } while (control != GAME_EXIT_CODE) ;
 
     }
 
-    private void doGameLoopUntilGameOver(List<Integer> computer) {//true이면, 게임 종료하기 위한 단계로 간다.
+    private void doGameLoopUntilGameOver() {//true이면, 게임 종료하기 위한 단계로 간다.
         boolean gameLoopOver=false;
         do {
             List<Integer> user = inputView.readGameInput();
-            gameLoopOver = playSingleGameRound(user, computer);
+            gameLoopOver = playSingleGameRound(user);
         } while (gameLoopOver != true);
     }
 
-    public boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//true이면, 게임 종료하기 위한 단계로 간다.
-        Score userScore = Referee.makeScore(user, computer);
+    public boolean playSingleGameRound(List<Integer> user){
+        Score userScore = baseballGame.computeUserScore(user);
         outputView.printResult(userScore);
         return userScore.getStrike() == GAME_DIGIT;
     }
