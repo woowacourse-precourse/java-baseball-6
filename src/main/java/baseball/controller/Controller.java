@@ -20,6 +20,7 @@ public class Controller {
             computer.prepareGame();
             playGame();
             end = view.inputEnd();
+            validateEndInput(end);
         } while (end.equals(RESTART));
         view.closeConsole();
     }
@@ -51,5 +52,11 @@ public class Controller {
             throw new IllegalArgumentException("numbers cannot be duplicated");
         }
 
+    }
+
+    private static void validateEndInput(String end) {
+        if (!end.equals(FIN) && !end.equals(RESTART)) {
+            throw new IllegalArgumentException("Input is incorrect");
+        }
     }
 }
