@@ -15,4 +15,12 @@ public class InputView {
         validator.validateNumberDuplication(input);
         return input;
     }
+
+    public String getUserGameContinue() {
+        String input = Console.readLine();
+        validator.validateNumeric(input);
+        validator.validateNumberOneOrTwo(input);
+        validator.validateNumberLengthOne(input);
+        return input;
+    }
 }
