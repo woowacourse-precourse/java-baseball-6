@@ -19,7 +19,15 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String randomNum = Console.readLine();
 
+        // 컴퓨터가 임의로 뽑은 수 3개와 플레이어가 입력한 숫자 3개 비교
+        for (int i=0; i<3; i++) {
+            int index = 0;
+            String number = Character.toString(computer.charAt(i));
+            if (randomNum.contains(number)){
+                index = randomNum.indexOf(number);
 
+            }
+        }
 
     }
 }
