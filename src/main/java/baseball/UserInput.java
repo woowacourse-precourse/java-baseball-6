@@ -17,8 +17,9 @@ public class UserInput {
         vaildLenth(userStr);
 
         ArrayList<Integer> userInputList = new ArrayList<>();
-        int inputNum = Integer.parseInt(userStr);
-        userInputList.add(inputNum);
+        for (char c : userStr.toCharArray()) {
+            userInputList.add(Character.getNumericValue(c));
+        }
 
         return userInputList;
     }

@@ -18,6 +18,8 @@ public class RandomNumber {
                 randomNum.add(randomNumber);
             }
         }
+
+        System.out.println(randomNum);
         return randomNum;
     }
 }
