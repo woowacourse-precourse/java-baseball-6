@@ -19,18 +19,20 @@ public class GameResultService {
    }
 
     private String createBallCountMessage() {
-        String message = "";
+        StringBuilder message = new StringBuilder();
         if (ballCount.hasNothing()) {
-            message = NOTHING.show();
+            message.append(NOTHING.show());
         }
         if (ballCount.hasBall()) {
-            message += ballCount.showBall() + BALL.show()+ " ";
+            message.append(ballCount.showBall());
+            message.append(BALL.show());
+            message.append(" ");
         }
         if (ballCount.hasStrike()) {
-            message += ballCount.showStrike() + STRIKE.show();
+            message.append(ballCount.showStrike());
+            message.append(STRIKE.show());
         }
 
-        return message;
-
+        return message.toString();
     }
 }

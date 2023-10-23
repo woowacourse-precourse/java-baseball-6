@@ -40,4 +40,5 @@ public class ComputerNumbers implements Numbers{
     public boolean contains(Number number) {
         return computerNumbers.contains(number);
     }
+
 }
