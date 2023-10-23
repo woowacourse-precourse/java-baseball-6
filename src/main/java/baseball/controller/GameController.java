@@ -5,13 +5,11 @@ import baseball.model.UserInputNumber;
 import baseball.model.UserRestartNumber;
 import baseball.view.OutputView;
 import baseball.view.UserInputView;
+import baseball.utils.CompareBallStrike;
+import java.util.List;
 
 public class GameController {
-    private ComputerNumber computer;
-    private UserInputNumber userInput;
-    private UserRestartNumber userRestart;
-    private int ball;
-    private int strike;
+    private final ComputerNumber computer;
 
     public GameController() {
         computer = new ComputerNumber();
@@ -21,40 +19,29 @@ public class GameController {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    //    게임 전체 시작 및 재시작
     public void gameEngine() {
-        do {
-            gamePlay();
-            userRestart = new UserRestartNumber(UserInputView.getUserInputRestart());
+        while (true) {
             computer.setComputerNumber();
-        } while (userRestart.getRestartNumber().equals("1"));
-    }
+            gamePlay();
 
-    public void gamePlay(){
-        do {
-            userInput = new UserInputNumber(UserInputView.getUserInputNumber());
-            compareComputerNumberAndUserInput(computer.getComputerNumber(), userInput.getUserInputNumber());
-            OutputView.printBallStrike(ball,strike);
-        } while (strike != 3);
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
-    public void compareComputerNumberAndUserInput(String computerNumber, String userInputNumber) {
-        ball = 0;
-        strike = 0;
-
-        for(int i=0;i<3;i++){
-            String nowComNumber = computerNumber.substring(i,i+1);
-            for(int j=0; j<3;j++) {
-                String nowUserNumber = userInputNumber.substring(j,j+1);
-                if(nowUserNumber.equals(nowComNumber)) {
-                    if (i == j){
-                        strike += 1;
-                    }
-                    else {
-                        ball += 1;
-                    }
-                }
+            UserRestartNumber userRestart = new UserRestartNumber(UserInputView.getUserInputRestart());
+            if(userRestart.getRestartNumber().equals("2")){
+                break;
             }
         }
+    }
+
+    //    게임 1회 시작
+    public void gamePlay() {
+        List<Integer> listBallStrike;
+
+        do {
+            UserInputNumber userInput = new UserInputNumber(UserInputView.getUserInputNumber());
+            listBallStrike = CompareBallStrike.compareComputerNumberAndUserInput(computer.getComputerNumber(), userInput.getUserInputNumber());
+            OutputView.printBallStrike(listBallStrike);
+        } while (listBallStrike.get(1) != 3);
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

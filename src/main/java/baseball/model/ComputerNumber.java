@@ -10,9 +10,13 @@ public class ComputerNumber {
     private String computerNumber;
 
     public ComputerNumber() {
-        setComputerNumber();
     }
 
+    public String getComputerNumber() {
+        return computerNumber;
+    }
+
+    //    랜덤 슷지 만들기
     public void setComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -22,12 +26,6 @@ public class ComputerNumber {
             }
         }
         computerNumber = computer.toString().replaceAll("[^0-9]","");
-        System.out.println(computerNumber);
     }
-    public void printComputerNumber() {
-        System.out.println(computerNumber);
-    }
-    public String getComputerNumber() {
-        return computerNumber;
-    }
+
 }

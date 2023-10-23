@@ -1,25 +1,40 @@
 ## 숫자 야구
 
-#### 구현할 기능 목록
-- 랜덤한 수 생성
-    - 참고 사항
-    
-        - camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현
-        - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
-        - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
-    - 사용 예시
- 
-    
-    List<Integer> computer = new ArrayList<>();
-    while (computer.size() < 3) {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber);
-        }
-    }
-    
--  게임 시작 출력
+### [구현할 기능 목록]
 
--  사용자 입력 및 입력값 대조
+-----
+- 게임 시작 출력
+- 랜덤한 컴퓨터 수 생성 
+  - 제한 사항 
+    - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현 
+    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다. 
+    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다. 
+- 사용자에게 서로 다른 3자리 수 요청 
+  - 제한 사항
+    - 숫자가 아니거나, 3자리가 아니거나, 중복 숫자가 있는 경우 `IllegalArgumentException을` 발생시킨다. 
+- 컴퓨터 수와 사용자 수 비교
+- 비교 결과에 따라 볼, 스트라이크, 낫싱 출력
+- 3스트라이크인 경우 게임 1회 종료
+- 사용자에게 재시작 여부 요청
+  - 제한 사항
+    - "1"인 경우 재시작, "2"인 경우 종료
+    - 이외의 숫자나 숫자 타입이 아닌 경우 `IllegalArgumentException`을 발생시킨다.
+- 사용자 입력 값에 따라 재시작 또는 종료
 
--  대조 결과에 따라 사용자 재입력 또는 결과 출력
+
+### [깨달은 점 정리]
+
+-----
+- MVC 패턴 (Model / View / Controller)
+
+    ```
+    Model과 View, Controller 컴포넌트로 분리하고, 각 컴포넌트는 고유한 기능을 수행한다.
+    모델은 데이터를 나타내며, 뷰는 사용자의 입력을 받거나 출력하는 역할을 한다.
+    컨트롤러는 모델과 뷰 사이에서 브릿지 역할을 하며, 사용자가 어플리케이션을 조작해 발생하는 변경 이벤트들을 처리한다.
+    ```
+- MVC 패턴의 장점
+
+    ```
+    각 핵심 컴포넌트들이 책임을 나누고, 자신의 수행 결과를 다른 컴포넌트에게 전달하는 프로그래밍 방식으로 기능간 결합도가 낮아졌다.
+  기능 간 결합도가 낮아지면 시스템 유지보수 시 특정 컴포넌트만 수정하면 되기 때문에 보다 쉬운 시스템 변경이 가능하다.  
+    ```

@@ -7,7 +7,6 @@ public class Application {
         GameController gameController = new GameController();
 
         gameController.gameStart();
-
         gameController.gameEngine();
 
     }
