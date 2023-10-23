@@ -58,12 +58,4 @@ public class GameService {
         return strikes == 3;
     }
 
-    private int[] getDigits(int number) {
-        return new int[]{
-                number / 100,         // 100의 자리
-                (number / 10) % 10,   // 10의 자리
-                number % 10           // 1의 자리
-        };
-    }
-
 }
