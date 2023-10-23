@@ -13,4 +13,5 @@ public class ModuleTest {
         System.out.println("computerNumber = " + computerNumber);
         Assertions.assertEquals(computerNumber.size(), 3);
     }
+
 }
