@@ -102,10 +102,9 @@ public class Application {
 
     private static List<Integer> generateUnique3DigitNum() {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            while (list.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (list.contains(randomNumber)) continue;
+        while (list.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!list.contains(randomNumber)) {
                 list.add(randomNumber);
             }
         }
