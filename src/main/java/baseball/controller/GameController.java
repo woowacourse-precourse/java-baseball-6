@@ -20,20 +20,34 @@ public class GameController {
     public void play() {
         InputView.printStart();
         while (playing) {
-            if (computerNumbers == null) {
-                computerNumbers = service.generateNumbers();
-            }
-            InputView.printCheat(computerNumbers);
-            InputView.printRequestingInput();
-            BaseballNumbers userNumbers = InputView.getUserNumbers();
-            Result result = service.compare(computerNumbers, userNumbers);
-            OutputView.printResult(result);
-            userNumbers.clear();
-            if (result.isAllStrikes()) {
-                InputView.printGameOver();
-                restartOrNot(InputView.getUserInput());
-            }
+            BaseballNumbers userNumbers = getBaseballNumbers();
+            Result result = getResult(userNumbers);
+            checkResult(result);
         }
+    }
+
+    private void checkResult(Result result) {
+        if (result.isAllStrikes()) {
+            InputView.printGameOver();
+            restartOrNot(InputView.getUserInput());
+        }
+    }
+
+    private Result getResult(BaseballNumbers userNumbers) {
+        Result result = service.compare(computerNumbers, userNumbers);
+        OutputView.printResult(result);
+        userNumbers.clear();
+        return result;
+    }
+
+    private BaseballNumbers getBaseballNumbers() {
+        if (computerNumbers == null) {
+            computerNumbers = service.generateNumbers();
+        }
+        InputView.printCheat(computerNumbers);
+        InputView.printRequestingInput();
+        BaseballNumbers userNumbers = InputView.getUserNumbers();
+        return userNumbers;
     }
 
     private void restartOrNot(String input) {
