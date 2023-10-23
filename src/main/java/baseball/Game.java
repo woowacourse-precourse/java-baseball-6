@@ -7,17 +7,18 @@ import java.util.List;
 public class Game {
 
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computerNumbers = createComputerNumbers();
-        Score score = new Score();
-        while (score.isUserLose()) {
-            System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> userNumbers = new GameInput().convertInputToUserNumbers();
-            score = calculateScore(computerNumbers, userNumbers);
-            System.out.println(score.getHint());
-        }
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        EndInput endInput = new EndInput();
+        do {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> computerNumbers = createComputerNumbers();
+            Score score = new Score();
+            while (score.isUserLose()) {
+                System.out.print("숫자를 입력해주세요 : ");
+                List<Integer> userNumbers = new GameInput().convertInputToUserNumbers();
+                score = calculateScore(computerNumbers, userNumbers);
+                System.out.println(score.getHint());
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        } while (new EndInput().isPressResume());
     }
 
     private Score calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {

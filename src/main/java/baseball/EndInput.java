@@ -16,4 +16,8 @@ public class EndInput {
             throw new IllegalArgumentException();
         }
     }
+
+    public boolean isPressResume() {
+        return "1".equals(input);
+    }
 }
