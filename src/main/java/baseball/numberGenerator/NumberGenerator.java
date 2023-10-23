@@ -5,25 +5,22 @@ import baseball.validation.ValidationPlayerNumber;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberGenerator {
     ValidationPlayerNumber validationPlayerNumber = new ValidationPlayerNumber(); //
+    List<Integer> playerNumber = new ArrayList<>();
 
     public List<Integer> getPlayerNumber() { // 플레이어가 3개의 번호를 입력받아 Integer List로 반환하게 해주는 메서드
-        List<Integer> playerNumber = new ArrayList<>();
         System.out.println(Constants.REQUIRE_NUMBER); // 숫자를 입력해주세요
         String playerNumberString = Console.readLine();
 
-        playerNumber = Arrays.stream(playerNumberString.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-        if (validationPlayerNumber.validatePlayerNumber(playerNumber)) {
+        if (validationPlayerNumber.validatePlayerNumber(playerNumberString)) {
             throw new IllegalArgumentException("잘못된 입력값이에요.");
         }
+
+        playerNumber = validationPlayerNumber.changeListNumber(playerNumberString);
+
         return playerNumber;
     }
 
