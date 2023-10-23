@@ -1,25 +1,22 @@
 package baseball.unitTests;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.people.Pitcher;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PitcherTest {
-
     @Test
     @DisplayName("pitch 메서드 작동 확인")
     void pitchTest() {
         Pitcher pitcher = Pitcher.enter();
         String input = "425";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
-        int[] result = pitcher.pitch();
+        int[] result = pitcher.pitch(input);
 
         assertArrayEquals(result, new int[]{4, 2, 5});
     }
@@ -29,10 +26,8 @@ class PitcherTest {
     void pitchException1() {
         Pitcher pitcher = Pitcher.enter();
         String input = "1 234";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
-        assertThatThrownBy(pitcher::pitch).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> pitcher.pitch(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -40,10 +35,8 @@ class PitcherTest {
     void pitchException2() {
         Pitcher pitcher = Pitcher.enter();
         String input = "abc";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
-        assertThatThrownBy(pitcher::pitch).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> pitcher.pitch(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -51,10 +44,8 @@ class PitcherTest {
     void letUsRestart() {
         Pitcher pitcher = Pitcher.enter();
         String input = "1";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
-        boolean result = pitcher.restart();
+        boolean result = pitcher.restart(input);
 
         assertTrue(result);
     }
@@ -64,10 +55,8 @@ class PitcherTest {
     void doNotRestart() {
         Pitcher pitcher = Pitcher.enter();
         String input = "2";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
-        boolean result = pitcher.restart();
+        boolean result = pitcher.restart(input);
 
         assertFalse(result);
     }
@@ -77,9 +66,7 @@ class PitcherTest {
     void restartException() {
         Pitcher pitcher = Pitcher.enter();
         String input = "12";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
-        assertThatThrownBy(pitcher::restart).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> pitcher.restart(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }
