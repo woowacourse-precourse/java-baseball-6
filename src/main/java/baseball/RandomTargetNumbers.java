@@ -3,52 +3,24 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class RandomTargetNumbers implements Numbers {
-    private static final int LENGTH = 3;
-    private static final int MIN_RANGE = 1;
-    private static final int MAX_RANGE = 9;
-    private List<Integer> numContainer;
+public class RandomTargetNumbers extends CommonNumbers {
 
-    private RandomTargetNumbers() {}
+    private RandomTargetNumbers(String intStr) {
+        super(intStr);
+    }
 
     public static RandomTargetNumbers generate() {
-        RandomTargetNumbers newInstance = new RandomTargetNumbers();
-        List<Integer> nc = new ArrayList<>(3);
-        while (nc.size() < LENGTH) {
+        StringBuilder sb = new StringBuilder();
+        List<Integer> nc = new ArrayList<>(LENGTH);
+        while (sb.length() < LENGTH) {
             int randomizedNum = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             if (!nc.contains(randomizedNum)) {
                 nc.add(randomizedNum);
+                sb.append(randomizedNum);
             }
         }
-        newInstance.numContainer = Collections.unmodifiableList(nc);
-        return newInstance;
-    }
-
-    @Override
-    public int firstNumber() {
-        return this.numContainer.get(0);
-    }
-
-    @Override
-    public int secondNumber() {
-        return this.numContainer.get(1);
-    }
-
-    @Override
-    public int thirdNumber() {
-        return this.numContainer.get(2);
-    }
-
-    @Override
-    public List<Integer> allNumbers() {
-        return new ArrayList<>(this.numContainer);
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(this.numContainer.get(0)) + this.numContainer.get(1) + this.numContainer.get(2);
+        return new RandomTargetNumbers(sb.toString());
     }
 }

@@ -8,7 +8,11 @@ import java.util.List;
  * This represents a general form of a series of 3 integers ranging from 1 to 9.
  */
 public class CommonNumbers implements Numbers {
-    private List<Integer> numContainer;
+    protected static final int LENGTH = 3;
+    protected static final int MIN_RANGE = 1;
+    protected static final int MAX_RANGE = 9;
+
+    protected List<Integer> numContainer;
 
     /**
      * @param intStr should have already passed through the validation check of Validator before
