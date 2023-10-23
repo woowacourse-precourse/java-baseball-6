@@ -4,7 +4,7 @@ import java.util.Objects;
 
 //입력이 잘못됐을 때 예외처리를 구현
 public class Foul {
-    public static String validateInputHitter(String hitterString) {
+    public static void validateInputHitter(String hitterString) {
         // 입력값의 길이 확인
         if (hitterString == null || hitterString.length() != 3) {
             throw new IllegalArgumentException();
@@ -24,7 +24,6 @@ public class Foul {
                 }
             }
         }
-        return hitterString;
     }
 
     public static String validateInputContine(String start) {

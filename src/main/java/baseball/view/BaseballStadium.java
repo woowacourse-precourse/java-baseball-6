@@ -7,20 +7,22 @@ import camp.nextstep.edu.missionutils.Console;
 //유저에게 보이는 UI를 제공하고 입력 받음
 public class BaseballStadium {
 
-    static String start = "1";
-    static String result = "";
 
     public static void run() {
+        String start = "1";
+
+        String result = "";
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (start.equals("1")) {
             BaseballGame.pitcherPitch();
             while (!result.equals("3스트라이크")) {
-                result = BaseballGame.compareNumbers(Foul.validateInputHitter(inputNum()));
+                result = BaseballGame.compareNumbers(inputNum());
                 System.out.println(result);
             }
-
             result = "";
+
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             start = Foul.validateInputContine(contineGame());
         }
@@ -30,8 +32,9 @@ public class BaseballStadium {
 
     public static String inputNum() {
         System.out.print("숫자를 입력해주세요 : ");
-
-        return Console.readLine();
+        String input = Console.readLine();
+        Foul.validateInputHitter(input);
+        return input;
     }
 
     public static String contineGame() {

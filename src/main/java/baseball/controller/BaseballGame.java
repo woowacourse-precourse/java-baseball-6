@@ -11,10 +11,6 @@ import java.util.List;
 public class BaseballGame {
     private static final Pitcher pitcher = new Pitcher();
 
-    public static void startGame() {
-
-    }
-
     public static void pitcherPitch() {
         List<Integer> pitcherNum = new ArrayList<>();
         while (pitcherNum.size() < 3) {
