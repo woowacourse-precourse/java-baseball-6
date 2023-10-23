@@ -2,6 +2,8 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameInput {
     private final String input;
@@ -37,5 +39,12 @@ public class GameInput {
         if (count != 3) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<Integer> convertInputToUserNumbers() {
+        return input.chars()
+                .map(c -> c - '0')
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
