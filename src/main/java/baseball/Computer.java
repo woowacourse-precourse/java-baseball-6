@@ -14,9 +14,13 @@ public class Computer {
     public void initComputerBall() {
         while(computerBall.size() < 3) {
             int newBall = Randoms.pickNumberInRange(1, 9);
-            if(!computerBall.contains(newBall)) {
-                computerBall.add(newBall);
-            }
+            exceptDuplicateNum(newBall);
+        }
+    }
+
+    public void exceptDuplicateNum(int newBall) {
+        if(!computerBall.contains(newBall)) {
+            computerBall.add(newBall);
         }
     }
 

@@ -1,13 +1,15 @@
 package baseball;
 
-import java.util.List;
-
-import static baseball.Referee.gameSwitch;
-import static baseball.Referee.setGameSwitch;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 
 public class BaseBallGameUI {
+    Boolean button = true;
+
+    public void setButton(Boolean button) {
+        this.button = button;
+    }
+
     public void startMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -16,43 +18,39 @@ public class BaseBallGameUI {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void printResult(List<Integer> result) {
-        if(result.get(0) == 0 && result.get(1) != 0) {
-            System.out.println(result.get(1) + "스트라이크");
-            if(result.get(1) == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                try{
-                    restartGame();
-                } catch (IllegalArgumentException e) {
-                    setGameSwitch(false);
-                }
-            }
+    public void printResult(int ballCount, int strikeCount) {
+        if(ballCount == 0 && strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
         }
-        if(result.get(1) == 0 && result.get(0) != 0) {
-            System.out.println(result.get(0) + "볼");
+        if(strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            restartGame();
         }
-        if(result.get(0) != 0 && result.get(1) != 0) {
-            System.out.println(result.get(0) + "볼 " + result.get(1) + "스트라이크");
+        else if(strikeCount == 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼");
         }
-        if(result.get(0) == 0 && result.get(1) == 0) {
+        else if(ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+        else if(ballCount == 0 && strikeCount== 0) {
             System.out.println("낫싱");
+        }
+    }
+
+    public void isOneOrTwo(int inputValueToInt) {
+        if(inputValueToInt != 2 && inputValueToInt != 1) {
+            throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
         }
     }
 
     public void restartGame() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputValue = readLine();
-        if(inputValue == null || !inputValue.matches("\\d+")) {
-            throw new IllegalArgumentException();
-        }
         int inputValueToInt = Integer.parseInt(inputValue);
-
-        if(inputValueToInt != 2 && inputValueToInt != 1) {
-            throw new IllegalArgumentException();
-        }
+        isOneOrTwo(inputValueToInt);
 
         if(inputValueToInt == 2) {
-            setGameSwitch(false);
+            setButton(false);
         }
         if(inputValueToInt == 1) {
             startGame();
@@ -60,23 +58,17 @@ public class BaseBallGameUI {
     }
 
     public void startGame() throws IllegalArgumentException {
-        Referee referee = new Referee();
         Computer computer = new Computer();
-        System.out.println(computer.getComputerBall());
+        // System.out.println(computer.getComputerBall());
 
-        while(gameSwitch) {
+        while(button) {
             inputPlayerNum();
             String inputValue = readLine();
-            if(inputValue == null || !inputValue.matches("\\d+")) {
-                throw new IllegalArgumentException();
-            }
-            int inputValueToInt = Integer.parseInt(inputValue);
-            try {
-                Player player = new Player(inputValueToInt);
-                printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
-            } catch (IllegalArgumentException e) {
-                setGameSwitch(false);
-            }
+            Player player = new Player(inputValue);
+            CalculateResult calculateResult = new CalculateResult(computer.getComputerBall(), player.getPlayerBall());
+            printResult(calculateResult.getBallCount(), calculateResult.getStrikeCount());
         }
+
     }
+
 }
