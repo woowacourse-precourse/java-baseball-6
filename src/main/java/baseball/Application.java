@@ -9,44 +9,49 @@ import java.util.Scanner;
 public class Application {
     private static Scanner scanner = new Scanner(System.in);
 
+    private static Boolean isApplicationEnd = false;
+
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 컴퓨터가 숫자 3개를 고른다.
-        List<Integer> computer = chooseNumByComputer();
+        do {
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true) {
-            String userInputStr = getUserInputStr();
+            // 컴퓨터가 숫자 3개를 고른다.
+            List<Integer> computer = chooseNumByComputer();
 
-            // 유저의 입력이 숫자로만 이루어지지 않았을 경우 애플리케이션 종료
-            if (!isUserInputValidate(userInputStr)) {
-                try {
-                    throw new IllegalArgumentException();
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+            while (true) {
+                String userInputStr = getUserInputStr();
+
+                // 유저의 입력이 숫자로만 이루어지지 않았을 경우 애플리케이션 종료
+                if (!isUserInputValidate(userInputStr)) {
+                    try {
+                        throw new IllegalArgumentException();
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                }
+
+                // 유저가 숫자 3개를 고른다.
+                List<Integer> user = chooseNumByUser(userInputStr);
+
+                System.out.println("computer = " + computer);
+                System.out.println("user = " + user);
+
+                Integer strikeCount = countStrike(computer, user);
+                Integer ballCount = countBall(computer, user);
+
+                // 숫자를 3개 모두 맞혔을 경우 게임 종료
+                if (strikeCount.equals(3)) {
+                    printGameOverMessage();
+                    if (restartOrFinish().equals("2")) {
+                        isApplicationEnd = true;
+                    }
                     break;
                 }
             }
+        } while (!isApplicationEnd);
 
-            // 유저가 숫자 3개를 고른다.
-            List<Integer> user = chooseNumByUser(userInputStr);
-
-            System.out.println("computer = " + computer);
-            System.out.println("user = " + user);
-
-            Integer strikeCount = countStrike(computer, user);
-            Integer ballCount = countBall(computer, user);
-
-            // 숫자를 3개 모두 맞혔을 경우 게임 종료
-            if (strikeCount.equals(3)) {
-                printGameOverMessage();
-                if (restartOrFinish().equals("1")) {
-                    continue;
-                } else {
-                    break;
-                }
-            }
-        }
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
     }
 
