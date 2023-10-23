@@ -26,7 +26,6 @@ public class GameService {
     public void playGame(int size, int startInclusive, int endInclusive) {
         int strike = 0;
         systemMessage.printGameStart();
-        setGame(size, startInclusive, endInclusive);
         while (true) {
             play();
             printGameResult(game.getStrike(), game.getBall());
