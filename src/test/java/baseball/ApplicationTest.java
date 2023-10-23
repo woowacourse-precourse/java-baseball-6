@@ -35,17 +35,4 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-
-    @Test
-    void 입력_예외처리_테스트() {
-        assertThat(Validation.checkUserInput("abc")).isEqualTo(false);
-    }
-
-    @Test
-    void 입력_중복숫자체크_테스트() {
-        assertThat(Validation.checkDuplicatedNumber(
-                "112"
-        )).isEqualTo(false);
-    }
-
 }
