@@ -8,6 +8,7 @@ import static baseball.Message.SUCCESS_MESSAGE;
 import java.util.List;
 
 public class NumberBaseballGame {
+    private final String stopSign = "2";
     Message message = new Message();
     Computer computer = new Computer();
     InputValidation inputValidation = new InputValidation();
@@ -31,11 +32,11 @@ public class NumberBaseballGame {
         String sign = userInput.getUserInput();
 
         inputValidation.validateRestartOrStop(sign);
-        return (sign.charAt(0) != '2');
+        return sign.compareTo(stopSign) < 0;
     }
 
-    private void oneRound() {
-        AnswerMaker answerMaker = new AnswerMaker(1, 9);// 각 라운드당 하나의 정답을 생성하기
+    public void oneRound() {
+        AnswerMaker answerMaker = new AnswerMaker(1, 9);// 정답 생성
         boolean threeStrike = false;
 
         while (!threeStrike) {

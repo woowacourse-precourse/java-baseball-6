@@ -1,64 +1,27 @@
-## 코드 진행
+## 프로그램 진행
 
-![](https://velog.velcdn.com/images/sohyun9527/post/79fd5c2f-9344-44c8-8ab6-d0ae32ea9ae8/image.jpg)
-
-## Message 클래스
-
-- 각종 메시지들은 static final로 선언하여 사용
-- 게임 문구, 에러메시지 포함
-
-- 현재 스코어를 반환하는 메서드
-
-```java
-String scoreMessage(List<Integer> score)index 0은 ball,index 1은 strike로 설정한 뒤 카운트에 따라 메시지 출력
-```
+![](https://velog.velcdn.com/images/sohyun9527/post/e07aecd5-f1dc-42fe-9551-be2fe32aaeec/image.jpg)
 
 ## NumberBaseballGame 클래스
 
 - 출력 메서드
 
-```java
-void speaker(String message)입력받은 메세지 출력
+```
+void speaker(String message)
+입력받은 메세지 출력
 ```
 
 - 게임 진행 메서드
 
-```java
-void play()종료를 입력받기 전까지 계속 게임을 진행하는 메서드
-        void oneRound()play 메서드 내부에서 3스트라이크가 될 때까지 진행하는 하나의 라운드
-        boolean restartOrStop()하나의 라운드 종료 후 재시작/종료를 묻는 메서드
 ```
+void play()
+종료를 입력받기 전까지 계속 게임을 진행하는 메서드
 
-## AnswerMaker 클래스
+void oneRound()play
+메서드 내부에서 3스트라이크가 될 때까지 진행하는 하나의 라운드
 
-- 난수 생성 메서드
-
-```java
-int makeNumber(int min,int max)min,max 사이의 하나의 숫자 반환
-```
-
-- 리스트로 난수 생성 후 저장 메서드
-
-```java
-AnswerMaker(int min,int max)생성자 호출 시 makeNumber를 사용해 난수 생성후 정답을 리스트로 만들어 저장
-```
-
-- 저장된 정답을 호출하는 메서드
-
-```java
-List<Integer> getAnswer()
-```
-
-## Computer 클래스
-
-- strike, ball 스코어 측정 메서드
-
-```java
-List<Integer> countScore(List<Integer> answer,List<Integer> userNumbers)정답과 유저의 답안을 비교해 strike,ball의 개수를 세어 리스트로 반환
-
-        int judgeScore(List<Integer> answer,int number,int index)숫자와 위치를 비교해 BALL,STRIKE,NOTHING 셋중 하나 반환
-
-
+boolean restartOrStop()
+하나의 라운드 종료 후 재시작/종료를 묻는 메서드
 ```
 
 ## InputValidation 클래스
@@ -67,32 +30,89 @@ List<Integer> countScore(List<Integer> answer,List<Integer> userNumbers)정답�
 
 - 유저의 입력값에 대한 Validation을 한번에 진행하는 메서드
 
-```java
-List<Integer> validateUserNumbers(String input)전체 validation을 진행하는 메서드
-        void validateRestartOrStop(String input)입력받은 재시작/종료 값을 validation 진행하는 메서드
+```
+List<Integer> validateUserNumbers(String input)
+전체 validation을 진행하는 메서드
 
+void validateRestartOrStop(String input)
+입력받은 재시작/종료 값을 validation 진행하는 메서드
 ```
 
 - 문자열을 리스트로 반환하는 메서드
 
-```java
-List<Integer> convertStrToList(String input)String->List<Integer> 변환하여 반환
+```
+List<Integer> convertStrToList(String input)
+String->List<Integer> 변환하여 반환
 ```
 
-- validation 메서드들
+- 세부 검증 메서드
 
-```java
-void validateOnlyDigit(String input)입력값이 숫자로만 이루어져 있는지 검수
-        void validateContainZero(String input)입력값에 0이 포함되어있는지 검수
-        void validateDuplicateNumber(String input)입력값이 중복된 숫자가 있는지 검수
-        void validateSign(String input)재시작/종료 입력값이 1,2인지 검수
-        void validateSignLength(String input)재시작/종료 입력값이 한자리 수인지 검수
+```
+void validateOnlyDigit(String input)
+입력값이 숫자로만 이루어져 있는지 검수
+
+void validateContainZero(String input)
+입력값에 0이 포함되어있는지 검수
+
+void validateDuplicateNumber(String input)
+입력값이 중복된 숫자가 있는지 검수
+
+void validateSign(String input)
+재시작/종료 입력값이 1,2인지 검수
+
+void validateSignLength(String input)
+재시작/종료 입력값이 한자리 수인지 검수
 ```
 
 - 공백 제거 메서드
 
-```java
-String deleteSpace(String input)숫자 사이의 공백을 제거하는 메서드
+```
+String deleteSpace(String input)
+숫자 사이의 공백을 제거하는 메서드
+```
+
+## Message 클래스
+
+- 각종 메시지들은 static final로 선언하여 사용
+- 게임 문구, 에러메시지 포함
+
+- 현재 스코어를 반환하는 메서드
+
+```
+String scoreMessage(List<Integer> score)
+index 0은 ball,index 1은 strike로 설정한 뒤 카운트에 따라 메시지 출력
+```
+
+## AnswerMaker 클래스
+
+- 난수 생성 메서드
+
+```
+int makeNumber(int min,int max)min,max 사이의 하나의 숫자 반환
+```
+
+- 리스트로 난수 생성 후 저장 메서드
+
+```
+AnswerMaker(int min,int max)생성자 호출 시 makeNumber를 사용해 난수 생성후 정답을 리스트로 만들어 저장
+```
+
+- 저장된 정답을 호출하는 메서드
+
+```
+List<Integer> getAnswer()
+```
+
+## Computer 클래스
+
+- strike, ball 스코어 측정 메서드
+
+```
+List<Integer> countScore(List<Integer> answer,List<Integer> userNumbers)
+정답과 유저의 답안을 비교해 strike,ball의 개수를 세어 리스트로 반환
+
+int judgeScore(List<Integer> answer,int number,int index)
+숫자와 위치를 비교해 BALL,STRIKE,NOTHING 셋중 하나 반환
 ```
 
 ### 뭘 만들어야 할까?

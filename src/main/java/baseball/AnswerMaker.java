@@ -9,17 +9,23 @@ import java.util.Set;
 public class AnswerMaker {
     private final List<Integer> answer;
 
-    public int makeNumbers(int min, int max) {
+
+    public AnswerMaker(int min, int max) {
+        this.answer = new ArrayList<>(makeThreeDifferentNumbers(min, max));
+    }
+    
+    private int makeNumberInRange(int min, int max) {
         return (Randoms.pickNumberInRange(min, max));
     }
 
-    public AnswerMaker(int min, int max) {
+    private List<Integer> makeThreeDifferentNumbers(int min, int max) {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() < 3) {
-            numbers.add(makeNumbers(min, max));
+            numbers.add(makeNumberInRange(min, max));
         }
-        this.answer = new ArrayList<>(numbers);
+        return new ArrayList<>(numbers);
     }
+
 
     public List<Integer> getAnswer() {
         return answer;
