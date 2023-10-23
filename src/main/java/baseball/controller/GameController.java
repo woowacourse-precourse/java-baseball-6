@@ -1,9 +1,10 @@
 package baseball.controller;
 
+import static baseball.util.NumberUtil.convertStringToList;
+
 import baseball.application.NumberService;
 import baseball.domain.Hint;
 import baseball.domain.Player;
-import baseball.util.NumberUtil;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.Objects;
@@ -42,19 +43,11 @@ public class GameController {
     }
 
     private Player prepareComputer() {
-        Player computer = new Player();
-        computer.setPlayer(numberService.getRandomNumber());
-        return computer;
+        return new Player(numberService.getRandomNumber());
     }
 
     private Player preparePlayer() {
-        Player player = new Player();
-
         outputView.printReadMessage();
-        String number = inputView.readNumber();
-        NumberUtil.validate(number);
-        player.setPlayer(NumberUtil.converStringToList(number));
-
-        return player;
+        return new Player(convertStringToList(inputView.readNumber()));
     }
 }

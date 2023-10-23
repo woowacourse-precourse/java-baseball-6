@@ -1,17 +1,20 @@
 package baseball.domain;
 
-import java.util.ArrayList;
+import static baseball.util.NumberUtil.convertListToString;
+import static baseball.util.NumberUtil.validate;
+
 import java.util.List;
 
 public class Player {
 
-    private List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numberList;
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public Player(List<Integer> numbers) {
+        validate(convertListToString(numbers));
+        this.numberList = numbers;
     }
 
-    public void setPlayer(List<Integer> number) {
-        numbers = number; // 컴퓨터의 숫자를 정한다.
+    public List<Integer> getNumberList() {
+        return numberList;
     }
 }
