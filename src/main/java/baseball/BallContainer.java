@@ -10,10 +10,10 @@ public class BallContainer {
     private final List<Ball> balls;
 
     private BallContainer(List<Integer> numbers) {
-        this.balls = createBalls(numbers);
+        this.balls = mapNumbersToBallList(numbers);
     }
 
-    private List<Ball> createBalls(List<Integer> numbers) {
+    private List<Ball> mapNumbersToBallList(List<Integer> numbers) {
         return IntStream.range(START_LOCATION, END_LOCATION)
                 .mapToObj(location -> new Ball(numbers.get(location), location))
                 .collect(Collectors.toList());
@@ -25,7 +25,7 @@ public class BallContainer {
 
     public PitchResult pitch(BallContainer otherContainer) {
         final List<Ball> otherBalls = otherContainer.getBalls();
-        PitchResult result = new PitchResult(0, 0);
+        final PitchResult result = new PitchResult(0, 0);
 
         balls.forEach(ball -> otherBalls.forEach(other -> {
             if (ball.isStrike(other)) {
