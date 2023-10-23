@@ -6,6 +6,7 @@ import baseball.service.UserCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
 import baseball.vo.GameResult;
+import baseball.vo.Message;
 import baseball.vo.UserCode;
 import java.util.ArrayList;
 
@@ -33,9 +34,9 @@ public class BaseballGames implements Game {
             UserCode userCode = userCodeService.makeUserCode(codes);
             validateJudgeService.validateLegalUserCode(userCode);
             GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
-            String batResult = messageGenerateService.makeMessage(gameResult);
-            System.out.println(batResult);
-            if (batResult.equals(strikeComment.getMessage())) {
+            Message resultMessage = messageGenerateService.makeMessage(gameResult);
+            resultMessage.printGameResultMessage();
+            if (resultMessage.isResultMessageSameStrikeMessage(strikeComment.getMessage())) {
                 System.out.println(gameEndComment.getMessage());
                 break;
             }

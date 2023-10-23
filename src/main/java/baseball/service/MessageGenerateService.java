@@ -1,8 +1,9 @@
 package baseball.service;
 
 import baseball.vo.GameResult;
+import baseball.vo.Message;
 
 public interface MessageGenerateService {
 
-    String makeMessage(GameResult gameResult);
+    Message makeMessage(GameResult gameResult);
 }

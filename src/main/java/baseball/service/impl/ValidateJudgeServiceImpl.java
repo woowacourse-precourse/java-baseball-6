@@ -3,6 +3,7 @@ package baseball.service.impl;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
 import baseball.vo.GameResult;
+import baseball.vo.Message;
 import baseball.vo.RestartDecisionCode;
 import baseball.vo.UserCode;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 public class ValidateJudgeServiceImpl implements ValidateJudgeService {
 
-    private static final GameResult result = new GameResult(new ArrayList<>());
+    private static final GameResult result = new GameResult(new ArrayList<>(), new Message(null));
 
     private static void validateCode(BaseballCode baseballCode, UserCode userCode, List<Integer> count,
                                      int userCodeIndex, int baseballCodeIndex) {

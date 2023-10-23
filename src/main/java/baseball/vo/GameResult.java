@@ -6,12 +6,16 @@ public final class GameResult {
 
     private final List<Integer> result;
 
-    public GameResult(List<Integer> result) {
+    private final Message message;
+
+    public GameResult(List<Integer> result, Message message) {
         this.result = result;
+        this.message = message;
     }
 
     public GameResult makeNewGameResult(List<Integer> result) {
-        return new GameResult(result);
+        Message message = new Message(null);
+        return new GameResult(result, message);
     }
 
     private Integer getStrikeCount() {
@@ -22,22 +26,30 @@ public final class GameResult {
         return result.get(1);
     }
 
-    public String makeStrikeJudgementMessage() {
+    public Message makeStrikeJudgementMessage() {
         Integer strikeCount = getStrikeCount();
-        return strikeCount + "스트라이크";
+        String strikeMessage = strikeCount + "스트라이크";
+        return message.makeNewGameResultMessage(strikeMessage);
     }
 
-    public String makeBallJudgementMessage() {
+    public Message makeBallJudgementMessage() {
         Integer ballCount = getBallCount();
-        return ballCount + "볼";
+        String ballMessage = ballCount + "볼";
+        return message.makeNewGameResultMessage(ballMessage);
     }
 
-    public String makeStrikeAndBallJudgement() {
-        return makeBallJudgementMessage() + " " + makeStrikeJudgementMessage();
+    public Message makeStrikeAndBallJudgementMessage() {
+        Integer strikeCount = getStrikeCount();
+        Integer ballCount = getBallCount();
+        String strikeMessage = strikeCount + "스트라이크";
+        String ballMessage = ballCount + "볼";
+        String ballAndStrikeMessage = ballMessage + " " + strikeMessage;
+        return message.makeNewGameResultMessage(ballAndStrikeMessage);
     }
 
-    public String makeNoStrikeAndNoBallJudgementMessage() {
-        return "낫싱";
+    public Message makeNoStrikeAndNoBallJudgementMessage() {
+        String noBallAndNoStrikeMessage = "낫싱";
+        return message.makeNewGameResultMessage(noBallAndNoStrikeMessage);
     }
 
     private boolean isStrikeCountEqualZero() {
