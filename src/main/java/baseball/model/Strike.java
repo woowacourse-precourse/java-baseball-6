@@ -11,7 +11,19 @@ public class Strike {
         this.strikeCount++;
     }
 
-    public int getStrikeCount() {
-        return this.strikeCount;
+
+    public boolean isThreeStrike() {
+        return this.strikeCount == 3;
+    }
+
+    public boolean isZeroStrike() {
+        return this.strikeCount == 0;
+    }
+
+    public String getComment() {
+        if (strikeCount > 0) {
+            return strikeCount + "스트라이크";
+        }
+        return "zero";
     }
 }

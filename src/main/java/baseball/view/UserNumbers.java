@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Set;
 
 
-public class UserInput {
+public class UserNumbers {
 
-    private String userInput;
+    private final List<Integer> userNumbers;
 
-    public UserInput(String inputString) {
+    public UserNumbers(String inputString) {
         validateInput(inputString);
-        this.userInput = inputString;
+        this.userNumbers = userInputToIntegerList(inputString);
     }
 
-    public List<Integer> userInputToIntegerList() {
-        return Arrays.stream(userInput.split("")).map(Integer::parseInt).toList();
+    public List<Integer> userInputToIntegerList(String inputString) {
+        return Arrays.stream(inputString.split("")).map(Integer::parseInt).toList();
     }
 
     private boolean hasLengthOfThree(String userInput) {
@@ -48,7 +48,7 @@ public class UserInput {
 
     private boolean isInRangeOfOneToNine(String userInput) {
         for (String c : userInput.split("")) {
-            int number = stringToInt(c);
+            int number = Integer.parseInt(c);
             if (number <= 0 || number > 9) {
                 return false;
             }
@@ -71,8 +71,8 @@ public class UserInput {
         }
     }
 
-    private int stringToInt(String input) {
-        return Integer.parseInt(input);
+    public int valueOfIndex(int index) {
+        return userNumbers.get(index);
     }
 
 }

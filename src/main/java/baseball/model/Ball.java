@@ -11,7 +11,15 @@ public class Ball {
         this.ballCount++;
     }
 
-    public int getBallCount() {
-        return this.ballCount;
+    public boolean isZeroBall() {
+        return this.ballCount == 0;
     }
+
+    public String getComment() {
+        if (ballCount > 0) {
+            return ballCount + "볼";
+        }
+        return "zero";
+    }
+
 }

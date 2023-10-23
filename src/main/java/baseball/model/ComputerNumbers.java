@@ -4,16 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumberGenerator {
+public class ComputerNumbers {
 
     private List<Integer> computerNumber;
 
-    public ComputerNumberGenerator() {
+    public ComputerNumbers() {
         generateRandomNumbers();
-    }
-
-    public List<Integer> getComputerNumber() {
-        return computerNumber;
     }
 
     private void generateRandomNumbers() {
@@ -30,5 +26,14 @@ public class ComputerNumberGenerator {
 
     public void reset() {
         generateRandomNumbers();
+    }
+
+
+    public boolean isBall(int target, int index) {
+        return computerNumber.contains(target) && !computerNumber.get(index).equals(target);
+    }
+
+    public boolean isStrike(int target, int index) {
+        return computerNumber.get(index) == target;
     }
 }

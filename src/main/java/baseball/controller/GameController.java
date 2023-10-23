@@ -1,9 +1,9 @@
 package baseball.controller;
 
-import baseball.model.ComputerNumberGenerator;
+import baseball.model.ComputerNumbers;
 import baseball.model.Game;
 import baseball.view.RestartInput;
-import baseball.view.UserInput;
+import baseball.view.UserNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
@@ -32,10 +32,10 @@ public class GameController {
         return restartInput.getRestartInput();
     }
 
-    private boolean playRound(ComputerNumberGenerator generator) {
+    private boolean playRound(ComputerNumbers generator) {
         String input = getUserInput();
-        UserInput userInput = new UserInput(input);
-        Game game = new Game(generator, userInput);
+        UserNumbers userNumbers = new UserNumbers(input);
+        Game game = new Game(generator, userNumbers);
         String result = game.play();
         System.out.println(result);
 
@@ -45,7 +45,7 @@ public class GameController {
         return true;
     }
 
-    private boolean handleGame(ComputerNumberGenerator generator) {
+    private boolean handleGame(ComputerNumbers generator) {
         endGameMessage();
         int next = restartOrEndGame();
         if (next == 1) {
@@ -56,7 +56,7 @@ public class GameController {
     }
 
     public void run() {
-        ComputerNumberGenerator generator = new ComputerNumberGenerator();
+        ComputerNumbers generator = new ComputerNumbers();
 
         startMessage();
         while (true) {
