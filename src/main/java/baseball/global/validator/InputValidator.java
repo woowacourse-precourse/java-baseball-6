@@ -5,8 +5,9 @@ import baseball.global.message.ExceptionMessage;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
+import static baseball.global.message.ExceptionMessage.*;
 
 public class InputValidator {
 
@@ -20,13 +21,13 @@ public class InputValidator {
         try {
             Integer.parseInt(playerInput);
         } catch (NumberFormatException e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NOT_NUMERIC.getMessage());
         }
     }
 
     private void validateInputSize(String playerInput){
         if (playerInput.length() != RuleValue.BASEBALL_NUMBER_SIZE){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_SIZE_MISMATCH.getMessage());
         }
     }
 
@@ -34,7 +35,7 @@ public class InputValidator {
         String[] seperatedString = playerInput.split("");
         Set<String> distinctStringSet = new HashSet<>(Arrays.asList(seperatedString));
         if(distinctStringSet.size() != playerInput.length()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NOT_DISTINCT.getMessage());
         }
     }
 }
