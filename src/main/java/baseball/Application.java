@@ -43,6 +43,12 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             randomNumbers[i] = generateRandomNumbers().get(i);
         }
+        System.out.println("Random Numbers: " + randomNumbers[0] + randomNumbers[1] + randomNumbers[2]);
+
+        //게임을 진행하는 과정에서 사용자 입력값과 랜덤값을 비교한다
+
+
+
 
     }
 }
