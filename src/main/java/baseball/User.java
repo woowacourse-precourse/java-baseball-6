@@ -13,6 +13,7 @@ public class User {
     }
 
     public void inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         char[] inputCharArray = input.toCharArray();
         validateInput(inputCharArray);
@@ -42,9 +43,13 @@ public class User {
 
     private void validateInputType(char[] arr) {
         for (char c : arr) {
-            if (Character.isDigit(c)) {
+            if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

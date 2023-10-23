@@ -3,10 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Computer {
-
     private static final int START_NUM = 1;
     private static final int END_NUM = 9;
     private final Map<Integer, Integer> numbers;
@@ -25,8 +25,8 @@ public class Computer {
     }
 
     private void generateRandomNumbers() {
-        int count = 1;
-        while (count <= 3) {
+        int count = 0;
+        while (count < 3) {
             int randomNumber = Randoms.pickNumberInRange(START_NUM, END_NUM);
             if (numbers.containsKey(randomNumber)) {
                 continue;
@@ -34,5 +34,48 @@ public class Computer {
             numbers.put(randomNumber, count);
             count++;
         }
+    }
+
+    public boolean canEnd(User user) {
+        List<Integer> userNumbers = user.getNumbers();
+        Result result = new Result();
+        for (int i = 0; i < userNumbers.size(); i++) {
+            int number = userNumbers.get(i);
+            canAddResult(number, i, result);
+        }
+        printResult(result);
+        return result.getStrike() == 3;
+    }
+
+    private void canAddResult(int number, int i, Result result) {
+        if (numbers.containsKey(number)) {
+            int index = numbers.get(number);
+            if (canAddStrike(index, i, result)) {
+                return;
+            }
+            result.addBall();
+        }
+    }
+
+    private boolean canAddStrike(int index, int i, Result result) {
+        if (index == i) {
+            result.addStrike();
+            return true;
+        }
+        return false;
+    }
+
+    private void printResult(Result result) {
+        StringBuilder sb = new StringBuilder();
+        if (result.isNoting()) {
+            sb.append("낫싱");
+        }
+        if (result.isNotZeroBall()) {
+            sb.append(result.getBall()).append("볼 ");
+        }
+        if (result.isNotZeroStrike()) {
+            sb.append(result.getStrike()).append("스트라이크");
+        }
+        System.out.println(sb.toString().trim());
     }
 }
