@@ -4,7 +4,7 @@
 
 ### ✅ 0점 방지 기본 규칙
 - [x] java version 17로 설정
-- [ ] `./gradlew clean test` BUILD SUCCESSFUL 확인
+- [x] `./gradlew clean test` BUILD SUCCESSFUL 확인
 
 
 ### ✅ 기능 요구 사항
@@ -20,21 +20,21 @@
 ### ✅ 프로그래밍 요구사항
 - [ ] Java 코드 컨벤션 준수해서 리팩토링
 > **`돌다리도 두들겨보자!` 제출 전 확인 리스트 🪨👊🏻**
-> [ ] JDK 17를 사용한다.
-> [ ] Application의 main()에서 시작하도록 설계했다.
-> [ ] build.gradle 파일을 변경하지 않았다.
-> [ ] 외부 라이브러리 사용하지 않았다.
-> [ ] System.exit() 사용하지 않았다.
-> [ ] ApplicationTest의 모든 테스트가 성공한다.
-> [ ] 패키지 이름을 수정하거나 이동하지 않았다.
-> [ ] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현했다.
->   [ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
->   [ ] camp.nextstep.edu.missionutils.Console의 readLine()
+> [x] JDK 17를 사용한다.
+> [x] Application의 main()에서 시작하도록 설계했다.
+> [x] build.gradle 파일을 변경하지 않았다.
+> [x] 외부 라이브러리 사용하지 않았다.
+> [x] System.exit() 사용하지 않았다.
+> [x] ApplicationTest의 모든 테스트가 성공한다.
+> [x] 패키지 이름을 수정하거나 이동하지 않았다.
+> [x] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현했다.
+>   [x] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
+>   [x] camp.nextstep.edu.missionutils.Console의 readLine()
  
 
 ### ✅ 과제 진행 요구사항
 - [x] java-baseball-6 저장소를 Fork & Clone
-- [ ] docs/README.md에 구현할 기능 목록을 정리해 추가
+- [x] docs/README.md에 구현할 기능 목록을 정리해 추가
 - [ ] 완료 후 Pull Request 생성
 - [ ] 우아한테크코스 지원 플랫폼에 소감 작성 후 제출
 - [ ] 제출한 후 결과 확인, 통과하지 못했다면 수정해 재제출
