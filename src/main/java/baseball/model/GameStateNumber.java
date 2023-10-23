@@ -26,10 +26,6 @@ public enum GameStateNumber {
         }
     }
 
-    public Integer getNumber() {
-        return stateNumber;
-    }
-
     public boolean isExit() {
         if (this.stateNumber == EXIT.stateNumber) {
             return true;
