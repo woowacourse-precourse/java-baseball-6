@@ -11,21 +11,21 @@ public class BallTest {
 
     @BeforeEach
     void setup() {
-        com = new Ball(0, new BallNo(5));
+        com = new Ball(0, 5);
     }
 
     @Test
     void strike() {
-        assertThat(com.play(new Ball(0, new BallNo(5)))).isEqualTo(BallStatus.STRIKE);
+        assertThat(com.play(new Ball(0, 5))).isEqualTo(BallStatus.STRIKE);
     }
 
     @Test
     void ball() {
-        assertThat(com.play(new Ball(2, new BallNo(5)))).isEqualTo(BallStatus.BALL);
+        assertThat(com.play(new Ball(2, 5))).isEqualTo(BallStatus.BALL);
     }
 
     @Test
     void nothing() {
-        assertThat(com.play(new Ball(0, new BallNo(4)))).isEqualTo(BallStatus.NOTHING);
+        assertThat(com.play(new Ball(0, 4))).isEqualTo(BallStatus.NOTHING);
     }
 }
