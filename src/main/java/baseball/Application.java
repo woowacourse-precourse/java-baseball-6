@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    private static final int MAX_NUMBER_LENGTH = BaseballValues.MAX_NUMBER_LENGTH.getValue();
+    private static final int MIN_NUMBER = BaseballValues.MIN_NUMBER.getValue();
+    private static final int MAX_NUMBER = BaseballValues.MAX_NUMBER.getValue();
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -48,7 +53,7 @@ public class Application {
                     throw new IllegalArgumentException("잘못 입력하셨습니다.");
                 }
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 throw new IllegalArgumentException("잘못 입력하셨습니다.");
             }
         }
@@ -60,14 +65,14 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumbers = readLine();
 
-        if (inputNumbers.length() != 3){
+        if (inputNumbers.length() != MAX_NUMBER_LENGTH) {
             throw new IllegalArgumentException("입력한 숫자 길이가 맞지 않습니다.");
         }
 
-        for (int i = 0; i < inputNumbers.length(); i++){
+        for (int i = 0; i < inputNumbers.length(); i++) {
             int number = Character.getNumericValue(inputNumbers.charAt(i));
 
-            if ( 0 >= number || number > 9) {
+            if (MIN_NUMBER > number || number > MAX_NUMBER) {
                 throw new IllegalArgumentException("입력한 문자는 숫자가 아닙니다.");
             }
 
@@ -86,17 +91,17 @@ public class Application {
             return resultMessage;
         }
 
-        if (strike == 0 && ball == 0){
+        if (strike == 0 && ball == 0) {
             resultMessage = "낫싱";
             return resultMessage;
         }
 
-        if (strike == 0){
+        if (strike == 0) {
             resultMessage = ball + "볼";
             return resultMessage;
         }
 
-        if (ball == 0){
+        if (ball == 0) {
             resultMessage = strike + "스트라이크";
             return resultMessage;
         }
