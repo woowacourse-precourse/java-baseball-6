@@ -1,5 +1,6 @@
 package baseball.view.console;
 
+import baseball.domain.Command;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -9,7 +10,7 @@ public class InputView {
     }
 
     public String readCommand() {
-        System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        System.out.printf("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n", Command.RETRY.getValue(), Command.EXIT.getValue());
         return Console.readLine();
     }
 }
