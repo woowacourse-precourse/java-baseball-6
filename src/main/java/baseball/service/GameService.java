@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.domain.Number;
 import baseball.domain.Score;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,13 +11,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameService {
 
-    ValidCheckService validCheckService = new ValidCheckService();
+    private final Number num = new Number();
+    private final ValidCheckService validCheckService = new ValidCheckService();
 
     //컴퓨터 숫자 생성
     public  List<Integer> generateRandomNumber(int length) {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < length) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(num.MIN_NUM, num.MAX_NUM);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }

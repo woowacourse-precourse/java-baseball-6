@@ -1,11 +1,15 @@
 package baseball.service;
 
+import baseball.domain.Number;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class ValidCheckService {
+
+    private final Number num = new Number();
 
     public boolean isValidNumber(String input){
         if(isNumberNaturalDigit(input) && isValidLength(input) && sameNumberCheck(input)){
@@ -23,7 +27,7 @@ public class ValidCheckService {
     }
 
     public boolean isValidLength(String input){
-        if (input.length() != 3) {
+        if (input.length() != num.NUM_LENGTH) {
             throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
         return true;
