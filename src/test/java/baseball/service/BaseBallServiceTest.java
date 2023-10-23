@@ -55,7 +55,7 @@ class BaseBallServiceTest {
     }
 
     @Test
-    @DisplayName("다 틀렸을 경우 경우")
+    @DisplayName("다 틀렸을 경우")
     public void testGetGameResult_Nothing() {
         List<Integer> target = Arrays.asList(1, 2, 3);
         List<Integer> userInput = Arrays.asList(4, 5, 6);
