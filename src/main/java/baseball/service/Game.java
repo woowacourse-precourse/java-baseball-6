@@ -9,7 +9,7 @@ import baseball.service.handler.Player;
 
 public class Game {
 
-    public static final int NUMBER_OF_DIGITS = 3;       //자리수
+    private static final int NUMBER_OF_DIGITS = 3;       //자리수
     private static final int START_RANGE = 1;        //랜덤 시작 범위
     private static final int END_RANGE = 9;          //랜덤 끝 범위
 
@@ -44,6 +44,13 @@ public class Game {
     }
 
     /**
+     * Restart game
+     */
+    private void restartGame() {
+        runGame();
+    }
+
+    /**
      * run game
      */
     public void runGame() {
@@ -54,14 +61,7 @@ public class Game {
         //strike가 NUMBER_OF_DIGITS와 같을 때까지 반복
         //답을 맞출 때까지 반복
         while (hint.getStrike() != NUMBER_OF_DIGITS) {
-            hint.resetHint();   //hint reset
-
-            System.out.print(GET_NUMBER_MESSAGE);   //숫자 입력시 메시지
-            Player player = new Player();
-            player.inputNumber();   //플레이어 입력받기
-
-            //show hint
-            hint.showHint(player.getPlayer_number(), computer.getComputerNumber());
+            gameLoop(computer.getComputerNumber(), hint);
         }
 
         System.out.println(SUCCESS_MESSAGE);    //성공 메시지 출력
@@ -74,13 +74,26 @@ public class Game {
         }
     }
 
-
     /**
-     * Restart game
+     * game loop
+     * <p>
+     * 게임에서 맞출때까지 반복되는 로직
+     * </p>
+     *
+     * @param computer_number : 컴퓨터의 랜덤 수
+     * @param hint            : 힌트
      */
-    private void restartGame() {
-        runGame();
+    private static void gameLoop(String computer_number, Hint hint) {
+        hint.resetHint();   //hint reset
+
+        System.out.print(GET_NUMBER_MESSAGE);   //숫자 입력시 메시지
+        Player player = new Player();
+        player.setPlayer_number(NUMBER_OF_DIGITS);   //플레이어 입력받기
+
+        //show hint
+        hint.showHint(player.getPlayer_number(), computer_number);
     }
+
 
     /**
      * 재실행 여부 확인
