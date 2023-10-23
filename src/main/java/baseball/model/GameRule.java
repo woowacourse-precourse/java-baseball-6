@@ -2,5 +2,5 @@ package baseball.model;
 
 public interface GameRule {
 
-    int calculate(final int hitter, final int pitcher);
+    int calculate(final int computer, final int user);
 }

@@ -8,28 +8,28 @@ import java.util.stream.IntStream;
 public class BallRule implements GameRule {
 
     @Override
-    public int calculate(final int hitter, final int pitcher) {
-        String hitterValue = String.valueOf(hitter);
-        String pitcherValue = String.valueOf(pitcher);
+    public int calculate(final int computer, final int user) {
+        String computerValue = String.valueOf(computer);
+        String userValue = String.valueOf(user);
 
-        String[] hitterNumbers = hitterValue.split("");
-        String[] pitcherNumbers = pitcherValue.split("");
+        String[] computerNumbers = computerValue.split("");
+        String[] userNumbers = userValue.split("");
 
-        boolean[] match = recordMatchedPositions(hitterNumbers, pitcherNumbers);
+        boolean[] match = recordMatchedPositions(computerNumbers, userNumbers);
 
-        Set<String> onlyHitterSet = createUniqueNumberSet(hitterNumbers, match);
-        Set<String> onlyPitcherSet = createUniqueNumberSet(pitcherNumbers, match);
+        Set<String> onlyComputerSet = createUniqueNumberSet(computerNumbers, match);
+        Set<String> onlyUserSet = createUniqueNumberSet(userNumbers, match);
 
-        onlyHitterSet.retainAll(onlyPitcherSet);
+        onlyComputerSet.retainAll(onlyUserSet);
 
-        return onlyHitterSet.size();
+        return onlyComputerSet.size();
     }
 
-    private boolean[] recordMatchedPositions(final String[] hitterNumbers, final String[] pitcherNumbers) {
-        boolean[] match = new boolean[hitterNumbers.length];
+    private boolean[] recordMatchedPositions(final String[] computerNumbers, final String[] userNumbers) {
+        boolean[] match = new boolean[computerNumbers.length];
 
-        for (int i = 0; i < hitterNumbers.length; i++) {
-            if (hitterNumbers[i].equals(pitcherNumbers[i])) {
+        for (int i = 0; i < computerNumbers.length; i++) {
+            if (computerNumbers[i].equals(userNumbers[i])) {
                 match[i] = true;
             }
         }
