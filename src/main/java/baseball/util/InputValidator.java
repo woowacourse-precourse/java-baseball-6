@@ -23,42 +23,42 @@ public class InputValidator {
         return false;
     }
 
-    public static boolean isLengthThree(String input) {
+    private static boolean isLengthThree(String input) {
         if (input.length() == 3) {
             return true;
         }
         throw new IllegalArgumentException(LENGTH_NOT_THREE_MSG);
     }
 
-    public static boolean isNumber(String input) {
+    private static boolean isNumber(String input) {
         if (input.chars().anyMatch(c -> !Character.isDigit(c))) {
             throw new IllegalArgumentException(INCLUDE_CHAR_MSG);
         }
         return true;
     }
 
-    public static boolean isBetweenOneAndNine(String input) {
+    private static boolean isBetweenOneAndNine(String input) {
         if (input.chars().anyMatch(c -> c < '1' || c > '9')) {
             throw new IllegalArgumentException(NOT_BETWEEN_ONE_AND_NINE_MSG);
         }
         return true;
     }
 
-    public static boolean isNotDuplicate(String input) {
+    private static boolean isNotDuplicate(String input) {
         if (input.chars().distinct().count() != input.length()) {
             throw new IllegalArgumentException(DUPLICATE_CHAR_MSG);
         }
         return true;
     }
 
-    public static boolean isLengthOne(String input) {
+    private static boolean isLengthOne(String input) {
         if (input.length() != 1) {
             throw new IllegalArgumentException(LENGTH_NOT_ONE_MSG);
         }
         return true;
     }
 
-    public static boolean isEqualToOneOrTwo(String input) {
+    private static boolean isEqualToOneOrTwo(String input) {
         if (input.charAt(0) != '1' && input.charAt(0) != '2') {
             throw new IllegalArgumentException(NOT_ONE_AND_TWO_MSG);
         }
