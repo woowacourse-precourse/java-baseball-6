@@ -19,7 +19,6 @@ public class Application {
         while(true){
             //(2)
             computer_number = getComputerNumber();
-            System.out.println(computer_number);
             while(true){
                 strike_count = 0;
                 ball_count = 0;
