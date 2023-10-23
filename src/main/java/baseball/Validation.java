@@ -23,4 +23,14 @@ public class Validation {
 
         return flag;
     }
+
+    public boolean isOneLength(String num) {
+        boolean flag = true;
+
+        if (num.length() != 1) {
+            flag = false;
+        }
+
+        return flag;
+    }
 }
