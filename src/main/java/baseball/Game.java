@@ -25,13 +25,13 @@ public class Game {
     private NumberCompare numberCompare;
 
 
-    public void play() {
-        inIt();
+    public void playGame() {
+        inItGame();
         startGame();
         endGame();
     }
 
-    public void inIt() {
+    public void inItGame() {
         computer = new Computer();
         user = new User();
         numberCompare = new NumberCompare();
@@ -40,13 +40,15 @@ public class Game {
 
     public void startGame() {
         int strike;
+
         if (RESTART_GAME == 0) {
             PrintInsertMessage();
         }
+
         do {
             InputUserNumber();
-            int[] compare = numberCompare.Compare(user.getUserNumber(), computer.getComputerNumber());
-            PrintHint(MakeHint(compare));
+            int[] compare = numberCompare.calculateBallAndStrike(user.getUserNumber(), computer.getComputerNumber());
+            PrintHint(getHint(compare));
             strike = compare[1];
         } while (strike != 3);
     }
@@ -58,7 +60,7 @@ public class Game {
         int input = Integer.parseInt(Console.readLine());
         if (input == START_OPTION) {
             RESTART_GAME = 1;
-            play();
+            playGame();
         }
 
         if (input == EXIT_OPTION) {
@@ -71,39 +73,30 @@ public class Game {
     }
 
 
-    public StringBuffer MakeHint(int[] result) {
-        StringBuffer hint = new StringBuffer();
-
-        int ball = result[0];
-        int strike = result[1];
-
+    public String setHint(int ball, int strike) {
         if (strike == 3) {
-            hint.append(strike).append(STRIKE_STR);
-            return hint;
+            return strike + STRIKE_STR;
         }
-
-        if (ball == 0) {
-            if (strike != 0) {
-                hint.append(strike).append(STRIKE_STR);
-                return hint;
-            }
-            hint.append(NOTHING);
-
+        if (ball == 0 && strike == 0) {
+            return NOTHING;
         }
-
-        if (ball != 0) {
-            if (strike != 0) {
-                hint.append(ball).append(BALL_STR).append(EMPTY_STR).append(strike).append(STRIKE_STR);
-                return hint;
-            }
-            hint.append(ball).append(BALL_STR);
+        if (ball == 0 && strike != 0) {
+            return strike + STRIKE_STR;
         }
-
-        return hint;
+        if (ball != 0 && strike == 0) {
+            return ball + BALL_STR;
+        }
+        return ball + BALL_STR + " " + strike + STRIKE_STR;
     }
 
-    public void PrintHint(StringBuffer sb) {
-        System.out.println(sb);
+    public String getHint(int[] result) {
+        int ball = result[0];
+        int strike = result[1];
+        return setHint(ball, strike);
+    }
+
+    public void PrintHint(String hint) {
+        System.out.println(hint);
     }
 
     public void PrintInsertMessage() {
