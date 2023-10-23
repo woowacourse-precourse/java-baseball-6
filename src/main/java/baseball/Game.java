@@ -23,6 +23,7 @@ public class Game {
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
             input = Console.readLine();
         } while (pitcher.restart(input));
+        Console.close();
     }
 
     private void matchStart(int a, int b, int c) {
@@ -35,5 +36,6 @@ public class Game {
             pitch = pitcher.pitch(input);
             judge = referee.judge(pitch);
         } while (judge[1] != 3);
+        Console.close();
     }
 }
