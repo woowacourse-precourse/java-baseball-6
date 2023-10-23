@@ -20,10 +20,6 @@ public final class InputView {
                 .toList();
     }
 
-    private String readLine() {
-        return Console.readLine().trim();
-    }
-
     public GameStatus inputNextGameStatus() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -35,6 +31,10 @@ public final class InputView {
         }
 
         return status;
+    }
+
+    private String readLine() {
+        return Console.readLine().trim();
     }
 
 }
