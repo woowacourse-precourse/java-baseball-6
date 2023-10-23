@@ -1,12 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.*;
-import com.sun.tools.javac.Main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
@@ -60,17 +58,21 @@ public class Application {
 
         List<String> userInput = splitStr(input);
 
+        //공백과 함께 입력했을 시, 공백을 제외하고 나머지 입력에서 판단을 해주는 기능
+        userInput = userInput.stream().filter(str -> !str.equals(" ")).toList();
+
+
         // 서로 다른 3개의 숫자가 아닌 예외 상황 구현
         if (userInput.size() != 3) {
-            System.out.println("3개가 아니게 들어옴");
+//            System.out.println("3개가 아니게 들어옴");
             throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
         if (userInput.stream().distinct().count() != userInput.size()) {
-            System.out.println("서로 다르지 않음");
+//            System.out.println("서로 다르지 않음");
             throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
         if (!userInput.stream().allMatch(Application::checkNum)) {
-            System.out.println("1~9를 제외한 다른값이 들어옴");
+//            System.out.println("1~9를 제외한 다른 값이 들어옴");
             throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
 
@@ -133,6 +135,7 @@ public class Application {
         int ball = userResult.get(1);
 
         if (strike == 3) {
+            System.out.print("3스트라이크\n");
             System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
             return true;
         }
@@ -154,12 +157,21 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
 
-        if (input.equals("1")) {
-        } else if (input.equals("2")) {
-            closeSetting();
-        } else {
-            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        switch (input) {
+            case "1":
+                break;
+            case "2":
+                closeSetting();
+                break;
+            default:
+                throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
+//        if (input.equals("1")) {
+//        } else if (input.equals("2")) {
+//            closeSetting();
+//        } else {
+//            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//        }
     }
 
     private static void closeSetting() {
