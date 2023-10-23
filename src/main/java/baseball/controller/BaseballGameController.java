@@ -1,19 +1,12 @@
 package baseball.controller;
 
 import baseball.domain.BaseballGame;
-import baseball.domain.Computer;
-import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-import java.util.StringTokenizer;
-
 public class BaseballGameController {
 
-
     private BaseballGame baseballGame;
-
     private Boolean RestartFlag = true;
 
     public BaseballGameController() {
@@ -25,33 +18,56 @@ public class BaseballGameController {
         this.baseballGame=new BaseballGame();
         baseballGame.createComputerNumber();
         do {
-
             InputView.printInputNumberMessage();
             userNumber = InputView.readUserNumberInput();
             validateUserNumber(userNumber);
-
             String result = baseballGame.compareTwoNumbers(userNumber);
             String [] results = baseballGame.splitCountResult(result);
             new OutputView(results);
 
-            if (results[1].equals("3")) {
-                OutputView.printAnswerMessage();
-                OutputView.printRestartGameMessage();
-
-                String input = InputView.readRestartNumberInput();
-                validateRestartNumber(input);
-
-                if (input.equals("1")) {
-                    baseballGame.createComputerNumber();
-                }
-                if (input.equals("2")) {
-                    RestartFlag = false;
-                }
-            }
+            gameResult(results);
 
         } while (RestartFlag);
 
     }
+
+
+    public void gameResult(String [] results){
+
+        if (results[1].equals("3")) {
+            OutputView.printAnswerMessage();
+            OutputView.printRestartGameMessage();
+            String input = InputView.readRestartNumberInput();
+            validateRestartNumber(input);
+            restartGame(input);
+        }
+
+    }
+
+
+    public void restartGame(String input){
+        if (input.equals("1")) {
+            baseballGame.createComputerNumber();
+        }
+        if (input.equals("2")) {
+            RestartFlag = false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void validateUserNumber(String userNumber) {
         if (userNumber.length() != 3) throw new IllegalArgumentException();
