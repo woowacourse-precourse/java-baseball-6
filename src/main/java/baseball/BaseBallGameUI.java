@@ -39,7 +39,7 @@ public class BaseBallGameUI {
 
     public void isOneOrTwo(int inputValueToInt) {
         if(inputValueToInt != 2 && inputValueToInt != 1) {
-            throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
+            throw new IllegalArgumentException();
         }
     }
 
