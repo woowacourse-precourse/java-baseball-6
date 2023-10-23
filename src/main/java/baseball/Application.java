@@ -1,58 +1,50 @@
 package baseball;
 
+import static baseball.view.Message.endMessage;
+import static baseball.view.Message.inputMessage;
+import static baseball.view.Message.replayMessage;
+import static baseball.view.Message.resultMessage;
+import static baseball.view.Message.startMessage;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.model.Result;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class Application {
-
     static void playGame() {
         List<Integer> computerNumber = getRandomNumber();
         while (true) {
-            System.out.print("숫자를 입력해 주세요 : ");
+            inputMessage();
             String userNumber = inputUserNumber();
-            // result[2] = {ball 갯수, strike 갯수}
-            int[] result = compareNumber(userNumber, computerNumber);
-            if (!checkResult(result)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Result result = compareNumber(userNumber, computerNumber);
+            resultMessage(result.getBall(), result.getStrike());
+            if (result.getStrike() == 3) {
+                endMessage();
                 break;
             }
         }
     }
 
-    static int[] compareNumber(String userNumber, List<Integer> computerNumber) {
+    static Result compareNumber(String userNumber, List<Integer> computerNumber) {
         String[] number = userNumber.split("");
-        int[] result = new int[2];
+        int ball = 0;
+        int strike = 0;
 
         for (int i = 0; i < 3; i++) {
             int num = Integer.parseInt(number[i]);
             if (computerNumber.get(i) == num) {
-                result[1]++;
+                strike++;
             } else if (computerNumber.contains(num)) {
-                result[0]++;
+                ball++;
             }
         }
+        Result result = new Result(ball, strike);
         return result;
     }
 
-    static boolean checkResult(int[] result) {
-        if (result[1] == 3) {
-            System.out.println("3스트라이크");
-            return false;
-        } else if (result[0] == 0 && result[1] == 0) {
-            System.out.println("낫싱");
-        } else if (result[0] != 0 && result[1] != 0) {
-            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
-        } else if (result[0] == 0) {
-            System.out.println(result[1] + "스트라이크");
-        } else if (result[1] == 0) {
-            System.out.println(result[0] + "볼");
-        }
-        return true;
-    }
 
     static List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -89,7 +81,7 @@ public class Application {
     }
 
     static boolean replayInputCheck() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        replayMessage();
         String input = readLine();
         if (input.equals("1")) {
             return true;
@@ -103,7 +95,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean replay = true;
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        startMessage();
         while (replay) {
             playGame();
             replay = replayInputCheck();
