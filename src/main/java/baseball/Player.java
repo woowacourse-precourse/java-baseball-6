@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Player {
 
@@ -18,12 +20,13 @@ public class Player {
   }
 
   private boolean isDuplicate(String input) {
-    for (Character ch : input.toCharArray()) {
-      if (input.contains(String.valueOf(ch)))
-        return true;
+      return input.chars()
+          .mapToObj(ch -> (char)ch)
+          .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+          .values()
+          .stream()
+          .anyMatch(count -> count > 1);
     }
-    return false;
-  }
 
   public boolean userInputNumbers(final int[] flag) {
     String input = Console.readLine();
