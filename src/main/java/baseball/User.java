@@ -7,12 +7,13 @@ import java.util.List;
 public class User {
     private String userNumberStr;
 
-    public void inputUserNumber() {
+    public void inputUserNumber(String userNumberStr) {
         try {
             userNumberStr = Console.readLine();
             isNotInteger(userNumberStr);
             isNotThreeLength(userNumberStr);
             hasDuplicateDigits(userNumberStr);
+            this.userNumberStr = userNumberStr;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             // 게임 종료 구현
