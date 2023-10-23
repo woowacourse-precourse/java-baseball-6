@@ -15,29 +15,34 @@ public class View {
         Strike strike = result.getStrike();
         Ball ball = result.getBall();
 
-        if (strike.getCount() == MAX_STRIKES) {
-            displayMaxScoreMessage(strike);
-            return;
-
-        } else if (strike.getCount() == 0 && ball.getCount() == 0) {
-            displayNoScoreMessage();
+        if (isMaxStrike(strike)) {
+            displayStrike(strike);
             return;
         }
 
-        displayScoreMessage(strike, ball);
+        if (isNoScore(ball, strike)) {
+            displayMessage(MessageType.NOTHING);
+            return;
+        }
+
+        displayBallAndStrike(ball, strike);
     }
 
-    private void displayScoreMessage(Strike strike, Ball ball) {
+    private boolean isMaxStrike(Strike strike) {
+        return strike.getCount() == MAX_STRIKES;
+    }
+
+    private boolean isNoScore(Ball ball, Strike strike) {
+        return ball.getCount() == 0 && strike.getCount() == 0;
+    }
+
+    private void displayBallAndStrike(Ball ball, Strike strike) {
         System.out.print(ball.getCount() + MessageType.BALL.getMessage() + " ");
         System.out.println(strike.getCount() + MessageType.STRIKE.getMessage());
     }
 
-    private void displayMaxScoreMessage(Strike strike) {
+    private void displayStrike(Strike strike) {
         System.out.println(strike.getCount() + MessageType.STRIKE.getMessage());
-    }
-
-    private void displayNoScoreMessage() {
-        displayMessage(MessageType.NOTHING);
     }
 
     public void displayMessage(MessageType messageType) {
