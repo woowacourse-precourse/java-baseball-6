@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    // 게임에 사용되는 3자리 숫자 배열 정의
     private boolean isGameOver = false;
 
     public static void main(String[] args) {
@@ -57,10 +56,10 @@ public class Application {
         int strikes = 0;
         int balls = 0;
 
-        for (int i = 0; i < playerNumbers.length; i++) {
-            if (playerNumbers[i] == randomNumbers[i]) {
+        for (int i = 0; i < 3; i++) {
+            if (randomNumbers[i] == playerNumbers[i]) {
                 strikes++;
-            } else if (containsNumber(randomNumbers, playerNumbers[i], i)) {
+            } else if (containsNumber(playerNumbers, randomNumbers[i])) {
                 balls++;
             }
         }
@@ -69,16 +68,15 @@ public class Application {
             return "3스트라이크";
         } else if (strikes == 0 && balls == 0) {
             return "낫싱";
-        } else if (strikes > 0 || balls > 0) {
-            return String.format("%d볼 %d스트라이크", balls, strikes);
         } else {
-            return "낫싱";
+            return String.format("%d볼 %d스트라이크", balls, strikes);
         }
     }
 
-    private boolean containsNumber(int[] numbers, int target, int excludeIndex) {
-        for (int i = 0; i < numbers.length; i++) {
-            if (i != excludeIndex && numbers[i] == target) {
+
+    private boolean containsNumber(int[] numbers, int target) {
+        for (int number : numbers) {
+            if (number == target) {
                 return true;
             }
         }
