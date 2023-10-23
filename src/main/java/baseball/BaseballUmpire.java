@@ -2,7 +2,13 @@ package baseball;
 
 /* 플레이어가 제시한 숫자를 판정하고 결과를 반환 */
 public class BaseballUmpire {
-	public int umpireBall(String com, String user) {
+	public int[] umpire(String com, String user) {
+		int ball = umpireBall(com, user);
+		int strike = umpireStrike(com, user);
+		return new int[] {ball, strike};
+	}
+
+	private int umpireBall(String com, String user) {
 		int ball = 0;
 		for (int i = 0; i < user.length(); i++) {
 			if (isContains(com, user, i) && !isEquals(com, user, i)) {
@@ -22,13 +28,13 @@ public class BaseballUmpire {
 		return strike;
 	}
 
-	private boolean isEquals(String com, String user, int i) {
+	private boolean isEquals(String com, String user, int index) {
 		// com의 i번째 문자와 user의 i번째 문자가 서로 같다면 true
-		return com.charAt(i) == user.charAt(i);
+		return com.charAt(index) == user.charAt(index);
 	}
 
-	private boolean isContains(String com, String user, int i) {
+	private boolean isContains(String com, String user, int index) {
 		// com 문자열이 user의 i번째 문자를 포함하면 true
-		return com.contains(Character.toString(user.charAt(i)));
+		return com.contains(Character.toString(user.charAt(index)));
 	}
 }
