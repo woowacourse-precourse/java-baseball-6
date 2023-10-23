@@ -13,7 +13,6 @@ public class BaseballGameController {
     private static final String RESTART_GAME = "1";
     private static final String END_GAME = "2";
 
-
     private BaseballGame baseballGame;
     private User user;
     private Boolean RestartFlag = true;
@@ -41,7 +40,7 @@ public class BaseballGameController {
             OutputView.printAnswerMessage();
             OutputView.printRestartGameMessage();
             String input = InputView.readRestartNumberInput();
-            validateRestartNumber(input);
+            user.validateRestartUserInput(input);
             restartGame(input);
         }
 
@@ -58,9 +57,6 @@ public class BaseballGameController {
     }
 
 
-    public void validateRestartNumber(String input) {
-        if (!input.equals(RESTART_GAME) && !input.equals(END_GAME)) throw new IllegalArgumentException();
-    }
 
 
 }

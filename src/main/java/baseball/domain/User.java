@@ -9,6 +9,8 @@ public class User {
     private static final int COLLECT_USER_INPUT = 3;
     private static final int USER_START_NUMBER = 1;
     private static final int USER_END_NUMBER = 9;
+    private static final String RESTART_GAME = "1";
+    private static final String END_GAME = "2";
 
     private List<Integer>userNumber;
 
@@ -56,6 +58,10 @@ public class User {
         userNumber.stream().distinct();
         if(userNumber.size() != userNumber.stream().distinct().count())
             throw new IllegalArgumentException();
+    }
+
+    public void validateRestartUserInput(String input) {
+        if (!input.equals(RESTART_GAME) && !input.equals(END_GAME)) throw new IllegalArgumentException();
     }
 
 
