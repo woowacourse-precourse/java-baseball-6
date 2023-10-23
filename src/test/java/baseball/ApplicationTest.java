@@ -45,10 +45,10 @@ class ApplicationTest extends NsTest {
     void 게임결과판정_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "123", "356", "135");
-                    assertThat(output()).contains("낫싱", "1볼 1스트라이크", "2볼", "3스트라이크");
+                    run("135", "1", "379", "123", "356", "123", "256", "2");
+                    assertThat(output()).contains("낫싱", "2스트라이크", "1볼", "3스트라이크");
                 },
-                1, 3, 5, 1, 3, 5, 1, 3, 5, 1, 3, 5
+                1, 3, 5, 2, 5, 6
         );
     }
 
