@@ -9,17 +9,17 @@ public class BaseballController {
     ComputerNumber computerNumber = new ComputerNumber();
     PlayerNumber playerNumber = new PlayerNumber();
 
-    public void gameStart() {
+    public void startGame() {
         OutputView.printGameStartMessage();
         do {
             computerNumber.createComputerNumbers();
-            round();
+            playRound();
             OutputView.printWinMessage();
         } while (InputView.inputRestart());
 
     }
 
-    private void round() {
+    private void playRound() {
         do {
             playerNumber.setPlayerNumbers(InputView.inputPlayerNumbers());
             OutputView.printResult(computerNumber.countAndGetResult(playerNumber));
