@@ -1,5 +1,6 @@
 package baseball.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,7 @@ public class BallsTest {
 
     @Nested
     class compareOneBall {
+
         @Test
         void strike() {
             assertEquals(answers.play(new Ball(0, 4)), BallStatus.STRIKE);
@@ -47,6 +49,7 @@ public class BallsTest {
     
     @Nested
     class compareThreeBalls {
+
         @Test
         void play_1strike() {
             PlayResult result = answers.play(new Balls(List.of(1, 2, 3)));
@@ -58,28 +61,28 @@ public class BallsTest {
 
         @Test
         void play_1ball1strike() {
-            PlayResult result = answers.play(new Balls(List.of(1, 2, 3)));
+            PlayResult result = answers.play(new Balls(List.of(4, 5, 6)));
             assertAll(
-                    () -> assertEquals(result.getBall(), 0),
+                    () -> assertEquals(result.getBall(), 1),
                     () -> assertEquals(result.getStrike(), 1)
             );
         }
 
         @Test
         void play_1ball() {
-            PlayResult result = answers.play(new Balls(List.of(1, 2, 3)));
+            PlayResult result = answers.play(new Balls(List.of(1, 3, 4)));
             assertAll(
-                    () -> assertEquals(result.getBall(), 0),
-                    () -> assertEquals(result.getStrike(), 1)
+                    () -> assertEquals(result.getBall(), 1),
+                    () -> assertEquals(result.getStrike(), 0)
             );
         }
 
         @Test
         void play_nothing() {
-            PlayResult result = answers.play(new Balls(List.of(1, 2, 3)));
+            PlayResult result = answers.play(new Balls(List.of(7, 8, 9)));
             assertAll(
                     () -> assertEquals(result.getBall(), 0),
-                    () -> assertEquals(result.getStrike(), 1)
+                    () -> assertEquals(result.getStrike(), 0)
             );
         }
     }

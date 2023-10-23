@@ -32,6 +32,13 @@ public class Balls {
     }
 
     public PlayResult play(Balls userBalls) {
-        return null;
+        PlayResult result = new PlayResult();
+
+        for (Ball answer : answers) {
+            BallStatus status = userBalls.play(answer);
+            result.report(status);
+        }
+
+        return result;
     }
 }
