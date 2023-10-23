@@ -51,7 +51,7 @@ public class BaseballGame implements Game {
     private List<Integer> createNumbers() {
         List<Integer> answer = new ArrayList<>();
         Set<Integer> numbers = new HashSet<>();
-        while (answer.size() < NUMBER_LENGTH) {
+        while (answer.size() < NUMBER_SIZE) {
             int number = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (numbers.contains(number)) continue;
             answer.add(number);

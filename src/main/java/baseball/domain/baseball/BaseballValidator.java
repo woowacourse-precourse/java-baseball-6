@@ -1,5 +1,9 @@
 package baseball.domain.baseball;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static baseball.domain.baseball.BaseballConst.*;
 
 public class BaseballValidator {
@@ -27,10 +31,49 @@ public class BaseballValidator {
     }
 
     public static void validateCommand(String command) {
+        validateCommandDigit(command);
+        validateCommandRange(command);
+    }
+
+    private static void validateCommandDigit(String command) {
         try {
             Integer.parseInt(command);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ILLEGAL_FINISH_COMMAND_MESSAGE);
+        }
+    }
+
+    private static void validateCommandRange(String command) {
+        int value = Integer.parseInt(command);
+        if (value != RESTART_COMMAND && value != FINISH_COMMAND) {
+            throw new IllegalArgumentException(ILLEGAL_FINISH_COMMAND_MESSAGE);
+        }
+    }
+
+    public static void validateUserPick(List<Integer> pick) {
+        validatePickSize(pick);
+        validatePickDuplicate(pick);
+        validatePickNoZeros(pick);
+    }
+
+    private static void validatePickSize(final List<Integer> pick) {
+        if (pick.size() != NUMBER_SIZE) {
+            throw new IllegalArgumentException(ILLEGAL_NUMBER_SIZE_MESSAGE);
+        }
+    }
+
+    private static void validatePickDuplicate(final List<Integer> pick) {
+        Set<Integer> nonDuplicateNumbers = new HashSet<>(pick);
+        if (nonDuplicateNumbers.size() != pick.size()) {
+            throw new IllegalArgumentException(ILLEGAL_DUPLICATE_NUMBER_MESSAGE);
+        }
+    }
+
+    private static void validatePickNoZeros(final List<Integer> pick) {
+        for (Integer value : pick) {
+            if (value == 0) {
+                throw new IllegalArgumentException(ILLEGAL_INPUT_INCLUDE_ZERO_MESSAGE);
+            }
         }
     }
 }
