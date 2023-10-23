@@ -6,6 +6,8 @@ import java.util.Set;
 
 public class ComputerNumber {
 
+    private static final int MAX_NUMBER_LENGTH = 3;
+
     private String computerNumber;
 
     public ComputerNumber() {
@@ -18,7 +20,7 @@ public class ComputerNumber {
 
     public Set<String> generateNumber() {
         Set<String> number = new HashSet<String>();
-        while (number.size() < 3) {
+        while (number.size() < MAX_NUMBER_LENGTH) {
             number.add(String.valueOf(Randoms.pickNumberInRange(1, 9)));
         }
         return number;
