@@ -15,6 +15,5 @@ public enum Restart {
         return value;
     }
 
-
 }
 

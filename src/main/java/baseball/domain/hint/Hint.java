@@ -1,4 +1,4 @@
-package baseball.domain.Hint;
+package baseball.domain.hint;
 
 import java.util.ArrayList;
 import java.util.List;

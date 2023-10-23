@@ -1,13 +1,13 @@
-package baseball.service;
+package baseball.service.hint;
 
 import baseball.domain.Baseball;
 import baseball.domain.GameConstants;
-import baseball.domain.Hint.Ball;
+import baseball.domain.hint.Ball;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class BallService {
+public class BallService implements HintItemService<Ball> {
 
     private static final BallService ballService = new BallService();
 

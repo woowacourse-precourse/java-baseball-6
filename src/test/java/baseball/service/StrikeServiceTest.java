@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.Baseball;
+import baseball.service.hint.StrikeService;
 import baseball.util.IntegerListUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

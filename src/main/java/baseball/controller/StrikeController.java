@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.Baseball;
-import baseball.domain.Hint.Strike;
-import baseball.service.StrikeService;
+import baseball.domain.hint.Strike;
+import baseball.service.hint.StrikeService;
 
 public class StrikeController {
 

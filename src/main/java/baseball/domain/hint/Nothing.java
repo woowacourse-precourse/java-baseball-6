@@ -1,4 +1,4 @@
-package baseball.domain.Hint;
+package baseball.domain.hint;
 
 public class Nothing extends HintItem {
 
