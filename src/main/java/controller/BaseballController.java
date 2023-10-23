@@ -12,9 +12,12 @@ public class BaseballController {
 
     public void gameStart() {
         OutputView.printGameStartMessage();
-        computerNumber.createComputerNumbers();
-        round();
-        OutputView.printWinMessage();
+        do {
+            computerNumber.createComputerNumbers();
+            round();
+            OutputView.printWinMessage();
+        } while(InputView.inputRestart());
+
     }
 
     private void round() {

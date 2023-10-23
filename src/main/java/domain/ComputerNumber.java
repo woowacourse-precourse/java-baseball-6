@@ -15,6 +15,7 @@ public class ComputerNumber {
     public ComputerNumber(){}
 
     public void createComputerNumbers() {
+        computerNumbers.clear();
         while (computerNumbers.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
