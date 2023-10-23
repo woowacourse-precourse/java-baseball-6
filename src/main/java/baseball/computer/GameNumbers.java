@@ -19,6 +19,10 @@ public class GameNumbers {
         return numbers.get(index);
     }
 
+    public boolean isContain(int number) {
+        return numbers.contains(number);
+    }
+
     private static void validate(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumberRange(numbers);
