@@ -7,6 +7,10 @@ import java.util.List;
 
 public class Computer {
 
+    /**
+     * 3자리 무작위 숫자 생성
+     * @return
+     */
     public List<Integer> createAnswer(){
         List<Integer> answer = new ArrayList<>();
 
