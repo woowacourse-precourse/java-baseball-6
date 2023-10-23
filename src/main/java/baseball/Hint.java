@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hint {
+    public int getStrike() {
+        return strike;
+    }
+
     public int strike;
     public int ball;
     private List<Integer> userAnswer;
@@ -47,6 +51,7 @@ public class Hint {
                 userAnswer.remove(i);
                 computerAnswer.remove(i);
                 strike++;
+                i--;
             }
         }
     }
@@ -60,4 +65,6 @@ public class Hint {
             }
         }
     }
+
+
 }
