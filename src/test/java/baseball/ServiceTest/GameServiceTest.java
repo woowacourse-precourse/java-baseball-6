@@ -73,4 +73,15 @@ public class GameServiceTest {
         assertEquals(2, strikeCount);
     }
 
+    @Test
+    public void 볼_개수_세기() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(3, 4, 1);
+        List<Integer> userNumber = List.of(1, 3, 4);
+        //when
+        int ballCount = GameService.getBallCount(computerNumber, userNumber);
+        //then
+        assertEquals(3, ballCount);
+    }
+
 }
