@@ -1,5 +1,6 @@
-package baseball;
+package baseball.service;
 
+import baseball.util.Validate;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class GameService {
     }
 
     public void solvingProblem() {
-        Computer Computer = new Computer();
-        List<Integer> answerList = Computer.makeAnswerList();
+        NumberGenerator computer = new NumberGenerator();
+        List<Integer> answerList = computer.makeAnswerList();
 
         while (play) {
             System.out.print("숫자를 입력해주세요 : ");
