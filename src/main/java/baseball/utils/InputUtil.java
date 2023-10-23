@@ -69,12 +69,12 @@ public abstract class InputUtil {
     }
 
     private static void checkRestartNumberValid(String inputNumber) {
-        if (!isRestartNumberValid(inputNumber)) {
+        if (isRestartNumberInvalid(inputNumber)) {
             throw new IllegalArgumentException(RESTART_NUMBER_IS_NOT_VALID.getErrorMessage());
         }
     }
 
-    private static boolean isRestartNumberValid(String value) {
-        return value.equals(RESTART_NUMBER) || value.equals(END_NUMBER);
+    private static boolean isRestartNumberInvalid(String value) {
+        return !(value.equals(RESTART_NUMBER) || value.equals(END_NUMBER));
     }
 }
