@@ -49,6 +49,7 @@ public class Validator {
             ballCount -= strikeCount;
         }
     }
+
     private int countSameNumber(int i) {
         for(int j = 0; j < INPUT_LENGTH; j++) {
             if(user.userInput[i] == computer.computerNumber[j]) {
@@ -57,6 +58,7 @@ public class Validator {
         }
         return 0;
     }
+
     private void printResultMessage() {
         String result = "";
 
@@ -74,10 +76,12 @@ public class Validator {
         }
         System.out.println(result);
     }
+
     public void startGame(){
         System.out.println(START_MESSAGE);
         game();
     }
+
     private void game() {
         boolean quit = false;
         initializeRandomNumber();
@@ -87,16 +91,22 @@ public class Validator {
             checkStrike();
             checkBall();
             printResultMessage();
-
-            if(strikeCount == INPUT_LENGTH) {
-                System.out.println(WIN_MESSAGE);
-                quit = askRetry();
-            }
+            quit = isGameEnd();
         }
     }
+
+    private boolean isGameEnd() {
+        if(strikeCount == INPUT_LENGTH) {
+            System.out.println(WIN_MESSAGE);
+            return askRetry();
+        }
+        return false;
+    }
+
     private boolean askRetry() {
         System.out.println(RETRY_MESSAGE);
         String quitInput = Console.readLine();
+
         if(quitInput.equals(RESTART_NUMBER)) {
             initializeRandomNumber();
             return false;
