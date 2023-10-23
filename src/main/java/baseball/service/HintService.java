@@ -7,19 +7,23 @@ public class HintService {
         if (computerNumber.isNothing(inputNumber)) {
             return "낫싱";
         }
+
         int ballCount = computerNumber.getBallCount(inputNumber);
         int strikeCount = computerNumber.getStrikeCount(inputNumber);
         StringBuilder hintMsg = createBallAndStrikeHint(ballCount, strikeCount);
+
         return hintMsg.toString();
     }
 
     public StringBuilder createBallAndStrikeHint(int ballCount, int strikeCount) {
         StringBuilder hintMsg = new StringBuilder();
+
         appendBallCount(hintMsg, ballCount);
         if (ballCount > 0 && strikeCount > 0) {
             hintMsg.append(" ");
         }
         appendStrikeCount(hintMsg, strikeCount);
+
         return hintMsg;
     }
 
@@ -37,9 +41,11 @@ public class HintService {
 
     public boolean isCorrect(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
         int strikeCount = computerNumber.getStrikeCount(inputNumber);
+
         if (strikeCount == 3) {
             return true;
         }
+
         return false;
     }
 }
