@@ -7,9 +7,13 @@ import static baseball.utils.Constants.*;
 
 public class Computer {
     private int[] digitPositions;
-    private final int[] answerSequence;
+    private int[] answerSequence;
 
     public Computer() {
+        this.reset();
+    }
+
+    public void reset() {
         this.answerSequence = new int[BALL_MAX];
     }
 

@@ -28,11 +28,13 @@ public class BaesballGame {
 
     public void run() {
         MessageUtils.startGame();
+        computer.reset();
         computer.setAnswer();
 
         while(this.isGameInProgress) {
             MessageUtils.enterNumber();
             String answer = Console.readLine();
+            player.reset();
             player.setAnswer(answer);
 
             this.compare();

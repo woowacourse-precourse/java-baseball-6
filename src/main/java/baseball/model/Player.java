@@ -11,12 +11,19 @@ public class Player {
     private int[] answerSequence;
     private int[] digitPositions;
 
+    public Player() {
+        this.reset();
+    }
+
+    public void reset() {
+        this.answerSequence = new int[BALL_MAX];
+        this.digitPositions = new int[RANGE_END];
+    }
+
     public void setAnswer(String answer) {
         this.checkAnswerValid(answer);
 
         this.answer = answer;
-        this.answerSequence = new int[BALL_MAX];
-        this.digitPositions = new int[RANGE_END];
         this.setAnswerSequence();
         this.setDigitPositions();
     }
