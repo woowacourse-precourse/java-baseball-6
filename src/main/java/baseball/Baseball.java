@@ -1,13 +1,15 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
 
-    public void play() { // 0. 게임을 실행하는 메서드
-
+    public static void play() { // 0. 게임을 실행하는 메서드
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        inputThreeNums();
     }
 
     public static void pickThreeNumbers() { // 1. 컴퓨터가 가질 3개의 값을 초기화하는 메서드
@@ -23,6 +25,15 @@ public class Baseball {
 
     public void endGame() { // 2. 게임을 종료하는 메서드
 
+    }
+
+    public static String[] inputThreeNums() { // 3. 사용자로부터 숫자 3개를 입력받는 메서드
+        String inputNums;
+        System.out.println("숫자를 입력해주세요 : ");
+        inputNums = Console.readLine();
+
+        String[] listedInputNums = inputNums.split("");
+        return listedInputNums;
     }
 
 
