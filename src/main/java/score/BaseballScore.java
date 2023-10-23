@@ -12,15 +12,18 @@ public class BaseballScore {
         this.ball = 0;
     }
 
-    public void calculateStrikeAndBall(BaseballNumbers playerNumber,
-                                       BaseballNumbers otherPlayerNumber) {
-        for (int i = 0; i < playerNumber.size(); i++) {
-            if (playerNumber.get(i).equals(otherPlayerNumber.get(i))) {
+    public void calculateStrikeAndBall(BaseballNumbers playerNumbers,
+                                       BaseballNumbers otherPlayerNumbers) {
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            Integer playerNumber = playerNumbers.get(i);
+            Integer otherPlayerNumber = otherPlayerNumbers.get(i);
+
+            if (playerNumber.equals(otherPlayerNumber)) {
                 strike++;
                 continue;
             }
 
-            if (playerNumber.contains(otherPlayerNumber.get(i))) {
+            if (playerNumbers.contains(otherPlayerNumber)) {
                 ball++;
             }
         }
