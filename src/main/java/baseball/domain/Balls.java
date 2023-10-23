@@ -9,6 +9,7 @@ import static baseball.domain.Ball.*;
 public class Balls {
     private static final String ERROR_MESSAGE = "입력한 숫자는 1에서 9 사이의 중복되지 않는 3자리여야 합니다.";
     private final List<Ball> balls;
+
     public Balls(List<Ball> balls) {
         validate(balls);
         this.balls = List.copyOf(balls);
@@ -18,13 +19,47 @@ public class Balls {
         return balls.get(index);
     }
 
-    public boolean containsOtherBall(Ball otherBall) {
+    public int countBalls(Balls otherBalls) {
+        int ballCount = 0;
+        for (int index = 0; index < BALL_SIZE; index++) {
+            if (isBall(index, otherBalls)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    private boolean isBall(int index, Balls playerBalls) {
+        // index 위치의 컴퓨터 공과 플레이어 공의 번호를 비교하여 볼인지 확인
+        boolean isNotStrike = !isStrike(index, playerBalls);
+        boolean isContainsOtherBall = this.containsOtherBall(playerBalls.getBall(index));
+        return isNotStrike && isContainsOtherBall;
+    }
+
+    public int countStrikes(Balls otherBalls) {
+        int strikeCount = 0;
+        for (int index = 0; index < BALL_SIZE; index++) {
+            if (isStrike(index, otherBalls)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private boolean containsOtherBall(Ball otherBall) {
         for (Ball ball : balls) {
             if (ball.isSameNumber(otherBall)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private boolean isStrike(int index, Balls playerBalls) {
+        // index 위치의 컴퓨터 공과 플레이어 공의 번호를 비교하여 스트라이크인지 확인
+        Ball computerBall = this.getBall(index);
+        Ball playerBall = playerBalls.getBall(index);
+        return computerBall.number().equals(playerBall.number());
     }
 
     private void validate(List<Ball> balls) {
