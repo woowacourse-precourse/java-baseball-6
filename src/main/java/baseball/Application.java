@@ -8,35 +8,88 @@ import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        //1.컴퓨터 숫자 생성 메소드
-        //2.사용자 숫자 입력 받기
-        //3.비교 연산 메소드
-        //숫자, 자리가 모두 만족 시 스트라이크
-        //숫자가 맞지만 자리가 다른 경우 ball
         try {
-            System.out.printf("숫자를 입력해주세요 :");
-            String input = Console.readLine();//입력 받기
-            List<Integer> user = input.chars().mapToObj(e->Character.getNumericValue(e)).toList();
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> computer = generateComputerNumbers();
+            int ballCount = 0;
+            int strikeCount = 0;
 
-            user.stream().forEach(System.out::println);//출력
+            while (true) {
+                System.out.print("숫자를 입력해주세요: ");
+                String input = Console.readLine();
 
-            System.out.println("컴퓨터 숫자 추출");
-            List<Integer> computer = IntStream.generate(() -> Randoms.pickNumberInRange(1, 9))
-                    .distinct()
-                    .limit(3)
-                    .boxed()
-                    .toList();//서로 다른 숫자 3개가 나올때까지 생성(스트림 연산)
-            
-            computer.stream().forEach(System.out::print);//출력
+                if (input.length() != 3 || !input.matches("[1-9]+")) {
+                    System.out.println("유효하지 않은 값입니다. 1부터 9까지의 서로 다른 숫자 3개를 입력하세요.");
+                    continue;
+                }
 
-            //비교연산 메소드
+                List<Integer> user = input.chars().mapToObj(Character::getNumericValue).toList();
 
+                if (user.stream().distinct().count() < 3) {
+                    System.out.println("중복 숫자가 있습니다! 다시 입력해주세요!");
+                    continue;
+                }
 
+                ballCount = countBalls(user, computer);
+                strikeCount = countStrikes(user, computer);
 
-            //유효성 검사
-        }catch(IllegalArgumentException e){
-            throw new IllegalArgumentException(e);
+                if (ballCount > 0) {
+                    System.out.printf("%d볼 ", ballCount);
+                }
+
+                if (strikeCount > 0) {
+                    System.out.printf("%d스트라이크 ", strikeCount);
+                }
+
+                System.out.println();
+
+                if (strikeCount == 3) {
+                    System.out.println("3개의 숫자를 모두 맞혔습니다! 게임 종료");
+                    System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+                    String select = Console.readLine();
+
+                    if (select.equals("1")) {
+                        computer = generateComputerNumbers();
+                    } else if (select.equals("2")) {
+                        break;
+                    } else {
+                        System.out.println("유효하지 않은 입력입니다. 게임을 종료합니다.");
+                        break;
+                    }
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값을 입력하셨습니다.");
         }
+    }
+
+    private static List<Integer> generateComputerNumbers() {
+        return IntStream.generate(() -> Randoms.pickNumberInRange(1, 9))
+                .distinct()
+                .limit(3)
+                .boxed()
+                .toList();
+    }
+
+    private static int countBalls(List<Integer> user, List<Integer> computer) {
+        int ballCount = 0;
+        for (int i = 0; i < user.size(); i++) {
+            for (int j = 0; j < computer.size(); j++) {
+                if (user.get(i).equals(computer.get(j)) && i != j) {
+                    ballCount++;
+                }
+            }
+        }
+        return ballCount;
+    }
+
+    private static int countStrikes(List<Integer> user, List<Integer> computer) {
+        int strikeCount = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (user.get(i).equals(computer.get(i))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
 }
