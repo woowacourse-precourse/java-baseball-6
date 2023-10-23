@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import repository.InputRepository;
-import repository.InputRepositoryImpl;
 
 import java.io.ByteArrayInputStream;
 
@@ -13,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class InputRepositoryTest {
 
-    private final InputRepository inputRepository = new InputRepositoryImpl();
+    private final InputRepository inputRepository = new InputRepository();
 
     private void inputString(String... args) {
         byte[] buf = String.join("\n", args).getBytes();

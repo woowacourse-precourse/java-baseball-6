@@ -3,7 +3,6 @@ package service;
 import domain.Baseball;
 import repository.BaseRepository;
 import repository.InputRepository;
-import repository.InputRepositoryImpl;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import static constant.BaseConst.*;
 
 public class BaseServiceImpl implements BaseService{
 
-    private final InputRepository inputRepository = new InputRepositoryImpl();
+    private final InputRepository inputRepository = new InputRepository();
     private final BaseRepository baseRepository = new BaseRepository();
 
     /**
@@ -43,7 +42,6 @@ public class BaseServiceImpl implements BaseService{
 
     /**
      * 재시작 여부확인
-     * @return 선택결과가 RESTART("1") 이면 true, EXIT("2")이면 false
      */
     @Override
     public boolean isRestart() {
