@@ -1,8 +1,6 @@
 package baseball.view;
 
-import baseball.domain.CommandType;
-
-import java.util.Arrays;
+import java.util.List;
 
 public final class InputValidator {
     public void validateIsNumeric(String input) {
@@ -14,9 +12,8 @@ public final class InputValidator {
         }
     }
 
-    public void validateCommand(int number) {
-        boolean isMatch = Arrays.stream(CommandType.values())
-                .anyMatch(type -> type.getNumber() == number);
+    public void validateCommand(List<Integer> validNumber, int number) {
+        boolean isMatch = validNumber.stream().anyMatch(valid -> valid == number);
 
         if (!isMatch) {
             throw new IllegalArgumentException();

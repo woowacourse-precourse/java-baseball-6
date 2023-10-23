@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.CommandType;
 import baseball.domain.hints.HintProvider;
 import baseball.domain.hints.HintType;
 import baseball.domain.numbers.AnswerNumberGenerator;
@@ -59,8 +60,7 @@ public final class Controller {
     private void end() {
         outputView.displayCorrectAnswer();
         outputView.displaySelect();
-
-        runCommand(inputView.readCommand());
+        runCommand(inputView.readCommand(CommandType.getAllCommandNumbers()));
     }
 
     private void runCommand(String command) {

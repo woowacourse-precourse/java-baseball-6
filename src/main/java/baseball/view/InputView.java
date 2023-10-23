@@ -1,5 +1,7 @@
 package baseball.view;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public final class InputView {
@@ -15,10 +17,10 @@ public final class InputView {
         return input;
     }
 
-    public String readCommand() {
+    public String readCommand(List<Integer> validNumber) {
         String input = readLine();
         inputValidator.validateIsNumeric(input);
-        inputValidator.validateCommand(Integer.parseInt(input));
+        inputValidator.validateCommand(validNumber, Integer.parseInt(input));
         return input;
     }
 }
