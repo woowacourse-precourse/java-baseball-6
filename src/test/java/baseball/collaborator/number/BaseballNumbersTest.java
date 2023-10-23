@@ -1,6 +1,6 @@
-package baseball.object.number;
+package baseball.collaborator.number;
 
-import baseball.object.number.generator.OneTwoThreeNumbersGenerator;
+import baseball.collaborator.number.generator.OneTwoThreeNumbersGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

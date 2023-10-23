@@ -1,4 +1,4 @@
-package baseball.object.number.generator;
+package baseball.collaborator.number.generator;
 
 import baseball.io.Input;
 import baseball.io.Output;

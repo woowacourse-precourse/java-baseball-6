@@ -1,6 +1,6 @@
-package baseball.object.number;
+package baseball.collaborator.number;
 
-import baseball.object.number.generator.NumbersGenerator;
+import baseball.collaborator.number.generator.NumbersGenerator;
 import java.util.List;
 
 public class BaseballNumbers {

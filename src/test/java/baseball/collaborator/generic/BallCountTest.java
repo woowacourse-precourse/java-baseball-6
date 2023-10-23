@@ -1,4 +1,4 @@
-package baseball.object.generic;
+package baseball.collaborator.generic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

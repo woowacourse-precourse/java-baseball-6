@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.io.Output;
-import baseball.object.game.BaseballGame;
+import baseball.game.BaseballGame;
 
 public class Application {
 

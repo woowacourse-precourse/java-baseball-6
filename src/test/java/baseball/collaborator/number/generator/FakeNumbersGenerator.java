@@ -1,4 +1,4 @@
-package baseball.object.number.generator;
+package baseball.collaborator.number.generator;
 
 import java.util.List;
 

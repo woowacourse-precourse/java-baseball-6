@@ -1,7 +1,7 @@
-package baseball.object.number;
+package baseball.collaborator.number;
 
-import baseball.object.generic.BallCount;
-import baseball.object.number.generator.NumbersGenerator;
+import baseball.collaborator.generic.BallCount;
+import baseball.collaborator.number.generator.NumbersGenerator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
