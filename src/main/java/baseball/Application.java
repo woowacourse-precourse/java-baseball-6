@@ -4,15 +4,14 @@ import java.util.Vector;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    public static void main(String[] args) {
-		System.out.println("숫자 야구 게임을 시작합니다.");
+    public static void main(String[] args) {		
 		
 		int iGameStare = 1;
+		int iFistType = 0;
 		Vector<Integer> VecComNum = new Vector<Integer>(3);		
 		Vector<Integer> VecPlayerNum = new Vector<Integer>(3);	
-		
-		
-		Scanner scanner =  new Scanner(System.in);	
+				
+		Scanner scanner =  new Scanner(System.in);		
 		while(iGameStare==1)
 		{				
 			while(VecComNum.size()<3)
@@ -26,13 +25,12 @@ public class Application {
 			
 			if(VecPlayerNum.size()<3)
 			{
-				//test*******************************
-				for(int i=0;i<VecComNum.size();i++)
+				if(iFistType ==0)
 				{
-					System.out.print(VecComNum.get(i));	
-				}
-				System.out.print("******");	
-				//test	***************************
+					System.out.println("숫자 야구 게임을 시작합니다.");
+					++iFistType;
+				}				
+	
 				System.out.print("숫자를 입력해주세요 : ");	
 				String[] sInputAyy = scanner.next().split("");	
 				if(sInputAyy.length!=3)
@@ -71,26 +69,24 @@ public class Application {
 					System.out.println("3스트라이크");	
 					System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 					VecPlayerNum.clear();
-					System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-					scanner =  new Scanner(System.in);
-					int iInputNum = Integer.parseInt(scanner.nextLine());
-					
-					if(iInputNum==1)
+					System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");					
+					int iInputNum = scanner.nextInt();					
+					if(iInputNum!=1 && iInputNum!=2)
 					{
-						VecComNum.clear();
+						scanner.close();
+						throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
+					}
+					else if(iInputNum==1)
+					{	
+						iFistType=0;
+						VecComNum.clear();						
 						continue;
 					}
 					else if(iInputNum==2)
 					{
 						iGameStare =2;					
 						break;
-					}
-					else
-					{
-						scanner.close();
-						throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
-					}
-					
+					}					
 				}
 				else if(iBall==0 && iStrike==0)
 				{
