@@ -15,4 +15,6 @@ public enum NumberRule {
     public int getNumber() {
         return number;
     }
+
+
 }
