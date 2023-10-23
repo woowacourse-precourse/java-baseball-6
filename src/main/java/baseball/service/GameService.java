@@ -18,8 +18,8 @@ public class GameService {
         int strike = strikeResult(computer, player);
         String[] playerBall = player.split("");
 
-        for (int i=0; i< playerBall.length; i++){
-            if (computer.contains(playerBall[i])) result += 1;
+        for (String s : playerBall) {
+            if (computer.contains(s)) result += 1;
         }
 
         return result - strike;
