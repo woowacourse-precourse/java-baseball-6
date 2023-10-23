@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.model.RandomNumber;
+import baseball.view.InputMessage;
+import baseball.view.PrintMessage;
+
 public class GameController {
 
     private static final int ALL_COLLECT = 3;
