@@ -27,21 +27,28 @@ public class Application {
         List<Integer> computerNumbers = generateRandomNumbers();
 
         boolean correctAnswer = false;
+
         while (!correctAnswer) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputNumbers = Console.readLine();
-            validateInput(inputNumbers);
-
-            List<Integer> playerNumbers = convertInputToNumbers(inputNumbers);
-
+            List<Integer> playerNumbers = getPlayerInput();
             correctAnswer = checkIfPlayerWins(computerNumbers, playerNumbers);
 
             if (!correctAnswer) {
                 continue;
             }
+            
             return askContinue();
         }
         return true;
+    }
+
+    /* 플레이어 입력 받기 */
+    private static List<Integer> getPlayerInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNumbers = Console.readLine();
+
+        validateInput(inputNumbers);
+
+        return convertInputToNumbers(inputNumbers);
     }
 
     /* 랜덤 컴퓨터 숫자 생성 */
