@@ -41,7 +41,7 @@ public class ComputerService {
             char targetNumber = player.charAt(i);
             int findIndex = computer.indexOf(targetNumber);
 
-            if (findIndex > 0 && findIndex != i) {
+            if (findIndex != -1 && findIndex != i) {
                 count += 1;
             }
         }
