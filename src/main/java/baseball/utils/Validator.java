@@ -1,15 +1,15 @@
 package baseball.utils;
 
 /**
- * 입력받은 String을 검증하기 위해 공통으로 사용되는 클래스
+ * String을 검증하기 위해 공통으로 사용되는 클래스입니다.
  */
 
 public class Validator {
 
     /**
-     * 입력받은 String이 널 또는 공백으로만 이루어져 있는지 검사
+     * String이 널 또는 공백으로만 이루어져 있는지 검사합니다.
      *
-     * @param string 검사할 입력 String
+     * @param string 검사할 String
      */
 
     public static void validateStringEmptyOrNull(String string) {
@@ -19,9 +19,9 @@ public class Validator {
     }
 
     /**
-     * 입력받은 String이 숫자 값으로만 이루어져 있는지 검사
+     * String이 숫자 값으로만 이루어져 있는지 검사합니다.
      *
-     * @param string 검사할 입력 String
+     * @param string 검사할 String
      */
 
     public static void validateStringDigit(String string) {

@@ -1,7 +1,7 @@
 package baseball.utils;
 
 /**
- * 숫자야구 게임을 위한 여러 클래스들이 공유하여 사용하는 상수 클래스
+ * 숫자야구 게임을 위해 여러 클래스들이 공유하여 사용하는 상수 클래스입니다.
  */
 
 public class BaseballConstantUtils {

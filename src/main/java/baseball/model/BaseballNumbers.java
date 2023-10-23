@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * BaseballNumber 객체들을 담는 일급컬렉션
+ * BaseballNumber 객체들을 담는 일급컬렉션입니다.
  */
 
 public class BaseballNumbers {
     private final List<BaseballNumber> baseballNumbers;
 
     /**
-     * BaseballNumber 리스트를 검증 후 BaseballNumbers 객체로 반환
+     * 숫자야구 값이 담긴 리스트에 중복이 있는지, 길이가 적합한지 검사 후 객체를 반환합니다.
      *
-     * @param baseballNumbers 일급컬렉션으로 포장되기 전 리스트
+     * @param baseballNumbers 숫자야구 값을 담은 리스트
      */
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
@@ -36,10 +36,10 @@ public class BaseballNumbers {
     }
 
     /**
-     * 일급컬렉션의 index를 보고 객체를 반환
+     * index에 맞는 숫자야구 객체를 반환합니다.
      *
-     * @param index 일급컬렉션의 인덱스
-     * @return 일급컬렉션의 index에 해당하는 객체
+     * @param index 숫자야구 값을 담는 리스트의 인덱스
+     * @return index에 맞는 숫자야구 객체
      */
 
     public BaseballNumber getBaseballNumber(int index) {
@@ -47,10 +47,10 @@ public class BaseballNumbers {
     }
 
     /**
-     * 일급컬렉션에 특정 객체가 포함되어 있는지 검사
+     * 특정 숫자야구 값이 리스트에 포함되어 있는지 검사합니다.
      *
-     * @param baseballNumber 포함 여부를 검사할 객체
-     * @return 포함여부
+     * @param baseballNumber 리스트에 포함되어 있는지 확인하고 싶은 객체
+     * @return 리스트의 해당 객체 포함여부
      */
 
     public boolean containsBaseballNumber(BaseballNumber baseballNumber) {

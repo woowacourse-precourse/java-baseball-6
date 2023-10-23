@@ -3,7 +3,7 @@ package baseball.model;
 import static baseball.utils.BaseballConstantUtils.BASEBALL_NUMBERS_LENGTH;
 
 /**
- * 컴퓨터 숫자와 유저 숫자로 진행하는 숫자야구 게임
+ * 컴퓨터 숫자야구 값과 유저 숫자야구 값으로 라운드 결과를 얻는 클래스입니다.
  */
 
 public class BaseballGame {
@@ -12,7 +12,7 @@ public class BaseballGame {
     private BaseballNumbers userBaseballNumbers;
 
     /**
-     * BaseballNumbersGenerator 클래스의 정적 메서드를 활용해 BaseballGame 객체 생성
+     * BaseballNumbersGenerator 클래스의 정적 메서드를 활용하여 BaseballGame 객체 생성합니다.
      *
      * @param computerBaseballNumbers getComputerBaseballNumbers 메서드의 반환 값 사용
      * @param userBaseballNumbers     getUserBaseballNumbers 메서드의 반환 값 사용
@@ -24,7 +24,7 @@ public class BaseballGame {
     }
 
     /**
-     * 게임이 끝날 때마다 변경되어야 하는 유저숫자를 재설정
+     * 오답과 함께 라운드가 끝날 때마다 유저의 숫자야구 값을 새롭게 설정합니다.
      *
      * @param userBaseballNumbers getUserBaseballNumbers 메서드의 반환 값 사용
      */
@@ -34,7 +34,7 @@ public class BaseballGame {
     }
 
     /**
-     * BaseballGame 객체 내의 컴퓨터 숫자와 유저숫자로 볼 카운트 계산
+     * 현재 라운드의 볼 개수를 계산합니다.
      *
      * @return 계산한 볼 카운트 값
      */
@@ -53,7 +53,7 @@ public class BaseballGame {
     }
 
     /**
-     * BaseballGame 객체 내의 컴퓨터 숫자와 유저숫자로 스트라이크 카운트 계산
+     * 현재 라운드의 스트라이크 개수를 계산합니다.
      *
      * @return 계산한 스트라이크 카운트 값
      */
@@ -71,7 +71,7 @@ public class BaseballGame {
     }
 
     /**
-     * 현 상태의 userBaseballNumbers가 computerBaseballNumbers와 일치하는 지 검사
+     * 현재 라운드에서 유저가 정답을 맞췄는지 계산합니다.
      *
      * @return 숫자야구 게임의 정답 여부
      */

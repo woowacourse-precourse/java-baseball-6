@@ -11,15 +11,15 @@ import java.util.stream.Collectors;
 
 
 /**
- * BaseballNumbers 객체를 생성해주는 클래스
+ * 숫자야구 값을 담은 리스트를 포장한 객체를 생성해주는 클래스입니다.
  */
 
 public class BaseballNumbersGenerator {
 
     /**
-     * 숫자 야구 게임의 정답지 역할인 computerBaseballNumbers를 생성하는 메서드
+     * 컴퓨터의 숫자야구 값 리스트를 포장한 객체를 생성합니다.
      *
-     * @return 랜덤 값으로 만들어진 BaseballNumbers 객체
+     * @return 무작위로 만들어진 숫자야구 값을 담은 리스트를 포장한 객체
      */
 
     public static BaseballNumbers getComputerBaseballNumbers() {
@@ -35,10 +35,10 @@ public class BaseballNumbersGenerator {
     }
 
     /**
-     * 유저에게 입력받은 값을 BaseballNumbers 객체로 변환 후 반환
+     * 유저의 숫자야구 값 리스트를 포장한 객체를 생성합니다.
      *
      * @param baseballStringNumbers 유저가 입력한 숫자 야구 값
-     * @return 유저에게 입력받은 값으로 만든 BaseballNumbers 객체
+     * @return 유저의 숫자야구 값 리스트를 포장한 객체
      */
 
     public static BaseballNumbers getUserBaseballNumbers(StringNumbers baseballStringNumbers) {
