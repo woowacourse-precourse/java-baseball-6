@@ -19,7 +19,11 @@ public enum BaseBallScoreType {
 
     public static Map<BaseBallScoreType, Integer> getInitScore() {
         return Stream.of(values())
-                .collect(Collectors.toMap(Function.identity(), score -> 0));
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        score -> 0,
+                        (existing, replacement) -> existing,
+                        LinkedHashMap::new));
     }
 
     public String getScoreValue() {
