@@ -21,11 +21,10 @@ public class Player {
     public void guess() {
         System.out.print("숫자를 입력해주세요 : ");
         String answer = Console.readLine();
-
         if(answer.length() <= 0 || answer.length() > 3 || isDuplicate(answer)){
             throwIllegalArgumentException();
         }
-
+        guessNumbers.clear();
         for (int i = 0; i < 3; i++) {
             guessNumbers.add(answer.charAt(i) - '0');
         }
@@ -57,7 +56,6 @@ public class Player {
     }
 
     public void throwIllegalArgumentException() {
-        System.out.println("예외 발생");
         throw new IllegalArgumentException();
     }
 }

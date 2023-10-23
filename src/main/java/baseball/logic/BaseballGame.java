@@ -32,10 +32,8 @@ public class BaseballGame {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 String playerAnswer = player.replayOrExit();
                 if (playerAnswer.equals(RESTART)) {
-                    System.out.println("게임 재시작");
                     return RESTART;
                 } else if (playerAnswer.equals(EXIT)) {
-                    System.out.println("프로그램 종료");
                     return EXIT;
                 } else {
                     // 예외 출력
@@ -51,13 +49,13 @@ public class BaseballGame {
                 computerNumbers.add(randomNumber);
             }
         }
-        System.out.println("컴퓨터 숫자: "+ computerNumbers);
+//        System.out.println("컴퓨터 숫자: "+ computerNumbers);
         return computerNumbers;
     }
 
     private void markNumber(List<Integer> guessNumbers) {
+        resetCount();
         for (int i = 0; i < 3; i++) {
-            System.out.println("검사중인 숫자: " + guessNumbers.get(i));
             // 스트라이크 검사
             int guessNumber = guessNumbers.get(i);
             if (guessNumber == computerNumbers.get(i)) {
@@ -72,15 +70,22 @@ public class BaseballGame {
             }
         }
     }
+
+    private void resetCount() {
+        this.countStrike = 0;
+        this.countBall = 0;
+    }
     private void printScores() {
         if (countBall == 0 && countStrike == 0){
             System.out.println("낫싱");
-        }
-        if (countBall != 0) {
-            System.out.println(countBall + "볼 ");
-        }
-        if (countStrike != 0) {
-            System.out.println(countStrike + "스트라이크 ");
+            return;
+        } else if(countBall != 0 && countStrike != 0){
+            System.out.println(countBall + "볼" + " " + countStrike + "스트라이크");
+            return;
+        } else if (countBall != 0) {
+            System.out.println(countBall + "볼");
+        } else if (countStrike != 0) {
+            System.out.println(countStrike + "스트라이크");
         }
     }
     private boolean isThreeStrike() {
