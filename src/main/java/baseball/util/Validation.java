@@ -21,13 +21,13 @@ public class Validation {
         isOneOrTwo(number);
     }
 
-    private static void containsZero(String number) {
+    public static void containsZero(String number) {
         if (number.contains("0")) {
             throw new IllegalArgumentException("입력 문자열에 0이 포함되었습니다.");
         }
     }
 
-    private static void containsLetter(String number, int maxLength) {
+    public static void containsLetter(String number, int maxLength) {
         String removedNumberString = number.replaceAll("[^1-9]", "");
         int numberLength = removedNumberString.length();
 
@@ -36,7 +36,7 @@ public class Validation {
         }
     }
 
-    private static void validLength(String number, int maxLength) {
+    public static void validLength(String number, int maxLength) {
         int numberLength = number.length();
 
         if (numberLength != maxLength) {
@@ -44,7 +44,7 @@ public class Validation {
         }
     }
 
-    private static void duplicateNumber(String number) {
+    public static void duplicateNumber(String number) {
         Set<Integer> numSet = new HashSet<>();
 
         for (int i = 0; i < MAX_INPUT_LENGTH; i++) {
@@ -59,8 +59,8 @@ public class Validation {
         }
     }
 
-    private static void isOneOrTwo(String number) {
-        String replacedString = number.replaceAll("[3-9]", "");
+    public static void isOneOrTwo(String number) {
+        String replacedString = number.replaceAll("[^1-2]", "");
 
         if (replacedString.isEmpty()) {
             throw new IllegalArgumentException("입력 문자열이 1 또는 2가 아닙니다.");
