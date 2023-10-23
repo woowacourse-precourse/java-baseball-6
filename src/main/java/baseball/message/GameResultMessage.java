@@ -30,6 +30,10 @@ public enum GameResultMessage {
         return this.message;
     }
 
+    public static int getTargetCode() {
+        return STRIKE_3.getCode();
+    }
+
     // 게임 결과 코드에 따라서 그에 적합한 결과를 반환하는 메소드
     public static String getMessageByCode(int code) {
         int ballCount = code / 10 * 10;
