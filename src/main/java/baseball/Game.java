@@ -1,33 +1,68 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
 
     private final int LENGTH = 3;
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String START_NUMBER = "1";
+    private static final String END_NUMBER = "2";
+    private static final String START_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String NOTHING = "낫싱";
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+
     private int ball;
     private int strike;
-    private boolean flag;
+    private String checkInput;
+    private boolean flag = false;
+    private ComputerNumber computerNumber = new ComputerNumber();
+    private List<Character> computer;
 
     public void playBaseballGame() {
-        ComputerNumber computer = new ComputerNumber();
-        System.out.println(computer.getComputerNumbers());
-        this.flag = true;
-        while (flag) {
+        System.out.println(START_MESSAGE);
+        initComputerNumber();
+        while (!this.flag) {
+            initializeCount();
             Player player = new Player();
             player.setPlayerNumbers();
 
-            initializeCount();
-
-            checkBallAndStrike(computer.getComputerNumbers(), player.getPlayerNumbers());
-
-            if (this.strike == LENGTH) {
-                this.flag = false;
+            checkBallAndStrike(computer, player.getPlayerNumbers());
+            printBallCount();
+            if (strike == LENGTH) {
                 System.out.println(SUCCESS_MESSAGE);
+                System.out.println(START_OR_END);
+                if (setFlag()) {
+                    flag = true;
+                }
             }
         }
 
+    }
+
+    private void initComputerNumber() {
+        computerNumber.setComputerNumber();
+        computer = computerNumber.getComputerNumbers();
+    }
+
+    private boolean setFlag() {
+        checkInput = Console.readLine();
+        validateQuitInput();
+
+        if (checkInput.equals(START_NUMBER)) {
+            initComputerNumber();
+            return false;
+        }
+
+        if (checkInput.equals(END_NUMBER)) {
+            return true;
+        }
+        return false;
     }
 
     private void initializeCount() {
@@ -56,5 +91,26 @@ public class Game {
         }
     }
 
+    private void printBallCount() {
+        String result = "";
+        if (ball == 0 && strike == 0) {
+            result = NOTHING;
+        } else if (ball == 0 && strike > 0) {
+            result = strike + STRIKE;
+        } else if (ball > 0 && strike == 0) {
+            result = ball + BALL;
+        } else if (ball > 0 && strike > 0) {
+            result = ball + BALL + " " + strike + STRIKE;
+        }
+        System.out.println(result);
+    }
+
+    private void validateQuitInput() {
+        List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{"1", "2"}));
+        boolean inputValidation = inputList.contains(checkInput);
+        if (!inputValidation) {
+            throw new IllegalArgumentException("Please answer 1 or 2.");
+        }
+    }
 
 }

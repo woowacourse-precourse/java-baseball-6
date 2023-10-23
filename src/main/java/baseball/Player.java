@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +15,8 @@ public class Player {
     private final String DUPLICATE_NUMBER_ERROR = "중복된 숫자는 허용되지 않습니다.";
     private final String NOT_NUMBER_ERROR = "숫자만 입력해주세요.";
     private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3,3}");
+    private static final String START = "1";
+    private static final String END = "9";
 
     private String pickedPlayerNumbers;
     private List<Character> playerNumbers = new ArrayList<>();

@@ -12,7 +12,7 @@ public class ComputerNumber {
 
     private List<Character> computerNumbers;
 
-    public ComputerNumber() {
+    public void setComputerNumber() {
         this.computerNumbers = generateRandomNumbers();
     }
 
