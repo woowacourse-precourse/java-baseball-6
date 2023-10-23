@@ -5,40 +5,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    static List<Integer> inputNumberList = new ArrayList<>();
-    static List<Integer> randomNumberList = new ArrayList<>();
-    static String inputNumber;
-    static boolean isValidated;
-    static boolean isFinished;
+    private final List<Integer> inputNumberList = new ArrayList<>();
+    private final List<Integer> randomNumberList = new ArrayList<>();
 
-    private final ValidateInputNumber validateInputNumber;
-    private final PrintResult printResult;
-    private final GenerateNumerList generateNumerList;
+    private final GenerateNumerList generateNumerList = new GenerateNumerList();
+    private final ValidateInputNumber validateInputNumber = new ValidateInputNumber();
+    private final CalculateResult calculateResult = new CalculateResult(inputNumberList, randomNumberList);
+    private final PrintResult printResult = new PrintResult();
 
-    public Game() {
-        this.validateInputNumber = new ValidateInputNumber();
-        this.printResult = new PrintResult();
-        this.generateNumerList = new GenerateNumerList();
+    private void initializeNumberLists() {
+        randomNumberList.clear();
+        inputNumberList.clear();
     }
 
     public void gameStart() {
-        randomNumberList.clear();
-        inputNumberList.clear();
-
+        initializeNumberLists();
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         generateNumerList.generateRandomNumberList(randomNumberList);
         gameInProgress();
     }
 
-    public void gameInProgress() {
+    private void gameInProgress() {
         inputNumberList.clear();
+
         // 유저 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
-        inputNumber = Console.readLine();
+        String inputNumber = Console.readLine();
 
-        isValidated = validateInputNumber.validateWithRegex(inputNumber);
-
+        boolean isValidated = validateInputNumber.validateWithRegex(inputNumber);
         if (isValidated) {
             generateNumerList.generateInputNumberList(inputNumber, inputNumberList);
             // 입력값 검증
@@ -46,7 +40,10 @@ public class Game {
         }
 
         // 결과값 얻기 & 출력
-        isFinished = printResult.getResult(inputNumberList, randomNumberList);
+        int strikes = calculateResult.calculateStrikes();
+        int balls = calculateResult.calculateBalls();
+
+        boolean isFinished = printResult.print(strikes, balls);
         if (isFinished) {
             gameEnd();
         } else {
@@ -54,7 +51,7 @@ public class Game {
         }
     }
 
-    public void gameEnd() {
+    private void gameEnd() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String number = Console.readLine();
         if (Integer.parseInt(number) == 1) {
