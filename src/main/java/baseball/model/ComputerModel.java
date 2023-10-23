@@ -2,8 +2,7 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class ComputerModel {
 
@@ -14,18 +13,11 @@ public class ComputerModel {
     }
 
     private static int[] createComputerNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        int[] computerNumbers = new int[3];
-        for(int i = 0; i < numbers.size(); i++){
-            computerNumbers[i] = numbers.get(i);
-        }
-        return computerNumbers;
+        return Arrays.stream(new int[100])
+                .map(num -> Randoms.pickNumberInRange(1, 9))
+                .distinct()
+                .limit(3)
+                .toArray();
     }
 
 }
