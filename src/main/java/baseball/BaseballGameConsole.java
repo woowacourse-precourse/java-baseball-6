@@ -5,10 +5,12 @@ import java.util.Objects;
 
 public class BaseballGameConsole {
     private Game game;
+    private InputConsole inputConsole;
     private OutputConsole outputConsole;
 
-    public BaseballGameConsole(Game game, OutputConsole outputConsole) {
+    public BaseballGameConsole(Game game, InputConsole inputConsole, OutputConsole outputConsole) {
         this.game = game;
+        this.inputConsole = inputConsole;
         this.outputConsole = outputConsole;
     }
 
@@ -17,12 +19,12 @@ public class BaseballGameConsole {
         game.setUpForNewGame();
         while(!game.isGameFinished()){
             outputConsole.printInputForm();
-            Result gameResult = game.play(Console.readLine());
+            Result gameResult = game.play(inputConsole.readPrediction());
             outputConsole.printResult(gameResult.getNumberOfBalls(), gameResult.getNumberOfStrikes());
             if(game.isGameFinished()){
                 outputConsole.printGameFinishedMessage();
                 outputConsole.printRegameMessage();
-                if(playerWantsNewGame(Console.readLine())){
+                if(playerWantsNewGame(inputConsole.readUserIntentionForNewGame())){
                     game.setUpForNewGame();
                 }
             }
