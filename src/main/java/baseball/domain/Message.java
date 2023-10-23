@@ -8,7 +8,6 @@ public enum Message {
     NOTHING("낫싱"),
     ONE_BALL("1볼"),
     ONE_BALL_ONE_STRIKE("1볼 1스트라이크"),
-    ONE_BALL_TWO_STRIKE("1볼 2스트라이크"),
     TWO_BALL("2볼"),
     TWO_BALL_ONE_STRIKE("2볼 1스트라이크"),
     THREE_BALL("3볼"),
@@ -32,9 +31,6 @@ public enum Message {
         }
         if (ballCount == 1 && strikeCount == 1) {
             return Message.ONE_BALL_ONE_STRIKE;
-        }
-        if (ballCount == 1 && strikeCount == 2) {
-            return Message.ONE_BALL_TWO_STRIKE;
         }
         if (ballCount == 2 && strikeCount == 0) {
             return Message.TWO_BALL;
