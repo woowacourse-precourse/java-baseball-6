@@ -6,13 +6,13 @@ import java.util.HashSet;
 
 public class RandomNumbersGenerator {
 
-    private static final int COMPUTERNUMBERS_LENGTH = 3;
+    private static final int COMPUTER_NUMBERS_LENGTH = 3;
     private static final int NUMBER_RANGE_START = 1;
     private static final int NUMBER_RANGE_END = 9;
 
     public ArrayList<Integer> generateNumbers() {
         HashSet<Integer> setComputerNumbers = new HashSet<>();
-        while (setComputerNumbers.size() < COMPUTERNUMBERS_LENGTH) {
+        while (setComputerNumbers.size() < COMPUTER_NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
             setComputerNumbers.add(randomNumber);
         }
