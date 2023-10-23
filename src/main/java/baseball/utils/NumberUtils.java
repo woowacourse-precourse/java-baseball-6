@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberUtils {
-
     public static List<Integer> getDigits(int number) {
 
         List<Integer> digits = new ArrayList<>();

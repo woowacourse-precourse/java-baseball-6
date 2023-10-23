@@ -17,7 +17,6 @@ public class Model {
     }
 
     public List<Integer> generateRandomNumbers() {
-
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < NUMBER_LENGTH) {
@@ -26,12 +25,10 @@ public class Model {
                 randomNumbers.add(randomNumber);
             }
         }
-
         return randomNumbers;
     }
 
     public GameResult evaluatePlayerInput(List<Integer> computerNumber, List<Integer> playerNumber) {
-
         for (int i = 0; i < computerNumber.size(); i++) {
             if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
                 gameResult.getStrike().increaseCount();
@@ -39,17 +36,13 @@ public class Model {
                 gameResult.getBall().increaseCount();
             }
         }
-
         checkGameEnded(gameResult);
-
         return gameResult;
     }
 
     private void checkGameEnded(GameResult gameResult) {
-
         if (gameResult.getStrike().getCount() == MAX_STRIKES) {
             gameResult.endGame();
         }
     }
-
 }

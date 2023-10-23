@@ -27,7 +27,6 @@ public class Validator {
     }
 
     public static void validateNoDuplication(String input) {
-
         Set<Character> inputs = new HashSet<>();
 
         for (char a : input.toCharArray()) {

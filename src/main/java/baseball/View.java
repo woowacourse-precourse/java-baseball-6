@@ -11,7 +11,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class View {
 
     public void displayScore(GameResult result) {
-
         Strike strike = result.getStrike();
         Ball ball = result.getBall();
 
@@ -24,7 +23,6 @@ public class View {
             displayMessage(MessageType.NOTHING);
             return;
         }
-
         displayBallAndStrike(ball, strike);
     }
 
@@ -52,5 +50,4 @@ public class View {
     public String readInput() {
         return Console.readLine();
     }
-
 }

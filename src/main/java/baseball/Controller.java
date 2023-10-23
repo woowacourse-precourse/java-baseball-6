@@ -1,7 +1,6 @@
 package baseball;
 
-import static baseball.utils.NumberUtils.getDigit;
-import static baseball.utils.NumberUtils.parseInt;
+import static baseball.utils.NumberUtils.getDigits;
 import static baseball.utils.Validator.validateEndInput;
 import static baseball.utils.Validator.validateInput;
 
@@ -10,7 +9,6 @@ import baseball.enums.MessageType;
 import java.util.List;
 
 public class Controller {
-
     private Model model;
     private View view;
 
@@ -20,62 +18,50 @@ public class Controller {
     }
 
     public void startGame() {
-
         view.displayMessage(MessageType.START);
 
         GameResult gameResult = model.gameResult;
 
-        List<Integer> computerNumber = model.generateRandomNumber();
-        // log
+        List<Integer> computerNumber = model.generateRandomNumbers();
+        // For debugging purpose
         System.out.println("컴퓨터: " + computerNumber);
 
         while (!gameResult.isGameEnded()) {
 
-            view.displayMessage(MessageType.ASK_FOR_NUMBER);
+            List<Integer> playerNumber = getPlayerInput();
 
-            List<Integer> playerNumber = inputNumber();
-
-            gameResult = model.calculateScore(computerNumber, playerNumber);
+            gameResult = model.evaluatePlayerInput(computerNumber, playerNumber);
 
             view.displayScore(gameResult);
 
-            gameResult.resetScore();
+            gameResult.resetCounts();
         }
 
         askForRestart(gameResult);
     }
 
     private void askForRestart(GameResult gameResult) {
-
         view.displayMessage(MessageType.ASK_FOR_RESTART);
 
-        String endInput = inputEndNumber();
+        String endInput = getPlayerEndInput();
 
         if (endInput.equals(MessageType.RESTART.getMessage())) {
-            gameResult.setGameRestart();
+            gameResult.restartGame();
             startGame();
         } else if (endInput.equals(MessageType.FINISH.getMessage())) {
             view.displayMessage(MessageType.GAME_ENDED);
         }
     }
 
-    /**
-     * 사용자의 입력을 list<integer>로 변환하는 메서드
-     */
-    public List<Integer> inputNumber() {
-
+    public List<Integer> getPlayerInput() {
+        view.displayMessage(MessageType.ASK_FOR_NUMBER);
         String input = view.readInput();
         validateInput(input);
-        int number = parseInt(input);
 
-        return getDigit(number);
+        return getDigits(Integer.parseInt(input));
     }
 
-    /**
-     * 사용자의 입력을 검증 후 String으로 반환하는 메서드
-     */
-    public String inputEndNumber() {
-
+    public String getPlayerEndInput() {
         String endInput = view.readInput();
         validateEndInput(endInput);
 
