@@ -39,9 +39,7 @@ public class NumberBaseballController {
         User user = User.create(userBaseballNumber);
         GameScoreboard gameScoreboard = gameController.run(user, computer);
         outputView.hint(gameScoreboard.getStrike(), gameScoreboard.getBall());
-        GameTerminator gameTerminator = new GameTerminator();
-        boolean gameStillRunning = gameTerminator.isGameStillRunning(gameScoreboard);
-        if (gameStillRunning) {
+        if (gameController.isRunning(gameScoreboard)) {
             playGame(computer);
             return;
         }

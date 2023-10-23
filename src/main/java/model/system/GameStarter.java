@@ -8,7 +8,6 @@ import model.referee.Referee;
 public class GameStarter {
 
     public GameScoreboard start(Computer computer, User user) {
-
         Referee referee = Referee.create(user, computer);
         GameScoreboard gameResult = referee.JudgeBaseBallGame();
         return gameResult;
