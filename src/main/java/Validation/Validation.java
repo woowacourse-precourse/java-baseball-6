@@ -24,7 +24,7 @@ public class Validation {
     public void inputIsNotNumber(String input){
         for(int i=0; i<input.length();i++){
             int ascii = input.charAt(i);
-            if(ascii<48 || ascii>51){
+            if(ascii<48 || ascii>58){
                 throw new IllegalArgumentException();
             }
         }
