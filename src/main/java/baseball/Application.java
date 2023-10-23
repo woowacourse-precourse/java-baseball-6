@@ -16,6 +16,7 @@ public class Application {
 
     private static class BaseballGame {
 
+        String coin = "1";
         ArrayList<Integer> computerInputNums;
         ArrayList<Integer> userInputNums;
 
@@ -24,6 +25,7 @@ public class Application {
             computerInputNums = randomInputNums();
             userInputNums = inputNums();
             int resultNum = checkNum(userInputNums, computerInputNums);
+            coin = reStart();
         }
 
         private ArrayList<Integer> randomInputNums() {
@@ -86,6 +88,18 @@ public class Application {
             }
 
             return ball * 10 + strike;
+        }
+
+        private String reStart() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String coin = Console.readLine();
+
+            if (!(coin.equals("1") || coin.equals("2"))) {
+                throw new IllegalArgumentException("잘못된 숫자를 입력하였습니다.", null);
+            }
+
+            return coin;
         }
     }
 
