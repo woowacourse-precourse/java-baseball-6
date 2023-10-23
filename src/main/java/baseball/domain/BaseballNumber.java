@@ -15,4 +15,8 @@ public class BaseballNumber {
     public Integer getIndexNumber(int index){
         return baseballNumberList.get(index);
     }
+
+    public boolean contains(int number) {
+        return baseballNumberList.contains(number);
+    }
 }

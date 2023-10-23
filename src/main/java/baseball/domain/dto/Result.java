@@ -5,7 +5,7 @@ public class Result {
     private final int strike;
 
     // 스트라이크, 볼 저장 기능
-    Result(int ball, int strike){
+    public Result(int ball, int strike){
         this.ball = ball;
         this.strike = strike;
     }
