@@ -21,7 +21,7 @@ public class GameService {
     }
 
     public void playGame() throws IllegalArgumentException {
-        while(true){
+        while(this.strikeCount != 3) {
             InputView.requestInputNumbers();
             String input = Console.readLine();
 
@@ -31,10 +31,6 @@ public class GameService {
 
             countStrikeAndBall(userNumbers);
             giveHint();
-
-            if(this.strikeCount == 3) {
-                break;
-            }
         }
     }
 
