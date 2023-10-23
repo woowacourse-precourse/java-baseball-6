@@ -22,6 +22,7 @@ public class NumberBaseballGame {
 
     public void play() {
         boolean gameStatus = true;
+
         while (gameStatus) {
             speaker(START_MESSAGE + '\n');
             oneRound();
@@ -39,20 +40,16 @@ public class NumberBaseballGame {
 
     private void oneRound() {
         AnswerMaker answerMaker = new AnswerMaker(MIN, MAX);// 정답 생성
-        boolean threeStrike = false;
 
-        while (!threeStrike) {
+        while (true) {
             speaker(REQUEST_NUMBER_MESSAGE);
-
-            String userLine = userInput.getUserInput();
-            List<Integer> userNumbers = inputValidation.validateAndConvertUserNumbers(userLine);
-            List<Integer> answer = answerMaker.getAnswer();
-            List<Integer> ballAndStrikeCount = scoreCounter.countScore(answer, userNumbers);
+            List<Integer> userNumbers = inputValidation.validateAndConvertUserNumbers(userInput.getUserInput());
+            List<Integer> ballAndStrikeCount = scoreCounter.countScore(answerMaker.getAnswer(), userNumbers);
             int strikeCount = ballAndStrikeCount.get(1);
-
             speaker(message.scoreMessage(ballAndStrikeCount) + '\n');
+
             if (strikeCount == 3) {
-                threeStrike = true;
+                break;
             }
         }
         speaker(SUCCESS_MESSAGE + '\n');

@@ -13,6 +13,7 @@ public class ScoreCounter {
 
         for (int i = 0; i < userNumbers.size(); i++) {
             int score = judgeScore(answer, userNumbers.get(i), i);
+            
             if (score == STRIKE) {
                 strike++;
             }
