@@ -27,7 +27,7 @@ public class GameController {
         this.outputView = new OutputView();
     }
 
-    public void gameStart() {
+    public void startGame() {
         outputView.printGameStartMessage();
 
         do {
