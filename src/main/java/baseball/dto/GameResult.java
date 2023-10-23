@@ -2,6 +2,8 @@ package baseball.dto;
 
 public class GameResult {
 
+    private static final int WIN_COUNT = 3;
+
     private int strike;
     private int ball;
 
@@ -31,6 +33,6 @@ public class GameResult {
     }
 
     public boolean isWin() {
-        return strike == 3;
+        return strike == WIN_COUNT;
     }
 }
