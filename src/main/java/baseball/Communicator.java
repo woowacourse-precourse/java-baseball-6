@@ -10,6 +10,7 @@ public class Communicator {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String USER_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String MENU_SELECTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String TERMINATE_MESSAGE = "시스템을 종료합니다.";
     private final Validator validator;
 
     public Communicator(Validator validator) {
@@ -61,6 +62,6 @@ public class Communicator {
     }
 
     public void printTerminate() {
-        System.out.println("시스템을 종료합니다.");
+        System.out.println(TERMINATE_MESSAGE);
     }
 }
