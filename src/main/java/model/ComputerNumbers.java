@@ -7,7 +7,7 @@ public class ComputerNumbers {
     private static final int MAX_NUMBER_LENGTH=3;
     private static String randomNumbers="";
 
-    public String createNumbers(int nowNumberLength){
+    public static String createNumbers(){
         while(randomNumbers.length()<3){
             String randomNumber = getRandomNumbers();
             if(checkDuplicate(randomNumbers,randomNumber)){
@@ -18,12 +18,12 @@ public class ComputerNumbers {
         }
         return randomNumbers;
     }
-    public String getRandomNumbers(){
+    public static String getRandomNumbers(){
         String randomNumber = String.valueOf(Randoms.pickNumberInRange(START_NUMBER,END_NUMBER));
         return randomNumber;
     }
 
-    private boolean checkDuplicate(String randomNumbers,String randomNumber){
+    private static boolean checkDuplicate(String randomNumbers,String randomNumber){
         if(randomNumbers.contains(String.valueOf(randomNumber))){
             return true;
         }else{
