@@ -14,9 +14,7 @@ public class NumberFormatValidator {
 
     public static void validate(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < GameValue.MIN_RANGE.getValue() || number > GameValue.MAX_RANGE.getValue()) {
-                throw new IllegalArgumentException(ErrorMessage.NUMBER_TYPE.getMessage());
-            }
+            checkNumberRange(number);
         }
     }
 
@@ -24,6 +22,12 @@ public class NumberFormatValidator {
         Pattern pattern = Pattern.compile(RegexPattern.ONLY_NUMBER.getValue());
         Matcher matcher = pattern.matcher(numbers);
         if (!matcher.matches()) {
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_TYPE.getMessage());
+        }
+    }
+
+    private static void checkNumberRange(Integer number) {
+        if (number < GameValue.MIN_RANGE.getValue() || number > GameValue.MAX_RANGE.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_TYPE.getMessage());
         }
     }

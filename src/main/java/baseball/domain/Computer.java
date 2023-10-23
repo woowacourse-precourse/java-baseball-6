@@ -19,11 +19,15 @@ public class Computer {
     private Numbers createComputerNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < GameValue.NUMBER_SIZE.getValue()) {
-            int number = Randoms.pickNumberInRange(GameValue.MIN_RANGE.getValue(), GameValue.MAX_RANGE.getValue());
-            if (!numbers.contains(number)) {
-                numbers.add(number);
-            }
+            addUniqueRandomNumber(numbers);
         }
         return new Numbers(numbers);
+    }
+
+    private void addUniqueRandomNumber(List<Integer> numbers) {
+        int number = Randoms.pickNumberInRange(GameValue.MIN_RANGE.getValue(), GameValue.MAX_RANGE.getValue());
+        if (!numbers.contains(number)) {
+            numbers.add(number);
+        }
     }
 }

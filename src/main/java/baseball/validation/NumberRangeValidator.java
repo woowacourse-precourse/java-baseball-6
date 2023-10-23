@@ -14,9 +14,7 @@ public class NumberRangeValidator {
 
     public static void validate(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < GameValue.MIN_RANGE.getValue() || number > GameValue.MAX_RANGE.getValue()) {
-                throw new IllegalArgumentException(ErrorMessage.NUMBER_TYPE.getMessage());
-            }
+            checkNumberRange(number);
         }
     }
 
@@ -25,6 +23,12 @@ public class NumberRangeValidator {
         Matcher matcher = pattern.matcher(numbers);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE.getMessage());
+        }
+    }
+
+    private static void checkNumberRange(Integer number) {
+        if (number < GameValue.MIN_RANGE.getValue() || number > GameValue.MAX_RANGE.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_TYPE.getMessage());
         }
     }
 }
