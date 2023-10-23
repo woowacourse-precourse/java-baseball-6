@@ -31,7 +31,7 @@ class DefenderTest {
 		// when
 
 		// then
-		assertThrows(NotInitializeBallException.class, () -> defender.compareBalls(RESULT_BALLS));
+		assertThrows(NotInitializeBallException.class, () -> defender.defend(RESULT_BALLS));
 	}
 
 	@DisplayName("방어자가 숫자를 비교한다.")
@@ -55,7 +55,7 @@ class DefenderTest {
 		defender.initialize(new Balls(balls));
 
 		// when
-		Results results = defender.compareBalls(RESULT_BALLS);
+		Results results = defender.defend(RESULT_BALLS);
 
 		// then
 		assertEquals(new StrikeCount(strikeCount), results.getStrikeCount());

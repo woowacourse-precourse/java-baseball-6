@@ -6,5 +6,5 @@ import baseball.domain.player.value.Balls;
 
 public interface Defender extends Player {
 
-	Results compareBalls(Balls balls);
+	Results defend(Balls balls);
 }

@@ -41,6 +41,6 @@ public class SoleConsoleGame extends SoleGame {
 
 	@Override
 	protected Results play(Balls balls) {
-		return defender.compareBalls(balls);
+		return defender.defend(balls);
 	}
 }

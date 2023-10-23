@@ -22,7 +22,7 @@ public class Computer implements Defender {
 	}
 
 	@Override
-	public Results compareBalls(Balls balls) {
+	public Results defend(Balls balls) {
 		if (Objects.isNull(this.balls)) {
 			throw new NotInitializeBallException();
 		}
