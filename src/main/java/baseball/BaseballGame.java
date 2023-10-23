@@ -2,11 +2,19 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
     private final List<Integer> generatedAnswers = new ArrayList<>();
+
+    public void run() {
+        generateAnswers();
+        guess();
+    }
 
     public List<Integer> getGeneratedAnswers() {
         return generatedAnswers;
@@ -18,6 +26,7 @@ public class BaseballGame {
     public void generateAnswers() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        generatedAnswers.clear();
         for (int i = 0; i < Constants.ANS_LEN; i++) {
             int candidateNum;
             do {
@@ -34,6 +43,28 @@ public class BaseballGame {
             return true;
         }
         return false;
+    }
+
+    /**
+     * (2) 사용자 입력
+     */
+    public void guess() {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            String userInput;
+            do {
+                System.out.print("숫자를 입력해주세요 : ");
+                userInput = br.readLine();
+                Validator.validateUserInput(userInput);
+            } while (!isCorrectAnswer(userInput));
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public boolean isCorrectAnswer(String userInput) {
+        return userInput.equals(collectAnswers());
     }
 
     /**

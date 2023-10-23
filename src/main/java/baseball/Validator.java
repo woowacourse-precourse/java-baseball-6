@@ -9,22 +9,22 @@ public class Validator {
      *   - 범위를 벗어난 수를 포함하는 경우 (숫자 중 0을 포함하는 경우)
      *   - 이 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
      */
-    public void validateUserInput(String userInput) throws IllegalArgumentException {
+    public static void validateUserInput(String userInput) throws IllegalArgumentException {
         if (isNull(userInput) || isLengthNotThree(userInput) ||
                 containsNotNum(userInput) || containsDuplicateNum(userInput)) {
             throw new IllegalArgumentException("올바르지 않은 입력입니다.");
         }
     }
 
-    private boolean isNull(String userInput) {
+    private static boolean isNull(String userInput) {
         return userInput == null;
     }
 
-    private boolean isLengthNotThree(String userInput) {
+    private static boolean isLengthNotThree(String userInput) {
         return userInput.length() != Constants.ANS_LEN;
     }
 
-    private boolean containsNotNum(String userInput) {
+    private static boolean containsNotNum(String userInput) {
         for (char ch : userInput.toCharArray()) {
             if (!('1' <= ch && ch <= '9')) {
                 return true;
@@ -33,7 +33,7 @@ public class Validator {
         return false;
     }
 
-    private boolean containsDuplicateNum(String userInput) {
+    private static boolean containsDuplicateNum(String userInput) {
         int[] count = new int[10];
         for (char ch : userInput.toCharArray()) {
             int curCnt = ++count[ch - '0'];
