@@ -3,6 +3,7 @@ package baseball.user;
 import static baseball.game.BaseballConstants.MAX_STRIKES;
 import static baseball.game.BaseballConstants.TOTAL_BASEBALL_NUMBERS;
 
+import baseball.game.BallCountResult;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,12 @@ public class Computer {
     }
 
     public void printBaseballResult(List<Integer> playerBaseballNumbers) {
+        BallCountResult result = compareComputerWith(playerBaseballNumbers);
+        generateBaseballResultMessage(result.ballCount(), result.strikeCount());
+        checkStrikeOut(result.strikeCount());
+    }
+
+    private BallCountResult compareComputerWith(List<Integer> playerBaseballNumbers) {
         int strikeCount = 0;
         int ballCount = 0;
 
@@ -48,8 +55,7 @@ public class Computer {
             }
         }
 
-        generateBaseballResultMessage(ballCount, strikeCount);
-        checkStrikeOut(strikeCount);
+        return new BallCountResult(ballCount, strikeCount);
     }
 
     private void generateBaseballResultMessage(int ballCount, int strikeCount) {
