@@ -14,4 +14,7 @@ public class InputView {
         System.out.println(INPUT_NUMBER_MESSAGE);
     }
 
+    public static void requestGameState() {
+        System.out.println(INPUT_GAME_RESTART_OR_EXIT);
+    }
 }

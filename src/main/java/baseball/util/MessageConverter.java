@@ -17,7 +17,7 @@ public class MessageConverter {
     /*
     * 점수 초기화 메서드
     * */
-    public void initializeResultMessage() {
+    private void initializeResultMessage() {
         this.resultMessage = new ConcurrentHashMap<>() {
             {
                 put(STRIKE, 0);
@@ -25,4 +25,6 @@ public class MessageConverter {
             }
         };
     }
+
+
 }
