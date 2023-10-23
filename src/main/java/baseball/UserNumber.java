@@ -6,22 +6,22 @@ import java.util.Set;
 public class UserNumber {
 
     private static final int MAX_NUMBER_LENGTH = 3;
-    private final String userNumber;
+    private final String number;
 
 
     public UserNumber(String number) {
         validateLength(number);
         validateNumber(number);
         validateDuplication(number);
-        this.userNumber = number;
+        this.number = number;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getNumber() {
+        return number;
     }
 
     public void validateLength(String userNumber) {
-        if (userNumber.length() != 3) {
+        if (userNumber.length() != MAX_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -34,7 +34,7 @@ public class UserNumber {
 
     public void validateDuplication(String number) {
         Set<Character> validateNumber = getCharacters(number);
-        if (validateNumber.size() != 3) {
+        if (validateNumber.size() != MAX_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
