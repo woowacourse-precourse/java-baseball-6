@@ -3,6 +3,7 @@ package baseball;
 import baseball.computer.Computer;
 import baseball.player.Guess;
 import baseball.player.Player;
+import baseball.player.RestartFlag;
 
 public class GameController {
     private static final boolean ROUND_ONGOING = true;
@@ -16,18 +17,20 @@ public class GameController {
 
     public void startGame() {
         System.out.println(GAME_START_MESSAGE);
-        do {
+        boolean continueGame = true;
+        while (continueGame) {
             Computer computer = new Computer();
             startRound(computer);
             System.out.println(ASK_TO_CONTINUE_MESSAGE);
-        } while (player.wantToRestartRound());
+            RestartFlag restartFlag = player.makeRestartFlag();
+            continueGame = restartFlag.toBoolean();
+        }
     }
 
     private void startRound(Computer computer) {
         boolean isRoundOngoing = ROUND_ONGOING;
         while (isRoundOngoing) {
-            String queryResult = submitGuessAndGetResult(computer);
-            isRoundOngoing = decideRoundOngoing(queryResult);
+            isRoundOngoing = decideRoundOngoing(submitGuessAndGetResult(computer));
         }
         System.out.println(ROUND_OVER_MESSAGE);
     }

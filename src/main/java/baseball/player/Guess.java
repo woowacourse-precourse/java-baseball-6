@@ -11,15 +11,11 @@ public class Guess {
     private final String playerGuess;
 
     public Guess(String playerInput) {
-        validateInput(playerInput);
-        this.playerGuess = playerInput;
-    }
-
-    private void validateInput(String playerInput) {
         checkNullInput(playerInput);
         checkInvalidLength(playerInput);
         checkInvalidInput(playerInput);
         checkDuplicateInput(playerInput);
+        this.playerGuess = playerInput;
     }
 
     private void checkNullInput(String playerInput) {
@@ -40,6 +36,12 @@ public class Guess {
         }
     }
 
+    private void checkInvalidDigit(char digit) {
+        if (digit < MIN_ALLOWABLE_DIGIT || digit > MAX_ALLOWABLE_DIGIT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void checkDuplicateInput(String playerInput) {
         Set<Character> playerInputAsSet = new HashSet<>();
         for (char digit : toCharArray(playerInput)) {
@@ -48,20 +50,14 @@ public class Guess {
         compareLength(playerInput, playerInputAsSet);
     }
 
-    private void checkInvalidDigit(char digit) {
-        if (digit < MIN_ALLOWABLE_DIGIT || digit > MAX_ALLOWABLE_DIGIT) {
+    private void compareLength(String playerInput, Set<Character> playerInputAsSet) {
+        if (playerInput.length() != playerInputAsSet.size()) {
             throw new IllegalArgumentException();
         }
     }
 
     private char[] toCharArray(String string) {
         return string.toCharArray();
-    }
-
-    private void compareLength(String playerInput, Set<Character> playerInputAsSet) {
-        if (playerInput.length() != playerInputAsSet.size()) {
-            throw new IllegalArgumentException();
-        }
     }
 
     @Override
