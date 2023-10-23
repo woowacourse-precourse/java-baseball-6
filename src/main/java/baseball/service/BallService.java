@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class BallService {
 
-    private final String ILLEGAL_ARGUMENT = "입력값이 잘못되었습니다.";
+    private static final String ILLEGAL_ARGUMENT = "입력값이 잘못되었습니다.";
 
     public BaseballNumber generateRandomNum() {
         List<BallNumber> ballNumberList = new ArrayList<>();
@@ -27,33 +27,27 @@ public class BallService {
     }
 
     public BaseballNumber initUserNumber(String inputReadLine) {
-        try {
-            List<BallNumber> ballNumberList = convertInputToBallNumberList(inputReadLine);
-
-            validDuplicate(ballNumberList);
-
-            return new BaseballNumber(ballNumberList);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT);
-        }
-    }
-
-    private List<BallNumber> convertInputToBallNumberList(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT);
-        }
+        validInputSize(inputReadLine);
 
         List<BallNumber> ballNumberList = new ArrayList<>();
 
-        char[] inputChar = input.toCharArray();
-        for (char c : inputChar) {
-            ballNumberList.add(new BallNumber(Character.getNumericValue(c)));
+        char[] charArray = inputReadLine.toCharArray();
+        for (char c : charArray) {
+            BallNumber ballNumber = new BallNumber(Character.getNumericValue(c));
+            ballNumberList.add(ballNumber);
         }
+        validDuplicateBallNumber(ballNumberList);
 
-        return ballNumberList;
+        return new BaseballNumber(ballNumberList);
     }
 
-    private void validDuplicate(List<BallNumber> ballNumberList) {
+    private void validInputSize(String inputReadLine) {
+        if (inputReadLine.length() != 3) {
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT);
+        }
+    }
+
+    private void validDuplicateBallNumber(List<BallNumber> ballNumberList) {
         Set<BallNumber> ballNumberSet = new HashSet<>(ballNumberList);
         if (ballNumberSet.size() != ballNumberList.size()) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT);
