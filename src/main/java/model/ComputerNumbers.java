@@ -6,9 +6,9 @@ public class ComputerNumbers {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
     private static final int MAX_NUMBER_LENGTH = 3;
-    private static String randomNumbers = "";
 
     public static String createNumbers() {
+        String randomNumbers = "";
         while (randomNumbers.length() < 3) {
             String randomNumber = getRandomNumbers();
             if (checkDuplicate(randomNumbers, randomNumber)) {

@@ -17,7 +17,9 @@ public class BaseballGame {
 
     public void run() {
         GameView.printGameStart();
-        String computer = ComputerNumbers.createNumbers(); //컴퓨터 랜덤 숫자 생성
+        String computer = "";
+        computer = ComputerNumbers.createNumbers(); //컴퓨터 랜덤 숫자 생성
+
         boolean completeNumber = false;
         while (!completeNumber) {
             String player = GameView.printInputNumber();
@@ -28,8 +30,11 @@ public class BaseballGame {
 
         }
         if (setGame()) {
+
             run();
         } else {
+            gameView.printExitGame();
+            return;
         }
 
 
@@ -39,6 +44,9 @@ public class BaseballGame {
         int ball = ballCount(computer, player);
         int strike = strikeCount(computer, player);
         if (strike == 3) {
+            isStrikeCount(strike);
+            System.out.println();
+            gameView.printCorrectNumber();
             return true;
         } else if (ball == 0 && strike == 0) {
             GameView.printNothingNumber();

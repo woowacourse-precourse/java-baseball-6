@@ -33,4 +33,9 @@ public class GameView {
         return Integer.parseInt(Console.readLine());
     }
 
+    public static void printExitGame() {
+        System.out.println("게임 종료");
+    }
+
+
 }
