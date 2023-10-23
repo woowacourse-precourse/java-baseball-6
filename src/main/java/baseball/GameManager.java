@@ -18,6 +18,23 @@ public class GameManager {
         while(process) {
             OutputView.printInputNumber();
             List<String> userBalls = UserInput.inputGameNumber(validator);
+            process = compareNumbers(DataTypeChanger.mapToInt(userBalls));
         }
     }
+    private boolean compareNumbers(List<Integer> userBalls) {
+        GameResult compare = generatedNumber.compare(userBalls);
+        return isEnd(compare);
+    }
+    private boolean isEnd(GameResult compare) {
+        if (compare.getResult(STRIKE) != 3) {
+            OutputView.printScore(compare.getResult(BALL), compare.getResult(STRIKE));
+            return true;
+        }
+        if (compare.getResult(STRIKE) == 3) {
+            OutputView.printScore(compare.getResult(BALL), compare.getResult(STRIKE));
+            OutputView.printGameEnd();
+        }
+        return false;
+    }
+
 }
