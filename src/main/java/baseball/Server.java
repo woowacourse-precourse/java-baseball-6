@@ -52,7 +52,7 @@ public class Server {
     }
 
     private void restart(){
-        computer = new Computer();
+        computer.numberList = computer.generateRandomNumberListWithNotRepeating();
         gameStatusCode = 1;
         return;
     }

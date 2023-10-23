@@ -9,7 +9,7 @@ import baseball.Util.*;
 public class Computer {
     private final int minimumCanCreatedValue;
     private final int maximumCanCreatedValue;
-    private final ArrayList<Integer> numberList;
+    public ArrayList<Integer> numberList;
     private final int digitCount;
     public ArrayList<Integer> getNumberList(){
         return this.numberList;
@@ -28,7 +28,7 @@ public class Computer {
         this.numberList = generateRandomNumberListWithNotRepeating(digitCount);
 
     }
-    private ArrayList<Integer> generateRandomNumberListWithNotRepeating(){
+    public ArrayList<Integer> generateRandomNumberListWithNotRepeating(){
         return generateRandomNumberListWithNotRepeating(digitCount);
     }
 
