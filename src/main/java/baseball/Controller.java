@@ -30,7 +30,7 @@ public class Controller{
     public void sendHint(String hint){
         view.printHint(hint);
         if (hint.equals(ANSWER_SENTENCE)){
-            sendRestartOrexit();
+            sendRestartOrExit();
         }
     }
     public void sendRestartOrExit(){
