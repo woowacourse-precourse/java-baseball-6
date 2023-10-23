@@ -3,10 +3,7 @@ package baseball.domain;
 import baseball.util.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BaseballGame {
 
@@ -16,7 +13,6 @@ public class BaseballGame {
 
     public void start() {
         List<Integer> baseballNumbers = this.generateBaseballNumbers();
-        System.out.println(baseballNumbers);
         while (true) {
             List<Integer> playerNumbers = this.pickThreeNumbers();
             int[] hits = this.checkHitsResult(baseballNumbers, playerNumbers);
@@ -39,7 +35,7 @@ public class BaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        Set<Integer> inputNumbers = new HashSet<>();
+        Set<Integer> inputNumbers = new LinkedHashSet<>();
         for (String number : input.split("")) {
             int numberInteger = Integer.parseInt(number);
             if (!inputNumbers.add(numberInteger)) {
