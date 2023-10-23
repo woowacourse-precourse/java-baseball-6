@@ -19,8 +19,8 @@ public class Game {
     }
 
     public void run() {
+        ioService.println(GAME_START);
         do {
-            ioService.println(GAME_START);
             Numbers computerNumbers = new Numbers(createComputerNumbers());
             Score score = new Score();
             while (score.isUserLose()) {
