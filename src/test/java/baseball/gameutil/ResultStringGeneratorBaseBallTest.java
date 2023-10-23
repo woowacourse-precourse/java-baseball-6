@@ -4,14 +4,13 @@ import baseball.gameutil.strgenerator.ResultStringGenerator;
 import baseball.gameutil.strgenerator.ResultStringGeneratorBaseBall;
 import baseball.message.MessageString;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
 public class ResultStringGeneratorBaseBallTest {
 
 
-    private enum TestCase {
+    enum TestCase {
         낫씽(0, 0, MessageString.NOTHING_MSG),
         원_볼(1, 0, "1볼"),
         원_볼_원_스트라이크(1, 1, "1볼 1스트라이크"),

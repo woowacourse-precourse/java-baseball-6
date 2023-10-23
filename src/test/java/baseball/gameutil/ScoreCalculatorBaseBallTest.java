@@ -4,15 +4,84 @@ import baseball.gameutil.calculator.ScoreCalculator;
 import baseball.gameutil.calculator.ScoreCalculatorBaseBall;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 public class ScoreCalculatorBaseBallTest {
 
+    static List<Integer> computerInput = List.of(1, 2, 3);
+
+    enum TestCase {
+        낫씽(
+            List.of(4, 5, 6),
+            List.of(1, 2, 3),
+            0,
+            0
+        ),
+        원볼(
+            List.of(3, 4, 5),
+            List.of(1, 2, 3),
+            1,
+            0
+        ),
+        원볼_원스트라이크(
+            List.of(3, 2, 5),
+            List.of(1, 2, 3),
+            1,
+            1
+        ),
+        투볼(
+            List.of(5, 3, 2),
+            List.of(1, 2, 3),
+            2,
+            0
+        ),
+        투볼_원스트라이크(
+            List.of(1, 3, 2),
+            List.of(1, 2, 3),
+            2,
+            1
+        ),
+        쓰리볼(
+            List.of(3, 1, 2),
+            List.of(1, 2, 3),
+            3,
+            0
+        ),
+        원스트라이크(List.of(1, 4, 5),
+            List.of(1, 2, 3),
+            0,
+            1
+        ),
+        투스트라이크(List.of(1, 2, 5),
+            List.of(1, 2, 3),
+            0,
+            2
+        ),
+        쓰리스트라이크(List.of(1, 2, 3),
+            List.of(1, 2, 3),
+            0,
+            3
+        );
+
+        List<Integer> userInput;
+        List<Integer> computerInput;
+        int expectedBall;
+        int expectedStrike;
+
+        TestCase(List<Integer> userInput, List<Integer> computerInput, int expectedBall,
+            int expectedStrike) {
+            this.userInput = userInput;
+            this.computerInput = computerInput;
+            this.expectedBall = expectedBall;
+            this.expectedStrike = expectedStrike;
+        }
+    }
 
 
-
-    @Test
-    public void 낫_씽(){
+    @ParameterizedTest
+    @EnumSource(TestCase.class)
+    void 테스트() {
         //given
         List<Integer> userInput = List.of(1, 2, 3);
         List<Integer> computerInput = List.of(4, 5, 6);
@@ -24,126 +93,6 @@ public class ScoreCalculatorBaseBallTest {
         //then
         Assertions.assertEquals(0, score.getBall());
         Assertions.assertEquals(0, score.getStrike());
-    }
-
-    @Test
-    public void 원_볼() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(3, 4, 5);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(1, score.getBall());
-        Assertions.assertEquals(0, score.getStrike());
-    }
-
-    @Test
-    public void 원_볼_원_스트라이크() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(3, 2, 5);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(1, score.getBall());
-        Assertions.assertEquals(1, score.getStrike());
-    }
-
-    @Test
-    public void 투_볼() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(5, 3, 2);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(2, score.getBall());
-        Assertions.assertEquals(0, score.getStrike());
-    }
-
-    @Test
-    public void 투_볼_원_스트라이크() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(1, 3, 2);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(2, score.getBall());
-        Assertions.assertEquals(1, score.getStrike());
-    }
-
-    @Test
-    public void 쓰리_볼() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(3, 1, 2);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(3, score.getBall());
-        Assertions.assertEquals(0, score.getStrike());
-    }
-
-    @Test
-    public void 원_스트라이크() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(1, 4, 5);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(0, score.getBall());
-        Assertions.assertEquals(1, score.getStrike());
-    }
-
-    @Test
-    public void 투_스트라이크() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(1, 2, 5);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(0, score.getBall());
-        Assertions.assertEquals(2, score.getStrike());
-    }
-
-    @Test
-    public void 쓰리_스트라이크() {
-        //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(1, 2, 3);
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-
-        //when
-        Score score = scoreCalculator.calScore(userInput, computerInput);
-
-        //then
-        Assertions.assertEquals(0, score.getBall());
-        Assertions.assertEquals(3, score.getStrike());
     }
 
 }
