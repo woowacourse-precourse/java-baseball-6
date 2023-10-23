@@ -39,10 +39,6 @@ public class Validator {
     }
     public void validatePlayerInputCommand(String playerInput){
         validateInputIsNumber(playerInput);
-
-        var playerCommand = Integer.parseInt(playerInput);
-        validateCommandIsAppropriate(playerCommand);
-
         return;
     }
     private void validateInputIsNumber(String playerInput){
@@ -80,10 +76,5 @@ public class Validator {
             return;
         }
         throw new IllegalArgumentException("중복된 숫자가 있습니다!");
-    }
-    private void validateCommandIsAppropriate(int playerCommand){
-        if (playerCommand == 1 || playerCommand ==2)
-            return;
-        throw new IllegalArgumentException("없는 명령입니다!");
     }
 }
