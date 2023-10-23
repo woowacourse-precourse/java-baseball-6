@@ -19,10 +19,10 @@ public class Application {
             String userInputStr = getUserInputStr();
 
             // 유저의 입력이 숫자로만 이루어지지 않았을 경우 애플리케이션 종료
-            if(!isUserInputValidate(userInputStr)){
-                try{
+            if (!isUserInputValidate(userInputStr)) {
+                try {
                     throw new IllegalArgumentException();
-                }catch(IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                     break;
                 }
@@ -31,12 +31,30 @@ public class Application {
             // 유저가 숫자 3개를 고른다.
             List<Integer> user = chooseNumByUser(userInputStr);
 
+            System.out.println("computer = " + computer);
             System.out.println("user = " + user);
+
+            System.out.println("countStrike(computer, user) = " + countStrike(computer, user));
 
             // TODO 게임 종료 판단 기능 추가 시 삭제
             break;
         }
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
+    }
+
+    /**
+     * 컴퓨터와 유저의 숫자 리스트를 비교해 스트라이크 수를 판별하여 반환한다.
+     *
+     * @param computer 컴퓨터가 고른 숫자 리스트
+     * @param user     유저가 고른 숫자 리스트
+     * @return 카운트한 스트라이크 수
+     */
+    private static Integer countStrike(List<Integer> computer, List<Integer> user) {
+        Integer result = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(user.get(i))) result++;
+        }
+        return result;
     }
 
     /**
@@ -60,7 +78,7 @@ public class Application {
      *
      * @return 유저가 입력한 문자열
      */
-    private static String getUserInputStr(){
+    private static String getUserInputStr() {
         System.out.println("숫자를 입력해주세요 : ");
         return scanner.next();
     }
@@ -86,9 +104,9 @@ public class Application {
      * @param userInput 유저가 입력한 문자열
      * @return 유저가 입력한 문자열이 모두 숫자이면 true 아니면 false
      */
-    private static boolean isUserInputValidate(String userInput){
-        for(int i = 0; i < userInput.length(); i++){
-            if(!Character.isDigit(userInput.charAt(i))) return false;
+    private static boolean isUserInputValidate(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!Character.isDigit(userInput.charAt(i))) return false;
         }
         return true;
     }
