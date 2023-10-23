@@ -82,12 +82,12 @@ public class Data {
         this.restartResponse = restartResponse;
     }
 
-    public boolean getIsCompleteAnswer() {
+    public boolean getIsFullStrike() {
         return isFullStrike;
     }
 
-    public void setIsCompleteAnswer(boolean completeAnswer) {
-        isFullStrike = completeAnswer;
+    public void setIsFullStrike(boolean isFullStrike) {
+        this.isFullStrike = isFullStrike;
     }
 
     public boolean getIsNoError() {

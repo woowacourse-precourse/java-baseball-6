@@ -79,7 +79,7 @@ public class GameProcessor {
 
         data.setBall(ball);
         data.setStrike(strike);
-        data.setIsCompleteAnswer(validateFullStrike(data));
+        data.setIsFullStrike(validateFullStrike(data));
 
         String resultText;
         StringBuilder resultTextBuilder = new StringBuilder();
