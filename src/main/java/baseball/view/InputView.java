@@ -2,13 +2,12 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.util.NumberConstant;
+
 public class InputView {
 
     public static final int NEW_GAME_CODE = 1;
     public static final int END_GAME_CODE = 2;
-    private final int MIN_NUMERIC_VALUE = 1;
-    private final int MAX_NUMERIC_VALUE = 9;
-    private final int INPUT_LENGTH = 3;
 
     public String inputNumber() {
         String input = readLine();
@@ -32,7 +31,7 @@ public class InputView {
     }
 
     private void isTripleDigit(String input) {
-        if (input.length() != INPUT_LENGTH) {
+        if (input.length() != NumberConstant.LENGTH) {
             throw new IllegalArgumentException("세 자리의 입력값이 아닙니다.");
         }
     }
@@ -40,7 +39,7 @@ public class InputView {
     private void isValidDigitRange(String input) {
         for (char eachChar : input.toCharArray()) {
             int eachDigit = Character.getNumericValue(eachChar);
-            if (eachDigit < MIN_NUMERIC_VALUE || eachDigit > MAX_NUMERIC_VALUE) {
+            if (eachDigit < NumberConstant.MIN_VALUE || eachDigit > NumberConstant.MAX_VALUE) {
                 throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
             }
         }

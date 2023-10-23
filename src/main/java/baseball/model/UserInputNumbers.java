@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.NumberConstant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class UserInputNumbers {
 
     public int countStrikes(RandomNumbers randomNumbers) {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
-        for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
+        for (int i = 0; i < NumberConstant.LENGTH; i++) {
             Number userInputNumber = userNumberList.get(i);
             Number randomNumber = randomNumberList.get(i);
 
@@ -40,7 +41,7 @@ public class UserInputNumbers {
 
     public int countBalls(RandomNumbers randomNumbers) {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
-        for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
+        for (int i = 0; i < NumberConstant.LENGTH; i++) {
             Number userInputNumber = userNumberList.get(i);
             Number randomNumber = randomNumberList.get(i);
 

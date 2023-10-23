@@ -1,11 +1,9 @@
 package baseball.model;
 
+import baseball.util.NumberConstant;
 import java.util.Objects;
 
 public class Number {
-
-    private final int MIN_NUMERIC_VALUE = 1;
-    private final int MAX_NUMERIC_VALUE = 9;
 
     private final int value;
 
@@ -15,7 +13,7 @@ public class Number {
     }
 
     private void validateValueRange(int value) {
-        if (value < MIN_NUMERIC_VALUE || value > MAX_NUMERIC_VALUE) {
+        if (value < NumberConstant.MIN_VALUE || value > NumberConstant.MAX_VALUE) {
             throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
         }
     }

@@ -1,15 +1,12 @@
 package baseball.model;
 
+import baseball.util.NumberConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RandomNumbers {
-
-    private final int MIN_NUMERIC_VALUE = 1;
-    private final int MAX_NUMERIC_VALUE = 9;
-    private final int RANDOM_NUMBER_LENGTH = 3;
 
     private final List<Number> randomNumbers;
 
@@ -22,9 +19,9 @@ public class RandomNumbers {
     }
 
     private List<Number> generateNewRandomNumbers() {
-        return Stream.generate(() -> Randoms.pickNumberInRange(MIN_NUMERIC_VALUE, MAX_NUMERIC_VALUE))
+        return Stream.generate(() -> Randoms.pickNumberInRange(NumberConstant.MIN_VALUE, NumberConstant.MAX_VALUE))
                 .distinct()
-                .limit(RANDOM_NUMBER_LENGTH)
+                .limit(NumberConstant.LENGTH)
                 .map(Number::new)
                 .collect(Collectors.toList());
     }
