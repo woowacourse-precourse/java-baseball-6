@@ -3,6 +3,7 @@ package baseball.domain;
 import static baseball.constant.BaseballConstant.BASEBALL_MAX_NUMBER;
 import static baseball.constant.BaseballConstant.BASEBALL_MIN_NUMBER;
 import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+import static baseball.constant.BaseballConstant.INVALID_INDEX;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
@@ -35,7 +36,7 @@ public class Computer {
         for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
             int findIndex = findNumberIndex(player, i);
 
-            if (findIndex != -1 && findIndex != i) {
+            if (findIndex != INVALID_INDEX && findIndex != i) {
                 count += 1;
             }
         }
