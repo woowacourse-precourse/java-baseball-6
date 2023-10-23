@@ -19,8 +19,8 @@ public class Player {
     public void setPlayer_number(int number_of_digits) {
         String input_number = readLine();
 
-        if (!validator.lengthCheck(input_number.length(), number_of_digits) ||
-                !validator.validNumCheck(input_number)) {
+        if (!validator.regexCheck(input_number, number_of_digits) ||
+                !validator.IsDifferentEachDigit(input_number)) {
             throw new IllegalArgumentException();
         }
 
