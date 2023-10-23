@@ -1,8 +1,8 @@
 package baseball.domain;
 
 public class RoundResult {
-    private int ballCount;
-    private int strikeCount;
+    private Integer ballCount;
+    private Integer strikeCount;
     private static final int MAX_COUNT = 3;
     private static final int NO_COUNT = 0;
 
@@ -12,19 +12,31 @@ public class RoundResult {
     }
 
     public boolean isOnlyStrike(){
-        return (strikeCount != NO_COUNT && ballCount == NO_COUNT);
+        if(!strikeCount.equals(NO_COUNT) && ballCount.equals(NO_COUNT)){
+            return true;
+        }
+        return false;
     }
 
     public boolean isOnlyBall(){
-        return (strikeCount == MAX_COUNT && ballCount != MAX_COUNT);
+        if(strikeCount.equals(NO_COUNT) && !ballCount.equals(MAX_COUNT)){
+            return true;
+        }
+        return false;
     }
 
     public boolean isNothing(){
-        return (strikeCount == NO_COUNT && ballCount == NO_COUNT);
+        if(strikeCount.equals(NO_COUNT) && ballCount.equals(NO_COUNT)){
+            return true;
+        }
+        return false;
     }
 
     public boolean isBothOccured(){
-        return !(strikeCount == NO_COUNT) && !(ballCount == NO_COUNT);
+        if(!strikeCount.equals(NO_COUNT) && !ballCount.equals(NO_COUNT)){
+            return true;
+        }
+        return false;
     }
 
     public int getBallCount() {
