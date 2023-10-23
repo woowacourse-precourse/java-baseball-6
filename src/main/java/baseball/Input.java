@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Input {
+    private static final int RESTART = 1;
     private static final int SIZE = 3;
 
     public List<Integer> getUserGuess() {
@@ -38,5 +39,18 @@ public class Input {
             }
         }
         return false;
+    }
+
+    public boolean getUserRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputUserRestart = Console.readLine();
+        validateRestart(inputUserRestart);
+        return Integer.parseInt(inputUserRestart) == RESTART;
+    }
+
+    private void validateRestart(String inputUserRetry) throws IllegalArgumentException {
+        if (!inputUserRetry.matches("^[1|2]")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
