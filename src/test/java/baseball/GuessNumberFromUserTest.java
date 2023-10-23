@@ -5,10 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +13,8 @@ import org.junit.jupiter.api.Test;
 class GuessNumberFromUserTest {
 
     GuessNumberFromUser guessNumberFromUser = new GuessNumberFromUser();
+
+    final private OutMessage msg = OutMessage.GUESS;
 
     @AfterEach
     void closeScanner() {
@@ -28,14 +27,10 @@ class GuessNumberFromUserTest {
         String input = "123";
         settingForInputStream(input);
 
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
         // when
-        List<Integer> guessNumber = guessNumberFromUser.getGuessNumber();
+        List<Integer> guessNumber = guessNumberFromUser.getValue(msg);
 
         // then
-        assertThat(out.toString()).contains("숫자를 입력해주세요 : ");
         assertThat(guessNumber).isEqualTo(List.of(1, 2, 3));
     }
 
@@ -48,7 +43,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getGuessNumber())
+            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -62,7 +57,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getGuessNumber())
+            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -76,7 +71,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getGuessNumber())
+            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -90,7 +85,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getGuessNumber())
+            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
