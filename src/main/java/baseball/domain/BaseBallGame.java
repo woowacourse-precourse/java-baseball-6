@@ -27,21 +27,17 @@ public class BaseBallGame {
         String input = Console.readLine();
         validator.validate(input);
         PlayerNumber player = new PlayerNumber(input);
-
-        CompareValue result = new CompareValue(player, computer);
+        ComparisonResult result = new ComparisonResult(player, computer);
 
         while (!result.isGameEnd()) {
-            System.out.println(result.getMessage());
-            System.out.print(NEED_GAME_INPUT_MESSAGE);
+            System.out.print(result.getMessage() + "\n" + NEED_GAME_INPUT_MESSAGE);
 
             input = Console.readLine();
             validator.validate(input);
             player = new PlayerNumber(input);
-
-            result = new CompareValue(player, computer);
+            result = new ComparisonResult(player, computer);
         }
 
-        System.out.println(result.getMessage());
         System.out.println(END_GAME_MESSAGE);
         return isGameContinue();
     }

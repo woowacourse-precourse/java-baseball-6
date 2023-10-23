@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public class CompareValue {
+public class ComparisonResult {
 
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
@@ -10,7 +10,7 @@ public class CompareValue {
     private int strikeCount;
     private int ballCount;
 
-    public CompareValue(PlayerNumber player, ComputerNumber computer) {
+    public ComparisonResult(PlayerNumber player, ComputerNumber computer) {
         compare(player, computer);
         message = makeCompareMessage();
     }
