@@ -5,9 +5,9 @@ import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
 import static baseball.version2.Constants.Value.RANGE_END_NUMBER;
 import static baseball.version2.Constants.Value.RANGE_START_NUMBER;
 
-import baseball.version2.domain.Score;
 import baseball.version2.dto.ComputerAnswerDto;
 import baseball.version2.dto.ScoreDto;
+import baseball.version2.object.Score;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 

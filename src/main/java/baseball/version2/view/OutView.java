@@ -7,7 +7,7 @@ import static baseball.version2.Constants.Phrases.STRIKE_PHRASES;
 import static baseball.version2.Constants.Phrases.THREE_STRIKE_PHRASES;
 import static baseball.version2.Constants.Value.THREE_STRIKE;
 
-import baseball.version2.domain.Score;
+import baseball.version2.object.Score;
 
 public class OutView {
 

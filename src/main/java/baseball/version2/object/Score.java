@@ -1,4 +1,4 @@
-package baseball.version2.domain;
+package baseball.version2.object;
 
 public class Score {
 

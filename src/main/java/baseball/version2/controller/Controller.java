@@ -4,8 +4,8 @@ package baseball.version2.controller;
 import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
 import static baseball.version2.Constants.Value.THREE_STRIKE;
 
-import baseball.version2.domain.Score;
 import baseball.version2.dto.ComputerAnswerDto;
+import baseball.version2.object.Score;
 import baseball.version2.service.Service;
 import baseball.version2.view.InputView;
 import baseball.version2.view.OutView;
