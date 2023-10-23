@@ -48,7 +48,7 @@ public class GameServiceTest {
 
     @Test
     @DisplayName("스트라이크와 볼 갯수의 반환값 검증")
-    public void 스트라이크_볼_갯수_비교() throws Exception {
+    public void 스트라이크_볼_개수_비교() throws Exception {
         //given
         List<Integer> computerNumber = List.of(1, 2, 3);
         List<Integer> userNumber = List.of(1, 3, 9);
@@ -60,4 +60,17 @@ public class GameServiceTest {
         assertEquals(1, result.get(0)); // strike 1
         assertEquals(1, result.get(1)); // ball 1
     }
+
+    @Test
+    @DisplayName("얻은 스트라이크 개수가 맞는 지 검증")
+    public void 스트라이크_개수_세기() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(1, 2, 9);
+        //when
+        int strikeCount = GameService.getStrikeCount(computerNumber, userNumber);
+        //then
+        assertEquals(2, strikeCount);
+    }
+
 }
