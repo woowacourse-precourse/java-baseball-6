@@ -24,6 +24,8 @@ public class User {
     }
 
     private boolean validArgs(String str) {
+        boolean b = false;
+
         if (str.length() > SIZE) {
             throw new IllegalArgumentException();
         }
@@ -31,7 +33,6 @@ public class User {
             throw new IllegalArgumentException();
         }
 
-        boolean b = false;
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (49 > c || c > 57) {

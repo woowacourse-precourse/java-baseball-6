@@ -4,29 +4,30 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 
+import static baseball.GamePrinter.printGameOverMsg;
+import static baseball.GamePrinter.printGameStartMsg;
+import static baseball.GameState.CONTINUE;
+import static baseball.GameState.GAME_OVER;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Computer cp = Computer.getInstance();
+        Computer computer = Computer.getInstance();
         User user = User.getInstance();
         Play play = Play.getInstance();
-        int[] comNums = cp.setRandomNums();
+        int[] comNums = computer.setRandomNums();
 
         while(true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            System.out.print("숫자를 입력해주세요 : ");
-            String str = Console.readLine();
-            int[] userNums = user.setUserNum(str);
-            int status = play.run(comNums, userNums);
-            boolean gameStatus = play.checkGameStatus(status);
+            System.out.println(Arrays.toString(comNums));
+            printGameStartMsg();
 
-            if (gameStatus) {
-                System.out.println("게임 종료");
+            int[] userNums = user.setUserNum(Console.readLine());
+            int gameStatus = Integer.parseInt(play.checkGameStatus(play.run(comNums, userNums)));
+            if (gameStatus == GAME_OVER.getValue()) {
+                printGameOverMsg();
                 break;
-            } else {
-                if (status == 1) {
-                    cp.resetNums();
-                }
+            } else if (gameStatus == CONTINUE.getValue()) {
+                computer.resetNums();
             }
         }
     }

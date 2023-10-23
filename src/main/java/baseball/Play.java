@@ -2,9 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.GamePrinter.*;
+import static baseball.GameState.*;
+
 public class Play {
-    private static final int END_POINT = 3;
-    private static final int GAME_OVER = 2;
     private static final Play instance = new Play();
     private Play() {}
     public static Play getInstance() {
@@ -19,35 +20,47 @@ public class Play {
         int strikeCount = checkStrikeCount(comNums, userNums, strike);
         int ballCount = checkBallCount(comNums, userNums, ball);
 
-        if (strikeCount == END_POINT) {
-            System.out.printf("%d스트라이크", strikeCount);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String str = Console.readLine();
-            if (str.length() > 1 || str.equals(" ")) {
-                throw new IllegalArgumentException();
-            } else {
-                int d = str.charAt(0) - '0';
-                if (0 >= d || d > 2) {
-                    throw new IllegalArgumentException();
-                } else {
-                    status = d;
-                }
-            }
+        if (strikeCount == END_POINT.getValue()) {
+            printStrikeCount(strikeCount);
+            status = changeGameStatus();
         } else if (strikeCount != 0 && ballCount != 0) {
-            System.out.printf("%d볼 %d스트라이크", ballCount, strikeCount);
+            printStrikeAndBallCount(strikeCount, ballCount);
         } else if (strikeCount != 0) {
-            System.out.printf("%d스트라이크", strikeCount);
+            printStrikeCount(strikeCount);
         } else if (ballCount != 0) {
-            System.out.printf("%d볼", ballCount);
+            printBallCount(ballCount);
         } else {
-            System.out.println("낫싱");
+            printNothing();
         }
+
         return status;
     }
 
-    public boolean checkGameStatus(int status) {
-        return status == GAME_OVER;
+    public int changeGameStatus() {
+        int gameState;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String str = Console.readLine();
+        if (str.length() > 1 || str.equals(" ")) {
+            throw new IllegalArgumentException();
+        } else {
+            int d = str.charAt(0) - '0';
+            if (0 >= d || d > 2) {
+                throw new IllegalArgumentException();
+            } else {
+                gameState = Integer.parseInt(str);
+            }
+        }
+        return gameState;
+    }
+
+    public String checkGameStatus(int status) {
+        if (status == GAME_OVER.getValue()) {
+            return "2";
+        } else if (status == CONTINUE.getValue()) {
+            return "1";
+        }
+        return "0";
     }
 
     private int checkStrikeCount(int[] comNums, int[] userNums, int count) {
