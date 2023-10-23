@@ -6,7 +6,7 @@ import input.InputErrorMessage;
 public class Number {
 
     protected static final int NUMBER_LENGTH = 3;
-    private static final String ZERO = "0";
+    private static final String OUT_OF_BOUND = "0";
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -48,7 +48,7 @@ public class Number {
         if (!isNumeric(number)) {
             throw new IllegalArgumentException(InputErrorMessage.NUMBER);
         }
-        if (number.contains(ZERO)) {
+        if (number.contains(OUT_OF_BOUND)) {
             throw new IllegalArgumentException(InputErrorMessage.NUMBER);
         }
         if (isDuplicate(number)) {
