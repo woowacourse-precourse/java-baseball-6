@@ -12,5 +12,12 @@ public class GameManager {
         OutputView.printStartMessage();
         generatedNumber = new BaseBalls(new BallNumberGenerator().generateBallNumber());
     }
-
+    private void inputNumber() {
+        boolean process = true;
+        Validator validator = new Validator();
+        while(process) {
+            OutputView.printInputNumber();
+            List<String> userBalls = UserInput.inputGameNumber(validator);
+        }
+    }
 }
