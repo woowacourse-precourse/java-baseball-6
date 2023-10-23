@@ -22,8 +22,7 @@ public class InputNumber {
             return false;
         }
         InputNumber nextNumber = (InputNumber) obj;
-        int nextNumberValue = nextNumber.inputNumber;
-        return (nextNumberValue == this.inputNumber);
+        return (nextNumber.inputNumber == this.inputNumber);
     }
 
     @Override
