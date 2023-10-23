@@ -24,19 +24,19 @@ class Pair<T, U> {
 }
 
 class User {
-    private String userInput;
+    private String input;
     private boolean winning;
 
     public User() {
-        this.userInput = "";
+        this.input = "";
         this.winning = false;
     }
 
-    public void userWins() {
+    public void win() {
         winning = true;
     }
 
-    public void userLoses() {
+    public void lose() {
         winning = false;
     }
 
@@ -44,50 +44,13 @@ class User {
         return winning;
     }
 
-    public void readUserInput() {
-        userInput = Console.readLine();
+    public String readInput() {
+        input = Console.readLine();
+        return input;
     }
 
-    public String getUserInput() {
-        return userInput;
-    }
-
-    public boolean isUserInputValidInGame() {
-        // 인게임에서 사용자 입력값의 길이가 3이 아니면 false
-        if (userInput.length() != 3) {
-            return false;
-        }
-
-        try {
-            int userNumber = Integer.parseInt(userInput);
-            // userNumber가 -99와 같이 음의 정수이면 false
-            if (userNumber < 0) {
-                return false;
-            }
-            // userNumber 자릿수 중에 하나라도 0이면 false
-            while (userNumber > 0) {
-                if (userNumber % 10 == 0) {
-                    return false;
-                }
-                userNumber /= 10;
-            }
-
-        } catch (NumberFormatException error) {
-            // 인게임에서 사용자 입력값의 파싱 결과가 숫자가 아니면 false
-            return false;
-        }
-
-        return true;
-    }
-
-    public boolean isUserInputValidAfterGame() {
-        if (userInput.equals("1")) {
-            return true;
-        }
-        if (userInput.equals("2")) {
-            return true;
-        }
-        return false;
+    public String returnUserInputVal() {
+        return input;
     }
 }
 
@@ -160,6 +123,48 @@ class GameManager {
         this.userGuessJudgement = null;
     }
 
+    private String getUserInputVal() {
+        return user.returnUserInputVal();
+    }
+
+    private boolean validateUserInput(String userInput) {
+        // 인게임에서 사용자 입력값의 길이가 3이 아니면 false
+        if (userInput.length() != 3) {
+            return false;
+        }
+
+        try {
+            int userNumber = Integer.parseInt(userInput);
+            // userNumber가 -99와 같이 음의 정수이면 false
+            if (userNumber < 0) {
+                return false;
+            }
+            // userNumber 자릿수 중에 하나라도 0이면 false
+            while (userNumber > 0) {
+                if (userNumber % 10 == 0) {
+                    return false;
+                }
+                userNumber /= 10;
+            }
+
+        } catch (NumberFormatException error) {
+            // 인게임에서 사용자 입력값의 파싱 결과가 숫자가 아니면 false
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validateUserInput(int userInput) {
+        if (userInput == 1) {
+            return true;
+        }
+        if (userInput == 2) {
+            return true;
+        }
+        return false;
+    }
+
     private void printComputerGeneratedNumbers() {
         System.out.printf("컴퓨터가 생성한 수 : ");
         for (int number : computer.getNumbers()) {
@@ -181,34 +186,33 @@ class GameManager {
         System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
     }
 
-    private boolean didGameEnd() {
+    private boolean checksGuessStageEndingCondition() {
         return userGuessJudgement.getFirst() == 3;
     }
 
     private void setUpBeforeRestartGame() {
-        user.userLoses();
+        user.lose();
         computer.regenerateRandomNumbers();
     }
 
-    public void run() {
+    public void runGame() {
         printComputerGeneratedNumbers();
         printGameStartMessage();
         while (!user.didUserWin()) {
             printUserInputPrompt();
-            user.readUserInput();
-            if (!user.isUserInputValidInGame()) {
+
+            if (!validateUserInput(user.readInput())) {
                 throw new IllegalArgumentException();
             }
-            userGuessJudgement = computer.judgeUserGuess(user.getUserInput());
+            userGuessJudgement = computer.judgeUserGuess(getUserInputVal());
             computer.printUserGuessJudgementResult(userGuessJudgement);
-            if (didGameEnd()) {
-                user.userWins();
+            if (checksGuessStageEndingCondition()) {
+                user.win();
                 printGameRestartMessage();
-                user.readUserInput();
-                if (!user.isUserInputValidAfterGame()) {
+                if (!validateUserInput(Integer.parseInt(user.readInput()))) {
                     throw new IllegalArgumentException();
                 }
-                switch (user.getUserInput()) {
+                switch (getUserInputVal()) {
                     case "1":
                         setUpBeforeRestartGame();
                         continue;
@@ -227,7 +231,6 @@ public class Application {
 
     public static void main(String[] args) {
         final GameManager gameManager = new GameManager();
-        gameManager.run();
-
+        gameManager.runGame();
     }
 }
