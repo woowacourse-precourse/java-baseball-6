@@ -31,4 +31,16 @@ class BaseballRefereeTest {
 		assertEquals(1, hint.getStrikeCount());
 		assertEquals(1, hint.getBallCount());
 	}
+
+	@Test
+	void compare_메서드는_컴퓨터와_플레이어의_숫자가_모두_다르면_낫싱을_반환한다() {
+		BaseballReferee baseballReferee = new BaseballReferee();
+		BaseballNumber computerNumbers = new BaseballNumber(List.of(1, 2, 3));
+		BaseballNumber playerNumbers = new BaseballNumber(List.of(4, 5, 6));
+
+		Hint hint = baseballReferee.compare(computerNumbers, playerNumbers);
+		HintResult hintResult = new HintResult(hint);
+
+		assertEquals("낫싱", hintResult.toString());
+	}
 }
