@@ -29,7 +29,7 @@ public class GameController {
             BaseballNumber userNumber = ballService.initUserNumber(userNumberReadLine);
 
             Result result = computerNumber.compare(userNumber);
-            view.showGameResult(result);
+            view.showGameResult(result.getResult());
 
             if (result.isEnd()) {
                 view.showEnd();

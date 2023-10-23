@@ -1,6 +1,5 @@
 package baseball.view;
 
-import baseball.model.Result;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView implements View{
@@ -16,8 +15,8 @@ public class GameView implements View{
     }
 
     @Override
-    public void showGameResult(Result result) {
-        System.out.println(result.getResult());
+    public void showGameResult(String result) {
+        System.out.println(result);
     }
 
     @Override
