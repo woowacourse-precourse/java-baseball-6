@@ -10,11 +10,11 @@ public class BaseballGame {
     private List<Integer> answer;
     private boolean keepGame = true;
 
-    public void gameInit() {
+    public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         generateAnswer();
+        gameLoop();
     }
-
     public void generateAnswer() {
         answer = new ArrayList<>();
         while (answer.size() < 3) {
