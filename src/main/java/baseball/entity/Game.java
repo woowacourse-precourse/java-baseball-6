@@ -7,7 +7,9 @@ import java.util.List;
 public class Game {
     private String answer;
     private boolean finished;
-
+    private int strikeCount=0;
+    private int ballCount=0;
+    private boolean gameWin = false;
     public Game() {
         finished = false;
     }
@@ -58,4 +60,27 @@ public class Game {
 
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public boolean isGameWin() {
+        return gameWin;
+    }
+
+    public void setGameWin(boolean gameWin) {
+        this.gameWin = gameWin;
+    }
+
+    public void setStrikeCount(int strikeCount) {
+        this.strikeCount = strikeCount;
+    }
+
+    public void setBallCount(int ballCount) {
+        this.ballCount = ballCount;
+    }
 }
