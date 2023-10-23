@@ -18,8 +18,7 @@ public class Message {
             message += nothing;
         System.out.println(message);
     }
-
-    public static void getStartMsg(void){
+    public static void getStartMsg(){
         System.out.print(startMsg);
     }
 

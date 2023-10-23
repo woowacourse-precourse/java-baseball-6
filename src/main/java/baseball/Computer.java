@@ -10,7 +10,6 @@ public class Computer {
         int randomNumber;
         for (int i = 0; i < SIZE; i++){
             randomNumber = Randoms.pickNumberInRange(1, 9);
-            // numbers Array에 숫자 중복 체크해야함. -> checkDup
             if (!checkDup(numbers, randomNumber))
                 numbers[i] = randomNumber;
         }

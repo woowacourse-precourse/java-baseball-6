@@ -1,5 +1,39 @@
 package baseball;
 
-public class User {
+import camp.nextstep.edu.missionutils.Console;
 
+public class User {
+    private static final int SIZE = 3;
+    public String userInput(){
+        Message.getStartMsg();
+        String userInput = Console.readLine();
+        if (!checkLenError(userInput))
+            throw new IllegalArgumentException("Invalid Length: " + userInput);
+        if (!checkWordError(userInput))
+            throw new IllegalArgumentException("Word error is occurred : " + userInput);
+        if (!checkDupError(userInput))
+            throw new IllegalArgumentException("Duplication Error is occurred : " + userInput);
+        return userInput;
+    }
+
+    static boolean checkLenError(String input){
+        return input.length() == 3;
+    }
+
+    static boolean checkWordError(String input){
+        char word;
+        for(int i = 0; i < SIZE; i++) {
+            word = input.charAt(i);
+            if(!Character.isDigit(word))
+                return false;
+        }
+        return true;
+    }
+
+    static boolean checkDupError(String input){
+        int number;
+        for (int i = 0; i < SIZE; i++){
+
+        }
+    }
 }
