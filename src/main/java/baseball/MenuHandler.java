@@ -26,6 +26,23 @@ public class MenuHandler {
         }
     }
 
+    public void handle() {
+        Menu menu = communicator.instructMenu();
+        switch (menu) {
+            case START -> {
+                computer.decideAnswer();
+                boolean isOver = false;
+                while (!isOver) {
+                    List<Integer> inputNumbers = communicator.instructInputNumbers();
+                    Map<String, Integer> counts = computer.count(inputNumbers);
+                    communicator.printResult(counts);
+                    isOver = isCorrect(counts.get("strikeCount"));
+                }
+            }
+            case TERMINATE -> communicator.printTerminate();
+        }
+    }
+
     private boolean isCorrect(int strikeCount) {
         return strikeCount == 3;
     }
