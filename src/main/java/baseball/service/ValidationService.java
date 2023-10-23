@@ -16,7 +16,7 @@ public class ValidationService {
 
     private void isThreeDigits(String str) {
         if (!(str.length() == 3)) {
-            exceptionHandler.throwIfNumberTooLong();
+            exceptionHandler.throwIfNumberLengthNotThree();
         }
     }
 
