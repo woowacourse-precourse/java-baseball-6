@@ -39,7 +39,7 @@ public class GameController {
     }
 
     private void inputNumber(Game game) {
-        game.setInputNumber(inputView.inputNumber());
+        game.setInputNumber(inputView.inputGameNumber());
     }
 
     private void compareNumber(Game game) {
