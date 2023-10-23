@@ -5,8 +5,10 @@ import baseball.model.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.List;
+
 public class GameController {
-    private static ComputerNumber computerNumber;
+    private static List<Integer> computerNumber;
     private static UserNumber userNumber;
     private static HintCalculator hintCalculator;
 
@@ -61,7 +63,7 @@ public class GameController {
     }
 
     private static void showHint() {
-        hintCalculator = new HintCalculator(userNumber.getNumber(), computerNumber.getNumber());
+        hintCalculator = new HintCalculator(userNumber.getNumber(),computerNumber);
         OutputView.printHint(getHintMessage());
     }
 
