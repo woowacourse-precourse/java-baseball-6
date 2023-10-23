@@ -1,40 +1,34 @@
 package baseball.view;
 
+import baseball.controller.HintController;
 import baseball.domain.Hint.Ball;
 import baseball.domain.Hint.Hint;
 import baseball.domain.Hint.Nothing;
 import baseball.domain.Hint.Strike;
 
+import java.util.List;
+
 public class HintView {
-
-    public static final String STRIKE_TEXT = "스트라이크";
-    public static final String BALL_TEXT = "볼";
-    public static final String NOTHING_TEXT = "낫싱";
-
 
     public static void displayHintMessage(Hint hint) {
 
-        Ball ball = hint.getBall();
-        Strike strike = hint.getStrike();
-        Nothing nothing = hint.isNothing();
+        List<String> countList = HintController.counts(hint);
+        List<String> nameList = HintController.names(hint);
 
         StringBuilder hintBuilder = new StringBuilder();
-        if (ball.getCount() > 0) {
-            hintBuilder.append(ball + BALL_TEXT);
-        }
 
-        if (!hintBuilder.isEmpty()) { //비어있지 않으면 공백 넣기
-            hintBuilder.append(" ");
-        }
-
-        if (strike.getCount() > 0) {
-            hintBuilder.append(strike + STRIKE_TEXT);
-        }
-
-        if (nothing.isStatus()) {
-            hintBuilder.append(NOTHING_TEXT);
+        for (int i = 0; i < countList.size(); i++) {
+            hintBuilder.append(countList.get(i) + nameList.get(i));
+            addSpaceIfNotEmpty(hintBuilder);
         }
 
         System.out.println(hintBuilder.toString());
     }
+
+    public static void addSpaceIfNotEmpty(StringBuilder stringBuilder) {
+        if (!stringBuilder.isEmpty()) {
+            stringBuilder.append(" ");
+        }
+    }
+
 }
