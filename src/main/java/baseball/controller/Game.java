@@ -14,7 +14,9 @@ public class Game {
             gameManager.inputUserNumber();
             gameManager.showBallCount();
 
-            if (gameManager.checkGameOver()) {
+            boolean gameOver = gameManager.checkGameOver();
+
+            if (gameOver) {
                 boolean wantRestart = gameManager.askRestartGame();
 
                 if (wantRestart) {
