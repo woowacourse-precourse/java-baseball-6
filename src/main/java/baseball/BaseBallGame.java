@@ -1,8 +1,11 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 public class BaseBallGame {
     public List<Integer> computer;
+    public List<Integer> user;
+    private String userString;
     private boolean cycle = true;
 
     //상대방(컴퓨터)의 수 생성 함수
@@ -44,5 +47,11 @@ public class BaseBallGame {
     public String InputNum(){
         String player = Console.readLine();
         return player;
+    }
+    // 입력값 길이 판별 함수
+    public void IsLength(String s){
+        if(s.length() !=3){
+            throw new IllegalArgumentException("세자리 수가 아닙니다.");
+        }
     }
 }
