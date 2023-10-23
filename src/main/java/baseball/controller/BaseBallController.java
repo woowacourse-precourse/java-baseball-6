@@ -21,7 +21,7 @@ public class BaseBallController {
     public void startGame() {
         do {
             play();
-        } while (gameRestartCondition());
+        } while (isGameRestartCondition());
     }
 
     public void play() {
@@ -29,24 +29,22 @@ public class BaseBallController {
         RandomNumbers randomNumbers = new RandomNumbers();
         outputView.printStartGame();
         outputView.askForNumber();
-
         do {
             String userInput = inputView.askForNumber();
             UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
 
             strikeCount = new Strikes(randomNumbers, userInputNumbers).getStrikeCount();
             ballCount = new Balls(randomNumbers, userInputNumbers).getBallCount();
-
             outputView.printCountForBallsAndStrikes(ballCount, strikeCount);
-        } while (isNotGameEndCondition(strikeCount));
+        } while (!isGameEndCondition(strikeCount));
         outputView.printEndGame();
     }
 
-    private boolean gameRestartCondition() {
+    private boolean isGameRestartCondition() {
         return inputView.askForNewGameOrEnd() == GameConstant.NEW_GAME_CODE;
     }
 
-    private boolean isNotGameEndCondition(int strikeCount) {
-        return strikeCount != GameConstant.GAME_END_STRIKE_COUNT;
+    private boolean isGameEndCondition(int strikeCount) {
+        return strikeCount == GameConstant.GAME_END_STRIKE_COUNT;
     }
 }
