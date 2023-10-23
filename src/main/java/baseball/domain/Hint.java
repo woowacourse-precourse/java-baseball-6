@@ -7,6 +7,7 @@ public enum Hint {
     ;
 
     private static final String NO_HINT = "낫싱";
+    private static final String DELIMITER = " ";
 
     private final String symbol;
     private int count;
@@ -30,11 +31,15 @@ public enum Hint {
             return NO_HINT;
         }
 
-        return String.join(" ", BALL.summary(), STRIKE.summary()).trim();
+        return parseResultMessage();
     }
 
     public static boolean isWin() {
         return Hint.STRIKE.count == 3;
+    }
+
+    private static String parseResultMessage() {
+        return String.join(DELIMITER, BALL.summary(), STRIKE.summary()).trim();
     }
 
     private static boolean isNothing() {
