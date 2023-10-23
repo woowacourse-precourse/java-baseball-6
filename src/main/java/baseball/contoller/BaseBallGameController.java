@@ -1,7 +1,9 @@
 package baseball.contoller;
 
 
+import baseball.domain.Computer;
 import baseball.domain.Result;
+import baseball.domain.User;
 import baseball.utill.Converter;
 import baseball.utill.ExceptionMessage;
 import baseball.view.InputView;
@@ -15,9 +17,6 @@ public class BaseBallGameController {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
     private static final Converter converter = new Converter();
-    private static final int INPUT_LENGTH = 3;
-    private static final int MAXIMUM_NUMBER = 9;
-    private static final int MINIMUM_NUMBER = 1;
 
 
     public void run() {
@@ -29,32 +28,18 @@ public class BaseBallGameController {
         }
 
     }
-
     private void startNewGame() {
-        List<Integer> computerNumbers = generateComputerNumber();
+        Computer computer = new Computer();
         boolean continueSign = true;
         while (continueSign) {
             List<String> inputString = inputView.readPlayerNumber();
             List<Integer> inputInteger = converter.convertToNumericList(inputString);
-            Result result = new Result(computerNumbers,inputInteger);
+            User user = new User(inputInteger);
+            Result result = new Result(computer.getComputerList(),user.getUserList());
             outputView.printResult(result.resultToString());
             continueSign = result.isContinue();
         }
         outputView.printEndMessage();
-    }
-
-    private List<Integer> generateComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < INPUT_LENGTH) {
-            int randomNumber = generateRandomNumber();
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-    private int generateRandomNumber(){
-        return Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
     }
 
     private boolean isEnd(int sign) {

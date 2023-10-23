@@ -14,7 +14,7 @@ public class Computer {
 
 
 
-    Computer(){
+    public Computer(){
         this.computerList = generateComputerNumber();
     }
 
@@ -33,4 +33,7 @@ public class Computer {
         return Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
     }
 
+    public List<Integer> getComputerList(){
+        return this.computerList;
+    }
 }

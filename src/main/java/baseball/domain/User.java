@@ -6,7 +6,7 @@ public class User {
 
     private final List<Integer> userList;
 
-    User(List<Integer> input){
+    public User(List<Integer> input){
         this.userList = input;
     }
 
