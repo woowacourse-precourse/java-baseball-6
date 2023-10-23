@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
-    List<Integer> playerList  = new ArrayList<>();
+    private List<Integer> playerList  = new ArrayList<>();
 
     public Player(String inputString) {
         checkNumberLength(inputString);
@@ -31,6 +31,7 @@ public class Player {
     private void checkIsDigit(String inputString) {
         for (int i = 0; i < inputString.length(); i++) {
             int number = inputString.charAt(i);
+
             if (!Character.isDigit(number)) {
                 throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. (1~9의 자연수만 가능)");
             }

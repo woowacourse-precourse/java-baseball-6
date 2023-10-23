@@ -4,11 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
 import static baseball.Constant.*;
 
 public class Game {
-    List<Integer> computer = new ArrayList<>();
+    private List<Integer> computer = new ArrayList<>();
 
     public Game() {
         while (computer.size() < NUMBER_COUNT) {
