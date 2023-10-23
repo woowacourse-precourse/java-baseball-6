@@ -22,7 +22,7 @@ public class ResultCalculator {
 
     private Strikes countStrikes(BallNumber comparisonNumber) {
         return new Strikes(IntStream
-                .range(0, SystemConstant.MAXIMUM_DIGIT)
+                .range(0, SystemConstant.MAX_DIGIT)
                 .filter(i ->
                         computerNumber.isEqualBallNumberByDigit(comparisonNumber, i))
                 .count());

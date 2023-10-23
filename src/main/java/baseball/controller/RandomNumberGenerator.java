@@ -11,9 +11,10 @@ class RandomNumberGenerator {
     static BallNumber generate() {
         return new BallNumber(IntStream
                 .generate(() ->
-                        Randoms.pickNumberInRange(1, 9))
+                        Randoms.pickNumberInRange(SystemConstant.MIN_NUMBER_EACH_DIGIT,
+                                SystemConstant.MAX_NUMBER_EACH_DIGIT))
                 .distinct()
-                .limit(SystemConstant.MAXIMUM_DIGIT)
+                .limit(SystemConstant.MAX_DIGIT)
                 .boxed()
                 .collect(toList()));
     }

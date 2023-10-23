@@ -26,7 +26,7 @@ public class InputVerifier {
     }
 
     private static void checkRange(String inRange) {
-        if (inRange.length() != SystemConstant.MAXIMUM_DIGIT) {
+        if (inRange.length() != SystemConstant.MAX_DIGIT) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_RANGE);
         }
     }
