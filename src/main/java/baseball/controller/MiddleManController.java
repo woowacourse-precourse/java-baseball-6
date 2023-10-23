@@ -1,19 +1,17 @@
-package baseball.domain;
-
-import baseball.view.Output;
+package baseball.controller;
 
 import java.util.List;
 
-import static baseball.view.Output.*;
+import static baseball.view.OutputView.*;
 
-public class MiddleMan {
+public class MiddleManController {
     private static final int INIT_BALL_STIRKE = 0;
     private static final int NUMBER_LENGTH = 3;
     private static final int CORRECT_STRIKE_COUNT = 3;
     private int ball;
     private int strike;
 
-    public MiddleMan() {
+    public MiddleManController() {
         initBallStrike();
     }
 

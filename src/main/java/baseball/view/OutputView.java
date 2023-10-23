@@ -1,6 +1,6 @@
 package baseball.view;
 
-public class Output {
+public class OutputView {
     private static final String NO_BALL_NO_STRIKE = "낫싱";
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
