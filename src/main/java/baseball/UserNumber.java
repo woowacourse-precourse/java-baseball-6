@@ -11,6 +11,10 @@ public class UserNumber {
     public List<Integer> getUserNumber() {
         List<Integer> userNumber = new ArrayList<>();
         String readLine = getReadLine();
+        checkLength(readLine);
+        checkDigit(readLine);
+        userNumber = stringToDigit(readLine);
+        checkDuplication(userNumber);
         return userNumber;
     }
 
