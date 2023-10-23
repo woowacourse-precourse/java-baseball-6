@@ -11,6 +11,7 @@ public class Output {
     private void printGameEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
     public boolean printResultAndContinue(Map<String, Integer> result) {
 
         int strikes = result.get("strikes");
@@ -24,13 +25,13 @@ public class Output {
             System.out.print(strikes + "스트라이크");
         }
 
-        if (balls == 0 && strikes == 0){
+        if (balls == 0 && strikes == 0) {
             System.out.print("낫싱");
         }
 
         System.out.println();
 
-        if (strikes == 3) {
+        if (strikes == GameConstants.NUM_DIGITS) {
             printGameEnd();
             return true;
         }

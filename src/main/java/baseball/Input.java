@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-
     public List<Integer> readGuessNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         return covertStringToIntList(Console.readLine());
@@ -15,17 +14,14 @@ public class Input {
         input = input.replaceAll("\\s", "");
 
         validateNumeric(input);
-
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리의 숫자가 아닙니다.");
-        }
+        validateLength(input);
 
         List<Integer> result = input.chars()
                 .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList());
 
-        if (result.size() != 3) {
+        if (result.size() != GameConstants.NUM_DIGITS) {
             throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야됩니다. ");
         }
 
@@ -38,6 +34,11 @@ public class Input {
         }
     }
 
+    private void validateLength(String input) {
+        if (input.length() != GameConstants.NUM_DIGITS) {
+            throw new IllegalArgumentException(GameConstants.NUM_DIGITS + "자리의 숫자가 아닙니다.");
+        }
+    }
 
     public int readRetryChoice() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
