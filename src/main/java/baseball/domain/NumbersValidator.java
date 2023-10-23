@@ -19,4 +19,15 @@ public class NumbersValidator {
 		}
 	}
 
+	public static void validateNumberRange(List<Integer> numbers) {
+		for (Integer number : numbers) {
+			if(number > MAX_RANDOM_NUMBER) {
+				throw new IllegalArgumentException("숫자는 9이하여야 합니다.");
+			}
+			if(number < MIN_RANDOM_NUMBER) {
+				throw new IllegalArgumentException("숫자는 1이상이여야 합니다.");
+			}
+		}
+	}
+
 }
