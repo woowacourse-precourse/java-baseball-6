@@ -6,8 +6,11 @@ public class UserInterface {
     private static String user;
 
 
-
     public static String getUser() {
         return Console.readLine();
+    }
+
+    public static void printMessage (Message message) {
+        System.out.println(message.getMessage());
     }
 }
