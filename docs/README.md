@@ -15,10 +15,10 @@
   - 게임 시작 문구 출력
     - '숫자 야구 게임을 시작합니다.'
     - 다시 시작할 때는 나오지 않음.
-    - 사용자 입력은 'camp.nextstep.edu.missionutils'의 'Console.readLine()'로 접근
 - 사용자가 정답을 입력하는 기능
   - 입력 문구 출력
     - '숫자를 입력해주세요'
+  - 사용자 입력은 'camp.nextstep.edu.missionutils'의 'Console.readLine()'로 접근
 - 사용자의 정답에 대한 힌트 및 결과를 출력하는 기능
   - 모두 맞히면 종료
     - ex) '3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료'
