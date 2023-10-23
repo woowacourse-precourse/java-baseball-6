@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumberService {
+public class ComputerNumber {
+
     public List<Integer> createComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
