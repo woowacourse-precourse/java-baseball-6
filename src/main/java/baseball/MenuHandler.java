@@ -49,9 +49,9 @@ public class MenuHandler {
         boolean isOver = false;
         while (!isOver) {
             List<Integer> inputNumbers = communicator.instructInputNumbers();
-            Map<String, Integer> counts = computer.count(inputNumbers);
+            Map<Count, Integer> counts = computer.count(inputNumbers);
             communicator.printResult(counts);
-            isOver = isCorrect(counts.get("strikeCount"));
+            isOver = isCorrect(counts.get(Count.STRIKE));
         }
     }
 

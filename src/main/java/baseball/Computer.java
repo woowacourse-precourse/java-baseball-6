@@ -27,8 +27,8 @@ public class Computer {
         }
     }
 
-    public Map<String, Integer> count(List<Integer> inputNumbers) {
-        Map<String, Integer> counts = new HashMap<>();
+    public Map<Count, Integer> count(List<Integer> inputNumbers) {
+        Map<Count, Integer> counts = new HashMap<>();
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -43,8 +43,8 @@ public class Computer {
             }
         }
         
-        counts.put("strikeCount", strikeCount);
-        counts.put("ballCount", ballCount);
+        counts.put(Count.STRIKE, strikeCount);
+        counts.put(Count.BALL, ballCount);
         
         return counts;
     }
