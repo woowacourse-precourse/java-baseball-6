@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.controller.dto.Result;
+
 public class NumberBaseBallComputer extends Computer {
 
     @Override

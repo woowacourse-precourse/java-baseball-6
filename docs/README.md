@@ -42,8 +42,8 @@
 
 ### refactoring
 - [x] Computer를 NumberBaseBallComputer로 변경하자 -> 추상클래스로 Computer를 만들자 (Computer의 확장성을 위해)
-- [ ] policy를 합쳐서 Rule을 만들자 -> 파라미터 개수 줄일 수 있고 Rule을 의존성으로 가지고 있는게 맞을듯
-- [ ] Input과 Output을 합쳐서 Console을 만들자 -> Input과 Output을 처리하는 하나의 곳으로 묶자
+- [x] policy를 합쳐서 Rule을 만들자 -> 파라미터 개수 줄일 수 있고 Rule을 의존성으로 가지고 있는게 맞을듯
+- [x] Input과 Output을 합쳐서 Console을 만들자 -> Input과 Output을 처리하는 하나의 곳으로 묶자
 
 
 ## 전체적인 구조
