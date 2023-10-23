@@ -9,76 +9,149 @@
 
 ## 기능 목록
 
+### 1. 문제 생성 - setNums
+
+`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 1~9 사이의 **서로 다른 임의의 수 3개를 선택**한다.
+
+README.md 의 예제 소스를 이용했다.
 <details>
-<summary>1. 문제 생성</summary>
+<summary>setNums 메서드</summary>
 <div markdown="1">
 
-1~9 사이의 **서로 다른 임의의 수 3개를 선택**한다.
-
-`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
-
+```java
+private static List<Integer> setNums() {
+List<Integer> computer = new ArrayList<>();
+while (computer.size() < 3) {
+int randomNumber = Randoms.pickNumberInRange(1, 9);
+if (!computer.contains(randomNumber)) {
+computer.add(randomNumber);
+}
+}
+return computer;
+}
+```
 </div>
 </details>
-<details>
-<summary>2. 사용자로부터 입력 값을 받아 검증한다. </summary>
-<div markdown="1">
 
-`camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자로부터 입력받는다.
+### 2. 사용자로부터 입력 값을 받아 검증한다. - requestNums
 
-사용자는 3개의 중복되지 않는 숫자를 연속하여 입력해야 한다. 이외의 입력이 들어오면 예외를 발생시킨다.
+`camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자로부터 숫자 3개를 입력받는다.
+
+사용자는 3개의 중복되지 않는 숫자를 연속하여 입력해야 하며, 이외의 입력이 들어오면 예외를 발생시킨다.
 
 2-1. 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
 
-2-2. 사용자가 올바른 값을 입력한 경우, 3을 진행한다.
+잘못된 경우를 입력하는 경우는 다음과 같이 분류했다.
+
+- 입력 값의 길이가 3이 아니다.
+- 숫자 이외의 값이 존재한다.
+- 중복되는 값이 있다.
+
+2-2. 사용자가 올바른 값을 입력한 경우, 입력 값을 int 배열로 반환한다.
+
+<details>
+<summary>requestNums() </summary>
+<div markdown="1">
+
+```java
+private static int[] requestNums() {
+System.out.print("숫자를 입력해주세요 : ");
+String input = readLine();
+
+        //입력값 길이 검증
+        if (input.length() != 3) throw new IllegalArgumentException();
+        //숫자 이외의 값 포함 검증
+        if (!input.matches("\\d+")) throw new IllegalArgumentException();
+        //중복값 검증
+        if (input.chars()
+                .distinct()
+                .count() != 3) throw new IllegalArgumentException();
+
+        return  input.chars()
+                .map(Character::getNumericValue)
+                .toArray();
+    }
+```
 
 </div>
 </details>
 
+### 3. 스트라이크/볼을 판단한다.
+
+사용자로부터 입력 받은 input 배열과 컴퓨터에서 생성한 answer를 비교한다.
+
+3-1. **스트라이크**는 answer와 값과 인덱스가 모두 같은 input의 개수이다.
+
+3-2. **볼** 은 answer와 인덱스는 다르나 값이 같은 input의 개수이다.
+
 <details>
-<summary>3. 스트라이크/볼을 판단한다. </summary>
+<summary>코드</summary>
 <div markdown="1">
 
-3-1. 정답에 해당하는 숫자가 적절한 위치에 있으면 '스트라이크' 로 판정한다.
+```java
+long strike = IntStream.range(0, input.length)
+        .filter(i -> input[i] == answer.get(i))
+        .count();
 
-3-2. 정답에 해당하는 숫자가 존재하나, 부적절한 위치에 있는 경우 '볼' 로 판정한다.
+long ball = IntStream.range(0, input.length)
+        .filter(i -> input[i] != answer.get(i) && answer.contains(input[i]))
+        .count();
+```
 
 </div>
 </details>
+
+###  4. 결과를 판정한다. - judge
+
+4-1. 스트라이크와 볼이 모두 0이면, "낫싱"을 출력한다.
+
+4-2. 볼이 0 이상이면, 볼 개수를 출력한다.
+
+4-3. 스트라이크가 0 이상이면, 스트라이크 개수를 출력한다.
+
 <details>
-<summary> 4. 결과를 판정한다. </summary>
+<summary> judge(ball, strike) </summary>
 <div markdown="1">
 
-모든 입력값에 대해 다음을 조사한다.
+```java
+private static void judge(long ball, long strike) {
+    //볼, 스트라이크가 모두 없는 경우
+   if (strike + ball == 0) {System.out.print("낫싱");}
+   //볼이 존재하는 경우
+   if (ball > 0) {System.out.print(ball + "볼 ");}
+   //스트라이크가 존재하는 경우
+   if (strike > 0) {System.out.print(strike + "스트라이크");}
 
-4-1. 입력받은 값이 문제 내에 존재하고, 같은 인덱스에 있으면 스트라이크 값을 1 증가시킨다.
-
-4-2. 입력받은 값이 문제 내에 존재하고, 다른 인덱스에 있으면 볼 값을 1 증가시킨다.
-
+   System.out.println();
+}
+```
 </div>
 </details>
 
+### 5. 게임 프로세스의 종료 여부를 확인한다. - requestRestart
+
+
+3 스트라이크면 게임을 종료한 뒤, 사용자로부터 게임 재시작 여부를 입력받는다. 
+
+5-1. 1을 입력받은 경우 1로 돌아간다.
+
+5-2. 2를 입력받은 경우 게임 프로세스를 종료한다.
+
+5-3. 1과 2를 제외한 값을 입력받은 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
+
 <details>
-<summary> 5. 결과를 출력한다. </summary>
+<summary> requestRestart  </summary>
 <div markdown="1">
 
-5-1. 스트라이크와 볼이 모두 0이면, "낫싱"을 출력한다.
+```java
+private static int requestRestart() {
+        String input = readLine();
+        if (input.equals("1")) return 1;
+        if (input.equals("2")) return 2;
 
-5-2. 볼이 0 이상이면, 볼 개수를 출력한다.
+    }
 
-5-3. 스트라이크가 0 이상이면, 스트라이크 개수를 출력한다.
-</div>
-</details>
-<details>
-<summary> 6. 게임 프로세스의 종료 여부를 확인한다.  </summary>
-<div markdown="1">
-
-사용자로부터 값을 입력받는다. 
-
-6-1. 1을 입력받은 경우 1로 돌아간다.
-
-6-2. 2를 입력받은 경우 게임 프로세스를 종료한다.
-
-6-3. 1과 2를 제외한 값을 입력받은 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
+```
 </div>
 </details>
 
@@ -91,7 +164,6 @@
 
 반복문과 조건문을 줄이기 위해 Stream을 사용했고, 주요 기능별로 메서드를 분리해주었다.
 그러나 여전히 코드의 가독성이 좋지 않아 조금 더 고민해봐야할 것 같다. 
-스트라이크와 볼을 판정하고 결과값을 출력하는 부분을 병합하는 것을 고려하고 있다.
 
 2. 효율
 
