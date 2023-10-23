@@ -19,7 +19,7 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    public int inputRestartGame() {
+    public static int inputRestartGame() {
         String restart = Console.readLine();
         return Integer.parseInt(restart);
     }

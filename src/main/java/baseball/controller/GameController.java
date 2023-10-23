@@ -14,6 +14,11 @@ public class GameController {
         OutputView.printStartGame();
         List<Integer> computerNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         recursiveGame(computerNumbers);
+        OutputView.printInputRestartGame();
+        // 게임 재시작 여부 묻기
+        if (InputView.inputRestartGame() == 1){
+            run();
+        }
     }
 
     private void recursiveGame(List<Integer> computerNumbers) {
@@ -37,11 +42,6 @@ public class GameController {
     }
 
     private GameResult checkResult(List<Integer> numbers, List<Integer> computerNumbers) {
-        for (Integer a :
-                computerNumbers) {
-            System.out.println(a);
-        }
-
         int strike = 0;
         int ball = 0;
 

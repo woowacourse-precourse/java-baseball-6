@@ -8,7 +8,9 @@ public class OutputView {
     private static final String STRIKE_MESSAGE = "%d스트라이크\n";
     private static final String BALL_MESSAGE = "%d볼\n";
     private static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
-    private static final String GET_RESTART_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입려하세요.";
+    private static final String GET_RESTART_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
 
 
     public static void printStartGame() {
