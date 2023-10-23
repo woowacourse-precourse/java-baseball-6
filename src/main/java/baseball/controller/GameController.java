@@ -36,18 +36,16 @@ public class GameController {
 
     private void play() {
         PlayNumber computerNumber = RandomNumber.pickNumber();
+        boolean isPlay = true;
 
-        while (true) {
+        while (isPlay) {
             AskView.printAskNumber();
             PlayNumber userNumber = inputView.readPlayNumber();
 
             int ball = Referee.answerResult(ballRule, computerNumber, userNumber);
             int strike = Referee.answerResult(strikeRule, computerNumber, userNumber);
             ResultView.printResult(ball, strike);
-
-            if (isGameEnd(strike)) {
-                break;
-            }
+            isPlay = !isGameEnd(strike);
         }
 
         EndView.end();
