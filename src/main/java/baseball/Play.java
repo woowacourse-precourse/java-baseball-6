@@ -3,13 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Play {
-
     private static final int END_POINT = 3;
     private static final int GAME_OVER = 2;
     private static final Play instance = new Play();
-
     private Play() {}
-
     public static Play getInstance() {
         return instance;
     }
