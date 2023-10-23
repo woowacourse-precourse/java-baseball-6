@@ -2,14 +2,7 @@ package baseball.domain;
 
 import static baseball.domain.BaseBallResultType.*;
 
-class BaseBallResult {
-    private final int ballCount;
-    private final int strikeCount;
-
-    BaseBallResult(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
-    }
+record BaseBallResult(int ballCount, int strikeCount) {
 
     BaseBallResultType getResultType() {
         if (ballCount == 0 && strikeCount == 0) {
