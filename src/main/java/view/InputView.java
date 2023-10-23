@@ -6,8 +6,6 @@ import view.processing.Validator;
 
 import java.util.List;
 
-import static utils.GameErrorMessage.INVALID_CONVERT_MESSAGE;
-
 public class InputView {
     private final Convertor convertor;
     private final Validator validator;
@@ -23,10 +21,8 @@ public class InputView {
 
     public List<Integer> readInputNumbers() {
         String input = readInput();
-        if (validator.isBaseballNumber(input)) {
-            return convertor.inputToBaseballNumber(input);
-        }
-        throw new IllegalArgumentException(INVALID_CONVERT_MESSAGE);
+        validator.validateBaseballNumber(input);
+        return convertor.inputToBaseballNumber(input);
     }
 
 }

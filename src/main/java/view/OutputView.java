@@ -28,6 +28,7 @@ public class OutputView {
     }
 
     public void hint(int strike, int ball) {
+        validator.totalCountsNotExceedingLimit(strike, ball);
         String hintMessage = convertor.ballCountToHint(strike, ball);
         write(hintMessage);
     }

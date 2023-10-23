@@ -5,14 +5,13 @@ import java.util.List;
 import java.util.Objects;
 
 import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
-import static utils.GameErrorMessage.INVALID_LENGTH_MESSAGE;
-import static utils.GameErrorMessage.NULL_INPUT_MESSAGE;
+import static utils.GameErrorMessage.*;
 
 public class Validator {
     public Validator() {
     }
 
-    public boolean isBaseballNumber(String input) {
+    public void validateBaseballNumber(String input) {
         Objects.requireNonNull(input, NULL_INPUT_MESSAGE);
 
         if (input.length() != BASEBALL_GAME_NUMBER_LENGTH) {
@@ -22,12 +21,22 @@ public class Validator {
         List<Integer> numbers = new ArrayList<>();
 
         for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException(ERROR_ONLY_NUMBERS_ALLOWED);
+            }
+
             int number = Character.getNumericValue(c);
             if (numbers.contains(number)) {
-                return false;
+                throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
             }
             numbers.add(number);
         }
-        return true;
+    }
+
+    public void totalCountsNotExceedingLimit(int strike, int ball) {
+        int total = strike + ball;
+        if (total > 3) {
+            throw new IllegalArgumentException(EXCEEDING_COUNT_ERROR_MESSAGE);
+        }
     }
 }
