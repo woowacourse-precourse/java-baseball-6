@@ -34,7 +34,7 @@ class ComputerTest {
     @DisplayName("생성된 모의 객체를 기반으로 테스트")
     @Test
     public void generate_numbersAreUnique() {
-        testComputer.generate();
+        testComputer.generateNumbers();
 
         assertEquals(3, testComputer.getComNumber().size());
 

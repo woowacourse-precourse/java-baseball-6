@@ -14,7 +14,7 @@ class GameManagerTest {
         String input = "1";
         GameManager gameManager = new GameManager();
         //when
-        gameManager.setGameMode(input);
+        gameManager.setPlayMode(input);
 
         //then
         assertEquals(input, gameManager.getGameMode());
@@ -30,7 +30,7 @@ class GameManagerTest {
 
         //then
         assertThrows(IllegalArgumentException.class, () -> {
-            gameManager.setGameMode(input);
+            gameManager.setPlayMode(input);
         });
     }
 
