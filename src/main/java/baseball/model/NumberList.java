@@ -16,15 +16,6 @@ public class NumberList {
         this.numberList = numberList;
     }
 
-    public NumberList(String numberString) {
-        this.numberList = new ArrayList<>() {{
-            for (int i = 0; i < numberString.length(); i++) {
-                int number = numberString.charAt(i) - '0';
-                add(number);
-            }
-        }};
-    }
-
     public int size() {
         return numberList.size();
     }
@@ -33,20 +24,27 @@ public class NumberList {
         return numberList.get(index);
     }
 
-    private void validateRepeatedNumber(List<Integer> numberList) {
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < numberList.size(); i++) {
-            set.add(numberList.get(i));
-        }
-        if (set.size() != numberList.size()) {
-            throw new IllegalArgumentException("중복된 원소가 있습니다.");
-        }
+    public static NumberList stringToNumberList(String numberString) {
+        List<Integer> numberList = new ArrayList<>() {{
+            for (int i = 0; i < numberString.length(); i++) {
+                int number = numberString.charAt(i) - '0';
+                add(number);
+            }
+        }};
+        return new NumberList(numberList);
     }
 
     private void validateIsInRange(List<Integer> numberList) {
         for (int i = 0; i < numberList.size(); i++) {
             int number = numberList.get(i);
             Validator.validateInRange(number, 1, 9);
+        }
+    }
+
+    private void validateRepeatedNumber(List<Integer> numberList) {
+        Set<Integer> set = new HashSet<>(numberList);
+        if (set.size() != numberList.size()) {
+            throw new IllegalArgumentException("중복된 원소가 있습니다.");
         }
     }
 
