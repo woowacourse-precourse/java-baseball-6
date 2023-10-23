@@ -1,11 +1,11 @@
-#Assertions study
+# Assertions study
 
 ## 해당 클래스의 목적
 > junit의 Assertions를 우테코의 mission에 맞게 기능을 추가하여, 더 편하게 테스트 할 수 있게 하기 위함으로 보인다.
 
 ----------
 ## method 분석
-###assertSimpleTest
+### assertSimpleTest
 ```java
 public static void assertSimpleTest(final Executable executable) {
         assertTimeoutPreemptively(SIMPLE_TEST_TIMEOUT, executable);
@@ -14,7 +14,9 @@ public static void assertSimpleTest(final Executable executable) {
 - `assertTimeoutPreemptively`에서 timeout 추가된 버전.  
 다른 함수들과 달리 random num을 지정해주지 않는다.  
 
-###assertRandomNumberInListTest
+<br>
+
+### assertRandomNumberInListTest
 ```java
  public static void assertRandomNumberInListTest(
         final Executable executable,
@@ -32,7 +34,9 @@ public static void assertSimpleTest(final Executable executable) {
 - `assertRandomTest` + `Randoms.pickNumberInList`
 - `anyList()` : `assertRandomTest`에서 `when`으로 원하는 메소드 가져오는 용이기 때문에, argumentMatch 용으로 사용함.
 
-###assertRandomNumberInRangeTest
+<br>
+
+### assertRandomNumberInRangeTest
 ```java
     public static void assertRandomNumberInRangeTest(
         final Executable executable,
@@ -49,7 +53,9 @@ public static void assertSimpleTest(final Executable executable) {
 ```
 - `assertRandomTest` + `Randoms.pickNumberInRange`
 
-###assertRandomUniqueNumbersInRangeTest
+<br>
+
+### assertRandomUniqueNumbersInRangeTest
 ```java
     public static void assertRandomUniqueNumbersInRangeTest(
         final Executable executable,
@@ -66,7 +72,9 @@ public static void assertSimpleTest(final Executable executable) {
 ```
 - `assertRandomTest` + `Randoms.pickUniqueNumbersInRange`
 
-###assertShuffleTest
+<br>
+
+### assertShuffleTest
 ```java
     public static <T> void assertShuffleTest(
         final Executable executable,
@@ -83,7 +91,9 @@ public static void assertSimpleTest(final Executable executable) {
 ```
 - `assertRandomTest` + `Randoms.shuffle`
 
-###assertRandomTest
+<br>
+
+### assertRandomTest
 ```java
     private static <T> void assertRandomTest(
         final Verification verification,
