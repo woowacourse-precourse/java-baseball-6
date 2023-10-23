@@ -8,18 +8,13 @@ import java.util.Set;
 
 
 public class CheckValidation {
-    private String input;
 
-    CheckValidation(String input) {
-        this.input = input;
-    }
+    public int checkAnswerValidation(String answer) {
 
-    public int checkAnswerValidation(String s) {
-
-        if (s.equals("1")) { // 새로운 게임 시작
+        if (answer.equals("1")) { // 새로운 게임 시작
             return 1;
         }
-        if (s.equals("2")) { // 게임 종료
+        if (answer.equals("2")) { // 게임 종료
             System.out.println(END_PROGRAM.getMessage());
             return 2;
         }
@@ -27,7 +22,7 @@ public class CheckValidation {
         throw new IllegalArgumentException(INVALID_INPUT.getMessage());
     }
 
-    public void checkNumberValidation() {
+    public void checkNumberValidation(String input) {
         // 문자열 배열로 치환
         String[] inputArr = input.split("");
         checkIfNumber(inputArr);

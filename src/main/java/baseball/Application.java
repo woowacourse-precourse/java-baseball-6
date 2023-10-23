@@ -26,17 +26,17 @@ public class Application {
 
     public static void main(String[] args) {
 
-        List<Integer> computer = getComputer();
-
-        System.out.println(GAME_START.getMessage());
+        List<Integer> computer = getComputer(); // 랜덤으로 숫자 생성
+        CheckValidation checkValidation = new CheckValidation();
         String input;
         int answer = 1;
+
+        System.out.println(GAME_START.getMessage());
         while (answer != 2) {
             System.out.println(INPUT_NUMBER.getMessage());
             input = readLine();
             // 유효성 확인
-            CheckValidation checkValidation = new CheckValidation(input);
-            checkValidation.checkNumberValidation();
+            checkValidation.checkNumberValidation(input);
             Hint hint = new Hint(computer, input);
             // 힌트 제공 또는 정답 확인
             int ifCorrect = hint.checkNumber();
