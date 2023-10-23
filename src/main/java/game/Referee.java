@@ -54,5 +54,4 @@ public class Referee {
     private static boolean isStrike(int i) {
         return computerBall.ballAt(i) == playerBall.ballAt(i);
     }
-
 }

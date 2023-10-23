@@ -40,5 +40,4 @@ public class RandomNumbersGenerator {
                 .map(String::valueOf)
                 .collect(Collectors.joining(""));
     }
-
 }

@@ -43,5 +43,4 @@ public class CountsMessage {
     private static boolean isZero(int number) {
         return number == NumberConstants.ZERO;
     }
-
 }
