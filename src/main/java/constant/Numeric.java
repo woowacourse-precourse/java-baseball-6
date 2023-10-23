@@ -1,5 +1,5 @@
 package constant;
 
-public class Constant {
+public class Numeric {
     public static final int numberOfInput = 3;
 }

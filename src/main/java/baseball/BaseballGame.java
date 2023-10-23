@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import validator.Validator;
-import constant.Constant;
+import constant.Numeric;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class BaseballGame {
     public void runOneGame() {
         setBallStrikeZero();
         List<Integer> computer = getRandomThreeNum();
-        while (strike != Constant.numberOfInput) {
+        while (strike != Numeric.numberOfInput) {
             runOneRound(computer);
         }
         sayEndGame();
@@ -47,7 +47,7 @@ public class BaseballGame {
     // 1~9 수 중 3개의 중복되지 않은 수 리턴
     public List<Integer> getRandomThreeNum(){
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < Constant.numberOfInput) {
+        while (computer.size() < Numeric.numberOfInput) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -64,7 +64,7 @@ public class BaseballGame {
         String input = Console.readLine();
 
         validator.isRightSize(input);
-        for (int i=0; i<Constant.numberOfInput; i++) {
+        for (int i = 0; i< Numeric.numberOfInput; i++) {
             char charValue = input.charAt(i);
             String stringValue = String.valueOf(charValue);
             Integer intValue = validator.changeToInteger(stringValue);
@@ -84,7 +84,7 @@ public class BaseballGame {
     }
     // ball인지 strike인지 판별 (같은 수 찾으면 더이상 볼 필요 없으므로 반복문 탈출)
     public void determineBallOrStrike(Integer number, int i, List<Integer>computer) {
-        for (int j=0; j<Constant.numberOfInput; j++) {
+        for (int j = 0; j< Numeric.numberOfInput; j++) {
             Integer numberInList = computer.get(j);
             if (number.equals(numberInList) && i == j) {
                 strike += 1;
@@ -111,7 +111,7 @@ public class BaseballGame {
     }
     // 게임 종료 (3스트라이크 시)
     public void sayEndGame() {
-        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Constant.numberOfInput);
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Numeric.numberOfInput);
     }
     // 게임 새로 시작 할 지 정하기
     public Boolean determineRestart() throws IllegalArgumentException{
