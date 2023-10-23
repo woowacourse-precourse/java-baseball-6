@@ -9,7 +9,7 @@ import java.util.Set;
  * 예외처리 클래스
  */
 public class Exception {
-    public List<Integer> numberList = new ArrayList<>();
+    private List<Integer> numberList = new ArrayList<>();
     /**
      * 모든 예외처리 과정을 거치는 메소드.
      * 예외가 발생하지 않았다면 문자열을 int list로 반환해줌
