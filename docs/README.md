@@ -73,7 +73,7 @@
 
 - 예외(IllegalArgumentException) 사항 발생시 애플리케이션 종료
 ### 클래스 다이어그램
-<img style="width:100%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/2ee4fa4d-d5e4-4407-8734-aeb5108266c3" />
+<img style="width:100%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/a2985828-1aed-41ac-9df6-ba4fb0a6ae24" />
 
 현실에서 숫자 야구 게임을 한다고 했을 때 상대방은 **임의의 숫자**를 정하게 됩니다.
 그리고 플레이어는 숫자를 맞추기 위해 **숫자를 말하게** 되고, 그것을 상대방은 듣고 난 뒤 **스트라이크**와 **볼**의 비율을 확인하고 얼만큼 맞췄는지 전달하게 됩니다.
