@@ -6,8 +6,8 @@ import java.util.List;
 
 public class BaseballNumbers {
     public static final int NUMBERS_LENGTH = 3;
-    private static final String OUT_OF_LENGTH = "야구 숫자 길이: " + NUMBERS_LENGTH;
-    private static final String DUPLICATE_NUMBER_EXIST = "야구 숫자내 중복 숫자 불가.";
+    private static final String OUT_OF_LENGTH_ERROR = "야구 숫자 길이: " + NUMBERS_LENGTH;
+    private static final String DUPLICATE_NUMBER_ERROR = "야구 숫자내 중복 숫자 불가.";
     private final List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
@@ -19,13 +19,13 @@ public class BaseballNumbers {
     private void validateDuplication(List<BaseballNumber> baseballNumbers) {
         int distinctSize = new HashSet<>(baseballNumbers).size();
         if (distinctSize != baseballNumbers.size()) {
-            throw new IllegalArgumentException(DUPLICATE_NUMBER_EXIST);
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
         }
     }
 
     private void validateNumbersSize(List<BaseballNumber> baseballNumbers) {
         if (baseballNumbers.size() != NUMBERS_LENGTH) {
-            throw new IllegalArgumentException(OUT_OF_LENGTH);
+            throw new IllegalArgumentException(OUT_OF_LENGTH_ERROR);
         }
     }
 
