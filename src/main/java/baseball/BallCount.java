@@ -12,7 +12,7 @@ public class BallCount {
         return ballCount;
     }
 
-    public void calculate(String computerNumber, String userNumber){
+    public void calculate(String computerNumber, String userNumber) {
         calculateStrikeCount(computerNumber, userNumber);
         calculateBallCount(computerNumber, userNumber);
     }
@@ -29,10 +29,9 @@ public class BallCount {
     private void calculateBallCount(String computerNumber, String userNumber) {
         ballCount = 0;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i != j && computerNumber.charAt(i) == userNumber.charAt(i)) {
-                    ballCount++;
-                }
+            if (computerNumber.charAt(i) != userNumber.charAt(i)
+                    && computerNumber.contains(String.valueOf(userNumber.charAt(i)))) {
+                ballCount++;
             }
         }
     }
