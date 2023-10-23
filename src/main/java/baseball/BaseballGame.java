@@ -9,34 +9,18 @@ public class BaseballGame {
 
         boolean isPlaying = true;
         int randomNum = Randoms.pickNumberInRange(111, 999);
-        int ballCnt, strikeCnt;
 
         String answerComputer = Integer.toString(randomNum);
         String answerPlayer;
 
-        String messageBallCnt, messageScore, messageStrikeCnt;
+        String messageScore;
         System.out.print("생성된 숫자는 " + answerComputer + "\n");
         do {
-            messageBallCnt = "";
-            messageStrikeCnt = "";
-            messageScore = "";
-            ballCnt = 0;
-            strikeCnt = 0;
 
             System.out.print("숫자를 입력해주세요 : ");
             answerPlayer = Console.readLine();
 
-            ballCnt = countBallHits(answerPlayer, answerComputer);
-
-            if (ballCnt > 0) {
-                messageBallCnt = String.valueOf(ballCnt) + "볼";
-            }
-
-            if (ballCnt + strikeCnt > 0) {
-                messageScore = messageBallCnt + messageStrikeCnt;
-            } else if (ballCnt + strikeCnt == 0) {
-                messageScore = "낫싱";
-            }
+            messageScore = countStrikeBallHits(answerPlayer, answerComputer);
 
             System.out.println(messageScore);
 
@@ -47,16 +31,36 @@ public class BaseballGame {
         } while (isPlaying);
     }
 
-    public int countBallHits(String source, String answer) {
+
+    public String countStrikeBallHits(String source, String answer) {
         int ballCnt = 0;
+        int strikeCnt = 0;
+        String messageScore = "";
+        String messageBall = "";
+        String messageStrike = "";
 
         for (int i = 0; i < source.length(); i++) {
             char sourceChar = source.charAt(i);
-            if (answer.contains(String.valueOf(sourceChar))) {
+            if (sourceChar == answer.charAt(i)) {
+                strikeCnt++;
+            } else if (answer.contains(String.valueOf(sourceChar))) {
                 ballCnt++;
             }
         }
 
-        return ballCnt;
+        if (ballCnt > 0) {
+            messageBall = String.valueOf(ballCnt) + "볼 ";
+        }
+        if (strikeCnt > 0) {
+            messageStrike = String.valueOf(strikeCnt) + "스트라이크";
+        }
+
+        if (ballCnt + strikeCnt > 0) {
+            messageScore = messageBall + messageStrike;
+        } else if (ballCnt + strikeCnt == 0) {
+            messageScore = "낫싱";
+        }
+
+        return messageScore;
     }
 }
