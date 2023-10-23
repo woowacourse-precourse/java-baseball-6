@@ -10,9 +10,11 @@ public class GameResult {
             result.put(score, result.getOrDefault(score, 0) + 1);
         }
     }
+
     public Integer getResult(BallScore ballScore) {
-        return result.get(ballScore);
+        return result.getOrDefault(ballScore, 0);
     }
+
     public boolean isNothing() {
         return result.size() == 0;
     }
