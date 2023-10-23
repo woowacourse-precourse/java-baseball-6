@@ -87,21 +87,34 @@ public class Application {
     }
 
     private static BaseballCount checkBaseballResult(List<Integer> answerNumberList, List<Integer> inputNumberList) {
-        int strike = 0, ball = 0;
+        int strike = checkStrikeCount(answerNumberList, inputNumberList);
+        int ball = checkBallCount(answerNumberList, inputNumberList);
+        return new BaseballCount(strike, ball);
+    }
 
+    private static int checkStrikeCount(List<Integer> answerNumberList, List<Integer> inputNumberList) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answerNumberList.get(i).equals(inputNumberList.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private static int checkBallCount(List<Integer> answerNumberList, List<Integer> inputNumberList) {
+        int ball = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                boolean isCorrect = answerNumberList.get(i) == inputNumberList.get(j);
-                if (isCorrect) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
+                if (i == j) {
+                    continue;
+                }
+                if(answerNumberList.get(i).equals(inputNumberList.get(j))) {
+                    ball++;
                 }
             }
         }
-        return new BaseballCount(strike, ball);
+        return ball;
     }
 
     private static void printBaseballResult(BaseballCount baseballCount) {
