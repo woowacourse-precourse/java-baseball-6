@@ -11,7 +11,7 @@ public class Computer {
     private static final int END_NUM = 9;
     private final Map<Integer, Integer> numbers;
 
-    private Computer() {
+    public Computer() {
         numbers = new HashMap<>();
     }
 
@@ -19,7 +19,7 @@ public class Computer {
         return new Computer();
     }
 
-    public void reset() {
+    public void start() {
         numbers.clear();
         generateRandomNumbers();
     }
