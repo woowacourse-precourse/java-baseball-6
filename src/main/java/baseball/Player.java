@@ -14,7 +14,7 @@ public class Player{
         String playerInput = Console.readLine();
 
         if (playerInput.length() != 3) {
-            throw new IllegalArgumentException("1~9 중, 세자리 숫자만 입력하세요.");
+            throw new IllegalArgumentException("세자리 숫자만 입력해주세요.");
         }
 
         try {
@@ -29,7 +29,7 @@ public class Player{
     }
 
     public int getPlayAgainChoice() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         return Integer.parseInt(Console.readLine());
     }
 }
