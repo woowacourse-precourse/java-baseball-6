@@ -43,9 +43,9 @@ public class User {
     }
 
     static private boolean isDupError(String input){
-        int[] tempArr = new int[SIZE];
+        int[] tempArr = new int[INPUT_SIZE];
         int tempNumber;
-        for (int i = 0; i < SIZE; i++){
+        for (int i = 0; i < INPUT_SIZE; i++){
             tempNumber = Integer.parseInt(input.charAt(i) + "");
             if (Computer.isDup(tempArr, tempNumber))
                 return false;

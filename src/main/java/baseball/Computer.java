@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 public class Computer {
     private static final int SIZE = 3;
-    private final static int[] baseballFlag = {0, 0};
-    private final static int[] numbers = new int[SIZE];
+    int[] baseballFlag = {0, 0};
+    int[] numbers = new int[SIZE];
     Computer() {
         int randomNumber;
         for (int i = 0; i < SIZE;){
@@ -23,24 +23,24 @@ public class Computer {
         return false;
     }
 
-    private static void checkResult(String userInput, int[] numberInfo){
+    private static void checkResult(String userInput, Computer alice){
         int tempNumber;
-        baseballFlag[0] = 0;
-        baseballFlag[1] = 0;
+        alice.baseballFlag[0] = 0;
+        alice.baseballFlag[1] = 0;
         for (int i = 0; i < SIZE; i++){
             tempNumber = Integer.parseInt(userInput.charAt(i) + "");
-            updateFlag(tempNumber, i, numberInfo);
+            updateFlag(tempNumber, i, alice);
         }
     }
 
-    private static void updateFlag(int userInput, int digit, int[] numbers){
+    private static void updateFlag(int userInput, int digit, Computer alice){
         for (int currentDigit = 0; currentDigit < SIZE; currentDigit++){
-            if (digit == currentDigit && userInput == numbers[currentDigit]) {
-                baseballFlag[0] += 1; // strike
+            if (digit == currentDigit && userInput == alice.numbers[currentDigit]) {
+                alice.baseballFlag[0] += 1; // strike
                 return;
             }
-            if (digit != currentDigit && userInput == numbers[currentDigit]) {
-                baseballFlag[1] += 1; // ball
+            if (digit != currentDigit && userInput == alice.numbers[currentDigit]) {
+                alice.baseballFlag[1] += 1; // ball
                 return;
             }
         }
@@ -51,9 +51,9 @@ public class Computer {
     public static void gameStart(Computer alice){
         User coh = new User();
         String userInput = coh.getUserInput();
-        checkResult(userInput);
-        Message.makeMessage(baseballFlag);
-        if (baseballFlag[0] != SIZE){
+        checkResult(userInput, alice);
+        Message.makeMessage(alice.baseballFlag);
+        if (alice.baseballFlag[0] != SIZE){
             Computer.gameStart(alice);
             return;
         }
