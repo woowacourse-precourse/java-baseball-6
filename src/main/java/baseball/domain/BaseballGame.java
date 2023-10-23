@@ -7,28 +7,13 @@ import java.util.*;
 
 public class BaseballGame {
 
-    private static final Integer MIN_NUMBER = 1;
-    private static final Integer MAX_NUMBER = 9;
-    private static final Integer COUNT_NUMBER = 3;
-
     public void start() {
-        List<Integer> baseballNumbers = this.generateBaseballNumbers();
+        BaseballNumbers baseballNumbers = BaseballNumbers.generateBaseballNumbers();
         while (true) {
             List<Integer> playerNumbers = this.pickThreeNumbers();
-            int[] hits = this.checkHitsResult(baseballNumbers, playerNumbers);
+            int[] hits = this.checkHitsResult(baseballNumbers.getNumbers(), playerNumbers);
             this.printResult(hits);
         }
-    }
-
-    public List<Integer> generateBaseballNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < COUNT_NUMBER) {
-            int number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!numbers.contains(number)) {
-                numbers.add(number);
-            }
-        }
-        return numbers;
     }
 
     private List<Integer> pickThreeNumbers() {
