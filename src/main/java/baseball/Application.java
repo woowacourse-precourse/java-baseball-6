@@ -6,7 +6,12 @@ import java.util.ArrayList;
 
 public class Application {
 
-    // TODO 코드 깔끔하게 만들기 (가독성을 높이고 좀 더 효율적으로)
+    private static int ballCount;
+
+    // TODO: 베이스볼 게임 클래스를 생성해, Application 클래스와 분리
+    // TODO: 변수명, 함수명 변경 (직관적으로)
+    // TODO: if문, 로직들 함수화
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int ballCount = 0;
@@ -17,10 +22,20 @@ public class Application {
         ArrayList<Integer> computer = createRandomNumList(new ArrayList<>());
 
         while (isRun) {
-            // 유저가 입력한 숫자를 조회
-            String[] userStr = Console.readLine().trim().split("");
+            String inputStr = Console.readLine().trim();
 
-            //TODO 유저가 잘못된 값을 입력했을 때, 예외처리 제작 (IllegalArgumentException 발생)
+            //잘못된 값 입력
+            if (inputStr == null || !inputStr.matches("[1-9]+") || inputStr.length() != 3) {
+                throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 1~9로 이뤄진 중복되지 않는 3자리의 숫자를 입력해주세요.");
+            }
+
+            // 유저가 입력한 숫자를 배열화
+            String[] userStr = inputStr.split("");
+
+            //중복된 숫자 입력
+            if (userStr[0].equals(userStr[1]) || userStr[0].equals(userStr[2]) || userStr[1].equals(userStr[2])) {
+                throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 1~9로 이뤄진 중복되지 않는 3자리의 숫자를 입력해주세요.");
+            }
 
             // 숫자 정답여부 확인
             for (int i = 0; i < 3; i++) {
@@ -41,14 +56,16 @@ public class Application {
 
                 // 게임 종료 이후 재시작 질문
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
                 // 재시작을 선택했다면
                 if (Console.readLine().trim().equals("1")) {
                     computer.clear();
                     computer = createRandomNumList(computer);
                     System.out.print("숫자를 입력해주세요 : ");
+
                     // 종료를 선택했다면
                 } else {
-                    isRun = false;
+                    isRun = false; // 종료
                 }
             } else if (ballCount != 0 && strikeCount != 0) {
                 System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
@@ -66,7 +83,6 @@ public class Application {
         }
     }
 
-    // 랜덤으로 3개의 숫자를 생성해주는 로직.
     public static ArrayList<Integer> createRandomNumList(ArrayList<Integer> numList) {
         while (numList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
