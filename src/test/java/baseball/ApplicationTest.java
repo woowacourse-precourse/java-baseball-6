@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.Controller;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 class ApplicationTest extends NsTest {
 
     Application application = new Application();
+    Controller controller = new Controller();
 
     @Test
     void 게임종료_후_재시작() {
@@ -38,7 +40,7 @@ class ApplicationTest extends NsTest {
         String input_number = "123";
         int[] expected_result = {1,2,3};
 
-        int[] real_result = application.stringToIntArray(input_number);
+        int[] real_result = controller.stringToIntArray(input_number);
 
         Assertions.assertArrayEquals(expected_result, real_result);
     }
@@ -49,7 +51,7 @@ class ApplicationTest extends NsTest {
         List<Integer> computer_number = List.of(1, 2, 3);
         int[] expected_strike_ball = {1, 1};
 
-        int[] strike_ball = application.checkStrikeAndBall(input_number, computer_number);
+        int[] strike_ball = controller.checkStrikeAndBall(input_number, computer_number);
         org.assertj.core.api.Assertions.assertThat(strike_ball.equals(expected_strike_ball));
     }
 
@@ -57,7 +59,7 @@ class ApplicationTest extends NsTest {
     void 입력값_자릿수_예외처리_테스트() {
         int[] input_number = {1,2,3,4};
         Assertions.assertThrows(RuntimeException.class, () -> {
-            application.exceptionUserInput(input_number);
+            controller.exceptionUserInput(input_number);
         });
     }
 
@@ -65,7 +67,7 @@ class ApplicationTest extends NsTest {
     void 입력값_중복_예외처리_테스트() {
         int[] input_number = {1,3,3};
         Assertions.assertThrows(RuntimeException.class, () -> {
-            application.exceptionUserInput(input_number);
+            controller.exceptionUserInput(input_number);
         });
     }
 
