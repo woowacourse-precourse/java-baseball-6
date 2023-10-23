@@ -1,24 +1,51 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
-    private int firstNum;
-    private int secondNum;
-    private int thirdNum;
+    private List<Integer> computer;
+    private List<Integer> user;
+
+    public Game() {
+        computer = new ArrayList<>();
+        user = new ArrayList<>();
+    }
+
+    private void createComputerNumber(){
+        int randomNumber;
+
+        while (computer.size() < 3) {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+    }
 
     private void inputBaseBallNumber(){
-        Scanner scanner = new Scanner(System.in);
-        String[] userInput = scanner.nextLine().split("");
+        String[] userInput = readLine().split("");
 
-        firstNum = Integer.parseInt(userInput[0]);
-        secondNum = Integer.parseInt(userInput[1]);
-        thirdNum = Integer.parseInt(userInput[2]);
+        for(int index = 0; index < 3; index++){
+            user.add(Integer.parseInt(userInput[index]));
+        }
     }
 
     public void play(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
-        inputBaseBallNumber();
+        Script script = new Script();
+
+        createComputerNumber();
+        script.startGame();
+
+        while(true){
+            script.inputNumber();
+            inputBaseBallNumber();
+            break;
+        }
     }
 }
