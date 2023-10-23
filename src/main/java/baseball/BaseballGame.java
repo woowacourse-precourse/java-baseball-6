@@ -18,13 +18,14 @@ public class BaseballGame {
                 outputWriter.printInputMessage();
                 List<Integer> userInput = inputReader.readUserGameInput();
 
-                int[] result = baseballReferee.scoreInput(goal, userInput);
-                outputWriter.printResultOfInput(result[0], result[1]);
+                UserInputResult userInputResult = baseballReferee.scoreInput(goal, userInput);
+                outputWriter.printResultOfInput(userInputResult.getBall(), userInputResult.getStrike());
 
-                if (isThreeStrike(result[1])) {
+                if (isThreeStrike(userInputResult.getStrike())) {
                     break;
                 }
             }
+
             outputWriter.printGameFinishMessage();
 
             if (!isRestart(inputReader.readUserGameFinishInput())) {

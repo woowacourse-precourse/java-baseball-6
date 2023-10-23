@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class BaseballReferee {
-    public int[] scoreInput(List<Integer> expect, List<Integer> actual) {
+    public UserInputResult scoreInput(List<Integer> expect, List<Integer> actual) {
         int ball = 0;
         int strike = 0;
 
@@ -15,6 +15,6 @@ public class BaseballReferee {
             }
         }
 
-        return new int[]{ball, strike};
+        return UserInputResult(ball, strike);
     }
 }

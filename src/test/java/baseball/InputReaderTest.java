@@ -1,25 +1,27 @@
 package baseball;
 
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class InputReaderTest {
     private static InputReader inputReader;
 
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         inputReader = new InputReader();
 
     }
 
     @Test
     @DisplayName("게임 진행 중 올바른 입력이 입력될 때 테스트")
-    void typeCorrectGameInput(){
+    void typeCorrectGameInput() {
         String input = "123";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -34,7 +36,7 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 진행 중 3자리 숫자가 아닐 때 예외 발생 테스트")
-    void typeIncorrectInputSizeOfGameInput(){
+    void typeIncorrectInputSizeOfGameInput() {
         String input = "1234";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -47,7 +49,7 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 진행 중 숫자가 아닌 다른 문자를 입력할 때 예외 발생 테스트")
-    void typeIncorrectInputTypeOfGameInput(){
+    void typeIncorrectInputTypeOfGameInput() {
         String input = "12a";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -60,7 +62,7 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 진행 중 입력의 숫자가 중복이 될 때 예외 발생 테스트")
-    void typeIncorrectInputDuplicationOfGameInput(){
+    void typeIncorrectInputDuplicationOfGameInput() {
         String input = "122";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -73,7 +75,7 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 진행 중 입력의 숫자가 공백일 때 예외 발생 테스트")
-    void typeIncorrectInputEmptyOfGameInput(){
+    void typeIncorrectInputEmptyOfGameInput() {
         String input = "";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -91,7 +93,6 @@ class InputReaderTest {
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-
 
         assertThrows(IllegalArgumentException.class, () -> {
             int restart = inputReader.readUserGameFinishInput();
@@ -113,7 +114,7 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 종료 후 입력이 1과 2가 아닐 때 예외 발생 테스트")
-    void typeIncorrectInputRangeOfGameFinishInput(){
+    void typeIncorrectInputRangeOfGameFinishInput() {
         String input = "3";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -126,7 +127,7 @@ class InputReaderTest {
 
     @Test
     @DisplayName("게임 종료 후 입력의 숫자가 공백일 때 예외 발생 테스트")
-    void typeIncorrectInputEmptyOfGameFinishInput(){
+    void typeIncorrectInputEmptyOfGameFinishInput() {
         String input = "";
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
