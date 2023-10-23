@@ -29,6 +29,6 @@ public class BallNumber {
     }
 
     public boolean isEqualBallNumberByDigit(BallNumber compBallNumber, int digit) {
-        return ballNumberList.get(digit) == compBallNumber.getBallNumberByDigit(digit);
+        return getBallNumberByDigit(digit) == compBallNumber.getBallNumberByDigit(digit);
     }
 }
