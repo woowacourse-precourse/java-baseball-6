@@ -31,7 +31,11 @@ public class Application {
             }
         }
     }
-    public void checkExitChoiceValidation() {}
+    public void checkExitChoiceValidation(String input) {
+        if(input != "1" || input != "2") {
+            throw new IllegalArgumentException();
+        }
+    }
     public static void main(String[] args) {
 
     }
