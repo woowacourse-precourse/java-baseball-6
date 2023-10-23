@@ -9,7 +9,7 @@ import static baseball.system.SystemConstant.GAME_DIGIT;
 
 public class BaseBallNumVerifier implements Verifier {
     @Override
-    public void check(String input) throws IllegalArgumentException {
+    public void check(String input) {
         checkThreeDigits(input);
         checkOneToNine(input);
         checkDistinct(input);

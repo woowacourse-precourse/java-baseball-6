@@ -7,7 +7,7 @@ import static baseball.system.SystemConstant.GAME_RESTART_CODE;
 
 public class ControlNumVerifier implements Verifier {
     @Override
-    public void check(String input) throws IllegalArgumentException {
+    public void check(String input) {
         checkNumeric(input);
         checkRange(input);
     }
