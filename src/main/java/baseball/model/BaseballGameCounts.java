@@ -28,7 +28,7 @@ public class BaseballGameCounts {
     }
 
     public boolean isWinCondition() {
-        return counts.get(STRIKE) == 3;
+        return counts.get(STRIKE).equals(3);
     }
 
     public void resetCounts() {
