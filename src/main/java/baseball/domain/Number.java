@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.controller.GameController.NUMBER_SIZE;
+import static baseball.error.Error.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +11,7 @@ public class Number {
 
 	public Number(String number) {
 		validateRange(number);
-		validateSize(number, NUMBER_SIZE);
+		validateSize(number);
 		validateDuplication(number);
 		this.number = number;
 	}
@@ -22,14 +23,14 @@ public class Number {
 	private void validateRange(String number) {
 		for (char c : number.toCharArray()) {
 			if (c - '0' < 1 || c - '0' > 9) {
-				throw new IllegalArgumentException("숫자가 주어진 범위에서 벗어납니다.");
+				throw new IllegalArgumentException(RANGE_ERROR.getMessage());
 			}
 		}
 	}
 
-	private void validateSize(String number, int size) {
-		if (number.length()!=size) {
-			throw new IllegalArgumentException(size+"자리수의 숫자를 입력해주세요.");
+	private void validateSize(String number) {
+		if (number.length()!=NUMBER_SIZE) {
+			throw new IllegalArgumentException(SIZE_ERROR.getMessage(NUMBER_SIZE));
 		}
 	}
 
@@ -48,7 +49,7 @@ public class Number {
 
 	private void checkDuplication(Set<Character> checkSet) {
 		if (isDuplicated(checkSet)) {
-			throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+			throw new IllegalArgumentException(DUPLICATION_ERROR.getMessage());
 		}
 	}
 
