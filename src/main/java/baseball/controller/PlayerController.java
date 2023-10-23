@@ -9,11 +9,11 @@ public class PlayerController {
     private InputView inputView = new InputView();
 
     public List<Integer> readAndValidateInputNumbers() {
-        String inputNumbers = inputView.readInputNumbers();
-        return parseInputNumbers(inputNumbers);
+        String inputString = inputView.readInputNumbers();
+        return parseInputString(inputString);
     }
 
-    private List<Integer> parseInputNumbers(String inputNumbers) {
+    private List<Integer> parseInputString(String inputNumbers) {
         List<Integer> result = new ArrayList<>();
         for (String number : inputNumbers.split(",")) {
             result.add(Integer.parseInt(number));
