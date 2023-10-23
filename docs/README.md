@@ -23,3 +23,5 @@
 - [x] 사용자가 입력한 값이 3자리의 숫자인지 판별한다. (validateInput)
 - [x] 사용자가 입력한 값이 1~9까지의 서로 다른 수로 이루어진 숫자인지 판별한다. (isDuplicated)
 - [x] 사용자가 입력한 값이 서로 다른 수로 이루어진 숫자인지 판별한다. (isNumber)
+### 사용자가 입력한 숫자를 List로 분리해주는 유틸리티 클래스 (PlayerInputUtils)
+- [x] 사용자가 입력한 숫자를 List로 분리하여 반환한다. (convertInputToList)
