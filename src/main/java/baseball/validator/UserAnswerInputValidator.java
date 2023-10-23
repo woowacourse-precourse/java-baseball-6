@@ -34,4 +34,14 @@ public class UserAnswerInputValidator implements InputValidator{
             }
         }
     }
+
+    public void keepOneToNine(String input) {
+        //숫자의 범위가 1~9이 아니면 IllegalArgumentException 발생
+        for (char c : input.toCharArray()) {
+            int number = Character.getNumericValue(c);
+            if(!(BASEBALL_MIN_VALUE <= number && number <= BASEBALL_MAX_VALUE)){
+                throw new IllegalArgumentException(USER_ANSWER_INPUT_ONE_TO_NINE_EXCEPTION);
+            }
+        }
+    }
 }
