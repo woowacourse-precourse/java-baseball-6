@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -9,28 +9,38 @@ public class Application {
     private static final int UPPER_BOUND = 9;
     private static final int LOWER_BOUND = 1;
 
+    static void validateDuplicates(List<Integer> list, int digit) {
+        if (list.contains(digit)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static void validateRange(int parsedInput) {
+        if (parsedInput < LOWER_BOUND - 1 || parsedInput > Math.pow(10.0, ANSWER_SIZE)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     static List<Integer> readNumber() {
         String input = Console.readLine();
-        int n;
+        int parsedInput = parseInt(input);
+        validateRange(parsedInput);
 
-        try {
-            n = Integer.parseInt(input);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= ANSWER_SIZE; i++) {
+            int eachDigit = parsedInput / (int) Math.pow(10.0, ANSWER_SIZE - i) % 10;
+            validateDuplicates(result, eachDigit);
+            result.add(eachDigit);
         }
-
-        // TODO: 원시값 포장 및 bound 변화에 대응할 수 있도록 반복문으로 만들기
-        if (n < LOWER_BOUND - 1 || n > 999) {
-            throw new IllegalArgumentException();
-        }
-
-        int[] result = {n / 100, n / 10 % 10, n % 10};
-        if (result[0] == result[1] || result[1] == result[2] || result[2] == result[0]) {
-            throw new IllegalArgumentException();
-        }
-        return Arrays.stream(result)
-                .boxed()
-                .toList();
+        return result;
     }
 
     static boolean wantsReplay() {
