@@ -16,8 +16,11 @@ public class BaseBallGame {
         System.out.println(Computer.NUMBER_DIGIT.toString() + GameMessage.GAME_END);
     }
 
-    public BaseBallGame() {
+    public void init() {
         this.computer = new Computer();
-        this.player = new Player();
+    }
+
+    public BaseBallGame(Player player) {
+        this.player = player;
     }
 }
