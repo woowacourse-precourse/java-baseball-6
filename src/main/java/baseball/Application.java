@@ -8,11 +8,11 @@ public class Application {
         RandomNumber randomNumber = new RandomNumber();
         InputNumber inputNumber = new InputNumber();
         CompareNumber compareNumber = new CompareNumber();
-
-
-        int[] a = inputNumber.createInputArr();
-        int[] b = randomNumber.createRanArr();
-        compareNumber.compareNumber(a,b);
+        Replay replay = new Replay();
+        replay.replay();
+//        int[] a = inputNumber.createInputArr();
+//        int[] b = randomNumber.createRanArr();
+//        compareNumber.compareNumber(a,b);
 
     }
 
