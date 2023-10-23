@@ -38,7 +38,7 @@ public class RequestChecker {
         return length == NUMBER_LENGTH ? true : false;
     }
 
-    public static String retryRequest() {
-        return Console.readLine();
+    public static SupportedRetryRequest retryRequest() {
+        return SupportedRetryRequest.isRetry(Console.readLine());
     }
 }
