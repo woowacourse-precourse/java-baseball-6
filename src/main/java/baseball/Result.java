@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import static baseball.Constants.EMPTY_COUNT;
+
 public class Result {
     private Integer strike;
     private Integer ball;
@@ -25,6 +27,10 @@ public class Result {
         Set<Integer> setCompareNumbers = new HashSet<>(computerNumbers);
         setNumbers.retainAll(setCompareNumbers);
         return setNumbers.size() - checkStrike(userNumbers, computerNumbers);
+    }
+
+    public boolean isNothing() {
+        return strike == EMPTY_COUNT && ball == EMPTY_COUNT;
     }
 }
 
