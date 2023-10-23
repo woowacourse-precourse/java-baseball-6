@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class User {
 
-    int number;
+    String number;
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
@@ -31,7 +31,7 @@ public class User {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
 
-        this.number = Integer.parseInt(input);
+        this.number = input;
     }
 
 }

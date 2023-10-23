@@ -7,17 +7,17 @@ import java.util.Set;
 
 public class Computer {
 
-    int number;
+    String number;
 
     public Computer() {
         this.number = generateRandomNumber();
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    private int generateRandomNumber() {
+    private String generateRandomNumber() {
         Set<Integer> chosenDigits = new HashSet<>();
 
         int firstDigit = Randoms.pickNumberInRange(1, 9);  // 첫 번째 자리는 0이 올 수 없으므로 1~9 사이의 숫자를 선택합니다.
@@ -34,6 +34,6 @@ public class Computer {
             thirdDigit = Randoms.pickNumberInRange(0, 9);
         } while (chosenDigits.contains(thirdDigit));  // 이미 선택된 숫자가 아닐 때까지 반복
 
-        return firstDigit * 100 + secondDigit * 10 + thirdDigit;
+        return String.valueOf(firstDigit) + String.valueOf(secondDigit) + String.valueOf(thirdDigit);
     }
 }
