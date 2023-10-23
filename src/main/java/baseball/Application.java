@@ -6,9 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.User;
+
 public class Application {
 
-    private final static Integer numberCount = 3;
+    public final static Integer numberCount = 3;
     private static Boolean isApplicationEnd = false;
 
     public static void main(String[] args){
@@ -18,19 +20,15 @@ public class Application {
             List<Integer> computer = chooseNumByComputer();
 
             while (true) {
-                String userInputStr = getUserInputStr();
-
+                // 유저로부터 숫자 3개를 입력받는다.
                 // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
-                if (!isUserInputValidate(userInputStr)) {
+                if(!User.inputAnswerStr()){
                     isApplicationEnd = true;
                     throw new IllegalArgumentException();
                 }
 
-                // 유저가 숫자 3개를 고른다.
-                List<Integer> user = chooseNumByUser(userInputStr);
-
-                Integer strikeCount = countStrike(computer, user);
-                Integer ballCount = countBall(computer, user);
+                Integer strikeCount = countStrike(computer, User.getNumberList());
+                Integer ballCount = countBall(computer, User.getNumberList());
 
                 // 이번 라운드 게임 결과 출력
                 printRoundResult(strikeCount, ballCount);
@@ -141,53 +139,5 @@ public class Application {
             }
         }
         return computer;
-    }
-
-    /**
-     * 유저로부터 문자열을 입력받아 반환한다.
-     *
-     * @return 유저가 입력한 문자열
-     */
-    private static String getUserInputStr() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
-    }
-
-    /**
-     * 문자열에 들어있는 숫자를 뽑아 숫자 리스트 형태로 변환하여 반환한다.
-     *
-     * @param userInput 유저가 입력한 문자열
-     * @return 변환된 숫자 List
-     */
-    private static List<Integer> chooseNumByUser(String userInput) {
-        List<Integer> num = new ArrayList<>();
-        // 유저의 입력을 숫자 리스트로 변환
-        for (int i = 0; i < userInput.length(); i++) {
-            num.add(userInput.charAt(i) - '0');
-        }
-        return num;
-    }
-
-    /**
-     * 유저가 입력한 문자열이 올바르면 true return
-     *
-     * @param userInput 유저가 입력한 문자열
-     * @return 유저가 입력한 문자열이 올바르면 true 아니면 false
-     */
-    private static boolean isUserInputValidate(String userInput) {
-        return (isUserInputAllNumbers(userInput) && userInput.length() == numberCount);
-    }
-
-    /**
-     * 유저가 입력한 문장열이 모두 숫자로 이루어졌으면 true return
-     *
-     * @param userInput 유저가 입력한 문자열
-     * @return 유저가 입력한 문자열이 모두 숫자이면 true 아니면 false
-     */
-    private static boolean isUserInputAllNumbers(String userInput){
-        for (int i = 0; i < userInput.length(); i++) {
-            if (!Character.isDigit(userInput.charAt(i))) return false;
-        }
-        return true;
     }
 }
