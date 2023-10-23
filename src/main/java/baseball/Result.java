@@ -21,7 +21,7 @@ public class Result {
     }
 
     public boolean isNoting() {
-        return !(isNotZeroBall() && isNotZeroStrike());
+        return ball == 0 && strike == 0;
     }
 
     public boolean isNotZeroBall() {

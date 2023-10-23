@@ -14,6 +14,7 @@ public class User {
 
     public void inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
+        numbers.clear();
         String input = Console.readLine();
         char[] inputCharArray = input.toCharArray();
         validateInput(inputCharArray);

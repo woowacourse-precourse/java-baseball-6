@@ -36,33 +36,30 @@ public class Computer {
         }
     }
 
-    public boolean canEnd(User user) {
+    public boolean canPlayContinue(User user) {
         List<Integer> userNumbers = user.getNumbers();
         Result result = new Result();
         for (int i = 0; i < userNumbers.size(); i++) {
             int number = userNumbers.get(i);
-            canAddResult(number, i, result);
+            addResult(number, i, result);
         }
         printResult(result);
-        return result.getStrike() == 3;
+        return result.getStrike() != 3;
     }
 
-    private void canAddResult(int number, int i, Result result) {
+    private void addResult(int number, int i, Result result) {
         if (numbers.containsKey(number)) {
             int index = numbers.get(number);
-            if (canAddStrike(index, i, result)) {
+            if (canAddStrike(index, i)) {
+                result.addStrike();
                 return;
             }
             result.addBall();
         }
     }
 
-    private boolean canAddStrike(int index, int i, Result result) {
-        if (index == i) {
-            result.addStrike();
-            return true;
-        }
-        return false;
+    private boolean canAddStrike(int index, int i) {
+        return index == i;
     }
 
     private void printResult(Result result) {
