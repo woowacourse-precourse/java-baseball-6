@@ -1,7 +1,8 @@
 package baseball.Controller;
 
-import baseball.InputView;
-import baseball.OutputView;
+import baseball.Model.ComputerNumberPicker;
+import baseball.View.InputView;
+import baseball.View.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -11,14 +12,12 @@ public class BaseballGameController {
     public void startGame() {
         OutputView.printStart();
         do {
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            playOneRoundGame();
         } while (!endGame());
+    }
+
+    public void playOneRoundGame() {
+        int[] computer = new ComputerNumberPicker().computer;
     }
 
     private static boolean endGame() throws IllegalArgumentException{
