@@ -21,7 +21,8 @@ public class PlayerNumber {
         validateNonNumeric(input);
         List<Integer> numbers = convertToIntegerList(input);
         validateNonZero(numbers);
-        validateDuplicateAndSize(numbers);
+        validateDuplicate(numbers);
+        validateSize(numbers);
 
         return new PlayerNumber(numbers);
     }
@@ -53,17 +54,23 @@ public class PlayerNumber {
      */
     private static void validateNonZero(List<Integer> numbers) {
         if (numbers.contains(0)) {
-            throw new IllegalArgumentException("0이 아닌 숫자 3개를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 0이 아닌 숫자 3개를 입력해주세요.");
         }
     }
 
     /**
      * 서로 다른 숫자 NUMBERS_SIZE 개 인지 검증
      */
-    private static void validateDuplicateAndSize(List<Integer> numbers) {
+    private static void validateDuplicate(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
-        if (set.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해주세요.");
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 서로 다른 숫자 3개를 입력해주세요.");
+        }
+    }
+
+    private static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != NUMBERS_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 서로 다른 숫자 3개를 입력해주세요.");
         }
     }
 
