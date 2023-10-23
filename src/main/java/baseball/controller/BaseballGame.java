@@ -17,23 +17,29 @@ public class BaseballGame {
         player = new Player();
     }
 
-    public void startGame() {
+    public void start() {
         OutputView.printGameStartMessage();
         computer.generateRandomNumbers();
 
         while (!isExit) {
-            player.setNumbers(InputView.inputPlayerNumbers());
-
+            getPlayerInput();
             computer.calculateResult(player.getNumbers());
-            OutputView.printResult(computer);
-
-            if (computer.getStrikeCount() == STRIKE_THRESHOLD) {
-                isExit = restartOrExitGame();
+            OutputView.printResult(computer.getBallCount(), computer.getStrikeCount());
+            if (isGameExited()) {
+                isExit = restartOrExit();
             }
         }
     }
 
-    private boolean restartOrExitGame() {
+    private void getPlayerInput() {
+        player.setNumbers(InputView.inputPlayerNumbers());
+    }
+
+    private boolean isGameExited() {
+        return computer.getStrikeCount() == STRIKE_THRESHOLD;
+    }
+
+    private boolean restartOrExit() {
         OutputView.printGameExitMessage();
         int restartOrExitNumber = InputView.inputRestartOrExitNumber();
 
