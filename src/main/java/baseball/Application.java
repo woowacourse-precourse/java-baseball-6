@@ -85,6 +85,7 @@ public class Application {
     }
 
     public static boolean restartOrExitGame(String userInput, List<Integer> selectNumber) {
+        int exitNumber = 0;
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -96,17 +97,18 @@ public class Application {
             }
 
             try {
-                int exitNumber= Integer.parseInt(userInput);
+                exitNumber= Integer.parseInt(userInput);
+                // 1~2의 범위를 벗어날 때 => 예외 발생
                 if ((exitNumber != 1) && (exitNumber !=2)) {
                     Application.throwException("1과 2중에 입력하세요.");
                 }
             } catch (NumberFormatException ex) {
+                //문자 포함시 => 예외 발생
                 Application.throwException("숫자만 입력하세요.");
             }
-            if (Integer.parseInt(userInput) == 1) {
+            if (exitNumber == 1) {
                 selectNumber.clear();
                 Application.selectThreeNumber(selectNumber);
-                System.out.println("selectNumber = " + selectNumber);
             } else {
                 return false;
             }
