@@ -33,6 +33,39 @@ public class Application {
                     throw new IllegalArgumentException("올바르지 않은 입력값 입니다.");
                 }
 
+                int strike = 0;
+                int ball = 0;
+
+                for (int i = 0; i < 3; i++) {
+                    if (computerNumbers.contains(toList.get(i))) {
+                        if (computerNumbers.get(i).equals(toList.get(i))) {
+                            strike++;
+                        } else {
+                            ball++;
+                        }
+                    }
+                }
+                String strikeHint = "";
+                String ballHint = "";
+                String hint = "낫싱";
+
+                if (strike != 0) {
+                    strikeHint += strike + "스트라이크";
+                }
+
+                if (ball != 0) {
+                    ballHint += ball + "볼";
+                }
+
+                if (ball != 0 || strike != 0) {
+                    hint = String.join(" ", ballHint, strikeHint).trim();
+                }
+
+                System.out.println(hint);
+                if (strike == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
             }
         }
     }
