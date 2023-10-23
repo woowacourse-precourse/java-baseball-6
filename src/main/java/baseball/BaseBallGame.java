@@ -126,4 +126,8 @@ public class BaseBallGame {
             }
         }
     }
+    //볼 개수 출력 함수
+    public void BallPrint(){
+        System.out.println(ball+"볼");
+    }
 }
