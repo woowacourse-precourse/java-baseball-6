@@ -44,7 +44,7 @@ public class BaseBallController {
             String input = InputView.inputPlayerNumber();
             PlayerNumber playerNumber = PlayerNumber.from(input);
             CountResultDto countResultDto = countService.getCountResult(computerNumber, playerNumber);
-            System.out.println(OutputView.printResult(countResultDto));
+            OutputView.printResult(countResultDto);
             gameStatus = isWinGame(countResultDto.getStrikeCount());
         }
     }

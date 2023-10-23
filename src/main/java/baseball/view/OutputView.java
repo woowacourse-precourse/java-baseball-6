@@ -8,21 +8,24 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static String printResult(CountResultDto countResultDto) {
+    public static void printResult(CountResultDto countResultDto) {
         int strikeCount = countResultDto.getStrikeCount();
         int ballCount = countResultDto.getBallCount();
         if (strikeCount == ballCount && strikeCount > GameValue.ZERO.getValue()) {
-            return strikeCount + GameMessage.STRIKE.getMessage();
+            System.out.println(strikeCount + GameMessage.STRIKE.getMessage());
+            return;
         }
         if (strikeCount == GameValue.ZERO.getValue() && ballCount > GameValue.ZERO.getValue()) {
-            return ballCount + GameMessage.BALL.getMessage();
+            System.out.println(ballCount + GameMessage.BALL.getMessage());
+            return;
         }
         if (strikeCount > GameValue.ZERO.getValue() && ballCount - strikeCount > GameValue.ZERO.getValue()) {
             String ballMessage = (ballCount - strikeCount) + GameMessage.BALL.getMessage();
             String strikeMessage = strikeCount + GameMessage.STRIKE.getMessage();
-            return String.join(DELIMITER, ballMessage, strikeMessage);
+            System.out.println(String.join(DELIMITER, ballMessage, strikeMessage));
+            return;
         }
-        return GameMessage.NOTHING.getMessage();
+        System.out.println(GameMessage.NOTHING.getMessage());
     }
 
     public static void printGameStartMessage() {
