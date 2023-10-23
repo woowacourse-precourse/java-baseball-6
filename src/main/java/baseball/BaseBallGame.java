@@ -138,4 +138,8 @@ public class BaseBallGame {
     public void BallAndStrikePrint(){
         System.out.println(ball+"볼 "+strike+"스트라이크");
     }
+    //낫싱 출력 함수
+    public void NothingPrint(){
+        System.out.println("낫싱");
+    }
 }
