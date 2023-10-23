@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.model.Game.ZERO_COUNT;
+
 public class Strike {
     private int strikeCount;
 
@@ -24,6 +26,6 @@ public class Strike {
         if (strikeCount > 0) {
             return strikeCount + "스트라이크";
         }
-        return "zero";
+        return ZERO_COUNT;
     }
 }

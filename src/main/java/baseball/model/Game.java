@@ -4,7 +4,8 @@ import baseball.view.UserNumbers;
 
 public class Game {
 
-    public static final String END_GAME = "3스트라이크";
+    private static final String END_GAME = "3스트라이크";
+    public static final String ZERO_COUNT = "zero";
     private final ComputerNumbers computerNumbers;
     private final UserNumbers userNumbers;
 
@@ -45,7 +46,7 @@ public class Game {
     }
 
     private void appendIfNotZero(StringBuilder result, String comment) {
-        if (!comment.equals("zero")) {
+        if (!comment.equals(ZERO_COUNT)) {
             result.append(comment).append(" ");
         }
     }
