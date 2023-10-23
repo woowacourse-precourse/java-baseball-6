@@ -45,12 +45,15 @@ public class Computer implements Defender {
 		Long targetSize = target.size();
 		for (int i = 0; i < targetSize; i++) {
 			Ball ball = target.getBall(i);
-			if (balls.isPosition(ball, (long) i)) {
-				results.add(Result.STRIKE);
-				continue;
-			}
-			results.add(Result.BALL);
+			results.add(getResult(ball, (long) i));
 		}
 		return results;
+	}
+
+	private Result getResult(Ball ball, Long position) {
+		if (balls.isPosition(ball, position)) {
+			return Result.STRIKE;
+		}
+		return Result.BALL;
 	}
 }
