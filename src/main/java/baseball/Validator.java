@@ -17,6 +17,7 @@ public class Validator {
         validateNumberRange(userInput);
         validateDuplicate(userInput);
     }
+
     //입력이 숫자인지 검증
     public void validateNumber(List<String> userInput) {
         long error = userInput.stream().filter(this::isNumber).count();
@@ -49,9 +50,13 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_DUPLICATE);
         }
     }
-    public void validateEndOrRestart(String userInput) {
+
+    //게임 종류 후 입력이 1또는 2인지 검증
+    public int validateEndOrRestart(String userInput) {
         if (!userInput.matches("[1-2]")) {
             throw new IllegalArgumentException(ERROR_NOT_PERMITTED);
         }
+        return Integer.parseInt(userInput);
     }
+
 }
