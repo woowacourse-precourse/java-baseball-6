@@ -14,7 +14,7 @@ public class Application {
         boolean isFinishGame = false;
         Application application = new Application();
 
-        application.printGameStartText();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(!isFinishGame) {
             computerNumbers = new ArrayList<>();
@@ -39,13 +39,10 @@ public class Application {
         }
     }
 
-    public void printGameStartText() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public void setComputerNumber() {
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
                 System.out.println("randomNumber = " + randomNumber);
@@ -98,6 +95,7 @@ public class Application {
         if (strikeCount == 0 && ballCount == 0) {
             return true;
         }
+
         return false;
     }
 
@@ -106,9 +104,11 @@ public class Application {
             if (ballCount > 0) {
                 System.out.print(ballCount + "볼 ");
             }
+
             if (strikeCount > 0) {
                 System.out.print(strikeCount + "스트라이크");
             }
+
             System.out.println();
         } else if (isNothing) {
             System.out.println("낫싱");
@@ -120,6 +120,7 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
+
         return false;
     }
 
@@ -138,7 +139,7 @@ public class Application {
     }
 
     public void checkPlayerNumberValidity(String input) {
-        if (isStringEmpty(input) || !isLengthThree(input) || !hasUniqueElementsOnly(input)) {
+        if (isStringEmpty(input) || input.length() != 3 || !hasUniqueElementsOnly(input)) {
             throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
         }
 
@@ -153,10 +154,6 @@ public class Application {
         return string == null || string.isEmpty();
     }
 
-    public boolean isLengthThree(String string) {
-        return string.length() == 3;
-    }
-
     public boolean hasUniqueElementsOnly(String string) {
         char target1 = string.charAt(0);
         char target2 = string.charAt(1);
@@ -165,6 +162,7 @@ public class Application {
         if (target1 != target2 && target1 != target3 && target2 != target3) {
             return true;
         }
+
          return false;
     }
 
