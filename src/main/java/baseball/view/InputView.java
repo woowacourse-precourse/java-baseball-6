@@ -13,4 +13,5 @@ public class InputView {
     public static void requestUserInput() {
         System.out.println(INPUT_NUMBER_MESSAGE);
     }
+
 }
