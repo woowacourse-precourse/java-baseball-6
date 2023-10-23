@@ -6,6 +6,7 @@ import static baseball.util.Validation.containsZero;
 import static baseball.util.Validation.duplicateNumber;
 import static baseball.util.Validation.isOneOrTwo;
 import static baseball.util.Validation.validLength;
+import static baseball.util.Validation.validNumber;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
@@ -57,6 +58,16 @@ class ValidationTest {
 
         for (String str : testArr) {
             assertThatThrownBy(() -> isOneOrTwo(str)).isInstanceOf(
+                    IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void 게임_미허용_입력값_테스트() {
+        String[] testArr = {"1234", "112", "1a2", "2", "abc", "ㅁㅊㄷ"};
+
+        for (String str : testArr) {
+            assertThatThrownBy(() -> validNumber(str)).isInstanceOf(
                     IllegalArgumentException.class);
         }
     }
