@@ -25,6 +25,7 @@ public class Score {
         return score;
     }
 
+
     private static int calculateStrike(List<Integer> answerNumbers, List<Integer> userNumbers) {
 
         int strike = 0;
@@ -46,7 +47,7 @@ public class Score {
 
         for(int i = 0; i < answerNumbers.size(); i++) {
             for(int j = 0; j < userNumbers.size(); j++) {
-                if(answerNumbers.get(i) == userNumbers.get(j)) {
+                if((i != j) && (answerNumbers.get(i) == userNumbers.get(j))) {
                     ball++;
                 }
             }
