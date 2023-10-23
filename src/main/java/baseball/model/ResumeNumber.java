@@ -17,18 +17,18 @@ public class ResumeNumber {
         return new ResumeNumber(PLAY_WANT.getValue());
     }
 
-    public void updateNumber(final String number) {
-        validateNumber(number);
-        this.resumeNumber = Integer.parseInt(number);
+    public void updateNumber(final String answer) {
+        validateAnswer(answer);
+        this.resumeNumber = Integer.parseInt(answer);
     }
 
-    private void validateNumber(final String number) {
-        validateAnswerLength(number);
-        validateAnswerValue(number);
+    private void validateAnswer(final String answer) {
+        validateAnswerLength(answer);
+        validateAnswerValue(answer);
     }
 
-    private void validateAnswerLength(final String answerr) {
-        if (answerr.length() != RESUME_ANSWER_LENGTH) {
+    private void validateAnswerLength(final String answer) {
+        if (answer.length() != RESUME_ANSWER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
