@@ -17,6 +17,11 @@ public class BaseballGame {
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomlyExtractNumber();
+
+        Player player = new Player();
+        while (true) {
+            player.guess();
+        }
     }
 
     private List<Integer> randomlyExtractNumber() {
