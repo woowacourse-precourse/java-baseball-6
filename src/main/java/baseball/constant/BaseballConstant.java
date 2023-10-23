@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.constant;
 
 public class BaseballConstant {
 

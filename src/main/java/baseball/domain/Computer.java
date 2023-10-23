@@ -1,7 +1,7 @@
 package baseball.domain;
 
-import static baseball.game.BaseballConstant.BASEBALL_NUMBERS_SIZE;
-import static baseball.game.BaseballConstant.INVALID_INDEX;
+import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+import static baseball.constant.BaseballConstant.INVALID_INDEX;
 
 public class Computer {
 

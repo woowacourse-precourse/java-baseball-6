@@ -1,8 +1,8 @@
 package baseball.service;
 
-import static baseball.game.BaseballConstant.BASEBALL_MAX_NUMBER;
-import static baseball.game.BaseballConstant.BASEBALL_MIN_NUMBER;
-import static baseball.game.BaseballConstant.BASEBALL_NUMBERS_SIZE;
+import static baseball.constant.BaseballConstant.BASEBALL_MAX_NUMBER;
+import static baseball.constant.BaseballConstant.BASEBALL_MIN_NUMBER;
+import static baseball.constant.BaseballConstant.BASEBALL_NUMBERS_SIZE;
 
 import baseball.domain.Computer;
 import baseball.validator.BaseballValidator;

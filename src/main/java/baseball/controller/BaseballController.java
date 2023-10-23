@@ -1,8 +1,8 @@
-package baseball.game;
+package baseball.controller;
 
-import static baseball.game.BaseballConstant.BASEBALL_THREE_STRIKES;
-import static baseball.game.BaseballConstant.RESTART_OPTION;
-import static baseball.game.BaseballConstant.TURN_OFF_OPTION;
+import static baseball.constant.BaseballConstant.BASEBALL_THREE_STRIKES;
+import static baseball.constant.BaseballConstant.RESTART_OPTION;
+import static baseball.constant.BaseballConstant.TURN_OFF_OPTION;
 
 import baseball.domain.Computer;
 import baseball.service.ComputerService;
