@@ -2,13 +2,13 @@ package baseball.domain;
 
 
 public class Computer {
-    private final Answer answer;
+    private final BaseballNumbers numbers;
 
     public Computer(BaseballNumbersGenerator answerGenerator) {
-        answer = new Answer(answerGenerator.generate());
+        numbers = answerGenerator.generate();
     }
 
-    public Score getScore(BaseballNumbers inputBaseballNumbers) {
-        return answer.match(inputBaseballNumbers);
+    public Score calculateScore(BaseballNumbers inputBaseballNumbers) {
+        return numbers.calculateScore(inputBaseballNumbers);
     }
 }

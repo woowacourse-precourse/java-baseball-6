@@ -16,7 +16,7 @@ public class ComputerTest {
     @MethodSource("provideGetScoreTestArguments")
     void getScoreTest(BaseballNumbers inputBaseballNumbers, Score expectedScore) {
         Computer computer = new Computer(new FixedBaseballNumbersGenerator());
-        Score score = computer.getScore(inputBaseballNumbers);
+        Score score = computer.calculateScore(inputBaseballNumbers);
         assertThat(score.getBallCount()).isEqualTo(expectedScore.getBallCount());
         assertThat(score.getStrikeCount()).isEqualTo(expectedScore.getStrikeCount());
     }
