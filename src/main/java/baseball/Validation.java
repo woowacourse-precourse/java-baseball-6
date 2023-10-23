@@ -53,4 +53,14 @@ public class Validation {
 
         return flag;
     }
+
+    public boolean isOneOrTwo(String num) {
+        boolean flag = true;
+
+        if (!(num.equals("1") || num.equals("2"))) {
+            flag = false;
+        }
+
+        return flag;
+    }
 }
