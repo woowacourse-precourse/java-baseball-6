@@ -17,6 +17,9 @@ public class Computer {
         this.computer = computer;
     }
     public List<Integer> getComputer() {
+        for (Integer integer : computer) {
+            System.out.println(integer);
+        }
         return Collections.unmodifiableList(computer);
     }
 
@@ -34,12 +37,11 @@ public class Computer {
     }
 
     private void validateIsNumber(List<Integer> computer) {
-        String pattern = "^[0-9]*$";
         boolean containsNonNumber = computer.stream()
-                .map(val -> Pattern.matches(pattern, val.toString()))
-                .anyMatch(matchResult -> !matchResult);
+                .map(val -> val < 1 || val > 9)
+                .anyMatch(Boolean::booleanValue);
         if (containsNonNumber) {
-            throw new IllegalArgumentException("숫자들만 선택할 수 있습니다.");
+            throw new IllegalArgumentException("컴퓨터는 숫자 이외의 값을 선택할 수 없습니다.");
         }
     }
 }
