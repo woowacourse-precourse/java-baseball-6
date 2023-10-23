@@ -42,7 +42,7 @@ public class Computer {
         numbers = new ArrayList<>(randomNumbers);
     }
 
-    public void countScore(List<Integer> playerNumbers) {
+    public void calculateResult(List<Integer> playerNumbers) {
         for (int index = 0; index < 3; index++) {
             Integer playerNumber = playerNumbers.get(index);
 

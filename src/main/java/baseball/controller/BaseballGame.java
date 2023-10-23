@@ -25,7 +25,7 @@ public class BaseballGame {
             player.setNumbers(InputView.inputPlayerNumbers());
 
             computer.resetCount();
-            computer.countScore(player.getNumbers());
+            computer.calculateResult(player.getNumbers());
             OutputView.printResult(computer);
 
             if (computer.getStrikeCount() == STRIKE_THRESHOLD) {
