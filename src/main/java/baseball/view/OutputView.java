@@ -14,19 +14,26 @@ public class OutputView {
     }
 
     public static void printResult(final PlayResult result) {
-        System.out.println(formatPlayResult(result));
+        System.out.println(formatResult(result));
     }
 
-    private static String formatPlayResult(final PlayResult result) {
-
+    private static String formatResult(final PlayResult result) {
         if (result.isNothing()) {
             return ConsoleMessage.RESULT_NOTHING.message;
         }
-        final StringJoiner messages = new StringJoiner(PLAY_RESULT_DELIMITER);
-        messages.add(formatBall(result));
-        messages.add(formatStrike(result));
-        return messages.toString()
-                .strip();
+        return formatResultMessage(result);
+    }
+
+    private static String formatResultMessage(final PlayResult result) {
+        final StringJoiner sj = new StringJoiner(PLAY_RESULT_DELIMITER);
+
+        if (result.getBalls() > 0) {
+            sj.add(formatBall(result));
+        }
+        if (result.getStrikes() > 0) {
+            sj.add(formatStrike(result));
+        }
+        return sj.toString();
     }
 
     private static String formatBall(final PlayResult result) {
@@ -44,10 +51,6 @@ public class OutputView {
     }
 
     private static String formatCountOf(final Format format, final long count) {
-
-        if (count == 0L) {
-            return "";
-        }
         return format.toMessage(count);
     }
 
