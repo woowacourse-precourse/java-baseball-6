@@ -15,13 +15,18 @@ public class BaseballValidator {
         throw new AssertionError();
     }
 
-    public static void validateLength(Collection<Integer> baseballNumbers) {
+    public static void validate(Collection<Integer> baseballNumbers) {
+        validateLength(baseballNumbers);
+        validateUnique(baseballNumbers);
+    }
+
+    private static void validateLength(Collection<Integer> baseballNumbers) {
         if (baseballNumbers.size() != Baseball.LENGTH) {
             throw new IllegalArgumentException(INVALID_LENGTH_ERROR_MESSAGE);
         }
     }
 
-    public static void validateUnique(Collection<Integer> baseballNumbers) {
+    private static void validateUnique(Collection<Integer> baseballNumbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(baseballNumbers);
         if (uniqueNumbers.size() != Baseball.LENGTH) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);

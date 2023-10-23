@@ -17,8 +17,7 @@ public class Baseball {
     }
 
     public static Baseball from(Collection<Integer> baseballNumbers) {
-        BaseballValidator.validateLength(baseballNumbers);
-        BaseballValidator.validateUnique(baseballNumbers);
+        BaseballValidator.validate(baseballNumbers);
 
         return new Baseball(baseballNumbers);
     }
