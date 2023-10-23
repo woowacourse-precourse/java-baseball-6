@@ -36,6 +36,10 @@ public class GameOutput {
         System.out.print(strikeCount + STRIKE);
     }
 
+    public static void printNewLine() {
+        System.out.println();
+    }
+
     public static void printStrikeThree(int strikeCount) {
         System.out.println(strikeCount + STRIKE);
         System.out.println(THREE_STRIKE);
