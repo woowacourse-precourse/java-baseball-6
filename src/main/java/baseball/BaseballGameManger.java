@@ -32,8 +32,9 @@ public class BaseballGameManger {
             String userInput = Console.readLine();
             try {
                 List<Integer> getUserGuess = user.changeStringToIntegerList(userInput);
-                Map<String,Integer> gameResult = user.checkGuess(computerNumbers, getUserGuess);
-                gameOver = computer.printHint(gameResult);
+                GameResult gameResult = computer.calculateGameResult(computerNumbers, getUserGuess);
+                computer.printHint(gameResult);
+                gameOver = gameResult.isGameEnd();
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException("올바른 입력이 아닙니다. 서로 다른 3자리 숫자를 입력하세요.");
             }

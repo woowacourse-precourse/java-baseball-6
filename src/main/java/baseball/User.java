@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class User {
 
+    /* 입력받은 String 입력값을 Integer Array로 변경 */
     public List<Integer> changeStringToIntegerList(String userInput) {
         List<Integer> result = new ArrayList<>();
         if (userInput.length() != 3) {
@@ -19,23 +20,6 @@ public class User {
             }
             result.add(numericValue);
         }
-        return result;
-    }
-
-    public Map<String, Integer> checkGuess(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        Map<String, Integer> result = new HashMap<>();
-        int strike = 0;
-        int ball = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
-                strike++;
-            } else if (userNumbers.contains(computerNumbers.get(i))) {
-                ball++;
-            }
-        }
-        result.put("스트라이크", strike);
-        result.put("볼", ball);
-
         return result;
     }
 }
