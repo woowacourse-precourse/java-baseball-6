@@ -8,16 +8,14 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private OutputView outputView = new OutputView();
-    private InputView inputView = new InputView();
     private DecimalNumber decimalNumber = new DecimalNumber();
-    private ComputerController computerController = new ComputerController(decimalNumber, outputView);
+    private ComputerController computerController = new ComputerController(decimalNumber);
 
     public void run() {
         Boolean play = true;
 
         while (play) {
-            outputView.printGuide(START);
+            OutputView.printGuide(START);
             computerController.initComputer();
             playing();
             play = replay();
@@ -28,14 +26,14 @@ public class GameController {
         Boolean isFailed = true;
 
         while (isFailed) {
-            String inputNumber = inputView.inputGameNumber();
+            String inputNumber = InputView.inputGameNumber();
             decimalNumber.setUser(inputNumber);
             isFailed = computerController.checkAnswer();
         }
     }
 
     private Boolean replay() {
-        String inputNumber = inputView.inputReplayNumber();
+        String inputNumber = InputView.inputReplayNumber();
         Validation.validationReplayNumber(inputNumber);
 
         if (inputNumber.equals(REPLAY_GAME)) {

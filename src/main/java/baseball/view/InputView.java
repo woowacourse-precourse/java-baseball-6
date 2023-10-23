@@ -8,12 +8,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public String inputGameNumber() {
+    public static String inputGameNumber() {
         System.out.print(INPUT);
         return Console.readLine();
     }
 
-    public String inputReplayNumber() {
+    public static String inputReplayNumber() {
         System.out.println(CORRECT);
         System.out.println(END);
         return Console.readLine();

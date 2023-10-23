@@ -6,11 +6,11 @@ import static baseball.model.Constant.STRIKE;
 
 public class OutputView {
 
-    public void printGuide(String message) {
+    public static void printGuide(String message) {
         System.out.println(message);
     }
 
-    public void printHint(int ball, int strike) {
+    public static void printHint(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println(INCORRECT);
         } else if (ball > 0 && strike > 0) {

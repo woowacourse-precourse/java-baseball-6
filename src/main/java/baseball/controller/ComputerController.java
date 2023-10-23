@@ -9,12 +9,9 @@ import java.util.List;
 public class ComputerController {
 
     private DecimalNumber decimalNumber;
-    private OutputView outputView;
 
-
-    public ComputerController(DecimalNumber decimalNumber, OutputView outputView) {
+    public ComputerController(DecimalNumber decimalNumber) {
         this.decimalNumber = decimalNumber;
-        this.outputView = outputView;
     }
 
     public void initComputer() {
@@ -36,7 +33,7 @@ public class ComputerController {
             }
         }
 
-        outputView.printHint(ball, strike);
+        OutputView.printHint(ball, strike);
 
         if (strike == NUMBER_SIZE) {
             return false;
