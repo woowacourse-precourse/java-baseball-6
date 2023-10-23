@@ -12,6 +12,11 @@ public class BaseballViewResolver {
     public void startView(){
         view.startView();
     }
+
+    public void endGame(){
+        view.endView();
+    }
+
     public int[] contactViewAndPlayControl(){
         return converter.convertNumberToArray(view.initView());
     }
