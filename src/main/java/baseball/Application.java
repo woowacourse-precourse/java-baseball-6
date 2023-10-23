@@ -88,14 +88,10 @@ public class Application {
         }
 
         //try catch 를 하면 오히려 이 에러 타입이 안뜬다. 그래서 그냥 다 제거해야했다.
-//        try {
             validateUserInput(input);
             user.addAll(input);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println(e.getMessage());
-////            System.exit(1);
-//        }
-//        sc.close();
+
+        sc.close();
     }
 
 
@@ -118,7 +114,6 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
                 String n = readLine();
                 int num = Integer.parseInt(n);
-//                sc.nextLine(); // 개행 문자를 소비하여 다음 입력을 올바르게 처리
 
                 if (num == 1) {
                     return true;
