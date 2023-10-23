@@ -5,6 +5,7 @@ import baseball.domain.Baseball;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
@@ -14,11 +15,13 @@ public class Controller {
     private final Baseball baseball;
     private final Computer computer;
     private final Player player;
+    private final InputView inputView;
     private final OutputView outputView;
 
     public Controller() {
         this.baseball = new Baseball();
         this.computer = new Computer();
+        this.inputView = new InputView();
         this.outputView = new OutputView();
         this.player = new Player();
     }
@@ -28,14 +31,18 @@ public class Controller {
         GameResult gameResult = GameResult.initialResult();
 
         while (!gameResult.isGameOver()) {
-            List<Integer> playerNumber = player.getInputNumber();
+            outputView.requestNumber();
+            String playerInput = inputView.receiveInputNumber();
+            List<Integer> playerNumber = player.getInputNumber(playerInput);
             gameResult = baseball.checkInput(computerNumber, playerNumber);
             outputView.result(gameResult);
         }
 
         outputView.endGame();
+        outputView.restartOrQuit();
+        String retryOptionInput = inputView.receiveInputNumber();
+        int option = player.receiveRetryOption(retryOptionInput);
 
-        int option = player.receiveRetryOption();
         if (option == RESTART) {
             playGame();
         }
