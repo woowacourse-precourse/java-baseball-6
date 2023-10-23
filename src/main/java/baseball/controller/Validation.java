@@ -19,6 +19,12 @@ public class Validation {
         numberOverlapValidation();
     }
 
+    public static void validationReplayNumber(String number) {
+        if (!(number.equals("1") || number.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     //1~9 사이 숫자인가?
     private static void numberRangeValidation() {
         for (String s : number) {

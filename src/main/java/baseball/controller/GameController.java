@@ -15,7 +15,6 @@ public class GameController {
     public void run() {
         Boolean play = true;
 
-        //게임 재시작 여부 판단
         while (play) {
             outputView.printGuide(START.getMessage());
             computerController.initComputer();
@@ -36,7 +35,7 @@ public class GameController {
 
     private Boolean replay() {
         String inputNumber = inputView.inputReplayNumber();
-        //유효성 검사 필요
+        Validation.validationReplayNumber(inputNumber);
         //enum으로 뺄지 말지 생각
         if (inputNumber.equals("1")) {
             return true;
