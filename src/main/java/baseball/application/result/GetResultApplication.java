@@ -1,7 +1,7 @@
 package baseball.application.result;
 
 import baseball.application.PrintStateApplication;
-import baseball.application.numbers.GenerateAnswerApplication;
+import baseball.application.numbers.GenerateNumbersApplication;
 import baseball.domain.BaseballResultRepository;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -9,7 +9,7 @@ public class GetResultApplication {
     boolean isContinue;
     boolean isCorrect;
     private BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
-    private GenerateAnswerApplication generateAnswerController = new GenerateAnswerApplication();
+    private GenerateNumbersApplication generateAnswerController = new GenerateNumbersApplication();
     public GetResultApplication() {
     }
 
@@ -20,7 +20,7 @@ public class GetResultApplication {
 
             PrintStateApplication.printEndState();
 
-            generateAnswerController.initilizeAnswer();
+            generateAnswerController.initilizeNumbers();
             isContinue = getUserContinue();
 
             if (isContinue) {

@@ -3,10 +3,10 @@ package baseball.application.numbers;
 import baseball.domain.AnswerNumberRepository;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class GenerateAnswerApplication {
+public class GenerateNumbersApplication {
     private static AnswerNumberRepository answerNumberRepository = AnswerNumberRepository.getInstance();
 
-    public GenerateAnswerApplication() {
+    public GenerateNumbersApplication() {
         generateNumbers();
     }
 
@@ -20,7 +20,7 @@ public class GenerateAnswerApplication {
 //        System.out.println("answer: " + answerNumberRepository.getNumbers());
     }
 
-    public void initilizeAnswer() {
+    public void initilizeNumbers() {
         answerNumberRepository.clear();
     }
 }

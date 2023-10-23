@@ -27,7 +27,7 @@ public class CalculateResultApplication {
                 baseballResultRepository.addStrike();
             }
         }
-        System.out.println("ball: " + baseballResultRepository.getBall() + ", strike : " + baseballResultRepository.getStrike());
+//        System.out.println("ball: " + baseballResultRepository.getBall() + ", strike : " + baseballResultRepository.getStrike());
     }
 
 

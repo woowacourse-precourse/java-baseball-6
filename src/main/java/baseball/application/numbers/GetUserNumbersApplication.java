@@ -3,10 +3,10 @@ package baseball.application.numbers;
 import baseball.domain.UserNumberRepository;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GetUserAnswerApplication {
+public class GetUserNumbersApplication {
     private static UserNumberRepository userNumberRepository = UserNumberRepository.getInstance();
 
-    public GetUserAnswerApplication() {
+    public GetUserNumbersApplication() {
         getNumbers();
     }
 
@@ -25,7 +25,7 @@ public class GetUserAnswerApplication {
         }
     }
 
-    public void initilizeAnswer() {
+    public void initilizeNumbers() {
         userNumberRepository.clear();
     }
 }
