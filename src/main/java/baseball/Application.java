@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 public class Application {
     public static void main(String[] args) {
@@ -16,6 +17,7 @@ public class Application {
     private static final int MAX_NUMBER = 9;
     private static final int BASEBALL_SIZE = 3;
 
+    //랜덤 숫자 생성 기능
     private static List<Integer> createComputerNumber(){
         List<Integer> numbers = new ArrayList<>();
         while(numbers.size() < BASEBALL_SIZE){
@@ -26,4 +28,9 @@ public class Application {
         return numbers;
     }
 
+    private static List<Integer> playerInputNum(){
+        return Arrays.stream(Console.readLine().split(""))
+                .map(Integer::parseInt)
+                .toList();
+    }
 }
