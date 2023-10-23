@@ -4,15 +4,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Server {
-    private static final int defaultDigitalCount = 3;
-    private static final int minimumCanCreatedValue = 1;
-    private static final int maximumCanCreatedValue = 9;
-
     private int gameStatusCode=1;
     private Computer computer;
     private Player player;
+
+    private final int digitalCount;
+    private final int minimumCanCreatedValue;
+    private final int maximumCanCreatedValue;
     Server(){
-        this.computer = new Computer();
+        this.digitalCount = Config.DEFAULT_DIGIT_COUNT;
+        this.minimumCanCreatedValue = Config.DEFAULT_MINIMUM_CAN_CREATED_VALUE;
+        this.maximumCanCreatedValue = Config.DEFAULT_MAXIMUM_CAN_CREATED_VALUE;
+        this.computer = new Computer(
+            digitalCount,
+            minimumCanCreatedValue,
+            maximumCanCreatedValue
+        );
         this.player = new Player();
     }
     public void start(){
@@ -67,7 +74,7 @@ public class Server {
         var playerNumber = Integer.parseInt(playerInput);
         validateNumberLength(playerNumber);
 
-        var validateNumberList = Util.parsingNumberToNumberList(playerNumber,defaultDigitalCount);
+        var validateNumberList = Util.parsingNumberToNumberList(playerNumber,digitalCount);
         validateListNumberInRange(validateNumberList);
         validateListNumberIsNotDuplicated(validateNumberList);
         return;
@@ -92,7 +99,7 @@ public class Server {
     }
     private void validateNumberLength(int playerNumber){
         var numberLength = Integer.toString(playerNumber).length();
-        if (numberLength == defaultDigitalCount){
+        if (numberLength == digitalCount){
             return;
         }
         throw new IllegalArgumentException("자리수가 다릅니다!");

@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import baseball.Util.*;
 
 public class Computer {
-    private static final int defaultDigitalCount = 3;
-    private static final int minimumCanCreatedValue = 1;
-    private static final int maximumCanCreatedValue = 9;
+    private final int minimumCanCreatedValue;
+    private final int maximumCanCreatedValue;
     private final ArrayList<Integer> numberList;
     private final int digitCount;
     public ArrayList<Integer> getNumberList(){
@@ -17,15 +16,20 @@ public class Computer {
     }
 
     public Computer() {
+        this.minimumCanCreatedValue = Config.DEFAULT_MINIMUM_CAN_CREATED_VALUE;
+        this.maximumCanCreatedValue = Config.DEFAULT_MAXIMUM_CAN_CREATED_VALUE;
+        this.digitCount = Config.DEFAULT_DIGIT_COUNT;
         this.numberList = generateRandomNumberListWithNotRepeating();
-        this.digitCount = defaultDigitalCount;
     }
-    public Computer(int digitCount) {
-        this.numberList = generateRandomNumberListWithNotRepeating(digitCount);
+    public Computer(int digitCount,int minimumCanCreatedValue,int maximumCanCreatedValue) {
+        this.minimumCanCreatedValue = minimumCanCreatedValue;
+        this.maximumCanCreatedValue = maximumCanCreatedValue;
         this.digitCount = digitCount;
+        this.numberList = generateRandomNumberListWithNotRepeating(digitCount);
+
     }
     private ArrayList<Integer> generateRandomNumberListWithNotRepeating(){
-        return generateRandomNumberListWithNotRepeating(defaultDigitalCount);
+        return generateRandomNumberListWithNotRepeating(digitCount);
     }
 
     /**
