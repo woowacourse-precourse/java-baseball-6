@@ -74,9 +74,9 @@
     3개의 숫자를 모두 맞히셨습니다! 게임 종료
 ### (6) 게임을 진행하는 기능 
 - `main(String[] args)`에서 숫자야구를 진행하는 기능.
-- `ShootBall`클래스의 인스턴스 `random_ball`과 `input_ball`을 생성한다.
-- (2)번기능 `randomNumGenerator()`를 통해 `random_ball`의 수를 정한다.
-- (3)번 기능 `inputNumGenerator()`를 통해 `input_ball`의 수를 정한다.
+- `ShootBall`클래스의 인스턴스 `randomBall`과 `inputBall`을 생성한다.
+- (2)번기능 `randomNumGenerator()`를 통해 `randomBall`의 수를 정한다.
+- (3)번 기능 `inputNumGenerator()`를 통해 `inputBall`의 수를 정한다.
 - `baseballReferee()`의 리턴값을 통해 게임의 승패를 확인한다.
   - flase 일 시 (3)번 기능부터 다시 실행시킨다.
   - true 일 시 프로그램을 종료한다. 
