@@ -23,4 +23,11 @@ public class Game {
 
     private int strike;
 
+    public Game() {
+        this.computer = null;
+        this.player = null;
+        this.ball = 0;
+        this.strike = 0;
+    }
+
 }
