@@ -15,7 +15,8 @@ public class User {
     }
 
     public void storeUserNumber(String number) {
-        for(int i = 0;i<3;i++){
+        userNumber.clear();
+        for (int i = 0; i < 3; i++) {
             userNumber.add(Character.getNumericValue(number.charAt(i)));
         }
     }
