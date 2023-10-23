@@ -18,8 +18,10 @@ public class Application {
 
         System.out.println(getAnswer(randomNumbers, inputNumbers));
         System.out.println(getStrikeCount(randomNumbers, inputNumbers));
+        System.out.println(getBallCount(randomNumbers, inputNumbers));
+    }
 
-
+    private static int getBallCount(List<Integer> randomNumbers, List<Integer> inputNumbers) {
         int ballCount = 0;
         for (int randomNumberIndex=0; randomNumberIndex<3; randomNumberIndex++){
             for (int inputNumberIndex=0; inputNumberIndex<3; inputNumberIndex++){
@@ -28,9 +30,7 @@ public class Application {
                 }
             }
         }
-
-        System.out.println(ballCount);
-
+        return ballCount;
     }
 
     private static int getStrikeCount(List<Integer> randomNumbers, List<Integer> inputNumbers) {
