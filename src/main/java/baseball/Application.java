@@ -3,10 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -27,6 +25,16 @@ public class Application {
                 System.out.println("숫자를 입력해주세요 : ");
                 String userInput = Console.readLine();
 
+                if (!isValidInput(userInput)) {
+                    System.out.println("잘못 입력했습니다.");
+                    continue;
+                }
+
+                List<Integer> userNumbers = Arrays.stream(userInput.split(""))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList());
+
+                compareNumbers(userNumbers);
             }
         }
     }
@@ -68,6 +76,25 @@ public class Application {
                 }
             }
             return true;
+        }
+
+        public static void printResult(int ball, int strike){
+            if (strike == 0 && ball == 0){
+                System.out.println("낫싱");
+                return;
+            }
+            if (strike == 3) {
+                System.out.println("3스트라이크");
+                return;
+            }
+            if (ball > 0 && strike > 0) {
+                System.out.printf("%d볼 %d스트라이크", ball, strike);
+            } else if (ball > 0) {
+                System.out.printf("%d 볼", ball);
+            } else if (strike > 0) {
+                System.out.printf("%d 스트라이크", strike);
+            }
+            System.out.println();
         }
 
     }
