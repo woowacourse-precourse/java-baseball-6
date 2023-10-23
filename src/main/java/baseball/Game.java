@@ -16,6 +16,11 @@ public class Game {
     public void startGame() {
         boolean isStartRound = true;
         while(isStartRound) {
+            // 컴퓨터가 가진 수 알아내기
+            computerNums = getComputerNums();
+
+            System.out.println("숫자 야구 게임을 시작합니다.");
+
             isStartRound = startRoundGame();
         }
     }
@@ -26,11 +31,6 @@ public class Game {
      * @return 게임 진행 여부
      */
     public boolean startRoundGame() {
-        // 컴퓨터가 가진 수 알아내기
-        computerNums = getComputerNums();
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
         // 숫자 입력 반복
         while (true) {
             // 스트라이크, 볼 개수 초기화
@@ -98,25 +98,6 @@ public class Game {
     }
 
     /**
-     * 입력 예외 처리 함수
-     * @param caseNum 어떤 입력인지 case 번호
-     * @param input 입력 값
-     */
-    public void checkException(int caseNum, int input) {
-        switch (caseNum) {
-            case 1:
-                // 100보다 작거나 999보다 클 경우 게임 종료
-                if (input > 999 || input < 100)
-                    throw new IllegalArgumentException();
-                break;
-            case 2:
-                // 1이나 2가 아닐 경우 게임 완전히 종료.
-                if (input != 1 && input != 2)
-                    throw new IllegalArgumentException();
-        }
-    }
-
-    /**
      * 입력된 수에서 computerNum에 포함된 수가 있는지 확인하는 함수
      * @param input 입력된 수
      * @return 스트라이크, 볼 포함 여부
@@ -148,4 +129,22 @@ public class Game {
         return isIncluding;
     }
 
+    /**
+     * 입력 예외 처리 함수
+     * @param caseNum 어떤 입력인지 case 번호
+     * @param input 입력 값
+     */
+    public void checkException(int caseNum, int input) {
+        switch (caseNum) {
+            case 1:
+                // 100보다 작거나 999보다 클 경우 게임 종료
+                if (input > 999 || input < 100)
+                    throw new IllegalArgumentException();
+                break;
+            case 2:
+                // 1이나 2가 아닐 경우 게임 완전히 종료.
+                if (input != 1 && input != 2)
+                    throw new IllegalArgumentException();
+        }
+    }
 }
