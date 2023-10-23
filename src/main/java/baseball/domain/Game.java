@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.service.BallGeneratorService;
 
 public class Game {
+
     private final Balls computerBalls;
     private boolean isGameOver;
 
@@ -15,12 +16,11 @@ public class Game {
         return computerBalls;
     }
 
-    public void toggleGameOver() {
-        isGameOver = !isGameOver;
+    public void setGameOver() {
+        isGameOver = true;
     }
 
     public boolean isGameOver() {
         return isGameOver;
     }
-
 }
