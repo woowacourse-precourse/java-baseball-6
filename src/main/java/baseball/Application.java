@@ -216,7 +216,7 @@ public class Application {
      * @throws IllegalArgumentException - '0' - '9'가 아닌 문자
      */
     public static void numberCharacterValidationCheck(char character) {
-        Integer cNumber = Character.getNumericValue(character);
+        int cNumber = Character.getNumericValue(character);
         cNumber -= Character.getNumericValue(ZERO_CHARACTER);
         if (!(RANGE_START <= cNumber && cNumber <= RANGE_END)) {
             throw new IllegalArgumentException("아라비아 숫자(0-9)가 아닌 문자입니다.");
