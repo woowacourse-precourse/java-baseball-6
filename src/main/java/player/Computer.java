@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer extends BaseballPlayer {
+public class Computer implements BaseballPlayer {
 
     private static final int MAX_LENGTH = 3;
+    BaseballNumbers baseballNumbers;
 
     @Override
     public void inputBaseballNumbers() {
@@ -19,6 +20,10 @@ public class Computer extends BaseballPlayer {
             }
         }
 
-        super.baseballNumbers = new BaseballNumbers(computerBaseballNumber);
+        baseballNumbers = new BaseballNumbers(computerBaseballNumber);
+    }
+    
+    public BaseballNumbers getBaseballNumbers() {
+        return this.baseballNumbers;
     }
 }

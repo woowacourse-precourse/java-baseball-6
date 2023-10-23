@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends BaseballPlayer {
+public class User implements BaseballPlayer {
+
+    private BaseballNumbers baseballNumbers;
 
     @Override
     public void inputBaseballNumbers() {
@@ -15,6 +17,11 @@ public class User extends BaseballPlayer {
             playerInputBaseballNumber.add(Integer.parseInt(inputNumber));
         }
 
-        super.baseballNumbers = new BaseballNumbers(playerInputBaseballNumber);
+        this.baseballNumbers = new BaseballNumbers(playerInputBaseballNumber);
+    }
+
+    @Override
+    public BaseballNumbers getBaseballNumbers() {
+        return this.baseballNumbers;
     }
 }
