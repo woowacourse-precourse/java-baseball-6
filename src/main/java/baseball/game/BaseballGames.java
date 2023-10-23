@@ -2,7 +2,6 @@ package baseball.game;
 
 import baseball.message.GameMessages;
 import baseball.service.MessageGenerateService;
-import baseball.service.UserCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
 import baseball.vo.GameResult;
@@ -13,13 +12,10 @@ import java.util.ArrayList;
 public class BaseballGames implements Game {
 
     private final ValidateJudgeService validateJudgeService;
-    private final UserCodeService userCodeService;
     private final MessageGenerateService messageGenerateService;
 
-    public BaseballGames(ValidateJudgeService validateJudgeService, UserCodeService userCodeService,
-                         MessageGenerateService messageGenerateService) {
+    public BaseballGames(ValidateJudgeService validateJudgeService, MessageGenerateService messageGenerateService) {
         this.validateJudgeService = validateJudgeService;
-        this.userCodeService = userCodeService;
         this.messageGenerateService = messageGenerateService;
     }
 
@@ -31,7 +27,7 @@ public class BaseballGames implements Game {
         GameMessages numberInputComment = GameMessages.NUMBER_INPUT_COMMENT;
         while (true) {
             System.out.print(numberInputComment.getMessage());
-            UserCode userCode = userCodeService.makeUserCode(codes);
+            UserCode userCode = codes.makeNewUserCode();
             validateJudgeService.validateLegalUserCode(userCode);
             GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
             Message resultMessage = messageGenerateService.makeMessage(gameResult);

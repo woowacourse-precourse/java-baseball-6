@@ -4,10 +4,8 @@ import baseball.game.BaseballGames;
 import baseball.game.Game;
 import baseball.game.GameLauncher;
 import baseball.service.MessageGenerateService;
-import baseball.service.UserCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.service.impl.MessageGenerateServiceImpl;
-import baseball.service.impl.UserCodeServiceImpl;
 import baseball.service.impl.ValidateJudgeServiceImpl;
 
 public class AppConfig {
@@ -16,17 +14,12 @@ public class AppConfig {
         return new MessageGenerateServiceImpl();
     }
 
-
-    public UserCodeService userCodeService() {
-        return new UserCodeServiceImpl();
-    }
-
     public ValidateJudgeService validateJudgeService() {
         return new ValidateJudgeServiceImpl();
     }
 
     public Game baseballGame() {
-        return new BaseballGames(validateJudgeService(), userCodeService(), messageGenerateService());
+        return new BaseballGames(validateJudgeService(), messageGenerateService());
     }
 
     public GameLauncher gameLauncher() {
