@@ -6,25 +6,19 @@ import java.util.*;
 
 public class Computer {
 
-    private final int[] secretNumbers = new int[3];
-    private final Set<Integer> numberSet = new HashSet<>();
+    private final List<Integer> secretNumbers = new ArrayList<>();
 
     public Computer() {
     }
 
-    private void clearNumbers() {
-        numberSet.clear();
-        Arrays.setAll(secretNumbers, i -> 0);
-    }
 
     public void pickNumbers() {
-        clearNumbers();
-        while (numberSet.size() < 3) {
+        secretNumbers.clear();
+        while (secretNumbers.size() < 3) {
             int newNumber = Randoms.pickNumberInRange(1, 9);
-            if (numberSet.contains(newNumber))
+            if (secretNumbers.contains(newNumber))
                 continue;
-            secretNumbers[numberSet.size()] = newNumber;
-            numberSet.add(newNumber);
+            secretNumbers.add(newNumber);
         }
     }
 
@@ -32,10 +26,10 @@ public class Computer {
         int strikes = 0;
         int balls = 0;
         for (int idx = 0; idx < 3; idx++) {
-            if (secretNumbers[idx] == guessNumbers[idx]) {
+            if (secretNumbers.get(idx) == guessNumbers[idx]) {
                 strikes++;
             } else {
-                if (numberSet.contains(guessNumbers[idx]))
+                if (secretNumbers.contains(guessNumbers[idx]))
                     balls++;
             }
         }
