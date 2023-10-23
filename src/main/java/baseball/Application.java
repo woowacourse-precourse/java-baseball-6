@@ -1,5 +1,4 @@
 package baseball;
-import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -16,35 +15,10 @@ public class Application {
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
-            boolean error=false;
-            if(userInput.length()!=3) error=true;
-            else{
-                for (int i=0; i<userInput.length(); i++){
-                    if(userInput.charAt(i)<'1' || userInput.charAt(i)>'9') {
-                        error = true;
-                        break;
-                    }
-                }
-
-                List<Integer>numberCount = new ArrayList<>();
-                for (int i=0; i<=9; i++){
-                    numberCount.add(0);
-                }
-                for (int i=0; i<userInput.length(); i++){
-                    int digit=Character.getNumericValue(userInput.charAt(i));
-                    numberCount.set(digit,numberCount.get(digit)+1);
-                }
-
-                for (int i=1; i<=9; i++){
-                    if(numberCount.get(i)>1) {
-                        error = true;
-                        break;
-                    }
-                }
-            }
+            CheckException checkException = new CheckException();
 
             try {
-                if (error) throw new IllegalArgumentException();
+                if (checkException.error(userInput)) throw new IllegalArgumentException();
             }catch(IllegalArgumentException e){
                 break;
             }
@@ -63,6 +37,7 @@ public class Application {
                 System.out.println();
             }
 
+            boolean error=false;
             if(strike==3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
