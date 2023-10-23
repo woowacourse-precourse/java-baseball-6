@@ -15,6 +15,7 @@ public class BaseballGame {
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
 
+    private static final String ERROR_INPUT_NOT_DISTINCT = "입력 숫자는 모두 서로 다른 수여야 합니다.";
     private static final String ERROR_INPUT_INVALID_DIGIT = "입력 숫자는 세자리여야 합니다.";
     private static final String ERROR_INPUT_NOT_NUMBER = "입력 형식은 숫자여야합니다.";
 
@@ -40,6 +41,13 @@ public class BaseballGame {
                 .map(input -> convertStringToInteger(input))
                 .toList();
         validAnswerDigit(userAnswer);
+        validAnswerDistint(userAnswer);
+    }
+
+    private void validAnswerDistint(List<Integer> userAnswer) {
+        if (userAnswer.stream().distinct().toList().size() != ANSWER_DIGIT) {
+            throw new IllegalArgumentException(ERROR_INPUT_NOT_DISTINCT)
+        }
     }
 
     private void validAnswerDigit(List<Integer> userAnswer) {
