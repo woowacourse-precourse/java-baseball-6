@@ -21,8 +21,8 @@ import java.util.List;
 public class UserBall {
     private final List<Integer> userBall;
 
-    public UserBall(List<Integer> answerBall) {
-        this.userBall = answerBall;
+    public UserBall(List<Integer> userBall) {
+        this.userBall = userBall;
     }
 
     public List<Integer> getUserBall() {
