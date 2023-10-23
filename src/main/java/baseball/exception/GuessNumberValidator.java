@@ -15,10 +15,10 @@ public class GuessNumberValidator {
     }
 
     private static boolean isLengthThree(String input) {
-        if (input.length() == 3) {
-            return true;
+        if (input.length() != 3) {
+            throw new IllegalArgumentException(LENGTH_NOT_THREE_MSG);
         }
-        throw new IllegalArgumentException(LENGTH_NOT_THREE_MSG);
+        return true;
     }
 
     private static boolean isNumber(String input) {
