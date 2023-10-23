@@ -129,6 +129,10 @@
     - `   123`
 - [ ]  연속된 숫자가 들어온다면?
     - `111`
+      
+      ![image](https://github.com/muyaaho/java-baseball-6/assets/76798969/beb949ce-d969-46d8-bfa8-c44e5e78e751)
+
+
 
 ## 확인
 
