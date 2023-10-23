@@ -46,6 +46,11 @@ public class Computer {
             }
         }
 
+        generateBaseballResultMessage(ballCount, strikeCount);
+        checkStrikeOut(strikeCount);
+    }
+
+    private void generateBaseballResultMessage(int ballCount, int strikeCount) {
         StringJoiner sj = new StringJoiner(" ");
         if (ballCount > 0) {
             sj.add(ballCount + "볼");
@@ -56,10 +61,7 @@ public class Computer {
         if (ballCount == 0 && strikeCount == 0) {
             sj.add("낫싱");
         }
-
         System.out.println(sj);
-
-        checkStrikeOut(strikeCount);
     }
 
     private void checkStrikeOut(int strikeCount) {
