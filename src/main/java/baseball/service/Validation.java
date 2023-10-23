@@ -1,6 +1,6 @@
 package baseball.service;
 
-public class Validatation {
+public class Validation {
     private static final int NUMBER_SIZE = 3;
     private static final int SIGNAL_SIZE = 1;
 
@@ -45,19 +45,19 @@ public class Validatation {
         return true;
     }
 
-    public boolean notSignal(char sign) {
-        if (sign == '1' || sign == '2') {
-            return false;
-        }
-        return true;
-    }
-
     public void validateRange(String num) {
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (notNum(num.charAt(i))) {
                 throw new IllegalArgumentException("각 자리에는 1~9 숫자만 입력하시오");
             }
         }
+    }
+
+    public boolean notSignal(char sign) {
+        if (sign == '1' || sign == '2') {
+            return false;
+        }
+        return true;
     }
 
     public void validateSignRange(String sign) {

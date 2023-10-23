@@ -7,7 +7,7 @@ import baseball.service.Converter;
 import baseball.service.GameLogic;
 import baseball.service.Generator;
 import baseball.service.ResultPrint;
-import baseball.service.Validatation;
+import baseball.service.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -24,7 +24,7 @@ public class Application {
 
             Player player = new Player();
             Result result = new Result();
-            Validatation validator = new Validatation();
+            Validation validator = new Validation();
             while (result.isStatus() == Result.WRONG) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
