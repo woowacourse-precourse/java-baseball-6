@@ -32,5 +32,14 @@ public class GameController {
             i++;
         } while (i < 3); //!isDone 검증 메서드
     }
+
+    public boolean isDone(InputNumber inputNumber) {
+        if (countController.getStrikeCount(inputNumber) == 3) {
+            System.out.println(printController.printSuccess());
+            return true;
+        }
+        return false;
+    }
+
 }
 
