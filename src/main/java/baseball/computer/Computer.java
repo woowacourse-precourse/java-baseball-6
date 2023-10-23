@@ -1,5 +1,6 @@
-package baseball;
+package baseball.computer;
 
+import baseball.player.Guess;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,9 @@ public class Computer {
         }
     }
 
-    public String generateResult(String playerInput) {
+    public String generateResult(Guess playerGuess) {
         List<Character> playerInputAsChars;
+        String playerInput = playerGuess.toString();
         playerInputAsChars = strToCharacterList(playerInput);
         return generateResultString(computeStrikeAndBall(playerInputAsChars), computeStrike(playerInputAsChars));
     }

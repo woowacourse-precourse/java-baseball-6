@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.computer.Computer;
+import baseball.player.Guess;
+import baseball.player.Player;
+
 public class GameController {
     private static final boolean ROUND_ONGOING = true;
     private static final boolean ROUND_OVER = false;
@@ -22,16 +26,16 @@ public class GameController {
     private void startRound(Computer computer) {
         boolean isRoundOngoing = ROUND_ONGOING;
         while (isRoundOngoing) {
-            String queryResult = query(computer);
+            String queryResult = submitGuessAndGetResult(computer);
             isRoundOngoing = decideRoundOngoing(queryResult);
         }
         System.out.println(ROUND_OVER_MESSAGE);
     }
 
-    private String query(Computer computer) {
+    private String submitGuessAndGetResult(Computer computer) {
         System.out.println(INPUT_NUMBER_MESSAGE);
-        String playerInput = player.inputNumbers();
-        String queryResult = computer.generateResult(playerInput);
+        Guess playerGuess = player.makeGuess();
+        String queryResult = computer.generateResult(playerGuess);
         System.out.println(queryResult);
         return queryResult;
     }
