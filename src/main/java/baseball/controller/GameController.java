@@ -3,6 +3,7 @@ package baseball.controller;
 import static baseball.Constant.PLAY_NUMBER_DIGIT;
 
 import baseball.model.GameRule;
+import baseball.model.PlayNumber;
 import baseball.model.RandomNumber;
 import baseball.model.Referee;
 import baseball.model.ResumeNumber;
@@ -15,14 +16,12 @@ import baseball.view.StartView;
 public class GameController {
 
     private final ResumeNumber resumeNumber;
-    private final Referee referee;
     private final InputView inputView;
     private final GameRule ballRule;
     private final GameRule strikeRule;
 
     public GameController(final InputView inputView, final GameRule ballRule, final GameRule strikeRule) {
         this.resumeNumber = ResumeNumber.createDefault();
-        this.referee = Referee.createDefault();
         this.inputView = inputView;
         this.ballRule = ballRule;
         this.strikeRule = strikeRule;
@@ -36,15 +35,14 @@ public class GameController {
     }
 
     private void play() {
-        int computerNumber = RandomNumber.pickNumber();
+        PlayNumber computerNumber = RandomNumber.pickNumber();
 
         while (true) {
             AskView.printAskNumber();
-            int userNumber = inputView.readPlayNumber();
-            referee.prepareJudgement(computerNumber, userNumber);
+            PlayNumber userNumber = inputView.readPlayNumber();
 
-            int ball = referee.answerResult(ballRule);
-            int strike = referee.answerResult(strikeRule);
+            int ball = Referee.answerResult(ballRule, computerNumber, userNumber);
+            int strike = Referee.answerResult(strikeRule, computerNumber, userNumber);
             ResultView.printResult(ball, strike);
 
             if (isGameEnd(strike)) {
@@ -57,8 +55,6 @@ public class GameController {
 
         int resumeAnswer = inputView.readMoreAnswer();
         resumeNumber.updateNumber(resumeAnswer);
-
-        referee.resetGame();
     }
 
     private boolean isGameEnd(final int strike) {

@@ -1,20 +1,18 @@
 package baseball.view;
 
 import static baseball.Constant.END_WANT;
-import static baseball.Constant.PLAY_NUMBER_DIGIT;
 import static baseball.Constant.PLAY_WANT;
 
-import baseball.validator.NumberValidator;
+import baseball.model.PlayNumber;
 import baseball.validator.ResumeValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleInputView implements InputView {
 
     @Override
-    public int readPlayNumber() {
+    public PlayNumber readPlayNumber() {
         String number = Console.readLine();
-        NumberValidator.assertInputNumberWithLength(number, PLAY_NUMBER_DIGIT.getValue());
-        return Integer.parseInt(number);
+        return PlayNumber.from(number);
     }
 
     @Override

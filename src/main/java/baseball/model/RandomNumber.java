@@ -9,7 +9,7 @@ public class RandomNumber {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
 
-    public static int pickNumber() {
+    public static PlayNumber pickNumber() {
         StringBuilder numberBuilder = new StringBuilder();
 
         while (!isBuilderEnoughPicked(numberBuilder)) {
@@ -17,7 +17,7 @@ public class RandomNumber {
         }
 
         String selectNumber = numberBuilder.toString();
-        return Integer.parseInt(selectNumber);
+        return PlayNumber.from(selectNumber);
     }
 
     private static boolean isBuilderEnoughPicked(final StringBuilder numberBuilder) {
