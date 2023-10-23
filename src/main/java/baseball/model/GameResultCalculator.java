@@ -1,6 +1,12 @@
 package baseball.model;
 
 public class GameResultCalculator {
+
+    private final String BALL_RESULT = "볼";
+    private final String STRIKE_RESULT = "스트라이크";
+    private final String NOTHING_RESULT = "낫싱";
+    private final String BLANK = " ";
+
     public int countStrike(Number random, Number input) {
         int strikeCount = 0;
 
@@ -43,5 +49,28 @@ public class GameResultCalculator {
         return randomNumber.firstDigit == inputNumber.firstDigit
                 && randomNumber.secondDigit == inputNumber.secondDigit
                 && randomNumber.thirdDigit == inputNumber.thirdDigit;
+    }
+
+    public String makeGameResult(Number randomNumber, Number inputNumber) {
+        int ballCount = countBall(randomNumber, inputNumber);
+        int strikeCount = countStrike(randomNumber, inputNumber);
+
+        return resultToString(ballCount, strikeCount);
+    }
+
+    public String resultToString(int ballCount, int strikeCount) {
+        if (ballCount != 0 && strikeCount != 0) {
+            return ballCount + BALL_RESULT + BLANK + strikeCount + STRIKE_RESULT;
+        }
+
+        if (ballCount != 0) {
+            return ballCount + BALL_RESULT;
+        }
+
+        if (strikeCount != 0) {
+            return strikeCount + STRIKE_RESULT;
+        }
+
+        return NOTHING_RESULT;
     }
 }
