@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
 
-    public String inputNumberString() {
+    public String readNumberString() {
         printRequestMessage();
         String numberString = Console.readLine();
 
@@ -22,7 +22,7 @@ public class UserInput {
         return numberString;
     }
 
-    public String inputOneOrTwo() {
+    public String readOneOrTwo() {
         String numberString = Console.readLine();
 
         validateOneLength(numberString);

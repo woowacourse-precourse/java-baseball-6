@@ -1,7 +1,7 @@
 package baseball.computer;
 
-import static baseball.validator.NumberValidator.MAX_VALUE;
-import static baseball.validator.NumberValidator.MIN_VALUE;
+import static baseball.constant.NumberConstants.MAX_VALUE;
+import static baseball.constant.NumberConstants.MIN_VALUE;
 import static baseball.validator.NumberValidator.isBelowThreeLength;
 import static baseball.validator.NumberValidator.validateDuplicateNumber;
 
@@ -25,13 +25,15 @@ public class RandomComputerNumberGenerator {
 
     @Override
     public String toString() {
-        String numberString = numbers.stream()
+        String numberString = generateNumberString();
+        validateDuplicateNumber(Integer.parseInt(numberString));
+        return numberString;
+    }
+
+    private String generateNumberString() {
+        return numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-
-        validateDuplicateNumber(Integer.parseInt(numberString));
-
-        return numberString;
     }
 
 }
