@@ -11,17 +11,16 @@ public class Application {
     static List<Integer> playerNumbers ;
 
     public static void main(String[] args) {
-        boolean isFinishGame = false;
         Application application = new Application();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(!isFinishGame) {
+        while(true) {
             computerNumbers = new ArrayList<>();
             boolean isGameTermination = false;
 
             application.setComputerNumber();
-            while(!isGameTermination) {
+            do {
                 playerNumbers = new ArrayList<>();
 
                 application.inputPlayerNumber();
@@ -33,9 +32,13 @@ public class Application {
                 application.printResult(isNothing, strikeCount, ballCount);
                 isGameTermination = application.checkGameTermination(strikeCount);
                 if (isGameTermination) {
-                    application.executeRestartOrTerminate();
+                    int choice = application.executeRestartOrTerminate();
+
+                    if (choice == 1) {
+                        isGameTermination = false;
+                    }
                 }
-            }
+            } while(!isGameTermination);
         }
     }
 
@@ -45,7 +48,6 @@ public class Application {
 
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
-                System.out.println("randomNumber = " + randomNumber);
             }
         }
     }
@@ -124,7 +126,7 @@ public class Application {
         return false;
     }
 
-    public void executeRestartOrTerminate() {
+    public int executeRestartOrTerminate() {
         String choice = null;
 
         do {
@@ -136,6 +138,8 @@ public class Application {
             System.out.println("프로그램을 종료합니다.");
             System.exit(0);
         }
+
+        return 1;
     }
 
     public void checkPlayerNumberValidity(String input) {
