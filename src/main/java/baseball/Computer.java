@@ -24,6 +24,7 @@ public class Computer {
 
     private int checkUsedNumber(boolean[] usedNumbers) {
         int randomNumber = Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX);
+
         if(usedNumbers[randomNumber]) {
             checkUsedNumber(usedNumbers);
         }

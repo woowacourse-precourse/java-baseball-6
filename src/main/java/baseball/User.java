@@ -35,9 +35,13 @@ public class User {
         Set<Character> uniqueInput = new HashSet<>();
 
         for(char c : input.toCharArray()) {
-            if (!uniqueInput.add(c)){
-                throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
-            }
+            hasDuplicateCharacter(uniqueInput, c);
+        }
+    }
+
+    private void hasDuplicateCharacter(Set<Character> uniqueInput, char c) {
+        if(!uniqueInput.add(c)) {
+            throw  new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
     }
 
