@@ -18,8 +18,19 @@ public class Judgment {
     }
 
     private Hint getHintFromGuess(List<Integer> guess) {
-        // 추측값과 정답을 비교.
-        return new Hint();
+        int strike = 0, ball = 0;
+        for (int i = 0; i < guess.size(); i++) {
+            Integer guessNumber = guess.get(i);
+            if (answer.contains(guessNumber)) {
+                if (answer.get(i).equals(guessNumber)) {
+                    strike++;
+                    continue;
+                }
+                ball++;
+            }
+        }
+
+        return new Hint(strike, ball);
     }
 
 }

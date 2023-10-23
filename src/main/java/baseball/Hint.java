@@ -5,6 +5,11 @@ public class Hint {
     private int strike;
     private int ball;
 
+    public Hint(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public Hint() {
         this.strike = 0;
         this.ball = 0;
