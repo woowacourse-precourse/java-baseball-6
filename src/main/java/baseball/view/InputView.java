@@ -1,12 +1,13 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputView {
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final int NUMBER_POSITIONS = 10;
     private static final int SELECTION_COUNT = 3;
 
 
@@ -16,7 +17,7 @@ public class InputView {
     }
 
     // 유저가 세 숫자를 입력할 때, 배열로 넣어주기
-    public static int[] userInputNumber() {
+    public static List<Integer> userInputNumber() {
         System.out.print(USER_INPUT_MESSAGE);
 
         try {
@@ -24,7 +25,7 @@ public class InputView {
 
             checkInput(input);
 
-            int[] userInput = convertInputFormat(input);
+            List<Integer> userInput = convertInputFormat(input);
 
             return userInput;
         } catch (IllegalArgumentException e) {
@@ -35,11 +36,9 @@ public class InputView {
     }
 
     // 세 숫자를 배열에 넣어주기
-    public static int[] convertInputFormat(String input) {
+    public static List<Integer> convertInputFormat(String input) {
 
-        int[] userInput = new int[NUMBER_POSITIONS];
-        int index = 0;
-
+        List<Integer> userInput = new ArrayList<>();
 
         for (int i = 0; i < SELECTION_COUNT; i++) {
 
@@ -47,7 +46,7 @@ public class InputView {
 
             checkInputDuplicate(userInput, eachNumber);
 
-            userInput[eachNumber]+= ++index;
+            userInput.add(eachNumber);
 
         }
 
@@ -89,14 +88,13 @@ public class InputView {
     }
 
     // 세 숫자 중 하나라도 중복 예외처리하기
-    public static void checkInputDuplicate(int[] userInput, int eachNumber) {
+    public static void checkInputDuplicate(List<Integer> userInput, int eachNumber) {
 
-        if (userInput[eachNumber] != 0) {
+        if (userInput.contains(eachNumber)) {
 
             throw new IllegalArgumentException("중복된 숫자가 있습니다");
 
         }
-
 
     }
 }

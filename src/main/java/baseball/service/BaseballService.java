@@ -2,8 +2,10 @@ package baseball.service;
 
 import baseball.util.ComputerBallGenerator;
 import baseball.util.InputCalculator;
+import baseball.util.OutputCalculator;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class BaseballService {
 
@@ -11,9 +13,9 @@ public class BaseballService {
 
         InputView.getStartMessage();
 
-        do {
+
             gamePlay();
-        } while (gameEnd());
+
 
     }
 
@@ -22,8 +24,11 @@ public class BaseballService {
 
         int[] computerBall = ComputerBallGenerator.generateComputerBall();
 
+        do {
+            List<Integer> userInput = InputView.userInputNumber();
 
-        int[] userInput = InputView.userInputNumber();
+
+        }while(gameEnd());
 
 
 
