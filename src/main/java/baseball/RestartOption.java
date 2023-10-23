@@ -12,7 +12,7 @@ public class RestartOption {
 
     private void validateInput() {
         if (!restartOption.equals(RESTART) && !restartOption.equals(EXIT)) {
-            throw new IllegalArgumentException("[ERROR] : 잘못된 값이 입력되었습니다.");
+            throw new IllegalArgumentException(Message.INVALID_VALUE.getMessage());
         }
     }
 
