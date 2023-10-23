@@ -81,18 +81,18 @@ public class ScoreCalculatorBaseBallTest {
 
     @ParameterizedTest
     @EnumSource(TestCase.class)
-    void 테스트() {
+    void 테스트(TestCase test) {
         //given
-        List<Integer> userInput = List.of(1, 2, 3);
-        List<Integer> computerInput = List.of(4, 5, 6);
+        List<Integer> userInput = test.userInput;
+        List<Integer> computerInput = test.computerInput;
         ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
 
         //when
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(0, score.getBall());
-        Assertions.assertEquals(0, score.getStrike());
+        Assertions.assertEquals(test.expectedBall, score.getBall());
+        Assertions.assertEquals(test.expectedStrike, score.getStrike());
     }
 
 }
