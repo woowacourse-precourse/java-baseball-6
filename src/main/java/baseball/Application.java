@@ -14,19 +14,15 @@ public class Application {
     List<Integer> computer = new ArrayList<>();
     List<Integer> user = new ArrayList<>();
 
-    Scanner sc = new Scanner(System.in);
-
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             computer.clear();
             generateRandom();
-//            System.out.println("computer : " + computer.toString());
 
             user.clear();
             while (true) {
                 getUserInput();
-//                System.out.println("user : " + user.toString());
 
                 if (judgeStrike()) {
                     System.out.println(strike + "스트라이크");
@@ -91,7 +87,6 @@ public class Application {
             validateUserInput(input);
             user.addAll(input);
 
-        sc.close();
     }
 
 
