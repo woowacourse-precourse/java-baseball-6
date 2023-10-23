@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNum {
-    private static final int MAX_Length = 3;
+    private static final int MAX_LENGTH = 3;
     private final List<Integer> computerNum = new ArrayList<>();
 
     public ComputerNum(){
@@ -17,7 +17,7 @@ public class ComputerNum {
     }
 
     public void createComputerNum() {
-        while(this.computerNum.size() < MAX_Length) {
+        while(this.computerNum.size() < MAX_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!this.computerNum.contains(randomNumber)) {
                 this.computerNum.add(randomNumber);
