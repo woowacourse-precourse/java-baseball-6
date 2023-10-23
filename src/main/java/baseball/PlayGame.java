@@ -80,9 +80,11 @@ public class PlayGame {
         }
         if (this.strike > 0) {
             System.out.printf("%d스트라이크", this.strike);
+            return;
         }
         if (this.ball > 0) {
             System.out.printf("%d볼", this.ball);
+            return;
         }
     }
 }
