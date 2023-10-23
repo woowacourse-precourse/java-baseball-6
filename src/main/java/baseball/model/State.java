@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public enum State {
 
-    RESTART("1"),
-    FINISH("2");
+    PLAY("1"),
+    END("2");
 
     private final String stateNumber;
 
@@ -30,10 +30,10 @@ public enum State {
     }
 
     private static boolean isStateNumber(final String stateNumber) {
-        return stateNumber.equals(RESTART.stateNumber) || stateNumber.equals(FINISH.stateNumber);
+        return stateNumber.equals(PLAY.stateNumber) || stateNumber.equals(END.stateNumber);
     }
 
     public static boolean isMoreGame(final State state) {
-        return RESTART == state;
+        return PLAY == state;
     }
 }
