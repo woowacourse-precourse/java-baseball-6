@@ -41,6 +41,18 @@ public class UserAction {
         user.changeMind(mind);
     }
 
+    public List<Integer> showNumberList(){
+        return user.showNumberList();
+    }
+
+    public int showMind(){
+        return user.showMind();
+    }
+
+    public void clearAnswer(){
+        user.clearAnswerList();
+    }
+
     public void requestValidateAnswer(String userAnswer){
         InputValidator.validateInputLength(userAnswer, ANSWER_LENGTH);
         InputValidator.validateIsDistinct(userAnswer);
@@ -63,17 +75,4 @@ public class UserAction {
 
         return mind;
     }
-
-    public List<Integer> showNumberList(){
-        return user.showNumberList();
-    }
-
-    public int showMind(){
-        return user.showMind();
-    }
-
-    public void clearAnswer(){
-        user.clearAnswerList();
-    }
-
 }
