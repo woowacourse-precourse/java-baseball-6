@@ -1,4 +1,4 @@
-package baseball.message;
+package baseball.view;
 
 import static baseball.message.Message.BALL_MSG;
 import static baseball.message.Message.NON_MSG;

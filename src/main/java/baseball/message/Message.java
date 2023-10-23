@@ -20,16 +20,8 @@ public abstract class Message {
     // 게임 용어
     public static final String STRIKE = "STRIKE";
     public static final String BALL = "BALL";
-    public static final String NOTHING = "NOTHING";
     public static final String COMPUTER = "COMPUTER";
     public static final String PLAYER = "PLAYER";
-
-    // 야구 게임 자릿수
-    public static final int COUNT = 3;
-    // 시작 범위
-    public static final int START_RANGE = 1;
-    // 종료 범위
-    public static final int LAST_RANGE = 9;
-
+    public static final String SUCCESS = "SUCCESS";
 
 }
