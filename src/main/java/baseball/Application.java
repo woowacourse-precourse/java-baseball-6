@@ -18,18 +18,11 @@ public class Application {
                 String userInput = camp.nextstep.edu.missionutils.Console.readLine();
                 userInputList = makeGuess(userInput);
 
-                int strike = 0, ball = 0;
-                for (int i = 0; i < userInputList.size(); i++) {
-                    if (computer.contains(userInputList.get(i))) {
-                        if (computer.get(i).equals(userInputList.get(i))) {
-                            strike++;
-                        } else {
-                            ball++;
-                        }
-                    }
-                }
-                printResult(strike, ball);
-                if(strike == 3) {
+                Judge judge = new Judge(computer, userInputList);
+                judge.calcResult();
+                judge.printResult();
+
+                if(judge.isCorrect()) {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String restart = camp.nextstep.edu.missionutils.Console.readLine();
                     if (restart.equals("1")) {
@@ -77,20 +70,5 @@ public class Application {
             userInputList.add(userInput.charAt(i) - '0');
         }
         return userInputList;
-    }
-
-    public static void printResult(int strike, int ball) {
-        if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        } else if (strike == 0) {
-            System.out.println(ball + "볼");
-        } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        }
     }
 }
