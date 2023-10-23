@@ -22,21 +22,11 @@ public class InputValidator {
     문자에 대한 검증을 하는 함수들
     문자가 Digit인지, Digit이면 1~9에 포함되는지 검증
     */
-    public static int validateAnswerCharacter(char answerChar){
-        int digit;
-
-        validateIsCharacterDigit(answerChar);
-        digit = Character.getNumericValue(answerChar);
-        validateDigitRange(digit);
-
-        return digit;
-
-    }
-
-    public static void validateIsCharacterDigit(char answerChar){
+    public static int validateIsCharacterDigit(char answerChar){
         if (!Character.isDigit(answerChar))
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
 
+        return Character.getNumericValue(answerChar);
     }
 
     public static void validateDigitRange(int digit){
@@ -48,9 +38,8 @@ public class InputValidator {
     문자열에 대한 검증을 하는 함수들
     문자열의 길이, 중복 문자는 없는지, 재시작 입력이 올바른지 검증
     */
-
-    public static void validateAnswerLength(int answerLength){
-        if (answerLength != ANSWER_LENGTH)
+    public static void validateAnswerLength(String userAnswer){
+        if (userAnswer.length() != ANSWER_LENGTH)
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
     }
 
