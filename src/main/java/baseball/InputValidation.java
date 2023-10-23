@@ -47,7 +47,7 @@ public class InputValidation {
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
         int inputValue = Character.getNumericValue(input.charAt(0));
-        if (inputValue < 0 || inputValue > 2) {
+        if (inputValue < 1 || inputValue > 2) {
             throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
         }
         return inputValue;

@@ -128,38 +128,72 @@ class InputValidationTest {
         assertThat(inputValidation.convertUserInput(userInput)).isEqualTo(List.of(4, 3, 7));
     }
 
-//    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 input에 영어가 포함되었을 때의 테스트")
-//    @Test
-//    void containAlphaCharacterInUserInputTest() {
-//        //given
-//        InputValidation inputValidation = new InputValidation();
-//    }
-//
+    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 input에 영어가 포함되었을 때의 테스트")
+    @Test
+    void containAlphaCharacterInUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String alphabet = "a";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(alphabet))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+    }
+
+    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 input에 한글이 포함되었을 때의 테스트")
+    @Test
+    void containKoreanCharacterInUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String korean = "a";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(korean))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+    }
+
+    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 input에 1, 2가 아닌 숫자가 포함되었을 때의 테스트")
+    @Test
+    void containOverOrLessValueInUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String overValue = "4";
+        final String lessValue = "0";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(overValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 혹은 2를 입력해주세요.");
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(lessValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 혹은 2를 입력해주세요.");
+    }
+
+    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 input의 길이가 1을 초과할때의 테스트")
+    @Test
+    void containLongLengthInUserInput() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String longLength = "4234";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(longLength))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("한자리 숫자 입력해주세요.");
+    }
+
+    @DisplayName("게임 성공시 유저가 게임을 계속 진행할지, 종료할지에 대한 요구 성공 테스트")
     @Test
     void validateGameEndRequestInputTest() {
         //given
         InputValidation inputValidation = new InputValidation();
         //when
-        final String firstUserInput = "1";
-        final String secondUserInput = "2";
-        final String thirdUserInput = "3";
-        final String forthUserInput = "c";
-        final String fifthUserInput = "ㅁ";
-        final String lastUserInput = "123";
+        final String gameRetry = "1";
+        final String gameEnd = "2";
         //then
-        assertThat(inputValidation.validateGameEndRequestInput(firstUserInput)).isEqualTo(1);
-        assertThat(inputValidation.validateGameEndRequestInput(secondUserInput)).isEqualTo(2);
-        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(thirdUserInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 혹은 2를 입력해주세요.");
-        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(forthUserInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자를 입력해주세요");
-        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(fifthUserInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자를 입력해주세요");
-        assertThatThrownBy(() -> inputValidation.validateGameEndRequestInput(lastUserInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("한자리 숫자 입력해주세요.");
+        assertThat(inputValidation.validateGameEndRequestInput(gameRetry)).isEqualTo(1);
+        assertThat(inputValidation.validateGameEndRequestInput(gameEnd)).isEqualTo(2);
     }
 }
