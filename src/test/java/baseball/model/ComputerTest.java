@@ -6,6 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
@@ -17,10 +20,13 @@ class ComputerTest {
     public void setUp() {
         // Initialize with a mock random number generator that always generates the same sequence.
         testComputer = new Computer(new RandomNumberGenerator() {
-            int count = 0;
+            List<Integer> random = new ArrayList<>();
             @Override
-            public int generateNumberInRange(int min, int max) {
-                return ++count; // Returns 1, then 2, then 3...
+            public List<Integer> generateNumberInRange() {
+                random.add(1);
+                random.add(2);
+                random.add(3);
+                return random; // Returns 1, then 2, then 3...
             }
         });
     }
