@@ -1,5 +1,7 @@
 package baseball.view.console;
 
+import baseball.domain.Baseball;
+
 public class OutputView {
 
     public void printGameStartMessage() {
@@ -11,6 +13,6 @@ public class OutputView {
     }
 
     public void printGameEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Baseball.NUMBERS_COUNT));
     }
 }
