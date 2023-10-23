@@ -1,13 +1,12 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
-        PrintMessage.printGameStartMessage();
+        OutputView.startGame();
         playBasketBallGame();
     }
 
@@ -16,8 +15,7 @@ public class Application {
         List<Integer> answerNumberList = answerNumberGenerator.getAnswerNumberList();
 
         while (true) {
-            PrintMessage.printReadNumberMessage();
-            String userInputNumber = Console.readLine();
+            String userInputNumber = InputView.getInputNumber();
             try {
                 Validator.validateUserInputNumber(userInputNumber);
             } catch (IllegalArgumentException e) {
@@ -31,10 +29,10 @@ public class Application {
             }
 
             int[] strikeAndBallCount = getStrikeAndBallCount(answerNumberList, userInputNumberList);
-            PrintMessage.printGameResultMessage(strikeAndBallCount);
+            OutputView.showGameResult(strikeAndBallCount);
 
-            if (strikeAndBallCount[0] == 3) {
-                PrintMessage.printGameEndMessage();
+            if (strikeAndBallCount[0] == Constants.NUMBER_SIZE) {
+                OutputView.finishGame();
                 return;
             }
         }

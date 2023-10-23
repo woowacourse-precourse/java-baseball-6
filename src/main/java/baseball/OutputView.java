@@ -23,7 +23,7 @@ public class OutputView {
         }
     }
 
-    public static void printGameEndMessage() {
+    public static void finishGame() {
         System.out.println(Constants.SUCCESS_AND_GAME_FINISH);
     }
 

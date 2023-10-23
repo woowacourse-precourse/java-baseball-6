@@ -13,7 +13,7 @@ public class Constants {
     public static final String BLANK = " ";
 
     public static final String NUMBER_QUESTION = "숫자를 입력해주세요 : ";
-    public static final String RESTART_OR_FINISH_QUESTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String RESTART_OR_QUIT_QUESTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static final String NUMBER_BASKETBALL_GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String SUCCESS_AND_GAME_FINISH = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";

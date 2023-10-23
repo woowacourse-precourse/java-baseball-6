@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     public static String getInputNumber() {
-        System.out.println(Constants.NUMBER_QUESTION);
+        System.out.print(Constants.NUMBER_QUESTION);
         return Console.readLine();
     }
 
-    public static String getRestartOrFinish() {
-        System.out.println(Constants.RESTART_OR_FINISH_QUESTION);
+    public static String getRestartOrQuit() {
+        System.out.println(Constants.RESTART_OR_QUIT_QUESTION);
         return Console.readLine();
     }
 
