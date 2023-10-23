@@ -13,7 +13,7 @@ public class BaseballService {
         if (strike == 3) {
             return false;
         } else {
-            printResult(strike, ball);
+            printResult(strike, (ball - strike));
             return true;
         }
     }
@@ -47,7 +47,7 @@ public class BaseballService {
         } else if (ball == 0) {
             outputView.printStrike(strike);
         } else {
-            outputView.printStrikeAndBall(strike, ball - strike);
+            outputView.printStrikeAndBall(strike, ball);
         }
     }
 }
