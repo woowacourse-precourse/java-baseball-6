@@ -3,7 +3,7 @@
 ## 📝 구현 기능 정리
 
 ### Model
-1. GameNumber
+1. Game
    - createRandomNumber() : Random 값 객체를 생성하는 메서드
    - checkScoreResult() : 입력받은 숫자와 Random 값의 점수를 체크하는 메서드
 
