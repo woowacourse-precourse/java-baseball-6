@@ -25,6 +25,7 @@ public class GameController {
         while (!isGameOver) {
             List<Integer> userGuess = input.getUserGuess();
             Map<String, Integer> result = computer.compareNumbers(targetNumbers, userGuess);
+            output.hint(result);
         }
     }
 }
