@@ -43,7 +43,7 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final List<Integer> userInputResult = null;
+        final List<Integer> userInputResult = List.of(0, 0);
         //then
         assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(false);
     }
@@ -54,12 +54,12 @@ class BaseballGameMachineTest {
         //given
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        final List<Integer> userInputResult = List.of(1, 3);
+        final List<Integer> userInputResult = List.of(1, 2);
         //then
         assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(false);
     }
 
-    @DisplayName("유저 input이 1일 때, 새 게임의 여부를 판단하는 테스트")
+    @DisplayName("유저 input이 1일 때, 새로운 게임의 여부를 판단하는 테스트")
     @Test
     void isNewGameTest() {
         //given
@@ -70,7 +70,7 @@ class BaseballGameMachineTest {
         assertThat(baseballGameMachine.isGameEnd(userInput)).isEqualTo(false);
     }
 
-    @DisplayName("유저 input이 2일 때, 새 게임의 여부를 판단하는 테스트")
+    @DisplayName("유저 input이 2일 때, 게임 종료 여부를 판단하는 테스트")
     @Test
     void isEndGame() {
         //given
