@@ -38,19 +38,15 @@ public class GameService {
     return response;
   }
 
-  public boolean determineStatus(Map<Grade, Integer> result) {
-    // 게임 종료
+  public boolean determinePass(Map<Grade, Integer> result) {
     if(result.get(Grade.STRIKE) == 3)
       return true;
-    // 게임 지속
     return false;
   }
 
   public boolean determineRestarting(Integer command) {
-    // 게임 재시작
     if(command == 1)
       return true;
-    // 게임 종료
     return false;
   }
 

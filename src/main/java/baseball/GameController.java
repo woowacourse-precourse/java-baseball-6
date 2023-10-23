@@ -20,7 +20,7 @@ public class GameController {
   }
 
   public boolean determineGameStatus(Map<Grade, Integer> resultMap) {
-    return gameService.determineStatus(resultMap);
+    return gameService.determinePass(resultMap);
   }
 
   public boolean determineRestarting(String commandInput) {
