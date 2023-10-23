@@ -7,8 +7,6 @@ import baseball.util.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.Objects;
-
 public class GameController {
 
     private OutputView outputView;
