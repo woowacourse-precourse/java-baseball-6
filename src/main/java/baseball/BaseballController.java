@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballController {
 
+    private BaseballException baseballException = new BaseballException();
+
     // 게임 시작 함수
-    public static void startBaseball() {
+    public void startBaseball() {
         int strike = 0;
 
         // 게임 시작 문구 출력
@@ -31,7 +33,7 @@ public class BaseballController {
             }
 
             // 플레이어가 입력한 수에 중복되는 수가 존재할 경우 예외처리
-            if (isDuplicationExist(randomNum)){
+            if (baseballException.isDuplicationExist(randomNum)){
                 throw new IllegalArgumentException();
             }
 
