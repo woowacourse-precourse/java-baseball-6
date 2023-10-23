@@ -1,25 +1,35 @@
 ## 구현할 기능 목록 정리 (1차)
 
 ### 🛠️ 기능 목록
-- ✅ 입력한 숫자와 컴퓨터가 랜덤으로 추출한 숫자를 비교하는 ```compareMyInputNumberAndComputerNumber()``` 함수
-    - 입력한 숫자가 컴퓨터가 입력한 숫자에 전부다 포함되지 않는 경우 낫싱
-    - 인덱스마다 내가 입력한 문자와 컴퓨터가 입력한 문자가 같다면 ```strike += 1```
-    - 인덱스마다 입력한 숫자가 컴퓨터가 입력한 문자에 포함되긴 하지만 인덱스가 다른 경우 int ball 값은 1증가
-    - 한번 판단 후(```checkAnswerStrikeAndBall()가 실행```) 변수를 초기화 하고 계속 진행 ```strike = 0, ball = 0```
-    - ```determineFinishOrAgainGame()``` 함수를 통해 게임을 다시 할건지 말건지 물어보기
+- ✅ 입력한 숫자와 컴퓨터가 랜덤으로 추출한 숫자를 비교해 스트라이크, 볼 갯수를 카운트하는 ```countStrikeAndBall()``` 함수
+  - myNumber 문자열과 computerNumber 리스트의 index번째 값이 같다면 스트라이크 증가
+  - computerNumber의 index번째 값이 myNumber에 있지만 해당 값이 index번째 값이 아닌 경우 볼 증가
 
-- ✅ 컴퓨터가 추출한 숫자를 모두 맞혔는지 아닌지 판단하는 ```checkAnswerStrikeAndBall()``` 함수
-    - 숫자를 모두 맞췄다면 3개의 숫자를 모두 맞히셨습니다! 게임 종료 출력
-    - 숫자를 정확하게 맞추기 못했다면
-      -  x볼 y스트라이크 출력
-      -  x볼 출력
-      -  y스트라이크 출력
+      
+
+- ✅ 컴퓨터가 추출한 숫자를 모두 맞혔는지 아닌지 판단 후 정답 출력하는 ```checkAnswerStrikeAndBall()``` 함수
+  - strike == 0 이고 ball == 0인경우 
+    - 낫싱 출력
+  - strike == 3 이고 ball == 0 인경우
+    - 3스트라이크 출력
+    - 3개의 숫자를 모두 맞히셨습니다! 게임 종료 출력
+  - 낫싱이 아닌 경우에서 strike != 3인 경우
+    -  x볼 y스트라이크 출력 또는 x볼 출력 또는 y스트라이크 출력
+
+
+- ✅ 게임에서 승리했는지 판단하는 ```isVictory()``` 함수
+    - strike == 3인 경우
+      - return true
+    - strike != 3인 경우
+      - return false
 
 
 
 - ✅ 게임을 재개할건지 판단하는 ```determineFinishOrAgainGame()``` 함수
-    - 숫자 1을 입력했을 때 ```return false``` 
-    - 숫자 2를 입력했을 때 ```return true```
+    - 숫자 1을 입력한 경우
+      - return false 
+    - 숫자 2를 입력한 경우 
+      - return true
 
 ### ⚠️ 예외 케이스
 - ✅ 사용자가 입력한 값이 서로다른 숫자로 이뤄지지 않은 경우를 체크하는 ```checkDuplicateNumber()``` 함수 
