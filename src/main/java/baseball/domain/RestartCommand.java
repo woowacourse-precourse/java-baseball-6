@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.exception.ErrorMessage;
+
 import java.util.Arrays;
 
 public enum RestartCommand {
@@ -25,7 +27,7 @@ public enum RestartCommand {
                 .contains(message);
 
         if (!isValid) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
     }
 }
