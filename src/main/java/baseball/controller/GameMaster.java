@@ -9,12 +9,14 @@ public class GameMaster {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         Computer computer = new Computer();
-        computer.generateBaseballNumbers();
-
         Player player = new Player();
-        while (!computer.isStrikeOut()) {
-            player.inputBaseballNumbers();
-            computer.printBaseballResult(player.getBaseballNumbers());
+        while (player.isNewGame()) {
+            computer.generateBaseballNumbers();
+            while (!computer.isStrikeOut()) {
+                player.inputBaseballNumbers();
+                computer.printBaseballResult(player.getBaseballNumbers());
+            }
+            player.chooseNewGameOrExit();
         }
     }
 }

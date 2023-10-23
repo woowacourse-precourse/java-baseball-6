@@ -11,6 +11,8 @@ public class Computer {
     private boolean isStrikeOut = false;
 
     public void generateBaseballNumbers() {
+        initStrikeOut();
+
         baseballNumbers = new ArrayList<>();
         while (baseballNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,6 +20,10 @@ public class Computer {
                 baseballNumbers.add(randomNumber);
             }
         }
+    }
+
+    private void initStrikeOut() {
+        isStrikeOut = false;
     }
 
     public void printBaseballResult(List<Integer> playerBaseballNumbers) {
