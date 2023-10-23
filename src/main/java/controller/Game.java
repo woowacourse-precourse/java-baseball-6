@@ -1,10 +1,14 @@
-package game;
+package controller;
 
-import static validation.Constant.*;
+import static validation.Constant.END_GAME_MESSAGE;
+import static validation.Constant.NUMBER_SIZE;
+import static validation.Constant.RESTART;
+import static validation.Constant.RESTART_MESSAGE;
+import static validation.Constant.STRIKE_SUCCESS;
 
 import java.util.List;
-import model.PlayerInput;
 import model.Answer;
+import model.PlayerInput;
 import view.InputView;
 import view.OutputView;
 
