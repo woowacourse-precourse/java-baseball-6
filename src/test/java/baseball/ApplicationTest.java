@@ -13,15 +13,20 @@ class ApplicationTest extends NsTest {
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1",
-                            "597", "125", "925", "589", "2");
+                    run(
+                            "246", "135", "1",
+                            "597", "125", "925", "589", "1",
+                            "123", "124", "931", "391", "319", "2"
+                    );
                     assertThat(output()).contains(
                             "낫싱", "3스트라이크",
-                            "1볼 1스트라이크", "1볼", "2볼", "3스트라이크", "게임 종료"
+                            "1볼 1스트라이크", "1볼", "2볼", "3스트라이크",
+                            "2볼", "1볼", "3볼", "2볼 1스트라이크", "3스트라이크", "게임 종료"
                     );
                 },
                 1, 3, 5,
-                5, 8, 9
+                5, 8, 9,
+                3, 1, 9
         );
     }
 
@@ -31,6 +36,10 @@ class ApplicationTest extends NsTest {
         //입력 값이 3자리 초과인 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-123"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
@@ -64,12 +73,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 숫자_입력_범위_예외_테스트() {
-        // 입력 값 음수인 경우
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("-123"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-
         // 입력 값 0이 포함되는 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("202"))
