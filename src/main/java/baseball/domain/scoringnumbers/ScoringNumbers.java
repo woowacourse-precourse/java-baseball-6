@@ -1,9 +1,9 @@
 package baseball.domain.scoringnumbers;
 
-public class ScoringNumbers {
-    int value;
+class ScoringNumbers {
+    private final int value;
 
-    public ScoringNumbers(int value) {
+    ScoringNumbers(int value) {
         this.value = value;
     }
 
