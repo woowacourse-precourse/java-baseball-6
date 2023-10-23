@@ -65,7 +65,7 @@ public class RestartApplication {
         }
     }
 
-    public static void countStrikeAndBall() {
+    public static void calculateStrikeAndBall() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if ((userNumbers[i] == pickedNumber[j]) && (i == j)) {
@@ -77,19 +77,60 @@ public class RestartApplication {
         }
     }
 
+    public static void displayResult() {
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+        if ((ballCount + strikeCount) == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+    }
+
+    public static boolean restartOrExitGame() {
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String userInput = Console.readLine();
+
+            //1개의 입력이 들어왔는가?
+            if (userInput.length() != 1) {
+                throw new IllegalArgumentException("1개의 숫자를 입력하세요.");
+            }
+
+            //숫자들로만 구성되어 있는가?
+            try {
+                int exitNumber = Integer.parseInt(userInput);
+                //            - 1~2까지의 범위를 지키는가?:
+                if ((exitNumber != 1) && (exitNumber != 2)) {
+                    throw new IllegalArgumentException("1~2 숫자를 입력하세요.");
+                }
+                if (exitNumber == 1) {
+                    //다시 선택
+                    selectThreeNumber();
+                } else {
+                    return false;
+                }
+            } catch (NumberFormatException ex) {
+                throw new IllegalArgumentException("숫자를 입력하세요.");
+            }
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
 
-
-
-
+        boolean isGameRunning = true;
         //1. 서로 다른 임의의 수 3개 선택
         selectThreeNumber();
 
 
         //2. 출력문구성
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (true) {
+        while (isGameRunning) {
             ballCount = 0;
             strikeCount = 0;
 
@@ -101,64 +142,12 @@ public class RestartApplication {
 //            4. 입력값을 제시된 규칙에 따라 출력시키기
 //                    - 로직 구현 하기(볼, 스트라이크, 낫싱)
 //            - 형식에 맞춰 출력문 구성
-            countStrikeAndBall();
+            calculateStrikeAndBall();
+            displayResult();
 
-            if (ballCount != 0) {
-                System.out.print(ballCount + "볼 ");
-            }
-            if (strikeCount != 0) {
-                System.out.print(strikeCount + "스트라이크");
-            }
-            if ((ballCount + strikeCount) == 0) {
-                System.out.print("낫싱");
-            }
-            System.out.println();
             //5. 게임이 종료된 후, 다시시작 & 종료 선택 기능 넣기
-            if (strikeCount == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                userInput = Console.readLine();
+            isGameRunning = restartOrExitGame();
 
-                //1개의 입력이 들어왔는가?
-                if (userInput.length() != 1) {
-                    throw new IllegalArgumentException("1개의 숫자를 입력하세요.");
-                }
-
-                //숫자들로만 구성되어 있는가?
-                try {
-                    int exitNumber = Integer.parseInt(userInput);
-                    //            - 1~2까지의 범위를 지키는가?:
-                    if ((exitNumber != 1) && (exitNumber != 2)) {
-                        throw new IllegalArgumentException("1~2 숫자를 입력하세요.");
-                    }
-                    if (exitNumber == 1) {
-                        //다시 선택
-                        index = 0;
-                        while (index < 3) {
-                            boolean isDuplicate = false;
-                            int randomNumber = Randoms.pickNumberInRange(1, 9);
-                            for (int i = 0; i <= index; i++) {
-                                if (pickedNumber[i] == randomNumber) {
-                                    isDuplicate = true;
-                                    break;
-                                }
-                            }
-                            if (!isDuplicate) {
-                                pickedNumber[index++] = randomNumber;
-                            }
-                        }
-
-                        for (int i1 : pickedNumber) {
-                            System.out.println("i1 = " + i1);
-                        }
-                    }
-                    if (exitNumber == 2) {
-                        break;
-                    }
-                } catch (NumberFormatException ex) {
-                    throw new IllegalArgumentException("숫자를 입력하세요.");
-                }
-            }
         }
     }
 }
