@@ -34,6 +34,6 @@ public class OutPut {
         if (answer.equals("2")) {
             return false;
         }
-        throw new IllegalArgumentException("옳지 못한 입력입니다.");
+        throw new IllegalArgumentException("1과 2만 입력 가능합니다.");
     }
 }

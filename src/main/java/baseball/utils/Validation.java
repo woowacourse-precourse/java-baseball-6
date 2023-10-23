@@ -12,7 +12,13 @@ public class Validation {
 
     public void validateUserChoiceNumSize (String userChoiceNum) {
         if (userChoiceNum.length() != 3) {
-            throw new IllegalArgumentException("옳지 못한 입력입니다");
+            throw new IllegalArgumentException("입력한 숫자는 3자리여야 합니다.");
+        }
+    }
+
+    public void validateIsCharacter(int userChoiceNumber) {
+        if (userChoiceNumber > 10 || userChoiceNumber < 0) {
+            throw new IllegalArgumentException("정수만 입력 가능합니다.");
         }
     }
 }

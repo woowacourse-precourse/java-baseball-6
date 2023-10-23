@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Game;
 import baseball.domain.User;
+import baseball.utils.Util;
 import baseball.utils.Validation;
 import baseball.view.OutPut;
 import baseball.view.UserInPut;
@@ -12,6 +13,7 @@ public class Service {
     Game game = new Game();
     User user = new User();
     Validation validation = new Validation();
+    Util util = new Util();
     OutPut outPut = new OutPut();
     UserInPut userInPut = new UserInPut();
 
@@ -66,16 +68,18 @@ public class Service {
         decisionUserChoiceNum(game.getGameRandomNumber(), user.getUserChoiceNumber());
     }
 
-
-    private void decisionUserChoiceNum (int[] gameRandomNumber, String userChoice) {
-        for (int i = 0; i < userChoice.length(); i++) {
-            if (validation.validateIsNumberExist(gameRandomNumber, userChoice.charAt(i) - '0')) {
-                if ((userChoice.charAt(i)) - '0' == gameRandomNumber[i]) {
+    private void decisionUserChoiceNum (int[] gameRandomNumber, String userChoiceNumber) {
+        for (int i = 0; i < userChoiceNumber.length(); i++) {
+            int extractedNumber = util.parseCharToInt(userChoiceNumber.charAt(i));
+            if (validation.validateIsNumberExist(gameRandomNumber, extractedNumber)) {
+                if (extractedNumber == gameRandomNumber[i]) {
                     game.addStrikeCount();
                 } else {
                     game.addBallCount();
                 }
             }
+
+            validation.validateIsCharacter(extractedNumber);
         }
     }
 
