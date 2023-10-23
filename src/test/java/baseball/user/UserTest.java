@@ -1,6 +1,24 @@
 package baseball.user;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
 class UserTest {
+
+    private static ByteArrayOutputStream outputMessage;
+
+    @BeforeEach
+    void setupStream() {
+        outputMessage = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputMessage));
+    }
+
+    @AfterEach
+    void restoresStreams() {
+        System.setOut(System.out);
+    }
 
     // TODO GameDispatch.dispatch의 출력값, GameResponse.result = SUCCESS 이면 msg를 출력한다.
 
