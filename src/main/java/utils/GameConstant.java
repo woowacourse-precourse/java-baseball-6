@@ -1,7 +1,10 @@
 package utils;
 
 public class GameConstant {
+
     public static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
+    public static final int MIN_RANDOM_NUMBER = 1;
+    public static final int MAX_RANDOM_NUMBER = 9;
     public static final String QUIT_GAME = "2";
 
     public static final String BALL = "볼";
