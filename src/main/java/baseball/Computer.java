@@ -26,4 +26,9 @@ public class Computer {
         }
         return computerNumber;
     }
+
+    public void resetComputerNumber() {
+        this.computerNumber.clear();
+        makeRandomComputerNumber();
+    }
 }

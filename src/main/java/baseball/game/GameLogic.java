@@ -48,7 +48,6 @@ public class GameLogic {
         return hint.equals("3스트라이크");
     }
 
-
     String generateHintFromResult(int strike, int ball) {
         if (isNothing(strike, ball)) {
             return GameHintType.NOTHING.format(0);

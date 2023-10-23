@@ -47,8 +47,9 @@ public class Game {
                     displayCorrectAnswerMessage();
                     if (isWantToQuitGame()) {
                         break;
+                    } else {
+                        computer.resetComputerNumber();
                     }
-                    this.computer = new Computer();
                 }
             } catch (IllegalArgumentException e) {
                 gameUI.displayExceptionMessage(e);
