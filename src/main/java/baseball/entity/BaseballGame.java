@@ -37,7 +37,7 @@ public class BaseballGame {
     }
 
     private boolean isPlayerWin(PlayResult result) {
-        return result.getStrikeCount() == Balls.MAX_BALLS_SIZE;
+        return result.strikeCount() == Balls.MAX_BALLS_SIZE;
     }
 
     public boolean isEnd() {

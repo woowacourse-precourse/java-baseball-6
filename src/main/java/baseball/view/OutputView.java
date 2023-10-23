@@ -21,8 +21,8 @@ public class OutputView {
     public static void printResult(PlayResult result) {
         StringBuilder sb = new StringBuilder();
 
-        appendMessage(sb, result.getBallCount(), BALL_POSTFIX);
-        appendMessage(sb, result.getStrikeCount(), STRIKE_POSTFIX);
+        appendMessage(sb, result.ballCount(), BALL_POSTFIX);
+        appendMessage(sb, result.strikeCount(), STRIKE_POSTFIX);
         appendMessageIfAbsent(sb);
         removeLastWhitespaceIfPresent(sb);
 

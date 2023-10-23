@@ -34,8 +34,8 @@ class BaseballGameTest {
 
         PlayResult playResult = baseballGame.play(Balls.from(List.of(2, 3, 6)));
 
-        assertThat(playResult.getBallCount()).isEqualTo(2);
-        assertThat(playResult.getStrikeCount()).isEqualTo(0);
+        assertThat(playResult.ballCount()).isEqualTo(2);
+        assertThat(playResult.strikeCount()).isEqualTo(0);
     }
 
     @DisplayName("사용자가 정답을 맞출 경우, 게임은 종료된다.")
@@ -45,7 +45,7 @@ class BaseballGameTest {
 
         PlayResult playResult = baseballGame.play(Balls.from(List.of(1, 2, 3)));
 
-        assertThat(playResult.getStrikeCount()).isEqualTo(3);
+        assertThat(playResult.strikeCount()).isEqualTo(3);
         assertThat(baseballGame.isEnd()).isTrue();
     }
 

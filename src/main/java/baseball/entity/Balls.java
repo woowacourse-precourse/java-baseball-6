@@ -87,7 +87,7 @@ public class Balls implements Iterable<Ball> {
             counter.put(ballStatus, counter.getOrDefault(ballStatus, 0) + 1);
         });
 
-        return PlayResult.of(
+        return new PlayResult(
                 counter.getOrDefault(BallStatus.BALL, 0),
                 counter.getOrDefault(BallStatus.STRIKE, 0)
         );

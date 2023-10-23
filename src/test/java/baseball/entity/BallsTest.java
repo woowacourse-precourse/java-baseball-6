@@ -108,8 +108,8 @@ class BallsTest {
 
         PlayResult result = answerBalls.play(balls);
 
-        assertThat(result.getStrikeCount()).isEqualTo(1);
-        assertThat(result.getBallCount()).isEqualTo(2);
+        assertThat(result.strikeCount()).isEqualTo(1);
+        assertThat(result.ballCount()).isEqualTo(2);
     }
 
     @DisplayName("공 목록과 공 목록을 비교 - 3스트라이크")
@@ -120,8 +120,8 @@ class BallsTest {
 
         PlayResult result = answerBalls.play(balls);
 
-        assertThat(result.getStrikeCount()).isEqualTo(3);
-        assertThat(result.getBallCount()).isEqualTo(0);
+        assertThat(result.strikeCount()).isEqualTo(3);
+        assertThat(result.ballCount()).isEqualTo(0);
     }
 
     @DisplayName("공 목록과 공 목록을 비교 - 3볼")
@@ -132,8 +132,8 @@ class BallsTest {
 
         PlayResult result = answerBalls.play(balls);
 
-        assertThat(result.getStrikeCount()).isEqualTo(0);
-        assertThat(result.getBallCount()).isEqualTo(3);
+        assertThat(result.strikeCount()).isEqualTo(0);
+        assertThat(result.ballCount()).isEqualTo(3);
     }
 
     @DisplayName("공 목록과 공 목록을 비교 - 낫싱")
@@ -144,8 +144,8 @@ class BallsTest {
 
         PlayResult result = answerBalls.play(balls);
 
-        assertThat(result.getStrikeCount()).isEqualTo(0);
-        assertThat(result.getBallCount()).isEqualTo(0);
+        assertThat(result.strikeCount()).isEqualTo(0);
+        assertThat(result.ballCount()).isEqualTo(0);
     }
 
     @DisplayName("공 목록과 알 수 없는 공 목록(null)이 들어왔을 때, 비교할 수 없다.")
