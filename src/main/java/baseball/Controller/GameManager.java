@@ -7,8 +7,6 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
-
-import static baseball.Application.*;
 import static baseball.system.SystemConstant.GAME_DIGIT;
 
 public class GameManager {
