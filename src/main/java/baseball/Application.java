@@ -45,10 +45,17 @@ public class Application {
     }
 
     public static void splitNumber(String input){
+        if(input.length()!=3){
+            throw new IllegalArgumentException();
+        }
         inputList.clear();
         int i=0;
         while(inputList.size()<3){
-            inputList.add(Integer.valueOf(input.split("")[i]));
+            int number = Integer.valueOf(input.split("")[i]);
+            if(inputList.contains(number)){
+                throw new IllegalArgumentException();
+            }
+            inputList.add(number);
             i++;
         }
     }
