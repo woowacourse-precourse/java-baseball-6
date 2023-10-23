@@ -19,7 +19,6 @@ public class Application {
                 computerNumber.add(randomNumber);
             }
         }
-
         return computerNumber;
     }
 
