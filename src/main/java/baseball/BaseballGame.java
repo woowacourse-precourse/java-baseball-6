@@ -17,9 +17,9 @@ public class BaseballGame {
         while (true) {
             List<Integer> playerNumbers = player.readNumber();
             GameResult currentResult = computer.getResult(playerNumbers);
-            printResult(currentResult);
+            System.out.println(currentResult.toString());
 
-            if (currentResult.getStrikeCount() == 3) {
+            if (currentResult.isGameOver()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 if (player.askRestart() == 2) {
                     break;
@@ -27,19 +27,5 @@ public class BaseballGame {
                 computer.pickRandomNumber();
             }
         }
-    }
-
-    private void printResult(GameResult result) {
-        String toString = "";
-        if (result.getBallCount() > 0) {
-            toString += result.getBallCount() + "볼";
-        }
-        if (result.getStrikeCount() > 0) {
-            toString += result.getStrikeCount() + "스트라이크";
-        }
-        if (result.getBallCount() == 0 && result.getStrikeCount() == 0) {
-            toString += "낫싱";
-        }
-        System.out.println(toString);
     }
 }
