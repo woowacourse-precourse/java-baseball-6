@@ -88,12 +88,13 @@ public class GameModel {
     private void hasRepeatedDigitNumber(List<String> playerNum) {
         Set<String> digitNumSet = new HashSet<>();
 
-        for (String pNum : playerNum) {
-            if (digitNumSet.contains(pNum)) {
-                throw new IllegalArgumentException("서로 다른 3자리의 수가 아닙니다. 게임이 종료됩니다.");
-            }
-            digitNumSet.add(pNum);
-        }
+        playerNum.stream()
+                .filter(pNum -> !digitNumSet.add(pNum))
+                .findAny()
+                .ifPresent(pNum -> {
+                    throw new IllegalArgumentException("서로 다른 3자리의 수가 아닙니다. 게임이 종료됩니다.");
+                });
     }
+
 }
 
