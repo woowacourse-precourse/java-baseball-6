@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    int strike = 0;
-    int ball = 0;
+    static int strike = 0;
+    static int ball = 0;
     public List<Integer> selectRandomNumber(List<Integer> computerNumber){
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
