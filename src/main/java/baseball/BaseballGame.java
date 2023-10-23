@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
@@ -11,9 +12,7 @@ public class BaseballGame {
         Computer computer = new Computer();
         computerNumberList = computer.generateComputerNumber();
         showInputUserNumber();
-        User user = new User();
-        String userNumberStr = new String();
-        user.inputUserNumber(userNumberStr);
+        userNumberList = getUsetNumberList();
     }
 
     private static void showStart() {
@@ -23,4 +22,15 @@ public class BaseballGame {
     private static void showInputUserNumber() {
         System.out.println("숫자를 입력해주세요 : ");
     }
+
+    private static List<Integer> getUsetNumberList() {
+        List<Integer> userNumberList = new ArrayList<>();
+        User user = new User();
+        String userNumberStr = new String();
+        user.inputUserNumber(userNumberStr);
+        userNumberList = user.convertInputToList();
+
+        return userNumberList;
+    }
+
 }
