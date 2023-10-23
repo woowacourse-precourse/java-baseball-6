@@ -1,34 +1,35 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class Player{public void printMessage(String message) {
-    System.out.println(message);
-}
+public class Player{
 
-    public List<Integer> getUserInput() {
-        Scanner scanner = new Scanner(System.in);
+    public List<Integer> getPlayerInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> userNumbers = new ArrayList<>();
-        String userInput = scanner.nextLine();
+        List<Integer> playerNumbers = new ArrayList<>();
+        String playerInput = Console.readLine();
+
+        if (playerInput.length() != 3) {
+            throw new IllegalArgumentException("1~9 중, 세자리 숫자만 입력하세요.");
+        }
 
         try {
             for (int i = 0; i < 3; i++) {
-                userNumbers.add(Character.getNumericValue(userInput.charAt(i)));
+                playerNumbers.add(Character.getNumericValue(playerInput.charAt(i)));
             }
-        } catch (StringIndexOutOfBoundsException | NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력입니다. 3자리 숫자를 입력하세요.");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("1~9 중, 세자리 숫자만 입력하세요.");
         }
 
-        return userNumbers;
+        return playerNumbers;
     }
 
     public int getPlayAgainChoice() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-        return scanner.nextInt();
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.parseInt(Console.readLine());
     }
 }
