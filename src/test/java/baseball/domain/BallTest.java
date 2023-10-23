@@ -14,7 +14,7 @@ class BallTest {
         @DisplayName("유효한 숫자와 포지션을 입력하면 예외가 발생하지 않는다")
         @ParameterizedTest
         @CsvSource({"1, 0", "9, 3"})
-        void noExceptionIfValidNumber(int validNumber, int validPosition) {
+        void noExceptionIfValidNumberAndPosition(int validNumber, int validPosition) {
             assertThatNoException()
                     .isThrownBy(() -> new Ball(validNumber, validPosition));
         }
@@ -27,6 +27,12 @@ class BallTest {
                     .isThrownBy(() -> new Ball(invalidNumber, validPosition));
         }
 
-        // TODO: 유효하지 않은 포지션 테스트
+        @DisplayName("유효하지 않은 포지션을 입력하면 예외가 발생한다")
+        @ParameterizedTest
+        @CsvSource({"1, -1", "1, 4"})
+        void throwExceptionIfInvalidPosition(int validNumber, int invalidPosition) {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new Ball(validNumber, invalidPosition));
+        }
     }
 }
