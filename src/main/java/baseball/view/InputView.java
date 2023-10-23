@@ -1,14 +1,13 @@
 package baseball.view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import baseball.util.GameConstant;
 import baseball.util.NumberConstant;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public String inputNumber() {
-        String input = readLine();
+    public String askForNumber() {
+        String input = Console.readLine();
         validateInput(input);
         return input;
     }
@@ -51,7 +50,7 @@ public class InputView {
     }
 
     public int askForNewGameOrEnd() {
-        String input = readLine();
+        String input = Console.readLine();
         validateNewGameOrEndInput(input);
         return Integer.parseInt(input);
     }

@@ -29,7 +29,7 @@ public class BaseBallController {
         outputView.askForNumber();
 
         do {
-            String userInput = inputView.inputNumber();
+            String userInput = inputView.askForNumber();
             userInputNumbers = new UserInputNumbers(userInput);
 
             strikeCount = new Strikes(randomNumbers, userInputNumbers).getStrikeCount();
