@@ -39,7 +39,7 @@ public class JudgementConverter {
         if (strikeCount > 0) {
             judgementResult += strikeCount + PitchType.STRIKE.getType();
         }
-        return judgementResult;
+        return judgementResult.trim();
     }
 
 }
