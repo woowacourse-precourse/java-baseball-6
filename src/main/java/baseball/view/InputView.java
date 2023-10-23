@@ -8,8 +8,4 @@ public class InputView {
     public String receiveInputNumber() {
         return scanner.nextLine();
     }
-
-    public int receiveRetryOption() {
-        return Integer.parseInt(scanner.nextLine());
-    }
 }
