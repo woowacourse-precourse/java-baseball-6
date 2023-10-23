@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballGame {
-    private static final int ZERO = 0;
+    private static final int NO_COUNT = 0;
     private static final int THREE_STRIKE = 3;
     private final RandomNumbers randomNumbers;
 
@@ -35,7 +35,7 @@ public class BaseballGame {
     }
 
     private void isBall(StringBuilder stringBuilder) {
-        if (ball != ZERO) {
+        if (ball != NO_COUNT) {
             stringBuilder.append(ball);
             stringBuilder.append(OutputMessage.BALL);
             stringBuilder.append(OutputMessage.SPACE);
@@ -43,14 +43,14 @@ public class BaseballGame {
     }
 
     private void isStrike(StringBuilder stringBuilder) {
-        if (strike != ZERO) {
+        if (strike != NO_COUNT) {
             stringBuilder.append(strike);
             stringBuilder.append(OutputMessage.STRIKE);
         }
     }
 
     private void isBallAndStrike(StringBuilder stringBuilder) {
-        if (ball == ZERO && strike == ZERO) {
+        if (ball == NO_COUNT && strike == NO_COUNT) {
             stringBuilder.append(OutputMessage.NOTHING);
             stringBuilder.append(OutputMessage.SPACE);
         }
