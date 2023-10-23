@@ -17,7 +17,7 @@ public class Computer {
             computer.clear();
         }
 
-        while (computer.size() < 3) {
+        while (computer.size() < Baseball.NUMBERS_SIZE) {
             int randomNumber = getRandomNumber();
 
             if (!isContainsNumber(randomNumber)) {

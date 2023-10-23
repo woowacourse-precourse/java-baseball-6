@@ -45,7 +45,7 @@ public class Baseball {
             checkSameNumber();
             InputOut.showUserScore(strike, ball);
 
-            if (strike == 3) {
+            if (strike == NUMBERS_SIZE) {
                 System.out.println(InputOut.STRIKE_MESSAGE);
                 break;
             }
