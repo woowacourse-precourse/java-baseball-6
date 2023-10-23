@@ -66,7 +66,7 @@ public class GameService {
             throw new IllegalArgumentException("입력이 없습니다.");
         }
         // 숫자가 아닌 경우
-        if(!input.matches("[0-9]+")) {
+        if(!input.matches("\\d+")) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
         // 3자리가 아닌 경우
