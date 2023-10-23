@@ -29,7 +29,9 @@ public class BaseballModel {
             int answerNum = answer.get(i);
             if (answerNum == playerGuess.get(i)) {
                 strike++;
-            } else if (playerGuess.contains(answerNum)) {
+                continue;
+            }
+            if (playerGuess.contains(answerNum)) {
                 ball++;
             }
         }
