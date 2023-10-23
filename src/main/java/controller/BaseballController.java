@@ -1,6 +1,5 @@
 package controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import domain.ComputerNumber;
 import domain.PlayerNumber;
 import view.InputView;
@@ -16,7 +15,7 @@ public class BaseballController {
             computerNumber.createComputerNumbers();
             round();
             OutputView.printWinMessage();
-        } while(InputView.inputRestart());
+        } while (InputView.inputRestart());
 
     }
 
@@ -24,7 +23,6 @@ public class BaseballController {
         do {
             playerNumber.setPlayerNumbers(InputView.inputPlayerNumbers());
             OutputView.printResult(computerNumber.countAndGetResult(playerNumber));
-        } while(!playerNumber.isWin);
+        } while (!playerNumber.isWin);
     }
-
 }

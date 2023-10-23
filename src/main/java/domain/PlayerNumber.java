@@ -1,13 +1,9 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Console;
-import view.OutputView;
-
 import java.util.Arrays;
 import java.util.List;
 
 public class PlayerNumber {
-
     private static String playerNumbers;
     public static boolean isWin = false;
 
@@ -18,9 +14,7 @@ public class PlayerNumber {
     public List<Integer> getPlayerNumberToList() {
         return Arrays.stream(playerNumbers.split("")).toList()
                 .stream().mapToInt(Integer :: parseInt)
-                .boxed().toList();
+                .boxed()
+                .toList();
     }
-
-
-
 }

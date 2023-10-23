@@ -20,7 +20,6 @@ public class InputView {
         boolean isRestart = false;
         System.out.printf(RESTART_MESSAGE, RESTART_FLAG, END_FLAG);
         String flag = Console.readLine();
-
         if (flag.equals(RESTART_FLAG) && flag.equals(END_FLAG)) {
             throw new IllegalArgumentException("\nError : " + RESTART_FLAG + "이나 " + END_FLAG + "를 입력해 주세요.");
         }

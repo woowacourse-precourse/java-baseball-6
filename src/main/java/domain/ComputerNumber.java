@@ -1,7 +1,6 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +10,6 @@ public class ComputerNumber {
     public static final int LENGTH = 3;
     private List<Integer> computerNumbers = new ArrayList<>();
     private Map<String, Integer> result = new HashMap<>();
-
-    public ComputerNumber(){}
 
     public void createComputerNumbers() {
         computerNumbers.clear();
@@ -28,27 +25,21 @@ public class ComputerNumber {
         List<Integer> playerNumbers = playerNumberClass.getPlayerNumberToList();
         int strike = 0;
         int ball = 0;
-
         for (int i=0;i<computerNumbers.size();i++) {
-            if(computerNumbers.get(i).equals(playerNumbers.get(i))) {
+            if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
                 strike++;
             }
         }
-        result.put("strike", strike);
-
-        if (strike!=computerNumbers.size()) {
-            for (int i=0;i<computerNumbers.size();i++) {
-                if(computerNumbers.contains(playerNumbers.get(i))) {
-                    ball++;
-                }
+        for (int i=0;i<computerNumbers.size();i++) {
+            if (computerNumbers.contains(playerNumbers.get(i))) {
+                ball++;
             }
         }
+        result.put("strike", strike);
         result.put("ball", ball - strike);
-
         if (strike==computerNumbers.size()) {
             playerNumberClass.isWin = true;
         }
-
         return result;
     }
 }

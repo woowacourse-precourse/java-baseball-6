@@ -1,7 +1,6 @@
 package view;
 
 import domain.ComputerNumber;
-
 import java.util.Map;
 
 public class OutputView {
@@ -13,15 +12,13 @@ public class OutputView {
     }
 
     public static void printResult(Map<String, Integer> result) {
-        if(result.get("ball") > 0) {
+        if (result.get("ball") > 0) {
             System.out.print(result.get("ball") + "볼 ");
         }
-
-        if(result.get("strike") > 0) {
+        if (result.get("strike") > 0) {
             System.out.print(result.get("strike") + "스트라이크");
         }
-
-        if(result.get("ball") <= 0 && result.get("strike") <= 0) {
+        if (result.get("ball") <= 0 && result.get("strike") <= 0) {
             System.out.print("낫싱");
         }
         System.out.print("\n");
@@ -30,5 +27,4 @@ public class OutputView {
     public static void printWinMessage() {
         System.out.println(WIN_MESSAGE);
     }
-
 }
