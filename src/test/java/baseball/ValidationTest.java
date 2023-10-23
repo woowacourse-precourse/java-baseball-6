@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ValidationTest extends NsTest {
     private final int input_length = 3;
     @Test
-    void 사용자_게임_입력_값_공백_예외_테스트(){
+    void 사용자_게임_입력_값_빈_문자열_예외_테스트(){
         //given
         String input_value="";
 
@@ -23,7 +23,7 @@ public class ValidationTest extends NsTest {
     }
 
     @Test
-    void 사용자_게임_입력_값_문자열_길이_테스트(){
+    void 사용자_게임_입력_값_문자열_길이_예외_테스트(){
         //given
         String input_value = "1234";
 
