@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import baseball.constant.NumberConst;
 import baseball.util.MessageUtil;
@@ -10,7 +11,7 @@ import baseball.validation.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Game {
+public class Game implements Runnable {
     private static final int restartNumber = NumberConst.RESTART_NUMBER; // 중지 목적 종료 숫자 확인
     private static final int stopNumber = NumberConst.STOP_NUMBER;
     private static final int inputLength = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
@@ -18,13 +19,23 @@ public class Game {
     private static final InputValidator valid = new InputValidator(); // 유효성 검사 용도
     private static final int maxCountStrike = NumberConst.MAX_COUNT_STRIKE; // 성공의 기준이 되는 스트라이크 개수
 
+    private static Game instance = null;
+
     private int compareRestartNum = restartNumber; // 재시작, 종료 여부를 입력받기 위한 변수
     private String InputString; // 입력받은 숫자 리스트로 변환하기 위한 임시 변수
     private List<Integer> user = new ArrayList<>(); // user 에게 입력받은 숫자
     private int countBall; // Ball 개수 확인 용도
     private int countStrike; // Strike 개수 확인 용도
 
-    public void startGame() {
+    public void startGame() throws InterruptedException {
+        // TODO: Game 진행
+        Thread game = new Thread("Game");
+        game.start();
+        startGame();
+    }
+
+    @Override
+    public void run() {
         // TODO: Game 진행
 
         // 컴퓨터 랜덤 숫자 생성
@@ -66,12 +77,30 @@ public class Game {
                 countBall = 0;
                 countStrike = 0;
             }
+        } catch (NoSuchElementException exception) {
+            Thread.interrupted();
         } finally {
             Console.close();
+            Thread.interrupted();
         }
     }
 
-    public Game() {}
+    private Game() {}
+
+    public static Game getInstance() {
+        if (instance  == null) {
+            instance = new Game();
+        }
+
+        return instance;
+    }
+
+    /*
+     * Thread 중지 목적
+     */
+    public void stop() {
+        Thread.interrupted();
+    }
 
     /* *
      * 컴퓨터가 생성하는 랜덤 숫자 (3자리 수이며 각 숫자 간 중복은 없음)
