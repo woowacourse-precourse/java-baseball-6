@@ -1,16 +1,24 @@
-package baseball;
+package baseball.input;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserInput {
 
-    private final String input;
+    private String input;
     public UserInput(String userInput) {
         this.input = userInput;
     }
 
-    public static UserInput from(String userInput){
-        checkLength(userInput);
-        checkDuplication(userInput);
-        return new UserInput(userInput);
+    public UserInput() {
+    }
+
+    public void create(){
+        input = readLine().replaceAll(" ","");
+    }
+
+    public void checking(){
+        checkLength(input);
+        checkDuplication(input);
     }
 
     private static void checkDuplication(String userInput) {

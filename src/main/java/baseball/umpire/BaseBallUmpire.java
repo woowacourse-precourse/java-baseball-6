@@ -1,4 +1,4 @@
-package baseball;
+package baseball.umpire;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ public class BaseBallUmpire {
     private static int ball=0;
     private static int strike=0;
 
-    public String umpire(String userAnswer, List<String> computer) {
+    public void umpire(String userAnswer, List<String> computer) {
         ball=0; strike=0;
 
         String[] ans = userAnswer.split("");
@@ -20,23 +20,22 @@ public class BaseBallUmpire {
                 ball ++;
             }
         }
-
-        return shouting();
     }
 
-    private String shouting() {
-        StringBuilder sb = new StringBuilder();
+    public void shouting() {
         if(ball !=0 && strike !=0){
-            sb.append(ball+"볼 "+strike+"스트라이크");
+            System.out.println(ball+"볼 "+strike+"스트라이크");
         } else if (ball==0 && strike==0) {
-            sb.append("낫싱");
+            System.out.println("낫싱");
         } else if (strike==0) {
-            sb.append(ball+"볼");
+            System.out.println(ball+"볼");
         } else if(ball ==0){
-            sb.append(strike+"스트라이크");
+            System.out.println(strike+"스트라이크");
         }
-        String shout = sb.toString();
-        System.out.println(shout);
-        return shout;
     }
+
+    public boolean threeStrikeVAR() {
+        return (strike==3);
+    }
+
 }
