@@ -1,7 +1,9 @@
 package baseball.domain.ball;
 
 import baseball.domain.dto.GuessResult;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public final class Answer extends BallNumbers {
@@ -10,8 +12,8 @@ public final class Answer extends BallNumbers {
         super(numbers);
     }
 
-    public static Answer of(final List<Integer> numbers) {
-        return new Answer(numbers);
+    public static Answer of(final Set<Integer> numbers) {
+        return new Answer(new ArrayList<>(numbers));
     }
 
     public GuessResult guess(final Guess guess) {
@@ -33,6 +35,14 @@ public final class Answer extends BallNumbers {
                 .count();
     }
 
+    private boolean containsAtDifferentIndex(
+            final int index,
+            final Guess other
+    ) {
+        final BallNumber guessBallNumber = other.get(index);
+        return notEqualsAt(index, other) && ballNumbers.contains(guessBallNumber);
+    }
+
     private boolean equalsAt(
             final int index,
             final Guess other
@@ -42,11 +52,12 @@ public final class Answer extends BallNumbers {
         return answerBallNumber.equals(guessBallNumber);
     }
 
-    private boolean containsAtDifferentIndex(
+    private boolean notEqualsAt(
             final int index,
             final Guess other
     ) {
-        final BallNumber guessBallNumber = other.get(index);
-        return !equalsAt(index, other) && ballNumbers.contains(guessBallNumber);
+        return !equalsAt(index, other);
     }
+
+
 }
