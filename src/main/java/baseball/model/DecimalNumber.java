@@ -1,5 +1,8 @@
 package baseball.model;
 
+import baseball.controller.Validation;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DecimalNumber {
@@ -16,6 +19,18 @@ public class DecimalNumber {
     }
 
     public void setUser(String input) {
-        DecimalNumber.user = user;
+        Validation.validationGameNumber(input);
+        DecimalNumber.user = getStringToList(input);
+    }
+
+    private List<Integer> getStringToList(String input) {
+        String[] strArr = input.split("");
+        Integer[] intArr = new Integer[strArr.length];
+        for (int i = 0; i < strArr.length; i++) {
+            intArr[i] = Integer.parseInt(strArr[i]);
+        }
+        List<Integer> list = new ArrayList<>(Arrays.asList(intArr));
+
+        return list;
     }
 }
