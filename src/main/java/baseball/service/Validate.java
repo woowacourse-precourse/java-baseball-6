@@ -4,25 +4,28 @@ public class Validate {
     private static final int NUMBER_SIZE = 3;
     private static final int SIGNAL_SIZE = 1;
 
-    public void validate(String num) throws Exception {
+    public void validate(String num) /*throws IllegalArgumentException*/ {
+
         validateLength(num);
         validateRange(num);
         validateDuplicate(num);
+
     }
 
-    public void validateForRestart(String sign) throws Exception {
+    public void validateForRestart(String sign) /*throws Exception*/ {
+
         validateSignLength(sign);
         validateSignRange(sign);
 
     }
 
-    public void validateLength(String num) throws Exception {
+    public void validateLength(String num)/* throws IllegalArgumentException */ {
         if (num.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("세자리 숫자를 입력하시오");
         }
     }
 
-    public void validateSignLength(String sign) throws Exception {
+    public void validateSignLength(String sign) /*throws Exception*/ {
         if (sign.length() != SIGNAL_SIZE) {
             throw new IllegalArgumentException("재시작: 1, 종료: 2");
         }
@@ -43,7 +46,7 @@ public class Validate {
         return true;
     }
 
-    public void validateRange(String num) throws Exception {
+    public void validateRange(String num) /*throws IllegalArgumentException*/ {
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (notNum(num.charAt(i))) {
                 throw new IllegalArgumentException("각 자리에는 1~9 숫자만 입력하시오");
@@ -51,7 +54,7 @@ public class Validate {
         }
     }
 
-    public void validateSignRange(String sign) throws Exception {
+    public void validateSignRange(String sign) /*throws Exception*/ {
         if (notSignal(sign.charAt(0))) {
             throw new IllegalArgumentException("재시작: 1, 종료: 2");
         }
@@ -59,7 +62,7 @@ public class Validate {
     }
 
 
-    public void validateDuplicate(String num) throws Exception {
+    public void validateDuplicate(String num) /*throws IllegalArgumentException*/ {
         int[] checkDuplicate = Converter.convertForDuplicate(num);
         for (int i = 0; i < checkDuplicate.length; i++) {
             if (checkDuplicate[i] > 1) {

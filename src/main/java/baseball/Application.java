@@ -21,7 +21,7 @@ public class Application {
             Computer computer = new Computer();
             computer.setInput(new Generator().generateNum());
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
-            //System.out.println(computer.getInput());
+            System.out.println(computer.getInput());
             Player player = new Player();
             Result result = new Result();
             Validate validator = new Validate();
@@ -30,10 +30,8 @@ public class Application {
                 String num = Console.readLine();
                 try {
                     validator.validate(num);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    Console.close();
-                    return;
+                } catch (IllegalArgumentException e) {
+                    throw e;
                 }
                 player.setInput(num);
                 player.setPlayerNumberBall(Converter.convert(player.getInput()));
@@ -46,10 +44,8 @@ public class Application {
             String restart = Console.readLine();
             try {
                 validator.validateForRestart(restart);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                Console.close();
-                return;
+            } catch (IllegalArgumentException e) {
+                throw e;
             }
             if (restart.equals(END)) {
                 break;
