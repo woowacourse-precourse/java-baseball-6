@@ -16,6 +16,7 @@ public class MenuHandler {
             handle();
         } catch (RuntimeException exception) {
             Communicator.printException(exception);
+            throw exception;
         }
     }
 
