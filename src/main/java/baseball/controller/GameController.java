@@ -59,9 +59,6 @@ public class GameController {
     }
 
     public Result game(Player player,Game game) {
-        game.setStrikeCount(game.countStrike(player.getInputString()));
-        game.setBallCount(game.countBall(player.getInputString()));
-        game.setGameWin(game.isAnswer(player.getInputString()));
-        return new Result(game.isGameWin(), game.getStrikeCount(), game.getBallCount());
+        return new Result(game.isAnswer(player.getInputString()),game.countStrike(player.getInputString()), game.countBall(player.getInputString()) );
     }
 }
