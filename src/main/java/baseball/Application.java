@@ -34,6 +34,22 @@ public class Application {
         return player;
     }
 
+    static Result evaluate(List<Integer> player, List<Integer> computer) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 3; ++i) {
+            int playerNumber = player.get(i);
+
+            if (computer.get(i) == playerNumber) {
+                ++strike;
+            } else if (computer.contains(playerNumber)) {
+                ++ball;
+            }
+        }
+        return new Result(ball, strike);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -42,6 +58,7 @@ public class Application {
         while (true) {
             pickNumber(computer);
             List<Integer> player = readInput();
+            Result result = evaluate(player, computer);
             break;
         }
     }
