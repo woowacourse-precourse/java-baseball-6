@@ -9,17 +9,16 @@ import java.util.List;
 public class RandomPickNumber {
     public static List<Integer> computer = new ArrayList<>();
 
-    public static List<Integer> randomPickNumber() {
+    public static void randomPickNumber() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(StringConstant.MIN_NUMBER, StringConstant.MAX_NUMBER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        return computer;
     }
 
-    public static void RandomPickClean(){
+    public static void RandomPickClear(){
         computer = new ArrayList<>();
     }
 

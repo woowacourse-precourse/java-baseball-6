@@ -29,7 +29,7 @@ public class Start {
             restarting_Game = Console.readLine();
             Error.restartCommandError(restarting_Game);
 
-            RandomPickNumber.RandomPickClean();
+            RandomPickNumber.RandomPickClear();
         }
     }
 
