@@ -37,7 +37,6 @@
 - `FixedBaseballNumbersGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
 - `BaseballNumbers`: 컴퓨터가 만든 1~9 범위의 서로다른 3자리 수를 가지는 일급 컬렉션.
 - `BaseballNumber`: 컴퓨터가 만든 1~9 범위의 숫자를 저장.
-- `Computer`: `BaseballNumbersGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
 - `Score`: `"볼"`, `"스트라이크"`를 저장.
 - `Ball`: `"볼"`을 저장.
 - `Strike`: `"스트라이크"`를 저장.
@@ -55,8 +54,6 @@
 - `InputValidator`: 사용자가 잘못된 값을 입력시 `IllegalArgumentException` 발생시킨 후 애플리케이션 종료.
     - [x] `validateBaseballNumber()`: `InputView`의 `baseballNumber()`에서 입력받은 숫자가 1~9 범위의 서로다른 3자리 숫자인지 검증.
     - [x] `validateContinueOrExitNumber()`: `InputView`의 `continueOrExit()`에서 입력받은 숫자가 1 또는 2의 한자리 숫자인지 검증.
-- `Computer`
-    - [x] `calculateScore()`: 컴퓨터가 가지고 있는 정답 `BaseballNumbers`와 사용자가 입력한 3자리 수를 비교하여 `Score` 객체 반환.
 - `BaseballNumbersGenerator`
     - [x] `BaseballNumbers` 타입을 반환하는 `generate()` 메서드 정의
 - `RandomBaseballNumbersGenerator`: `NumbersGenerator` 구현
