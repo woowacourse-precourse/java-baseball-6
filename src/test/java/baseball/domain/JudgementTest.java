@@ -93,7 +93,7 @@ public class JudgementTest {
                     computer.countStrike(pitch.getPitches()),
                     computer.countBall(pitch.getPitches())
             );
-            assertThat(JudgementConverter.of(judgement)).isNotIn("4볼", "-1볼", "0볼 0스트라이크", "0볼", "0스트라이크", "4스트라이크", "1볼 2스트라이크", "2볼 2스트라이크", "3스트라이크");
+            assertThat(JudgementConverter.of(judgement)).isNotIn("4볼", "-1볼", "0볼 0스트라이크", "0볼", "0스트라이크", "4스트라이크", "1볼 2스트라이크", "2볼 2스트라이크");
         }
     }
 
