@@ -1,5 +1,6 @@
-package baseball;
+package baseball.unitTests;
 
+import baseball.people.preparation.Referee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
