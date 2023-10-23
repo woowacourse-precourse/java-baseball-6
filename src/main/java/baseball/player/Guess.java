@@ -1,6 +1,8 @@
 package baseball.player;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Guess {
@@ -8,14 +10,15 @@ public class Guess {
     private static final char MAX_ALLOWABLE_DIGIT = '9';
     private static final int VALID_NUMBER_LENGTH = 3;
 
-    private final String playerGuess;
+    private final List<Character> playerGuess;
 
     public Guess(String playerInput) {
         checkNullInput(playerInput);
-        checkInvalidLength(playerInput);
-        checkInvalidInput(playerInput);
-        checkDuplicateInput(playerInput);
-        this.playerGuess = playerInput;
+        List<Character> playerInputAsChars = strToCharacterList(playerInput);
+        checkInvalidLength(playerInputAsChars);
+        checkInvalidInput(playerInputAsChars);
+        checkDuplicateInput(playerInputAsChars);
+        this.playerGuess = playerInputAsChars;
     }
 
     private void checkNullInput(String playerInput) {
@@ -24,14 +27,14 @@ public class Guess {
         }
     }
 
-    private void checkInvalidLength(String playerInput) {
-        if (playerInput.length() != VALID_NUMBER_LENGTH) {
+    private void checkInvalidLength(List<Character> playerInputAsChars) {
+        if (playerInputAsChars.size() != VALID_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkInvalidInput(String playerInput) {
-        for (char digit : toCharArray(playerInput)) {
+    private void checkInvalidInput(List<Character> playerInputAsChars) {
+        for (char digit : playerInputAsChars) {
             checkInvalidDigit(digit);
         }
     }
@@ -42,26 +45,22 @@ public class Guess {
         }
     }
 
-    private void checkDuplicateInput(String playerInput) {
-        Set<Character> playerInputAsSet = new HashSet<>();
-        for (char digit : toCharArray(playerInput)) {
-            playerInputAsSet.add(digit);
-        }
-        compareLength(playerInput, playerInputAsSet);
-    }
-
-    private void compareLength(String playerInput, Set<Character> playerInputAsSet) {
-        if (playerInput.length() != playerInputAsSet.size()) {
+    private void checkDuplicateInput(List<Character> playerInputAsChars) {
+        Set<Character> playerInputAsSet = new HashSet<>(playerInputAsChars);
+        if (playerInputAsChars.size() != playerInputAsSet.size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private char[] toCharArray(String string) {
-        return string.toCharArray();
+    private List<Character> strToCharacterList(String string) {
+        List<Character> characterList = new ArrayList<>();
+        for (char character : string.toCharArray()) {
+            characterList.add(character);
+        }
+        return characterList;
     }
 
-    @Override
-    public String toString() {
+    public List<Character> getPlayerGuessAsChars() {
         return playerGuess;
     }
 }

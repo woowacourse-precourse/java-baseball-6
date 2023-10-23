@@ -33,10 +33,8 @@ public class Computer {
     }
 
     public String generateResult(Guess playerGuess) {
-        List<Character> playerInputAsChars;
-        String playerInput = playerGuess.toString();
-        playerInputAsChars = strToCharacterList(playerInput);
-        return generateResultString(computeStrikeAndBall(playerInputAsChars), computeStrike(playerInputAsChars));
+        List<Character> playerGuessAsChars = playerGuess.getPlayerGuessAsChars();
+        return generateResultString(computeStrikeAndBall(playerGuessAsChars), computeStrike(playerGuessAsChars));
     }
 
     private void generateRandomNumber() {
