@@ -28,8 +28,8 @@ public class PrintService {
          System.out.println(CORRECT_ANSWER_MESSAGE);
      }
 
-     public static void printRestart() {
-         System.out.println(RESTART_MESSAGE);
+     public static void printRestartForm() {
+         System.out.println(RESTART_FORM_MESSAGE);
      }
 
      public static void printCloseApplication() {

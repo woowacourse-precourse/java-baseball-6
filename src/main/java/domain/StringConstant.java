@@ -8,7 +8,7 @@ public class StringConstant {
     // 게임 진행 시점 메시지
     public static final String INPUT_FORM_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String CORRECT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String RESTART_FORM_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     // 판정 결과 출력을 위한 문자열
     public static final String NOTHING_STRING = "낫싱";

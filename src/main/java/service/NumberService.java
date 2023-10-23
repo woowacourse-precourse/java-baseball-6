@@ -29,12 +29,13 @@ public class NumberService {
 
         String inputString = readLine();
 
-        validateInputString(inputString, size);
+        validateInputType(inputString);
+        validateInputSize(inputString, size);
 
         for (int i = 0; i < size; i++)
             inputNumbers.add(inputString.charAt(i) - '0');
 
-        validateInputNumbers(inputNumbers);
+        validateInputDuplicate(inputNumbers);
 
         return inputNumbers;
     }
@@ -42,26 +43,27 @@ public class NumberService {
     public static int readRestartNumber() {
         String input = readLine();
 
+        validateInputType(input);
         validateRestartNumber(input);
 
         return parseInt(input);
     }
 
-    private static void validateInputString(String inputStr, int size) {
-        // input string size 검사
-        if (inputStr.length() != size)
-            throw new IllegalArgumentException(WRONG_INPUT_SIZE_ERROR + "\n필요 : " + size + " 실제 : " + inputStr.length());
+    private static void validateInputSize(String input, int size) {
+        if (input.length() != size)
+            throw new IllegalArgumentException(INPUT_SIZE_ERROR + "\n필요 : " + size + " 실제 : " + input.length());
+    }
 
-        // input string type 검사
-        for (int i = 0; i < inputStr.length(); i++) {
-            char c = inputStr.charAt(i);
+    private static void validateInputType(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            int digit = input.charAt(i);
 
-            if (c - '0' < START_RANGE_NUM || c - '0' > END_RANGE_NUM)
-                throw new IllegalArgumentException(WRONG_INPUT_TYPE_ERROR + "\n입력 중 최초 원인 : " + c);
+            if (digit - '0' < START_RANGE_NUM || digit - '0' > END_RANGE_NUM)
+                throw new IllegalArgumentException(INPUT_TYPE_ERROR + "\n입력 중 최초 원인 : " + digit);
         }
     }
 
-    private static void validateInputNumbers(List<Integer> inputNumbers) {
+    private static void validateInputDuplicate(List<Integer> inputNumbers) {
         List<Integer> duplicate = new ArrayList<>();
 
         for (Integer n : inputNumbers) {
@@ -72,7 +74,9 @@ public class NumberService {
     }
 
     private static void validateRestartNumber(String input) {
-        if (!input.equals("1") && !input.equals("2"))
-            throw new IllegalArgumentException(WRONG_RESTART_TYPE_ERROR);
+        int restartNumber = parseInt(input);
+
+        if (restartNumber != RESTART_INPUT_NUM && restartNumber != QUIT_INPUT_NUM)
+            throw new IllegalArgumentException(RESTART_TYPE_ERROR);
     }
 }

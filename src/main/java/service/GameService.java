@@ -2,8 +2,7 @@ package service;
 
 import java.util.List;
 
-import static domain.NumberConstant.CORRECT_STRIKE_NUM;
-import static domain.NumberConstant.NUMBER_SET_SIZE;
+import static domain.NumberConstant.*;
 import static service.NumberService.*;
 import static service.PrintService.*;
 
@@ -39,7 +38,7 @@ public class GameService {
     }
 
     public static boolean isRestart() {
-        printRestart();
+        printRestartForm();
 
         return readRestartNumber() == 1;
     }
