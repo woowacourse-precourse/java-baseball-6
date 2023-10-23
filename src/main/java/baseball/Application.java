@@ -16,12 +16,27 @@ public class Application {
         List<Integer> computer = chooseNumByComputer();
 
         while (true) {
+            String userInputStr = getUserInputStr();
+
+            // 유저의 입력이 숫자로만 이루어지지 않았을 경우 애플리케이션 종료
+            if(!isUserInputValidate(userInputStr)){
+                try{
+                    throw new IllegalArgumentException();
+                }catch(IllegalArgumentException e){
+                    e.printStackTrace();
+                    break;
+                }
+            }
+
             // 유저가 숫자 3개를 고른다.
-            List<Integer> user = chooseNumByUser();
+            List<Integer> user = chooseNumByUser(userInputStr);
+
+            System.out.println("user = " + user);
 
             // TODO 게임 종료 판단 기능 추가 시 삭제
             break;
         }
+        System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
     }
 
     private static List<Integer> chooseNumByComputer() {
@@ -35,17 +50,30 @@ public class Application {
         return computer;
     }
 
-    private static List<Integer> chooseNumByUser() {
+    private static String getUserInputStr(){
         System.out.println("숫자를 입력해주세요 : ");
+        return scanner.next();
+    }
 
-        String userInput;
-        userInput = scanner.next();
-
+    private static List<Integer> chooseNumByUser(String userInput) {
         List<Integer> num = new ArrayList<>();
         // 유저의 입력을 숫자 리스트로 변환
         for (int i = 0; i < userInput.length(); i++) {
             num.add(userInput.charAt(i) - '0');
         }
         return num;
+    }
+
+    /**
+     * 유저가 입력한 문자열이 모두 숫자이면 true return
+     *
+     * @param userInput 유저가 입력한 문자열
+     * @return 유저가 입력한 문자열이 모두 숫자이면 true 아니면 false
+     */
+    private static boolean isUserInputValidate(String userInput){
+        for(int i = 0; i < userInput.length(); i++){
+            if(!Character.isDigit(userInput.charAt(i))) return false;
+        }
+        return true;
     }
 }
