@@ -11,6 +11,7 @@ import static baseball.Application.userNumbers;
 
 public class CompareTwoNumbers {
     ViewResult viewResult = new ViewResult();
+    Validator validator = new Validator();
     static int strike;
     static int ball;
     public int play() throws IOException {
@@ -21,8 +22,10 @@ public class CompareTwoNumbers {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int result = Integer.parseInt(Console.readLine());    // 검증 로직이 필요함
+            String choice = Console.readLine();
+            validator.check(choice);
 
+            int result = Integer.parseInt(choice);
             if(result == 1){//재시작
                 return 1;
             }

@@ -15,8 +15,9 @@ public class Validator {
     }
 
     private boolean checkNumber(String userInputNumber) {
+        String[] tmp = userInputNumber.split("");
         for(int i=0; i<3; i++){
-            if(userInputNumber.charAt(i)==0)    return false;
+            if(stoi(tmp[i])==0)    return false;
         }
         return true;
     }
