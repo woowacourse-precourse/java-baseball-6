@@ -23,18 +23,22 @@ public class BaseballGame {
             result = playerService.checkStrikeAndBall(computerService.getRandomNumber());
             consolePrinter.printResult(result);
 
-            if (result[STRIKE] == NUMBER_LENGTH) {
-                consolePrinter.successPrint();
-                consolePrinter.restartPrint();
-                
-                if (!restartGame()) {
-                    break;
-                }
+            if (!isGameComplete(result)) {
+                break;
             }
         }
     }
 
-    public Boolean restartGame() {
+    private boolean isGameComplete(int[] result) {
+        if (result[STRIKE] == NUMBER_LENGTH) {
+            consolePrinter.successPrint();
+            consolePrinter.restartPrint();
+            return askForRestart();
+        }
+        return true;
+    }
+
+    public Boolean askForRestart() {
         String answer = Console.readLine();
         if (answer.equals(INPUT_RESTART)) {
             computerService.randomNumberGenerate();
@@ -43,9 +47,6 @@ public class BaseballGame {
         if (answer.equals(INPUT_QUIT)) {
             return false;
         }
-        if (!answer.equals(INPUT_RESTART) && !answer.equals(INPUT_QUIT)) {
-            throw new IllegalArgumentException();
-        }
-        return true;
+        throw new IllegalArgumentException();
     }
 }
