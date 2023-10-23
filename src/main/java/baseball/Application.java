@@ -1,6 +1,12 @@
 package baseball;
 
 import baseball.gamemanager.GameManager;
+import baseball.result.BallCountResult;
+import baseball.ui.ConsoleDisplayFactory;
+import baseball.ui.GameRestartChoiceDisplay;
+import baseball.ui.GameStartDisplay;
+import baseball.ui.PrintMessage;
+import baseball.ui.PrintResultMessage;
 
 public class Application {
   public static void main(String[] args) {
@@ -27,26 +33,30 @@ public class Application {
      * 5-2-1. 재시작한다면 0번 단계로 이동
      * 5-2-2. 종료한다면 프로그램 종료
      */
-
-    /**
-     * 생각해볼것
-     * 1. 만약 3자리수가 아니라 4자리수, 5자리수 이렇게 게임 룰이 변경될 수 있다면?
-     * 2. 유저에게 입력받는 방식이 변경되어야 한다면?
-     * 3. 검증 방식이 달라져야 한다면?
-     * 4. 게임이 추가가 된다면?
-     * 5. 출력 방식이 바뀐다면?
-     */
+    
 
     GameManager gameManager = new GameManager();
 
     gameManager.start();
 
+    PrintMessage start = ConsoleDisplayFactory.requestInput();
+    PrintResultMessage resultDrawer = ConsoleDisplayFactory.result();
+    PrintResultMessage endDrawer = ConsoleDisplayFactory.end();
+    PrintMessage restartDrawer = ConsoleDisplayFactory.restartDrawer();
+
     while(true) {
+      start.print(GameStartDisplay.NUMBER_INPUT_MESSAGE);
       gameManager.requestUserInput();
+
+      BallCountResult ballCountResult = gameManager.calculateResult();
+      resultDrawer.print(ballCountResult);
+
       if (!gameManager.isThreeStrike()) {
         continue;
       }
 
+      endDrawer.print(ballCountResult); //모든 숫자를 맞추었다면 결과 및 메세지 출력
+      restartDrawer.print(GameRestartChoiceDisplay.RESTART_MESSAGE); //재시작, 종료 여부 확인
       if (gameManager.requestGameRestartChoice() == 2) {
         break;
       }

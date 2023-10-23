@@ -3,6 +3,7 @@ package baseball.gamemanager;
 import baseball.input.UserNumberInputReader;
 import baseball.property.BaseballGameProperty;
 import baseball.random.RandomNumberGenerator;
+import baseball.result.BallCountResult;
 import baseball.validation.DuplicateNumberValidator;
 import baseball.validation.NumberContainZeroValidator;
 import baseball.validation.NumberRangeValidator;
@@ -69,8 +70,9 @@ public class GameManager {
     numberRangeValidator.validate(userInputNumber);
   }
 
-  public void calculateResult() {
+  public BallCountResult calculateResult() {
 
+    return null;
   }
 
   public boolean isThreeStrike() {
