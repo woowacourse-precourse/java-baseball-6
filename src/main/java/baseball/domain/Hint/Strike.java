@@ -1,14 +1,5 @@
 package baseball.domain.Hint;
 
-public class Strike {
+public class Strike extends HintItem{
 
-    private int count = 0;
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
 }

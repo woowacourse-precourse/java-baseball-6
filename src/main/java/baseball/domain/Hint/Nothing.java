@@ -1,14 +1,6 @@
 package baseball.domain.Hint;
 
-public class Nothing {
+public class Nothing extends HintItem {
 
-    private boolean status;
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 }

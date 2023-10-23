@@ -1,14 +1,6 @@
 package baseball.domain.Hint;
 
-public class Ball {
+public class Ball extends HintItem {
 
-    private int count;
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
 }
