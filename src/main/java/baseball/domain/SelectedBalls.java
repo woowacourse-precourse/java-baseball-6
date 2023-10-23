@@ -12,8 +12,7 @@ public class SelectedBalls {
 
     private final Queue<Integer> balls = new LinkedList<>();
 
-
-    public SelectedBalls() {
+    private SelectedBalls() {
         initBalls();
     }
 
