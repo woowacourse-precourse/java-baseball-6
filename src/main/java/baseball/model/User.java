@@ -25,17 +25,27 @@ public class User {
     }
 
     private void validateInput() {
-        //set을 이용한 중복검사
-        Set<Integer> set = new HashSet<Integer>(userNumberList);
-        if (userNumberList.size() > NumberLimits.NUM_LIST_LENGTH.getValue()
-                || userNumberList.size() < NumberLimits.NUM_LIST_LENGTH.getValue()) {
+        checkListLength();
+        checkNumberRange();
+        checkForDuplicates();
+    }
+
+    private void checkListLength() {
+        if (userNumberList.size() != NumberLimits.NUM_LIST_LENGTH.getValue()) {
             throw new IllegalArgumentException(Message.THREE_NUMBERS_REQUIRED.getMessage());
         }
+    }
+
+    private void checkNumberRange() {
         for (Integer num : userNumberList) {
             if (num < NumberLimits.MIN_VALUE.getValue() || num > NumberLimits.MAX_VALUE.getValue()) {
                 throw new IllegalArgumentException(Message.NUMBER_RANGE.getMessage());
             }
         }
+    }
+
+    private void checkForDuplicates() {
+        Set<Integer> set = new HashSet<Integer>(userNumberList);
         if (set.size() < NumberLimits.NUM_LIST_LENGTH.getValue()) {
             throw new IllegalArgumentException(Message.UNIQUE_NUMBERS.getMessage());
         }
