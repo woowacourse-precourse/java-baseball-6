@@ -1,18 +1,15 @@
 package baseball.model;
 
-import static baseball.util.InputValidator.isRestartOrExitValid;
-
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Player {
 
     private GuessNumber guessNumber;
-    private Integer restartOrExit;
+    private RestartOrExit restartOrExit;
 
     public Player() {
         this.guessNumber = new GuessNumber();
-        this.restartOrExit = null;
+        this.restartOrExit = RestartOrExit.NONE;
     }
 
     public void inputNumbers() {
@@ -20,15 +17,7 @@ public class Player {
     }
 
     public void inputRestartOrExit() {
-        String input = Console.readLine();
-        validateInputRestartOrExit(input);
-        this.restartOrExit = Integer.parseInt(input);
-    }
-
-    private void validateInputRestartOrExit(String input) {
-        if (!isRestartOrExitValid(input)) {
-            throw new IllegalArgumentException();
-        }
+        restartOrExit.input();
     }
 
     public List<Integer> getNumbers() {
@@ -36,6 +25,6 @@ public class Player {
     }
 
     public Integer getRestartOrExit() {
-        return restartOrExit;
+        return restartOrExit.getRestartOrExit();
     }
 }
