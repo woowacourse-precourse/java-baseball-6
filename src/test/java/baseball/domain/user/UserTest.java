@@ -44,7 +44,7 @@ class UserTest {
         // GIVEN
         Integer outOfOption = 4;
 
-        assertThatThrownBy(() -> User.validateGameOption(outOfOption)) // WHEN
+        assertThatThrownBy(() -> user.validateGameOption(outOfOption)) // WHEN
                 .isInstanceOf(IllegalArgumentException.class); // THEN
     }
 
@@ -67,8 +67,6 @@ class UserTest {
 
             // THEN
             assertThat(hasParsedCorrectly).isEqualTo(true);
-            System.out.println(userInputs);
-            System.out.println(expectedAnswers);
         } catch (Exception e) {
             throw e;
         }
@@ -78,7 +76,7 @@ class UserTest {
     @DisplayName("입력한 야구 게임 정답값의 길이에 대한 예외처리를 합니다.")
     void validateLengthOnUserAnswer() {
         // GIVEN
-        String userAnswer = "14222";
+        String userAnswer = "1234";
 
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> { // THEN
             user.parseUserAnswer(userAnswer); // WHEN

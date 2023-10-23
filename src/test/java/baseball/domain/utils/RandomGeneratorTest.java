@@ -11,20 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RandomGeneratorTest {
-
-    /* package camp.nextstep.edu.missionutils.test에 이미 Test 코드 작성되어있음 */
-
     @Test
     @DisplayName("3개의 생성된 난수로 이루어진 List를 반환합니다")
     void test_getRandomNumbers() {
         // GIVEN
 
         // WHEN
-        List<Integer> randomNumbers = RandomGenerator.getRandomNumbers();
+        List<Integer> randomNumbers = new RandomGenerator().getRandomNumbers();
 
         // THEN
-        for (Integer eachRandNum: randomNumbers) {
-            assertThat(eachRandNum).isBetween(1,9);
+        for (Integer eachRandNum : randomNumbers) {
+            assertThat(eachRandNum).isBetween(1, 9);
         }
         assertThat(randomNumbers.size()).isEqualTo(3);
         System.out.println(randomNumbers.toString());

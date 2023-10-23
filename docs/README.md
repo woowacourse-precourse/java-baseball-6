@@ -10,13 +10,8 @@
 ## 구현
 - [x] 패키지 설계
 - [x] RandomGenerator 구현
-- [ ] GameService 구현
-  - [ ] startView() 구현
-  - [ ] resultView() 구현
-  - [ ] restartView() 구현
-  - [ ] gameService() 구현
-  - [ ] startGame() 구현
-  - [ ] endGame() 구현
+- [x] GameService 구현
+  - [x] startGame() 구현
 - [x] Computer 구현
 - [x] User 구현
 ## 테스트
@@ -24,8 +19,7 @@
 - [x] Randoms 테스트
 - [x] Console 테스트
 - [x] RandomGenerator 테스트
-- [ ] GameManger 테스트
 - [ ] GameService 테스트
 - [x] Computer 테스트
 - [x] User 테스트
-- [ ] Application 테스트
+- [x] Application 테스트

@@ -43,14 +43,14 @@ class ComputerTest {
     @DisplayName("볼, 스트라이크 여부를 판별합니다.")
     void testBallAndStrike() {
         // GIVEN
-        List<Integer> userInputs = new ArrayList<>();
-        userInputs.add(1);
-        userInputs.add(2);
-        userInputs.add(3);
         List<Integer> randomNumbers = new ArrayList<>();
-        randomNumbers.add(3);
-        randomNumbers.add(2);
-        randomNumbers.add(1);
+        randomNumbers.add(5);
+        randomNumbers.add(8);
+        randomNumbers.add(9);
+        List<Integer> userInputs = new ArrayList<>();
+        userInputs.add(5); // strike
+        userInputs.add(9); // ball
+        userInputs.add(7);
 
         // WHEN
         computer.countBallAndStrike(userInputs, randomNumbers);
@@ -58,7 +58,7 @@ class ComputerTest {
         int strikeCount = computer.getStrikeCount();
 
         // THEN
-        assertThat(ballCount).isEqualTo(2);
+        assertThat(ballCount).isEqualTo(1);
         assertThat(strikeCount).isEqualTo(1);
     }
 

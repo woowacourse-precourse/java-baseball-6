@@ -9,11 +9,10 @@ import java.util.List;
 
 public class GameService {
     private static GameService instance;
-    private static User user;
-    private static Computer computer;
+    private User user = new User();
+    private Computer computer = new Computer();
 
     /* GameService 싱글톤 인스턴스 반환  */
-
     public static GameService getInstance() {
         if (instance == null) {
             instance = new GameService();
@@ -21,51 +20,45 @@ public class GameService {
         return instance;
     }
 
-    /* User,Computer를 가지고 있는 GameService 싱글톤 인스턴스 반환 */
-    public static GameService getInstance(User user, Computer computer) {
-        if (instance == null) {
-            instance = new GameService(user, computer);
-        }
-        return instance;
-    }
-
     private GameService() {
     }
 
-    private GameService(User user, Computer computer) {
-        this.user = user;
-        this.computer = computer;
+
+    // 한 싸이클의 야구 게임 시작
+    public void startGame(List<Integer> randomNumbers) throws IllegalArgumentException {
+
+        System.out.println(randomNumbers.toString());
+
+        // 랜덤수 , 사용자 정답입력값 비교 :: 맞다면 게임 종료 이후, 재시작 여부 / 아니라면 계속 비교
+        while (true) {
+            // Computer 초기화 :: ballCount,strikeCount 초기화
+            computer.clear();
+
+            // 숫자 입력 안내 뷰
+            System.out.print("숫자를 입력해주세요 : ");
+
+            // 사용자 정답값 리스트
+            List<Integer> userAnswerInputs = getUserAnswerInputs();
+
+            // 정답 여부 판단
+            System.out.println(userAnswerInputs.toString());
+
+            boolean isAnswer = computer.isAnswer(userAnswerInputs, randomNumbers);
+            System.out.println(computer.showResult());
+
+            if (isAnswer) {
+                // 정답이라면 게임 종료
+                break;
+            }
+        }
     }
 
-
-    public void startGame() throws Exception {
-        // 랜덤수 리스트 생성
-        List<Integer> randomNumbers = RandomGenerator.getRandomNumbers();
-
-        // 숫자 입력 안내 뷰
-        System.out.print("숫자를 입력해주세요 : ");
-
-        try {
-            // 랜덤수 , 사용자 정답입력값 비교 :: 맞다면 게임 종료 이후, 재시작 여부 / 아니라면 계속 비교
-            while (true) {
-                // 사용자 정답입력값  입력
-                String userAnswer = Console.readLine();
-                // 사용자 정답입력값 파싱
-                user.parseUserAnswer(userAnswer);
-                List<Integer> userInputs = user.getUserAnswerInputs();
-
-                // 정답 여부 판단
-                if (computer.isAnswer(userInputs, randomNumbers)) {
-                    // 정답이라면 상태 출력 후, 게임 종료
-                    System.out.println(computer.showResult());
-                    break;
-                } else {
-                    // 오답이라면 상태 출력 후 재시도
-                    System.out.println(computer.showResult());
-                }
-            }
-        } catch (Exception e) {
-            throw e;
-        }
+    public static List<Integer> getUserAnswerInputs() throws IllegalArgumentException {
+        // 사용자 정답입력값  입력
+        String userAnswer = Console.readLine();
+        // 사용자 정답입력값 파싱
+        List<Integer> parsedUserAnswer = User.parseUserAnswer(userAnswer);
+//        List<Integer> userInputs = User.getUserAnswerInputs();
+        return parsedUserAnswer;
     }
 }

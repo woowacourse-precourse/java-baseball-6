@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomGenerator {
-    private static List<Integer> randomGeneratedNumber = new ArrayList<>();
+    private List<Integer> randomGeneratedNumber = new ArrayList<>();
 
-    public static List<Integer> getRandomNumbers(){
+    public List<Integer> getRandomNumbers() {
         while (randomGeneratedNumber.size() < Input.NUMLENGTH.getLength()) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomGeneratedNumber.contains(randomNumber)) {
