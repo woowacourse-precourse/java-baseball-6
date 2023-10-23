@@ -11,6 +11,10 @@ public class GameController {
     private List<Integer> computer = new ArrayList<>();  // 컴퓨터(정답) 번호
     private List<Integer> user = new ArrayList<>();  // 유저가 입력한 번호
     private int status = 1;   // 야구 게임의 상태가 새로 시작(1) 인지, 종료(2) 인지 구분
+
+    /*
+     * 게임 시작 메소드
+     */
     public void start() {
         printMessage.start();
 
@@ -19,6 +23,9 @@ public class GameController {
         }
     }
 
+    /*
+     * 게임 진행 메소드
+     */
     private void gaming() {
         GameTool gameTool = new GameTool();
         Exception exception = new Exception();
