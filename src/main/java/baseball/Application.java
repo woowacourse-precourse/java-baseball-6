@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,37 +10,26 @@ import java.util.Scanner;
 public class Application {
 
     private final static Integer numberCount = 3;
-    private static Scanner scanner = new Scanner(System.in);
-
     private static Boolean isApplicationEnd = false;
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IllegalArgumentException{
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-
             // 컴퓨터가 숫자 3개를 고른다.
             List<Integer> computer = chooseNumByComputer();
 
             while (true) {
                 String userInputStr = getUserInputStr();
+                System.out.println("userInputStr = " + userInputStr);
 
                 // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
                 if (!isUserInputValidate(userInputStr)) {
-                    try {
-                        throw new IllegalArgumentException();
-                    } catch (IllegalArgumentException e) {
-                        e.printStackTrace();
-                        isApplicationEnd = true;
-                        break;
-                    }
+                    isApplicationEnd = true;
+                    throw new IllegalArgumentException();
                 }
 
                 // 유저가 숫자 3개를 고른다.
                 List<Integer> user = chooseNumByUser(userInputStr);
-
-                System.out.println("computer = " + computer);
-                System.out.println("user = " + user);
 
                 Integer strikeCount = countStrike(computer, user);
                 Integer ballCount = countBall(computer, user);
@@ -98,7 +88,7 @@ public class Application {
         String result;
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            result = scanner.next();
+            result = Console.readLine();
 
             if(result.equals("1") || result.equals("2")) break;
             System.out.print("잘못 입력하셨습니다. 다시 입력해주세요. ");
@@ -162,7 +152,7 @@ public class Application {
      */
     private static String getUserInputStr() {
         System.out.print("숫자를 입력해주세요 : ");
-        return scanner.next();
+        return Console.readLine();
     }
 
     /**
