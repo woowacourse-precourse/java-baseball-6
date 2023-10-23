@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.model.Result;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
@@ -9,5 +10,13 @@ public class GameView {
     public String getUserNumber() {
         System.out.print("숫자를 입력해주세요 :");
         return Console.readLine();
+    }
+
+    public void showGameResult(Result result) {
+        System.out.println(result.getResult());
+    }
+
+    public void showEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
