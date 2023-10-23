@@ -19,20 +19,23 @@ public class ResultCalculator {
 
         return new BaseballGameResult(strike, ball, false);
     }
-    // TODO 리팩터링
+
     private int countBall(int[] userInputNumber, int[] randomNumber) {
         int count = 0;
 
         for (int i = 0; i < userInputNumber.length; i++) {
-            for (int j = 0; j < randomNumber.length; j++) {
-                if (i == j) {
-                    continue;
-                }
+            count += findBallCount(i, userInputNumber, randomNumber);
+        }
 
-                if (userInputNumber[i] == randomNumber[j]) {
-                    count += 1;
-                }
+        return count;
+    }
 
+    private int findBallCount(int index, int[] userInputNumber, int[] randomNumber) {
+        int count = 0;
+
+        for (int j = 0; j < randomNumber.length; j++) {
+            if (index != j && userInputNumber[index] == randomNumber[j]) {
+                count += 1;
             }
         }
 

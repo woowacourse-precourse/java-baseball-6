@@ -61,13 +61,13 @@ public class GameManager {
     public void start() {
         randomNumber = randomNumberGenerator.generateNumber();
 
-        while (!isAllowedNumber(randomNumber)) {
+        while (!isAllowedRandomNumber(randomNumber)) {
             randomNumber = randomNumberGenerator.generateNumber();
         }
 
     }
 
-    private boolean isAllowedNumber(int[] randomNumber) {
+    private boolean isAllowedRandomNumber(int[] randomNumber) {
         try {
             duplicateNumberValidator.validate(randomNumber);
             numberContainZeroValidator.validate(randomNumber);
