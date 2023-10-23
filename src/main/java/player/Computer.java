@@ -20,9 +20,9 @@ public class Computer implements BaseballPlayer {
             }
         }
 
-        baseballNumbers = new BaseballNumbers(computerBaseballNumber);
+        this.baseballNumbers = new BaseballNumbers(computerBaseballNumber);
     }
-    
+
     public BaseballNumbers getBaseballNumbers() {
         return this.baseballNumbers;
     }
