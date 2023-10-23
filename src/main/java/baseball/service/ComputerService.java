@@ -10,8 +10,14 @@ public class ComputerService {
     private static final int BASEBALL_MIN_NUMBER = 1;
     private static final int BASEBALL_MAX_NUMBER = 9;
 
-    public String initComputer() {
-        return makeComputerNumber();
+    public String makeComputerNumber() {
+        LinkedHashSet<String> result = new LinkedHashSet<>();
+
+        while (result.size() < BASEBALL_NUMBERS_SIZE) {
+            result.add(makeRandomNumber());
+        }
+
+        return String.join("", result);
     }
 
     public int countStrikes(String computer, String player) {
@@ -41,16 +47,6 @@ public class ComputerService {
         }
 
         return count;
-    }
-
-    private String makeComputerNumber() {
-        LinkedHashSet<String> result = new LinkedHashSet<>();
-
-        while (result.size() < BASEBALL_NUMBERS_SIZE) {
-            result.add(makeRandomNumber());
-        }
-
-        return String.join("", result);
     }
 
     private String makeRandomNumber() {

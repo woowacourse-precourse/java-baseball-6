@@ -72,7 +72,7 @@ public class BaseballController {
     }
 
     private String getComputerNumber() {
-        return computerService.initComputer();
+        return computerService.makeComputerNumber();
     }
 
     private void initGame() {
