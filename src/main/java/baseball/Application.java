@@ -10,16 +10,18 @@ public class Application {
 //            System.out.println(computer.randomNumber);
             gameMaster.start();
             while(!gameMaster.isCorrectAnswerFound) {
-                gameMaster.progress();
+                Validator validator = new Validator(computer.randomNumber);
+                String answer = gameMaster.progress();
+                validator.inputNumber = Integer.parseInt(validator.writeBaseballAnswer(answer));
 
-                Validator validator = new Validator(computer.randomNumber, gameMaster.inputNumber);
                 validator.init();
                 validator.changeInputBaseballType();
                 String s = gameMaster.printResult(validator.calculateResult());
 
                 String decide = gameMaster.checkResult(s);
                 if(decide != null) {
-                    gameMaster.shouldContinueRound = validator.answerOfProgress(decide);
+                    String decideAnswer = validator.writeProgressAnswer(decide);
+                    gameMaster.shouldContinueRound = validator.answerOfProgress(decideAnswer);
                     gameMaster.isCorrectAnswerFound = true;
                 }
             }
