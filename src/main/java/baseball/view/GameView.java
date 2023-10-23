@@ -17,14 +17,11 @@ public class GameView {
     }
 
     public void printAskInputMessage() {
-        System.out.println(ASK_INPUT_MESSAGE);
+        System.out.print(ASK_INPUT_MESSAGE);
     }
 
     public void printSuccessAndEndMessage() {
         System.out.println(SUCCESS_AND_END_MESSAGE);
-    }
-
-    public void printRestartOrEndMessage() {
         System.out.println(RESTART_OR_END_MESSAGE);
     }
 

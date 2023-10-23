@@ -71,7 +71,6 @@ public class GameController {
 
     public boolean isEndGame() {
         view.printSuccessAndEndMessage();
-        view.printRestartOrEndMessage();
         FinishInput finishInput = input.readFinishInput();
 
         return finishInput == FinishInput.RESTART_GAME;
