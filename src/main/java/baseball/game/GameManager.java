@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.game;
 
 import baseball.domain.ComputerNum;
 import baseball.domain.UserNum;

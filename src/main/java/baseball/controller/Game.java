@@ -1,6 +1,6 @@
-package baseball;
+package baseball.controller;
 
-import baseball.service.GameManager;
+import baseball.game.GameManager;
 
 public class Game {
     private GameManager gameManager;
@@ -28,9 +28,5 @@ public class Game {
 
     private void restartGame() {
         gameManager = new GameManager();
-    }
-
-    private void exitGame() {
-
     }
 }
