@@ -1,13 +1,13 @@
 package baseball.domain.player;
 
 public class ComputerPlayer {
-	private int[] numberArray;
+    private int[] numberArray;
 
-	public int[] getNumberArray() {
-		return numberArray;
-	}
+    public int[] getNumberArray() {
+        return numberArray;
+    }
 
-	public void setNumberArray(int[] numberArray) {
-		this.numberArray = numberArray;
-	}
+    public void setNumberArray(int[] numberArray) {
+        this.numberArray = numberArray;
+    }
 }
