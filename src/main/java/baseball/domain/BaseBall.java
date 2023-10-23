@@ -1,19 +1,19 @@
 package baseball.domain;
 
-import baseball.utils.BaseballGameNoticeUtil;
-import baseball.utils.NumbersValidator;
+import baseball.utils.GameNoticeUtil;
+import baseball.utils.Printer;
 import baseball.utils.RandomNumberCreator;
-import baseball.utils.ResultPrinter;
+import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 
 public class BaseBall implements Game {
 
-    private BaseballCalculator baseballCalculator;
+    private Calculator calculator;
 
-    public BaseBall(BaseballCalculator baseballCalculator) {
-        this.baseballCalculator = baseballCalculator;
+    public BaseBall(Calculator calculator) {
+        this.calculator = calculator;
     }
 
     @Override
@@ -34,12 +34,12 @@ public class BaseBall implements Game {
          * 2. 입력 값 계산기에 전달
          * 3. 계산 값 출력
          */
-        BaseballGameNoticeUtil.requireInputNumber();
+        GameNoticeUtil.requireInputNumber();
         String inputStringNumbers = inputBaseballNumbers();
-        NumbersValidator.inputValidate(inputStringNumbers);
+        Validator.inputValidate(inputStringNumbers);
 
-        List<Integer> baseballResults = baseballCalculator.calculate(inputStringNumbers, computerNumbers);
-        return ResultPrinter.printHint(baseballResults);
+        List<Integer> baseballResults = calculator.calculate(inputStringNumbers, computerNumbers);
+        return Printer.printHint(baseballResults);
     }
 
     /* 숫자 값 입력 */

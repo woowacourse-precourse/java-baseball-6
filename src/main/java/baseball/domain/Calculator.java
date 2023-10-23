@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BaseballCalculator {
+public class Calculator {
 
     public List<Integer> calculate(String inputStringNumbers, List<Integer> computerNumbers) {
         List<Integer> userNumbers = convertToList(inputStringNumbers);

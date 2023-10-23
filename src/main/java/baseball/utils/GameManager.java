@@ -12,11 +12,11 @@ public class GameManager {
     }
 
     public void game() {
-        BaseballGameNoticeUtil.noticeStartGame();
+        GameNoticeUtil.noticeStartGame();
         game.gameRun();
 
         while (true) {
-            BaseballGameNoticeUtil.noticeAgainOrExit();
+            GameNoticeUtil.noticeAgainOrExit();
 
             if (requireAgainOrExit().equals("2")) {
                 break;

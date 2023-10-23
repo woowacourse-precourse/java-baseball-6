@@ -1,6 +1,6 @@
 package baseball.utils;
 
-public class NumbersValidator {
+public class Validator {
     /*
      * 사용자 입력 값의 유효성 검사
      */
