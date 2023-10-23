@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Validation {
+
+    public boolean isNotNull(String num) {
+        boolean flag = true;
+
+        if (num == null || num.isBlank()) {
+            flag = false;
+        }
+
+        return flag;
+    }
+
     public boolean isDigitInput(String num) {
         boolean flag = true;
 
