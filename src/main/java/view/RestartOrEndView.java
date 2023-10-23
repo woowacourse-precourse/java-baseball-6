@@ -7,6 +7,7 @@
  * DATE             AUTHOR           NOTE
  * ----------------------------------------------------------------
  * 2023-10-22       손준형           최초 생성
+ * 2023-10-23       손준형           매직넘버 상수 대체
  * </pre>
  *
  * @author 손준형
@@ -19,11 +20,14 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class RestartOrEndView {
+    public static final int RESTART_MISSION = 1;
+    public static final int END_MISSION = 2;
+
     public static boolean userInput() {
         int restartOrEnd = Integer.parseInt(Console.readLine());
-        if (restartOrEnd == 1) {
+        if (restartOrEnd == RESTART_MISSION) {
             return true;
-        } else if (restartOrEnd == 2) {
+        } else if (restartOrEnd == END_MISSION) {
             return false;
         } else {
             throw new IllegalArgumentException();
