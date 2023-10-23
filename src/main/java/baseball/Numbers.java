@@ -10,6 +10,9 @@ public class Numbers {
     private List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
+        validateNumbersSize(numbers);
+        validateNumberRange(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
