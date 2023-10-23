@@ -4,7 +4,7 @@ import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
 import baseball.domain.Hint;
 
-public class BaseBallGameController {
+public class BaseBallGameController implements Game {
 
     private final GameUseCase gameUseCase;
 
@@ -12,6 +12,7 @@ public class BaseBallGameController {
         this.gameUseCase = gameUseCase;
     }
 
+    @Override
     public String play(String input) {
         BaseBallResult report = gameUseCase.umpire(new NumericString(input));
 

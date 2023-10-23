@@ -1,6 +1,6 @@
 package baseball.application;
 
-import baseball.GameManager;
+import baseball.manager.GameManager;
 import baseball.domain.BaseBallNumberList;
 import baseball.controller.NumericString;
 import java.util.stream.Stream;

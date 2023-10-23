@@ -2,7 +2,7 @@ package baseball.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.GameManager;
+import baseball.manager.GameManager;
 import baseball.domain.BaseBallNumberList;
 import baseball.controller.NumericString;
 import java.util.List;
@@ -144,6 +144,11 @@ public class BaseBallGameTest {
     static class TestGameManager implements GameManager {
 
         private boolean exitFlag;
+
+        @Override
+        public void execute() {
+
+        }
 
         @Override
         public void exit() {
