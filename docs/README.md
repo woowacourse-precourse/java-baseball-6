@@ -2,15 +2,11 @@
 
 ## 필요 변수 목록
 
-- int inputNumber (사용자 입력 숫자)
-- int inputFirstNum(사용자 입력 수 중 100의 자리 수)
-- int inputSecondNum(사용자 입력 수 중 10의 자리 수)
-- int inputThirdNum(사용자 입력 수 중 1의 자리 수)
-- int randomNumber (랜덤하게 추출된 세자리 숫자)
-- int randomFirstNumber (100의 자리로 인식할 랜덤한 숫자)
-- int randomSecondNumber (10의 자리로 인식할 랜덤한 숫자)
-- int randomThirdNumber (1의 자리로 인식할 랜덤한 숫자)
-- int strike, ball (스트라이크, 볼 횟수)
+- int restartCount = 1 or 2 입력받아 게임 재시작, 종료 결정 변수
+- List<Integer> inputNumber (사용자로부터 입력받은 정답)
+- List<Integer> randomNumber (컴퓨터가 추출한 숫자 야구 정답)
+- int strikeCount (strike 횟수 판단 변수)
+- int ballCount (ball 횟수 판단 변수)
 
 ------------------------------------
 
@@ -61,7 +57,7 @@
 
 -------------------------------------------
 
-## 게임 로직 구현 2.0 ver
+## 게임 로직 구현 2.1 ver
 
 ### 1. (Print) 숫자 야구 시작 선언
 
@@ -88,7 +84,7 @@
 
 ### 6. (Method) strike, ball 결과 출력 (random값과 input 값 인수로)
 
-+ 스트라이크, 볼 개수 출력 및 strike 개수 return
++ 스트라이크 볼 개수 출력 및 strike 개수 return
 
 ### 6-1 : strike, ball 판단 메서드
 
@@ -98,20 +94,27 @@
 
 + parseInt로 string -> int 변경
 
-## 리펙터링 요소 1.0 ver
+## 리펙터링 요소 1.1 ver
 
 #### 1. randomNumber 생성 시 ArrayList로 관리하기
 
 + 3자리 int변수로 바꾼 뒤 다시 int형 배열로 바꿔 비교해야 하는 불편함
 +
 
-#### 2. 사용자로부터 inputNumber 입력 시 int형 배열로 관리하기
+#### 2. 사용자로부터 inputNumber 입력 시 ArrayList로 관리하기
 
 + 사용자 입력값은 String으로 입력됨, int형으로 변경 필요
-+ strike, ball 비교 때 ArrayList나 배열 큰 차이 없다고 판단
++ strike, ball 비교 시 contains 통해 빠른 구분 가능
++ inputNumber와 randomNumber 구조에 차이를 둠으로서 얻을 이점이 적다고 판단
 
 #### 3. strike와 ball 카운트 메서드 분리
 
 #### 4. 특정 표현 변수들 상수화 ex)게임 재시작, strike 카운트
 
+#### 5. inputNumber 입력시 겹치는 수 ex)111,121 가능성
+
++ 예외처리 진행
+
 #### (고민) 복잡도를 낮추는게 좋은가, 뜻을 잘 나타내는 코드가 좋은가...
+
+#### 전체 내용 정리 후 회고 문서 작성할 것
