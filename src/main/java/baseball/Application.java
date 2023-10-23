@@ -18,12 +18,12 @@ public class Application {
         boolean isGameOver = false;
         while(isGameOver == false){
             numberBaseballGame.run(); // run
-            isGameOver = Replay();
+            isGameOver = replay();
         }
         System.out.println("숫자 야구 게임을 종료합니다.");
     }
 
-    public boolean Replay() {
+    public boolean replay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();
         //userInput 여부
