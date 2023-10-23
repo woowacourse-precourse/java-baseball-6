@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
+
     public static boolean isValid(String input) {
         return matchesPattern(input) && hasNoDuplicateDigits(input);
     }
