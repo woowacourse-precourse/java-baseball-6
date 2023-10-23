@@ -1,4 +1,4 @@
-package baseball.application;
+package baseball;
 
 public interface GameManager {
 
