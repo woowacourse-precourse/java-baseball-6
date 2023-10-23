@@ -13,7 +13,7 @@ public class Input {
     }
 
     private List<Integer> covertStringToIntList(String input) {
-        input = input.replaceAll("\\s", "");
+        input = removeWhiteSpace(input);
 
         validateNumeric(input);
         validateLength(input);
@@ -26,6 +26,10 @@ public class Input {
         validateNoDuplicated(result);
 
         return result;
+    }
+
+    private String removeWhiteSpace(String input) {
+        return input.replaceAll("\\s", "");
     }
 
     private void validateNumeric(String input) {
@@ -53,7 +57,7 @@ public class Input {
     }
 
     private int stringToIntThrowException(String input) {
-        input = input.replaceAll("\\s", "");
+        input = removeWhiteSpace(input);
 
         if (!input.matches("[12]")) {
             throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
@@ -61,4 +65,5 @@ public class Input {
 
         return Integer.parseInt(input);
     }
+
 }
