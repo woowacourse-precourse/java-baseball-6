@@ -24,11 +24,14 @@ public class Result {
     private ResultType inspectResultType() {
         if (isNothing()) {
             return NOTHING;
-        } else if (hasBallAndStrike()) {
+        }
+        if (hasBallAndStrike()) {
             return BALL_AND_STRIKE;
-        } else if (hasBall()) {
+        }
+        if (hasBall()) {
             return ONLY_BALL;
-        } else if (hasStrike()) {
+        }
+        if (hasStrike()) {
             return ONLY_STRIKE;
         }
         throw BaseballException.of(SYSTEM_ERROR);

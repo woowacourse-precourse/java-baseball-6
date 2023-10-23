@@ -39,11 +39,15 @@ public class Number {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < NUMBER_LENGTH.getValue()) {
             int number = pickNumberInRange(RANDOM_NUMBER_MINIMUM.getValue(), RANDOM_NUMBER_MAXIMUM.getValue());
-            if (!randomNumbers.contains(number)) {
+            if (!hasDuplicatedNumber(randomNumbers, number)) {
                 randomNumbers.add(number);
             }
         }
         return new Number(randomNumbers);
+    }
+
+    private static boolean hasDuplicatedNumber(List<Integer> randomNumbers, int number) {
+        return randomNumbers.contains(number);
     }
 
     private List<Integer> convertInputNumber(String input) {
