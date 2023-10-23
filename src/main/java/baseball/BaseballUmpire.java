@@ -29,12 +29,12 @@ public class BaseballUmpire {
 	}
 
 	private boolean isEquals(String com, String user, int index) {
-		// com의 i번째 문자와 user의 i번째 문자가 서로 같다면 true
+		// com의 index번째 문자와 user의 index번째 문자가 서로 같다면 true
 		return com.charAt(index) == user.charAt(index);
 	}
 
 	private boolean isContains(String com, String user, int index) {
-		// com 문자열이 user의 i번째 문자를 포함하면 true
+		// com 문자열이 user의 index번째 문자를 포함하면 true
 		return com.contains(Character.toString(user.charAt(index)));
 	}
 }
