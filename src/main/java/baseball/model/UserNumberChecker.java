@@ -35,22 +35,18 @@ public class UserNumberChecker {
         char[] charArray = userNumber.toCharArray();
         int[] intArray = new int[charArray.length];
 
-        int index = 0; // index = 2가 될 때까지 반복문 적용
+        // charArray의 각 숫자를 int로 변환하여 intArray에 저장
+        for (int i = 0; i < charArray.length; i++) {
+            intArray[i] = Character.getNumericValue(charArray[i]);
+        }
 
-        while (index < 3) {
-            boolean isDuplicate = false; // 중복 여부 변수
-
-            for (int i = 0; i < index; i++) {
-                if (intArray[i] == intArray[index]) {
-                    isDuplicate = true;
-                    break; // 중복된 숫자를 찾으면 반복문 종료
+        // 중복 여부 체크를 위한 중첩 반복문 사용
+        for (int i = 0; i < intArray.length - 1; i++) {
+            for (int j = i + 1; j < intArray.length; j++) {
+                if (intArray[i] == intArray[j]) {
+                    throw new IllegalArgumentException("에러! 중복된 숫자를 입력할 수 없습니다.");
                 }
             }
-
-            if (isDuplicate) {
-                throw new IllegalArgumentException("에러! 중복된 숫자를 입력할 수 없습니다.");
-            }
-            index++;
         }
 
     } // user의 입력값 요소들 중에서 중복된 자연수가 있는지 확인하는 메소드

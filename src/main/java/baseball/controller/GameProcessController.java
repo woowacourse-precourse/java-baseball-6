@@ -5,6 +5,7 @@ import baseball.model.RandomNumberCreator;
 import baseball.model.UserNumberChecker;
 import baseball.model.UserNumberGrader;
 import baseball.view.MessageOutputView;
+import baseball.view.UserInputView;
 
 
 public class GameProcessController {
@@ -18,6 +19,8 @@ public class GameProcessController {
         answer.setRandomNumber(); // 랜덤 숫자 생성
 
         grade = new UserNumberGrader(); // 채점 기능 생성
+
+        userNumber = new UserNumberChecker(UserInputView.setInputNumber());
     }
 
     // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복
