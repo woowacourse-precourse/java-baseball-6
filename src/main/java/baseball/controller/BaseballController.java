@@ -23,6 +23,5 @@ public class BaseballController {
     public void playGame() {
         coumputerNumberList = computerNumber.generateNumber();
         playerNumberList = playerNumber.playerNumberToList(inputView.inputPlayerNumber());
-        System.out.println(playerNumberList);
     }
 }
