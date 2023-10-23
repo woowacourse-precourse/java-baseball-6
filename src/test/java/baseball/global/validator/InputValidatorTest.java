@@ -20,4 +20,12 @@ class InputValidatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> validator.validateBaseballNumberInput(playerInput),"숫자 이외에는 입력할 수 없습니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "12", "1234"})
+    @DisplayName("3자리가 아닌 숫자 입력에 대한 예외 처리 테스트")
+    void validateInputSizeTest(String playerInput) {
+        assertThrows(IllegalArgumentException.class,
+                () -> validator.validateBaseballNumberInput(playerInput),"입력한 숫자의 자릿수가 일치하지 않습니다.");
+    }
 }
