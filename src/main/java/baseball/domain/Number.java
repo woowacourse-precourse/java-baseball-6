@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static baseball.config.GlobalConfig.*;
+import static baseball.global.GameConfig.*;
 import static baseball.validator.NumberValidator.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 

@@ -3,8 +3,8 @@ package baseball.domain;
 import baseball.domain.constants.ResultType;
 import baseball.view.OutputView;
 
-import static baseball.config.GlobalConfig.NUMBER_LENGTH;
 import static baseball.domain.constants.ResultType.*;
+import static baseball.global.GameConfig.NUMBER_LENGTH;
 import static java.lang.String.format;
 
 public class Result {

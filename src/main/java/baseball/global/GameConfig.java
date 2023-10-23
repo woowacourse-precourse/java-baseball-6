@@ -1,6 +1,6 @@
-package baseball.config;
+package baseball.global;
 
-public enum GlobalConfig {
+public enum GameConfig {
     NUMBER_LENGTH(3),
     RANDOM_NUMBER_MINIMUM(1),
     RANDOM_NUMBER_MAXIMUM(9),
@@ -8,7 +8,7 @@ public enum GlobalConfig {
 
     private final int value;
 
-    GlobalConfig(int value) {
+    GameConfig(int value) {
         this.value = value;
     }
 

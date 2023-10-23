@@ -7,7 +7,7 @@ import baseball.view.OutputView;
 
 import java.util.Objects;
 
-import static baseball.config.GlobalConfig.GAME_RESTART_FLAG;
+import static baseball.global.GameConfig.GAME_RESTART_FLAG;
 import static baseball.view.constants.PrintMessage.GAME_START;
 
 public class Game {
