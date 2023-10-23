@@ -1,5 +1,7 @@
 package baseball.verifier;
 
+import baseball.system.ExceptionMessage;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,19 +17,19 @@ public class BaseBallNumVerifier implements Verifier {
 
     private void checkThreeDigits(String input){
         if(input.length() != NUM_DIGITS){
-            throw new IllegalArgumentException("3개의 수를 입력하지 않았습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_THREE_DIGITS);
         }
     }
     private void checkOneToNine(String input){
         if(!input.matches("^[1-9]+$")){
-            throw new IllegalArgumentException("1~9사이 수가 아닌 값을 입력하였습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_ONE_TO_NINE);
         }
     }
     private void checkDistinct(String input){
         Set<Character> uniqueChars = new HashSet<>();
         for(char char_num : input.toCharArray()){
             if(!uniqueChars.add(char_num))//중복된 수를 넣으려고 하는 경우 예외처리
-                throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
+                throw new IllegalArgumentException(ExceptionMessage.NOT_DISTINCT);
         }
     }
 
