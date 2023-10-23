@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Result {
     private final int GAME_OVER = 3;
     private GameOver gameOver;
+
     Result() {
         gameOver = new GameOver();
     }
@@ -18,7 +19,6 @@ public class Result {
         } else if (nothing > 0) {
             printNothing();
         }
-        System.out.println();
     }
 
     void printBall(int ball) {
@@ -27,9 +27,9 @@ public class Result {
 
     void printStrike(int strike) {
         if (strike == GAME_OVER) {
-           gameOver.print();
+            gameOver.print();
         } else {
-            System.out.print(strike + "스트라이크 ");
+            System.out.println(strike + "스트라이크");
         }
     }
 

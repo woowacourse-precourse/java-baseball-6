@@ -22,7 +22,7 @@ public class Validate {
             if (userNumber == 0 && userNumber > 9) {
                 return false;
             }
-            for (int j = i+1; j < this.user.size(); j++) {
+            for (int j = i + 1; j < this.user.size(); j++) {
                 if (userNumber == user.get(j)) { // 중복된 값이 존재한다면
                     return false;
                 }

@@ -6,6 +6,7 @@ import java.util.List;
 public class Check {
     private final int NUMBER_LENGTH = 3;
     private Result result;
+
     Check() {
         result = new Result();
     }
@@ -29,6 +30,6 @@ public class Check {
         if (strike == 0 && ball == 0) { // 맞는 숫자가 하나도 없다면
             nothing++;
         }
-        result.print(strike, ball, nothing);
+        result.print(strike, ball, nothing); // 사용자와 컴퓨터간 결과 출력
     }
 }
