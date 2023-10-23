@@ -14,4 +14,12 @@ class ValidationUtilsTest {
         assertThat(ValidationUtils.isNumber("0")).isTrue();
         assertThat(ValidationUtils.isNumber("1")).isTrue();
     }
+
+    @Test
+    void 숫자_1_9_검증() {
+        assertThat(ValidationUtils.isSingleNumber(0)).isFalse();
+        assertThat(ValidationUtils.isSingleNumber(1)).isTrue();
+        assertThat(ValidationUtils.isSingleNumber(9)).isTrue();
+        assertThat(ValidationUtils.isSingleNumber(10)).isFalse();
+    }
 }
