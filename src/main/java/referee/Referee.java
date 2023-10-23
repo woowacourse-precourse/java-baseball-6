@@ -1,7 +1,5 @@
 package referee;
 
-import static constant.BaseballConstant.END;
-import static constant.BaseballConstant.START;
 import static utils.BaseballRules.isThreeStrike;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -10,6 +8,9 @@ import player.BaseballPlayer;
 import score.BaseballScore;
 
 public class Referee {
+
+    private static final int START = 1;
+    private static final int END = 2;
 
     private final BaseballPlayer computer;
     private final BaseballPlayer user;

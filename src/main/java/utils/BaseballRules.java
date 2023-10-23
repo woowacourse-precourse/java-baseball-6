@@ -1,10 +1,9 @@
 package utils;
 
-import static constant.BaseballConstant.THREE;
-
 public class BaseballRules {
 
     private final static int ZERO = 0;
+    public static final int THREE = 3;
 
     private BaseballRules() {
     }
@@ -26,6 +25,6 @@ public class BaseballRules {
     }
 
     public static boolean noStrikeAndBall(int strike, int ball) {
-        return strike == 0 && ball == 0;
+        return strike == ZERO && ball == ZERO;
     }
 }

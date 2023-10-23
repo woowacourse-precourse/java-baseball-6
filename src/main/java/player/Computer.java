@@ -1,12 +1,12 @@
 package player;
 
-import static constant.BaseballConstant.MAX_LENGTH;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer extends BaseballPlayer {
+
+    private static final int MAX_LENGTH = 3;
 
     @Override
     public void inputBaseballNumbers() {

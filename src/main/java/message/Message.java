@@ -1,13 +1,5 @@
 package message;
 
-import static constant.BaseballConstant.BALL;
-import static constant.BaseballConstant.CONTINUE_OR_FINISH;
-import static constant.BaseballConstant.END_GAME;
-import static constant.BaseballConstant.INTEGER_INPUT_FROM_USER;
-import static constant.BaseballConstant.INVALID_INPUT;
-import static constant.BaseballConstant.NOTHING;
-import static constant.BaseballConstant.STRIKE;
-import static constant.BaseballConstant.THREE_STRIKE;
 import static utils.BaseballRules.hasBallButNoStrike;
 import static utils.BaseballRules.hasStrikeAndBall;
 import static utils.BaseballRules.hasStrikeButNoBall;
@@ -17,24 +9,29 @@ import score.BaseballScore;
 
 public class Message {
 
+    public static final String BALL = "볼";
+    public static final String STRIKE = "스트라이크";
+    public static final String NOTHING = "낫싱";
+
     private Message() {
     }
 
     public static void printIntegerInputFromUserMessage() {
-        System.out.print(INTEGER_INPUT_FROM_USER);
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static void printContinueOrFinishMessage() {
-        System.out.println(CONTINUE_OR_FINISH);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static void printThreeStrikeMessage() {
-        System.out.print(THREE_STRIKE + " ");
-        System.out.println(END_GAME);
+        System.out.print("3개의 숫자를 모두 맞히셨습니다!");
+        System.out.print(" ");
+        System.out.println("게임 종료");
     }
 
     public static void printEndGameMessage() {
-        System.out.println(END_GAME);
+        System.out.println("게임 종료");
     }
 
     public static void printHintMessage(BaseballScore score) {
@@ -56,6 +53,6 @@ public class Message {
     }
 
     public static void printErrorMessage() {
-        System.out.println(INVALID_INPUT);
+        System.out.println("잘못된 입력입니다.");
     }
 }
