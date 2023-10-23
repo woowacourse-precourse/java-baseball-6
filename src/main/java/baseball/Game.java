@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game{
 
         private final Input input = new Input();
@@ -42,18 +45,16 @@ public class Game{
         }
 
         private String generateNumber() {
-                StringBuilder serverNumber = new StringBuilder("000");
 
-                for (int index = 0; index < 3;) {
-                        int randomPickNumber = Randoms.pickNumberInRange(1, 9); //내 추천: randomPickNumber -> randomNumber
-                        if (serverNumber.charAt(0) == randomPickNumber-'1' || serverNumber.charAt(1) == randomPickNumber-'1') {
-                                continue;
+                List<Integer> computer = new ArrayList<>();
+                while (computer.size() < 3) {
+                        int randomNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!computer.contains(randomNumber)) {
+                                computer.add(randomNumber);
                         }
-                        serverNumber.replace(index, index+1, String.valueOf(randomPickNumber)); //이 프로그램에서는 시간 복잡도가 상수가 나와서 상관 없지만 `replace`함수의 시간 복잡도는 O(n)이여서 안쓰는 것을 추천
-                        index++;
                 }
 
-                return serverNumber.toString();
+                return computer.toString().replaceAll("\\D","");
         }
 
         private boolean checkNumberMatches(String serverNumber, String clientNumber) {
@@ -84,9 +85,5 @@ public class Game{
                 output.printResult(ball, strike, nothing);
 
                 return strike == 3;
-        }
-
-        private void generateException() {
-                throw new IllegalArgumentException();
         }
 }
