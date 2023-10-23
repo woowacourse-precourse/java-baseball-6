@@ -16,7 +16,7 @@
 
 ## 기본 설계
 
-![Alt BaseBallGameUML](./image/BaseBallGameUML-1.png)
+![Alt BaseBallGameUML](./image/BaseBallGameUML-2.png)
 
 ## 기능 목록 체크리스트
 
