@@ -8,8 +8,6 @@ import model.player.Computer;
 import model.player.User;
 import model.referee.GameScoreboard;
 import model.system.GameController;
-import model.system.GameTerminator;
-import utils.BaseballMessageConvertor;
 import utils.BaseballNumberUtils;
 import view.InputView;
 import view.OutputView;
@@ -53,8 +51,8 @@ public class NumberBaseballController {
 
     private List<Integer> getUserBaseballNumber() {
         outputView.write(INPUT_PROMPT_MESSAGE);
-        String input = inputView.readInput();
-        return BaseballMessageConvertor.convertInputToBaseballNumber(input);
+        List<Integer> numbers = inputView.readInputNumbers();
+        return numbers;
     }
 
     private Computer setupGame() {
