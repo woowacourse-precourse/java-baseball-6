@@ -18,14 +18,20 @@ public class Application {
 
         while(!isFinishGame) {
             computerNumbers = new ArrayList<>();
+            boolean isGameTermination = false;
+
             application.setComputerNumber();
-            while(true) {
+            while(!isGameTermination) {
                 playerNumbers = new ArrayList<>();
+
                 application.inputPlayerNumber();
+
                 int strikeCount = application.calculateStrikeCount();
                 int ballCount = application.calculateBallCount();
                 boolean isNothing = application.checkNothing(strikeCount, ballCount);
+
                 application.printResult(isNothing, strikeCount, ballCount);
+                isGameTermination = application.checkGameTermination(strikeCount);
             }
         }
     }
@@ -39,6 +45,7 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
+                System.out.println("randomNumber = " + randomNumber);
             }
         }
     }
@@ -47,7 +54,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        isValidCheck(input);
+        checkPlayerInputValidity(input);
 
         for (int i = 0; i < 3; i++) {
             playerNumbers.add(input.charAt(i) - '0');
@@ -105,7 +112,15 @@ public class Application {
         }
     }
 
-    public void isValidCheck(String input) {
+    public boolean checkGameTermination(int strikeCount) {
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    public void checkPlayerInputValidity(String input) {
         if (isNull(input) || input.isEmpty() || !isLengthThree(input) || !hasUniqueElementsOnly(input)) {
             throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
         }
