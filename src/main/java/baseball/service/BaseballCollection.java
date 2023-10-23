@@ -90,13 +90,20 @@ public class BaseballCollection {
                 .map(this::parseToInt)
                 .distinct()
                 .collect(Collectors.toList());
-        validateUniqueNumbers(baseballs);
+        validateLength(baseballs);
+        validateUniqueNumbers(baseballs, number);
         validateRange(baseballs);
         return baseballs;
     }
 
-    private void validateUniqueNumbers(List<Integer> baseballs) {
+    private void validateLength(List<Integer> baseballs) {
         if (baseballs.size() != DEFAULT_CAPACITY) {
+            throw new IllegalArgumentException("길이가 다른 입력입니다,");
+        }
+    }
+
+    private void validateUniqueNumbers(List<Integer> baseballs, String number) {
+        if (baseballs.size() != number.length()) {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
     }
