@@ -1,9 +1,11 @@
 package baseball;
 
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class BaseballGame {
     private final BaseballNumber numbers;
@@ -11,6 +13,7 @@ public class BaseballGame {
     public BaseballGame(int[] numbers) {
         this.numbers = new BaseballNumber(numbers);
     }
+
 
     public void sayHello(ConsoleLogger consoleLogger) {
         consoleLogger.print("숫자 야구 게임을 시작합니다.\n");
@@ -21,7 +24,12 @@ public class BaseballGame {
             consoleLogger.print("숫자를 입력해주세요 :");
             String input = consoleInput.getInput();
             checkInputs(input);
-            break;
+            BaseballNumber otherNumbers = BaseballNumber.ofString(input);
+            if (numbers.equals(otherNumbers)) {
+                break;
+            }
+            BaseballHint hint = numbers.getHintFrom(otherNumbers);
+
         }
     }
 
