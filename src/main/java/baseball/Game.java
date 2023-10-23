@@ -9,10 +9,13 @@ public class Game {
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNumbers = createComputerNumbers();
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> userNumbers = new GameInput().convertInputToUserNumbers();
-        Score score = calculateScore(computerNumbers, userNumbers);
-        System.out.println(score.getHint());
+        Score score = new Score();
+        while (score.isUserLose()){
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> userNumbers = new GameInput().convertInputToUserNumbers();
+            score = calculateScore(computerNumbers, userNumbers);
+            System.out.println(score.getHint());
+        }
     }
 
     private Score calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {

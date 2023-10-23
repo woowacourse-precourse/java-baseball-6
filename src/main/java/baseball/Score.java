@@ -4,6 +4,11 @@ public class Score {
     private final int strike;
     private final int ball;
 
+    public Score() {
+        strike = 0;
+        ball = 0;
+    }
+
     public Score(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
@@ -22,5 +27,9 @@ public class Score {
             hint = ball + "볼";
         }
         return hint;
+    }
+
+    public boolean isUserLose() {
+        return strike != 3;
     }
 }
