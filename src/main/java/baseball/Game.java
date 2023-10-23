@@ -99,11 +99,11 @@ public class Game {
         for (int i = 0; i < inputLength; i++) {
             int userNumber = user.get(i);
             int computerNumber = computer.get(i);
-            if (userNumber == computerNumber) {
+            if (userNumber == computerNumber) { // 동일 위치 동일 숫자 경우 스트라이크 증가
                 countStrike++;
                 continue;
             }
-            if (computer.contains(userNumber)) {
+            if (computer.contains(userNumber)) { // 현재 위치는 아니나 다른 위치 값 존재 시 볼 증가
                 countBall++;
             }
         }
