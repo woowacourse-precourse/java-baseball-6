@@ -1,4 +1,4 @@
-package baseball.ball.judgement;
+package baseball.judgement;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

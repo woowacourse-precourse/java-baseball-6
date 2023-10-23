@@ -1,4 +1,4 @@
-package baseball.ball.status;
+package baseball.judgement;
 
 public enum BallStatus {
     STRIKE,

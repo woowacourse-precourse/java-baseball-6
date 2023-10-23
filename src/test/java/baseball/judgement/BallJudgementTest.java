@@ -1,7 +1,5 @@
-package baseball.ball.judgement;
+package baseball.judgement;
 
-import baseball.ball.Ball;
-import baseball.ball.status.BallStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

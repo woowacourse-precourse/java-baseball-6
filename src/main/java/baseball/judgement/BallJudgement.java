@@ -1,7 +1,4 @@
-package baseball.ball.judgement;
-
-import baseball.ball.Ball;
-import baseball.ball.status.BallStatus;
+package baseball.judgement;
 
 import java.util.ArrayList;
 import java.util.List;
