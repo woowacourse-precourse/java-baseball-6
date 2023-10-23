@@ -67,6 +67,17 @@ public class Application {
                     break;
                 }
             }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String command = Console.readLine();
+            if (!(command.equals("1") || command.equals("2"))) {
+                throw new IllegalArgumentException("올바르지 않은 입력값 입니다.");
+            }
+            if (command.equals("1")) {
+                continue;
+            }
+            break;
         }
     }
 }
