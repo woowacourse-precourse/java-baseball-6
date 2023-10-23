@@ -14,7 +14,9 @@ public class UniqueRandomNumberGenerator {
      * @param digitCount   생성할 난수의 길이
      * @return 고유한 난수로 이루어진 리스트
      */
-    public static List<Integer> generateUniqueRandomNumbers(int startOfRange, int endOfRange, int digitCount) {
+    public static List<Integer> generateUniqueRandomNumbers(final int startOfRange,
+                                                            final int endOfRange,
+                                                            final int digitCount) {
         List<Integer> availableNumbers = new ArrayList<>();
         for (int i = startOfRange; i <= endOfRange; i++) {
             availableNumbers.add(i);
