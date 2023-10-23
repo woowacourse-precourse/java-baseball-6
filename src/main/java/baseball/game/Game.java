@@ -14,34 +14,70 @@ public class Game {
         this.status = GameStatus.START;
     }
 
+    /**
+     * 상태에 따른 게임 진행
+     */
     public void Next() {
         System.out.println(this.status);
         switch (this.status) {
             case START -> this.Ready();
-            case PROCEEDING -> {
-
-                String tempInput = Console.readLine();
-                try {
-                    NumberList numbers = new NumberList(tempInput);
-//                    for (Number number : numbers.numbers) {
-//                        System.out.println(number.num);
-//                    }
-                    for (Number number : this.computerNumberList.numbers) {
-                        System.out.println(number.num);
-                    }
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.toString());
-                }
-            }
             case END -> {
                 this.status = GameStatus.EXIT;
             }
-            case EXIT -> {
-            }
+            case PROCEEDING -> this.Proceed();
             default -> throw new IllegalStateException("Unexpected value: " + this.status);
         }
     }
 
+    /**
+     * 3개의 숫자를 모두 맞출 때까지 사용자에게 숫자 입력을 받습니다.
+     */
+    public void Proceed() {
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+            NumberList userNumberList = new NumberList(userInput);
+            if (CompareNumbers(userNumberList)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                this.status = GameStatus.END;
+                break;
+            }
+        }
+    }
+
+    public boolean CompareNumbers(NumberList numberList) {
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int i = 0; i < BASEBALL_NUM_COUNT; i++) {
+            Number curNumber = this.computerNumberList.numbers.get(i);
+            for (int i1 = 0; i1 < BASEBALL_NUM_COUNT; i1++) {
+                if (curNumber.equals(numberList.numbers.get(i1))) {
+                    if (i == i1) {
+                        strikeCount++;
+                    } else {
+                        ballCount++;
+                    }
+                    break;
+                }
+            }
+        }
+        this.PrintResult(ballCount, strikeCount);
+        return strikeCount == BASEBALL_NUM_COUNT;
+    }
+
+    public void PrintResult(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ballCount != 0) {
+                System.out.printf("%d볼 ", ballCount);
+            }
+            if (strikeCount != 0) {
+                System.out.printf("%d스트라이크", strikeCount);
+            }
+            System.out.print("\n");
+        }
+    }
 
     public void Ready() {
         this.computerNumberList = new NumberList();
