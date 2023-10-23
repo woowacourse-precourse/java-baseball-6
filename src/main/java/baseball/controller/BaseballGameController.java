@@ -1,17 +1,13 @@
 package baseball.controller;
 
-import baseball.model.Score;
 import baseball.model.computer.Computer;
 import baseball.model.player.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class BaseballGameController {
 
     private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
-    private static final Integer INIT_STRIKE = 0;
-    private static final Integer INIT_BALL = 0;
 
     private final Computer computer;
     private final Player player;
@@ -29,17 +25,17 @@ public class BaseballGameController {
         printStartMessage();
         while (!player.continueGame()) {
             computer.makeAnswer();
-            playOneRound(computer.getGameAnswer(), new Score(INIT_STRIKE, INIT_BALL));
+            playOneRound();
             player.inputGameStateNumber();
         }
     }
 
-    private void playOneRound(List<Integer> answer, Score score) {
-        while (!score.isAllStrike()) {
+    private void playOneRound() {
+        while (!computer.getScore().isAllStrike()) {
             inputView.printSuggestNumberMessage();
             player.inputGuessNumber();
-            score = computer.getScore(player.getGuessNumbers(), answer);
-            outputView.printResult(score);
+            computer.calculateScore(player.getGuessNumbers());
+            outputView.printResult(computer.getScore());
         }
         inputView.printRestartOrExitMessage();
     }

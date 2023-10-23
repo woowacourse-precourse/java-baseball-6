@@ -1,27 +1,33 @@
 package baseball.model.computer;
 
-import baseball.model.Score;
 import java.util.List;
 
 public class Computer {
 
+    private static final Integer INIT_STRIKE_SCORE = 0;
+    private static final Integer INIT_BALL_SCORE = 0;
+
     private GameAnswer gameAnswer;
-    private ScoreCalculator scoreCalculator;
+    private Score score;
 
     public Computer() {
         this.gameAnswer = new GameAnswer();
-        this.scoreCalculator = new ScoreCalculator();
+        this.score = new Score(INIT_STRIKE_SCORE, INIT_BALL_SCORE);
     }
 
     public void makeAnswer() {
         gameAnswer.makeAnswer();
     }
-    
+
     public List<Integer> getGameAnswer() {
         return gameAnswer.getAnswer();
     }
 
-    public Score getScore(List<Integer> playerInput, List<Integer> answer) {
-        return scoreCalculator.calculateScore(playerInput, answer);
+    public void calculateScore(List<Integer> playerInput) {
+        score.calculateScore(playerInput, getGameAnswer());
+    }
+
+    public Score getScore() {
+        return score;
     }
 }

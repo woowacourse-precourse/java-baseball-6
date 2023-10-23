@@ -1,15 +1,35 @@
 package baseball.model.computer;
 
-import baseball.model.Score;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class ScoreCalculator {
+public class Score {
 
-    public Score calculateScore(List<Integer> playerInput, List<Integer> answer) {
-        Integer strike = calculateStrike(playerInput, answer);
-        Integer ball = calculateBall(playerInput, answer);
-        return new Score(strike, ball);
+    private static final Integer THREE_STRIKE = 3;
+
+    private Integer strike;
+    private Integer ball;
+
+    public Score(Integer strike, Integer ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
+    public Integer getStrike() {
+        return strike;
+    }
+
+    public Integer getBall() {
+        return ball;
+    }
+
+    public boolean isAllStrike() {
+        return getStrike() == THREE_STRIKE;
+    }
+
+    public void calculateScore(List<Integer> playerInput, List<Integer> answer) {
+        this.strike = calculateStrike(playerInput, answer);
+        this.ball = calculateBall(playerInput, answer);
     }
 
     private Integer calculateStrike(List<Integer> playerInput, List<Integer> answer) {

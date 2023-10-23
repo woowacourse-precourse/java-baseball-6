@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.Score;
+import baseball.model.computer.Score;
 
 public class OutputView {
 
