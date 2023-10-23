@@ -39,7 +39,7 @@ public class BaseballController {
         while (!isStrikeOut) {
             String input = inputView.inputBaseballNumber();
             InputValidator.validateBaseballNumber(input);
-            BaseballNumbers player = new BaseballNumbers(input);
+            BaseballNumbers player = BaseballNumbers.convertToBaseballNumbers(input);
             Score score = computer.calculateScore(player);
             outputView.matchResult(score);
             isStrikeOut = score.isStrikeOut();
