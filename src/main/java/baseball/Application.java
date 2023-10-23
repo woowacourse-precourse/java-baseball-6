@@ -12,8 +12,8 @@ public class Application {
     private int ballValue;
 
     Application(int strikeValue, int ballValue) {
-        strikeValue = strikeValue;
-        ballValue = ballValue;
+        this.strikeValue = strikeValue;
+        this.ballValue = ballValue;
     }
 
     public List<Integer> selectRandomNumber(List<Integer> computerNumber){
