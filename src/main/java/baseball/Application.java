@@ -54,5 +54,24 @@ public class Application {
 		System.out.println(computerNumbers);
 
 
+		// User Input process
+		boolean isCorrect = false;
+		while (!isCorrect) {
+
+			System.out.print("숫자를 입력해주세요 : ");
+			// TODO: Input Validation
+			String line = Console.readLine();
+
+			int ball = 0, strike = 0;
+			for (int index = 0; index < INPUT_LIMIT; index++) {
+				int num = Character.getNumericValue(line.charAt(index));
+				if (computerNumbers.get(index) == num) {
+					strike++;
+				} else if (computerNumbers.contains(num)) {
+					ball++;
+				}
+			}
+
+		}
 	}
 }
