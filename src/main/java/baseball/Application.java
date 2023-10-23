@@ -5,6 +5,6 @@ public class Application {
         InstanceHandler instanceHandler = new InstanceHandler();
 
         MenuHandler menuHandler = instanceHandler.getMenuHandler();
-        menuHandler.handle();
+        menuHandler.tryHandle();
     }
 }
