@@ -24,25 +24,22 @@ public class Application {
     public static void main(String[] args) {
         // 맞춘 횟수, 게임이 진행될 라운드 수
         int numOfWin = 0, round = 3;
+        int[] result = {0, 0};
 
         String continueValue;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
             // 컴퓨터가 랜덤으로 생성할 값들을 담는 integer 배열
-            List<String> computer = new ArrayList<>();
+            List<Integer> computer = new ArrayList<>();
 
             // 랜덤으로 round 만큼의 값을 받아서 배열에 받는다.
             while (computer.size() < round) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
-                    computer.add(String.valueOf(randomNumber));
-                    System.out.println(randomNumber);
+                    computer.add(randomNumber);
                 }
             }
-
-            // 결과 값이 담길 int array(win, lose)
-            int[] result = {0, 0};
 
             do {
                 System.out.print("숫자를 입력해주세요 : ");
@@ -51,10 +48,14 @@ public class Application {
                 // 잘못된 값이 입력되었을 경우 Exception
                 if (!Pattern.matches("^[1-9]{" + String.valueOf(round) + "}$", input) || isDuplicating(input))
                     throw (new IllegalArgumentException());
+                // 결과 값이 담길 int array(win, lose)
+
+                result[0] = 0;
+                result[1] = 0;
 
                 // computer list 순회
                 for (int i = 0; i < round; i++) {
-                    int index = input.indexOf(computer.get(i));
+                    int index = input.indexOf(String.valueOf(computer.get(i)));
 
                     if (index > -1) {
                             if (i == index) {
@@ -66,7 +67,7 @@ public class Application {
                     }
 
                 if (result[0] > 0) {
-                    System.out.print(String.valueOf(result[1]) + "볼 ");
+                    System.out.print(String.valueOf(result[0]) + "볼 ");
                 }
                 if (result[1] > 0) {
                     System.out.print(String.valueOf(result[1]) + "스트라이크");
