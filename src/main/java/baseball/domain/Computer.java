@@ -10,7 +10,7 @@ public class Computer {
     private final RandomNum randomNum = new RandomNum();
 
     public void createRandomBalls() {
-        while (balls.isSizeSame(MAX_NUM)) {
+        while (!balls.isSizeSame(MAX_NUM)) {
             int newBall = randomNum.create();
 
             if (!balls.isContain(newBall)) {

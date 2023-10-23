@@ -6,14 +6,16 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    private final Computer computer = new Computer();
-    private final Balls userBalls = new Balls();
+    private Computer computer;
+    private Balls userBalls;
 
     public void createComputerBalls() {
+        computer = new Computer();
         computer.createRandomBalls();
     }
 
     public void inputUserBalls() {
+        userBalls = new Balls();
         System.out.print("숫자를 입력해주세요 : ");
         String balls = Console.readLine();
         userBalls.convertToBalls(balls);
@@ -46,12 +48,13 @@ public class Game {
     public void outputResult(int ball, int strike) {
         if (ball == 0) {
             System.out.println(strike+"스트라이크");
+            return;
         }
         if (strike == 0) {
             System.out.println(ball+"볼");
-        } else {
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            return;
         }
+        System.out.println(ball+"볼 "+strike+"스트라이크");
     }
 
     public void outputGameSuccess() {
@@ -66,7 +69,7 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public int inputRestartNumber() {
-        return Integer.parseInt(Console.readLine());
+    public boolean inputRestartNumber() {
+        return Integer.parseInt(Console.readLine()) == 1;
     }
 }

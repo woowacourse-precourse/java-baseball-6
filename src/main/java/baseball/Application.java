@@ -7,14 +7,19 @@ public class Application {
     private static final Game game = new Game();
 
     public static void main(String[] args) {
-        int play = 1;
+        boolean play = true;
+        boolean restart = false;
         game.outputGameStart();
-        while (play == 1) {
+        game.createComputerBalls();
+        while (play) {
             game.inputUserBalls();
             if (countResult()) {
                 game.outputGameSuccess();
                 game.outputRestartGame();
                 play = game.inputRestartNumber();
+                if (play) {
+                    game.createComputerBalls();
+                }
             }
         }
 
