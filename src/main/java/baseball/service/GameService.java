@@ -57,16 +57,16 @@ public class GameService {
     }
 
     public static List<Integer> playGame(List<Integer> computerNumber, List<Integer> userNumber) {
-        long strike = (int) IntStream.range(0, 3)
+        int strike = (int) IntStream.range(0, 3)
                 .filter(i -> computerNumber.get(i).equals(userNumber.get(i)))
                 .count();
 
-        long ball = (int) IntStream.range(0, 3)
+        int ball = (int) IntStream.range(0, 3)
                 .filter(i -> !computerNumber.get(i).equals(userNumber.get(i)) && userNumber.contains(
                         computerNumber.get(i)))
                 .count();
 
-        return List.of((int) strike, (int) ball);
+        return List.of(strike, ball);
     }
 
     public static void initStartGame() {
