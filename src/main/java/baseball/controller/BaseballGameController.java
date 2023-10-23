@@ -10,7 +10,7 @@ import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameController extends GameController {
-    Computer computer;
+    private final Computer computer;
 
     public BaseballGameController(boolean isRunning) {
         super(isRunning);
@@ -20,7 +20,7 @@ public class BaseballGameController extends GameController {
     public void start() {
         do {
             startGame();
-            askRestart();
+            askRestartGame();
         } while (isRunning);
     }
 
@@ -36,7 +36,7 @@ public class BaseballGameController extends GameController {
         OutputView.printSuccessAndEndGameMessage();
     }
 
-    private void askRestart() {
+    private void askRestartGame() {
         isRunning = isRestart(scanStatus());
     }
 
