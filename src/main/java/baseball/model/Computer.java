@@ -6,8 +6,13 @@ import java.util.List;
 
 public class Computer {
 
-    private final NumberGenerator numberGenerator = new NumberGenerator();
-    private final ScoreCalculator scoreCalculator = new ScoreCalculator();
+    private final NumberGenerator numberGenerator;
+    private final ScoreCalculator scoreCalculator;
+
+    public Computer() {
+        this.numberGenerator = new NumberGenerator();
+        this.scoreCalculator = new ScoreCalculator();
+    }
 
     public List<Integer> generateNumber() {
         return numberGenerator.getGeneratedNumbers();

@@ -31,11 +31,11 @@ public class Player {
         }
     }
 
-    public Integer getRestartOrExit() {
-        return restartOrExit;
-    }
-
     public List<Integer> getNumbers() {
         return guessNumber.getNumbers();
+    }
+
+    public Integer getRestartOrExit() {
+        return restartOrExit;
     }
 }

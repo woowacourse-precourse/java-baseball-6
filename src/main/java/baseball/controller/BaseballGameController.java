@@ -13,10 +13,18 @@ public class BaseballGameController {
     private static final Integer EXIT = 2;
     private static final Integer INIT_STRIKE = 0;
     private static final Integer INIT_BALL = 0;
-    private final Computer computer = new Computer();
-    private final Player player = new Player();
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
+
+    private final Computer computer;
+    private final Player player;
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public BaseballGameController() {
+        this.computer = new Computer();
+        this.player = new Player();
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
 
     public void start() {
         printStartMessage();
