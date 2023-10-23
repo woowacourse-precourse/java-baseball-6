@@ -13,8 +13,9 @@ public class BaseBallGame {
         List<Integer> computerNum = computer.makeRandomNumbers();
         List<Integer> userNumList;
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            greeting();
+            System.out.print("숫자를 입력해주세요 : ");
             String userNum = readLine();
             userNumList = checkUserNum(userNum); // 맞는 숫자인지 확인
             int[] result = ismatch(computerNum, userNumList);
@@ -30,11 +31,6 @@ public class BaseBallGame {
                 printResult(result);
             }
         }
-    }
-
-    private void greeting(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private String askNewGame() {
