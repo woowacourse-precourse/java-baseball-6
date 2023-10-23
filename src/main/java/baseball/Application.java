@@ -5,7 +5,6 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class Application {
     public static void main(String[] args) {
