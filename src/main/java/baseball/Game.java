@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 public class Game {
     private Computer computer;
     private User user;
@@ -22,5 +24,6 @@ public class Game {
             result.checkResult(user.getNumbers(), computer.getNumbers());
             result.printResult();
         }
+        System.out.println(FINISH_GAME_MESSAGE);
     }
 }
