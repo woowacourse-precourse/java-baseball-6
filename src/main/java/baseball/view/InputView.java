@@ -7,8 +7,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.util.ErrorMessage.NUMERIC_ERROR;
-
 public class InputView {
 
     private static final String USER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
@@ -23,12 +21,8 @@ public class InputView {
     public GameNumber getUserNumber() {
         System.out.print(USER_NUMBER_MESSAGE);
         String input = Console.readLine();
-        try {
-            List<Integer> inputNumber = typeConvertor.convertStringToList(input);
-            return new GameNumber(inputNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NUMERIC_ERROR);
-        }
+        List<Integer> inputNumber = typeConvertor.convertStringToList(input);
+        return new GameNumber(inputNumber);
     }
 
     public RetryCommand getRetryCommand() {
