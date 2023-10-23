@@ -206,8 +206,4 @@ public class Application {
         return (choice.equals(CONTINUE_GAME)
                 || choice.equals(EXIT_GAME));
     }
-
-    private static int stringToInt(String choice) {
-        return (choice.charAt(0) - '0');
-    }
 }
