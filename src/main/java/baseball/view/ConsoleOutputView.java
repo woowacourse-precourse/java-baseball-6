@@ -68,7 +68,8 @@ public class ConsoleOutputView implements OutputView {
         return stringBuilder.length() == ZERO;
     }
 
-    private void appendWithBallsAndStrikes(final int ballCount, final int strikeCount, final StringBuilder stringBuilder) {
+    private void appendWithBallsAndStrikes(final int ballCount, final int strikeCount,
+                                           final StringBuilder stringBuilder) {
         String result = ballCount + BALL + BLANK + strikeCount + STRIKE;
         stringBuilder.append(result);
     }
