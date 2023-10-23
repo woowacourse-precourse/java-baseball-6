@@ -9,50 +9,55 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballGame implements Game{
-
-    private boolean finish = false;
+    private final int answerNumber = generateAnswerNumber();
 
     public BaseballGame() {
     }
 
     @Override
-    public void startGame() {
+    public void startAnnounce(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
-        int answerNumber = generateAnswerNumber();
+    /**
+     * 게임 한판을 수행한다.
+     * @return 게임 리플레이 여부
+     */
+    @Override
+    public boolean playGame() {
+        // 게임 진행은 크게 세 단계를 반복 진행한다.
         while(true) {
-            // 성공했을 경우 게임 지속 여부 선택하기
-            if (isFinished()) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String inputString = readLine();
-                int option = checkOptionNumber(inputString);
-                if (isContinue(option)){
-                    answerNumber = generateAnswerNumber();
-                    setFinish(false);
-                } else {
-                    break;
-                }
-            }
-            // 큰 게임 진행은 아래 두 단계로 구성됨
+            // 1. 입력 받기
             int number = inputNumber();
-            printHint(number, answerNumber);
+            // 2. 결과 확인하기
+            boolean success = getResult(number, answerNumber);
+            // 3. 게임 승리시 리플레이 옵션 반환
+            if (success) {
+                return replayGame();
+            }
         }
+    }
+
+    @Override
+    public boolean replayGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputString = readLine();
+        int option = checkOptionNumber(inputString);
+        return isContinue(option);
     }
 
     /**
      * 입력 숫자와 정답 숫자를 비교하여 숫자 야구 힌트를 준다.
      * @param inputNumber 서로 다른 1~9 숫자로 구성된 세자리 수, 입력 숫자
      * @param answerNumber 서로 다른 1~9 숫자로 구성된 세자리 수, 정답 숫자
+     * @return 성공 여부의 true/false
      */
-    private void printHint(int inputNumber, int answerNumber) {
-        // number에 대한 힌트 출력
-
+    private boolean getResult(int inputNumber, int answerNumber) {
         // 3스트라이크
         if (inputNumber - answerNumber == 0) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            setFinish(true);
-            return;
+            return true;
         }
 
         String[] inputArray = String.valueOf(inputNumber).split("");
@@ -66,9 +71,10 @@ public class BaseballGame implements Game{
         // 결과 출력
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
-            return;
         }
         System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+
+        return false;
     }
 
     private int countStrike(String[] inputArray, String[] answerArray) {
@@ -182,14 +188,6 @@ public class BaseballGame implements Game{
             throw new IllegalArgumentException();
         }
         return Integer.parseInt(inputString);
-    }
-
-    private boolean isFinished(){
-        return this.finish;
-    }
-
-    private void setFinish(boolean bool){
-        this.finish = bool;
     }
 
 }

@@ -1,5 +1,7 @@
 package baseball;
 
 public interface Game {
-    void startGame();
+    void startAnnounce();
+    boolean playGame();
+    boolean replayGame();
 }
