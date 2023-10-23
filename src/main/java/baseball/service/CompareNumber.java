@@ -14,29 +14,22 @@ public class CompareNumber {
     }
 
     private static void printResult() {
-        if (strike == 3){
-            System.out.println(strike + "스트라이크");
+        String result = "";
+        if (strike > 0) {
+            result += strike + "스트라이크";
         }
 
-        else if (ball == 3) {
-            System.out.println(ball + "볼");
+        if (ball > 0) {
+            if (!result.isEmpty()){
+                result += " ";
+            }
+            result += ball + "볼";
         }
 
-        else if (strike > 0 && ball > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        if (result.isEmpty()){
+            result += "낫싱";
         }
-
-        else if (strike > 0){
-            System.out.println(strike + "스트라이크");
-        }
-
-        else if (ball > 0){
-            System.out.println(ball + "볼");
-        }
-
-        else {
-            System.out.println("낫싱");
-        }
+        System.out.println(result);
     }
 
     public void checkStrike(List<Integer> computer, List<Integer> player) {
