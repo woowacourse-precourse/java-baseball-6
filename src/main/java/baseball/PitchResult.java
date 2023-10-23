@@ -22,6 +22,11 @@ public class PitchResult {
         this.strike = strike + 1;
     }
 
+    public void pitchClear() {
+        this.ball = 0;
+        this.strike = 0;
+    }
+
     public void judgePitch(String inputString) {
         for (int idx = InputRange.START_INDEX.getValue(); idx < InputRange.CORRECT_INPUT_RANGE.getValue(); idx++) {
             if (randomNumber.getRandomNumber().get(idx).equals(Character.getNumericValue(inputString.charAt(idx)))) {

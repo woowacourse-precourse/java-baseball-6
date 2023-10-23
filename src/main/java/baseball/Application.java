@@ -7,6 +7,7 @@ public class Application {
         RandomNumber randomNumber = new RandomNumber();
         randomNumber.randomNumberGenerate();
         System.out.println("숫자 야구 게임을 시작합니다.");
+        PitchResult pitchResult = new PitchResult(randomNumber);
 
         try {
             while (true) {
@@ -14,7 +15,6 @@ public class Application {
                 String inputString = Console.readLine();
                 InputRange.inputValidation(inputString);
 
-                PitchResult pitchResult = new PitchResult(randomNumber);
                 pitchResult.judgePitch(inputString);
                 pitchResult.printPitchResult();
 
@@ -28,6 +28,7 @@ public class Application {
                         break;
                     }
                 }
+                pitchResult.pitchClear();
             }
         } catch (IllegalArgumentException e) {
             System.out.println("입력이 잘못되었습니다.");
