@@ -24,12 +24,16 @@ public class GameController {
     }
 
     public void start(boolean isFreshStart) {
-        if (isFreshStart) {
-            outputView.printGameStartMsg();
-        }
+        printStartMsgIfFreshStart(isFreshStart);
         BallNumbers answerBallNumbers = getAnswerBallNumbers();
         compareNumbers(answerBallNumbers);
         restartOrNot();
+    }
+
+    private void printStartMsgIfFreshStart(boolean isFreshStart) {
+        if (isFreshStart) {
+            outputView.printGameStartMsg();
+        }
     }
 
     private void restartOrNot() {
