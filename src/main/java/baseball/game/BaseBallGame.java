@@ -25,13 +25,10 @@ public class BaseBallGame implements Game {
     }
 
     private void playBaseBallGame() {
-        BaseBall baseBall = new BaseBall();
-        playRound(baseBall);
-
-        if (isEndBaseBallGame()) {
-            return;
-        }
-        playBaseBallGame();
+        do {
+            BaseBall baseBall = new BaseBall();
+            playRound(baseBall);
+        } while (!isEndBaseBallGame());
     }
 
     private void playRound(BaseBall baseBall) {
