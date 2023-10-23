@@ -32,7 +32,7 @@ public class BaseBall {
         } while (!num.checkSuccess(input));
     }
 
-    public void playGame() {
+    public static void playGame() {
         String restartOrExitAnswer = "";
         do {
             oneGame();
