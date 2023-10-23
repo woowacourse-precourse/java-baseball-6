@@ -37,6 +37,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_숫자가_아닌_값_마이너스() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-34"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트_중복된_숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("122"))
