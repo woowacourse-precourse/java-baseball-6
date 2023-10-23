@@ -17,7 +17,6 @@ public class BaseBall {
         String userNum = readLine();
 
         List<Integer> userNumList;
-        String resultContent = "";
         while (true) {
             userNumList = checkUserNum(userNum); // 맞는 숫자인지 확인
             int [] result = ismatch(computerNum, userNumList);
@@ -35,17 +34,7 @@ public class BaseBall {
                 }
             }
             else {
-                if (result[0]!= 0) {
-                    resultContent += result[0] +"볼 ";
-                }
-                if (result[1]!=0) {
-                    resultContent += result[1] + "스트라이크";
-                }
-                if (result[2]!=0) {
-                    resultContent = "낫싱";
-                }
-                System.out.println(resultContent);
-                resultContent="";
+                printResult(result);
                 System.out.print("숫자를 입력해주세요 : ");
                 userNum = readLine();
             }
@@ -53,8 +42,22 @@ public class BaseBall {
         }
     }
 
+    private void printResult(int[] result) {
+        String resultContent = "";
+        if (result[0]!= 0) {
+            resultContent += result[0] +"볼 ";
+        }
+        if (result[1]!=0) {
+            resultContent += result[1] + "스트라이크";
+        }
+        if (result[2]!=0) {
+            resultContent = "낫싱";
+        }
+        System.out.println(resultContent);
+    }
 
-    //  TODO(5) - 사용자의 입력을 받아, 게임 한번 더 할건지 물어보는 것에 대한 맞는 입력인지 검사하기
+
+    // - 사용자의 입력을 받아, 게임 한번 더 할건지 물어보는 것에 대한 맞는 입력인지 검사하기
     private boolean checkTryAgain(String userNum) { // 한번 더 할건지
         final String REGEX = "[1-2]+";
         if (userNum.length() != 1) { // 3자리수가 아닌경우,
