@@ -12,6 +12,7 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userNumbers = new GameInput().convertInputToUserNumbers();
         Score score = calculateScore(computerNumbers, userNumbers);
+        System.out.println(score.getHint());
     }
 
     private Score calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {
