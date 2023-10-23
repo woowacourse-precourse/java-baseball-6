@@ -1,4 +1,4 @@
-package player;
+package computer;
 
 import constant.GuideMessageConstant;
 import constant.StringConstant;

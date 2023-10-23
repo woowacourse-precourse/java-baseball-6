@@ -2,6 +2,7 @@ package player;
 
 import camp.nextstep.edu.missionutils.Console;
 import computer.CompareTwoValues;
+import computer.Error;
 import computer.RandomPickNumber;
 import constant.GuideMessageConstant;
 import constant.StringConstant;

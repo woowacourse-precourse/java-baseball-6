@@ -1,6 +1,7 @@
 package player;
 
 import camp.nextstep.edu.missionutils.Console;
+import computer.Error;
 import constant.GuideMessageConstant;
 
 public class Input {
