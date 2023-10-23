@@ -6,6 +6,17 @@ import java.util.*;
 
 public class Player {
 
+    public static List<Integer> stringArrToIntegerList(String input) {
+        String[] inputStringArr = input.split("");
+        List<Integer> list = new ArrayList<>();
+
+        for (String str : inputStringArr) {
+            list.add(Integer.parseInt(str));
+        }
+
+        return list;
+    }
+
     public static void isValidInput(String input, int size) {
         if (!isNaturalNumbers(input)) {
             throw new IllegalArgumentException("자연수만 입력해야합니다.");
