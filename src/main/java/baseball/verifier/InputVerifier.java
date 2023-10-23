@@ -34,9 +34,13 @@ public class InputVerifier {
     private static void checkDigitRange(String inRange) {
         if (inRange.chars()
                 .map(Character::getNumericValue)
-                .anyMatch(i -> i < SystemConstant.MIN_NUMBER_EACH_DIGIT || i > SystemConstant.MAX_NUMBER_EACH_DIGIT)) {
+                .anyMatch(InputVerifier::outOfEachDigitRange)) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_HAS_ZERO);
         }
+    }
+
+    private static boolean outOfEachDigitRange(int comp) {
+        return comp < SystemConstant.MIN_NUMBER_EACH_DIGIT || comp > SystemConstant.MAX_NUMBER_EACH_DIGIT;
     }
 
     private static void checkDistinct(String isDistinct) {
