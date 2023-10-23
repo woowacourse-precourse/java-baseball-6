@@ -6,18 +6,11 @@ import java.util.List;
 public class BaseBalls {
     private final List<CompareNumber> generatedBalls;//컴퓨터가 생성한 번호
 
-    public BaseBalls(List<Integer> generatedBall) {
-        this.generatedBalls = compareNumberFormat(generatedBall);
+    public BaseBalls(List<CompareNumber> generatedBall) {
+        this.generatedBalls = generatedBall;
     }
 
     //컴퓨터가 생성한 번호를 CompareNumber 객체에 담는다
-    private static List<CompareNumber> compareNumberFormat(List<Integer> generatedBall) {
-        ArrayList<CompareNumber> compareNumbers = new ArrayList<>();
-        generatedBall.forEach(v -> {
-            compareNumbers.add(new CompareNumber(compareNumbers.size() + 1, v));
-        });
-        return compareNumbers;
-    }
 
 
     public GameResult compare(List<Integer> userBalls) {
