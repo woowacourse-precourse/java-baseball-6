@@ -1,7 +1,7 @@
 package baseball.contoller;
 
 
-import baseball.model.Result;
+import baseball.domain.Result;
 import baseball.utill.Converter;
 import baseball.utill.ExceptionMessage;
 import baseball.view.InputView;
