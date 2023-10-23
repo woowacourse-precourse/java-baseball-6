@@ -12,6 +12,8 @@ import static baseball.message.Message.START_RANGE;
 import static baseball.message.Message.STRIKE;
 
 import baseball.message.PrintMessage;
+import baseball.repository.GameSetRespository;
+import baseball.repository.MemoryRepository;
 import baseball.utils.CheckUtils;
 import baseball.utils.RandomNumberUtils;
 import camp.nextstep.edu.missionutils.Console;
@@ -21,6 +23,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Game {
+
+    // 게임 설정 저장소
+    private final GameSetRespository gameSetRepository;
+
+    // 게임 진행 저장소
+    private MemoryRepository memoryRepository;
+
+    public Game() {
+        this.gameSetRepository = new GameSetRespository();
+        this.memoryRepository = new MemoryRepository();
+    }
+
     // 게임 진행 여부
     private static boolean gameState;
 
@@ -32,6 +46,7 @@ public class Game {
 
     // 결과 맵
     private static Map<String, Integer> result = null;
+
 
     public static void gameStart() {
         // 시작 메시지 호출
