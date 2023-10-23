@@ -32,6 +32,14 @@ public class GameController {
 
             i++;
         } while (i < 3); //!isDone 검증 메서드
+
+        //뷰로 입력 받기 - 임시로 테스트 케이스 작성
+        inputNumber.setQuitNumber("2");
+
+        if (!isQuitted(inputNumber)) {
+            startGame();
+        }
+
     }
 
     public boolean isDone(InputNumber inputNumber) {
