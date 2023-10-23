@@ -1,7 +1,10 @@
-package model;
+package controller;
 
 import controller.InputGameNumber;
 import controller.InputReOrEnd;
+import model.BallCounter;
+import model.CreateGameNumber;
+import model.InputValidation;
 import view.InputText;
 import view.OutputBallCount;
 import view.StartText;
