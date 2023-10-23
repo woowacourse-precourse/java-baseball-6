@@ -6,14 +6,20 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mockStatic;
 
 import baseball.model.Baseball;
+import baseball.model.BaseballGameResult;
 import baseball.model.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.MockedStatic;
 
 class BaseballServiceTest {
@@ -49,6 +55,34 @@ class BaseballServiceTest {
             Assertions.assertThat(answerBaseball.getBaseballNumbers())
                     .extracting(BaseballNumber::getNumber)
                     .containsExactly(5, 1, 2);
+        }
+    }
+
+    @Nested
+    @DisplayName("숫자 야구의 결과를 계산할 시")
+    class calculateResult {
+
+        static Stream<Arguments> getSuccessTestArgument() {
+            return Stream.of(
+                    Arguments.of(Baseball.from(List.of(1, 2, 3)), Baseball.from(List.of(1, 2, 3)), 0, 3),
+                    Arguments.of(Baseball.from(List.of(1, 2, 4)), Baseball.from(List.of(1, 2, 3)), 0, 2),
+                    Arguments.of(Baseball.from(List.of(1, 3, 2)), Baseball.from(List.of(1, 2, 3)), 2, 1),
+                    Arguments.of(Baseball.from(List.of(4, 5, 6)), Baseball.from(List.of(1, 2, 3)), 0, 0)
+            );
+        }
+
+        @DisplayName("성공적으로 결과를 반환한다.")
+        @MethodSource("getSuccessTestArgument")
+        @ParameterizedTest(name = "정답: {0} 추측: {1} ball: {2}, strike: {3}")
+        void success(Baseball answer, Baseball guess, int ballCount, int strikeCount) {
+            //given
+            //when
+            BaseballGameResult result = baseballService.calculateResult(answer, guess);
+
+            //then
+            assertThat(result).isNotNull();
+            assertThat(result.toString())
+                    .contains(String.valueOf(ballCount), String.valueOf(strikeCount));
         }
     }
 }

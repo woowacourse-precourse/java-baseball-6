@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.model.Baseball;
+import baseball.model.BaseballGameResult;
 import baseball.model.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
@@ -21,5 +22,9 @@ public class BaseballService {
             uniqueNumbers.add(uniqueNumber);
         }
         return uniqueNumbers;
+    }
+
+    public BaseballGameResult calculateResult(Baseball answer, Baseball guess) {
+        return answer.match(guess);
     }
 }

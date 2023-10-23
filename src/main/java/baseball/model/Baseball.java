@@ -26,4 +26,39 @@ public class Baseball {
     public List<BaseballNumber> getBaseballNumbers() {
         return baseballNumbers;
     }
+
+    public BaseballGameResult match(Baseball compare) {
+        BaseballGameResult result = new BaseballGameResult();
+
+        updateResult(result, compare);
+        return result;
+    }
+
+    private void updateResult(BaseballGameResult result, Baseball compare) {
+        List<BaseballNumber> compareNumbers = compare.getBaseballNumbers();
+
+        for (int i = 0; i < Baseball.LENGTH; i++) {
+            BaseballNumber number = baseballNumbers.get(i);
+            BaseballNumber compareNumber = compareNumbers.get(i);
+
+            if (isStrike(number, compareNumber)) {
+                result.add(BaseballGameResultType.STRIKE);
+            } else if (isBall(compareNumber)) {
+                result.add(BaseballGameResultType.BALL);
+            }
+        }
+    }
+
+    private boolean isStrike(BaseballNumber number, BaseballNumber compareNumber) {
+        return number.equals(compareNumber);
+    }
+
+    private boolean isBall(BaseballNumber compareNumber) {
+        return baseballNumbers.contains(compareNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Baseball" + baseballNumbers;
+    }
 }
