@@ -20,12 +20,8 @@ public class Validator {
     }
 
     private static boolean isNotNumber(List<Integer> userNumbers) {
-        for (int number : userNumbers) {
-            if (Config.isInvalidRange(number)) {
-                return true;
-            }
-        }
-        return false;
+        return userNumbers.stream()
+                .anyMatch(Config::isInvalidRange);
     }
 
     private static boolean hasDuplicatedNumbers(List<Integer> userNumbers) {
