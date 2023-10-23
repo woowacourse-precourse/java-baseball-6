@@ -13,11 +13,14 @@ public class Player {
 
     /**
      * 플레이어 숫자 입력 받기
+     *
+     * @param number_of_digits : 지정 입력값 자리수
      */
-    public void inputNumber() {
+    public void setPlayer_number(int number_of_digits) {
         String input_number = readLine();
 
-        if (!validator.lengthCheck(input_number.length()) || !validator.validNumCheck(input_number)) {
+        if (!validator.lengthCheck(input_number.length(), number_of_digits) ||
+                !validator.validNumCheck(input_number)) {
             throw new IllegalArgumentException();
         }
 
