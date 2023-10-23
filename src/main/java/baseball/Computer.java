@@ -112,8 +112,4 @@ public class Computer {
         }
         return false;
     }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
 }
