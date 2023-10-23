@@ -11,14 +11,11 @@ public class Application {
 }
 
 class BaseballGame {
-    ComputerNumberCreator computerNumberCreator = new ComputerNumberCreator();
-
-    Ball ball = new Ball();
-    Pitching pitching;
-    Judge judge = new Judge();
-    Result result = new Result();
-    Message message = new Message();
-
+    private final ComputerNumberCreator computerNumberCreator = new ComputerNumberCreator();
+    private final Ball ball = new Ball();
+    private final Judge judge = new Judge();
+    private final Result result = new Result();
+    private final Message message = new Message();
 
     void start() {
         int retry = 1;
@@ -31,10 +28,11 @@ class BaseballGame {
 
             while (!gameEnded) {
                 message.printInputMessage();
-                pitching = new Pitching(ball);
-                int[] inputNumberArray = pitching.inputNumber;
 
-                int[] outcome = judge.getResult(computerNumberArray, inputNumberArray);
+                Pitching pitching = new Pitching(ball);
+                Referee refree = new Referee(computerNumberArray, pitching, judge);
+
+                int[] outcome = refree.result;
                 result.printResult(outcome);
 
                 if (outcome[0] == 3) {
@@ -64,18 +62,18 @@ class Pitching {
     }
 }
 
+
 class Ball {
-    //static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static final int NUMBER_DIGIT = 3;
     int number;
 
     int readingMove() {
         number = Integer.parseInt(Console.readLine());
 
-        if (!checkNumberDigits(number)) {
+        if (!Validate.verifyTripleDigit(number)) {
             return number;
         } else {
-            throw new IllegalArgumentException("형식에 맞지 않음");
+            throw new IllegalArgumentException("올바른 입력 형식이 아닙니다.");
         }
 
     }
@@ -90,24 +88,19 @@ class Ball {
 
         return intArrayNumber;
     }
+}
 
-    public static boolean checkNumberDigits(int number) {
+class Validate {
+    public static boolean verifyTripleDigit(int number) {
         return String.valueOf(number).length() != 3;
     }
 }
 
-class Refree {
-    int[] computerNumber;
+class Referee {
     int[] result;
 
-    int[] getComputerNumber(ComputerNumberCreator nc) {
-        computerNumber = nc.createComputerNumber();
-        return computerNumber;
-    }
-
-    Refree(ComputerNumberCreator numberCreator, Pitching pitching, Judge judge) {
-        this.computerNumber = this.getComputerNumber(numberCreator);
-        this.result = judge.getResult(numberCreator.createComputerNumber(), pitching.inputNumber);
+    Referee(int[] computerNumber, Pitching pitching, Judge judge) {
+        this.result = judge.getResult(computerNumber, pitching.inputNumber);
     }
 }
 
@@ -203,5 +196,4 @@ class Message {
         System.out.println(EndMessage);
     }
 }
-
 
