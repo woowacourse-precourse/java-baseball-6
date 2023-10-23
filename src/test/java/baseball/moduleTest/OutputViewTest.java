@@ -1,10 +1,10 @@
-package baseball;
+package baseball.moduleTest;
 
 import baseball.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class OutputViewViewTest {
+class OutputViewTest {
     OutputView script = new OutputView();
     @Test
     @DisplayName("안내 문구 테스트")

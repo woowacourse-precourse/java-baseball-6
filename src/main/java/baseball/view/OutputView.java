@@ -19,23 +19,6 @@ public class OutputView {
     }
 
     public void printResultMessage(int strike, int ball){
-        if (strike==3){
-            System.out.println(strike+ GameMessage.STRIKE.getMessage());
-            return;
-        }
-        if (strike==0 && ball>0){
-            System.out.println(ball+ GameMessage.BALL.getMessage());
-            return;
-        }
-        if (strike>0 && ball==0){
-            System.out.println(strike+ GameMessage.STRIKE.getMessage());
-            return;
-        }
-        if (strike>0 && ball>0){
-            System.out.println(ball+ GameMessage.BALL.getMessage()
-                    +" "+strike+ GameMessage.STRIKE.getMessage());
-            return;
-        }
-        System.out.println(GameMessage.NOTING.getMessage());
+        System.out.println(ResultFormatter.formatResult(strike,ball));
     }
 }
