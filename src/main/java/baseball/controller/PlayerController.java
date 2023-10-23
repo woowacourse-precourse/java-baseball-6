@@ -24,6 +24,7 @@ public class PlayerController {
 
     private void validateNumbers(List<Integer> inputList) {
         validateOutOfRange(inputList);
+        validateDuplicates(inputList);
     }
 
     private void validateOutOfRange(List<Integer> inputList) {
@@ -33,5 +34,11 @@ public class PlayerController {
                 .ifPresent(number -> {
                     throw new IllegalArgumentException("숫자는 1 ~ 9 사이의 숫자만 입력할 수 있습니다.");
                 });
+    }
+
+    private void validateDuplicates(List<Integer> inputList) {
+        if (inputList.stream().distinct().count() != inputList.size()) {
+            throw new IllegalArgumentException("중복 없이 숫자를 입력해주세요.");
+        }
     }
 }
