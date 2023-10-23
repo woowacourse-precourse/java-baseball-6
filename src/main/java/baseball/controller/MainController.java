@@ -1,8 +1,8 @@
-package baseball.Controller;
+package baseball.controller;
 
-import baseball.Model.GameData;
-import baseball.View.InputView;
-import baseball.View.OutputView;
+import baseball.model.GameData;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.ArrayList;
 
 public class MainController {

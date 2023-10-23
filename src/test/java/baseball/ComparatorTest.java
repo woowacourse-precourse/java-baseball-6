@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.Controller.Comparator;
+import baseball.controller.Comparator;
 import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

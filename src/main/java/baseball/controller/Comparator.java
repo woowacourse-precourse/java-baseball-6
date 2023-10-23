@@ -1,4 +1,4 @@
-package baseball.Controller;
+package baseball.controller;
 
 import java.util.ArrayList;
 import java.util.HashSet;

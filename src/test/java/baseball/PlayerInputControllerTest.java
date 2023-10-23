@@ -2,8 +2,8 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.Controller.PlayerInputController;
-import baseball.Controller.Validator;
+import baseball.controller.PlayerInputController;
+import baseball.controller.Validator;
 import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
