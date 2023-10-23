@@ -18,6 +18,9 @@
 - Computer
   - **정답을 알려주는 Class**
   - 랜덤한 세 자리의 숫자를 만듦
+- BaseballGameStatus
+  - **매 판의 ball, count 및 다음 게임 진행 여부를 체크하는 Class** 
+  - 처음에는 BaseballGame 에서 관리하였으나, 로직으로 분리할 수 있을 듯 하여 분리함 
 - BaseballGame
   - **게임을 진행하는 로직이 있는 Class** 
   - 사용자(Player) 의 입력 값과 정답(Computer) 의 숫자야구 값이 얼마나 같은지 비교함
