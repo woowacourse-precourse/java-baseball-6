@@ -37,4 +37,17 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateNumberOneOrTwo(String input) {
+        int tmp = Integer.parseInt(input);
+        if (tmp != 1 && tmp != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateNumberLengthOne(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
