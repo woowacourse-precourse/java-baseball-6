@@ -30,14 +30,14 @@ public class Game {
 
     public void decideNextStep() {
         String num = Console.readLine();
+        if (!num.equals("1") && !num.equals("2")) { // 예외 처리
+            throw new IllegalArgumentException();
+        }
         if (num.equals("1")) { // 게임 재시작
             computerNumber = numberGenerator.setComputerNumber(); // 컴퓨터 번호 새로 셋팅
         }
         if (num.equals("2")) { // 게임 종료
             exit = true;
-        }
-        if (!num.equals("1") && !num.equals("2")) { // 예외 처리
-            throw new IllegalArgumentException();
         }
     }
 }
