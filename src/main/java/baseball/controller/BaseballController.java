@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.Player;
 import baseball.service.ComputerService;
 import baseball.service.MessageService;
+import baseball.validator.PlayerNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballController {
@@ -13,10 +13,12 @@ public class BaseballController {
 
     private final ComputerService computerService;
     private final MessageService messageService;
+    private final PlayerNumberValidator playerNumberValidator;
 
     public BaseballController() {
         this.computerService = new ComputerService();
         this.messageService = new MessageService();
+        this.playerNumberValidator = new PlayerNumberValidator();
     }
 
     public void startGame() {
@@ -67,8 +69,9 @@ public class BaseballController {
         messageService.inputPlayerNumber();
         String number = Console.readLine();
 
-        Player player = new Player(number);
-        return player.getNumber();
+        playerNumberValidator.validate(number);
+
+        return number;
     }
 
     private String getComputerNumber() {

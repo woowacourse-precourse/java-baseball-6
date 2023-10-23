@@ -1,24 +1,13 @@
-package baseball.domain;
+package baseball.validator;
 
 import static baseball.controller.BaseballController.BASEBALL_NUMBERS_SIZE;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Player {
+public class PlayerNumberValidator {
 
-    private final String number;
-
-    public Player(String number) {
-        validate(number);
-        this.number = number;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    private void validate(String number) {
+    public void validate(String number) {
         validateInteger(number);
         validateSize(number);
         validateRange(number);
