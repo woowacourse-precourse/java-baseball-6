@@ -27,5 +27,9 @@ public class Game extends GameController {
             result = recordResult(input, answer);
             printResult(result);
         }
+
+        System.out.println(Announcement.GAME_WIN);
+
+        this.terminate = checkTerminate();
     }
 }
