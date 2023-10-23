@@ -40,7 +40,7 @@ class User {
         winning = false;
     }
 
-    public boolean didUserWin() {
+    public boolean returnWinning() {
         return winning;
     }
 
@@ -127,6 +127,11 @@ class GameManager {
         return user.returnUserInputVal();
     }
 
+    private boolean checkGameEnd() {
+        // 유저가 승리했으면 Game End
+        return user.returnWinning();
+    }
+
     private boolean validateUserInput(String userInput) {
         // 인게임에서 사용자 입력값의 길이가 3이 아니면 false
         if (userInput.length() != 3) {
@@ -186,7 +191,7 @@ class GameManager {
         System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
     }
 
-    private boolean checksGuessStageEndingCondition() {
+    private boolean checkGuessStageEnd() {
         return userGuessJudgement.getFirst() == 3;
     }
 
@@ -196,17 +201,21 @@ class GameManager {
     }
 
     public void runGame() {
+        // 디버깅 용
         printComputerGeneratedNumbers();
+        // 게임 시작 메시지 출력
         printGameStartMessage();
-        while (!user.didUserWin()) {
-            printUserInputPrompt();
+        // 게임 종료를 확인할 때까지 게임 진행
+        while (!checkGameEnd()) {
 
+            printUserInputPrompt();
+            // 사용자 입력값이 유효하지 않으면 예외 발생
             if (!validateUserInput(user.readInput())) {
                 throw new IllegalArgumentException();
             }
             userGuessJudgement = computer.judgeUserGuess(this.getUserInputVal());
             computer.printUserGuessJudgementResult(userGuessJudgement);
-            if (checksGuessStageEndingCondition()) {
+            if (checkGuessStageEnd()) {
                 user.win();
                 printGameRestartMessage();
                 if (!validateUserInput(Integer.parseInt(user.readInput()))) {
@@ -217,6 +226,7 @@ class GameManager {
                         this.setUpBeforeRestartGame();
                         continue;
                     case "2":
+                        // 게임 종료
                         continue;
                     default:
                         throw new IllegalArgumentException();
