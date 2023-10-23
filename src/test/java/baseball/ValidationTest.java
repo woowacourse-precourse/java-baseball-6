@@ -17,7 +17,7 @@ public class ValidationTest extends NsTest {
         String input_value="";
 
         //when
-        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value))
+        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[Err] 입력 값이 빈 문자열입니다.");
     }
@@ -26,7 +26,7 @@ public class ValidationTest extends NsTest {
     @DisplayName("사용자 게임 입력 값 예외 통합 테스트")
     @ValueSource(strings = {"1234","12","1 3","12a","222","012",""})
     void 사용자_게임_입력_값_예외_통합_테스트(String input_value){
-        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value))
+        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[Err]");
     }
@@ -35,7 +35,7 @@ public class ValidationTest extends NsTest {
     @DisplayName("사용자 게임 재도전 여부 입력 값 예외 통합 테스트")
     @ValueSource(strings = {"3","12",""," ","a"})
     void 사용자_게임_재도전_여부_입력_값_예외_통합_테스트(String input_retry){
-        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_retry))
+        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_retry,3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[Err]");
     }
