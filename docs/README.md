@@ -50,3 +50,4 @@
 - 만약 두 경우가 아니라면 IllegalArgumentException 예외처리를 날린다.
 
 <h2> FixedValue 클래스에는 상수들로만 구성된 클래스로 이용 할 것이다. </h2>
+
