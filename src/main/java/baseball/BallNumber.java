@@ -1,17 +1,23 @@
 package baseball;
 
+import java.util.Map;
 import java.util.Random;
 
 public class BallNumber {
-    private int ballNumber;
     private int num;
-    public  int[]
+    private int ballDP[] = new int[3];
     public BallNumber(int number){
-        this.ballNumber = number;
+
+
+    }
+
+    private int randomNum(){
+        Random random = new Random();
+        return random.nextInt(9);
     }
 
     public int makeNumber(){
-        Random random = new Random();
-        this.num = random.nextInt(9);
+        ballDP[0] = this.num;
+        return 1;
     }
 }
