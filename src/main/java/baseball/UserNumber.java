@@ -22,7 +22,20 @@ public class UserNumber {
         }
     }
 
-    public void TestFunction(String word) {
+    private void checkDigit(String word) {
+        for (int i = 0; i < word.length(); i++) {
+            if (!Character.isDigit(word.charAt(i))) {
+                throw new IllegalArgumentException("문자를 입력하였습니다.");
+            }
+        }
+    }
+
+    //    private method 테스트를 위한 function
+    public void testCheckLength(String word) throws IllegalArgumentException {
         checkLength(word);
+    }
+
+    public void testCheckDigit(String word) throws IllegalArgumentException {
+        checkDigit(word);
     }
 }

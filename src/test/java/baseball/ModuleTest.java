@@ -17,7 +17,13 @@ public class ModuleTest {
     @Test
     void 입력값_길이_확인() {
         UserNumber userNumber = new UserNumber();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.TestFunction("1234"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.testCheckLength("1234"));
+    }
+
+    @Test
+    void 입력값_문자_확인() {
+        UserNumber userNumber = new UserNumber();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.testCheckDigit("ㄱ34"));
     }
 
 }
