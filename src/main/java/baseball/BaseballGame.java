@@ -50,4 +50,10 @@ public class BaseballGame {
             System.out.println(compareResult[1] + "스트라이크");
         }
     }
+
+    private static void showNothing(int[] compareResult) {
+        if (compareResult[0] == 0 && compareResult[1] == 0) {
+            System.out.println("낫싱");
+        }
+    }
 }
