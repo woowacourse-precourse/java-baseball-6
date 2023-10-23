@@ -25,7 +25,7 @@ public class Application {
         }
     }
 
-    private List<Integer> chooseRandomNumbers() {
+    private static List<Integer> chooseRandomNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < 3) {
@@ -38,7 +38,7 @@ public class Application {
         return computerNumbers;
     }
 
-    private int getUserNumbers() {
+    private static int getUserNumbers() {
         String userString = Console.readLine();
         int userNumbers;
 
@@ -61,13 +61,14 @@ public class Application {
         return userNumbers;
     }
 
-    private boolean checkNumbers(List<Integer> computerNumbers, int userNumbers) {
+    private static boolean checkNumbers(List<Integer> computerNumbers, int userNumbers) {
         String answer = "";
         int strikes = 0;
         int balls = 0;
 
         for (int i = 0; i < 3; i++) {
             int compareNumber = userNumbers / (int) Math.pow(10, 2 - i);
+            userNumbers %= (int) Math.pow(10, 2 - i);
             if (!computerNumbers.contains(compareNumber)) {
                 continue;
             }
@@ -96,7 +97,7 @@ public class Application {
         return false;
     }
 
-    private int getRestart() {
+    private static int getRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userString = Console.readLine();
 
