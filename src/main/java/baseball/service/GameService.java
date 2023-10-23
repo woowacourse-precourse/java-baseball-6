@@ -2,6 +2,7 @@ package baseball.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import baseball.domain.GameInfo;
 
@@ -27,20 +28,15 @@ public class GameService {
     }
 
     public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
-        int ballCount = 0;
-        int strikeCount = 0;
         List<Integer> randomNumbers = gameInfo.getRandomNumbers();
-        List<Integer> integers = stringToList(userInput);
-        for (int i = 0; i < randomNumbers.size(); i++) {
-            for (int j = 0; j < integers.size(); j++) {
-                if (i == j && randomNumbers.get(i).equals(integers.get(j))) {
-                    strikeCount++;
-                }
-                if (i != j && randomNumbers.get(i).equals(integers.get(j))) {
-                    ballCount++;
-                }
-            }
-        }
+        List<Integer> userInputs = stringToList(userInput);
+        int strikeCount = (int) IntStream.range(0, userInputs.size())
+                .filter(index -> randomNumbers.get(index).equals(userInputs.get(index)))
+                .count();
+        int ballCount = (int) IntStream.range(0, userInputs.size())
+                .filter(index -> !randomNumbers.get(index).equals(userInputs.get(index)))
+                .filter(index -> randomNumbers.contains(userInputs.get(index)))
+                .count();
         gameInfo.updateBall(ballCount);
         gameInfo.updateStrike(strikeCount);
     }
