@@ -2,18 +2,9 @@ package baseball;
 
 public class ComputerController {
 
-    private final View view;
-    private final Validate validation;
-
-    public ComputerController(View view, Validate validation) {
-        this.view = view;
-        this.validation = validation;
-    }
-
     public void run() {
-        if (validation.validatedInput()) {
-            view.renderResult();
-        }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        new DiContainer().userController().gameStart();
     }
 }
 
