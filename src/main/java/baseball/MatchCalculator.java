@@ -14,7 +14,7 @@ public class MatchCalculator {
         return new int[]{strikeCount, ballCount};
     }
 
-    public int countStrike(List<Integer> computerNum, List<Integer> userNum) {
+    private int countStrike(List<Integer> computerNum, List<Integer> userNum) {
         int count = 0;
         for (int i = 0; i < computerNum.size(); i++) {
             if (computerNum.get(i).equals(userNum.get(i))) {
@@ -24,7 +24,7 @@ public class MatchCalculator {
         return count;
     }
 
-    public int countBall(List<Integer> computerNum, List<Integer> userNum) {
+    private int countBall(List<Integer> computerNum, List<Integer> userNum) {
         int count = 0;
         for (int i = 0; i < computerNum.size(); i++) {
             if (computerNum.contains(userNum.get(i))) {
@@ -34,7 +34,7 @@ public class MatchCalculator {
         return count;
     }
 
-    public void checkWin(int strikeCount) {
+    private void checkWin(int strikeCount) {
         if (strikeCount == THREE_STRIKE) {
             hasWon();
         }

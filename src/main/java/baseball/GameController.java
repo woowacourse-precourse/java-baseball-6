@@ -6,15 +6,14 @@ import static baseball.Constant.RESTART;
 import java.util.List;
 
 public class GameController {
-    private final Computer computer;
     private final UserInput userInput;
     private final MatchCalculator matchCalculator;
-    private OutputView outputView;
+    private final OutputView outputView;
     private final List<Integer> computerNum;
     private static boolean hasWon;
 
     GameController() {
-        computer = new Computer();
+        Computer computer = new Computer();
         userInput = new UserInput();
         outputView = new OutputView();
         matchCalculator = new MatchCalculator();
@@ -33,7 +32,7 @@ public class GameController {
         restartOrExit(userInput.promptUserForRestart());
     }
 
-    public void restartOrExit(int userAnswer) {
+    private void restartOrExit(int userAnswer) {
         if (userAnswer == RESTART) {
             hasWon = false;
             beginGame();

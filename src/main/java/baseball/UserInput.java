@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.InputValidator.gameInputValidator;
-import static baseball.InputValidator.restartInputValidator;
 import static baseball.Utils.stringToInt;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -10,11 +8,13 @@ import java.util.List;
 
 public class UserInput {
     private List<Integer> userNum;
-    private OutputView outputView;
+    private final OutputView outputView;
+    private final InputValidator inputValidator;
 
     UserInput() {
         this.userNum = new ArrayList<>();
         this.outputView = new OutputView();
+        this.inputValidator = new InputValidator();
     }
 
     public List<Integer> getUserNum() {
@@ -24,14 +24,14 @@ public class UserInput {
     public void promptUserInput() {
         outputView.promptMessage();
         String string = Console.readLine();
-        gameInputValidator(string);
+        inputValidator.gameInputValidator(string);
         userNum = stringToInt(string);
     }
 
     public int promptUserForRestart() {
         outputView.restartMessage();
         String s = Console.readLine();
-        restartInputValidator(s);
+        inputValidator.restartInputValidator(s);
         List<Integer> userAnswer = new ArrayList<>(stringToInt(s));
         return userAnswer.get(0);
     }
