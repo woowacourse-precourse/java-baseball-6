@@ -75,4 +75,12 @@ public class ComputerTest {
         Assertions.assertEquals(expectedAnswer,outputStreamCaptor.toString().trim());
 
     }
+    @Test
+    void testReGenerateNumberList_재생성된_숫자는_값이_다르다(){
+        var existedNumberList = computer.getNumberList();
+        computer.reGenerateNumberList();
+        var createdNumberList = computer.getNumberList();
+
+        Assertions.assertNotEquals(existedNumberList,createdNumberList);
+    }
 }

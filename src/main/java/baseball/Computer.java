@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Computer {
     private final int minimumCanCreatedValue;
     private final int maximumCanCreatedValue;
-    public ArrayList<Integer> numberList;
+    private ArrayList<Integer> numberList;
     private final int digitCount;
     public ArrayList<Integer> getNumberList(){
         return this.numberList;
@@ -26,7 +26,7 @@ public class Computer {
         this.numberList = generateRandomNumberListWithNotRepeating(digitCount);
 
     }
-    public ArrayList<Integer> generateRandomNumberListWithNotRepeating(){
+    private ArrayList<Integer> generateRandomNumberListWithNotRepeating(){
         return generateRandomNumberListWithNotRepeating(digitCount);
     }
 
@@ -109,5 +109,8 @@ public class Computer {
         }
         String result = resultBuilder.toString();
         System.out.println(result);
+    }
+    public void reGenerateNumberList(){
+        this.numberList = generateRandomNumberListWithNotRepeating(digitCount);
     }
 }

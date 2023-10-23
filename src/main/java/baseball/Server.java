@@ -27,7 +27,6 @@ public class Server {
         }
     }
 
-
     Server(){
         this.computer = new Computer(
             digitalCount,
@@ -75,8 +74,7 @@ public class Server {
         return;
     }
     private void restart(){
-        computer.numberList = computer.generateRandomNumberListWithNotRepeating();
-        gameStatusCode = GameStatus.RUNNING;
+        computer.reGenerateNumberList();
         return;
     }
     private void quit(){
