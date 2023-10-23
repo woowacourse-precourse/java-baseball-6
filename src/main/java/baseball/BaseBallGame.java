@@ -15,5 +15,10 @@ public class BaseBallGame {
     }
     public BaseBallGame(){
         RandomNum();
+        Play();
+    }
+    //게임 진행 함수
+    public void Play(){
+
     }
 }
