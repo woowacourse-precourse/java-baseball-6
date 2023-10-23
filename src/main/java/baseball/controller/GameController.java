@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.GameNumber;
-import baseball.domain.GameResult;
-import baseball.domain.RetryCommand;
+import baseball.domain.*;
+import baseball.domain.number.AnswerNumber;
+import baseball.domain.number.UserNumber;
 import baseball.service.GameService;
 import baseball.service.NumberGenerator;
 import baseball.view.InputView;
@@ -15,7 +15,7 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
     private GameService gameService;
-    private GameNumber answerNumber;
+    private AnswerNumber answerNumber;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -27,7 +27,6 @@ public class GameController {
     public void run() {
         outputView.printStartMessage();
         while (gameService.isNotDone()) {
-            gameService.resetResult();
             GameResult gameResult = playOneRound(answerNumber);
             outputView.printRoundResult(gameResult);
             if (gameResult.isThreeStrike()) {
@@ -37,17 +36,18 @@ public class GameController {
         }
     }
 
-    private GameNumber createNewAnswer() {
+    private AnswerNumber createNewAnswer() {
         List<Integer> generatedNumber = NumberGenerator.generateNumber();
-        return new GameNumber(generatedNumber);
+        return new AnswerNumber(generatedNumber);
     }
 
-    private GameResult playOneRound(GameNumber answerNumber) {
-        GameNumber userNumber = getUserNumber();
+    private GameResult playOneRound(AnswerNumber answerNumber) {
+        gameService.setCountZero();
+        UserNumber userNumber = getUserNumber();
         return gameService.compareNumber(answerNumber, userNumber);
     }
 
-    private GameNumber getUserNumber() {
+    private UserNumber getUserNumber() {
         return inputView.getUserNumber();
     }
 

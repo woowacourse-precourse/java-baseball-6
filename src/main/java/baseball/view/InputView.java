@@ -1,7 +1,7 @@
 package baseball.view;
 
-import baseball.domain.GameNumber;
 import baseball.domain.RetryCommand;
+import baseball.domain.number.UserNumber;
 import baseball.util.TypeConvertor;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -18,11 +18,11 @@ public class InputView {
         this.typeConvertor = typeConvertor;
     }
 
-    public GameNumber getUserNumber() {
+    public UserNumber getUserNumber() {
         System.out.print(USER_NUMBER_MESSAGE);
         String input = Console.readLine();
         List<Integer> inputNumber = typeConvertor.convertStringToList(input);
-        return new GameNumber(inputNumber);
+        return new UserNumber(inputNumber);
     }
 
     public RetryCommand getRetryCommand() {

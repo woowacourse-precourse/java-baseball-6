@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.number.UserNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -14,10 +15,10 @@ public class GameNumberTest {
         List<Integer> integers = List.of(1, 3, 4);
 
         //when
-        GameNumber gameNumber = new GameNumber(integers);
+        UserNumber userNumber = new UserNumber(integers);
 
         //then
-        List<Integer> number = gameNumber.number();
+        List<Integer> number = userNumber.getNumber();
         assertThat(number.size()).isEqualTo(3);
         assertThat(number).containsExactly(1, 3, 4);
     }
@@ -30,12 +31,12 @@ public class GameNumberTest {
 
         //when & then
         assertThatThrownBy(
-                () -> new GameNumber(shortNumber)
+                () -> new UserNumber(shortNumber)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 숫자를 입력해 주세요.");
 
         assertThatThrownBy(
-                () -> new GameNumber(longNumber)
+                () -> new UserNumber(longNumber)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 숫자를 입력해 주세요.");
     }
@@ -47,7 +48,7 @@ public class GameNumberTest {
 
         //when & then
         assertThatThrownBy(
-                () -> new GameNumber(duplicateNumber)
+                () -> new UserNumber(duplicateNumber)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복 되지 않는 숫자를 입력해 주세요.");
     }
@@ -59,7 +60,7 @@ public class GameNumberTest {
 
         //when & then
         assertThatThrownBy(
-                () -> new GameNumber(zeroNumber)
+                () -> new UserNumber(zeroNumber)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("0은 포함할 수 없습니다.");
     }
@@ -71,7 +72,7 @@ public class GameNumberTest {
 
         //when & then
         assertThatThrownBy(
-                () -> new GameNumber(negativeNumber)
+                () -> new UserNumber(negativeNumber)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("음수는 포함할 수 없습니다.");
     }

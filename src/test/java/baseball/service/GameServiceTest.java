@@ -1,6 +1,7 @@
 package baseball.service;
 
-import baseball.domain.GameNumber;
+import baseball.domain.number.AnswerNumber;
+import baseball.domain.number.UserNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,18 +12,18 @@ import static org.assertj.core.api.Assertions.*;
 public class GameServiceTest {
 
     private GameService gameService;
-    private GameNumber answerNumber;
+    private AnswerNumber answerNumber;
 
     @BeforeEach
     void beforeEach() {
         this.gameService = GameService.startNewGame();
-        this.answerNumber = new GameNumber(List.of(1, 2, 3));
+        this.answerNumber = new AnswerNumber(List.of(1, 2, 3));
     }
 
     @Test
     void compareNumberTest1() {
         //given
-        GameNumber userNumber = new GameNumber(List.of(3, 2, 1));
+        UserNumber userNumber = new UserNumber(List.of(3, 2, 1));
 
         //when
         gameService.compareNumber(answerNumber, userNumber);
@@ -34,7 +35,7 @@ public class GameServiceTest {
     @Test
     void compareNumberTest2() {
         //given
-        GameNumber userNumber = new GameNumber(List.of(1, 2, 3));
+        UserNumber userNumber = new UserNumber(List.of(1, 2, 3));
 
         //when
         gameService.compareNumber(answerNumber, userNumber);

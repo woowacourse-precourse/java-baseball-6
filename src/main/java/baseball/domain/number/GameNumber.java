@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.number;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Set;
 import static baseball.service.NumberGenerator.NUMBER_COUNT;
 import static baseball.util.ErrorMessage.*;
 
-public record GameNumber(List<Integer> number) {
+public abstract class GameNumber {
 
-    public GameNumber {
+    public GameNumber(List<Integer> number) {
         checkNumber(number);
     }
 
@@ -18,18 +18,6 @@ public record GameNumber(List<Integer> number) {
         checkDuplicate(number);
         checkZero(number);
         checkNegative(number);
-    }
-
-    public int getNumberOfIndex(int index) {
-        return this.number.get(index);
-    }
-
-    public boolean isContain(int indexNumber) {
-        return this.number.contains(indexNumber);
-    }
-
-    public boolean isInPlace(int index, int indexNumber) {
-        return this.number.get(index).equals(indexNumber);
     }
 
     private void checkLength(List<Integer> number) {
