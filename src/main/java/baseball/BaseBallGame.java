@@ -20,9 +20,14 @@ public class BaseBallGame {
     //게임 진행 함수
     public void Play(){
         StartGamePrint();
+        StopGamePrint();
     }
     //게임 시작 알림 함수
     public void StartGamePrint(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+    //게임 종료 알림 함수
+    public void StopGamePrint(){
+        System.out.print("게임 종료");
     }
 }
