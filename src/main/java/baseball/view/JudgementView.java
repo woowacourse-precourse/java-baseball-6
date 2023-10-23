@@ -16,10 +16,10 @@ public class JudgementView {
             return;
         }
         if (judgement.hasBall()) {
-            System.out.printf(BALL_MESSAGE, judgement.getBall());
+            System.out.printf(BALL_MESSAGE, judgement.ballCount());
         }
         if (judgement.hasStrike()) {
-            System.out.printf(STRIKE_MESSAGE, judgement.getStrike());
+            System.out.printf(STRIKE_MESSAGE, judgement.strikeCount());
         }
         System.out.println();
     }

@@ -11,11 +11,11 @@ public class Judgement {
         this.ball = ball;
     }
 
-    public int getStrike() {
+    public int strikeCount() {
         return strike;
     }
 
-    public int getBall() {
+    public int ballCount() {
         return ball;
     }
 
