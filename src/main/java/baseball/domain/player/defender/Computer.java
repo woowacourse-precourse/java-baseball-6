@@ -5,6 +5,7 @@ import baseball.domain.player.defender.value.Results;
 import baseball.domain.player.value.Ball;
 import baseball.domain.player.value.Balls;
 import baseball.exception.rutime.NotInitializeBallException;
+import baseball.support.filter.ExistBallFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,28 +31,22 @@ public class Computer implements Defender {
 	}
 
 	private List<Result> calcResults(Balls tgBalls) {
-		List<Ball> filteredBalls = filter(tgBalls);
+		Balls filteredBalls = filter(tgBalls);
 
 		return calculateResult(filteredBalls);
 	}
 
-	private List<Ball> filter(Balls target) {
-		List<Ball> filtered = new ArrayList<>();
-		for (int i = 0; i < target.size(); i++) {
-			Ball ball = target.getBalls().get(i);
-			if (balls.isContain(ball)) {
-				filtered.add(ball);
-			}
-		}
-		return filtered;
+	private Balls filter(Balls target) {
+		return ExistBallFilter.filter(balls, target);
 	}
 
-	private List<Result> calculateResult(List<Ball> target) {
+	private List<Result> calculateResult(Balls target) {
 		List<Result> results = new ArrayList<>();
-		int targetSize = target.size();
+		Long targetSize = target.size();
+		List<Ball> balls = target.getBalls();
 		for (int i = 0; i < targetSize; i++) {
-			Ball ball = target.get(i);
-			if (balls.isPosition(ball, (long) i)) {
+			Ball ball = balls.get(i);
+			if (this.balls.isPosition(ball, (long) i)) {
 				results.add(Result.STRIKE);
 				continue;
 			}
