@@ -6,6 +6,29 @@ import java.util.List;
 public class Baseball {
     final Validation validation = new Validation();
 
+    public void run() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computerNums = createRandomNumber();
+        System.out.println(computerNums);
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요. : ");
+            String userNum = camp.nextstep.edu.missionutils.Console.readLine();
+            validation.isValidate(userNum, "gaming");
+
+            int[] strikeBallNums = judgeStrikeOrBall(computerNums, userNum);
+
+            int strike = strikeBallNums[0];
+            int ball = strikeBallNums[1];
+            showResult(strike, ball);
+
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
+
     public List<Integer> createRandomNumber() {
         List<Integer> computerNums = new ArrayList<>();
         while (computerNums.size() < 3) {
