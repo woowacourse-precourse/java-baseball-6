@@ -1,8 +1,8 @@
 package baseball.control;
 
-import static baseball.model.NumConst.MAX_NUMBER;
-import static baseball.model.NumConst.MIN_NUMBER;
-import static baseball.model.NumConst.NUM_LENGTH;
+import static baseball.model.NumConstant.MAX_NUMBER;
+import static baseball.model.NumConstant.MIN_NUMBER;
+import static baseball.model.NumConstant.NUM_LENGTH;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
