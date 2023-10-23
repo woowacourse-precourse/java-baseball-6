@@ -7,19 +7,10 @@ public class BallCheck {
 		int bcnt = 0;
 
 		for (int i = 0; i < coms_ball.length; i++) {
-			if (check(myball, coms_ball[i], i)) {
+			if (DuplicationCheck.hasDuplicatesExcept(myball, coms_ball[i], i)) {
 				bcnt++;
 			}
 		}
 		return bcnt;
-	}
-
-	private static boolean check(int[] arr, int val, int exval) {
-		for (int i = 0; i < arr.length; i++) {
-			if (i != exval && arr[i] == val) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
