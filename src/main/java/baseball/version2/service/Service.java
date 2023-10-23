@@ -31,7 +31,8 @@ public class Service {
                 randomNumbers.add(randomNumber);
             }
         }
-        computerAnswerDto.setAnswer(converter.convertListToArray(randomNumbers));
+        int[] convertedAnswer = converter.convertListToArray(randomNumbers);
+        computerAnswerDto.setAnswer(convertedAnswer);
         return computerAnswerDto;
     }
 
