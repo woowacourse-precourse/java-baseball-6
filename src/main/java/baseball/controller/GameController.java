@@ -28,7 +28,6 @@ public class GameController {
 
         while (playOption) {
             outputView.printForInputThreeDigitNumbers();
-            System.out.println(randomNumbers);
 
             int[] playersNumbers = inputView.inputThreeDigitNumber();
 

@@ -2,6 +2,8 @@ package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RandomNumberGenerator {
@@ -14,6 +16,13 @@ public class RandomNumberGenerator {
     }
 
     private List<Integer> generateUniqueThreeDigitNumbers() {
-        return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, THREE_DIGIT_NUMBER_RANGE);
+//        return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, THREE_DIGIT_NUMBER_RANGE);
+        List<Integer> randomNumbers = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            randomNumbers.add(Randoms.pickNumberInRange(1,9));
+        }
+//        System.out.println(randomNumbers);
+        return randomNumbers;
     }
 }

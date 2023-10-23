@@ -9,7 +9,7 @@ public class InputView {
     public int[] inputThreeDigitNumber() {
         String input = Console.readLine();
         validateOnlyNumbers(input);
-        validateThreeDigitNumber(input);
+//        validateThreeDigitNumber(input);
         validateDuplicateDigits(input);
 
         return convertToNumbers(input);
