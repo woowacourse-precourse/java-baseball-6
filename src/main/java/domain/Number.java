@@ -32,6 +32,31 @@ public class Number {
         }
     }
 
+    public static int getStrike(List<Number> numbers) {
+        return getScore(numbers).get(0);
+    }
+
+    public static int getBall(List<Number> numbers) {
+        return getScore(numbers).get(1);
+    }
+
+    private static List<Integer> getScore(List<Number> numbers) {
+        int strike = 0, ball = 0;
+        for (int i = 0; i < numberCount; i++) {
+            for (int j = 0; j < numberCount; j++) {
+                if (numbers.get(i).num == goalNumbers.get(j)) {
+                    if (i == j) {
+                        strike++;
+                    }
+                    if (i != j) {
+                        ball++;
+                    }
+                }
+            }
+        }
+        return List.of(strike, ball);
+    }
+
     // Test Method
     public static List<Integer> getGoalNumbers() {
         return goalNumbers;
