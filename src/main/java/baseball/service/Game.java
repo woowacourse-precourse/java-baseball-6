@@ -1,6 +1,10 @@
 package baseball.service;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import baseball.service.handler.Computer;
+import baseball.service.handler.Hint;
+import baseball.service.handler.Player;
 
 
 public class Game {
@@ -20,44 +24,78 @@ public class Game {
     private static final String NEW_GAME_CHECK_MESSAGE =
             "게임을 새로 시작하려면 " + NEW_GAME_FLAG + ", 종료하려면 " + EXIT_GAME_FLAG + "를 입력하세요.";
 
-
+    /**
+     * Initialization Computer Data
+     *
+     * @return Initialization Computer
+     */
     private Computer initComputer() {
-        //컴퓨터 랜덤 수 초기화
         return new Computer(START_RANGE, END_RANGE, NUMBER_OF_DIGITS);
     }
 
-    public void compareNumbers(String computer_number, String player_number, int strikeCnt, int ballCnt) {
-        int length = player_number.length();
-        //입력한 수의 자리수 만큼 반복
-        for (int i = 0; i < length; i++) {
-            char player_i_num = player_number.charAt(i);  //i번쨰 자리수의 수
-            if (computer_number.contains(String.valueOf(player_i_num))) {
-                if (computer_number.charAt(i) == player_i_num) {
-                    strikeCnt++;
-                } else {
-                    ballCnt++;
-                }
-            }
+    /**
+     * Initialization Game Data
+     * <p>
+     * When start game, show game Message
+     * </p>
+     */
+    public void initGame() {
+        System.out.println(START_GAME_MESSAGE);
+    }
+
+    /**
+     * run game
+     */
+    public void runGame() {
+        Computer computer = initComputer(); //컴퓨터 최기화
+
+        Hint hint = new Hint(); //hint 선언
+
+        //strike가 NUMBER_OF_DIGITS와 같을 때까지 반복
+        //답을 맞출 때까지 반복
+        while (hint.getStrike() != NUMBER_OF_DIGITS) {
+            hint.resetHint();   //hint reset
+
+            System.out.print(GET_NUMBER_MESSAGE);   //숫자 입력시 메시지
+            Player player = new Player();
+            player.inputNumber();   //플레이어 입력받기
+
+            //show hint
+            hint.showHint(player.getPlayer_number(), computer.getComputerNumber());
         }
 
-        String resultout = "";
-        if (ballCnt == 0 && strikeCnt == 0) {
-            resultout = "낫싱";
+        System.out.println(SUCCESS_MESSAGE);    //성공 메시지 출력
+        System.out.println(NEW_GAME_CHECK_MESSAGE); //재실행/종료 메시지 출력
+        String restart_flag = readLine();   //재실행/종료 flag 입력
 
-        } else {
-            if (ballCnt != 0) {
-                resultout += ballCnt + "볼";
-            }
-            if (strikeCnt != 0) {
-                if (!resultout.equals("")) {
-                    resultout += " ";
-                }
-                resultout += strikeCnt + "스트라이크";
-            }
+        //재실행이면 restart game
+        if (isRestart(restart_flag)) {
+            restartGame();
+        }
+    }
+
+
+    /**
+     * Restart game
+     */
+    private void restartGame() {
+        runGame();
+    }
+
+    /**
+     * 재실행 여부 확인
+     *
+     * @param restart_flag : 재실행/종료 flag
+     * @return (true : 재실행, false : 종료)
+     */
+    private boolean isRestart(String restart_flag) {
+
+        //재실행/종료 flag가 아닌 값일경우 IllegalArgumentException()
+        if (!restart_flag.equals(EXIT_GAME_FLAG) && !restart_flag.equals(NEW_GAME_FLAG)) {
+            throw new IllegalArgumentException();
         }
 
-        System.out.println(resultout);
-
+        return !restart_flag.equals(EXIT_GAME_FLAG);
     }
 
 
