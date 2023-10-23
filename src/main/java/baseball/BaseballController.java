@@ -24,6 +24,8 @@ public class BaseballController {
 
             baseballException.isLengthValid(randomNum);
 
+            baseballException.isDuplicationExist(randomNum);
+
             baseballException.isCharinString(randomNum);
 
             // 플레이어가 입력한 수에 문자가 있는 경우 예외처리
