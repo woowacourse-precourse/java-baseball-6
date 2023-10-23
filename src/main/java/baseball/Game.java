@@ -1,31 +1,60 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.List;
+import java.util.Arrays;
 
 public class Game {
-    int[] comArr;
-    int[] userArr;
-    int s,b;
+    int[] comArr, userArr;
+    private int strikes = 0, balls = 0;
 
-    //패 일치여부 확인
-    private boolean syncronize(int[] comArr,int[] userArr){
-        //TO Do : userArr,comArr요소 일치여부 판별 T or F 반환 (F는 낫싱)
-        boolean result = false;
-        return result;
+    boolean endFlag=false; //3스트라이트시 재시작 여부 묻기 //여기 없어도 될듯?
+    private boolean syncronize(int[] comArr,int[] userArr){ //낫싱?
+        for (int userElem : userArr) {
+            if (Arrays.stream(comArr).anyMatch(x -> x == userElem)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void placeMatch(int[] comArr,int[] userArr){  //볼?스트라이크?
+
+
+        for (int i = 0; i < comArr.length; i++) {
+            for (int j = 0; j < userArr.length; j++) {
+                if (comArr[i] == userArr[j]) {
+                    if (i == j) {
+                        strikes++;
+                    } else {
+                        balls++;
+                    }
+                }
+            }
+        }
+
+        if (balls > 0 && strikes > 0) {
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
+        }
+
+        else if (balls > 0 ) {
+            System.out.println(balls + "볼");
+        }
+        else if ( strikes > 0){
+            System.out.println(strikes + "스트라이크");
+            if (strikes == 3) {
+                //endFlag = true; // 만약 strikes 값이 3이면 endFlag를 true로 설정
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+        else if (strikes == 0 && balls == 0) {
+            System.out.println("낫싱");
+        }
+    }
+    public int getStrikes() {
+        return strikes;
     }
 
-    //자리 일치여부 확인
-    private void placeMatch(int[] comArr,int[] userArr){
-        //To DO : syncronize가 참일때만 실행
-        //TO Do : userArr,comArr 자리 일치여부 판별 -> 일치하면 s+1, 아니면 b+1 (s,b는 볼,스트랔 카운트변수)
-
-    }
-    //컴퓨터 패 생성
-    public void settingArr(int[] input){
-        List<Integer> comList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        int[] comIntArray  = comList.stream().mapToInt(Integer::intValue).toArray();
+    //게임 결과
+    public void play(int[] comArr,int[] userArr){
+        placeMatch(comArr,userArr);
     }
 
 
