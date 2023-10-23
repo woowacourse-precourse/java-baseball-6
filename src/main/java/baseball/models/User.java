@@ -17,8 +17,7 @@ public class User {
     private int mind;
 
     public void saveNumber(char userAnswerChar){
-        int digit = requestValidateCharacter(userAnswerChar);
-        numberList.add(digit);
+        numberList.add(requestValidateCharacter(userAnswerChar));
     }
 
     public void changeMind(int restartInt){
