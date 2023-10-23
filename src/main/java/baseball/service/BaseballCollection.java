@@ -53,38 +53,6 @@ public class BaseballCollection {
         }
     }
 
-    // 기능: 같은 수가 전혀 없으면 낫싱
-    public boolean isNothing(BaseballCollection playerBalls) {
-        return this.baseball.stream()
-                .noneMatch(playerBalls.baseball::contains);
-    }
-
-    // 기능: 같은 수가 같은 자리에 있는 스트라이크의 개수 세기
-    public int calculateStrikeCount(BaseballCollection playerBalls) {
-        int strikeCount = 0;
-        for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
-            int playerBall = playerBalls.baseball.get(ballPosition);
-            int computerBall = this.baseball.get(ballPosition);
-            if (this.baseball.contains(playerBall) && playerBall == computerBall) {
-                strikeCount++;
-            }
-        }
-        return strikeCount;
-    }
-
-    // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
-    public int calculateBallCount(BaseballCollection playerBalls) {
-        int ballCount = 0;
-        for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
-            int playerBall = playerBalls.baseball.get(ballPosition);
-            int computerBall = this.baseball.get(ballPosition);
-            if (this.baseball.contains(playerBall) && playerBall != computerBall) {
-                ballCount++;
-            }
-        }
-        return ballCount;
-    }
-
     private List<Integer> createValidBaseballs(String number) {
         List<Integer> baseballs = Arrays.stream(number.split(""))
                 .map(this::parseToInt)
@@ -126,5 +94,37 @@ public class BaseballCollection {
 
     private boolean isInRange(int start, int end, int baseball) {
         return start <= baseball && baseball <= end;
+    }
+
+    // 기능: 같은 수가 전혀 없으면 낫싱
+    public boolean isNothing(BaseballCollection playerBalls) {
+        return this.baseball.stream()
+                .noneMatch(playerBalls.baseball::contains);
+    }
+
+    // 기능: 같은 수가 같은 자리에 있는 스트라이크의 개수 세기
+    public int calculateStrikeCount(BaseballCollection playerBalls) {
+        int strikeCount = 0;
+        for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
+            int playerBall = playerBalls.baseball.get(ballPosition);
+            int computerBall = this.baseball.get(ballPosition);
+            if (this.baseball.contains(playerBall) && playerBall == computerBall) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
+    public int calculateBallCount(BaseballCollection playerBalls) {
+        int ballCount = 0;
+        for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
+            int playerBall = playerBalls.baseball.get(ballPosition);
+            int computerBall = this.baseball.get(ballPosition);
+            if (this.baseball.contains(playerBall) && playerBall != computerBall) {
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 }
