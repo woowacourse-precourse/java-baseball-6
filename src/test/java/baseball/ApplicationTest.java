@@ -39,6 +39,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 비교결과_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("234", "576", "983", "519", "589", "2");
+                    assertThat(output()).contains("낫싱", "1볼", "1볼 1스트라이크", "2스트라이크", "3스트라이크");
+                },
+                5, 8, 9
+        );
+    }
+
+    @Test
     void 숫자_비교_테스트() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNum = new ArrayList<>(Arrays.asList(1, 3, 4));
