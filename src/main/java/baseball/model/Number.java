@@ -13,9 +13,13 @@ public class Number {
     }
 
     private void validateValueRange(int value) {
-        if (value < NumberConstant.MIN_VALUE || value > NumberConstant.MAX_VALUE) {
+        if (valueNotBetweenOneAndNine(value)) {
             throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
         }
+    }
+
+    private boolean valueNotBetweenOneAndNine(int value) {
+        return value < NumberConstant.MIN_VALUE || value > NumberConstant.MAX_VALUE;
     }
 
     @Override
