@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -30,32 +31,59 @@ public class Application {
 
     // 야구 게임
     private void play() {
+        List<Integer> randomNums = createRanNum();
         while(true){
-            List<Integer> randomNum = createRanNum();
             System.out.print("숫자를 입력해주세요 : ");
             String num = Console.readLine();
 
             // 숫자가 3자리가 아닌 경우
             if(num.length() > 3) throw new IllegalArgumentException();
-            List<Integer> number = new ArrayList<>();
+            List<Integer> numbers = new ArrayList<>();
             // 같은 값을 입력하거나 숫자가 아닌 값을 입력한 경우
             try{
                Arrays.stream(num.split("")).forEach(i -> {
-                   if (number.contains(Integer.parseInt(i))) throw new IllegalArgumentException();
-                   else number.add(Integer.parseInt(i));
+                   if (numbers.contains(Integer.parseInt(i))) throw new IllegalArgumentException();
+                   else numbers.add(Integer.parseInt(i));
                });
             }catch (NumberFormatException e){
                 throw new IllegalArgumentException();
             }
-            System.out.println(number);
-            // 첫 번째 수 체크
-            // 두 번째 수 체크
-            // 세 번째 수 체크
 
-            // 값이 맞다면
-            return;
+            boolean[] visited = new boolean[numbers.size()];
+            int strike = checkStrike(randomNums, numbers, visited);
+            if(strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+            // 볼 체크
+            int ball = checkBall(randomNums, numbers, visited);
 
+            if(strike != 0) System.out.print(strike+"스트라이크");
+            if(ball != 0) System.out.print(ball+"볼");
+            if (strike == 0 && ball == 0)System.out.print("낫싱");
+            System.out.println();
         }
+    }
+
+    private int checkBall(List<Integer> randomNums, List<Integer> numbers, boolean[] visited) {
+        int ball = 0;
+        for (int i = 0; i < randomNums.size(); i++){
+            for (Integer num: numbers){
+                if (Objects.equals(randomNums.get(i), num) && !visited[i]) ball++;
+            }
+        }
+        return ball;
+    }
+
+    private int checkStrike(List<Integer> randomNums, List<Integer> numbers, boolean[] visited) {
+        int strike = 0;
+        for (int i = 0; i< randomNums.size(); i++){
+            if (numbers.get(i).equals(randomNums.get(i))) {
+                strike++;
+                visited[i] = true;
+            }
+        }
+        return strike;
     }
 
     private List<Integer> createRanNum() {
