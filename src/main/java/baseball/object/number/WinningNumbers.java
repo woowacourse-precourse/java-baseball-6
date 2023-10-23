@@ -33,10 +33,7 @@ public class WinningNumbers {
         long countOfOnlyContains = baseballNumbers.get().stream()
                 .filter(winningNumbers::contains)
                 .count();
-        long countOfExactMatches = IntStream.range(0, 3)
-                .filter(i -> Objects.equals(
-                        winningNumbers.get(i), baseballNumbers.get().get(i)))
-                .count();
+        long countOfExactMatches = countingStrikes(baseballNumbers);
         return countOfOnlyContains - countOfExactMatches;
     }
 
