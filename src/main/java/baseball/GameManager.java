@@ -2,12 +2,14 @@ package baseball;
 
 import baseball.number.GameNumber;
 import baseball.number.GameNumberGenerator;
+import baseball.number.RestartNumber;
 import baseball.printer.ConsoleGamePrinter;
 import baseball.printer.GamePrinter;
 import baseball.receiver.ConsoleGameReceiver;
 import baseball.receiver.GameReceiver;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 public class GameManager {
 
@@ -27,7 +29,7 @@ public class GameManager {
         while (restartStatus) {
             GameNumber gameNumber = new GameNumber(GameNumberGenerator.generateGameNumber());
             playBall(gameNumber);
-//            restartStatus = askRestartGame();
+            restartStatus = askRestartGame();
         }
     }
 
@@ -51,5 +53,20 @@ public class GameManager {
         // 로직
         // GamePrinter로 출력
         return true;
+    }
+
+    private boolean askRestartGame() {
+        gamePrinter.requestInputRestartNumber();
+
+        String inputRestartNumber;
+        try {
+            inputRestartNumber = gameReceiver.receive();
+        } catch (IOException e) {
+            throw new IllegalArgumentException();
+        }
+
+        RestartNumber restartNumber = new RestartNumber(inputRestartNumber);
+        
+        return restartNumber.getValue();
     }
 }
