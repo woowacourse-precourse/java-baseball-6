@@ -11,7 +11,6 @@ public class Restart {
     }
 
     public static Restart restartFactory(String userInput) {
-
         InputUtil.checkIsNumber(userInput);
         int decision = Integer.parseInt(userInput);
         restartValidation(decision);

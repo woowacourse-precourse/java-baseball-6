@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
