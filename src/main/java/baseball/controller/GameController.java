@@ -27,7 +27,7 @@ public class GameController {
 
     private void startRound(){
         RoundResult roundResult = gameService.playRound(inputUser());
-        outputView.printResult(roundResult.getResultMessage());
+        outputView.printResult(getResultMessage(roundResult));
 
         if(roundResult.isFinish()){
             gameService.finishGame();
@@ -39,6 +39,10 @@ public class GameController {
 
     private Numbers inputUser(){
         return new Numbers(inputView.inputNumbers());
+    }
+
+    private String getResultMessage(RoundResult roundResult){
+        return roundResult.getResultMessage();
     }
 
     private Restart inputRestart(){
