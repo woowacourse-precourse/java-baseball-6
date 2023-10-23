@@ -57,8 +57,13 @@ public class OutputView {
         }
     }
 
+    public void printGameEnd() {
+        System.out.println(Message.OUTPUT_GAME_END.message);
+    }
+
     private enum Message {
-        OUTPUT_MAIN_MESSAGE("숫자 야구 게임을 시작합니다.");
+        OUTPUT_MAIN_MESSAGE("숫자 야구 게임을 시작합니다."),
+        OUTPUT_GAME_END("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
         private final String message;
 
