@@ -17,14 +17,13 @@ public final class InputView {
     private final Verifier baseballNumVerifier = new BaseBallNumVerifier();
     private final Verifier controlVerifier = new ControlNumVerifier();
     public List<Integer> readGameInput(){
-
         System.out.print(GAME_INPUT_MESSAGE);
         List<Integer> user = new ArrayList<>();
         String userThreeNumbers = Console.readLine();
         baseballNumVerifier.check(userThreeNumbers);
-        for(char c: userThreeNumbers.toCharArray()){
-            user.add(Character.getNumericValue(c));
-        }
+        userThreeNumbers.chars()
+                .mapToObj(Character::getNumericValue)
+                .forEach(user::add);
         return user;
     }
 
