@@ -30,11 +30,17 @@ public class UserInterface {
 
     // 여기서 객체지향적으로 분리할 부분이 많이 생긴다.
     private void startGame() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = console.readLine();
-        baseballGame.saveInput(input);
-        baseballGame.compareNumber();
-        baseballGame.getBallInput();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = console.readLine();
+            baseballGame.saveInput(input);
+            baseballGame.compareNumber();
+            baseballGame.printBallHint();
+            if (baseballGame.isAnswer()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
 }
