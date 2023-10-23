@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
+    final Validation validation = new Validation();
 
     public List<Integer> createRandomNumber() {
         List<Integer> computerNums = new ArrayList<>();
@@ -51,5 +52,19 @@ public class Baseball {
         else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         }
+    }
+
+    public boolean checkRestart() {
+        boolean flag = false;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userAnswer = camp.nextstep.edu.missionutils.Console.readLine();
+        validation.isValidate(userAnswer, "game over");
+
+        if (userAnswer.equals("1")) {
+            flag = true;
+        }
+
+        return flag;
     }
 }
