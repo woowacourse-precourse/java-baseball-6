@@ -4,6 +4,9 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
+    private static final String GAME_RESTART_NUMBER = "1";
+    private static final String GAME_END_NUMBER = "2";
+
     public static void playGame() {
         List<Integer> computerNumbers = Computer.generateRandomNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -13,5 +16,17 @@ public class Player {
             playerNumbers = Console.readLine();
             GameManager.validPlayerNumbers(playerNumbers);
         } while (GameManager.compareNumbers(computerNumbers, playerNumbers));
+    }
+
+    public static boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 " + GAME_RESTART_NUMBER + ", 종료하려면 " + GAME_END_NUMBER + "를 입력하세요.");
+        String playerDecision = Console.readLine();
+        if (playerDecision.equals(GAME_RESTART_NUMBER)) {
+            return true;
+        }
+        if (playerDecision.equals(GAME_END_NUMBER)) {
+            return false;
+        }
+        throw new IllegalArgumentException("입력은 " + GAME_RESTART_NUMBER + " 또는 " + GAME_END_NUMBER + "이어야 합니다.");
     }
 }
