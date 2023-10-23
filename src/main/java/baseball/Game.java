@@ -24,6 +24,7 @@ public class Game extends GameController {
         // 정답이 아닌 동안 계속 게임 진행하기
         while (!isWin(result)) {
             String input = getInGameInput();
+            result = recordResult(input, answer);
         }
     }
 }

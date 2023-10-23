@@ -1,4 +1,5 @@
 package baseball;
+import java.util.List;
 
 import baseball.dto.Result;
 import baseball.global.Announcement;
@@ -23,6 +24,23 @@ public class GameController {
     public static String getInGameInput() {
         String input = getInputWithAnnounce(Announcement.IN_GAME);
         return InputValidator.inGameInput(input);
+    }
+
+    // 받은 입력의 결과 기록
+    public static Result recordResult(String input, List<Character> answer) {
+        Result result = new Result();
+        for (int i = 0; i < INPUT_LENGTH; ++i) {
+            char target = input.charAt(i);
+            if (answer.contains(target)) {
+                if (answer.get(i) == target) {
+                    result.increaseStrike();
+                } else {
+                    result.increaseBall();
+                }
+            }
+        }
+
+        return result;
     }
 
     public static boolean isWin(Result result) {
