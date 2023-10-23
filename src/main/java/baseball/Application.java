@@ -17,7 +17,8 @@ public class Application {
                 new Computer(new GameAnswer(), new Score()),
                 new Player(new GuessNumber(), new GameStateNumber()),
                 new InputView(),
-                new OutputView());
+                new OutputView()
+        );
         baseballGameController.start();
     }
 }
