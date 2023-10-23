@@ -2,6 +2,7 @@ package baseball;
 
 public class SequenceManager {
 
+    private final String CLOSEGAMEINPUT = "2";
     private MessageManager messageManager = new MessageManager();
     private Data data = new Data();
     private GameProcessor gameProcessor = new GameProcessor();
@@ -17,19 +18,15 @@ public class SequenceManager {
 
             if (gameProcessor.illegalArgumentException(data)) {
                 data.setIsNoError(false);
-                throw new IllegalArgumentException("게임 종료");
+                throw new IllegalArgumentException();
             }
 
             messageManager.showAnswer(data, gameProcessor, messageManager);
         }
     }
 
-    public boolean validateCompleteAnswer() {
-        return gameProcessor.validateCompleteAnswer(data);
-    }
-
     public void proceedOutro() {
-        if (validateCompleteAnswer() && data.getIsNoError()) {
+        if (gameProcessor.validateCompleteAnswer(data) && data.getIsNoError()) {
             System.out.println(messageManager.getOutroMessage());
         }
 
@@ -41,7 +38,7 @@ public class SequenceManager {
 
     public boolean validateRestart() {
         boolean restart = true;
-        if (data.getWillRestartResponse().equals("2") || !data.getIsNoError()) {
+        if (data.getWillRestartResponse().equals(CLOSEGAMEINPUT) || !data.getIsNoError()) {
             restart = false;
         }
         return restart;
