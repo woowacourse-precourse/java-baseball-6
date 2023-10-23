@@ -29,8 +29,8 @@ public class TargetNumber {
         return new TargetNumber(Collections.unmodifiableList(uniqueNumbers));
     }
 
-    public GameResult calculateGameResult(final String inputNumberText) {
-        List<Number> userNumbers = convertInputNumberText(inputNumberText);
+    public GameResult calculateGameResult(final List<Integer> inputPlayerNumbers) {
+        List<Number> userNumbers = convertInputValueToBaseballNumbers(inputPlayerNumbers);
 
         if (numbers.size() != userNumbers.size()) {
             throw new IllegalArgumentException();
@@ -39,18 +39,16 @@ public class TargetNumber {
         return createGameResult(userNumbers);
     }
 
-    private List<Number> convertInputNumberText(final String inputNumberText) {
-        List<Number> inputNumbers = inputNumberText.chars()
-                .map(Character::getNumericValue)
-                .mapToObj(Number::new)
-                .toList();
+    private List<Number> convertInputValueToBaseballNumbers(final List<Integer> playerNumbers) {
+        verifyDuplicates(playerNumbers);
 
-        verifyDuplicates(inputNumbers);
-        return inputNumbers;
+        return playerNumbers.stream()
+                .map(Number::new)
+                .toList();
     }
 
-    private void verifyDuplicates(final List<Number> numbers) {
-        Set<Number> uniqueNumbers = new HashSet<>(numbers);
+    private void verifyDuplicates(final List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
 
         if (uniqueNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException();
