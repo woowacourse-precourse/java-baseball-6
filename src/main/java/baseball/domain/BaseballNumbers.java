@@ -50,6 +50,7 @@ public class BaseballNumbers {
 
     public int getStrikeCount(BaseballNumbers inputBaseballNumbers) {
         int strikeCount = 0;
+
         for (int i = 0; i < 3; i++) {
             BaseballNumber baseballNumber = ballNumbers.get(i);
             BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
@@ -64,6 +65,7 @@ public class BaseballNumbers {
     public int getBallCount(BaseballNumbers inputBaseballNumbers) {
         int ballCount = 0;
         List<BaseballNumber> baseballNumberList = this.ballNumbers;
+
         for (int i = 0; i < 3; i++) {
             BaseballNumber baseballNumber = baseballNumberList.get(i);
             BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
@@ -71,17 +73,20 @@ public class BaseballNumbers {
                 ballCount += 1;
             }
         }
+
         return ballCount;
     }
 
     public boolean isNothing(BaseballNumbers inputBaseballNumbers) {
         List<BaseballNumber> baseballNumberList = this.ballNumbers;
+
         for (int i = 0; i < 3; i++) {
             BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
             if (baseballNumberList.contains(inputBaseballNumber)) {
                 return false;
             }
         }
+
         return true;
     }
 }
