@@ -8,10 +8,10 @@ public class BaseballGame {
     private static final NumberGenerator numberGenerator = new NumberGenerator();
     private static final OutputWriter outputWriter = new OutputWriter();
 
-    public static void gameStart(){
+    public static void gameStart() {
         outputWriter.printGameStartMessage();
 
-        while(true) {
+        while (true) {
             List<Integer> goal = numberGenerator.generateNumber();
 
             while (true) {
@@ -21,21 +21,24 @@ public class BaseballGame {
                 int[] result = baseballReferee.scoreInput(goal, userInput);
                 outputWriter.printResultOfInput(result[0], result[1]);
 
-                if (isThreeStrike(result[1])) break;
+                if (isThreeStrike(result[1])) {
+                    break;
+                }
             }
-
             outputWriter.printGameFinishMessage();
 
-            if(!isRestart(inputReader.readUserGameFinishInput())) break;
+            if (!isRestart(inputReader.readUserGameFinishInput())) {
+                break;
+            }
         }
 
     }
 
-    private static boolean isThreeStrike(int strike){
+    private static boolean isThreeStrike(int strike) {
         return strike == 3;
     }
 
-    private static boolean isRestart(int restart){
+    private static boolean isRestart(int restart) {
         return restart == 1;
     }
 }
