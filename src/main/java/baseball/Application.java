@@ -27,15 +27,13 @@ public class Application {
                 }
             }
 
-//            System.out.println(computer);
-
             while(true) {
                 int strikes = 0;
                 int balls = 0;
                 // 숫자야구 입력 로직
                 System.out.print("숫자를 입력해 주세요 : ");
                 String input = inputStringAndVerification("forInput");
-                HashMap<Integer, Integer> map = new HashMap<>();
+                Map<Integer, Integer> map = new HashMap<>();
                 int i = 0;
                 for (String s : input.split("")) {
                     map.put(Integer.parseInt(s), i++);
@@ -55,7 +53,7 @@ public class Application {
                     }
                 }
 
-                // 입력 결과 로직
+                // 입력 결과
                 if (strikes == 3) {
                     System.out.printf("%d스트라이크\n", strikes);
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -77,15 +75,11 @@ public class Application {
     }
 
     public static String inputStringAndVerification(String purpose) {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
         String input = "";
         // 중복 확인용
-        HashSet<String> set = new HashSet<>();
 
         input = Console.readLine();
-        set.addAll(Arrays.asList(input.split("")));
-
+        HashSet<String> set = new HashSet<>(Arrays.asList(input.split("")));
 
         int numbers = 0;
         // 숫자가 아닌 입력 or 공백 포함한 수 제거
