@@ -6,11 +6,6 @@ public class Referee {
     private int ball;
     private int strike;
 
-    public Referee() {
-        ball = 0;
-        strike = 0;
-    }
-
     public boolean isThreeStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
         strike = 0;
         count(computerNumbers, userNumbers);
