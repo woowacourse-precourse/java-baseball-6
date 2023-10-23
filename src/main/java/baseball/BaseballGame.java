@@ -13,8 +13,8 @@ public class BaseballGame {
         computerNumberList = computer.generateComputerNumber();
         showInputUserNumber();
         userNumberList = getUsetNumberList();
-        int[] compareResult = new int[]{};
-        compareResult = new CompareNumber().getCompareResult(userNumberList, computerNumberList);
+        int[] compareResult = new CompareNumber().getCompareResult(userNumberList, computerNumberList);
+        showCount(compareResult);
     }
 
     private static void showStart() {
@@ -33,6 +33,12 @@ public class BaseballGame {
         userNumberList = user.convertInputToList();
 
         return userNumberList;
+    }
+
+    private static void showCount(int[] compareResult) {
+        showBallCount(compareResult);
+        showStrikeCount(compareResult);
+        showNothing(compareResult);
     }
 
     private static void showBallCount(int[] compareResult) {
