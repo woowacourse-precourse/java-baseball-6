@@ -5,16 +5,20 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
+    private final Player player;
+    private final Rule rule;
     private Computer computer;
     private List<Integer> computerNums;
-    private Player player;
-    private Rule rule;
     private boolean isFirst = false;
-    public void init(){
-        computer = new Computer();
-        computerNums = computer.getComputerNums();
+
+    public Game(){
         player = new Player();
         rule = new Rule();
+        computer = new Computer();
+    }
+
+    public void init(){
+        computerNums = computer.load();
         isFirst = true;
     }
 

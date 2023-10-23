@@ -5,11 +5,12 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
-    private final List<Integer> answer;
+    private List<Integer> answer;
 
-    public Computer(){
+    public List<Integer> load(){
         answer = new ArrayList<>();
         generateUniqueNumbers();
+        return getComputerNums();
     }
 
     private void generateUniqueNumbers(){
@@ -21,7 +22,7 @@ public class Computer {
         }
     }
 
-    public List<Integer> getComputerNums(){
+    private List<Integer> getComputerNums(){
         return this.answer;
     }
 }

@@ -10,16 +10,15 @@ public class Player {
     private List<Integer> nums;
 
     public List<Integer> parseNumbers(String inputNums){
-        if(validateInputNums(inputNums)){
-            nums = new ArrayList<>();
-            for(char c : inputNums.toCharArray()){
-                nums.add(c - '0');
-            }
+        validateInputNums(inputNums);
+        nums = new ArrayList<>();
+        for(char c : inputNums.toCharArray()){
+            nums.add(c - '0');
         }
         return nums;
     }
 
-    public boolean validateInputNums(String inputNums){
+    public void validateInputNums(String inputNums){
         if(!checkNumsLength(inputNums)){
             throw new IllegalArgumentException();
         }
@@ -27,8 +26,6 @@ public class Player {
         if(!checkDuplicateNumbers(inputNums)){
             throw new IllegalArgumentException();
         }
-
-        return true;
     }
 
     public boolean checkNumsLength(String inputNums){
