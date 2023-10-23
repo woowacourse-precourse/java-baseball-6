@@ -31,7 +31,7 @@
 
 ## 결과 출력 기능
 - printResult 메서드
-  - 3스트라이크 경우
-    - finished = true
-  - 이외의 경우
-    - 결과 출력
+  - strike, ball 모두 0이면, "낫싱" 출력
+  - strike가 0이고 ball가 1이상이면, "*볼" 출력
+  - strike가 1이상이고 ball가 0이면, "*스트라이크" 출력
+  - strike가 1이상이고 ball가 1이상이면, "*볼 *스트라이크" 출력
