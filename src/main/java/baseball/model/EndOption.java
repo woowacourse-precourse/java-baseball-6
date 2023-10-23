@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.constant.ExceptionMessage.INPUT_NO_OPTION_EXCEPTION_MESSAGE;
+
 import java.util.Objects;
 
 public enum EndOption {
@@ -19,6 +21,6 @@ public enum EndOption {
             }
         }
 
-        throw new IllegalArgumentException("1 또는 2만 입력이 가능합니다.");
+        throw new IllegalArgumentException(INPUT_NO_OPTION_EXCEPTION_MESSAGE);
     }
 }

@@ -1,5 +1,10 @@
 package baseball.service;
 
+import static baseball.constant.ExceptionMessage.INPUT_DUPLICATE_EXCEPTION_MESSAGE;
+import static baseball.constant.ExceptionMessage.INPUT_FORMAT_EXCEPTION_MESSAGE;
+import static baseball.constant.ExceptionMessage.INPUT_LENGTH_EXCEPTION_MESSAGE;
+import static baseball.constant.ExceptionMessage.INPUT_RANGE_EXCEPTION_MESSAGE;
+
 import baseball.model.Computer;
 import baseball.model.EndOption;
 import baseball.model.Number;
@@ -33,13 +38,13 @@ public class BaseballGameService {
         try {
             Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력이 가능합니다.");
+            throw new IllegalArgumentException(INPUT_FORMAT_EXCEPTION_MESSAGE);
         }
     }
 
     private void checkLength(String playerInput) {
         if (playerInput.length() != 3) {
-            throw new IllegalArgumentException("세 자리 숫자만 입력이 가능합니다.");
+            throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
@@ -48,7 +53,7 @@ public class BaseballGameService {
             int digit = Integer.parseInt(playerInput.split("")[i]);
 
             if (digit < 1 || digit > 9) {
-                throw new IllegalArgumentException("1이상 9이하의 숫자로 이루어진 세 자리 숫자만 입력이 가능합니다.");
+                throw new IllegalArgumentException(INPUT_RANGE_EXCEPTION_MESSAGE);
             }
         }
     }
@@ -57,7 +62,7 @@ public class BaseballGameService {
         Set<Integer> inputNumSet = Stream.of(playerInput.split("")).map(Integer::parseInt).collect(Collectors.toSet());
 
         if (inputNumSet.size() != 3) {
-            throw new IllegalArgumentException("1부터 9까지의 서로 다른 수로 이루어진 세 자리 숫자만 입력이 가능합니다.");
+            throw new IllegalArgumentException(INPUT_DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
