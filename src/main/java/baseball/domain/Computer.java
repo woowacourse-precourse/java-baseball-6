@@ -9,8 +9,11 @@ public class Computer {
 
     private List<Integer> secretNumbers;
 
+    public void setSecretNumbers(List<Integer> secretNumbers) {
+        this.secretNumbers = secretNumbers;
+    }
+
     public List<Integer> generateRandomNumbers(int startInclusive, int endInclusive, int count) {
-        //this.secretNumbers = Randoms.pickUniqueNumbersInRange(startInclusive, endInclusive, count);
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
@@ -20,7 +23,6 @@ public class Computer {
         }
         setSecretNumbers(computer);
         return secretNumbers;
-
 
     }
 
@@ -42,8 +44,4 @@ public class Computer {
         return new Game(strikes, balls);
     }
 
-
-    public void setSecretNumbers(List<Integer> secretNumbers) {
-        this.secretNumbers = secretNumbers;
-    }
 }

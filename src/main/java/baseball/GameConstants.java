@@ -7,4 +7,5 @@ public class GameConstants {
     static final int START_INCLUSIVE = 1;
     static final int END_INCLUSIVE = 9;
     static final int COUNT = 3;
+    static final int REPLAY = 1;
 }
