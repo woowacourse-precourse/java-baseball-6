@@ -10,16 +10,22 @@ public class Numbers {
         this.values = values;
     }
 
-    public int countStrike(Numbers other) {
+    public GameResult calculateResult(Numbers other) {
+        int strikeCount = countStrikes(other);
+        int ballCount = countBalls(other, strikeCount);
+        return new GameResult(ballCount, strikeCount);
+    }
+
+    private int countStrikes(Numbers other) {
         return (int) IntStream.range(0, this.values.size())
                 .filter(i -> this.values.get(i).equals(other.values.get(i)))
                 .count();
     }
 
-    public int countBall(Numbers other) {
-        int totalMatch = (int) other.values.stream()
+    private int countBalls(Numbers other, int strikeCount) {
+        long totalMatchedValues = other.values.stream()
                 .filter(this.values::contains)
                 .count();
-        return totalMatch - countStrike(other);
+        return (int) totalMatchedValues - strikeCount;
     }
 }
