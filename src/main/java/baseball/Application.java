@@ -4,7 +4,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        BaseBallGame baseBallGame = BaseBallGame.baseBallGame;
+        BaseBallGame baseBallGame = new BaseBallGame();
 
         while(true){
             String result = baseBallGame.start();

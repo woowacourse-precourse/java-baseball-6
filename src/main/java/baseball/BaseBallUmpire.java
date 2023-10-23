@@ -9,11 +9,11 @@ public class BaseBallUmpire {
     public String umpire(String userAnswer, List<String> computer) {
         ball=0; strike=0;
 
-        String[] ans = BaseBallGame.userAnswer.split("");
+        String[] ans = userAnswer.split("");
 
         for(int i =0; i<3;i++){
-            if(BaseBallGame.computer.contains(ans[i])){
-                if(ans[i].equals(BaseBallGame.computer.get(i))){
+            if(computer.contains(ans[i])){
+                if(ans[i].equals(computer.get(i))){
                     strike++;
                     continue;
                 }

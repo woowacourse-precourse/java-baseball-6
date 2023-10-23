@@ -2,7 +2,7 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class RightAnswer {
+public class AllRightAnswer {
     private String gameSet ="";
 
     public boolean threeStrikeVAR(String decision) {
@@ -18,9 +18,4 @@ public class RightAnswer {
         else if(gameSet.equals("2")) return "게임 종료";
         throw new IllegalArgumentException("잘못된 재시작/종료번호 입니다 :"+gameSet);
     }
-
-    private void reset() {
-       // computer.clear();
-    }
-
 }
