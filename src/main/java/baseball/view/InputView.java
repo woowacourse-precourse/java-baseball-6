@@ -11,10 +11,11 @@ public class InputView {
         this.inputValidator = new InputValidator();
     }
 
-    public int requestInput(){
+    public int requestBaseballNumberInput(){
         System.out.println(GameMessage.REQUEST_INPUT_MESSAGE);
         String playerInput = Console.readLine();
         inputValidator.validateBaseballNumberInput(playerInput);
         return Integer.parseInt(playerInput);
     }
+
 }
