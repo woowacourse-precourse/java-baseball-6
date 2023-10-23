@@ -114,10 +114,8 @@ public class Application {
         computerNumber = baseballGame.selectRandomNumber(computerNumber);
 
         while (!isExit){
-            System.out.println(computerNumber);
             baseballGame.strike = 0;
             baseballGame.ball = 0;
-            System.out.println("strike : " + baseballGame.strike + " ball : " + baseballGame.ball);
             String myNumber = Console.readLine();
             baseballGame.checkOnlyInterger(myNumber);
             baseballGame.checkDuplicateNumber(myNumber);
