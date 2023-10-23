@@ -10,14 +10,16 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Application {
-    static int strikeCnt = 0;
-    static int ballCnt = 0;
-    static String choice = "1";
 
-    public String setRandomDistinctNumbers() {
-        int number = Randoms.pickNumberInRange(1, 9);
-        return String.valueOf(number);
-    }
+//    public String setRandomDistinctNumbers() {
+//        List<String> computer = new ArrayList<>();
+//        while (computer.size() < 3) {
+//            int randomNumber = Randoms.pickNumberInRange(1, 9);
+//            if (!computer.contains(randomNumber)) {
+//                computer.add(String.valueOf(randomNumber));
+//            }
+//        } return computer;
+//    }
 
     public String startGame() {
         return "숫자 야구 게임을 시작합니다.";
@@ -26,14 +28,12 @@ public class Application {
     //TODO : convertToList 메소드 만들기
     public int compareDigitsNumbers(String answer, String input) {
         int strikeCnt = 0;
-        checkInputValidation(input);
 
-        List<String> answerList = new ArrayList<>();
-        List<String> inputList = new ArrayList<>();
-
+        List<Character> answerList = new ArrayList<>();
+        List<Character> inputList = new ArrayList<>();
         for(int i = 0; i<3; i++){
-            answerList.add(Arrays.toString(answer.split("")));
-            inputList.add(Arrays.toString(input.split("")));
+            answerList.add(answer.charAt(i));
+            inputList.add(input.charAt(i));
         }
 
         for(int i = 0; i<3; i++) {
@@ -45,29 +45,27 @@ public class Application {
     }
     public int countCommonNumbers(String answer, String input) {
         int ballCnt = 0;
-        checkInputValidation(input);
-
-        List<String> answerList = new ArrayList<>();
-        List<String> inputList = new ArrayList<>();
-
+        List<Character> answerList = new ArrayList<>();
+        List<Character> inputList = new ArrayList<>();
         for(int i = 0; i<3; i++){
-            answerList.add(Arrays.toString(answer.split("")));
-            inputList.add(Arrays.toString(input.split("")));
+            answerList.add(answer.charAt(i));
+            inputList.add(input.charAt(i));
         }
 
-        List<String> matchList = inputList.stream().filter(n -> answerList.stream()
-                .anyMatch(Predicate.isEqual(n))).collect(Collectors.toList());
-        if (matchList.isEmpty()) {
-            ballCnt = 0;
-        } else {
-            ballCnt = matchList.size();
+        for(int i = 0; i<3; i++) {
+            for(int j = 0; j<3; j++) {
+                if(answerList.get(i).equals(inputList.get(j))) {
+                    ballCnt++;
+                }
+            }
         }
+
         return ballCnt;
     }
 
     public String showBaseballOutcome(String answer, String input) {
-        strikeCnt = compareDigitsNumbers(answer, input);
-        ballCnt = countCommonNumbers(answer, input);
+        int strikeCnt = compareDigitsNumbers(answer, input);
+        int ballCnt = countCommonNumbers(answer, input);
 
         if (strikeCnt == 0) {
             if(ballCnt == 0){
@@ -83,15 +81,17 @@ public class Application {
         }
     }
 
-    public  String confirmGameEnd() {
-        String choice = Console.readLine();
-        checkExitChoiceValidation(choice);
+    public void confirmGameEnd(String choice, String answer, String input) {
 
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        return choice;
+        switch (choice){
+            case "1" ->{compareDigitsNumbers(answer,input); }
+            case "2" ->{break;}
+            default -> {checkExitChoiceValidation();}
+        }
     }
     public void checkInputValidation(String input) {
         if (input == null || input.isEmpty() || !input.matches("\\d{3}")) {
@@ -106,27 +106,11 @@ public class Application {
             }
         }
     }
-    public void checkExitChoiceValidation(String input) {
-        if(input != "1" || input != "2") {
-            throw new IllegalArgumentException();
-        }
+    public void checkExitChoiceValidation() {
+        throw new IllegalArgumentException();
     }
+
     public static void main(String[] args) {
-        Application application = new Application();
-        application.startGame();
-
-        while (choice.equals("1")) {
-            String answer = application.setRandomDistinctNumbers();
-            String input = Console.readLine();
-
-            while(!input.equals(answer)) {
-                System.out.println("숫자를 입력해주세요 : ");
-                input = Console.readLine();
-                application.showBaseballOutcome(answer, input);
-            }
-            application.confirmGameEnd();
-            choice = Console.readLine();
-        }
 
     }
 }
