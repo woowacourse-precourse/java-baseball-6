@@ -36,6 +36,7 @@ public class BaseBallGame {
             IsInteger();
             IsOverlap(userInteger);
             IsZero();
+            IsStrike();
         }
         StopGamePrint();
     }
@@ -93,4 +94,11 @@ public class BaseBallGame {
         strike = 0;
         ball = 0;
     }
-}
+    //스트라이크 개수 확인
+    public void IsStrike(){
+        for(int i=0;i<user.size();i++){
+            if(user.get(i)==computer.get(i)){
+                strike++;
+            }
+        }
+    }
