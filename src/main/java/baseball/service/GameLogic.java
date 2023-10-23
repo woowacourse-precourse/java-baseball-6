@@ -31,12 +31,12 @@ public class GameLogic {
 
     public void answerCheck(Result result) {
         if (result.getStrike() == 3) {
-            result.setCondition(Result.ANSWER);
+            result.setStatus(Result.ANSWER);
         }
     }
 
     public void resultClear(Result result) {
-        if (result.isCondition() == Result.WRONG) {
+        if (result.isStatus() == Result.WRONG) {
             result.setBall(0);
             result.setStrike(0);
         }

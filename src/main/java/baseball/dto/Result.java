@@ -6,7 +6,7 @@ public class Result {
 
     int ball;
     int strike;
-    boolean condition = WRONG;
+    boolean status = WRONG;
 
     public int getBall() {
         return ball;
@@ -24,11 +24,11 @@ public class Result {
         this.strike = strike;
     }
 
-    public boolean isCondition() {
-        return condition;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setCondition(boolean condition) {
-        this.condition = condition;
+    public void setStatus(boolean condition) {
+        this.status = condition;
     }
 }

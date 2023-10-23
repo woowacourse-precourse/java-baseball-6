@@ -25,7 +25,7 @@ public class Application {
             Player player = new Player();
             Result result = new Result();
             Validatation validator = new Validatation();
-            while (result.isCondition()) {
+            while (result.isStatus() == Result.WRONG) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
                 validator.validate(num);
