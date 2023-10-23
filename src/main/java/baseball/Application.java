@@ -18,6 +18,16 @@ public class Application {
                     numbers.add(number);
                 }
             }
+            while (true) {
+               if (input.length() !=3) {
+                   throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+               }
+               try {
+                   Integer.parseInt(input);
+               } catch (Exception e) {
+                   throw new IllegalArgumentException("숫자가 아닌 값은 입력할 수 없습니다.");
+               }
+            }
         }
     }
 }
