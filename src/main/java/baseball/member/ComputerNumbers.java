@@ -1,5 +1,6 @@
-package baseball;
+package baseball.member;
 
+import baseball.controller.BaseballGameController;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +38,6 @@ public class ComputerNumbers {
     }
 
     private boolean isValidDigit(List<Integer> numbers) {
-        return numbers.size() == BaseballGame.GAME_NUMBER_DIGIT;
+        return numbers.size() == BaseballGameController.GAME_NUMBER_DIGIT;
     }
 }

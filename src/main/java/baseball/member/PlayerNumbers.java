@@ -1,5 +1,7 @@
-package baseball;
+package baseball.member;
 
+import baseball.controller.BaseballGameController;
+import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +23,7 @@ public class PlayerNumbers {
     }
 
     private List<Integer> createPlayerNumbers() {
-        String inputValue = Input.inputPlayerNumbers();
+        String inputValue = InputView.inputPlayerNumbers();
         checkValidValue(inputValue);
         return convertStringToIntegerList(inputValue);
     }
@@ -47,7 +49,7 @@ public class PlayerNumbers {
     }
 
     private boolean isValidDigit(String inputValue) {
-        return inputValue.length() == BaseballGame.GAME_NUMBER_DIGIT;
+        return inputValue.length() == BaseballGameController.GAME_NUMBER_DIGIT;
     }
 
     private boolean isNumbersNotDuplicate(String inputValue) {

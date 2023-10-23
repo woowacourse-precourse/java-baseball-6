@@ -1,18 +1,21 @@
-package baseball;
+package baseball.member;
 
-public class GameRestart {
+import baseball.view.InputView;
+
+public class RestartOption {
+    private String restartOption;
     private static final String DO_RESTART_OPTION = "1";
     private static final String DONT_RESTART_OPTION = "2";
 
     public boolean wantRestartGame() {
-        return chooseRestartGameOption().equals(DO_RESTART_OPTION);
+        chooseRestartGameOption();
+        return restartOption.equals(DO_RESTART_OPTION);
     }
 
-    private String chooseRestartGameOption() {
-        Output.printRestartMessage(DO_RESTART_OPTION, DONT_RESTART_OPTION);
-        String restartOption = Input.inputRestartOption();
+    private void chooseRestartGameOption() {
+        String restartOption = InputView.inputRestartOption();
         checkValidRestartOption(restartOption);
-        return restartOption;
+        this.restartOption = restartOption;
     }
 
     private void checkValidRestartOption(String restartOption) {

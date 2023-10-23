@@ -1,6 +1,10 @@
-package baseball;
+package baseball.controller;
 
-public class StrikeBallCounter {
+import baseball.member.ComputerNumbers;
+import baseball.member.PlayerNumbers;
+import baseball.view.OutputView;
+
+public class StrikeBallCountableImpl implements StrikeBallCountable {
     private int strike;
     private int ball;
 
@@ -8,7 +12,7 @@ public class StrikeBallCounter {
         resetStrikeAndBall();
         countStrike(playerNumbers, computerNumbers);
         countBall(playerNumbers, computerNumbers);
-        Output.printStrikeBallMessage(strike, ball);
+        OutputView.printStrikeBallMessage(strike, ball);
     }
 
     private void resetStrikeAndBall() {
@@ -17,7 +21,7 @@ public class StrikeBallCounter {
     }
 
     private void countStrike(PlayerNumbers playerNumbers, ComputerNumbers computerNumbers) {
-        for(int numbersIndex = 0; numbersIndex< BaseballGame.GAME_NUMBER_DIGIT; numbersIndex++) {
+        for(int numbersIndex = 0; numbersIndex< BaseballGameController.GAME_NUMBER_DIGIT; numbersIndex++) {
             if(isStrike(playerNumbers, computerNumbers, numbersIndex)) {
                 strike++;
             }
@@ -25,7 +29,7 @@ public class StrikeBallCounter {
     }
 
     private void countBall(PlayerNumbers playerNumbers, ComputerNumbers computerNumbers) {
-        for(int numbersIndex = 0; numbersIndex< BaseballGame.GAME_NUMBER_DIGIT; numbersIndex++) {
+        for(int numbersIndex = 0; numbersIndex< BaseballGameController.GAME_NUMBER_DIGIT; numbersIndex++) {
             if(isBall(playerNumbers, computerNumbers, numbersIndex)) {
                 ball++;
             }
@@ -42,6 +46,6 @@ public class StrikeBallCounter {
     }
 
     public boolean isGameClear() {
-        return strike==BaseballGame.GAME_NUMBER_DIGIT;
+        return strike== BaseballGameController.GAME_NUMBER_DIGIT;
     }
 }
