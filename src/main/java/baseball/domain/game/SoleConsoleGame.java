@@ -3,7 +3,7 @@ package baseball.domain.game;
 import baseball.domain.player.attacker.Attacker;
 import baseball.domain.player.defender.Defender;
 import baseball.domain.player.defender.value.Results;
-import baseball.domain.player.value.Ball;
+import baseball.domain.player.value.Balls;
 import baseball.initializer.GameFactory;
 import baseball.support.generator.BallGenerator;
 import baseball.support.generator.RandomBallsGenerator;
@@ -33,14 +33,14 @@ public class SoleConsoleGame extends SoleGame {
 	}
 
 	@Override
-	protected List<Ball> getBalls() {
+	protected Balls getBalls() {
 		List<Long> numbers = getSelector().selectNumbers();
 		attacker.initialize(BallGenerator.generate(numbers));
 		return attacker.getBalls();
 	}
 
 	@Override
-	protected Results play(List<Ball> balls) {
+	protected Results play(Balls balls) {
 		return defender.compareBalls(balls);
 	}
 }

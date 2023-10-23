@@ -3,11 +3,10 @@ package baseball.domain.game;
 import baseball.domain.player.defender.value.BallCount;
 import baseball.domain.player.defender.value.Results;
 import baseball.domain.player.defender.value.StrikeCount;
-import baseball.domain.player.value.Ball;
+import baseball.domain.player.value.Balls;
 import baseball.utils.input.Selector;
 import baseball.utils.viewer.GuideMessage;
 import baseball.utils.viewer.Viewer;
-import java.util.List;
 
 public abstract class SoleGame extends BasicGame {
 
@@ -34,7 +33,7 @@ public abstract class SoleGame extends BasicGame {
 	protected void execute() {
 		while (true) {
 			getViewer().print(GuideMessage.INPUT_NUMBER);
-			List<Ball> balls = getBalls();
+			Balls balls = getBalls();
 
 			Results results = play(balls);
 
@@ -50,8 +49,8 @@ public abstract class SoleGame extends BasicGame {
 	}
 
 	/** 게임 진행시 Attacker가 공을 선택해야 한다. */
-	protected abstract List<Ball> getBalls();
+	protected abstract Balls getBalls();
 
 	/** 게임 진행시 Defender가 가지고 있는 공과 Attacker의 공을 비교해야 한다. */
-	protected abstract Results play(List<Ball> balls);
+	protected abstract Results play(Balls balls);
 }
