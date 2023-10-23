@@ -1,7 +1,6 @@
 package baseball.utils;
 
 import baseball.balls.Ball;
-import baseball.balls.BallValue;
 import baseball.balls.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
@@ -9,6 +8,9 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public final class BallsUtils {
+
+    private static final int BALL_MIN_VALUE = 1;
+    private static final int BALL_MAX_VALUE = 9;
 
     public static Balls convertStringToBalls(String string) {
         List<Integer> integers = StringUtils.convertStringToIntegerList(string);
@@ -37,9 +39,9 @@ public final class BallsUtils {
     }
 
     private static List<Integer> generateRandomIntegers() {
-        int ballMinValue = BallValue.MIN_VALUE;
-        int ballMaxValue = BallValue.MAX_VALUE;
         int ballCount = Balls.BALL_COUNT;
+        int ballMinValue = BALL_MIN_VALUE;
+        int ballMaxValue = BALL_MAX_VALUE;
 
         return Stream.generate(() -> Randoms.pickNumberInRange(ballMinValue, ballMaxValue))
                 .limit(ballCount)

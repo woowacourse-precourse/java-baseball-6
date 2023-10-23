@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class BallsValidateTest {
 
     private final int BALL_COUNT = Balls.BALL_COUNT;
-    private final int BALL_MIN_VALUE = BallValue.MIN_VALUE;
+    private final int BALL_MIN_VALUE = 1;
 
     @Test
     void 공_개수_기준치_동일_허용() {

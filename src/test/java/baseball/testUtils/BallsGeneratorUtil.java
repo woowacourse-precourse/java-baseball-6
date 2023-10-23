@@ -8,11 +8,12 @@ import java.util.stream.IntStream;
 
 public final class BallsGeneratorUtil {
 
+    private static final int BALL_MIN_VALUE = 1;
+
     // 요구사항에 맞는 Balls를 생성
     public static Balls generateBalls() {
         int ballCount = Balls.BALL_COUNT;
-        int minValue = BallValue.MIN_VALUE;
-        return generateBalls(ballCount, minValue, false, false);
+        return generateBalls(ballCount, BALL_MIN_VALUE, false, false);
     }
 
     public static Balls generateBalls(int ballCount, int minValue, boolean willDuplicateValue,
