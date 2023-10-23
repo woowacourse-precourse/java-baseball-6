@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static baseball.Constant.*;
@@ -37,13 +36,17 @@ public class Validator {
     }
 
     public static void checkDuplicatedNumber(String number) {
-        Collection<Character> numberList = new ArrayList<>();
+        List<Character> numberList = new ArrayList<>();
         // 중복된 숫자가 있을 경우
         for (Character singleNumber: number.toCharArray()) {
-            if (numberList.contains(singleNumber)) {
-                throw new IllegalArgumentException();
-            }
+            throwExceptionIfDuplicated(numberList, singleNumber);
             numberList.add(singleNumber);
+        }
+    }
+
+    private static void throwExceptionIfDuplicated(List<Character> numberList, Character singleNumber){
+        if (numberList.contains(singleNumber)) {
+            throw new IllegalArgumentException();
         }
     }
 }
