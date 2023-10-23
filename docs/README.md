@@ -13,16 +13,16 @@
 ## 사용자 정답 입력 기능
 - [ ] getUserNum 메서드 구현
   - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자의 값을 입력받는다.
-  - [ ] validateStringLengthDuplicateDigitNumber 메서드 구현
+  - [ ] validateStringLengthDuplicateNaturalNumber 메서드 구현
     - [ ] 입력받은 값이 1 ~ 9 사이의 서로 다른 숫자면 통과
     - [ ] 이외의 값이라면 `IllegalArgumentException` 예외 발생
       - [ ] validateStringLength 메서드 구현
         - [ ] 주어진 문자열의 길이가 정해진 길이의 문자열인지 검증
       - [ ] validateStringDuplicate 메서드 구현
         - [ ] 주어진 문자열이 중복되는 문자가 없는지 검증
-      - [ ] validateStringDigitNumber 메서드 구현
+      - [ ] validateStringNaturalNumber 메서드 구현
         - [ ] 주어진 문자열 자연수로 이루어진 문자열인지 검증
-  - [ ] stringToIntegerList 메서드 구현
+  - [ ] stringToNumberList 메서드 구현
     - 입력받은 문자열을 숫자 리스트로 변환하여 반환한다.
 
 ## 스트라이크 개수 확인 기능
