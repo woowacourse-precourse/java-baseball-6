@@ -8,35 +8,35 @@ import camp.nextstep.edu.missionutils.Console;
  * @description user number input reader
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class UserNumberInputReader implements NumberInputReader{
+public class UserNumberInputReader implements NumberInputReader {
 
-  private BaseballGameProperty baseballGameProperty;
+    private BaseballGameProperty baseballGameProperty;
 
-  public UserNumberInputReader(BaseballGameProperty baseballGameProperty) {
-    this.baseballGameProperty = baseballGameProperty;
-  }
-
-  @Override
-  public int[] readInput() {
-    return convertToIntArray(Console.readLine());
-  }
-
-  @Override
-  public int readRestartChoiceInput() {
-    return Integer.parseInt(Console.readLine());
-  }
-
-  private int[] convertToIntArray(String number) {
-    int[] result = new int[baseballGameProperty.digit()];
-
-    String trimInput = number.trim();
-    char[] userInputs = trimInput.toCharArray();
-
-    for(int i = 0; i < baseballGameProperty.digit(); i++){
-      result[i] = userInputs[i] - '0';
+    public UserNumberInputReader(BaseballGameProperty baseballGameProperty) {
+        this.baseballGameProperty = baseballGameProperty;
     }
 
-    return result;
-  }
+    @Override
+    public int[] readInput() {
+        return convertToIntArray(Console.readLine());
+    }
+
+    @Override
+    public int readRestartChoiceInput() {
+        return Integer.parseInt(Console.readLine());
+    }
+
+    private int[] convertToIntArray(String number) {
+        int[] result = new int[baseballGameProperty.digit()];
+
+        String trimInput = number.trim();
+        char[] userInputs = trimInput.toCharArray();
+
+        for (int i = 0; i < baseballGameProperty.digit(); i++) {
+            result[i] = userInputs[i] - '0';
+        }
+
+        return result;
+    }
 
 }

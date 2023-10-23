@@ -5,8 +5,8 @@ package baseball.ui;
  * @description game start display
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class GameStartDisplay implements PrintMessage{
+public class GameStartDisplay implements PrintMessage {
 
-  public static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
+    public static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
 
 }

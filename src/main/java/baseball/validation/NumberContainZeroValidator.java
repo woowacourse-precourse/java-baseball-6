@@ -9,11 +9,11 @@ import java.util.Arrays;
  **********************************************************************************************************************/
 public class NumberContainZeroValidator implements NumberValidator {
 
-  @Override
-  public void validate(int[] number) {
-    if (Arrays.asList(number).contains(0)) {
-      throw new IllegalArgumentException("숫자 0은 포함될 수 없습니다.");
+    @Override
+    public void validate(int[] number) {
+        if (Arrays.asList(number).contains(0)) {
+            throw new IllegalArgumentException("숫자 0은 포함될 수 없습니다.");
+        }
     }
-  }
 
 }

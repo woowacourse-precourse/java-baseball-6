@@ -9,50 +9,50 @@ import baseball.result.BaseballGameResult;
  **********************************************************************************************************************/
 public class ResultCalculator {
 
-  public BaseballGameResult calculate(int[] userInputNumber, int[] randomNumber) {
-    int strike = countStrike(userInputNumber, randomNumber);
-    if (isThreeStrike(strike)) {
-      return new BaseballGameResult(3, 0, true);
-    }
-
-    int ball = countBall(userInputNumber, randomNumber);
-
-    return new BaseballGameResult(strike, ball, false);
-  }
-
-  private int countBall(int[] userInputNumber, int[] randomNumber) {
-    int count = 0;
-
-    for (int i = 0; i < userInputNumber.length; i++) {
-      for (int j = 0; j < randomNumber.length; j++) {
-        if (i == j) {
-          continue;
+    public BaseballGameResult calculate(int[] userInputNumber, int[] randomNumber) {
+        int strike = countStrike(userInputNumber, randomNumber);
+        if (isThreeStrike(strike)) {
+            return new BaseballGameResult(3, 0, true);
         }
 
-        if (userInputNumber[i] == randomNumber[j]) {
-          count += 1;
+        int ball = countBall(userInputNumber, randomNumber);
+
+        return new BaseballGameResult(strike, ball, false);
+    }
+
+    private int countBall(int[] userInputNumber, int[] randomNumber) {
+        int count = 0;
+
+        for (int i = 0; i < userInputNumber.length; i++) {
+            for (int j = 0; j < randomNumber.length; j++) {
+                if (i == j) {
+                    continue;
+                }
+
+                if (userInputNumber[i] == randomNumber[j]) {
+                    count += 1;
+                }
+
+            }
         }
 
-      }
+        return count;
     }
 
-    return count;
-  }
+    private int countStrike(int[] userInputNumber, int[] randomNumber) {
+        int count = 0;
 
-  private int countStrike(int[] userInputNumber, int[] randomNumber) {
-    int count = 0;
+        for (int i = 0; i < userInputNumber.length; i++) {
+            if (userInputNumber[i] == randomNumber[i]) {
+                count += 1;
+            }
+        }
 
-    for (int i = 0; i < userInputNumber.length; i++) {
-      if (userInputNumber[i] == randomNumber[i]) {
-        count += 1;
-      }
+        return count;
     }
 
-    return count;
-  }
-
-  private boolean isThreeStrike(int strike) {
-    return strike == 3;
-  }
+    private boolean isThreeStrike(int strike) {
+        return strike == 3;
+    }
 
 }

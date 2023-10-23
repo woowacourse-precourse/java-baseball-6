@@ -6,8 +6,9 @@ package baseball.input;
  * @since 2023.10.23
  **********************************************************************************************************************/
 public interface NumberInputReader {
-  int[] readInput();
 
-  int readRestartChoiceInput();
+    int[] readInput();
+
+    int readRestartChoiceInput();
 
 }

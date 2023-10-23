@@ -7,20 +7,20 @@ package baseball.ui;
  **********************************************************************************************************************/
 public class ConsoleDisplayFactory {
 
-  public static PrintMessage requestInput() {
-    return new GameStartDisplay();
-  }
+    public static PrintMessage requestInput() {
+        return new GameStartDisplay();
+    }
 
-  public static PrintResultMessage result() {
-    return new GameResultDisplay();
-  }
+    public static PrintResultMessage result() {
+        return new GameResultDisplay();
+    }
 
-  public static PrintResultMessage end() {
-    return new GameEndDisplay();
-  }
+    public static PrintResultMessage end() {
+        return new GameEndDisplay();
+    }
 
-  public static PrintMessage restartDrawer() {
-    return new GameRestartChoiceDisplay();
-  }
+    public static PrintMessage restartDrawer() {
+        return new GameRestartChoiceDisplay();
+    }
 
 }
