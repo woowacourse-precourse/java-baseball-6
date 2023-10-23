@@ -9,6 +9,7 @@ public class HintCalculator {
     private final static String ballString = "볼";
     private final static String nothingString = "낫싱";
     private final static String spaceString = " ";
+    private final static String emptyString = "";
     private int strikeCnt = 0;
     private int ballCnt = 0;
 
@@ -24,20 +25,10 @@ public class HintCalculator {
     }
 
     public String getHintString(){
-        if(strikeCnt == 0 && ballCnt == 0){
-            return nothingString;
-        }
         String hintString = "";
-        if (ballCnt != 0) {
-            hintString+=ballCnt+ballString;
-            if(strikeCnt != 0){
-                hintString+=spaceString;
-            }
-        }
-        if(strikeCnt!=0){
-            hintString+=strikeCnt;
-            hintString+=strikeString;
-        }
+        hintString += getNothingString();
+        hintString += getBallString();
+        hintString += getStrikeString();
         return hintString;
     }
 
@@ -59,6 +50,35 @@ public class HintCalculator {
 
     private boolean isBall(Integer userNumber, List<Integer> computerList) {
         return computerList.contains(userNumber);
+    }
+
+    private String getNothingString() {
+        if(strikeCnt == 0 && ballCnt == 0){
+            return nothingString;
+        }
+        return emptyString;
+
+    }
+
+    private String getBallString() {
+        if (ballCnt != 0) {
+            return ballCnt+ballString+getBlankString();
+        }
+        return emptyString;
+    }
+
+    private String getStrikeString() {
+        if (strikeCnt != 0) {
+            return strikeCnt+strikeString;
+        }
+        return emptyString;
+    }
+
+    private String getBlankString() {
+        if(strikeCnt != 0){
+            return spaceString;
+        }
+        return emptyString;
     }
 
 }
