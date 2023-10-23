@@ -36,10 +36,13 @@ public class Ball {
         return getNum();
     }
 
-    public List<BallStatus> checkBalls(int thisIndex, Balls balls) {
-        return IntStream.range(0, balls.size())
+    public List<BallStatus> checkBalls(int thisIndex, Balls targetBalls) {
+        return IntStream.range(0, targetBalls.size())
                 .mapToObj((targetIndex) ->
-                        this.checkBall(balls.getBall(targetIndex), thisIndex, targetIndex))
+                {
+                    Ball targetBall = targetBalls.getBall(targetIndex);
+                    return this.checkBall(targetBall, thisIndex, targetIndex);
+                })
                 .toList();
     }
 

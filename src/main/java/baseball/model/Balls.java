@@ -1,5 +1,6 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.util.InputUtils.inputToIntegerList;
@@ -19,6 +20,17 @@ public class Balls {
 
     public Balls(Input input) {
         this(inputToIntegerList(input));
+    }
+
+    public PlayResult checkBalls(Balls targetBalls) {
+        List<BallStatus> results = new ArrayList<>();
+
+        for (int i = 0; i < balls.size(); i++) {
+            List<BallStatus> result = balls.get(i).checkBalls(i, targetBalls);
+            results.addAll(result);
+        }
+
+        return new PlayResult(results);
     }
 
     public List<Ball> getBalls() {

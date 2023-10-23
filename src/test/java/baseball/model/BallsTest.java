@@ -3,6 +3,8 @@ package baseball.model;
 import baseball.Computer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -59,5 +61,95 @@ public class BallsTest {
 
         //when, then
         assertThat(balls.getBalls()).containsExactlyElementsOf(ballList);
+    }
+
+    @DisplayName("Balls끼리 비교 : 3STRIKE")
+    @ParameterizedTest
+    @CsvSource({"123,123", "345,345", "496,496"})
+    public void compareBallWithBalls_3STRIKE(String nums1, String nums2) throws Exception {
+        //given
+        Balls balls1 = new Balls(Input.of(nums1));
+        Balls balls2 = new Balls(Input.of(nums2));
+
+        //when
+        PlayResult playResult = balls1.checkBalls(balls2);
+
+        //then
+        assertThat(playResult.toString()).isEqualTo("3스트라이크 ");
+    }
+
+    @DisplayName("Balls끼리 비교 : 2STRIKE")
+    @ParameterizedTest
+    @CsvSource({"123,124", "312,412", "964,974"})
+    public void compareBallWithBalls_2STRIKE(String nums1, String nums2) throws Exception {
+        //given
+        Balls balls1 = new Balls(Input.of(nums1));
+        Balls balls2 = new Balls(Input.of(nums2));
+
+        //when
+        PlayResult playResult = balls1.checkBalls(balls2);
+
+        //then
+        assertThat(playResult.toString()).isEqualTo("2스트라이크 ");
+    }
+
+    @DisplayName("Balls끼리 비교 : 1STRIKE 1BALL")
+    @ParameterizedTest
+    @CsvSource({"345,374", "123,325", "912,993"})
+    public void compareBallWithBalls_1STRIKE_1BALL(String nums1, String nums2) throws Exception {
+        //given
+        Balls balls1 = new Balls(Input.of(nums1));
+        Balls balls2 = new Balls(Input.of(nums2));
+
+        //when
+        PlayResult playResult = balls1.checkBalls(balls2);
+
+        //then
+        assertThat(playResult.toString()).isEqualTo("1스트라이크 1볼");
+    }
+
+    @DisplayName("Balls끼리 비교 : 1STRIKE 2BALL")
+    @ParameterizedTest
+    @CsvSource({"123,132", "312,321", "965,996"})
+    public void compareBallWithBalls_1STRIKE_2BALL(String nums1, String nums2) throws Exception {
+        //given
+        Balls balls1 = new Balls(Input.of(nums1));
+        Balls balls2 = new Balls(Input.of(nums2));
+
+        //when
+        PlayResult playResult = balls1.checkBalls(balls2);
+
+        //then
+        assertThat(playResult.toString()).isEqualTo("1스트라이크 2볼");
+    }
+
+    @DisplayName("Balls끼리 비교 : 1BALL")
+    @ParameterizedTest
+    @CsvSource({"123,561", "312,296", "965,257"})
+    public void compareBallWithBalls_1BALL(String nums1, String nums2) throws Exception {
+        //given
+        Balls balls1 = new Balls(Input.of(nums1));
+        Balls balls2 = new Balls(Input.of(nums2));
+
+        //when
+        PlayResult playResult = balls1.checkBalls(balls2);
+
+        //then
+        assertThat(playResult.toString()).isEqualTo("1볼");
+    }
+
+    @DisplayName("Balls끼리 비교 : 낫싱")
+    @ParameterizedTest
+    @CsvSource({"123,567", "312,456", "965,347"})
+    public void compareBallWithBalls_NOTHING(String nums1, String nums2) throws Exception {
+        //given
+        Balls balls1 = new Balls(Input.of(nums1));
+        Balls balls2 = new Balls(Input.of(nums2));
+
+        //when
+        PlayResult playResult = balls1.checkBalls(balls2);
+
+        //then
+        assertThat(playResult.toString()).isEqualTo("낫싱");
     }
 }
