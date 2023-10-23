@@ -11,7 +11,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
     public void startGame() {
-        System.out.print(ServiceMessage.START.serviceMessage);
         // 서로 다른 3자리 수를 컴퓨터가 지정한다.
         InitNumber initNumber = new InitNumber();
         String answer = initNumber.getInitNumber();
@@ -20,16 +19,12 @@ public class BaseBallGame {
 
         while (true) {
             System.out.print(ServiceMessage.INPUT.serviceMessage + " ");
-            String line;
+
+            String line = "";
+            line = Console.readLine();
             // 예외 처리 모듈화 필요
-            try {
-                line = Console.readLine();
-                if (!Validator.isValid(line)) { // 예: 빈 문자열 또는 null을 부적절한 입력으로 처리
-                    throw new IllegalArgumentException("입력값이 잘못됐습니다.");
-                }
-                // Console.readLine()이 예외를 던질 경우
-            } catch (Exception e) { // Exception을 캐치하거나, 더 구체적인 예외 타입을 캐치할 수 있습니다.
-                System.out.println(e);
+            if (!Validator.isValid(line)) { // 예: 빈 문자열 또는 null을 부적절한 입력으로 처리
+                throw new IllegalArgumentException("입력값이 잘못됐습니다.");
             }
 
             int ballCount = Ball.countBalls(answer, line);
@@ -38,6 +33,7 @@ public class BaseBallGame {
             String message = Message.getMessage(ballCount, StatusMessage.BALL) + " " + Message.getMessage(strikeCount,
                     StatusMessage.STRIKE);
             if (Printer.isFinished(message)) {
+                Printer.print(message);
                 System.out.print(ServiceMessage.SUCCESS.serviceMessage);
                 System.out.print(ServiceMessage.RETRY.serviceMessage);
                 // 입력값 예외 처리 필요
