@@ -15,4 +15,12 @@ public class ExceptionHandling {
         }
     }
 
+    private static void isDigits(final String strNumber) {
+        for (int i = 0; i < numberOfNumbers; i++) {
+            char chNumber = strNumber.charAt(i);
+            if (!(chNumber >= '1' && chNumber <= '9')) {
+                throw new IllegalArgumentException("1~9까지의 숫자가 아닌 다른 값을 입력하셨습니다. 게임을 종료합니다.");
+            }
+        }
+    }
 }
