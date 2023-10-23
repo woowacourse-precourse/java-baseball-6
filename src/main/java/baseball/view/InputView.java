@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import static baseball.view.constants.StaticNotice.*;
 
 public class InputView {
-    public static String askUserNumbers() {
+    public static String askPlayerNumbers() {
         OutputView.printStaticNotice(ASK_PLAYER_NUMBER);
         return Console.readLine();
     }

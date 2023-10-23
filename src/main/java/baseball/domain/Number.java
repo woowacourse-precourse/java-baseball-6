@@ -30,7 +30,7 @@ public class Number {
 
     // Player Number Static Factory Method
     public static Number inputPlayerNumbers() {
-        String playerNumbers = InputView.askUserNumbers();
+        String playerNumbers = InputView.askPlayerNumbers();
         return new Number(playerNumbers);
     }
 
