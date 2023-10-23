@@ -54,7 +54,7 @@ public class Application {
         throw new IllegalArgumentException("startNumOrEndNum 값은 1 또는 2여야 합니다.");
     }
 
-    public void checkAnswerStrikeAndBall(int strike, int ball){
+    public void displayBaseballGameResult(int strike, int ball){
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
         } else if (strike == 3) {
@@ -117,7 +117,7 @@ public class Application {
             // 볼의 유형만 세주기
             baseballGame.countStrikeAndBall(myNumber,computerNumber);
             // 볼의 유형 세주는 메서드와 정답을 출력해주는 메서드 분리하기
-            baseballGame.checkAnswerStrikeAndBall(baseballGame.strike, baseballGame.ball);
+            baseballGame.displayBaseballGameResult(baseballGame.strike, baseballGame.ball);
             if (baseballGame.isVictory(baseballGame.strike)) {
                 // strike가 3이였을 때 실행되는 부분
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
