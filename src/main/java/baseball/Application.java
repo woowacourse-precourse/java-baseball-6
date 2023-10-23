@@ -8,14 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Application {
+class ComputerNumber {
+    private List<Integer> computer;
 
-    /**
-     * 상대방(컴퓨터)이 숫자 생성
-     * @return computer
-     */
-    public List<Integer> makeComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
+    public List<Integer> makeComputer() {
+        computer = new ArrayList<>();
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,9 +20,11 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
         return computer;
     }
+}
+
+public class Application {
 
     /**
      * 입력 받은 수 검증
@@ -73,7 +72,7 @@ public class Application {
 
             int ballCount = ballCheck(computer, inputNum) - strikeCount;    //inputNum이 computer의 숫자 중 strike가 아니고 같은 숫자가 있다면
             B_S.put(ball, B_S.get(ball) + ballCount);                   //B_S에 "Ball"의 value를 1 증가
-            System.out.println(B_S.get(ball) + " / " + B_S.get(strike));
+
             inputNumber /= 10;
         }
 
@@ -152,22 +151,20 @@ public class Application {
 
     public static void main(String[] args) {
         Application application = new Application();
-        List<Integer> computer = application.makeComputerNumber();  //상대방(컴퓨터)이 숫자 생성
-        String input;                                               //입력받는 값을 넣어 줄 변수
+        ComputerNumber computerNumber = new ComputerNumber();
+        List<Integer> computer = computerNumber.makeComputer();     //상대방(컴퓨터)이 숫자 생성
+        String input = "";                                          //입력받는 값을 넣어 줄 변수
         boolean gameFlag = true;                                    //게임 계속 실행할지 그만둘지 표시
-        String result;                                              //결과를 출력해줄 변수
-        String gameOverInput = "";                                       //게임 종료 후 입력받는 값을 넣어 줄 변수
+        String result = "";                                         //결과를 출력해줄 변수
+        String gameOverInput = "";                                  //게임 종료 후 입력받는 값을 넣어 줄 변수
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        for (int com : computer) {
-            System.out.print(com);
-        }
 
         while(gameFlag) {
             System.out.print("숫자를 입력해주세요 : ");
 
             input = Console.readLine();                             //사용자가 숫자를 입력할 수 있는 환경 구현
-            System.out.println(input);
+
             if (!application.inputCheckAll(input)) {                //입력 값이 정해진 규칙에 적합하지 않으면 예외 처리
                 throw new IllegalArgumentException();
             }
@@ -184,7 +181,7 @@ public class Application {
             if ("2".equals(gameOverInput)) {                        //2를 입력했다면
                 gameFlag = false;                                   //while문이 반복하지 않도록 gameFlag에 false 입력
             } else if ("1".equals(gameOverInput)) {                 //1을 입력했다면
-                computer = application.makeComputerNumber();        //상대방(컴퓨터)의 숫자를 새로 생성해서 게임 진행
+                computer = computerNumber.makeComputer();           //상대방(컴퓨터)의 숫자를 새로 생성해서 게임 진행
                 gameOverInput = "";
             }
         }
