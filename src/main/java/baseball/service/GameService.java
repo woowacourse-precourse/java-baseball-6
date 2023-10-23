@@ -25,14 +25,14 @@ public class GameService {
         List<Integer> computerNumber = computer.getComputerNumber();
         while(!oneGameFinished) {
             System.out.print("숫자를 입력해주세요 : ");
-            ArrayList<Integer> userNumber = parsingInputNumber(InputView.Input());
+            List<Integer> userNumber = parsingInputNumber(InputView.Input());
             List<Integer> gameResult = playGame(computerNumber, userNumber);
             if(OutputView.outputResult(gameResult))
                 oneGameFinished = true;
         }
     }
 
-    public static ArrayList<Integer> parsingInputNumber(String inputNumber){
+    public static List<Integer> parsingInputNumber(String inputNumber){
         // 예외 처리 Exception class 고려해 보기
         if(inputNumber.length() != 3)
             throw new IllegalArgumentException();
