@@ -4,23 +4,24 @@ import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.service.GameService;
 import baseball.service.MessageService;
+import baseball.service.NumberService;
 import baseball.service.UserService;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameController {
     private final GameService gameService;
     private final UserService userService;
     private final MessageService messageService;
+    private final NumberService numberService;
     private User user;
 
     public GameController() {
         this.messageService = new MessageService();
+        this.numberService = new NumberService();
         this.gameService = new GameService();
         this.userService = new UserService();
     }
@@ -42,7 +43,10 @@ public class GameController {
             while(!isCorrect){
                 /* 정답을 맞출때 까지 반복 */
                 gameService.addQestionCount(gameService.findOne(gameId).get());
-                List<Integer> userNumber = setUserNumber();
+
+                messageService.inputUserNumber();
+                List<Integer> userNumber = numberService.setUserNumber();
+
                 isCorrect = checkCorrect(computerNumber, userNumber);
             }
             /* 메뉴 표출*/
@@ -96,60 +100,12 @@ public class GameController {
         List<Integer> list = new ArrayList<>(Arrays.asList(ball, strike));
         return list;
     }
-    private List<Integer> setUserNumber(){
-        messageService.inputUserNumber();
-        String number = Console.readLine();
-
-        checkInputNumber(number);
-
-        return Arrays.stream(number.split(""))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-    }
-
-    private void checkInputNumber(String input){
-        /* 숫자 판별 */
-        for (int i=0;i<3;i++) {
-            try{
-                Integer.parseInt(input);
-            }catch (IllegalArgumentException e){
-                throw new IllegalArgumentException();
-            }
-        }
-        /* 길이 판별 */
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        /* 중복 판별 */
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (int i=0;i<3;i++) {
-            if (numbers.contains(Character.getNumericValue(input.charAt(i)))){
-                throw new IllegalArgumentException();
-            }
-            numbers.add(Character.getNumericValue(input.charAt(i)));
-        }
-        /* 0 판별 */
-        if (input.contains("0")){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private List<Integer> setRandomNumber(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
 
     private Long newGame(){
         Game game = new Game();
         game.setUserId(user.getId());
 
-        List<Integer> computerNumber = setRandomNumber();
+        List<Integer> computerNumber = numberService.setRandomNumber();
         game.setComputerNumber(computerNumber);
         game.setQuestionCount(0L);
 
