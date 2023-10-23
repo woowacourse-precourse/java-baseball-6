@@ -22,13 +22,10 @@ public class BaseballController {
     }
 
     public void startGame() {
-        boolean continueGame = true;
-
-        while (continueGame) {
+        do {
             initGame();
             playGame();
-            continueGame = askToContinue();
-        }
+        } while (askToContinue());
     }
 
     private boolean askToContinue() {
