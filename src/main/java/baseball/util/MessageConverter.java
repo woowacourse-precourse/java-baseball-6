@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /*
- * 플레이어와 컴퓨터의 숫자를 비교하여 힌트를 출력하는 클래스
+ * 플레이어와 컴퓨터의 숫자를 비교하여 스트라이크, 볼로 변환하는 클래스
  * */
 public class MessageConverter {
 

@@ -40,7 +40,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 3자리 수인지 확인
      * @Param input 플레이어의 숫자
      * */
-    public static void validateInputSize(String input) {
+    private static void validateInputSize(String input) {
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
@@ -50,7 +50,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 숫자인지 확인
      * @Param input 플레이어의 숫자
      * */
-    public static void validateInputType(String input) {
+    private static void validateInputType(String input) {
         if (!input.matches(REGEX)) {
             throw new IllegalArgumentException();
         }
@@ -60,7 +60,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 중복인지 확인
      * @Param input 플레이어의 숫자
      * */
-    public static void validateInputDuplication(String input) {
+    private static void validateInputDuplication(String input) {
         Set<Character> duplicateCheckSet = new HashSet<>();
         for (char c : input.toCharArray()) {
             duplicateCheckSet.add(c);
