@@ -61,4 +61,8 @@
 > </br></br>
 > 위의 여러 기능들을 객체지향 원리 중 하나인 DIP를 적용하기 위해 AppConfig를 도입하여 DIP 적용
 > </br></br>
+> output을 따로 만들어 출력 모듈을 사용
+> </br>
+> Data를 만들어서 strike, ball, answer, user의 데이터를 관리하는 모듈을 생성, 싱글톤 사용
+> </br></br>
 
