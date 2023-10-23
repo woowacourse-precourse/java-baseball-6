@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RandomTargetNumber implements Numbers {
+public class RandomTargetNumbers implements Numbers {
     private static final int LENGTH = 3;
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
     private List<Integer> numContainer;
 
-    private RandomTargetNumber() {}
+    private RandomTargetNumbers() {}
 
-    public static RandomTargetNumber generate() {
-        RandomTargetNumber newInstance = new RandomTargetNumber();
+    public static RandomTargetNumbers generate() {
+        RandomTargetNumbers newInstance = new RandomTargetNumbers();
         List<Integer> nc = new ArrayList<>(3);
         while (nc.size() < LENGTH) {
             int randomizedNum = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
