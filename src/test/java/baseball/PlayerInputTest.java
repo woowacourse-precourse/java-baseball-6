@@ -2,6 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -37,5 +39,22 @@ class PlayerInputTest {
         String input = "1234";
 
         assertThat(input.length()).isNotSameAs(3);
+    }
+
+    @Test
+    @DisplayName("플레이어가 입력한 숫자는 전부 다르다.")
+    void test5() {
+        Set<Character> checkNumbers = new HashSet<>();
+        char[] input = "123".toCharArray();
+        boolean isPrime = true;
+
+        for(Character ch : input) {
+            if(checkNumbers.contains(ch)) {
+                isPrime = false;
+            }
+            checkNumbers.add(ch);
+        }
+
+        assertThat(isPrime).isEqualTo(true);
     }
 }
