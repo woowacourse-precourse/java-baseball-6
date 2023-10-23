@@ -29,7 +29,7 @@ public class InputView {
     }
 
     private void isTripleDigit(String input) {
-        if (input.length() != NumberConstant.LENGTH) {
+        if (input.length() < NumberConstant.LENGTH) {
             throw new IllegalArgumentException("세 자리의 입력값이 아닙니다.");
         }
     }
@@ -37,7 +37,7 @@ public class InputView {
     private void isValidDigitRange(String input) {
         for (char eachChar : input.toCharArray()) {
             int eachDigit = Character.getNumericValue(eachChar);
-            if (eachDigit < NumberConstant.MIN_VALUE || eachDigit > NumberConstant.MAX_VALUE) {
+            if (isNotValidRangeForEachDigit(eachDigit)) {
                 throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
             }
         }
@@ -69,6 +69,10 @@ public class InputView {
         if (isValidGameCode(gameCode)) {
             throw new IllegalArgumentException("1과 2중 입력해야 합니다.");
         }
+    }
+
+    private boolean isNotValidRangeForEachDigit(int eachDigit) {
+        return eachDigit < NumberConstant.MIN_VALUE || eachDigit > NumberConstant.MAX_VALUE;
     }
 
     private boolean isValidGameCode(int gameCode) {
