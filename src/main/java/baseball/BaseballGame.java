@@ -16,12 +16,22 @@ public class BaseballGame {
             String isFinish = userTry();
 
             System.out.println("checking game end! " + isFinish);
-            if (isFinish.equals("2")) {
+            if (isGameEnd(isFinish)) {
                 break;
             }
 
         }
     }
+
+    private boolean isGameEnd(String isFinish) {
+        Validator validator = new Validator();
+        validator.checkValidGameEnd(isFinish);
+        if (isFinish.equals("2")) {
+            return true;
+        }
+        return false;
+    }
+
     private String userTry() {
         Computer computer = new Computer();
         System.out.println("정답: " + computer);

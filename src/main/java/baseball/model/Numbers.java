@@ -1,26 +1,30 @@
 package baseball.model;
 
+import baseball.Validator;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Numbers {
-    private final static int MAX_NUMBER_SIZE = 3;
-
+    private final static Validator validator = new Validator();
 
     private List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
+        validator.checkValidNumbers(numbers);
         this.numbers = numbers;
     }
 
     public Numbers(String stringNumbers) {
-//        checkValid(numbers);
-        this.numbers = Arrays.stream(stringNumbers.split(""))
+        validator.checkValidString(stringNumbers);
+        List<Integer> numbers = Arrays.stream(stringNumbers.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toList();
+        validator.checkValidNumbers(numbers);
+        this.numbers = numbers;
     }
 
     public List<Integer> getNumbers() {
