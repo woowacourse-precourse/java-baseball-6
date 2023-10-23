@@ -35,30 +35,8 @@ public class BaseballGameController {
 
         while (!correct) {
             List<Integer> playerNumbers = getPlayerNumbers();
-
             comparator.compare(playerNumbers, computerNumbers);
-            int gameResult = comparator.getResult(playerNumbers, computerNumbers);
-
-            switch (gameResult) {
-                case 1:
-                    OutputView.printStrikeHintMessage(comparator.getStrikeCount());
-                    break;
-
-                case 2:
-                    OutputView.printBallHintMessage(comparator.getBallCount());
-                    break;
-                case 3:
-                    OutputView.printStrikeHintMessage(comparator.getStrikeCount());
-                    OutputView.printEndGameMessage();
-                    correct = true;
-                    break;
-                case 4:
-                    OutputView.printStrikeAndBallMessage(comparator.getStrikeCount(), comparator.getBallCount());
-                    break;
-                case 5:
-                    OutputView.printNothingMessage();
-                    break;
-            }
+            correct = getGameResult(comparator.getStrikeCount(), comparator.getBallCount());
         }
     }
 
@@ -77,4 +55,21 @@ public class BaseballGameController {
         throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
 
+    private boolean getGameResult(int strikeCount, int ballCount) {
+
+        if (strikeCount == 3) {
+            OutputView.printStrikeHintMessage(strikeCount);
+            OutputView.printEndGameMessage();
+            return true;
+        } else if (strikeCount != 0 && ballCount == 0) {
+            OutputView.printStrikeHintMessage(strikeCount);
+        } else if (strikeCount == 0 && ballCount != 0) {
+            OutputView.printBallHintMessage(ballCount);
+        } else if (strikeCount != 0 && ballCount != 0) {
+            OutputView.printStrikeAndBallHintMessage(strikeCount, ballCount);
+        } else if (strikeCount == 0 && ballCount == 0) {
+            OutputView.printNothingHintMessage();
+        }
+        return false;
+    }
 }
