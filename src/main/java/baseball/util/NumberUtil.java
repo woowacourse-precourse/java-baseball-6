@@ -6,7 +6,9 @@ import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_INTEGER;
 import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_IN_RANGE;
 import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_POSITIVE_INTEGER;
 import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_UNIQUE;
+import static baseball.util.validateCondition.LengthCondition.isNotValid;
 
+import baseball.util.validateCondition.RangeCondition;
 import java.util.List;
 
 public class NumberUtil {
@@ -37,7 +39,7 @@ public class NumberUtil {
     }
 
     protected static void validateLength(String number) {
-        if (number.length() != 3) {
+        if (isNotValid(number.length())) {
             throw new IllegalArgumentException(INPUT_LENGTH_INVALID.getMessage());
         }
     }
@@ -56,7 +58,7 @@ public class NumberUtil {
 
     protected static void validateRange(String number) {
         if (number.chars()
-                .anyMatch(n -> n < '1' || n > '9')) {
+                .anyMatch(RangeCondition::isNotInRange)) {
             throw new IllegalArgumentException(INPUT_NUMBER_NOT_IN_RANGE.getMessage());
         }
     }
