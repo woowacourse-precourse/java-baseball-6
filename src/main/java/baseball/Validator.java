@@ -7,7 +7,7 @@ public class Validator {
         int tensPlace = (numericValue / 10) % 10;
         int onesPlace = numericValue % 10;
 
-        return hundredsPlace != tensPlace || tensPlace != onesPlace || onesPlace != hundredsPlace;
+        return hundredsPlace != tensPlace && tensPlace != onesPlace && onesPlace != hundredsPlace;
     }
 
 
