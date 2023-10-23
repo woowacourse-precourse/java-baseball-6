@@ -6,6 +6,7 @@ public class Player {
 
     public String getInputAnswer() {
         String input = Console.readLine();
+        InputValidator.validateInputAnswer(input);
         return input;
     }
 

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Computer {
 
-    private static final Integer NUMBER_DIGIT = 3;
+    public static final Integer NUMBER_DIGIT = 3;
     private static final Integer MIN_NUM = 1;
     private static final Integer MAX_NUM = 9;
 
