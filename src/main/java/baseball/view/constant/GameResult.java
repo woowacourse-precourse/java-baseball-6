@@ -4,8 +4,7 @@ public enum GameResult {
     NOTHING,
     STRIKE,
     BALL,
-    OTHER,
-    ;
+    OTHER;
 
     public static GameResult from(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
