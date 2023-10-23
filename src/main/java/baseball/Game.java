@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
+    final int CONTINUE = 1;
+
     public void launch() {
         View view = new View();
 
@@ -34,7 +36,6 @@ public class Game {
         int inputNum = Integer.parseInt(input);
         validation.validateOneOrTwo(inputNum);
 
-        int CONTINUE = 1;
         return inputNum == CONTINUE;
     }
 }
