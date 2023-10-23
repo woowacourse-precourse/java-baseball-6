@@ -13,14 +13,15 @@ public class BaseballGameService {
     private final int NO_HIT = 0;
     private final int ALL_STRIKE = 3;
     private final BaseballGameValidation baseballGameValidation;
+    private final User user;
 
-    public BaseballGameService() {
-        this.baseballGameValidation = new BaseballGameValidation();
+    public BaseballGameService(User user, BaseballGameValidation baseballGameValidation) {
+        this.baseballGameValidation = baseballGameValidation;
+        this.user = user;
     }
 
     public void playGame(){
         Computer computer = new Computer();
-        User user = new User();
         computer.initComputerBaseBallNumber();
 
         boolean check = false;

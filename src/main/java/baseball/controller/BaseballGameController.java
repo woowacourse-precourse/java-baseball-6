@@ -1,13 +1,14 @@
 package baseball.controller;
 
+import baseball.domain.User;
 import baseball.servcie.BaseballGameService;
 
 public class BaseballGameController {
 
-    private BaseballGameService baseballGameService;
+    private final BaseballGameService baseballGameService;
 
-    public BaseballGameController() {
-        this.baseballGameService = new BaseballGameService();
+    public BaseballGameController(BaseballGameService baseballGameService) {
+        this.baseballGameService = baseballGameService;
     }
 
     public void startGame(){
