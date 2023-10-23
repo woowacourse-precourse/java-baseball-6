@@ -65,7 +65,7 @@
 
 - ❌ validateUserInput 메서드 구현
     - String형식의 숫자를 받아와 잘못된 값을 입력할 경우 IllegalArgumentException 발생후 종료
-- ❌ validateInputIsNumber 메서드 구현
+- ✅ validateInputIsNumber 메서드 구현
     - 입력한 값들이 다 숫자인지 검증
 - ❌ validateInputLength 메서드 구현
     - 입력한 값들의 숫자 자릿수가 3인지 검증
