@@ -15,15 +15,20 @@ public class ConsoleViewer implements Viewer {
 	private static final String NOTHING = "낫싱";
 
 	@Override
+	public void print(String message) {
+		System.out.println(message);
+	}
+
+	@Override
 	public void print(StrikeCount strikeCount, BallCount ballCount) {
 		if (strikeCount.isEmpty() && ballCount.isEmpty()) {
-			System.out.println(NOTHING);
+			this.print(NOTHING);
 			return;
 		}
 
 		StringBuilder source = getMessage(strikeCount, ballCount);
 
-		System.out.println(source);
+		this.print(source.toString());
 	}
 
 	private StringBuilder getMessage(StrikeCount strikeCount, BallCount ballCount) {
@@ -60,11 +65,6 @@ public class ConsoleViewer implements Viewer {
 			source.append(CRLF);
 			source.append(STRIKE_OUT.getMessage());
 		}
-	}
-
-	@Override
-	public void print(String message) {
-		System.out.println(message);
 	}
 
 	@Override
