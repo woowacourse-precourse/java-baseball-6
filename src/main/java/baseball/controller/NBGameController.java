@@ -4,6 +4,7 @@ import baseball.model.Computer;
 import baseball.model.BaseballCount;
 import baseball.model.convertor.NumberTypeConvertor;
 import baseball.model.validator.NumberValidation;
+import baseball.model.validator.RestartNumberValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -14,26 +15,38 @@ public class NBGameController {
     private InputView in;
     private OutputView out;
     private NumberValidation numberValidation;
+    private RestartNumberValidation restartNumberValidation;
     private NumberTypeConvertor numberTypeConvertor;
+
+    private static final int RESTART_GAME = 1;
+    private static final int END_GAME = 2;
 
     public NBGameController() {
         in = new InputView();
         out = new OutputView();
         numberValidation = new NumberValidation();
         numberTypeConvertor = new NumberTypeConvertor();
+        restartNumberValidation = new RestartNumberValidation();
     }
 
     public void run() {
         // 게임 시작 메세지 출력하기
         out.displayStartMessage();
+        int restart = RESTART_GAME;
 
-        // 숫자 생성하기
-        Computer computer = Computer.generateRandomNumber();
-        out.displayList(computer.getComputerNumber());
+        while (restart == RESTART_GAME) {
+            // 숫자 생성하기
+            Computer computer = Computer.generateRandomNumber();
+            out.displayList(computer.getComputerNumber());
 
-        startGame(computer);
-        // 게임 종료 메세지 출력하기
-        out.displayEndMessage();
+            startGame(computer);
+            // 게임 종료 메세지 출력하기
+            out.displayEndMessage();
+            // 다시 시작 여부 묻기
+            out.displayRestart();
+            restart = Integer.parseInt(in.inputStringNumber());
+            restartNumberValidation.validateNumber(restart);
+        }
     }
 
     private void startGame(Computer computer) {
