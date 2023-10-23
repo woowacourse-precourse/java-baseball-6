@@ -1,26 +1,25 @@
-package baseball;
+package baseball.utils;
+
+import static baseball.utils.OutputMessage.askNumberMessage;
+import static baseball.utils.OutputMessage.askRestartMessage;
+import static baseball.validate.CheckInput.validateUserInput;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.CheckInput.*;
-
 public class Input {
-    //종료 여부 결정: 1 -> 재시작, 2 -> 종료
-    public static String askRestart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public static String askRestart() {
+        askRestartMessage();
         String answer = Console.readLine();
         return answer.trim();
     }
-    //숫자 3개 입력 받는 곳
-    public static List<Integer> getUserInput(){
-        System.out.print("숫자를 입력해주세요 : ");
+
+    public static List<Integer> getPlayerInput() {
+        askNumberMessage();
         return getInputString();
     }
 
-    //String -> List<Integer>로 변환하기
     private static List<Integer> getInputString() {
         String userInput = Console.readLine();
         String trimInput = userInput.trim();
