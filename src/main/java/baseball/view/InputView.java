@@ -18,4 +18,10 @@ public class InputView {
         return Integer.parseInt(playerInput);
     }
 
+    public int requestGameCodeInput(){
+        System.out.println(GameMessage.GAME_WIN_MESSAGE);
+        String playerInput = Console.readLine();
+        inputValidator.validateGameCodeInput(playerInput);
+        return Integer.parseInt(playerInput);
+    }
 }
