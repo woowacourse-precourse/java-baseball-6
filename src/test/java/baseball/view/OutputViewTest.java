@@ -81,6 +81,14 @@ class OutputViewTest {
             org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(START_GAME_MESSAGE.getMessage());
         }
 
+        @Test
+        @DisplayName("value가 0일 때 볼이 출력되면 안된다")
+        public void value가_0일_때_볼이_출력되면_안된다() {
+            OutputView.printBallCount(0);
+            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEmpty();
+        }
+
+
 
     }
 
