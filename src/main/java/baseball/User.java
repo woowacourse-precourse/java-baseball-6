@@ -36,24 +36,16 @@ public class User {
 
     public boolean getUserChoice() {
 
-        int choice = 0;
-
-        while (true) {
-            try {
-                String input = Console.readLine();
-                choice = Integer.parseInt(input);
-                if (choice == 1) {
-                    return true;
-                } else if (choice == 2) {
-                    return false;
-
-                } else {
-                    System.out.println("1 또는 2를 입력하세요.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("올바른 숫자를 입력하세요.");
-            }
+        String input = Console.readLine();
+        int choice = Integer.parseInt(input);
+        if (choice == 1) {
+            return true;
+        } else if (choice == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("1또는 2를 입력해야 합니다.");
         }
+
 
     }
 

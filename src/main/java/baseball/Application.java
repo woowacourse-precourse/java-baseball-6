@@ -7,8 +7,11 @@ public class Application {
         while (true) {
             game.startGame();
             if (!game.isRestartGame()) {
-                break;
+                System.out.println("게임 종료");
+                return;
             }
+
+
         }
 
     }

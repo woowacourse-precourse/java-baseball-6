@@ -16,13 +16,9 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomScore = this.computer.getRandomScore();
         while (true) {
-            try {
-                List<Integer> userScore = this.user.getNumberFromUser();
-                if (this.printGameResult(this.compareScores(randomScore, userScore))) {
-                    break;
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+            List<Integer> userScore = this.user.getNumberFromUser();
+            if (this.printGameResult(this.compareScores(randomScore, userScore))) {
+                break;
             }
         }
     }
@@ -58,14 +54,14 @@ public class Game {
             return true;
         } else {
             String message = "";
-            if (strikes > 0) {
-                message += strikes + "스트라이크";
-            }
             if (balls > 0) {
+                message += balls + "볼";
+            }
+            if (strikes > 0) {
                 if (!message.isEmpty()) {
                     message += " ";
                 }
-                message += balls + "볼";
+                message += strikes + "스트라이크";
             }
             if (message.isEmpty()) {
                 message = "낫싱";
