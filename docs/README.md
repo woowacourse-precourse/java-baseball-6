@@ -19,25 +19,42 @@
 
 # 📚 클래스 설계 목록
 
+## ● constant
+
+- Constant : 상수를 관리하는 객체
+
+## ● message
+
+- CountMessage : 카운트 메시지와 관련된 객체
+    - getMessage() : 메시지를 반환하는 함수
+    - toString() : 메시지를 연결해 반환하는 함수
+
+## ● validation
+
+- NumberValidation : 주어진 입력이 올바른지 검증하는 객체
+    - validationAll() : 플레이어가 입력한 값을 전체 검증하는 함수
+    - validateDuplicate() : 중복을 검증하는 함수
+    - validateLength() : 길이를 검증하는 함수
+    - validateRangeAndType() : 1과 9 사이의 수인지 검증하는 함수
+    - validateGameStatus() : 주어진 입력값이 1 또는 2인지 검증하는 함수
+    - validateComputerDuplicate() : 컴퓨터 랜덤 숫자가 중복되었는지 검증하는 함수
+
 ## ● service
 
 - ProgressService : 게임 진행을 돕는 객체
     - resetGame() : 게임을 초기화하는 함수
-    - createComputerNumber() : 컴퓨터의 랜덤 숫자를 생성 및 저장하는 함수
+    - getComputerNumber() : 컴퓨터의 3개의 숫자 모두 중복되지 않을 때까지 생성을 반복하는 함수
+    - createComputerNumber() : 컴퓨터의 랜덤 숫자를 1자리씩 생성하는 함수
     - getResultMessage() : 결과 메시지를 반환하는 함수
     - isGameClear() : 게임 클리어인지 판별하는 함수(3스트라이크인지 확인)
     - getResultGameStatus() : 게임 재시작 또는 종료 여부를 반환하는 함수
-    - checkGameStatus() : 게임 종료 여부를 판별하는 함수
-    - converseStringToListInteger() : String 타입을 Integer 타입의 List로 변환하는 함수
-
+    - checkGameStatus() : 게임 종료 조건을 판별하는 함수
 
 - CountService : 사용자가 입력한 숫자에 대한 볼/스트라이크 카운트를 계산하는 객체
     - resetCount : 저장된 카운트를 초기화하는 함수
     - getResultCount() : 결과 카운트를 반환하는 함수
     - getBallCount() : 볼 카운트를 반환하는 함수
     - getStrikeCount() : 스트라이크 카운트를 반환하는 함수
-    - checkLocateSame() : 컴퓨터의 숫자와 플레이어의 숫자 각각의 자리가 같은지 판별하는 함수
-    - checkLocateDifferent() : 컴퓨터의 숫자와 플레이어의 숫자 각각의 자리가 다른지 판별하는 함수
     - isNothing() : 낫싱인지 판별하는 함수
 
 ## ● controller
@@ -50,32 +67,6 @@
 ## ● view
 
 - InputView : 플레이이로부터 입력을 받기위한 객체
-
-## ● constant
-
-- Constant : 상수를 관리하는 객체
-    - validationAll() : 플레이어가 입력한 값을 전체 검증하는 함수
-
-## ● message
-
-- GameMessage : 게임 진행을 위한 안내 메시지
-    - START_MESSAGE("숫자 야구 게임을 시작합니다.")
-    - INPUT_MESSAGE("숫자를 입력해주세요 : ")
-    - ClEAR_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-    - GAME_STATUS_MESSAGE("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-
-- CountMessage : 카운트와 관련된 메시지
-    - BALL("볼")
-    - STRIKE("스트라이크")
-    - NOTHING("낫싱")
-
-## ● validation
-
-- NumberValidation : 주어진 입력이 올바른지 검증하는 객체
-    - validationAll() : 플레이어가 입력한 값을 전체 검증하는 함수
-    - validateDuplicate() : 중복을 검증하는 함수
-    - validateRangeAndType() : 1과 9 사이의 수인지 검증하는 함수
-    - validateGameStatus() : 주어진 입력값이 1 또는 2인지 검증하는 함수
 
 ---
 
@@ -96,10 +87,10 @@
 - JDK 17 버전에서 실행 가능해야 한다. JDK 17에서 정상적으로 동작하지 않을 경우 0점 처리한다. ✅
 - 프로그램 실행의 시작점은 Application의 main()이다. ✅
 - build.gradle 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다. ✅
-- Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다.
-- 프로그램 종료 시 System.exit()를 호출하지 않는다.
-- 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다. 테스트가 실패할 경우 0점 처리한다.
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다. ✅
+- 프로그램 종료 시 System.exit()를 호출하지 않는다. ✅
+- 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다. 테스트가 실패할 경우 0점 처리한다. ✅
+- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다. ✅
 
 ## 🎯 과제 진행 요구 사항
 
