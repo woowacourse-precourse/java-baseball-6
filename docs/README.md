@@ -8,12 +8,12 @@
 
 - 컴퓨터의 숫자 생성 및 반환하기
 
-### `int userInput()`
+### `int getUserInput()`
 
 - `int userNumber`: 사용자로부터 숫자 입력 받기
 - `return validateNumber`: 사용자로부터 받은 숫자의 유효성 검사
 
-### `int validateNumber(int num)`
+### `int isValidateNumber(int num)`
 
 - 사용자로부터 입력 받은 숫자가 올바른지 검증
 - 올바르지 않은 숫자일 경우 exception 발생
@@ -33,6 +33,9 @@
 
 ### `int getOptionNumber(String num)`
 
-- 새로 시작할지, 종료할지에 따라 각각 1 또는 2를 사용자로부터 입력 받음
-- 1과 2가 아닌 수를 입력 받을 시 exception 발생
+- 게임을 계속하는 것과 관련해서 1과 2가 아닌 수를 입력 받을 시 exception 발생
 - return num
+
+### `boolean continueOrQuit(int optionNumber)`
+
+- getOptionNumber로 검증한 숫자를 바탕으로 게임을 계속할지 중단할지 결정
