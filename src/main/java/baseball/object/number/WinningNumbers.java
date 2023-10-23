@@ -17,6 +17,19 @@ public class WinningNumbers {
     }
 
     public BallCount ballCounting(BaseballNumbers baseballNumbers) {
+        return new BallCount(
+                countingStrikes(baseballNumbers),
+                countingBalls(baseballNumbers));
+    }
+
+    private long countingStrikes(BaseballNumbers baseballNumbers) {
+        return IntStream.range(0, 3)
+                .filter(i -> Objects.equals(
+                        winningNumbers.get(i), baseballNumbers.get().get(i)))
+                .count();
+    }
+
+    private long countingBalls(BaseballNumbers baseballNumbers) {
         long countOfOnlyContains = baseballNumbers.get().stream()
                 .filter(winningNumbers::contains)
                 .count();
@@ -24,9 +37,7 @@ public class WinningNumbers {
                 .filter(i -> Objects.equals(
                         winningNumbers.get(i), baseballNumbers.get().get(i)))
                 .count();
-        long countOfBall = countOfOnlyContains - countOfExactMatches;
-        long countOfStrike = countOfExactMatches;
-        return new BallCount(countOfStrike, countOfBall);
+        return countOfOnlyContains - countOfExactMatches;
     }
 
 }
