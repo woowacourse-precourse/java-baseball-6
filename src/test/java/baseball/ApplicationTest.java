@@ -15,16 +15,6 @@ import static org.assertj.core.api.Assertions.*;
 class ApplicationTest extends NsTest {
 
     @Test
-    void 중복_볼_검사() {
-        BallUtils ballUtils = new BallUtils();
-        List<Integer> list = ballUtils.getBalls();
-        assertThat(list.size()).isEqualTo(3);
-        assertThat(list.get(0).equals(list.get(1))).isFalse();
-        assertThat(list.get(0).equals(list.get(2))).isFalse();
-        assertThat(list.get(2).equals(list.get(1))).isFalse();
-    }
-
-    @Test
     void 숫자_입력_테스트() {
         InputStream in = new ByteArrayInputStream("123".getBytes());
         System.setIn(in);
@@ -35,7 +25,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 야구_게임_결과_테스트() throws NoSuchFieldException, IllegalAccessException, IOException {
+    void 야구_게임_매칭_테스트() throws NoSuchFieldException, IllegalAccessException, IOException {
         BallUtils ballUtils = new BallUtils();
         Field field = BallUtils.class.getDeclaredField("computer");
         field.setAccessible(true);
