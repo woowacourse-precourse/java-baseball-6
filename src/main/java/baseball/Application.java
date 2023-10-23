@@ -40,6 +40,9 @@ public class Application {
                 if (numbers.get(1) == input.charAt(0) - '0' || numbers.get(1) == input.charAt(2) - '0' ) {
                     ball++;
                 }
+                if (numbers.get(2) == input.charAt(0) - '0' || numbers.get(2) == input.charAt(1) - '0' ) {
+                    ball++;
+                }
                 String information = "";
                 if (ball != 0) {
                     information = ball + "볼 ";
