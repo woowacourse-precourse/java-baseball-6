@@ -2,7 +2,6 @@ package baseball.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class InputNumber {
     private static final int NUMBER_OF_DIGITS = 3;
@@ -16,7 +15,7 @@ public class InputNumber {
 
     public void setInputNumber(String playerInput) throws IllegalArgumentException {
         if (!playerInput.matches(INPUT_REGEX_PATTERN)) {
-            throw new IllegalArgumentException("서로 다른 " + NUMBER_OF_DIGITS + "자리의 숫자를 공백, 문자 없이 연속하여 입력해주십시오.");
+            throw new IllegalArgumentException("1부터 9까지 서로 다른 " + NUMBER_OF_DIGITS + "자리의 숫자를 공백, 문자 없이 연속하여 입력해주십시오.");
         }
 
         for (int i = 0; i < playerInput.length(); i++) {
