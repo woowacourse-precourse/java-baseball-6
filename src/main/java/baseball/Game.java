@@ -3,8 +3,6 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Game {
-	private int ball = 0;
-	private int strike = 0;
 	private Computer computer;
 	private Player player;
 
@@ -15,6 +13,12 @@ public class Game {
 	}
 
 	private boolean checkResult() {
+		System.out.println("computer: " + computer.getNumberList());
+		System.out.println("player: " + player.getNumberList());
+
+		int ball = 0;
+		int strike = 0;
+
 		for (int i = 0; i < 3; i++) {
 			if (computer.getNumberList().get(i).equals(player.getNumberList().get(i))) {
 				strike++;
