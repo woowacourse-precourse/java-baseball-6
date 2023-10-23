@@ -16,10 +16,10 @@ public class CompareInput {
         List<Integer> ballCount = new ArrayList<>(List.of(0, 0));
         for (int i = 0; i < digits; i++){
             if (input.get(i).equals(answer.get(i))) {
-                ballCount.set(0, ballCount.get(0) + 1);
+                ballCount.set(1, ballCount.get(1) + 1);
             }
             else if (answer.contains(input.get(i))){
-                ballCount.set(1, ballCount.get(1) + 1);
+                ballCount.set(0, ballCount.get(0) + 1);
             }
         }
         return ballCount;
