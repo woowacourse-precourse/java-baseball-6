@@ -28,11 +28,13 @@ public class ExceptionTest extends NsTest {
         //given
         String test1 = "123";
         String test2 = "111";
+        String test3 = "445";
 
         //when & then
         Assertions.assertDoesNotThrow(() -> Exceptions.validateUniqueNumbers(test1));
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> Exceptions.validateUniqueNumbers(test2));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Exceptions.validateUniqueNumbers(test3));
     }
 
     @Test

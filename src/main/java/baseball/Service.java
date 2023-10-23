@@ -27,7 +27,6 @@ public class Service {
 
     //입력받은 숫자의 오류 점검(중복, 3개 숫자)
     public void validateInput(String userAnswer){
-
         Exceptions.validateNumberLength(userAnswer);
         Exceptions.validateUniqueNumbers(userAnswer);
     }

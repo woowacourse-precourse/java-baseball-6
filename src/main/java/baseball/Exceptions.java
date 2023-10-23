@@ -3,6 +3,7 @@ package baseball;
 import baseball.constants.ExceptionConstants;
 import baseball.constants.GameConstants;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,12 +18,7 @@ public class Exceptions {
 
     //중복된 숫자가 있을 시 오류
     public static void validateUniqueNumbers (String userAnswer) {
-        String[] spiltAnswer = userAnswer.split("");
-        Set<String> uniqueDigits = new HashSet<>();
-        for(int i = 0; i < spiltAnswer.length; i++){
-            uniqueDigits.add(spiltAnswer[i]);
-        }
-        if(uniqueDigits.size() != GameConstants.MAX_NUMBER){
+        if(Arrays.stream(userAnswer.split("")).distinct().count() != GameConstants.MAX_NUMBER){
             throw new IllegalArgumentException(ExceptionConstants.REQUEST_OTHER_3_NUMS);
         }
     }
