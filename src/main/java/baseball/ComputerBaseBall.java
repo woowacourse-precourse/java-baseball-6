@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ComputerBaseBall {
@@ -21,5 +22,9 @@ public class ComputerBaseBall {
       }
     }
     return createBalls;
+  }
+
+  public List<Ball> getBalls() {
+    return Collections.unmodifiableList(balls);
   }
 }
