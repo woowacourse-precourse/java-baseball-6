@@ -30,7 +30,7 @@ public class Application {
             //플레이어가 숫자 3개를 맞췄을 경우 다시 시작하거나 완전히 종료 시킨다(6)
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartAnswer = Console.readLine();
-            if (restartAnswer.equals("0") || restartAnswer.equals("1")) {
+            if (restartAnswer.equals("1") || restartAnswer.equals("2")) {
                 gameStatus = Integer.parseInt(restartAnswer);
             } else {
                 throw new IllegalArgumentException();
