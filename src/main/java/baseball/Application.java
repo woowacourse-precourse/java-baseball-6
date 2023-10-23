@@ -28,12 +28,13 @@ public class Application {
                 strike = compareResult[0];
                 ball = compareResult[1];
 
-                String resultMessage = calculateResult(strike, ball);
+                String resultMessage = makeResultMessage(strike, ball);
 
                 System.out.println(resultMessage);
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
             try {
                 String inputAnswer = readLine();
 
@@ -53,7 +54,7 @@ public class Application {
         }
     }
 
-    static List<Integer> inputNumbers() throws IllegalArgumentException {
+    static List<Integer> inputNumbers() {
 
         List<Integer> my = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
@@ -76,7 +77,7 @@ public class Application {
         return my;
     }
 
-    static String calculateResult(int strike, int ball) {
+    static String makeResultMessage(int strike, int ball) {
 
         String resultMessage = ball + "볼 " + strike + "스트라이크";
 
