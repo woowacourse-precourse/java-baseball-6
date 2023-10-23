@@ -11,7 +11,7 @@ public class GuessNumberValidator {
     }
 
     public static boolean isGuessNumbersValid(String input) {
-        if (isLengthThree(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
+        if (isLengthThree(input) && isNumeric(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
             return true;
         }
         return false;
@@ -24,7 +24,7 @@ public class GuessNumberValidator {
         return true;
     }
 
-    private static boolean isNumber(String input) {
+    private static boolean isNumeric(String input) {
         if (input.chars().anyMatch(c -> !Character.isDigit(c))) {
             throw new IllegalArgumentException(INCLUDE_CHAR_MSG);
         }
