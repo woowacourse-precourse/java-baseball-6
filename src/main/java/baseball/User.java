@@ -39,7 +39,7 @@ public class User {
 
     public static void isNotThreeLength(String str) throws IllegalArgumentException {
         if (str.length() != 3) {
-            throw new IllegalArgumentException("3자리 이상 혹은 이하의 갑을 입력하였습니다.");
+            throw new IllegalArgumentException("3자리 이상 혹은 이하의 값을 입력하였습니다.");
         }
     }
 
