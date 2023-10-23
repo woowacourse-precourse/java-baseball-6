@@ -8,23 +8,29 @@ import java.util.stream.Collectors;
 
 public class User {
 
-    private static final int NUM_COUNT = 3;
-    private static final String REGEX = String.format("^[1-9]{%d}$", NUM_COUNT);
+    public static final String DELIMITER = "";
 
     private final String input;
 
-    public User(String number) {
-        validate(number);
+    public User(String number, Rule rule) {
+        validate(number, rule);
         this.input = number;
     }
 
-    private void validate(String input) {
-        validateFormat(input);
-        validateDuplicate(input);
+    public void validate(String number, Rule rule) {
+        final int numCount = rule.digits();
+        final String regex = String.format("^[1-9]{%d}$", numCount);
+
+        validateInput(number, regex);
     }
 
-    private static void validateFormat(String number) {
-        if (!Pattern.matches(REGEX, number)) {
+    private void validateInput(String number, String regex) {
+        validateFormat(number, regex);
+        validateDuplicate(number);
+    }
+
+    private static void validateFormat(String number, String regex) {
+        if (!Pattern.matches(regex, number)) {
             throw new IllegalArgumentException("잘못된 숫자를 입력하셨습니다.");
         }
     }
@@ -36,7 +42,7 @@ public class User {
     }
 
     private boolean isDuplicated(String number) {
-        String[] numbers = number.split("");
+        String[] numbers = number.split(DELIMITER);
         Set<Integer> duplicateRemovedNumber = Arrays.stream(numbers)
                 .map(Integer::parseInt)
                 .collect(Collectors.toSet());
@@ -55,14 +61,6 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(input);
-    }
-
-    public boolean contains(int number) {
-        return input.contains(String.valueOf(number));
-    }
-
-    public boolean isSamePosition(int number, int index) {
-        return input.charAt(index) == String.valueOf(number).charAt(0);
     }
 
 }
