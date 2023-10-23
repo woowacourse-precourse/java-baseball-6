@@ -15,9 +15,9 @@ public class Game {
 
         String inputValue;
         String targetNumber = NumberFactory.getRandomNumber();
-        System.out.println(targetNumber);
 
         while(true) {
+            System.out.print(INPUT_VALUE.getMessage());
             inputValue = Console.readLine();
             checkNumberValidation(inputValue);
 
