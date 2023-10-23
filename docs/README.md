@@ -48,7 +48,7 @@
     - ~~string은 indexOf()를 사용할 수 있음~~
     - 이중 for문 사용하기
 - [x]  볼: 숫자만 맞는 것, 스트라이크: 숫자도 맞고 자리도 맞고
-- [ ]  [https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/jav](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javㅁ)a  자바 스타일 가이드
+- [https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)  자바 스타일 가이드
     - [x]  테스트 위한 output 관리하는 변수(상수) 생성
     - [x]  메소드로 바꾸기
         
@@ -79,8 +79,8 @@
         - [x]  게임 실행 함수
         - [x]  자바 클래스 분리하기
             
-    - [ ]  새로 생성한 메소드 설명 적기
-    - [ ]  변수 이름 변경
+    - [x]  새로 생성한 메소드 설명 적기
+    - [x]  변수 이름 변경
         
         > https://myeonguni.tistory.com/1596
         > 
@@ -137,6 +137,6 @@
 
 - [x]  제출 전 테스트 가이드 사용
 - [x]  요구 사항에 명시된 출력 값이 나왔는지 확인
-- [ ]  테스트를 위해 정답을 출력하는 **`IS_TEST` 변수 false로 수정하고 제출**
+- [x]  테스트를 위해 정답을 출력하는 **`IS_TEST` 변수 false로 수정하고 제출**
 - [x]  커밋 메시지는 `소문자: 영어 내용` 으로 작성
 - [ ]  [미션 제출 방법](https://github.com/muyaaho/java-baseball-6#-%EB%AF%B8%EC%85%98-%EC%A0%9C%EC%B6%9C-%EB%B0%A9%EB%B2%95) 확인해서 제출, pull & request, 사이트 제출
