@@ -7,57 +7,27 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class Application {
-    public static void main(String[] args) {
-        final String REGEXP_PATTERN_NUMBER = "^[1-9]{3}$";
+    private static final String REGEXP_PATTERN_NUMBER = "^[1-9]{3}$";
 
+    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        StringBuilder sb;
         List<Integer> computer = getRandomNumbers();
 
         while (true) {
-            sb = new StringBuilder();
             System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
+            String userNumbersString = Console.readLine();
 
-            if (!Pattern.matches(REGEXP_PATTERN_NUMBER, input)) {
+            if (!Pattern.matches(REGEXP_PATTERN_NUMBER, userNumbersString)) {
                 throw new IllegalArgumentException("일치하지 않는 입력 방식입니다!");
             }
 
-            System.out.println(input);
+            System.out.println(userNumbersString);
+            Score score = new Score(userNumbersString, computer);
+            score.calculate();
+            String result = score.extractResult();
+            System.out.println(result);
 
-            int ball = 0;
-            int strike = 0;
-
-            for (int i = 0; i < computer.size(); i++) {
-                int num = computer.get(i);
-                int stringIndex = input.indexOf(String.valueOf(num));
-
-                if (stringIndex == i) {
-                    strike += 1;
-                } else if (stringIndex > -1) {
-                    ball += 1;
-                }
-            }
-
-            if (ball > 0) {
-                sb.append(ball).append("볼");
-            }
-
-            if (ball > 0 && strike > 0) {
-                sb.append(" ");
-            }
-
-            if (strike > 0) {
-                sb.append(strike).append("스트라이크");
-            }
-
-            if (sb.isEmpty()) {
-                sb.append("낫싱");
-            }
-
-            System.out.println(sb);
-
-            if (strike == 3) {
+            if (score.getStrike() == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String isClose = Console.readLine();
