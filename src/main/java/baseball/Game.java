@@ -10,10 +10,19 @@ public class Game {
 
     public void startGame() {
         View.printStartGameMessage();
-        List<Integer> answerNumberList = computer.createAnswerNumberList();
     }
 
-    private void compareNumbers(List<Integer> answerNumberList, List<Integer> userNumberList) {
+    private void gamingUtilWin(List<Integer> answerNumberList) {
+        List<Integer> userNumberList;
+        int strike = 0;
+
+        while (strike < 3) {
+            userNumberList = user.getThreeDigitNumberForUser();
+            strike = compareNumbers(answerNumberList, userNumberList);
+        }
+    }
+
+    private int compareNumbers(List<Integer> answerNumberList, List<Integer> userNumberList) {
         int ball = 0;
         int strike = 0;
 
@@ -26,6 +35,8 @@ public class Game {
         }
 
         checkResult(ball, strike);
+
+        return strike;
     }
 
     private void checkResult(int ball, int strike) {
