@@ -2,12 +2,10 @@ package baseball.controller;
 
 import baseball.domain.Number;
 import baseball.domain.Result;
+import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.Objects;
-
-import static baseball.global.GameConfig.GAME_RESTART_FLAG;
 import static baseball.view.OutputView.printStaticNotice;
 import static baseball.view.constants.StaticNotice.GAME_START;
 
@@ -17,7 +15,7 @@ public class Game {
         do {
             Number computerNumber = Number.generateRandomNumbers();
             play(computerNumber);
-        } while (!isRestart());
+        } while (!askRestartOrExit());
     }
 
     private void play(Number computerNumber) {
@@ -31,7 +29,8 @@ public class Game {
         }
     }
 
-    private static boolean isRestart() {
-        return Objects.equals(InputView.askRestartOrExit(), GAME_RESTART_FLAG.toString());
+    private boolean askRestartOrExit() {
+        String input = InputView.askRestartOrExit();
+        return InputValidator.isValidRestartFlag(input);
     }
 }

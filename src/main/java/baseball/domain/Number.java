@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static baseball.global.GameConfig.*;
-import static baseball.validator.NumberValidator.*;
+import static baseball.validator.InputValidator.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Number {

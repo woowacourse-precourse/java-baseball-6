@@ -3,11 +3,33 @@ package baseball.validator;
 
 import baseball.global.exception.BaseballException;
 
+import static baseball.global.GameConfig.EXIT_FLAG;
+import static baseball.global.GameConfig.RESTART_FLAG;
 import static baseball.global.exception.ErrorMessage.*;
 
-public class NumberValidator {
-    protected NumberValidator() {
+public class InputValidator {
+    protected InputValidator() {
     }
+
+    public static boolean isValidRestartFlag(String flag) {
+        validateGameFlag(flag);
+        return flag.equals(RESTART_FLAG.toString());
+    }
+
+    private static void validateGameFlag(final String flag) {
+        if (!isExitFlag(flag) && !isRestartFlag(flag)) {
+            throw BaseballException.of(INVALID_FLAG);
+        }
+    }
+
+    private static boolean isExitFlag(String flag) {
+        return flag.equals(EXIT_FLAG.toString());
+    }
+
+    private static boolean isRestartFlag(String flag) {
+        return flag.equals(RESTART_FLAG.toString());
+    }
+
 
     public static void validateNumberLength(final String number) {
         if (!isValidLength(number)) {
@@ -32,7 +54,7 @@ public class NumberValidator {
             throw BaseballException.of(EMPTY_NUMBER);
         }
     }
-    
+
     private static boolean isEmpty(String number) {
         return number.isEmpty();
     }
