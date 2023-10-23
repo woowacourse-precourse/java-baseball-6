@@ -39,4 +39,21 @@ public class ComputerController {
 			.collect(Collectors.toList());
 	}
 
+	public Game compareNumber(Game computerData, Game playerData) {
+		int strikeCount = 0;
+		int ballCount = 0;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if ((computerData.getGameNumbers().get(i) == playerData.getGameNumbers().get(j)) && (i == j)) {
+					strikeCount++;
+				} else if ((computerData.getGameNumbers().get(i) == playerData.getGameNumbers().get(j)) && (i != j)) {
+					ballCount++;
+				}
+			}
+		}
+
+		playerData.setStrikeCountAndBallCount(strikeCount, ballCount);
+
+		return playerData;
+	}
 }
