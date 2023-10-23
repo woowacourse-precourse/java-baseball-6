@@ -50,53 +50,7 @@ public class ProcessMembers {
 		
     	return list;
 	}
-	/*public List<Integer> getDigits(String input) {
-		
-		int inputNum=Integer.parseInt(input);
-		
-		int first_digit=inputNum/100;
-    	int second_digit=(inputNum%100)/10;
-    	int third_digit=inputNum%10;
-    	
-    	List<Integer> list=new ArrayList<Integer>();
-		
-    	list.add(first_digit);
-    	list.add(second_digit);
-    	list.add(third_digit);
-    	
-    	return list;
-	}*/
-	/*public List<Integer> getDigits(int first,int second,int third) {
-    	
-    	List<Integer> list=new ArrayList<Integer>();
-		
-    	list.add(first);
-    	list.add(second);
-    	list.add(third);
-    	
-    	return list;
-	}*/
-	
-	/*public String inspection(List<Integer> computer,String input) {
 
-		List<Integer> list=getDigits(input);
-		int strike=0,ball=0;
-		
-		for(int i=0;i<computer.size();i++) {
-			
-			if(computer.get(i)==list.get(i)) {
-				strike++;
-			}
-			if(computer.contains(list.get(i))) {
-				ball++;
-			}
-		}
-		ball=ball-strike;
-		
-		String result=((ball!=0?ball+"볼 ":"")+(strike!=0?strike+"스트라이크":"")).equals("")?"낫싱":(ball!=0?ball+"볼 ":"")+(strike!=0?strike+"스트라이크":"");
-		
-		return result;
-	}*/
 	public String inspection(List<Integer> computer,String input) {
 
 		int strike=0,ball=0;

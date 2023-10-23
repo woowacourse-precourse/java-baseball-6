@@ -7,7 +7,7 @@ public class ReplayDecision {
 	public void valueOutOfBound() {
 		
 		//try {
-			throw new IllegalArgumentException("1,2중 하나만 입력해주세요");
+		throw new IllegalArgumentException("1,2중 하나만 입력해주세요");
 			
 		//} catch(IllegalArgumentException e) {
 			//System.out.println(e.toString());
