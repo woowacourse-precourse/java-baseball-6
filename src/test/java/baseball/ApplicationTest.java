@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -20,6 +22,17 @@ class ApplicationTest extends NsTest {
         assertThat(list.get(0).equals(list.get(1))).isFalse();
         assertThat(list.get(0).equals(list.get(2))).isFalse();
         assertThat(list.get(2).equals(list.get(1))).isFalse();
+    }
+
+    @Test
+    void 숫자_입력_테스트() {
+        DisplayBoard board = new DisplayBoard();
+        InputStream in = new ByteArrayInputStream("123".getBytes());
+        System.setIn(in);
+        List<Integer> list = board.inputNumbers();
+        assertThat(list.get(0)).isEqualTo(1);
+        assertThat(list.get(1)).isEqualTo(2);
+        assertThat(list.get(2)).isEqualTo(3);
     }
 
     @Test
