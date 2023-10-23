@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.service.Game;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,8 +13,7 @@ public class Application {
 
         while(!exitFlag) {
 
-            Game game = new Game();
-            game.play();
+            Game.play();
 
             OutputView.askExit();
             exitFlag = InputView.askExit();
