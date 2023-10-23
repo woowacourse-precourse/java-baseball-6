@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.legacy.LegacyApplication;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +30,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        LegacyApplication.main(new String[]{});
+        Application.main(new String[]{});
     }
 }
