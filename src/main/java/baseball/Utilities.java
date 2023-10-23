@@ -10,5 +10,9 @@ public class Utilities {
         return str.length();
     }
 
+    public static String[] stringSplitToCharactersArray(String str) {
+        return str.split("");
+    }
+
 
 }
