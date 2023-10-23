@@ -33,6 +33,6 @@ public class Computer {
     }
 
     public void initScore() {
-        score.initScore();
+        score.init();
     }
 }

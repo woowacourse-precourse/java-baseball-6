@@ -17,7 +17,7 @@ public class Score {
         this.ball = INIT_BALL_SCORE;
     }
 
-    public void initScore() {
+    public void init() {
         this.strike = INIT_STRIKE_SCORE;
         this.ball = INIT_BALL_SCORE;
     }
