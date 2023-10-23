@@ -10,7 +10,7 @@ public class WinningNumbersGenerator implements NumbersGenerator {
     public List<Integer> generate() {
         return Stream.generate(Randoms::getSingleNumber)
                 .distinct()
-                .limit(MAX_SIZE)
+                .limit(NUMBERS_SIZE)
                 .toList();
     }
 

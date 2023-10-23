@@ -11,10 +11,10 @@ public class BaseballNumbersGenerator implements NumbersGenerator {
         Output.console("숫자를 입력해주세요 : ");
 
         List<Integer> numbers = Input.consoleNumbers();
-        if (numbers.size() != MAX_SIZE) {
+        if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException("야구숫자는 세 자리여야 합니다.");
         }
-        if (numbers.stream().distinct().count() != MAX_SIZE) {
+        if (numbers.stream().distinct().count() != NUMBERS_SIZE) {
             throw new IllegalArgumentException("입력값은 중복되지 않아야 합니다.");
         }
         if (numbers.stream().anyMatch(number -> number.compareTo(0) < 0)) {

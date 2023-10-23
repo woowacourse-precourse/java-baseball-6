@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface NumbersGenerator {
 
-    int MAX_SIZE = 3;
+    int NUMBERS_SIZE = 3;
 
     List<Integer> generate();
 
