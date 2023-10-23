@@ -13,4 +13,15 @@ public class Hint {
         this.strike = computer.countIdentity(player);
         this.ball = computer.countEquality(player);
     }
+
+    public String generateHint() {
+        if (strike != 0 && ball != 0) {
+            return ball + "볼 " + strike + "스트라이크";
+        } else if (strike != 0) {
+            return strike + "스트라이크";
+        } else if (strike != 0) {
+            return ball + "볼";
+        }
+        return "낫싱";
+    }
 }
