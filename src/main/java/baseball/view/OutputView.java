@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.domain.GameResult;
 import java.util.Map;
 
 public class OutputView {
@@ -15,9 +16,9 @@ public class OutputView {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void printBaseBallResults(Map<String, Integer> resultStrike) {
-        int strikeCount = resultStrike.get("strike");
-        int ballCount = resultStrike.get("ball");
+    public static void printBaseBallResults(GameResult result) {
+        int strikeCount = result.getStrikeCnt();
+        int ballCount = result.getBallCnt();
 
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
@@ -38,10 +39,5 @@ public class OutputView {
 
     public static void printAskRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
-
-    public static void printError(String message) {
-        System.out.println(message);
     }
 }

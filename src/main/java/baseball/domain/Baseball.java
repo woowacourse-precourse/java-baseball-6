@@ -1,25 +1,22 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Baseball {
-
-    private ArrayList<Integer> computerNumber;
-    private final int MAKE_NUMBER_SIZE_MIN = 3;
-    private final int RANDOM_NUMBER_MIN_RAGE = 1;
-    private final int RANDOM_NUMBER_MAX_RAGE = 9;
-    private final String STRIKE = "strike";
-    private final String BALL = "ball";
-
+    private final List<Integer> computerNumber;
+    private static final int MAKE_NUMBER_SIZE_MIN = 3;
+    private static final int RANDOM_NUMBER_MIN_RAGE = 1;
+    private static final int RANDOM_NUMBER_MAX_RAGE = 9;
 
     public Baseball() {
         computerNumber = generateComputerNumber();
     }
 
-    public ArrayList<Integer> generateComputerNumber() {
-        ArrayList<Integer> arrayRandomNumber = new ArrayList<>();
+    public List<Integer> generateComputerNumber() {
+        List<Integer> arrayRandomNumber = new ArrayList<>();
         while (arrayRandomNumber.size() < MAKE_NUMBER_SIZE_MIN) {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN_RAGE, RANDOM_NUMBER_MAX_RAGE);
             if (!arrayRandomNumber.contains(randomNumber)) {
@@ -29,14 +26,11 @@ public class Baseball {
         return arrayRandomNumber;
     }
 
-    public Map<String, Integer> checkToStrikeAndBall(List<Integer> insertUserNumber) {
+    public GameResult checkToStrikeAndBall(List<Integer> insertUserNumber) {
         int strikeCount = checkStrike(insertUserNumber);
         int ballCount = checkBall(insertUserNumber);
 
-        Map<String, Integer> result = new HashMap<>();
-        result.put(STRIKE, strikeCount);
-        result.put(BALL, ballCount);
-        return result;
+        return new GameResult(strikeCount, ballCount);
     }
 
     private int checkStrike(List<Integer> insertUserNumber) {
@@ -44,30 +38,21 @@ public class Baseball {
         for (int i = 0; i < insertUserNumber.size(); i++) {
             int currentComputerNumber = computerNumber.get(i);
             int currentUserNumber = insertUserNumber.get(i);
-            if (checkStrike(currentComputerNumber, currentUserNumber)) {
+            if (Objects.equals(currentComputerNumber, currentUserNumber)) {
                 strikeCount++;
             }
         }
         return strikeCount;
     }
 
-    private boolean checkStrike(int computerNumber, int userNumber) {
-        return Objects.equals(computerNumber, userNumber);
-    }
-
     private int checkBall(List<Integer> insertUserNumber) {
         int ballCount = 0;
-        for (int i = 0; i < insertUserNumber.size(); i++) {
-            int currentComputerNumber = computerNumber.get(i);
-            int currentUserNumber = insertUserNumber.get(i);
-            if (!checkStrike(currentComputerNumber, currentUserNumber) && computerNumber.contains(currentUserNumber)) {
+        for (int currentUserNumber : insertUserNumber) {
+            if (computerNumber.contains(currentUserNumber)) {
                 ballCount++;
             }
         }
-        return ballCount;
+        return ballCount - checkStrike(insertUserNumber);
     }
 
-    public ArrayList<Integer> getComputerNumber() {
-        return computerNumber;
-    }
 }
