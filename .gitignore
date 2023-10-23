@@ -1,5 +1,6 @@
 HELP.md
 .gradle
+intellij-java-google-style.xml
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
