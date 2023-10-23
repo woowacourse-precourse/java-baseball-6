@@ -2,20 +2,19 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameProcessor {
 
     private static final int INITIAL_RANDOM_NUMBER = 1;
     private static final int LAST_RANDOM_NUMBER = 9;
-    private static final int DIGIT_SIZE = 3;
+    private static final int DIGIT_SIZE_LIMIT = 3;
 
     private List<String> generateRandomNumberList(Data data) {
         List<String> randomNumberList = data.getRandomNumberList();
 
         if (randomNumberList.isEmpty()) {
-            for (int i = 0; i < DIGIT_SIZE; i++) {
+            for (int i = 0; i < DIGIT_SIZE_LIMIT; i++) {
                 int randomNumber = Randoms.pickNumberInRange(INITIAL_RANDOM_NUMBER,
                         LAST_RANDOM_NUMBER);
                 randomNumberList.add(String.valueOf(randomNumber));
@@ -30,31 +29,19 @@ public class GameProcessor {
 
         String userNumberString = data.getUserAnswerNumber();
 
-        for (int i = 0; i < DIGIT_SIZE; i++) {
+        for (int i = 0; i < DIGIT_SIZE_LIMIT; i++) {
             char digitChar = userNumberString.charAt(i);
             userNumberList.add(String.valueOf(digitChar));
         }
         return userNumberList;
     }
 
-    private String calculateStrike(List<String> userNumberList,
-            List<String> randomNumberList) {
-        int strike = 0;
-
-        for (int i = 0; i < DIGIT_SIZE; i++) {
-            if (userNumberList.get(i).equals(randomNumberList.get(i))) {
-                strike++;
-            }
-        }
-        return String.valueOf(strike);
-    }
-
     private String calculateBall(List<String> userNumberList,
             List<String> randomNumberList) {
         int ball = 0;
 
-        for (int i = 0; i < DIGIT_SIZE; i++) {
-            for (int j = 0; j < DIGIT_SIZE; j++) {
+        for (int i = 0; i < DIGIT_SIZE_LIMIT; i++) {
+            for (int j = 0; j < DIGIT_SIZE_LIMIT; j++) {
                 if (userNumberList.get(i).equals(randomNumberList.get(j))) {
                     ball++;
                     break;
@@ -62,6 +49,18 @@ public class GameProcessor {
             }
         }
         return String.valueOf(ball);
+    }
+
+    private String calculateStrike(List<String> userNumberList,
+            List<String> randomNumberList) {
+        int strike = 0;
+
+        for (int i = 0; i < DIGIT_SIZE_LIMIT; i++) {
+            if (userNumberList.get(i).equals(randomNumberList.get(i))) {
+                strike++;
+            }
+        }
+        return String.valueOf(strike);
     }
 
     private List<String> calculateStrikeBall(Data data) {
