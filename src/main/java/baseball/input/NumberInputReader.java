@@ -8,4 +8,6 @@ package baseball.input;
 public interface NumberInputReader {
   int[] readInput();
 
+  int readRestartChoiceInput();
+
 }

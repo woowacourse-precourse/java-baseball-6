@@ -21,6 +21,11 @@ public class UserNumberInputReader implements NumberInputReader{
     return convertToIntArray(Console.readLine());
   }
 
+  @Override
+  public int readRestartChoiceInput() {
+    return Integer.parseInt(Console.readLine());
+  }
+
   private int[] convertToIntArray(String number) {
     int[] result = new int[baseballGameProperty.digit()];
 

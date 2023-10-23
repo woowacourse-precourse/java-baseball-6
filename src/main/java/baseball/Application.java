@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.legacy.game.GameManager;
+import baseball.gamemanager.GameManager;
 
 public class Application {
   public static void main(String[] args) {
@@ -37,7 +37,22 @@ public class Application {
      * 5. 출력 방식이 바뀐다면?
      */
 
+    GameManager gameManager = new GameManager();
 
+    gameManager.start();
+
+    while(true) {
+      gameManager.requestUserInput();
+      if (!gameManager.isThreeStrike()) {
+        continue;
+      }
+
+      if (gameManager.requestGameRestartChoice() == 2) {
+        break;
+      }
+
+      gameManager.restart();
+    }
 
   }
 
