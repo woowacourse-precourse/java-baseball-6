@@ -19,6 +19,7 @@
 package model;
 
 import java.util.List;
+import java.util.Objects;
 import vo.AnswerBall;
 import vo.ResultBall;
 import vo.UserBall;
@@ -32,7 +33,7 @@ public class Result {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (answer.get(i) == user.get(i)) {
+            if (Objects.equals(answer.get(i), user.get(i))) {
                 strike++;
             } else if (user.contains(answer.get(i))) {
                 ball++;
