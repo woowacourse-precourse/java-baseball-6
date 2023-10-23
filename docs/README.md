@@ -99,10 +99,10 @@
 
 # 클래스 구성
 1. **도메인 모델 클래스**:
-    - **`Ball`**: 게임에서 사용될 볼 객체를 나타내는 레코드 - number(Integer)
-    - **`Balls`**: 볼 객체의 집합을 나타내는 클래스 - balls(List<Ball>)
-    - **`Game`**: 게임 상태를 나타내는 클래스 - computerBalls(balls), isGameOver(boolean)
-    - **`GameResult`**: 게임 결과를 나타내는 레코드 - balls(int), strikes(int)
+    - **`Baseball`**: 게임에서 사용될 볼 객체를 나타내는 레코드 - number(Integer)
+    - **`Baseballs`**: 볼 객체의 집합을 나타내는 클래스 - baseballs(List<Ball>)
+    - **`Game`**: 게임 상태를 나타내는 클래스 - computerBaseballs(baseballs), isGameOver(boolean)
+    - **`GameResult`**: 게임 결과를 나타내는 레코드 - baseballs(int), strikes(int)
 2. **서비스 레이어 클래스**:
     - **`GameService`**: 게임 관련 서비스를 다루는 클래스 (게임 생성, 랜덤 공 하고 플레이어 공 비교, 게임 결과 출력, 게임 종료 후 재 시작 여부 판단)
     - **`BallGeneratorService`**: 볼을 생성하는 서비스를 다루는 클래스 (랜덤 공 생성, 플레이어 입력을 바탕으로 볼 생성)
@@ -111,3 +111,5 @@
 4. **뷰 클래스**:
     - **`InputView`**: 사용자 입력을 처리하는 뷰 클래스
     - **`OutputView`**: 게임 결과 출력을 담당하는 뷰 클래스
+5. **validator**:
+    - **`BaseballsValidator`**: Baseball, Baseballs 예외 처리 모음
