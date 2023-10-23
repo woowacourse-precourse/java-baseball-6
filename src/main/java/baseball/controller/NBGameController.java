@@ -10,9 +10,25 @@ import java.util.List;
 import java.util.Map;
 
 public class NBGameController {
-    public void start() {
-        InputView in = new InputView();
-        OutputView out = new OutputView();
+
+    private InputView in;
+    private OutputView out;
+    private NumberValidation numberValidation;
+    private NumberTypeConvertor numberTypeConvertor;
+
+    private NBGameController() {
+        in = new InputView();
+        out = new OutputView();
+        numberValidation = new NumberValidation();
+        numberTypeConvertor = new NumberTypeConvertor();
+        start();
+    }
+
+    public static void run() {
+        new NBGameController();
+    }
+
+    private void start() {
         // 게임 시작 메세지 출력하기
         out.displayStartMessage();
 
@@ -27,11 +43,9 @@ public class NBGameController {
             String user = in.inputStringNumber();
 
             // 숫자 검증하기
-            NumberValidation numberValidation = new NumberValidation();
             numberValidation.validateNumber(user);
 
             // 숫자 타입 변경하기
-            NumberTypeConvertor numberTypeConvertor = new NumberTypeConvertor();
             List<Integer> userIntList = numberTypeConvertor.toListInteger(user);
 
             // 숫자 야구 시작하기
@@ -45,6 +59,7 @@ public class NBGameController {
             // update strike
             strike = pitched.get("strike");
         }
+        // 게임 종료 메세지 출력하기
         out.displayEndMessage();
     }
 
