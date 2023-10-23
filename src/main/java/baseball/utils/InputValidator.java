@@ -36,8 +36,8 @@ public class InputValidator {
     문자열에 대한 검증을 하는 함수들
     문자열의 길이, 중복 문자는 없는지, 재시작 입력이 올바른지 검증
     */
-    public static void validateAnswerLength(String userAnswer){
-        if (userAnswer.length() != ANSWER_LENGTH)
+    public static void validateInputLength(String userInput, int length){
+        if (userInput.length() != length)
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
     }
 
@@ -50,11 +50,8 @@ public class InputValidator {
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
     }
 
-    public static void validateRestartInput(String userInput){
-        String restart = Integer.toString(WANNA_KEEP_PLAYING);
-        String end = Integer.toString(WANNA_END);
-
-        if (!userInput.equals(restart) && !userInput.equals(end))
+    public static void validateRestartInput(int userInput){
+        if (userInput != WANNA_KEEP_PLAYING && userInput != WANNA_END)
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 1 혹은 2만 입력하십시오. 프로그램을 종료합니다.");
     }
 
