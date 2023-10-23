@@ -1,5 +1,8 @@
 package baseball.model;
 
+import static baseball.ErrorMessage.INVALID_INPUT;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -45,8 +48,11 @@ class GameNumberTest {
         GameContinueNumber gameNumber = GameContinueNumber.createDefault();
 
         // when & then
-        assertThrows(IllegalArgumentException.class, () ->
-            gameNumber.changeNumber("12")
-        );
+        assertAll(() -> {
+            Throwable exception = assertThrows(IllegalArgumentException.class, () ->
+                gameNumber.changeNumber("12")
+            );
+            assertEquals(INVALID_INPUT.getMessage(), exception.getMessage());
+        });
     }
 }
