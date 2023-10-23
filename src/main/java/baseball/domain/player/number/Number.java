@@ -7,7 +7,7 @@ public class Number {
     private final static int MAX_NUMBER = 9;
     private int number;
 
-    public Number(int number) {
+    private Number(int number) {
         this.number = number;
     }
 

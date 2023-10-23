@@ -1,6 +1,6 @@
-package baseball.domain.player;
+package baseball.domain.player.number;
 
-import baseball.domain.player.number.Number;
+import baseball.exception.player.InputSizeException;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,7 +25,7 @@ public class Player {
 
     private static void checkInputSize(int size) {
         if (size > BASEBALL_NUMBERS_LIMIT_SIZE) {
-            throw new IllegalArgumentException("3개 이상의 공이 입력될 수 없습니다.");
+            throw new InputSizeException();
         }
     }
     private static void checkForDuplicateNumbers(List<Integer> inputNumbers) {

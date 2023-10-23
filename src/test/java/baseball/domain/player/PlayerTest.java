@@ -1,5 +1,6 @@
 package baseball.domain.player;
 
+import baseball.domain.player.number.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +19,8 @@ class PlayerTest {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Player.createByIntegerNumbers(input))
-                .withMessageMatching("3개 이상 입력될 수 없습니다.");
+                .withMessageMatching("3개 이상의 공이 입력될 수 없습니다.");
     }
-
     @Test
     @DisplayName("중복된 숫자가 입력될 경우 Exception이 발생해야 한다.")
     public void checkExceptionForDuplicateNumbers() {
