@@ -9,8 +9,12 @@ public class BaseballService {
     public static void gameStart(){
 
         InputView.getStartMessage();
-        
+
+        String userNumber = InputView.userInputNumber();
+
     }
+
+
     private static void gamePlay(){
 
 

@@ -12,6 +12,35 @@ public class InputView {
         System.out.println(START_MESSAGE);
     }
 
+    public static String userInputNumber(){
+        System.out.print(USER_INPUT_MESSAGE);
+
+        try{
+            String input = Console.readLine();
+
+            checkInput(input);
+
+            return input;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
+    public static void checkInput(String input){
+
+        checkInputLength(input);
+
+
+
+
+    }
+
+    public static void checkInputLength(String input){
+
+        if(input.length() !=3){
+            throw new IllegalArgumentException("길이가 너무 짧습니다!");
+        }
+    }
 
 
 }
