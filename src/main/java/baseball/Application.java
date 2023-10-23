@@ -18,7 +18,6 @@ public class Application {
         int[] comNums = computer.setRandomNums();
 
         while(true) {
-            System.out.println(Arrays.toString(comNums));
             printGameStartMsg();
 
             int[] userNums = user.setUserNum(Console.readLine());
