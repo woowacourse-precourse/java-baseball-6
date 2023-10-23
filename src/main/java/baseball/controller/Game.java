@@ -4,13 +4,13 @@ import static baseball.constant.Message.GAME_START;
 import static baseball.constant.Message.INSERT_END_INPUT;
 import static baseball.constant.Message.INSERT_GAME_INPUT;
 
-import baseball.service.IOService;
 import baseball.dto.NumbersScoreDto;
 import baseball.model.Computer;
 import baseball.model.EndInput;
 import baseball.model.GameInput;
 import baseball.model.Numbers;
 import baseball.model.Score;
+import baseball.service.IOService;
 
 public class Game {
     private final IOService ioService;
