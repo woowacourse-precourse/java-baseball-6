@@ -7,6 +7,7 @@ import static baseball.utils.BaseballNumberConstants.START_RANGE;
 import static java.util.Arrays.stream;
 
 import baseball.modules.score.BaseBallScoreType;
+import baseball.modules.score.ScoreType;
 import baseball.utils.ListUtils;
 import baseball.utils.NumberUtils;
 import baseball.utils.StringUtils;
@@ -59,7 +60,7 @@ public abstract class BaseballPlayer implements Player{
     }
 
     @Override
-    public Map<BaseBallScoreType, Integer> compare(final Player player) {
+    public Map<? extends ScoreType, Integer> compare(final Player player) {
         Map<BaseBallScoreType, Integer> score = getInitScore();
 
         final List<Integer> playerNumbers = player.getNumbers();
@@ -93,5 +94,12 @@ public abstract class BaseballPlayer implements Player{
     @Override
     public int hashCode() {
         return Objects.hash(numbers);
+    }
+
+    @Override
+    public String toString() {
+        return "BaseballPlayer{" +
+                "numbers=" + numbers +
+                '}';
     }
 }

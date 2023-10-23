@@ -1,11 +1,11 @@
 package baseball.modules.player;
 
-import baseball.modules.score.BaseBallScoreType;
+import baseball.modules.score.ScoreType;
 import java.util.List;
 import java.util.Map;
 
 public interface Player {
     List<Integer> getNumbers();
 
-    Map<BaseBallScoreType, Integer> compare(final Player player);
+    Map<? extends ScoreType, Integer> compare(final Player player);
 }

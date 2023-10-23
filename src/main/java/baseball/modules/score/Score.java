@@ -7,6 +7,6 @@ public interface Score {
 
     Score calculate(final Player computer, final Player human);
 
-    Map<BaseBallScoreType, Integer> getScore();
+    Map<? extends ScoreType, Integer> getScore();
 
 }

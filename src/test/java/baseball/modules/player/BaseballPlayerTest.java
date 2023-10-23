@@ -13,8 +13,14 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @Nested
-@DisplayName("User Input - BaseBall Number")
-class BaseballInputTest {
+@DisplayName("[Player Baseball Input]")
+class BaseballPlayerTest {
+
+    @Test
+    @DisplayName("컴퓨터 생성 테스트")
+    public void checkValidationComputer_Success() {
+        assertThat(new Computer("123")).isEqualTo(new Computer("123"));
+    }
 
     @Test
     @DisplayName("사용자가 입력 양식에 맞게 입력을 했을 경우")

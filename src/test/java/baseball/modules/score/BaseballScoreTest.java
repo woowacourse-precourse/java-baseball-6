@@ -9,10 +9,13 @@ import baseball.modules.player.Human;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@Nested
+@DisplayName("[Baseball Score]")
 class BaseballScoreTest {
 
     @ParameterizedTest
@@ -38,10 +41,10 @@ class BaseballScoreTest {
     @MethodSource("score2Strike")
     @DisplayName("스코어 테스트 - 2 스트라이크")
     public void scoreTest_2Strike(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(2);
         assertThat(score.get(BALL)).isEqualTo(0);
     }
@@ -58,10 +61,9 @@ class BaseballScoreTest {
     @MethodSource("score1Strike")
     @DisplayName("스코어 테스트 - 1 스트라이크")
     public void scoreTest_1Strike(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(1);
         assertThat(score.get(BALL)).isEqualTo(0);
     }
@@ -78,10 +80,9 @@ class BaseballScoreTest {
     @MethodSource("score1Strike2Ball")
     @DisplayName("스코어 테스트 - 1 스트라이크 2 볼")
     public void scoreTest_1Strike2Ball(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(1);
         assertThat(score.get(BALL)).isEqualTo(2);
     }
@@ -98,10 +99,9 @@ class BaseballScoreTest {
     @MethodSource("score1Strike1Ball")
     @DisplayName("스코어 테스트 - 1 스트라이크 1 볼")
     public void scoreTest_1Strike1Ball(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(1);
         assertThat(score.get(BALL)).isEqualTo(1);
     }
@@ -118,10 +118,9 @@ class BaseballScoreTest {
     @MethodSource("score0Strike1Ball")
     @DisplayName("스코어 테스트 - 0 스트라이크 1 볼")
     public void scoreTest_0Strike1Ball(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(0);
         assertThat(score.get(BALL)).isEqualTo(1);
     }
@@ -138,10 +137,9 @@ class BaseballScoreTest {
     @MethodSource("score0Strike2Ball")
     @DisplayName("스코어 테스트 - 0 스트라이크 2 볼")
     public void scoreTest_0Strike2Ball(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(0);
         assertThat(score.get(BALL)).isEqualTo(2);
     }
@@ -159,10 +157,9 @@ class BaseballScoreTest {
     @MethodSource("score0Strike3Ball")
     @DisplayName("스코어 테스트 - 0 스트라이크 3 볼")
     public void scoreTest_0Strike3Ball(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(0);
         assertThat(score.get(BALL)).isEqualTo(3);
     }
@@ -179,10 +176,9 @@ class BaseballScoreTest {
     @MethodSource("score0Strike0Ball")
     @DisplayName("스코어 테스트 - 0 스트라이크 0 볼")
     public void scoreTest_0Strike0Ball(final String computer, final String user) {
-        Map<BaseBallScoreType, Integer> score =
-                new BaseballScore()
-                        .calculate(new Computer(computer), new Human(user))
-                        .getScore();
+        Map<? extends ScoreType, Integer> score = new BaseballScore()
+                .calculate(new Computer(computer), new Human(user))
+                .getScore();
         assertThat(score.get(STRIKE)).isEqualTo(0);
         assertThat(score.get(BALL)).isEqualTo(0);
     }
