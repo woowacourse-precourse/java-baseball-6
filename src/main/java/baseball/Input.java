@@ -1,7 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Input {
@@ -10,7 +12,7 @@ public class Input {
         return covertStringToIntList(Console.readLine());
     }
 
-    public List<Integer> covertStringToIntList(String input) {
+    private List<Integer> covertStringToIntList(String input) {
         input = input.replaceAll("\\s", "");
 
         validateNumeric(input);
@@ -21,9 +23,7 @@ public class Input {
                 .boxed()
                 .collect(Collectors.toList());
 
-        if (result.size() != GameConstants.NUM_DIGITS) {
-            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야됩니다. ");
-        }
+        validateNoDuplicated(result);
 
         return result;
     }
@@ -37,6 +37,13 @@ public class Input {
     private void validateLength(String input) {
         if (input.length() != GameConstants.NUM_DIGITS) {
             throw new IllegalArgumentException(GameConstants.NUM_DIGITS + "자리의 숫자가 아닙니다.");
+        }
+    }
+
+    private void validateNoDuplicated(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야됩니다.");
         }
     }
 
