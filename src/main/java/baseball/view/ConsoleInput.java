@@ -12,11 +12,7 @@ public class ConsoleInput implements Input {
 
     @Override
     public String getRestartCode() {
-        String input = readLine();
-        if (input.equals("1") || input.equals("2")) {
-            return input;
-        }
-        throw new IllegalArgumentException("잘못된 코드를 입력하셨습니다.");
+        return readLine();
     }
 
 }
