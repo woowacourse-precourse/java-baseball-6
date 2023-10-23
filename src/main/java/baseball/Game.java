@@ -61,7 +61,7 @@ public class Game {
 
     private void isValid(String input) {
         if (!input.matches("[0-9]+"))       // 숫자가 아니면
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         if (input.length() != 3)                // 숫자 3개가 아니면
             throw new IllegalArgumentException();
     }

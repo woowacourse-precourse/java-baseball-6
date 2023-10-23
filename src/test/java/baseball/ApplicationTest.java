@@ -28,6 +28,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_숫자가_아닐때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("잘못된값"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
