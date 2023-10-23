@@ -3,6 +3,7 @@
 - 컴퓨터 : 1~9 수 랜덤 생성
 - 사용자 입력에 따라 결과 출력
   (스트라이크 / 볼 / 낫싱)
+<<<<<<< HEAD
 ```java
 import camp.nextstep.edu.missionutils;
 ```
@@ -46,4 +47,5 @@ import camp.nextstep.edu.missionutils;
 ### *Contoller*
 #### : 모델과 뷰의 중재자 담당
 - [ ] (입력값과 정답 숫자 비교) 클래스
+
 
