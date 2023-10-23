@@ -42,4 +42,38 @@ public class Application {
             uniqueCharNumbers.add(charNumber);
         }
     }
+
+    private static boolean compareNumber(List<Integer> computerNumbers, String playerNumbers) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i=0; i<playerNumbers.length(); i++) {
+            int playerNumber = playerNumbers.charAt(i) - 48;
+            int computerNumber = computerNumbers.get(i);
+            if (playerNumber == computerNumber) {
+                strikeCount += 1;
+            }
+            if (playerNumber != computerNumber && computerNumbers.contains(playerNumber)) {
+                ballCount += 1;
+            }
+        }
+
+        if (strikeCount != 0 && ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
+        }
+        if (strikeCount == 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼");
+        }
+        if (strikeCount != 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        }
+
+        if(strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        return true;
+    }
 }
