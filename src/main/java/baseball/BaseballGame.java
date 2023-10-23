@@ -25,7 +25,7 @@ public class BaseballGame implements Game{
             if (isFinished()) {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String inputString = readLine();
-                int option = getOptionNumber(inputString);
+                int option = checkOptionNumber(inputString);
                 if (isContinue(option)){
                     answerNumber = generateAnswerNumber();
                     setFinish(false);
@@ -97,28 +97,11 @@ public class BaseballGame implements Game{
     }
 
     private int inputNumber() {
-        // 사용자로부터 숫자 입력 받기
-        // checkNumber()으로 검증
+        // 사용자로부터 올바른 숫자 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = readLine();
-        return checkNumber(inputString);
+        return checkInputNumber(inputString);
     }
-
-    private int checkNumber(String inputString) {
-        int number;
-        // int로 파싱 불가능하면 예외 발생
-        try {
-            number = Integer.parseInt(inputString);
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
-        // 사용자 인풋이 3자리가 아니거나, "0"이 포함되거나, 동일 숫자 존재시 예외 발생
-        if (inputString.length() != 3 || inputString.contains("0") || isDuplicated(inputString)) {
-            throw new IllegalArgumentException();
-        }
-        return number;
-    }
-
 
     private boolean isContinue(int option) {
         if (option == 1) {
@@ -128,14 +111,6 @@ public class BaseballGame implements Game{
             return false;
         }
         throw new IllegalArgumentException();
-    }
-
-    // 사용자 입력 문자열로부터 옵션 선택 번호 검증
-    private int getOptionNumber(String inputString) {
-        if(!inputString.equals("1") && !inputString.equals("2")){
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(inputString);
     }
 
     private int generateAnswerNumber() {
@@ -152,15 +127,61 @@ public class BaseballGame implements Game{
         return Integer.parseInt(sb.toString());
     }
 
-    // 사용자 인풋값에서 중복 숫자가 있는지 검사하는 기능
-    private boolean isDuplicated(String numberString) {
+    // 고민: 예외를 어디서 catch해야 할까? 나는 여기서 다 해야 한다고 생각한다. 결국 모두 인풋값 검증시 발생한 예외니까.
+    private int checkInputNumber(String inputString) {
+        int number;
+        try {
+            // 검증1: int로 파싱 가능해야 한다.
+            number = getNumber(inputString);
+            // 검증1: 사용자 인풋이 3자리여야 한다.
+            checkInputLength(inputString);
+            // 검증2: "0"이 포함되지 않아야 한다.
+            checkInvalidNumber(inputString);
+            // 검증3: 동일 숫자 존재하지 않아야 한다.
+            checkDuplicated(inputString);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(String.format("[숫자 입력 오류] %s", e.getMessage()));
+        }
+        return number;
+    }
+
+    private int getNumber(String inputString) throws IllegalArgumentException {
+        int number;
+        try {
+            number = Integer.parseInt(inputString);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+        }
+        return number;
+    }
+
+    private void checkInputLength(String inputString) throws IllegalArgumentException {
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("세 자리 숫자를 입력해야 합니다.");
+        }
+    }
+
+    private void checkInvalidNumber(String inputString) throws IllegalArgumentException {
+        if (inputString.contains("0")){
+            throw new IllegalArgumentException("0은 포함할 수 없습니다.");
+        }
+    }
+    
+    private void checkDuplicated(String numberString) throws IllegalArgumentException {
         Set<Character> numberSet = new HashSet<>();
         for (char uniqueNumber : numberString.toCharArray()){
             if(!numberSet.add(uniqueNumber)){
-                return true;
+                throw new IllegalArgumentException("중복 숫자를 입력하면 안 됩니다.");
             }
         }
-        return false;
+    }
+
+    // 사용자 입력 문자열로부터 옵션 선택 번호 검증
+    private int checkOptionNumber(String inputString) {
+        if(!inputString.equals("1") && !inputString.equals("2")){
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(inputString);
     }
 
     private boolean isFinished(){
