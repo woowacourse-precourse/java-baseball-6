@@ -14,4 +14,16 @@ public class Numbers {
         this.third = numbers.get(2);
         return this;
     }
+
+    public Integer countIdentity(Numbers numbers) {
+        return (this.first.equals(numbers.first) ? 1 : 0) +
+                (this.second.equals(numbers.second) ? 1 : 0) +
+                (this.third.equals(numbers.third) ? 1 : 0);
+    }
+
+    public Integer countEquality(Numbers numbers) {
+        return (this.first.equals(numbers.second) || this.first.equals(numbers.third) ? 1 : 0) +
+                (this.second.equals(numbers.first) || this.second.equals(numbers.third) ? 1 : 0) +
+                (this.third.equals(numbers.first) || this.second.equals(numbers.second) ? 1 : 0);
+    }
 }
