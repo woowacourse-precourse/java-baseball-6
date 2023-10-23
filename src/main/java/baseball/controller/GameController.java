@@ -42,7 +42,7 @@ public class GameController {
 
     private BaseballNumbers getBaseballNumbers() {
         if (computerNumbers == null) {
-            computerNumbers = service.generateNumbers();
+            init();
         }
         InputView.printCheat(computerNumbers);
         InputView.printRequestingInput();
