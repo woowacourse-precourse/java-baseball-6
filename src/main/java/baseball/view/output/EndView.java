@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.output;
 
 import static baseball.Constant.PLAY_NUMBER_DIGIT;
 

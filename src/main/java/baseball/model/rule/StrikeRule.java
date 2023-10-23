@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.rule;
 
 import java.util.stream.IntStream;
 

@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball.view.input;
 
-import baseball.model.PlayNumber;
+import baseball.model.number.PlayNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleInputView implements InputView {

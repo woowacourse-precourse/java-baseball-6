@@ -1,9 +1,9 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.model.BallRule;
-import baseball.model.StrikeRule;
-import baseball.view.ConsoleInputView;
+import baseball.model.rule.BallRule;
+import baseball.model.rule.StrikeRule;
+import baseball.view.input.ConsoleInputView;
 
 public class Application {
     public static void main(String[] args) {

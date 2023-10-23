@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.number;
 
 import static baseball.Constant.END_WANT;
 import static baseball.Constant.PLAY_WANT;

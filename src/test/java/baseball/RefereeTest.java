@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.model.BallRule;
-import baseball.model.GameRule;
-import baseball.model.PlayNumber;
+import baseball.model.rule.BallRule;
+import baseball.model.rule.GameRule;
+import baseball.model.number.PlayNumber;
 import baseball.model.Referee;
-import baseball.model.StrikeRule;
+import baseball.model.rule.StrikeRule;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

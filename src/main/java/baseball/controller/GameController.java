@@ -1,15 +1,15 @@
 package baseball.controller;
 
-import baseball.model.GameRule;
-import baseball.model.PlayNumber;
-import baseball.model.RandomNumber;
+import baseball.model.rule.GameRule;
+import baseball.model.number.PlayNumber;
+import baseball.model.number.RandomNumber;
 import baseball.model.Referee;
-import baseball.model.ResumeNumber;
-import baseball.view.AskView;
-import baseball.view.EndView;
-import baseball.view.InputView;
-import baseball.view.ResultView;
-import baseball.view.StartView;
+import baseball.model.number.ResumeNumber;
+import baseball.view.output.AskView;
+import baseball.view.output.EndView;
+import baseball.view.input.InputView;
+import baseball.view.output.ResultView;
+import baseball.view.output.StartView;
 
 import static baseball.Constant.PLAY_NUMBER_DIGIT;
 

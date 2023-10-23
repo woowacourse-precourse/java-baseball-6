@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.model.PlayNumber;
+import baseball.model.number.PlayNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

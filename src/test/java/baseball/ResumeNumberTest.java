@@ -2,7 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.model.ResumeNumber;
+import baseball.model.number.ResumeNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

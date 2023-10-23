@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.output;
 
 public class StartView {
 
