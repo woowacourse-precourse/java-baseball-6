@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.view;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;

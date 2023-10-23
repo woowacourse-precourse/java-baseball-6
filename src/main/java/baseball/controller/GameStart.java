@@ -3,6 +3,8 @@ package baseball.controller;
 import baseball.*;
 import baseball.global.Validator;
 import baseball.model.Score;
+import baseball.view.ComputerRandomBalls;
+import baseball.view.UserRandomBalls;
 import baseball.view.ViewResult;
 
 public class GameStart {
@@ -21,13 +23,17 @@ public class GameStart {
             int result = score.play();
 
             if(result == viewResult.restart){
-                Application.computerRandomBalls.clear();
-                Application.userRandomBalls.clear();
+                initAllRandomBalls();
                 Application.computerRandomBalls = computerRandomBalls.outputRandomBall();
             }
             else if(result == viewResult.end){
                 break;
             }
         }
+    }
+
+    private static void initAllRandomBalls() {
+        Application.computerRandomBalls.clear();
+        Application.userRandomBalls.clear();
     }
 }
