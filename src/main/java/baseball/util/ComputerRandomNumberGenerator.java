@@ -1,9 +1,9 @@
 package baseball.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ComputerRandomNumberGenerator implements RandomNumberGenerator {
     private final int MIN_BALL_NUMBER = 1;
@@ -16,14 +16,9 @@ public class ComputerRandomNumberGenerator implements RandomNumberGenerator {
 
     @Override
     public List<Integer> createUniqueNumbers(int size) {
-        List<Integer> uniqueNumbers = new ArrayList<>();
-
-        while (uniqueNumbers.size() < size) {
-            int randomNumber = generateRandomNumber(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
-            if (!uniqueNumbers.contains(randomNumber)) {
-                uniqueNumbers.add(randomNumber);
-            }
-        }
-        return uniqueNumbers;
+        return Stream.generate(() -> generateRandomNumber(MIN_BALL_NUMBER, MAX_BALL_NUMBER))
+                .distinct()
+                .limit(size)
+                .collect(Collectors.toList());
     }
 }

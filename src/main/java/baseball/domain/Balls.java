@@ -34,10 +34,7 @@ public class Balls {
 
     public PlayResult play(Balls userBalls) {
         PlayResult result = new PlayResult();
-        for (Ball answer : answers) {
-            BallStatus status = userBalls.play(answer);
-            result.report(status);
-        }
+        answers.forEach(answerBall -> result.report(userBalls.play(answerBall)));
         return result;
     }
 }
