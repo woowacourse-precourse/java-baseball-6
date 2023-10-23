@@ -12,11 +12,13 @@ public class BaseBallGameController {
 
     InputValidator validator = new InputValidator();
 
+    //게임 실행
     public void run() throws IllegalArgumentException{
         baseBallGameService.play();
         askRetry();
     }
 
+    //재시작 요청
     public void askRetry() {
 
         String userInput = inputRetry();
@@ -26,6 +28,7 @@ public class BaseBallGameController {
         }
     }
 
+    //재시작 입력
     public String inputRetry() throws IllegalArgumentException {
         systemMessage.askRetryMessage();
         String userInput = readLine();

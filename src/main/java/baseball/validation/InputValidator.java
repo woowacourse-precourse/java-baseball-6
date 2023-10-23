@@ -5,6 +5,7 @@ import java.util.List;
 
 public class InputValidator {
 
+    //사용자 입력 검증
     public void gameValidation(String input) {
         List<String> userInput = new ArrayList<>();
 
@@ -28,6 +29,7 @@ public class InputValidator {
         }
     }
 
+    //재시작 입력 검증
     public void retryValidation(String input) {
         if (input.length() != 1) {
             throw new IllegalArgumentException();

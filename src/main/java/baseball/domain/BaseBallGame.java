@@ -18,6 +18,7 @@ public class BaseBallGame {
         this.baseballNumber = generateRandomNumber();
     }
 
+    //카운트 초기화
     public void initCount() {
         this.ballCount = 0;
         this.strikeCount = 0;

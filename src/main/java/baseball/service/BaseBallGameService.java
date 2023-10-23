@@ -20,8 +20,6 @@ public class BaseBallGameService {
         systemMessage.gameStartMessage();
         baseBallGame.intiGame();
 
-        System.out.println(Arrays.toString(baseBallGame.getBaseballNumber()));
-
         boolean isAnswer = true;
         while (isAnswer) {
             systemMessage.requestInputData();
