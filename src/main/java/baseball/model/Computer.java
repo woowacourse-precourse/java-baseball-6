@@ -1,16 +1,14 @@
 package baseball.model;
 
-import java.util.LinkedList;
-
 public class Computer {
 
-    private LinkedList<Integer> computerNum;
+    private String computerNum;
 
-    public Computer(LinkedList<Integer> computerNum) {
+    public Computer(String computerNum) {
         this.computerNum = computerNum;
     }
 
-    public LinkedList<Integer> getComputerNum() {
+    public String getComputerNum() {
         return computerNum;
     }
 }
