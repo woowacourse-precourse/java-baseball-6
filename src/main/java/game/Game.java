@@ -29,9 +29,35 @@ public class Game {
 
     private boolean playRound(String userInput) {
         int[] userGuess = changeToIntArray(userInput);
+        int strike = countStrike(userGuess);
+        int ball = countContain(userGuess) - strike;
 
+        if (strike == 3) {
+            return true;
+        }
         return false;
     }
+
+    private int countStrike(int[] userGuess) {
+        int strike = 0;
+        for (int i = 0; i < NORMAL_LENGTH; i++) {
+            if (userGuess[i] == computer.getAnswer().get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private int countContain(int[] userGuess) {
+        int contain = 0;
+        for (int i = 0; i < NORMAL_LENGTH; i++) {
+            if (computer.getAnswer().contains(userGuess[i])) {
+                contain++;
+            }
+        }
+        return contain;
+    }
+
 
     private String getUserInput() {
         System.out.println(REQUEST_INPUT);
