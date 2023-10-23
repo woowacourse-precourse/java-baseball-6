@@ -1,4 +1,4 @@
-package baseball;
+package baseball.people.preparation;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

@@ -1,9 +1,9 @@
-package baseball;
+package baseball.people.preparation;
 
 public class Referee {
     private TargetNumber targetNumber;
 
-    private Referee() {
+    Referee() {
     }
 
     public static Referee enter() {
