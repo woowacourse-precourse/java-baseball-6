@@ -82,7 +82,7 @@ public class Application {
 
     public static void validateInput(String input) {
         if (!is3Length(input) || isNan(input) || isLessThan1(input) || isDuplicate(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값이 올바르지 않습니다. 1~9사이의 중복되지 않는 3자리의 숫자를 입력해주세요.");
         }
     }
 
