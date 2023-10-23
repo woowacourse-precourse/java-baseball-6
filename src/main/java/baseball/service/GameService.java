@@ -20,8 +20,8 @@ public class GameService {
 
         for (int i = 0; i< inputNumberList.size(); i++) {
             Integer value = inputNumberList.get(i);
-            if (value == answerNumberList.get(i)) strikeCount++;
-            else if (answerNumberList.contains(value)) ballCount++;
+            if (checkStrike(value, answerNumberList, i)) strikeCount++;
+            else if (checkBall(answerNumberList, value)) ballCount++;
         }
 
         List<Integer> result = new ArrayList<>();
@@ -29,6 +29,14 @@ public class GameService {
         result.add(ballCount);
 
         return result;
+    }
+
+    private static boolean checkStrike(Integer value, List<Integer> answerNumberList, int i) {
+        return value == answerNumberList.get(i);
+    }
+
+    private static boolean checkBall(List<Integer> answerNumberList, Integer value) {
+        return answerNumberList.contains(value);
     }
 
 
