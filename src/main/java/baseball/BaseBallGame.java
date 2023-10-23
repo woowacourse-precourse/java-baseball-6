@@ -130,4 +130,8 @@ public class BaseBallGame {
     public void BallPrint(){
         System.out.println(ball+"볼");
     }
+    //스트라이크 개수 출력 함수
+    public void StrikePrint(){
+        System.out.println(strike+"스트라이크");
+    }
 }
