@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Converter {
 
-    private static final String SEPARATOR = "";
-    private static final String NON_NUMERIC_MESSAGE = "숫자를 입력해주세요.";
+    private static final String NUMERIC_SEPARATOR = "";
+    private static final String NON_NUMERIC_INPUT_MESSAGE = "숫자를 입력해주세요.";
     private static final String NUMERIC_PATTERN = "\\d+";
 
     private Converter() {
@@ -15,14 +15,14 @@ public class Converter {
     public static List<Integer> convertStringToIntegerList(final String string) {
         validateInputIsNumeric(string);
 
-        return Arrays.stream(string.split(SEPARATOR))
+        return Arrays.stream(string.split(NUMERIC_SEPARATOR))
                 .map(Integer::parseInt)
                 .toList();
     }
 
     private static void validateInputIsNumeric(final String input) {
         if (!isNumeric(input)) {
-            throw new IllegalArgumentException(NON_NUMERIC_MESSAGE);
+            throw new IllegalArgumentException(NON_NUMERIC_INPUT_MESSAGE);
         }
     }
 

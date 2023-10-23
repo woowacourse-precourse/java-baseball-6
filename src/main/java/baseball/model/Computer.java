@@ -8,27 +8,27 @@ public class Computer {
 
     private static final int FIRST_NUMBER = 0;
 
-    private final List<Integer> numbers;
+    private final List<Integer> answerNumbers;
 
-    private Computer(final List<Integer> numbers) {
-        this.numbers = numbers;
+    private Computer(final List<Integer> answerNumbers) {
+        this.answerNumbers = answerNumbers;
     }
 
-    public static Computer createWith(final NumberGenerator generator) {
+    public static Computer createWithGeneratedNumbers(final NumberGenerator generator) {
         return new Computer(generator.generate());
     }
 
-    public int getStrikeCount(final List<Integer> userNumbers) {
+    public int countStrikes(final List<Integer> userNumbers) {
         return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
                 .filter(index -> isStrike(index, userNumbers))
                 .count();
     }
 
     private boolean isStrike(final int index, final List<Integer> userNumbers) {
-        return this.numbers.get(index).equals(userNumbers.get(index));
+        return this.answerNumbers.get(index).equals(userNumbers.get(index));
     }
 
-    public int getBallCount(final List<Integer> userNumbers) {
+    public int countBalls(final List<Integer> userNumbers) {
         return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
                 .filter(index -> isBall(index, userNumbers))
                 .count();
@@ -36,10 +36,10 @@ public class Computer {
 
     private boolean isBall(final int index, final List<Integer> userNumbers) {
         int number = userNumbers.get(index);
-        return !this.numbers.get(index).equals(number) && this.numbers.contains(number);
+        return !this.answerNumbers.get(index).equals(number) && this.answerNumbers.contains(number);
     }
 
     public boolean isThreeStrikes(final List<Integer> userNumbers) {
-        return this.numbers.equals(userNumbers);
+        return this.answerNumbers.equals(userNumbers);
     }
 }

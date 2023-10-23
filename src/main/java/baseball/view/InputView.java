@@ -4,15 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private final InputValidation inputValidation;
+    private final InputValidator inputValidator;
 
     public InputView() {
-        inputValidation = new InputValidation();
+        inputValidator = new InputValidator();
     }
 
-    public String readLine() {
+    public String readInput() {
         String input = Console.readLine();
-        inputValidation.validate(input);
+        inputValidator.validateInput(input);
         return input;
     }
 }

@@ -6,32 +6,32 @@ import java.util.List;
 
 public class UserNumbers {
 
-    private static final int REQUIRED_INPUT_LENGTH = 3;
+    private static final int REQUIRED_NUMBER_COUNT = 3;
     private static final String ZERO_DIGIT = "0";
     private static final String INVALID_LENGTH_MESSAGE = "숫자는 세 가지를 고를 수 있습니다.";
     private static final String ZERO_ERROR_MESSAGE = "0이 포함되어서는 안됩니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "중복된 숫자는 입력할 수 없습니다.";
 
-    private final List<Integer> numbers;
+    private final List<Integer> selectedNumbers;
 
-    private UserNumbers(final List<Integer> numbers) {
-        this.numbers = numbers;
+    private UserNumbers(final List<Integer> selectedNumbers) {
+        this.selectedNumbers = selectedNumbers;
     }
 
-    public static UserNumbers createWith(final String input) {
-        validate(input);
-        List<Integer> numbers = Converter.convertStringToIntegerList(input);
-        return new UserNumbers(numbers);
+    public static UserNumbers createFromInput(final String input) {
+        validateInput(input);
+        List<Integer> selectedNumbers = Converter.convertStringToIntegerList(input);
+        return new UserNumbers(selectedNumbers);
     }
 
-    private static void validate(final String input) {
+    private static void validateInput(final String input) {
         validateLength(input);
         validateNoZeros(input);
         validateNoDuplicates(input);
     }
 
     private static void validateLength(final String input) {
-        if (input.length() != REQUIRED_INPUT_LENGTH) {
+        if (input.length() != REQUIRED_NUMBER_COUNT) {
             throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
         }
     }
@@ -55,10 +55,10 @@ public class UserNumbers {
     private static boolean containsDuplicates(final String input) {
         return input.chars()
                 .distinct()
-                .count() != REQUIRED_INPUT_LENGTH;
+                .count() != REQUIRED_NUMBER_COUNT;
     }
 
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+    public List<Integer> getSelectedNumbers() {
+        return Collections.unmodifiableList(selectedNumbers);
     }
 }
