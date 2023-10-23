@@ -6,30 +6,39 @@ import static baseball.Constant.RESTART;
 import java.util.List;
 
 public class GameController {
+    private final Computer computer;
     private final UserInput userInput;
     private final MatchCalculator matchCalculator;
     private final OutputView outputView;
-    private final List<Integer> computerNum;
+    private List<Integer> computerNum;
     private static boolean hasWon;
 
     GameController() {
-        Computer computer = new Computer();
+        computer = new Computer();
         userInput = new UserInput();
         outputView = new OutputView();
         matchCalculator = new MatchCalculator();
+    }
+
+    public void proceedGame() {
+        setupGame();
+        while (!hasWon) {
+            loopThroughGame();
+        }
+        outputView.gameOvermessage();
+        restartOrExit(userInput.promptUserForRestart());
+    }
+
+    private void setupGame() {
         computer.generateRandomNum();
         computerNum = computer.getRandomNum();
     }
 
-    public void proceedGame() {
-        while (!hasWon) {
-            userInput.promptUserInput();
-            List<Integer> userGuess = userInput.getUserNum();
-            int[] matchResult = matchCalculator.checkMatch(computerNum, userGuess);
-            outputView.printMatchResult(matchResult[0], matchResult[1]);
-        }
-        outputView.gameOvermessage();
-        restartOrExit(userInput.promptUserForRestart());
+    private void loopThroughGame() {
+        userInput.promptUserInput();
+        List<Integer> userGuess = userInput.getUserNum();
+        int[] matchResult = matchCalculator.checkMatch(computerNum, userGuess);
+        outputView.printMatchResult(matchResult[0], matchResult[1]);
     }
 
     private void restartOrExit(int userAnswer) {
