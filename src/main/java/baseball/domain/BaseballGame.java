@@ -21,10 +21,8 @@ public class BaseballGame {
     }
 
     public String[] compareTwoNumbers(String userNumber) {
-
         int strikeCount = 0;
         int ballCount = 0;
-
         for (int i = 0; i < userNumber.length(); i++) {
             if (userNumber.charAt(i) - '0' == computerNumber.get(i)) {
                 strikeCount++;
@@ -34,12 +32,8 @@ public class BaseballGame {
                 ballCount++;
             }
         }
-
         String result = ballCount + "," + strikeCount;
-
         return result.split(",");
-
-
     }
 
 
