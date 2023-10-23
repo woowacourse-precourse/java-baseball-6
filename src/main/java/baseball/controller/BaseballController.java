@@ -11,6 +11,7 @@ public class BaseballController {
         public void run() {
                 initGame(constants.SIZE, constants.START_NUMBER, constants.END_NUMBER);
                 startGame();
+                endGame();
         }
 
         private void initGame(int size, int start, int end) {
@@ -19,6 +20,10 @@ public class BaseballController {
 
         private void startGame() {
                 baseballService.startGame();
+        }
+
+        private void endGame() {
+                baseballService.endGame();
         }
 
 
