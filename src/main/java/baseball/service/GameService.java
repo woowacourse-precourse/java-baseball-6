@@ -1,12 +1,13 @@
 package baseball.service;
 
+import static baseball.validation.InputNumberValidation.userInputNumberValidation;
+import static baseball.validation.InputNumberValidation.validateParsedChar;
+
 import baseball.domain.Computer;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public class GameService {
@@ -37,9 +38,7 @@ public class GameService {
 
     public static List<Integer> parsingInputNumber(String inputNumber) {
         ArrayList<Integer> parsingNumber = new ArrayList<>();
-        validateInputNumberLength(inputNumber);
-        validateInputNumberDuplicate(inputNumber);
-
+        userInputNumberValidation(inputNumber);
         for (char parsedChar : inputNumber.toCharArray()) {
             validateParsedChar(parsedChar);
             parsingNumber.add(Character.getNumericValue(parsedChar));
@@ -47,27 +46,6 @@ public class GameService {
         return parsingNumber;
     }
 
-    public static void validateInputNumberLength(String inputNumber) {
-        if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException("입력 숫자는 3개여야 합니다.");
-        }
-    }
-
-    public static void validateInputNumberDuplicate(String inputNumber) {
-        Set<Character> inputNumberDuplicate = new HashSet<>();
-        for (char parsedChar : inputNumber.toCharArray()) {
-            if (inputNumberDuplicate.contains(parsedChar)) {
-                throw new IllegalArgumentException("입력된 숫자는 중복을 가질 수 없습니다.");
-            }
-            inputNumberDuplicate.add(parsedChar);
-        }
-    }
-
-    public static void validateParsedChar(char parsedChar) {
-        if (!Character.isDigit(parsedChar) || parsedChar == '0') {
-            throw new IllegalArgumentException("1부터 9까지의 범위를 가진 유효한 숫자가 입력되어야 합니다.");
-        }
-    }
 
     public static void exitGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
