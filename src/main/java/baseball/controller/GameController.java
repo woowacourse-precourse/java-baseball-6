@@ -1,100 +1,56 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.Game;
-import baseball.model.User;
-import baseball.util.Parser;
-import baseball.view.TextInterface;
+import static baseball.util.Constants.CONTINUE;
+import static baseball.util.Constants.CORRECT_ANSWER;
+import static baseball.util.Constants.EXIT;
+import static baseball.util.Constants.WRONG_ANSWER;
+
+import baseball.Service.ComputerService;
+import baseball.Service.GameService;
+import baseball.Service.UserService;
+import java.util.HashMap;
 import java.util.List;
 
 public class GameController {
-    TextInterface textInterface = new TextInterface();
-    Parser parser = new Parser();
-    Computer computer = new Computer();
-    Game game = new Game();
-    User user = new User();
-
-    private final int NUMBER_SIZE = 3;
-    private final String CONTINUE = "1";
-    private final String EXIT = "2";
+    private final ComputerService computerService = new ComputerService();
+    private final GameService gameService = new GameService();
+    private final UserService userService = new UserService();
 
     public void start() {
-        textInterface.openning();
         initGame();
-        waitInput();
+        startGame();
     }
 
     public void initGame() {
-        game.newGame();
-        computer.resetAnswer();
-        user.resetAnswer();
-        computer.createAnswer(NUMBER_SIZE);
+        gameService.init();
+        computerService.init();
     }
 
-    public void waitInput() {
-        String userInput;
-        List<Integer> userAnswer;
-
-        userInput = textInterface.readInput();
-        if (userInput.length() != NUMBER_SIZE) {
-            throw new IllegalArgumentException();
+    public void startGame() {
+        String userAnswerString = userService.waitInput();
+        List<Integer> userAnswer = userService.setInput(userAnswerString);
+        System.out.println(userAnswer);
+        HashMap<Integer, Integer> resultMap = computerService.compareAnswer(userAnswer);
+        int result = gameService.determine(resultMap);
+        if (result == CORRECT_ANSWER) {
+            endGame();
         }
-        userAnswer = parser.stringToIntegerList(userInput);
-        user.setAnswer(userAnswer);
-        calculate();
-    }
-
-    public void calculate() {
-        Boolean isAnswer;
-        int strike;
-        int ball;
-
-        List<Integer> userAnswer = user.getAnswer();
-        isAnswer = computer.isEqueal(userAnswer);
-        if (!isAnswer) {
-            find();
-            strike = game.getStrike();
-            ball = game.getBall();
-            textInterface.result(strike, ball);
-            game.newGame();
-            waitInput();
-        }
-        if (isAnswer) {
-            correct();
+        if (result == WRONG_ANSWER) {
+            startGame();
         }
     }
 
-    public void correct() {
-        String select;
+    public void endGame() {
+        String select = gameService.end();
 
-        select = textInterface.correctAnswer();
-        System.out.println(select);
         if (select.equals(CONTINUE)) {
             start();
         }
         if (select.equals(EXIT)) {
-            textInterface.endGame();
+            return;
         }
         if (!select.equals(CONTINUE) && !select.equals(EXIT)) {
             throw new IllegalArgumentException();
         }
     }
-
-    public void find() {
-        List<Integer> userAnswer = user.getAnswer();
-        int temp;
-
-        for (int i = 0; i < NUMBER_SIZE; i++) {
-            temp = userAnswer.get(i);
-            if (computer.isContain(temp)) {
-                if (computer.isSameDigit(i, temp)) {
-                    game.increaseStrike();
-                } else {
-                    game.increaseBall();
-                }
-            }
-        }
-    }
-
-
 }

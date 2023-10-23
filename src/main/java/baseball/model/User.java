@@ -1,12 +1,11 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    List<Integer> answer = new ArrayList<>();
+    List<Integer> answer;
 
-    public void setAnswer(List<Integer> answer) {
+    public User(List<Integer> answer) {
         this.answer = answer;
     }
 

@@ -1,27 +1,27 @@
 package baseball.model;
 
+
+import static baseball.util.Constants.BALL_KEY;
+import static baseball.util.Constants.STRIKE_KEY;
+
+import java.util.HashMap;
+
 public class Game {
-    int ball;
-    int strike;
+    private HashMap<Integer, Integer> score = new HashMap<>();
 
     public void newGame() {
-        ball = 0;
-        strike = 0;
+        score.clear();
     }
 
-    public int getBall() {
-        return ball;
+    public void setScore(HashMap<Integer, Integer> score) {
+        this.score = score;
     }
 
     public int getStrike() {
-        return strike;
+        return score.get(STRIKE_KEY);
     }
 
-    public void increaseBall() {
-        ball++;
-    }
-
-    public void increaseStrike() {
-        strike++;
+    public int getBall() {
+        return score.get(BALL_KEY);
     }
 }
