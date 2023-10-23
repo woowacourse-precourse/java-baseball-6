@@ -1,11 +1,13 @@
 package baseball.validator;
 
-import static baseball.controller.BaseballController.BASEBALL_NUMBERS_SIZE;
-
 import java.util.HashSet;
 import java.util.Set;
 
 public class PlayerNumberValidator {
+
+    private static final int BASEBALL_NUMBERS_SIZE = 3;
+    private static final int BASEBALL_MIN_NUMBER = 1;
+    private static final int BASEBALL_MAX_NUMBER = 9;
 
     public void validate(String number) {
         validateInteger(number);
@@ -34,7 +36,7 @@ public class PlayerNumberValidator {
         for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
             int targetNumber = Character.getNumericValue(c);
-            if (targetNumber <= 0 || targetNumber > 9) {
+            if (targetNumber < BASEBALL_MIN_NUMBER || targetNumber > BASEBALL_MAX_NUMBER) {
                 throw new IllegalArgumentException("숫자 입력 범위를 벗어났습니다.");
             }
         }

@@ -9,9 +9,7 @@ public class BaseballController {
 
     private static final int RESTART_OPTION = 1;
     private static final int TURN_OFF_OPTION = 2;
-    public static final int BASEBALL_NUMBERS_SIZE = 3;
-    public static final int BASEBALL_MIN_NUMBER = 1;
-    public static final int BASEBALL_MAX_NUMBER = 9;
+    private static final int BASEBALL_THREE_STRIKES = 3;
 
     private final MessageService messageService;
     private final PlayerNumberValidator playerNumberValidator;
@@ -50,7 +48,7 @@ public class BaseballController {
 
         int balls, strikes = 0;
 
-        while (strikes != BASEBALL_NUMBERS_SIZE) {
+        while (strikes != BASEBALL_THREE_STRIKES) {
             String player = receivePlayerNumber();
 
             balls = computer.countBalls(player);
