@@ -42,4 +42,20 @@ public class UserInput {
         }
         return set.size() == digits;
     }
+
+    public boolean getRestart(){
+        String restart = Console.readLine();
+        if (isValidRestart(restart)) {
+            return restart.equals("1");
+        }
+        /* TODO */
+        return false;
+    }
+
+    public boolean isValidRestart(String restart) {
+        if (restart.equals("1")||restart.equals("2")){
+            return true;
+        }
+        return false;
+    }
 }
