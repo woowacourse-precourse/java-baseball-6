@@ -1,6 +1,9 @@
 package baseball.view;
 
-import baseball.domain.Hint;
+import baseball.domain.Hint.Ball;
+import baseball.domain.Hint.Hint;
+import baseball.domain.Hint.Nothing;
+import baseball.domain.Hint.Strike;
 
 public class HintView {
 
@@ -11,12 +14,12 @@ public class HintView {
 
     public static void displayHintMessage(Hint hint) {
 
-        int ball = hint.getBall();
-        int strike = hint.getStrike();
-        boolean nothing = hint.isNothing();
+        Ball ball = hint.getBall();
+        Strike strike = hint.getStrike();
+        Nothing nothing = hint.isNothing();
 
         StringBuilder hintBuilder = new StringBuilder();
-        if (ball > 0) {
+        if (ball.getCount() > 0) {
             hintBuilder.append(ball + BALL_TEXT);
         }
 
@@ -24,11 +27,11 @@ public class HintView {
             hintBuilder.append(" ");
         }
 
-        if (strike > 0) {
+        if (strike.getCount() > 0) {
             hintBuilder.append(strike + STRIKE_TEXT);
         }
 
-        if (nothing) {
+        if (nothing.isStatus()) {
             hintBuilder.append(NOTHING_TEXT);
         }
 
