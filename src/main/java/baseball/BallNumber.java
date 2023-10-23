@@ -8,7 +8,6 @@ public class BallNumber {
     private int ballDP[] = new int[3];
     public BallNumber(int number){
 
-
     }
 
     private int randomNum(){

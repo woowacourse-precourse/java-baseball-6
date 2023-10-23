@@ -11,11 +11,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         List<Integer> computer = new ArrayList<>(); // computer 숫자 (정답)
         List<Integer> user = new ArrayList<>(); // computer 숫자 (정답)
         int strike = 0;
         int ball = 0;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,43 +23,32 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        while (user.size() < 3){
-            user = Arrays.stream(Console.readLine().split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-
-        }
         while(true) {
-            //과정2 : inputArr.length만큼 반복해 유저가 입력한 숫자를 순서대로 inputArr에 넣는다.
-            String num = Console.readLine();
-            for(int i  = 0; i < userNumArr.length; i++) {
-                for(int j = 0; j < i; j++) {
-                    if(userNumArr[j] == userNumArr[i]) {
-                        //유저가 입력한 i인덱스에 들어갈 숫자가 중복된 숫자인지 확인
-                        System.out.println("중복된 값을 입력했습니다.");
-                        break;
-                    }
+
+            while (true){
+                user = Arrays.stream(Console.readLine().split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+                if (! user.get(0).equals(user.get(1)) && ! user.get(1).equals(user.get(2)) && ! user.get(0).equals(user.get(2))){
+                    break;
                 }
+                System.out.println("중복된 값을 입력했습니다.");
             }
             for (int x : computer){
                 System.out.println(x+" ");
             }
-            for (int x : userNumArr){
+            for (int x : user){
                 System.out.println(x+" ");
             }
-            //과정3 : 유저가 입력한 숫자와 정답숫자를 비교하여 Strike인지 Ball인지 구분한다.
-            for(int i = 0; i < numArr.length; i++) {
-                for(int j = 0; j < userNumArr.length; j++) {
-                    //numArr의 i번째 인덱스와 inputArr의 모든 원소들을 비교
-                    if(numArr[i] == userNumArr[j] && i == j) {
-                        //같은 숫자가 있고 인덱스도 같으면 스트라이크
+            for(int i = 0; i < computer.size(); i++) {
+                for(int j = 0; j < user.size(); j++) {
+                    if(computer.get(i).equals(user.get(j)) && i == j) {
                         strike++;
-                    }else if(numArr[i] == userNumArr[j] && i != j) {
-                        //같은 숫자만 있으면 볼
+                    }else if(computer.get(i).equals(user.get(j)) && i != j) {
                         ball++;
                     }
                 }
             }
 
-            System.out.println(strike + "스트라이크" + ball + "볼");
+            System.out.println(ball + "볼" + strike + "스트라이크");
             if(strike == 3) {
                 System.out.println("정답!");
                 break;
