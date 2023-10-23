@@ -10,15 +10,12 @@ public class BallCount {
     private final String MESSAGE_STRIKE = "스트라이크";
     private final String MESSAGE_NOTHING = "낫싱";
 
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
 
-    public void addStrike() {
-        this.strike++;
-    }
-
-    public void addBall() {
-        this.ball++;
+    public BallCount(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
     }
 
     public boolean isOut() {

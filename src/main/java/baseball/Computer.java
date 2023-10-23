@@ -21,16 +21,17 @@ public class Computer {
     }
 
     public BallCount calculateBallCount(List<Integer> playerNumbers) {
-        BallCount ballCount = new BallCount();
+        int strikeCount = 0;
+        int ballCount = 0;
         for (int answerIndex = 0; answerIndex < BALL_LENGTH; answerIndex++) {
             int answerNumber = answerNumbers.get(answerIndex);
             if (answerNumber == playerNumbers.get(answerIndex)) {
-                ballCount.addStrike();
+                strikeCount++;
             } else if (playerNumbers.contains(answerNumber)) {
-                ballCount.addBall();
+                ballCount++;
             }
         }
-        return ballCount;
+        return new BallCount(strikeCount, ballCount);
     }
 
     private List<Integer> createAnswer() {
