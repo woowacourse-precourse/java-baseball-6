@@ -45,7 +45,7 @@ public class AnswerInput {
     }
 
     public void inputNumber() {
-        System.out.println(Constants.ASK_GAME_NUMBER);
+        System.out.print(Constants.ASK_GAME_NUMBER);
         String answer = Console.readLine();
         answer.replaceAll(" ", "");
         if (isInputNumberForm(answer)) {

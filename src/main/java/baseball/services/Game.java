@@ -38,9 +38,19 @@ public class Game {
         return false;
     }
 
-    private String restartGame() {
+    private boolean isRestartGame() {
         System.out.println(Constants.RESTART_GAME);
-        return Console.readLine();
+        String resultCode = Console.readLine();
+        if (resultCode.equals("1")) {
+            return true;
+        }
+        if (resultCode.equals("2")) {
+            return false;
+        }
+        if (!(resultCode.equals("1") && resultCode.equals("2"))) {
+            InputExceptionError.throwIllegalArgumentException();
+        }
+        return false;
     }
 
     private String provideHint(int strikeScore, int ballScore) {
@@ -65,9 +75,8 @@ public class Game {
         return hint.getHint();
     }
 
-    public static void createGame() {
+    public static boolean createGame() {
         Game game = new Game();
-        String resultCode = null;
         game.startGame();
         while (true) {
             game.playGame();
@@ -75,16 +84,6 @@ public class Game {
                 break;
             }
         }
-        resultCode = game.restartGame();
-        if (resultCode.equals("2")) {
-            return;
-        }
-        if (resultCode.equals("1")) {
-            createGame();
-            return;
-        }
-        if (!(resultCode.equals("1") && resultCode.equals("2"))) {
-            InputExceptionError.throwIllegalArgumentException();
-        }
+        return game.isRestartGame();
     }
 }
