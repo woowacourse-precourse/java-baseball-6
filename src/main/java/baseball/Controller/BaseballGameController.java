@@ -17,7 +17,10 @@ public class BaseballGameController {
     }
 
     public void playOneRoundGame() {
-        int[] computer = new ComputerNumberPicker().computer;
+//        do {
+            int[] computer = new ComputerNumberPicker().computer;
+
+//        } while ();
     }
 
     private static boolean endGame() throws IllegalArgumentException{
