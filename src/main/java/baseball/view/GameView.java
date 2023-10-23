@@ -14,7 +14,9 @@ public class GameView {
 
     public String getUserInput() {
         System.out.print(USER_INPUT_MESSAGE);
+
         String userInput = Console.readLine();
+
         return userInput;
     }
 
@@ -25,8 +27,10 @@ public class GameView {
     public int endGame() {
         System.out.println(END_GAME_MESSAGE);
         System.out.println(RESTART_GAME_MESSAGE);
+
         String userInput = Console.readLine();
         int restartType = Integer.parseInt(userInput);
+
         return restartType;
     }
 }
