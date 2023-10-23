@@ -18,10 +18,8 @@ public class Player {
     public static Player createByIntegerNumbers(List<Integer> inputNumbers) {
         checkInputSize(inputNumbers.size());
         checkForDuplicateNumbers(inputNumbers);
-        List<Number> numbers = inputNumbers.stream()
-                .map(Number::from)
-                .collect(Collectors.toList());
-        return new Player(numbers);
+        List<Number> players = integerToNumber(inputNumbers);
+        return new Player(players);
     }
 
     private static void checkInputSize(int size) {
@@ -34,5 +32,11 @@ public class Player {
         if (uniqueNumbers.size() != inputNumbers.size()) {
             throw new DuplicateNumberException();
         }
+    }
+
+    public static List<Number> integerToNumber(List<Integer> inputNumbers) {
+        return inputNumbers.stream()
+                .map(Number::from)
+                .collect(Collectors.toList());
     }
 }
