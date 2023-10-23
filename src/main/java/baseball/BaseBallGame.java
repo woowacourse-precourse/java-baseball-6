@@ -156,4 +156,8 @@ public class BaseBallGame {
             StrikePrint();
         }
     }
+    //게임 승리 출력 함수
+    public void WinPrint(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
