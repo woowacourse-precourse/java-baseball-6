@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
-import baseball.domain.NumericString;
+import baseball.domain.Hint;
 
 public class BaseBallGameController {
 
@@ -13,25 +13,32 @@ public class BaseBallGameController {
     }
 
     public String play(String input) {
-        BaseBallResult execution = gameUseCase.execute(new NumericString(input));
+        BaseBallResult report = gameUseCase.execute(new NumericString(input));
 
-        if (execution.isNoting()) {
-            return "낫싱";
+        if (report.isNoting()) {
+            return Hint.NOTHING.toString();
         }
 
         StringBuilder result = new StringBuilder();
-
-        if (execution.haveBall()) {
-            result.append(execution.getBall()).append("볼");
+        if (report.haveBall()) {
+            writeBall(report, result);
         }
 
-        if (execution.haveStrike()) {
-            if (!result.isEmpty()) {
-                result.append(" ");
-            }
-            result.append(execution.getStrike()).append("스트라이크");
+        if (report.haveStrike()) {
+            writeStrike(report, result);
         }
 
         return result.toString();
+    }
+
+    private void writeBall(BaseBallResult execution, StringBuilder result) {
+        result.append(execution.getBall()).append(Hint.BALL);
+    }
+
+    private void writeStrike(BaseBallResult execution, StringBuilder result) {
+        if (!result.isEmpty()) {
+            result.append(" ");
+        }
+        result.append(execution.getStrike()).append(Hint.STRIKE);
     }
 }
