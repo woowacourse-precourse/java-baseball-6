@@ -17,7 +17,7 @@ public class PlayerController {
 
     private List<Integer> parseInputString(String inputNumbers) {
         List<Integer> result = new ArrayList<>();
-        for (String number : inputNumbers.split(",")) {
+        for (String number : inputNumbers.split("")) {
             result.add(Integer.parseInt(number));
         }
         return result;
