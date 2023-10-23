@@ -1,8 +1,8 @@
 package baseball.view;
 
-import static baseball.model.Message.BALL;
-import static baseball.model.Message.INCORRECT;
-import static baseball.model.Message.STRIKE;
+import static baseball.model.Constant.BALL;
+import static baseball.model.Constant.INCORRECT;
+import static baseball.model.Constant.STRIKE;
 
 public class OutputView {
 
@@ -12,13 +12,13 @@ public class OutputView {
 
     public void printHint(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            System.out.println(INCORRECT.getMessage());
+            System.out.println(INCORRECT);
         } else if (ball > 0 && strike > 0) {
-            System.out.println(ball + BALL.getMessage() + " " + strike + STRIKE.getMessage());
+            System.out.println(ball + BALL + " " + strike + STRIKE);
         } else if (ball > 0) {
-            System.out.println(ball + BALL.getMessage());
+            System.out.println(ball + BALL);
         } else if (strike > 0) {
-            System.out.println(strike + STRIKE.getMessage());
+            System.out.println(strike + STRIKE);
         }
     }
 }

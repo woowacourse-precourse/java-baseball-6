@@ -1,8 +1,8 @@
 package baseball.model;
 
-import static baseball.model.NumberRule.NUMBER_RANGE_END;
-import static baseball.model.NumberRule.NUMBER_RANGE_START;
-import static baseball.model.NumberRule.NUMBER_SIZE;
+import static baseball.model.Constant.NUMBER_RANGE_END;
+import static baseball.model.Constant.NUMBER_RANGE_START;
+import static baseball.model.Constant.NUMBER_SIZE;
 
 import baseball.controller.Validation;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -35,8 +35,8 @@ public class DecimalNumber {
     private List<Integer> generateRandomNum() {
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < NUMBER_SIZE.getNumber()) {
-            int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START.getNumber(), NUMBER_RANGE_END.getNumber());
+        while (computer.size() < NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }

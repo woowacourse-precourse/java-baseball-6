@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import static baseball.model.NumberRule.NUMBER_SIZE;
+import static baseball.model.Constant.NUMBER_SIZE;
 
 import baseball.model.DecimalNumber;
 import baseball.view.OutputView;
@@ -28,7 +28,7 @@ public class ComputerController {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < NUMBER_SIZE.getNumber(); i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             if (computer.get(i).equals(user.get(i))) {
                 strike++;
             } else if (computer.contains(user.get(i))) {
@@ -38,7 +38,7 @@ public class ComputerController {
 
         outputView.printHint(ball, strike);
 
-        if (strike == NUMBER_SIZE.getNumber()) {
+        if (strike == NUMBER_SIZE) {
             return false;
         }
         return true;

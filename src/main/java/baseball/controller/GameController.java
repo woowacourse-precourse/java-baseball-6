@@ -1,6 +1,7 @@
 package baseball.controller;
 
-import static baseball.model.Message.START;
+import static baseball.model.Constant.REPLAY_GAME;
+import static baseball.model.Constant.START;
 
 import baseball.model.DecimalNumber;
 import baseball.view.InputView;
@@ -16,7 +17,7 @@ public class GameController {
         Boolean play = true;
 
         while (play) {
-            outputView.printGuide(START.getMessage());
+            outputView.printGuide(START);
             computerController.initComputer();
             playing();
             play = replay();
@@ -24,20 +25,20 @@ public class GameController {
     }
 
     private void playing() {
-        Boolean isSuccess = true;
+        Boolean isFailed = true;
 
-        while (isSuccess) {
+        while (isFailed) {
             String inputNumber = inputView.inputGameNumber();
             decimalNumber.setUser(inputNumber);
-            isSuccess = computerController.checkAnswer();
+            isFailed = computerController.checkAnswer();
         }
     }
 
     private Boolean replay() {
         String inputNumber = inputView.inputReplayNumber();
         Validation.validationReplayNumber(inputNumber);
-        //enum으로 뺄지 말지 생각
-        if (inputNumber.equals("1")) {
+
+        if (inputNumber.equals(REPLAY_GAME)) {
             return true;
         }
         return false;
