@@ -6,24 +6,25 @@ import java.util.*;
 
 public class BaseballGame {
     private static final int NUMBER_LENGTH = 3;
+
     private static final String RESTART_GAME = "1";
     private static final String END_GAME = "2";
 
-    public void run(){
+    public void run() {
         int userEndOption;
 
         printGameStart();
         do {
             playGame();
             userEndOption = inputEndOption();
-        }while(!isGameEnd(userEndOption));
+        } while (!isGameEnd(userEndOption));
     }
 
-    private void printGameStart(){
+    private void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private void playGame(){
+    private void playGame() {
         List<Integer> randomNum;
         List<Integer> userNum;
         Map<String, Integer> result;
@@ -36,12 +37,12 @@ public class BaseballGame {
         } while (!isAllStrike(result));
     }
 
-    private List<Integer> initRandomNum(){
+    private List<Integer> initRandomNum() {
         List<Integer> randomNumList = new ArrayList<>();
         
         while (randomNumList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumList.contains(randomNumber)) {
+            if (!randomNumList.contains(randomNumber)){
                 randomNumList.add(randomNumber);
             }
         }
@@ -49,7 +50,7 @@ public class BaseballGame {
         return randomNumList;
     }
     
-    private List<Integer> inputUserNum(){
+    private List<Integer> inputUserNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = Console.readLine();
         checkUserNumForm(userInputString);
@@ -57,7 +58,7 @@ public class BaseballGame {
         Integer userInput = Integer.valueOf(userInputString);
         List<Integer> userNum = new ArrayList<>();
 
-        while(userInput != 0){
+        while (userInput != 0) {
             userNum.add(0, userInput % 10);
             userInput /= 10;
         }
@@ -65,34 +66,34 @@ public class BaseballGame {
         return userNum;
     }
 
-    private void initStrikeAndBallNum(Map<String, Integer> resultList){
+    private void initStrikeAndBallNum(Map<String, Integer> resultList) {
         resultList.put("strike", 0);
         resultList.put("ball", 0);
     }
 
-    private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum){
+    private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum) {
         Map<String, Integer> resultList = new HashMap<>();
         initStrikeAndBallNum(resultList);
 
-        for(int i = 0; i < NUMBER_LENGTH; i++){
-            if(userNum.get(i) == randomNum.get(i)){
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (userNum.get(i) == randomNum.get(i)) {
                 resultList.put("strike", resultList.get("strike") + 1);
-            } else if(randomNum.contains(userNum.get(i))){
+            } else if (randomNum.contains(userNum.get(i))) {
                 resultList.put("ball", resultList.get("ball") + 1);
             }
         }
         return resultList;
     }
 
-    private void printGameResult(Map<String, Integer> resultList){
+    private void printGameResult(Map<String, Integer> resultList) {
         int strikeCount = resultList.get("strike");
         int ballCount = resultList.get("ball");
         String result = "낫싱";
-        if(strikeCount != 0 && ballCount != 0){
+        if (strikeCount != 0 && ballCount != 0) {
             result = ballCount + "볼 " + strikeCount + "스트라이크";
-        }else if (ballCount != 0){
+        } else if (ballCount != 0) {
             result = ballCount + "볼";
-        } else if(strikeCount != 0){
+        } else if (strikeCount != 0) {
             result = strikeCount + "스트라이크";
         }
 
@@ -100,20 +101,20 @@ public class BaseballGame {
         printWinGame(resultList);
     }
 
-    private boolean isAllStrike(Map<String, Integer> resultList){
-        if(resultList.get("strike") == 3){
+    private boolean isAllStrike(Map<String, Integer> resultList) {
+        if (resultList.get("strike") == 3) {
             return true;
         }
         return false;
     }
 
-    private void printWinGame(Map<String, Integer> resultList){
-        if(isAllStrike(resultList)) {
+    private void printWinGame(Map<String, Integer> resultList) {
+        if (isAllStrike(resultList)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
-    private int inputEndOption(){
+    private int inputEndOption() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endOption = Console.readLine();
         checkEndOptionForm(endOption);
@@ -121,15 +122,15 @@ public class BaseballGame {
         return Integer.valueOf(endOption);
     }
 
-    private boolean isGameEnd(int endOption){
-        if(endOption == 2){
+    private boolean isGameEnd(int endOption) {
+        if (endOption == 2) {
             return true;
         }
         return false;
     }
 
     private void checkUserNumForm(String userInput) {
-        if(!isInteger(userInput)){
+        if (!isInteger(userInput)) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
         if (userInput.length() != 3) {
@@ -143,8 +144,8 @@ public class BaseballGame {
         }
     }
 
-    private void checkEndOptionForm(String endOption){
-        if(!isInteger(endOption)){
+    private void checkEndOptionForm(String endOption) {
+        if (!isInteger(endOption)) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
         if (!endOption.equals(RESTART_GAME) && !endOption.equals(END_GAME)) {
@@ -161,14 +162,14 @@ public class BaseballGame {
         }
     }
 
-    private boolean isDuplicatedNum(String userInput){
+    private boolean isDuplicatedNum(String userInput) {
         Set<Character> userInputSet = new HashSet<>();
 
-        for(char userInputChar : userInput.toCharArray()){
+        for (char userInputChar : userInput.toCharArray()) {
             userInputSet.add(userInputChar);
         }
 
-        if(userInputSet.size() == userInput.length()){
+        if (userInputSet.size() == userInput.length()) {
             return false;
         }
         return true;
