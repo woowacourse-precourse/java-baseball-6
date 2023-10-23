@@ -30,7 +30,6 @@ public class MiddleMan {
     private void showResult() {
         if (ball == INIT_BALL_STIRKE && strike == INIT_BALL_STIRKE) {
             printNothing();
-            return;
         }
         if (ball != INIT_BALL_STIRKE && strike == INIT_BALL_STIRKE){
             printBall(ball);
