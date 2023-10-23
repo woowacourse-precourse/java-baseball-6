@@ -9,4 +9,11 @@ public class InputView {
 
         return inputNumber;
     }
+    public static int readGameEndCommand() {
+        OutputView.printGameEndMessage();
+        String inputCommand = Console.readLine();
+
+
+        return Integer.parseInt(inputCommand);
+    }
 }
