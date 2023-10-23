@@ -124,34 +124,36 @@ class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private int countStrike(List<Integer> userNumber, List<Integer> comNumber) {// 스트라이크 개수 확인
-        int ret = 0;
+    private int countStrike(UserNumber userNumber, ComNumber comNumber) {// 스트라이크 개수 확인
+        int strikeCount = 0;
+        List<Integer> userNumberList = userNumber.get();
+        List<Integer> comNumberList = comNumber.get();
         for (int i = 0; i < 3; i++) {
-            Integer user = userNumber.get(i);
-            Integer com = comNumber.get(i);
+            Integer user = userNumberList.get(i);
+            Integer com = comNumberList.get(i);
             if (user == com) {
-                ret++;
+                strikeCount++;
             }
         }
-        return ret;
+        return strikeCount;
     }
 
-    private int countBall(List<Integer> userNumber, List<Integer> comNumber) {// 볼 개수 확인
-        int ret = 0;
+    private int countBall(UserNumber userNumber, ComNumber comNumber) {// 볼 개수 확인
+        int ballCount = 0;
+        List<Integer> userNumberList = userNumber.get();
+        List<Integer> comNumberList = comNumber.get();
 
-        for (int i = 0; i < userNumber.size(); i++) {
-            Integer userNumber1 = userNumber.get(i);
-            for (int j = 0; j < comNumber.size(); j++) {
-                Integer comNumber1 = comNumber.get(j);
-                if (i != j && userNumber1 == comNumber1) {
-                    ret++;
-                }
+        for (int i = 0; i < userNumberList.size(); i++) {
+            Integer userNumber1 = userNumberList.get(i);
+            for (int j = 0; j < comNumberList.size(); j++) {
+                Integer comNumber1 = comNumberList.get(j);
+                ballCount += Boolean.compare(i != j && userNumber1 == comNumber1, false);
             }
         }
-        return ret;
+        return ballCount;
     }
 
-    private int printResult(List<Integer> userNumber, List<Integer> comNumber) { // 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
+    private void printResult(UserNumber userNumber, ComNumber comNumber) { // 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
         int strikeCnt = countStrike(userNumber, comNumber);
         int ballCnt = countBall(userNumber, comNumber);
 
@@ -167,7 +169,6 @@ class Game {
             System.out.print("낫싱");
         }
         System.out.print("\n");
-        return strikeCnt;
     }
 
     private void checkRestartInputError(String restartInput) throws IllegalArgumentException {
@@ -196,22 +197,19 @@ class Game {
         boolean continueGame = true;
         UserNumber userNumber = new UserNumber();
         ComNumber comNumber = new ComNumber();
-        List<Integer> comNumberList = comNumber.get();
 
         while (continueGame) {
             printInput();
             userNumber.set();
-            List<Integer> userNumberList = userNumber.get();
-            printResult(userNumberList, comNumberList);
+            printResult(userNumber, comNumber);
 
-            int cnt = countStrike(userNumberList, comNumberList);
+            int cnt = countStrike(userNumber, comNumber);
             if (cnt == 3) {
                 printRestart();
                 continueGame = askContinue();
             }
             if (cnt == 3 && continueGame) {
                 comNumber.newNumber();
-                comNumberList = comNumber.get();
             }
         }
     }
