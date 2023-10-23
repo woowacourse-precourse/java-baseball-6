@@ -38,7 +38,7 @@ public class GameController {
 
     public boolean baseballGame() {
         outputController.printNotice(INPUT);
-        Input input = inputController.playerInput();
+        Input input = inputController.playerInput(true);
         player.setInputString(input.getInputString());
 
         System.out.println(player.getInputString()); //임시용
@@ -57,7 +57,7 @@ public class GameController {
 
     public void re() {
         outputController.printNoticeln(AFTER);
-        Input input = inputController.playerInput();
+        Input input = inputController.playerInput(false);
         if (input.getInputString().equals("1") ){
             start();
         }
