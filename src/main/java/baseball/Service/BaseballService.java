@@ -2,96 +2,80 @@ package baseball.Service;
 
 import java.util.List;
 
-import baseball.Entity.InputNumber;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballService {
 
-    public boolean GameLogic(List<Character> randomNumberList, String input) {
-        InputNumber inputNumber = new InputNumber(createInputNumberList(input));
-        List<Character> inputNumberList = inputNumber.getInputNumberList();
-        int strikeCount = getStrikeCount(randomNumberList, inputNumberList);
-        int ballCount = getBallCount(randomNumberList, inputNumberList);
-        System.out.println(getResult(strikeCount, ballCount));
-        if (strikeCount == 3) {
-            return true;
-        }
-        return false;
+    Map<String, Integer> strikeBallCount = new HashMap<>();
+
+    public Map<String, Integer> getStrikeBallCount(List<Character> randomNumbers, List<Character> inputNumbers) {
+        int strikeCount = getStrikeCount(randomNumbers, inputNumbers);
+        int ballCount = getBallCount(randomNumbers, inputNumbers);
+        strikeBallCount.put("ball", ballCount);
+        strikeBallCount.put("strike", strikeCount);
+        return strikeBallCount;
+
     }
 
     public List<Character> createRandomNumberList() {
-        List<Character> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < 3) {
+        List<Character> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < 3) {
             char randomNumber = (char) (Randoms.pickNumberInRange(1, 9) + '0');
-            if (!randomNumberList.contains(randomNumber)) {
-                randomNumberList.add(randomNumber);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
-        return randomNumberList;
+        return randomNumbers;
     }
 
-    public static List<Character> createInputNumberList(String input) {
-        List<Character> inputNumberList = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            inputNumberList.add(input.charAt(i));
-        }
-        return inputNumberList;
-    }
-
-    public static int getStrikeCount(List<Character> randomNumberList, List<Character> inputNumberList) {
+    public static int getStrikeCount(List<Character> randomNumbers, List<Character> inputNumbers) {
         int strikeCount = 0;
-        for (int i = 0; i < randomNumberList.size(); i++) {
-            if (inputNumberList.get(i) == randomNumberList.get(i)) {
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            if (inputNumbers.get(i) == randomNumbers.get(i)) {
                 strikeCount++;
-                inputNumberList.set(i, 's');
+                inputNumbers.set(i, 'c');
                 continue;
             }
         }
         return strikeCount;
     }
 
-    public static int getBallCount(List<Character> randomNumberList, List<Character> inputNumberList) {
+    public static int getBallCount(List<Character> randomNumbers, List<Character> inputNumbers) {
         int ballCount = 0;
-        for (int i = 0; i < inputNumberList.size(); i++) {
-            if (inputNumberList.get(i) == 's') {
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            char findNumber = inputNumbers.get(i);
+            if (findNumber == 'c') {
                 continue;
             }
-            for (int j = 0; j < randomNumberList.size(); j++) {
-                if (inputNumberList.get(j) == 's' || inputNumberList.get(j) == 'b') {
-                    continue;
-                }
-                if (inputNumberList.get(i) == randomNumberList.get(j)) {
-                    ballCount++;
-                    char changeChar = inputNumberList.get(j);
-                    inputNumberList.set(i, changeChar);
-                    inputNumberList.set(j, 'b');
-                    continue;
-                }
+            if (!randomNumbers.contains(findNumber)) {
+                continue;
             }
+            if (inputNumbers.get(randomNumbers.indexOf(findNumber)) == 'c') {
+                continue;
+            }
+            int ballIndex = searchBall(findNumber, randomNumbers);
+            inputNumbers.set(i, 'c');
+            Collections.swap(inputNumbers, i, ballIndex);
+            ballCount++;
         }
         return ballCount;
     }
 
-    public static String getResult(int strikeCount, int ballCount) {
+    public static int searchBall(char findNumber, List<Character> randomNumbers) {
+        int ballIndex = 0;
 
-        if (strikeCount == 3) {
-            return strikeCount + "스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        for (int j = 0; j < randomNumbers.size(); j++) {
+            if (findNumber == randomNumbers.get(j)) {
+                ballIndex = j;
+                break;
+            }
         }
-        if (strikeCount != 0 && ballCount == 0) {
-            return strikeCount + "스트라이크";
-        }
-        if (strikeCount == 0 && ballCount != 0) {
-            return ballCount + "볼";
-        }
-        if (strikeCount != 0 && ballCount != 0) {
-            return ballCount + "볼 " + strikeCount + "스트라이크";
-        }
-
-        return "낫싱";
-
+        return ballIndex;
     }
 
 }
