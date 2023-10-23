@@ -3,17 +3,17 @@ package baseball.domain;
 import baseball.domain.gamenumber.GameNumbers;
 
 public class GameSet {
-    private final GameNumbers computerGameNumbers;
+    private final GameNumbers targetGameNumbers;
     private boolean isSetEnd;
 
-    public GameSet() {
-        computerGameNumbers = RandomGameNumbersGenerator.generateRandomGameNumbers();
+    public GameSet(GameNumbers targetGameNumbers) {
+        this.targetGameNumbers = targetGameNumbers;
         isSetEnd = false;
     }
 
     public RoundResult playRound(String userNumberInput) {
         GameNumbers userGameNumbers = new GameNumbers(userNumberInput);
-        RoundResult roundResult = new RoundResult(userGameNumbers, computerGameNumbers);
+        RoundResult roundResult = new RoundResult(userGameNumbers, targetGameNumbers);
 
         checkSetEnd(roundResult);
 
