@@ -21,11 +21,11 @@ public class Game {
         List<BaseballNumber> userNumberList = userBaseballNumbers.getBaseballNumbers();
         for (int userNumberIdx = 0; userNumberIdx < BaseballNumbers.NUMBERS_LENGTH; userNumberIdx++) {
             BaseballNumber userNumber = userNumberList.get(userNumberIdx);
-
-            if (isStrike(computerBaseballNumberList, userNumber, userNumberIdx)) {
+            int indexOfUserNumberInComputerNumbers = computerBaseballNumberList.indexOf(userNumber);
+            if (isStrike(indexOfUserNumberInComputerNumbers, userNumberIdx)) {
                 result.strike();
             }
-            if (isBall(computerBaseballNumberList, userNumber, userNumberIdx)) {
+            if (isBall(indexOfUserNumberInComputerNumbers, userNumberIdx)) {
                 result.ball();
             }
         }
@@ -40,12 +40,12 @@ public class Game {
         }
     }
 
-    private static boolean isBall(List<BaseballNumber> computerBaseballNumberList, BaseballNumber userNumber, int userNumberIdx) {
-        return computerBaseballNumberList.contains(userNumber) && computerBaseballNumberList.indexOf(userNumber) != userNumberIdx;
+    private static boolean isBall(int indexOfUserNumberInComputerNumbers, int userNumberIdx) {
+        return indexOfUserNumberInComputerNumbers != -1 && indexOfUserNumberInComputerNumbers != userNumberIdx;
     }
 
-    private static boolean isStrike(List<BaseballNumber> computerBaseballNumberList, BaseballNumber userNumber, int userNumberIdx) {
-        return computerBaseballNumberList.contains(userNumber) && computerBaseballNumberList.indexOf(userNumber) == userNumberIdx;
+    private static boolean isStrike(int indexOfUserNumberInComputerNumbers, int userNumberIdx) {
+        return indexOfUserNumberInComputerNumbers == userNumberIdx;
     }
 
     public boolean isGameOver() {
