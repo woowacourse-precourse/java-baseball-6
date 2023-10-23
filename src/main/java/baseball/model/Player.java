@@ -27,4 +27,8 @@ public class Player {
     public Integer getGameStateNumber() {
         return gameStateNumber.getNumber();
     }
+
+    public boolean continueGame() {
+        return gameStateNumber.isExit();
+    }
 }
