@@ -38,7 +38,7 @@ public class BaseballController {
             }
 
             // 플레이어가 입력한 수에 문자가 있는 경우 예외처리
-            if (isCharacterExist(randomNum)){
+            if (baseballException.isCharacterExist(randomNum)){
                 throw new IllegalArgumentException();
             }
 
