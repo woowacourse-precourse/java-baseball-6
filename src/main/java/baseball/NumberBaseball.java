@@ -15,6 +15,14 @@ public class NumberBaseball {
         this.computer = new Computer();
     }
 
+    public void startGame() {
+        printMessage();
+
+        setComputerRandomNumber();
+        setInputNumberMessage();
+        getNumberFromUser();
+    }
+
     public void printMessage() {
         System.out.print(message.getMessage());
     }
