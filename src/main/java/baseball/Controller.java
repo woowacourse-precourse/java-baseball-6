@@ -35,8 +35,7 @@ public class Controller {
     }
 
     private int key() {
-        int key = 0;
-        key = Integer.parseInt(Console.readLine());
+        int key = Integer.parseInt(Console.readLine());
         checkException.checkException_Exit(key);
 
         return key;

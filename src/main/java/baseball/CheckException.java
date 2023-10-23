@@ -6,11 +6,16 @@ public class CheckException {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
-        // 지금은 데이터가 3개 밖에 없어서 이렇게 할 수 있지만 일반적인 공식은 없는가?
-        // [수정 필요]
-        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(
-                2)) {
-            throw new IllegalArgumentException();
+
+        // 이중 반복문 사용으로 그나마 해결
+        // 더 좋은 방법은 없는가? 람다식?
+        char[] inputCharArray = input.toCharArray();
+        for (int i = 0; i < inputCharArray.length; i++) {
+            for (int j = i + 1; j < inputCharArray.length; j++) {
+                if (inputCharArray[i] == inputCharArray[j]) {
+                    throw new IllegalArgumentException();
+                }
+            }
         }
     }
 

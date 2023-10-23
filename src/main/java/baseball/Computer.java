@@ -14,7 +14,6 @@ public class Computer {
         }
     }
 
-    // 추후 computer에 저장된 데이터를 사용하기 위해 getter 선언
     public int[] getComputer() {
         return computer;
     }
