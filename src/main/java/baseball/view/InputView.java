@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static InputView instance = new InputView();
+    private static final InputView instance = new InputView();
 
     private InputView() {
     }

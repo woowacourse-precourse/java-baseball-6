@@ -16,7 +16,7 @@ public class OutputView {
     private static final String NOTHING = "낫싱";
 
 
-    private static OutputView instance = new OutputView();
+    private static final OutputView instance = new OutputView();
 
 
     private OutputView() {
