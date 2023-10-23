@@ -1,5 +1,6 @@
 package baseball.Controller;
 
+import baseball.Model.BaseballComparator;
 import baseball.Model.ComputerNumberPicker;
 import baseball.Model.UserNumberPicker;
 import baseball.View.InputView;
@@ -18,11 +19,14 @@ public class BaseballGameController {
     }
 
     public void playOneRoundGame() {
-//        do {
-            int[] computer = new ComputerNumberPicker().computer;
+        boolean threeStrike = false;
+        int[] computer = new ComputerNumberPicker().computer;
+        do {
             int[] user = new UserNumberPicker().user;
-
-//        } while ();
+            BaseballComparator round = new BaseballComparator(computer, user);
+            OutputView.printGameResult(round.strikeCount, round.ballCount);
+            threeStrike = round.checkThreeStrike();
+        } while (!threeStrike);
     }
 
     private static boolean endGame() throws IllegalArgumentException{

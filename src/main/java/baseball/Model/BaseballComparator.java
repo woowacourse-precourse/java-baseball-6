@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballComparator {
-    private final int ballCount;
-    private final int strikeCount;
+    public final int ballCount;
+    public final int strikeCount;
 
     public BaseballComparator(int[] computer, int[] user) {
         this.ballCount = checkBall(computer, user);
@@ -32,5 +32,9 @@ public class BaseballComparator {
             }
         }
         return ballCount;
+    }
+
+    public boolean checkThreeStrike() {
+        return strikeCount == 3;
     }
 }
