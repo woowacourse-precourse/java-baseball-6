@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NumberTest {
     
@@ -70,5 +71,59 @@ class NumberTest {
         
         // then
         assertThat(computersNumber).isInstanceOf(String.class);
+    }
+    
+    @DisplayName("사용자의 입력은 숫자만 들어울 수 있다.")
+    @Test
+    void userInputShouldContainOnlyDigit() {
+        // given
+        Number number = new Number();
+        String alphabets = "abc";
+        String punctuationSymbols = "!@#";
+        
+        // when // then
+        assertThatThrownBy(() -> number.setUserNumber(alphabets))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> number.setUserNumber(punctuationSymbols))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @DisplayName("사용자가 입력하는 숫자가 총 3자리의 수이다.")
+    @Test
+    void userNumberShouldBeThreeDigits() {
+        // given
+        Number number = new Number();
+        String lessThanThreeLengthNumber = "1";
+        String moreThanThreeLengthNumber = "12456";
+        
+        // when // then
+        assertThatThrownBy(() -> number.setUserNumber(lessThanThreeLengthNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> number.setUserNumber(moreThanThreeLengthNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @DisplayName("사용자가 입력하는 숫자는 1부터 9까지의 숫자로 구성된다. 0은 들어올 수 없다.")
+    @Test
+    void userNumberShouldBeBetweenOneAndNine() {
+        // given
+        Number number = new Number();
+        String nonNumberBetweenOneAndNine = "908";
+        
+        // when // then
+        assertThatThrownBy(() -> number.setUserNumber(nonNumberBetweenOneAndNine))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @DisplayName("사용자가 입력하는 숫자는 서로 다른 숫자들로 구성된다.")
+    @Test
+    void userNumberShouldNotContainDuplicateDigits() {
+        // given
+        Number number = new Number();
+        String duplicateNumber = "998";
+        
+        // when // then
+        assertThatThrownBy(() -> number.setUserNumber(duplicateNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
