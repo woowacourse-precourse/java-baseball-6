@@ -18,7 +18,7 @@ class PlayerValidationTest {
         String number = "aaa";
 
         //than (기능 작동 후 결과)
-        Assertions.assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckNumber(number));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckedNumber(number));
     }
 
     @Test
@@ -29,7 +29,7 @@ class PlayerValidationTest {
         int size = 3;
 
         //than (기능 작동 후 결과)
-        Assertions.assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckSize(number,size));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckedSize(number,size));
     }
 
     @Test
@@ -39,7 +39,7 @@ class PlayerValidationTest {
         String number = "112";
 
         //than (기능 작동 후 결과)
-        Assertions.assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckDuplicate(number));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isDifferentNumbers(number));
     }
 
     @Test
@@ -50,7 +50,7 @@ class PlayerValidationTest {
         List<Integer> listNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
 
         //when (기능 작동)
-        List<Integer> numbers = PlayerValidation.isCheckDuplicate(number);
+        List<Integer> numbers = PlayerValidation.isDifferentNumbers(number);
 
         //then (기능 작동 후 결과)
         org.assertj.core.api.Assertions.assertThat(numbers).isEqualTo(listNumber);
@@ -63,6 +63,6 @@ class PlayerValidationTest {
         String number = "3";
 
         //then (기능 작동 후 결과)
-        assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckOneOrTwo(number));
+        assertThrows(IllegalArgumentException.class, () -> PlayerValidation.isCheckedOneOrTwo(number));
     }
 }

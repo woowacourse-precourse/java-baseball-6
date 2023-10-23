@@ -12,12 +12,12 @@ public class PlayerValidation {
     private static final int answerNumberSize = 1;
 
     public static List<Integer> checkNumber(String numbers){
-        isCheckNumber(numbers);
-        isCheckSize(numbers,numberSize);
-        return isCheckDuplicate(numbers);
+        isCheckedNumber(numbers);
+        isCheckedSize(numbers,numberSize);
+        return isDifferentNumbers(numbers);
     }
 
-    public static void isCheckNumber(String numbers) {
+    public static void isCheckedNumber(String numbers) {
         for(int i=0; i<numbers.length(); i++){
             if(!Character.isDigit(numbers.charAt(i))){
                 throw new IllegalArgumentException(NUMBER_ERROR_MESSAGE);
@@ -25,13 +25,13 @@ public class PlayerValidation {
         }
     }
 
-    public static void isCheckSize(String numbers, int size) {
+    public static void isCheckedSize(String numbers, int size) {
         if(numbers.length() != size){
             throw new IllegalArgumentException(size+SIZE_ERROR_MESSAGE);
         }
     }
 
-    public static List<Integer> isCheckDuplicate(String numbers) {
+    public static List<Integer> isDifferentNumbers(String numbers) {
         List<Integer> number = new ArrayList<>();
         for(int i=0; i<numbers.length(); i++){
             if(number.contains((numbers.charAt(i)-'0'))){
@@ -43,13 +43,13 @@ public class PlayerValidation {
     }
 
     public static Integer checkAnswerNumber(String number) {
-        isCheckNumber(number);
-        isCheckSize(number, answerNumberSize);
-        isCheckOneOrTwo(number);
+        isCheckedNumber(number);
+        isCheckedSize(number, answerNumberSize);
+        isCheckedOneOrTwo(number);
         return Integer.parseInt(number);
     }
 
-    public static void isCheckOneOrTwo(String number) {
+    public static void isCheckedOneOrTwo(String number) {
         if(!(number.equals("1") || number.equals("2"))){
             throw new IllegalArgumentException(IS_NOT_INPUT_ERROR_MESSAGE);
         }
