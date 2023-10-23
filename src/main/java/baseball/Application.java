@@ -19,14 +19,32 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String randomNum = Console.readLine();
 
+        int strike = 0;
+        int ball = 0;
+
         // 컴퓨터가 임의로 뽑은 수 3개와 플레이어가 입력한 숫자 3개 비교
         for (int i=0; i<3; i++) {
             int index = 0;
             String number = Character.toString(computer.charAt(i));
             if (randomNum.contains(number)){
                 index = randomNum.indexOf(number);
-
+                if (i==index) {
+                    strike+=1;
+                } else {
+                    ball+=1;
+                }
             }
+        }
+
+        // 스트라이크, 볼, 낫싱 개수 세기
+        if (strike==0 && ball==0) {
+
+        } else if (ball==0) {
+
+        } else if (strike==0) {
+
+        } else {
+
         }
 
     }
