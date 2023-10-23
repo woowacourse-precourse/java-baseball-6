@@ -27,13 +27,6 @@ public class Referee {
         return count;
     }
 
-    private static int increaseIf(Function<Integer, Boolean> func, int i, int count) {
-        if (func.apply(i)) {
-            count += 1;
-        }
-        return count;
-    }
-
     private static boolean isBall(int i) {
         char number = playerBall.ballAt(i);
         return computerBall.ballAt(i) != number && computerBall.contains(number);
@@ -52,5 +45,12 @@ public class Referee {
 
     private static boolean isStrike(int i) {
         return computerBall.ballAt(i) == playerBall.ballAt(i);
+    }
+
+    private static int increaseIf(Function<Integer, Boolean> func, int i, int count) {
+        if (func.apply(i)) {
+            count += 1;
+        }
+        return count;
     }
 }
