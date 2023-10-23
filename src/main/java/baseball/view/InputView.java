@@ -3,6 +3,7 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -26,7 +27,7 @@ public class InputView {
     }
 
     private static void CheckDifferentNumbers(List<Integer> ballNumbers) {
-        Set<Integer> differentNumbers = ballNumbers.stream().collect(Collectors.toSet());
+        Set<Integer> differentNumbers = new HashSet<>(ballNumbers);
         if (differentNumbers.size() != 3) {
             throw new IllegalArgumentException("서로 다른 3자리 수를 입력하세요.");
         }
