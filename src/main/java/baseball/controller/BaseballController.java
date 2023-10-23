@@ -4,6 +4,7 @@ import baseball.model.BaseballModel;
 import baseball.view.BaseballView;
 
 public class BaseballController {
+
     private BaseballModel model;
     private BaseballView view;
 
@@ -16,8 +17,6 @@ public class BaseballController {
         view.displayGameStartMessage();
 
         boolean shouldRestart = true;
-
-        model.generateRandomNumber(); // 게임 시작 시에 난수 생성
 
         while (shouldRestart) {
 
@@ -43,7 +42,7 @@ public class BaseballController {
                     shouldRestart = false; // 게임 종료
                 } else if (choice == 1) {
                     shouldRestart = true; // 게임 재시작
-                    model.generateRandomNumber(); // 게임 재시작 시에 새로운 난수 생성
+                    model = new BaseballModel(); // 게임 재시작 시에 새로운 난수 생성
                 }
             }
         }
