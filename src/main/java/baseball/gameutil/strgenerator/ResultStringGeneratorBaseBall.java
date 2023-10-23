@@ -1,5 +1,6 @@
-package baseball.gameutil;
+package baseball.gameutil.strgenerator;
 
+import baseball.gameutil.Score;
 import baseball.message.MessageString;
 
 public class ResultStringGeneratorBaseBall implements ResultStringGenerator {

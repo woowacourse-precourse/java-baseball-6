@@ -1,5 +1,7 @@
 package baseball.gameutil;
 
+import baseball.gameutil.strgenerator.ResultStringGenerator;
+import baseball.gameutil.strgenerator.ResultStringGeneratorBaseBall;
 import baseball.message.MessageString;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

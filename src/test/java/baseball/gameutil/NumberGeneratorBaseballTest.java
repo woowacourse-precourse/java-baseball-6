@@ -1,5 +1,7 @@
 package baseball.gameutil;
 
+import baseball.gameutil.numbergenerator.NumberGenerator;
+import baseball.gameutil.numbergenerator.NumberGeneratorBaseball;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

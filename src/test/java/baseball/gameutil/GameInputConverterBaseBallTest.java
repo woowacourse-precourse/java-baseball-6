@@ -1,5 +1,7 @@
 package baseball.gameutil;
 
+import baseball.gameutil.converter.GameInputConverter;
+import baseball.gameutil.converter.GameInputConverterBaseball;
 import baseball.io.Input;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;

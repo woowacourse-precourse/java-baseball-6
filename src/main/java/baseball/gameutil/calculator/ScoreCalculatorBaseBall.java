@@ -1,5 +1,6 @@
-package baseball.gameutil;
+package baseball.gameutil.calculator;
 
+import baseball.gameutil.Score;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

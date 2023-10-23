@@ -1,12 +1,12 @@
 package baseball.game;
 
 import baseball.Constant;
-import baseball.gameutil.GameInputConverter;
+import baseball.gameutil.converter.GameInputConverter;
 import baseball.gameutil.InputMod;
-import baseball.gameutil.NumberGenerator;
-import baseball.gameutil.ResultStringGenerator;
+import baseball.gameutil.numbergenerator.NumberGenerator;
+import baseball.gameutil.strgenerator.ResultStringGenerator;
 import baseball.gameutil.Score;
-import baseball.gameutil.ScoreCalculator;
+import baseball.gameutil.calculator.ScoreCalculator;
 import baseball.io.Output;
 import baseball.message.MessageString;
 import java.util.List;

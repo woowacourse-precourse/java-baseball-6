@@ -1,4 +1,4 @@
-package baseball.gameutil;
+package baseball.gameutil.numbergenerator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

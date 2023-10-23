@@ -1,5 +1,6 @@
-package baseball.gameutil;
+package baseball.gameutil.converter;
 
+import baseball.gameutil.InputMod;
 import baseball.gameutil.validate.ValidateInput;
 import baseball.gameutil.validate.ValidateInputFactory;
 import baseball.io.Input;
