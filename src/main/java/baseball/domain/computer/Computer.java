@@ -32,14 +32,6 @@ public class Computer {
         }
     }
 
-    public int getBallCount() {
-        return ballCount;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
     // 볼,스트라이크 상태 문자열 반환
     public String showResult() {
         if (ballCount > 0 && strikeCount > 0) {
@@ -57,4 +49,19 @@ public class Computer {
             return "낫싱";
         }
     }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    // 상태 초기화
+    protected void clear() {
+        this.strikeCount = 0;
+        this.ballCount = 0;
+    }
+
 }

@@ -1,5 +1,7 @@
 package baseball.domain.computer;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +13,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
     private static final Computer computer = new Computer();
+
+    @AfterEach()
+    void clear() {
+        computer.clear();
+    }
 
     @Test
     @DisplayName("사용자가 정답을 입력하면 참을 반환합니다.")
@@ -30,11 +37,6 @@ class ComputerTest {
 
         // THEN
         assertThat(answer).isEqualTo(true);
-    }
-
-    @Test
-    @DisplayName("볼,스트라이크 상태 문자열 반환합니다.")
-    void showResult() {
     }
 
     @Test
@@ -84,7 +86,7 @@ class ComputerTest {
     }
 
     @Test
-    @DisplayName("볼 여부를 판별합니다.")
+    @DisplayName("스트라이크 여부를 판별합니다.")
     void testStrike() {
         // GIVEN
         List<Integer> userInputs = new ArrayList<>();

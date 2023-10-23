@@ -23,7 +23,8 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                 // 재시작 여부
-                Integer wouldRestartGame = user.getWouldRestartGame();
+                String userOption = Console.readLine();
+                Integer wouldRestartGame = user.getWouldRestartGame(userOption);
                 System.out.println(wouldRestartGame);
 
                 // 재시작 / 종료 실행

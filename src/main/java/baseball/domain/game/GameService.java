@@ -3,6 +3,7 @@ package baseball.domain.game;
 import baseball.domain.computer.Computer;
 import baseball.domain.user.User;
 import baseball.domain.utils.RandomGenerator;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -45,11 +46,15 @@ public class GameService {
         System.out.print("숫자를 입력해주세요 : ");
 
         try {
-            // 랜덤수 , 사용자 값 비교 :: 맞다면 게임 종료 이후, 재시작 여부 / 아니라면 계속 비교
+            // 랜덤수 , 사용자 정답입력값 비교 :: 맞다면 게임 종료 이후, 재시작 여부 / 아니라면 계속 비교
             while (true) {
-                // 사용자 값 입력
-                user.getInputsFromUser();
-                List<Integer> userInputs = user.getUserInputs();
+                // 사용자 정답입력값  입력
+                String userAnswer = Console.readLine();
+                // 사용자 정답입력값 파싱
+                user.parseUserAnswer(userAnswer);
+                List<Integer> userInputs = user.getUserAnswerInputs();
+
+                // 정답 여부 판단
                 if (computer.isAnswer(userInputs, randomNumbers)) {
                     // 정답이라면 상태 출력 후, 게임 종료
                     System.out.println(computer.showResult());
