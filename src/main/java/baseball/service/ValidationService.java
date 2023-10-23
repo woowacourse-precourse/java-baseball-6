@@ -1,38 +1,46 @@
 package baseball.service;
 
+import baseball.util.ExceptionHandler;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ValidationService {
+    private final ExceptionHandler exceptionHandler = new ExceptionHandler();
+
     public void isValidNumber(String str) {
-        if (isThreeDigits(str) && hasNoZero(str) && hasUniqueDigits(str) && isNumeric(str)) {
-            return;
+        isThreeDigits(str);
+        hasNoZero(str);
+        hasUniqueDigits(str);
+        isNumeric(str);
+    }
+
+    private void isThreeDigits(String str) {
+        if (!(str.length() == 3)) {
+            exceptionHandler.throwIfNumberTooLong();
         }
-        throw new IllegalArgumentException();
     }
 
-    private boolean isThreeDigits(String str) {
-        return str.length() == 3;
+    private void hasNoZero(String str) {
+        if (str.contains("0")) {
+            exceptionHandler.throwIfNumberHasZero();
+        }
     }
 
-    private boolean hasNoZero(String str) {
-        return !str.contains("0");
-    }
-
-    private boolean hasUniqueDigits(String str) {
+    private void hasUniqueDigits(String str) {
         char[] digits = str.toCharArray();
         Set<Character> uniqueSet = new HashSet<>();
 
         for (char digit : digits) {
             if (uniqueSet.contains(digit)) {
-                return false;
+                exceptionHandler.throwIfNumberIsDuplicated();
             }
             uniqueSet.add(digit);
         }
-        return true;
     }
 
-    private boolean isNumeric(String str) {
-        return str.matches("\\d+");
+    public void isNumeric(String str) {
+        if (!str.matches("\\d+")) {
+            exceptionHandler.throwIfStringIsNotNumeric();
+        }
     }
 }
