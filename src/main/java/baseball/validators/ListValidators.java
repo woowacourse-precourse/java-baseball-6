@@ -2,7 +2,7 @@ package baseball.validators;
 
 import java.util.List;
 
-public final class ObjectDistinctValidator {
+public final class ListValidators {
 
     public static void validateDistinct(List<Object> objects) {
         int entireSize = objects.size();

@@ -1,7 +1,7 @@
 package baseball.balls;
 
 import baseball.validators.BallsValidators;
-import baseball.validators.ObjectDistinctValidator;
+import baseball.validators.ListValidators;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +13,8 @@ public class Balls {
 
     public Balls(List<Ball> balls) {
         BallsValidators.validateBallCount(balls);
-        ObjectDistinctValidator.validateDistinct(values());
-        ObjectDistinctValidator.validateDistinct(indexs());
+        ListValidators.validateDistinct(values());
+        ListValidators.validateDistinct(indexs());
         this.balls = balls;
     }
 
