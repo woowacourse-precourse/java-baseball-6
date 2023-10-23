@@ -44,6 +44,17 @@ public class ValidationTest extends NsTest {
                 .hasMessage("[Err] 입력 값에 공백이 포함되어 있습니다.");
     }
 
+    @Test
+    void 사용자_게임_입력_값_숫자가_아닐경우_예외_테스트(){
+        //given
+        String input_value = "12a";
+
+        //when
+        assertThatThrownBy(()->GameValidation.verifyForGameValue(input_value,input_length))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[Err] 입력 값이 숫자가 아닙니다.");
+    }
+
     @ParameterizedTest
     @DisplayName("사용자 게임 입력 값 예외 통합 테스트")
     @ValueSource(strings = {"1234","12","1 3","12a","222","012",""})
