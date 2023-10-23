@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
 class ComputerTest {
-
     final int MAX_SIZE = 3;
     final int LOWER_INCLUSIVE = 1;
     final int UPPER_INCLUSIVE = 9;
