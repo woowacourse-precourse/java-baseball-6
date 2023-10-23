@@ -2,6 +2,8 @@ package baseball.computer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.game.Computer;
+import baseball.game.GameNumbers;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

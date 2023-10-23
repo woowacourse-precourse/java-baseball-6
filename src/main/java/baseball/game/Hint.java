@@ -1,4 +1,4 @@
-package baseball.computer;
+package baseball.game;
 
 import java.util.List;
 
