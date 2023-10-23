@@ -16,6 +16,18 @@ public class Computer {
 
     private List<Integer> randomNumbers;
 
+    public Computer() {
+    }
+
+    public void init() {
+        while (VERIFICATION_PASSED) {
+            generateRandomNumbers();
+            if (validateNumbers(randomNumbers) == VERIFICATION_PASSED) {
+                break;
+            }
+        }
+    }
+
     private void generateRandomNumbers() {
         randomNumbers = new ArrayList<>();
         Set<Integer> set = new HashSet<>();
