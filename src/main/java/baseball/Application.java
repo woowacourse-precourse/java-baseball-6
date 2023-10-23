@@ -44,7 +44,7 @@ public class Application {
 			userNumberMaker.checkInputSize(inputUserNumber);
 
 			List<Integer> userNumber = userNumberMaker.toListUserNumber(inputUserNumber);
-			userNumberMaker.checkSizeUserNum(userNumber);
+			userNumberMaker.checkDuplicationUserNum(userNumber);
 			userNumberMaker.checkRangeUserNum(userNumber);
 
 			ballNumber = countBall(computerNumber, userNumber);
@@ -169,7 +169,7 @@ class UserNumberMaker {
 	void checkInputSize(String[] inputUserNumber) {
 
 		if (inputUserNumber.length != USER_NUMBER_SIZE) {
-			throw new IllegalArgumentException("3자리 숫자만 입력해주세요.");
+			throw new IllegalArgumentException(USER_NUMBER_SIZE + "자리 숫자만 입력해주세요.");
 		}
 	}
 
@@ -187,10 +187,10 @@ class UserNumberMaker {
 		return userNumber;
 	}
 
-	void checkSizeUserNum(List<Integer> userNumber) {
+	void checkDuplicationUserNum(List<Integer> userNumber) {
 
 		if (userNumber.size() != USER_NUMBER_SIZE) {
-			throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력해주세요");
+			throw new IllegalArgumentException("중복되지 않는 " + USER_NUMBER_SIZE + "자리 숫자만 입력해주세요");
 		}
 	}
 
@@ -198,7 +198,7 @@ class UserNumberMaker {
 
 		for (Integer eachUserNumber : userNumber) {
 			if (!(USER_MIN_NUMBER <= eachUserNumber && eachUserNumber <= USER_MAX_NUMBER)) {
-				throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요");
+				throw new IllegalArgumentException(USER_MIN_NUMBER + "~" + USER_MAX_NUMBER + " 사이의 숫자만 입력해주세요");
 			}
 		}
 	}
