@@ -5,27 +5,31 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+
 public class Game {
 
     public static void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (true){
+        while (Data.isPlaying){
             initComputerNumber();
-            //System.out.println(Data.computerNumber); // 디버깅용
+            System.out.println(Data.computerNumber); // 디버깅용
             setPlayerNumber();
             getResult();
             printHint();
-            if(Data.strike == Data.ANSWER_STRIKE){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                if(!restartGame()){
-                    break;
-                }
-                Data.isCreated = false;
-            }
+            checkAnswer();
 
         }
     }
+    static void checkAnswer(){
 
+        if(Data.strike == Data.ANSWER_STRIKE){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Data.isPlaying = restartGame();
+            System.out.println(Data.isPlaying);
+            Data.isCreated = false;
+        }
+
+    }
     static boolean restartGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int input = Integer.parseInt(playerInput());

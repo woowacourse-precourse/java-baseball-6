@@ -3,7 +3,8 @@ package baseball;
 import java.util.ArrayList;
 
 public class Data {
-    public static boolean isCreated = false;
+    static boolean isPlaying = true;
+    static boolean isCreated = false;
     public static ArrayList<Integer> computerNumber;
     public static ArrayList<Integer> playerNumber;
     public static final int DO_RESTART = 1;
