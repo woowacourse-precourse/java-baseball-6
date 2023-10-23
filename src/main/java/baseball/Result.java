@@ -23,4 +23,12 @@ public class Result {
         }
         return ball + BALL_STRING + " " + strike + STRIKE_STRING;
     }
+
+    public boolean is3Strike() {
+        if (strike == NUMBER_COUNT) {
+            System.out.println(SUCCESS_MESSAGE);
+            return true;
+        }
+        return false;
+    }
 }

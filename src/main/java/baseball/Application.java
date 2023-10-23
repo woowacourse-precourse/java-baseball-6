@@ -10,9 +10,11 @@ public class Application {
             game.play();
         } while (restart());
     }
+
     public static boolean restart() {
         System.out.println(RESTART_MESSAGE);
         String inputString = Console.readLine();
+
         if (inputString.equals(RESTART_STRING)) {
             return true;
         }
