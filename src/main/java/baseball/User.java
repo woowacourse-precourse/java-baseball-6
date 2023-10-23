@@ -7,6 +7,10 @@ import java.util.List;
 public class User {
     List<Integer> user = new ArrayList<>();
 
+    public void init(){
+        user.clear();
+    }
+
     public void selectUserNumber(){ // TODO: 리팩토링(너무 많은 로직이 들어있음)
         String[] input = Console.readLine().split("");
 

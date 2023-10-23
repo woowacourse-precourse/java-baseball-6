@@ -7,6 +7,10 @@ import java.util.List;
 public class Computer {
     List<Integer> computer = new ArrayList<>();
 
+    public void init(){
+        computer.clear();
+    }
+
     public void selectRandomNumber(){
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
