@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -25,6 +26,54 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_입력_중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_숫자_입력_범위_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("102"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_숫자_입력_타입_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("String"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_종료_입력_타입_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () -> {
+                        run("246", "135", "String");
+                    });
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 사용자_종료_입력_범위_외의_숫자_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () ->
+                        run("246", "135", "7")
+                    );
+                },
+                1, 3, 5
         );
     }
 
