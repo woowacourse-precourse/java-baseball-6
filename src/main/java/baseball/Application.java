@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -8,8 +9,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-
-    private static Scanner s = new Scanner(System.in);
 
     private static void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -39,12 +38,13 @@ public class Application {
 
     private static List<Integer> getUserAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
-        int n = s.nextInt();
+        String n = Console.readLine();
+        int num = Integer.parseInt(n);
         List<Integer> userAnswer = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            userAnswer.add(n % 10);
-            n /= 10;
+            userAnswer.add(num % 10);
+            num /= 10;
         }
 
         Collections.reverse(userAnswer);
@@ -77,15 +77,19 @@ public class Application {
         return false;
     }
 
-    private static int selectMenu() {
+    private static String selectMenu() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return s.nextInt();
+        return Console.readLine();
     }
 
     public static void main(String[] args) {
-        play();
-        if (selectMenu() == 1) play();
-        else System.out.println("프로그램을 종료합니다.");
+        while(true) {
+            play();
+            if (selectMenu().equals("2")) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+        }
     }
 }
