@@ -1,6 +1,6 @@
 ## ✨ 구현해야 할 기능 
 ### 랜덤값 만들기
-- [ ] 서로 다른 수로 만들어진 3자리의 수 만들기, 랜덤 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
+- [x] 서로 다른 수로 만들어진 3자리의 수 만들기, 랜덤 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
 ### 입력 요구사항 충족하기
   - 게임의 시작을 알리고, 사용자에게 숫자 입력받기, 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
       - [ ] 입력 값이 3개가 아닌 경우 확인
