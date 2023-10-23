@@ -9,8 +9,8 @@ import java.util.List;
 public class BaseBallService {
   private final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다";
   private final String ENTER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-  private int strike_cnt = 0;
-  private int ball_cnt = 0;
+  private Strike strike;
+  private Ball ball;
   List<Integer> com = new ArrayList<>();
   public void exec() {
     com = createComNums();
@@ -19,23 +19,23 @@ public class BaseBallService {
     do{
       System.out.printf(ENTER_INPUT_MESSAGE);
       List<Integer> user = createUserNums();
-      strike_cnt = 0;
-      ball_cnt = 0;
+      strike = new Strike(0);
+      ball = new Ball(0);
       for(int i = 0; i < com.size(); i++) {
         if(user.contains(com.get(i)) && user.get(i) == com.get(i)){
-          strike_cnt++;
+          strike.increase();
         } else if (user.contains(com.get(i)) && user.get(i) != com.get(i)) {
-          ball_cnt++;
+          ball.increase();
         }
       }
-      if(ball_cnt == 0 && strike_cnt == 0){
+      if(ball.getCount() == 0 && strike.getCount() == 0){
         System.out.println("낫싱");
-      } else if (ball_cnt == 0) {
-        System.out.println(String.format("%d스트라이크", strike_cnt));
-      } else if (strike_cnt == 0) {
-        System.out.println(String.format("%d볼", ball_cnt));
+      } else if (ball.getCount() == 0) {
+        System.out.println(String.format("%d스트라이크", strike.getCount()));
+      } else if (strike.getCount() == 0) {
+        System.out.println(String.format("%d볼", ball.getCount()));
       }
-    }while(strike_cnt != 3);
+    }while(strike.getCount() != 3);
     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
   }
   List<Integer> createComNums(){
