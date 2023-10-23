@@ -1,15 +1,13 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-
 import baseball.constant.NumberConst;
 import baseball.util.MessageUtil;
-
 import baseball.validation.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Game implements Runnable {
     private static final int restartNumber = NumberConst.RESTART_NUMBER; // 중지 목적 종료 숫자 확인
@@ -22,8 +20,6 @@ public class Game implements Runnable {
     private static Game instance = null;
 
     private int compareRestartNum = restartNumber; // 재시작, 종료 여부를 입력받기 위한 변수
-    private String InputString; // 입력받은 숫자 리스트로 변환하기 위한 임시 변수
-    private List<Integer> user = new ArrayList<>(); // user 에게 입력받은 숫자
     private int countBall; // Ball 개수 확인 용도
     private int countStrike; // Strike 개수 확인 용도
 
@@ -31,7 +27,8 @@ public class Game implements Runnable {
         // TODO: Game 진행
         Thread game = new Thread("Game");
         game.start();
-        startGame();
+        run();
+        stop();
     }
 
     @Override
@@ -40,6 +37,12 @@ public class Game implements Runnable {
 
         // 컴퓨터 랜덤 숫자 생성
         List<Integer> computer = createRandomNumber();
+
+        // 입력받은 숫자 리스트로 변환하기 위한 임시 변수
+        String InputString;
+
+        // user 에게 입력받은 숫자
+        List<Integer> user;
 
         // 게임 시작 메시지 출력
         messageUtil.initGame();
@@ -65,7 +68,7 @@ public class Game implements Runnable {
                     messageUtil.printSuccessGame();
                     InputString = Console.readLine();
                     compareRestartNum = Integer.parseInt(InputString);
-                    valid.validationRestartAndStopValue(compareRestartNum);
+                    InputValidator.validationRestartAndStopValue(compareRestartNum);
 
                     // 게임 재시작인 경우 새로운 랜덤 숫자 생성
                     if (compareRestartNum == restartNumber) {
@@ -78,17 +81,17 @@ public class Game implements Runnable {
                 countStrike = 0;
             }
         } catch (NoSuchElementException exception) {
-            Thread.interrupted();
+            stop();
         } finally {
             Console.close();
-            Thread.interrupted();
         }
     }
 
-    private Game() {}
+    private Game() {
+    }
 
     public static Game getInstance() {
-        if (instance  == null) {
+        if (instance == null) {
             instance = new Game();
         }
 

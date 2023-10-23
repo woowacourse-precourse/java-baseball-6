@@ -2,7 +2,6 @@ package baseball.validation;
 
 import baseball.constant.NumberConst;
 import baseball.util.MessageUtil;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,6 +40,7 @@ public class InputValidator {
         List<Integer> result;
 
         if (inputValue == null) {
+            System.out.println("입력받은 값이 없습니다.");
             throw new IllegalArgumentException();
         }
 
