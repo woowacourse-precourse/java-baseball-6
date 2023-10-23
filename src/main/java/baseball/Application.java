@@ -90,9 +90,10 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             userInput = Console.readLine();
 
-//            if (userInput.length() != 1) {
-//                throw new IllegalArgumentException("1개의 숫자를 입력하세요.");
-//            }
+            // 01과 같은 잘못된 형식으로 입력시, exitNumber != 1만으로 예외가 안잡힘
+            if (userInput.length() != 1) {
+                Application.throwException("1개의 숫자를 입력하세요.");
+            }
 
             try {
                 int exitNumber= Integer.parseInt(userInput);
