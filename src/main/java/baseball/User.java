@@ -16,6 +16,17 @@ public class User {
         String input = Console.readLine();
         char[] inputCharArray = input.toCharArray();
         validateInput(inputCharArray);
+        for (char c : inputCharArray) {
+            int number = Character.getNumericValue(c);
+            validateDuplicateNumber(number);
+            numbers.add(number);
+        }
+    }
+
+    private void validateDuplicateNumber(int number) {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateInput(char[] arr) {
