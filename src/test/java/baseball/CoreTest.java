@@ -58,6 +58,20 @@ public class CoreTest extends NsTest {
     }
 
     @Test
+    void 유저_리스트와_컴퓨터_리스트_값_비교_볼_스트라이크_테스트(){
+        //given
+        List<Integer> user = List.of(1, 2, 3);
+        List<Integer> computer = List.of(1, 3, 2);
+
+        //when
+        GameScore game_score = CompareNumber.compareNumberList(user, computer);
+
+        //then
+        assertThat(game_score.getBall_count()).isEqualTo(2);
+        assertThat(game_score.getStrike_count()).isEqualTo(1);
+    }
+
+    @Test
     void 유저_리스트와_컴퓨터_리스트_값_비교_스트라이크_테스트(){
         //given
         List<Integer> user = List.of(1, 2, 3);
