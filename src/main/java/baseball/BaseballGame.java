@@ -8,7 +8,7 @@ public class BaseballGame {
 
     //게임을 생성합니다.
     public BaseballGame() {
-
+        this.answer = generateAnswer();
     }
 
     public int generateAnswer() {
