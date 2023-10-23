@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Computer {
     List<Integer> number = new ArrayList<>();
+    String result;
 
     public List<Integer> getNumber() {
         return number;
@@ -18,5 +19,13 @@ public class Computer {
                 number.add(randomNumber);
             }
         }
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public void printResult() {
+        System.out.print(result);
     }
 }

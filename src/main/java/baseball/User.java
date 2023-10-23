@@ -55,4 +55,9 @@ public class User {
     public void addStrike() {
         this.strike++;
     }
+
+    public void resetBallAndStrike() {
+        ball = 0;
+        strike = 0;
+    }
 }
