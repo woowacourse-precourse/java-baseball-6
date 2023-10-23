@@ -1,6 +1,5 @@
 package baseball.service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,24 +21,44 @@ public class BaseballCollection {
     }
 
     // 기능: 사용자의 공을 입력 받고 생성한다
-    private List<Integer> createPlayerBalls(String number) {
-        validate(number);
-        return number
+    private List<Integer> createPlayerBalls(String numbers) {
+        validate(numbers);
+        return mapToList(numbers);
+    }
+
+    // 기능: 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택
+    private List<Integer> createComputerBalls(NumberGenerator numberGenerator) {
+        String numbers = createUniqueNumbers(numberGenerator);
+        validate(numbers);
+        return mapToList(numbers);
+    }
+
+    private List<Integer> mapToList(String target) {
+        return target
                 .chars()
                 .mapToObj(Character::getNumericValue)
                 .collect(Collectors.toList());
     }
 
-    // 기능: 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택
-    private List<Integer> createComputerBalls(NumberGenerator numberGenerator) {
-        List<Integer> computerBalls = new ArrayList<>();
-        while (computerBalls.size() < DEFAULT_CAPACITY) {
-            int randomNumber = numberGenerator.generate();
-            if (!computerBalls.contains(randomNumber)) {
-                computerBalls.add(randomNumber);
-            }
+    private String createUniqueNumbers(NumberGenerator numberGenerator) {
+        StringBuilder uniqueNumbers = new StringBuilder();
+        Set<Integer> usedNumbers = new HashSet<>();
+        while (doesNotExceedCapacity(uniqueNumbers)) {
+            int number = numberGenerator.generate();
+            appendIfUniqueNumber(number, uniqueNumbers, usedNumbers);
         }
-        return computerBalls;
+        return uniqueNumbers.toString();
+    }
+
+    private boolean doesNotExceedCapacity(StringBuilder target) {
+        return target.length() < DEFAULT_CAPACITY;
+    }
+
+    private void appendIfUniqueNumber(int number, StringBuilder target, Set<Integer> usedNumbers) {
+        if(!usedNumbers.contains(number)) {
+            target.append(number);
+            usedNumbers.add(number);
+        }
     }
 
     // 기능: 같은 수가 전혀 없으면 낫싱
