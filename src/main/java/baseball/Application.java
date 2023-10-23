@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,28 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        int inputNumber = 123;
-        System.out.println("숫자 야구 게임을 시작합니다.\n숫자를 입력해주세요 : " + inputNumber);
-        if (inputNumber == randomNumber){
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else {
-            System.out.println("1볼");
+        System.out.print("숫자 야구 게임을 시작합니다.\n숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        int userInputNumber= 0;
+        try {
+             userInputNumber = Integer.parseInt(userInput);
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException("숫자가 아닌 것이 섞여 있을 때");
         }
+        System.out.println(userInputNumber);
+
+        System.out.println(userInput);
+
+
+
+
+
+//        int inputNumber = 123;
+//        if (inputNumber == randomNumber){
+//            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+//        } else {
+//            System.out.println("1볼");
+//        }
 
 
 
