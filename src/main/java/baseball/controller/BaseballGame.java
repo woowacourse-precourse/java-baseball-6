@@ -32,7 +32,7 @@ public class BaseballGame {
         return baseBallGameLogic.checkExitGame(exitNumber);
     }
 
-    public boolean gameStop(int strikeCount) throws IllegalArgumentException {
+    public boolean gameStop(int strikeCount) {
         return baseBallGameLogic.gameStopCheckInputNumber(strikeCount);
     }
 }

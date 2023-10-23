@@ -7,15 +7,24 @@ import java.util.Arrays;
 public class GenerateNumber {
 
     public void createRandomNumber() {
-
-        int num[] = new int[3];
+        /*List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        Number number = new Number();
+        number.setComputerNumber(computer.toString());*/
+        int[] num = new int[3];
         int i = 0;
         int j = 0;
         while (CheckRegenerateNumber(i)) {
             for (; i < num.length; i++) {
                 num[i] = Randoms.pickNumberInRange(1, 9);
+                i = regenerateNumbers(num, i);
             }
-            i = regenerateNumbers(num);
+
         }
         Number number = new Number();
         number.setComputerNumber(num);
@@ -23,15 +32,13 @@ public class GenerateNumber {
 
     }
 
-    public int regenerateNumbers(int[] num) {
-        int i = 0;
-        for (int j = i + 1; j < 3; j++) {
-            if (duplicateCheckNumber(num, i, j)) {
-                return j;
+    public int regenerateNumbers(int[] num, int idx) {
+        for (int i = 0; i < idx; i++) {
+            if (duplicateCheckNumber(num, i, idx)) {
+                return idx - 1;
             }
-            i++;
         }
-        return i + 1;
+        return idx;
     }
 
     public boolean duplicateCheckNumber(int[] num, int i, int j) {

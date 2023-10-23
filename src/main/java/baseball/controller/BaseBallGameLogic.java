@@ -15,21 +15,27 @@ public class BaseBallGameLogic {
         printCount();
     }
 
-    public void ball(int[] inputNumber, int[] computerNumber) {
-        int count = 0;
+    public void countNumber(int[] inputNumber, int[] computerNumber) {
+        int ballCount = 0;
+        int strikeCount = 0;
         for (int i = 0; i < inputNumber.length; i++) {
             for (int j = 0; j < computerNumber.length; j++) {
                 if (i != j) {
                     if (compareNumber(inputNumber[i], computerNumber[j])) {
-                        count++;
+                        ballCount++;
+                        continue;
                     }
+                }
+                if (compareNumber(inputNumber[i], computerNumber[j])) {
+                    strikeCount++;
                 }
             }
         }
-        Count.setBall(count);
+        Count.setBall(ballCount);
+        Count.setStrike(strikeCount);
     }
 
-    public void strike(int[] inputNumber, int[] computerNumber) {
+    /*public void strike(int[] inputNumber, int[] computerNumber) {
         int count = 0;
         for (int i = 0; i < inputNumber.length; i++) {
             for (int j = 0; j < computerNumber.length; j++) {
@@ -41,24 +47,25 @@ public class BaseBallGameLogic {
             }
         }
         Count.setStrike(count);
-    }
+    }*/
 
     public boolean compareNumber(int inputNumber, int computerNumber) {
         return inputNumber == computerNumber;
     }
 
-    public boolean checkExitGame(int exitNumber) throws IllegalArgumentException {
+    public boolean checkExitGame(int exitNumber) {
         if (exitNumber == 1) {
             return true;
         } else if (exitNumber == 2) {
             return false;
         }
-        throw new IllegalArgumentException("1과2가 아닌 숫자를 입력하였습니다.");
+        throw new IllegalArgumentException();
     }
 
     public void countBallAndStrike(int[] inputNumber, int[] computerNumber) {
-        ball(inputNumber, computerNumber);
-        strike(inputNumber, computerNumber);
+        /*ball(inputNumber, computerNumber);
+        strike(inputNumber, computerNumber);*/
+        countNumber(inputNumber, computerNumber);
     }
 
     public void printCount() {
@@ -79,7 +86,7 @@ public class BaseBallGameLogic {
                 ControllNumber.setStrikeCount(Count.getStrike());
                 return true;
             }
-            System.out.println(Count.getBall());
+            System.out.print(Count.getBall());
             OutputView.ball();
             System.out.println();
             return true;
