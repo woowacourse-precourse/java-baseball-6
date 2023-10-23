@@ -42,6 +42,7 @@ public class GameService {
     * */
     public boolean endGame() {
         String input = userUtil.getUserNumber();
+        inputNumberValidator.validateGameStateInput(input);
 
         return Objects.equals(input, STOP);
     }

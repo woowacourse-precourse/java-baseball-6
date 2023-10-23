@@ -77,8 +77,8 @@ public class InputNumberValidator {
      * 게임 재시작 물음 시 플레이어의 입력값 검증 메서드
      * @Param input 플레이어의 숫자
      * */
-    private void validateGameStateInput(String input) {
-        if (!input.equals(RESTART) && input.equals(END)) {
+    public void validateGameStateInput(String input) {
+        if (!(input.equals(RESTART) && input.equals(END))) {
             throw new IllegalArgumentException();
         }
     }

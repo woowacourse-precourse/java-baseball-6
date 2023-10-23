@@ -40,6 +40,11 @@ class InputNumberValidatorTest {
         assertTrue(inputNumberValidator.convertStrToList(example) instanceof List<Integer>);
     }
 
+    @Test
+    void 숫자가_1이나_2가_아니면_예외발생() {
+        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateGameStateInput("3"));
+    }
+
 //    @Test
 //    void 숫자가_세자리가_아니면_예외발생() {
 //        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputSize("1234"));
