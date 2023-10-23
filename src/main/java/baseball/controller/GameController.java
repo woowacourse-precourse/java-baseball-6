@@ -18,11 +18,24 @@ public class GameController {
     private final InputValidation inputValidation = new InputValidation();
     private final GameService gameService = new GameService();
 
+    public List<Integer> createRandomDistinctThreeDigit() {
+        return gameService.createRandomDistinctThreeDigit();
+    }
+
     public String getUserInput() {
         System.out.print(USER_INPUT_MSG);
         String userInput = Console.readLine();
         inputValidation.validateInputNum(userInput);
         return userInput;
+    }
+
+    public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
+        gameService.countStrikeOrBall(gameInfo, userInput);
+    }
+
+    public void printResultMessageForInput(int ballCount, int strikeCount) {
+        StringBuilder outputResult = gameService.createResultMessageForInput(ballCount, strikeCount);
+        System.out.println(outputResult);
     }
 
     public void controlRestartOrExit() {
@@ -33,19 +46,6 @@ public class GameController {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.run();
         }
-    }
-
-    public void printResultMessageForInput(int ballCount, int strikeCount) {
-        StringBuilder outputResult = gameService.createResultMessageForInput(ballCount, strikeCount);
-        System.out.println(outputResult);
-    }
-
-    public List<Integer> createRandomDistinctThreeDigit() {
-        return gameService.createRandomDistinctThreeDigit();
-    }
-
-    public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
-        gameService.countStrikeOrBall(gameInfo, userInput);
     }
 
     public void startGame() {

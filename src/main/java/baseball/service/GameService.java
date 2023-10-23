@@ -15,25 +15,6 @@ import static baseball.constant.NumberConst.*;
  * 야구 게임의 비즈니스 로직을 처리하는 서비스
  */
 public class GameService {
-
-    public StringBuilder createResultMessageForInput(int ballCount, int strikeCount) {
-        StringBuilder outputResult = new StringBuilder();
-        if (ballCount == 0 && strikeCount == 0) {
-            outputResult.append(NOTHING);
-        }
-        if (ballCount != 0) {
-            outputResult.append(ballCount).append(BALL).append(" ");
-        }
-        if (strikeCount != 0) {
-            outputResult.append(strikeCount).append(STRIKE);
-        }
-        if (strikeCount == SUCCESS_STRIKE) {
-            outputResult.append("\n");
-            outputResult.append(SUCCESS_MSG);
-        }
-        return outputResult;
-    }
-
     public List<Integer> createRandomDistinctThreeDigit() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < INPUT_LENGTH) {
@@ -64,5 +45,23 @@ public class GameService {
         }
         gameInfo.updateBall(ballCount);
         gameInfo.updateStrike(strikeCount);
+    }
+
+    public StringBuilder createResultMessageForInput(int ballCount, int strikeCount) {
+        StringBuilder outputResult = new StringBuilder();
+        if (ballCount == 0 && strikeCount == 0) {
+            outputResult.append(NOTHING);
+        }
+        if (ballCount != 0) {
+            outputResult.append(ballCount).append(BALL).append(" ");
+        }
+        if (strikeCount != 0) {
+            outputResult.append(strikeCount).append(STRIKE);
+        }
+        if (strikeCount == SUCCESS_STRIKE) {
+            outputResult.append("\n");
+            outputResult.append(SUCCESS_MSG);
+        }
+        return outputResult;
     }
 }
