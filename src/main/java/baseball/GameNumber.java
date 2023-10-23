@@ -2,9 +2,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +57,6 @@ public class GameNumber {
     public String inputRestart() {
         String userInput;
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         userInput = Console.readLine();
 
