@@ -5,13 +5,13 @@ import baseball.BallCount;
 public interface UI {
     void startGame();
 
-    String insertNumber();
+    String getThreeDigitString();
 
     void gameResult(BallCount ballCount);
 
     void winGame();
 
-    String selectGameProgress();
+    String getPostGameAction();
 
 
 

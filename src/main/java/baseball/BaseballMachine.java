@@ -6,44 +6,47 @@ import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
+
+
 public class BaseballMachine {
-    private final int[] randomValueArray;
+    private final int[] randomNumbers;
     private final UI ui;
 
     public BaseballMachine(UI ui) {
-        this.randomValueArray = new int[3];
+        this.randomNumbers = new int[3];
         this.ui = ui;
     }
 
     public void start() {
         this.ui.startGame();
+        boolean isGameContinue = true;
 
-        while (true) {
-            // 랜덤 값 생성
-            this.createRandomValue();
+        while (isGameContinue) {
+            this.generateRandomNumbers();
 
-            while (true) {
-                String userInput = this.ui.insertNumber();
-                int[] userInputArray = this.userInputConvertIntArray(userInput);
-                BallCount ballCount = this.ballAndStrikeCount(userInputArray);
+            boolean isWin = true;
+            while (isWin) {
+                String userGuessString = this.ui.getThreeDigitString();
+                int[] userGuessNumbers = this.parseUserGuessStringToNumbers(userGuessString);
+                BallCount ballCount = this.evaluateUserGuess(userGuessNumbers);
 
                 // TODO: Test 이후 삭제
-                System.out.println(Arrays.toString(randomValueArray));
+                System.out.println(Arrays.toString(randomNumbers));
                 this.ui.gameResult(ballCount);
 
-                if (ballCount.getStrike() == 3) break;
+                if (ballCount.getStrike() == 3) isWin = false;
 
             }
             this.ui.winGame();
-            String userChoicePostGameString = this.ui.selectGameProgress();
-            int userChoicePostGame = this.convertUserChoicePostGame(userChoicePostGameString);
-            if (userChoicePostGame == 2) break;
+            String userPostGameChoiceString = this.ui.getPostGameAction();
+            int postGameOption = this.convertUserChoicePostGame(userPostGameChoiceString);
+            if (postGameOption == 2) isGameContinue = false;
         }
     }
 
-    private void createRandomValue() {
-        randomValueArray[2] = randomValueArray[1] = randomValueArray[0] = 0;
-        for (int i = 0; i < randomValueArray.length; i++) {
+    private void generateRandomNumbers() {
+        randomNumbers[2] = randomNumbers[1] = randomNumbers[0] = 0;
+        for (int i = 0; i < randomNumbers.length; i++) {
             int temp;
             boolean isDuplicate;
 
@@ -52,18 +55,18 @@ public class BaseballMachine {
                 temp = pickNumberInRange(1, 9);
 
                 for (int j = 0; j < i; j++) {
-                    if (randomValueArray[j] == temp) {
+                    if (randomNumbers[j] == temp) {
                         isDuplicate = true;
                         break;
                     }
                 }
             } while (isDuplicate);
 
-            randomValueArray[i] = temp;
+            randomNumbers[i] = temp;
         }
     }
 
-    private int[] userInputConvertIntArray(String userInput) {
+    private int[] parseUserGuessStringToNumbers(String userInput) {
 
         int[] intArray = new int[userInput.length()];
         char[] charArray = userInput.toCharArray();
@@ -79,13 +82,13 @@ public class BaseballMachine {
         return intArray;
     }
 
-    private BallCount ballAndStrikeCount(int[] userInputArray) {
+    private BallCount evaluateUserGuess(int[] userGuessNumbers) {
         // 변경
         BallCount ballCount = new BallCount();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (userInputArray[i] == randomValueArray[j]) {
+                if (userGuessNumbers[i] == randomNumbers[j]) {
                     if (i == j) {
                         ballCount.addStrike();
                     } else {
