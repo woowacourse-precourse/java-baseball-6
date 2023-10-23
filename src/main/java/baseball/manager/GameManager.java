@@ -21,14 +21,10 @@ public class GameManager {
 
     public void play() {
         int restart;
-        // 게임 시작 메시지 출력
         outputHandler.printMessage(GAME_START_MESSAGE);
         do {
-            // Game 인스턴스 생성
             Game game = new Baseball(inputHandler, outputHandler);
-            // Game 초기화 init? -> random 값 생성
             game.initGame();
-            // 게임 실행
             game.playGame();
             outputHandler.printMessage(INPUT_RESTART_MESSAGE);
             restart = inputHandler.scanInteger();

@@ -37,7 +37,6 @@ public class Baseball implements Game {
 
     @Override
     public void playGame() {
-        // 반복문을 통해 예측 값을 입력받고 그 값을 정답과 비교해 결과(ScoreBoard)를 입력받는다.
         while (status) {
             System.out.print(INPUT_PREDICTED_MESSAGE);
             int input = inputHandler.scanInteger();

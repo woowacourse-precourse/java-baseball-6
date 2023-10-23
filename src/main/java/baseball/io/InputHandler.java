@@ -26,7 +26,6 @@ public class InputHandler {
             expectedNums.add(0, input % 10);
             input /= 10;
         }
-        // 3가지 예외처리를 담당 1.예측값 충복체크 2.(1-9)범위 체크 3.3개의 숫자인지 체크
         if (!validExpectedNums(expectedNums)) {
             throw new IllegalArgumentException();
         }
