@@ -8,19 +8,19 @@ public class outputView {
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
 
-    public void displayNewGameMessage() {
+    public static void displayNewGameMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public void displayExitMessage() {
+    public static void displayExitMessage() {
         System.out.println(GAME_CLEAR_MESSAGE);
     }
 
-    public void displayAskRestartOrExitGame() {
+    public static void displayAskRestartOrExitGame() {
         System.out.println(ASK_GAME_RESTART_OR_EXIT_MESSAGE);
     }
 
-    public void displayGetPlayResult(int strikes, int balls) {
+    public static void displayGetPlayResult(int strikes, int balls) {
         if (strikes > 0 && balls > 0) {
             System.out.println(balls + BALL_MESSAGE + " " + strikes + STRIKE_MESSAGE);
         } else if (strikes > 0) {
