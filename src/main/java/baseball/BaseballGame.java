@@ -11,6 +11,8 @@ public class BaseballGame {
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
 
+    private static final String ERROR_INPUT_NOT_NUMBER = "입력 형식은 숫자여야합니다.";
+
     public BaseballGame(Computer computer) {
         this.computer = computer;
     }
@@ -30,5 +32,13 @@ public class BaseballGame {
     private void play() {
         System.out.println(PRINT_USER_INPUT);
         String userAnswer = Console.readLine();
+    }
+
+    private Integer convertStringToInteger(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_INPUT_NOT_NUMBER);
+        }
     }
 }
