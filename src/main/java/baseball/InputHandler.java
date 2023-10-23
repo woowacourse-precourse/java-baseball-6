@@ -27,23 +27,31 @@ public class InputHandler {
         }
     }
 
+    private static String getConsoleInput() {
+        String inputValue = Console.readLine();
+        Console.close();
+
+        return inputValue;
+    }
+
     public static List<Integer> getMultipleNumbersInput(int inputSize) {
         List<Integer> inputNumbers = new ArrayList<>();
 
-        String[] inputString = Console.readLine().split("");
-        inputLengthCheck(inputSize, inputString.length);
+        String inputString = getConsoleInput();
+        String[] splitInput = inputString.split("");
+
+        inputLengthCheck(inputSize, splitInput.length);
         for(int i = 0; i < inputSize; i++) {
-            inputNumbers.add(parseInt(inputString[i]));
+            inputNumbers.add(parseInt(splitInput[i]));
         }
-        Console.close();
 
         return inputNumbers;
     }
 
     public static Integer getOneNumberInput() {
-        final int onlyOne = 1;
-        String inputString = Console.readLine();
-        inputLengthCheck(onlyOne, inputString.length());
+        final int oneInput = 1;
+        String inputString = getConsoleInput();
+        inputLengthCheck(oneInput, inputString.length());
 
         return parseInt(inputString);
     }
