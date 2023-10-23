@@ -7,8 +7,6 @@ import java.util.Map;
 import static baseball.domain.hints.HintType.*;
 
 public final class OutputView {
-
-
     static {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
