@@ -1,6 +1,12 @@
 package baseball.view;
 
+import static baseball.util.Constants.ZERO;
+import static baseball.util.Constants.ONE;
+
 import baseball.util.Messages;
+import java.util.ArrayList;
+
+
 public class OutputView {
     public void printStart() {
         System.out.println(Messages.START_GAME);
@@ -8,14 +14,6 @@ public class OutputView {
 
     public void printEndGame() {
         System.out.println(Messages.END_GAME);
-    }
-
-    public void printBall(int ball) {
-        System.out.println(ball + Messages.BALL);
-    }
-
-    public void printStrike(int strike) {
-        System.out.println(strike + Messages.STRIKE);
     }
 
     public void printNoting() {
@@ -26,6 +24,18 @@ public class OutputView {
         System.out.print(Messages.INPUT);
     }
 
+    public void printResult(ArrayList<Integer> ballStrikeCount) {
+        int ballCount = ballStrikeCount.get(ZERO);
+        int strikeCount = ballStrikeCount.get(ONE);
 
-
+        if (strikeCount == ZERO && ballCount == ZERO) {
+            System.out.println(Messages.NOTHING);
+        }
+        if (ballCount > ZERO) {
+            System.out.print(ballCount + Messages.BALL);
+        }
+        if (strikeCount > ZERO) {
+            System.out.println(strikeCount + Messages.STRIKE);
+        }
+    }
 }
