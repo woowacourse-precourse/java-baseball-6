@@ -16,32 +16,28 @@ public class BaseBallGameService {
 
     InputValidator validator = new InputValidator();
 
-    public void play() {
-        try {
-            systemMessage.gameStartMessage();
-            baseBallGame.intiGame();
+    public void play() throws IllegalArgumentException {
+        systemMessage.gameStartMessage();
+        baseBallGame.intiGame();
 
-            //System.out.println(Arrays.toString(baseBallGame.getBaseballNumber()));
+        System.out.println(Arrays.toString(baseBallGame.getBaseballNumber()));
 
-            boolean isAnswer = true;
-            while(isAnswer) {
-                systemMessage.requestInputData();
-                String userInput = readLine();
+        boolean isAnswer = true;
+        while (isAnswer) {
+            systemMessage.requestInputData();
+            String userInput = readLine();
 
-                validator.gameValidation(userInput);
+            validator.gameValidation(userInput);
 
-                computeScore(userInput);
+            computeScore(userInput);
 
-                gameMessage.scoreMessage(baseBallGame.getStrikeCount(), baseBallGame.getBallCount());
-                if (baseBallGame.getStrikeCount() == 3) {
-                    isAnswer = false;
-                    gameMessage.gameOverMessage();
-                }
-
-                baseBallGame.initCount();
+            gameMessage.scoreMessage(baseBallGame.getStrikeCount(), baseBallGame.getBallCount());
+            if (baseBallGame.getStrikeCount() == 3) {
+                isAnswer = false;
+                gameMessage.gameOverMessage();
             }
-        } catch (IllegalArgumentException e) {
-            systemMessage.inputErrorMessage();
+
+            baseBallGame.initCount();
         }
     }
 

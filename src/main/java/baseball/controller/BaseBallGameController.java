@@ -12,7 +12,7 @@ public class BaseBallGameController {
 
     InputValidator validator = new InputValidator();
 
-    public void run() {
+    public void run() throws IllegalArgumentException{
         baseBallGameService.play();
         askRetry();
     }
