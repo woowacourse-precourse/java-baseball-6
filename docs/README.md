@@ -41,7 +41,7 @@
    - 게임의 시작 ~ 게임의 종료 반₩
    
 ### Computer
-   - 3가지의 랜덤한 임의의 수를 만든다.
+   - 3가지의 랜덤한 임의의 수를 만든다.✅
    1. setTargetNumber()
    2. pickNumberInRange()
 
