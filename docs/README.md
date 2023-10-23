@@ -7,7 +7,7 @@
     - [ ] 입력 가능한 수 범위 123 ~ 987
 
 ### ComputerPlayer(상대 사용자)
-- [ ] Player 상속받아서 숫자 입력만 Random 함수 사용
+- [ ] Player 생성 시 Random 함수 사용
 
 ### Referee(심판)
 - [ ] 두명의 Player 값 비교
