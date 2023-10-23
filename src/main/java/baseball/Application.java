@@ -28,15 +28,41 @@ public class Application {
         List<Integer> userNumber = new ArrayList<>();
         String Number;
         String[] tempNumber;
+        boolean isValid;
 
         System.out.println("숫자를 입력해주세요 : ");
         Number = Console.readLine();
+        isValid = isValidNumber(Number);
 
-        tempNumber = Number.split("");
-        for (String s : tempNumber) {
-            userNumber.add(Integer.parseInt(s));
+        if (isValid) {
+            tempNumber = Number.split("");
+            for (String s : tempNumber) {
+                userNumber.add(Integer.parseInt(s));
+            }
+        } else if (!isValid) {
+            throw new IllegalArgumentException();
         }
 
         return userNumber;
+    }
+
+    private static boolean isValidNumber(String input) {
+        if (input.length() != 3) {
+            return false;
+        }
+
+        for (char ch : input.toCharArray()) {
+            if (ch < 1 || ch > 9) {
+                return false;
+            }
+        }
+
+        if (input.charAt(0) == input.charAt(1)
+                || input.charAt(0) == input.charAt(2)
+                || input.charAt(1) == input.charAt(2)) {
+            return false;
+        }
+
+        return true;
     }
 }
