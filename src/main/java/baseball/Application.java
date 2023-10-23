@@ -17,9 +17,7 @@ public class Application {
         List<Integer> userBalls = UserBalls.inputBalls();
         List<Integer> computerBalls = ComputerBalls.inputComputerBalls();
 
-        Score.calculation(userBalls, computerBalls);
+        Battle.startBaseball(userBalls, computerBalls);
 
-        System.out.println(userBalls);
-        System.out.println(computerBalls);
     }
 }
