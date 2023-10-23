@@ -14,6 +14,8 @@ public class InputView {
 
     public int inputRestartOrStop() {
         System.out.println(MessageConst.OPTION_MSG);
-        return Integer.parseInt(Console.readLine());
+        String optionNumber = Console.readLine();
+        Validator.getValidatedOptionNumber(optionNumber);
+        return Integer.parseInt(optionNumber);
     }
 }

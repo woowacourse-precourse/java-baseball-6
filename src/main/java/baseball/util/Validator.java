@@ -20,6 +20,12 @@ public class Validator {
         }
     }
 
+    public static void getValidatedOptionNumber(String optionNumber) {
+        if (!optionNumber.equals(MessageConst.RESTART_OPTION) && !optionNumber.equals(MessageConst.EXIT_OPTION)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_OPTION.getMessage());
+        }
+    }
+
     private static boolean isUniqueNumber(String input) {
         long uniqueNumberCount = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)

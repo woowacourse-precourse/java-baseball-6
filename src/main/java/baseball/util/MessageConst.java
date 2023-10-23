@@ -9,4 +9,6 @@ public class MessageConst {
     public static final String CORRECT_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String OPTION_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String SPACE = " ";
+    public static final String RESTART_OPTION = "1";
+    public static final String EXIT_OPTION = "2";
 }
