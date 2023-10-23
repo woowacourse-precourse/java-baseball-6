@@ -66,6 +66,17 @@ public class ValidationTest extends NsTest {
                 .hasMessage("[Err] 입력 값이 중복되었습니다. 중복되지 않은값을 입력하여 주세요.");
     }
 
+    @Test
+    void 사용자_게임_입력_값_0부터_9사이의_값이_아닌_경우_예외_테스트(){
+        //given
+        String input_value = "089";
+
+        //when
+        assertThatThrownBy(()->GameValidation.verifyForGameValue(input_value,input_length))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[Err] 입력 값은 1부터 9사이의 숫자여야합니다.");
+    }
+
     @ParameterizedTest
     @DisplayName("사용자 게임 입력 값 예외 통합 테스트")
     @ValueSource(strings = {"1234","12","1 3","12a","222","012",""})
