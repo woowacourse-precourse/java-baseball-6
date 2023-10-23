@@ -25,6 +25,10 @@ public class Game {
         computer.setComputerNumber();
     }
 
+    private void getUserInput() {
+        user.setUserInput();
+    }
+
     private void checkStrike() {
         strikeCount = 0;
 
@@ -84,7 +88,7 @@ public class Game {
         initializeRandomNumber();
 
         while(!quit) {
-            user.setUserInput();
+            getUserInput();
             checkStrike();
             checkBall();
             printResultMessage();
