@@ -2,9 +2,11 @@ package baseball.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class InputNumber {
     private List<Integer> inputNumber = new ArrayList<>();
+    private String quitNumber = "";
 
     public List<Integer> getInputNumber() {
         return inputNumber;
@@ -19,5 +21,15 @@ public class InputNumber {
             char letter = playerInput.charAt(i);
             inputNumber.add(Integer.parseInt(String.valueOf(letter)));
         }
+    }
+    public String getQuitNumber() {
+        return quitNumber;
+    }
+
+    public void setQuitNumber(String playerInput) throws IllegalArgumentException {
+        if (!playerInput.equals("1") && !playerInput.equals("2")) {
+            throw new IllegalArgumentException("1(재시작) 또는 2(종료)를 입력해주세요.");
+        }
+        quitNumber = playerInput;
     }
 }
