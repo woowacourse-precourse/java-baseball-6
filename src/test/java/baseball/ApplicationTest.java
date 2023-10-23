@@ -37,6 +37,13 @@ class ApplicationTest extends NsTest {
         assertThat(computer.getRandomNum().size()).isEqualTo(3);
     }
 
+    @Test
+    void 컴퓨터_생성_숫자_중복_확인() {
+        var computer = new Computer();
+        computer.generateRandomNum();
+        assertThat(computer.getRandomNum()).doesNotHaveDuplicates();
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"a2", "12", ""})
     void 재시작_입력_예외테스트(String string) {
