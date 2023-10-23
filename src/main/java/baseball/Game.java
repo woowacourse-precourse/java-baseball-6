@@ -1,24 +1,23 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 import static baseball.Constant.*;
 
 public class Game {
-    List<Integer> answerList = new ArrayList<>();
+    List<Integer> computer = new ArrayList<>();
 
     public Game() {
-        while (answerList.size() < NUMBER_COUNT) {
+        while (computer.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (!isContainedNumber(randomNumber))
-                answerList.add(randomNumber);
+                computer.add(randomNumber);
         }
 
-        for (Integer x : answerList) {  // 정답 확인용
+        for (Integer x : computer) {  // 정답 확인용
             System.out.print(x+" ");
         }
     }
@@ -29,63 +28,23 @@ public class Game {
 
         do {
             System.out.print(GET_NUMBER_MESSAGE);
-
-            inputString = Console.readLine().replace(" ","");
-            if (isValidNumber(inputString)) {
-                is3Strike = checkResult(inputString);
-            }
+            inputString = Console.readLine().replace(" ",""); // 공백 실수 허용
+            Player player = new Player(inputString);
+            is3Strike = checkResult(player.getPlayer());
         } while (!is3Strike);
+
     }
 
     private boolean isContainedNumber(int randomNumber) {
-        for (Integer x : answerList) {
+        for (Integer x : computer) {
             if (x == randomNumber) return true;
         }
         return false;
     }
 
-    private boolean isValidNumber(String inputString) {
-        if (checkNumberLength(inputString) && checkIsDigit(inputString) && checkNumberDuplicate(inputString)) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean checkNumberLength(String inputString) {
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. (3자리 자연수만 가능)");
-        }
-        return true;
-    }
-
-    private boolean checkIsDigit(String inputString) {
-        for (int i = 0; i < inputString.length(); i++) {
-            int number = inputString.charAt(i);
-
-            if (!Character.isDigit(number)) {
-                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. (1~9의 자연수만 가능)");
-            }
-        }
-        return true;
-    }
-
-    private boolean checkNumberDuplicate(String inputString) {
-        Set<Character> set = new HashSet<>();
-        for (int i = 0; i < inputString.length(); i++) {
-            set.add(inputString.charAt(i));
-        }
-
-        if (set.size() != inputString.length()) {
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. (중복된 숫자 불가능)");
-        }
-
-        return true;
-    }
-
-    private boolean checkResult(String inputString) {
-        int[] inputIntArray = changeStringToIntArray(inputString);
-        int strike= getStrike(inputIntArray);
-        int ball = getBall(inputIntArray) - strike;
+    private boolean checkResult(List<Integer> playerList) {
+        int strike= getStrike(playerList);
+        int ball = getBall(playerList) - strike;
 
         Result result = new Result(strike, ball);
         System.out.println(result.getResultString());
@@ -93,21 +52,12 @@ public class Game {
         return result.is3Strike();
     }
 
-    private int[] changeStringToIntArray(String inputString) {
-        int[] intArray = new int[NUMBER_COUNT];
 
-        for (int i = 0; i < inputString.length(); i++) {
-            intArray[i] = Integer.parseInt(inputString.substring(i,i+1));
-        }
-
-        return intArray;
-    }
-
-    private int getStrike(int[] inputIntArray) {
+    private int getStrike(List<Integer> playerList) {
         int strike = 0;
 
-        for (int i = 0; i < inputIntArray.length; i++) {
-            if (inputIntArray[i] == answerList.get(i)) {
+        for (int i = 0; i < playerList.size(); i++) {
+            if (playerList.get(i).equals(computer.get(i))) {
                 strike++;
             }
         }
@@ -115,11 +65,11 @@ public class Game {
         return strike;
     }
 
-    private int getBall(int[] inputIntArray) {
+    private int getBall(List<Integer> playerList) {
         int ball = 0;
 
-        for (int i = 0; i < inputIntArray.length; i++) {
-            if (answerList.contains(inputIntArray[i])) {
+        for (Integer p : playerList) {
+            if (computer.contains(p)) {
                 ball++;
             }
         }
