@@ -1,13 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Application {
 
@@ -24,9 +18,8 @@ public class Application {
     public String startGame() {
         return "숫자 야구 게임을 시작합니다.";
     }
-    //TODO : 리팩토링 메소드 명 변경
     //TODO : convertToList 메소드 만들기
-    public int compareDigitsNumbers(String answer, String input) {
+    public int countStrike(String answer, String input) {
         int strikeCnt = 0;
 
         List<Character> answerList = new ArrayList<>();
@@ -43,7 +36,7 @@ public class Application {
         }
         return strikeCnt;
     }
-    public int countCommonNumbers(String answer, String input) {
+    public int countBall(String answer, String input) {
         int ballCnt = 0;
         List<Character> answerList = new ArrayList<>();
         List<Character> inputList = new ArrayList<>();
@@ -64,8 +57,8 @@ public class Application {
     }
 
     public String showBaseballOutcome(String answer, String input) {
-        int strikeCnt = compareDigitsNumbers(answer, input);
-        int ballCnt = countCommonNumbers(answer, input);
+        int strikeCnt = countStrike(answer, input);
+        int ballCnt = countBall(answer, input);
 
         if (strikeCnt == 0) {
             if(ballCnt == 0){
@@ -88,7 +81,8 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         switch (choice){
-            case "1" ->{compareDigitsNumbers(answer,input); }
+            case "1" ->{
+                countStrike(answer,input); }
             case "2" ->{break;}
             default -> {checkExitChoiceValidation();}
         }
