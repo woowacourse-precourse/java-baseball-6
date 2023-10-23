@@ -1,57 +1,36 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class GuessNumberFromUser {
+public class GuessNumberFromUser extends NumberFromUser<List<Integer>> {
 
-    private final static String requestMessage = "숫자를 입력해주세요 : ";
-
-    public List<Integer> getGuessNumber() throws IllegalArgumentException {
-        String inputString = getInputString();
-        List<Integer> guessNumber = StringToIntegerList(inputString);
-        if (!validate(guessNumber)) {
-            throw new IllegalArgumentException();
-        }
-
-        return guessNumber;
-    }
-
-    private String getInputString() {
-        requestForGuessNumber();
-        return Console.readLine();
-    }
-
-    private void requestForGuessNumber() {
-        System.out.print(requestMessage);
-    }
-
-    private List<Integer> StringToIntegerList(String str) {
-        return Arrays.stream(str.split(""))
+    @Override
+    protected List<Integer> convertToReturnType(String input) {
+        return Arrays.stream(input.split(""))
             .map(Integer::parseInt)
             .toList();
     }
 
-
-    private boolean validate(List<Integer> guessNumber) {
-        return sizeValidate(guessNumber)
-            && numberRangeValidate(guessNumber)
-            && distinctValidate(guessNumber);
+    @Override
+    protected boolean validate() {
+        return sizeValidate()
+            && numberRangeValidate()
+            && distinctValidate();
     }
 
-    private boolean sizeValidate(List<Integer> guessNumber) {
-        return guessNumber.size() == 3;
+    private boolean sizeValidate() {
+        return value.size() == 3;
     }
 
-    private boolean numberRangeValidate(List<Integer> guessNumber) {
-        return guessNumber.stream().allMatch(num -> num > 0 && num < 10);
+    private boolean numberRangeValidate() {
+        return value.stream().allMatch(num -> num > 0 && num < 10);
     }
 
-    private boolean distinctValidate(List<Integer> guessNumber) {
-        HashSet<Integer> setGuessNumber = new HashSet<>(guessNumber);
-        return guessNumber.size() == setGuessNumber.size();
+    private boolean distinctValidate() {
+        HashSet<Integer> setGuessNumber = new HashSet<>(value);
+        return value.size() == setGuessNumber.size();
     }
 
 }
