@@ -1,12 +1,11 @@
 package baseball;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.Scanner;
-import java.util.function.BinaryOperator;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GameStatus {
-    private boolean isGameOnGoing= true;
+    private boolean isGameOnGoing = true;
+    RestartInputException restartInputException = new RestartInputException();
+
 
     public boolean getIsGameOnGoing() {
         return isGameOnGoing;
@@ -16,20 +15,19 @@ public class GameStatus {
         isGameOnGoing = gameOnGoing;
     }
 
-    public void threeStrikeCase()
-    {
-        System.out.println("case");
-        Scanner input = new Scanner(System.in);
-        int reInput= input.nextInt();
+    public void threeStrikeCase(Computer computer) {
 
-        if (reInput==1)
-        {
+        String reInput = Console.readLine();
+
+        int restartInput = restartInputException.checkRestartInput(reInput);
+
+        if (restartInput == 1) {
             setIsGameOnGoing(true);
+            computer.setComputerNumber();
 
         }
 
-        if (reInput==2)
-        {
+        if (restartInput == 2) {
             setIsGameOnGoing(false);
 
         }
