@@ -12,17 +12,17 @@ public class UserBalls {
         this.balls = balls;
     }
 
-    public static void validateBalls(String input) {
+    private void validateBalls(String input) {
         if (!isOkBallSize(input) || isNan(input) || isLessThan1(input) || isDuplicate(input)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
-    public static boolean isOkBallSize(String data) {
+    private boolean isOkBallSize(String data) {
         return data.length() == BALL_SIZE;
     }
 
-    public static boolean isNan(String data) {
+    private boolean isNan(String data) {
         try {
             Integer.parseInt(data);
         } catch (NumberFormatException exception) {
@@ -31,15 +31,17 @@ public class UserBalls {
         return false;
     }
 
-    public static boolean isLessThan1(String data) {
+    private boolean isLessThan1(String data) {
         String[] splitedData = data.split("");
         return Arrays.stream(splitedData)
                 .map(Integer::parseInt)
                 .anyMatch((number) -> number < 1);
     }
 
-    public static boolean isDuplicate(String data) {
-        long deduplicatedDataSize = data.chars().distinct().count();
+    private boolean isDuplicate(String data) {
+        long deduplicatedDataSize = data.chars()
+                .distinct()
+                .count();
         return deduplicatedDataSize != BALL_SIZE;
     }
 }
