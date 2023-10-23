@@ -104,6 +104,12 @@ public class Application {
 
             // 재시작 또는 종료 입력받기
             String restart = Console.readLine();
+
+            // 플레이어가 입력한 수가 1 또는 2가 아닌 경우
+            if (!"1".equals(restart) && !"2".equals(restart)){
+                throw new IllegalArgumentException();
+            }
+
             if ("1".equals(restart)) {
                 startBaseball();
             } else if("2".equals(restart)) {
