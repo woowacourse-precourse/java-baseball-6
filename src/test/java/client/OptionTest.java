@@ -1,8 +1,9 @@
 package client;
 
-import static client.Option.findByStatus;
+import static game.Option.findByStatus;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import game.Option;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,11 @@
 package client;
 
 import constants.MessageConstants;
+import game.Ball;
 import game.Computer;
-import util.Input;
-import util.Output;
+import game.Option;
+import view.Input;
+import view.Output;
 
 public class Player {
 

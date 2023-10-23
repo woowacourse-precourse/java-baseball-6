@@ -1,7 +1,8 @@
-package util;
+package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import constants.MessageConstants;
+import util.ErrorDetector;
 
 public class Input {
 

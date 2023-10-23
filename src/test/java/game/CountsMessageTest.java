@@ -1,7 +1,7 @@
 package game;
 
-import static game.CountsMessage.toMessage;
 import static org.assertj.core.api.Assertions.assertThat;
+import static util.CountsMessage.toMessage;
 
 import constants.MessageConstants;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,6 @@
 package game;
 
-import client.Ball;
-import util.Output;
+import view.Output;
 
 public class Computer {
 
@@ -23,7 +22,7 @@ public class Computer {
     }
 
     private String getRandomNumbers() {
-        return RandomNumbersGenerator.getRandomNumbers();
+        return game.RandomNumbersGenerator.getRandomNumbers();
     }
 
     public boolean isFinish() {

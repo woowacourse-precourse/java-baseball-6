@@ -1,4 +1,4 @@
-package game;
+package util;
 
 import constants.MessageConstants;
 import constants.NumberConstants;

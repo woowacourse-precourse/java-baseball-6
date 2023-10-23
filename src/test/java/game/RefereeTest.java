@@ -3,7 +3,6 @@ package game;
 import static game.Referee.judge;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import client.Ball;
 import org.junit.jupiter.api.Test;
 
 class RefereeTest {
