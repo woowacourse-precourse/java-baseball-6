@@ -28,7 +28,7 @@ public class Game {
         }
     }
 
-    private void inputBaseBallNumber(){
+    private void inputUserNumber(){
         String[] userInput = readLine().split("");
 
         for(int index = 0; index < 3; index++){
@@ -38,14 +38,18 @@ public class Game {
 
     public void play(){
         Script script = new Script();
+        Judgment judgment = new Judgment(computer, user);
 
         createComputerNumber();
         script.startGame();
 
-        while(true){
-            script.inputNumber();
-            inputBaseBallNumber();
-            break;
+        script.inputNumber();
+        inputUserNumber();
+
+        judgment.judge();
+
+        if(judgment.isUserWin()){
+            script.endGame();
         }
     }
 }
