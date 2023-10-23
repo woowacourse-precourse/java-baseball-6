@@ -1,6 +1,5 @@
 package baseball.version2.controller;
 
-
 import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
 import static baseball.version2.Constants.Value.THREE_STRIKE;
 
@@ -46,6 +45,5 @@ public class Controller {
     public int isContinue() {
         return inputView.getPlayerDecision();
     }
-
 
 }

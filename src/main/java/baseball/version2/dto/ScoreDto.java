@@ -25,4 +25,5 @@ public class ScoreDto {
     public void setStrike(int strike) {
         this.strike = strike;
     }
+    
 }

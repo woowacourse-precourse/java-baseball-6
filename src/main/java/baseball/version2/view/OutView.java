@@ -23,9 +23,7 @@ public class OutView {
         }
         if (ball == 0 && strike > 0) {
             printStrike(strike);
-            if (strike == THREE_STRIKE) {
-                printThreeStrike();
-            }
+            checkThreeStrike(strike);
         }
         if (ball > 0 && strike == 0) {
             printBall(ball);
@@ -34,6 +32,12 @@ public class OutView {
             printBallAndStrike(ball, strike);
         }
         return strike;
+    }
+
+    private void checkThreeStrike(int strike) {
+        if (strike == THREE_STRIKE) {
+            printThreeStrike();
+        }
     }
 
     private void printThreeStrike() {

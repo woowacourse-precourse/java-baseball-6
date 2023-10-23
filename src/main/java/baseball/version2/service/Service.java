@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class Service {
 
-
     private static int[] computerAnswer;
     private final Converter converter;
 
@@ -34,9 +33,7 @@ public class Service {
         }
         computerAnswerDto.setAnswer(converter.convertListToArray(randomNumbers));
         return computerAnswerDto;
-
     }
-
 
     public Score compareTwoAnswer(PlayerAnswerDto playerAnswerDto, ComputerAnswerDto computerAnswerDto) {
         this.computerAnswer = computerAnswerDto.getAnswer();

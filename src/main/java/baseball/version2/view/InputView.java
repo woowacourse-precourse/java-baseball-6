@@ -34,7 +34,6 @@ public class InputView {
         return answerArray;
     }
 
-
     public int getPlayerDecision() {
         System.out.println(SELECT_CONTINUE_PHRASES);
         String playerDecision = Console.readLine();
@@ -43,6 +42,5 @@ public class InputView {
 
         return decision;
     }
-
 
 }

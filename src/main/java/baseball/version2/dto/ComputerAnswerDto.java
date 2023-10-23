@@ -3,6 +3,7 @@ package baseball.version2.dto;
 import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
 
 public class ComputerAnswerDto {
+
     int[] answer;
 
     public ComputerAnswerDto() {
@@ -16,4 +17,5 @@ public class ComputerAnswerDto {
     public void setAnswer(int[] answer) {
         this.answer = answer;
     }
+
 }

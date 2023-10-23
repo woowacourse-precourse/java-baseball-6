@@ -24,28 +24,21 @@ public class DataValidator {
             }
         }
         return false;
-
     }
 
     private boolean isDuplicate(int[] playerAnswerArray) {
         Set<Integer> playerValueSet = new HashSet<>();
+
         for (int i : playerAnswerArray) {
             playerValueSet.add(i);
         }
-
-        if (playerAnswerArray.length != playerValueSet.size()) {
-            return true;
-        }
-
-        return false;
+        return playerAnswerArray.length != playerValueSet.size();
     }
-
 
     public void validateDecision(int decision) {
         if (decision != CONTINUE_NUMBER && decision != STOP_NUMBER) {
             throw new IllegalArgumentException(DECISION_ERROR_PHRASES);
         }
     }
-
 
 }

@@ -17,4 +17,5 @@ public class Score {
     public int getStrike() {
         return strike;
     }
+
 }
