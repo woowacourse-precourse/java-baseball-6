@@ -8,10 +8,6 @@ public class BaseBalls {
     public BaseBalls(List<CompareNumber> generatedBall) {
         this.generatedBalls = generatedBall;
     }
-
-    //컴퓨터가 생성한 번호를 CompareNumber 객체에 담는다
-
-
     public GameResult compare(List<Integer> userBalls) {
         GameResult gameResult = new GameResult();
         for (int i = 0; i < userBalls.size(); i++) {
