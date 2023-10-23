@@ -1,5 +1,7 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import baseball.model.ResumeNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +33,12 @@ public class ResumeNumberTest {
     @Test
     void 재시작_또는_종료값은_1이_될_수_있다() {
         resumeNumber.updateNumber("1");
+    }
+
+    @Test
+    void 재시작_상태는_1이다() {
+        resumeNumber.updateNumber("1");
+        assertThat(resumeNumber.isWantMoreGame()).isTrue();
     }
 
     @Test
