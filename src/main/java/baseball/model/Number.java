@@ -4,23 +4,23 @@ import baseball.exception.ErrorMessage;
 import java.util.List;
 
 public class Number {
-    public final int firstNumber;
-    public final int secondNumber;
-    public final int thirdNumber;
+    public final int firstDigit;
+    public final int secondDigit;
+    public final int thirdDigit;
 
     public Number(List<Integer> digits) {
-        firstNumber = digits.get(0);
-        secondNumber = digits.get(1);
-        thirdNumber = digits.get(2);
+        firstDigit = digits.get(0);
+        secondDigit = digits.get(1);
+        thirdDigit = digits.get(2);
     }
 
     public Number(Integer number) {
         validateInputNumberSize(number);
         List<Integer> digits = getDigits(number);
 
-        firstNumber = digits.get(0);
-        secondNumber = digits.get(1);
-        thirdNumber = digits.get(2);
+        firstDigit = digits.get(0);
+        secondDigit = digits.get(1);
+        thirdDigit = digits.get(2);
 
     }
 
@@ -57,7 +57,7 @@ public class Number {
     }
 
     public boolean contains(Integer number) {
-        return firstNumber == number || secondNumber == number || thirdNumber == number;
+        return firstDigit == number || secondDigit == number || thirdDigit == number;
     }
 
 }

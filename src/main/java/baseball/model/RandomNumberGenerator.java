@@ -7,18 +7,18 @@ import java.util.List;
 public class RandomNumberGenerator {
 
     public List<Integer> generateRandomNumber() {
-        List<Integer> randomNumbers = new ArrayList<>();
+        List<Integer> randomNumber = new ArrayList<>();
 
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            addUniqueNumber(randomNumbers, randomNumber);
+        while (randomNumber.size() < 3) {
+            int digit = Randoms.pickNumberInRange(1, 9);
+            addUniqueNumber(randomNumber, digit);
         }
-        return randomNumbers;
+        return randomNumber;
     }
 
-    private void addUniqueNumber(List<Integer> randomNumbers, int randomNumber) {
-        if (!randomNumbers.contains(randomNumber)) {
-            randomNumbers.add(randomNumber);
+    private void addUniqueNumber(List<Integer> randomNumber, int digit) {
+        if (!randomNumber.contains(digit)) {
+            randomNumber.add(digit);
         }
     }
 }

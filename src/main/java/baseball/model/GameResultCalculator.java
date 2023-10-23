@@ -4,15 +4,15 @@ public class GameResultCalculator {
     public int countStrike(Number random, Number input) {
         int strikeCount = 0;
 
-        if (random.firstNumber == input.firstNumber) {
+        if (random.firstDigit == input.firstDigit) {
             strikeCount++;
         }
 
-        if (random.secondNumber == input.secondNumber) {
+        if (random.secondDigit == input.secondDigit) {
             strikeCount++;
         }
 
-        if (random.thirdNumber == input.thirdNumber) {
+        if (random.thirdDigit == input.thirdDigit) {
             strikeCount++;
         }
 
@@ -23,15 +23,15 @@ public class GameResultCalculator {
     public int countBall(Number random, Number input) {
         int ballCount = 0;
 
-        if (random.firstNumber != input.firstNumber && random.contains(input.firstNumber)) {
+        if (random.firstDigit != input.firstDigit && random.contains(input.firstDigit)) {
             ballCount++;
         }
 
-        if (random.secondNumber != input.secondNumber && random.contains(input.secondNumber)) {
+        if (random.secondDigit != input.secondDigit && random.contains(input.secondDigit)) {
             ballCount++;
         }
 
-        if (random.thirdNumber != input.thirdNumber && random.contains(input.thirdNumber)) {
+        if (random.thirdDigit != input.thirdDigit && random.contains(input.thirdDigit)) {
             ballCount++;
         }
 
@@ -40,8 +40,8 @@ public class GameResultCalculator {
 
 
     public boolean isThreeStrike(Number randomNumber, Number inputNumber) {
-        return randomNumber.firstNumber == inputNumber.firstNumber
-                && randomNumber.secondNumber == inputNumber.secondNumber
-                && randomNumber.thirdNumber == inputNumber.thirdNumber;
+        return randomNumber.firstDigit == inputNumber.firstDigit
+                && randomNumber.secondDigit == inputNumber.secondDigit
+                && randomNumber.thirdDigit == inputNumber.thirdDigit;
     }
 }

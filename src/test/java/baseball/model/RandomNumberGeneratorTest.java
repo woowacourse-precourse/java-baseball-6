@@ -20,10 +20,10 @@ class RandomNumberGeneratorTest {
     @DisplayName("랜덤숫자 3자리수가 생성된다.")
     public void generateThreeRandomRumbers() {
         // When
-        List<Integer> numbers = randomNumberGenerator.generateRandomNumber();
+        List<Integer> number = randomNumberGenerator.generateRandomNumber();
 
         // then
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(number.size()).isEqualTo(3);
 
     }
 
