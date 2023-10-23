@@ -1,7 +1,12 @@
 package baseball;
 
 public class Score {
+    private static final String USER_WIN = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String BALL_EXIST = "볼";
+    private static final String STRIKE_EXIST = "스트라이크";
+    private static final String NOTHING = "낫싱";
     private static final int STRIKE_WHEN_USER_WIN = 3;
+
     private final int strike;
     private final int ball;
 
@@ -16,7 +21,7 @@ public class Score {
     }
 
     public String getHint() {
-        String hint = ball + "볼 " + strike + "스트라이크";
+        String hint = ball + BALL_EXIST + " " + strike + STRIKE_EXIST;
 
         hint = checkCondition(hint);
         return hint;
@@ -24,13 +29,13 @@ public class Score {
 
     private String checkCondition(String hint) {
         if (strike == STRIKE_WHEN_USER_WIN) {
-            hint = Message.USER_WIN.text();
+            hint = USER_WIN;
         } else if (ball == 0 && strike == 0) {
-            hint = Message.NOTHING.text();
+            hint = NOTHING;
         } else if (ball == 0) {
-            hint = strike + "스트라이크";
+            hint = strike + STRIKE_EXIST;
         } else if (strike == 0) {
-            hint = ball + "볼";
+            hint = ball + BALL_EXIST;
         }
         return hint;
     }
