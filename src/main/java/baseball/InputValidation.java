@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class InputValidation {
 
-    public List<Integer> validateUserNumbers(String input) {
+    public List<Integer> validateAnsConvertUserNumbers(String input) throws IllegalArgumentException {
         String trimmed = deleteSpace(input);
 
         validateLength(trimmed);
@@ -23,7 +23,7 @@ public class InputValidation {
         return (convertStrToIntegerList(trimmed));
     }
 
-    public void validateRestartOrStop(String input) {
+    public void validateRestartOrStop(String input) throws IllegalArgumentException {
         String trimmed = deleteSpace(input);
 
         validateSignLength(trimmed);
@@ -65,7 +65,7 @@ public class InputValidation {
     }
 
     // 문자열 -> 리스트 변환
-    public List<Integer> convertStrToIntegerList(String input) {
+    private List<Integer> convertStrToIntegerList(String input) {
         return input.chars()
                 .mapToObj(Character::getNumericValue)
                 .collect(Collectors.toList());

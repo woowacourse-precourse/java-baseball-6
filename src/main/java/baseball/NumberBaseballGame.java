@@ -8,11 +8,13 @@ import static baseball.Message.SUCCESS_MESSAGE;
 import java.util.List;
 
 public class NumberBaseballGame {
-    private final String stopSign = "2";
-    Message message = new Message();
-    Computer computer = new Computer();
-    InputValidation inputValidation = new InputValidation();
-    UserInput userInput = new UserInput();
+    private Message message = new Message();
+    private Computer computer = new Computer();
+    private InputValidation inputValidation = new InputValidation();
+    private UserInput userInput = new UserInput();
+    private final String STOP_SIGN = "2";
+    private final int MIN = 1;
+    private final int MAX = 9;
 
     public void speaker(String message) {
         System.out.print(message);
@@ -32,17 +34,18 @@ public class NumberBaseballGame {
         String sign = userInput.getUserInput();
 
         inputValidation.validateRestartOrStop(sign);
-        return sign.compareTo(stopSign) < 0;
+        return sign.compareTo(STOP_SIGN) < 0;
     }
 
-    public void oneRound() {
-        AnswerMaker answerMaker = new AnswerMaker(1, 9);// 정답 생성
+    private void oneRound() {
+        AnswerMaker answerMaker = new AnswerMaker(MIN, MAX);// 정답 생성
         boolean threeStrike = false;
 
         while (!threeStrike) {
             speaker(REQUEST_NUMBER_MESSAGE);
+
             String userLine = userInput.getUserInput();
-            List<Integer> userNumbers = inputValidation.validateUserNumbers(userLine);
+            List<Integer> userNumbers = inputValidation.validateAnsConvertUserNumbers(userLine);
             List<Integer> answer = answerMaker.getAnswer();
             List<Integer> ballAndStrikeCount = computer.countScore(answer, userNumbers);
             int strikeCount = ballAndStrikeCount.get(1);

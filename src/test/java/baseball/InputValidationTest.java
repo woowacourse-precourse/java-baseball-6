@@ -19,7 +19,7 @@ class InputValidationTest {
         //given
         String input = "3 69";
         //when
-        List<Integer> result = inputValidation.validateUserNumbers(input);
+        List<Integer> result = inputValidation.validateAnsConvertUserNumbers(input);
         //then
         assertThat(result).isEqualTo(List.of(3, 6, 9));
     }
@@ -31,10 +31,10 @@ class InputValidationTest {
         //given
 
         //when
-        List<Integer> result = inputValidation.validateUserNumbers(input);
+        List<Integer> result = inputValidation.validateAnsConvertUserNumbers(input);
         //then
 //        System.out.println(input);
-        assertThatThrownBy(() -> inputValidation.validateUserNumbers(input))
+        assertThatThrownBy(() -> inputValidation.validateAnsConvertUserNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -67,19 +67,6 @@ class InputValidationTest {
         assertThatThrownBy(() -> inputValidation.validateContainZero(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 ~ 9 사이의 숫자만 입력해주세요.");
-    }
-
-    @DisplayName("변환 - String을 List<Integer>로 변환하는 테스트")
-    @Test
-    void convertStrToIntegerList() throws Exception {
-        //given
-        String input = "369";
-
-        //when
-        List<Integer> result = inputValidation.convertStrToIntegerList(input);
-
-        //then
-        assertThat(result).isEqualTo(List.of(3, 6, 9));
     }
 
     @DisplayName("오류 검증 - 1 혹은 2가 아니라면 (재시작은 1, 게임 종료는 2입니다.) 에러 메시지")
