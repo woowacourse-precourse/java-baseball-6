@@ -17,12 +17,18 @@ public class User {
     private int mind;
 
     public void saveNumber(char userAnswerChar){
-        int digit = InputValidator.validateAnswerCharacter(userAnswerChar);
+        int digit = requestValidateCharacter(userAnswerChar);
         numberList.add(digit);
     }
 
     public void changeMind(int restartInt){
         mind = restartInt;
+    }
+
+    public int requestValidateCharacter(char userAnswerChar){
+        int digit = InputValidator.validateIsCharacterDigit(userAnswerChar);
+        InputValidator.validateDigitRange(digit);
+        return digit;
     }
 
     public List<Integer> showNumberList(){
