@@ -1,6 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import constant.ExceptionMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class InputView {
 
     private static void validateLength(String input) {
         if (input.length() != NUMBER_COUNT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT.getMessage());
         }
     }
 
@@ -34,7 +35,7 @@ public class InputView {
 
     private static void validateDigit(List<Integer> convertedNumber, int digit) {
         if (convertedNumber.contains(digit)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER_INPUT.getMessage());
         }
     }
 
@@ -43,7 +44,7 @@ public class InputView {
         try {
             input = Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT.getMessage());
         }
         return restartWhether(input);
     }
@@ -52,7 +53,7 @@ public class InputView {
         return switch (input) {
             case RESTART_ANSWER -> true;
             case SHUTDOWN_ANSWER -> false;
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT.getMessage());
         };
     }
 }
