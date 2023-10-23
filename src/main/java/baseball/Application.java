@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    private static final int NUMBER_LENGTH = 4;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
@@ -18,15 +20,16 @@ public class Application {
         do {
             inputNumber = getInputNumber();
         } while (!getResult(answer, inputNumber));
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print(NUMBER_LENGTH);
+        System.out.println("개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static int[] generateRandomAnswer() {
         int[] answer;
 
-        answer = new int[3];
+        answer = new int[NUMBER_LENGTH];
         do {
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < NUMBER_LENGTH; i++) {
                 answer[i] = Randoms.pickNumberInRange(1, 9);
             }
         } while (duplicateNumber(answer));
@@ -34,9 +37,24 @@ public class Application {
     }
 
     private static boolean duplicateNumber(int[] number) {
-        return ((number[0] == number[1])
-                || (number[1] == number[2])
-                || (number[2] == number[0]));
+        for (int num = 1; num <= 9; num++) {
+            if (countNum(num, number) > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int countNum(int num, int[] number) {
+        int cnt;
+
+        cnt = 0;
+        for (int n : number) {
+            if (n == num) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
     private static int[] getInputNumber() {
@@ -51,13 +69,13 @@ public class Application {
     }
 
     private static boolean isValidInput(String input) {
-        return (isLengthThree(input)
+        return (isNumberLength(input)
                 && isInRange(input)
                 && !duplicateInput(input));
     }
 
-    private static boolean isLengthThree(String input) {
-        return (input.length() == 3);
+    private static boolean isNumberLength(String input) {
+        return (input.length() == NUMBER_LENGTH);
     }
 
     private static boolean isInRange(String input) {
@@ -70,9 +88,24 @@ public class Application {
     }
 
     private static boolean duplicateInput(String input) {
-        return ((input.charAt(0) == input.charAt(1))
-                || (input.charAt(1) == input.charAt(2))
-                || (input.charAt(2) == input.charAt(0)));
+        for (char num = '1'; num <= '9'; num++) {
+            if (countChar(num, input) > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int countChar(char num, String input) {
+        int cnt;
+
+        cnt = 0;
+        for (char ch : input.toCharArray()) {
+            if (ch == num) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
     private static int[] stringToIntArray(String input) {
@@ -92,7 +125,7 @@ public class Application {
         strike = getStrike(answer, inputNumber);
         ball = getCount(answer, inputNumber) - strike;
         printResult(ball, strike);
-        return (strike == 3);
+        return (strike == NUMBER_LENGTH);
     }
 
     private static int getStrike(int[] answer, int[] inputNumber) {
