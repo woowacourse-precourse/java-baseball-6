@@ -24,7 +24,7 @@ class RefereeTest {
 		Balls playerBalls = new Balls(numbers);
 
 		// when
-		GameResult result = referee.compare(computerBalls, playerBalls);
+		GameResult result = referee.judge(computerBalls, playerBalls);
 
 		// then
 		assertThat(result.getStrikeCount()).isEqualTo(strikeResult);
@@ -49,7 +49,7 @@ class RefereeTest {
 		Balls playerBalls = new Balls(numbers);
 
 		// when
-		String result = referee.notifyGameResult(referee.compare(computerBalls, playerBalls));
+		String result = referee.notifyGameResult(referee.judge(computerBalls, playerBalls));
 
 		// then
 		assertThat(result).isEqualTo(expected);

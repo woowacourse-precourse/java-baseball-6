@@ -19,7 +19,7 @@ public class GameService {
 		Balls computerBalls = computer.getBalls();
 		Balls playerBalls = player.getBalls();
 
-		GameResult gameResult = referee.compare(computerBalls, playerBalls);
+		GameResult gameResult = referee.judge(computerBalls, playerBalls);
 		return referee.notifyGameResult(gameResult);
 	}
 

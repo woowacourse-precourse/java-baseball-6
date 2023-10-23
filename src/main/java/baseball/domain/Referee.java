@@ -4,7 +4,7 @@ import baseball.domain.balls.Balls;
 
 public class Referee {
 
-	public GameResult compare(final Balls computerBalls, final Balls playerBalls) {
+	public GameResult judge(final Balls computerBalls, final Balls playerBalls) {
 		return computerBalls.compare(playerBalls);
 	}
 
