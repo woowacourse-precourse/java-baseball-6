@@ -1,6 +1,6 @@
-package baseball.console;
+package baseball.view;
 
-public class ConsoleOutput {
+public class OutputView {
 
     private static final String welcomeMessage = "숫자 야구 게임을 시작합니다.";
     private static final String inputMessage = "숫자를 입력해주세요 : ";

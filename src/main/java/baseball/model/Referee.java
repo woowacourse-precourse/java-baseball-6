@@ -1,22 +1,22 @@
-package baseball.referee;
+package baseball.model;
 
-import baseball.controller.ConsoleController;
+import baseball.controller.ViewController;
 
 public class Referee {
     private static int OFFSET = 3;
 
-    private final ConsoleController consoleController;
+    private final ViewController viewController;
 
-    public Referee(ConsoleController consoleController) {
-        this.consoleController = consoleController;
+    public Referee(ViewController viewController) {
+        this.viewController = viewController;
     }
 
     public boolean judgeGameOver(int[] userNumberArray, int[] computerNumberArray) {
         int ball = countBall(userNumberArray, computerNumberArray);
         int strike = countStrike(userNumberArray, computerNumberArray);
-        consoleController.printResultMessage(ball, strike);
+        viewController.printResultMessage(ball, strike);
         if (strike == OFFSET) {
-            consoleController.printFinishMessage();
+            viewController.printFinishMessage();
             return true;
         }
         return false;

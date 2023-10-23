@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.view.exception;
 
 public class OutOfLengthInputException extends IllegalArgumentException {
     public OutOfLengthInputException(String input, int N) {

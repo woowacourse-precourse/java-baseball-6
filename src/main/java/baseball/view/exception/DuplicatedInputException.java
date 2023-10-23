@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.view.exception;
 
 public class DuplicatedInputException extends IllegalArgumentException {
     public DuplicatedInputException(String input) {

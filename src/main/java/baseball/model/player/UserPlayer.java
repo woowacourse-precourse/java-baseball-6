@@ -1,4 +1,4 @@
-package baseball.domain.player;
+package baseball.model.player;
 
 
 public class UserPlayer {

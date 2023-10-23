@@ -1,16 +1,16 @@
-package baseball.console;
+package baseball.view;
 
-import baseball.exception.DuplicatedInputException;
-import baseball.exception.NotIntegerInputException;
-import baseball.exception.NotValidResumeInputException;
-import baseball.exception.OutOfLengthInputException;
-import baseball.exception.UsingZeroInputException;
+import baseball.view.exception.DuplicatedInputException;
+import baseball.view.exception.NotIntegerInputException;
+import baseball.view.exception.NotValidResumeInputException;
+import baseball.view.exception.OutOfLengthInputException;
+import baseball.view.exception.UsingZeroInputException;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ConsoleInput {
+public class InputView {
 
     public String getUserNumber() {
         String inputString = removeBlank(Console.readLine()).trim();

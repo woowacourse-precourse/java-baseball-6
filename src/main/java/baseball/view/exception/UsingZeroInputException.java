@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.view.exception;
 
 public class UsingZeroInputException extends IllegalArgumentException {
     public UsingZeroInputException(String input) {

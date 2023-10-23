@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.view.exception;
 
 public class NotIntegerInputException extends IllegalArgumentException {
     public NotIntegerInputException(String input) {

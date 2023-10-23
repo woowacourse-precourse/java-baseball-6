@@ -1,42 +1,42 @@
 package baseball.controller;
 
-import baseball.console.ConsoleInput;
-import baseball.console.ConsoleOutput;
 import baseball.utils.StringUtils;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsoleController {
+public class ViewController {
 
-    private final ConsoleInput consoleInput;
+    private final InputView inputView;
 
-    private final ConsoleOutput consoleOutput;
+    private final OutputView outputView;
 
-    public ConsoleController(ConsoleInput consoleInput, ConsoleOutput consoleOutput) {
-        this.consoleInput = consoleInput;
-        this.consoleOutput = consoleOutput;
+    public ViewController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void printGameStart() {
-        consoleOutput.printGameStart();
+        outputView.printGameStart();
     }
 
     public void printInputMessage() {
-        consoleOutput.printInputMessage();
+        outputView.printInputMessage();
     }
 
     public void printResultMessage(int ball, int strike) {
-        consoleOutput.printResultMessage(ball, strike);
+        outputView.printResultMessage(ball, strike);
     }
 
     public void printFinishMessage() {
-        consoleOutput.printFinishMessage();
+        outputView.printFinishMessage();
     }
 
     private String getUserNumber() {
         printInputMessage();
-        return consoleInput.getUserNumber();
+        return inputView.getUserNumber();
     }
 
     public int[] getUserNumberArray() {
@@ -55,8 +55,8 @@ public class ConsoleController {
     }
 
     public boolean getResumeOption() {
-        consoleOutput.printResumeMessage();
-        return consoleInput.getResumeOption().equals("1");
+        outputView.printResumeMessage();
+        return inputView.getResumeOption().equals("1");
     }
 
 }

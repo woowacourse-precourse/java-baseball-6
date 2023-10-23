@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.view.exception;
 
 public class NotValidResumeInputException extends IllegalArgumentException {
     public NotValidResumeInputException(String input) {
