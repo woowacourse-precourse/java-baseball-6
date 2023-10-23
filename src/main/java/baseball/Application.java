@@ -15,17 +15,19 @@ public class Application {
 }
 
 class Game {
+    boolean gameContinue = true;
+
     void gameStart() {
+        gameContinue = true;
         List<Integer> computer = new ArrayList<>();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
-                System.out.println(randomNumber);
             }
         }
-        while (true) {
+        while (gameContinue) {
             UserTurn(computer);
         }
     }
@@ -33,10 +35,10 @@ class Game {
     void UserTurn(List computer) {
         List<Integer> user = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
-        int userNumber = Integer.parseInt(Console.readLine());
 
+        int userNumber = Integer.parseInt(Console.readLine());
         if (userNumber >= 1000 || userNumber <= 0) {
-            // 에외처리
+            throw new IllegalArgumentException();
         }
 
         user.add(userNumber / 100);
@@ -67,6 +69,8 @@ class Game {
         String checkRestartNum = Console.readLine();
         if (checkRestartNum.equals("1")) {
             gameStart();
+        } else {
+            gameContinue = false;
         }
     }
 
