@@ -10,13 +10,14 @@ public class ConverterTest {
     @Test
     public void 문자열을_정수형_리스트로_변환_테스트(){
         //given
-        String input="123";
+        String input="967";
+        int[] input_array= new int[]{9, 6, 7};
         //when
         List<Integer> intList = converter.stringToIntList(input);
         //then
         for(int i=0; i<intList.size(); i++){
-            int number =intList.get(i);
-            Assertions.assertEquals(input.charAt(i),number);
+            System.out.println(intList.get(i));
+            Assertions.assertEquals(intList.get(i),input_array[i]);
         }
     }
     @Test

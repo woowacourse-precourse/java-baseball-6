@@ -7,8 +7,8 @@ public class Converter {
     public List<Integer> stringToIntList(String input){
         List<Integer> intList = new ArrayList<>();
         for(int i=0; i<input.length(); i++){
-            char split_number = input.charAt(i);
-            intList.add((int) split_number);
+            int split_number = input.charAt(i)-48;
+            intList.add(split_number);
         }
         return intList;
     }
