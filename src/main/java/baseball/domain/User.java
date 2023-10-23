@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    public static final int START_NUMBER_INT = 0;
+    public static final int END_NUMBER_INT = 10;
+    public static final int MAX_SIZE = 3;
     List<Integer> userNumber;
 
     public User() {
@@ -30,7 +33,7 @@ public class User {
     private void validType(String input) {
         for (int i = 0; i < input.length(); i++) {
             int type = input.charAt(i) - '0';
-            if(type < 0 || type > 10){
+            if (type < START_NUMBER_INT || type > END_NUMBER_INT) {
                 throw new IllegalArgumentException("exist non-numeric type");
             }
         }
@@ -44,7 +47,7 @@ public class User {
 
     private void validDuplication(String input) {
         String answer = removeDuplication(input);
-        if(answer.length() != 3){
+        if (answer.length() != MAX_SIZE) {
             throw new IllegalArgumentException("exist duplicated number");
         }
     }
@@ -52,7 +55,7 @@ public class User {
     private String removeDuplication(String input) {
         String answer = "";
         for (int i = 0; i < input.length(); i++) {
-            if(input.indexOf(input.charAt(i)) == i){
+            if (input.indexOf(input.charAt(i)) == i) {
                 answer += input.charAt(i);
             }
         }
@@ -61,7 +64,7 @@ public class User {
 
     private void insertNum(String input) {
         for (int i = 0; i < input.length(); i++) {
-            int num = Integer.valueOf(input.charAt(i)-'0');
+            int num = Integer.valueOf(input.charAt(i) - '0');
             userNumber.add(num);
         }
     }
@@ -69,5 +72,5 @@ public class User {
     public void reset() {
         userNumber.clear();
     }
-    
+
 }

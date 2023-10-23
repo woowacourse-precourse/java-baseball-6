@@ -4,6 +4,7 @@ import baseball.domain.Judge;
 import java.util.List;
 
 public class JudgeService {
+    public static final int MAX_STRIKE = 3;
     private Judge judge;
 
     public JudgeService() {
@@ -34,7 +35,7 @@ public class JudgeService {
     public boolean checkThree() {
         int strike = judge.getStrike();
 
-        if (strike == 3) {
+        if (strike == MAX_STRIKE) {
             return true;
         }
         return false;

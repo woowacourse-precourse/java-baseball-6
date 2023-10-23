@@ -1,12 +1,13 @@
 package baseball.domain;
 
 public class Judge {
+    public static final int INIT_VALUE = 0;
     private int strike;
     private int ball;
 
-    public Judge(){
-        strike = 0;
-        ball = 0;
+    public Judge() {
+        strike = INIT_VALUE;
+        ball = INIT_VALUE;
     }
 
     public void increaseStrike() {
@@ -26,7 +27,7 @@ public class Judge {
     }
 
     public void reset() {
-        strike = 0;
-        ball = 0;
+        strike = INIT_VALUE;
+        ball = INIT_VALUE;
     }
 }

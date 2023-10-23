@@ -6,6 +6,8 @@ import java.util.List;
 
 
 public class Computer {
+    public static final int START_INCLUSIVE = 1;
+    public static final int END_INCLUSIVE = 9;
     private List<Integer> computerNumber;
 
     public Computer() {
@@ -13,14 +15,14 @@ public class Computer {
     }
 
     public void createOne() {
-        int number = Randoms.pickNumberInRange(1,9);
-        if(!validDuplication(number)){
+        int number = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+        if (!validDuplication(number)) {
             computerNumber.add(number);
         }
     }
 
     public boolean validDuplication(int number) {
-        if(computerNumber.contains(number)) {
+        if (computerNumber.contains(number)) {
             return true;
         }
         return false;
