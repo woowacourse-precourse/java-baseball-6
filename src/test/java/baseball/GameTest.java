@@ -121,4 +121,19 @@ class GameTest {
         assertThat(output2).isEqualTo("2볼");
         assertThat(output3).isEqualTo("3볼");
     }
+
+    @Test
+    @DisplayName("볼 + 스트라이크 계산")
+    void outputTest3() {
+        Game game = new Game();
+        List<Integer> computerNum = List.of(1, 2, 3);
+        List<Integer> inputNum = List.of(1, 3, 4);
+        List<Integer> inputNum2 = List.of(3, 2, 1);
+
+        String output = game.output(computerNum, inputNum);
+        String output2 = game.output(computerNum, inputNum2);
+
+        assertThat(output).isEqualTo("1볼 1스트라이크");
+        assertThat(output2).isEqualTo("2볼 1스트라이크");
+    }
 }
