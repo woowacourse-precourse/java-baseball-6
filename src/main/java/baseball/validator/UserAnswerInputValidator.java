@@ -1,5 +1,8 @@
 package baseball.validator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static baseball.ConstValue.*;
 
 public class UserAnswerInputValidator implements InputValidator{
@@ -42,6 +45,17 @@ public class UserAnswerInputValidator implements InputValidator{
             if(!(BASEBALL_MIN_VALUE <= number && number <= BASEBALL_MAX_VALUE)){
                 throw new IllegalArgumentException(USER_ANSWER_INPUT_ONE_TO_NINE_EXCEPTION);
             }
+        }
+    }
+
+    public void keepUnique(String input) {
+        //서로 다른 숫자로 구성되지 않을경우 IllegalArgumentException 발생
+        Set<Character> uniqueNumber = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            uniqueNumber.add(c);
+        }
+        if(uniqueNumber.size() != BASEBALL_MAX_LENGTH){
+            throw new IllegalArgumentException(USER_ANSWER_INPUT_UNIQUE_EXCEPTION);
         }
     }
 }
