@@ -23,6 +23,4 @@ public class NumberFactory {
     private static int combineNumber(List<Integer> numberList) {
         return numberList.get(0) * 100 + numberList.get(1) * 10 + numberList.get(2);
     }
-
-
 }
