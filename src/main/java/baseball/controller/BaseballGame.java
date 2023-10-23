@@ -15,4 +15,11 @@ public class BaseballGame {
         return InputParser.parseUserNumber(userNumber);
     }
 
+    private static boolean askForRestart() {
+        String restartCommand = InputView.getRestartCommand();
+        InputValidator.validateRestartCommand(restartCommand);
+
+        return InputParser.parseRestartCommand(restartCommand);
+    }
+
 }
