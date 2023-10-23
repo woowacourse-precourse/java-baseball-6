@@ -46,11 +46,12 @@ public class GameService {
 
         if(input.equals("1")) {
             return false;
-        } else if(input.equals("2")) {
-            return true;
-        } else {
-            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
         }
+        if(input.equals("2")) {
+            return true;
+        }
+
+        throw new IllegalArgumentException("1 또는 2가 아닙니다.");
     }
 
     private void giveHint() {
