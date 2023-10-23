@@ -7,7 +7,11 @@ import static baseball.constant.GameConstant.RESTART_OR_EXIT;
 
 import baseball.domain.GameResult;
 
-public final class GameView {
+/**
+ * 게임 뷰
+ */
+
+public class GameView {
 
     public static void gameStartView() {
         System.out.println(GAME_START);

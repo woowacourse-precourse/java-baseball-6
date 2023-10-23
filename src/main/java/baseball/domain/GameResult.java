@@ -5,6 +5,10 @@ import static baseball.constant.GameConstant.NOTHING;
 import static baseball.constant.GameConstant.STRIKE;
 import static baseball.constant.GameConstant.THREE_STRIKE;
 
+/**
+ * 게임 결과 도메인
+ */
+
 public class GameResult {
     private int ballCount = 0;
     private int strikeCount = 0;
@@ -13,7 +17,7 @@ public class GameResult {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
-    
+
     public String result() {
         if (ballCount != 0 && strikeCount != 0) {
             return ballCount + BALL + " " + strikeCount + STRIKE;

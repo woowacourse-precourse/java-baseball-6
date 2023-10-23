@@ -11,6 +11,10 @@ import baseball.domain.GameResult;
 import baseball.domain.Number;
 import camp.nextstep.edu.missionutils.Console;
 
+/**
+ * 게임 동작 흐름 제어 클래스
+ */
+
 public class GameController {
     private final Number computerNumber = new Number();
     private final Number userNumber = new Number();
@@ -33,7 +37,6 @@ public class GameController {
             gameResultView(gameResult);
         } while (gameResult.gameEnd());
     }
-
 
     private boolean restartOrExit() {
         gameEndView();

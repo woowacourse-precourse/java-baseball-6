@@ -10,6 +10,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 숫자 도메인
+ */
+
 public class Number {
     private final List<Integer> number = new ArrayList<>();
 
@@ -48,7 +52,7 @@ public class Number {
         return number.indexOf(CompareValue) == index;
     }
 
-    private int strikeCheck(Number compareNumber) {
+    int strikeCheck(Number compareNumber) {
         int strikeCount = 0;
         for (int i = 0; i < INPUT_NUMBER_SIZE; i++) {
             if (compareNumber.isStrike(number.get(i), i)) {
@@ -58,7 +62,7 @@ public class Number {
         return strikeCount;
     }
 
-    private int ballCheck(Number compareNumber) {
+    int ballCheck(Number compareNumber) {
         int ballCount = 0;
         for (int i = 0; i < INPUT_NUMBER_SIZE; i++) {
             if (compareNumber.isBall(number.get(i), i)) {

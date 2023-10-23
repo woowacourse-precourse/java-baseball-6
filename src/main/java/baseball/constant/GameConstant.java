@@ -1,5 +1,8 @@
 package baseball.constant;
 
+/**
+ * 게임 상수
+ */
 public class GameConstant {
 
     //난수 설정
