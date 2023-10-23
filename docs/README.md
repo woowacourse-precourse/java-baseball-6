@@ -34,3 +34,13 @@
     - CodeMetrics
     - GitToolBox
     - Rainbow Brackets
+
+### [23.10.23]
+
+- 프로그램 전체 흐름 중 100 % 구현
+    - `./gradlew clean test` 모두 통과
+- 클래스 분리
+    - `Application` 클래스의 모든 기능이 모여있어 1차 분리
+    - 클래스별 필요 변수, 메서드 설계
+- 메서드 복잡성이 높아 단순화 시작
+    - 클린코드 방법 조사 및 1차 반영
