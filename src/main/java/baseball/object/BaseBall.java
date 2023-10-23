@@ -12,34 +12,34 @@ public class BaseBall {
         Computer computer = new Computer();
         List<Integer> computerNum = computer.makeRandomNumbers();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
-        String userNum = readLine();
-
         List<Integer> userNumList;
         while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNum = readLine();
+
             userNumList = checkUserNum(userNum); // 맞는 숫자인지 확인
             int [] result = ismatch(computerNum, userNumList);
             if (result[1] == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                userNum = readLine();
+                userNum = askNewGame();
                 if (checkTryAgain(userNum)) {
                     computerNum = computer.makeRandomNumbers();
-                    System.out.print("숫자를 입력해주세요 : ");
-                    userNum = readLine();
                 }else {
                     return;
                 }
             }
             else {
                 printResult(result);
-                System.out.print("숫자를 입력해주세요 : ");
-                userNum = readLine();
             }
 
         }
+    }
+
+    private String askNewGame() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return readLine();
     }
 
     private void printResult(int[] result) {
