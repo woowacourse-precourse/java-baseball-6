@@ -19,6 +19,7 @@ public class BaseBallGame {
         boolean gameFirstStarted = true;
 
         while (true) {
+
             if (gameFirstStarted) {
                 output.printGameStart();
                 gameFirstStarted = false;
@@ -27,7 +28,7 @@ public class BaseBallGame {
             computer.pickSecretNumbers();
 
             while (true) {
-                List<Integer> guessNumbers = input.readGuessNumbers();
+                List<Integer> guessNumbers = input.getGuessNumbers();
                 Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
 
                 if (output.printResultAndContinue(result)) {
@@ -35,9 +36,10 @@ public class BaseBallGame {
                 }
             }
 
-            int retryChoice = input.readRetryChoice();
-            if (retryChoice == 2)
+            int retryChoice = input.getRetryChoice();
+            if (retryChoice == 2) {
                 break;
+            }
         }
     }
 
