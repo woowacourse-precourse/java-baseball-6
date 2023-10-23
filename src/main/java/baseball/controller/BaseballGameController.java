@@ -6,9 +6,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
-    GameResultDto gameDto = new GameResultDto();
+    GameResultDto gameResultDto = new GameResultDto();
     InputView inputView = new InputView();
-    BaseballGameService game = new BaseballGameService(gameDto);
+    BaseballGameService game = new BaseballGameService(gameResultDto);
 
     public BaseballGameController() {
         displayStartMessage();
@@ -16,14 +16,14 @@ public class BaseballGameController {
 
     public void run() {
         game.initGame();
-        while (!gameDto.getIsCorrectAnswer()) {
+        while (!gameResultDto.getIsCorrectAnswer()) {
             displayNumberInputMessage();
             game.playGame(getUserInput());
-            OutputView.gameResultMessage(gameDto.getGameResultMessage());
+            OutputView.gameResultMessage(gameResultDto.getGameResultMessage());
         }
         displayWhenAnsweredCorrectMessage();
         game.restartGame(getUserInput());
-        if (gameDto.getIsRestart()) {
+        if (gameResultDto.getIsRestart()) {
             run();
             return;
         }
