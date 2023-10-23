@@ -1,4 +1,4 @@
-package baseball.enums;
+package baseball;
 
 public enum BaseBallType {
     STRIKE,

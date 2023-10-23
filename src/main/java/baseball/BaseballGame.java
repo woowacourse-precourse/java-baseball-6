@@ -1,8 +1,9 @@
 package baseball;
 
-import baseball.enums.BaseBallType;
-
 import java.util.Map;
+
+import static baseball.constants.Rule.GAME_RESTART;
+import static baseball.constants.Rule.SUCCESS_STRIKE_COUNT;
 
 public class BaseballGame {
     private static Computer computer;
@@ -24,7 +25,7 @@ public class BaseballGame {
             Map<BaseBallType, Integer> result = computer.compareNumbers(input);
             Console.printResult(result.get(BaseBallType.BALL), result.get(BaseBallType.STRIKE));
 
-            if (result.get(BaseBallType.STRIKE) == 3) {
+            if (result.get(BaseBallType.STRIKE) == SUCCESS_STRIKE_COUNT) {
                 break;
             }
         }
@@ -33,6 +34,6 @@ public class BaseballGame {
 
     private static boolean askRestart() {
         Console.printGameRestartOrEndMessage();
-        return Console.readRestartOrEnd().equals("1");
+        return Console.readRestartOrEnd().equals(String.valueOf(GAME_RESTART));
     }
 }

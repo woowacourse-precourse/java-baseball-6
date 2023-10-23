@@ -1,17 +1,14 @@
 package baseball;
 
-import baseball.enums.BaseBallType;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Computer {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final int PICK_SIZE = 3;
+import static baseball.constants.Rule.*;
 
+public class Computer {
     private List<Integer> numbers;
 
     public Computer() {
