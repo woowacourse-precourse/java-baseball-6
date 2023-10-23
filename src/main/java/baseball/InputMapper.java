@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 class InputMapper {
 
@@ -29,7 +28,7 @@ class InputMapper {
     private static List<Integer> mapAll(List<String> input) {
         return input.stream()
                 .map(InputMapper::mapEach)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private static int mapEach(String input) {

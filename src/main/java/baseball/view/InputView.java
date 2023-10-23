@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -17,8 +16,7 @@ public class InputView {
 
         String playerNumbers = Console.readLine().trim();
 
-        return Arrays.stream(playerNumbers.split(NUMBER_SPLIT_DELIMITER))
-                .collect(Collectors.toList());
+        return Arrays.stream(playerNumbers.split(NUMBER_SPLIT_DELIMITER)).toList();
     }
 
     public static String readPlayerCommand(int restartValue, int endValue) {
