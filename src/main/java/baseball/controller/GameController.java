@@ -28,25 +28,19 @@ public class GameController {
     }
 
     public void gameStart() {
-        boolean gameProgress = true;
-
         outputView.printGameStartMessage();
 
-        while(gameProgress) {
+        do {
             progress();
-
-            gameProgress = isRestartState();
-        }
+        } while (!isRestartState());
     }
 
     private void progress() {
-        boolean isCorrect = false;
         computer.setRandomNumbers();
 
-        while(!isCorrect) {
+        do {
             setPlayerNumbers();
-            isCorrect = compareNumbers(computer.getNumbers(), player.getNumbers());
-        }
+        } while (!compareNumbers(computer.getNumbers(), player.getNumbers()));
 
         outputView.printGameEndMessage();
     }
