@@ -9,11 +9,14 @@ public abstract class Computer {
 
     protected final List<Integer> numbers = new ArrayList<>();
 
-    public List<Integer> generateNumbers(Rule rule) {
+    protected Computer(Rule rule) {
+        generateNumbers(rule);
+    }
+
+    private void generateNumbers(Rule rule) {
         while (numbers.size() < rule.digits()) {
             generateEachNumber(rule);
         }
-        return numbers;
     }
 
     private void generateEachNumber(Rule rule) {

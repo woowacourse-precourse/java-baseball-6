@@ -4,6 +4,10 @@ import baseball.controller.dto.Result;
 
 public class NumberBaseBallComputer extends Computer {
 
+    public NumberBaseBallComputer(Rule rule) {
+        super(rule);
+    }
+
     @Override
     public Result calculateResult(User user) {
         int strikeCount = 0;
