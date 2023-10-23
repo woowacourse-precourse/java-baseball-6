@@ -3,9 +3,11 @@ package baseball.controller;
 import baseball.service.ComputerService;
 import baseball.service.UserService;
 import baseball.service.UmpireService;
+import baseball.util.Constants;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameController {
     OutputView output = new OutputView();
@@ -15,16 +17,21 @@ public class GameController {
 
     public GameController() {
         computer = new ComputerService();
-        output.printStart();
     }
 
     public void run() {
+        output.printStart();
         UmpireService umpire = new UmpireService();
-        output.printInputNum();
         ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
-        ArrayList<Integer> inputNumbers = user.getInputNumbers(input.getInput());
+        ArrayList<Integer> ballStrikeCount;
+        do {
+            output.printInputNum();
+            umpire.initCount();
+            ArrayList<Integer> inputNumbers = user.getInputNumbers(input.getInput());
 
-        ArrayList<Integer> ballStrikeCount = umpire.getResult(randomNumbers, inputNumbers);
-        output.printResult(ballStrikeCount);
+            ballStrikeCount = umpire.getResult(randomNumbers, inputNumbers);
+            output.printResult(ballStrikeCount);
+        } while (!Objects.equals(ballStrikeCount.get(Constants.ONE), Constants.STRIKE_SIZE));
+        output.printEndGame();
     }
 }
