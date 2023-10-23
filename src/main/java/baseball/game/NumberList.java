@@ -12,6 +12,7 @@ public class NumberList {
             Number number = new Number(c);
             this.add(number);
         }
+        this.ValidateCountLimit();
     }
 
     public NumberList() {
@@ -19,7 +20,7 @@ public class NumberList {
     }
 
     public void add(Number number) {
-        this.ValidateCount();
+        this.ValidateUpperCountLimit();
         this.ValidateDuplicate(number);
         numbers.add(number);
     }
@@ -35,6 +36,14 @@ public class NumberList {
     public void ValidateCount() {
         if (numbers.size() >= MAX_NUM_LEN) {
             throw new IllegalArgumentException("Input that exceeds MAX_NUM_LEN.");
+    public void ValidateCountLimit() {
+        if (numbers.size() != MAX_NUM_LEN) {
+            throw new IllegalArgumentException("The number entered is not BASEBALL_NUM_COUNT.");
+        }
+    }
+
+    public void ValidateUpperCountLimit() {
+            throw new IllegalArgumentException("Input that exceeds BASEBALL_NUM_COUNT.");
         }
     }
 }
