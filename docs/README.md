@@ -30,3 +30,5 @@
 - [x] 사용자가 게임을 더 진행할지 확인한다. (checkRestartOrQuit)
 ### 컴퓨터 클래스 (Computer)
 - [x] 컴퓨터의 랜덤 숫자를 생성한다. (generateNumbers)
+### 게임이 진행중인지 상태를 나타내는 Enum (GameStatus)
+- [x] CONTINUE, END를 가진다. (GameStatus)
