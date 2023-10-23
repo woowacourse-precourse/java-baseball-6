@@ -6,11 +6,12 @@ import baseball.view.View;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.constants.Constants.*;
+
 public class Controller {
 
     private final static Computer computer = new Computer();
     private final static View view = new View();
-    private final static String FIN = "1";
 
     public void start() {
         String end;
@@ -25,7 +26,7 @@ public class Controller {
 
     private void playGame() {
         String result = "";
-        while (!result.contains("게임 종료")) {
+        while (!result.contains(CORRECT_COMMENT)) {
             String input = view.inputNumber();
             validateInput(input);
             result = computer.getResult(input);
@@ -38,8 +39,8 @@ public class Controller {
             throw new IllegalArgumentException("numbers cannot be empty");
         }
 
-        if (3 != input.length() || !input.matches("^[1-9]{3}$")) {
-            throw new IllegalArgumentException("Only " + 3 + " numbers required");
+        if (input.length() != COUNT || !input.matches("^[1-9]+$")) {
+            throw new IllegalArgumentException("Only " + COUNT + " numbers required");
         }
 
         Set<Character> set = new HashSet<>();

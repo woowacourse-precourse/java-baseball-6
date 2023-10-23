@@ -5,14 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constants.Constants.*;
+
 public class Computer {
-    private final static int COUNT = 3;
-    private final static int MIN_RANGE = 1;
-    private final static int MAX_RANGE = 9;
-    private final static String STRIKE = "스트라이크";
-    private final static String BALL = "볼";
-    private final static String NOTHING = "낫싱";
-    private final static String CORRECT_COMMENT = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private List<Integer> numbers;
 
     public void prepareGame() {
