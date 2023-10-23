@@ -21,11 +21,11 @@ public class Ball {
         }
     }
 
-    public TryResult getTryResult(Ball playerBall) {
-        if (this.equals(playerBall)) {
+    public TryResult getTryResult(Ball answerBall) {
+        if (this.equals(answerBall)) {
             return TryResult.STRIKE;
         }
-        if (isSameNumber(playerBall)) {
+        if (isSameNumber(answerBall)) {
             return TryResult.BALL;
         }
         return TryResult.NOTHING;
@@ -35,8 +35,8 @@ public class Ball {
         return number >= UNDER_RANGE;
     }
 
-    public boolean isSameNumber(Ball playerBall) {
-        return playerBall.isNumber(number);
+    public boolean isSameNumber(Ball answerBall) {
+        return answerBall.isNumber(number);
     }
 
     private boolean isNumber(int inputNumber) {

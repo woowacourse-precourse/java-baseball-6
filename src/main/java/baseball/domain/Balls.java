@@ -34,15 +34,15 @@ public class Balls {
         return uniqueBallCount < BALL_COUNT;
     }
 
-    public GameResult getTryResultList(Balls answerBalls) {
-        return balls.stream()   // balls = playerBalls
-            .map(answerBalls::getTryResult)
+    public GameResult getTryResultList(Balls playerBalls) {
+        return balls.stream()   // balls = answerBalls
+            .map(playerBalls::getTryResult)
             .collect(collectingAndThen(toList(), GameResult::from));
     }
 
-    private TryResult getTryResult(Ball playerBall) {
-        return balls.stream()   // balls = answerBalls
-            .map(answerBall -> answerBall.getTryResult(playerBall))
+    private TryResult getTryResult(Ball answerBall) {
+        return balls.stream()   // balls = playerBalls
+            .map(playerBall -> playerBall.getTryResult(answerBall))
             .filter(tryResult -> tryResult != TryResult.NOTHING)
             .findFirst()
             .orElse(TryResult.NOTHING);
