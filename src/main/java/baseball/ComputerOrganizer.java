@@ -32,6 +32,7 @@ public class ComputerOrganizer {
 
     public Umpire makeUserInputUmpire(BaseballManager userBaseballNumbers) {
         Umpire umpire = new Umpire(computerNumbers, userBaseballNumbers);
+
         return umpire;
     }
 }

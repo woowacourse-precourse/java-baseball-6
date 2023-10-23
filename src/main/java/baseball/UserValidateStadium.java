@@ -73,4 +73,5 @@ public class UserValidateStadium {
     private boolean isNumberString(String str) {
         return str.matches("\\d+");
     }
+
 }

@@ -23,4 +23,5 @@ public class Constant {
     public static final String Input_Type_Exception = "숫자(양수)를 입력해 주세요.";
     public static final String Input_Nothing = "입력된 내용이 없습니다.";
     public static final String Input_Range_Exception = "올바른 범위의 입력값이 아닙니다.";
+
 }

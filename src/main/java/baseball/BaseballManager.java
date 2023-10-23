@@ -92,5 +92,6 @@ public class BaseballManager {
 
     public boolean isNothing(BaseballManager otherManager) {
         return ballNumbersList.stream().noneMatch(otherManager.ballNumbersList::contains);
+
     }
 }
