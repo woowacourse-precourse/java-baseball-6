@@ -40,6 +40,6 @@ public class NumberBaseballGame {
     }
 
     private void endGame() {
-
+        outputView.printEndGame();
     }
 }
