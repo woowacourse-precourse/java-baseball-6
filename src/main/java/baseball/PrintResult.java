@@ -1,44 +1,50 @@
 package baseball;
 
-import java.util.List;
-import java.util.Objects;
-
 public class PrintResult {
+    public boolean print(int strikes, int balls) {
+        balls -= strikes; // 중복 제거
 
-    public boolean getResult(List<Integer> inputNumberList, List<Integer> randomNumberList) {
-        int strikeNumber = 0;
-        int ballNumber = 0;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (Objects.equals(inputNumberList.get(i), randomNumberList.get(j))) {
-                    if (i == j) {
-                        strikeNumber++;
-                    } else {
-                        ballNumber++;
-                    }
-                }
-            }
+        if (printBallAndStrike(strikes, balls)) {
+            return false;
         }
-
-        return printResult(strikeNumber, ballNumber);
+        if (printStrike(strikes)) {
+            return true;
+        }
+        if (printBall(balls)) {
+            return false;
+        }
+        printNothing();
+        return false;
     }
 
-    public boolean printResult(int strikeNumber, int ballNumber) {
-        if (strikeNumber != 0 && ballNumber != 0) {
-            System.out.println(ballNumber + "볼" + " " + strikeNumber + "스트라이크");
-        } else if (strikeNumber != 0) {
-            System.out.println(strikeNumber + "스트라이크");
-            if (strikeNumber == 3) {
+    private boolean printBallAndStrike(int strike, int ball) {
+        if (strike != 0 && ball != 0) {
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean printStrike(int strike) {
+        if (strike != 0) {
+            System.out.println(strike + "스트라이크");
+            if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return true;
             }
-        } else if (ballNumber != 0) {
-            System.out.println(ballNumber + "볼");
-        } else {
-            System.out.println("낫싱");
         }
-
         return false;
+    }
+
+    private boolean printBall(int ball) {
+        if (ball != 0) {
+            System.out.println(ball + "볼");
+            return true;
+        }
+        return false;
+    }
+
+    private void printNothing() {
+        System.out.println("낫싱");
     }
 }
