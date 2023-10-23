@@ -6,11 +6,12 @@ public enum CountSpeaker {
     STRIKE("스트라이크"),
     BALL("볼");
 
+    CountSpeaker(String call){
+        this.call = call;
+    }
     final private String call;
     public String getCall() {
         return call;
     }
-    private CountSpeaker(String call){
-        this.call = call;
-    }
+
 }
