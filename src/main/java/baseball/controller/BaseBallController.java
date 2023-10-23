@@ -8,7 +8,6 @@ import baseball.view.ErrorMessage;
 import baseball.view.GameCommand;
 import baseball.view.GameValue;
 import baseball.view.InputView;
-import baseball.view.GameMessage;
 import baseball.view.OutputView;
 
 public class BaseBallController {
@@ -19,7 +18,7 @@ public class BaseBallController {
     }
 
     public void startGame() {
-        System.out.println(GameMessage.START_GAME.getMessage());
+        OutputView.printGameStartMessage();
         do {
             ComputerNumber computerNumber = ComputerNumber.getInstance();
             runGame(computerNumber);
@@ -27,7 +26,7 @@ public class BaseBallController {
     }
 
     public boolean restartGame() {
-        System.out.println(GameMessage.ASK_RETRY.getMessage());
+        OutputView.printRetryMessage();
         String command = InputView.inputRetryCommand();
         if (command.equals(GameCommand.RESTART.getString())) {
             return true;
@@ -41,7 +40,7 @@ public class BaseBallController {
     private void runGame(ComputerNumber computerNumber) {
         boolean gameStatus = true;
         while (gameStatus) {
-            System.out.print(GameMessage.INPUT_NUMBER.getMessage());
+            OutputView.printInputMessage();
             String input = InputView.inputPlayerNumber();
             PlayerNumber playerNumber = PlayerNumber.from(input);
             CountResultDto countResultDto = countService.getCountResult(computerNumber, playerNumber);
@@ -52,7 +51,7 @@ public class BaseBallController {
 
     private boolean isWinGame(int strikeCount) {
         if (strikeCount == GameValue.THREE_STRIKE.getValue()) {
-            System.out.println(GameMessage.SUCCESS.getMessage());
+            OutputView.printWinGameMessage();
             return false;
         }
         return true;
