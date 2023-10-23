@@ -12,15 +12,20 @@ public class GameController {
     private GameView gameView = new GameView();
 
     public void startGame() {
+        do {
+            gameView.showGameStart();
+            playGame();
+        } while (isRestart());
+    }
+
+    public void playGame() {
         generateComputerNumber();
 
-        gameView.showGameStart();
         while (true) {
             String userNumberReadLine = gameView.getUserNumber();
             userNumber = ballService.initUserNumber(userNumberReadLine);
 
             Result result = computerNumber.compare(userNumber);
-
             gameView.showGameResult(result);
 
             if (result.isEnd()) {
@@ -28,15 +33,11 @@ public class GameController {
                 break;
             }
         }
-
-        restart();
     }
 
-    private void restart() {
+    private boolean isRestart() {
         String restart = gameView.inputGameRestart();
-        if ("1".equals(restart)) {
-            startGame();
-        }
+        return "1".equals(restart);
     }
 
     private void generateComputerNumber() {
