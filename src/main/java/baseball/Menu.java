@@ -7,6 +7,7 @@ public enum Menu {
     START("1"),
     TERMINATE("2");
 
+    private static final String INCORRECT_MENU_MESSAGE = "없는 메뉴 번호입니다.";
     private final String menuCode;
 
     Menu(String menuCode) {
@@ -17,7 +18,7 @@ public enum Menu {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.isMatching(menuInput))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("없는 메뉴 번호입니다."));
+                .orElseThrow(() -> new IllegalArgumentException(INCORRECT_MENU_MESSAGE));
     }
 
     private boolean isMatching(String menuInput) {
