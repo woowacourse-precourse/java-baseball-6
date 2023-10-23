@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -20,16 +21,29 @@ public class Application {
 
         int gameStatus = 0;
         System.out.println("gameStatus = " + gameStatus);
-        List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> computer = new ArrayList<>();
 
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("randomNumber = " + randomNumber);
+        System.out.println("randomNumber = " + computer);
 
         while (true) {
             // random 수 설정
             if (gameStatus == 1) {
-                randomNumber = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-                System.out.println("randomNumber = " + randomNumber);
+                computer = new ArrayList<>();
+                while (computer.size() < 3) {
+                    int randomNumber = Randoms.pickNumberInRange(1, 9);
+                    if (!computer.contains(randomNumber)) {
+                        computer.add(randomNumber);
+                    }
+                }
+                System.out.println("randomNumber = " + computer);
+
 
                 gameStatus = 0;
             }
@@ -45,9 +59,9 @@ public class Application {
             int strikeCnt = 0;
             int bollCnt = 0;
             char[] chars = inputValue.toCharArray();
-            for (int i = 0; i < randomNumber.size(); i++) {
-                if (randomNumber.get(i) == chars[i] - '0') strikeCnt++;
-                else if (randomNumber.contains(chars[i] - '0')) bollCnt++;
+            for (int i = 0; i < computer.size(); i++) {
+                if (computer.get(i) == chars[i] - '0') strikeCnt++;
+                else if (computer.contains(chars[i] - '0')) bollCnt++;
             }
 
             // 출력
