@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.util;
 
 public class Output {
 

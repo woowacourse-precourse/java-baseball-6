@@ -1,6 +1,6 @@
 package baseball.domain.baseball;
 
-import baseball.domain.Output;
+import baseball.domain.util.Output;
 
 import static baseball.domain.baseball.BaseballConst.FINISH_STRIKE_COUNT;
 

@@ -1,15 +1,15 @@
-package baseball.domain;
+package baseball.domain.baseball;
 
 import static baseball.domain.baseball.BaseballConst.*;
 
-public class Validator {
+public class BaseballValidator {
 
-    private static final Validator instance = new Validator();
+    private static final BaseballValidator instance = new BaseballValidator();
 
-    private Validator() {
+    private BaseballValidator() {
     }
 
-    public static Validator getInstance() {
+    public static BaseballValidator getInstance() {
         return instance;
     }
 

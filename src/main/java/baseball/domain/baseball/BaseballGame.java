@@ -1,7 +1,6 @@
 package baseball.domain.baseball;
 
-import baseball.domain.Output;
-import baseball.domain.Validator;
+import baseball.domain.util.Output;
 import baseball.domain.interfaces.baseball.Game;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -64,7 +63,7 @@ public class BaseballGame implements Game {
     private int getCommand() {
         Output.printMessageWithLine(GAME_RESTART_MESSAGE);
         String input = Console.readLine();
-        Validator.validateCommand(input);
+        BaseballValidator.validateCommand(input);
 
         return Integer.parseInt(input);
     }
