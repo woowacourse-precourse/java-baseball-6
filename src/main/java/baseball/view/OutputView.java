@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.enums.OutputMessage;
 import baseball.model.GameScore;
 import java.util.List;
 
@@ -22,22 +23,22 @@ public class OutputView {
     }
 
     private void printStrike(int strike) {
-        System.out.println(strike + "스트라이크");
+        System.out.println(strike + OutputMessage.STRIKE.getMsg());
     }
 
     private void printBall(int ball) {
-        System.out.println(ball + "볼");
+        System.out.println(ball + OutputMessage.BALL.getMsg());
     }
 
     private void printStrikeAndBall(int strike, int ball) {
-        System.out.println(ball + "볼 " + strike + "스트라이크");
+        System.out.println(ball + OutputMessage.BALL.getMsg() + " " + strike + OutputMessage.STRIKE.getMsg());
     }
 
     private void printNothing() {
-        System.out.println("낫싱");
+        System.out.println(OutputMessage.NOTHING.getMsg());
     }
 
     public void roundEndMsg() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(OutputMessage.MATCHING_ALL.getMsg());
     }
 }

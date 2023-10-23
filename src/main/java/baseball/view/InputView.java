@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.enums.ErrorMessage;
+import baseball.enums.InputMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +10,15 @@ import java.util.Objects;
 public class InputView {
 
     public void greetingMsg() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(InputMessage.START_MSG.getMsg());
     }
 
     public void inputGuideMsg() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(InputMessage.INPUT_GUIDE_MSG.getMsg());
     }
 
     public void askRestartMsg() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(InputMessage.RESTART_MSG.getMsg());
     }
 
     public List<Integer> inputByConsole() {
@@ -32,11 +34,11 @@ public class InputView {
 
     private void userInputValidation(String input) {
         if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리의 수를 입력하시오.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_LENGTH_ERROR.getMsg());
         }
 
         if (!(input.matches("^[0-9]*$"))) {
-            throw new IllegalArgumentException("숫자 외에 다른 문자가 존재합니다.");
+            throw new IllegalArgumentException(ErrorMessage.REGEX_ERROR.getMsg());
         }
 
         for (int i = 0; i < input.length(); i++) {
@@ -52,10 +54,9 @@ public class InputView {
 
     private void compareTwoNum(int i, int j, char[] splitInput) {
         if (splitInput[i] == splitInput[j]) {
-            throw new IllegalArgumentException("입력에 중복되는 숫자가 존재합니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_ERROR.getMsg());
         }
     }
-
 
     private List<Integer> inputConverter(Integer input) {
         List<Integer> convertedInput = new ArrayList<>();
