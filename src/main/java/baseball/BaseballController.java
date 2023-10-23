@@ -1,10 +1,10 @@
 package baseball;
 
+import static baseball.ConstValue.PLAY_CONTINUE;
+
 import baseball.validator.GameRetryInputValidator;
 import baseball.validator.UserAnswerInputValidator;
 import camp.nextstep.edu.missionutils.Console;
-
-import static baseball.ConstValue.*;
 
 public class BaseballController {
 
@@ -15,12 +15,12 @@ public class BaseballController {
     private GameRetryInputValidator gameRetryInputValidator = new GameRetryInputValidator();
 
     // 게임 시작
-    public void runGame(){
+    public void runGame() {
         // 시작 멘트
         narrator.startGame();
         // 게임시작 플래그
         String gamePlayFlag = PLAY_CONTINUE;
-        while (gamePlayFlag.equals(PLAY_CONTINUE)){
+        while (gamePlayFlag.equals(PLAY_CONTINUE)) {
             // 숫자야구 플레이
             playBaseBall();
 
@@ -33,7 +33,7 @@ public class BaseballController {
         }
     }
 
-    private void playBaseBall(){
+    private void playBaseBall() {
         //서로 다른 3자리의 수 생성(답)
         int[] computerAnswer = randomNumberGenerator.makeComputerAnswer();
 
@@ -54,7 +54,9 @@ public class BaseballController {
             Score score = ballStrikeCalculator.countStrikeAndBallToScore(userAnswer, computerAnswer);
 
             // 정답을 맞출경우 stop
-            if (narrator.isThreeStrike(score)) break;
+            if (narrator.isThreeStrike(score)) {
+                break;
+            }
         }
     }
 

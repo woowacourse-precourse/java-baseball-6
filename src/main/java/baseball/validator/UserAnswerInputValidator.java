@@ -1,11 +1,17 @@
 package baseball.validator;
 
+import static baseball.ConstValue.BASEBALL_MAX_LENGTH;
+import static baseball.ConstValue.BASEBALL_MAX_VALUE;
+import static baseball.ConstValue.BASEBALL_MIN_VALUE;
+import static baseball.ConstValue.USER_ANSWER_INPUT_DIGIT_EXCEPTION;
+import static baseball.ConstValue.USER_ANSWER_INPUT_ONE_TO_NINE_EXCEPTION;
+import static baseball.ConstValue.USER_ANSWER_INPUT_THREE_LENGTH_EXCEPTION;
+import static baseball.ConstValue.USER_ANSWER_INPUT_UNIQUE_EXCEPTION;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.ConstValue.*;
-
-public class UserAnswerInputValidator implements InputValidator{
+public class UserAnswerInputValidator implements InputValidator {
 
     @Override
     public void validateInput(String input) {
@@ -24,7 +30,7 @@ public class UserAnswerInputValidator implements InputValidator{
 
     public void keepLengthThree(String input) {
         // 3자리가 아닌 값 입력시 IllegalArgumentException 발생
-        if(!(input.length() == BASEBALL_MAX_LENGTH)){
+        if (!(input.length() == BASEBALL_MAX_LENGTH)) {
             throw new IllegalArgumentException(USER_ANSWER_INPUT_THREE_LENGTH_EXCEPTION);
         }
     }
@@ -42,7 +48,7 @@ public class UserAnswerInputValidator implements InputValidator{
         //숫자의 범위가 1~9이 아니면 IllegalArgumentException 발생
         for (char c : input.toCharArray()) {
             int number = Character.getNumericValue(c);
-            if(!(BASEBALL_MIN_VALUE <= number && number <= BASEBALL_MAX_VALUE)){
+            if (!(BASEBALL_MIN_VALUE <= number && number <= BASEBALL_MAX_VALUE)) {
                 throw new IllegalArgumentException(USER_ANSWER_INPUT_ONE_TO_NINE_EXCEPTION);
             }
         }
@@ -54,7 +60,7 @@ public class UserAnswerInputValidator implements InputValidator{
         for (char c : input.toCharArray()) {
             uniqueNumber.add(c);
         }
-        if(uniqueNumber.size() != BASEBALL_MAX_LENGTH){
+        if (uniqueNumber.size() != BASEBALL_MAX_LENGTH) {
             throw new IllegalArgumentException(USER_ANSWER_INPUT_UNIQUE_EXCEPTION);
         }
     }

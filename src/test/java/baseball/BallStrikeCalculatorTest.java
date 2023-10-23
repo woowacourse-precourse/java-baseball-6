@@ -11,8 +11,8 @@ class BallStrikeCalculatorTest {
     @Test
     void 스트라이크_갯수_계산_성공테스트() {
 
-        int[] userInput = {1,2,3};
-        int[] computerAnswer = {1,2,4};
+        int[] userInput = {1, 2, 3};
+        int[] computerAnswer = {1, 2, 4};
 
         // userInput      = {1,2,3};
         // computerAnswer = {1,2,4};
@@ -24,8 +24,8 @@ class BallStrikeCalculatorTest {
 
     @Test
     void 볼_갯수_계산_성공테스트() {
-        int[] userInput = {1,2,3};
-        int[] computerAnswer = {3,1,2};
+        int[] userInput = {1, 2, 3};
+        int[] computerAnswer = {3, 1, 2};
 
         // userInput      = {1,2,3};
         // computerAnswer = {3,1,2};
@@ -37,8 +37,8 @@ class BallStrikeCalculatorTest {
 
     @Test
     void 스트라이크_볼_Score_반환_테스트() {
-        int[] userInput = {1,2,3};
-        int[] computerAnswer = {1,3,2};
+        int[] userInput = {1, 2, 3};
+        int[] computerAnswer = {1, 3, 2};
 
         // userInput      = {1,2,3};
         // computerAnswer = {1,3,2};
