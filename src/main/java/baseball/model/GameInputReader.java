@@ -3,7 +3,7 @@ package baseball.model;
 import baseball.exception.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameInput {
+public class GameInputReader {
 
     public Number readNumberInput() {
 
