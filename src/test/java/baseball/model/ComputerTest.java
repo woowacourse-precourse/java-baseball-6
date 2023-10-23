@@ -38,7 +38,7 @@ class ComputerTest {
     @Test
     @DisplayName("컴퓨터_숫자여부_테스트")
     public void isNumberTest() {
-        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        List<Integer> numbers = computerService.createComputerList();
         Computer computer = new Computer(numbers);
         numbers.stream()
                 .map(val -> assertThat(val).isInstanceOf(Integer.class));
