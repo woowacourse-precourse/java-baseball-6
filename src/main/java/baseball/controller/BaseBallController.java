@@ -5,13 +5,18 @@ import baseball.model.RandomNumbers;
 import baseball.model.Strikes;
 import baseball.model.UserInputNumbers;
 import baseball.util.GameConstant;
+import baseball.validator.BaseballNumberInputValidation;
+import baseball.validator.NewGameOrEndInputValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseBallController {
 
     private final OutputView outputView = new OutputView();
-    private final InputView inputView = new InputView();
+    private final InputView inputView = new InputView(
+            new BaseballNumberInputValidation(),
+            new NewGameOrEndInputValidation()
+    );
 
     private RandomNumbers randomNumbers;
     private UserInputNumbers userInputNumbers;
