@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class InputNumber {
     private static final int NUMBER_OF_DIGITS = 3;
+    private static final String INPUT_REGEX_PATTERN = "^(?!.*(\\d).*\\1)[1-9]{3}$";
     private List<Integer> inputNumber = new ArrayList<>();
     private String quitNumber = "";
 
@@ -14,8 +15,8 @@ public class InputNumber {
     }
 
     public void setInputNumber(String playerInput) throws IllegalArgumentException {
-        if (playerInput.length() != NUMBER_OF_DIGITS) {
-            throw new IllegalArgumentException(NUMBER_OF_DIGITS + "자리의 수를 입력해주십시오.");
+        if (!playerInput.matches(INPUT_REGEX_PATTERN)) {
+            throw new IllegalArgumentException("서로 다른 " + NUMBER_OF_DIGITS + "자리의 숫자를 공백, 문자 없이 연속하여 입력해주십시오.");
         }
 
         for (int i = 0; i < playerInput.length(); i++) {
