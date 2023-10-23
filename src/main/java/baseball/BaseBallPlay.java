@@ -13,13 +13,15 @@ public class BaseBallPlay {
   private static UserNums userNums ;
   private static ComNums comNums;
   public int play(){
-    System.out.println(ENTER_INPUT_MESSAGE);
+    init();
+    strikeAndBall();
+    return resultCheck();
+  }
+  public void init(){
+    System.out.print(ENTER_INPUT_MESSAGE);
     this.strike = new Strike(0);
     this.ball = new Ball(0);
     createUserNums();
-
-    strikeAndBall();
-    return resultCheck();
   }
   public int resultCheck(){
     if(ball.getCount() == 0 && strike.getCount() == 0){
