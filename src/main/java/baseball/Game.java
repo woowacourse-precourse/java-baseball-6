@@ -21,8 +21,7 @@ public class Game {
         int strike = checkInputNumber.checkStrike(randomNumber, userNumber);
         int ball = checkInputNumber.checkBall(randomNumber, userNumber);
 
-        System.out.println(strike + " " + ball);
-
+        output.printResult(strike, ball);
 
     }
 
