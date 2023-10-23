@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 public class Computer {
     private static final int SIZE = 3;
-    private final static int[] baseballFlag = {0, 0, 0};
+    private final static int[] baseballFlag = {0, 0};
     private final static int[] numbers = new int[SIZE];
     public Computer() {
         int randomNumber;
@@ -42,8 +42,9 @@ public class Computer {
                 baseballFlag[1] += 1; // ball
                 return;
             }
-            if (currentDigit == SIZE - 1)
-                baseballFlag[2] += 1; // nothing
         }
+    }
+    public static void game(Computer answer){
+
     }
 }
