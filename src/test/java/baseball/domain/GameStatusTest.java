@@ -10,7 +10,7 @@ class GameStatusTest {
 
     @DisplayName("\"1\" 또는 \"2\"일 때, 해당 GameStatus enum constant를 반환")
     @Test
-    void testInputOneOrTwoReturnsGameStatus() {
+    void IfInputIsOneOrTwo_ReturnsGameStatus() {
         // given
         String input1 = "1";
         String input2 = "2";
@@ -27,7 +27,7 @@ class GameStatusTest {
 
     @DisplayName("\"1\" 또는 \"2\"이 아닌 문자열에 해당하는 GameStatus enum constant 없으므로 예외 발생")
     @Test
-    void throwIfNonOneOrTwoInput() {
+    void throwException_IfNonOneOrTwoInput() {
         // given
         String input1 = "7";
         String input2 = "sos";
