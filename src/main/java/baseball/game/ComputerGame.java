@@ -31,7 +31,7 @@ public class ComputerGame {
     /**
      * 컴퓨터(상대방) 랜덤 숫자 생성
      */
-    private String getComputerRandomNumber() {
+    public String getComputerRandomNumber() {
         //중복 없이 3개의 숫자로 구성
         String num = "";
         while (num.length() < ANSWER_LEN) {
