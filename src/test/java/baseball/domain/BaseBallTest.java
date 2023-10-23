@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import static baseball.domain.BaseBallResultType.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -22,19 +21,18 @@ class BaseBallTest {
 
     @Test
     void compareWithAnswer() {
-        int answer = AnswerGenerator.generate("123");
-        BaseBall answerBall = BaseBall.getInstance(answer);
-        compare(answerBall, 145, STRIKE);
-        compare(answerBall, 321, BALL_STRIKE);
-        compare(answerBall, 345, BALL);
-        compare(answerBall, 456, NOTHING);
-        compare(answerBall, 123, PERFECT_STRIKE);
+        compare(124, false);
+        compare(213, false);
+        compare(567, false);
+        compare(132, false);
+        compare(123, true);
     }
 
-    private static void compare(BaseBall answerBall, int baseBallNumber, BaseBallResultType type) {
-        BaseBall userBaseBall = BaseBall.getInstance(baseBallNumber);
-        BaseBallResult baseBallResult = userBaseBall.compareWithAnswer(answerBall);
-        BaseBallResultType resultType = baseBallResult.getResultType();
-        assertEquals(resultType, type);
+    private void compare(int baseBallNumber, boolean expected) {
+        int answer = 123;
+        BaseBall answerBall = BaseBall.getInstance(answer);
+        BaseBall baseBall = BaseBall.getInstance(baseBallNumber);
+        BaseBallResult baseBallResult = baseBall.compareWithAnswer(answerBall);
+        assertEquals(baseBallResult.isPerfectStrike(), expected);
     }
 }

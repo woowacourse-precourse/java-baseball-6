@@ -10,6 +10,10 @@ class BaseBall {
     private static final int DIGITS = 3;
     private final int[] digits;
 
+    static int maxStrikeCount() {
+        return DIGITS;
+    }
+
     static BaseBall getInstance(int number) {
         return new BaseBall(number);
     }

@@ -24,22 +24,21 @@ public class GameEngine {
         BaseBall userBaseBall = BaseBall.getInstance(baseBallNumber);
         BaseBallResult result = userBaseBall.compareWithAnswer(answerBall);
         printResult(result);
-        if(result.getResultType() == BaseBallResultType.PERFECT_STRIKE){
-            afterGameEnd();
-        }
-        if(result.getResultType() != BaseBallResultType.PERFECT_STRIKE){
+        if (!result.isPerfectStrike()) {
             next();
+            return;
         }
+        afterGameEnd();
     }
 
-    private void printResult(BaseBallResult result){
+    private void printResult(BaseBallResult result) {
         GameResultOutput.print(result.ballCount(), result.strikeCount());
     }
 
-    private void afterGameEnd(){
+    private void afterGameEnd() {
         GameGuideOutput.gameEnd();
         int afterGame = GameInput.afterGame();
-        if(afterGame == 1){
+        if (afterGame == 1) {
             initAnswer();
             next();
         }
