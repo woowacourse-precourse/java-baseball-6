@@ -19,7 +19,22 @@ public class Game {
     }
 
     private void startNewGame() {
+        String userInput;
+        do {
+            userInput = getUserInput();
+        } while (!playRound(userInput));
+    }
 
+    private boolean playRound(String userInput) {
+
+        return false;
+    }
+
+    private String getUserInput() {
+        System.out.println(REQUEST_INPUT);
+        String userInput = Console.readLine();
+
+        return userInput;
     }
 
     private boolean restart() {
