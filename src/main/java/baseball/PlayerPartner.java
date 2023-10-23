@@ -1,75 +1,93 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class PlayerPartner {
-    private int partnerNumner = 0;
-    private boolean[] isExsitNumbers = new boolean[10];
+    private int answer = 0;
+    private boolean[] answerSheet = new boolean[10];
 
     public PlayerPartner(){}
 
-    private void setPartnerNumner() {
-        // 구현 필요
+    private void writeAnswer() {
+        StringBuffer stringAnswer = new StringBuffer();
+
+        while(stringAnswer.length() < 3){
+            int number = Randoms.pickNumberInRange(1, 9);
+
+            if(!this.answerSheet[number]){
+                this.answerSheet[number] = true;
+                stringAnswer.append(number);
+            }
+        }
+
+        this.answer = Integer.parseInt(stringAnswer.toString());
     }
 
     public void startGame(){
-        setPartnerNumner();
+        writeAnswer();
 
         int strikeCount = 0;
 
-        while(isAllStrike(strikeCount)){
-            int playerNumber = Player.nextNumberOf().getNumber();
-            strikeCount = getStrikeCount(playerNumber);
-            int ballCount = getBallCount(playerNumber, strikeCount);
+        while(isContinue(strikeCount)){
+            int playerNumbers = Player.nextNumberOf().getNumber();
+            strikeCount = getStrikeCount(playerNumbers);
+            int ballCount = getBallCount(playerNumbers, strikeCount);
 
-            printBall(strikeCount, ballCount);
+            printBallStatus(strikeCount, ballCount);
         }
     }
 
-    private int getStrikeCount(int playerNumber) {
+    private int getStrikeCount(int playerNumbers) {
         int strikeCount = 0;
+        int standardNumbers = this.answer;
+        while(playerNumbers % 10 > 0){
+            int playerNumber = playerNumbers % 10;
+            int partnerNumber = standardNumbers % 10;
 
-        while(playerNumber / 10 > 0){
-            int playerRemain = playerNumber % 10;
-            int partnerRemain = partnerNumner % 10;
-
-            if(playerRemain == partnerRemain){
+            if(playerNumber == partnerNumber){
                 strikeCount++;
             }
 
-            playerNumber /= 10;
+            playerNumbers /= 10;
+            standardNumbers /= 10;
         }
 
         return strikeCount;
     }
 
-    private int getBallCount(int playerNumber, int strikeCount) {
+    private int getBallCount(int playerNumbers, int strikeCount) {
         int matchCount = 0;
 
-        while(playerNumber / 10 > 0){
-            int playerRemain = playerNumber % 10;
+        while(playerNumbers % 10 > 0){
+            int playerNumber = playerNumbers % 10;
 
-            if(isExsitNumbers[playerRemain]){
+            if(this.answerSheet[playerNumber]){
                 matchCount++;
             }
 
-            playerNumber /= 10;
+            playerNumbers /= 10;
         }
 
-        return matchCount-strikeCount;
+        return matchCount - strikeCount;
     }
 
-    private boolean isAllStrike(int strikeCount) {
-        return strikeCount == 3;
+    private boolean isContinue(int strikeCount) {
+        return strikeCount < 3;
     }
 
-    private void printBall(int strikeCount, int ballCount) {
+    private void printBallStatus(int strikeCount, int ballCount) {
         StringBuffer message = new StringBuffer();
 
-        if(ballCount > 0){
-            message.append(ballCount +"볼 ");
+        if (ballCount > 0) {
+            message.append(ballCount + "볼 ");
         }
 
-        if(strikeCount > 0){
-            message.append(strikeCount +"스트라이크");
+        if (strikeCount > 0) {
+            message.append(strikeCount + "스트라이크");
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            message.append("낫싱");
         }
 
         System.out.println(message.toString());

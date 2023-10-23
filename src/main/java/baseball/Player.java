@@ -1,13 +1,15 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Player {
     private int number;
     private int[] numbers = new int[10];
 
     private Player(){
-        String stringNumber = Console.readLine();
+        String stringNumber = readLine();
+
+        System.out.println("숫자를 입력해주세요 :" + stringNumber);
 
         if(isCorrectNumber(stringNumber)){
             this.number = Integer.parseInt(stringNumber);
@@ -15,39 +17,47 @@ public class Player {
     }
 
     private boolean isCorrectNumber(String stringNumber) {
-        if(isDistinctNumber(stringNumber) && isPositiveNumber(stringNumber) && isOnetoNine(stringNumber)
-                && isOnlyNumber(stringNumber) && isThreeCount(stringNumber)){
-            return true;
-        }
-
-        throw new IllegalArgumentException();
+        positiveNumber(stringNumber);
+        oneToNine(stringNumber);
+        onlyNumber(stringNumber);
+        threeCount(stringNumber);
+        distinctNumber(stringNumber);
+        return true;
     }
 
-    private boolean isThreeCount(String stringNumber) {
-        return stringNumber.length() == 3;
-    }
-
-    private static boolean isOnlyNumber(String stringNumber) {
-        return stringNumber.matches("[1-9]+");
-    }
-
-    private boolean isOnetoNine(String stringNumber) {
-        return stringNumber.contains("0");
-    }
-
-    private boolean isPositiveNumber(String stringNumber) {
-        return Integer.parseInt(stringNumber) > 0;
-    }
-
-    private boolean isDistinctNumber(String stringNumber) {
+    private void distinctNumber(String stringNumber) {
         for (int i = 0; i < 3; i++){
             int number = stringNumber.charAt(i) - '0';
-            numbers[number]++;
-            if(numbers[number] > 1){
-                return false;
+            this.numbers[number]++;
+
+            if(this.numbers[number] > 1){
+                throw new IllegalArgumentException("입력하신 숫자는 중복되었습니다.");
             }
         }
-        return true;
+    }
+
+    private void positiveNumber(String stringNumber) {
+        if(Integer.parseInt(stringNumber) <= 0){
+            throw new IllegalArgumentException("입력하신 숫자는 정수가 아닙니다.");
+        }
+    }
+
+    private void oneToNine(String stringNumber) {
+        if(stringNumber.contains("0")){
+            throw new IllegalArgumentException("입력하신 숫자에 0이 포함되었습니다.");
+        }
+    }
+
+    private static void onlyNumber(String stringNumber) {
+        if(!stringNumber.matches("[1-9]+")){
+            throw new IllegalArgumentException("입력하신 숫자에는 문자가 포함되었습니다.");
+        }
+    }
+
+    private void threeCount(String stringNumber) {
+        if(stringNumber.length() != 3){
+            throw new IllegalArgumentException("입력하신 숫자는 3개가 아닙니다.");
+        }
     }
 
     public static Player nextNumberOf(){
@@ -55,7 +65,6 @@ public class Player {
     }
 
     public int getNumber() {
-        return number;
+        return this.number;
     }
-
 }
