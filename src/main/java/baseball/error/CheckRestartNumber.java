@@ -1,17 +1,22 @@
 package baseball.error;
 
 public class CheckRestartNumber {
+    public static final char RESTART_INPUT_NUMBER_RANGE_START = '1';
+    public static final char RESTART_INPUT_NUMBER_RANGE_END = '2';
+
+    public static final String LENGTH_EXCEPTION_MESSAGE = "잘못된 길이의 값이 입력되었습니다.";
+    public static final String INVALID_VALUE_EXCEPTION_MESSAGE = "잘못된 값이 입력되었습니다.";
 
     public static void checkLength(String input){
         if(input.length() != 1){
-            throw new IllegalArgumentException("잘못된 길이의 값이 입력되었습니다.");
+            throw new IllegalArgumentException(LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
     public static void checkNumber(String input){
         char inputChar = input.charAt(0);
-        if(!('1' <= inputChar && inputChar <= '2')){
-            throw new IllegalArgumentException("숫자 외의 다른 값이 입력되었습니다.");
+        if(!(RESTART_INPUT_NUMBER_RANGE_START <= inputChar && inputChar <= RESTART_INPUT_NUMBER_RANGE_END)){
+            throw new IllegalArgumentException(INVALID_VALUE_EXCEPTION_MESSAGE);
         }
     }
 }
