@@ -1,20 +1,16 @@
 package baseball.controller;
 
-import baseball.service.BaseballCreator;
+import baseball.service.BaseballCollection;
 import baseball.service.Judgement;
 import baseball.service.RandomNumberGenerator;
-import baseball.Validator;
 import baseball.view.ConsoleInput;
 import baseball.view.Input;
 import baseball.view.Output;
 
-import java.util.List;
-
 public class GameManager {
     // TODO: 객체 직접 생성 제거하도록 리팩터링 해야함
     // TODO: 컴퓨터 공과 사용자 공은 핵심 비즈니스이다. 이 정보를 굳이 컨트롤러에 노출하는게 맞을까?
-    private Validator validator = new Validator();
-    private BaseballCreator baseballCreator = new BaseballCreator(new RandomNumberGenerator());
+    private RestartCommandValidator validator = new RestartCommandValidator();
     private Judgement judgment = new Judgement();
     private Input input = new ConsoleInput();
 
@@ -23,19 +19,23 @@ public class GameManager {
         Output.printInitialGameStartMessage();
         while (true) {
             progressGame();
-            if (isNoMoreGame()) break;
+            if (isNoMoreGame()) {
+                break;
+            }
         }
     }
 
     // 기능: 게임 순서에 맞게 게임을 진행한다
     private void progressGame() {
-        List<Integer> computerBalls = baseballCreator.createComputerBalls();
+        BaseballCollection computerBalls = new BaseballCollection(new RandomNumberGenerator());
         while (true) {
             Output.printNumberInputMessage();
-            List<Integer> playerBalls = baseballCreator.createPlayerBalls(input.readLine());
-            String hint = judgment.getHint(computerBalls, playerBalls);
+            BaseballCollection playerBalls = new BaseballCollection(input.readLine());
+            String hint = judgment.calculateHint(computerBalls, playerBalls);
             Output.printHint(hint);
-            if (isGameEnd(hint)) break;
+            if (isGameEnd(hint)) {
+                break;
+            }
         }
     }
 

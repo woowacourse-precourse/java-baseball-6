@@ -65,7 +65,8 @@ public class BaseballCollection {
 
     private void validateLength(List<Integer> baseballs) {
         if (baseballs.size() != DEFAULT_CAPACITY) {
-            throw new IllegalArgumentException(String.format("길이 %d으로 입력해야 합니다. 현재 길이: %d", DEFAULT_CAPACITY, baseballs.size()));
+            throw new IllegalArgumentException(
+                    String.format("길이 %d으로 입력해야 합니다. 현재 길이: %d", DEFAULT_CAPACITY, baseballs.size()));
         }
     }
 
