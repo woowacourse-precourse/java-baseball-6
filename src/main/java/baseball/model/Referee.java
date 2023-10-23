@@ -27,10 +27,7 @@ public class Referee {
     }
 
     public int duplicateStrike(int computerNumber, int playerNumber){
-        if(computerNumber == playerNumber){
-            return 1;
-        }
-        return 0;
+        return computerNumber == playerNumber ? 1 : 0;
     }
 
     public int duplicateBall(int computerNumber, int playerNumber, List<Integer> playerNumbers) {
