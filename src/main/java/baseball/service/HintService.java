@@ -4,7 +4,7 @@ import baseball.domain.BaseballNumbers;
 
 public class HintService {
     public String createHintMessage(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
-        String hintMsg = "";
+        StringBuilder hintMsg = new StringBuilder();
 
         boolean isNothing = computerNumber.isNothing(inputNumber);
         int ballCount = computerNumber.getBallCount(inputNumber);
@@ -14,15 +14,15 @@ public class HintService {
             return "낫싱";
         }
         if (ballCount > 0) {
-            hintMsg += ballCount + "볼";
+            hintMsg.append(ballCount).append("볼");
         }
         if (ballCount > 0 && strikeCount > 0) {
-            hintMsg += " ";
+            hintMsg.append(" ");
         }
         if (strikeCount > 0) {
-            hintMsg += strikeCount + "스트라이크";
+            hintMsg.append(strikeCount).append("스트라이크");
         }
-        return hintMsg;
+        return hintMsg.toString();
     }
 
     public boolean isCorrect(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
