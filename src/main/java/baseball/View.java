@@ -9,4 +9,8 @@ public class View {
     public static void printNumberInsertMessage(){
         System.out.print("숫자를 입력해주세요 : ");
     }
+
+    public static void printNothingMessage(){
+        System.out.println("낫싱");
+    }
 }
