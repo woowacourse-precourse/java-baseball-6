@@ -46,6 +46,13 @@ public class ValidatorTest {
     }
 
     @Test
+    void 사용자_입력_검증_0() {
+        String playerInput6 = "0 15";
+        assertThrows(IllegalArgumentException.class, () ->
+                validator.validatePlayerInput(playerInput6));
+    }
+
+    @Test
     void 종료_입력_검증_문자() {
         String endInput1 = "a";
         assertThrows(IllegalArgumentException.class, () ->
