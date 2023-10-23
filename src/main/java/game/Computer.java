@@ -2,14 +2,14 @@ package game;
 
 public class Computer {
 
-    private String computerBall;
+    private Ball computerBall;
     private BallCount ballCount;
 
     public Computer() {
-        computerBall = RandomNumberGenerator.generateRandomNumber();
+        computerBall = new Ball(RandomNumberGenerator.generateRandomNumber());
     }
 
-    public boolean catchBall(String playerBall) {
+    public boolean catchBall(Ball playerBall) {
         ballCount = Referee.judge(playerBall, computerBall);
         System.out.println(ballCount.getBallCount());
         return ballCount.isThreeStrike();

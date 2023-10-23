@@ -1,5 +1,7 @@
 package game;
 
+import constants.MessageConstants;
+
 public class BallCount {
 
     private int strike;
@@ -29,14 +31,14 @@ public class BallCount {
     public String getBallCount() {
         StringBuffer sb = new StringBuffer();
         if (ball > 0) {
-            sb.append(ball + "볼");
+            sb.append(ball + MessageConstants.BALL);
             sb.append(" ");
         }
         if (strike > 0) {
-            sb.append(strike + "스트라이크");
+            sb.append(strike + MessageConstants.STRIKE);
         }
         if (ball == 0 && strike == 0) {
-            sb.append("낫싱");
+            sb.append(MessageConstants.NOTHING);
         }
         return sb.toString();
     }

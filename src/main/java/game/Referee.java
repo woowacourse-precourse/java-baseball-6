@@ -2,11 +2,11 @@ package game;
 
 public class Referee {
 
-    private static String playerBall;
-    private static String computerBall;
+    private static Ball playerBall;
+    private static Ball computerBall;
     private static BallCount ballCount;
 
-    public static BallCount judge(String player, String computer) {
+    public static BallCount judge(Ball player, Ball computer) {
         playerBall = player;
         computerBall = computer;
         ballCount = new BallCount();
@@ -16,14 +16,14 @@ public class Referee {
     }
 
     private static boolean isNothing(String playNumber) {
-        return !computerBall.contains(playNumber);
+        return !computerBall.ballContains(playNumber);
     }
 
     private static void countStrike() {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
-            String playerNumber = playerBall.substring(i, i + 1);
-            String computerNumber = computerBall.substring(i, i + 1);
+            String playerNumber = playerBall.ballSubString(i);
+            String computerNumber = computerBall.ballSubString(i);
             if (!isNothing(playerNumber) && computerNumber.equals(playerNumber)) {
                 strike++;
             }
@@ -34,8 +34,8 @@ public class Referee {
     private static void countBall() {
         int ball = 0;
         for (int i = 0; i < 3; i++) {
-            String playerNumber = playerBall.substring(i, i + 1);
-            String computerNumber = computerBall.substring(i, i + 1);
+            String playerNumber = playerBall.ballSubString(i);
+            String computerNumber = computerBall.ballSubString(i);
             if (!isNothing(playerNumber) && computerNumber.equals(playerNumber)) {
                 ball++;
             }
