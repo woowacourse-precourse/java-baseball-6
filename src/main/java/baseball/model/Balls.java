@@ -20,7 +20,7 @@ public class Balls {
         }
     }
 
-    public int countBalls(RandomNumbers randomNumbers, UserInputNumbers userInputNumbers) {
+    private int countBalls(RandomNumbers randomNumbers, UserInputNumbers userInputNumbers) {
         int counts = 0;
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
         List<Number> userInputNumberList = userInputNumbers.getUserNumberList();
