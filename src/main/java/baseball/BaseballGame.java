@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import validator.Validator;
 import constant.Numeric;
+import constant.Message;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class BaseballGame {
     public void runOneGame() {
         setBallStrikeZero();
         List<Integer> computer = getRandomThreeNum();
-        while (strike != Numeric.numberOfInput) {
+        while (strike != Numeric.NUMBER_OF_INPUT) {
             runOneRound(computer);
         }
         sayEndGame();
@@ -37,7 +38,7 @@ public class BaseballGame {
     }
     // 게임 시작
     public void sayStart(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Message.START_SYSTEM_MESSAGE);
     }
     // strike, ball 0으로 초기화
     public void setBallStrikeZero() {
@@ -47,24 +48,24 @@ public class BaseballGame {
     // 1~9 수 중 3개의 중복되지 않은 수 리턴
     public List<Integer> getRandomThreeNum(){
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < Numeric.numberOfInput) {
+        while (computer.size() < Numeric.NUMBER_OF_INPUT) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
+//        System.out.println(computer); // 디버깅
         return computer;
     }
     //  1~9 수 중 중복되지 않은 수 3개 input 받기
     public List<Integer> getThreeNum() throws IllegalArgumentException{
         List<Integer> user = new ArrayList<>();
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Message.REQUIRE_NUMBER_MESSAGE);
         String input = Console.readLine();
 
         validator.isRightSize(input);
-        for (int i = 0; i< Numeric.numberOfInput; i++) {
+        for (int i = 0; i< Numeric.NUMBER_OF_INPUT; i++) {
             char charValue = input.charAt(i);
             String stringValue = String.valueOf(charValue);
             Integer intValue = validator.changeToInteger(stringValue);
@@ -84,7 +85,7 @@ public class BaseballGame {
     }
     // ball인지 strike인지 판별 (같은 수 찾으면 더이상 볼 필요 없으므로 반복문 탈출)
     public void determineBallOrStrike(Integer number, int i, List<Integer>computer) {
-        for (int j = 0; j< Numeric.numberOfInput; j++) {
+        for (int j = 0; j< Numeric.NUMBER_OF_INPUT; j++) {
             Integer numberInList = computer.get(j);
             if (number.equals(numberInList) && i == j) {
                 strike += 1;
@@ -111,11 +112,11 @@ public class BaseballGame {
     }
     // 게임 종료 (3스트라이크 시)
     public void sayEndGame() {
-        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Numeric.numberOfInput);
+        System.out.printf(Message.END_GAME_MESSAGE);
     }
     // 게임 새로 시작 할 지 정하기
     public Boolean determineRestart() throws IllegalArgumentException{
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Message.ASK_RESTART_MESSAGE);
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
