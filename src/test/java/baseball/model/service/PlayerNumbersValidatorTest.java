@@ -1,66 +1,26 @@
 package baseball.model.service;
 
-import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_DUPLICATED;
-import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_LENGTH_INVALID;
-import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_NON_NUMBER;
-import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_RANGE_INVALID;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class PlayerNumbersValidatorTest {
-    @Test
-    @DisplayName("숫자를 입력하지 않아 예외가 발생합니다.")
-    void 숫자이외입력예외() {
-        PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        String inputNumbers = "12A";
+    private PlayerNumbersValidator playerNumbersValidator;
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
-        });
-
-        assertEquals(PLAYER_NUMBERS_NON_NUMBER, exception.getMessage());
+    @BeforeEach
+    void setUp() {
+        playerNumbersValidator = new PlayerNumbersValidatorImp();
     }
 
-    @Test
-    @DisplayName("세 자리를 입력하지 않아 예외가 발생합니다.")
-    void 갯수입력예외() {
-        PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        String inputNumbers = "12";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+    @ParameterizedTest
+    @DisplayName("숫자 외 입력, 세 자리 외 입력, 범위 외 입력, 중복 수 입력에 따라 예외가 발생합니다.")
+    @ValueSource(strings = {"12A", "12", "120", "122"})
+    void 사용자_게임_숫자_입력_예외(String inputNumbers) {
+        assertThrows(IllegalArgumentException.class, () -> {
             playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         });
-
-        assertEquals(PLAYER_NUMBERS_LENGTH_INVALID, exception.getMessage());
     }
-
-    @Test
-    @DisplayName("1에서 9 범위를 입력하지 않아 예외가 발생합니다.")
-    void 범위입력예외() {
-        PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        String inputNumbers = "120";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
-        });
-
-        assertEquals(PLAYER_NUMBERS_RANGE_INVALID, exception.getMessage());
-    }
-
-    @Test
-    @DisplayName("서로 다른 수를 입력하지 않아 예외가 발생합니다.")
-    void 중복입력예외() {
-        PlayerNumbersValidator playerNumbersValidator = new PlayerNumbersValidatorImp();
-        String inputNumbers = "122";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            playerNumbersValidator.validatePlayerNumbers(inputNumbers);
-        });
-
-        assertEquals(PLAYER_NUMBERS_DUPLICATED, exception.getMessage());
-    }
-
 }

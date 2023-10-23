@@ -1,53 +1,26 @@
 package baseball.model.service;
 
-import static baseball.model.constants.ExceptionMessages.RESTART_OPTION_LENGTH_INVALID;
-import static baseball.model.constants.ExceptionMessages.RESTART_OPTION_NON_NUMBER;
-import static baseball.model.constants.ExceptionMessages.RESTART_OPTION_RANGE_INVALID;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class RestartOptionValidatorTest {
-    @Test
-    @DisplayName("숫자를 입력하지 않아 예외가 발생합니다.")
-    void 숫자이외입력예외() {
-        RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
-        String option = "A";
+    private RestartOptionValidator restartOptionValidator;
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            restartOptionValidator.validateRestartOption(option);
-        });
-
-        assertEquals(RESTART_OPTION_NON_NUMBER, exception.getMessage());
+    @BeforeEach
+    void setUp() {
+        restartOptionValidator = new RestartOptionValidatorImp();
     }
 
-    @Test
-    @DisplayName("한 자리를 입력하지 않아 예외가 발생합니다.")
-    void 갯수입력예외() {
-        RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
-        String option = "12";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            restartOptionValidator.validateRestartOption(option);
+    @ParameterizedTest
+    @DisplayName("숫자 외 입력, 한 자리 외 입력, 범위 외 입력에 따라 예외가 발생합니다.")
+    @ValueSource(strings = {"A", "12", "3"})
+    void 사용자_재시작_숫자_입력_예외(String inputOption) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            restartOptionValidator.validateRestartOption(inputOption);
         });
-
-        assertEquals(RESTART_OPTION_LENGTH_INVALID, exception.getMessage());
     }
-
-    @Test
-    @DisplayName("1 또는 2를 입력하지 않아 예외가 발생합니다.")
-    void 범위입력예외() {
-        RestartOptionValidator restartOptionValidator = new RestartOptionValidatorImp();
-        String option = "3";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            restartOptionValidator.validateRestartOption(option);
-        });
-
-        assertEquals(RESTART_OPTION_RANGE_INVALID, exception.getMessage());
-    }
-
-
 }
