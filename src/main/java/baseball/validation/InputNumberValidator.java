@@ -13,7 +13,7 @@ public class InputNumberValidator {
 
     private static final String RESTART = "1";
     private static final String END = "2";
-    private static final int NUMBER_SIZE = 3;
+    private static final Integer NUMBER_SIZE = 3;
     private static final String REGEX = "[0-9]+";
 
     /*
@@ -78,7 +78,7 @@ public class InputNumberValidator {
      * @Param input 플레이어의 숫자
      * */
     public void validateGameStateInput(String input) {
-        if (!(input.equals(RESTART) && input.equals(END))) {
+        if (!(input.equals(RESTART) || input.equals(END))) {
             throw new IllegalArgumentException();
         }
     }

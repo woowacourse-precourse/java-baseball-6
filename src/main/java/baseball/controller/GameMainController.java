@@ -17,26 +17,31 @@ public class GameMainController {
     }
 
     public void startGame() {
-        boolean gameEnd = false;
-        while (!gameEnd) {
+        boolean endGame = false;
+
+        while (!endGame) {
             gameService.setGame();
             playGame();
-            gameEnd = endGame();
+            endGame = stopGame();
         }
     }
 
     public void playGame() {
-        while (!gameService.playGame().equals(THREESTRIKE)) {
+        boolean correctAnswer = false;
+
+        while(!correctAnswer) {
             String result = gameService.playGame();
             outputView.printStrikeOrBall(result);
-        }
 
-        outputView.printStrikeOrBall(THREESTRIKE);
-        OutputView.printCorrectAnswer();
+            if(result.equals(THREESTRIKE)) {
+                outputView.printCorrectAnswer();
+                inputView.requestGameState();
+                correctAnswer = true;
+            }
+        }
     }
 
-    public boolean endGame() {
-        inputView.requestGameState();
-        return gameService.endGame();
+    public boolean stopGame() {
+        return gameService.stopGame();
     }
 }
