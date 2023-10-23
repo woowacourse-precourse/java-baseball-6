@@ -24,8 +24,8 @@ public class Player {
 
     private List<Integer> convertStringToList(String input) {
         List<Integer> inputNumbers = new ArrayList<>();
-        for (char ch : input.toCharArray()) {
-            inputNumbers.add(Character.getNumericValue(ch));
+        for (char digitChar : input.toCharArray()) {
+            inputNumbers.add(Character.getNumericValue(digitChar));
         }
         return inputNumbers;
     }
