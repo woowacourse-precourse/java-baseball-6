@@ -25,8 +25,7 @@ public class UserAction {
 
     public void inputAnswer(){
         String userAnswer = InputViewer.requestUserAnswer();
-        InputValidator.validateAnswerLength(userAnswer.length());
-        InputValidator.validateIsDistinct(userAnswer);
+        requestValidateInput(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             user.saveNumber(userAnswer.charAt(i));
         }
@@ -35,6 +34,11 @@ public class UserAction {
     public void inputRestartFactor(){
         String userMind = InputViewer.requestUserRestartFactor();
         user.changeMind(InputValidator.validateRestartInput(userMind));
+    }
+
+    public void requestValidateInput(String userAnswer){
+        InputValidator.validateAnswerLength(userAnswer);
+        InputValidator.validateIsDistinct(userAnswer);
     }
 
     public List<Integer> showNumberList(){
