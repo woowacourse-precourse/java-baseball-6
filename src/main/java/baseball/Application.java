@@ -49,7 +49,7 @@ public class Application {
 
     public static List<Integer> stringToList(String input) {
         char[] strChar = input.toCharArray();
-        List<Integer> userNum = new ArrayList<Integer>();
+        List<Integer> userNum = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             int n = Character.getNumericValue(strChar[i]);
             userNum.add(n);
