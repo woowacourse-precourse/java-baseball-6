@@ -23,13 +23,11 @@ public class BaseballController {
 
     public void start() {
         do {
-            playGame();
+            playGame(initializeComputer());
         } while (playerService.askToContinue());
     }
 
-    private void playGame() {
-        Computer computer = initializeComputer();
-
+    private void playGame(Computer computer) {
         int balls, strikes = 0;
 
         while (strikes != BASEBALL_THREE_STRIKES) {
