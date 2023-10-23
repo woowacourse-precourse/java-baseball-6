@@ -1,29 +1,30 @@
 # 숫자 야구 기능 구현 목록
 
 ## 게임 시작 문구 출력 기능
-- [ ] 게임 시작 문구 출력
-  - [ ] "숫자 야구 게임을 시작합니다."를 출력한다.
+- ✅ 게임 시작 문구 출력
+  - ✅ "숫자 야구 게임을 시작합니다."를 출력한다.
 
 ## 컴퓨터 3자리 난수 생성 기능
-- [ ] generateComputerRandomNumber 메서드 구현
-  - [ ] 서로 다른 세 자리 숫자 리스트 생성
-    - [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해 random number를 생성한다.
-    - [ ] 생성된 random number와 중복인 숫자가 리스트 내에 있는지 확인 후 추가
+- ✅ generateComputerRandomNumber 메서드 구현
+  - ✅ 서로 다른 세 자리 숫자 리스트 생성
+    - ✅ `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해 random number를 생성한다.
+    - ✅ 생성된 random number와 중복인 숫자가 리스트 내에 있는지 확인 후 추가
 
 ## 사용자 정답 입력 기능
-- [ ] getUserNum 메서드 구현
-  - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자의 값을 입력받는다.
-  - [ ] validateStringLengthDuplicateNaturalNumber 메서드 구현
-    - [ ] 입력받은 값이 1 ~ 9 사이의 서로 다른 숫자면 통과
-    - [ ] 이외의 값이라면 `IllegalArgumentException` 예외 발생
-      - [ ] validateStringLength 메서드 구현
-        - [ ] 주어진 문자열의 길이가 정해진 길이의 문자열인지 검증
-      - [ ] validateStringDuplicate 메서드 구현
-        - [ ] 주어진 문자열이 중복되는 문자가 없는지 검증
-      - [ ] validateStringNaturalNumber 메서드 구현
-        - [ ] 주어진 문자열 자연수로 이루어진 문자열인지 검증
-  - [ ] stringToNumberList 메서드 구현
-    - 입력받은 문자열을 숫자 리스트로 변환하여 반환한다.
+- ✅ getUserNum 메서드 구현
+  - ✅ "숫자를 입력해주세요 : "를 출력한다.
+  - ✅ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자의 값을 입력받는다.
+  - ✅ validateStringLengthDuplicateNaturalNumber 메서드 구현
+    - ✅ 입력받은 값이 1 ~ 9 사이의 서로 다른 숫자면 통과
+    - ✅ 이외의 값이라면 `IllegalArgumentException` 예외 발생
+      - ✅ validateStringLength 메서드 구현
+        - ✅ 주어진 문자열의 길이가 정해진 길이의 문자열인지 검증
+      - ✅ validateStringDuplicate 메서드 구현
+        - ✅ 주어진 문자열이 중복되는 문자가 없는지 검증
+      - ✅ validateStringNaturalNumber 메서드 구현
+        - ✅ 주어진 문자열 자연수로 이루어진 문자열인지 검증
+  - ✅ stringToNumberList 메서드 구현
+    - ✅ 입력받은 문자열을 숫자 리스트로 변환하여 반환한다.
 
 ## 스트라이크 개수 확인 기능
 - [ ] countStrike 메서드 구현

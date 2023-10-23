@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Utils {
     public static List<Integer> generateComputerRandomNumber(int length) {
@@ -41,5 +42,9 @@ public class Utils {
         if (set.size() != input.length()) {
             throw new IllegalArgumentException("중복되지 않은 문자열을 입력해주세요.");
         }
+    }
+
+    public static List<Integer> stringToNumberList(String input) {
+        return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
