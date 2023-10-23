@@ -13,21 +13,21 @@ public class BaseballModel {
     }
 
     public void restart(){
-        this.randomNumber.generateRandomNumber();
+        randomNumber.generateRandomNumber();
     }
 
     public AttemptResult getAttemptResult(Iterator<Integer> playerGuessIterator) {
-        this.attemptResult.reset();
+        attemptResult.reset();
         int pitchingSequence = 0;
         while (playerGuessIterator.hasNext()){
-            PitchingResult pitchingResult = this.randomNumber.checkPitchingResult(playerGuessIterator.next(), pitchingSequence++);
+            PitchingResult pitchingResult = randomNumber.checkPitchingResult(playerGuessIterator.next(), pitchingSequence++);
             if (pitchingResult == PitchingResult.STRIKE){
-                this.attemptResult.addStrikeCount();
+                attemptResult.addStrikeCount();
             }
             if (pitchingResult == PitchingResult.BALL){
-                this.attemptResult.addBallCount();
+                attemptResult.addBallCount();
             }
         }
-        return this.attemptResult;
+        return attemptResult;
     }
 }

@@ -9,33 +9,39 @@ public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>>
 
     }
     public void handle(String playerGuessNumbers){
-        this.playerGuessNumberList = new ArrayList<>();
+        playerGuessNumberList = new ArrayList<>();
 
-        if (playerGuessNumbers.length() != GameSettings.NUM_DIGITS){
-            throw new IllegalArgumentException();
-        }
+        checkLengthValidity(playerGuessNumbers.length());
 
         for (int playerGuessIndex = 0; playerGuessIndex < playerGuessNumbers.length(); playerGuessIndex++){
             char characterNumber = playerGuessNumbers.charAt(playerGuessIndex);
 
-            this.isPlayerNumberInRange(characterNumber);
+            isCharNumberInRange(characterNumber);
 
-            int intNumber = characterNumber - '0';
-            if (this.playerGuessNumberList.contains(intNumber)){
-                throw new IllegalArgumentException();
-            }
-            this.playerGuessNumberList.add(intNumber);
-
+            int playerGuessNumber = characterNumber - '0';
+            isInList(playerGuessNumber);
+            playerGuessNumberList.add(playerGuessNumber);
         }
     }
-    private void isPlayerNumberInRange(char playerGuessNumber){
 
-        if (playerGuessNumber < GameSettings.MIN_INPUT_CHARACTER || playerGuessNumber > GameSettings.MAX_INPUT_CHARACTER){
+    private void checkLengthValidity(int playerGuessLength){
+        if (playerGuessLength != GameSettings.NUM_DIGITS){
+            throw new IllegalArgumentException();
+        }
+    }
+    private void isInList(int playerGuessNumber){
+        if (playerGuessNumberList.contains(playerGuessNumber)){
+            throw new IllegalArgumentException();
+        }
+    }
+    private void isCharNumberInRange(char charNumber){
+
+        if (charNumber < GameSettings.MIN_INPUT_CHARACTER || charNumber > GameSettings.MAX_INPUT_CHARACTER){
             throw new IllegalArgumentException();
         }
     }
 
     public Iterator<Integer> getHandledResult(){
-        return this.playerGuessNumberList.iterator();
+        return playerGuessNumberList.iterator();
     }
 }

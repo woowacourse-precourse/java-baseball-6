@@ -7,17 +7,17 @@ public class RoundEndActionHandler implements PlayerInputHandler<RoundEndAction>
     }
     public void handle(String stringRoundEndAction){
         if (stringRoundEndAction.equals(RoundEndAction.CONTINUE.getValue())){
-            this.roundEndAction =  RoundEndAction.CONTINUE;
+            roundEndAction =  RoundEndAction.CONTINUE;
             return;
         }
         if (stringRoundEndAction.equals(RoundEndAction.QUIT.getValue())){
-            this.roundEndAction =  RoundEndAction.QUIT;
+            roundEndAction =  RoundEndAction.QUIT;
             return;
         }
         throw new IllegalArgumentException();
     }
     public RoundEndAction getHandledResult(){
-        return this.roundEndAction;
+        return roundEndAction;
     }
 
 }

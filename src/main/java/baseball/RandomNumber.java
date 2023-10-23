@@ -10,7 +10,7 @@ public class RandomNumber {
 
     }
     public void generateRandomNumber(){
-        this.RandomNumberTable = new Hashtable<>();
+        RandomNumberTable = new Hashtable<>();
         int sequenceNumber = 0;
 
         while (sequenceNumber != GameSettings.NUM_DIGITS){
@@ -36,10 +36,10 @@ public class RandomNumber {
 
     private boolean isBall(int pitchingNumber){
 
-        return this.RandomNumberTable.containsKey(pitchingNumber);
+        return RandomNumberTable.containsKey(pitchingNumber);
     }
     private boolean isStrike(int pitchingNumber, int pitchingSequenceNumber){
 
-        return this.RandomNumberTable.get(pitchingNumber) == pitchingSequenceNumber;
+        return RandomNumberTable.get(pitchingNumber) == pitchingSequenceNumber;
     }
 }
