@@ -25,7 +25,7 @@
   - **게임을 진행하는 로직이 있는 Class** 
   - 사용자(Player) 의 입력 값과 정답(Computer) 의 숫자야구 값이 얼마나 같은지 비교함
   - 비교 결과를 알려줌 
-- BaseballGameBoard
+- BaseballGameView
   - **Player 의 게임이 원활하도록 하는 Class**
   - 게임의 진행 안내 문구를 출력하도록 함 
     - 시작 문구 - "숫자야구 게임을 시작합니다"
