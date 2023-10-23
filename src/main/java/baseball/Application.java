@@ -42,7 +42,7 @@ public class Application {
                     Application.throwException("1~9 사이의 숫자를 입력하세요.");
                 }
 
-                //같은 숫자를 입력했을 때 => 예외발생
+                //같은 숫자를 입력했을 때 => 예외 발생
                 for (int j = i + 1; j < 3; j++) {
                     if (userNumbers[i] == Integer.parseInt(userInputChars[j])) {
                         Application.throwException("서로 다른 숫자를 입력하세요.");
@@ -64,10 +64,8 @@ public class Application {
             for (int j = 0; j < 3; j++) {
                 if ((selectNumber.get(i) == userNumbers[j]) && (i == j)) {
                     strikeCount++;
-//                    System.out.println("strikeCount = " + strikeCount);
                 } else if (selectNumber.get(i) == userNumbers[j]) {
                     ballCount++;
-//                    System.out.println("ballCount = " + ballCount);
                 }
             }
         }
@@ -91,8 +89,14 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             userInput = Console.readLine();
+
+//            if (userInput.length() != 1) {
+//                throw new IllegalArgumentException("1개의 숫자를 입력하세요.");
+//            }
+
             try {
-                if ((Integer.parseInt(userInput) != 1) && (Integer.parseInt(userInput) != 2)) {
+                int exitNumber= Integer.parseInt(userInput);
+                if ((exitNumber != 1) && (exitNumber !=2)) {
                     Application.throwException("1과 2중에 입력하세요.");
                 }
             } catch (NumberFormatException ex) {
