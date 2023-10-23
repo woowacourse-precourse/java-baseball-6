@@ -7,7 +7,7 @@ import baseball.domain.NumberBaseBallComputer;
 import baseball.domain.Rule;
 import baseball.domain.User;
 import baseball.strategy.DuplicateAllowancePolicy;
-import baseball.strategy.NumberDigitPolicy;
+import baseball.strategy.DigitPolicy;
 import baseball.strategy.NumberGeneratePolicy;
 import baseball.view.Console;
 import baseball.view.Input;
@@ -26,10 +26,10 @@ public class NumberBaseBallGame {
             Output output,
             NumberGeneratePolicy numberGeneratePolicy,
             DuplicateAllowancePolicy duplicateAllowancePolicy,
-            NumberDigitPolicy numberDigitPolicy
+            DigitPolicy digitPolicy
     ) {
 
-        this.rule = new Rule(numberGeneratePolicy, duplicateAllowancePolicy, numberDigitPolicy);
+        this.rule = new Rule(numberGeneratePolicy, duplicateAllowancePolicy, digitPolicy);
         this.console = new Console(input, output);
     }
 

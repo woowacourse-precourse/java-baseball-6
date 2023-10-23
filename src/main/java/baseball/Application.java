@@ -3,7 +3,7 @@ package baseball;
 import baseball.controller.NumberBaseBallGame;
 import baseball.strategy.ForbidDuplicationPolicy;
 import baseball.strategy.RandomNumberGeneratePolicy;
-import baseball.strategy.ThreeNumberDigitPolicy;
+import baseball.strategy.ThreeDigitPolicy;
 import baseball.view.MissionUtilsInputView;
 import baseball.view.PrintStreamOutputView;
 
@@ -15,7 +15,7 @@ public class Application {
                 new PrintStreamOutputView(),
                 new RandomNumberGeneratePolicy(),
                 new ForbidDuplicationPolicy(),
-                new ThreeNumberDigitPolicy()
+                new ThreeDigitPolicy()
         ).run();
     }
 

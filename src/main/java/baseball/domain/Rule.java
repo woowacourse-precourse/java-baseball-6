@@ -1,23 +1,23 @@
 package baseball.domain;
 
 import baseball.strategy.DuplicateAllowancePolicy;
-import baseball.strategy.NumberDigitPolicy;
+import baseball.strategy.DigitPolicy;
 import baseball.strategy.NumberGeneratePolicy;
 
 public class Rule {
 
     private final NumberGeneratePolicy numberGeneratePolicy;
     private final DuplicateAllowancePolicy duplicateAllowancePolicy;
-    private final NumberDigitPolicy numberDigitPolicy;
+    private final DigitPolicy digitPolicy;
 
     public Rule(
             NumberGeneratePolicy numberGeneratePolicy,
             DuplicateAllowancePolicy duplicateAllowancePolicy,
-            NumberDigitPolicy numberDigitPolicy
+            DigitPolicy digitPolicy
     ) {
         this.numberGeneratePolicy = numberGeneratePolicy;
         this.duplicateAllowancePolicy = duplicateAllowancePolicy;
-        this.numberDigitPolicy = numberDigitPolicy;
+        this.digitPolicy = digitPolicy;
     }
 
     public int generateNumber() {
@@ -29,7 +29,7 @@ public class Rule {
     }
 
     public int digits() {
-        return numberDigitPolicy.digits();
+        return digitPolicy.digits();
     }
 
 }

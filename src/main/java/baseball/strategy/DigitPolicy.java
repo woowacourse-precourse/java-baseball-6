@@ -1,7 +1,7 @@
 package baseball.strategy;
 
 @FunctionalInterface
-public interface NumberDigitPolicy {
+public interface DigitPolicy {
 
     int digits();
 

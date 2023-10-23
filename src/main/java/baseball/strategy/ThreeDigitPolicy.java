@@ -1,6 +1,6 @@
 package baseball.strategy;
 
-public class ThreeNumberDigitPolicy implements NumberDigitPolicy {
+public class ThreeDigitPolicy implements DigitPolicy {
 
     @Override
     public int digits() {
