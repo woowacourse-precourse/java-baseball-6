@@ -32,4 +32,15 @@ public class BaseballGame {
     public int randomNum(){
         return Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
     }
+
+    //사용자 입력 문자열을 숫자 목록으로 변환
+    public static List<Integer> playerNum(String playerStr){
+        List<Integer> playerNum = new ArrayList<>();
+        for(int i = 0; i < playerStr.length(); i++){
+            char playerChar = playerStr.charAt(i);
+            int playerInt = Character.getNumericValue(playerChar);
+            playerNum.add(playerInt);
+        }
+        return playerNum;
+    }
 }
