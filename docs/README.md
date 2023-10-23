@@ -79,3 +79,11 @@ Computer - 게임의 상대방 역할
 
 ---
 Count - 볼과 스트라이크를 구분 짓기 위한 Enum
+
+# 삭제 객체
+
+---
+InstanceHandler
+* Communicator와 Validator가 메서드만 보유하는 클래스
+* 생성 및 주입 해야할 객체가 MenuHandler와 Computer만 존재
+* 관리할 객체가 너무 적기에 Application에서 관리
