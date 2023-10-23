@@ -52,10 +52,12 @@ public class User {
         user.add(num);
     }
 
+    // 사용자가 선택한 숫자가 저장된 배열 비우기
     public void clearUser() {
         user.clear();
     }
 
+    // 사용자의 숫자를 불러옴(Rules.countBallsAndStrikes() 전용)
     public List<Integer> getUser() {
         return user;
     }
