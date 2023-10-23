@@ -34,9 +34,10 @@ public class Game {
             GameIO.gameInputPrint();
 
             Balls playerBalls = GameIO.scanGameBalls();
-            boolean isMatching = computerBalls.match(playerBalls);
+            GameResult gameResult = computerBalls.getGameResult(playerBalls);
 
-            if (isMatching) {
+            System.out.println(gameResult);
+            if (gameResult.isThreeStrike()) {
                 gameOver();
             }
         }
