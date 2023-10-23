@@ -27,7 +27,7 @@ public class ShootBall {
     }
 
     //(2)번 기능
-    private void randomNumGenerator(){
+    public void randomNumGenerator(){
         int randNum;
         for(int i=1; i<=3;i++) {
             randNum = Randoms.pickNumberInRange(1, 9);
