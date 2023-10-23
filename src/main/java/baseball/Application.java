@@ -17,7 +17,7 @@ public class Application {
     public static boolean askExit(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int userInput = Integer.parseInt(readLine());
-        // 예외처리
+        Exception.checkOneOrTwo(userInput);
         return userInput == 1;
     }
 }
