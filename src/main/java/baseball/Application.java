@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Hint;
+import baseball.domain.RestartCommand;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -37,9 +38,6 @@ public class Application {
                     throw new IllegalArgumentException("올바르지 않은 입력값 입니다.");
                 }
 
-                int strike = 0;
-                int ball = 0;
-
                 for (int i = 0; i < 3; i++) {
                     if (computerNumbers.contains(toList.get(i))) {
                         if (computerNumbers.get(i).equals(toList.get(i))) {
@@ -60,13 +58,9 @@ public class Application {
             System.out.println(GAME_RESTART);
 
             String command = Console.readLine();
-            if (!(command.equals("1") || command.equals("2"))) {
-                throw new IllegalArgumentException("올바르지 않은 입력값 입니다.");
+            if (RestartCommand.isExit(command)) {
+                break;
             }
-            if (command.equals("1")) {
-                continue;
-            }
-            break;
         }
     }
 }
