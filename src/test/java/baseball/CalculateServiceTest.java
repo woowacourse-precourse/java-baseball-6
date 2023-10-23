@@ -7,11 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculateServiceTest {
     
+    CalculateService calculateService = new CalculateService();
+    
     @DisplayName("다른 위치, 같은 숫자가 있는 경우, 볼의 개수가 1 증가한다.")
     @Test
     void getBallCount() {
         // given
-        CalculateService calculateService = new CalculateService();
         String computerNumber = "123";
         String userNumber = "345";
         
@@ -25,7 +26,7 @@ class CalculateServiceTest {
     @DisplayName("같은 위치, 같은 숫자가 존재하는 경우, 스트라이크의 개수가 1 증가한다.")
     @Test
     void getStrikeCount() {
-        CalculateService calculateService = new CalculateService();
+        // given
         String computerNumber = "123";
         String userNumber = "125";
         
@@ -34,5 +35,61 @@ class CalculateServiceTest {
         
         // then
         assertThat(resultCount).isEqualTo(2);
+    }
+    
+    @DisplayName("볼 개수가 0보다 크고 스트라이크 개수가 0인 경우, 볼만 출력한다.")
+    @Test
+    void displayIfBallCountExistsOnly() {
+        // given
+        int ballCount = 2;
+        int strikeCount = 0;
+        
+        // when
+        String resultMessage = calculateService.getResultMessage(ballCount, strikeCount);
+        
+        // then
+        assertThat(resultMessage).isEqualTo(ballCount + "볼 ");
+    }
+    
+    @DisplayName("볼 개수가 0이고 스트라이크 개수가 0보다 큰 경우, 스트라이크만 출력한다.")
+    @Test
+    void displayIfStrikeCountExistsOnly() {
+        // given
+        int ballCount = 0;
+        int strikeCount = 2;
+        
+        // when
+        String resultMessage = calculateService.getResultMessage(ballCount, strikeCount);
+        
+        // then
+        assertThat(resultMessage).isEqualTo(strikeCount + "스트라이크");
+    }
+    
+    @DisplayName("볼과 스트라이크 개수가 모두 0보다 큰 경우, 볼과 스트라이크 모두 출력한다.")
+    @Test
+    void displayIfBallAndStrikeCountExist() {
+        // given
+        int ballCount = 2;
+        int strikeCount = 1;
+        
+        // when
+        String resultMessage = calculateService.getResultMessage(ballCount, strikeCount);
+        
+        // then
+        assertThat(resultMessage).isEqualTo(ballCount + "볼 " + strikeCount + "스트라이크");
+    }
+    
+    @DisplayName("볼과 스트라이크 개수가 모두 0인 경우, 낫싱을 출력한다.")
+    @Test
+    void displayIfNothing() {
+        // given
+        int ballCount = 0;
+        int strikeCount = 0;
+        
+        // when
+        String resultMessage = calculateService.getResultMessage(ballCount, strikeCount);
+        
+        // then
+        assertThat(resultMessage).isEqualTo("낫싱");
     }
 }
