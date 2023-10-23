@@ -16,6 +16,7 @@ public class BaseballGame {
 
     public void start() {
         List<Integer> baseballNumbers = this.generateBaseballNumbers();
+        System.out.println(baseballNumbers);
         while (true) {
             List<Integer> playerNumbers = this.pickThreeNumbers();
             int[] hits = this.checkHitsResult(baseballNumbers, playerNumbers);
@@ -57,8 +58,7 @@ public class BaseballGame {
         for (int i = 0; i < baseballNumbers.size(); i++) {
             if (baseballNumbers.get(i).equals(playerNumbers.get(i))) {
                 hits[1] += 1;
-            }
-            if (baseballNumbers.contains(playerNumbers.get(i))) {
+            } else if (playerNumbers.contains(baseballNumbers.get(i))) {
                 hits[0] += 1;
             }
         }
