@@ -12,26 +12,22 @@ public class ExceptionHandler {
     public void handleStart(String readLine) {
         String outOfRangeMessage = INPUT_THREE_NUMBER.getMessage();
 
-        if (readLine == null) {
-            throw new IllegalArgumentException(outOfRangeMessage);
-        }
-
-        if (readLine.length() != 3 || readLine.matches(".*\\D.*")) {
-            throw new IllegalArgumentException(outOfRangeMessage);
-        }
+        handleNullOrInvalid(readLine, outOfRangeMessage);
 
     }
 
 
     public void handleExecute(String readLine) {
         String outOfRangeMessage = INPUT_THREE_NUMBER.getMessage();
+        handleNullOrInvalid(readLine, outOfRangeMessage);
+    }
+
+    private static void handleNullOrInvalid(String readLine, String outOfRangeMessage) {
         if (readLine == null) {
             throw new IllegalArgumentException(outOfRangeMessage);
         }
 
-        try {
-            int input = Integer.parseInt(readLine);
-        } catch (IllegalArgumentException e) {
+        if (readLine.length() != 3 || readLine.matches(".*\\D.*")) {
             throw new IllegalArgumentException(outOfRangeMessage);
         }
     }
@@ -41,10 +37,9 @@ public class ExceptionHandler {
         if (readLine == null) {
             throw new IllegalArgumentException(invalidMessage);
         }
+        int input = Integer.parseInt(readLine);
 
-        try {
-            int input = Integer.parseInt(readLine);
-        } catch (IllegalArgumentException e) {
+        if (input != 1 && input != 2) {
             throw new IllegalArgumentException(invalidMessage);
         }
     }
