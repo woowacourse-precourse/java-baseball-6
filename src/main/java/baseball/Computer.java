@@ -30,4 +30,10 @@ public class Computer {
                 .filter(i -> userNumbers.get(i) != randomNumbers.get(i) && randomNumbers.contains(userNumbers.get(i)))
                 .count();
     }
+
+    public int checkStrikeCount(List<Integer> userNumbers) {
+        return (int) IntStream.range(0, COUNTS)
+                .filter(i -> userNumbers.get(i) == randomNumbers.get(i))
+                .count();
+    }
 }
