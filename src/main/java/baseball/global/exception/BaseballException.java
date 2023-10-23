@@ -1,4 +1,4 @@
-package baseball.domain.exception;
+package baseball.global.exception;
 
 public class BaseballException extends IllegalArgumentException {
     private BaseballException(ErrorMessage errorMessage) {

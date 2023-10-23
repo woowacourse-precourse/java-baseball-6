@@ -1,4 +1,4 @@
-package baseball.domain.exception;
+package baseball.global.exception;
 
 public enum ErrorMessage {
     INVALID_LENGTH("The input length cannot be different from length configured by the game."),
