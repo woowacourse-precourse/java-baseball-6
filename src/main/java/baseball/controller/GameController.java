@@ -3,44 +3,48 @@ package baseball.controller;
 import baseball.model.BaseballNumber;
 import baseball.model.Result;
 import baseball.service.BallService;
-import baseball.view.GameView;
+import baseball.view.View;
 
 public class GameController {
-    private BaseballNumber computerNumber;
-    private BaseballNumber userNumber;
-    private BallService ballService = new BallService();
-    private GameView gameView = new GameView();
+    private BallService ballService;
+    private View view;
+
+    public GameController(BallService ballService, View view) {
+        this.ballService = ballService;
+        this.view = view;
+    }
 
     public void startGame() {
         do {
-            gameView.showGameStart();
+            view.showStartGame();
             playGame();
         } while (isRestart());
     }
 
     public void playGame() {
-        generateComputerNumber();
+        BaseballNumber computerNumber = generateComputerNumber();
+        BaseballNumber userNumber;
 
         while (true) {
-            String userNumberReadLine = gameView.getUserNumber();
+            String userNumberReadLine = view.inputUserNumber();
             userNumber = ballService.initUserNumber(userNumberReadLine);
 
             Result result = computerNumber.compare(userNumber);
-            gameView.showGameResult(result);
+            view.showGameResult(result);
 
             if (result.isEnd()) {
-                gameView.showEnd();
+                view.showEnd();
                 break;
             }
         }
     }
 
     private boolean isRestart() {
-        String restart = gameView.inputGameRestart();
+        String restart = view.inputGameRestart();
         return "1".equals(restart);
     }
 
-    private void generateComputerNumber() {
-        computerNumber = ballService.generateRandomNum();
+    private BaseballNumber generateComputerNumber() {
+        return ballService.generateRandomNum();
     }
 }
