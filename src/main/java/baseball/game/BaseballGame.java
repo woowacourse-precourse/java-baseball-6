@@ -15,6 +15,10 @@ public class BaseballGame {
         this.ballInput = new BallInput();
     }
 
+    public void saveInput(String input) {
+        ballInput.saveInput(input);
+    }
+
     public void resetGame() {
         randomNumber.randomNumberGenerator();
         ballHint.resetHint();
