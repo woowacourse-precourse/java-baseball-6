@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -13,9 +15,9 @@ public class GameController {
   }
 
   public void gameStart() {
-    List<Integer> resultNumList = numberController.generate(); //정답숫자리스트
+    List<Integer> resultNumList = Randoms.pickUniqueNumbersInRange(1,9,3);
 
-    Integer gameStatusNumber = 0; // 게임진행 상태 숫자
+    Integer gameStatusNumber = 0;
     Integer strike = 0;
     Integer ball = 0;
 
@@ -48,7 +50,7 @@ public class GameController {
         }
 
         if(gameStatusNumber == 1) {
-          resultNumList = numberController.generate(); //정답숫자리스트
+          resultNumList = Randoms.pickUniqueNumbersInRange(1,9,3);
 
           continue;
         }
