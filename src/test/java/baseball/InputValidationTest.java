@@ -6,6 +6,8 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class InputValidationTest {
 
@@ -20,6 +22,20 @@ class InputValidationTest {
         List<Integer> result = inputValidation.validateUserNumbers(input);
         //then
         assertThat(result).isEqualTo(List.of(3, 6, 9));
+    }
+
+    @DisplayName("다양한 에러 케이스 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"12,", "1234", "102", "2a6", "339"})
+    public void validateErrorTest(String input) throws Exception {
+        //given
+
+        //when
+        List<Integer> result = inputValidation.validateUserNumbers(input);
+        //then
+//        System.out.println(input);
+        assertThatThrownBy(() -> inputValidation.validateUserNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("오류 검증 - 지정된 길이가 아니라면 (3개의 숫자를 입력해주세요.) 에러 메시지")
