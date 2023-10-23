@@ -7,8 +7,7 @@
 
 
 구현 기능 목록
-1. application
-
+1. baseball
    - Application.java: 게임 실행을 위한 메인 뷰 클래스
 
 2. domain
@@ -34,3 +33,5 @@
 
 7. test
    - ApplicationTest.java: 게임 테스트 클래스
+   - GameResultTest.java: 게임 결과 테스트 클래스
+   - PlayerTest.java: 사용자 입력 테스트 클래스
