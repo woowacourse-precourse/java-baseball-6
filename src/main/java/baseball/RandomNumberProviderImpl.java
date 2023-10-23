@@ -25,7 +25,7 @@ public class RandomNumberProviderImpl implements RandomNumberProvider{
     }
 
     @Override
-    public int getRandomNumber() {
+    public int generateRandomNumber() {
         randomNum = makeRandomNumber();
         return randomNum;
     }

@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 public class BaseballGame {
 
     private int baseballNumber;
@@ -17,7 +15,7 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String isReplay = "1";
         while(isReplay.equals("1")) {
-            baseballNumber = randomNumberProvider.getRandomNumber();
+            baseballNumber = randomNumberProvider.generateRandomNumber();
             int inputNumber = input();
             while (!isCorrect(inputNumber)) {
                 System.out.println(getResult(String.valueOf(inputNumber)));
