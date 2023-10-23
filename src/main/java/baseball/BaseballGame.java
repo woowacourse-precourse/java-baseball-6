@@ -60,8 +60,14 @@ public class BaseballGame {
         // 3자리 수가 아니거나, 숫자가 아니거나, 동일한 수가 있으면 에러
         boolean isDuplicate = Arrays.stream(userInput.split("")).distinct().count() != userInput.split("").length;
         boolean hasZero = userInput.contains("0");
-        if (userInput.length() != 3 || isDuplicate || hasZero) {
-            throw new IllegalArgumentException();
+
+        try {
+            int number = Integer.parseInt(userInput); // 문자열을 정수로 변환 시도
+            if (userInput.length() != digit || hasZero || isDuplicate) {
+                throw new IllegalArgumentException(); // 유효하지 않은 세 자리 숫자인 경우 예외 발생
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(); // 변환 실패 시 예외 발생
         }
     }
 
