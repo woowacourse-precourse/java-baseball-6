@@ -37,13 +37,12 @@ public class BaseballGame {
         }
     }
 
-    public RandomNumber getRandomNumber() {
-        return this.randomNumber;
+    public boolean isAnswer() {
+        return this.ballHint.getStrike() == 3;
     }
 
-
-    public BallInput getBallInput() {
-        return this.ballInput;
+    public RandomNumber getRandomNumber() {
+        return this.randomNumber;
     }
 
     public void resetGame() {
@@ -51,4 +50,13 @@ public class BaseballGame {
         ballHint.resetHint();
         ballInput.resetBalls();
     }
+
+    public void printBallHint() {
+        if (ballHint.isNothing()) {
+            System.out.println("낫싱");
+        } else if (ballHint.getStrike() == 3) {
+            System.out.println("3스트라이크");
+        } //여기서도 기본형 안쓰게 수정해보자
+    }
+
 }
