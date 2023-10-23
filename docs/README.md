@@ -17,8 +17,8 @@
     - 유효성 검사 후 필요하다면 IllegalArgumentException을 던진다.
 5. 이닝을 재시작하거나 게임을 종료한다.
 
-![img_2.png](img_2.png)
-![img.png](img.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
 
 # 테스트 구현 목표
 
