@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Baseball;
 import baseball.domain.GameConstants;
+import baseball.domain.Hint.Strike;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
@@ -32,5 +33,10 @@ public class StrikeService {
         return count;
     }
 
+    public boolean active(Strike strike) {
+        if (strike.getCount() > 0 ) {
+            return true;
+        } return false;
+    }
 
 }
