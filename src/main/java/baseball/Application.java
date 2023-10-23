@@ -14,15 +14,12 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        UserBalls userBalls = new UserBalls();
-        List<Integer> userBallList = userBalls.inputBalls();
-        ComputerBalls computerBalls = new ComputerBalls();
-        List<Integer> computerBallList = computerBalls.inputComputerBalls();
+        List<Integer> userBalls = UserBalls.inputBalls();
+        List<Integer> computerBalls = ComputerBalls.inputComputerBalls();
 
-        Score score = new Score();
-        score.calculation(userBallList, computerBallList);
+        Score.calculation(userBalls, computerBalls);
 
-        System.out.println(userBallList);
-        System.out.println(computerBallList);
+        System.out.println(userBalls);
+        System.out.println(computerBalls);
     }
 }

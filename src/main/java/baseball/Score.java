@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Score {
-    public void calculation(List<Integer> userBalls, List<Integer>computerBalls){
+    public static void calculation(List<Integer> userBalls, List<Integer>computerBalls){
 
         int score = 0;
         int strike = 0;
@@ -37,7 +37,7 @@ public class Score {
         System.out.println(score);
 
     }
-    public void strikeScore(int strike, int score){
+    public static void strikeScore(int strike, int score){
         if(score - strike == 0){
             System.out.println(strike+"스트라이크");
         }
@@ -46,13 +46,12 @@ public class Score {
         }
     }
 
-    public void ballScore(int ball){
+    public static void ballScore(int ball){
         System.out.println(ball+"볼");
     }
 
-    public void noScore(){
+    public static void noScore(){
         System.out.println("낫싱");
     }
-
 
 }

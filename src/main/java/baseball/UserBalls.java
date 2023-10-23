@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserBalls {
-    public List<Integer> inputBalls(){
+    public static List<Integer> inputBalls(){
         System.out.println("숫자를 입력하세요 :");
 
         List<Integer> userBalls = new ArrayList<>();
         String inputBall = Console.readLine();
 
-        if(inputBall.length() >= 4){
+        if(inputBall.length() >= 4 || inputBall.length() <3){
             throw new IllegalArgumentException("3자리의 숫자를 입력하세요.");
         }
 
@@ -23,5 +23,4 @@ public class UserBalls {
 
         return userBalls;
     }
-
 }
