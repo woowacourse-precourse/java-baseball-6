@@ -12,12 +12,7 @@ public class BaseBallGame {
 
     public void run() {
         do {
-            try {
-                baseBallService.exec();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                System.exit(0);
-            }
+            baseBallService.exec();
         } while (isContinue());
     }
 
