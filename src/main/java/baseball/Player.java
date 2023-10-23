@@ -2,10 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Player {
 
@@ -42,5 +39,13 @@ public class Player {
         return list.size() == set.size();
     }
 
+    public static int countStrike(List<Integer> computer, List<Integer> user, int size) {
+        int cnt = 0;
 
+        for (int i=0; i<size; i++) {
+            if (Objects.equals(computer.get(i), user.get(i))) cnt++;
+        }
+
+        return cnt;
+    }
 }
