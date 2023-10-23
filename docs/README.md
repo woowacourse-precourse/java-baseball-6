@@ -1,6 +1,6 @@
 ## 클래스 아키텍처
 <img width="1080" alt="Pasted Graphic 6" src="https://github.com/Team-BuddyCon/BACKEND_V2/assets/69676101/402c4b4c-3e1a-4aa7-b109-fef3ac3e01dd">
-<small>전체 아키텍처를 파악하는데 중요하지 않은 클래스(상수를 가지는 enum클래스 등)는 포함되어있지 않습니다.</small>
+<br><small>전체 아키텍처를 파악하는데 중요하지 않은 클래스(상수를 가지는 enum클래스 등)는 포함되어있지 않습니다.</small>
 
 ## 클래스 책임
 - `Digit.java`
