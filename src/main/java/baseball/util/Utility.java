@@ -22,6 +22,7 @@ public class Utility {
 
         return arrayListUserInput;
     }
+
     public static List<Integer> input() {
         String userInput = readLine();
         String targetInput = userInput.trim();

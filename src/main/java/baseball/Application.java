@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import baseball.game.Game;
 import baseball.util.Utility;
 

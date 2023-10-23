@@ -3,6 +3,8 @@ package baseball.game;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.util.Utility;
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -13,11 +15,14 @@ public class Game {
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        this.computer = Utility.assignComputerRandomNumber();
-        System.out.println("computer : " + this.computer);
-
         String restartOrExitNumber = "1";
+
         while (restartOrExitNumber.equals("1")) {
+
+            this.strike = 0;
+            this.ball = 0;
+            this.computer = Utility.assignComputerRandomNumber();
+            System.out.println("computer: " + this.computer);
 
             while (this.strike != 3) {
                 System.out.print("숫자를 입력해주세요: ");
@@ -33,12 +38,15 @@ public class Game {
                 } else if (this.strike != 0 && this.ball != 0) {
                     System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
                 }
+
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요");
             restartOrExitNumber = readLine();
         }
+
+        Console.close();
     }
 
     private void checkPredictNumber(List<Integer> predictNumbers) {

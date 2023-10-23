@@ -1,25 +1,26 @@
 ## 구현 기능 목록
 
 ---
+
 - ### 게임 준비
   > #### 컴퓨터 난수 생성 기능
-     - camp.nextstep.edu.missionutils.Randoms의 
-     - pickNumberInRange()를 활용한다.
-  
+    - camp.nextstep.edu.missionutils.Randoms의
+    - pickNumberInRange()를 활용한다.
+
 - ### 게임 진행
   > #### 사용자 입력 기능
-     - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 
-     - readLine()을 활용한다.
-     - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 <br>
-       발생시킨 후 애플리케이션은 종료되어야 한다.
+    - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의
+    - readLine()을 활용한다.
+    - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 <br>
+      발생시킨 후 애플리케이션은 종료되어야 한다.
 
   > #### 컴퓨터 숫자 & 사용자 입력 비교 기능
-     - 올바른 사용자 입력이 들어온다고 가정했을 때, 컴퓨터 숫자와 비교하여 <br>
-       적절한 결과 값을 결과 출력 기능에 전달 해야 한다.   
+    - 올바른 사용자 입력이 들어온다고 가정했을 때, 컴퓨터 숫자와 비교하여 <br>
+      적절한 결과 값을 결과 출력 기능에 전달 해야 한다.
 
   > #### 컴퓨터 숫자 추측 결과 출력 기능
-     - 사용자 입력에 대한 추측 결과를 포맷에 맞게 출력한다.
+    - 사용자 입력에 대한 추측 결과를 포맷에 맞게 출력한다.
 
 - ### 게임 종료
   > #### 게임 재시작 OR 종료 선택 기능
-     - 게임 종료 후 재시작 여부를 사용자 입력 기능을 통해 입력받는다.
+    - 게임 종료 후 재시작 여부를 사용자 입력 기능을 통해 입력받는다.
