@@ -8,15 +8,16 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Application {
+public class Application implements ApplicationBehavior{
     public static void main(String[] args) {
+        Application app = new Application();
         try {
             boolean isEnd = true;
             BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             while(isEnd) {
-                List<Integer> computer = randomComputerNumber();
+                List<Integer> computer = app.generateRandomComputerNumber();
                 boolean isStrike = false;
                 System.out.println("computer = " + computer);
 
@@ -28,7 +29,7 @@ public class Application {
                         throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
                     }
 
-                    String result = checkNumber(computer, str);
+                    String result = app.checkNumber(computer, str);
                     if(result.equals("3스트라이크")) {
                         isStrike = true;
                     }
@@ -47,7 +48,8 @@ public class Application {
     } // main
 
     // 컴퓨터 입력(상대방)
-    public static List<Integer> randomComputerNumber() {
+    @Override
+    public List<Integer> generateRandomComputerNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -60,7 +62,8 @@ public class Application {
     }
 
     // 사용자 숫자, 컴퓨터 입력값 일치 체크
-    public static String checkNumber(List<Integer> computer, String str) {
+    @Override
+    public String checkNumber(List<Integer> computer, String str) {
         String[] srr  = str.split("");
         String result = "";
         int strike = 0;
@@ -79,17 +82,17 @@ public class Application {
 
         if(strike == 0 && ball == 0) {
             result = "낫싱";
-            System.out.println("1 result = " + result);
+            System.out.println(result);
             return result;
         }
         if(strike == 0) {
             result = "볼";
-            System.out.println("2 result = " + ball + result);
+            System.out.println(ball + result);
             return ball + result;
         }
         if(ball == 0) {
             result = "스트라이크";
-            System.out.println("3 result = " + strike + result);
+            System.out.println(strike + result);
             return strike + result;
         }
         System.out.println(ball + "볼 " + strike + "스트라이크");
