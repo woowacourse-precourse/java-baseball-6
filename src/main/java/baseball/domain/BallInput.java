@@ -12,6 +12,7 @@ public class BallInput {
     }
 
     public void saveInput(String input) {
+        resetBalls();
         validateInput(input);
         String[] parts = input.split("");
         for (int i = 0; i < MAX_LENGTH; i++) {

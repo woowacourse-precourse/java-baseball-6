@@ -8,5 +8,6 @@ public class Application {
         // TODO: 프로그램 구현
         BaseballGame baseballGame = new BaseballGame();
         UserInterface userInterface = new UserInterface(baseballGame);
+        userInterface.start();
     }
 }
