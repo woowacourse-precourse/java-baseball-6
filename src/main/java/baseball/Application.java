@@ -61,14 +61,19 @@ public class Application {
 
   private static void verifiedInput(String num) {
 
-    try{
-      Integer.parseInt(num);
-    }catch (NumberFormatException e){
-      throw new NumberFormatException("숫자를 입력해야 합니다.");
+    if (!num.chars().allMatch(Character::isDigit)) {//숫자인지 확인
+      throw new IllegalArgumentException("숫자를 입력 해야 합니다.");
+    }
+    if (num.length() != 3) {//3자리 수인지 확인
+      throw new IllegalArgumentException("세자리 수를 입력 해야 합니다.");
     }
 
-    if (num.length()!=3) {
-      throw new IllegalArgumentException();
+    for (int i = 0; i < 2; i++) {//중복된 숫자로 이루어져 있는지 확인
+      String s1 = num.substring(i, i + 1);
+      String s2 = num.substring(i + 1);
+      if (s2.contains(s1)) {
+        throw new IllegalArgumentException("서로 다른 수로 이루어 져야 한다.");
+      }
     }
   }
 
