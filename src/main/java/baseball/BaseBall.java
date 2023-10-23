@@ -26,12 +26,7 @@ public class BaseBall {
 		while (score.StrikeNum != 3) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String UserNum = Console.readLine();
-
-			/*
-			 * if (UserNum.length() != 3) { throw new
-			 * IllegalArgumentException("프로그램을 종료합니다.111"); }
-			 */
-
+Util.checkUserNum(UserNum);
 			 Util.checkUserNum(UserNum); 
 			score.checkReset();
 			score.checkStrike(ComputerNum, UserNum);
@@ -41,10 +36,11 @@ public class BaseBall {
 	}
 
 	static void ask() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		String choice = Console.readLine();
+		int choice = Integer.parseInt(Console.readLine());
 		Util.checkChoiceNum(choice);
-		if (choice.equals("1")) {
+		if (choice==1) {
 			BaseBall newbaseball = new BaseBall();
 			newbaseball.run();
 		}

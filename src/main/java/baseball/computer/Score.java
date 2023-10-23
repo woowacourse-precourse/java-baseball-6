@@ -23,10 +23,7 @@ public class Score {
 
 	public void tellNow() {
 		if (StrikeNum != 0 && BallNum != 0) {
-			System.out.printf("%d볼 %d스트라이크", StrikeNum, BallNum);
-			System.out.println();
-		} else if (StrikeNum == 3) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.printf("%d볼 %d스트라이크", BallNum, StrikeNum);
 			System.out.println();
 		} else if (StrikeNum == 0 && BallNum != 0) {
 			System.out.printf("%d볼", BallNum);
