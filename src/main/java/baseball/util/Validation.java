@@ -1,24 +1,25 @@
 package baseball.util;
 
-import static baseball.model.MsgConst.EXCEPTION_NUM_DUPLICATED;
-import static baseball.model.MsgConst.EXCEPTION_NUM_LENGTH;
-import static baseball.model.MsgConst.EXCEPTION_NUM_RANGE;
-import static baseball.model.MsgConst.EXCEPTION_REPLY;
-import static baseball.model.NumConst.END;
-import static baseball.model.NumConst.MAX_NUMBER;
-import static baseball.model.NumConst.MIN_NUMBER;
-import static baseball.model.NumConst.NUM_LENGTH;
-import static baseball.model.NumConst.RESTART;
+import static baseball.model.MsgConstant.EXCEPTION_NUM_DUPLICATED;
+import static baseball.model.MsgConstant.EXCEPTION_NUM_LENGTH;
+import static baseball.model.MsgConstant.EXCEPTION_NUM_RANGE;
+import static baseball.model.MsgConstant.EXCEPTION_REPLY;
+import static baseball.model.NumConstant.END;
+import static baseball.model.NumConstant.MAX_NUMBER;
+import static baseball.model.NumConstant.MIN_NUMBER;
+import static baseball.model.NumConstant.NUM_LENGTH;
+import static baseball.model.NumConstant.RESTART;
 
 import java.util.List;
 
 public class Validation {
 
-//    public static void validateUserInput(List<Integer> UserAnswer) {
-//        validateNumberLength(string);
-//        validateNumberDuplicated(UserAnswer);
-//        validateNumberRange(UserAnswer);
-//    }
+    public static void validateUserInput(String input) {
+        validateNumberLength(input);
+        List<Integer> UserAnswer = Converter.toIntegerList(input);
+        validateNumberDuplicated(UserAnswer);
+        validateNumberRange(UserAnswer);
+    }
 
     public static void validateNumberLength(String str) {
         if (str.length() != NUM_LENGTH) {
