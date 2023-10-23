@@ -27,6 +27,7 @@ public class Application {
             }
         }
         catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
 //            return ;
         }
     }
@@ -83,15 +84,25 @@ public class Application {
         return inputList;
     }
 
+    // contains로 loop 대신하는 version
     public static void validateInput(String inputString) {
-        if (inputString.length() != DIGIT_LENGTH)
+        if (inputString.length() != DIGIT_LENGTH || inputString.contains("0"))
             throw new IllegalArgumentException();
 
-        for (int i = 0; i < DIGIT_LENGTH; i++) {
-            if (!Character.isDigit(inputString.charAt(i)))
-                throw new IllegalArgumentException();
-        }
+        if (Integer.parseInt(inputString) < 123 || Integer.parseInt(inputString) > 987)
+            throw new IllegalArgumentException();
     }
+
+    // loop 도는 version
+//    public static void validateInput(String inputString) {
+//        if (inputString.length() != DIGIT_LENGTH)
+//            throw new IllegalArgumentException();
+//
+//        for (int i = 0; i < DIGIT_LENGTH; i++) {
+//            if (!Character.isDigit(inputString.charAt(i)))
+//                throw new IllegalArgumentException();
+//        }
+//    }
 
     public static boolean isAnswer(int strike) {
         if (strike == DIGIT_LENGTH) {
