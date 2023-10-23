@@ -28,7 +28,7 @@ public class BaseballController {
         matchGame();
     }
 
-    private void matchGame() {
+    public void matchGame() {
         while(true){
             player.inputPlayerNumber(InputView.playerNumber());
             referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());

@@ -33,7 +33,7 @@ public class Referee {
         return 0;
     }
 
-    private int duplicateBall(int computerNumber, int playerNumber, List<Integer> playerNumbers) {
+    public int duplicateBall(int computerNumber, int playerNumber, List<Integer> playerNumbers) {
         if(computerNumber != playerNumber && playerNumbers.contains(computerNumber)){
             return 1;
         }

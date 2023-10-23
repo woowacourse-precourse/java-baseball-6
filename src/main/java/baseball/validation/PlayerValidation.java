@@ -52,7 +52,7 @@ public class PlayerValidation {
         return Integer.parseInt(number);
     }
 
-    private static void ischeckOneOrTwo(String number) {
+    public static void ischeckOneOrTwo(String number) {
         if(!(number.equals("1") || number.equals("2"))){
             throw new IllegalArgumentException(IS_NOT_INPUT_ERROR_MESSAGE);
         }
