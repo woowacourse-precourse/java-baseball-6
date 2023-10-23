@@ -9,9 +9,11 @@ import baseball.domain.player.defender.value.Results;
 import baseball.domain.player.defender.value.StrikeCount;
 import baseball.domain.player.value.Ball;
 import baseball.domain.player.value.Balls;
+import baseball.exception.rutime.NotInitializeBallException;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,6 +21,18 @@ class DefenderTest {
 
 	private final Balls RESULT_BALLS =
 		new Balls(List.of(Ball.of(1L), Ball.of(2L), Ball.of(3L)));
+
+	@Test
+	@DisplayName("방어자의 공을 초기화하지 않으면 예외가 발생한다.")
+	void needInitialize() {
+		// given
+		Defender defender = new Computer();
+
+		// when
+
+		// then
+		assertThrows(NotInitializeBallException.class, () -> defender.compareBalls(RESULT_BALLS));
+	}
 
 	@DisplayName("방어자가 숫자를 비교한다.")
 	@ParameterizedTest
