@@ -7,14 +7,10 @@ public class Validation {
 
     public boolean runException(String num, String option) {
         boolean flag = true;
-        try {
             if (!isValidate(num, option)) {
+                flag = false;
                 throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 게임을 종료합니다.");
             }
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-            flag = false;
-        }
         return flag;
     }
 
