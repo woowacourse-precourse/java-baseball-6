@@ -2,7 +2,6 @@ package service;
 
 import domain.Baseball;
 import repository.BaseRepository;
-import repository.BaseRepositoryImpl;
 import repository.InputRepository;
 import repository.InputRepositoryImpl;
 
@@ -13,7 +12,7 @@ import static constant.BaseConst.*;
 public class BaseServiceImpl implements BaseService{
 
     private final InputRepository inputRepository = new InputRepositoryImpl();
-    private final BaseRepository baseRepository = new BaseRepositoryImpl();
+    private final BaseRepository baseRepository = new BaseRepository();
 
     /**
      * 게임 기능

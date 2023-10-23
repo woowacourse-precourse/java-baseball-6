@@ -1,11 +1,8 @@
 package baseball.baseTest;
 
-import constant.BaseConst;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import repository.BaseRepository;
-import repository.BaseRepositoryImpl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class BaseRepositoryTest {
 
-    private final BaseRepository baseRepository = new BaseRepositoryImpl();
+    private final BaseRepository baseRepository = new BaseRepository();
 
 
     @Test

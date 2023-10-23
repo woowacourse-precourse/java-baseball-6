@@ -40,7 +40,6 @@
 - 메세지 출력 -> 사용자 입력 -> Valid 유효성검사 -> return 사용자입력값
 
 ### BaseRepository.java
-- BaseRepository : 인터페이스, BaseRepositoryImpl : 구현체
 - getMyNumber() : InputRepository에서 검증된 값을 List<Integer>로 변환한다.
 - confirmNumber() : 사용자가 입력한 값과 정답값을 비교해서 결과를 int[] result로 반환한다.
 - printMessage() : int[] result를 사용해서 메세지를 출력한다.
