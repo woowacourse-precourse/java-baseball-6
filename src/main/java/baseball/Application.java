@@ -34,12 +34,10 @@ public class Application {
                     }
                 }
                 int ball = 0;
-                if (numbers.get(0) == input.charAt(1) - '0'
-                        || numbers.get(0) == input.charAt(2) - '0' ) {
+                if (numbers.get(0) == input.charAt(1) - '0' || numbers.get(0) == input.charAt(2) - '0' ) {
                     ball++;
                 }
-                if (numbers.get(1) == input.charAt(0) - '0'
-                        || numbers.get(1) == input.charAt(2) - '0' ) {
+                if (numbers.get(1) == input.charAt(0) - '0' || numbers.get(1) == input.charAt(2) - '0' ) {
                     ball++;
                 }
                 String information = "";
@@ -53,7 +51,11 @@ public class Application {
                     information = "낫싱";
                 }
                 System.out.println(information);
+                if (strike == 3) {
+                    break;
+                }
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 }
