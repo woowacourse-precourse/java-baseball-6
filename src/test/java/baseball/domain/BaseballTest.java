@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-class BallTest extends NsTest  {
+class BaseballTest extends NsTest  {
     @Test
     void 얘외_볼_숫자_아님() {
         assertSimpleTest(() ->

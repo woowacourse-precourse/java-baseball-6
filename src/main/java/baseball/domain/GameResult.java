@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.domain.Ball.BALL_SIZE;
+import static baseball.domain.Baseball.BALL_SIZE;
 
 public record GameResult(int balls, int strikes) {
 

@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.Balls;
+import baseball.domain.Baseballs;
 import baseball.domain.Game;
 import baseball.domain.GameResult;
 import baseball.service.BallGeneratorService;
@@ -34,16 +34,16 @@ public class GameController {
 
     private void playGame() {
         Game game = gameService.createGame(ballGeneratorService);
-        Balls computerBalls = game.getComputerBalls();
+        Baseballs computerBaseballs = game.getComputerBalls();
         while (!game.isGameOver()) {
             outputView.inputBallsMessage();
-            GameResult gameResult = gameService.compareAndResult(computerBalls, getPlayerBalls());
+            GameResult gameResult = gameService.compareAndResult(computerBaseballs, getPlayerBalls());
             outputView.resultMessage(gameService.createGameResult(gameResult));
             gameService.updateGameState(game, gameResult);
         }
     }
 
-    private Balls getPlayerBalls() {
+    private Baseballs getPlayerBalls() {
         return ballGeneratorService.generatePlayerBalls(inputController.requestPlayerGuess());
     }
 

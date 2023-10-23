@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.Balls;
+import baseball.domain.Baseballs;
 import baseball.domain.Game;
 import baseball.domain.GameResult;
 
@@ -13,9 +13,9 @@ public class GameService {
         return new Game(ballGeneratorService);
     }
 
-    public GameResult compareAndResult(Balls computerBalls, Balls playerBalls) {
-        int balls = computerBalls.countBalls(playerBalls);
-        int strikes = computerBalls.countStrikes(playerBalls);
+    public GameResult compareAndResult(Baseballs computerBaseballs, Baseballs playerBaseballs) {
+        int balls = computerBaseballs.countBalls(playerBaseballs);
+        int strikes = computerBaseballs.countStrikes(playerBaseballs);
         return new GameResult(balls, strikes);
     }
 
