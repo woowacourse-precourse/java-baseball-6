@@ -59,11 +59,11 @@ public class BaseballGame {
         int strike = ballHint.getStrike();
         if (strike == 3) { //여기서도 기본형 안쓰게 수정해보자
             System.out.println("3스트라이크");
-        } else if (strike > 1 && ball > 1) {
+        } else if (strike >= 1 && ball >= 1) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
-        } else if (strike > 1) {
+        } else if (strike >= 1) {
             System.out.println(strike + "스트라이크");
-        } else if (ball > 1) {
+        } else if (ball >= 1) {
             System.out.println(ball + "볼");
         }
     }
