@@ -8,7 +8,7 @@ public class ValidationUtil {
     private static final char NUMBER_MIN = '1';
     private static final char NUMBER_MAX = '9';
     private static final String LENGTH_MISMATCH = "세 자리로 입력해 주세요.";
-    private static final String RANGE_MISMATCH = NUMBER_MIN+" 이상"+NUMBER_MAX+"이하 숫자로 입력해 주세요.";
+    private static final String RANGE_MISMATCH = NUMBER_MIN + " 이상 " + NUMBER_MAX + " 이하 숫자로 입력해 주세요.";
     private static final String DUPLICATE_EXIST = "중복되는 숫자가 존재합니다.";
 
     public void validate(String userInput) throws IllegalArgumentException {
