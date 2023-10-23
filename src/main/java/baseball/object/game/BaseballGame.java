@@ -25,12 +25,19 @@ public class BaseballGame {
 
             announceWin();
 
-            askRestartGame();
+            askRestart();
         }
     }
 
-    private void askRestartGame() {
-        // 게임 또 할건지(재시작 여부 확인)
+    private void announceGameStart() {
+        Output.consoleLine(GAME_START_MESSAGE);
+    }
+
+    private void announceWin() {
+        Output.consoleLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private void askRestart() {
         Output.consoleLine(GAME_RESTART_MESSAGE);
         String inputRestart = Input.consoleLine();
 
@@ -41,16 +48,6 @@ public class BaseballGame {
         if (Objects.equals(inputRestart, GAME_FINISH)) {
             isStart = false;
         }
-    }
-
-    private void announceWin() {
-        // 3) 맞추기(턴) 종료 멘트 출력
-        Output.consoleLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
-    private void announceGameStart() {
-        // 게임 시작
-        Output.consoleLine(GAME_START_MESSAGE);
     }
 
 }
