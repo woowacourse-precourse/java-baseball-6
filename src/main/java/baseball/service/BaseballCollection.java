@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class BaseballCollection {
     private final int DEFAULT_CAPACITY = 3;
-    private final String NOTHING = "낫싱";
     private final List<Integer> baseball;
     private BaseballValidator baseballValidator = new BaseballValidator();
 
@@ -39,24 +38,14 @@ public class BaseballCollection {
         return computerBalls;
     }
 
-    // 기능: 힌트 얻기
-    public String getHint(BaseballCollection playerBalls) {
-        if (isNothing(playerBalls)) {
-            return NOTHING;
-        }
-        int strikeCount = calculateStrikeCount(playerBalls);
-        int ballCount = calculateBallCount(playerBalls);
-        return appendingResult(ballCount, strikeCount);
-    }
-
     // 기능: 같은 수가 전혀 없으면 낫싱
-    private boolean isNothing(BaseballCollection playerBalls) {
+    public boolean isNothing(BaseballCollection playerBalls) {
         return this.baseball.stream()
                 .noneMatch(playerBalls.baseball::contains);
     }
 
     // 기능: 같은 수가 같은 자리에 있는 스트라이크의 개수 세기
-    private int calculateStrikeCount(BaseballCollection playerBalls) {
+    public int calculateStrikeCount(BaseballCollection playerBalls) {
         int strikeCount = 0;
         for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
             int playerBall = playerBalls.baseball.get(ballPosition);
@@ -69,7 +58,7 @@ public class BaseballCollection {
     }
 
     // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
-    private int calculateBallCount(BaseballCollection playerBalls) {
+    public int calculateBallCount(BaseballCollection playerBalls) {
         int ballCount = 0;
         for (int ballPosition = 0; ballPosition < DEFAULT_CAPACITY; ballPosition++) {
             int playerBall = playerBalls.baseball.get(ballPosition);
@@ -79,16 +68,5 @@ public class BaseballCollection {
             }
         }
         return ballCount;
-    }
-
-    private String appendingResult(int ballCount, int strikeCount) {
-        StringBuilder result = new StringBuilder();
-        if (ballCount > 0) {
-            result.append(String.format("%d볼 ", ballCount));
-        }
-        if (strikeCount > 0) {
-            result.append(String.format("%d스트라이크", strikeCount));
-        }
-        return result.toString().trim();
     }
 }
