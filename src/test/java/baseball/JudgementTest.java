@@ -1,11 +1,10 @@
 package baseball;
 
-import baseball.service.Judgement;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.service.*;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,10 +16,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 3스트라이크")
     void getHintSuccessTest1() {
         // given
-        List<Integer> computerBalls = List.of(1, 3, 7);
-        List<Integer> playerBalls = List.of(1, 3, 7);
+        List<Integer> computerNums = Lists.newArrayList(1, 3, 7);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("137");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("3스트라이크");
     }
@@ -29,10 +29,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 1볼 1스트라이크")
     void getHintSuccessTest2() {
         // given
-        List<Integer> computerBalls = List.of(4, 9, 8);
-        List<Integer> playerBalls = List.of(8, 9, 3);
+        List<Integer> computerNums = Lists.newArrayList(4, 9, 8);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("893");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("1볼 1스트라이크");
     }
@@ -41,10 +42,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 1볼")
     void getHintSuccessTest3() {
         // given
-        List<Integer> computerBalls = List.of(3, 2, 5);
-        List<Integer> playerBalls = List.of(2, 4, 7);
+        List<Integer> computerNums = Lists.newArrayList(3, 2, 5);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("247");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("1볼");
     }
@@ -53,10 +55,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 2볼")
     void getHintSuccessTest4() {
         // given
-        List<Integer> computerBalls = List.of(5, 3, 8);
-        List<Integer> playerBalls = List.of(3, 8, 1);
+        List<Integer> computerNums = Lists.newArrayList(3, 2, 5);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("243");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("2볼");
     }
@@ -65,10 +68,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 2볼 1스트라이크")
     void getHintSuccessTest5() {
         // given
-        List<Integer> computerBalls = List.of(9, 2, 4);
-        List<Integer> playerBalls = List.of(9, 4, 2);
+        List<Integer> computerNums = Lists.newArrayList(9, 2, 4);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("942");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("2볼 1스트라이크");
     }
@@ -77,10 +81,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 3볼")
     void getHintSuccessTest6() {
         // given
-        List<Integer> computerBalls = List.of(9, 2, 4);
-        List<Integer> playerBalls = List.of(4, 9, 2);
+        List<Integer> computerNums = Lists.newArrayList(9, 2, 4);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("492");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("3볼");
     }
@@ -89,10 +94,11 @@ class JudgementTest {
     @DisplayName("[성공 테스트] 낫싱")
     void getHintSuccessTest7() {
         // given
-        List<Integer> computerBalls = List.of(2, 5, 4);
-        List<Integer> playerBalls = List.of(3, 6, 9);
+        List<Integer> computerNums = Lists.newArrayList(2, 5, 4);
+        BaseballCollection computerBalls = new BaseballCollection(() -> computerNums.remove(0));
+        BaseballCollection playerBalls = new BaseballCollection("369");
         // when
-        String hint = judgement.getHint(computerBalls, playerBalls);
+        String hint = judgement.calculateHint(computerBalls, playerBalls);
         // then
         assertThat(hint).isEqualTo("낫싱");
     }
@@ -102,23 +108,12 @@ class JudgementTest {
     void getHintFailTest1() {
         for (int testCase = 0; testCase < 10000; testCase++) {
             // given
-            List<Integer> computerBalls = createThreeRandomNumber();
-            List<Integer> playerBalls = createThreeRandomNumber();
+            BaseballCollection computerBalls = new BaseballCollection(new RandomNumberGenerator());
+            BaseballCollection playerBalls = new BaseballCollection(new RandomNumberGenerator());
             // when
-            String hint = judgement.getHint(computerBalls, playerBalls);
+            String hint = judgement.calculateHint(computerBalls, playerBalls);
             // then
             assertThat(hint).isNotEqualTo("1볼 2스트라이크");
         }
-    }
-
-    private List<Integer> createThreeRandomNumber() {
-        List<Integer> threeRandomNumber = new ArrayList<>();
-        while (threeRandomNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!threeRandomNumber.contains(randomNumber)) {
-                threeRandomNumber.add(randomNumber);
-            }
-        }
-        return threeRandomNumber;
     }
 }
