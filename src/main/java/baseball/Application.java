@@ -45,5 +45,21 @@ public class Application {
         // 입력 받은 수가 3자리가 아닌 경우
         if (userNums.size() != 3) throw new IllegalArgumentException();
 
+        int ball = 0;
+        int strike = 0;
+
+        // 비교
+        for (int i = 0; i < 3; i++) {
+            if (computerNums.contains(userNums.get(i))) {
+                if (computerNums.get(i).equals(userNums.get(i))) strike++;
+                else ball++;
+            }
+        }
+
+        // 힌트 제공
+        if (ball == 0 && strike == 0) System.out.print("낫싱");
+        if (ball!=0) System.out.print(ball + "볼" + " ");
+        if (strike!=0) System.out.print(strike + "스트라이크");
+
     }
 }
