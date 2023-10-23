@@ -164,4 +164,13 @@ public class BaseBallGame {
     public void RestartPrint(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+    //게임 재시작 / 프로그램 종료 함수
+    public void RestartOrExit(){
+        RestartPrint();
+        userString = InputNum();
+        IsInteger();
+        if(userInteger == 2){
+            cycle = false;
+        }
+    }
 }
