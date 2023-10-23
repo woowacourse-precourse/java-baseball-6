@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.validation.SingleNumberValidator;
+import baseball.service.ValidatorFactory;
 import baseball.validation.Validator;
 
 public class SingleNumber {
@@ -8,15 +8,18 @@ public class SingleNumber {
     private final Integer number;
 
     public SingleNumber(String target) {
-        Validator validator = new SingleNumberValidator();
-        validator.validate(target);
+        validate(target);
         this.number = Integer.parseInt(target);
     }
 
     public SingleNumber(Integer target) {
-        Validator validator = new SingleNumberValidator();
-        validator.validate(target);
+        validate(target);
         this.number = target;
+    }
+
+    private void validate(Object target) {
+        Validator validator = ValidatorFactory.getValidator(target.getClass());
+        validator.validate(target);
     }
 
     @Override

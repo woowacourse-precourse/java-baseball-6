@@ -5,6 +5,7 @@ import baseball.model.Command;
 import baseball.model.GameNumbers;
 import baseball.model.Score;
 import baseball.service.ScoreCalculator;
+import baseball.service.ValidatorFactory;
 import baseball.util.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -26,6 +27,7 @@ public class BaseballController {
     public void run() {
         outputView.printStartMessage();
         play();
+        ValidatorFactory.clear();
     }
 
     private void play() {

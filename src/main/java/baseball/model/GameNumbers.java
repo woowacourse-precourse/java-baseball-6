@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.validation.GameNumberValidator;
+import baseball.service.ValidatorFactory;
 import baseball.validation.Validator;
 
 import java.util.Arrays;
@@ -15,8 +15,7 @@ public class GameNumbers {
                 .stream()
                 .map(SingleNumber::new)
                 .toList();
-        Validator validator = new GameNumberValidator();
-        validator.validate(gameNumber);
+        validate(gameNumber);
         this.gameNumber = gameNumber;
     }
 
@@ -24,9 +23,13 @@ public class GameNumbers {
         List<SingleNumber> gameNumber = Arrays.stream(value.split(""))
                 .map(SingleNumber::new)
                 .toList();
-        Validator validator = new GameNumberValidator();
-        validator.validate(gameNumber);
+        validate(gameNumber);
         this.gameNumber = gameNumber;
+    }
+
+    private void validate(List<SingleNumber> target) {
+        Validator validator = ValidatorFactory.getValidator(target.getClass());
+        validator.validate(target);
     }
 
     public static GameNumbers of(String value) {

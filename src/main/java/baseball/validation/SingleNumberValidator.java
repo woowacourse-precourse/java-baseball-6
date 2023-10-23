@@ -2,7 +2,6 @@ package baseball.validation;
 
 import baseball.constant.ErrorMessage;
 import baseball.constant.Number;
-import baseball.model.SingleNumber;
 
 public class SingleNumberValidator implements Validator {
 
@@ -10,7 +9,7 @@ public class SingleNumberValidator implements Validator {
 
     @Override
     public boolean support(Class<?> clazz) {
-        return SingleNumber.class.isAssignableFrom(clazz);
+        return Integer.class.isAssignableFrom(clazz) || String.class.isAssignableFrom(clazz);
     }
 
     @Override
