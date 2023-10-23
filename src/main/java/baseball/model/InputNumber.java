@@ -25,6 +25,10 @@ public class InputNumber {
         return (nextNumber.inputNumber == this.inputNumber);
     }
 
+    public int getInputNumber() {
+        return this.inputNumber;
+    }
+
     @Override
     public String toString() {
         return String.valueOf(inputNumber);
