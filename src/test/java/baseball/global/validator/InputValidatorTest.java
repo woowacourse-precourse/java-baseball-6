@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputValidatorTest {
 
-    private InputValidator validator;
+    private final InputValidator validator;
     InputValidatorTest(){
         validator = new InputValidator();
     }
