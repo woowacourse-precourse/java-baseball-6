@@ -44,6 +44,11 @@
 - ✅ displayAskRestartOrExitGame 메서드 구현
     - 재시작 여부 확인 메시지 구현
 
+## ✅ 숫자 입력 메시지 출력 및 입력 기능
+
+- ✅ getInputNumberMessage 메서드 구현
+    - 플레이어에게 숫자를 입력 받고 리턴
+
 # Controller
 
 ## ❌ 플레이어 수 입력
