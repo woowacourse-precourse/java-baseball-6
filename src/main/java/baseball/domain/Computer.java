@@ -63,7 +63,7 @@ public class Computer {
     private void checkBalls() {
         int strikeCount = countStrike();
         int ballCount = countBall();
-        
+
         Output.printGameResult(strikeCount, ballCount);
     }
 
@@ -84,9 +84,6 @@ public class Computer {
     private int countBall() {
         int ballCount = 0;
         for (int i = 0; i < CHECK_COUNT; i++) {
-            if (isStrike(i)) {
-                continue;
-            }
             if (isBall(i)) {
                 ballCount += 1;
             }
@@ -95,6 +92,6 @@ public class Computer {
     }
 
     private boolean isBall(int i) {
-        return computerBalls.contains(String.valueOf(userBalls.charAt(i)));
+        return !isStrike(i) && computerBalls.contains(String.valueOf(userBalls.charAt(i)));
     }
 }
