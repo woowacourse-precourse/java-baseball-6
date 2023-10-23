@@ -33,8 +33,12 @@ public class Game {
         int[] userGuess = changeToIntArray(userInput);
         int strike = countStrike(userGuess);
         int ball = countContain(userGuess) - strike;
-        printResult(ball,strike);
+        printResult(ball, strike);
 
+        return checkSuccess(strike);
+    }
+
+    private static boolean checkSuccess(int strike) {
         if (strike == 3) {
             printSuccess();
             return true;
