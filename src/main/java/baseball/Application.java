@@ -5,14 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
 
     private final static Integer numberCount = 3;
     private static Boolean isApplicationEnd = false;
 
-    public static void main(String[] args) throws IllegalArgumentException{
+    public static void main(String[] args){
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             // 컴퓨터가 숫자 3개를 고른다.
@@ -20,7 +19,6 @@ public class Application {
 
             while (true) {
                 String userInputStr = getUserInputStr();
-                System.out.println("userInputStr = " + userInputStr);
 
                 // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
                 if (!isUserInputValidate(userInputStr)) {
