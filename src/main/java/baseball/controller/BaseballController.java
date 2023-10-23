@@ -5,6 +5,9 @@ import baseball.model.UserModel;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class BaseballController {
     int strikeCount;
     int ballCount;
@@ -43,25 +46,19 @@ public class BaseballController {
     }
 
     private int countStrike(int[] computerNumbers, int[] userNumbers){
-        int strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computerNumbers[i] == userNumbers[i]) strikeCount++;
-        }
-        return strikeCount;
+        return (int) Stream.iterate(0, i -> i < 3, i -> i + 1)
+                .filter(i -> computerNumbers[i] == userNumbers[i])
+                .count();
     }
 
     private int countBall(int[] computerNumbers, int[] userNumbers){
-        int ballCount = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computerNumbers[i] != userNumbers[i]) {
-                for(int j = 0; j < 3; j++){
-                    if (i != j && computerNumbers[j] == userNumbers[i]) {
-                        ballCount++;
-                    }
-                }
-            }
-        }
-        return ballCount;
+        return (int) Stream.iterate(0, i -> i < 3, i -> i + 1)
+                .filter(i -> computerNumbers[i] != userNumbers[i] &&
+                        Arrays.stream(computerNumbers)
+                                .boxed()
+                                .toList()
+                                .contains(Integer.parseInt(userNumbers[i]+"")))
+                .count();
     }
 
 
