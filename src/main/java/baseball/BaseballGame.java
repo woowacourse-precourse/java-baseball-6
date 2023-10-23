@@ -3,27 +3,33 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class BaseballGame {
-    private final int[] numbers;
+    private final BaseballNumber numbers;
 
     public BaseballGame(int[] numbers) {
-        this.numbers = numbers;
-        checkNumbers();
+        this.numbers = new BaseballNumber(numbers);
     }
 
-    public void sayHello(ConsoleLogger consoleLogger){
-        consoleLogger.print("숫자 야구 게임을 시작합니다.");
+    public void sayHello(ConsoleLogger consoleLogger) {
+        consoleLogger.print("숫자 야구 게임을 시작합니다.\n");
     }
 
-    private void checkNumbers() {
-        assert (numbers.length == 3);
-        Set<Integer> set = new HashSet<>();
-        for (int number : numbers) {
-            assert( 0 < number && number < 10 );
-            set.add(number);
+    public void run(ConsoleInput consoleInput, ConsoleLogger consoleLogger) {
+        while (true) {
+            consoleLogger.print("숫자를 입력해주세요 :");
+            String input = consoleInput.getInput();
+            checkInputs(input);
         }
-        assert(set.size() == 3);
     }
+
+    private static void checkInputs(String s) {
+        if (Pattern.matches("[0-9]{3}", s)) {
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
+
 }
 

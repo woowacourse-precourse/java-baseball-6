@@ -6,10 +6,12 @@ import java.util.Set;
 
 public class GameExecutor {
     private BaseballGame game;
+    private ConsoleInput consoleInput;
     private ConsoleLogger consoleLogger;
 
     public GameExecutor() {
         game = new BaseballGame(getRandomNumbers());
+        consoleInput = new ConsoleInput();
         consoleLogger = new ConsoleLogger();
     }
 
@@ -26,7 +28,11 @@ public class GameExecutor {
                 .toArray();
     }
 
-    public void run(){
+    public void run() {
         game.sayHello(consoleLogger);
+        while (true) {
+            game.run(consoleInput, consoleLogger);
+            break;
+        }
     }
 }
