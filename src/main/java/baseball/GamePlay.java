@@ -1,16 +1,22 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GamePlay {
+    private Computer computer;
+
+    private Compare compare;
+
     public void isFinished() {
-        // TODO. 게임 플레이 구현하기 (종료 및 재시작)
-        start();
+        this.computer = new Computer();
+        do {
+            start();
+        } while (restart());
     }
 
     public void start() {
         printStartMsg();    // 게임 시작 문구 출력
-        // 컴퓨터 랜덤 수 생성
+        computer.getNumbers();// 컴퓨터 랜덤 수 생성
         pritUserInput();    // 사용자 입력 문구 출력
         getUserInput();     // 사용자 입력 받기
     }
@@ -23,16 +29,26 @@ public class GamePlay {
         System.out.print("숫자를 입력해주세요 :");
     }
 
-    private void getUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        // 사용자의 입력이 정수인지 확인
-        if (scanner.hasNextInt()) {
-            int userInput = scanner.nextInt();
-            System.out.print(userInput);
-        } else {
-            // 에러 메세지 출력
+    private String getUserInput() {
+        return Console.readLine();
+    }
+
+    private Boolean restart() {
+        int input = 0;
+        while (invalidInput(input)) {
+            printRestartMsg();
+            input = Integer.parseInt(getUserInput());
         }
-        scanner.close();
+        // 에러 메시지 출력
+        return (input == 1);
+    }
+
+    private boolean invalidInput(int input) {
+        return (input != 1) && (input != 2);
+    }
+
+    private void printRestartMsg() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
 }
