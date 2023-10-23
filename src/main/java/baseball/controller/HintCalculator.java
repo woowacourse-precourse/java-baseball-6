@@ -12,14 +12,10 @@ public class HintCalculator {
     private int strikeCnt = 0;
     private int ballCnt = 0;
 
-
     public HintCalculator(List<Integer> userList, List<Integer> computerList) {
         for (int i = 0; i < LIST_SIZE; ++i) {
-            if (isStrike(userList.get(i), computerList.get(i))) {
-                ++strikeCnt;
-            } else if (isBall(userList.get(i), computerList)) {
-                ++ballCnt;
-            }
+            addStrikeCount(userList.get(i), computerList.get(i));
+            addBallCount(userList.get(i), computerList);
         }
     }
 
@@ -35,7 +31,7 @@ public class HintCalculator {
         if (ballCnt != 0) {
             hintString+=ballCnt+ballString;
             if(strikeCnt != 0){
-               hintString+=spaceString;
+                hintString+=spaceString;
             }
         }
         if(strikeCnt!=0){
@@ -43,6 +39,18 @@ public class HintCalculator {
             hintString+=strikeString;
         }
         return hintString;
+    }
+
+    private void addStrikeCount(int userDigit, int computerDigit) {
+        if(isStrike(userDigit, computerDigit)){
+            ++strikeCnt;
+        }
+    }
+
+    private void addBallCount(int userDigit, List<Integer> computerList) {
+        if(isBall(userDigit, computerList)){
+            ++ballCnt;;
+        }
     }
 
     private boolean isStrike(Integer userNumber, Integer computerNumber) {
