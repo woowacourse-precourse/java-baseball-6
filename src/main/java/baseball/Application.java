@@ -21,7 +21,7 @@ public class Application {
         // 프로그램 시작
         System.out.println(GAME_START_MESSAGE);
         while(true) {
-            List<Integer> computer = getRandomNumbers();
+            List<Integer> computer = getComputerNumbers();
 
             // 사용자가 번호 맞추기 시작
             playGame(computer);
@@ -75,15 +75,8 @@ public class Application {
     }
 
 
-    public static List<Integer> getRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < NUMBER_LENGTH){
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!numbers.contains(randomNumber)){
-                numbers.add(randomNumber);
-            }
-        }
-        return numbers;
+    public static List<Integer> getComputerNumbers() {
+        return Computer.getRandomNumbers();
     }
 
     /**
