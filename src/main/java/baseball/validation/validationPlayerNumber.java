@@ -9,14 +9,14 @@ public class validationPlayerNumber {
             return true; // 입력된 숫자가 3자리가 아닐 경우에 true 반환 --> 오류를 발생시키기 위함
         }
 
-        if (input.get(0) == input.get(1) || input.get(0) == input.get(2) || input.get(1) == input.get(2)) {
+        if (input.get(0).equals(input.get(1)) || input.get(0).equals(input.get(2)) || input.get(1)
+                .equals(input.get(2))) {
             return true; // 입력된 값에 중복된 숫자가 있을 경우 true 반환 --> 오류를 발생시키기 위함
         }
 
-        if (input.get(0) == 0 || input.get(1) == 0 || input.get(2) == 0) {
+        if (input.get(0).equals(0) || input.get(1).equals(0) || input.get(2).equals(0)) {
             return true; // 입력한 숫자에 0이 있으면 true 반환 --> 오류를 발생시키기 위함
         }
         return false;
     }
-
 }
