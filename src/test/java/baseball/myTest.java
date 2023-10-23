@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
@@ -22,20 +21,6 @@ public class myTest extends NsTest {
         OutputView.printStartGameMessage();
         assertThat(outContent.toString()).contains("숫자 야구 게임을 시작합니다.");
         System.setOut(standardOut);
-    }
-
-    @Test
-    void 중복숫자_예외_테스트() {
-        String[] args = {"999"};
-        final byte[] buf = String.join("\n", args).getBytes();
-        System.setIn(new ByteArrayInputStream(buf));
-
-        assertThatThrownBy(() -> {
-            Application.main(new String[]{});
-            // runMain();
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 원소가 있습니다.");
-        System.setIn(System.in);
     }
 
     @Test
@@ -64,8 +49,22 @@ public class myTest extends NsTest {
     void 게임_재시작_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
+                    run("468", "135", "1", "597", "589", "2");
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 중복숫자_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> {
+                        run("123", "999");
+                        // runMain();
+                    }).isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("중복된 원소가 있습니다.");
                 },
                 1, 3, 5, 5, 8, 9
         );
