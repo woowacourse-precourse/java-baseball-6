@@ -17,7 +17,9 @@ public class Game {
         while (score.getStrike() != OUT) {
             List<Integer> userNumber = getUserNum();
             play(computerNumber, userNumber, score);
+            showGameResult(score);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public List<Integer> getUserNum() {
@@ -31,5 +33,9 @@ public class Game {
         int strike = T.countStrike(computerNumber, userNumber);
         int ball = T.countBall(computerNumber, userNumber);
         score.setScore(strike, ball);
+    }
+
+    public void showGameResult(Score score) {
+        T.printGameResult(score.getStrike(), score.getBall());
     }
 }
