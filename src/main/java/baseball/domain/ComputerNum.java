@@ -16,6 +16,10 @@ public class ComputerNum {
         setComNumber();
     }
 
+    public List<Integer> getNum() {
+        return number;
+    }
+
     private void setComNumber() {
         while (number.size() < NUM_SIZE) {
             int randomNum = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
@@ -27,9 +31,5 @@ public class ComputerNum {
 
     private boolean isDuplicate(int randomNum) {
         return number.contains(randomNum);
-    }
-
-    public List<Integer> getNum() {
-        return number;
     }
 }
