@@ -15,7 +15,7 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true) {
+        computerStart : while(true) {
             computerNumbers = new ArrayList<>();
             boolean isGameTermination = false;
 
@@ -35,7 +35,10 @@ public class Application {
                     int choice = application.executeRestartOrTerminate();
 
                     if (choice == 1) {
-                        isGameTermination = false;
+                        continue computerStart;
+                    } else if (choice == 2) {
+                        System.out.println("프로그램을 종료합니다.");
+                        break computerStart;
                     }
                 }
             } while(!isGameTermination);
@@ -134,12 +137,7 @@ public class Application {
             choice = Console.readLine();
         } while (!isGameControlInputValid(choice));
 
-        if (choice.equals("2")) {
-            System.out.println("프로그램을 종료합니다.");
-            System.exit(0);
-        }
-
-        return 1;
+        return Integer.parseInt(choice);
     }
 
     public void checkPlayerNumberValidity(String input) {
