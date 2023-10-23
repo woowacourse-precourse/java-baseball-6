@@ -6,7 +6,6 @@ import baseball.model.HumanModel;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +32,7 @@ public class GameController {
             findAllStrike();
         } while (gameModel.isRunning());
     }
+
     private void setHumans() {
         humanModel = new HumanModel(inputView.inputNumbers());
     }
@@ -56,12 +56,12 @@ public class GameController {
         checkNothing();
     }
 
-    private int[] checkStrike(List<Integer> human, List<Integer> computer){
+    private int[] checkStrike(List<Integer> human, List<Integer> computer) {
         int[] strikeIdx = new int[3];
         int strike = 0;
 
-        for(int i = 0; i < 3; i++) {
-            if(human.get(i).equals(computer.get(i))){
+        for (int i = 0; i < 3; i++) {
+            if (human.get(i).equals(computer.get(i))) {
                 strike += 1;
                 strikeIdx[i] = 1;
             }
@@ -72,11 +72,13 @@ public class GameController {
         return strikeIdx;
     }
 
-    private void checkBall(List<Integer> human, List<Integer> computer, int[] strikeIdx){
+    private void checkBall(List<Integer> human, List<Integer> computer, int[] strikeIdx) {
         int ball = 0;
-        for(int i = 0; i < 3; i++) {
-            if(strikeIdx[i] == 1) continue;
-            if(computer.contains(human.get(i))) {
+        for (int i = 0; i < 3; i++) {
+            if (strikeIdx[i] == 1) {
+                continue;
+            }
+            if (computer.contains(human.get(i))) {
                 ball += 1;
             }
         }
@@ -85,19 +87,19 @@ public class GameController {
     }
 
     private void checkNothing() {
-        if(humanModel.getBall() == 0 && humanModel.getStrike() == 0){
+        if (humanModel.getBall() == 0 && humanModel.getStrike() == 0) {
             humanModel.setNothing(1);
         }
     }
 
     private void findAllStrike() {
-        if(humanModel.getStrike() == 3) {
+        if (humanModel.getStrike() == 3) {
             outputView.displayGameExit();
             int input = inputView.inputNumber();
-            if(input == 1) {
+            if (input == 1) {
                 setComputers();
             }
-            if(input == 2) {
+            if (input == 2) {
                 gameModel.setRunning(false);
             }
         }

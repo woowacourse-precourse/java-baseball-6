@@ -1,7 +1,6 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -25,16 +24,16 @@ public class InputView {
 
     private void validate(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
-        if(set.contains(0)) {
+        if (set.contains(0)) {
             throw new IllegalArgumentException();
         }
-        if(set.size() != 3) {
+        if (set.size() != 3) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validate(int number) {
-        if(number != 1 && number != 2) {
+        if (number != 1 && number != 2) {
             throw new IllegalArgumentException();
         }
     }
