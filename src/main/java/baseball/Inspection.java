@@ -3,7 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 public class Inspection {
 
     //길이 확인
@@ -56,6 +59,12 @@ public class Inspection {
         String userInput = userInput();
         int[] userInputArr = userInput.chars().map(Character::getNumericValue).toArray();
         return userInputArr;
+    }
+
+    public List<Integer> userInputToList(){
+        String userInput = userInput();
+        List<Integer> userInputList =userInput.chars().mapToObj(Character::getNumericValue).collect(Collectors.toList());
+        return userInputList;
     }
 
 
