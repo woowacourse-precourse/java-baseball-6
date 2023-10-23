@@ -1,5 +1,10 @@
 package baseball.game;
 
+import baseball.role.Computer;
+import baseball.role.User;
+import baseball.utils.PrintUtils;
+import baseball.utils.InputValue;
+
 import java.util.List;
 import static baseball.constvalue.ConstValue.*;
 
@@ -8,20 +13,22 @@ public class Game {
     private User user = new User();
     private InputValue input = new InputValue();
     private Score score = new Score();
+    private final PrintUtils printUtil = new PrintUtils();
 
     public Game(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        computer.generateNewNumbers();
     }
 
     public void play(){
-        computer.generateNewNumbers();
+        printUtil.printStartGame();
+
         boolean againGame = true;
 
         while (againGame) {
             getUserAnswer();
             compareAnswer();
             if (score.isThreeStrike()){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                printUtil.printClear();
                 againGame = restart();
             }
             score.resetScore();
@@ -29,8 +36,9 @@ public class Game {
     }
 
     public void getUserAnswer(){
-        System.out.print("숫자를 입력해주세요 : ");
-        user.setNumbers(input.getUserNumbers());
+        printUtil.printQuestion();
+        input.getUserNumbersInput();
+        user.setNumbers(input.convertUserNumbers());
         System.out.println();
     }
 
@@ -46,12 +54,14 @@ public class Game {
             }
         }
 
-        score.printResult();
+        printUtil.printScore(score);
     }
 
     public boolean restart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        boolean userRestart = input.isGameRestart();
+        printUtil.printRestartQuestion();
+
+        input.getGameRestartInput();
+        boolean userRestart = input.convertGameRestart();
 
         if (userRestart){
             computer.generateNewNumbers();
@@ -59,6 +69,4 @@ public class Game {
 
         return userRestart;
     }
-
-
 }

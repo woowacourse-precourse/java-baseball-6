@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.role;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -32,6 +32,5 @@ public class Computer {
         }
 
         setNumbers(computer);
-        System.out.println(computer);
     }
 }

@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.role;
 
 import java.util.ArrayList;
 import java.util.List;

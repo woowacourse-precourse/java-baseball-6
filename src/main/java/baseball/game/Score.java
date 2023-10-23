@@ -10,6 +10,14 @@ public class Score {
         this.ball = 0;
     }
 
+    public int getStrike(){
+        return this.strike;
+    }
+
+    public int getBall(){
+        return this.ball;
+    }
+
     public void resetScore() {
         this.strike = 0;
         this.ball = 0;
@@ -21,24 +29,6 @@ public class Score {
 
     public void addBall(){
         this.ball += 1;
-    }
-
-    public void printResult(){
-        String answer = "";
-
-        if (this.ball>0){
-            answer += this.ball + "볼 ";
-        }
-
-        if (this.strike>0){
-            answer += this.strike + "스트라이크 ";
-        }
-
-        if (answer.isEmpty()){
-            answer = "낫싱";
-        }
-
-        System.out.println(answer);
     }
 
     public boolean isThreeStrike(){
