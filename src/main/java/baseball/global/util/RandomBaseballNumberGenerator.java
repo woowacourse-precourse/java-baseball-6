@@ -12,7 +12,7 @@ public class RandomBaseballNumberGenerator {
     private static final int MAX_VALUE = 9;
 
     // 게임 조건의 자릿수에 따른 난수 생성 기능
-    private static List<Integer> generateRandomBaseballNumbers(int size){
+    public static List<Integer> generateRandomBaseballNumbers(int size){
         Set<Integer> randomBaseballNumbers = new HashSet<>();
         do {
             int randomBaseballNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
