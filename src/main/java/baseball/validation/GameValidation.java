@@ -4,18 +4,18 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class GameValidation {
-    public static boolean verifyForGameValue(String input_value) {
+    public static boolean verifyForGameValue(String input_value,int target_length) {
         return verifyForValueIsEmpty(input_value) &&
-                        verifyForValueLength(input_value,3) &&
+                        verifyForValueLength(input_value,target_length) &&
                                 verifyForValueIsSpace(input_value) &&
                                         verifyForValueIsNumeric(input_value) &&
                                                 verifyForNumberRangeIsCorrect(input_value) &&
                                                         verifyForValueIsDuplicate(input_value);
     }
 
-    public static boolean verifyForRetryValue(String input_retry){
+    public static boolean verifyForRetryValue(String input_retry,int target_length){
         return verifyForValueIsEmpty(input_retry) &&
-                        verifyForValueLength(input_retry,1) &&
+                        verifyForValueLength(input_retry,target_length) &&
                                 verifyForValueIsNumeric(input_retry) &&
                                         verifyForRetryConditionIsCorrect(input_retry);
     }

@@ -20,7 +20,7 @@ public class GameController {
         while (game_coin.equals(GameCondition.CONTINUE)){
             OutputView.outputForGameValueInput();
             String user_input_value = userInput();
-            if (GameValidation.verifyForGameValue(user_input_value)){
+            if (GameValidation.verifyForGameValue(user_input_value,3)){
                 List<Integer> user = GenerateNumberList.generateInputValueToUser(user_input_value);
                 GameScore gameScore = CompareNumber.compareNumberList(user, computer);
                 game_coin = CheckGameResult.checkGameScore(gameScore, game_coin);
@@ -42,7 +42,7 @@ public class GameController {
 
     private static void afterGameSuccess(){
         String user_input_retry = userInput();
-        if (GameValidation.verifyForRetryValue(user_input_retry)){
+        if (GameValidation.verifyForRetryValue(user_input_retry,1)){
             userWantRetryGame(user_input_retry);
         }
     }
