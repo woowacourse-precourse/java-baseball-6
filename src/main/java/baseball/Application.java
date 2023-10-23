@@ -39,12 +39,12 @@ public class Application {
                 for (int i = 0; i < 3; i++) {
                     try {
                         int userNum = Integer.parseInt(String.valueOf(userRead.charAt(i)));
-                        if (!user.contains(userNum)) {
-                            user.add(userNum);
-                        } else {
-                            // 같은 수를 입력 했을 경우
+                        // 같은 수를 입력 했을 경우
+                        if (user.contains(userNum)) {
                             throw new IllegalArgumentException("잘못된 입력입니다. " + userRead);
                         }
+
+                        user.add(userNum);
                     } catch (NumberFormatException e) {
                         // 숫자를 입력하지 않았을 경우
                         throw new IllegalArgumentException("잘못된 입력입니다. " + userRead);
@@ -59,7 +59,7 @@ public class Application {
                     if (user.contains(computer.get(i))) {
                         if (user.indexOf(computer.get(i)) == i) {
                             strike++;
-                        } else {
+                        } else if(user.indexOf(computer.get(i)) != i) {
                             ball++;
                         }
                     }
@@ -77,7 +77,7 @@ public class Application {
                     System.out.println(strike + "스트라이크");
                 } else if (ball > 0 && strike == 0) {
                     System.out.println(ball + "볼");
-                } else {
+                } else if (ball == 0 && strike == 0) {
                     System.out.println("낫싱");
                 }
 
@@ -87,7 +87,8 @@ public class Application {
             int newGame = Integer.parseInt(Console.readLine());
             if (newGame == 1) {
                 continue;
-            } else {
+            }
+            if (newGame == 2){
                 break;
             }
 
