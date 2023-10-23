@@ -1,14 +1,13 @@
 package baseball;
 
+import static baseball.Constant.MY_NUMBER_INPUT_LENGTH;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static baseball.Constant.END_NUMBER;
-import static baseball.Constant.MY_NUMBER_INPUT_LENGTH;
 
 public class BaseballGame {
 
@@ -85,8 +84,11 @@ public class BaseballGame {
         for (int i = 0; i < MY_NUMBER_INPUT_LENGTH; i++) {
             for (int j = 0; j < MY_NUMBER_INPUT_LENGTH; j++) {
                 if (computerNumber.get(i) == myNumber.get(j)) {
-                    if (i == j) strike++;
-                    else ball++;
+                    if (i == j) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
                 }
             }
         }
