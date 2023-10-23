@@ -25,7 +25,7 @@
 ### Domain
 
 - ComputerNumber
-- UserNumber
+- PlayerNumber
 
 ### View
 
