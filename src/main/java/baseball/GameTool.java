@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameTool {
+
     /*
      * 랜덤 숫자 생성 메소드
      */
@@ -17,6 +18,7 @@ public class GameTool {
         }
         return computer;
     }
+
     /*
      * 스트라이크 개수를 반환
      */
@@ -29,6 +31,7 @@ public class GameTool {
         }
         return count;
     }
+
     /*
      * 볼 개수를 반환
      */
@@ -42,6 +45,7 @@ public class GameTool {
         }
         return count;
     }
+
     /*
      * 낫싱일 경우 true, 아닐 경우 false 반환
      */
@@ -53,5 +57,4 @@ public class GameTool {
         }
         return true;
     }
-
 }
