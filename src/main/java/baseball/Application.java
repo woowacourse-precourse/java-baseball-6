@@ -133,9 +133,6 @@ class ReturnAnswer{
         int[] arr = Array.stringToIntegerArray(ans);
         strike = Array.isStrike(BaseballGame.computer, arr);
         ball = ball - strike;
-        System.out.println(strike);
-        System.out.println(ball);
-        System.out.println(BaseballGame.computer);
     }
 
     static void printResult(){
