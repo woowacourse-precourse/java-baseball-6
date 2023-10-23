@@ -1,6 +1,7 @@
 package baseball.application;
 
 import baseball.domain.BaseBallNumberList;
+import java.util.stream.Stream;
 
 public class BaseBallGame {
 
@@ -13,19 +14,26 @@ public class BaseBallGame {
     }
 
     public BaseBallResult play(BaseBallNumberList playerInput) {
-        int strike = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computer.getList().get(i).equals(playerInput.getList().get(i))) {
-                strike++;
-            }
-        }
+        int strike = getStrike(playerInput);
+        int ball = getBall(strike,playerInput);
 
-        if (strike == 3) {
+        if (isExit(strike)) {
             gameManager.exit();
         }
+        return new BaseBallResult(strike, ball);
+    }
 
-        assert gameManager != null;
-        assert computer != null;
-        return new BaseBallResult(strike);
+    private boolean isExit(int strike) {
+        return strike == computer.size();
+    }
+
+    private int getBall(int strike, BaseBallNumberList playerInput) {
+        int count = computer.countSameNumber(playerInput);
+        return count-strike;
+    }
+
+    private int getStrike(BaseBallNumberList playerInput) {
+        Stream<Integer> stream = Stream.iterate(0, i -> i + 1).limit(computer.size());
+        return (int)stream.filter(index->computer.equalAt(index,playerInput)).count();
     }
 }

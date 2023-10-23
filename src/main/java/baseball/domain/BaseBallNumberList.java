@@ -1,11 +1,11 @@
 package baseball.domain;
 
-import java.util.Collections;
 import java.util.List;
 
 public class BaseBallNumberList {
 
     private final List<Integer> numbers;
+    private static final int BASE_BALL_NUMBERS_SIZE = 3;
 
     public BaseBallNumberList(List<Integer> numbers) {
         this.numbers = numbers;
@@ -13,27 +13,32 @@ public class BaseBallNumberList {
         validateSameItem();
     }
 
+    public int countSameNumber(BaseBallNumberList baseBallNumberList) {
+        return (int) baseBallNumberList.numbers.stream()
+                .filter(o -> numbers.stream().anyMatch(o::equals)).count();
+    }
+
+    public boolean equalAt(int index, BaseBallNumberList baseBallNumberList) {
+        return this.numbers.get(index).equals(baseBallNumberList.numbers.get(index));
+    }
+
+    public int size() {
+        return BASE_BALL_NUMBERS_SIZE;
+    }
+
     private void validateSameItem() {
-        if (haveSameItem() || hasThreeItems()) {
-            throw new IllegalArgumentException("중복된 값을 입력하지 말아 주세요");
-        }
+        if (haveSameItem()) throw new IllegalArgumentException("중복된 값을 입력하지 말아 주세요");
     }
 
     private void validateSize() {
-        if (hasThreeItems()) {
-            throw new IllegalArgumentException("숫자를 3개를 입력해주세요");
-        }
+        if (haveThreeItems()) throw new IllegalArgumentException("숫자를 3개를 입력해주세요");
     }
 
-    private boolean hasThreeItems() {
-        return this.numbers.size() != 3;
+    private boolean haveThreeItems() {
+        return this.numbers.size() != BASE_BALL_NUMBERS_SIZE;
     }
 
     private boolean haveSameItem() {
         return this.numbers.stream().distinct().count() != this.numbers.size();
-    }
-
-    public List<Integer> getList() {
-        return Collections.unmodifiableList(numbers);
     }
 }
