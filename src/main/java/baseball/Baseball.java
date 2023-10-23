@@ -9,7 +9,6 @@ import static java.lang.Integer.parseInt;
 public class Baseball {
     private int strike;
     private int ball;
-//    private boolean isFinish = false;
 
     /* 새로운 입력이 반복 될 때마다 strike와 ball을 초기화 하는 함수*/
     void clear() {
@@ -36,25 +35,45 @@ public class Baseball {
     /* strike, ball 결과 따라 결과를 출력하고 또 실행 할 건지 T/F를 리턴하는 함수 */
     boolean check() {
         if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            print3Strike();
             return true;
 
         }
         else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            printNothing();
         }
         else if (strike == 0) {
-            System.out.println(ball+"볼");
+            printBall();
         }
         else if (ball == 0) {
-            System.out.println(strike+"스트라이크");
+            printStrike();
         }
          else {
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            printBallAndStrike();
         }
         return false;
 
+    }
+
+    void print3Strike(){
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    void printNothing(){
+        System.out.println("낫싱");
+    }
+
+    void printBall() {
+        System.out.println(ball+"볼");
+    }
+
+    void printStrike() {
+        System.out.println(strike+"스트라이크");
+    }
+
+    void printBallAndStrike(){
+        System.out.println(ball+"볼 "+strike+"스트라이크");
     }
 
     void inputException(String num) {
@@ -125,41 +144,55 @@ public class Baseball {
         return false;
     }
 
+    int reGame(String com) {
+        // strike, ball 초기화
+        clear();
+        // 입력
+        System.out.print("숫자를 입력해주세요 : ");
+        String num = Console.readLine();
+        inputException(num);
+        if (checkRepeat(num)){
+            System.out.println("연속된 숫자가 입력되었습니다.");
+            return 3;
+        }
+        count(num, com);
+
+        // 3스트라이크인지 아닌지 확인
+        if (check()) {
+            // 이 조건이 1, 2를 입력했을 때 들어옴
+            int end = restartException();
+            if (end == 1) {
+                return 1;
+            } else if (end == 2) {
+                return 2;
+            }
+        }
+        return 3;
+        // 1, 2, 3으로 리턴
+        // 1: 다른 숫자로 게임 시작
+        // 2: 게임 끝
+        // 3: 숫자를 입력하세요
+    }
+
+
     int startGame(int end) {
-        // 한 게임당 초기화
         String com = makeRandomNum();
-        boolean isFinish = false;
 
         if (IS_TEST) {
             System.out.println("answer: " + com);
         }
         // 게임 시작
         // while (게임 진행되는 동안)
-        while (!isFinish) {
-            // strike, ball 초기화
-            clear();
-            // 입력
-            System.out.print("숫자를 입력해주세요 : ");
-            String num = Console.readLine();
-            inputException(num);
-            if (checkRepeat(num)){
-                System.out.println("연속된 숫자가 입력되었습니다.");
-                continue;
+        int how = -1;
+        while (true) {
+            how = reGame(com);
+            if (how == 1){
+                return 1;
             }
-
-            count(num, com);
-
-            // 종료할 지 말지
-            if (check()) {
-                end = restartException();
-                if (end == 1) {
-                    isFinish = true;
-                } else if (end == 2) {
-                    break;
-                }
+            else if (how == 2){
+                return 2;
             }
         }
-        return end;
     }
 
 }

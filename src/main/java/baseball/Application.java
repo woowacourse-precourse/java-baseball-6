@@ -8,7 +8,6 @@ public class Application {
         // TODO: 프로그램 구현
         int end = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean isFinish = false;
         Baseball b = new Baseball();
         // 게임 진행
         while (end == 1) {
