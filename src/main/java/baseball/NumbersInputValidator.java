@@ -12,6 +12,9 @@ import java.util.List;
  */
 public class NumbersInputValidator {
 
+    private NumbersInputValidator() {
+    }
+
     public static boolean validatePlayerNumbers(List<Integer> playerNumbers) {
         return validateNumberCount(playerNumbers) &&
                 validateDistinctNumbers(playerNumbers) &&

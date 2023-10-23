@@ -10,6 +10,9 @@ import static baseball.PlayerInput.QUIT_GAME;
 public class MenuInputValidator {
     private static final int MENU_LENGTH = 1;
 
+    private MenuInputValidator() {
+    }
+
     public static boolean validateMenuString(String playerInput) {
         return validateLength(playerInput) &&
                 validateStringOnlyHasDigits(playerInput) &&
