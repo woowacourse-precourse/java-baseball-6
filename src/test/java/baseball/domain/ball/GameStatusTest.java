@@ -2,6 +2,7 @@ package baseball.domain.ball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.domain.game.GameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public final class GameStatusTest {
         assertThat(status2).isEqualTo(GameStatus.EXIT);
     }
 
-    @DisplayName("String 1 또는 2 외의 값으로 GameStatus enum constant를 생성하면 예외 발생")
+    @DisplayName("String 1 또는 2 외의 값으로 GameStatus enum constant를 생성하면 UNKNOWN 반환")
     @Test
     void gameStatusFailure() {
         // given

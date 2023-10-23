@@ -1,6 +1,5 @@
 package baseball.domain.ball;
 
-import baseball.domain.dto.GuessResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +15,7 @@ public final class Answer extends BallNumbers {
         return new Answer(new ArrayList<>(numbers));
     }
 
-    public GuessResult guess(final Guess guess) {
+    public GuessResult compare(final Guess guess) {
         return new GuessResult(
                 getBallCount(guess),
                 getStrikeCount(guess)

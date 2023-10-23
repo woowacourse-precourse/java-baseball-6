@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.ball.GameStatus;
+import baseball.domain.game.GameStatus;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public final class InputView {
 
         final GameStatus status = GameStatus.of(readLine());
 
-        if (GameStatus.UNKNOWN == status) {
+        if (status == GameStatus.UNKNOWN) {
             System.out.println("잘못된 입력입니다. 반드시 1, 2 중 하나를 입력해야 합니다.");
             return inputNextGameStatus();
         }
