@@ -12,6 +12,10 @@ public class UserBalls {
         this.balls = balls;
     }
 
+    public String getUserBalls() {
+        return this.balls;
+    }
+
     private void validateBalls(String input) {
         if (!isOkBallSize(input) || isNan(input) || isLessThan1(input) || isDuplicate(input)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
