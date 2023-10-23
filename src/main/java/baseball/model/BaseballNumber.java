@@ -5,6 +5,10 @@ import static baseball.utils.BaseballConstantUtils.MIN_BASEBALL_NUMBER;
 
 import java.util.Objects;
 
+/**
+ * 숫자야구 게임을 위해 사용되는 비교대상
+ */
+
 public class BaseballNumber {
     private final int baseballNumber;
 
