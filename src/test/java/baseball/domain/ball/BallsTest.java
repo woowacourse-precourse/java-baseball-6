@@ -17,7 +17,7 @@ class BallsTest {
 
     @Test
     @DisplayName("Balls은 조건이 맞으면 정상 생성 되어야 한다.")
-    void Balls_생성_정상_생성() {
+    void Balls_정상_생성() {
         Ball one = new Ball(1, MIN_RANGE, MAX_RANGE);
         Ball two = new Ball(2, MIN_RANGE, MAX_RANGE);
         Ball tree = new Ball(3, MIN_RANGE, MAX_RANGE);

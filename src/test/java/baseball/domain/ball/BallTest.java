@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BallTest {
-
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
 
     @Test
     @DisplayName("Ball은 조건이 맞으면 정상 생성 되어야 한다.")
-    void Ball_생성_정상_생성() {
+    void Ball_정상_생성() {
         int value = 1;
         Ball ball = new Ball(value, MIN_RANGE, MAX_RANGE);
 
