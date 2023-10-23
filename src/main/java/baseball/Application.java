@@ -1,7 +1,15 @@
 package baseball;
 
 public class Application {
+    private GamePlayer player;
+    public Application(){
+        player = new GamePlayer();
+    }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Application app = new Application();
+        app.run();
+    }
+    public void run(){
+        player.playGameByRequest();
     }
 }
