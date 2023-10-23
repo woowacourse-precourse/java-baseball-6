@@ -23,7 +23,7 @@ public class Game {
             ScoreDto scoreDto = new ScoreDto(score.getStrike(), score.getBall());
             OutputView.printScore(scoreDto);
 
-            if(score.getStrike() == 3) {
+            if(score.isAllStrike()) {
                 break;
             }
         }

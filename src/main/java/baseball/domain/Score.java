@@ -25,6 +25,14 @@ public class Score {
         return score;
     }
 
+    public boolean isAllStrike() {
+
+        if(strike == 3) {
+            return true;
+        }
+
+        return false;
+    }
 
     private static int calculateStrike(List<Integer> answerNumbers, List<Integer> userNumbers) {
 
