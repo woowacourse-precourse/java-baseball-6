@@ -19,17 +19,20 @@ public class GameController {
     public void startGame() {
         gameView.showIntro();
         int start = 1;
-        while(start == 1) {
-            String playInput = gameView.getPlayerInput();
-            strike = 0;
-            ball = 0;
+        while(start != 2) {
+            computer.setNumber();
+            while(true) {
+                String playInput = gameView.getPlayerInput();
+                strike = 0;
+                ball = 0;
 
-            judge(computer.getNumber(), playInput);
-            gameView.showResult(strike, ball);
+                judge(computer.getNumber(), playInput);
+                gameView.showResult(strike, ball);
 
-            if(strike == 3) {
-                start = gameView.gameContinue();
-                computer.setNumber();
+                if(strike == 3) {
+                    start = gameView.gameContinue();
+                    break;
+                }
             }
         }
     }
@@ -37,8 +40,8 @@ public class GameController {
     private void judge(List<Integer> number, String playInput) {
         for (int i = 0; i < playInput.length(); i++) {
             int asdf = Character.getNumericValue(playInput.charAt(i));
-            if(isStrike(computer.getNumber(), asdf, i)) strike++;
-            else if(isBall(computer.getNumber(), asdf)) ball++;
+            if(isStrike(number, asdf, i)) strike++;
+            else if(isBall(number, asdf)) ball++;
         }
     }
 
