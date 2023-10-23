@@ -4,7 +4,8 @@ public enum ErrorMessage {
     INVALID_LENGTH("The input length cannot be different from length configured by the game."),
     DUPLICATED_NUMBER("The input cannot contain duplicated numbers."),
     CONTAIN_LETTER("The input cannot contain letters."),
-    EMPTY_NUMBER("The input cannot be empty.");
+    EMPTY_NUMBER("The input cannot be empty."),
+    SYSTEM_ERROR("The game system has crashed");
 
     private final String message;
 

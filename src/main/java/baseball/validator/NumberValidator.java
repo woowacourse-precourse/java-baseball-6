@@ -30,6 +30,7 @@ public class NumberValidator {
         }
     }
 
+    
     private static boolean isEmpty(String number) {
         return number.isEmpty();
     }

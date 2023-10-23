@@ -1,8 +1,10 @@
 package baseball.domain;
 
 import baseball.domain.constants.ResultType;
+import baseball.domain.exception.BaseballException;
 
 import static baseball.domain.constants.ResultType.*;
+import static baseball.domain.exception.ErrorMessage.SYSTEM_ERROR;
 import static baseball.global.GameConfig.NUMBER_LENGTH;
 import static java.lang.String.format;
 
@@ -29,7 +31,7 @@ public class Result {
         } else if (hasStrike()) {
             return ONLY_STRIKE;
         }
-        throw new IllegalArgumentException("result type error");
+        throw BaseballException.of(SYSTEM_ERROR);
     }
 
     private String generateResultMessage(ResultType resultType) {
