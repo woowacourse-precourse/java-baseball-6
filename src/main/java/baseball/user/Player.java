@@ -5,7 +5,9 @@ import static baseball.game.BaseballConstants.TOTAL_BASEBALL_NUMBERS;
 import baseball.game.GameMenu;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
 
@@ -28,6 +30,13 @@ public class Player {
 
         for (char c : inputBaseballNumber.toCharArray()) {
             if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        Set<Character> duplicateCheckSet = new HashSet<>();
+        for (char c : inputBaseballNumber.toCharArray()) {
+            if (!duplicateCheckSet.add(c)) {
                 throw new IllegalArgumentException();
             }
         }
