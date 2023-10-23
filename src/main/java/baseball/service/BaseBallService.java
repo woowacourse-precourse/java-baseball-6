@@ -6,6 +6,7 @@ import baseball.validation.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class BaseBallService {
     private static List<Integer> computerNum;
@@ -52,19 +53,13 @@ public class BaseBallService {
     }
 
     public void compareUserAndComputer() {
-        for (int i = 0; i < userNum.size(); i++) {
-            int userN = userNum.get(i);
-            for (int j = 0; j < computerNum.size(); j++) {
-                int comN = computerNum.get(j);
-                if (userN == comN) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
-                }
-            }
-        }
+        strike = (int) IntStream.range(0, 3)
+                .filter(i -> userNum.get(i).equals(computerNum.get(i)))
+                .count();
+        ball = (int) IntStream.range(0, 3)
+                .filter(i -> userNum.get(i).equals(computerNum.get((i + 1) % 3)) || userNum.get(i)
+                        .equals(computerNum.get((i + 2) % 3)))
+                .count();
     }
 
     public void checkValid(String strUserNum) {
