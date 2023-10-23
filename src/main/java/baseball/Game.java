@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.people.Pitcher;
+import baseball.people.preparation.Referee;
+
 public class Game {
-    private final Pitcher pitcher = new Pitcher();
+    private final Pitcher pitcher = Pitcher.enter();
     private final Referee referee = Referee.enter();
 
     private Game() {
