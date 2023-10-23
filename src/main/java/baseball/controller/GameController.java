@@ -15,7 +15,7 @@ import baseball.view.StartView;
 
 public class GameController {
 
-    private final ResumeNumber resumeNumber;
+    private ResumeNumber resumeNumber;
     private final InputView inputView;
     private final GameRule ballRule;
     private final GameRule strikeRule;
@@ -25,6 +25,7 @@ public class GameController {
         this.inputView = inputView;
         this.ballRule = ballRule;
         this.strikeRule = strikeRule;
+        this.resumeNumber = ResumeNumber.createDefault();
     }
 
     public void playBaseball() {
@@ -54,7 +55,7 @@ public class GameController {
         AskView.printAskResume();
 
         String resumeAnswer = inputView.readMoreAnswer();
-        resumeNumber.updateNumber(resumeAnswer);
+        resumeNumber = ResumeNumber.from(resumeAnswer);
     }
 
     private boolean isGameEnd(final int strike) {

@@ -10,16 +10,16 @@ public class ResumeNumber {
     private int resumeNumber;
 
     private ResumeNumber(final int number) {
+        validateAnswer(String.valueOf(number));
         this.resumeNumber = number;
+    }
+
+    public static ResumeNumber from(final String answer) {
+        return new ResumeNumber(Integer.parseInt(answer));
     }
 
     public static ResumeNumber createDefault() {
         return new ResumeNumber(PLAY_WANT.getValue());
-    }
-
-    public void updateNumber(final String answer) {
-        validateAnswer(answer);
-        this.resumeNumber = Integer.parseInt(answer);
     }
 
     private void validateAnswer(final String answer) {
