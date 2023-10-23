@@ -15,7 +15,7 @@ public class Validator {
     }
 
     private static boolean isNotValidDigits(List<Integer> userNumbers) {
-        return userNumbers.size() != Config.getMaxNumbers();
+        return Config.isNotMaxNumbers(userNumbers.size());
     }
 
     private static boolean isNotNumber(List<Integer> userNumbers) {

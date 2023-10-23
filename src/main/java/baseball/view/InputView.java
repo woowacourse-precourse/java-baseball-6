@@ -39,8 +39,10 @@ public class InputView {
 
     /* 값 확인용 */
     public static void printCheat(BaseballNumbers computerNumbers) {
-        for (int i = 0; i < Config.getMaxNumbers(); i++) {
-            System.out.print(computerNumbers.get(i));
+        int index = 0;
+        while (Config.isNotMaxNumbers(index)) {
+            System.out.print(computerNumbers.get(index));
+            index++;
         }
         System.out.println();
     }

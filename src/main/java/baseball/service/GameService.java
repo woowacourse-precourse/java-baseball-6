@@ -13,7 +13,7 @@ public class GameService {
 
     public BaseballNumbers generateNumbers() {
         numbers.clear();
-        while (numbers.size() < Config.getMaxNumbers()) {
+        while (Config.isNotMaxNumbers(numbers.size())) {
             int randomNumber = Randoms.pickNumberInRange(Config.getStartInclusive(), Config.getEndInclusive());
             if (isNotDuplicated(randomNumber)) {
                 numbers.add(randomNumber);
@@ -29,13 +29,16 @@ public class GameService {
     public Result compare(BaseballNumbers computerNumbers, BaseballNumbers userNumbers) {
         int ball = 0;
         int strike = 0;
-        for (int index = 0; index < Config.getMaxNumbers(); index++) {
+        int index = 0;
+
+        while (Config.isNotMaxNumbers(index)) {
             if (isStrike(computerNumbers, userNumbers, index)) {
                 strike++;
             }
             if (isBall(computerNumbers, userNumbers, index)) {
                 ball++;
             }
+            index++;
         }
         return new Result(ball, strike);
     }

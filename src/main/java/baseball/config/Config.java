@@ -14,6 +14,10 @@ public class Config {
         }
     }
 
+    public static boolean isNotMaxNumbers(int number) {
+        return number != MAX_NUMBERS;
+    }
+
     public static int getMaxNumbers() {
         return MAX_NUMBERS;
     }

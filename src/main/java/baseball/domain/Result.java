@@ -36,7 +36,7 @@ public class Result {
     }
 
     public boolean isAllStrikes() {
-        return getStrike() == Config.getMaxNumbers();
+        return !Config.isNotMaxNumbers(getStrike());
     }
 
     public int getBall() {
