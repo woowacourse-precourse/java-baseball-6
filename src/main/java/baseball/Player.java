@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
     private final List<Integer> numberList = new ArrayList<>();
@@ -27,6 +29,14 @@ public class Player {
         // 3자릿수 확인
         if (input.length() != 3) {
             throw new IllegalArgumentException();
+        }
+
+        // 중복된 숫자 확인
+        Set<Character> set = new HashSet<>();
+        for (char ch : input.toCharArray()) {
+            if (!set.add(ch)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
