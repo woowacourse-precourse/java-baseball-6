@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +40,7 @@ public class Game {
     }
 
     private void printResult(int strike, int ball) {
-        if (ball == 0 && strike == 0){
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
             return;
         }
@@ -51,10 +52,18 @@ public class Game {
     //사용자로부터 서로 다른 3개의 숫자를 입력받음
     private void getPlayer() {
         String input = Console.readLine();
+        isValid(input);
         player = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            player.add(input.charAt(i)-'0');
+            player.add(input.charAt(i) - '0');
         }
+    }
+
+    private void isValid(String input) {
+        if (!input.matches("[0-9]+"))       // 숫자가 아니면
+            throw new IllegalStateException();
+        if (input.length() != 3)                // 숫자 3개가 아니면
+            throw new IllegalArgumentException();
     }
 
     // 임의의 수 3개를 생성
