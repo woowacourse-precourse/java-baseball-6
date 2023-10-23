@@ -8,6 +8,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 숫자 야구 게임의 흐름을 제어하기 위한 클래스. 잘못된 입력값을 받을 경우 IllegalArgumentException을 던질 수 있습니다.
+ */
 public class Application {
     private static final int ANSWER_SIZE = 3;
     private static final int UPPER_BOUND = 9;
