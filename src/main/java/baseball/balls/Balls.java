@@ -10,21 +10,29 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
+        validateSize();
+        validateDistinctValue();
+        validateDistinctIndex();
+        this.balls = balls;
+    }
 
+    private void validateSize() {
         ListValidators.validateSize(balls, BALL_COUNT);
+    }
 
+    private void validateDistinctValue() {
         ListValidators.validateDistinct(
                 balls.stream()
                         .map(Ball::getValue)
                         .toList()
         );
+    }
 
+    private void validateDistinctIndex() {
         ListValidators.validateDistinct(
                 balls.stream()
                         .map(Ball::getIndex)
                         .toList());
-
-        this.balls = balls;
     }
 
     public boolean hasSameValueBall(Ball anotherBall) {
