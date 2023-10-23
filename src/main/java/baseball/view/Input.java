@@ -15,7 +15,7 @@ public class Input {
 		return Console.readLine();
 	}
 
-	public static int getMenu() {
-		return Integer.parseInt(Console.readLine());
+	public static String getMenu() {
+		return Console.readLine();
 	}
 }

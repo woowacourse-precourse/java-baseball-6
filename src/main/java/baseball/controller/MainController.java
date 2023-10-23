@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.validator.NumberValidator;
 import baseball.view.Input;
 import baseball.view.Output;
 
@@ -10,6 +11,7 @@ public class MainController {
 
 	private static BaseballController baseballController = new BaseballController();
 	private static MainController mainController = new MainController();
+	private static NumberValidator numberValidator = new NumberValidator();
 
 	private MainController(){}
 
@@ -22,7 +24,11 @@ public class MainController {
 		do{
 			baseballController.playGame();
 			Output.printRestartMessage();
-			menu = Input.getMenu();
+
+			String input = Input.getMenu();
+			numberValidator.validateMenu(input);
+			menu = Integer.parseInt(input);
+
 		}while(menu!=END_MENU);
 	}
 }
