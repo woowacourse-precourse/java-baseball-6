@@ -1,13 +1,21 @@
 package baseball.model;
 
+import baseball.dto.GameResultDto;
+
 public class InputNumberValidator {
 
-    public String validateAllInput(String input) {
+    private final GameResultDto gameDto;
+
+    public InputNumberValidator(GameResultDto gameDto) {
+        this.gameDto = gameDto;
+    }
+
+    public void validateAllInput(String input) {
         hasThreeDigits(input);
         isNumber(input);
         isNumber(input);
         areDigitsUnique(input);
-        return input;
+        gameDto.setValidateInput(input);
     }
 
     public String validateRestartInput(String input) {
@@ -19,31 +27,27 @@ public class InputNumberValidator {
         throw new IllegalArgumentException(message);
     }
 
-    public boolean hasThreeDigits(String input) {
+    private void hasThreeDigits(String input) {
         if (input.length() != 3) {
             throwIAExceptionWithMessage("입력값은 3자리여야 합니다.");
         }
-        return true;
     }
 
-    public boolean isNumber(String input) {
+    private void isNumber(String input) {
         if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
             throwIAExceptionWithMessage("숫자만 입력해야 합니다.");
         }
-        return true;
     }
 
-    public boolean areDigitsUnique(String input) {
+    private void areDigitsUnique(String input) {
         if (input.length() != input.chars().distinct().count()) {
             throwIAExceptionWithMessage("서로 다른 수들만 입력해야 합니다.");
         }
-        return true;
     }
 
-    public String isOneOrTwo(String input) {
+    private void isOneOrTwo(String input) {
         if (!input.equals("1") && !input.equals("2")) {
             throwIAExceptionWithMessage("1 또는 2만 입력해야 합니다.");
         }
-        return input;
     }
 }

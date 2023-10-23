@@ -1,26 +1,15 @@
 package baseball.model;
 
+import baseball.dto.GameResultDto;
+
 public class StrikeBallCounter {
+    private final GameResultDto gameDto;
 
-    public static class StrikeBall {
-        private int strike = 0;
-        private int ball = 0;
-
-        private StrikeBall(int strike, int ball) {
-            this.strike = strike;
-            this.ball = ball;
-        }
-
-        public int getStrike() {
-            return strike;
-        }
-
-        public int getBall() {
-            return ball;
-        }
+    public StrikeBallCounter(GameResultDto gameDto) {
+        this.gameDto = gameDto;
     }
 
-    public StrikeBall createStrikeBall(String playerInput, String computerNumber) {
+    public void createStrikeBall(String playerInput, String computerNumber) {
         int localStrike = 0;
         int localBall = 0;
 
@@ -28,7 +17,8 @@ public class StrikeBallCounter {
             localStrike += strikeCount(playerInput, computerNumber, i);
             localBall += ballCount(playerInput, computerNumber, i);
         }
-        return new StrikeBall(localStrike, localBall);
+        gameDto.setStrike(localStrike);
+        gameDto.setBall(localBall);
     }
 
     private int strikeCount(String playerInput, String computerNumber, int i) {
