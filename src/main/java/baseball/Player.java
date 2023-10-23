@@ -66,6 +66,12 @@ public class Player {
         else if (strike > 0 && ball > 0) System.out.println(ball + "볼" + " " + strike + "스트라이크");
     }
 
+    public static boolean selectRestartOrExit() {
+        String input = Console.readLine();
+        isOneOrTwo(input);
+        return input.equals("1");
+    }
+
     public static void isOneOrTwo(String input) {
         if (!input.equals("1") && !input.equals("2"))
             throw new IllegalArgumentException("1 또는 2만 입력해야합니다.");
