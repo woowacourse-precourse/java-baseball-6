@@ -25,7 +25,7 @@ public class BaseBallGameManager implements GameManager {
 
     @Override
     public void execute() {
-        ui.print(GameOutputTemplate.FIRST_START.toString());
+        ui.rendering(GameOutputTemplate.FIRST_START.toString());
         executePerform();
     }
 
@@ -38,12 +38,12 @@ public class BaseBallGameManager implements GameManager {
                         this));
 
         while (!isExit()) {
-            ui.print(GameOutputTemplate.INPUT.toString());
-            ui.print(game.play(ui.intercept()) + "\n");
+            ui.rendering(GameOutputTemplate.INPUT.toString());
+            ui.rendering(game.play(ui.intercept()) + "\n");
         }
 
-        ui.print(GameOutputTemplate.EXIT.toString());
-        ui.print(GameOutputTemplate.REPLAY.toString());
+        ui.rendering(GameOutputTemplate.EXIT.toString());
+        ui.rendering(GameOutputTemplate.REPLAY.toString());
 
         Command command = new Command(ui.intercept());
         if (command.replay()) {

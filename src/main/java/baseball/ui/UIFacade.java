@@ -10,7 +10,7 @@ public class UIFacade {
         this.outputUI = outputUI;
     }
 
-    public void print(String output) {
+    public void rendering(String output) {
         outputUI.rendering(output);
     }
 
