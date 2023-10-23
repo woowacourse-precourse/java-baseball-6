@@ -1,6 +1,6 @@
-package controller;
+package baseball.controller;
 
-import process.BaseballProcess;
+import baseball.process.BaseballProcess;
 
 public class BaseballGame {
 

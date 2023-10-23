@@ -1,7 +1,7 @@
-package process;
+package baseball.process;
 
 import camp.nextstep.edu.missionutils.Console;
-import validation.ValidationNumber;
+import baseball.validation.ValidationNumber;
 
 import java.util.ArrayList;
 import java.util.List;

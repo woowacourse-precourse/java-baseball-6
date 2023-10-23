@@ -1,8 +1,8 @@
-package process;
+package baseball.process;
 
+import baseball.validation.ValidationNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import validation.ValidationNumber;
 
 import java.util.List;
 

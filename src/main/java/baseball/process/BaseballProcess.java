@@ -1,4 +1,4 @@
-package process;
+package baseball.process;
 
 import java.util.List;
 
