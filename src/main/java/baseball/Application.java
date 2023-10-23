@@ -1,19 +1,17 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import baseball.User;
 
 public class Application {
 
     public final static Integer numberCount = 3;
     private static Boolean isApplicationEnd = false;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             // 컴퓨터가 숫자 3개를 고른다.
@@ -22,19 +20,14 @@ public class Application {
             while (true) {
                 // 유저로부터 숫자 3개를 입력받는다.
                 // 유저의 입력이 올바르지 않을 경우 애플리케이션 종료
-                if(!User.inputAnswerStr()){
+                if (!User.inputAnswerStr()) {
                     isApplicationEnd = true;
                     throw new IllegalArgumentException();
                 }
 
-                Integer strikeCount = countStrike(computer, User.getNumberList());
-                Integer ballCount = countBall(computer, User.getNumberList());
-
                 // 이번 라운드 게임 결과 출력
-                printRoundResult(strikeCount, ballCount);
-
                 // 숫자를 3개 모두 맞혔을 경우 게임 종료
-                if (strikeCount.equals(3)) {
+                if (printRoundResult(computer, User.getNumberList())) {
                     printGameOverMessage();
                     if (restartOrFinish().equals("2")) {
                         isApplicationEnd = true;
@@ -48,22 +41,28 @@ public class Application {
     }
 
     /**
-     * 스트라이크 갯수와 볼 갯수를 출력한다.
+     * 스트라이크 갯수와 볼 갯수를 출력하고 정답을 맞췄으면 true를 return
      *
-     * @param strikeCount 스트라이크 갯수
-     * @param ballCount 볼 갯수
+     * @param computer 컴퓨터가 고른 숫자 리스트
+     * @param user     사용자가 고른 숫자 리스트
+     * @return 정답을 맞췄을 경우 true 아니면 false
      */
-    private static void printRoundResult(Integer strikeCount, Integer ballCount){
-        if (ballCount > 0){
+    private static boolean printRoundResult(List<Integer> computer, List<Integer> user) {
+        Integer strikeCount = countStrike(computer, user);
+        Integer ballCount = countBall(computer, user);
+
+        if (ballCount > 0) {
             System.out.print(ballCount.toString() + "볼 ");
         }
-        if(strikeCount > 0){
+        if (strikeCount > 0) {
             System.out.print(strikeCount.toString() + "스트라이크");
         }
-        if(ballCount == 0 && strikeCount == 0){
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.print("낫싱");
         }
         System.out.println();
+
+        return (strikeCount.equals(numberCount));
     }
 
     /**
@@ -82,11 +81,11 @@ public class Application {
      */
     private static String restartOrFinish() {
         String result;
-        while(true){
+        while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             result = Console.readLine();
 
-            if(result.equals("1") || result.equals("2")) break;
+            if (result.equals("1") || result.equals("2")) break;
             System.out.print("잘못 입력하셨습니다. 다시 입력해주세요. ");
         }
         return result;
