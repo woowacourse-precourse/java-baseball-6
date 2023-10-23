@@ -74,22 +74,25 @@ Application
 BaseBallGame
 
 - start
-
-User
-
-- getInput
+- loadFormat
+- round
+- close
 
 Ball
 
 - createRandomBall
 - isCorrectBall
 - getHint
+- getCurrentHint
 
 View
 
+- getInput
 - print
-- printString
-- abstract initStringFormat
+
+Format (String)
+
+- makeString
 
 ### Utils 정리
 
