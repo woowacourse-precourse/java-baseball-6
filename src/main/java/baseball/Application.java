@@ -19,6 +19,14 @@ public class Application {
 
         System.out.println(getAnswer(randomNumbers, inputNumbers));
 
+        int strikeCount = 0;
+        for (int index=0; index<3; index++){
+            if (randomNumbers.get(index).equals(inputNumbers.get(index))) {
+                strikeCount++;
+            }
+        }
+
+        System.out.println(strikeCount);
 
 
 
