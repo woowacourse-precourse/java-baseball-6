@@ -3,7 +3,7 @@ package utils;
 public class BaseballRules {
 
     private final static int ZERO = 0;
-    public static final int THREE = 3;
+    private static final int THREE = 3;
 
     private BaseballRules() {
     }

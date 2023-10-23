@@ -11,7 +11,6 @@ public class Referee {
 
     private static final int START = 1;
     private static final int END = 2;
-
     private final BaseballPlayer computer;
     private final BaseballPlayer user;
     private final BaseballScore score;
