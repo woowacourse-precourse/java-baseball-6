@@ -20,6 +20,7 @@ public class BallCount {
         return ball != 0;
     }
 
+
     public int showStrike() {
         return strike;
     }

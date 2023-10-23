@@ -10,15 +10,14 @@ import baseball.enums.MessageEnum;
 public class GameResultService {
 
 
-    private BallCount ballCount;
 
    public GameResultDto calculateGameResult(BallCountDto ballCountDto) {
-       ballCount = new BallCount(ballCountDto.showStrike(), ballCountDto.showBall());
-       String message = createBallCountMessage();
-       return new GameResultDto(ballCountDto.showStrike() == 3, message);
+       BallCount ballCount = new BallCount(ballCountDto.showStrike(), ballCountDto.showBall());
+       String message = createBallCountMessage(ballCount);
+       return new GameResultDto(ballCount.showStrike() == 3, message);
    }
 
-    private String createBallCountMessage() {
+    private String createBallCountMessage(BallCount ballCount) {
         StringBuilder message = new StringBuilder();
         if (ballCount.hasNothing()) {
             message.append(NOTHING.show());
