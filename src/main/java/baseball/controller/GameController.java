@@ -12,10 +12,13 @@ public class GameController {
 
     public static void startGame() {
         OutputView.printStartMessage();
+        GameRestartOption gameRestartOption;
 
-        startGameSet();
-        OutputView.printGameRestartMessage();
-        GameRestartOption gameRestartOption = GameRestartOption.from(InputView.readUserInput());
+        do {
+            startGameSet();
+            OutputView.printGameRestartMessage();
+            gameRestartOption = GameRestartOption.from(InputView.readUserInput());
+        } while (gameRestartOption.isRestart());
     }
 
     private static void startGameSet() {

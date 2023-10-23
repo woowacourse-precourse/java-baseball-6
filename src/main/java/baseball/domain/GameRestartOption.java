@@ -23,6 +23,10 @@ public enum GameRestartOption {
                 .orElseThrow(() -> new IllegalArgumentException(OPTION_EXCEPTION_MESSAGE));
     }
 
+    public boolean isRestart() {
+        return this == RESTART;
+    }
+
     @Override
     public String toString() {
         return option;
