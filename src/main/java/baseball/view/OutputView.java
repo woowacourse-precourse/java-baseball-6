@@ -1,10 +1,12 @@
 package baseball.view;
 
+import baseball.domain.GameRestartOption;
 import baseball.domain.RoundResult;
 import java.util.StringJoiner;
 
 public class OutputView {
     private static final String DELIMITER = " ";
+    private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
 
     private OutputView() {}
 
@@ -43,5 +45,9 @@ public class OutputView {
 
     public static void printSetEndMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static void printGameRestartMessage() {
+        System.out.printf(GAME_RESTART_MESSAGE, GameRestartOption.RESTART, GameRestartOption.END);
     }
 }
