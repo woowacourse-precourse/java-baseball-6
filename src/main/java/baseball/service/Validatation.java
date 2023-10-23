@@ -1,6 +1,6 @@
 package baseball.service;
 
-public class Validate {
+public class Validatation {
     private static final int NUMBER_SIZE = 3;
     private static final int SIGNAL_SIZE = 1;
 
