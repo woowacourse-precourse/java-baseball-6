@@ -42,11 +42,11 @@ public class Application {
           if(input.length() != 3) {
                 throw new IllegalArgumentException("숫자 3개를 입력하세요.");
             }
-            isStrikeOrBall(computer, input);
+            gameResult(computer, input);
 
     }
 
-    public static void isStrikeOrBall(List<Integer> computer, String input) {
+    public static void gameResult(List<Integer> computer, String input) {
         int cntStrike = 0;
         int cntBall = 0;
         for(int i=0; i<computer.size(); i++) {
@@ -57,7 +57,7 @@ public class Application {
                 cntBall += 1;
             }
         }
-        gameResult(cntStrike, cntBall);
+        count(cntStrike, cntBall);
 
         if (cntStrike == 3 && cntBall == 0) {
             restartOrNot(computer);
@@ -66,12 +66,13 @@ public class Application {
         }
     }
 
+
     public static int stringToInt(String str, int i) {
         int num = Character.getNumericValue(str.charAt(i));
         return num;
     }
 
-    public static void gameResult(int cntStrike, int cntBall) {
+    public static void count(int cntStrike, int cntBall) {
         if (cntStrike == 0 && cntBall == 0) System.out.println("낫싱");
         else if (cntStrike == 0 && cntBall > 0 ) System.out.println(cntBall + "볼");
         else if (cntStrike > 0 && cntBall > 0) System.out.println(cntBall + "볼 "+ cntStrike + "스트라이크");
