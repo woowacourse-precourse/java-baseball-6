@@ -26,10 +26,18 @@ public class Balls {
     }
 
     public void convertToBalls(String nums) {
-        String[] numArr = nums.split("");
+        String[] numbers = nums.split("");
 
-        for (String num : numArr) {
+        checkNumberLength(numbers);
+
+        for (String num : numbers) {
             addBall(Integer.parseInt(num));
+        }
+    }
+
+    private void checkNumberLength(String[] numbers) {
+        if (numbers.length != 3) {
+            throw new IllegalArgumentException("숫자의 개수는 3개이어야 합니다.");
         }
     }
 
