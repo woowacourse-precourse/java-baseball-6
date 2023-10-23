@@ -18,6 +18,11 @@ public class Score {
     public String getHint() {
         String hint = ball + "볼 " + strike + "스트라이크";
 
+        hint = checkCondition(hint);
+        return hint;
+    }
+
+    private String checkCondition(String hint) {
         if (strike == STRIKE_WHEN_USER_WIN) {
             hint = Message.USER_WIN.text();
         } else if (ball == 0 && strike == 0) {

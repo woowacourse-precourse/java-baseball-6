@@ -17,12 +17,16 @@ public class Computer {
     private List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < COMPUTER_NUMBERS_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
-            }
+            addRandomNumber(computerNumbers);
         }
         return computerNumbers;
+    }
+
+    private void addRandomNumber(List<Integer> computerNumbers) {
+        int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
+        if (!computerNumbers.contains(randomNumber)) {
+            computerNumbers.add(randomNumber);
+        }
     }
 
     public Score calculateScore(Numbers user) {

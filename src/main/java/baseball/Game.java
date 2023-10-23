@@ -16,13 +16,20 @@ public class Game {
         do {
             Computer computer = new Computer();
             Score score = new Score();
-            while (score.isUserLose()) {
-                GameInput gameInput = new GameInput(ioService.readInput(INSERT_GAME_INPUT));
-                Numbers userNumbers = new Numbers(gameInput.convertInputToUserNumbers());
-                score = computer.calculateScore(userNumbers);
-                ioService.println(score.getHint());
-            }
-        } while (new EndInput(ioService.readInput(INSERT_END_INPUT)).isPressResume());
+            playGameUntilUserWin(computer, score);
+        } while (getEndInput().isPressResume());
     }
 
+    private void playGameUntilUserWin(Computer computer, Score score) {
+        while (score.isUserLose()) {
+            GameInput gameInput = new GameInput(ioService.readInput(INSERT_GAME_INPUT));
+            Numbers userNumbers = new Numbers(gameInput.convertInputToUserNumbers());
+            score = computer.calculateScore(userNumbers);
+            ioService.println(score.getHint());
+        }
+    }
+
+    private EndInput getEndInput() {
+        return new EndInput(ioService.readInput(INSERT_END_INPUT));
+    }
 }
