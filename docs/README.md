@@ -25,6 +25,9 @@
     - [x] 3자리의 수를 저장하는 Numbers 클래스 구현
     - [x] Numbers 멤버 변수를 가지는 Computer 클래스 구현
     - [x] Computer 클래스의 멤버 변수를 수정하는 함수 구현
+- [ ] ComputerController에서 생성한 숫자를 저장하는 함수 (saveRandomNumbers) 를 구현
+    - [ ] generateRandomNumbers를 호출해서 3자리의 수를 생성
+    - [ ] saveNumbers를 호출해서 Computer 객체의 값을 수정
 
 ### 게임 플레이어의 숫자 입력 기능
 
