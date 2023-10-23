@@ -19,4 +19,8 @@ public class Result {
     public int getStrike(){
         return strike;
     }
+
+    public boolean isNothing() {
+        return ball == 0 && strike == 0;
+    }
 }
