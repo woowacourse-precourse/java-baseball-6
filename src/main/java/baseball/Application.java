@@ -25,10 +25,11 @@ public class Application {
 
     // 실행
     public void run(){
-        // while 자리
-            // 0 진행 1 init 2 종료
+        // 0 진행 1 init 2 종료
         int gameStatus = 1;
+
         System.out.println(start);
+
         while(gameStatus!=2){
             if(gameStatus==1){
                 init();
