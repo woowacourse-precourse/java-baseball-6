@@ -23,4 +23,16 @@ public class ExceptionHandling {
             }
         }
     }
+
+    private static void isDifferent(final String strNumber) {
+        String strTemp = "";
+        for (int i = 0; i < numberOfNumbers; i++) {
+            char chNumber = strNumber.charAt(i);
+            if (!strTemp.contains(String.valueOf(chNumber))) {
+                strTemp += String.valueOf(chNumber);
+            } else {
+                throw new IllegalArgumentException("입력한 수가 중복됩니다. 게임을 종료합니다.");
+            }
+        }
+    }
 }
