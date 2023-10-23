@@ -24,13 +24,18 @@ public class Validator {
     private void initializeRandomNumber() {
         computer.setComputerNumber();
     }
+
     private void checkStrike() {
         strikeCount = 0;
 
         for(int i = 0; i < INPUT_LENGTH; i++) {
-            if (user.userInput[i] == computer.computerNumber[i]) {
-                strikeCount++;
-            }
+            countStrike(i);
+        }
+    }
+
+    private void countStrike(int i) {
+        if(user.userInput[i] == computer.computerNumber[i]) {
+            strikeCount++;
         }
     }
     private void checkBall(){
