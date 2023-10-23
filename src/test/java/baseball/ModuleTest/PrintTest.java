@@ -1,4 +1,4 @@
-package baseball.moduleTest;
+package baseball.ModuleTest;
 
 import baseball.Output;
 import org.junit.jupiter.api.Test;

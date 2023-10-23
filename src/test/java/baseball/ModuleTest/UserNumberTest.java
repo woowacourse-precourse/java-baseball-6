@@ -1,4 +1,4 @@
-package baseball.moduleTest;
+package baseball.ModuleTest;
 
 import baseball.UserNumber;
 import java.util.ArrayList;
