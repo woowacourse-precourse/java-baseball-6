@@ -105,7 +105,7 @@ public class Application
 
 	public static boolean inputNumberOnly(String userInput) 
 	{
-		if (!userInput.matches("\\d{3}"))
+		if (!userInput.matches("\\d+"))
     	{
             throw new IllegalArgumentException();
         }
