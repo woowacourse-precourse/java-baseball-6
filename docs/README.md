@@ -46,7 +46,7 @@
 
 - [x] 숫자 입력시 3자리 수가 아닐 시 IllegalArgumentException
 - [x] 3개의 숫자중 같은 숫자 존재 시 IllegalArgumentException
-- [ ] 숫자는 1~9사이의 숫자가 아닐 시 IllegalArgumentException
+- [x] 숫자는 1~9사이의 숫자가 아닐 시 IllegalArgumentException
 - [x] 불변 리스트를 반환한다
 
 ### UI
