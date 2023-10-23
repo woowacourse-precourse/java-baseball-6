@@ -2,10 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Computer {
 
@@ -15,7 +12,13 @@ public class Computer {
     public Computer() {
     }
 
-    public int[] pickNumbers() {
+    private void clearNumbers() {
+        numberSet.clear();
+        Arrays.setAll(secretNumbers, i -> 0);
+    }
+
+    public void pickNumbers() {
+        clearNumbers();
         while (numberSet.size() < 3) {
             int newNumber = Randoms.pickNumberInRange(1, 9);
             if (numberSet.contains(newNumber))
@@ -23,7 +26,6 @@ public class Computer {
             secretNumbers[numberSet.size()] = newNumber;
             numberSet.add(newNumber);
         }
-        return secretNumbers;
     }
 
     public Map<String, Integer> countStrikesAndBalls(int[] guessNumbers) {

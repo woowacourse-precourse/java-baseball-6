@@ -3,8 +3,8 @@ package baseball;
 import java.util.Map;
 
 public class BaseBallGame {
-    private Input input;
-    private Output output;
+    private final Input input;
+    private final Output output;
     private Computer computer;
 
     public BaseBallGame() {
