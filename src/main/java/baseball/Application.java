@@ -204,7 +204,7 @@ class GameManager {
             if (!validateUserInput(user.readInput())) {
                 throw new IllegalArgumentException();
             }
-            userGuessJudgement = computer.judgeUserGuess(getUserInputVal());
+            userGuessJudgement = computer.judgeUserGuess(this.getUserInputVal());
             computer.printUserGuessJudgementResult(userGuessJudgement);
             if (checksGuessStageEndingCondition()) {
                 user.win();
@@ -212,9 +212,9 @@ class GameManager {
                 if (!validateUserInput(Integer.parseInt(user.readInput()))) {
                     throw new IllegalArgumentException();
                 }
-                switch (getUserInputVal()) {
+                switch (this.getUserInputVal()) {
                     case "1":
-                        setUpBeforeRestartGame();
+                        this.setUpBeforeRestartGame();
                         continue;
                     case "2":
                         continue;
