@@ -5,7 +5,7 @@ import java.util.List;
 public class Game {
     private static final int STRIKE_COUNT_PER_OUT = 3;
     private BaseballNumbers computerBaseballNumbers;
-    public boolean isGameOver = false;
+    private boolean isGameOver = false;
 
     public Game() {
     }
@@ -43,4 +43,7 @@ public class Game {
         return computerBasballNumberList.contains(userNumber) && computerBasballNumberList.indexOf(userNumber) == userNumberIdx;
     }
 
+    public boolean isGameOver() {
+        return isGameOver;
+    }
 }

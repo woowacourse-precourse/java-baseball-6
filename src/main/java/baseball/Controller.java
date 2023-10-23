@@ -49,15 +49,12 @@ public class Controller {
 
     private void startGame() {
         game.init();
-        while (!game.isGameOver) {
+        while (!game.isGameOver()) {
             playRound();
         }
     }
 
-
-    /**
-     *
-     */
+    
     private void playRound() {
         BaseballNumbers userBaseballNumbers = getUserBaseballNumbers();
         JudgeResult judgeResult = game.judge(userBaseballNumbers);
