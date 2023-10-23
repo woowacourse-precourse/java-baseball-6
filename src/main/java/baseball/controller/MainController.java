@@ -41,7 +41,7 @@ public class MainController {
                 checkReplay();
                 return;
             }
-            processComperater();
+            processCompare();
         }
     }
 
@@ -63,7 +63,7 @@ public class MainController {
         }
     }
 
-    private void processComperater() {
+    private void processCompare() {
         boolean nothing = gameComparator.isNothing(gameData.getComputerNumber(), gameData.getPlayerInput());
         int ballCount = NO_COUNT;
         int strikeCount = NO_COUNT;
