@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import static baseball.view.Message.inputMessage;
 import static baseball.view.Message.replayMessage;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -7,6 +8,7 @@ import java.util.HashSet;
 
 public class User {
     public String getUserNumber() {
+        inputMessage();
         String userNumber = readLine();
         checkUserNumber(userNumber);
         return userNumber;

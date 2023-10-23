@@ -1,6 +1,5 @@
 package baseball;
 
-
 import static baseball.view.Message.startMessage;
 
 import baseball.controller.Baseball;

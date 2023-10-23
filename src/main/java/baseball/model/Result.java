@@ -12,7 +12,7 @@ public class Result {
         return strike;
     }
 
-    public Result (int ball, int strike){
+    public Result(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }

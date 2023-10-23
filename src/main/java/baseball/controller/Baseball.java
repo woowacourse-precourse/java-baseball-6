@@ -1,10 +1,10 @@
 package baseball.controller;
 
 import static baseball.view.Message.endMessage;
-import static baseball.view.Message.inputMessage;
 import static baseball.view.Message.resultMessage;
 
 import baseball.model.Result;
+import baseball.util.Computer;
 import java.util.List;
 
 public class Baseball {
@@ -14,7 +14,6 @@ public class Baseball {
     public void playGame() {
         List<Integer> computerNumber = computer.getRandomNumber();
         while (true) {
-            inputMessage();
             String userNumber = user.getUserNumber();
             Result result = compareNumber(userNumber, computerNumber);
             resultMessage(result.getBall(), result.getStrike());
