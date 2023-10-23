@@ -5,67 +5,92 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+class Validation {
+    private static final String answerErrorMessage = "각 자리 수가 1~9이며, 서로 중복되지 않는 3자리 수를 입력해주세요.";
+    private static final String resetErrorMessage = "1 또는 2로만 입력해주세요.";
+
+    // 입력 유효성 검사 1. 빈 입력값 확인
+    static void checkEmpty(String arg) {
+        if (arg.isEmpty()) {
+            throw new IllegalArgumentException(answerErrorMessage);
+        }
+    }
+
+    // 입력 유효성 검사 2. 숫자가 아닌 입력값(문자열) 확인
+    static void checkNumber(String arg) {
+        try {
+            Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(answerErrorMessage);
+        }
+    }
+
+    // 입력 유효성 검사 3. 0이 포함되어 있는가?
+    public static void checkIncludeZero(String arg) {
+        for (int i = 0; i < 3; i++) {
+            if (arg.charAt(i) == '0') {
+                throw new IllegalArgumentException(answerErrorMessage);
+            }
+        }
+    }
+
+    // 입력 유효성 검사 4. 숫자이지만 3자리가 아닌 입력값 확인
+    public static void checkLength(String arg) {
+
+        if (arg.length() != 3) {
+            throw new IllegalArgumentException(answerErrorMessage);
+        }
+    }
+
+    // 입력 유효성 검사 5. 숫자이며, 3자리이지만 중복되는 입력값 확인
+    public static void checkRepeat(String arg) {
+        if (arg.charAt(0) == arg.charAt(1) || arg.charAt(0) == arg.charAt(2)
+                || arg.charAt(1) == arg.charAt(2)) {
+            throw new IllegalArgumentException(answerErrorMessage);
+        }
+    }
+
+    // 제시한 답에 대한 유효성 검사
+    public static void checkAnswer(String arg) {
+        checkEmpty(arg);
+        checkNumber(arg);
+        checkIncludeZero(arg);
+        checkLength(arg);
+        checkRepeat(arg);
+    }
+}
+
 public class Application {
     static StringBuilder target = new StringBuilder();
 
+    // 정답(3자리 숫자) 생성
     public static void reroll() {
         target.setLength(0);
-        // 정답(3자리 숫자) 생성
-        List<Integer> tmp = new ArrayList<>();
-        while (tmp.size() < 3) {
+        List<Integer> temp = new ArrayList<>();
+        while (temp.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!tmp.contains(randomNumber)) {
-                tmp.add(randomNumber);
+            if (!temp.contains(randomNumber)) {
+                temp.add(randomNumber);
             }
         }
         for (int i = 0; i < 3; i++) {
-            target.append(tmp.get(i));
+            target.append(temp.get(i));
         }
 //        System.out.println(target); // 테스트용
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        reroll();
-
-        // 게임 시작, 입력 받기
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
+    public static void startGameSession() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String ans = Console.readLine();
+            String answer = Console.readLine();
 
-            // 입력 유효성 검사 1. 빈 입력값 확인
-            if (ans.isEmpty()) {
-                throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러 - 빈 입력값]");
-            }
-            ans = ans.replaceAll(" ", "");
-            // 입력 유효성 검사 2. 숫자가 아닌 입력값(문자열) 확인
-            try {
-                Integer.parseInt(ans);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[문자열 입력]");
-            }
-            // 입력 유효성 검사 3. 0이 포함되어 있는가?
-            for (int i = 0; i < 3; i++) {
-                if (ans.charAt(i) == '0') {
-                    throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[0 입력]");
-                }
-            }
-            // 입력 유효성 검사 4. 숫자이지만 3자리가 아닌 입력값 확인
-            if (ans.length() != 3) {
-                throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[입력 길이]");
-            }
-            // 입력 유효성 검사 5. 숫자이며, 3자리이지만 중복되는 입력값 확인
-            if (ans.charAt(0) == ans.charAt(1) || ans.charAt(0) == ans.charAt(2) || ans.charAt(1) == ans.charAt(2)) {
-                throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[중복값 입력]");
-            }
+            Validation.checkAnswer(answer);
 
             // 정답 확인하기 - 볼
             int ballCount = 0;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (i != j && ans.charAt(i) == target.charAt(j)) {
+                    if (i != j && answer.charAt(i) == target.charAt(j)) {
                         ballCount++;
                     }
                 }
@@ -73,7 +98,7 @@ public class Application {
             // 정답 확인하기 - 스트라이크
             int strCount = 0;
             for (int i = 0; i < 3; i++) {
-                if (ans.charAt(i) == target.charAt(i)) {
+                if (answer.charAt(i) == target.charAt(i)) {
                     strCount++;
                 }
             }
@@ -123,5 +148,15 @@ public class Application {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        reroll();
+
+        // 게임 시작, 입력 받기
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        startGameSession();
+
     }
 }
