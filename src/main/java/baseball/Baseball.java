@@ -40,11 +40,18 @@ public class Baseball {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
 
-        } else if (strike == 0 && ball == 0) {
+        }
+        else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        else if (strike == 0) {
+            System.out.println(ball+"볼");
+        }
+        else if (ball == 0) {
+            System.out.println(strike+"스트라이크");
+        }
+         else {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
         }
         return false;
 
@@ -72,7 +79,6 @@ public class Baseball {
     int restartException() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s_end = Console.readLine();
-        // TODO: 잘못된 값 입력됬는지 확인!
         try {
             // 정수로 입력되지 않았을 때
             int end = parseInt(s_end);
@@ -101,6 +107,7 @@ public class Baseball {
         }
         return com;
     }
+
 
     int startGame(int end) {
         // 한 게임당 초기화
