@@ -12,4 +12,15 @@ public class Hint {
         }
         return strikeCount;
     }
+
+    public int getBallCount(List<Integer> computer, List<Integer> user) {
+        int ballCount = 0;
+        for (int i = 0; i < 3; i++) {
+            int num = user.get(i);
+            if (!computer.get(i).equals(user.get(i)) && computer.contains(num)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 }
