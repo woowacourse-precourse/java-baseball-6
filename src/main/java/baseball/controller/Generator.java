@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Generator {
 
-    public List<Integer> generateAnswer(int listLen) {
+    public static List<Integer> generateAnswer(int listLen) {
         List<Integer> answerList = new ArrayList<>();
 
         while (answerList.size() < listLen) {
@@ -22,7 +22,7 @@ public class Generator {
         return answerList;
     }
 
-    public List<Integer> generateNumericInputList(String input) {
+    public static List<Integer> generateNumericInputList(String input) {
         int inputLen = input.length();
 
         List<Integer> inputList = new ArrayList<>();

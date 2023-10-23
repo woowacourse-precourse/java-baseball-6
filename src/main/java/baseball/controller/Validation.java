@@ -5,8 +5,21 @@ import java.util.List;
 
 public class Validation {
 
-    public static void validateInputStyle(String input, int validLength) {
-        Validation.validateInputLength(input, validLength);
+    public static void validateOneOrTwo(String input, int validLen) {
+        Validation.validateInputStyle(input, validLen);
+
+        int inputNum = Integer.parseInt(input);
+        Validation.validateOneOrTwoNumber(inputNum);
+    }
+
+    public static void validateNumberString(String input, int validLen) {
+        Validation.validateInputStyle(input, validLen);
+        Validation.validateDuplication(input);
+
+    }
+
+    public static void validateInputStyle(String input, int validLen) {
+        Validation.validateInputLength(input, validLen);
         Validation.validateNumber(input);
     }
 
@@ -28,7 +41,7 @@ public class Validation {
         }
     }
 
-    public static void validateOneOrTwo(int inputNum) {
+    public static void validateOneOrTwoNumber(int inputNum) {
         if (inputNum != 1 && inputNum != 2) {
             throw new IllegalArgumentException("1 또는 2 만 입력해야 합니다.");
         }

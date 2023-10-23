@@ -7,45 +7,39 @@ import java.util.List;
 
 public class Core {
 
-    private final int LIST_LEN = 3;
+    private static final int LIST_LEN = 3;
 
-    public void run() {
-        Generator generator = new Generator();
-        View view = new View();
-
-        List<Integer> answer = generator.generateAnswer(LIST_LEN);
-        System.out.println(answer);
+    public static void run() {
+        List<Integer> answer = Generator.generateAnswer(LIST_LEN);
         boolean playing = true;
 
         while (playing) {
-            view.askNumber();
+            View.askNumber();
 
             String input = Console.readLine();
-            Validation.validateInputStyle(input, LIST_LEN);
-            Validation.validateDuplication(input);
+            Validation.validateNumberString(input, LIST_LEN);
 
-            List<Integer> inputList = generator.generateNumericInputList(input);
+            List<Integer> inputList = Generator.generateNumericInputList(input);
 
             Result result = makeResult(inputList, answer);
-
-            view.showResult(result);
+            View.showResult(result);
 
             playing = isNotOver(result.getStrike());
         }
     }
 
-    public boolean isNotOver(int strike) {
+    public static boolean isNotOver(int strike) {
         return strike != LIST_LEN;
     }
 
-    public Result makeResult(List<Integer> input, List<Integer> answer) {
+    public static Result makeResult(List<Integer> input, List<Integer> answer) {
         int strike = countStrike(input, answer);
         int ball = countBall(input, answer);
 
         return new Result(strike, ball);
     }
 
-    public int countStrike(List<Integer> input, List<Integer> answer) {
+    public static int countStrike(List<Integer> input, List<Integer> answer) {
         int count = 0;
 
         for (int idx = 0; idx < LIST_LEN; idx++) {
@@ -58,7 +52,7 @@ public class Core {
         return count;
     }
 
-    public int countBall(List<Integer> input, List<Integer> answer) {
+    public static int countBall(List<Integer> input, List<Integer> answer) {
         int count = 0;
 
         for (int idx = 0; idx < LIST_LEN; idx++) {
