@@ -1,13 +1,13 @@
 package baseball.view;
 
-import baseball.view.constants.PrintMessage;
+import baseball.view.constants.StaticNotice;
 
 public class OutputView {
-    public static void printInformation(PrintMessage message) {
-        System.out.print(message.getMessage());
+    public static void printStaticNotice(StaticNotice notice) {
+        System.out.print(notice.getMessage());
     }
 
-    public static void printResult(String resultMessage) {
-        System.out.println(resultMessage);
+    public static void printMessage(String message) {
+        System.out.println(message);
     }
 }

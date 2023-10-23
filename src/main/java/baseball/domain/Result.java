@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.domain.constants.ResultType;
-import baseball.view.OutputView;
 
 import static baseball.domain.constants.ResultType.*;
 import static baseball.global.GameConfig.NUMBER_LENGTH;
@@ -42,10 +41,9 @@ public class Result {
         };
     }
 
-    public void print() {
+    public String createResultMessage() {
         ResultType resultType = inspectResultType();
-        String message = generateResultMessage(resultType);
-        OutputView.printResult(message);
+        return generateResultMessage(resultType);
     }
 
     public boolean hasBall() {
