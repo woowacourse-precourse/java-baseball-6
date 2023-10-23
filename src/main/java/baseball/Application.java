@@ -17,18 +17,14 @@ public class Application {
         randomBalls = makeRandomBall.outputRandomBall();
 
         while(true){
-            try {
-                validator.check(playGame.inputRandomBall());
-                int result = compareTwoNumbers.play();
-                if(result == 1){
-                    randomBalls.clear();
-                    randomBalls = makeRandomBall.outputRandomBall();
-                }
-                else if(result == 2){
-                    break;
-                }
-            } catch (IllegalArgumentException | IOException e){
-                throw new IllegalArgumentException();
+            validator.check(playGame.inputRandomBall());
+            int result = compareTwoNumbers.play();
+            if(result == 1){
+                randomBalls.clear();
+                randomBalls = makeRandomBall.outputRandomBall();
+            }
+            else if(result == 2){
+                break;
             }
         }
     }

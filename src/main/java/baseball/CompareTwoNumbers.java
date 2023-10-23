@@ -14,7 +14,7 @@ public class CompareTwoNumbers {
     Validator validator = new Validator();
     static int strike;
     static int ball;
-    public int play() throws IOException {
+    public int play() {
         strike = 0;
         ball = 0;
         checkBalls();
