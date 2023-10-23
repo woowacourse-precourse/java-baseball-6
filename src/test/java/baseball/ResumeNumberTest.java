@@ -45,4 +45,10 @@ public class ResumeNumberTest {
     void 재시작_또는_종료값은_2가_될_수_있다() {
         resumeNumber.updateNumber("2");
     }
+
+    @Test
+    void 종료_상태는_2이다() {
+        resumeNumber.updateNumber("2");
+        assertThat(resumeNumber.isWantMoreGame()).isFalse();
+    }
 }
