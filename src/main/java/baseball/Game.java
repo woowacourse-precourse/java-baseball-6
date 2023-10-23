@@ -20,10 +20,14 @@ public class Game {
 
     public void start() {
         String gameStatus = RESTART_NUMBER_STRING;
-        while (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
+        while (isEqualToRestartNumberString(gameStatus)) {
             playRound(generateComputerNumberString());
             gameStatus = wantsToRestart();
         }
+    }
+
+    private boolean isEqualToRestartNumberString(String gameStatus) {
+        return Objects.equals(gameStatus, RESTART_NUMBER_STRING);
     }
 
     private String generateComputerNumberString() {
@@ -88,7 +92,7 @@ public class Game {
 
     private String wantsToRestart() {
         String gameStatus = userInput.readOneOrTwo();
-        if (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
+        if (isEqualToRestartNumberString(gameStatus)) {
             return RESTART_NUMBER_STRING;
         }
 
