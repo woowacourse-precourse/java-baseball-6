@@ -27,11 +27,14 @@ public class BaseBallController {
         randomNumbers = new RandomNumbers();
         outputView.printStartGame();
         outputView.askForNumber();
+
         do {
             String userInput = inputView.inputNumber();
             userInputNumbers = new UserInputNumbers(userInput);
+
             strikeCount = new Strikes(randomNumbers, userInputNumbers).getStrikeCount();
             ballCount = new Balls(randomNumbers, userInputNumbers).getBallCount();
+
             outputView.printCountForBallsAndStrikes(ballCount, strikeCount);
         } while (strikeCount != GameConstant.GAME_END_STRIKE_COUNT);
         outputView.printEndGame();

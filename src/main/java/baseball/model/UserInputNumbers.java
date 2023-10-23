@@ -2,6 +2,7 @@ package baseball.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserInputNumbers {
 
@@ -12,15 +13,12 @@ public class UserInputNumbers {
     }
 
     private List<Number> userInputToNumbers(String userInput) {
-        List<Number> numberList = new ArrayList<>();
-        for (char numberCharacter : userInput.toCharArray()) {
-            Number inputNumber = new Number(Character.getNumericValue(numberCharacter));
-            numberList.add(inputNumber);
-        }
-        return numberList;
+        return userInput
+                .chars()
+                .mapToObj(each -> new Number(Character.getNumericValue(each)))
+                .collect(Collectors.toList());
     }
-
-
+    
     public List<Number> getUserNumberList() {
         return userNumberList;
     }
