@@ -1,7 +1,5 @@
 package baseball;
 
-import org.junit.jupiter.api.BeforeEach;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,20 +10,16 @@ public class GameStart {
     private Count count = new Count();
 
     private Computer computer = new Computer();
-    private List<Integer> BallandStrike= new ArrayList<>();
-    private ResultView resultView= new ResultView();
+    private List<Integer> BallandStrike = new ArrayList<>();
+    private ResultView resultView = new ResultView();
     private GameStatus gameStatus = new GameStatus();
 
 
-    public void start()
-    {
-        while(gameStatus.getIsGameOnGoing()) {
-
-            System.out.println(gameStatus.getIsGameOnGoing());
-            computer.setComputerNumber();
-            System.out.println(computer.getComputerNumber());
+    public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computer.setComputerNumber();
+        while (gameStatus.getIsGameOnGoing()) {
             user.setUserNumber(inputView.userInput());
-            System.out.println(computer.getComputerNumber());
             BallandStrike = count.CountcountBallsAndStrikes(user.getUserNumber(), computer.getComputerNumber());
             getResultView(BallandStrike);
 
@@ -34,21 +28,17 @@ public class GameStart {
 
     }
 
-    public void getResultView(List<Integer> BallandStrike)
-    {
-        if(BallandStrike.get(1)==3)
-        {
+    public void getResultView(List<Integer> BallandStrike) {
+        if (BallandStrike.get(1) == 3) {
             resultView.ThreeStrike();
-            gameStatus.threeStrikeCase();
+            gameStatus.threeStrikeCase(computer);
         }
-        if(BallandStrike.get(1)!=3)
-        {
+        if (BallandStrike.get(1) != 3) {
             resultView.printEndMessage(BallandStrike);
 
         }
 
     }
-
 
 
 }
