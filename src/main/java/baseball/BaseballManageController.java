@@ -43,7 +43,8 @@ public class BaseballManageController {
 
     public void generateComNums() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        int maxNumberCount = 3;
+        while (computer.size() < maxNumberCount) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -57,7 +58,8 @@ public class BaseballManageController {
         this.playerNumsInputCheck(playerStringNumsInput);
         this.playerInputTypeCheck(playerStringNumsInput);
         List<Integer> playerNumsTemp = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        int maxNumberCount = 3;
+        for (int i = 0; i < maxNumberCount; i++) {
             int numericValue = Character.getNumericValue(playerStringNumsInput.charAt(i));
             playerNumsTemp.add(numericValue);
         }
@@ -66,7 +68,8 @@ public class BaseballManageController {
 
     public void countStrike(List<Integer> computer, List<Integer> player) {
         int strikeCnt = 0;
-        for (int i = 0; i < 3; i++) {
+        int maxNumberCount = 3;
+        for (int i = 0; i < maxNumberCount; i++) {
             if (player.get(i).equals(computer.get(i))) {
                 strikeCnt++;
             }
@@ -77,7 +80,8 @@ public class BaseballManageController {
 
     public void countBall(List<Integer> computer, List<Integer> player) {
         int ballCnt = 0;
-        for (int i = 0; i < 3; i++) {
+        int maxNumberCount = 3;
+        for (int i = 0; i < maxNumberCount; i++) {
             if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
                 ballCnt++;
             }
@@ -125,13 +129,14 @@ public class BaseballManageController {
 
     public void playerNumsInputCheck(String playerInput) throws IllegalArgumentException{
 
+        int maxNumberCount = 3;
         //입력 자리수 확인
-        if(playerInput.length() != 3) {
+        if(playerInput.length() != maxNumberCount) {
             throw new IllegalArgumentException();
         }
         //입력 숫자 중복 여부 확인
-        for(int i = 0; i < 3; i++) {
-            for(int j = i + 1; j < 3; j++) {
+        for(int i = 0; i < maxNumberCount; i++) {
+            for(int j = i + 1; j < maxNumberCount; j++) {
                 if(playerInput.charAt(i) == playerInput.charAt(j)) {
                     throw new IllegalArgumentException();
                 }
