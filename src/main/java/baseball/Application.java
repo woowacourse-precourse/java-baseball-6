@@ -13,8 +13,6 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         int playing = 1;
 
-
-
         while (playing == 1) {
             //랜덤 숫자 생성
             List<Integer> computer = new ArrayList<>();
@@ -25,11 +23,8 @@ public class Application {
                 }
             }
 
-
-
             //사용자 숫자 입력(맞을 때까지 반복)
             int ans = 0;
-
 
             while (ans == 0) {
                 //잘못 입력 시 (IllegalArgumentException 발생)
