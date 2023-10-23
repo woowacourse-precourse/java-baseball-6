@@ -1,21 +1,13 @@
 package baseball.model;
 
-import baseball.dto.GameResultDto;
-
 public class InputNumberValidator {
 
-    private final GameResultDto gameDto;
-
-    public InputNumberValidator(GameResultDto gameDto) {
-        this.gameDto = gameDto;
-    }
-
-    public void validateAllInput(String input) {
+    public String validateAllInput(String input) {
         hasThreeDigits(input);
         isNumber(input);
         isNumber(input);
         areDigitsUnique(input);
-        gameDto.setValidateInput(input);
+        return input;
     }
 
     public String validateRestartInput(String input) {
