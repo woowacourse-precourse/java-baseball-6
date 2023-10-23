@@ -1,10 +1,9 @@
-package baseball;
+package baseball.deprecated;
 
+import baseball.Variables;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ComputerService {
     private int N = Variables.NUM.getValue();

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.deprecated;
+
+import baseball.Variables;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,5 +20,4 @@ public class UserService {
         return new User(create(input));
     }
 
-//    public
 }

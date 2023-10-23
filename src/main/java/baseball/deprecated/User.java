@@ -1,4 +1,4 @@
-package baseball;
+package baseball.deprecated;
 
 import java.util.List;
 

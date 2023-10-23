@@ -1,4 +1,6 @@
-package baseball;
+package baseball.deprecated;
+
+import baseball.Variables;
 
 public class Game {
     public int getStrike() {
@@ -9,14 +11,14 @@ public class Game {
         return ball;
     }
 
-    private int strike = 0;
-    private int ball = 0;
+    private int strike;
+    private int ball;
 
     private int N = Variables.NUM.getValue();
 
     public boolean checkAndCalcUserGuess(User user, Computer computer) {
-        // Todo : user.list와 computer.list를 비교해 3스트라이크이면 3 리턴
-        // Todo : game의 필드 변수 strike와 ball 값 계산
+        strike = 0;
+        ball = 0;
 
         for (int i = 0; i < N; i++) {
             if (user.getUserList().get(i).equals(computer.getComputerList().get(i))) {
