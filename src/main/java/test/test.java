@@ -2,6 +2,8 @@ package test;
 import baseball.UserInput;
 import baseball.GenerateAnswer;
 
+import java.util.List;
+
 public class test {
     public static void main(String[] args){
         UserInputTest();
@@ -11,9 +13,9 @@ public class test {
     public static void UserInputTest(){
         while(true) {
             UserInput userInput = new UserInput(3);
-            int temp = userInput.getInput();
+            List<Integer> temp = userInput.getInput();
             System.out.println(temp);
-            if (temp == 123){
+            if (temp.equals(List.of(1, 2, 3))){
                 break;
             }
         }
