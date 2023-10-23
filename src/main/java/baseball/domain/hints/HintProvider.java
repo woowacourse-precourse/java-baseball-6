@@ -9,6 +9,7 @@ import java.util.function.BiFunction;
 
 public final class HintProvider {
     public static final int ONLY_ONE = 1;
+
     private final AnswerNumbers answerNumbers;
 
     public HintProvider(AnswerNumbers answerNumbers) {
@@ -27,7 +28,6 @@ public final class HintProvider {
     }
 
     private HintType compareToAnswer(int number, int index) {
-
         Integer answerIndex = answerNumbers.findIndexOfSameNumber(number);
 
         if (answerIndex == null) {
@@ -40,7 +40,7 @@ public final class HintProvider {
     }
 
     private BiFunction<Integer, Integer, Integer> increaseHintCount() {
-        return (value, putValue) -> value + 1;
+        return (value, unused) -> value + 1;
     }
 
     private void trimHint(Map<HintType, Integer> hintMap) {
