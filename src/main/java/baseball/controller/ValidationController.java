@@ -25,11 +25,12 @@ public class ValidationController {
         }
     }
 
-    // 중복된 숫자가 있는지 검증
+
+    // 중복된 숫자와, 0이 있는지 검증
     private void validateNoDuplicateDigits(String input) {
         Set<Character> digitSet = new HashSet<>();
         for (char ch : input.toCharArray()) {
-            if(!digitSet.add(ch)) {
+            if(!digitSet.add(ch) || ch == '0') {
                 throw new IllegalArgumentException();
             }
         }
