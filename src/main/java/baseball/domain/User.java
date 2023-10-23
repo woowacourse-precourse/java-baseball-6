@@ -19,7 +19,7 @@ public class User {
     }
 
 
-    public List<Integer> createUserNumber(String userNumber) {
+    public List<Integer> readUserNumber(String userNumber) {
         updateStringToListUser(userNumber);
         validateUserNumber();
         return this.userNumber;

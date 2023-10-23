@@ -6,6 +6,7 @@ import java.util.List;
 public class BaseballGame {
 
     private List<Integer> computerNumber;
+    private List<Integer> userNumber;
 
     public BaseballGame(){
         Computer computer = new Computer();
@@ -17,18 +18,27 @@ public class BaseballGame {
         Computer computer = new Computer();
         this.computerNumber = computer.randomComputerNumber();
         System.out.println(this.computerNumber);
-        return computerNumber;
+        return this.computerNumber;
     }
 
-    public String[] compareTwoNumbers(List<Integer> userNumber) {
+    public List<Integer> createUserNumber(String userNumber){
+        User user = new User();
+        this.userNumber = user.readUserNumber(userNumber);
+        return this.userNumber;
+    }
+
+
+
+
+    public String[] compareTwoNumbers() {
         int strikeCount = 0;
         int ballCount = 0;
-        for (int i = 0; i < userNumber.size(); i++) {
-            if (userNumber.get(i) == this.computerNumber.get(i)) {
+        for (int i = 0; i < this.userNumber.size(); i++) {
+            if (this.userNumber.get(i) == this.computerNumber.get(i)) {
                 strikeCount++;
                 continue;
             }
-            if (this.computerNumber.contains(userNumber.get(i))) {
+            if (this.computerNumber.contains(this.userNumber.get(i))) {
                 ballCount++;
             }
         }
