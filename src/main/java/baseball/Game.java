@@ -24,5 +24,20 @@ public class Game {
                 ball++;
             }
         }
+
+        checkResult(ball, strike);
     }
+
+    private void checkResult(int ball, int strike) {
+        if (strike == 0 && ball == 0) {
+            View.printNothingMessage();
+        } else if (strike == 0) {
+            View.printBallMessage(ball);
+        } else if (ball == 0) {
+            View.printStrikeMessage(strike);
+        } else {
+            View.printBallAndStrikeMessage(ball, strike);
+        }
+    }
+
 }
