@@ -13,14 +13,16 @@ public class Validation {
 
     // 올바른 사이즈인지 확인합니다.
     private void validateSize(String[] target, int inputType) {
-        if (!(target.length == inputType)) throw new IllegalArgumentException();
+        if (target.length == inputType)
+            throw new IllegalArgumentException( inputType + "개의 숫자를 입력해야 합니다.");
     }
 
     // 숫자인지 확인합니다.
     private void validateNumber(String[] target) {
         for (String str : target) {
             char tester = str.charAt(0);
-            if(tester < 49 || tester > 57) throw new IllegalArgumentException();
+            if(tester < 49 || tester > 57)
+                throw new IllegalArgumentException("숫자만 입력해야 합니다.");
         }
     }
 
@@ -31,14 +33,15 @@ public class Validation {
         for (String str : target) {
             hashMap.put(str, 0);
         }
-        if (hashMap.size()!= 3) throw new IllegalArgumentException();
+        if (hashMap.size()!= 3)
+            throw new IllegalArgumentException("같은 숫자는 입력할 수 없습니다.");
     }
 
     // 게임 재시작 값인 '1', '2' 인지 확인합니다.
     private void validateRestartValue(String[] target, int inputType) {
         if (inputType == 3) return;
         if (!(target[0].equals("1")) && !(target[0].equals("2"))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1, 2 중 하나를 입력해야 합니다.");
         }
     }
 }
