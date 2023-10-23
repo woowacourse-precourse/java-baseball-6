@@ -1,14 +1,14 @@
 package baseball.controller;
 
 import baseball.dto.GameResultDto;
-import baseball.model.BaseballGame;
+import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
     GameResultDto gameDto = new GameResultDto();
     InputView inputView = new InputView();
-    BaseballGame game = new BaseballGame(gameDto);
+    BaseballGameService game = new BaseballGameService(gameDto);
 
     public BaseballGameController() {
         displayStartMessage();

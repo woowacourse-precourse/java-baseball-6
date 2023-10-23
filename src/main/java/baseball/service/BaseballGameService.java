@@ -1,14 +1,18 @@
-package baseball.model;
+package baseball.service;
 
 import baseball.dto.GameResultDto;
+import baseball.model.GameResult;
+import baseball.model.InputNumberValidator;
+import baseball.model.RandomNumberGenerator;
+import baseball.model.StrikeBallCounter;
 
-public class BaseballGame {
+public class BaseballGameService {
     private final InputNumberValidator validator;
     private final StrikeBallCounter strikeBallCounter;
     private final GameResult gameResult;
     private final GameResultDto gameDto;
 
-    public BaseballGame(GameResultDto gameDto) {
+    public BaseballGameService(GameResultDto gameDto) {
         this.gameDto = gameDto;
         this.validator = new InputNumberValidator(gameDto);
         this.strikeBallCounter = new StrikeBallCounter(gameDto);
