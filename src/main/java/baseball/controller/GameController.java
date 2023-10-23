@@ -18,7 +18,7 @@ public class GameController {
     }
 
     public void startGame() {
-        outputView.printStart();
+        System.out.println(outputView.printStart());
         createAnswer();
         proceedGame();
     }
