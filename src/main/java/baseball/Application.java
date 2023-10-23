@@ -33,22 +33,22 @@ public class Application {
 
 		List<Integer> computerNumber = createComputerNumber();
 
-		UserNumber userNumber = new UserNumber();
+		UserNumberMaker userNumberMaker = new UserNumberMaker();
 
 		int strikeNumber = 0;
 		int ballNumber;
 
 		while (strikeNumber != computerNumber.size()) {
-			String[] inputUserNumber = userNumber.inputUserNumber();
-			userNumber.checkInputOnlyNum(inputUserNumber);
-			userNumber.checkInputSize(inputUserNumber);
+			String[] inputUserNumber = userNumberMaker.inputUserNumber();
+			userNumberMaker.checkInputOnlyNum(inputUserNumber);
+			userNumberMaker.checkInputSize(inputUserNumber);
 
-			List<Integer> userNumberList = userNumber.toListUserNumber(inputUserNumber);
-			userNumber.checkSizeUserNum(userNumberList);
-			userNumber.checkRangeUserNum(userNumberList);
+			List<Integer> userNumber = userNumberMaker.toListUserNumber(inputUserNumber);
+			userNumberMaker.checkSizeUserNum(userNumber);
+			userNumberMaker.checkRangeUserNum(userNumber);
 
-			ballNumber = countBall(computerNumber, userNumberList);
-			strikeNumber = countStrike(computerNumber, userNumberList);
+			ballNumber = countBall(computerNumber, userNumber);
+			strikeNumber = countStrike(computerNumber, userNumber);
 
 			printStrike(ballNumber, strikeNumber);
 		}
@@ -136,7 +136,7 @@ public class Application {
 
 }
 
-class UserNumber {
+class UserNumberMaker {
 
 	final int USER_NUMBER_SIZE = 3;
 	final int USER_MIN_NUMBER = 1;
