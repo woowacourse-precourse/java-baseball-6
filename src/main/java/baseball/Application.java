@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.exception.ExceptionHandler;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -67,13 +68,20 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> answer = newNumber();
 
+        String userInput;
+
         startPhrase();
 
+        ExceptionHandler exceptionHandler = new ExceptionHandler();
+
         while (true) {
-            System.out.println(answer);
             inputPhrase();
 
-            String userInput = Console.readLine();
+            try {
+                userInput = exceptionHandler.exceptionHandler(Console.readLine());
+            } catch (IllegalArgumentException illegalArgumentException) {
+                throw new IllegalArgumentException();
+            }
 
             int[] userInputArray = Stream.of(userInput.split("")).mapToInt(Integer::parseInt).toArray();
 
@@ -91,17 +99,20 @@ public class Application {
             if (ball + strike == 0) {
                 outPhrase();
             } else if (strike == 3) {
+                strikePhrase(strike);
                 answerPhrase();
                 endPhrase();
-                userInput = Console.readLine();
-
+                try {
+                    userInput = exceptionHandler.userElseInputAfterEndPhraseException(Console.readLine());
+                } catch (IllegalArgumentException illegalArgumentException) {
+                    throw new IllegalArgumentException();
+                }
                 if (userInput.equals("1")) {
                     answer = newNumber();
                 } else if (userInput.equals("2")) {
                     break;
-                } else {
-                    break;
                 }
+
             } else if (ball != 0 && strike != 0) {
                 ballAndStrikePhrase(ball, strike);
             } else if (strike != 0) {
