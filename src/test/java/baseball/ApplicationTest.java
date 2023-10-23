@@ -23,6 +23,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 하드모드_7번이상_실패시_게임종료(){
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("3","123","123","123","123","123","123","123","2");
+                    assertThat(output()).contains("게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("2","1234"))

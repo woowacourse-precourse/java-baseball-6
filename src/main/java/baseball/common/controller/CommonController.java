@@ -2,6 +2,8 @@ package baseball.common.controller;
 
 
 import baseball.common.service.CommonNumberService;
+import baseball.hard.controller.HardController;
+import baseball.hard.service.HardService;
 import baseball.normal.controller.NormalController;
 import baseball.normal.service.NormalService;
 import camp.nextstep.edu.missionutils.Console;
@@ -14,12 +16,12 @@ public class CommonController {
     /*
     private BeginnerService beginnerService;
     private BeginnerController beginnerController;
-
-    private HardService hardService;
-    private HardController hardController;
     */
     private NormalService normalService;
     private NormalController normalController;
+    private HardService hardService;
+    private HardController hardController;
+
 
     public CommonController(){
         modeMapInit();  //모드맵 초기설정
@@ -86,7 +88,7 @@ public class CommonController {
 
         }
         else{
-            /*
+
             if(hardService==null) {
                 hardService = new HardService();
                 hardController = new HardController();
@@ -94,7 +96,7 @@ public class CommonController {
             hardService.createRandomNumber();
             hardController.hardModeInGameRecursion(hardService);
 
-             */
+
         }
 
     }
