@@ -1,9 +1,10 @@
 package baseball.application;
 
+import baseball.GameManager;
 import baseball.domain.BaseBallNumberList;
 import java.util.stream.Stream;
 
-public class BaseBallGame {
+public class BaseBallGame implements GameUseCase {
 
     private final BaseBallNumberList computer;
     private final GameManager gameManager;
@@ -13,7 +14,8 @@ public class BaseBallGame {
         this.gameManager = gameManager;
     }
 
-    public BaseBallResult play(BaseBallNumberList playerInput) {
+    @Override
+    public BaseBallResult execute(BaseBallNumberList playerInput) {
         int strike = getStrike(playerInput);
         int ball = getBall(strike,playerInput);
 

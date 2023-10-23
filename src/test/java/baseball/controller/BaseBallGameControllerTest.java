@@ -46,7 +46,7 @@ public class BaseBallGameControllerTest {
         }
 
         @Override
-        public BaseBallResult execution(BaseBallNumberList playerInput) {
+        public BaseBallResult execute(BaseBallNumberList playerInput) {
             return baseBallResult;
         }
     }

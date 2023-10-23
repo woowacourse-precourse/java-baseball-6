@@ -14,7 +14,7 @@ public class BaseBallGameController {
     }
 
     public String play(String input) {
-        BaseBallResult execution = gameUseCase.execution(
+        BaseBallResult execution = gameUseCase.execute(
                 new BaseBallNumberList(new NumericString(input).toList()));
 
         return execution.getStrike()+"스트라이크";

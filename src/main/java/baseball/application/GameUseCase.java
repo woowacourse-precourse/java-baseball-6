@@ -4,5 +4,5 @@ import baseball.domain.BaseBallNumberList;
 
 public interface GameUseCase {
 
-    BaseBallResult execution(BaseBallNumberList playerInput);
+    BaseBallResult execute(BaseBallNumberList playerInput);
 }
