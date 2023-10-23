@@ -1,8 +1,6 @@
 package baseball;
 
 public enum Grade {
-
-  STRIKE,
-  BALL
-
+    STRIKE,
+    BALL
 }

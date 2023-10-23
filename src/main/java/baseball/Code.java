@@ -4,21 +4,20 @@ import java.util.List;
 
 public class Code {
 
-  Long id;
+    Long id;
+    List<Integer> number;
 
-  List<Integer> number;
+    public Code(Long id, List<Integer> number) {
+        this.id = id;
+        this.number = number;
+    }
 
-  public Code(Long id, List<Integer> number) {
-    this.id = id;
-    this.number = number;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public Long getId() {
-    return id;
-  }
-
-  public List<Integer> getNumber() {
-    return number;
-  }
+    public List<Integer> getNumber() {
+        return number;
+    }
 
 }
