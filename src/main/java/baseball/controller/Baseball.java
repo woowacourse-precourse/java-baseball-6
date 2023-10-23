@@ -1,17 +1,16 @@
 package baseball.controller;
 
+import baseball.model.ComputerNumber;
 import baseball.util.ValidateNumber;
 import baseball.view.PrintMessage;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
     public void PlayGame() {
         PrintMessage printMessage = new PrintMessage();
         ValidateNumber validateNumber = new ValidateNumber();
+        ComputerNumber computerNumber = new ComputerNumber();
         boolean end = false;
         boolean game = false;
         int strike;
@@ -24,14 +23,7 @@ public class Baseball {
         //2. 게임 진행
         while (!end) {
             //2.1. 랜덤 숫자 생성
-
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            List<Integer> computer = computerNumber.makeComputerNumber();
             //2.2. "숫자를 입력해주세요 :" 출력과 함께 사용자 입력
             while (!game) {
                 printMessage.inputMessage();
