@@ -42,7 +42,7 @@ public class Application {
         }
 
         HashMap<Integer, Integer> map = new HashMap();
-        
+
         for (int k = 0; k < user.size(); k++) {
             map.put(computer.get(k), user.get(k));
         }
@@ -58,6 +58,9 @@ public class Application {
             }
         }
         switch (strike) {
+            case 3:
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             default:
                 if (ball == 0 && strike == 0) {
