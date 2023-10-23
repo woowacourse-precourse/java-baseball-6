@@ -31,12 +31,12 @@ public class Game {
 
     private void playRound(String computerNumberString) {
         Result result = new Result(0, 0);
-        while (result.strike != GAME_END_CONDITION) {
+        while (result.strikeCount != GAME_END_CONDITION) {
             result = makeResultCount(userInput.readNumberString(), computerNumberString);
             displayResult(result);
         }
 
-        printStrikeThree(result.strike);
+        printStrikeThree(result.strikeCount);
     }
 
     private Result makeResultCount(String userNumberString, String computerNumberString) {
@@ -74,12 +74,12 @@ public class Game {
             return;
         }
 
-        if (result.ball > 0) {
-            printCorrectBallCount(result.ball);
+        if (result.ballCount > 0) {
+            printCorrectBallCount(result.ballCount);
         }
 
-        if (result.strike > 0) {
-            printCorrectStrikeCount(result.strike);
+        if (result.strikeCount > 0) {
+            printCorrectStrikeCount(result.strikeCount);
         }
 
         printNewLine();
@@ -95,9 +95,9 @@ public class Game {
         return EXIT_NUMBER_STRING;
     }
 
-    private record Result(int strike, int ball) {
+    private record Result(int strikeCount, int ballCount) {
         boolean isNothing() {
-            return strike == 0 && ball == 0;
+            return strikeCount == 0 && ballCount == 0;
         }
     }
 
