@@ -77,10 +77,10 @@ public class Application {
                 } else if (!Character.isDigit(userInput.charAt(0))) {
                     throw new IllegalArgumentException("숫자를 입력해주세요.");
                 }
-            }
-            computerNums.clear();
-            if (userInput.equals("2")) {
-                userPlay = false;
+                computerNums.clear();
+                if (userInput.equals("2")) {
+                    userPlay = false;
+                }
             }
         }
     }
