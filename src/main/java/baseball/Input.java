@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
+    private static final String NUMBER_FORMAT_ERROR_MESSAGE = "숫자만 입력해야 합니다.";
 
     public static String readLine() {
         String input = Console.readLine();
@@ -14,7 +15,7 @@ public class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+            throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }
 }
