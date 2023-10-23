@@ -10,9 +10,11 @@ import java.util.List;
 
 public class UserInput {
     private List<Integer> userNum;
+    private OutputView outputView;
 
     UserInput() {
         this.userNum = new ArrayList<>();
+        this.outputView = new OutputView();
     }
 
     public List<Integer> getUserNum() {
@@ -20,14 +22,14 @@ public class UserInput {
     }
 
     public void promptUserInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        outputView.promptMessage();
         String string = Console.readLine();
         gameInputValidator(string);
         userNum = stringToInt(string);
     }
 
     public int promptUserForRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        outputView.restartMessage();
         String s = Console.readLine();
         restartInputValidator(s);
         List<Integer> userAnswer = new ArrayList<>(stringToInt(s));
