@@ -74,6 +74,12 @@ class OutputViewTest {
             org.assertj.core.api.Assertions.assertThat(output.toString()).isEqualTo(ballCount + BALL.getMessage());
         }
 
+        @Test
+        @DisplayName("게임 시작 문구가 출력되어야 한다")
+        public void 게임_시작_문구가_출력되어야_한다() {
+            OutputView.printGameStartView();
+            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(START_GAME_MESSAGE.getMessage());
+        }
 
 
     }
