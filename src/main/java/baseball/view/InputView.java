@@ -1,6 +1,6 @@
 package baseball.view;
 
-import camp.nextstep.edu.missionutils.Console;
+import static baseball.utils.Console.*;
 
 public class InputView {
     private static final String INVALID_INPUT_NUMBER = "숫자를 입력해주세요";
@@ -21,10 +21,6 @@ public class InputView {
         return parseInt(readLine());
     }
 
-    private String readLine() {
-        return Console.readLine();
-    }
-
     private int parseInt(String number) {
         int parsedNumber;
         try {
@@ -33,13 +29,5 @@ public class InputView {
             throw new IllegalArgumentException(INVALID_INPUT_NUMBER);
         }
         return parsedNumber;
-    }
-
-    private void print(String message) {
-        System.out.print(message);
-    }
-
-    private void println(String message) {
-        System.out.println(message);
     }
 }

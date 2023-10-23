@@ -52,3 +52,6 @@ Converter
 
 NumberGenerator
 - 랜덤한 숫자를 생성하는 클래스
+
+Console
+- 콘솔 입력, 출력을 처리하는 클래스

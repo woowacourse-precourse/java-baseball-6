@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.utils.Console.println;
+
 public class OutputView {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -25,8 +27,8 @@ public class OutputView {
         println(getBallMessage(ballCount) + SPACE + getStrikeMessage(strikeCount));
     }
 
-    private boolean isZero(int ballCount) {
-        return ballCount == ZERO;
+    private boolean isZero(int count) {
+        return count == ZERO;
     }
 
     public void printGameStart() {
@@ -47,9 +49,5 @@ public class OutputView {
 
     private String getFormattedMessage(String format, Object... args) {
         return String.format(format, args);
-    }
-
-    private void println(String message) {
-        System.out.println(message);
     }
 }
