@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 import static baseball.Application.computerRandomBalls;
 import static baseball.Application.userRandomBalls;
 
@@ -23,14 +25,13 @@ public class Score {
 
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
-                if(computerRandomBalls.get(i) == userRandomBalls.get(j)){
+                if(Objects.equals(computerRandomBalls.get(i), userRandomBalls.get(j))){
                     if(i==j)    strike++;
                     else    ball++;
                     break;
                 }
             }
         }
-
         return new ScoreBoard(strike,ball);
     }
 }

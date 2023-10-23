@@ -4,7 +4,7 @@ import static baseball.Application.userRandomBalls;
 
 public class Validator {
     final String regex = "[0-9]+";
-    public void checkUserInputRandomBalls(String input){
+    public void check(String input){
         if(userRandomBalls.isEmpty()) initUserRandomBalls();
         if(input.matches(regex) && checkSize(input) && checkZero(input)){
             successInput(input);
@@ -12,11 +12,10 @@ public class Validator {
         else    throw new IllegalArgumentException();
     }
 
-    public void checkUserRestart(String input){
-        if(input.matches(regex) && input.length() == 1 && checkZero(input)){
-            successInput(input);
+    public void checkUserChoice(String input){
+        if (!input.matches(regex) || input.length() != 1 || !checkZero(input)) {
+            throw new IllegalArgumentException();
         }
-        else throw new IllegalArgumentException();
     }
 
     private boolean checkZero(String userInputNumber) {
@@ -33,7 +32,7 @@ public class Validator {
 
     private void successInput(String userInputNumber) {
         String[] userInputNumbers = userInputNumber.split("");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < userInputNumber.length(); i++) {
             userRandomBalls.set(i,stoi(userInputNumbers[i]));
         }
     }
