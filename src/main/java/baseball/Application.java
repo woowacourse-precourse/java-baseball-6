@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.*;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +27,7 @@ public class Application {
                 numOfStrike = result.get(1);
 
                 // for no ball and no strike
-                if (numOfBall == 0 && numOfStrike == 0) {
-                    System.out.println("낫싱");
-                }
+                checkNothing(numOfBall, numOfStrike);
 
                 // for with strike
                 printBall(numOfBall);
@@ -39,7 +35,7 @@ public class Application {
             }
 
             printRestart();
-            keepGoing = Integer.parseInt(input);
+            keepGoing = isInt(input);
 
             if (keepGoing == 1) {
                 strike = 0;
@@ -72,6 +68,22 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public static void checkNothing(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+    }
+
+    public static int isInt(String toCheck) {
+        int ret;
+        try {
+            ret = Integer.parseInt(toCheck);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return ret;
+    }
+
     /*
      * @return Random Computer Data
      */
@@ -98,11 +110,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         str = Console.readLine();
 
-        try {
-            Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        }
+        isInt(str);
 
         if (str.length() != 3) {
             throw new IllegalArgumentException();
@@ -135,7 +143,7 @@ public class Application {
 
         for (int i = 0; i < user.size(); i++) {
             for (int j = 0; j < computer.size(); j++) {
-                if (user.get(i) == computer.get(j)) {
+                if (user.get(i).equals(computer.get(j))) {
                     if (i == j) {
                         strike++;
                     } else {
