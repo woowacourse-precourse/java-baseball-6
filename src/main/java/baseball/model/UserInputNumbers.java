@@ -7,26 +7,27 @@ public class UserInputNumbers {
 
     private final int INPUT_NUMBER_LENGTH = 3;
 
-    private final List<Number> userInputNumbers;
+    private final List<Number> userNumberList;
     private int strikeCount = 0;
     private int ballCount = 0;
 
     public UserInputNumbers(String userInput) {
-        this.userInputNumbers = userInputToNumbers(userInput);
+        this.userNumberList = userInputToNumbers(userInput);
     }
 
     private List<Number> userInputToNumbers(String userInput) {
-        List<Number> inputNumbers = new ArrayList<>();
+        List<Number> numberList = new ArrayList<>();
         for (char numberCharacter : userInput.toCharArray()) {
-            inputNumbers.add(new Number(Character.getNumericValue(numberCharacter)));
+            Number inputNumber = new Number(Character.getNumericValue(numberCharacter));
+            numberList.add(inputNumber);
         }
-        return inputNumbers;
+        return numberList;
     }
 
     public int countStrikes(RandomNumbers randomNumbers) {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
         for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
-            Number userInputNumber = userInputNumbers.get(i);
+            Number userInputNumber = userNumberList.get(i);
             Number randomNumber = randomNumberList.get(i);
 
             if (userInputNumber.equals(randomNumber)) {
@@ -39,7 +40,7 @@ public class UserInputNumbers {
     public int countBalls(RandomNumbers randomNumbers) {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
         for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
-            Number userInputNumber = userInputNumbers.get(i);
+            Number userInputNumber = userNumberList.get(i);
             if (randomNumberList.contains(userInputNumber) && !randomNumberList.get(i).equals(userInputNumber)) {
                 ballCount += 1;
             }
