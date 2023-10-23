@@ -1,7 +1,8 @@
 package baseball;
 
+import baseball.enumeration.GameRestartStatus;
 import baseball.gamemanager.GameManager;
-import baseball.result.BallCountResult;
+import baseball.result.BaseballGameResult;
 import baseball.ui.ConsoleDisplayFactory;
 import baseball.ui.GameRestartChoiceDisplay;
 import baseball.ui.GameStartDisplay;
@@ -46,18 +47,21 @@ public class Application {
 
     while(true) {
       start.print(GameStartDisplay.NUMBER_INPUT_MESSAGE);
+
       gameManager.requestUserInput();
 
-      BallCountResult ballCountResult = gameManager.calculateResult();
-      resultDrawer.print(ballCountResult);
+      BaseballGameResult baseballGameResult = gameManager.calculateResult();
+      resultDrawer.print(baseballGameResult);
 
       if (!gameManager.isThreeStrike()) {
         continue;
       }
 
-      endDrawer.print(ballCountResult); //모든 숫자를 맞추었다면 결과 및 메세지 출력
-      restartDrawer.print(GameRestartChoiceDisplay.RESTART_MESSAGE); //재시작, 종료 여부 확인
-      if (gameManager.requestGameRestartChoice() == 2) {
+      endDrawer.print(baseballGameResult);
+
+      restartDrawer.print(GameRestartChoiceDisplay.RESTART_MESSAGE);
+
+      if (gameManager.requestGameRestartChoice() == GameRestartStatus.END) {
         break;
       }
 

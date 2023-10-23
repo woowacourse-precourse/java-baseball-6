@@ -1,9 +1,10 @@
 package baseball.gamemanager;
 
+import baseball.enumeration.GameRestartStatus;
 import baseball.input.UserNumberInputReader;
 import baseball.property.BaseballGameProperty;
 import baseball.random.RandomNumberGenerator;
-import baseball.result.BallCountResult;
+import baseball.result.BaseballGameResult;
 import baseball.validation.DuplicateNumberValidator;
 import baseball.validation.NumberContainZeroValidator;
 import baseball.validation.NumberRangeValidator;
@@ -70,7 +71,7 @@ public class GameManager {
     numberRangeValidator.validate(userInputNumber);
   }
 
-  public BallCountResult calculateResult() {
+  public BaseballGameResult calculateResult() {
 
     return null;
   }
@@ -79,7 +80,18 @@ public class GameManager {
     return this.end;
   }
 
-  public int requestGameRestartChoice() {
-    return userNumberInputReader.readRestartChoiceInput();
+  public GameRestartStatus requestGameRestartChoice() {
+
+    Integer inputNumber = userNumberInputReader.readRestartChoiceInput();
+    if (GameRestartStatus.RESTART.isEqualStatusNumber(inputNumber)) {
+      return GameRestartStatus.RESTART;
+    }
+
+    if (GameRestartStatus.END.isEqualStatusNumber(inputNumber)) {
+      return GameRestartStatus.END;
+    }
+
+    throw new IllegalArgumentException("재 시작 값을 잘못 선택 했습니다. 게임을 종료합니다.");
   }
+
 }

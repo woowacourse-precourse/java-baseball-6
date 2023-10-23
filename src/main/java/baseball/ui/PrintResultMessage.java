@@ -1,9 +1,9 @@
 package baseball.ui;
 
-import baseball.result.BallCountResult;
+import baseball.result.BaseballGameResult;
 
 public interface PrintResultMessage extends PrintMessage {
 
-  void print(BallCountResult ballCountResult);
+  void print(BaseballGameResult baseballGameResult);
 
 }

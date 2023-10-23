@@ -1,6 +1,6 @@
 package baseball.ui;
 
-import baseball.result.BallCountResult;
+import baseball.result.BaseballGameResult;
 
 /**
  * @author 민경수
@@ -10,7 +10,7 @@ import baseball.result.BallCountResult;
 public class GameResultDisplay extends GameStartDisplay implements PrintResultMessage{
 
   @Override
-  public void print(BallCountResult ballCountResult) {
+  public void print(BaseballGameResult baseballGameResult) {
 
   }
 
