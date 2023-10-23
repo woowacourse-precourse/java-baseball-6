@@ -8,6 +8,8 @@ public class GameOver {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s = Console.readLine();
-        return ValidCheck.restartNumCheck(s);
+        ValidCheck.typeCheck(s);
+        ValidCheck.restartCheck(s);
+        return Integer.parseInt(s);
     }
 }

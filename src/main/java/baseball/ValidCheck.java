@@ -38,13 +38,11 @@ public class ValidCheck {
         }
     }
     //사용자의 입력수가 int인지 그리고 1과 2인지 확인
-    public static int restartNumCheck(String s){
+    public static void restartCheck(String s){
         try{
-            int i = Integer.parseInt(s);
-            if (i!=1 && i!=2){
+            if (!s.equals("1") && !s.equals("2")){
                 throw new IllegalArgumentException();
             }
-            return i;
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }
