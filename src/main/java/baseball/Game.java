@@ -19,8 +19,9 @@ public class Game {
         CheckInputNumber checkInputNumber = new CheckInputNumber();
 
         int strike = checkInputNumber.checkStrike(randomNumber, userNumber);
+        int ball = checkInputNumber.checkBall(randomNumber, userNumber);
 
-        System.out.println(strike);
+        System.out.println(strike + " " + ball);
 
 
     }

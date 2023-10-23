@@ -18,4 +18,19 @@ public class CheckInputNumber {
         }
         return strike;
     }
+
+    public int checkBall(String randomNumber, String userNumber) {
+
+        String[] randomNumberArr = String.valueOf(randomNumber).split("");
+        String[] userNumberArr = String.valueOf(userNumber).split("");
+
+        for(int i=0; i<NUMBER_LENGTH; i++) {
+            for(int k=0; k<NUMBER_LENGTH; k++){
+                if(randomNumberArr[i].equals(userNumberArr[k]) && i != k) {
+                    ball++;
+                }
+            }
+        }
+        return ball;
+    }
 }
