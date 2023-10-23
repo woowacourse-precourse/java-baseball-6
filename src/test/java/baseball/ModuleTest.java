@@ -26,4 +26,13 @@ public class ModuleTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.testCheckDigit("ㄱ34"));
     }
 
+    @Test
+    void 입력값_변환_확인() {
+        UserNumber userNumber = new UserNumber();
+        List<Integer> integers = userNumber.testCheckStringToDigit("123");
+        Assertions.assertEquals(integers.get(0), 1);
+        Assertions.assertEquals(integers.get(1), 2);
+        Assertions.assertEquals(integers.get(2), 3);
+    }
+
 }

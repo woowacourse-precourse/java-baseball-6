@@ -30,6 +30,15 @@ public class UserNumber {
         }
     }
 
+    private List<Integer> StringToDigit(String word) {
+        List<Integer> digitList = new ArrayList<>();
+        for (int i = 0; i < word.length(); i++) {
+            int digit = Character.getNumericValue(word.charAt(i));
+            digitList.add(digit);
+        }
+        return digitList;
+    }
+
     //    private method 테스트를 위한 function
     public void testCheckLength(String word) throws IllegalArgumentException {
         checkLength(word);
@@ -37,5 +46,9 @@ public class UserNumber {
 
     public void testCheckDigit(String word) throws IllegalArgumentException {
         checkDigit(word);
+    }
+
+    public List<Integer> testCheckStringToDigit(String word) {
+        return StringToDigit(word);
     }
 }
