@@ -26,6 +26,24 @@ import java.util.List;
  */
 public class Application {
 
+	public static boolean isValid(String input) {
+		try {
+			if (input.length() != 3) {
+				return false;
+			}
+			if (Integer.parseInt(input) < 100 || Integer.parseInt(input) > 999) {
+				return false;
+			}
+			if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2)
+					|| input.charAt(0) == input.charAt(2)) {
+				return false;
+			}
+		} catch (InputMismatchException e) {
+			throw new IllegalArgumentException("숫자만 입력해주세요.");
+		}
+		return true;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
