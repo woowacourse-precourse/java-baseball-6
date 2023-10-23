@@ -1,7 +1,7 @@
 package baseball.util;
 
-import static baseball.util.Converter.convertIntegerListToString;
-import static baseball.util.Converter.convertStringToIntegerList;
+import static baseball.util.Converter.integerListToString;
+import static baseball.util.Converter.stringToIntegerList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -19,7 +19,7 @@ class ConverterTest {
         String number = "123";
 
         // when
-        final List<Integer> numbers = convertStringToIntegerList(number);
+        final List<Integer> numbers = stringToIntegerList(number);
 
         // then
         assertThat(numbers).containsExactly(1, 2, 3);
@@ -31,7 +31,7 @@ class ConverterTest {
         List<Integer> numbers = List.of(1, 2, 3);
 
         // when
-        final String number = convertIntegerListToString(numbers);
+        final String number = integerListToString(numbers);
 
         // then
         assertThat(number).isEqualTo("123");
