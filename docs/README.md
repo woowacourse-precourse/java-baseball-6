@@ -18,8 +18,8 @@
         <th align="center">Description</th>
     </tr>
     <tr>
-        <td><b>📃&nbsp;&nbsp;config</b></td>
-        <td>GlobalConfig</td>
+        <td><b>📃&nbsp;&nbsp;global</b></td>
+        <td>GameConfig</td>
         <td>전역으로 작용하는 설정<br/>(숫자 길이 제약, 뽑을 숫자 범위) Enum 파일</td>
     </tr>
     <tr><td colspan="3"></td></tr>
@@ -65,7 +65,7 @@
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td colspan="3"><center><b>Image</b></center></td>
+        <td colspan="3" align="center"><b>Image</b></center></td>
     </tr>
     <tr>
         <td colspan="3"><img src="https://github.com/woowacourse-precourse/java-baseball-6/assets/112257466/9cf30277-2b69-4781-a80e-dfa9325598d7" width="99%"></td>
