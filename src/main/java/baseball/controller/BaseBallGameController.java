@@ -1,5 +1,8 @@
 package baseball.controller;
 
+import static baseball.enums.Constant.GAME_END_COMMAND;
+import static baseball.enums.Constant.GAME_RESTART_COMMAND;
+
 import baseball.domain.BaseBallGameService;
 import baseball.domain.ComputerRandomNumbers;
 import baseball.utils.Utils;
@@ -11,8 +14,6 @@ import java.util.List;
 public class BaseBallGameController {
 
     private static final String CORRECT_RESULT = "3스트라이크";
-    private static final String RESTART_COMMAND = "1";
-    private static final String END_COMMAND = "2";
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -44,12 +45,13 @@ public class BaseBallGameController {
 
             String userGameCommand = inputView.getUserGameCommand();
             inputValidate.validateGameCommand(userGameCommand);
-            if (userGameCommand.equals(RESTART_COMMAND)) {
+            int numericValue = Character.getNumericValue(userGameCommand.charAt(0));
+            if (numericValue == GAME_RESTART_COMMAND.getConstant()) {
                 shouldStartGame = true;
                 continue;
             }
 
-            if (userGameCommand.equals(END_COMMAND)) {
+            if (numericValue == GAME_END_COMMAND.getConstant()) {
                 shouldStartGame = false;
             }
         }
