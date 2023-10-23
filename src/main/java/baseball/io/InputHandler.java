@@ -3,27 +3,20 @@ package baseball.io;
 
 import static baseball.validation.InputValidation.validExpectedNums;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputHandler {
 
-    private final BufferedReader br;
-
-    public InputHandler() {
-        br = new BufferedReader(new InputStreamReader(System.in));
-    }
-
     public Integer scanInteger() {
         int input;
         try {
-            input = Integer.parseInt(br.readLine());
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
+            input = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
         }
+
         return input;
     }
 
