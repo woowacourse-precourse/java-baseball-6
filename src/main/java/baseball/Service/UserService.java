@@ -1,30 +1,24 @@
 package baseball.Service;
 
-import static baseball.util.Constants.NUMBER_SIZE;
-
-import baseball.model.User;
+import baseball.model.NumberList;
 import baseball.util.Parser;
 import baseball.view.TextInterface;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class UserService {
-    private User user;
     private final TextInterface textInterface = new TextInterface();
     private final Parser parser = new Parser();
+    NumberList userAnswer;
 
-    public String waitInput() {
+    public List<Integer> readAnswer() {
         textInterface.isWaiting();
-        String input = Console.readLine();
-        if (input.length() != NUMBER_SIZE) {
-            throw new IllegalArgumentException();
-        }
-        return input;
+        return setAnswer(Console.readLine());
     }
 
-    public List<Integer> setInput(String inputString) {
+    public List<Integer> setAnswer(String inputString) {
         List<Integer> inputList = parser.stringToIntegerList(inputString);
-        user = new User(inputList);
+        userAnswer = new NumberList(inputList);
         return inputList;
     }
 }

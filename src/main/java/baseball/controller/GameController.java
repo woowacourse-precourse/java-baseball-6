@@ -8,7 +8,6 @@ import static baseball.util.Constants.WRONG_ANSWER;
 import baseball.Service.ComputerService;
 import baseball.Service.GameService;
 import baseball.Service.UserService;
-import java.util.HashMap;
 import java.util.List;
 
 public class GameController {
@@ -22,32 +21,30 @@ public class GameController {
     }
 
     public void initGame() {
-        gameService.init();
-        computerService.init();
+        gameService.init();//출력
+        computerService.init(); //난수생성해서 객체 생성
     }
 
     public void startGame() {
-        String userAnswerString = userService.waitInput();
-        List<Integer> userAnswer = userService.setInput(userAnswerString);
-        System.out.println(userAnswer);
-        HashMap<Integer, Integer> resultMap = computerService.compareAnswer(userAnswer);
-        int result = gameService.determine(resultMap);
+        List<Integer> userAnswer = userService.readAnswer();
+        List<Integer> resultList = computerService.compareAnswer(userAnswer);
+        int result = gameService.analyze(resultList);
         if (result == CORRECT_ANSWER) {
-            endGame();
+            winGame();
         }
         if (result == WRONG_ANSWER) {
             startGame();
         }
     }
 
-    public void endGame() {
-        String select = gameService.end();
+    public void winGame() {
+        String select = gameService.success();
 
         if (select.equals(CONTINUE)) {
             start();
         }
         if (select.equals(EXIT)) {
-            return;
+            gameService.end();
         }
         if (!select.equals(CONTINUE) && !select.equals(EXIT)) {
             throw new IllegalArgumentException();

@@ -1,41 +1,30 @@
 package baseball.Service;
 
-import static baseball.util.Constants.BALL_KEY;
+import static baseball.util.Constants.ANSWER_SIZE;
 import static baseball.util.Constants.MAX_NUMBER;
 import static baseball.util.Constants.MIN_NUMBER;
-import static baseball.util.Constants.NUMBER_SIZE;
-import static baseball.util.Constants.STRIKE_KEY;
 
-import baseball.model.Computer;
+import baseball.model.NumberList;
 import baseball.util.Random;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerService {
-    private Computer computer;
-    private Random random = new Random();
+    private NumberList computerAnswer;
+    private final Random random = new Random();
 
     public void init() {
-        List<Integer> answer = random.createRandomNumberList(NUMBER_SIZE, MIN_NUMBER, MAX_NUMBER);
-        computer = new Computer(answer);
+        List<Integer> answer = random.createRandomNumberList(ANSWER_SIZE, MIN_NUMBER, MAX_NUMBER);
+        computerAnswer = new NumberList(answer);
     }
 
-    public HashMap<Integer, Integer> compareAnswer(List<Integer> userList) {
-        int strike = 0;
-        int ball = 0;
-        HashMap<Integer, Integer> resultMap = new HashMap<>();
-
-        for (int index = 0; index < userList.size(); index++) {
-            int temp = userList.get(index);
-            if (computer.isContain(temp) && computer.isSameDigit(index, temp)) {
-                strike++;
-            }
-            if (computer.isContain(temp) && !computer.isSameDigit(index, temp)) {
-                ball++;
-            }
+    public List<Integer> compareAnswer(List<Integer> userAnswer) {
+        List<Integer> resultList = new ArrayList<>();
+        for (int index = 0; index < userAnswer.size(); index++) {
+            int element = userAnswer.get(index);
+            int result = computerAnswer.determine(element, index);
+            resultList.add(result);
         }
-        resultMap.put(STRIKE_KEY, strike);
-        resultMap.put(BALL_KEY, ball);
-        return resultMap;
+        return resultList;
     }
 }
