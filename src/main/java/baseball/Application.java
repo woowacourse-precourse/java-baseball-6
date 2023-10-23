@@ -14,12 +14,12 @@ public class Application {
         new Application().run();
     }
 
-    final String startMessage = "숫자 야구 게임을 시작합니다.";
+    final String start = "숫자 야구 게임을 시작합니다.";
     final String strike = "스트라이크";
     final String ball = "볼";
     final String nothing = "낫싱";
     final String requestCommand = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    final String inputMessage = "숫자를 입력해 주세요 : ";
+    final String requestNumber = "숫자를 입력해 주세요 : ";
     final String end = "게임 종료";
     List<Integer> numbers;
 
@@ -27,14 +27,14 @@ public class Application {
         // while 자리
             // 0 진행 1 init 2 종료
         int gameStatus = 1;
+        System.out.println(start);
         while(gameStatus!=2){
             if(gameStatus==1){
                 init();
-                System.out.println(startMessage);
                 gameStatus = 0;
             }
 
-            System.out.print(inputMessage);
+            System.out.print(requestNumber);
             int[] ballCount = countBallAndStrike(inputNumber());
 
             // ball/strike 메시지
@@ -44,7 +44,9 @@ public class Application {
                 System.out.println(requestCommand);
                 String cmd = inputCmd();
                 gameStatus = Integer.parseInt(cmd);
-                System.out.println(end);
+                if(gameStatus==2){
+                    System.out.println(end);
+                }
             }
         }
     }
@@ -65,9 +67,8 @@ public class Application {
 
             check[number] = true;
             numbers.add(number);
-            System.out.print(number);
         }
-        System.out.println();
+
         return numbers;
     }
 
@@ -128,7 +129,6 @@ public class Application {
         if(set.size()==3){
             return true;
         }
-
         return false;
     }
 
