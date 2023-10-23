@@ -15,7 +15,7 @@ public class Computer {
         return computerNumber;
     }
 
-    public void drawComputerNumber(){
+    public void selectComputerNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < numberSize) {
             int randomNumber = Randoms.pickNumberInRange(startNumber, endNumber);

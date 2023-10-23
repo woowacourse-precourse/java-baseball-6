@@ -25,7 +25,7 @@ public class BaseballController {
     }
 
     public void startPlayGame() {
-        computer.drawComputerNumber();
+        computer.selectComputerNumber();
         enterPlayer();
     }
 
