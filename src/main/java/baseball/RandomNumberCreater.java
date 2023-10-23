@@ -8,13 +8,13 @@ import java.util.Set;
 public class RandomNumberCreater {
     static final int NUMBER_LENGTH = 3;
 
-    int randomNumber;
+    String randomNumber;
 
     public void RandomNumber() {
         this.randomNumber = this.getRandomNumber();
     }
 
-    public int getRandomNumber() {
+    public String getRandomNumber() {
         Set<Integer> randomDigitSet = new HashSet<>();
 
         while (true) {
@@ -30,8 +30,6 @@ public class RandomNumberCreater {
             randomNumberString += String.valueOf(randomDigit);
         }
 
-        randomNumber = Integer.parseInt(randomNumberString);
-
-        return randomNumber;
+        return randomNumberString;
     }
 }
