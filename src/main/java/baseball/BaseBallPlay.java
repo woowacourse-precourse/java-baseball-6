@@ -45,7 +45,6 @@ public class BaseBallPlay {
 
     public static void createComNums() {
         comNums = new ComNums();
-        comNums.getComNums().stream().forEach(System.out::println);
     }
 
     public void createUserNums() {

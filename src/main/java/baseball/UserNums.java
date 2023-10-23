@@ -32,10 +32,6 @@ public class UserNums {
         this.userNums = user_int_list;
     }
 
-    public List<Integer> getUserNums() {
-        return userNums;
-    }
-
     public boolean contains(int num) {
         return userNums.contains(num);
     }

@@ -18,10 +18,6 @@ public class ComNums {
         this.comNums = comList;
     }
 
-    public List<Integer> getComNums() {
-        return comNums;
-    }
-
     public boolean contains(int num) {
         return comNums.contains(num);
     }
@@ -32,9 +28,5 @@ public class ComNums {
 
     public int size() {
         return comNums.size();
-    }
-
-    public void set(int randomNum) {
-        comNums.add(randomNum);
     }
 }
