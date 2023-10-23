@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberGenerator {
-    ValidationPlayerNumber validationPlayerNumber = new ValidationPlayerNumber();
+    ValidationPlayerNumber validationPlayerNumber = new ValidationPlayerNumber(); //
 
     public List<Integer> getPlayerNumber() { // 플레이어가 3개의 번호를 입력받아 Integer List로 반환하게 해주는 메서드
         List<Integer> playerNumber = new ArrayList<>();
