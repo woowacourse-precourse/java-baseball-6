@@ -4,9 +4,9 @@ import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_DUPLICAT
 import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_LENGTH_INVALID;
 import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_NON_NUMBER;
 import static baseball.model.constants.ExceptionMessages.PLAYER_NUMBERS_RANGE_INVALID;
-import static baseball.model.constants.GameConstants.PLAYER_NUMBERS_MAX_VALUE;
-import static baseball.model.constants.GameConstants.PLAYER_NUMBERS_MIN_VALUE;
-import static baseball.model.constants.GameConstants.PLAYER_NUMBERS_SIZE;
+import static baseball.model.constants.GameConstants.GAME_NUMBERS_MAX_VALUE;
+import static baseball.model.constants.GameConstants.GAME_NUMBERS_MIN_VALUE;
+import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
 
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +24,7 @@ public class PlayerNumbersValidatorImp implements PlayerNumbersValidator {
 
     @Override
     public void isLengthCorrect(List<Integer> convertNumbers) {
-        if (convertNumbers.size() != PLAYER_NUMBERS_SIZE) {
+        if (convertNumbers.size() != GAME_NUMBERS_SIZE) {
             throw new IllegalArgumentException(PLAYER_NUMBERS_LENGTH_INVALID);
         }
     }
@@ -32,7 +32,7 @@ public class PlayerNumbersValidatorImp implements PlayerNumbersValidator {
     @Override
     public void isRange(List<Integer> convertNumbers) {
         for (int number : convertNumbers) {
-            if (number < PLAYER_NUMBERS_MIN_VALUE || number > PLAYER_NUMBERS_MAX_VALUE) {
+            if (number < GAME_NUMBERS_MIN_VALUE || number > GAME_NUMBERS_MAX_VALUE) {
                 throw new IllegalArgumentException(PLAYER_NUMBERS_RANGE_INVALID);
             }
         }
@@ -41,7 +41,7 @@ public class PlayerNumbersValidatorImp implements PlayerNumbersValidator {
     @Override
     public void isDuplicate(List<Integer> convertNumbers) {
         Set<Integer> numbers = new HashSet<>(convertNumbers);
-        if (numbers.size() != PLAYER_NUMBERS_SIZE) {
+        if (numbers.size() != GAME_NUMBERS_SIZE) {
             throw new IllegalArgumentException(PLAYER_NUMBERS_DUPLICATED);
         }
     }

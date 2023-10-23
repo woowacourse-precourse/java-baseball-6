@@ -9,7 +9,7 @@ public class Computer {
 
     public Computer() {
         ComputerNumbersGenerator computerNumbersGenerator = new ComputerNumbersGeneratorImp();
-        this.computerNumbers = computerNumbersGenerator.generate();
+        computerNumbers = computerNumbersGenerator.generateComputerNumbers();
     }
 
     public List<Integer> getComputerNumbers() {

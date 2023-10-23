@@ -1,6 +1,6 @@
 package baseball.model.domain;
 
-import static baseball.model.constants.GameConstants.PLAYER_NUMBERS_SIZE;
+import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
@@ -15,6 +15,6 @@ class ComputerTest {
 
         List<Integer> randomNumbers = computer.getComputerNumbers();
 
-        assertEquals(PLAYER_NUMBERS_SIZE, randomNumbers.size());
+        assertEquals(GAME_NUMBERS_SIZE, randomNumbers.size());
     }
 }
