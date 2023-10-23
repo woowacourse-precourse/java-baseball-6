@@ -10,8 +10,12 @@ import java.util.List;
 public class BaseballController {
     private List<Number> numbers = new ArrayList<>();
 
-    public void playGame() {
+    public void initGame() {
         OutputView.startGame();
+    }
+
+    public void playGame() {
+        Number.reset();
         do {
             playRound();
         } while (!isEnd());
@@ -38,6 +42,7 @@ public class BaseballController {
     }
 
     public boolean restartGame() {
-        return false;
+        OutputView.restartGame();
+        return InputView.restartGame();
     }
 }

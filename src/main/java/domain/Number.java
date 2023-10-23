@@ -13,15 +13,15 @@ public class Number {
     private static final int maximumNumber = 9;
     private static final List<Integer> goalNumbers = new ArrayList<>(numberCount);
 
-    static {
-        setGoalNumbers();
-    }
-
     public Number(int num) {
         this.num = num;
     }
 
-    private static void setGoalNumbers() {
+    public static void reset() {
+        resetGoalNumbers();
+    }
+
+    private static void resetGoalNumbers() {
         goalNumbers.clear();
         for (int i = 0; i < numberCount; i++) {
             int randomNumber;
