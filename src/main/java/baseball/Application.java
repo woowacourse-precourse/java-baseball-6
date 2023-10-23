@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-    // TODO: 원시값 1, 3, 9 포장하기
     private static final int ANSWER_SIZE = 3;
     private static final int UPPER_BOUND = 9;
     private static final int LOWER_BOUND = 1;
@@ -20,6 +19,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        // TODO: 원시값 포장 및 bound 변화에 대응할 수 있도록 반복문으로 만들기
         if (n < LOWER_BOUND - 1 || n > 999) {
             throw new IllegalArgumentException();
         }
@@ -33,7 +33,6 @@ public class Application {
                 .toList();
     }
 
-    // TODO: else 분리
     static boolean wantsReplay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
@@ -41,32 +40,39 @@ public class Application {
             return true;
         } else if (input.equals("2")) {
             return false;
-        } else {
-            throw new IllegalArgumentException();
+        }
+        throw new IllegalArgumentException();
+    }
+
+    static void printResult(int[] result) {
+        if (result[1] > 0 && result[0] > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", result[1], result[0]);
+        } else if (result[0] > 0) {
+            System.out.printf("%d스트라이크\n", result[0]);
+        } else if (result[1] > 0) {
+            System.out.printf("%d볼\n", result[1]);
+        } else if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
         }
     }
 
-    // TODO: else 분리, indent 줄이기
+    static boolean foundAnswer(int[] result) {
+        if (result[0] == ANSWER_SIZE) {
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", ANSWER_SIZE);
+            return true;
+        }
+        return false;
+    }
+
     static void play() {
         Player pitcher = new Player();
+        int[] result;
 
-        while (true) {
+        do {
             Player hitter = new Player(readNumber());
-            int[] result = pitcher.compareWith(hitter);
-            if (result[1] > 0 && result[0] > 0) {
-                System.out.printf("%d볼 %d스트라이크\n", result[1], result[0]);
-            } else if (result[0] > 0) {
-                System.out.printf("%d스트라이크\n", result[0]);
-            } else if (result[1] > 0) {
-                System.out.printf("%d볼\n", result[1]);
-            } else {
-                System.out.println("낫싱");
-            }
-            if (result[0] == ANSWER_SIZE) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
-        }
+            result = pitcher.compareWith(hitter);
+            printResult(result);
+        } while (!foundAnswer(result));
     }
 
     public static void main(String[] args) {
