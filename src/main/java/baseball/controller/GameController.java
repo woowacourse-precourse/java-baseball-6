@@ -36,6 +36,7 @@ public class GameController {
     private BaseballNumbers manageGameResult(BaseballNumbers computerNumber, BaseballNumbers userInputNumber) {
         if (hintService.isCorrect(computerNumber, userInputNumber)) {
             int gameType = gameView.endGame();
+
             if (gameType == 1) {
                 computerNumber = gameService.generateComputerNumber();
             }
@@ -43,6 +44,7 @@ public class GameController {
                 stopGame = true;
             }
         }
+
         return computerNumber;
     }
 }
