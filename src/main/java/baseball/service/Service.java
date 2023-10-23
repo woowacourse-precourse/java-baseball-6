@@ -5,7 +5,7 @@ import baseball.domain.ContinueAnswer;
 import baseball.domain.GamePlayer;
 import baseball.domain.Result;
 
-import static baseball.domain.Const.FIXED_THREE_CIPHERS;
+import static baseball.domain.Const.FIXED_ANSWER_CIPHERS;
 
 public class Service {
 
@@ -26,7 +26,7 @@ public class Service {
     public Result calculateResult(String inputtedNumbers) {
         initData(inputtedNumbers);
 
-        for (int i = 0; i < FIXED_THREE_CIPHERS; i++) {
+        for (int i = 0; i < FIXED_ANSWER_CIPHERS; i++) {
             int gamePlayerNumber = gamePlayer.extractOneNumber(i);
             if (computer.isStrike(gamePlayerNumber, i)) result.addStrike();
             else if (computer.isBall(gamePlayerNumber, i)) result.addBall();
