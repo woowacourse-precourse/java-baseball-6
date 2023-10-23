@@ -40,4 +40,12 @@ public class NumberGroup {
 
         return new NumberGroup(com_num);
     }
+
+    public Number get(int i) {
+        return numbers.get(i);
+    }
+
+    public boolean contains(Number number) {
+        return this.numbers.contains(number);
+    }
 }
