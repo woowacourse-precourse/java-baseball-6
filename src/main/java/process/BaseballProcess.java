@@ -19,7 +19,7 @@ public class BaseballProcess {
         boolean isCheck = true;
         while (isCheck) {
             playRound();
-            int status = inputNumber.getInputStatus();
+            int status = inputNumber.inputStatus();
             isCheck = isRestart(status);
         }
         stop();
@@ -29,25 +29,20 @@ public class BaseballProcess {
         List<Integer> computer = createRandom();
         boolean isCheck = true;
         while (isCheck) {
-            List<Integer> player = inputNumber.getInputNumber();
-            String result = getCount(computer, player);
-            System.out.println(result);
-            isCheck = isFinish(computer, player);
+            List<Integer> player = inputNumber.inputNumber();
+            getCount(computer, player);
+            isCheck = isContinue(computer, player);
         }
-    }
-
-    public String getCount(List<Integer> computer, List<Integer> player) {
-        int ball = accountBall(computer, player);
-        int strike = accountStrike(computer, player);
-        return getResult(ball, strike);
-    }
-
-    public void stop() {
-        System.out.println("게임을 종료합니다.");
     }
 
     public List<Integer> createRandom() {
         return randomNumber.getRandomNumber();
+    }
+
+    public void getCount(List<Integer> computer, List<Integer> player) {
+        int ball = accountBall(computer, player);
+        int strike = accountStrike(computer, player);
+        printResult(ball, strike);
     }
 
     public boolean isBall(int index, List<Integer> computer, List<Integer> player) {
@@ -88,23 +83,20 @@ public class BaseballProcess {
         return strike;
     }
 
-    public String getResult(int ball, int strike) {
-        StringBuilder sb = new StringBuilder();
+    public void printResult(int ball, int strike) {
         if (ball > 0) {
-            sb.append(ball);
-            sb.append("볼 ");
+            System.out.print(ball + "볼 ");
         }
         if (strike > 0) {
-            sb.append(strike);
-            sb.append("스트라이크");
+            System.out.print(strike + "스트라이크");
         }
         if (ball == 0 && strike == 0) {
-            sb.append("낫싱");
+            System.out.print("낫싱");
         }
-        return sb.toString();
+        System.out.println();
     }
 
-    public boolean isFinish(List<Integer> computer, List<Integer> player) {
+    public boolean isContinue(List<Integer> computer, List<Integer> player) {
         int strike = accountStrike(computer, player);
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -118,5 +110,9 @@ public class BaseballProcess {
             return true;
         }
         return false;
+    }
+
+    public void stop() {
+        System.out.println("게임을 종료합니다.");
     }
 }
