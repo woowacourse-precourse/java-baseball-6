@@ -39,6 +39,32 @@ public class Game {
         computer.createNumbers();
     }
 
+    public void getHint() {
+        String playerNumString = player.getPlayerNumString();
+        char[] playerNumCharArray = playerNumString.toCharArray();
+
+        ComputerNumberHashMap computerNumbers = computer.getComputerNumbers();
+
+        for (int index = 0; index < 3; index++) {
+            int playerNumber = playerNumCharArray[index] - '0';
+            if (computerNumbers.contain(playerNumber)) {
+                if (computerNumbers.equalIndex(playerNumber, index)) {
+                    strike++;
+                }
+                else {
+                    ball++;
+                }
+            }
+        }
+
+        if (ball != 0) {
+            System.out.println(ball + SYSTEM_BALL_MASSAGE);
+        }
+        if (strike != 0) {
+            System.out.println(strike + SYSTEM_STRIKE_MASSAGE);
+        }
+    }
+
     public void playGame() {
         while (!threeStrike()) {
             System.out.print(SYSTEM_INPUT_MASSAGE);
