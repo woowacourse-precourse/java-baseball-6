@@ -11,20 +11,27 @@ import java.util.Set;
 
 public class BaseballGame {
 
-    public void GameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
+    static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    static final String INPUT_MESSAGE = "숫자를 입력해주세요: ";
+    static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private int strike;
+    private int ball;
+
 
     public void play() {
         List<Integer> userNumber;
-        GameStart();
-        System.out.print("숫자를 입력해주세요: ");
-        String userInput = Console.readLine();
-        changeNumber(userInput);
-        userNumber = changeIntegerList(userInput);
-        numberVaildation(userNumber);
-        duplicateValidation(userNumber);
-        sizeVaildation(userNumber);
+        System.out.println(START_MESSAGE);
+        while(strike < Computer.NUMBER_SIZE) {
+            System.out.print(INPUT_MESSAGE);
+            String userInput = Console.readLine();
+            changeNumber(userInput);
+            userNumber = changeIntegerList(userInput);
+            numberVaildation(userNumber);
+            duplicateValidation(userNumber);
+            sizeVaildation(userNumber);
+
+        }
+
     }
 
     public void changeNumber(String userInput) {
