@@ -10,6 +10,7 @@ public class ComputerController {
 
     public void saveRandomNumbers() {
         List<Integer> generatedNumbers = generateRandomNumbers();
+        computer.saveNumbers(generatedNumbers);
     }
 
     private List<Integer> generateRandomNumbers() {
