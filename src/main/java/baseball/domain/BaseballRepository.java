@@ -1,0 +1,58 @@
+package baseball.domain;
+
+import java.util.HashMap;
+
+public class BaseballRepository {
+    private Integer strike;
+    private Integer ball;
+    private static HashMap<String, Integer> baseball = new HashMap<>();
+    private static final BaseballRepository instance = new BaseballRepository();
+
+    public BaseballRepository(Integer strike, Integer ball) {
+        baseball.put("strike", strike);
+        baseball.put("ball", ball);
+    }
+
+    public BaseballRepository() {
+        baseball.put("strike", 0);
+        baseball.put("ball", 0);
+    }
+
+    public Integer getStrike() {
+        return baseball.get("strike");
+    }
+
+    public void setStrike(Integer strike) {
+        baseball.replace("strike", strike);
+    }
+
+    public Integer getBall() {
+        return baseball.get("ball");
+    }
+
+    public void setBall(Integer ball) {
+        baseball.replace("ball", ball);
+    }
+
+    public void addBall(){
+        setBall(baseball.get("ball")+1);
+    }
+
+    public void subBall(){
+        setBall(baseball.get("ball")-1);
+    }
+
+    public void addStrike(){
+        setStrike(baseball.get("strike")+1);
+    }
+
+    public static BaseballRepository getInstance() {
+        return instance;
+    }
+
+    public void clear() {
+        baseball.clear();
+        baseball.put("strike", 0);
+        baseball.put("ball", 0);
+    }
+}
