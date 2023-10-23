@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Game;
+import baseball.domain.Player;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -16,7 +17,8 @@ public class GameController {
     private void startProgram() {
         outputView.outputStartProgram();
         Game game = initGame();
-        startGame(game);
+        Player player = initPlayer();
+        startGame(game, player);
 
         if(inputView.inputRestartNumber().equals("1")) {
             startProgram();
@@ -28,22 +30,22 @@ public class GameController {
         return Game.numberOf(gameService.getRandomNumbers());
     }
 
-    private void startGame(Game game) {
-        inputNumber(game);
-        compareNumber(game);
+    private Player initPlayer() {
+        return new Player();
+    }
+
+    private void startGame(Game game, Player player) {
+        inputNumber(player);
+        game.compareNumber(player.getInputNumbers());
         printResult(game);
 
         if(!game.isThreeStrike()) {
-            startGame(game);
+            startGame(game, player);
         }
     }
 
-    private void inputNumber(Game game) {
-        game.setInputNumber(inputView.inputGameNumber());
-    }
-
-    private void compareNumber(Game game) {
-        game.compareNumber();
+    private void inputNumber(Player player) {
+        player.setInputNumber(inputView.inputGameNumber());
     }
 
     private void printResult(Game game) {
