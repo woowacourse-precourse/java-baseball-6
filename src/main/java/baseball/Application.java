@@ -2,8 +2,8 @@ package baseball;
 
 import baseball.Io.Input;
 import baseball.Io.Output;
-import baseball.service.CompareNumber;
-import baseball.service.RandomNumberGenerator;
+import baseball.util.CompareNumber;
+import baseball.util.RandomNumberGenerator;
 import java.util.List;
 
 public class Application {

@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.service.CompareNumber;
-import baseball.service.RandomNumberGenerator;
+import baseball.util.CompareNumber;
+import baseball.util.RandomNumberGenerator;
 import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
