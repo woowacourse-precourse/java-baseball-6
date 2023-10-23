@@ -22,12 +22,22 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 세자리가_아닌_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 유효하지_않은_입력_테스트() {
+        Player player = new Player();
+        String invalidInput = "0";
+
+        assertThatThrownBy(() -> player.getInputNumber(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Test
     void 유효한_재시작_옵션_테스트() {
@@ -48,6 +58,14 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 숫자가_아닌_재시작_옵션_테스트() {
+        Player player = new Player();
+        String invalidOption = "abc";
+
+        assertThatThrownBy(() -> player.receiveRetryOption(invalidOption))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
