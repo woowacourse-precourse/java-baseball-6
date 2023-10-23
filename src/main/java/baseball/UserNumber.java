@@ -20,32 +20,31 @@ public class UserNumber {
         return number;
     }
 
-    public void validateLength(String userNumber) {
-        if (userNumber.length() != MAX_NUMBER_LENGTH) {
+    public void validateLength(String number) {
+        if (number.length() != MAX_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void validateNumber(String userNumber) {
-        if (!userNumber.matches("^[1-9]*$")) {
+    public void validateNumber(String number) {
+        if (!number.matches("^[1-9]*$")) {
             throw new IllegalArgumentException();
         }
     }
 
     public void validateDuplication(String number) {
-        Set<Character> validateNumber = getCharacters(number);
+        Set<Character> validateNumber = extractCharactersToSet(number);
         if (validateNumber.size() != MAX_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    private Set<Character> getCharacters(String number) {
-        Set<Character> validateNumber = new HashSet<>();
-
+    private Set<Character> extractCharactersToSet(String number) {
+        Set<Character> validatedNumber = new HashSet<>();
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            validateNumber.add(number.charAt(i));
+            validatedNumber.add(number.charAt(i));
         }
-        return validateNumber;
+        return validatedNumber;
     }
 
 
