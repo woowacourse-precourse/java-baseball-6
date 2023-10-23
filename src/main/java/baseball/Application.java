@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-
+    int strike = 0;
+    int ball = 0;
     public List<Integer> selectRandomNumber(List<Integer> computerNumber){
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -23,10 +24,7 @@ public class Application {
     }
 
 
-    public boolean compareMyInputNumberAndComputerNumber(String myNumber, List<Integer> computerNumber) {
-        int strike = 0;
-        int ball = 0;
-
+    public void countStrikeAndBall(String myNumber, List<Integer> computerNumber) {
         for (int i =0; i<myNumber.length(); i++){
             int number = Character.getNumericValue(myNumber.charAt(i));
             if (number == computerNumber.get(i)){
@@ -35,13 +33,13 @@ public class Application {
                 ball++;
             }
         }
-        checkAnswerStrikeAndBall(strike,ball);
-        
-        if (strike == 3){
-            return true;
-        } else {
-            return false;
-        }
+//        checkAnswerStrikeAndBall(strike,ball);
+//
+//        if (strike == 3){
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 
     public boolean determineFinishOrAgainGame(int startNumOrEndNum){
@@ -103,6 +101,7 @@ public class Application {
         // TODO: 프로그램 구현
         Application baseballGame = new Application();
 
+
         System.out.print("숫자를 입력해주세요 : ");
 
         List<Integer> computerNumber = new ArrayList<>();
@@ -114,17 +113,17 @@ public class Application {
             baseballGame.checkOnlyInterger(myNumber);
             baseballGame.checkDuplicateNumber(myNumber);
             baseballGame.checkLengthNumber(myNumber);
-            boolean victory = baseballGame.compareMyInputNumberAndComputerNumber(myNumber,computerNumber);
-            if (victory) {
-                // strike가 3이였을 때 실행되는 부분
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int startNumOrEndNum = Integer.parseInt(Console.readLine());
-                if (startNumOrEndNum == 1){
-                    computerNumber.clear();
-                    computerNumber = baseballGame.selectRandomNumber(computerNumber);
-                }
-                isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
-            }
+            baseballGame.countStrikeAndBall(myNumber,computerNumber);
+//            if (victory) {
+//                // strike가 3이였을 때 실행되는 부분
+//                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//                int startNumOrEndNum = Integer.parseInt(Console.readLine());
+//                if (startNumOrEndNum == 1){
+//                    computerNumber.clear();
+//                    computerNumber = baseballGame.selectRandomNumber(computerNumber);
+//                }
+//                isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
+//            }
         }
     }
 }
