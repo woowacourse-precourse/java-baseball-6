@@ -3,6 +3,7 @@ package baseball.game;
 import static baseball.common.Constant.EXIT_NUMBER;
 
 import baseball.baseball.BaseBall;
+import baseball.baseball.BaseBallGenerator;
 import baseball.baseball.BaseBallInputDevice;
 import baseball.baseball.BaseBallOutputDevice;
 import baseball.baseball.Result;
@@ -10,10 +11,12 @@ import java.util.List;
 
 public class BaseBallGame implements Game {
 
+    private final BaseBallGenerator generator;
     private final BaseBallInputDevice inputDevice;
     private final BaseBallOutputDevice outputDevice;
 
     public BaseBallGame() {
+        this.generator = new BaseBallGenerator();
         this.inputDevice = new BaseBallInputDevice();
         this.outputDevice = new BaseBallOutputDevice();
     }
@@ -26,7 +29,8 @@ public class BaseBallGame implements Game {
 
     private void playBaseBallGame() {
         do {
-            BaseBall baseBall = new BaseBall();
+            List<Integer> ballNumbers = generator.generatedRandomBallNumbers();
+            BaseBall baseBall = new BaseBall(ballNumbers);
             playRound(baseBall);
         } while (!isEndBaseBallGame());
     }
