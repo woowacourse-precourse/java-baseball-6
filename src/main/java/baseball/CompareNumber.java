@@ -6,6 +6,15 @@ public class CompareNumber {
     int ball;
     int strike;
 
+    public int[] getCompareResult(List<String> user, List<String> computer) {
+        initCount();
+        countBall(user, computer);
+        countStrike(user, computer);
+        computeBallWithoutStrike();
+
+        return new int[]{ball, strike};
+    }
+
     public void initCount() {
         ball = 0;
         strike = 0;
