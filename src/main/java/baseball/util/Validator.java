@@ -10,6 +10,7 @@ public class Validator {
     public static void validateInputNumbers(String numbers) {
         isValidNumbersLength(numbers);
         isValidNumbersType(numbers);
+        isValidNumbersRange(numbers);
         isDuplicate(numbers);
     }
 
@@ -25,6 +26,22 @@ public class Validator {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static void isValidNumbersRange(String numbers) {
+        if (!hasValidNumberRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean hasValidNumberRange(String numbers) {
+        for (char digit : numbers.toCharArray()) {
+            int number = Character.getNumericValue(digit);
+            if (number < 1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void isDuplicate(String numbers) {
