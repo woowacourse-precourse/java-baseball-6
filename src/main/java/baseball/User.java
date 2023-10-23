@@ -11,6 +11,7 @@ public class User {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String INPUT_ERROR_MESSAGE = "3자리 정수를 입력해주세요.";
     private static final String INPUT_REGEX = "^[1-9]{3}$";
+
     int[] userInput = new int[INPUT_LENGTH];
 
     public void setUserInput() {
@@ -20,7 +21,7 @@ public class User {
         checkDuplicateInput(input);
 
         for(int i = 0; i < INPUT_LENGTH; i++){
-            this.userInput[i] = Character.getNumericValue(input.charAt(i));
+            userInput[i] = Character.getNumericValue(input.charAt(i));
         }
     }
 

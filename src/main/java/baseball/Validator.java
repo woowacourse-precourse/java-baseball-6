@@ -15,36 +15,38 @@ public class Validator {
     private static final String RESTART_NUMBER = "1";
     private static final String QUIT_NUMBER = "2";
 
-
-
-    Computer computer = new Computer();
-    User user = new User();
     private int ballCount = 0;
     private int strikeCount = 0;
 
+    Computer computer = new Computer();
+    User user = new User();
+
     private void initializeRandomNumber() {
-        this.computer.setComputerNumber();
+        computer.setComputerNumber();
     }
     private void checkStrike() {
-        this.strikeCount = 0;
+        strikeCount = 0;
+
         for(int i = 0; i < INPUT_LENGTH; i++) {
-            if (this.user.userInput[i] == this.computer.computerNumber[i]) {
-                this.strikeCount++;
+            if (user.userInput[i] == computer.computerNumber[i]) {
+                strikeCount++;
             }
         }
     }
     private void checkBall(){
-        this.ballCount = 0;
+        ballCount = 0;
+
         for(int i = 0; i < INPUT_LENGTH; i ++){
-            this.ballCount += countSameNumber(i);
+            ballCount += countSameNumber(i);
         }
-        if(this.strikeCount > 0) {
-            this.ballCount -= this.strikeCount;
+
+        if(strikeCount > 0) {
+            ballCount -= strikeCount;
         }
     }
     private int countSameNumber(int i) {
         for(int j = 0; j < INPUT_LENGTH; j++) {
-            if(this.user.userInput[i] == this.computer.computerNumber[j]) {
+            if(user.userInput[i] == computer.computerNumber[j]) {
                 return 1;
             }
         }
@@ -52,16 +54,17 @@ public class Validator {
     }
     private void printResultMessage() {
         String result = "";
-        if(this.ballCount > 0 && this.strikeCount > 0){
+
+        if(ballCount > 0 && strikeCount > 0){
             result = ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE;
         }
-        if(this.ballCount > 0 && this.strikeCount == 0) {
+        if(ballCount > 0 && strikeCount == 0) {
             result = ballCount + BALL_MESSAGE;
         }
-        if(this.ballCount == 0 && this.strikeCount > 0) {
+        if(ballCount == 0 && strikeCount > 0) {
             result = strikeCount + STRIKE_MESSAGE;
         }
-        if(this.ballCount == 0 && this.strikeCount == 0) {
+        if(ballCount == 0 && strikeCount == 0) {
             result = NOTHING_MESSAGE;
         }
         System.out.println(result);
@@ -73,11 +76,13 @@ public class Validator {
     private void game() {
         boolean quit = false;
         initializeRandomNumber();
+
         while(!quit) {
-            this.user.setUserInput();
+            user.setUserInput();
             checkStrike();
             checkBall();
             printResultMessage();
+
             if(strikeCount == INPUT_LENGTH) {
                 System.out.println(WIN_MESSAGE);
                 quit = askRetry();
