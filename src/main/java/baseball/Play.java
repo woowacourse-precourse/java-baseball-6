@@ -9,9 +9,9 @@ public class Play { // 숫자 야구 게임 진행 관련 클래스
     private final Rules rules;
 
     public Play() {
-        user = new User();
-        com = new Computer();
-        rules = new Rules();
+        this.user = new User();
+        this.com = new Computer();
+        this.rules = new Rules();
     }
 
     public void numberBaseBallGame() {  // 숫자 야구 게임 실행
