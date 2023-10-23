@@ -7,7 +7,7 @@ import java.util.*;
 public class Application {
     public static int gameNum;
     public static Scanner sc = new Scanner(System.in);
-    public static List<Integer> computer = new ArrayList<>();
+    public static List<Integer> computer;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         final int START_NUM = 1;
@@ -20,6 +20,7 @@ public class Application {
     }
     //컴퓨터 랜덤 숫자 3개를 만드는 메소드
     public static void makeComputerNumber() {
+        computer = new ArrayList<>();
         while(computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -27,7 +28,7 @@ public class Application {
             }
         }
         System.out.print("컴퓨터가 만든 숫자 : ");
-        for(int i : computer) System.out.println(i);
+        for(int i : computer) System.out.print(i);
         System.out.println();
     }
     public static void startGame() {
