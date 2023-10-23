@@ -38,7 +38,7 @@ public class Number {
     public static Number generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < NUMBER_LENGTH.getValue()) {
-            int number = pickNumberInRange(RANDOM_NUMBER_MAXIMUM.getValue(), RANDOM_NUMBER_MINIMUM.getValue());
+            int number = pickNumberInRange(RANDOM_NUMBER_MINIMUM.getValue(), RANDOM_NUMBER_MAXIMUM.getValue());
             if (!randomNumbers.contains(number)) {
                 randomNumbers.add(number);
             }
