@@ -7,7 +7,7 @@ import java.util.List;
 public class Computer implements BaseballPlayer {
 
     private static final int MAX_LENGTH = 3;
-    BaseballNumbers baseballNumbers;
+    private BaseballNumbers baseballNumbers;
 
     @Override
     public void inputBaseballNumbers() {
