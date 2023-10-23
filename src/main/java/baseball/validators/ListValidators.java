@@ -4,7 +4,7 @@ import java.util.List;
 
 public final class ListValidators {
 
-    public static void validateDistinct(List<Object> objects) {
+    public static <T> void validateDistinct(List<T> objects) {
         int entireSize = objects.size();
         int distinctSize = (int) objects.stream()
                 .distinct()

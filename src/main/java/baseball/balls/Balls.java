@@ -3,7 +3,6 @@ package baseball.balls;
 import baseball.validators.BallsValidators;
 import baseball.validators.ListValidators;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Balls {
 
@@ -32,16 +31,16 @@ public class Balls {
         return balls;
     }
 
-    private List<Object> values() {
+    private List<BallValue> values() {
         return balls.stream()
                 .map(Ball::getValue)
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    private List<Object> indexs() {
+    private List<BallIndex> indexs() {
         return balls.stream()
                 .map(Ball::getIndex)
-                .collect(Collectors.toList());
+                .toList();
     }
 
 }
