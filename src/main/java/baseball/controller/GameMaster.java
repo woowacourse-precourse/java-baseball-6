@@ -12,8 +12,9 @@ public class GameMaster {
         computer.generateBaseballNumbers();
 
         Player player = new Player();
-        player.inputBaseballNumbers();
-
-        computer.printBaseballResult(player.getBaseballNumbers());
+        while (!computer.isStrikeOut()) {
+            player.inputBaseballNumbers();
+            computer.printBaseballResult(player.getBaseballNumbers());
+        }
     }
 }
