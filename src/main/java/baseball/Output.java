@@ -16,13 +16,13 @@ public class Output {
             System.out.println(NOTHING);
         }
         else if (ball > 0 && strike > 0) {
-            System.out.println(ball+BALL+" "+strike+STRIKE);
+            System.out.println(ball + BALL + " " + strike + STRIKE);
         }
         else if (ball > 0) {
-            System.out.println(ball+BALL);
+            System.out.println(ball + BALL);
         }
         else if (strike > 0) {
-            System.out.println(strike+STRIKE);
+            System.out.println(strike + STRIKE);
         }
     }
 

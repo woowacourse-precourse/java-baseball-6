@@ -1,8 +1,17 @@
 package baseball;
 
 public class InputValidator {
-    public boolean isValidInput(String input){
-        return isInputThreeNumbers(input) && isDuplicated(input) && isDigitStringInRange(input);
+    public void isValidInput(String input){
+        if (!isInputThreeNumbers(input) || !isDuplicated(input) || !isDigitStringInRange(input)) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    public void isValidChoice(String input){
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isInputThreeNumbers(String input) {
