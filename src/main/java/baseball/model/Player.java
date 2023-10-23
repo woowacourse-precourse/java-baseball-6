@@ -24,10 +24,6 @@ public class Player {
         return guessNumber.getNumbers();
     }
 
-    public Integer getGameStateNumber() {
-        return gameStateNumber.getNumber();
-    }
-
     public boolean continueGame() {
         return gameStateNumber.isExit();
     }
