@@ -22,6 +22,7 @@ public class Referee {
                 strike += 1;
             }
         }
+
         return List.of(ball, strike);
     }
 
@@ -32,6 +33,7 @@ public class Referee {
         if (answer.contains(playerNumber)) {
             return BALL;
         }
+
         return NOTHING;
     }
 

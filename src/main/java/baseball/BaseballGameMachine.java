@@ -54,6 +54,7 @@ public class BaseballGameMachine {
         if (ball == 0 && strike == 3) {
             return true;
         }
+
         return false;
     }
 
@@ -63,6 +64,7 @@ public class BaseballGameMachine {
         if (convertedValue == 2) {
             return true;
         }
+
         return false;
     }
 }

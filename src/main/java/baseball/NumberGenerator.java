@@ -24,6 +24,7 @@ public class NumberGenerator {
 
     public int generateRandomNumber() {
         final int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+        
         return randomNumber;
     }
 }

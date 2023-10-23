@@ -52,6 +52,7 @@ public class InputValidation {
         if (inputValue < 1 || inputValue > 2) {
             throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
         }
+
         return inputValue;
     }
 
@@ -59,6 +60,7 @@ public class InputValidation {
         List<Integer> convertedList = playerInput.chars()
                 .mapToObj(c -> Character.getNumericValue((char) c))
                 .collect(Collectors.toList());
+
         return convertedList;
     }
 }

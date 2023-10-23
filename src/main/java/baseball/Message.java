@@ -26,6 +26,7 @@ public class Message {
     public String result(List<Integer> gameResult) {
         final int ball = gameResult.get(0);
         final int strike = gameResult.get(1);
+
         if (ball == 0 && strike == 0) {
             return "낫싱";
         }
