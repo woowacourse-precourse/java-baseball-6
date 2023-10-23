@@ -8,10 +8,10 @@ import java.util.stream.IntStream;
 
 public class WinningNumbers {
 
-    private List<Integer> winningNumbers;
+    private final List<Integer> winningNumbers;
 
     public WinningNumbers(NumbersGenerator numbersGenerator) {
-        this.winningNumbers = numbersGenerator.generate();
+        this.winningNumbers = List.copyOf(numbersGenerator.generate());
     }
 
     public BallCount ballCounting(BaseballNumbers baseballNumbers) {

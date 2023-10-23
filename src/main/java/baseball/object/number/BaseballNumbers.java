@@ -5,10 +5,10 @@ import java.util.List;
 
 public class BaseballNumbers {
 
-    private List<Integer> baseballNumbers;
+    private final List<Integer> baseballNumbers;
 
     public BaseballNumbers(NumbersGenerator numbersGenerator) {
-        this.baseballNumbers = numbersGenerator.generate();
+        this.baseballNumbers = List.copyOf(numbersGenerator.generate());
     }
 
     public List<Integer> get() {
