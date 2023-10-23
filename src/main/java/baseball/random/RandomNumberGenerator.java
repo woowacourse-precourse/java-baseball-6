@@ -21,8 +21,10 @@ public class RandomNumberGenerator implements NumberGenerator {
         int[] randomNumbers = new int[baseballGameProperty.digit()];
 
         for (int i = 0; i < baseballGameProperty.digit(); i++) {
-            randomNumbers[i] = Randoms.pickNumberInRange(baseballGameProperty.usableNumberFrom(),
-                    baseballGameProperty.usableSingleNumberTo());
+            randomNumbers[i] = Randoms.pickNumberInRange(
+                    baseballGameProperty.usableNumberFrom(),
+                    baseballGameProperty.usableSingleNumberTo()
+            );
         }
 
         return randomNumbers;

@@ -19,7 +19,7 @@ public class ResultCalculator {
 
         return new BaseballGameResult(strike, ball, false);
     }
-
+    // TODO 리팩터링
     private int countBall(int[] userInputNumber, int[] randomNumber) {
         int count = 0;
 

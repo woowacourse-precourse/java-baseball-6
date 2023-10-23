@@ -32,11 +32,12 @@ public class BaseballGameProperty {
     public Integer minimumRange() {
         StringBuilder builder = new StringBuilder();
         builder.append(1);
+
         for (int i = 1; i < digit; ++i) {
             builder.append(0);
         }
-        String num = builder.toString();
-        return Integer.parseInt(num);
+
+        return Integer.parseInt(builder.toString());
     }
 
     public Integer maximumRange() {
