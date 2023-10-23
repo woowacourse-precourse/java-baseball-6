@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.game.ComputerGame;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +46,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 컴퓨터_랜덤값_길이_Test() {
+        ComputerGame game = new ComputerGame();
+        String answer = game.getComputerRandomNumber();
+        
+        assertThat(answer.length()).isEqualTo(3);
     }
 
     @Override
