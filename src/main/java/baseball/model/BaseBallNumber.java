@@ -1,8 +1,6 @@
 package baseball.model;
 
 
-import java.util.ArrayList;
-
 public class BaseBallNumber {
     private final Integer first;
     private final Integer second;
@@ -14,15 +12,42 @@ public class BaseBallNumber {
         this.third = third;
     }
 
-    public BaseBallNumber(ArrayList<Integer> num) {
-        this.first = num.get(0);
-        this.second = num.get(1);
-        this.third = num.get(2);
-    }
-
     public BaseBallResult compareNumber(BaseBallNumber num) {
         //todo: 구현
-        return new BaseBallResult(1, 1);
+        int strike = countCorrectPlaceNumber(this, num);
+        int ball = countDiffPlaceNumber(this, num);
+
+        return new BaseBallResult(ball, strike);
+    }
+
+    private Integer countCorrectPlaceNumber(BaseBallNumber a, BaseBallNumber b) {
+        int strike = 0;
+        strike += isEqualNumber(a.first, b.first);
+        strike += isEqualNumber(a.second, b.second);
+        strike += isEqualNumber(a.third, b.third);
+        return strike;
+    }
+
+    private Integer countDiffPlaceNumber(BaseBallNumber a, BaseBallNumber b) {
+        int ball = 0;
+        if (isEqualNumber(a.first, b.second) == 1 || isEqualNumber(a.first, b.third) == 1) {
+            ball++;
+        }
+        if (isEqualNumber(a.second, b.first) == 1 || isEqualNumber(a.second, b.third) == 1) {
+            ball++;
+        }
+        if (isEqualNumber(a.third, b.first) == 1 || isEqualNumber(a.third, b.second) == 1) {
+            ball++;
+        }
+        return ball;
+    }
+
+    private Integer isEqualNumber(Integer a, Integer b) {
+        if (a.equals(b)) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     @Override
