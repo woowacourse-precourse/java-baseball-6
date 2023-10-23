@@ -1,13 +1,13 @@
 package baseball.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserInputNumbersTest {
+class StrikesTest {
 
     private final UserInputNumbers userInputNumbers = new UserInputNumbers("135");
 
@@ -20,14 +20,8 @@ class UserInputNumbersTest {
     @Test
     @DisplayName("랜덤숫자 123, 유저숫자 135 일 때 스트라이크는 1이다.")
     void countStrikes() {
-        int strikeCount = userInputNumbers.countStrikes(randomNumbers);
+        int strikeCount = new Strikes(randomNumbers, userInputNumbers).getStrikeCount();
         assertEquals(1, strikeCount);
     }
 
-    @Test
-    @DisplayName("랜덤숫자 123, 유저숫자 135 일 때 볼은 1이다.")
-    void countBalls() {
-        int ballCount = userInputNumbers.countBalls(randomNumbers);
-        assertEquals(1, ballCount);
-    }
 }
