@@ -28,6 +28,7 @@ public class Application {
 				String message = countHit(comNumList, userNumList);
 
 				if (message.equals("3스트라이크")) {
+					System.out.println("3스트라이크");
 					System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 					System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -65,15 +66,15 @@ public class Application {
 		String[] userInput = Console.readLine().split("");
 		List<Integer> userNum = new ArrayList<>();
 
+		if (userInput.length > 3)
+			throw new IllegalArgumentException();
+
 		if (!userNum.isEmpty())
 			userNum.removeAll(userNum);
 
 		for (int i = 0; i < 3; i++) {
 			userNum.add(Integer.parseInt(userInput[i]));
 		}
-
-		if (userNum.size() > 3)
-			throw new IllegalArgumentException();
 
 		return userNum;
 	}
@@ -100,7 +101,7 @@ public class Application {
 		return strike;
 	}
 
-	public static String countHit(List<Integer> com, List<Integer> user) {
+	public static String countHit(List<Integer> com, List<Integer> user) throws IllegalArgumentException {
 		int contain = countContain(com, user);
 		int strike = countStrike(com, user);
 		int ball = contain - strike;
