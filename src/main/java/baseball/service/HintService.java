@@ -4,25 +4,35 @@ import baseball.domain.BaseballNumbers;
 
 public class HintService {
     public String createHintMessage(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
-        StringBuilder hintMsg = new StringBuilder();
-
-        boolean isNothing = computerNumber.isNothing(inputNumber);
-        int ballCount = computerNumber.getBallCount(inputNumber);
-        int strikeCount = computerNumber.getStrikeCount(inputNumber);
-
-        if (isNothing) {
+        if (computerNumber.isNothing(inputNumber)) {
             return "낫싱";
         }
-        if (ballCount > 0) {
-            hintMsg.append(ballCount).append("볼");
-        }
+        int ballCount = computerNumber.getBallCount(inputNumber);
+        int strikeCount = computerNumber.getStrikeCount(inputNumber);
+        StringBuilder hintMsg = createBallAndStrikeHint(ballCount, strikeCount);
+        return hintMsg.toString();
+    }
+
+    public StringBuilder createBallAndStrikeHint(int ballCount, int strikeCount) {
+        StringBuilder hintMsg = new StringBuilder();
+        appendBallCount(hintMsg, ballCount);
         if (ballCount > 0 && strikeCount > 0) {
             hintMsg.append(" ");
         }
+        appendStrikeCount(hintMsg, strikeCount);
+        return hintMsg;
+    }
+
+    public void appendBallCount(StringBuilder hintMsg, int ballCount) {
+        if (ballCount > 0) {
+            hintMsg.append(ballCount).append("볼");
+        }
+    }
+
+    public void appendStrikeCount(StringBuilder hintMsg, int strikeCount) {
         if (strikeCount > 0) {
             hintMsg.append(strikeCount).append("스트라이크");
         }
-        return hintMsg.toString();
     }
 
     public boolean isCorrect(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
