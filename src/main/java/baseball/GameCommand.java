@@ -20,4 +20,8 @@ public enum GameCommand {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(FIND_COMMAND_ERROR));
     }
+
+    public boolean isRetry() {
+        return this.equals(RETRY);
+    }
 }
