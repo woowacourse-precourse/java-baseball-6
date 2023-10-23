@@ -19,12 +19,4 @@ public enum GameCommand {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(ERROR_MESSAGE, value)));
     }
-
-    public boolean isRestart() {
-        return this.equals(RESTART);
-    }
-
-    public boolean isExit() {
-        return this.equals(EXIT);
-    }
 }
