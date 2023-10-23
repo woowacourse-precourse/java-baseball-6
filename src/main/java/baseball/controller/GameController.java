@@ -4,7 +4,6 @@ import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.BallsGenerator;
 import baseball.domain.GameResult;
-import baseball.domain.GameStatus;
 import baseball.domain.NumberGenerator;
 import baseball.domain.RandomBallsGenerator;
 import baseball.domain.RandomNumberGenerator;
@@ -27,22 +26,21 @@ public class GameController {
         Retry retry = Retry.DEFAULT;
         while (retry != Retry.END) {
             Balls answerBalls = generateAnswerBalls();
-            GameStatus gameStatus = GameStatus.PLAYING;
-            play(answerBalls, gameStatus);
+            BaseballGame baseballGame = BaseballGame.from(answerBalls);
+            play(baseballGame);
             retry = inputView.scanRetry();
         }
     }
 
-    private void play(Balls answerBalls, GameStatus gameStatus) {
-        while (gameStatus == GameStatus.PLAYING) {
+    private void play(BaseballGame baseballGame) {
+        while (baseballGame.isPlaying()) {
             Balls playerBalls = inputView.scanBalls();
-            GameResult gameResult = playerBalls.getTryResultList(answerBalls);
+            GameResult gameResult = baseballGame.getTryResultList(playerBalls);
             outputView.printResult(gameResult);
-            gameStatus = gameResult.checkGameWin();
+            baseballGame.checkGameWin(gameResult);
         }
         outputView.printGameOver();
     }
-
 
     private Balls generateAnswerBalls() {
         NumberGenerator numberGenerator = new RandomNumberGenerator();
