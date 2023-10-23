@@ -7,14 +7,10 @@ public class NumberBaseballGame {
     private static final int GAME_NUMBER_SIZE = 3;
     private static final int RETRY_NUMBER = 1;
     private final Computer computer;
-    private final InputView inputView;
-    private final OutputView outputView;
     private GameNumbers answer;
 
     public NumberBaseballGame() {
         this.computer = new Computer();
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
     }
 
     public void run() {
@@ -28,12 +24,12 @@ public class NumberBaseballGame {
     }
 
     private void playGame() {
-        outputView.printStartGame();
+        OutputView.printStartGame();
 
         while (true) {
-            GameNumbers userNumbers = inputView.readUserNumbers();
+            GameNumbers userNumbers = InputView.readUserNumbers();
             Hint hint = computer.getHint(userNumbers);
-            outputView.printHint(hint);
+            OutputView.printHint(hint);
 
             if (isAllStrike(hint.getStrike())) {
                 break;
@@ -46,9 +42,9 @@ public class NumberBaseballGame {
     }
 
     private void endGame() {
-        outputView.printEndGame();
+        OutputView.printEndGame();
 
-        if (inputView.readRetryNumber() == RETRY_NUMBER) {
+        if (InputView.readRetryNumber() == RETRY_NUMBER) {
             run();
         }
     }
