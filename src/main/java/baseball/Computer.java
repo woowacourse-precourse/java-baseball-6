@@ -26,9 +26,4 @@ public class Computer {
         }
     }
 
-    public String getResult(Baseballs baseballs) {
-        Result result = new Result(this.baseballs.countStrike(baseballs), this.baseballs.countBall(baseballs));
-        return result.getResult();
-    }
-
 }
