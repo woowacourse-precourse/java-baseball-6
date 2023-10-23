@@ -1,5 +1,5 @@
 package baseball;
 
 public enum GameStatus {
-    CONTINUE, END
+    ONGOING, END
 }

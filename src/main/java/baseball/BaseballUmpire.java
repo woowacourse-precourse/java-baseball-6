@@ -23,10 +23,10 @@ public class BaseballUmpire {
             return GameStatus.END;
         } else if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
-            return GameStatus.CONTINUE;
+            return GameStatus.ONGOING;
         } else {
             System.out.println(balls + "볼 " + strikes + "스트라이크");
-            return GameStatus.CONTINUE;
+            return GameStatus.ONGOING;
         }
     }
 }

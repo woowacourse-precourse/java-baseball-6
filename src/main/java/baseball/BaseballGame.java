@@ -9,7 +9,7 @@ public class BaseballGame {
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        GameStatus gameStatus = GameStatus.CONTINUE;
+        GameStatus gameStatus = GameStatus.ONGOING;
         BotPlayer botPlayer = new BotPlayer(new ArrayList<>());
         List<Integer> botNumbers = botPlayer.generateNumbers();
 
@@ -17,7 +17,7 @@ public class BaseballGame {
             List<Integer> integers = Player.inputPlayerNumbers();
             GameStatus status = BaseballUmpire.judge(botNumbers, integers);
             gameStatus = status;
-        } while (gameStatus == GameStatus.CONTINUE);
+        } while (gameStatus == GameStatus.ONGOING);
         restartGame();
     }
 
