@@ -3,6 +3,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 public class BaseBallGame {
     public List<Integer> computer;
+    private boolean cycle = true;
+
     //상대방(컴퓨터)의 수 생성 함수
     public void RandomNum() {
         computer =new ArrayList<>();
@@ -20,6 +22,9 @@ public class BaseBallGame {
     //게임 진행 함수
     public void Play(){
         StartGamePrint();
+        while(cycle) {
+
+        }
         StopGamePrint();
     }
     //게임 시작 알림 함수
