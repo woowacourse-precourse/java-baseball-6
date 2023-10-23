@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.RoundResult;
-import baseball.domain.GameSet;
 import baseball.service.GameService;
+import baseball.service.GameSetService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -18,18 +18,18 @@ public class GameController {
     }
 
     private static void startGameSet() {
-        GameSet gameset = GameService.startGameSet();
-        while (!gameset.isSetEnd()) {
-            playRound(gameset);
+        GameSetService gameSetService = GameService.startGameSet();
+        while (!gameSetService.isSetEnd()) {
+            playRound(gameSetService);
         }
 
         OutputView.printSetEndMessage();
     }
 
-    private static void playRound(GameSet gameSet) {
+    private static void playRound(GameSetService gameSetService) {
         OutputView.printGameNumbersInputMessage();
         String userNumbersInput = InputView.readUserInput();
-        RoundResult roundResult = gameSet.playRound(userNumbersInput);
+        RoundResult roundResult = gameSetService.playRound(userNumbersInput);
 
         if (roundResult.isNothing()) {
             OutputView.printNothingResult();
@@ -42,6 +42,7 @@ public class GameController {
     private static boolean determineGameRestart() {
         OutputView.printGameRestartMessage();
         String restartOption = InputView.readUserInput();
+
         return GameService.isRestart(restartOption);
     }
 }

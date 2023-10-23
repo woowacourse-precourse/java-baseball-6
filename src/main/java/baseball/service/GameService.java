@@ -8,9 +8,11 @@ import baseball.domain.gamenumber.GameNumbers;
 public class GameService {
     private GameService() {}
 
-    public static GameSet startGameSet() {
+    public static GameSetService startGameSet() {
         GameNumbers computerGameNumbers = RandomGameNumbersGenerator.generateRandomGameNumbers();
-        return new GameSet(computerGameNumbers);
+        GameSet gameSet = new GameSet(computerGameNumbers);
+
+        return new GameSetService(gameSet);
     }
 
     public static boolean isRestart(String restartOption) {

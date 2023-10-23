@@ -11,10 +11,8 @@ public class GameSet {
         isSetEnd = false;
     }
 
-    public RoundResult playRound(String userNumberInput) {
-        GameNumbers userGameNumbers = new GameNumbers(userNumberInput);
+    public RoundResult playRound(GameNumbers userGameNumbers) {
         RoundResult roundResult = new RoundResult(userGameNumbers, targetGameNumbers);
-
         checkSetEnd(roundResult);
 
         return roundResult;
