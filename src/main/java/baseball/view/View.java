@@ -14,4 +14,8 @@ public class View {
         System.out.print(INPUT_COMMENT);
         return Console.readLine();
     }
+
+    public void printResult(String result) {
+        System.out.println(result);
+    }
 }
