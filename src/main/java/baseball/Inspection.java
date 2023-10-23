@@ -1,8 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.HashSet;
 import java.util.Set;
-
 public class Inspection {
 
     //길이 확인
@@ -42,5 +43,20 @@ public class Inspection {
         duplicateCheck (input);
         rangeCheck(input);
     }
+
+    //입력 및 오류검출 메서드 (출력 : 문자열)
+    public String userInput() {
+        System.out.print("1부터 9 사이의 정수 3개를 입력하세요 : ");
+        String input = Console.readLine();
+        inputExceptionTest(input);
+        return input;
+    }
+    //사용자 입력값 오류검사 후 정수형 배열 변환
+    public int[] userInputToArr(){
+        String userInput = userInput();
+        int[] userInputArr = userInput.chars().map(Character::getNumericValue).toArray();
+        return userInputArr;
+    }
+
 
 }

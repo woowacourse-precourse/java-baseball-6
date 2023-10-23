@@ -1,12 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Application {
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
-        //컴퓨터가 생성한 3자리수
-        Randoms.pickUniqueNumbersInRange(1, 9, 3); // [1, 2]
+        // TODO:
 
 
     }
