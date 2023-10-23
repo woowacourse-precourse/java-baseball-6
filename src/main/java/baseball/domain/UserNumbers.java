@@ -31,7 +31,7 @@ public class UserNumbers extends Numbers {
         }
 
         private static void validateLength(final String userInput) {
-            if (userInput.length() != NUMBER_LENGTH) {
+            if (hasInvalidLength(userInput)) {
                 throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
             }
         }
@@ -56,6 +56,10 @@ public class UserNumbers extends Numbers {
             if (containsZero(userNumbers)) {
                 throw new IllegalArgumentException("숫자는 1~9 사이의 숫자만 입력할 수 있습니다.");
             }
+        }
+
+        private static boolean hasInvalidLength(final String userInput) {
+            return userInput.length() != NUMBER_LENGTH;
         }
 
         private static boolean isDuplicated(final List<String> userNumbers) {
