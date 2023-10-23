@@ -16,7 +16,7 @@ public class InputValidator {
         return false;
     }
 
-    public static boolean isRestartOrExitValid(String input) {
+    public static boolean isGameStateNumberValid(String input) {
         if (isLengthOne(input) && isEqualToOneOrTwo(input)) {
             return true;
         }

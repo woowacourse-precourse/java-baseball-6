@@ -12,14 +12,14 @@ public class ScoreCalculator {
         return new Score(strike, ball);
     }
 
-    public Integer calculateStrike(List<Integer> playerInput, List<Integer> answer) {
+    private Integer calculateStrike(List<Integer> playerInput, List<Integer> answer) {
         return (int) IntStream.range(0, answer.size())
                 .filter(index -> playerInput.get(index)
                         .equals(answer.get(index)))
                 .count();
     }
 
-    public Integer calculateBall(List<Integer> playerInput, List<Integer> answer) {
+    private Integer calculateBall(List<Integer> playerInput, List<Integer> answer) {
         return (int) IntStream.range(0, answer.size())
                 .filter(index -> excludeStrike(playerInput, answer, index) && includeBall(playerInput, answer, index))
                 .count();

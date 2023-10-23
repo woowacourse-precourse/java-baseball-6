@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.util.InputValidator.isRestartOrExitValid;
+import static baseball.util.InputValidator.isGameStateNumberValid;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -16,12 +16,12 @@ public enum GameStateNumber {
 
     public void input() {
         String input = Console.readLine();
-        validateInputRestartOrExit(input);
+        validateGameStateNumber(input);
         this.stateNumber = Integer.parseInt(input);
     }
 
-    private void validateInputRestartOrExit(String input) {
-        if (!isRestartOrExitValid(input)) {
+    private void validateGameStateNumber(String input) {
+        if (!isGameStateNumberValid(input)) {
             throw new IllegalArgumentException();
         }
     }
