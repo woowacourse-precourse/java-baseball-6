@@ -4,10 +4,40 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game{
 
-        Input input = new Input();
-        Output output = new Output();
+        private final Input input = new Input();
+        private final InputValidator inputValidator = new InputValidator();
+        private final Output output = new Output();
 
-        public void init() {
+
+        public void playGame() {
+                boolean isStartState = true;
+                String serverNumber = "";
+
+                while (true)
+                {
+                        if (isStartState) {
+                                serverNumber = generateNumber();
+                                output.printStartMessage();
+                                isStartState = false;
+                        }
+
+                        output.printInputMessage();
+                        String userInput = input.readInput();
+
+                        if (inputValidator.isValidInput(userInput)) {
+                                if (checkNumberMatches(serverNumber, userInput))
+                                {
+                                        output.printGameEndMessage();
+                                        output.printGameRestartMessage();
+                                        int choice = input.readUserChoice(); // choice 이상하게 입력한 경우도 생각
+                                        isStartState = choice == 1;
+                                        if (!isStartState) break;
+                                }
+                        } else {
+                                generateException();
+                        }
+
+                }
         }
 
         private String generateNumber() {
@@ -52,5 +82,9 @@ public class Game{
                 output.printResult(ball, strike, nothing);
 
                 return strike == 3;
+        }
+
+        private void generateException() {
+                throw new IllegalArgumentException();
         }
 }
