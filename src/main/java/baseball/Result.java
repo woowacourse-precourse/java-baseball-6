@@ -6,7 +6,14 @@ public class Result {
     private int ball;
     private int strike;
 
+    public Result() {
+        this.ball = 0;
+        this.strike = 0;
+    }
+
     public void calculate(List<Character> userNumbers, List<Character> randomNumbers) {
+        setZero();
+
         for (int index = 0; index < userNumbers.size(); index++) {
             char number = userNumbers.get(index);
 
@@ -36,6 +43,11 @@ public class Result {
         }
 
         return result;
+    }
+
+    private void setZero() {
+        ball = 0;
+        strike = 0;
     }
 
     private boolean isExistedIndex(char number, List<Character> randomNubers) {
