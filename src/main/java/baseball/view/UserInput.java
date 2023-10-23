@@ -48,7 +48,7 @@ public class UserInput {
 
     private boolean isInRangeOfOneToNine(String userInput) {
         for (String c : userInput.split("")) {
-            int number = Integer.parseInt(c);
+            int number = stringToInt(c);
             if (number <= 0 || number > 9) {
                 return false;
             }
@@ -69,6 +69,10 @@ public class UserInput {
         if (!isInRangeOfOneToNine(inputString)) {
             throw new IllegalArgumentException("1~9 사이의 숫자를 세 개 입력해주세요");
         }
+    }
+
+    private int stringToInt(String input) {
+        return Integer.parseInt(input);
     }
 
 }

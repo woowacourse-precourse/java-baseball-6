@@ -24,8 +24,12 @@ public class RestartInput {
     }
 
     private boolean isOneOrTwo(String input) {
-        int number = Integer.parseInt(input);
+        int number = stringToInt(input);
         return (number == 1 || number == 2);
+    }
+
+    private int stringToInt(String input) {
+        return Integer.parseInt(input);
     }
 
 }

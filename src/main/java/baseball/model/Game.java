@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Game {
 
+    public static final String END_GAME = "3스트라이크";
     private final ComputerNumberGenerator computerNumberGenerator;
     private final UserInput userInput;
-    public static final String endGame = "3스트라이크";
 
     public Game(ComputerNumberGenerator computerNumberGenerator, UserInput userInput) {
         this.computerNumberGenerator = computerNumberGenerator;
@@ -23,20 +23,20 @@ public class Game {
     }
 
     private String getResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        int strikes = 0;
-        int balls = 0;
+        Strike strike = new Strike();
+        Ball ball = new Ball();
 
         for (int i = 0; i < 3; i++) {
             if (isStrike(computerNumbers, userNumbers, i)) {
-                strikes++;
+                strike.increaseStrikeCount();
                 continue;
             }
             if (isBall(computerNumbers, userNumbers, i)) {
-                balls++;
+                ball.increaseBallCount();
             }
         }
 
-        return formatResult(strikes, balls);
+        return formatResult(strike, ball);
     }
 
     private boolean isStrike(List<Integer> computerNumbers, List<Integer> userNumbers, int index) {
@@ -48,16 +48,18 @@ public class Game {
         return computerNumbers.contains(userNumbers.get(index));
     }
 
-    private String formatResult(int strikes, int balls) {
-        if (strikes == 3) {
-            return endGame;
+    private String formatResult(Strike strike, Ball ball) {
+        int strikeCount = strike.getStrikeCount();
+        int ballCount = ball.getBallCount();
+        if (strikeCount == 3) {
+            return END_GAME;
         }
-        if (strikes == 0 && balls == 0) {
+        if (strikeCount == 0 && ballCount == 0) {
             return "낫싱";
         }
         StringBuilder result = new StringBuilder();
-        appendIfNotZero(result, balls, "볼");
-        appendIfNotZero(result, strikes, "스트라이크");
+        appendIfNotZero(result, ballCount, "볼");
+        appendIfNotZero(result, strikeCount, "스트라이크");
         return result.toString();
     }
 

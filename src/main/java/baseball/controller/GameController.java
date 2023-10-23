@@ -19,7 +19,7 @@ public class GameController {
     }
 
     private boolean isGameEnd(String result) {
-        return result.equals(Game.endGame);
+        return result.equals(Game.END_GAME);
     }
 
     private void endGameMessage() {
