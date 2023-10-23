@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -13,9 +14,10 @@ public class Application {
             computerNumber.append(Randoms.pickNumberInRange(1, 9));
         }
 
-        System.out.println(computerNumber);
+        // System.out.println(computerNumber);
 
-        // TODO: Input User Expect Number
+        StringBuilder userNumber = new StringBuilder(Console.readLine());
+        System.out.println(userNumber);
 
         // TODO: Compare User Number and Computer Baseball Number
 
