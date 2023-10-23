@@ -13,8 +13,12 @@ public class SelectedBalls {
     private final Queue<Integer> balls = new LinkedList<>();
 
 
-    public SelectedBalls(){
+    public SelectedBalls() {
         initBalls();
+    }
+
+    public static SelectedBalls getNewSelectedBalls() {
+        return new SelectedBalls();
     }
 
     private void initBalls() {
