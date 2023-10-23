@@ -29,6 +29,7 @@ public class Application {
         }
 
         int[] strikeAndBallCount = getStrikeAndBallCount(answerNumberList, userInputNumberList);
+        PrintMessage.printGameResultMessage(strikeAndBallCount);
     }
 
     public static int[] getStrikeAndBallCount(List<Integer> answerNumber,
