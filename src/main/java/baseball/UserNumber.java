@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserNumber {
 
@@ -30,13 +32,20 @@ public class UserNumber {
         }
     }
 
-    private List<Integer> StringToDigit(String word) {
+    private List<Integer> stringToDigit(String word) {
         List<Integer> digitList = new ArrayList<>();
         for (int i = 0; i < word.length(); i++) {
             int digit = Character.getNumericValue(word.charAt(i));
             digitList.add(digit);
         }
         return digitList;
+    }
+
+    private void checkDuplication(List<Integer> digitList) {
+        Set<Integer> digitSet = new HashSet<>(digitList);
+        if (digitSet.size() != digitList.size()) {
+            throw new IllegalArgumentException("입력한 수에 중복값이 있습니다.");
+        }
     }
 
     //    private method 테스트를 위한 function
@@ -49,6 +58,10 @@ public class UserNumber {
     }
 
     public List<Integer> testCheckStringToDigit(String word) {
-        return StringToDigit(word);
+        return stringToDigit(word);
+    }
+
+    public void testCheckDuplication(List<Integer> digitList) {
+        checkDuplication(digitList);
     }
 }

@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,16 @@ public class ModuleTest {
         Assertions.assertEquals(integers.get(0), 1);
         Assertions.assertEquals(integers.get(1), 2);
         Assertions.assertEquals(integers.get(2), 3);
+    }
+
+    @Test
+    void 중복값_확인() {
+        UserNumber userNumber = new UserNumber();
+        List<Integer> inputList = new ArrayList<>();
+        inputList.add(1);
+        inputList.add(1);
+        inputList.add(2);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.testCheckDuplication(inputList));
     }
 
 }
