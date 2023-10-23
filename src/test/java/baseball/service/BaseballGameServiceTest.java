@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.domain.User;
 import baseball.servcie.BaseballGameService;
 import baseball.validation.BaseballGameValidation;
+import baseball.view.BaseballGameView;
 import camp.nextstep.edu.missionutils.Console;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,7 @@ class BaseballGameServiceTest {
     private final BaseballGameService baseballGameService;
 
     BaseballGameServiceTest() {
-        this.baseballGameService = new BaseballGameService(new User(), new BaseballGameValidation());
+        this.baseballGameService = new BaseballGameService(new User(), new BaseballGameValidation(), new BaseballGameView());
     }
 
 
