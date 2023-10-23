@@ -13,7 +13,7 @@ public class GameController {
 
     public GameController(ViewController viewController) {
         this.viewController = viewController;
-        referee = new Referee(viewController);
+        referee = new Referee();
     }
 
     public void start() {
@@ -22,6 +22,7 @@ public class GameController {
             this.userPlayer = new UserPlayer();
             this.computerPlayer = new ComputerPlayer();
             play();
+            viewController.printFinishMessage();
             resume = viewController.getResumeOption();
         }
     }
@@ -31,8 +32,11 @@ public class GameController {
         viewController.printGameStart();
         computerPlayer.setNumberArray(viewController.getComputerNumberArray());
         while (!gameOver) {
+            int[] score;
             userPlayer.setNumberArray(viewController.getUserNumberArray());
-            gameOver = referee.judgeGameOver(userPlayer.getNumberArray(), computerPlayer.getNumberArray());
+            score = referee.judgeGameScore(userPlayer.getNumberArray(), computerPlayer.getNumberArray());
+            viewController.printResultMessage(score);
+            gameOver = referee.judgeGameOver(score);
         }
     }
 }

@@ -26,8 +26,8 @@ public class ViewController {
         outputView.printInputMessage();
     }
 
-    public void printResultMessage(int ball, int strike) {
-        outputView.printResultMessage(ball, strike);
+    public void printResultMessage(int[] score) {
+        outputView.printResultMessage(score[0], score[1]);
     }
 
     public void printFinishMessage() {

@@ -1,22 +1,17 @@
 package baseball.model;
 
-import baseball.controller.ViewController;
-
 public class Referee {
     private static int OFFSET = 3;
 
-    private final ViewController viewController;
-
-    public Referee(ViewController viewController) {
-        this.viewController = viewController;
+    public int[] judgeGameScore(int[] userNumberArray, int[] computerNumberArray) {
+        int[] score = {0, 0}; // ball, strike
+        score[0] = countBall(userNumberArray, computerNumberArray);
+        score[1] = countStrike(userNumberArray, computerNumberArray);
+        return score;
     }
 
-    public boolean judgeGameOver(int[] userNumberArray, int[] computerNumberArray) {
-        int ball = countBall(userNumberArray, computerNumberArray);
-        int strike = countStrike(userNumberArray, computerNumberArray);
-        viewController.printResultMessage(ball, strike);
-        if (strike == OFFSET) {
-            viewController.printFinishMessage();
+    public boolean judgeGameOver(int[] score) {
+        if (score[1] == OFFSET) {
             return true;
         }
         return false;
