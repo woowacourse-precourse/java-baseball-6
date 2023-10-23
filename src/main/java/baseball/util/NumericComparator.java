@@ -20,25 +20,6 @@ public class NumericComparator {
         return ballCount;
     }
 
-    public int getResult(List<Integer> playerNumbers, List<Integer> computerNumbers) {
-        compare(playerNumbers, computerNumbers);
-        int compareResult = 0; // 1: 스트라이크, 2: 볼, 3: 정답, 4: 스트라이크 볼, 5: 낫싱
-
-        if (strikeCount == 3) {
-            compareResult = 3;
-        } else if (strikeCount != 0 && ballCount == 0) {
-            compareResult = 1;
-        } else if (strikeCount == 0 && ballCount != 0) {
-            compareResult = 2;
-        } else if (strikeCount != 0 && ballCount != 0) {
-            compareResult = 4;
-        } else if (strikeCount == 0 && ballCount == 0) {
-            compareResult = 5;
-        }
-
-        return compareResult;
-    }
-
     public void compare(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         resetCount();
 
@@ -49,7 +30,7 @@ public class NumericComparator {
             // 같은 위치에 있는 원소가 똑같을 때 -> 스트라이크 ++
             if (isStrike(playerNumber, computerNumber)) {
                 strikeCount++;
-                // 같은 위치에 없고, 리스트에 존재는 할 때 -> 볼++
+                // 같은 위치에 없고, 리스트에 존재는 할 때 함-> 볼++
             } else if (isBall(playerNumber, computerNumbers)) {
                 ballCount++;
             }
