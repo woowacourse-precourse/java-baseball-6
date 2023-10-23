@@ -2,9 +2,10 @@ package baseball.controller;
 
 import baseball.service.ComputerService;
 import baseball.service.UserService;
+import baseball.service.UmpireService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
+import java.util.ArrayList;
 
 public class GameController {
     OutputView output = new OutputView();
@@ -18,7 +19,12 @@ public class GameController {
     }
 
     public void run() {
+        UmpireService umpire = new UmpireService();
         output.printInputNum();
-        List<Integer> inputNumbers = user.getInputNumbers(input.getInput());
+        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
+        ArrayList<Integer> inputNumbers = user.getInputNumbers(input.getInput());
+
+        ArrayList<Integer> ballStrikeCount = umpire.getResult(randomNumbers, inputNumbers);
+        output.printResult(ballStrikeCount);
     }
 }

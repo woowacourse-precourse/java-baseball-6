@@ -5,12 +5,12 @@ import java.util.List;
 
 public class UserService {
 
-    public List<Integer> getInputNumbers(String input) {
+    public ArrayList<Integer> getInputNumbers(String input) {
         return generateInputNumbers(input);
     }
 
-    private static List<Integer> generateInputNumbers(String input) {
-        List<Integer> inputNumber = new ArrayList<>();
+    private static ArrayList<Integer> generateInputNumbers(String input) {
+        ArrayList<Integer> inputNumber = new ArrayList<>();
         String[] splitInput = input.split("");
         for (String s : splitInput) {
             inputNumber.add(Integer.parseInt(s));
