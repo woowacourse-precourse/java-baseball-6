@@ -140,6 +140,25 @@
 ### 엔티티 작게 유지하기
 
 - [ ] 패키지 나누기
+    - client
+        - 사용자와 관련된 클래스
+        - Player
+    - game
+        - 게임과 관련된 클래스
+        - Ball
+        - BallCounts
+        - Computer
+        - Referee
+    - constants
+        - 상수
+        - *Constants
+    - util
+        - 여러 기능과 관련된 클래스
+        - CountsMessage
+        - RandomNumbersGenerator
+    - view
+        - Input, Output
+
 - [ ] 기능들 추출하기
     - [X] Computer 내부의 볼카운트 로직 추출
 
