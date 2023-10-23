@@ -108,8 +108,8 @@
     - **`BallGeneratorService`**: 볼을 생성하는 서비스를 다루는 클래스 (랜덤 공 생성, 플레이어 입력을 바탕으로 볼 생성)
 3. **컨트롤러 클래스**:
     - **`GameController`**: 사용자 입력을 받고, 서비스 레이어와 상호 작용하여 게임을 관리하는 클래스
+    - **`InputController`**: 사용자 입력을 처리하는 컨트롤러 클래스
 4. **뷰 클래스**:
-    - **`InputView`**: 사용자 입력을 처리하는 뷰 클래스
     - **`OutputView`**: 게임 결과 출력을 담당하는 뷰 클래스
 5. **validator**:
     - **`BaseballsValidator`**: Baseball, Baseballs 예외 처리 모음
