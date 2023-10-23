@@ -68,5 +68,4 @@ public class BaseballGame {
     private void handleExit() {
         userValidateStadium.displayMessage(Constant.Exit_Game);
     }
-
 }

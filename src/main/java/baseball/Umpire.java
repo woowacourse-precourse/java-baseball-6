@@ -36,6 +36,5 @@ public class Umpire {
         }
 
         return result.toString();
-        
     }
 }
