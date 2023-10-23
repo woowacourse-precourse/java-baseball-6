@@ -1,11 +1,11 @@
 package baseball.domain;
 
 import baseball.domain.constants.ResultType;
-import baseball.domain.exception.BaseballException;
+import baseball.global.exception.BaseballException;
 
 import static baseball.domain.constants.ResultType.*;
-import static baseball.domain.exception.ErrorMessage.SYSTEM_ERROR;
 import static baseball.global.GameConfig.NUMBER_LENGTH;
+import static baseball.global.exception.ErrorMessage.SYSTEM_ERROR;
 import static java.lang.String.format;
 
 public class Result {
@@ -22,9 +22,9 @@ public class Result {
     }
 
     private ResultType inspectResultType() {
-        if (!hasBall() && !hasStrike()) {
+        if (isNothing()) {
             return NOTHING;
-        } else if (hasBall() && hasStrike()) {
+        } else if (hasBallAndStrike()) {
             return BALL_AND_STRIKE;
         } else if (hasBall()) {
             return ONLY_BALL;
@@ -32,6 +32,14 @@ public class Result {
             return ONLY_STRIKE;
         }
         throw BaseballException.of(SYSTEM_ERROR);
+    }
+
+    private boolean hasBallAndStrike() {
+        return hasBall() && hasStrike();
+    }
+
+    private boolean isNothing() {
+        return !hasBall() && !hasStrike();
     }
 
     private String generateResultMessage(ResultType resultType) {
