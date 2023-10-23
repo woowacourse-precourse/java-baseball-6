@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class UserNumbers extends Numbers {
 
-    public UserNumbers(final List<Integer> numbers) {
+    private UserNumbers(final List<Integer> numbers) {
         super(numbers);
     }
 
