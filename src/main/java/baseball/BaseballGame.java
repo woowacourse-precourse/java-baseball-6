@@ -8,6 +8,7 @@ public class BaseballGame {
     private static final int NUMBER_LENGTH = 3;
     private static final String RESTART_GAME = "1";
     private static final String END_GAME = "2";
+
     public void run(){
         int userEndOption;
 
@@ -16,7 +17,10 @@ public class BaseballGame {
             playGame();
             userEndOption = inputEndOption();
         }while(!isGameEnd(userEndOption));
+    }
 
+    private void printGameStart(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private void playGame(){
@@ -30,10 +34,6 @@ public class BaseballGame {
             result = countStrikeAndBall(userNum, randomNum);
             printGameResult(result);
         } while (!isAllStrike(result));
-    }
-
-    private void printGameStart(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private List<Integer> initRandomNum(){
@@ -65,41 +65,9 @@ public class BaseballGame {
         return userNum;
     }
 
-    private void checkUserNumForm(String userInput) {
-        if(!isInteger(userInput)){
-            throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
-        }
-        if (userInput.length() != 3) {
-            throw new IllegalArgumentException("사용자 입력이 3자리수가 아닙니다.");
-        }
-        if (isDuplicatedNum(userInput)) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        }
-        if (userInput.contains("0")) {
-            throw new IllegalArgumentException("사용자 입력에 0이 포함됐습니다.");
-        }
-    }
-
-    private boolean isDuplicatedNum(String userInput){
-        Set<Character> userInputSet = new HashSet<>();
-
-        for(char userInputChar : userInput.toCharArray()){
-            userInputSet.add(userInputChar);
-        }
-
-        if(userInputSet.size() == userInput.length()){
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isInteger(String userInput) {
-        try {
-            Integer.parseInt(userInput);
-            return true;
-        } catch (NumberFormatException ex) {
-            return false;
-        }
+    private void initStrikeAndBallNum(Map<String, Integer> resultList){
+        resultList.put("strike", 0);
+        resultList.put("ball", 0);
     }
 
     private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum){
@@ -114,24 +82,6 @@ public class BaseballGame {
             }
         }
         return resultList;
-    }
-
-    private void initStrikeAndBallNum(Map<String, Integer> resultList){
-        resultList.put("strike", 0);
-        resultList.put("ball", 0);
-    }
-
-    private boolean isAllStrike(Map<String, Integer> resultList){
-        if(resultList.get("strike") == 3){
-            return true;
-        }
-        return false;
-    }
-
-    private void printWinGame(Map<String, Integer> resultList){
-        if(isAllStrike(resultList)) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
     }
 
     private void printGameResult(Map<String, Integer> resultList){
@@ -150,12 +100,47 @@ public class BaseballGame {
         printWinGame(resultList);
     }
 
+    private boolean isAllStrike(Map<String, Integer> resultList){
+        if(resultList.get("strike") == 3){
+            return true;
+        }
+        return false;
+    }
+
+    private void printWinGame(Map<String, Integer> resultList){
+        if(isAllStrike(resultList)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
     private int inputEndOption(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endOption = Console.readLine();
         checkEndOptionForm(endOption);
 
         return Integer.valueOf(endOption);
+    }
+
+    private boolean isGameEnd(int endOption){
+        if(endOption == 2){
+            return true;
+        }
+        return false;
+    }
+
+    private void checkUserNumForm(String userInput) {
+        if(!isInteger(userInput)){
+            throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
+        }
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("사용자 입력이 3자리수가 아닙니다.");
+        }
+        if (isDuplicatedNum(userInput)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+        if (userInput.contains("0")) {
+            throw new IllegalArgumentException("사용자 입력에 0이 포함됐습니다.");
+        }
     }
 
     private void checkEndOptionForm(String endOption){
@@ -167,10 +152,25 @@ public class BaseballGame {
         }
     }
 
-    private boolean isGameEnd(int endOption){
-        if(endOption == 2){
+    private boolean isInteger(String userInput) {
+        try {
+            Integer.parseInt(userInput);
             return true;
+        } catch (NumberFormatException ex) {
+            return false;
         }
-        return false;
+    }
+
+    private boolean isDuplicatedNum(String userInput){
+        Set<Character> userInputSet = new HashSet<>();
+
+        for(char userInputChar : userInput.toCharArray()){
+            userInputSet.add(userInputChar);
+        }
+
+        if(userInputSet.size() == userInput.length()){
+            return false;
+        }
+        return true;
     }
 }
