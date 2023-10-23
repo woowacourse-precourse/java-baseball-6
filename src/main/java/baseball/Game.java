@@ -13,9 +13,9 @@ class Game {
         }
 
         public List<Integer> set() {
-            String input = Console.readLine();
-            checkInputError(input);
-            this.userNumberSaved = stringToList(input);
+            String rawInput = Console.readLine();
+            checkInputError(rawInput);
+            this.userNumberSaved = stringToList(rawInput);
             return this.userNumberSaved;
         }
 
@@ -23,52 +23,52 @@ class Game {
             return this.userNumberSaved;
         }
 
-        private List<Integer> stringToList(String number) {
+        private List<Integer> stringToList(String rawInput) {
             List<Integer> ret = new ArrayList<>();
 
-            for (int i = 0; i < number.length(); i++) {
-                String oneNum = number.substring(i, i + 1);
+            for (int i = 0; i < rawInput.length(); i++) {
+                String oneNum = rawInput.substring(i, i + 1);
                 Integer oneNumInt = Integer.parseInt(oneNum);
                 ret.add(oneNumInt);
             }
             return ret;
         }
 
-        private void checkInputError(String input) {
-            String[] inputArray = input.split("");
+        private void checkInputError(String rawInput) {
+            String[] rawInputArray = rawInput.split("");
 
-            if (checkNullError(inputArray) || checkLengthError(inputArray, 3) || checkNumericError(inputArray)
-                    || checkEach1to9Error(inputArray) || checkDuplicateError(inputArray)) {
+            if (checkNullError(rawInputArray) || checkLengthError(rawInputArray, 3) || checkNumericError(rawInputArray)
+                    || checkEach1to9Error(rawInputArray) || checkDuplicateError(rawInputArray)) {
                 throw new IllegalArgumentException();
             }
         }
 
-        private boolean checkNullError(String[] input) {
-            if (input == null || input.length == 0) {
+        private boolean checkNullError(String[] rawInputArray) {
+            if (rawInputArray == null || rawInputArray.length == 0) {
                 return true;
             }
             return false;
         }
 
-        private boolean checkLengthError(String[] userInput, int length) {
-            if (userInput.length != length) {
+        private boolean checkLengthError(String[] rawInputArray, int length) {
+            if (rawInputArray.length != length) {
                 return true;
             }
             return false;
         }
 
-        private boolean checkNumericError(String[] userInput) {
+        private boolean checkNumericError(String[] rawInputArray) {
             try {// 숫자형식으로 변환 시 예외 발생 여부
-                for (String n : userInput)
-                    Integer.decode(n);
+                for (String rawInputChar : rawInputArray)
+                    Integer.decode(rawInputChar);
             } catch (NumberFormatException e) {
                 return true;
             }
             return false;
         }
 
-        private boolean checkEach1to9Error(String[] userInput) {
-            for (String userInputChar : userInput) {// 1~9 확인
+        private boolean checkEach1to9Error(String[] rawInputArray) {
+            for (String userInputChar : rawInputArray) {// 1~9 확인
                 char c = userInputChar.charAt(0);
                 if (c < '1' || c > '9') {
                     return true;
@@ -77,9 +77,10 @@ class Game {
             return false;
         }
 
-        private boolean checkDuplicateError(String[] userInput) {
-            if (userInput[0].equals(userInput[1]) || userInput[1].equals(userInput[2])
-                    || userInput[0].equals(userInput[2])) {
+        private boolean checkDuplicateError(String[] rawInputArray) {
+            if (rawInputArray[0].equals(rawInputArray[1])
+                    || rawInputArray[1].equals(rawInputArray[2])
+                    || rawInputArray[0].equals(rawInputArray[2])) {
                 return true;
             }
             return false;
@@ -203,12 +204,12 @@ class Game {
             userNumber.set();
             printResult(userNumber, comNumber);
 
-            int cnt = countStrike(userNumber, comNumber);
-            if (cnt == 3) {
+            int strikeCount = countStrike(userNumber, comNumber);
+            if (strikeCount == 3) {
                 printRestart();
                 continueGame = askContinue();
             }
-            if (cnt == 3 && continueGame) {
+            if (strikeCount == 3 && continueGame) {
                 comNumber.newNumber();
             }
         }
