@@ -21,7 +21,6 @@ class ApplicationTest extends NsTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -49,7 +48,6 @@ class ApplicationTest extends NsTest {
         baseballGame.countStrikeAndBall(myNumber,computerNumber);
         int strikeValue = baseballGame.getStrike();
         Assertions.assertEquals(1,strikeValue);
-
     }
 
     @Test
@@ -60,7 +58,6 @@ class ApplicationTest extends NsTest {
         String consoleOutput = outContent.toString().trim();
         Assertions.assertEquals("2스트라이크",consoleOutput);
         System.setOut(originalOut); // 콘솔 출력을 원래대로 복구
-
     }
     @Override
     public void runMain() {
