@@ -4,8 +4,7 @@ import java.util.List;
 
 public class GameService {
 
-    public int[] getGameResult(List<Integer> randomNumbers, String inputNumbers) {
-        int[] playersNumbers = convertToArray(inputNumbers);
+    public int[] getGameResult(List<Integer> randomNumbers, int[] playersNumbers) {
         return checkGameResultOf(randomNumbers, playersNumbers);
     }
 
@@ -38,15 +37,5 @@ public class GameService {
 
     private int[] generateGameResult() {
         return new int[3];
-    }
-
-    private int[] convertToArray(String inputNumbers) {
-        int[] playersNumbers = new int[3];
-
-        for (int i = 0; i < 3; i++) {
-            playersNumbers[i] = Integer.parseInt(String.valueOf(inputNumbers.charAt(i)));
-        }
-
-        return playersNumbers;
     }
 }

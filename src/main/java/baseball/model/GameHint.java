@@ -1,4 +1,4 @@
-package model;
+package baseball.model;
 
 public enum GameHint {
     STRIKE("스트라이크", 0),

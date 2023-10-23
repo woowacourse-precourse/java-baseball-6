@@ -30,16 +30,16 @@ public class GameController {
             outputView.printForInputThreeDigitNumbers();
             System.out.println(randomNumbers);
 
-            String inputNumbers = inputView.inputThreeDigitNumber();
+            int[] playersNumbers = inputView.inputThreeDigitNumber();
 
-            int[] gameResult = gameService.getGameResult(randomNumbers, inputNumbers);
+            int[] gameResult = gameService.getGameResult(randomNumbers, playersNumbers);
 
             if (!gameService.isThreeStrike(gameResult)) {
                 outputView.printGameFailResult(gameResult);
                 continue;
             }
             outputView.printGameSuccessResult(gameResult);
-            if (inputView.inputRestartOrExit().equals("2")) {
+            if (inputView.inputRestartOrExit() == 2) {
                 playOption = false;
             }
         }

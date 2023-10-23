@@ -1,6 +1,6 @@
 package baseball.view;
 
-import model.GameHint;
+import baseball.model.GameHint;
 
 public class OutputView {
 
