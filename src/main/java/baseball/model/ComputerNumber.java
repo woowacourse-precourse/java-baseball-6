@@ -27,8 +27,8 @@ public class ComputerNumber {
 
     private void validateRange(List<Integer> computerNumber) {
         for (int i = 0; i < COMPUTER_NUMBER_SIZE; i++) {
-            if ((computerNumber.get(i) < COMPUTER_NUMBER_START_RANGE) ||
-                    (computerNumber.get(i) > COMPUTER_NUMBER_END_RANGE)) {
+            if ((computerNumber.get(i) < COMPUTER_NUMBER_START_RANGE)
+                    || (computerNumber.get(i) > COMPUTER_NUMBER_END_RANGE)) {
                 throw new IllegalArgumentException();
             }
         }

@@ -94,8 +94,8 @@ public class GameService {
     }
 
     private boolean isNothing(Map<String, Integer> ballAndStrikeCount) {
-        return (ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE);
+        return (ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE)
+                && (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE);
     }
 
     private void getBallMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
@@ -105,8 +105,8 @@ public class GameService {
     }
 
     private boolean isOnlyBall(Map<String, Integer> ballAndStrikeCount) {
-        return (ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE);
+        return (ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE)
+                && (ballAndStrikeCount.get("strikeCount") == STRIKE_COUNT_INITIAL_VALUE);
     }
 
     private void getStrikeMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
@@ -116,8 +116,8 @@ public class GameService {
     }
 
     private boolean isOnlyStrike(Map<String, Integer> ballAndStrikeCount) {
-        return (ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE);
+        return (ballAndStrikeCount.get("ballCount") == BALL_COUNT_INITIAL_VALUE)
+                && (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE);
     }
 
     private void getBallAndStrikeMessage(Map<String, Integer> ballAndStrikeCount, StringBuilder resultMessage) {
@@ -130,7 +130,7 @@ public class GameService {
     }
 
     private boolean isBallAndStrike(Map<String, Integer> ballAndStrikeCount) {
-        return (ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE) &&
-                (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE);
+        return (ballAndStrikeCount.get("ballCount") != BALL_COUNT_INITIAL_VALUE)
+                && (ballAndStrikeCount.get("strikeCount") != STRIKE_COUNT_INITIAL_VALUE);
     }
 }
