@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guess {
-    private static List<Integer> input;
+    private static List<Integer> inputToList;
     private static int ball;
     private static int strike;
 
@@ -22,7 +22,7 @@ public class Guess {
 
     private static void newGuess() {
         // Guess 클래스의 변수 초기화
-        input = new ArrayList<>();
+        inputToList = new ArrayList<>();
         ball = 0;
         strike = 0;
     }
@@ -30,19 +30,21 @@ public class Guess {
     private static void guessInput() {
         // 질문 출력
         System.out.printf(Text.inputText);
-        // 인풋 받기 및 숫자의 List로 저장
-        char[] str = Console.readLine().toCharArray();
+        // 인풋 받아서 숫자의 List로 저장
+        String input = Console.readLine();
+        Exceptions.guessLengthCheck(input);
+        char[] str = input.toCharArray();
         for (char c : str){
-            if (!input.contains(Character.getNumericValue(c))){
-                input.add(Character.getNumericValue(c));
-            }
+            Exceptions.guessIsNumberCheck(c);
+            Exceptions.guessDupliNumberCheck(inputToList, c);
+            inputToList.add(Character.getNumericValue(c));
         }
     }
 
     private static void guessCheck() {
         // 볼 스트라이크 계산
         int i = 0;
-        for (int num : input) {
+        for (int num : inputToList) {
             if (Init.answer.get(i++) == num){
                 strike++;
             } else if (Init.answer.contains(num)) {
