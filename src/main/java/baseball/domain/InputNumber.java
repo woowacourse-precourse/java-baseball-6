@@ -8,7 +8,11 @@ public class InputNumber {
 
     private final List<Integer> inputNumber;
 
-    public InputNumber(List<Integer> inputNumber) {
+    public static InputNumber create(List<Integer> inputNumber) {
+        return new InputNumber(inputNumber);
+    }
+
+    private InputNumber(List<Integer> inputNumber) {
         validateInputNumber(inputNumber);
         this.inputNumber = inputNumber;
     }

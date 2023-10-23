@@ -14,7 +14,7 @@ public class GameStatus {
     }
 
     public boolean isEnd() {
-        return this.strikeCnt == 3;
+        return this.strikeCnt == GameNumberSet.NUMBER_LENGTH;
     }
 
     public int getStrikeCnt() {

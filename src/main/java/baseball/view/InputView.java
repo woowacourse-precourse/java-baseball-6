@@ -12,8 +12,8 @@ public class InputView {
     public InputNumber getInputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        List<Integer> convertNumber = TypeConvertor.stringToIntergerList(input);
-        return new InputNumber(convertNumber);
+        List<Integer> convertNumber = TypeConvertor.stringToIntegerList(input);
+        return InputNumber.create(convertNumber);
     }
 
     public RetryCommand getCommand() {

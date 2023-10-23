@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TypeConvertor {
 
-    public static List<Integer> stringToIntergerList(String input) {
+    public static List<Integer> stringToIntegerList(String input) {
         try {
             return Arrays.stream(input.split(""))
                     .map(Integer::parseInt)
