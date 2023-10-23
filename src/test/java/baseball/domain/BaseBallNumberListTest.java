@@ -37,6 +37,22 @@ public class BaseBallNumberListTest {
     }
 
     @Test
+    @DisplayName("9보다 큰 숫자가 존재 할시 IllegalArgumentException이 발생한다")
+    public void should_throwsIllegalArgumentException_when_haveGreaterThanNineNumber() {
+        assertThatThrownBy(() ->
+                new BaseBallNumberList(List.of(1, 10, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("1보다 작은 숫자가 존재 할시 IllegalArgumentException이 발생한다")
+    public void should_throwsIllegalArgumentException_when_haveLessThanOneNumber() {
+        assertThatThrownBy(() ->
+                new BaseBallNumberList(List.of(1, 9, 0)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("두개의 리스트에 같은 숫자가 있다면 count값을 리턴한다")
     void should_returnCount_when_haveSameNumber() {
         BaseBallNumberList baseBallNumberList1 = new BaseBallNumberList(List.of(1, 4, 2));
