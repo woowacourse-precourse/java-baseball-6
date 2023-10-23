@@ -6,14 +6,15 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    static final AnswerNumber answerNumber = new AnswerNumber();
-    private PrintController printController = new PrintController();
+    static final int NUMBER_OF_DIGITS = 3;
+    static final AnswerNumber ANSWER_NUMBER = new AnswerNumber();
     private CountController countController = new CountController();
     private OutputView outputView = new OutputView();
+    private InputView inputView = new InputView();
 
     public void createAnswer() {
-        answerNumber.createRandomNumberList();
-        System.out.println("정답: " + answerNumber.getRandomNumber());
+        ANSWER_NUMBER.createRandomNumberList();
+        System.out.println("정답: " + ANSWER_NUMBER.getRandomNumber());
     }
 
     public void startGame() {
@@ -23,18 +24,17 @@ public class GameController {
     }
 
     public void proceedGame() {
-        InputNumber inputNumber = new InputNumber();
+        InputNumber inputNumber;
 
-        int i = 0;
         do {
-            //뷰로 입력 받기 - 임시로 테스트 케이스 작성
-            inputNumber.setInputNumber("516");
+            inputNumber = new InputNumber();
+            inputNumber.setInputNumber(inputView.getPlayerInput());
             System.out.println("사용자 입력: " + inputNumber.getInputNumber());
 
-            System.out.println(printController.printCount(inputNumber));
+            String hintMessage = outputView.printHint(countController.getHintMessage(inputNumber));
+            System.out.println(hintMessage);
 
-            i++;
-        } while (i < 3); //!isDone 검증 메서드
+        } while (!isDone(inputNumber)); //!isDone 검증 메서드
 
         //뷰로 입력 받기 - 임시로 테스트 케이스 작성
         inputNumber.setQuitNumber("2");
@@ -46,8 +46,8 @@ public class GameController {
     }
 
     public boolean isDone(InputNumber inputNumber) {
-        if (countController.getStrikeCount(inputNumber) == 3) {
-            System.out.println(printController.printSuccess());
+        if (countController.getStrikeCount(inputNumber) == NUMBER_OF_DIGITS) {
+            System.out.println(outputView.printSuccess());
             return true;
         }
         return false;
@@ -60,4 +60,3 @@ public class GameController {
         return false;
     }
 }
-
