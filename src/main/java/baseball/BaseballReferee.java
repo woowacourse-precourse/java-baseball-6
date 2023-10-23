@@ -15,6 +15,6 @@ public class BaseballReferee {
             }
         }
 
-        return UserInputResult(ball, strike);
+        return new UserInputResult(ball, strike);
     }
 }
