@@ -9,7 +9,6 @@ import static baseball.utils.Constants.*;
 public class Player {
     private String answer;
     private int[] answerSequence;
-    private int[] digitPositions;
 
     public Player() {
         this.reset();
@@ -17,7 +16,6 @@ public class Player {
 
     public void reset() {
         this.answerSequence = new int[BALL_MAX];
-        this.digitPositions = new int[RANGE_END];
     }
 
     public void setAnswer(String answer) {
@@ -25,7 +23,6 @@ public class Player {
 
         this.answer = answer;
         this.setAnswerSequence();
-        this.setDigitPositions();
     }
 
 
@@ -35,18 +32,6 @@ public class Player {
                 .map(Character::getNumericValue)
                 .toArray();
     }
-
-    private void setDigitPositions() {
-        // [-1, -1, -1, -1, -1, -1, -1, -1, -1, 1]
-        Arrays.fill(digitPositions, INIT_VALUE);
-
-        // [-1, 2, -1, 0, -1, -1, -1, -1, -1, 1]
-        for(int i=0; i<BALL_MAX; i++) {
-            int position = answerSequence[i];
-            digitPositions[position] = i;
-        }
-    }
-
 
     private void checkAnswerValid(String answer) {
         // 글자수, 문자 포함 여부 체크
