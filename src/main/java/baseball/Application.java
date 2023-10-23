@@ -5,11 +5,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static final int NUMBER_LENGTH = 3;
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String WIN_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String CONTINUE_GAME = "1";
     private static final String EXIT_GAME = "2";
+    private static final String CONTINUE_EXIT_MESSAGE
+            = "게임을 새로 시작하려면 " + CONTINUE_GAME + ", 종료하려면 " + EXIT_GAME + "를 입력하세요.";
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE);
         do {
             playSingleRound();
         } while (getContinueGame());
@@ -22,8 +30,7 @@ public class Application {
         do {
             inputNumber = getInputNumber();
         } while (!getResult(answer, inputNumber));
-        System.out.print(NUMBER_LENGTH);
-        System.out.println("개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(WIN_MESSAGE);
     }
 
     private static int[] generateRandomAnswer() {
@@ -62,7 +69,7 @@ public class Application {
     private static int[] getInputNumber() {
         String input;
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         input = Console.readLine();
         if (!isValidInput(input)) {
             throw (new IllegalArgumentException());
@@ -165,7 +172,7 @@ public class Application {
 
     private static void printResult(int ball, int strike) {
         if ((ball == 0) && (strike == 0)) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING_MESSAGE);
             return ;
         }
         printBall(ball);
@@ -179,22 +186,21 @@ public class Application {
     private static void printBall(int ball) {
         if (ball > 0) {
             System.out.print(ball);
-            System.out.print("볼");
+            System.out.print(BALL_MESSAGE);
         }
     }
 
     private static void printStrike(int strike) {
         if (strike > 0) {
             System.out.print(strike);
-            System.out.print("스트라이크");
+            System.out.print(STRIKE_MESSAGE);
         }
     }
 
     private static boolean getContinueGame() {
         String choice;
 
-        System.out.print("게임을 새로 시작하려면 " + CONTINUE_GAME);
-        System.out.println(", 종료하려면 " + EXIT_GAME + "를 입력하세요.");
+        System.out.println(CONTINUE_EXIT_MESSAGE);
         choice = Console.readLine();
         if (!isValidChoice(choice)) {
             throw (new IllegalArgumentException());
