@@ -40,7 +40,7 @@ public class InputVerifier {
     private static void checkDistinct(String isDistinct) {
         if (isDistinct.chars()
                 .distinct()
-                .count() != SystemConstant.MAXIMUM_DIGIT) {
+                .count() != isDistinct.length()) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_DISTINCT);
         }
     }
