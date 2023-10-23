@@ -75,6 +75,17 @@ class ApplicationTest extends NsTest {
         assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(4, 5, 6))).isEqualTo(0);
     }
 
+    @Test
+    void 볼_개수_판별_테스트() {
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(1, 2, 3))).isEqualTo(0);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(4, 5, 6))).isEqualTo(0);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(1, 3, 4))).isEqualTo(1);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(3, 2, 5))).isEqualTo(1);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(5, 3, 4))).isEqualTo(1);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(2, 1, 4))).isEqualTo(2);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(1, 3, 2))).isEqualTo(2);
+        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(3, 1, 2))).isEqualTo(3);
+    }
 
     @Override
     public void runMain() {
