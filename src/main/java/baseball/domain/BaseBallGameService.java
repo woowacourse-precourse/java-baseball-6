@@ -10,7 +10,11 @@ public class BaseBallGameService {
     public String startGame(ComputerRandomNumbers computerRandomNumbers, List<Integer> userInputs) {
         int strikeCount = getStrikeCount(computerRandomNumbers, userInputs);
         int ballCount = getBallCount(computerRandomNumbers, userInputs);
+        String result = getResult(strikeCount, ballCount);
+        return result;
+    }
 
+    private String getResult(int strikeCount, int ballCount) {
         StringJoiner stringJoiner = new StringJoiner(" ");
 
         if (ballCount != 0) {
