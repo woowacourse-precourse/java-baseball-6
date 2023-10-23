@@ -51,11 +51,11 @@ public class Player {
     }
 
     private Map<Character, Integer> getPlayerNumCountingMap(String num) {
-        Map<Character, Integer> countNumMap = new HashMap<>();
+        Map<Character, Integer> countNumMap = new HashMap<>(); // 445
         char[] nums = num.toCharArray();
         for (int i = 0; i < nums.length; i++) {
             countNumMap.put(nums[i],
-                    countNumMap.getOrDefault(nums[i], 1));
+                    countNumMap.getOrDefault(nums[i], 0) + 1);
         }
         return countNumMap;
     }
