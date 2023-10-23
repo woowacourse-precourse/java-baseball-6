@@ -16,6 +16,15 @@ public class Application {
 
         List<Integer> inputNumbers = getInputNumbers();
         System.out.println(inputNumbers);
+
+        boolean isAnswer = true;
+        for (int index=0; index<3; index++){
+            if (!randomNumbers.get(index).equals(inputNumbers.get(index))) {
+                isAnswer = false;
+                break;
+            }
+        }
+        System.out.println(isAnswer);
     }
 
     private static List<Integer> getInputNumbers() {
