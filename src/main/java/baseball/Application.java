@@ -33,7 +33,7 @@ public class Application {
                 printScoreBoardMessageFrom(score);
                 printIfStrikeOutFrom(score);
 
-                if (score.getStrikeCount() == 3) {
+                if (score.isStrikeOut()) {
                     break;
                 }
             }
@@ -90,19 +90,15 @@ public class Application {
     }
 
     private static void printScoreBoardMessageFrom(Score score) {
-        if (score.getStrikeCount() + score.getBallCount() == 0) {
+        if (score.isNothing()) {
             printMessage(NOTHING);
             return;
         }
-
-        String ballMessage = (score.getBallCount() != 0) ? score.getBallCount() + BALL.getMessage() : "";
-        String strikeMessage = (score.getStrikeCount() != 0) ? score.getStrikeCount() + STRIKE.getMessage() : "";
-
-        println((ballMessage + " " + strikeMessage));
+        println(score.getScoreBoardMessage());
     }
 
     private static void printIfStrikeOutFrom(Score score) {
-        if (score.getStrikeCount() == 3) {
+        if (score.isStrikeOut()) {
             printMessage(END_MESSAGE);
         }
     }

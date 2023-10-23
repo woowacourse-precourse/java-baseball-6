@@ -1,5 +1,8 @@
 package baseball.dto;
 
+import static baseball.enums.Message.BALL;
+import static baseball.enums.Message.STRIKE;
+
 public class Score {
     private int ballCount;
     private int strikeCount;
@@ -47,5 +50,25 @@ public class Score {
 
     public void increaseStrikeCount() {
         this.strikeCount++;
+    }
+
+    public String getScoreBoardMessage() {
+        return (getBallCountMessage() + " " + getStrikeCountMessage());
+    }
+
+    public String getBallCountMessage() {
+        return (this.getBallCount() != 0) ? this.getBallCount() + BALL.getMessage() : "";
+    }
+
+    public String getStrikeCountMessage() {
+        return (this.getStrikeCount() != 0) ? this.getStrikeCount() + STRIKE.getMessage() : "";
+    }
+
+    public boolean isStrikeOut() {
+        return this.strikeCount == 3;
+    }
+
+    public boolean isNothing() {
+        return this.getStrikeCount() + this.getBallCount() == 0;
     }
 }
