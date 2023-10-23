@@ -26,8 +26,7 @@ public class User {
 
     private void validateInput() {
         //set을 이용한 중복검사
-        Set<Integer> set = new HashSet<Integer>();
-        set.addAll(userNumberList);
+        Set<Integer> set = new HashSet<Integer>(userNumberList);
         if (userNumberList.size() > NumberLimits.NUM_LIST_LENGTH.getValue()
                 || userNumberList.size() < NumberLimits.NUM_LIST_LENGTH.getValue()) {
             throw new IllegalArgumentException(Message.THREE_NUMBERS_REQUIRED.getMessage());
