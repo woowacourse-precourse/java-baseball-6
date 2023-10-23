@@ -1,4 +1,4 @@
-package baseball.Constant;
+package baseball.constant;
 
 public class GameControlMessage {
     public static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";

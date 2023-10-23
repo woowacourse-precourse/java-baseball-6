@@ -1,10 +1,11 @@
-package baseball;
+package baseball.domain;
 
+import baseball.utils.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.Constant.GameControlMessage.*;
-import static baseball.Constant.GameStatus.CONTINUE_GAME_STATUS;
-import static baseball.Constant.GameStatus.END_GAME_STATUS;
+import static baseball.constant.GameControlMessage.*;
+import static baseball.constant.GameStatus.CONTINUE_GAME_STATUS;
+import static baseball.constant.GameStatus.END_GAME_STATUS;
 
 public class BaseBallGame {
 
