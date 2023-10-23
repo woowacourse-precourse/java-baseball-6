@@ -1,6 +1,6 @@
-package baseball;
+package baseball.moduleTest;
 
-import baseball.validator.InputValidator;
+import baseball.input.InputValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

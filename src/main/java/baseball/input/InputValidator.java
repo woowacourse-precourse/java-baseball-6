@@ -1,4 +1,4 @@
-package baseball.validator;
+package baseball.input;
 
 import baseball.view.ErrorMessage;
 
