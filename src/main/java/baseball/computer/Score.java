@@ -4,12 +4,12 @@ public class Score {
 	public int StrikeNum = 0;
 	public int BallNum = 0;
 
-	public void checkReset() {
+	public void resetScore() {
 		this.StrikeNum = 0;
 		this.BallNum = 0;
 	}
 
-	public void checkStrike(String computerNum, String UserNum) {
+	public void checkScore(String computerNum, String UserNum) {
 
 		for (int i = 0; i < 3; i++) {
 			if (computerNum.charAt(i) == UserNum.charAt(i)) {
@@ -21,7 +21,7 @@ public class Score {
 
 	}
 
-	public void tellNow() {
+	public void tellScore() {
 		if (StrikeNum != 0 && BallNum != 0) {
 			System.out.printf("%d볼 %d스트라이크", BallNum, StrikeNum);
 			System.out.println();
