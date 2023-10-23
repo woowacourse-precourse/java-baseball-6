@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 
 
 public class Exception {
@@ -30,7 +31,14 @@ public class Exception {
         }
     }
 
-    public void checkDuplicateNumbers(){
+    public static void checkDuplicateNumbers(char[] userInput){
+        HashSet<Character> inputSet = new HashSet<>();
+        for (char c : userInput) {
+            inputSet.add(c);
+        }
 
+        if(inputSet.size() != userInput.length){
+            throw new IllegalArgumentException("프로그램 종료");
+        }
     }
 }
