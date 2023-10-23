@@ -16,12 +16,13 @@ public class RandomNumber {
     }
 
     public void randomNumberGenerate() {
-        if (randomNumber.size() >= 3) {
+        if (randomNumber.size() >= InputRange.CORRECT_INPUT_RANGE.getValue()) {
             randomNumber = new ArrayList<>();
         }
 
-        while (randomNumber.size() < 3) {
-            int num = Randoms.pickNumberInRange(1, 9);
+        while (randomNumber.size() < InputRange.CORRECT_INPUT_RANGE.getValue()) {
+            int num = Randoms.pickNumberInRange(InputRange.START_RANDOM_RANGE.getValue(),
+                    InputRange.END_RANDOM_RANGE.getValue());
             if (!randomNumber.contains(num)) {
                 randomNumber.add(num);
             }
