@@ -16,8 +16,8 @@
   - [3.3 🧐 구조 명확화하기](#-구조-명확화하기)
 
 # :ballot_box_with_check: 구현 기능 목록
-- [ ] controller Package
-  - [ ] BaseballGameController
+- [x] controller Package
+  - [x] BaseballGameController
     - view Package와 domain Package의 데이터를 전달하며 값을 출력하는 클래스
     - 프로그램을 실행하는 `run` 메서드
     - UserBaseballNumber객체를 반환하여 사용자의 입력값을 받아오는 `loadUserValues` 메서드
@@ -25,53 +25,53 @@
     - 게임 종료 후 다음 게임의 상태값에 따른 결과를 실행하는 `requestGameChoice` 메서드
     
 
-- [ ] domain Package
-  - [ ] UserBaseballNumber
+- [x] domain Package
+  - [x] UserBaseballNumber
     - 게임을 위해 입력한 숫자에 대해서 유효성 검사와 값의 반환을 담당하는 일급 컬렉션
     - 입력한 값이 3자리인지 확인하는 `validate` 메서드
     - 입력값에 중복된 값이 있는지 확인하는 `validateDuplicate` 메서드
     - 입력값이 1~9 사이의 숫자인지 확인하는 `validateRange` 메서드
     - 입력값을 꺼낼 수 있는 `getUserValues` 메서드
-  - [ ] GameChoice
+  - [x] GameChoice
     - 게임 종료 후 다음 게임의 상태값을 정하는 클래스
     - 입력값이 1 혹은 2가 맞는지 확인하는 `validate` 메서드
     - user가 선택한 값에 따른 참 혹은 거짓을 반환하는 `isRestart` 메서드
-  - [ ] GameResult
+  - [x] GameResult
     - 게임 진행 중 생기는 스트라이크와 볼의 개수의 결과를 저장하는 클래스
     - 스트라이크와 볼의 개수에 따라 출력해야 할 문자열을 반환하는 `getResult` 메서드
     - 3스트라이크 달성 시 게임이 종료될 수 있도록 하는 `isWin` 메서드
-  - [ ] TargetNumber
+  - [x] TargetNumber
     - 대상이 되는 컴퓨터의 번호를 저장하는 클래스
     - 컴퓨터의 번호를 랜덤하게 생성하는 `generateComputerNumbers` 메서드
     - 대상이 되는 번호를 내보내는 `getComputerNumbers` 메서드
   
 
-- [ ] handler Package
-  - [ ] InputHandler
+- [x] handler Package
+  - [x] InputHandler
     - view Package의 ConsoleInput의 확장성과 변경 용이성을 위한 인터페이스
     - `inputUserValue` 메서드의 추상화
     - `inputGameResult` 메서드의 추상화
-  - [ ] OutputHandler
+  - [x] OutputHandler
     - view Package의 ConsoleOutput의 확장성과 변경 용이성을 위한 인터페이스
     - `printGameStart` 메서드의 추상화
     - `printGameResult` 메서드의 추상화
-  - [ ] ErrorHandler
+  - [x] ErrorHandler
     - Enum 클래스를 활용하여 프로그램에서 발생하는 에러 코드들을 관리하는 클래스
     - ErrorMessage와 함께 `IllegalArgumentException` 예외를 발생시키는 `getException` 메서드
   
 
-- [ ] service Package
-  - [ ] BaseballGameService
+- [x] service Package
+  - [x] BaseballGameService
     - 숫자 야구 게임에 대한 비즈니스 로직을 담당하는 클래스
     - 입력한 숫자와 컴퓨터의 숫자가 얼마나 일치하는지 비교하는 `compareNumber` 메서드
     
 
-- [ ] view Package
-  - [ ] ConsoleInput
+- [x] view Package
+  - [x] ConsoleInput
     - 입력을 담당하는 클래스
     - 서로 다른 3개의 수를 입력받는 `inputUserValue` 메서드 구현
     - 게임 종료 후 다음 게임의 상태를 결정하는 `inputGameResult` 메서드 구현
-  - [ ] ConsoleOutput
+  - [x] ConsoleOutput
     - 출력을 담당하는 클래스
     - 게임 시작 문구를 출력하는 `printGameStart` 메서드 구현
     - 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시하고 하나도 없는 경우 낫싱, 3개의 숫자를 모두 맞힐 경우 3개의 숫자를 모두 맞히셨습니다! 게임 종료를 보여주는 `printGameResult` 메서드 구현
@@ -88,9 +88,9 @@ controller는 비즈니스 로직이 들어가지 않고 domain과 view 사이�
 
 domain의 경우 본래는 비즈니스 로직과 데이터를 관리하고 제어하는 역할을 하지만, 이번 경우에는 domain 부분의 역할을 분담하기 위해 service에서 비즈니스 로직을 담당하고 domain은 데이터의 유효성 검사, 저장 등을 처리하도록 했다.
 
--> 🔹 이 부분은 아직까지 고민 중인 부분이다. domain에서 로직과 유효성 검사 등 모든 부분을 담당할지 service Package를 둬야 할지는 코드를 작성해 보면서 고민을 해보고 미션이 끝난 후에는 피어 리뷰 시스템을 통해서 다른 분들의 의견을 듣고 다음 미션에 적용해야겠다고 생각했다.  
+-> 🔹 이 부분은 아직까지 고민 중인 부분이다. domain에서 로직과 유효성 검사 등 모든 부분을 담당할지 service Package를 둬야 할지는 코드를 작성해 보면서 고민을 해보고 미션이 끝난 후 다른 분들의 의견을 듣고 다음 미션에 적용해야겠다고 생각했다.  
 
-service는 domain 객체와 엔티티를 활용하여 비즈니스 로직을 구현하고 제공하는 역할로 구조를 생각했다.
+service는 domain 객체를 활용하여 비즈니스 로직을 구현하는 역할로 구조를 생각했다.
 
 handler를 통해서는 여러 가지 예외 상황 혹은 요청을 처리할 수 있도록 구현했다.
 
@@ -102,7 +102,7 @@ view 역시 input의 경우 값을 입력받는 역할만 할 수 있도록 구�
 
 ## 🚧 getter의 사용을 지양해라?
 
-🔹 학습을 하다 보면 getter와 setter의 사용을 지양하라는 부분을 많이 보게 된다. setter의 경우는 명확하게 객체의 상태 값을 변경할 수 있기 때문에 지양해야 한다는 부분은 이해했지만 getter는 왜 포함되는지 이 부분이 궁금했다. 
+🔹 학습을 하다 보니 getter와 setter의 사용을 지양하라는 부분을 많이 보게 됐다. setter의 경우는 명확하게 객체의 상태 값을 변경할 수 있기 때문에 지양해야 한다는 부분은 이해했지만 getter는 왜 포함되는지 이 부분이 궁금했다. 
 
 이유는 크게 두가지에 대해서 생각을 해봤다. 
 
@@ -166,7 +166,7 @@ public class TargetNumber {
 
 ## ❗ 매직 넘버 사용을 지양하자
 
-🔹 문제를 풀이한 입장에서는 숫자의 의미를 바로 파악할 수 있었지만 다른 사람들이 보는 경우 의미를 알 수 없을만한 숫자들을 볼 수 있었다. 이러한 의미가 명확하지 않은 수를 매직넘버 라고 하고 이러한 부분을 지양해야 한다는 사실에 기존의 코드에서 수정했다. 또한 그러한 상수들을 한곳에 모아서 관리하는 클래스를 만들지 상수를 사용한 클래스 위쪽에 적어둘지 고민을 하던 중 상수로서 의미를 파악할 수 있어도 그 값으로 어떤 값을 사용했는지 바로 알 수 있는 것이 좋을 것 같다는 생각에 클래스를 만들지 않았다.
+🔹 문제를 풀이한 입장에서는 숫자의 의미를 바로 파악할 수 있었지만 다른 사람들이 보는 경우 의미를 알 수 없을만한 숫자들을 볼 수 있었다. 이러한 의미가 명확하지 않은 수를 매직넘버 라고 하고 이러한 부분을 지양해야 한다는 사실에 기존의 코드에서 수정했다. 또한 그러한 상수들을 한곳에 모아서 관리하는 클래스를 만들지 상수를 사용한 클래스 위쪽에 적어둘지 고민을 하던 중 상수로서 의미를 파악할 수 있어도 그 상수로 어떤 값을 사용했는지 바로 알 수 있는 것이 좋을 것 같다는 생각에 따로 상수들을 모아둔 클래스를 만들지 않았다.
 
 ## 👻 generateComputerNumbers 메서드의 위치
 
@@ -181,7 +181,7 @@ public class TargetNumber {
 
 ## 🤗 커밋 주기의 변화
 
-🔹 미션을 진행하면서 메서드 별로 커밋을 할 수 있도록 했다. 하지만 메서드 별로 코드를 작성하다 보면 다른 메서드의 정보가 필요한 경우도 있어 A라는 메서드를 구현하다 B라는 메서드에 코드를 추가하여 커밋 하기 어려운 상황이 발생했다. 만약, 기능 별로 커밋 주기를 가져갔다면 두개 이상의 메서드를 사용해도 기능의 완성에 따라 커밋 할 수 있고 규모가 커진다면 좀 더 명확하게 파악할 수 있다고 생각했다. 물론, 규모가 작은 프로젝트에서 메서드 별로 커밋을 한다면 프로젝트의 흐름을 파악하기 용이하고, 오류가 발생해도 짧은 커밋 주기 덕분에 복구하기 쉽다는 장점이 있는 것 같다. 다음 미션에는 기능 단위로 커밋 주기를 가져가서 두 방식의 장점을 비교해 보며 진행할 예정이다.
+🔹 미션을 진행하면서 메서드 별로 커밋을 할 수 있도록 했다. 하지만 메서드 별로 코드를 작성하다 보면 다른 메서드의 정보가 필요한 경우도 있어 A라는 메서드를 구현하다 B라는 메서드에 코드를 추가하여 커밋 하기 어려운 상황이 발생했다. 만약, 기능 별로 커밋 주기를 가져갔다면 두개 이상의 메서드를 사용해도 기능의 완성에 따라 커밋 할 수 있고 규모가 커진다면 좀 더 명확하게 파악할 수 있다고 생각했다. 물론, 규모가 작은 프로젝트에서 메서드 별로 커밋을 한다면 프로젝트의 흐름을 파악하기 용이하고, 오류가 발생해도 짧은 커밋 주기 덕분에 복구하기 쉽다는 장점이 있는 것 같다. 다음 미션에는 기능 단위로 커밋 주기를 가져가서 두 방식의 장점을 비교해 볼 생각이다.
 
 ## 🧐 구조 명확화하기
 
