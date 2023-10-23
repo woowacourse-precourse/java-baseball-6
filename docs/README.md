@@ -22,7 +22,6 @@
 
 ### GameManager
 
-- [ ] BaseBallNumberList 생성 한다.
 - [ ] BaseBallGame 초기화 한다.
 - [ ] BaseBallGame에 play 요청한다.
 - [ ] 게임 종료 이벤트 발생 시 사용자에게 재시작 메시지 출력 요청 및 입력 요청 한다.
