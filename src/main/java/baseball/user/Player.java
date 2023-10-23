@@ -28,4 +28,8 @@ public class Player {
             }
         }
     }
+
+    public List<Integer> getBaseballNumbers() {
+        return baseballNumbers;
+    }
 }

@@ -13,5 +13,7 @@ public class GameMaster {
 
         Player player = new Player();
         player.inputBaseballNumbers();
+
+        computer.printBaseballResult(player.getBaseballNumbers());
     }
 }
