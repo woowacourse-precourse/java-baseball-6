@@ -7,8 +7,8 @@ import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_IN_RANGE;
 import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_POSITIVE_INTEGER;
 import static baseball.constant.ErrorMessage.INPUT_NUMBER_NOT_UNIQUE;
 import static baseball.util.validateCondition.LengthCondition.isNotValid;
+import static baseball.util.validateCondition.RangeCondition.isNotInRange;
 
-import baseball.util.validateCondition.RangeCondition;
 import java.util.List;
 
 public class NumberUtil {
@@ -58,7 +58,7 @@ public class NumberUtil {
 
     protected static void validateRange(String number) {
         if (number.chars()
-                .anyMatch(RangeCondition::isNotInRange)) {
+                .anyMatch(n -> isNotInRange(Character.getNumericValue(n)))) {
             throw new IllegalArgumentException(INPUT_NUMBER_NOT_IN_RANGE.getMessage());
         }
     }
