@@ -1,5 +1,6 @@
 package baseball.domain.generator;
 
+import baseball.domain.Baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public class BaseballRandomNumbersGenerator implements BaseballNumbersGenerator 
 
     @Override
     public List<Integer> generate() {
-        return IntStream.generate(() -> Randoms.pickNumberInRange(1, 9))
+        return IntStream.generate(() -> Randoms.pickNumberInRange(Baseball.MIN_NUMBER, Baseball.MAX_NUMBER))
                 .distinct()
-                .limit(3)
+                .limit(Baseball.NUMBERS_COUNT)
                 .boxed()
                 .toList();
     }
