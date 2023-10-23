@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
-import baseball.Util.*;
-
 public class Computer {
     private final int minimumCanCreatedValue;
     private final int maximumCanCreatedValue;
@@ -65,16 +63,27 @@ public class Computer {
      */
     public Boolean checkUserNumberAndResponse(int playerNumber){
 
-        int ballCount = 0;
-        int strikeCount = 0;
-
         var compareNumberList = Util.parsingNumberToNumberList(playerNumber,digitCount);
+
+        int strikeCount = calculateStrikeCount(compareNumberList);
+        int ballCount = calculateBallCount(compareNumberList);
+
+        printResult(strikeCount,ballCount);
+
+        return strikeCount==digitCount;
+    }
+    private int calculateStrikeCount(int[] compareNumberList){
+        int strikeCount=0;
         for (int i =0 ; i< digitCount;i++){
             if (compareNumberList[i]==numberList.get(i)){
                 strikeCount++;
                 compareNumberList[i]=-1;
             }
         }
+        return strikeCount;
+    }
+    private int calculateBallCount(int[] compareNumberList){
+        int ballCount = 0;
         for (int i =0; i<digitCount;i++){
             if (compareNumberList[i]==-1){
                 continue;
@@ -84,33 +93,21 @@ public class Computer {
                 compareNumberList[i] = -1;
             }
         }
-
-        printResultWithCount(strikeCount,ballCount);
-
-        if (strikeCount==3){
-            return true;
-        }
-        return false;
+        return ballCount;
     }
 
-
-    protected void printResultWithCount(int strikeCount,int ballCount){
+    protected void printResult(int strikeCount,int ballCount){
         StringBuilder resultBuilder = new StringBuilder();
         if (strikeCount==0 && ballCount == 0){
             resultBuilder.append("낫싱");
         }
         if (ballCount!=0) {
-            resultBuilder.append(ballCount);
-            resultBuilder.append("볼");
+            resultBuilder.append(ballCount).append("볼 ");
         }
         if (strikeCount!=0){
-            resultBuilder.append(" ");
-            resultBuilder.append(strikeCount);
-            resultBuilder.append("스트라이크");
+            resultBuilder.append(strikeCount).append("스트라이크");
         }
         String result = resultBuilder.toString();
         System.out.println(result);
-        return;
     }
-
 }
