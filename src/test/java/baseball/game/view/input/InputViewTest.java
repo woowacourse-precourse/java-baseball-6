@@ -3,6 +3,7 @@ package baseball.game.view.input;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.game.view.exception.CharacterNotNumberException;
 import baseball.game.view.exception.NotMenuOptionException;
 import baseball.game.view.exception.NumberContainsZeroException;
 import baseball.game.view.exception.SizeNotMatchException;
@@ -58,7 +59,7 @@ class InputViewTest {
 
         InputView inputView = new InputView(in);
 
-        assertThatThrownBy(() -> inputView.getGuessNumbers()).isInstanceOf(NumberFormatException.class);
+        assertThatThrownBy(() -> inputView.getGuessNumbers()).isInstanceOf(CharacterNotNumberException.class);
     }
 
     @Test

@@ -1,9 +1,7 @@
 package baseball.game.view.input;
 
-import baseball.game.view.exception.DuplicatedNumberException;
-import baseball.game.view.exception.NotMenuOptionException;
-import baseball.game.view.exception.NumberContainsZeroException;
-import baseball.game.view.exception.SizeNotMatchException;
+import baseball.game.view.exception.*;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -48,8 +46,12 @@ public class InputView {
         List<String> stringList = List.of(rawInput.split(""));
         List<Integer> numberList = new ArrayList<>();
 
-        for (String s : stringList) {
-            numberList.add(Integer.valueOf(s));
+        try {
+            for (String s : stringList) {
+                numberList.add(Integer.valueOf(s));
+            }
+        } catch (NumberFormatException e) {
+            throw new CharacterNotNumberException();
         }
 
         checkNumberList(numberList);
