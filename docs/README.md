@@ -1,4 +1,12 @@
-# 기능 요구 사항
+# 구현 기능 목록
+
+## 라이브러리 요구 사항
+
+---
+
+- `camp.nextstep.edu.missionutils`에서 제공하는`Randoms`및`Console`API를 사용하여 구현해야 한다.
+    - Random 값 추출은`camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`를 활용한다.
+    - 사용자가 입력하는 값은`camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용한다.
 
 ## 기능 분석
 
@@ -7,7 +15,7 @@
 - 입력
     - 서로 다른 3자리의 수를 입력받는다.
         - 즉 중복이 되지 않기에 중복성은 고려하지 말자
-        - 3자리의 수를 입력받고 각각의 자릿수를 비교하기 때문에 Array나 ArrayList로 구현해보기
+        - 3자리의 수를 입력받고 각각의 자릿수를 비교하기 때문에 Array나 ArrayList로 구현해보자
         - 3자리가 아닌 수는 IllegalArgumentException 발생 후 애플리케이션을 종료시키자
     - 게임이 끝난 경우 재시작 : 1 , 종료 : 2를 입력받는다.
         - 재시작 방법을 구현하기 위해서 while(true)문을 이용해보자
@@ -34,3 +42,18 @@
     - 오류는 시스템이 비정상적 상황에 놓였을 때 발생하고 예외는 비정상적인 상황을 예측하여 처리하는 것임을 인지하자
 
 - 예외 처리를 해본 경험이 없기 때문에 throw를 통해 구현하고 점차 보완하자
+
+## 커밋 컨벤션
+
+---
+
+- `feat`: 새로운 기능 추가
+- `fix`: 버그 수정
+- `style`: 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
+- `docs`: 문서 수정(추가, 수정, 삭제, README)
+- `test`: 테스트 코드, 리펙토링 테스트 코드 추가
+- `refactor`: 코드 리팩토링
+- `perf`: 성능 개선
+- `chore`: 빌드 업무 수정, 패키지 매니저 수정
+- `rename`: 파일 혹은 폴더명을 수정하거나 옮기는 작업인 경우
+- `remove`: 파일을 삭제하는 작업을 수행한 경우

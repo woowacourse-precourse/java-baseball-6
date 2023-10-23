@@ -1,15 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
-        Scanner sc = new Scanner(System.in); // 숫자를 입력받기 위한 Scanner 선언
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -28,7 +26,10 @@ public class Application {
             // 사용자로 부터 입력받은 3자리 수를 자릿수별로 저장할 ArrayList를 생성하고 add()하여 요소 추가
             List<Integer> number = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
-            int guess = sc.nextInt(); // 사용자로부터 숫자를 입력받아 guess 변수에 저장
+
+            String playerInput = Console.readLine();
+            int guess = Integer.parseInt(playerInput);
+
             number.add(guess / 100); // 백의 자리 number ArrayList에 add()
             number.add((guess % 100) / 10); // 십의 자리 number ArrayList에 add()
             number.add(guess % 10); // 일의 자리 number ArrayList에 add()
@@ -69,10 +70,12 @@ public class Application {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int what = sc.nextInt(); // 재시작 여부를 저장할 변수를 선언하고 사용자로 부터 입력받음
-                if (what == 2) { // 입력받은 값이 2일 경우
+                String what = Console.readLine(); // 재시작 여부를 저장할 변수를 선언하고 사용자로 부터 입력받음
+                int select = Integer.parseInt(what);
+
+                if (select == 2) { // 입력받은 값이 2일 경우
                     break; // break를 시켜 while문을 벗어나서 게임종료
-                } else if (what == 1) { // 입력받은 값이 1일 경우
+                } else if (select == 1) { // 입력받은 값이 1일 경우
                     computer.clear(); // computer ArrayList에 저장했던 요소를 모두 비움
                 }
             }
