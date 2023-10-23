@@ -45,7 +45,7 @@ public class Game {
 
     private Result makeResultCount(String userNumberString, String computerNumberString) {
         int strikeCount = countStrikes(userNumberString, computerNumberString);
-        int ballCount = countBallsIncludingStrikes(userNumberString, computerNumberString) - strikeCount;
+        int ballCount = countAllBalls(userNumberString, computerNumberString) - strikeCount;
 
         return new Result(strikeCount, ballCount);
     }
@@ -61,7 +61,7 @@ public class Game {
         return count;
     }
 
-    private int countBallsIncludingStrikes(String userNumberString, String computerNumberString) {
+    private int countAllBalls(String userNumberString, String computerNumberString) {
         int count = 0;
         for (char c : userNumberString.toCharArray()) {
             if (computerNumberString.contains(Character.toString(c))) {
