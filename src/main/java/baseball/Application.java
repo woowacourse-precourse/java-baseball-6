@@ -11,11 +11,13 @@ public class Application {
     public static void main(String[] args) {
         BaseballService baseballService = new BaseballService(
                 new Player(),
-                new Computer());
+                new Computer()
+        );
         BaseballController baseballController = new BaseballController(
                 new InputView(),
                 new OutputView(),
-                baseballService);
+                baseballService
+        );
 
         baseballController.printGameStartMessage();
 
