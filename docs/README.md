@@ -14,7 +14,7 @@
 
 - [x]  3개의 랜덤한 수 고르기 - str로
     - [x]  1~9의 서로 다른 숫자
-    - [ ]  `camp.nextstep.edu.missionutils`  에서 제공하는 `Random` , `Console` 의 API를 사용해서 구현 [링크](https://github.com/muyaaho/java-baseball-6#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC)
+    - [x]  `camp.nextstep.edu.missionutils`  에서 제공하는 `Random` , `Console` 의 API를 사용해서 구현 [링크](https://github.com/muyaaho/java-baseball-6#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC)
 - [x]  반복: 한 게임이 끝날 때 까지(맞추거나 잘못된 값을 입력하는 동안)
 - [x]  한 숫자를 계속 맞춰야 됨
     - 처음에는 수를 입력 받는 동안 새로운 랜덤한 수를 만들었었음..
@@ -76,9 +76,7 @@
                 1. ischeck면 함수에서 1, 2 입력받고
                 2. 예외 처리하고 1, 2 return (잘못된 입력은 예외 처리를 하고 종료하게 되니까)
         - [x]  게임 실행 함수
-        - [ ]  메소드 내 강한 결합? 많이 엮여 있는 개념 풀기
-            - [ ]  모두 Application java 파일 안의 Baseball 클래스 안에 집어넣었는데 먼저 자바 클래스 분리하기
-            - [ ]  startGame 메소드 2가지로 분리하기 - 게임이 실질적으로 실행되는 부분은 따로 만들기
+        - [x]  자바 클래스 분리하기
             
     - [ ]  새로 생성한 메소드 설명 적기
     - [ ]  변수 이름 변경
