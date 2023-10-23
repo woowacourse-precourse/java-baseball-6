@@ -16,4 +16,8 @@ public class BaseballGame {
         }
         gameController.controlRestartOrExit();
     }
+
+    public void startGame() {
+        gameController.startGame();
+    }
 }

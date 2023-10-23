@@ -61,4 +61,8 @@ public class GameController {
     public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
         gameService.countStrikeOrBall(gameInfo, userInput);
     }
+
+    public void startGame() {
+        System.out.println(START_GAME_MSG);
+    }
 }
