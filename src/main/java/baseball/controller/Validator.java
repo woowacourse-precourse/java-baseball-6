@@ -11,4 +11,11 @@ public class Validator {
         return true;
     }
 
+    public static boolean validateInputLength(String input) {
+        if (input.length() != 3) {
+            return false;
+        }
+        return true;
+    }
+
 }
