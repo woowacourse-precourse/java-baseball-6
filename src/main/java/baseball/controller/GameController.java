@@ -1,47 +1,53 @@
 package baseball.controller;
 
-import baseball.domain.ball.Answer;
-import baseball.domain.ball.AnswerCreator;
-import baseball.domain.ball.GameStatus;
 import baseball.domain.ball.Guess;
-import baseball.domain.dto.GuessResult;
+import baseball.domain.ball.GuessResult;
+import baseball.domain.game.Computer;
+import baseball.domain.game.GameStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public final class GameController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final AnswerCreator answerCreator;
+    private final Computer computer;
 
     public GameController(
             final InputView inputView,
             final OutputView outputView,
-            final AnswerCreator answerCreator
+            final Computer computer
     ) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.answerCreator = answerCreator;
+        this.computer = computer;
     }
 
-    public void run() {
-        final Answer answer = answerCreator.create();
-        guessRecursive(answer);
+    public void play() {
+        computer.resetAnswer();
+        askUntilCorrectGuess(computer);
+        replayOrExit();
+    }
 
-        if (GameStatus.REPLAY == inputView.inputNextGameStatus()) {
-            run();
+    private void askUntilCorrectGuess(final Computer computer) {
+        final GuessResult result = askGuess(computer);
+        outputView.printResult(result);
+
+        if (!result.hasThreeStrike()) {
+            askUntilCorrectGuess(computer);
         }
     }
 
-    private void guessRecursive(final Answer answer) {
-        final GuessResult result = answer.guess(
-                Guess.of(inputView.inputBallNumbers())
-        );
+    private GuessResult askGuess(final Computer computer) {
+        final List<Integer> numbers = inputView.inputBallNumbers();
+        final Guess guess = Guess.of(numbers);
+        return computer.check(guess);
+    }
 
-        outputView.printResult(result);
-
-        if (!result.isThreeStrike()) {
-            guessRecursive(answer);
+    private void replayOrExit() {
+        if (GameStatus.REPLAY == inputView.inputNextGameStatus()) {
+            play();
         }
     }
 }
