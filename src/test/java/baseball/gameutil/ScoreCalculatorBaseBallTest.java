@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 public class ScoreCalculatorBaseBallTest {
 
-    static List<Integer> computerInput = List.of(1, 2, 3);
+    ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
 
     enum TestCase {
         낫씽(
@@ -78,14 +78,12 @@ public class ScoreCalculatorBaseBallTest {
         }
     }
 
-
     @ParameterizedTest
     @EnumSource(TestCase.class)
     void 테스트(TestCase test) {
         //given
         List<Integer> userInput = test.userInput;
         List<Integer> computerInput = test.computerInput;
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
 
         //when
         Score score = scoreCalculator.calScore(userInput, computerInput);

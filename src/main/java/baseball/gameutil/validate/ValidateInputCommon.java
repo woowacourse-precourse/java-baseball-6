@@ -4,14 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ValidateInputCommon {
-    public Boolean checkLength(String input, Integer expectedLength) {
-        if (input.length() != expectedLength) {
-            return false;
-        }
-        return true;
+    public boolean checkLength(String input, Integer expectedLength) {
+        return input.length() == expectedLength;
     }
 
-    public Boolean checkIsAllNumber(String input) {
+    public boolean checkIsAllNumber(String input) {
         for (char ch : input.toCharArray()) {
             if (!Character.isDigit(ch)) {
                 return false;
@@ -20,7 +17,7 @@ public class ValidateInputCommon {
         return true;
     }
 
-    public Boolean checkBetween(String input, Integer start, Integer end) {
+    public boolean checkBetween(String input, Integer start, Integer end) {
         for (char ch : input.toCharArray()) {
             int number = Character.getNumericValue(ch);
             if (start > number || number > end) {
@@ -30,7 +27,7 @@ public class ValidateInputCommon {
         return true;
     }
 
-    public Boolean checkUnique(String input) {
+    public boolean checkUnique(String input) {
         Set<Character> inputSet = new HashSet<>();
         for (char c : input.toCharArray()) {
             inputSet.add(c);

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 public class ResultStringGeneratorBaseBallTest {
 
+    ResultStringGenerator resultStringGenerator = new ResultStringGeneratorBaseBall();
 
     enum TestCase {
         낫씽(0, 0, MessageString.NOTHING_MSG),
@@ -36,7 +37,6 @@ public class ResultStringGeneratorBaseBallTest {
     void 점수계산(TestCase test) {
         // given
         Score score = new Score(test.ball, test.strike);
-        ResultStringGenerator resultStringGenerator = new ResultStringGeneratorBaseBall();
 
         //when
         String result = resultStringGenerator.result(score);
