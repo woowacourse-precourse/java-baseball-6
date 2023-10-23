@@ -7,6 +7,7 @@ public class BaseballController {
 
     private BaseballException baseballException = new BaseballException();
     private BaseballView baseballView = new BaseballView();
+    private BaseballService baseballService = new BaseballService();
 
     // 게임 시작 함수
     public void startBaseball() {
@@ -14,11 +15,7 @@ public class BaseballController {
 
         baseballView.printBaseballStart();
 
-        // 컴퓨터가 1~9까지의 서로 다른 임의의 수 3개 선택
-        String computer = "";
-        for (int i=0;i<3;i++) {
-            computer+= Integer.toString(Randoms.pickNumberInRange(1, 9));
-        }
+        String computer = baseballService.getComputerNum();
 
         // 3스트라이크가 될 때까지 반복
         while (strike<3) {
