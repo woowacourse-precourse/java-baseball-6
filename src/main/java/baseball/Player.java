@@ -41,8 +41,15 @@ public class Player {
     }
 
     public boolean validateInputNumber(String inputNumber) {
-        // 입력 문자열 값을 숫자로 변경
-        int inputNumberToInteger = Integer.parseInt(inputNumber);
+        // 입력 문자열 값을 숫자로 저장할 변수
+        int inputNumberToInteger;
+
+        // 만약 입력한 값이 숫자가 아니면 예외 발생
+        try {
+            inputNumberToInteger = Integer.parseInt(inputNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
+        }
 
         // 각 자리 수를 playerNumber에 저장
         playerNumber.add(inputNumberToInteger / 100);
