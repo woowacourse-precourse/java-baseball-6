@@ -6,6 +6,7 @@ import static baseball.message.Message.PLAYER;
 import static baseball.message.Message.STRIKE;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PlayerRepository {
@@ -30,11 +31,23 @@ public class PlayerRepository {
         System.out.println("=====플레이어 초기화 시작=====");
     }
 
-    public void save(String key, Object obj) {
+    private void setStore(String key, Object obj) {
         store.put(key, obj);
     }
 
-    public Object get(String key) {
+    public Object getStore(String key) {
         return store.get(key);
+    }
+
+    public void addPlayer(List<Integer> obj) {
+        setStore(PLAYER, obj);
+    }
+
+    public void addBall() {
+        setStore(BALL, (Integer) getStore(BALL) + 1);
+    }
+
+    public void addStrike() {
+        setStore(STRIKE, (Integer) getStore(STRIKE) + 1);
     }
 }
