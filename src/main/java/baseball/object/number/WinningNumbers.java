@@ -8,11 +8,9 @@ import java.util.stream.IntStream;
 
 public class WinningNumbers {
 
-    private NumbersGenerator numbersGenerator;
     private List<Integer> winningNumbers;
 
     public WinningNumbers(NumbersGenerator numbersGenerator) {
-        this.numbersGenerator = numbersGenerator;
         this.winningNumbers = numbersGenerator.generate();
     }
 

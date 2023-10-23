@@ -5,11 +5,9 @@ import java.util.List;
 
 public class BaseballNumbers {
 
-    private NumbersGenerator numbersGenerator;
     private List<Integer> baseballNumbers;
 
     public BaseballNumbers(NumbersGenerator numbersGenerator) {
-        this.numbersGenerator = numbersGenerator;
         this.baseballNumbers = numbersGenerator.generate();
     }
 
