@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserInput {
@@ -12,12 +14,17 @@ public class UserInput {
         this.digits = digits;
     }
 
-    public int getInput(){
+    public List<Integer> getInput(){
         String inputs = Console.readLine();
         if (isValidInput(inputs)) {
-            return Integer.parseInt(inputs);
+            List<String> input_list_string = List.of(inputs.split(""));
+            List<Integer> input_list = new ArrayList<>();
+            for (int i = 0; i < digits; i++){
+                input_list.add(Integer.parseInt(input_list_string.get(i)));
+            }
+            return input_list;
         }
-        return -1;
+        return List.of(-1);
     }
 
     public boolean isValidInput(String inputs){
