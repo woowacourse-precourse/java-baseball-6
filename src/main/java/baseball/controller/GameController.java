@@ -34,6 +34,14 @@ public class GameController {
             }
         }
 
+        restart();
+    }
+
+    private void restart() {
+        String restart = gameView.inputGameRestart();
+        if ("1".equals(restart)) {
+            startGame();
+        }
     }
 
     private void initUserNumber(String userNumberReadLine) {
