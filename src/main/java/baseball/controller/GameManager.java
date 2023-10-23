@@ -1,5 +1,12 @@
-package baseball;
+package baseball.controller;
 
+import baseball.domain.BallNumberGenerator;
+import baseball.domain.BallScore;
+import baseball.domain.BaseBalls;
+import baseball.domain.DataTypeChanger;
+import baseball.domain.GameResult;
+import baseball.domain.UserInput;
+import baseball.domain.Validator;
 import baseball.view.OutputView;
 import java.util.List;
 
