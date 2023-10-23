@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
     public void start() {
@@ -17,6 +18,17 @@ public class Game {
         String input = Console.readLine();
 
         List<Integer> balls = resolveInputBalls(input);
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < balls.size(); i++) {
+            if (Objects.equals(computer.get(i), balls.get(i))) {
+                strikeCount++;
+            } else if (computer.contains(balls.get(i))) {
+                ballCount++;
+            }
+        }
 
     }
 
