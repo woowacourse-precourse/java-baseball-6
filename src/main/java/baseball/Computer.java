@@ -10,7 +10,7 @@ import static baseball.Baseball.MIN_NUMBER;
 import static baseball.Baseballs.BASEBALLS_SIZE;
 
 public class Computer {
-    private final Baseballs baseballs;
+    private Baseballs baseballs;
 
     public Computer(Baseballs baseballs) {
         this.baseballs = createBaseballs();
@@ -24,6 +24,14 @@ public class Computer {
         } catch (IllegalArgumentException e) {
             return createBaseballs();
         }
+    }
+
+    public Result getResult(Baseballs baseballs) {
+        return new Result(this.baseballs.countStrike(baseballs), this.baseballs.countBall(baseballs));
+    }
+
+    public void resetBaseballs() {
+        this.baseballs = createBaseballs();
     }
 
 }
