@@ -2,7 +2,6 @@ package process;
 
 import camp.nextstep.edu.missionutils.Console;
 import validation.ValidationNumber;
-import validation.ValidationStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +14,25 @@ public class InputNumber {
         return new InputNumber();
     }
 
-    public List<Integer> getInputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+    public String input() {
         String input = Console.readLine();
+        return input;
+    }
+
+    public List<Integer> inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = input();
         return getNumbers(input);
     }
 
+    public int inputStatus() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = input();
+        return getStatus(input);
+    }
+
     public List<Integer> getNumbers(String input) {
+        inputNumber();
         List<Integer> playerNumber = new ArrayList<>();
         for (char ch : input.toCharArray()) {
             String str = String.valueOf(ch);
@@ -32,17 +43,10 @@ public class InputNumber {
         return playerNumber;
     }
 
-    public int getInputStatus() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        return getStatus(input);
-    }
-
     public int getStatus(String input) {
-        int status = Integer.parseInt(input);
-        ValidationStatus.ValidationStatus(status);
+        int status = ValidationNumber.validationNumberType(input);
+        ValidationNumber.validationStatus(status);
         return status;
     }
-
 
 }
