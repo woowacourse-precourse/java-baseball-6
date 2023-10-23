@@ -85,4 +85,21 @@ class GameTest {
         assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
     }
 
+    @Test
+    @DisplayName("스트라이크 계산")
+    void outputTest1() {
+        Game game = new Game();
+        List<Integer> computerNum = List.of(1, 2, 3);
+        List<Integer> inputNum = List.of(1, 4, 5);
+        List<Integer> inputNum2 = List.of(1, 2, 4);
+        List<Integer> inputNum3 = List.of(1, 2, 3);
+
+        String output = game.output(computerNum, inputNum);
+        String output2 = game.output(computerNum, inputNum2);
+        String output3 = game.output(computerNum, inputNum3);
+
+        assertThat(output).isEqualTo("1스트라이크");
+        assertThat(output2).isEqualTo("2스트라이크");
+        assertThat(output3).isEqualTo("3스트라이크");
+    }
 }
