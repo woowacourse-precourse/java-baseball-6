@@ -20,13 +20,30 @@ public class Application {
 		// 게임 시작
 		int checkNum = 0;
 		System.out.println("숫자 야구 게임을 시작합니다.");
+
 		while (true) {
 			int strikeCnt = 0;
+			int ballCnt = 0;
 			System.out.println("숫자를 입력해주세요 : ");
 			checkNum = sc.nextInt();
 			System.out.println(checkNum);
 			String strCheckNum = "" + checkNum;
 
+			// 볼 체크
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					if (i != j) {
+						if (strAnswer.charAt(i) == strCheckNum.charAt(j)) {
+							ballCnt++;
+						}
+					}
+				}
+			}
+			if (ballCnt != 0) {
+				System.out.println(ballCnt + "볼");
+			}
+
+			// 스트라이크 체크
 			for (int i = 0; i < 3; i++) {
 				if (strAnswer.charAt(i) == strCheckNum.charAt(i)) {
 					strikeCnt++;
