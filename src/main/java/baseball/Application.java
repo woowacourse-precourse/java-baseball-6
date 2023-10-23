@@ -33,13 +33,16 @@ public class Application {
                 ball++;
             }
         }
-//        checkAnswerStrikeAndBall(strike,ball);
-//
-//        if (strike == 3){
-//            return true;
-//        } else {
-//            return false;
-//        }
+    }
+
+
+    public boolean isVictory(int strike){
+        if (strike == 3){
+            return true;
+        } else if (strike != 3) {
+            return false;
+        }
+        return false;
     }
 
     public boolean determineFinishOrAgainGame(int startNumOrEndNum){
@@ -113,17 +116,20 @@ public class Application {
             baseballGame.checkOnlyInterger(myNumber);
             baseballGame.checkDuplicateNumber(myNumber);
             baseballGame.checkLengthNumber(myNumber);
+            // 볼의 유형만 세주기
             baseballGame.countStrikeAndBall(myNumber,computerNumber);
-//            if (victory) {
-//                // strike가 3이였을 때 실행되는 부분
-//                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//                int startNumOrEndNum = Integer.parseInt(Console.readLine());
-//                if (startNumOrEndNum == 1){
-//                    computerNumber.clear();
-//                    computerNumber = baseballGame.selectRandomNumber(computerNumber);
-//                }
-//                isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
-//            }
+            // 볼의 유형 세주는 메서드와 정답을 출력해주는 메서드 분리하기
+            baseballGame.checkAnswerStrikeAndBall(baseballGame.strike, baseballGame.ball);
+            if (baseballGame.isVictory(baseballGame.strike)) {
+                // strike가 3이였을 때 실행되는 부분
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int startNumOrEndNum = Integer.parseInt(Console.readLine());
+                if (startNumOrEndNum == 1){
+                    computerNumber.clear();
+                    computerNumber = baseballGame.selectRandomNumber(computerNumber);
+                }
+                isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
+            }
         }
     }
 }
