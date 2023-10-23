@@ -1,10 +1,10 @@
 package baseball;
 
-public class BallValidator {
+public class InputValidator {
 
 
     public void validate(String stringInput) {
-        if (hasFormatException(stringInput) || stringInput.length() != 3) {
+        if (isInputIsNum(stringInput) || stringInput.length() != 3) {
             throw new IllegalArgumentException();
         }
 
@@ -17,9 +17,9 @@ public class BallValidator {
         }
     }
 
-    private boolean hasFormatException(String stringInput) {
+    private boolean isInputIsNum(String input) {
         try {
-            Integer.parseInt(stringInput);
+            Integer.parseInt(input);
         } catch (Exception e) {
             return true;
         }
