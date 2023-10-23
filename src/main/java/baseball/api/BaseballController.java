@@ -5,7 +5,11 @@ import baseball.view.OutputView;
 
 public class BaseballController {
 
-    BaseballGameService baseballGameService = new BaseballGameService();
+    private final BaseballGameService baseballGameService;
+
+    public BaseballController(BaseballGameService baseballGameService) {
+        this.baseballGameService = baseballGameService;
+    }
 
     public void startBaseball() {
         OutputView.printGameStartView();
