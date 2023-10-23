@@ -17,7 +17,7 @@ public class RandomNumber {
 
     public void randomNumberGenerate() {
         if (randomNumber.size() >= InputRange.CORRECT_INPUT_RANGE.getValue()) {
-            randomNumber = new ArrayList<>();
+            randomNumber.clear();
         }
 
         while (randomNumber.size() < InputRange.CORRECT_INPUT_RANGE.getValue()) {
