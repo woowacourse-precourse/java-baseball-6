@@ -22,22 +22,28 @@ public class Output {
     }
 
     public void showGameResult(Judgement judgement) {
-        int strike = judgement.getStrike();
-        int ball = judgement.getBall();
-        System.out.println(makeGameResult(strike, ball));
+        System.out.println(assembleResult(judgement));
     }
 
-    private String makeGameResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
+    private String assembleResult(Judgement judgement) {
+        StringBuilder result = new StringBuilder();
+
+        if (judgement.hasBall()) {
+            result.append(judgement.getBall()).append(BALL);
+        }
+
+        if (judgement.hasStrike()) {
+            if (0 < result.length()) {
+                result.append(" ");
+            }
+            result.append(judgement.getStrike()).append(STRIKE);
+        }
+
+        if (result.length() == 0) {
             return NOTHING.toString();
         }
-        if (strike == 0) {
-            return ball + BALL.toString();
-        }
-        if (ball == 0) {
-            return strike + STRIKE.toString();
-        }
-        return ball + BALL.toString() + " " + strike + STRIKE.toString();
+
+        return result.toString();
     }
 
     public void showGameOver() {

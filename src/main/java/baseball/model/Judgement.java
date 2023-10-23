@@ -14,6 +14,14 @@ public class Judgement {
         return strike == 3;
     }
 
+    public boolean hasStrike() {
+        return 0 < strike;
+    }
+
+    public boolean hasBall() {
+        return 0 < ball;
+    }
+
     public int getBall() {
         return ball;
     }
