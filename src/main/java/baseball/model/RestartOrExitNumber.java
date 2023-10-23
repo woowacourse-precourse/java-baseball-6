@@ -13,8 +13,12 @@ public class RestartOrExitNumber {
     }
 
     public void validate(int restartOrExitNumber) {
-        if ((restartOrExitNumber != GAME_RESTART_NUMBER) || (restartOrExitNumber != GAME_EXIT_NUMBER)) {
+        if (isCorrectNumber(restartOrExitNumber)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean isCorrectNumber(int restartOrExitNumber) {
+        return (restartOrExitNumber != GAME_RESTART_NUMBER) || (restartOrExitNumber != GAME_EXIT_NUMBER);
     }
 }
