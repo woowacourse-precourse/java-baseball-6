@@ -2,6 +2,8 @@ package baseball.view;
 
 import baseball.utils.Message;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -55,6 +57,15 @@ class OutputViewTest {
             OutputView.printNothing();
             org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(NOTHING.getMessage());
         }
+
+        @DisplayName("스트라이크가 출력되어야 한다")
+        @ParameterizedTest
+        @ValueSource(ints = {1, 2, 3})
+        public void 스트라이크가_출력되어야_한다(int strikeCount) {
+            OutputView.printStrikeCount(strikeCount);
+            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(strikeCount + STRIKE.getMessage());
+        }
+
 
     }
 
