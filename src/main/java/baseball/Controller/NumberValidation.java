@@ -12,6 +12,7 @@ package baseball.Controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,15 +46,9 @@ public class NumberValidation {
 
     public boolean checkDuplication(String inputNumber) {
         String[] number = inputNumber.split("");
+        Set<String> setNums = Arrays.stream(number).collect(Collectors.toSet());
 
-        for (int i = 0; i < inputNumber.length(); i++) {
-            for (int j = 0; j < i; j++) {
-                if (number[i] == number[j]) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return setNums.size() == 3;
     }
 
 
