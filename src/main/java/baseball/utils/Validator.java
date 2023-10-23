@@ -9,10 +9,10 @@ public class Validator {
     }
 
     public static void validateStringDigit(String string) {
-        for (char ch : string.toCharArray()) {
-            if (!Character.isDigit(ch)) {
-                throw new IllegalArgumentException("[ERROR] 입력 값이 숫자로만 이루어져 있지 않습니다.");
-            }
+        boolean isAllDigits = string.chars()
+                .allMatch(Character::isDigit);
+        if (!isAllDigits) {
+            throw new IllegalArgumentException("[ERROR] 입력 값에 숫자가 아닌 문자가 포함되어 있습니다.");
         }
     }
 }
