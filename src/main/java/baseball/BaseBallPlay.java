@@ -9,16 +9,16 @@ public class BaseBallPlay {
   private final String ENTER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
   private Strike strike;
   private Ball ball;
-  private static List<Integer> user ;
+  private UserNums userNums ;
   public int play(List<Integer> com){
     System.out.println(ENTER_INPUT_MESSAGE);
-    this.user = createUserNums();
+    this.userNums = new UserNums(createUserNums());
     this.strike = new Strike(0);
     this.ball = new Ball(0);
     for(int i = 0; i < com.size(); i++) {
-      if(user.contains(com.get(i)) && user.get(i) == com.get(i)){
+      if(userNums.getUserNums().contains(com.get(i)) && userNums.getUserNums().get(i) == com.get(i)){
         strike.increase();
-      } else if (user.contains(com.get(i)) && user.get(i) != com.get(i)) {
+      } else if (userNums.getUserNums().contains(com.get(i)) && userNums.getUserNums().get(i) != com.get(i)) {
         ball.increase();
       }
     }
