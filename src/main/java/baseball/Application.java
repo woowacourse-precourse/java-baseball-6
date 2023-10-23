@@ -1,209 +1,86 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 
 public class Application {
-    static int inputNumber;
-    static int retry = 1;
-    static final int NUMBER_DIGIT = 3;
-    static List<Integer> computerNumber;
-    static BufferedReader br;
+    public static void main(String[] args) {
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.start();
+    }
+}
 
-    public static void main(String[] args) throws IOException {
-        br = new BufferedReader(new InputStreamReader(System.in));
+class BaseballGame {
+    ComputerNumberCreator computerNumberCreator = new ComputerNumberCreator();
+
+    Ball ball = new Ball();
+    Pitching pitching;
+    Judge judge = new Judge();
+    Result result = new Result();
+    Message message = new Message();
+
+
+    void start() {
+        int retry = 1;
+        message.printStartMessage();
 
         while (retry == 1) {
-            //게임 실행
-            basebell();
+            boolean gameEnded = false;
 
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int[] computerNumberArray = computerNumberCreator.createComputerNumber();
 
-            retry = Integer.parseInt(br.readLine());
+            while (!gameEnded) {
+                message.printInputMessage();
+                pitching = new Pitching(ball);
+                int[] inputNumberArray = pitching.inputNumber;
+
+                int[] outcome = judge.getResult(computerNumberArray, inputNumberArray);
+                result.printResult(outcome);
+
+                if (outcome[0] == 3) {
+                    message.printEndMessage();
+                    gameEnded = true;
+                }
+            }
+
+            message.printRestartMessage();
+
+            retry = Integer.parseInt(Console.readLine());
 
             if (retry == 2) {
                 break;
             }
+
         }
     }
+}
 
-    private static void basebell() throws IOException {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+class Pitching {
+    int[] inputNumber;
 
-        //컴퓨터 숫자를 생성한다
-        createComputerNumber();
+    Pitching(Ball ball) {
+        int input = ball.readingMove();
+        this.inputNumber = ball.getDigitsArray(input);
+    }
+}
 
-        //디버깅용
-//        for (int i = 0; i < computerNumber.size(); i++) {
-//            System.out.println(computerNumber.get(i));
-//        }
+class Ball {
+    //static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static final int NUMBER_DIGIT = 3;
+    int number;
 
-        while (true) {
-            //입력을 받는다
-            System.out.print("숫자를 입력해주세요 : ");
-            inputNumber = Integer.parseInt(br.readLine());
+    int readingMove() {
+        number = Integer.parseInt(Console.readLine());
 
-            //입력 값에 대한 조건을 검증한다
-            if (checkNumberDigits(inputNumber)) {
-                throw new IllegalArgumentException();
-            }
-            //checkEachDigitIsSameNumber(inputNumber);
-            //checkNumberRange(inputNumber);
-
-            //컴퓨터 숫자를 int 배열로 표현하도록 바꾼다
-            int[] intArrayComputerNumber = listTransformToIntArray(computerNumber);
-
-            //입력 숫자를 int 배열로 표현하도록 바꾼다
-            int[] intArrayInputNumber = getDigitsArray(inputNumber);
-
-            //두 배열 비교
-            int strike = 0;
-            int ball = 0;
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (intArrayInputNumber[i] == intArrayComputerNumber[j]) {
-                        if (i == j) {
-                            strike++;
-                            continue;
-                        }
-                        ball++;
-                    }
-                }
-            }
-
-            if (strike == 3) {
-                break;
-            }
-            if (ball == 0 && strike == 0) {
-                System.out.println("낫싱");
-                continue;
-            }
-            if (ball == 0) {
-                System.out.println(strike + "스트라이크");
-                continue;
-            }
-            if (strike == 0) {
-                System.out.println(ball + "볼");
-                continue;
-            }
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        if (!checkNumberDigits(number)) {
+            return number;
+        } else {
+            throw new IllegalArgumentException("형식에 맞지 않음");
         }
+
     }
 
-
-    /***
-     * 입력 값이 세 자리 수인지 검증한다
-     *
-     * @param number
-     */
-    public static boolean checkNumberDigits(int number) {
-        int numberOfDigits = String.valueOf(number).length();
-        if (numberOfDigits != 3) {
-            return true;
-        }
-        return false;
-    }
-
-
-    /***
-     * 각 자리의 숫자가 서로 다른 숫자인지 검증한다 - 작동 안함
-     *
-     * @param number
-     */
-    private static void checkEachDigitIsSameNumber(int number) {
-        int[] intArrayNumber = getDigitsArray(number);
-
-        if (areAllDistinct(intArrayNumber)) {
-            throw new IllegalArgumentException("각 자리에 중복인 숫자가 있습니다.");
-        }
-    }
-
-
-    /***
-     * 입력 값의,각 자리의 범위를 검증한다
-     *
-     * @param Number
-     */
-    private static void checkNumberRange(int Number) {
-        int[] intArrayInputNumber = getDigitsArray(Number);
-
-        for (int n : intArrayInputNumber) {
-            checkNumberValidity(n, 1, 9);
-        }
-    }
-
-
-    /***
-     * 파라메터가 low~high 사이의 숫자인지 검증한다
-     *
-     * @param number
-     */
-    private static void checkNumberValidity(int number, int low, int high) {
-        if (number > high || number < low) {
-            throw new IllegalArgumentException(low + "에서" + high + " 사이의 숫자만 입력 가능합니다.");
-        }
-    }
-
-
-    /***
-     * 컴퓨터 숫자를 생성하는 함수
-     */
-    private static void createComputerNumber() {
-        computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            addNotExistNumberToList(computerNumber, randomNumber);
-        }
-    }
-
-
-    private static void addNotExistNumberToList(List<Integer> numberList, int number) {
-        if (!isAlreadyInList(numberList, number)) {
-            addNumberToList(numberList, number);
-        }
-    }
-
-    private static void addNumberToList(List<Integer> numberList, int number) {
-        numberList.add(number);
-    }
-
-
-    private static boolean isAlreadyInList(List<Integer> numberList, int number) {
-        if (numberList.contains(number)) {
-            return true;
-        }
-        return false;
-    }
-
-    /***
-     * 컴퓨터 숫자를 List에서 Char 배열로 타입변환 하는 함수.
-     *
-     */
-    private static int[] listTransformToIntArray(List<Integer> number) {
-        int[] intArrayNumber = new int[NUMBER_DIGIT];
-
-        for (int i = 0; i < NUMBER_DIGIT; i++) {
-            {
-                intArrayNumber[i] = number.get(i);
-            }
-        }
-        return intArrayNumber;
-    }
-
-    /***
-     * 파라메터의 각 자리에 있는 수를 배열에 담아 반환한다.
-     *
-     * @param number
-     * @return 각 자리의 수를 담은 배열을 반환한다.
-     */
-    private static int[] getDigitsArray(int number) {
+    int[] getDigitsArray(int number) {
         int[] intArrayNumber = new int[NUMBER_DIGIT];
 
         for (int i = NUMBER_DIGIT - 1; i >= 0; i--) {
@@ -214,22 +91,117 @@ public class Application {
         return intArrayNumber;
     }
 
+    public static boolean checkNumberDigits(int number) {
+        return String.valueOf(number).length() != 3;
+    }
+}
 
-    /***
-     * 배열 내에 중복되는 수가 있는지 확인한다
-     *
-     * @param arr
-     * @return
-     */
-    public static boolean areAllDistinct(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    return false;
+class Refree {
+    int[] computerNumber;
+    int[] result;
+
+    int[] getComputerNumber(ComputerNumberCreator nc) {
+        computerNumber = nc.createComputerNumber();
+        return computerNumber;
+    }
+
+    Refree(ComputerNumberCreator numberCreator, Pitching pitching, Judge judge) {
+        this.computerNumber = this.getComputerNumber(numberCreator);
+        this.result = judge.getResult(numberCreator.createComputerNumber(), pitching.inputNumber);
+    }
+}
+
+class Judge {
+    int[] getResult(int[] intArrayComputerNumber, int[] intArrayInputNumber) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (intArrayInputNumber[i] == intArrayComputerNumber[j]) {
+                    if (i == j) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
                 }
             }
         }
-        return true;
+        return new int[]{strike, ball};
     }
 }
+
+class Result {
+    Message message = new Message();
+
+
+    void printResult(int[] result) {
+        int strike = result[0];
+        int ball = result[1];
+
+        if (strike == 3) {
+            message.printStrikeCaseMessage(strike);
+        } else {
+            if (ball == 0 && strike == 0) {
+                message.nothingCaseMessage();
+            }
+            if (ball > 0 && strike > 0) {
+                message.printballStrikeCaseMessage(ball, strike);
+            }
+            if (ball > 0 && strike == 0) {
+                message.printBallCaseMessage(ball);
+            }
+            if (strike > 0 && ball == 0) {
+                message.printStrikeCaseMessage(strike);
+            }
+        }
+    }
+}
+
+class Message {
+    private static final String startMessage = "숫자 야구 게임을 시작합니다.";
+    private static final String restartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String inputMessage = "숫자를 입력해주세요 : ";
+    private static final String nothingCaseMessage = "낫싱";
+    private static final String ballCaseMessage = "%d볼";
+    private static final String strikeCaseMessage = "%d스트라이크";
+    private static final String ballStrikeCaseMessage = "%d볼 %d스트라이크";
+    private static final String EndMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+    void printStartMessage() {
+        System.out.println(startMessage);
+    }
+
+    void printRestartMessage() {
+        System.out.println(restartMessage);
+    }
+
+    //printInputMessage
+    void printInputMessage() {
+        System.out.print(inputMessage);
+    }
+
+    void nothingCaseMessage() {
+        System.out.println(nothingCaseMessage);
+    }
+
+    void printBallCaseMessage(int ballCount) {
+        String ballMessage = String.format(ballCaseMessage, ballCount);
+        System.out.println(ballMessage);
+    }
+
+    void printStrikeCaseMessage(int strikeCount) {
+        String strikeMessage = String.format(strikeCaseMessage, strikeCount);
+        System.out.println(strikeMessage);
+    }
+
+    void printballStrikeCaseMessage(int ballCount, int strikeCount) {
+        String ballStrikeMessage = String.format(ballStrikeCaseMessage, ballCount, strikeCount);
+        System.out.println(ballStrikeMessage);
+    }
+
+    void printEndMessage() {
+        System.out.println(EndMessage);
+    }
+}
+
 
