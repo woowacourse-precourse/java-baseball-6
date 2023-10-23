@@ -24,7 +24,7 @@ class GuessResultTest {
 
     @Test
     @DisplayName("모두 맞았을 경우 게임이 끝났다는 것을 알려준다.")
-    void when_() {
+    void when_all_ball_correct_inform_game_is_end() {
         // given & when
         for (int i = 0; i < COUNT.getNumber(); i++) {
             guessResult.addStrikeCount();
