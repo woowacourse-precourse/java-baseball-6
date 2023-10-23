@@ -9,6 +9,7 @@ public class Game {
     public GameStatus status;
     NumberList computerNumberList;
 
+
     public Game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.status = GameStatus.START;
@@ -18,14 +19,31 @@ public class Game {
      * 상태에 따른 게임 진행
      */
     public void Next() {
-        System.out.println(this.status);
         switch (this.status) {
             case START -> this.Ready();
-            case END -> {
-                this.status = GameStatus.EXIT;
-            }
             case PROCEEDING -> this.Proceed();
+            case END -> this.choiceReStart();
             default -> throw new IllegalStateException("Unexpected value: " + this.status);
+        }
+    }
+
+    /**
+     * 사용자에게 입력받은 값을 검증하고 재시작과 종료로 상태변화
+     */
+    public void choiceReStart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (userInput.length() == 1) {
+            Number number = new Number(userInput.charAt(0));
+            if (number.num == 1) {
+                this.status = GameStatus.START;
+            } else if (number.num == 2) {
+                this.status = GameStatus.EXIT;
+            } else {
+                throw new IllegalArgumentException("잘못된 값 입력");
+            }
+        } else {
+            throw new IllegalArgumentException("잘못된 값 입력");
         }
     }
 
