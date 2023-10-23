@@ -38,21 +38,15 @@ public class Balls {
         }
     }
 
-    public boolean match(Balls targetBalls) {
-        int strikeCount = 0;
-        int ballCount = 0;
+    public GameResult getGameResult(Balls targetBalls) {
+        GameResult result = new GameResult();
 
         for (int i = 0; i < balls.size(); i++) {
             int searchIndex = targetBalls.indexOf(balls.get(i));
-            if (searchIndex == i) {
-                strikeCount++;
-            } else if (searchIndex >= 0) {
-                ballCount++;
-            }
+            result.checkBallIndex(i, searchIndex);
         }
 
-        GameIO.gameResultPrint(strikeCount, ballCount);
-        return strikeCount == 3;
+        return result;
     }
 
     private int indexOf(Ball targetBall) {
