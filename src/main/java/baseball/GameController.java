@@ -2,56 +2,35 @@ package baseball;
 
 import static baseball.Application.beginGame;
 import static baseball.Constant.RESTART;
-import static baseball.Constant.THREE_STRIKE;
 
 import java.util.List;
 
 public class GameController {
     private final Computer computer;
     private final UserInput userInput;
-    private boolean hasWon;
+    private final MatchCalculator matchCalculator;
+    private final List<Integer> computerNum;
+    private static boolean hasWon;
 
     GameController() {
         computer = new Computer();
-        computer.generateRandomNum();
         userInput = new UserInput();
+        matchCalculator = new MatchCalculator();
+        computer.generateRandomNum();
+        computerNum = computer.getRandomNum();
     }
 
     public void proceedGame() {
         while (!hasWon) {
             userInput.promptUserInput();
-            checkMatch(computer.getRandomNum(), userInput.getUserNum());
+            List<Integer> userGuess = userInput.getUserNum();
+            int[] matchResult = matchCalculator.checkMatch(computerNum, userGuess);
+            printResult(matchResult[0], matchResult[1]);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         restartOrExit(userInput.promptUserForRestart());
     }
 
-    public void checkMatch(List<Integer> computerNum, List<Integer> userNum) {
-        int strikeCount = countStrike(computerNum, userNum);
-        int ballCount = countBall(computerNum, userNum);
-        printResult(strikeCount, ballCount - strikeCount);
-        checkWin(strikeCount);
-    }
-
-    public int countStrike(List<Integer> computerNum, List<Integer> userNum) {
-        int count = 0;
-        for (int i = 0; i < computerNum.size(); i++) {
-            if (computerNum.get(i).equals(userNum.get(i))) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public int countBall(List<Integer> computerNum, List<Integer> userNum) {
-        int count = 0;
-        for (int i = 0; i < computerNum.size(); i++) {
-            if (computerNum.contains(userNum.get(i))) {
-                count++;
-            }
-        }
-        return count;
-    }
 
     public void printResult(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
@@ -66,15 +45,14 @@ public class GameController {
         System.out.print("\n");
     }
 
-    public void checkWin(int strikeCount) {
-        if (strikeCount == THREE_STRIKE) {
-            hasWon = true;
+    public void restartOrExit(int userAnswer) {
+        if (userAnswer == RESTART) {
+            hasWon = false;
+            beginGame();
         }
     }
 
-    public void restartOrExit(int userAnswer) {
-        if (userAnswer == RESTART) {
-            beginGame();
-        }
+    public static void hasWon() {
+        hasWon = true;
     }
 }
