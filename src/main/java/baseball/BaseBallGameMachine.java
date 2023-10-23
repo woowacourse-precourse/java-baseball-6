@@ -8,10 +8,11 @@ import java.util.Objects;
 public class BaseBallGameMachine {
     private final Computer computer;
     private final User user;
-    boolean flag = true;
     private List<Integer> computerNumbers = new ArrayList<>();
     private int ball;
     private int strike;
+    private static final int WINNING_COUNT = 3;
+
 
     public BaseBallGameMachine(Computer computer, User user) {
         this.computer = computer;
@@ -23,7 +24,6 @@ public class BaseBallGameMachine {
 
         int[] result = new int[]{0, 0};
 
-        int WINNING_COUNT = 3;
         while (result[1] != WINNING_COUNT) {
             List<Integer> userInput = user.userInput();
             result = calculation(userInput);
@@ -40,10 +40,6 @@ public class BaseBallGameMachine {
     public int[] calculation(List<Integer> userInput) {
         countBall(userInput);
         countStrike(userInput);
-
-        if (strike == 3) {
-            flag = false;
-        }
 
         return new int[]{ball, strike};
     }
