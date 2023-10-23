@@ -1,6 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.Const.FINISH_STRIKE_COUNT;
+import static baseball.domain.Const.FINISH_STRIKE_COUNT;
 
 public class Result {
     private int ball;

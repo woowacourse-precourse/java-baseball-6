@@ -1,11 +1,11 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static baseball.Validator.validateInput;
+import static baseball.domain.Validator.validateInput;
 
 public class User {
 

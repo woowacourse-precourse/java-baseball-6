@@ -1,22 +1,22 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-import static baseball.Const.*;
+import static baseball.domain.Const.*;
 
-public class Game {
+public class NumberBaseballGame {
 
-    private static final Game instance = new Game();
+    private static final NumberBaseballGame instance = new NumberBaseballGame();
     private final User user;
 
-    private Game() {
+    private NumberBaseballGame() {
         this.user = new User();
     }
 
-    public static Game getInstance() {
+    public static NumberBaseballGame getInstance() {
         return instance;
     }
 

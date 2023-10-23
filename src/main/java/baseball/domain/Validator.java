@@ -1,11 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
-import static baseball.Const.*;
+import static baseball.domain.Const.*;
 
 public class Validator {
 
@@ -30,7 +25,6 @@ public class Validator {
             throw new IllegalArgumentException("1~9 이외의 문자가 입력되었습니다.");
         }
     }
-
 
     public static void validateCommand(int command) {
         if (command != RESTART_COMMAND && command != FINISH_COMMAND) {
