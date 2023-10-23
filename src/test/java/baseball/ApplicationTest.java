@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 야구_게임_매칭_테스트() throws NoSuchFieldException, IllegalAccessException, IOException {
+    void 야구_게임_매칭_테스트() throws NoSuchFieldException, IllegalAccessException {
         BallUtils ballUtils = new BallUtils();
         Field field = BallUtils.class.getDeclaredField("computer");
         field.setAccessible(true);
