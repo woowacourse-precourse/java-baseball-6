@@ -1,6 +1,4 @@
-package baseball.domain;
-
-import static baseball.domain.ExceptionMessage.RESTART_EXCEPTION_MESSAGE;
+package baseball.model;
 
 import java.util.stream.Stream;
 
@@ -19,7 +17,7 @@ public enum GameRestartStatus {
         return Stream.of(values())
                 .filter(gameRestartStatus -> gameRestartStatus.commandNumber == commandNumber)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(RESTART_EXCEPTION_MESSAGE));
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.RESTART_EXCEPTION_MESSAGE));
     }
 
     public boolean isRestart() {

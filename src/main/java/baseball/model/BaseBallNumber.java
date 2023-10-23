@@ -1,6 +1,4 @@
-package baseball.domain;
-
-import static baseball.domain.ExceptionMessage.NUMBER_RANGE_EXCEPTION_MESSAGE;
+package baseball.model;
 
 import java.util.Objects;
 
@@ -17,7 +15,7 @@ public class BaseBallNumber {
 
     private void validate(int number) {
         if (isNotRightRange(number)) {
-            throw new IllegalArgumentException(NUMBER_RANGE_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_RANGE_EXCEPTION_MESSAGE);
         }
     }
 

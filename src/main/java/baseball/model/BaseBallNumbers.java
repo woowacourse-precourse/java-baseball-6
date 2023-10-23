@@ -1,7 +1,5 @@
-package baseball.domain;
+package baseball.model;
 
-import static baseball.domain.ExceptionMessage.BASEBALL_NUMBER_DUPLICATE_EXCEPTION_MESSAGE;
-import static baseball.domain.ExceptionMessage.BASEBALL_NUMBER_SIZE_EXCEPTION_MESSAGE;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
@@ -33,7 +31,7 @@ public class BaseBallNumbers {
 
     private void validateSize(List<BaseBallNumber> numbers) {
         if (hasOverSize(numbers)) {
-            throw new IllegalArgumentException(BASEBALL_NUMBER_SIZE_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(ExceptionMessage.BASEBALL_NUMBER_SIZE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -43,7 +41,7 @@ public class BaseBallNumbers {
 
     private void validateDuplicate(List<BaseBallNumber> numbers) {
         if (hasDuplicate(numbers)) {
-            throw new IllegalArgumentException(BASEBALL_NUMBER_DUPLICATE_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(ExceptionMessage.BASEBALL_NUMBER_DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 

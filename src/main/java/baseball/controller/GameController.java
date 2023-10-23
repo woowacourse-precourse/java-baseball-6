@@ -1,13 +1,13 @@
 package baseball.controller;
 
-import baseball.domain.BaseBallGame;
-import baseball.domain.BaseBallGameResult;
-import baseball.domain.BaseBallNumbers;
-import baseball.domain.GameRestartStatus;
-import baseball.domain.NumberGenerator;
 import baseball.dto.request.GameRestartDto;
 import baseball.dto.request.PlayerNumbersDto;
 import baseball.dto.response.GameResultDto;
+import baseball.model.BaseBallGame;
+import baseball.model.BaseBallGameResult;
+import baseball.model.BaseBallNumbers;
+import baseball.model.GameRestartStatus;
+import baseball.model.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

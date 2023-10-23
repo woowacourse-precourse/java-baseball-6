@@ -1,6 +1,6 @@
 package baseball.dto.response;
 
-import baseball.domain.BaseBallGameResult;
+import baseball.model.BaseBallGameResult;
 
 public class GameResultDto {
 

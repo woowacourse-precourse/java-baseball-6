@@ -1,7 +1,7 @@
-package baseball.domain;
+package baseball.model;
 
-import static baseball.domain.GameRestartStatus.END;
-import static baseball.domain.GameRestartStatus.RESTART;
+import static baseball.model.GameRestartStatus.END;
+import static baseball.model.GameRestartStatus.RESTART;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

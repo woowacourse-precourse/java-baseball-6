@@ -1,8 +1,8 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.domain.NumberGenerator;
-import baseball.domain.RandomNumberGenerator;
+import baseball.model.NumberGenerator;
+import baseball.model.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
