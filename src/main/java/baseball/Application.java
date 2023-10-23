@@ -61,14 +61,11 @@ public class Application {
             System.out.println(String.format("%d스트라이크",strike));
             System.out.println(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료",strike));
         } else if (strike != 0 && ball != 0){
-            String result = String.format("%d볼 %d스트라이크",ball,strike);
-            System.out.println(result);
+            System.out.println(String.format("%d볼 %d스트라이크",ball,strike));
         } else if (ball == 0){
-            String result = String.format("%d스트라이크",strike);
-            System.out.println(result);
+            System.out.println(String.format("%d스트라이크",strike));
         } else if (strike == 0){
-            String result = String.format("%d볼",ball);
-            System.out.println(result);
+            System.out.println(String.format("%d볼",ball));
         }
     }
 
