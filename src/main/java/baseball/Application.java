@@ -16,22 +16,21 @@ public class Application {
 
             Computer computer = new Computer();
 
-            while (true) {
+            int strike = 0;
+            int ball = 0;
+
+            while (strike != 3) {
 
                 List<Integer> my = inputNumbers();
 
                 int[] compareResult = computer.compareNumber(my);
 
-                int strike = compareResult[0];
-                int ball = compareResult[1];
+                strike = compareResult[0];
+                ball = compareResult[1];
 
                 String resultMessage = calculateResult(strike, ball);
 
                 System.out.println(resultMessage);
-
-                if (strike == 3) {
-                    break;
-                }
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
