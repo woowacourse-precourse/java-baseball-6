@@ -9,6 +9,9 @@ import static utils.GameErrorMessage.INVALID_LENGTH_MESSAGE;
 import static utils.GameErrorMessage.NULL_INPUT_MESSAGE;
 
 public class Validator {
+    public Validator() {
+    }
+
     public boolean isBaseballNumber(String input) {
         Objects.requireNonNull(input, NULL_INPUT_MESSAGE);
 

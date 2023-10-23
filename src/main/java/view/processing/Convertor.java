@@ -6,6 +6,9 @@ import java.util.List;
 import static utils.GameConstant.*;
 
 public class Convertor {
+    public Convertor() {
+    }
+
     public List<Integer> inputToBaseballNumber(String input) {
         List<Integer> numbers = new ArrayList<>();
         for (char c : input.toCharArray()) {

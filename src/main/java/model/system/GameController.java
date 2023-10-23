@@ -5,7 +5,6 @@ import model.player.User;
 import model.referee.GameScoreboard;
 
 public final class GameController {
-
     private final GameStarter gameStarter;
     private final GameTerminator gameTerminator;
 
