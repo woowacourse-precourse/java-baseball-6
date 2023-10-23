@@ -13,7 +13,7 @@ public class NumberGenerator {
 
     public List<Integer> setComputerNumber() {
         List<Integer> computerNumber;
-        Set<Integer> set = new HashSet<>(); // 중복제거를 위해 Set 사용
+        Set<Integer> set = new HashSet<>();
         while (set.size() < SIZE) {
             set.add(Randoms.pickNumberInRange(1, 9));
         }
@@ -27,7 +27,7 @@ public class NumberGenerator {
         return playerNumber;
     }
 
-    private List<Integer> stringToList(String num) { // 검증된 숫자를 list 타입으로 변환
+    private List<Integer> stringToList(String num) {
         List<Integer> list = new ArrayList<>();
         for (char c : num.toCharArray()) {
             list.add(c - '0');
@@ -35,7 +35,7 @@ public class NumberGenerator {
         return list;
     }
 
-    private String inputNumber() { // 사용자로부터 번호를 입력받고 예외 케이스 검사
+    private String inputNumber() {
         String num = Console.readLine();
         if (!isValidNumber(num)) {
             throw new IllegalArgumentException();
@@ -43,7 +43,7 @@ public class NumberGenerator {
         return num;
     }
 
-    private boolean isValidNumber(String num) { // 유효한 숫자인지 검사
+    private boolean isValidNumber(String num) {
         if (num.length() != 3) {
             return false;
         }

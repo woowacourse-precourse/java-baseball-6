@@ -9,7 +9,7 @@ public class HintGenerator {
     private static final String NOTHING = "낫싱";
     private static final String SPACE = " ";
 
-    public String getHint(List<Integer> computerNumber, List<Integer> playerNumber) { // 볼 or 스트라이크 or 낫싱 결과 계산
+    public String getHint(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strikeCount = 0;
         int ballCount = 0;
 
@@ -26,7 +26,7 @@ public class HintGenerator {
         return makeHintText(strikeCount, ballCount);
     }
 
-    private String makeHintText(int strikeCount, int ballCount) { // 볼, 스트라이크 횟수에 따라 힌트 메시지 생성
+    private String makeHintText(int strikeCount, int ballCount) {
         StringBuilder sb = new StringBuilder();
         if (ballCount > 0) {
             sb.append(ballCount);
