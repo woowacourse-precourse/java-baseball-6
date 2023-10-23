@@ -20,9 +20,8 @@ public class Ball {
         hintLog.add(currentHint);
 
         if (currentHint.get("strike") >= 3) {
-
+            return false;
         }
-
         return true;
     }
 
