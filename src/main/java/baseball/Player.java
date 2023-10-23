@@ -12,7 +12,22 @@ public class Player {
 
     public void enterNumber() {
         String input = Console.readLine();
+        checkInputFormat(input);
         setNumberList(input);
+    }
+
+    private static void checkInputFormat(String input) {
+        // 숫자형식 확인
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        // 3자릿수 확인
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void setNumberList(String input) {
