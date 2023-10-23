@@ -1,11 +1,11 @@
 package baseball.gameRule;
 
-import baseball.constants.constants;
+import baseball.constants.Constants;
 import java.util.List;
 
-public class gameRule {
+public class GameRule {
     public boolean checkEndGame(int strikes) { // strikes 가 3 일 경우에 게임을 종료시키는 메서드
-        if (strikes == constants.STRIKE_FOR_ENDGAME) {
+        if (strikes == Constants.STRIKE_FOR_ENDGAME) {
             return true;
         }
         return false;
@@ -13,7 +13,7 @@ public class gameRule {
 
     public int checkStrike(List<Integer> playerInput, List<Integer> cpuInput) { // 스트라이크를 체크
         int strikes = 0;
-        for (int i = 0; i < constants.INPUT_LENGTH; i++) {
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
             if (playerInput.get(i) == cpuInput.get(i)) {
                 strikes++;
             }
@@ -23,7 +23,7 @@ public class gameRule {
 
     public int checkBall(List<Integer> playerInput, List<Integer> cpuInput) { // 볼을 체크
         int balls = 0;
-        for (int i = 0; i < constants.INPUT_LENGTH; i++) {
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
             if (playerInput.get(i) != cpuInput.get(i) && cpuInput.contains(playerInput.get(i))) {
                 balls++;
             }
@@ -34,7 +34,7 @@ public class gameRule {
     public String checkNothing(List<Integer> playerInput, List<Integer> cpuInput) { // 낫싱인지 체크
         int nothingCount = 0;
         String nothing = "낫싱";
-        for (int i = 0; i < constants.INPUT_LENGTH; i++) {
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
             if (!cpuInput.contains(playerInput.get(i))) {
                 nothingCount++;
             }
@@ -57,7 +57,7 @@ public class gameRule {
                 check = false;
                 break;
             } else {
-                System.out.println(constants.INSERT_ONE_OR_TWO);
+                System.out.println(Constants.INSERT_ONE_OR_TWO);
             }
         }
         return check;

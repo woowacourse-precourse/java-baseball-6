@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.constants.constants;
-import baseball.gameRule.gameRule;
-import baseball.numberGenerator.numberGenerator;
+import baseball.constants.Constants;
+import baseball.gameRule.GameRule;
+import baseball.numberGenerator.NumberGenerator;
 import java.util.List;
 
 
@@ -20,10 +20,10 @@ class baseballGame {
         int strikes;
         String nothing;
         boolean gameAgainCheck = true;
-        gameRule gameRule = new gameRule(); // gameRule 인스턴스 생성.
-        numberGenerator numberGenerator = new numberGenerator(); // numberGenerator 인스턴스 생성
+        GameRule gameRule = new GameRule(); // gameRule 인스턴스 생성.
+        NumberGenerator numberGenerator = new NumberGenerator(); // numberGenerator 인스턴스 생성
 
-        System.out.println(constants.START_MESSAGE);
+        System.out.println(Constants.START_MESSAGE);
         List<Integer> cpuGameNumber = numberGenerator.getCpuRandomNumber();
 
         while (true) { // gameAgainCheck 가 false가 되년 경우엔 게임 종료
@@ -45,8 +45,8 @@ class baseballGame {
                 System.out.println(balls + "볼 " + strikes + "스트라이크");
             }
             if (gameRule.checkEndGame(strikes)) { // 게임이 끝났는지 안끝났는지 확인함. strikes = 3 이면 진입
-                System.out.println(constants.END_MESSAGE);
-                System.out.println(constants.ASK_CONTINUE);
+                System.out.println(Constants.END_MESSAGE);
+                System.out.println(Constants.ASK_CONTINUE);
                 gameAgainCheck = gameRule.playGameAgain(); // 게임을 다시 시작할지 말지 물어봄 1이면 true, 2면 false
                 if (!gameAgainCheck) {
                     break;
@@ -54,6 +54,6 @@ class baseballGame {
                 cpuGameNumber = numberGenerator.getCpuRandomNumber();
             }
         }
-        System.out.println(constants.DECLARE_GAME_END);
+        System.out.println(Constants.DECLARE_GAME_END);
     }
 }

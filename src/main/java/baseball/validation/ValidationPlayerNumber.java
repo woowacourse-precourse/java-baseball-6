@@ -1,11 +1,11 @@
 package baseball.validation;
 
-import baseball.constants.constants;
+import baseball.constants.Constants;
 import java.util.List;
 
-public class validationPlayerNumber {
+public class ValidationPlayerNumber {
     public boolean validatePlayerNumber(List<Integer> input) { // 플레이어가 입력한 값이 옳은지 검증하는 메서드
-        if (input.size() != constants.INPUT_LENGTH) {
+        if (input.size() != Constants.INPUT_LENGTH) {
             return true; // 입력된 숫자가 3자리가 아닐 경우에 true 반환 --> 오류를 발생시키기 위함
         }
 
