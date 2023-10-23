@@ -7,7 +7,6 @@ public class GameMaster {
 
   boolean shouldContinueRound;
   boolean isCorrectAnswerFound;
-  int inputNumber;
 
   public GameMaster() {
     this.shouldContinueRound = true;
@@ -21,9 +20,9 @@ public class GameMaster {
     System.out.println("숫자 야구 게임을 시작합니다.");
   }
 
-  public void progress() {
+  public String progress() {
     System.out.print("숫자를 입력해주세요 : ");
-    this.inputNumber = Integer.parseInt(Console.readLine());
+    return Console.readLine();
   }
 
   public String checkResult(String result) {
