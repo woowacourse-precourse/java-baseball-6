@@ -12,8 +12,7 @@ public class Result {
     private int strikeCount;
     private int ballCount;
 
-
-    public void calculateResult(List<Integer> computerNumbers, List<Integer> inputInteger) {
+    public Result(List<Integer> computerNumbers, List<Integer> inputInteger){
         for (int number : inputInteger) {
             if (computerNumbers.contains(number)) {
                 this.ballCount++;
