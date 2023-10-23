@@ -14,4 +14,10 @@ public class InputView {
         String playerNumber = Console.readLine();
         return playerNumber;
     }
+
+    public String inputGameOption() {
+        System.out.println(OPTION_MESSAGE);
+        String option = Console.readLine();
+        return option;
+    }
 }
