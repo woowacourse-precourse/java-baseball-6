@@ -13,6 +13,18 @@ public class validationTest {
                 validation.inputLengthIsZero(input));
     }
     @Test
+    public void 사용자입력이_3보다_작은경우(){
+        String input="12";
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                validation.inputLengthIsUnder(input));
+    }
+    @Test
+    public void 사용자입력이_3보다_큰_경우(){
+        String input="1234";
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                validation.inputLengthIsOver(input));
+    }
+    @Test
     public void 사용자입력이_숫자가_아닌경우(){
         String input="asdf";
         Assertions.assertThrows(IllegalArgumentException.class, () ->
@@ -24,4 +36,5 @@ public class validationTest {
        Assertions.assertThrows(IllegalArgumentException.class, ()->
                validation.duplicateNumber(input));
     }
+
 }
