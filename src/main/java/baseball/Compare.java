@@ -12,8 +12,8 @@ public class Compare {
     }
 
     public Compare compareNum(List<Integer> computer, List<Integer> player) {
-        int strike = 0;
-        int ball = 0;
+        strike = 0;
+        ball = 0;
 
         for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) == player.get(i)) {   // 위치와 숫자 다 맞으면 스트라이크

@@ -8,6 +8,7 @@ public class GamePlay {
 
     public void run() {
         this.compare = new Compare(0, 0);
+        printStartMsg();    // 게임 시작 문구 출력
         do {
             start();
         } while (restart());
@@ -16,9 +17,8 @@ public class GamePlay {
     public void start() {
         Computer computer = new Computer();
         Player player = new Player();
-//        List<Integer> comNum = computer.getNumbers();// 컴퓨터 랜덤 수 생성
-        List<Integer> comNum = List.of(1, 2, 3);    // 테스트용
-        printStartMsg();    // 게임 시작 문구 출력
+        List<Integer> comNum = computer.getNumbers();// 컴퓨터 랜덤 수 생성
+//        List<Integer> comNum = List.of(1, 2, 3);    // 테스트용
         do {
             List<Integer> userInput = player.getUserInput();  // 사용자 입력 받아서 진행
             compare.compareNum(comNum, userInput);
@@ -35,17 +35,19 @@ public class GamePlay {
     }
 
     private Boolean restart() {
-        int input = 0;
-        while (invalidInput(input)) {
+        int input;
+        do {
             printRestartMsg();
             input = Integer.parseInt(getUserInput());
-        }
-        printRestartKeyError(); // 에러 메세지 출력
+            if (invalidInput(input)) {
+                printRestartKeyError(); // 에러 메세지 출력
+            }
+        } while (invalidInput(input));
         return (input == 1);
     }
 
     private boolean invalidInput(int input) {
-        return (input != 1) && (input != 2);
+        return (input != 1 && input != 2);
     }
 
     private void printRestartMsg() {
