@@ -1,51 +1,40 @@
 # 미션 - 숫자 야구
 
 ## 기능 목록
-- CONSTANT
-  - 필요한 숫자 , 문자열 모두 상수로 구현
-- GAME
-  - 난수생성
-    - CreateRandomNumber
-  - 메인 루프
-    - 전체 게임에 대한 시작 루프
-    - run
-      
+- view
+  - 게임 시작 뷰
+  - 사용자 입력 뷰
+  - 결과 출력 뷰
+  - 게임 종료 뷰
+  - 재시작 뷰
+- 난수생성
+- 메인 루프
+  - 전체 게임에 대한 시작 루프
+- 하나의 게임
   - 사용자 입력
-    - UserInput
-      
   - String to List<Integet> 변환기능
-    - StringToIntegetList
-
-  - 사용자 입력값에 대한 검증
-    - 볼이면 볼 , 스트라이크면 스트라이크 , 낫씽이면 낫씽
-    - 잘못된 값이면 IllegalArgumentException
-    - InputCheck
-      - Ball
-      - Strike
-      - Nothing
-        
-  - 검증 결과에 대한 Print
-    - BallPrint
-    - StrikePrint
-    - NothingPrint
-    
+  - 사용자 입력값 체크
+    - 볼이면 볼 , 스트라이크면 스트라이크 , 낫씽이면 낫씽 
   - 정답시 게임 종료
-    - GameEndPrint
-      
-  - 재시작 질문
+- 재시작 or 종료
+    - 사용자 입력
     - 1 - 재시작 , 2 - 종료
-    - RestartPrint
+- 에러 검증
+  - 사용자가 올바르지 않은 값을 입력하면 잘못된 값이면 IllegalArgumentException
+
 
 ## Game 시나리오
 - (1) 게임시작
 - (2) 난수생성
 - (3) 사용자 입력
-- (4) 사용자 입력 값 검증
+- (4) 사용자 입력 값 체크
 - (5) 검증 결과 Print
 - (6) 정답시 게임 종료
-- (7) 재시작 질문
-  - 재시작시 (1)로 돌아감
-  - (8) 종료
+- (7) 재시작
+  - 사용자 입력
+  - 사용자 입력 값 체크
+    - 재시작시 (1)로 돌아감
+    - (8) 종료
 
 
 
