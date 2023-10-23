@@ -9,6 +9,12 @@ public class Game {
 
     List<Integer> computerNum;
 
+    private boolean isWin;
+
+    public boolean isWin() {
+        return isWin;
+    }
+
     public void init() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computerNum = new ArrayList<>();
@@ -43,5 +49,44 @@ public class Game {
         } else {
             throw new IllegalArgumentException("1~9로 이루어진 서로 다른 세자리 숫자를 입력해야 합니다. 게임이 종료됩니다.");
         }
+    }
+
+    public String check(List<Integer> computerNum, List<Integer> userNum) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNum.get(i).equals(userNum.get(i))) {
+                strike++;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (computerNum.get(i).equals(userNum.get(j))) {
+                    if (i != j) {
+                        ball++;
+                    }
+                }
+            }
+        }
+
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if (ball != 0) {
+            sb.append(ball).append("볼 ");
+        }
+        if (strike != 0) {
+            sb.append(strike).append("스트라이크");
+        }
+
+        if (strike == 3) {
+            isWin = true;
+        }
+
+        return sb.toString();
     }
 }
