@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.Constant;
 import baseball.model.BaseballGameResult;
 import baseball.model.ComputerNumber;
 import baseball.service.BaseballGameService;
@@ -30,7 +31,7 @@ public class BaseballController {
             ball = gameResult.getBall();
             strike = gameResult.getStrike();
             resultGame();
-        } while (strike != 3);
+        } while (strike != Constant.MAX_STRIKE);
     }
 
     private void resultGame() {

@@ -1,7 +1,7 @@
 package baseball.model;
 
+import baseball.constant.Constant;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class ComputerNumber {
 
     private List<Integer> generateComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
+        while (computerNumber.size() < Constant.RIGHT_NUMBER_LENGTH) {
             addRandomNumber(computerNumber);
         }
         return computerNumber;
@@ -28,7 +28,9 @@ public class ComputerNumber {
 
     private void addRandomNumber(List<Integer> computerNumber) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!computerNumber.contains(randomNumber)) computerNumber.add(randomNumber);
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
+        }
     }
 
 }

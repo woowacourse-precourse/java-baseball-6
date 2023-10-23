@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.constant.Constant;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -10,7 +11,8 @@ public class InputView {
     }
 
     public static String requestRestartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String message = String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.", Constant.GAME_RESTART, Constant.GAME_STOP);
+        System.out.println(message);
         return Console.readLine();
     }
 

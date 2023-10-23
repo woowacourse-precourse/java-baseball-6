@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.constant.Constant;
+
 public class OutputView {
 
 
@@ -28,7 +30,7 @@ public class OutputView {
     }
 
     public static void endGame() {
-        String result = String.format("%s개의 숫자를 모두 맞히셨습니다! 게임 종료", 3);
+        String result = String.format("%s개의 숫자를 모두 맞히셨습니다! 게임 종료", Constant.MAX_STRIKE);
         System.out.println(result);
     }
 }

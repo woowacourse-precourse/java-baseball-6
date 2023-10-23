@@ -1,6 +1,7 @@
 package baseball.model;
 
 
+import baseball.constant.Constant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,16 +40,16 @@ public class UserNumber {
     private boolean isDuplicateNumber(int[] inputList) {
         return Arrays.stream(inputList)
                 .distinct()
-                .count() != 3;
+                .count() != Constant.RIGHT_NUMBER_LENGTH;
     }
 
     private boolean isWrongFormatNumber(int[] inputList) {
         return Arrays.stream(inputList)
-                .anyMatch(num -> num <= 0 || num > 9);
+                .anyMatch(num -> num < Constant.START_INCLUSIVE || num > Constant.END_INCLUSIVE);
     }
 
     private boolean isOverLengthNumber(int[] inputList) {
-        return inputList.length != 3;
+        return inputList.length != Constant.RIGHT_NUMBER_LENGTH;
     }
 
 }
