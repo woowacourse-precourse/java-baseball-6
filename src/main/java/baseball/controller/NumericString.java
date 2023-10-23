@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.controller;
 
 import java.util.List;
 

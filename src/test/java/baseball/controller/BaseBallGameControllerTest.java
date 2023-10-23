@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
-import baseball.domain.NumericString;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
