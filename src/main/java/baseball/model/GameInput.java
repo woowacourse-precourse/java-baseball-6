@@ -4,20 +4,19 @@ import baseball.exception.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameInput {
-    private final Integer RESTART_GAME = 1;
-    private final Integer END_GAME = 2;
 
     public Number readNumberInput() {
+
         int number = Integer.parseInt(Console.readLine());
         return new Number(number);
     }
 
-    public Integer readFinishInput() {
+    public FinishInput readFinishInput() {
         int number = Integer.parseInt(Console.readLine());
 
         return switch (number) {
-            case 1 -> RESTART_GAME;
-            case 2 -> END_GAME;
+            case 1 -> FinishInput.RESTART_GAME;
+            case 2 -> FinishInput.END_GAME;
             default -> throw new IllegalArgumentException(ErrorMessage.FINISH_INPUT_IS_WRONG.getMessage());
         };
     }

@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.FinishInput;
 import baseball.model.GameInput;
 import baseball.model.GameResultCalculator;
 import baseball.model.Number;
@@ -67,9 +68,9 @@ public class GameController {
     public boolean isEndGame() {
         view.printSuccessAndEndMessage();
         view.printRestartOrEndMessage();
-        Integer finishInput = input.readFinishInput();
+        FinishInput finishInput = input.readFinishInput();
 
-        return finishInput == 1;
+        return finishInput == FinishInput.RESTART_GAME;
     }
 
 }
