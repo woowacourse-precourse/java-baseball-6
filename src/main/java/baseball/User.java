@@ -1,8 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
-import java.util.Set;
 
 public class User {
 	public int input3DigitNumber() {
@@ -22,7 +20,7 @@ public class User {
 
 		// 3자리 수 중에서 숫자가 중복되면 예외 처리
 		for (int i = 0; i < input.length(); i++) {
-			for (int j = i; j < input.length(); j++) {
+			for (int j = i + 1; j < input.length(); j++) {
 				if (input.charAt(i) == input.charAt(j)) {
 					throw new IllegalStateException();
 				}
