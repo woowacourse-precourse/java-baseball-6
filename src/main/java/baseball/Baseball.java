@@ -39,4 +39,18 @@ public class Baseball {
         return listedInputNums;
     }
 
+    public static void replayOrExit(int num) { // 4. 게임 재시작 여부를 결정할 숫자를 입력받을 메서드
+        if (num == 1) {
+            play();
+        } else if (num == 2) {
+            return;
+        } else {
+            throw new IllegalArgumentException("Invalid input number : " + num);
+        }
+    }
+
+    public static void countStrikeOrBall(String[] nums) { // 5. 입력한 수에 대한 결과를 볼, 스트라이크 개수로 출력하는 메서드
+
+    }
+
 }
