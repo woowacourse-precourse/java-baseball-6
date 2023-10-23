@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.constant.PrintMessage.ASK_RETRY_GAME_MESSAGE;
 import static baseball.constant.PrintMessage.BALL;
 import static baseball.constant.PrintMessage.GAME_START_MESSAGE;
 import static baseball.constant.PrintMessage.INPUT_NUMBER_MESSAGE;
@@ -21,7 +22,7 @@ public class Application {
     static final String NOT_VALID_NUMBER = "3자리의 숫자만 입력 가능합니다.";
 
     public static void main(String[] args) {
-
+        println(GAME_START_MESSAGE);
         try {
             baseballGame();
         }catch (IOException | IllegalArgumentException ioException){
@@ -32,7 +33,6 @@ public class Application {
 
     private static void baseballGame() throws IOException {
         List<Integer> answerNumber = createAnswerNumber();
-        println(GAME_START_MESSAGE);
 
         String input;
         while (!isEnd){
@@ -42,6 +42,16 @@ public class Application {
             StrikeBallCnt result = getResult(input, answerNumber);
             printResult(result);
         }
+
+        if(isRetry()){
+            baseballGame();
+        }
+
+    }
+
+    private static boolean isRetry() throws IOException {
+        println(ASK_RETRY_GAME_MESSAGE);
+        return br.readLine().equals("1");
     }
 
     private static void print(String message) {
