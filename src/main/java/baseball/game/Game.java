@@ -40,6 +40,8 @@ public class Game {
             }
             for (String number : input.split("")) {
                 int currentBall = Integer.parseInt(number);
+                validateInputBallRange(currentBall);
+
                 if (balls.contains(currentBall)) {
                     throw new IllegalArgumentException("각각 다른 수를 입력해주세요");
                 } else {
@@ -52,4 +54,11 @@ public class Game {
 
         return balls;
     }
+
+    private void validateInputBallRange(int inputBall) {
+        if (inputBall < 1 || inputBall > 9) {
+            throw new IllegalArgumentException("1 ~ 9 만 입력해주세요");
+        }
+    }
+
 }
