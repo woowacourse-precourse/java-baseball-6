@@ -10,7 +10,7 @@ import baseball.view.OutputView;
 
 public class GameController {
     private final NumberComparator numberComparator = new NumberComparator();
-    private ProgramNumber programNumber;
+    private final ProgramNumber programNumber = new ProgramNumber();
     private UserNumber userNumber;
 
     public void startGame() {
@@ -34,7 +34,7 @@ public class GameController {
     }
 
     private void setupGameNumber() {
-        programNumber = new ProgramNumber();
+        programNumber.createProgramNumber();
     }
 
     private void setUserNumber() {
