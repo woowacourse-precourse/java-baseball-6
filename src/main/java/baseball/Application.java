@@ -12,6 +12,10 @@ public class Application {
         boolean startGame = true;
         while (startGame) {
             startGame();
+            int reStartInput = InputView.getRestartInput();
+            if (reStartInput == 2) {
+                startGame = false;
+            }
         }
     }
 
