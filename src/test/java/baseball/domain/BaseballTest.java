@@ -43,5 +43,12 @@ class BaseballTest {
         }
 
 
+        @Test
+        @DisplayName("입력한 값이 Nothing일 경우 참을 반환한다.")
+        public void 입력한_값이_Nothing일_경우_참을_반환한다() {
+            boolean isPerfect = baseball.isNothing("567");
+            Assertions.assertThat(isPerfect).isTrue();
+        }
+
     }
 }
