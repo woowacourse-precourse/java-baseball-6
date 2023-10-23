@@ -4,7 +4,7 @@ import baseball.domain.ComputerNum;
 import baseball.domain.UserNum;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameService {
+public class GameManager {
 
     private final UserNum userNum;
     private final ComputerNum computerNum;
@@ -12,10 +12,14 @@ public class GameService {
     private Integer strike;
     private Integer ball;
 
-    public GameService() {
+    public GameManager() {
         this.userNum = new UserNum();
         this.computerNum = new ComputerNum();
         this.ballCounter = new BallCounter();
+    }
+
+    public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void inputUserNumber() {
