@@ -13,12 +13,12 @@ public enum OutputMessage {
         this.message = message;
     }
 
-    public String getMessage(int value1, int value2) {
-        return String.format(message, value1, value2);
+    public String getMessage(int ball, int strike) {
+        return String.format(message, ball, strike);
     }
 
-    public String getMessage(int value) {
-        return String.format(message, value);
+    public String getMessage(int ballOrStrike) {
+        return String.format(message, ballOrStrike);
     }
     public String getMessage() { return message; }
 }
