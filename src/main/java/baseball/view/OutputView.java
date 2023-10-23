@@ -8,7 +8,7 @@ public class OutputView {
     private static final String STRIKE_MESSAGE = "%d스트라이크\n";
     private static final String BALL_MESSAGE = "%d볼\n";
     private static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
-
+    private static final String GET_RESTART_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입려하세요.";
 
 
     public static void printStartGame() {
@@ -17,6 +17,10 @@ public class OutputView {
 
     public static void printInputNumber() {
         System.out.print(GET_NUMBER_MESSAGE);
+    }
+
+    public static void printInputRestartGame(){
+        System.out.println(GET_RESTART_GAME);
     }
 
     public static void printGameResult(GameResult gameResult) {
