@@ -6,6 +6,7 @@ package baseball.utils;
 
 public class Constants {
     public static final int ANSWER_LENGTH = 3;
+    public static final int RESTART_INPUT_LENGTH = 1;
     public static final int USER_ANSWER_LOWER_LIMIT = 1;
     public static final int USER_ANSWER_UPPER_LIMIT = 9;
     public static final int WANNA_KEEP_PLAYING = 1;
