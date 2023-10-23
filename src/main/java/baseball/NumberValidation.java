@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class NumberValidation {
 
     public int[] getResult(int[] randomNumber, int[] inputNumber) {
@@ -14,7 +12,7 @@ public class NumberValidation {
     private int getBallCount(int[] randomNumber, int[] inputNumber) {
         int ball = 0;
         for (int index = 0; index < 3; index++) {
-            if (randomNumber[index] != inputNumber[index]){
+            if (randomNumber[index] != inputNumber[index]) {
                 ball += getBall(randomNumber, inputNumber[index]);
             }
         }
