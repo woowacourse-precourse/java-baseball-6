@@ -15,4 +15,5 @@ public class BaseballGame {
         this.ballInput = new BallInput();
     }
 
+
 }
