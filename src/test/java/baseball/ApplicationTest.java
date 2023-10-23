@@ -28,6 +28,25 @@ class ApplicationTest extends NsTest {
         );
     }
 
+//    @Test
+//    void 같은_숫자_입력(){
+//
+//    }
+//
+//    @Test
+//    void _0_포함_입력(){
+//
+//    }
+//
+//    @Test
+//    void 세자리_아닌_입력(){
+//
+//    }
+//
+//    @Test
+//    void 숫자_아닌_입력(){
+//
+//    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

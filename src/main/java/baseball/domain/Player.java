@@ -1,7 +1,5 @@
 package baseball.domain;
-
 import baseball.view.Input;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
     private String number;

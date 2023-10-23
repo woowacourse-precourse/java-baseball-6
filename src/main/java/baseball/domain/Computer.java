@@ -5,7 +5,7 @@ public class Computer {
     public Computer(){
         this.number = "";
     }
-    public void randComNumber(){
+    public String randComNumber(){
         number = "";
         while(number.length()!=3){
             int num = Randoms.pickNumberInRange(1,9);
@@ -13,9 +13,6 @@ public class Computer {
                 number += num;
             }
         }
-    }
-    public String getNumber(){
         return number;
     }
-
 }
