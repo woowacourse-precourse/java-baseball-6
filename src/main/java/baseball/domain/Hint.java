@@ -48,29 +48,27 @@ public class Hint {
 
     public String toString() {
         ArrayList<String> resultString = new ArrayList<>();
-
+        if (!isBallExist() && !isStrikeExist()) {
+            return getNothingString();
+        }
         if (isBallExist()) {
             resultString.add(getBallString());
         }
         if (isStrikeExist()) {
             resultString.add(getStrikeString());
         }
-        if (isHintNothing()) {
-            resultString.add(getNothingString());
-        }
-
-        return String.join(" ", resultString);
+        return join(" ", resultString);
     }
 
     public String getStrikeString() {
-        return strike + "스트라이크";
+        return format(ONLY_STRIKE.getMessage(), strike);
     }
 
     public String getBallString() {
-        return ball + "볼";
+        return format(ONLY_BALL.getMessage(), ball);
     }
 
     public String getNothingString() {
-        return "낫싱";
+        return NOTHING.getMessage();
     }
 }
