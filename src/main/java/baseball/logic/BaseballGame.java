@@ -10,6 +10,8 @@ public class BaseballGame {
     private List<Integer> computerNumbers;
     private int countStrike;
     private int countBall;
+    private static String RESTART = "1";
+    private static String EXIT = "2";
 
     public BaseballGame() {
         this.computerNumbers = new ArrayList<>();
@@ -28,6 +30,14 @@ public class BaseballGame {
             printScores(); // 점수 출력
             if (isThreeStrike()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                String playerAnswer = player.replayOrExit();
+                if (playerAnswer.equals(RESTART)) {
+                    System.out.println("게임 재시작");
+                } else if (playerAnswer.equals(EXIT)) {
+                    System.out.println("프로그램 종료");
+                } else {
+                    // 예외 출력
+                }
             }
         }
     }
