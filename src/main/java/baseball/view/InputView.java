@@ -39,10 +39,8 @@ public class InputView {
             throw new IllegalArgumentException("숫자 외에 다른 문자가 존재합니다.");
         }
 
-        char[] splitInput = input.toCharArray();
-
-        for (int i = 0; i < splitInput.length; i++) {
-            checkDuplicatedNumber(i, splitInput);
+        for (int i = 0; i < input.length(); i++) {
+            checkDuplicatedNumber(i, input.toCharArray());
         }
     }
 
