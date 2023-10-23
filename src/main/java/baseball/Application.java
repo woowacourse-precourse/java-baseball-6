@@ -7,7 +7,22 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        int gameStatus = 1;
+        while (gameStatus == 1) {
+            List<Integer> computerNumbers = chooseRandomNumbers();
+
+            boolean isCorrect = false;
+            while (!isCorrect) {
+                System.out.print("숫자를 입력해주세요 : ");
+                int userNumbers = getUserNumbers();
+                isCorrect = checkNumbers(computerNumbers, userNumbers);
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gameStatus = getRestart();
+        }
     }
 
     private List<Integer> chooseRandomNumbers() {
