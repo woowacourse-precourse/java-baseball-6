@@ -3,8 +3,6 @@ package baseball.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ValidationTest {
 
     Validation validation = new Validation();
@@ -12,10 +10,10 @@ class ValidationTest {
     @Test
     void ValidationTest() {
         //Given
-        String[] invalidSize = {"1", "2", "3", "4"};
-        String[] invalidInputValue = {"1","A","3"};
-        String[] DuplicatedValue = {"1", "1", "2"};
-        String[] invalidValueOfRestart = {"3"};
+        char[] invalidSize = {'1', '2', '3', '4'};
+        char[] invalidInputValue = {'1', 'A', '3'};
+        char[] DuplicatedValue = {'1', '1', '2'};
+        char[] invalidValueOfRestart = {'3'};
         //When & Then
         Assertions.assertThatThrownBy(() -> validation.runValidation(invalidSize, 3))
                 .isInstanceOf(IllegalArgumentException.class);

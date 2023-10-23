@@ -15,6 +15,6 @@ public class Output {
         } else if (result[0] != 0 && result[1] != 0) {
             System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
         }
-        return result[0] == 3;
+        return result[0] < 3;
     }
 }
