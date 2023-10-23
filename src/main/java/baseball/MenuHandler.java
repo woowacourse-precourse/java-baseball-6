@@ -5,11 +5,9 @@ import java.util.Map;
 
 public class MenuHandler {
     private final Computer computer;
-    private final Communicator communicator;
 
-    public MenuHandler(Computer computer, Communicator communicator) {
+    public MenuHandler(Computer computer) {
         this.computer = computer;
-        this.communicator = communicator;
     }
 
     public void tryHandle() {
@@ -17,26 +15,26 @@ public class MenuHandler {
             initialHandle();
             handle();
         } catch (RuntimeException exception) {
-            communicator.printException(exception);
+            Communicator.printException(exception);
         }
     }
 
     private void initialHandle() {
-        communicator.printStart();
+        Communicator.printStart();
         runGame();
     }
 
     private void handle() {
         boolean runningFlag = true;
         while (runningFlag) {
-            Menu menu = communicator.instructMenu();
+            Menu menu = Communicator.instructMenu();
             runningFlag = switch (menu) {
                 case START -> {
                     runGame();
                     yield true;
                 }
                 case TERMINATE -> {
-                    communicator.printTerminate();
+                    Communicator.printTerminate();
                     yield false;
                 }
             };
@@ -48,9 +46,9 @@ public class MenuHandler {
 
         boolean isOver = false;
         while (!isOver) {
-            List<Integer> inputNumbers = communicator.instructInputNumbers();
+            List<Integer> inputNumbers = Communicator.instructInputNumbers();
             Map<Count, Integer> counts = computer.count(inputNumbers);
-            communicator.printResult(counts);
+            Communicator.printResult(counts);
             isOver = isCorrect(counts.get(Count.STRIKE));
         }
     }
