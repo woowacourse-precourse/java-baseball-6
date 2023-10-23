@@ -29,5 +29,15 @@ public class BaseballController {
             isDifferent = baseballService.startGame(randomNumber, input);
         }
         outputView.endGame();
+        promptForRestart();
+    }
+
+    public void promptForRestart() {
+        String choice = inputView.getUserReplayChoice();
+        if (choice.equals("1")) {
+            gameStart();
+        } else {
+            return;
+        }
     }
 }
