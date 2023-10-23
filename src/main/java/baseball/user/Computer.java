@@ -8,6 +8,7 @@ import java.util.StringJoiner;
 public class Computer {
 
     List<Integer> baseballNumbers;
+    private boolean isStrikeOut = false;
 
     public void generateBaseballNumbers() {
         baseballNumbers = new ArrayList<>();
@@ -50,5 +51,14 @@ public class Computer {
         }
 
         System.out.println(sj);
+
+        if (strikeCount > 2) {
+            isStrikeOut = true;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    public boolean isStrikeOut() {
+        return isStrikeOut;
     }
 }
