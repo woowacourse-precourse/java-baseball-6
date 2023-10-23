@@ -49,6 +49,6 @@ public class BaseballGameManager {
         if (nextGameInputString.equals("2")) {
             return false;
         }
-        throw new IllegalArgumentException("1, 2이 아닌 다른 입력입니다.");
+        throw new IllegalArgumentException("올바른 입력이 아닙니다.");
     }
 }
