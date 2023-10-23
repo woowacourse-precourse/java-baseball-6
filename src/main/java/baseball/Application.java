@@ -9,18 +9,14 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-//      List<Integer> computer = createComputerNumber();
-//      System.out.println(computer);
-        System.out.println("서로다른 숫자를 입력해 주세요 : ");
-        List<String> playerNumber = playerInputNumber();
-        validatePlayerNumber(playerNumber);
+
     }
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int BASEBALL_SIZE = 3;
 
-    //랜덤 숫자 생성 기능
+    //랜덤 숫자 생성 함수
     private static List<String> createComputerNumber(){
         List<String> numbers = new ArrayList<>();
         while(numbers.size() < BASEBALL_SIZE){
@@ -31,6 +27,7 @@ public class Application {
         return numbers;
     }
 
+    //사용자 입력을 받는 함수
     private static List<String> playerInputNumber(){
         return Arrays.asList(
                 Console.readLine()
@@ -38,6 +35,7 @@ public class Application {
         );
     }
 
+    //사용자 입력 숫자 검증 함수
     private static void validatePlayerNumber(List<String> playerNum){
         isThreeNumbers(playerNum);
         isRepeatedNumbers(playerNum);
@@ -45,12 +43,14 @@ public class Application {
         checkZero(playerNum);
     }
 
+    //세 자리 숫자임을 검증 함수
     private static void isThreeNumbers(List<String> playerNum){
         if(playerNum.size() != BASEBALL_SIZE){
             throw new IllegalArgumentException("입력된 숫자가 3자리가 아닙니다. 게임을 종료합니다");
         }
     }
 
+    //중복된 값이 있는지 검증 함수
     private static void isRepeatedNumbers(List<String> playerNum){
         Set<String> numset = new HashSet<>();
         for(String num : playerNum){
@@ -61,6 +61,7 @@ public class Application {
         }
     }
 
+    //입력 값이 숫자인지 검증 함수
     private static void isDigitNumbers(List<String> playerNum){
         try{
             for(String number : playerNum){
@@ -71,6 +72,7 @@ public class Application {
         }
     }
 
+    //입력 값에 0이 있는지 검증 함수
     private static void checkZero(List<String> playerNum){
         for(String number : playerNum){
             int num = Integer.parseInt(number);
@@ -80,6 +82,7 @@ public class Application {
         }
     }
 
+    //게임 재시작 여부 선택 함수
     private static String askPlayerChoice(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choice = Console.readLine();
@@ -87,6 +90,7 @@ public class Application {
         return choice;
     }
 
+    //사용자 선택 검증 함수
     private static void isValidChoice(String choice){
         if(choice != "1" || choice != "2"){
             throw new IllegalArgumentException("사용자의 입력이 1또는 2가 아닙니다. 게임을 종료합니다.");
