@@ -18,34 +18,40 @@ class Game {
         while (!inputNum.equals(computerNum)) {
             String input = setInput();
             inputNum = getIntegerInput(input);
-            output(computerNum, inputNum);
+            System.out.println(output(computerNum, inputNum));
         }
         replay();
     }
 
     /**
-     * 스트라이크, 볼, 낫싱 결과 출력
+     * 볼, 스트라이크, 낫싱 출력 메시지 생성
      *
      * @param computerNum 컴퓨터 수
      * @param inputNum    입력 수
+     * @return 출력 메시지
      */
-    public void output(List<Integer> computerNum, List<Integer> inputNum) {
+    public String output(List<Integer> computerNum, List<Integer> inputNum) {
         int[] result = calculateResult(computerNum, inputNum);
         int ball = result[0];
         int strike = result[1];
 
+        StringBuilder outputMessage = new StringBuilder();
+
         if (ball > 0) {
-            System.out.print(ball + "볼 ");
+            outputMessage.append(ball).append("볼");
+            if (strike > 0) {
+                outputMessage.append(" ");
+            }
         }
 
         if (strike > 0) {
-            System.out.print(strike + "스트라이크");
+            outputMessage.append(strike).append("스트라이크");
         }
 
         if (strike == 0 && ball == 0) {
-            System.out.print("낫싱");
+            outputMessage.append("낫싱");
         }
-        System.out.println();
+        return outputMessage.toString();
     }
 
     /**
