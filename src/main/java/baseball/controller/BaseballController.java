@@ -4,6 +4,7 @@ import baseball.domain.BaseballNumber;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.BaseballNumbersGenerator;
 import baseball.domain.Computer;
+import baseball.domain.ContinueOrExit;
 import baseball.domain.Score;
 import baseball.view.InputValidator;
 import baseball.view.InputView;
@@ -32,8 +33,8 @@ public class BaseballController {
             play(computer);
             outputView.endGame();
             String input = inputView.continueOrExit();
-            InputValidator.validateContinueOrExitNumber(input);
-            isContinue = inputView.isContinue(input);
+            ContinueOrExit decision = ContinueOrExit.from(input);
+            isContinue = decision.isContinue();
         }
     }
 
