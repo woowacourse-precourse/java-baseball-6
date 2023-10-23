@@ -27,7 +27,9 @@ public class Game {
     }
 
     public void play() {
+        GameIO.gameStartPrint();
         while (!isGameOver) {
+            GameIO.gameInputPrint();
             Balls playerBalls = new Balls(Console.readLine());
             boolean isMatching = computerBalls.match(playerBalls);
 
