@@ -39,11 +39,10 @@ public class Baseball {
     }
 
     public boolean isRestartOrExit() {
-        System.out.println(RESTART_OR_EXIT_MSG);
-        int choice = Integer.parseInt(Console.readLine());
+        int choice = player.getRestartOrExitNumber();
 
         if (choice == RESTART_NUM) {
-            startBaseball();
+            return true;
         }
 
         return false;
