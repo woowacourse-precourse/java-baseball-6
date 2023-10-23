@@ -14,6 +14,9 @@ public class Application {
         List<Integer> comArrayList = new ArrayList<>();
         List<Integer> humanArrayList = new ArrayList<>();
         getComNumber(comArrayList);
+//        comArrayList.add(5);
+//        comArrayList.add(8);
+//        comArrayList.add(9);
         System.out.println("숫자 야구 게임을 시작합니다.");
 //        for (int number : comArrayList) {
 //            System.out.print(number);
@@ -27,7 +30,7 @@ public class Application {
             //숫자가 아닌 값을 넣었을 때 예외처리
             if(!humanInput.matches("\\d+") || humanInput.length() != 3){
                 throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
-            }
+            }//잘못된 값 입력시 애플리케이션 종료
             //String으로 받았기 때문에 각각의 인덱스들을 int값으로 변현
             char[] digits = humanInput.toCharArray();
             for (char digitChar : digits) {
