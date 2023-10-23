@@ -55,13 +55,8 @@ public class GameModel {
 
     private String getGameResult(long ballCount, long strikeCount) {
         String result = "";
-
-        if (ballCount > 0) {
-            result += ballCount + "볼";
-        }
-        if (strikeCount > 0) {
-            result += (result.isEmpty() ? "" : " ") + strikeCount + "스트라이크";
-        }
+        result += (ballCount > 0) ? ballCount + "볼" : "";
+        result += (strikeCount > 0) ? (result.isEmpty() ? "" : " ") + strikeCount + "스트라이크" : "";
 
         return result.isEmpty() ? "낫싱" : result;
     }
