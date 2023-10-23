@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.model.BaseballGame;
 import baseball.model.BaseballNumbers;
 import baseball.model.BaseballNumbersGenerator;
-import baseball.model.GameRestartOrNot;
+import baseball.model.GameRestartString;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,8 +12,8 @@ public class BaseballGameController {
         OutputView.printGameStart();
         while (true) {
             playGameOnce();
-            GameRestartOrNot gameRestartOrNot = InputView.getGameRestartOrNot();
-            if (!gameRestartOrNot.doesRestart()) {
+            GameRestartString gameRestartString = InputView.getGameRestartString();
+            if (!gameRestartString.doesRestart()) {
                 break;
             }
         }
@@ -27,7 +27,7 @@ public class BaseballGameController {
                 break;
             }
             BaseballNumbers userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
-                    InputView.getUserBaseballNumbersString());
+                    InputView.getStringNumbers());
             baseballGame.resetUserBaseballNumbers(userBaseballNumbers);
         }
     }
@@ -35,7 +35,7 @@ public class BaseballGameController {
     private static BaseballGame getBaseballGame() {
         BaseballNumbers computerBaseballNumbers = BaseballNumbersGenerator.getComputerBaseballNumbers();
         BaseballNumbers userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
-                InputView.getUserBaseballNumbersString());
+                InputView.getStringNumbers());
         return new BaseballGame(computerBaseballNumbers, userBaseballNumbers);
     }
 }
