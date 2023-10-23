@@ -1,7 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Application {
@@ -13,11 +17,30 @@ public class Application {
     public String startGame() {
         return "숫자 야구 게임을 시작합니다.";
     }
+    public int compareDigitsNumbers(String answer, String input) {
+        int strikeCnt = 0;
+        answer = setRandomDistinctNumbers();
+        input = Console.readLine();
+        checkInputValidation(input);
 
-    public void confirmGameEnd() {}
-    public void compareDigitsNumbers() {}
+        List<String> answerList = new ArrayList<>();
+        List<String> inputList = new ArrayList<>();
+
+        for(int i = 0; i<3; i++){
+            answerList.add(Arrays.toString(answer.split("")));
+            inputList.add(Arrays.toString(input.split("")));
+        }
+
+        for(int i = 0; i<3; i++) {
+            if (answerList.get(i).equals(inputList.get(i))) {
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
     public void countCommonNumbers() {}
     public void showBaseballOutcome() {}
+    public void confirmGameEnd() {}
     public void checkInputValidation(String input) {
         if (input == null || input.isEmpty() || !input.matches("\\d{3}")) {
             throw new IllegalArgumentException();
