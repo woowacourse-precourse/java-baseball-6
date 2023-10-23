@@ -8,9 +8,9 @@ import net.bytebuddy.implementation.bytecode.Throw;
 public class Input {
   public List<Integer> Input_num() {
 
-    System.out.println("숫자를 입력해주세요 : ");
-    List<Integer> Input_num = new ArrayList<>();
+    System.out.print("숫자를 입력해주세요 : ");
     String input = Console.readLine();
+    List<Integer> Input_num = new ArrayList<>();
 
     for(String number : input.split("")) {
       Input_num.add(Integer.parseInt(number));
@@ -27,3 +27,4 @@ public class Input {
     System.out.println();
 }
 }
+
