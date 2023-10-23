@@ -31,20 +31,26 @@ public class BaseballGame implements Game{
             int number = inputNumber();
             // 2. 결과 확인하기
             boolean success = getResult(number, answerNumber);
-            // 3. 게임 승리시 리플레이 옵션 반환
+            // 3. 게임 승리시 리플레이 여부 반환
             if (success) {
-                return replayGame();
+                return isContinue();
             }
         }
     }
 
-    @Override
-    public boolean replayGame() {
+    // 리플레이 옵션 선택하기
+    private boolean isContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString = readLine();
-        int option = checkOptionNumber(inputString);
-        return isContinue(option);
+        if (inputString.equals("1")) {
+            return true;
+        }
+        if (inputString.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
+
 
     /**
      * 입력 숫자와 정답 숫자를 비교하여 숫자 야구 힌트를 준다.
@@ -109,16 +115,6 @@ public class BaseballGame implements Game{
         return checkInputNumber(inputString);
     }
 
-    private boolean isContinue(int option) {
-        if (option == 1) {
-            return true;
-        }
-        if (option == 2) {
-            return false;
-        }
-        throw new IllegalArgumentException();
-    }
-
     private int generateAnswerNumber() {
         // 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)
         List<Integer> computer = new ArrayList<>();
@@ -181,13 +177,4 @@ public class BaseballGame implements Game{
             }
         }
     }
-
-    // 사용자 입력 문자열로부터 옵션 선택 번호 검증
-    private int checkOptionNumber(String inputString) {
-        if(!inputString.equals("1") && !inputString.equals("2")){
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(inputString);
-    }
-
 }
