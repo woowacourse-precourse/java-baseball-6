@@ -9,10 +9,14 @@ public class ComputerNumber {
 
     public ComputerNumber() {
         while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+            generateRandomNumber(computerNumber);
+        }
+    }
+
+    private void generateRandomNumber(List<Integer> computerNumber) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
         }
     }
 
