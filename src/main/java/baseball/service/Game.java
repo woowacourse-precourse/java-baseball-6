@@ -7,7 +7,7 @@ import baseball.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.IntStream;
 
 public class Game {
     private boolean endOrNot = true;
@@ -57,19 +57,14 @@ public class Game {
     }
 
     public List<Integer> playGame(List<Integer> computerNumber, List<Integer> userNumber){
-        // TODO : 알고리즘적으로 개선의 여지가 있는 지 검토하기
-        int strike = 0;
-        int ball = 0;
-        List<Integer> result = new ArrayList<>();
-        for(int i = 0; i < 3; i++){
-            if(computerNumber.get(i).equals(userNumber.get(i))){
-                strike++;
-            }else if(computerNumber.contains(userNumber.get(i))){
-                ball++;
-            }
-        }
-        result.add(strike);
-        result.add(ball);
-        return result;
+        long strike = (int)IntStream.range(0, 3)
+                .filter(i -> computerNumber.get(i).equals(userNumber.get(i)))
+                .count();
+
+        long ball = (int)IntStream.range(0, 3)
+                .filter(i -> !computerNumber.get(i).equals(userNumber.get(i)) && userNumber.contains(computerNumber.get(i)))
+                .count();
+
+        return List.of((int)strike, (int)ball);
     }
 }
