@@ -35,7 +35,7 @@ public class BaseBallGameController {
             List<String> inputString = inputView.readPlayerNumber();
             List<Integer> inputInteger = converter.convertToNumericList(inputString);
             User user = new User(inputInteger);
-            Result result = new Result(computer.getComputerList(),user.getUserList());
+            Result result = new Result(computer,user);
             outputView.printResult(result.resultToString());
             continueSign = result.isContinue();
         }

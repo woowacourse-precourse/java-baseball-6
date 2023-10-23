@@ -12,12 +12,13 @@ public class Result {
     private int strikeCount;
     private int ballCount;
 
-    public Result(List<Integer> computerNumbers, List<Integer> inputInteger){
-        for (int number : inputInteger) {
-            if (computerNumbers.contains(number)) {
+    public Result(Computer computer, User user){
+        List<Integer> computerList = computer.getComputerList();
+        for (int number : user.getUserList()) {
+            if (computerList.contains(number)) {
                 this.ballCount++;
             }
-            if (computerNumbers.indexOf(number) == inputInteger.indexOf(number)) {
+            if (computerList.indexOf(number) == user.getUserList().indexOf(number)) {
                 this.ballCount--;
                 this.strikeCount++;
             }
