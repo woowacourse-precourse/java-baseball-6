@@ -23,7 +23,7 @@ public class Application {
                 List<Integer> playerGuess = Util.parseStringToIntegerList(guessInput);
                 score = model.calculateScore(playerGuess);
                 view.printGameResult(score);
-            } while (score.getStrike() != 3);
+            } while (!score.isThreeStrike());
 
             view.printEndMessage();
 

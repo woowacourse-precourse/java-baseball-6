@@ -16,4 +16,8 @@ public class Score {
     public int getBall() {
         return ball;
     }
+
+    public boolean isThreeStrike() {
+        return strike == 3;
+    }
 }
