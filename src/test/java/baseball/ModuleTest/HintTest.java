@@ -1,4 +1,4 @@
-package baseball.NoduleTest;
+package baseball.ModuleTest;
 
 import baseball.Hint;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package baseball.NoduleTest;
+package baseball.ModuleTest;
 
 import baseball.UserNumber;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class UserNumberTest {
-    
+
     @Test
     void 입력값_길이_확인() {
         UserNumber userNumber = new UserNumber();
