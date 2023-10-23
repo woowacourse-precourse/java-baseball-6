@@ -28,11 +28,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
     void 입력값_예외_테스트() {
         moreSimpleInputExceptionTest("acb");
-        moreSimpleInputExceptionTest("11");
-        moreSimpleInputExceptionTest("123");
+        moreSimpleInputExceptionTest("000");
+        moreSimpleInputExceptionTest("310");
         moreSimpleInputExceptionTest("acb");
         moreSimpleInputExceptionTest("acb");
         moreSimpleInputExceptionTest("acb");
