@@ -64,7 +64,7 @@ class BaseballGame {
     }
 
     private void validateInput(String input) {
-        if (input.length() != NUM_DIGITS || !isAllDigits(input)) {
+        if (input.length() != NUM_DIGITS || !isAllDigits(input) || hasDuplicateCharacters(input)) {
             throwInvalidInputException();
         }
     }
@@ -76,6 +76,17 @@ class BaseballGame {
             }
         }
         return true;
+    }
+
+    private boolean hasDuplicateCharacters(String input) {
+        List<Character> characters = new ArrayList<>();
+        for (char ch : input.toCharArray()) {
+            if (characters.contains(ch)) {
+                return true;
+            }
+            characters.add(ch);
+        }
+        return false;
     }
 
     private void throwInvalidInputException() {
