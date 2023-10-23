@@ -346,9 +346,9 @@ class ApplicationTest extends NsTest {
         assertThat(result7.toString().strip()).isEqualTo("2볼 1스트라이크");
     }
 
-    @DisplayName("게임 재시작/종료 입력 메서드 예외처리 테스트")
+    @DisplayName("게임 재시작/종료 입력 유효성 확인 메서드 예외처리 테스트")
     @Test
-    public void selectRestartOrExitExceptionTest() {
+    public void isOneOrTwoExceptionTest() {
         // given
         final String input1 = "0";
         final String input2 = "3";
@@ -391,9 +391,9 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("1 또는 2만 입력해야합니다.");
     }
 
-    @DisplayName("게임 재시작/종료 입력 메서드 정상처리 테스트")
+    @DisplayName("게임 재시작/종료 입력 유효성 확인 메서드 정상처리 테스트")
     @Test
-    public void selectRestartOrExitTest() {
+    public void isOneOrTwoTest() {
         // given
         final String input1 = "1";
         final String input2 = "2";
