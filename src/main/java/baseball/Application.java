@@ -22,19 +22,14 @@ public class Application {
             computer.setInput(new Generator().generateNum());
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
 
-            System.out.println(computer.getInput());
             Player player = new Player();
             Result result = new Result();
             Validatation validator = new Validatation();
-            while (result.isCondition()) {//게임 한 판
+            while (result.isCondition()) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
-                try {
-                    validator.validate(num);
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                    throw e;
-                }
+                validator.validate(num);
+
                 player.setInput(num);
                 player.setPlayerNumberBall(Converter.convert(player.getInput()));
                 GameLogic logic = new GameLogic();
@@ -43,14 +38,10 @@ public class Application {
                 logic.resultClear(result);
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String restart = Console.readLine();
-            try {
-                validator.validateForRestart(restart);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                throw e;
-            }
-            if (restart.equals(END)) {
+            player.setCondition(Console.readLine());
+            validator.validateForRestart(player.getCondition());
+
+            if (player.getCondition().equals(END)) {
                 break;
             }
         }
