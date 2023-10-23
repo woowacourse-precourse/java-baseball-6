@@ -13,6 +13,6 @@ public class User {
     }
 
     public String getUserNumber() {
-        return userNumber.getUserNumber();
+        return userNumber.getNumber();
     }
 }
