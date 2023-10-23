@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.domain.Constants.NUMBER_OF_BASEBALL;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class BaseballNumbers {
     }
 
     public void createBaseballNumbers(String userInput) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_OF_BASEBALL; i++) {
             char userInputNumber = userInput.charAt(i);
             BaseballNumber userBaseballNumber = new BaseballNumber(userInputNumber);
             ballNumbers.add(userBaseballNumber);
@@ -40,7 +42,7 @@ public class BaseballNumbers {
     }
 
     public void validateNoDuplicateNumber(String userInput) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_OF_BASEBALL; i++) {
             char number = userInput.charAt(i);
             if (userInput.indexOf(number) != i) {
                 throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
@@ -51,7 +53,7 @@ public class BaseballNumbers {
     public int getStrikeCount(BaseballNumbers inputBaseballNumbers) {
         int strikeCount = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_OF_BASEBALL; i++) {
             BaseballNumber baseballNumber = ballNumbers.get(i);
             BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
             if (baseballNumber.equals(inputBaseballNumber)) {
@@ -66,7 +68,7 @@ public class BaseballNumbers {
         int ballCount = 0;
         List<BaseballNumber> baseballNumberList = this.ballNumbers;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_OF_BASEBALL; i++) {
             BaseballNumber baseballNumber = baseballNumberList.get(i);
             BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
             if (baseballNumberList.contains(inputBaseballNumber) && !baseballNumber.equals(inputBaseballNumber)) {
@@ -80,7 +82,7 @@ public class BaseballNumbers {
     public boolean isNothing(BaseballNumbers inputBaseballNumbers) {
         List<BaseballNumber> baseballNumberList = this.ballNumbers;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_OF_BASEBALL; i++) {
             BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
             if (baseballNumberList.contains(inputBaseballNumber)) {
                 return false;
