@@ -2,22 +2,14 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GameView {
+    private final String ANSWERMESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 
-    public List<Integer> getPlayerInput() {
+    public String getPlayerInput() {
         String input = Console.readLine();
-        validateGameContinue(input);
+        validatePlayNumber(input);
 
-        List<Integer> playNumber = new ArrayList<>();
-
-        for (int i = 0; i < input.length(); i++) {
-            int number = Character.getNumericValue(input.charAt(i));
-            playNumber.add(number);
-        }
-        return playNumber;
+        return input;
     }
 
     public int gameContinue() {
@@ -25,6 +17,27 @@ public class GameView {
         validateGameContinue(input);
 
         return Integer.parseInt(input);
+    }
+
+    public void showResult(int strike, int ball) {
+        if(strike > 0 && ball == 0) {
+            System.out.println(strike + "스트라이크");
+            if(strike == 3) {
+                System.out.println(ANSWERMESSAGE);
+            }
+        }
+
+        else if(strike == 0 && ball > 0) {
+            System.out.println(ball + "볼");
+        }
+
+        else if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+
+        else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
     }
 
     private void validatePlayNumber(String input) {
@@ -51,18 +64,11 @@ public class GameView {
 
     private boolean isThreeDigit(String input) {
         int number = Integer.parseInt(input);
-        if (number >= 100 && number <= 999) {
-            return true;
-        }
-        return false;
+        return number >= 100 && number <= 999;
     }
 
     private boolean isOneOrTwo(String input) {
         int number = Integer.parseInt(input);
-        if (number == 1 || number == 2) {
-            return true;
-        }
-        return false;
+        return number == 1 || number == 2;
     }
-
 }
