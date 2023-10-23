@@ -2,12 +2,12 @@ package baseball;
 
 import java.util.List;
 
-public class CompareNumber {
+public class NumberCompare {
 
 	private int strike;
 	private int ball;
 	
-	public CompareNumber() {
+	public NumberCompare() {
 		this.strike = 0;
 		this.ball = 0;
 	}
@@ -15,26 +15,27 @@ public class CompareNumber {
 	public void compare(List<Integer> computerNumber, List<Integer> playerNumber) {
 		for (int i = 0; i < computerNumber.size(); i++) {
 			if (computerNumber.get(i) == playerNumber.get(i)) {
-				this.strike ++;
+				this.strike++;
 				continue;
 			}
 			if (computerNumber.contains(playerNumber.get(i))) {
-				this.ball ++;
+				this.ball++;
 			}
 		}
 	}
-	
+
 	public int getStrike() {
 		return this.strike;
 	}
-	
+
 	public int getBall() {
 		return this.ball;
 	}
-	
-	public boolean threeStrike() {
+
+	public boolean isThreeStrikes() {
 		if (strike == 3) {
 			return false;
-		} return true;
+		}
+		return true;
 	}
 }

@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Player {
 
-	public List<Integer> playerNumber = new ArrayList<>();
+	public List<Integer> number = new ArrayList<>();
 	
-	public void setPlayerNumber(String playerInput) {
+	public void setNumber(String playerInput) {
 		for (int i = 0; i < playerInput.length(); i++) {
-			playerNumber.add(Character.getNumericValue((playerInput.charAt(i))));
+			number.add(Character.getNumericValue((playerInput.charAt(i))));
 		}
 	}
 
-	public List<Integer> getPlayerNumber() {
-		return this.playerNumber;
+	public List<Integer> getNumber() {
+		return this.number;
 	}
 }
