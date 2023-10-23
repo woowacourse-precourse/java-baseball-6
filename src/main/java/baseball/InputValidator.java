@@ -16,8 +16,8 @@ public class InputValidator {
     }
 
     private void isGuessNumberCharacter(char[] guessNumberArray) {
-        for (char c : guessNumberArray) {
-            if (!isCharNumber(c)) {
+        for (char charNum : guessNumberArray) {
+            if (!isCharNumber(charNum)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -34,15 +34,15 @@ public class InputValidator {
         if (reGameNumberString.length() != 1) {
             throw new IllegalArgumentException();
         }
-        char c = reGameNumberString.charAt(0);
-        if (!(c == '1' || c == '2')) {
+        char charNum = reGameNumberString.charAt(0);
+        if (!(charNum == '1' || charNum == '2')) {
             throw new IllegalArgumentException();
         }
         return;
     }
 
-    public boolean isCharNumber(char c) {
-        if ('1' > c || '9' < c) {
+    public boolean isCharNumber(char charNum) {
+        if ('1' > charNum || '9' < charNum) {
             return false;
         }
         return true;

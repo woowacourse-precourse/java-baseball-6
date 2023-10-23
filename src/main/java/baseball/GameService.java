@@ -1,23 +1,21 @@
 package baseball;
 
-import java.util.List;
-
 public class GameService {
 
     GameService() {
     }
 
-    public int[] compareGuessToRandom(List<Integer> userGuessNumber, RandomNumber randomNumber) {
+    public int[] compareGuessToRandom(UserGuessNumber userGuessNumber, RandomNumber randomNumber) {
         int[] ballAndStrike = new int[2];
-        for (int index = 0; index < userGuessNumber.size(); index++) {
-            int guessNumber = userGuessNumber.get(index);
+        for (int guessNumindex = 0; guessNumindex < userGuessNumber.size(); guessNumindex++) {
+            int guessNumber = userGuessNumber.getNumber(guessNumindex);
             if (!randomNumber.isNumberContain(guessNumber)) {
                 continue;
             }
             int randNumIndex = randomNumber.findIndex(guessNumber);
-            if (randNumIndex == index) {
+            if (randNumIndex == guessNumindex) {
                 ballAndStrike[1]++;
-            } else if (randNumIndex != index) {
+            } else if (randNumIndex != guessNumindex) {
                 ballAndStrike[0]++;
             }
         }

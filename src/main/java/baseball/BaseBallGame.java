@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class BaseBallGame {
 
     GameInput input;
@@ -23,10 +21,10 @@ public class BaseBallGame {
     }
 
     private void playGame() {
-        List<Integer> userGuessNumber = null;
         boolean gameProcess = true;
-
+        UserGuessNumber userGuessNumber = null;
         RandomNumber randomNumber = new RandomNumber();
+
         while (gameProcess) {
             System.out.printf("숫자를 입력해주세요 : ");
             int[] ballAndStrike = guessNumber(userGuessNumber, randomNumber);
@@ -38,7 +36,7 @@ public class BaseBallGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private int[] guessNumber(List<Integer> userGuessNumber, RandomNumber randomNumber) {
+    private int[] guessNumber(UserGuessNumber userGuessNumber, RandomNumber randomNumber) {
         userGuessNumber = input.userInputGuessNumber();
         int[] ballAndStrike = service.compareGuessToRandom(userGuessNumber, randomNumber);
         return ballAndStrike;
