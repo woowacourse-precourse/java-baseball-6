@@ -12,6 +12,7 @@ public class BallService {
     private InputController inputController;
     private BallGenerator ballGenerator;
     private boolean running;
+    private int[] score;
 
     public void init() {
         ballGenerator = new BallGenerator();
@@ -28,20 +29,32 @@ public class BallService {
         }
     }
 
+    private void mainSequence() {
+        outputView.printGetBall();
+        checkUsersBall();
+        outputView.printResult(score);
+        if (scoreIs3Strike()) {
+            restartSequence();
+        }
+    }
+
     private void restartSequence() {
         outputView.printRestart();
-        running = inputController.getCommand().equals(Command.RESTART.getKey());
+        checkUsersCommand();
         if (running) {
             ball = new Ball(ballGenerator.createBall());
         }
     }
 
-    private void mainSequence() {
-        outputView.printGetBall();
-        int[] score = ball.compareBall(inputController.getBall());
-        outputView.printResult(score);
-        if (score[1] == Size.NUMBER.getValue()) {
-            restartSequence();
-        }
+    private void checkUsersBall() {
+        score = ball.compareBall(inputController.getBall());
+    }
+
+    private boolean scoreIs3Strike() {
+        return score[1] == Size.NUMBER.getValue();
+    }
+
+    private void checkUsersCommand() {
+        running = inputController.getCommand().equals(Command.RESTART.getKey());
     }
 }
