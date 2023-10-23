@@ -1,14 +1,19 @@
 package baseball.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.domain.GameResult;
-import org.junit.jupiter.api.Disabled;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class GameServiceTest {
+
     GameService gameService = new GameService();
+
     @Test
     @DisplayName("Game Over 정상인 경우 테스트")
     void isGameOverSuccess() {
@@ -18,7 +23,7 @@ class GameServiceTest {
 
     @Test
     @DisplayName("Game Over 정상이 아닌 경우 테스트")
-    void isGameOverFail(){
+    void isGameOverFail() {
         GameResult gameResult1 = new GameResult(1, 2);
         GameResult gameResult2 = new GameResult(0, 2);
         GameResult gameResult3 = new GameResult(2, 0);
@@ -30,4 +35,16 @@ class GameServiceTest {
 //    @Test
 //    void checkResult() {
 //    }
+    @Test
+    @DisplayName("숫자 게임 매치 결과 정상일 때 확인")
+    void checkResultSuccess() {
+        List<Integer> player = List.of(1, 2, 3);
+        List<Integer> computer = List.of(1, 2, 3);
+        GameResult gameResult = gameService.checkResult(player, computer);
+        GameResult mockGameResult = new GameResult(3, 0);
+
+        assertEquals(gameResult.getStrike(), mockGameResult.getStrike());
+        assertEquals(gameResult.getBall(), mockGameResult.getBall());
+    }
+
 }
