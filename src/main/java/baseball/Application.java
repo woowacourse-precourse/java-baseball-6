@@ -40,7 +40,9 @@ public class Application {
 
     private static void printResult(Map<Grade, Integer> resultMap) {
         if(resultMap.get(Grade.BALL) != 0)
-            System.out.print(resultMap.get(Grade.BALL)+"볼 ");
+            System.out.print(resultMap.get(Grade.BALL)+"볼");
+        if(resultMap.get(Grade.BALL) != 0 && resultMap.get(Grade.STRIKE) != 0)
+            System.out.print(" ");
         if(resultMap.get(Grade.STRIKE) != 0)
             System.out.print(resultMap.get(Grade.STRIKE)+"스트라이크");
         if(resultMap.get(Grade.BALL) == 0 && resultMap.get(Grade.STRIKE) == 0)
