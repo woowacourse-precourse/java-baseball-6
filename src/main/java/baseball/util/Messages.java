@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.util;
 
 public class Messages {
     public static final String START_GAME = "숫자 야구 게임을 시작합니다.";

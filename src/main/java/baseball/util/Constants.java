@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.util;
 
 public class Constants {
     public static final Integer NUMBERS_SIZE = 3;
