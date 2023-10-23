@@ -4,10 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.validation.Validator;
 import java.io.IOException;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
 public class ExceptionTest extends NsTest {
 
