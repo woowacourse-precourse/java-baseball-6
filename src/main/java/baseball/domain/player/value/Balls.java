@@ -14,6 +14,10 @@ public class Balls {
         return balls;
     }
 
+    public Ball getBall(int index) {
+        return balls.get(index);
+    }
+
     public Long size() {
         return (long) balls.size();
     }
