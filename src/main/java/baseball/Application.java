@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    private static final int NUMBER_LENGTH = 4;
+    private static final int NUMBER_LENGTH = 3;
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
