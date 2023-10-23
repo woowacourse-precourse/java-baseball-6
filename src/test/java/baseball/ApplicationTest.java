@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,27 @@ class ApplicationTest extends NsTest {
             List<Integer> numbers = RandomNumberGenerator.generate();
             assertThat(numbers).doesNotHaveDuplicates();
         }
+    }
+
+    @Test
+    void 입력된_값이_3자리가_맞는지_테스트() {
+        assertThatThrownBy(() -> InputValidation.Number("12"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidation.Number("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력된_값이_숫자인지_테스트() {
+        assertThatThrownBy(() -> InputValidation.Number("abc"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력된_값에_공백이_없는지_테스트() {
+        assertThatThrownBy(() -> InputValidation.Number("1 2"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 
