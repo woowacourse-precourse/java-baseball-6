@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static baseball.utils.Message.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OutputViewTest {
@@ -31,8 +32,16 @@ class OutputViewTest {
         @DisplayName("3스트라이크가 출력되어야 한다.")
         public void Three_스트라이크가_출력되어야_한다() {
             OutputView.printPerfect();
-            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(Message.PERFECT_MESSAGE.getMessage());
+            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(PERFECT_MESSAGE.getMessage());
         }
+
+        @Test
+        @DisplayName("게임 재시작 문구가 출력되어야 한다.")
+        public void 게임_재시작_문구가_출력되어야_한다() {
+            OutputView.printRestartGame();
+            org.assertj.core.api.Assertions.assertThat(output.toString().trim()).isEqualTo(RESTART_GAME_MESSAGE.getMessage());
+        }
+
     }
 
 
