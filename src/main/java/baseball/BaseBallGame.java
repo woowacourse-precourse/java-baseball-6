@@ -41,6 +41,7 @@ public class BaseBallGame {
             IsStrike();
             IsBall();
             Result();
+            IsCorrect();
         }
         StopGamePrint();
     }
@@ -171,6 +172,13 @@ public class BaseBallGame {
         IsInteger();
         if(userInteger == 2){
             cycle = false;
+        }
+    }
+    //게임 종료확인 함수
+    public void IsCorrect(){
+        if(strike == 3){
+            WinPrint();
+            RestartOrExit();
         }
     }
 }
