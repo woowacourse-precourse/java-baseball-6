@@ -1,7 +1,6 @@
 package baseball.controller;
 
-import baseball.model.ComputerModel;
-import baseball.model.UserModel;
+import baseball.BaseballService;
 import baseball.util.UserInputEnum;
 import baseball.util.common.Common;
 import baseball.util.dto.Baseball;
@@ -13,23 +12,23 @@ public class BaseballController {
 
     private final UserInputView userInputView;
     private final UserOutputView userOutputView;
-    private final ComputerModel computerModel;
-    private final UserModel userModel;
+    private final BaseballService baseballService;
 
 
     public BaseballController(UserInputView userInputView, UserOutputView userOutputView,
-                              ComputerModel computerModel,
-                              UserModel userModel) {
+                              BaseballService baseballService) {
         this.userInputView = userInputView;
         this.userOutputView = userOutputView;
-        this.computerModel = computerModel;
-        this.userModel = userModel;
+        this.baseballService = baseballService;
     }
 
-    public void startGame() {
+    public void run() {
         userOutputView.printHelloGame();
         initGame();
+        startGame();
+    }
 
+    private void startGame() {
         while (true) {
             getUserNumber();
             boolean resultByCompare = compareUserInputByComputerNumber();
@@ -37,7 +36,6 @@ public class BaseballController {
                 restartGame();
             }
         }
-
     }
 
     private void restartGame() {
@@ -55,30 +53,17 @@ public class BaseballController {
     }
 
     private void initGame() {
-        computerModel.initNumber();
+        baseballService.initComputerModel();
     }
 
     private void getUserNumber() {
         String inputUserNumberString = userInputView.inputUserNumber();
-        userModel.initUserInputBySplitDigits(inputUserNumberString);
+        baseballService.getUserNumber(inputUserNumberString);
     }
 
     private boolean compareUserInputByComputerNumber() {
-        Baseball baseballDto = new Baseball();
-        int trackIdx = 0;
-
-        for (Integer userDigit : userModel.getSplitDigitsFromUserInput()) {
-            if (userDigit.equals(computerModel.getSplitDigitFromRandomNumber(trackIdx))) {
-                baseballDto.incrementStrikeCount();
-            } else if (computerModel.hasContainNumber(userDigit)) {
-                baseballDto.incrementBallCount();
-            } else {
-                baseballDto.incrementNothingCount();
-            }
-            trackIdx++;
-        }
-
-        return evaluateByResult(baseballDto);
+        Baseball baseball = baseballService.compareUserInputByComputerNumber();
+        return evaluateByResult(baseball);
     }
 
     private boolean evaluateByResult(Baseball baseballDto) {
