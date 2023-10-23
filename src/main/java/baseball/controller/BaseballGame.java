@@ -12,6 +12,17 @@ import java.util.List;
 
 public class BaseballGame {
 
+    public static void startBaseballGame() {
+        OutputView.printStartMessage();
+
+        do {
+            playBaseballGame();
+            OutputView.printEndMessage();
+        } while (askForRestart());
+
+        OutputView.printCompletelyEndMessage();
+    }
+
     private static void playBaseballGame() {
         List<Integer> computer = RandomNumberGenerator.generateRandomNumberList();
 
