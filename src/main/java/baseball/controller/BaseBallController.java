@@ -18,9 +18,6 @@ public class BaseBallController {
             new NewGameOrEndInputValidation()
     );
 
-    private RandomNumbers randomNumbers;
-    private UserInputNumbers userInputNumbers;
-
     public void startGame() {
         do {
             play();
@@ -29,13 +26,13 @@ public class BaseBallController {
 
     public void play() {
         int strikeCount, ballCount;
-        randomNumbers = new RandomNumbers();
+        RandomNumbers randomNumbers = new RandomNumbers();
         outputView.printStartGame();
         outputView.askForNumber();
 
         do {
             String userInput = inputView.askForNumber();
-            userInputNumbers = new UserInputNumbers(userInput);
+            UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
 
             strikeCount = new Strikes(randomNumbers, userInputNumbers).getStrikeCount();
             ballCount = new Balls(randomNumbers, userInputNumbers).getBallCount();
