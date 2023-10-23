@@ -18,14 +18,35 @@ public class Application {
     final String strike = "스트라이크";
     final String ball = "볼";
     final String nothing = "낫싱";
+    final String requestCommand = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    final String inputMessage = "숫자를 입력해 주세요 : ";
+    final String end = "게임 종료";
     List<Integer> numbers;
-    StringBuilder message;
 
     public void run(){
-        init();
         // while 자리
-        countBallAndStrike(inputParams());
+            // 0 진행 1 init 2 종료
+        int gameStatus = 1;
+        while(gameStatus!=2){
+            if(gameStatus==1){
+                init();
+                System.out.println(startMessage);
+                gameStatus = 0;
+            }
 
+            System.out.print(inputMessage);
+            int[] ballCount = countBallAndStrike(inputNumber());
+
+            // ball/strike 메시지
+            System.out.println(makeMessage(ballCount));
+
+            if(ballCount[1]==3){
+                System.out.println(requestCommand);
+                String cmd = inputCmd();
+                gameStatus = Integer.parseInt(cmd);
+                System.out.println(end);
+            }
+        }
     }
 
     public void init(){
@@ -44,8 +65,9 @@ public class Application {
 
             check[number] = true;
             numbers.add(number);
+            System.out.print(number);
         }
-
+        System.out.println();
         return numbers;
     }
 
@@ -54,10 +76,13 @@ public class Application {
         int strikeCount = 0;
 
         for(int i = 0 ; i<3; i++){
-            boolean check = false;
             for(int j = 0 ; j<numbers.size(); j++){
-                if(i==j){
-                    // 여기 하는 중
+                if( param.charAt(i)-'0'== numbers.get(j) ){
+                    if(i==j){
+                        strikeCount++;
+                    }else{
+                        ballCount++;
+                    }
                 }
             }
         }
@@ -65,10 +90,20 @@ public class Application {
         return new int[]{ballCount, strikeCount};
     }
 
-    public String inputParams(){
+    public String inputNumber(){
         String param = Console.readLine();
 
-        if(param.length()!=3 || isInteger(param) || isDiffer(param)){
+        if(param.length()!=3 || !isInteger(param) || !isDiffer(param)){
+            throw new IllegalArgumentException();
+        }
+
+        return param;
+    }
+
+    public String inputCmd(){
+        String param = Console.readLine();
+
+        if(param.length()!=1 || !isInteger(param) || !isCmd(param)){
             throw new IllegalArgumentException();
         }
 
@@ -95,5 +130,34 @@ public class Application {
         }
 
         return false;
+    }
+
+    public boolean isCmd(String param){
+        int n = Integer.parseInt(param);
+        if(n==1 || n==2){
+            return true;
+        }
+        return false;
+    }
+
+    public String makeMessage(int[] ballCount){
+        StringBuilder message = new StringBuilder();
+
+        // nothing
+        if(ballCount[0] == 0 && ballCount[1] == 0){
+            return message.append(nothing).toString();
+        }
+
+        // ball
+        if(ballCount[0] != 0){
+            message.append(ballCount[0]).append(ball).append(' ');
+        }
+
+        // strike
+        if(ballCount[1] != 0){
+            message.append(ballCount[1]).append(strike);
+        }
+
+        return message.toString();
     }
 }
