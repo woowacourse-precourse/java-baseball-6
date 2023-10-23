@@ -104,6 +104,10 @@ class Computer {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public Pair<Integer, Integer> getUserGuessResult(String userGuess) {
         int strike = 0;
         int ball = 0;
@@ -138,6 +142,8 @@ public class Application {
     public static void main(String[] args) {
         User user = new User();
         Computer computer = new Computer();
+        System.out.printf("답: %d%d%d\n", computer.getNumbers().get(0), computer.getNumbers().get(1),
+                computer.getNumbers().get(2));
         System.out.printf("숫자 야구 게임을 시작합니다.\n");
         while (!user.didUserWin()) {
             try {
