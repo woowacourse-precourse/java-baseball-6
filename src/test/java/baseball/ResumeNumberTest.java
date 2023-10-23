@@ -32,4 +32,9 @@ public class ResumeNumberTest {
     void 재시작_또는_종료값은_1이_될_수_있다() {
         resumeNumber.updateNumber("1");
     }
+
+    @Test
+    void 재시작_또는_종료값은_2가_될_수_있다() {
+        resumeNumber.updateNumber("2");
+    }
 }
