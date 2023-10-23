@@ -32,10 +32,10 @@
 
 - 리스트 크기를 반환해주는 `size()`
 - 리스트에 존재하는 `BaseballNumber`를 가져오는 `get(int index)`
-- `List<BaseballNumber>`에 매개변수로 받은 `BaseballNumber`를 포함하고 있는지 판별하는 `contains()`
-- 자리 수 검증하는 `validateMaxLength(List<BaseballNumber> baseballNumbers)`
-- 중복된 수 검증하는 `validateDuplcateNumber(List<BaseballNumber> baseballNUmbers)`
-- 각 자리의 값이 같은지 판별하기 위한 오버라이드 함수 `equals()`
+- `List<Integer>`에 매개변수로 받은 `Integer`를 포함하고 있는지 판별하는 `contains(Integer baseballNumber)`
+- 자리 수 검증하는 `validateMaxLength()`
+- 중복된 수 검증하는 `validateDuplcateNumber()`
+- 1보다 작은 수가 들어오는지 검증하는 `validateBelowRange()`
 
 ---
 
@@ -73,8 +73,8 @@ strike와 ball 계산을 위한 클래스
 
 ## BaseballRules
 
-- 스트라이크, 볼 둘다 존재 경우를 판별하는 `hasStrikeAndBall()`
-- 스트라이크는 있지만, 볼은 없는 경우를 판별하는 `hasStrikeButNoBall()`
-- 스트라이크가 없지만, 볼은 있는 경우를 판별하는 `hasBallButNoStrike()`
-- 스트라이크, 볼 둘 다 없는 경우를 판별하는 `noStrikeAndBall()`
-- 3스트라이크 판별하는 `isThreeStrike()`
+- 스트라이크, 볼 둘다 존재 경우를 판별하는 `hasStrikeAndBall(int strike, int ball)`
+- 스트라이크는 있지만, 볼은 없는 경우를 판별하는 `hasStrikeButNoBall(int strike, int ball)`
+- 스트라이크가 없지만, 볼은 있는 경우를 판별하는 `hasBallButNoStrike(int strike, int ball)`
+- 스트라이크, 볼 둘 다 없는 경우를 판별하는 `noStrikeAndBall(int strike, int ball)`
+- 3스트라이크 판별하는 `isThreeStrike(int strike)`
