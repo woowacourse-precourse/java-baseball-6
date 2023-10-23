@@ -9,6 +9,7 @@ import baseball.version2.dto.ComputerAnswerDto;
 import baseball.version2.dto.PlayerAnswerDto;
 import baseball.version2.dto.ScoreDto;
 import baseball.version2.object.Score;
+import baseball.version2.tools.Converter;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
@@ -16,7 +17,11 @@ public class Service {
 
 
     private static int[] computerAnswer;
+    private final Converter converter;
 
+    public Service() {
+        this.converter = new Converter();
+    }
 
     public ComputerAnswerDto getComputerAnswer() {
         ArrayList<Integer> randomNumbers = new ArrayList<>();
@@ -27,20 +32,9 @@ public class Service {
                 randomNumbers.add(randomNumber);
             }
         }
-        computerAnswerDto.setAnswer(convertListToArray(randomNumbers));
+        computerAnswerDto.setAnswer(converter.convertListToArray(randomNumbers));
         return computerAnswerDto;
 
-    }
-
-
-    private int[] convertListToArray(ArrayList<Integer> computerAnswer) {
-        int[] answerArray = new int[ANSWER_ARRAY_SIZE];
-        int answerOrder = 0;
-        for (int answer : computerAnswer) {
-            answerArray[answerOrder++] = answer;
-        }
-
-        return answerArray;
     }
 
 
