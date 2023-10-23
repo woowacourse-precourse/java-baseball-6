@@ -5,26 +5,26 @@ import java.util.List;
 public class Player {
 
     private GuessNumber guessNumber;
-    private RestartOrExit restartOrExit;
+    private GameStateNumber gameStateNumber;
 
     public Player() {
         this.guessNumber = new GuessNumber();
-        this.restartOrExit = RestartOrExit.DEFAULT;
+        this.gameStateNumber = GameStateNumber.DEFAULT;
     }
 
-    public void inputNumbers() {
-        guessNumber.guess();
+    public void inputGuessNumber() {
+        guessNumber.input();
     }
 
-    public void inputRestartOrExit() {
-        restartOrExit.input();
+    public void inputGameStateNumber() {
+        gameStateNumber.input();
     }
 
-    public List<Integer> getNumbers() {
+    public List<Integer> getGuessNumbers() {
         return guessNumber.getNumbers();
     }
 
-    public Integer getRestartOrExit() {
-        return restartOrExit.getRestartOrExit();
+    public Integer getGameStateNumber() {
+        return gameStateNumber.getNumber();
     }
 }

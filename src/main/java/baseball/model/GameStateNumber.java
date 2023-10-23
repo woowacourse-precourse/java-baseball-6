@@ -4,20 +4,20 @@ import static baseball.util.InputValidator.isRestartOrExitValid;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public enum RestartOrExit {
+public enum GameStateNumber {
 
     DEFAULT(0), RESTART(1), EXIT(2);
 
-    private Integer restartOrExit;
+    private Integer stateNumber;
 
-    RestartOrExit(Integer restartOrExit) {
-        this.restartOrExit = restartOrExit;
+    GameStateNumber(Integer stateNumber) {
+        this.stateNumber = stateNumber;
     }
 
     public void input() {
         String input = Console.readLine();
         validateInputRestartOrExit(input);
-        this.restartOrExit = Integer.parseInt(input);
+        this.stateNumber = Integer.parseInt(input);
     }
 
     private void validateInputRestartOrExit(String input) {
@@ -26,7 +26,7 @@ public enum RestartOrExit {
         }
     }
 
-    public Integer getRestartOrExit() {
-        return restartOrExit;
+    public Integer getNumber() {
+        return stateNumber;
     }
 }

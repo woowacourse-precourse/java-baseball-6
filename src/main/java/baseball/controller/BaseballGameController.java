@@ -28,17 +28,17 @@ public class BaseballGameController {
 
     public void start() {
         printStartMessage();
-        while (player.getRestartOrExit() != EXIT) {
+        while (player.getGameStateNumber() != EXIT) {
             playOneRound(computer.generateNumber(), new Score(INIT_STRIKE, INIT_BALL));
-            player.inputRestartOrExit();
+            player.inputGameStateNumber();
         }
     }
 
     private void playOneRound(List<Integer> answer, Score score) {
         while (!score.isAllStrike()) {
             inputView.printSuggestNumberMessage();
-            player.inputNumbers();
-            score = computer.getScore(player.getNumbers(), answer);
+            player.inputGuessNumber();
+            score = computer.getScore(player.getGuessNumbers(), answer);
             outputView.printResult(score);
         }
         inputView.printRestartOrExitMessage();

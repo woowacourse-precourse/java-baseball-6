@@ -15,7 +15,7 @@ public class GuessNumber {
         this.numbers = new ArrayList<>();
     }
 
-    public void guess() {
+    public void input() {
         String input = Console.readLine();
         validateInputNumbers(input);
         this.numbers = StringToList(input);
