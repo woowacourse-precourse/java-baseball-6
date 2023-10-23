@@ -25,6 +25,7 @@ public class BaseballGame {
         while (true) {
             player.guess();
             markNumber(player.getGuessNumbers()); // 채점
+            printScores(); // 점수 출력
         }
     }
 
@@ -54,6 +55,17 @@ public class BaseballGame {
             if (guessNumber == computerNumbers.get((i + 2) % 3)) {
                 countBall++;
             }
+        }
+    }
+    private void printScores() {
+        if (countBall == 0 && countStrike == 0){
+            System.out.println("낫싱");
+        }
+        if (countBall != 0) {
+            System.out.println(countBall + "볼 ");
+        }
+        if (countStrike != 0) {
+            System.out.println(countStrike + "스트라이크 ");
         }
     }
 
