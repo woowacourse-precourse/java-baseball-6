@@ -1,19 +1,15 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseball {
     private Status status;
     private Message message;
-    private BufferedReader br;
     private User user;
 
     public NumberBaseball() {
         this.status = Status.START;
         this.message = Message.START_MESSAGE;
-        this.br = new BufferedReader(new InputStreamReader(System.in));
         this.user = new User();
     }
 
@@ -29,12 +25,7 @@ public class NumberBaseball {
         user.resetNumber();
         printMessage();
 
-        String numberFromUser;
-        try {
-            numberFromUser = br.readLine();
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
+        String numberFromUser = Console.readLine();
 
         if (!user.validateNumber(numberFromUser)) {
             throw new IllegalArgumentException();
