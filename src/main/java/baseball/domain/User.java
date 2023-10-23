@@ -10,9 +10,8 @@ public class User {
     private List<Integer>userNumber;
 
     public List<Integer> createUserNumber(String userNumber) {
-
         updateStringToListUser(userNumber);
-        validateUserNumber(this.userNumber);
+        validateUserNumber();
         return this.userNumber;
     }
 
@@ -29,23 +28,23 @@ public class User {
         return this.userNumber;
     }
 
-    public void validateUserNumber(List<Integer> userNumber) {
-        validateIsThreeUserNumber(userNumber);
-        validateInRangeUserNumber(userNumber);
-        validateUniqueUserNumber(userNumber);
+    public void validateUserNumber() {
+        validateIsThreeUserNumber();
+        validateInRangeUserNumber();
+        validateUniqueUserNumber();
     }
 
-    public void validateIsThreeUserNumber(List<Integer> userNumber) {
+    public void validateIsThreeUserNumber() {
         if (userNumber.size() != 3) throw new IllegalArgumentException();
     }
 
-    public void validateInRangeUserNumber(List<Integer> userNumber) {
+    public void validateInRangeUserNumber() {
         for (int i = 0; i < userNumber.size(); i++) {
             if (userNumber.get(i) < 1 || userNumber.get(i) > 9) throw new IllegalArgumentException();
         }
     }
 
-    public void validateUniqueUserNumber(List<Integer> userNumber) {
+    public void validateUniqueUserNumber() {
         userNumber.stream().distinct();
         if(userNumber.size() != userNumber.stream().distinct().count())
             throw new IllegalArgumentException();
