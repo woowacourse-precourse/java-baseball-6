@@ -8,6 +8,10 @@ import java.util.List;
 
 public class Baseball {
 
+    private static final int NUM_DIGIT = 3;
+    private static final int MIN = 100;
+    private static final int MAX = 100;
+
     //전체 게임 플레이
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -32,20 +36,31 @@ public class Baseball {
 
     //서로 다른 세자리 랜덤 수 생성
     private int generateRandomNum() {
-        int result = 0;
+        List<Integer> numList = getRandomNumList();
+        int result = connectNumOfList(numList);
+
+        return result;
+    }
+
+    //세 개의 랜덤 숫자 들어간 리스트 반환
+    private List<Integer> getRandomNumList() {
         List<Integer> numList = new ArrayList<>();
 
-        while (numList.size() < 3) {
+        while (numList.size() < NUM_DIGIT) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
             if (!numList.contains(randomNum)) {
                 numList.add(randomNum);
             }
         }
+        return numList;
+    }
 
-        for(int i = 0; i < 3; i++) {
-            result += numList.get(i) * (Math.pow(10, 2 - i));
+    //리스트에 담긴 숫자들 이어붙여서 반환
+    private int connectNumOfList(List<Integer> numList) {
+        int result = 0;
+        for(int i = 0; i < NUM_DIGIT; i++) {
+            result += numList.get(i) * (Math.pow(10, NUM_DIGIT - 1 - i));
         }
-
         return result;
     }
 
@@ -53,13 +68,14 @@ public class Baseball {
     private int getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         int inputNum = 0;
+
         try {
             inputNum = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 input type입니다.");
         }
 
-        if (inputNum < 100 || inputNum >= 1000) {
+        if (inputNum < MIN || inputNum >= MAX) {
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
         }
 
@@ -88,6 +104,11 @@ public class Baseball {
             }
         }
 
+        return printResult(strikeCount, ballCount);
+    }
+
+    //정답 시 true, 나머지 false
+    private boolean printResult(int strikeCount, int ballCount) {
         if(strikeCount == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -107,6 +128,7 @@ public class Baseball {
         return false;
     }
 
+    //자리수 나눠서 담은 list 반환
     private List<Integer> getDigitList(int input) {
         List<Integer> result = new ArrayList<>();
 
