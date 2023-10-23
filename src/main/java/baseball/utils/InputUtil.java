@@ -12,7 +12,9 @@ public abstract class InputUtil {
     public static final String RESTART_NUMBER = "1";
     public static final String END_NUMBER = "2";
 
-    private InputUtil() {}
+    private InputUtil() {
+        throw new AssertionError();
+    }
 
     public static String requireGuessNumber() {
         System.out.println(REQUIRE_NUMBER_MESSAGE.getMessage());
