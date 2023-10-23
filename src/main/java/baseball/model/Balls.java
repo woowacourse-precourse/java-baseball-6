@@ -18,8 +18,8 @@ public class Balls {
                 .toList();
     }
 
-    public Balls(Input input) {
-        this(inputToIntegerList(input));
+    public Balls(NumberInput numberInput) {
+        this(inputToIntegerList(numberInput));
     }
 
     public PlayResult checkBalls(Balls targetBalls) {

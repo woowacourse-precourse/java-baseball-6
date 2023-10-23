@@ -4,6 +4,8 @@ import java.util.List;
 
 public class PlayResult {
     public static final String SPACE = " ";
+    public static final String STRIKE_STRING = "스트라이크";
+    public static final String BALL_STRING = "볼";
     private int strikeCount;
     private int ballCount;
 
@@ -22,21 +24,22 @@ public class PlayResult {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        if (strikeCount == 0 && ballCount == 0) {
-            result.append("낫싱");
-            return result.toString();
+        if (strikeCount != 0 && ballCount == 0) {
+            return strikeCount + STRIKE_STRING;
         }
 
-        if (strikeCount != 0) {
-            result.append(strikeCount)
-                    .append("스트라이크").append(SPACE);
-        }
-        if (ballCount != 0) {
-            result.append(ballCount)
-                    .append("볼");
+        if (strikeCount != 0 && ballCount != 0) {
+            return strikeCount + STRIKE_STRING + SPACE + ballCount + BALL_STRING;
         }
 
-        return result.toString();
+        if (strikeCount == 0 && ballCount != 0) {
+            return ballCount + BALL_STRING;
+        }
+
+        return "낫싱";
+    }
+
+    public boolean isCorrect() {
+        return strikeCount == 3;
     }
 }

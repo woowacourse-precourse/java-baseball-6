@@ -2,11 +2,11 @@ package baseball.model;
 
 import static baseball.util.InputUtils.INPUT_NUMBERS_IN_SIZE_PATTERN;
 
-public class Input {
+public class NumberInput {
 
     private String input;
 
-    public Input(String input) {
+    public NumberInput(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException("빈 값이 입력되었습니다. 3자리 숫자를 입력해주세요");
         }
@@ -18,8 +18,8 @@ public class Input {
         this.input = input;
     }
 
-    public static Input of(String inputString) {
-        return new Input(inputString);
+    public static NumberInput of(String inputString) {
+        return new NumberInput(inputString);
     }
 
     public String value() {

@@ -6,6 +6,6 @@ public class Application {
 
     public static void main(String[] args) {
         BaseballGame game = new BaseballGame();
-        game.play();
+        game.playGame();
     }
 }
