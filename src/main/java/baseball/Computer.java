@@ -10,21 +10,19 @@ public class Computer {
     public Computer() {
         this.computerNumber = new ArrayList<>();
         makeRandomComputerNumber();
-        System.out.println("computerNumber = " + computerNumber);
     }
 
     public ArrayList<Integer> getComputerNumber() {
         return computerNumber;
     }
 
-    private ArrayList<Integer> makeRandomComputerNumber() {
+    private void makeRandomComputerNumber() {
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
         }
-        return computerNumber;
     }
 
     public void resetComputerNumber() {
