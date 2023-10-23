@@ -13,6 +13,8 @@ public class Application {
 
         int playing = 1;
 
+        Scanner sc = new Scanner(System.in);
+
         while (playing == 1) {
             //랜덤 숫자 생성
             List<Integer> computer = new ArrayList<>();
@@ -26,7 +28,7 @@ public class Application {
 
             //사용자 숫자 입력(맞을 때까지 반복)
             int ans = 0;
-            Scanner sc = new Scanner(System.in);
+
 
             while (ans == 0) {
                 //잘못 입력 시 (IllegalArgumentException 발생)
@@ -37,6 +39,10 @@ public class Application {
 
                 for (String num : input.split("")) {
                     user.add(Integer.parseInt(num));
+                }
+
+                if(user.size() != 3 || user.size() != user.stream().distinct().count()){
+                    throw new IllegalArgumentException("입력된 숫자를 확인해주세요.");
                 }
 
                 //숫자 비교
@@ -62,7 +68,6 @@ public class Application {
                 int ball = cnt - strike;
 
                 //최종 출력
-
                 if (cnt == 0) {
                     System.out.println("낫싱");
                 } else if (strike == 0) {
@@ -71,18 +76,24 @@ public class Application {
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     ans = 1;
+                    playing = 0;
                 } else if (ball == 0) {
                     System.out.println(strike + "스트라이크");
                 } else {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
                 }
             }
-            //게임 재시작 여부 확인
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            Integer playAgain = sc.nextInt();
-            if (playAgain == 2){
-                playing = 0;
-            }
+        }
+        //게임 재시작 여부 확인
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playAgain = sc.next();
+
+        if(playAgain.equals("1")) {
+            main(args);
+        } else if (playAgain.equals("2")) {
+            playing = 0;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
