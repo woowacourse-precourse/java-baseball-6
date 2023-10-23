@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.service;
 
 import baseball.model.ControllNumber;
 import baseball.view.InputView;
@@ -13,22 +13,23 @@ public class BaseballGame {
 
     public void baseballGameStart() {
         OutputView.printStart();
-        while (exitGame(ControllNumber.getExitNumber())) {
+        do {
             gameStart();
         }
+        while (exitGame(ControllNumber.getExitNumber()));
     }
 
     public void gameStart() {
         ganerateNumber.createRandomNumber();
-        while (gameStop(ControllNumber.getStrikeCount())) {
+        do {
             illegal.checkIllegal(inputView.CompareInputNumber());
             baseBallGameLogic.checkBaseball();
-
         }
+        while (gameStop(ControllNumber.getStrikeCount()));
     }
 
-    public boolean exitGame(String num) {
-        int exitNumber = illegal.parseIntNumber(num);
+    public boolean exitGame(String number) {
+        int exitNumber = illegal.illegalDigitNumber(number);
         return baseBallGameLogic.checkExitGame(exitNumber);
     }
 

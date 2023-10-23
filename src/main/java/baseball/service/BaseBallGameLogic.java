@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.service;
 
 import baseball.model.ControllNumber;
 import baseball.model.Count;
@@ -10,55 +10,63 @@ public class BaseBallGameLogic {
     InputView inputView = new InputView();
 
     public void checkBaseball() {
-        Number number = new Number();
-        countBallAndStrike(number.getUserNumber(), number.getComputerNumber());
+        countBallAndStrike(Number.getUserNumber(), Number.getComputerNumber());
         printCount();
     }
 
     public void countNumber(int[] inputNumber, int[] computerNumber) {
-        int ballCount = 0;
-        int strikeCount = 0;
+        Count.setBall(0);
+        Count.setStrike(0);
         for (int i = 0; i < inputNumber.length; i++) {
-            for (int j = 0; j < computerNumber.length; j++) {
-                if (i != j) {
-                    if (compareNumber(inputNumber[i], computerNumber[j])) {
-                        ballCount++;
-                        continue;
-                    }
-                }
-                if (compareNumber(inputNumber[i], computerNumber[j])) {
-                    strikeCount++;
-                }
-            }
+            compareBallAndStrike(inputNumber, computerNumber, i);
         }
-        Count.setBall(ballCount);
-        Count.setStrike(strikeCount);
     }
 
-    /*public void strike(int[] inputNumber, int[] computerNumber) {
-        int count = 0;
-        for (int i = 0; i < inputNumber.length; i++) {
-            for (int j = 0; j < computerNumber.length; j++) {
-                if (i == j) {
-                    if (compareNumber(inputNumber[i], computerNumber[j])) {
-                        count++;
-                    }
-                }
+    public void compareBallAndStrike(int[] inputNumber, int[] computerNumber, int i) {
+        for (int j = 0; j < computerNumber.length; j++) {
+            if (i != j) {
+                countBall(inputNumber[i], computerNumber[j]);
+                continue;
             }
+            countStrike(inputNumber[i], computerNumber[j]);
         }
-        Count.setStrike(count);
-    }*/
+    }
+
+    public int[] arrayNumber(int num) {
+        int[] sepNum = new int[3];
+        int div = 100;
+        for (int i = 0; i < sepNum.length; i++) {
+            sepNum[i] = num / div;
+            num -= sepNum[i] * div;
+            div /= 10;
+        }
+        return sepNum;
+    }
 
     public boolean compareNumber(int inputNumber, int computerNumber) {
         return inputNumber == computerNumber;
+    }
+
+    public void countBall(int inputNumber, int computerNumber) {
+        if (compareNumber(inputNumber, computerNumber)) {
+            Count.setBall(Count.getBall() + 1);
+        }
+    }
+
+    public void countStrike(int inputNumber, int computerNumber) {
+        if (compareNumber(inputNumber, computerNumber)) {
+            Count.setStrike(Count.getStrike() + 1);
+        }
     }
 
     public boolean checkExitGame(int exitNumber) {
         if (exitNumber == 1) {
             return true;
         } else if (exitNumber == 2) {
+            //System.out.println("게임종료");
             return false;
         }
+        //System.out.println("5번오류");
         throw new IllegalArgumentException();
     }
 
@@ -81,7 +89,7 @@ public class BaseBallGameLogic {
             if (Count.getStrike() > 0) {
                 System.out.print(Count.getBall());
                 OutputView.ball();
-                System.out.print(Count.getStrike());
+                System.out.print(" " + Count.getStrike());
                 OutputView.strike();
                 ControllNumber.setStrikeCount(Count.getStrike());
                 return true;
@@ -105,13 +113,11 @@ public class BaseBallGameLogic {
     }
 
     public static void saveInputNumber(int[] num) {
-        Number number = new Number();
-        number.setUserNumber(num);
+        Number.setUserNumber(num);
     }
 
     public boolean gameStopCheckInputNumber(int strikeCount) {
         if (strikeCount == 3) {
-            ControllNumber.setStrikeCount(0);
             inputGameExitNumber();
             return false;
         }

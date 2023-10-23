@@ -1,8 +1,7 @@
-package baseball.controller;
+package baseball.service;
 
 import baseball.model.Number;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 
 public class GenerateNumber {
 
@@ -26,9 +25,8 @@ public class GenerateNumber {
             }
 
         }
-        Number number = new Number();
-        number.setComputerNumber(num);
-        System.out.println(Arrays.toString(number.getComputerNumber()));
+        Number.setComputerNumber(num);
+        //System.out.println(Arrays.toString(number.getComputerNumber()));
 
     }
 

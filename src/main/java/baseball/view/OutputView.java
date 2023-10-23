@@ -7,11 +7,11 @@ public class OutputView {
     }
 
     public static void nothing() {
-        System.out.println("낫싱 ");
+        System.out.println("낫싱");
     }
 
     public static void ball() {
-        System.out.print("볼 ");
+        System.out.print("볼");
     }
 
     public static void strike() {

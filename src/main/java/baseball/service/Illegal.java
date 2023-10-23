@@ -1,54 +1,49 @@
-package baseball.controller;
+package baseball.service;
 
 public class Illegal {
 
-    public void checkIllegal(String num) {
-        illegalNotThree(num);
-        int integerNumber = parseIntNumber(num);
-        int[] separateNum = illegalIncludeZero(integerNumber);
-        illegalDuplicateNumberCheck(separateNum);
-        BaseBallGameLogic.saveInputNumber(separateNum);
-    }
+    BaseBallGameLogic baseBallGameLogic = new BaseBallGameLogic();
 
-    public int parseIntNumber(String num) {
-        for (int i = 0; i < num.length(); i++) {
-            int number = num.charAt(i);
-            if (!Character.isDigit(number)) {
-                throw new IllegalArgumentException();
-            }
-        }
-        return Integer.parseInt(num);
+    public void checkIllegal(String number) {
+        illegalNotThree(number);
+        int integerNumber = illegalDigitNumber(number);
+        int[] separateNum = illegalDuplicateNumberCheck(integerNumber);
+        BaseBallGameLogic.saveInputNumber(separateNum);
     }
 
     public void illegalNotThree(String num) {
         if (num.length() != 3) {
+            //System.out.println("1번오류");
             throw new IllegalArgumentException();
         }
     }
 
-    public int[] illegalIncludeZero(int num) {
-        int[] sepNum = new int[3];
-        int div = 100;
-        for (int i = 0; i < sepNum.length; i++) {
-            sepNum[i] = num / div;
-            if (sepNum[i] == 0) {
+    public int illegalDigitNumber(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            int charNumber = number.charAt(i);
+            if (!Character.isDigit(charNumber)) {
+                //System.out.println("2번오류");
+                throw new IllegalArgumentException();
+
+            } else if (charNumber == '0') {
                 throw new IllegalArgumentException();
             }
-            num -= sepNum[i] * div;
-            div /= 10;
         }
-        return sepNum;
+        return Integer.parseInt(number);
     }
 
-    public void illegalDuplicateNumberCheck(int[] num) {
-        for (int i = 0; i < num.length - 1; i++) {
-            illegalDuplicateNumberCompare(num, i, num.length);
+    public int[] illegalDuplicateNumberCheck(int number) {
+        int[] separateNumber = baseBallGameLogic.arrayNumber(number);
+        for (int i = 0; i < separateNumber.length - 1; i++) {
+            illegalDuplicateNumberCompare(separateNumber, i, separateNumber.length);
         }
+        return separateNumber;
     }
 
     public void illegalDuplicateNumberCompare(int[] num, int i, int numLength) {
         for (int j = i + 1; j < numLength; j++) {
             if (num[i] == num[j]) {
+                //System.out.println("4번오류");
                 throw new IllegalArgumentException();
             }
         }

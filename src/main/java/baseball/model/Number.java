@@ -5,19 +5,19 @@ public class Number {
     private static int[] userNumber;
 
 
-    public void setComputerNumber(int[] num) {
+    public static void setComputerNumber(int[] num) {
         computerNumber = num;
     }
 
-    public int[] getComputerNumber() {
+    public static int[] getComputerNumber() {
         return computerNumber;
     }
 
-    public void setUserNumber(int[] num) {
+    public static void setUserNumber(int[] num) {
         userNumber = num;
     }
 
-    public int[] getUserNumber() {
+    public static int[] getUserNumber() {
         return userNumber;
     }
 }
