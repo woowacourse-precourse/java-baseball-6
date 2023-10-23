@@ -2,12 +2,19 @@ package baseball;
 
 import baseball.logic.BaseballGame;
 
+import static baseball.logic.BaseballGame.EXIT;
+import static baseball.logic.BaseballGame.RESTART;
+
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        BaseballGame baseballGame = new BaseballGame();
-        baseballGame.play();
-
-
+        BaseballGame baseballGame;
+        while(true){
+            baseballGame = new BaseballGame();
+            if (baseballGame.play() == EXIT) {
+                return;
+            }
+        }
     }
 }

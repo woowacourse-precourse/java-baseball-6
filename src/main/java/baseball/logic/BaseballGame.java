@@ -10,8 +10,8 @@ public class BaseballGame {
     private List<Integer> computerNumbers;
     private int countStrike;
     private int countBall;
-    private static String RESTART = "1";
-    private static String EXIT = "2";
+    public static String RESTART = "1";
+    public static String EXIT = "2";
 
     public BaseballGame() {
         this.computerNumbers = new ArrayList<>();
@@ -19,7 +19,7 @@ public class BaseballGame {
         this.countBall = 0;
     }
 
-    public void play() {
+    public String play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomlyExtractNumber();
 
@@ -33,8 +33,10 @@ public class BaseballGame {
                 String playerAnswer = player.replayOrExit();
                 if (playerAnswer.equals(RESTART)) {
                     System.out.println("게임 재시작");
+                    return RESTART;
                 } else if (playerAnswer.equals(EXIT)) {
                     System.out.println("프로그램 종료");
+                    return EXIT;
                 } else {
                     // 예외 출력
                 }
