@@ -53,12 +53,25 @@ public class Application {
         }
     }
 
+    public static String generateResultString(int ball, int strike){
+        String result = "";
+        if(ball==0 && strike==0){
+            result = "낫싱";
+        }else if(ball!=0 && strike==0){
+            result = ball+"볼";
+        }else if(ball==0 && strike!=0){
+            result = strike+"스트라이크";
+        }else{
+            result = ball+"볼 "+ strike+"스트라이크";
+        }
+        return result;
+    }
+
     public static String checkNumber(String input){
-        String result="";
         splitNumber(input);
 
-        int strike = 0;
         int ball = 0;
+        int strike = 0;
         for(int i=0;i<3;i++){
             if(answer.get(i)==inputList.get(i)){
                 strike++;
@@ -66,16 +79,8 @@ public class Application {
                 ball++;
             }
         }
-        if(ball==0 && strike==0){
-            result = "낫싱";
-        }else if(ball!=0 && strike==0){
-            result=ball+"볼";
-        }else if(ball==0 && strike!=0){
-            result=strike+"스트라이크";
-        }else{
-            result=ball+"볼 "+ strike+"스트라이크";
-        }
-        return result;
+
+        return generateResultString(ball,strike);
     }
 
     public static int endGame(){
