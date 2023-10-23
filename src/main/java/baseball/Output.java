@@ -15,7 +15,7 @@ public class Output {
     }
 
     void printInputMessage() {
-        System.out.println(inputMessage);
+        System.out.print(inputMessage);
     }
 
     void printGameEndMessage() {
@@ -33,7 +33,7 @@ public class Output {
             System.out.println(strikeCount + strikeMessage);
         } else if (strikeCount == 0 && ballCount > 0) {
             System.out.println(ballCount + ballMessage);
-        } else if (strikeCount > 0 && ballCount == 0) {
+        } else if (strikeCount > 0 && ballCount > 0) {
             System.out.println(ballCount + ballMessage + ' ' + strikeCount + strikeMessage);
         }
     }
