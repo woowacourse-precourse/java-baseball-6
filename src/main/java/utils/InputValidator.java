@@ -38,5 +38,13 @@ public class InputValidator {
             throw new IllegalArgumentException(hasDuplicateNumber);
         }
     }
+
+    public static int[] changeToIntArray(String userInput){
+        int[] intArray = new int[NORMAL_LENGTH];
+        for(int i = 0; i<NORMAL_LENGTH; i++){
+            intArray[i] = Integer.parseInt(userInput.substring(i,i+1));
+        }
+        return intArray;
+    }
 }
 

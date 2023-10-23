@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import static constant.Constant.*;
 import static constant.ErrorMessage.*;
 import static utils.InputValidator.validateUserInput;
+import static utils.InputValidator.changeToIntArray;
 
 public class Game {
 
@@ -27,6 +28,7 @@ public class Game {
     }
 
     private boolean playRound(String userInput) {
+        int[] userGuess = changeToIntArray(userInput);
 
         return false;
     }
