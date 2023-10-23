@@ -60,10 +60,10 @@ class BaseballsTest {
         }
     }
 
-    @DisplayName("Balls 를 받아 볼 개수를 판단할 수 있다")
+    @DisplayName("볼 개수를 계산할 수 있다")
     @ParameterizedTest
     @MethodSource
-    void judgeBallCountIfPresentBalls(List<Integer> computerNumber, List<Integer> playerNumber, int expected) {
+    void canCountNumberOfBalls(List<Integer> computerNumber, List<Integer> playerNumber, int expected) {
         Baseballs computer = new Baseballs(computerNumber);
         Baseballs player = new Baseballs(playerNumber);
 
@@ -72,7 +72,7 @@ class BaseballsTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    static Stream<Arguments> judgeBallCountIfPresentBalls() {
+    static Stream<Arguments> canCountNumberOfBalls() {
         return Stream.of(
                 Arguments.of(List.of(1, 2, 3), List.of(4, 5, 6), 0),
                 Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), 0),
@@ -81,10 +81,10 @@ class BaseballsTest {
         );
     }
 
-    @DisplayName("Balls 를 받아 스트라이크 개수를 판단할 수 있다")
+    @DisplayName("스트라이크 개수를 계산할 수 있다")
     @ParameterizedTest
     @MethodSource
-    void judgeStrikeCountIfPresentBalls(List<Integer> computerNumber, List<Integer> playerNumber, int expected) {
+    void canCountNumberOfStrikes(List<Integer> computerNumber, List<Integer> playerNumber, int expected) {
         Baseballs computer = new Baseballs(computerNumber);
         Baseballs player = new Baseballs(playerNumber);
 
@@ -93,7 +93,7 @@ class BaseballsTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    static Stream<Arguments> judgeStrikeCountIfPresentBalls() {
+    static Stream<Arguments> canCountNumberOfStrikes() {
         return Stream.of(
                 Arguments.of(List.of(1, 2, 3), List.of(4, 5, 6), 0),
                 Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), 3),
