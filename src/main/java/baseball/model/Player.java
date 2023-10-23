@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Player {
 
@@ -31,15 +32,9 @@ public class Player {
     }
 
     private List<Integer> parsingNumber(String inputNumber) {
-        List<Integer> parsingNumbers = new ArrayList<>();
-
-        for (int i = 0; i < inputNumber.length(); i++) {
-            char charDigit = inputNumber.charAt(i);
-            int intDigit = Character.getNumericValue(charDigit);
-            parsingNumbers.add(intDigit);
-        }
-
-        return parsingNumbers;
+        return inputNumber.chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 
     private void validateOneToNine(List<Integer> numbers) {
