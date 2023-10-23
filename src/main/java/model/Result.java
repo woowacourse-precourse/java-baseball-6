@@ -38,8 +38,6 @@ public class Result {
                 ball++;
             }
         }
-        ResultBall resultBall = new ResultBall(strike, ball);
-
-        return resultBall;
+        return new ResultBall(strike, ball);
     }
 }
