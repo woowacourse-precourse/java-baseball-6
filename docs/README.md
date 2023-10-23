@@ -56,7 +56,7 @@
 
 ## 진행 사항
 - [X] Input 객체
-- [ ] InputValidator 객체
+- [X] InputValidator 객체
 - [ ] ComputerNumber 객체
 - [ ] PlayerNumber 객체
 - [ ] BaseballGame 객체
