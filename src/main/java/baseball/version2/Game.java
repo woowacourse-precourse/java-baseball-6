@@ -3,6 +3,7 @@ package baseball.version2;
 import static baseball.version2.Constants.Value.CONTINUE_NUMBER;
 
 import baseball.version2.controller.Controller;
+import baseball.version2.dto.ComputerAnswerDto;
 
 public class Game {
 
@@ -16,7 +17,7 @@ public class Game {
         controller.runGame();
         int continueDecision = CONTINUE_NUMBER;
         while (continueDecision == CONTINUE_NUMBER) {
-            int[] computerAnswer = controller.settingGame();
+            ComputerAnswerDto computerAnswer = controller.settingGame();
             boolean isCorrect = false;
             while (!isCorrect) {
                 isCorrect = controller.startGame(computerAnswer);

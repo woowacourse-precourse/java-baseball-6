@@ -6,6 +6,7 @@ import static baseball.version2.Constants.Value.RANGE_END_NUMBER;
 import static baseball.version2.Constants.Value.RANGE_START_NUMBER;
 
 import baseball.version2.dto.ComputerAnswerDto;
+import baseball.version2.dto.PlayerAnswerDto;
 import baseball.version2.dto.ScoreDto;
 import baseball.version2.object.Score;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -43,8 +44,9 @@ public class Service {
     }
 
 
-    public Score compareTwoAnswer(int[] playerAnswer, int[] computerAnswer) {
-        this.computerAnswer = computerAnswer;
+    public Score compareTwoAnswer(PlayerAnswerDto playerAnswerDto, ComputerAnswerDto computerAnswerDto) {
+        this.computerAnswer = computerAnswerDto.getAnswer();
+        int[] playerAnswer = playerAnswerDto.getAnswer();
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < ANSWER_ARRAY_SIZE; i++) {
