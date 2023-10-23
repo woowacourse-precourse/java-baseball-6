@@ -1,7 +1,5 @@
 package baseball;
-
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +7,9 @@ public class GameTool {
     /*
      * 랜덤 숫자 생성 메소드
      */
-    public List<Integer> generatedRandomNumbers(int n) {
+    public List<Integer> generatedRandomNumbers(int size) {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < n) {
+        while (computer.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
