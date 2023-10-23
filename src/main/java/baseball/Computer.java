@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.Validator.isUniqueDigits;
+
 public class Computer {
     private String randomNumber;
     private final int startRange = 100;
@@ -19,11 +21,5 @@ public class Computer {
         randomNumber = Integer.toString(number);
     }
 
-    private boolean isUniqueDigits(int number){
-        int hundredDigit = number /100;
-        int tenDigit = (number / 10) % 10;
-        int oneDigit = number % 10;
 
-        return hundredDigit != tenDigit || tenDigit != oneDigit || oneDigit != hundredDigit;
-    }
 }

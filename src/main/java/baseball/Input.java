@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.Validator.isInRange;
+import static baseball.Validator.isNumber;
+
 public class Input {
     private final String noNumericMessage = "숫자가 아닌 값입니다. 숫자를 입력해주세요.";
     private final String outOfRangeMessage = "3자리 자연수를 입력해주세요.";
@@ -32,20 +35,5 @@ public class Input {
         return false;
     }
 
-    boolean isNumber(String userNumber) {
-        try {
-            Integer.parseInt(userNumber);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
 
-    boolean isInRange(String userNumber, int startRange, int endRange) {
-        int number = Integer.parseInt(userNumber);
-        if (number >= startRange && number <= endRange) {
-            return true;
-        }
-        return false;
-    }
 }
