@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -22,6 +23,7 @@ public class Application {
          
             computerInputNums = randomInputNums();
             userInputNums = inputNums();
+            int resultNum = checkNum(userInputNums, computerInputNums);
         }
 
         private ArrayList<Integer> randomInputNums() {
@@ -60,6 +62,30 @@ public class Application {
             }
 
             return readuserInputNums;
+        }
+
+        private int checkNum(ArrayList<Integer> userInputNums, ArrayList<Integer> answerList) {
+
+            ArrayList<Integer> balls = new ArrayList<>();
+            int ball = 0;
+            int strike = 0;
+
+            for (int i = 0; i < 3; i++) {
+                if (userInputNums.contains(answerList.get(i))) balls.add(i);
+            }
+
+            ball = balls.size();
+
+            for (int i = 0; i < balls.size(); i++) {
+                int ballsIndex = balls.get(i).intValue();
+
+                if (userInputNums.get(ballsIndex).equals(answerList.get(ballsIndex))) {
+                    ball--;
+                    strike++;
+                }
+            }
+
+            return ball * 10 + strike;
         }
     }
 
