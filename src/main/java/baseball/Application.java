@@ -39,6 +39,7 @@ public class Application {
     }
 
     static List<Integer> readNumber() {
+        out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
         int parsedInput = parseInt(input);
         validateRange(parsedInput);
@@ -47,6 +48,7 @@ public class Application {
         for (int i = 1; i <= ANSWER_SIZE; i++) {
             int eachDigit = parsedInput / (int) Math.pow(10.0, ANSWER_SIZE - i) % 10;
             validateDuplicates(result, eachDigit);
+            validateEachRange(eachDigit);
             result.add(eachDigit);
         }
         return result;
@@ -68,6 +70,12 @@ public class Application {
 
     static void validateDuplicates(List<Integer> list, int digit) {
         if (list.contains(digit)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static void validateEachRange(int eachDigit) {
+        if (eachDigit < LOWER_BOUND || eachDigit > UPPER_BOUND) {
             throw new IllegalArgumentException();
         }
     }
