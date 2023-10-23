@@ -17,7 +17,7 @@ public class Output {
         System.out.println(NOTHING_MESSAGE);
     }
 
-    public static void printGameResult(int ballCount, int strikeCount) {
+    public static void printGameResult(int strikeCount, int ballCount) {
         StringBuilder stringBuilder = new StringBuilder();
         if (ballCount > 0) {
             stringBuilder.append(ballCount).append("볼 ");
