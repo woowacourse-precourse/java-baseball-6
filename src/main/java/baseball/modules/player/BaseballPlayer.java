@@ -95,4 +95,11 @@ public abstract class BaseballPlayer implements Player{
     public int hashCode() {
         return Objects.hash(numbers);
     }
+
+    @Override
+    public String toString() {
+        return "BaseballPlayer{" +
+                "numbers=" + numbers +
+                '}';
+    }
 }
