@@ -3,6 +3,7 @@ package game;
 import static validation.Constant.*;
 
 import camp.nextstep.edu.missionutils.Console;
+import model.PlayerInput;
 import validation.Validation;
 
 import java.util.List;
@@ -10,11 +11,13 @@ import java.util.List;
 import model.Answer;
 
 public class Game {
-    static List<Integer> answer;
+    private final Answer answer;
+    private static PlayerInput playerInput;
 
     public Game() {
-        answer = new Answer().getAnswerNumber();
-        printAnswer(answer);
+        answer = new Answer();
+        answer.setAnswerNumber();
+        printAnswer(answer.getAnswerNumber());
     }
 
     private static void printAnswer(List<Integer> inputAnswer) {
@@ -40,11 +43,9 @@ public class Game {
 
 
     private void GuessAnswer() {
-        String inputNumber;
         do {
-            inputNumber = userInput();
-            Validation.inputValidationCheck(inputNumber);
-        } while (!equalToAnswer(inputNumber));
+            playerInput = new PlayerInput(Console.readLine());
+        } while (!equalToAnswer(playerInput.getPlayerInput()));
     }
 
     private String userInput() {
@@ -76,7 +77,7 @@ public class Game {
     private int getStrike(int[] inputNumber) {
         int strike = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (samePosition(inputNumber[i], answer.get(i))) {
+            if (samePosition(inputNumber[i], answer.getAnswerNumber().get(i))) {
                 strike++;
             }
         }
@@ -93,7 +94,7 @@ public class Game {
     private int getBall(int[] inputNumber) {
         int ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (isInAnswer(inputNumber[i], answer.get(i))) {
+            if (isInAnswer(inputNumber[i], answer.getAnswerNumber().get(i))) {
                 ball++;
             }
         }
@@ -101,7 +102,7 @@ public class Game {
     }
 
     private boolean isInAnswer(int ithInput, int ithAnswer) {
-        if (ithInput != ithAnswer && answer.contains(ithInput)) {
+        if (ithInput != ithAnswer && answer.getAnswerNumber().contains(ithInput)) {
             return true;
         }
         return false;

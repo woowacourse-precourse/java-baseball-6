@@ -13,13 +13,13 @@ public class Validation {
         hasDuplicateInteger(inputString);
     }
 
-    private static void verifyLength(String input) {
+    private static void verifyLength(String input) throws IllegalArgumentException {
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException(WRONG_INPUT_SIZE);
         }
     }
 
-    private static void isNumericString(String input) {
+    private static void isNumericString(String input) throws IllegalArgumentException {
         for (char c : input.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException(HAS_CHAR_INPUT);
@@ -27,7 +27,7 @@ public class Validation {
         }
     }
 
-    private static void hasDuplicateInteger(String input) {
+    private static void hasDuplicateInteger(String input) throws IllegalArgumentException {
         Set<String> seen = new HashSet<>();
 
         for (char c : input.toCharArray()) {
@@ -39,7 +39,7 @@ public class Validation {
         }
     }
 
-    public static int askRestart() {
+    public static int askRestart() throws IllegalArgumentException {
         int inputNumber = Integer.parseInt(Console.readLine());
 
         if (inputNumber > QUIT || inputNumber < RESTART) {
