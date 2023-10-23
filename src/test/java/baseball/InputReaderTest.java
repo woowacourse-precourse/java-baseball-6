@@ -1,14 +1,14 @@
 package baseball;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class InputReaderTest {
 
@@ -20,7 +20,7 @@ class InputReaderTest {
     }
 
     @Test
-    public void 추측값_입력_테스트 () {
+    public void 추측값_입력_테스트() {
 
         // 표준 입력에 값을 넣어서 유저가 입력한 것과 같은 효과를 낸다.
         String simulatedInput = "123";
@@ -28,7 +28,7 @@ class InputReaderTest {
         System.setIn(inputStream);
 
         // InputReader 검증
-        List<Integer> input = inputReader.readUserGuessNumber();
+        List<Integer> input = inputReader.readGuessedNumber();
         List<Integer> expected = Arrays.asList(1, 2, 3);
         assertIterableEquals(input, expected);
     }

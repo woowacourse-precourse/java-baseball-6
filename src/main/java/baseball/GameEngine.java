@@ -1,9 +1,9 @@
 package baseball;
 
-import java.util.List;
-
 import static baseball.NumberBaseballGameConfig.CONTINUE_GAME;
 import static baseball.NumberBaseballGameConfig.STRIKE_COUNT_REQUIRED_TO_WIN;
+
+import java.util.List;
 
 public class GameEngine {
 
@@ -18,15 +18,15 @@ public class GameEngine {
             int strikeCount = 0;
             do {
                 Announcer.askToInput();
-                List<Integer> userGuessNumber = inputReader.readUserGuessNumber();
-                Score score = Referee.judge(userGuessNumber, answer);
+                List<Integer> guessedNumber = inputReader.readGuessedNumber();
+                Score score = Referee.judge(guessedNumber, answer);
                 Announcer.annouceScore(score);
                 strikeCount = score.getStrikeCount();
             } while (strikeCount != STRIKE_COUNT_REQUIRED_TO_WIN);
 
             Announcer.announceWin();
             Announcer.askContinue();
-            continueMode = inputReader.readContinueMode();
+            continueMode = inputReader.readContinueModeNumber();
 
         }
     }

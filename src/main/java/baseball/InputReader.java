@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +16,7 @@ public class InputReader {
     }
 
     // 유저가 추측한 값을 입력 받고 List 형태로 반환
-    public List<Integer> readUserGuessNumber() {
+    public List<Integer> readGuessedNumber() {
         String guessedNumberString = Console.readLine();
         guessedNumberValidator.validate(guessedNumberString);
         List<Integer> guessedNumber = Arrays.stream(guessedNumberString.split(""))
@@ -27,7 +26,7 @@ public class InputReader {
     }
 
     // 게임 Continue 여부를 입력받고 반환
-    public Integer readContinueMode() {
+    public Integer readContinueModeNumber() {
         String continueModeNumberString = Console.readLine();
         continueModeNumberValidator.validate(continueModeNumberString);
         int continueModeNumber = Integer.parseInt(continueModeNumberString);

@@ -1,11 +1,11 @@
 package baseball;
 
+import static baseball.NumberBaseballGameConfig.BASEBALL_NUMBER_LENGTH;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static baseball.NumberBaseballGameConfig.BASEBALL_NUMBER_LENGTH;
 
 public class GuessedNumberValidator implements InputValidator {
 
@@ -18,10 +18,10 @@ public class GuessedNumberValidator implements InputValidator {
 
     //중복 체크
     private static void checkDuplicate(String input) {
-        List<Integer> guess = Arrays.stream(input.split(""))
+        List<Integer> guessdeNumber = Arrays.stream(input.split(""))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
-        if (new HashSet<>(guess).size() != BASEBALL_NUMBER_LENGTH) {
+        if (new HashSet<>(guessdeNumber).size() != BASEBALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
