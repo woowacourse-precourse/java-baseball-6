@@ -33,7 +33,7 @@ public class Computer {
         int count = 0;
 
         for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
-            int findIndex = targetNumberIndex(player, i);
+            int findIndex = findNumberIndex(player, i);
 
             if (findIndex != -1 && findIndex != i) {
                 count += 1;
@@ -43,8 +43,8 @@ public class Computer {
         return count;
     }
 
-    private int targetNumberIndex(String number, int i) {
-        char targetNumber = number.charAt(i);
+    private int findNumberIndex(String player, int i) {
+        char targetNumber = player.charAt(i);
         return number.indexOf(targetNumber);
     }
 
