@@ -1,7 +1,7 @@
 package baseball.core;
 
 import camp.nextstep.edu.missionutils.Console;
-import baseball.validation.Validator;
+import baseball.utils.Validator;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package baseball.validation;
+package baseball.utils;
 
 import baseball.utils.Utils;
 
