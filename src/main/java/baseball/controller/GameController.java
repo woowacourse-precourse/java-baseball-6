@@ -36,6 +36,7 @@ public class GameController {
     private BaseballNumbers manageGameResult(BaseballNumbers computerNumber, BaseballNumbers userInputNumber) {
         if (hintService.isCorrect(computerNumber, userInputNumber)) {
             int gameType = gameView.endGame();
+            validateGameCode(gameType);
 
             if (gameType == 1) {
                 computerNumber = gameService.generateComputerNumber();
@@ -46,5 +47,11 @@ public class GameController {
         }
 
         return computerNumber;
+    }
+
+    private void validateGameCode(int gameType) {
+        if (gameType != 1 && gameType != 2) {
+            throw new IllegalArgumentException("올바르지 않은 게임 유형 코드입니다.");
+        }
     }
 }
