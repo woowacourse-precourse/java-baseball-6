@@ -16,11 +16,16 @@ public class BaseballGame {
     static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private int strike;
     private int ball;
+    private Computer computer;
 
+    public BaseballGame(){
+        computer = new Computer();
+    }
 
     public void play() {
         List<Integer> userNumber;
         System.out.println(START_MESSAGE);
+        computer.generationRandomNumber();
         while(strike < Computer.NUMBER_SIZE) {
             System.out.print(INPUT_MESSAGE);
             String userInput = Console.readLine();
@@ -29,6 +34,11 @@ public class BaseballGame {
             numberVaildation(userNumber);
             duplicateValidation(userNumber);
             sizeVaildation(userNumber);
+
+            strike = computer.strikeCount(userNumber);
+            ball = computer.ballCount(userNumber);
+
+            totalCount();
 
         }
 
@@ -77,6 +87,21 @@ public class BaseballGame {
         if(userNumber.size() != Computer.NUMBER_SIZE){
             throw new IllegalArgumentException("3자리 수가 아닙니다.");
         }
+    }
+
+    public void totalCount(){
+        StringBuilder stringBuilder = new StringBuilder();
+        if(strike != 0) {
+            stringBuilder.append(strike).append("스트라이크");
+        }
+        if(ball != 0) {
+            stringBuilder.append(ball).append("볼");
+        }
+        if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.println(stringBuilder.toString());
     }
 
 }
