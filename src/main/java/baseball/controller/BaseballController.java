@@ -36,8 +36,6 @@ public class BaseballController {
         String choice = inputView.getUserReplayChoice();
         if (choice.equals("1")) {
             gameStart();
-        } else {
-            return;
         }
     }
 }
