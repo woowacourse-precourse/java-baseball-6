@@ -26,4 +26,9 @@ public class PlayNumberTest {
             PlayNumber playNumber = PlayNumber.from("111");
         });
     }
+
+    @Test
+    void 세자리_모두_정상이라면_문제없이_생성된다() {
+        PlayNumber playNumber = PlayNumber.from("123");
+    }
 }
