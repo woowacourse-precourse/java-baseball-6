@@ -2,12 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    final int randomLen = 3;
+    private final int randomLen = 3;
     private List<Integer> randomInt;
     private List<Integer> userInt;
     private int strike;
@@ -48,14 +47,11 @@ public class Game {
         String result;
         if (ball > 0 && strike > 0) {
             result = ball + "볼 " + strike + "스트라이크";
-        }
-        else if (ball > 0 && strike == 0) {
+        } else if (ball > 0 && strike == 0) {
             result = ball + "볼";
-        }
-        else if (ball == 0 && strike > 0) {
+        } else if (ball == 0 && strike > 0) {
             result = strike + "스트라이크";
-        }
-        else {
+        } else {
             result = "낫싱";
         }
         System.out.println(result);
@@ -71,8 +67,7 @@ public class Game {
         for (int i = 0; i < randomLen; i++) {
             if (randomInt.get(i).equals(userInt.get(i))) {
                 strike++;
-            }
-            else if (randomInt.contains(userInt.get(i))) {
+            } else if (randomInt.contains(userInt.get(i))) {
                 ball++;
             }
         }
@@ -82,8 +77,9 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         validateUserChoice(input);
-        if (input.equals("2"))
+        if (input.equals("2")) {
             isFinished = true;
+        }
     }
 
     public boolean isFinished() {
