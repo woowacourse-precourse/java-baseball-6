@@ -5,7 +5,6 @@ import baseball.service.ComputerService;
 import baseball.service.ValidationService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class BaseballController {
     private final BaseballService baseballService = new BaseballService();
@@ -20,12 +19,15 @@ public class BaseballController {
     }
 
     public void gameStart() {
-        List<Integer> randomNumber = computerService.createRandomNumber();
+        String randomNumber = computerService.createRandomNumber();
+        System.out.println(randomNumber);
         Boolean isDifferent = true;
+
         while (isDifferent) {
             String input = inputView.getInput();
             validationService.isValidNumber(input);
-
+            isDifferent = baseballService.startGame(randomNumber, input);
         }
+        outputView.endGame();
     }
 }
