@@ -22,7 +22,7 @@ public class Balls {
         return balls.contains(ball);
     }
 
-    public boolean isPosition(Ball ball, Long index) {
+    public boolean isSame(Ball ball, Long index) {
         if (index < 0 || index >= balls.size()) {
             return false;
         }

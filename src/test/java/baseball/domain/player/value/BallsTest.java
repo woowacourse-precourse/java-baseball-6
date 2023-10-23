@@ -46,9 +46,9 @@ class BallsTest {
         Balls source = new Balls(BALLS_SOURCE);
 
         // when
-        boolean rightPosition = source.isPosition(BALL_ONE, 0L);
-        boolean wrongPosition = source.isPosition(BALL_ONE, 1L);
-        boolean outOfIndex = source.isPosition(BALL_ONE, source.size());
+        boolean rightPosition = source.isSame(BALL_ONE, 0L);
+        boolean wrongPosition = source.isSame(BALL_ONE, 1L);
+        boolean outOfIndex = source.isSame(BALL_ONE, source.size());
 
         // then
         Assertions.assertAll(
@@ -91,7 +91,7 @@ class BallsTest {
         int totalBall = filteredBalls.size();
         for (int i = 0; i < totalBall; i++) {
             Ball ball = filteredBalls.get(i);
-            if (source.isPosition(ball, (long) i)) {
+            if (source.isSame(ball, (long) i)) {
                 calculatedResult.add(Result.STRIKE);
                 continue;
             }

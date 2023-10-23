@@ -50,8 +50,8 @@ public class Computer implements Defender {
 		return results;
 	}
 
-	private Result getResult(Ball ball, Long position) {
-		if (balls.isPosition(ball, position)) {
+	private Result getResult(Ball ball, Long idx) {
+		if (balls.isSame(ball, idx)) {
 			return Result.STRIKE;
 		}
 		return Result.BALL;
