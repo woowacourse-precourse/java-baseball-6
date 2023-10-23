@@ -8,6 +8,7 @@ public class PitchResult {
     private static final String NOTHING = "낫싱";
     private static final String SPACE = " ";
     private static final int BALL_COUNT = 3;
+    private static final int ZERO = 0;
 
     private int strikeCount;
     private int ballCount;
@@ -30,13 +31,13 @@ public class PitchResult {
     }
 
     public String getHint() {
-        if (strikeCount != 0 && ballCount != 0) {
+        if (strikeCount != ZERO && ballCount != ZERO) {
             return ballCount + BALL + SPACE + strikeCount + STRIKE;
         }
-        if (strikeCount == 0 && ballCount != 0) {
+        if (strikeCount == ZERO && ballCount != ZERO) {
             return ballCount + BALL;
         }
-        if (strikeCount != 0) {
+        if (strikeCount != ZERO) {
             return strikeCount + STRIKE;
         }
         return NOTHING;
