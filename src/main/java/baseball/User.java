@@ -40,9 +40,13 @@ public class User {
         for (int i = 0; i < inputValue.length(); i++) {
             int userNumber = parseNumber(inputValue.charAt(i));
 
-            if (!(Baseball.MIN_NUMBER <= userNumber && userNumber <= Baseball.MAX_NUMBER)) {
-                wrongNumberInput();
-            }
+            validateOutOfRange(userNumber);
+        }
+    }
+
+    private void validateOutOfRange(int userNumber) {
+        if (!(Baseball.MIN_NUMBER <= userNumber && userNumber <= Baseball.MAX_NUMBER)) {
+            wrongNumberInput();
         }
     }
 
