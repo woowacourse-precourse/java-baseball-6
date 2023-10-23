@@ -1,38 +1,37 @@
 package baseball.view;
 
+import baseball.utils.GameResult;
 import java.util.List;
 
 public class OutputView {
-    private static final int STRIKE = 0;
-    private static final int BALL = 1;
-    private static final int WIN_STRIKES = 3;
-
-    public static boolean outputResult(List<Integer> numberResult){
+    public static boolean outputResult(List<Integer> numberResult) {
         // TODO : 리팩토링
+        Integer strikes = numberResult.get(0);
+        Integer balls = numberResult.get(1);
         boolean correctAnswer = false;
-        boolean nothing = true;
-        for(int i = 1; i >= 0; i--){
-            if(numberResult.get(i).equals(0))
-                continue;
-            nothing = false;
-            if(i == STRIKE){
-                System.out.println(numberResult.get(i) + "스트라이크");
-                if(checkAnswer(numberResult.get(i))) {
-                    correctAnswer = true;
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                }
-            }else if(i==BALL){
-                System.out.print(numberResult.get(i) + "볼 ");
+
+        if (balls > 0) {
+            System.out.print(balls + GameResult.BALL.getMessage() + " ");
+        }
+        if (strikes > 0) {
+            System.out.println(strikes + GameResult.STRIKE.getMessage());
+            if (checkAnswer(strikes)) {
+                correctAnswer = true;
+                System.out.println(GameResult.WIN_STRIKES.getMessage());
             }
         }
-        if(nothing)
-            System.out.println("낫싱");
+        if (balls == 0 && strikes == 0) {
+            System.out.println(GameResult.NOTHING.getMessage());
+        }
+
         return correctAnswer;
     }
 
-    public static boolean checkAnswer(Integer strike){
-        if(strike.equals(WIN_STRIKES))
+
+    public static boolean checkAnswer(Integer strikes) {
+        if (strikes.equals(3)) {
             return true;
+        }
         return false;
     }
 }
