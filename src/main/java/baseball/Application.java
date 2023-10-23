@@ -67,9 +67,13 @@ public class Application {
                 int strike = 0;
                 int ball = 0;
                 for(int i=0; i<randomNumberArray.length; i++) {
-                    if(randomNumberArray[i] == inputToIntArray[i]) strike++;
+                    if(randomNumberArray[i] == inputToIntArray[i]) {
+                        strike++;
+                    }
                     for(int j=0; j<randomNumberArray.length; j++) {
-                        if(i !=j && randomNumberArray[i] == inputToIntArray[j]) ball++;
+                        if(i !=j && randomNumberArray[i] == inputToIntArray[j]) {
+                            ball++;
+                        }
                     }
                 }
 
