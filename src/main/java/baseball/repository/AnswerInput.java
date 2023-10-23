@@ -26,7 +26,7 @@ public class AnswerInput {
         return answerNumber;
     }
 
-    private Boolean isInputNumberForm(String checkNumber) {
+    private Boolean isValidInputNumberFormat(String checkNumber) {
         if (!checkNumber.matches(Constants.ANSWER_NUMBER_PATTERN)) {
             return true;
         }
@@ -47,8 +47,10 @@ public class AnswerInput {
     public void inputNumber() {
         System.out.print(Constants.ASK_GAME_NUMBER);
         String answer = Console.readLine();
-        answer.replaceAll(" ", "");
-        if (isInputNumberForm(answer)) {
+//        if (answer.contains(" ")) {
+//            answer = answer.replaceAll(" ", "");
+//        }
+        if (isValidInputNumberFormat(answer)) {
             InputExceptionError.throwIllegalArgumentException();
         }
         if (isDuplicateChars(answer)) {
