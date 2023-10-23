@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.domain.User;
 import baseball.servcie.BaseballGameService;
 import baseball.view.BaseballGameView;
 

@@ -6,7 +6,8 @@ import baseball.validation.BaseballGameValidation;
 import baseball.view.BaseballGameView;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballGameService {
