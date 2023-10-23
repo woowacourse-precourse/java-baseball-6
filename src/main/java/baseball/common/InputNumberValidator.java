@@ -7,8 +7,6 @@ public class InputNumberValidator {
     public static final String WRONG_INPUT_TYPE_MESSAGE = "1~9 사이의 숫자만 입력 가능합니다.";
     public static final String WRONG_INPUT_SIZE_MESSAGE = "세자리를 입력해주세요.";
     public static final String WRONG_INPUT_UNIQUE_MESSAGE = "서로 다른 숫자만 입력 가능합니다.";
-    public static final char NUMBER_RANGE_MIN_CHARACTER = '1';
-    public static final char NUMBER_RANGE_MAX_CHARACTER = '9';
 
     static public void validate(String inputNumber) {
         //1. 숫자인지 확인
@@ -30,7 +28,7 @@ public class InputNumberValidator {
     private static boolean isNumber(String inputNumber) {
         for(int i = 0; i< inputNumber.length(); i++) {
             char number = inputNumber.charAt(i);
-            if(number < NUMBER_RANGE_MIN_CHARACTER || number > NUMBER_RANGE_MAX_CHARACTER) {
+            if(number < Character.forDigit(NUMBER_RANGE_MIN.getValue(), 10) || number > Character.forDigit(NUMBER_RANGE_MAX.getValue(), 10)) {
                 return false;
             }
         }

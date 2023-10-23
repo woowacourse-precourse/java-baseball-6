@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.common.InputNumberValidator;
+import baseball.common.NumberConstants;
 import baseball.common.RandomUtility;
 import baseball.model.BallAndStrikeCount;
 import baseball.model.ComputerNumber;
@@ -13,7 +14,6 @@ public class ComputerController {
     public static final String NOTHING_MESSAGE = "낫싱";
     public static final String SPACE_MESSAGE = " ";
     public static final String BLANK_MESSAGE = "";
-    public static final int SUCCESS_GAME_STRIKE_NUMBER = 3;
 
     ComputerNumber computerNumber;
     OutputView outputView = new OutputView();
@@ -35,7 +35,7 @@ public class ComputerController {
             InputNumberValidator.validate(inputNumber);
             BallAndStrikeCount count = getBallAndStrikeCount(computerNumber, inputNumber);
             outputView.printHint(getHint(count));
-            if(count.getStrikeCount() == SUCCESS_GAME_STRIKE_NUMBER) {
+            if(count.getStrikeCount() == NumberConstants.SUCCESS_GAME_STRIKE_NUMBER.getValue()) {
                 break;
             }
         }
