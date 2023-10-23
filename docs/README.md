@@ -19,9 +19,9 @@
 - 유저의 답안 입력을 요구하는 문장을 출력해야 한다.
 - 점수 결과를 출력해야 한다.
   - [X] 볼과 스트라이크가 모두 없으면 "낫싱"
-  - [X] 볼과 스트라이크 둘 다 있으면 "ballCount 볼 strikeCount 스트라이크"
-  - [X] 볼만 있으면 "ballCount 볼"
-  - [X] 스트라이크만 있으면 "strikeCount 스트라이크"
+  - [X] 볼과 스트라이크 둘 다 있으면 "{ballCount} 볼 {strikeCount} 스트라이크"
+  - [X] 볼만 있으면 "{ballCount} 볼"
+  - [X] 스트라이크만 있으면 "{strikeCount} 스트라이크"
 - 게임 종료 문장을 출력해야 한다.
 - 재시작 여부 입력을 요구하는 문장을 출력해야 한다.
 - 유저의 입력은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해야한다.
