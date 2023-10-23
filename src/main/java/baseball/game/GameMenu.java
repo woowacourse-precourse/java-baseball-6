@@ -1,18 +1,18 @@
-package baseball.status;
+package baseball.game;
 
 import java.util.Arrays;
 
-public enum SystemStatus {
+public enum GameMenu {
     NEW_GAME("1"),
     EXIT("2");
 
-    private String code;
+    private final String code;
 
-    SystemStatus(String code) {
+    GameMenu(String code) {
         this.code = code;
     }
 
-    public static SystemStatus of(String code) {
+    public static GameMenu of(String code) {
         return Arrays.stream(values())
                 .filter(status -> status.code.equals(code))
                 .findFirst()

@@ -1,6 +1,6 @@
 package baseball.user;
 
-import baseball.status.SystemStatus;
+import baseball.game.GameMenu;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class Player {
 
     List<Integer> baseballNumbers;
-    SystemStatus systemStatus = SystemStatus.NEW_GAME;
+    GameMenu gameMenu = GameMenu.NEW_GAME;
 
     public void inputBaseballNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -37,11 +37,11 @@ public class Player {
 
     public void chooseNewGameOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        systemStatus = SystemStatus.of(Console.readLine());
+        gameMenu = GameMenu.of(Console.readLine());
     }
 
 
     public boolean isNewGame() {
-        return SystemStatus.NEW_GAME == systemStatus;
+        return GameMenu.NEW_GAME == gameMenu;
     }
 }
