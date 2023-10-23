@@ -10,6 +10,7 @@ import static baseball.util.validateCondition.LengthCondition.isNotValid;
 import static baseball.util.validateCondition.RangeCondition.isNotInRange;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberUtil {
 
@@ -24,7 +25,9 @@ public class NumberUtil {
     }
 
     public static String convertListToString(List<Integer> numberList) {
-        return String.join("", (CharSequence) numberList);
+        return numberList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(""));
     }
 
     public static void validate(String number) {
