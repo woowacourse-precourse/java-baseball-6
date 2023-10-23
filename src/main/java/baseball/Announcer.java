@@ -8,32 +8,32 @@ import static baseball.NumberBaseballGameConfig.WIN_MESSAGE;
 public class Announcer {
 
     // 게임 시작 메시지 출력
-    public static void announceGameStart() {
+    public void announceGameStart() {
         System.out.println(START_MESSAGE);
     }
 
     // 추측값 입력 유도 메시지 출력
-    public static void askToInput() {
+    public void askToInput() {
         System.out.print(INPUT_PROMPT);
     }
 
     // 모두 맞혔을 경우 게임 종료 메시지 출력
-    public static void announceWin() {
+    public void announceWin() {
         System.out.println(WIN_MESSAGE);
     }
 
     // 볼 개수와 스트라이크 개수를 기반으로 메시지 출력
-    public static void announceScore(Score score) {
+    public void announceScore(Score score) {
         System.out.println(resolveScoreToString(score));
     }
 
     // 다음 게임 할건지 물어보는 메시지 출력
-    public static void askContinue() {
+    public void askContinue() {
         System.out.println(CONTINUE_MESSAGE);
     }
 
     // 볼 카운트와 스트라이크 카운트로 출력해야할 메시지를 resolve하는 메서드
-    public static String resolveScoreToString(Score score) {
+    public String resolveScoreToString(Score score) {
         int ballCount = score.getBallCount();
         int strikeCount = score.getStrikeCount();
         StringBuilder result = new StringBuilder();

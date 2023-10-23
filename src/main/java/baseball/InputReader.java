@@ -10,9 +10,9 @@ public class InputReader {
     private final InputValidator guessedNumberValidator;
     private final InputValidator continueModeNumberValidator;
 
-    public InputReader() {
-        this.guessedNumberValidator = new GuessedNumberValidator();
-        this.continueModeNumberValidator = new ContinueModeNumberValidator();
+    public InputReader(InputValidator guessedNumberValidator, InputValidator continueModeNumberValidator) {
+        this.guessedNumberValidator = guessedNumberValidator;
+        this.continueModeNumberValidator = continueModeNumberValidator;
     }
 
     // 유저가 추측한 값을 입력 받고 List 형태로 반환

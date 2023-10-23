@@ -7,25 +7,39 @@ import java.util.List;
 
 public class GameEngine {
 
-    private static InputReader inputReader = new InputReader();
+    private final InputReader inputReader;
+    private final Announcer announcer;
+    private final Referee referee;
+    private final RandomNumberGenerator randomNumberGenerator;
 
-    public static void run() {
-        Announcer.announceGameStart();
+    public GameEngine(InputReader inputReader,
+                      Announcer announcer,
+                      Referee referee,
+                      RandomNumberGenerator randomNumberGenerator) {
+        
+        this.inputReader = inputReader;
+        this.announcer = announcer;
+        this.referee = referee;
+        this.randomNumberGenerator = randomNumberGenerator;
+    }
+
+    public void run() {
+        announcer.announceGameStart();
         int continueMode = CONTINUE_GAME;
 
         while (continueMode == CONTINUE_GAME) {
-            List<Integer> answer = RandomNumberGenerator.generate();
+            List<Integer> answer = randomNumberGenerator.generate();
             int strikeCount = 0;
             do {
-                Announcer.askToInput();
+                announcer.askToInput();
                 List<Integer> guessedNumber = inputReader.readGuessedNumber();
-                Score score = Referee.judge(guessedNumber, answer);
-                Announcer.announceScore(score);
+                Score score = referee.judge(guessedNumber, answer);
+                announcer.announceScore(score);
                 strikeCount = score.getStrikeCount();
             } while (strikeCount != STRIKE_COUNT_REQUIRED_TO_WIN);
 
-            Announcer.announceWin();
-            Announcer.askContinue();
+            announcer.announceWin();
+            announcer.askContinue();
             continueMode = inputReader.readContinueModeNumber();
 
         }
