@@ -63,6 +63,10 @@ public class Application {
         }
         for(String value : values) {
             try {
+                int temp = Integer.parseInt(value);
+                if(number.contains(temp)) {
+                    throw new IllegalArgumentException();
+                }
                 number.add(Integer.parseInt(value));
             } catch (Exception e) {
                 throw new IllegalArgumentException();
