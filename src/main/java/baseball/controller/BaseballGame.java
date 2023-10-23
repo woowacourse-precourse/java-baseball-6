@@ -11,19 +11,21 @@ import static constant.MessageList.THREE_STRIKE;
 
 public class BaseballGame {
     private final ComputerNumber computer;
-    private final PlayerNumber player;
+    private static PlayerNumber player;
     private final Comparer comparer;
     public BaseballGame(){
         computer = new ComputerNumber();
-        player = new PlayerNumber(InputView.getNumberFromPlayer());
         comparer = new Comparer();
     }
 
     public void start(){
         do{
-            InputView.getNumberFromPlayer();
-            printResult(comparer.calculateStrikeOrBallOrNothing(computer.getComputerNumber(), player.playerNumber));
+            getNumberFromPlayer();
+            printResult(comparer.calculateStrikeOrBallOrNothing(computer.getComputerNumber(), player.getPlayerNumber()));
         } while(!isThreeStrike());
+    }
+    public void getNumberFromPlayer(){
+        player = new PlayerNumber(InputView.getNumberFromPlayer());
     }
     public void printResult(int[] ballOrStrikeCount){
         printBallCount(ballOrStrikeCount);
@@ -31,7 +33,7 @@ public class BaseballGame {
         printNothingCount(ballOrStrikeCount);
     }
     public boolean isThreeStrike(){
-        if (comparer.calculateStrikeOrBallOrNothing(computer.getComputerNumber(), player.playerNumber)[1] == THREE_STRIKE){
+        if (comparer.calculateStrikeOrBallOrNothing(computer.getComputerNumber(), player.getPlayerNumber())[1] == THREE_STRIKE){
             OutputView.printSuccessMessage();
             return true;
         }

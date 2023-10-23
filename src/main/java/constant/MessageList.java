@@ -8,8 +8,8 @@ public class MessageList {
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String GAME_RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String NULL_STRING = "";
-    public static final String CONTINUE = "1";
-    public static final String STOP = "2";
+    public static final String RESTART = "1";
+    public static final String END = "2";
     /**
      * 힌트 출력을 위한 상수
      */

@@ -8,12 +8,15 @@ import java.util.Set;
 import static constant.MessageList.*;
 public class PlayerNumber {
     // TODO: 사용자 서로 다른 3자리 수 입력시 예외사항 처리
-    public String playerNumber;
+    private String playerNumber;
 
     public PlayerNumber(String playerInput){
         if (validateAll(playerInput)){
             this.playerNumber = playerInput;
         }
+    }
+    public String getPlayerNumber(){
+        return playerNumber;
     }
 
     public boolean validateAll(String playerInput){
