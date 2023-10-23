@@ -12,6 +12,7 @@ public class User {
             userNumberStr = Console.readLine();
             isNotInteger(userNumberStr);
             isNotThreeLength(userNumberStr);
+            hasDuplicateDigits(userNumberStr);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             // 게임 종료 구현
@@ -38,6 +39,13 @@ public class User {
     public static void isNotThreeLength(String str) throws IllegalArgumentException {
         if (str.length() != 3) {
             throw new IllegalArgumentException("3자리 이상 혹은 이하의 갑을 입력하였습니다.");
+        }
+    }
+
+    public static void hasDuplicateDigits(String str) throws IllegalArgumentException {
+        char[] digits = str.toCharArray();
+        if (digits[0] == digits[1] || digits[0] == digits[2] || digits[1] == digits[2]) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다. 서로 다른 숫자 3개여야 합니다.");
         }
     }
 }
