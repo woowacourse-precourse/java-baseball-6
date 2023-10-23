@@ -26,25 +26,65 @@ public class Application {
     static List<Integer> userNumberList;
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        runGameRepeatedly();
+
+        System.out.println("게임이 종료되었습니다.");
+    }
+
+    /**
+     * 반복성 게임 실행
+     */
+    public static void runGameRepeatedly() {
+        do {
+            runGameOnce();
+        } while (isGameRetry());
+    }
+
+    /**
+     * 게임 재시작 여부 받기
+     *
+     * @return 재시작 여부
+     */
+    public static boolean isGameRetry() {
+        final int INDEX_YES = 0;
+        List<String> allowedAnswers = Arrays.asList("1", "2");
+        String userInput;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        userInput = Console.readLine();
+        if (!allowedAnswers.contains(userInput)) {
+            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+        }
+
+        return allowedAnswers.get(INDEX_YES).equals(userInput);
+    }
+
+    /**
+     * 일회성 게임 실행
+     */
+    public static void runGameOnce() {
         String userInput;
         List<Integer> testResult;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumberList = getNewRandomNumberList();
-        do{
+        do {
             userInput = getInputOnGame();
             inputValidationCheck(userInput);
             userNumberList = numericString2List(userInput);
             testResult = userAnswerTesting();
             printTestResult(testResult);
 
-        }while(!isUserAnswerCorrect(testResult));
+        } while (!isUserAnswerCorrect(testResult));
 
-        System.out.println("게임이 종료되었습니다.");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     /**
      * 정답을 모두 맞추었는지 확인
+     *
      * @return 사용자 입력이 정답인 경우 true
      */
     public static boolean isUserAnswerCorrect(List<Integer> testResult) {
