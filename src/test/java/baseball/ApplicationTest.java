@@ -12,8 +12,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    private static final String ERROR_MESSAGE = "[ERROR]";
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(

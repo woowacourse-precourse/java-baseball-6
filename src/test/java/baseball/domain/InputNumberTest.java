@@ -10,8 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InputNumberTest {
 
-    private InputNumber inputNumber;
-
     @Test
     @DisplayName("입력값에 0이 있으면 예외 발생")
     void shouldThrowExceptionWhenInputContainsZero() {
@@ -41,7 +39,7 @@ public class InputNumberTest {
     @Test
     @DisplayName("가져오는 Index에 맞게 숫자를 제대로 가져오는지 검증")
     void getNumberAtIndexTest() {
-        inputNumber = InputNumber.create(List.of(1, 2, 3));
+        InputNumber inputNumber = InputNumber.create(List.of(1, 2, 3));
         Assertions.assertThat(inputNumber.getNumberAtIndex(0)).isEqualTo(1);
     }
 }
