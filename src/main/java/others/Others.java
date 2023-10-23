@@ -1,10 +1,11 @@
 package others;
 
-import camp.nextstep.edu.missionutils.Console;
+import static others.ExceptionHandling.restartException;
 
 public class Others {
-    public static String getNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine().trim().replaceAll(" ", "");
+    public static boolean ifRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restart = Console.readLine().trim().replaceAll(" ", "");
+        return restartException(restart);
     }
 }
