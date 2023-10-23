@@ -8,10 +8,15 @@ import java.util.Set;
 
 public class Exception {
 
-    public static void duplicate_Num(List<Integer> li) {
+    public static void verifyException(List<Integer> input){
+        duplicate_Num(input);
+        invalidInput(input);
+    }
+
+    public static void duplicate_Num(List<Integer> input) {
         Set<Integer> set = new HashSet<>();
 
-        for (Integer item : li) {
+        for (Integer item : input) {
             if (!set.add(item)) {
                 throw new IllegalStateException(Message.DUPLICATE_NUM);
             }

@@ -15,8 +15,7 @@ public class BaseballController {
             Message.gameInput();
             String N = Console.readLine();
             List<Integer> li = BaseballService.changeStrToList(N);
-            Exception.invalidInput(li);
-            Exception.duplicate_Num(li);
+            Exception.verifyException(li);
             int strikes = BaseballService.countStrikes(computerNumber, li);
             int balls = BaseballService.countBalls(computerNumber, li);
             Info.printInfo(strikes, balls);
