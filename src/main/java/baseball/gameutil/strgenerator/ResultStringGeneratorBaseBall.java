@@ -14,14 +14,14 @@ public class ResultStringGeneratorBaseBall implements ResultStringGenerator {
             .trim();
     }
 
-    private String strikeStringBuilder(Integer strike) {
+    private String strikeStringBuilder(int strike) {
         if (strike == 0) {
             return "";
         }
         return "%d%s".formatted(strike, MessageString.STRIKE_MSG);
     }
 
-    private String ballStringBuilder(Integer ball) {
+    private String ballStringBuilder(int ball) {
         if (ball == 0) {
             return "";
         }

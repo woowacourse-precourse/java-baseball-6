@@ -8,9 +8,9 @@ public class NumberGeneratorBaseball implements NumberGenerator {
 
     @Override
     public List<Integer> generate(
-        Integer start,
-        Integer end,
-        Integer count
+        int start,
+        int end,
+        int count
     ) {
         List<Integer> ret = new ArrayList<>();
         while(ret.size() < count){
@@ -21,8 +21,8 @@ public class NumberGeneratorBaseball implements NumberGenerator {
 
     private void addUniqueNumbers(
         List<Integer> ret,
-        Integer start,
-        Integer end
+        int start,
+        int end
     ) {
         Integer digit = Randoms.pickNumberInRange(start, end);
         if (!ret.contains(digit)) {

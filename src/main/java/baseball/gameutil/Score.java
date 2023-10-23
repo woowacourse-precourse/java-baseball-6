@@ -1,19 +1,19 @@
 package baseball.gameutil;
 
 public class Score {
-    private Integer strike;
-    private Integer ball;
+    private int strike;
+    private int ball;
 
-    public Score (Integer ball, Integer strike){
+    public Score (int ball, int strike){
         this.ball = ball;
         this.strike = strike;
     }
 
-    public Integer getStrike() {
+    public int getStrike() {
         return strike;
     }
 
-    public Integer getBall() {
+    public int getBall() {
         return ball;
     }
 }
