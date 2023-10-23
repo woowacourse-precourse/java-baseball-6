@@ -29,9 +29,13 @@ public class Application {
       System.out.println(computer);
       
       Input in = new Input();
-      System.out.println(in.player_num());
-
+//      System.out.println(in.Input_num());
+      Rule rule = new Rule();
       
+      String result = "";
+      
+      result = rule.ruleResult(computer, in.Input_num());
+      System.out.println(result);
       
     }
 
