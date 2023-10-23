@@ -1,6 +1,7 @@
 package baseball.validation;
 
 import baseball.view.ErrorMessage;
+import baseball.view.GameValue;
 import java.util.List;
 
 public class NumberSizeValidator {
@@ -9,13 +10,13 @@ public class NumberSizeValidator {
     }
 
     public static void validate(List<Integer> numbers) {
-        if (numbers.size() != 3) {
+        if (numbers.size() != GameValue.NUMBER_SIZE.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_SIZE.getMessage());
         }
     }
 
     public static void validate(String numbers) {
-        if (numbers.length() != 3) {
+        if (numbers.length() != GameValue.NUMBER_SIZE.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_SIZE.getMessage());
         }
     }
