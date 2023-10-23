@@ -22,4 +22,8 @@ public class User {
                 .boxed()
                 .collect(Collectors.toList());
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

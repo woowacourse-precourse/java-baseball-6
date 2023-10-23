@@ -24,4 +24,8 @@ public class Computer {
         }
         return new ArrayList<>(uniqueNumbers);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
