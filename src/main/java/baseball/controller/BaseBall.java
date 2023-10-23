@@ -37,10 +37,10 @@ public class BaseBall {
         do {
             oneGame();
             restartOrExitAnswer = Validator.validateRestartInput(inputView.getInputRestartMessage());
-            if (restartOrExitAnswer == "2") {
+            if (restartOrExitAnswer.equals("2")) {
                 break;
             }
-        } while (restartOrExitAnswer == "1");
+        } while (restartOrExitAnswer.equals("1"));
     }
 
 }
