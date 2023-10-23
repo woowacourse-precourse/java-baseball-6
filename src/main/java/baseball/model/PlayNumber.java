@@ -45,7 +45,7 @@ public class PlayNumber {
         }
     }
 
-    public int getNumber() {
-        return this.number;
+    public String getNumber() {
+        return String.valueOf(number);
     }
 }

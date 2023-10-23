@@ -5,15 +5,12 @@ import java.util.stream.IntStream;
 public class StrikeRule implements GameRule {
 
     @Override
-    public int calculate(final int computer, final int user) {
-        String computerValue = String.valueOf(computer);
-        String userValue = String.valueOf(user);
+    public int calculate(final String computerNumber, final String userNumber) {
+        String[] computerValues = computerNumber.split("");
+        String[] userValues = userNumber.split("");
 
-        String[] computerNumbers = computerValue.split("");
-        String[] userNumbers = userValue.split("");
-
-        return (int) IntStream.range(0, computerNumbers.length)
-                .filter(i -> computerNumbers[i].equals(userNumbers[i]))
+        return (int) IntStream.range(0, computerValues.length)
+                .filter(i -> computerValues[i].equals(userValues[i]))
                 .count();
     }
 }
