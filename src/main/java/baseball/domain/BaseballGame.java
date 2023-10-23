@@ -1,38 +1,24 @@
 package baseball.domain;
 
-import baseball.util.Console;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.view.View;
 
-import java.util.*;
+import java.util.List;
 
 public class BaseballGame {
+
+    private final BaseballNumbers baseballNumbers;
+
+    public BaseballGame(BaseballNumbers baseballNumbers) {
+        this.baseballNumbers = baseballNumbers;
+    }
 
     public void start() {
         BaseballNumbers baseballNumbers = BaseballNumbers.generateBaseballNumbers();
         while (true) {
-            List<Integer> playerNumbers = this.pickThreeNumbers();
-            int[] hits = this.checkHitsResult(baseballNumbers.getNumbers(), playerNumbers);
+            PlayerNumbers playerNumbers = View.inputPlayerNumbers();
+            int[] hits = this.checkHitsResult(baseballNumbers.getNumbers(), playerNumbers.getNumbers());
             this.printResult(hits);
         }
-    }
-
-    private List<Integer> pickThreeNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-
-        Set<Integer> inputNumbers = new LinkedHashSet<>();
-        for (String number : input.split("")) {
-            int numberInteger = Integer.parseInt(number);
-            if (!inputNumbers.add(numberInteger)) {
-                throw new IllegalArgumentException();
-            }
-        }
-
-        if (inputNumbers.size() != 3) {
-            throw new IllegalArgumentException();
-        }
-
-        return inputNumbers.stream().toList();
     }
 
     private int[] checkHitsResult(List<Integer> baseballNumbers, List<Integer> playerNumbers) {
