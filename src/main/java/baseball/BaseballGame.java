@@ -6,6 +6,7 @@ public class BaseballGame {
     private Computer computerNumbers;
     private Player playerNumbers;
     private Hint hint;
+    private GameRestartOrQuit gameRestartOrQuit;
 
     public BaseballGame() {}
 
@@ -19,7 +20,7 @@ public class BaseballGame {
 
             Printer.printGameRestartOrQuit();
             String input = Console.readLine();
-            GameRestartOrQuit gameRestartOrQuit = GameRestartOrQuit.from(input);
+            gameRestartOrQuit = GameRestartOrQuit.from(input);
             gameQuit = gameRestartOrQuit.isGameQuit();
         } while(!gameQuit);
     }
