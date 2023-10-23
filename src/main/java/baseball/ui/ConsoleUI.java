@@ -1,17 +1,21 @@
-package baseball;
+package baseball.ui;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class UI {
+public class ConsoleUI implements UI {
+
+    @Override
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    @Override
     public String insertNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         return readLine();
     }
 
+    @Override
     public void gameResult(int[] ballAndStrike) {
         if (ballAndStrike[0] == 0 && ballAndStrike[1] == 0) {
             System.out.print("낫싱");
@@ -25,10 +29,12 @@ public class UI {
         System.out.println();
     }
 
+    @Override
     public void winGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    @Override
     public String selectGameProgress() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return readLine();

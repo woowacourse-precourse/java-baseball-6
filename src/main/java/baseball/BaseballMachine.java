@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.ui.UI;
+
 import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -8,9 +10,9 @@ public class BaseballMachine {
     private final int[] randomValueArray;
     private final UI ui;
 
-    public BaseballMachine() {
+    public BaseballMachine(UI ui) {
         this.randomValueArray = new int[3];
-        this.ui = new UI();
+        this.ui = ui;
     }
 
     public void start() {
