@@ -1,17 +1,16 @@
 package baseball.service;
 
 
-import static baseball.service.Game.NUMBER_OF_DIGITS;
-
 public class InputValidator {
     /**
      * 입력값이 지정된 자리수인지 확인
      *
-     * @param length : 입력값 자리수
+     * @param length           : 입력한 값 자리수
+     * @param number_of_digits : 게임 입력값 지정 자리수
      * @return (true : 지정된 자리수와 같음, false : 지정된 자리수랑 다름)
      */
-    public boolean lengthCheck(int length) {
-        return length == NUMBER_OF_DIGITS;
+    public boolean lengthCheck(int length, int number_of_digits) {
+        return length == number_of_digits;
     }
 
     /**
