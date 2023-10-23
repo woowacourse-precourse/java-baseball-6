@@ -36,7 +36,6 @@ public class Application {
         try {
             String[] userInputChars = userInput.split("");
             for (int i = 0; i < 3; i++) {
-
                 //0입력시 => 예외 발생
                 if (Integer.parseInt(userInputChars[i]) == 0) {
                     Application.throwException("1~9 사이의 숫자를 입력하세요.");
