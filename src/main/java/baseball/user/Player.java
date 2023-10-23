@@ -1,5 +1,7 @@
 package baseball.user;
 
+import static baseball.game.BaseballConstants.TOTAL_BASEBALL_NUMBERS;
+
 import baseball.game.GameMenu;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -20,7 +22,7 @@ public class Player {
     }
 
     private void validateInputNumber(String inputBaseballNumber) {
-        if (inputBaseballNumber == null || inputBaseballNumber.length() != 3) {
+        if (inputBaseballNumber == null || inputBaseballNumber.length() != TOTAL_BASEBALL_NUMBERS) {
             throw new IllegalArgumentException();
         }
 

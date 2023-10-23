@@ -1,5 +1,8 @@
 package baseball.user;
 
+import static baseball.game.BaseballConstants.MAX_STRIKES;
+import static baseball.game.BaseballConstants.TOTAL_BASEBALL_NUMBERS;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +12,12 @@ public class Computer {
 
     List<Integer> baseballNumbers;
     private boolean isStrikeOut = false;
-    private static final int MAX_STRIKES = 3;
 
     public void generateBaseballNumbers() {
         initStrikeOut();
 
         baseballNumbers = new ArrayList<>();
-        while (baseballNumbers.size() < 3) {
+        while (baseballNumbers.size() < TOTAL_BASEBALL_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!baseballNumbers.contains(randomNumber)) {
                 baseballNumbers.add(randomNumber);
