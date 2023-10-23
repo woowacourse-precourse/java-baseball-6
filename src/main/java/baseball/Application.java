@@ -10,8 +10,8 @@ public class Application {
 
     static Nums nums = new Nums();
 
-    public static void getNums(){   // 나와 상대방(컴퓨터)의 숫자 생성
-        // 상대방(컴퓨터) 숫자
+    // 상대방(컴퓨터) 숫자
+    public static void getComputerNums(){   // 나와 상대방(컴퓨터)의 숫자 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,12 +19,16 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        // 내 숫자
+        nums.setComputer(computer);
+    }
+
+    // 내 숫자
+    public static void getMyNums(){
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
-        System.out.println();
+
         // 숫자 개수가 3개가 아닐 경우 예외처리
-        if (inputNumber.length() > 3 || inputNumber.length() < 3){
+        if (inputNumber.length() != 3){
             throw new IllegalArgumentException();
         }
         List<Integer> mine = new ArrayList<>();
@@ -34,13 +38,13 @@ public class Application {
                 throw new IllegalArgumentException();
             }else mine.add(num);
         }
-        nums.setComputer(computer);
         nums.setMine(mine);
     }
 
-    public static void getGameResultJudgment(List<Integer> computer, List<Integer> mine){
+    public static int getGameResultJudgment(List<Integer> computer, List<Integer> mine){
         // 스트라이크 개수 세기
         int strike = 0;
+        int flag = 1;
         for (int i = 0; i < 3; i++) {
             if (computer.get(i).equals(mine.get(i))){
                 strike ++;
@@ -56,6 +60,8 @@ public class Application {
             }
         }
         getResult(strike, ball);
+        if (strike == 3) flag = 2;
+        return flag;
     }
 
     public static void getResult(int strike, int ball){
@@ -74,11 +80,30 @@ public class Application {
         }
     }
 
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        for (int i = 0; i < 4; i++) {
-            getNums();  // 숫자 입력 받기
-            getGameResultJudgment(nums.getComputer(), nums.getMine());
+        int flag = 1;
+        getComputerNums();
+        while (flag >= 1) {
+            if (flag == 2){  // 다시하기 분기
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int ans = Integer.parseInt(Console.readLine());
+                if (ans == 1) {
+                    getComputerNums();
+                    flag = ans;
+                }
+                else if(ans == 2){
+                    flag = 0;
+                    System.out.println("게임이 종료되었습니다.");
+                }
+
+            }
+            else if (flag == 1){
+                getMyNums();
+                flag = getGameResultJudgment(nums.getComputer(), nums.getMine());
+            }
         }
     }
 }
