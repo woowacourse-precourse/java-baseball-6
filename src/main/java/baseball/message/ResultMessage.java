@@ -1,6 +1,6 @@
 package baseball.message;
 
-public enum Message {
+public enum ResultMessage {
     INPUT_NUMBER("숫자를 입력해주세요 : "),
     STRIKE("스트라이크"),BALL("볼"),NOTHING("낫싱"),
     SPACING(" "),
@@ -10,7 +10,7 @@ public enum Message {
 
     private final String message;
 
-    Message(String message) {
+    ResultMessage(String message) {
         this.message = message;
     }
 

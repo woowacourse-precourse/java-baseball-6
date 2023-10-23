@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.message.ErrorMessage.*;
+
 public class Balls {
 
     private final List<Integer> balls = new ArrayList<>();
@@ -45,26 +47,26 @@ public class Balls {
         Set<Character> deDuplication = new HashSet<>();
         for (Character num : nums.toCharArray()) {
             if (!deDuplication.add(num)) {
-                throw new IllegalArgumentException("서로 다른 정수를 입력해야 합니다.");
+                throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
             }
         }
     }
 
     private void checkContainZero(int ball) {
         if (ball == 0) {
-            throw new IllegalArgumentException("1과 9사이의 정수만 입력하세요.");
+            throw new IllegalArgumentException(ZERO_NUMBER.getMessage());
         }
     }
 
     private void checkNum(String nums) {
         if (!nums.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException("숫자는 정수이어야 합니다.");
+            throw new IllegalArgumentException(NOT_INTEGER.getMessage());
         }
     }
 
     private void checkNumberLength(String numbers) {
         if (numbers.length() != 3) {
-            throw new IllegalArgumentException("숫자의 개수는 3개이어야 합니다.");
+            throw new IllegalArgumentException(DIFFERENT_LENGTHS.getMessage());
         }
     }
 

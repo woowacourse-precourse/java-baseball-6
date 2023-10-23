@@ -2,7 +2,7 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.message.Message.*;
+import static baseball.message.ResultMessage.*;
 
 public class InputView {
 
