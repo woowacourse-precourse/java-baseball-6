@@ -3,11 +3,26 @@ package baseball.domain;
 import java.util.Objects;
 
 public class Ball {
-    private final BallNum ballNum;
     private final Position position;
-    public Ball(Position position, BallNum ballNum) {
+    private final BallNumber ballNumber;
+
+    public Ball(Position position, BallNumber ballNumber) {
         this.position = position;
-        this.ballNum = ballNum;
+        this.ballNumber = ballNumber;
+    }
+
+    public BallStatus play(Ball playerBall) {
+        if (this.equals(playerBall)) {
+            return BallStatus.STRIKE;
+        }
+        if (this.ballNumber.equals(playerBall.getBallNumber())) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
+    }
+
+    public BallNumber getBallNumber() {
+        return ballNumber;
     }
 
     @Override
@@ -15,21 +30,11 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return Objects.equals(ballNum, ball.ballNum) && Objects.equals(position, ball.position);
+        return Objects.equals(position, ball.position) && Objects.equals(ballNumber, ball.ballNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ballNum, position);
-    }
-
-    public BallStatus match(Ball ball) {
-        if (this.equals(ball)) {
-            return BallStatus.STRIKE;
-        }
-        if ((this.ballNum.equals(ball.ballNum))) {
-            return BallStatus.BALL;
-        }
-        return BallStatus.NOTHING;
+        return Objects.hash(position, ballNumber);
     }
 }

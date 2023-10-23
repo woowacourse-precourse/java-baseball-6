@@ -2,18 +2,24 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class InputView {
+    private static final String regex = "^[1-9]{3}$";
+    private static final Pattern pattern = Pattern.compile(regex);
 
     public static List<Integer> takeInput() {
-        System.out.println("숫자를 입력해주세요");
+        System.out.print("숫자를 입력해주세요 : ");
         String value = Console.readLine();
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            numbers.add(Character.getNumericValue(value.charAt(i)));
+        Matcher matcher = pattern.matcher(value);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("올바른 입력이 아닙니다.");
         }
-        return numbers;
+        List<Integer> ballNumbers = Arrays.stream(value.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        return ballNumbers;
     }
 }

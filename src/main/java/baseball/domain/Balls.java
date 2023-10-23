@@ -1,42 +1,43 @@
 package baseball.domain;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Balls {
     private final List<Ball> balls;
 
-    public Balls(List<Integer> ballNumbers) {
-        this.balls = mapToBalls(ballNumbers);
+    public Balls(List<Ball> balls) {
+        this.balls = balls;
     }
 
-    private List<Ball> mapToBalls(List<Integer> ballNumbers) {
-        AtomicInteger idx = new AtomicInteger(1);
-        return ballNumbers.stream()
-                .map(number -> new Ball(new Position(idx.getAndIncrement()), new BallNum(number)))
-                .collect(Collectors.toList());
+    public Referee play(Balls playerBalls) {
+        List<Ball> ballsList = playerBalls.getBalls();
+        List<BallStatus> ballStatuses = ballsList.stream().map(this::match).collect(Collectors.toList());
+        return new Referee(ballStatuses);
     }
 
-    public BallStatus match(Ball userBall) {
-        return balls.stream()
-                .map(ball -> ball.match(userBall))
-                .sorted(Comparator.comparing(BallStatus::getOrder))
-                .filter(status -> !status.equals(BallStatus.NOTHING))
+    private BallStatus match(Ball playerBall) {
+        return this.balls.stream()
+                .map(ball -> ball.play(playerBall)).filter(ballStatus -> !ballStatus.equals(BallStatus.NOTHING))
                 .findAny()
                 .orElse(BallStatus.NOTHING);
     }
 
-    public List<BallStatus> play(Balls playerBalls) {
-        List<BallStatus> ballStatuses = playerBalls.getBalls().stream()
-                .map(playerBall -> this.match(playerBall))
-                .collect(Collectors.toList());
-
-        return ballStatuses;
-    }
-
     public List<Ball> getBalls() {
         return balls;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Balls balls1 = (Balls) o;
+        return Objects.equals(balls, balls1.balls);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(balls);
     }
 }

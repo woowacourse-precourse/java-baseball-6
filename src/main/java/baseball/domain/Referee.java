@@ -4,65 +4,61 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.view.OutputView.isEnd;
-
 public class Referee {
-
-    int strikeNumber = 0;
-    int ballNumber = 0;
-    int next = 1;
+    private int strikeNumber = 0;
+    private int ballNumber = 0;
+    private int next = 1;
 
     public Referee() {
     }
 
-    public void classify(List<BallStatus> BallStatuses) {
-        for (BallStatus ballStatus : BallStatuses) {
-            if (ballStatus == BallStatus.STRIKE) {
-                strikeNumber++;
-            }
-            if (ballStatus == BallStatus.BALL) {
-                ballNumber++;
-            }
-        }
+    public Referee(List<BallStatus> ballStatuses) {
+        this.strikeNumber = getBallStatusCount(ballStatuses, BallStatus.STRIKE);
+        this.ballNumber = getBallStatusCount(ballStatuses, BallStatus.BALL);
+    }
+
+    private static int getBallStatusCount(List<BallStatus> ballStatuses, BallStatus strike) {
+        return (int) ballStatuses.stream()
+                .filter(ballStatus -> ballStatus.equals(strike))
+                .count();
     }
 
     public void judge() {
         if (strikeNumber == 3) {
             System.out.println(String.format("%d스트라이크", strikeNumber));
-            isEnd();
+            gameEnd();
             return;
         }
-        if (ballNumber > 0 && strikeNumber > 0) {
-            System.out.println(String.format("%d볼 %d스트라이크", ballNumber, strikeNumber));
-            return;
-        }
-        if (ballNumber == 0 && strikeNumber > 0 && strikeNumber < 3) {
+        if (strikeNumber > 0 && ballNumber == 0) {
             System.out.println(String.format("%d스트라이크", strikeNumber));
             return;
         }
-        if (ballNumber > 0 && strikeNumber == 0) {
+        if (strikeNumber > 0 && ballNumber > 0) {
+            System.out.println(String.format("%d볼 %d스트라이크", ballNumber, strikeNumber));
+            return;
+        }
+        if (strikeNumber == 0 && ballNumber > 0) {
             System.out.println(String.format("%d볼", ballNumber));
             return;
         }
-        if (ballNumber == 0 && strikeNumber == 0) {
-            System.out.println(String.format("낫싱"));
-            return;
-        } else {
-            System.out.println("에러");
-        }
-    }
-    
-    private void isEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int next = Integer.parseInt(Console.readLine());
+        System.out.println("낫싱");
     }
 
-    public int getNext() {
-        return next;
+    private void gameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        next = Integer.parseInt(Console.readLine());
     }
 
     public int getStrikeNumber() {
         return strikeNumber;
+    }
+
+    public int getBallNumber() {
+        return ballNumber;
+    }
+
+    public int getNext() {
+        return next;
     }
 }

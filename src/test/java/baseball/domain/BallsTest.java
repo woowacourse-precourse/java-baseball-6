@@ -8,38 +8,54 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class BallsTest {
+    List<Integer> computerNumbers = Arrays.asList(4, 5, 6);
+    Balls computerBalls = BallsFactory.createBalls(computerNumbers);
 
     @Test
-    void 컴퓨터Balls_유저Ball_STRIKE() {
-        List<Integer> ballNumbers = Arrays.asList(3, 2, 4);
-        Balls balls = new Balls(ballNumbers);
-        assertThat(balls.match(new Ball(new Position(3), new BallNum(4)))).isEqualTo(BallStatus.STRIKE);
+    void Balls_Balls비교_3스트라이크() {
+        //given
+        List<Integer> playerNumbers = Arrays.asList(4, 5, 6);
+        Balls playerBalls = BallsFactory.createBalls(playerNumbers);
+        //when
+        Referee referee = computerBalls.play(playerBalls);
+        //then
+        assertThat(referee.getStrikeNumber()).isEqualTo(3);
+        assertThat(referee.getBallNumber()).isEqualTo(0);
     }
 
     @Test
-    void 컴퓨터Balls_유저Ball_BALL() {
-        List<Integer> ballNumbers = Arrays.asList(3, 2, 4);
-        Balls balls = new Balls(ballNumbers);
-        assertThat(balls.match(new Ball(new Position(2), new BallNum(4)))).isEqualTo(BallStatus.BALL);
+    void Balls_Balls비교_3볼() {
+        //given
+        List<Integer> playerNumbers = Arrays.asList(5, 6, 4);
+        Balls playerBalls = BallsFactory.createBalls(playerNumbers);
+        //when
+        Referee referee = computerBalls.play(playerBalls);
+        //then
+        assertThat(referee.getStrikeNumber()).isEqualTo(0);
+        assertThat(referee.getBallNumber()).isEqualTo(3);
     }
 
     @Test
-    void 컴퓨터Balls_유저Ball_NOTHING() {
-        List<Integer> ballNumbers = Arrays.asList(3, 2, 4);
-        Balls balls = new Balls(ballNumbers);
-        assertThat(balls.match(new Ball(new Position(1), new BallNum(1)))).isEqualTo(BallStatus.NOTHING);
+    void Balls_Balls비교_1스트라이크_2볼() {
+        //given
+        List<Integer> playerNumbers = Arrays.asList(4, 6, 5);
+        Balls playerBalls = BallsFactory.createBalls(playerNumbers);
+        //when
+        Referee referee = computerBalls.play(playerBalls);
+        //then
+        assertThat(referee.getStrikeNumber()).isEqualTo(1);
+        assertThat(referee.getBallNumber()).isEqualTo(2);
     }
 
     @Test
-    void 컴퓨터Balls_유저Balls_반환값() {
-        List<Integer> computerBallNumbers = Arrays.asList(3, 1, 2);
-        List<Integer> playerBallNumbers = Arrays.asList(3, 2, 4);
-        Balls balls = new Balls(computerBallNumbers);
-        Balls playerBalls = BallsFactory.createPlayerBalls(playerBallNumbers);
-        List<BallStatus> result = balls.play(playerBalls);
-        assertThat(result.get(0)).isEqualTo(BallStatus.STRIKE);
-        assertThat(result.get(1)).isEqualTo(BallStatus.BALL);
-        assertThat(result.get(2)).isEqualTo(BallStatus.NOTHING);
+    void Balls_Balls비교_낫싱() {
+        //given
+        List<Integer> playerNumbers = Arrays.asList(1, 2, 3);
+        Balls playerBalls = BallsFactory.createBalls(playerNumbers);
+        //when
+        Referee referee = computerBalls.play(playerBalls);
+        //then
+        assertThat(referee.getStrikeNumber()).isEqualTo(0);
+        assertThat(referee.getBallNumber()).isEqualTo(0);
     }
-
 }
