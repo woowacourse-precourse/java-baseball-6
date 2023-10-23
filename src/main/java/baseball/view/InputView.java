@@ -9,6 +9,7 @@ public class InputView {
 
     public static List<Integer> inputNumber() {
         String numberString = Console.readLine();
+        System.out.println(numberString);
         String[] splitNumberString = numberString.split("");
         return mapToInteger(splitNumberString);
     }

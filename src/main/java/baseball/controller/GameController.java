@@ -1,22 +1,19 @@
 package baseball.controller;
 
-import baseball.domain.Ball;
-import baseball.domain.MatchResult;
 import baseball.view.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class GameController {
 
     public void run() {
         OutputView.printStartGame();
-        List<Integer> computerNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> computerNumbers = RandomNumberCreator.createRandomNumber();
         recursiveGame(computerNumbers);
         OutputView.printInputRestartGame();
         // 게임 재시작 여부 묻기
-        if (InputView.inputRestartGame() == 1){
+        if (InputView.inputRestartGame() == 1) {
             run();
         }
     }
@@ -50,10 +47,10 @@ public class GameController {
             Integer player = numbers.get(i);
             for (int j = 0; j < computerNumbers.size(); j++) {
                 Integer computer = computerNumbers.get(j);
-                if (i == j && player.equals(computer)){
+                if (i == j && player.equals(computer)) {
                     strike++;
                 }
-                if (i != j && player.equals(computer)){
+                if (i != j && player.equals(computer)) {
                     ball++;
                 }
             }
@@ -61,5 +58,4 @@ public class GameController {
 
         return new GameResult(strike, ball);
     }
-
 }
