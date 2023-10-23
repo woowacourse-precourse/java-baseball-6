@@ -23,16 +23,16 @@ public class GameResult {
         return isGameEnded;
     }
 
-    public void setGameEnded() {
+    public void endGame() {
         this.isGameEnded = true;
     }
 
-    public void setGameRestart() {
+    public void restartGame() {
         this.isGameEnded = false;
     }
 
-    public void resetScore() {
-        strike.resetScore();
-        ball.resetScore();
+    public void resetCounts() {
+        strike.resetCount();
+        ball.resetCount();
     }
 }
