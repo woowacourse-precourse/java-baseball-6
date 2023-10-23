@@ -68,7 +68,7 @@ public class Game {
 
 
     private String getUserInput() {
-        System.out.println(REQUEST_INPUT);
+        System.out.print(REQUEST_INPUT);
         String userInput = Console.readLine();
         validateUserInput(userInput);
 
