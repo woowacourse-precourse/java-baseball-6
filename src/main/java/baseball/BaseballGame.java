@@ -2,6 +2,8 @@ package baseball;
 
 import static baseball.PlayerView.*;
 
+import java.util.Objects;
+
 public class BaseballGame {
     private PlayerView playerView = new PlayerView();
     private GameResult gameResult = new GameResult();
@@ -29,6 +31,15 @@ public class BaseballGame {
     }
 
     private boolean isRetry() {
-        return playerView.input().equals(RETRY_NUMBER);
+        String playerChoice = playerView.input();
+        validateRetryExit(playerChoice);
+        return playerChoice.equals(RETRY_NUMBER);
+    }
+
+    private void validateRetryExit(String playerChoice) {
+        if (!Objects.equals(playerChoice, RETRY_NUMBER) ||
+                !Objects.equals(playerChoice, EXIT_NUMBER)) {
+            throw new IllegalArgumentException("1, 2만 입력할 수 있습니다.");
+        }
     }
 }
