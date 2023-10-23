@@ -42,22 +42,22 @@ public class InputConsole {
     }
 
     static class InputValidation {
-        static void convertNumberValidation(String input) {
+        private static void convertNumberValidation(String input) {
             for (int i=0; i<input.length(); i++) {
-                int checkData = input.charAt(i) - '0';
-                if (0 > checkData || checkData > 9) {
+                char checkData = input.charAt(i);
+                if ('0' > checkData || checkData > '9') {
                     throw new IllegalArgumentException("입력된 값이 숫자가 아닙니다.");
                 }
             }
         }
 
-        static void gameNumberRangeValidation(String input) {
+        private static void gameNumberRangeValidation(String input) {
             if (input.length() != 3) {
                 throw new IllegalArgumentException("입력된 숫자가 범위를 초과하였습니다.");
             }
         }
 
-        static void gameNumberContainZeroValidation(String input) {
+        private static void gameNumberContainZeroValidation(String input) {
             for (int i=0; i<input.length(); i++) {
                 char checkData = input.charAt(i);
                 if (checkData == '0') {
@@ -66,7 +66,7 @@ public class InputConsole {
             }
         }
 
-        static void gameNumberDifferentDigitValidation(String input) {
+        private static void gameNumberDifferentDigitValidation(String input) {
             char hundredsDigit =  input.charAt(0);
             char tensDigit = input.charAt(1);
             char onesDigit = input.charAt(2);
@@ -74,7 +74,6 @@ public class InputConsole {
             if (hundredsDigit == tensDigit || tensDigit == onesDigit || hundredsDigit == onesDigit) {
                 throw new IllegalArgumentException("입력된 숫자는 서로 다른 3자리의 수여야 합니다.");
             }
-
         }
 
         private static void endOrStartNumberRangeValidation(String input) {
