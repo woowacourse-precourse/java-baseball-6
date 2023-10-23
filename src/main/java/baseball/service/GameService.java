@@ -1,27 +1,24 @@
 package baseball.service;
-
+import baseball.domain.Game;
 import baseball.utils.NumberGenerator;
 import baseball.view.OutView;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    private List<Integer> programNumbers;
-    private int strikeCount;
-    private int ballCount;
     private final NumberGenerator numberGenerator = new NumberGenerator();
+    private Game game;
 
     public void initGame() {
-        resetCount();
-        programNumbers = numberGenerator.generateNumbers();
+        List<Integer> programNumbers = numberGenerator.generateNumbers();
+        this.game = new Game(programNumbers);
         OutView.printStartGame();
     }
 
     public void playGame() throws IllegalArgumentException {
-        while(this.strikeCount != 3) {
+        while(game.getStrikeCount() != 3) {
             InputView.requestInputNumbers();
             String input = Console.readLine();
 
@@ -53,10 +50,10 @@ public class GameService {
     }
 
     private void giveHint() {
-        if (this.strikeCount == 0 && this.ballCount == 0) {
+        if (game.getStrikeCount() == 0 && game.getBallCount() == 0) {
             OutView.printNothing();
         } else {
-            OutView.printResult(this.strikeCount, this.ballCount);
+            OutView.printResult(game.getStrikeCount(), game.getBallCount());
         }
     }
 
@@ -89,18 +86,13 @@ public class GameService {
     }
 
     private void countStrikeAndBall(List<Integer> userNumbers) {
-        resetCount();
+        game.resetCount();
         for(int i = 0; i < userNumbers.size(); i++) {
-            if(programNumbers.get(i).equals(userNumbers.get(i))) {
-                this.strikeCount++;
-            } else if(programNumbers.contains(userNumbers.get(i))) {
-                this.ballCount++;
+            if(game.getProgramNumbers().get(i).equals(userNumbers.get(i))) {
+                game.increaseStrikeCount();
+            } else if(game.getProgramNumbers().contains(userNumbers.get(i))) {
+                game.increaseBallCount();
             }
         }
-    }
-
-    private void resetCount(){
-        this.strikeCount = 0;
-        this.ballCount = 0;
     }
 }
