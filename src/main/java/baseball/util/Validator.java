@@ -1,7 +1,11 @@
 package baseball.util;
 
+import java.util.Objects;
+
 public class Validator {
     private static final int MAX_SIZE = 3;
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
 
     public static void validateInputNumbers(String numbers) {
         isValidNumbersLength(numbers);
@@ -32,5 +36,28 @@ public class Validator {
     public static boolean hasDuplicateNumber(String numbers) {
         return numbers.charAt(0) == numbers.charAt(1) || numbers.charAt(1) == numbers.charAt(2)
                 || numbers.charAt(0) == numbers.charAt(2);
+    }
+
+    public static void validateRestartOrExitNumber(String number) {
+        isValidRestartOrExitNumberType(number);
+        isValidRestartOrExitNumber(number);
+    }
+
+    public static void isValidRestartOrExitNumberType(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isValidRestartOrExitNumber(String number) {
+        if (!isRestartOrExitNumber(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean isRestartOrExitNumber(String number) {
+        return Objects.equals(number, RESTART) || Objects.equals(number, EXIT);
     }
 }
