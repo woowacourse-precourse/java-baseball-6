@@ -6,12 +6,17 @@ import static baseball.utils.BaseballConstantUtils.MIN_BASEBALL_NUMBER;
 import java.util.Objects;
 
 /**
- * 숫자야구 게임을 위해 사용되는 비교대상
+ * baseballNumber를 포장한 객체
  */
 
 public class BaseballNumber {
     private final int baseballNumber;
 
+    /**
+     * baseballNumber 값을 검증 후 BaseballNumber 객체로 반환
+     *
+     * @param baseballNumber 검증할 int 값
+     */
 
     public BaseballNumber(int baseballNumber) {
         validateBaseballNumber(baseballNumber);
