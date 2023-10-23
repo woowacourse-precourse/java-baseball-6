@@ -8,7 +8,7 @@ import java.util.List;
 public class GetNumbers {
     private static final int MAX_NUM_LENGTH = 3;
 
-    public static List<Integer> getRandomNumber() {
+    public List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -20,7 +20,7 @@ public class GetNumbers {
         return computer;
     }
 
-    public static List<Integer> getUserInput() {
+    public List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> numbers = new ArrayList<>();
@@ -46,15 +46,15 @@ public class GetNumbers {
         return numbers;
     }
 
-    public static boolean notContainNumber(List<Integer> list, int value) {
+    public boolean notContainNumber(List<Integer> list, int value) {
         return list.contains(value);
     }
 
-    public static boolean notNumberRange(int value, int min, int max) {
+    public boolean notNumberRange(int value, int min, int max) {
         return value >= min && value <= max;
     }
 
-    public static boolean notListSize(List<Integer> list, int size) {
+    public boolean notListSize(List<Integer> list, int size) {
         return list.size() != size;
     }
 }

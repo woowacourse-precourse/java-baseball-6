@@ -11,19 +11,21 @@ public class BaseballGame {
         BaseballGame.runningGame = runningGame;
     }
 
-    public static void gameProcess() {
-        List<Integer> computerNum = GetNumbers.getRandomNumber();
+    public void gameProcess() {
+        GetNumbers gn = new GetNumbers();
+        List<Integer> computerNum = gn.getRandomNumber();
         checkGame(computerNum);
     }
 
-    public static void checkGame(List<Integer> computer) {
+    public void checkGame(List<Integer> computer) {
         while (runningGame) {
             checkGameProcess(computer);
         }
     }
 
-    public static void checkGameProcess(List<Integer> computer) {
-        List<Integer> user = GetNumbers.getUserInput();
+    public void checkGameProcess(List<Integer> computer) {
+        GetNumbers gn = new GetNumbers();
+        List<Integer> user = gn.getUserInput();
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -39,7 +41,7 @@ public class BaseballGame {
         checkGameResult(ballCount, strikeCount);
     }
 
-    public static int selectExit() {
+    public int selectExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = Integer.parseInt(Console.readLine());
         int selectNum = 1;
@@ -49,7 +51,7 @@ public class BaseballGame {
         return selectNum;
     }
 
-    public static void checkGameResult(int ballCount, int strikeCount) {
+    public void checkGameResult(int ballCount, int strikeCount) {
         StringBuilder result = new StringBuilder();
 
         if (strikeCount == MAX_NUM_LENGTH) {
@@ -69,7 +71,7 @@ public class BaseballGame {
         System.out.println(result.toString().trim());
     }
 
-    public static void getResultMessage(StringBuilder result, int ballCount, int strikeCount) {
+    public void getResultMessage(StringBuilder result, int ballCount, int strikeCount) {
         if (ballCount > 0) {
             result.append(ballCount).append("볼 ");
         }
