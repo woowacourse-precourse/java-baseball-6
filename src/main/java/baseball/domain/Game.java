@@ -18,10 +18,10 @@ public class Game implements Numbers {
 
         while(ongoing) {
             InputView.printInputMsg(); // 숫자를 입력해주세요 :
+            String inputStr = Console.readLine();
 
-            ClientNumbers clientNumbers = InputView.makeClientNumbers(Console.readLine());
-
-            Info info = clientNumbers.compareWithComputerNumbers(computerNumbers); // error
+            ClientNumbers clientNumbers = new ClientNumbers(inputStr);
+            Info info = clientNumbers.compareWithComputerNumbers(computerNumbers);
             ongoing = info.printMsgByUsingInfo();
         }
     }

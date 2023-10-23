@@ -11,9 +11,4 @@ public class InputView {
     public static void printInputMsg() {
         System.out.print(INPUT_MSG);
     }
-
-    public static ClientNumbers makeClientNumbers(String inputStr) {
-        ClientNumbers clientNumbers = new ClientNumbers(inputStr);
-        return clientNumbers;
-    }
 }
