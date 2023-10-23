@@ -1,5 +1,4 @@
 # 숫자 야구 게임
-***
 #### 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
 
 > - 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
@@ -26,14 +25,12 @@
 - Application
 ---
 ## Computer
-***
 #### 컴퓨터 숫자 Random 값 생성
 > #### randomNumber()
 > - 임의의 세자리 수 저장
 > - camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 이용
 >
 
-***
 ## UserNumber
 #### 사용자에게 숫자 입력받음
 > #### player()
@@ -43,7 +40,6 @@
 >      - 사용자가 입력한 값이 세자리가 아닌 경우
 >      - 사용자가 숫자 외의 값을 입력한 경우
 
-***
 ## Compare
  ####  입력한 수와 컴퓨터의 숫자 비교
 > #### countTotal()
@@ -59,7 +55,7 @@
 >   - compare의 countTotal과 countStrike 이용해 ball과 strike 저장
 >   - total이 0인 경우 일치하는 값이 없기 때문에 낫싱 
 >   - ball, strike 값 이용해 출력될 결과 reutrun
-***
+
 ## RestartGame
 #### 게임 재시작 여부 확인
 > #### restart()
@@ -68,7 +64,7 @@
 > - 사용자가 2를 입력한 경우 게임 종료
 > - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 예외
 >   - 사용자의 입력값이 1과 2가 아닌 경우 
-***
+
 ## Application
   #### 숫자 야구 게임을 시작합니다.
 > 1. 컴퓨터와 사용자의 숫자 생성
