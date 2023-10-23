@@ -23,6 +23,7 @@ public class Application {
     final String end = "게임 종료";
     List<Integer> numbers;
 
+    // 실행
     public void run(){
         // while 자리
             // 0 진행 1 init 2 종료
@@ -51,10 +52,12 @@ public class Application {
         }
     }
 
+    // 게임 초기화
     public void init(){
         numbers = setNumbers();
     }
 
+    // 난수 뽑기
     public List<Integer> setNumbers(){
         boolean[] check = new boolean[10];
 
@@ -63,7 +66,9 @@ public class Application {
         while(numbers.size()<3){
             Integer number = Randoms.pickNumberInRange(1,9);
 
-            if(check[number]){ continue; }
+            if(check[number]){
+                continue;
+            }
 
             check[number] = true;
             numbers.add(number);
@@ -72,6 +77,7 @@ public class Application {
         return numbers;
     }
 
+    // 입력된 숫자 카운트
     public int[] countBallAndStrike(String param){
         int ballCount = 0;
         int strikeCount = 0;
@@ -91,6 +97,7 @@ public class Application {
         return new int[]{ballCount, strikeCount};
     }
 
+    // 숫자 입력
     public String inputNumber(){
         String param = Console.readLine();
 
@@ -101,6 +108,7 @@ public class Application {
         return param;
     }
 
+    // 명령어 숫자 입력
     public String inputCmd(){
         String param = Console.readLine();
 
@@ -110,6 +118,8 @@ public class Application {
 
         return param;
     }
+
+    // 숫자인지 확인
     public boolean isInteger(String param){
         try{
             Integer.parseInt(param);
@@ -119,6 +129,7 @@ public class Application {
         }
     }
 
+    // 모두 다른 숫자인지 확인
     public boolean isDiffer(String param){
         Set<Character> set = new HashSet<>();
 
@@ -132,6 +143,7 @@ public class Application {
         return false;
     }
 
+    // 명령어인지 확인
     public boolean isCmd(String param){
         int n = Integer.parseInt(param);
         if(n==1 || n==2){
@@ -140,6 +152,7 @@ public class Application {
         return false;
     }
 
+    // 볼-스트라이크 메시지 생성
     public String makeMessage(int[] ballCount){
         StringBuilder message = new StringBuilder();
 
