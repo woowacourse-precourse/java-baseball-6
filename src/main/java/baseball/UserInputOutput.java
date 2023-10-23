@@ -19,10 +19,10 @@ public class UserInputOutput {
                 validInput = true;
             } catch (NumberFormatException e) {
                 System.out.println("숫자가 아닌 다른 것이 입력되었습니다.");
-                System.exit(0); // 프로그램 종료
+                System.exit(0);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                System.exit(0); // 프로그램 종료
+                System.exit(0);
             }
         }
         return number;
