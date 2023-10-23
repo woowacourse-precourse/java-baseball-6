@@ -13,6 +13,7 @@ public class BallNumberGenerator {
     private static final List<Integer> generated = new ArrayList<>();
 
     public List<Integer> generateBallNumber() {
+        generated.clear();
         while (generated.size() < SIZE) {
             generateNumber();
         }
