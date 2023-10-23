@@ -8,6 +8,7 @@ public class OutputController {
     public final static String AFTER = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public final static String STRIKE = "스트라이크";
     public final static String BALL = "볼";
+    public final static String NOTHING = "낫싱";
     public final static String ANSWER ="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public void cliOutputln(String ment) {
         System.out.println(ment);
