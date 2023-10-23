@@ -4,20 +4,44 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> answerNumber= new ArrayList<>();
+        List<Integer> answerNumber = new ArrayList<>();
+        Map<String, Integer> gameStatus = new HashMap<String, Integer>() {{
+            put("BALL_COUNT", 0);
+            put("STRIKE_COUNT", 0);
+        }};
+        String userInput = "";
         getRandomsNumber(answerNumber);
         System.out.println(answerNumber);
         System.out.println(Constant.START_MESSAGE);
         System.out.print(Constant.INPUT_MESSAGE);
-        String userInput = readLine();
+        userInput = readLine();
         validateInput(userInput);
-        System.out.println(userInput);
+        getGameStatus(answerNumber, gameStatus, userInput);
+        System.out.println("스트라이크"+ gameStatus.get("STRIKE_COUNT"));
+        System.out.println("볼"+ gameStatus.get("BALL_COUNT"));
+    }
+
+    private static void getGameStatus(List<Integer> answerNumber, Map<String, Integer> setStatus,
+        String userInput) {
+        for (int i = 0; i < Constant.NUMBER_COUNT; i++) {
+            int checkNumber = answerNumber.get(i);
+            char userChar = userInput.charAt(i);
+
+            if (checkNumber == Character.getNumericValue(userChar)) {
+                setStatus.put("STRIKE_COUNT", setStatus.get("STRIKE_COUNT") + 1);
+            } else if (userInput.contains(String.valueOf(checkNumber))) {
+                setStatus.put("BALL_COUNT", setStatus.get("BALL_COUNT") + 1);
+            }
+        }
     }
 
     public static void validateInput(String userInput) {
