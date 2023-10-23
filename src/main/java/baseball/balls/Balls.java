@@ -1,9 +1,9 @@
 package baseball.balls;
 
-import baseball.utils.BallsUtils;
-import baseball.utils.StringUtils;
 import baseball.validators.BallsValidators;
+import baseball.validators.ObjectDistinctValidator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Balls {
 
@@ -13,8 +13,8 @@ public class Balls {
 
     public Balls(List<Ball> balls) {
         BallsValidators.validateBallCount(balls);
-        BallsValidators.validateValueDuplication(balls);
-        BallsValidators.validateIndexDuplication(balls);
+        ObjectDistinctValidator.validateDistinct(values());
+        ObjectDistinctValidator.validateDistinct(indexs());
         this.balls = balls;
     }
 
@@ -30,6 +30,18 @@ public class Balls {
 
     public List<Ball> getBalls() {
         return balls;
+    }
+
+    private List<Object> values() {
+        return balls.stream()
+                .map(Ball::getValue)
+                .collect(Collectors.toList());
+    }
+
+    private List<Object> indexs() {
+        return balls.stream()
+                .map(Ball::getIndex)
+                .collect(Collectors.toList());
     }
 
 }

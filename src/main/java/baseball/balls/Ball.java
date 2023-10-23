@@ -39,4 +39,12 @@ public class Ball {
         return index.equals(anotherBallIndex);
     }
 
+    public BallValue getValue() {
+        return value;
+    }
+
+    public BallIndex getIndex() {
+        return index;
+    }
+
 }
