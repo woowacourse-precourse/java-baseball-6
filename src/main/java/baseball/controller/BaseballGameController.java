@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import static baseball.constant.GamePlayMessage.RESULT_BALL_MESSAGE;
+import static baseball.constant.GamePlayMessage.RESULT_NOTHING_MESSAGE;
+import static baseball.constant.GamePlayMessage.RESULT_STRIKE_MESSAGE;
+
 import baseball.model.Number;
 import baseball.model.Result;
 import baseball.service.BaseballGameService;
@@ -39,7 +43,7 @@ public class BaseballGameController {
             int strike = result.getStrike();
 
             if (ball == 0 && strike == 3) {
-                ConsoleIO.printResultMessage("3스트라이크");
+                ConsoleIO.printResultMessage(strike + RESULT_STRIKE_MESSAGE);
                 ConsoleIO.printEndMessage();
 
                 break;
@@ -48,13 +52,13 @@ public class BaseballGameController {
             String resultMessage = "";
 
             if (ball == 0 && strike == 0) {
-                resultMessage = "낫싱";
+                resultMessage = RESULT_NOTHING_MESSAGE;
             } else if (ball == 0 && strike > 0) {
-                resultMessage = strike + "스트라이크";
+                resultMessage = strike + RESULT_STRIKE_MESSAGE;
             } else if (ball > 0 && strike == 0) {
-                resultMessage = ball + "볼";
+                resultMessage = ball + RESULT_BALL_MESSAGE;
             } else if (ball > 0 && strike > 0) {
-                resultMessage = ball + "볼 " + strike + "스트라이크";
+                resultMessage = ball + RESULT_BALL_MESSAGE + " " + strike + RESULT_STRIKE_MESSAGE;
             }
 
             ConsoleIO.printResultMessage(resultMessage);
