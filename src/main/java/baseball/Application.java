@@ -7,7 +7,16 @@ public class Application {
 
     public static void main(String[] args) {
         OutputView.startGame();
-        playBasketBallGame();
+        while (true) {
+            playBasketBallGame();
+
+            String restartOrQuit = InputView.getRestartOrQuit();
+            Validator.validateRestartOrQuit(restartOrQuit);
+
+            if (Integer.parseInt(restartOrQuit) == Constants.QUIT){
+                break;
+            }
+        }
     }
 
     public static void playBasketBallGame() {
@@ -16,12 +25,7 @@ public class Application {
 
         while (true) {
             String userInputNumber = InputView.getInputNumber();
-            try {
-                Validator.validateUserInputNumber(userInputNumber);
-            } catch (IllegalArgumentException e) {
-                System.out.println("IllegalArgumentException: " + e.getMessage());
-                return;
-            }
+            Validator.validateUserInputNumber(userInputNumber);
 
             List<Integer> userInputNumberList = new ArrayList<>();
             for (char digit : userInputNumber.toCharArray()) {
