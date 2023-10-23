@@ -1,3 +1,5 @@
+우아한 테크 코스 1주차 - 숫자 야구 게임 구현
+
 Array 클래스
 - checkArrayContains 메서드 : 입력 숫자와 랜덤으로 설정된 숫자(답) 비교
 - getArrayFromStr 메서드 : char 배열에 str을 하나씩 저장
