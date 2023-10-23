@@ -23,4 +23,14 @@ public class Service {
         user.setNumbers(input);
         return user.getNumbers();
     }
+
+    public void compareComputerAndUser(List<Integer> user, List<Integer> computer) {
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i).equals(computer.get(i))) {
+                strike++;
+            } else if (computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
+    }
 }
