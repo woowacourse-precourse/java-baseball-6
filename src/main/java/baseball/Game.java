@@ -14,12 +14,11 @@ public class Game {
     public Game() {
         while (answerList.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-
             if (!isContainedNumber(randomNumber))
                 answerList.add(randomNumber);
         }
-        // 정답 확인용
-        for (Integer x : answerList) {
+
+        for (Integer x : answerList) {  // 정답 확인용
             System.out.print(x+" ");
         }
     }
@@ -30,12 +29,11 @@ public class Game {
 
         do {
             System.out.print(GET_NUMBER_MESSAGE);
-            inputString = Console.readLine();
 
+            inputString = Console.readLine().replace(" ","");
             if (isValidNumber(inputString)) {
                 is3Strike = checkResult(inputString);
             }
-
         } while (!is3Strike);
     }
 
@@ -73,7 +71,6 @@ public class Game {
 
     private boolean checkNumberDuplicate(String inputString) {
         Set<Character> set = new HashSet<>();
-
         for (int i = 0; i < inputString.length(); i++) {
             set.add(inputString.charAt(i));
         }
@@ -88,9 +85,9 @@ public class Game {
     private boolean checkResult(String inputString) {
         int[] inputIntArray = changeStringToIntArray(inputString);
         int strike= getStrike(inputIntArray);
-        int ball = getBall(inputIntArray);
+        int ball = getBall(inputIntArray) - strike;
 
-        Result result = new Result(strike, ball-strike);
+        Result result = new Result(strike, ball);
         System.out.println(result.getResultString());
 
         return result.is3Strike();
