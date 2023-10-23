@@ -61,7 +61,7 @@ public class GameValidation {
 
     private static boolean verifyForNumberRangeIsCorrect(String value){
         if(!(value.chars().allMatch(v-> v >= '1' && v <= '9'))){
-            throw new IllegalArgumentException("입력 값은 1부터 9사이의 숫자여야합니다.");
+            throw new IllegalArgumentException("[Err] 입력 값은 1부터 9사이의 숫자여야합니다.");
         }
         return true;
     } // use case : 1~9의 값
