@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Player {
 
-    private static final int NUMBER_SIZE = 3;
+    private static final int NUMBERS_SIZE = 3;
+    private static final String DELIMITER = "";
     private static final String NUMBER_SIZE_EXCEPTION = "%d자리 수만 가능합니다.";
     private static final String NUMBER_UNIQUE_EXCEPTION = "서로 다른 숫자만 가능합니다.";
 
@@ -18,13 +19,13 @@ public class Player {
     }
 
     private void validateNumberSize(String number) {
-        if (number.length() != NUMBER_SIZE) {
-            throw new IllegalArgumentException(String.format(NUMBER_SIZE_EXCEPTION, NUMBER_SIZE));
+        if (number.length() != NUMBERS_SIZE) {
+            throw new IllegalArgumentException(String.format(NUMBER_SIZE_EXCEPTION, NUMBERS_SIZE));
         }
     }
 
     private void validateUniqueNumber(String number) {
-        long count = Arrays.stream(number.split(""))
+        long count = Arrays.stream(number.split(DELIMITER))
                 .distinct()
                 .count();
 
@@ -34,7 +35,7 @@ public class Player {
     }
 
     private List<Integer> convert(String number) {
-        return Arrays.stream(number.split(""))
+        return Arrays.stream(number.split(DELIMITER))
                 .map(Integer::parseInt)
                 .toList();
     }

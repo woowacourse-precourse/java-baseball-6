@@ -2,6 +2,9 @@ package baseball.model;
 
 public class Judgement {
 
+    private static final int ZERO = 0;
+    private static final int MAX_COUNT = 3;
+
     private int ball;
     private int strike;
 
@@ -11,15 +14,15 @@ public class Judgement {
     }
 
     public boolean isAllStrike() {
-        return strike == 3;
+        return strike == MAX_COUNT;
     }
 
     public boolean hasStrike() {
-        return 0 < strike;
+        return ZERO < strike;
     }
 
     public boolean hasBall() {
-        return 0 < ball;
+        return ZERO < ball;
     }
 
     public int getBall() {
