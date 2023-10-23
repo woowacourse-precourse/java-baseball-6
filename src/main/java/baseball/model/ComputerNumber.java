@@ -26,18 +26,25 @@ public class ComputerNumber {
     }
 
     private void validateRange(List<Integer> computerNumber) {
-        for (int i = 0; i < COMPUTER_NUMBER_SIZE; i++) {
-            if ((computerNumber.get(i) < COMPUTER_NUMBER_START_RANGE)
-                    || (computerNumber.get(i) > COMPUTER_NUMBER_END_RANGE)) {
-                throw new IllegalArgumentException();
-            }
+        for (int number : computerNumber) {
+            checkCorrectRange(number);
         }
+    }
+
+    private void checkCorrectRange(int number) {
+        if (isCorrectRange(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isCorrectRange(int number) {
+        return (number < COMPUTER_NUMBER_START_RANGE) || (number > COMPUTER_NUMBER_END_RANGE);
     }
 
     private void validateDuplicate(List<Integer> computerNumber) {
         Set checkDuplication = new HashSet();
-        for (int i = 0; i < computerNumber.size(); i++) {
-            checkDuplication.add(computerNumber.get(i));
+        for (int number : computerNumber) {
+            checkDuplication.add(number);
         }
         if (checkDuplication.size() != COMPUTER_NUMBER_SIZE) {
             throw new IllegalArgumentException();
