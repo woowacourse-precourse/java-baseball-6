@@ -11,10 +11,10 @@ public class BaseballGame {
     private Player player;
     private boolean isExit;
 
-    public BaseballGame() {
+    public BaseballGame(Computer computer, Player player) {
+        this.computer = computer;
+        this.player = player;
         isExit = false;
-        computer = new Computer();
-        player = new Player();
     }
 
     public void start() {
