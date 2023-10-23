@@ -1,5 +1,8 @@
 package baseball.view;
 
+import baseball.model.GameResult;
+import java.util.StringJoiner;
+
 public class ConsoleOutputView {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String REQUEST_NUMBER = "숫자를 입력해주세요 : ";
@@ -14,8 +17,30 @@ public class ConsoleOutputView {
         System.out.print(REQUEST_NUMBER);
     }
 
-    public void writeMessage(String message) {
-        System.out.println(message);
+    public void showGameResult(GameResult gameResult) {
+        String gameResultMessage = createGameResultMessage(gameResult);
+        System.out.println(gameResultMessage);
+    }
+
+    private String createGameResultMessage(GameResult gameResult) {
+        int correctCount = gameResult.correctCount();
+        int similarCount = gameResult.similarCount();
+
+        if (correctCount + similarCount == 0) {
+            return "낫싱";
+        }
+
+        StringJoiner stringJoiner = new StringJoiner(" ");
+
+        if (0 < similarCount) {
+            stringJoiner.add(similarCount + "볼");
+        }
+
+        if (0 < correctCount) {
+            stringJoiner.add(correctCount + "스트라이크");
+        }
+
+        return stringJoiner.toString();
     }
 
     public void moreGame(final int moreNumber, final int endNumber) {
