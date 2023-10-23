@@ -72,11 +72,6 @@
 - ✅ validateInputWithDifferentDigit 메서드 구현
     - 입력한 값들의 숫자가 자릿수가 다른지 검증
 
-## ❌ 입력한 값 리스트 변환
-
-- ❌ convertStringToList 메서드 구현
-    - String 형식을 List로 변환
-
 ## ❌ 게임 시작 기능
 
 - ❌ playGame 메서드 구현
