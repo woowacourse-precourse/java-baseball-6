@@ -8,7 +8,6 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         // 정답(3자리 숫자) 생성
         List<Integer> tmp = new ArrayList<>();
         while (tmp.size() < 3) {
@@ -21,6 +20,7 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             target.append(tmp.get(i));
         }
+//        System.out.println(target); // 테스트용
 
         // 게임 시작, 입력 받기
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -51,6 +51,36 @@ public class Application {
         // 입력 유효성 검사 5. 숫자이며, 3자리이지만 중복되는 입력값 확인
         if (ans.charAt(0) == ans.charAt(1) || ans.charAt(0) == ans.charAt(2) || ans.charAt(1) == ans.charAt(2)) {
             throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러5]");
+        }
+        // 정답 확인하기 - 볼
+        int ballCount = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i != j && ans.charAt(i) == target.charAt(j)) {
+                    ballCount++;
+                }
+            }
+        }
+        // 정답 확인하기 - 스트라이크
+        int strCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (ans.charAt(i) == target.charAt(i)) {
+                strCount++;
+            }
+        }
+        // 정답 확인하기 - 볼, 스트라이크, 낫싱 출력하기
+        if (ballCount != 0 && strCount == 0) {
+            System.out.printf("%d볼 ", ballCount);
+        }
+        if (ballCount == 0 && strCount != 0) {
+            System.out.printf("%d스트라이크", strCount);
+        }
+        if (ballCount != 0 && strCount != 0) {
+            System.out.printf("%d볼 ", ballCount);
+            System.out.printf("%d스트라이크", strCount);
+        }
+        if (ballCount == 0 && strCount == 0) {
+            System.out.println("낫싱");
         }
     }
 }
