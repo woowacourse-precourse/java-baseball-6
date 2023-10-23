@@ -4,6 +4,7 @@ import static baseball.NumberBaseballGameConfig.CONTINUE_GAME;
 import static baseball.NumberBaseballGameConfig.ERROR_RANGE;
 import static baseball.NumberBaseballGameConfig.ERROR_TYPE;
 import static baseball.NumberBaseballGameConfig.EXIT_GAME;
+import static baseball.TypeChecker.isInteger;
 
 public class ContinueModeNumberValidator implements InputValidator {
 
@@ -22,10 +23,7 @@ public class ContinueModeNumberValidator implements InputValidator {
 
     // 타입 확인
     private void checkType(String input) {
-        try {
-            Integer.parseInt(input);
-            return;
-        } catch (NumberFormatException e) {
+        if (!isInteger(input)) {
             throw new IllegalArgumentException(ERROR_TYPE);
         }
     }

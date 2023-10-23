@@ -4,6 +4,7 @@ import static baseball.NumberBaseballGameConfig.BASEBALL_NUMBER_LENGTH;
 import static baseball.NumberBaseballGameConfig.ERROR_DUPLICATE;
 import static baseball.NumberBaseballGameConfig.ERROR_LENGTH;
 import static baseball.NumberBaseballGameConfig.ERROR_TYPE;
+import static baseball.TypeChecker.isInteger;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -31,18 +32,17 @@ public class GuessedNumberValidator implements InputValidator {
 
     // 타입 확인
     private void checkType(String input) {
-        try {
-            Integer.parseInt(input);
-            return;
-        } catch (NumberFormatException e) {
+        if (!isInteger(input)) {
             throw new IllegalArgumentException(ERROR_TYPE);
         }
     }
 
     // 길이 확인
-    private static void checkLength(String input) {
+    private void checkLength(String input) {
         if (input.length() != BASEBALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException(ERROR_LENGTH);
         }
     }
+
+
 }
