@@ -48,11 +48,18 @@ class Baseballgame {
         List<Integer> input = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int num = var.charAt(i) - 48;
-            if (!input.contains(num)) {
+            if (!input.contains(num) && Verification.numVerification(num)) {
                 input.add(num);
             }
             else throw new IllegalArgumentException();
         }
+
         return input;
+    }
+}
+
+class Verification {
+    public static boolean numVerification(int var) {
+        return var >= 1 && var <= 9;
     }
 }
