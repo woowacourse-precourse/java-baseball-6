@@ -7,6 +7,14 @@ import java.util.List;
 
 public class Application {
 
+    static void pickNumber(List<Integer> computer) {
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+    }
     static List<Integer> readInput() {
         String input = Console.readLine();
         List<Integer> player = new ArrayList<>();
@@ -29,11 +37,6 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> player = readInput();
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        pickNumber(computer);
     }
 }
