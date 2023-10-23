@@ -24,7 +24,8 @@ public class Game {
         while (score.isUserLose()) {
             GameInput gameInput = new GameInput(ioService.readInput(INSERT_GAME_INPUT));
             Numbers userNumbers = new Numbers(gameInput.convertInputToUserNumbers());
-            score = computer.calculateScore(userNumbers);
+            NumbersScoreDto numbersScoreDto = computer.calculateScoreWithUserNumbers(userNumbers);
+            score = numbersScoreDto.toModel();
             ioService.println(score.getHint());
         }
     }

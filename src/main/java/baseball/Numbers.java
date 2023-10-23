@@ -9,7 +9,7 @@ public class Numbers {
         this.numbers = numbers;
     }
 
-    public Score calculateScore(Numbers other) {
+    public NumbersScoreDto calculateScore(Numbers other) {
         int strike = 0;
         int ball = 0;
 
@@ -22,6 +22,6 @@ public class Numbers {
                 ball++;
             }
         }
-        return new Score(strike, ball);
+        return new NumbersScoreDto(strike, ball);
     }
 }

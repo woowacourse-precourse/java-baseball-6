@@ -8,6 +8,7 @@ public class Computer {
     private static final int COMPUTER_NUMBERS_SIZE = 3;
     private static final int RANDOM_NUMBER_MIN = 1;
     private static final int RANDOM_NUMBER_MAX = 9;
+
     private final Numbers numbers;
 
     public Computer() {
@@ -29,7 +30,7 @@ public class Computer {
         }
     }
 
-    public Score calculateScore(Numbers user) {
+    public NumbersScoreDto calculateScoreWithUserNumbers(Numbers user) {
         return this.numbers.calculateScore(user);
     }
 }
