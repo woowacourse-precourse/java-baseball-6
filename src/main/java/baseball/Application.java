@@ -22,7 +22,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            System.out.println(computer.toString());
+
             //2.3자리수 입력 시작
             while(true){
                 System.out.printf("숫자를 입력해주세요 : ");
@@ -65,7 +65,7 @@ public class Application {
                 throw new IllegalArgumentException("유효하지 않은 입력 발생");// 4.3 1또는 2를 입력하지 않았을 경우
             }
         }
-        System.out.println("애플리케이션을 종료합니다.");
+        
     }
     //2. 사용자 입력이 유효한지 확인하는 메소드
     public static boolean isValidInput(String input){
