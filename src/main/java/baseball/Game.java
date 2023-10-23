@@ -11,6 +11,17 @@ public class Game {
     public void startGame() {
         View.printStartGameMessage();
         gaming();
+        askToPlayAgain();
+    }
+
+    private void askToPlayAgain() {
+        View.printPlayAgain();
+
+        if (user.getNumberForPlayAgain() == 1) {
+            startGame();
+        }else {
+            return;
+        }
     }
 
     private void gaming() {
