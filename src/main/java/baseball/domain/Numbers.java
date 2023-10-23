@@ -26,7 +26,7 @@ public final class Numbers {
         return numbers.size() != NUMBER_LIST_SIZE;
     }
 
-    public Number getByIndex(final int index) {
+    public Number valueAtIndex(final int index) {
         return new Number(values.get(index));
     }
 

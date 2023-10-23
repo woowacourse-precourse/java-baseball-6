@@ -19,7 +19,7 @@ class NumbersTest {
         final Numbers numbers = new Numbers(List.of(1, 2, 3));
 
         // when
-        final Number result = numbers.getByIndex(0);
+        final Number result = numbers.valueAtIndex(0);
 
         // then
         assertThat(result).isEqualTo(new Number(1));

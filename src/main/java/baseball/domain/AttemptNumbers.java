@@ -22,7 +22,8 @@ public final class AttemptNumbers {
 
     private List<StrikeBall> checkStrikeBall(final AnswerNumbers answerNumbers) {
         return IntStream.range(START_INDEX, ITERATION_TIME)
-                .mapToObj(index -> answerNumbers.checkStrikeBall(numbers.getByIndex(index), index))
+                .mapToObj(
+                        index -> answerNumbers.checkStrikeBall(numbers.valueAtIndex(index), index))
                 .toList();
     }
 }
