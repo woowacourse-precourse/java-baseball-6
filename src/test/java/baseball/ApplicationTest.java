@@ -88,11 +88,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void (){
+    void 볼1개스트라이크1개(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("514","145","2");
-                    assertThat(output()).contains("3볼","3스트라이크","게임 종료");
+                    run("156","145","2");
+                    assertThat(output()).contains("1볼","1스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void 볼2개스트라이크1개(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("154","145","2");
+                    assertThat(output()).contains("2볼","1스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void 낫띵(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789","145","2");
+                    assertThat(output()).contains("낫싱","게임 종료");
                 },
                 1, 4, 5
         );
