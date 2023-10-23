@@ -11,9 +11,13 @@ public enum Hint {
     private final String symbol;
     private int count;
 
+    static {
+        STRIKE.count = 0;
+        BALL.count = 0;
+    }
+
     Hint(String symbol) {
         this.symbol = symbol;
-        initialize();
     }
 
     public static void initialize() {
@@ -27,6 +31,10 @@ public enum Hint {
         }
 
         return String.join(" ", BALL.summary(), STRIKE.summary()).trim();
+    }
+
+    public static boolean isWin() {
+        return Hint.STRIKE.count == 3;
     }
 
     private static boolean isNothing() {

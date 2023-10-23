@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Hint;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -21,6 +22,7 @@ public class Application {
             }
 
             while (true) {
+                Hint.initialize();
                 System.out.print(INPUT_PLAYER_NUMBER);
 
                 String inputNumber = Console.readLine();
@@ -41,30 +43,15 @@ public class Application {
                 for (int i = 0; i < 3; i++) {
                     if (computerNumbers.contains(toList.get(i))) {
                         if (computerNumbers.get(i).equals(toList.get(i))) {
-                            strike++;
-                        } else {
-                            ball++;
+                            Hint.STRIKE.addCount();
+                            continue;
                         }
+                        Hint.BALL.addCount();
                     }
                 }
-                String strikeHint = "";
-                String ballHint = "";
-                String hint = "낫싱";
 
-                if (strike != 0) {
-                    strikeHint += strike + "스트라이크";
-                }
-
-                if (ball != 0) {
-                    ballHint += ball + "볼";
-                }
-
-                if (ball != 0 || strike != 0) {
-                    hint = String.join(" ", ballHint, strikeHint).trim();
-                }
-
-                System.out.println(hint);
-                if (strike == 3) {
+                System.out.println(Hint.getResultMessage());
+                if (Hint.isWin()) {
                     System.out.println(GAME_END);
                     break;
                 }
