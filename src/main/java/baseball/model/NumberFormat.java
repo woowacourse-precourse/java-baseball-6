@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberFormat {
-     private static final int DIGIT_CONSTRAINT = 3;
+     public static final int DIGIT_CONSTRAINT = 3;
 
      private List<Integer> numberList;
 

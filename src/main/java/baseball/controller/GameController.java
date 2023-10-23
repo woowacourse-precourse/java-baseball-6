@@ -12,14 +12,16 @@ public class GameController {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void printGameEnd(){
+    public static void printEndMessage(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+
     public boolean checkGameResult(){
         List<Integer> result = GameService.compareNumberFormat(computerNumber, userNumber);
         printResultMessage(result.get(0), result.get(1));
-        return (result.get(0) == 3) ? true : false;
+        return (result.get(0) == NumberFormat.DIGIT_CONSTRAINT) ? true : false;
     }
     public void printResultMessage(int strikeCount, int ballCount){
         if (strikeCount > 0 && ballCount > 0)
