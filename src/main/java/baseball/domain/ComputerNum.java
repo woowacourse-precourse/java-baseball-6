@@ -1,14 +1,14 @@
 package baseball.domain;
 
+import static baseball.resources.GameConst.*;
+
+import baseball.resources.GameConst;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNum {
-    private static final int COM_NUM_SIZE = 3;
-    private static final int RANGE_START = 1;
-    private static final int RANGE_END = 9;
     private List<Integer> number;
 
     public ComputerNum() {
@@ -17,7 +17,7 @@ public class ComputerNum {
     }
 
     private void setComNumber() {
-        while (number.size() < COM_NUM_SIZE) {
+        while (number.size() < NUM_SIZE) {
             int randomNum = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
             if (!isDuplicate(randomNum)) {
                 number.add(randomNum);

@@ -1,12 +1,13 @@
 package baseball.domain;
 
+import static baseball.resources.GameConst.*;
+
+import baseball.resources.GameConst;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class UserNum {
-    private static final int USER_NUM_SIZE = 3;
-    private static final int ZERO = 0;
     private List<Integer> number;
 
     public UserNum() {
@@ -29,7 +30,7 @@ public class UserNum {
     }
 
     private void checkLength() {
-        if (number.size() != USER_NUM_SIZE) {
+        if (number.size() != NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -41,9 +42,11 @@ public class UserNum {
     }
 
     private void duplicateNumCheck() {
-        HashSet<Integer> checkSet = new HashSet<>(number);
+        long inputNumSize = number.stream()
+                .distinct()
+                .count();
 
-        if (checkSet.size() != USER_NUM_SIZE) {
+        if (inputNumSize != NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
