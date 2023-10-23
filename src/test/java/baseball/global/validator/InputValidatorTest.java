@@ -28,4 +28,12 @@ class InputValidatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> validator.validateBaseballNumberInput(playerInput),"입력한 숫자의 자릿수가 일치하지 않습니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "112", "122", "222"})
+    @DisplayName("중복 입력에 대한 예외 처리 테스트")
+    void validateInputDistinctTest(String playerInput) {
+        assertThrows(IllegalArgumentException.class,
+                () -> validator.validateBaseballNumberInput(playerInput),"숫자를 중복하여 입력할 수 없습니다.");
+    }
 }
