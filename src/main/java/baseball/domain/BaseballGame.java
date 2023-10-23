@@ -45,10 +45,6 @@ public class BaseballGame {
     }
 
 
-    public void checkGameResult(){
-
-    }
-
 
 
 
