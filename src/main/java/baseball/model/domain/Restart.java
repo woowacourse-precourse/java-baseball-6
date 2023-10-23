@@ -16,7 +16,7 @@ public class Restart {
         return restartOption;
     }
 
-    public Integer parseRestartOption(String inputOption) {
+    private Integer parseRestartOption(String inputOption) {
         return Integer.parseInt(inputOption);
     }
 }

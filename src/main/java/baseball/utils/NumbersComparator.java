@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import static baseball.model.constants.GameConstants.WIN;
+
 import java.util.List;
 
 public class NumbersComparator {
@@ -15,7 +17,7 @@ public class NumbersComparator {
     }
 
     public boolean isCorrect() {
-        return strike == 3;
+        return strike == WIN;
     }
 
     private void resetCount() {
@@ -39,7 +41,7 @@ public class NumbersComparator {
         }
     }
 
-    public void ballExceptStrike() {
+    private void ballExceptStrike() {
         ball = ball - strike;
     }
 }
