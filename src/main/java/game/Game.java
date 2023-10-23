@@ -12,7 +12,7 @@ import model.Answer;
 
 public class Game {
     private final Answer answer;
-    private static PlayerInput playerInput;
+    private PlayerInput playerInput;
 
     public Game() {
         answer = new Answer();
