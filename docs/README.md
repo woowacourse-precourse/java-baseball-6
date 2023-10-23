@@ -48,6 +48,12 @@
 
 - ✅ getInputNumberMessage 메서드 구현
     - 플레이어에게 숫자를 입력 받고 리턴
+    -
+
+## ✅ 재시작 여부 입력 메시지 출력 및 입력 기능
+
+- ✅ getInputRestartMessage 메서드 구현
+    - 플레이어에게 재시작 여부를 입력 받고 리턴
 
 # Controller
 
