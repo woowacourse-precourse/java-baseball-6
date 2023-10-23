@@ -17,5 +17,12 @@ public class Validator {
         }
         return true;
     }
-    
+
+    public static boolean validateInputWithDifferentDigit(String input) {
+        if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(
+                2)) {
+            return false;
+        }
+        return true;
+    }
 }
