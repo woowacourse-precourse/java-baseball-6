@@ -3,9 +3,7 @@ package view;
 import view.processing.Convertor;
 import view.processing.Validator;
 
-import static utils.GameConstant.GAME_RESTART_OR_QUIT_PROMPT;
-import static utils.GameConstant.GAME_START_MESSAGE;
-import static utils.GameConstant.GAME_WIN_MESSAGE;
+import static utils.GameConstant.*;
 
 public class OutputView {
     private final Convertor convertor;
@@ -16,7 +14,7 @@ public class OutputView {
         this.validator = validator;
     }
 
-    public void write(String message) {
+    private void write(String message) {
         System.out.println(message);
     }
 
@@ -32,5 +30,9 @@ public class OutputView {
     public void hint(int strike, int ball) {
         String hintMessage = convertor.ballCountToHint(strike, ball);
         write(hintMessage);
+    }
+
+    public void inputPrompt() {
+        write(INPUT_PROMPT_MESSAGE);
     }
 }

@@ -49,7 +49,7 @@ public class NumberBaseballController {
     }
 
     private List<Integer> getUserBaseballNumber() {
-        outputView.write(INPUT_PROMPT_MESSAGE);
+        outputView.inputPrompt();
         List<Integer> numbers = inputView.readInputNumbers();
         return numbers;
     }
