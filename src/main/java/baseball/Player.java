@@ -9,10 +9,16 @@ public class Player {
     /*
         플레이어의 숫자를 입력 받는 메서드
      */
-    public int[] inputPlayerNums() {
+    private int[] playerNumber;
+
+    public void inputPlayerNums() {
         String inputNum = Console.readLine();
         isValidNumber(inputNum);
-        return getNumArray(inputNum);
+        this.playerNumber = getNumArray(inputNum);
+    }
+
+    public int[] getPlayerNumber() {
+        return playerNumber;
     }
 
     private int[] getNumArray(String num) {
@@ -60,8 +66,8 @@ public class Player {
         return countNumMap;
     }
 
-    private static int getUnitNum(String num, int i) {
-        return num.charAt(i) - '0';
+    private static int getUnitNum(String num, int index) {
+        return num.charAt(index) - '0';
     }
 
 }

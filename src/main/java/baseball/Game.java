@@ -17,13 +17,12 @@ public class Game {
 
     public void gameStart() {
         // command 가 1이면 여전히 게임을 수행, 2이면 게임을 종료
-        int progress = 1;
         computer.pickRandomNumber();
         printer.printStartGame();
-        while (status.getProgress() == progress) {
+        while (status == GameStatus.PROGRESS) {
             printer.printEnterNumber();
-            int[] playerNumber = player.inputPlayerNums();
-            int[] result = getGameResult(playerNumber, computer.getComputerNums());
+            player.inputPlayerNums();
+            int[] result = getGameResult(player.getPlayerNumber(), computer.getComputerNums());
             printer.printResult(result);
             // 3스트라이크 라면 게임을 종료할지, 새로 시작할 지 결정 한다.
             if (result[1] == 3) {
