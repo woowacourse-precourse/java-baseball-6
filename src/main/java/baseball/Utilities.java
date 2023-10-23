@@ -26,4 +26,7 @@ public class Utilities {
         return set;
     }
 
+    public static int sizeOfSet(Set<String> set) {
+        return set.size();
+    }
 }

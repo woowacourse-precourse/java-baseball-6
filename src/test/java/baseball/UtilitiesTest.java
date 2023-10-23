@@ -40,4 +40,10 @@ class UtilitiesTest {
         Set<String> expectedSet = new HashSet<>(Arrays.asList("t", "o", "g", "l", "e"));
         Assertions.assertEquals(expectedSet, arrayToSet(array));
     }
+
+    @Test
+    public void sizeOfSetTest() {
+        Set<String> set = new HashSet<>(Arrays.asList("a", "p", "p", "l", "e"));
+        Assertions.assertEquals(sizeOfSet(set),4);
+    }
 }
