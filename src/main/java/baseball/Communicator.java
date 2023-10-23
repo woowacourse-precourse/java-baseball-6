@@ -64,4 +64,9 @@ public class Communicator {
     public void printTerminate() {
         System.out.println(TERMINATE_MESSAGE);
     }
+
+    public void printException(RuntimeException exception) {
+        System.out.println(exception.getMessage());
+        printTerminate();
+    }
 }
