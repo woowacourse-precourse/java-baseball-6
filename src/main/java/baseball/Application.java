@@ -22,7 +22,7 @@ public class Application {
             boolean isCorrect = app.checkInput(input);
 
             if (isCorrect) {
-                int[] gameResult = app.gameLogic(input, randomLists);
+                int[] gameResult = app.ballOrStrike(input, randomLists);
                 int ballCount = gameResult[0];
                 int strikeCount = gameResult[1];
 
@@ -32,17 +32,20 @@ public class Application {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String regameOrExit = readLine();
 
-                    if(regameOrExit.equals("1")) {
-                        randomLists = app.makeRandomLists();
+                    if (!regameOrExit.equals("1") && !regameOrExit.equals("2")) {
+                        throw new IllegalArgumentException("잘못된 수를 입력하셨습니다.");
                     }
+
+                    if(regameOrExit.equals("1")) randomLists = app.makeRandomLists();
+
                     if(regameOrExit.equals("2")) break;
+
                 }
             }
         }
-
     }
 
-    protected List<Integer> makeRandomLists(){
+    private List<Integer> makeRandomLists(){
         List<Integer> randomLists = new ArrayList<>();
 
         while (randomLists.size() < 3) {
@@ -56,11 +59,12 @@ public class Application {
         return randomLists;
     }
 
-    protected boolean checkInput(String input) {
-        if (input.length() == 3) {
-            char one = input.charAt(0);
-            char two = input.charAt(1);
-            char three = input.charAt(2);
+    private boolean checkInput(String input) {
+        char one = input.charAt(0);
+        char two = input.charAt(1);
+        char three = input.charAt(2);
+
+        if (input.length() == 3 && (one!='0' && two !='0' && three !='0')) {
 
             if (one != two && two != three && three != one) {
                 return true;
@@ -71,7 +75,7 @@ public class Application {
 
     }
 
-    protected int[] gameLogic(String input, List<Integer> randomLists) {
+    private int[] ballOrStrike(String input, List<Integer> randomLists) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -89,12 +93,10 @@ public class Application {
             }
         }
 
-        int[] result = {ballCount, strikeCount};
-
-        return result;
+        return new int[]{ballCount, strikeCount};
     }
 
-    protected String showResult(int ballCount, int strikeCount) {
+    private String showResult(int ballCount, int strikeCount) {
         if (ballCount != 0 && strikeCount == 0) {
             return ballCount + "볼";
         }
