@@ -1,25 +1,25 @@
 package baseball.service;
 
-import baseball.umpire.AllRightAnswer;
+import baseball.umpire.AllClear;
 import baseball.umpire.BaseBallUmpire;
 
 import java.util.List;
 
 public class UmpireService {
     private final BaseBallUmpire baseballUmpire = new BaseBallUmpire();
-    private final AllRightAnswer allRightAnswer = new AllRightAnswer();
+    private final AllClear allClear = new AllClear();
 
     public void umpire(String userAnswer, List<String> computer){
         baseballUmpire.umpire(userAnswer,computer);
         baseballUmpire.shouting();
     }
 
-    public boolean var(){
+    public boolean isThreeStrike(){
         return baseballUmpire.threeStrikeVAR();
     }
 
     public String decision(){
-        return allRightAnswer.restartOrExit();
+        return allClear.restartOrExit();
     }
 
 }

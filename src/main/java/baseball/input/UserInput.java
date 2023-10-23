@@ -5,9 +5,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class UserInput {
 
     private String input;
-    public UserInput(String userInput) {
-        this.input = userInput;
-    }
 
     public UserInput() {
     }

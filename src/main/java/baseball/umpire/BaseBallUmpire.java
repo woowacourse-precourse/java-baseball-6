@@ -6,14 +6,16 @@ public class BaseBallUmpire {
     private static int ball=0;
     private static int strike=0;
 
+    private String[] usersAnswer;
+
     public void umpire(String userAnswer, List<String> computer) {
         ball=0; strike=0;
 
-        String[] ans = userAnswer.split("");
+        usersAnswer = userAnswer.split("");
 
         for(int i =0; i<3;i++){
-            if(computer.contains(ans[i])){
-                if(ans[i].equals(computer.get(i))){
+            if(computer.contains(usersAnswer[i])){
+                if(usersAnswer[i].equals(computer.get(i))){
                     strike++;
                     continue;
                 }

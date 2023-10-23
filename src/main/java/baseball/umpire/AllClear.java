@@ -4,12 +4,11 @@ import baseball.input.ComputerInput;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class AllRightAnswer {
+public class AllClear {
     private String gameSet ="";
-    private ComputerInput computerInput = new ComputerInput();
+    private final ComputerInput computerInput = new ComputerInput();
+
     public String restartOrExit() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         computerInput.reset();
         gameSet = readLine();
 

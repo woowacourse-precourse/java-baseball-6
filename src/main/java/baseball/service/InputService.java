@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.input.ComputerInput;
 import baseball.input.UserInput;
-
 import java.util.List;
 
 public class InputService {

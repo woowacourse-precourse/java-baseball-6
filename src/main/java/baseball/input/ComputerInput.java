@@ -8,11 +8,6 @@ import java.util.List;
 public class ComputerInput {
     private static List<String> computer = new ArrayList<>();
 
-    public void reset() {
-        computer.clear();
-    }
-
-    //컴퓨터 값 입력
     public void create() {
 
         while (computer.size() < 3) {
@@ -25,5 +20,9 @@ public class ComputerInput {
 
     public List<String> value() {
         return computer;
+    }
+
+    public void reset() {
+        computer.clear();
     }
 }

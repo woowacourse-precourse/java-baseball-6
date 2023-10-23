@@ -1,13 +1,24 @@
 package baseball.service;
 
-import baseball.BaseBallGame;
-
 public class GameService {
-    private final BaseBallGame baseBallGame = new BaseBallGame();
-    public void play(){
+
+    private final UmpireService umpireService = new UmpireService();
+    private final InputService inputService = new InputService();
+    private final MessageService message = new MessageService();
+
+    public String start(){
+        message.gameStart();
+        inputService.computerAnswer();
+
         while(true){
-            String result = baseBallGame.start();
-            if(result.equals("게임 종료")) break;
+            message.numberInput();
+            inputService.userAnswer();
+
+            umpireService.umpire(inputService.getUser(),inputService.getComputer());
+            if(umpireService.isThreeStrike()){
+                message.gameOver();
+                return umpireService.decision();
+            }
         }
     }
 }
