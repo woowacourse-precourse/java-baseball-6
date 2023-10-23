@@ -68,14 +68,15 @@ public class GameModel {
 
     // 사용자가 입력한 값이 숫자인지 확인한다.
     private void isNonDigit(List<String> playerNum) {
-        try {
-            for (String pNum : playerNum) {
+        playerNum.forEach(pNum -> {
+            try {
                 Integer.parseInt(pNum);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다. 게임이 종료됩니다.");
             }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다. 게임이 종료됩니다.");
-        }
+        });
     }
+
 
     // 사용자가 입력한 값이 3자리 숫자인지 확인한다.
     private void isThreeDigitNumber(List<String> playerNum) {
