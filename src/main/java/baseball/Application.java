@@ -21,7 +21,7 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             target.append(tmp.get(i));
         }
-        System.out.println(target); // 테스트용
+//        System.out.println(target); // 테스트용
     }
 
     public static void main(String[] args) {
