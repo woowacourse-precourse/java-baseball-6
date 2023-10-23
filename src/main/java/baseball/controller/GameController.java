@@ -52,7 +52,7 @@ public class GameController {
     }
 
     private boolean isSuccess(GameResult result) {
-        return result.getStrike() == THREE;
+        return result.isThreeStrike();
     }
 
     private void gameInit() {

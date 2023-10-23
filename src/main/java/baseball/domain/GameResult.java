@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.constants.BaseballGameConstants.THREE;
 import static baseball.constants.BaseballGameConstants.ZERO;
 
 public class GameResult {
@@ -7,11 +8,11 @@ public class GameResult {
     private int strike = ZERO;
     private int ball = ZERO;
 
-    public void strike() {
+    public void plusStrike() {
         strike++;
     }
 
-    public void ball() {
+    public void plusBall() {
         ball++;
     }
 
@@ -33,5 +34,9 @@ public class GameResult {
 
     public boolean hasStrike() {
         return strike != ZERO;
+    }
+
+    public boolean isThreeStrike() {
+        return strike == THREE;
     }
 }
