@@ -31,7 +31,6 @@
 - service.isRestart() - 사용자가 재시작을 원하면 true, 원하지 않으면 false 을 반환한다.
 
 ### InputRepository.java
-- InputRepository : 인터페이스, InputRepositoryImpl : 구현체
 - Template 을 사용한다.
 - 해당하는 메세지와 검증메서드를 Template에 전달한다.
 
