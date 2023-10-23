@@ -7,6 +7,7 @@ import baseball.domain.input.error.InputException;
 import baseball.domain.output.Output;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Game {
     private final Input input;
@@ -45,6 +46,9 @@ public class Game {
         }
         if (!numbers.matches("[1-9]+")){
             throw new InputException(InputError.MUST_BE_DIGIT);
+        }
+        if (numbers.length() != Stream.of(numbers.split("")).distinct().count()){
+            throw new InputException(InputError.NEED_NON_DUPLICATE_NUMBERS);
         }
     }
 
