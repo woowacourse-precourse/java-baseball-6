@@ -26,7 +26,7 @@ public class GameController {
     }
 
     private void startRound(){
-        RoundResult roundResult = gameService.playRound(inputUser());
+        RoundResult roundResult = gameService.playRound(inputNumbers());
         outputView.printResult(getResultMessage(roundResult));
 
         if(roundResult.isFinish()){
@@ -37,7 +37,7 @@ public class GameController {
         startRound();
     }
 
-    private Numbers inputUser(){
+    private Numbers inputNumbers(){
         return new Numbers(inputView.inputNumbers());
     }
 
