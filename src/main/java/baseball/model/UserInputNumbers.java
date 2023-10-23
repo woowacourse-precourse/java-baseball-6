@@ -6,8 +6,6 @@ import java.util.List;
 
 public class UserInputNumbers {
 
-    private final int INPUT_NUMBER_LENGTH = 3;
-
     private final List<Number> userNumberList;
     private int strikeCount = 0;
     private int ballCount = 0;

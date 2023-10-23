@@ -2,12 +2,10 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.util.GameConstant;
 import baseball.util.NumberConstant;
 
 public class InputView {
-
-    public static final int NEW_GAME_CODE = 1;
-    public static final int END_GAME_CODE = 2;
 
     public String inputNumber() {
         String input = readLine();
@@ -64,7 +62,8 @@ public class InputView {
     }
 
     private void isValueOneOrTwo(String input) {
-        if (Integer.parseInt(input) != NEW_GAME_CODE && Integer.parseInt(input) != END_GAME_CODE) {
+        int gameCode = Integer.parseInt(input);
+        if (gameCode != GameConstant.NEW_GAME_CODE && Integer.parseInt(input) != GameConstant.END_GAME_CODE) {
             throw new IllegalArgumentException("1과 2중 입력해야 합니다.");
         }
     }

@@ -1,15 +1,12 @@
 package baseball.controller;
 
-import static baseball.view.InputView.END_GAME_CODE;
-
 import baseball.model.RandomNumbers;
 import baseball.model.UserInputNumbers;
+import baseball.util.GameConstant;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseBallController {
-
-    private final int GAME_END_STRIKE_COUNTS = 3;
 
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
@@ -20,7 +17,7 @@ public class BaseBallController {
     public void game() {
         do {
             play();
-        } while (inputView.askForNewGameOrEnd() != END_GAME_CODE);
+        } while (inputView.askForNewGameOrEnd() != GameConstant.END_GAME_CODE);
     }
 
     public void play() {
@@ -34,7 +31,7 @@ public class BaseBallController {
             strikeCount = userInputNumbers.countStrikes(randomNumbers);
             ballCount = userInputNumbers.countBalls(randomNumbers);
             outputView.printCountForBallsAndStrikes(ballCount, strikeCount);
-        } while (strikeCount != GAME_END_STRIKE_COUNTS);
+        } while (strikeCount != GameConstant.GAME_END_STRIKE_COUNT);
         outputView.printEndGame();
     }
 }
