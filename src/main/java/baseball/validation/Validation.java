@@ -10,14 +10,14 @@ public class Validation {
         if (isNumber(input) && isLengthThree(input) && isNotDuplicated(input) && isNotContainZero(input)) {
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Invalid input number");
     }
 
     public static void valiRestartInput(String restartInput) {
         if (isNumber(restartInput) && isLengthOne(restartInput) && isOneOrTwo(restartInput)) {
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Invalid restart input");
     }
 
     private static boolean isNumber(String input) {
@@ -30,10 +30,7 @@ public class Validation {
     }
 
     private static boolean isLengthThree(String input) {
-        if (input.length() == INPUT_LENGTH) {
-            return true;
-        }
-        return false;
+        return input.length() == INPUT_LENGTH;
     }
 
     private static boolean isNotDuplicated(String input) {
@@ -49,24 +46,15 @@ public class Validation {
     }
 
     private static boolean isNotContainZero(String input) {
-        if (!input.contains("0")) {
-            return true;
-        }
-        return false;
+        return !input.contains("0");
     }
 
     private static boolean isLengthOne(String restartInput) {
-        if (restartInput.length() == RESTART_INPUT_LENGTH) {
-            return true;
-        }
-        return false;
+        return restartInput.length() == RESTART_INPUT_LENGTH;
     }
 
     private static boolean isOneOrTwo(String restartInput) {
         int restartNumber = Integer.parseInt(restartInput);
-        if ((restartNumber == 1) || (restartNumber == 2)){
-            return true;
-        }
-        return false;
+        return (restartNumber == 1) || (restartNumber == 2);
     }
 }
