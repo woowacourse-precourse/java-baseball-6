@@ -17,6 +17,10 @@ public class BaseballGameCountsMessage {
         if (ballCounts > 0) {
             editMessage(String.format("%d볼 ", ballCounts));
         }
+
+        if (strikeCounts == 0 && ballCounts == 0) {
+            editMessage("낫싱");
+        }
     }
 
     public void editMessage(String frag) {

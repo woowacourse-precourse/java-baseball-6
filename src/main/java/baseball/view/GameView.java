@@ -25,6 +25,6 @@ public class GameView {
     }
 
     public static void printBaseballGameCountsMessage(BaseballGameCountsMessage message) {
-        System.out.println(Objects.requireNonNullElse(message.getMessage(), "낫싱"));
+        System.out.println(message.getMessage());
     }
 }
