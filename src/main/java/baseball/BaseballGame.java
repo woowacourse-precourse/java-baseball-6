@@ -22,7 +22,7 @@ public class BaseballGame {
     }
 
     private static void showInputUserNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private static List<Integer> getUsetNumberList() {
