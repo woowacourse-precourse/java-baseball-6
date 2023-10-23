@@ -35,8 +35,8 @@ public class GameNumbersTest {
 
         @ParameterizedTest
         @ValueSource(ints = {0, 1, 2, 4, 5, 6, 7, 8, 9, 10})
-        @DisplayName("유효하지 않은 자리수일 경우 IllegalArgumentException 반환한다.")
-        public void 유효하지_않은_자리수일_경우_IllegalArgumentException_반환한다(int invalidSize) {
+        @DisplayName("유효하지 않은 자리수일 경우 IllegalArgumentException 발생한다.")
+        public void 유효하지_않은_자리수일_경우_IllegalArgumentException_발생한다(int invalidSize) {
             //given
             List<Integer> numbers = new ArrayList<>();
             for (int i = 0; i < invalidSize; i++) {
@@ -70,8 +70,8 @@ public class GameNumbersTest {
         }
 
         @Test
-        @DisplayName("숫자가 1 미만, 9 초과일 경우 IllegalArgumentException 반환한다.")
-        public void 숫자가_1_미만_9_초과일_경우_IllegalArgumentException_반환한다() {
+        @DisplayName("숫자가 1 미만, 9 초과일 경우 IllegalArgumentException 발생한다.")
+        public void 숫자가_1_미만_9_초과일_경우_IllegalArgumentException_발생한다() {
             //given
             List<Integer> includeZeroList = List.of(0, 2, 3);
             List<Integer> includeTenList = List.of(10, 2, 3);
@@ -90,8 +90,8 @@ public class GameNumbersTest {
     }
 
     @Test
-    @DisplayName("중복 숫자가 있을 경우 IllegalArgumentException 반환한다.")
-    public void 중복_숫자가_있을_경우_IllegalArgumentException_반환한다() {
+    @DisplayName("중복 숫자가 있을 경우 IllegalArgumentException 발생한다.")
+    public void 중복_숫자가_있을_경우_IllegalArgumentException_발생한다() {
         //given
         List<Integer> twoDuplicateNumbers = List.of(1, 1, 2);
         List<Integer> threeDuplicateNumbers = List.of(1, 1, 1);

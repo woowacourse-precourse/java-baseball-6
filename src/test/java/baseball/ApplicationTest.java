@@ -61,8 +61,8 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("숫자가 아닌 문자 입력은 예외가 발생한다.")
-        public void 숫자가_아닌_문자_입력은_예외가_발생한다() {
+        @DisplayName("숫자가 아닌 문자 입력은 IllegalArgumentException 발생한다.")
+        public void 숫자가_아닌_문자_입력은_IllegalArgumentException_발생한다() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("@@@@"))
                             .isInstanceOf(IllegalArgumentException.class)
@@ -71,8 +71,8 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("음수의 입력은 예외가 발생한다.")
-        public void 음수의_입력은_예외가_발생한다() {
+        @DisplayName("음수의 입력은 IllegalArgumentException 발생한다.")
+        public void 음수의_입력은_IllegalArgumentException_발생한다() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("-123"))
                             .isInstanceOf(IllegalArgumentException.class)
@@ -81,8 +81,8 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("세자리 숫자가 아닌 입력은 예외가 발생한다.")
-        public void 세자리_숫자가_아닌_입력은_예외가_발생한다() {
+        @DisplayName("세자리 숫자가 아닌 입력은 IllegalArgumentException 발생한다.")
+        public void 세자리_숫자가_아닌_입력은_IllegalArgumentException_발생한다() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("12345"))
                             .isInstanceOf(IllegalArgumentException.class)
@@ -91,8 +91,8 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("숫자의 범위가 1에서 9가 아닌 입력은 예외가 발생한다.")
-        public void 숫자의_범위가_1에서_9가_아닌_입력은_예외가_발생한다() {
+        @DisplayName("숫자의 범위가 1에서 9가 아닌 입력은 IllegalArgumentException 발생한다.")
+        public void 숫자의_범위가_1에서_9가_아닌_입력은_IllegalArgumentException_발생한다() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("012"))
                             .isInstanceOf(IllegalArgumentException.class)
@@ -101,8 +101,8 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("중복 숫자 입력은 예외가 발생한다.")
-        public void 중복_숫자_입력은_예외가_발생한다() {
+        @DisplayName("중복 숫자 입력은 IllegalArgumentException 발생한다.")
+        public void 중복_숫자_입력은_IllegalArgumentException_발생한다() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("112"))
                             .isInstanceOf(IllegalArgumentException.class)
@@ -111,8 +111,8 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("유효하지 않은 재시작 입력은 IllegalArgumentException 반환한다.")
-        public void 유효하지_않은_재시작_입력은_IllegalArgumentException_반환한다() {
+        @DisplayName("유효하지 않은 재시작 입력은 IllegalArgumentException 발생한다.")
+        public void 유효하지_않은_재시작_입력은_IllegalArgumentException_발생한다() {
             IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
                 assertRandomNumberInRangeTest(
                         () -> {

@@ -28,8 +28,8 @@ public class StatusTest {
     }
 
     @Test
-    @DisplayName("존재하지 않는 Status 입력 형식은 IllegalArgumentException 반환한다.")
-    public void 존재하지_않는_Status_입력_형식은_IllegalArgumentException_반환한다() {
+    @DisplayName("존재하지 않는 Status 입력 형식은 IllegalArgumentException 발생한다.")
+    public void 존재하지_않는_Status_입력_형식은_IllegalArgumentException_발생한다() {
         //given
         String invalidStatus = "0";
 
