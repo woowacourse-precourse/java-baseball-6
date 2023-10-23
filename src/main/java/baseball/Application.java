@@ -19,6 +19,7 @@ public class Application {
         return computer;
     }
     private static String evaluateBaseballGuess(List<Integer> answer, Integer guess) throws IllegalArgumentException{
+        if (guess < 123 || guess > 987) throw new IllegalArgumentException();
         int num_of_strikes = 0, num_of_balls = 0;
         List<Integer> guess_arr = new ArrayList<>(3);
         guess_arr.add(guess / 100);
@@ -38,7 +39,7 @@ public class Application {
         if (num_of_balls == 0 && num_of_strikes == 0) return "낫싱";
         if (num_of_strikes == 0) return num_of_balls + "볼";
         if (num_of_balls == 0) return num_of_strikes + "스트라이크";
-        return num_of_balls + "볼" + num_of_strikes + "스트라이크";
+        return num_of_balls + "볼 " + num_of_strikes + "스트라이크";
     }
     public static void main(String[] args) {
         String evaluate_result;
@@ -46,9 +47,8 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (!stop_flag) {
             List<Integer> baseball_num = createRandomBaseballNumber();
-            List<Integer> baseball_guess = new ArrayList<Integer>();
             while (true) {
-                try {
+                //try {
                     System.out.print("숫자를 입력해주세요 : ");
                     evaluate_result = evaluateBaseballGuess(baseball_num, Integer.valueOf(Console.readLine()));
                     System.out.println(evaluate_result);
@@ -63,13 +63,14 @@ public class Application {
                             break;
                         }
                     }
+                /*
                 } catch (IllegalArgumentException e) {
                     String exception_message = e.getMessage();
                     System.out.println("IllegalArgumentException " + exception_message);
                     stop_flag = true;
                     break;
                 }
-                /* finally{} */
+                */
             }
         }
         Console.close();
