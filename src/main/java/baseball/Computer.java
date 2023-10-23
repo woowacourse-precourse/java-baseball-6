@@ -26,14 +26,12 @@ public class Computer {
         int strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
-            char tmp = input.charAt(i);
-            int num = tmp - '0';
+            int num = input.charAt(i) - '0';
 
             if (answer.contains(num)) {
                 if (answer.get(i) == num) {
                     strikeCount++;
-                }
-                else {
+                } else {
                     ballCount++;
                 }
             }
