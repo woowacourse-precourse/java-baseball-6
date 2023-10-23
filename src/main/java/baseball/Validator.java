@@ -6,7 +6,9 @@ import static baseball.Type.STRIKE;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Validator {
   int randomNumber;
@@ -14,9 +16,68 @@ public class Validator {
   ArrayList<String> randomList = new ArrayList<>();
   ArrayList<Baseball> inputList = new ArrayList<>();
 
-  public Validator(int randomNumber, int inputNumber) {
+  public Validator(int randomNumber) {
     this.randomNumber = randomNumber;
-    this.inputNumber = inputNumber;
+  }
+
+  //야구공 숫자를 맞추는 대답을 작성하는 메서드
+  public String writeBaseballAnswer(String inputValue) {
+    validateContainsSpace(inputValue);
+    validateOnlyNumber(inputValue);
+    validateLengthThree(inputValue);
+    validateDuplicate(inputValue);
+    validateZero(inputValue);
+    return inputValue;
+  }
+
+  public String writeProgressAnswer(String inputValue) {
+    validateContainsSpace(inputValue);
+    validateOnlyNumber(inputValue);
+    validateOneOrTwo(inputValue);
+    return inputValue;
+  }
+
+  public void validateContainsSpace(String input) {
+    String trimmedValue = input.trim();
+    if(input.length() != trimmedValue.length()) {
+      throw new IllegalArgumentException("공백을 제거하고 입력해주세요.");
+    }
+  }
+
+  public void validateOnlyNumber(String input) {
+    try {
+      int inputInteger = Integer.parseInt(input);
+    } catch(IllegalArgumentException e) {
+      throw new IllegalArgumentException("숫자만 입력해주세요.");
+    }
+  }
+
+  public void validateLengthThree(String input) {
+    if(input.length() != 3) {
+      throw new IllegalArgumentException("3개의 숫자로 입력해주세요.");
+    }
+  }
+
+  public void validateDuplicate(String input) {
+    Set<Character> set = new HashSet<>();
+    for(char each : input.toCharArray()) {
+      set.add(each);
+    }
+    if(set.size() != input.length()) {
+      throw new IllegalArgumentException("서로 다른 3개의 숫자로 입력해주세요.");
+    }
+  }
+
+  public void validateZero(String input) {
+    if(input.contains("0")) {
+      throw new IllegalArgumentException("1과 9 사이의 숫자만 입력해주세요.");
+    }
+  }
+
+  public void validateOneOrTwo(String input) {
+    if(!(input.equals("1") || input.equals("2"))) {
+      throw new IllegalArgumentException("1과 2 중 하나만 선택해주세요.");
+    }
   }
 
   public void init() {
