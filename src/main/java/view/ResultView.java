@@ -21,7 +21,6 @@ import vo.ResultBall;
 
 public class ResultView {
     public static final int STRIKE_THREE = 3;
-
     public static final int STRIKE_ZERO = 0;
     public static final int BALL_THREE = 0;
     public static final int BALL_ZERO = 0;
