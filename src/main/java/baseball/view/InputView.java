@@ -36,7 +36,7 @@ public class InputView {
 
     private void isValidDigitRange(String input) {
         if (input.contains(NumberConstant.ZERO)) {
-            throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
+            throw new IllegalArgumentException("1에서 9사이가 아닌 값이 포함되어 있습니다.");
         }
     }
 
