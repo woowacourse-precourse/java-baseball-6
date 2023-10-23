@@ -39,15 +39,10 @@ public class GameService {
         ArrayList<Integer> parsingNumber = new ArrayList<>();
 
         for(char parsedChar : inputNumber.toCharArray()){
-            if(Character.isDigit(parsedChar)){
-                int number = Character.getNumericValue(parsedChar);
-                if(number <= 0)
-                    throw new IllegalArgumentException();
-                parsingNumber.add(number);
-            }
-            if(!Character.isDigit(parsedChar)){
+            if (!Character.isDigit(parsedChar) || parsedChar == '0') {
                 throw new IllegalArgumentException();
             }
+            parsingNumber.add(Character.getNumericValue(parsedChar));
         }
         return parsingNumber;
     }
