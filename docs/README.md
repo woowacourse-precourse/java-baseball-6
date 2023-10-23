@@ -63,8 +63,8 @@
 
 ---
 
-- [ ] JAVA 17버전
-- [ ] gradlew.bat clean test 통과
-- [ ] 입/출력 형식은 예와 동일한가
-- [ ] pickNumberInRange() 사용
-- [ ] readLine() 사용
+- [x] JAVA 17버전
+- [x] ./gradlew.bat clean test 통과
+- [x] 입/출력 형식은 예와 동일한가
+- [x] pickNumberInRange() 사용
+- [x] readLine() 사용
