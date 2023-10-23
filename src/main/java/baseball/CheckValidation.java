@@ -23,19 +23,19 @@ public class CheckValidation {
     }
 
     public void checkNumberValidation(String input) {
+        // 문자열 배열로 치환
+        String[] inputArr = input.split("");
         // 1. 입력값이 숫자인지 확인
-        checkIfNumber(input);
+        checkIfNumber(inputArr);
         // 2. 입력 길이 3인지 확인
-        checkLength(input);
+        checkLength(inputArr);
         // 3. 중복값을 입력했는지 확인
-        checkIfDuplicated(input);
+        checkIfDuplicated(inputArr);
         return;
     }
 
     // 1. 입력값이 숫자인지 확인
-    private void checkIfNumber(String input) {
-        // 문자열 배열로 치환
-        String[] inputArr = input.split("");
+    private void checkIfNumber(String[] inputArr) {
         String num = "123456789";
         for (String s : inputArr) {
             if (!num.contains(s)) {
@@ -46,9 +46,7 @@ public class CheckValidation {
     }
 
     // 2. 입력 길이 3인지 확인
-    private void checkLength(String input) {
-        // 문자열 배열로 치환
-        String[] inputArr = input.split("");
+    private void checkLength(String[] inputArr) {
         if (inputArr.length != 3) {
             throw new IllegalArgumentException(INVALID_INPUT.getMsg());
         }
@@ -56,9 +54,7 @@ public class CheckValidation {
     }
 
     // 3. 중복값을 입력했는지 확인
-    private void checkIfDuplicated(String input) {
-        // 문자열 배열로 치환
-        String[] inputArr = input.split("");
+    private void checkIfDuplicated(String[] inputArr) {
         Set<String> set = new HashSet<>();
         for (String s : inputArr) {
             set.add(s);
