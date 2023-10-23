@@ -1,5 +1,4 @@
-package baseball;
-
+package baseball.view;
 
 public class PrintMessage {
 

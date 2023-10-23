@@ -1,10 +1,8 @@
-package baseball;
+package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputMessage {
-
-    private final InputValidation inputValidation = new InputValidation();
 
     public String inputThreeNumber() {
         String threeNumber = Console.readLine();
