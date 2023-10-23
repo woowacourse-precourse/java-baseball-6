@@ -9,10 +9,9 @@ public class Referee {
     private final int BALL = 1;
     private final int NOTHING = 0;
 
-    public Referee(List<Integer> answerList) {
-        this.answerList = new ArrayList<>(answerList);
-    }
-
+//    public Referee(List<Integer> answerList) {
+//        this.answerList = new ArrayList<>(answerList);
+//    }
     public List<Integer> judgeUserInput(List<Integer> userInput) {
         int ball = 0;
         int strike = 0;
@@ -40,7 +39,9 @@ public class Referee {
         }
         return NOTHING;
     }
-
+    public void setAnswerList(List<Integer> answerList) {
+        this.answerList = answerList;
+    }
     public List<Integer> getAnswerList() {
         return answerList;
     }

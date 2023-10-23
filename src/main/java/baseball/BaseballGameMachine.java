@@ -8,6 +8,7 @@ public class BaseballGameMachine {
     private Message message = new Message();
     private NumberGenerator numberGenerator = new NumberGenerator();
     private InputValidation inputValidation = new InputValidation();
+    private Referee referee = new Referee();
 
     public String userInput() {
         return Console.readLine();
@@ -29,8 +30,9 @@ public class BaseballGameMachine {
     }
 
     public void gameProcess() {
-        Referee referee = new Referee(numberGenerator.generateRandomAnswerList());
-//        System.out.println(referee.getAnswerList());
+//        Referee referee = new Referee(numberGenerator.generateRandomAnswerList());
+        referee.setAnswerList(numberGenerator.generateRandomAnswerList());
+        System.out.println(referee.getAnswerList());
         boolean success = false;
         while (!success) {
             display(message.requestInput());

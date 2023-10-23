@@ -16,7 +16,8 @@ class RefereeTest {
         //given
         List<Integer> answerList = List.of(3, 8, 6);
         //when
-        Referee referee = new Referee(answerList);
+        Referee referee = new Referee();
+        referee.setAnswerList(answerList);
         //then
         assertThat(referee.getAnswerList()).isEqualTo(answerList);
         assertThat(referee.getAnswerList().size()).isEqualTo(3);
@@ -31,7 +32,8 @@ class RefereeTest {
         int secondNumber = 9;
         int thirdNumber = 2;
         List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
-        Referee referee = new Referee(answerList);
+        Referee referee = new Referee();
+        referee.setAnswerList(answerList);
         //when
         int result = referee.judgeNumber(firstNumber, 1);
         //then
@@ -46,7 +48,8 @@ class RefereeTest {
         int secondNumber = 9;
         int thirdNumber = 2;
         List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
-        Referee referee = new Referee(answerList);
+        Referee referee = new Referee();
+        referee.setAnswerList(answerList);
         //when
         int result = referee.judgeNumber(thirdNumber, 2);
         //then
@@ -62,7 +65,8 @@ class RefereeTest {
         int thirdNumber = 2;
         int notExistNumber = 5;
         List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
-        Referee referee = new Referee(answerList);
+        Referee referee = new Referee();
+        referee.setAnswerList(answerList);
         //when
         int result = referee.judgeNumber(notExistNumber, 2);
         //then
@@ -74,7 +78,8 @@ class RefereeTest {
     void judgeUserInputTest() {
         //given
         List<Integer> answerList = List.of(3, 7, 6);
-        Referee referee = new Referee(answerList);
+        Referee referee = new Referee();
+        referee.setAnswerList(answerList);
         List<Integer> userInput1 = List.of(3, 7, 6);
         List<Integer> userInput2 = List.of(7, 6, 3);
         List<Integer> userInput3 = List.of(3, 6, 7);
