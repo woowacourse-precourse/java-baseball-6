@@ -5,7 +5,6 @@ public class Constant {
     public static final String Input_Number = "숫자를 입력해주세요 : ";
     public static final String Game_Over = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String Restart_or_Exit = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String Brandnew_Game = "새로운 숫자 야구 게임을 시작합니다.";
     public static final String Exit_Game = "게임을 종료합니다.";
 
     public static final int Minimum_Range = 1;
@@ -23,6 +22,6 @@ public class Constant {
     public static final String Number_Overlap_Exception = "각 숫자는 중복이 안 됩니다.";
     public static final String Input_Type_Exception = "숫자(양수)를 입력해 주세요.";
     public static final String Input_Nothing = "입력된 내용이 없습니다.";
-    public static final String Input_Wrong = "잘못된 입력입니다.";
+    public static final String Input_Range_Exception = "올바른 범위의 입력값이 아닙니다.";
 
 }
