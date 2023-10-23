@@ -13,4 +13,21 @@ public class InputNumber {
         this.inputNumber = number;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        InputNumber nextNumber = (InputNumber) obj;
+        int nextNumberValue = nextNumber.inputNumber;
+        return (nextNumberValue == this.inputNumber);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(inputNumber);
+    }
 }
