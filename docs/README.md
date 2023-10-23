@@ -14,8 +14,8 @@
 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
 ``` 
   - 게임에 사용할 숫자를 핸들링 하는 기능: `NumberController`
-  - 정답(난수)을 생성하는 기능
-    - 정답조건: 1부터 9까지 서로 다른 수로 이루어진 3자리 수
+    - 정답(난수)을 생성하는 기능: `NumberController.generateComputerNumberList`
+      - 정답조건: 1부터 9까지 서로 다른 수로 이루어진 3자리 수
     - 3자리 숫자의 각자리 숫자를 나누어 배열로 나누는 기능: `NumberController.splitter`
        - ex) 입력값: 123  ->  배열: {1,2,3}
   - 두 개의 배열을 비교하여 내부의 Int값 중 동일한 값이 있는지 확인하는 기능 `NumberController.compareNumberList`
