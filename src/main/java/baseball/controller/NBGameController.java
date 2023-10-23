@@ -14,15 +14,14 @@ public class NBGameController {
         InputView in = new InputView();
         OutputView out = new OutputView();
         // 게임 시작 메세지 출력하기
-        out.displayString("숫자 야구 게임을 시작합니다.");
+        out.displayStartMessage();
 
         // 숫자 생성하기
         Computer computer = Computer.generateRandomNumber();
         out.displayList(computer.getComputerNumber());
 
         // 사용자로부터 console 입력 받기
-        String user = in.inputString();
-        out.displayString(user);
+        String user = in.inputStringNumber();
 
         // 숫자 검증하기
         NumberValidation numberValidation = new NumberValidation();
@@ -36,6 +35,8 @@ public class NBGameController {
         BaseballCount baseballCount = new BaseballCount();
         List<Integer> comIntList = computer.getComputerNumber();
         Map<String, Integer> pitched = baseballCount.pitch(userIntList, comIntList);
-        pitched.forEach((k, v) -> System.out.print(k + " " + v));
+
+        // 결과 출력하기
+        out.displayResult(pitched.get("strike"), pitched.get("ball"));
     }
 }
