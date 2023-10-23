@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.Message.GAME_START;
+import static baseball.Message.INSERT_END_INPUT;
+import static baseball.Message.INSERT_GAME_INPUT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,20 +12,24 @@ public class Game {
     private static final int COMPUTER_NUMBERS_SIZE = 3;
     private static final int RANDOM_NUMBER_MIN = 1;
     private static final int RANDOM_NUMBER_MAX = 3;
+    private final IOService ioService;
+
+    public Game() {
+        this.ioService = new IOService();
+    }
 
     public void run() {
         do {
-            System.out.println("숫자 야구 게임을 시작합니다.");
+            ioService.println(GAME_START);
             Numbers computerNumbers = new Numbers(createComputerNumbers());
             Score score = new Score();
             while (score.isUserLose()) {
-                System.out.print("숫자를 입력해주세요 : ");
-                Numbers userNumbers = new Numbers(new GameInput().convertInputToUserNumbers());
+                GameInput gameInput = new GameInput(ioService.readInput(INSERT_GAME_INPUT));
+                Numbers userNumbers = new Numbers(gameInput.convertInputToUserNumbers());
                 score = computerNumbers.calculateScore(userNumbers);
-                System.out.println(score.getHint());
+                ioService.println(score.getHint());
             }
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        } while (new EndInput().isPressResume());
+        } while (new EndInput(ioService.readInput(INSERT_END_INPUT)).isPressResume());
     }
 
     private List<Integer> createComputerNumbers() {

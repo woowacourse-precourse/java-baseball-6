@@ -1,7 +1,5 @@
 package baseball;
 
-
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,16 +8,11 @@ public class GameInput {
     private static final String GAME_INPUT_RULE = "[0-9]{" + GAME_INPUT_SIZE + "}";
     private final String input;
 
-    public GameInput() {
-        String input = receiveUserInput();
+    public GameInput(String input) {
         validateInputSize(input);
         validateInputDigit(input);
         validateInputDuplicated(input);
         this.input = input;
-    }
-
-    private String receiveUserInput() {
-        return Console.readLine();
     }
 
     private void validateInputSize(String input) {

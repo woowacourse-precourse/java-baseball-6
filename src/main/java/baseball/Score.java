@@ -19,9 +19,9 @@ public class Score {
         String hint = ball + "볼 " + strike + "스트라이크";
 
         if (strike == STRIKE_WHEN_USER_WIN) {
-            hint = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            hint = Message.USER_WIN.text();
         } else if (ball == 0 && strike == 0) {
-            hint = "낫싱";
+            hint = Message.NOTHING.text();
         } else if (ball == 0) {
             hint = strike + "스트라이크";
         } else if (strike == 0) {
