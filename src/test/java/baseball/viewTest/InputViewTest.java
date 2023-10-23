@@ -1,42 +1,48 @@
 package baseball.viewTest;
 
-import baseball.view.InputView;
-import org.junit.jupiter.api.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.view.InputView;
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputViewTest {
+    private InputView inputView;
+
     @BeforeEach
-    public void setUp() {
-        System.setIn(new ByteArrayInputStream("".getBytes()));
+    public void generateInputView() {
+        inputView = new InputView();
     }
 
-    @AfterEach
-    public void tearDown() {
-        System.setIn(System.in);
-    }
+    @ParameterizedTest
+    @ValueSource(strings = {"123", "345"})
+    void 숫자입력_테스트(String num) {
 
-    @Test
-    void 숫자입력_테스트() {
-        String inputNum = "123";
-        InputStream in = new ByteArrayInputStream(inputNum.getBytes());
+        InputStream in = new ByteArrayInputStream(num.getBytes());
         System.setIn(in);
 
-        String UserInputNum = InputView.inputNum();
-        assertEquals(inputNum, UserInputNum.trim());
+        String inputNum = inputView.inputNum();
+
+        assertThat(inputNum).isEqualTo(num);
+        Console.close();
     }
 
-    @Test
-    void 재시작_숫자입력_테스트() {
-        String restartNum = "1";
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2"})
+    void 재시작_입력수_테스트(String restartNum) {
+
         InputStream in = new ByteArrayInputStream(restartNum.getBytes());
         System.setIn(in);
 
-        int UserRestartnum = InputView.restart();
-        System.out.println(UserRestartnum);
-        assertEquals(1, UserRestartnum);
+        String inputNum = inputView.restart();
+
+        assertThat(inputNum).isEqualTo(restartNum);
+        Console.close();
     }
+
+
 }
