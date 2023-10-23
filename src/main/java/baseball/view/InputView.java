@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class InputView {
+    private static final String END_COMMAND = "1";
+    private static final String RESTART_COMMAND = "2";
     private static final int INPUT_NUMBER_SIZE = 3;
 
     public static String readUserNumber() {
@@ -53,7 +55,14 @@ public class InputView {
         OutputView.printGameEndMessage();
         String inputCommand = Console.readLine();
 
+        checkEndCommandType(inputCommand);
 
         return Integer.parseInt(inputCommand);
+    }
+
+    private static void checkEndCommandType(String inputCommand) {
+        if (!inputCommand.equals(END_COMMAND) && !inputCommand.equals(RESTART_COMMAND)) {
+            throw new IllegalArgumentException("잘못된 종료 커멘드입니다.");
+        }
     }
 }
