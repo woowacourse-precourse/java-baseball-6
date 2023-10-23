@@ -9,7 +9,6 @@ public class Game {
     User user = new User();
 
     public void startGame() {
-        View.printStartGameMessage();
         gaming();
         askToPlayAgain();
     }
@@ -68,5 +67,4 @@ public class Game {
             View.printBallAndStrikeMessage(ball, strike);
         }
     }
-
 }
