@@ -10,7 +10,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static baseball.constant.MessageConst.*;
-import static baseball.constant.NumberConst.SUCCESS_STRIKE;
 
 /**
  * 유저의 입출력을 처리하는 컨트롤러
@@ -37,21 +36,8 @@ public class GameController {
     }
 
     public void checkStrikeOrBall(int ballCount, int strikeCount) {
-        StringBuilder sb = new StringBuilder();
-        if (ballCount == 0 && strikeCount == 0) {
-            sb.append(NOTHING);
-        }
-        if (ballCount != 0) {
-            sb.append(ballCount).append(BALL).append(" ");
-        }
-        if (strikeCount != 0) {
-            sb.append(strikeCount).append(STRIKE);
-        }
-        if (strikeCount == SUCCESS_STRIKE) {
-            sb.append("\n");
-            sb.append(SUCCESS_MSG);
-        }
-        System.out.println(sb);
+        StringBuilder outputResult = gameService.checkStrikeOrBall(ballCount, strikeCount);
+        System.out.println(outputResult);
     }
 
     public List<Integer> generateRandomDistinctThreeDigit() {
