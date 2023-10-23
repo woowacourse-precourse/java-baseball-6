@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,7 +8,36 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int start = 1;
+        while (start == 1) {
+            List<Integer> answer = createAnswer();
+            int[] count = new int[2];
+            while (count[1] != 3) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                validateUserInput(input);
+                List<Integer> userInput = parseUserInput(input);
+                count = checkAnswer(answer, userInput);
+                if (count[0] == 0 && count[1] == 0) {
+                    System.out.println("낫싱");
+                } else if (count[0] == 0) {
+                    System.out.printf("%d스트라이크%n", count[1]);
+                } else if (count[1] == 0) {
+                    System.out.printf("%d볼%n", count[0]);
+                } else {
+                    System.out.printf("%d볼 %d스트라이크%n", count[0], count[1]);
+                }
+                if (count[1] == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                }
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restart = Console.readLine();
+            validateReset(restart);
+            start = Integer.parseInt(restart);
+        }
+        System.out.println("게임을 종료합니다.");
     }
 
     private static List<Integer> createAnswer() {
