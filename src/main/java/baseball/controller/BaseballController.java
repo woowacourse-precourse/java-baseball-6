@@ -1,7 +1,18 @@
 package baseball.controller;
 
-public class BaseballController {
-        public void run() {
+import baseball.service.BaseballService;
+import global.Constants;
 
+public class BaseballController {
+
+        BaseballService baseballService = new BaseballService();
+        Constants constants = new Constants();
+
+        public void run() {
+                initGame(constants.SIZE, constants.START_NUMBER, constants.END_NUMBER);
+        }
+
+        private void initGame(int size, int start, int end) {
+                baseballService.initGame(size, start, end);
         }
 }
