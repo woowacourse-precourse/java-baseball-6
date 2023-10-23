@@ -1,7 +1,5 @@
 package baseball.model;
 
-import static baseball.model.Game.ZERO_COUNT;
-
 public class Ball {
     private int ballCount;
 
@@ -21,7 +19,7 @@ public class Ball {
         if (ballCount > 0) {
             return ballCount + "볼";
         }
-        return ZERO_COUNT;
+        return Constant.ZERO_COUNT;
     }
 
 }
