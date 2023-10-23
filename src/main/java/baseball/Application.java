@@ -9,24 +9,26 @@ public class Application {
     private static final int UPPER_BOUND = 9;
     private static final int LOWER_BOUND = 1;
 
-    static void validateDuplicates(List<Integer> list, int digit) {
-        if (list.contains(digit)) {
-            throw new IllegalArgumentException();
-        }
+    public static void main(String[] args) {
+        Player.size = ANSWER_SIZE;
+        Player.upperBound = UPPER_BOUND;
+        Player.lowerBound = LOWER_BOUND;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        do {
+            play();
+        } while (wantsReplay());
     }
 
-    static int parseInt(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-    }
+    static void play() {
+        Player pitcher = new Player();
+        int[] result;
 
-    static void validateRange(int parsedInput) {
-        if (parsedInput < LOWER_BOUND - 1 || parsedInput > Math.pow(10.0, ANSWER_SIZE)) {
-            throw new IllegalArgumentException();
-        }
+        do {
+            Player hitter = new Player(readNumber());
+            result = pitcher.compareWith(hitter);
+            printResult(result);
+        } while (!foundAnswer(result));
     }
 
     static List<Integer> readNumber() {
@@ -43,15 +45,24 @@ public class Application {
         return result;
     }
 
-    static boolean wantsReplay() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if (input.equals("1")) {
-            return true;
-        } else if (input.equals("2")) {
-            return false;
+    static int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+    }
+
+    static void validateRange(int parsedInput) {
+        if (parsedInput < LOWER_BOUND - 1 || parsedInput > Math.pow(10.0, ANSWER_SIZE)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static void validateDuplicates(List<Integer> list, int digit) {
+        if (list.contains(digit)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     static void printResult(int[] result) {
@@ -74,25 +85,14 @@ public class Application {
         return false;
     }
 
-    static void play() {
-        Player pitcher = new Player();
-        int[] result;
-
-        do {
-            Player hitter = new Player(readNumber());
-            result = pitcher.compareWith(hitter);
-            printResult(result);
-        } while (!foundAnswer(result));
-    }
-
-    public static void main(String[] args) {
-        Player.size = ANSWER_SIZE;
-        Player.upperBound = UPPER_BOUND;
-        Player.lowerBound = LOWER_BOUND;
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        do {
-            play();
-        } while (wantsReplay());
+    static boolean wantsReplay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            return true;
+        } else if (input.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }

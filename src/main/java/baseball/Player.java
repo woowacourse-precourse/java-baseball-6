@@ -32,7 +32,7 @@ public class Player {
 
     /**
      * 주어진 리스트와 같은 숫자를 가지는 Player 객체를 생성합니다.
-     * @param numbers
+     * @param numbers 제공할 리스트
      */
     public Player(List<Integer> numbers) {
         this.numbers = numbers;
