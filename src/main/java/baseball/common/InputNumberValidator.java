@@ -1,6 +1,6 @@
 package baseball.common;
 
-import static baseball.common.Constants.*;
+import static baseball.common.NumberConstants.*;
 
 public class InputNumberValidator {
 
