@@ -1,8 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,56 +16,29 @@ public class Application {
          * 6. 재시작/종료  : 1(새로 시작) 2 (종료) * System.exit()를 호출하지 않는다. -> break, continue 사용
          *
          * 7. println 에러 확인 : 2볼 0스트라이크 -> 2볼
+         *
+         * 기능 분리
+         * 1. 랜덤 숫자 만드는 걸 Computer class가 수행
+         * 2. if (resultArr[0] == 3 && print.finishGame(randomNumList) == 2) break; // 2. 정답 시, 조건 이중 for문 해결
          * */
 
-        List<Integer> computer = new ArrayList<>();
+        // 포함 관계
+        Computer computer = Computer.getComputer();
+        Print print = Print.getPrint();
+        GameResult gameResult = GameResult.getGameResult();
 
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) computer.add(randomNumber);
-        }
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> randomNumList = new ArrayList<>();
+
+        print.startGame();
 
         while (true) {
-            // random 수 설정
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) computer.add(randomNumber);
-            }
+            randomNumList = computer.makeRandomList(randomNumList); // random 수 설정
+            String inputValue = print.doGame(); // 초기 문구 및 사용자 값 받기
+            if (inputValue.length() > 3) throw new IllegalArgumentException(); // 예외 처리
+            int[] resultArr = gameResult.countResult(inputValue, randomNumList); // strike, ball 개수
 
-            // 초기 문구
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputValue = Console.readLine();
-
-            // 예외 처리
-            if (inputValue.length() > 3) throw new IllegalArgumentException();
-
-            // 스트라이크, 볼 개수 count
-            int strikeCnt = 0;
-            int bollCnt = 0;
-            char[] chars = inputValue.toCharArray();
-            for (int i = 0; i < computer.size(); i++) {
-                if (computer.get(i) == chars[i] - '0') strikeCnt++;
-                else if (computer.contains(chars[i] - '0')) bollCnt++;
-            }
-
-            // 출력 - 0개인 경우 세지 않는다.
-            if (strikeCnt + bollCnt == 0) System.out.println("낫싱");
-            else if (strikeCnt == 0 && bollCnt != 0) System.out.println(bollCnt + "볼");
-            else if (bollCnt == 0 && strikeCnt != 0) {
-                System.out.println(strikeCnt + "스트라이크");
-                if (strikeCnt == 3) {
-                    // 게임 재시작 or 종료
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    String choiceNum = Console.readLine();
-                    if (choiceNum.equals("1")) {
-                        computer.clear(); // list 비우기
-                        continue;
-                    }
-                    if (choiceNum.equals("2")) break;
-                }
-            } else System.out.println(bollCnt + "볼 " + strikeCnt + "스트라이크");
+            print.resultGame(resultArr); // 1. 결과 출력
+            if (resultArr[0] == 3 && print.finishGame(randomNumList) == 2) break; // 2. 정답출력 및 (재시작||종료)
         }
     } // main 끝
 }
