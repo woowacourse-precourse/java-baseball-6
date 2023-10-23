@@ -22,10 +22,11 @@ public class Application {
 
     private static void play() {
         List<Integer> computer = createRandomNumbers();
+        List<Integer> user;
         do {
             String input = Console.readLine();
-            List<Integer> user = parse(input);
         } while (false);
+            user = parse(input);
     }
 
     private static List<Integer> parse(String input) {
