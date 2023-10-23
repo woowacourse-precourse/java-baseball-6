@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.model.computer;
 
 import baseball.model.Score;
 import java.util.List;

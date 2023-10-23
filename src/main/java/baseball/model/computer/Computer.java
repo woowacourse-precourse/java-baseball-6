@@ -1,7 +1,6 @@
-package baseball.model;
+package baseball.model.computer;
 
-import baseball.util.NumberGenerator;
-import baseball.util.ScoreCalculator;
+import baseball.model.Score;
 import java.util.List;
 
 public class Computer {

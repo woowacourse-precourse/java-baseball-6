@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.Player;
 import baseball.model.Score;
+import baseball.model.computer.Computer;
+import baseball.model.player.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
