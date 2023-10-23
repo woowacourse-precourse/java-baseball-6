@@ -5,10 +5,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class BaseBallGame {
     private final BaseBallNumber computerNumber;
-    private Boolean isCorrect;
+    private boolean isCorrect;
     public BaseBallGame() {
         computerNumber = BaseBallNumber.generateRandomNumbers();
-        isCorrect = Boolean.FALSE;
+        isCorrect = false;
     }
 
     public BallCount play(String inputAnswer) {
@@ -17,7 +17,7 @@ public class BaseBallGame {
         return calculateStrikeAndBall(inputBaseBallNumber);
     }
 
-    public Boolean isFinished() {
+    public boolean isFinished() {
         return isCorrect;
     }
 
