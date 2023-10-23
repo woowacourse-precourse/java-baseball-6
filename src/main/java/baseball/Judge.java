@@ -5,18 +5,18 @@ import java.util.List;
 public class Judge {
     private int strike = 0;
     private int ball = 0;
-    List<Integer> computer;
-    List<Integer> userInputList;
+    List<Integer> answer;
+    List<Integer> guess;
 
-    public Judge(List<Integer> computer, List<Integer> userInputList) {
-        this.computer = computer;
-        this.userInputList = userInputList;
+    public Judge(List<Integer> answer, List<Integer> guess) {
+        this.answer = answer;
+        this.guess = guess;
     }
 
     public void calcResult() {
-        for (int i = 0; i < userInputList.size(); i++) {
-            if (computer.contains(userInputList.get(i))) {
-                if (computer.get(i).equals(userInputList.get(i))) {
+        for (int i = 0; i < guess.size(); i++) {
+            if (answer.contains(guess.get(i))) {
+                if (answer.get(i).equals(guess.get(i))) {
                     strike++;
                 } else {
                     ball++;
