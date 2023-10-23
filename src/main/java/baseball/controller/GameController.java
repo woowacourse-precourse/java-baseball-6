@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.dto.RoundResult;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -25,10 +26,11 @@ public class GameController {
     }
 
     private void startRound(){
-        String roundResult = gameService.playRound(inputUser());
-        outputView.printResult(roundResult);
+        RoundResult roundResult = gameService.playRound(inputUser());
+        outputView.printResult(roundResult.getResultMessage());
 
-        if(gameService.isFinishGame()){
+        if(roundResult.isFinish()){
+            gameService.finishGame();
             outputView.printFinishGameMessage();
             return;
         }

@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.dto.RoundResult;
 import baseball.model.Game;
 import baseball.vo.Numbers;
 import baseball.vo.Restart;
@@ -7,7 +8,7 @@ import baseball.vo.Restart;
 public class GameService {
     private Game game;
 
-    public String playRound(Numbers user){
+    public RoundResult playRound(Numbers user){
         createGameIfNotPlaying();
         return game.playRound(user);
     }
@@ -22,19 +23,7 @@ public class GameService {
         return restart.isContinue();
     }
 
-    public boolean isFinishGame(){
-        if(game==null){
-            throw new IllegalArgumentException("game이 진행되지 않았습니다.");
-        }
-
-        if(game.isFinishGame()){
-            finishGame();
-            return true;
-        }
-        return false;
-    }
-
-    private void finishGame(){
+    public void finishGame(){
         game=null;
     }
 }
