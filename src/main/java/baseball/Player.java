@@ -48,4 +48,14 @@ public class Player {
 
         return cnt;
     }
+
+    public static int countBall(List<Integer> computer, List<Integer> user, int size) {
+        int cnt = 0;
+
+        for (int i=0; i<size; i++) {
+            if (!Objects.equals(computer.get(i), user.get(i)) && computer.contains(user.get(i))) cnt++;
+        }
+
+        return cnt;
+    }
 }
