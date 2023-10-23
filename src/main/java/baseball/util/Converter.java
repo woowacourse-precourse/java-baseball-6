@@ -15,7 +15,7 @@ public class Converter {
     private Converter() {
     }
 
-    public static List<Integer> convertStringToIntegerList(final String string) {
+    public static List<Integer> stringToIntegerList(final String string) {
         validateCanConvertToInt(string);
         return Arrays.stream(string.split(EMPTY_STRING))
                 .map(Integer::parseInt)
@@ -28,7 +28,7 @@ public class Converter {
         }
     }
 
-    public static String convertIntegerListToString(final List<Integer> numbers) {
+    public static String integerListToString(final List<Integer> numbers) {
         return numbers.stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(EMPTY_STRING));
