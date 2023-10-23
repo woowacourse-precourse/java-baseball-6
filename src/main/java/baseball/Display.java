@@ -32,7 +32,7 @@ public class Display {
     public Numbers getUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         NumberInput numberInput = new NumberInput(Console.readLine().trim());
-        return new Numbers(numberInput);
+        return numberInput.getNumbers();
     }
     public boolean getRestartInput(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
