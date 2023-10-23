@@ -15,13 +15,12 @@ public class BaseBallGame {
 
     public static List<Integer> computer;
 
+    /* 야구 숫자 게임을 시작하는 메서드 */
     public void play() {
         startGame();
     }
-    private void readyGame() {
 
-    }
-
+    /* 컴퓨터 숫자를 만드는 메서드 */
     public static void makeComputerNumber() {
         computer = new ArrayList<>();
         while(computer.size() < 3) {
