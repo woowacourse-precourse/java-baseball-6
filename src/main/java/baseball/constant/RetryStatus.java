@@ -19,7 +19,7 @@ public enum RetryStatus {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public Integer getRetryCommand() {
+    public Integer toRetryCommand() {
         return this.retryCommand;
     }
 
