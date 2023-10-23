@@ -28,8 +28,15 @@ public class BaseBallService {
           ball_cnt++;
         }
       }
-      System.out.println(String.format("%d스트라이크 %d볼", strike_cnt, ball_cnt));
+      if(ball_cnt == 0 && strike_cnt == 0){
+        System.out.println("낫싱");
+      } else if (ball_cnt == 0) {
+        System.out.println(String.format("%d스트라이크", strike_cnt));
+      } else if (strike_cnt == 0) {
+        System.out.println(String.format("%d볼", ball_cnt));
+      }
     }while(strike_cnt != 3);
+    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
   }
   List<Integer> createComNums(){
     return Randoms.pickUniqueNumbersInRange(1,9,3);
