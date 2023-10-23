@@ -1,11 +1,8 @@
 package baseball.model.player;
 
-import baseball.constants.BaseballRole;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class Player {
 
@@ -30,17 +27,7 @@ public class Player {
                 .toList();
     }
 
-    public long compareBallCount(List<Integer> baseballNumbers) {
-        return IntStream.range(0, BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue())
-                .filter(i -> !Objects.equals(expectedNumbers.get(i), baseballNumbers.get(i)))
-                .filter(i -> baseballNumbers.contains(expectedNumbers.get(i)))
-                .count();
-    }
-
-    public long compareStrikeCount(List<Integer> baseballNumbers) {
-        return IntStream.range(0, BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue())
-                .filter(i -> Objects.equals(expectedNumbers.get(i), baseballNumbers.get(i)))
-                .count();
-
+    public List<Integer> getExpectedNumbers() {
+        return Collections.unmodifiableList(expectedNumbers);
     }
 }
