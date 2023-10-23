@@ -12,17 +12,10 @@ public class User {
         validateUserNumber(userNumber);
     }
 
-    public void createUserNumber(String userNumber){
-        this.userNumber = userNumber;
-        validateUserNumber(userNumber);
-    }
-
-
 
     public String getUserNumber(){
         return this.userNumber;
     }
-
 
 
     public void validateUserNumber(String userNumber) {

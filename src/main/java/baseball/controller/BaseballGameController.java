@@ -5,7 +5,13 @@ import baseball.domain.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+
 public class BaseballGameController {
+
+    public static final String ALL_STRIKE = "3";
+    public static final int STRIKE_COUNT_RESULT=1;
+
+
 
     private BaseballGame baseballGame;
     private Boolean RestartFlag = true;
@@ -29,7 +35,7 @@ public class BaseballGameController {
 
     public void gameResult(String [] results){
 
-        if (results[1].equals("3")) {
+        if (results[STRIKE_COUNT_RESULT].equals(ALL_STRIKE)) {
             OutputView.printAnswerMessage();
             OutputView.printRestartGameMessage();
             String input = InputView.readRestartNumberInput();
