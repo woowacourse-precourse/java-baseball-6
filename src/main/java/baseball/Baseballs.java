@@ -3,6 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Baseballs {
+    private static final String SIZE_ERROR_MESSAGE = "3자리 수가 아닙니다.";
+    private static final String DUPLICATION_ERROR_MESSAGE = "3개의 수가 서로 다르지 않습니다.";
     private final List<Baseball> baseballs;
 
     public Baseballs(final List<Integer> numbers) {
@@ -17,7 +19,7 @@ public class Baseballs {
 
     private void validateSize(final List<Integer> numbers) {
         if (numbers.size() != 3) {
-            throw new IllegalArgumentException("3자리 수가 아닙니다.");
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
     }
 
@@ -26,7 +28,7 @@ public class Baseballs {
                 .distinct()
                 .count();
         if (distinctCount != 3) {
-            throw new IllegalArgumentException("3개의 수가 서로 다르지 않습니다.");
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
         }
     }
 
