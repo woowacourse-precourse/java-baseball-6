@@ -18,7 +18,10 @@ public class UserNumberInputReader implements NumberInputReader {
 
     @Override
     public int[] readInput() {
-        return convertToIntArray(Console.readLine());
+        String number = Console.readLine();
+        preDigitValidation(number);
+
+        return convertToIntArray(number);
     }
 
     @Override
@@ -37,6 +40,12 @@ public class UserNumberInputReader implements NumberInputReader {
         }
 
         return result;
+    }
+
+    private void preDigitValidation(String number) {
+        if (number.length() != baseballGameProperty.digit()) {
+            throw new IllegalArgumentException("숫자 범위를 벗어났습니다.");
+        }
     }
 
 }
