@@ -9,6 +9,7 @@ public class Computer {
 
     List<Integer> baseballNumbers;
     private boolean isStrikeOut = false;
+    private static final int MAX_STRIKES = 3;
 
     public void generateBaseballNumbers() {
         initStrikeOut();
@@ -62,9 +63,9 @@ public class Computer {
     }
 
     private void checkStrikeOut(int strikeCount) {
-        if (strikeCount > 2) {
+        if (strikeCount >= MAX_STRIKES) {
             isStrikeOut = true;
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(MAX_STRIKES + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
