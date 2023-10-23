@@ -25,11 +25,10 @@ public class Application {
                     throw new IllegalArgumentException();
                 }
 
-                // 이번 라운드 게임 결과 출력
-                // 숫자를 3개 모두 맞혔을 경우 게임 종료
+                // 이번 라운드 게임 결과 출력 및 숫자를 3개 모두 맞혔을 경우 게임 종료
                 if (printRoundResult(computer, User.getNumberList())) {
                     printGameOverMessage();
-                    if (restartOrFinish().equals("2")) {
+                    if (isUserWantFinish()) {
                         isApplicationEnd = true;
                     }
                     break;
@@ -38,6 +37,15 @@ public class Application {
         } while (!isApplicationEnd);
 
         System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
+    }
+
+    /**
+     * 유저가 게임 종료를 원하면 true return
+     *
+     * @return 게임 종료 의사 여부
+     */
+    private static boolean isUserWantFinish() {
+        return (restartOrFinish().equals("2"));
     }
 
     /**
