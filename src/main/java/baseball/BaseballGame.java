@@ -33,7 +33,7 @@ public class BaseballGame {
     }
 
     private void play() {
-        System.out.println(PRINT_USER_INPUT);
+        System.out.print(PRINT_USER_INPUT);
         List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
                 .map(input -> convertStringToInteger(input))
                 .toList();
