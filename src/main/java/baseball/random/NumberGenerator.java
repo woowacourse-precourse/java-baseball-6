@@ -1,4 +1,4 @@
-package baseball;
+package baseball.random;
 
 public interface NumberGenerator {
     int generate();

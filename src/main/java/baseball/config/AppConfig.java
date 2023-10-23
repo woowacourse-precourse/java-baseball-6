@@ -1,4 +1,9 @@
-package baseball;
+package baseball.config;
+
+import baseball.controller.GameController;
+import baseball.random.NumberGenerator;
+import baseball.random.RandomNumberGenerator;
+import baseball.service.BaseballGame;
 
 public class AppConfig {
     public GameController gameController(){

@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.service.BaseballGame;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
