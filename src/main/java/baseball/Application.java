@@ -6,6 +6,7 @@ public class Application {
         NumberBaseball game = new NumberBaseball();
         game.printMessage();
 
+        game.setComputerRandomNumber();
         game.setInputNumberMessage();
         game.getNumberFromUser();
     }

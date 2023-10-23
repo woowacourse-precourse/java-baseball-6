@@ -6,11 +6,13 @@ public class NumberBaseball {
     private Status status;
     private Message message;
     private User user;
+    private Computer computer;
 
     public NumberBaseball() {
         this.status = Status.START;
         this.message = Message.START_MESSAGE;
         this.user = new User();
+        this.computer = new Computer();
     }
 
     public void printMessage() {
@@ -30,5 +32,9 @@ public class NumberBaseball {
         if (!user.validateNumber(numberFromUser)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void setComputerRandomNumber() {
+        computer.setRandomNumber();
     }
 }
