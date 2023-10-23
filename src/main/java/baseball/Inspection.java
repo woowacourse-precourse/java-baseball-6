@@ -52,6 +52,15 @@ public class Inspection {
         inputExceptionTest(input);
         return input;
     }
+    public int RestartInput() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        int intValue = Integer.parseInt(input);
+        if (intValue < 1 || intValue > 2) {
+            throw new IllegalArgumentException("1또는 2만 입력하세요.");
+        }
+        return intValue;
+    }
     public List<Integer> userInputToList(){
         String userInput = userInput();
         List<Integer> userInputList =userInput.chars().mapToObj(Character::getNumericValue).collect(Collectors.toList());

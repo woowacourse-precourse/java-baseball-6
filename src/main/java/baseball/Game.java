@@ -31,6 +31,7 @@ public class Game {
         return flag;
     }
     public void play(List<Integer> comList, List<Integer> userList) {
+        flag = false;
         int strikes = 0;
         int balls = 0;
         placeMatch(comList, userList, strikes, balls);
