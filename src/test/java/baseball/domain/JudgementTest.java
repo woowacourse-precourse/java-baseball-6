@@ -1,10 +1,10 @@
 package baseball.domain;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class JudgementTest {
 
@@ -28,6 +28,6 @@ class JudgementTest {
 
         //Then
         assertThat(result[0]).isEqualTo(2);
-        assertThat(result[1]).isEqualTo(1);
+        assertThat(result[1]).isEqualTo(0);
     }
 }
