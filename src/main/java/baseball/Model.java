@@ -3,7 +3,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Model{
     private static final int NUM_SIZE = 3;
@@ -11,6 +13,7 @@ public class Model{
     private static final String STRIKE_SENTENCE = "스트라이크 ";
     private static final String NOTING_SENTENCE = "낫싱 ";
     private static final String ANSWER_SENTENCE = "3개의 숫자를 모두 맞히셨습니다 ! 게임 종료";
+    private static final String ERR_SENTENCE = "유효하지 않은 숫자입니다.";
     View view = new View();
     public List<Integer> initComputerNum(){
         List<Integer> computer = new ArrayList<>();
@@ -26,8 +29,44 @@ public class Model{
     public List<Integer> initPlayerNum(){
         view.inputText();
         String inputNum = Console.readLine();
+        isValidUserInput(inputNum);
 
         return stringToArrayList(inputNum);
+    }
+    public void isValidUserInput(String input){
+        isDuplicate(input);
+        isNumber(input);
+        isThreeNum(input);
+        isZeroNum(input);
+    }
+    public void isThreeNum(String input){
+        if(input.length() != NUM_SIZE){
+            throw new IllegalArgumentException(ERR_SENTENCE);
+        }
+    }
+    public void isDuplicate(String input){
+        Set<Character> set = new HashSet<>();
+        for(char checknum : input.toCharArray()){
+            set.add(checknum);
+        }
+        if(set.size() != input.length()){
+            throw new IllegalArgumentException(ERR_SENTENCE);
+        }
+    }
+    public void isNumber(String input){
+        for (char number : input.toCharArray()) {
+            if (!Character.isDigit(number)) {
+                throw new IllegalArgumentException(ERR_SENTENCE);
+            }
+        }
+
+    }
+    public void isZeroNum(String input){
+        for(int i=0; i<input.length(); i++){
+            if(input.charAt(i) == '0'){
+                throw new IllegalArgumentException(ERR_SENTENCE);
+            }
+        }
     }
 
     public List<Integer> stringToArrayList(String input){
