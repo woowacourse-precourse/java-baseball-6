@@ -15,15 +15,15 @@ public class GameService {
         numbers.clear();
         while (Config.isNotMaxNumbers(numbers.size())) {
             int randomNumber = Randoms.pickNumberInRange(Config.getStartInclusive(), Config.getEndInclusive());
-            if (isNotDuplicated(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            addIfNotDuplicated(randomNumber);
         }
         return new BaseballNumbers(numbers);
     }
 
-    private boolean isNotDuplicated(int randomNumber) {
-        return !numbers.contains(randomNumber);
+    private void addIfNotDuplicated(int randomNumber) {
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 
     public Result compare(BaseballNumbers computerNumbers, BaseballNumbers userNumbers) {

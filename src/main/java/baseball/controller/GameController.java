@@ -13,7 +13,7 @@ public class GameController {
     BaseballNumbers computerNumbers;
     private static boolean playing = true;
 
-    public void init() {
+    private void init() {
         computerNumbers = service.generateNumbers();
     }
 
