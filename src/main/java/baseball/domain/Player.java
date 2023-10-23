@@ -20,10 +20,6 @@ public class Player {
 		this.balls = new Balls(mapToList(numbers));
 	}
 
-	public Player updateBalls(final String numbers) {
-		return new Player(numbers);
-	}
-
 	private List<Integer> mapToList(final String numbers) {
 		return Arrays.stream(numbers.split(DELIMITER))
 					 .map(Integer::parseInt)
