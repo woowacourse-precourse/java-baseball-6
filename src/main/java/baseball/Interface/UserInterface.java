@@ -15,6 +15,7 @@ public class UserInterface {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
+            baseballGame.resetGame(); // 분리해서 더 명확하게 작성할 부분 발견
             startGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = console.readLine();
@@ -25,6 +26,15 @@ public class UserInterface {
                 throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
             }
         }
+    }
+
+    // 여기서 객체지향적으로 분리할 부분이 많이 생긴다.
+    private void startGame() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = console.readLine();
+        baseballGame.saveInput(input);
+        baseballGame.compareNumber();
+        baseballGame.getBallInput();
     }
 
 }
