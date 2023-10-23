@@ -18,7 +18,14 @@ public class Application {
         System.out.println(compNum);
 
         while(true) {
-            int insertNum = Integer.parseInt(consoleProgramming());
+            String num = "";
+            while(true) {
+                num = consoleProgramming();
+                if (num.length() >= 4) throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+                else break;
+            }
+            int insertNum = Integer.parseInt(num);
+
             Point pointNums = checkNums(compNum, insertNum);
 
             boolean isEnd = checkShing(pointNums);
