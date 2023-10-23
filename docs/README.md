@@ -45,55 +45,53 @@
 - Model
   - GameNumbers
     - 컴퓨터가 만들어낸 수 또는 사용자가 입력한 3자리 수를 저장하는 객체다.
-      - 역할 : 3자리 수를 관리
-      - 책임 : 컴퓨터가 생성한 정답 또는 사용자가 입력한 수를 저장하고 관리한다.
-      - 상호작용 : Baseball
-      - BaseballGame, AnswerGenerator
+      - 역할 : 3자리 수를 관리한다.
+      - 책임 :
+        - 컴퓨터가 생성한 정답 또는 사용자가 입력한 수를 저장하고 관리한다.
+        - 다른 GameNumbers와 스스로를 비교하는 메서드를 제공한다.
+      - 상호작용 :BaseballGame, AnswerGenerator
   - AnswerGenerator
     - 게임의 정답을 만드는 객체다.
-      - 역할: 게임의 정답을 생성한다.
-      - 책임: 1~9의 서로 다른 숫자로 이루어진 3자리 수를 생성한다.
-      - 상호작용 : Baseball
-      - BaseballGame, GameController, GameNumber
+      - RandomAnswerGenerator
+        - 랜덤으로 게임의 정답을 만드는 객체다.
+          - 역할: 랜덤으로 1~9의 서로 다른 숫자로 이루어진 게임의 정답을 생성한다.
+          - 책임: 서로 중복이 없는 숫자를 생성해야한다.
+          - 상호작용 : BaseballGame, GameController, GameNumber
   - Score
     - 점수를 저장하는 객체다.
       - 역할: 게임의 점수 상태를 관리한다.
-      - 책임: 스트라이크와 볼의 갯수를 저장한다.
-      - 상호작용 : Baseball
-      - BaseballGame, ScoreCalculator
+      - 책임: 
+        - 스트라이크와 볼의 갯수에 따라 적절한 String을 제공한다.
+        - 3스트라이크 인지 여부를 알려준다.
+      - 상호작용 : BaseballGame, ScoreCalculator
   - ScoreCalculator
     - 스트라이크와 볼을 계산한다.
-      - 역할: 스트라이크와 볼의 갯수를 계산
-      - 책임: 정답과 사용자의 입력을 사이의 스트라이크와 볼 갯수를 계산한다.
-      - 상호작용 : Baseball
-      - BaseballGame, GameNumber, Score
+      - 역할: 스트라이크와 볼의 갯수를 계산한다.
+      - 책임: 정답과 사용자의 숫자 사이의 스트라이크와 볼 갯수를 계산한다.
+      - 상호작용 : BaseballGame, GameNumber, Score
   - PlayerInput
   - 사용자의 입력을 저장하는 객체다.
     - NumberInput
       - 사용자의 3자리수 입력을 저장하는 객체이다.
         - 역할: 사용자의 3자리수 입력을 저장한다.
         - 책임: 정당한 입력인지를 검사해야한다.
-        - 상호작용: Baseball
-        - BaseballGame
+        - 상호작용: BaseballGame
     - RestartOrExitInput
       - 재시작/종료 입력을 저장하는 객체이다.
         - 역할: 사용자의 입력을 저장한다.
         - 책임: 정당한 입력인지를 검사해야한다.
-        - 상호작용: Baseball
-        - BaseballGame
+        - 상호작용: BaseballGame
 - View
   - InputView
     - 사용자의 입력을 받는 객체다.
       - 역할: 사용자 입력을 받는다.
       - 책임: 사용자 입력을 받는다.
-      - 상호작용 : Baseball
-      - BaseballGame, GameController
+      - 상호작용 : BaseballGame, GameController
   - OutputView
     - 사용자에게 보여줄 문구를 출력하는 객체다.
       - 역할: 사용자에게 문구를 출력한다.
       - 책임: 사용자에게 문구를 출력한다.
-      - 상호작용 : Baseball
-      - BaseballGame, GameController
+      - 상호작용 : BaseballGame, GameController
 - Controller
   - BaseballGame
     - 숫자 야구 게임의 핵심 객체다.
@@ -103,7 +101,6 @@
   - GameController
     - 게임의 시작 종료 재시작을 제어하는 객체다.
       - 역할: 게임의 시작과 종료를 제어한다.
-      - 책임: 게임의 시작, 종료, 재시작 등의 흐름을 관리
-      - 상호작용 : Baseball
-      - BaseballGame, InputView, OutputView, AnswerGenerator, RestartOrExitInput 
+      - 책임: 게임의 시작, 종료, 재시작 등의 흐름을 관리한다.
+      - 상호작용 : BaseballGame, InputView, OutputView, AnswerGenerator, RestartOrExitInput 
 
