@@ -39,8 +39,7 @@ public class NBGameController {
 
             out.displayEndMessage();
 
-            out.displayRestart();
-            restart = Integer.parseInt(in.inputStringNumber());
+            restart = Integer.parseInt(in.inputRestartNumber());
             restartNumberValidation.validateNumber(restart);
         }
     }
@@ -48,7 +47,7 @@ public class NBGameController {
     private void startGame(Computer computer) {
         int strike = 0;
         while (is3Strike(strike)) {
-            String user = in.inputStringNumber();
+            String user = in.inputBaseballNumber();
 
             numberValidation.validateNumber(user);
 
