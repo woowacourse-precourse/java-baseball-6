@@ -53,8 +53,8 @@ public class Display {
     }
     private boolean getOneOrTwo(String userInput){
         String trimUserInput = userInput.trim();
-        Validation.validateOneOrTwo(trimUserInput);
-        if(trimUserInput.equals("1")){
+        RestartInput restartInput = new RestartInput(trimUserInput);
+        if(restartInput.isOne()){
             return true;
         }
         printEndText();
