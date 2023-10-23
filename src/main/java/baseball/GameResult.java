@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Constant.BALL;
+import static baseball.Constant.MAX_NUMBER_LENGTH;
 import static baseball.Constant.NOTHING;
 import static baseball.Constant.STRIKE;
 
@@ -38,6 +39,6 @@ public class GameResult {
     }
 
     public boolean isWin() {
-        return strikeCount == 3;
+        return strikeCount == MAX_NUMBER_LENGTH;
     }
 }

@@ -4,6 +4,7 @@ import static baseball.Constant.END_MESSAGE;
 import static baseball.Constant.EXIT;
 import static baseball.Constant.INPUT_NUMBERS_MESSAGE;
 import static baseball.Constant.INPUT_RETRY_EXIT_MESSAGE;
+import static baseball.Constant.INVALID_CHOICE_MESSAGE;
 import static baseball.Constant.RETRY;
 import static baseball.Constant.START_MESSAGE;
 
@@ -44,7 +45,7 @@ public class BaseballGame {
     private void validateRetryExit(String playerChoice) {
         if (!Objects.equals(playerChoice, RETRY) &&
                 !Objects.equals(playerChoice, EXIT)) {
-            throw new IllegalArgumentException("1, 2만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(INVALID_CHOICE_MESSAGE);
         }
     }
 }

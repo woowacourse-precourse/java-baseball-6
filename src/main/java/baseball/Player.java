@@ -1,5 +1,11 @@
 package baseball;
 
+import static baseball.Constant.INVALID_DUPLICATE_MESSAGE;
+import static baseball.Constant.INVALID_FORMAT_MESSAGE;
+import static baseball.Constant.INVALID_LENGTH_MESSAGE;
+import static baseball.Constant.MAX_NUMBER_LENGTH;
+import static baseball.Constant.NUMERIC_PATTERN;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,22 +19,22 @@ public class Player {
 
     private void validateNumbers(String numbers) {
         if (!isValidNumeric(numbers)) {
-            throw new IllegalArgumentException("잘못된 형식입니다.");
+            throw new IllegalArgumentException(INVALID_FORMAT_MESSAGE);
         }
         if (!isValidLength(numbers)) {
-            throw new IllegalArgumentException("자릿수가 올바르지 않습니다.");
+            throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
         }
         if (!isDuplicate(numbers)) {
-            throw new IllegalArgumentException("중복된 수가 존재합니다.");
+            throw new IllegalArgumentException(INVALID_DUPLICATE_MESSAGE);
         }
     }
 
     private boolean isValidNumeric(String numbers) {
-        return numbers.matches("^[1-9]+$");
+        return numbers.matches(NUMERIC_PATTERN);
     }
 
     private boolean isValidLength(String numbers) {
-        return numbers.length() == 3;
+        return numbers.length() == MAX_NUMBER_LENGTH;
     }
 
     private boolean isDuplicate(String numbers) {
@@ -36,6 +42,6 @@ public class Player {
         for (char element : numbers.toCharArray()) {
             uniqueDigits.add(element);
         }
-        return uniqueDigits.size() == 3;
+        return uniqueDigits.size() == MAX_NUMBER_LENGTH;
     }
 }
