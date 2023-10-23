@@ -1,12 +1,12 @@
 package baseball.common;
 
+import static baseball.common.Number.*;
+
 public class InputNumberValidator {
 
     public static final String WRONG_INPUT_TYPE_MESSAGE = "1~9 사이의 숫자만 입력 가능합니다.";
-    public static final String WRONG_INPUT_SIZE_MESSAGE = "세자리 숫자를 입력해주세요.";
+    public static final String WRONG_INPUT_SIZE_MESSAGE = "세자리를 입력해주세요.";
     public static final String WRONG_INPUT_UNIQUE_MESSAGE = "서로 다른 숫자만 입력 가능합니다.";
-    public static final int NUMBER_LENGTH = 3;
-    private static final int NUMBER_RANGE_MAX = 9;
     public static final char NUMBER_RANGE_MIN_CHARACTER = '1';
     public static final char NUMBER_RANGE_MAX_CHARACTER = '9';
 
@@ -39,12 +39,12 @@ public class InputNumberValidator {
     }
 
     private static boolean isThreeLetters(String inputNumber) {
-        if(inputNumber.length() != NUMBER_LENGTH) return false;
+        if(inputNumber.isEmpty() || inputNumber.length() != 3) return false;
         return true;
     }
 
     private static boolean isUniqueCharacters(String inputNumber) {
-        boolean[] isContained = new boolean[NUMBER_RANGE_MAX+1];
+        boolean[] isContained = new boolean[NUMBER_RANGE_MAX.getValue()+1];
 
         for(int i=0; i<inputNumber.length(); i++) {
             int number = Character.getNumericValue(inputNumber.charAt(i));

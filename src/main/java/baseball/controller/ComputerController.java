@@ -6,6 +6,7 @@ import baseball.model.BallAndStrikeCount;
 import baseball.model.ComputerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class ComputerController {
