@@ -38,20 +38,14 @@ public class Communicator {
         return inputNumbers;
     }
 
-    public void printResult(Map<String, Integer> counts) {
-        //TODO: hard coded string to something else
-        int ballCount = counts.get("ballCount");
-        String result = "";
-        if (ballCount > 0) {
-            result += ballCount + "볼 ";
-        }
+    public void printResult(Map<Count, Integer> counts) {
+        int ballCount = counts.get(Count.BALL);
+        String ballMark = Count.BALL.getCountMarkFrom(ballCount);
 
-        int strikeCount = counts.get("strikeCount");
-        if (strikeCount > 0) {
-            result += strikeCount + "스트라이크";
-        }
+        int strikeCount = counts.get(Count.STRIKE);
+        String strikeMark = Count.STRIKE.getCountMarkFrom(strikeCount);
 
-        System.out.println(result);
+        System.out.println(ballMark + strikeMark);
 
         if (strikeCount == 3) {
             System.out.println(USER_WIN_MESSAGE);
