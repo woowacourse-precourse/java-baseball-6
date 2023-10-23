@@ -30,4 +30,59 @@ public class Game {
         this.strike = 0;
     }
 
+    public void initGame() {
+        this.computer = new Computer();
+        this.player = new Player();
+        this.ball = 0;
+        this.strike = 0;
+
+        computer.createNumbers();
+    }
+
+    public void playGame() {
+        while (!threeStrike()) {
+            System.out.print(SYSTEM_INPUT_MASSAGE);
+            this.ball = 0;
+            this.strike = 0;
+            readPlayerNumber();
+            getHint();
+        }
+    }
+
+    public boolean isGameRestart() {
+        String endFlag = Console.readLine();
+
+        if (endFlag.equals(RESTART_STRING)) {
+            return true;
+        }
+        else if (endFlag.equals(END_STRING)) {
+            return false;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void readPlayerNumber() {
+        String playerNumString = Console.readLine();
+        if (playerNumString.length() > 3) {
+            throw new IllegalArgumentException();
+        }
+
+        player.setPlayerNumString(playerNumString);
+    }
+
+    public void run() {
+        System.out.println(SYSTEM_START_MASSAGE);
+        do {
+            initGame();
+            playGame();
+            System.out.println(SYSTEM_END_MASSAGE);
+        } while (isGameRestart());
+    }
+
+    private boolean threeStrike() {
+        return strike == 3;
+    }
+
 }
