@@ -2,21 +2,22 @@ package baseball.controller;
 
 import baseball.model.TargetNumber;
 import baseball.model.GameResult;
-import baseball.view.ConsoleInputView;
-import baseball.view.ConsoleOutputView;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+import java.util.List;
 
 public class BaseballGameController {
     private static final int BASEBALL_NUMBER_SIZE = 3;
-    private final ConsoleInputView consoleInputView;
-    private final ConsoleOutputView consoleOutputView;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public BaseballGameController(ConsoleInputView consoleInputView, ConsoleOutputView consoleOutputView) {
-        this.consoleInputView = consoleInputView;
-        this.consoleOutputView = consoleOutputView;
+    public BaseballGameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void play() {
-        consoleOutputView.gameStart();
+        outputView.gameStart();
 
         while (true) {
             matchingNumber(TargetNumber.randomInstance(BASEBALL_NUMBER_SIZE));
@@ -29,32 +30,32 @@ public class BaseballGameController {
 
     private void matchingNumber(TargetNumber computerNumber) {
         while (true) {
-            String inputNumber = requestNumber();
-            verifyInputNumber(inputNumber);
-            GameResult gameResult = computerNumber.calculateGameResult(inputNumber);
+            List<Integer> playerNumber = requestNumber();
+            verifyInputNumber(playerNumber);
+            GameResult gameResult = computerNumber.calculateGameResult(playerNumber);
 
-            consoleOutputView.showGameResult(gameResult);
+            outputView.showGameResult(gameResult);
 
             if (gameResult.isPerfectGame(BASEBALL_NUMBER_SIZE)) {
-                consoleOutputView.goodGame(BASEBALL_NUMBER_SIZE);
+                outputView.goodGame(BASEBALL_NUMBER_SIZE);
                 break;
             }
         }
     }
 
-    private String requestNumber() {
-        consoleOutputView.requestNumber();
-        return consoleInputView.request();
+    private List<Integer> requestNumber() {
+        outputView.requestNumber();
+        return inputView.getPlayerNumber();
     }
 
-    private void verifyInputNumber(String inputNumberText) {
-        if (inputNumberText.length() != BASEBALL_NUMBER_SIZE) {
+    private void verifyInputNumber(List<Integer> inputNumberText) {
+        if (BASEBALL_NUMBER_SIZE != inputNumberText.size()) {
             throw new IllegalArgumentException();
         }
     }
 
     private boolean isWantStopGame() {
-        consoleOutputView.moreGame(consoleInputView.moreGameText(), consoleInputView.stopGameText());
-        return consoleInputView.isWantStopGame();
+        outputView.areYouWantMoreGame(inputView.moreGameValue(), inputView.stopGameValue());
+        return inputView.isWantStopGame();
     }
 }
