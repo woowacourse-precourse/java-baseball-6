@@ -18,3 +18,13 @@
 - [ ] 사용자가 같은 숫자를 입력한 경우
 - [ ] 사용자가 게임이 끝난 경우 재시작/종료를 구분할때 1이나 2가 아닌 다른 숫자를 입력한 경우
 - [ ] 사용자가 0을 입력한 경우
+
+
+## 🧬 프로젝트 구조
+```
+baseball
+├── Application.java
+├── BaseBallGame.java
+├── Calculater.java
+└── GameState.java
+```
