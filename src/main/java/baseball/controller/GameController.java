@@ -1,7 +1,10 @@
 package baseball.controller;
 
+import baseball.model.Computer;
+import baseball.model.Number;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class GameController {
     private final InputView inputView;
@@ -13,6 +16,9 @@ public class GameController {
     }
 
     public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        outputView.printGameStart();
+        List<Integer> randomNumber = Number.getRandomNumber();
+        Computer computer = Computer.createComputerByNumber(randomNumber);
+        System.out.println(computer.getComputerNumber());
     }
 }
