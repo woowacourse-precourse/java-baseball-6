@@ -20,6 +20,7 @@ public class NumberBaseballService {
     }
 
     public void setPlayerNumbers(String playerNumber) {
+        player.init();
         player.setNumbers(stringToIntegerList(playerNumber));
     }
 

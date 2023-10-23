@@ -8,6 +8,12 @@ public class Player {
     private int ballCount = 0;
 
 
+    public void init() {
+        this.numbers = null;
+        this.strikeCount = 0;
+        this.ballCount = 0;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
@@ -65,5 +71,6 @@ public class Player {
     public boolean isBall() {
         return ballCount > 0;
     }
+
 }
 
