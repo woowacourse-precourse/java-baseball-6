@@ -38,4 +38,10 @@ public class User implements IPlayer {
 
         return convertStringToIntegerList(input);
     }
+
+    public Command selectCommand() {
+        String inputCommand = CONSOLE_INPUT.scan();
+
+        return Command.findCommand(inputCommand);
+    }
 }

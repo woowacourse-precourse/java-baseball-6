@@ -78,4 +78,47 @@ class UserTest {
             .hasMessage("입력값은 정수이어야 합니다.");
     }
 
+    @Test
+        public void 유저는_게임_명령어_1을_입력할_수_있음() {
+        // given
+        String input = "1";
+        ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
+
+        // when
+        System.setIn(mockInput);
+        Command command = user.selectCommand();
+
+        // then
+        assertEquals(Command.RESTART, command);
+    }
+
+    @Test
+    public void 유저는_게임_명령어_2를_입력할_수_있음() {
+        // given
+        String input = "2";
+        ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
+
+        // when
+        System.setIn(mockInput);
+        Command command = user.selectCommand();
+
+        // then
+        assertEquals(Command.END, command);
+    }
+
+    @Test
+    public void 유저가_잘못된_게임_명령어를_입력하면_예외가_발생함() {
+        // given
+        String input = "3";
+        ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
+
+        // when
+        System.setIn(mockInput);
+
+        // then
+        assertThatThrownBy(() -> user.selectCommand())
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("잘못된 명령어를 입력했습니다.");
+    }
+
 }
