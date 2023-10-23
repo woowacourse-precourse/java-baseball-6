@@ -9,29 +9,28 @@ import java.util.stream.Collectors;
 public class BaseballGameController {
 
     private BaseballGameViewer viewer;
+    private BaseballGameService service;
 
-    private int strikes;
-    private int balls;
-
-    public BaseballGameController(BaseballGameViewer viewer) {
+    public BaseballGameController(BaseballGameViewer viewer, BaseballGameService service) {
         this.viewer = viewer;
+        this.service = service;
     }
 
     public void playGame() {
         boolean restart = true;
         while (restart) {
-            List<Integer> computerNumbers = generateComputerNumbers();
+            List<Integer> computerNumbers = service.generateComputerNumbers();
 
             boolean userflag = true;
 
             while (userflag) {
                 String input = viewer.getUserGuess();
-                List<Integer> userNumbers = parseInput(input);
-                countStrikes(computerNumbers, userNumbers);
-                countBalls(computerNumbers, userNumbers);
-                viewer.displayResult(strikes, balls);
+                List<Integer> userNumbers = service.parseInput(input);
+                service.countStrikes(computerNumbers, userNumbers);
+                service.countBalls(computerNumbers, userNumbers);
+                viewer.displayResult(service.getStrikes(), service.getBalls());
 
-                if (strikes == Variables.NUM.getValue()) {
+                if (service.getStrikes() == Variables.NUM.getValue()) {
                     userflag = false;
                 }
             }
@@ -40,47 +39,5 @@ public class BaseballGameController {
         }
     }
 
-    private List<Integer> generateComputerNumbers() {
-        List<Integer> list = new ArrayList<>();
-
-        while (list.size() < Variables.NUM.getValue()) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!list.contains(randomNumber)) {
-                list.add(randomNumber);
-            }
-        }
-
-        return list;
-    }
-
-    private List<Integer> parseInput(String input) {
-        if (input.length() != Variables.NUM.getValue()) {
-            throw new IllegalArgumentException(Variables.NUM.getValue() + "자리의 숫자를 입력해 주세요.");
-        }
-
-        return input.chars()
-                .mapToObj(ch -> Character.getNumericValue((char) ch))
-                .collect(Collectors.toList());
-    }
-
-    private void countStrikes(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        strikes = 0;
-
-        for (int i = 0; i < Variables.NUM.getValue(); i++) {
-            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
-                strikes++;
-            }
-        }
-    }
-
-    private void countBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        balls = 0;
-
-        for (int i = 0; i < Variables.NUM.getValue(); i++) {
-            if (!computerNumbers.get(i).equals(userNumbers.get(i)) && computerNumbers.contains(userNumbers.get(i))) {
-               balls++;
-            }
-        }
-    }
 }
 

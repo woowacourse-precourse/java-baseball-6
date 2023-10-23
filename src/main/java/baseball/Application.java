@@ -5,7 +5,8 @@ public class Application {
 
     public static void main(String[] args) {
         BaseballGameViewer viewer = new BaseballGameViewer();
-        BaseballGameController controller = new BaseballGameController(viewer);
+        BaseballGameService service = new BaseballGameService();
+        BaseballGameController controller = new BaseballGameController(viewer, service);
         controller.playGame();
     }
 
