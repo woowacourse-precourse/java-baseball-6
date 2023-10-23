@@ -40,8 +40,8 @@ public class Game {
             }
         }
         int randomNumber = 0;
-        for (int i = 0; i < computer.size(); i++) {
-            randomNumber += (computer.get(i) * (int) Math.pow(10, computer.size() - i - 1));
+        for (int digit : computer) {
+            randomNumber = randomNumber * 10 + digit;
         }
         return randomNumber;
     }
