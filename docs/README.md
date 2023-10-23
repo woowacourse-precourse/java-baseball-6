@@ -22,8 +22,8 @@
 
 2023.10.23.(MON)
 - 
-- 다양한 예외사항 목록 작성하기
-- 미션 기능위주 Application.java에 모두 작성
+- 다양한 예외사항 목록 작성하기 ✅
+- 미션 기능위주 Application.java에 모두 작성 ✅
 - 작성한 기능들을 class로 나누기
 - class로 나눈 기능들 제대로 작동하는지 test한 후 각 class 별 test code 작성
 - 
