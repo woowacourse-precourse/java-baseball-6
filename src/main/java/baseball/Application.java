@@ -20,7 +20,7 @@ public class Application {
 
             // 매 라운드 루프
             while (!isWin) {
-                // 유저 숫자 입력 및 생성
+                // 유저 숫자 입력 및 리스트 생성
                 List<Integer> user = generateUserNums();
 
                 // 게임 진행
@@ -29,9 +29,11 @@ public class Application {
                 // 게임 결과 출력
                 System.out.println(result);
 
-                // 게임 승리 시
-                if (result.getStrike() == 3) {
-                    isWin = true;
+                // 승리 판정
+                isWin = result.isWin();
+
+                // 승리한 경우 결과 표시
+                if (isWin) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String startOrEnd = readLine();

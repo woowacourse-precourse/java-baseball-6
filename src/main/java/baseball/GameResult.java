@@ -9,20 +9,16 @@ public class GameResult {
         this.strike = 0;
     }
 
-    public int getBall() {
-        return this.ball;
-    }
-
-    public int getStrike() {
-        return this.strike;
-    }
-
     public void addBall() {
         this.ball++;
     }
 
     public void addStrike() {
         this.strike++;
+    }
+
+    public boolean isWin() {
+        return this.strike == 3;
     }
 
     @Override
