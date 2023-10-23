@@ -5,9 +5,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class BaseBallGame {
     private final BaseBallNumber computerNumber;
-    public BaseBallGame(int digit) {
-        computerNumber = BaseBallNumber.generateRandomNumbers(digit);
+    private Boolean isCorrect;
+    public BaseBallGame() {
+        computerNumber = BaseBallNumber.generateRandomNumbers();
+        isCorrect = Boolean.FALSE;
     }
+
+    public BallCount play(String inputAnswer) {
+        BaseBallNumber inputBaseBallNumber = BaseBallNumber.parse(inputAnswer);
+
+        return calculateStrikeAndBall(inputBaseBallNumber);
+    }
+
+    public Boolean isFinished() {
+        return isCorrect;
+    }
+
     private BallCount calculateStrikeAndBall(BaseBallNumber inputBaseBallNumber) {
         AtomicInteger strike = new AtomicInteger(0);
         AtomicInteger ball = new AtomicInteger(0);
@@ -25,16 +38,11 @@ public class BaseBallGame {
                 })
         );
 
+        checkCorrect(computerNumber.getBaseBallNumberCount(), strike.get(), ball.get());
         return new BallCount(strike.get(), ball.get());
     }
 
-    public BallCount play(String inputAnswer) {
-        BaseBallNumber inputBaseBallNumber = BaseBallNumber.parse(inputAnswer);
-
-        return calculateStrikeAndBall(inputBaseBallNumber);
-    }
-
-    public boolean isCorrectedAnswer(int digit, BallCount ballCount) {
-        return ballCount.getStrike() == digit && ballCount.getBall() == 0;
+    private void checkCorrect(int ballCount, int strike, int ball) {
+        if(strike == ballCount && ball == 0) isCorrect = true;
     }
 }
