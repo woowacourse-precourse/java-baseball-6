@@ -15,10 +15,11 @@ public class BaseballGame {
     private static final Integer COUNT_NUMBER = 3;
 
     public void start() {
+        List<Integer> baseballNumbers = this.generateBaseballNumbers();
         while (true) {
-            List<Integer> baseballNumbers = this.generateBaseballNumbers();
             List<Integer> playerNumbers = this.pickThreeNumbers();
             int[] hits = this.checkHitsResult(baseballNumbers, playerNumbers);
+            this.printResult(hits);
         }
     }
 
@@ -62,5 +63,22 @@ public class BaseballGame {
             }
         }
         return hits;
+    }
+
+    private void printResult(int[] hits) {
+        StringBuilder message = new StringBuilder();
+
+        if (hits[0] > 0) {
+            message.append(hits[0]).append("볼 ");
+        }
+        if (hits[1] > 0) {
+            message.append(hits[1]).append("스트라이크");
+        }
+
+        if (message.isEmpty()) {
+            message.append("낫싱");
+        }
+
+        System.out.println(message);
     }
 }
