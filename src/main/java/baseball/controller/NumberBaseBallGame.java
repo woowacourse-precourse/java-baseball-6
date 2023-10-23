@@ -28,7 +28,6 @@ public class NumberBaseBallGame {
             DuplicateAllowancePolicy duplicateAllowancePolicy,
             DigitPolicy digitPolicy
     ) {
-
         this.rule = new Rule(numberGeneratePolicy, duplicateAllowancePolicy, digitPolicy);
         this.console = new Console(input, output);
     }
@@ -39,7 +38,7 @@ public class NumberBaseBallGame {
 
         while (true) {
             String number = console.getNumber();
-            User user = new User(number,rule);
+            User user = new User(number, rule);
             Result result = computer.calculateResult(user);
             console.printGameResult(result.strikeCount(), result.ballCount());
 

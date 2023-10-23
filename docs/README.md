@@ -87,7 +87,7 @@
    - 1~9 범위의 수를 생성하는 정책을 가진다.
  - DuplicateAllowancePolicy (중복 허용 정책)
    - 중복을 허용하는 정책을 가진다.
- - NumberDigitPolicy (숫자 자리수 정책)
+ - DigitPolicy (숫자 자리수 정책)
    - 몇 자리의 숫자를 생성할 것인지 정책을 가진다.
 
 ## 개선사항
