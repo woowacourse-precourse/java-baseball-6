@@ -16,7 +16,7 @@ public class ComputerNumber {
         return computerNumber;
     }
 
-    //    랜덤 슷지 만들기
+    //    랜덤 슷자 만들기
     public void setComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {

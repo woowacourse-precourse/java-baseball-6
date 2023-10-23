@@ -4,20 +4,19 @@
 
 -----
 - 게임 시작 출력
-- 랜덤한 컴퓨터 수 생성 
+- 컴퓨터 난수 생성 
   - 제한 사항 
-    - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현 
-    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다. 
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다. 
-- 사용자에게 서로 다른 3자리 수 요청 
+    - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API` 사용하여 구현 
+    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 활용
+    - 사용자 입력은 `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
+- 사용자에게 `서로 다른 3자리 수` 요청
   - 제한 사항
-    - 숫자가 아니거나, 3자리가 아니거나, 중복 숫자가 있는 경우 `IllegalArgumentException을` 발생시킨다. 
-- 컴퓨터 수와 사용자 수 비교
-- 비교 결과에 따라 볼, 스트라이크, 낫싱 출력
-- 3스트라이크인 경우 게임 1회 종료
-- 사용자에게 재시작 여부 요청
+    - 숫자가 아니거나, 3자리가 아니거나, 중복 숫자가 있는 경우 `IllegalArgumentException` 발생
+- `컴퓨터 난수 생성값`과 `사용자 입력값` 비교
+- 비교 결과에 따라 `볼`, `스트라이크`, `낫싱` 출력
+- `3스트라이크`인 경우 게임 종료
+- 사용자에게 `재시작 여부` 요청
   - 제한 사항
-    - "1"인 경우 재시작, "2"인 경우 종료
     - 이외의 숫자나 숫자 타입이 아닌 경우 `IllegalArgumentException`을 발생시킨다.
 - 사용자 입력 값에 따라 재시작 또는 종료
 
