@@ -12,17 +12,29 @@ public class InputView {
     public static List<Integer> inputNumbers() {
         List<Integer> convertedNumber = new ArrayList<>();
         String input = Console.readLine();
-        if (input.length() != NUMBER_COUNT) {
-            throw new IllegalArgumentException();
-        }
+        validateLength(input);
         for (int i = 0; i < input.length(); i++) {
-            int digit = input.charAt(i) - '0';
-            if (convertedNumber.contains(digit)) {
-                throw new IllegalArgumentException();
-            }
+            int digit = getDigit(input, i);
+            validateDigit(convertedNumber, digit);
             convertedNumber.add(digit);
         }
         return convertedNumber;
+    }
+
+    private static void validateLength(String input) {
+        if (input.length() != NUMBER_COUNT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static int getDigit(String input, int i) {
+        return input.charAt(i) - '0';
+    }
+
+    private static void validateDigit(List<Integer> convertedNumber, int digit) {
+        if (convertedNumber.contains(digit)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static boolean restartGame() {
