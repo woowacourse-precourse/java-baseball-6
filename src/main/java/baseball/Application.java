@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.controller.GameController;
+import baseball.model.Command;
+import baseball.model.Computer;
+import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -12,17 +16,17 @@ public class Application {
     private static void startGame() {
         User user = new User();
         Computer computer = new Computer();
-        computer.selectRandomNumbers();
+        GameController gameController = new GameController();
 
         while (true) {
             user.inputNumber();
-            String hint = user.getHint(computer);
+            String hint = gameController.getGameResult(user, computer);
             System.out.println(hint);
             String command = checkGameOver(hint);
-            if (command.equals("1")) {
-                computer.selectRandomNumbers();
+            if (command.equals(Command.RESTART.getValue())) {
+                computer = new Computer();
             }
-            if (command.equals("2")) {
+            if (command.equals(Command.FINISH.getValue())) {
                 break;
             }
         }
