@@ -45,4 +45,12 @@ public class PlayResult {
     private long getCountOf(final CompareResult compareResult) {
         return countByResult.getOrDefault(compareResult, 0L);
     }
+
+    public boolean hasStrike() {
+        return getStrikes() > 0;
+    }
+
+    public boolean hasBall() {
+        return getBalls() > 0;
+    }
 }

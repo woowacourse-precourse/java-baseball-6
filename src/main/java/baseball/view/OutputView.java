@@ -27,10 +27,10 @@ public class OutputView {
     private static String formatResultMessage(final PlayResult result) {
         final StringJoiner sj = new StringJoiner(PLAY_RESULT_DELIMITER);
 
-        if (result.getBalls() > 0) {
+        if (result.hasBall()) {
             sj.add(formatBall(result));
         }
-        if (result.getStrikes() > 0) {
+        if (result.hasStrike()) {
             sj.add(formatStrike(result));
         }
         return sj.toString();
