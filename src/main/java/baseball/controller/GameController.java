@@ -47,10 +47,7 @@ public class GameController {
             // 결과 초기화
             result.clear();
             // 숫자를 입력해주세요 :
-            input.inputUserNumber();
-            // user에 초기화 후 userNumber 셋팅
-            user.resetUserNumber();
-            user.setUserNumber(input.getUserNumber());
+            user.setUserNumber(input.inputUserNumber());
             // 매칭 결과
             result = matchService.getResult(computer.getComNumber(), user.getUserNumber());
             // 맞췄을 때
