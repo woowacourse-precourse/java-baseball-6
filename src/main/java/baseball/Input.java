@@ -7,4 +7,8 @@ public class Input {
         String userInput = Console.readLine();
         return userInput;
     }
+
+    public int readUserChoice() {
+        return Integer.parseInt(Console.readLine());
+    }
 }
