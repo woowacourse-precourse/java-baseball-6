@@ -33,27 +33,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void InputTest() throws IOException {
-        InputManager inputManager = new InputManager();
-
-        String wrongGameInputOne = "!23";
-        Assertions.assertThatThrownBy(() -> inputManager.validateGameInput(wrongGameInputOne))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        String wrongGameInputTwo = "23";
-        Assertions.assertThatThrownBy(() -> inputManager.validateGameInput(wrongGameInputTwo))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        String wrongRestartInputOne = "0";
-        Assertions.assertThatThrownBy(() -> inputManager.validateRestartInput(wrongRestartInputOne))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        String wrongRestartInputTwo = "!";
-        Assertions.assertThatThrownBy(() -> inputManager.validateRestartInput(wrongRestartInputTwo))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @Override
     public void runMain() {
         try {

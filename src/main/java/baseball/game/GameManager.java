@@ -19,9 +19,6 @@ public class GameManager {
                 gameAnswer.add(randomNumber);
             }
         }
-        for(Integer i : gameAnswer) {
-            System.out.print(i);
-        }
     }
 
     public char[] generateHint(List<Integer> userInput) {

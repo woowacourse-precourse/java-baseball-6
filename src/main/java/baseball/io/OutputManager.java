@@ -17,6 +17,7 @@ public class OutputManager {
     public void printMessage(String messageCommand) {
         if(messageCommand.equals("game.input")) {
             System.out.print(commonMessage.getProperty(messageCommand));
+            System.out.println();
         } else {
             System.out.println(commonMessage.getProperty(messageCommand));
         }
@@ -26,24 +27,17 @@ public class OutputManager {
         StringBuilder sb = new StringBuilder();
         int strikeCount = countStrike(hintArr);
         int ballCount = countBall(hintArr);
-        boolean ballFlag = false;
-        boolean strikeFlag = false;
 
         if(hintArr[0] == 'N') {
             sb.append("낫싱");
         }
-
-        for(int idx = 1; idx < hintArr.length; idx++) {
-            if(hintArr[idx] == 'S' && strikeFlag == false) {
-                sb.append(strikeCount + "스트라이크 ");
-                strikeFlag = true;
-            }
-
-            if(hintArr[idx] == 'B' && ballFlag == false) {
-                sb.append(ballCount + "볼 ");
-                ballFlag = true;
-            }
+        if(ballCount != 0) {
+            sb.append(ballCount + "볼 ");
         }
+        if(strikeCount != 0) {
+            sb.append(strikeCount + "스트라이크 ");
+        }
+
         System.out.println(sb);
     }
 

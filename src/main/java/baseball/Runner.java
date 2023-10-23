@@ -28,6 +28,7 @@ public class Runner {
             }
         } catch (IllegalArgumentException e) {
             outputManager.printMessage("game.end.error");
+            throw  e;
         }
     }
 
