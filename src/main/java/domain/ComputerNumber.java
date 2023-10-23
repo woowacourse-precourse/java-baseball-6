@@ -22,7 +22,7 @@ public class ComputerNumber {
     }
 
     public Map<String, Integer> countAndGetResult(PlayerNumber playerNumberClass) {
-        List<Integer> playerNumbers = playerNumberClass.getPlayerNumberToList();
+        List<Integer> playerNumbers = playerNumberClass.playerNumbers;
         int strike = 0;
         int ball = 0;
         for (int i=0;i<computerNumbers.size();i++) {
