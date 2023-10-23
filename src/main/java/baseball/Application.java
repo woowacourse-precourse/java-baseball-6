@@ -9,7 +9,6 @@ public class Application {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다");
 
-            // 새로운 GivenNum 객체를 생성하여 새로운 무작위 숫자 생성
             GivenNum givenNum = new GivenNum();
             Judge judge = new Judge(givenNum);
 
@@ -36,7 +35,7 @@ public class Application {
             String input = Console.readLine();
 
             if (!input.equals("1")) {
-                break; // 게임 종료
+                break;
             }
         }
     }
