@@ -10,10 +10,11 @@ public class GameUtil {
     String answer;
     String userInput;
 
-    public GameUtil() {}
+    public GameUtil() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
     public void settingGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         this.answer = makeAnswer();
     }
 
