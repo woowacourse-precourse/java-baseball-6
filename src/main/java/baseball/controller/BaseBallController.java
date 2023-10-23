@@ -16,10 +16,10 @@ public class BaseBallController {
     private RandomNumbers randomNumbers;
     private UserInputNumbers userInputNumbers;
 
-    public void game() {
+    public void startGame() {
         do {
             play();
-        } while (inputView.askForNewGameOrEnd() != GameConstant.END_GAME_CODE);
+        } while (gameRestartCondition());
     }
 
     public void play() {
@@ -36,7 +36,15 @@ public class BaseBallController {
             ballCount = new Balls(randomNumbers, userInputNumbers).getBallCount();
 
             outputView.printCountForBallsAndStrikes(ballCount, strikeCount);
-        } while (strikeCount != GameConstant.GAME_END_STRIKE_COUNT);
+        } while (isNotGameEndCondition(strikeCount));
         outputView.printEndGame();
+    }
+
+    private boolean gameRestartCondition() {
+        return inputView.askForNewGameOrEnd() == GameConstant.NEW_GAME_CODE;
+    }
+
+    private boolean isNotGameEndCondition(int strikeCount) {
+        return strikeCount != GameConstant.GAME_END_STRIKE_COUNT;
     }
 }
