@@ -7,14 +7,19 @@ public class Baseball {
     final Validation validation = new Validation();
 
     public void run() {
+        boolean error = false;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNums = createRandomNumber();
-        System.out.println(computerNums);
 
         while (true) {
             System.out.print("숫자를 입력해주세요. : ");
             String userNum = camp.nextstep.edu.missionutils.Console.readLine();
-            validation.isValidate(userNum, "gaming");
+
+            if (!validation.runException(userNum, "gaming")) {
+                error = true;
+                break;
+            }
 
             int[] strikeBallNums = judgeStrikeOrBall(computerNums, userNum);
 
@@ -26,6 +31,10 @@ public class Baseball {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
+        }
+
+        if (!error && checkRestart()) {
+            run();
         }
     }
 
@@ -82,9 +91,8 @@ public class Baseball {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userAnswer = camp.nextstep.edu.missionutils.Console.readLine();
-        validation.isValidate(userAnswer, "game over");
 
-        if (userAnswer.equals("1")) {
+        if (validation.runException(userAnswer, "game over") && userAnswer.equals("1")) {
             flag = true;
         }
 
