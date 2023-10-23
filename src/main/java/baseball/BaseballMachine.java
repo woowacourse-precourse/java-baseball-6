@@ -25,22 +25,20 @@ public class BaseballMachine {
             while (true) {
                 String userInput = this.ui.insertNumber();
                 int[] userInputArray = this.userInputConvertIntArray(userInput);
-                int[] baseballTargetCount = this.ballAndStrikeCount(userInputArray);
+                BallCount ballCount = this.ballAndStrikeCount(userInputArray);
 
+                // TODO: Test 이후 삭제
                 System.out.println(Arrays.toString(randomValueArray));
-                this.ui.gameResult(baseballTargetCount);
+                this.ui.gameResult(ballCount);
 
-                if (baseballTargetCount[1] == 3) break;
+                if (ballCount.getStrike() == 3) break;
 
             }
             this.ui.winGame();
             String userChoicePostGameString = this.ui.selectGameProgress();
             int userChoicePostGame = this.convertUserChoicePostGame(userChoicePostGameString);
             if (userChoicePostGame == 2) break;
-
-
         }
-
     }
 
     private void createRandomValue() {
@@ -81,21 +79,22 @@ public class BaseballMachine {
         return intArray;
     }
 
-    private int[] ballAndStrikeCount(int[] userInputArray) {
-        int[] baseballTargetCount = new int[2];
+    private BallCount ballAndStrikeCount(int[] userInputArray) {
+        // 변경
+        BallCount ballCount = new BallCount();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (userInputArray[i] == randomValueArray[j]) {
                     if (i == j) {
-                        baseballTargetCount[1]++;
+                        ballCount.addStrike();
                     } else {
-                        baseballTargetCount[0]++;
+                        ballCount.addBall();
                     }
                 }
             }
         }
-        return baseballTargetCount;
+        return ballCount;
     }
 
     private int convertUserChoicePostGame(String userInput) {

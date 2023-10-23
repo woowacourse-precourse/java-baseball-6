@@ -1,5 +1,7 @@
 package baseball.ui;
 
+import baseball.BallCount;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class ConsoleUI implements UI {
@@ -16,15 +18,15 @@ public class ConsoleUI implements UI {
     }
 
     @Override
-    public void gameResult(int[] ballAndStrike) {
-        if (ballAndStrike[0] == 0 && ballAndStrike[1] == 0) {
+    public void gameResult(BallCount ballCount) {
+        if (ballCount.getStrike() == 0 && ballCount.getBall() == 0) {
             System.out.print("낫싱");
         }
-        if (ballAndStrike[0] != 0) {
-            System.out.print(ballAndStrike[0] + "볼 ");
+        if (ballCount.getBall() != 0) {
+            System.out.print(ballCount.getBall() + "볼 ");
         }
-        if (ballAndStrike[1] != 0) {
-            System.out.print(ballAndStrike[1] + "스트라이크");
+        if (ballCount.getStrike() != 0) {
+            System.out.print(ballCount.getStrike() + "스트라이크");
         }
         System.out.println();
     }

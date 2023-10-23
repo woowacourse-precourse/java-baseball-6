@@ -1,11 +1,13 @@
 package baseball.ui;
 
+import baseball.BallCount;
+
 public interface UI {
     void startGame();
 
     String insertNumber();
 
-    void gameResult(int[] ballAndStrike);
+    void gameResult(BallCount ballCount);
 
     void winGame();
 
