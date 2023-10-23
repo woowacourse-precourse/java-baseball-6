@@ -50,6 +50,7 @@ public class GameController {
             } else {
                 result = ball + "볼" + " " + strike + "스트라이크";
             }
+            System.out.println(result);
 
             if (result.equals("3스트라이크")) {
                 System.out.println(SUCCESS_GAME_MESSAGE);
