@@ -39,8 +39,4 @@ public class OutputView {
     public void displayRestart() {
         System.out.println(restartMessage);
     }
-
-    public void displayList(List<?> result) {
-        result.stream().forEach(System.out::print);
-    }
 }
