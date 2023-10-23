@@ -2,123 +2,70 @@ package baseball.service;
 
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 
 public class BaseBallGameService {
+    private InputErrorCheckService inputErrorCheckService;
+    private GameResultReturnService gameResultReturnService;
     public BaseBallGameService(){
-
-    }
-
-    public List<Integer> computerNumberInit(){
-        List<Integer> computerNum = new ArrayList<>();
-        while (computerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(randomNumber)) {
-                computerNum.add(randomNumber);
-            }
-        }
-        return computerNum;
-    }
-
-    //스트라이크, 볼 갯수 확인
-    public List<Integer> strikeBallCheck(List<Integer> userNum, List<Integer> computerNum){
-        Integer strike = 0;
-        Integer ball = 0;
-
-        //스트라이크면 continue 아니면 ball 확인
-        for (int i = 0; i < 3; i ++) {
-            if (userNum.get(i) == computerNum.get(i)){
-                strike += 1;
-                continue;
-            }
-            if(computerNum.contains(userNum.get(i))) ball += 1;
-        }
-
-        return List.of(strike,ball);
-    }
-
-    //스트라이크, 볼 갯수로 결과값 반환
-    public String gameResult(List<Integer> userNum, List<Integer> computerNum){
-        List<Integer> gameResult = strikeBallCheck(userNum, computerNum);
-        //볼, 스트라이크 결과값 작성
-        String result = (gameResult.get(1) != 0 ? gameResult.get(1) + "볼 " : "") +
-                        (gameResult.get(0) != 0 ? gameResult.get(0) + "스트라이크" : "");
-        //빈 문자열이면 낫싱
-        if (result.equals("")) return "낫싱";
-
-        return result;
-    }
-
-    public Boolean IntegerCheck(String userInputNum){
-        for (char c : userInputNum.toCharArray()) {
-            if (!Character.isDigit(c)) return Boolean.FALSE;
-        }
-
-        return Boolean.TRUE;
-    }
-
-    public Boolean sameNumCheck(String userInputNum){
-        Set<Character> charSet = new HashSet<>();
-
-        for (char c : userInputNum.toCharArray()) {
-            charSet.add(c);
-        }
-
-        return charSet.size() == 3;
-    }
-    //input이 3이어야하며, 숫자로만 이루어지고, 같은수가 없어야한다
-    public Boolean errorCheck(String userInputNum){
-        return (userInputNum.length() == 3
-                && IntegerCheck(userInputNum)
-                && sameNumCheck(userInputNum));
+        inputErrorCheckService = new InputErrorCheckService();
+        gameResultReturnService = new GameResultReturnService();
     }
 
     //한턴 게임
-    private void playOneGame(Scanner scanner, List<Integer> computerNum, String command) {
+    public void playOneGame(List<Integer> computerNum) {
         while (true){
             System.out.print("숫자를 입력해주세요 : ");
-            String userInputNum = scanner.nextLine();
-            //잘못된 유저 인풋 확인
-            if (!errorCheck(userInputNum)) throw new IllegalArgumentException();
-            //유저 입력 리스트 만들기
-            List<Integer> userNum = new ArrayList<>();
-            for (char c : userInputNum.toCharArray()) userNum.add(Character.getNumericValue(c));
-            command = gameResult(userNum, computerNum);
-            //결과 출력
-            System.out.println(command);
+            //유저 Input 받고, 숫자 리스트 만들기
+            List<Integer> userNum = getUserNum(getUserInputNum());
+            //입력받은 숫자로 결과 반환
+            String gameResult = getResult(computerNum, userNum);
             //게임 종료 확인
-            if (command.equals("3스트라이크")){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+            if (checkGameComplete(gameResult)) break;
         }
     }
 
-    //1과 2만 받는다
-    public Boolean restartInputErrCheck(String restartInput){
-        return (restartInput.equals("1") || restartInput.equals("2"));
+    //게임 끝났는지 확인
+    private static boolean checkGameComplete(String gameResult) {
+        if (gameResult.equals("3스트라이크")){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
     }
 
-    public void playGame() throws IllegalArgumentException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computerNum = computerNumberInit();
-        playOneGame(scanner, computerNum, "");
+    //유저 Input Number List로 컴퓨터 숫자와 비교해서 결과 확인
+    public String getResult(List<Integer> computerNum, List<Integer> userNum) {
+        String command;
+        command = gameResultReturnService.gameResult(userNum, computerNum);
+        System.out.println(command);
+        return command;
+    }
 
-        while (true){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String reGameCheck = scanner.nextLine();
-            restartInputErrCheck(reGameCheck);
-            //종료 확인
-            if (reGameCheck.equals("2")) break;
-            //게임 다시 진행
-            computerNum = computerNumberInit();
-            playOneGame(scanner, computerNum, "");}
-        scanner.close();
+    //유저의 Input을 기반으로 UserInputList를 만든다
+    public List<Integer> getUserNum(String userInputNum) {
+        List<Integer> userNum = new ArrayList<>();
+        for (char c : userInputNum.toCharArray()) userNum.add(Character.getNumericValue(c));
+        return userNum;
+    }
+
+    //유저의 Input을 String으로 받고, input을 체크한다
+    public String getUserInputNum() {
+        String userInputNum = Console.readLine();
+        if (!inputErrorCheckService.errorCheck(userInputNum)) throw new IllegalArgumentException();
+        return userInputNum;
     }
 
 
+    public Boolean endCheck() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String reGameCheck = Console.readLine();
+        inputErrorCheckService.restartInputErrCheck(reGameCheck);
+        //1을 선택하면 게임 종료 아니니 False, 2를 선택시에는 게임 끝이니 True 반환
+        return (reGameCheck.equals("1"))? Boolean.FALSE : Boolean.TRUE;
+    }
 
 
 }
