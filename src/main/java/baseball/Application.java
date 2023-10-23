@@ -10,7 +10,24 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNumbers = getComputerNumbers();
+        System.out.println(computerNumbers);
         List<Integer> userNumbers = getUserNumbers();
+        int strikeCount = 0;
+        for (int i = 0; i < computerNumbers.size() ; i++) {
+            if (computerNumbers.get(i)==userNumbers.get(i)){
+                strikeCount++;
+            }
+        }
+        System.out.println(strikeCount + "스트라이크");
+
+        int ballCount = 0;
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.get(i)!= userNumbers.get(i) && computerNumbers.contains(userNumbers.get(i))) {
+                ballCount++;
+            }
+        }
+        System.out.println(ballCount + "볼");
+
 
         // TODO :: computerNumbers랑 userNumbers를 비교
     }
