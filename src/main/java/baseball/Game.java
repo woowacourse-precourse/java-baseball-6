@@ -23,6 +23,7 @@ public class Game extends GameController {
         Result result = new Result();
         // 정답이 아닌 동안 계속 게임 진행하기
         while (!isWin(result)) {
+            String input = getInGameInput();
         }
     }
 }
