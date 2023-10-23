@@ -2,10 +2,17 @@ package baseball.io;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ConsoleOutputTest {
+
+    @AfterEach
+    void restoreIO(){
+        System.setOut(System.out);
+        System.setIn(System.in);
+    }
 
     @Test
     void 출력(){

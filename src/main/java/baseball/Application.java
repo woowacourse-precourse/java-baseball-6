@@ -10,8 +10,6 @@ import baseball.gameutil.ResultStringGenerator;
 import baseball.gameutil.ResultStringGeneratorBaseBall;
 import baseball.gameutil.ScoreCalculator;
 import baseball.gameutil.ScoreCalculatorBaseBall;
-import baseball.gameutil.ValidateInput;
-import baseball.gameutil.ValidateInputBaseball;
 import baseball.io.ConsoleInput;
 import baseball.io.ConsoleOutput;
 import baseball.io.Input;
@@ -20,21 +18,18 @@ import baseball.io.Output;
 public class Application {
 
     public static void main(String[] args) {
-        GameInputConverter gameInputConverter = new GameInputConverterBaseball();
-        ResultStringGenerator resultStringGenerator = new ResultStringGeneratorBaseBall();
-        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
-        ValidateInput validateInput = new ValidateInputBaseball();
-        NumberGenerator numberGenerator = new NumberGeneratorBaseball();
         Input input = new ConsoleInput();
         Output output = new ConsoleOutput();
+        GameInputConverter gameInputConverter = new GameInputConverterBaseball(input);
+        ResultStringGenerator resultStringGenerator = new ResultStringGeneratorBaseBall();
+        ScoreCalculator scoreCalculator = new ScoreCalculatorBaseBall();
+        NumberGenerator numberGenerator = new NumberGeneratorBaseball();
 
         Game game = new BaseballGame(
             gameInputConverter,
             resultStringGenerator,
             scoreCalculator,
-            validateInput,
             numberGenerator,
-            input,
             output
         );
         game.run();
