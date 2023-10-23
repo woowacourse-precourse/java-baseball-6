@@ -148,28 +148,56 @@ class Computer {
 
 }
 
-public class Application {
+class GameManager {
+    private final User user;
+    private final Computer computer;
+    private Pair<Integer, Integer> userGuessResult;
 
+    public GameManager() {
+        this.user = new User();
+        this.computer = new Computer();
+        this.userGuessResult = null;
+    }
 
-    public static void main(String[] args) {
-        User user = new User();
-        Computer computer = new Computer();
-        System.out.printf("답: %d%d%d\n", computer.getNumbers().get(0), computer.getNumbers().get(1),
-                computer.getNumbers().get(2));
+    private void printComputerGeneratedNumbers() {
+        System.out.printf("컴퓨터가 생성한 수 : ");
+        for (int number : computer.getNumbers()) {
+            System.out.printf("%d", number);
+        }
+        System.out.printf("\n");
+    }
+
+    private void printGameStartMessage() {
         System.out.printf("숫자 야구 게임을 시작합니다.\n");
-        while (!user.didUserWin()) {
+    }
 
-            System.out.printf("숫자를 입력해주세요 : ");
+    private void printUserInputPrompt() {
+        System.out.printf("숫자를 입력해주세요 : ");
+    }
+
+    private void printGameRestartMessage() {
+        System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+    }
+
+    private boolean didGameEnd() {
+        return userGuessResult.getFirst() == 3;
+    }
+
+    public void run() {
+        printComputerGeneratedNumbers();
+        printGameStartMessage();
+        while (!user.didUserWin()) {
+            printUserInputPrompt();
             user.readUserInput();
             if (!user.isUserInputValidInGame()) {
                 throw new IllegalArgumentException();
             }
-            Pair<Integer, Integer> guessResult = computer.getUserGuessResult(user.getUserInput());
-            computer.printUserGuessResult(guessResult);
-            if (guessResult.getFirst() == 3) {
+            userGuessResult = computer.getUserGuessResult(user.getUserInput());
+            computer.printUserGuessResult(userGuessResult);
+            if (didGameEnd()) {
                 user.userWins();
-                System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-                System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+                printGameRestartMessage();
                 user.readUserInput();
                 if (!user.isUserInputValidAfterGame()) {
                     throw new IllegalArgumentException();
@@ -187,5 +215,14 @@ public class Application {
             }
 
         }
+    }
+}
+
+public class Application {
+    
+    public static void main(String[] args) {
+        final GameManager gameManager = new GameManager();
+        gameManager.run();
+
     }
 }
