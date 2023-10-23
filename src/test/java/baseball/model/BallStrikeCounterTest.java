@@ -19,6 +19,11 @@ class BallStrikeCounterTest {
         computerNumber = new ArrayList<>(Arrays.asList(4, 8, 6));
     }
 
+    @Test
+    @DisplayName("reset 테스트")
+    void testReset() {
+        Assertions.assertThat(ballStrikeCounter.toString()).isEqualTo("낫싱");
+    }
 
     @Test
     @DisplayName("3스트라이크")
