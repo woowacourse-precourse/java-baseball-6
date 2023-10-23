@@ -1,23 +1,26 @@
 package baseball.view;
 
-import baseball.utils.Constant;
+import static baseball.utils.Constant.FIRST_START;
+import static baseball.utils.Constant.INPUT_NUM;
+import static baseball.utils.Constant.IS_RESTART;
+
 import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public static void firstStart() {
-        System.out.println(Constant.FIRST_START);
+        System.out.println(FIRST_START);
     }
 
     public static String startInput() {
-        System.out.println(Constant.INPUT_NUM);
+        System.out.println(INPUT_NUM);
         String inputNum = Console.readLine();
         InputValidation.verifyInputNum(inputNum);
         return inputNum;
     }
 
     public static String askToPlayAgain() {
-        System.out.println(Constant.IS_RESTART);
+        System.out.println(IS_RESTART);
         return Console.readLine();
     }
 

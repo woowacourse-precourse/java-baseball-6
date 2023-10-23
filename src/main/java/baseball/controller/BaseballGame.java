@@ -1,9 +1,10 @@
 package baseball.controller;
 
+import static baseball.utils.Constant.RESTART;
+
 import baseball.model.CountStrikeAndBall;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.UserNumberGenerator;
-import baseball.utils.Constant;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -42,6 +43,6 @@ public class BaseballGame {
 
     private static boolean wantToPlayAgain() {
         String restart = InputView.askToPlayAgain();
-        return restart.equals(Constant.RESTART);
+        return restart.equals(RESTART);
     }
 }

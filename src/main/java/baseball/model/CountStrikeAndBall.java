@@ -1,6 +1,7 @@
 package baseball.model;
 
-import baseball.utils.Constant;
+import static baseball.utils.Constant.NUMBER_LENGTH;
+
 import java.util.List;
 
 public class CountStrikeAndBall {
@@ -14,7 +15,7 @@ public class CountStrikeAndBall {
 
     private int countStrike(List<Integer> answerNumbers, List<Integer> userNumbers) {
         int strikeCount = 0;
-        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (answerNumbers.get(i) == userNumbers.get(i)) {
                 strikeCount++;
             }
@@ -24,7 +25,7 @@ public class CountStrikeAndBall {
 
     private int countBall(List<Integer> answerNumbers, List<Integer> userNumbers) {
         int ballCount = 0;
-        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (answerNumbers.get(i) != userNumbers.get(i) && answerNumbers.contains(userNumbers.get(i))) {
                 ballCount++;
             }

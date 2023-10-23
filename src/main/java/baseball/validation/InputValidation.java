@@ -1,6 +1,7 @@
 package baseball.validation;
 
-import baseball.utils.Constant;
+import static baseball.utils.Constant.NUMBER_LENGTH;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class InputValidation {
     }
 
     private static void verifyLength(String inputNum) {
-        if (inputNum.length() != Constant.NUMBER_LENGTH) {
+        if (inputNum.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

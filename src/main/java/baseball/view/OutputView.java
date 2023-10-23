@@ -1,7 +1,9 @@
 package baseball.view;
 
+import static baseball.utils.Constant.FINISH_GAME;
+import static baseball.utils.Constant.NUMBER_LENGTH;
+
 import baseball.model.CountStrikeAndBall;
-import baseball.utils.Constant;
 
 public class OutputView {
     public final int strike;
@@ -13,21 +15,22 @@ public class OutputView {
     }
 
     public void printBallAndStrike() {
-        if (ball != 0) {
-            System.out.print(ball + "볼 ");
+        StringBuilder result = new StringBuilder();
+        if (ball > 0) {
+            result.append(ball).append("볼 ");
         }
-        if (strike != 0) {
-            System.out.print(strike + "스트라이크");
+        if (strike > 0) {
+            result.append(strike).append("스트라이크");
         }
         if (ball == 0 && strike == 0) {
-            System.out.print("낫싱");
+            result.append("낫싱");
         }
-        System.out.println();
+        System.out.println(result);
     }
 
     public boolean isEndGame() {
-        if (strike == Constant.NUMBER_LENGTH) {
-            System.out.println(Constant.FINISH_GAME);
+        if (strike == NUMBER_LENGTH) {
+            System.out.println(FINISH_GAME);
             return true;
         }
         return false;
