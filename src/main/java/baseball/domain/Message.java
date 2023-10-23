@@ -20,4 +20,8 @@ public class Message {
     public static String continueOrNot() {
         return "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     }
+
+    public static String expire() {
+        return "게임 종료";
+    }
 }
