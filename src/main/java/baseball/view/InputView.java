@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private final OutputView outputView;
+    private final InputValidation inputValidation;
 
     public InputView() {
+        this.inputValidation = new InputValidation();
         this.outputView = new OutputView();
     }
 
@@ -14,8 +16,8 @@ public class InputView {
         outputView.printInputNumber();
         String inputNumber = Console.readLine();
 
-        InputValidation.checkLengthThree(inputNumber);
-        InputValidation.checkStringRegex(inputNumber);
+        inputValidation.checkLengthThree(inputNumber);
+        inputValidation.checkStringRegex(inputNumber);
 
         return inputNumber;
     }
@@ -24,8 +26,8 @@ public class InputView {
         outputView.printRestart();
         String inputOption = Console.readLine();
 
-        InputValidation.checkLengthOne(inputOption);
-        InputValidation.checkStringRegex(inputOption);
+        inputValidation.checkLengthOne(inputOption);
+        inputValidation.checkOneOrTwoRegex(inputOption);
 
         return inputOption;
     }

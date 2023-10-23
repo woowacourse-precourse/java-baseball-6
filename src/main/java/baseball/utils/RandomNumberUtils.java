@@ -6,7 +6,8 @@ import java.util.List;
 
 public final class RandomNumberUtils {
 
-    private RandomNumberUtils(){}
+    private RandomNumberUtils() {
+    }
 
     public static List<Integer> createRandomNum() {
         List<Integer> existRandomNum = new ArrayList<>();

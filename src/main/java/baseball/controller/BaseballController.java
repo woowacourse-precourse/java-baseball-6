@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.GameCompare;
+import baseball.model.BaseballGame;
 import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -19,14 +19,32 @@ public class BaseballController {
         this.outputView = new OutputView();
     }
 
+    private static boolean checkGameEnd(boolean endGameSign) {
+        return Boolean.TRUE.equals(endGameSign);
+    }
+
     public void play() {
         Player player = new Player();
         outputView.printStartGame();
         while (true) {
-            GameCompare gameCompare = new GameCompare();
-            playGame(player, gameCompare);
+            BaseballGame baseballGame = new BaseballGame();
+            playGame(player, baseballGame);
             String inputNumber = inputView.reStart();
             if (isReStart(inputNumber)) {
+                break;
+            }
+        }
+    }
+
+    private void playGame(Player player, BaseballGame baseballGame) {
+        while (!isGameFinished) {
+            String inputNumber = inputView.inputNumber();
+            player.updateNumbers(inputNumber);
+            boolean endGameSign = baseballGame.updateGameCompare(player);
+            String gameResult = baseballGame.showResult();
+            OutputView.showResult(gameResult);
+            isGameFinished = endGameSign;
+            if (checkGameEnd(endGameSign)) {
                 break;
             }
         }
@@ -40,19 +58,5 @@ public class BaseballController {
             return true;
         }
         return false;
-    }
-
-    private void playGame(Player player, GameCompare gameCompare) {
-        while (!isGameFinished) {
-            String inputNumber = inputView.inputNumber();
-            player.updateNumbers(inputNumber);
-            boolean endGameSign = gameCompare.updateGameCompare(player);
-            String result = gameCompare.showResult();
-            OutputView.showResult(result);
-            isGameFinished = endGameSign;
-            if (Boolean.TRUE.equals(endGameSign)) {
-                break;
-            }
-        }
     }
 }

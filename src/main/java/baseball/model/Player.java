@@ -14,8 +14,6 @@ public class Player {
 
     private List<Integer> inputNumbers;
 
-    public Player(){}
-
     public void updateNumbers(String inputNumber) {
         initInputNumbers();
         List<Integer> expectedNumbers = parsingNumber(inputNumber);
@@ -49,7 +47,8 @@ public class Player {
             String numberStr = number.toString();
             boolean isValid = Pattern.matches(REGEX_ONE_TO_NINE, numberStr);
             if (!isValid) {
-                throw new IllegalArgumentException(ExceptionMessage.OUT_OF_ONE_TO_NIME.getMessage());
+                String errorMessage = String.format(ExceptionMessage.OUT_OF_NUMBER_RANGE.getMessage(), 1, 9);
+                throw new IllegalArgumentException(errorMessage);
             }
         }
     }

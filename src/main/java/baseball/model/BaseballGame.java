@@ -5,7 +5,7 @@ import baseball.model.collection.RandomNumbers;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class GameCompare {
+public class BaseballGame {
     private static final int ZERO = 0;
     private static final int THREE_STRIKE = 3;
     private final RandomNumbers randomNumbers;
@@ -13,7 +13,7 @@ public class GameCompare {
     private int ball;
     private int strike;
 
-    public GameCompare() {
+    public BaseballGame() {
         this.ball = 0;
         this.strike = 0;
         this.randomNumbers = new RandomNumbers();
