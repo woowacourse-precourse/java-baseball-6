@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.util.MagicNumber;
 
 import static baseball.util.MagicNumber.MAX_SIZE;
 import static baseball.util.MagicNumber.MIN_SIZE;

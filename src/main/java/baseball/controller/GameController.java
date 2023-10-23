@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.domain.ComputerNumber;
 import baseball.domain.UserNumber;
-import baseball.util.MagicNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.util.MagicNumber;
 
 import java.util.List;
 
