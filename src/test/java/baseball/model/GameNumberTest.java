@@ -72,6 +72,13 @@ class GameNumberTest {
                 Arguments.of(Arrays.asList(11, 22, 33))
         );
     }
+    static Stream<Arguments> inValidDuplicateData() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(1, 2, 1)),
+                Arguments.of(Arrays.asList(2, 2, 2)),
+                Arguments.of(Arrays.asList(5, 3, 3))
+        );
+    }
     static Stream<Arguments> matchCountData() {
             List<Integer> computerNumber = Arrays.asList(4, 2, 3);
             return Stream.of(
