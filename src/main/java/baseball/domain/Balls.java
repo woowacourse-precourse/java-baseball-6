@@ -26,17 +26,32 @@ public class Balls {
     }
 
     public void convertToBalls(String nums) {
+        checkNum(nums);
+        checkNumberLength(nums);
+
         String[] numbers = nums.split("");
 
-        checkNumberLength(numbers);
-
         for (String num : numbers) {
-            addBall(Integer.parseInt(num));
+            int ball = Integer.parseInt(num);
+            checkContainZero(ball);
+            addBall(ball);
         }
     }
 
-    private void checkNumberLength(String[] numbers) {
-        if (numbers.length != 3) {
+    private void checkContainZero(int ball) {
+        if (ball == 0) {
+            throw new IllegalArgumentException("1과 9사이의 정수만 입력하세요.");
+        }
+    }
+
+    private void checkNum(String nums) {
+        if (!nums.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자는 정수이어야 합니다.");
+        }
+    }
+
+    private void checkNumberLength(String numbers) {
+        if (numbers.length() != 3) {
             throw new IllegalArgumentException("숫자의 개수는 3개이어야 합니다.");
         }
     }
