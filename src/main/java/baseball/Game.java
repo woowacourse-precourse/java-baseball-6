@@ -64,14 +64,11 @@ public class Game {
 
         if(ballCount > 0 && strikeCount > 0){
             result = ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE;
-        }
-        if(ballCount > 0 && strikeCount == 0) {
+        } else if(ballCount > 0 && strikeCount == 0) {
             result = ballCount + BALL_MESSAGE;
-        }
-        if(ballCount == 0 && strikeCount > 0) {
+        } else if(ballCount == 0 && strikeCount > 0) {
             result = strikeCount + STRIKE_MESSAGE;
-        }
-        if(ballCount == 0 && strikeCount == 0) {
+        } else if(ballCount == 0 && strikeCount == 0) {
             result = NOTHING_MESSAGE;
         }
         System.out.println(result);
