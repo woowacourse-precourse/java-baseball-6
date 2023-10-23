@@ -22,11 +22,30 @@ public class Application {
 
         private void run() {
          
+            System.out.println("숫자 야구 게임을 시작합니다.");
+
+            while (coin.equals("1")) {
+
             computerInputNums = randomInputNums();
-            userInputNums = inputNums();
-            int resultNum = checkNum(userInputNums, computerInputNums);
-            coin = reStart();
+
+            while (true) {
+
+                userInputNums = inputNums();
+
+                int resultNum = checkNum(userInputNums, computerInputNums);
+
+                if (resultNum % 10 == 3) {
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                        coin = reStart();
+                        break;
+                }
+                if (resultNum / 10 != 0) System.out.print(resultNum / 10 + "볼 ");
+                if (resultNum % 10 != 0) System.out.print(resultNum % 10 + "스트라이크 ");
+                if (resultNum == 0) System.out.print("낫싱");
+                System.out.println();
+            }
         }
+    }
 
         private ArrayList<Integer> randomInputNums() {
             ArrayList<Integer> radomNums = new ArrayList<>();
