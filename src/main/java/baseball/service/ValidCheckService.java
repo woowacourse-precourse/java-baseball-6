@@ -11,7 +11,7 @@ public class ValidCheckService {
 
     private final Number num = new Number();
 
-    public boolean isValidNumber(String input){
+    public boolean isValidStringNumber(String input){
         if(isNumberNaturalDigit(input) && isValidLength(input) && sameNumberCheck(input)){
             return true;
         }
@@ -46,7 +46,7 @@ public class ValidCheckService {
         return true;
     }
     public List<Integer> stringToIntegerList(String input) {
-        isValidNumber(input);
+        isValidStringNumber(input);
         List<Integer> integerList = new ArrayList<>();
         for (String s : input.split("")) {
             integerList.add(Integer.parseInt(s));

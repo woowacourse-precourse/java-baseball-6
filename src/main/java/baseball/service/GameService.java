@@ -54,7 +54,7 @@ public class GameService {
     public List<Integer> getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
-        validCheckService.isValidNumber(userInput);
+        validCheckService.isValidStringNumber(userInput);
         return validCheckService.stringToIntegerList(userInput);
     }
 
