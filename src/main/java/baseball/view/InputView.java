@@ -30,7 +30,7 @@ public class InputView {
 
         checkInputLength(input);
 
-
+        checkInputNotNumber(input);
 
 
     }
@@ -42,5 +42,12 @@ public class InputView {
         }
     }
 
+    public static void checkInputNotNumber(String input){
 
+        for(char eachNumber : input.toCharArray()){
+            if(eachNumber < 49) throw new IllegalArgumentException("올바른 숫자가 아닙니다");
+            else if(eachNumber>57) throw new IllegalArgumentException("올바른 숫자가 아닙니다");
+        }
+
+    }
 }
