@@ -7,8 +7,7 @@ public class NumberBaseballGame {
 
     private BaseballNumber computerNumber;
 
-    public void initGameSetting(int size){
+    public void initGameSetting(){
         computerNumber = new BaseballNumber(RandomBaseballNumberGenerator.generateRandomBaseballNumbers(RuleValue.BASEBALL_NUMBER_SIZE));
     }
-
 }
