@@ -9,7 +9,7 @@ public class GameNumbers {
     private static final int GAME_NUMBER_SIZE = 3;
     private static final int MIN_GAME_NUMBER_RANGE = 1;
     private static final int MAX_GAME_NUMBER_RANGE = 9;
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
     public GameNumbers(List<Integer> numbers) {
         validate(numbers);
