@@ -1,15 +1,17 @@
-# 미션 - 숫자 야구
+# 미션 - 숫자 야구⚾️
 
-숫자 야구에서 문제를 출제하고, 볼/스트라이크를 판정하는 컴퓨터를 구현한다. 
+숫자 야구에서 문제를 출제하고, 볼/스트라이크를 판정하는 프로그램을 구현한다.
 
 구현할 프로그램의 flowchart를 그려보면 다음과 같다. 
 
-![image](flowchart.png)
+<img src="flowchart.png" width="600" height="650"/>
 
 
-#경# 기능 목록
+# 기능 목록
 
-### 1. 문제 생성(setNums)
+---
+
+### 1️⃣ 문제 생성 (setNums)
 
 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 1~9 사이의 **서로 다른 임의의 수 3개를 선택**한다.
 
@@ -33,7 +35,10 @@ return computer;
 </div>
 </details>
 
-### 2. 사용자로부터 입력 값을 받아 검증한다(requestNums)
+---
+
+### 2️⃣ 입력 검증 (requestNums)
+
 
 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해 사용자로부터 숫자 3개를 입력받는다.
 
@@ -52,6 +57,8 @@ return computer;
 <details>
 <summary>requestNums() </summary>
 <div markdown="1">
+
+
 
 ```java
 private static int[] requestNums() {
@@ -76,7 +83,9 @@ String input = readLine();
 </div>
 </details>
 
-### 3. 스트라이크/볼을 판단한다
+---
+
+### 3️⃣ 스트라이크/볼 판단
 
 사용자로부터 입력 받은 input 배열과 컴퓨터에서 생성한 answer를 비교한다.
 
@@ -101,7 +110,9 @@ long ball = IntStream.range(0, input.length)
 </div>
 </details>
 
-###  4. 결과를 판정한다(judge)
+---
+
+### 4️⃣ 결과 판정 (judge)
 
 4-1. 스트라이크와 볼이 모두 0이면, "낫싱"을 출력한다.
 
@@ -128,10 +139,12 @@ private static void judge(long ball, long strike) {
 </div>
 </details>
 
-### 5. 게임 프로세스의 종료 여부를 확인한다(requestRestart)
+---
+
+### 5️⃣ 게임 종료 여부 확인 (requestRestart)
 
 
-3 스트라이크면 게임을 종료한 뒤, 사용자로부터 게임 재시작 여부를 입력받는다. 
+3스트라이크면 게임을 종료한 뒤, 사용자로부터 게임 재시작 여부를 입력받는다. 
 
 5-1. 1을 입력받은 경우 1로 돌아간다.
 
@@ -155,7 +168,7 @@ private static int requestRestart() {
 </div>
 </details>
 
-
+---
 ---
 
 ## 주요 고려사항
