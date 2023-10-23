@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+
+    private Computer() {
+    }
+
     public static List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {

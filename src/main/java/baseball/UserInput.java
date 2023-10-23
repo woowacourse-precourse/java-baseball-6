@@ -6,6 +6,9 @@ import java.util.List;
 
 public class UserInput {
 
+    private UserInput() {
+    }
+
     public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();

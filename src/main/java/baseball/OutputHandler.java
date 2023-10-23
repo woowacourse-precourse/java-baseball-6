@@ -1,6 +1,10 @@
 package baseball;
 
 public class OutputHandler {
+
+    private OutputHandler() {
+    }
+
     public static void printMessage(final String message) {
         System.out.println(message);
     }

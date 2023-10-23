@@ -5,6 +5,9 @@ import java.util.Set;
 
 public class UserInputValidator {
 
+    private UserInputValidator() {
+    }
+
     static void validateLength(final String string) {
         if (string.length() != Constants.MAX_DIGITS) {
             throw new IllegalArgumentException();
