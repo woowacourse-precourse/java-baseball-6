@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private static final int COMPUTER_NUMBERS_SIZE = 3;
+    private static final int RANDOM_NUMBER_MIN = 1;
+    private static final int RANDOM_NUMBER_MAX = 3;
 
     public void run() {
         do {
@@ -23,8 +26,8 @@ public class Game {
 
     private List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNumbers.size() < COMPUTER_NUMBERS_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }

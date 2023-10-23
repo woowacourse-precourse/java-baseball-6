@@ -1,6 +1,7 @@
 package baseball;
 
 public class Score {
+    private static final int STRIKE_WHEN_USER_WIN = 3;
     private final int strike;
     private final int ball;
 
@@ -17,7 +18,7 @@ public class Score {
     public String getHint() {
         String hint = ball + "볼 " + strike + "스트라이크";
 
-        if (strike == 3) {
+        if (strike == STRIKE_WHEN_USER_WIN) {
             hint = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         } else if (ball == 0 && strike == 0) {
             hint = "낫싱";
@@ -30,6 +31,6 @@ public class Score {
     }
 
     public boolean isUserLose() {
-        return strike != 3;
+        return strike != STRIKE_WHEN_USER_WIN;
     }
 }
