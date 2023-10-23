@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Input {
 
-    public String getGameResetOrRestartInput() {
+    public String getGameExitOrRestartInput() {
         String input = Console.readLine();
         if (!List.of("1", "2").contains(input)) {
             throw new IllegalArgumentException("1 또는 2를 입력해야합니다.");

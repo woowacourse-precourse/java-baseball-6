@@ -22,13 +22,13 @@ public class Application {
                     inputNumberStr, computer);
             view.printScore(score);
             if (score.hasWinScore()) {
-                String isReset = input.getGameResetOrRestartInput();
-                if (Integer.parseInt(isReset) == 1) {
+                String inputNum = input.getGameExitOrRestartInput();
+                if (Integer.parseInt(inputNum) == 1) {
                     // 컴퓨터 번호 리셋
                     computer = new ArrayList<>();
                     setRandomNumberToComputer(computer);
                 }
-                if (Integer.parseInt(isReset) == 2) {
+                if (Integer.parseInt(inputNum) == 2) {
                     break;
                 }
             }
