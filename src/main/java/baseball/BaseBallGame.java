@@ -23,7 +23,7 @@ public class BaseBallGame {
     public void Play(){
         StartGamePrint();
         while(cycle) {
-
+            StartPrint();
         }
         StopGamePrint();
     }
@@ -34,5 +34,9 @@ public class BaseBallGame {
     //게임 종료 알림 함수
     public void StopGamePrint(){
         System.out.print("게임 종료");
+    }
+    //숫자 입력 알림 함수
+    public void StartPrint(){
+        System.out.print("숫자를 입력해주세요 : ");
     }
 }
