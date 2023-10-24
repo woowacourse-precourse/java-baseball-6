@@ -1,7 +1,8 @@
 package baseball;
 
-public class Messages {
+public class Utils {
 
+    // Messages
     public static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String INPUT_MESSAGE ="숫자를 입력해주세요 : ";
     public static final String NOTHING = "낫싱";
@@ -10,4 +11,9 @@ public class Messages {
     public static final String RESTART_OR_FINISH = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String RESTART_GAME = "1";
     public static final String FINISH_GAME = "2";
+
+    // Numbers
+    public static final int DESIGNED_NUM = 3;
+    public static final int START_NUM = 1;
+    public static final int LAST_NUM = 9;
 }

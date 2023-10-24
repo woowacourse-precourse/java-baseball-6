@@ -1,9 +1,11 @@
 package baseball;
 
-import static baseball.Messages.*;
+import java.util.List;
+
+import static baseball.Utils.*;
 
 public class Game {
-    private final String winMessage = Messages.WIN_MESSAGE;
+//    private final String winMessage = Messages.WIN_MESSAGE;
     private final Oppoent oppoent;
     private int strike;
     private int ball;
@@ -18,5 +20,12 @@ public class Game {
         oppoent.initialiser();
         strike = 0;
         ball = 0;
+    }
+
+    public void gamePlay() {
+        List<Integer> userNumbers;
+        while (strike < DESIGNED_NUM) {
+
+        }
     }
 }
