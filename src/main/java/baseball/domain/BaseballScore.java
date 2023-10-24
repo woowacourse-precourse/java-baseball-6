@@ -2,7 +2,10 @@ package baseball.domain;
 
 import baseball.view.BaseballOutputView;
 
-// 숫자야구게임 중 스트라이크와 볼 개수 관리하는 클래스
+/*
+ * 숫자야구게임 중 스트라이크와 볼 개수 관리하는 클래스
+ * */
+
 public class BaseballScore {
     private final static int MAX_COUNT = 3;
     private final static int COUNT_ZERO = 0;
@@ -23,13 +26,11 @@ public class BaseballScore {
         this.strikeCount = COUNT_ZERO;
     }
 
-
     public static boolean isBaseballScoreEqual(BaseballScore baseballScore1, BaseballScore baseballScore2) {
         return baseballScore1.ballCount == baseballScore2.ballCount
                 && baseballScore1.strikeCount == baseballScore2.strikeCount;
     }
 
-    //속성값을 건들이는 함수는데 public으로 설정해도 괜찮은가
     public void addBallCount(int count) {
         this.ballCount += count;
     }
@@ -38,8 +39,7 @@ public class BaseballScore {
         this.strikeCount += count;
     }
 
-    //클래스안에 print 함수가 있어도 괜찮은가
-    public void printBaseballScore() {
+    public void showBaseballScore() {
         BaseballOutputView.printBallAndStrikeCount(ballCount, strikeCount);
     }
 }

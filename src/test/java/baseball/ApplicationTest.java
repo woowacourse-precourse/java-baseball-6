@@ -321,12 +321,14 @@ class ApplicationTest extends NsTest {
         assertThat(isBaseballScoreEqual1).isTrue();
         assertThat(isBaseballScoreEqual2).isFalse();
     }
+
     @Test
     void 출력문테스트() {
         System.out.println("안녕하세요");
         assertThat(output()).contains("안녕");
         assertThat(output()).doesNotContain("안녕해");
     }
+
     @Test
     void compareBaseballNumber_출력문을_사용해서_BaseballNumber값들의_비교로_알맞은_BaseballCount_리턴() {
         //given
@@ -337,7 +339,7 @@ class ApplicationTest extends NsTest {
         String expectOutput2 = "2스트라이크";
         BaseballScore resultBaseballScore = BaseballNumber.compareNumber(baseballNumber1, baseballNumber2);
         //when
-        resultBaseballScore.printBaseballScore();
+        resultBaseballScore.showBaseballScore();
         //then
         assertThat(output()).contains(expectOutput1);
         assertThat(output()).doesNotContain(expectOutput2);

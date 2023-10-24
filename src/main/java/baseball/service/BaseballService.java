@@ -6,6 +6,10 @@ import baseball.util.Util;
 import baseball.validator.Validator;
 import java.util.List;
 
+
+/*
+ *   야구 게임의 기능을 담당하는 클래스
+ * */
 public class BaseballService {
     private static final int COMPUTER_NUMBER_BEGIN = 1;
     private static final int COMPUTER_NUMBER_END = 9;
@@ -45,6 +49,6 @@ public class BaseballService {
     }
 
     public void showResultScore(BaseballScore resultScore) {
-        resultScore.printBaseballScore();
+        resultScore.showBaseballScore();
     }
 }

@@ -3,7 +3,10 @@ package baseball.domain;
 import baseball.util.Util;
 import java.util.List;
 
-//숫자 야구 게임의 컴퓨터의 사용자의 수를 위한 클래스
+/*
+ * 숫자야구게임 중 스트라이크와 볼 개수 관리하는 클래스
+ * */
+
 public class BaseballNumber {
     private List<Integer> number;
 
