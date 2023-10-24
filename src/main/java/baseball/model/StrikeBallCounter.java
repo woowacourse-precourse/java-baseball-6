@@ -1,8 +1,24 @@
 package baseball.model;
 
+
 public class StrikeBallCounter {
 
-    public record StrikeBallCounterData(int strike, int ball) {
+    public static final class StrikeBallCounterData {
+        private final int strike;
+        private final int ball;
+
+        private StrikeBallCounterData(int strike, int ball) {
+            this.strike = strike;
+            this.ball = ball;
+        }
+
+        public int strike() {
+            return strike;
+        }
+
+        public int ball() {
+            return ball;
+        }
     }
 
     public StrikeBallCounterData createStrikeBall(String playerInput, String computerNumber) {

@@ -6,7 +6,7 @@ public class GameResult {
         private final String gameResultMessage;
         private final boolean correctAnswered;
 
-        public GameResultData(String gameResultMessage, boolean correctAnswered) {
+        private GameResultData(String gameResultMessage, boolean correctAnswered) {
             this.gameResultMessage = gameResultMessage;
             this.correctAnswered = correctAnswered;
         }
