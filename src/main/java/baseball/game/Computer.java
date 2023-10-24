@@ -1,7 +1,6 @@
 package baseball.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,9 +11,7 @@ public class Computer {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             randomNumbers.add(randomNumber);
         }
-        return randomNumbers.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        return randomNumbers.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public int[] calculateResult(int[] guessNumbers, int[] randomNumbers) {
@@ -27,7 +24,7 @@ public class Computer {
     private int countBalls(int[] guessNumbers, int[] randomNumbers) {
         int balls = 0;
         for (int i = 0; i < 3; i++) {
-            if (guessNumbers[i] != randomNumbers[i] && Arrays.asList(randomNumbers).contains(guessNumbers[i])) {
+            if (guessNumbers[i] != randomNumbers[i] && containsValue(randomNumbers, guessNumbers[i])) {
                 balls++;
             }
         }
@@ -58,5 +55,14 @@ public class Computer {
 
     public boolean isGameOver(int[] result) {
         return result[1] == 3;
+    }
+
+    private boolean containsValue(int[] array, int value) {
+        for (int num : array) {
+            if (num == value) {
+                return true;
+            }
+        }
+        return false;
     }
 }
