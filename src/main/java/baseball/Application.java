@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    private static String answer;
+    private static StringBuilder answer;
     private static int ball;// 같은 숫자가 있기만 해도 ++
     private static int strike;// 같은 숫자가 있고, 위치도 같으면 ++
     private static int choiceContinue;// 재시작 선택
@@ -23,9 +23,9 @@ public class Application {
     }
 
     private static void makeRandomAnswer() {//정답 문자열 만들기
-        answer = "";
+        answer =new StringBuilder();
         for (int i = 0; i < 3; i++)
-            answer += String.valueOf(Randoms.pickNumberInRange(1, 9));
+            answer.append(Randoms.pickNumberInRange(1, 9));
     }
 
     private static void playGames() {
@@ -71,7 +71,7 @@ public class Application {
     private static void countBallAndStrike(String inputLine) {
         for (int i = 0; i < inputLine.length(); i++) {
             String eachChar = String.valueOf(inputLine.charAt(i));
-            if(!answer.contains(eachChar))// 같은 숫자가 없으면
+            if(!String.valueOf(answer).contains(eachChar))// 같은 숫자가 없으면
                 continue;
             if (String.valueOf(answer.charAt(i)).compareTo(eachChar)==0){// 같은 위치에 존재
                 strike++;
