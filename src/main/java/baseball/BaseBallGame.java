@@ -1,10 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import model.ModelCreateRandomNumber;
 import view.ViewInput;
 import view.ViewResult;
 import view.ViewStart;
@@ -26,7 +26,7 @@ public class BaseBallGame {
 
         while (true) {
 
-            List<Integer> computer = createRandomNumber();
+            List<Integer> computer = ModelCreateRandomNumber.createRandomNumber();
 
             System.out.println(computer);
 
@@ -48,25 +48,6 @@ public class BaseBallGame {
 
         }
 
-    }
-
-
-    /**
-     * 3자리 난수 생성
-     *
-     * @return List<Integer> 타입의 3자리 난수
-     */
-    private List<Integer> createRandomNumber() {
-
-        List<Integer> list = new ArrayList<>();
-        while (list.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!list.contains(randomNumber)) {
-                list.add(randomNumber);
-            }
-        }
-
-        return list;
     }
 
     /**
