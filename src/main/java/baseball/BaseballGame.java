@@ -26,11 +26,21 @@ public class BaseballGame {
 
 	private boolean isGameEnd() {
 		// 게임 종료 여부, 1 = 재시작, 2 = 종료
+		return checkGameEnd();
+	}
+	private boolean checkGameEnd() {
 		return baseballView.inputSelectRestartOrEnd() == 2;
 	}
 
 	private boolean isThreeStrike() {
 		// 3 strike인지 확인
+		if (checkThreeStrike()) {
+			baseballView.printFinishGame();
+			return true;
+		}
+		return false;
+	}
+	private boolean checkThreeStrike() {
 		return baseballUmpire.getStrike() >= 3;
 	}
 
