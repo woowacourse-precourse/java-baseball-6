@@ -6,9 +6,19 @@ public class Players {
     private User user;
     private Computer computer;
 
-    public Players(User user, Computer computer) {
-        this.user = user;
-        this.computer = computer;
+    public Players() {
+        this.user = new User();
+        this.computer = new Computer();
+    }
+
+    public void createUserNumber() {
+    }
+
+    public void validateComputerNumber() {
+    }
+
+    public void createComputerNumber() {
+        computer.createNumbers();
     }
 
     public Result compareNumber() {

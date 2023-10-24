@@ -7,11 +7,12 @@ public class Inning {
     private Players players;
     private Result result;
 
-    public Inning(Players players) {
-        this.players = players;
+    public Inning() {
+        this.players = new Players();
     }
 
     public void startInning() {
+        players.createComputerNumber();
     }
 
     private void endInning() {

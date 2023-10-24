@@ -90,7 +90,7 @@ public class InningTest {
 
     @Test
     @DisplayName("낫싱 문구 출력한다.")
-    public void 볼3_문구_출력한다() throws IllegalAccessException, InvocationTargetException {
+    public void 낫싱_문구_출력한다() throws IllegalAccessException, InvocationTargetException {
         // given
         Inning inning = new Inning();
         Result testResult = new Result(new Status(0), new Status(0));

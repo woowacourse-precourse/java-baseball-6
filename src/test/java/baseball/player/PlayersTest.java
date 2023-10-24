@@ -15,6 +15,8 @@ public class PlayersTest {
     static ByteArrayOutputStream outContent;
     static Field userNumber;
     static Field computerNumber;
+    static Field userField;
+    static Field computerField;
 
     @BeforeEach
     void beforeEach() throws NoSuchFieldException {
@@ -24,8 +26,14 @@ public class PlayersTest {
         userNumber = User.class.getDeclaredField("number");
         userNumber.setAccessible(true);
 
+        userField = Players.class.getDeclaredField("user");
+        userField.setAccessible(true);
+
         computerNumber = Computer.class.getDeclaredField("number");
         computerNumber.setAccessible(true);
+
+        computerField = Players.class.getDeclaredField("computer");
+        computerField.setAccessible(true);
     }
 
     @Test
@@ -40,7 +48,10 @@ public class PlayersTest {
         Number computerTestNumber = new Number(312);
         computerNumber.set(computer, computerTestNumber);
 
-        Players players = new Players(user, computer);
+        Players players = new Players();
+
+        userField.set(players, user);
+        computerField.set(players, computer);
 
         // when
         Result result = players.compareNumber();
@@ -63,7 +74,10 @@ public class PlayersTest {
         Number computerTestNumber = new Number(456);
         computerNumber.set(computer, computerTestNumber);
 
-        Players players = new Players(user, computer);
+        Players players = new Players();
+
+        userField.set(players, user);
+        computerField.set(players, computer);
 
         // when
         Result result = players.compareNumber();

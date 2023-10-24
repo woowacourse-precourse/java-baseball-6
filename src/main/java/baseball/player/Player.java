@@ -1,11 +1,10 @@
 package baseball.player;
 
+import baseball.util.Numbers;
+
 public sealed class Player permits User, Computer {
-    protected Number number;
+    protected Numbers numbers;
 
-    public void createNumber() {
-    }
-
-    public void validateNumber() {
+    public void createNumbers() {
     }
 }
