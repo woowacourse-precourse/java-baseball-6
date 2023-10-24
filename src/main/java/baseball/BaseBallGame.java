@@ -46,6 +46,10 @@ public class BaseBallGame {
 
         endFlag = strike == TARGET_LENGTH;
 
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+
         if (strike == 0) {
             return format("{0}볼", ball);
         }
