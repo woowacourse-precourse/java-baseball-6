@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,6 +20,9 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
                 if (!checkLength(input) || !checkIsNumber(input)) throw new IllegalArgumentException();
+
+                List<Integer> numbers = Stream.of(input.split("")).map(Integer::valueOf).toList();
+                if (checkDuplicateNumber(numbers)) throw new IllegalArgumentException();
 
                 break;
             }
@@ -33,6 +38,14 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    private static boolean checkDuplicateNumber(List<Integer> numbers) {
+        HashSet<Integer> integers = new HashSet<>(numbers);
+        if(integers.size()!=3){
+            return true;
+        }
+        return false;
     }
 
     private static boolean checkLength(String input) {
