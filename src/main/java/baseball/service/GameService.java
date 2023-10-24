@@ -1,4 +1,4 @@
-package baseball.Service;
+package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
@@ -22,14 +22,13 @@ public class GameService {
         computerNumber = computer.getNumber();
     }
 
-    public void gameOn() {
-        boolean gameContinue = true;
-        while (gameContinue) {
-            String userInput = userService.readUserNumber(); // userService 사용
-            User user = new User(userInput);
-            String userNumber = user.getNumber(); // 지역 변수로 변경
-            gameContinue = !gameScoreCalculate(userNumber);
-        }
+    public boolean gameOn(String userNumber) {
+        boolean gameEnd = gameScoreCalculate(userNumber);
+        return gameEnd;
+    }
+
+    public boolean gameEnd(int userNumber) {
+        return userNumber != 1;
     }
 
     private boolean gameScoreCalculate(String userNumber) {

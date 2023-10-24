@@ -9,16 +9,14 @@ import java.util.Set;
 public class User {
     private String number;
 
-    public User(String number) {
-        validateNumber(number);
-        this.number = number;
+    public User() {
     }
 
     public String getNumber() {
         return number;
     }
 
-    private void validateNumber(String number) {
+    public void validateNumber(String number) {
         if (number.length() != 3 || !number.matches("\\d{3}")) {
             throw new IllegalArgumentException("세 자리 숫자를 입력해야 합니다.");
         }
@@ -30,6 +28,8 @@ public class User {
         if (uniqueChars.size() != 3) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
+
+        this.number = number;
     }
 }
 
