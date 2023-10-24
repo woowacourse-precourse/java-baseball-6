@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BallsTest {
 
     @Test
-    @DisplayName("중복성 테스트")
+    @DisplayName("중복된 숫자가 있을땐 오류가 발생해야 한다.")
     void 중복_검사(){
         //given
         List<Integer> testBalls=new ArrayList<>(Arrays.asList(1,2,2));
@@ -28,7 +28,7 @@ class BallsTest {
     }
 
     @Test
-    @DisplayName("입력된 숫자의 사이즈 테스트")
+    @DisplayName("입력된 숫자의 사이즈가 3이 아니면 오류가 발생해야 한다.")
     void 사이즈_검사(){
         //given
         List<Integer> testBalls=new ArrayList<>(Arrays.asList(1,2,3,4));

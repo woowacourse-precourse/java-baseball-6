@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BaseBallRuleTest {
 
     @Test
-    @DisplayName("3스트라이크면 게임 룰 통과")
+    @DisplayName("3스트라이크면 게임 룰을 통과해야 한다.")
     void 룰_적용_테스트(){
         //given
         int strike=3;
@@ -24,7 +24,7 @@ class BaseBallRuleTest {
     }
 
     @Test
-    @DisplayName("3스트라이크가 아니면 게임 룰 불통과")
+    @DisplayName("3스트라이크가 아니면 게임 룰을 통과하지 못한다.")
     void 룰_실패_테스트(){
         //given
         int strike=2;
