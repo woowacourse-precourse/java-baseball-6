@@ -1,4 +1,4 @@
-package baseball;
+package baseball.CreateNum;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
