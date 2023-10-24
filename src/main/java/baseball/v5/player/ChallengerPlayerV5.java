@@ -31,19 +31,20 @@ public class ChallengerPlayerV5 implements PlayerV5 {
                 throw new IllegalArgumentException();
             }
 
-            Integer parsedInput = Integer.parseInt(input);
 
-            // 입력 받은 수에 중복된 숫자가 있는지 확인
+
+
+//            입력 받은 수에 중복된 숫자가 있는지 확인
             Set<Integer> uniqueDigits = new HashSet<>();
-            while (parsedInput > 0) {
-                int digit = parsedInput % 10;
+            for (char ch : input.toCharArray()) {
+                int digit = ch - '0';
                 if (!uniqueDigits.add(digit)) {
                     throw new IllegalArgumentException();
                 }
-                challengerNums.add(0, digit);
-                parsedInput /= 10;
+                challengerNums.add(digit);
             }
-        } catch (IndexOutOfBoundsException e) {
+
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
         return challengerNums;
