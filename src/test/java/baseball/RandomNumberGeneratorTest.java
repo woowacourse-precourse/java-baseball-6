@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test;
 
 public class RandomNumberGeneratorTest {
 
+    public static final int TEST_NUMBER = 1;
+
     @Test
     @DisplayName("서로 다른 3개의 숫자를 만든다")
     void createThreeDifferentNumbers() {
         // given
-        RandomNumberGenerator generator = new RandomNumberGenerator(new DoubleRandomService(1));
+        RandomNumberGenerator generator = new RandomNumberGenerator(new DoubleRandomService(TEST_NUMBER));
 
         // when
         List<Integer> randomNumbers = generator.createRandomNumbers();
