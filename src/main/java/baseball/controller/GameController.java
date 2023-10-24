@@ -5,6 +5,7 @@ import static baseball.model.Constant.REPLAY_GAME;
 import static baseball.model.Constant.RUNNING;
 import static baseball.model.Constant.START;
 
+import baseball.Validation;
 import baseball.model.DecimalNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;

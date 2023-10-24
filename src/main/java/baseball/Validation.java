@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball;
 
 import static baseball.model.Constant.END_GAME;
 import static baseball.model.Constant.NUMBER_RANGE_END;

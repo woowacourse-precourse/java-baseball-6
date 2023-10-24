@@ -4,7 +4,7 @@ import static baseball.model.Constant.NUMBER_RANGE_END;
 import static baseball.model.Constant.NUMBER_RANGE_START;
 import static baseball.model.Constant.NUMBER_SIZE;
 
-import baseball.controller.Validation;
+import baseball.Validation;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;

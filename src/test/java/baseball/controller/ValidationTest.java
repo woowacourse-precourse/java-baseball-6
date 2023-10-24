@@ -2,6 +2,7 @@ package baseball.controller;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import baseball.Validation;
 import org.junit.jupiter.api.Test;
 
 class ValidationTest {
