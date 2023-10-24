@@ -25,26 +25,30 @@ class NumberBaseball {
         }
     }
 
-    //입력 처리
-    void makeUserList(String input) {
+    void checkNumberFormat(String input){
         if (input.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("wrong format");
         }
         if (input.contains("0") || input.contains("-")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("wrong format");
         }
 
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("wrong format");
         }
+    }
+
+    //입력 처리
+    void makeUserList(String input) {
+        checkNumberFormat(input);
 
         for (int i = 0; i < input.length(); i++) {
             int tmp = Character.getNumericValue(input.charAt(i));
 
             if (userList.contains(tmp)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("duplicated");
             }
 
             userList.add(tmp);
@@ -104,7 +108,9 @@ class NumberBaseball {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            makeUserList(Console.readLine());
+            String input = Console.readLine();
+            makeUserList(input);
+
             compareList();
 
             boolean result = makeRoundResult();
