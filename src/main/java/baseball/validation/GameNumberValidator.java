@@ -21,13 +21,13 @@ public class GameNumberValidator implements Validator {
 
     private void validateSize(List<?> target) {
         if (!Number.SIZE.equals(target.size())) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE);
+            throw new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.INVALID_SIZE);
         }
     }
 
     private void validateDuplicate(List<?> target) {
         if (target.size() != Set.copyOf(target).size()) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.DUPLICATE_NUMBER);
         }
     }
 }

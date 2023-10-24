@@ -19,7 +19,7 @@ public enum Command {
         return Arrays.stream(Command.values())
                 .filter(command -> command.value.equals(value))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_COMMAND));
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.INVALID_COMMAND));
     }
 
     public static Boolean isRestart(Command command) {
@@ -29,7 +29,7 @@ public enum Command {
         if (Command.RESTART.equals(command)) {
             return true;
         }
-        throw new IllegalArgumentException(ErrorMessage.INVALID_COMMAND);
+        throw new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.INVALID_COMMAND);
     }
 
     @Override

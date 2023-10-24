@@ -18,7 +18,7 @@ public class SingleNumberValidator implements Validator {
 
     private void validateType(String target) {
         if (!target.matches(ONLY_NATURE_NUMBER)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_TYPE);
+            throw new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.INVALID_TYPE);
         }
     }
 }
