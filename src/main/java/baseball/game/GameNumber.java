@@ -8,19 +8,22 @@ import java.util.Objects;
 public class GameNumber {
 
     private static final int NUMBER_SIZE = 3;
+    private static List<Integer> computerNumber;
 
-    public static List<Integer> generateNumbers() {
-        List<Integer> computerNumber = new ArrayList<>();
+    private GameNumber() {
+    }
+
+    public static void generateNumbers() {
+        computerNumber = new ArrayList<>();
         while (computerNumber.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
         }
-        return computerNumber;
     }
 
-    public static GameResult compare(List<Integer> computerNumber, List<Integer> userNumber) {
+    public static GameResult compare(List<Integer> userNumber) {
         int strike = 0;
         int ball = 0;
 

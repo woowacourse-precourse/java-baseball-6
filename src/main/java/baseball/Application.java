@@ -15,11 +15,10 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (GAME_MODE) {
-            List<Integer> computerNumber = GameNumber.generateNumbers();
-
+            GameNumber.generateNumbers();
             while (true) {
                 List<Integer> userNumber = UserNumber.readNumbers();
-                GameResult result = GameNumber.compare(computerNumber, userNumber);
+                GameResult result = GameNumber.compare(userNumber);
                 result.print();
                 if (gameOver(result)) {
                     GAME_MODE = restart();
