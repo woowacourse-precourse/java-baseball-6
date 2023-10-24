@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Balls {
     private static final String ZERO = "0";
-    private static final int INPUT_LENGTH = 3;
+    private static final int VALID_INPUT_LENGTH = 3;
     private static final String NO_ZERO = "0은 입력할 수 없다.";
     private static final String INVALID_LENGTH = "길이가 적절하지 않다.";
     private static final String DUPLICATE_INPUT = "같은 숫자 입력은 허용하지 않는다.";
@@ -29,10 +29,10 @@ public class Balls {
         if (userInput.contains(ZERO)) {
             throw new IllegalArgumentException(NO_ZERO);
         }
-        if (userInput.length() != INPUT_LENGTH) {
+        if (userInput.length() != VALID_INPUT_LENGTH) {
             throw new IllegalArgumentException(INVALID_LENGTH);
         }
-        if (userInput.chars().distinct().count() != INPUT_LENGTH){
+        if (userInput.chars().distinct().count() != VALID_INPUT_LENGTH){
             throw new IllegalArgumentException(DUPLICATE_INPUT);
         }
         try {
