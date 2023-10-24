@@ -11,7 +11,8 @@ public class BaseballGame {
     private final GameService gameService;
     private final static String exitNumber = "2";
     private static boolean endOrNot = false;
-
+    private static List<Integer> userNumber;
+    private static List<Integer> computerNumber;
 
     public BaseballGame() {
         gameService = new GameService();
@@ -27,17 +28,36 @@ public class BaseballGame {
     }
 
     private void startOneGame() {
-        Computer computer = new Computer();
-        boolean oneGameFinished = false;
-        List<Integer> computerNumber = computer.getComputerNumber();
-        while (!oneGameFinished) {
-            System.out.print(GameMessage.REQUIRED_INPUT_NUMBER.getMessage());
-            List<Integer> userNumber = gameService.parsingInputNumber(InputView.Input());
-            List<Integer> gameResult = gameService.playGame(computerNumber, userNumber);
-            if (OutputView.outputResult(gameResult)) {
-                oneGameFinished = true;
-            }
+        gamePreparation();
+        while (!gameProgress()) {
+
         }
+    }
+
+    public void gamePreparation() {
+        Computer computer = new Computer();
+        computerNumber = computer.getComputerNumber();
+    }
+
+    public boolean gameProgress() {
+        userNumber = inputUserNumber();
+        List<Integer> gameResult = gameService.playGame(computerNumber, userNumber);
+        if (getOneGameResult(gameResult)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean getOneGameResult(List<Integer> gameResult) {
+        if (OutputView.outputResult(gameResult)) {
+            return true;
+        }
+        return false;
+    }
+
+    private List<Integer> inputUserNumber() {
+        System.out.print(GameMessage.REQUIRED_INPUT_NUMBER.getMessage());
+        return gameService.parsingInputNumber(InputView.Input());
     }
 
 
