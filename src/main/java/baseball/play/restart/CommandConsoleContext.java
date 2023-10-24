@@ -1,19 +1,17 @@
 package baseball.play.restart;
 
+import baseball.play.start.RestartConfirmationCommand;
 import camp.nextstep.edu.missionutils.Console;
 
 public class CommandConsoleContext {
 
-  public static CommandConsoleResult<GameReStartedEvent, CompletelyQuietEvent> play(GameRestartCommand restartCommand) {
-    guideRestarting(restartCommand);
-    ValidatedCommandConsole validatedCommandConsole = ValidatedCommandConsole.of(Console.readLine());
+  public static CommandButtonResult<GameReStartedEvent, CompletelyQuietEvent> confirmButton(
+      RestartConfirmationCommand restartCommand) {
+    ValidatedCommandButton validatedCommandConsole = ValidatedCommandButton.of(Console.readLine());
     if (validatedCommandConsole.isRestart()) {
-      return CommandConsoleResult.restart(GameReStartedEvent.of(1, 9, 3));
+      return CommandButtonResult.restart(GameReStartedEvent.of(restartCommand.getStart(),
+          restartCommand.getEnd(), restartCommand.getLimit()));
     }
-    return CommandConsoleResult.quit(CompletelyQuietEvent.of("게임을 종료합니다."));
-  }
-
-  private static void guideRestarting(GameRestartCommand gameRestartCommand) {
-    System.out.println(gameRestartCommand.getRestartOrEndMessage());
+    return CommandButtonResult.quit(CompletelyQuietEvent.of("게임을 종료합니다."));
   }
 }
