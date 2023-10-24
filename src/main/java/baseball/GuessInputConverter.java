@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class GuessNumberFromUser extends NumberFromUser<List<Integer>> {
+public class GuessInputConverter extends InputConverter<List<Integer>> {
 
-    public GuessNumberFromUser() {
+    public GuessInputConverter() {
         outMessage = OutMessage.GUESS;
     }
 
     @Override
-    protected List<Integer> convertToReturnType(String input) {
+    protected List<Integer> convert(String input) {
         return Arrays.stream(input.split(""))
             .map(Integer::parseInt)
             .toList();

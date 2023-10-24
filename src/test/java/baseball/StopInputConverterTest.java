@@ -9,9 +9,9 @@ import java.io.InputStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-class StartNumberFromUserTest {
+class StopInputConverterTest {
 
-    StartNumberFromUser startNumberFromUser = new StartNumberFromUser();
+    StopInputConverter stopInputConverter = new StopInputConverter();
 
     @AfterEach
     void closeScanner() {
@@ -25,7 +25,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when
-        int startNumber = startNumberFromUser.getValue();
+        int startNumber = stopInputConverter.getValue();
 
         // then
         assertThat(startNumber).isEqualTo(1);
@@ -38,7 +38,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when
-        int startNumber = startNumberFromUser.getValue();
+        int startNumber = stopInputConverter.getValue();
 
         // then
         assertThat(startNumber).isEqualTo(2);
@@ -51,7 +51,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when & then
-        assertThatThrownBy(() -> startNumberFromUser.getValue()).isInstanceOf(
+        assertThatThrownBy(() -> stopInputConverter.getValue()).isInstanceOf(
             IllegalArgumentException.class);
     }
 
@@ -62,7 +62,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when & then
-        assertThatThrownBy(() -> startNumberFromUser.getValue()).isInstanceOf(
+        assertThatThrownBy(() -> stopInputConverter.getValue()).isInstanceOf(
             IllegalArgumentException.class);
     }
 

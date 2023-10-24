@@ -6,9 +6,9 @@ public class BaseballGame {
 
     private final AnswerGenerator answerGenerator = new AnswerGenerator();
 
-    private final GuessNumberFromUser guessNumberFromUser = new GuessNumberFromUser();
+    private final GuessInputConverter guessInputConverter = new GuessInputConverter();
 
-    private final StartNumberFromUser startNumberFromUser = new StartNumberFromUser();
+    private final StopInputConverter stopInputConverter = new StopInputConverter();
 
     private Judgment judgment;
 
@@ -29,15 +29,14 @@ public class BaseballGame {
     private void repeatedGuess() {
         boolean success = false;
         while (!success) {
-            final List<Integer> guess = guessNumberFromUser.getValue();
+            final List<Integer> guess = guessInputConverter.getValue();
             success = judgment.judge(guess);
         }
         OutMessage.ANSWER.printMsg();
     }
 
     private boolean isStop() {
-        final int start = startNumberFromUser.getValue();
-        return start == 2;
+        return stopInputConverter.getValue() == 2;
     }
 
 }
