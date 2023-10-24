@@ -8,7 +8,10 @@
 - 1부터 9 사이에서 서로 다른 3자리 수를 입력한다.
 - 이때, camp.nextstep.edu.missionutils.Console에서 제공하는 readLine()을 활용한다.
 - 게임이 끝난 후, 재시작 / 종료를 구분하는 1 / 2 숫자를 입력한다.
-- (❗️Exception) 잘못된 값을 입력할 경우 IllegalArgumentException예외 발생시키고, 애플리케이션을 종료한다.
+### ❗️Exception
+- 잘못된 값을 입력할 경우 IllegalArgumentException예외 발생시키고, 애플리케이션을 종료한다.
+- 잘못된 입력 1) 3자리 숫자가 아닌 경우
+- 잘못된 입력 2) 중복되는 숫자가 있는 경우
 
 ### 3. 사용자의 입력에 대해 스트라이크, 볼을 판정하는 기능 (Play.java)
 - 컴퓨터의 수와 같은 수가 같은 자리에 있으면 스트라이크에 1 추가
