@@ -15,6 +15,7 @@ public class BaseballGame {
         } while (restart());
 
         System.out.println("숫자 야구 게임을 완전히 종료합니다.");
+        cleanUpResource();
     }
 
     private static void newGame() {
@@ -42,5 +43,9 @@ public class BaseballGame {
         Validator.validateNewOrQuit(newOrQuit);
         if (newOrQuit.equals("1")) return true;
         else return false;
+    }
+
+    private static void cleanUpResource() {
+        Console.close();
     }
 }
