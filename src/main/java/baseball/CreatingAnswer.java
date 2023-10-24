@@ -2,6 +2,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CreatingAnswer {
@@ -17,22 +20,21 @@ public class CreatingAnswer {
     }
 
     public int getRandomNumber() {
-        while (true) {
-            random_number = Randoms.pickNumberInRange(111, 999);  // 랜덤 정수 추출
-            if (isValidateNumber(random_number)) {
-                return random_number;
+
+        ArrayList<Integer> randomList = new ArrayList<>();
+        while (randomList.size() < 3) {
+            int tempNum = Randoms.pickNumberInRange(1, 9);
+            if (!randomList.contains(tempNum)) {
+                randomList.add(tempNum);
             }
         }
+
+        String str = randomList.stream()
+                        .map(Object::toString)
+                        .collect(Collectors.joining());
+        System.out.println(str);
+        System.out.println(Integer.parseInt(str));
+        return Integer.parseInt(str);
     }
 
-    private boolean isValidateNumber(int number) {              // 각 자리 숫자 다른지 검사
-        int first_num = random_number / 100;
-        int second_num = (random_number % 100) / 10;
-        int third_num = (random_number % 100) % 10;
-        if (first_num != second_num && second_num != third_num && first_num != third_num) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
