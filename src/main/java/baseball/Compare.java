@@ -8,6 +8,7 @@ public class Compare {
     int ball;
 
     public int CountStrike(List<Integer> player, List<Integer> computer) {
+        // 스트라이크 개수 확인하는 메소드
         strike = 0;
         for (int i = 0; i < Constant.gameNumberLength; i++) {
             if (player.get(i).equals(computer.get(i))) {
@@ -18,6 +19,7 @@ public class Compare {
     }
 
     public int CountBall(List<Integer> player, List<Integer> computer) {
+        // 볼 개수 확인하는 메소드
         ball = 0;
         for (int i = 0; i < Constant.gameNumberLength; i++) {
             if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
@@ -28,6 +30,7 @@ public class Compare {
     }
 
     public String CountResult(List<Integer> player, List<Integer> computer) {
+        // 스트라이크와 볼 개수를 취합하여 String으로 출력하는 메소드
         strike = CountStrike(player,computer);
         ball = CountBall(player,computer);
         List<String> result = new ArrayList<>();
