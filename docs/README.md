@@ -14,12 +14,15 @@
       1. 같은 수 같은 자리 : 스트라이크
       2. 같은 수 다른 자리 : 볼
       3. 같은 수 없음 : 낫싱
-   5. 정답과 입력받은 수 비교
+   5. 정답과 입력 받은 수 비교
       1. 정답이라면 게임 종료
-      2. 정답이 아니라면, 2-1 돌아감
-3. 게임 종료 
-   1. 1일 경우, 다시 시작
-   2. 2일 경우, 종료   
+      2. 정답이 아니라면, 2-1 로 이동
+3. 게임 종료  
+      1. 재시작 질문 문구 출력
+      2. 숫자 입력
+      3. 입력 값 검증 : 1 또는 2 가 아닐 경우 예외 발생
+      4. 1일 경우, 다시 시작
+      5. 2일 경우, 종료
 </br>
 
 ## 2. MVC 기능 분리
@@ -29,6 +32,9 @@
 - ComputerController : 게임 진행
 
 ### Model
+
+- BallAndStrikeCount : 입력 값에 따른 Ball과 Strike 갯수 저장
+- ComputerNumber : 컴퓨터가 생성한 수 저장
 
 ### View
 
@@ -40,6 +46,9 @@
 ```bash
 com.woowacourse.java-baseball-6
 ┃ common
+┃ ┣ InputAnswerValidator.java
+┃ ┣ InputNumberValidator.java
+┃ ┣ NumberConstans.java
 ┃ ┗ RandomUtility.java
 ┃ 
 ┣ controller
@@ -47,7 +56,9 @@ com.woowacourse.java-baseball-6
 ┃ ┗ ComputerController.java
 ┃ 
 ┣ model
-┃   
+┃ ┣ BallAndStrikeCount.java
+┃ ┗ ComputerNumber.java
+┃
 ┣ view 
 ┃ ┣ InputView.java
 ┃ ┗ OutputView.java
