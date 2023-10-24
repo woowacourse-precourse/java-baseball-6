@@ -16,19 +16,26 @@
 - [x] Baseball 을 3개까지 가질 수 있고, 3개 중 같은 Baseball 이 존재할 수 없다
 - [x] Baseballs 와의 비교를 통해 스트라이크와 볼의 개수를 구할 수 있다
 
+## BaseballsGenerator
+- [x] BaseballsGenerator 는 입력받은 값을 통해 Baseballs 를 생성하거나 랜덤 값으로 Baseballs 를 생성할 수 있다
+ 
 ## Computer
 - [x] 컴퓨터는 정답 숫자인 Baseballs 를 가진다
 - [x] 컴퓨터가 가지는 정답 숫자(Baseballs)는 서로 다른 Baseball 로 이루어져 있다
-- [x] 컴퓨터는 숫자를 재생성 할 수 있다
-- [x] 컴퓨터는 유저가 입력한 숫자와의 비교를 통해 Result 를 반환할 수 있다
+- [x] 컴퓨터는 숫자를 랜덤으로 생성 할 수 있다
+
+## User
+- [x] 유저는 입력을 통해 Baseballs 를 생성할 수 있다
+- [x] 유저의 입력이 올바르지 않을경우 프로그램은 종료된다
 
 ## Result
 - [x] 결과는 스트라이크와 볼 개수를 가진다
+- [ ] 결과는 Baseballs 쌍을 입력받고 이를 비교하여 결과를 생성할 수 있다
 - [x] 스트라이크와 볼 개수에 따라 출력 형식에 맞는 String 으로 반환할 수 있다
 - [x] 게임을 클리어했는지 확인할 수 있다
 
 ## Game
-- [x] 게임은 유저의 상대 역할인 Computer 를 가진다
+- [x] 게임은 User 와 Computer 를 가진다
 - [x] 게임은 게임의 흐름을 제어할 수 있다
 - [x] 게임은 GameScreen 을 통해 유저의 입력을 받을 수 있다
 
