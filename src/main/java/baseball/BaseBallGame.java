@@ -1,14 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * BaseBallGame.java
- *
+ * <p>
  * 야구게임이 수행될 메인 부분
  *
  * @author Lee NaYeon
@@ -17,28 +16,48 @@ import java.util.List;
 
 public class BaseBallGame {
 
-    public void start(){
+    public void start() {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> computer = createRandomNumber();
+        while (true) {
 
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> input = stringToListInt(Console.readLine());
+            List<Integer> computer = createRandomNumber();
 
-        int[] result = compareAnswerInput(computer, input);
+            while (true) {
 
-        printResult(result);
+                System.out.print("숫자를 입력해주세요 : ");
+                List<Integer> input = stringToListInt(Console.readLine());
 
+                int[] result = compareAnswerInput(computer, input);
+
+                printResult(result);
+
+                if (result[1] == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+
+            }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int option = Integer.parseInt(Console.readLine());
+
+            if (option == 2) {
+                break;
+            }
+
+        }
 
     }
 
 
     /**
      * 3자리 난수 생성
+     *
      * @return List<Integer> 타입의 3자리 난수
      */
-    private List<Integer> createRandomNumber(){
+    private List<Integer> createRandomNumber() {
 
         List<Integer> list = new ArrayList<>();
         while (list.size() < 3) {
@@ -53,6 +72,7 @@ public class BaseBallGame {
 
     /**
      * 문자열을 List<Integer> 타입으로 변경
+     *
      * @param str
      * @return List<Integer>타입의 숫자
      */
@@ -92,6 +112,7 @@ public class BaseBallGame {
 
     /**
      * result 값 (볼, 스트라이크 갯수)데 다른 결과 출력
+     *
      * @param result
      */
     private void printResult(int[] result) {
