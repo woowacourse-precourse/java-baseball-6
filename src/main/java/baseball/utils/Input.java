@@ -2,35 +2,37 @@ package baseball.utils;
 
 import static baseball.utils.OutputMessage.askNumberMessage;
 import static baseball.utils.OutputMessage.askRestartMessage;
-import static baseball.validate.CheckInput.validateUserInput;
+import static baseball.validate.CheckInput.validatePlayerInput;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
+    private static final int INPUT_LENGTH = 3;
+
     public static String askRestart() {
         askRestartMessage();
         String answer = Console.readLine();
         return answer.trim();
     }
 
-    public static List<Integer> getPlayerInput() {
+    public static List<Integer> askPlayerInput() {
         askNumberMessage();
-        return getInputString();
+        String stringInput = getInputString();
+        return stringToInteger(stringInput);
     }
 
-    private static List<Integer> getInputString() {
-        String userInput = Console.readLine();
-        String trimInput = userInput.trim();
-        validateUserInput(trimInput);
-        return inputToInteger(trimInput);
+    private static String getInputString() {
+        String playerInput = Console.readLine();
+        String trimInput = playerInput.trim();
+        validatePlayerInput(trimInput);
+        return trimInput;
     }
 
-    //String -> Integer List로 변환
-    private static List<Integer> inputToInteger(String trimInput) {
+    private static List<Integer> stringToInteger(String trimInput) {
         List<Integer> answer = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < INPUT_LENGTH; i++) {
             answer.add(Character.getNumericValue(trimInput.charAt(i)));
         }
         return answer;
