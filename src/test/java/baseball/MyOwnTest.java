@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -100,7 +101,7 @@ public class MyOwnTest extends NsTest {
     }
 
     @Test
-    void 원_볼_원_스트라이크(){
+    void 원_볼_원_스트라이크() {
         assertSimpleTest(() -> {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> user = List.of(2, 9, 3);
@@ -114,7 +115,7 @@ public class MyOwnTest extends NsTest {
     }
 
     @Test
-    void 볼만_있을_경우(){
+    void 볼만_있을_경우() {
         assertSimpleTest(() -> {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> user = List.of(2, 9, 7);
@@ -126,7 +127,7 @@ public class MyOwnTest extends NsTest {
     }
 
     @Test
-    void 낫싱(){
+    void 낫싱() {
         assertSimpleTest(() -> {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> user = List.of(4, 5, 6);
@@ -137,6 +138,40 @@ public class MyOwnTest extends NsTest {
                     .isEqualTo("낫싱");
 
         });
+    }
+
+    @Test
+    @DisplayName("다시_시작할_때_숫자를_넣어야_합니다.")
+    void 다시_시작할_때_숫자가_아닐_경우() {
+        assertSimpleTest(() ->
+                        assertThatThrownBy(() -> {
+                                    try (MockedStatic<Console> console = mockStatic(Console.class)) {
+                                        when(Console.readLine()).thenReturn("q");
+                                        Application.isGameOver();
+                                    }
+                                }
+                        )
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("your choice should be in range 1 to 2.")
+        );
+
+    }
+
+    @Test
+    @DisplayName("다시_시작할_때_한_자리_수를_넣어야_합니다.")
+    void 다시_시작할_때_한자리가_아닐_경우() {
+        assertSimpleTest(() ->
+                        assertThatThrownBy(() -> {
+                                    try (MockedStatic<Console> console = mockStatic(Console.class)) {
+                                        when(Console.readLine()).thenReturn("1234");
+                                        Application.isGameOver();
+                                    }
+                                }
+                        )
+                                .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("your choice should exactly be one digit.")
+        );
+
     }
 
     @Override
