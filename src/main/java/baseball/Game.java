@@ -29,8 +29,24 @@ public class Game {
         while (strike < DESIGNED_NUM) {
             System.out.println(INPUT_MESSAGE);
             String inputNumbers = readLine();
+            validateDataType(inputNumbers);
 
         }
+    }
+
+    private void printHint() {
+        if (strike == 0 && ball == 0) {
+            System.out.println(NOTHING);
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        if (ball != 0) {
+            sb.append(ball).append(BALL).append(" ");
+        }
+        if (strike != 0) {
+            sb.append(strike).append(STRIKE);
+        }
+        System.out.println(sb.toString());
     }
 
     private void printWinMessage() {
