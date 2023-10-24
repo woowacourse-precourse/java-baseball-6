@@ -31,3 +31,16 @@
 
 ### GameNumberComparator
 - compareNumbers()
+
+# 구현할 기능 ver2.1
+
+- 목표 : 오직 한 단계의 indent만 한다
+- 방법 : 메서드를 한가지 일만 하도록 분리한다
+- 수정해야할 메서드
+
+    | 클래스       | 메서드           | 분리 / 변경 해야하는 기능                                                   |
+    |-----------|---------------|-------------------------------------------------------------------|
+    | GameInput | getUserNumber | 입력 받는 기능, <br/>문자-숫자 변환 기능, <br/>잘못된 입력 예외 발생 기능                  | 
+    | GameInput      | getRestartOption | if 조건을 2개가 아닌 하나로 변경                                              |  
+    | GameNumberComparator | compareNumbers | 컴퓨터-유저 숫자 카운트 기능,<br/>스트라이크 카운트 기능, <br/>볼 카운트 기능 , <br/>숫자 비교 기능 |
+    | GameNumberGenerator      | generateNumber          | 랜덤 숫자 뽑는 기능, <br/>중복 체크 기능, <br/>최종 숫자 삽입 기능  |
