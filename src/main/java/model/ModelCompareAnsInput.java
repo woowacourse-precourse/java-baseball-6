@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ModelCompareAnsInput.java
@@ -12,6 +13,9 @@ import java.util.List;
  */
 
 public class ModelCompareAnsInput {
+
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
 
     /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
@@ -25,10 +29,10 @@ public class ModelCompareAnsInput {
         int[] result = {0, 0};
 
         for (int i = 0; i < ans.size(); i++) {
-            if (ans.get(i).equals(input.get(i))) {
-                result[1]++;
+            if (Objects.equals(ans.get(i), input.get(i))) {
+                result[STRIKE]++;
             } else if (ans.contains(input.get(i))) {
-                result[0]++;
+                result[BALL]++;
             }
         }
 
@@ -44,7 +48,7 @@ public class ModelCompareAnsInput {
      */
     public static boolean isAns(int[] result) {
 
-        return result[1] == 3;
+        return result[STRIKE] == 3;
     }
 
 }
