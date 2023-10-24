@@ -30,9 +30,9 @@ public class BaseballGame {
 
         while (isPlaying) {
 
-            Answer answer = initializeAnswer();
+            AnswerNumbers answerNumbers = initializeAnswer();
 
-            guessAnswer(answer);
+            guessAnswer(answerNumbers);
 
             inputView.restartGame();
             String command = inputView.readLine();
@@ -42,11 +42,11 @@ public class BaseballGame {
         }
     }
 
-    private void guessAnswer(Answer answer) {
+    private void guessAnswer(AnswerNumbers answerNumbers) {
         while (true) {
             Score.initialize();
 
-            doGuess(answer);
+            doGuess(answerNumbers);
 
             if (Score.isWin()) {
                 outputView.endGame();
@@ -55,21 +55,21 @@ public class BaseballGame {
         }
     }
 
-    private void doGuess(Answer answer) {
+    private void doGuess(AnswerNumbers answerNumbers) {
         inputView.playerNumber();
         String inputPlayerNumbers = inputView.readLine();
 
         PlayerNumbers playerNumbers = PlayerNumbers.of(inputPlayerNumbers);
 
-        calculateScore(answer, playerNumbers);
+        calculateScore(answerNumbers, playerNumbers);
 
         outputView.writeMessage(Score.getResultMessage());
     }
 
-    private void calculateScore(Answer answer, PlayerNumbers playerNumbers) {
-        for (int index = 0; index < Answer.SIZE; index++) {
-            if (answer.contains(playerNumbers.getByIndex(index))) {
-                if (answer.getByIndex(index).equals(playerNumbers.getByIndex(index))) {
+    private void calculateScore(AnswerNumbers answerNumbers, PlayerNumbers playerNumbers) {
+        for (int index = 0; index < AnswerNumbers.SIZE; index++) {
+            if (answerNumbers.contains(playerNumbers.getByIndex(index))) {
+                if (answerNumbers.getByIndex(index).equals(playerNumbers.getByIndex(index))) {
                     Score.STRIKE.addCount();
                     continue;
                 }
@@ -78,9 +78,9 @@ public class BaseballGame {
         }
     }
 
-    private Answer initializeAnswer() {
+    private AnswerNumbers initializeAnswer() {
         List<Integer> randomNumbers = RandomNumberGenerator.pickNumbersInRangeWithoutDuplication(1, 9);
 
-        return Answer.of(randomNumbers);
+        return AnswerNumbers.of(randomNumbers);
     }
 }

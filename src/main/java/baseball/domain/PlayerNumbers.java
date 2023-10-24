@@ -39,7 +39,7 @@ public class PlayerNumbers {
         List<Integer> numbers = stringToIntegerArray(inputPlayerNumbers);
         HashSet<Integer> removeDuplicated = new HashSet<>(numbers);
 
-        if (removeDuplicated.size() != Answer.SIZE) {
+        if (removeDuplicated.size() != AnswerNumbers.SIZE) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
     }

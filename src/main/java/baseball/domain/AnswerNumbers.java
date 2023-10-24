@@ -2,18 +2,18 @@ package baseball.domain;
 
 import java.util.List;
 
-public class Answer {
+public class AnswerNumbers {
 
     public static final int SIZE = 3;
 
     private final List<Integer> targetNumbers;
 
-    private Answer(List<Integer> targetNumbers) {
+    private AnswerNumbers(List<Integer> targetNumbers) {
         this.targetNumbers = targetNumbers;
     }
 
-    public static Answer of(final List<Integer> parsedNumbers) {
-        return new Answer(parsedNumbers);
+    public static AnswerNumbers of(final List<Integer> parsedNumbers) {
+        return new AnswerNumbers(parsedNumbers);
     }
 
     public boolean contains(final int expectedNumber) {

@@ -30,7 +30,7 @@ public enum Score {
     }
 
     public static boolean isWin() {
-        return Score.STRIKE.count == Answer.SIZE;
+        return Score.STRIKE.count == AnswerNumbers.SIZE;
     }
 
     private static String parseResultMessage() {
