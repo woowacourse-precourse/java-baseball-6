@@ -1,11 +1,12 @@
 package baseball.service;
 
+import baseball.validation.NumberValidation;
+
+import java.util.stream.Stream;
+
 import static baseball.constant.Constant.NUMBER_LENGTH;
 import static baseball.message.CountMessage.BALL;
 import static baseball.message.CountMessage.STRIKE;
-
-import baseball.validation.NumberValidation;
-import java.util.stream.Stream;
 
 public class CountService {
     private int[] number;
@@ -25,6 +26,7 @@ public class CountService {
     public String getResultCount(int[] computerNumber, int[] playerNumber) {
         int ball = getBallCount(computerNumber, playerNumber);
         String ballCount = BALL.toString(ball);
+
         int strike = getStrikeCount(computerNumber, playerNumber);
         String strikeCount = STRIKE.toString(strike);
 
@@ -33,7 +35,7 @@ public class CountService {
 
     public int getBallCount(int[] computerNumber, int[] playerNumber) {
         this.ballCount = (int) Stream.iterate(0, i -> i + 1).limit(NUMBER_LENGTH)
-                .filter(i -> computerNumber[i] != playerNumber[i] && NumberValidation.isInArray(computerNumber,
+                .filter(i -> computerNumber[i] != playerNumber[i] && NumberValidation.validateIsInArray(computerNumber,
                         playerNumber[i]))
                 .count();
         return ballCount;

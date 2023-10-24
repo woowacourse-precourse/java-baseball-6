@@ -1,12 +1,13 @@
 package baseball.controller;
 
-import static baseball.constant.Constant.END;
-import static baseball.constant.Constant.RESTART;
-
 import baseball.service.ProgressService;
 import baseball.validation.NumberValidation;
 import baseball.view.InputView;
+
 import java.util.stream.Stream;
+
+import static baseball.constant.Constant.END;
+import static baseball.constant.Constant.RESTART;
 
 public class GameProgress {
 

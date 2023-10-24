@@ -1,15 +1,12 @@
 package baseball.service;
 
-import static baseball.constant.Constant.END;
-import static baseball.constant.Constant.MAX_NUMBER;
-import static baseball.constant.Constant.MIN_NUMBER;
-import static baseball.constant.Constant.NUMBER_LENGTH;
-import static baseball.constant.Constant.RESTART;
-import static baseball.message.CountMessage.NOTHING;
-
 import baseball.validation.NumberValidation;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Arrays;
+
+import static baseball.constant.Constant.*;
+import static baseball.message.CountMessage.NOTHING;
 
 public class ProgressService {
 
