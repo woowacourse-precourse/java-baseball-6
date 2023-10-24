@@ -41,18 +41,32 @@ public class NumberBaseballGame {
 
     private void oneRound() {
         AnswerMaker answerMaker = new AnswerMaker(MIN, MAX);// 정답 생성
+        boolean threeStrike = false;
 
-        while (true) {
-            speaker(REQUEST_NUMBER_MESSAGE);
-            List<Integer> userNumbers = inputValidation.validateAndConvertUserNumbers(userInput.getUserInput());
-            List<Integer> ballAndStrikeCount = scoreCounter.countScore(answerMaker.getAnswer(), userNumbers);
-            int strikeCount = ballAndStrikeCount.get(1);
-            speaker(message.scoreMessage(ballAndStrikeCount) + '\n');
+        while (!threeStrike) {
+            int strikeCount = scoreResult(answerMaker.getAnswer());
 
-            if (strikeCount == 3) {
-                break;
-            }
+            threeStrike = checkThreeStrike(strikeCount);
         }
         speaker(SUCCESS_MESSAGE + '\n');
+    }
+
+    private int scoreResult(List<Integer> answer) {
+        speaker(REQUEST_NUMBER_MESSAGE);
+        List<Integer> ballAndStrike = scoreCounter.countScore(answer, userAnswer());
+        speaker(message.scoreMessage(ballAndStrike) + '\n');
+        int strikeCount = ballAndStrike.get(1);
+
+        return (strikeCount);
+    }
+
+    private List<Integer> userAnswer() {
+        String input = userInput.getUserInput();
+
+        return (inputValidation.validateAndConvertUserNumbers(input));
+    }
+
+    private boolean checkThreeStrike(int strike) {
+        return (strike == 3);
     }
 }
