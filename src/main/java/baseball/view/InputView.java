@@ -15,11 +15,16 @@ public class InputView {
 		return input;
 	}
 
-	public static void restartGame() {
+	public static boolean restartGame() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		int reStart = Integer.parseInt(Console.readLine());
 		checkRestart(reStart);
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		if (reStart == 1) {
+			return true;
+		}
+		if (reStart == 2) {
+			return false;
+		}
+		return false;
 	}
-
-
 }

@@ -5,9 +5,9 @@ import java.util.Set;
 
 public class InputValidator {
 	public static void checkNumber(String input) {
+		checkSize(input);
 		isDistinct(input);
 		isDigit(input);
-		checkSize(input);
 	}
 
 	public static void isDistinct(String input) {
@@ -40,6 +40,5 @@ public class InputValidator {
 		if (input != 1 && input != 2) {
 			throw new IllegalArgumentException("Incorrect Number");
 		}
-
 	}
 }
