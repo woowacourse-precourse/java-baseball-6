@@ -17,6 +17,23 @@ public class Application {
     }
     /**랜덤한 숫자와 입력한 숫자를 비교하는 함수*/
     int baseball(String inputNum, List<Integer> randomNumber) {
+        // 잘못된 입력값 예외 처리
+        for (int i = 0; i < inputNum.length(); i++) {
+            char num1 = inputNum.charAt(i);
+            for (int j = i + 1; j < inputNum.length(); j++) {
+                if (num1 == inputNum.charAt(j)) {
+                    throw new IllegalArgumentException("중복된 수가 존재합니다.");
+                }
+            }
+        }
+        if (inputNum.length() != 3) {
+            throw new IllegalArgumentException("3자리 수가 아닙니다.");
+        }
+        try {
+            int number = Integer.parseInt(inputNum);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 형식이 아닙니다.");
+        }
         // 스트라이크 볼 카운트 초기화
         int strike = 0;
         int ball = 0;
