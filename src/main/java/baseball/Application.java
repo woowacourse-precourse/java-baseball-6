@@ -30,7 +30,6 @@ public class Application {
     }
 
     public static int[] getUserNumber(){
-
         int[] numbers = new int[3];
 
         do {
