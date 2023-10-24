@@ -16,4 +16,8 @@ public class userInterface {
     final static int restartChoice=1;
     public static List<Integer> userInputNumber;
 
+    public static void startWrite(){
+        System.out.println(startPhrases);
+    }
+
 }
