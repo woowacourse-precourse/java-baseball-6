@@ -2,11 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.*;
-import java.util.function.IntUnaryOperator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.ArrayList;
+
 
 public class Application {
 
