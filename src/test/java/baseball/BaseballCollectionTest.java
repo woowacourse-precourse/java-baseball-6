@@ -1,15 +1,14 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import baseball.service.BaseballCollection;
 import baseball.service.RandomNumberGenerator;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThatCode;
 
 class BaseballCollectionTest {
 
@@ -22,7 +21,7 @@ class BaseballCollectionTest {
             int totalTestCase = 10000;
             // when, then
             for (int testCase = 0; testCase < totalTestCase; testCase++) {
-                assertThatCode(() -> new BaseballCollection(new RandomNumberGenerator()))
+                assertThatCode(() -> BaseballCollection.ofComputerBaseball(new RandomNumberGenerator()))
                         .doesNotThrowAnyException();
             }
         }
@@ -38,7 +37,7 @@ class BaseballCollectionTest {
             List<String> playerBalls = List.of("123", "234", "345", "456", "567", "678", "789", "158", "259", "325");
             // when, then
             for (String playerBall : playerBalls) {
-                assertThatCode(() -> new BaseballCollection((playerBall)))
+                assertThatCode(() -> BaseballCollection.ofPlayerBaseball(playerBall))
                         .doesNotThrowAnyException();
             }
         }
@@ -50,7 +49,7 @@ class BaseballCollectionTest {
             List<String> playerBalls = List.of("120", "204", "015");
             // when, then
             for (String playerBall : playerBalls) {
-                assertThatThrownBy(() -> new BaseballCollection((playerBall)))
+                assertThatThrownBy(() -> BaseballCollection.ofPlayerBaseball(playerBall))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
@@ -65,7 +64,7 @@ class BaseballCollectionTest {
                     "959"); // 1,3번째 중복
             // when, then
             for (String playerBall : playerBalls) {
-                assertThatThrownBy(() -> new BaseballCollection((playerBall)))
+                assertThatThrownBy(() -> BaseballCollection.ofPlayerBaseball(playerBall))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
@@ -77,7 +76,7 @@ class BaseballCollectionTest {
             List<String> playerBalls = List.of("7", "12", "1243", "79283465");
             // when, then
             for (String playerBall : playerBalls) {
-                assertThatThrownBy(() -> new BaseballCollection((playerBall)))
+                assertThatThrownBy(() -> BaseballCollection.ofPlayerBaseball(playerBall))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
@@ -92,7 +91,7 @@ class BaseballCollectionTest {
                     "", " ", " 1", "1 ");   // 공백
             // when, then
             for (String playerBall : playerBalls) {
-                assertThatThrownBy(() -> new BaseballCollection((playerBall)))
+                assertThatThrownBy(() -> BaseballCollection.ofPlayerBaseball(playerBall))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
