@@ -36,20 +36,29 @@ public class BaseballController {
         // 3 스트라이크인지 확인
         GameSet = CompareNumber.IsThreeStrike(CompareNumber.getStrike());
 
+        // 게임 재시작 여부 확인
         RestartGame(GameSet);
     }
 
     public void RestartGame(boolean GameSet) {
+
         if(GameSet){
-            String answer = new PlayerInputManager(InputView.RestartAskMessage(), GameStatus.RESTART).getPlayerInput();
-            if(answer.equals("1")) {
-                restart = true;
-                computerNumber = MakeNumber.MakeRandomNumber();
-            } else {
-                restart = false;
-            }
-        } else {
+            RestartCheckPlayerInput();
+        }
+        if(!GameSet){
             restart = true;
+        }
+
+    }
+
+    public void RestartCheckPlayerInput() {
+        String answer = new PlayerInputManager(InputView.RestartAskMessage(), GameStatus.RESTART).getPlayerInput();
+        if(answer.equals("1")) {
+            restart = true;
+            computerNumber = MakeNumber.MakeRandomNumber();
+        }
+        if(answer.equals("2")) {
+            restart = false;
         }
     }
 
