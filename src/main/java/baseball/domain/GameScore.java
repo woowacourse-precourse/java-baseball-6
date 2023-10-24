@@ -17,7 +17,7 @@ public class GameScore {
         return numberOfBalls.isZero() && numberOfStrikes.isZero();
     }
 
-    public boolean isStrikesAllOfBalls() {
+    public boolean isAllStrikes() {
         return numberOfStrikes.getValue() == SystemConstant.DIGIT_SIZE;
     }
 }

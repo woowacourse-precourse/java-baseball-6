@@ -21,7 +21,7 @@ public class GameManager {
     }
 
     private void endRound(GameScore roundGameScore) {
-        if (roundGameScore.isStrikesAllOfBalls()) {
+        if (roundGameScore.isAllStrikes()) {
             choiceNewGameOrGameOver();
             return;
         }
