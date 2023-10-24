@@ -27,10 +27,8 @@ public class BaseballGame {
     }
 
     public String judgeAnswer(Answer answer, int inputNumber) {
-        int firstBall = inputNumber/100;
-        int secondBall = inputNumber%100/10;
-        int thirdBall = inputNumber%10;
-        int[] balls = {firstBall,secondBall,thirdBall};
+        BallConverter ballConverter = new BallConverter(inputNumber);
+        int[] balls = ballConverter.convert();
         List<Integer> answerList = answer.getAnswerNumbers();
         JudgedCounts judgedCounts = judgeStrikeOrBall(answerList, balls);
         isSuccess(judgedCounts);
