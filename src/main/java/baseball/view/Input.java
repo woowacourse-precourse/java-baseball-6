@@ -2,7 +2,8 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputNumber {
+public class Input {
+
     public static String GetUserInput() {
         return Console.readLine();
     }
@@ -10,4 +11,5 @@ public class InputNumber {
     public static String GetRestartInput() {
         return Console.readLine();
     }
+
 }

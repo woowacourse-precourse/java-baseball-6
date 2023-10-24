@@ -4,7 +4,7 @@ import baseball.model.Settings;
 import java.util.Arrays;
 import java.util.List;
 
-public class CheckNumber {
+public class CheckInput {
     public static void InputLengthCheck(String userInput) {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();

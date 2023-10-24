@@ -22,8 +22,8 @@ public class BaseBallGame {
             while (!correct) {
                 Settings.SetElements();
                 String userInput = InputNumber.GetUserInput();
-                CheckNumber.CheckNumberRules(userInput);
-                CheckNumber.StrikesAndBalls(computer, userInput);
+                CheckInput.CheckNumberRules(userInput);
+                CheckInput.StrikesAndBalls(computer, userInput);
                 Output.Hint(computer, userInput);
             }
         }
