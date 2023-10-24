@@ -10,7 +10,22 @@ public class Referee {
     Validator validator = new Validator();
     Computer computer = new Computer();
     User user = new User();
-    
+
+    public void runGame() {
+        System.out.println(START_GAME_MENT);
+        String baseballNum = computer.createValidBaseballNum();
+        while (true) {
+            String userInputNum = user.inputNum();
+            validator.validNums(userInputNum);
+            List<Integer> strikeAndBall = judgeNum(baseballNum, userInputNum);
+            if (countBallAndStrike(strikeAndBall)) {
+                if (!user.continueGame()) {
+                    break;
+                }
+            }
+        }
+    }
+
     public Boolean countBallAndStrike(List<Integer> strikeAndBall) {//카운트 세주는
         int strike = strikeAndBall.get(0);
         int ball = strikeAndBall.get(1);
@@ -28,6 +43,7 @@ public class Referee {
         }
         return FALSE;
     }
+
     public List<Integer> judgeNum(String baseballNum, String userInputNum) {
         int strike = 0;
         int ball = 0;
