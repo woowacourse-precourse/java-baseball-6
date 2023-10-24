@@ -6,7 +6,8 @@
 - 블럭 들여쓰기 4칸
 - 열 제한 : 120
 - 와이들 카드 가져오기 없음
-
+- import문 줄바꿈 없음(static -> non-static 순서)
+  - static non-static 사이에 줄바꿈
 
 
 

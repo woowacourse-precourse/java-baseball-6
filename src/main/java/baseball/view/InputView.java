@@ -1,9 +1,9 @@
 package baseball.view;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import baseball.domain.Balls;
 import baseball.domain.ResponseStatus;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
 

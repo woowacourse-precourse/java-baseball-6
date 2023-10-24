@@ -1,14 +1,15 @@
 package baseball.controller;
 
+import static baseball.view.InputView.inputRestartOrEnd;
+import static baseball.view.InputView.userInputNumber;
+import static baseball.view.OutputView.printRoundResult;
+import static baseball.view.OutputView.startMessage;
+
 import baseball.domain.Balls;
 import baseball.domain.NumberGenerator;
 import baseball.domain.ResponseStatus;
 import baseball.domain.RoundResult;
 
-import static baseball.view.InputView.inputRestartOrEnd;
-import static baseball.view.InputView.userInputNumber;
-import static baseball.view.OutputView.printRoundResult;
-import static baseball.view.OutputView.startMessage;
 
 public class BaseballGameController {
 
