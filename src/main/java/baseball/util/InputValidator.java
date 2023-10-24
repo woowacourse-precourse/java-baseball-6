@@ -6,23 +6,14 @@ import java.util.Set;
 
 public class InputValidator {
 
-    private static final int BASEBALL_GAME_NUMBER_LENGTH = BaseBallConstants.BASEBALL_GAME_NUMBER_LENGTH;
-    private static final int MIN_DIGIT = BaseBallConstants.MIN_DIGIT;
-    private static final int MAX_DIGIT = BaseBallConstants.MAX_DIGIT;
-    private static final String WRONG_LENGTH_THROW_MESSAGE = BaseBallConstants.WRONG_LENGTH_THROW_MESSAGE;
-    private static final String WRONG_RANGE_THROW_MESSAGE = BaseBallConstants.WRONG_RANGE_THROW_MESSAGE;
-    private static final String DUPLICATE_INPUT_MESSAGE = BaseBallConstants.DUPLICATE_INPUT_MESSAGE;
-    private static final String CONTINUE_NUMBER = BaseBallConstants.CONTINUE_NUMBER;
-    private static final String GAME_TERMINATE_NUMBER = BaseBallConstants.GAME_TERMINATE_NUMBER;
-    private static final String WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE = BaseBallConstants.WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE;
-
     public boolean isThreeLengthLetter(String playerInput) {
-        return playerInput.length() == BASEBALL_GAME_NUMBER_LENGTH;
+        return playerInput.length() == BaseBallConstants.BASEBALL_GAME_NUMBER_LENGTH;
     }
 
     public boolean isAllDigit(String playerInput) {
         for (int i = 0; i < playerInput.length(); i++) {
-            if (playerInput.charAt(i) < MIN_DIGIT || playerInput.charAt(i) > MAX_DIGIT) {
+            if (playerInput.charAt(i) < BaseBallConstants.MIN_DIGIT
+                    || playerInput.charAt(i) > BaseBallConstants.MAX_DIGIT) {
                 return false;
             }
         }
@@ -42,20 +33,20 @@ public class InputValidator {
 
     public boolean isValidNumber(String playerInput) {
         if (!isThreeLengthLetter(playerInput)) {
-            throw new IllegalArgumentException(WRONG_LENGTH_THROW_MESSAGE);
+            throw new IllegalArgumentException(BaseBallConstants.WRONG_LENGTH_THROW_MESSAGE);
         } else if (!isAllDigit(playerInput)) {
-            throw new IllegalArgumentException(WRONG_RANGE_THROW_MESSAGE);
+            throw new IllegalArgumentException(BaseBallConstants.WRONG_RANGE_THROW_MESSAGE);
         } else if (hasDuplicateChars(playerInput)) {
-            throw new IllegalArgumentException(DUPLICATE_INPUT_MESSAGE);
+            throw new IllegalArgumentException(BaseBallConstants.DUPLICATE_INPUT_MESSAGE);
         }
         return true;
     }
 
     public boolean isValidContinueGameChoice(String playerInput) {
-        if (playerInput.equals(CONTINUE_NUMBER) || playerInput.equals(GAME_TERMINATE_NUMBER)) {
+        if (playerInput.equals(BaseBallConstants.CONTINUE_NUMBER) || playerInput.equals(
+                BaseBallConstants.GAME_TERMINATE_NUMBER)) {
             return true;
         }
-        throw new IllegalArgumentException(WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE);
+        throw new IllegalArgumentException(BaseBallConstants.WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE);
     }
-
 }
