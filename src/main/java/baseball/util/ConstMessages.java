@@ -8,6 +8,8 @@ public class ConstMessages {
     public static final String NOT_THING_MESSAGE= "낫싱";
     public static final String STRIKE_MESSAGE= "스트라이크";
     public static final String BALL_MESSAGE= "볼";
+    public static final String ERROR_MESSAGE = "입력값이 잘못되었습니다";
+
 
 
 

@@ -3,8 +3,9 @@ package baseball.util;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.util.ConstMessages.ERROR_MESSAGE;
+
 public class Validation {
-    private static final String ERROR_MESSAGE = "입력값이 잘못되었습니다";
     public static void validateInput(String numberStr){
         if(!verifyInputNumbers(numberStr)){
             throw new IllegalArgumentException(ERROR_MESSAGE);
