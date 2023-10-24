@@ -3,6 +3,7 @@ package baseball;
 import static baseball.utils.Constants.COUNTS;
 import static baseball.utils.Constants.MAXIMUM_NUMBER;
 import static baseball.utils.Constants.MINIMUM_NUMBER;
+import static baseball.utils.Constants.VERIFICATION_FAILED;
 import static baseball.utils.Constants.VERIFICATION_PASSED;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -52,15 +53,15 @@ public class Computer {
 
     private boolean validateNumbers(List<Integer> numbers) {
         if (!isValidSize(numbers)) {
-            return false;
+            return VERIFICATION_FAILED;
         }
         if (!isWithinRange(numbers)) {
-            return false;
+            return VERIFICATION_FAILED;
         }
         if (!hasUniqueValues(numbers)) {
-            return false;
+            return VERIFICATION_FAILED;
         }
-        return true;
+        return VERIFICATION_PASSED;
     }
 
     private boolean isValidSize(List<Integer> numbers) {
