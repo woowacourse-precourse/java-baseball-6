@@ -2,6 +2,7 @@ package baseball.vo;
 
 public class Score {
 
+    private static final int GAME_ANSWER_VALUE = 3;
     int ball;
     int strike;
 
@@ -23,6 +24,6 @@ public class Score {
     }
 
     public boolean isAnswer() {
-        return this.strike == 3;
+        return this.strike == GAME_ANSWER_VALUE;
     }
 }
