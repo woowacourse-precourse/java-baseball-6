@@ -26,7 +26,7 @@ public class BaseballGame {
             String input = Console.readLine();
 
             Validator.validateProposal(input);
-            Player player = new Player(input);
+            Player player = Player.create(input);
 
             hint = GameService.getHintWith(player, computer);
             System.out.println(hint);
