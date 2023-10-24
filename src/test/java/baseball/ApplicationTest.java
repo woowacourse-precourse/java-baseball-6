@@ -1,12 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -26,6 +27,22 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 랜덤숫자_테스트() {
+        List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
+
+        Integer indexZero = threeRandomNumber.get(0);
+        Integer indexOne = threeRandomNumber.get(1);
+        Integer indexTwo = threeRandomNumber.get(2);
+
+        boolean isNumber = false;
+        isNumber = (indexZero.equals(indexOne))
+                && (indexOne.equals(indexTwo))
+                && (indexTwo.equals(indexZero));
+
+        assertThat(isNumber);
     }
 
     @Override
