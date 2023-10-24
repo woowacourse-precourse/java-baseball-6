@@ -11,13 +11,14 @@ public class Oppoent {
     public static final int LAST_NUM = 9;
     private static final boolean VALID_SUCCESS = true;
     private static final boolean VALID_FAILED = false;
+    List<Integer> randomNumbers;
 
     private void generateRandomNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < DESIGNED_NUM) {
-            int randomNumber = Randoms.pickNumberInRange(START_NUM, LAST_NUM);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < DESIGNED_NUM) {
+            int number = Randoms.pickNumberInRange(START_NUM, LAST_NUM);
+            if (!randomNumbers.contains(number)) {
+                randomNumbers.add(number);
             }
         }
     }
@@ -35,5 +36,14 @@ public class Oppoent {
             return VALID_FAILED;
         }
         return VALID_SUCCESS;
+    }
+
+    private int checkStrike(List<Integer> userNumbers) {
+        int count = 0;
+        for (int i = 0; i < DESIGNED_NUM; i++) {
+            if (userNumbers.get(i).equals(randomNumbers.get(i)))
+                count++;
+        }
+        return count;
     }
 }
