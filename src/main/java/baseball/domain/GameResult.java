@@ -39,4 +39,9 @@ public class GameResult {
     public boolean isThreeStrike() {
         return strike == THREE;
     }
+
+    public void reset() {
+        this.strike = ZERO;
+        this.ball = ZERO;
+    }
 }

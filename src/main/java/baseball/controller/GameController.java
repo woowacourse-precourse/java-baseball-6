@@ -44,6 +44,7 @@ public class GameController {
         GameResult result = gameService.getResult(inputNumbers);
         OutputView.outputResult(result);
         if (!isSuccess(result)) {
+            result.reset();
             gamePlay();
         }
     }

@@ -24,6 +24,8 @@ class GameServiceTest {
         assertThat(result.getStrike()).isEqualTo(1);
         assertThat(result.getBall()).isEqualTo(1);
 
+        result.reset();
+
         GameResult result2 = gameService.getResult("136");
         assertThat(result2.getStrike()).isEqualTo(3);
         assertThat(result2.getBall()).isEqualTo(0);

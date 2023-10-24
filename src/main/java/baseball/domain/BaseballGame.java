@@ -11,6 +11,7 @@ import static baseball.constants.BaseballGameConstants.*;
 public class BaseballGame {
 
     private List<Integer> correctNumbers = new ArrayList<>();
+    private GameResult gameResult = new GameResult();
 
     public BaseballGame() {
     }
@@ -37,23 +38,22 @@ public class BaseballGame {
     }
 
     public GameResult compare(String inputNumber) {
-        GameResult result = new GameResult();
-        calculateStrikeAndBall(convertDigitsToIntArray(inputNumber), result);
-        return result;
+        calculateStrikeAndBall(convertDigitsToIntArray(inputNumber));
+        return gameResult;
     }
 
     private int[] convertDigitsToIntArray(String inputNumber) {
         return Arrays.stream(inputNumber.split("")).mapToInt(Integer::valueOf).toArray();
     }
 
-    private void calculateStrikeAndBall(int[] inputNumbers, GameResult result) {
+    private void calculateStrikeAndBall(int[] inputNumbers) {
         for (int i = ZERO; i < GAME_NUMBER_SIZE; i++) {
             if (isStrike(inputNumbers, i)) {
-                result.plusStrike();
+                gameResult.plusStrike();
                 continue;
             }
             if (isBall(inputNumbers[i])) {
-                result.plusBall();
+                gameResult.plusBall();
             }
         }
     }
@@ -68,5 +68,6 @@ public class BaseballGame {
 
     public void resetNumbers() {
         correctNumbers.clear();
+        gameResult.reset();
     }
 }
