@@ -12,8 +12,8 @@ public class Game {
     public static final int LAST_NUM = 9;
 
     public static void StartGame(){
-        ArrayList<Integer> userNumList = new ArrayList<>();
-        ArrayList<Integer> computerNumList = new ArrayList<>();
+        ArrayList<Integer> userNumList;
+        ArrayList<Integer> computerNumList;
 
         //랜덤 숫자 생성
         computerNumList = Computer.createNumber(DIGITS,START_NUM,LAST_NUM);

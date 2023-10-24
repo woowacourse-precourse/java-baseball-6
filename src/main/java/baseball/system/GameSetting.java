@@ -29,7 +29,4 @@ public class GameSetting {
         }
     }
 
-    public static void getGameCorrect(){
-
-    }
 }
