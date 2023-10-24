@@ -4,6 +4,7 @@ import baseball.type.CountSpeaker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Counter {
 
@@ -20,7 +21,7 @@ public class Counter {
         }
         for (int i = 0; i < 3; i++) {
             if (list.contains(theAnswer.get(i))) {
-                if (list.get(i) == theAnswer.get(i)) {
+                if (Objects.equals(list.get(i), theAnswer.get(i))) {
                     strikeCount++;
                 } else {
                     ballCount++;
