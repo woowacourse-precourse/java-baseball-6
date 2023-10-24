@@ -2,6 +2,7 @@ package baseball.Service;
 
 import baseball.domain.Game;
 import baseball.domain.User;
+import baseball.utils.CompareUtils;
 import baseball.utils.ParseUserInput;
 import baseball.utils.RandomUtils;
 import baseball.view.PrintGameResult;
@@ -16,6 +17,8 @@ public class GameService {
     ParseUserInput parseUserInput = new ParseUserInput();
     RandomUtils randomUtils = new RandomUtils();
     SystemMessage systemMessage = new SystemMessage();
+
+    CompareUtils compareUtils = new CompareUtils();
 
     private void play() {
         game.intiField();
@@ -53,10 +56,10 @@ public class GameService {
     private void compare(int[] gameNumber, int[] userNumber) {
         for (int i = 0; i < gameNumber.length; i++) {
             for (int j = 0; j < userNumber.length; j++) {
-                if (gameNumber[i] == userNumber[j] && i == j) {
+                if (compareUtils.isaStrike(gameNumber, userNumber, i, j)) {
                     game.strikeCount();
                 }
-                if (gameNumber[i] == userNumber[j] && i != j) {
+                if (compareUtils.isaBall(gameNumber, userNumber, i, j)) {
                     game.ballCount();
                 }
             }
@@ -64,6 +67,7 @@ public class GameService {
     }
 
     public int requestRetry() {
+        systemMessage.requestRetryMessage();
         int retry = Integer.parseInt(Console.readLine());
         return retry;
     }
