@@ -4,6 +4,7 @@ import ball.Ball;
 import ball.Balls;
 
 public class Judge {
+    private static final int COUNT_FOR_WINNING = 3;
     private int strikeCount;
     private int ballCount;
     public int getStrikeCount() {
@@ -22,7 +23,7 @@ public class Judge {
     }
 
     public boolean isCorrect() {
-        return this.strikeCount == 3;
+        return this.strikeCount == COUNT_FOR_WINNING;
     }
 
     private void initializeCounts() {
