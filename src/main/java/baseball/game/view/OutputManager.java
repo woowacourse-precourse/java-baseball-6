@@ -6,7 +6,7 @@ public class OutputManager {
 
     public static final String ALL_MATCHED_INFO_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public void printHint(int strike, int ball) {
+    public static void printHint(int strike, int ball) {
         if (strike == BASEBALL_SIZE) {
             System.out.println(String.format("%s스트라이크", strike));
             System.out.println(ALL_MATCHED_INFO_MESSAGE);
@@ -26,7 +26,7 @@ public class OutputManager {
         System.out.println("낫싱");
     }
 
-    public void printEndMessage() {
+    public static void printEndMessage() {
         System.out.println(ALL_MATCHED_INFO_MESSAGE);
     }
 }

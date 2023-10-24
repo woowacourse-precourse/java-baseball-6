@@ -24,12 +24,12 @@ public class GameManager {
     public BaseBall calculateBaseballGameResult(List<Integer> randBaseballNumber, String userBaseballNumber) {
         int strike = 0;
         int ball = 0;
+
         for (int i = 0; i < randBaseballNumber.size(); i++) {
             if (randBaseballNumber.get(i).equals(Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))))) {
                 strike++;
                 continue;
             }
-
             if (randBaseballNumber.contains(Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))))) {
                 ball++;
             }
@@ -39,18 +39,15 @@ public class GameManager {
     }
 
     public void playGame() {
-        InputManager inputManager = new InputManager();
-        OutputManager outputManager = new OutputManager();
-
-        inputManager.printGameStartMessage();
+        InputManager.printGameStartMessage();
         List<Integer> randBaseballNumber = createRandNumber();
         while (true) {
-            String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
+            String userBaseballNumber = InputManager.getBaseballNumberFromUser();
             BaseBall baseBall = calculateBaseballGameResult(randBaseballNumber, userBaseballNumber);
-            outputManager.printHint(baseBall.getStrike(), baseBall.getBall());
+            OutputManager.printHint(baseBall.getStrike(), baseBall.getBall());
 
             if (isCorrectBaseballNumber(baseBall.getStrike())) {
-                outputManager.printEndMessage();
+                OutputManager.printEndMessage();
                 break;
             }
         }
@@ -68,6 +65,4 @@ public class GameManager {
 
         return stringBuilder.toString().equals(userBaseballNumber);
     }
-
-
 }

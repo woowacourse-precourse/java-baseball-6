@@ -9,19 +9,19 @@ public class InputManager {
     public static String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static String ASK_RE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public void printGameStartMessage() {
+    public static void printGameStartMessage() {
         System.out.println(START_GAME_MESSAGE);
     }
 
-    public String requestInput() {
+    public static String requestInput() {
         System.out.print(REQUEST_INPUT_MESSAGE);
         return Console.readLine();
     }
 
-    public String getBaseballNumberFromUser(InputManager inputManager) {
+    public static String getBaseballNumberFromUser() {
         String userBaseballNumber = "";
         while (true) {
-            userBaseballNumber = inputManager.requestInput();
+            userBaseballNumber = InputManager.requestInput();
             boolean isOk = validateUserBaseballNumber(userBaseballNumber);
             if (isOk) {
                 break;
@@ -30,7 +30,7 @@ public class InputManager {
         return userBaseballNumber;
     }
 
-    public boolean validateUserBaseballNumber(String userBaseballNumber) {
+    public static boolean validateUserBaseballNumber(String userBaseballNumber) {
         HashSet<Character> validateNumberList = new HashSet<>();
         for (int i = 0; i < userBaseballNumber.length(); i++) {
             validateNumberList.add(userBaseballNumber.charAt(i));
@@ -41,7 +41,7 @@ public class InputManager {
         return validateNumberList.size() == Constants.BASEBALL_SIZE;
     }
 
-    public String askRegame() {
+    public static String askRegame() {
         System.out.println(ASK_RE_GAME);
         return Console.readLine();
     }
