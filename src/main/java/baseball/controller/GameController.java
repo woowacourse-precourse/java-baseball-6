@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import static baseball.constant.SystemMessage.RESTART_FLAG;
 import static baseball.util.NumberUtil.convertStringToList;
 
 import baseball.application.NumberService;
@@ -21,7 +22,7 @@ public class GameController {
 
             play(computer);
 
-        } while (!Objects.equals(inputView.readNumber(), "2")); // 종료(2)를 누르지 않으면 게임을 다시 시작한다.
+        } while (isGameRestarted()); // 종료(2)를 누르지 않으면 게임을 다시 시작한다.
     }
 
     private void play(Player computer) {
@@ -34,6 +35,10 @@ public class GameController {
                 break;
             }
         }
+    }
+
+    private boolean isGameRestarted() {
+        return !Objects.equals(inputView.readNumber(), RESTART_FLAG.getMessage());
     }
 
     private Player prepareComputer() {
