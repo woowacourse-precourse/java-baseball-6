@@ -31,4 +31,20 @@ class ResultTest {
 
         assertEquals(3, result.ball());
     }
+
+    @Test
+    @DisplayName("Result의 isComplete는 3스트라이크의 경우 True")
+    void isComplete는_3스트라이크면_True() {
+        Result result = new Result(3,0);
+
+        assertTrue(result.isComplete());
+    }
+
+    @Test
+    @DisplayName("Result의 isComplete는 3스트라이크의가 아니면 False")
+    void isComplete는_3스트라이크면가_아니면_False() {
+        Result result = new Result(2,1);
+
+        assertFalse(result.isComplete());
+    }
 }
