@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 상대방(컴퓨터) 숫자 객체
+ */
 class ComputerNumber {
     private List<Integer> computer;
 
@@ -68,10 +71,10 @@ public class Application {
             inputNum = inputNumber % 10;
 
             int strikeCount = strikeCheck(computer.get(i), inputNum);   //inputNum과 computer.get(i)의 값이 같다면
-            B_S.put(strike, B_S.get(strike) + strikeCount);         //B_S에 "Strike"의 value를 1 증가
+            B_S.put(strike, B_S.get(strike) + strikeCount);             //B_S에 "Strike"의 value를 1 증가
 
             int ballCount = ballCheck(computer, inputNum) - strikeCount;    //inputNum이 computer의 숫자 중 strike가 아니고 같은 숫자가 있다면
-            B_S.put(ball, B_S.get(ball) + ballCount);                   //B_S에 "Ball"의 value를 1 증가
+            B_S.put(ball, B_S.get(ball) + ballCount);                       //B_S에 "Ball"의 value를 1 증가
 
             inputNumber /= 10;
         }
@@ -109,12 +112,10 @@ public class Application {
     public int ballCheck(List<Integer> computer, int inputNum) {
         int ballCount = 0;
 
-        for (int computerNum : computer) {
-            if (computerNum == inputNum) {
-                ballCount++;
-                break;
-            }
+        if (computer.contains(inputNum)) {
+            ballCount++;
         }
+
         return ballCount;
     }
 
@@ -151,7 +152,7 @@ public class Application {
 
     public static void main(String[] args) {
         Application application = new Application();
-        ComputerNumber computerNumber = new ComputerNumber();
+        ComputerNumber computerNumber = new ComputerNumber();       //상대방(컴퓨터) 숫자 객체 선언
         List<Integer> computer = computerNumber.makeComputer();     //상대방(컴퓨터)이 숫자 생성
         String input = "";                                          //입력받는 값을 넣어 줄 변수
         boolean gameFlag = true;                                    //게임 계속 실행할지 그만둘지 표시
