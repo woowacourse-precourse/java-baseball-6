@@ -66,10 +66,10 @@ public class Game {
 
         System.out.println(SUCCESS_MESSAGE);    //성공 메시지 출력
         System.out.println(NEW_GAME_CHECK_MESSAGE); //재실행/종료 메시지 출력
-        String restart_flag = readLine();   //재실행/종료 flag 입력
+        String restartFlag = readLine();   //재실행/종료 flag 입력
 
         //재실행이면 restart game
-        if (isRestart(restart_flag)) {
+        if (isRestart(restartFlag)) {
             restartGame();
         }
     }
@@ -80,35 +80,35 @@ public class Game {
      * 게임에서 맞출때까지 반복되는 로직
      * </p>
      *
-     * @param computer_number : 컴퓨터의 랜덤 수
-     * @param hint            : 힌트
+     * @param computerNumber : 컴퓨터의 랜덤 수
+     * @param hint           : 힌트
      */
-    private static void gameLoop(String computer_number, Hint hint) {
+    private static void gameLoop(String computerNumber, Hint hint) {
         hint.resetHint();   //hint reset
 
         System.out.print(GET_NUMBER_MESSAGE);   //숫자 입력시 메시지
         Player player = new Player();
-        player.setPlayer_number(NUMBER_OF_DIGITS);   //플레이어 입력받기
+        player.setPlayerNumber(NUMBER_OF_DIGITS);   //플레이어 입력받기
 
         //show hint
-        hint.showHint(player.getPlayer_number(), computer_number);
+        hint.showHint(player.getPlayerNumber(), computerNumber);
     }
 
 
     /**
      * 재실행 여부 확인
      *
-     * @param restart_flag : 재실행/종료 flag
+     * @param restartFlag : 재실행/종료 flag
      * @return (true : 재실행, false : 종료)
      */
-    private boolean isRestart(String restart_flag) {
+    private boolean isRestart(String restartFlag) {
 
         //재실행/종료 flag가 아닌 값일경우 IllegalArgumentException()
-        if (!restart_flag.equals(EXIT_GAME_FLAG) && !restart_flag.equals(NEW_GAME_FLAG)) {
+        if (!restartFlag.equals(EXIT_GAME_FLAG) && !restartFlag.equals(NEW_GAME_FLAG)) {
             throw new IllegalArgumentException();
         }
 
-        return !restart_flag.equals(EXIT_GAME_FLAG);
+        return !restartFlag.equals(EXIT_GAME_FLAG);
     }
 
 

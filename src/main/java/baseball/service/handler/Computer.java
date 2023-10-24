@@ -4,39 +4,39 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Computer {
-    String computer_number; //컴퓨터의 random number
+    String computerNumber; //컴퓨터의 random number
 
     /**
      * Computer Constructor
      * <p>
-     * 랜덤 수 생성해 computer_number에 할당하는 생성자
+     * 랜덤 수 생성해 computerNumber에 할당하는 생성자
      * </p>
      *
-     * @param start_range      : startRange
-     * @param end_range        : endRange
-     * @param number_of_digits : 자리수
+     * @param startRange     : startRange
+     * @param endRange       : endRange
+     * @param numberOfDigits : 자리수
      */
-    public Computer(int start_range, int end_range, int number_of_digits) {
-        this.computer_number = getRandomNumber(start_range, end_range, number_of_digits);
+    public Computer(int startRange, int endRange, int numberOfDigits) {
+        this.computerNumber = getRandomNumber(startRange, endRange, numberOfDigits);
     }
 
     /**
      * Get random number
      * <p>
-     * number_of_digits자리수고 각 자리수가 start_range ~ end_range 사이이며, 각 자리수가 서로다른 수인 랜덤수를 리턴하는 함수
+     * numberOfDigits자리수고 각 자리수가 startRange ~ endRange 사이이며, 각 자리수가 서로다른 수인 랜덤수를 리턴하는 함수
      * </p>
      *
-     * @param start_range :시작 범위
-     * @param end_range   : 끝나는 범위
+     * @param startRange :시작 범위
+     * @param endRange   : 끝나는 범위
      * @return String : random number
      */
-    private String getRandomNumber(int start_range, int end_range, int number_of_digits) {
+    private String getRandomNumber(int startRange, int endRange, int numberOfDigits) {
         StringBuilder number = new StringBuilder();
 
-        //number가 number_of_digits자리수가 될때까지 반복
-        while (number.length() < number_of_digits) {
+        //number가 numberOfDigits자리수가 될때까지 반복
+        while (number.length() < numberOfDigits) {
             //렌덤수 생성
-            int randomNumber = Randoms.pickNumberInRange(start_range, end_range);
+            int randomNumber = Randoms.pickNumberInRange(startRange, endRange);
 
             //randomNumber이 number에 없을 경우 append
             if (!(number.toString()).contains(String.valueOf(randomNumber))) {
@@ -48,11 +48,11 @@ public class Computer {
 
 
     /**
-     * computer_number getter
+     * computerNumber getter
      *
-     * @return computer_number
+     * @return computerNumber
      */
     public String getComputerNumber() {
-        return this.computer_number;
+        return this.computerNumber;
     }
 }
