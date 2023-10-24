@@ -16,7 +16,7 @@ public record BallCount(long countOfStrike, long countOfBall) {
         if (countOfStrike < 0 ||
                 countOfBall < 0 ||
                 isTooManyCounts(countOfStrike, countOfBall)) {
-            throw new IllegalArgumentException("잘못된 볼카운팅입니다.");
+            throw new IllegalArgumentException(BallCountMessage.INCORRECT_BALLCOUNTING.get());
         }
     }
 
