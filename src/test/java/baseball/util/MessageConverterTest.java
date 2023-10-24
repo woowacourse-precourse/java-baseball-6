@@ -1,5 +1,6 @@
 package baseball.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -17,13 +18,31 @@ class MessageConverterTest {
     }
 
     @Test
-    void 스트라이크_볼_카운팅_메서드() {
+    void 스트라이크_볼_카운팅() {
         System.out.println(messageConverter.getResultMessage(List.of(1, 2, 3), List.of(2, 1, 3)));
     }
 
     @Test
     void Map_String_변환하기() {
-        Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(0, 5, 9));
+        Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(3, 1, 6));
         assertTrue(messageConverter.getResultMessageToString(testMap) instanceof String);
+    }
+
+    @Test
+    void 스트라이크_출력() {
+        Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(1, 6, 7));
+        assertEquals(messageConverter.getResultMessageToString(testMap), "1스트라이크");
+    }
+
+    @Test
+    void 볼_출력() {
+        Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(6, 1, 7));
+        assertEquals(messageConverter.getResultMessageToString(testMap), "1볼");
+    }
+
+    @Test
+    void 스트라이크_볼_출력() {
+        Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(1, 7, 2));
+        assertEquals(messageConverter.getResultMessageToString(testMap), "1볼 1스트라이크");
     }
 }
