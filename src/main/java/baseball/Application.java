@@ -65,6 +65,7 @@ public class Application {
 
     private static List<Integer> getUserNums() {
         String input = Console.readLine();
+        validateGameInput(input);
 
         List<Integer> userNums = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -94,6 +95,21 @@ public class Application {
         map.put("ball", ball);
 
         return map;
+    }
+
+    /**
+     * validate Methods
+     */
+    private static void validateGameInput(String input) {
+        if (input == null || input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (!input.matches("[1-9]+")) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     /**
