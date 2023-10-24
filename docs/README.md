@@ -15,12 +15,17 @@
 ## 구현할 기능
 
 + model
-    +
+  + Game: 숫자야구 게임의 결과를 계산, 기록하는 클래스
 + view
-    + static List<Integer> inputNumber() : 사용자의 숫자 입력을 받는 함수
-    + static boolean
-    + static void check(List<Integer> computer, List<Integer> user): 게임의 결과를 출력하는 함수
+  + Input: 사용자의 입력을 처리하는 클래스 
+  + Output: 결과의 출력을 처리하는 클래스
+  + Speak: 사용되는 문장을 저장하는 클래스
 + control
-    + static void game(): 게임을 시작하는 함수
-    + static void play():
-### 테스트
+  + GameController: 게임을 제어하는 클래스
+
+## 흐름도
+1. 숫자야구 게임 시작, Computer의 번호 초기화
+2. 사용자의 번호 입력
+3. 사용자의 번호와 컴퓨터의 번호 확인하여 결과 출력
+4. 결과가 틀린 경우 사용자의 번호 입력(2~3 반복)
+5. 결과가 맞은 경우 게임 재시작 여부 입력 (재시작하는 경우 1~5 반복)
