@@ -6,10 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import static java.lang.Integer.parseInt;
+import baseball.View;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,7 +16,9 @@ public class Application {
       ArrayList<Integer> userArr = new ArrayList<Integer>(3);
       
       String restart = "1";
-      System.out.println("숫자 야구 게임을 시작합니다.");
+      View.printGameStart();
+      
+      
       while(restart.equals("1")){
         //컴퓨터 숫자 뽑기
         for(int i=0;i<3;i++){
@@ -35,11 +35,11 @@ public class Application {
           comArr.add(pickedNum);
           
         }
-        //System.out.print("컴퓨터의 숫자 :"+comArr);
 
     
         while(true){
-          System.out.print("숫자를 입력해주세요 : ");
+          View.printEnterNumber();
+          
           String input = Console.readLine();
           for(int i=0;i<3;i++){
             userArr.add(input.charAt(i)-'0');
@@ -59,19 +59,10 @@ public class Application {
               }
             }
           }
-          if(strikeCnt==0 && ballCnt==0){
-            System.out.print("낫싱");
-          }
-          else{
-            if (ballCnt>0)
-              System.out.print(ballCnt + "볼 ");
-            if(strikeCnt>0)
-              System.out.print(strikeCnt + "스트라이크");
-          }
-          System.out.println();
+         View.printResult(ballCnt,strikeCnt);
           userArr.clear();
           if(strikeCnt==3){
-            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            View.printGameEnd();
             restart = Console.readLine();
             if(restart.equals("1")){
 //              System.out.print("다시 ㄱㄱ");
