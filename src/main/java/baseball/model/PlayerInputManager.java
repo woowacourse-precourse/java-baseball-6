@@ -16,7 +16,8 @@ public class PlayerInputManager {
             CheckNumberSize(input);
             CheckNumberRange(input);
             CheckNumberDuplication(input);
-        } else if (gameStatus == GameStatus.RESTART) {
+        }
+        if (gameStatus == GameStatus.RESTART) {
             CheckNumberOneOrTwo(input);
         }
 
