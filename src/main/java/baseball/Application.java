@@ -2,12 +2,12 @@ package baseball;
 
 import baseball.game.GameNumber;
 import baseball.game.GameResult;
-import baseball.game.UserNumber;
+import baseball.user.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
-    
+
     private static boolean GAME_MODE = true;
 
     public static void main(String[] args) {
