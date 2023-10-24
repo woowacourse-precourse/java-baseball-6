@@ -8,11 +8,17 @@ public class Numbers {
     private Integer second;
     private Integer third;
 
-    public Numbers from(List<Integer> numbers) {
-        this.first = numbers.get(0);
-        this.second = numbers.get(1);
-        this.third = numbers.get(2);
-        return this;
+    public Numbers() {
+    }
+
+    public Numbers(Integer first, Integer second, Integer third) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+    }
+
+    public static Numbers from(List<Integer> numbers) {
+        return new Numbers(numbers.get(0), numbers.get(1), numbers.get(2));
     }
 
     public Integer countIdentity(Numbers numbers) {
