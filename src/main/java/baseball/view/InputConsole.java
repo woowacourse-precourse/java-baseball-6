@@ -46,14 +46,14 @@ public class InputConsole {
             for (int i=0; i<input.length(); i++) {
                 char checkData = input.charAt(i);
                 if ('0' > checkData || checkData > '9') {
-                    throw new IllegalArgumentException("입력된 값이 숫자가 아닙니다.");
+                    throw new IllegalArgumentException(NOT_NUMBER_EXCEPTION.getMessage());
                 }
             }
         }
 
         private static void gameNumberRangeValidation(String input) {
             if (input.length() != 3) {
-                throw new IllegalArgumentException("입력된 숫자가 범위를 초과하였습니다.");
+                throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION.getMessage());
             }
         }
 
@@ -61,7 +61,7 @@ public class InputConsole {
             for (int i=0; i<input.length(); i++) {
                 char checkData = input.charAt(i);
                 if (checkData == '0') {
-                    throw new IllegalArgumentException("입력된 숫자는 1~9까지만 가능합니다. (0은 입력할 수 없습니다)");
+                    throw new IllegalArgumentException(OUT_OF_HINT_NUMBER_EXCEPTION.getMessage());
                 }
             }
         }
@@ -72,20 +72,20 @@ public class InputConsole {
             char onesDigit = input.charAt(2);
 
             if (hundredsDigit == tensDigit || tensDigit == onesDigit || hundredsDigit == onesDigit) {
-                throw new IllegalArgumentException("입력된 숫자는 서로 다른 3자리의 수여야 합니다.");
+                throw new IllegalArgumentException(DIFFERENT_DIGIT_EXCEPTION.getMessage());
             }
         }
 
         private static void endOrStartNumberRangeValidation(String input) {
             if (input.length() != 1) {
-                throw new IllegalArgumentException("입력된 숫자가 범위를 초과하였습니다.");
+                throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION.getMessage());
             }
         }
 
         private static void endOrStartNumberValidation(String input) {
             int number = input.charAt(0) - '0';
             if (input.length() != 1 && number != 1 && number != 2) {
-                throw new IllegalArgumentException("재시작/종료 입력값은 1과 2중 하나의 수여야 합니다.");
+                throw new IllegalArgumentException(END_OR_START_NUMBER_EXCEPTION.getMessage());
             }
         }
     }
