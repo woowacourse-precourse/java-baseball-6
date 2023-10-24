@@ -1,5 +1,5 @@
 package baseball;
 
 public class Computer {
-    public static int number;
+    public static String number;
 }
