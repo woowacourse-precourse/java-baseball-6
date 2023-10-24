@@ -5,9 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class Game { //게임 진행에 필요한 로직이 들어있는 클래스
     private List<Integer> input;
     private List<Integer> answer;
+    private static IO io;
+
+    public Game(IO io) {
+        this.io=io;
+    }
 
     public String judgeGame(int num){
         int strike = 0;
@@ -23,7 +28,7 @@ public class Game {
             else if (input.contains(answer.get(i))) ball++;
         }
 
-        makePrintln(strike,ball);
+        io.BallStrikePrint(strike,ball);
 
         String result = (strike==3) ? "SUCCESS" : "FAIL";
         return result;
@@ -39,10 +44,4 @@ public class Game {
         }
     }
 
-    private void makePrintln(int strike, int ball){
-        if(ball>0&&strike>0) System.out.println(ball+"볼 "+strike+"스트라이크");
-        else if(ball>0&&strike==0) System.out.println(ball+"볼");
-        else if(ball==0&&strike>0) System.out.println(strike+"스트라이크");
-        else System.out.println("낫싱");
-    }
 }
