@@ -3,11 +3,12 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.Constant.BASEBALL_NUM_LIMIT_LENGTH;
+import static baseball.Constant.NOT_ALLOW_BASEBALL_NUMBER;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class Validator {
-
     public Validator() {
     }
 
@@ -25,14 +26,14 @@ public class Validator {
     }
 
     private static Boolean validLength(String invalidNums) {
-        if (invalidNums.length() != 3) {
+        if (invalidNums.length() != BASEBALL_NUM_LIMIT_LENGTH) {
             return FALSE;
         }
         return TRUE;
     }
 
     private static Boolean validNonZero(String invalidNums) {
-        if (invalidNums.contains("0")) {
+        if (invalidNums.contains(NOT_ALLOW_BASEBALL_NUMBER)) {
             return FALSE;
         }
         return TRUE;
