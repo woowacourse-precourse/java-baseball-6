@@ -37,39 +37,48 @@ public class Application {
                 String inputArr = br.readLine();
 
                 int input = Integer.parseInt(inputArr);
+                int temp = 0;
+                strike = 0;
+                ball = 0;
 
-                int numberArr[] = new int[3];
+                List<Integer> numberArr = new ArrayList<>();
 
                 // 사용자가 입력할 때 범위가 벗어나면 오류 표시
-                if(input<100 || input > 999) {
+                if(input<99 || input > 1000) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                 }
 
 //                testNumber[0] = input/100; // 처음에 input/100 = inputArr[i]로 함
-                numberArr[0] = input/100;
+                temp = input/100;
+                numberArr.add(temp);
                 input = input - ((input/100)*100);
-                numberArr[1] = input/10;
+                temp = 0;
+
+                temp = input/10;
+                numberArr.add(temp);
                 input = input - ((input/10)*10);
-                numberArr[2] = input;
+                numberArr.add(input);
+
+                temp =0;
 
                 // 3번째 고민 3자리 숫자를 사용자한테 입력 받았는데, 어떻게 1자리씩 inputArr에 넣을 것인가
 
 
                 // 입력 받을 때 같은 숫자가 있으면 오류 표시
-                if(numberArr[0] == numberArr[1]) {
+                if(numberArr.get(0) == numberArr.get(1)) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-                } else if (numberArr[0] == numberArr[2]) {
+                } else if (numberArr.get(0) == numberArr.get(2)) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-                } else if (numberArr[1] == numberArr[2]) {
+                } else if (numberArr.get(1) == numberArr.get(2)) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                 }
 
                 // 이중 for문 사용
                 for(int i =0; i<computer.size(); i++) {
-                    for(int j=0; j<numberArr.length; j++) {
-                        if((computer.get(i) == numberArr[j]) & (i==j)){ // 숫자도 같고 인덱스도 같으면 strike, & && 차이?
+                    for(int j=0; j<numberArr.size(); j++) {
+                        if((computer.get(i) == numberArr.get(j)) & (i==j)){ // 숫자도 같고 인덱스도 같으면 strike, & && 차이?
                             strike++;
-                        } else if((computer.get(i) == numberArr[j]) & (i!=j)){ // 숫자는 같은데 인덱스는 다르면 ball
+                        } else if((computer.get(i) == numberArr.get(j)) & (i!=j)){ // 숫자는 같은데 인덱스는 다르면 ball
                             ball++;
                         }
                     }
@@ -98,16 +107,13 @@ public class Application {
                         ball = 0;
                         break;
                     } else if (button == 2) {
+                        strike = 0;
+                        ball = 0;
                         return;
                     } else {
                         throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                     }
                 }
-
-                // strike, ball 초기화
-                strike = 0;
-                ball = 0;
-
             }
         }
 
