@@ -7,7 +7,15 @@ public class Converter {
 
     public List<Integer> convertToNumericList(List<String> stringList) {
         return stringList.stream()
-                .map(Integer::parseInt)
+                .map(this::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private int parseInt(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_BALL_COUNT.getMessage());
+        }
     }
 }
