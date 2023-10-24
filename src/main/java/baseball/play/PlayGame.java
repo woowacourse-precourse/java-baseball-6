@@ -46,8 +46,8 @@ public class PlayGame {
         print.printWantToRestartOrEnd();
         String answer = Console.readLine();
 
-        if(!isRightAnswer(answer))
-            throw new IllegalArgumentException("잘못된 수를 입력하였습니다.");
+//        if(!isRightAnswer(answer))
+//            throw new IllegalArgumentException("잘못된 수를 입력하였습니다.");
 
         return answer.equals(RESTART);      //1일 경우 게임을 재시작합니다.
     }
