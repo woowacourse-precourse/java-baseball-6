@@ -1,10 +1,8 @@
 package baseball;
 
 import java.util.List;
-import java.util.HashMap;
 
 public class GameResult {
-    private HashMap<String, Integer> result;
     private List<Integer> computer;
     private List<Integer> player;
     private int strike;
