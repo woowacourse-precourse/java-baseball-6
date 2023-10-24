@@ -17,12 +17,12 @@ public class Game {
     }
 
     public Result play(String userPrediction){
-        Result result =  resultFactory.compareAndGetResult(
+        Result result =  resultFactory.getResult(answer.getHints(
                 new UserPrediction(
                         Integer.parseInt(String.valueOf(userPrediction.charAt(0))),
                         Integer.parseInt(String.valueOf(userPrediction.charAt(1))),
-                        Integer.parseInt(String.valueOf(userPrediction.charAt(2)))),
-                answer
+                        Integer.parseInt(String.valueOf(userPrediction.charAt(2))))
+                )
         );
         if (isThreeStrikes(result)){
             isGameFinished = true;
