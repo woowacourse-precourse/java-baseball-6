@@ -1,10 +1,8 @@
 package baseball.domain;
 
-import static org.assertj.core.api.Assertions.*;
-
 import java.util.List;
 import java.util.stream.Stream;
-
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,8 +29,8 @@ class ComputerNumbersTest {
         }
 
         // then
-        assertThat(BallCounter.getCountOfBall()).isEqualTo(countOfBall);
-        assertThat(BallCounter.getCountOfStrike()).isEqualTo(countOfStrike);
+        Assertions.assertThat(BallCounter.getCountOfBall()).isEqualTo(countOfBall);
+        Assertions.assertThat(BallCounter.getCountOfStrike()).isEqualTo(countOfStrike);
     }
 
     static Stream<Arguments> parametersForTest() {

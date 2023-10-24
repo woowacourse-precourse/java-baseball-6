@@ -3,9 +3,9 @@ package baseball;
 import baseball.domain.BallCounter;
 import baseball.domain.ComputerNumbers;
 import baseball.domain.ComputerNumbersGenerator;
-import baseball.utils.NumberGenerator;
 import baseball.domain.PlayerNumbers;
 import baseball.utils.GameStatusCommand;
+import baseball.utils.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

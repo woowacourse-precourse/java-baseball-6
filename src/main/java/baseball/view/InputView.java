@@ -1,12 +1,10 @@
 package baseball.view;
 
-import static baseball.utils.GameStatusCommand.*;
-
+import baseball.utils.GameStatusCommand;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
@@ -28,7 +26,9 @@ public class InputView {
     }
 
     public static int readNumberOfGameStatusCommand() {
-        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.%n", RESTART.getNumber(), QUIT.getNumber());
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.%n",
+                GameStatusCommand.RESTART.getNumber(),
+                GameStatusCommand.QUIT.getNumber());
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException exception) {

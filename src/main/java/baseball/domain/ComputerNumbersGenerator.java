@@ -1,9 +1,8 @@
 package baseball.domain;
 
+import baseball.utils.NumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
-
-import baseball.utils.NumberGenerator;
 
 public class ComputerNumbersGenerator {
 

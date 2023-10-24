@@ -1,10 +1,8 @@
 package baseball.domain;
 
-import static org.assertj.core.api.Assertions.*;
-
 import java.util.List;
 import java.util.stream.Stream;
-
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,7 +17,7 @@ class PlayerNumbersTest {
     @Test
     void constructPlayerNumbers_Fail_ByInvalidDigitNumber() {
         // when, then
-        assertThatThrownBy(() -> new PlayerNumbers(List.of(1), DIGIT_NUMBER))
+        Assertions.assertThatThrownBy(() -> new PlayerNumbers(List.of(1), DIGIT_NUMBER))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -27,7 +25,7 @@ class PlayerNumbersTest {
     @Test
     void constructPlayerNumbers_Fail_ByOutOfRange() {
         // when, then
-        assertThatThrownBy(() -> new PlayerNumbers(List.of(1, 2, 0), DIGIT_NUMBER))
+        Assertions.assertThatThrownBy(() -> new PlayerNumbers(List.of(1, 2, 0), DIGIT_NUMBER))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,7 +34,7 @@ class PlayerNumbersTest {
     @MethodSource("parametersForDuplicatedWithOtherNumber")
     void constructPlayerNumbers_Fail_ByDuplicatedWithOtherNumber(List<Integer> inputPlayerNumbers) {
         // when, then
-        assertThatThrownBy(() -> new PlayerNumbers(inputPlayerNumbers, DIGIT_NUMBER))
+        Assertions.assertThatThrownBy(() -> new PlayerNumbers(inputPlayerNumbers, DIGIT_NUMBER))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
