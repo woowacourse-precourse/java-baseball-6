@@ -39,7 +39,6 @@ public class GameController {
     public void playGame() {
         Number inputNumber;
         do {
-            view.printAskInputMessage();
             inputNumber = input.readNumberInput();
 
             String result = calculator.makeGameResult(randomNumber, inputNumber);
