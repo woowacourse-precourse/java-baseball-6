@@ -23,11 +23,11 @@ public class GameController {
     }
     private void retry() throws IllegalArgumentException {
         BaseballGameConsole.printRetryMessage();
-        if (parseIntInput(Console.readLine()) == RESTART) {
+        if (parseIntInput() == RESTART) {
             run();
         }
     }
-    private int parseIntInput(String input) throws IllegalArgumentException {
+    private int parseIntInput() throws IllegalArgumentException {
         int inputNum = Integer.parseInt(Console.readLine());
         if (inputNum == RESTART || inputNum ==Terminate){return inputNum;}
         else{

@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.BaseballGame;
 import baseball.utils.MakeRandomNumber;
+import baseball.utils.Validator;
 import baseball.view.BaseballGameConsole;
 import camp.nextstep.edu.missionutils.Console;
 public class BaseballService {
@@ -22,8 +23,15 @@ public class BaseballService {
     }
     private void playTurn(){
         baseballGame.initStrikeAndBall();
-        int[] userGuess = MakeRandomNumber.getRandomNumbers(size);
+        int[] userGuess = getUserNumber();
         getScore(userGuess);
+    }
+
+    private int[] getUserNumber() throws IllegalArgumentException{
+        BaseballGameConsole.requestInputData();
+        String input = Console.readLine();
+        Validator validator = new Validator();
+        return validator.validateInput(input,size);
     }
 
     //스트라이크 볼 판정 로직
