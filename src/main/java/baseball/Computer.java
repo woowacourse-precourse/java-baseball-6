@@ -9,14 +9,14 @@ public class Computer {
     private static final Integer RANDOM_NUMBER_SIZE = 3;
     private static final Integer RANDOM_NUMBER_MIN_RANGE = 1;
     private static final Integer RANDOM_NUMBER_MAX_RANGE = 9;
-    private List<Integer> RandomNumber;
+    private final List<Integer> randomNumber;
 
     public Computer() {
-        RandomNumber = loadList();
+        randomNumber = loadList();
     }
 
     public List<Integer> speakNumbers() {
-        return RandomNumber;
+        return randomNumber;
     }
 
     private List<Integer> loadList() {
