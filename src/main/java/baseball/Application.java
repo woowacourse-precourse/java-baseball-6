@@ -7,7 +7,11 @@ public class Application {
 
         BaseballGame baseballGame = new BaseballGame();
 
-        baseballGame.run();
+        boolean isPlaying = true;
+        while(isPlaying){
+            baseballGame.run();
+            isPlaying = baseballGame.askReplay();
+        }
 
     }
 }
