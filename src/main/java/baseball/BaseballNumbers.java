@@ -11,9 +11,9 @@ public class BaseballNumbers {
 
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    static List<BaseballNumber> byRandom(int digitSize) {
+    static List<BaseballNumber> selectByRandom(int size) {
         List<BaseballNumber> numbers = new ArrayList<>();
-        while (numbers.size() < digitSize) {
+        while (numbers.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             addNumber(numbers, randomNumber);
         }
@@ -27,15 +27,15 @@ public class BaseballNumbers {
         }
     }
 
-    static List<BaseballNumber> byInput(int digitSize) {
+    static List<BaseballNumber> selectByInput(int size) {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        validateInput(input, digitSize);
+        validateInput(input, size);
         return generateNumbers(input.split(""));
     }
 
-    private static void validateInput(String input, int digitSize) {
-        if (input.length() != digitSize) {
+    private static void validateInput(String input, int size) {
+        if (input.length() != size) {
             throw new IllegalArgumentException();
         }
     }

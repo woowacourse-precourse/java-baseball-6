@@ -6,7 +6,7 @@ public class User implements Player {
     List<BaseballNumber> numbers;
 
     public void selectNumbers() {
-        numbers = BaseballNumbers.byInput(DIGIT_SIZE);
+        numbers = BaseballNumbers.selectByInput(DIGIT_SIZE);
     }
 
     BaseballNumber numberOf(int index) {

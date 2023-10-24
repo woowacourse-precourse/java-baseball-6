@@ -7,7 +7,7 @@ public class Computer implements Player {
 
     @Override
     public void selectNumbers() {
-        numbers = BaseballNumbers.byRandom(DIGIT_SIZE);
+        numbers = BaseballNumbers.selectByRandom(DIGIT_SIZE);
     }
 
     int testNothing(BaseballNumber number) {
