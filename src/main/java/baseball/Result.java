@@ -11,9 +11,9 @@ public class Result {
     private final int strikeCount;
     private final int ballCount;
 
-    public Result(int strikeCount, int ballCount) {
-        this.strikeCount = strikeCount;
-        this.ballCount = ballCount;
+    public Result(Baseballs baseballs, Baseballs compareBaseballs) {
+        this.strikeCount = baseballs.countStrike(compareBaseballs);
+        this.ballCount = baseballs.countBall(compareBaseballs);
     }
 
     public String getResult() {
