@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.view.InputView.getNumbers;
+import static baseball.view.OutputView.printEnd;
 import static baseball.view.OutputView.printHint;
 
 import baseball.domain.BallStatus;
@@ -19,8 +20,11 @@ public class BaseballGame {
 
     public void start() {
         Balls computer = createComputerBalls();
-        initBoard();
-        play(computer);
+        do {
+            initBoard();
+            play(computer);
+        } while (!isMatch());
+        printEnd();
     }
 
     private Balls createComputerBalls() {
@@ -29,6 +33,10 @@ public class BaseballGame {
 
     private void initBoard() {
         board = new int[BOARD_SIZE];
+    }
+
+    private boolean isMatch() {
+        return board[BallStatus.STRIKE.getValue()] == BALL_SIZE;
     }
 
     private void play(Balls computer) {
