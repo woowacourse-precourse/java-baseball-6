@@ -57,7 +57,7 @@ public class InputValidation {
     }
 
     public List<Integer> convertPlayerInput(String playerInput) {
-        List<Integer> convertedList = playerInput.chars()
+        final List<Integer> convertedList = playerInput.chars()
                 .mapToObj(c -> Character.getNumericValue((char) c))
                 .collect(Collectors.toList());
 
