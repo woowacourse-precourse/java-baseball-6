@@ -16,6 +16,10 @@ public class Balls {
         this.balls = balls;
     }
 
+    public int getBall(int index) {
+        return balls.get(index);
+    }
+
     public static Balls makeRandomBalls() {
         ArrayList<Integer> list = new ArrayList<>();
         while(list.size() < BALL_SIZE) {
@@ -37,18 +41,13 @@ public class Balls {
         return new Balls(list);
     }
 
-    private void validateBall(char ch){
+    private static void validateBall(char ch){
         int num = ch - '0';
         if(num < BALL_MIN || num > BALL_MAX) throw new IllegalArgumentException("1-9 사이 정수 값을 입력해주세요.");
     }
 
-
-    private void validateBallS(ArrayList<Integer> balls) {
+    private static void validateBallS(ArrayList<Integer> balls) {
         HashSet<Integer> set = new HashSet<>(balls);
         if(set.size() != BALL_SIZE) throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
-    }
-
-    private boolean isThreeStrike(){
-
     }
 }
