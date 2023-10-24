@@ -27,11 +27,11 @@ public class Answer {
 
     private void preCompare(List<Integer> input, GameScore score, int answerIdx) {
         for (int inputIdx = FIRST_IDX; inputIdx < END_PLUS_ONE_IDX; inputIdx++) {
-            compareNumber(input, score, answerIdx, inputIdx);
+            compareNumberAndUpdateScore(input, score, answerIdx, inputIdx);
         }
     }
 
-    private void compareNumber(List<Integer> input, GameScore score, int answerIdx, int inputIdx) {
+    private void compareNumberAndUpdateScore(List<Integer> input, GameScore score, int answerIdx, int inputIdx) {
         if (Objects.equals(answer.get(answerIdx), input.get(inputIdx)) && answerIdx == inputIdx) {
             score.updateStrike();
         }
