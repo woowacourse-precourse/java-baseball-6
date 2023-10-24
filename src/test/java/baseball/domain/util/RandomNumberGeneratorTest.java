@@ -11,7 +11,7 @@ class RandomNumberGeneratorTest {
 
     @Test
     void 일정_구간의_랜덤한_값이_생성되는지_테스트() {
-        RandomNumberGenerator generator = new BaseballRandomNumberGenerator();
+        RandomNumberGenerator<Integer,String> generator = new BaseballRandomNumberGenerator();
 
         for (int i = 0; i < 10000; i++) {
             int generatedNumber = generator.generate();

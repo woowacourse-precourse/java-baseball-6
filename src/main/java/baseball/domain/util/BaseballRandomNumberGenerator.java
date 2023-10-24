@@ -2,9 +2,9 @@ package baseball.domain.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseballRandomNumberGenerator implements RandomNumberGenerator {
+public class BaseballRandomNumberGenerator implements RandomNumberGenerator<Integer,String> {
     @Override
-    public int generate() {
+    public Integer generate() {
         return Randoms.pickNumberInRange(1, 9);
     }
 

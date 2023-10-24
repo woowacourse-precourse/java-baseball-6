@@ -8,9 +8,9 @@ public class NumberBaseBallGame {
 
     private BaseballNumber randomNumber;
     private final NumberBaseballScoreEvaluator numberBaseballScoreEvaluator;
-    private final RandomNumberGenerator randomNumberGenerator;
+    private final RandomNumberGenerator<Integer, String> randomNumberGenerator;
 
-    public NumberBaseBallGame(RandomNumberGenerator generator,
+    public NumberBaseBallGame(RandomNumberGenerator<Integer, String> generator,
                               NumberBaseballScoreEvaluator numberBaseballScoreEvaluator) {
         this.randomNumberGenerator = generator;
         this.numberBaseballScoreEvaluator = numberBaseballScoreEvaluator;
@@ -20,7 +20,7 @@ public class NumberBaseBallGame {
     public RoundEvaluationResult evaluateRound(BaseballNumber baseballNumber) {
 
         String roundResult = numberBaseballScoreEvaluator.evaluate(
-                new BaseballScoreCounter(randomNumber,baseballNumber)
+                new BaseballScoreCounter(randomNumber, baseballNumber)
         );
         GameStatus status = GameStatus.of(roundResult);
         return new RoundEvaluationResult(status, roundResult);

@@ -1,6 +1,6 @@
 package baseball.view;
 
 @FunctionalInterface
-public interface InputProvider {
-    String readNonNullInput();
+public interface InputProvider<T> {
+    T readNonNullInput();
 }

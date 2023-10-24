@@ -4,9 +4,9 @@ import baseball.domain.model.BaseballNumber;
 import java.util.regex.Pattern;
 
 public class NumberBaseballGameInputView {
-    private final InputProvider inputProvider;
+    private final InputProvider<String> inputProvider;
 
-    public NumberBaseballGameInputView(InputProvider inputProvider) {
+    public NumberBaseballGameInputView(InputProvider<String> inputProvider) {
         this.inputProvider = inputProvider;
     }
 
