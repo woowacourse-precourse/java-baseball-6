@@ -1,14 +1,27 @@
 package baseball.domain;
 
-import static baseball.domain.Baseball.BALL_SIZE;
+import static baseball.domain.Baseballs.BALL_SIZE;
 
-public record GameResult(int balls, int strikes) {
+public class GameScore {
 
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
-    public String createGameResult() {
+    private int balls;
+    private int strikes;
+
+    public GameScore() {
+        balls = 0;
+        strikes = 0;
+    }
+
+    public void setGameScore(int balls, int strikes) {
+        this.balls = balls;
+        this.strikes = strikes;
+    }
+
+    public String generateGameResult() {
         if (isNothing()) {
             return NOTHING;
         }
