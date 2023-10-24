@@ -1,6 +1,7 @@
 package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collection;
 import java.util.List;
 
 public class GenerationQuestionList {
@@ -16,10 +17,18 @@ public class GenerationQuestionList {
     public List<Integer> generateThreeRandomNumber() {
         while (ThreeRandomNumberList.size() < NUMBER_LIST_SIZE_MAX) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_IN_RANGE_MIN, NUMBER_IN_RANGE_MAX);
-            if (!ThreeRandomNumberList.contains(randomNumber)) {
+
+            if (!includeNumber(randomNumber, ThreeRandomNumberList)) {
                 ThreeRandomNumberList.add(randomNumber);
             }
         }
         return ThreeRandomNumberList;
+    }
+
+    private boolean includeNumber(int randomNumber, Collection checkedCollection) {
+        if (checkedCollection.contains(randomNumber)) {
+            return true;
+        }
+        return false;
     }
 }
