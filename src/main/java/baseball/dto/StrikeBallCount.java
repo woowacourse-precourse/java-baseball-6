@@ -1,7 +1,7 @@
 package baseball.dto;
 
 public class StrikeBallCount {
-
+    // 유저가 고른 수의 Strike와 Ball 갯수
     int strikeCount;
     int ballCount;
 

@@ -39,7 +39,7 @@ public class InputView {
         }
     }
 
-
+    // 조건으로 제시된 수의 길이와 1~9의 수 예외처리
     public static void checkInput(String input, int inputLength) {
 
         checkInputLength(input, inputLength);
@@ -78,7 +78,7 @@ public class InputView {
         }
     }
 
-    // Input이 1~9가 아닌 수 또는 문자라면 예외처리하기
+    // Input이 1~9가 아닌 수 또는 문자라면 예외처리하기(아스키코드로 처리)
     private static void checkInputNotNumber(String input) {
 
         for (char eachNumber : input.toCharArray()) {

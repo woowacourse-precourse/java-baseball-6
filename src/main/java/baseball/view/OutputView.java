@@ -8,11 +8,16 @@ public class OutputView {
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
-
+    private static final int SELECTION_COUNT = 3;
+    
+    // 유저가 제시한 번호에 따른 결과 메시지 출력
     public static boolean generateResultMessage(StrikeBallCount strikeBallCount) {
 
-        if (strikeBallCount.getStrikeCount() == 3) {
+        int strikeCount = strikeBallCount.getStrikeCount();
+
+        int ballCount = strikeBallCount.getBallCount();
+
+        if (strikeCount == SELECTION_COUNT) {
 
             System.out.println(strikeBallCount.getStrikeCount() + STRIKE_MESSAGE);
 
@@ -20,15 +25,15 @@ public class OutputView {
             
             return true;
 
-        } else if (strikeBallCount.getStrikeCount() == 0 && strikeBallCount.getBallCount() == 0) {
+        } else if (strikeCount == 0 && ballCount == 0) {
 
             System.out.println(ZERO_HIT_MESSAGE);
 
-        } else if (strikeBallCount.getStrikeCount() == 0) {
+        } else if (strikeCount == 0) {
 
             System.out.println(strikeBallCount.getBallCount() + BALL_MESSAGE);
 
-        } else if (strikeBallCount.getBallCount() == 0) {
+        } else if (ballCount == 0) {
 
             System.out.println(strikeBallCount.getStrikeCount() + STRIKE_MESSAGE);
 
