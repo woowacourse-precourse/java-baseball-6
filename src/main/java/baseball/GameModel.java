@@ -14,5 +14,25 @@ public class GameModel {
         this.computer = computer;
     }
     public ResultAndView compareUserAndComputerNumber(String userNumber) {
+        // 유효성 검사
+        if (!Pattern.matches("^[1-9][1-9][1-9]$", userNumber)) throw new IllegalArgumentException();
+        if (Arrays.stream(userNumber.split("")).distinct().count() < 3) throw new IllegalArgumentException();
+
+        Result result = computer.compareNumber(userNumber);
+        if (result.getStrike() == 3) {
+            return new ResultAndView("3스트라이크", false);
+        } else if (result.getStrike() == 0 && result.getBall() == 0) {
+            return new ResultAndView("낫싱", true);
+        } else {
+            int ballCount = result.getBall();
+            int strikeCount = result.getStrike();
+            StringBuilder sb = new StringBuilder();
+
+            if (ballCount > 0) sb.append(ballCount).append("볼");
+            if (ballCount > 0 && strikeCount > 0) sb.append(" ");
+            if (strikeCount > 0) sb.append(strikeCount).append("스트라이크");
+
+            return new ResultAndView(sb.toString(), true);
+        }
     }
 }
