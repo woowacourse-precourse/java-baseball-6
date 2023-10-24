@@ -56,7 +56,7 @@
 
 
 --------------------------------------
-#👩‍💻 [과제 상세 설명 바로가기](https://github.com/woowacourse-precourse/java-baseball-6)
+# 👩‍💻 [과제 상세 설명 바로가기](https://github.com/woowacourse-precourse/java-baseball-6)
 
 ## 🚀 기능 요구 사항
 
