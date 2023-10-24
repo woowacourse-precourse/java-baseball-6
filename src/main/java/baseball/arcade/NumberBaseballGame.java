@@ -23,7 +23,7 @@ public class NumberBaseballGame {
             String input = Console.readLine();
             player.inputNumbers(input);
 
-            String gameResultMessage = computer.generateGameResultMessage(player);
+            String gameResultMessage = computer.getGameResultMessage(player);
             System.out.println(gameResultMessage);
 
             if (gameResultMessage.equals(RESULT_3_STRIKE)) {
