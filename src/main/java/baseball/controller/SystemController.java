@@ -1,12 +1,12 @@
 package baseball.controller;
 
 import baseball.domain.BallCounter;
-
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class SystemController {
+
     private final InputView inputView;
 
     private final OutputView outputView;
