@@ -29,8 +29,7 @@ public class Application {
         List<Integer> user;
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
-            user = parse(input);
+            user = parse(Console.readLine());
         } while (isStrikeOut(computer, user));
     }
 
