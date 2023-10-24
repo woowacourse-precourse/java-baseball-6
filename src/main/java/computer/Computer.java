@@ -30,17 +30,21 @@ public class Computer {
         computer = new Computer();
         System.out.println(MessageConstants.GAME_START_MESSAGE);
 
-        do {
-            computer.getRandomNumbers();    // Computer 난수 생성
-            computer.getInput();    // User의 입력
-            if (computer.chkRestartOrFinish()) {
-                // true: Restart
-                // false: Finish
-                computer = new Computer();
-            } else {
-                break;
-            }
-        }while(true);
+        try{
+            do {
+                computer.getRandomNumbers();    // Computer 난수 생성
+                computer.getInput();    // User의 입력
+                if (computer.chkRestartOrFinish()) {
+                    // true: Restart
+                    // false: Finish
+                    computer = new Computer();
+                } else {
+                    break;
+                }
+            } while (true);
+        }catch (IllegalArgumentException e){
+            throw e;
+        }
     }
 
     // User의 입력값 받아오기

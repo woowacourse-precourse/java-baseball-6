@@ -23,7 +23,7 @@ public class Player {
 
         String tmp = "";
         for (char c : inputString.toCharArray()) {
-            if (c < '0' || c > '9') {
+            if (c <= '0' || c > '9') {
                 throw new IllegalArgumentException(ERROR_MESSAGE + INPUT_ONLY_INTEGER_ERROR_MESSAGE);
             }
             if (tmp.contains(String.valueOf(c))) {
