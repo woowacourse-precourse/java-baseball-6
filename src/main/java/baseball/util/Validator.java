@@ -25,4 +25,11 @@ public final class Validator {
             }
         }
     }
+
+    public static void validateRestartInput(String input) {
+        if(input.equals("1") || input.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
+    }
 }
