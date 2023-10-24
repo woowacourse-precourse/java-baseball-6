@@ -28,17 +28,21 @@ import vo.UserBall;
 
 public class CalculateResult {
     public static final int NUMBER_SIZE = 3;
+    public static final int MIN_STRIKE = 0;
+    public static final int MAX_STRIKE = 3;
+    public static final int MIN_BALL = 0;
+    public static final int MAX_BALL = 3;
 
     public static boolean isThreeStrikes(ResultBall resultBall) {
         return resultBall.strike() == 3;
     }
 
     public static boolean isNothing(ResultBall resultBall) {
-        return resultBall.strike() == 0 && resultBall.ball() == 0;
+        return resultBall.strike() == MIN_STRIKE && resultBall.ball() == MIN_BALL;
     }
 
     public static boolean isValid(ResultBall resultBall) {
-        return 0 <= resultBall.strike() && resultBall.strike() <= 3 && 0 <= resultBall.ball() && resultBall.ball() <= 3;
+        return MIN_STRIKE <= resultBall.strike() && resultBall.strike() <= MAX_STRIKE && MIN_BALL <= resultBall.ball() && resultBall.ball() <= MAX_BALL;
     }
 
     public static ResultBall getResult(AnswerBall answerBall, UserBall userBall) {
