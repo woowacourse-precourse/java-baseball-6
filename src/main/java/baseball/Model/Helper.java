@@ -1,14 +1,16 @@
 package baseball.Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Judge {
+public class Helper {
     private final Computer computer;
     private final User user;
     private final int BASEBALL_NUM_SIZE = 3;
 
-    private Judge(Computer computer, User user) {
+    private Helper(Computer computer, User user) {
         this.computer = computer;
         this.user = user;
     }
@@ -45,5 +47,11 @@ public class Judge {
             return false;
         }
         throw new IllegalArgumentException("허가되지 않은 문자열");
+    }
+
+    public List<Integer> convertToIntegerList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
