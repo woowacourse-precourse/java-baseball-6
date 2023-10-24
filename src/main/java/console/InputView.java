@@ -6,8 +6,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputView {
-    // TODO: 2023/10/24 이 클래스의 매서드를 Static 으로 둘것인가?
-    public static final String NOT_VALID = "NOT_VALID";
+
+    private static final String INVALID_INPUT = "유효하지 않은 입력입니다.";
+    private static final String RETRY_OPTION = "1";
+    private static final int VALID_INPUT_LENGTH = 3;
     public String getUserInput(){
         String userInput = Console.readLine();
         validateInput(userInput);
@@ -16,29 +18,29 @@ public class InputView {
 
     public boolean isContinuable(){
         String userInput = Console.readLine();
-        return userInput.equals("1");
+        return userInput.equals(RETRY_OPTION);
     }
 
-    private void validateInput(String given) {
-        if (given.length() != 3) {
-            throw new IllegalArgumentException(NOT_VALID);
+    private void validateInput(String userInput) {
+        if (userInput.length() != VALID_INPUT_LENGTH) {
+            throw new IllegalArgumentException(INVALID_INPUT);
         }
         try{
-            Integer.parseInt(given);
+            Integer.parseInt(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException(NOT_VALID);
+            throw new IllegalArgumentException(INVALID_INPUT);
         }
-        if (isDuplicatedNumber(given)){
-            throw new IllegalArgumentException(NOT_VALID);
+        if (isDuplicatedNumber(userInput)){
+            throw new IllegalArgumentException(INVALID_INPUT);
         }
     }
 
-    private boolean isDuplicatedNumber(String input) {
-        Set<Character> charSet = new HashSet<>();
-        char[] charArray = input.toCharArray();
-        for (char c : charArray) {
-            charSet.add(c);
+    private boolean isDuplicatedNumber(String userInput) {
+        Set<Character> uniqueChars = new HashSet<>();
+        char[] userInputCharArray = userInput.toCharArray();
+        for (char c : userInputCharArray) {
+            uniqueChars.add(c);
         }
-        return charSet.size() != 3;
+        return uniqueChars.size() != VALID_INPUT_LENGTH;
     }
 }
