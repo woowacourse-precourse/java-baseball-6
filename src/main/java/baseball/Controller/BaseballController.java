@@ -1,10 +1,7 @@
 package baseball.Controller;
 
 import static baseball.Model.Count.ball;
-import static baseball.Model.Count.countingBall;
 import static baseball.Model.Count.strike;
-import static baseball.Model.User.getUserNum;
-import static baseball.Model.User.handleException;
 import static baseball.View.InputView.printRestartPick;
 import static baseball.View.OutputView.printStartGame;
 
@@ -17,11 +14,13 @@ public class BaseballController {
     private static final String RESTART_GAME = "1";
     private static final String CLOSE_GAME = "2";
     Count counter = new Count();
+    Computer computer = new Computer();
+    User user = new User();
 
     public void setGame() {
         counter.resetBall();
         counter.resetStrike();
-        Computer.generateRandom();
+        computer.generateRandom();
     }
 
     public void starGame() {
@@ -35,22 +34,22 @@ public class BaseballController {
     private void tryStrike() {
         while (strike != 3) {
             InputView.printRequestUserNum();
-            String userInputNum = getUserNum();
-            handleException(userInputNum);
+            String userInputNum = user.getUserNum();
+            user.handleException(userInputNum);
             counter.resetBall();
             counter.resetStrike();
             for (int numIndex = 0; numIndex < 3; numIndex++) {
                 int userNumIndex = Character.getNumericValue(userInputNum.charAt(numIndex));
                 counter.checkBallAndStrike(numIndex, userNumIndex);
             }
-            if (countingBall(strike, ball)) {
+            if (counter.countingBall(strike, ball)) {
                 break;
             }
         }
     }
 
     public void replayGame() {
-        String replayChoose = User.getUserNum();
+        String replayChoose = user.getUserNum();
         handleReplayException(replayChoose);
         if (replayChoose.equals(RESTART_GAME)) {
             starGame();

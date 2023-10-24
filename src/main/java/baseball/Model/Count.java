@@ -45,7 +45,7 @@ public class Count {
         strike = 0;
     }
 
-    public static boolean countingBall(int strike, int ball) {
+    public boolean countingBall(int strike, int ball) {
         if (strike == 3) {
             printGameOver();
             return true;

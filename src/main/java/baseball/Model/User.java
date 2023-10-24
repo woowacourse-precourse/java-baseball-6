@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
-    public static String getUserNum() {
+    public String getUserNum() {
         return Console.readLine();
     }
 
-    public static void handleException(String userNum) {
+    public void handleException(String userNum) {
         if (userNum.length() != 3) {
             throw new IllegalArgumentException();
         }
