@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    private static final int LENGTH = 3;
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 9;
     private boolean isGameOver = false;
 
     public static void main(String[] args) {
@@ -41,7 +44,6 @@ public class Application {
 
         if (response.equals("1")) {
             return true;
-
         } else if (response.equals("2")) {
             System.out.println("게임 종료");
             return false;
@@ -56,7 +58,7 @@ public class Application {
         int strikes = 0;
         int balls = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (randomNumbers[i] == playerNumbers[i]) {
                 strikes++;
             } else if (containsNumber(playerNumbers, randomNumbers[i])) {
@@ -76,23 +78,23 @@ public class Application {
     // 난수 생성 및 배열에 저장하는 메서드
     private int[] generateRandomNumbers() {
         int[] randomNumbers = new int[3];
-        for (int i = 0; i < 3; i++) {
-            randomNumbers[i] = Randoms.pickNumberInRange(1, 9);
+        for (int i = 0; i < LENGTH; i++) {
+            randomNumbers[i] = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
         }
         return randomNumbers;
     }
 
     // 플레이어로 부터 숫자를 받는 메서드
     private int[] getPlayerNumbers() {
-        int[] playerNumbers = new int[3];
+        int[] playerNumbers = new int[LENGTH];
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        if (input.length() != 3) {
+        if (input.length() != LENGTH) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요. 게임 종료");
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             char playerNumber = input.charAt(i);
             if (playerNumber < '1' || playerNumber > '9') {
                 throw new IllegalArgumentException("범위밖의 숫자를 입력하였습니다. 게임 종료");
