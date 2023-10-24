@@ -1,7 +1,7 @@
-package game;
+package baseball.game;
 
-import util.RandomNumbersGenerator;
-import view.Output;
+import baseball.util.RandomNumbersGenerator;
+import baseball.view.Output;
 
 public class Computer {
 

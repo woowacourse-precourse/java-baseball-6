@@ -1,8 +1,8 @@
-package util;
+package baseball.util;
 
-import constants.MessageConstants;
-import constants.NumberConstants;
-import constants.StringConstants;
+import baseball.constants.MessageConstants;
+import baseball.constants.NumberConstants;
+import baseball.constants.StringConstants;
 
 public class CountsMessage {
 

@@ -1,4 +1,4 @@
-package game;
+package baseball.game;
 
 import java.util.Arrays;
 

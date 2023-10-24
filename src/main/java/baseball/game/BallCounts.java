@@ -1,7 +1,7 @@
-package game;
+package baseball.game;
 
-import constants.NumberConstants;
-import util.CountsMessage;
+import baseball.constants.NumberConstants;
+import baseball.util.CountsMessage;
 
 public class BallCounts {
 

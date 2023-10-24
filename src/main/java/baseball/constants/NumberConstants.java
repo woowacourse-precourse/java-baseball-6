@@ -1,4 +1,4 @@
-package constants;
+package baseball.constants;
 
 public class NumberConstants {
     public static final int ZERO = 0;

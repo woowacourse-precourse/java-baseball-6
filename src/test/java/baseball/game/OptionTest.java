@@ -1,8 +1,9 @@
-package game;
+package baseball.game;
 
-import static game.Option.findByStatus;
+import static baseball.game.Option.findByStatus;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.game.Option;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

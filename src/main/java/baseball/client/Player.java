@@ -1,11 +1,11 @@
-package client;
+package baseball.client;
 
-import constants.MessageConstants;
-import game.Ball;
-import game.Computer;
-import game.Option;
-import view.Input;
-import view.Output;
+import baseball.constants.MessageConstants;
+import baseball.game.Ball;
+import baseball.game.Computer;
+import baseball.game.Option;
+import baseball.view.Input;
+import baseball.view.Output;
 
 public class Player {
 

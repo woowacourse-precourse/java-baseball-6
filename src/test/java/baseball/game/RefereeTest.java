@@ -1,8 +1,10 @@
-package game;
+package baseball.game;
 
-import static game.Referee.judge;
+import static baseball.game.Referee.judge;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.game.Ball;
+import baseball.game.BallCounts;
 import org.junit.jupiter.api.Test;
 
 class RefereeTest {

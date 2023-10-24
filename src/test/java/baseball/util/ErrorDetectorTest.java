@@ -1,8 +1,8 @@
-package util;
+package baseball.util;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static util.ErrorDetector.throwIfNumbersInputInvalid;
-import static util.ErrorDetector.throwIfOptionInputInvalid;
+import static baseball.util.ErrorDetector.throwIfNumbersInputInvalid;
+import static baseball.util.ErrorDetector.throwIfOptionInputInvalid;
 
 import org.junit.jupiter.api.Test;
 

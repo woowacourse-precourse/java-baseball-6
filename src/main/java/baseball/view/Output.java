@@ -1,6 +1,6 @@
-package view;
+package baseball.view;
 
-import constants.MessageConstants;
+import baseball.constants.MessageConstants;
 
 public class Output {
 

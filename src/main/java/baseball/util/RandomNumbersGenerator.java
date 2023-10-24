@@ -1,7 +1,7 @@
-package util;
+package baseball.util;
 
+import baseball.constants.NumberConstants;
 import camp.nextstep.edu.missionutils.Randoms;
-import constants.NumberConstants;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;

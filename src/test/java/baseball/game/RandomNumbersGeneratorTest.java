@@ -1,6 +1,6 @@
-package game;
+package baseball.game;
 
-import static util.RandomNumbersGenerator.getRandomNumbers;
+import static baseball.util.RandomNumbersGenerator.getRandomNumbers;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

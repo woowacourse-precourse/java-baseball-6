@@ -1,9 +1,9 @@
-package game;
+package baseball.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static util.CountsMessage.toMessage;
+import static baseball.util.CountsMessage.toMessage;
 
-import constants.MessageConstants;
+import baseball.constants.MessageConstants;
 import org.junit.jupiter.api.Test;
 
 class CountsMessageTest {

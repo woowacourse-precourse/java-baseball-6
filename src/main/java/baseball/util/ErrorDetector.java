@@ -1,12 +1,12 @@
-package util;
+package baseball.util;
 
-import constants.MessageConstants;
-import constants.NumberConstants;
-import constants.StringConstants;
+import baseball.constants.MessageConstants;
+import baseball.constants.NumberConstants;
+import baseball.constants.StringConstants;
+import baseball.view.Output;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import view.Output;
 
 public class ErrorDetector {
 

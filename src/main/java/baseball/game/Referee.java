@@ -1,6 +1,6 @@
-package game;
+package baseball.game;
 
-import constants.NumberConstants;
+import baseball.constants.NumberConstants;
 import java.util.function.Function;
 
 public class Referee {

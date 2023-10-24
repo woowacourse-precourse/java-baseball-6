@@ -1,8 +1,8 @@
-package view;
+package baseball.view;
 
+import baseball.constants.MessageConstants;
 import camp.nextstep.edu.missionutils.Console;
-import constants.MessageConstants;
-import util.ErrorDetector;
+import baseball.util.ErrorDetector;
 
 public class Input {
 

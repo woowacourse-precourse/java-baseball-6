@@ -1,6 +1,6 @@
 package baseball;
 
-import client.Player;
+import baseball.client.Player;
 
 public class Application {
     public static void main(String[] args) {
