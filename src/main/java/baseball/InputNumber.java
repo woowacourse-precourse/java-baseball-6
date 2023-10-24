@@ -7,21 +7,41 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputNumber {
-    public int userInput(){
-        System.out.println("숫자를 입력해주세요 :");
-        return Integer.valueOf(Console.readLine());
+    public int userInput() {
+//        System.out.println();
+
+        String input_num = Console.readLine("숫자를 입력해주세요 :");
+        try {
+            if (!input_num.matches("-?\\d+")) {
+                throw new IllegalArgumentException();
+            }
+            return Integer.valueOf(input_num);
+        } catch (IllegalArgumentException e){
+            throw new RuntimeException(e);
+        }
     }
 
     public int[] createInputArr(){
         int[] inputArr = new int[3];
-        int inputNum = userInput();
 
-        for(int i = inputArr.length;i>0;i--){
-            int inputValue = inputNum % 10;
-            inputArr[i-1] = inputValue;
-            inputNum /= 10;
+        int inputNum = userInput();
+        int inputStr = Integer.toString(inputNum).length();
+        boolean isRight = inputArr.length == inputStr;
+
+        try {
+            if(!isRight){
+                throw new IllegalArgumentException();
+            }
+            for(int i = inputStr;i>0;i--){
+                int inputValue = inputNum % 10;
+                inputArr[i-1] = inputValue;
+                inputNum /= 10;
+            }
+            return inputArr;
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
         }
-        return inputArr;
+
     }
 
     public int[] checkNum() {
@@ -33,7 +53,7 @@ public class InputNumber {
         }
         boolean isRight = numSet.size() == inputArry.length;
         try {
-            if(!isRight || numSet.size() != 3){
+            if(!isRight){
                 throw new IllegalArgumentException();
             }
             return inputArry;
