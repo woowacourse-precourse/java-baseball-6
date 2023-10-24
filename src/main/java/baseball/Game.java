@@ -23,7 +23,7 @@ public class Game {
         final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
         computerNumber = setRandomNumber();
-        System.out.println(computerNumber);
+//        System.out.println(computerNumber);
 
         while (!exit) {
             System.out.print(INPUT_NUMBER_MESSAGE);
