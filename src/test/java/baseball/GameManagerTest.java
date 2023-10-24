@@ -4,6 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class GameManagerTest {
     private GameManager game;
 
@@ -58,4 +62,19 @@ public class GameManagerTest {
         Assertions.assertFalse(result);
     }
 
+    @Test
+    void 입력값_비교_성공(){
+        ArrayList<Integer> computerArr = new ArrayList<>(Arrays.asList(1,6,9));
+        List<Integer> g = game.compareBetweenNumbers("169", computerArr);
+        System.out.println(g);
+        assert(g.containsAll(Arrays.asList(3,0)));
+    }
+
+    @Test
+    void 입력값_비교_실패(){
+        ArrayList<Integer> computerArr = new ArrayList<>(Arrays.asList(1,6,8));
+        List<Integer> g = game.compareBetweenNumbers("169", computerArr);
+        System.out.println(g);
+        assert(g.containsAll(Arrays.asList(2,0)));
+    }
 }
