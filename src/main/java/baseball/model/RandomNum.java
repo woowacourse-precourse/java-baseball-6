@@ -7,19 +7,19 @@ import java.util.List;
 
 public class RandomNum {
 
-    private static final int RandomNum_Start = 1;
-    private static final int RandomNum_End = 9;
-    private static final int RandomNum_Length = 3;
+    private static final int RANDOM_NUM_START = 1;
+    private static final int RANDOM_NUM_END = 9;
+    private static final int RANDOM_NUM_LENGTH = 3;
 
-    public List<Integer> GenerateRandomNum() {
-        List<Integer> RandomNum = new ArrayList<>();
-        while (RandomNum.size() < RandomNum_Length) {
-            int randomNumber = Randoms.pickNumberInRange(RandomNum_Start, RandomNum_End);
-            if (!RandomNum.contains(randomNumber)) {
-                RandomNum.add(randomNumber);
+    public List<Integer> generateRandomNum() {
+        List<Integer> randomNum = new ArrayList<>();
+        while (randomNum.size() < RANDOM_NUM_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUM_START, RANDOM_NUM_END);
+            if (!randomNum.contains(randomNumber)) {
+                randomNum.add(randomNumber);
             }
         }
-        System.out.println("aaaaaaaaaaaaaaaaaaa"+RandomNum);
-        return RandomNum;
+        System.out.println(randomNum);
+        return randomNum;
     }
 }

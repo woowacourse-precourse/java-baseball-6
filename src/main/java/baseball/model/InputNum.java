@@ -3,35 +3,36 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputNum {
-    private static final int Input_Lenght = 3;
-    private static final String Input_Content= "^[1-9]+$";
+    private static final int INPUT_LENGTH = 3;
+    private static final String INPUT_CONTENT = "^[1-9]+$";
     private List<Integer> inputArr;
+
     public InputNum() {
         this.inputArr = new ArrayList<>();
     }
 
-    public List<Integer> convertInputToArr(String InputNum) {
+    public List<Integer> convertInputToArr(String inputNum) {
         this.inputArr = new ArrayList<>();
-        if (!isValidInput(InputNum)) {
+        if (!isValidInput(inputNum)) {
             throw new IllegalArgumentException();
         }
-        for (char digit : InputNum.toCharArray()) {
+        for (char digit : inputNum.toCharArray()) {
             inputArr.add(Character.getNumericValue(digit));
         }
         return inputArr;
     }
 
-    public boolean isValidInput(String InputNum) {
-        HashSet<Object> InputDouble = new HashSet<>();
-        for (char digit : InputNum.toCharArray()){
-            InputDouble.add(digit);
+    public boolean isValidInput(String inputNum) {
+        Set<Character> inputSet = new HashSet<>();
+        for (char digit : inputNum.toCharArray()) {
+            inputSet.add(digit);
         }
-        if (InputDouble.size() < 3){
+        if (inputSet.size() < 3) {
             throw new IllegalArgumentException();
         }
-        return InputNum.length() == Input_Lenght && InputNum.matches(Input_Content);
+        return inputNum.length() == INPUT_LENGTH && inputNum.matches(INPUT_CONTENT);
     }
-
 }
