@@ -150,5 +150,6 @@ public class Application {
             }
             clearResult();
         }
+        System.out.print(false);
     }
 }
