@@ -32,7 +32,6 @@ public class GameService {
      * 게임 진행 메서드
      * */
     public String playGame() {
-        inputView.requestUserInput();
         String input = userUtil.getUserNumber();
         List<Integer> inputList = inputNumberValidator.validateInputNumber(input);
         Map<String, Integer> resultMap = messageConverter.getResultMessage(inputList, computerNumber);

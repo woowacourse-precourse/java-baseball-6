@@ -30,6 +30,7 @@ public class GameMainController {
         boolean correctAnswer = false;
 
         while(!correctAnswer) {
+            inputView.requestUserInput();
             String result = gameService.playGame();
             outputView.printStrikeOrBall(result);
 
