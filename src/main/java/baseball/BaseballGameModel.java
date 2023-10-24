@@ -1,11 +1,11 @@
 package baseball;
 
-public class BaseBallGameModel {
+public class BaseballGameModel {
 
     private final int[] ballCount;
     private final int size;
 
-    public BaseBallGameModel(int[] ballCount, int size) {
+    public BaseballGameModel(int[] ballCount, int size) {
         this.ballCount = ballCount;
         this.size = size;
     }

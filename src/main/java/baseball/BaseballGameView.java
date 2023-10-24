@@ -2,7 +2,7 @@ package baseball;
 
 public class BaseballGameView {
 
-    public void print(BaseBallGameModel model) {
+    public void print(BaseballGameModel model) {
         int[] ballCount = model.getBallCount();
         int strike = ballCount[0];
         int ball = ballCount[1];

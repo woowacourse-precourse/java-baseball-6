@@ -29,7 +29,7 @@ public class Application {
                 break;
             }
 
-            BaseBallGameModel model = controller.guess(computer, input);
+            BaseballGameModel model = controller.guess(computer, input);
             view.print(model);
         }
         Console.close();

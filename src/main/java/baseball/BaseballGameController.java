@@ -2,13 +2,13 @@ package baseball;
 
 public class BaseballGameController {
 
-    public BaseBallGameModel guess(Player computer, String input) {
+    public BaseballGameModel guess(Player computer, String input) {
         NumberBoard computerAnswer = computer.getNumberBoard();
         NumberBoard playerAnswer = new NumberBoard(input);
 
         int[] ballCount = countBallByAnswer(computerAnswer, playerAnswer);
         int size = computerAnswer.size();
-        return new BaseBallGameModel(ballCount, size);
+        return new BaseballGameModel(ballCount, size);
     }
 
     private static int[] countBallByAnswer(NumberBoard computerAnswer, NumberBoard myAnswer) {
