@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.Enum.ResultCase;
 import baseball.Exception.Exception;
 import baseball.domain.Computer;
+import baseball.domain.Result;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
@@ -19,22 +20,14 @@ public class GameService {
     }
 
     private static Boolean game(int[] computer) {
-        int strike = 0, ball = 0;
         System.out.print("숫자를 입력 해 주세요 : ");
-        char[] guess = Console.readLine().toCharArray();
-        Exception.checkException(guess);
-        for (int i = 0; i < 3; i++) {
-            int userNum = Character.getNumericValue(guess[i]);
-            if (computer[userNum] == i + 1) {
-                strike += 1;
-                continue;
-            }
-            if (computer[userNum] != 0) {
-                ball += 1;
-            }
-        }
-        checkResult(strike, ball);
-        return strike == 3;
+        char[] userGuess = Console.readLine().toCharArray();
+        Exception.checkException(userGuess);
+
+        Result result = new Result(computer, userGuess);
+        checkResult(result.getStrike(), result.getBall());
+
+        return result.getStrike() == 3;
     }
 
     private static void printResult(ResultCase resultCase, int ball, int strike) {
