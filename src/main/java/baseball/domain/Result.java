@@ -24,9 +24,9 @@ public enum Result {
         this.ball = ball;
     }
 
-    public static Result of(int[] hits) {
+    public static Result of(int strike, int ball) {
         for (Result result : Result.values()) {
-            if (result.strike == hits[0] && result.ball == hits[1]) {
+            if (result.strike == strike && result.ball == ball) {
                 return result;
             }
         }
