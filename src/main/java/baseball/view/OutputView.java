@@ -7,6 +7,36 @@ public class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    //결과 출력
+    public static void printResult(int strike, int ball) {
+
+        //3개의 숫자를 모두 맞춘 경우
+        if (strike == 3) {
+            printStrike(strike);
+            return;
+        }
+
+        //낫싱인 경우
+        if (ball == 0 && strike == 0) {
+            printNothing();
+            return;
+        }
+
+        //스트라이크만 있는 경우
+        if (ball == 0) {
+            printStrike(strike);
+            return;
+        }
+
+        //볼만 있는 경우
+        if (strike == 0) {
+            printBall(ball);
+            return;
+        }
+
+        System.out.println(ball + "볼 " + strike + "스트라이크"); //스트라이크와 볼이 모두 있는 경우
+    }
+
     // 스트라이크 출력
     static void printStrike(int strike) {
         System.out.println(strike + "스트라이크");
