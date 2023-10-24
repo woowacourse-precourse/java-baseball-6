@@ -11,6 +11,21 @@ public class Game extends Text {
     private int strike = 0;
     private int ball = 0;
 
+    public void gameStart() {
+        List<Integer> computer = computerSet();
+        while (true) {
+            List<Integer> user = input();
+            gameScore(user, computer);
+            gameResult();
+
+            if (strike == 3) {
+                successMessage();
+                restartOrExit();
+                break;
+            }
+        }
+    }
+
     public List<Integer> computerSet() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -79,6 +94,18 @@ public class Game extends Text {
             System.out.println(ball + "볼 ");
         } else if (strike != 0) {
             System.out.println(strike + "스트라이크");
+        }
+    }
+
+    public void restartOrExit() {
+        //재시작 및 종료
+        restartOrExitMessage();
+        int set = Integer.parseInt(Console.readLine());
+        if (set == 1) {
+            gameStart();
+        } else if (set == 2) {
+        } else if (set != 1 && set != 2) {
+            throw new IllegalArgumentException("숫자 1과 2만 입력할 수 있습니다.");
         }
     }
 }
