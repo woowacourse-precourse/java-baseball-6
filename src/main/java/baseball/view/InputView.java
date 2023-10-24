@@ -11,19 +11,27 @@ public class InputView {
 
     public Number readNumberInput() {
         System.out.println(ASK_INPUT_MESSAGE);
-        int number = Integer.parseInt(Console.readLine());
+        int number = readLineParseInt();
         return new Number(number);
     }
 
     public FinishInput readFinishInput() {
         System.out.println(RESTART_OR_END_MESSAGE);
-        int number = Integer.parseInt(Console.readLine());
+        int number = readLineParseInt();
 
         return switch (number) {
             case 1 -> FinishInput.RESTART_GAME;
             case 2 -> FinishInput.END_GAME;
             default -> throw new IllegalArgumentException(ErrorMessage.FINISH_INPUT_IS_WRONG.getMessage());
         };
+    }
+
+    private int readLineParseInt() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NON_NUMERIC_STRING.getMessage());
+        }
     }
 
 }

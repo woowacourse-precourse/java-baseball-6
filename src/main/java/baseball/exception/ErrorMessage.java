@@ -7,6 +7,8 @@ public enum ErrorMessage {
 
     FINISH_INPUT_IS_WRONG("1 또는 2를 입력해야합니다."),
 
+    NON_NUMERIC_STRING("숫자로 변환할 수 없는 문자열입니다."),
+
     ;
 
     public final String message;
