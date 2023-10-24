@@ -15,25 +15,37 @@ public class ValidateChecker {
         return (countNum);
     }
 
-    void isUserInputValidate(String userInput) {
-        if (userInput.length() > 3 || userInput.length() < 3) {
+    void checkLengthValidate(String userInput, int length) {
+        if (userInput.length() != length) {
             exception.generateInvalidAnswerLengthException();
-        }
-        for (int i = 0; i < 3; i++) {
-            if (!(userInput.charAt(i) >= '1' && userInput.charAt(i) <= '9'))
-                exception.generateInvalidAnswerRangeException();
-        }
-        for (int i = 0; i < 3; i++) {
-            if (count(userInput, userInput.charAt(i)) > 1) {
-                exception.generateInvalidAnswerDuplicateException();
-            }
         }
     }
 
+    boolean isRangeValidate(String userInput, int start, int end) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (userInput.charAt(i) < start || userInput.charAt(i) > end)
+                return (false);
+        }
+        return (true);
+    }
+
+    void checkDuplicateValidate(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (count(userInput, userInput.charAt(i)) > 1)
+                exception.generateInvalidAnswerDuplicateException();
+        }
+    }
+
+    void isUserInputValidate(String userInput) {
+        checkLengthValidate(userInput, 3);
+        if (!isRangeValidate(userInput, 1, 9))
+                exception.generateInvalidAnswerRangeException();
+        checkDuplicateValidate(userInput);
+    }
+
     void isRetryInputValidate(String retryInput) {
-        if (retryInput.length() > 1 || retryInput.length() < 1)
-            exception.generateInvalidRetryInputLengthException();
-        if (retryInput.charAt(0) == '1' || retryInput.charAt(0) == '2')
+        checkLengthValidate(retryInput, 1);
+        if (!isRangeValidate(retryInput, 1, 2))
             exception.generateInvalidAnswerRangeException();
     }
 }
