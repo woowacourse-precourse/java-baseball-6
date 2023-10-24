@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import number.NumberPicker;
 
-final class TripleNumberPicker implements NumberPicker {
+public final class TripleNumberPicker implements NumberPicker {
 
     private final Queue<Integer> numbers;
 
