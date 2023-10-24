@@ -49,14 +49,14 @@ public class Referee {
         player.askNumber();
     }
     public void askRestart() {
-        if(Objects.equals(player.askRestart(), "0")){
+        if(!Objects.equals(player.askRestart(), "1")){
             setRestart(false);
             return;
         }
         startGame();
     }
     public void endGame() {
-        System.out.print("3스트라이크");
+        System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         askRestart();
@@ -83,10 +83,23 @@ public class Referee {
     }
 
     public void getResult() {
-        if(getStrike() == 3) {
+        int ball = getBall();
+        int strike = getStrike();
+
+        if(strike == 3) {
             endGame();
             return;
         }
-        System.out.println(getBall() + "볼 " + getStrike() + "스트라이크");
+
+        if(ball > 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if(strike > 0){
+            System.out.print(strike + "스트라이크");
+        }
+        if(ball == 0 && strike == 0){
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 }
