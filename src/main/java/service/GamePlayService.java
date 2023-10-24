@@ -55,7 +55,8 @@ public class GamePlayService {
         if (countStrikeBall.get(STRIKE_COUNT_INDEX) == STRIKE_COUNT_THREE) {
             gameScoreView.completeThreeStrikeScore();
             gameFlowManagementService.nextGameFlow(computer);
+        } else {
+            gameScoreView.incompleteThreeStrikeScore(countStrikeBall); // 3 스트라이크 아닐 때
         }
-
     }
 }
