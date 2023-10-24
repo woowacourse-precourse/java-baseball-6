@@ -1,7 +1,4 @@
 package baseball.error;
-
-import java.util.Arrays;
-
 public class CheckerForValidIntegerInputOfInputBalls {
     public void check(String numberString){
         try{
@@ -10,6 +7,5 @@ public class CheckerForValidIntegerInputOfInputBalls {
         catch (Exception e){
             throw new IllegalArgumentException();
         }
-
     }
 }

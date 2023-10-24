@@ -1,9 +1,6 @@
 package baseball;
-
 import baseball.validation.ValidGameContinueMode;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class GameContinueSelector {
     public void gameContinueSelect() {
         String gameContinueSelection = readLine();

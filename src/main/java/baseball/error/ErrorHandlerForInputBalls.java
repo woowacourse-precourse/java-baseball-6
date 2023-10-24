@@ -1,7 +1,5 @@
 package baseball.error;
-
 public class ErrorHandlerForInputBalls implements ErrorHandler {
-
     @Override
     public boolean checkString(String numberString){
         try{
@@ -13,7 +11,6 @@ public class ErrorHandlerForInputBalls implements ErrorHandler {
         catch (IllegalArgumentException illegalArgumentException){
             throw illegalArgumentException;
         }
-
         return true;
     }
 }

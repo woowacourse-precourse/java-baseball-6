@@ -1,7 +1,5 @@
 package baseball.balls;
-
 import java.util.List;
-
 public interface Balls {
     List<Integer> ballsList = null;
     public void createBalls();

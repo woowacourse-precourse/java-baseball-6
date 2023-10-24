@@ -1,12 +1,9 @@
 package baseball.compare;
-
 import baseball.balls.Balls;
-
 public class BallCounter {
     private final Integer MAX_CAPACITY = 3;
     private int ballCountStatus = 0;
     private int arrayIndexStatus = 0;
-
     public int ballCount(Balls answerBalls, Balls playerBalls) {
         int playerBall = playerBalls.getBallsList().get(arrayIndexStatus);
         int answerBall = answerBalls.getBallsList().get(arrayIndexStatus);

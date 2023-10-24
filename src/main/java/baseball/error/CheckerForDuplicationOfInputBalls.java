@@ -1,10 +1,8 @@
 package baseball.error;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 public class CheckerForDuplicationOfInputBalls {
     private final Integer MAX_CAPACITY = 3;
     private final Integer MAX_FREQUENCY_OF_COUNT = 1;

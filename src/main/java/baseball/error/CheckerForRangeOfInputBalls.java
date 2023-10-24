@@ -1,10 +1,8 @@
 package baseball.error;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-
 public class CheckerForRangeOfInputBalls {
     private Integer MAX_CAPACITY = 3;
     public void check(String numberString){
@@ -16,6 +14,5 @@ public class CheckerForRangeOfInputBalls {
         if (filteredNumIntegerList.count() != MAX_CAPACITY){
             throw new IllegalArgumentException();
         }
-
     }
 }

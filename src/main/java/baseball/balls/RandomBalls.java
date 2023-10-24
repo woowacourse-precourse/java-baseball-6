@@ -1,9 +1,7 @@
 package baseball.balls;
-
 import baseball.validation.ValidRandomBallsList;
 
 import java.util.List;
-
 public class RandomBalls implements Balls {
     private List<Integer> ballsList;
     @Override

@@ -1,9 +1,6 @@
 package baseball.compare;
-
 import baseball.balls.Balls;
-
 public class StrikeCounter {
-
     private final Integer MAX_CAPACITY = 3;
     private int strikeCountStatus = 0;
     private int arrayIndexStatus = 0;

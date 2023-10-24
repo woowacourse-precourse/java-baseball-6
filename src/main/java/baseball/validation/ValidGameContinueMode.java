@@ -1,9 +1,7 @@
 package baseball.validation;
-
 import baseball.error.CheckerForUnvalidCharOfSelection;
 import baseball.error.CheckerForUnvalidLengthOfSelection;
 import baseball.error.CheckerForUnvalidRangeOfSelection;
-
 public class ValidGameContinueMode {
     public void validateInputOfGameContinueSelection(String gameContinueSelection) {
         try {

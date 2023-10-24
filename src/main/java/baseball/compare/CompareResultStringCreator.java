@@ -1,5 +1,4 @@
 package baseball.compare;
-
 public class CompareResultStringCreator {
     public String compareResultStringCreate(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount == 0) {
