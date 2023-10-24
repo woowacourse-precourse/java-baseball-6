@@ -53,11 +53,17 @@ public class Application {
             System.out.println("3 스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
-        } else if (result[0] == 0 && result[1] == 0) {
-            System.out.println("낫싱");
-        } else {
-            String process = String.format("%d 볼 %d 스트라이크", result[0], result[1]);
+        } else if (result[0] > 0 && result[1] > 0) {
+            String process = String.format("%d볼 %d스트라이크", result[0], result[1]);
             System.out.println(process);
+        } else if (result[0] > 0 && result[1] == 0) {
+            String process = String.format("%d볼", result[0]);
+            System.out.println(process);
+        } else if (result[0] == 0 && result[1] > 0) {
+            String process = String.format("%d스트라이크", result[1]);
+            System.out.println(process);
+        } else {
+            System.out.println("낫싱");
         }
         return false;
     }
