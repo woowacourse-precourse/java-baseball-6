@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 enum ScoreType {
-    strike, ball
+    STRIKE, BALL
 }
 
 public class Application {
