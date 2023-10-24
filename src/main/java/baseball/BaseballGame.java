@@ -16,6 +16,7 @@ public class BaseballGame implements NumberGame {
 
     @Override
     public void play() {
+        System.out.println(UserResponseMessage.GAME_START_MESSAGE);
         do {
             proceedGame();
         } while (shouldRepeatGame());
