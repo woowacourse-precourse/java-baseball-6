@@ -8,5 +8,8 @@ public class InputView {
         System.out.println("숫자를 입력하세요 : ");
         return Console.readLine();
     }
-
+    public static String setRegameNumber(){
+        System.out.println("새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
 }
