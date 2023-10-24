@@ -9,14 +9,19 @@ public class Application {
     public static String START_MSG = "숫자 야구 게임을 시작합니다.";
     public static String INPUT_MSG = "숫자를 입력해주세요 : ";
     public static int LIST_LEN = 3;
-
     public static void main(String[] args) throws IOException {
         // TODO: 프로그램 구현
         //step0. 게임 시작
         System.out.println(START_MSG);
+
+        boolean isFinish = true;
+        List<Integer> computer = null;
         while(true) {
             //step1. 랜덤 숫자 생성
-            List<Integer> computer = getRandomNumbers();
+            if(isFinish) {
+                isFinish = false;
+                computer = getRandomNumbers();
+            }
             //step2. 사용자 입력
             System.out.print(INPUT_MSG);
 
