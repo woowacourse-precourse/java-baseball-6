@@ -12,4 +12,17 @@ public class GameView {
     public void displayStartMessage() {
         System.out.println(START_MESSAGE);
     }
+
+    public void displaySuccessMessage() {
+        System.out.println(SUCCESS_MESSAGE);
+    }
+
+    public void displayResultMessage(String result) {
+        System.out.println(result);
+    }
+
+    public int restartCheck() {
+        System.out.println(RESTART_MESSAGE);
+        return Integer.parseInt(readLine());
+    }
 }
