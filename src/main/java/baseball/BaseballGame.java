@@ -79,6 +79,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String playerInput = Console.readLine();
         exceptLengthInvalid(playerInput, 1);
+        exceptNotInteger(playerInput);
         boolean isRestart = true;
         if (playerInput.equals("1")) {
             initAnswer();
