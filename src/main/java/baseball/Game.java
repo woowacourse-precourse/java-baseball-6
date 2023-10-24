@@ -29,7 +29,12 @@ public class Game {
         while (strike < DESIGNED_NUM) {
             System.out.println(INPUT_MESSAGE);
             String inputNumbers = readLine();
+
         }
+    }
+
+    private void printWinMessage() {
+        System.out.println(WIN_MESSAGE);
     }
 
     private void validateDataType(String inputNumbers) {

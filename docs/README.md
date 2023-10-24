@@ -39,11 +39,11 @@
   - [x] "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 메세지 출력
 - ✅ validateDataType 메서드 구현
   - ✅ 사용자로부터 입력 받은 값을 `Integer.parseInt`로 변환 하여 int 타입인 지 확인 : 예외인 경우 -> IllegalArgumentException
-- [x] validateCount 메서드 구현
+- ✅ validateCount 메서드 구현
   - ✅ 사용자 입력 값이 3자리 수인지 확인 : 예외인 경우 -> IllegalArgumentException
-  - [x] 사용자 입력 값에 중복된 수가 있는지 확인 : 예외인 경우 -> IllegalArgumentException
-- [x] validateRange 메서드 구현
-  - [x] 사용자가 입력한 값의 배열 안의 숫자들이 허용된 범위 안에 존재하는 지 확인 : 예외인 경우 -> IllegalArgumentException
+  - ✅ 사용자 입력 값에 중복된 수가 있는지 확인 : 예외인 경우 -> IllegalArgumentException
+- ✅ validateRange 메서드 구현
+  - ✅ 사용자가 입력한 값의 배열 안의 숫자들이 허용된 범위 안에 존재하는 지 확인 : 예외인 경우 -> IllegalArgumentException
 
 ### Controller(컨트롤러)
 - [x] gameStart 메서드 구현
