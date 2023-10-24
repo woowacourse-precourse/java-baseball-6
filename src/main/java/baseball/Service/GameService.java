@@ -16,22 +16,23 @@ public class GameService {
 
     private Converter converter = new Converter();
 
-    public void playContinuous() {
-        while (true) {
-
-        }
-    }
 
     public void play() {
+        while (true) {
+            getUserNumber();
+            getResult(user.getInputNumber());
 
+            if (strikeCount == 3) {
+                OutputMessage.printWinMessage();
+                break;
+            }
+        }
     }
-
 
     public void getResult(int[] guessNumbers) {
         for (int i = 0; i < 3; i++) {
             search(guessNumbers[i], i, computer.getNumbers());
         }
-
         OutputMessage.printResultMessage(strikeCount, ballCount);
     }
 
