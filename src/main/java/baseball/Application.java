@@ -17,7 +17,7 @@ class Message {
     final static String STRIKE_MESSAGE = "스트라이크";
 }
 
-class Condition{
+class Condition {
     final static char MAX_STRIKES = '3';
     final static int NUM_LENGTH = 3;
     final static int RESTART_CONDITION = 1;
@@ -39,7 +39,7 @@ class Game {
         }
     }
 
-    private static void initGame(){
+    private static void initGame() {
         user.setStatus(Status.START);
     }
 
@@ -123,22 +123,19 @@ class Game {
     }
 
     private static void doneRoutine() {
-        if (user.getStatus() == Status.DONE) {
-            System.out.println(Message.WIN_MESSAGE);
-            int input = Integer.parseInt(Console.readLine());
-            if (input == Condition.RESTART_CONDITION) {
-                user.setStatus(Status.START);
-                return;
-            }
-
-            if (input == Condition.EXIT_CONDITION) {
-                user.setStatus(Status.EXIT);
-                return;
-            }
-
-            throw new IllegalArgumentException("Only input 1 or 2");
+        System.out.println(Message.WIN_MESSAGE);
+        int input = Integer.parseInt(Console.readLine());
+        if (input == Condition.RESTART_CONDITION) {
+            user.setStatus(Status.START);
+            return;
         }
 
+        if (input == Condition.EXIT_CONDITION) {
+            user.setStatus(Status.EXIT);
+            return;
+        }
+
+        throw new IllegalArgumentException("Only input 1 or 2");
     }
 }
 
