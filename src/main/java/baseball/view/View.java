@@ -1,15 +1,19 @@
 package baseball.view;
 
-import baseball.view.format.Format;
+import camp.nextstep.edu.missionutils.Console;
 
 public class View {
 
     public String getInput() {
-        return "";
+        return Console.readLine();
     }
 
-    public void print(Format format) {
+    public void print(String name) {
+        System.out.print(name);
+    }
 
+    public void println(String name) {
+        System.out.println(name);
     }
 
 }
