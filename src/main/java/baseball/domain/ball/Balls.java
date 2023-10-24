@@ -20,15 +20,16 @@ public class Balls {
     public int getStrikeCount(Balls otherBalls) {
         int result = 0;
         for (Ball ball : this.balls) {
-            if(otherBalls.isStrike(ball)) {
+            if (otherBalls.isStrike(ball)) {
                 result++;
             }
         }
         return result;
     }
+
     private boolean isStrike(Ball otherBall) {
         for (Ball ball : this.balls) {
-            if(ball.isMatch(otherBall)) {
+            if (ball.isMatch(otherBall)) {
                 return true;
             }
         }
@@ -38,15 +39,16 @@ public class Balls {
     public int getBallCount(Balls otherBalls) {
         int result = 0;
         for (Ball ball : this.balls) {
-            if(otherBalls.isBall(ball)) {
+            if (otherBalls.isBall(ball)) {
                 result++;
             }
         }
         return result;
     }
+
     private boolean isBall(Ball otherBall) {
         for (Ball ball : this.balls) {
-            if(ball.isPartialMatch(otherBall)) {
+            if (ball.isPartialMatch(otherBall)) {
                 return true;
             }
         }
@@ -58,16 +60,18 @@ public class Balls {
                 .mapToObj(index -> new Ball(new Number(values.get(index)), index))
                 .collect(Collectors.toList());
     }
+
     private void validate(List<Integer> values) {
         validateDuplication(values);
         validateSize(values);
     }
 
     private void validateDuplication(List<Integer> values) {
-        if(hasDuplicates(values)) {
+        if (hasDuplicates(values)) {
             throw new IllegalArgumentException("서로 다른 수가 입력되어야합니다.");
         }
     }
+
     private boolean hasDuplicates(List<Integer> values) {
         return values.stream()
                 .distinct() // 중복 제거
@@ -75,12 +79,8 @@ public class Balls {
     }
 
     private void validateSize(List<Integer> values) {
-        if(values.size() != CORRECT_SIZE) {
+        if (values.size() != CORRECT_SIZE) {
             throw new IllegalArgumentException("숫자의 길이는 3이어야합니다.");
         }
-    }
-
-    public List<Ball> getBalls() {
-        return Collections.unmodifiableList(balls);
     }
 }

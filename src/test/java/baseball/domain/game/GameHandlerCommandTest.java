@@ -2,7 +2,6 @@ package baseball.domain.game;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.domain.game.GameHandlerCommand;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +10,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class GameHandlerCommandTest {
+
     @DisplayName("게임 커맨드는 1또는 2여야한다.")
     @ParameterizedTest
     @MethodSource("createCommandData")
@@ -34,6 +34,7 @@ class GameHandlerCommandTest {
             GameHandlerCommand.findCommand(command);
         });
     }
+
     static Stream<Arguments> createExceptionData() {
         return Stream.of(
                 Arguments.of("3"),

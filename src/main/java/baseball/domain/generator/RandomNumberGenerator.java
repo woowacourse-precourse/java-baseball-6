@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
+
     public static List<Integer> createRandomNumbers(int count, int startNum, int endNum) {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < count) {

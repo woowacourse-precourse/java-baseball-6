@@ -21,6 +21,7 @@ public class GameController {
     private void init() {
         game = new Game();
     }
+
     private void play() {
         while (game.isRun()) {
             Balls playerBalls = createPlayerBalls();
@@ -29,8 +30,9 @@ public class GameController {
             checkGameEnd();
         }
     }
+
     private void checkGameEnd() {
-        if(game.isEnd()) {
+        if (game.isEnd()) {
             OutputView.printEnd();
             String command = InputView.askRestart();
             game.performCommand(command);

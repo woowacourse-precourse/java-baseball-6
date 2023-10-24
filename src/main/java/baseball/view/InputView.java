@@ -21,9 +21,10 @@ public class InputView {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
         }
     }
+
     private static String getString() {
         String str = Console.readLine();
-        if(str.isEmpty()) {
+        if (str.isEmpty()) {
             throw new IllegalArgumentException("값을 입력해주세요");
         }
         return str;

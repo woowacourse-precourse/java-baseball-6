@@ -29,11 +29,13 @@ public class Game {
         changeGameStatusBy(gameResult);
         return gameResult;
     }
+
     private GameResult createGameResult(Balls otherBalls) {
         int strike = this.balls.getStrikeCount(otherBalls);
         int ball = this.balls.getBallCount(otherBalls);
         return new GameResult(strike, ball);
     }
+
     private void changeGameStatusBy(GameResult gameResult) {
         if (gameResult.hasEndCondition()) {
             gameStatus = GameStatus.STOP;
@@ -50,7 +52,7 @@ public class Game {
 
     public void performCommand(String inputCommand) {
         GameHandlerCommand command = GameHandlerCommand.findCommand(inputCommand);
-        if(GameHandlerCommand.isRestartCommand(command)) {
+        if (GameHandlerCommand.isRestartCommand(command)) {
             init();
         }
     }

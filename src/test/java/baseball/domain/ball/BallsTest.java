@@ -3,7 +3,6 @@ package baseball.domain.ball;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.domain.ball.Balls;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;

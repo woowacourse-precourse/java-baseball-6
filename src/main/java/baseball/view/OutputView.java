@@ -14,6 +14,7 @@ public class OutputView {
         String resultMessage = getResultMessage(ballMessage, strikeMessage);
         printResultMessage(resultMessage);
     }
+
     private static String getBallMessage(GameResult gameResult) {
         String ballMessage = "";
         if (gameResult.hasBall()) {

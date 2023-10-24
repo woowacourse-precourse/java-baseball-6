@@ -1,7 +1,6 @@
 package baseball.domain.ball;
 
-import baseball.domain.ball.Ball;
-import baseball.domain.ball.Number;
+
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -21,9 +20,9 @@ class BallTest {
 
     public static Stream<Arguments> createSameNumberSamePositionData() {
         return Stream.of(
-                Arguments.of(new Ball(new Number(1),0),new Ball(new Number(1),0)),
-                Arguments.of(new Ball(new Number(5),1),new Ball(new Number(5),1)),
-                Arguments.of(new Ball(new Number(9),2),new Ball(new Number(9),2))
+                Arguments.of(new Ball(new Number(1), 0), new Ball(new Number(1), 0)),
+                Arguments.of(new Ball(new Number(5), 1), new Ball(new Number(5), 1)),
+                Arguments.of(new Ball(new Number(9), 2), new Ball(new Number(9), 2))
         );
     }
 
@@ -36,9 +35,9 @@ class BallTest {
 
     public static Stream<Arguments> createNotSameNumberOrNotSamePositionData() {
         return Stream.of(
-                Arguments.of(new Ball(new Number(1),0),new Ball(new Number(2),0)),
-                Arguments.of(new Ball(new Number(4),1),new Ball(new Number(5),1)),
-                Arguments.of(new Ball(new Number(5),2),new Ball(new Number(9),2))
+                Arguments.of(new Ball(new Number(1), 0), new Ball(new Number(2), 0)),
+                Arguments.of(new Ball(new Number(4), 1), new Ball(new Number(5), 1)),
+                Arguments.of(new Ball(new Number(5), 2), new Ball(new Number(9), 2))
         );
     }
 
@@ -52,9 +51,9 @@ class BallTest {
 
     public static Stream<Arguments> createSameNumberOrOtherPositionData() {
         return Stream.of(
-                Arguments.of(new Ball(new Number(1),0),new Ball(new Number(1),1)),
-                Arguments.of(new Ball(new Number(4),1),new Ball(new Number(4),0)),
-                Arguments.of(new Ball(new Number(5),2),new Ball(new Number(5),1))
+                Arguments.of(new Ball(new Number(1), 0), new Ball(new Number(1), 1)),
+                Arguments.of(new Ball(new Number(4), 1), new Ball(new Number(4), 0)),
+                Arguments.of(new Ball(new Number(5), 2), new Ball(new Number(5), 1))
         );
     }
 

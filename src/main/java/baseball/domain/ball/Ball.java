@@ -2,8 +2,8 @@ package baseball.domain.ball;
 
 public class Ball {
 
-    private Number number;
-    private int position;
+    private final Number number;
+    private final int position;
 
     public Ball(Number number, int position) {
         this.number = number;

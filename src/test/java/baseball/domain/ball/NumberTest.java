@@ -3,7 +3,6 @@ package baseball.domain.ball;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.domain.ball.Number;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -13,9 +12,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class NumberTest {
+
     @DisplayName("1에서 9사이의 값이 들어오면 Number가 생성된다.")
     @ParameterizedTest
-    @ValueSource(ints = {1,5,9})
+    @ValueSource(ints = {1, 5, 9})
     void make_number(int inputNumber) {
         Number number = new Number(inputNumber);
         assertThat(inputNumber).isEqualTo(number.getNumber());
@@ -23,7 +23,7 @@ class NumberTest {
 
     @DisplayName("1에서 9사이의 값이 들어오지 않으면 예외가 발생된다..")
     @ParameterizedTest
-    @ValueSource(ints = {0,10,100})
+    @ValueSource(ints = {0, 10, 100})
     void make_number_exception(int inputNumber) {
         assertThrows(IllegalArgumentException.class, () -> {
             Number number = new Number(inputNumber);
@@ -40,11 +40,10 @@ class NumberTest {
 
     private static Stream<Arguments> createIsSameNumberData() {
         return Stream.of(
-                Arguments.of(new Number(1), new Number(1),true),
-                Arguments.of(new Number(1), new Number(8),false)
+                Arguments.of(new Number(1), new Number(1), true),
+                Arguments.of(new Number(1), new Number(8), false)
         );
     }
-
 
 
 }
