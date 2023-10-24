@@ -15,9 +15,5 @@ public class InputService {
 
     }
 
-    public void validateIntegerInput(String input) {
-        if (!IntegerUtil.isInteger(input)) {
-            ExceptionUtil.throwInvalidValueException();
-        }
-    }
+
 }

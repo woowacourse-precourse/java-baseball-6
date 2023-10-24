@@ -6,4 +6,9 @@ public class ExceptionUtil {
         throw new IllegalArgumentException();
     }
 
+    public static void throwInvalidValueException(String message) {
+
+        throw new IllegalArgumentException(message);
+    }
+
 }
