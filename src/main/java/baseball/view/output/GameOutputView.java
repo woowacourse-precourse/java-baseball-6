@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.output;
 
 import baseball.domain.BallStatus;
 import baseball.dto.GuessResult;
