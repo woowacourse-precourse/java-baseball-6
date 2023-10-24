@@ -1,4 +1,6 @@
-package baseball;
+package baseball.service;
+
+import baseball.view.InputView;
 
 public class Referee {
 	public static final int SUCCESS_STRIKE = 3;

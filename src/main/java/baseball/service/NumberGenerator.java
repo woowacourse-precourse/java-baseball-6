@@ -1,8 +1,9 @@
-package baseball;
+package baseball.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberGenerator {

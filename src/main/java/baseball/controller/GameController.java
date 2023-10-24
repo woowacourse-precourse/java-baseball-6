@@ -1,4 +1,8 @@
-package baseball;
+package baseball.controller;
+
+import baseball.service.BaseballGame;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
 	public void start() {
