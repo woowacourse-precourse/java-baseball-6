@@ -2,8 +2,8 @@ package baseball;
 
 // 볼, 스트라이크 갯수가 자주 필요하여 따로 뺌
 public class BallStrike {
-    private int ball;
-    private int strike;
+    private final int ball;
+    private final int strike;
     
     public BallStrike(int ball, int strike) {
         this.ball = ball;
