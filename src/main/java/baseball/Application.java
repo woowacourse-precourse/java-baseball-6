@@ -95,7 +95,7 @@ public class Application {
 
     private static List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.size() < TOTAL_NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
