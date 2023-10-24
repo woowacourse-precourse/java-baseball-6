@@ -20,6 +20,14 @@ public class Application {
 class Baseball {
     static final int LIMIT_DIGIT = 3;
 
+    static final String NEW_GAME = "1";
+    static final String END_GAME = "2";
+
+    private static final String NUM_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_CHECK_MESSAGE= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+
     Baseball() {
         String randomNum;
 
@@ -32,6 +40,15 @@ class Baseball {
     }
 
     public static void init(Baseball answer) {
-        
+        //사용자 값 입력 받기(no.2)
+        String input = Baseball.getUserInput();
     }
+
+    private static String getUserInput() {
+        System.out.print(NUM_INPUT_MESSAGE);
+        String userVal = readLine();
+
+        return userVal;
+    }
+
 }
