@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -37,5 +38,10 @@ public class Application {
         }
 
         return new int[]{strike, ball};
+    }
+
+    public boolean inputValidation(String input) {
+        Pattern pattern = Pattern.compile("^(?!\\d*(\\d)\\d*\\1\\d*\\1)\\d{3}");
+        return pattern.matcher(input).matches();
     }
 }
