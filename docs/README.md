@@ -20,47 +20,113 @@ flowchart TD
 
 ## 클래스 다이어그램
 ```mermaid
-classDiagram
-    
-    class Player{
-        <<interface>>
+    classDiagram
+
+    class Player {
+        <<abstract>>
         #List~int~[3] numbers
+        +getNumberPosition(int) int
     }
-    Player <|-- User
-    Player <|-- Computer
-    RandomNumber <|-- Computer
     
     class User {
-        +create(List~int~[3] numbers, ValidNumberChecker validNumberChecker) User
-    }
-    class Computer{
-        -createRandomNumber() void
-        +create(ValidNumberChecker validNumberChecker) Computer
+        +create(List~int~[3]) User
     }
 
-    class RandomNumber {
-        <<interface>>
-        #createRandomNumber() List~int~[3]
+    class Computer {
+        -createRandomNumber() void
+        +create(List~int~[3]) Computer
     }
+
+    Player <|-- User
+    Player <|-- Computer
 
     class Referee {
-        - Player user
-        - Player Computer
-        +judgeBaseballGame() bool isUserVictory
-        -userVictory() void
-        -computerVictory() void
+        -Player user
+        -Player Computer
+        -Referee(User user, Computer computer)
+        +judgeBaseballGame() GameScoreboard
     }
 
-    ValidNumberChecker <|-- DefaultValidNumberChecker
-    class ValidNumberChecker {
-        <<interface>>
-        #isValid(List~int~ numbers) bool
+    class GameScoreboard {
+        -int strike
+        -int ball
+        ~incrementStrike() GameScoreboard
+        ~incrementBall() GameScoreboard
+        +isThreeStrike() bool
+        +getStrike() int
+        +getBall() int
     }
 
-    class DefaultValidNumberChecker {
-        - VALID_SIZE
-        #isValid(List~int~ numbers) bool
+    class NumberBaseballController {
+        -GameController gameController
+        -InputView inputView
+        -OutputView outputView
+        +NumberBaseballController(GameController, InputView, OutputView)
+        +run() void
+        -playGame(Computer) void
+        -isUserWantToQuit() bool
+        -getUserBaseballNumber() List~int~
+        -setupGame() Computer
     }
+
+    class GameController {
+        -GameStarter gameStarter
+        -GameTerminator gameTerminator
+        +run(User, Computer) GameScoreboard
+        +isRunning(GameScoreboard) bool
+    }
+
+    class GameStarter {
+        +start(Computer, User) GameScoreboard
+    }
+
+    class GameTerminator {
+        +isGameStillRunning(GameScoreboard) bool
+    }
+
+    class InputView {
+        -Convertor Convertor
+        -Validator Validator
+        -InputView(Convertor, Validator)
+        +readInput() String
+        +readInputNumbers() List~int~
+    }
+
+    class OutputView {
+        -Convertor Convertor
+        -Validator Validator
+        -OutputView(Convertor, Validator)
+        -write() void
+        +printGameStartConsole() void
+        +printMissionClearConsole() void
+        +printHintConsole() void
+        +inputPrompt() void
+    }
+
+    class Convertor {
+        +inputToBaseballNumber(String) List~int~
+        +ballCountToHint(int, int) String
+    }
+
+    class Validator {
+        +validateBaseballNumber(String) void
+        +totalCountsNotExceedingLimit(int, int) void
+    }
+
+    GameController -- GameStarter
+    GameController -- GameTerminator
+    
+    Referee -- User
+    Referee -- Computer
+
+    NumberBaseballController -- GameController
+    NumberBaseballController -- InputView
+    NumberBaseballController -- OutputView
+        
+    InputView -- Convertor
+    InputView -- Validator 
+    OutputView -- Convertor
+    OutputView -- Validator 
 ```
 
 <br>
@@ -68,48 +134,72 @@ classDiagram
 ## 기능 목록
 
 ### 플레이어 `Player`
+- [x] 지정된 위치의 숫자를 가져오기
+
 #### 플레이어[컴퓨터] `Computer`
-- [ ] 1~9 사이의 서로 다른 랜덤한 숫자 3개를 가진 새로운 컴퓨터 객체 생성
+- [x] 주어진 숫자 리스트로 컴퓨터 객체를 생성
+- [x] 해당 숫자가 컴퓨터의 숫자 리스트에 포함되어 있는지 확인
 
 #### 플레이어[사용자] `User`
-- [ ] 1~9 사이의 서로 다른 수 3개를 입력 받아서 새로운 사용자 객체 생성
+- [x] 주어진 숫자 리스트로 사용자 객체를 생성
 
 <br>
 
-### 심판 `Referee`
-- [ ] 플레이어가 컴퓨터의 숫자를 맞췄는지 판단, 아무것도 포함되지 않다면 낫싱
-- [ ] 두 숫자가 같다면 스트라이크 +1, 다르다면 볼 + 1
+### 판정
+#### 게임 점수판 `GameScoreboard`
+- [x] 스트라이크와 볼 수 증가 
+- [x] 3스트라이크 확인
+- [x] 스트라이크와 볼의 현재 값 조회
+
+#### 심판 `Referee`
+- [x] 사용자와 컴퓨터의 숫자를 바탕으로 게임 결과 판단
+- [x] 스트라이크와 볼 판정
+
 
 <br>
 
-### 시스템 `GameSystem`
-#### 게임시작 담당 `BaseballGameStarter`
-- [ ] 숫자 야구를 시작
+### 시스템
+#### 게임 컨트롤러 `GameController`
+- [x] 게임 시작 종료 컨트롤
+- [x] 게임 진행 중 여부 판단
 
-#### 게임종료 판단 `BaseballGameTerminator`
-- [ ] 숫자 야구가 끝났는지 판단
+#### 게임 시작 담당 `GameStarter`
+- [x] 숫자 야구 게임 시작하여 결과 반환
 
-#### 게임의 흐름을 관리 `GmaeController`
-- [ ] 전체적인 게임의 흐름을 담당
+#### 게임 종료 판단 `GameTerminator`
+- [x] 게임 종료 여부 판단
 
 <br>
 
-### 부가 기능
-#### 랜덤한 숫자 생성 `RandomNumber`
-- [ ] 1~9 사이의 서로 다른 수 3개를 생성
+### 입출력
+#### 입력 담당 `InputView`
+- [x] 사용자 메시지 입력
 
-#### 올바른 숫자인지 판단 `ValidNumberChecker`
-- [ ] 숫자의 길이가 올바른지 확인
+#### 출력 담당 `OutputView`
+- [x] 시작,종료 등 메시지 출력
 
-#### 입력 담당 `Writer`
-- [ ] 입력받은 값을 전달
+<br>
 
-#### 출력 담당 `Printer`
-- [ ] 입력받은 값을 출력
+### 데이터
+#### 데이터 검증 `Validator`
+- [x] 숫자 야구 번호 검증
+- [x] 스트라이크, 볼 합계 검증
+
+#### 데이터 변환 `Convertor`
+- [x] 문자열 입력을 숫자 야구 번호로 변환
+- [x] 스트라이크, 볼 카운트를 힌트 메시지로 변환
+
+
+<br>
+
+### 유틸리티
+#### 랜덤한 숫자 생성 `BaseballNumberUtils`
+- [x] 1~9 사이의 서로 다른 수 3개를 생성
 
 <br>
 
 ### 목표
-- [ ] 객체지향적인 개발
-- [ ] SOLID 적용
-- [ ] MVC 패턴 적용
+- [x] 객체지향적인 개발
+- [x] SOLID 최대한 지키기
+- [x] MVC 패턴 적용
+
