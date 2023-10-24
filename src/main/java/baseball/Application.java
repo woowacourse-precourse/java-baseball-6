@@ -23,6 +23,7 @@ public class Application {
             boolean isCorrect = false;
             printInput();
             String input = Console.readLine();
+            validateInput(input);
             Result result = Result.calculate(input, answer);
             printResult(result);
             if (result.getStrike() == NUMBER_LIMIT) {
@@ -36,6 +37,15 @@ public class Application {
                 else answer = makeRandomNumber();
             }
         }
+    }
+
+    private static void validateInput(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 타입입니다.");
+        }
+        if (input.length() != NUMBER_LIMIT) throw new IllegalArgumentException("입력값은 세자리여야 합니다.");
     }
 
     static String makeRandomNumber() {
