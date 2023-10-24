@@ -15,9 +15,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
+    private static ByteArrayOutputStream outputMessage;
+
     @BeforeEach
     void setUpStreams() {
-        ByteArrayOutputStream outputMessage = new ByteArrayOutputStream();
+        outputMessage = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputMessage));
     }
 
