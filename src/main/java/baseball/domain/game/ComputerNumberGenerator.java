@@ -1,6 +1,5 @@
 package baseball.domain.game;
 
-import baseball.refactoring.BallNumbersValidator;
 import baseball.util.NumberGenerator;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,7 +14,7 @@ public class ComputerNumberGenerator {
 
     public Computer create() {
         Set<Integer> set = new HashSet<>();
-        while (set.size() < BallNumbersValidator.GAME_NUMBERS_SIZE) {
+        while (set.size() < GameNumbers.GAME_NUMBERS_COUNT) {
             set.add(numberGenerator.createNumber());
         }
         return Computer.of(new ArrayList<>(set));
