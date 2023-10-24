@@ -14,7 +14,7 @@ public class Input {
 
     // Player: 재시작(1) or 종료(2) 입력
     public static String readOption(){
-        System.out.print(MessageConstants.RESTART_OR_FINISH_MESSAGE);
+        System.out.println(MessageConstants.RESTART_OR_FINISH_MESSAGE);
         String input = Console.readLine();
         return input;
     }
