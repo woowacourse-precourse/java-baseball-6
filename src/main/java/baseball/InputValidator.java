@@ -1,14 +1,12 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-    public static List<Integer> validateInput(String input) {
+    public static int[] validateInput(String input) {
         validateInputLength(input);
-        List<Integer> guess = convertInputToIntegerList(input);
+        int[] guess = convertInputToIntegerArray(input);
         validateInputRange(guess);
         validateInputForDuplicates(guess);
         return guess;
@@ -20,16 +18,16 @@ public class InputValidator {
         }
     }
 
-    private static List<Integer> convertInputToIntegerList(String input) {
-        List<Integer> guess = new ArrayList<>();
+    private static int[] convertInputToIntegerArray(String input) {
+        int[] guess = new int[Constants.NUMBER_COUNT];
         for (int i = 0; i < Constants.NUMBER_COUNT; i++) {
             char c = input.charAt(i);
-            guess.add(Character.getNumericValue(c));
+            guess[i] = Character.getNumericValue(c);
         }
         return guess;
     }
 
-    private static void validateInputRange(List<Integer> guess) {
+    private static void validateInputRange(int[] guess) {
         for (int num : guess) {
             if (num < Constants.MIN_NUMBER || num > Constants.MAX_NUMBER) {
                 throw new IllegalArgumentException("입력은 1에서 9 사이의 숫자여야 합니다.");
@@ -37,7 +35,7 @@ public class InputValidator {
         }
     }
 
-    private static void validateInputForDuplicates(List<Integer> guess) {
+    private static void validateInputForDuplicates(int[] guess) {
         Set<Integer> set = new HashSet<>();
         for (int number : guess) {
             if (!set.add(number)) {
@@ -45,5 +43,4 @@ public class InputValidator {
             }
         }
     }
-
 }

@@ -23,7 +23,7 @@ public class BaseballGame {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            List<Integer> guess = InputValidator.validateInput(input);
+            int[] guess = InputValidator.validateInput(input);
             int[] result = StrikeBallCalculator.calculate(guess, answer);
             String message = GameResultMessage.generateResultMessage(result);
             System.out.println(message);
