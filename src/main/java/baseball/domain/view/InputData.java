@@ -13,4 +13,9 @@ public class InputData {
         System.out.print(NUMBER_OF_USER_INPUT_MESSAGE);
         return Console.readLine();
     }
+
+    public static String inputIsGameRestart() {
+        System.out.println(GAME_RESTART_MESSAGE);
+        return Console.readLine();
+    }
 }
