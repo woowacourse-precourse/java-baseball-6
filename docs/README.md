@@ -7,13 +7,13 @@
 ---
 
 ![Generic badge](https://img.shields.io/badge/precourse-week1-green.svg)
-![Generic badge](https://img.shields.io/badge/test-2_passed-blue.svg)
-![Generic badge](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
+
 
 > 우아한테크코스 6기 1주차 미션, 숫자 야구 게임을 구현한 저장소입니다.
 
-# 목차
----
+# 문제
+- 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
+  
 # 규칙
 - 1~9 사이의 중복되지 않는 3개의 정수를 생성한다.
 - 사용자는 3개의 숫자를 입력한다.
