@@ -1,4 +1,4 @@
-package baseball;
+package baseball.machine.count;
 
 // BallCount는 야구에서 흔히 쓰이는 용어로, Ball, Strike 를 세는데 사용함
 public class BallCount {
