@@ -23,30 +23,23 @@ public class OutputView {
 
     public void printResult(GameResult gameResult) {
         StringBuilder result = new StringBuilder();
-        result.append(getBallMessage(gameResult));
+        result.append(getMessageOf(TryResult.BALL, gameResult));
         result.append(insertSpace(gameResult));
-        result.append(getStrikeMessage(gameResult));
+        result.append(getMessageOf(TryResult.STRIKE, gameResult));
         result.append(getNothingMessage(gameResult));
         System.out.println(result);
+    }
+
+    private String getMessageOf(TryResult tryResult, GameResult gameResult) {
+        if (gameResult.hasResult(tryResult)) {
+            return gameResult.getCount(tryResult) + tryResult.getResultName();
+        }
+        return BLANK;
     }
 
     private String insertSpace(GameResult gameResult) {
         if (gameResult.hasBall() && gameResult.hasStrike()) {
             return " ";
-        }
-        return BLANK;
-    }
-
-    private String getBallMessage(GameResult gameResult) {
-        if (gameResult.hasBall()) {
-            return gameResult.getBallCount() + TryResult.BALL.getResultName();
-        }
-        return BLANK;
-    }
-
-    private String getStrikeMessage(GameResult gameResult) {
-        if (gameResult.hasStrike()) {
-            return gameResult.getStrikeCount() + TryResult.STRIKE.getResultName();
         }
         return BLANK;
     }

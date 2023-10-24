@@ -30,20 +30,18 @@ public class GameResult {
         return !tryResults.contains(TryResult.STRIKE) && !tryResults.contains(TryResult.BALL);
     }
 
-    public int getStrikeCount() {
-        return (int) tryResults.stream()
-            .filter(tryResult -> tryResult == TryResult.STRIKE)
-            .count();
-    }
-
-    public int getBallCount() {
-        return (int) tryResults.stream()
-            .filter(tryResult -> tryResult == TryResult.BALL)
-            .count();
-    }
-
     public boolean isThreeStrike() {
         return tryResults.stream()
             .allMatch(tryResult -> tryResult == TryResult.STRIKE);
+    }
+
+    public boolean hasResult(TryResult tryResult) {
+        return tryResults.contains(tryResult);
+    }
+
+    public int getCount(TryResult inpuTryResult) {
+        return (int) tryResults.stream()
+            .filter(tryResult -> tryResult.equals(inpuTryResult))
+            .count();
     }
 }
