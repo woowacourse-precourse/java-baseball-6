@@ -1,8 +1,29 @@
 ## Java baseball game
 
-### 요구사항
+### 기능 요구사항
+<hr/>
 
-[Setting]
+- Computer class
+  - 랜덤 숫자(정답) 생성
+  - 점수 계산
+  - 점수 출력
+- User class
+  - 유저 데이터 입력
+- BaseballGame class
+  - 전체적인 게임 실행
+  - 게임 재시작 관리
+- Numbers class
+  - 숫자야구 숫자 데이터 관리
+  - 생성자
+    - List<Integer>
+    - String
+- Score class
+  - 숫자 야구 점수
+
+### 동작흐름
+<hr/>
+
+**[Setting]**
 - 컴퓨터가 세자리 숫자 생성  
   - Exception
     - 같은 숫자가 있는 경우
@@ -10,7 +31,7 @@
     - 1에서 9 사이의 숫자가 아닐경우
     - 숫자 아닌 것을 입력했을 경우
 
-[Input]
+**[Input]**
 - 사용자가 세자리 숫자 입력 (ex:123)
   - Exception
     - 같은 숫자가 있는 경우
@@ -23,24 +44,17 @@
   - 일치하지도 않고 자리도 없음 -> 아무거도 아님
   - 스트라이크 수와 볼의 수 리턴
 
-[Output]
+**[Output]**
 - 스트라이크 수와 볼의 수를 토대로 결과 출력
   - _볼 _스트라이크
 - 3스트라이크면 게임 종료
   - 숫자 입력 1(재시작), 2(종료)
     - Exception
       - 1,2외에 다른 문자 입력
-
-[Worksflow]
-1. Computer 객체 생성하며 정답 숫자 지정
-2. User가 예상 정답 입력
-3. Computer.compare(user)를 통해 score 얻음
-
-
+      - 
 [Validator]
 1. 사용자 데이터 입력 받을 때
    - 중복 화인
    - 1-9 숫자 확인
    - 길이 3 인지
 2. 컴퓨터 데이터 생성 시
-
