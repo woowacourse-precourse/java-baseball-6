@@ -23,6 +23,7 @@ public class GameManager {
         List<Integer> inputNumbers;
         List<Integer> playerNumbers;
         int[] result;
+        int digit;
         String input;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -32,7 +33,7 @@ public class GameManager {
             input = Console.readLine();
             for (int i = 0; i < input.length(); i++) {
                 // 문자를 정수로 변환하여 리스트에 추가
-                int digit = Character.getNumericValue(input.charAt(i));
+                digit = Character.getNumericValue(input.charAt(i));
                 inputNumbers.add(digit);
             }
             player.setNumbers(inputNumbers);
