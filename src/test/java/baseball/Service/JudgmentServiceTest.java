@@ -1,36 +1,45 @@
 package baseball.Service;
 
-import baseball.DTO.Computer;
-import baseball.DTO.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class JudgmentServiceTest {
-    User user;
-    Computer computer = new Computer();
-    JudgmentService judgmentService;
+    List<Integer> userNumbers = new ArrayList<>();
+    List<Integer> computerNumbers = new ArrayList<>();
     @BeforeEach
     void 입력(){
-        user = new User("123");
-        computer.getComputerNumbers().set(0,1);
-        computer.getComputerNumbers().set(1,2);
-        computer.getComputerNumbers().set(2,4);
-        judgmentService = new JudgmentService(user,computer);
-        System.out.println(computer.getComputerNumbers().toString());
+        userNumbers.add(8);
+        userNumbers.add(7);
+        userNumbers.add(6);
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
     }
     @Test
     void 스트라이크_판정(){
-        Integer strike = judgmentService.judgeStrike();
+        JudgmentService judgmentService = new JudgmentService();
+        Integer strike = judgmentService.countStrike(userNumbers,computerNumbers);
 
-        assertThat(strike).isEqualTo(2);
+        assertThat(strike).isEqualTo(0);
     }
     @Test
     void 볼_판정(){
-        Integer ball = judgmentService.judgeBall();
+        JudgmentService judgmentService = new JudgmentService();
+        Integer ball = judgmentService.judgeBall(userNumbers,computerNumbers);
 
         assertThat(ball).isEqualTo(0);
     }
+    @Test
+    void 낫싱_판정(){
+        JudgmentService judgmentService = new JudgmentService();
+        Integer strike = judgmentService.countStrike(userNumbers,computerNumbers);
+        Integer ball = judgmentService.judgeBall(userNumbers,computerNumbers);
 
+        assertThat(ball+strike).isEqualTo(0);
+    }
 }
