@@ -1,12 +1,15 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.Domain.ComputerNumberGenerator;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -26,6 +29,53 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 컴퓨터_숫자_생성_테스트() {
+        List<Integer> generatedNumber = ComputerNumberGenerator.generate();
+
+        // Check if the size is 3
+        assertThat(generatedNumber).hasSize(3);
+
+        // Check if each digit is between 1 and 9
+        for (int digit : generatedNumber) {
+            assertThat(digit).isBetween(1, 9);
+        }
+
+        // Check if each digit is unique
+        assertThat(generatedNumber).doesNotHaveDuplicates();
+    }
+
+    @Test
+        // error handling for sizecheck
+    void 사용자_숫자_입력_테스트() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("1234");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("12");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("1");
+        });
+    }
+
+    @Test
+        // error handling for numbercheck
+    void 사용자_숫자_입력_테스트2() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("111");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("112");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("311");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("121");
+        });
     }
 
     @Override
