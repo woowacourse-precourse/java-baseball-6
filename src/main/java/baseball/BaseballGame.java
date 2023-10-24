@@ -63,8 +63,10 @@ public class BaseballGame implements NumberGame {
 
     private boolean shouldRepeatGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = Console.readLine();
-        if (userInput.equals("2")) {
+        String userRepeatNumber = Console.readLine();
+        validateUserRepeatNumber(userRepeatNumber);
+
+        if (userRepeatNumber.equals("2")) {
             return false;
         }
 
@@ -84,6 +86,12 @@ public class BaseballGame implements NumberGame {
             if (number > baseballGameConfiguration.getMaximumNumberOfRange()) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private void validateUserRepeatNumber(String userRepeatNumber){
+        if(!userRepeatNumber.equals("1") && !userRepeatNumber.equals("2")){
+            throw new IllegalArgumentException();
         }
     }
 }
