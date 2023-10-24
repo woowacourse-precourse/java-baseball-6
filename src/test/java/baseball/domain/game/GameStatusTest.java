@@ -1,15 +1,13 @@
-package baseball.domain;
+package baseball.domain.game;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.domain.game.GameStatus;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class GameStatusTest {
     @DisplayName("게임 상태가 실행중인지 아닌지 테스트")

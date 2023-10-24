@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

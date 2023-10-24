@@ -1,13 +1,11 @@
-package baseball.domain;
+package baseball.domain.generator;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import baseball.domain.generator.RandomNumberGenerator;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class RandomNumberGeneratorTest {
     @DisplayName("입력한 count만큼 랜덤한 값이 생성된다.")

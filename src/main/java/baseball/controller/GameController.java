@@ -1,15 +1,13 @@
 package baseball.controller;
 
-import baseball.domain.Balls;
-import baseball.domain.Game;
-import baseball.domain.GameResult;
+import baseball.domain.ball.Balls;
+import baseball.domain.game.Game;
+import baseball.domain.game.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class GameController {
 

@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.domain.game;
 
+import baseball.domain.generator.RandomNumberGenerator;
+import baseball.domain.ball.Balls;
 import java.util.List;
 
 public class Game {

@@ -1,7 +1,7 @@
-package baseball.domain;
+package baseball.domain.ball;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.Number;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

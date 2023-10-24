@@ -1,6 +1,5 @@
-package baseball.domain;
+package baseball.domain.game;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 public enum GameHandlerCommand {

@@ -1,15 +1,14 @@
-package baseball.domain;
+package baseball.domain.game;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
+import baseball.domain.game.GameHandlerCommand;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class GameHandlerCommandTest {
     @DisplayName("게임 커맨드는 1또는 2여야한다.")
