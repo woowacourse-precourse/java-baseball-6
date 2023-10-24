@@ -61,6 +61,9 @@ https://velog.io/@im_chaedong/Intellij-%EC%97%90%EC%84%9C-java.lang-%EA%B0%99%EC
 라이브러리 확인방법
 https://mainia.tistory.com/2323
 리스트!
+https://playground.naragara.com/513/
+리스트 비교법
+
 https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=heartflow89&logNo=220964832916
 final뜻
 
@@ -68,3 +71,13 @@ final뜻
 미션은 java-baseball-6 저장소를 Fork & Clone해 시작한다.
 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
 과제 진행 및 제출 방법은 프리코스 과제 제출 문서를 참고한다.
+
+
+
+https://nongue.tistory.com/152
+스캐너 nosuchelementexception 문제
+
+
+
+https://velog.io/@ssuh0o0/%ED%98%BC%EC%9E%90%EC%84%9C-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0springExpecting-code-to-raise-a-throwable.-java.lang.AssertionError
+에러해결법
