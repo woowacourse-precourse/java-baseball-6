@@ -14,7 +14,7 @@ public class User {
     userNumbers.clear();
  
      
-      try {
+     try {
         String inputStr = Console.readLine();
         if(inputStr.length()>3 || inputStr.length()<1)
           throw new IllegalArgumentException("3개의 숫자가 입력되지 않았습니다.");
@@ -35,9 +35,11 @@ public class User {
         
       }
       catch (Exception e){
-//        System.out.println(e);
-        throw new IllegalArgumentException();
+        System.out.println(e);
+        //throw new IllegalArgumentException();
       }
+     
+     
 //      for(int i=0;i<3;i++){
 //        userNumbers.add(input.charAt(i)-'0');
 //        //userNumbers.add(1);
