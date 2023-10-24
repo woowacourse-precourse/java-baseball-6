@@ -8,7 +8,11 @@ import java.util.Map;
 
 public class GameService {
 
-    private final CodeRepository codeRepository = new CodeRepository();
+    private final CodeRepository codeRepository;
+
+    public GameService(final CodeRepository codeRepository) {
+        this.codeRepository = codeRepository;
+    }
 
     public Long createComputerCode() {
         List<Integer> randomCode = new ArrayList<>();

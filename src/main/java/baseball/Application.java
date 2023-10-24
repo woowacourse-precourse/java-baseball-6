@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        GameController gameController = new GameController();
+        AppConfig appConfig = new AppConfig();
+        GameController gameController = appConfig.gameController();
 
         System.out.print("숫자 야구 게임을 시작합니다.\n");
         Long computerCodeId = gameController.gameStart();

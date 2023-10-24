@@ -8,7 +8,11 @@ import java.util.Set;
 
 public class GameController {
 
-    private final GameService gameService = new GameService();
+    private final GameService gameService;
+
+    public GameController(final GameService gameService) {
+        this.gameService = gameService;
+    }
 
     public Long gameStart() {
         return gameService.createComputerCode();

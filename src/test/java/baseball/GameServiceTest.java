@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class GameServiceTest {
 
     CodeRepository codeRepository = new CodeRepository();
-    GameService gameService = new GameService();
+    GameService gameService = new GameService(codeRepository);
 
     @Test
     @DisplayName("생성된 3자리의 수가 서로 다른 수로 이루어졌는지 확인한다.")
