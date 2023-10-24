@@ -40,7 +40,7 @@ public class GameResult {
         return strike == THREE;
     }
 
-    public void reset() {
+    public void clear() {
         this.strike = ZERO;
         this.ball = ZERO;
     }

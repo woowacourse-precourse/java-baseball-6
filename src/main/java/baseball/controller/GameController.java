@@ -42,9 +42,9 @@ public class GameController {
         String inputNumbers = InputView.inputNumbers();
         Validator.isValidNumbers(inputNumbers);
         GameResult result = gameService.getResult(inputNumbers);
-        OutputView.outputResult(result);
+        OutputView.printGameResult(result);
         if (!isSuccess(result)) {
-            result.reset();
+            result.clear();
             gamePlay();
         }
     }

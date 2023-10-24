@@ -14,7 +14,7 @@ public class OutputView {
     public static void gameStart() {
         System.out.println(GAME_START);
     }
-    public static void outputResult(GameResult result) {
+    public static void printGameResult(GameResult result) {
         if (result.isNothing()) {
             System.out.println(NOTHING);
         }

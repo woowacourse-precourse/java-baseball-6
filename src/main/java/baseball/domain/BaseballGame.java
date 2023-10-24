@@ -66,8 +66,8 @@ public class BaseballGame {
         return correctNumbers.get(i) == inputNumbers[i];
     }
 
-    public void resetNumbers() {
+    public void reset() {
         correctNumbers.clear();
-        gameResult.reset();
+        gameResult.clear();
     }
 }
