@@ -3,9 +3,11 @@ package baseball;
 import baseball.balls.Balls;
 import baseball.balls.PlayerBalls;
 import baseball.balls.RandomBalls;
+import baseball.compare.Comparator;
+import baseball.output.Printer;
 
 public class Baseball {
-
+    Printer printer = new Printer();
     public void play() {
         Balls answerBalls, playerBalls;
 
