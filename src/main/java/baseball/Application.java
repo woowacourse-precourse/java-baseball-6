@@ -20,25 +20,12 @@ public class Application {
     private static final int LOWER_BOUND = 1;
 
     public static void main(String[] args) {
-        Player.size = ANSWER_SIZE;
-        Player.upperBound = UPPER_BOUND;
-        Player.lowerBound = LOWER_BOUND;
+        Preference preference = new Preference(ANSWER_SIZE, LOWER_BOUND, UPPER_BOUND);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            play();
+            Game.start(preference);
         } while (wantsReplay());
-    }
-
-    static void play() {
-        Player pitcher = new Player();
-        int[] result;
-
-        do {
-            Player hitter = new Player(readNumber());
-            result = pitcher.compareWith(hitter);
-            printResult(result);
-        } while (!foundAnswer(result));
     }
 
     static List<Integer> readNumber() {
@@ -93,14 +80,6 @@ public class Application {
         } else if (result[STRIKE.getIndex()] == 0 && result[BALL.getIndex()] == 0) {
             System.out.println("낫싱");
         }
-    }
-
-    static boolean foundAnswer(int[] result) {
-        if (result[STRIKE.getIndex()] == ANSWER_SIZE) {
-            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", ANSWER_SIZE);
-            return true;
-        }
-        return false;
     }
 
     static boolean wantsReplay() {

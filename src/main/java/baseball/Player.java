@@ -12,18 +12,15 @@ import java.util.List;
  * 숫자 야구 게임을 진행하기 위한 클래스. 객체 생성에 앞서 숫자의 자릿수 size, 각 자리의 범위 [lowerBound, upperBound]를 지정하여야 합니다.
  */
 public class Player {
-    static int size;
-    static int lowerBound;
-    static int upperBound;
     private final List<Integer> numbers;
 
     /**
      * 무작위 숫자를 가지는 Player 객체를 생성합니다. 숫자의 자릿수는 size입니다. 각 자리는 lowerBound 이상, upperBound 이하의 서로 다른 정수입니다.
      */
-    public Player() {
+    public Player(Preference preference) {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < size) {
-            int randomNumber = Randoms.pickNumberInRange(lowerBound, upperBound);
+        while (numbers.size() < preference.answerSize()) {
+            int randomNumber = Randoms.pickNumberInRange(preference.lowerBound(), preference.upperBound());
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
