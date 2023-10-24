@@ -8,16 +8,16 @@ import java.util.Objects;
 public class BaseballController {
     private static final int NUM_LENGTH = 3;
     private final RandomNumber computer;
-    private int total = 0;
     private int strike = 0;
     private int ball = 0;
 
+    // 기본 생성자를 통해 computer 초기화하기
     public BaseballController() {
         computer = new RandomNumber();
     }
 
+    // 다음 질의를 위해 초기화하기
     public void resetCount(){
-        total = 0;
         strike = 0;
         ball = 0;
     }
@@ -26,35 +26,12 @@ public class BaseballController {
         while (strike != 3){
             resetCount();
             String player = getPlayerInput();
-            calculateResult(player);
+            calculateInput(player);
             printResult(strike, ball);
         }
     }
 
-    public int countTotal(List<Integer> computer, List<Integer> player) {
-        for (Integer number : player) {
-            if (computer.contains(number)) {
-                total += 1;
-            }
-        }
-        return total;
-    }
-    public int countStrike(List<Integer> computer, List<Integer> player) {
-        for (int i = 0; i < player.size(); i++) {
-            if (Objects.equals(computer.get(i), player.get(i))) {
-                strike += 1;
-            }
-        }
-        return strike;
-    }
-
-    // 스트라이크와 볼 최종 결정하기
-    public void judge(List<Integer> computer, List<Integer> player) {
-        total = countTotal(computer, player);
-        strike = countStrike(computer, player);
-        ball = total - strike;
-    }
-
+    // 결과 출력하기
     public void printResult(int strike, int ball){
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
@@ -67,22 +44,27 @@ public class BaseballController {
         }
     }
 
-    // 플레이어 입력값 받기
+    // 게임 플레이어의 입력값 받기
     public String getPlayerInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        // 입력 값이 3이 아닌 경우 예외 처리
         if (input.length() != NUM_LENGTH) {
             throw new IllegalArgumentException("입력 값 오류");
         }
         return input;
     }
 
-    public void calculateResult(String input){
-        List<Integer> playerNumber = new ArrayList<>();
-        for (String number : input.split("")) {
-            playerNumber.add(Integer.parseInt(number));
+    // 입력값
+    public void calculateInput(String input){
+        String[] player = input.split("");
+        for(int i=0; i<NUM_LENGTH; i++){
+            if (computer.getNumber(i) == Integer.parseInt(player[i])){
+                strike++;
+            } else if (computer.contains(Integer.parseInt(player[i]))){
+                ball++;
+            }
         }
-        judge(computer.getAllNumbers(), playerNumber);
     }
 
 }
