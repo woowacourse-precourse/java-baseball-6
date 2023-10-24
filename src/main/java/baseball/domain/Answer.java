@@ -18,41 +18,35 @@ public class Answer {
         ballCount = new BallCount();
     }
 
-    public void setAnswerNumber() {
+    public void setAnswerNumber() {  // 정답 세팅 메서드
 
         for (int i = 0; i < Setting.NUM_LENGTH; i++) {
             int randomNumber = pickNumberInRange();
 
-            // Check Duplicate
+            // 서로 다른 3자리 숫자를 정답으로 구성하기 위한 반복문 사용
             while(answerNumber.contains(randomNumber))
                 randomNumber = pickNumberInRange();
 
             answerNumber.add(randomNumber);
         }
-
-        System.out.println("answerNumber = " + answerNumber);
     }
 
-    public int pickNumberInRange() {
-        return Randoms.pickNumberInRange(Setting.startRange, Setting.endRange);
-    }
-
-    public Boolean isCorrect(String input) {
+    public Boolean isCorrect(String input) {  // 정답 여부 반환 메서드
 
         int strike = scoreAnswer(input);
 
-        if(strike == Setting.NUM_LENGTH)  // 정답을 맞췄을 경우!
-            return true;
+        if(strike == Setting.NUM_LENGTH)
+            return true;  // 정답인 경우
 
-        return false;
+        return false;  // 오답인 경우
     }
 
-    public int scoreAnswer(String input) {
+    public int scoreAnswer(String input) {  // 볼카운트 세팅 메서드
 
         int ball = 0;
         int strike = 0;
 
-        // Scoring Logic
+        // 볼카운트 채점 로직
         for (int i = 0; i < Setting.NUM_LENGTH; i++) {
             int num = Integer.parseInt(input.substring(i, i + 1));
 
@@ -63,6 +57,10 @@ public class Answer {
         }
 
         ballCount.setBallCount(ball, strike);
-        return strike;  // Return a strike to determine the correct answer
+        return strike;  // 정답 여부를 알기 위한 스트라이크 반환
+    }
+
+    public int pickNumberInRange() {  // 난수 반환 메서드
+        return Randoms.pickNumberInRange(Setting.startRange, Setting.endRange);
     }
 }

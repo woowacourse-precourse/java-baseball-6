@@ -12,14 +12,14 @@ public class BallCount {
         this.strike = 0;
     }
 
-    public void setBallCount(int ball, int strike) {
+    public void setBallCount(int ball, int strike) {  // 볼카운트 세팅 메서드
         this.ball = ball;
         this.strike = strike;
 
         printBallCount(ball, strike);
     }
 
-    public void printBallCount(int ball, int strike) {
+    public void printBallCount(int ball, int strike) {  // 볼카운트 출력 메서드
         if (strike == Setting.NUM_LENGTH)
             System.out.println(correctAnswer());
         else if (ball == 0 && strike == 0)
