@@ -3,7 +3,6 @@ package baseball;
 import static baseball.utils.Constants.COUNTS;
 import static baseball.utils.Constants.MAXIMUM_NUMBER;
 import static baseball.utils.Constants.MINIMUM_NUMBER;
-import static baseball.utils.Constants.VERIFICATION_FAILED;
 import static baseball.utils.Constants.VERIFICATION_PASSED;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -51,18 +50,28 @@ public class Computer {
     }
 
     private boolean validateNumbers(List<Integer> numbers) {
-        for (int i = 0; i < COUNTS; i++) {
-            if (numbers.get(i) < MINIMUM_NUMBER || numbers.get(i) > MAXIMUM_NUMBER) {
-                return VERIFICATION_FAILED;
-            }
+        if (!isValidSize(numbers)) {
+            return false;
         }
-        if (numbers.size() != COUNTS) {
-            return VERIFICATION_FAILED;
+        if (!isWithinRange(numbers)) {
+            return false;
         }
+        if (!hasUniqueValues(numbers)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidSize(List<Integer> numbers) {
+        return numbers.size() == COUNTS;
+    }
+
+    private boolean isWithinRange(List<Integer> numbers) {
+        return numbers.stream().allMatch(number -> number >= MINIMUM_NUMBER && number <= MAXIMUM_NUMBER);
+    }
+
+    private boolean hasUniqueValues(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
-        if (uniqueNumbers.size() != COUNTS) {
-            return VERIFICATION_FAILED;
-        }
-        return VERIFICATION_PASSED;
+        return uniqueNumbers.size() == COUNTS;
     }
 }
