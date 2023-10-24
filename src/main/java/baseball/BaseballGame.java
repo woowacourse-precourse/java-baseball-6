@@ -47,7 +47,7 @@ public class BaseballGame {
     public boolean query() {
         ArrayList<Integer> inputValue = Controller.queryNumber();
 
-        BaseballResultState result = match(answer, inputValue);
+        BaseballResultState result = BaseballResultState.match(answer, inputValue);
         System.out.println(result);
         return result.isGameOver();
     }
@@ -56,23 +56,5 @@ public class BaseballGame {
         return Controller.queryRetry();
     }
 
-    static public BaseballResultState match(List<Integer> a, List<Integer> b) {
-        int ball = 0, strike = 0;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (!a.get(i).equals(b.get(j))) {
-                    continue;
-                }
-
-                if (i == j) {
-                    strike++;
-                } else {
-                    ball++;
-                }
-            }
-        }
-
-        return new BaseballResultState(ball, strike);
-    }
 }
