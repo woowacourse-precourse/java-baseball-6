@@ -18,9 +18,8 @@ public class RandomNumberGenerator {
     private List<Integer> generateUniqueThreeDigitNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
 
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
+        while (randomNumbers.size() < THREE_DIGIT_NUMBER_RANGE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
