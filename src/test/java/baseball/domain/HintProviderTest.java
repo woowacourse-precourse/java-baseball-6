@@ -2,7 +2,7 @@ package baseball.domain;
 
 import baseball.domain.hints.HintProvider;
 import baseball.domain.hints.HintType;
-import baseball.domain.numbers.AnswerBaseBallNumber;
+import baseball.domain.numbers.AnswerNumber;
 import baseball.domain.numbers.BaseBallNumber;
 import baseball.domain.numbers.NumberGenerator;
 import org.assertj.core.api.Assertions;
@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 class HintProviderTest {
-    private final AnswerBaseBallNumber answerBaseBallNumber = AnswerBaseBallNumber.createAnswerNumbers(new TestGenerator());
-    private final HintProvider hintProvider = new HintProvider(answerBaseBallNumber);
+    private final AnswerNumber answerNumber = AnswerNumber.createAnswerNumbers(new TestGenerator());
+    private final HintProvider hintProvider = new HintProvider(answerNumber);
 
     @Test
     @DisplayName("플레이어의 숫자가 1,2,3 일 때 STRIKE가 3개가 나오면 성공한다.")

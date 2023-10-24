@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.domain.CommandType;
 import baseball.domain.hints.HintProvider;
 import baseball.domain.hints.HintType;
-import baseball.domain.numbers.AnswerBaseBallNumber;
+import baseball.domain.numbers.AnswerNumber;
 import baseball.domain.numbers.AnswerNumberGenerator;
 import baseball.domain.numbers.BaseBallNumber;
 import baseball.view.InputView;
@@ -16,7 +16,7 @@ public final class Controller {
     private final InputView inputView;
     private final OutputView outputView;
     private HintProvider hintProvider;
-    private AnswerBaseBallNumber answerBaseBallNumber;
+    private AnswerNumber answerNumber;
 
     public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -30,15 +30,15 @@ public final class Controller {
     }
 
     private void initGame() {
-        answerBaseBallNumber = AnswerBaseBallNumber.createAnswerNumbers(new AnswerNumberGenerator());
-        hintProvider = new HintProvider(answerBaseBallNumber);
+        answerNumber = AnswerNumber.createAnswerNumbers(new AnswerNumberGenerator());
+        hintProvider = new HintProvider(answerNumber);
 
     }
 
     private void play() {
         BaseBallNumber playerNumber = null;
 
-        while (playerNumber == null || !answerBaseBallNumber.isSameWithAnswer(playerNumber)) {
+        while (playerNumber == null || !answerNumber.isSameWithAnswer(playerNumber)) {
             playerNumber = getPlayerNumber();
             getHint(playerNumber);
         }

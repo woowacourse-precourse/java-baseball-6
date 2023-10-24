@@ -1,6 +1,6 @@
 package baseball.domain.hints;
 
-import baseball.domain.numbers.AnswerBaseBallNumber;
+import baseball.domain.numbers.AnswerNumber;
 import baseball.domain.numbers.BaseBallNumber;
 
 import java.util.HashMap;
@@ -10,10 +10,10 @@ import java.util.function.BiFunction;
 public final class HintProvider {
     public static final int ONLY_ONE = 1;
 
-    private final AnswerBaseBallNumber answerBaseBallNumber;
+    private final AnswerNumber answerNumber;
 
-    public HintProvider(AnswerBaseBallNumber answerBaseBallNumber) {
-        this.answerBaseBallNumber = answerBaseBallNumber;
+    public HintProvider(AnswerNumber answerNumber) {
+        this.answerNumber = answerNumber;
     }
 
     public Map<HintType, Integer> compareNumbers(BaseBallNumber playerNumber) {
@@ -28,8 +28,8 @@ public final class HintProvider {
     }
 
     private HintType compareToAnswer(BaseBallNumber number, int index) {
-        boolean isMatch = answerBaseBallNumber.isSameNumberOfIndex(number, index);
-        boolean hasContain = answerBaseBallNumber.hasContainNumberOfIndex(number, index);
+        boolean isMatch = answerNumber.isSameNumberOfIndex(number, index);
+        boolean hasContain = answerNumber.hasContainNumberOfIndex(number, index);
 
         if (isMatch) {
             return HintType.STRIKE;

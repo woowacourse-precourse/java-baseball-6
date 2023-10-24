@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.domain.numbers.AnswerBaseBallNumber;
+import baseball.domain.numbers.AnswerNumber;
 import baseball.domain.numbers.AnswerNumberGenerator;
 import baseball.domain.numbers.BaseBallNumber;
 import baseball.domain.numbers.NumberGenerator;
@@ -11,15 +11,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class AnswerBaseBallNumberTest {
-    private final AnswerBaseBallNumber answerBaseBallNumber = AnswerBaseBallNumber.createAnswerNumbers(new AnswerNumberGenerator());
+class AnswerNumberTest {
+    private final AnswerNumber answerNumber = AnswerNumber.createAnswerNumbers(new AnswerNumberGenerator());
 
     @Test
     @DisplayName("정답 번호가 1,2,3이고 플레이어 번호도 1,2,3이면 true를 반환하면 성공한다.")
     void 플레이어_번호_일치_O() {
         //given
-        AnswerBaseBallNumber answerBaseBallNumber = AnswerBaseBallNumber.createAnswerNumbers(new TestGenerator());
-        boolean result = answerBaseBallNumber.isSameWithAnswer(new BaseBallNumber(List.of(1, 2, 3)));
+        AnswerNumber answerNumber = AnswerNumber.createAnswerNumbers(new TestGenerator());
+        boolean result = answerNumber.isSameWithAnswer(new BaseBallNumber(List.of(1, 2, 3)));
         //when
         assertThat(result).isTrue();
     }
@@ -28,8 +28,8 @@ class AnswerBaseBallNumberTest {
     @DisplayName("정답 번호가 1,2,3이고 플레이어 번호가 4,2,1이면 false를 반환하면 성공한다.")
     void 플레이어_번호_일치_X() {
         //given
-        AnswerBaseBallNumber answerBaseBallNumber = AnswerBaseBallNumber.createAnswerNumbers(new TestGenerator());
-        boolean result = answerBaseBallNumber.isSameWithAnswer(new BaseBallNumber(List.of(4, 2, 1)));
+        AnswerNumber answerNumber = AnswerNumber.createAnswerNumbers(new TestGenerator());
+        boolean result = answerNumber.isSameWithAnswer(new BaseBallNumber(List.of(4, 2, 1)));
         //when
         assertThat(result).isFalse();
     }
