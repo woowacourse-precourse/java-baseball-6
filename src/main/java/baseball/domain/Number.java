@@ -16,14 +16,18 @@ public class Number {
     }
 
     public boolean isContainNumber(Number other, int index) {
-        return numbers.contains(other.numbers.get(index));
+        return numbers.contains(other.getNumberAt(index));
     }
 
     public boolean isSamePosition(Number other, int index) {
-        return numbers.get(index).equals(other.numbers.get(index));
+        return numbers.get(index).equals(other.getNumberAt(index));
     }
 
     public int size() {
         return numbers.size();
+    }
+
+    private Integer getNumberAt(int index) {
+        return numbers.get(index);
     }
 }
