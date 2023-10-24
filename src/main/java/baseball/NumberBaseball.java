@@ -63,19 +63,15 @@ public class NumberBaseball implements Game {
 
     @Override
     public void validateGameInput(String input) throws IllegalArgumentException {
-        boolean isValid = true;
-
-        if (input.length() != ANSWER_LENGTH) {
-            isValid = false;
-        } else {
-            HashSet<String> set = new HashSet<>(List.of(input.split("")));
-            if (set.size() != ANSWER_LENGTH) {
-                isValid = false;
-            }
+        if (input == null || input.length() != ANSWER_LENGTH) {
+            throw new IllegalArgumentException("Invalid game input length");
         }
 
-        if (!isValid) {
-            throw new IllegalArgumentException("Invalid game input");
+        HashSet<Character> set = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            if (c < '1' || c > '9' || !set.add(c)) {
+                throw new IllegalArgumentException("Invalid game input");
+            }
         }
     }
 
