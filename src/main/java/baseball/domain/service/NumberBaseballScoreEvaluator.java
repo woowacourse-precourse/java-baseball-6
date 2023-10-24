@@ -44,17 +44,16 @@ public class NumberBaseballScoreEvaluator {
             return "낫싱";
         }
 
-
-        if (strikes > 0) {
-            result.append(strikes).append("스트라이크");
+        if (balls > 0) {
+            result.append(balls).append("볼");
         }
 
         if (strikes > 0 && balls > 0) {
             result.append(" ");
         }
 
-        if (balls > 0) {
-            result.append(balls).append("볼");
+        if (strikes > 0) {
+            result.append(strikes).append("스트라이크");
         }
 
         return result.toString();
