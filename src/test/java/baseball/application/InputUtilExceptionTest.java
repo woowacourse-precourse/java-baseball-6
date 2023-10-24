@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class InputUtilExceptionTest extends NsTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"  ", "", "\n"})
+    @ValueSource(strings = {"      ", " ", "\n","\r\n", "\r"})
     void 공백_입력_값_예외_테스트(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input))
