@@ -1,5 +1,9 @@
 package baseball.service.domain;
 
+import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_INVALID_LENGTH;
+import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_INVALID_RANGE;
+import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_NON_NUMERIC;
+import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_NON_UNIQUE;
 import static baseball.service.domain.BaseballConstants.BASEBALL_END_NUMBER;
 import static baseball.service.domain.BaseballConstants.BASEBALL_START_NUMBER;
 import static baseball.service.domain.BaseballConstants.DEFAULT_CAPACITY;
@@ -63,20 +67,20 @@ public class BaseballCollection {
     private void validateLength(List<Integer> baseballs) {
         if (baseballs.size() != DEFAULT_CAPACITY) {
             throw new IllegalArgumentException(
-                    String.format("길이 %d으로 입력해야 합니다. 현재 길이: %d", DEFAULT_CAPACITY, baseballs.size()));
+                    String.format(EXCEPTION_MESSAGE_INVALID_LENGTH, DEFAULT_CAPACITY, baseballs.size()));
         }
     }
 
     private void validateUniqueNumbers(List<Integer> baseballs, String number) {
         if (baseballs.size() != number.length()) {
-            throw new IllegalArgumentException(String.format("%s에 중복된 숫자가 존재합니다.", baseballs));
+            throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_NON_UNIQUE, baseballs));
         }
     }
 
     private void validateRange(List<Integer> baseballs) {
         for (Integer baseball : baseballs) {
             if (!isInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, baseball)) {
-                throw new IllegalArgumentException(String.format("%d은 범위를 벗어난 숫자입니다.", baseball));
+                throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_INVALID_RANGE, baseball));
             }
         }
     }
@@ -85,7 +89,7 @@ public class BaseballCollection {
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(String.format("%s는 숫자가 아닌 문자입니다.", target), e);
+            throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_NON_NUMERIC, target), e);
         }
     }
 
