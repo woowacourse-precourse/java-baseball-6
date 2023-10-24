@@ -16,9 +16,7 @@ public class GameService {
         List<Integer> computerNumberList = computer.getNumbers().getNumberList();
         List<Integer> userNumberList = user.getNumbers().getNumberList();
 
-        final Set<Integer> entryNumberSet = new HashSet<>(userNumberList);
-        entryNumberSet.addAll(computerNumberList);
-        int ballCount = userNumberList.size() + computerNumberList.size() - entryNumberSet.size();
+        int ballCount = getBallCount(computerNumberList, userNumberList);
         int strikeCount = 0;
 
         for (int i = 0; i < NUMBER_SIZE; i++) {
@@ -33,5 +31,16 @@ public class GameService {
         }
 
         return new GameResultResponse(ballCount, strikeCount);
+    }
+
+    private int getBallCount(final List<Integer> computerNumberList, final List<Integer> userNumberList) {
+        final Set<Integer> entryNumberSet = getEntryNumberSet(userNumberList, computerNumberList);
+        return userNumberList.size() + computerNumberList.size() - entryNumberSet.size();
+    }
+
+    private Set<Integer> getEntryNumberSet(final List<Integer> computerNumberList, final List<Integer> userNumberList) {
+        final Set<Integer> set = new HashSet<>(userNumberList);
+        set.addAll(computerNumberList);
+        return set;
     }
 }
