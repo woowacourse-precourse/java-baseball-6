@@ -11,7 +11,8 @@ public class BaseballGameView {
     private static final String FORMAT_BALL = "%d볼";
     private static final String FORMAT_STRIKE = "%d스트라이크";
 
-    public BaseballGameView() {}
+    public BaseballGameView() {
+    }
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -21,32 +22,32 @@ public class BaseballGameView {
         System.out.print(INPUT_GUIDE_MESSAGE);
     }
 
-    public void printEndMessage(){
+    public void printEndMessage() {
         System.out.println(END_MESSAGE);
     }
 
-    public void printRestartMessage(){
+    public void printRestartMessage() {
         System.out.println(RESTART_MESSAGE);
     }
 
-    public String printBallCount(BallCount ballCount){
+    public String printBallCount(BallCount ballCount) {
         int strike = ballCount.getStrike();
         int ball = ballCount.getBall();
         String resultMessage;
 
-        if(strike > 0 && ball > 0){
+        if (strike > 0 && ball > 0) {
             resultMessage = String.format(FORMAT_BALL_STRIKE, ball, strike);
             System.out.println(resultMessage);
             return resultMessage;
         }
 
-        if(strike == 0 && ball > 0){
+        if (strike == 0 && ball > 0) {
             resultMessage = String.format(FORMAT_BALL, ball);
             System.out.println(resultMessage);
             return resultMessage;
         }
 
-        if(strike > 0 && ball == 0){
+        if (strike > 0 && ball == 0) {
             resultMessage = String.format(FORMAT_STRIKE, strike);
             System.out.println(resultMessage);
             return resultMessage;

@@ -12,7 +12,7 @@ public class BaseballGameLogic {
     private static final int DIGIT_MINIMUM = 1;
     private static final int DIGIT_MAXIMUM = 9;
 
-    public List<Integer> getRandomThreeDigitNonZero(){
+    public List<Integer> getRandomThreeDigitNonZero() {
         List<Integer> threeDigitNonZero = new ArrayList<>();
 
         while (threeDigitNonZero.size() < DIGIT_LENGTH) {
@@ -25,19 +25,19 @@ public class BaseballGameLogic {
         return threeDigitNonZero;
     }
 
-    public BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> playerInputNumber){
+    public BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> playerInputNumber) {
         int strike = 0;
         int ball = 0;
         BallCount ballCount = new BallCount();
 
-        for(int i = 0; i < DIGIT_LENGTH; i++){
-            if(Objects.equals(randomThreeDigits.get(i), playerInputNumber.get(i))){
-                strike ++;
+        for (int i = 0; i < DIGIT_LENGTH; i++) {
+            if (Objects.equals(randomThreeDigits.get(i), playerInputNumber.get(i))) {
+                strike++;
                 continue;
             }
 
-            if(randomThreeDigits.contains(playerInputNumber.get(i))){
-                ball ++;
+            if (randomThreeDigits.contains(playerInputNumber.get(i))) {
+                ball++;
             }
         }
 
