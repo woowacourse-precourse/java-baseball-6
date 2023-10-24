@@ -25,7 +25,12 @@ public class BaseballGame implements NumberGame {
             Score score = ScoreFactory.calculateScore(randomNumber, userGuessNumber);
             printHint(score);
 
+            if(randomNumber.equals(userGuessNumber)){
+                break;
+            }
         }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private void printHint(Score score) {
