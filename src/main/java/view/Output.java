@@ -8,6 +8,10 @@ public class Output {
         System.out.println(message);
     }
 
+    public static void printInputMessage(String message) {
+        System.out.print(message);
+    }
+
     public static void printErrorMessage(String message) {
         System.out.println(MessageConstants.ERROR_MESSAGE + message);
     }
