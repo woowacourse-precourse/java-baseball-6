@@ -28,4 +28,22 @@ public class GameService {
         }
         Computer.setAnswer(computer);
     }
+
+    public static int countBall() {
+        int ball = 0;
+        userNumbers = User.getUser();
+        computerNumbers = Computer.getAnswer();
+        for (Integer num : userNumbers) {
+            int userIndex = checkIndex(num, userNumbers);
+            int computerIndex = checkIndex(num, computerNumbers);
+            if (computerIndex >= 0 && userIndex != computerIndex) {
+                ball += 1;
+            }
+        }
+        return ball;
+    }
+
+    public static int checkIndex(int num, List<Integer> numbers) {
+        return numbers.indexOf(num);
+    }
 }
