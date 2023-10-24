@@ -28,7 +28,7 @@ public class Player {
         if (!isValidLength(numbers)) {
             throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
         }
-        if (!isDuplicate(numbers)) {
+        if (!isUnique(numbers)) {
             throw new IllegalArgumentException(INVALID_DUPLICATE_MESSAGE);
         }
     }
@@ -41,7 +41,7 @@ public class Player {
         return numbers.length() == MAX_NUMBER_LENGTH;
     }
 
-    private boolean isDuplicate(String numbers) {
+    private boolean isUnique(String numbers) {
         Set<Character> uniqueDigits = new HashSet<Character>();
         for (char element : numbers.toCharArray()) {
             uniqueDigits.add(element);
