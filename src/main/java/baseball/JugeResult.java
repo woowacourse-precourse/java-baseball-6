@@ -27,4 +27,12 @@ public class JugeResult {
     public boolean isSuccess() {
         return strike == SUCCESS_STRIKE;
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
