@@ -17,6 +17,10 @@ public enum BallsRule {
 		return position < MIN_POSITION.value || position > MAX_POSITION.value;
 	}
 
+	public static boolean isNotCorrectSize(final int size) {
+		return size != BALLS_SIZE.value;
+	}
+
 	public int getValue() {
 		return value;
 	}

@@ -3,6 +3,7 @@ package baseball.domain.balls;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -47,6 +48,30 @@ class BallsRuleTest {
 	void givenNumber_whenIsPositionOutOfRange_thenReturnTrue(int position) {
 		// when
 		boolean result = BallsRule.isPositionOutOfRange(position);
+
+		// then
+		assertThat(result).isTrue();
+	}
+
+	@Test
+	@DisplayName("게임 숫자 규칙: 게임 숫자 개수가 3개가 아닌가? No")
+	void givenSize_whenIsNotCorrectSize_thenReturnFalse() {
+		// given
+		int size = 3;
+
+		// when
+		boolean result = BallsRule.isNotCorrectSize(size);
+
+		// then
+		assertThat(result).isFalse();
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {2, 4})
+	@DisplayName("게임 숫자 규칙: 게임 숫자 개수가 3개가 아닌가? Yes")
+	void givenSize_whenIsNotCorrectSize_thenReturnTrue(int size) {
+		// when
+		boolean result = BallsRule.isNotCorrectSize(size);
 
 		// then
 		assertThat(result).isTrue();

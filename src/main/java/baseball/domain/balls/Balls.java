@@ -35,18 +35,19 @@ public class Balls {
 	}
 
 	private void validateNumbersSize(final List<Integer> numbers) {
-		if (numbers.size() != BallsRule.BALLS_SIZE.getValue()) {
+		if (BallsRule.isNotCorrectSize(numbers.size())) {
 			throw new IllegalArgumentException(NUMBERS_SIZE_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateDuplication(final List<Integer> numbers) {
-		if (getCountWithoutDuplication(numbers) != BallsRule.BALLS_SIZE.getValue()) {
+		int sizeWithoutDuplication = getSizeWithoutDuplication(numbers);
+		if (BallsRule.isNotCorrectSize(sizeWithoutDuplication)) {
 			throw new IllegalArgumentException(NUMBERS_DUPLICATION_ERROR_MESSAGE);
 		}
 	}
 
-	private int getCountWithoutDuplication(final List<Integer> numbers) {
+	private int getSizeWithoutDuplication(final List<Integer> numbers) {
 		return new HashSet<>(numbers).size();
 	}
 
