@@ -29,7 +29,7 @@ public class UserInputView {
             validateHasDuplicateNumber(stringDigitsFromUserInput);
 
             return stringDigitsFromUserInput;
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | NullPointerException e) {
             throw new IllegalArgumentException(VALID_IS_NULL);
         }
     }
@@ -47,7 +47,7 @@ public class UserInputView {
 
     private void isStringEmpty(String userInput) {
         if (userInput == null || userInput.isBlank()) {
-            throw new IllegalArgumentException(VALID_IS_NULL);
+            throw new NullPointerException();
         }
     }
 
