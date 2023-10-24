@@ -22,8 +22,8 @@ public class GameController {
         while (true) {
             ArrayList<Integer> input = ioController.inningNumberInput();
             Inning inning = new Inning(answer, input);
-            ioController.showResult(inning.getResult());
-            if (inning.getResult().equals("3스트라이크")) {
+            ioController.showResult(inning.calculateResult());
+            if (inning.calculateResult().equals("3스트라이크")) {
                 restart();
                 break;
             }
