@@ -12,4 +12,12 @@ public class Output {
     public void printInputNumber() {
         System.out.print(OutputConstants.INPUT);
     }
+
+    public void printJudgement(String judgement) {
+        System.out.println(judgement);
+    }
+
+    public void printCongratulatoryMessage() {
+        System.out.println(OutputConstants.CONGRATULATORY_MESSAGE);
+    }
 }

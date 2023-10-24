@@ -28,7 +28,9 @@ public class GameController extends Controller {
         while(true) {
             BaseballNumber offenseNumber = makeOffenseNumber();
             String judgement = decision.decide(offenseNumber, defenseNumber);
+            outputView.printJudgement(judgement);
             if (decision.isEnd(judgement)) {
+                outputView.printCongratulatoryMessage();
                 break;
             }
         }
