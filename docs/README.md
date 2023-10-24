@@ -33,6 +33,7 @@
 
 ## 구조
 ```mermaid
+classDiagram
     NumberBaseballGameController --> NumberBaseballGameInputView : uses
     NumberBaseballGameController --> NumberBaseballGameOutputView : uses
     NumberBaseballGameController --> NumberBaseBallGame : uses
