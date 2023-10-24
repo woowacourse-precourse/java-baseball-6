@@ -4,10 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
+    private static final String EMPTY_STRING = "";
+
     private String randomNumbers;
 
     public String generateRandomNumbers() {
-        randomNumbers = "";
+        randomNumbers = EMPTY_STRING;
 
         while (randomNumbers.length() != Constants.NUMBER_OF_NUMBERS) {
             String randomNumber = String.valueOf(
