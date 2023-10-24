@@ -24,4 +24,12 @@ public class View {
         System.out.println();
     }
 
+    public void printStart(){
+        System.out.println(OPENING_LINE);
+    }
+
+    public void printEnd(){
+        System.out.println(CLOSING_LINE);
+    }
+
 }
