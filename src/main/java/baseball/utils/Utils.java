@@ -34,3 +34,11 @@ public final class Utils {
         }
     }
 
+    public static void validateStringNaturalNumbers(String input) {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c) || c == '0') {
+                throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+            }
+        }
+    }
+
