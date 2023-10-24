@@ -2,23 +2,20 @@ package baseball.game;
 
 import baseball.variable.ComputerNumber;
 import baseball.variable.PlayerNumber;
-import baseball.print.PrintMessage;
+import baseball.print.PrintResult;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class GamePlaying {
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
-    private static final String NOTHING = "낫싱";
 
     List<Integer> computerNumber = new ArrayList<>();
     List<Integer> playerNumber = new ArrayList<>();
 
     ComputerNumber cpu = new ComputerNumber();
     PlayerNumber player = new PlayerNumber();
-    PrintMessage printer = new PrintMessage();
+    PrintResult printer = new PrintResult();
 
     public boolean playGame() {
         computerNumber.clear();
@@ -36,7 +33,7 @@ public class GamePlaying {
     private int guessNumber() {
         int strike = findStrike();
         int ball = findBall();
-        printResult(strike, ball);
+        printer.printResult(strike, ball);
 
         return strike;
     }
@@ -71,38 +68,6 @@ public class GamePlaying {
             }
         }
         return ball;
-    }
-
-    private void printResult(int strike, int ball) {
-        printBall(ball);
-        printStrike(strike, ball);
-        printNothing(strike, ball);
-        System.out.println();
-    }
-
-    private void printStrike(int strike, int ball) {
-        if (ball > 0 && strike > 0) {
-            printBlank();
-        }
-        if (strike > 0) {
-            System.out.print(strike + STRIKE);
-        }
-    }
-
-    private void printBall (int ball) {
-        if (ball > 0) {
-            System.out.print(ball + BALL);
-        }
-    }
-
-    private void printNothing (int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            System.out.println(NOTHING);
-        }
-    }
-
-    private void printBlank() {
-        System.out.print(" ");
     }
 
     private boolean isAnswer(int strike) {
