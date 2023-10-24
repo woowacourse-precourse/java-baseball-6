@@ -8,24 +8,9 @@ public class GameNumber {
     private static final int BOARD_LIMIT = 3;
     private final List<Integer> board = new ArrayList<Integer>();
 
-
-    public GameNumber(String number) {
-        validateNumber(number);
-        for (char c : number.toCharArray()) {
-            int numericValue = Character.getNumericValue(c);
-            validateDuplicateNumber(numericValue);
-            board.add(numericValue);
-        }
-    }
-
-    public GameNumber() {
-        generateRandomizeNumber();
-    }
-
-    private void validateDuplicateNumber(int number) {
-        if (board.contains(number)) {
+    private void validateDuplicateNumber(int number){
+        if(board.contains(number))
             throw new IllegalArgumentException();
-        }
     }
 
     private void validateNumber(String number) {
@@ -49,6 +34,19 @@ public class GameNumber {
         }
     }
 
+    public GameNumber(String number) {
+        validateNumber(number);
+        for (char c : number.toCharArray()) {
+            int numericValue = Character.getNumericValue(c);
+            validateDuplicateNumber(numericValue);
+            board.add(numericValue);
+        }
+    }
+
+    public GameNumber() {
+        generateRandomizeNumber();
+    }
+
     public List<Integer> getBoard() {
         return this.board;
     }
@@ -56,9 +54,9 @@ public class GameNumber {
     private void printGameScore(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if (strike == 0) {
+        } else if (strike == 0 && ball != 0) {
             System.out.println(ball + "볼");
-        } else if (ball == 0) {
+        } else if (strike != 0 && ball == 0) {
             System.out.println(strike + "스트라이크");
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
@@ -71,8 +69,7 @@ public class GameNumber {
 
         for (int i = 0; i < BOARD_LIMIT; i++) {
             if (this.board.equals(gameNumber.getBoard())) {
-                strike = 3;
-                break;
+                return 3;
             } else if (this.board.get(i).equals(gameNumber.getBoard().get(i))) {
                 strike++;
             } else if (this.board.contains(gameNumber.getBoard().get(i))) {
