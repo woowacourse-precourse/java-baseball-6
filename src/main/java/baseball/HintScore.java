@@ -29,4 +29,8 @@ public class HintScore {
         }
         return stringJoiner.toString();
     }
+
+    private boolean isNothing() {
+        return ball == 0 && strike == 0;
+    }
 }
