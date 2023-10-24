@@ -1,9 +1,8 @@
 package baseball;
 
 
-import static baseball.constant.MsgConstant.WELCOME_MSG;
-import static baseball.constant.NumConstant.END;
-import static baseball.constant.NumConstant.RESTART;
+import static baseball.constant.MsgConstant.*;
+import static baseball.constant.NumConstant.*;
 import static baseball.util.CountResult.ball;
 import static baseball.util.CountResult.strike;
 
