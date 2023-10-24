@@ -1,11 +1,10 @@
 package baseball.view;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    Scanner sc = new Scanner(System.in);
 
     public String getUserInput() {
-        return sc.next();
+        return Console.readLine();
     }
 }
