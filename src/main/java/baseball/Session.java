@@ -29,12 +29,17 @@ public class Session {
         ValidationRestart.isValid(restart);
 
         int isRestart = Integer.parseInt(restart);
-        if (isRestart == 1) {
-            restartGame();
-        }
-        if (isRestart == 2) {
-            System.out.println("프로그램을 종료합니다.");
-            isSessionRunning = false;
+
+        switch (isRestart) {
+            case 1:
+                restartGame();
+                break;
+            case 2:
+                System.out.println("프로그램을 종료합니다.");
+                isSessionRunning = false;
+                break;
+            default:
+                break;
         }
     }
 
