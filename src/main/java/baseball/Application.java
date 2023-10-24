@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Playing_Game.playing_game;
+import static baseball.Playing_Game.playingGame;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -23,7 +23,7 @@ public class Application {
             index = new int[10];
             set_Random_numbers(index, computer);
 
-            playing_game(computer, index);
+            playingGame(computer, index);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             continue_game = Integer.parseInt(readLine());

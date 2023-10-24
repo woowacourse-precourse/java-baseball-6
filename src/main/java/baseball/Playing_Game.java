@@ -7,11 +7,10 @@ import java.util.List;
 
 public class Playing_Game {
 
-    static void playing_game(List<Integer> computer, int[] index) {
+    static void playingGame(List<Integer> computer, int[] index) {
         StringBuilder sb;
         List<Integer> user_guess;
         String user_guess_input;
-//        int[] count;//count[0] = strike, count[1] = ball
         Count count;
         int strike;
         int ball;
@@ -25,9 +24,9 @@ public class Playing_Game {
             System.out.printf("숫자를 입력해주세요 : ");
             user_guess_input = readLine();
 
-            check_user_input(user_guess, user_guess_input);
+            checkUserInput(user_guess, user_guess_input);
 
-            compare_input(user_guess, index, count);
+            validateAnswer(user_guess, index, count);
 
             strike = count.getStrike();
             ball = count.getBall();
@@ -50,7 +49,7 @@ public class Playing_Game {
         }
     }
 
-    private static void compare_input(List<Integer> user_guess, int[] index, Count count) {
+    private static void validateAnswer(List<Integer> user_guess, int[] index, Count count) {
 
         for (int i = 0; i < user_guess.size(); i++) {
 
@@ -70,7 +69,7 @@ public class Playing_Game {
         }
     }
 
-    private static void check_user_input(List<Integer> user_guess, String user_guess_input) {
+    private static void checkUserInput(List<Integer> user_guess, String user_guess_input) {
         if (user_guess_input.length() != 3) {
             throw new IllegalArgumentException();
         }
