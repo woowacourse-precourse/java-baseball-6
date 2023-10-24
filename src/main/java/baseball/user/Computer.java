@@ -12,10 +12,10 @@ import java.util.StringJoiner;
 public class Computer {
 
     private List<Integer> baseballNumbers;
-    private boolean isStrikeOut = false;
+    private BallCountResult ballCountResult = new BallCountResult(0, 0);
 
     public void generateBaseballNumbers() {
-        initStrikeOut();
+        ballCountResult = new BallCountResult(0, 0);
 
         baseballNumbers = new ArrayList<>();
         while (baseballNumbers.size() < TOTAL_BASEBALL_NUMBERS) {
@@ -26,14 +26,9 @@ public class Computer {
         }
     }
 
-    private void initStrikeOut() {
-        isStrikeOut = false;
-    }
-
     public void printBaseballResult(List<Integer> playerBaseballNumbers) {
-        BallCountResult result = compareComputerWith(playerBaseballNumbers);
-        generateBaseballResultMessage(result.ballCount(), result.strikeCount());
-        checkStrikeOut(result.strikeCount());
+        ballCountResult = compareComputerWith(playerBaseballNumbers);
+        generateBaseballResultMessage(ballCountResult.ballCount(), ballCountResult.strikeCount());
     }
 
     private BallCountResult compareComputerWith(List<Integer> playerBaseballNumbers) {
@@ -77,16 +72,13 @@ public class Computer {
             sj.add("낫싱");
         }
         System.out.println(sj);
-    }
 
-    private void checkStrikeOut(int strikeCount) {
-        if (strikeCount >= MAX_STRIKES) {
-            isStrikeOut = true;
+        if (ballCountResult.isStrikeOut()) {
             System.out.println(MAX_STRIKES + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
     public boolean isStrikeOut() {
-        return isStrikeOut;
+        return ballCountResult.isStrikeOut();
     }
 }
