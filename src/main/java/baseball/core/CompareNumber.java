@@ -7,6 +7,11 @@ import java.util.List;
 public class CompareNumber {
 
     public static GameScore compareNumberList(List<Integer> user,List<Integer> computer){
+
+        if (userListAndComputerListSizeCompare(user,computer)){
+            throw new IllegalArgumentException("[Err] 유저 입력값과 컴퓨터 생성의 수의 개수가 다릅니다.");
+        }
+
         int loop_cnt = user.size();
         int ball_count=0;
         int strike_count=0;
@@ -37,4 +42,7 @@ public class CompareNumber {
         return 0;
     }
 
+    private static boolean userListAndComputerListSizeCompare(List<Integer> user,List<Integer> computer){
+        return user.size()!=computer.size();
+    }
 }
