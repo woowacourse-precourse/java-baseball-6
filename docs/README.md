@@ -12,6 +12,5 @@
 3. Broadcaster는 게임 결과를 화면에 출력하고, GameSystem에게 게임 결과를 알린다.
 4. GameSystem은 게임을 시작한다.
 5. GameSystem은 게임을 한 판 진행한다.
-6. GameSystem은 사용자가 이긴 경우, 게임을 재시작하거나 종료한다.
-7. GameSystem은 사용자가 진 경우에, 게임을 반복한다.
-8. GameSystem은는 사용자가 잘못된 값을 입력했을 때 예외처리한다.
+6. GameSystem은 사용자가 이긴 경우에는 게임을 재시작하거나 종료하고, 졌다면 반복한다.
+7. GameSystem은는 사용자가 잘못된 값을 입력했을 때 예외처리한다.
