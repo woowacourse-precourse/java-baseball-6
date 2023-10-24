@@ -48,19 +48,19 @@
 
 역할: 게임의 참가자
 
-- [ ]  `getPlayerInput()` : 자신이 정답으로 생각하는 서로 다른 3개의 숫자를 반환한다.
-- [ ]  `setPlayerInput()` : 자신이 정답으로 생각하는 서로 다른 3개의 숫자를 결정한다.
-- [ ]  `getRestartMessage()` : 자신의 재시작 의사를 반환한다.
-- [ ]  `setRestartMessage()` : 자신의 재시작 의사를 결정한다.
+- [x]  `getPlayerInput()` : 자신이 정답으로 생각하는 서로 다른 3개의 숫자를 반환한다.
+- [x]  `setPlayerInput()` : 자신이 정답으로 생각하는 서로 다른 3개의 숫자를 결정한다.
+- [x]  `getRestartMessage()` : 자신의 재시작 의사를 반환한다.
+- [x]  `setRestartMessage()` : 자신의 재시작 의사를 결정한다.
 
 ### Computer
 
 역할: Player와 게임을 하는 상대방.
 
-- [ ]  `setAnswer()` : 게임의 정답 1~9사이의 서로 다른 3개의 숫자인 answer를 결정한다.
-- [ ]  `getResult()` : Player의 Input을 보고 결과를 판단 후 결과를 String으로 반환해준다.
-- [ ]  `countBall()` : player의 Input에서 ball이 몇 개인지 판단 후 반환한다.
-- [ ]  `coutnStrike()` : player의 Input에서 strike의 개수를 판단 후 반환한다.
+- [x]  `setAnswer()` : 게임의 정답 1~9사이의 서로 다른 3개의 숫자인 answer를 결정한다.
+- [x]  `getResult()` : Player의 Input을 보고 결과를 판단 후 결과를 String으로 반환해준다.
+- [x]  `countBall()` : player의 Input에서 ball이 몇 개인지 판단 후 반환한다.
+- [x]  `coutnStrike()` : player의 Input에서 strike의 개수를 판단 후 반환한다.
 
 # 프로그램에 진행에 필요한 클래스(Utils)
 
@@ -70,27 +70,27 @@
 
 역할: 프로그램의 입력 처리를 하는 클래스
 
-- [ ]  `askRestart()` : 사용자에게 재시작 여부를 물어본다.
-- [ ]  `askPlayerInput()` : 사용자에게 Input을 List<Integer> 형태로 반환한다.
-- [ ]  `getInputList()` : String으로 받은 사용자의 Input을 검증 후 List의 형태로 반환한다.
-- [ ]  `stringToInteger()` : String으로 온 사용자의 입력을 List<Integer>의 형태로 변환한다.
+- [x]  `askRestart()` : 사용자에게 재시작 여부를 물어본다.
+- [x]  `askPlayerInput()` : 사용자 Input을 받아 List<Intger> 형태로 반환한다.
+- [x]  `getInputString()` : String으로 받은 사용자의 Input을 검증 후 반환한다.
+- [x]  `stringToInteger()` : String으로 온 사용자의 입력을 List<Integer>의 형태로 변환한다.
 
 ### OutputMessage
 
 역할: 프로그램의 출력과 출력문을 관리하는 클래스
 
-- [ ]  `introMessage()` : 게임을 시작하는 인트로 메세지 ‘숫자 야구 게임을 시작합니다!’를 출력한다.
-- [ ]  `askRestartMessage()` : 재시작 여부를 물어보는 '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.’ 를 출력한다.
-- [ ]  `askNumberMessage()` : 입력할 숫자를 물어보는 ‘숫자를 입력해주세요 : ‘를 출력한다.
-- [ ]  `successMessage()` : 성공 여부를 알려주는 ‘3개의 숫자를 모두 맞히셨습니다! 게임 종료’를 출력한다.
-- [ ]  `printResult()` : 결과 값 result를 전달받고 이를 출력한다.
-- [ ]  `getResultMessage()` : ball과 strike의 개수를 전달 받고 이에 적합한 결과를 출력한다.
+- [x]  `introMessage()` : 게임을 시작하는 인트로 메세지 ‘숫자 야구 게임을 시작합니다!’를 출력한다.
+- [x]  `askRestartMessage()` : 재시작 여부를 물어보는 '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.’ 를 출력한다.
+- [x]  `askNumberMessage()` : 입력할 숫자를 물어보는 ‘숫자를 입력해주세요 : ‘를 출력한다.
+- [x]  `successMessage()` : 성공 여부를 알려주는 ‘3개의 숫자를 모두 맞히셨습니다! 게임 종료’를 출력한다.
+- [x]  `printResult()` : 결과 값 result를 전달받고 이를 출력한다.
+- [x]  `getResultMessage()` : ball과 strike의 개수를 전달 받고 이에 적합한 결과를 출력한다.
     - ball과 strike가 없다 → ‘낫싱’
     - ball만 있다 → ‘n볼’
     - strike만 있다 → ‘n스트라이크’
     - 둘 다 있다 → ‘n볼 m스트라이크’
-- [ ]  `getBallMessage()` : ball 개수를 받아 ball의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
-- [ ]  `getStrikeMessage()` : strike 개수를 받고 strike의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
+- [x]  `getBallMessage()` : ball 개수를 받아 ball의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
+- [x]  `getStrikeMessage()` : strike 개수를 받고 strike의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
 
 # 예외 처리(Validate)
 
@@ -100,8 +100,8 @@
 
 역할: 사용자의 Input이 게임 진행에 적합한지 확인한다. 적합하지 않으면 `llegalArgumentException()` 을 발생시킨다.
 
-- [ ]  `validateUserInput()` : player의 Input이 아래의 요구사항들을 만족하는지 확인한다.
-    - [ ]  `checkLength()` : 입력 값의 길이가 3인지 확인한다.
-    - [ ]  `checkInteger()` : 입력 값이 정수 형태로 변환이 가능한지 확인한다.
-    - [ ]  `checkHasZero()` : 입력 값에 0이 존재하는지 확인한다.
-    - [ ]  `checkDuplicate()` : 입력 값에 중복된 값이 있는지 확인해야한다.
+- [x]  `validateUserInput()` : player의 Input이 아래의 요구사항들을 만족하는지 확인한다.
+    - [x]  `checkLength()` : 입력 값의 길이가 3인지 확인한다.
+    - [x]  `checkInteger()` : 입력 값이 정수 형태로 변환이 가능한지 확인한다.
+    - [x]  `checkHasZero()` : 입력 값에 0이 존재하는지 확인한다.
+    - [x]  `checkDuplicate()` : 입력 값에 중복된 값이 있는지 확인해야한다.
