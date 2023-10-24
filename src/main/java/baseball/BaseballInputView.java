@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
+import java.util.Set;
 
 /* input, output 화면(메세지) 출력 */
 public class BaseballInputView {
@@ -38,6 +40,12 @@ public class BaseballInputView {
         }
     }
 
+    private void isCorrectLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException(INPUT_VALID_FORMAT_OF_NUMBER);
+        }
+    }
+
     private void isExistChar(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) < 48 || input.charAt(i) > 57) {
@@ -46,14 +54,12 @@ public class BaseballInputView {
         }
     }
 
-    private void isCorrectLength(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException(INPUT_VALID_FORMAT_OF_NUMBER);
-        }
-    }
-
     private void isExistRepeatedNumber(String input) {
-        if (input.length() != 3) {
+        Set<Character> inputs = new HashSet<>();
+        for (int i = 0; i < input.length(); i++) {
+            inputs.add(input.charAt(i));
+        }
+        if (inputs.size() != input.length()) {
             throw new IllegalArgumentException(INPUT_VALID_FORMAT_OF_NUMBER);
         }
     }
