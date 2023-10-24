@@ -10,36 +10,32 @@ public class Validators {
 
 
     public static void validatePlayerInput(List<Character> playerInputList) {
-        if (!(validateLength(playerInputList) && validateIsCharDigit(playerInputList) && validateRepetition(
-                playerInputList))) {
-            throw new IllegalArgumentException("Error");
+        validateLength(playerInputList);
+        validateRepetition(playerInputList);
+        validateIsCharDigit(playerInputList);
+    }
+
+    private static void validateLength(List<Character> playerInputList) {
+        if (!(playerInputList.size() == ANSWER_LENGTH)) {
+            throw new IllegalArgumentException();
         }
     }
 
-    private static boolean validateLength(List<Character> playerInputList) {
-        if (playerInputList.size() == ANSWER_LENGTH) {
-            isLengthValid = true;
-        }
-        return isLengthValid;
-    }
-
-    public static boolean validateIsCharDigit(List<Character> playerInputList) {
+    public static void validateIsCharDigit(List<Character> playerInputList) {
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             if (playerInputList.get(i) == '0' || !Character.isDigit(playerInputList.get(i))) {
-                return false;
+                throw new IllegalArgumentException();
             }
         }
-        return true;
     }
 
-    public static boolean validateRepetition(List<Character> playerInputList) {
+    public static void validateRepetition(List<Character> playerInputList) {
         for (int i = 0; i < playerInputList.size(); i++) {
             for (int j = 0; j < i; j++) {
                 if (playerInputList.get(i) == playerInputList.get(j)) {
-                    return false;
+                    throw new IllegalArgumentException();
                 }
             }
         }
-        return true;
     }
 }
