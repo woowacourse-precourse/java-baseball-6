@@ -12,8 +12,7 @@ public class NumberBaseballGameController {
     private final NumberBaseballGameOutputView outputView;
     private final NumberBaseBallGame numberBaseBallGame;
 
-    public NumberBaseballGameController(NumberBaseballGameInputView inputView,
-                                        NumberBaseballGameOutputView outputView,
+    public NumberBaseballGameController(NumberBaseballGameInputView inputView, NumberBaseballGameOutputView outputView,
                                         NumberBaseBallGame numberBaseballgame) {
         this.inputView = inputView;
         this.outputView = outputView;
@@ -40,7 +39,6 @@ public class NumberBaseballGameController {
     }
 
     private void handleGameOver(RoundEvaluationResult result) {
-        outputView.askForGameRestart();
         outputView.printGameOverMessage();
         result.eveluateRestart(inputView.readRestartResponseInput());
         numberBaseBallGame.initRandomNumber();
