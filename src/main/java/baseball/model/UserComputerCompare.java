@@ -1,6 +1,6 @@
 package baseball.model;
 
-import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class UserComputerCompare {
@@ -19,18 +19,26 @@ public class UserComputerCompare {
     }
 
 
-    public Result getBallCountJudgement() {
-        List<Integer> computerNumber = computer.getComputerNumber();
-
+    public Map<BallCount, Integer> getBallCountJudgement() {
         IntStream.range(0, 3)
-                .forEach(i -> {
-                    int number = player.getNumberByPosition(i);
-                    if (computer.hasCommonNumber(number)) {
-                        BallCount key = computerNumber.indexOf(number) == i ? BallCount.STRIKE : BallCount.BALL;
-                        result.updateBallCount(key);
-                    }
-                });
+                .forEach(this::processPlayerNumber);
 
-        return result;
+        return result.getResult();
+    }
+
+    private void processPlayerNumber(int index) {
+        int number = player.getNumberByPosition(index);
+        if (hasCommonNumber(number)) {
+            BallCount key = isInSamePosition(index) ? BallCount.STRIKE : BallCount.BALL;
+            result.updateBallCount(key);
+        }
+    }
+
+    private boolean isInSamePosition(int position) {
+        return position == computer.getComputerNumber().indexOf(player.getNumberByPosition(position));
+    }
+
+    private boolean hasCommonNumber(int number) {
+        return computer.getComputerNumber().contains(number);
     }
 }

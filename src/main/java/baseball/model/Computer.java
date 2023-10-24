@@ -26,10 +26,6 @@ public class Computer {
         return numbers;
     }
 
-    public boolean hasCommonNumber(int number) {
-        return computerNumber.contains(number);
-    }
-
     public List<Integer> getComputerNumber() {
         return computerNumber;
     }

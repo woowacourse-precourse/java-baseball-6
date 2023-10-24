@@ -15,4 +15,13 @@ public enum BallCount {
         this.isInSamePosition = isInSamePosition;
     }
 
+    public static BallCount decideBallCount(boolean hasCommonNumber, boolean isInSamePosition) {
+        if (hasCommonNumber && isInSamePosition) {
+            return STRIKE;
+        }
+        if (hasCommonNumber && !isInSamePosition) {
+            return BALL;
+        }
+        return NOTHING;
+    }
 }
