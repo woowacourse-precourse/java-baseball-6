@@ -69,7 +69,6 @@ public class GameController {
 
     // 게임 종료 여부 체크
     public static boolean checkTerminate() {
-        // 입력 받고 올바른 입력인지 확인
         String input = getInputWithAnnounce(Announcement.GAME_TERMINATE);
         Integer code = InputValidator.terminateInput(input);
         return code == GAME_TERMINATE_CODE;

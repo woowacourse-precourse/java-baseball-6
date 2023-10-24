@@ -21,7 +21,6 @@ public class Game extends GameController {
         this.answer = RandomUtil.randomNumber();
 
         Result result = new Result();
-        // 정답이 아닌 동안 계속 게임 진행하기
         while (!isWin(result)) {
             String input = getInGameInput();
             result = recordResult(input, answer);

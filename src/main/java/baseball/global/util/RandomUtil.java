@@ -13,7 +13,7 @@ public class RandomUtil {
         while (computer.size() < Game.INPUT_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(Game.MIN_NUMBER, Game.MAX_NUMBER);
             Character numToChar = Character.forDigit(randomNumber, 10);
-            // 중복이 아니라면 배열에 추가
+            
             if (!computer.contains(numToChar)) {
                 computer.add(numToChar);
             }
