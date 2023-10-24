@@ -30,6 +30,6 @@ public class Numbers {
     public Integer countEquality(Numbers numbers) {
         return (this.first.equals(numbers.second) || this.first.equals(numbers.third) ? 1 : 0) +
                 (this.second.equals(numbers.first) || this.second.equals(numbers.third) ? 1 : 0) +
-                (this.third.equals(numbers.first) || this.second.equals(numbers.second) ? 1 : 0);
+                (this.third.equals(numbers.first) || this.third.equals(numbers.second) ? 1 : 0);
     }
 }
