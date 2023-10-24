@@ -16,7 +16,7 @@ public class Application {
 
     public static void main(String[] args) {
         // 게임 재시작, 종료 여부를 제어할 변수
-        boolean isRestart = DEFAULT_STATE;
+        boolean isRestart;
 
         do {
             // TODO: 랜덤 세 자리 수 생성
@@ -126,10 +126,14 @@ public class Application {
 
     // 입력 받은 값이 1 또는 2인지 판별하는 메서드
     public static boolean isOneOrTwo(int number) {
+        return number == 1 || number == 2;
+
+        /*
         if (number == 1 || number == 2) {
             return true;
         }
         return false;
+        */
     }
 
     // 컴퓨터에게 정답 세 자리 수를 부여하는 메서드
@@ -171,19 +175,29 @@ public class Application {
 
     // 정답을 맞췄는지 판별하는 메서드
     public static boolean isAnswerCollect(int strikeCount) {
+        return strikeCount == 3;
+
+        /*
         if (strikeCount == 3) {
             return true;
         }
         return false;
+         */
     }
 
     // 사용자가 입력한 수에 따라 재시작할지 종료할지 판별하는 메서드
     public static boolean wantTryAgain(int choice) {
-        if (choice == 1) {
-            // 재시작
-            return true;
-        }
-        // 게임 종료
-        return false;
+        // 재시작
+        return choice == 1;
+
+        /*
+        *   if (choice == 1) {
+                // 재시작
+                return true;
+            }
+            // 게임 종료
+            return false;
+        *
+        * */
     }
 }
