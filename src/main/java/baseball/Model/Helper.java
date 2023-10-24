@@ -1,9 +1,7 @@
 package baseball.Model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Helper {
     private final Computer computer;
@@ -13,6 +11,10 @@ public class Helper {
     private Helper(Computer computer, User user) {
         this.computer = computer;
         this.user = user;
+    }
+
+    public static Helper help(Computer computer, User user) {
+        return new Helper(computer, user);
     }
 
     public List<Integer> checkBallCount() {
@@ -49,9 +51,5 @@ public class Helper {
         throw new IllegalArgumentException("허가되지 않은 문자열");
     }
 
-    public List<Integer> parseList(String input) {
-        return Arrays.stream(input.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
+
 }

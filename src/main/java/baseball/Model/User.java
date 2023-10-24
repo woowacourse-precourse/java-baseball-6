@@ -9,6 +9,10 @@ public class User {
         this.userNumber = userNumber;
     }
 
+    public static User createByNumber(List<Integer> playerNumber) {
+        return new User(playerNumber);
+    }
+
     public List<Integer> getUserNumber() {
         return userNumber;
     }

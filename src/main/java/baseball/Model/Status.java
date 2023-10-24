@@ -1,6 +1,6 @@
 package baseball.Model;
 
-public enum State {
+public enum Status {
 
     GAME_START,
     GAME_OVER,
@@ -8,7 +8,7 @@ public enum State {
     GAME_RESTART,
     GAME_END;
 
-    public State threeStrike(boolean strikeCount) {
+    public Status threeStrike(boolean strikeCount) {
         if (strikeCount) {
             return GAME_OVER;
         }
@@ -18,11 +18,11 @@ public enum State {
         throw new IllegalArgumentException("오류 발생");
     }
 
-    public State choiceGame(boolean choiceInput) {
-        if (choiceInput) {
+    public static Status choiceGame(String choiceInput) {
+        if (choiceInput.equals("1")) {
             return GAME_RESTART;
         }
-        if (!choiceInput) {
+        if (choiceInput.equals("2")) {
             return GAME_END;
         }
         throw new IllegalArgumentException("허가되지 않은 문자열");

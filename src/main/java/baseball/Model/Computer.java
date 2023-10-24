@@ -2,7 +2,9 @@ package baseball.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Computer {
     private final List<Integer> computerNumber;
@@ -10,6 +12,10 @@ public class Computer {
 
     private Computer() {
         this.computerNumber = createRandomNumbers();
+    }
+
+    public static Computer createByRandomNumber() {
+        return new Computer();
     }
 
     public List<Integer> createRandomNumbers() {
@@ -30,4 +36,9 @@ public class Computer {
         return computerNumber;
     }
 
+    public List<Integer> parseList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 }
