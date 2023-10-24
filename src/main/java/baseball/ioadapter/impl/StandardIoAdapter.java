@@ -13,6 +13,10 @@ public class StandardIoAdapter implements IoAdapter {
 
     @Override
     public void printMessage(GameMessages gameMessages) {
-        System.out.println(gameMessages.getMessage());
+        if (gameMessages == GameMessages.NUMBER_INPUT_COMMENT) {
+            System.out.print(gameMessages.getMessage());
+        } else {
+            System.out.println(gameMessages.getMessage());
+        }
     }
 }
