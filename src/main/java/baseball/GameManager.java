@@ -14,8 +14,7 @@ public class GameManager {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> inputNumbers = player.getNumbers();
             if (!isValid(inputNumbers)) {
-                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
-                continue;
+                return (new IllegalArgumentException);
             }
             int[] result = judge(inputNumbers);
             System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
@@ -32,5 +31,22 @@ public class GameManager {
             System.out.println("게임을 종료합니다.");
         }
     }
+    private int[] judge(List<Integer> numbers) {
+        int[] result = new int[2];
+        for (int i = 0; i < 3; i++) {
+            if (numbers.get(i) == computer.getNumbers().get(i)) {
+                result[0]++;
+            } else {
+                for (int j = 0; j < 3; j++) {
+                    if (numbers.get(i) == computer.getNumbers().get(j)) {
+                        result[1]++;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
 
 }
