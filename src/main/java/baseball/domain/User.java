@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public record User(List<Integer> numbers) {
@@ -9,6 +10,9 @@ public record User(List<Integer> numbers) {
     public User {
         if (numbers.size() != USER_NUMBER_MAX_SIZE) {
             throw new IllegalArgumentException("숫자 입력은 3자리만 가능합니다.");
+        }
+        if (numbers.size() != new HashSet<>(numbers).size()) {
+            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
         }
 
     }
