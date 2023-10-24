@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class ComputerService {
-    private final ArrayList<Integer> randomNumbers;
+    private static ArrayList<Integer> randomNumbers;
 
     public ComputerService() {
         randomNumbers = generateRandomNumbers();
@@ -15,6 +15,10 @@ public class ComputerService {
 
     public ArrayList<Integer> getRandomNumbers() {
         return randomNumbers;
+    }
+
+    public static void resetNumber() {
+        randomNumbers = generateRandomNumbers();
     }
 
     private static ArrayList<Integer> generateRandomNumbers() {
