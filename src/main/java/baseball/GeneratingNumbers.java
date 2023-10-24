@@ -26,10 +26,11 @@ public class GeneratingNumbers {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
 
-        // 숫자 개수가 3개가 아닐 경우 예외처리
-        if (inputNumber.length() != 3){
+        // 숫자 개수가 3개가 아닐 경우, 문자를 입력할 경우 예외처리
+        if (inputNumber.length() != 3 || !isInteger(inputNumber)) {
             throw new IllegalArgumentException();
         }
+
         List<Integer> mine = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int num = Character.getNumericValue(inputNumber.charAt(i));
@@ -39,5 +40,14 @@ public class GeneratingNumbers {
         }
 
         nums.setMine(mine);
+    }
+
+    public static boolean isInteger(String strValue) {
+        try {
+            Integer.parseInt(strValue);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 }
