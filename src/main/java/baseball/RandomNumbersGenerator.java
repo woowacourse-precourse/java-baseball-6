@@ -13,7 +13,7 @@ public class RandomNumbersGenerator {
     public List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        while (numbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER,MAX_NUMBER);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
