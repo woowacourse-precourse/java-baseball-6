@@ -1,5 +1,10 @@
 package baseball;
 
+import static baseball.utils.message.message.OutputMessage.END;
+import static baseball.utils.message.message.OutputMessage.NUMBER_REQUEST;
+import static baseball.utils.message.message.OutputMessage.START;
+import static baseball.utils.message.message.OutputMessage.SUCCESS;
+
 import baseball.domain.computer.Computer;
 import baseball.domain.computer.DefaultBaseballAlgorithm;
 import baseball.view.input.Input;
@@ -17,14 +22,14 @@ public class ProcessManager {
     }
 
     public void runBaseballGame() {
-        output.printlnMessage("숫자 야구를 시작합니다.");
+        output.printlnMessage(START);
         Computer computer = new Computer(new DefaultBaseballAlgorithm());
         GameContext gameContext = new GameContext();
         while (gameContext.isGameContext()) {
             List<Integer> randomNumber = computer.generateRandomNumber();
             runEachSet(computer, randomNumber);
 
-            output.printlnMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            output.printlnMessage(END);
 
             gameContext.updateContext(input.endInput());
         }
@@ -32,7 +37,7 @@ public class ProcessManager {
 
     private void runEachSet(Computer computer, List<Integer> randomNumber) {
         while (computer.isEachSetContext()) {
-            output.printMessage("숫자를 입력해주세요 : ");
+            output.printMessage(NUMBER_REQUEST);
             String baseballInput = input.baseballInput();
 
             String baseballResult = computer.checkBallAndStrike(randomNumber, baseballInput);
@@ -40,7 +45,7 @@ public class ProcessManager {
 
             computer.updateEachSetContext(baseballResult);
         }
-        output.printlnMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        output.printlnMessage(SUCCESS);
         computer.clearEachSetContext();
     }
 }
