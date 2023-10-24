@@ -2,6 +2,9 @@ package baseball.domain;
 
 import java.util.List;
 
+/**
+ * 플레이어가 선택한 수를 관리하는 역할을 수행한다.
+ */
 public class PlayerNumbers {
 
     private static final int MIN_NUMBER = 1;

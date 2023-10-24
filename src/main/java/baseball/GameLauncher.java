@@ -9,6 +9,9 @@ import baseball.utils.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+/**
+ * 숫자 야구 게임을 실행하는 역할을 수행한다.
+ */
 public class GameLauncher {
 
     private static final int DIGIT_NUMBER = 3;
@@ -19,6 +22,9 @@ public class GameLauncher {
         this.numberGenerator = numberGenerator;
     }
 
+    /**
+     * 숫자 야구 게임을 실행한다.
+     */
     public void launch() {
         OutputView.printBeginningMessage();
         while (true) {
