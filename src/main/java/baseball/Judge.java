@@ -19,24 +19,36 @@ public class Judge {
             Ball computer = computerBaseBall.get(i);
             Ball player = playerBaseBall.get(i);
 
-            isBall(computer, playerBaseBall);
-            isStrike(computer, player);
+            judging(playerBaseBall, computer, player);
         }
 
         return jugeResult;
     }
+
+    private void judging(List<Ball> playerBaseBall, Ball computer, Ball player) {
+        if (isStrike(computer, player)) {
+            jugeResult.incrementStrike();
+            return;
+        }
+        if (isBall(computer, playerBaseBall)) {
+            jugeResult.incrementBall();
+        }
+    }
+
     public boolean isSuccessed() {
         return jugeResult.isSuccess();
     }
 
-    private void isBall(Ball computer, List<Ball> playerBaseBall) {
+    private boolean isBall(Ball computer, List<Ball> playerBaseBall) {
         for (int i = START_ROUND - 1; i < END_ROUND; i++) {
             Ball player = playerBaseBall.get(i);
-            if (computer.equals(player)) jugeResult.incrementBall();
+            if (computer.equals(player)) return true;
         }
+        return false;
     }
 
-    private void isStrike(Ball computer, Ball player) {
-        if (computer.equals(player)) jugeResult.incrementStrike();
+    private boolean isStrike(Ball computer, Ball player) {
+        if (computer.equals(player)) return true;
+        return false;
     }
 }

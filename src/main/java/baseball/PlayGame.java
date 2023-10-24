@@ -36,7 +36,6 @@ public class PlayGame {
     }
 
     private void restartGame(String inputNumber) {
-        outputView.printRestartOrEndMessage();
         if (inputNumber.equals(INPUT_RESTART_NUMBER)) {
             playGame();
         }

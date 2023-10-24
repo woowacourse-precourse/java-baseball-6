@@ -49,9 +49,10 @@ public class OutputView {
 
   public void printGameSuccessMessage() {
     System.out.println(GAME_SUCCESS_MESSAGE);
+    printRestartOrEndMessage();
   }
 
-  public void printRestartOrEndMessage() {
+  private void printRestartOrEndMessage() {
     System.out.println(GAME_RESTART_OR_END_MESSAGE);
   }
 }
