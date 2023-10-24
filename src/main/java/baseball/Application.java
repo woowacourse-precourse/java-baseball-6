@@ -17,18 +17,17 @@ public class Application {
     private static boolean isProgress() {
         view.printRestartCheckMessage();
         String stringNumber = Console.readLine();
-        if (!validation(stringNumber)) {
-            throw new IllegalArgumentException();
-        }
+        validateOneOrTwo(stringNumber);
         if (stringNumber.equals("2")){
             return false;
         }
         return true;
     }
 
-    private static boolean validation(String stringNumber) {
-        boolean isNumeric = (stringNumber.length() == 1 && stringNumber.matches("[0-9]"));
-        return isNumeric;
+    private static void validateOneOrTwo(String stringNumber) {
+        if (!(stringNumber.equals("1") || stringNumber.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
     }
 
 }

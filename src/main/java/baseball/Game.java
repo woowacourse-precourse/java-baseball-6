@@ -47,9 +47,7 @@ public class Game {
     private List<Integer> input(){
         view.printInputMessage();
         String stringNumber = Console.readLine();
-        if (!validation(stringNumber)) {
-            throw new IllegalArgumentException();
-        }
+        validateNumber(stringNumber);
         List<Integer> numberArray = stringToList(stringNumber);
         return numberArray;
     }
@@ -67,8 +65,10 @@ public class Game {
         return numberList;
     }
 
-    private boolean validation(String stringNumber) {
-        boolean isNumeric = (stringNumber.length() == 3 && stringNumber.matches("[0-9]+"));
-        return isNumeric;
+    private void validateNumber(String stringNumber) {
+        boolean isNumeric = stringNumber.length() == 3 && stringNumber.matches("[0-9]+");
+        if (!isNumeric) {
+            throw new IllegalArgumentException();
+        }
     }
 }
