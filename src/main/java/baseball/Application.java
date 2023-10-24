@@ -14,19 +14,16 @@ public class Application {
 
         List<Integer> randomNumbers = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
+        while (randomNumbers.size() < 3) {
 
             int number = Randoms.pickNumberInRange(0, 9);
 
-            while (randomNumbers.contains(number)) {
+            if (!randomNumbers.contains(number)) {
 
-                number = Randoms.pickNumberInRange(0, 9);
+                randomNumbers.add(number);
 
             }
-
-            randomNumbers.add(number);
         }
-
 
         List<Integer> userAnswers = new ArrayList<>();
 
@@ -39,6 +36,8 @@ public class Application {
             userAnswers.add(number);
 
         }
+
+
 
 
 
