@@ -18,17 +18,29 @@ public class OutputView {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void printRoundResult(Round round) {
-        StringBuilder sb = new StringBuilder();
+    private static void addBallMessage(Round round, StringBuilder sb) {
         if (round.hasBall()) {
             sb.append(round.getBallCount()).append(BALL_MESSAGE);
         }
+    }
+
+    private static void addStrikeMessage(Round round, StringBuilder sb) {
         if (round.hasStrike()) {
             sb.append(round.getStrikeCount()).append(STRIKE_MESSAGE);
         }
-        if (sb.isEmpty()) {
+    }
+
+    private static void addNothingMessage(Round round, StringBuilder sb) {
+        if (!round.hasBall() && !round.hasStrike()) {
             sb.append(NOTHING_CORRECT_MESSAGE);
         }
-        System.out.println(sb);
+    }
+
+    public static void printRoundResult(Round round) {
+        StringBuilder sb = new StringBuilder();
+        addBallMessage(round, sb);
+        addStrikeMessage(round, sb);
+        addNothingMessage(round, sb);
+        System.out.println(sb.toString().trim());
     }
 }
