@@ -3,7 +3,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    static int[] randomNum = new int[4];
+    static String[] randomNum = new String[4];
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -12,67 +12,60 @@ public class Application {
 
     public static void start(){
         randomNum = createRandomNumber();
-        isBallOrStrike.judgingBallOrStrike(randomNum, getNumber());
+        judgingBallOrStrike(randomNum, getNumber());
     }
 
     public static void startAgain(){
-        isBallOrStrike.judgingBallOrStrike(randomNum, getNumber());
+        judgingBallOrStrike(randomNum, getNumber());
     }
 
-    public static int[] createRandomNumber(){
+    public static String[] createRandomNumber(){
         int intRandomNum1 = Randoms.pickNumberInRange(1, 9);
         int intRandomNum2 = Randoms.pickNumberInRange(1, 9);
         int intRandomNum3 = Randoms.pickNumberInRange(1, 9);
         String stringRandomNum1 = Integer.toString(intRandomNum1);
         String stringRandomNum2 = Integer.toString(intRandomNum2);
         String stringRandomNum3 = Integer.toString(intRandomNum3);
-        int[] arrRandomNum = new int[3];
-        arrRandomNum[0] = stringRandomNum1.charAt(0) - '0';
-        arrRandomNum[1] = stringRandomNum2.charAt(1) - '0';
-        arrRandomNum[2] = stringRandomNum3.charAt(2) - '0';
+        String[] arrRandomNum = new String[3];
+        arrRandomNum[0] = stringRandomNum1;
+        arrRandomNum[1] = stringRandomNum2;
+        arrRandomNum[2] = stringRandomNum3;
         return arrRandomNum;
     }
 
-    public static int[] getNumber(){
+    public static String[] getNumber(){
         String givenNum;
         System.out.println("숫자를 입력해주세요 : ");
         givenNum = Console.readLine();
         //if(givenNum)
-        int[] arrGivenNum = new int[givenNum.length()];
+        String[] arrGivenNum = new String[givenNum.length()];
         for(int i = 0; i < givenNum.length(); i++){
-            arrGivenNum[i] = givenNum.charAt(i) - '0';
+            arrGivenNum[i] = String.valueOf(givenNum.charAt(i));
         }
         return arrGivenNum;
     }
-}
 
-
-class isBallOrStrike {
-    public static void judgingBallOrStrike(int[] comNum, int[] userNum){
+    public static void judgingBallOrStrike(String[] comNum, String[] userNum){
         int[][] recording = new int[2][9];
         int num = 0;
 
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                if(comNum[i] == userNum[j]){
+        for(int i = 1; i < 4; i++){
+            for(int j = 1; j < 4; j++){
+                if(comNum[i-1].equals(userNum[j-1])){
                     recording[0][num] = i;
                     recording[1][num] = j;
+                    num++;
                 }
             }
         }
-
-        if(recording[0].length == 0){
-            correctOrNot.printNothing();
-        }
-
-        correctOrNot.successOrNot(countingBall(recording), countingStrike(recording));
+        successOrNot(countingBall(recording), countingStrike(recording));
     }
 
     public static int countingBall(int[][] recording){
         int ballCnt = 0;
 
         for(int i = 0; i < recording[0].length; i++){
-            if(recording[0][i] != recording[1][i]){
+            if((recording[0][i] != 0) && (recording[1][i] != 0) && recording[0][i] != recording[1][i]){
                 ballCnt++;
             }
         }
@@ -84,7 +77,7 @@ class isBallOrStrike {
         int strikeCnt = 0;
 
         for(int i = 0; i < recording[0].length; i++){
-            if(recording[0][i] == recording[1][i]){
+            if((recording[0][i] != 0) && (recording[1][i] != 0) && recording[0][i] == recording[1][i]){
                 strikeCnt++;
             }
         }
@@ -92,13 +85,12 @@ class isBallOrStrike {
         return strikeCnt;
     }
 
-}
-
-
-class correctOrNot {
     public static void successOrNot(int ballCnt, int strikeCnt){
         if(strikeCnt == 3){
             print3Strike();
+        }
+        else if((strikeCnt == 0) && (ballCnt == 0)){
+            printNothing();
         }
         else{
             printNotSuccess(ballCnt,strikeCnt);
@@ -126,14 +118,10 @@ class correctOrNot {
         if(num == 1){
             Application.start();
         }
-        else if(num == 2){
+        if(num == 2){
             return;
         }
-        else
-            throw new IllegalArgumentException("IllegalArgumentException");
 
     }
+
 }
-
-
-
