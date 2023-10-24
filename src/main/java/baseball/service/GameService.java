@@ -43,6 +43,20 @@ public class GameService {
         return ball;
     }
 
+    public static int countStrike() {
+        int strike = 0;
+        userNumbers = User.getUser();
+        computerNumbers = Computer.getAnswer();
+        for (Integer num : userNumbers) {
+            int userIndex = checkIndex(num, userNumbers);
+            int computerIndex = checkIndex(num, computerNumbers);
+            if (userIndex == computerIndex) {
+                strike += 1;
+            }
+        }
+        return strike;
+    }
+
     public static int checkIndex(int num, List<Integer> numbers) {
         return numbers.indexOf(num);
     }
