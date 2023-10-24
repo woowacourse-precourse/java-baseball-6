@@ -1,16 +1,17 @@
 package baseball.ui;
 
 import baseball.controller.GameController;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
 
     private final GameController gameController;
     private final UserInputValidator validator;
+    private final InputComponent inputComponent;
 
-    public GameView(GameController gameController, UserInputValidator validator) {
+    public GameView(GameController gameController, UserInputValidator validator, InputComponent inputComponent) {
         this.gameController = gameController;
         this.validator = validator;
+        this.inputComponent = inputComponent;
     }
 
     public void start() {
@@ -31,8 +32,8 @@ public class GameView {
         gameController.checkAnswer(validUserAnswer);
     }
 
-    private static String inputUserAnswer() {
-        return Console.readLine();
+    private String inputUserAnswer() {
+        return inputComponent.getUserAnswer();
     }
 
 }
