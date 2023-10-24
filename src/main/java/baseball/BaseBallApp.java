@@ -29,7 +29,7 @@ public class BaseBallApp {
 
             BallCount result = baseBallGame.play(inputAnswer);
 
-            output.printResult(result.getStrike(), result.getBall());
+            output.printResult(result.strike(), result.ball());
 
             if(baseBallGame.isFinished()) {
                 output.print(ConsoleMessage.CORRECT_ANSWER.getMessage());
