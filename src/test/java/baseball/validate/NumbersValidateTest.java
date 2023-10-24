@@ -1,6 +1,7 @@
 package baseball.validate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +25,12 @@ public class NumbersValidateTest {
     public void numbersSizeTestError() {
         computersRandomNumbers = List.of(1);
         assertThat(NumbersValidate.isCorrectSize(computersRandomNumbers)).isFalse();
+    }
+    @Test
+    @DisplayName("3 자리의 숫자 인지 확인한다. 숫자가 아닌 경우")
+    public void numbersNotGivenTestError() {
+       String givenNumbers = "!21";
+        assertThatThrownBy(()->NumbersValidate.isAllNumbers(givenNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     @DisplayName("중복을 확인한다")
