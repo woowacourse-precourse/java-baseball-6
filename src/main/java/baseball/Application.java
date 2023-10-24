@@ -12,7 +12,7 @@ public class Application {
 
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
-		int restart = 1;
+		int restart = 1; //1일 경우에만 계속 게임이 반복되게 설정
 
 		while (restart == 1) {
 
@@ -29,7 +29,9 @@ public class Application {
 			int firstNumber = computer.get(0);
 			int secondNumber = computer.get(1);
 			int thirdNumber = computer.get(2);
-
+			
+			//charAt()을 활용하기 위해 char 형태로 변환
+			
 			char first = Integer.toString(firstNumber).charAt(0);
 			char second = Integer.toString(secondNumber).charAt(0);
 			char third = Integer.toString(thirdNumber).charAt(0);
