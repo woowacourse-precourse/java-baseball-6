@@ -14,7 +14,7 @@ class RandomNumberGenerator {
                         Randoms.pickNumberInRange(SystemConstant.MIN_NUMBER_EACH_DIGIT,
                                 SystemConstant.MAX_NUMBER_EACH_DIGIT))
                 .distinct()
-                .limit(SystemConstant.MAX_DIGIT)
+                .limit(SystemConstant.DIGIT_SIZE)
                 .boxed()
                 .collect(toList()));
     }

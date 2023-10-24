@@ -18,6 +18,6 @@ public class GameScore {
     }
 
     public boolean isStrikesAllOfBalls() {
-        return numberOfStrikes.getValue() == SystemConstant.MAX_DIGIT;
+        return numberOfStrikes.getValue() == SystemConstant.DIGIT_SIZE;
     }
 }
