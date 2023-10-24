@@ -8,27 +8,27 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
     private Computer computer = new Computer();
-    private int strike;
-    private int ball;
+    private Strike strike;
+    private Ball ball;
 
     public Player() {
     }
 
     public void init() {
         computer.init();
-        strike = 0;
-        ball = 0;
+        strike = new Strike(0);
+        ball = new Ball(0);
     }
 
     public void play() {
         PlayerNumbers playerNumbers;
-        while (strike < COUNTS) {
+        while (strike.isLessThan(COUNTS)) {
             System.out.print(INPUT_REQUEST_MESSAGE);
             String playerInput = Console.readLine();
             playerNumbers = new PlayerNumbers(playerInput);
 
-            strike = playerNumbers.checkStrikeCount(computer);
-            ball = playerNumbers.checkBallCount(computer);
+            strike = new Strike(playerNumbers.checkStrikeCount(computer));
+            ball = new Ball(playerNumbers.checkBallCount(computer));
             printBallCount();
         }
         printGameSuccessMessage();
@@ -40,17 +40,14 @@ public class Player {
 
     public void printBallCount() {
         String result = "";
-        if (ball == 0 && strike == 0) {
+        if (ball.getResultMessage().equals("0볼") && strike.getResultMessage().equals("0스트라이크")) {
             result = "낫싱";
-        }
-        if (ball == 0 && strike > 0) {
-            result = strike + "스트라이크";
-        }
-        if (ball > 0 && strike == 0) {
-            result = ball + "볼";
-        }
-        if (ball > 0 && strike > 0) {
-            result = ball + "볼" + " " + strike + "스트라이크";
+        } else if (ball.getResultMessage().equals("0볼") && !strike.getResultMessage().equals("0스트라이크")) {
+            result = strike.getResultMessage();
+        } else if (!ball.getResultMessage().equals("0볼") && strike.getResultMessage().equals("0스트라이크")) {
+            result = ball.getResultMessage();
+        } else if (!ball.getResultMessage().equals("0볼") && !strike.getResultMessage().equals("0스트라이크")) {
+            result = ball.getResultMessage() + " " + strike.getResultMessage();
         }
         System.out.println(result);
     }
