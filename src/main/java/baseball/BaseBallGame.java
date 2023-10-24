@@ -26,6 +26,8 @@ public class BaseBallGame {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> input = stringToListInt(Console.readLine());
 
+        int[] result = compareAnswerInput(computer, input);
+
 
     }
 
@@ -33,7 +35,7 @@ public class BaseBallGame {
      * 3자리 난수 생성
      * @return List<Integer> 타입의 3자리 난수
      */
-    private static List<Integer> createRandomNumber(){
+    private List<Integer> createRandomNumber(){
 
         List<Integer> list = new ArrayList<>();
         while (list.size() < 3) {
@@ -51,7 +53,7 @@ public class BaseBallGame {
      * @param str
      * @return List<Integer>타입의 숫자
      */
-    private static List<Integer> stringToListInt(String str) {
+    private List<Integer> stringToListInt(String str) {
         List<Integer> list = new ArrayList<>();
         for (char c : str.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -61,5 +63,29 @@ public class BaseBallGame {
         }
         return list;
     }
+
+    /**
+     * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
+     *
+     * @param ans
+     * @param input
+     * @return int[] 타입의 비교 결과 (index 0 : 볼, 1 : 스트라이크)
+     */
+    private int[] compareAnswerInput(List<Integer> ans, List<Integer> input) {
+
+        int[] result = {0, 0};
+
+        for (int i = 0; i < ans.size(); i++) {
+            if (ans.get(i).equals(input.get(i))) {
+                result[1]++;
+            } else if (ans.contains(input.get(i))) {
+                result[0]++;
+            }
+        }
+
+        return result;
+
+    }
+
 
 }
