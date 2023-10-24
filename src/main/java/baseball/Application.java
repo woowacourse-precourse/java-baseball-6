@@ -29,6 +29,9 @@ public class Application {
 
             while (numberOfStrike != 3 || numberOfBall != 0) {
 
+                numberOfStrike = 0;
+                numberOfBall = 0;
+
                 System.out.println("숫자를 입력해주세요 : ");
                 String response = Console.readLine();
                 List<Integer> prediction = new ArrayList<>();
@@ -69,7 +72,10 @@ public class Application {
 
                 if (numberOfBall == 0) {
                     System.out.printf("%d스트라이크%n", numberOfStrike);
+                    continue;
                 }
+
+                System.out.printf("%d볼 %d스트라이크%n", numberOfBall, numberOfStrike);
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
