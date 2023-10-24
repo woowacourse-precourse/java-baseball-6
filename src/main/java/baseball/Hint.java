@@ -15,20 +15,36 @@ public class Hint {
 
                 strikeCount++;
 
+            } else {
+
+                ballCount++;
+
             }
         }
 
-        printHint(strikeCount);
+        printHint(strikeCount, ballCount);
     }
 
+    // 힌트 출력
+    private void printHint(int strikeCount, int ballCount) {
 
-    private void printHint(int strikeCount) {
+        if (strikeCount != 0 && ballCount != 0) {
 
-        if (strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
 
-            System.out.println(strikeCount + "스트라이크");
+        } else {
 
+            if (strikeCount != 0) {
+
+                System.out.println(strikeCount + "스트라이크");
+
+            } else if (ballCount != 0) {
+
+                System.out.println(ballCount + "볼");
+
+            }
         }
-
     }
+
+
 }

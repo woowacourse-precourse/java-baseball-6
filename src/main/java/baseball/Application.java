@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -13,8 +12,6 @@ public class Application {
         // TODO: 프로그램 구현
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        user.userInput();
 
         List<Integer> randomNumbers = computer.selectNumber();
         List<Integer> userNumbers = user.userInput();
