@@ -1,0 +1,148 @@
+package main.java.baseball;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstem.edu.missionutils.Randoms;
+import java.util.*;
+
+//import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.io.OutputStreamWriter;
+// 우테코 라이브러리 에러아닌 다른에러인지 확인하기, 조건사항 지켰는지 각 메서드항목 확인하기
+public class Game {
+    private static final int restart =1;
+    private static final int end=2;
+
+    private int strike=0;
+    private int ball=0;
+    private boolean gameEnd=false;
+    
+    public void startGame() throws IOException {
+    	System.out.println("숫자 야구 게임을 시작합니다.");
+    	
+    	while(!gameEnd) {
+    		List<Integer> computer=getRandomNumber();
+    		playBallGame(computer);
+    	}
+    }
+    
+    //컴퓨터로 랜덤번호 입력받기
+    public void playBallGame(List<Integer> computer) {
+        while(true) {
+    		System.out.println("숫자를 입력하세요.");
+    		String input=Console.readLine();
+//    	BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+//    	String input=bf.readLine();
+    		List<Integer> user = getUserNumber(input);
+    		
+    		score(user,computer);
+    		print();
+    		
+    		if(strike==3) {
+    			restartOrEnd();
+    			break;
+    		}
+    	}
+    }
+    
+    //랜던번호
+    public List<Integer> getRandomNumber(){
+        List<Integer> computer=new ArrayList<>();
+    	while(computer.size()<3) {
+  	    int randomNumber=Randoms.pickNumberInRange(1,9);
+//    	int randomNumber=(int)(Math.random()*9)+1;
+    		if(!computer.contains(randomNumber)) {
+    		    computer.add(randomNumber);
+    		}
+    			
+    	}
+        return computer;
+    }
+   
+    //사용자번호입력
+    public List<Integer> getUserNumber(String input){
+    	userInputCheck(input);
+    	
+    	List<Integer> user=new ArrayList<>();
+    	for(String number:input.split("")) {
+    		user.add(Integer.parseInt(number));
+    	}
+    	return user;
+    }
+    
+    //사용자번호입력확인하기
+    public void userInputCheck(String input) {
+    	for(String number:input.split("")) {
+    		if(!input.equals(number)) {
+    			throw new IllegalArgumentException("숫자 이외의 문자는 입력받지 않습니다.");
+    		}
+    	}
+    	
+    	if(input.length() != 3) 
+    		throw new IllegalArgumentException("숫자 3개를 입력해야 합니다.");
+    	
+    	char first=input.charAt(0);
+    	char second=input.charAt(1);
+    	char third=input.charAt(3);
+    	if(first==second || second == third || third == first)
+    		throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야 합니다.");
+    }
+    
+    //점수 사용자와 랜덤번호 점수만들기
+    public void score(List<Integer> user, List<Integer> computer) {
+    	strike=0;
+    	ball=0;
+    	
+    	for(int number: user) {
+    		int userIndex=user.indexOf(number);
+    		int computerIndex=computer.indexOf(number);
+    		
+    		if(userIndex==computerIndex) {
+    			strike++;
+    		}else if(computerIndex !=-1) {
+    			ball++;
+    		}
+    	}
+    }
+    
+    //볼, 스트라이크, 낫싱 출력값만들기
+    public void print() {
+    	if(strike==0 && ball==0)
+    		System.out.println("낫싱");
+    	if(ball!=0)
+    		System.out.println(ball+"볼");
+    	if(strike!=0) 
+    		System.out.println(strike+"스트라이크");
+    		
+    	System.out.println();
+    	
+    }
+    
+    //재시작할때 1또는 2로하기위한 입력사항설정
+    public void restartOrEnd() {
+    	System.out.println("3개의 숫자가 모두 맞습니다. 게임 종료");
+    	System.out.println("게임을 새로 시작한다면 1, 종료한다면 2를 입력하세요.");
+    	
+   	String input = Console.readLine();
+//		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+//		String input=bf.readLine();
+    	userEndInputCheck(input);
+    	
+    	int choice=Integer.parseInt(input);
+    	
+    	if(choice==end) {
+    		gameEnd=true;
+    	}
+    }
+    
+    //사용자재시작시 1또는 2로 선택 확인설정
+    public void userEndInputCheck(String input) {
+    	if(input.length() !=1 || !Character.isDigit(input.charAt(0)))
+    	    throw new IllegalArgumentException("1 또는 2만 입력 하세요");
+    	    
+    	int choice=Integer.parseInt(input);
+    	if(choice !=restart && choice != end)
+    		throw new IllegalArgumentException("1 또는 2만 입력 하세요.");
+    }
+    
+}

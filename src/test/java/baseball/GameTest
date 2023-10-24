@@ -1,0 +1,96 @@
+package baseball;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import main.java.baseball.Game;
+public class GameTest {
+	
+	Game game=new Game();
+	
+	@Test
+	void getRandomNumber_1부터_9까지_다른_3개의_수로_이루어진_리스트_반환_확인() {
+		List<Integer> result=game.getRandomNumber();
+		
+		assertThat(result).hasSize(3);
+		assertThat(result.get(0)).isNotEqualTo(result.get(1));
+		assertThat(result.get(0)).isNotEqualTo(result.get(2));
+		assertThat(result.get(0)).isNotEqualTo(result.get(0));
+		for(int number : result) {
+			assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
+		}
+	}
+	
+	@Test
+	void getUserNumber_문자열로_리스트_변환하는지_확인() {
+		String input="234";
+		List<Integer> result=game.getUserNumber(input);
+		
+		assertThat(result).containsExactly(2,3,4);
+	}
+	
+	@Test
+	void userInput_숫자_이외의_문자_입력시_예외발생() {
+		String input="abc";
+		
+		assertThatThrownBy(() -> game.userInputCheck(input))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("숫자 이외의 문자는 입력받지 않습니다.");
+	}
+	
+	@Test
+	void uesrInput_숫자를_3개보다_많거나_적게_입력시_예외발생() {
+		String input="1";
+		
+		assertThatThrownBy(() -> game.userInputCheck(input))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("숫자 3개를 입력해야 합니다.");
+		
+		String insert="1234";
+		
+		assertThatThrownBy(() -> game.userInputCheck(insert))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("숫자 3개를 입력해야 합니다.");
+	}
+	
+	@Test
+	void userInput_같은_숫자를_두번_입력시_예외발생() {
+		String input="122";
+		
+		assertThatThrownBy(() -> game.userInputCheck(input))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("서로 다른 숫자 3개를 입력하세요");
+	}
+	
+	@Test
+	void userEndInputCheck_메서드_길이_1을_넘는_문자열_입력시_예외발생() {
+		String input="123";
+		
+		assertThatThrownBy(() -> game.userEndInputCheck(input))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("1 또는 2만 입력합니다.");
+	}
+	
+	@Test
+	void userEndInputCheck_숫자아닌_문자입력시_예외발생() {
+		String input="a";
+		
+		assertThatThrownBy(() -> game.userEndInputCheck(input))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("1 또는 2만 입력합니다.");
+	}
+	
+	@Test
+	void userEndInputCheck_1과_2과_아닌_다른_숫자입력시_예외발생() {
+		String input="3";
+		
+		assertThatThrownBy(() -> game.userEndInputCheck(input))
+		        .isInstanceOf(IllegalArgumentException.class)
+		        .hasMessageContaining("1 또는 2만 입력합니다.");
+	}
+
+}
