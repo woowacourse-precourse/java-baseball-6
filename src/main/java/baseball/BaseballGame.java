@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import static baseball.Error.*;
 
 public class BaseballGame {
     final public static int numLength = 3;
@@ -12,21 +13,21 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do game();
-        while(reGame()==1);
+        while(reGame());
 
         System.out.println("게임을 종료합니다.");
-        return;
     }
 
     public void game(){
         List<Integer> computerNumList = getRandomList();
-        List<Integer> resultList = new ArrayList<>();
+        List<Integer> resultList;
 
         do{
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> playerNumList = getPlayerList();
             resultList = compareNumList(playerNumList, computerNumList);
-
+            System.out.println(playerNumList);
+            System.out.println(computerNumList);
         }while(!printResults(resultList));
     }
 
@@ -43,10 +44,9 @@ public class BaseballGame {
         return ranNumList;
     }
 
-    public int reGame(){
+    public boolean reGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        return Integer.parseInt(input);
+        return getGameState();
     }
 
     public List<Integer> getPlayerList(){
@@ -97,5 +97,22 @@ public class BaseballGame {
             System.out.println("낫싱");
 
         return false;
+    }
+
+    public boolean getGameState(){
+        String input;
+        int inputToInt;
+
+        try{
+            input = Console.readLine();
+            inputToInt = Integer.parseInt(input);
+        }catch (Exception e){
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+
+        if(!GAME_STATE.contains(inputToInt))
+            throw new IllegalArgumentException("1과 2의 숫자만 입력 가능합니다.");
+
+        return true;
     }
 }
