@@ -50,7 +50,6 @@ public class BaseballGame {
 
             outputView.printInputMessage();
             String playerInput = inputView.getInputLine();
-            System.out.println(playerInput);
             if (!validator.gameInputVaildate(playerInput))
                 throw new IllegalArgumentException();
             outputView.printInputMessage(playerInput);
@@ -100,7 +99,6 @@ public class BaseballGame {
 
     public Boolean threeStrike() {
         int strikeCount = counter.getStrikeCount();
-        System.out.println(strikeCount);
         if (strikeCount == Constant.MAX_DIGIT) {
             return true;
         }
