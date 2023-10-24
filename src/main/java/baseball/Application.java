@@ -2,9 +2,9 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        ComputerFunction computerFunction = new ComputerFunction();
-        BaseballGame game = new BaseballGame(computerFunction);
-        
+        NumberManager numberManager = new ComputerFunction();
+        BaseballGame game = new BaseballGame(numberManager);
+
         game.run();
     }
 }

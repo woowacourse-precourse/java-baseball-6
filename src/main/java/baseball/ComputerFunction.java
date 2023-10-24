@@ -6,10 +6,10 @@ import java.util.List;
 import static baseball.NumberInfo.*;
 import static baseball.Message.*;
 
-public class ComputerFunction {
+public class ComputerFunction implements NumberManager{
     UserFunction userFunction = new UserFunction();
 
-    public List<Integer> createRandomNumber(){
+    public List<Integer> createNumber(){
         List<Integer> randomNumber = new ArrayList<>();
 
         while(randomNumber.size() < COUNT.getNumberInfo()){

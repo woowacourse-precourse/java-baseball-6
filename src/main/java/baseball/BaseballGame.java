@@ -4,11 +4,12 @@ import java.util.List;
 
 import static baseball.NumberInfo.*;
 import static baseball.Message.*;
-public class BaseballGame {
-    private final ComputerFunction computerFunction;
 
-    public BaseballGame(ComputerFunction computerFunction) {
-        this.computerFunction = computerFunction;
+public class BaseballGame {
+    private final NumberManager numberManager;
+
+    public BaseballGame(NumberManager numberManager) {
+        this.numberManager = numberManager;
     }
 
     public void run(){
@@ -25,8 +26,8 @@ public class BaseballGame {
     }
 
     private void playGame(){
-        List<Integer> randomNumberlist = computerFunction.createRandomNumber();
-        computerFunction.countCalculate(randomNumberlist);
+        List<Integer> randomNumberlist = numberManager.createNumber();
+        numberManager.countCalculate(randomNumberlist);
     }
 
     private boolean askRestartGame(){
