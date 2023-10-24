@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,6 +32,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 컴퓨터 랜덤값 입력
+        computer = new ArrayList<>();
         inputComputer();
 
         while (true) {
@@ -40,6 +42,7 @@ public class Application {
             // 사용자 랜덤값 입력
             System.out.print("숫자를 입력해주세요 : ");
             String userString = Console.readLine();
+            user = new ArrayList<>();
             inputUser(userString);
             // 값 비교
             compareValue();
