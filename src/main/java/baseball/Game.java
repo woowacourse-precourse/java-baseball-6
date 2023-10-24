@@ -22,13 +22,13 @@ public class Game {
     public void init(){
         this.status = Status.START;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(status != Status.TERMINATED){
+        while(this.status != Status.TERMINATED){
             playGame();
         }
     }
 
     private void playGame(){
-        switch (status) {
+        switch (this.status) {
             case START -> start();
             case PROGRESS -> progress();
             case FINISH -> finish();
@@ -37,7 +37,7 @@ public class Game {
 
     private void start(){
         computer.generateRandNums();
-        status = Status.PROGRESS;
+        this.status = Status.PROGRESS;
         progress();
     }
     private void progress(){
