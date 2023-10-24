@@ -37,4 +37,9 @@ public class GameUtil {
 
         return ball;
     }
+
+    public String showHint() {
+
+        return null;
+    }
 }
