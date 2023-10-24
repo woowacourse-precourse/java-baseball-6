@@ -5,14 +5,29 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InputView {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    private static InputView instance;
+    private BufferedReader br;
+
+    private InputView() {
+        br = new BufferedReader(new InputStreamReader(System.in));
+    }
+
+    public static InputView getInstance() {
+        if (instance == null) {
+            instance = new InputView();
+        }
+        return instance;
+    }
+
     public String inputNumber(){
         try {
             return br.readLine();
         } catch (IOException e) {
-            return "-1"; //?
+            return "-1";
         }
     }
+
     public String restartInputNumber(){
         try {
             String restartNumber = br.readLine();

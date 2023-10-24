@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import baseball.view.OutputView;
+
+import java.io.IOException;
+
 public class GameFlowController {
 
     private GameController gameController;
@@ -7,6 +11,7 @@ public class GameFlowController {
         gameController = new GameController();
     }
     public void startGame() {
+
         gameController.startGame();
         boolean playAgain = gameController.ynReStart();
         if(playAgain){
@@ -14,4 +19,5 @@ public class GameFlowController {
             this.startGame();
         }
     }
+
 }

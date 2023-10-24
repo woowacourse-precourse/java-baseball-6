@@ -24,6 +24,7 @@ public class LogicController {
         scoreboard.put("ball",0);
         scoreboard.put("strike",0);
         int[] computerNumber = convertStringToIntArray(computer.getComputerNumber());
+//        System.out.println(Arrays.toString(computerNumber));
         int[] userNumber = convertStringToIntArray(userInput);
         for (int i = 0; i < computerNumber.length; i++) {
             if (computerNumber[i] == userNumber[i]) scoreboard.put("strike",scoreboard.get("strike")+1);

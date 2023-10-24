@@ -3,7 +3,13 @@ package baseball.controller;
 import baseball.validation.NumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.Scanner;
+
 public class GameController {
     private LogicController logicController;
     private InputView inputView;
@@ -15,19 +21,19 @@ public class GameController {
     public GameController(){
         this.logicController = new LogicController();
         this.outputView = new OutputView();
-        this.inputView = new InputView();
+        this.inputView = InputView.getInstance();
         this.numberValidator = new NumberValidator();
         this.computerController = new ComputerController();
     }
 
     public void startGame() {
-        outputView.displayMessage("숫자 야구 게임을 시작합니다.");
         computerController.setGameClearNumber();
         do{
             outputView.nolineDisplayMessage("숫자를 입력해주세요 : ");
             String userInput = inputView.inputNumber();
             numberValidator.isValidNumber(userInput);
             if(logicController.judge(userInput)){
+                outputView.displayMessage("3스트라이크");
                 outputView.displayMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 setEndGame(true);
             }else {
