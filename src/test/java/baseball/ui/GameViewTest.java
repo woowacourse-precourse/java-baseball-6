@@ -37,7 +37,7 @@ class GameViewTest {
         AtomicInteger count = new AtomicInteger(0);
         GameController mockGameControllerOnce = getGameController(() -> count.getAndIncrement() < 1);
         GameView gameView = new GameView(mockGameControllerOnce, new UserInputValidator(), () -> "123",
-                new ResultFormatStringCreatorImpl());
+                new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
 
         gameView.start();
 
@@ -80,7 +80,7 @@ class GameViewTest {
     private GameView getGameView(GameController gameController) {
         return new GameView(gameController, new UserInputValidator(), () -> {
             return "123";
-        }, new ResultFormatStringCreatorImpl());
+        }, new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
     }
 
     private static GameController getGameController(BooleanSupplier booleanSupplier) {

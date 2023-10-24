@@ -8,19 +8,21 @@ public class GameView {
     private final GameController gameController;
     private final UserInputValidator validator;
     private final InputComponent inputComponent;
+    private final OutputComponent outputComponent;
     private final ResultFormatStringCreator creator;
 
     public GameView(GameController gameController, UserInputValidator validator, InputComponent inputComponent,
-                    ResultFormatStringCreator creator) {
+                    OutputComponent outputComponent, ResultFormatStringCreator creator) {
         this.gameController = gameController;
         this.validator = validator;
         this.inputComponent = inputComponent;
+        this.outputComponent = outputComponent;
         this.creator = creator;
     }
 
     public void start() {
         gameController.start();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        outputComponent.print("숫자 야구 게임을 시작합니다.\n");
         guessUntilCorrect();
     }
 
@@ -28,11 +30,11 @@ public class GameView {
         while (gameController.isStillWrong()) {
             guess();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        outputComponent.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
     private void guess() {
-        System.out.print("숫자를 입력해주세요 : ");
+        outputComponent.print("숫자를 입력해주세요 : ");
         String validUserAnswer = validator.check(inputUserAnswer());
         Map<String, Integer> resultMap = gameController.checkAnswer(validUserAnswer);
         System.out.println(creator.toString(resultMap));
