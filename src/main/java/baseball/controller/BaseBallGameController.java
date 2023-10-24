@@ -19,10 +19,10 @@ public class BaseballGameController {
     }
 
     public void play() {
-        outputView.printGameStart();
+        Round round;
         Computer computer = new Computer();
         String computerNumber = computer.getSecretNumber();
-        Round round;
+        outputView.printGameStart();
         do {
             String playerNumber = inputView.getSuggestedNumber();
             InputValidator.validatePlayerNumber(playerNumber);
