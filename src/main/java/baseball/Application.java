@@ -27,7 +27,6 @@ public class Application {
     }
 
     public static int PlayBall(List<Integer> inputValueList, List<Integer> randomValueList) {
-        List<Integer> checkingIndex = new ArrayList<>();
         int ball = 0;
         int strike = 0;
 
@@ -62,7 +61,6 @@ public class Application {
                 System.out.print("\n숫자 3자리를 이어서 작성 하시오 : ");
                 break;
             case 1:
-                System.out.println("step1");
                 System.out.print("\n숫자 3자리를 이어서 작성 하시오 : ");
                 break;
             case 2:
@@ -112,9 +110,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int step = 0;
-        int checkInput = 0;
         int input;
-        List<Integer> createdInputNumber = new ArrayList<>();
+        List<Integer> createdInputNumber;
         List<Integer> createdRandomNumber = new ArrayList<>();
 
         while(step != 2) {
