@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.constants.Constants;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,27 +16,13 @@ public class Computer {
     public static Computer create() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < Constants.NUMBERS_SIZE) {
-            int randomNumber = generateRandomNumber();
-            addNumber(randomNumbers, randomNumber);
+            int randomNumber = Util.generateRandomNumber();
+            Util.addNumber(randomNumbers, randomNumber);
         }
         return new Computer(randomNumbers);
     }
 
     public List<Integer> getComputer() {
         return computerNumbers;
-    }
-
-    private static int generateRandomNumber() {
-        return Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
-    }
-
-    private static void addNumber(List<Integer> numbers, int number) {
-        if (!isDuplicatedNumber(numbers, number)) {
-            numbers.add(number);
-        }
-    }
-
-    private static boolean isDuplicatedNumber(List<Integer> numbers, int number) {
-        return numbers.contains(number);
     }
 }
