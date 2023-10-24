@@ -1,9 +1,9 @@
 package baseball.domain;
 
+import static baseball.constant.GameConstant.ALL_STRIKE;
 import static baseball.constant.GameConstant.BALL;
 import static baseball.constant.GameConstant.NOTHING;
 import static baseball.constant.GameConstant.STRIKE;
-import static baseball.constant.GameConstant.THREE_STRIKE;
 
 /**
  * 게임 결과 도메인
@@ -30,7 +30,7 @@ public class GameResult {
     }
 
     public boolean gameEnd() {
-        return !(strikeCount == THREE_STRIKE);
+        return !(strikeCount == ALL_STRIKE);
     }
 
 
