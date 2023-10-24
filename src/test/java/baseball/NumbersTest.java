@@ -14,15 +14,15 @@ class NumbersTest {
         List<Integer> numbers1 = List.of(1, 2, 3, 4, 5);
         List<Integer> numbers2 = List.of(1, 2);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers1));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers2));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Numbers.fromInputNumbers(numbers1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Numbers.fromInputNumbers(numbers2));
     }
 
     @Test
     void 중복된_숫자가_있으면_예외를_던진다() {
         List<Integer> numbers = List.of(1, 1, 2);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Numbers.fromInputNumbers(numbers));
     }
 
     @Test
@@ -30,8 +30,8 @@ class NumbersTest {
         List<Integer> numbers1 = List.of(10, 2, 4);
         List<Integer> numbers2 = List.of(0, 3, 5);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers1));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers2));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Numbers.fromInputNumbers(numbers1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Numbers.fromInputNumbers(numbers2));
     }
 
     @Test
@@ -39,8 +39,8 @@ class NumbersTest {
         List<Integer> answerNumbers = List.of(1, 2, 3);
         List<Integer> inputNumbers = List.of(1, 4, 3);
 
-        Numbers computerNumbers = new Numbers(answerNumbers);
-        Numbers playerNumbers = new Numbers(inputNumbers);
+        Numbers computerNumbers = Numbers.fromInputNumbers(answerNumbers);
+        Numbers playerNumbers = Numbers.fromInputNumbers(inputNumbers);
 
         assertThat(computerNumbers.isSamePosition(playerNumbers, 0)).isEqualTo(true);
     }
@@ -50,8 +50,8 @@ class NumbersTest {
         List<Integer> answerNumbers = List.of(1, 2, 3);
         List<Integer> inputNumbers = List.of(3, 4, 6);
 
-        Numbers computerNumbers = new Numbers(answerNumbers);
-        Numbers playerNumbers = new Numbers(inputNumbers);
+        Numbers computerNumbers = Numbers.fromInputNumbers(answerNumbers);
+        Numbers playerNumbers = Numbers.fromInputNumbers(inputNumbers);
 
         assertThat(computerNumbers.isSameNumber(playerNumbers, 0)).isEqualTo(true);
     }

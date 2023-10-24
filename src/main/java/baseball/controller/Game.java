@@ -16,7 +16,7 @@ public class Game {
     public Game(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        computerNumbers = new Numbers();
+        computerNumbers = Numbers.createRandomNumbers();
     }
 
     public void playOnce() {
@@ -27,7 +27,7 @@ public class Game {
 
     public void getGameResult() {
         do {
-            Numbers playerNumbers = new Numbers(inputView.createPlayerNumber());
+            Numbers playerNumbers = Numbers.fromInputNumbers(inputView.createPlayerNumber());
             Referee referee = new Referee(computerNumbers);
 
             int strike = referee.countStrike(playerNumbers);
