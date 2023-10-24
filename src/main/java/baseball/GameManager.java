@@ -13,7 +13,6 @@ public class GameManager {
         this.computer = computer;
     }
 
-    // 이 메소드를 실행하면 게임을 시작합니다.
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
@@ -22,7 +21,7 @@ public class GameManager {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
-            if (!isRetry(input)) break; // TODO
+            if (!isRetry(input)) break;
             computer.setNumber();
         }
     }
@@ -67,5 +66,13 @@ public class GameManager {
     // strike의 개수를 받아 게임이 끝났는지 판단해줍니다.
     public boolean isEnd(int strike) {
         return strike == NUMBER_LENGTH;
+    }
+
+    public boolean isRetry(String input) {
+        return switch (input) {
+            case "1" -> true;
+            case "2" -> false;
+            default -> throw new IllegalArgumentException("1이나 2를 입력 해 주세요.");
+        };
     }
 }
