@@ -76,10 +76,9 @@ public class ApplicationTest {
                 result[0]++;
             } else if (computer.contains(check.get(i))) {
                 result[1]++;
-            } else {
             }
-
         }
+
         return result;
     }
 
@@ -87,11 +86,12 @@ public class ApplicationTest {
         int strikes = result[0];
         int balls = result[1];
 
-        if (strikes == 0 && balls == 0) {
+        String output = (strikes > 0) ? strikes + "스트라이크 " : "";
+        output += (balls > 0) ? balls + "볼" : "";
+
+        if (output.isEmpty()) {
             System.out.println("낫싱");
         } else {
-            String output = (strikes > 0) ? strikes + "스트라이트 " : "";
-            output += (balls > 0) ? balls + "볼" : "";
             System.out.println(output);
         }
     }
