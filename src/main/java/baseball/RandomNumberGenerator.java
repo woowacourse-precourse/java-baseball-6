@@ -12,7 +12,6 @@ public class RandomNumberGenerator {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
-                System.out.println(randomNumber);
             }
         }
 

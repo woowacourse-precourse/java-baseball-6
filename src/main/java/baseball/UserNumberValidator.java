@@ -45,7 +45,7 @@ public class UserNumberValidator {
     }
 
     private void checkNumericValue(char userNumber) {
-        if (Character.isDigit(userNumber)) {
+        if (Character.isAlphabetic(userNumber)) {
             throw new IllegalArgumentException("숫자가 아닌 문자는 들어올 수 없습니다");
         }
     }
