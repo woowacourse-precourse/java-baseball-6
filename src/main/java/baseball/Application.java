@@ -109,4 +109,16 @@ public class Application {
         return balls;
     }
 
+    private static List<Integer> changeArr(String number) {
+
+        String[] nArr = number.split("");
+
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < MAX_COUNT; i++) {
+            numbers.add(Integer.parseInt(nArr[i]));
+        }
+        return numbers;
+
+    }
+
 }
