@@ -10,6 +10,8 @@ import java.util.List;
 public class Application {
 
     private static final int NUMBER_SIZE = 3;
+    private static final int CONTINUE_CHOICE = 1;
+    private static final int EXIT_CHOICE = 2;
 
     private static void playBaseball() {
         int numOfBall, numOfStrike;
@@ -60,11 +62,16 @@ public class Application {
     private static List<Integer> getPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
+
+        if (playerInput.length() != NUMBER_SIZE)
+            throw new IllegalArgumentException("세자리 입력해야 합니다.");
+
         try {
             return Arrays.stream(playerInput.split(""))
-                    .map(Integer::parseInt).toList();
+                    .map(Integer::parseInt)
+                    .toList();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
+            throw new IllegalArgumentException("입력값은 숫자여야 합니다.");
         }
     }
 
@@ -81,15 +88,21 @@ public class Application {
 
     private static int askToContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int choice = Integer.parseInt(Console.readLine());
-        if (choice != 1 && choice != 2) {
+        String continueOrNot = Console.readLine();
+
+        if (!isValidChoice(continueOrNot)) {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
-        return choice;
+
+        return Integer.parseInt(continueOrNot);
+    }
+
+    private static boolean isValidChoice(String choice) {
+        return (choice.equals(String.valueOf(CONTINUE_CHOICE)) || choice.equals(String.valueOf(EXIT_CHOICE)));
     }
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        do playBaseball(); while(askToContinue() == 1);
+        do playBaseball(); while(askToContinue() == CONTINUE_CHOICE);
     }
 }
