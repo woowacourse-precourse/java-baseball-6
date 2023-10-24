@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 컴퓨터의 랜덤 숫자, 유저가 입력한 숫자
+ */
 public class GameNumber {
 
     private List<Integer> computer;
@@ -19,12 +22,12 @@ public class GameNumber {
 
     public boolean validateUserNumber() {
         Set<Integer> uniqueElements = new HashSet<>();
-        if (user.size() != NUM_LENGTH) {
+        if (user.size() != NUM_LENGTH) {    // 세 자리가 아니면 false
             return false;
         }
         for (Integer value : user) {
-            if (uniqueElements.add(value)) continue;
-            if (value >= 1 && value <= 9) continue;
+            if (uniqueElements.add(value)) continue;    // 서로 다르지 않으면 false
+            if (value >= 1 && value <= 9) continue;     // 숫자가 아니면 false
             return false;
         }
         return true;
