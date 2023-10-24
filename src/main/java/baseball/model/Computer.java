@@ -2,7 +2,6 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Computer {

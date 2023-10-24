@@ -43,5 +43,5 @@
 - GameController에 비즈니스 로직 적용
 
 <p align="center">
-  <img width="912" alt="image" src="https://github.com/woowacourse-precourse/java-baseball-6/assets/105579811/a84a114b-d398-468f-99d4-939d66f38ddd"/>
+  <img width="969" alt="image" src="https://github.com/woowacourse-precourse/java-baseball-6/assets/105579811/6e5427c3-d8f1-4a38-888a-a6e11b8cab25"/>
 </p>
