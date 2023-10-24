@@ -6,28 +6,11 @@ import java.util.List;
 
 public class NumberBaseballGameComputerPlayer {
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public NumberBaseballGameComputerPlayer(List<Integer> numbers, BaseballGameRules gameRules) {
-        validateNumbers(numbers, gameRules);
+        gameRules.validateNumbers(numbers);
         this.numbers = numbers;
-    }
-
-    private void validateNumbers(List<Integer> numbers, BaseballGameRules gameRules) {
-        if (numbers.size() != gameRules.getNumberCount()) {
-            throw new IllegalArgumentException("컴퓨터가 가지고 있는 숫자의 개수가 게임 규칙과 일치하지 않습니다.");
-        }
-
-        for (int number : numbers) {
-            if (number < gameRules.getMinNumber() || number > gameRules.getMaxNumber()) {
-                throw new IllegalArgumentException("컴퓨터의 숫자에 하나 이상의 숫자가 허용된 범위를 벗어났습니다.");
-            }
-        }
-
-        long uniqueNumberCount = numbers.stream().distinct().count();
-        if (uniqueNumberCount != numbers.size()) {
-            throw new IllegalArgumentException("컴퓨터의 숫자들 중 중복된 숫자가 있습니다.");
-        }
     }
 
     public int getNumbersSize() {
