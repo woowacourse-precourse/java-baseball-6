@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static baseball.game.Validator.validateCommand;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -45,6 +46,21 @@ class ValidatorTest {
     @DisplayName("입력숫자검증_중복숫자_예외발생")
     void validate_NotUniqueLetter() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> Validator.validate("111"));
+    }
+
+    @Test
+    @DisplayName("재시작 정상 입력")
+    void replayCommand() {
+        assertThat(validateCommand("1")).isEqualTo(true);
+        assertThat(validateCommand("2")).isEqualTo(false);
+
+    }
+
+    @Test
+    @DisplayName("재시작 예외처리")
+    void wrongReplayCommand() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Validator.validateCommand("3"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Validator.validateCommand("abcde"));
     }
 
 

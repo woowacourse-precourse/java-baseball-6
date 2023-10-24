@@ -38,6 +38,7 @@
 
 ## 재시작/종료
 
-`askReplay()` : 사용자에게 재시작 여부를 묻는다. 재시작할 경우 true를 종료인 경우 false를 반환한다.
-* 예외 처리 : 
-이 때 1, 2 외의 다른 입력이 들어오면 `IllegalArgumentException` 을 발생시킨다. 
+`askReplay()` : 사용자에게 재시작 여부를 묻는다. 재시작할 경우 true를 종료인 경우 false를 반환한다. 
+
+예외 처리 
+* `validateCommand(String input)`: 1, 2 외의 다른 입력이 들어오면 `IllegalArgumentException` 을 발생시킨다. 
