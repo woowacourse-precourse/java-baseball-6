@@ -25,7 +25,23 @@ public class NumberBaseball implements Game {
     @Override
     public String processTurn(String input) {
         validateGameInput(input);
-        return null;
+
+        initializeBaseballResult();
+        String[] userInput = input.split("");
+        HashSet<String> userInputSet = new HashSet<>(List.of(userInput));
+
+        for (int i = 0; i < ANSWER_LENGTH; i++) {
+            if (userInput[i].equals(answer[i])) {
+                baseballResult.put(ResultType.STRIKE, baseballResult.get(ResultType.STRIKE) + 1);
+            } else if (userInputSet.contains(userInput[i])) {
+                baseballResult.put(ResultType.BALL, baseballResult.get(ResultType.BALL) + 1);
+            } else {
+                baseballResult.put(ResultType.OUT, baseballResult.get(ResultType.OUT) + 1);
+            }
+        }
+
+        this.isFinishGame = baseballResult.get(ResultType.STRIKE) == ANSWER_LENGTH;
+        return this.gameResultToString();
     }
 
     @Override
