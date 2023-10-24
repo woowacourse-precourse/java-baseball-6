@@ -10,11 +10,11 @@
 
 ## 사용자의 정답 예측값 입력
  - camp.nextstep.edu.missionutils.Console의 readLine()으로 사용자가 값을 입력
- - isValidNumber 메서드로 입력값의 유효 여부를 판단
+ - isValidStringNumber 메서드로 입력값의 유효 여부를 판단
    - isNumberNaturalDigit 메서드로 입력된 숫자가 1~9사이의 숫자인지 여부를 확인
    - isValidLength 메서드로 입력된 숫자가 유효한 길이인지 여부를 확인
    - sameNumberCheck 메서드로 입력된 숫자 안의 중복 여부를 확인
- - stringToIntegerList 메서드로 숫자 문자열을 입력 받아 각 자릿수를 int 타입으로 가지는 리스트로 반환
+ - stringToIntegerList 메서드로 string 타입의 숫자 문자열을 입력 받아 각 자릿수를 int 타입으로 가지는 리스트로 반환
  - 유효하지 않은 숫자일 경우 IllegalArgumentException을 발생시킨 후 애플리케이션을 종료
  
 

@@ -14,9 +14,11 @@ public class GameService {
     private final Number num = new Number();
     private final ValidCheckService validCheckService = new ValidCheckService();
 
+    private final List<Integer> computerNumber = new ArrayList<>();
+
     //컴퓨터 숫자 생성
     public  List<Integer> generateRandomNumber(int length) {
-        List<Integer> computerNumber = new ArrayList<>();
+        computerNumber.clear();
         while (computerNumber.size() < length) {
             int randomNumber = Randoms.pickNumberInRange(num.MIN_NUM, num.MAX_NUM);
             if (!computerNumber.contains(randomNumber)) {
