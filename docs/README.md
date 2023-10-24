@@ -2,9 +2,9 @@
 
 ## ▶️ 구현할 기능 목록
 
-### Opponent(상대방)✅
-- [x] initialiser 구현
-  - [x] `generateRandomNumber` 메서드가 유효한 랜덤수를 생성할 때까지 반복하여 초기화 하는 함수 생성
+### Opponent(상대방)
+- ✅ initialiser 구현
+  - ✅ `generateRandomNumber` 메서드가 유효한 랜덤수를 생성할 때까지 반복하여 초기화 하는 함수 생성
 - ✅ generateRandomNumber 메서드 구현
   - ✅ 1부터 9까지 서로 다른 수로 이루어진 3자리의 무작위 수 생성
   - ✅ 생성된 random number와 중복인 숫자가 리스트 내 존재하는지 검사 후 추가
@@ -13,12 +13,12 @@
   - ✅ 생성된 3자리의 숫자가 범위 내의 숫자인 지 확인 : 범위 내 숫자가 아니면 false를 반환
   - ✅ 생성된 3자리의 숫자에 중복 된 값이 있는 지 확인 : 중복된 값이 있으면 false를 반환
   - ✅ 상기의 3가지 validate를 모두 통과하면 true를 반환
-- [x] checkStrike 메서드 구현
-  - [x] 컴퓨터가 생성한 랜덤 수와 사용자가 입력한 수의 값과 위치가 모두 동일하면 strike의 개수를 1씩 증가(strike++)
-  - [x] 그 결과 도출된 strike의 값을 반환
-- [x] checkBall 메서드 구현
-  - [x] 컴퓨터가 생성한 랜덤 수와 사용자가 입력한 수의 값이 같지만 위치는 다른 경우 ball의 개수를 1씩 증가(ball++)
-  - [x] 그 결과 도출된 ball의 값을 반환
+- ✅ checkStrike 메서드 구현
+  - ✅ 컴퓨터가 생성한 랜덤 수와 사용자가 입력한 수의 값과 위치가 모두 동일하면 strike의 개수를 1씩 증가(strike++)
+  - ✅ 그 결과 도출된 strike의 값을 반환
+- ✅ checkBall 메서드 구현
+  - ✅ 컴퓨터가 생성한 랜덤 수와 사용자가 입력한 수의 값이 같지만 위치는 다른 경우 ball의 개수를 1씩 증가(ball++)
+  - ✅ 그 결과 도출된 ball의 값을 반환
 
 ### Game(게임)
 - [x] initialiser 구현

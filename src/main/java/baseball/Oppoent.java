@@ -13,6 +13,14 @@ public class Oppoent {
     private static final boolean VALID_FAILED = false;
     List<Integer> randomNumbers;
 
+    public Oppoent() {}
+
+    public void initialiser() {
+        do{
+            generateRandomNumber();
+        } while (validateNumbers(randomNumbers) == VALID_FAILED);
+    }
+
     private void generateRandomNumber() {
         randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < DESIGNED_NUM) {
@@ -38,12 +46,21 @@ public class Oppoent {
         return VALID_SUCCESS;
     }
 
-    private int checkStrike(List<Integer> userNumbers) {
-        int count = 0;
+    public int checkStrike(List<Integer> userNumbers) {
+        int strike = 0;
         for (int i = 0; i < DESIGNED_NUM; i++) {
             if (userNumbers.get(i).equals(randomNumbers.get(i)))
-                count++;
+                strike++;
         }
-        return count;
+        return strike;
+    }
+
+    public int checkBall(List<Integer> userNumbers) {
+        int ball = 0;
+        for (int i = 0; i < DESIGNED_NUM; i++) {
+            if (randomNumbers.get(i).equals(userNumbers.get(i))) continue;
+            if (userNumbers.contains(randomNumbers.get(i))) ball++;
+        }
+        return ball;
     }
 }
