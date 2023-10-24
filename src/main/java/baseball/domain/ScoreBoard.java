@@ -8,45 +8,45 @@ public class ScoreBoard {
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
 
-    private int balls;
-    private int strikes;
+    private int ballCount;
+    private int strikeCount;
 
     public ScoreBoard() {
-        balls = 0;
-        strikes = 0;
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     public int getBalls() {
-        return balls;
+        return ballCount;
     }
 
     public int getStrikes() {
-        return strikes;
+        return strikeCount;
     }
 
     public void setScoreBoard(int balls, int strikes) {
-        this.balls = balls;
-        this.strikes = strikes;
+        this.ballCount = balls;
+        this.strikeCount = strikes;
     }
 
     public boolean isNothing() {
-        return balls == 0 && strikes == 0;
+        return ballCount == 0 && strikeCount == 0;
     }
 
     public boolean isOnlyBall() {
-        return balls > 0 && strikes == 0;
+        return ballCount > 0 && strikeCount == 0;
     }
 
     public boolean isOnlyStrike() {
-        return balls == 0 && strikes > 0;
+        return ballCount == 0 && strikeCount > 0;
     }
 
     public boolean isThreeStrike() {
-        return strikes == BALL_SIZE;
+        return strikeCount == BALL_SIZE;
     }
 
     @Override
     public String toString() {
-        return balls + BALL + " " + strikes + STRIKE;
+        return ballCount + BALL + " " + strikeCount + STRIKE;
     }
 }
