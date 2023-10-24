@@ -10,7 +10,6 @@ public class Application {
     public static void main(String[] args)  {
 
         BaseBallGame baseBallGame = new BaseBallGame(new Player());
-        System.out.println(START_MESSAGE);
         baseBallGame.startGame();
 
     }

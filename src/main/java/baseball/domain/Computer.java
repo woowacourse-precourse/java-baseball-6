@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static baseball.domain.BaseBallGame.*;
 
@@ -44,7 +43,7 @@ public class Computer {
             }
             resultArr[BALL_INDEX]++;
         }
-        return Arrays.stream(resultArr).collect(Collectors.toList());
+        return Arrays.stream(resultArr).toList();
     }
 
 

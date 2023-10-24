@@ -22,6 +22,7 @@ public class BaseBallGame {
 
 //    게임 시작 및 재시작
     public void startGame(){
+        System.out.println(START_MESSAGE);
         int restart;
         do{
             this.computer = Computer.create();
@@ -51,22 +52,46 @@ public class BaseBallGame {
     }
 
 
+//    사용자가 입력한 숫자에 대한 결과값 콘솔로 출력
     private void printResult(List<Integer> resultList){
         StringBuilder sb = new StringBuilder();
-        if(resultList.get(OUT_INDEX) == resultList.size()){
-            System.out.println(NOT_THING);
+        if(isOut(resultList)){
+            System.out.println(NOT_THING_MESSAGE);
             return ;
         }
 
-        sb.append(resultList.get(BALL_INDEX)!=0? resultList.get(BALL_INDEX)+BALL_MESSAGE+" ":"");
-        sb.append(resultList.get(STRIKE_INDEX)!=0? resultList.get(STRIKE_INDEX)+STRIKE_MESSAGE:"");
+        sb.append(getBallMessage(resultList));
+        sb.append(getStrikeMessage(resultList));
 
         System.out.println(sb.toString());
     }
 
+//    사용자가 모든 숫자를 맞췄는지 확인
     private boolean checkResult(List<Integer> resultList){
         return resultList.get(STRIKE_INDEX) == resultList.size();
     }
+
+//    아웃인지 확인
+    private boolean isOut(List<Integer> resultList){
+        return resultList.get(OUT_INDEX) == resultList.size();
+    }
+
+//    볼 스코어에 대한 메세지 만들기
+    private String getBallMessage(List<Integer> resultList){
+        if(resultList.get(BALL_INDEX)==0){
+            return "";
+        }
+        return resultList.get(BALL_INDEX)+BALL_MESSAGE+" ";
+    }
+
+//    스트라이크 스코어에 대한 메세지 만들기
+private String getStrikeMessage(List<Integer> resultList){
+    if(resultList.get(STRIKE_INDEX)==0){
+        return "";
+    }
+    return resultList.get(STRIKE_INDEX)+STRIKE_MESSAGE;
+
+}
 
 
 
