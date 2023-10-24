@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.service.BallService;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BallService ballService = new BallService();
+        ballService.init();
+        ballService.start();
     }
 }
