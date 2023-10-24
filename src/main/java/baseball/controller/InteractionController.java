@@ -8,4 +8,10 @@ public class InteractionController {
         // TODO input data validate logic
         return inputData;
     }
+
+    public Integer readChoiceData() {
+        String choiceData = Console.readLine();
+        // TODO choice data validate logic
+        return Integer.valueOf(choiceData);
+    }
 }
