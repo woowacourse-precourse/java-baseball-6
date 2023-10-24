@@ -5,13 +5,28 @@ import baseball.domain.ball.Balls;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-    public Balls read() {
+    private Input() {
+    }
+
+    private static class InputHelper {
+        private static final Input INSTANCE = new Input();
+    }
+
+    public static Balls read() {
+        return Input.InputHelper.INSTANCE.checkRead();
+    }
+
+    private Balls checkRead() {
         String userInput = Console.readLine();
 
         return Converter.convert(userInput);
     }
 
-    public boolean isContinue() {
+    public static boolean isContinue() {
+        return Input.InputHelper.INSTANCE.checkContinue();
+    }
+
+    private boolean checkContinue() {
         return switch (Console.readLine()) {
             case "1" -> true;
             case "2" -> {
