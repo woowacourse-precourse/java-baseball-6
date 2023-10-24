@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
 
         Game game = new Game();
-        game.gameStart();
+        game.start();
 
     }
 }
@@ -17,8 +17,19 @@ public class Application {
 class Game {
     boolean gameContinue = true;
 
-    void gameStart() {
+    void start() {
         gameContinue = true;
+        List computer = createComputerNumber();
+
+        while (gameContinue) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int userNumber = Integer.parseInt(Console.readLine());
+            List user = checkUserInput(userNumber);
+            printRusult(computer, user);
+        }
+    }
+
+    List<Integer> createComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (computer.size() < 3) {
@@ -27,16 +38,12 @@ class Game {
                 computer.add(randomNumber);
             }
         }
-        while (gameContinue) {
-            UserTurn(computer);
-        }
+        return computer;
     }
 
-    void UserTurn(List computer) {
+    List<Integer> checkUserInput(int userNumber) {
         List<Integer> user = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
 
-        int userNumber = Integer.parseInt(Console.readLine());
         if (userNumber >= 1000 || userNumber <= 0) {
             throw new IllegalArgumentException();
         }
@@ -45,9 +52,14 @@ class Game {
         user.add((userNumber % 100) / 10);
         user.add((userNumber % 100) % 10);
 
-        CheckCount checkcount = new CheckCount();
-        int strikeResult = checkcount.Strike(computer, user);
-        int ballResult = checkcount.Ball(computer, user);
+        return user;
+
+    }
+
+    void printRusult(List<Integer> computer, List<Integer> user) {
+        Counter counter = new Counter();
+        int strikeResult = counter.countStrike(computer, user);
+        int ballResult = counter.countBall(computer, user);
 
         if (strikeResult == 3) {
             System.out.println("3스트라이크");
@@ -64,11 +76,12 @@ class Game {
         }
     }
 
+
     void restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String checkRestartNum = Console.readLine();
         if (checkRestartNum.equals("1")) {
-            gameStart();
+            start();
         } else {
             gameContinue = false;
         }
@@ -76,32 +89,23 @@ class Game {
 
 }
 
-class CheckCount {
-    int strikeCount = 0;
-    int ballCount = 0;
-
-    int Strike(List computer, List user) {
-        if (computer.get(0) == user.get(0)) {
-            strikeCount++;
-        }
-        if (computer.get(1) == user.get(1)) {
-            strikeCount++;
-        }
-        if (computer.get(2) == user.get(2)) {
-            strikeCount++;
+class Counter {
+    int countStrike(List<Integer> computer, List<Integer> user) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strikeCount++;
+            }
         }
         return strikeCount;
     }
 
-    int Ball(List computer, List user) {
-        if (computer.contains(user.get(0)) && !(computer.get(0) == user.get(0))) {
-            ballCount++;
-        }
-        if (computer.contains(user.get(1)) && !(computer.get(1) == user.get(1))) {
-            ballCount++;
-        }
-        if (computer.contains(user.get(2)) && !(computer.get(2) == user.get(2))) {
-            ballCount++;
+    int countBall(List<Integer> computer, List<Integer> user) {
+        int ballCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
+                ballCount++;
+            }
         }
         return ballCount;
     }
