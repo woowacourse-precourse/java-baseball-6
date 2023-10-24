@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -54,7 +55,18 @@ public class Game {
     }
 
     private boolean checkAnswer(String input) {
+        List<Integer> submittedNumList = Arrays.stream(input.split(""))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .toList();
 
+        int[] result = judge(submittedNumList);
+
+        // 판단 결과에서 strike의 개수가 3이면 true 반환
+        if (result[0] == 3)
+            return true;
+
+        return false;
     }
 
     private int[] judge(List<Integer> submittedList) {
