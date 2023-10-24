@@ -67,7 +67,6 @@ public class Application {
                         strike += 1;
                     }
                 }
-
                 for (int j = 0; j < computer.size(); j++) {
                     for (int k = 0; k < splitNum.size(); k++) {
                         if (computer.get(j) == splitNum.get(k)) {
@@ -75,7 +74,6 @@ public class Application {
                         }
                     }
                 }
-
                 if (strike == 0 && (ball - strike) == 0) {
                     System.out.println("낫싱");
                 } else if (strike != 0 && (ball - strike) == 0){
