@@ -7,13 +7,10 @@ import baseball.view.OutputView;
 public class GameMainController {
 
     private static final String THREESTRIKE = "3스트라이크";
-
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
     private final GameService gameService = new GameService();
 
     public GameMainController() {
-        inputView.startBaseballGame();
+        InputView.startBaseballGame();
     }
 
     public void startGame() {
@@ -29,14 +26,14 @@ public class GameMainController {
     public void playGame() {
         boolean correctAnswer = false;
 
-        while(!correctAnswer) {
-            inputView.requestUserInput();
+        while (!correctAnswer) {
+            InputView.requestUserInput();
             String resultMessage = gameService.playGame();
-            outputView.printResultMessage(resultMessage);
+            OutputView.printResultMessage(resultMessage);
 
-            if(resultMessage.equals(THREESTRIKE)) {
-                outputView.printCorrectAnswer();
-                inputView.requestGameState();
+            if (resultMessage.equals(THREESTRIKE)) {
+                OutputView.printCorrectAnswer();
+                InputView.requestGameState();
                 correctAnswer = true;
             }
         }

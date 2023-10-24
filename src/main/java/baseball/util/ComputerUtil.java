@@ -1,7 +1,6 @@
 package baseball.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -13,8 +12,8 @@ public class ComputerUtil {
     private static final int NUMBER_SIZE = 3;
 
     /*
-    * 3자리 숫자 생성 (중복X)
-    * */
+     * 3자리 숫자 생성 (중복X)
+     * */
     public List<Integer> generateComputerNumber() {
         LinkedHashSet<Integer> computerNumber = new LinkedHashSet<>();
 

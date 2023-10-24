@@ -4,7 +4,6 @@ import baseball.util.ComputerUtil;
 import baseball.util.MessageConverter;
 import baseball.util.UserUtil;
 import baseball.validation.InputNumberValidator;
-import baseball.view.InputView;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +17,6 @@ public class GameService {
     private final UserUtil userUtil = new UserUtil();
     private final MessageConverter messageConverter = new MessageConverter();
     private final InputNumberValidator inputNumberValidator = new InputNumberValidator();
-    private final InputView inputView = new InputView();
 
     /*
      * 게임 초기설정 메서드
