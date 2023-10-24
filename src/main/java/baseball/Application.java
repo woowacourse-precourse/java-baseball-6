@@ -155,8 +155,8 @@ public class Application {
     }
 
     public static boolean checkOutOfRangeNumber(List<Integer> numbers) {
-        for(int i=0; i<numbers.size(); i++) {
-            if(numbers.get(i).equals(0)) {
+        for (Integer number : numbers) {
+            if (number.equals(0)) {
                 return true;
             }
         }
