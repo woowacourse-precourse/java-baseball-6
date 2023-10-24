@@ -1,38 +1,40 @@
 package baseball;
 
 import baseball.view.View;
-import baseball.view.format.Format;
+import baseball.view.ViewType;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BaseBallGame {
-
-    private Ball ball;
     private View view;
-    private Map<String, Format> formatMap;
+    private Process process;
 
     public BaseBallGame() {
-        this.ball = new Ball();
         this.view = new View();
-        loadFormats();
-    }
-
-    private void loadFormats() {
-        formatMap = new HashMap<>();
-
+        this.process = new Process(3);
     }
 
     public void start() {
+        view.println(ViewType.START.getType());
         while (true) {
-            ball.createRandomBall(3);
+            round();
+            view.println(ViewType.RESTART.getType());
+            String isRestart = view.getInput();
+            if (isRestart.equals("2")) {
+                break;
+            }
         }
-        // close();
+        close();
     }
 
-    public void round() {
+    private void round() {
         while (true) {
-           
+            view.print(ViewType.ROUND.getType());
+            if (!process.isCorrectBall(view.getInput())) {
+                view.println(process.getCurrentHint().toString());
+            } else {
+                view.println(ViewType.END.getType());
+                break;
+            }
         }
     }
 
