@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class AnswerMaker {
-    private final List<Integer> answer;
+    private List<Integer> answer;
 
-    public AnswerMaker(int min, int max) {
+    public void makeAnswer(int min, int max) {
         this.answer = new ArrayList<>(makeThreeDifferentNumbers(min, max));
     }
 
