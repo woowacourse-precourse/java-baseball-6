@@ -28,4 +28,8 @@ public class User {
         return new User(readIntegerList);
     }
 
+    public List<Integer> getInputNumberList() {
+        return numbers;
+    }
+
 }
