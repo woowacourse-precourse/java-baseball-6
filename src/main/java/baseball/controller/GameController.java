@@ -71,6 +71,7 @@ public class GameController {
         if(!Models.askRestart(input)){
             return true;
         }
+        isPossible = true;
         return false;
     }
 }
