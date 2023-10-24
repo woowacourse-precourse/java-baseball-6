@@ -101,7 +101,8 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        showln("right answer for test : " + String.join("", computer.stream().map(String::valueOf).toList())); // 나중에 지워야 함.
+        // 테스트용 숫자
+       //  showln("right answer for test : " + String.join("", computer.stream().map(String::valueOf).toList()));
         return computer;
     }
 }
