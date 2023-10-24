@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
 import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
+import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT2;
 import static baseball.status.ErrorCode.INVALID_LENGTH_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -147,5 +148,21 @@ class GameTest {
 
         assertThat(input).isEqualTo("1");
         assertThat(input2).isEqualTo("2");
+    }
+
+    @Test
+    @DisplayName("잘못된 입력_게임 종료 시 1, 2 이외의 숫자나 문자 입력")
+    void handleGameChoiceTest2() {
+        Game game = new Game();
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class, () -> game.getReplayOrOverInput("a"));
+        IllegalArgumentException exception2 = assertThrows(
+                IllegalArgumentException.class, () -> game.getReplayOrOverInput("3"));
+        IllegalArgumentException exception3 = assertThrows(
+                IllegalArgumentException.class, () -> game.getReplayOrOverInput("12"));
+
+        assertThat(INVALID_FORMAT_INPUT2.getMsg()).isEqualTo(exception.getMessage());
+        assertThat(INVALID_FORMAT_INPUT2.getMsg()).isEqualTo(exception2.getMessage());
+        assertThat(INVALID_FORMAT_INPUT2.getMsg()).isEqualTo(exception3.getMessage());
     }
 }
