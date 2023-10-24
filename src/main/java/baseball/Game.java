@@ -9,6 +9,10 @@ public class Game {
 
     private int checkFinishNum = 1;
 
+    private static final int BALL_MIN_NUM = 1;
+
+    private static final int BALL_MAX_NUM = 9;
+
     private static final int RESTART_NUM = 1;
 
     private static final int FINISH_NUM = 2;
@@ -97,7 +101,7 @@ public class Game {
 
     private void makeComputerBall() {
         while (computer.size() < THREE_NUM && restart) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(BALL_MIN_NUM, BALL_MAX_NUM);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
