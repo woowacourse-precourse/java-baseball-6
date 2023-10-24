@@ -14,7 +14,7 @@ public class ShootBall {
 
     //(3)번 기능
     public void inputNumGenerator(){
-        System.out.print("숫자를 입력해주세요");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         validNumInspect(input);
         int input_num;
