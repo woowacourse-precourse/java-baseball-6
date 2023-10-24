@@ -3,8 +3,8 @@ package baseball.util;
 import baseball.domain.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 public class BaseballNumberGenerator {
 
@@ -13,19 +13,18 @@ public class BaseballNumberGenerator {
     private static final int NUMBER_COUNT = 3;
 
     public BaseballNumber generate() {
-        Set<Integer> uniqueNumbers = generateUniqueRandomNumbers();
-
-        Integer[] numbersArray = uniqueNumbers.toArray(new Integer[0]);
-        return new BaseballNumber(numbersArray[0], numbersArray[1], numbersArray[2]);
+        List<Integer> randomNumbers = getRandomNumbers();
+        return new BaseballNumber(randomNumbers.get(0), randomNumbers.get(1), randomNumbers.get(2));
     }
 
-    private Set<Integer> generateUniqueRandomNumbers() {
-        Set<Integer> uniqueNumbers = new HashSet<>();
-
-        while (uniqueNumbers.size() < NUMBER_COUNT) {
-            uniqueNumbers.add(Randoms.pickNumberInRange(START_RANGE, END_RANGE));
+    private List<Integer> getRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < NUMBER_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
-
-        return uniqueNumbers;
+        return numbers;
     }
 }
