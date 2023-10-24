@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.BaseballGame.ANSWER_DIGIT;
+
 import java.util.StringJoiner;
 
 public class HintScore {
@@ -37,5 +39,9 @@ public class HintScore {
 
     private boolean isNothing() {
         return ball == 0 && strike == 0;
+    }
+
+    public boolean isGameOver() {
+        return strike == ANSWER_DIGIT;
     }
 }

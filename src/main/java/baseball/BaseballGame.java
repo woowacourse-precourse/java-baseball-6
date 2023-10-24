@@ -12,7 +12,7 @@ public class BaseballGame {
 
     private static final String SEPARATOR = "";
 
-    private static final Integer ANSWER_DIGIT = 3;
+    public static final Integer ANSWER_DIGIT = 3;
     private static final Integer NOTHING_MATCH_INDEX = -1;
 
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
