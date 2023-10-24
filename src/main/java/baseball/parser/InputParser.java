@@ -2,7 +2,7 @@ package baseball.parser;
 
 import baseball.domain.ball.BallNumber;
 import baseball.domain.game.GameStatus;
-import baseball.exception.InvalidGameStatusNumberInput;
+import baseball.exception.InvalidGameStatusNumberInputException;
 import baseball.validator.InputValidator;
 import collection.Triple;
 import java.util.Arrays;
@@ -27,7 +27,7 @@ public final class InputParser {
         final GameStatus gameStatus = GameStatus.of(input);
 
         return switch (gameStatus) {
-            case UNKNOWN -> throw new InvalidGameStatusNumberInput();
+            case UNKNOWN -> throw new InvalidGameStatusNumberInputException();
             default -> gameStatus;
         };
     }
