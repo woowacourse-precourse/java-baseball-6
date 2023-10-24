@@ -28,7 +28,7 @@ public class Game {
         playGame(computer);
     }
 
-    private int playGame(List<Integer> computer) {
+    private void playGame(List<Integer> computer) {
         int ball;
         int strike = 0;
         while (strike != 3) {
@@ -38,7 +38,6 @@ public class Game {
             printer.printGameResult(ball, strike);
         }
         printer.printCorrect();
-        return strike;
     }
 
     private boolean askRestartOrExit() {
