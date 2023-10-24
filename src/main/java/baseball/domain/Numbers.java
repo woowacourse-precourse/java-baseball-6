@@ -24,14 +24,18 @@ public class Numbers {
 
 	public int countStrike(Numbers inputNumbers) {
 		return (int)IntStream.range(0, NUMBERS_LENGTH)
-			.filter(i -> numbers.get(i).equals(inputNumbers.numbers.get(i)))
+			.filter(i -> valueOfIndex(i).equals(inputNumbers.valueOfIndex(i)))
 			.count();
 	}
 
 	public int countBall(Numbers inputNumbers) {
 		return (int)IntStream.range(0, NUMBERS_LENGTH)
-			.filter(i -> numbers.contains(inputNumbers.numbers.get(i)))
-			.filter(i -> !Objects.equals(numbers.get(i), inputNumbers.numbers.get(i)))
+			.filter(i -> numbers.contains(inputNumbers.valueOfIndex(i)))
+			.filter(i -> !Objects.equals(valueOfIndex(i), inputNumbers.valueOfIndex(i)))
 			.count();
+	}
+
+	private Integer valueOfIndex(int position) {
+		return numbers.get(position);
 	}
 }
