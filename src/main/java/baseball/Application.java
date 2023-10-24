@@ -39,6 +39,21 @@ public class Application {
         }
     }
 
+    // 스트라이크 & 볼 계산 로직
+    public String checkStrikesOrBall(int[] randomNumbers, int[] playerNumbers) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < LENGTH; i++) {
+            if (randomNumbers[i] == playerNumbers[i]) {
+                strikes++;
+            } else if (checkBall(playerNumbers, randomNumbers[i])) {
+                balls++;
+            }
+        }
+        return getResultMessage(strikes, balls);
+    }
+
     // 게임 재시작 여부를 물어보는 메서드
     private boolean askForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -53,21 +68,6 @@ public class Application {
             System.out.println("올바른 입력이 아닙니다. 게임 종료");
             return false; // 게임 종료
         }
-    }
-
-    // 스트라이크 & 볼 계산 로직
-    public String checkStrikesOrBall(int[] randomNumbers, int[] playerNumbers) {
-        int strikes = 0;
-        int balls = 0;
-
-        for (int i = 0; i < LENGTH; i++) {
-            if (randomNumbers[i] == playerNumbers[i]) {
-                strikes++;
-            } else if (checkBall(playerNumbers, randomNumbers[i])) {
-                balls++;
-            }
-        }
-        return getResultMessage(strikes, balls);
     }
 
     // ball 계산 메서드 분리
