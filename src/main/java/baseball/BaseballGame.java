@@ -18,8 +18,8 @@ public class BaseballGame {
 
     public static final Integer ANSWER_DIGIT = 3;
 
-    private static final int NUMBER_MIN_RANGE = 1;
-    private static final int NUMBER_MAX_RANGE = 9;
+    public static final int NUMBER_MIN_RANGE = 1;
+    public static final int NUMBER_MAX_RANGE = 9;
 
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
