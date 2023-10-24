@@ -20,6 +20,7 @@ public class BaseBallGameController {
     }
 
     public void startGame() {
+        baseballOutputView.printMessage(BaseballGameMessage.START_GAME);
         while (true) {
             playSingleGame();
             if (!decideNextAction()) {
@@ -29,7 +30,6 @@ public class BaseBallGameController {
     }
 
     private void playSingleGame() {
-        baseballOutputView.printMessage(BaseballGameMessage.START_GAME);
 
         List<Integer> targetNumber = baseBallService.generateRandomNumbers();
 
