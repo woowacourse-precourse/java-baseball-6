@@ -3,6 +3,8 @@ package baseball.controller;
 import baseball.domain.BaseballGame;
 import baseball.domain.BaseballGameResult;
 import baseball.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BaseballController {
 
@@ -26,6 +28,7 @@ public class BaseballController {
         do {
             View.printText(REQUIRE_NUMBER);
             String input = View.readLine();
+            checkValidation(input);
             result = baseballGame.play(input);
             View.printText(result.toString());
         } while (!result.isEnded());
@@ -36,6 +39,25 @@ public class BaseballController {
 
         if ("1".equals(restartFlag)) {
             startGame();
+        }
+    }
+
+    private void checkValidation(String input) throws IllegalArgumentException {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        Set<Character> set = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            if (c < '0' || c > '9') {
+                throw new IllegalArgumentException();
+            }
+
+            if (set.contains(c)) {
+                throw new IllegalArgumentException();
+            }
+
+            set.add(c);
         }
     }
 }

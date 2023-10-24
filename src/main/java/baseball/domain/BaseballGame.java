@@ -2,9 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballGame {
 
@@ -16,7 +14,6 @@ public class BaseballGame {
     }
 
     public BaseballGameResult play(String input) {
-        checkValidation(input);
         this.balls = convert(input);
         List<BaseballType> types = getBallTypes();
         BaseballGameResult baseballGameResult = makeGameResult(types);
@@ -36,25 +33,6 @@ public class BaseballGame {
         }
 
         return balls;
-    }
-
-    private void checkValidation(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-
-        Set<Character> set = new HashSet<>();
-        for (char c : input.toCharArray()) {
-            if (c < '0' || c > '9') {
-                throw new IllegalArgumentException();
-            }
-
-            if (set.contains(c)) {
-                throw new IllegalArgumentException();
-            }
-
-            set.add(c);
-        }
     }
 
     private List<BaseballType> getBallTypes() {
