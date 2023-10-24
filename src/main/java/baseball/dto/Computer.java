@@ -1,5 +1,8 @@
 package baseball.dto;
 
+import baseball.service.Converter;
+import baseball.service.Generator;
+
 /**
  * 숫자 야구의 상대방인 컴퓨터 정보를 저장할 클래스
  */
@@ -13,29 +16,18 @@ public class Computer {
      */
     private int[] computerNumberBall;
 
+    /**
+     * Computer 생성자
+     * <p>
+     * 난수 생성, 난수 정보를 담고 있는 배열 초기화
+     */
     public Computer() {
+        this.input = new Generator().generateNum();
+        this.computerNumberBall = Converter.convert(input);
     }
 
     /**
-     * 난수 반환
-     *
-     * @return 난수
-     */
-    public String getInput() {
-        return input;
-    }
-
-    /**
-     * 난수 설정
-     *
-     * @param input 난수
-     */
-    public void setInput(String input) {
-        this.input = input;
-    }
-
-    /**
-     * 난수의 각 자리의 수와 위치 정보를 저장한 배열 반환
+     * 난수 정보를 저장한 배열 반환
      *
      * @return computerNumberBall
      */
@@ -43,12 +35,5 @@ public class Computer {
         return computerNumberBall;
     }
 
-    /**
-     * 난수의 각 자리의 수와 위치 정보를 저장한 배열 설정
-     *
-     * @param computerNumberBall 난수의 각 자리의 수와 위치 정보를 저장한 배열
-     */
-    public void setComputerNumberBall(int[] computerNumberBall) {
-        this.computerNumberBall = computerNumberBall;
-    }
+
 }
