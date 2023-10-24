@@ -10,7 +10,7 @@ public class Output {
     }
 
     public void hint(Map<String, Integer> result) {
-        if (result.get("스트라이크") == ZERO && result.get("볼") == ZERO) {
+        if (result.get(KeyType.STRIKE.getKey()) == ZERO && result.get(KeyType.BALL.getKey()) == ZERO) {
             System.out.print("낫싱");
         }
         for (Map.Entry<String, Integer> entry : result.entrySet()) {

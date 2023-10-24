@@ -27,10 +27,10 @@ public class Computer {
     }
 
     public Map<String, Integer> compareNumbers(List<Integer> targetNumbers, List<Integer> userGuess) {
-        result.put("볼", 0);
-        result.put("스트라이크", 0);
+        result.put(KeyType.BALL.getKey(), 0);
+        result.put(KeyType.STRIKE.getKey(), 0);
         if (targetNumbers.equals(userGuess)) {
-            result.put("스트라이크", 3);
+            result.put(KeyType.STRIKE.getKey(), 3);
             return result;
         }
         checkStrikeAndBall(targetNumbers, userGuess);
@@ -41,9 +41,9 @@ public class Computer {
         for (int targetDigit : targetNumbers) {
             int i = targetNumbers.indexOf(targetDigit);
             if (targetDigit == userGuess.get(i)) {
-                result.put("스트라이크", result.get("스트라이크") + 1);
+                result.put(KeyType.STRIKE.getKey(), result.get(KeyType.STRIKE.getKey()) + 1);
             } else if (isContains(targetNumbers, userGuess.get(i))) {
-                result.put("볼", result.get("볼") + 1);
+                result.put(KeyType.BALL.getKey(), result.get(KeyType.BALL.getKey()) + 1);
             }
         }
     }
