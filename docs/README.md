@@ -19,10 +19,10 @@
    ### 입력 검증
    - [x] length==3인지
    - [ ] 재시작/종료를 뜻하는 1 혹은 2인지 검증
-   - [x] 숫자로 이루어져 있는지 검증
-   - [x] 서로 다른 숫자인지 검증
-   - [x] 잘못된 값을 입력한 경우 IllegalArgumentException 예외 발생
-   - [x] 예외 발생시 어플리케이션 종료
+   - [ ] 숫자로 이루어져 있는지 검증
+   - [ ] 서로 다른 숫자인지 검증
+   - [ ] 잘못된 값을 입력한 경우 IllegalArgumentException 예외 발생
+   - [ ] 예외 발생시 어플리케이션 종료
  
 ## 출력
 - [ ] CLI 출력
@@ -44,3 +44,9 @@
 ## 고려사항
 - [ ] 스캐너 클로즈 해줘야하는지?
 - [ ] 메인 어플리케이션 말고 어디에 흐름이 있어야할지?
+-  [ ] 기능 리스트 수정
+-  [ ] GameController.baseballGame 리팩토링 필요
+- [ ] OutputController.printResult 리팩토링
+- [ ] Game.initAnswer이랑 Game.countBall 리팩토링 필요
+-  [ ] Input.checkAllDiffer 리팩토링 필요
+- 
