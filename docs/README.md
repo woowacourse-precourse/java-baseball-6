@@ -14,16 +14,26 @@
 - RandomNumberCreateUtil
   - [x] 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 생성한다.
 
-- CheckBallAndStrike
+- BaseballManager
   - [x] Ball과 Strike의 상태를 업데이트한다.
   - [x] Ball과 Strike 개수를 알려준다.
 
 - Player
   - [x] 예상된 숫자를 저장한다.
-  - [x] 볼과 스트라이크의 숫자를 계산한다.
 
 - PlayerValidator
   - [x] 입력한 숫자의 중복 검사와 개수를 검증한다.
+
+- BaseballGame
+  - [x] 컴퓨터가 생성한 숫자를 저장한다.
+  - [x] 볼과 스트라이크의 숫자를 계산한다.
+
+- Ball
+  - [x] ball의 개수를 업데이트한다.
+
+- Strike
+  - [x] Strike의 개수를 업데이트한다.
+  - [x] 3 스트라이크인지 판단한다.
 <hr>
 
 ## 상수 목록
