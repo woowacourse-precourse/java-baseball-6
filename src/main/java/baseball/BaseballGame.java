@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.ErrorMessage.INPUT_INVALID_DIGIT;
+import static baseball.ErrorMessage.INPUT_NOT_DISTINCT;
+import static baseball.ErrorMessage.INPUT_NOT_NUMBER;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -18,9 +22,6 @@ public class BaseballGame {
     private static final String PRINT_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String PRINT_IS_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private static final String ERROR_INPUT_NOT_DISTINCT = "입력 숫자는 모두 서로 다른 수여야 합니다.";
-    private static final String ERROR_INPUT_INVALID_DIGIT = "입력 숫자는 세자리여야 합니다.";
-    private static final String ERROR_INPUT_NOT_NUMBER = "입력 형식은 숫자여야합니다.";
 
     public BaseballGame(Computer computer, HintScore hintScore) {
         this.computer = computer;
@@ -61,13 +62,13 @@ public class BaseballGame {
 
     private void validAnswerDistinct(List<Integer> userAnswer) {
         if (userAnswer.stream().distinct().toList().size() != ANSWER_DIGIT) {
-            throw new IllegalArgumentException(ERROR_INPUT_NOT_DISTINCT);
+            throw new IllegalArgumentException(INPUT_NOT_DISTINCT);
         }
     }
 
     private void validAnswerDigit(List<Integer> userAnswer) {
         if (userAnswer.size() != ANSWER_DIGIT) {
-            throw new IllegalArgumentException(ERROR_INPUT_INVALID_DIGIT);
+            throw new IllegalArgumentException(INPUT_INVALID_DIGIT);
         }
     }
 
@@ -75,7 +76,7 @@ public class BaseballGame {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_INPUT_NOT_NUMBER);
+            throw new IllegalArgumentException(INPUT_NOT_NUMBER);
         }
     }
 }

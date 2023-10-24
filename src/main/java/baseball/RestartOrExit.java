@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.ErrorMessage.INVALID_RESTART_INPUT;
+
 import java.util.Arrays;
 
 public enum RestartOrExit {
@@ -10,8 +12,6 @@ public enum RestartOrExit {
     private final Integer inputValue;
     private final boolean isRestart;
 
-    private final static String ERR_INVALID_RESTART_INPUT = "1과 2중에 입력해야합니다.";
-
     RestartOrExit(Integer inputValue, boolean isRestart) {
         this.inputValue = inputValue;
         this.isRestart = isRestart;
@@ -21,7 +21,7 @@ public enum RestartOrExit {
         return Arrays.stream(RestartOrExit.values())
                 .filter(value -> value.getInputValue() == userInput)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(ERR_INVALID_RESTART_INPUT))
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_RESTART_INPUT))
                 .isRestart();
     }
 
