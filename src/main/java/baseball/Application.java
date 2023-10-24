@@ -87,8 +87,5 @@ public class Application {
             else throw new IllegalArgumentException("올바르지 않은 값을 입력했습니다."); // 사용자가 잘못된 값을 입력한 경우 (1,2 가 아닌 값을 입력)
         }
 
-
-
-
     }
 }
