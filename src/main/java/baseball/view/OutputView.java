@@ -1,27 +1,30 @@
 package baseball.view;
 
 public class OutputView {
-
-
     private static final String NOTHING = "0";
     private static final int BALL = 0;
     private static final int STRIKE = 1;
 
     public OutputView(String[] result) {
-        if (!result[BALL].equals(NOTHING) && result[STRIKE].equals(NOTHING))
+        if (!result[BALL].equals(NOTHING) && result[STRIKE].equals(NOTHING)) {
             printOnlyBallCountMessage(result[BALL]);
-        if (result[BALL].equals(NOTHING) && !result[STRIKE].equals(NOTHING))
+        }
+        if (result[BALL].equals(NOTHING) && !result[STRIKE].equals(NOTHING)) {
             printOnlyStrikeCountMessage(result[STRIKE]);
-        if (!result[BALL].equals(NOTHING) && !result[STRIKE].equals(NOTHING))
+        }
+        if (!result[BALL].equals(NOTHING) && !result[STRIKE].equals(NOTHING)) {
             printBallAndStrikeCountMessage(result[BALL], result[STRIKE]);
-        if (result[BALL].equals(NOTHING) && result[STRIKE].equals(NOTHING))
+        }
+        if (result[BALL].equals(NOTHING) && result[STRIKE].equals(NOTHING)) {
             printNothingMessage();
+        }
     }
 
 
     public static void printGameInitMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
 
     public static void printOnlyBallCountMessage(String ball) {
         System.out.println(ball + "볼 ");
