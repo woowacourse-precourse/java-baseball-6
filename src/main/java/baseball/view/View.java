@@ -17,9 +17,11 @@ public class View {
         return input;
     }
 
-    public static void printRestart() {
+    public static String printRestart() {
         System.out.println(END_MESSAGE);
         System.out.println(RESTART_MESSAGE);
+        String input = Console.readLine();
+        return input;
     }
 
 }
