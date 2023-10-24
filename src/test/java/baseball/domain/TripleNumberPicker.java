@@ -1,6 +1,7 @@
-package baseball.domain.ball;
+package baseball.domain;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import number.NumberPicker;
 
@@ -13,10 +14,7 @@ public final class TripleNumberPicker implements NumberPicker {
             final int second,
             final int third
     ) {
-        this.numbers = new LinkedList<>();
-        numbers.add(first);
-        numbers.add(second);
-        numbers.add(third);
+        this.numbers = new LinkedList<>(List.of(first, second, third));
     }
 
     @Override
