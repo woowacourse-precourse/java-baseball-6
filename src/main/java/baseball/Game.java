@@ -1,30 +1,34 @@
 package baseball;
 
+import baseball.constant.Status;
+import baseball.constant.SystemMessage;
 import baseball.util.NumberGenerator;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Game {
 
-    private final Player player;
-    private List<Integer> answer;
+    private List<Integer> computerNumber;
 
-    public Game(Player player) {
-        this.player = player;
+    public void startGame() {
+        GameController.gameStatus = Status.GAME;
+        SystemMessage.NEW.printMessage(GameController.gameStatus);
+        generateNumber();
+        startGameSet();
     }
 
-    private List<Integer> generateNumber() {
+    private void startGameSet() {
+        GameSet gameSet = new GameSet(computerNumber);
+        while (GameController.gameStatus != Status.EXIT) {
+            gameSet.startSet();
+        }
+    }
+
+
+    private void generateNumber() {
         NumberGenerator generator = new NumberGenerator();
-        answer = generator.generate();
-        return answer;
-    }
-
-    private HashMap<String, Integer> scoring() {
-        HashMap<String, Integer> gameScore = new HashMap<>();
-        gameScore.put("볼", 0);
-        gameScore.put("스트라이크", 0);
-        return gameScore;
+        computerNumber = generator.generate();
+        System.out.println("Game.generateNumber : " + computerNumber);
     }
 
 }
