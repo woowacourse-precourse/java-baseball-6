@@ -1,6 +1,6 @@
 package baseball.service;
 
-import static baseball.controller.GameController.NUMBER_SIZE;
+import static baseball.domain.Number.NUMBER_SIZE;
 
 import baseball.domain.Hint;
 import baseball.domain.InputNumber;

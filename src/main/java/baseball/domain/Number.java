@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import static baseball.controller.GameController.NUMBER_SIZE;
 import static baseball.error.Error.DUPLICATION_ERROR;
 import static baseball.error.Error.RANGE_ERROR;
 import static baseball.error.Error.SIZE_ERROR;
@@ -9,6 +8,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Number {
+	public static final int NUMBER_SIZE = 3;
+	public static final int START_NUMBER = 1;
+	public static final int END_NUMBER = 9;
 	private String number;
 
 	public Number(String number) {
@@ -24,7 +26,7 @@ public class Number {
 
 	private void validateRange(String number) {
 		for (char c : number.toCharArray()) {
-			if (c - '0' < 1 || c - '0' > 9) {
+			if (c - '0' < START_NUMBER || c - '0' > END_NUMBER) {
 				throw new IllegalArgumentException(RANGE_ERROR.getMessage());
 			}
 		}

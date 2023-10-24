@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.controller.GameController.NUMBER_SIZE;
+import static baseball.domain.Number.NUMBER_SIZE;
 
 import baseball.view.Parser;
 

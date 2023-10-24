@@ -9,7 +9,7 @@ public class TargetNumber extends Number {
 	}
 
 	public static TargetNumber create(int size) {
-		String randomNumbers = parseNumberListToString(NumberFactory.createRandomNumbers(size));
+		String randomNumbers = parseNumberListToString(NumberFactory.createRandomNumbers());
 		return new TargetNumber(randomNumbers);
 	}
 
