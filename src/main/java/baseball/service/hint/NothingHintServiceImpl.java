@@ -4,6 +4,7 @@ import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
 import baseball.domain.hint.Ball;
 import baseball.domain.hint.HintItem;
+import baseball.domain.hint.Nothing;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class NothingHintServiceImpl implements HintItemService {
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem nothing = new Ball(count);
+        HintItem nothing = new Nothing(count);
 
         return nothing;
     }

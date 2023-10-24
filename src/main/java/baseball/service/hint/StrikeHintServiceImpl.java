@@ -24,7 +24,7 @@ public class StrikeHintServiceImpl implements HintItemService {
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem strike = new Ball(count);
+        HintItem strike = new Strike(count);
 
         return strike;
     }
