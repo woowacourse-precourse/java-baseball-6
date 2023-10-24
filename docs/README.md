@@ -14,7 +14,7 @@
   - `checkDuplicateNum()` : 중복된 숫자가 들어왔는지 체크하는 함수
 
 #### 3. enums
-##### Constans
+##### Constants
 - 게임에 대한 상수값을 관리하는 enum클래스
 
 ### controller
@@ -43,5 +43,9 @@
 
 #### exception
 - 게임 동작시에 발생하는 exception에 대한 여러 예외들을 관리하는 패키지
+  - `invaildInputLengthException` : 입력 길이에 대한 예외 클래스
+  - `duplicateNumberException` : 숫자 중복 입력에 대한 예외 클래스
+  - `numberOutOfRangeException` : 입력 숫자 범위 초과에 대한 예외 클래스
+  - `invalidInputException` : 올바르지 않은 입력에 대한 예외 클래스
 
 
