@@ -57,8 +57,9 @@ public class Application {
         //중복된 수를 입력한 경우
         List<Integer> dup_check = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            if (!dup_check.contains(nums[i])) {
-                dup_check.add(nums[i]);
+            int num = Integer.parseInt(input.substring(i, i + 1));
+            if (!dup_check.contains(num)) {
+                dup_check.add(num);
             } else {
                 throw new IllegalArgumentException();
             }
