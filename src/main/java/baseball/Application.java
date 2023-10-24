@@ -20,6 +20,8 @@ public class Application {
 
         List<Integer> numbers = new ArrayList<>(tempHashSet1);
 
+        System.out.println(numbers);
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
@@ -68,6 +70,16 @@ public class Application {
                     ballCount++;
                 }
             }
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        }
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
         }
     }
 }
