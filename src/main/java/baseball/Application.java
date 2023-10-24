@@ -25,9 +25,9 @@ public class Application {
             }
         }
 
-
-
         List<Integer> userAnswers = new ArrayList<>();
+
+        System.out.print("숫자를 입력해주세요 : ");
 
         String input = Console.readLine();
 
@@ -59,7 +59,18 @@ public class Application {
 
         }
 
+        int strike = 0;
 
+        for (int i = 0; i < randomNumbers.size(); i++) {
+
+            if (randomNumbers.get(i).equals(userAnswers.get(i))) {
+
+                strike++;
+
+            }
+        }
+
+        System.out.println(strike + "스트라이크");
 
     }
 }
