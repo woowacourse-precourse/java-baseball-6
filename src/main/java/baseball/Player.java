@@ -22,6 +22,7 @@ public class Player {
         List<Integer> nums = new ArrayList<>();
         String input = Console.readLine();
         if(input.length()!=3){
+            //System.out.println("there must be only 3 numbers");
             throw new IllegalArgumentException("there must be only 3 numbers");
         }
 
@@ -42,17 +43,13 @@ public class Player {
             //System.out.println("numbers cannot be empty.");
             throw new IllegalArgumentException("numbers cannot be empty.");
         }
-        if(numbers.get(0)==0){
-            //System.out.println("there must be 3 numbers");
-            throw new IllegalArgumentException("there must be 3 numbers");
-        }
         if(numbers.size() != numbers.stream().distinct().count()) {
             //System.out.println("numbers shouldn't be same");
-            throw new IllegalArgumentException("numbers shouldn't be same");
+            throw new IllegalArgumentException("numbers must not be same");
         }
         if(numbers.contains(0)){
             //System.out.println("number cannot be 0.");
-            throw new IllegalArgumentException("number cannot be 0.");
+            throw new IllegalArgumentException("input cannot contain 0.");
         }
     }
 

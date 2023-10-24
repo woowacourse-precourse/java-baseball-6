@@ -6,6 +6,8 @@ public class Restart {
     public void askPlayer(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
+        validateInput(input);
+
         int number = Integer.parseInt(input);
         validateNumber(number);
 
@@ -15,9 +17,14 @@ public class Restart {
         }
     }
 
+    public static void validateInput(String input){
+        if(input == null){
+            throw new IllegalArgumentException("you must choose one option.");
+        }
+    }
     public static void validateNumber(int choice){
         if(!(choice == 1 || choice == 2))
-            throw new IllegalArgumentException("there are only 2 choices. 1 or 2");
+            throw new IllegalArgumentException("you have only 2 choices. 1 or 2");
     }
 
 }
