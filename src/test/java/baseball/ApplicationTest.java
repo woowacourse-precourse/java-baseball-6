@@ -120,7 +120,7 @@ class ApplicationTest extends NsTest {
 
         // when
         for (List<Integer> numList : numInputUser) {
-            resultHint = judge.baseballGameInspection(computerList, numList);
+            resultHint = judge.CheckProgressBaseballGame(computerList, numList);
             hintResult.add(resultHint);
         }
 

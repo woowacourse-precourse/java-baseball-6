@@ -27,7 +27,7 @@ public class Application {
             // resultStr 이 "3스트라이크" 아니면 반복을 한다.
             while (Utill.isNotSameString(hintOfJudge, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
                 userList = inputRanNumOfUser(); // 1. 유저의 입력을 받아서 userList을 얻는다.
-                hintOfJudge = judge.baseballGameInspection(computerList, userList); // 2. judge의 힌트를 얻는다.
+                hintOfJudge = judge.CheckProgressBaseballGame(computerList, userList); // 2. judge의 힌트를 얻는다.
                 System.out.println(hintOfJudge); // 3. 힌트를 출력한다.
             }
 
