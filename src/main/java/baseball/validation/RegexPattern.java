@@ -4,7 +4,6 @@ public enum RegexPattern {
     ONLY_NUMBER("^[0-9]*$"),
     ONE_TO_NINE("[1-9]+");
 
-
     private final String value;
 
     RegexPattern(String value) {

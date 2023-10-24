@@ -1,15 +1,17 @@
 package baseball.controller;
 
+import baseball.common.GameValue;
 import baseball.domain.ComputerNumber;
 import baseball.domain.PlayerNumber;
 import baseball.dto.CountResultDto;
 import baseball.service.CountService;
 import baseball.validation.ErrorMessage;
-import baseball.common.GameValue;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseBallController {
+    private static final String RESTART = "1";
+    private static final String END = "2";
     private final CountService countService;
 
     public BaseBallController(CountService countService) {
@@ -27,10 +29,10 @@ public class BaseBallController {
     public boolean restartGame() {
         OutputView.printRetryMessage();
         String command = InputView.inputRetryCommand();
-        if (command.equals(GameCommand.RESTART.getString())) {
+        if (command.equals(RESTART)) {
             return true;
         }
-        if (command.equals(GameCommand.END.getString())) {
+        if (command.equals(END)) {
             return false;
         }
         throw new IllegalArgumentException(ErrorMessage.RESTART_COMMAND.getMessage());

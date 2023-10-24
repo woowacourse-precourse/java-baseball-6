@@ -1,12 +1,11 @@
 package baseball.view;
 
-import baseball.common.GameValue;
 import baseball.dto.CountResultDto;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
-    private final static String DELIMITER = " ";
+    private static final String DELIMITER = " ";
 
     private OutputView() {
     }
@@ -21,7 +20,7 @@ public class OutputView {
         if (strikeCount != 0) {
             result.add(strikeCount + GameMessage.STRIKE.getMessage());
         }
-        if (strikeCount == GameValue.ZERO.getValue() && ballCount == GameValue.ZERO.getValue()) {
+        if (strikeCount == 0 && ballCount == 0) {
             result.add(GameMessage.NOTHING.getMessage());
         }
         System.out.println(String.join(DELIMITER, result));
