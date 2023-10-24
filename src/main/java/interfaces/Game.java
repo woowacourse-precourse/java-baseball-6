@@ -5,7 +5,7 @@ public interface Game {
 
     String processTurn(String input);
 
-    String toStringResult();
+    String gameResultToString();
 
     void validateGameInput(String input) throws IllegalArgumentException;
 
