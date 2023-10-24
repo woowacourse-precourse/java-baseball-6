@@ -26,5 +26,5 @@
   - [x] 게임 결과 값을 담는 `BallAndStrike` 작성
   - [x] 게임 결과를 계산하는 `BaseBallResult` 객체 작성
 - [ ] 게임 규칙 도메인 작성
-  - [ ] 스트라이크 규칙을 정의한 `StrikeRule` 객체 작성 
+  - [x] 스트라이크 규칙을 정의한 `StrikeRule` 객체 작성 
   - [ ] 볼 규칙을 정의한 `BallRule` 객체 작성
