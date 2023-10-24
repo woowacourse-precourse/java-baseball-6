@@ -3,14 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.HashMap;
-
-enum ScoreType {
-    strike, ball
-}
+import java.util.Set;
 
 public class Application {
+    private static final int STRIKE = 3;
+    private static final int DIGIT_COUNT = 3;
+
     public static void main(String[] args) {
         playGame();
     }
@@ -36,23 +36,23 @@ public class Application {
         String input = Console.readLine();
 
         List<Integer> userNumbers = getUserNumbers(input);
-        ScoreType result = calculateScore(userNumbers, computerNumber);
+        int[] result = calculateScore(userNumbers, computerNumber);
         return printResult(result);
     }
 
     private static List<Integer> getRandomNumber() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
+        while (numbers.size() < DIGIT_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
-                numbers add(randomNumber);
+                numbers.add(randomNumber);
             }
         }
         return numbers;
     }
 
     private static List<Integer> getUserNumbers(String input) {
-        if (input.length() != 3) {
+        if (input.length() != DIGIT_COUNT) {
             throw new IllegalArgumentException("입력은 반드시 세 자리여야 합니다.");
         }
 
@@ -66,60 +66,53 @@ public class Application {
 
         List<Integer> userNumbers = new ArrayList<>();
         for (char c : inputChars) {
-            userNumbers add(Character.getNumericValue(c));
+            userNumbers.add(Character.getNumericValue(c));
         }
         return userNumbers;
     }
 
-    private static ScoreType calculateScore(List<Integer> userNumbers, List<Integer> computerNumber) {
+    private static int[] calculateScore(List<Integer> userNumbers, List<Integer> computerNumber) {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < 3; i++) {
-            if (userNumbers.get(i).equals(computerNumber.get(i)) {
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            if (userNumbers.get(i).equals(computerNumber.get(i))) {
                 strike++;
             } else if (computerNumber.contains(userNumbers.get(i))) {
                 ball++;
             }
         }
 
-        if (strike == 3) {
-            return ScoreType.strike;
-        } else if (ball == 0 && strike == 0) {
-            return null;
-        } else {
-            return ScoreType.ball;
-        }
+        return new int[]{ball, strike};
     }
 
-    private static boolean printResult(ScoreType result) {
-        if (result == ScoreType.strike) {
+    private static boolean printResult(int[] result) {
+        int ball = result[0];
+        int strike = result[1];
+
+        if (strike == STRIKE) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
-        } else if (result == null) {
+        } else if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else {
-            int ballCount = 0;
-            int strikeCount = 0;
-            if (result == ScoreType.ball) {
-                ballCount++;
-            } else {
-                strikeCount++;
-            }
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
         return true;
     }
 
     private static boolean askRestartOrExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String choice = Console.readLine();
-        if ("2".equals(choice)) {
-            System.out.println("게임을 종료합니다.");
-            return true;
-        } else {
-            System.out.println("게임을 새로 시작합니다.");
-            return false;
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
+            if ("2".equals(choice)) {
+                System.out.println("게임을 종료합니다.");
+                return true;
+            } else if ("1".equals(choice)) {
+                System.out.println("게임을 새로 시작합니다.");
+                return false;
+            }
+            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
         }
     }
 }
