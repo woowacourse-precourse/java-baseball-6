@@ -9,27 +9,15 @@ public class GameExecutor {
     private BaseballGame game;
     private ConsoleInput consoleInput;
     private ConsoleLogger consoleLogger;
+    private GameRandom random;
 
     public GameExecutor() {
-        game = new BaseballGame(getRandomNumbers());
+        random = new MissionUtilsGameRandom();
+        game = new BaseballGame(random.sampleDistinctNumbers(1, 9, 3));
         consoleInput = new ConsoleInput();
         consoleLogger = new ConsoleLogger();
     }
 
-    private int[] getRandomNumbers() {
-        Set<Integer> set = new HashSet<>();
-        int[] result = new int[3];
-
-        while (set.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            if(!set.contains(number)){
-                result[set.size()] = number;
-            }
-            set.add(number);
-        }
-
-        return result;
-    }
 
     public void run() {
         game.sayHello(consoleLogger);
@@ -41,7 +29,7 @@ public class GameExecutor {
             if ("2".equals(input)) {
                 break;
             }
-            game = new BaseballGame(getRandomNumbers());
+            game = new BaseballGame(random.sampleDistinctNumbers(1, 9, 3));
         }
     }
 
