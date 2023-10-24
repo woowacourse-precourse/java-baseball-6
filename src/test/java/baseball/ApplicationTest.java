@@ -151,7 +151,7 @@ class ApplicationTest extends NsTest {
         List<Integer> computerList = new ArrayList<>(List.of(1, 2, 3));
 
         // when
-        boolean result = gameStandard.isSamePlaceNumUserAndComputer(computerList, placeIndexOfUser, numIndexPlaceOfUser);
+        boolean result = gameStandard.isSamePlaceNumUser2ComNumList(computerList, placeIndexOfUser, numIndexPlaceOfUser);
 
         // then
         assertThat(result).isEqualTo(expectResult);

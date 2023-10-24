@@ -34,7 +34,7 @@ public class GameStandard {
      * @param numIndexPlaceOfUser 유저가 확인을 원하는 index의 num값
      * @return 만약에 List의 index의 숫자가 numIndexPlaceOfUser와 동일하다면 true
      */
-    public boolean isSamePlaceNumUserAndComputer(List<Integer> computerList, int placeIndexOfUser, int numIndexPlaceOfUser) {
+    public boolean isSamePlaceNumUser2ComNumList(List<Integer> computerList, int placeIndexOfUser, int numIndexPlaceOfUser) {
         int numPlaceIndexOfComputer = computerList.get(placeIndexOfUser);
         
         return Utill.isSameInteger(numPlaceIndexOfComputer, numIndexPlaceOfUser);
