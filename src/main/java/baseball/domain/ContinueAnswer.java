@@ -5,7 +5,6 @@ import baseball.validator.Validator;
 import static baseball.domain.Const.*;
 
 public class ContinueAnswer {
-
     private final Validator validator = new Validator();
     private int answer;
 

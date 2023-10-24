@@ -48,4 +48,3 @@ public class GamePlayer {
         return threeNumbers.get(index);
     }
 }
-

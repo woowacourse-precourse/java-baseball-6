@@ -1,7 +1,6 @@
 package baseball.validator;
 
 public class Validator {
-
     public int parseValidatedInt(String str) {
         int result = 0;
         try {

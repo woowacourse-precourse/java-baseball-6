@@ -8,7 +8,6 @@ import baseball.domain.Result;
 import static baseball.domain.Const.FIXED_ANSWER_CIPHERS;
 
 public class Service {
-
     private final GamePlayer gamePlayer = new GamePlayer();
     private final Computer computer = new Computer();
     private final Result result = new Result();
