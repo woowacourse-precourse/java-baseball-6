@@ -16,7 +16,6 @@ public class Turn {
 
         while (isPlaying) {
             BaseballNumbers baseballNumbers = getBaseballNumbers();
-
             BallCount ballCount = winningNumbers.ballCounting(baseballNumbers);
 
             announceResultOf(ballCount);
