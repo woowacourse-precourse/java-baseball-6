@@ -61,8 +61,6 @@ public class Application {
             } else {
                 System.out.println(nothing);
             }
-            //숫자 야구 게임 test를 위해 임시 사용중인 코드.
-            System.out.println(computer);
         }
     }
 
@@ -79,11 +77,11 @@ public class Application {
 
     public static void runException(String input) {
         if (input == null || input.length() != 3) {
-            throw new IllegalArgumentException("정확히 3자리 숫자를 입력해주세요. 게임을 종료합니다.");
+            throw new IllegalArgumentException("정확히 3자리 숫자를 입력해주세요.");
         }
         for (char ch : input.toCharArray()) {
             if (ch < '0' || ch > '9') {
-                throw new IllegalArgumentException("숫자만 입력해주세요. 게임을 종료합니다.");
+                throw new IllegalArgumentException("숫자만 입력해주세요.");
             }
         }
         checkForDuplicateNumbers(input);
