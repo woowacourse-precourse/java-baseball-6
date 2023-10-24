@@ -8,9 +8,11 @@ import java.util.List;
 public class Baseball {
 
     public static void play() { // 0. 게임을 실행하는 메서드
+        String[] inputNums;
+        List<Integer> answerNums;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        pickThreeNumbers();
-        inputThreeNums();
+        answerNums = pickThreeNumbers();
+        inputNums = inputThreeNums();
     }
 
     public static List<Integer> pickThreeNumbers() { // 1. 컴퓨터가 가질 3개의 값을 초기화하는 메서드
@@ -28,17 +30,19 @@ public class Baseball {
 
     }
 
-    public static String inputThreeNums() { // 3. 사용자로부터 숫자 3개를 입력받는 메서드
+    public static String[] inputThreeNums() { // 3. 사용자로부터 숫자 3개를 입력받는 메서드
         String inputNums;
+        String[] listedInputNums;
         System.out.println("숫자를 입력해주세요 : ");
         inputNums = Console.readLine();
-        return inputNums;
-    }
-
-    public static String[] stringToArray(String inputString) { // 7. 사용자가 입력한 3개의 숫자를 배열로 변환하는 메서드
-        String[] listedInputNums = inputString.split("");
+        listedInputNums = inputNums.split("");
         return listedInputNums;
     }
+
+//    public static String[] stringToArray(String inputString) { // 7. 사용자가 입력한 3개의 숫자를 배열로 변환하는 메서드
+//         = inputString.split("");
+//        return listedInputNums;
+//    }
 
     public static void replayOrExit() { // 4. 게임 재시작 여부를 결정할 숫자를 입력받을 메서드
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
