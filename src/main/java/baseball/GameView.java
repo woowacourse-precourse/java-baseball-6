@@ -15,6 +15,30 @@ public class GameView {
         return gameView;
     }
 
+    //비교 결과 반환
+    public void displayResult(List<Integer> res) {
+        StringBuilder sb = new StringBuilder();
+        int ball = res.get(0);
+        int strike = res.get(1);
+
+        if (ball == 0 && strike == 0) {
+            sb.append("낫싱");
+        }
+        if (ball > 0) {
+            sb.append(ball).append("볼");
+        }
+        if (strike > 0) {
+            if (ball > 0) {
+                sb.append(" ");
+            }
+            sb.append(strike).append("스트라이크");
+            if (strike == 3) {
+                sb.append("\n").append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+        System.out.println(sb);
+    }
+
     //사용자에게 숫자값 입력받기
     public List<Integer> userInput() {
         System.out.print("숫자를 입력해주세요 : ");
