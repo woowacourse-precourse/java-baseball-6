@@ -30,20 +30,15 @@ public class Application {
                 int ball = 0;
                 int strike = 0;
                 for (int m = 0; m < user.size(); m++) {
-                    if (map.containsKey(user.get(m)) == true) {
-                        if (user.get(m) == map.get(user.get(m))) {
-                            strike++;
-                            continue;
-                        }
+                    if (user.get(m) == map.get(user.get(m))) {
+                        strike++;
+                    }
+                    if(user.get(m) != map.get(user.get(m)) && map.containsKey(user.get(m)) == true) {
                         ball++;
                     }
                 }
                 if(strike==3){
-                    System.out.println("3스트라이크\n"
-                            + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
-                            +"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    String userOpinion = Console.readLine();
-                    loof =gameRestartEnd(userOpinion, loof);
+                    loof =gameRestartEnd(loof);
                     break;
                 }
 
@@ -51,8 +46,6 @@ public class Application {
                 System.out.println(judgeResult);
             }
         }
-
-
     }
     public static String ballStrikeResult(int ball, int strike){
         if (ball == 0 && strike == 0) {
@@ -61,7 +54,11 @@ public class Application {
         return ball + "볼 " + strike + "스트라이크";
     }
 
-    public static boolean gameRestartEnd(String userOpinion, boolean loof){
+    public static boolean gameRestartEnd(boolean loof){
+        System.out.println("3스트라이크\n"
+                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                +"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userOpinion = Console.readLine();
         if (userOpinion.equals("2")) {
             return false;
         }
