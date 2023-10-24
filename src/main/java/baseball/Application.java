@@ -11,7 +11,7 @@ public class Application {
         while (!finished) {
             Game game  = new Game(3);
             game.run();
-            String input = Utils.printAndInput("게임을 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Utils.printAndInput(PrintMessage.RE_GAME);
             finished = game.selectRestartOrExit(input);
         }
     }

@@ -51,9 +51,16 @@ public class Player {
     }
 
     public void printResult() {
-        if (strike == 0 && ball == 0) System.out.println("낫싱");
-        else if (strike > 0 && ball == 0) System.out.println(strike + "스트라이크");
-        else if (strike == 0 && ball > 0) System.out.println(ball + "볼");
-        else if (strike > 0 && ball > 0) System.out.println(ball + "볼" + " " + strike + "스트라이크");
+        String result;
+        if (strike == 0 && ball == 0) {
+            result = BaseBall.NOTHING.command();
+        } else if (strike > 0 && ball == 0) {
+            result = strike + BaseBall.STRIKE.command();
+        } else if (strike == 0 && ball > 0) {
+            result = ball + BaseBall.BALL.command();
+        } else {
+            result = ball + BaseBall.BALL.command() + " " + strike + BaseBall.STRIKE.command();
+        }
+        System.out.println(result);
     }
 }

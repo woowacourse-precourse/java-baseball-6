@@ -18,16 +18,16 @@ public class Game {
         List<Integer> computer = createNumbers(size);
         boolean finished = false;
         while (!finished) {
-            String input = Utils.printAndInput("숫자를 입력해주세요 : ");
+            String input = Utils.printAndInput(PrintMessage.INPUT_NUMBER);
             isValidInput(input, size);
             finished = getResult(computer, input, size);
         }
-        System.out.println(size + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(size + PrintMessage.END_GAME);
     }
 
     public boolean selectRestartOrExit(String input) {
         if (!input.equals("1") && !input.equals("2")) {
-            throw new IllegalArgumentException("1 또는 2만 입력해야합니다.");
+            throw new IllegalArgumentException(PrintMessage.ONLY_ONE_OR_TWO);
         }
         return input.equals("2");
     }
@@ -53,11 +53,11 @@ public class Game {
 
     private void isValidInput(String input, int size) {
         if (!Utils.isNaturalNumbers(input)) {
-            throw new IllegalArgumentException("자연수만 입력해야합니다.");
+            throw new IllegalArgumentException(PrintMessage.ONLY_NATURAL_NUMBER);
         } else if (!Utils.isValidSize(input, size)) {
-            throw new IllegalArgumentException("세 개의 수를 입력해야합니다.");
+            throw new IllegalArgumentException(size + PrintMessage.ONLY_THIS_SIZE);
         } else if (!Utils.isNotDuplication(input)) {
-            throw new IllegalArgumentException("중복된 수를 입력했습니다.");
+            throw new IllegalArgumentException(PrintMessage.NOT_DUPLICATE_NUMBER);
         }
     }
 }
