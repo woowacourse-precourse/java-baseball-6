@@ -12,6 +12,7 @@ public class BaseballGameController {
     private final BaseballGameValidateService baseballGameValidateService = new BaseballGameValidateService();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private static final int GAME_END_STRIKE_COUNT = 3;
 
     public void playGame() {
         initGame();
@@ -29,7 +30,7 @@ public class BaseballGameController {
     }
 
     private void inputNumber() {
-        while (baseballGameService.getStrikeCount() != 3) {
+        while (baseballGameService.getStrikeCount() != GAME_END_STRIKE_COUNT) {
             outputView.printInputNumberMessage();
             String inputNumber = inputView.inputNumber();
             baseballGameValidateService.validateInputNumber(inputNumber);
