@@ -20,7 +20,6 @@ public class GameManager {
         Discriminator discriminator = Discriminator.create(computerNumber, guessNumber);
 
         for (int i = START_NUMBER; i < END_NUMBER; i++) {
-
             for (int j = START_NUMBER; j < END_NUMBER; j++) {
                 boolean matchFound = discriminator.match(i, j);
                 if (matchFound) {

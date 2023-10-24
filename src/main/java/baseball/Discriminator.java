@@ -9,8 +9,8 @@ public class Discriminator {
 
     private int ball;
     private int strike;
-    private List<Integer> computerNumber;
-    private List<Integer> guessNumber;
+    private final List<Integer> computerNumber;
+    private final List<Integer> guessNumber;
 
     private Discriminator(final int ball, final int strike,
                          final List<Integer> computerNumber, final List<Integer> guessNumber) {
@@ -42,16 +42,19 @@ public class Discriminator {
     }
 
     public void printGuessResult() {
+        StringBuilder stringBuilder = new StringBuilder();
+
         if (ball == 0 && strike == 0) {
-            System.out.println(NOTHING);
+            stringBuilder.append(NOTHING);
         } else if (ball == 0) {
-            System.out.println(strike + STRIKE);
+            stringBuilder.append(strike).append(STRIKE);
         } else if (strike == 0) {
-            System.out.println(ball + BALL);
+            stringBuilder.append(ball).append(BALL);
         } else {
-            System.out.print(ball + BALL);
-            System.out.println(strike + STRIKE);
+            stringBuilder.append(ball).append(BALL).append(strike).append(STRIKE);
         }
+
+        System.out.println(stringBuilder);
     }
 
     public void strike() {
