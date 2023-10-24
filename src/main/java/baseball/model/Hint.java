@@ -24,4 +24,8 @@ public class Hint {
         }
         return "낫싱";
     }
+
+    public Boolean hasThreeStrike() {
+        return strike == 3;
+    }
 }

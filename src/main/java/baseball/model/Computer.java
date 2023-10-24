@@ -14,4 +14,8 @@ public class Computer {
         hint.compareNumbers(savedNumbers, inputNumbers);
         return hint.generateHint();
     }
+
+    public Boolean isCorrectAnswer() {
+        return hint.hasThreeStrike();
+    }
 }

@@ -22,6 +22,10 @@ public class ComputerController {
         outputView.printHint(hint);
     }
 
+    public Boolean checkCorrectAnswer() {
+        return computer.isCorrectAnswer();
+    }
+
     private List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {

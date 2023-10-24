@@ -30,6 +30,7 @@ public class GameController {
         while (!isCorrectAnswer) {
             List<Integer> inputNumbers = playerController.readAndValidateInputNumbers();
             computerController.provideHint(inputNumbers);
+            isCorrectAnswer = computerController.checkCorrectAnswer();
         }
     }
 
