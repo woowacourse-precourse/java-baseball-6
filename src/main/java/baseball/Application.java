@@ -17,7 +17,7 @@ public class Application {
             }
             else {
                 for (int j = 0; j < answerIntegerArray.length; j++) {
-                    if (inputIntegerArray[i] == answerIntegerArray[j]) {
+                    if ((inputIntegerArray[i] == answerIntegerArray[j]) && (i != j)) {
                         ballHashSet.add(inputIntegerArray[i]);
                         continue;
                     }
@@ -26,6 +26,18 @@ public class Application {
         }
 
         sum = ballHashSet.size();
+
+        return sum;
+    }
+
+    public static int strikeCount(int[] inputIntegerArray,int[] answerIntegerArray) {
+        int sum = 0;
+
+        for (int i = 0; i < answerIntegerArray.length; i++) {
+            if (inputIntegerArray[i] == answerIntegerArray[i]) {
+                sum += 1;
+            }
+        }
 
         return sum;
     }
