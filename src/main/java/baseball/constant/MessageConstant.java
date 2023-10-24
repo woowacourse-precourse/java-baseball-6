@@ -1,6 +1,6 @@
 package baseball.constant;
 
-public enum Message {
+public enum MessageConstant {
 
     INTRO_MESSAGE("숫자 야구 게임을 시작합니다."),
     REQUIRE_USER_INPUT("숫자를 입력해주세요: "),
@@ -12,7 +12,7 @@ public enum Message {
 
     public final String message;
 
-    Message(String s) {
+    MessageConstant(String s) {
         this.message = s;
     }
 }

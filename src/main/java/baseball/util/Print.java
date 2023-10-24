@@ -1,29 +1,29 @@
 package baseball.util;
 
-import baseball.constant.Message;
+import baseball.constant.MessageConstant;
 
 public class Print {
 
     public static void showIntro() {
-        System.out.println(Message.INTRO_MESSAGE.message);
+        System.out.println(MessageConstant.INTRO_MESSAGE.message);
     }
 
     public static void showPredictUserInput() {
-        System.out.print(Message.REQUIRE_USER_INPUT.message);
+        System.out.print(MessageConstant.REQUIRE_USER_INPUT.message);
     }
 
     public static void showPredictResult(int strike, int ball) {
         if (isNothing(strike, ball)) {
-            System.out.println(Message.NOTHING.message);
+            System.out.println(MessageConstant.NOTHING.message);
         }
         if (isNoStrike(strike, ball)) {
-            System.out.println(ball + Message.BALL.message);
+            System.out.println(ball + MessageConstant.BALL.message);
         }
         if (isNoBall(strike, ball)) {
-            System.out.println(strike + Message.STRIKE.message);
+            System.out.println(strike + MessageConstant.STRIKE.message);
         }
         if (isStrikeAndBall(strike, ball)) {
-            System.out.println(ball + Message.BALL.message + " " + strike + Message.STRIKE.message);
+            System.out.println(ball + MessageConstant.BALL.message + " " + strike + MessageConstant.STRIKE.message);
         }
     }
 
@@ -44,10 +44,10 @@ public class Print {
     }
 
     public static void showGameOver() {
-        System.out.println(Message.GAME_OVER.message);
+        System.out.println(MessageConstant.GAME_OVER.message);
     }
 
     public static void showRestartOrExitInput() {
-        System.out.println(Message.RESTART_OR_EXIT.message);
+        System.out.println(MessageConstant.RESTART_OR_EXIT.message);
     }
 }
