@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public sealed class GameNumbers permits Computer, Player {
-    protected static final int GAME_NUMBERS_COUNT = 3;
+    public static final int GAME_NUMBERS_COUNT = 3;
     protected final List<GameNumber> gameNumbers;
 
     protected GameNumbers(List<Integer> numbers) {
@@ -42,5 +42,5 @@ public sealed class GameNumbers permits Computer, Player {
     protected GameNumber getGameNumberAt(int index) {
         return gameNumbers.get(index);
     }
-    
+
 }
