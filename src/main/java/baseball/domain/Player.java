@@ -1,9 +1,6 @@
 package baseball.domain;
 
-public abstract class Player {
-    public int ballCount;
-    public int strikeCount;
-    public int[] baseballNumber;
+import java.util.List;
 
-    abstract void guessBaseballNumber();
+public abstract class Player {
 }
