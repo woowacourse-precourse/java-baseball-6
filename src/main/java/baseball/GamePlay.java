@@ -1,21 +1,32 @@
 package baseball;
-import java.util.List;
 
-import camp.nextstep.edu.missionutils.*; 
+	import camp.nextstep.edu.missionutils.*;
+	
+	import java.util.List;
+	
+	
 public class GamePlay {
 	IllegalDetector detector = new IllegalDetector();
+	
 	AnswerGenerator answers = new AnswerGenerator();
+	
 	PlayerInputAccepter player = new PlayerInputAccepter();
 	
+	PrintMessage print = new PrintMessage();
+	
 	String Gameplay = "1";
+	
 	boolean correct;
 	int ball = 0;
 	int strike = 0;
+	
 	public GamePlay() { 
 		while(Gameplay.equals("1")) {
 			answers.RandomNumGeneration();
 			correct = false;
+			
 			while(!correct) {
+				print.InputMessage();
 				player.ReadNumber();
 				detector.InitialInputLengthDetector(player.ReadNum);
 				player.InputUserNum(player.ReadNum);
@@ -52,20 +63,15 @@ public class GamePlay {
 		strike = 0;
 	}
 	public void Result() {
-		StringBuilder resultMessage = new StringBuilder();
-		if(ball == 0 && strike == 0)
-			resultMessage.append("낫싱");
-		if(ball != 0)
-			resultMessage.append(ball).append("볼").append(" ");
-		if(strike != 0)
-			resultMessage.append(strike).append("스트라이크");
-		System.out.println(resultMessage.toString().trim());
+		print.ResultMessage(ball,strike);
+		
 		if(strike == 3) {
-			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			print.RestartMessage();
 			CheckContinueGame();
 			detector.GameplayDetector(Gameplay);
 			correct = true;
 		}
+		
 		InitialCount();
 		}
 	
