@@ -12,6 +12,10 @@ public enum Strike {
         this.description = description;
     }
 
+    public static Strike fromInt(int value) {
+        return values()[value];
+    }
+
     @Override
     public String toString() {
         return description;

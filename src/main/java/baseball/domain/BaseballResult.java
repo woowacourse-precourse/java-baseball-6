@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballResult {
     private final Strike strikeResult;
     private final Ball ballResult;
@@ -22,20 +25,15 @@ public class BaseballResult {
     }
 
     private String formatResult() {
-        StringBuilder result = new StringBuilder();
-
+        List<String> results = new ArrayList<>();
         if (strikeResult != Strike.ZERO) {
-            result.append(strikeResult);
+            results.add(strikeResult.toString());
         }
-
         if (ballResult != Ball.ZERO) {
-            if (result.length() > 0) {
-                result.append(" ");
-            }
-            result.append(ballResult);
+            results.add(ballResult.toString());
         }
-
-        return result.toString();
+        return String.join(" ", results);
     }
+
 
 }

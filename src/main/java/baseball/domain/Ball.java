@@ -12,6 +12,10 @@ public enum Ball {
         this.description = description;
     }
 
+    public static Ball fromInt(int value) {
+        return values()[value];
+    }
+
     @Override
     public String toString() {
         return description;
