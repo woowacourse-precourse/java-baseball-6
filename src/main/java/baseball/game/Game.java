@@ -40,6 +40,15 @@ public class Game {
         computer.createNumbers();
     }
 
+    public void run() {
+        System.out.println(SYSTEM_START_MASSAGE);
+        do {
+            initGame();
+            playGame();
+            System.out.println(SYSTEM_END_MASSAGE);
+        } while (isGameRestart());
+    }
+
     public void compareNumber() {
         String playerNumString = player.getPlayerNumString();
         char[] playerNumCharArray = playerNumString.toCharArray();
@@ -64,10 +73,13 @@ public class Game {
         if (ball == 0 && strike == 0) {
             System.out.println(SYSTEM_NOTHING_MASSAGE);
         }
-        if (ball != 0) {
-            if (strike == 0) System.out.println(ball + SYSTEM_BALL_MASSAGE);
-            else System.out.print(ball + SYSTEM_BALL_MASSAGE + " ");
+
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball + SYSTEM_BALL_MASSAGE);
+        } else if (ball != 0) {
+            System.out.print(ball + SYSTEM_BALL_MASSAGE + " ");
         }
+
         if (strike != 0) {
             System.out.println(strike + SYSTEM_STRIKE_MASSAGE);
         }
@@ -101,15 +113,6 @@ public class Game {
         }
 
         player.setPlayerNumString(playerNumString);
-    }
-
-    public void run() {
-        System.out.println(SYSTEM_START_MASSAGE);
-        do {
-            initGame();
-            playGame();
-            System.out.println(SYSTEM_END_MASSAGE);
-        } while (isGameRestart());
     }
 
     private boolean threeStrike() {
