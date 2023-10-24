@@ -7,25 +7,31 @@ import java.util.List;
 public class BaseballGame {
     private List<Integer> computerNumberList;
     private List<Integer> userNumberList;
+    private Computer computer;
+    private CompareNumber compareNumber;
+    private int[] compareResult;
+
+    public BaseballGame() {
+        computer = new Computer();
+        compareNumber = new CompareNumber();
+    }
 
     public void start() {
         showStart();
         boolean playAgain = true;
         while (playAgain) {
-            Computer computer = new Computer();
             computerNumberList = computer.generateComputerNumber();
-            showInputUserNumber();
-            userNumberList = getUsetNumberList();
-            CompareNumber compareNumber = new CompareNumber();
-            int[] compareResult = compareNumber.getCompareResult(userNumberList, computerNumberList);
-            showCount(compareResult);
-            if (compareNumber.isStrikeThree()) {
-                isMatchShowFinish(compareResult);
-                playAgain = retry();
+            compareNumber.initCount();
+            while (!compareNumber.isStrikeThree()) {
+                showInputUserNumber();
+                userNumberList = getUsetNumberList();
+                compareResult = compareNumber.getCompareResult(userNumberList, computerNumberList);
+                showCount(compareResult);
             }
+            isMatchShowFinish(compareResult);
+            playAgain = retry();
         }
     }
-
 
     private static void showStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -36,7 +42,7 @@ public class BaseballGame {
     }
 
     private static void showAskRetry() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private static boolean retry() {
@@ -67,7 +73,7 @@ public class BaseballGame {
     private static void showBallCount(int[] compareResult) {
         if (compareResult[0] != 0) {
             if (compareResult[1] != 0) {
-                System.out.println(compareResult[0] + "볼 ");
+                System.out.print(compareResult[0] + "볼 ");
             } else {
                 System.out.println(compareResult[0] + "볼");
             }
