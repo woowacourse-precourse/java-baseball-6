@@ -13,6 +13,10 @@ public class BaseballGame {
     private List<Integer> computer;
     private List<Integer> user;
 
+    public BaseballGame() {
+        view.printStart();
+    }
+
     public void run() {
 
     }
@@ -48,7 +52,7 @@ public class BaseballGame {
         return cnt;
     }
 
-    public void askUser(){
+    public void askUser() {
         this.user = Validator.validate(view.readUser());
     }
 
