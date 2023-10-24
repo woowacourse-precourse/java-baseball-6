@@ -1,5 +1,14 @@
 package constant;
 
+/**
+ * Constants.java
+ * <p>
+ * 사용되는 상수 모음
+ *
+ * @author Lee NaYeon
+ * @since 2023-10-25
+ */
+
 public final class Constants {
     private Constants() {
     }
