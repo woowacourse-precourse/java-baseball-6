@@ -1,7 +1,5 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import java.util.List;
 
 public class BaseballGame {
@@ -9,7 +7,7 @@ public class BaseballGame {
     private static final int MAX_NUMBER_LENGTH = BaseballValues.MAX_NUMBER_LENGTH.getValue();
     private final Computer computer = new Computer();
     private final Player player = new Player();
-    
+
     void start() {
 
         int result = 0;
@@ -124,24 +122,7 @@ public class BaseballGame {
     private void checkAgain() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int answer = 2;
-
-        try {
-            String inputAnswer = readLine();
-
-            if (inputAnswer.length() != 1) {
-                throw new IllegalArgumentException("잘못 입력하셨습니다.");
-            }
-
-            answer = Integer.parseInt(inputAnswer);
-
-            if (answer != 1 && answer != 2) {
-                throw new IllegalArgumentException("잘못 입력하셨습니다.");
-            }
-
-        } catch (Exception e) {
-            throw new IllegalArgumentException("잘못 입력하셨습니다.");
-        }
+        int answer = player.inputWhetherOfGamePlay();
 
         if (answer == 1) {
             start();

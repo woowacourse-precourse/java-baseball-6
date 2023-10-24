@@ -17,10 +17,6 @@ public class Player {
         this.numbers = new ArrayList<>();
     }
 
-    Player(List<Integer> numbers) {
-        this.numbers = numbers;
-    }
-
     List<Integer> getNumbers() {
         return numbers;
     }
@@ -36,6 +32,37 @@ public class Player {
             checkInputNumberRange(number);
 
             numbers.add(number);
+        }
+    }
+
+    int inputWhetherOfGamePlay() {
+        int answer = 2;
+
+        try {
+            String inputAnswer = readLine();
+
+            checkInputAnswerLength(inputAnswer);
+
+            answer = Integer.parseInt(inputAnswer);
+
+            checkValidInputAnswer(answer);
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
+
+        return answer;
+    }
+
+    void checkInputAnswerLength(String inputAnswer) {
+        if (inputAnswer.length() != 1) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
+    }
+
+    void checkValidInputAnswer(int answer) {
+        if (answer != 1 && answer != 2) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
     }
 
