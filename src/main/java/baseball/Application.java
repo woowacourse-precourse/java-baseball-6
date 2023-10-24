@@ -17,6 +17,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        System.out.println(computer);
         return computer;
     }
 
@@ -28,7 +29,7 @@ public class Application {
         try {
             userInputNumber = Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("정수 3자리만 입력해야 합니다.");
+            throw new IllegalArgumentException("정수 3자리만 입력 해야 합니다.");
         }
 
         //입력된 수를 문자열로 변환 후 숫자 배열로 변환
@@ -40,10 +41,10 @@ public class Application {
             arrayPlayerNumber[i] = stringPlayerNumber.charAt(i) - '0';
         }
         if (arrayPlayerNumber.length != 3) {
-            throw new IllegalArgumentException("3자리의 정수가 입력되지 않았습니다.");
+            throw new IllegalArgumentException("3자리의 정수가 입력 되지 않았습니다.");
         }
         if (!checkDuplicateInput(arrayPlayerNumber)) {
-            throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
+            throw new IllegalArgumentException("중복된 수를 입력 하였습니다.");
         }
         return arrayPlayerNumber;
     }
@@ -87,17 +88,45 @@ public class Application {
         return numberOfStrikes;
     }
 
+    public static int judgeGameResult(int countStrike) {
+        int result = 0;
+        int userInputNumber = 0;
+
+        if (countStrike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            userInputNumber = Integer.parseInt(Console.readLine());
+
+            if (userInputNumber == 1) {
+                result = 1;
+            } else if (userInputNumber == 2) {
+                System.out.println("게임 종료");
+                return 2;
+            } else {
+                throw new IllegalArgumentException("1 또는 2를 선택하지 않았습니다.");
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
+        final int MAINTAIN_GAME = 0;
+        final int RESTART_GAME = 1;
         List<Integer> listAnswerNumber = makeRandomNumberList();
         int[] arrayPlayerNumber = null;
+        int gameLoopSign = 0;
         int numberOfStrikes = 0;
 
         System.out.println("숫자 야구 게임을 시작합니다. ");
-        while (true) {
+        while ((gameLoopSign == MAINTAIN_GAME) || (gameLoopSign == RESTART_GAME)) {
+            if (gameLoopSign == RESTART_GAME) {
+                listAnswerNumber = makeRandomNumberList();
+            }
+
             System.out.print("숫자를 입력해주세요: ");
             arrayPlayerNumber = inputAndGetUserNumbers();
             numberOfStrikes = getHintForAnswer(arrayPlayerNumber, listAnswerNumber);
+            gameLoopSign = judgeGameResult(numberOfStrikes);
         }
-
     }
 }
