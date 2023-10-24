@@ -35,7 +35,7 @@ public class CompareNumber {
         return num == that.num && pos == that.pos;
     }
 
-    @Override// 한 객체가 동일한 pos, num 을 갖는다면 동일한 해시코드를 반환한다.
+    @Override
     public int hashCode() {// 한 클래스에서 동일한 num, pos 를 갖는다면 동일한 해시코드를 반환한다.
         return Objects.hash(pos, num);
     }
