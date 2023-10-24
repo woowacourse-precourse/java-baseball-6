@@ -19,7 +19,7 @@ class RefereeTest {
 
     @Test
     public void 제로_스트라이크_테스트() {
-        //given\
+        //given
         final String inputNumbers = "456";
 
         //when
@@ -116,52 +116,60 @@ class RefereeTest {
     @Test
     public void 낫싱_판별_테스트() {
         //given
-        final int strikeNumber = ZERO_STRIKE;
-        final int ballNumber = ZERO_BALL;
+        final String inputNumber = "456";
 
         //when
-        boolean isNothing = referee.isNothing(strikeNumber, ballNumber);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         //then
-        Assertions.assertTrue(isNothing);
+        Assertions.assertTrue(referee.isNothing());
     }
 
     @Test
     public void 볼만_있는_경우_판별_테스트() {
         //given
-        final int strikeNumber = ZERO_STRIKE;
-        final int ballNumber = ONE_BALL;
+        final String inputNumber = "216";
 
         //when
-        boolean isOnlyBall = referee.isOnlyBall(strikeNumber, ballNumber);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         //then
-        Assertions.assertTrue(isOnlyBall);
+        Assertions.assertTrue(referee.isOnlyBall());
     }
 
     @Test
     public void 스트라이크만_있는_경우_판별_테스트() {
         //given
-        final int strikeNumber = ONE_STRIKE;
-        final int ballNumber = ZERO_BALL;
+        final String inputNumber = "145";
 
         //when
-        boolean isOnlyStrike = referee.isOnlyStrike(strikeNumber, ballNumber);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         //then
-        Assertions.assertTrue(isOnlyStrike);
+        Assertions.assertTrue(referee.isOnlyStrike());
     }
 
     @Test
     public void 둘_다_있는_경우_판별_테스트() {
         //given
-        final int strikeNumber = TWO_STRIKE;
-        final int ballNumber = ONE_BALL;
+        final String inputNumber = "132";
 
         //when
-        boolean isStrikeAndBall = referee.isStrikeAndBall(strikeNumber, ballNumber);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         //then
-        Assertions.assertTrue(isStrikeAndBall);
+        Assertions.assertTrue(referee.isStrikeAndBall());
+    }
+
+    @Test
+    public void 쓰리_스트라이크_판별_테스트() {
+        //given
+        final String inputNumber = "123";
+
+        //when
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+
+        //then
+        Assertions.assertTrue(referee.isThreeStrike());
     }
 }
