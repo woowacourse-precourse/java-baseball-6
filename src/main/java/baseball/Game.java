@@ -13,7 +13,7 @@ public class Game {
     private User player;
     private Computer computer;
 
-    private Hint hint = new Hint();
+    private final Hint hint = new Hint();
 
     public Game() {
     }

@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 
 public class Computer {
-    private ArrayList<Integer> nums = new ArrayList<>();
+    private final ArrayList<Integer> nums;
 
     public Computer() {
         RandomNum randomNum = new RandomNum();
