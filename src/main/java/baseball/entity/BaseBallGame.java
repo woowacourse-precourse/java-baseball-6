@@ -2,7 +2,8 @@ package baseball.entity;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class BaseBallGame {
+// BaseBallGame 클래스는 게임의 상태와 IO을 관리
+public final class BaseBallGame {
 
     private boolean gameEnd;  // 현재 게임의 진행 상태
     private CorrectNumber correctNumber;
@@ -23,8 +24,11 @@ public class BaseBallGame {
             System.out.println("숫자를 입력해주세요 :");
             String input = readLine();
             checkValidInput(input);  // 입력값 확인
-            if (correctNumber.isCorrect(input)) {
-                // 입력값 비교
+
+            Result result = correctNumber.compareTo(input); // 입력값 비교
+            System.out.println(result.toString()); // 입력 결과 출력
+
+            if (result.isAllCorrect()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 askUserToEndGame();
             }

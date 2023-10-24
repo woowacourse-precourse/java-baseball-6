@@ -4,16 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+// CorrectNumber는 정답 생성, 관리, 비교
 public class CorrectNumber {
 
     private List<Integer> correctNumbers = new ArrayList<>();
-    private int strikeNumber = 0;
-    private int ballNumber = 0;
 
-    public boolean isCorrect(String input) {
-        strikeNumber = 0;
-        ballNumber = 0;
-        // 입력값 정답과 비교
+    public Result compareTo(String input) {
+        int strikeNumber = 0;
+        int ballNumber = 0;
         String[] parsedString = input.split("");
         for (int i = 0; i < input.length(); i++) {
             int number = Integer.parseInt(parsedString[i]);
@@ -25,24 +23,7 @@ public class CorrectNumber {
                 }
             }
         }
-
-        // 결과 출력
-        if (strikeNumber != 0) {
-            System.out.print(strikeNumber + "스트라이크 ");
-        }
-        if (strikeNumber == 3) {
-            System.out.println();
-            return true;
-        }
-        if (ballNumber != 0) {
-            System.out.print(ballNumber + "볼 ");
-        }
-        if (ballNumber == 0 && strikeNumber == 0) {
-            System.out.print("낫싱 ");
-        }
-        System.out.println();
-
-        return false;
+        return new Result(strikeNumber,ballNumber);
     }
 
     public void generateCorrectNumbers() {
