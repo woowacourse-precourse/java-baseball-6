@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+  public static final int ANSWER_SIZE = 3;
+  public static final int RANDOM_RANGE_START = 1;
+  public static final int RANDOM_END_START = 9;
   private List<Integer> answer;
 
   /**
@@ -13,8 +16,8 @@ public class Computer {
   public void makeAnswer() {
     answer = new ArrayList<>();
 
-    while (answer.size() != 3) {
-      int randomNumber = Randoms.pickNumberInRange(1, 9);
+    while (answer.size() != ANSWER_SIZE) {
+      int randomNumber = Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_END_START);
       if (!(answer.contains(randomNumber))) {
         answer.add(randomNumber);
       }
@@ -24,7 +27,7 @@ public class Computer {
   public Result getResult(List<Integer> input) {
     Result result = new Result();
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < ANSWER_SIZE; i++) {
 
       if (answer.contains(input.get(i))) {
         if (answer.get(i) == input.get(i)) {

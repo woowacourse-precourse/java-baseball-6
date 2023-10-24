@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
+  public static final int INPUT_SIZE = 3;
+  public static final int TRUE_NUMBER = 1;
+  public static final int FALSE_NUMBER = 2;
 
 
   /**
@@ -21,7 +24,7 @@ public class Player {
   public List<Integer> getInput(String input) throws IllegalArgumentException {
     String[] inputSplit = input.split("");
 
-    if (inputSplit.length != 3) {
+    if (inputSplit.length != INPUT_SIZE) {
       throw new IllegalArgumentException();
     }
 
@@ -36,7 +39,7 @@ public class Player {
 
   private void checkDuplicationNumber(List<Integer> inputNumbers) {
     Set<Integer> inputNumbersSet = new HashSet<>(inputNumbers);
-    if (inputNumbersSet.size() != 3) {
+    if (inputNumbersSet.size() != INPUT_SIZE) {
       throw new IllegalArgumentException();
     }
   }
@@ -52,9 +55,9 @@ public class Player {
 
   public boolean getRestart(String input) throws IllegalArgumentException {
     int inputNumber = parseInt(input);
-    if (inputNumber == 1) {
+    if (inputNumber == TRUE_NUMBER) {
       return true;
-    } else if (inputNumber == 2) {
+    } else if (inputNumber == FALSE_NUMBER) {
       return false;
     } else {
       throw new IllegalArgumentException();
