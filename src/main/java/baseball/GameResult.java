@@ -19,6 +19,27 @@ public class GameResult {
         if (strikes == 0 && balls == 0) {
             return "낫싱";
         }
-        return balls + "볼 " + strikes + "스트라이크";
+
+        StringBuilder result = new StringBuilder();
+        appendStrikes(result);
+        appendBalls(result);
+
+        return result.toString();
     }
+
+    private void appendStrikes(StringBuilder result) {
+        if (strikes > 0) {
+            result.append(strikes).append("스트라이크");
+        }
+    }
+
+    private void appendBalls(StringBuilder result) {
+        if (balls > 0) {
+            if (result.length() > 0) {
+                result.append(" ");
+            }
+            result.append(balls).append("볼");
+        }
+    }
+
 }

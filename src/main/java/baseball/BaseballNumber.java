@@ -11,7 +11,7 @@ public class BaseballNumber {
 
     private void validateValue(int value) {
         if (value < 1 || value > 9) {
-            throw new IllegalArgumentException("Invalid number");
+            throw new IllegalArgumentException("유효하지 않은 숫자");
         }
     }
 
