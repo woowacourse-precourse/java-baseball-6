@@ -1,9 +1,13 @@
 package baseball;
 
 
+import game.Game;
+import game.GameInputInterface;
+import game.GameOutputInterface;
+import game.GameRandom;
 import java.util.regex.Pattern;
 
-public class BaseballGame implements Game{
+public class BaseballGame implements Game {
     private final BaseballNumber numbers;
     private final GameRandom random;
     private final GameInputInterface in;

@@ -1,4 +1,4 @@
-package baseball;
+package game;
 
 public class GameExecutor {
     private Game game;
