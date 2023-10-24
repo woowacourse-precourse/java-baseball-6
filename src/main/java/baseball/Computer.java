@@ -10,7 +10,7 @@ public class Computer {
 
     public String[] getComputerNumbers() {
         if (this.computerNumbers == null) {
-            throw new NullPointerException(Message.COMPUTER_NUMBERS_IS_NULL);
+            throw new IllegalStateException(Message.COMPUTER_NUMBERS_IS_NULL);
         }
         return computerNumbers;
     }
