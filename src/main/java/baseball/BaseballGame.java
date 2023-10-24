@@ -49,8 +49,8 @@ public class BaseballGame {
     }
 
     private void validateRetryExit(String playerChoice) {
-        if (!Objects.equals(playerChoice, RETRY) &&
-                !Objects.equals(playerChoice, EXIT)) {
+        if ((!playerChoice.equals(RETRY) && !playerChoice.equals(EXIT)) ||
+                playerChoice.isBlank()) {
             throw new IllegalArgumentException(INVALID_CHOICE_MESSAGE);
         }
     }
