@@ -8,7 +8,6 @@ public class Player {
     private List<Integer> playerNumberList;
 
     public List<Integer> getPlayerNumberList(String playerNumber) {
-
         playerNumberList = new ArrayList<>();
 
         for (int i = 0; i < playerNumber.length(); i++) {
