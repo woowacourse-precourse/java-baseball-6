@@ -1,8 +1,5 @@
 package baseball.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class UserNumberValidator {
     public static void validateUserNumber(int numberSize, String userNumber) {
         checkIsDigit(userNumber);
@@ -32,11 +29,8 @@ public class UserNumberValidator {
      * 중복된 숫자가 있을 경우 예외 발생
      */
     private static void checkNotDuplicate(String inputWord) {
-        Set<Character> inputWordSet = new HashSet<>();
-        for (char c : inputWord.toCharArray()) {
-            if (!inputWordSet.add(c)) {
-                throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-            }
+        if (inputWord.chars().distinct().count() != inputWord.length()) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
 }
