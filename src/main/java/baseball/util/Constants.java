@@ -1,6 +1,9 @@
 package baseball.util;
 
 public final class Constants {
+    private Constants() {
+    }
+
     // config valuable
     public static final int ANSWER_SIZE = 3;
     public static final int MIN_NUMBER = 1;
