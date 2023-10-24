@@ -24,13 +24,12 @@ public class BaseballGame {
                 readUserNumber();
             }while(!checkUserNumber());
             if(isEnd()) return;
-
         }
     }
     public void readUserNumber(){
-
-        System.out.println("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 :");
         String userSay = readLine();
+        numbers.checkLenth(userSay);
         userNumbers=numbers.getUserNumber(userSay);
 
     }
@@ -50,7 +49,6 @@ public class BaseballGame {
             EndUserInput = Integer.parseInt(readLine());
 
             if (EndUserInput == NUMOFRESTART) {
-                System.out.println("게임을 새로 시작합니다.");
                 return false;
             } else if (EndUserInput == NUMOFEND) {
                 System.out.println("게임을 종료합니다.");
@@ -58,7 +56,6 @@ public class BaseballGame {
             } else {
                 System.out.println("1 혹은 2 중 하나를 입력해주세요.");
             }
-
         } while (true);
     }
 
