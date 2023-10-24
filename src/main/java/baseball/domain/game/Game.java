@@ -30,8 +30,8 @@ public class Game {
         return gameResult;
     }
     private GameResult createGameResult(Balls otherBalls) {
-        int strike = this.balls.getSamePositionAndSameNumberCount(otherBalls);
-        int ball = this.balls.getSameNumberAndOtherPositionCount(otherBalls);
+        int strike = this.balls.getStrikeCount(otherBalls);
+        int ball = this.balls.getBallCount(otherBalls);
         return new GameResult(strike, ball);
     }
     private void changeGameStatusBy(GameResult gameResult) {
@@ -46,7 +46,7 @@ public class Game {
 
     public void performCommand(String inputCommand) {
         GameHandlerCommand command = GameHandlerCommand.findCommand(inputCommand);
-        if(command == GameHandlerCommand.RESTART) {
+        if(GameHandlerCommand.isRestartCommand(command)) {
             init();
         }
     }
