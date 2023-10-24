@@ -1,47 +1,28 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.view.InputView;
+import baseball.view.ResultView;
 
 public class BaseballGame {
+
+    private InputView inputView;
+    private ResultView resultView;
+    private Computer computer; //컴퓨터 숫자
+    private Player player;  //플레이어 숫자
 
     int GAME_RUN;
     int STRIKE;
     int BALL;
-    private List<Integer> computer; //컴퓨터 숫자
-    private List<Integer> player;   //플레이어 숫자
+    int NOTHING;
 
-    //컴퓨터 숫자 랜덤 생성
-    public List<Integer> random(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
-    //숫자 입력
-    public int InputNum(){
-        String Num = Console.readLine();
-        return Integer.parseInt(Num);
-    }
-
-    //int -> List 변경
-    public ArrayList<Integer> ListNum(int PNum){
-        ArrayList<Integer> arrNum = new ArrayList<>();
-
-        while(PNum > 0) {
-            arrNum.add(PNum %10);
-            PNum /= 10;
-        }
-
-        return arrNum;
+    //생성자
+    public BaseballGame() {
+        inputView = new InputView();
+        resultView = new ResultView();
+        computer = new Computer();
+        player = new Player();
     }
 
     //초기화
@@ -49,11 +30,14 @@ public class BaseballGame {
         GAME_RUN = 1;
         STRIKE = 0;
         BALL = 0;
+        NOTHING = 0;
+        player.init();
     }
 
     //실행
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        inputView.startView();
 
         while(true) {
             if(GAME_RUN == 2){
@@ -61,37 +45,52 @@ public class BaseballGame {
             }
 
             init();
-            computer = random();
+            computer.random();
 
             while(true) {
-                init();
-                System.out.print("숫자를 입력해주세요 : ");
-                int PNum = InputNum();
-                player = ListNum(PNum);
 
-                for(int i=0; i <3; i++){
-                    if(computer.get(i) == player.get(i)){
-                        STRIKE++;
+                init();
+                inputView.inputNumView();
+                player.inputNum();
+
+                for(int i=0; i <3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (computer.getComputer().get(i) == player.getPlayer().get(i)) {
+                            STRIKE++;
+                            break;
+                        }
+                        else if (computer.getComputer().get(i) == player.getPlayer().get(j)) {
+                            BALL++;
+                            break;
+                        }
                     }
-                    else{
-                        BALL++;
-                    }
+
                 }
 
                 if(STRIKE == 3){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    resultView.strikeView(STRIKE);
+                    resultView.doneView();
                     break;
                 }
-                else if(BALL == 3){
-                    System.out.println("낫싱");
+                else if(STRIKE >= 1 || BALL >= 1){
+                    if(STRIKE == 0){
+                        resultView.ballView(BALL);
+                    }
+                    else if(BALL == 0){
+                        resultView.strikeView(STRIKE);
+                    }
+                    else{
+                        resultView.ballView(BALL);
+                        resultView.strikeView(STRIKE);
+                    }
                 }
                 else{
-                    System.out.println(BALL + "볼 " + STRIKE + "스트라이크");
+                    resultView.nothingView();
                 }
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            GAME_RUN = InputNum();
+            inputView.runView();
+            GAME_RUN = player.inputRun();
         }
     }
 }
