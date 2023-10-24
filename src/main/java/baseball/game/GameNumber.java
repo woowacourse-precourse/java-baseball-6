@@ -22,10 +22,10 @@ public class GameNumber {
 
     public List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (computerNumbers.size() < GameConst.NUMBER_SIZE) {
+        while (numbers.size() < GameConst.NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
         return numbers;
