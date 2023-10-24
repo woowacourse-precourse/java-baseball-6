@@ -12,16 +12,16 @@ public class OutputView {
     }
 
     public static void printBallAndStrikeMessage() {
-        System.out.print("볼");
+        System.out.print("볼 ");
     }
     public static void printNothingMessage(){
         System.out.println("낫싱");
     }
 
     public static void printCount(int count){
-        System.out.println(count);
+        System.out.print(count);
     }
     public static void printGamesetMessage(){
-        System.out.println("3개의 숫자를 모두 맞혔습니다. 게임종료!");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 }

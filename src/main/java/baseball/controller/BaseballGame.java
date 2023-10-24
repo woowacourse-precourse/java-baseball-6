@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.ComputerNumber;
 import baseball.model.PlayerNumber;
+import baseball.model.ReplayNumber;
 import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -11,8 +12,9 @@ public class BaseballGame {
     private static PlayerNumber playerNumber;
     private final Validator validator;
 
-    private final int BALL = 0;
-    private final int STRIKE = 1;
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
+
 
     public BaseballGame(){
         computerNumber = new ComputerNumber();
@@ -74,4 +76,12 @@ public class BaseballGame {
         return false;
     }
 
+    public static boolean askReplay(){
+        ReplayNumber replayNumber = new ReplayNumber(InputView.setReplayNumber());
+
+        if(replayNumber.getReplayNumber().equals("1")){
+            return true;
+        }
+        return false;
+    }
 }
