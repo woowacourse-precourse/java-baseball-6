@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.Enum;
 
 public enum ResultCase {
     NOTHING,
