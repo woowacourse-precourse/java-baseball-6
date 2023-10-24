@@ -15,7 +15,7 @@ public class BaseballGameUtils {
         return new Score(ball, strike);
     }
 
-    public int checkBall(List<Integer> computerNumber, List<Integer> userNumber) {
+    private int checkBall(List<Integer> computerNumber, List<Integer> userNumber) {
         int count = 0;
 
         for (int i = 0; i < computerNumber.size(); i++) {
@@ -32,7 +32,7 @@ public class BaseballGameUtils {
         return count;
     }
 
-    public int checkStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+    private int checkStrike(List<Integer> computerNumber, List<Integer> userNumber) {
         int count = 0;
 
         for (int i = 0; i < computerNumber.size(); i++) {
@@ -42,7 +42,7 @@ public class BaseballGameUtils {
         return count;
     }
 
-    private static int incrementStrikeCount(List<Integer> computerNumber, List<Integer> userNumber, int count, int i) {
+    private int incrementStrikeCount(List<Integer> computerNumber, List<Integer> userNumber, int count, int i) {
         if (computerNumber.get(i) == userNumber.get(i)) {
             count++;
         }

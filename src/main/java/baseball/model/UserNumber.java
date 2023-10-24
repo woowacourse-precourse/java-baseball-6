@@ -30,11 +30,12 @@ public class UserNumber {
             throw new IllegalArgumentException("For incorrect size");
         }
 
+        if (userNumber.contains(0)) {
+            throw new IllegalArgumentException("For incorrect number");
+        }
     }
 
     public List<Integer> getNumber() {
         return Collections.unmodifiableList(userNumber); // 불변성 보장을 위해 unmodifiableList 호출
     }
-
-
 }
