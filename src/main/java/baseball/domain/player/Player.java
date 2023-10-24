@@ -40,4 +40,14 @@ public class Player {
                 .map(Number::from)
                 .collect(Collectors.toList());
     }
+
+    public int calculateStrikeCounts(Player player) {
+        int result = 0;
+        for (int i = 0; i < 3; i++) {
+            if (player.numbers.get(i).equals(this.numbers.get(i))) {
+                result++;
+            }
+        }
+        return result;
+    }
 }
