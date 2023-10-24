@@ -30,9 +30,7 @@ public class BaseballGame {
 
         while (isPlaying) {
 
-            AnswerNumbers answerNumbers = AnswerNumbers.generate();
-
-            guessAnswer(answerNumbers);
+            guessAnswer();
 
             inputView.restartGame();
             String command = inputView.readLine();
@@ -42,9 +40,10 @@ public class BaseballGame {
         }
     }
 
-    private void guessAnswer(AnswerNumbers answerNumbers) {
+    private void guessAnswer() {
 
         boolean isContinue = true;
+        AnswerNumbers answerNumbers = AnswerNumbers.generate();
 
         while (isContinue) {
             Score.initialize();
