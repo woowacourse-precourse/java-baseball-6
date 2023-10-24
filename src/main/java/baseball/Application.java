@@ -10,6 +10,11 @@ public class Application {
             "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String CONTINUE_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // 게임 시작
+        println(WELCOME_MSG);
+    }
+
+    private static void println(String msg){
+        System.out.println(msg);
     }
 }
