@@ -39,14 +39,14 @@ class BaseballGame {
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computerNumber = computer.getNumber();
 
         while (!isGameover) {
             try {
+                List<Integer> computerNumber = computer.getNumber();
                 int userGuess = user.userInput();
 
                 if (!User.isValidGuess(userGuess)) {
-                    throw new IllegalAccessException("잘못된 입력입니다. 서로 다른 세 자리 숫자를 입력해주세요.");
+                    throw new IllegalAccessException();
                 }
 
                 GameResult result = calculateResult(computerNumber, userGuess);
@@ -58,13 +58,12 @@ class BaseballGame {
                     if (askNewGame()) { // 게임 재시작 o
                         startNewGame();
                     } else { // 재시작 x
-                        System.exit(0);
+                        break;
                     }
                 }
 
             } catch (IllegalAccessException e) {
-                System.out.println(e.getMessage());
-                System.exit(1); // 애플리케이션 종료
+                break;
             }
         }
     }
@@ -152,8 +151,6 @@ class Computer {
                 computerNumber.add(randomNumber);
             }
         }
-        System.out.print("computerNumber : ");
-        System.out.println(computerNumber);
         return computerNumber;
     }
 
@@ -171,7 +168,6 @@ class User {
     public int userInput() {
         System.out.print("숫자를 입력해주세요 : ");
         int userInput = Integer.parseInt(Console.readLine());
-        System.out.printf("userInput : %d\n", userInput);
         return userInput;
     }
 
