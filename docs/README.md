@@ -44,7 +44,8 @@ import camp.nextstep.edu.missionutils;
 ---
 ### *Contoller*
 #### : 모델과 뷰의 중재자 담당
-- [ ] (입력값과 정답 숫자 비교) 클래스
+- [x] (입력값과 정답 숫자 비교) 클래스 (CompareNumber)
+- [x] (게임 성공 여부 판단) 클래스 (Judgement)
 - [x] (게임 시작과 중재자 역할) 클래스 (BaseballGame)
 
 
