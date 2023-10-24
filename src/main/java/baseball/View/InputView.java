@@ -1,7 +1,7 @@
 package baseball.View;
 
-import baseball.UserGameInput;
-import baseball.UserNumberInput;
+import baseball.Domain.UserGameInput;
+import baseball.Domain.UserNumberInput;
 import java.util.List;
 
 public class InputView {

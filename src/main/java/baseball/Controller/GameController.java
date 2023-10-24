@@ -1,7 +1,7 @@
 package baseball.Controller;
 
-import baseball.AnswerJudge;
-import baseball.ComputerNumberGenerator;
+import baseball.Domain.AnswerJudge;
+import baseball.Domain.ComputerNumberGenerator;
 import baseball.View.InputView;
 import baseball.View.OutputView;
 import java.util.List;

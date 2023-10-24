@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Domain;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 

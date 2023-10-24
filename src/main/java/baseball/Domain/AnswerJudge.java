@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Domain;
 
 import baseball.View.OutputView;
 import java.util.List;

@@ -1,7 +1,7 @@
 package baseball.View;
 
-import baseball.AnswerJudge;
 import baseball.Controller.GameController;
+import baseball.Domain.AnswerJudge;
 
 public class OutputView {
     private static final String END_MESSAGE = "숫자 야구 게임을 종료합니다.";
