@@ -9,6 +9,9 @@ public class BaseballGame {
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
 
+    final int INPUT_RESTART_MIN = 1;
+    final int INPUT_RESTART_MAX = 2;
+
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -85,6 +88,7 @@ public class BaseballGame {
         String playerInput = Console.readLine();
         exceptLengthInvalid(playerInput, 1);
         exceptNotInteger(playerInput);
+        exceptInvalidRange(playerInput, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
         boolean isRestart = true;
         if (playerInput.equals("1")) {
             initAnswer();
