@@ -89,7 +89,7 @@ public class Application {
             }
             if (user.get(i).equals(computer.get(i))) {
                 score.put("ball", score.get("ball") - 1);
-                score.put("strike", score.get("strike" + 1));
+                score.put("strike", score.get("strike") + 1);
             }
         }
         return score;
