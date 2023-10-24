@@ -1,5 +1,6 @@
 package baseball.handler;
 
+import baseball.constants.GameConstants;
 import camp.nextstep.edu.missionutils.Console;
 import baseball.validator.InputValidator;
 
@@ -21,6 +22,6 @@ public class InputHandler {
         String input = Console.readLine();
         inputValidator.checkRestartInput(input);
 
-        return "1".equals(input);
+        return input.equals(GameConstants.RESTART_FLAG);
     }
 }

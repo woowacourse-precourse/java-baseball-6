@@ -1,27 +1,28 @@
 package baseball.handler;
 
 import baseball.calculator.ResultCalculator;
+import baseball.constants.GameConstants;
 
 public class OutputHandler {
 
     private final ResultCalculator resultCalculator = new ResultCalculator();
 
     public void printGameStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GameConstants.GAME_START_MESSAGE);
     }
 
     public void printInputRequestMessage() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(GameConstants.INPUT_REQUEST_MESSAGE);
     }
 
     public boolean printResultMessage(String userInput, String computerNumber) {
         String result = resultCalculator.calculateResult(userInput, computerNumber);
         System.out.println(result);
 
-        return result.contains("3개의 숫자를 모두 맞히셨습니다!");
+        return result.contains(GameConstants.VICTORY_MESSAGE);
     }
 
     public void printAskGameRestartMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GameConstants.ASK_GAME_RESTART_MESSAGE);
     }
 }
