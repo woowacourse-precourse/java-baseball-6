@@ -25,4 +25,12 @@ public class GameLaunch {
                 .filter(number -> compNum.get(number).equals(userNum.get(number)))
                 .count();
     }
+
+    public int getStrikeNum(){
+        return strikeNum;
+    }
+
+    public int getBallNum(){
+        return ballNum;
+    }
 }

@@ -12,5 +12,9 @@ public class PlayBaseball {
         this.userNum = new UserNum().getUserNum();
     }
 
+    public GameLaunch getGameLaunch(){
+        return gameLaunch;
+    }
+
 
 }
