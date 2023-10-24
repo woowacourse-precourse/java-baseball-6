@@ -48,8 +48,6 @@ public class Application {
                             user[2] = Integer.parseInt(num.substring(2, 3));
                         }
 
-                        System.out.println("user=" + Arrays.toString(user) + "com=" + Arrays.toString(com));
-
                         int ball = 0;
                         int strike = 0;
                         String notCount = "낫싱";
