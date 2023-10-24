@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class InputNum {
@@ -23,6 +24,13 @@ public class InputNum {
     }
 
     public boolean isValidInput(String InputNum) {
+        HashSet<Object> InputDouble = new HashSet<>();
+        for (char digit : InputNum.toCharArray()){
+            InputDouble.add(digit);
+        }
+        if (InputDouble.size() < 3){
+            throw new IllegalArgumentException();
+        }
         return InputNum.length() == Input_Lenght && InputNum.matches(Input_Content);
     }
 
