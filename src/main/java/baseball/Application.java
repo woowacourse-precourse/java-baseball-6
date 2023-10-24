@@ -6,22 +6,24 @@ import static baseball.Constants.NEW_LINE;
 import static baseball.Constants.RESTART;
 import static baseball.Constants.EXIT;
 
+import baseball.GameNumber;
 import baseball.GameResult;
+import baseball.GameScore;
 import baseball.Status;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
 
-    private static List<Integer> computer;
-    private static List<Integer> user;
-    private static int strike;
-    private static int ball;
+    private static GameNumber gameNumber;
+    private static GameScore gameScore;
 
     public static void main(String[] args) {
+        initialize();
         try {
             startBaseballGame();
         } catch (IllegalArgumentException e) {
@@ -29,14 +31,19 @@ public class Application {
         }
     }
 
+    public static void initialize() {
+        gameNumber = new GameNumber();
+        gameScore = new GameScore();
+    }
+
     public static void startBaseballGame() {
         printMessage(Status.GAME_START, NEW_LINE);
         boolean continueFlag = true;
         while (continueFlag) {
             createComputerNumber();
-            while (strike != MAX_STRIKE) {
+            while (gameScore.getStrike() != MAX_STRIKE) {
                 inputUserNumber();
-                compareNumbers();
+                calculateScore();
                 printGameResult();
             }
             continueFlag = inputContinueOrExit();
@@ -44,59 +51,41 @@ public class Application {
     }
 
     public static void createComputerNumber() {
-        computer = new ArrayList<>();
-        while (computer.size() < NUM_LENGTH) {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < NUM_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
             }
         }
+
+        gameNumber.setComputer(computerNumber);
     }
 
     public static void inputUserNumber() {
         printMessage(Status.INPUT_NUMBER, !NEW_LINE);
         String inputNumber = Console.readLine();
-        if (inputNumber.length() != NUM_LENGTH) {
+
+        List<Integer> userNumber = inputNumber.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
+
+        gameNumber.setUser(userNumber);
+
+        boolean isValidate = gameNumber.validateUserNumber();
+        if (isValidate == false) {
             throw new IllegalArgumentException();
-        }
-
-        for(int i = 0; i < NUM_LENGTH; i++) {
-            for(int j = 0; j < NUM_LENGTH; j++) {
-                if (i == j) continue;
-                if (inputNumber.charAt(i) == inputNumber.charAt(j)) {
-                    throw new IllegalArgumentException();
-                }
-            }
-        }
-
-        user = new ArrayList<>();
-        for(int i = 0; i < NUM_LENGTH; i++) {
-            char digit = inputNumber.charAt(i);
-            if (!(digit >= '1' && digit <= '9')) {
-                throw new IllegalArgumentException();
-            }
-            int number = digit - '0';
-            user.add(number);
         }
     }
 
-    public static void compareNumbers() {
-        ball = 0;
-        strike = 0;
-        for(int i = 0; i < NUM_LENGTH; i++) {
-            for(int j = 0; j < NUM_LENGTH; j++) {
-                if (computer.get(i) != user.get(j)) continue;
-                if (i == j) {
-                    strike += 1;
-                } else if (i != j) {
-                    ball += 1;
-                }
-            }
-        }
+    public static void calculateScore() {
+        gameScore.reset();
+        gameScore.calculateScore(gameNumber);
     }
 
     public static void printGameResult() {
-        String message = GameResult.getMessage(ball, strike);
+        String message = GameResult.getMessage(gameScore.getBall(), gameScore.getStrike());
         System.out.println(message);
     }
 
@@ -105,8 +94,7 @@ public class Application {
         int inputNumber = Integer.parseInt(Console.readLine());
 
         if (inputNumber == RESTART) {
-            ball = 0;
-            strike = 0;
+            gameScore.reset();
             return true;
         } else if (inputNumber == EXIT) {
             return false;
