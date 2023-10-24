@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.service.hint;
 
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -10,14 +10,16 @@ import baseball.domain.hint.item.Ball;
 import baseball.domain.hint.Hint;
 import baseball.domain.hint.item.Nothing;
 import baseball.domain.hint.item.Strike;
+import baseball.service.GameService;
+import baseball.service.GameServiceImpl;
 import baseball.service.hint.item.BallServiceImpl;
 import baseball.service.hint.item.NothingServiceImpl;
 import baseball.service.hint.item.StrikeServiceImpl;
 import org.junit.jupiter.api.Test;
 
-public class GameServiceImplTest {
+public class HintServiceImplTest {
 
-    private final GameService gameService = new GameServiceImpl(
+    private final HintService hintService = new HintServiceImpl(
             BallServiceImpl.getInstance(),
             StrikeServiceImpl.getInstance(),
             NothingServiceImpl.getInstance()
@@ -28,7 +30,7 @@ public class GameServiceImplTest {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("416");
 
-        Hint hint = gameService.createHint(computerBaseball, inputBaseball);
+        Hint hint = hintService.createHint(computerBaseball, inputBaseball);
 
         assertTrue(hint.getHintItems().stream()
                 .anyMatch(hintItem -> hintItem instanceof Ball));
@@ -39,7 +41,7 @@ public class GameServiceImplTest {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("426");
 
-        Hint hint = gameService.createHint(computerBaseball, inputBaseball);
+        Hint hint = hintService.createHint(computerBaseball, inputBaseball);
 
         assertTrue(hint.getHintItems().stream()
                 .anyMatch(hintItem -> hintItem instanceof Strike));
@@ -50,7 +52,7 @@ public class GameServiceImplTest {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("326");
 
-        Hint hint = gameService.createHint(computerBaseball, inputBaseball);
+        Hint hint = hintService.createHint(computerBaseball, inputBaseball);
 
         assertAll(
                 () -> assertTrue(hint.getHintItems().stream()
@@ -65,7 +67,7 @@ public class GameServiceImplTest {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
-        Hint hint = gameService.createHint(computerBaseball, inputBaseball);
+        Hint hint = hintService.createHint(computerBaseball, inputBaseball);
 
         assertTrue(hint.getHintItems().stream()
                 .anyMatch(hintItem -> hintItem instanceof Nothing));
@@ -76,7 +78,7 @@ public class GameServiceImplTest {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("156");
 
-        Hint hint = gameService.createHint(computerBaseball, inputBaseball);
+        Hint hint = hintService.createHint(computerBaseball, inputBaseball);
 
         assertFalse(hint.getHintItems().stream()
                 .anyMatch(hintItem -> hintItem instanceof Nothing));
