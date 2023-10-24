@@ -27,14 +27,15 @@ public class Number implements Comparable<Number> {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_LENGTH);
         }
 
-        if(!isUniqueInNumbers(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_UNIQUE_NUMBER);
-        }
-
         this.numbers = new ArrayList<>();
 
         for (Integer number : numbers) {
             Digit digit = new Digit(number);
+
+            if(this.numbers.contains(digit)) {
+                throw new IllegalArgumentException(ErrorMessage.NOT_UNIQUE_NUMBER);
+            }
+
             this.numbers.add(digit);
         }
     }
@@ -43,26 +44,10 @@ public class Number implements Comparable<Number> {
      * 도메인 객체를 검증한다.
      * 3자리가 아니거나, 각 자리수가 1~9 범위를 가지지 않는 검증을 통과하지 못한다면 IllegalArgumentException을 발생시킨다.
      *
-     * 처음 구현할 때, 서로 다른 자리수를 검사하지 않아서 이를 추가하였다.
+     * 처음 구현할 때, 서로 다른 자리수를 검사하지 않아서 이를 추가하였다. -> 생성자로 이동
      */
     private static boolean isValidLength(List<Integer> numbers) {
         return numbers.size() == MAX_NUMBER_SIZE;
-    }
-
-    private static boolean isUniqueInNumbers(List<Integer> numbers) {
-        for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
-            int number = numbers.get(i);
-
-            for (int j = i+1; j < MAX_NUMBER_SIZE; j++) {
-                int anotherNumber = numbers.get(j);
-
-                if(number == anotherNumber) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
     }
 
     /**
