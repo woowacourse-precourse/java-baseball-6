@@ -20,7 +20,7 @@ public class GameController {
         boolean isGameContinued  = true;
         List<Integer> computerInput = gameComputing.generateComputerInput();
         gameView.printStart();
-        while (isGameContinued ) {
+        while (isGameContinued) {
             List<Integer> userInput = gameInput.receiveInput();
             inputValidator.validateInput(userInput);
             int result = gameComputing.compute(computerInput, userInput);
