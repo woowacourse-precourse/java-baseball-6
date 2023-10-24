@@ -9,22 +9,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class Validator {
-  int randomNumber;
-  int inputNumber;
-  ArrayList<String> randomList = new ArrayList<>();
-  ArrayList<Baseball> inputList = new ArrayList<>();
+  private final int randomNumber;
+  private int inputNumber;
+  private final ArrayList<String> randomList = new ArrayList<>();
+  private final ArrayList<Baseball> inputList = new ArrayList<>();
 
   public Validator(int randomNumber) {
     this.randomNumber = randomNumber;
   }
 
-  public String writeBaseballAnswer(String inputValue) {
+  public void writeBaseballAnswer(String inputValue) {
     validateContainsSpace(inputValue);
     validateOnlyNumber(inputValue);
     validateLengthThree(inputValue);
     validateDuplicate(inputValue);
     validateZero(inputValue);
-    return inputValue;
+    inputNumber = Integer.parseInt(inputValue);
   }
 
   public String writeProgressAnswer(String inputValue) {
@@ -110,13 +110,6 @@ public class Validator {
       scoreBoard.put(type, 0);
     }
     return scoreBoard;
-  }
-
-  public boolean answerOfProgress(String answer) {
-    if(answer.equals("1")) {
-      return true;
-    }
-    return false;
   }
 
 }
