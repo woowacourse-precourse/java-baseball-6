@@ -1,8 +1,8 @@
 # 기능 목록
-- [ ] 1 ~ 9에서 서로 다른 임의의 수 3개를 선택
-- [ ] 입력 받은 값이 숫자인지 확인하고 아닌 경우 `IllegalArgumentException` 을 발생시키기
-- [ ] 3자리 미만 혹은 초과의 입력을 받으면 `IllegalArgumentException` 을 발생시키기
-- [ ] 입력 받은 3자리수 값들이 모두 다른지 판단 후 아니면 `IllegalArgumentException` 을 발생시키기
+- [x] 1 ~ 9에서 서로 다른 임의의 수 3개를 선택
+- [x] 입력 받은 값이 숫자인지 확인하고 아닌 경우 `IllegalArgumentException` 을 발생시키기
+- [x] 3자리 미만 혹은 초과의 입력을 받으면 `IllegalArgumentException` 을 발생시키기
+- [x] 입력 받은 3자리수 값들이 모두 다른지 판단 후 아니면 `IllegalArgumentException` 을 발생시키기
 - [ ] 무작위 수 3개, 입력 받은 수 3개를 각각의 집합을 생성 
 - [ ] 위에서 만든 각각의 집합을 통해 `낫싱`, `스트라이크`, `볼` 을 판단
   - [ ] 두 집합의 교집합이 공집합이면 `낫싱`으로 판단
