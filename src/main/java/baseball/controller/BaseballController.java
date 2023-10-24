@@ -39,7 +39,7 @@ public class BaseballController {
 
     private void requestExpectedNumber() {
         String expectedNumber = inputView.inputExpectedNumber();
-        player.changeExpectedNumbers(expectedNumber);
+        player.updateExpectedNumbers(expectedNumber);
     }
 
     private void resultExpectedNumber(BaseballManager baseballManager) {

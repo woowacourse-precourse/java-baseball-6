@@ -9,7 +9,7 @@ public class Player {
     private final PlayerValidator playerValidator = new PlayerValidator();
     private List<Integer> expectedNumbers;
 
-    public void changeExpectedNumbers(String numbers) {
+    public void updateExpectedNumbers(String numbers) {
         initExpectedNumbers();
         playerValidator.validateExpectedNumbers(numbers);
         expectedNumbers = toList(numbers);
