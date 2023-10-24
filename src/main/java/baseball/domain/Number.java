@@ -96,6 +96,36 @@ public class Number implements Comparable<Number> {
         }
     }
 
+    /**
+     * 힌트 정보를 얻기 위해 Number에서 digit이 포홤되었는지 확인함
+     * 만약 포함하고 있고, 위치까지 동일하다면 strike
+     * 포함만 한다면 ball이다.
+     */
+    public boolean contains(Digit digit) {
+        return numbers.contains(digit);
+    }
+
+    public Hint getHint(Number number) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int indexOfNumber = 0; indexOfNumber < MAX_NUMBER_SIZE; indexOfNumber++) {
+            Digit digit = numbers.get(indexOfNumber);
+            if(number.contains(digit)) {
+                Digit anotherNumber = number.numbers.get(indexOfNumber);
+
+                if(digit.equals(anotherNumber)) {
+                    strikeCount++;
+                    continue;
+                }
+
+                ballCount++;
+            }
+        }
+
+        return new Hint(ballCount,strikeCount);
+    }
+
 
 
     /**
