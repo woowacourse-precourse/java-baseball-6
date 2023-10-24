@@ -1,6 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,5 +16,20 @@ class ModuleTest {
 
         Assertions.assertThat(result.strike).isEqualTo(1);
         Assertions.assertThat(result.ball).isEqualTo(2);
+    }
+    @Test
+    void checkSignError(){
+        boolean b = Application.checkSignError("1");
+        Assertions.assertThat(b).isEqualTo(false);
+    }
+    @Test
+    void checkSignError2(){
+        boolean b = Application.checkSignError("2");
+        Assertions.assertThat(b).isEqualTo(false);
+    }
+    @Test
+    void checkSignError3(){
+        boolean b = Application.checkSignError("12");
+        Assertions.assertThat(b).isEqualTo(true);
     }
 }
