@@ -20,12 +20,19 @@
   - 검증 결과에 따른 예외 처리
 - 재시작 여부 입력에 따른 새로운 게임 시작 
 
-## 📒 클레스 설계 
-- InputView, OutputView 입력과 출력
-- BaseballController 입력에 따른 비즈니스 로직 
-- Computer, Player, Result 컴퓨터, 플레이어, 결과 
-- InputValidator 입력 값에 대한 검증 
-
+## 📒 클래스 설계 
+- InputView, OutputView 
+  - 입력과 출력
+- BaseballController 
+  - 입력에 따른 비즈니스 로직 호출
+- Computer, Player, Result 
+  - 컴퓨터, 플레이어, 결과에 대한 책임
+- InputValidator 
+  - 입력 값에 대한 검증 
+- BaseballService 
+  - domain 패키지에 속한 클레스에게 의존하여 비즈니스 로직을 기반한 서비스를 제공
+- Configuration 
+  - BaseballController와 BaseballService클레스의 의존성을 관리
 ## 🤔 요구 사항에 대한 분석 (공부 및 적용할 것) 
 - 책임 분리와 객체간의 협력 설계 
 - JDK 17버전의 이해와 활용 
