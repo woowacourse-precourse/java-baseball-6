@@ -22,8 +22,16 @@ public class GameController extends Controller {
     }
 
 
-    private void playGame(BaseballNumber defenseNumbers) {
+    private void playGame(BaseballNumber defenseNumber) {
+        do {
+            BaseballNumber offenseNumber = makeOffenseNumber();
+        } while (true);
+    }
 
+    private BaseballNumber makeOffenseNumber() {
+        outputView.printInputNumber();
+        List<Integer> inputNumbers = inputView.inputBallNumbers();
+        return BaseballNumber.create(inputNumbers);
     }
 
     public boolean continueGame() {
