@@ -23,4 +23,11 @@ public class inputExeption {
         }
         return true;
     }
+
+    public static boolean isOneAndTwoNumber(String input){
+        if(!(input.equals("1") || input.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
 }
