@@ -36,6 +36,14 @@ public class Baseball {
 
         return computer;
     }
+    public void printResult(int[] result){
+        int strikeNum=result[0];
+        int ballNum=result[1];
+
+        if(strikeNum!=0) System.out.print(strikeNum+"스트라이크 ");
+        if(ballNum!=0) System.out.println(ballNum+"볼");
+
+    }
 
     public int[] countResult(String input){
         int strikeNum=0;
@@ -59,8 +67,8 @@ public class Baseball {
             String input=Console.readLine();
 
             int[] result=countResult(input);
+            printResult(result);
 
-            System.out.println(result[0]+"스트라이크 "+result[1]+"볼");
             if(result[0]==3) break;
         }while(true);
 
