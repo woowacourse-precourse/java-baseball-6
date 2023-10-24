@@ -8,26 +8,26 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InputException {
-    public void checkUserNumber(String userInput) {
-        checkRestartNumber(userInput);
+    public static void checkUserNumber(String userInput) {
+        CheckUserNumberLength(userInput);
         checkUserNumberRange(userInput);
         checkUserNumberDuplicated(userInput);
     }
 
-    public void checkRestartNumber(String userInput) {
+    public static void checkRestartNumber(String userInput) {
         int restartNumber = changeStringToNumber(userInput);
         if (restartNumber != GameRule.restartNumber && restartNumber != GameRule.endGameNumber) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void CheckUserNumberLength(String userInput) {
+    public static void CheckUserNumberLength(String userInput) {
         if (userInput.length() != GameRule.userNumberLength) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkUserNumberRange(String userInput) {
+    public static void checkUserNumberRange(String userInput) {
         List<Integer> userNumber = changeStringToNumbers(userInput);
         for (Integer num : userNumber) {
             if (num < GameRule.userNumberMin || num > GameRule.userNumberMax) {
@@ -36,7 +36,7 @@ public class InputException {
         }
     }
 
-    public void checkUserNumberDuplicated(String userInput) {
+    public static void checkUserNumberDuplicated(String userInput) {
         List<Integer> userNumber = changeStringToNumbers(userInput);
         Set<Integer> userSet = new HashSet<>(userNumber);
         if (userNumber.size() != userSet.size()) {
@@ -45,7 +45,7 @@ public class InputException {
 
     }
 
-    public Integer changeStringToNumber(String userInput) {
+    public static Integer changeStringToNumber(String userInput) {
         try {
             return Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
@@ -53,7 +53,7 @@ public class InputException {
         }
     }
 
-    public List<Integer> changeStringToNumbers(String userInput) {
+    public static List<Integer> changeStringToNumbers(String userInput) {
         try {
             int[] arr = Arrays.stream(userInput.split("")).mapToInt(Integer::parseInt).toArray();
             return Arrays.stream(arr).boxed().collect(Collectors.toList());
