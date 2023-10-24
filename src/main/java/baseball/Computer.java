@@ -2,15 +2,20 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Computer {
 
     private List<Integer> computerNumber;
 
     private Printer printer;
+
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
+    }
 
     //Printer를 주입 받는 생성자
     public Computer(Printer printer) {
@@ -50,7 +55,7 @@ public class Computer {
     }
 
     //랜덤하게 숫자 생성하는 기능
-    public void generateNumber(){
+    public void generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -58,7 +63,7 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-        this.computerNumber=computer;
+        this.computerNumber = computer;
     }
 
     //잘못된 값 입력시 예외를 반환하고 종료하는 기능
@@ -66,12 +71,32 @@ public class Computer {
     public List<Integer> checkInputFormat(String guessString) {
         List<Integer> guessNumber = new ArrayList<>();
         // 예외 발생가능
-        try {
-            for (int i = 0; i < 3; i++) guessNumber.add(guessString.charAt(i)-'0');
-        } catch (Exception e) {
+
+        //3자리가 아닌 경우
+        if (guessString.length() != 3) {
             throw new IllegalArgumentException();
-        } finally {
-            if (guessString.length() > 3) throw new IllegalArgumentException();
+        }
+
+        //정수가 아닌 경우
+        for (int i = 0; i < 3; i++) {
+            if (guessString.charAt(i) < '0' || guessString.charAt(i) > '9') {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        //같은 값의 정수가 존재하는 경우
+        Set<Character> set = new HashSet<Character>();
+        for (int i = 0; i < 3; i++) {
+            char testChar = guessString.charAt(i);
+
+            if (set.contains(testChar)) {
+                throw new IllegalArgumentException();
+            }
+            set.add(testChar);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            guessNumber.add(guessString.charAt(i) - '0');
         }
 
         return guessNumber;
@@ -82,7 +107,7 @@ public class Computer {
         int ball = 0;
         int strike = 0;
 
-        for (int i=0 ; i<3 ; i++) {
+        for (int i = 0; i < 3; i++) {
             //guessNum의 값을 contain하는지 체크
             //contain한다면, 위치까지 맞는지 체크
             if (computerNumber.contains(guessNumber.get(i))) {
@@ -96,12 +121,14 @@ public class Computer {
         //Printer 사용해서 출력
         printer.printResult(ball, strike);
 
-        if (strike == 3) return true;
+        if (strike == 3) {
+            return true;
+        }
         return false;
     }
 
     //정답을 맞췄을 시 사용자의 입력을 받아 재시작을 확인하는 기능
-    public boolean checkReplay(){
+    public boolean checkReplay() {
         String replayNumberString = Console.readLine();
         int replayNumber = -1;
 
@@ -110,8 +137,12 @@ public class Computer {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         } finally {
-            if (replayNumber == 1) return true;
-            if (replayNumber == 2) return false;
+            if (replayNumber == 1) {
+                return true;
+            }
+            if (replayNumber == 2) {
+                return false;
+            }
             throw new IllegalArgumentException();
         }
     }
