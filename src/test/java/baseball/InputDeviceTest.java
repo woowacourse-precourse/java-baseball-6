@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.InputValidator.EXIT_NUMBER;
+import static baseball.InputValidator.RESTART_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -10,9 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputDeviceTest {
-
-    public static final String RESTART_NUMBER = "1";
-    public static final String EXIT_NUMBER = "2";
 
     @ParameterizedTest
     @DisplayName("서로 다른 세자리수를 입력한다")
