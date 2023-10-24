@@ -17,9 +17,7 @@ public class Validator {
 
         for (int i = 0; i < 3; i++) {
             try {
-                char convertChar = inputNumbers.charAt(i);
-                int convertInt = Character.getNumericValue(convertChar);
-                checkZeroToNine(convertInt);
+                int convertInt = checkConvertInt(inputNumbers.charAt(i));
                 saveThreeNumbers.add(convertInt);
 
             } catch (Exception e) {
@@ -52,6 +50,12 @@ public class Validator {
         }
 
         return true;
+    }
 
+    private static int checkConvertInt(char inputNumber){
+        int convertInt = Character.getNumericValue(inputNumber);
+        checkZeroToNine(convertInt);
+
+        return convertInt;
     }
 }
