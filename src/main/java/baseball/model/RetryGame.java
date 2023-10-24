@@ -2,7 +2,6 @@ package baseball.model;
 
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 public class RetryGame {
   public boolean retryGame() {
@@ -11,10 +10,6 @@ public class RetryGame {
 
     char answer = InputView.setRetryNumber().charAt(0);
 
-    if(answer == '1') {
-      return true;
-    }
-
-    return false;
+    return answer == '1';
   }
 }

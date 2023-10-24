@@ -1,13 +1,15 @@
 package baseball.util;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DiffNumber {
   public int CompareNumber(List<Integer> computer, List<Integer> player) {
     int result = 0;
 
-    for(int i = 0; i < player.size(); i++) {
-      if(computer.contains(player.get(i))) result++;
+    for (Integer integer : player) {
+      if (computer.contains(integer))
+        result++;
     }
     return result;
   }
@@ -16,7 +18,7 @@ public class DiffNumber {
     int strike = 0;
 
     for(int i = 0; i < player.size(); i++) {
-      if(computer.get(i) == player.get(i)) strike++;
+      if(Objects.equals(computer.get(i), player.get(i))) strike++;
     }
     return strike;
   }
