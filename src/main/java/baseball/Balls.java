@@ -35,14 +35,15 @@ public class Balls {
         ArrayList<Integer> list = new ArrayList<>();
         char[] chars = input.toCharArray();
         for(char ch : chars) {
-            validateBall(ch);
+            int tmp = ch - '0';
+            validateBall(tmp);
+            list.add(tmp);
         }
         validateBallS(list);
         return new Balls(list);
     }
 
-    private static void validateBall(char ch){
-        int num = ch - '0';
+    private static void validateBall(int num){
         if(num < BALL_MIN || num > BALL_MAX) throw new IllegalArgumentException("1-9 사이 정수 값을 입력해주세요.");
     }
 
