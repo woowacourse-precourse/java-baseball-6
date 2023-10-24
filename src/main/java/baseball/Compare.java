@@ -16,7 +16,7 @@ public class Compare {
     public int num_strike(List<Integer> computer, List<Integer> player) {
         int strike = 0;
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i) == player.get(i)) {
+            if (computer.get(i).equals(player.get(i))) {
                 strike += 1;
             }
         }
