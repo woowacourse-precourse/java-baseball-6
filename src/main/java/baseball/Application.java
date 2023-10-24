@@ -20,7 +20,6 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            System.out.println(computer);
 
             while (true) {
                 //서로 다른 3자리 수 입력받고 잘못된 값 입력 시 예외 발생 후 프로그램 종료
@@ -39,7 +38,6 @@ public class Application {
                         user.add(str.charAt(i) - '0');
                     }
                 }
-                System.out.println(user);
 
                 //숫자의 포함여부와 자리를 확인하여 볼, 스트라이크, 낫싱 판단하여 결과 출력하기
                 int ball = 0;
