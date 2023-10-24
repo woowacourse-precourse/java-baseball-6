@@ -10,14 +10,12 @@ public class BaseBallGame {
     ScoreCalculator scoreCalculator = new ScoreCalculator();
 
     public void doBaseBallGame() {
-
         int ball = 0;
         int strike = 0;
 
         List<Integer> randomNumbers = numberMaker.makeRandomNumbers();
 
         while (strike != 3) {
-
             printManager.printInputValue();
 
             List<Integer> guessNumbers = inputManager.getGuessNumbers();
@@ -26,11 +24,9 @@ public class BaseBallGame {
             ball = scoreCalculator.computeBall(randomNumbers, guessNumbers, strike);
 
             printManager.printResult(strike, ball);
-
         }
 
         printManager.printGameOver();
-
     }
 
 }

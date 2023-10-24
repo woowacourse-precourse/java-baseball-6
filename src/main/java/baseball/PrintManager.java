@@ -12,7 +12,6 @@ public class PrintManager {
 
     //TODO 리펙토링 고민해보기
     public void printResult(int strike, int ball) {
-
         if (ball == 0 && strike ==0) {
             System.out.println("낫싱");
         }
@@ -28,7 +27,6 @@ public class PrintManager {
         if (ball != 0 && strike != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-
     }
 
     public void printGameOver() {

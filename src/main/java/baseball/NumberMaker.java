@@ -9,7 +9,6 @@ import java.util.List;
 public class NumberMaker {
 
     public List<Integer> makeRandomNumbers() {
-
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < 3) {
@@ -20,6 +19,5 @@ public class NumberMaker {
         }
 
         return randomNumbers;
-
     }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 public class ScoreCalculator {
 
     public int computeStrike(List<Integer> randomNumbers, List<Integer> guessNumbers) {
-
         int strike = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -18,7 +17,6 @@ public class ScoreCalculator {
     }
 
     public int computeBall(List<Integer> randomNumbers, List<Integer> guessNumbers, int strike) {
-
         int  ball = 0;
 
         for (Integer i : guessNumbers) {
