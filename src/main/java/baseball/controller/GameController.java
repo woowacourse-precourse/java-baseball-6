@@ -13,7 +13,7 @@ public class GameController {
 
     public void start() {
         this.gameState.changeStateToStartGame();
-        this.scoring = new Scoring(RandomNumberCreator.create());
+        this.scoring = new Scoring(RandomNumberCreator.create(3));
     }
 
     public GameState getGameState() {

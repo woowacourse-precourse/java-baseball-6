@@ -5,7 +5,7 @@
 - [x] GameView : start
 - [x] GameController : start
 - [x] GameState : changeStateToStartGame
-- [ ] RandomNumberCreator : createRandomNumber
+- [x] RandomNumberCreator : createRandomNumber
 - [ ] Scoring : saveRandomNumber
 
 ## Feat2. 게임 진행
