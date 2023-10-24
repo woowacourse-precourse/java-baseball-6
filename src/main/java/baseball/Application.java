@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.config.AppConfig;
-import baseball.game.GameLauncher;
+import baseball.launcher.GameLauncher;
 
 public class Application {
 
