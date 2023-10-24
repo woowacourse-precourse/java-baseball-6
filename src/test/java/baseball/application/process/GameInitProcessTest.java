@@ -1,28 +1,23 @@
 package baseball.application.process;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import baseball.application.context.BaseballContext;
-import baseball.application.context.IoContext;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("[GameInitProcessTest]")
-class GameInitProcessTest {
+class GameInitProcessTest extends BaseballProcessTest {
 
     @Test
     @DisplayName("excute시 게임이 초기화 된다.")
     void initGameWhenExecute() {
         // given
         GameInitProcess gameInitProcess = new GameInitProcess();
-        BaseballContext baseballContext = mock(BaseballContext.class);
-        IoContext ioContext = mock(IoContext.class);
 
         // when
-        gameInitProcess.execute(baseballContext,ioContext);
+        gameInitProcess.execute(baseballContext, ioContext);
 
         // then
         verify(baseballContext, times(1)).init();
