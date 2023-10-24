@@ -13,6 +13,10 @@ public enum BallsRule {
 		return number < MIN_NUMBER.value || number > MAX_NUMBER.value;
 	}
 
+	public static boolean isPositionOutOfRange(final int position) {
+		return position < MIN_POSITION.value || position > MAX_POSITION.value;
+	}
+
 	public int getValue() {
 		return value;
 	}

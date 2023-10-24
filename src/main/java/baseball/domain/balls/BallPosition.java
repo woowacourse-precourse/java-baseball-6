@@ -31,7 +31,7 @@ public class BallPosition {
 	}
 
 	private void validate(final int position) {
-		if (position < BallsRule.MIN_POSITION.getValue() || position > BallsRule.MAX_POSITION.getValue()) {
+		if (BallsRule.isPositionOutOfRange(position)) {
 			throw new IllegalArgumentException(POSITION_RANGE_ERROR_MESSAGE);
 		}
 	}

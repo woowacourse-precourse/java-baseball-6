@@ -30,4 +30,26 @@ class BallsRuleTest {
 		assertThat(result).isTrue();
 	}
 
+	@ParameterizedTest
+	@ValueSource(ints = {0, 2})
+	@DisplayName("게임 숫자 규칙: 위치 값이 범위를 벗어났나? No")
+	void givenNumber_whenIsPositionOutOfRange_thenReturnFalse(int position) {
+		// when
+		boolean result = BallsRule.isPositionOutOfRange(position);
+
+		// then
+		assertThat(result).isFalse();
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {-1, 3})
+	@DisplayName("게임 숫자 규칙: 위치 값이 범위를 벗어났나? Yes")
+	void givenNumber_whenIsPositionOutOfRange_thenReturnTrue(int position) {
+		// when
+		boolean result = BallsRule.isPositionOutOfRange(position);
+
+		// then
+		assertThat(result).isTrue();
+	}
+
 }
