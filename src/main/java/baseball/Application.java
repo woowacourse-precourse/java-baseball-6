@@ -9,7 +9,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        //do-while문을 통해 일단 한번 실행 후 1을 입력할 때만 다시 실행
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do{
@@ -25,17 +24,14 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput=Console.readLine();
 
-            //만약 입력한 수가 기준에 맞지 않다면 예외발생 후 종료해야
             if (!isValidInput(userInput)){
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
 
-            //플레이어
             List<Integer> userNumbers=parseUserInput(userInput);
             int strikes=countStrikes(computer,userNumbers);
             int balls=countBalls(computer,userNumbers);
 
-            //힌트 기능 실행부분
             if (strikes==3){
                 System.out.println("3스트라이크\n"
                         + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -48,12 +44,12 @@ public class Application {
         }
     }
 
-    //컴퓨터는 1부터 9까지 서로 다른 수로 이루어진 3자리 수 선택
+
     private static List<Integer> generateComputerNumbers(){
-        List<Integer> computer= new ArrayList<>();  //computer라는 이름의 정수 리스트 생성,선택한 3개 숫자 저장 용도
+        List<Integer> computer= new ArrayList<>();
 
         while (computer.size() < 3){
-            int randomNumber=Randoms.pickNumberInRange(1,9);  //1~9 사이 임의의 숫자를 randomNumber 변수에 저장
+            int randomNumber=Randoms.pickNumberInRange(1,9);
             if (!computer.contains(randomNumber)){
                 computer.add(randomNumber);
             }
@@ -62,12 +58,22 @@ public class Application {
         }
 
     private  static boolean isValidInput(String input){
-        return input.matches("^[1-9]{3}$");
+        if (!input.matches("^[1-9]{3}$")){
+            return false;
+        }
+        char[] inputChars=input.toCharArray();
+        for (int i=0;i<3;i++){
+            for (int j=i+1; j<3; j++){
+                if (inputChars[i]==inputChars[j]){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    //사용자가 입력한 문자열을 3자리 숫자로 파싱하는 메소드
     private static List<Integer> parseUserInput(String input){
-        List<Integer> numbers =new ArrayList<>();  //파싱된 숫자들을 저장하기 위해 초기화
+        List<Integer> numbers =new ArrayList<>();
         for(int i=0; i<3; i++) {
             numbers.add(Integer.parseInt(input.substring(i,i+1)));
         }
