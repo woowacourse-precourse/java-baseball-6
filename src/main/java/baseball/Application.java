@@ -179,7 +179,7 @@ class Array {
 
     static void checkInputNum(char[] arr) {
         if (!checkInputNum_len(arr) || !checkInputNum_isNum(arr) || !checkInputNum_noSameNum(arr)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 값입니다.");
         }
     }
 
