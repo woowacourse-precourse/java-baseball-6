@@ -35,13 +35,14 @@ public class User {
         
       }
       catch (Exception e){
-        System.out.println(e);
+//        System.out.println(e);
+        throw new IllegalArgumentException();
       }
 //      for(int i=0;i<3;i++){
 //        userNumbers.add(input.charAt(i)-'0');
-////        userNumbers.add(1);
+//        //userNumbers.add(1);
 //      }
-    
+
 
    
 
