@@ -15,7 +15,6 @@ public class Application {
         while (!game_flag) {
 
             randomNumber = Randoms.pickNumberInRange(100, 999);     // (int startInclusive, int endInclusive)
-//            randomNumber = 589;
 //            System.out.println(randomNumber);
 
             // 게임 시작
@@ -59,32 +58,36 @@ public class Application {
 
             temp = userNumber.charAt(i);
 
+            // 스트라이크
             if (randomNumber.charAt(i) == temp) {
                 strike += 1;
-            } else {
+                continue;
+            }
 
-                for (int j = 0; j < 3; j++) {
-                    if (j==i) continue;
-                    if (randomNumber.charAt(j) == temp) {
-                        ball += 1;
-                        break;
-                    }
+            // 볼
+            for (int j = 0; j < 3; j++) {
+                if (randomNumber.charAt(j) == temp) {
+                    ball += 1;
+                    break;
                 }
             }
         }
 
         // 출력
-        if (ball > 0 && strike > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        } else if (ball == 0 && strike > 0) {
-            System.out.println(strike + "스트라이크");
-            return strike == 3;
-        } else if (ball > 0) {
-            System.out.println(ball + "볼");
-        } else {
-            System.out.println("낫싱");
+
+        if (ball > 0) System.out.print(ball + "볼 ");
+
+        if (strike > 0) {
+            System.out.print(strike + "스트라이크");
+            if (strike == 3){
+                System.out.println();
+                return true;
+            }
         }
 
+        if (ball == 0 && strike == 0) System.out.print("낫싱");
+
+        System.out.println();
         return false;
     }
 
@@ -95,12 +98,9 @@ public class Application {
 
         int check = Integer.parseInt(Console.readLine());
 
-        if (check == 1) {
-            return false;
-        } else if (check == 2) {
-            return true;
-        } else {
-            throw new IllegalArgumentException();
-        }
+        if (check == 1) return false;
+        else if (check == 2) return true;
+        else throw new IllegalArgumentException();
+
     } // end
 }
