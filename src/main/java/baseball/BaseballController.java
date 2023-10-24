@@ -11,12 +11,14 @@ public class BaseballController {
         System.out.print(NoticeType.REQUEST_INPUT.getMessage());
 
         List<Integer> answer = baseballService.generateAnswer();
-        List<Integer> player = baseballService.userInput();
+        List<Integer> player = baseballService.userPlayInput();
+        System.out.println(answer);
 
         while(!play(player, answer)) {
             System.out.print(NoticeType.REQUEST_INPUT.getMessage());
-            player = baseballService.userInput();
+            player = baseballService.userPlayInput();
         }
+        end();
     }
 
     public boolean play(List<Integer> player, List<Integer> answer) {
@@ -25,5 +27,14 @@ public class BaseballController {
             return true;
         }
         return false;
+    }
+
+    public void end() {
+        System.out.println(NoticeType.RESTART_MESSAGE.getMessage());
+        int restart = baseballService.userRestartInput();
+
+        if(baseballService.isRestart(restart)) {
+            start();
+        }
     }
 }

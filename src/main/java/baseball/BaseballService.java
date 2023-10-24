@@ -12,10 +12,14 @@ public class BaseballService {
        return GenerateRandomNum.generate();
     }
 
-    public List<Integer> userInput() {
+    public List<Integer> userPlayInput() {
         String input = Console.readLine();
         List<Integer> userInput = new ArrayList<>();
         return stringToList(input);
+    }
+
+    public int userRestartInput() {
+        return Integer.parseInt(Console.readLine());
     }
 
     public boolean getResult(List<Integer> player, List<Integer> answer) {
@@ -45,6 +49,13 @@ public class BaseballService {
             }
         }
         return new Score(strikes, balls);
+    }
+
+    public boolean isRestart(int num) {
+        if(num == 1) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isStrike(List<Integer> player, List<Integer> answer, int index) {
