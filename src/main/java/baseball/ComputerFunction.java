@@ -13,10 +13,10 @@ public class ComputerFunction {
         List<Integer> randomNumber = new ArrayList<>();
 
         while(randomNumber.size() < SIZE_OF_NUMBER.getNumberInfo()){
-            int tmp = Randoms.pickNumberInRange(START_OF_RANGE.getNumberInfo(), END_OF_RANGE.getNumberInfo());
+            int randomNumberDigit = Randoms.pickNumberInRange(START_OF_RANGE.getNumberInfo(), END_OF_RANGE.getNumberInfo());
 
-            if(!randomNumber.contains(tmp)){
-                randomNumber.add(tmp);
+            if(!randomNumber.contains(randomNumberDigit)){
+                randomNumber.add(randomNumberDigit);
             }
         }
 
@@ -45,7 +45,8 @@ public class ComputerFunction {
                 System.out.println(strikeCount + STRIKE_MESSAGE.getMessage());
                 System.out.println(CORRECT_MESSAGE.getMessage());
                 break;
-            } else if (strikeCount == 0 && ballCount == 0) {
+            }
+            else if (strikeCount == 0 && ballCount == 0) {
                 System.out.println(NOTHING_MESSAGE.getMessage());
                 continue;
             }
