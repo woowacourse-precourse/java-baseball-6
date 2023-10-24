@@ -21,25 +21,35 @@ public class Application {
     public static String userNumber() {
         System.out.print("숫자를 입력해주세요: ");
         String userAnswer = Console.readLine();
-        try {//숫자가 맞는지 확인
-            int number = Integer.parseInt(userAnswer);
-        } catch (IllegalArgumentException e) {
-            System.out.println("서로 다른 세자리 숫자를 입력하세요.");
-        }   //세자리 숫자이며, 숫자 중복이 없는지 확인
-        if (userAnswer.length() == 3) {
-            if (userAnswer.charAt(0) == userAnswer.charAt(1) || userAnswer.charAt(1) == userAnswer.charAt(2) || userAnswer.charAt(0) == userAnswer.charAt(2)) {
-                throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
-            }
-            } else {
-                throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
-            }
-        return userAnswer;
+
+        if (!isValidInput(userAnswer)){
+            throw new IllegalArgumentException("서로 다른 세자리의 숫자를 입력해주세요.");
         }
+
+        return userAnswer;
+    }
+
+    //세자리의 서로다른 숫자를 입력한 지 확인
+    public static boolean isValidInput(String input) {
+        //숫자가 세자리 인지 확인
+        if(input.length() !=3) {
+            return false;
+        }
+
+        // 입력값이 숫자 인지 확인
+        if (!input.matches("[0-9]+")) {
+            return false;
+        }
+        // 서로 다른 숫자 인지 확인
+        char[] inputnumber = input.toCharArray();
+        return inputnumber[0] != inputnumber[1] && inputnumber[1] != inputnumber[2] && inputnumber[0] != inputnumber[2];
+
+    }
 
 
 
     //게임 시작
-    public static void gamestart(){
+    public static void gameStart(){
         String computerAnswer = computerNumber();
         //3스트라이크가 될 때까지 사용자Answer 와 컴퓨터Answer 비교
         while(true){
@@ -70,14 +80,12 @@ public class Application {
             }
         }
     }
-
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
             //게임 시작
-            gamestart();
+            gameStart();
             //게임 종료 후 1,2 로 재시작 여부 결정
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int replayQuestion = Integer.parseInt(Console.readLine());
@@ -89,5 +97,3 @@ public class Application {
         }
     }
 }
-
-
