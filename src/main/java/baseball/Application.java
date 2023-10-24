@@ -16,9 +16,28 @@ public class Application {
         List<Integer> inputNumbers = getInputNumbers();
         System.out.println(inputNumbers);
 
-        System.out.println(getAnswer(randomNumbers, inputNumbers));
-        System.out.println(getStrikeCount(randomNumbers, inputNumbers));
-        System.out.println(getBallCount(randomNumbers, inputNumbers));
+        boolean answer = getAnswer(randomNumbers, inputNumbers);
+        int strikeCount = getStrikeCount(randomNumbers, inputNumbers);
+        int ballCount = getBallCount(randomNumbers, inputNumbers);
+
+        System.out.println(answer);
+        System.out.println(strikeCount);
+        System.out.println(ballCount);
+
+        printResults(strikeCount, ballCount);
+    }
+
+    private static void printResults(int strikeCount, int ballCount) {
+        ArrayList<String> result = new ArrayList<>();
+        if(ballCount!=0){
+            String ballOut = ballCount + "볼";
+            result.add(ballOut);
+        }
+        if(strikeCount!=0){
+            String strikeOut = strikeCount + "스트라이크";
+            result.add(strikeOut);
+        }
+        System.out.println(String.join(" ",result));
     }
 
     private static int getBallCount(List<Integer> randomNumbers, List<Integer> inputNumbers) {
