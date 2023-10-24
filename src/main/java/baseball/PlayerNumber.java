@@ -10,6 +10,7 @@ public class PlayerNumber {
     private final static int NUMBER_LENGTH = 3;
     private final static int START_NUMBER = 1;
     private final static int FINAL_NUMBER = 9;
+    private final static String PLAYER_INPUT_SENTENCE = "숫자를 입력해주세요 : ";
 
     private final List<Integer> playerNumber;
 
@@ -19,37 +20,35 @@ public class PlayerNumber {
 
 
     private List<Integer> createPlayerNumber() throws IllegalArgumentException {
-        
-        String playerInput = takePlayerInput();
 
-        //문자열을 정수배열로 변환
-        int[] numbers = convertPlayerInputInteger(playerInput);
+        int[] numbers = takePlayerInput();
 
-        //정수 개수 확인
-        if(numbers.length!=NUMBER_LENGTH){
-            throw new IllegalArgumentException();
+        if (validatePlayerInput(numbers)){
+            return Arrays.stream(numbers).boxed().collect(Collectors.toList());
         }
-        
-        //범위 확인(1~9)
-        if (!Arrays.stream(numbers).allMatch(number->START_NUMBER<=number&&number<=FINAL_NUMBER)){
-            throw new IllegalArgumentException();
-        }
-
-        //중복 확인
-        if (Arrays.stream(numbers).distinct().count()!=NUMBER_LENGTH){
-            throw new IllegalArgumentException();
-        }
-
-        return Arrays.stream(numbers).boxed().collect(Collectors.toList());
+        throw new IllegalArgumentException();
     }
 
-    private String takePlayerInput(){
-        System.out.print("숫자를 입력해주세요 : ");
+    private boolean validatePlayerInput(int[] numbers){
+        return isRightNumberLength(numbers)&&isRightNumberRange(numbers)&&isNumberDuplicated(numbers);
+    }
+    private boolean isRightNumberLength(int[] numbers){
+        return numbers.length==NUMBER_LENGTH;
+    }
+    private boolean isRightNumberRange(int[] numbers){
+        return Arrays.stream(numbers).allMatch(number->START_NUMBER<=number&&number<=FINAL_NUMBER);
+    }
+    private boolean isNumberDuplicated(int[] numbers){
+        return Arrays.stream(numbers).distinct().count()==NUMBER_LENGTH;
+    }
+
+    private int[] takePlayerInput(){
+        System.out.print(PLAYER_INPUT_SENTENCE);
         String input = Console.readLine();
+        int[] numbers = convertPlayerInputInteger(input);
 
-        return input;
+        return numbers;
     }
-
     private int[] convertPlayerInputInteger(String playerInput){
         int[] numbers = playerInput.chars()
                 .map(number -> number - '0').toArray();
