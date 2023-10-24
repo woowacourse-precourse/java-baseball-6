@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Exception;
 
 public class Exception {
     public static void checkException(char[] guess) {

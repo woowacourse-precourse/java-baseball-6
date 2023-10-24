@@ -1,5 +1,8 @@
-package baseball;
+package baseball.service;
 
+import baseball.Exception.Exception;
+import baseball.domain.Computer;
+import baseball.domain.ResultCase;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
