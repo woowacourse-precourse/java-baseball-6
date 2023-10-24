@@ -21,8 +21,13 @@ class View{
             throws new IllegalArgumentException(inputIsUnvalid);
         }
         List<Integer> inputList = new ArrayList<>();
-        for(int i=0;i<3;i++){
-            inputList.add(inputString.charAt(i));
+        for(int i=0;i<3;i++) {
+            userInput = inputString.charAt(i);
+            if ('1' <= userInput && userInput <= '9'){
+                inputList.add(inputString.charAt(i));
+            }else {
+            throws new IllegalArgumentException(inputIsUnvalid);
+            }
         }
         return inputList;
     }
