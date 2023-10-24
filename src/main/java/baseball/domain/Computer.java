@@ -9,7 +9,7 @@ public class Computer {
         this.ballList = ballList;
     }
 
-    public String getBallNumber(){
+    public String getBallNumber() {
         return String.format("%d%d%d", ballList.get(0), ballList.get(1), ballList.get(2));
     }
 }

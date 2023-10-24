@@ -22,7 +22,7 @@ public class GameController {
     private final GameService gameService = new GameService();
     private final ReGameException reGameException = new ReGameException();
 
-    public void start(){
+    public void start() {
         createComputerBall();
         output.printGameStart();
         gameProcess();
@@ -35,47 +35,51 @@ public class GameController {
         gameResult();
     }
 
-    public void gameResult(){
+    public void gameResult() {
         String computerBall = computer.getBallNumber();
         String playerBall = player.getBallNumber();
         int strikeResult = gameService.strikeResult(computerBall, playerBall);
         int ballResult = gameService.ballResult(computerBall, playerBall);
 
-        if (strikeResult == 3) reGameRequest();
+        if (strikeResult == 3) {
+            reGameRequest();
+        }
 
-        if (strikeResult != 3){
+        if (strikeResult != 3) {
             output.printGameResult(strikeResult, ballResult);
             gameProcess();
         }
     }
 
-    public void reGameRequest(){
+    public void reGameRequest() {
         output.printGameEnd();
         String request = input.inputGameRequest();
         reGameException.validation(request);
 
         int result = request.charAt(0) - '0';
 
-        if (result == 1) gameRestart();
+        if (result == 1) {
+            gameRestart();
+        }
     }
 
-    public void gameRestart(){
+    public void gameRestart() {
         createComputerBall();
         gameProcess();
     }
 
-    private void createComputerBall(){
+    private void createComputerBall() {
         List<Integer> ballList = new ArrayList<>();
-        while (ballList.size() < 3){
+        while (ballList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!ballList.contains(randomNumber)){
+            if (!ballList.contains(randomNumber)) {
                 ballList.add(randomNumber);
             }
         }
         computer = new Computer(ballList);
     }
 
-    private void createPlayerBall(String number){
+    private void createPlayerBall(String number) {
         List<Integer> ballList = new ArrayList<>();
         for (char num : number.toCharArray()) {
             ballList.add(num - '0');
