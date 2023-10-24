@@ -22,7 +22,7 @@ public class BaseballController {
 
     private void playBaseballGame(BaseballNumber computerBaseballNumber) {
         BaseballScore resultScore = new BaseballScore();
-        while (!resultScore.isStrikeThree()) {
+        while (baseballService.isBaseballGameEnd(resultScore)) {
             BaseballNumber userBaseballNumber = baseballService.initializeUserNumber(
                     BaseballInputView.readUserNumber());
             resultScore = baseballService.compareBaseballNumber(computerBaseballNumber, userBaseballNumber);
@@ -36,4 +36,5 @@ public class BaseballController {
             play();
         }
     }
+
 }

@@ -39,4 +39,8 @@ public class BaseballService {
         Validator.validateStringHasNot("0", userNumber, "입력은 0을 포함할 수 없습니다.");
         Validator.validateStringAllDifferent(userNumber, "모든 입력된 값은 달라야합니다.");
     }
+
+    public boolean isBaseballGameEnd(BaseballScore resultScore) {
+        return resultScore.isStrikeThree();
+    }
 }
