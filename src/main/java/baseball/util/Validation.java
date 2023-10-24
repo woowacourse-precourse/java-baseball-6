@@ -1,6 +1,10 @@
 package baseball.util;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import baseball.constant.GameConstant;
 import baseball.constant.MessageConstant;
+import baseball.game.Game;
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -13,20 +17,18 @@ public class Validation {
         if (userInput.length() != 3) {
             return false;
         }
-
         if (userInput.contains("0")) {
             return false;
         }
-
         if (!checkDuplicatedNumber(userInput)) {
             return false;
         }
-
         return Pattern.matches(REGEXP_PATTERN_NUMBER, userInput);
     }
 
     public static boolean checkRestartOrExitNumber(String input) {
-        return (input.equals("1") || input.equals("2"));
+
+        return (input.equals(GameConstant.RESTART_GAME.number) || input.equals(GameConstant.EXIT.number));
     }
 
     public static boolean checkDuplicatedNumber(String input) {
