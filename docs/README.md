@@ -63,19 +63,54 @@ G --> |illegal|I((에러 및 종료));
 G --> |no|H((종료));
 ```
 
-# Class Diagram _(draft)_
+# Class Diagram
 
 ```mermaid
 classDiagram
-class Main
-	Main : 정답만들기()
-	Main : 입력받기()
-	Main : 결과출력하기()
-	Main : 재시작하기()
-	Main : 에러()
+class Preference {
+	<<record>>
+	+int answerSize
+	+int lowerBound
+	+int upperBound
+}
+class Result {
+	<<record>>
+	+int strike
+	+int ball
+}
+
+class Application {
+	+main()$
+	-wantsReplay()$ boolean
+}
+class Game {
+	-Prefrence settings$
+	+start(Preference)$
+	+foundAnswer(Result)$ boolean
+}
 class Player {
 	-List~Integer~ numbers
-	+compareWith()
+	+Player(Preference)
+	+Player(List~Integer~)
+	+containsNumber(int) int
+	+compareWith(Player) Result
 }
-Main ..> Player : depends
+class Printer {
+	+printResult()$
+}
+class Reader {
+	+readNumber(Preference)$ List~Integer~
+	+checkReplay()$ boolean
+	-parseInt(String)$ int
+	-validateRange(Preference, int)$
+	-validateDuplicates(List~Integer~, int)$
+	-validateEachRange(Preference, int)$
+}
+
+Application ..> Game 
+Application ..> Printer 
+Application ..> Reader 
+Game ..> Player 
+Game ..> Printer
+Game ..> Reader
 ```
