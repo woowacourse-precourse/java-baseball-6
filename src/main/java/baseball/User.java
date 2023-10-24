@@ -58,6 +58,10 @@ public class User {
         strike = 0;
     }
 
+    public boolean finishGame() {
+        return strike == 3;
+    }
+
     private void addNumber(int newNumber) {
         number.add(newNumber);
     }

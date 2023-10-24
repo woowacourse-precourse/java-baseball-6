@@ -23,7 +23,37 @@ public class Computer {
         }
     }
 
-    public void setResult(String result) {
+    public void createResult(int ball, int strike) {
+        StringBuilder result = new StringBuilder();
+
+        if (ball == 0 && strike == 0) {
+            result.append(Result.NOTHING_RESULT.getResult());
+            String computerResult = result.toString();
+            setResult(computerResult);
+            return;
+        }
+
+        if (ball != 0) {
+            result.append(ball).append(Result.BALL_RESULT.getResult());
+        }
+
+        if (ball != 0 && strike != 0) {
+            result.append(" ").append(strike).append(Result.STRIKE_RESULT.getResult());
+        }
+
+        if (ball == 0 && strike != 0) {
+            result.append(strike).append(Result.STRIKE_RESULT.getResult());
+        }
+
+        if (strike == 3) {
+            result.append(Result.ALL_STRIKE_RESULT.getResult());
+        }
+
+        String computerResult = result.toString();
+        setResult(computerResult);
+    }
+
+    private void setResult(String result) {
         this.result = result;
     }
 
@@ -34,4 +64,6 @@ public class Computer {
     private void resetNumber() {
         number.clear();
     }
+
+
 }
