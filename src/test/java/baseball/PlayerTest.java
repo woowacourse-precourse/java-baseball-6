@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

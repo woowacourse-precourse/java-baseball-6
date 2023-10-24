@@ -26,7 +26,6 @@ public class Server {
             throw new IllegalArgumentException("없는 명령입니다!");
         }
     }
-
     Server(){
         this.computer = new Computer(
             digitCount,
