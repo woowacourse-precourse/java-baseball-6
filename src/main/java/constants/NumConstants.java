@@ -10,6 +10,6 @@ public class NumConstants {
     public static final int SUCCESS_STRIKE = 3;
     public static final int NOTHING = 0;
 
-    public static final int INPUT_RESTART = 1;
-    public static final int INPUT_FINISH = 2;
+    public static final int OPTION_RESTART = 1;
+    public static final int OPTION_FINISH = 2;
 }
