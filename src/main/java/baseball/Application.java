@@ -1,91 +1,69 @@
 package baseball;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Scanner scanner = new Scanner(System.in);
-        String target = generateRandomNumber();
-
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String guess = scanner.nextLine().trim();
-
-            if (guess.isEmpty()) {
-                System.out.println("낫싱");
-                continue;
-            }
-
-            if (!isValidInput(guess)) {
-                scanner.close();
-                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
-            }
-
-            GuessResult result = evaluateGuess(target, guess);
-
-            if (result.strikes == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            } else {
-                System.out.println(result.balls + "볼 " + result.strikes + "스트라이크");
-            }
-        }
-
-        scanner.close();
-    }
-
-
-    private static String generateRandomNumber() {
-        Set<Integer> numberSet = new HashSet<>();
-        Random rand = new Random();
-
-        while (numberSet.size() < 3) {
-            numberSet.add(rand.nextInt(9) + 1);
-        }
-
-        StringBuilder number = new StringBuilder();
-        for (int num : numberSet) {
-            number.append(num);
-        }
-        return number.toString();
-    }
-
-    private static boolean isValidInput(String input) {
-        return input.matches("[1-9]{3}") && input.chars().distinct().count() == 3;
-    }
-
-    private static GuessResult evaluateGuess(String target, String guess) {
-        int balls = 0;
-        int strikes = 0;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (guess.charAt(i) == target.charAt(j)) {
-                    if (i == j) {
-                        strikes++;
-                    } else {
-                        balls++;
-                    }
+            List<Integer> computerNumbers = generateRandomNumbers();
+            while (true) {
+                List<Integer> playerNumbers = requestPlayerNumbers();
+                String result = guess(computerNumbers, playerNumbers);
+                System.out.println(result);
+                if (result.equals("3스트라이크")) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
                 }
             }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
+            if (choice.equals("2")) break;
         }
-
-        return new GuessResult(balls, strikes);
     }
 
-    private static class GuessResult {
-        int balls;
-        int strikes;
-
-        GuessResult(int balls, int strikes) {
-            this.balls = balls;
-            this.strikes = strikes;
+    private static List<Integer> generateRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
+        return numbers;
+    }
+
+    private static List<Integer> requestPlayerNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        if (input.length() != 3) throw new IllegalArgumentException();
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            if (ch < '1' || ch > '9') throw new IllegalArgumentException();
+            numbers.add(Character.getNumericValue(ch));
+        }
+        return numbers;
+    }
+
+    private static String guess(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikes = 0;
+        int balls = 0;
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
+                strikes++;
+            } else if (computerNumbers.contains(playerNumbers.get(i))) {
+                balls++;
+            }
+        }
+
+        if (strikes == 3) return "3스트라이크";
+        if (strikes == 0 && balls == 0) return "낫싱";
+        return balls + "볼 " + strikes + "스트라이크";
     }
 }
