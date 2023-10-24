@@ -60,7 +60,3 @@ public class ResultFactory {
 
 }
 
-enum Order {
-    FIRST, SECOND, THIRD
-}
-
