@@ -23,20 +23,30 @@ public class Application {
         println(WELCOME_MSG);
 
         try{
-            // 랜덤 3자리 숫자 생성
-            List<Integer> randNum = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT);
-
             while(true){
-                // 사용자 입력 받기
-                print(INPUT_MSG);
-                String userInput = Console.readLine();
+                // 랜덤 3자리 숫자 생성
+                List<Integer> randNum = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT);
 
-                // 사용자 입력이 정확한지 판별
-                isRightInput(userInput);
+                while(true){
+                    // 사용자 입력 받기
+                    print(INPUT_MSG);
+                    String userInput = Console.readLine();
 
-                // 결과 판정 후 루프 탈출 결정
-                if(isAnswer(randNum, userInput)) break;
+                    // 사용자 입력이 정확한지 판별
+                    isRightInput(userInput);
+
+                    // 결과 판정 후 루프 탈출 결정
+                    if(isAnswer(randNum, userInput)) break;
+                }
+
+                // 계속하기 판별
+                println(CONTINUE_MSG);
+                String continued = Console.readLine();
+                if(continued.equals("1")) continue;
+                else if(continued.equals("2")) break;
+                else throw new IllegalArgumentException("잘못된 입력입니다.");
             }
+
         }catch (IllegalArgumentException e){
             println(e.getMessage());
         }finally {
