@@ -68,4 +68,9 @@ public class ValidatorTest {
         assertThatCode(() -> validator.validateStandard(List.of("123".split("")))).doesNotThrowAnyException();
     }
 
+    @Test
+    void 게임_종료_후_예외() {
+        assertThatThrownBy(() -> validator.validateEndOrRestart("3")).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
