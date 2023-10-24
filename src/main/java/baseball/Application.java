@@ -27,8 +27,9 @@ public class Application {
             game.run();
         } catch (Exception exception) {
             userIo.print(exception.getMessage());
+            throw exception;
+        } finally {
+            Console.close();
         }
-
-        Console.close();
     }
 }
