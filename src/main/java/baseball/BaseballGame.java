@@ -23,18 +23,18 @@ public class BaseballGame {
         consoleLogger.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
-    public void run(GameInputInterface consoleInput, GameOutputInterface consoleLogger) {
+    public void run(GameInputInterface in, GameOutputInterface out) {
         while (true) {
-            consoleLogger.print("숫자를 입력해주세요 :");
-            String input = consoleInput.getInput();
+            out.print("숫자를 입력해주세요 :");
+            String input = in.getInput();
             checkInputs(input);
             BaseballNumber otherNumbers = BaseballNumber.ofString(input);
-            consoleLogger.print(numbers.getHintFrom(otherNumbers).toString());
+            out.print(numbers.getHintFrom(otherNumbers).toString());
             if (numbers.equals(otherNumbers)) {
                 break;
             }
         }
-        sayBi(consoleLogger);
+        sayBi(out);
     }
 
     private static void checkInputs(String s) {

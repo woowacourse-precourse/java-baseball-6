@@ -1,30 +1,29 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 public class GameExecutor {
     private BaseballGame game;
-    private GameInputInterface consoleInput;
-    private GameOutputInterface consoleLogger;
+    private GameInputInterface in;
+    private GameOutputInterface out;
     private GameRandom random;
 
-    public GameExecutor() {
-        random = new MissionUtilsGameRandom();
-        game = new BaseballGame(random.sampleDistinctNumbers(1, 9, 3));
-        consoleInput = new ConsoleInput();
-        consoleLogger = new ConsoleLogger();
+    public GameExecutor(BaseballGame game, GameInputInterface consoleInput,
+                        GameOutputInterface consoleLogger,
+                        GameRandom random) {
+        this.random = random;
+        this.game = game;
+        this.in = consoleInput;
+        this.out = consoleLogger;
     }
 
 
     public void run() {
-        game.sayHello(consoleLogger);
+        game.sayHello(out);
         while (true) {
-            game.run(consoleInput, consoleLogger);
-            consoleLogger.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            String input = consoleInput.getInput();
+            game.run(in, out);
+            out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            String input = in.getInput();
             checkInput(input);
             if ("2".equals(input)) {
                 break;
