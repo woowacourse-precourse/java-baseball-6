@@ -8,22 +8,22 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     // 사용자에게 입력받은 값 유효성 체크
-    public static void ValidityCheck(String playerInputString, int validType){        
+    public static void ValidityCheck(String playerInputString, int validType){
+        String REGEX;
+        int range;
+
         if(validType == 0){
-            String REGEX = "[0-9]+";
-            if (!playerInputString.matches(REGEX))
-                throw new IllegalArgumentException();
-
-            if (playerInputString.length() != 3)
-                throw new IllegalArgumentException();
-
-        }else if(validType == 1){
-            String REGEX = "[1-2]+";
-            if (!playerInputString.matches(REGEX))
-                throw new IllegalArgumentException();
-            if (playerInputString.length() != 1)
-                throw new IllegalArgumentException();  
+            REGEX = "[0-9]+";
+            range = 3;
+        }else{
+            REGEX = "[1-2]+";
+            range = 1;
         }
+
+        if (!playerInputString.matches(REGEX))
+            throw new IllegalArgumentException();
+        if (playerInputString.length() != range)
+            throw new IllegalArgumentException();  
     }
 
     // 플레이어에게 숫자를 입력받아 ball, strike 체크
