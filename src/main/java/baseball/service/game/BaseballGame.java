@@ -6,8 +6,8 @@ import baseball.service.calculator.BaseballCalculator;
 import baseball.service.calculator.Calculate;
 import baseball.service.input.Input;
 import baseball.service.input.InputView;
-import baseball.service.output.OutPutView;
 import baseball.service.output.Output;
+import baseball.service.output.OutputView;
 import baseball.util.error.ErrorMessage;
 import baseball.util.message.PrintMessage;
 import camp.nextstep.edu.missionutils.Console;
@@ -24,7 +24,7 @@ public class BaseballGame implements GameInterface {
 
     public BaseballGame() {
         this.input = new InputView();
-        this.output = new OutPutView();
+        this.output = new OutputView();
         this.calculate = new BaseballCalculator();
     }
 

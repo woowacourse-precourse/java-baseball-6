@@ -3,7 +3,7 @@ package baseball.service.output;
 import baseball.dto.Result;
 import baseball.util.message.PrintMessage;
 
-public class OutPutView implements Output {
+public class OutputView implements Output {
     private static final int TARGET_NUMBER = 3;
     private static final int ZERO_NUMBER = 0;
 
