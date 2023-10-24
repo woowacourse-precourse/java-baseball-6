@@ -57,20 +57,6 @@ public class Application {
                 else if (result[0] > 0 && result[1] == 0) {
                     System.out.println(result[0] + "스트라이크");
                 }
-
-                //---
-                if (result[1] > 0) {
-                    System.out.print(result[1] + "볼");
-                }
-
-                if (result[0] > 0) {
-                    if (result[1] > 0) {
-                        System.out.print(" ");
-                    }
-                    System.out.println(result[0] +"스트라이크");
-                }
-
-                    // ---
                 //낫싱인 경우
                 else if (result[2] == 3) {
                     System.out.println("낫싱");
@@ -89,23 +75,27 @@ public class Application {
 
     //아래부터는 main 안에서 사용한, 필요한 메소드들
 
-    // 무작위로 서로 다른 3자리 숫자를 생성하는 함수
+    // 컴퓨터에게 무작위로 서로 다른 3자리 숫자를 생성해주는 함수
     public static int[] generateRandomNumbers() {
         int[] numbers = new int[3];
-        boolean flag = false;
-        int index = 0;
-
-        while(index<3){
-            int num = Randoms.pickNumberInRange(1, 9);
-            for(int value : numbers) {
-                flag = num == value;
-            }
-            if (flag){
-                continue;
-            }
-            numbers[index++]=num;
+        for (int i = 0; i < 3; i++) {
+            int num;
+            do {
+                num = Randoms.pickNumberInRange(1, 9);
+            } while (contains(numbers, num));
+            numbers[i] = num;
         }
         return numbers;
+    }
+
+    // 랜덤으로 숫자를 생성할 때 겹치는 게 있는지 확인하는 함수
+    public static boolean contains(int[] array, int num) {
+        for (int value : array) {
+            if (value == num) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // 길이와 숫자 분야에서 사용자 입력이 유효한지 확인하는 함수
