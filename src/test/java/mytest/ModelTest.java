@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.model.Game;
 import baseball.model.InputManager;
 import baseball.model.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
@@ -19,6 +20,7 @@ public class ModelTest {
     private static final int RESTART = 1;
     private static final int EXIT = 2;
 
+    // RandomNumberGenerator
     @DisplayName("컴퓨터가 고른 수의 길이 확인")
     @Test
     void pickedNumbersSizeTest() {
@@ -43,6 +45,7 @@ public class ModelTest {
         }
     }
 
+    // InputManager
     @DisplayName("숫자로만 이루어져 있는지 확인")
     @Test
     void testIsAllDigits() {
@@ -60,21 +63,21 @@ public class ModelTest {
 
     @DisplayName("입력 크기가 유효한지 확인")
     @Test
-    public void testIsSizeValid() {
+    void testIsSizeValid() {
         assertTrue(InputManager.isSizeValid("123", SIZE));
         assertFalse(InputManager.isSizeValid("12", SIZE));
     }
 
     @DisplayName("중복된 수가 있는지 확인")
     @Test
-    public void testHasDuplicates() {
+    void testHasDuplicates() {
         assertTrue(InputManager.hasDuplicates("112", SIZE));
         assertFalse(InputManager.hasDuplicates("123", SIZE));
     }
 
     @DisplayName("재시작 및 종료의 입력이 유효한지 확인")
     @Test
-    public void testIsRestartInputValid() {
+    void testIsRestartInputValid() {
         assertTrue(InputManager.isRestartInputValid(RESTART));
         assertTrue(InputManager.isRestartInputValid(EXIT));
         assertFalse(InputManager.isRestartInputValid(3));
@@ -82,8 +85,33 @@ public class ModelTest {
 
     @DisplayName("문자열을 정수 배열로 변환")
     @Test
-    public void testStringToIntArray() {
+    void testStringToIntArray() {
         assertArrayEquals(new int[]{1, 2, 3}, InputManager.stringToIntArray("123"));
         assertArrayEquals(new int[]{}, InputManager.stringToIntArray(""));
+    }
+
+    // Game
+    @DisplayName("볼 개수 확인")
+    @Test
+    void testCountBalls() {
+        int[] pickedNumbers = {1, 2, 3};
+        assertEquals(3, Game.countBalls("312", pickedNumbers));
+        assertEquals(0, Game.countBalls("456", pickedNumbers));
+    }
+
+    @DisplayName("스트라이크 개수 확인")
+    @Test
+    void testCountStrikes() {
+        int[] pickedNumbers = {1, 2, 3};
+        assertEquals(3, Game.countStrikes("123", pickedNumbers));
+        assertEquals(2, Game.countStrikes("124", pickedNumbers));
+    }
+
+    @DisplayName("게임이 승리 상태에 도달했는지 확인")
+    @Test
+    void testIsGameWon() {
+        int[] pickedNumbers = {1, 2, 3};
+        Game.generateHint("123", pickedNumbers);
+        assertTrue(Game.isGameWon());
     }
 }
