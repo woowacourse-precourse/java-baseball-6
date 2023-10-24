@@ -60,4 +60,8 @@ public class BaseballResult {
 
     }
 
+    public boolean getIsCorrect() {
+        return userNumber.equals(computerNumber);
+    }
+
 }

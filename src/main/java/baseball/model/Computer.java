@@ -28,5 +28,9 @@ public class Computer {
         return baseballResult.baseballGameResult();
     }
 
+    public boolean getIsCorrect(String userInput) {
+        BaseballResult baseballResult = new BaseballResult(userInput, answerNumberString);
+        return baseballResult.getIsCorrect();
+    }
 
 }

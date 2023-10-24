@@ -1,14 +1,15 @@
 package baseball.view;
 
+import static baseball.model.Constant.END_NUMBER_BASEBALL;
 import static baseball.model.Constant.ENTER_NUMBER;
-import static baseball.model.Constant.START_GAME;
+import static baseball.model.Constant.START_NUMBER_BASEBALL;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseballView {
 
     public void startNumberBaseball() {
-        System.out.println(START_GAME);
+        System.out.println(START_NUMBER_BASEBALL);
     }
 
     public String getUserInput() {
@@ -22,4 +23,9 @@ public class NumberBaseballView {
     }
 
 
+    public int endNumberBaseball() {
+        System.out.println(END_NUMBER_BASEBALL);
+        String userInput = Console.readLine();
+        return Integer.parseInt(userInput);
+    }
 }
