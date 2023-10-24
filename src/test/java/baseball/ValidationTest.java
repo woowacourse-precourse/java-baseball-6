@@ -43,6 +43,13 @@ public class ValidationTest {
         assertThatThrownBy(() -> Application.main(new String[]{})).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void throwExceptionIfZeroIsIncluded() {
+        final String longNumbers = "120";
+        command(longNumbers);
+        assertThatThrownBy(() -> Application.main(new String[]{})).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @AfterEach
     void closeScanner() {
         Console.close();
