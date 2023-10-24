@@ -118,10 +118,7 @@ public class Application {
     }
 
     private static boolean isAnswer() {
-        if (strike == digitNumber) {
-            return true;
-        }
-        return false;
+        return strike == digitNumber;
     }
 
     private static boolean restartGame(String target) {
