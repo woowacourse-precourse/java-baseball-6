@@ -15,6 +15,7 @@ public class InputDevice {
     }
 
     public List<Integer> inputTryNumber() {
+        System.out.println("숫자를 입력해주세요 : ");
         String inputValue = consoleService.readLine();
         inputValidator.valid(inputValue);
         return Arrays.stream(inputValue.split("")).map(Integer::parseInt).collect(Collectors.toList());

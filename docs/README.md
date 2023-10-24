@@ -29,6 +29,6 @@
     * [x] : Application 에게 게임 결과를 알려달라는 메시지를 받으면 게임 결과를 가져온다.
 
 * `Application`
-    * [] : 야구 게임을 실행한다.
+    * [x] : 야구 게임을 실행한다. (모든 테스트 성공!)
         * [x] : Console 작동을 위한 ConsoleService 구현체인 DefaultConsoleService 생성
         * [x] : Randoms 작동을 위한 RandomService 구현체인 DefaultRandomService 생성

@@ -28,4 +28,8 @@ public enum Score {
         }
         return NOTHING;
     }
+
+    public String getName() {
+        return name;
+    }
 }

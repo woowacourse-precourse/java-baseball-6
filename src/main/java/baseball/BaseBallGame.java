@@ -16,6 +16,6 @@ public class BaseBallGame {
 
     public String createGameResult(List<Integer> tryNumbers, List<Integer> answerNumbers) {
         GameReferee gameReferee = new GameReferee(new Ball(answerNumbers));
-        return gameReferee.judge(new Ball(tryNumbers)).name();
+        return gameReferee.judge(new Ball(tryNumbers)).getName();
     }
 }
