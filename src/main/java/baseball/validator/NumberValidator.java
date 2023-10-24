@@ -8,7 +8,7 @@ public class NumberValidator {
     private static final int MENU_COUNT = 2;
 
     public void validateInputNumber(String inputNumber, int numberCount) {
-        if (inputNumber.length() != numberCount || hasDuplicateDigits(inputNumber) || isInteger(inputNumber) == false
+        if (validInputLength(inputNumber, numberCount)==false || hasDuplicateDigits(inputNumber) || isInteger(inputNumber) == false
                 || containsZero(inputNumber)) {
             throw new IllegalArgumentException();
         }
@@ -19,6 +19,15 @@ public class NumberValidator {
         if (isInteger(menu) == false || isInRangeOneToMenuSize(menu)==false) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static boolean validInputLength(String inputNumber, int numberCount){
+        if(inputNumber.length() > numberCount){
+            return false;
+        } else if(inputNumber.length() < numberCount){
+            return false;
+        }
+        return true;
     }
 
     public static boolean containsZero(String str) {
