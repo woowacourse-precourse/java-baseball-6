@@ -19,12 +19,12 @@ public class Baseball {
         this.computerNum=makeRandomNum();
     }
 
+    // 서로 다른 세자리 수 생성
     public String makeRandomNum(){
         String randomStr = "";
 
         while(randomStr.length()<3) {
 
-            // 서로 다른 세자리 수 생성
             int randomNum = Randoms.pickNumberInRange(1, 9);
             String numToString=Integer.toString(randomNum);
 
@@ -36,7 +36,7 @@ public class Baseball {
         return randomStr;
     }
 
-    // 콘솔에 게임 결과를 출력하는 함수
+    // 콘솔에 게임 결과를 출력
     public void printResult(int[] result){
         int ballNum = result[0];
         int strikeNum = result[1];
@@ -66,24 +66,49 @@ public class Baseball {
         return new int[] {ballNum,strikeNum};
     }
 
+    // 숫자를 모두 맞추었는지 확인
     public boolean isCorrect(int strikeNum){
         return strikeNum == 3;
     }
 
+    // 게임 종료 이후의 처리
+    public void afterGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input=Console.readLine();
+
+        if(input.equals("1")){
+            // 새로시작
+            this.computerNum=makeRandomNum();
+            playGame();
+
+        }else if(!input.equals("2")){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    // 유저가 입력한 숫자의 타당성검사
+    public void checkValidity(String input){
+        // 세자리가 맞는지 확인
+        if(input.length()!=3){
+            throw new IllegalArgumentException();
+        }
+
+        for(int i=0;i<3;i++){
+            for(int j=i+1;j<3;j++){
+                if(input.charAt(i)==input.charAt(j)) throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    // 게임 실행
     public void playGame(){
 
         while(true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input=Console.readLine();
 
-            if(input.length()!=3){
-                throw new IllegalArgumentException();
-            }
-            for(int i=0;i<3;i++){
-                for(int j=i+1;j<3;j++){
-                    if(input.charAt(i)==input.charAt(j)) throw new IllegalArgumentException();
-                }
-            }
+            checkValidity(input);
+
             int[] result=countResult(input);
             printResult(result);
 
@@ -93,15 +118,7 @@ public class Baseball {
             }
         }
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input=Console.readLine();
+        afterGame();
 
-        if(input.equals("1")){
-//            initBaseball();
-            this.computerNum=makeRandomNum();
-            playGame();
-        }else if(!input.equals("2")){
-            throw new IllegalArgumentException();
-        }
     }
 }
