@@ -1,10 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseBallGame {
-	private static int randomNumber;
-	private static int hundred, ten, one;
+	private static List<Integer> randomNumber;
 	private int ball, strike;
 
 	BaseBallGame() {
@@ -12,27 +13,18 @@ public class BaseBallGame {
 	}
 
 	private static void makeRandomNumber() {
-		randomNumber = Randoms.pickNumberInRange(123, 988);
+		randomNumber = new ArrayList<>();
 
-		while (true) {
-			hundred = randomNumber / 100;
-			ten = randomNumber % 100 / 10;
-			one = randomNumber % 100 % 10;
-
-			if (hundred != ten && ten != one && one != hundred && hundred != 0 && ten != 0 && one != 0) {
-				break;
+		while (randomNumber.size() != 3) {
+			int tmp = Randoms.pickNumberInRange(1, 9);
+			if (!randomNumber.contains(tmp)) {
+				randomNumber.add(tmp);
 			}
-
-			randomNumber = Randoms.pickNumberInRange(123, 988);
 		}
 	}
 
-	public int getRandomNumber() {
+	public List<Integer> getRandomNumber() {
 		return randomNumber;
-	}
-
-	public void printFirst() {
-		System.out.println("숫자 야구 게임을 시작합니다.");
 	}
 
 	public void compare(int userNumber) {
@@ -45,7 +37,7 @@ public class BaseBallGame {
 		numbers[2] = userNumber % 100 % 10;
 
 		for (int i = 0; i < 3; i++) {
-			if (hundred == numbers[i]) {
+			if (randomNumber.get(0) == numbers[i]) {
 				if (i == 0) {
 					strike++;
 				} else {
@@ -53,7 +45,7 @@ public class BaseBallGame {
 				}
 			}
 
-			if (ten == numbers[i]) {
+			if (randomNumber.get(1) == numbers[i]) {
 				if (i == 1) {
 					strike++;
 				} else {
@@ -61,7 +53,7 @@ public class BaseBallGame {
 				}
 			}
 
-			if (one == numbers[i]) {
+			if (randomNumber.get(2) == numbers[i]) {
 				if (i == 2) {
 					strike++;
 				} else {
