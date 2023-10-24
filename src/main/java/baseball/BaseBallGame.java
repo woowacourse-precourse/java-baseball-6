@@ -5,13 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class BaseBallGame {
 
     private static BaseBallGame baseBallGame;
     public int numOfBall = 0;
     public int numOfStrike = 0;
+    public final String INPUT_REGEX = "\\d{3}";
+    public final String ONE_OR_TWO = "[12]";
 
     public static BaseBallGame getInstance() {
         if (baseBallGame == null) {
@@ -25,8 +26,6 @@ public class BaseBallGame {
         numOfStrike = 0;
     }
 
-    //TODO 1. 예외처리
-    //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
     public void run() {
         do {
             System.out.print(OutputMessage.START_GAME);
@@ -63,6 +62,7 @@ public class BaseBallGame {
 
     private static List<Integer> getInput() {
         String st = Console.readLine();
+        throwException(st);
         String[] arr = st.split("");
 
         List<Integer> input = new ArrayList<>();
@@ -70,6 +70,12 @@ public class BaseBallGame {
             input.add(Integer.parseInt(arr[i]));
         }
         return input;
+    }
+
+    private static void throwException(String st) {
+        if (!st.matches(baseBallGame.INPUT_REGEX)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void compareAnswerToInput(List<Integer> answer, List<Integer> input) {
@@ -106,6 +112,13 @@ public class BaseBallGame {
 
     private static boolean askWhetherToEnd() {
         String st = Console.readLine();
+        throwException2(st);
         return Integer.parseInt(st) == 2;
+    }
+
+    private static void throwException2(String st) {
+        if (!st.matches(baseBallGame.ONE_OR_TWO)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
