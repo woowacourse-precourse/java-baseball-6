@@ -31,7 +31,7 @@ public class BaseballGame {
 
     public int[] getNumberCompare() {
 
-        return compareValidator.getNumberCompare(player.getPlayerNumber(), computer.generate());
+        return compareValidator.getNumberCompare(computer.getComputerNumber(), player.getPlayerNumber());
     }
 
     public void printBallStrikeCount(int[] count) {
