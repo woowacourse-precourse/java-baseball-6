@@ -13,6 +13,13 @@ import static baseball.status.GameMsg.REPLAY_OR_OVER_MESSAGE;
 import static baseball.status.GameMsg.SET_INPUT;
 import static baseball.status.GameMsg.STRIKE;
 import static baseball.status.GameMsg.SUCCESS_MESSAGE;
+import static baseball.status.GameSetting.CHOICE_REGEX;
+import static baseball.status.GameSetting.COUNT_NUM;
+import static baseball.status.GameSetting.INPUT_REGEX;
+import static baseball.status.GameSetting.MAX_NUM;
+import static baseball.status.GameSetting.MIN_NUM;
+import static baseball.status.GameSetting.OVER;
+import static baseball.status.GameSetting.REPLAY;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -105,9 +112,9 @@ class Game {
      * @param choice 종료 여부
      */
     private void replayOrOver(String choice) {
-        if (choice.equals("1")) {
+        if (choice.equals(REPLAY.getStringValue())) {
             play();
-        } else if (choice.equals("2")) {
+        } else if (choice.equals(OVER.getStringValue())) {
             System.out.println(GAME_OVER.getMsg());
         }
     }
@@ -119,7 +126,7 @@ class Game {
      * @return 입력 값
      */
     public String getReplayOrOverInput(String s) {
-        if (!s.matches("^[1-2]$")) {
+        if (!s.matches(CHOICE_REGEX.getStringValue())) {
             throw new IllegalArgumentException(INVALID_FORMAT_INPUT2.getMsg());
         }
         return s;
@@ -132,8 +139,8 @@ class Game {
      */
     private List<Integer> setComputerNum() {
         List<Integer> computerNum = new ArrayList<>();
-        while (computerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNum.size() < COUNT_NUM.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUM.getValue(), MAX_NUM.getValue());
             if (!computerNum.contains(randomNumber)) {
                 computerNum.add(randomNumber);
             }
@@ -163,7 +170,7 @@ class Game {
         validationInput(inputArr);
 
         List<Integer> inputNum = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < COUNT_NUM.getValue(); i++) {
             inputNum.add(Integer.parseInt(inputArr[i]));
         }
         return inputNum;
@@ -175,17 +182,17 @@ class Game {
      * @param input 입력 값
      */
     private void validationInput(String[] input) {
-        if (input.length != 3) {
+        if (input.length != COUNT_NUM.getValue()) {
             throw new IllegalArgumentException(INVALID_LENGTH_INPUT.getMsg());
         }
 
         for (String s : input) {
-            if (!s.matches("^[1-9]$")) {
+            if (!s.matches(INPUT_REGEX.getStringValue())) {
                 throw new IllegalArgumentException(INVALID_FORMAT_INPUT.getMsg());
             }
         }
 
-        if (Arrays.stream(input).distinct().count() != 3) {
+        if (Arrays.stream(input).distinct().count() != COUNT_NUM.getValue()) {
             throw new IllegalArgumentException(INVALID_DISTINCT_INPUT.getMsg());
         }
     }
@@ -194,7 +201,6 @@ class Game {
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println(GAME_START.getMsg());
         Game game = new Game();
         game.play();
