@@ -1,12 +1,13 @@
 package baseball.utils;
 
+import static baseball.utils.Constants.BALL_SIZE;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 public class PlayerInputValidator {
 
-    private static final int MAX_LENGTH = 3;
     private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3}");
 
     public static void validatePlayerNumber(String playerNumber) {
@@ -17,7 +18,7 @@ public class PlayerInputValidator {
 
 
     private static void validateNumbersLength(String playerNumber) {
-        if (playerNumber.length() != MAX_LENGTH) {
+        if (playerNumber.length() != BALL_SIZE) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBERS_LENGTH_ERROR.getMessage());
         }
     }
