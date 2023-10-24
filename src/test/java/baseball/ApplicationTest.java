@@ -36,7 +36,7 @@ class ApplicationTest extends NsTest {
     @Test
     void zero_Exception_Test() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("0"))
+                assertThatThrownBy(() -> runException("023"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
