@@ -23,6 +23,10 @@ public class Result {
         result.put(ballCount, result.get(ballCount) + 1);
     }
 
+    public int getResultByBallCount(BallCount ballCount) {
+        return result.get(ballCount);
+    }
+
     public Map<BallCount, Integer> getResult() {
         return result;
     }

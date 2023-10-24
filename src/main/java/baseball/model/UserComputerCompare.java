@@ -1,6 +1,5 @@
 package baseball.model;
 
-import java.util.Map;
 import java.util.stream.IntStream;
 
 public class UserComputerCompare {
@@ -19,11 +18,11 @@ public class UserComputerCompare {
     }
 
 
-    public Map<BallCount, Integer> getBallCountJudgement() {
+    public Result ResultgetBallCountJudgement() {
         IntStream.range(0, 3)
                 .forEach(this::processPlayerNumber);
 
-        return result.getResult();
+        return result;
     }
 
     private void processPlayerNumber(int index) {
