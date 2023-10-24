@@ -1,11 +1,13 @@
 package baseball.model;
 
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private final OutputView outputView = new OutputView();
     private List<Integer> computerNumbers;
 
     public Game() {
@@ -15,6 +17,9 @@ public class Game {
     public boolean isCorrectGuess(List<Integer> userNumbers) {
         int strikes = countStrikes(userNumbers);
         int balls = countBalls(userNumbers);
+
+        String result = generateGameResult(strikes, balls);
+        outputView.printGameResult(result);
 
         return strikes == 3;
     }
@@ -48,5 +53,20 @@ public class Game {
             }
         }
         return balls;
+    }
+
+    private String generateGameResult(int strikes, int balls) {
+        if (strikes == 0 && balls == 0) {
+            return "낫싱";
+        } else {
+            StringBuilder result = new StringBuilder();
+            if (balls > 0) {
+                result.append(balls).append("볼 ");
+            }
+            if (strikes > 0) {
+                result.append(strikes).append("스트라이크");
+            }
+            return result.toString();
+        }
     }
 }
