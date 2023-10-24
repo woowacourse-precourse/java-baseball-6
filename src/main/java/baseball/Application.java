@@ -4,13 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Application {
 
-    private static int asciiOne = 49;
-    private static int asciiNine = 57;
+    private static int NUM_OF_BASEBALL = 3;
+    private static int ASCIIONE = 49;
+    private static int ASCIININE = 57;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -23,9 +25,66 @@ public class Application {
         boolean gameFlag = true;
         while (gameFlag) {
             final List<Integer> userNumbers = getUserNumbers();
+            System.out.println(computerNumbers);
             System.out.println(userNumbers);
+
+            if (getResult(computerNumbers, userNumbers)) {
+                gameFlag = false;
+            }
+        }
+    }
+
+    private static boolean getResult(final List<Integer> computerNumbers, final List<Integer> userNumbers) {
+        if (checkGameOver(computerNumbers, userNumbers)) {
+            return true;
         }
 
+        int strikeNums = getStrikes(computerNumbers, userNumbers);
+        int ballNums = getBalls(computerNumbers, userNumbers);
+
+        if(strikeNums == 0 && ballNums == 0) {
+            System.out.println("낫싱");
+        }
+        else {
+            System.out.println(String.format("%d볼 %d스트라이크", ballNums, strikeNums));
+        }
+
+        return false;
+    }
+
+    private static int getBalls(final List<Integer> computerNumbers, final List<Integer> userNumbers) {
+        int ballNums = 0;
+
+        for(int i = 0; i < NUM_OF_BASEBALL; i++) {
+            if ((!computerNumbers.get(i).equals(userNumbers.get(i)))
+                    && computerNumbers.contains(userNumbers.get(i))) {
+                ballNums++;
+            }
+        }
+
+        return ballNums;
+    }
+
+    private static int getStrikes(final List<Integer> computerNumbers, final List<Integer> userNumbers) {
+        int strikeNums = 0;
+
+        for(int i = 0; i < NUM_OF_BASEBALL; i++) {
+            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
+                strikeNums++;
+            }
+        }
+
+        return strikeNums;
+    }
+
+    private static boolean checkGameOver(final List<Integer> computerNumbers, final List<Integer> userNumbers) {
+        if(computerNumbers.equals(userNumbers)) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 
     private static List<Integer> getComputerNumbers() {
@@ -41,6 +100,7 @@ public class Application {
     }
 
     private static List<Integer> getUserNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumbers = Console.readLine();
 
         if (!validateUserInput(inputNumbers)) {
@@ -91,7 +151,7 @@ public class Application {
     }
 
     private static boolean checkOneToNine(String number) {
-        if(asciiOne > number.charAt(0) || asciiNine < number.charAt(0)) {
+        if(ASCIIONE > number.charAt(0) || ASCIININE < number.charAt(0)) {
             return false;
         }
 
@@ -101,5 +161,4 @@ public class Application {
     private static List<Integer> stringToIntegerList(String inputNumbers) {
         return Stream.of(inputNumbers.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
-
 }
