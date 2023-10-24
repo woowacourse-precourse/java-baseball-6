@@ -1,7 +1,18 @@
 package baseball;
 
+import baseball.util.ResetGame;
+import baseball.view.Output;
+import baseball.controller.GamePlay;
+
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Output.printGameStart();
+        boolean isReset = true;
+
+        while(isReset) {
+            GamePlay.playing();
+            isReset = ResetGame.isReset();
+        }
     }
 }
