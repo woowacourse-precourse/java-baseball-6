@@ -30,6 +30,11 @@ public class Game {
         this.balls = 0;
     }
 
+    // 승리 여부를 판단하는 메서드
+    public boolean isWin() {
+        return strikes == 3;
+    }
+
 
 }
 
