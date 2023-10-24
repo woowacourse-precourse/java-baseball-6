@@ -10,9 +10,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseBall {
 
-    private User user;
-    private Computer computer;
-    private GameView view;
+    private final User user;
+    private final Computer computer;
+    private final GameView view;
 
     public BaseBall() {
         view = new GameView();
