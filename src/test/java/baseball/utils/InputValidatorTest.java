@@ -51,4 +51,14 @@ class InputValidatorTest {
         );
     }
 
+    @Test
+    @DisplayName("중복 숫자 입력")
+    void 사용자_입력_오류5() {
+        String userInput = "557";
+        assertThrows(IllegalArgumentException.class,
+                () -> InputValidator.checkUserBallInput(userInput)
+        );
+    }
+
+
 }
