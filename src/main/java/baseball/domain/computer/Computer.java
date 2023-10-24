@@ -1,8 +1,6 @@
 package baseball.domain.computer;
 
 import baseball.domain.game.Input;
-import baseball.domain.user.User;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -13,23 +11,27 @@ public class Computer {
     // 사용자가 정답을 입력하면 참을 반환
     public boolean isAnswer(List<Integer> userInputs, List<Integer> randomNumbers) {
         countBallAndStrike(userInputs, randomNumbers);
-        if (this.strikeCount == Input.NUMLENGTH.getLength())
+        if (this.strikeCount == Input.NUMLENGTH.getLength()) {
             return true;
+        }
         return false;
     }
 
     // 볼, 스트라이크 여부를 판별
     public void countBallAndStrike(List<Integer> userInputs, List<Integer> randomNumbers) {
+        // ballCount, strikeCount 초기화
+        this.clear();
+        
         // 각 사용자 입력수에 대해
         for (int i = 0; i < userInputs.size(); i++) {
             // 랜덤수 리슽트가 사용자 입력수를 가지고 있다면
             if (randomNumbers.contains(userInputs.get(i))) {
                 // 위치가 같다면 스트라이크
                 if (Objects.equals(userInputs.get(i), randomNumbers.get(i))) {
-                    strikeCount += 1;
+                    this.strikeCount += 1;
                     continue;
                 }
-                ballCount += 1;
+                this.ballCount += 1;
             }
         }
     }

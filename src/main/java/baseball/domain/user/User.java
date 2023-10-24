@@ -3,14 +3,11 @@ package baseball.domain.user;
 
 import baseball.domain.game.GameOption;
 import baseball.domain.game.Input;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class User {
-    // 사용자 입력수 리스트
-    private List<Integer> userAnswerInputs = new ArrayList<>();
 
     // 재시작 여부 값 사용자로부터 입력받고, 검증 후, 이를 반환
     public static Integer getWouldRestartGame(String userOption) throws IllegalArgumentException {
@@ -33,14 +30,9 @@ public class User {
         return option;
     }
 
-    // getter for "userInputs"
-    public List<Integer> getUserAnswerInputs() {
-        return userAnswerInputs;
-    }
-
     // 입력한 세자리 수 문자열을 검증하고, 각 자리 수의 숫자를 리스트에 추가하기
     public static List<Integer> parseUserAnswer(String userAnswer) throws IllegalArgumentException {
-        List<Integer> userAnswerInputs = new ArrayList<>();
+        List<Integer> parsedUserAnswers = new ArrayList<>();
 
         // 입력문자열이 야구게임 정책인 3자리를 넘어가는 경우, 예외처리를 합니다.
         validateUserInput(userAnswer.length() > Input.NUMLENGTH.getLength(),
@@ -56,10 +48,10 @@ public class User {
 
             // char를 int로 변환한 뒤, userInputs 리스트에 추가합니다.
             int eachInputNumber = Character.getNumericValue(eachNumber);
-            userAnswerInputs.add(eachInputNumber);
+            parsedUserAnswers.add(eachInputNumber);
         }
 
-        return userAnswerInputs;
+        return parsedUserAnswers;
     }
 
     // 조건식에 따른 예외메세지 가지는 예외처리
@@ -69,8 +61,4 @@ public class User {
         }
     }
 
-    // 상태 초기화
-    protected void clear() {
-        this.userAnswerInputs.clear();
-    }
 }

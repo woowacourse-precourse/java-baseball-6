@@ -18,6 +18,8 @@ public class Application {
             // 랜덤수 리스트 생성
             List<Integer> randomNumbers = RandomGenerator.getRandomNumbers();
 
+            System.out.println(randomNumbers.toString());
+
             // 게임 싸이클 시작
             gameService.startGame(randomNumbers);
 
