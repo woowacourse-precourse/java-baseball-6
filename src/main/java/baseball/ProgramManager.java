@@ -24,12 +24,13 @@ public class ProgramManager {
 
             GradeResult gradeResult = answer.gradeInput(answerInput);
 
+            Writer.writeGradeResult(gradeResult);
+
             if (gradeResult.isAnswer()) {
                 Writer.writeCorrectMent();
                 break;
             }
 
-            Writer.writeGradeResult(gradeResult);
         }
 
         Writer.writeRestartMent();
