@@ -19,23 +19,23 @@ class ValidateInputTest extends NsTest {
     @Test
     void 입력값_검증_실패() {
         assertSimpleTest(
-            () -> assertThatThrownBy(() -> ValidateInput.validate("", "오류", "입력 값 검증 오류"))
-                .hasMessage("입력 값 검증 오류")
-                .isInstanceOf(IllegalArgumentException.class));
+                () -> assertThatThrownBy(() -> ValidateInput.validate("", "오류", "입력 값 검증 오류"))
+                        .hasMessage("입력 값 검증 오류")
+                        .isInstanceOf(IllegalArgumentException.class));
     }
 
     @Test
     void 문자중복여부_검증_성공() {
         assertSimpleTest(
-            () -> assertThatCode(() -> ValidateInput.validateDuplicate("123"))
-                    .doesNotThrowAnyException());
+                () -> assertThatCode(() -> ValidateInput.validateDuplicate("123"))
+                        .doesNotThrowAnyException());
     }
 
     @Test
     void 문자중복여부_검증_실패() {
         assertSimpleTest(
-            () -> assertThatThrownBy(() -> ValidateInput.validateDuplicate("111"))
-                .hasMessageContaining("중복된 문자가 존재합니다.").isInstanceOf(IllegalArgumentException.class));
+                () -> assertThatThrownBy(() -> ValidateInput.validateDuplicate("111"))
+                        .hasMessageContaining("중복된 문자가 존재합니다.").isInstanceOf(IllegalArgumentException.class));
     }
 
     @Override

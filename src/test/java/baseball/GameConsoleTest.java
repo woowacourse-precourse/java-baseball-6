@@ -12,16 +12,17 @@ class GameConsoleTest extends NsTest {
     void 게임_승리_후_재시작_후_종료() {
         assertSimpleTest(
                 () -> {
-                run("1", "2");
-                assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            }
+                    run("1", "2");
+                    assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                }
         );
     }
 
     @Test
     void 예외_테스트() {
-        assertSimpleTest(() -> assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
+        assertSimpleTest(
+                () -> assertThatThrownBy(() -> runException("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
