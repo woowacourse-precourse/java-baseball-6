@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class GameController {
+    private static final int GAME_OVER = 3;
     private GameView gameView;
     private GameInput gameInput;
     private GameComputing gameComputing;
@@ -20,10 +21,10 @@ public class GameController {
         List<Integer> computerInput = gameComputing.generateComputerInput();
         gameView.printStart();
         while (continueGame) {
-            List<Integer> userInput = gameInput.getInput();
+            List<Integer> userInput = gameInput.receiveInput();
             inputValidator.validateInput(userInput);
             int result = gameComputing.compute(computerInput, userInput);
-            if (result == 3) {
+            if (result == GAME_OVER) {
                 continueGame = gameView.askContinueGame();
                 if (continueGame) {
                     computerInput = gameComputing.generateComputerInput();
