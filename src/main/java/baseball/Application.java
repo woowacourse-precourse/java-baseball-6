@@ -25,20 +25,8 @@ public class Application {
                 List<Integer> user = new ArrayList<>();
                 for (int i = 0; i < Numbers.length(); i++) {
                     int userNumber = Numbers.charAt(i) - '0';
-
-                    if(userNumber<1){
-                        throw new IllegalArgumentException();
-                    }
-                    if(userNumber>9){
-                        throw new IllegalArgumentException();
-                    }
-                    if(user.contains(userNumber)){
-                        throw new IllegalArgumentException();
-                    }
-
+                    userValid(user, userNumber);
                     user.add(userNumber);
-
-
 
                 }
 
@@ -90,6 +78,18 @@ public class Application {
             }
         }
 
+    }
+
+    public static void userValid(List<Integer> user, int userNumber){
+        if(userNumber<1){
+            throw new IllegalArgumentException();
+        }
+        if(userNumber>9){
+            throw new IllegalArgumentException();
+        }
+        if(user.contains(userNumber)){
+            throw new IllegalArgumentException();
+        }
     }
     public static void computerRandom(List<Integer> computer){
         while (computer.size() < 3) {
