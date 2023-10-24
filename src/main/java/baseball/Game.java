@@ -33,7 +33,7 @@ public class Game {
         gameStatus = IN_PROGRESS;
     }
 
-    public void getResult(String input) {
+    private void getResult(String input) {
         user.createBaseballs(input);
         Result result = new Result(user.getBaseballs(), computer.getBaseballs());
         gameScreen.printResult(result.getResult());
