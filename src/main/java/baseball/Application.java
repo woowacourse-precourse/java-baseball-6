@@ -1,31 +1,19 @@
 package baseball;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import camp.nextstep.edu.missionutils.Randoms;
-
+import baseball.computer.Computer;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
     public static void main(String[] args) {
-        List<Integer> computer = getRandomList();
-        int[] score = new int[2];
+        Computer computer = new Computer();
         String result = "";
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String data = readLine().trim();
-            isValidInput(data);
-            for (int i = 0; i < 3; ++i) {
-                int n = data.charAt(i) - '0';
-                if (computer.get(i) == n) {
-                    ++score[0];
-                } else if (computer.contains(n)) {
-                    ++score[1];
-                }
-            }
+            String userInput = readLine().trim();
+            isValidInput(userInput);
+            int[] score = computer.getResult(userInput);
             if (score[1] != 0) {
                 result += score[1] + "볼";
             }
@@ -46,15 +34,13 @@ public class Application {
                     throw new IllegalArgumentException();
                 }
                 if (restart.equals("1")) {
-                    computer = getRandomList();
+                    computer.resetNumber();
                 } else {
                     System.out.println("게임 종료");
                     break;
                 }
             }
             result = "";
-            score[0] = 0;
-            score[1] = 0;
         }
     }
 
@@ -64,15 +50,6 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-
-    private static List<Integer> getRandomList() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
 }
+
+
