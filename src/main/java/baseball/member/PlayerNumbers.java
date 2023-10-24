@@ -1,17 +1,16 @@
 package baseball.member;
 
 import baseball.controller.BaseballGameController;
-import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerNumbers {
-    private final List<Integer> playerNumbers;
+    private List<Integer> playerNumbers;
 
-    public PlayerNumbers() {
-        this.playerNumbers = createPlayerNumbers();
+    public PlayerNumbers(String inputValue) {
+        this.playerNumbers = createPlayerNumbers(inputValue);
     }
 
     public List<Integer> getPlayerNumbers() {
@@ -23,8 +22,7 @@ public class PlayerNumbers {
         return getPlayerNumbers().get(index);
     }
 
-    private List<Integer> createPlayerNumbers() {
-        String inputValue = InputView.inputPlayerNumbers();
+    private List<Integer> createPlayerNumbers(String inputValue) {
         checkValidValue(inputValue);
         return convertStringToIntegerList(inputValue);
     }
@@ -37,7 +35,8 @@ public class PlayerNumbers {
     }
 
     private boolean isNumeric(String inputValue) {
-        return inputValue.chars().allMatch(Character::isDigit);
+        return inputValue.chars()
+                .allMatch(Character::isDigit);
     }
 
     private boolean isZeroNotIncluded(String inputValue) {

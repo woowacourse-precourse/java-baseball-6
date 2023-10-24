@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.member.ComputerNumbers;
 import baseball.member.RestartOption;
 import baseball.member.PlayerNumbers;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
@@ -37,6 +38,6 @@ public class BaseballGameController {
     }
 
     private void inputPlayerNumbers() {
-        this.playerNumbers = new PlayerNumbers();
+        this.playerNumbers = new PlayerNumbers(InputView.inputPlayerNumbers());
     }
 }
