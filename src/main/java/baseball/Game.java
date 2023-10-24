@@ -1,19 +1,16 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static baseball.BaseballGenerator.createBaseballs;
-import static baseball.BaseballsGenerator.createBaseballs;
 import static baseball.GameStatus.IN_PROGRESS;
 
 public class Game {
     private final Computer computer;
+    private final User user;
     private final GameScreen gameScreen;
     private GameStatus gameStatus;
 
     public Game() {
         this.computer = new Computer();
+        this.user = new User();
         this.gameScreen = new GameScreen();
         this.gameStatus = IN_PROGRESS;
     }
@@ -32,15 +29,18 @@ public class Game {
     }
 
     private void setGame() {
-        computer.resetBaseballs();
+        computer.createBaseballs();
         gameStatus = IN_PROGRESS;
     }
 
     public void getResult(String input) {
-        Baseballs userBaseballs = createBaseballs(input);
-        Result result = computer.getResult(userBaseballs);
+        user.createBaseballs(input);
+        Result result = new Result(user.getBaseballs(), computer.getBaseballs());
         gameScreen.printResult(result.getResult());
-        if (result.isClear()) retryOrEnd();
+
+        if (result.isClear()) {
+            retryOrEnd();
+        }
     }
 
     private void retryOrEnd() {
