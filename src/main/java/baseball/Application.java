@@ -16,8 +16,18 @@ public class Application {
             }
         }
 
-        int retry = 1;
-        while(retry == 1) {
+        int retry = 0;
+        while(retry < 2) {
+            if (retry == 1){
+                computer.clear();
+                while (computer.size() < 3) {
+                    int randomNumber = Randoms.pickNumberInRange(1, 9);
+                    if (!computer.contains(randomNumber)) {
+                        computer.add(randomNumber);
+                    }
+                }
+                retry = 0;
+            }
             int num = 0;
             System.out.print("숫자를 입력해주세요: ");
             String input = Console.readLine();
@@ -60,14 +70,8 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 retry = Integer.parseInt(Console.readLine());
-                if(retry == 1){
-                    computer.clear();
-                    while (computer.size() < 3) {
-                        int randomNumber = Randoms.pickNumberInRange(1, 9);
-                        if (!computer.contains(randomNumber)) {
-                            computer.add(randomNumber);
-                        }
-                    }
+                if (retry != 1 && retry != 2) {
+                    throw new IllegalArgumentException("입력한 값이 올바르지 않습니다. 1 또는 2를 입력해주세요.");
                 }
             }
         }
