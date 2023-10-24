@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Core {
     public int countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        System.out.println("스트라이크 확인 합시다!!");
         int size = playerNumbers.size();
         int strike = 0;
         for (int index = 0; index < size; index++) {
@@ -20,7 +19,6 @@ public class Core {
     }
 
     public int countBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        System.out.println("볼 확인 합시다!");
         int size = playerNumbers.size();
         int ball = 0;
         for (int index = 0; index < size; index++) {

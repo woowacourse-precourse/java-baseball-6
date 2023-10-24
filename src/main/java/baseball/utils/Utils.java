@@ -1,5 +1,6 @@
 package baseball.utils;
 
+import baseball.users.Computer;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public final class Utils {
     }
 
     public static List<Integer> inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
         if (!digitOneToNine(playerInput)) {
             throw new IllegalArgumentException(OUT_OF_RANGE);
@@ -47,7 +49,7 @@ public final class Utils {
         return length == 3 && playerInput.matches("^[1-9]*$");
     }
 
-    public static int restartOrClose() {
+    public static int inputLastNumber() {
         String playerInput = Console.readLine();
         if (!digitOneOrTwo(playerInput)) {
             throw new IllegalArgumentException(RESTART_OR_CLOSE);
@@ -62,5 +64,13 @@ public final class Utils {
     private static boolean digitOneOrTwo(String playerInput) {
         int length = playerInput.length();
         return length == 1 && playerInput.matches("^[1-2]*$");
+    }
+
+    public static void restartOrClose(int playerInput, Computer computer) {
+        if (playerInput == 1) {
+            computer.changeNumbers(Utils.pickNumber());
+        } else if (playerInput == 2) {
+            Console.close();
+        }
     }
 }

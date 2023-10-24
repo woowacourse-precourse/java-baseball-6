@@ -4,10 +4,9 @@ import java.util.List;
 
 public class Player {
 
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
-    public Player(List<Integer> playerNumbers) {
-        this.numbers = playerNumbers;
+    public Player() {
     }
 
     public List<Integer> getNumbers() {
