@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -34,5 +37,18 @@ public class Application {
                 break;
             }
         }
+    }
+
+    private static List<Integer> makeComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+
+        while (computer.size() < MAX_COUNT) {
+            int computerNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(computerNumber)) {
+                computer.add(computerNumber);
+            }
+        }
+
+        return computer;
     }
 }
