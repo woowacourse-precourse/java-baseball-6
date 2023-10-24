@@ -1,18 +1,17 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NumberVO {
 
-    private List<Integer> computer;
+    private List<Integer> number;
 
-    public NumberVO(List<Integer> computer) {
-        this.computer = computer;
+    public NumberVO(List<Integer> number) {
+        this.number = number;
     }
 
-    public List<Integer> getComputer() {
-        return computer;
+    public List<Integer> getNumber() {
+        return number;
     }
 
 }
