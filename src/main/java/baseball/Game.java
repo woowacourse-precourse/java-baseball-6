@@ -33,7 +33,7 @@ public class Game implements Rule {
             result.print();
             matched = result.isMatched();
         }
-        System.out.print(GAME_OVER_MESSAGE);
+        System.out.println(GAME_OVER_MESSAGE);
     }
 
     private Result testMatch() {
