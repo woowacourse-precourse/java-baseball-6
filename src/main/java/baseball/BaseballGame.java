@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -13,8 +12,7 @@ class BaseballGame implements GameInterface {
 
     @Override
     public void initialize() {
-        computerNumber = new ArrayList<>();
-        pickComputerNumber();
+        computerNumber = generateRandomNumbers();
     }
 
     @Override
@@ -96,15 +94,6 @@ class BaseballGame implements GameInterface {
             System.out.println(strike + "스트라이크");
         } else {
             System.out.println();
-        }
-    }
-
-    private void pickComputerNumber() {
-        while (computerNumber.size() < NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
         }
     }
 
