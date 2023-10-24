@@ -24,7 +24,7 @@ public class OutputView {
             sb.append(strikeNum + STRIKE);
         }
 
-        if(sb.length() == 0){ // 스트라이크, 볼 둘다 없는 경우
+        if(sb.length() == 0){
             sb.append(NOTHING);
         }
 
