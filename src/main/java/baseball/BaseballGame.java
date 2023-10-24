@@ -3,7 +3,6 @@ package baseball;
 import balls.Balls;
 import camp.nextstep.edu.missionutils.Console;
 import utils.Utils;
-import java.util.List;
 
 public class BaseballGame {
     Utils utils= new Utils();
@@ -12,12 +11,12 @@ public class BaseballGame {
     public boolean gameStart() {
         boolean run= true;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computerNumber= generateRandomNumber.generateRandomNumber();
+        Balls computerBalls = new Balls(generateRandomNumber.generateRandomNumber());
         while(run){
             System.out.print("숫자를 입력해주세요. : ");
             String input = Console.readLine();
-            utils.userGameStartValidation(input);
-            run= baseballGameService.baseballGameServiceStart(input,computerNumber);
+            Balls userBalls = new Balls(input);
+            run= baseballGameService.baseballGameServiceStart(computerBalls,userBalls);
         }
         return true;
     }

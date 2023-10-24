@@ -1,5 +1,6 @@
 package baseball;
 
+import balls.Balls;
 import utils.Utils;
 
 import java.util.List;
@@ -9,10 +10,9 @@ import static baseball.Application.NUMBER_LENGTH;
 public class BaseballGameService {
     boolean allStrike = false;
     Utils utils= new Utils();
-    public boolean baseballGameServiceStart(String input, List<Integer> computerNumber){
-        List<Integer> userInputList = utils.stringToIntList(input);
-        int ball = countBall(computerNumber, userInputList);
-        int strike = countStrike(computerNumber, userInputList);
+    public boolean baseballGameServiceStart(Balls computerBalls,Balls userBalls){
+        int ball = countBall(computerBalls, userBalls);
+        int strike = countStrike(computerBalls, userBalls);
         if (strike == NUMBER_LENGTH) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -36,40 +36,29 @@ public class BaseballGameService {
         }
         return true;
     }
-    public int countBall(List computerNumber, List userInputList){
+    public int countBall(Balls computerBalls, Balls userBalls){
         int ballCount =0 ;
-        for(int i=0; i<computerNumber.size(); i++){
-            if(isBall(i,computerNumber,userInputList)){
+        for(int i=0; i<computerBalls.getBallsSize(); i++){
+            if(isBall(i,computerBalls,userBalls)){
                 ballCount++;
             }
         }
         return ballCount;
     }
-    public boolean isBall(int digit, List computerNumber, List userInput){
-        for(int index=0; index<userInput.size(); index++){
-            if(digit==index){
-                continue;
-            }
-            if(userInput.get(index).equals(computerNumber.get(digit))){
-                return true;
-            }
-        }
-        return false;
+    public boolean isBall(int digit, Balls computerBalls, Balls userBalls){
+        return computerBalls.compareToByBall(userBalls, digit);
     }
-    public int countStrike(List computerNumber, List userInput){
+    public int countStrike(Balls computerBalls, Balls userBalls){
         int strike = 0;
-        for(int i=0; i<computerNumber.size() ; i++){
-            if(isStrike(i, computerNumber, userInput)){
+        for(int i=0; i<computerBalls.getBallsSize(); i++){
+            if(isStrike(i, computerBalls, userBalls)){
                 strike++;
             }
         }
         return strike;
     }
-    public boolean isStrike(int digit, List computerNumber, List userInput){
-        if(computerNumber.get(digit).equals(userInput.get(digit))){
-            return true;
-        }
-        return false;
+    public boolean isStrike(int digit, Balls computerBalls, Balls userBalls){
+        return computerBalls.compareToByStrike(userBalls,digit);
     }
 
 }
