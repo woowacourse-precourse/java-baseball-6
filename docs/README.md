@@ -5,9 +5,9 @@
 ### Opponent(상대방)✅
 - [x] initialiser 구현
   - [x] `generateRandomNumber` 메서드가 유효한 랜덤수를 생성할 때까지 반복하여 초기화 하는 함수 생성
-- [x] generateRandomNumber 메서드 구현
-  - [x] 1부터 9까지 서로 다른 수로 이루어진 3자리의 무작위 수 생성
-  - [x] 생성된 random number와 중복인 숫자가 리스트 내 존재하는지 검사 후 추가
+- ✅ generateRandomNumber 메서드 구현
+  - ✅ 1부터 9까지 서로 다른 수로 이루어진 3자리의 무작위 수 생성
+  - ✅ 생성된 random number와 중복인 숫자가 리스트 내 존재하는지 검사 후 추가
 - [x] validateNumbers 메서드 구현
   - [x] 생성된 3자리의 숫자가 3자리인 지 확인 : 3자리 이면 true/ 3자리가 아니면 false를 반환
   - [x] 생성된 3자리의 숫자에 중복 된 값이 있는 지 확인 : 중복된 값이 없으면 true / 중복된 값이 있으면 false를 반환
