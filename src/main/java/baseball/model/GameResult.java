@@ -2,6 +2,16 @@ package baseball.model;
 
 public class GameResult {
 
+    public GameResultData result(int strike, int ball) {
+        GameResultType resultType = GameResultType.findType(strike, ball);
+        String formattedMessage = formatMessage(resultType, strike, ball);
+        return new GameResultData(formattedMessage, resultType.isCorrectAnswer());
+    }
+
+    private String formatMessage(GameResultType type, int strike, int ball) {
+        return String.format(type.getGameResultMessage(), ball, strike);
+    }
+
     public static class GameResultData {
         private final String gameResultMessage;
         private final boolean correctAnswered;
@@ -18,25 +28,5 @@ public class GameResult {
         public boolean getIsCorrectAnswered() {
             return correctAnswered;
         }
-    }
-
-
-    public GameResultData result(int strike, int ball) {
-        String localGameResultMessage = "";
-        boolean localCorrectAnswered = false;
-
-        if (strike == 0 && ball == 0) {
-            localGameResultMessage = "낫싱";
-        } else if (strike == 3) {
-            localGameResultMessage = "3스트라이크";
-            localCorrectAnswered = true;
-        } else if (strike != 0 && ball == 0) {
-            localGameResultMessage = strike + "스트라이크";
-        } else if (strike >= 1 && ball >= 1) {
-            localGameResultMessage = ball + "볼 " + strike + "스트라이크";
-        } else if (strike == 0 && ball != 0) {
-            localGameResultMessage = ball + "볼";
-        }
-        return new GameResultData(localGameResultMessage, localCorrectAnswered);
     }
 }
