@@ -8,8 +8,6 @@ import static baseball.Constant.INVALID_CHOICE_MESSAGE;
 import static baseball.Constant.RETRY;
 import static baseball.Constant.START_MESSAGE;
 
-import java.util.Objects;
-
 public class BaseballGame {
     private final PlayerView playerView = new PlayerView();
     private GameResult gameResult;
