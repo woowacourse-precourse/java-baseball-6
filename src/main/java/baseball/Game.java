@@ -6,24 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private int strike;
-    private int ball;
-
-    private void setBall(int ball) {
-        this.ball = ball;
-    }
-
-    private void setStrike(int strike) {
-        this.strike = strike;
-    }
-
-    private int getBall() {
-        return ball;
-    }
-
-    private int getStrike() {
-        return strike;
-    }
 
     public void run() {
         do {
@@ -34,15 +16,16 @@ public class Game {
     private void play() {
         List<Integer> rivalNumber;
         List<Integer> userGuessNumber;
-        setStrike(0);
+        Score score = new Score();
+        score.setStrike(0);
 
         printStartMessage();
         rivalNumber = makeRivalNumber();
         System.out.println(rivalNumber);
-        while (getStrike() != 3) {
+        while (score.getStrike() != 3) {
             userGuessNumber = inputUserGuess();
-            checkScore(rivalNumber, userGuessNumber);
-            printResult(getStrike(), getBall());
+            checkScore(score, rivalNumber, userGuessNumber);
+            printResult(score.getStrike(), score.getBall());
         }
         printFinishMessage();
     }
@@ -86,7 +69,7 @@ public class Game {
         return userGuessNumber;
     }
 
-    private void checkScore(List<Integer> rivalNumber, List<Integer> userGuessNumber) {
+    private void checkScore(Score score, List<Integer> rivalNumber, List<Integer> userGuessNumber) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -97,8 +80,8 @@ public class Game {
                 ballCount++;
             }
         }
-        setStrike(strikeCount);
-        setBall(ballCount);
+        score.setStrike(strikeCount);
+        score.setBall(ballCount);
     }
 
     private void printResult(int strike, int ball) {
