@@ -13,15 +13,7 @@ class Computer {
         setRandomNumbers(this.numbers);
     }
 
-    // 종료조건 반환
-    boolean userWin(String userInput){
-        List<Integer>score = calculateScore(userInput);
-        printGameScore((score));
-        return score.get(0) == 3; // 게임 승리!
-    }
-    private void printGameScore(List<Integer> score) {
-        int strike = score.get(0);
-        int ball = score.get(1);
+    private void printGameScore(int strike, int ball) {
         String printFormat = "";
         if (ball + strike == 0) {
             System.out.println("낫싱");
@@ -44,16 +36,10 @@ class Computer {
                 list.add(randomNumber);
             }
         }
-        // 아래는 테스트용. 이후 삭제
-        System.out.print("컴퓨터의 숫자 :");
-        for (int item : list)
-                System.out.print(item);
-        System.out.print("\n");
-
     }
 
     // 입력 숫자가 컴퓨터 숫자와 얼마나 일치하는지 판단.
-    private List<Integer> calculateScore(String userInput) {
+    boolean calculateScore(String userInput) {
         int strike = 0, ball = 0, userNum;
         for (int i = 0; i < 3; ++i) {
             char c = userInput.charAt(i);
@@ -64,10 +50,8 @@ class Computer {
             else if (this.numbers.contains(userNum))
                 ball++;
         }
-        List<Integer> score = new ArrayList<>();
-        score.add(strike);
-        score.add(ball);
-        return score;
+        printGameScore(strike, ball);
+        return strike == 3;
     }
 }
 
@@ -88,7 +72,7 @@ class Game {
             if (!isValidInput(input)) {
                 throw new IllegalArgumentException("정상값을 입력해 주세요.");
             }
-            if (cp.userWin(input)) {
+            if (cp.calculateScore(input)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break ;
             }
@@ -96,16 +80,14 @@ class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String gameEnd = Console.readLine();
         // 여기서도 유효한 값인지 확인해야 할듯.
-        return isGameEnd(gameEnd);
+        return gameEnd(gameEnd);
     }
 
     // 사용자가 입력한 input이 유효한지 확인하고, 게임 종료 여부를 해석해 반환한다.
-    boolean isGameEnd(String input) {
-        if (input.length() != 1 || !input.matches("[0-9]+"))
-            throw new IllegalArgumentException("정상값을 입력해 주세요.");
-        if (input.charAt(0) == '1')
+    boolean gameEnd(String input) {
+        if (input.equals("1"))
             return true;
-        else if (input.charAt(0) == '2')
+        else if (input.equals("2"))
             return false;
         throw new IllegalArgumentException("1 혹은 2로 값을 입력해 주세요.");
     }
@@ -122,10 +104,8 @@ class Game {
 }
 
 public class Application {
-
     public static void main(String[] args) {
         boolean continueGame = true;
-        // TODO: 프로그램 구현
         while (continueGame) {
             Game gameMaster = new Game();
             continueGame = gameMaster.playGame();
