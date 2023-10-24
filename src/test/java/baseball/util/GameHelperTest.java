@@ -16,7 +16,7 @@ public class GameHelperTest {
         String numberValue = "123";
 
         //when
-        List<Integer> integers = GameHelper.numberToIntegerList(numberValue);
+        List<Integer> integers = GameHelper.changeNumberToIntegerList(numberValue);
 
         //then
         for (int i = 0; i < integers.size(); i++) {

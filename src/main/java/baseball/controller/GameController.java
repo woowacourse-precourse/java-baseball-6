@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import static baseball.util.GameHelper.numberToIntegerList;
+import static baseball.util.GameHelper.changeNumberToIntegerList;
 
 import baseball.model.Game;
 import baseball.model.Status;
@@ -24,7 +24,7 @@ public class GameController {
     }
 
     public void playGame(String number) {
-        List<Integer> userNumbers = numberToIntegerList(number);
+        List<Integer> userNumbers = changeNumberToIntegerList(number);
         game.setUserNumbers(userNumbers);
         game.setResult();
         game.play();

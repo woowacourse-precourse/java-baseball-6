@@ -10,7 +10,7 @@ public class GameHelper {
         throw new AssertionError(DO_NOT_CALL_THIS_CODE.getMessage());
     }
 
-    public static List<Integer> numberToIntegerList(String number) {
+    public static List<Integer> changeNumberToIntegerList(String number) {
         return number.chars()
                 .map(Character::getNumericValue)
                 .boxed()
