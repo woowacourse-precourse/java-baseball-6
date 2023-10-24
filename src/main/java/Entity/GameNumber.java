@@ -36,7 +36,7 @@ public class GameNumber {
     }
 
     public void createComputerNumber() {
-        computer.clear();
+        computer = new ArrayList<>();
         while (computer.size() < NUM_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {   // 서로 다른 수 3개를 선택
@@ -46,6 +46,7 @@ public class GameNumber {
     }
 
     public void createUserNumber() {
+        user = new ArrayList<>();
         String inputNumber = InputManager.getString();
         user = InputManager.parseInput(inputNumber);
     }
