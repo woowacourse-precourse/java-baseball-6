@@ -40,7 +40,10 @@ public class BaseBallGame {
             Player playerByIntegerNumbers = Player.createPlayerByIntegerNumbers(playerNumbers);
             String result = checkGuess(playerByIntegerNumbers, computerAnswerByRandomGenerator);
             System.out.println(result);
-            if (result.equals("3스트라이크")) ongoing = true;
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                ongoing = true;
+            }
         }
     }
     private String checkGuess(Player player, Computer computer) {
