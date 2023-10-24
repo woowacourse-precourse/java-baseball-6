@@ -13,7 +13,7 @@ public class Player {
         return new Player(playerNumber);
     }
 
-    public List<Integer> getPlayerNumber() {
-        return playerNumber;
+    public int getNumberByPosition(int index) {
+        return playerNumber.get(index);
     }
 }
