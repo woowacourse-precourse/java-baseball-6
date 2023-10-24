@@ -11,13 +11,13 @@ public class BaseBallGame implements Game {
 
     private final Computer computer;
     private final String NOT_NUMBER_PATTERN;
-    private final String NO_CHARACTER;
+    private final String EMPTY_STRING;
     private boolean playing;
 
     public BaseBallGame() {
         this.computer = new Computer();
         this.NOT_NUMBER_PATTERN = "[^0-9]";
-        this.NO_CHARACTER = "";
+        this.EMPTY_STRING = "";
         this.playing = true;
     }
 
@@ -29,7 +29,7 @@ public class BaseBallGame implements Game {
         while (playing) {
             printUserInputMessage();
             List<Integer> userNumber = User.input3DigitNumber();
-            printUserInputNumber(userNumber.toString().replaceAll(NOT_NUMBER_PATTERN, NO_CHARACTER));
+            printUserInputNumber(userNumber.toString().replaceAll(NOT_NUMBER_PATTERN, EMPTY_STRING));
 
             BaseBallGameResult result = computer.calculate(userNumber);
             printGameResult(result);
