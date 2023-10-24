@@ -17,6 +17,23 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             List<Integer> userNumberList = userInputNumList(userInput);
+
+            int strike = strikeCnt(computerNumberList, userNumberList);
+            int inList = inListCnt(computerNumberList, userNumberList);
+
+            int ball = inList - strike;
+
+            printScore(ball, strike);
+
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String againNumber = Console.readLine();
+                inGame = checkAgainGame(againNumber);
+                if (inGame) {
+                    computerNumberList = computerRanNumList();
+                }
+            }
         }
     }
 
@@ -58,6 +75,54 @@ public class Application {
         }
     }
 
+    //game
+    private static boolean checkAgainGame(String againNum){
+        if(againNum.equals("1")){
+            return true;
+        }
+        if(againNum.equals("2")){
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+    }
+
+    private static int strikeCnt(List<Integer> computer, List<Integer> player){
+        int strikeCount = 0;
+        for (int i = 0; i < computer.size(); i++){
+            if(computer.get(i) == player.get(i)){
+                strikeCount ++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private static int inListCnt(List<Integer> computer, List<Integer> player){
+        int inListCount = 0;
+        for (int i = 0; i < computer.size(); i++){
+            if(computer.contains(player.get(i))){
+                inListCount ++;
+            }
+        }
+        return inListCount;
+    }
+
+    private static void printScore(int ball, int strike){
+        if(ball == 0 && strike == 0){
+            System.out.println("낫싱");
+            return;
+        }
+
+        if(ball == 0 && 1 <= strike && strike <= 3){
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+
+        if(strike == 0 && 1 <= ball && ball <= 3){
+            System.out.println(ball + "볼");
+            return;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
 
 }
 
