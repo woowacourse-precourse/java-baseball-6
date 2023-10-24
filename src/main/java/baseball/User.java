@@ -9,7 +9,7 @@ public class User {
         return instance;
     }
 
-    public int[] setUserNum(String str) {
+    public int[] setUserNums(String str) {
         boolean check = validArgs(str);
 
         if (check) {

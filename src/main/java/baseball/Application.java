@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-
 import static baseball.GamePrinter.printGameOverMsg;
 import static baseball.GamePrinter.printGameStartMsg;
 import static baseball.GameState.CONTINUE;
@@ -20,7 +18,7 @@ public class Application {
         while(true) {
             printGameStartMsg();
 
-            int[] userNums = user.setUserNum(Console.readLine());
+            int[] userNums = user.setUserNums(Console.readLine());
             int gameStatus = play.checkGameStatus(play.run(comNums, userNums));
             if (gameStatus == GAME_OVER.getValue()) {
                 printGameOverMsg();
