@@ -1,9 +1,9 @@
 package baseball;
 
 
-import static baseball.model.MsgConstant.WELCOME_MSG;
-import static baseball.model.NumConstant.END;
-import static baseball.model.NumConstant.RESTART;
+import static baseball.constant.MsgConstant.WELCOME_MSG;
+import static baseball.constant.NumConstant.END;
+import static baseball.constant.NumConstant.RESTART;
 import static baseball.util.CountResult.ball;
 import static baseball.util.CountResult.strike;
 
@@ -29,14 +29,13 @@ public class Baseball {
     private static List<Integer> computerNum;
     private static List<Integer> userNum;
 
-
     public void playGame() {
         isRestart = false;
         startGame();
         while (!isRestart) {
             userView.requestInput();
             String inputNum = userControl.getNumber();
-            Validation.validateUserInput(inputNum);
+            validation.validateUserInput(inputNum);
 
             // countingResult에서의 셈이 수월하도록 IntegerList로 변환 후 진행
             userNum = converter.toIntegerList(inputNum);
@@ -54,13 +53,12 @@ public class Baseball {
     public static void restartOrExit() {
         UserView.requestReply();
         String reply = userControl.getRestartCode();
+        validation.validateReply(reply);
 
         if (reply.equals(RESTART)) {
             computerNum = computerControl.generateRandomNum();
         } else if (reply.equals(END)) {
             isRestart = true;
         }
-        validation.validateReply(reply);
     }
-
 }
