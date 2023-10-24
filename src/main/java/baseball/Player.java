@@ -3,6 +3,7 @@ package baseball;
 import static baseball.Computer.COUNTS;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -27,6 +28,7 @@ public class Player {
             System.out.print(INPUT_REQUEST_MESSAGE);
             String playerInput = Console.readLine();
             validateNumber(playerInput);
+            playerNumbers = convertToIntegerList(playerInput);
         }
     }
 
@@ -36,5 +38,16 @@ public class Player {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Input is not an Integer.");
         }
+    }
+
+    private List<Integer> convertToIntegerList(String userInput) {
+        List<Integer> integerList = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            char c = userInput.charAt(i);
+            if (Character.isDigit(c)) {
+                integerList.add(Character.getNumericValue(c));
+            }
+        }
+        return integerList;
     }
 }
