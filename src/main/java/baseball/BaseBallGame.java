@@ -1,9 +1,12 @@
 package baseball;
 
+import java.util.List;
+
 //게임 전체 컨트롤
 public class BaseBallGame {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
 
+    private NumberGenerator numberGenerator;
     private boolean allStrike;
     private boolean playOrNot;
 
@@ -27,6 +30,9 @@ public class BaseBallGame {
     public void runGame(){
         while (!allStrike) {
             //랜덤 숫자 생성
+            numberGenerator = NumberGenerator.generateComputer();
+            //System.out.println(numberGenerator.getComputer());
+
             //입력 받기
             //결과 계산 및 출력
             //allStrike 확인
