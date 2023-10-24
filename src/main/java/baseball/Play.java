@@ -25,8 +25,6 @@ public class Play {
                     throw new IllegalArgumentException();
             } else if (flag == 1) {
                 nums.setMine();
-                System.out.println(nums.getComputer());
-                System.out.println(nums.getMine());
                 flag = result.getGameResultJudgment(nums.getComputer(), nums.getMine());
             }
         }
