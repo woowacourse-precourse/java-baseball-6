@@ -20,6 +20,12 @@ public class GameService {
         game = new Game(RandomUtil.getRandomNumbers(size, start, end));
     }
 
+    private void play() {
+        game.initGame();
+        user.setUserNumbers(getUserNumber());
+        calcScore();
+    }
+
     public void playGame() {
         int strike = 0;
         while (strike != 3) {
@@ -29,22 +35,10 @@ public class GameService {
         }
     }
 
-    private void play() {
-        game.initGame();
-        user.setUserNumbers(getUserNumber());
-        calcScore();
-    }
-
     private int[] getUserNumber() throws IllegalArgumentException {
         SystemInputMessage.requestInputData();
         String input = Console.readLine();
         return parser.parseUserInput(input, size);
-    }
-
-    private void calcScore() {
-        for (int i = 0; i < size; i++) {
-            calc(game.getGameNumbers(), user.getUserNumbers(), i);
-        }
     }
 
     private void calc(int[] gameNumber, int[] userNumber, int idx) {
@@ -56,6 +50,12 @@ public class GameService {
             }
         }
         addCount(idx, tmp);
+    }
+
+    private void calcScore() {
+        for (int i = 0; i < size; i++) {
+            calc(game.getGameNumbers(), user.getUserNumbers(), i);
+        }
     }
 
     private void addCount(int idx, int tmp) {
