@@ -18,7 +18,6 @@ public class Application {
 
             printManager.printRestart();
             restart = inputManager.getRestart();
-            System.out.println("restart = " + restart);
         }
     }
 
