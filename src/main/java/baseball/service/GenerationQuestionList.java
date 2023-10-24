@@ -16,6 +16,10 @@ public class GenerationQuestionList {
 
     public List<Integer> generateRandomNumberList(withinRange randomNumberInRange) {
 
+        if (!validWithinRange(randomNumberInRange)) {
+            throw new IllegalArgumentException("설정 하신 값의 범위는 설정하신 아웃카운트 보다 작습니다.");
+        }
+
         while (ballCountList.size() < OUT_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(randomNumberInRange.startInclusive(),
                     randomNumberInRange.endInclusive());
@@ -32,5 +36,15 @@ public class GenerationQuestionList {
             return true;
         }
         return false;
+    }
+
+    public boolean validWithinRange(withinRange randomNumberInRange) {
+        int result = (randomNumberInRange.endInclusive() - randomNumberInRange.startInclusive()) + 1;
+        if (OUT_COUNT > result) {
+            System.out.println();
+            return false;
+        }
+
+        return true;
     }
 }
