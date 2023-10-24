@@ -1,8 +1,9 @@
 package baseball.domain.game;
 
-import java.util.Scanner;
+import static baseball.domain.script.Script.GAME_END;
+import static baseball.domain.script.Script.GAME_RESTART;
 
-import static baseball.domain.script.Script.*;
+import java.util.Scanner;
 
 public class GameEnd {
     int flag;
@@ -16,7 +17,9 @@ public class GameEnd {
         if (n == 1) {
             flag = 1;
         }
-        if (n == 2) flag = 2;
+        if (n == 2) {
+            flag = 2;
+        }
 
     }
 }
