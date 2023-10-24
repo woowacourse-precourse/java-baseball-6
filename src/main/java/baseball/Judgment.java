@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 
 public class Judgment {
 
+    private final static int DIGIT = 3;
+
     private final List<Integer> answer;
 
     public Judgment(List<Integer> answer) {
@@ -19,14 +21,14 @@ public class Judgment {
     }
 
     private int countBall(List<Integer> guess) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, DIGIT)
             .filter(i -> answer.contains(guess.get(i))
                 && !guess.get(i).equals(answer.get(i)))
             .count();
     }
 
     private int countStrike(List<Integer> guess) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, DIGIT)
             .filter(i -> guess.get(i).equals(answer.get(i)))
             .count();
     }
