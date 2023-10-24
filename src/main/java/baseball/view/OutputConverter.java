@@ -10,20 +10,42 @@ public class OutputConverter {
 
     public String convertMessage(final BaseballGameResult baseballGameResult) {
         StringBuilder stringBuilder = new StringBuilder();
-        if (isBall(baseballGameResult)) {
-            appendBall(stringBuilder, baseballGameResult.getBallCount());
-        }
-        if (isStrike(baseballGameResult)) {
-            appendStrike(stringBuilder, baseballGameResult.getStrikeCount());
-        }
-        if (isNoBallAndNoStrike(baseballGameResult)) {
-            appendNoBallAndNoStrike(stringBuilder);
-        }
-        if (isThreeStikre(baseballGameResult)) {
-            appendGameOver(stringBuilder);
-        }
+        appendBall(stringBuilder, baseballGameResult);
+        appendStrike(stringBuilder, baseballGameResult);
+        appendNoBallAndNoStrike(stringBuilder, baseballGameResult);
+        appendGameOver(stringBuilder, baseballGameResult);
 
         return stringBuilder.toString();
+    }
+
+    private void appendBall(final StringBuilder stringBuilder, final BaseballGameResult baseballGameResult) {
+        if (isBall(baseballGameResult)) {
+            stringBuilder.append(baseballGameResult.getBallCount());
+            stringBuilder.append(OutputMessage.BALL);
+            stringBuilder.append(OutputMessage.SPACE);
+        }
+    }
+
+    private void appendStrike(final StringBuilder stringBuilder, final BaseballGameResult baseballGameResult) {
+        if (isStrike(baseballGameResult)) {
+            stringBuilder.append(baseballGameResult.getStrikeCount());
+            stringBuilder.append(OutputMessage.STRIKE);
+        }
+    }
+
+    private void appendNoBallAndNoStrike(final StringBuilder stringBuilder,
+                                         final BaseballGameResult baseballGameResult) {
+        if (isNoBallAndNoStrike(baseballGameResult)) {
+            stringBuilder.append(OutputMessage.NOTHING);
+            stringBuilder.append(OutputMessage.SPACE);
+        }
+    }
+
+    private void appendGameOver(final StringBuilder stringBuilder, final BaseballGameResult baseballGameResult) {
+        if (isThreeStikre(baseballGameResult)) {
+            stringBuilder.append(OutputMessage.LINE_BREAK);
+            stringBuilder.append(OutputMessage.THREE_STRIKE_MESSAGE);
+        }
     }
 
     private boolean isBall(final BaseballGameResult baseballGameResult) {
@@ -40,26 +62,5 @@ public class OutputConverter {
 
     private boolean isThreeStikre(final BaseballGameResult baseballGameResult) {
         return baseballGameResult.getStrikeCount() == THREE_STRIKE;
-    }
-
-    private void appendBall(final StringBuilder stringBuilder, final int ballCount) {
-        stringBuilder.append(ballCount);
-        stringBuilder.append(OutputMessage.BALL);
-        stringBuilder.append(OutputMessage.SPACE);
-    }
-
-    private void appendStrike(final StringBuilder stringBuilder, final int strikeCount) {
-        stringBuilder.append(strikeCount);
-        stringBuilder.append(OutputMessage.STRIKE);
-    }
-
-    private void appendNoBallAndNoStrike(final StringBuilder stringBuilder) {
-        stringBuilder.append(OutputMessage.NOTHING);
-        stringBuilder.append(OutputMessage.SPACE);
-    }
-
-    private void appendGameOver(final StringBuilder stringBuilder) {
-        stringBuilder.append(OutputMessage.LINE_BREAK);
-        stringBuilder.append(OutputMessage.THREE_STRIKE_MESSAGE);
     }
 }
