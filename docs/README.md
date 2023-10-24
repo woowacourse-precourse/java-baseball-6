@@ -37,9 +37,9 @@
 - `FixedBaseballNumbersGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
 - `BaseballNumbers`: 컴퓨터가 만든 1~9 범위의 서로다른 3자리 수를 가지는 일급 컬렉션.
 - `BaseballNumber`: 컴퓨터가 만든 1~9 범위의 숫자를 저장.
-- `Score`: `"볼"`, `"스트라이크"`를 저장.
-- `Ball`: `"볼"`을 저장.
-- `Strike`: `"스트라이크"`를 저장.
+- `Score`: `"볼"`, `"스트라이크"`를 저장하는 enum.
+- `Ball`: `"볼"`을 저장하는 enum.
+- `Strike`: `"스트라이크"`를 저장하는 enum.
 - `ContinueOrExit`: 게임 종료 후 사용자가 입력한 `1`, `2` 값을 받는 enum.
 
 ### 기능 목록
