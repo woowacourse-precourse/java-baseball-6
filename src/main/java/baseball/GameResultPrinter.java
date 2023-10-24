@@ -19,19 +19,20 @@ public class GameResultPrinter {
         String result = "";
         if (ball == 0 && strike == 0) {
             result = STRING_NOTHING;
-        }else if (ball == 0 && strike > 0) {
+        } else if (ball == 0 && strike > 0) {
             if (strike == 3) {
                 result = GAME_END_MESSAGE;
-            }else {
+            } else {
                 result = strike + STRING_STRIKE;
             }
-        }else if (ball > 0 && strike == 0) {
+        } else if (ball > 0 && strike == 0) {
             result = ball + STRING_BALL;
-        }else if (ball > 0 && strike > 0){
+        } else if (ball > 0 && strike > 0) {
             result = ball + STRING_BALL + " " + strike + STRING_STRIKE;
         }
         System.out.println(result);
     }
+
 
 
 }

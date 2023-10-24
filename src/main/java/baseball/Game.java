@@ -8,14 +8,13 @@ public class Game {
     private int ball;
 
     public void play() {
-
         initializeGame();
 
-        while(quit) {
-            getUserInput();
+        while (quit) {
+            if (getUserInput() == false) {
+                break;
+            }
             checkInput();
-
-            // test 용
             printResult();
 
             if (strike == 3) {
@@ -30,12 +29,15 @@ public class Game {
 
         RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
         randomNumber = randomNumberCreater.getRandomNumber();
-        System.out.println(randomNumber);
     }
 
-    private void getUserInput() {
+    private boolean getUserInput() {
         UserInputReader input = new UserInputReader();
         userNumber = input.enterGameNumber();
+
+        boolean isValidNumber = isValidUserNumberInput(userNumber);
+
+        return isValidNumber;
     }
 
     private void checkInput() {
@@ -51,15 +53,40 @@ public class Game {
 
     private void handleGameEnd() {
         UserInputReader userInputReader = new UserInputReader();
-        if (userInputReader.enterAnswerRestartGame().equals("1")) {
+        String inputAnswer = userInputReader.enterAnswerRestartGame();
+
+        if (!isValidUserAnswerInput(inputAnswer)) {
+            System.out.println("잘못된 입력입니다. 프로그램을 종료합니다.");
+            quit = false;
+            return;
+        }
+
+        if (inputAnswer.equals("1")) {
             RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
             randomNumber = randomNumberCreater.getRandomNumber();
             System.out.println(randomNumber);
-            quit = true;
         } else {
             quit = false;
         }
     }
 
+    private boolean isValidUserNumberInput(String inputNumber) {
+        try {
+            InputValidator.isValidUserNumberInput(inputNumber);
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 
+    private boolean isValidUserAnswerInput(String inputAnswer) {
+        try {
+            InputValidator.isValidUserAnswerInput(inputAnswer);
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }

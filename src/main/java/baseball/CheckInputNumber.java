@@ -10,6 +10,7 @@ public class CheckInputNumber {
         String[] randomNumberArr = String.valueOf(randomNumber).split("");
         String[] userNumberArr = String.valueOf(userNumber).split("");
 
+        strike = 0;
         // calculate strike
         for(int i=0; i<NUMBER_LENGTH; i++) {
             if(randomNumberArr[i].equals(userNumberArr[i])) {
@@ -24,6 +25,7 @@ public class CheckInputNumber {
         String[] randomNumberArr = String.valueOf(randomNumber).split("");
         String[] userNumberArr = String.valueOf(userNumber).split("");
 
+        ball = 0;
         for(int i=0; i<NUMBER_LENGTH; i++) {
             for(int k=0; k<NUMBER_LENGTH; k++){
                 if(randomNumberArr[i].equals(userNumberArr[k]) && i != k) {

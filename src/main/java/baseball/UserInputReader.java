@@ -14,6 +14,9 @@ public class UserInputReader {
 
     public String enterAnswerRestartGame() {
         System.out.print(ASK_RESET_GAME_MESSAGE);
-        return Console.readLine();
+        String inputAnswer = Console.readLine();
+        return inputAnswer;
     }
+
+
 }
