@@ -22,7 +22,7 @@ public class BaseballService {
         while (true) {
             Result result = computer.compareNumbers(getInputNumberList());
             BaseballUtil.printStrikeBallResult(result.getStrike(), result.getBall());
-            if (result.getStrike() == BaseballUtil.MAX) {
+            if (isEndGame(result)) {
                 BaseballUtil.printEndGame();
                 return;
             }
@@ -60,5 +60,9 @@ public class BaseballService {
 
     private int toIntNumber(char input) {
         return input - '0';
+    }
+
+    private boolean isEndGame(Result result) {
+        return result.getStrike() == BaseballUtil.MAX;
     }
 }
