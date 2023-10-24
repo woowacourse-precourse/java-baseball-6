@@ -1,9 +1,6 @@
 package baseball;
 
 
-import java.util.List;
-import java.util.Map;
-
 public class Game {
     private enum Status{
         START, PROGRESS, FINISH, TERMINATED
@@ -43,9 +40,9 @@ public class Game {
     private void progress(){
         output.askUserToInsertNumbers();
         UserBaseballNumber userBaseballNumber = input.getUserBaseballNumber();
-        Map<String, Integer> baseballResult = computer.getBaseballResult(userBaseballNumber);
-        output.printBaseballResult(baseballResult);
-        updateGameStatus(baseballResult);
+        BaseballGameResult baseballGameResult = computer.getBaseballGameResult(userBaseballNumber);
+        baseballGameResult.print();
+        updateGameStatus(baseballGameResult);
     }
     private void finish(){
         boolean resume = input.getResumeInput();
@@ -58,8 +55,8 @@ public class Game {
     private void terminate(){
         this.status = Status.TERMINATED;
     }
-    private void updateGameStatus(Map<String, Integer> baseballResult){
-        if(baseballResult.get("strike") == 3) {
+    private void updateGameStatus(BaseballGameResult baseballGameResult){
+        if(baseballGameResult.isThreeStrike()) {
             this.status = Status.FINISH;
             output.askUserToResumeOrNot();
         }

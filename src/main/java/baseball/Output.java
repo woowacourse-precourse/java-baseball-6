@@ -1,30 +1,7 @@
 package baseball;
 
-import java.util.Map;
 
 public class Output {
-    public void printBaseballResult(Map<String, Integer> baseballResult){
-        int strikeCount = baseballResult.get("strike");
-        int ballCount = baseballResult.get("ball");
-        printStrikeAndBall(strikeCount, ballCount);
-    }
-    private void printStrikeAndBall(int strikeCount, int ballCount){
-       if(strikeCount == 0 && ballCount == 0){
-           System.out.println("낫싱");
-           return;
-       }
-       if(strikeCount == 0){
-           System.out.println(ballCount + "볼");
-           return;
-       }
-       if(ballCount == 0){
-           System.out.println(strikeCount + "스트라이크");
-           return;
-       }
-       if(ballCount > 0 && strikeCount > 0){
-           System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-       }
-    }
     public void printStartGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }

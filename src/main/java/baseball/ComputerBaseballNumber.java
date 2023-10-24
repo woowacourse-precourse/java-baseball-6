@@ -26,6 +26,4 @@ public class ComputerBaseballNumber {
     public boolean contains(int userInput){
         return baseballNumberList.contains(userInput);
     }
-
-
 }
