@@ -18,11 +18,17 @@ public class Game {
     }
 
     public void playGame() {
-        // TODO: 숫자 야구 게임 로직 추가
+        computer.setRandomNum();
+        do {
+            String playerNum = player.inputNumber();
+        } while (state == State.PROGRESS);
+
+        restart();
     }
 
     public void end() {
-        // TODO: 숫자 야구 게임 종료 로직 추가
+        state = State.END;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void restart() {
