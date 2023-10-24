@@ -5,8 +5,6 @@ import static baseball.utils.Constants.BALL_SIZE;
 import baseball.utils.ExceptionMessage;
 import baseball.utils.PlayMessage;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -39,8 +37,12 @@ public class Game {
                 System.out.println(PlayMessage.RESTART_OR_END_MESSAGE.getMessage());
                 if (setFlag()) {
                     flag = true;
+                    break;
                 }
+                initComputerNumber();
             }
+
+
         }
 
     }
@@ -55,14 +57,10 @@ public class Game {
         validateQuitInput();
 
         if (checkInput.equals(RESTART_NUMBER)) {
-            initComputerNumber();
             return false;
         }
 
-        if (checkInput.equals(END_NUMBER)) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private void initializeCount() {
