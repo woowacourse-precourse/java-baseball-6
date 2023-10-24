@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 /* input, output 화면(메세지) 출력 */
 public class BaseballView {
-    public static final String INPUT_CORRECT_FORM_OF_NUMBER = "1~9 사이의 서로 다른 세 개의 숫자를 공백없이 입력해주세요.";
+    public static final String INPUT_VALID_FORMAT_OF_NUMBER = "1~9 사이의 서로 다른 세 개의 숫자를 공백없이 입력해주세요.";
 
     // 게임 시작 메세지
     public void outputGameStart() {
@@ -70,23 +70,23 @@ public class BaseballView {
         isExistRepeatedNumber(readLine);
     }
 
-    private void isExistChar(String readLine) {
-        for (int i = 0; i < readLine.length(); i++) {
-            if (readLine.charAt(i) < 48 || readLine.charAt(i) > 57) {
-                throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
+    private void isExistChar(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
+                throw new IllegalArgumentException(INPUT_VALID_FORMAT_OF_NUMBER);
             }
         }
     }
 
-    private void isCorrectLength(String readLine) {
-        if (readLine.length() != 3) {
-            throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
+    private void isCorrectLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException(INPUT_VALID_FORMAT_OF_NUMBER);
         }
     }
 
-    private void isExistRepeatedNumber(String readLine) {
-        if (readLine.length() != 3) {
-            throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
+    private void isExistRepeatedNumber(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException(INPUT_VALID_FORMAT_OF_NUMBER);
         }
     }
 }
