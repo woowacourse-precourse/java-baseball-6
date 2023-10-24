@@ -5,6 +5,7 @@ import baseball.service.BaseBallService;
 import baseball.view.BaseballInputView;
 import baseball.view.BaseballOutputView;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseBallGameController {
@@ -34,7 +35,7 @@ public class BaseBallGameController {
 
         while (true) {
             baseballOutputView.printUserInputMessage(BaseballGameMessage.REQUEST_USER_INPUT);
-            List<Integer> userInput = baseballInputView.userGuessInput();
+            List<Integer> userInput = baseballInputView.userGuessInput(Console.readLine());
             String gameResult = baseBallService.getGameResult(targetNumber, userInput).toString();
             baseballOutputView.printGameResult(gameResult);
 
@@ -47,7 +48,7 @@ public class BaseBallGameController {
 
     private boolean decideNextAction() {
         baseballOutputView.printMessage(BaseballGameMessage.QUIT_OR_START_GAME);
-        int userInput = baseballInputView.userProgressInput();
+        int userInput = baseballInputView.userProgressInput(Console.readLine());
         return userInput == 1;
     }
 }

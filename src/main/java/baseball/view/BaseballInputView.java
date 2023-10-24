@@ -1,19 +1,16 @@
 package baseball.view;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballInputView {
 
-    public List<Integer> userGuessInput() {
-        String input = Console.readLine();
-        validateInputLength(input);
+    public List<Integer> userGuessInput(String userGuess) {
+        validateInputLength(userGuess);
 
         List<Integer> userInput = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            char currentChar = input.charAt(i);
+        for (int i = 0; i < userGuess.length(); i++) {
+            char currentChar = userGuess.charAt(i);
             validateInputInteger(currentChar);
             int digit = Character.getNumericValue(currentChar);
             validateNoDuplicates(userInput, digit);
@@ -22,10 +19,9 @@ public class BaseballInputView {
         return userInput;
     }
 
-    public Integer userProgressInput() {
-        String input = Console.readLine();
-        validateInputChoice(input);
-        return Integer.parseInt(input);
+    public Integer userProgressInput(String userProgress) {
+        validateInputChoice(userProgress);
+        return Integer.parseInt(userProgress);
     }
 
     private void validateInputChoice(String input) {
