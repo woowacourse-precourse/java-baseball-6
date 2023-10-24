@@ -10,7 +10,9 @@ public class InputValidator {
     }
 
     public void checkRetryInput(String userInput) {
-        checkRetry(userInput);
+        if (!userInput.matches(RETRY_REGEX)) {
+            throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
+        }
     }
 
     void checkLength(String userInput) {
@@ -24,11 +26,4 @@ public class InputValidator {
             throw new IllegalArgumentException("모든 자릿수를 서로 다른 수로 입력해주세요.");
         }
     }
-
-    void checkRetry(String userInput) {
-        if (!userInput.matches(RETRY_REGEX)) {
-            throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
-        }
-    }
-
 }
