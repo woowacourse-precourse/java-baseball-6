@@ -6,6 +6,8 @@ public abstract class HintItem {
 
     private boolean isActive;
 
+    private String name;
+
     public HintItem(int count) {
         this.count = count;
         this.isActive = active();
@@ -13,11 +15,19 @@ public abstract class HintItem {
 
     public abstract boolean active();
 
-    protected int getCount() {
+    public int getCount() {
         return count;
     }
 
     public boolean isActive() {
         return isActive;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
