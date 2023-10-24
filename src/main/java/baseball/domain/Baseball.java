@@ -53,9 +53,25 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
         return values;
     }
 
-    public void setValues(List<T> values) {
-        this.values = values;
-    }
+
+    private void validate(String stringValue) {
+
+        int inputNumLen = stringValue.length();
+        if (inputNumLen < GameConstants.NUMBER_LENGTH) {
+            ExceptionUtil.throwInvalidValueException();
+        }
+
+        if (inputNumLen > GameConstants.NUMBER_LENGTH) {
+            ExceptionUtil.throwInvalidValueException();
+        }
+
+        Set numSet = new HashSet();
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+            numSet.add(stringValue.charAt(i));
+        }
+        if (numSet.size() < GameConstants.NUMBER_LENGTH) {
+            ExceptionUtil.throwInvalidValueException();
+        }
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             if (!stringValue.matches("^[1-9]+$")) {
