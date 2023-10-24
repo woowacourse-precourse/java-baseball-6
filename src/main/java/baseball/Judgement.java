@@ -1,8 +1,8 @@
 package baseball;
 
 public class Judgement {
-    private int ballCount;
-    private int strikeCount;
+    private int ballCount = 0;
+    private int strikeCount = 0;
     public Judgement(Numbers userNumbers, Numbers computerNumbers){
         calculateCount(userNumbers, computerNumbers);
     }

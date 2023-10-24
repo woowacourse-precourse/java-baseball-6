@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComputerTest {
     private final Computer computer = new Computer();
@@ -11,11 +13,12 @@ public class ComputerTest {
     @Test
     void 난수생성중복검사(){
         for(int i = 0; i < 100; i++) {
+
             Numbers numbers = computer.initComputerNumbers();
-            boolean[] duplicateCheck = new boolean[10];
+            List<Number> duplicateCheck = new ArrayList();
             for(int j = 0; j < 3; j++){
-                Assertions.assertThat(duplicateCheck[numbers.getNumberByIndex(j).number]).isEqualTo(false);
-                duplicateCheck[numbers.getNumberByIndex(j).number] = true;
+                Assertions.assertThat(duplicateCheck.contains(numbers.getNumberByIndex(j))).isFalse();
+                duplicateCheck.add(numbers.getNumberByIndex(j));
             }
         }
     }

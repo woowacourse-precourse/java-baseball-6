@@ -1,10 +1,9 @@
 package baseball;
 
 public class Game {
-    private InputView inputView = new InputView();
-    private Computer computer;
+    private final InputView inputView = new InputView();
+    private final Computer computer = new Computer();
     public Game(){
-        computer = new Computer();
         OutputView.printStartText();
     }
     public void playGame(){

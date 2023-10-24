@@ -1,7 +1,7 @@
 package baseball;
 
 public class NumberInput {
-    private String numberInput;
+    private final String numberInput;
     NumberInput(String numberInput){
         validateUserInputSize(numberInput);
         this.numberInput = numberInput;

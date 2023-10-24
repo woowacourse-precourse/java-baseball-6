@@ -1,7 +1,7 @@
 package baseball;
 
 public class Number {
-    int number;
+    private final int number;
     Number(int number){
         validateIsNumber(number);
         this.number = number;
