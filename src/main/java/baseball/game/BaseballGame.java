@@ -16,23 +16,12 @@ public class BaseballGame {
         List<Integer> userNumber = user.createUserNumber();
 
         List<Integer> comparedResult = computer.compareEachNumber(computerNumber, userNumber);
-        computer.createResultMessage();
+        String resultMessage = computer.createResultMessage(comparedResult);
         computer.checkResult();
         computer.decideGameEndAndRestart();
 
 //        public static void Game() {
 //            while (true) {
-//
-//                    if (ball != 0) {
-//                        System.out.printf(ball + "볼 ");
-//                    }
-//                    if (strike != 0) {
-//                        System.out.printf(strike + "스트라이크");
-//                    }
-//                    if (ball == 0 && strike == 0) {
-//                        System.out.print("낫싱");
-//                    }
-//                    System.out.println();
 //
 //                    if (strike == 3) {
 //                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

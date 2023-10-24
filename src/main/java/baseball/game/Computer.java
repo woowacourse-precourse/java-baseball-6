@@ -51,7 +51,25 @@ public class Computer {
         }
     }
 
-    public void createResultMessage() {
+    public String createResultMessage(List<Integer> resultCount) {
+        int ball = resultCount.get(0);
+        int strike = resultCount.get(1);
+        String resultMessage = "";
+
+        //결과가 볼만 출력할 시, "n볼 "라는 결과가 테스트를 통과하는지 확인해야 함
+        if (ball != 0) {
+            resultMessage += ball + "볼 ";
+        }
+
+        if (strike != 0) {
+            resultMessage += strike + "스트라이크";
+        }
+
+        if (ball == 0 && strike == 0) {
+            resultMessage = "낫싱";
+        }
+
+        return resultMessage;
     }
 
     public void checkResult() {
