@@ -42,4 +42,5 @@ classDiagram
 
     NumberBaseBallGame --> BaseballRandomNumberGenerator : uses
     NumberBaseBallGame --> NumberBaseballScoreEvaluator : uses
+    NumberBaseballScoreEvaluator --> BaseballScoreCounter : uses
 ```
