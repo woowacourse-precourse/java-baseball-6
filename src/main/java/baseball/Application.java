@@ -89,7 +89,7 @@ public class Application {
             }
         }
         if(ball==0 && strike == 0){
-            System.out.println("미싱");
+            System.out.print("미싱");
         } else {
             if(ball>0){
                 System.out.print(ball + "볼 ");
@@ -99,9 +99,10 @@ public class Application {
             }
         }
         if(strike == 3 ){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println();
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             innerCondition = false;
+        }
         System.out.println();
-    }
     }
 }
