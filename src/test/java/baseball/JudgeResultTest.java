@@ -45,7 +45,6 @@ class JudgeResultTest {
             message = String.format("%d볼", judgeResult.getBall());
         }
 
-
         if (ball == 0 && strike > 0) {
             for (int i = 0; i < strike; i++) {
                 judgeResult.incrementStrike();

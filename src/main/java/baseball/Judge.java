@@ -42,13 +42,17 @@ public class Judge {
     private boolean isBall(Ball computer, List<Ball> playerBaseBall) {
         for (int i = START_ROUND - 1; i < END_ROUND; i++) {
             Ball player = playerBaseBall.get(i);
-            if (computer.equals(player)) return true;
+            if (computer.equals(player)) {
+                return true;
+            }
         }
         return false;
     }
 
     private boolean isStrike(Ball computer, Ball player) {
-        if (computer.equals(player)) return true;
+        if (computer.equals(player)) {
+            return true;
+        }
         return false;
     }
 }

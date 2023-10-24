@@ -7,6 +7,7 @@ public class PlayGame {
     private final InputView inputView;
     private final OutputView outputView;
     private final Judge judge;
+
     public PlayGame(InputView inputView, OutputView outputView, Judge juge) {
         this.inputView = inputView;
         this.outputView = outputView;

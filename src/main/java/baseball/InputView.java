@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private Validator validator = new Validator();
+
     public String inputNumbers() {
         String readNumbers = Console.readLine();
         checkNumbersValidation(readNumbers);
