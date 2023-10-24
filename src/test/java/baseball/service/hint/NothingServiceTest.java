@@ -11,20 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class NothingServiceTest {
 
     private final NothingService nothingService = NothingService.getInstance();
-    private Baseball computerBaseball;
-    private Baseball inputBaseball;
-
-    @BeforeEach
-    void setup() {
-        computerBaseball = new Baseball();
-        inputBaseball = new Baseball();
-    }
 
     @Test
     void count_zeroNothing() {
         //given
-        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
-        inputBaseball.setValues(IntegerListUtil.parseIntegerList("456"));
+        Baseball computerBaseball = Baseball.createBaseball("123");
+        Baseball inputBaseball = Baseball.createBaseball("456");
 
         //when
         int count = nothingService.count(computerBaseball, inputBaseball);
@@ -36,8 +28,8 @@ public class NothingServiceTest {
     @Test
     void count_oneNothing() {
         //given
-        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
-        inputBaseball.setValues(IntegerListUtil.parseIntegerList("416"));
+        Baseball computerBaseball = Baseball.createBaseball("123");
+        Baseball inputBaseball = Baseball.createBaseball("416");
 
         //when
         int count = nothingService.count(computerBaseball, inputBaseball);

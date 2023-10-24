@@ -1,9 +1,6 @@
 package baseball.service.hint;
 
 import baseball.domain.Baseball;
-import baseball.service.hint.BallService;
-import baseball.util.IntegerListUtil;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BallServiceTest {
 
     private final BallService ballService = BallService.getInstance();
-
 
     @Test
     void count_zeroBall() {
@@ -43,7 +39,7 @@ public class BallServiceTest {
     void count_oneBall() {
         //given
         Baseball computerBaseball = Baseball.createBaseball("123");
-        Baseball inputBaseball = Baseball.createBaseball("256");
+        Baseball inputBaseball = Baseball.createBaseball("451");
 
         //when
         int count = ballService.count(computerBaseball, inputBaseball);
