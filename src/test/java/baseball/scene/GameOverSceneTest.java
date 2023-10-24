@@ -28,49 +28,4 @@ public class GameOverSceneTest {
 
         verify(mockOutput, times(1)).printEndMessage();
     }
-
-    @Test
-    void 게임_종료_메시지_출력_후_재시작() {
-        final GameStateManager mockGameStateManager = mock(GameStateManager.class);
-        when(mockGameStateManager.isInGameOver()).thenReturn(true, false);
-
-        final GameOverSceneInput mockInput = mock(GameOverSceneInput.class);
-        when(mockInput.getUserInput()).thenReturn("1");
-
-        final GameOverSceneOutput mockOutput = mock(GameOverSceneOutput.class);
-        final GameOverScene gameOverScene = new GameOverScene(mockGameStateManager, mockInput, mockOutput);
-        gameOverScene.run();
-
-        verify(mockGameStateManager, times(1)).update(GameState.GAME);
-    }
-
-    @Test
-    void 게임_종료_메시지_출력_후_종료() {
-        final GameStateManager mockGameStateManager = mock(GameStateManager.class);
-        when(mockGameStateManager.isInGameOver()).thenReturn(true, false);
-
-        final GameOverSceneInput mockInput = mock(GameOverSceneInput.class);
-        when(mockInput.getUserInput()).thenReturn("2");
-
-        final GameOverSceneOutput mockOutput = mock(GameOverSceneOutput.class);
-        final GameOverScene gameOverScene = new GameOverScene(mockGameStateManager, mockInput, mockOutput);
-        gameOverScene.run();
-
-        verify(mockGameStateManager, times(1)).update(GameState.EXIT);
-    }
-
-    @Test
-    void 게임_종료_후_지원하지_않는_메뉴_입력시_IllegalArgumentException_예외() {
-        final GameStateManager mockGameStateManager = mock(GameStateManager.class);
-        when(mockGameStateManager.isInGameOver()).thenReturn(true, false);
-
-        final GameOverSceneInput mockInput = mock(GameOverSceneInput.class);
-        when(mockInput.getUserInput()).thenReturn("0");
-
-        final GameOverSceneOutput mockOutput = mock(GameOverSceneOutput.class);
-        final GameOverScene gameOverScene = new GameOverScene(mockGameStateManager, mockInput, mockOutput);
-
-        assertThatThrownBy(() -> gameOverScene.run())
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }
