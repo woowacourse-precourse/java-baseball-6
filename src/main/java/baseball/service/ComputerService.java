@@ -15,7 +15,7 @@ public class ComputerService {
     }
 
     public void setup() {
-        computer.setUp();
+        computer.setup();
     }
 
     public int calculateBallCount() {

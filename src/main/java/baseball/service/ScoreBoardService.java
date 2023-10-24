@@ -5,6 +5,7 @@ import baseball.domain.ScoreBoard;
 import static baseball.domain.ScoreBoard.*;
 
 public class ScoreBoardService {
+
     private final ScoreBoard scoreBoard;
 
     public ScoreBoardService(ScoreBoard scoreBoard) {

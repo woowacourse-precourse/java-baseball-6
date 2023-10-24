@@ -10,13 +10,14 @@ import java.util.Set;
 import static baseball.domain.Baseballs.*;
 
 public class Computer {
+
     private Baseballs baseballs;
 
     public Baseballs getBaseballs() {
         return baseballs;
     }
 
-    public void setUp() {
+    public void setup() {
         baseballs = generateBaseballs();
     }
 

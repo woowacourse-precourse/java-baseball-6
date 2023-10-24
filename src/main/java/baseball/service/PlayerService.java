@@ -16,7 +16,7 @@ public class PlayerService {
         player.setBaseballs(generateBaseballs(playerGuess));
     }
 
-    private static Baseballs generateBaseballs(String playerGuess) {
+    private Baseballs generateBaseballs(String playerGuess) {
         return new Baseballs(Converter.convertStringToBaseballs(playerGuess));
     }
 }
