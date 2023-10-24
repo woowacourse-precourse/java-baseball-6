@@ -2,11 +2,14 @@ package baseball;
 
 import interfaces.Game;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class NumberBaseball implements Game {
+    private enum ResultType {
+        STRIKE, BALL, OUT
+    }
+    private HashMap<ResultType, Integer> baseballResult;
+
     private final int ANSWER_LENGTH = 3;
     private List<Integer> answer;
 
@@ -62,5 +65,15 @@ public class NumberBaseball implements Game {
     @Override
     public String getPlayTurnPrompt() {
         return null;
+    }
+
+    private void initializeBaseballResult() {
+        if (this.baseballResult == null) {
+            this.baseballResult = new HashMap<>();
+        }
+
+        for (ResultType type : ResultType.values()) {
+            baseballResult.put(type, 0);
+        }
     }
 }
