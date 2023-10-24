@@ -1,54 +1,48 @@
 package baseball.console;
 
 import baseball.domain.BaseBall;
-import baseball.repository.BaseBallRepository;
 import baseball.service.BaseBallService;
+import baseball.util.InputValidate;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.util.Constant.*;
+import static baseball.util.InputValidate.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class BaseBallGame {
 
-    public BaseBallRepository baseBallRepository;
     public BaseBallService baseBallService;
 
-    public BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public int playGame() {
 
-    public void playGame() throws IOException {
-
-        baseBallRepository = new BaseBallRepository();
         baseBallService = new BaseBallService();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_GAME);
         BaseBall computer = new BaseBall();
         BaseBall player = new BaseBall(new ArrayList<>());
-        List<Integer> computerBallNumbers = computer.getInputBallNumber();
 
-        while(true) {
-            System.out.println("숫자를 입력해주세요 : ");
-            List<Integer> input = Arrays.stream(br.readLine().split("")).
-                    map(Integer::parseInt).toList();
+        while (true) {
+            System.out.print(INPUT_NUMBERS);
 
-            baseBallRepository.save(player, input);
-            if(check(input, computerBallNumbers) {
-                break;
+            String[] input = readLine().split("");
+            validateLength(input);
+
+            List<Integer> inputNumbers = Arrays.stream(input)
+                    .map(Integer::parseInt)
+                    .peek(InputValidate::validateNumberRange)
+                    .toList();
+            player.setInputBallNumber(inputNumbers);
+            if (baseBallService.isThreeStrike(player, computer)) { // 3스트라이크 확인
+                System.out.println(NUMBER_THREE + STRIKE);
+                // 게임재시작 여부
+                return baseBallService.restartGame();
             }
-            숫자를 입력해주세요 :145
-            1 볼
-            숫자를 입력해주세요 :671
-            2 볼
-            숫자를 입력해주세요 :216
-            1 스트라이크
-            숫자를 입력해주세요 :713
-            3 스트라이크
-            3 개의 숫자를 모두 맞히셨습니다 !게임 종료
-            게임을 새로 시작하려면 1, 종료하려면 2 를 입력하세요.
-            1
+            int[] result = baseBallService.checkStrikeAndBallCount(player, computer);
+            System.out.print(baseBallService.notificationResult(result));
         }
     }
 }
