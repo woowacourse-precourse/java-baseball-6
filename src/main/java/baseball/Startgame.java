@@ -20,9 +20,9 @@ public class Startgame {
         return playernum;
     }
 
+    //IllegalArgumentException
     public void exception_Length(String s) {
         if(s.length() != 3)
             throw new IllegalArgumentException("세자리 수보다 크거나 작음");
     }
-
 }
