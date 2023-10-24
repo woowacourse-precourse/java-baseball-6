@@ -24,6 +24,6 @@ class MessageConverterTest {
     @Test
     void Map_String_변환하기() {
         Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(0, 5, 9));
-        System.out.println(messageConverter.getResultMessageToString(testMap));
+        assertTrue(messageConverter.getResultMessageToString(testMap) instanceof String);
     }
 }

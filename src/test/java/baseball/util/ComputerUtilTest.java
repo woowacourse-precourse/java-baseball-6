@@ -1,17 +1,14 @@
 package baseball.util;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class ComputerUtilTest {
 
-    private ComputerUtil computerUtil = new ComputerUtil();
     @Test
-    void 컴퓨터_숫자_생성() {
-        List<Integer> computerNumber = computerUtil.generateComputerNumber();
-        System.out.println(computerNumber);
+    void 컴퓨터가_생성한_자료구조가_List일경우_참() {
+        assertTrue(ComputerUtil.generateComputerNumber() instanceof List<Integer>);
     }
 }

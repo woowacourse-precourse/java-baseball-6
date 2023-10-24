@@ -7,6 +7,7 @@ import baseball.view.OutputView;
 public class GameMainController {
 
     private static final String THREESTRIKE = "3스트라이크";
+    
     private final GameService gameService = new GameService();
 
     public GameMainController() {
