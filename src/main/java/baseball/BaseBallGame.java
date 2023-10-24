@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -159,8 +158,7 @@ public class BaseBallGame {
      */
     private boolean inputRestartOrEnd() {
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int input = stringToInt(Console.readLine());
+        int input = stringToInt(ViewInput.restartOrEndInputView());
 
         inputErrorCheck(input);
 
