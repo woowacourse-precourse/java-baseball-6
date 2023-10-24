@@ -10,14 +10,15 @@ public class BaseBallGame {
     private static int START_INCLUSIVE = 1;
     private static int END_INCLUSIVE = 9;
     private static int DIGIT = 3;
-    private static String GAME_FLAG = "1";
+    private String gameFlag = "1";
 
     public BaseBallGame() {
+        gameFlag = "1";
     }
 
     public void run() {
         PrintMessage.printInitMessage();
-        while (GAME_FLAG.equals("1")) {
+        while (gameFlag.equals("1")) {
             this.numbers = new Numbers();
             initNumbers();
             playGame();
@@ -36,7 +37,7 @@ public class BaseBallGame {
         }
         PrintMessage.printSuccessMessage();
 
-        GAME_FLAG = Validation.isValidGameFlag(Console.readLine());
+        gameFlag = Validation.isValidGameFlag(Console.readLine());
     }
 
 

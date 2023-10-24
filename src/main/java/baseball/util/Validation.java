@@ -2,8 +2,6 @@ package baseball.util;
 
 public class Validation {
     public static void isValidInputNumber(String input) {
-        System.out.println("input = " + input);
-        System.out.println("input.length() = " + input.length());
         if (input.length() != 3)
             throw new IllegalArgumentException("세개의 숫자만 입력하세요.");
 
@@ -13,16 +11,15 @@ public class Validation {
         }
 
         if ((input.charAt(0) == input.charAt(1))
-                ||input.charAt(1) == input.charAt(2)
-                ||input.charAt(0) == input.charAt(2)){
+                || input.charAt(1) == input.charAt(2)
+                || input.charAt(0) == input.charAt(2)) {
             throw new IllegalArgumentException("서로 다른 숫자 세자리를 입력하세요.");
         }
     }
 
     public static String isValidGameFlag(String gameFlag) {
-        System.out.println("gameFlag = " + gameFlag);
-        if(gameFlag.equals("1") || gameFlag.equals("2"))
-            return gameFlag;
-        throw new IllegalArgumentException("1또는 2의 값만 입력 가능합니다.");
+        if (!gameFlag.equals("1") && !gameFlag.equals("2"))
+            throw new IllegalArgumentException("1또는 2의 값만 입력 가능합니다.");
+        return gameFlag;
     }
 }
