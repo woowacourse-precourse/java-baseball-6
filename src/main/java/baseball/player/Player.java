@@ -2,14 +2,14 @@ package baseball.player;
 
 public class Player {
 
-    String playerNumString;
+    String playerInputNumber;
 
-    public void setPlayerNumString(String playerNumString) {
-        this.playerNumString = playerNumString;
+    public void setPlayerInputNumber(String playerInputNumber) {
+        this.playerInputNumber = playerInputNumber;
     }
 
-    public String getPlayerNumString() {
-        return playerNumString;
+    public String getPlayerInputNumber() {
+        return playerInputNumber;
     }
 
 }

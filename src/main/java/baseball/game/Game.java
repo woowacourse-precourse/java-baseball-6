@@ -58,23 +58,23 @@ public class Game {
     }
 
     public void readPlayerNumber() {
-        String playerNumString = Console.readLine();
+        String playerInputNumber = Console.readLine();
 
-        if (playerNumString.length() > 3) {
+        if (playerInputNumber.length() > 3) {
             throw new IllegalArgumentException();
         }
 
-        player.setPlayerNumString(playerNumString);
+        player.setPlayerInputNumber(playerInputNumber);
     }
 
     public void compareNumber() {
-        String playerNumString = player.getPlayerNumString();
-        char[] playerNumCharArray = playerNumString.toCharArray();
+        String playerInputNumber = player.getPlayerInputNumber();
+        char[] playerInputNumberCharArray = playerInputNumber.toCharArray();
 
         ComputerNumberHashMap computerNumbers = computer.getComputerNumbers();
 
         for (int index = 0; index < 3; index++) {
-            int playerNumber = playerNumCharArray[index] - '0';
+            int playerNumber = playerInputNumberCharArray[index] - '0';
             if (computerNumbers.contain(playerNumber)) {
                 if (computerNumbers.equalIndex(playerNumber, index)) {
                     strike++;
