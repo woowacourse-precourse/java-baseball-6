@@ -1,5 +1,8 @@
 package baseball.model;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 // 사용자가 입력한 숫자 체크
 public class UserNumberChecker {
 
@@ -32,22 +35,12 @@ public class UserNumberChecker {
     } // user의 입력값이 각각 한 자리 자연수인지 확인하는 메소드
 
     public static void isDuplicatedNumber(String userNumber) throws IllegalArgumentException {
-        char[] charArray = userNumber.toCharArray();
-        int[] intArray = new int[charArray.length];
+        Set<Character> digitSet = new LinkedHashSet<>();
 
-        // charArray의 각 숫자를 int로 변환하여 intArray에 저장
-        for (int i = 0; i < charArray.length; i++) {
-            intArray[i] = Character.getNumericValue(charArray[i]);
-        }
-
-        // 중복 여부 체크를 위한 중첩 반복문 사용
-        for (int i = 0; i < intArray.length - 1; i++) {
-            for (int j = i + 1; j < intArray.length; j++) {
-                if (intArray[i] == intArray[j]) {
-                    throw new IllegalArgumentException("에러! 중복된 숫자를 입력할 수 없습니다.");
-                }
+        for (char digit : userNumber.toCharArray()) {
+            if (!digitSet.add(digit)) {
+                throw new IllegalArgumentException("에러! 중복된 숫자를 입력할 수 없습니다.");
             }
         }
-
     } // user의 입력값 요소들 중에서 중복된 자연수가 있는지 확인하는 메소드
 }
