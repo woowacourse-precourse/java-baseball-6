@@ -26,6 +26,8 @@ public class User {
 
         }
 
+        validateDistinctNumbers(userAnswers);
+
         return userAnswers;
     }
 
@@ -35,6 +37,19 @@ public class User {
         if (input.length() != 3) {
 
             throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
+
+        }
+
+    }
+
+    // 사용자가 입력한 숫자가 모두 다른 숫자인지 확인
+    private void validateDistinctNumbers(List<Integer> userAnswers) {
+
+        long distinctNumber = userAnswers.stream().distinct().count();
+
+        if (distinctNumber != 3) {
+
+            throw new IllegalArgumentException("입력 값은 서로 다른 숫자여야 합니다.");
 
         }
 
