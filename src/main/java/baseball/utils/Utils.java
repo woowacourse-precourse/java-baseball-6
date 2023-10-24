@@ -55,4 +55,17 @@ public class Utils {
         return result;
     }
 
+    // 스트라이크 개수를 반환하는 메소드
+    public int checkStrikeCnt(String answerNumber, String inputValue) {
+        int result = 0;
+
+        for (int idx=0; idx<answerNumber.length(); idx++) {
+            if (answerNumber.charAt(idx) == inputValue.charAt(idx)) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
 }
