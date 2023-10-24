@@ -26,7 +26,7 @@ public class HintEvaluator {
             return "낫싱";
         }
         if (strikeCount > 0 && ballCount > 0) {
-            return strikeCount + "스트라이크 " + ballCount + "볼";
+            return ballCount + "볼 " + strikeCount + "스트라이크";
         }
         if (strikeCount > 0) {
             return strikeCount + "스트라이크";
