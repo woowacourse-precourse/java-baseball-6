@@ -2,7 +2,9 @@ package baseball.service;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import baseball.util.validation.restartNumberValidation;
 import static baseball.util.Constants.*;
+
 
 public class UmpireService {
     private int ballCount = 0;
@@ -45,6 +47,7 @@ public class UmpireService {
     }
 
     public String getRestartNumber(String input) {
+        restartNumberValidation.validateRestartNumber(input);
         if (input.equals(RESTART)) {
             return RESTART;
         }
