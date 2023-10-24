@@ -19,7 +19,9 @@ public class GameController {
         this.computer = computer;
         this.gameLogic = gameLogic;
     }
-
+    public void init() {
+        gameIO.printStartGameMessage();
+    }
     public void runGame() {
         boolean continueRequested;
 
