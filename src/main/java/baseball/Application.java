@@ -9,7 +9,8 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = getComputerNums();
         Scanner sc = new Scanner(System.in);
-        outer: while (true) {
+         while (true) {
+             System.out.print("숫자를 입력해주세요 : ");
             String userNum = sc.nextLine();
             LinkedList<Integer> user = getUser(userNum);
             int strikes = 0;
@@ -27,7 +28,7 @@ public class Application {
                     sc.nextLine(); // 개행문자 비우기
                 } else if (play == 2) {
                     sc.close();
-                    break outer;
+                    break;
                 }else {
                     throw new IllegalStateException("잘못 입력하였습니다");
                 }
@@ -81,7 +82,7 @@ public class Application {
     private static int findBall(List<Integer> computer, List<Integer> user, int balls) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (user.get(i) == computer.get(j) && (i != j)) {
+                if (user.get(i).equals(computer.get(j)) && (i != j)) {
                     balls++;
                 }
             }
@@ -91,7 +92,7 @@ public class Application {
 
     private static int findstrikes(List<Integer> computer, List<Integer> user, int strikes) {
         for (int i = 0; i < user.size(); i++) {
-            if (user.get(i) == computer.get(i)) {
+            if (user.get(i).equals(computer.get(i))) {
                 strikes++;
             }
         }
