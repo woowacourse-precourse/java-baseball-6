@@ -17,6 +17,7 @@ public class NumberBaseball implements Game {
 
     @Override
     public String processTurn(String input) {
+        validateGameInput(input);
         return null;
     }
 
@@ -27,6 +28,11 @@ public class NumberBaseball implements Game {
 
     @Override
     public void validateGameInput(String input) throws IllegalArgumentException {
+        String gameInputRegex = "^[1-9]{3}$";
+        if (input.matches(gameInputRegex)) {
+            return;
+        }
+        throw new IllegalArgumentException("Invalid game input");
     }
 
     @Override
