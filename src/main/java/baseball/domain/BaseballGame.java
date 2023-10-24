@@ -14,7 +14,6 @@ public class BaseballGame {
     }
 
     public void start() {
-        System.out.println(baseballNumbers.getNumbers());
         while (!isDone) {
             PlayerNumbers playerNumbers = View.inputPlayerNumbers();
             Result result = this.checkHitsResult(baseballNumbers.getNumbers(), playerNumbers.getNumbers());
@@ -25,7 +24,6 @@ public class BaseballGame {
     }
 
     private Result checkHitsResult(List<Integer> baseballNumbers, List<Integer> playerNumbers) {
-
         int strike = 0, ball = 0;
         for (int i = 0; i < baseballNumbers.size(); i++) {
             if (playerNumbers.contains(baseballNumbers.get(i))) ball++;
