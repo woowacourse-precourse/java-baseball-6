@@ -10,6 +10,9 @@ public class OutputView {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public static final String CORRECT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다!";
+    public static final String GAME_SET_MESSAGE = "게임 종료";
+    public static final int ZERO = 0;
 
     public static void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -24,23 +27,23 @@ public class OutputView {
         int strike = judgement.get(Referee.STRIKE);
         int ball = judgement.get(Referee.BALL);
 
-        if (strike == 0 && ball == 0) {
+        if (strike == ZERO && ball == ZERO) {
             return NOTHING;
         }
-        else if (strike == 0) {
+        else if (strike == ZERO) {
             return ball+BALL;
         }
-        else if (ball == 0) {
+        else if (ball == ZERO) {
             return strike+STRIKE;
         }
         return ball+BALL+" "+strike+STRIKE;
     }
 
     public static void printCorrectMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+        System.out.println(CORRECT_MESSAGE);
     }
 
     public static void printEndMessage() {
-        System.out.println("게임 종료");
+        System.out.println(GAME_SET_MESSAGE);
     }
 }
