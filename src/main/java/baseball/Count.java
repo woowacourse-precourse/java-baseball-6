@@ -9,21 +9,9 @@ public class Count {
     private int strike = 0;
     private int ball = 0;
     private List<Integer> BallandStrikeCount = new ArrayList<>();
-
-    public int getStrike() {
-        return strike;
-    }
-
+    
     public void setStrike(int strike) {
         this.strike = strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public void setBall(int ball) {
-        this.ball = ball;
     }
 
 
@@ -32,7 +20,6 @@ public class Count {
         countStrike(userNumber, computerNumber);
         countBall(userNumber, computerNumber);
         setBallandStrikeCount(ball, strike);
-        // System.out.println(BallandStrikeCount);
         return BallandStrikeCount;
 
 
@@ -55,7 +42,6 @@ public class Count {
         for (int i = 0; i < userNumber.size(); i++) {
             if (computerNumber.get(i).equals(userNumber.get(i))) {
                 strikeCount += 1;
-
             }
         }
 
