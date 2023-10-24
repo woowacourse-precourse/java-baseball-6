@@ -1,6 +1,7 @@
 package baseball.domain.player;
 
 import baseball.domain.computer.Computer;
+import baseball.domain.computer.GameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,7 +17,7 @@ class PlayerTest {
     private Computer answerNumbers;
     @BeforeEach
     void beforeEach() {
-        answerNumbers = Computer.from(Player.createPlayerByIntegerNumbers(Arrays.asList(1, 2, 3)));
+        answerNumbers = Computer.from(Player.createPlayerByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.RUNNING);
     }
 
     @Test

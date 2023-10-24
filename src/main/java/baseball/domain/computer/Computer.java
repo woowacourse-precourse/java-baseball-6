@@ -15,20 +15,24 @@ import static baseball.domain.player.Player.*;
 
 public class Computer {
     private List<Number> answerNumbers;
+    private GameState gameState;
 
-    private Computer(List<Number> numbers) {
+    private Computer(List<Number> numbers, GameState gameState) {
         this.answerNumbers = numbers;
+        this.gameState = gameState;
     }
 
-    public static Computer createComputerAnswerByRandomGenerator() {
+    public static Computer createComputerAnswerByRandomGenerator(GameState gameState) {
         List<Number> answerNumbers = integerToNumber(generateNumbers());
-        return new Computer(answerNumbers);
+        return new Computer(answerNumbers,gameState);
     }
 
-    public static Computer from(Player answerNumbers) {
-        return new Computer(answerNumbers.getNumbers());
+    public static Computer from(Player answerNumbers, GameState gameState) {
+        return new Computer(answerNumbers.getNumbers(),gameState);
     }
-
+    public static Computer init() {
+        return createComputerAnswerByRandomGenerator(GameState.init());
+    }
     private static ArrayList<Integer> generateNumbers() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() != BASEBALL_NUMBERS_LIMIT_SIZE) {

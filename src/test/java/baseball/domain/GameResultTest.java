@@ -2,6 +2,7 @@ package baseball.domain;
 
 
 import baseball.domain.computer.Computer;
+import baseball.domain.computer.GameState;
 import baseball.domain.player.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,7 +61,7 @@ class GameResultTest {
     @DisplayName("baseball game 결과를 스트라이크, 볼 별로 몇개인지 반환한다")
     void calculateBaseBallGameTest() {
         // given
-        Computer computer = Computer.from(Player.createPlayerByIntegerNumbers(Arrays.asList(1, 2, 3)));
+        Computer computer = Computer.from(Player.createPlayerByIntegerNumbers(Arrays.asList(1, 2, 3)), GameState.RUNNING);
         Player inputNumbers = Player.createPlayerByIntegerNumbers(Arrays.asList(1, 3, 2));
         GameResult expected = GameResult.from(1, 2);
 
