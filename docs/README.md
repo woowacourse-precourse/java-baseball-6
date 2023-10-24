@@ -24,16 +24,21 @@
 
 - `UserNumberRequest`
   - 게임 진행 중 사용자가 입력한 숫자값이 Model 계층으로 전달될 때 사용
-- `ContinueRequest`
+- `RestartAnswerRequest`
   - 게임 종료 후 재시작 여부 입력한 값이 
 - `ResultResponse`
   - 입력한 숫자의 결과값을 저장
 
 
 ### Service
+게임 진행 시 필요한 비즈니스 로직을 수행합니다. 
+- `ComputerService`
+  - 컴퓨터 도메인 생성
 게임 진행에 필요한 비지니스 로직을 수행합니다. 
 - `GameService`
-  - 도메인 생성, 게임 진행 및 결과 수집
+  - 게임 진행 및 결과 수집
+- `UserService`
+  - 사용자 도메인 생성
 
 ### View
 입력값에 대한 간단한 검증(`null`, `isBlank` 여부)을 수행합니다. 이외 비지니스 요구사항은 Service 레이어에서 검증합니다.
