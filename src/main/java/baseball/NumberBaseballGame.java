@@ -14,15 +14,12 @@ public class NumberBaseballGame {
     private InputValidation inputValidation = new InputValidation();
     private AnswerMaker answerMaker = new AnswerMaker();
 
-    public void speaker(String message) {
-        System.out.print(message);
-    }
 
     public void play() {
         boolean gameStatus = true;
 
         while (gameStatus) {
-            speaker(START_MESSAGE + '\n');
+            System.out.println(START_MESSAGE);
             makeAnswer();
             oneRound();
             gameStatus = restartOrStop();
@@ -30,7 +27,7 @@ public class NumberBaseballGame {
     }
 
     private boolean restartOrStop() {
-        speaker(RESTART_OR_STOP_MESSAGE);
+        System.out.print(RESTART_OR_STOP_MESSAGE);
         String sign = getUserInput();
 
         inputValidation.validateRestartOrStop(sign);
@@ -45,28 +42,27 @@ public class NumberBaseballGame {
 
             threeStrike = isThreeStrike(strikeCount);
         }
-        speaker(SUCCESS_MESSAGE + '\n');
+        System.out.println(SUCCESS_MESSAGE);
     }
 
     private int scoreResult() {
-        speaker(REQUEST_NUMBER_MESSAGE);
-        List<Integer> scoreBoard = ballAndStrike();
-        speaker(message.scoreMessage(scoreBoard) + '\n');
+        System.out.print(REQUEST_NUMBER_MESSAGE);
+        List<Integer> answer = answerMaker.getAnswer();
+        List<Integer> scoreBoard = scoreCounter.countScore(answer, userAnswer());
+        System.out.println(message.scoreMessage(scoreBoard));
         int strikeCount = scoreBoard.get(1);
 
         return (strikeCount);
     }
 
+    //유저의 정보를 입력받고 validation -> 리스트 반환
     private List<Integer> userAnswer() {
         String input = getUserInput();
 
         return (inputValidation.validateAndConvertUserNumbers(input));
     }
 
-    private List<Integer> ballAndStrike() {
-        return (scoreCounter.countScore(answerMaker.getAnswer(), userAnswer()));
-    }
-
+    //클래스 내부에 정답 생성
     private void makeAnswer() {
         answerMaker.makeAnswer(1, 9);
     }

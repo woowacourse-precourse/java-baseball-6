@@ -4,13 +4,6 @@
 
 ## NumberBaseballGame 클래스
 
-- 출력 메서드
-
-```
-void speaker(String message)
-입력받은 메세지 출력
-```
-
 - 게임 진행 메서드
 
 ```
@@ -22,6 +15,25 @@ void oneRound()play
 
 boolean restartOrStop()
 하나의 라운드 종료 후 재시작/종료를 묻는 메서드
+
+void makeAnswer()
+새로운 정답 생성
+
+int scoreResult()
+컴퓨터의 정답과 유저의 입력값을 비교한 뒤 출력 후 strike의 횟수를 반환
+
+boolean isThreeStrike(int strike)
+파라미터의 값이 3인지 판별하는 메서드
+```
+
+- 입력 메서드
+
+```
+List<Integer> userAnswer()
+유저로부터 입력받은 값을 검증 후 리스트로 변환
+
+String getUserInput()
+유저로부터 엔터 전까지의 값을 입력받음
 ```
 
 ## InputValidation 클래스
@@ -88,13 +100,19 @@ index 0은 ball,index 1은 strike로 설정한 뒤 카운트에 따라 메시지
 - 난수 생성 메서드
 
 ```
-int makeNumber(int min,int max)min,max 사이의 하나의 숫자 반환
+int makeNumber(int min,int max)
+min,max 사이의 하나의 숫자 반환
+
+List<Integer> makeThreeDifferentNumbers(int min, int max)
+범위 내의 세자리 난수를 생성한뒤 리스트 타입으로 반환
+
 ```
 
-- 리스트로 난수 생성 후 저장 메서드
+- 정답을 저장하는 메서드
 
 ```
-AnswerMaker(int min,int max)생성자 호출 시 makeNumber를 사용해 난수 생성후 정답을 리스트로 만들어 저장
+void makeAnswer(int min, int max)
+범위 내의 세자리 난수를 생성한 뒤 필드에 저장
 ```
 
 - 저장된 정답을 호출하는 메서드
