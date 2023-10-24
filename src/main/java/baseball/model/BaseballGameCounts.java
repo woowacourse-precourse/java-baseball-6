@@ -6,8 +6,8 @@ import java.util.List;
 // 일급 컬렉션
 public class BaseballGameCounts {
 
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
+    public static final int BALL = 0;
+    public static final int STRIKE = 1;
 
     // 스트라이크, 볼 카운트를 저장할 변수. 초기값 (0,0)
     private final List<Integer> counts = Arrays.asList(0, 0);

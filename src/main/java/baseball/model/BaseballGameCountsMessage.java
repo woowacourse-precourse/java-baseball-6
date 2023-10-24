@@ -3,13 +3,10 @@ package baseball.model;
 public class BaseballGameCountsMessage {
     private String message;
 
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
-
     public BaseballGameCountsMessage(BaseballGameCounts baseballGameCounts) {
         // 카운트 수를 기반으로 메시지 생성을 위해 변수 지정
-        Integer ballCounts = baseballGameCounts.getCounts().get(BALL);
-        Integer strikeCounts = baseballGameCounts.getCounts().get(STRIKE);
+        Integer ballCounts = baseballGameCounts.getCounts().get(BaseballGameCounts.BALL);
+        Integer strikeCounts = baseballGameCounts.getCounts().get(BaseballGameCounts.STRIKE);
 
         // 스트라이크 카운트가 존재하면 메시지에 덧붙임
         if (strikeCounts > 0) {
