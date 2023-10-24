@@ -24,6 +24,7 @@ public class BaseballController {
         while (true) {
             BaseballNumber playerNumber = getPlayerInput();
             BaseballResult result = baseballService.calculateResult(computerNumber, playerNumber);
+            outputView.printGameResult(result);
         }
     }
 
