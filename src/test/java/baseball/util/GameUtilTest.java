@@ -3,7 +3,6 @@ package baseball.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.mockito.InjectMocks;
 
 import java.lang.reflect.InvocationTargetException;
