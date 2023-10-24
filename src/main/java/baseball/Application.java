@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,6 +11,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     	System.out.println("숫자 야구 게임을 시작합니다.");
+    	boolean errInput = false;
     	while(true) {
     		List<Integer> computer = new ArrayList();
     		while(computer.size()<3) {
@@ -20,16 +23,27 @@ public class Application {
     		
     		while(true) {
     			
-				System.out.print("숫자를 입력해 주세요 : ");
+				System.out.print("숫자를 입력해주세요 : ");
 				String a = Console.readLine();
-				try {
-					if (a.length() != 3) {
-						throw new IllegalAccessException("세자리 수보다 크거나 작음");
+				System.out.println(a);
+				Set<Character>set = new HashSet<Character>();
+				boolean outrange = false;
+				for(int i = 0;i<a.length();i++) {
+					if(a.charAt(i)<'0' || a.charAt(i)>'9') {
+						outrange = true;
+						break;
 					}
-				} catch (IllegalAccessException e) {
-					System.out.println(e.getMessage());
-					break;
+					set.add(a.charAt(i));
 				}
+				
+				if (a.length() != 3) {
+					throw new IllegalArgumentException("3자리 이상 입력하였습니다.");
+				}else if(set.size()!=3) {
+					throw new IllegalArgumentException("중복되는 것이 있습니다.");
+				}else if(outrange) {
+					throw new IllegalArgumentException("");
+				}
+				
     			
     			String[]aa = a.split("");
     			
@@ -63,8 +77,10 @@ public class Application {
     				System.out.println(ball+"볼 "+strike +"스트라이크");
     			}
     		}
+
     		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     		int num = Integer.parseInt(Console.readLine());
+    		System.out.println(num);
     		if(num==1) {
     			continue;
     		}else {
