@@ -13,12 +13,36 @@ public class Computer implements Player {
 
     @Override
     public void setNumber() {
+        number=pickNumbers();
+    }
+
+    private char[] pickNumbers(){
+        boolean[] alreadyExist=new boolean[10];
+        char[] randomNumbers=new char[3];
+
+        int idx=0;
+        while(idx<3){
+            int randomNumber=Randoms.pickNumberInRange(1, 9);
+
+            if(alreadyExist[randomNumber])
+                continue;
+
+            randomNumbers[idx++]=(char)('0'+randomNumber);
+            alreadyExist[randomNumber]=true;
+        }
+
+        return randomNumbers;
+    }
+
+    private char[] shuffleNumbers(){
         List<Integer> randomList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
 
-        int idx = 0;
-        for (int random : randomList) {
-            number[idx++] = (char) (random + '0');
+        char[] randomNumbers=new char[3];
+        for(int i=0;i<3;i++){
+            randomNumbers[i]=(char)(randomList.get(i)+'0');
         }
+
+        return randomNumbers;
     }
 
     /**
