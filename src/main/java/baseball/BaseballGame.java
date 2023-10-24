@@ -11,11 +11,11 @@ public class BaseballGame {
     }
 
     private void run() {
-        process();
+        guessNumber();
         askForContinue();
     }
 
-    private void process() {
+    private void guessNumber() {
         final Computer computer = ComputerGenerator.generate();
 
         while (true) {
