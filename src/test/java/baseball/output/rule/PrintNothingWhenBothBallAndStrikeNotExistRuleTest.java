@@ -12,7 +12,8 @@ public class PrintNothingWhenBothBallAndStrikeNotExistRuleTest extends PrintOutp
         final PrintNothingWhenBothBallAndStrikeNotExistRule rule = new PrintNothingWhenBothBallAndStrikeNotExistRule(
                 new BallAndStrike(0, 0)
         );
-        rule.print();assertThat(output()).contains("낫싱");
+        rule.print();
+        assertThat(output()).contains("낫싱");
     }
 
     @Test

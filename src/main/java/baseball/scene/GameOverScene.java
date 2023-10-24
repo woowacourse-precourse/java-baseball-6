@@ -1,6 +1,5 @@
 package baseball.scene;
 
-import baseball.game.state.GameState;
 import baseball.game.state.GameStateManager;
 import baseball.input.GameOverSceneInput;
 import baseball.output.GameOverSceneOutput;

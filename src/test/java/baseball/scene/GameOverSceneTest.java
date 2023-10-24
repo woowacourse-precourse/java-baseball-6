@@ -1,12 +1,10 @@
 package baseball.scene;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-import baseball.game.state.GameState;
 import baseball.game.state.GameStateManager;
 import baseball.input.GameOverSceneInput;
 import baseball.output.GameOverSceneOutput;

@@ -14,7 +14,7 @@ public class StrikeRule implements BaseBallResultRule {
         final AtomicInteger answerIndex = new AtomicInteger(0);
 
         final int strike = (int) answer.stream().filter(answerNumber ->
-            answerNumber == user.get(answerIndex.getAndIncrement())
+                answerNumber == user.get(answerIndex.getAndIncrement())
         ).count();
 
         return new BallAndStrike(0, strike);

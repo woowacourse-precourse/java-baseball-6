@@ -11,6 +11,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class BaseBallResultTest {
 
+    private static Stream<Arguments> provideStrikeBaseBallResult() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3), true),
+                Arguments.of(List.of(1, 2, 4), false)
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("provideStrikeBaseBallResult")
     void isAllStrike_메소드_모두_스트라이크일시_true_반환(final List<Integer> numbers, final boolean expected) {
@@ -20,13 +27,6 @@ public class BaseBallResultTest {
         );
 
         assertThat(baseBallResult.isAllStrike()).isEqualTo(expected);
-    }
-
-    private static Stream<Arguments> provideStrikeBaseBallResult() {
-        return Stream.of(
-                Arguments.of(List.of(1, 2, 3), true),
-                Arguments.of(List.of(1, 2, 4), false)
-        );
     }
 
     @Test

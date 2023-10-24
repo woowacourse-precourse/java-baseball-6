@@ -4,7 +4,7 @@ import baseball.game.rule.BallRule;
 import baseball.game.rule.StrikeRule;
 
 public class BaseBallResult {
-    private BallAndStrike ballAndStrike;
+    private final BallAndStrike ballAndStrike;
 
     public BaseBallResult(final BaseBallNumberGroup answer, final BaseBallNumberGroup user) {
         ballAndStrike = new BallAndStrike(
@@ -31,3 +31,4 @@ public class BaseBallResult {
         return ballAndStrike;
     }
 }
+s

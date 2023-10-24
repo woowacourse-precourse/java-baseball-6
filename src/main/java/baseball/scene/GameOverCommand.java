@@ -17,17 +17,6 @@ public enum GameOverCommand {
     public static final String STRING_RE_START_INPUT = "1";
     public static final String STRING_EXIT_INPUT = "2";
     public static final String STRING_UNKNOWN = "UNKNOWN";
-
-    private final String command;
-
-    private GameOverCommand(final String command) {
-        this.command = command;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
     private static final Map<String, GameOverCommand> commands = Collections.unmodifiableMap(
             Stream.of(values()).collect(
                     Collectors.toMap(
@@ -36,6 +25,12 @@ public enum GameOverCommand {
                     )
             )
     );
+
+    private final String command;
+
+    GameOverCommand(final String command) {
+        this.command = command;
+    }
 
     public static GameOverCommand find(final String command) {
         return Optional.ofNullable(commands.get(command)).orElse(UNKNOWN);
@@ -48,5 +43,9 @@ public enum GameOverCommand {
             case EXIT -> gameStateManager.update(GameState.EXIT);
             default -> throw new IllegalArgumentException("지원하지 않는 메뉴입니다.");
         }
+    }
+
+    public String getCommand() {
+        return command;
     }
 }

@@ -35,7 +35,9 @@ public class GameManagerTest {
         final SceneFactory mockSceneFactory = mock(SceneFactory.class);
 
         when(mockGameStateManager.isInExit()).thenReturn(false, true);
-        when(mockSceneFactory.createSceneFromGameState()).thenReturn(() -> {});
+        when(mockSceneFactory.createSceneFromGameState())
+                .thenReturn(() -> {
+                });
 
         final GameManager gameManager = new GameManager(mockGameStateManager, mockSceneManager, mockSceneFactory);
         gameManager.loop();

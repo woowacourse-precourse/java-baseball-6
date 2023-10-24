@@ -10,15 +10,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class GameStateManagerTest {
 
-    @ParameterizedTest
-    @MethodSource("provideGameStateAtIsInStart")
-    void GameState_START_일때_isInStart_true_반환(final GameState gameState, final boolean expected) {
-        final GameStateManager gameStateManager = new GameStateManager();
-        gameStateManager.update(gameState);
-
-        assertThat(gameStateManager.isInStart()).isEqualTo(expected);
-    }
-
     private static Stream<Arguments> provideGameStateAtIsInStart() {
         return Stream.of(
                 Arguments.of(GameState.START, true),
@@ -26,15 +17,6 @@ public class GameStateManagerTest {
                 Arguments.of(GameState.GAME_OVER, false),
                 Arguments.of(GameState.EXIT, false)
         );
-    }
-
-    @ParameterizedTest
-    @MethodSource("provideGameStateAtIsInGame")
-    void GameState_GAME_일때_isInGame_true_반환(GameState gameState, boolean expected) {
-        GameStateManager gameStateManager = new GameStateManager();
-        gameStateManager.update(gameState);
-
-        assertThat(gameStateManager.isInGame()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideGameStateAtIsInGame() {
@@ -46,15 +28,6 @@ public class GameStateManagerTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("provideGameStateAtIsInGameOver")
-    void GameState_GAME_일때_isInGameOver_true_반환(GameState gameState, boolean expected) {
-        GameStateManager gameStateManager = new GameStateManager();
-        gameStateManager.update(gameState);
-
-        assertThat(gameStateManager.isInGameOver()).isEqualTo(expected);
-    }
-
     private static Stream<Arguments> provideGameStateAtIsInGameOver() {
         return Stream.of(
                 Arguments.of(GameState.START, false),
@@ -64,15 +37,6 @@ public class GameStateManagerTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("provideGameStateAtIsInExit")
-    void GameState_GAME_일때_isInExit_true_반환(GameState gameState, boolean expected) {
-        GameStateManager gameStateManager = new GameStateManager();
-        gameStateManager.update(gameState);
-
-        assertThat(gameStateManager.isInExit()).isEqualTo(expected);
-    }
-
     private static Stream<Arguments> provideGameStateAtIsInExit() {
         return Stream.of(
                 Arguments.of(GameState.START, false),
@@ -80,6 +44,42 @@ public class GameStateManagerTest {
                 Arguments.of(GameState.GAME_OVER, false),
                 Arguments.of(GameState.EXIT, true)
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideGameStateAtIsInStart")
+    void GameState_START_일때_isInStart_true_반환(final GameState gameState, final boolean expected) {
+        final GameStateManager gameStateManager = new GameStateManager();
+        gameStateManager.update(gameState);
+
+        assertThat(gameStateManager.isInStart()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideGameStateAtIsInGame")
+    void GameState_GAME_일때_isInGame_true_반환(GameState gameState, boolean expected) {
+        GameStateManager gameStateManager = new GameStateManager();
+        gameStateManager.update(gameState);
+
+        assertThat(gameStateManager.isInGame()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideGameStateAtIsInGameOver")
+    void GameState_GAME_일때_isInGameOver_true_반환(GameState gameState, boolean expected) {
+        GameStateManager gameStateManager = new GameStateManager();
+        gameStateManager.update(gameState);
+
+        assertThat(gameStateManager.isInGameOver()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideGameStateAtIsInExit")
+    void GameState_GAME_일때_isInExit_true_반환(GameState gameState, boolean expected) {
+        GameStateManager gameStateManager = new GameStateManager();
+        gameStateManager.update(gameState);
+
+        assertThat(gameStateManager.isInExit()).isEqualTo(expected);
     }
 
     @Test

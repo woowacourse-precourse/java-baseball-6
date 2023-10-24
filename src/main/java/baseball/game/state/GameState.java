@@ -4,5 +4,5 @@ public enum GameState {
     START,
     GAME,
     GAME_OVER,
-    EXIT;
+    EXIT
 }
