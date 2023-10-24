@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
+    private static final int LENGTH = 3;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         playBaseball();
@@ -22,7 +26,7 @@ public class Application {
             int ball = countBall(computer, user);
             int strike = countStrike(computer, user);
             printResult(ball, strike);
-            if(strike == 3) break;
+            if(strike == LENGTH) break;
         }
         if(checkRestart()) playBaseball();
     }
@@ -30,7 +34,7 @@ public class Application {
     // 랜덤 3자리 수 만들기
     public static List<Integer> computerNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -45,7 +49,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         checkValue(input);
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<LENGTH; i++) {
             user.add(input.charAt(i) - '0');
         }
         return user;
@@ -54,7 +58,7 @@ public class Application {
     // 사용자 숫자 사용 가능 여부 확인
     public static void checkValue(String input) {
         // 3자리가 아닌 경우, 1~9 숫자 이외의 값을 입력한 경우, 중복된 숫자를 입력한 경우 사용 불가능
-        if(input.length() != 3 || !input.matches("[1-9]+") || checkDuplication(input)) {
+        if(input.length() != LENGTH || !input.matches("[1-9]+") || checkDuplication(input)) {
             throw new IllegalArgumentException();
         }
     }
@@ -73,7 +77,7 @@ public class Application {
     // 볼(같은 수가 다른 자리에 있는 경우) 체크
     public static int countBall(List<Integer> computer, List<Integer> user) {
         int ball = 0;
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<LENGTH; i++) {
             if(computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
                 ball++;
             }
@@ -84,7 +88,7 @@ public class Application {
     // 스트라이크(같은 수가 같은 자리에 있는 경우) 체크
     public static int countStrike(List<Integer> computer, List<Integer> user) {
         int strike = 0;
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<LENGTH; i++) {
             if(computer.get(i).equals(user.get(i))) {
                 strike++;
             }
@@ -94,7 +98,7 @@ public class Application {
 
     // 사용자 숫자 결과 출력
     public static void printResult(int ball, int strike) {
-        if(strike == 3) {
+        if(strike == LENGTH) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else if(ball == 0 && strike > 0) {
@@ -112,8 +116,12 @@ public class Application {
     public static boolean checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if(input.equals("1")) return true;
-        else if(input.equals("2")) return false;
-        else throw new IllegalArgumentException();
+        if(input.equals(RESTART)) {
+            return true;
+        } else if(input.equals(EXIT)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
