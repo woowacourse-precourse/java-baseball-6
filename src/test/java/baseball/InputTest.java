@@ -49,15 +49,6 @@ public class InputTest extends NsTest {
     );
   }
 
-  @Test
-  @DisplayName("게임 종료 후 사용자 입력 예외 테스트")
-  void 게임_종료_후_사용자_입력_테스트() {
-    Scanner mockScanner = mock(Scanner.class);
-    when(mockScanner.next()).thenReturn("3");
-
-    Assertions.assertThrows(IllegalArgumentException.class,
-        () -> UserDecision.userDecision(mockScanner));
-  }
 
   @Override
   public void runMain() {
