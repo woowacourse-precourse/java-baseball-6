@@ -1,7 +1,9 @@
-package baseball;
+package baseball.game.service;
+
+import baseball.game.participant.Computer;
+import baseball.game.participant.Player;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class GameService {
 

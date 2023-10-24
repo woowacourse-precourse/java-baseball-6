@@ -1,5 +1,9 @@
-package baseball;
+package baseball.game;
 
+import baseball.game.participant.Computer;
+import baseball.game.participant.Player;
+import baseball.game.service.GameService;
+import baseball.game.validation.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
