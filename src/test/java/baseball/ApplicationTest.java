@@ -2,13 +2,13 @@ package baseball;
 
 import baseball.entity.Hint;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
         hint.generateHint(randomNumber, inputNumber);
 
         String expected = "3스트라이크";
-        Assertions.assertEquals(expected, output());
+        assertEquals(expected, output());
     }
 
     @Test
@@ -78,7 +78,7 @@ class ApplicationTest extends NsTest {
         hint.generateHint(randomNumber, inputNumber);
 
         String expected = "2볼 1스트라이크";
-        Assertions.assertEquals(expected, output());
+        assertEquals(expected, output());
     }
 
     @Test
@@ -91,7 +91,7 @@ class ApplicationTest extends NsTest {
         hint.generateHint(randomNumber, inputNumber);
 
         String expected = "낫싱";
-        Assertions.assertEquals(expected, output());
+        assertEquals(expected, output());
     }
 
     @Override

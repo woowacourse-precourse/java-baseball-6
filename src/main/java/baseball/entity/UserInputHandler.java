@@ -1,6 +1,7 @@
 package baseball.entity;
 
 public class UserInputHandler {
+
     // 게임중, 사용자 입력 예외 처리를 위한 함수
     public static void validInputNumber(String inputNumber) {
         // 사용자 입력의 길이가 3이 아니면 예외 처리

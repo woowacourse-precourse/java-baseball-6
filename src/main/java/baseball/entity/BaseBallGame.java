@@ -49,7 +49,4 @@ public class BaseBallGame {
     private boolean isCorrect(String randomNumber, String inputNumber) {
         return randomNumber.equals(inputNumber);
     }
-
-
-
 }

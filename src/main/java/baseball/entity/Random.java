@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Random {
-    public Random() {}
+    public Random() {
+    }
 
     // 1부터 9까지 서로 다른 수로 이루어진 랜덤 3자리수 발생시키는 함수
     public String generateRandomNumber() {
@@ -19,5 +20,4 @@ public class Random {
         }
         return NumberListConverter.integerListToString(computer);
     }
-
 }
