@@ -35,6 +35,25 @@ class View{
         else
             return false;
     }
+
+    static void resultPrint(int ballCount, int strikeCount) {
+        if(strikeCount==3){
+            System.out.println(gameEndSpeak);
+        }
+        else if(strikeCount!=0 && ballCount!=0){
+            System.out.println(ballCount+ballSpeak+" "+ strikeCount+strikeSpeak);
+        }
+        else if(strikeCount==0){
+            System.out.println(ballCount+ballSpeak);
+        }
+        else if(ballCount == 0){
+            System.out.println(strikeCount+strikeSpeak);
+        }
+        else{
+            System.out.println(notThingSpeak);
+        }
+    }
+
 }
 
 
