@@ -16,6 +16,7 @@ public class BaseBallGame {
     private static int strike;
     private static int ball;
     private static boolean isNothing;
+    private static boolean restarFlag=true;
 
     public BaseBallGame() {
         player = new Player();
@@ -27,9 +28,10 @@ public class BaseBallGame {
     public void run() {
         computer.CreateAnswer();
         do {
-            PlayerNumbers=player.GuessNumbers(GameInterface.InputNumbers());
+            PlayerNumbers = player.GuessNumbers(GameInterface.InputNumbers());
             ExceptionHandling.ExceptionLength(PlayerNumbers);
             ExceptionHandling.ExceptionDuplication(PlayerNumbers);
+            ExceptionHandling.ExceptionIsZero(PlayerNumbers);
             strike = 0;
             ball = 0;
             for (int i = 0; i < PlayerNumbers.size(); i++) {
@@ -48,10 +50,16 @@ public class BaseBallGame {
             GameInterface.PrintResult(strike, ball, isNothing);
             if (GameInterface.GameClear(strike)) {
                 if (GameInterface.GameRestart()) {
-                    this.run();
+                    break;
                 }
+                restarFlag=false;
                 break;
             }
         } while (true);
+    }
+    public void start(){
+        while (restarFlag){
+            run();
+        }
     }
 }

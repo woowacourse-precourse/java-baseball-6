@@ -1,5 +1,6 @@
 package View;
 
+import static camp.nextstep.edu.missionutils.Console.close;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import Constant.ExceptionHandling;
@@ -42,6 +43,7 @@ public class GameInterface {
     public static String InputNumbers() {
         System.out.printf(Ment.MentInput);
         String Tempnumbers = readLine();
+        ExceptionHandling.ExceptionNotNumber(Tempnumbers);
         return Tempnumbers;
     }
 }

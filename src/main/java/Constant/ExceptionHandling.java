@@ -22,4 +22,18 @@ public abstract class ExceptionHandling {
     public static void ExceptionNotOneTwo() {
         throw new IllegalArgumentException("1과 2가 아닌 입력");
     }
+
+    public static void ExceptionIsZero(ArrayList<Integer> Numbers) {
+        if (Numbers.contains(0)) {
+            throw new IllegalArgumentException("입력에 0이 존재함");
+        }
+    }
+
+    public static void ExceptionNotNumber(String Numbers) {
+        try {
+            Integer.parseInt(Numbers);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자가 아닌 문자가 입력됨");
+        }
+    }
 }
