@@ -8,29 +8,23 @@ import java.util.List;
 
 public class Application {
     public static int maxSize = 3;
-    public static void playGame() {
+    //비교할 랜덤한 숫자 3개를 저장할 리스트
+    public static List<Integer> randomNumbers = generateRandomNumbers(); // 컴퓨터가 낸 답
+    public static boolean playGame() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         //예외 처리 3자리가 아닌경우
-        if (input.length() != maxSize) throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
-
-        int[] numbers = new int[maxSize]; // 플레이어의 추측
-
-        // 문자열의 각 문자를 int로 변환하여 배열에 저장
-        for (int i = 0; i < maxSize; i++) {
-            // 문자를 숫자로 변환하고 배열에 저장
-            numbers[i] = Integer.parseInt(input.substring(i, i + 1));
+        if (input.length() != maxSize) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
 
-        //비교할 랜덤한 숫자 3개를 저장할 배열
-        int[] randomNumbers = new int[maxSize]; // 컴퓨터가 낸 답
+        List<Integer> numbers = new ArrayList<>(maxSize); // 플레이어의 추측
 
-        List<Integer> randoms = generateRandomNumbers();
-
-        //generateRandomNumbers를 활용한 랜덤한 숫자 3개를 저장
+        // 문자열의 각 문자를 int로 변환하여 어레이리스트에 저장
         for (int i = 0; i < maxSize; i++) {
-            randomNumbers[i] = randoms.get(i);
+            // 문자를 숫자로 변환하고 어레이리스트에 저장
+            numbers.add(Integer.parseInt(input.substring(i, i + 1)));
         }
 
         //게임을 진행하는 과정에서 사용자 입력값과 랜덤값을 비교한다
@@ -38,6 +32,11 @@ public class Application {
         int balls = getBalls(numbers, randomNumbers);
 
         printResult(strikes, balls);
+        if (strikes == maxSize) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        return true;
     }
     public static List<Integer> generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
@@ -49,21 +48,21 @@ public class Application {
         }
         return randomNumbers;
     }
-    public static int getStrikes(int[] numbers, int[] randomNumbers) {
+    public static int getStrikes(List<Integer> numbers, List<Integer> randomNumbers) {
         int strikes = 0;
         for (int i = 0; i < maxSize; i++){
-            if (numbers[i] == randomNumbers[i]){
+            if (numbers.get(i).equals(randomNumbers.get(i))){
                 strikes++;
             }
         }
         return strikes;
     }
 
-    public static int getBalls(int[] numbers, int[] randomNumbers){
+    public static int getBalls(List<Integer> numbers, List<Integer> randomNumbers){
         int balls = 0;
         for (int i =0; i<maxSize; i++){
             for (int j =0; j<maxSize; j++){
-                if (i != j && numbers[i] == randomNumbers[j]){
+                if (i != j && numbers.get(i).equals(randomNumbers.get(i))){
                     balls++;
                 }
             }
@@ -73,14 +72,18 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        while(true) {
-            playGame();
+        boolean isContinue = true;
+        while(isContinue){
+            isContinue = playGame();
 
-            System.out.println("게임을 다시 시작하시겠습니까? (1: Yes, 2: No)");
-            String checkStart = Console.readLine();
-            if ("2".equals(checkStart)){
-                System.out.println("게임 종료");
-                break;
+            if(!isContinue){
+                System.out.println("게임을 다시 시작하시겠습니까? (1: Yes, 2: No)");
+                String checkStart = Console.readLine();
+                if ("2".equals(checkStart)){
+                    System.out.println("게임 종료");
+                    break;
+                }
+                isContinue = true;
             }
         }
     }
