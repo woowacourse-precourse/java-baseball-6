@@ -18,7 +18,7 @@ class BaseBallNumbersTest {
     @ParameterizedTest
     @MethodSource("provideOverSizeIntegers")
     void 야구_숫자_목록_사이즈에_벗어나는_경우에는_야구_숫자_목록_생성_실패한다(List<Integer> overSizeIntegers) {
-        assertThatThrownBy(() -> BaseBallNumbers.generateNumbers(overSizeIntegers))
+        assertThatThrownBy(() -> BaseBallNumbers.from(overSizeIntegers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,14 +26,14 @@ class BaseBallNumbersTest {
     void 야구_숫자_목록_사이즈에_벗어나지_않는_경우에는_객체_생성에_성공한다() {
         List<Integer> rightSizeIntegers = List.of(1, 2, 3);
 
-        assertDoesNotThrow(() -> BaseBallNumbers.generateNumbers(rightSizeIntegers));
+        assertDoesNotThrow(() -> BaseBallNumbers.from(rightSizeIntegers));
     }
 
     @Test
     void 중복이_있는_야구_숫자는_야구_숫자_목록_생성에_실패한다() {
         List<Integer> duplicateNumbers = List.of(1, 1, 2);
 
-        assertThatThrownBy(() -> BaseBallNumbers.generateNumbers(duplicateNumbers))
+        assertThatThrownBy(() -> BaseBallNumbers.from(duplicateNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -41,7 +41,7 @@ class BaseBallNumbersTest {
     void 중복이_없는_야구_숫자를_통해_야구_숫자_목록_생성에_성공한다() {
         List<Integer> noDuplicateNumbers = List.of(1, 2, 3);
 
-        assertDoesNotThrow(() -> BaseBallNumbers.generateNumbers(noDuplicateNumbers));
+        assertDoesNotThrow(() -> BaseBallNumbers.from(noDuplicateNumbers));
     }
 
     @Test
@@ -49,7 +49,7 @@ class BaseBallNumbersTest {
         List<Integer> initialNumbers = List.of(1, 2, 3);
         NumberGenerator numberGenerator = new SequentialNumberGenerator(initialNumbers);
 
-        assertDoesNotThrow(() -> BaseBallNumbers.generateRandomNumbers(numberGenerator));
+        assertDoesNotThrow(() -> BaseBallNumbers.createRandomNumbers(numberGenerator));
     }
 
     @Test
@@ -57,9 +57,9 @@ class BaseBallNumbersTest {
         List<Integer> duplicatedNumbers = List.of(1, 1, 2, 3);
         NumberGenerator numberGenerator = new SequentialNumberGenerator(duplicatedNumbers);
         List<Integer> expectedNumbers = List.of(1, 2, 3);
-        BaseBallNumbers expectedBaseBallNumbers = BaseBallNumbers.generateNumbers(expectedNumbers);
+        BaseBallNumbers expectedBaseBallNumbers = BaseBallNumbers.from(expectedNumbers);
 
-        BaseBallNumbers baseBallNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+        BaseBallNumbers baseBallNumbers = BaseBallNumbers.createRandomNumbers(numberGenerator);
 
         assertThat(baseBallNumbers).usingRecursiveComparison()
                 .isEqualTo(expectedBaseBallNumbers);
@@ -70,9 +70,9 @@ class BaseBallNumbersTest {
         List<Integer> initialNumbers = List.of(1, 2, 3, 4);
         NumberGenerator numberGenerator = new SequentialNumberGenerator(initialNumbers);
         List<Integer> expectedNumbers = List.of(1, 2, 3);
-        BaseBallNumbers expectedBaseBallNumbers = BaseBallNumbers.generateNumbers(expectedNumbers);
+        BaseBallNumbers expectedBaseBallNumbers = BaseBallNumbers.from(expectedNumbers);
 
-        BaseBallNumbers baseBallNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+        BaseBallNumbers baseBallNumbers = BaseBallNumbers.createRandomNumbers(numberGenerator);
 
         assertThat(baseBallNumbers).usingRecursiveComparison()
                 .isEqualTo(expectedBaseBallNumbers);
@@ -81,10 +81,10 @@ class BaseBallNumbersTest {
     @ParameterizedTest
     @MethodSource("providePlayerBaseBallNumbersAndResult")
     void 야구_숫자_목록에_따라서_결과를_계산한다(List<Integer> playerNumbers, BaseBallGameResult expectedResult) {
-        BaseBallNumbers computerNumbers = BaseBallNumbers.generateNumbers(List.of(1, 2, 3));
-        BaseBallNumbers playerBaseBallNumbers = BaseBallNumbers.generateNumbers(playerNumbers);
+        BaseBallNumbers computerNumbers = BaseBallNumbers.from(List.of(1, 2, 3));
+        BaseBallNumbers playerBaseBallNumbers = BaseBallNumbers.from(playerNumbers);
 
-        BaseBallGameResult baseBallGameResult = computerNumbers.calculateResult(playerBaseBallNumbers);
+        BaseBallGameResult baseBallGameResult = computerNumbers.evaluateGameResult(playerBaseBallNumbers);
 
         assertThat(baseBallGameResult).isEqualTo(expectedResult);
     }

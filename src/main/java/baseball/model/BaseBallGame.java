@@ -15,12 +15,12 @@ public class BaseBallGame {
     }
 
     public BaseBallGameResult determineGameResult(BaseBallNumbers playerNumbers) {
-        BaseBallGameResult baseBallGameResult = computerNumbers.calculateResult(playerNumbers);
+        BaseBallGameResult baseBallGameResult = computerNumbers.evaluateGameResult(playerNumbers);
         gameOver = baseBallGameResult.isGameEnd();
         return baseBallGameResult;
     }
 
-    public boolean isGameInProgress() {
+    public boolean isInProgress() {
         return !gameOver;
     }
 

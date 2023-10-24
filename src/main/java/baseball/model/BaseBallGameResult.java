@@ -17,23 +17,6 @@ public class BaseBallGameResult {
         return new BaseBallGameResult(strikeCount, ballCount);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BaseBallGameResult that = (BaseBallGameResult) o;
-        return strikeCount == that.strikeCount && ballCount == that.ballCount;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(strikeCount, ballCount);
-    }
-
     public boolean isGameEnd() {
         return strikeCount == GAME_END_STRIKE_COUNT;
     }
@@ -44,6 +27,23 @@ public class BaseBallGameResult {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(strikeCount, ballCount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BaseBallGameResult that = (BaseBallGameResult) o;
+        return strikeCount == that.strikeCount && ballCount == that.ballCount;
     }
 
 }

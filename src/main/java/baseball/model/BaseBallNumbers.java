@@ -13,9 +13,9 @@ public class BaseBallNumbers {
     private static final int ZERO_INDEX = 0;
     private final List<BaseBallNumber> numbers;
 
-    public static BaseBallNumbers generateNumbers(List<Integer> playerNumbers) {
+    public static BaseBallNumbers from(List<Integer> playerNumbers) {
         return playerNumbers.stream()
-                .map(BaseBallNumber::generateNumber)
+                .map(BaseBallNumber::from)
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
@@ -52,14 +52,14 @@ public class BaseBallNumbers {
                 .count() != NUMBER_SIZE;
     }
 
-    public static BaseBallNumbers generateRandomNumbers(NumberGenerator numberGenerator) {
-        return Stream.generate(() -> BaseBallNumber.generateRandomNumber(numberGenerator))
+    public static BaseBallNumbers createRandomNumbers(NumberGenerator numberGenerator) {
+        return Stream.generate(() -> BaseBallNumber.createRandomNumber(numberGenerator))
                 .distinct()
                 .limit(NUMBER_SIZE)
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
-    public BaseBallGameResult calculateResult(BaseBallNumbers playerNumbers) {
+    public BaseBallGameResult evaluateGameResult(BaseBallNumbers playerNumbers) {
         int strikeCount = calculateStrikeCount(playerNumbers);
         int ballCount = calculateBallCount(playerNumbers, strikeCount);
 
@@ -68,23 +68,31 @@ public class BaseBallNumbers {
 
     private int calculateStrikeCount(BaseBallNumbers playerNumbers) {
         long strikeCount = IntStream.range(ZERO_INDEX, NUMBER_SIZE)
-                .filter(index -> isSamePosition(playerNumbers, index))
+                .filter(index -> hasMatchingNumberAt(playerNumbers, index))
                 .count();
 
         return (int) strikeCount;
     }
 
-    private boolean isSamePosition(BaseBallNumbers playerNumbers, int index) {
-        BaseBallNumber computerBaseBallNumber = numbers.get(index);
-        BaseBallNumber playerBaseBallNumber = playerNumbers.numbers.get(index);
+    private boolean hasMatchingNumberAt(BaseBallNumbers playerNumbers, int index) {
+        BaseBallNumber computerBaseBallNumber = getNumberAt(index);
+        BaseBallNumber playerBaseBallNumber = playerNumbers.getNumberAt(index);
         return computerBaseBallNumber.equals(playerBaseBallNumber);
     }
 
+    private BaseBallNumber getNumberAt(int index) {
+        return numbers.get(index);
+    }
+
     private int calculateBallCount(BaseBallNumbers playerNumbers, int strikeCount) {
-        long numberCount = numbers.stream()
+        int matchingNumberCount = countNumbersContainedIn(playerNumbers);
+        return matchingNumberCount - strikeCount;
+    }
+
+    private int countNumbersContainedIn(BaseBallNumbers playerNumbers) {
+        return (int) numbers.stream()
                 .filter(playerNumbers::contains)
                 .count();
-        return (int) (numberCount - strikeCount);
     }
 
     private boolean contains(BaseBallNumber number) {

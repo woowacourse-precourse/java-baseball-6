@@ -1,12 +1,12 @@
 package baseball.controller;
 
-import baseball.dto.request.GameRestartDto;
-import baseball.dto.request.PlayerNumbersDto;
+import baseball.dto.request.GameRestartOptionDto;
+import baseball.dto.request.PlayerBaseballNumbersDto;
 import baseball.dto.response.GameResultDto;
 import baseball.model.BaseBallGame;
 import baseball.model.BaseBallGameResult;
 import baseball.model.BaseBallNumbers;
-import baseball.model.GameRestartStatus;
+import baseball.model.GameRestartOption;
 import baseball.model.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -29,46 +29,46 @@ public class GameController {
     }
 
     private void printGameStartMessage() {
-        outputView.printGameStart();
+        outputView.printGameStartMessage();
     }
 
     private void playGame() {
         do {
             BaseBallGame game = initializeBaseBallGame();
-            playSingleGameUntilEnd(game);
-        } while (isRestartGame());
+            playUntilGameOver(game);
+        } while (isGameRestartRequested());
     }
 
     private BaseBallGame initializeBaseBallGame() {
-        BaseBallNumbers computerNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+        BaseBallNumbers computerNumbers = BaseBallNumbers.createRandomNumbers(numberGenerator);
         return BaseBallGame.create(computerNumbers);
     }
 
-    private void playSingleGameUntilEnd(BaseBallGame game) {
-        while (game.isGameInProgress()) {
-            BaseBallNumbers playerNumbers = scanPlayerBaseBallNumbers();
-            printGameResult(game, playerNumbers);
+    private void playUntilGameOver(BaseBallGame game) {
+        while (game.isInProgress()) {
+            BaseBallNumbers playerNumbers = readPlayerBaseBallNumbers();
+            BaseBallGameResult baseBallGameResult = game.determineGameResult(playerNumbers);
+            printGameResult(baseBallGameResult);
         }
     }
 
-    private BaseBallNumbers scanPlayerBaseBallNumbers() {
-        PlayerNumbersDto playerNumbersDto = inputView.scanPlayerNumbers();
-        return BaseBallNumbers.generateNumbers(playerNumbersDto.getNumbers());
+    private BaseBallNumbers readPlayerBaseBallNumbers() {
+        PlayerBaseballNumbersDto playerBaseballNumbersDto = inputView.readPlayerBaseBallNumbers();
+        return BaseBallNumbers.from(playerBaseballNumbersDto.getPlayerNumbers());
     }
 
-    private void printGameResult(BaseBallGame game, BaseBallNumbers playerNumbers) {
-        BaseBallGameResult baseBallGameResult = game.determineGameResult(playerNumbers);
+    private void printGameResult(BaseBallGameResult baseBallGameResult) {
         outputView.printGameResult(new GameResultDto(baseBallGameResult));
     }
 
-    private boolean isRestartGame() {
-        GameRestartStatus gameRestartStatus = scanGameReStartStatus();
-        return gameRestartStatus.isRestart();
+    private boolean isGameRestartRequested() {
+        GameRestartOption gameRestartOption = readGameReStartStatus();
+        return gameRestartOption.isRestart();
     }
 
-    private GameRestartStatus scanGameReStartStatus() {
-        GameRestartDto gameRestartDto = inputView.scanGameRestart();
-        return GameRestartStatus.from(gameRestartDto.getGameRestartNumber());
+    private GameRestartOption readGameReStartStatus() {
+        GameRestartOptionDto gameRestartOptionDto = inputView.readGameRestartOption();
+        return GameRestartOption.from(gameRestartOptionDto.getRestartOptionNumber());
     }
 
 }

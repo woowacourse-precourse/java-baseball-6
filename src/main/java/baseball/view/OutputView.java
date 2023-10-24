@@ -20,7 +20,7 @@ public class OutputView {
         return LazyHolder.INSTANCE;
     }
 
-    public void printGameStart() {
+    public void printGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
 

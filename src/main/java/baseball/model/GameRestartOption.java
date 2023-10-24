@@ -2,20 +2,20 @@ package baseball.model;
 
 import java.util.stream.Stream;
 
-public enum GameRestartStatus {
+public enum GameRestartOption {
 
     RESTART(1),
     END(2);
 
-    private final int commandNumber;
+    private final int optionNumber;
 
-    GameRestartStatus(int commandNumber) {
-        this.commandNumber = commandNumber;
+    GameRestartOption(int optionNumber) {
+        this.optionNumber = optionNumber;
     }
 
-    public static GameRestartStatus from(int commandNumber) {
+    public static GameRestartOption from(int optionNumber) {
         return Stream.of(values())
-                .filter(gameRestartStatus -> gameRestartStatus.commandNumber == commandNumber)
+                .filter(gameRestartOption -> gameRestartOption.optionNumber == optionNumber)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.RESTART_EXCEPTION_MESSAGE));
     }

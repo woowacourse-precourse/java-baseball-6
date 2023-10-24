@@ -5,8 +5,8 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.List;
 import java.util.stream.Stream;
-import baseball.dto.request.GameRestartDto;
-import baseball.dto.request.PlayerNumbersDto;
+import baseball.dto.request.GameRestartOptionDto;
+import baseball.dto.request.PlayerBaseballNumbersDto;
 import baseball.util.BlankValidator;
 import baseball.util.DigitsOnlyValidator;
 import baseball.util.SingleDigitValidator;
@@ -25,31 +25,36 @@ public class InputView {
         return LazyHolder.INSTANCE;
     }
 
-    public PlayerNumbersDto scanPlayerNumbers() {
+    public PlayerBaseballNumbersDto readPlayerBaseBallNumbers() {
         System.out.print(INPUT_PLAYER_NUMBER_MESSAGE);
-        String rawPlayerNumbers = Console.readLine();
-        validatePlayerNumbers(rawPlayerNumbers);
-        List<Integer> playerNumbers = splitToInt(PLAYER_NUMBER_DELIMITER, rawPlayerNumbers);
-        return new PlayerNumbersDto(playerNumbers);
+        String rawPlayerBaseBallNumbers = Console.readLine();
+        validatePlayerBaseBallNumbers(rawPlayerBaseBallNumbers);
+        List<Integer> playerBaseBallNumbers = splitToInt(PLAYER_NUMBER_DELIMITER, rawPlayerBaseBallNumbers);
+        return new PlayerBaseballNumbersDto(playerBaseBallNumbers);
     }
 
-    private List<Integer> splitToInt(String format, String input) {
-        return Stream.of(input.split(format))
-                .map(Integer::parseInt)
-                .collect(toList());
-    }
-
-    private static void validatePlayerNumbers(String rawPlayerNumbers) {
+    private void validatePlayerBaseBallNumbers(String rawPlayerNumbers) {
         BlankValidator.validate(rawPlayerNumbers);
         DigitsOnlyValidator.validate(rawPlayerNumbers);
     }
 
-    public GameRestartDto scanGameRestart() {
+    private List<Integer> splitToInt(String delimiter, String input) {
+        return Stream.of(input.split(delimiter))
+                .map(Integer::parseInt)
+                .collect(toList());
+    }
+
+    public GameRestartOptionDto readGameRestartOption() {
         System.out.println(INPUT_GAME_RESTART_MESSAGE);
-        String rawGameRestart = Console.readLine();
-        validateGameRestart(rawGameRestart);
-        int gameRestartNumber = convertToInt(rawGameRestart);
-        return new GameRestartDto(gameRestartNumber);
+        String rawGameRestartOption = Console.readLine();
+        validateGameRestartOption(rawGameRestartOption);
+        int gameRestartOption = convertToInt(rawGameRestartOption);
+        return new GameRestartOptionDto(gameRestartOption);
+    }
+
+    private void validateGameRestartOption(String rawGameRestart) {
+        BlankValidator.validate(rawGameRestart);
+        SingleDigitValidator.validate(rawGameRestart);
     }
 
     private int convertToInt(String input) {
@@ -58,11 +63,6 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MESSAGE);
         }
-    }
-
-    private void validateGameRestart(String rawGameRestart) {
-        BlankValidator.validate(rawGameRestart);
-        SingleDigitValidator.validate(rawGameRestart);
     }
 
     private static class LazyHolder {
