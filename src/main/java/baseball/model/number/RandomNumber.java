@@ -9,6 +9,9 @@ public class RandomNumber {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
 
+    private RandomNumber() {
+    }
+
     public static PlayNumber pickNumber() {
         StringBuilder numberBuilder = new StringBuilder();
 

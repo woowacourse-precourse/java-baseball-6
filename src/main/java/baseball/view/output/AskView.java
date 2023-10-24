@@ -5,6 +5,9 @@ import static baseball.Constant.PLAY_WANT;
 
 public class AskView {
 
+    private AskView() {
+    }
+
     public static void printAskNumber() {
         System.out.print("숫자를 입력해주세요 : ");
     }

@@ -6,6 +6,9 @@ public class ResultView {
     private static final String STRIKE_MARK = "스트라이크";
     private static final String NOTHING_MARK = "낫싱";
 
+    private ResultView() {
+    }
+
     public static void printResult(final int ball, final int strike) {
         if (isBothNotZero(ball, strike)) {
             printBoth(ball, strike);
