@@ -36,17 +36,19 @@
 ---
 
 - 입출력을 담당할 View
-- 게임의 조작을 담당할 GameController
-- 게임 비즈니스 로직을 담당할 GameService
-- 게임의 상태를 담당할 Game
--
+  - 볼, 스트라이크 갯수 표시
+  - 하나도 없는 경우
+  - 3개의 숫자를 모두 맞힐 경우
+  - 게임 시작 문구 출력
+- 게임의 생성, 초기화, 입력, 규칙을 담당할 Game
+
 
 ## 처리할 에러 목록
 
 ---
 
 - 길이가 3이 아닌 문자열 : SizeNotMatch
-- 숫자가 아닌 문자열 : QueryMustInteger
+- 1 ~ 9의 숫자가 아닌 문자열 : QueryMustPossibleInteger
 - 중복되는 숫자가 들어오는 경우 : NumberDuplicate
 - 게임이 끝난 후 1, 2가 아닌 이외의 값이 들어오는 경우 : NotEscapeCode
 
@@ -54,12 +56,12 @@
 
 ---
 
-## Class computer
+## Game
 
 > 게임의 생성, 진행, 종료를 관리하며 규칙을 관리하는 객체
 >
-> initGame : 게임을 시작한 후 랜덤한 숫자를 부여한다.
->
-> getPlayGame : 게임의 종료 여부를 알려주는 함수
->
+> run : 게임을 실행한다.
+> 
+> init : 게임을 시작한 후 랜덤한 숫자를 부여한다.
+> 
 > determineQuery : 사용자의 질의를 판단하여 응답을 출력한다.
