@@ -15,7 +15,6 @@ class UserBalls {
     return input;
   }
 
-
   private static void checkUserInput(String input) throws IllegalArgumentException {
     checkLength(input);
     checkAllNumbers(input);
