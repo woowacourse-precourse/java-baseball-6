@@ -18,6 +18,7 @@ public class Application {
         }
         return computer;
     }
+    
     public static void main(String[] args) {
         int gameStatus = 1;
 
