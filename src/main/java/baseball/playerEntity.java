@@ -12,4 +12,8 @@ public class playerEntity {
     public void setHumanNumber(List<Integer> humanNumber) {
         this.humanNumber = humanNumber;
     }
+
+    public List<Integer> getHumanNumber() {
+        return this.humanNumber;
+    }
 }
