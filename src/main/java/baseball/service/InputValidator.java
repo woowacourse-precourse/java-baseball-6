@@ -17,7 +17,7 @@ public class InputValidator {
         for (int i = 0; i < userInput.length(); i++) {
             char c = userInput.charAt(i);
             if (userInput.indexOf(c) != userInput.lastIndexOf(c)) {
-                return false;
+                return true;
             }
         }
         return false;
