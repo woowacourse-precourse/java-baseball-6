@@ -15,18 +15,10 @@ public class Counter {
     }
 
     public boolean isCorrect() {
-        if (ball == 0 && strike == 0) {
-            System.out.println("낫싱\n");
-        } else if (ball == 0) {
-            System.out.printf("%d스트라이크\n", strike);
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return true;
-            }
-        } else if (strike == 0) {
-            System.out.printf("%d볼\n", ball);
-        } else {
-            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        System.out.println(countPrint());
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         }
         return false;
     }
@@ -39,5 +31,26 @@ public class Counter {
                 IntStream.range(0, com.length).filter(j -> user[i] == com[j]).forEach(j -> counter.addBall());
             }
         });
+    }
+
+    private String countPrint() {
+        StringBuilder sb = new StringBuilder();
+        if (ball != 0) {
+            sb.append(ball);
+            sb.append("볼 ");
+            if (strike != 0) {
+                sb.append(strike);
+                sb.append("스트라이크");
+                return sb.toString();
+            }
+            return sb.toString();
+        }
+        if (strike != 0) {
+            sb.append(strike);
+            sb.append("스트라이크");
+            return sb.toString();
+        }
+        sb.append("낫싱");
+        return sb.toString();
     }
 }
