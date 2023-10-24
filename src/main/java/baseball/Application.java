@@ -3,10 +3,10 @@ import static baseball.Constants.*;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    public  static  boolean askGameContinueOrStop(){
+    public  static  boolean askGameContinue(){
         System.out.println(continueGameMessage);
-        String isContinueGame = Console.readLine(); // TODO: error handle
-        if (isContinueGame.equals(gameContinue)) {
+        String continueCommand = Console.readLine(); // TODO: error handle
+        if (continueCommand.equals(gameContinue)) {
             System.out.println(endGameMessage);
             return true;
         }
@@ -17,7 +17,7 @@ public class Application {
         while (true) {
             Game baseBallGame = new Game();
             baseBallGame.play();
-            if(askGameContinueOrStop()) break;
+            if(askGameContinue()) break;
         }
     }
 }
