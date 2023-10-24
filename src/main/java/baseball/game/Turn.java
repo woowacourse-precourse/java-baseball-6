@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.game.enums.TurnStatus;
 import baseball.io.Output;
 import baseball.collaborator.generic.BallCount;
 import baseball.collaborator.number.BaseballNumbers;
@@ -9,12 +10,12 @@ import baseball.collaborator.number.generator.WinningNumbersGenerator;
 
 public class Turn {
 
-    private boolean isPlaying = true;
+    private TurnStatus turnStatus = TurnStatus.PLAYING;
 
     public void play() {
         WinningNumbers winningNumbers = getWinningNumbers();
 
-        while (isPlaying) {
+        while (turnStatus.isPlaying()) {
             BaseballNumbers baseballNumbers = getBaseballNumbers();
             BallCount ballCount = winningNumbers.ballCounting(baseballNumbers);
 
@@ -36,7 +37,10 @@ public class Turn {
     }
 
     private void updateIsPlayingBy(BallCount ballCount) {
-        isPlaying = !ballCount.isFullCount();
+        if (ballCount.isFullCount()) {
+            return;
+        }
+        turnStatus = TurnStatus.TURNOVER;
     }
 
 }
