@@ -1,35 +1,30 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console; // 입력 값 사용
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
-        int remainGame;
         System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("000을 입력하면 게임을 새로 시작하거나 종료할 수 있습니다.");
         while(true) {
-            boolean gameOver = false;
-            Comparison computerNumber = new Comparison(); //숫자 생성 인스턴스
-            try {
-                while (true) {
-                    System.out.print("숫자를 입력해주세요 : ");
-                    String input = Console.readLine();
-                    Input inputNumber = new Input(input);
-                    Comparison.compare(inputNumber.getNumber());
-                    gameOver = Comparison.isOver();
-                    if (gameOver) {
-                        break;
-                    }
+            Input computer = new Input(); //인스턴스 초기화
+            computer.setRandomNumber();
+            do {
+                Input player = new Input();
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                if (input.equals("000")) {
+                    break;
                 }
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
+                player.setPlayerNumber(input); //인스턴스에 숫자 입력
+                Comparison.compare(computer, player);
+            } while (!Comparison.isOver());
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String endInput = Console.readLine();
-            remainGame = Input.isEnd(endInput);
-            if (remainGame == 0) {
+            if (Input.isEnd(endInput)) {
                 break;
             }
         }
