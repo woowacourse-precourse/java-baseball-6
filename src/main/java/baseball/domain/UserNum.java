@@ -4,8 +4,10 @@ import static baseball.resources.GameConst.*;
 
 import baseball.resources.GameConst;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserNum {
     private List<Integer> number;
@@ -15,7 +17,10 @@ public class UserNum {
     }
 
     public void setNum(String enterNum) {
-        this.number = strToList(enterNum);
+        this.number = Arrays.stream(enterNum.split(""))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
         validation();
     }
 
@@ -49,13 +54,5 @@ public class UserNum {
         if (inputNumSize != NUM_SIZE) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private List<Integer> strToList(String enterNum) {
-        List<Integer> temp = new ArrayList<>();
-        for (int i = 0; i < enterNum.length(); i++) {
-            temp.add(enterNum.charAt(i) - '0');
-        }
-        return temp;
     }
 }
