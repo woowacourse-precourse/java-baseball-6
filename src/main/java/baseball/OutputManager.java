@@ -21,10 +21,12 @@ public class OutputManager {
             return ;
         } else if (strikeNum == 0) {
             System.out.println(ballNum+"볼");
+            return ;
         } else if (ballNum == 0) {
             System.out.println(strikeNum+"스트라이크");
+            return ;
         }
-        System.out.println(ballNum+"볼 "+strikeNum+" 스트라이크");
+        System.out.println(ballNum+"볼 "+strikeNum+"스트라이크");
     }
 
     void printRetryOrEndMessage() {
