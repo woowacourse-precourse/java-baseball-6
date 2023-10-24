@@ -10,11 +10,8 @@ import java.util.List;
 public class Application {
         public static void main(String[] args) {
                 // TODO: 프로그램 구현
-
                 System.out.println("숫자 야구 게임을 시작합니다.");
                 playGame();
-
-
         }
 
 
@@ -26,7 +23,7 @@ public class Application {
                                 isNumeric = false;
                         }
                 }
-                if (user.length() > 3 || !isNumeric) {
+                if (user.length() != 3 || !isNumeric) {
                         throw new IllegalArgumentException("3자리 정수를 입력해주세요");
                 }
         }
