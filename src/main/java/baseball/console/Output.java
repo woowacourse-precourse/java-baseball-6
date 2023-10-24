@@ -10,9 +10,10 @@ public class Output {
     public static void printBaseballGameStart() {
         System.out.println(START_BASEBALL_GAME_MESSAGE);
     }
-    public static void printBaseballGameNumberRequest() {
+    static void printBaseballGameNumberRequest() {
         System.out.print(INPUT_BASEBALL_GAME_NUMBERS_MESSAGE);
     }
+
     public static void printBaseballGameHint(String result) {
         System.out.println(result);
     }
@@ -21,7 +22,7 @@ public class Output {
         System.out.println(TERMINATION_BASEBALL_GAME_MESSAGE);
     }
 
-    public static void printBaseballGameRestartNumberRequest() {
+    static void printBaseballGameRestartNumberRequest() {
         System.out.println(INPUT_BASEBALL_GAME_RESTART_MESSAGE);
     }
 }

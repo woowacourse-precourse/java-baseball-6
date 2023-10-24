@@ -2,8 +2,8 @@ package baseball.domain;
 
 import static baseball.console.Constant.EXCEPTION_BASEBALL_NUMBERS_DUPLICATE_MESSAGE;
 import static baseball.console.Constant.EXCEPTION_BASEBALL_NUMBERS_SIZE_MESSAGE;
+import static baseball.console.Constant.INT_ZERO;
 
-import baseball.console.Constant;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -40,8 +40,8 @@ public class BaseballNumbers {
             return false;
         }
         BaseballNumbers that = (BaseballNumbers) o;
-        return NUMBERS_MAX_SIXE == (int) IntStream.range(Constant.INT_ZERO, NUMBERS_MAX_SIXE)
-                .filter(i -> numbers.get(i).equals(that.numbers.get(i)))
+        return NUMBERS_MAX_SIXE == (int) IntStream.range(INT_ZERO, NUMBERS_MAX_SIXE)
+                .filter(i -> this.numbers.get(i).equals(that.numbers.get(i)))
                 .count();
     }
 
@@ -51,13 +51,13 @@ public class BaseballNumbers {
     }
 
     int getStrikeCount(BaseballNumbers o) {
-        return (int) IntStream.range(Constant.INT_ZERO, NUMBERS_MAX_SIXE)
+        return (int) IntStream.range(INT_ZERO, NUMBERS_MAX_SIXE)
                 .filter(i -> numbers.get(i).equals(o.numbers.get(i)))
                 .count();
     }
 
     int getBallCount(BaseballNumbers o) {
-        return (int) IntStream.range(Constant.INT_ZERO, NUMBERS_MAX_SIXE)
+        return (int) IntStream.range(INT_ZERO, NUMBERS_MAX_SIXE)
                 .filter(i -> !numbers.get(i).equals(o.numbers.get(i)) &&
                         o.numbers.stream()
                                 .filter(j -> j.equals(this.numbers.get(i)))
