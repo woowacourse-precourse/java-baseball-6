@@ -11,57 +11,70 @@ public class Application {
     static final String NOTHING_KR = "낫싱";
     static final String BALL_KR = "볼";
     static final String STRIKE_KR = "스트라이크";
+    static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    static final String ANSWER_FOUND_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final String GAME_OVER_MESSAGE = "게임 종료";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE);
 
         boolean play = true;
         while(play){
             int answer = generateAnswer();
             int[] answerArr = inputToArray(answer);
 
-            while(true){
-                System.out.print("숫자를 입력해주세요 : ");
-                String inputStr = "";
-                inputStr = Console.readLine();
-                checkInput(inputStr);
+            playGame(answerArr);
+            play = restartGame();
 
+        }
+    }
 
-                int input = Integer.parseInt(inputStr);
-                int[] inputArr = inputToArray(input);
-                Result result = checkGuess(answerArr, inputArr);
-                String output = buildOutput(result);
+    private static void playGame(int[] answerArr) {
+        while(true){
+            System.out.print(INPUT_MESSAGE);
+            String inputStr = Console.readLine();
+            checkInput(inputStr);
 
-                System.out.println(output);
-                if(isOver(result)){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-            }
+            int input = Integer.parseInt(inputStr);
+            int[] inputArr = inputToArray(input);
+            Result result = checkGuess(answerArr, inputArr);
+            String output = buildOutput(result);
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String playOnStr = Console.readLine();
-            if(!(playOnStr.equals("1") || playOnStr.equals("2"))){
-                throw new IllegalArgumentException();
-            }
-
-            int playOn = Integer.parseInt(playOnStr);
-            if(endGame(playOn)){
-                System.out.print("게임 종료");
-                play = false;
+            System.out.println(output);
+            if(isOver(result)){
+                System.out.println(ANSWER_FOUND_MESSAGE);
+                return;
             }
         }
     }
 
-    public static Result checkGuess(int[] target, int[] guess){
+    private static boolean restartGame() {
+        System.out.println(RESTART_MESSAGE);
+        String playOnStr = Console.readLine();
+        if(!(playOnStr.equals("1") || playOnStr.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+
+        int playOn = Integer.parseInt(playOnStr);
+        if(endGame(playOn)){
+            System.out.print(GAME_OVER_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    private static Result checkGuess(int[] target, int[] guess){
         int numOfBalls = checkBalls(target, guess);
         int numOfStrikes = checkStrikes(target, guess);
 
         return new Result(numOfBalls, numOfStrikes);
     }
 
-    public static String buildOutput(Result result) {
+    private static String buildOutput(Result result) {
         StringBuilder output = new StringBuilder();
 
         int numOfBalls = result.getBall();
@@ -80,7 +93,7 @@ public class Application {
         return output.toString();
     }
 
-    public static int checkBalls(int[] target, int[] guess){
+    private static int checkBalls(int[] target, int[] guess){
         int result = 0;
 
         for(int i = 0; i < 3; i++){
@@ -95,7 +108,7 @@ public class Application {
         return result;
     }
 
-    public static int checkStrikes(int[] target, int[] guess){
+    private static int checkStrikes(int[] target, int[] guess){
         int result = 0;
 
         for(int i = 0; i < 3; i++){
@@ -107,7 +120,7 @@ public class Application {
         return result;
     }
 
-    public static int[] inputToArray(int number){
+    private static int[] inputToArray(int number){
         int hundred = number/100;
         int ten = number/10%10;
         int one = number%10;
@@ -117,21 +130,21 @@ public class Application {
         return result;
     }
 
-    public static boolean isOver(Result result){
+    private static boolean isOver(Result result){
         return result.getStrike() == 3;
     }
 
-    public static boolean endGame(int playOn){
+    private static boolean endGame(int playOn){
         return playOn == 2;
     }
 
-    public static void checkInput(String input) {
+    private static void checkInput(String input) {
         if(input.length() != 3){
             throw new IllegalArgumentException();
         }
     }
 
-    public static int generateAnswer(){
+    private static int generateAnswer(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -144,20 +157,20 @@ public class Application {
         return result;
     }
 
-    public static class Result{
+    private static class Result{
         int ball;
         int strike;
 
-        public Result(int ball, int strike){
+        private Result(int ball, int strike){
             this.ball = ball;
             this.strike = strike;
         }
 
-        public int getBall() {
+        private int getBall() {
             return ball;
         }
 
-        public int getStrike() {
+        private int getStrike() {
             return strike;
         }
 
