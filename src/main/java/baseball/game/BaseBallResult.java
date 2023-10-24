@@ -31,4 +31,3 @@ public class BaseBallResult {
         return ballAndStrike;
     }
 }
-s
