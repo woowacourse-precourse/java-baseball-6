@@ -33,11 +33,19 @@ public class Application {
     public static String inputNumber() {
         System.out.print("숫자를 입력해주세요 : "); //3자리 숫자 입력 문구
         String user = Console.readLine(); //3자리 수 입력
-        if (user.length() != 3) {
+        if (user.length() != 3 || isNotDigit(user)) {
             throw new IllegalArgumentException("Input is not 3 digits long.");
         } //3자리 수가 아닐 경우 IllegalArgumentException 발생시켜 종료
         return user; //입력 값 반환
     } //사용자 입력 값 반환
+    public static boolean isNotDigit(String user) {
+        for(int i : user.toCharArray()) {
+            if (!Character.isDigit(i)) {
+                return true; //숫자가 아니라면 true 반환
+            }
+        }
+        return false; //숫자라면 false 반환
+    } //문자열이 숫자인지 판별
     public static void createRandomNumber(List<Integer> computer) {
         while (computer.size() < 3) { //랜덤한 세 자리 수를 가질 때까지 반복
             int randomNumber = Randoms.pickNumberInRange(1, 9); //1부터 9까지 중 랜덤한 수를 생성
