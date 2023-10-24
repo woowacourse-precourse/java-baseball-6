@@ -15,11 +15,11 @@ public class Converter {
         private static final Converter INSTANCE = new Converter();
     }
 
-    public static Converter getInstance() {
-        return ConverterHelper.INSTANCE;
+    public static Balls convert(String userInput) {
+        return ConverterHelper.INSTANCE.run(userInput);
     }
 
-    public Balls convert(String userInput) {
+    public Balls run(String userInput) {
         String[] splitNumbers = userInput.split("");
 
         List<Ball> ballList = convertToBallList(splitNumbers);

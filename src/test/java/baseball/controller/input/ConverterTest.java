@@ -12,8 +12,7 @@ class ConverterTest {
     @Test
     @DisplayName("String을 Balls로 반환 성공 해야 한다.")
     void 컨버팅_성공() {
-        Converter converter = Converter.getInstance();
-        Balls convertBall = converter.convert("425");
+        Balls convertBall = Converter.convert("425");
 
         Balls balls = BallsFixture.fixture().build(); //425
 
@@ -26,35 +25,28 @@ class ConverterTest {
     @Test
     @DisplayName("길이가 3 미만이면 익셉션 발생")
     void 길이가_3미만이면_익셉션_발생() {
-        Converter converter = Converter.getInstance();
-
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> converter.convert("12"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> Converter.convert("12"));
         assertEquals("입력된 숫자가3개 미만입니다.", e.getMessage());
     }
 
     @Test
     @DisplayName("길이가 3 초과이면 익셉션 발생")
     void 길이가_3초과이면_익셉션_발생() {
-        Converter converter = Converter.getInstance();
-
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> converter.convert("1234"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> Converter.convert("1234"));
         assertEquals("입력된 숫자가3개 초과입니다.", e.getMessage());
     }
 
     @Test
     @DisplayName("숫자가 아니면 익셉션 발생")
     void 숫자가_아니면_익셉션_발생() {
-        Converter converter = Converter.getInstance();
-
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> converter.convert("abc"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> Converter.convert("abc"));
         assertEquals("숫자만 입력해주세요.", e.getMessage());
     }
 
     @Test
     @DisplayName("중복된 숫자가 있으면 익셉션 발생")
     void 중복된_숫자_익셉션_발생() {
-        Converter converter = Converter.getInstance();
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> converter.convert("111"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> Converter.convert("111"));
         assertEquals("중복된 숫자가 있습니다.", e.getMessage());
     }
 }
