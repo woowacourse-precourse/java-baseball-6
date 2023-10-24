@@ -15,12 +15,19 @@ public class BaseballService {
     public List<Integer> userPlayInput() {
         String input = Console.readLine();
         List<Integer> userInput = stringToList(input);
+        Validator.validatePlayerNum(userInput);
 
         return userInput;
     }
 
     public int userRestartInput() {
-        return Integer.parseInt(Console.readLine());
+        int num;
+        try {
+            num = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return num;
     }
 
     public boolean getResult(List<Integer> player, List<Integer> answer) {
@@ -53,6 +60,7 @@ public class BaseballService {
     }
 
     public boolean isRestart(int num) {
+        Validator.validateRestartNum(num);
 
         if(num == 1) {
             return true;
@@ -70,8 +78,12 @@ public class BaseballService {
 
     public List<Integer> stringToList(String str) {
         List<Integer> list = new ArrayList<>();
-        for(String s : str.split("")) {
+        try {
+            for(String s : str.split("")) {
                 list.add(Integer.parseInt(s));
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
         }
 
         return list;

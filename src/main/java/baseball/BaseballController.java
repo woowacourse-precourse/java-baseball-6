@@ -15,7 +15,6 @@ public class BaseballController {
 
     public void play() {
         List<Integer> answer = baseballService.generateAnswer();
-        System.out.println(answer);
         while(true) {
             System.out.print(NoticeType.REQUEST_INPUT.getMessage());
             List<Integer> player = baseballService.userPlayInput();
