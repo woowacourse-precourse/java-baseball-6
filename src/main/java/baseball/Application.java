@@ -37,6 +37,8 @@ public class Application {
             playerNumbers = reverse(playerNumbers);
 
             Result result = calculate(computer, playerNumbers);
+
+            System.out.println(result);
         }
     }
 
