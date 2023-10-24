@@ -23,11 +23,15 @@ public class Defender {
         System.out.println(target); // 테스트용
     }
 
-    public static boolean isBall(String answer, int i, int j) {
-        return (i != j && answer.charAt(i) == target.charAt(j));
+    public static boolean isBall(String answer, int i) {
+        char currentChar = answer.charAt(i);
+        String number = String.valueOf(currentChar);
+        int indexOfTargetChar = target.indexOf(number);
+
+        return (indexOfTargetChar != -1 && indexOfTargetChar != i);
     }
 
     public static boolean isStrike(String answer, int i) {
-        return answer.charAt(i) == target.charAt(i);
+        return (answer.charAt(i) == target.charAt(i));
     }
 }

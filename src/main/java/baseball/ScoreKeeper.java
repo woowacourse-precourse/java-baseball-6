@@ -12,6 +12,7 @@ public class ScoreKeeper {
 
     // 정답 확인하기 - 볼, 스트라이크, 낫싱 출력
     public static void printScore(String answer) {
+        resetString();
         calculateBallCount(answer);
         calculateStrikeCount(answer);
 
@@ -19,19 +20,15 @@ public class ScoreKeeper {
             Score.append("낫싱");
         }
         System.out.println(Score);
-        Score.setLength(0);
     }
 
     // 점수 계산하기 - 볼
     private static void calculateBallCount(String answer) {
         ballCount = 0;
 
-        // TODO: indent 정리(depth: 3)
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (Defender.isBall(answer, i, j)) {
-                    ballCount++;
-                }
+            if (Defender.isBall(answer, i)) {
+                ballCount++;
             }
         }
         if (ballCount != 0) {
@@ -54,5 +51,9 @@ public class ScoreKeeper {
         if (strikeCount != 0) {
             Score.append(String.format("%d스트라이크", strikeCount));
         }
+    }
+
+    private static void resetString() {
+        Score.setLength(0);
     }
 }
