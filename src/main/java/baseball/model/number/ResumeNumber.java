@@ -7,7 +7,7 @@ public class ResumeNumber {
 
     private static final int RESUME_ANSWER_LENGTH = 1;
 
-    private int resumeNumber;
+    private final int resumeNumber;
 
     private ResumeNumber(final int number) {
         validateAnswer(String.valueOf(number));
