@@ -13,8 +13,8 @@ public class BaseballService {
 
     int size;
     Game game;
-    User user;
-    ParseUtil parseUtil;
+    User user = new User();
+    ParseUtil parseUtil = new ParseUtil();
     SystemOutputMessage systemOutputMessage = new SystemOutputMessage();
 
     public void initGame(int size, int start, int end) {
