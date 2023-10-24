@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
     static boolean onOff = true;
 
     public String setRandomDistinctNumbers() {
@@ -31,6 +30,7 @@ public class Application {
 
     public List<Character> convertToList(String str) {
         List<Character> list = new ArrayList<>();
+
         for(int i = 0; i<str.length(); i++){
             list.add(str.charAt(i));
         }
@@ -38,7 +38,6 @@ public class Application {
     }
     public int countStrike(String answer, String input) {
         int strikeCnt = 0;
-
         List<Character> answerList = convertToList(answer);
         List<Character> inputList = convertToList(input);
 
@@ -61,7 +60,6 @@ public class Application {
                 }
             }
         }
-
         return ballCnt;
     }
 
@@ -90,7 +88,7 @@ public class Application {
     public void confirmGameEnd(String choice) {
         switch (choice) {
             case "1" -> { onOff = true; }
-            case "2" -> { break; }
+            case "2" -> { onOff = false; }
             default -> { checkExitChoiceValidation(choice); }
         }
     }
@@ -113,19 +111,22 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-
-    public static void main(String[] args) {
-        Application application = new Application();
-        application.startGame();
+    public void playNumberBaseballGame() {
         while (onOff) {
-            String answer = application.setRandomDistinctNumbers();
+            String answer = setRandomDistinctNumbers();
             while (onOff) {
                 System.out.println("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
-                application.showBaseballOutcome(answer, input);
+                showBaseballOutcome(answer, input);
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            application.confirmGameEnd(Console.readLine());
+            String choice = Console.readLine();
+            confirmGameEnd(choice);
         }
+    }
+    public static void main(String[] args) {
+        Application application = new Application();
+        application.startGame();
+        application.playNumberBaseballGame();
     }
 }
