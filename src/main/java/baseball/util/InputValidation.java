@@ -1,10 +1,10 @@
-package baseball.utils;
+package baseball.util;
 
-import static baseball.utils.Constants.EXIT_INPUT;
-import static baseball.utils.Constants.MAX_INPUT_LENGTH;
-import static baseball.utils.Constants.MAX_INPUT_RANGE;
-import static baseball.utils.Constants.MIN_INPUT_RANGE;
-import static baseball.utils.Constants.RESTART_INPUT;
+import static baseball.util.Constants.EXIT_INPUT;
+import static baseball.util.Constants.MAX_INPUT_LENGTH;
+import static baseball.util.Constants.MAX_INPUT_RANGE;
+import static baseball.util.Constants.MIN_INPUT_RANGE;
+import static baseball.util.Constants.RESTART_INPUT;
 
 import java.util.List;
 
