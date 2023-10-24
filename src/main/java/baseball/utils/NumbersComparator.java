@@ -37,11 +37,11 @@ public class NumbersComparator {
     }
 
     private void calculateBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        ball = (int) playerNumbers.stream().filter(computerNumbers::contains).count();
+        ball = (int) playerNumbers.stream().filter(computerNumbers::contains).count() - strike;
     }
 
     private void setHint() {
-        result.set(0, ball - strike);
+        result.set(0, ball);
         result.set(1, strike);
     }
 }

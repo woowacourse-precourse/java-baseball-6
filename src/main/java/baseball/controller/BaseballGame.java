@@ -77,31 +77,33 @@ public class BaseballGame {
     }
 
     private void printHint(List<Integer> count) {
-        printBallCount(count);
-        printStrikeCount(count);
-        printNothing(count);
+        int ball = count.get(0);
+        int strike = count.get(1);
+        printBallCount(ball, strike);
+        printStrikeCount(strike);
+        printNothing(ball, strike);
     }
 
-    private void printBallCount(List<Integer> count) {
-        if (count.get(0) != 0 && count.get(1) != 0) {
-            OutputView.printCount(count.get(1));
+    private void printBallCount(int ball, int strike) {
+        if (ball != 0 && strike != 0) {
+            OutputView.printCount(ball);
             OutputView.printBallStrike();
         }
-        if (count.get(0) != 0 && count.get(1) == 0) {
-            OutputView.printCount(count.get(0));
+        if (ball != 0 && strike == 0) {
+            OutputView.printCount(ball);
             OutputView.printBall();
         }
     }
 
-    private void printStrikeCount(List<Integer> count) {
-        if (count.get(1) != 0) {
-            OutputView.printCount(count.get(1));
+    private void printStrikeCount(int strike) {
+        if (strike != 0) {
+            OutputView.printCount(strike);
             OutputView.printStrike();
         }
     }
 
-    private void printNothing(List<Integer> count) {
-        if (count.get(0) == 0 && count.get(1) == 0) {
+    private void printNothing(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
             OutputView.printNothing();
         }
     }
