@@ -13,11 +13,11 @@ import java.util.List;
 public class InputView {
     public List<Integer> readThreeInputNumbers() {
         BaseballConsole.print(INPUT_NUMBER);
-        String[] strings = Console.readLine().split(",");
+        String[] strings = Console.readLine().split("");
 
         List<Integer> numbers = new ArrayList<>();
         for (String string : strings) {
-            int number = Integer.parseInt(string.trim());
+            int number = Integer.parseInt(string);
             validateNumberRange(number);
             validateNoDuplicate(numbers, number);
             numbers.add(number);
