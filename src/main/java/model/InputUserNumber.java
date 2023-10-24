@@ -35,6 +35,15 @@ public class InputUserNumber {
         }
     }
 
+    public static void checkValidNumberException(List<Integer> userNumber, int inputNumber){
+        if (inputNumber < MIN_ASCII_CODE || inputNumber > MAX_ASCII_CODE) {
+            throw new IllegalArgumentException();
+        }
+        if (userNumber.contains(inputNumber - '0')){
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static UserBall inputUserNumber() {
         String input = Console.readLine();
 
@@ -43,13 +52,7 @@ public class InputUserNumber {
         List<Integer> userNumber = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             int inputNumber = input.charAt(i);
-
-            if (inputNumber < MIN_ASCII_CODE || inputNumber > MAX_ASCII_CODE) {
-                throw new IllegalArgumentException();
-            }
-            if (userNumber.contains(inputNumber - '0')){
-                throw new IllegalArgumentException();
-            }
+            checkValidNumberException(userNumber, inputNumber);
             userNumber.add(inputNumber - '0');
         }
 
