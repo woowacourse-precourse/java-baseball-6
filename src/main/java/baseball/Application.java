@@ -16,9 +16,12 @@ public class Application{
         boolean playAgain = true;
         while (playAgain) {
             generateRandomNumber();
-            playGame();
-            playAgain = askForRestart();
+            playAgain = playGame();
+            if(playAgain) {
+                playAgain = askForRestart();
+            }
         }
+        System.out.println("게임 종료");
     }
 
     private void generateRandomNumber() {
@@ -32,39 +35,44 @@ public class Application{
         }
     }
 
-    private void playGame() {
+    private boolean playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userGuess = Console.readLine();  // 입력 기능
-            if (isValidInput(userGuess)) {  // 검증 기능
+            try {
+                validateInput(userGuess);  // 검증 기능 수정
                 int[] result = compareNumbers(userGuess);  // 비교 기능
-                if (checkWin(result[0])){
+                if (checkWin(result[0])) {
+                    System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
-                }
-                else{
+                } else {
                     displayResult(result);
                 }
-            } else {
-                System.out.println("잘못된 입력입니다. 세 자리 수의 정수를 입력해주세요.");
+            } catch (IllegalArgumentException e) {
+                System.err.println(e.getMessage());
+                return false;  // 루프 및 게임 종료
             }
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return true;
     }
 
-    private boolean isValidInput(String input) {
+    private void validateInput(String input) {  // 검증 메소드 수정
         if (input.length() != 3) {
-            return false;
+            throw new IllegalArgumentException("세 자리 수를 입력해주세요.");
         }
         for (int i = 0; i < 3; i++) {
             char ch = input.charAt(i);
-            if (!Character.isDigit(ch) || input.indexOf(ch) != input.lastIndexOf(ch)) {
-                return false;
+            if (!Character.isDigit(ch)) {
+                throw new NumberFormatException("숫자만 입력해주세요.");
+            }
+            if (input.indexOf(ch) != input.lastIndexOf(ch)) {
+                throw new IllegalArgumentException("중복되지 않는 숫자를 입력해주세요.");
             }
         }
-        return true;
     }
 
     private int[] compareNumbers(String userGuess) {
