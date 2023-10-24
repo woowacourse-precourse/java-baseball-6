@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.enums.GameEndOption;
 import baseball.enums.GameStatus;
 import baseball.model.Computer;
 import baseball.model.Game;
@@ -20,13 +21,12 @@ public class BaseballGameController {
 
     public void play() {
         Round round;
-        Computer computer = new Computer();
-        String computerNumber = computer.getSecretNumber();
+        String computerNumber = new Computer().getRandomNumber();
         outputView.printGameStart();
         do {
             String playerNumber = inputView.getSuggestedNumber();
             InputValidator.validatePlayerNumber(playerNumber);
-            round = Round.fromPlayerAndSecretNumbers(playerNumber, computerNumber);
+            round = Round.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
             String result = round.generateResultMessage();
             outputView.printRoundResult(result);
         } while (!round.isCorrectGuess());
@@ -35,8 +35,8 @@ public class BaseballGameController {
     public void end() {
         outputView.printGameEnd();
         String continueChoice = inputView.getGameContinueChoice();
-        InputValidator.validateGameChoice(continueChoice);
-        if (continueChoice.equals("2")) {
+        GameEndOption option = GameEndOption.fromString(continueChoice);
+        if (option == GameEndOption.TERMINATE) {
             game.endGame();
         }
     }

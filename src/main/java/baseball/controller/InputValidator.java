@@ -19,10 +19,4 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorCode.OUT_OF_RANGE.getMessage());
         }
     }
-
-    public static void validateGameChoice(String choice) {
-        if (!"1".equals(choice) && !"2".equals(choice)) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_GAME_CHOICE.getMessage());
-        }
-    }
 }
