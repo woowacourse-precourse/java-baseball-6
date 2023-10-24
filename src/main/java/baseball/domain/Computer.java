@@ -1,8 +1,8 @@
-package baseball;
+package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
     private static final int MAX_COMPUTER_NUMBERS_SIZE = 3;
