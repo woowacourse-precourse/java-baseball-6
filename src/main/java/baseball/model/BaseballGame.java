@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 public class BaseballGame {
 
-    private static final int NO_COUNT = 0;
     private static final int THREE_STRIKE = 3;
     private final RandomNumbers randomNumbers;
 

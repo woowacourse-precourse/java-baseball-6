@@ -8,7 +8,6 @@ import baseball.view.OutputView;
 
 public class BaseballController {
 
-    private static final String GAME_RESTART = "1";
     private static final String GAME_END = "2";
 
     private final InputView inputView;
@@ -32,7 +31,7 @@ public class BaseballController {
             playGame(player, baseballGame);
             String inputNumber = inputView.reStart();
 
-            if (isReStart(inputNumber)) {
+            if (isEnd(inputNumber)) {
                 break;
             }
         }
@@ -52,14 +51,7 @@ public class BaseballController {
         }
     }
 
-    private boolean isReStart(final String inputNumber) {
-        if (inputNumber.equals(GAME_RESTART)) {
-            return false;
-        }
-        if (inputNumber.equals(GAME_END)) {
-            return true;
-        }
-
-        return false;
+    private boolean isEnd(final String inputNumber) {
+        return inputNumber.equals(GAME_END);
     }
 }
