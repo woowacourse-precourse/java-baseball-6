@@ -32,17 +32,11 @@ public class Models {
     }
 
     public static boolean isStrike(int index,List<Integer> answerIntegerList,List<Integer> inputIntegerList) {
-        if(answerIntegerList.get(index) == inputIntegerList.get(index)) {
-            return true;
-        }
-        return false;
+        return (answerIntegerList.get(index) == inputIntegerList.get(index));
     }
 
     public static boolean containsBothStrikeAndBall(int strike , int ball) {
-        if( strike == 0 || ball== 0) {
-            return false;
-        }
-        return true;
+        return strike > 0 && ball > 0;
     }
 
     public static List<String> splitStringToList(String string) {
@@ -55,6 +49,7 @@ public class Models {
 
         return stringList;
     }
+
 
     public static List<Integer> convertStringToInteger(List<String> stringList) {
         List<Integer> integerList = new ArrayList<>();
