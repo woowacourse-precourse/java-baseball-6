@@ -1,12 +1,34 @@
 package baseball.entity;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class GameLogic {
     private Map<String, Integer> compareResult = new HashMap<>();
+    private List<Integer> playerGuessNumbers = new ArrayList<>();
+
+    public List<Integer> validateAndReturnBaseBallNumber(String playerGuess) {
+        if (playerGuess.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        char[] charArr = playerGuess.toCharArray();
+
+        for (char c: charArr) {
+            if (Character.isDigit(c)) {
+                int number = Character.getNumericValue(c);
+
+                if (number >= 0 && !playerGuessNumbers.contains(number)) {
+                    playerGuessNumbers.add(number);
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        return playerGuessNumbers;
+    }
 
     public Map compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         compareResult.put("strike", 0);
