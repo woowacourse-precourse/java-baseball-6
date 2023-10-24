@@ -8,10 +8,14 @@ public class Util {
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++) {
             char c = userInput.charAt(i);
-            if (Character.isDigit(c)) {
-                integerList.add(Character.getNumericValue(c));
-            }
+            addDigitToIntegerList(c, integerList);
         }
         return integerList;
+    }
+
+    public static void addDigitToIntegerList(char c, List<Integer> integerList) {
+        if (Character.isDigit(c)) {
+            integerList.add(Character.getNumericValue(c));
+        }
     }
 }
