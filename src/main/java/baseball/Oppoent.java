@@ -21,4 +21,19 @@ public class Oppoent {
             }
         }
     }
+
+    private boolean validateNumbers(List<Integer> numbers) {
+        if (numbers.size() != DESIGNED_NUM) {
+            return VALID_FAILED;
+        }
+        for (int i = 0; i < DESIGNED_NUM; i++) {
+            if (numbers.get(i) < START_NUM || numbers.get(i) > LAST_NUM) {
+                return VALID_FAILED;
+            }
+        }
+        if (numbers.stream().distinct().count() != DESIGNED_NUM) {
+            return VALID_FAILED;
+        }
+        return VALID_SUCCESS;
+    }
 }
