@@ -121,4 +121,27 @@ public class Application {
 
     }
 
+    private static String resultCount(String number, List<Integer> computerNumber) {
+
+        List<Integer> n = changeArr(number);
+
+        int strike = countStrikes(n, computerNumber);
+        int ball = countBall(n, computerNumber);
+        return outText(strike, ball);
+
+    }
+
+    private static String outText(int strike, int ball) {
+
+        if (strike == 0 && ball == 0) {
+            return  "낫싱";
+        } else if (ball > 0 && strike == 0) {
+            return ball + "볼";
+        } else if (strike > 0 && ball == 0) {
+            return strike + "스트라이크";
+        }
+
+        return ball + "볼 " + strike + "스트라이크";
+    }
+
 }
