@@ -12,7 +12,6 @@ public class Inspection {
     //길이 확인
     private void lengthCheck(String userInput){
         if (userInput.length() != 3) {
-            if(userInput.length() != 1)
             throw new IllegalArgumentException("입력값은 3자리여야 합니다.");
         }
     }
