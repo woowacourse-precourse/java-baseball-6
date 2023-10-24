@@ -18,7 +18,7 @@ public class Number {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             NumberSet.add(randomNumber);
         }
-        return new ArrayList<>(NumberSet);
+        return new ArrayList<>(NumberSet );
     }
 
     public List<Integer> getInputNumber() {
