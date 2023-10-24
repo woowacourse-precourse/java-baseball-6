@@ -5,7 +5,8 @@ import baseball.domain.NumberGenerator;
 import baseball.domain.ResponseStatus;
 import baseball.domain.RoundResult;
 
-import static baseball.view.InputView.*;
+import static baseball.view.InputView.inputRestartOrEnd;
+import static baseball.view.InputView.userInputNumber;
 import static baseball.view.OutputView.printRoundResult;
 import static baseball.view.OutputView.startMessage;
 
