@@ -13,13 +13,10 @@ public class User {
 
     String userNumber = Console.readLine();
 
-    if (!userNumber.matches("[0-9]+")) {
+
+    if (!userNumber.matches("[0-9]{3,3}")) {
       throw new IllegalArgumentException("게임 종료");
     } ;
-
-    if (userNumber.length() != 3) {
-      throw new IllegalArgumentException("게임 종료");
-    }
 
     numsToCompare = Arrays.stream(userNumber.split("")).map(Integer::parseInt).toList();
   }

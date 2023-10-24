@@ -36,6 +36,7 @@ public class Computer {
   }
 
   private void printCompareResult(int ball, int strike) {
+
     String result = "";
 
     if (ball > 0) {
