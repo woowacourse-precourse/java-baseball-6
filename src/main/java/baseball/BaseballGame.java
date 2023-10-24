@@ -67,14 +67,6 @@ public class BaseballGame {
         }
     }
 
-    public boolean isAnswer() {
-        if (strike == DIGIT_LENGTH) {
-            System.out.println(END_MESSAGE);
-            return true;
-        }
-        return false;
-    }
-
     public void countBallAndStrike(List<Integer> inputNum, final List<Integer> answer) {
         ball = 0;
         strike = 0;
@@ -100,5 +92,13 @@ public class BaseballGame {
         } else {
             System.out.println("낫싱");
         }
+    }
+
+    public boolean isAnswer() {
+        if (strike == DIGIT_LENGTH) {
+            System.out.println(END_MESSAGE);
+            return true;
+        }
+        return false;
     }
 }
