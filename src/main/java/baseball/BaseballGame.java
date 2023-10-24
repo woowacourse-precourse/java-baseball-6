@@ -9,20 +9,15 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private static BaseballGame baseballGame = null;
     private final InputView inputView;
     private final OutputView outputView;
 
-    private BaseballGame() {
+    private boolean isPlaying;
+
+    public BaseballGame() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-    }
-
-    public static BaseballGame getInstance() {
-        if (baseballGame == null) {
-            baseballGame = new BaseballGame();
-        }
-        return baseballGame;
+        this.isPlaying = true;
     }
 
     public void run() {
@@ -33,7 +28,7 @@ public class BaseballGame {
 
     private void play() {
 
-        while (true) {
+        while (isPlaying) {
 
             Answer answer = initializeAnswer();
 
@@ -42,7 +37,7 @@ public class BaseballGame {
             inputView.restartGame();
             String command = inputView.readLine();
             if (RestartCommand.isExit(command)) {
-                break;
+                isPlaying = false;
             }
         }
     }
