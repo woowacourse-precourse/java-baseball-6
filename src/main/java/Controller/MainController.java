@@ -23,28 +23,45 @@ public class MainController {
         this.retryView = retryView;
     }
 
-    public void run() throws IllegalArgumentException {
-        try {
-            outputView.printGameStart();
-            Computer computer = new Computer();
+    public void run() {
+        do {
+            startGame();
+        } while (retryGame());
+    }
 
-            while (true) {
-                User user = new User();
-                user.setUserNumber(inputView.printUserInput());
-                Map<String, Integer> comparisonResult = numberCompare.getNumberCount(
-                        computer.getComputerNumber(),
-                        user.getuserNumber());
-                if (outputView.printGamerResult(comparisonResult)) {
-                    if (retryView.printRetryMessage()) {
-                        run();
-                        break;
-                    }
-                    break;
-                }
+    private void startGame() {
+        outputView.printGameStart();
+        Computer computer = creatComputer();
+        while (true) {
+            User user = createUser();
+            Map<String, Integer> comparisonResult = compareNumbers(computer, user);
+            if (isGameOver(comparisonResult)) {
+                break;
             }
-        } catch (IllegalArgumentException e) {
-            throw e;
         }
+    }
+    
+    private Computer creatComputer() {
+        return new Computer();
+    }
 
+    private User createUser() {
+        User user = new User();
+        user.setUserNumber(inputView.printUserInput());
+        return user;
+    }
+
+    private Map<String, Integer> compareNumbers(Computer computer, User user) {
+        return numberCompare.getNumberCount(
+                computer.getComputerNumber(),
+                user.getuserNumber());
+    }
+
+    private boolean isGameOver(Map<String, Integer> comparisonResult) {
+        return outputView.printGamerResult(comparisonResult);
+    }
+
+    private boolean retryGame() {
+        return retryView.printRetryMessage();
     }
 }
