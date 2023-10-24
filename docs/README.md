@@ -53,7 +53,9 @@
 #### 정답을 생성하는 메소드
 - name : prepareAnswer
 - parameters : 없음
-- return : 중복이 없는 3개의 원소를 가진 `List<Integer>`
-- description : `Randoms.pickUniqueNumbersInRange`메소드를 사용해 3개의 중복이 없는 원소를 가진 리스트를 반환하는 메소드
+- return : 중복이 없는 3개의 원소를 가진 `List<Integer>` computer
+- description : `Randoms.pickNumberInRange`메소드를 사용해 각 숫자를 뽑고 computer에 있는지 확인한다.
+  - 없는 경우 추가하고 중복인 경우 새로운 수를 뽑는다.
+
 
 
