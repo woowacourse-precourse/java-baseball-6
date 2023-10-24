@@ -2,21 +2,34 @@ package baseball;
 
 public class GameManager {
 
-    private BaseBallGame baseBallGame;
-    // TODO: player를 어디에 둘지 고민
     private Player player;
+    private Computer computer;
+
+    public GameManager() {
+        this.player = new Player();
+    }
 
     public void start() {
         MessagePrinter.printGameStartMessage();
         do {
-            baseBallGame.init();
-            baseBallGame.play();
+            setGame();
+            playGame();
             MessagePrinter.printRetryInputMessage();
         } while (player.getIsRetry());
     }
 
-    public GameManager() {
-        this.player = new Player();
-        this.baseBallGame = new BaseBallGame(this.player);
+    private void playGame() {
+        Boolean isGameEnd = false;
+        while (!isGameEnd) {
+            MessagePrinter.printNumberInputMessage();
+            GameResult result = computer.calculateGameResult(player.getInputAnswer());
+            MessagePrinter.printResultMessage(result);
+            isGameEnd = result.isAnswer();
+        }
+        MessagePrinter.printGameEndMessage();
+    }
+
+    private void setGame() {
+        this.computer = new Computer();
     }
 }
