@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.buildship.ui.wizard.project.import">
-		<item key="project_location" value="/Users/kimbeomjoon/Desktop/우테코/precourse/java-baseball-6"/>
+		<item key="project_location" value="/Users/kimbeomjoon/Desktop/woo/precourse/java-baseball-6"/>
 		<item key="apply_working_sets" value="false"/>
 		<list key="working_sets">
 		</list>
