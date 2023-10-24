@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,38 +20,28 @@ public class Application {
         List<Integer> userResult;
         boolean gameResult = false;
 
-        try {
-            computerNums = choiceComputerNums();
-//            printComputerNums(computerNums);
+        computerNums = choiceComputerNums();
 
-            while (!gameResult) {
-                userNums = inputUserNums();
-                userResult = calculateResult(computerNums, userNums);
-                gameResult = displayResult(userResult);
+        while (!gameResult) {
+            userNums = inputUserNums();
+            userResult = calculateResult(computerNums, userNums);
+            gameResult = displayResult(userResult);
 
-                if (gameResult) {
-                    finishGame();
-                }
+            if (gameResult) {
+                finishGame();
             }
-
-        } catch (IllegalArgumentException ex) {
-            close();
         }
     }
 
     private static List<Integer> choiceComputerNums() {
-        List<Integer> computerNums;
-        computerNums = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        return computerNums;
+        Set<Integer> computerNums = new HashSet<>();
+        while (computerNums.size() < 3) {
+            computerNums.add(Randoms.pickNumberInRange(1, 9));
+        }
+
+        return new ArrayList<>(computerNums);
     }
 
-    public static void printComputerNums(List<Integer> computerNums) {
-        System.out.print("컴퓨터 수 = ");
-        for (int computerNumber : computerNums) {
-            System.out.print(computerNumber);
-        }
-        System.out.println();
-    }
 
     public static List<Integer> inputUserNums() {
         List<Integer> userNums;
@@ -65,18 +57,18 @@ public class Application {
 
 //      3개가 아니게 들어 왔을 경우 예외 터뜨림
         if (userInput.size() != 3) {
-            throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
+            makeIllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
 //       서로 다르지 않을 경우 예외 터뜨림
         if (userInput.stream()
                 .distinct()
                 .count() != userInput.size()) {
-            throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
+            makeIllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
 //      1~9를 제외한 다른 값이 들어와서 예외 터뜨림
         if (!userInput.stream()
                 .allMatch(Application::checkNum)) {
-            throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
+            makeIllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
 
         userNums = strToNum(userInput);
@@ -102,7 +94,11 @@ public class Application {
 
     private static boolean checkNum(String string) {
         return string.matches("[1-9]");
-//        return string.charAt(0) >= 49 && string.charAt(0) <= 57;
+    }
+
+    private static void makeIllegalArgumentException(String s) {
+        close();
+        throw new IllegalArgumentException(s);
     }
 
     public static List<Integer> calculateResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
@@ -164,12 +160,11 @@ public class Application {
                 close();
                 break;
             default:
-                throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력해야합니다.");
+                makeIllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력해야합니다.");
         }
     }
 
     private static void close() {
         Console.close();
-        System.exit(0);
     }
 }
