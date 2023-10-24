@@ -3,13 +3,16 @@ package baseball.domain.game;
 import baseball.domain.computer.Computer;
 import baseball.domain.input.Input;
 import baseball.domain.output.Output;
+import baseball.domain.util.Judgement;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
+
     private final Input input;
     private final Computer computer;
     private final Output output;
+    private final Judgement judgement;
 
     private static Integer STRIKE;
     private static Integer BALL;
@@ -41,7 +44,7 @@ public class Game {
     }
 
     public void countBallAndStrike(List<String> computerNumbers, String computerNumber, String guessNumber) {
-        if (isGuessNumberContainsAnswer(computerNumbers, guessNumber)) {
+        if (judgement.isGuessNumberContainsAnswer(computerNumbers, guessNumber)) {
             BALL += 1;
             checkNumberEquals(computerNumber, guessNumber);
         }
@@ -52,10 +55,6 @@ public class Game {
             STRIKE += 1;
             BALL -= 1;
         }
-    }
-
-    public Boolean isGuessNumberContainsAnswer(List<String> computerNumbers, String guessNumber) {
-        return computerNumbers.contains(guessNumber);
     }
 
     public void checkRestartGame() {
@@ -80,9 +79,10 @@ public class Game {
         STRIKE = 0;
     }
 
-    public Game(Input input, Computer computer, Output output) {
+    public Game(Input input, Computer computer, Output output, Judgement judgement) {
         this.input = input;
         this.computer = computer;
         this.output = output;
+        this.judgement = judgement;
     }
 }
