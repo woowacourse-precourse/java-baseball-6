@@ -8,16 +8,17 @@ public class Baseball {
     private final List<Integer> numbers;
 
     public Baseball(List<Integer> numbers) {
-        validateSize(numbers); validateZero(numbers);
+        validateSize(numbers);
+        validateZero(numbers);
         this.numbers = numbers;
     }
 
     private static void validateZero(List<Integer> numbers) {
-        for(Integer n : numbers) if(n == 0) throw new IllegalArgumentException();
+        for (Integer n : numbers) if (n == 0) throw new IllegalArgumentException();
     }
 
     private static void validateSize(List<Integer> numbers) {
-        if(numbers.size() != 3) throw new IllegalArgumentException();
+        if (numbers.size() != 3) throw new IllegalArgumentException();
     }
 
     public BaseballScore compare(Baseball baseball) {

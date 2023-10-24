@@ -5,6 +5,7 @@ import baseball.Domain.BaseballScore;
 import baseball.Service.GameService;
 import baseball.View.GameView;
 import baseball.View.OutputView;
+import baseball.dto.ExitCode;
 import baseball.utils.InputConverter;
 
 import java.util.List;
@@ -22,20 +23,21 @@ public class Application {
     public void play() {
 
         gameView.printStart();
-        while(true) {
+        while (true) {
             Baseball base = gameService.buildRandomBaseball();
             loopTurn(base);
             gameView.printEnd();
 
             String line = gameView.getAnswer();
-            if(line.equals("2")) break;
+            ExitCode exitCode = InputConverter.convertToExitCode(line);
+            if (exitCode.isExit()) break;
         }
 
     }
 
     private void loopTurn(Baseball base) {
 
-        while(true) {
+        while (true) {
             String line = gameView.getNumbers();
             List<Integer> numbers = InputConverter.convertToIntegerList(line);
             Baseball now = gameService.buildBaseball(numbers);
@@ -43,7 +45,7 @@ public class Application {
             BaseballScore score = base.compare(now);
             gameView.printScore(score);
 
-            if(score.isThreeStrike()) break;
+            if (score.isThreeStrike()) break;
         }
 
     }
