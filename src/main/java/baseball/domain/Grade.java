@@ -17,8 +17,8 @@ public class Grade {
                 ball++;
             }
         }
-        int[] result = new int[]{ball, strike};
-        return result;
+        int[] score = new int[]{ball, strike};
+        return score;
     }
 
     public String getResult(int[] result){

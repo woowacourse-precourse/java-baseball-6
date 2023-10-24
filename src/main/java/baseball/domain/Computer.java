@@ -12,7 +12,7 @@ public class Computer {
     public List<Integer> getComputerNumber(){
         computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < Constants.MAX_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(Constants.MIN_RANGE, Constants.MAX_RANGE);
+            int randomNumber = Randoms.pickNumberInRange(Constants.MIN_NUM_RANGE, Constants.MAX_NUM_RANGE);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }

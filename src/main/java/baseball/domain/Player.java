@@ -1,28 +1,17 @@
 package baseball.domain;
 
-import baseball.utils.InputValidator;
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Player {
-    private InputValidator inputValidator = new InputValidator();
-    public List<Integer> getPlayerNumbers() {
+
+    public List<Integer> getPlayerNumbers(String input) {
         List<Integer> playerNumbers = new ArrayList<>();
-        String input = Console.readLine();
-        if (!inputValidator.isValidNumbersInput(input)) {
-            throw new IllegalArgumentException();
-        }
         playerNumbers = convertInputToNumbers(input);
         return playerNumbers;
     }
 
-    public int getFinishInput() {
-        String input = Console.readLine();
-        if (!inputValidator.isValidFinishInput(input)) {
-            throw new IllegalArgumentException();
-        }
+    public int getFinishInput(String input) {
         return Integer.parseInt(input);
     }
 

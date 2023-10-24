@@ -4,45 +4,69 @@ import baseball.domain.Computer;
 import baseball.domain.Grade;
 import baseball.domain.Player;
 import baseball.utils.Constants;
+import baseball.utils.InputValidator;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 
 public class GameController {
-    private final Computer computer = new Computer();
-    private final Player player = new Player();
-    private final Grade grade = new Grade();
+    private final Computer computer;
+    private final Player player;
+    private final Grade grade;
+    private final OutputView outputView;
+    private final InputView inputView;
+    private InputValidator inputValidator;
+
+    public GameController(Computer computer, Player player, Grade grade, OutputView outputView, InputView inputView, InputValidator inputValidator) {
+        this.computer = computer;
+        this.player = player;
+        this.grade = grade;
+        this.outputView = outputView;
+        this.inputView = inputView;
+        this.inputValidator = inputValidator;
+    }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean gameRunning = true;
-
-        while (gameRunning) {
+        outputView.startGame();
+        while (true) {
             playGame();
-            System.out.println("게임을 새로 시작하려면 " + Constants.RETRY + ", 종료하려면 " + Constants.EXIT + "를 입력하세요.");
-            int playerInput = player.getFinishInput();
-
+            outputView.isContinue();
+            String input = inputView.input();
+            vaildateFinishInput(input);
+            int playerInput = player.getFinishInput(input);
             if (playerInput == Constants.EXIT) {
-                gameRunning = false;
-                System.out.println("게임 종료");
+                outputView.exitGame();
+                break;
             }
         }
     }
 
     private void playGame() {
         List<Integer> computerNumbers = computer.getComputerNumber();
-        boolean flag = true;
-
-        while (flag) {
-            System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> playerNumbers = player.getPlayerNumbers();
-            int[] result = grade.getScore(computerNumbers, playerNumbers);
-            String resultString = grade.getResult(result);
-            System.out.println(resultString);
-
-            if (result[1] != Constants.MAX_SIZE) {
-                continue;
+        while (true) {
+            outputView.inputNumber();
+            String input = inputView.input();
+            vaildateNumbersInput(input);
+            List<Integer> playerNumbers = player.getPlayerNumbers(input);
+            int[] scores = grade.getScore(computerNumbers, playerNumbers);
+            String result = grade.getResult(scores);
+            System.out.println(result);
+            if (scores[1] == Constants.MAX_SIZE) {
+                break;
             }
-            flag = false;
+        }
+    }
+
+    private void vaildateNumbersInput(String input){
+        if (!inputValidator.isValidNumbersInput(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void vaildateFinishInput(String input){
+        if (!inputValidator.isValidFinishInput(input)) {
+            throw new IllegalArgumentException();
         }
     }
 }
