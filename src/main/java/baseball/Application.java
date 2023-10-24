@@ -37,13 +37,13 @@ public class Application {
                         int strike = 0;
                         int ball = 0;
 
-                        Map<Integer, Integer> map = splitNum( userInput ); // 사용자 입력값을 자릿수에 따라 Map 에 (숫자, 자릿수)형태로 담는다. ( ex. 123 -> {(1, 100), (2, 10), (3, 1)} )
+                        Map<Integer, Integer> userMap = makeUserMap( userInput ); // 사용자 입력값을 자릿수에 따라 Map 에 (숫자, 자릿수)형태로 담는다. ( ex. 123 -> {(1, 100), (2, 10), (3, 1)} )
 
                         for ( Integer computerKey : computerMap.keySet() ) {
 
-                            if ( map.containsKey(computerKey) ) { // 동일한 숫자(key)가 있는지 확인
+                            if ( userMap.containsKey(computerKey) ) { // 동일한 숫자(key)가 있는지 확인
 
-                                if ( map.get( computerKey ).equals( computerMap.get(computerKey) )) { // 동일한 숫자의 자릿수(value) 확인
+                                if ( userMap.get( computerKey ).equals( computerMap.get(computerKey) )) { // 동일한 숫자의 자릿수(value) 확인
 
                                     strike++;
 
@@ -67,7 +67,7 @@ public class Application {
                     }
 
                 }
-                // 3스트라이크로 게입 종료 후, 재시작 여부
+                // 3스트라이크로 게입 종료 후, 재시작 여부 체크
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int restartInput =  Integer.parseInt( Console.readLine() );
 
@@ -76,17 +76,16 @@ public class Application {
                     return;
                 } else if( restartInput != 1 ) {
 
-                    throw new IllegalArgumentException("Wrong Input Number! Please restart program.");
+                    throw new IllegalArgumentException();
                 }
             } catch ( Exception e ) {
 
-                System.out.println("Wrong Input Number! Please restart program.");
                 return;
             }
         }
     }
 
-    public static Map<Integer, Integer> splitNum(  Integer  number ) {
+    public static Map<Integer, Integer> makeUserMap( Integer  number ) {
         Map<Integer, Integer> resultMap = new HashMap<>();
 
         int first  = number / 100;
@@ -100,6 +99,7 @@ public class Application {
         return resultMap;
     }
 
+    // 1~9 사이의 숫자이고, 겹치는 숫자가 없는지 유효성 체크 메소드
     public static boolean isValidInput(int number) {
         if ( number >= 123 && number <= 987 ) {
             int a = number / 100;
