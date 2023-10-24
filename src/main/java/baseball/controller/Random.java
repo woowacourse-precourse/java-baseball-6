@@ -22,6 +22,7 @@ public class Random {
         }
     }
 
+    //램덤번호 리스트
     public List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
