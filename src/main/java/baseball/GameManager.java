@@ -7,11 +7,11 @@ public class GameManager {
     private Player player;
 
     public void start() {
-        System.out.println(GameMessage.GAME_START);
+        MessagePrinter.printGameStartMessage();
         do {
             baseBallGame.init();
             baseBallGame.play();
-            System.out.println(GameMessage.RETRY_INPUT);
+            MessagePrinter.printRetryInputMessage();
         } while (player.getIsRetry());
     }
 

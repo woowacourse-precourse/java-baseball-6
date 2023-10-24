@@ -8,12 +8,12 @@ public class BaseBallGame {
     public void play() {
         Boolean isGameEnd = false;
         while (!isGameEnd) {
-            System.out.print(GameMessage.NUMBER_INPUT);
+            MessagePrinter.printNumberInputMessage();
             GameResult result = computer.calculateGameResult(player.getInputAnswer());
-            System.out.println(result.toString());
+            MessagePrinter.printResultMessage(result);
             isGameEnd = result.isAnswer();
         }
-        System.out.println(Computer.NUMBER_DIGIT.toString() + GameMessage.GAME_END);
+        MessagePrinter.printGameEndMessage();
     }
 
     public void init() {
