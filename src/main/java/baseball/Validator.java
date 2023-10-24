@@ -1,8 +1,6 @@
 package baseball;
 
-import static baseball.Type.BALL;
-import static baseball.Type.NONE;
-import static baseball.Type.STRIKE;
+import static baseball.Type.getAllKinds;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +18,6 @@ public class Validator {
     this.randomNumber = randomNumber;
   }
 
-  //야구공 숫자를 맞추는 대답을 작성하는 메서드
   public String writeBaseballAnswer(String inputValue) {
     validateContainsSpace(inputValue);
     validateOnlyNumber(inputValue);
@@ -89,41 +86,30 @@ public class Validator {
   public void addToList(String[] randomArr, String[] inputArr) {
     for(int i=0; i<3; i++) {
       this.randomList.add(randomArr[i]);
-      this.inputList.add(new Baseball(NONE, Integer.parseInt(inputArr[i]), i));
+      this.inputList.add(new Baseball(Integer.parseInt(inputArr[i]), i));
     }
   }
 
-  //TODO: 해당 로직 리팩토링 필요
   public void changeInputBaseballType() {
     for(Baseball baseball : inputList) {
-      String baseballNumber = String.valueOf(baseball.number);
-      if(randomList.contains(baseballNumber)) {
-        if(randomList.indexOf(baseballNumber) == baseball.index) {
-          baseball.changeType(STRIKE);
-        } else {
-          baseball.changeType(BALL);
-        }
-      }
+      baseball.checkType(randomList);
     }
   }
 
   public Map<String, Integer> calculateResult() {
-    Map<String, Integer> resultTable = new HashMap<>();
-    int ball = 0;
-    int strike = 0;
-    resultTable.put("스트라이크", 0);
-    resultTable.put("볼", 0);
-
+    Map<String, Integer> scoreBoard = writeScoreBoard();
     for(Baseball baseball : inputList) {
-      if(baseball.type == STRIKE) {
-        resultTable.put("스트라이크", resultTable.get("스트라이크") + 1);
-//        strike++;
-      } else if(baseball.type == BALL) {
-        resultTable.put("볼", resultTable.get("볼") + 1);
-//        ball++;
-      }
+      baseball.calculate(scoreBoard);
     }
-    return resultTable;
+    return scoreBoard;
+  }
+
+  private Map<String, Integer> writeScoreBoard() {
+    Map<String, Integer> scoreBoard = new HashMap<>();
+    for(String type : getAllKinds()) {
+      scoreBoard.put(type, 0);
+    }
+    return scoreBoard;
   }
 
   public boolean answerOfProgress(String answer) {
