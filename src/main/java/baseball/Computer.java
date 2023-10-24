@@ -14,18 +14,18 @@ public class Computer {
 
     private Set<Integer> answer = new LinkedHashSet<>();
 
-    // TODO: 유효성 검증 관련 리팩토링 필요
-    public GameResult calculateGameResult(String inputAnswer) {
+    // TODO: 메소드 분리하기
+    public GameResult calculateGameResult(GameNumber gameNumber) {
         Integer ballCount = 0;
         Integer strikeCount = 0;
         List<Integer> nums = Arrays.asList(answer.toArray(new Integer[0]));
-        for (int i = 0; i < inputAnswer.length(); i++) {
-            int digit = Character.getNumericValue(inputAnswer.charAt(i));
-            if (digit == nums.get(i)) {
+        for (int i = 0; i < NUMBER_DIGIT; i++) {
+            int num = gameNumber.getNumberAt(i);
+            if (num == nums.get(i)) {
                 strikeCount += 1;
                 continue;
             }
-            if (answer.contains(digit)) {
+            if (answer.contains(num)) {
                 ballCount += 1;
             }
         }

@@ -22,7 +22,7 @@ public class GameManager {
         Boolean isGameEnd = false;
         while (!isGameEnd) {
             MessagePrinter.printNumberInputMessage();
-            GameResult result = computer.calculateGameResult(player.getInputAnswer());
+            GameResult result = computer.calculateGameResult(player.getInputGameNumber());
             MessagePrinter.printResultMessage(result);
             isGameEnd = result.isAnswer();
         }

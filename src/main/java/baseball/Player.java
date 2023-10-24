@@ -8,11 +8,8 @@ public class Player {
     public static final String RETRY_COMMAND = "1";
     public static final String END_COMMAND = "2";
 
-    // TODO: 사용자가 입력한 정답을 DTO 클래스로 관리하도록 리팩토링
-    public String getInputAnswer() {
-        String input = Console.readLine();
-        InputValidator.validateInputAnswer(input);
-        return input;
+    public GameNumber getInputGameNumber() {
+        return GameNumber.makeGameNumberByInput(Console.readLine());
     }
 
     // TODO: 리팩토링을 해야할 것 같음
