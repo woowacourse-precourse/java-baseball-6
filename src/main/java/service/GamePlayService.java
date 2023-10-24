@@ -30,7 +30,6 @@ public class GamePlayService {
 
         // 2. 컴퓨터 숫자 입력
         computer.setComputerNumbers();
-        System.out.println("#######  " + computer.getComputerNumbers());
 
         while (!gameFlowManagementService.gameQuit()) { // 8. 반복여부 조건문 추가
 

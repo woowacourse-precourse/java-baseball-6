@@ -20,7 +20,6 @@ public class GameFlowManagementService {
     public void nextGameSetup(int selectGameRestart, Computer computer) {
         if (selectGameRestart == GAME_RESTART) {
             computer.setComputerNumbers();
-            System.out.println("#######  " + computer.getComputerNumbers());
         }
         if (selectGameRestart == GAME_FINISH) {
             gameQuit = true;
