@@ -56,6 +56,7 @@ public class Game {
         String input = Console.readLine();
         if (input.length() != 3) throw new IllegalArgumentException();
         if (!input.chars().allMatch(Character::isDigit)) throw new IllegalArgumentException();
+        if (input.chars().distinct().count() != 3) throw new IllegalArgumentException();
 
         return input;
     }
