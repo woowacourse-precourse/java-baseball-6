@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class Application {
@@ -66,11 +67,11 @@ public class Application {
         }
     }
 
-    private static void inputUser(String userString) {
-        if (!isCorrectInput(userString)) {
+    private static void inputUser(String target) {
+        if (!isCorrectInput(target)) {
             throw new IllegalArgumentException();
         }
-        for (String str : userString.split("")) {
+        for (String str : target.split("")) {
             int num = Integer.parseInt(str);
             if (user.contains(num)) {
                 throw new IllegalArgumentException();
@@ -79,8 +80,14 @@ public class Application {
         }
     }
 
-    private static boolean isCorrectInput(String userString) {
-
+    private static boolean isCorrectInput(String target) {
+        if (target.length() != digitNumber) {
+            return false;
+        }
+        if (!Pattern.matches("[1-9]+", target))  {
+            return false;
+        }
+        return true;
     }
 
     private static void compareValue() {
@@ -95,7 +102,7 @@ public class Application {
         //return ;
     }
 
-    private static boolean restartGame(String userString) {
+    private static boolean restartGame(String target) {
         //return ;
     }
 }
