@@ -38,5 +38,4 @@ public class GameView {
         return Console.readLine();
     }
 
-
 }
