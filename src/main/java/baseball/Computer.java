@@ -7,14 +7,18 @@ import java.util.Arrays;
 
 public class Computer {
 
-    private ArrayList<Integer> ans;
+    public static final int MAX_DIGIT = 3;
+    public static final int MIN_NUM = 1;
+    public static final int MAX_NUM = 9;
+    private ArrayList<Integer> pickNums;
     public Computer(){
-        ans = new ArrayList<Integer>();
+        pickNums = new ArrayList<Integer>();
         // 랜덤 값 생성
-        while(ans.size() < 3){
-            int randomN = Randoms.pickNumberInRange(1,9);
-            if(!ans.contains(randomN)){
-                ans.add(randomN);
+        while(pickNums.size() < MAX_DIGIT){
+            int randomN = Randoms.pickNumberInRange(MIN_NUM,MAX_NUM);
+            if(!pickNums.contains(randomN)){
+                pickNums.add(randomN);
+                System.out.println(randomN);
             }
         }
     }
@@ -25,10 +29,10 @@ public class Computer {
         boolean isBoll [] = new boolean[3];
         Arrays.fill(isStrike, false);
 
-        for(int i=ans.size()-1; i >= 0; i--){
-            if(n%10 == ans.get(i)){
+        for(int i=pickNums.size()-1; i >= 0; i--){
+            if(n%10 == pickNums.get(i)){
                 isStrike[i] = true;
-            } else if(ans.contains(n%10)){
+            } else if(pickNums.contains(n%10)){
                 isBoll[i] = true;
             }
             n /= 10;
@@ -57,8 +61,5 @@ public class Computer {
                 return bollCount+"볼 "+ strikeCount + "스트라이크";
             }
         }
-
     }
-
-
 }

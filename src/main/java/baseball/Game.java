@@ -3,23 +3,26 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String ANSWER_CHECK_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ANSWER_MESSAGE = "3스트라이크";
+    private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String MODE_EXCEPTION_MESSAGE = "1과 2중 선택해야 합니다.";
+
     private Computer computer;
+    private Player player;
     public void run(){
         while(true){
+            int n;
             computer = new Computer();
-            int n = 0;
+            player = new Player();
 
-            System.out.println("숫자 야구 게임을 시작합니다.");
+            System.out.println(START_MESSAGE);
             while(true){
                 // 숫자 입력
-                System.out.print("숫자를 입력해주세요 : ");
-                try{
-                    n = getUserInputAsInt(3);
-                }
-                catch (IllegalArgumentException e){
-                    System.out.println("올바른 숫자 형식이 아닙니다.");
-                    return;
-                }
+                System.out.print(INPUT_MESSAGE);
+                n = getPlayerAnswerInputAsInt();
 
                 // 정답 비교
                 String result = computer.ansCheck(n);
@@ -27,45 +30,33 @@ public class Game {
 
                 // 게임 종료 여부
                 if(checkGameEnd(result)){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println(ANSWER_CHECK_MESSAGE);
                     break;
                 }
-            } // 게임 한 판 종료
+            } //...게임 한 판 종료
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(REPLAY_MESSAGE);
             // 재시작 여부
-            int userMode;
-            try {
-                userMode = getUserInputAsInt(1);
-            }
-            catch (IllegalArgumentException e){
-                System.out.println("올바른 숫자 형식이 아닙니다.");
-                return;
-            }
+            int userMode = getPlayerModeInputAsInt();
             switch (userMode){
                 case 1:
                     break;
                 case 2:
                     return;
+                default:
+                    new IllegalArgumentException(MODE_EXCEPTION_MESSAGE);
             }
         }
     }
 
-    /*
-        입력을 받고 Int형으로 변환 값 리턴
-     */
-    public int getUserInputAsInt(int limit_Length){
-        String userInput = Console.readLine();
+    public int getPlayerModeInputAsInt(){
+        String playerModeInput = player.getModeInput();
+        return Integer.parseInt(playerModeInput);
+    }
 
-        if (userInput.length() != limit_Length) {
-            throw new IllegalArgumentException(limit_Length+ "자리의 수를 입력해야 합니다.");
-        }
-        try {
-            int parsedValue = Integer.parseInt(userInput);
-            return parsedValue;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("올바른 숫자 형식이 아닙니다.");
-        }
+    public int getPlayerAnswerInputAsInt(){
+        String playerInput = player.getAnswerInput();
+        return Integer.parseInt(playerInput);
     }
 
     /*
@@ -73,7 +64,7 @@ public class Game {
         스트라이크이면 true 리턴, 그렇지 않으면 flase 리턴
      */
     public boolean checkGameEnd (String result){
-        if(result.equals("3스트라이크")){
+        if(result.equals(ANSWER_MESSAGE)){
             return true;
         }
         else{
