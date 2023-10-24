@@ -3,17 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         int isContinue = 1;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -35,12 +30,6 @@ public class Application {
             while (true) {
                 int strike = 0;
                 int ball = 0;
-
-
-
-                for (Integer i : answer)
-                    System.out.print(i);
-                System.out.println();
 
                 System.out.print("숫자를 입력해주세요 : ");
                 int input = Integer.parseInt(Console.readLine());
