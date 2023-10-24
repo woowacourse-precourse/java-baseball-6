@@ -44,46 +44,52 @@
 # 구현 목록
 
 ---
-[x] 게임 시작 문구 출력 - Communicator
+[x] 게임 시작 문구 출력 - `Communicator`
 
-[x] 임의의 세자리 수 결정 - Computer
+[x] 임의의 세자리 수 결정 - `Computer`
 
-[x] 숫자 입력 - Communicator
+[x] 숫자 입력 - `Communicator`
 
-[x] 입력 검증 - Validator
+[x] 입력 검증 - `Validator`
 
-[x] 입력과 컴퓨터 수 비교 후 스트라이크/볼 개수 계산 - Computer
+[x] 입력과 컴퓨터 수 비교 후 스트라이크/볼 개수 계산 - `Computer`
 
-[x] 결과 출력 - Communicator
+[x] 결과 출력 - `Communicator`
 
-[x] 게임 종료 후 메뉴 출력 - Communicator
+[x] 게임 종료 후 메뉴 출력 - `Communicator`
 
-[x] 시스템 종료 - MenuHandler
+[x] 시스템 종료 - `MenuHandler`
 
-[x] 예외 처리 - Menu Handler
+[x] 예외 처리 - `MenuHandler`
 
     요구 사항: 예외 발생 시 문구 출력 -> 종료   
 
 # 객체 디자인 - 1st Draft
 
 ---
-Application - main 함수를 가지고 있는 객체 
-InstanceHandler - 객체들의 인스턴스를 생성/주입을 담당
-MenuHandler - 메뉴를 받고 실행
-Menu - 메뉴 1. 게임 시작 2. 시스템 종료
-Communicator - 유저와의 소통을 담당
-Validator - 받아온 값을 검증
-Computer - 게임의 상대방 역할
+`Application` - main 함수를 가지고 있는 객체
+
+`InstanceHandler` - 객체들의 인스턴스를 생성/주입을 담당
+
+`MenuHandler` - 메뉴를 받고 실행
+
+`Menu` - 메뉴 1. 게임 시작 2. 시스템 종료
+
+`Communicator` - 유저와의 소통을 담당
+
+`Validator` - 받아온 값을 검증
+
+`Computer` - 게임의 상대방 역할
 
 # 추가 객체
 
 ---
-Count - 볼과 스트라이크를 구분 짓기 위한 Enum
+`Count` - 볼과 스트라이크를 구분 짓기 위한 Enum
 
 # 삭제 객체
 
 ---
-InstanceHandler
-* Communicator와 Validator가 메서드만 보유하는 클래스
-* 생성 및 주입 해야할 객체가 MenuHandler와 Computer만 존재
-* 관리할 객체가 너무 적기에 Application에서 관리
+`InstanceHandler`
+* `Communicator`와 `Validator`가 메서드만 보유하는 클래스
+* 생성 및 주입 해야할 객체가 `MenuHandler`와 `Computer`만 존재
+* 관리할 객체가 너무 적기에 `Application`에서 관리
