@@ -15,6 +15,7 @@ public class Computer {
         resetNumbers();
     }
 
+    /* 재시작시 새로운 랜덤 숫자 생성을 위한 메서드 */
     public void resetNumbers() {
         numbers = generateRandomNumbers();
     }

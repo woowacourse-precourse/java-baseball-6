@@ -7,7 +7,7 @@ import static baseball.util.Constant.STRIKE;
 import java.util.List;
 
 public class Hint {
-
+    /* 힌트 생성 로직 구현 */
     public static String evaluateGuess(Player player, Computer computer) {
         List<Integer> userNumbers = player.getNumbers();
         List<Integer> computerNumbers = computer.getNumbers();
@@ -29,6 +29,7 @@ public class Hint {
         return buildResult(strikes, balls);
     }
 
+    /* 힌트 로직 기반 출력 메서드 */
     private static String buildResult(int strikes, int balls) {
         StringBuilder result = new StringBuilder();
 

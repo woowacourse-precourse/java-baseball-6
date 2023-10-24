@@ -15,6 +15,7 @@ public class Game {
         hint = new Hint();
     }
 
+    /* 시작 및 재시작 여부를 반영하기 위한 메서드 */
     public void start() {
         System.out.println(START_GAME_MSG);
 
@@ -25,10 +26,10 @@ public class Game {
             System.out.println(CHECK_END_MSG);
             playAgain = getUserChoice();
         }
-
         System.out.println(END_MSG);
     }
 
+    /* 사용자, 컴퓨터 객체 생성 및 개임 진행 */
     private void playGame() {
         Computer computer = new Computer();
         Player player = new Player();
