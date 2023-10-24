@@ -1,7 +1,6 @@
 package baseball.domain.service;
 
 import baseball.domain.model.GameStatus;
-import java.util.Objects;
 
 public class RoundEvaluationResult {
     private GameStatus gameStatus;
@@ -16,7 +15,7 @@ public class RoundEvaluationResult {
         return evaluationMessage;
     }
 
-    public boolean isgameOver() {
+    public boolean isGameOver() {
         return gameStatus == GameStatus.GAME_OVER;
     }
 

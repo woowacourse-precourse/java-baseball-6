@@ -34,6 +34,6 @@ class NumberBaseBallGameTest {
     void 입력된_숫자에_따른_게임오버_여부_테스트(String input) {
         BaseballNumber inputNumber = new BaseballNumber(input);
         RoundEvaluationResult result = numberBaseBallGame.evaluateRound(inputNumber);
-        assertEquals(GENERATED_NUMBER.equals(input), result.isgameOver());
+        assertEquals(GENERATED_NUMBER.equals(input), result.isGameOver());
     }
 }
