@@ -39,4 +39,8 @@ public class CompareNumbers {
         }
         return strike;
     }
+
+    public int getStrike(){
+        return strike;
+    }
 }
