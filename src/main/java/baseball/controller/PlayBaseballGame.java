@@ -21,7 +21,8 @@ public class PlayBaseballGame {
             play.getHint(playerNumber, computerNumber);
             if(playerNumber.getStrikeCount() == 3) {
                 isReplay = endGame();
-                setComputerNumber();
+                if (isReplay)
+                    setComputerNumber();
             }
         }
     }
