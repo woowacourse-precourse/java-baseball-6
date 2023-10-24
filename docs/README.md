@@ -37,6 +37,7 @@
 1. InputView
     + [x] 플레이어가 숫자를 입력
     + [x] 게임 재시작/종료 여부 입력
+    + [x] playerInput에 공백을 허용
 
 2. OutputView
     + [x] 게임 시작 문구 출력
@@ -54,7 +55,6 @@
         + [x] 1-9 사이의 정수로 구성되어 있는지 확인
         + [x] 중복되는 값이 있는지(= 서로 다른 숫자인지) 확인
         + [x] 위 경우들에 따른 오류 메세지 출력 후 ```IllegalArgumentException``` 발생 후 종료
-        + [x] playerInput에 공백을 허용
     + [x] 게임 재시작/종료 여부의 유효성 검사
         + [x] 1 또는 2 인지 확인한다.
         + [x] 1 또는 2가 아닐 경우 ```IllegalArgumentException``` 발생 후 종료
