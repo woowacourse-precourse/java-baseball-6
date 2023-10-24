@@ -9,7 +9,9 @@ import java.util.List;
 
 public class BaseballGame {
     private final GameService gameService;
+    private final static String exitNumber = "2";
     private static boolean endOrNot = false;
+
 
     public BaseballGame() {
         gameService = new GameService();
@@ -45,7 +47,7 @@ public class BaseballGame {
 
     private void exitGame() {
         System.out.println(GameMessage.DECIDE_CONTINUE_OR_EXIT.getMessage());
-        if (InputView.Input().equals("2")) {
+        if (InputView.Input().equals(exitNumber)) {
             endOrNot = false;
         }
     }
