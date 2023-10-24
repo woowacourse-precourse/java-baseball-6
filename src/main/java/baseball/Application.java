@@ -86,7 +86,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+// TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> cpuInput = setCPU();
         System.out.println("컴퓨터 숫자:" + cpuInput);
@@ -96,7 +96,7 @@ public class Application {
                 !Character.isDigit(userInput.charAt(0)) ||
                 !Character.isDigit(userInput.charAt(1)) ||
                 !Character.isDigit(userInput.charAt(2))) {
-            throw new IllegalArgumentException("입력한 값이 세 자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException("입력한 값이 세 자리 숫자가 아닙니다. 프로그램을 종료합니다.");
         }
         play(cpuInput, userInput);
     }
