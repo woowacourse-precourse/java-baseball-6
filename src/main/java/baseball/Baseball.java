@@ -27,15 +27,15 @@ class Baseball {
     }
 
     public Type getType() {
-        return this.type;
+        return type;
     }
 
     public int getNumber() {
-        return this.number;
+        return number;
     }
 
     public int getIndex() {
-        return this.index;
+        return index;
     }
 
     public void checkType(ArrayList<String> randomList) {
