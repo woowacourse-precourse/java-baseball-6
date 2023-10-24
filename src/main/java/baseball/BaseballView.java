@@ -41,12 +41,14 @@ public class BaseballView {
 	// 유저 숫자 입력
 	public String inputUserNumber() {
 		Scanner sc = new Scanner(System.in);
+		printUserNumber();
 		return sc.nextLine();
 	}
 
 	// 게임 재시작 혹은 종료 선택 입력
 	public int inputSelectRestartOrEnd() {
 		Scanner sc = new Scanner(System.in);
+		printSelectRestartOrEnd();
 		return sc.nextInt();
 	}
 }

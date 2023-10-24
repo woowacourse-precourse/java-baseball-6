@@ -46,7 +46,6 @@ public class BaseballGame {
 
 	private void processBaseballGame(String computerNumber) {
 		// 유저가 숫자 입력
-		baseballView.printUserNumber();
 		String userNumber = baseballView.inputUserNumber();
 
 		// 숫자 판정
