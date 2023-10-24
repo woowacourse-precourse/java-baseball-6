@@ -1,14 +1,13 @@
 package baseball.view;
 
-import baseball.domain.ClientNumbers;
-
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final String INPUT_MSG = "숫자를 입력해주세요 : ";
-
-    private InputView() {}
-
-    public static void printInputMsg() {
-        System.out.print(INPUT_MSG);
+    private InputView() {
     }
+
+    public static String readInput() {
+        return Console.readLine();
+    }
+
 }

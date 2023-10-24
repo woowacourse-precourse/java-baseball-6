@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
+
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -43,7 +43,7 @@ class ApplicationTest extends NsTest {
 
     /**
      * 도메인 메서드 테스트
-     * */
+     */
     @Test
     void clientNumbers_와_computerNumbers_전혀_다른_경우() {
         // computerNumbers 와 전혀 다른 clientNumbers 만들기
@@ -94,7 +94,7 @@ class ApplicationTest extends NsTest {
 
 
     private ClientNumbers provideClientNumbersDifferentWithComputerNumbers(ComputerNumbers computerNumbers) {
-        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
         List<Integer> numbers = computerNumbers.getNumbers();
         list1to9.removeIf(i -> numbers.contains(i));
@@ -107,7 +107,7 @@ class ApplicationTest extends NsTest {
     }
 
     private ClientNumbers provideClientNumbersSameWithComputerNumbers(ComputerNumbers computerNumbers) {
-        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         List<Integer> numbers = computerNumbers.getNumbers();
         list1to9.removeIf(i -> numbers.contains(i));
 
@@ -133,7 +133,7 @@ class ApplicationTest extends NsTest {
 
     /**
      * 예외 테스트
-     * */
+     */
     @Test
     void 숫자가가_아닌_문자열을_입력한_경우() {
         Assertions.assertThatThrownBy(() -> new ClientNumbers("일이삼")).isInstanceOf(InputNotNumber.class);
