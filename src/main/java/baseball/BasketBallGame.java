@@ -5,44 +5,45 @@ import java.util.List;
 
 public class BasketBallGame {
 
-    public static void playBasketBallGame() {
-
-        ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
-        List<Integer> computerNumberList = computerNumberGenerator.getAnswerNumberList();
+    public void playBasketBallGame() {
+        RandomGenerator randomGenerator = new RandomGenerator();
+        List<Integer> computerNumber = randomGenerator.createRandomNumber();
 
         while (true) {
             String userInputNumber = InputView.getInputNumber();
-            Validator.validateUserInputNumber(userInputNumber);
 
-            List<Integer> userInputNumberList = setStringToListInteger(userInputNumber);
-            int[] strikeAndBallCount = getStrikeAndBallCount(computerNumberList,
-                userInputNumberList);
+            Validator validator = new Validator();
+            validator.validateUserInputNumber(userInputNumber);
+
+            List<Integer> userNumber = setStringToListInteger(userInputNumber);
+
+            int[] strikeAndBallCount = getStrikeAndBallCount(computerNumber, userNumber);
             OutputView.showGameResult(strikeAndBallCount);
 
             if (strikeAndBallCount[Constants.STRIKE_INDEX] == Constants.NUMBER_SIZE) {
                 OutputView.finishGame();
-                return;
+                break;
             }
         }
     }
 
-    private static List<Integer> setStringToListInteger(String userInputNumber) {
-        List<Integer> userInputNumberList = new ArrayList<>();
+    private List<Integer> setStringToListInteger(String userInputNumber) {
+        List<Integer> userNumber = new ArrayList<>();
         for (char digit : userInputNumber.toCharArray()) {
-            userInputNumberList.add(Character.getNumericValue(digit));
+            userNumber.add(Character.getNumericValue(digit));
         }
-        return userInputNumberList;
+        return userNumber;
     }
 
-    private static int[] getStrikeAndBallCount(List<Integer> answerNumber,
+    private int[] getStrikeAndBallCount(List<Integer> computerNumber,
         List<Integer> userNumber) {
         int[] strikeAndBallCount = new int[2];
         for (int index = 0; index < Constants.NUMBER_SIZE; index++) {
-            if (answerNumber.get(index) == userNumber.get(index)) {
+            if (computerNumber.get(index) == userNumber.get(index)) {
                 strikeAndBallCount[Constants.STRIKE_INDEX]++;
                 continue;
             }
-            if (answerNumber.contains(userNumber.get(index))) {
+            if (computerNumber.contains(userNumber.get(index))) {
                 strikeAndBallCount[Constants.BALL_INDEX]++;
             }
         }

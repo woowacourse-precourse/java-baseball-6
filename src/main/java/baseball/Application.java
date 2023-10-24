@@ -5,10 +5,13 @@ public class Application {
     public static void main(String[] args) {
         OutputView.startGame();
         while (true) {
-            BasketBallGame.playBasketBallGame();
+            BasketBallGame basketBallGame = new BasketBallGame();
+            basketBallGame.playBasketBallGame();
 
             String restartOrQuit = InputView.getRestartOrQuit();
-            Validator.validateRestartOrQuit(restartOrQuit);
+
+            Validator validator = new Validator();
+            validator.validateRestartOrQuit(restartOrQuit);
 
             if (Integer.parseInt(restartOrQuit) == Constants.QUIT) {
                 break;

@@ -4,7 +4,7 @@ public class Validator {
 
     // 입력 값이 유효한 값인지 확인한다
 
-    public static void validateUserInputNumber(String userInputNumber)
+    public void validateUserInputNumber(String userInputNumber)
         throws IllegalArgumentException {
         if (userInputNumber.length() != Constants.NUMBER_SIZE) {
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
@@ -17,13 +17,13 @@ public class Validator {
         }
     }
 
-    public static void validateRestartOrQuit(String restartOrQuit) {
+    public void validateRestartOrQuit(String restartOrQuit) {
         if (!ensureRange(restartOrQuit, Constants.RESTART, Constants.QUIT)) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }
     }
 
-    private static boolean ensureRange(String userInputValue, int min, int max) {
+    private boolean ensureRange(String userInputValue, int min, int max) {
         for (char digit : userInputValue.toCharArray()) {
             int numericValue = Character.getNumericValue(digit);
             if (numericValue < min || numericValue > max) {
@@ -33,7 +33,7 @@ public class Validator {
         return true;
     }
 
-    private static boolean existsDuplicateNumber(String userInputNumber) {
+    private boolean existsDuplicateNumber(String userInputNumber) {
         for (char digit : userInputNumber.toCharArray()) {
             if (userInputNumber.chars().filter(c -> c == digit).count() != 1) {
                 return true;
