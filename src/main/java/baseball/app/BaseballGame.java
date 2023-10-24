@@ -21,28 +21,28 @@ public class BaseballGame {
     }
 
     private void runGame() {
-        Computer computer = new Computer();
-        playRound(computer);
+        while (true) {
+            Computer computer = new Computer();
+            playRound(computer);
 
-        GameStatus gameStatus = new GameStatus();
+            GameStatus gameStatus = new GameStatus();
 
-        if (gameStatus.getGameStatus().equals(QUIT)) {
-            strikes = 0;
-            return;
+            if (gameStatus.getGameStatus().equals(QUIT)) {
+                strikes = 0;
+                break;
+            }
         }
-        runGame();
     }
 
     private void playRound(Computer computer) {
-        Guess guess = getGuessFromUser();
-        computer.printResult(guess.getGuess());
-        strikes = computer.getStrikesCount(guess.getGuess());
-        if (strikes == ANSWER_DIGIT) {
-            System.out.println(GAME_OVER);
-            System.out.println(RESTART_PROMPT);
-            return;
+        while (strikes < ANSWER_DIGIT) {
+            Guess guess = getGuessFromUser();
+            computer.printResult(guess.getGuess());
+            strikes = computer.getStrikesCount(guess.getGuess());
         }
-        playRound(computer);
+        System.out.println(GAME_OVER);
+        strikes = 0;
+        System.out.println(RESTART_PROMPT);
     }
 
     private Guess getGuessFromUser() {
