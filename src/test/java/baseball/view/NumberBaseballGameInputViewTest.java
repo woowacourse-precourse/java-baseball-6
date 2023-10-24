@@ -18,11 +18,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 class NumberBaseballGameInputViewTest {
 
     private final InputStream originalIn = System.in;
-    private final NumberBaseballGameInputView inputView = new NumberBaseballGameInputView();
+    private NumberBaseballGameInputView inputView;
     private ByteArrayInputStream inContent;
 
     @BeforeEach
     void setUp() {
+        inputView = new NumberBaseballGameInputView(new ConsoleInputProvider());;
     }
 
     @AfterEach
