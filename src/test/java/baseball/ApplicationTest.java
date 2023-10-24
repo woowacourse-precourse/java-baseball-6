@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import model.NumberGenerator;
+import model.NumberInput;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -30,6 +31,24 @@ class ApplicationTest extends NsTest {
             computerNumberSet.add(computerNumber.getGeneratedNumber().charAt(i) - '0');
         }
         assertThat(computerNumberSet.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 입력_숫자_길이_테스트() {
+        assertThatThrownBy(() -> NumberInput.checkLength("1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력_숫자_Digit_테스트() {
+        assertThatThrownBy(() -> NumberInput.checkDigit("ABC"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력_숫자_중복_테스트() {
+        assertThatThrownBy(() -> NumberInput.checkDuplication("112"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 게임종료_후_재시작() {
