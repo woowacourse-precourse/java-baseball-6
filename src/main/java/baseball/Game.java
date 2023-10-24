@@ -62,8 +62,7 @@ public class Game {
             }
         }
 
-        score.setStrikeCount(strikeCount);
-        score.setBallCount(ballCount);
+        score.setScore(strikeCount, ballCount);
     }
 
     private List<Integer> input(){
