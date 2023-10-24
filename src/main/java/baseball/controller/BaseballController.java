@@ -1,28 +1,28 @@
 package baseball.controller;
 
-import baseball.model.baseballModel;
-import baseball.view.baseballView;
+import baseball.model.BaseballModel;
+import baseball.view.BaseballView;
 
 import java.util.HashSet;
 
-public class baseballController {
+public class BaseballController {
 
     int endValue = 2;
     String endComment = "게임 종료";
     String exceptionComment = "자릿수가 서로 다른 세 자리의 숫자를 입력해주세요. 예 : 213";
-    baseballView view = new baseballView();
-    baseballModel model = new baseballModel();
+    BaseballView view = new BaseballView();
+    BaseballModel model = new BaseballModel();
 
     public void run() { //숫자야구게임 실행 조건
         boolean flag = true;
         view.startConsole();
 
         while (flag) {
-            model.computerNumber();
+            model.createNumber();
 
             playBall();
 
-            int endFlag = Integer.parseInt(view.endConsole());
+            int endFlag = Integer.parseInt(view.getEndConsole());
             if (endFlag == endValue) {
                 flag = false;
             }
@@ -36,9 +36,9 @@ public class baseballController {
         while (flag) {
             String insert = view.insertConsole();
             raiseException(insert);
-            model.ballCount(insert);
-            String result = model.stringResult();
-            view.resultConsole(result);
+            model.getBallCount(insert);
+            String result = model.getStringResult();
+            view.getResultConsole(result);
 
             if (result.contains(endComment)) {
                 break;
