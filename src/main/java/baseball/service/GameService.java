@@ -10,7 +10,13 @@ public class GameService {
 
     public RoundResult playRound(Numbers user){
         createGameIfNotPlaying();
-        return game.playRound(user);
+        RoundResult roundResult=game.playRound(user);
+
+        if(roundResult.isFinish()){
+            game=null;
+        }
+
+        return roundResult;
     }
 
     private void createGameIfNotPlaying(){
@@ -21,9 +27,5 @@ public class GameService {
 
     public boolean isRestart(Restart restart){
         return restart.isContinue();
-    }
-
-    public void finishGame(){
-        game=null;
     }
 }

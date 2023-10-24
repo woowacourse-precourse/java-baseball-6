@@ -30,7 +30,6 @@ public class GameController {
         outputView.printResult(getResultMessage(roundResult));
 
         if(roundResult.isFinish()){
-            gameService.finishGame();
             outputView.printFinishGameMessage();
             return;
         }
