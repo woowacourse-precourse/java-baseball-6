@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class BaseballGame {
+public class BaseballGame implements Game{
 
     private int baseballNumber;
     private final RandomNumberProvider randomNumberProvider;
@@ -11,10 +11,11 @@ public class BaseballGame {
         this.randomNumberProvider = randomNumberProvider;
     }
 
+    @Override
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String isReplay = "1";
-        while(isReplay.equals("1")) {
+        boolean play = true;
+        while(play) {
             baseballNumber = randomNumberProvider.generateRandomNumber();
             int inputNumber = input();
             while (!isCorrect(inputNumber)) {
@@ -24,11 +25,18 @@ public class BaseballGame {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            isReplay = Console.readLine();
-            if (!isReplay.equals("1") && !isReplay.equals("2")) {
-                throw new IllegalArgumentException();
-            }
+            play = isReplay();
         }
+    }
+
+    @Override
+    public boolean isReplay() {
+        String isReplay = "1";
+        isReplay = Console.readLine();
+        if (!isReplay.equals("1") && !isReplay.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+        return isReplay.equals("1");
     }
 
     private int input() {
@@ -92,4 +100,5 @@ public class BaseballGame {
     private boolean isCorrect(int inputNum) {
         return baseballNumber == inputNum;
     }
+
 }
