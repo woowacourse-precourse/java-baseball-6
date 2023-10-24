@@ -29,6 +29,7 @@ public class BallHintServiceImpl implements HintItemService {
         return ball;
     }
 
+    @Override
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
