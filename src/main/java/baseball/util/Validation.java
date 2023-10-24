@@ -28,14 +28,18 @@ public class Validation {
         return (input.equals("1") || input.equals("2"));
     }
     public static boolean checkDuplicatedNumber(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            char target = input.charAt(i);
-            if (input.indexOf(target) != i) {
+        for (int index = 0; index < input.length(); index++) {
+            if (compareIndexInString(input, index)) {
                 return false;
             }
         }
 
         return true;
+    }
+
+    private static boolean compareIndexInString(String input, int index) {
+        char target = input.charAt(index);
+        return (input.indexOf(target) != index);
     }
 
 }

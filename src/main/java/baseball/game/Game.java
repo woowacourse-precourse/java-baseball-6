@@ -7,9 +7,7 @@ import baseball.util.Print;
 import baseball.util.Utility;
 import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Comparator;
 import java.util.List;
-import javax.swing.plaf.ComponentUI;
 
 public class Game {
     private List<Integer> computer = null;
