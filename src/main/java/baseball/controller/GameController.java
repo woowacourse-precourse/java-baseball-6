@@ -24,7 +24,7 @@ public class GameController {
 
     private void run() {
         Retry retry = Retry.DEFAULT;
-        while (retry != Retry.END) {
+        while (!retry.isEnd()) {
             Balls answerBalls = generateAnswerBalls();
             BaseballGame baseballGame = BaseballGame.from(answerBalls);
             play(baseballGame);

@@ -18,4 +18,8 @@ public enum Retry {
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException(RETRY_FORMAT_EXCEPTION_MESSAGE));
     }
+
+    public boolean isEnd() {
+        return this == END;
+    }
 }
