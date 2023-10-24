@@ -27,7 +27,7 @@ public class Application {
                 Result result = getResult(computer, numbers);
                 isGameFinish = gameResult(result);
             }
-            play = "2";
+            play = getRestart();
         }
     }
 
@@ -98,4 +98,15 @@ public class Application {
 
         return isGameFinish;
     }
+
+    private static String getRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartInput = Console.readLine();
+        if(List.of("1", "2").contains(restartInput)){
+            return restartInput;
+        }else {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
