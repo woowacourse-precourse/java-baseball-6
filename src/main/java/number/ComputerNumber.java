@@ -11,7 +11,7 @@ public class ComputerNumber {
         this.number = number;
     }
 
-    public List<Integer> getNumber() {
+    public List<Integer> getComputerNumber() {
         return number;
     }
 }

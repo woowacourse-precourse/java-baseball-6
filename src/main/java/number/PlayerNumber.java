@@ -9,8 +9,12 @@ public class PlayerNumber {
 
     public PlayerNumber(List<Integer> number) {
         validateNumberSize(number);
-        validateNumber(number);
+        validateDuplicateNumber(number);
         this.number = number;
+    }
+
+    public List<Integer> getPlayerNumber() {
+        return number;
     }
 
     private void validateNumberSize(List<Integer> number) {
@@ -19,7 +23,7 @@ public class PlayerNumber {
         }
     }
 
-    private void validateNumber(List<Integer> number) {
+    private void validateDuplicateNumber(List<Integer> number) {
         if(number.size() != number.stream().distinct().count()) {
             throw new IllegalArgumentException("입력한 숫자 중 중복되는 요소가 있습니다.");
         }

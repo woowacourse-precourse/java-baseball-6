@@ -1,9 +1,10 @@
 package view;
 
+import evaluator.BallStrikeEvaluator;
 import java.util.List;
 import number.ComputerNumber;
 import number.ComputerNumberGenerator;
-import camp.nextstep.edu.missionutils.Console;
+import number.PlayerNumber;
 
 public class BaseballGame {
 
@@ -15,7 +16,9 @@ public class BaseballGame {
     public void run() {
         ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
         ComputerNumber computerNumber = computerNumberGenerator.createComputerNumber();
-
-        
+        List<Integer> userInputNumber = ConsoleIO.insert();
+        PlayerNumber playerNumber = new PlayerNumber(userInputNumber);
+        BallStrikeEvaluator ballStrikeEvaluator = new BallStrikeEvaluator();
+        ballStrikeEvaluator.evaluate(computerNumber, playerNumber);
     }
 }
