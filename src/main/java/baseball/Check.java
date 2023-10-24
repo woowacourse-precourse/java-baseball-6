@@ -51,7 +51,31 @@ public class Check {
             return false;
         }
         else {
-            throw new IllegalArgumentException("오류처리");
+            throw new IllegalArgumentException("잘못된 입력을 하였습니다. 프로그램을 종료합니다.");
+        }
+    }
+
+    public void errorCheck(String[] numbers) {
+        if(numbers.length!=3) {
+            throw new IllegalArgumentException("잘못된 입력을 하였습니다. 프로그램을 종료합니다.");
+        }
+
+        for(int i=0;i<numbers.length;i++) {
+            if(numbers[i].equals("0")) {
+                throw new IllegalArgumentException("잘못된 입력을 하였습니다. 프로그램을 종료합니다.");
+            }
+            for(int j=0;j<i;j++)
+            {
+                if(numbers[i].equals(numbers[j]))
+                {
+                    throw new IllegalArgumentException("잘못된 입력을 하였습니다. 프로그램을 종료합니다.");
+                }
+            }
+            try {
+                Integer.parseInt(numbers[i]);
+            } catch (NumberFormatException ex) {
+                throw new IllegalArgumentException("잘못된 입력을 하였습니다. 프로그램을 종료합니다.");
+            }
         }
     }
 }
