@@ -3,6 +3,9 @@ package util;
 import constants.MessageConstants;
 import constants.NumberConstants;
 import constants.StringConstants;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import view.Output;
 
 public class ErrorDetector {
@@ -10,6 +13,15 @@ public class ErrorDetector {
     public static void throwIfNumbersInputInvalid(String numbers) {
         throwIfContainsNonNumber(numbers);
         throwIfInvalidInputLength(numbers);
+        throwIfContainsDuplicateNumbers(numbers);
+    }
+
+    private static void throwIfContainsDuplicateNumbers(String numbers) {
+        Set<String> set = new HashSet<>(List.of(numbers.split("")));
+        if (set.size() != NumberConstants.MAX_BALL_SIZE) {
+            System.out.println(MessageConstants.INVALID_NUMBERS_CONTAINS_DUPLICATE_NUMBER);
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void throwIfOptionInputInvalid(String option) {

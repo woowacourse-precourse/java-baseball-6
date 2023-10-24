@@ -35,6 +35,14 @@ class ErrorDetectorTest {
     }
 
     @Test
+    void 입력에중복이있을경우() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> throwIfNumbersInputInvalid("112")
+        );
+    }
+
+    @Test
     void 옵션입력에영문이있을경우() {
         assertThrows(
                 IllegalArgumentException.class,
