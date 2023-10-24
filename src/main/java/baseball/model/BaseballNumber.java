@@ -23,7 +23,7 @@ public class BaseballNumber {
         this.baseballNumber = baseballNumber;
     }
 
-    private static void validateBaseballNumber(int baseballNumber) {
+    private void validateBaseballNumber(int baseballNumber) {
         if (baseballNumber < MIN_BASEBALL_NUMBER || baseballNumber > MAX_BASEBALL_NUMBER) {
             throw new IllegalArgumentException(
                     "[ERROR] 숫자가 " + MIN_BASEBALL_NUMBER + "~" + MAX_BASEBALL_NUMBER + " 사이가 아닙니다.");
