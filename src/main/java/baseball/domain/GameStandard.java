@@ -15,15 +15,15 @@ public class GameStandard {
      * @return
      */
     public int getSameUserNumber2Computer(List<Integer> computerList, List<Integer> userList) {
-        int cntSameNum = 0; // 유저의 숫자가 computerList에 포함한 갯수
+        int cntContainUserNum2ComList = 0; // 유저의 숫자가 computerList에 포함한 갯수
 
         for (Integer numOfUser : userList) {
-            if (isContainNum2ComList(computerList, numOfUser)) { // computerList에 유저가 입력한 값이 포함되어 있으면
-                cntSameNum = cntSameNum + 1; // 같은 숫자가 있을때 conunter + 1
+            if (isContainUserNum2ComList(computerList, numOfUser)) { // computerList에 유저가 입력한 값이 포함되어 있으면
+                cntContainUserNum2ComList = cntContainUserNum2ComList + 1; // 같은 숫자가 있을때 conunter + 1
             }
         }
 
-        return cntSameNum;
+        return cntContainUserNum2ComList;
     }
 
     /**
@@ -36,7 +36,7 @@ public class GameStandard {
      */
     public boolean isSamePlaceIndexNumUser2ComNumList(List<Integer> computerList, int placeIndexOfUser, int numIndexPlaceOfUser) {
         int numPlaceIndexOfComputer = computerList.get(placeIndexOfUser);
-        
+
         return Utill.isSameInteger(numPlaceIndexOfComputer, numIndexPlaceOfUser);
     }
 
@@ -48,7 +48,7 @@ public class GameStandard {
      * @param numOfUser
      * @return
      */
-    private boolean isContainNum2ComList(List<Integer> computerList, Integer numOfUser) {
+    private boolean isContainUserNum2ComList(List<Integer> computerList, Integer numOfUser) {
         return computerList.contains(numOfUser);
     }
 }
