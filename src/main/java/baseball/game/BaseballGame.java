@@ -6,12 +6,12 @@ import baseball.io.Output;
 
 public class BaseballGame {
 
-    private boolean isStart = true;
+    private boolean wantNewGame = true;
 
     public void play() {
         announceGameStart();
 
-        while (isStart) {
+        while (wantNewGame) {
             Turn turn = new Turn();
             turn.play();
 
@@ -33,7 +33,7 @@ public class BaseballGame {
         BaseballGameRestarts restarts = BaseballGameRestarts.find(Input.consoleNumber());
 
         if (restarts.wantToFinish()) {
-            isStart = false;
+            wantNewGame = false;
         }
     }
 
