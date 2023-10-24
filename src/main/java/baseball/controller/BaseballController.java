@@ -1,9 +1,11 @@
 package baseball.controller;
 
 import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballRestartOption;
 import baseball.domain.BaseballResult;
 import baseball.service.BaseballService;
 import baseball.util.BaseballNumberConverter;
+import baseball.util.BaseballRestartOptionConvertor;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -19,18 +21,20 @@ public class BaseballController {
     }
 
     public void playGame() {
-        BaseballNumber computerNumber = baseballService.generateRandomNumbers();
-        outputView.printGameStart();
-        while (true) {
-            BaseballNumber playerNumber = getPlayerInput();
-            BaseballResult result = baseballService.calculateResult(computerNumber, playerNumber);
-            outputView.printGameResult(result);
+        do {
+            BaseballNumber computerNumber = baseballService.generateRandomNumbers();
+            outputView.printGameStart();
+            while (true) {
+                BaseballNumber playerNumber = getPlayerInput();
+                BaseballResult result = baseballService.calculateResult(computerNumber, playerNumber);
+                outputView.printGameResult(result);
 
-            if (isGameFinished(result)) {
-                outputView.printGameEnd();
-                break;
+                if (isGameFinished(result)) {
+                    outputView.printGameEnd();
+                    break;
+                }
             }
-        }
+        } while (askRestart());
     }
 
     private BaseballNumber getPlayerInput() {
@@ -40,5 +44,11 @@ public class BaseballController {
 
     private boolean isGameFinished(BaseballResult result) {
         return result.toString().contains("3스트라이크");
+    }
+
+    private boolean askRestart() {
+        String inputOption = inputView.readGameRestart();
+        BaseballRestartOption restartOption = BaseballRestartOptionConvertor.convert(inputOption);
+        return restartOption == BaseballRestartOption.RETRY;
     }
 }
