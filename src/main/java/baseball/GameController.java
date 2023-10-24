@@ -17,7 +17,7 @@ public class GameController {
     }
 
     public void play() {
-        boolean isGameContinued  = true;
+        boolean isGameContinued = true;
         List<Integer> computerInput = gameComputing.generateComputerInput();
         gameView.printStart();
         while (isGameContinued) {
@@ -26,7 +26,7 @@ public class GameController {
             int result = gameComputing.compute(computerInput, userInput);
             if (result == GAME_OVER) {
                 isGameContinued  = gameView.askContinueGame();
-                if (isGameContinued ) {
+                if (isGameContinued) {
                     computerInput = gameComputing.generateComputerInput();
                 }
             }
