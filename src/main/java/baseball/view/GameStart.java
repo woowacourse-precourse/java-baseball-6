@@ -1,7 +1,6 @@
 package baseball.view;
 
 import baseball.control.GameProgress;
-import baseball.domain.Judge;
 import baseball.domain.NumbersGenerate;
 import baseball.string.MyConstants;
 import baseball.utill.Utill;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameStart {
-    private static final int INPUT_NUM_SIZE = 3;
     private static final int NOT_AGAIN_GAME = 2;
     private static final int RESET_NUM = 0;
     private String hintOfJudge; // 결과를 담는 문자열
@@ -68,9 +66,7 @@ public class GameStart {
         System.out.println(MyConstants.MSG_END_GAME_COMMENT_STR()); // 1. "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
         System.out.println(MyConstants.MSG_GAME_PROGRESS_SELECTION_STATUS_STR()); // 2. "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
 
-
         inputInt = Utill.inputIntNum(); // 3. 숫자를 입력받는다.
-
         ValidException.isValidOnlyInputOneTwo(inputInt); // 1과 2가 아니면 예외처리
 
         if (Utill.isSameInteger(inputInt, NOT_AGAIN_GAME)) {  // 4. 입력 받는 숫자가 2이면 true - STOP
