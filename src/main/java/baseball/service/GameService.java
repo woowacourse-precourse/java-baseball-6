@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.util.Validate;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -13,8 +14,8 @@ public class GameService {
     }
 
     public void solvingProblem() {
-        NumberGenerator computer = new NumberGenerator();
-        List<Integer> answerList = computer.makeAnswerList();
+        AnswerRandomList answerRandomListFactory = new AnswerRandomList(new ArrayList<>());
+        List<Integer> answerRandomList = answerRandomListFactory.generateThreeRandomNumber();
 
         while (play) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -28,7 +29,7 @@ public class GameService {
             }
 
             if ((validate.combinedValidation(str))) {
-                checkResult(str, answerList);
+                checkResult(str, answerRandomList);
             }
         }
     }
