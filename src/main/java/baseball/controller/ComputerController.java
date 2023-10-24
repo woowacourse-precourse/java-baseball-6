@@ -19,14 +19,12 @@ public class ComputerController {
     public void startGame(GameNumber gameNumber) {
         List<Integer> randomNumbers = randomUtility.generateRandomNumbers();
         gameNumber.setRandomNumbers(randomNumbers);
-        
-        System.out.println(gameNumber.getRandomNumbers());
     }
-    
+
     public boolean playGame(GameNumber gameNumber) {
         List<Integer> playerNumbers = gameNumber.getPlayerNumbers();
         List<Integer> randomNumbers = gameNumber.getRandomNumbers();
-        
+
         compareNumbers(playerNumbers, randomNumbers);
 
         return isSuccessGame();
@@ -57,9 +55,10 @@ public class ComputerController {
     }
 
     private void countBall(List<Integer> randomNumbers, int playerNumber, int numberIndex) {
-        if ((randomNumbers.get(numberIndex) != playerNumber) && randomNumbers.contains(playerNumber)) {
+        if ((randomNumbers.get(numberIndex) != playerNumber)
+                && randomNumbers.contains(playerNumber)) {
             ballCount++;
-        } 
+        }
     }
 
     public void provideHint() {
@@ -70,7 +69,6 @@ public class ComputerController {
         hint += getNothingHint();
 
         outputView.printHint(hint);
-
     }
 
     private String getBallHint() {
