@@ -9,6 +9,7 @@ public class Constant {
     public static String INVALID_LENGTH_MESSAGE = "자릿수가 올바르지 않습니다.";
     public static String INVALID_DUPLICATE_MESSAGE = "중복된 수가 존재합니다.";
     public static String INVALID_CHOICE_MESSAGE = "1, 2만 입력할 수 있습니다.";
+    public static String INVALID_BLANK_VALUE_MESSAGE = "공백은 입력할 수 없습니다.";
     public static String NUMERIC_PATTERN = "^[1-9]+$";
     public static String RETRY = "1";
     public static String EXIT = "2";

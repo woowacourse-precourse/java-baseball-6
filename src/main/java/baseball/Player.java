@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Constant.INVALID_BLANK_VALUE_MESSAGE;
 import static baseball.Constant.INVALID_DUPLICATE_MESSAGE;
 import static baseball.Constant.INVALID_FORMAT_MESSAGE;
 import static baseball.Constant.INVALID_LENGTH_MESSAGE;
@@ -22,6 +23,9 @@ public class Player {
     }
 
     private void validateNumbers(String numbers) {
+        if (isBlank(numbers)) {
+            throw new IllegalArgumentException(INVALID_BLANK_VALUE_MESSAGE);
+        }
         if (!isValidNumeric(numbers)) {
             throw new IllegalArgumentException(INVALID_FORMAT_MESSAGE);
         }
@@ -47,5 +51,9 @@ public class Player {
             uniqueDigits.add(element);
         }
         return uniqueDigits.size() == MAX_NUMBER_LENGTH;
+    }
+
+    private boolean isBlank(String numbers) {
+        return numbers.length() == 0;
     }
 }
