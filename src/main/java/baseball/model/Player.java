@@ -40,17 +40,21 @@ public class Player {
 
     private static void isValidRange(String guessNumber) {
         for (char number : guessNumber.toCharArray()) {
-            if (number == '0') {
-                throw new IllegalArgumentException(ONLY_NUMBERS_FROM_ONE_TO_NINE_ALLOWED);
-            }
+            validateNumberNotZero(number);
+        }
+    }
+
+    private static void validateNumberNotZero(char number) {
+        if (number == '0') {
+            throw new IllegalArgumentException(ONLY_NUMBERS_FROM_ONE_TO_NINE_ALLOWED);
         }
     }
 
     private static void isDigits(String guessNumber) {
-        for (char number : guessNumber.toCharArray()) {
-            if (!Character.isDigit(number)) {
-                throw new IllegalArgumentException(ONLY_NUMBERS_ALLOWED);
-            }
+        boolean containsNonDigit = guessNumber.chars()
+                .anyMatch(c -> !Character.isDigit(c));
+        if (containsNonDigit) {
+            throw new IllegalArgumentException(ONLY_NUMBERS_ALLOWED);
         }
     }
 
