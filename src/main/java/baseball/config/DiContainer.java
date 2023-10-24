@@ -2,7 +2,7 @@ package baseball.config;
 
 import baseball.controller.ComputerController;
 import baseball.controller.UserController;
-import baseball.domain.GameService;
+import baseball.service.GameService;
 import baseball.util.Validation;
 
 public class DiContainer {
