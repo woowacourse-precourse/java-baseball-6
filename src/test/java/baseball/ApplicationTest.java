@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -30,19 +31,18 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 컴퓨터_숫자_생성_테스트() {
-        String generatedNumber = ComputerNumberGenerator.generate();
+        List<Integer> generatedNumber = ComputerNumberGenerator.generate();
 
         // Check if the size is 3
         assertThat(generatedNumber).hasSize(3);
 
         // Check if each digit is between 1 and 9
-        for (char digitChar : generatedNumber.toCharArray()) {
-            int digit = Character.getNumericValue(digitChar);
+        for (int digit : generatedNumber) {
             assertThat(digit).isBetween(1, 9);
         }
 
         // Check if each digit is unique
-        assertThat(generatedNumber.chars().distinct().count()).isEqualTo(3);
+        assertThat(generatedNumber).doesNotHaveDuplicates();
     }
 
 
