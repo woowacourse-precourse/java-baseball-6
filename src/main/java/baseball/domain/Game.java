@@ -1,5 +1,7 @@
-package baseball;
+package baseball.domain;
 
+import baseball.util.InputValidator;
+import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {

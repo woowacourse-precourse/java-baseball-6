@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.view.GameView;
 
 public class GameManger {
     public GameManger() {
