@@ -6,6 +6,7 @@ import baseball.model.PlayerAnswer;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -31,12 +32,16 @@ public class GameController {
     }
 
     private boolean repeatFindAnswer() {
+
         boolean correctAnswerFlag = false;
+        List<Integer> playerNumberList;
 
         while (!correctAnswerFlag) {
-
+            playerNumberList = new ArrayList<>();
+            System.out.println("playerNumberList = " + playerNumberList);
             gameView.printInputNumberMessage();
-            List<Integer> playerNumberList = playerController.putPlayerNumberList(Console.readLine());
+            playerNumberList = player.getPlayerNumberList(Console.readLine());
+            validate(playerNumberList);
             correctAnswerFlag = compareAnswer(computer.getComputerRandomNumber(), playerNumberList);
             gameView.printAnswerHintMessage(playerAnswer);
 
@@ -47,8 +52,6 @@ public class GameController {
                 break;
             }
 
-
-
         }
 
         return correctAnswerFlag;
@@ -58,7 +61,6 @@ public class GameController {
         playerAnswer.setStrike(0);
         playerAnswer.setBall(0);
 
-        // 같은 인덱스에 같은 값이 있다면 strike 1 증가 but, 같은 인덱스에 없지만 해당 값이 리스트에 포함되어 있으면 ball 1증가
         for (int i = 0; i < 3; i++) {
 
             if (computerNumberList.get(i) == playerNumberList.get(i)) {
@@ -71,7 +73,6 @@ public class GameController {
             }
 
         }
-        // ==================================================================================================
 
         return playerAnswer.getStrike() == 3;
     }
@@ -79,16 +80,31 @@ public class GameController {
     private boolean retryGame(String playerOption) {
 
         switch (playerOption) {
+
             case "1" : return true;
 
             case "2" : return false;
 
         }
-
         return false;
     }
 
+    private void validate(List<Integer> playerNumberList) {
+
+        if (playerNumberList.size() != 3) {
+            System.out.println("playerNumberList 크기 : "+playerNumberList.size());
+            System.out.println("playerNumberList[] : " + playerNumberList.toString());
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < playerNumberList.size(); i++) {
+            if (playerNumberList.get(i) < 1 || playerNumberList.get(i) > 9) {
+                System.out.println("범위 벗어남");
+                throw new IllegalArgumentException();
+            }
+        }
 
 
+    }
 
 }
