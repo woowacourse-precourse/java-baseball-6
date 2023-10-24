@@ -1,7 +1,9 @@
 package baseball.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,14 +12,14 @@ class PlayerTest {
     @DisplayName("플레이어 수가 3자리가 아닌 경우 예외가 발생한다.")
     @Test
     void makePlayerSizeEx() {
-        Assertions.assertThatThrownBy(() -> new Player("1234"))
+        assertThatThrownBy(() -> new Player("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("플레이어 수에 같은 숫자가 있을 경우 예외가 발생한다.")
     @Test
     void makePlayerUniqueEx() {
-        Assertions.assertThatThrownBy(() -> new Player("333"))
+        assertThatThrownBy(() -> new Player("333"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -29,7 +31,7 @@ class PlayerTest {
 
         int count = player.countSameNumber(computer);
 
-        Assertions.assertThat(count).isEqualTo(1);
+        assertThat(count).isEqualTo(1);
     }
 
     @DisplayName("같은 위치에 있는 숫자의 개수를 구한다.")
@@ -40,6 +42,6 @@ class PlayerTest {
 
         int count = player.countSameIndex(computer);
 
-        Assertions.assertThat(count).isEqualTo(3);
+        assertThat(count).isEqualTo(3);
     }
 }
