@@ -44,12 +44,7 @@ public class BaseBallGame {
 
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int option = Integer.parseInt(Console.readLine());
-
-            if (option != 1 && option != 2) {
-                throw new IllegalArgumentException("잘못된 옵션입니다.");
-            }
+            int option = inputRestartOrEnd();
 
             if (option == 2) {
                 break;
@@ -162,6 +157,25 @@ public class BaseBallGame {
         } else if (result[0] > 0 && result[1] > 0) {
             System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
         }
+
+    }
+
+    private int inputRestartOrEnd() {
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int input = 0;
+        try {
+            input = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요");
+        }
+
+        if (input != 1 && input != 2) {
+            throw new IllegalArgumentException("유효하지 않는 옵션 번호 입니다.");
+        }
+
+        return input;
 
     }
 
