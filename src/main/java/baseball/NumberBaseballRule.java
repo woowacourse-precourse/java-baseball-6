@@ -10,17 +10,13 @@ public class NumberBaseballRule {
    * Returns strike based on user input and computer generated answer.
    *
    * @param input  the user input
-   * @param answer the computer made answer
+   * @param answer the computer generated answer
    * @return the integer count of strike
    */
   public static int countStrike(String input, String answer) {
-    int strike = 0;
-    for (int i = 0; i < 3; i++) {
-      if (input.charAt(i) == answer.charAt(i)) {
-        strike++;
-      }
-    }
-    return strike;
+    return (int) IntStream.range(0, input.length())
+        .filter(i -> input.charAt(i) == answer.charAt(i))
+        .count();
   }
 
   /**
@@ -30,7 +26,6 @@ public class NumberBaseballRule {
    * @param answer the computer made answer
    * @return the integer count of ball
    */
-
   public static int countBall(String input, String answer) {
     Set<Character> answerSet = createAnswerSet(answer);
     return (int) IntStream.range(0, input.length())
