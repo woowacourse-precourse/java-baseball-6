@@ -15,6 +15,18 @@ public class PlayerController {
         return inputList;
     }
 
+    public Integer restartOrOver() {
+        String inputString = inputView.readRestartOrOver();
+        validateRestartOrOver(inputString);
+        return Integer.parseInt(inputString);
+    }
+
+    private void validateRestartOrOver(String inputString) {
+        if (inputString.length() != 1 || !inputString.equals("1") && !inputString.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
+    }
+
     private List<Integer> parseInputString(String inputNumbers) {
         List<Integer> result = new ArrayList<>();
         for (String number : inputNumbers.split("")) {
