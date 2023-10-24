@@ -20,22 +20,24 @@ public class Balls {
     public int getBalls(int index){
         return balls.get(index);
     }
+    public boolean equals(int digit, int anotherBall) {
+        return getBalls(digit)==anotherBall;
+    }
     public boolean compareToByBall(Balls anotherBalls, int digit){
         for(int index=0; index< getBallsSize(); index++){
             if(digit==index){
                 continue;
             }
-            if(anotherBalls.getBalls(index)==getBalls(digit)){
+            if(equals(digit,anotherBalls.getBalls(index))){
                 return true;
             }
         }
         return false;
     }
     public boolean compareToByStrike(Balls anotherBalls, int digit){
-        if(anotherBalls.getBalls(digit)==getBalls(digit)){
+        if(equals(digit, anotherBalls.getBalls(digit))){
             return true;
         }
         return false;
     }
-
 }
