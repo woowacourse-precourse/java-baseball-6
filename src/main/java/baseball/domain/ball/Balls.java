@@ -35,16 +35,16 @@ public class Balls {
         return false;
     }
 
-    public int getOtherPositionAndSameNumberCount(Balls otherBalls) {
+    public int getSameNumberAndOtherPositionCount(Balls otherBalls) {
         int result = 0;
         for (Ball ball : this.balls) {
-            if(otherBalls.isOtherPositionAndSameNumber(ball)) {
+            if(otherBalls.isSameNumberOtherPositionAnd(ball)) {
                 result++;
             }
         }
         return result;
     }
-    private boolean isOtherPositionAndSameNumber(Ball otherBall) {
+    private boolean isSameNumberOtherPositionAnd(Ball otherBall) {
         for (Ball ball : this.balls) {
             if(ball.isSameNumberAndOtherPosition(otherBall)) {
                 return true;

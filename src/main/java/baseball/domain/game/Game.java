@@ -21,7 +21,6 @@ public class Game {
 
     private Balls createBalls() {
         List<Integer> randomNumbers = RandomNumberGenerator.createRandomNumbers(3, 1, 9);
-        //System.out.println(randomNumbers);
         return new Balls(randomNumbers);
     }
 
@@ -32,7 +31,7 @@ public class Game {
     }
     private GameResult createGameResult(Balls otherBalls) {
         int strike = this.balls.getSamePositionAndSameNumberCount(otherBalls);
-        int ball = this.balls.getOtherPositionAndSameNumberCount(otherBalls);
+        int ball = this.balls.getSameNumberAndOtherPositionCount(otherBalls);
         return new GameResult(strike, ball);
     }
     private void checkResult(GameResult gameResult) {
