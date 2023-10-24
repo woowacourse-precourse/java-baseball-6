@@ -36,15 +36,20 @@ public class BallStrikeCounter {
 
     @Override
     public String toString() {
+        String message = "";
 
-        if (ball > 0 && strike > 0) {
-            return this.ball + "볼 " + this.strike + "스트라이크";
-        } else if (ball == 0 && strike > 0) {
-            return this.strike + "스트라이크";
-        } else if (ball > 0 && strike == 0) {
-            return this.ball + "볼";
+        if (ball > 0) {
+            message += this.ball + "볼 ";
         }
 
-        return "낫싱";
+        if (strike > 0) {
+            message += this.strike + "스트라이크";
+        }
+
+        if (ball + strike == 0) {
+            message = "낫싱";
+        }
+
+        return message;
     }
 }

@@ -61,7 +61,7 @@ class BallStrikeCounterTest {
         ballStrikeCounter.countBallStrike(userNumber, computerNumber);
 
         //then
-        Assertions.assertThat(ballStrikeCounter.toString()).isEqualTo("1볼");
+        Assertions.assertThat(ballStrikeCounter.toString()).isEqualTo("1볼 ");
     }
 
     @Test
