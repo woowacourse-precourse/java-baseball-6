@@ -9,13 +9,13 @@ import java.util.List;
 
 public class Controller {
     private Answer answer;
-    private final NumberGenerator generator = new NumberGenerator();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
     private boolean flag = true;
 
     public void run() {
         inputView.greetingMsg();
+        NumberGenerator generator = new NumberGenerator();
         answer = generator.createAnswer();
 
         do {
@@ -24,18 +24,19 @@ public class Controller {
             GameScore gameScore = answer.calcScore(input);
             outputView.printResult(gameScore);
             checkGameDone(gameScore);
+            checkGameDone(gameScore, generator);
         } while (flag);
     }
 
-    private void checkGameDone(GameScore gameScore) {
+    private void checkGameDone(GameScore gameScore, NumberGenerator generator) {
         if (gameScore.isUserFindAnswer()) {
             outputView.roundEndMsg();
             inputView.askRestartMsg();
-            receiveDecision();
+            receiveDecision(generator);
         }
     }
 
-    private void receiveDecision() {
+    private void receiveDecision(NumberGenerator generator) {
         if (inputView.receiveRestartDecisionFromUser()) {
             answer = generator.createAnswer();
             return;
