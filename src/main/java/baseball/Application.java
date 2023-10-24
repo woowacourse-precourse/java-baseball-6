@@ -34,7 +34,6 @@ public class Application {
         }
     }
 
-
     // 게임 재시작 여부를 물어보는 메서드
     private boolean askForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -51,7 +50,6 @@ public class Application {
             return false; // 게임 종료
         }
     }
-
 
     // 스트라이크 & 볼 계산 로직
     public String checkStrikesOrBall(int[] randomNumbers, int[] playerNumbers) {
@@ -75,16 +73,6 @@ public class Application {
         }
     }
 
-
-    private boolean containsNumber(int[] numbers, int target) {
-        for (int number : numbers) {
-            if (number == target) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     // 난수 생성 및 배열에 저장하는 메서드
     private int[] generateRandomNumbers() {
         int[] randomNumbers = new int[3];
@@ -93,7 +81,6 @@ public class Application {
         }
         return randomNumbers;
     }
-
 
     // 플레이어로 부터 숫자를 받는 메서드
     private int[] getPlayerNumbers() {
@@ -123,5 +110,15 @@ public class Application {
             playerNumbers[i] = Character.getNumericValue(playerNumber);
         }
         return playerNumbers;
+    }
+
+    // 플레이어의 중복입력 방지와 ball 계산을 처리
+    private boolean containsNumber(int[] numbers, int target) {
+        for (int number : numbers) {
+            if (number == target) {
+                return true;
+            }
+        }
+        return false;
     }
 }
