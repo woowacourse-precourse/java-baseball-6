@@ -1,8 +1,9 @@
 package baseball.controller;
 
-import baseball.service.BaseballCollection;
+import baseball.service.GameResult;
 import baseball.service.Judgement;
-import baseball.service.RandomNumberGenerator;
+import baseball.service.domain.BaseballCollection;
+import baseball.service.domain.RandomNumberGenerator;
 import baseball.view.ConsoleInput;
 import baseball.view.Input;
 import baseball.view.Output;
@@ -31,21 +32,13 @@ public class GameManager {
         while (true) {
             Output.printNumberInputMessage();
             BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball(input.readLine());
-            String hint = judgment.calculateHint(computerBalls, playerBalls);
-            Output.printHint(hint);
-            if (isGameEnd(hint)) {
+            GameResult gameResult = judgment.calculateHint(computerBalls, playerBalls);
+            Output.printHint(gameResult.getHint());
+            if (gameResult.isGameEnd()) {
+                Output.printGameEndMessage();
                 break;
             }
         }
-    }
-
-    // 기능: 힌트가 3스트라이크면 게임 종료
-    private boolean isGameEnd(String hint) {
-        if (hint.equals("3스트라이크")) {
-            Output.printGameEndMessage();
-            return true;
-        }
-        return false;
     }
 
     // 기능: 게임 종료 후, 게임 재시작 여부
