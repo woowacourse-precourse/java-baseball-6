@@ -3,7 +3,7 @@ package baseball.validator;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import baseball.exception.InvalidBallNumbersInputException;
-import baseball.exception.InvalidGameStatusNumberInput;
+import baseball.exception.InvalidGameStatusNumberInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -75,20 +75,26 @@ final class InputValidatorTest {
         final InputValidator inputValidator = new InputValidator();
         final String input1 = "11";
         final String input2 = "X";
+        final String input3 = "";
 
         // when
         // then
         assertThatThrownBy(
                 () -> inputValidator.validateGameStatusInput(input1)
         )
-                .isInstanceOf(InvalidGameStatusNumberInput.class)
-                .hasMessage(InvalidGameStatusNumberInput.INVALID_GAME_STATUS_INPUT_MESSAGE);
+                .isInstanceOf(InvalidGameStatusNumberInputException.class)
+                .hasMessage(InvalidGameStatusNumberInputException.INVALID_GAME_STATUS_INPUT_MESSAGE);
 
         assertThatThrownBy(
                 () -> inputValidator.validateGameStatusInput(input2)
         )
-                .isInstanceOf(InvalidGameStatusNumberInput.class)
-                .hasMessage(InvalidGameStatusNumberInput.INVALID_GAME_STATUS_INPUT_MESSAGE);
+                .isInstanceOf(InvalidGameStatusNumberInputException.class)
+                .hasMessage(InvalidGameStatusNumberInputException.INVALID_GAME_STATUS_INPUT_MESSAGE);
 
+        assertThatThrownBy(
+                () -> inputValidator.validateGameStatusInput(input3)
+        )
+                .isInstanceOf(InvalidGameStatusNumberInputException.class)
+                .hasMessage(InvalidGameStatusNumberInputException.INVALID_GAME_STATUS_INPUT_MESSAGE);
     }
 }
