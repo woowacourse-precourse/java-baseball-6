@@ -29,10 +29,12 @@ public class Application {
                 computerUserComparisonList(map, user, computer);
                 int ball = 0;
                 int strike = 0;
+
                 for (int m = 0; m < user.size(); m++) {
                     strike = strikeJudge(map, user, m, strike);
                     ball = ballJudge(map, user, m, ball);
                 }
+
                 if(strike==3){
                     loof =gameRestartEnd(loof);
                     break;
@@ -92,7 +94,6 @@ public class Application {
 
         }
     }
-
     public static void userValid(List<Integer> user, int userNumber){
         if(userNumber<1){
             throw new IllegalArgumentException();
@@ -104,12 +105,17 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void computerRandomList(List<Integer> computer, int randomNumber) {
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
+        }
+    }
     public static void computerRandom(List<Integer> computer){
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+            computerRandomList(computer, randomNumber);
         }
     }
+
 }
