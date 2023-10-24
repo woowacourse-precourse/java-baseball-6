@@ -14,7 +14,7 @@ public class Computer {
     }
 
     public List<Integer> createRandomList() {
-        while(randomList.size() < 3) {
+        while (randomList.size() < 3) {
             isContain(Randoms.pickNumberInRange(1, 9));
         }
 
@@ -22,7 +22,7 @@ public class Computer {
     }
 
     private static void isContain(int randomNumber) {
-        if(!randomList.contains(randomNumber)) {
+        if (!randomList.contains(randomNumber)) {
             randomList.add(randomNumber);
         }
     }

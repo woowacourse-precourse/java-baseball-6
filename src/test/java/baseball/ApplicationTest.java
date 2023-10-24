@@ -64,13 +64,12 @@ class ApplicationTest extends NsTest {
     void 예외_종료여부_메시지_테스트() {
         assertThatThrownBy(() ->
                 assertRandomNumberInRangeTest(() ->
-                {
-                    runException("589", "333");
-                    assertThat(output()).contains("3스트라이크");
-                },
-                5, 8, 9
-        ))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("잘못된 입력입니다.(1 또는 2 입력)");
+                        {
+                            runException("589", "333");
+                            assertThat(output()).contains("3스트라이크");
+                        },
+                        5, 8, 9
+                )
+        ).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 입력입니다.(1 또는 2 입력)");
     }
 }

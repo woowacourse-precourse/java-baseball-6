@@ -18,7 +18,6 @@ public class BaseballMachine {
     private static List<Integer> playerList;
     private static boolean start;
 
-
     private final Computer computer;
     private final Player player;
 
@@ -32,7 +31,7 @@ public class BaseballMachine {
         start = true;
         InputView.printStartMessage();
 
-        while(start) {
+        while (start) {
             player.initPlayer();
             strike = 0;
             ball = 0;
@@ -46,7 +45,7 @@ public class BaseballMachine {
     }
 
     private void compareBall() {
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             checkLogic(i);
         }
     }
