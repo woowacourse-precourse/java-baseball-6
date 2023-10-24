@@ -33,8 +33,6 @@ public class Application {
         return userNum;
     }
 
-
-
     public static void main(String[] args) {
 
 
@@ -42,15 +40,12 @@ public class Application {
             //컴퓨터 숫자 세팅
             List<Integer> comNum = createRandomNum();
 
-//            System.out.println("---------------------------------------------");
-//            System.out.println("comNum" + comNum);
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             while(true){
                 //사용자 숫자 세팅(다 맞을 때까지 계속 입력 받기)
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
-
 
                 List<Integer> userNum = new ArrayList<>();
                 try {
@@ -59,8 +54,6 @@ public class Application {
                     e.printStackTrace();
                     return;
                 }
-
-
 
                 //사용자 숫자와 컴퓨터 숫자 확인하기
                 int ball = 0;
@@ -74,8 +67,6 @@ public class Application {
                         }
                     }
                 }
-
-
 
                 //결과 출력
                 if(ball > 0 && strike > 0){
@@ -91,17 +82,12 @@ public class Application {
                 }else if(ball == 0 && strike == 0){
                     System.out.println("낫싱");
                 }
-
-
-
             }
-
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String s = Console.readLine();
             if(s.equals("2")) break;
 
-//            System.out.println("---------------------------------------------");
         }
 
 
