@@ -28,8 +28,11 @@ public class BaseBallGame {
 
         int[] result = compareAnswerInput(computer, input);
 
+        printResult(result);
+
 
     }
+
 
     /**
      * 3자리 난수 생성
@@ -87,5 +90,22 @@ public class BaseBallGame {
 
     }
 
+    /**
+     * result 값 (볼, 스트라이크 갯수)데 다른 결과 출력
+     * @param result
+     */
+    private void printResult(int[] result) {
+
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        } else if (result[1] == 0) {
+            System.out.println(result[0] + "볼");
+        } else if (result[0] == 0) {
+            System.out.println(result[1] + "스트라이크");
+        } else if (result[0] > 0 && result[1] > 0) {
+            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
+        }
+
+    }
 
 }
