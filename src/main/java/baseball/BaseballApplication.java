@@ -19,8 +19,6 @@ public class BaseballApplication {
     private BaseballApplication() {
     }
 
-    ;
-
     public static void run() {
         BaseballApplication application = new BaseballApplication();
         NumberBaseball game = application.numberBaseball();
