@@ -16,6 +16,7 @@ public class HintServiceImpl implements HintService {
         this.hintItemServices = List.of(hintItemServices);
     }
 
+    @Override
     public Hint createHint(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         List<HintItem> hintItems = new ArrayList<>();
 
@@ -28,4 +29,13 @@ public class HintServiceImpl implements HintService {
         return Hint.createHint(hintItems);
     }
 
+    @Override
+    public List<String> counts(Hint hint) {
+        return hint.getCounts();
+    }
+
+    @Override
+    public List<String> names(Hint hint) {
+        return hint.getNames();
+    }
 }

@@ -5,6 +5,7 @@ import baseball.domain.hint.Hint;
 import baseball.service.hint.HintService;
 import baseball.util.InputUtil;
 import baseball.view.*;
+import java.util.List;
 
 public class GameServiceImpl implements GameService {
 
@@ -24,7 +25,9 @@ public class GameServiceImpl implements GameService {
             NumberBaseball inputBaseball = NumberBaseball.createBaseball(inputNum);
 
             Hint hint = hintService.createHint(computerBaseball, inputBaseball);
-            hintView.displayHintMessage(hint);
+            List<String> countList = hintService.counts(hint);
+            List<String> nameList = hintService.names(hint);
+            hintView.displayHintMessage(countList, nameList);
 
             endOneGame();
         }
