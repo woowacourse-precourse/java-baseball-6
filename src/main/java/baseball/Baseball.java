@@ -59,9 +59,6 @@ public class Baseball {
 
         OutputView.printBaseballResult(balls, strikes);
 
-        if (strikes == 3) {
-            return true;
-        }
-        return false;
+        return strikes == 3;
     }
 }
