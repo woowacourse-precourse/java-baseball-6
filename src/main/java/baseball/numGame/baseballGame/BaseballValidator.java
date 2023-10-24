@@ -32,5 +32,15 @@ public class BaseballValidator implements Validator {
         }
     }
 
+    public void validateRange(char number) {
+        if (number < minOfRange + '0' || number > maxOfRange + '0') {
+            throw new IllegalArgumentException();
+        }
+    }
 
+    public void validateDuplication(char cur, List<Integer> inputList) {
+        if (inputList.contains(cur - '0')) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
