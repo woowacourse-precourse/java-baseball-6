@@ -153,4 +153,13 @@ public class Application {
         }
         return false;
     }
+
+    public static boolean checkOutOfRangeNumber(List<Integer> numbers) {
+        for(int i=0; i<numbers.size(); i++) {
+            if(numbers.get(i).equals(0)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
