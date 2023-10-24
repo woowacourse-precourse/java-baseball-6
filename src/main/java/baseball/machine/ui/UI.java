@@ -1,6 +1,6 @@
-package baseball.ui;
+package baseball.machine.ui;
 
-import baseball.BallCount;
+import baseball.machine.count.BallCount;
 
 public interface UI {
     void startGame();
