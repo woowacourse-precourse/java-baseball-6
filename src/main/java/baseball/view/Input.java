@@ -6,12 +6,14 @@ public class Input {
 
 	private static final Input input = new Input();
 
-	private Input(){}
+	private Input() {
+	}
 
-	public static Input getInstance(){
+	public static Input getInstance() {
 		return input;
 	}
-	public static String getNumber(){
+
+	public static String getNumber() {
 		return Console.readLine();
 	}
 

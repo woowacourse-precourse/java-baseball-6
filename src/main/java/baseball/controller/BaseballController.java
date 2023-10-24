@@ -7,26 +7,25 @@ import baseball.view.Output;
 
 public class BaseballController {
 
-	private String answerNumber;
-	private String inputNumber;
+    private String answerNumber;
+    private String inputNumber;
 
-	private BaseballInformation baseballInformation = new BaseballInformation();
-	private NumberValidator numberValidator = new NumberValidator();
+    private BaseballInformation baseballInformation = new BaseballInformation();
+    private NumberValidator numberValidator = new NumberValidator();
 
-	public void playGame() {
-		baseballInformation.initNumber();
-		answerNumber = baseballInformation.getAnswerNumber();
+    public void playGame() {
+        baseballInformation.initNumber();
+        answerNumber = baseballInformation.getAnswerNumber();
 
-		while(answerNumber.equals(inputNumber) == false){
-			Output.printInputNumMessage();
-			inputNumber = Input.getNumber();
+        while (answerNumber.equals(inputNumber) == false) {
+            Output.printInputNumMessage();
+            inputNumber = Input.getNumber();
 
-			numberValidator.validateInputNumber(inputNumber, baseballInformation.getNumberCount());
+            numberValidator.validateInputNumber(inputNumber, baseballInformation.getNumberCount());
 
+            baseballInformation.compareAndSetStrikeBallCount(inputNumber);
+            Output.printHint(baseballInformation);
+        }
 
-			baseballInformation.compareAndSetStrikeBallCount(inputNumber);
-			Output.printHint(baseballInformation);
-		}
-
-	}
+    }
 }

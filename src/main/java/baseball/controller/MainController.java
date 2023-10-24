@@ -6,28 +6,29 @@ import baseball.view.Output;
 
 public class MainController {
 
-	private static int menu;
-	private static final int END_MENU = 2;
+    private static int menu;
+    private static final int END_MENU = 2;
 
-	private static BaseballController baseballController = new BaseballController();
-	private static MainController mainController = new MainController();
-	private static NumberValidator numberValidator = new NumberValidator();
+    private static BaseballController baseballController = new BaseballController();
+    private static MainController mainController = new MainController();
+    private static NumberValidator numberValidator = new NumberValidator();
 
-	private MainController(){}
+    private MainController() {
+    }
 
-	public static MainController getMainController(){
-		return mainController;
-	}
+    public static MainController getMainController() {
+        return mainController;
+    }
 
-	public void run(){
-		Output.printStartMessage();
-		do{
-			baseballController.playGame();
-			Output.printRestartMessage();
+    public void run() {
+        Output.printStartMessage();
+        do {
+            baseballController.playGame();
+            Output.printRestartMessage();
 
-			String input = Input.getMenu();
-			numberValidator.validateMenu(input);
-			menu = Integer.parseInt(input);
-		}while(menu!=END_MENU);
-	}
+            String input = Input.getMenu();
+            numberValidator.validateMenu(input);
+            menu = Integer.parseInt(input);
+        } while (menu != END_MENU);
+    }
 }
