@@ -1,8 +1,9 @@
 package baseball.validator;
 
 import baseball.model.Baseball;
-import java.util.Collection;
+import baseball.model.BaseballNumber;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class BaseballValidator {
@@ -15,19 +16,19 @@ public class BaseballValidator {
         throw new AssertionError();
     }
 
-    public static void validate(Collection<Integer> baseballNumbers) {
+    public static void validate(List<BaseballNumber> baseballNumbers) {
         validateLength(baseballNumbers);
         validateUnique(baseballNumbers);
     }
 
-    private static void validateLength(Collection<Integer> baseballNumbers) {
+    private static void validateLength(List<BaseballNumber> baseballNumbers) {
         if (baseballNumbers.size() != Baseball.LENGTH) {
             throw new IllegalArgumentException(INVALID_LENGTH_ERROR_MESSAGE);
         }
     }
 
-    private static void validateUnique(Collection<Integer> baseballNumbers) {
-        Set<Integer> uniqueNumbers = new HashSet<>(baseballNumbers);
+    private static void validateUnique(List<BaseballNumber> baseballNumbers) {
+        Set<BaseballNumber> uniqueNumbers = new HashSet<>(baseballNumbers);
         if (uniqueNumbers.size() != Baseball.LENGTH) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }

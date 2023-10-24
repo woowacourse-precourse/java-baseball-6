@@ -10,6 +10,7 @@ import baseball.model.BaseballGameResult;
 import baseball.model.BaseballGameResultType;
 import baseball.model.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
@@ -59,16 +60,23 @@ class BaseballServiceTest {
         }
     }
 
+    private static Baseball createBaseball(Integer... input) {
+        List<BaseballNumber> list = Arrays.stream(input)
+                .map(BaseballNumber::new)
+                .toList();
+        return Baseball.from(list);
+    }
+
     @Nested
     @DisplayName("숫자 야구의 결과를 계산할 시")
     class calculateResult {
 
         static Stream<Arguments> getSuccessTestArgument() {
             return Stream.of(
-                    Arguments.of(Baseball.from(List.of(1, 2, 3)), Baseball.from(List.of(1, 2, 3)), 0, 3),
-                    Arguments.of(Baseball.from(List.of(1, 2, 4)), Baseball.from(List.of(1, 2, 3)), 0, 2),
-                    Arguments.of(Baseball.from(List.of(1, 3, 2)), Baseball.from(List.of(1, 2, 3)), 2, 1),
-                    Arguments.of(Baseball.from(List.of(4, 5, 6)), Baseball.from(List.of(1, 2, 3)), 0, 0)
+                    Arguments.of(createBaseball(1, 2, 3), createBaseball(1, 2, 3), 0, 3),
+                    Arguments.of(createBaseball(1, 2, 4), createBaseball(1, 2, 3), 0, 2),
+                    Arguments.of(createBaseball(1, 3, 2), createBaseball(1, 2, 3), 2, 1),
+                    Arguments.of(createBaseball(4, 5, 6), createBaseball(1, 2, 3), 0, 0)
             );
         }
 
