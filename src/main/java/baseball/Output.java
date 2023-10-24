@@ -18,15 +18,12 @@ public class Output {
 
     public boolean printResultAndContinue(GameResult gameResult) {
 
-        int strikes = gameResult.getStrikes();
-        int balls = gameResult.getBalls();
-
-        if (balls > 0) {
-            System.out.print(balls + BALL_MESSAGE + " ");
+        if (gameResult.hasBalls()) {
+            System.out.print(gameResult.getBalls() + BALL_MESSAGE + " ");
         }
 
-        if (strikes > 0) {
-            System.out.print(strikes + STRIKE_MESSAGE);
+        if (gameResult.hasStrikes()) {
+            System.out.print(gameResult.getStrikes() + STRIKE_MESSAGE);
         }
 
         if (gameResult.isNothing()) {
@@ -35,7 +32,7 @@ public class Output {
 
         System.out.println();
 
-        if (strikes == GameConstants.NUMBER_LENGTH) {
+        if (gameResult.isAllStrikes()) {
             printGameEnd();
             return true;
         }
