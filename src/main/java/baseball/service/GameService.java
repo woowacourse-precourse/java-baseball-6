@@ -50,12 +50,7 @@ public class GameService {
     }
 
     private boolean isBall(String userInput, int index) {
-        if (index >= randomNumbers.size()) {
-            throw new IllegalArgumentException("Invalid index: " + index);
-        }
-
         int number = Character.getNumericValue(userInput.charAt(index));
-
         return randomNumbers.contains(number) && !isStrike(userInput, index);
     }
     private String getResultMessage(int ballCount, int strikeCount) {
@@ -73,7 +68,6 @@ public class GameService {
             resultMessageBuilder.append(strikeCount).append("스트라이크");
         }
 
-        // remove the trailing space at the end of the message
         return resultMessageBuilder.toString().trim();
     }
 }

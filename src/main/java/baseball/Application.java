@@ -14,8 +14,7 @@ public class Application {
     }
 
     public static boolean retryGame() {
-        GameView gameView = new GameView();
-        String retryNumber = gameView.printRestartMessage();
+        String retryNumber = GameView.printRestartMessage();
 
         if (retryNumber.equals("1")) {
             return true;
