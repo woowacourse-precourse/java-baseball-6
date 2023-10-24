@@ -11,7 +11,6 @@ public class Application {
     //비교할 랜덤한 숫자 3개를 저장할 리스트 선언
     public static List<Integer> randomNumbers;
     public static boolean playGame() {
-        System.out.println("randomNumbers: " + randomNumbers);
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
