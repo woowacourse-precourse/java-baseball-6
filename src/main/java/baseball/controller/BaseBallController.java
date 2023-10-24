@@ -29,12 +29,20 @@ public class BaseBallController {
         runGame();
     }
 
+    private void initGame() {
+        this.ballCount = 0;
+        this.strikeCount = 0;
+        ANSWER_NUMBERS.setNumbers(RANDOM_NUMBER_GENERATOR.GenerateRandomNumber());
+        answerNumbers = ANSWER_NUMBERS.getNumbers();
+    }
+
     private void runGame() {
         while (!isGameCleared()) {
             OUTPUT_VIEW.printPlayerNumberInputPrompt();
             playerInput = INPUT_VIEW.enterPlayerInput();
             INPUT_VALIDATOR.isValidNumber(playerInput);
-            PLAYER_NUMBERS.setNumbers(PLAYER_INPUT_PARSER.ParsePlayerInput(playerInput));
+            List<Integer> parsedPlayerInput = PLAYER_INPUT_PARSER.ParsePlayerInput(playerInput);
+            PLAYER_NUMBERS.setNumbers(parsedPlayerInput);
             playerNumbers = PLAYER_NUMBERS.getNumbers();
 
             ballCount = countBall();
@@ -46,15 +54,13 @@ public class BaseBallController {
         ChooseGameRepeatOrQuit();
     }
 
-    private void initGame() {
-        this.ballCount = 0;
-        this.strikeCount = 0;
-        ANSWER_NUMBERS.setNumbers(RANDOM_NUMBER_GENERATOR.GenerateRandomNumber());
-        answerNumbers = ANSWER_NUMBERS.getNumbers();
-    }
-
     private void endGame() {
         OUTPUT_VIEW.printGameEndMessage();
+    }
+
+    private void restartGame() {
+        initGame();
+        runGame();
     }
 
     public int countBall() {
@@ -96,11 +102,6 @@ public class BaseBallController {
         OUTPUT_VIEW.printContinueGameChoicePrompt();
         playerInput = INPUT_VIEW.enterPlayerInput();
         INPUT_VALIDATOR.isValidContinueGameChoice(playerInput);
-    }
-
-    private void restartGame() {
-        initGame();
-        runGame();
     }
 
     private void ChooseGameRepeatOrQuit() {
