@@ -14,7 +14,7 @@ public class Judge {
 
     //랜덤으로 생성한 리스트 값을 맵으로 저장
     public Judge(List<Integer> computerNumberList) {
-        computerNumberMap = IntStream.range(0, computerNumberList.size())
+        this.computerNumberMap = IntStream.range(0, computerNumberList.size())
                 .boxed()
                 .collect(Collectors.toMap(index -> index, computerNumberList::get));
     }

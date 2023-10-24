@@ -9,19 +9,17 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseBallController {
-    private Judge judge;
-    private User user;
-    private ScoreBoard scoreBoard;
-
-    public void playGame() {
+    public static void playGame() {
         OutputView.startGameMessage();
         do {
-            judge = new Judge(RandomNumberGenerator.createRandomNumber());
             run();
         } while (RestartOption.isRestart(InputView.inputRestartOption()));
     }
 
-    private void run() {
+    private static void run() {
+        ScoreBoard scoreBoard;
+        User user;
+        Judge judge = new Judge(RandomNumberGenerator.createRandomNumber());
         do {
             user = new User(InputView.inputUserNumber());
             scoreBoard = judge.recordScoreBoard(user.getUserNumberList());

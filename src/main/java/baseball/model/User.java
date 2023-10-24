@@ -2,26 +2,28 @@ package baseball.model;
 
 import baseball.Message;
 import baseball.NumberLimits;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class User {
     private final List<Integer> userNumberList;
 
-    public User(String userNumber) {
-        userNumberList = new ArrayList<>();
-        String[] userNumberArray = userNumber.split("");
-        for (String str : userNumberArray) {
-            try {
-                userNumberList.add(Integer.parseInt(str));
-            } catch (NumberFormatException e) {
-                // 예외 처리: 유효하지 않은 숫자 형식의 문자열일 경우
-                throw new IllegalArgumentException(Message.INVALID_VALUE.getMessage());
-            }
-        }
+    public User(String inputUserNumber) {
+        this.userNumberList = Arrays.stream(inputUserNumber.split(""))
+                .map(this::getNumber)
+                .collect(Collectors.toList());
         validateInput();
+    }
+
+    private int getNumber(String userNumber) {
+        try {
+            return Integer.parseInt(userNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.INVALID_VALUE.getMessage());
+        }
     }
 
     private void validateInput() {
@@ -45,7 +47,7 @@ public class User {
     }
 
     private void checkForDuplicates() {
-        Set<Integer> set = new HashSet<Integer>(userNumberList);
+        Set<Integer> set = new HashSet<>(userNumberList);
         if (set.size() < NumberLimits.NUM_LIST_LENGTH.getValue()) {
             throw new IllegalArgumentException(Message.UNIQUE_NUMBERS.getMessage());
         }
