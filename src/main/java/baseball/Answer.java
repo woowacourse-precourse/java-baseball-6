@@ -30,7 +30,7 @@ public class Answer {
     }
 
     // 입력 숫자 유효성 검사
-    public void validate(final String input) {
+    private void validate(final String input) {
         validateFormat(input);
         validateAnswerUnique(input);
     }

@@ -7,7 +7,7 @@ public class Player {
     public void playGame(Computer computer) {
         boolean inGame = true;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Message.START_GAME);
         while(inGame) {
             playTurn(computer);
 
@@ -27,7 +27,7 @@ public class Player {
     public void playTurn(Computer computer) {
         boolean onTurn = true;
         while(onTurn) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(Message.ENTER_NUMBER);
             Answer inputAnswer = readAnswer();
             Result result = computer.checkAnswer(inputAnswer);
             result.print();
