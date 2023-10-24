@@ -1,11 +1,16 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class BallContainerTest {
     static BallContainer ballContainer;
@@ -26,90 +31,33 @@ class BallContainerTest {
         assertThat(ballContainer.getBalls()).isEqualTo(expected);
     }
 
-    @DisplayName("3스트라이크 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is3Strike() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(5, 6, 2));
+    @DisplayName("모든 가능한 경우에 대해 정확한 결과를 리턴하는지 확인합니다.")
+    @ParameterizedTest(name = "{0}")
+    @MethodSource("argumentProvider")
+    void pitch_forAllCase_isReturnCorrectResult(
+            String testName,
+            List<Integer> numberList,
+            int strikeCount,
+            int ballCount
+    ) {
+        BallContainer otherContainer = BallContainer.getFromNumbers(numberList);
 
-        PitchResult expected = new PitchResult(3, 0);
+        PitchResult expected = new PitchResult(strikeCount, ballCount);
+        PitchResult actual = ballContainer.pitch(otherContainer);
 
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected);
     }
 
-    @DisplayName("2스트라이크 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is2Strike() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(5, 6, 7));
-
-        PitchResult expected = new PitchResult(2, 0);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
-    }
-
-    @DisplayName("1스트라이크 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is1Strike() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(5, 1, 9));
-        PitchResult expected = new PitchResult(1, 0);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
-    }
-
-    @DisplayName("2볼 1스트라이크 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is1Strike2Ball() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(6, 5, 2));
-
-        PitchResult expected = new PitchResult(1, 2);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
-    }
-
-    @DisplayName("1볼 1스트라이크 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is1Strike1Ball() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(2, 6, 1));
-
-        PitchResult expected = new PitchResult(1, 1);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
-    }
-
-    @DisplayName("2볼 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is2Ball() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(2, 5, 8));
-
-        PitchResult expected = new PitchResult(0, 2);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
-    }
-
-    @DisplayName("1볼 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_is1Ball() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(1, 5, 8));
-
-        PitchResult expected = new PitchResult(0, 1);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
-    }
-
-    @DisplayName("낫싱 결과를 정확히 리턴하는지 확인합니다.")
-    @Test
-    void pitch_isNothing() {
-        BallContainer otherContainer = BallContainer.getFromNumbers(List.of(1, 3, 9));
-
-        PitchResult expected = new PitchResult(0, 0);
-
-        assertThat(ballContainer.pitch(otherContainer))
-                .isEqualTo(expected);
+    static Stream<Arguments> argumentProvider() {
+        return Stream.of(
+                arguments("3스트라이크", List.of(5, 6, 2), 3, 0),
+                arguments("2스트라이크", List.of(5, 6, 7), 2, 0),
+                arguments("1스트라이크", List.of(5, 1, 9), 1, 0),
+                arguments("2볼 1스트라이크", List.of(6, 5, 2), 1, 2),
+                arguments("1볼 1스트라이크", List.of(2, 6, 1), 1, 1),
+                arguments("2볼", List.of(2, 5, 8), 0, 2),
+                arguments("1볼", List.of(1, 5, 8), 0, 1),
+                arguments("낫싱", List.of(1, 3, 9), 0, 0)
+        );
     }
 }
