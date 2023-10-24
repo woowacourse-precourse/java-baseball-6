@@ -1,17 +1,29 @@
 package baseball.controller;
 
+import baseball.controller.hint.HintController;
+import baseball.controller.hint.StrikeController;
+import baseball.domain.Baseball;
 import baseball.domain.GameConstants;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.domain.Restart;
+import baseball.domain.hint.Hint;
+import baseball.domain.hint.Strike;
+import baseball.util.ExceptionUtil;
+import baseball.util.InputUtil;
+import baseball.util.IntegerListUtil;
+import baseball.util.IntegerUtil;
+import baseball.view.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameController {
 
     private StartView startView;
+    private InputView inputView;
+    private HintView hintView;
 
-    public GameController(StartView startView) {
+    public GameController(StartView startView, InputView inputView, HintView hintView) {
         this.startView = startView;
+        this.inputView = inputView;
+        this.hintView = hintView;
     }
 
     public List<Integer> generateRandomBaseball() {

@@ -2,9 +2,9 @@ package baseball.view;
 
 public class InputView {
 
-    public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    public static void displayInputMessage() {
+    public void displayInputMessage() {
         System.out.print(INPUT_MESSAGE);
     }
 
