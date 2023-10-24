@@ -12,23 +12,30 @@
 # 📝 기능 설계
 
 - 협력 : 숫자 야구 게임
+- 전체 flow 살펴보기
 
-<기본 구조>
+야구 게임 시작(BaseballGame) -> 야구 게임 실행(BaseballProcess) -> 랜덤 값 생성(RandomUtil) 
 
-- 역할
-    - 책임
-        - 하는 것
-        - 아는 것
+-> 사용자 입력받기(InputUtil) -> 숫자 검증하기(ValidationNumber)
+
+-> 야구 게임 연산(BaseballUtil) 
+
+-> 3스트라이크가 아니면 계속 진행(BaseballProcess) or 3스트라이크이면 재실행 여부 요청(BaseballProcess) 
+
+-> 사용자가에게 입력받기(InputUtil) -> 숫자 검증하기(ValidationNumber)
+
+-> 사용자가 종료하면 게임 종료(BaseballGame) or 재실행하면 게임 실행(BaseballProcess)
 
 
-- InputNumber
+
+- InputUtil
     - 하는 것
         - 플레이어에게 숫자를 문자열로 입력하기
         - 입력받은 문자열(숫자)를 Integer로 변환하기
         - 변환한 숫자를 리스트에 저장
         - CheckNumber를 객체를 호출하여 유효한 숫자인지 검증(숫자인가?, 3자리 수인가?, 서로 다른 수인가?, 1-9사이의 값인가?)
         - 게임 재시작 여부 문자열로 입력하기(1또는 2)
-        - 입력받은 문자열을 Ineteger로 변환하기(동일) -> 변환하는 과정에서 숫자인지 판별 가능
+        - 입력받은 문자열을 Integer로 변환하기(동일) -> 변환하는 과정에서 숫자인지 판별 가능
         - CheckNumber 객체를 호출하여 유효한 숫자인지 검증(1또는 2인가?, 숫자가 맞는가?)
 
     - 아는 것
@@ -44,7 +51,7 @@
     - 아는 것
 
 
-- RandomNumber
+- RandomUtil
     - 하는 것
         - 리스트에 랜덤 수 생성하기
         - 랜덤 수가 서로 다른 숫자인가?
@@ -52,23 +59,30 @@
         - 랜덤 수가 3자리 숫자인가?
     
     - 아는 것
+        - 생성된 랜덤 수
+
+- BaseballUtil
+    - 하는 것
+        - ball 여부 확인
+        - strike 여부 확인
+        - 입력값과 random 값을 비교하여 ball의 갯수 파악
+        - 입력값과 random 값을 비교하여 strike의 갯수 파악
+        - 결과 출력
+  
+    - 아는 것
+        - ball 갯수
+        - strike 갯수
     
 
 - BaseballProcess
     - 하는 것
-        - 게임 실행
+        - 게임 시작
         - 라운드 게임 실행
-        - RandomNumer객체에서 랜덤 수 요청
-        - InputNumber객체에서 플레이어에게 숫자 입력 요청
-        - ball 여부 확인
-        - strike 여부 확인
-        - 입력값과 random값을 비교하여 ball의 갯수 파악
-        - 입력값과 random값을 비교하여 strike의 갯수 파악
-        - 결과 출력
-        - 정답(3스트라이크)일 경우, 게임 종료
-        - InputNumber객체를 통해 플레이어에게 다음 라운드 실행 여부 요청
+        - RandomNumber 객체에서 랜덤 수 요청
+        - InputNumber 객체에서 플레이어에게 숫자 입력 요청
+        - 정답(3스트라이크)일 경우, 게임 종료 여부 판단
+        - InputNumber 객체를 통해 플레이어에게 다음 라운드 실행 여부 요청
         - 재실행 여부에 따른 게임 시작/종료 여부 리턴
-        - 게임 종료
 
     - 아는 것
         - RandomNumber의 접근
@@ -77,7 +91,8 @@
 
 - BaseballGame
     - 하는 것
-        - 게임 접속(시작)
+        - 게임 실행
+        - 게임 종료
 
     - 아는 것
         - BaseballProcess 접근
