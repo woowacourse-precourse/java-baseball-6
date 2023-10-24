@@ -2,34 +2,32 @@ package baseball.domain.game;
 
 import static baseball.domain.script.Script.GAME_START;
 
-import baseball.domain.Player.Player;
-import baseball.domain.computer.Computer;
-import java.util.Scanner;
+import baseball.domain.computer.ComputerService;
+import baseball.domain.player.Player;
+import baseball.domain.player.PlayerService;
 
 public class Game {
+    private final ComputerService computerService;
+    private final PlayerService playerService;
 
-    public Game() {
-        Computer computer = new Computer();
-        Player player = new Player();
-        Scanner scanner = new Scanner(System.in);
+    public Game(ComputerService computerService, PlayerService playerService) {
+        this.computerService = computerService;
+        this.playerService = playerService;
+    }
 
+    public void play() {
         System.out.println(GAME_START.getMessage());
+        computerService.generateRandomNumbers();
 
         while (true) {
-            new GetNumbers(player, scanner);
-            Compare compare = new Compare(computer, player);
-            new Printer(compare.strikeCount, compare.ballCount);
-
-            if (compare.strikeCount == 3) {
-                GameEnd gameEnd = new GameEnd(scanner);
-                if (gameEnd.flag == 1) {
-                    computer.resetNumbers();
-                }
-                if (gameEnd.flag == 2) {
+            Player player = playerService.getPlayerInput();
+            boolean result = computerService.compare(player);
+            if (result) {
+                if (playerService.getPlayerEnd()) {
                     break;
                 }
+                computerService.resetNumbers();
             }
         }
-        scanner.close();
     }
 }
