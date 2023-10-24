@@ -12,54 +12,50 @@ public class BaseballGame {
     private final InputView inputView;
     private final OutputView outputView;
 
-    private boolean isPlaying;
+    private boolean isRunning;
 
     public BaseballGame() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.isPlaying = true;
+        this.isRunning = true;
     }
 
-    public void run() {
+    public void execute() {
 
-        outputView.startGame();
-        play();
-    }
+        outputView.executeGame();
 
-    private void play() {
+        while (isRunning) {
 
-        while (isPlaying) {
-
-            guessAnswer();
+            playGame();
 
             inputView.restartGame();
             String command = inputView.readLine();
             if (RestartCommand.isExit(command)) {
-                isPlaying = false;
+                isRunning = false;
             }
+
+            outputView.endGame();
         }
     }
 
-    private void guessAnswer() {
+    private void playGame() {
 
         boolean isContinue = true;
         AnswerNumbers answerNumbers = AnswerNumbers.generate();
 
         while (isContinue) {
             Score.initialize();
-            doGuess(answerNumbers);
+            doPlay(answerNumbers);
             isContinue = !Score.isWin();
         }
-
-        outputView.endGame();
     }
 
-    private void doGuess(AnswerNumbers answerNumbers) {
+    private void doPlay(AnswerNumbers answerNumbers) {
+
         inputView.playerNumber();
+
         String inputPlayerNumbers = inputView.readLine();
-
         PlayerNumbers playerNumbers = PlayerNumbers.of(inputPlayerNumbers);
-
         answerNumbers.calculateScore(playerNumbers);
 
         outputView.writeMessage(Score.getResultMessage());

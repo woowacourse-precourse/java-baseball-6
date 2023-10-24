@@ -4,7 +4,8 @@ import static baseball.view.OutputMessage.GAME_END;
 import static baseball.view.OutputMessage.GAME_START;
 
 public class OutputView {
-    public void startGame() {
+
+    public void executeGame() {
         System.out.println(GAME_START);
     }
 
