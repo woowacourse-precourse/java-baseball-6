@@ -4,7 +4,13 @@ import baseball.constants.Message;
 import baseball.model.BaseballGameResult;
 import baseball.model.BaseballGameResultType;
 
-public record ResultMessageDto(BaseballGameResult baseballGameResult) {
+public class ResultMessageDto {
+
+    private final BaseballGameResult baseballGameResult;
+
+    public ResultMessageDto(BaseballGameResult baseballGameResult) {
+        this.baseballGameResult = baseballGameResult;
+    }
 
     public String toMessage() {
         int strikeCount = baseballGameResult.getCount(BaseballGameResultType.STRIKE);
@@ -19,14 +25,14 @@ public record ResultMessageDto(BaseballGameResult baseballGameResult) {
         }
 
         StringBuilder sb = new StringBuilder();
-        addResultMessage(sb, ballCount, Message.BALL);
-        addResultMessage(sb, strikeCount, Message.STRIKE);
+        appendResultMessage(sb, ballCount, Message.BALL);
+        appendResultMessage(sb, strikeCount, Message.STRIKE);
 
         return sb.toString()
                 .trim();
     }
 
-    private void addResultMessage(final StringBuilder sb, final int count, final String message) {
+    private void appendResultMessage(final StringBuilder sb, final int count, final String message) {
         if (count != 0) {
             sb.append(count)
                     .append(message)
