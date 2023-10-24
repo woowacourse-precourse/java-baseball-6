@@ -28,6 +28,7 @@ public class GameStarter {
         boolean isContinuedUser = true;
 
         while (isContinuedUser) {
+            selectComputerNumber();
             isContinuedUser = checkNewbie();
         }
     }
@@ -83,10 +84,7 @@ public class GameStarter {
     }
 
     private void inputNumber(){
-        selectComputerNumber();
-
         boolean isSolved = false;
-        String gameResult;
         String inputValue;
 
         while (!isSolved) {
@@ -95,12 +93,15 @@ public class GameStarter {
             exceptionHandler.isSuitabledLength(inputValue);
             exceptionHandler.isNumber(inputValue);
 
-            gameResult = graderResult.setGameResult(computerNumber, inputValue);
-
-            output.announceMention(gameResult);
-
-            isSolved = isSolvedGame(gameResult);
+            isSolved = judgeNumber(inputValue);
         }
+    }
+
+    private boolean judgeNumber(String inputNumber){
+        String gameResult = graderResult.setGameResult(computerNumber, inputNumber);
+        output.announceMention(gameResult);
+
+        return isSolvedGame(gameResult);
     }
 
     private boolean isSolvedGame(String gameResult) {
