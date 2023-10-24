@@ -4,20 +4,20 @@ import baseball.model.FinishInput;
 import baseball.model.GameResultCalculator;
 import baseball.model.Number;
 import baseball.model.RandomNumberGenerator;
-import baseball.view.GameView;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
     private final RandomNumberGenerator randomNumberGenerator;
-    private final GameView view;
+    private final OutputView view;
     private final InputView input;
     private final GameResultCalculator calculator;
     private Number randomNumber;
 
     public GameController() {
         randomNumberGenerator = new RandomNumberGenerator();
-        view = new GameView();
+        view = new OutputView();
         input = new InputView();
         calculator = new GameResultCalculator();
     }
