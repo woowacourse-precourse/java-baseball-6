@@ -1,5 +1,7 @@
 package baseball.game;
 
+import static baseball.game.GameConst.NUMBER_SIZE;
+
 public class GameResult {
 
     public int strike;
@@ -13,19 +15,24 @@ public class GameResult {
     public void print() {
         StringBuilder result = new StringBuilder();
         if (ball != 0) {
-            result.append(String.format("%d볼", this.ball));
+            result.append(String.format("%d%s", this.ball, GameConst.BALL));
         }
         if (strike != 0) {
             if (!result.isEmpty()) {
                 result.append(" ");
             }
-            result.append(String.format("%d스트라이크", this.strike));
+            result.append(String.format("%d%s", this.strike, GameConst.STRIKE));
         }
 
         if (result.isEmpty()) {
-            result.append("낫싱");
+            result.append(GameConst.NOTHING);
         }
 
         System.out.println(result);
     }
+
+    public boolean gameEnd() {
+        return this.strike == NUMBER_SIZE;
+    }
+
 }

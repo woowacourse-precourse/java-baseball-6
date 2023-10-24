@@ -7,8 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
-
-    private static final int NUMBER_SIZE = 3;
+    
     private static boolean GAME_MODE = true;
 
     public static void main(String[] args) {
@@ -16,11 +15,15 @@ public class Application {
 
         while (GAME_MODE) {
             GameNumber.generateNumbers();
+
             while (true) {
-                List<Integer> userNumber = UserNumber.readNumbers();
-                GameResult result = GameNumber.compare(userNumber);
+                List<Integer> userNumbers = UserNumber.readUserNumbers();
+
+                GameResult result = GameNumber.compare(userNumbers);
+
                 result.print();
-                if (gameOver(result)) {
+
+                if (result.gameEnd()) {
                     GAME_MODE = restart();
                     break;
                 }
@@ -47,9 +50,5 @@ public class Application {
         }
 
         throw new IllegalArgumentException("1 또는 2를 입력하세요.");
-    }
-
-    private static boolean gameOver(GameResult result) {
-        return result.strike == NUMBER_SIZE;
     }
 }

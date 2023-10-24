@@ -6,16 +6,22 @@ import java.util.List;
 
 public class UserNumber {
 
-    private static final int NUMBER_SIZE = 3;
+    private UserNumber() {
+    }
 
-    public static List<Integer> readNumbers() {
+    public static List<Integer> readUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
 
         String answer = Console.readLine().strip();
 
-        if (answer.length() != NUMBER_SIZE || !isNumber(answer)) {
+        if (answer.length() != GameConst.NUMBER_SIZE) {
             throw new IllegalArgumentException("3개의 숫자를 연속해서 입력하세요.");
         }
+
+        if (!isNumber(answer)) {
+            throw new IllegalArgumentException("숫자만 입력하세요.");
+        }
+
         return convertToList(answer);
     }
 
@@ -29,10 +35,10 @@ public class UserNumber {
     }
 
     private static List<Integer> convertToList(String number) {
-        List<Integer> userNumber = new ArrayList<>();
+        List<Integer> userNumbers = new ArrayList<>();
         for (char ch : number.toCharArray()) {
-            userNumber.add(ch - '0');
+            userNumbers.add(ch - '0');
         }
-        return userNumber;
+        return userNumbers;
     }
 }

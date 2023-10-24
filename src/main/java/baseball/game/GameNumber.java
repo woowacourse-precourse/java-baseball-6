@@ -1,5 +1,7 @@
 package baseball.game;
 
+import static baseball.game.GameConst.NUMBER_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.Objects;
 
 public class GameNumber {
 
-    private static final int NUMBER_SIZE = 3;
     private static List<Integer> computerNumber;
 
     private GameNumber() {
@@ -15,7 +16,7 @@ public class GameNumber {
 
     public static void generateNumbers() {
         computerNumber = new ArrayList<>();
-        while (computerNumber.size() < NUMBER_SIZE) {
+        while (computerNumber.size() < GameConst.NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
@@ -23,14 +24,14 @@ public class GameNumber {
         }
     }
 
-    public static GameResult compare(List<Integer> userNumber) {
+    public static GameResult compare(List<Integer> userNumbers) {
         int strike = 0;
         int ball = 0;
 
         for (int index = 0; index < NUMBER_SIZE; index++) {
-            if (Objects.equals(computerNumber.get(index), userNumber.get(index))) {
+            if (Objects.equals(computerNumber.get(index), userNumbers.get(index))) {
                 strike++;
-            } else if (computerNumber.contains(userNumber.get(index))) {
+            } else if (computerNumber.contains(userNumbers.get(index))) {
                 ball++;
             }
         }
