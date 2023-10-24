@@ -9,10 +9,14 @@ public class GameNumberValidateService {
 
     private int ballCount;
     private int strikeCount;
+    private List<Integer> ballAndStrikeCountList = new ArrayList<>();
 
-    public void calculateGameNumber(String computerGameNumber, String playerNumber) {
+    public List<Integer> calculateGameNumber(String computerGameNumber, String playerNumber) {
         ballCount = calculateBallCount(computerGameNumber, playerNumber);
         strikeCount = calculateStrikeCount(computerGameNumber, playerNumber);
+        setBallAndStrikeCountList(ballCount, strikeCount);
+
+        return ballAndStrikeCountList;
     }
 
     private int calculateBallCount(String computerGameNumber, String playerNumber) {
@@ -49,5 +53,10 @@ public class GameNumberValidateService {
 
     public int getStrikeCount() {
         return strikeCount;
+    }
+
+    public void setBallAndStrikeCountList(int ballCount, int strikeCount) {
+        ballAndStrikeCountList.add(ballCount);
+        ballAndStrikeCountList.add(strikeCount);
     }
 }
