@@ -4,6 +4,8 @@ plugins {
 
 group 'woowacourse-projects'
 version '1.0-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
@@ -12,6 +14,7 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.1.0'
+    implementation 'org.jetbrains:annotations:24.0.0'
 }
 
 java {
