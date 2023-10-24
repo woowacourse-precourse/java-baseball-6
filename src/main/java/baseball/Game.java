@@ -35,6 +35,7 @@ public class Game {
         }
         if (ball != 0 && strike != 0){
             Print.printString(ball + "볼" + " " + strike + "스트라이크");
+
         }
     }
 
@@ -42,12 +43,17 @@ public class Game {
         Print.printString("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         Print.printString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-    public String gameRestartInput(){
-        String input = Console.readLine();
-        validateInput(input);
-        return input;
+    public String gameRestartInput() throws IllegalArgumentException{
+        try{
+            String input = Console.readLine();
+            validateInput(input);
+            return input;
+        } catch (IllegalArgumentException e){
+            throw e;
+        }
+
     }
-    public void validateInput(String input){
+    public void validateInput(String input) throws IllegalArgumentException{
         if(!input.equals("1") && !input.equals("2")){
             throw new IllegalArgumentException();
         }
