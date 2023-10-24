@@ -1,15 +1,12 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private List<Integer> userNumbers;
 
-    public void inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String numberString = Console.readLine();
+    public void inputNumber(String numberString) {
         userNumbers = numberStringToList(numberString);
         validateNumberDigits(userNumbers);
         validateNumberUnique(userNumbers);
