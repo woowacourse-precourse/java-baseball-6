@@ -22,12 +22,13 @@ public class GameConsole {
 
     public void start() {
         while (status == ConsoleStatus.CONTINUE) {
-            if (target == GameList.NUMBER_BASEBALL)
+            if (target == GameList.NUMBER_BASEBALL) {
                 launchNumberBaseball();
+            }
             confirmStatus();
         }
-
     }
+
     private void launchNumberBaseball() {
         printConsoleMessage(ConsoleMessage.NUMBER_BASEBALL_GAME_START);
         numberBaseballGame = new NumberBaseballGame();

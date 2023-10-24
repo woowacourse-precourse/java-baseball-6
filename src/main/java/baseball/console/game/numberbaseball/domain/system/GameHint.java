@@ -3,10 +3,12 @@ package baseball.console.game.numberbaseball.domain.system;
 public class GameHint {
     private int strike;
     private int ball;
+
     public GameHint(){
         strike = 0;
         ball = 0;
     }
+
     public void addStrike() {
         strike++;
     }

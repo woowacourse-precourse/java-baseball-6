@@ -15,6 +15,7 @@ public class Computer {
 
     public Computer() {
     }
+
     public void generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -24,23 +25,20 @@ public class Computer {
         }
         number = new GameNumber(computer);
     }
+
     public String result() {
         result = new GameResult(hint);
         return result.exportMessage();
-
-    }
-    public boolean answer() {
-        return hint.getStrike() == 3;
     }
 
     public void compute(GameNumber userNumber) {
         hint = new GameHint();
         for (int i = 0; i < 3; i++) {
-            determineStrikeOrBall(userNumber.getNumberList().get(i), i, hint);
+            determineStrikeOrBall(userNumber.getNumberList().get(i), i);
         }
     }
 
-    private void determineStrikeOrBall(int digit, int index, GameHint hint) {
+    private void determineStrikeOrBall(int digit, int index) {
         if (isStrike(digit, index)) {
             hint.addStrike();
             return;
@@ -52,8 +50,12 @@ public class Computer {
     private boolean isStrike(int digit, int index) {
         return digit == number.getNumberList().get(index);
     }
+
     private boolean isBall(int digit) {
         return number.getNumberList().contains(digit);
     }
 
+    public boolean answer() {
+        return hint.getStrike() == 3;
+    }
 }

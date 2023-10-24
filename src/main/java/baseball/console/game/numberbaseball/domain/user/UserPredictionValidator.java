@@ -8,13 +8,18 @@ public class UserPredictionValidator {
         try {
             int number = Integer.parseInt(userPrediction);
 
-            if (!(100 < number && number < 999))
+            if (!isThreeDigitNumber(number))
                 throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_THREE_DIGITS + number);
+
             if (NumberUtils.hasDuplicateDigits(number))
                 throw new IllegalArgumentException(ExceptionMessage.INVALID_HAS_DUPLICATE_DIGITS + number);
 
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_INTEGER + userPrediction);
         }
+    }
+
+    private static boolean isThreeDigitNumber(int number) {
+        return 100 < number && number < 999;
     }
 }

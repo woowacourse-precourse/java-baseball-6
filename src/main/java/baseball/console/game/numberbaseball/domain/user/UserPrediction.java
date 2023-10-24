@@ -7,10 +7,7 @@ public class UserPrediction {
 
     public UserPrediction(String userPrediction) {
         UserPredictionValidator.validate(userPrediction);
-        number = new GameNumber(parseStringToInt(userPrediction));
-    }
-    private int parseStringToInt(String userPrediction) {
-       return Integer.parseInt(userPrediction);
+        number = new GameNumber(Integer.parseInt(userPrediction));
     }
 
     public GameNumber getNumber() {

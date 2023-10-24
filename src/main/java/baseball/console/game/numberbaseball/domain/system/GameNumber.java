@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameNumber {
+    List<Integer> numberList;
     private final int hundredDigit;
     private final int tenDigit;
     private final int oneDigit;
-    List<Integer> numberList;
 
     public GameNumber(int number) {
         hundredDigit = NumberUtils.getHundredDigit(number);
@@ -25,17 +25,7 @@ public class GameNumber {
         tenDigit = numbers.get(1);
         oneDigit = numbers.get(2);
     }
-    public int getHundredDigit() {
-        return hundredDigit;
-    }
 
-    public int getTenDigit() {
-        return tenDigit;
-    }
-
-    public int getOneDigit() {
-        return oneDigit;
-    }
     public List<Integer> getNumberList() {
         return numberList;
     }

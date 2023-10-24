@@ -5,8 +5,6 @@ import baseball.console.game.numberbaseball.domain.computer.Computer;
 import baseball.console.game.numberbaseball.domain.user.UserPrediction;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 import static baseball.console.game.numberbaseball.config.GameMessage.REQUEST_USER_INPUT;
 
 public class NumberBaseballGame {
@@ -23,8 +21,8 @@ public class NumberBaseballGame {
         generateNumber();
         while (status == GameStatus.CONTINUE) {
             userPredict();
-            compute();
-            print();
+            computeResult();
+            printResult();
             refreshStatus();
         }
     }
@@ -37,17 +35,21 @@ public class NumberBaseballGame {
         printGameMessage(REQUEST_USER_INPUT);
         userPrediction = new UserPrediction(Console.readLine());
     }
-    private void compute() {
+
+    private void computeResult() {
             computer.compute(userPrediction.getNumber());
     }
-    private void print() {
+
+    private void printResult() {
             printGameMessage(computer.result());
     }
+
     private void refreshStatus() {
         if (computer.answer()) {
             status = GameStatus.CLEAR;
         }
     }
+
     private void printGameMessage(String message) {
         System.out.print(message);
     }
