@@ -11,5 +11,6 @@ public class BaseballMessageConst {
     public static final String INVALID_BALL_COUNT_ERROR = "공이 3개가 아닙니다.";
     public static final String EXIST_BALL_ERROR = "중복된 공이 존재합니다.";
     public static final String OUT_OF_RANGE_BALL_ERROR = "범위에 벗어났습니다.";
+    public static final String INVALID_BALL_TYPE = "유효하지 않는 공 타입입니다.";
 
 }
