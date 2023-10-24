@@ -1,12 +1,9 @@
 package baseball;
 
+import baseball.entity.Hint;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -14,19 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-
-    private static ByteArrayOutputStream outputMessage;
-
-    @BeforeEach
-    void setUpStreams() {
-        outputMessage = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputMessage));
-    }
-
-    @AfterEach
-    void restoresStreams() {
-        System.setOut(System.out);
-    }
 
     @Test
     void 게임종료_후_재시작() {
@@ -71,8 +55,48 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 스트라이크_테스트() {
+        Hint hint = new Hint();
+
+        String randomNumber = "123";
+        String inputNumber = "123";
+
+        hint.generateHint(randomNumber, inputNumber);
+
+        String expected = "3스트라이크";
+        Assertions.assertEquals(expected, output());
+    }
+
+    @Test
+    void 볼_스트라이크_테스트() {
+        Hint hint = new Hint();
+
+        String randomNumber = "123";
+        String inputNumber = "321";
+
+        hint.generateHint(randomNumber, inputNumber);
+
+        String expected = "2볼 1스트라이크";
+        Assertions.assertEquals(expected, output());
+    }
+
+    @Test
+    void 낫싱_테스트() {
+        Hint hint = new Hint();
+
+        String randomNumber = "123";
+        String inputNumber = "456";
+
+        hint.generateHint(randomNumber, inputNumber);
+
+        String expected = "낫싱";
+        Assertions.assertEquals(expected, output());
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
+
 }
