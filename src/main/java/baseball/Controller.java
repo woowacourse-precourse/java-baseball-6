@@ -14,7 +14,6 @@ public class Controller {
         Computer computer = new Computer();
         Player player = new Player();
         String status;
-
         do {
             player.init();
             player.play();

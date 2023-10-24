@@ -31,7 +31,6 @@ public class Computer {
     private void generateRandomNumbers() {
         randomNumbers = new ArrayList<>();
         Set<Integer> set = new HashSet<>();
-
         while (set.size() < COUNTS) {
             set.add(Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER));
         }
