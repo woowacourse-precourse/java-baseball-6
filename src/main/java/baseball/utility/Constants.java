@@ -11,4 +11,7 @@ public final class Constants { //상속을 막기 위해 final 사용
     public static final String GAME_PAUSE_OR_RESUME_PROMPT_MESSAGE= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static final int NUMBER_LIMIT_LENGTH = 3;
+
+    //정규표현식 패턴
+    public static final String VALID_NUMBER_PATTERN = "^(?!.*(\\d).*\\1)[1-9]{3}$";
 }
