@@ -2,7 +2,8 @@ package baseball;
 
 import static baseball.utils.Constants.PROGRAM_EXIT;
 import static baseball.utils.Constants.RESTART_GAME;
-import static baseball.utils.GameMessage.RESTART_REQUEST_MESSAGE;
+import static baseball.utils.ErrorMessage.STATUS_OUT_OF_RANGE_ERROR_MESSAGE;
+import static baseball.utils.GameMessage.RESTART_OR_EXIT_REQUEST_MESSAGE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
@@ -17,19 +18,19 @@ public class Controller {
         do {
             player.init();
             player.play();
-            printRestartRequestMessage();
+            printRestartOrExitMessage();
             status = readLine();
-            validateRestartRange(status);
+            validateStatusRange(status);
         } while (RESTART_GAME.equals(status));
     }
 
-    private void printRestartRequestMessage() {
-        System.out.println(RESTART_REQUEST_MESSAGE);
+    private void printRestartOrExitMessage() {
+        System.out.println(RESTART_OR_EXIT_REQUEST_MESSAGE);
     }
 
-    private void validateRestartRange(String status) {
+    private void validateStatusRange(String status) {
         if (!status.equals(RESTART_GAME) && !status.equals(PROGRAM_EXIT)) {
-            throw new IllegalArgumentException("입력이 1 또는 2가 아닙니다.");
+            throw new IllegalArgumentException(STATUS_OUT_OF_RANGE_ERROR_MESSAGE);
         }
     }
 }

@@ -3,6 +3,9 @@ package baseball;
 import static baseball.utils.Constants.COUNTS;
 import static baseball.utils.Constants.MAXIMUM_NUMBER;
 import static baseball.utils.Constants.MINIMUM_NUMBER;
+import static baseball.utils.ErrorMessage.INPUT_NOT_INTEGER_ERROR_MESSAGE;
+import static baseball.utils.ErrorMessage.PLAYER_INPUT_DUPLICATION_ERROR_MESSAGE;
+import static baseball.utils.ErrorMessage.PLAYER_INPUT_OUT_OF_RANGE_ERROR_MESSAGE;
 import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
 import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
 import static baseball.utils.Util.convertToIntegerList;
@@ -50,7 +53,7 @@ public class Player {
         try {
             Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Input is not an Integer.");
+            throw new IllegalArgumentException(INPUT_NOT_INTEGER_ERROR_MESSAGE);
         }
     }
 
@@ -70,7 +73,7 @@ public class Player {
         boolean isInvalid = playerNumbers.stream()
                 .anyMatch(number -> number < MINIMUM_NUMBER || number > MAXIMUM_NUMBER);
         if (isInvalid) {
-            throw new IllegalArgumentException("the input range is invalid.");
+            throw new IllegalArgumentException(PLAYER_INPUT_OUT_OF_RANGE_ERROR_MESSAGE);
         }
     }
 
@@ -78,7 +81,7 @@ public class Player {
         Set<Integer> numberSet = new HashSet<>();
         for (int number : playerNumbers) {
             if (numberSet.contains(number)) {
-                throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
+                throw new IllegalArgumentException(PLAYER_INPUT_DUPLICATION_ERROR_MESSAGE);
             }
             numberSet.add(number);
         }
