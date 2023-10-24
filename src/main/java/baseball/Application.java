@@ -3,42 +3,30 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-public class Application {
+class BullsAndCows {
+    int answer;
+    boolean checkNumber[];
 
-    static boolean checkNumber[];
+    public void createRandomNumber() {
+        checkNumber = new boolean[10];
+        int number = 0;
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        
-        while (true) {
-            runBullsAndCows();
+        for (int i = 0; i < 3; i++) {
+            int randomNumber = pickNumberInRange(1, 9);
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int input = checkValidInputAtMain(readLine());
-
-            if (input == 2) {
-                break;
+            if (checkNumber[randomNumber]) {
+                i--;
+                continue;
             }
+
+            number += Math.pow(10, 2 - i) * randomNumber;
+            checkNumber[randomNumber] = true;
         }
 
+        answer = number;
     }
 
-    public static void runBullsAndCows() {
-        int answer = createRandomNumber();
-
-        while (true) {
-            System.out.printf("숫자를 입력해주세요 : ");
-            int input = checkValidInputAtGame(readLine());
-
-            if (isCorrect(input, answer)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return;
-            }
-        }
-    }
-
-    public static boolean isCorrect(int input, int answer) {
+    public boolean isCorrect(int input) {
         int ball = 0;
         int strike = 0;
 
@@ -83,7 +71,19 @@ public class Application {
         return false;
     }
 
-    public static int checkValidInputAtGame(String input) {
+    public void run() {
+        while (true) {
+            System.out.printf("숫자를 입력해주세요 : ");
+            int input = checkValidInputAtGame(readLine());
+
+            if (isCorrect(input)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+        }
+    }
+
+    public int checkValidInputAtGame(String input) {
         try {
             int userInput = Integer.parseInt(input);
 
@@ -95,6 +95,29 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Wrong Input");
         }
+    }
+
+}
+
+public class Application {
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        BullsAndCows game = new BullsAndCows();
+        
+        while (true) {
+            game.createRandomNumber();
+            game.run();
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int input = checkValidInputAtMain(readLine());
+
+            if (input == 2) {
+                break;
+            }
+        }
+
     }
 
     public static int checkValidInputAtMain(String input) {
@@ -109,24 +132,5 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Wrong Input");
         }
-    }
-
-    public static int createRandomNumber() {
-        checkNumber = new boolean[10];
-        int number = 0;
-
-        for (int i = 0; i < 3; i++) {
-            int randomNumber = pickNumberInRange(1, 9);
-
-            if (checkNumber[randomNumber]) {
-                i--;
-                continue;
-            }
-
-            number += Math.pow(10, 2 - i) * randomNumber;
-            checkNumber[randomNumber] = true;
-        }
-
-        return number;
     }
 }
