@@ -50,9 +50,6 @@ public class Game {
 
 		if (answer == 1)
 			play();
-		if (answer == 2) {
-			System.out.println("게임 종료");
-		}
 	}
 
 	public int question() {
