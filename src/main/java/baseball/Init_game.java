@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Init_game {
     public List<Integer> player_num() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         List<Integer> player_num = new ArrayList<>();
         String input = Console.readLine();
 
@@ -20,7 +20,7 @@ public class Init_game {
 
     public void exception_Length(String s) {
         if(s.length() != 3) {
-            throw new IllegalArgumentException("세자리 수보다 크거나 작음");
+            throw new IllegalArgumentException("execption");
         }
     }
 }
