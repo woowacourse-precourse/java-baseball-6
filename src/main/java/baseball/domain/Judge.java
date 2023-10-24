@@ -13,6 +13,13 @@ public class Judge {
         gameStandard = new GameStandard();
     }
 
+    /**
+     * Ball의 갯수를 얻는다.
+     *
+     * @param cntTotalSameUserAndComputer user와 computer의 같은 숫자의 갯수
+     * @param cntStrike                   스트라이크의 갯수
+     * @return ball의 갯수를 반환한다.
+     */
     private static int getCntBall(int cntTotalSameUserAndComputer, int cntStrike) {
         return cntTotalSameUserAndComputer - cntStrike;
     }
