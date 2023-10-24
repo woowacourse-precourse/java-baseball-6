@@ -1,35 +1,34 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RandomNumber {
-    private int randomNumber;
-    private int min;
-    private int max;
+    private static List<Integer> arr;
+    private final int min = 1;
+    private final int max = 9;
 
-    public RandomNumber(int min, int max) {
-        this.min = min;
-        this.max = max;
-        validateMinMax(min, max);
-        validateRange(min, max);
-        this.randomNumber = Randoms.pickNumberInRange(min, max);
+    public RandomNumber() {
+        arr = new ArrayList<>();
+        createThreeNumber();
     }
 
-    private void validateMinMax(int min, int max) {
-        if (min > max) {
-            int box = max;
-            this.max = min;
-            this.min = box;
+    private void createThreeNumber() {
+        for (int i = 0; i <= 2; i++) {
+            int certifiedNum = validateAlready(Randoms.pickNumberInRange(min, max));
+            arr.add(certifiedNum);
         }
     }
 
-    private void validateRange(int min, int max) {
-        if (!(1 <= min && min <= 9 || 1 <= max && max <= 9)) {
-            throw new RuntimeException(" 1부터 9사이 숫자를 입력해주세요.");
+    private int validateAlready(int num) {
+        if (arr.contains(num)) {
+            validateAlready(Randoms.pickNumberInRange(min, max));
         }
+        return num;
     }
 
-    public int getRandomNumber() {
-        return randomNumber;
+    public List<Integer> getRandomNumbers() {
+        return arr;
     }
 }
