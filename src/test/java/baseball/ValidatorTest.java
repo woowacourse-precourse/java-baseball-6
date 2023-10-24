@@ -26,4 +26,27 @@ public class ValidatorTest {
         });
     }
 
+    @Test
+    void 숫자입력_정수가_아닌_입력_예외_발생_알파벳() {
+        String inputAlpha = "Aab";
+        String inputSpecialCharacter = "%12";
+        String inputBlank = " 23";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            numberValidator.validateInputNumber(inputAlpha, inputAlpha.length());
+            numberValidator.validateInputNumber(inputSpecialCharacter, inputSpecialCharacter.length());
+            numberValidator.validateInputNumber(inputBlank, inputBlank.length());
+        });
+    }
+
+    @Test
+    void 메뉴입력_메뉴_범위를_벗어난_입력_예외_발생(){
+        String overInput = "1000";
+        String underInput = "-1";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            numberValidator.validateMenu(overInput);
+            numberValidator.validateMenu(underInput);
+        });
+    }
+
 }
