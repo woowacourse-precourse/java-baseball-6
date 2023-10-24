@@ -5,19 +5,19 @@ import java.util.HashSet;
 
 public class Exception {
 
-    public static void checkOneOrTwo(int userInput){
+    public static void validateOneOrTwo(int userInput){
         if(userInput != 1 && userInput != 2){
             throw new IllegalArgumentException("프로그램 종료");
         }
     }
 
-    public static void checkUserInput(char[] userInput){
-        checkNumbers(userInput);
-        checkDigits(userInput);
-        checkDuplicateNumbers(userInput);
+    public static void validateInput(char[] userInput){
+        validateDigits(userInput);
+        validateLength(userInput);
+        validateDuplicateNumbers(userInput);
     }
 
-    public static void checkNumbers(char[] userInput){
+    public static void validateDigits(char[] userInput){
         for (char c : userInput) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("프로그램 종료");
@@ -25,13 +25,13 @@ public class Exception {
         }
     }
 
-    public static void  checkDigits(char[] userInput){
+    public static void  validateLength(char[] userInput){
         if(userInput.length != 3){
             throw new IllegalArgumentException("프로그램 종료");
         }
     }
 
-    public static void checkDuplicateNumbers(char[] userInput){
+    public static void validateDuplicateNumbers(char[] userInput){
         HashSet<Character> inputSet = new HashSet<>();
         for (char c : userInput) {
             inputSet.add(c);

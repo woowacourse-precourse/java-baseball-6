@@ -42,7 +42,7 @@ class BaseballGame{
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
         char[] inputDigits = userInput.toCharArray();
-        Exception.checkUserInput(inputDigits);
+        Exception.validateInput(inputDigits);
 
         for(int idx = 0; idx < NUMBER_LENGTH; idx++){
             userNumbers[idx] = inputDigits[idx] - '0';
