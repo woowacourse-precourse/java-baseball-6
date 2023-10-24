@@ -10,6 +10,7 @@ public class GameManager {
     public void launch() {
         while (true) {
             init();
+            System.out.println(answerNumber);
             while (true) {
                 System.out.print(INPUT_YOUR_NUMBER);
                 String inputNumber = inputManager.readNumber();
@@ -18,6 +19,7 @@ public class GameManager {
                 printResultMessage(result);
 
                 if(isGameClear(result)) {
+                    System.out.println(GAME_CLEAR_MESSAGE);
                     int restartOrEnd = inputManager.readWeatherRestartOrEnd();
                     if(restartOrEnd == 1) break; // 재시작
                     if(restartOrEnd == 2) return; // 종료
@@ -49,12 +51,14 @@ public class GameManager {
         int strike = ballCount.strike();
         int ball = ballCount.ball();
 
-        if(strike == 0 && ball == 0){
+        if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);
-        } else if (strike == 3) {
-            System.out.println(GAME_CLEAR_MESSAGE);
-        } else {
-            System.out.println(String.format(STRIKE_BALL_COUNT, ball, strike));
+        } else if (strike > 0 && ball == 0) {
+            System.out.printf(ONLY_STRIKE_COUNT + "%n", strike);
+        } else if (ball > 0 && strike == 0) {
+            System.out.printf(ONLY_BALL_COUNT + "%n", ball);
+        } else if (strike > 0 && ball > 0) {
+            System.out.printf(STRIKE_BALL_COUNT + "%n", ball, strike);
         }
     }
 
