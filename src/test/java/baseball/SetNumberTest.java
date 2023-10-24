@@ -12,7 +12,7 @@ public class SetNumberTest {
 
     @Test
     void boolean_세자리수_이상_입력_받은_경우()
-        throws IllegalAccessException, NoSuchMethodException, InvocationTargetException{
+        throws NoSuchMethodException, InvocationTargetException, IllegalAccessException{
 
         Method method = SetNumber.class.getDeclaredMethod("isThreeDigits", String.class);
         method.setAccessible(true);
@@ -24,5 +24,20 @@ public class SetNumberTest {
         assertThat(result).isEqualTo(expected);
 
     }
+
+    @Test
+    void boolean_입력값이_숫자가_아닌_경우()
+            throws InvocationTargetException, NoSuchMethodException,  IllegalAccessException {
+        Method method = Number.class.getDeclaredMethod("isValidNumber", String.class);
+        method.setAccessible(true);
+
+        String input = "a23";
+        boolean expected = false;
+
+        boolean result = (boolean) method.invoke(number, input);
+        assertThat(result).isEqualTo(expected);
+    }
+
+
 
 }
