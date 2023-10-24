@@ -10,6 +10,7 @@ public class PlayerNumber {
         numberValidator.validateDigit(inputNumber);
         numberValidator.validateRange(inputNumber);
         numberValidator.validateDuplicateNumber(inputNumber);
+        numberValidator.validateNonNumeric(inputNumber);
 
         this.inputNumber = inputNumber;
     }
