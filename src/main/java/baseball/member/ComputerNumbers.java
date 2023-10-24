@@ -13,15 +13,6 @@ public class ComputerNumbers {
         this.computerNumbers = createComputerNumbers();
     }
 
-    public List<Integer> getComputerNumbers() {
-        List<Integer> clonedComputerNumbers = new ArrayList<>(computerNumbers);
-        return Collections.unmodifiableList(clonedComputerNumbers);
-    }
-
-    public Integer getComputerNumberAtIndex(int index) {
-        return getComputerNumbers().get(index);
-    }
-
     private List<Integer> createComputerNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (!isValidDigit(randomNumbers)) {
@@ -31,6 +22,15 @@ public class ComputerNumbers {
             }
         }
         return randomNumbers;
+    }
+
+    public List<Integer> getComputerNumbers() {
+        List<Integer> clonedComputerNumbers = new ArrayList<>(computerNumbers);
+        return Collections.unmodifiableList(clonedComputerNumbers);
+    }
+
+    public Integer getComputerNumberAtIndex(int index) {
+        return getComputerNumbers().get(index);
     }
 
     private boolean isNumberNotDuplicate(List<Integer> numbers, int number) {
