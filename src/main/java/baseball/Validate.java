@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Validate {
@@ -13,7 +12,6 @@ public class Validate {
     public void validateUser(List<Integer> user) { // 입력받은 숫자가 이상하다면 예외를 던지는 메소드
         this.user = user;
         if (user.size() != 3 || checkZeroValue() == false) {
-            Console.close(); //콘솔을 닫아야 함
             throw new IllegalArgumentException();
         }
     }
