@@ -19,11 +19,8 @@ public class RandomNumber {
 
     public List<Integer> make() {
         return IntStream.range(0, 3)
-                .mapToObj(i -> extract())
+                .mapToObj(i -> Randoms.pickNumberInRange(1, 9))
                 .collect(Collectors.toList());
     }
 
-    private Integer extract() {
-        return Randoms.pickNumberInRange(1, 9);
-    }
 }
