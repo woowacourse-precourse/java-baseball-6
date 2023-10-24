@@ -23,7 +23,7 @@ public class Ball {
 
             if (userIndex == randomIndex) {
                 strike++;
-            } else if (randomIndex > 0) {
+            } else if (randomIndex >= 0) {
                 ball++;
             }
             userIndex++;
