@@ -7,22 +7,20 @@ import static baseball.exception.BaseballExceptionType.OUT_OF_RANGE;
 import static baseball.view.BaseballConsoleConstants.INPUT_NUMBER;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     public List<Integer> readThreeInputNumbers() {
         BaseballConsole.print(INPUT_NUMBER);
-        String[] strings = Console.readLine().split("");
 
-        List<Integer> numbers = new ArrayList<>();
-        for (String string : strings) {
-            int number = Integer.parseInt(string);
-            validateNumberRange(number);
-            validateNoDuplicate(numbers, number);
-            numbers.add(number);
-        }
-        validateNumberCount(numbers);
+        String[] splitNumbers = Console.readLine().split("");
+        List<Integer> numbers = Arrays.stream(splitNumbers)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        validateNumbers(numbers);
         return numbers;
     }
 
@@ -34,6 +32,15 @@ public class InputView {
         }
         return false;
     }
+
+    private void validateNumbers(List<Integer> numbers) {
+        for (int number : numbers) {
+            validateNumberRange(number);
+            validateNoDuplicate(numbers, number);
+        }
+        validateNumberCount(numbers);
+    }
+
 
     private void validateNumberRange(int number) {
         if (number < 1 || number > 9) {
