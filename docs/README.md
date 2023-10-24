@@ -17,5 +17,5 @@
 - 기능 별 클래스 설계
    - NumberGenerator : 정답 숫자 생성
    - UserFunc : 사용자에게 입력을 받아 게임 진행
-   - NumberChecker : 입력 받은 숫자와 정답을 비교하여 결과를 반환
+   - NumberCheck : 입력 받은 숫자와 정답을 비교하여 결과를 반환
    - GameController : 게임 전체 제어
