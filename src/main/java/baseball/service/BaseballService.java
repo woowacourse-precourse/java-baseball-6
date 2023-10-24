@@ -6,17 +6,31 @@ import java.util.List;
 public class BaseballService {
 
     public Score calculateGameScore(String number, List<Integer> computerNumbers) {
-        List<Integer> numbers = number.chars()
+        List<Integer> numbers = convertToList(number);
+
+        int ballCnt = calculateBallCnt(computerNumbers, numbers);
+        int strikeCnt = calculateStrikeCnt(computerNumbers, numbers);
+
+        Score score = new Score(ballCnt);
+        score.increaseStrike(strikeCnt);
+
+        return score;
+    }
+
+    private static List<Integer> convertToList(String number) {
+        return number.chars()
             .map(c -> c - '0')
             .boxed()
             .toList();
+    }
 
-        int ballCnt = (int) numbers.stream()
+    private static int calculateBallCnt(List<Integer> computerNumbers, List<Integer> numbers) {
+        return (int) numbers.stream()
             .filter(computerNumbers::contains)
             .count();
+    }
 
-        Score score = new Score(ballCnt);
-
+    private static int calculateStrikeCnt(List<Integer> computerNumbers, List<Integer> numbers) {
         int strikeCnt = 0;
         for (int idx = 0; idx < numbers.size(); idx++) {
             int target = numbers.get(idx);
@@ -24,7 +38,6 @@ public class BaseballService {
                 strikeCnt++;
             }
         }
-        score.increaseStrike(strikeCnt);
-        return score;
+        return strikeCnt;
     }
 }
