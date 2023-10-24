@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserValue {
+public class InputView {
     private static String userNumberString;
 
-    public static int getUserInput() {
+    public static int getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         return Integer.parseInt(Console.readLine());
     }
@@ -39,5 +39,16 @@ public class UserValue {
         if (userNumberString.contains("0")) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static int getPlayAgainChoice() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int choice = Integer.parseInt(Console.readLine());
+
+        if (choice == 1 || choice == 2) {
+            return choice;
+        }
+        throw new IllegalArgumentException();
     }
 }
