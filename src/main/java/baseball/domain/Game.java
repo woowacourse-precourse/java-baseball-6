@@ -12,6 +12,7 @@ public class Game {
     private final ConsoleInput CONSOLE_INPUT;
     private final ConsoleOutput CONSOLE_OUTPUT;
     private List<Command> commands = new ArrayList<>();
+    private Computer computer;
     private User user;
 
     public Game(final int numberBalls, final ConsoleInput CONSOLE_INPUT, final ConsoleOutput CONSOLE_OUTPUT) {
@@ -31,18 +32,16 @@ public class Game {
     }
 
     private void play() {
-        Computer computer = new Computer(CONSOLE_OUTPUT, NUMBER_BALLS);
         user = new User(CONSOLE_INPUT, NUMBER_BALLS);
+        computer = new Computer(CONSOLE_OUTPUT, NUMBER_BALLS);
+        computer.generatePlayerNumber(NUMBER_BALLS);
 
-        while (true) {
+        do {
             CONSOLE_OUTPUT.printMessage("숫자를 입력해주세요 : ");
             user.generatePlayerNumber(NUMBER_BALLS);
+        } while (computer.respondsTo(user));
 
-            if (computer.respondsTo(user)) {
-                CONSOLE_OUTPUT.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-                break;
-            }
-        }
+        CONSOLE_OUTPUT.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
     private boolean isRestart() {

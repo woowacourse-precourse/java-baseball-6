@@ -23,7 +23,7 @@ class ResponseTest {
         Response response = new Response(countList, NUMBER_BALLS);
 
         // then
-        assertEquals(true, response.judgeResult());
+        assertEquals(false, response.isWrongAnswer());
 
     }
 
@@ -38,7 +38,7 @@ class ResponseTest {
         Response response = new Response(countList, NUMBER_BALLS);
 
         // then
-        assertEquals(false, response.judgeResult());
+        assertEquals(true, response.isWrongAnswer());
 
     }
 
