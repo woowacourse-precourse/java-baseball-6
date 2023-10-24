@@ -1,8 +1,7 @@
 package baseball;
 
-import static java.text.MessageFormat.format;
-
 import camp.nextstep.edu.missionutils.Console;
+import java.text.MessageFormat;
 import java.util.List;
 
 public class BaseBallGame {
@@ -51,13 +50,13 @@ public class BaseBallGame {
         }
 
         if (strike == 0) {
-            return format("{0}볼", ball);
+            return MessageFormat.format("{0}볼", ball);
         }
 
         if (ball == 0) {
-            return format("{0}스트라이크", strike);
+            return MessageFormat.format("{0}스트라이크", strike);
         }
 
-        return format("{0}볼 {1}스트라이크", ball, strike);
+        return MessageFormat.format("{0}볼 {1}스트라이크", ball, strike);
     }
 }
