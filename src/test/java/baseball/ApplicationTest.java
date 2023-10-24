@@ -31,9 +31,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    /* 유닛 테스트 코드 대원칙
+     * - given(준비): 어떤 데이터가 준비되었을 때
+     * - when(실행): 어떠한 함수를 실행하면
+     * - then(검증): 어떠한 결과가 나와야한다.
+     * 위 구조를 지키며 작성한다.
+     * */
     @Test
     void 스트라이크_개수() {
-        // given(준비): 어떤 데이터가 준비되었을 때
+        // given
         final List<Integer> computerNumbers = new ArrayList<>() {
             {
                 add(1);
@@ -49,12 +55,38 @@ class ApplicationTest extends NsTest {
             }
         };
 
-        // when(실행): 어떠한 함수를 실행하면
+        // when
         Core core = new Core();
         int result = core.countStrike(computerNumbers, playerNumbers);
 
-        // then(검증): 어떠한 결과가 나와야 한다.
+        // then
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    void 볼_개수() {
+        // given
+        final List<Integer> computerNumbers = new ArrayList<>() {
+            {
+                add(1);
+                add(2);
+                add(5);
+            }
+        };
+        final List<Integer> playerNumbers = new ArrayList<>() {
+            {
+                add(3);
+                add(4);
+                add(7);
+            }
+        };
+
+        // when
+        Core core = new Core();
+        int result = core.countBall(computerNumbers, playerNumbers);
+
+        // then
+        assertThat(result).isEqualTo(0);
     }
 
     @Override
