@@ -60,5 +60,13 @@ public class ValidatorTest {
                 );
     }
 
+    @Test
+    @DisplayName("게임을 마치고 잘못된 입력의 경우 예외가 발생한다.")
+    void 게임을_마치고_플레이어_잘못된_입력_예외발생() {
+        String invalidInput = "3";
+        assertThatThrownBy(() ->
+                Validator.validateRestartInput(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
