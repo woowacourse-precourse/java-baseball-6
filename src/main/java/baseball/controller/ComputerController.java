@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Numbers;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +10,16 @@ import java.util.List;
 public class ComputerController {
     private Computer computer = new Computer();
 
+    private OutputView outputView = new OutputView();
+
     public void saveRandomNumbers() {
         List<Integer> generatedNumbers = generateRandomNumbers();
         computer.saveNumbers(generatedNumbers);
+    }
+
+    public void provideHint(List<Integer> inputNumbers) {
+        String hint = computer.provideHint(Numbers.from(inputNumbers));
+        outputView.printHint(hint);
     }
 
     private List<Integer> generateRandomNumbers() {

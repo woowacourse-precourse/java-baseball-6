@@ -17,5 +17,6 @@ public class GameController {
     public void playGame() {
         computerController.saveRandomNumbers();
         List<Integer> inputNumbers = playerController.readAndValidateInputNumbers();
+        computerController.provideHint(inputNumbers);
     }
 }
