@@ -37,11 +37,18 @@ public class BaseballGame {
             String input = Console.readLine();
 
             if (Validator.isNull(input)) {
-                exit(StringError.wrongInputError);
+                exit(StringError.notInputError);
 
             } else if (!Validator.stringLengthCheck(input)) {
                 exit(StringError.wrongLengthInputError);
+
+            } else if (!Validator.isNumber(input)) {
+                exit(StringError.wrongInputError);
+                
+            } else if (Validator.isDuplicate(input)) {
+                exit(StringError.duplicatedInputError);
             }
+
             // 입력받은 StringNum을 List<Integer>로 바꾸어 정답체크 결과출력
             List<Integer> userInput = stringToIntegerList(input);
             result = AnswerChecker.result(computer, userInput);
