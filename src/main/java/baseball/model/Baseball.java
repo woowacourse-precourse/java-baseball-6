@@ -26,22 +26,22 @@ public class Baseball {
     public BaseballGameResult match(final Baseball compare) {
         BaseballGameResult result = new BaseballGameResult();
 
-        updateResult(result, compare);
-        return result;
-    }
-
-    private void updateResult(final BaseballGameResult result, final Baseball compare) {
         List<BaseballNumber> compareNumbers = compare.getBaseballNumbers();
-
         for (int i = 0; i < Baseball.LENGTH; i++) {
             BaseballNumber number = baseballNumbers.get(i);
             BaseballNumber compareNumber = compareNumbers.get(i);
 
-            if (isStrike(number, compareNumber)) {
-                result.add(BaseballGameResultType.STRIKE);
-            } else if (isBall(compareNumber)) {
-                result.add(BaseballGameResultType.BALL);
-            }
+            addResult(result, number, compareNumber);
+        }
+
+        return result;
+    }
+
+    private void addResult(BaseballGameResult result, BaseballNumber number, BaseballNumber compareNumber) {
+        if (isStrike(number, compareNumber)) {
+            result.add(BaseballGameResultType.STRIKE);
+        } else if (isBall(compareNumber)) {
+            result.add(BaseballGameResultType.BALL);
         }
     }
 
