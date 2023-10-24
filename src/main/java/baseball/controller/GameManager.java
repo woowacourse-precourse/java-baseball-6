@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.model.ComputerNumberDto;
 import baseball.model.UserNumberDto;
 import baseball.view.UserView;
-import java.util.List;
 
 public class GameManager {
     //인스턴스

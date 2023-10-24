@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import java.util.List;
 import static baseball.utility.Constants.NUMBER_LIMIT_LENGTH;
 
 public class InputException {
@@ -19,6 +18,7 @@ public class InputException {
         isValidNumber = true;
         return isValidNumber;
     }
+
     private boolean judgeNumberLengthThree(){
         if(input.length() == NUMBER_LIMIT_LENGTH){
             return true;
