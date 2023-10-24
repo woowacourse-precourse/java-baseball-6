@@ -26,7 +26,7 @@ public class GameService {
         this.maxValue = config.getMaxValue();
     }
 
-    public void gameSet() {
+    public void init() {
         game = new Game(RandomUtils.getRandomNumbers(size,minValue,maxValue));
     }
 
@@ -92,6 +92,17 @@ public class GameService {
         }
         if (index == j) {
             game.increaseStrike();
+        }
+    }
+
+    public String restart() {
+        int mode = Integer.parseInt(Console.readLine());
+        if (mode == 1) {
+            return "RESTART";
+        } else if (mode == 2) {
+            return "END";
+        } else {
+            return "ERROR";
         }
     }
 }
