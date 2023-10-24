@@ -5,24 +5,31 @@ import java.util.regex.Pattern;
 
 public class BaseballGame {
     private final BaseballNumber numbers;
+    private final GameRandom random;
+    private final GameInputInterface in;
+    private final GameOutputInterface out;
 
-    public BaseballGame(int[] numbers) {
-        this.numbers = new BaseballNumber(numbers);
+
+    public BaseballGame(GameRandom random, GameInputInterface in, GameOutputInterface out) {
+        this.random = random;
+        this.numbers = new BaseballNumber(random.sampleDistinctNumbers(1, 9, 3));
+        this.in = in;
+        this.out = out;
     }
 
-    public static BaseballGame of(int[] numbers) {
-        return new BaseballGame(numbers);
+    public BaseballGame createNewGame() {
+        return new BaseballGame(random, in, out);
     }
 
-    public void sayHello(GameOutputInterface consoleLogger) {
-        consoleLogger.print("숫자 야구 게임을 시작합니다.\n");
+    public void sayHello() {
+        out.print("숫자 야구 게임을 시작합니다.\n");
     }
 
-    public void sayBi(GameOutputInterface consoleLogger) {
-        consoleLogger.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+    public void sayBi() {
+        out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
-    public void run(GameInputInterface in, GameOutputInterface out) {
+    public void run() {
         while (true) {
             out.print("숫자를 입력해주세요 :");
             String input = in.getInput();
@@ -33,10 +40,10 @@ public class BaseballGame {
                 break;
             }
         }
-        sayBi(out);
+        sayBi();
     }
 
-    public boolean shouldRetry(GameInputInterface in, GameOutputInterface out){
+    public boolean shouldRetry() {
         out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String input = in.getInput();
         checkInput(input);
@@ -54,12 +61,11 @@ public class BaseballGame {
         throw new IllegalArgumentException("0~9까지 숫자 3자리수가 아닙니다.");
     }
 
-    private static void checkInput(String input){
+    private static void checkInput(String input) {
         if (Pattern.matches("[12]", input)) {
             return;
         }
         throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
     }
-
 }
 

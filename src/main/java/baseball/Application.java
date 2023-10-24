@@ -2,10 +2,8 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        GameRandom random = new MissionUtilsGameRandom();
-        GameExecutor gameExecutor = new GameExecutor(new BaseballGame(random.sampleDistinctNumbers(1, 9, 3)),
-                new ConsoleInput(), new ConsoleLogger(), random
-        );
+        BaseballGame game = new BaseballGame(new MissionUtilsGameRandom(), new ConsoleInput(), new ConsoleLogger());
+        GameExecutor gameExecutor = new GameExecutor(game);
         gameExecutor.run();
     }
 }

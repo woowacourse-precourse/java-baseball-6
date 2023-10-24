@@ -1,31 +1,21 @@
 package baseball;
 
-import java.util.regex.Pattern;
-
 public class GameExecutor {
     private BaseballGame game;
-    private GameInputInterface in;
-    private GameOutputInterface out;
-    private GameRandom random;
 
-    public GameExecutor(BaseballGame game, GameInputInterface consoleInput,
-                        GameOutputInterface consoleLogger,
-                        GameRandom random) {
-        this.random = random;
+    public GameExecutor(BaseballGame game) {
         this.game = game;
-        this.in = consoleInput;
-        this.out = consoleLogger;
     }
 
 
     public void run() {
-        game.sayHello(out);
+        game.sayHello();
         while (true) {
-            game.run(in, out);
-            if (!game.shouldRetry(in, out)) {
+            game.run();
+            if (!game.shouldRetry()) {
                 break;
             }
-            game = BaseballGame.of(random.sampleDistinctNumbers(1, 9, 3));
+            game = game.createNewGame();
         }
     }
 }
