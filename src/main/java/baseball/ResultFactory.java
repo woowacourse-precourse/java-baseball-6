@@ -64,6 +64,3 @@ enum Order {
     FIRST, SECOND, THIRD
 }
 
-enum Hint {
-    BALL, STRIKE, NOTHING
-}
