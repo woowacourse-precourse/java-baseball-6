@@ -27,7 +27,7 @@ public class GameController {
         do {
             startGame();
             playGame();
-        } while (isEndGame());
+        } while (!isEndGame());
     }
 
 
@@ -53,7 +53,7 @@ public class GameController {
         view.printSuccessAndEndMessage();
         FinishInput finishInput = input.readFinishInput();
 
-        return finishInput == FinishInput.RESTART_GAME;
+        return finishInput == FinishInput.END_GAME;
     }
 
 }
