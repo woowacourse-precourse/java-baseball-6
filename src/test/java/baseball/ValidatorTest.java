@@ -2,10 +2,17 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
+
+    private Validator validator;
+    @BeforeEach
+    void setValidation() {
+        validator = new Validator();
+    }
 
     @Test
     @DisplayName("입력된 수의 길이는 3이다.")
@@ -13,7 +20,7 @@ class ValidatorTest {
         String numbers = "12";
 
         assertThrows(IllegalArgumentException.class, ()
-                -> Validator.validateInputNumbersSize(numbers));
+                -> validator.validateInputNumbersSize(numbers));
     }
 
     @Test
@@ -22,7 +29,7 @@ class ValidatorTest {
         String numbers = "1ab";
 
         assertThrows(IllegalArgumentException.class, ()
-                -> Validator.validateInputNumberIsNumeric(numbers));
+                -> validator.validateInputNumberIsNumeric(numbers));
     }
 
     @Test
@@ -31,6 +38,6 @@ class ValidatorTest {
         String numbers = "333";
 
         assertThrows(IllegalArgumentException.class, ()
-                -> Validator.validateInputNumbersDuplicated(numbers));
+                -> validator.validateInputNumbersDuplicated(numbers));
     }
 }

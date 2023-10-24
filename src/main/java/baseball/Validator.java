@@ -9,13 +9,13 @@ public class Validator {
   private static final String INVALID_NUMERIC_NUMBER = "입력은 숫자만 가능합니다.";
   private static final String INVALID_DUPLICATED_NUMBER = "중복된 수가 존재합니다.";
 
-  public static void validateInputNumbersSize(String numbers) {
+  public void validateInputNumbersSize(String numbers) {
     if (numbers.length() != INPUT_NUMBERS_SIZE) {
       throw new IllegalArgumentException(INVALID_NUMBER_SIZE);
     }
   }
 
-  public static void validateInputNumberIsNumeric(String numbers) {
+  public void validateInputNumberIsNumeric(String numbers) {
     for (char number : numbers.toCharArray()) {
       if (!Character.isDigit(number)) {
         throw new IllegalArgumentException(INVALID_NUMERIC_NUMBER);
@@ -23,7 +23,7 @@ public class Validator {
     }
   }
 
-  public static void validateInputNumbersDuplicated(String numbers) {
+  public void validateInputNumbersDuplicated(String numbers) {
     Set<Character> set = new HashSet<>();
     for (char number : numbers.toCharArray()) {
       if (!set.add(number)) {
