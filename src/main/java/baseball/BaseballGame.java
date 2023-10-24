@@ -43,16 +43,16 @@ public class BaseballGame {
     }
 
     private void guessAnswer(AnswerNumbers answerNumbers) {
-        while (true) {
+
+        boolean isContinue = true;
+
+        while (isContinue) {
             Score.initialize();
-
             doGuess(answerNumbers);
-
-            if (Score.isWin()) {
-                outputView.endGame();
-                break;
-            }
+            isContinue = !Score.isWin();
         }
+
+        outputView.endGame();
     }
 
     private void doGuess(AnswerNumbers answerNumbers) {
