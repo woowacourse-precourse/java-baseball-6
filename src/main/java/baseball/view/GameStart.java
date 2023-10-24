@@ -32,7 +32,7 @@ public class GameStart {
             initGame();
 
             // resultStr 이 "3스트라이크" 아니면 반복을 한다.
-            while (Utill.isNotSameString(hintOfJudge, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
+            while (isConditionForPlayGame()) {
                 playMainBaseBallGame();
             }
 
@@ -40,6 +40,15 @@ public class GameStart {
                 break;
             }
         }
+    }
+
+    /**
+     * 게임 진행의 조건 "3스트라이크"이 아니면 된다.
+     *
+     * @return
+     */
+    private boolean isConditionForPlayGame() {
+        return Utill.isNotSameString(hintOfJudge, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR());
     }
 
     /**
