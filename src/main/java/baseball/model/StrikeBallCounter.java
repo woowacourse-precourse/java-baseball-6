@@ -12,11 +12,11 @@ public class StrikeBallCounter {
             this.ball = ball;
         }
 
-        public int strike() {
+        public int getStrike() {
             return strike;
         }
 
-        public int ball() {
+        public int getBall() {
             return ball;
         }
     }
