@@ -19,13 +19,17 @@ public class BaseballGameService {
     private final StrikeBallResultDto strikeBallDto = new StrikeBallResultDto();
 
     public void playGame(String playerInput) {
-        numberDto.setValidateInput(validator.validateAllInput(playerInput));
+        String validatedInput = validator.validateAllInput(playerInput);
+
+        numberDto.setValidateInput(validatedInput);
         setStrikeBall();
         setGameResult();
     }
 
     public void restartGame(String playerRestartInput) {
-        numberDto.setValidateInput(validator.validateRestartInput(playerRestartInput));
+        String validatedInput = validator.validateRestartInput(playerRestartInput);
+
+        numberDto.setValidateInput(validatedInput);
         if (numberDto.getValidateInput().equals("1")) {
             gameResultDto.setIsRestart(true);
         }
@@ -33,20 +37,28 @@ public class BaseballGameService {
 
     public void initDto() {
         RandomNumberGenerator computerNumber = new RandomNumberGenerator();
+        String generatedNumber = computerNumber.generateRandomNumber();
+
         gameResultDto.setIsRestart(false);
         gameResultDto.setIsCorrectAnswer(false);
-        numberDto.setRandomNumber(computerNumber.generateRandomNumber());
+        numberDto.setRandomNumber(generatedNumber);
     }
 
     private void setStrikeBall() {
-        StrikeBallCounterData strikeBallCounterData = strikeBallCounter.createStrikeBall(numberDto.getValidateInput(),
-                numberDto.getRandomNumber());
-        strikeBallDto.setStrike(strikeBallCounterData.strike());
-        strikeBallDto.setBall(strikeBallCounterData.ball());
+        StrikeBallCounterData strikeBallCounterData;
+        String userInput = numberDto.getValidateInput();
+        String randomNumber = numberDto.getRandomNumber();
+
+        strikeBallCounterData = strikeBallCounter.createStrikeBall(userInput, randomNumber);
+        strikeBallDto.setStrike(strikeBallCounterData.getStrike());
+        strikeBallDto.setBall(strikeBallCounterData.getBall());
     }
 
     private void setGameResult() {
-        GameResultData gameResultData = gameResult.result(strikeBallDto.getStrike(), strikeBallDto.getBall());
+        int strike = strikeBallDto.getStrike();
+        int ball = strikeBallDto.getBall();
+        GameResultData gameResultData = gameResult.result(strike, ball);
+
         gameResultDto.setGameResultMessage(gameResultData.getGameResultMessage());
         gameResultDto.setIsCorrectAnswer(gameResultData.getIsCorrectAnswered());
     }
