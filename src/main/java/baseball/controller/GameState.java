@@ -13,13 +13,15 @@ public class GameState {
     }
 
     public void changeStateToStartGame() {
-        // TODO : 구현 필요
-        this.state = State.PLAYING;
+        if (isAbleToStart()) {
+            this.state = State.PLAYING;
+        } else {
+            throw new IllegalStateException("게임을 시작할 수 없는 상태입니다.");
+        }
     }
 
-    private boolean isAbleToStartGame() {
-        // TODO : 구현 필요
-        return true;
+    private boolean isAbleToStart() {
+        return this.state == State.TERMINATED;
     }
 
     public State getState() {

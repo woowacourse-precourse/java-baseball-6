@@ -4,7 +4,7 @@
 
 - [x] GameView : start
 - [x] GameController : start
-- [ ] GameState : isAbleToStart, changeActive
+- [x] GameState : changeStateToStartGame
 - [ ] RandomNumberCreator : createRandomNumber
 - [ ] Scoring : saveRandomNumber
 
