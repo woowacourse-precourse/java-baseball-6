@@ -9,6 +9,10 @@ public class Game {
         return strikeCount;
     }
 
+    public Game(int[] gameNumbers) {
+        this.gameNumbers = gameNumbers;
+    }
+
     public void setStrikeCount(int strikeCount) {
         this.strikeCount = strikeCount;
     }
