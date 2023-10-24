@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import static baseball.global.constant.BaseballGameConstant.*;
+
+import baseball.global.constant.BaseballGameConstant;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -48,7 +51,7 @@ public class BaseballGame {
     }
 
     private void judgeResult() {
-        if (strike == 3) {
+        if (strike == ALL_STRIKE) {
             outputView.printGameFinish();
         } else {
             outputView.printGameResult(strike, ball);
@@ -56,12 +59,12 @@ public class BaseballGame {
     }
 
     private void proceed() {
-        if (strike == 3) {
+        if (strike == ALL_STRIKE) {
             String option = inputView.readRestart();
-            if (option.equals("1")) {
+            if (option.equals(IS_RESTART)) {
                 computer = Computer.generate();
                 play();
-            } else if (option.equals("2")) {
+            } else if (option.equals(IS_STOP)) {
                 return;
             }
         } else {

@@ -1,5 +1,8 @@
 package baseball.ui;
 
+import static baseball.global.constant.OutputMessage.*;
+
+import baseball.global.constant.OutputMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -7,19 +10,19 @@ import java.util.List;
 public class OutputView {
 
 	public void printGameStart() {
-		println("숫자 야구 게임을 시작합니다.");
+		println(GAME_START_MEESAGE);
 	}
 
 	public void printInputNumber() {
-		print("숫자를 입력해주세요 : ");
+		print(INPUT_NUMBER_MESSAGE);
 	}
 
 	public void printGameEnd() {
-		println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		println(GAME_END_MESSAGE);
 	}
 
 	public void printGameRestart() {
-		println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		println(GAME_RESTART_MESSAGE);
 	}
 
 	private void println(String message) {
@@ -31,11 +34,11 @@ public class OutputView {
 	}
 
 	public void printGameFinish() {
-		println("3스트라이크");
-		println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		println(THREE_STRIKE_MESSAGE);
+		printGameEnd();
 	}
 
 	public void printGameResult(int ball, int strike) {
-		println(String.format("%d볼 %d스트라이크", ball, strike));
+		println(String.format(GAME_RESULT_MESSAGE, ball, strike));
 	}
 }
