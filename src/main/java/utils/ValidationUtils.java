@@ -8,6 +8,7 @@ public class ValidationUtils {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final List<Integer> END_OPTION = List.of(1, 2);
 
     private ValidationUtils() {
     }
@@ -28,5 +29,9 @@ public class ValidationUtils {
     public static boolean isOtherNumbers(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         return uniqueNumbers.size() == numbers.size();
+    }
+
+    public static boolean isEndOptionNumber(int number) {
+        return END_OPTION.contains(number);
     }
 }
