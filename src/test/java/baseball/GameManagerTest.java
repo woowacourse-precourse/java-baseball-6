@@ -1,6 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +26,15 @@ class GameManagerTest {
         gameManager.setInputConvertList("392");
         int ballCount = gameManager.getBallCount();
         assertThat(ballCount).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("스트라이크 개수 정상 출력 확인")
+    void 스트라이크_개수_체크(){
+        gameManager.setAnswer(List.of(1,2,3));
+        gameManager.setInputConvertList("143");
+        int strikeCount = gameManager.getStrikeCount();
+        assertThat(strikeCount).isEqualTo(2);
     }
 
 
