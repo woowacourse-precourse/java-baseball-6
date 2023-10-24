@@ -9,8 +9,6 @@ public class BaseballGame {
     private static final int DIGIT_LENGTH = 3;
     private static final int START_NUM_OF_RANGE = 1;
     private static final int END_NUM_OF_RANGE = 9;
-    private static final int MIN_NUM = 123;
-    private static final int MAX_NUM = 987;
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -20,7 +18,6 @@ public class BaseballGame {
     public void runGame() {
         System.out.println(START_MESSAGE);
         List<Integer> answer = generateRandomNum();
-        System.out.println("answer = " + answer);
 
         while (true) {
             System.out.print(INPUT_MESSAGE);
@@ -58,7 +55,6 @@ public class BaseballGame {
         return inputList;
     }
 
-    // loop 도는 version
     public static void validateInputNum(String inputString) {
         if (inputString.length() != DIGIT_LENGTH || inputString.contains("0"))
             throw new IllegalArgumentException();

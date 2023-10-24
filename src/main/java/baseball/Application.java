@@ -12,14 +12,14 @@ public class Application {
         while (true) {
             baseballGame.runGame();
             System.out.println(REPLAY_MESSAGE);
-            boolean isValidated = validateInputOrThrow();
-            if (!isValidated) {
+            boolean isReplayOrDone = isReplayOrDone();
+            if (!isReplayOrDone) {
                 break;
             }
         }
     }
 
-    public static boolean validateInputOrThrow() {
+    public static boolean isReplayOrDone() {
         String input = Console.readLine();
 
         if (input.length() == 1 && input.charAt(0) == REPLAY_GAME) {
