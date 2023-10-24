@@ -1,27 +1,11 @@
 package domain;
 
-public class GameResult {
-
-    private final int strike;
-    private final int ball;
-
-    public GameResult(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
+public record GameResult(int strike, int ball) {
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        if(this.strike == 0 && this.ball == 0){
+        if (this.strike == 0 && this.ball == 0) {
             return "낫싱";
         }
         appendBallCount(sb);
@@ -30,13 +14,13 @@ public class GameResult {
     }
 
     private void appendBallCount(StringBuilder sb) {
-        if(ball != 0){
+        if (ball != 0) {
             sb.append(ball).append("볼").append(" ");
         }
     }
 
     private void appendStrikeCount(StringBuilder sb) {
-        if(strike != 0){
+        if (strike != 0) {
             sb.append(strike).append("스트라이크");
         }
     }

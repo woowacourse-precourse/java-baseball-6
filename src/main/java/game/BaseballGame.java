@@ -59,7 +59,7 @@ public class BaseballGame implements Game {
     }
 
     private boolean isFinish(GameResult gameResult) {
-        if (gameResult.getStrike() == 3) {
+        if (gameResult.strike() == 3) {
             return true;
         }
         return false;

@@ -26,8 +26,8 @@ public class BallCompareTest {
         GameResult gameResult = ballComparator.compareStatus(userBalls,
                 computerBalls);
         //then
-        Assertions.assertThat(gameResult.getStrike()).isEqualTo(resultDto.getStrike());
-        Assertions.assertThat(gameResult.getBall()).isEqualTo(resultDto.getBall());
+        Assertions.assertThat(gameResult.strike()).isEqualTo(resultDto.strike());
+        Assertions.assertThat(gameResult.ball()).isEqualTo(resultDto.ball());
     }
 
     static Stream<Arguments> ProvideCompareTestCases() {
