@@ -13,14 +13,15 @@ public class Computer {
 
     private void createComputerNumber() {
         LinkedHashSet<String> computerCheck = new LinkedHashSet<>();
-        while (computerCheck.size() < 3) {
+        while (computerCheck.size() < BaseballNumberConstants.INPUT_MAX_COUNTS) {
             computerCheck.add(randomNumberCreate());
         }
         this.computerNumber = String.join("", computerCheck);
     }
 
     private static String randomNumberCreate() {
-        return Integer.toString(Randoms.pickNumberInRange(1, 9));
+        return Integer.toString(Randoms.pickNumberInRange(BaseballNumberConstants.INPUT_MIN,
+                BaseballNumberConstants.INPUT_MAX));
     }
 
     public String getComputerNumber() {
