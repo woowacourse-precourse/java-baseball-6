@@ -7,20 +7,19 @@ class ValidationRestart extends Validation {
     public static boolean isValid(String arg) {
         checkIsEmpty(arg, restartErrorMessage);
         checkIsNumber(arg, restartErrorMessage);
-
-        int restart = Integer.parseInt(arg);
-        return checkRestartAnswer(restart);
+        return checkRestartAnswer(arg);
     }
 
     // 입력 유효성 검사: 1 또는 2가 아닌 수 입력 - restart
-    private static boolean checkRestartAnswer(int arg) {
-        if (arg != 1 && arg != 2) {
+    private static boolean checkRestartAnswer(String arg) {
+        int restart = Integer.parseInt(arg);
+        if (restart != 1 && restart != 2) {
             throw new IllegalArgumentException(restartErrorMessage);
         }
-        if (arg == 1) {
+        if (restart == 1) {
             Defender.reroll();
         }
-        if (arg == 2) {
+        if (restart == 2) {
             System.out.println("프로그램을 종료합니다.");
             return true;
         }
