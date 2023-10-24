@@ -21,7 +21,7 @@ class JudgeTest {
     void judge_test_NOTHING(String userInput, String computerInput) {
         Balls userBalls = new Balls(userInput);
         Balls computerBalls = new Balls(computerInput);
-        judge.judge(userBalls, computerBalls);
+        judge.compareBalls(userBalls, computerBalls);
         assertThat(judge.getStrikeCount()).isZero();
         assertThat(judge.getBallCount()).isZero();
     }
@@ -33,7 +33,7 @@ class JudgeTest {
         String computerInput = "123";
         Balls userBalls = new Balls(userInput);
         Balls computerBalls = new Balls(computerInput);
-        judge.judge(userBalls, computerBalls);
+        judge.compareBalls(userBalls, computerBalls);
         assertThat(judge.getStrikeCount()).isEqualTo(2);
         assertThat(judge.getBallCount()).isZero();
     }
@@ -45,7 +45,7 @@ class JudgeTest {
         String computerInput = "123";
         Balls userBalls = new Balls(userInput);
         Balls computerBalls = new Balls(computerInput);
-        judge.judge(userBalls, computerBalls);
+        judge.compareBalls(userBalls, computerBalls);
         assertThat(judge.getStrikeCount()).isZero();
         assertThat(judge.getBallCount()).isEqualTo(2);
     }
@@ -57,7 +57,7 @@ class JudgeTest {
         String computerInput = "123";
         Balls userBalls = new Balls(userInput);
         Balls computerBalls = new Balls(computerInput);
-        judge.judge(userBalls, computerBalls);
+        judge.compareBalls(userBalls, computerBalls);
         assertThat(judge.getStrikeCount()).isOne();
         assertThat(judge.getBallCount()).isOne();
     }

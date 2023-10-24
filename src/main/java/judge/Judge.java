@@ -14,21 +14,31 @@ public class Judge {
         return ballCount;
     }
 
-    public void judge(Balls userBalls, Balls computerBalls) {
+    public void compareBalls(Balls userBalls, Balls computerBalls) {
+        initializeCounts();
         for (int i = 0; i < 3; i++) {
-            judgeBall(i, userBalls, computerBalls);
+            compareBall(i, userBalls, computerBalls);
         }
     }
 
-    private void judgeBall(int i, Balls userBalls, Balls computerBalls) {
+    public boolean isCorrect() {
+        return this.strikeCount == 3;
+    }
+
+    private void initializeCounts() {
+        this.strikeCount = 0;
+        this.ballCount = 0;
+    }
+
+    private void compareBall(int i, Balls userBalls, Balls computerBalls) {
         Ball userBall = userBalls.get(i);
         Ball computerBall = computerBalls.get(i);
         if (computerBall.equals(userBall)) {
-            strikeCount++;
+            this.strikeCount++;
             return;
         }
-        if (computerBalls.containsBallValue(userBall)){
-            ballCount++;
+        if (computerBalls.containsBallValue(userBall)) {
+            this.ballCount++;
         }
     }
 }
