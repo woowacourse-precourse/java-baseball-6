@@ -9,8 +9,8 @@ public class Application {
             Game baseBallGame = new Game();
             baseBallGame.play();
             System.out.println(continueGameMessage);
-            String continueGame = Console.readLine();
-            if (continueGame.equals("2")) { // TODO: error handle
+            String isContinueGame = Console.readLine();
+            if (isContinueGame.equals(gameContinue)) { // TODO: error handle
                 System.out.println(endGameMessage);
                 break;
             }

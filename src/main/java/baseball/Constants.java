@@ -12,5 +12,7 @@ public interface Constants {
     String startGameMessage = "숫자 야구 게임을 시작합니다.";
     String continueGameMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     String endGameMessage = "게임이 종료되었습니다.";
+
+    String gameContinue = "2";
 }
 
