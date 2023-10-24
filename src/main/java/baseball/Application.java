@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Application {
 
+    static boolean onOff = true;
+
     public String setRandomDistinctNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -23,8 +25,8 @@ public class Application {
         return number.toString();
     }
 
-    public String startGame() {
-        return "숫자 야구 게임을 시작합니다.";
+    public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public List<Character> convertToList(String str) {
@@ -63,41 +65,41 @@ public class Application {
         return ballCnt;
     }
 
-    public String showBaseballOutcome(String answer, String input) {
-        System.out.println("숫자를 입력해주세요 : ");
+    public void showBaseballOutcome(String answer, String input) {
+
         checkInputValidation(input);
         int strikeCnt = countStrike(answer, input);
         int ballCnt = countBall(answer, input);
 
-        if (strikeCnt == 0) {
-            if(ballCnt == 0){
-                return "낫싱";
-            }
-            return ballCnt + "볼";
-        }
         ballCnt -= strikeCnt;
-        if (ballCnt == 0) {
+
+        if(strikeCnt == 0 && ballCnt ==0) {
+            System.out.println("낫싱");
+        } else if (strikeCnt == 0) {
+            System.out.println(ballCnt + "볼");
+        } else if (ballCnt == 0) {
             if(strikeCnt == 3){
-                return "3스트라이크"+"3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                onOff = false;
+                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");;
             }else{
-                return strikeCnt + "스트라이크";
+                System.out.println(strikeCnt + "스트라이크");;
             }
         } else {
-            return ballCnt + "볼 " + strikeCnt + "스트라이크";
+            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");;
         }
     }
 
-    public void confirmGameEnd(String choice, String answer, String input) {
+    public void confirmGameEnd(String choice) {
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        switch (choice){
-            case "1" ->{showBaseballOutcome(answer,input); }
-            case "2" ->{break;}
+        switch (choice) {
+            case "1" -> { onOff = true; }
+            case "2" -> {break;}
             default -> {checkExitChoiceValidation();}
         }
     }
     public void checkInputValidation(String input) {
-        if (input == null || input.isEmpty() || !input.matches("\\d{3}")) {
+        convertToList(input);
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
         char[] digits = input.toCharArray();
@@ -116,9 +118,16 @@ public class Application {
     public static void main(String[] args) {
         Application application = new Application();
         application.startGame();
-        String answer = application.setRandomDistinctNumbers();
-        String input = Console.readLine();
-        application.showBaseballOutcome(answer, input);
-
+        while (onOff) {
+            String answer = application.setRandomDistinctNumbers();
+            while (onOff) {
+                System.out.println("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                application.showBaseballOutcome(answer, input);
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
+            application.confirmGameEnd(choice);
+        }
     }
 }
