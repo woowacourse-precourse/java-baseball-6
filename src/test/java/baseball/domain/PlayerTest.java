@@ -50,4 +50,19 @@ class PlayerTest {
                         .hasMessage("잘못된 값을 입력하셨습니다.(자연수가 아닌 수가 존재합니다.)")
         );
     }
+
+    @DisplayName("각 자리 수의 숫자가 중복된 값이 있는 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"122","333"})
+    void setPlayerNumberIsDifferent(String playerNumber) throws Exception{
+        //given parameter
+
+        //when //then
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new Player(playerNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("잘못된 값을 입력하셨습니다.(중복된 숫자가 존재합니다.)")
+        );
+    }
+
 }
