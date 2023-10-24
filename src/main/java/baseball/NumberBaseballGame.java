@@ -19,40 +19,43 @@ public class NumberBaseballGame {
         boolean gameStatus = true;
 
         while (gameStatus) {
-            System.out.println(START_MESSAGE);
-            makeAnswer();
+            speaker(START_MESSAGE + '\n');
+            answerMaker.makeAnswer(1, 9);
             oneRound();
             gameStatus = restartOrStop();
         }
-    }
-
-    private boolean restartOrStop() {
-        System.out.print(RESTART_OR_STOP_MESSAGE);
-        String sign = getUserInput();
-
-        inputValidation.validateRestartOrStop(sign);
-        return sign.charAt(0) != '2';
     }
 
     private void oneRound() {
         boolean threeStrike = false;
 
         while (!threeStrike) {
+            speaker(REQUEST_NUMBER_MESSAGE);
             int strikeCount = scoreResult();
 
             threeStrike = isThreeStrike(strikeCount);
         }
-        System.out.println(SUCCESS_MESSAGE);
+        speaker(SUCCESS_MESSAGE + '\n');
+    }
+
+    public void speaker(String message) {
+        System.out.print(message);
+    }
+
+    private boolean restartOrStop() {
+        System.out.println(RESTART_OR_STOP_MESSAGE);
+        String sign = getUserInput();
+
+        inputValidation.validateRestartOrStop(sign);
+        return sign.charAt(0) != '2';
     }
 
     private int scoreResult() {
-        System.out.print(REQUEST_NUMBER_MESSAGE);
         List<Integer> answer = answerMaker.getAnswer();
         List<Integer> scoreBoard = scoreCounter.countScore(answer, userAnswer());
-        System.out.println(message.scoreMessage(scoreBoard));
-        int strikeCount = scoreBoard.get(1);
+        speaker(message.scoreMessage(scoreBoard) + '\n');
 
-        return (strikeCount);
+        return scoreBoard.get(1);
     }
 
     //유저의 정보를 입력받고 validation -> 리스트 반환
@@ -60,11 +63,6 @@ public class NumberBaseballGame {
         String input = getUserInput();
 
         return (inputValidation.validateAndConvertUserNumbers(input));
-    }
-
-    //클래스 내부에 정답 생성
-    private void makeAnswer() {
-        answerMaker.makeAnswer(1, 9);
     }
 
     private boolean isThreeStrike(int strike) {
