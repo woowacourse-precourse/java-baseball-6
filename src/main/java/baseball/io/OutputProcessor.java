@@ -21,7 +21,7 @@ public class OutputProcessor {
     }
 
     private static String refineGameResult(final RoundResult result) {
-        if (!hasStrikeCount(result) && !hasBallCount(result)) {
+        if (isAllMiss(result)) {
             return NOTHING;
         }
 
@@ -39,6 +39,10 @@ public class OutputProcessor {
         }
 
         return resultFormat.toString();
+    }
+
+    private static boolean isAllMiss(final RoundResult result) {
+        return !hasStrikeCount(result) && !hasBallCount(result);
     }
 
     private static boolean hasBallCount(final RoundResult result) {
