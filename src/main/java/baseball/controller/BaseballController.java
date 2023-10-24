@@ -1,7 +1,9 @@
 package baseball.controller;
 
 import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballResult;
 import baseball.service.BaseballService;
+import baseball.util.BaseballNumberConverter;
 import baseball.view.InputView;
 
 public class BaseballController {
@@ -15,6 +17,15 @@ public class BaseballController {
 
     public void playGame() {
         BaseballNumber computerNumber = baseballService.generateRandomNumbers();
+
+        while (true) {
+            BaseballNumber playerNumber = getPlayerInput();
+            BaseballResult result = baseballService.calculateResult(computerNumber, playerNumber);
+        }
     }
 
+    private BaseballNumber getPlayerInput() {
+        String input = inputView.readPlayerNumbers();
+        return BaseballNumberConverter.convert(input);
+    }
 }
