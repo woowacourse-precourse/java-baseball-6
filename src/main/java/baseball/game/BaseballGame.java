@@ -4,6 +4,7 @@ package baseball.game;
 import static baseball.utils.RandomNumberGenerator.generateRandomUniqueThreeNumbers;
 
 import baseball.io.UserIOHandler;
+import baseball.model.Score;
 import java.util.List;
 
 public class BaseballGame {
@@ -29,7 +30,18 @@ public class BaseballGame {
     }
 
     private void playUntilRoundWon() {
-        // todo: play until round won
+        currentGameState = GameState.RUNNING;
+
+        while (currentGameState != GameState.ROUND_WON) {
+            attemptSingleRound();
+        }
+    }
+
+    private void attemptSingleRound() {
+        String userInput = userIOHandler.readUserInputForNumbers();
+        List<Integer> userGuessNumbers = userIOHandler.validateAndParseUserInput(userInput);
+        Score currentScore = scoreEvaluator.evaluate(generatedNumbers, userGuessNumbers);
+        determineGameStatusBasedOnScore(currentScore);
     }
 
 
