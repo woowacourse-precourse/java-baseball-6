@@ -11,18 +11,18 @@ public class BaseballGameController {
     private final BaseballGameModel baseballGameModel = new BaseballGameModel();
     private int isContinue = 1;
 
-    public void repeatBaseballGame() {
+    public void doBaseballGame() {
         baseballGameView.printGameStartingMessage();
 
         while (isContinue == 1) {
-            doBaseballGame();
+            doBaseballGameOnce();
 
             baseballGameView.printGameClosingMessage();
             isContinue = baseballGameView.isContinue();
         }
     }
 
-    private void doBaseballGame() {
+    private void doBaseballGameOnce() {
         List<Integer> computer = ComputerNumberGenerator.generate();
         List<Integer> userNumbers = new ArrayList<>();
 

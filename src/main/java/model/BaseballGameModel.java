@@ -10,16 +10,16 @@ public class BaseballGameModel {
 
         for (int i = 0; i < 3; i++) {
             if (userNumbers.get(i).equals(computer.get(i))) {
-                strikeCount ++;
+                strikeCount++;
             } else if (computer.contains(userNumbers.get(i))) {
-                ballCount ++;
+                ballCount++;
             }
         }
 
-        List<Integer> strikeAndBallCount = new ArrayList<>();
-        strikeAndBallCount.add(strikeCount);
-        strikeAndBallCount.add(ballCount);
+        List<Integer> countStrikeAndBall = new ArrayList<>();
+        countStrikeAndBall.add(strikeCount);
+        countStrikeAndBall.add(ballCount);
 
-        return strikeAndBallCount;
+        return countStrikeAndBall;
     }
 }
