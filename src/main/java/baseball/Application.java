@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -23,20 +22,27 @@ public class Application {
         // 게임 시작
         println(WELCOME_MSG);
 
-        // 랜덤 3자리 숫자 생성
-        List<Integer> randNum = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT);
+        try{
+            // 랜덤 3자리 숫자 생성
+            List<Integer> randNum = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT);
 
-        while(true){
-            // 사용자 입력 받기
-            print(INPUT_MSG);
-            String userInput = Console.readLine();
+            while(true){
+                // 사용자 입력 받기
+                print(INPUT_MSG);
+                String userInput = Console.readLine();
 
-            // 결과 판정 후 루프 탈출 결정
-            if(isAnswer(randNum, userInput)) break;
+                // 사용자 입력이 정확한지 판별
+                isRightInput(userInput);
+
+                // 결과 판정 후 루프 탈출 결정
+                if(isAnswer(randNum, userInput)) break;
+            }
+        }catch (IllegalArgumentException e){
+            println(e.getMessage());
+        }finally {
+            // Scanner 종료
+            Console.close();
         }
-
-        // Scanner 종료
-        Console.close();
     }
 
     private static boolean isAnswer(List<Integer> randNum, String userInput){
@@ -74,6 +80,21 @@ public class Application {
         }
 
         return false;
+    }
+
+    private static void isRightInput(String userInput){
+        if(userInput.length() != COUNT){
+            throw new IllegalArgumentException("사용자 입력 오류 - 3자리 외 글자수 금지");
+        }
+
+        boolean[] count = new boolean[10];
+        for(int i=userInput.length()-1; i>=0; i--){
+            int num = userInput.charAt(i) - '0';
+            if(num < 1 || num > 9) throw new IllegalArgumentException("사용자 입력 오류 - 1부터 9이외의 문자 금지");
+            if(count[num]) throw new IllegalArgumentException("사용자 입력 오류 - 중복된 숫자 금지");
+            count[num] = true;
+        }
+
     }
 
     private static void print(String msg){
