@@ -15,13 +15,13 @@ public class Number {
         this.value = value;
     }
 
-    private static void validateValueRange(final int value) {
+    private void validateValueRange(final int value) {
         if (!isBetweenOneAndNine(value)) {
             throw new IllegalArgumentException(WRONG_VALUE_ERROR_MESSAGE);
         }
     }
 
-    private static boolean isBetweenOneAndNine(final int value) {
+    private boolean isBetweenOneAndNine(final int value) {
         return MIN_NUMBER <= value && value <= MAX_NUMBER;
     }
 
