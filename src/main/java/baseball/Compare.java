@@ -25,7 +25,7 @@ public class Compare {
     ) {
         ball = 0;
         for (int i=0;i<3;i++) {
-            if (computer.contains(player.get(i)) & player.get(i) == computer.indexOf(i)) {
+            if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
                 ball++;
             }
         }
@@ -38,7 +38,7 @@ public class Compare {
     ) {
         strike = CountStrike(player,computer);
         ball = CountBall(player,computer);
-        if (strike == 0 & ball == 0) {
+        if (strike == 0 && ball == 0) {
             return "낫싱";
         } else if (strike==0) {
             return ball+"볼";

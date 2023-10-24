@@ -13,13 +13,14 @@ public class PlayerNumber {
         for(int i=0;i<3;i++) {
             player.add(Integer.parseInt(inputNumber.substring(i,i+1)));
         }
+
+        exception_ExceedLength(inputNumber);
         return player;
     }
 
     public void exception_ExceedLength(String inputNumber) {
         if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException("세자리 수보다 크거나 작음");
+            throw new IllegalArgumentException("입력한 숫자의 자릿수가 올바르지 않습니다.");
         }
     }
-
 }
