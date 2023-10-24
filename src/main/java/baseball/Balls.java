@@ -17,4 +17,12 @@ public class Balls {
 		balls.add(ball);
 		return true;
 	}
+
+	public void reverse() {
+		List<Integer> reverse = new ArrayList<>();
+		for (int i = balls.size() - 1; i >= 0; i--) {
+			reverse.add(balls.get(i));
+		}
+		balls = reverse;
+	}
 }
