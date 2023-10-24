@@ -54,6 +54,26 @@ class ApplicationTest extends NsTest {
 
         );
     }
+    @Test
+    void restart_Exception_UnvalidNum_Test() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("478", "0"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                4,7,8
+        );
+    }
+    @Test
+    void restart_Exception_Charcter_Test() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("478", "b"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                4,7,8
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
