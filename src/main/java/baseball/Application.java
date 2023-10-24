@@ -1,6 +1,17 @@
 package baseball;
 
+import baseball.controller.BaseballGameController;
+import baseball.io.InputView;
+import baseball.io.OutputView;
+import baseball.service.NumberService;
+import java.io.*;
+
+import static baseball.utils.message.GameInfoMessage.*;
+import static baseball.utils.message.IOMessage.*;
+
 public class Application {
+
+    public static final String CONTINUE = "1";
     public static void main(String[] args) {
         /***
          * 사용자 입력과 컴퓨터가 생성하는 '숫자'는 모두 공통사항이라고 생각
@@ -13,5 +24,40 @@ public class Application {
          */
 
         // TODO: 프로그램 구현
+        NumberService numberService = new NumberService();
+        BaseballGameController baseballGameController = new BaseballGameController(numberService);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        InputView inputView = new InputView(reader);
+
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+        OutputView outputView = new OutputView(writer);
+
+        outputView.write(START_GAME);
+        boolean continueGame = true;
+
+        while (continueGame) {
+            outputView.write(INPUT_NUMBER);
+            String userInput = inputView.readLine();
+
+            boolean match = baseballGameController.match(userInput);
+            String hint = baseballGameController.hint(userInput);
+            outputView.write(hint +"\n");
+
+            if(match) {
+                outputView.write(CORRECT_NUMBER);
+                outputView.write(CONTINUE_INPUT);
+
+                userInput = inputView.readLine();
+                continueGame = userInput.equals(CONTINUE);
+
+                if (continueGame) {
+                    baseballGameController.nextGame();
+                }
+            }
+        }
+
+        outputView.write(END_GAME);
+
     }
 }
