@@ -1,9 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-public class MyOwnTest {
+public class MyOwnTest extends NsTest {
 
     @Test
     @DisplayName("3자리지만_숫자가_아닌경우")
@@ -30,7 +32,6 @@ public class MyOwnTest {
     }
 
     @Test
-    @DisplayName("3자리보다 짧은 경우")
     void 세_자리보다_짧은_경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> {
@@ -47,7 +48,6 @@ public class MyOwnTest {
     }
 
     @Test
-    @DisplayName("3자리보다_긴_경우")
     void 세_자리보다_긴_경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> {
@@ -85,4 +85,62 @@ public class MyOwnTest {
         );
     }
 
+    @Test
+    @DisplayName("모든_자리가_같으면_0과3을_가진_배열을_반환한다")
+    void 정답이면_0과3을_원소로_갖는다() {
+        assertSimpleTest(() -> {
+            List<Integer> computer = List.of(1, 2, 3);
+            List<Integer> userGuess = List.of(1, 2, 3);
+
+            Application.printScore(computer, userGuess);
+
+            assertThat(output())
+                    .isEqualTo("3스트라이크");
+        });
+    }
+
+    @Test
+    void 원_볼_원_스트라이크(){
+        assertSimpleTest(() -> {
+            List<Integer> computer = List.of(1, 2, 3);
+            List<Integer> user = List.of(2, 9, 3);
+
+            Application.printScore(computer, user);
+
+            assertThat(output())
+                    .isEqualTo("1볼 1스트라이크");
+
+        });
+    }
+
+    @Test
+    void 볼만_있을_경우(){
+        assertSimpleTest(() -> {
+            List<Integer> computer = List.of(1, 2, 3);
+            List<Integer> user = List.of(2, 9, 7);
+
+            Application.printScore(computer, user);
+            assertThat(output())
+                    .isEqualTo("1볼");
+        });
+    }
+
+    @Test
+    void 낫싱(){
+        assertSimpleTest(() -> {
+            List<Integer> computer = List.of(1, 2, 3);
+            List<Integer> user = List.of(4, 5, 6);
+
+            Application.printScore(computer, user);
+
+            assertThat(output())
+                    .isEqualTo("낫싱");
+
+        });
+    }
+
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
+    }
 }
