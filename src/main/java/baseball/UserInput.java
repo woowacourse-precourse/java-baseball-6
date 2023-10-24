@@ -14,18 +14,27 @@ public class UserInput {
 
     public void checkUserInput(String userInput) {
         try {
-            // 숫자를 입력했는지
-            int t1 = Integer.parseInt(userInput);
-            // 3자리 숫자인지
-            if (0 > t1 || t1 > 999) {
-                throw new NumberFormatException();
-            }
-            // 0이 포함되어있는지
-            if (userInput.indexOf('0') != -1) {
-                throw new NumberFormatException();
-            }
+            checkIfIncludesZero(userInput);
+            int userNum = checkIfInteger(userInput);
+            checkIfValidRange(userNum);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public int checkIfInteger(String userInput) throws NumberFormatException {
+        return Integer.parseInt(userInput);
+    }
+
+    public void checkIfValidRange(int userNum) throws NumberFormatException {
+        if (0 > userNum || userNum > 999) {
+            throw new NumberFormatException();
+        }
+    }
+
+    public void checkIfIncludesZero(String userInput) throws NumberFormatException {
+        if (userInput.indexOf('0') != -1) {
+            throw new NumberFormatException();
         }
     }
 
