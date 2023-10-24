@@ -64,4 +64,4 @@
 ##### ✅ 프로그램 구현 완료 시 ApplicationTest 의 모든 테스트가 성공하는가?
 ##### ✅ build.gradle 및 외부 라이브러리를 사용하지 않았는가?
 ##### ✅ `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현했는가?
-##### ☑️ Java 코드 컨벤션 가이드 준수해 프로그래밍 했는가?
+##### ✅ Java 코드 컨벤션 가이드 준수해 프로그래밍 했는가?
