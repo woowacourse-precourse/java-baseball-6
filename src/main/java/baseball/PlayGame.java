@@ -7,6 +7,7 @@ public class PlayGame {
     private static final String QUIT = "2";
 
     public PlayGame() {
+
     }
 
     public void play() {

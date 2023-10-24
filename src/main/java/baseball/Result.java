@@ -84,7 +84,6 @@ public class Result {
     private boolean isAllStrike() {
         return strike == BALLS_COUNT;
     }
-
     private void printEndMessage() {
         System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", BALLS_COUNT);
     }

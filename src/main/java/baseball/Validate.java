@@ -5,6 +5,7 @@ public class Validate {
 
     public Validate(int number) {
         validateRange(number);
+
         this.number = number;
     }
 
