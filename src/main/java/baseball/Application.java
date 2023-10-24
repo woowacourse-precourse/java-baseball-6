@@ -22,6 +22,7 @@ public class Application {
         System.out.println("프로그램을 종료합니다.");
     }
 
+    // 게임종료 묻기 - 유저가 2를 입력하면 종료 대신 1말고 다른 숫자 입력해도 새로시작됨
     public boolean askExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();

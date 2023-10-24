@@ -22,3 +22,5 @@ public class Score {
         this.balls = 0;
     }
 }
+
+// 스트라이크 수, 볼의 수
