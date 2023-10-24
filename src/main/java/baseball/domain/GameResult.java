@@ -15,7 +15,4 @@ public class GameResult {
         return result.getOrDefault(ballScore, 0);
     }
 
-    public boolean isNothing() {
-        return result.size() == 0;
-    }
 }
