@@ -8,8 +8,8 @@ public class Score {
     private static final int THREE_STRIKE = 3;
     private static final int NO_COUNT = 0;
 
-    final int ball;
-    final int strike;
+    private final int ball;
+    private final int strike;
 
     public Score(int ball, int strike) {
         this.ball = ball;
