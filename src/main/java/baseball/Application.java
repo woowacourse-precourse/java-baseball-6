@@ -43,7 +43,18 @@ public class Application {
                     }
                 }
 
-
+                if (cnt[0] == 0 && cnt[1] == 0) {
+                    System.out.println("낫싱");
+                } else if (cnt[0] == 3) {
+                    System.out.println("3스트라이크");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                } else {
+                    System.out.println(
+                            String.valueOf(cnt[1]) + "볼 "
+                                    + String.valueOf(cnt[0]) + "스트라이크"
+                    );
+                }
 
             }
 
