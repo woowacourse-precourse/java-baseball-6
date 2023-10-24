@@ -10,7 +10,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        while (true) {
+        int continued = 1;
+        while (continued == 1) {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             List<Integer> numbers = new ArrayList<>();
@@ -69,6 +70,17 @@ public class Application {
                 if (numberOfBall == 0) {
                     System.out.printf("%d스트라이크%n", numberOfStrike);
                 }
+            }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            try {
+                continued = Integer.parseInt(Console.readLine());
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+            }
+
+            if (1 > continued || continued > 2) {
+                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
             }
         }
 
