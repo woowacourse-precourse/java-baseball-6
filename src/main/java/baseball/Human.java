@@ -1,35 +1,36 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Human {
-    private List<Integer> human;
-    private final CheckException checkException;
-    public Human(){
-        this.human = new ArrayList<>();
-        this.checkException = new CheckException();
+    private List<Integer> values;
+    private final ExceptionHandler exceptionHandler;
+
+    public Human() {
+        this.values = new ArrayList<>();
+        this.exceptionHandler = new ExceptionHandler();
     }
+
     // 사용자에게 값을 입력 받기
     public void chooseValues() {
-        System.out.print("숫자를 입력해주세요. : ");
         String inputValue = Console.readLine();
-        checkException.checkValueInGame(inputValue);
-        human.clear();
+        exceptionHandler.handleInputException(inputValue);
+        values.clear();
         char[] values = inputValue.toCharArray();
-        for(char value : values){
-            human.add(Character.getNumericValue(value));
+        for (char value : values) {
+            this.values.add(Character.getNumericValue(value));
         }
     }
-    public List<Integer> getHuman(){
-        return human;
+
+    public List<Integer> getValues() {
+        return values;
     }
 
     public boolean isRestart() {
         String valueRestart = Console.readLine();
-        checkException.checkValueRestart(valueRestart);
+        exceptionHandler.handleRestartInputException(valueRestart);
         int choice = Integer.parseInt(valueRestart);
         return choice == 1;
     }
