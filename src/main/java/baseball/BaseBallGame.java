@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import view.ViewInput;
+import view.ViewResult;
 import view.ViewStart;
 
 /**
@@ -133,22 +134,9 @@ public class BaseBallGame {
      */
     private boolean printResult(int[] result) {
 
-        if (result[0] == 0 && result[1] == 0) {
-            System.out.println("낫싱");
-        } else if (result[1] == 0) {
-            System.out.println(result[0] + "볼");
-        } else if (result[0] == 0) {
-            System.out.println(result[1] + "스트라이크");
-        } else if (result[0] > 0 && result[1] > 0) {
-            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
-        }
+        ViewResult.view(result);
 
-        if (result[1] == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-
-        return false;
+        return result[1] == 3;
     }
 
     /**
