@@ -41,7 +41,21 @@ public class UserView {
     }
 
     public void printStrikeAndBall(int[] strikeAndBall) {
-        System.out.println(strikeAndBall[1] + "볼" + strikeAndBall[0] + "스트라이크");
+        if (strikeAndBall[1] > 0) {
+            System.out.print(strikeAndBall[1] + "볼 ");
+        }
+        if (strikeAndBall[0] > 0) {
+            System.out.print(strikeAndBall[0] + "스트라이크 ");
+        }
+
+        if (strikeAndBall[0] == 3) {
+            System.out.println();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        
+        if (strikeAndBall[0] == 0 && strikeAndBall[1] == 0) {
+            System.out.println("낫싱");
+        }
     }
 
     public String restartGame() {
