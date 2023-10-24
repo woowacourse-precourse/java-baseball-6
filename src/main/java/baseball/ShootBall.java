@@ -5,12 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 
 public class ShootBall {
-    final private int[] numbers;
+    private int[] numbers;
 
     //(1)생성자 구현
     ShootBall() {
         numbers = new int[10];
     }
+
 
     //(3)번 기능
     public void inputNumGenerator(){
@@ -41,7 +42,10 @@ public class ShootBall {
         }
         System.out.print('\n');
     }
-
+    //(3.1)번 기능
+    public void clearArr(){
+        numbers = new int[10];
+    }
 
     //(4)번 기능 구현
     private void validNumInspect(String input){
