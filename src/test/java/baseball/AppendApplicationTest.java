@@ -18,17 +18,25 @@ class AppendApplicationTest extends NsTest {
     }
 
     @Test
-    void 문자_입력_예외_테스트() {
+    void 숫자_자릿수_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1q2"))
+                assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 숫자_예외_테스트() {
+    void 숫자_0_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("12"))
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 문자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1q2"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
