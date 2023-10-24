@@ -39,6 +39,10 @@ public class Application {
                 result += "낫싱";
             }
             System.out.println(result);
+            if (score[0] == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
             result = "";
             score[0] = 0;
             score[1] = 0;
@@ -46,10 +50,8 @@ public class Application {
     }
 
     private static void isValidInput(final String input) {
-        if (input.length() != 3 || !input.matches("\\d+") ||
-                input.charAt(0) == input.charAt(1) ||
-                input.charAt(0) == input.charAt(2) ||
-                input.charAt(1) == input.charAt(2)) {
+        if (input.length() != 3 || !input.matches("\\d+") || input.charAt(0) == input.charAt(1)
+                || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
             throw new IllegalArgumentException();
         }
     }
