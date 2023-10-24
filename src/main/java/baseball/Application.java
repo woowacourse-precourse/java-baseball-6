@@ -16,6 +16,14 @@ public class Application {
         this.ballValue = ballValue;
     }
 
+    public int getStrike(){
+        return strikeValue;
+    }
+
+    public int getBall(){
+        return ballValue;
+    }
+
     public List<Integer> selectRandomNumber(List<Integer> computerNumber){
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -24,14 +32,6 @@ public class Application {
             }
         }
         return computerNumber;
-    }
-
-    public int getStrike(){
-        return strikeValue;
-    }
-
-    public int getBall(){
-        return ballValue;
     }
 
     public void countStrikeAndBall(String myNumber, List<Integer> computerNumber) {
@@ -105,6 +105,7 @@ public class Application {
         }
     }
     public static void main(String[] args) {
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
         Application baseballGame = new Application(0,0);
