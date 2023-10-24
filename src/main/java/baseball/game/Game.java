@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import baseball.people.Pitcher;
 import baseball.people.preparation.Referee;
