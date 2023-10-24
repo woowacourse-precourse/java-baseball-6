@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.CommandConst.*;
 import static baseball.MessageConst.*;
 
 public class GameManager {
@@ -11,7 +12,7 @@ public class GameManager {
         while (true) {
             init();
             while (true) {
-                System.out.print(INPUT_YOUR_NUMBER);
+                System.out.print(INPUT_GUESS_NUMBER);
                 String inputNumber = inputManager.readNumber();
 
                 BallCount result = calculateBallCount(inputNumber);
@@ -19,9 +20,10 @@ public class GameManager {
 
                 if(isGameClear(result)) {
                     System.out.println(GAME_CLEAR_MESSAGE);
-                    int restartOrEnd = inputManager.readWeatherRestartOrEnd();
-                    if(restartOrEnd == 1) break; // 재시작
-                    if(restartOrEnd == 2) return; // 종료
+
+                    String command = inputManager.readWeatherRestartOrEnd();
+                    if(command.equals(GAME_RESTART_COMMAND)) break; // 재시작
+                    if(command.equals(GAME_END_COMMAND)) return; // 종료
                 }
             }
         }

@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static baseball.CommandConst.*;
+
 public class InputManager {
     private static InputManager instance;
 
@@ -15,6 +17,12 @@ public class InputManager {
         String inputNumber = Console.readLine();
         validateNumber(inputNumber);
         return inputNumber;
+    }
+
+    public String readWeatherRestartOrEnd() {
+        String input = Console.readLine();
+        validateRestartOrEnd(input);
+        return input;
     }
 
     private void validateNumber(String input) {
@@ -27,15 +35,10 @@ public class InputManager {
         }
     }
 
-    public int readWeatherRestartOrEnd() {
-        String input = Console.readLine();
-        validateRestartOrEnd(input);
-        return Integer.parseInt(input);
-    }
-
     private void validateRestartOrEnd(String input) {
-        if(!(input.equals("1") || input.equals("2")))
-            throw new IllegalArgumentException("1또는 2만 입력이 가능합니다.");
+        String ErrorMessage = String.format("%s또는 %s만 입력이 가능합니다.", GAME_RESTART_COMMAND, GAME_END_COMMAND);
+        if(!(input.equals(GAME_RESTART_COMMAND) || input.equals(GAME_END_COMMAND)))
+            throw new IllegalArgumentException(ErrorMessage);
     }
 
     private boolean isNumeric(String str) {
