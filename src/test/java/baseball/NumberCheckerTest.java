@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -16,10 +16,11 @@ class NumberCheckerTest {
 
     private NumberChecker checker;
 
-    @BeforeAll
+    @BeforeEach
     void testInit() {
         checker = NumberChecker.setRandomNumbers(computerNumbers);
     }
+
     @Test
     void 볼_갯수가_2개일_경우_참인지_체크한다() {
         int expectCount = 2;
