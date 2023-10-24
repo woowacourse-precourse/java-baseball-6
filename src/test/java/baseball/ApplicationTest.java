@@ -28,6 +28,23 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 문자열_오류(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("문자열"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 같은값나오는_오류(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class) //숫자가 112일떄 오류가 나오는걸 예측했으니까 테스트케이스맞음
+        );
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
