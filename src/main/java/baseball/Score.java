@@ -5,10 +5,10 @@ public class Score {
     private int ball;
     private boolean nothing;
 
-    public Score(){
-        this.strike = 0;
-        this.ball = 0;
-        this.nothing = false;
+    public Score(int strike, int ball, boolean nothing){
+        this.strike = strike;
+        this.ball = ball;
+        this.nothing = nothing;
     }
 
     public int getStrike() {
@@ -20,16 +20,6 @@ public class Score {
     }
     public boolean getNothing(){
         return nothing;
-    }
-
-    public void setStrike(int strike){
-        this.strike = strike;
-    }
-    public void setBall(int ball){
-        this.ball=ball;
-    }
-    public void setNothing(boolean b){
-        this.nothing = b;
     }
 
     public boolean print(Score score){
@@ -52,7 +42,7 @@ public class Score {
         else if(ball==0){
             System.out.println(strike+"스트라이크");
         }
-        else{
+        else if(strike>0 && ball>0){
             System.out.println(ball+"볼 " + strike + "스트라이크");
         }
         return false;
