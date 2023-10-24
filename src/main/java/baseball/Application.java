@@ -19,6 +19,7 @@ public class Application {
                 String inputNum = in.getInputNum();
                 int count = 0;
 
+                //숫자에 0이 포함된 경우 재입력 요청
                 for(int i=0; i<3; i++){
                     if (inputNum.charAt(i) - '0' == 0){
                         count += 1;
@@ -51,15 +52,12 @@ public class Application {
         }
         if (ball != 0) {
             System.out.print(ball + "볼 ");
-            System.out.println(nums);
         }
         if (strike != 0) {
             System.out.print(strike + "스트라이크");
-            System.out.println(nums);
         }
         if (ball == 0 && strike == 0) {
             System.out.print("낫싱");
-            System.out.println(nums);
         }
         System.out.println();
 
