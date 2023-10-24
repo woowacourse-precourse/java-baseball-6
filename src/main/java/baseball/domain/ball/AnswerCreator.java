@@ -1,8 +1,9 @@
 package baseball.domain.ball;
 
-import baseball.util.NumberPicker;
-import java.util.HashSet;
+import collection.Triple;
+import java.util.LinkedHashSet;
 import java.util.Set;
+import number.NumberPicker;
 
 public final class AnswerCreator {
 
@@ -13,15 +14,16 @@ public final class AnswerCreator {
     }
 
     public Answer create() {
-        final Set<Integer> numbers = fillUntilHasThreeBallNumbers(new HashSet<>());
-        return Answer.of(numbers);
+        final Set<BallNumber> numbers = fillUntilHasThreeBallNumbers(new LinkedHashSet<>());
+        final Triple<BallNumber> triple = Triple.fromSet(numbers);
+        return Answer.of(triple);
     }
 
-    private Set<Integer> fillUntilHasThreeBallNumbers(final Set<Integer> set) {
-        set.add(numberPicker.pick());
-        if (set.size() < BallNumbers.BALL_COUNT) {
-            return fillUntilHasThreeBallNumbers(set);
+    private Set<BallNumber> fillUntilHasThreeBallNumbers(final Set<BallNumber> set) {
+        if (set.size() == BallNumbers.BALL_COUNT) {
+            return set;
         }
-        return set;
+        set.add(new BallNumber(numberPicker.pick()));
+        return fillUntilHasThreeBallNumbers(set);
     }
 }

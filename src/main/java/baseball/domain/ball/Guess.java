@@ -1,15 +1,15 @@
 package baseball.domain.ball;
 
-import java.util.List;
+import collection.Triple;
 
 public final class Guess extends BallNumbers {
 
-    private Guess(final List<Integer> numbers) {
-        super(numbers);
+    private Guess(final Triple<BallNumber> ballNumbers) {
+        super(ballNumbers);
     }
 
-    public static Guess of(final List<Integer> numbers) {
-        return new Guess(numbers);
+    public static Guess of(final Triple<BallNumber> ballNumbers) {
+        return new Guess(ballNumbers);
     }
 
 }

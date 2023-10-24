@@ -1,34 +1,30 @@
 package baseball.domain.ball;
 
-import java.util.ArrayList;
-import java.util.List;
+import collection.Triple;
 import java.util.Set;
 import java.util.stream.IntStream;
 
 public final class Answer extends BallNumbers {
 
-    private Answer(final List<Integer> numbers) {
+    private Answer(final Triple<BallNumber> numbers) {
         super(numbers);
     }
 
-    public static Answer of(final Set<Integer> numbers) {
-        return new Answer(new ArrayList<>(numbers));
+    public static Answer of(final Set<BallNumber> numbers) {
+        return Answer.of(numbers);
     }
 
-    public GuessResult compare(final Guess guess) {
-        return new GuessResult(
-                getBallCount(guess),
-                getStrikeCount(guess)
-        );
+    public static Answer of(final Triple<BallNumber> numbers) {
+        return new Answer(numbers);
     }
 
-    private int getStrikeCount(final Guess guess) {
+    public int getStrikeCount(final Guess guess) {
         return (int) IntStream.range(0, BALL_COUNT)
                 .filter(i -> equalsAt(i, guess))
                 .count();
     }
 
-    private int getBallCount(final Guess guess) {
+    public int getBallCount(final Guess guess) {
         return (int) IntStream.range(0, BALL_COUNT)
                 .filter(i -> containsAtDifferentIndex(i, guess))
                 .count();
