@@ -21,24 +21,22 @@ public class GameManager {
     // 기능: 게임을 최초로 시작한다
     public void initialGameStart() {
         Output.printInitialGameStartMessage();
-        while (true) {
+        boolean gameTotallyEnd = false;
+        while (!gameTotallyEnd) {
             progressGame();
-            if (isNoMoreGame()) {
-                break;
-            }
+            gameTotallyEnd = isNoMoreGame();
         }
     }
 
     // 기능: 게임 순서에 맞게 게임을 진행한다
     private void progressGame() {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(new RandomNumberGenerator());
-        while (true) {
+        boolean gameEnd = false;
+        while (!gameEnd) {
             GameResult gameResult = startGameRound(computerBalls);
-            if (gameResult.isGameEnd()) {
-                Output.printGameEndMessage();
-                break;
-            }
+            gameEnd = gameResult.isGameEnd();
         }
+        Output.printGameEndMessage();
     }
 
     private GameResult startGameRound(BaseballCollection computerBalls) {
