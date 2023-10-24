@@ -1,7 +1,7 @@
-package baseball.computer;
+package baseball.domain.computer;
 
-import baseball.computer.generator.NumberGenerator;
 import baseball.domain.number.NumberConstants;
+import baseball.generator.NumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.computer.Computer;
-import baseball.computer.generator.RandomNumberGenerator;
+import baseball.domain.computer.Computer;
 import baseball.game.BaseballGame;
+import baseball.generator.RandomNumberGenerator;
 import baseball.rule.BaseballGameRule;
 import baseball.view.InputView;
 import baseball.view.OutputView;

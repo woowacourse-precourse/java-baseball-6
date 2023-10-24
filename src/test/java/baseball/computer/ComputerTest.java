@@ -1,7 +1,8 @@
 package baseball.computer;
 
-import baseball.computer.generator.NumberGenerator;
+import baseball.domain.computer.Computer;
 import baseball.domain.number.validation.DuplicateDigitValidator;
+import baseball.generator.NumberGenerator;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;

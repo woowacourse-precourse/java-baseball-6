@@ -1,7 +1,7 @@
 package baseball.game;
 
-import baseball.computer.Computer;
 import baseball.domain.command.Command;
+import baseball.domain.computer.Computer;
 import baseball.domain.number.GameNumber;
 import baseball.domain.result.Result;
 import baseball.game.validate.IntegerValidator;

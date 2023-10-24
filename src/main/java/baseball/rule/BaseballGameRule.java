@@ -1,6 +1,6 @@
 package baseball.rule;
 
-import baseball.computer.Computer;
+import baseball.domain.computer.Computer;
 import baseball.domain.number.GameNumber;
 import baseball.domain.number.NumberConstants;
 import baseball.domain.result.Result;
