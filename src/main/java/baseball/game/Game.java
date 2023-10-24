@@ -32,7 +32,6 @@ public class Game {
         return gameLogic.generateHintFromResult(strike, ball);
     }
 
-
     private void playBaseBallGame() {
         gameUI.displayStartGame();
 
@@ -47,11 +46,13 @@ public class Game {
 
                 if (gameLogic.isAnswer(hint)) {
                     displayCorrectAnswerMessage();
+
                     if (isWantToQuitGame()) {
                         break;
                     } else {
                         computer.resetComputerNumber();
                     }
+
                 }
             } catch (IllegalArgumentException e) {
                 gameUI.displayExceptionMessage(e);

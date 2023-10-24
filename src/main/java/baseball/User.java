@@ -17,4 +17,8 @@ public class User {
         String userNumber = Console.readLine();
         this.userNumber = userNumber;
     }
+
+    public String userInput() {
+        return Console.readLine();
+    }
 }
