@@ -3,10 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -36,8 +34,6 @@ public class GameStart{
             System.out.print("숫자를 입력해주세요 : ");
             int Useranswer = 0;
             try { //사용자에게 숫자 받아오기
-                //BufferedReader User = new BufferedReader(new InputStreamReader(System.in));
-                //String answer = User.readLine();
 
                 Useranswer = Integer.parseInt(readLine());
             } catch (IllegalArgumentException e) { //정수로 변환이 되지 않을 때 예외 처리
@@ -82,20 +78,13 @@ public class GameStart{
                     System.out.println(strike + "스트라이크");
             }
 
-
             user.clear();
-
         }
-
-
 
     }
 
-
-
     public void run() throws IOException {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
 
         GameLogic();
 
@@ -103,9 +92,6 @@ public class GameStart{
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         while(true) {
-            //BufferedReader Continue = new BufferedReader(new InputStreamReader(System.in));
-            //String ContinueGame = Continue.readLine();
-
             AnswerContinue = Integer.parseInt(readLine());
 
             if (AnswerContinue != 2 && AnswerContinue != 1) {
@@ -117,22 +103,6 @@ public class GameStart{
             }
         }
 
-//            try { //사용자에게 숫자 받아오기
-//
-//
-//                BufferedReader Continue = new BufferedReader(new InputStreamReader(System.in));
-//                String ContinueGame = Continue.readLine();
-//
-//                AnswerContinue = Integer.parseInt(ContinueGame);
-//
-//            } catch (IllegalArgumentException e) { //정수로 변환이 되지 않을 때 예외 처리
-//                System.out.println(e.getMessage());
-//            }
-
-
     }
-
-
-
 
 }
