@@ -1,22 +1,20 @@
 package baseball;
 
 import static constant.Constant.*;
+import entity.AnswerNum;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 public class Game {
-    List<Integer> randomNum = new ArrayList<>();
-    List<Integer> answerNum = new ArrayList<>();
+    private final List<Integer> randomNum = new ArrayList<>();
 
     public void playGame(){
         System.out.println(PLAYGAME_INTRO);
-
         do{
             initGame();
             playTurn();
@@ -34,63 +32,34 @@ public class Game {
         }
     }
     public void playTurn(){
-        String answer;
+        List<Integer> answerNum;
         do{
-            answer = getNum();
-            changeIntArray(answer);
-            validateDuplcate(answerNum);
-        }while (checkResult()!=3);
+            AnswerNum answerInstance = new AnswerNum(getNum());
+            answerNum = answerInstance.getAnswerNum();
+        }while (checkResult(answerNum)!=3);
     }
-    public void changeIntArray(String answer) {
-        answerNum.clear();
-        for (int i = 0; i < 3; i++) {
-            answerNum.add(answer.charAt(i) - '0');
-        }
-    }
+
     public String getNum(){
         System.out.print(GETNUM_MESSEAGE);
-        String answer = Console.readLine();
-        validateSize(answer);
-        validateType(answer);
-
-        return answer;
-    }
-    public void validateSize(String answer) {
-        if(answer.length()!=3){
-            throw new IllegalArgumentException();
-        }
-    }
-    public void validateType(String answer) {
-        if(!answer.matches("\\d+")){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void validateDuplcate(List<Integer> answerNum){
-        Set<Integer> nonDuplicateNumbers = new HashSet<>(answerNum);
-        if(nonDuplicateNumbers.size() != answerNum.size()){
-            throw new IllegalArgumentException();
-        }
+        return Console.readLine();
     }
 
 
-    public int checkResult(){
+
+    public int checkResult(List<Integer> answerNum){
 
         int strike=0;
         int ball=0;
 
         for(int i = 0; i<3;i++){
 
-            int num =answerNum.get(i);
-
-            if(randomNum.get(i)==num){
+            int answernum =answerNum.get(i);
+            if(randomNum.get(i)==answernum){
                 strike++;
-            } else if (randomNum.contains(num)) {
+            } else if (randomNum.contains(answernum)) {
                 ball++;
             }
-
         }
-
         printCheckResult(ball, strike);
         return strike;
     }
@@ -110,6 +79,7 @@ public class Game {
     }
 
     public boolean restartGame(){
+
         System.out.println(RESTARTGAME_INTRO);
         String s = Console.readLine();
 
