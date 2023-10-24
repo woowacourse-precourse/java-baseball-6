@@ -12,28 +12,28 @@ import java.util.stream.Collectors;
 public class InputNumberValidator {
 
     private static final String RESTART = "1";
-    private static final String END = "2";
+    private static final String STOP = "2";
     private static final String REGEX = "[0-9]+";
     private static final Integer NUMBER_SIZE = 3;
 
     /*
      * 플레이어의 입력값(String) 전체 검증 메서드
-     * @Param input 플레이어의 숫자
+     * @Param userInput 플레이어의 숫자
      * */
-    public List<Integer> validateInputNumber(String input) {
-        validateInputSize(input);
-        validateInputType(input);
-        validateInputDuplication(input);
+    public List<Integer> validateInputNumber(String userInput) {
+        validateInputSize(userInput);
+        validateInputType(userInput);
+        validateInputDuplication(userInput);
 
-        return convertStrToList(input);
+        return convertStrToList(userInput);
     }
 
     /*
     * 플레이어의 입력값(String)을 List로 변환하는 메서드
-    * @Param input 플레이어의 숫자
+    * @Param userInput 플레이어의 숫자
     * */
-    public List<Integer> convertStrToList(String input) {
-        return Arrays.stream(input.split(""))
+    public List<Integer> convertStrToList(String userInput) {
+        return Arrays.stream(userInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
@@ -42,8 +42,8 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 3자리 수인지 확인
      * @Param input 플레이어의 숫자
      * */
-    private static void validateInputSize(String input) {
-        if (input.length() != NUMBER_SIZE) {
+    private static void validateInputSize(String userInput) {
+        if (userInput.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -52,8 +52,8 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 숫자인지 확인
      * @Param input 플레이어의 숫자
      * */
-    private static void validateInputType(String input) {
-        if (!input.matches(REGEX)) {
+    private static void validateInputType(String userInput) {
+        if (!userInput.matches(REGEX)) {
             throw new IllegalArgumentException();
         }
     }
@@ -62,9 +62,9 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 중복인지 확인
      * @Param input 플레이어의 숫자
      * */
-    private static void validateInputDuplication(String input) {
+    private static void validateInputDuplication(String userInput) {
         Set<Character> duplicateCheckSet = new HashSet<>();
-        for (char c : input.toCharArray()) {
+        for (char c : userInput.toCharArray()) {
             duplicateCheckSet.add(c);
         }
 
@@ -75,10 +75,10 @@ public class InputNumberValidator {
 
     /*
      * 게임 재시작 물음 시 플레이어의 입력값 검증 메서드
-     * @Param input 플레이어의 숫자
+     * @Param userInput 플레이어의 숫자
      * */
-    public void validateGameStateInput(String input) {
-        if (!(input.equals(RESTART) || input.equals(END))) {
+    public void validateGameStateInput(String userInput) {
+        if (!(userInput.equals(RESTART) || userInput.equals(STOP))) {
             throw new IllegalArgumentException();
         }
     }

@@ -20,7 +20,7 @@ public class MessageConverter {
     /*
     * ConcurrentHashMap 초기화 메서드
     * */
-    private void initializeResultMessage() {
+    private void initializeResultMessageMap() {
         resultMessageMap = new ConcurrentHashMap<>() {
             {
                 put(STRIKE, DEFAULT_NUMBER);
@@ -31,14 +31,14 @@ public class MessageConverter {
 
     /*
     * 플레이어와 컴퓨터의 숫자를 비교하는 전체 메서드
-    * @Param input 플레이어의 숫자
+    * @Param userInput 플레이어의 숫자
     * @Param computerNumber 컴퓨터의 숫자
     * */
-    public Map<String, Integer> getResultMessage(List<Integer> input, List<Integer> computerNumber) {
-        initializeResultMessage();
+    public Map<String, Integer> getResultMessage(List<Integer> userInput, List<Integer> computerNumber) {
+        initializeResultMessageMap();
 
         for(int index = 0; index < NUMBER_SIZE; index++) {
-            getStrikeOrBall(input, computerNumber, index);
+            getStrikeOrBall(userInput, computerNumber, index);
         }
 
         return resultMessageMap;
@@ -46,16 +46,16 @@ public class MessageConverter {
 
     /*
      * 플레이어와 컴퓨터의 숫자를 비교하는 메서드
-     * @Param input 플레이어의 숫자
+     * @Param userInput 플레이어의 숫자
      * @Param computerNumber 컴퓨터의 숫자
      * @Param index 리스트의 인덱스
      * */
-    private void getStrikeOrBall(List<Integer> input, List<Integer> computerNumber, Integer index) {
-        if (input.get(index).equals(computerNumber.get(index))) {
+    private void getStrikeOrBall(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
+        if (userInput.get(index).equals(computerNumber.get(index))) {
            resultMessageMap.put(STRIKE, resultMessageMap.get(STRIKE) + 1);
         }
 
-        if (input.contains(computerNumber.get(index)) && !input.get(index).equals(computerNumber.get(index))) {
+        if (userInput.contains(computerNumber.get(index)) && !userInput.get(index).equals(computerNumber.get(index))) {
             resultMessageMap.put(BALL, resultMessageMap.get(BALL) + 1);
         }
     }
@@ -67,20 +67,20 @@ public class MessageConverter {
     public String getResultMessageToString(Map<String, Integer> resultMessageMap) {
         Integer ballInt = resultMessageMap.get(BALL);
         Integer strikeInt = resultMessageMap.get(STRIKE);
-        StringBuilder resultBuilder = new StringBuilder();
+        StringBuilder resultMessageBuilder = new StringBuilder();
 
         if (ballInt == DEFAULT_NUMBER && strikeInt == DEFAULT_NUMBER) {
             return NOTHING;
         }
 
         if (ballInt > DEFAULT_NUMBER) {
-            resultBuilder.append(ballInt).append(BALL).append(" ");
+            resultMessageBuilder.append(ballInt).append(BALL).append(" ");
         }
 
         if (strikeInt > DEFAULT_NUMBER) {
-            resultBuilder.append(strikeInt).append(STRIKE);
+            resultMessageBuilder.append(strikeInt).append(STRIKE);
         }
 
-        return resultBuilder.toString().trim();
+        return resultMessageBuilder.toString().trim();
     }
 }

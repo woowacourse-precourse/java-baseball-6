@@ -32,10 +32,10 @@ public class GameService {
      * 게임 진행 메서드
      * */
     public String playGame() {
-        String input = userUtil.getUserNumber();
-        List<Integer> inputList = inputNumberValidator.validateInputNumber(input);
-        Map<String, Integer> resultMap = messageConverter.getResultMessage(inputList, computerNumber);
-        return messageConverter.getResultMessageToString(resultMap);
+        String userInput = userUtil.getUserInput();
+        List<Integer> userInputList = inputNumberValidator.validateInputNumber(userInput);
+        Map<String, Integer> resultMessageMap = messageConverter.getResultMessage(userInputList, computerNumber);
+        return messageConverter.getResultMessageToString(resultMessageMap);
     }
 
     /*
@@ -43,9 +43,9 @@ public class GameService {
     * true : 게임 종료 false : 재시작
     * */
     public boolean stopGame() {
-        String input = userUtil.getUserNumber();
-        inputNumberValidator.validateGameStateInput(input);
+        String userInput = userUtil.getUserInput();
+        inputNumberValidator.validateGameStateInput(userInput);
 
-        return Objects.equals(input, END);
+        return Objects.equals(userInput, END);
     }
 }

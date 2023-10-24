@@ -31,10 +31,10 @@ public class GameMainController {
 
         while(!correctAnswer) {
             inputView.requestUserInput();
-            String result = gameService.playGame();
-            outputView.printStrikeOrBall(result);
+            String resultMessage = gameService.playGame();
+            outputView.printResultMessage(resultMessage);
 
-            if(result.equals(THREESTRIKE)) {
+            if(resultMessage.equals(THREESTRIKE)) {
                 outputView.printCorrectAnswer();
                 inputView.requestGameState();
                 correctAnswer = true;
