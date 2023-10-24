@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 public class GameService {
 
     public boolean isGameOver(GameResult gameResult) {
-        if (gameResult.getStrike() == 3) {
+        if (gameResult.strike() == 3) {
             OutputView.printGameEnd();
             return true;
         }

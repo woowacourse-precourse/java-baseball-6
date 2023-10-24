@@ -46,20 +46,20 @@ public class OutputView {
 
     public static void printStrike(GameResult gameResult) {
         if (gameResult.isBallZero() && !gameResult.isStrikeZero()){
-            System.out.printf(STRIKE_MESSAGE, gameResult.getStrike());
+            System.out.printf(STRIKE_MESSAGE, gameResult.strike());
         }
     }
 
     public static void printBall(GameResult gameResult) {
         if (!gameResult.isBallZero() && gameResult.isStrikeZero()){
-            System.out.printf(BALL_MESSAGE, gameResult.getBall());
+            System.out.printf(BALL_MESSAGE, gameResult.ball());
         }
 
     }
 
     public static void printStrikeAndBall(GameResult gameResult) {
         if (!gameResult.isBallZero() && !gameResult.isStrikeZero()){
-            System.out.printf(BALL_STRIKE_MESSAGE, gameResult.getBall(), gameResult.getStrike());
+            System.out.printf(BALL_STRIKE_MESSAGE, gameResult.ball(), gameResult.strike());
         }
     }
 }

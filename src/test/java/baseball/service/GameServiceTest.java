@@ -40,12 +40,12 @@ class GameServiceTest {
         GameResult gameResult = gameService.checkResult(player, computer);
         GameResult mockGameResult = new GameResult(3, 0);
 
-        assertEquals(gameResult.getStrike(), mockGameResult.getStrike());
-        assertEquals(gameResult.getBall(), mockGameResult.getBall());
+        assertEquals(gameResult.strike(), mockGameResult.strike());
+        assertEquals(gameResult.ball(), mockGameResult.ball());
     }
 
     @Test
-    @DisplayName("플레이어로 부터 잘못된 값이 넘어왔을 때 오류처리")
+    @DisplayName("플레이어 로부터 잘못된 값이 넘어왔을 때 오류처리")
     void checkResultThrowException() {
         List<Integer> player = List.of(1, 2, 3, 4);
         List<Integer> computer = List.of(1, 2, 3);
