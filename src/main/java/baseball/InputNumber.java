@@ -13,6 +13,9 @@ public class InputNumber {
         checkSize(inputNum);
 
         for (String number : inputNum.split("")) {
+            if (playerNum.contains(Integer.parseInt(number))) {
+                throw new IllegalArgumentException();
+            }
             playerNum.add(Integer.parseInt(number));
         }
         return playerNum;
