@@ -25,9 +25,7 @@ public class Application {
                 List<Integer> user = new ArrayList<>();
                 userNumberList(user, Numbers);
 
-                if (!(user.size() == 3)) {
-                    throw new IllegalArgumentException();
-                }
+                userListValid(user);
 
                 HashMap<Integer, Integer> map = new HashMap();
 
@@ -74,6 +72,12 @@ public class Application {
         }
 
     }
+    public static void userListValid(List<Integer> user){
+        if (!(user.size() == 3)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void userNumberList(List<Integer> user,String Numbers){
         for (int i = 0; i < Numbers.length(); i++) {
             int userNumber = Numbers.charAt(i) - '0';
