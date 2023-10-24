@@ -59,10 +59,10 @@ __GameData__
 
 ## View
 __InputView__
-- [x] printNumberRequest (플레이어 입력안내 메시지 출력)
+- [x] printNumberRequest (플레이어 입력안내 메시지 출력 및 입력받음)
 
          숫자를 입력해주세요 : 
-- [x] printGameEnd (게임 종료 확인 메시지 출력)
+- [x] printGameEnd (게임 종료 확인 메시지 출력 및 입력받음)
 
          3개의 숫자를 모두 맞히셨습니다! 게임 종료
          게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
@@ -80,9 +80,9 @@ __Validator__
 
 
 - [x] validatePlayerInput (플레이어의 입력을 검증)
-   1) 숫자인지 검증
-   3) 숫자가 3개인지 검증
-   4) 숫자가 서로 중복되지 않는지 검증
+   1) 1-9범위의 숫자인지 검증(validateInputContent - 메소드 분리)
+   3) 숫자가 3개인지 검증(validateInputSize - 메소드 분리)
+   4) 숫자가 서로 중복되지 않는지 검증(validateInputUniqueness - 메소드 분리)
 
 
 - [x] validateGameEndInput (게임종료 후 1,2입력 검증)
@@ -98,6 +98,8 @@ __Comparator__
     * 위치가 같지 않으면서 숫자는 포함되어 있다면 스트라이크+1하고 스트라이크 숫자 반환
 - [x] countBalls
     * 위치가 같으면서 숫자도 같다면 볼+1하고 볼 숫자 반환
+- [x] countMatchForIndex
+    * countBalls메소드 분리
 - [x] isNothing
     * computerNumber와 playerInput가 하나도 안겹치면 낫싱true
 - [x] isEndGame
@@ -127,7 +129,9 @@ private static int count = 0;
     - 플레이어의 입력받아 playerFirstInput변수에 저장
     - handlePlayerInput으로 플레이어의 입력 변환
     - 모델에 플레이어의 입력 저장
-   
+
+4.[x] processPlayerInput
+    - 사용자의 입력을 검증하고 모델에 데이터 저장
 
 3. [x] checkReplay
     - 전부 맞았으니 3스트라이크가 표시되게 printHint호출 후 printGameEnd호출
@@ -135,7 +139,7 @@ private static int count = 0;
     - 1이면 State를1로 유지해 설정된 while문에 따라 게임 재시작, 2면 게임종료
 
 
-4. [x] processComperater
+4. [x] processCompare
     - compartaor를 이용해 낫싱,볼,스트라이크 계산 후 변수에 저장
     - 각 해당하는 힌트 출력
 
