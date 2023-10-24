@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberFactory {
+public abstract class NumberFactory {
 
     public static int createNumber(int digitSize) {
         List<Integer> numberList = new ArrayList<>();
