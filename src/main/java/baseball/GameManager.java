@@ -66,14 +66,15 @@ public class GameManager {
         return true;
     }
 
-    private int[] judge(List<Integer> numbers) {
+    private int[] judge(List<Integer> numbers){
         int[] result = new int[2];
-        for (int i = 0; i < 3; i++) {
-            if (numbers.get(i) == computer.getNumbers().get(i)) {
+        for (int i = 0; i < 3; i++){
+            if (numbers.get(i) == computer.getNumbers().get(i)){
                 result[0]++;
-            } else {
+            }
+            else{
                 for (int j = 0; j < 3; j++) {
-                    if (numbers.get(i) == computer.getNumbers().get(j)) {
+                    if (numbers.get(i) == computer.getNumbers().get(j)){
                         result[1]++;
                         break;
                     }
@@ -82,13 +83,14 @@ public class GameManager {
         }
         return result;
     }
-    private boolean isValid(List<Integer> numbers) {
+    private boolean isValid(List<Integer> numbers){
         boolean isValid = true;
-        if (numbers.size() != 3) {
+        if (numbers.size() != 3){
             isValid = false;
-        } else {
-            for (Integer number : numbers) {
-                if (number < 0 || number > 9) {
+        }
+        else{
+            for(Integer number : numbers){
+                if (number < 0 || number > 9){
                     isValid = false;
                     break;
                 }
