@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 public class printGameMessage {
     public void gameStartMessage() {
@@ -15,5 +15,9 @@ public class printGameMessage {
 
     public void gameRestartMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public void matchResultMessage(String printResult) {
+        System.out.println(printResult.trim());
     }
 }
