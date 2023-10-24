@@ -10,7 +10,7 @@ public class Computer {
 
     public Computer() {
         makeNumber();
-//        System.out.println(computerNumber);
+        System.out.println(computerNumber);
     }
 
     public void makeNumber() {
