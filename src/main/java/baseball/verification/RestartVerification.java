@@ -11,10 +11,10 @@ public class RestartVerification {
         while (true) {
             try {
                 int whatToDo = Integer.parseInt(Console.readLine());
-                if (numberConstants.doQuit(whatToDo)) {
+                if (numberConstants.wantQuit(whatToDo)) {
                     return false;
                 }
-                if (numberConstants.doRestart(whatToDo)) {
+                if (numberConstants.wantRestart(whatToDo)) {
                     return true;
                 }
                 System.out.println("잘못된 입력입니다. 1(재시작) 또는 2(종료)를 입력해주세요.");
