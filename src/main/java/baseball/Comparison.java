@@ -31,11 +31,11 @@ public class Comparison {
         return over;
     }
 
-    static void compare (Input computer, Input player) { //if문이 너무 많아 코드가 이쁘지 않다. 이를 줄일 수 있는 리팩토링은 무엇일까?
+    static void compare (Input computer, Input player) {
         int strike;
         int ball;
 
-        strike = countStrike(computer.getNumber(), player.getNumber()); //좋은 객체지향은 getter 사용을 지양한다고 한다. 어떤 식으로 리팩토링 해야할까...
+        strike = countStrike(computer.getNumber(), player.getNumber());
         ball = countBall(computer.getNumber(), player.getNumber());
         over = false;
 

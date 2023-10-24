@@ -23,7 +23,7 @@ public class Input {
         }
     }
 
-    void setPlayerNumber (String s) throws IllegalArgumentException { //입력 과정에서 들어올 수 있는 모든 경우를 체크해서 예외가 발생하도록 해야 한다.
+    void setPlayerNumber (String s) throws IllegalArgumentException {
         for (char c : s.toCharArray()) {
             if (!Character.isDigit(c)){
                 throw new IllegalArgumentException();
@@ -52,7 +52,7 @@ public class Input {
         return inputs;
     }
 
-    static boolean isEnd(String d) throws IllegalArgumentException { //여기서는 허용되는 입력값이 1, 2 밖에 없으므로 if문 대신 switch/case를 활용해보자.
+    static boolean isEnd(String d) throws IllegalArgumentException {
         int endNumber = Integer.parseInt(d);
 
         return switch (endNumber) {
