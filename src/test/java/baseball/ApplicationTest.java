@@ -94,6 +94,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("범위 맞는 숫자 테스트")
+    void 범위_맞는_숫자_테스트() {
+        String rightRangeNumber = "183";
+        String notRightRangeNumber = "083";
+
+        assertThat(Application.isRightRangeNumber(rightRangeNumber)).isEqualTo(true);
+        assertThat(Application.isRightRangeNumber(notRightRangeNumber)).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("서로 다른 랜덤숫자 테스트")
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
