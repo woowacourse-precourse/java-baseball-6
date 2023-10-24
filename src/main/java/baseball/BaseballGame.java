@@ -47,7 +47,7 @@ public class BaseballGame {
             validAnswerDigit(userAnswer);
             validAnswerDistinct(userAnswer);
             hintScore.calculateHint(correctAnswer, userAnswer);
-            System.out.println(hintScore.toString());
+            System.out.println(hintScore);
             if (hintScore.isGameOver()) {
                 System.out.println(PRINT_GAME_OVER);
                 break;
