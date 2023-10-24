@@ -4,7 +4,7 @@ import baseball.controller.GameState.State;
 
 public class GameController {
 
-    private GameState gameState;
+    private final GameState gameState;
     private Scoring scoring;
 
     public GameController() {
