@@ -1,10 +1,10 @@
 package baseball.model.input;
 
-import static baseball.model.enums.RestartOrExitCommand.EXIT_GAME;
-import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
-import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
+import static baseball.enums.RestartOrExitCommand.EXIT_GAME;
+import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
+import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
 
-import baseball.model.enums.RestartOrExitCommand;
+import baseball.enums.RestartOrExitCommand;
 import java.util.List;
 
 public class RestartOrExitInput extends PlayerInput {

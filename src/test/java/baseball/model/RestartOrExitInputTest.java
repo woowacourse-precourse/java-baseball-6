@@ -1,7 +1,7 @@
 package baseball.model;
 
-import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
-import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
+import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
+import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

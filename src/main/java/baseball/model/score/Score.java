@@ -1,8 +1,8 @@
 package baseball.model.score;
 
-import static baseball.model.enums.ScoreMessage.BALL;
-import static baseball.model.enums.ScoreMessage.NOTHING;
-import static baseball.model.enums.ScoreMessage.STRIKE;
+import static baseball.enums.ScoreMessage.BALL;
+import static baseball.enums.ScoreMessage.NOTHING;
+import static baseball.enums.ScoreMessage.STRIKE;
 
 public class Score {
     private static final int THREE_STRIKE = 3;

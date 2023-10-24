@@ -1,4 +1,4 @@
-package baseball.model.enums;
+package baseball.enums;
 
 import java.util.List;
 import java.util.stream.Collectors;

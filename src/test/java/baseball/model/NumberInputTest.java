@@ -1,8 +1,8 @@
 package baseball.model;
 
-import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
-import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
-import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
+import static baseball.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
+import static baseball.enums.NumberInputErrorMessage.INVALID_CHARACTER;
+import static baseball.enums.NumberInputErrorMessage.INVALID_LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

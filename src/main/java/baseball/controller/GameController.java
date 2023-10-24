@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import static baseball.model.enums.GameMessage.GAME_START_MESSAGE;
-import static baseball.model.enums.GameMessage.INPUT_RESTART_OR_EXIT_MESSAGE;
+import static baseball.enums.GameMessage.GAME_START_MESSAGE;
+import static baseball.enums.GameMessage.INPUT_RESTART_OR_EXIT_MESSAGE;
 
 import baseball.model.input.RestartOrExitInput;
 import baseball.model.numbers.AnswerGenerator;

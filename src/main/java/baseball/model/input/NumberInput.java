@@ -1,8 +1,8 @@
 package baseball.model.input;
 
-import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
-import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
-import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
+import static baseball.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
+import static baseball.enums.NumberInputErrorMessage.INVALID_CHARACTER;
+import static baseball.enums.NumberInputErrorMessage.INVALID_LENGTH;
 
 import java.util.ArrayList;
 import java.util.HashSet;
