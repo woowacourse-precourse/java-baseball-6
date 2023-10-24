@@ -7,7 +7,6 @@ public enum ResultCase {
     BALL_AND_STRIKE;
 
     public ResultCase next(int i) {
-        // No bounds checking required here, because the last instance overrides
         return values()[ordinal() + i];
     }
 }
