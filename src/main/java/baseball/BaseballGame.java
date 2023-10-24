@@ -10,7 +10,7 @@ public class BaseballGame {
     private static final String RESTART_GAME = "1";
     private static final String END_GAME = "2";
 
-    public void run() {
+    public static void run() {
         int userEndOption;
 
         printGameStart();
@@ -20,11 +20,11 @@ public class BaseballGame {
         } while (!isGameEnd(userEndOption));
     }
 
-    private void printGameStart() {
+    private static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private void playGame() {
+    private static void playGame() {
         List<Integer> randomNum;
         List<Integer> userNum;
         Map<String, Integer> result;
@@ -37,7 +37,7 @@ public class BaseballGame {
         } while (!isAllStrike(result));
     }
 
-    private List<Integer> initRandomNum() {
+    private static List<Integer> initRandomNum() {
         List<Integer> randomNumList = new ArrayList<>();
         
         while (randomNumList.size() < 3) {
@@ -50,7 +50,7 @@ public class BaseballGame {
         return randomNumList;
     }
     
-    private List<Integer> inputUserNum() {
+    private static List<Integer> inputUserNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = Console.readLine();
         checkUserNumForm(userInputString);
@@ -66,12 +66,12 @@ public class BaseballGame {
         return userNum;
     }
 
-    private void initStrikeAndBallNum(Map<String, Integer> resultList) {
+    private static void initStrikeAndBallNum(Map<String, Integer> resultList) {
         resultList.put("strike", 0);
         resultList.put("ball", 0);
     }
 
-    private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum) {
+    private static Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum) {
         Map<String, Integer> resultList = new HashMap<>();
         initStrikeAndBallNum(resultList);
 
@@ -85,7 +85,7 @@ public class BaseballGame {
         return resultList;
     }
 
-    private void printGameResult(Map<String, Integer> resultList) {
+    private static void printGameResult(Map<String, Integer> resultList) {
         int strikeCount = resultList.get("strike");
         int ballCount = resultList.get("ball");
         String result = "낫싱";
@@ -101,20 +101,20 @@ public class BaseballGame {
         printWinGame(resultList);
     }
 
-    private boolean isAllStrike(Map<String, Integer> resultList) {
+    private static boolean isAllStrike(Map<String, Integer> resultList) {
         if (resultList.get("strike") == 3) {
             return true;
         }
         return false;
     }
 
-    private void printWinGame(Map<String, Integer> resultList) {
+    private static void printWinGame(Map<String, Integer> resultList) {
         if (isAllStrike(resultList)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
-    private int inputEndOption() {
+    private static int inputEndOption() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endOption = Console.readLine();
         checkEndOptionForm(endOption);
@@ -122,14 +122,14 @@ public class BaseballGame {
         return Integer.valueOf(endOption);
     }
 
-    private boolean isGameEnd(int endOption) {
+    private static boolean isGameEnd(int endOption) {
         if (endOption == 2) {
             return true;
         }
         return false;
     }
 
-    private void checkUserNumForm(String userInput) {
+    private static void checkUserNumForm(String userInput) {
         if (!isInteger(userInput)) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
@@ -144,7 +144,7 @@ public class BaseballGame {
         }
     }
 
-    private void checkEndOptionForm(String endOption) {
+    private static void checkEndOptionForm(String endOption) {
         if (!isInteger(endOption)) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
@@ -153,7 +153,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean isInteger(String userInput) {
+    private static boolean isInteger(String userInput) {
         try {
             Integer.parseInt(userInput);
             return true;
@@ -162,7 +162,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean isDuplicatedNum(String userInput) {
+    private static boolean isDuplicatedNum(String userInput) {
         Set<Character> userInputSet = new HashSet<>();
 
         for (char userInputChar : userInput.toCharArray()) {
