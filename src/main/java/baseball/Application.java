@@ -2,11 +2,18 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Application {
+    //INPUT 에러 메세지
+    private static final String ERROR_MSG_INPUT = "3자리 정수를 입력하세요. :)";
+    private static final String ERROR_MSG_DUPLICATE = "3자리 숫자는 중복되지 않습니다. :)";
+
+
     public static void main(String[] args) {
         Play play = new Play();
         int run = 1;        //  시작,재사작 변수
@@ -49,6 +56,7 @@ public class Application {
 
         public void inputAnswer() {
             System.out.println("숫자를 입력해주세요");
+            answer.clear();
             String stringAnswer = Console.readLine();
             String integers = "[0-9]+";
 
@@ -58,19 +66,19 @@ public class Application {
                 answer.add(1, Character.getNumericValue(stringAnswer.charAt(1)));
                 answer.add(2, Character.getNumericValue(stringAnswer.charAt(2)));
             } else {
-                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
+                throw new IllegalArgumentException(ERROR_MSG_INPUT);
             }
 
-            // 숫자 중복확인
-            if (answer.get(0).equals(answer.get(1))) {
-                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
+            // 중복 체크
+            List<Integer> duplicationCheck = new ArrayList<>(answer);
+            int check;
+            for(int i = 2; i >= 0; i--){
+            check = duplicationCheck.remove(i);
+            if (duplicationCheck.contains(check)){
+                throw new IllegalArgumentException(ERROR_MSG_DUPLICATE);
             }
-            if (Objects.equals(answer.get(0), answer.get(2))) {
-                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
             }
-            if (answer.get(0).equals(answer.get(2))) {
-                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
-            }
+            duplicationCheck.clear();
         }
     }
 
@@ -94,7 +102,6 @@ public class Application {
             while (status == 0){
                 answer.inputAnswer();
                 ArrayList<Integer> playAnswer = answer.getAnswer();
-
                 //Player의 입력값 판정
                 for (int i = 0; i<3; i++) {
                     if (problemNumber.contains(playAnswer.get(i)) && problemNumber.get(i).equals(playAnswer.get(i))){
