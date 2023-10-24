@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static String START_MSG = "숫자 야구 게임을 시작합니다.";
     public static String INPUT_MSG = "숫자를 입력해주세요 : ";
+    public static String SUCCESS_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static int LIST_LEN = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -30,6 +31,16 @@ public class Application {
             int[] result = countStrikesAndBalls(computer, user);
             //step4. 결과 출력
             printResult(result);
+            //step5. 만약 결과가 3strike라면 게임을 새로 시작할건지 사용자에게 질문
+            if(result[0] == 3) {
+                System.out.println(SUCCESS_MSG);
+                input = Console.readLine();
+                if(checkRestart(input)){
+                    isFinish = true;
+                } else {
+                    return;
+                }
+            }
 
         }
     }
@@ -119,5 +130,27 @@ public class Application {
         }
 
         System.out.println(sb);
+    }
+
+    /**
+     * 게임이 끝난 경우 재시작/종료 구
+     * 입력은 1과 2 중 하나의 수
+     */
+    public static boolean checkRestart(String input) {
+        boolean isRestart;
+
+        //문자를 두 개 이상 입력
+        if(input.length() != 1) {
+            throw new IllegalArgumentException("1이나 2 하나만 공백없이 입력해야 합니다.");
+        }
+
+        if(input.charAt(0) - '0' == 1) { //재시작
+            isRestart = true;
+        } else if(input.charAt(0) - '0' == 2) { //종료
+            isRestart = false;
+        } else { //입력이 1이나 2가 아닌 경우
+            throw new IllegalArgumentException("1이나 2를 입력해야 합니다.");
+        }
+        return isRestart;
     }
 }
