@@ -22,17 +22,15 @@ class UserTest {
     @DisplayName("사용자의 숫자가 정확히 입력되었는지 확인")
     void 입력_테스트(){
         //given
-        //String input="123";
-        //Balls balls=new Balls(Arrays.asList(1,2,3));
-        //User user=new User();
+        String input="123";
+        Balls balls=new Balls(Arrays.asList(1,2,3));
+        User user=new User();
 
         //when
-        //InputStream in = new ByteArrayInputStream(input.getBytes());
-        //System.setIn(in);
-        //Balls userBalls=user.makeUserNumber();
+        Balls userBalls=user.makeUserNumber(input);
 
         //then
-        //Assertions.assertThat(userBalls.getBalls()).isEqualTo(balls.getBalls());
+        Assertions.assertThat(userBalls.getBalls()).isEqualTo(balls.getBalls());
     }
 
 
