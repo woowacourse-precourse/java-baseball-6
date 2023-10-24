@@ -9,12 +9,12 @@ public class BaseballGameController {
     public static final int GAME_NUMBER_DIGIT = 3;
     private PlayerNumbers playerNumbers;
     private ComputerNumbers computerNumbers;
-    private final RestartServiceImpl restartServiceImpl;
+    private final RestartService restartService;
     private final StrikeBallCountService strikeBallCountService;
 
-    public BaseballGameController(StrikeBallCountService strikeBallCountService, RestartServiceImpl restartServiceImpl) {
+    public BaseballGameController(StrikeBallCountService strikeBallCountService, RestartService restartService) {
         this.strikeBallCountService = strikeBallCountService;
-        this.restartServiceImpl = restartServiceImpl;
+        this.restartService = restartService;
     }
 
     public void playBaseballGame() {
@@ -41,6 +41,6 @@ public class BaseballGameController {
     }
 
     private boolean wantsToRestartGame() {
-       return restartServiceImpl.chooseRestartOption(InputView.inputRestartOption());
+       return restartService.chooseRestartOption(InputView.inputRestartOption());
     }
 }
