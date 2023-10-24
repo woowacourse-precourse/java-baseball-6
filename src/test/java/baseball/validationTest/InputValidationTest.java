@@ -31,4 +31,13 @@ public class InputValidationTest {
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void input_값에_공백이_있을_경우() {
+        String inputNum = "2 3";
+        Assertions.assertThatThrownBy(() -> {
+                    InputValidation.verifyInputNum(inputNum);
+                })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
