@@ -55,15 +55,21 @@ public class Application {
             if (strike == 3) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int gameContinue = Integer.valueOf(Console.readLine());
-                if (gameContinue == 2) {
-                    gameRunning = false;
-                } else if (gameContinue == 1) {
-                    computerChooseNumber = computerChooseNumber();
-                } else {
-                    System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
-                    gameRunning = false;
+
+                // 종료 로직 fix
+                while (true) {
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    int gameContinue = Integer.valueOf(Console.readLine());
+
+                    if (gameContinue == 2) {
+                        gameRunning = false;
+                        break;
+                    } else if (gameContinue == 1) {
+                        computerChooseNumber = computerChooseNumber();
+                        break;
+                    } else {
+                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                    }
                 }
             } else if (strike == 0 && ball == 0) {
                 System.out.println("낫싱");
