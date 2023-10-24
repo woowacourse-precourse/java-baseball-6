@@ -51,12 +51,20 @@ public class BaseballView {
     // 유저 숫자 입력
     public String inputUserNumber() {
         outputUserNumber();
-        String readLine = Console.readLine();
-        checkInputValidNumber(readLine);
-        return readLine;
+        String input = Console.readLine();
+        checkValidNumberFormat(input);
+        return input;
     }
 
-    private void checkInputValidNumber(String readLine) {
+    // 게임 재시작 혹은 종료 선택 입력
+    public String inputSelectRestartOrEnd() {
+        outputSelectRestartOrEnd();
+        String input = Console.readLine();
+        return Console.readLine();
+    }
+
+    /* 입력 값 예외처리 */
+    private void checkValidNumberFormat(String readLine) {
         isCorrectLength(readLine);
         isExistChar(readLine);
         isExistRepeatedNumber(readLine);
@@ -80,11 +88,5 @@ public class BaseballView {
         if (readLine.length() != 3) {
             throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
         }
-    }
-
-    // 게임 재시작 혹은 종료 선택 입력
-    public String inputSelectRestartOrEnd() {
-        outputSelectRestartOrEnd();
-        return Console.readLine();
     }
 }
