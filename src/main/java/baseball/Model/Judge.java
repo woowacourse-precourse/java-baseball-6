@@ -36,4 +36,14 @@ public class Judge {
         listBallStrike.add(strikeCount);
         return listBallStrike;
     }
+
+    public boolean isThreeStrike(int strikeCount) {
+        if (strikeCount == BASEBALL_NUM_SIZE) {
+            return true;
+        }
+        if (strikeCount != BASEBALL_NUM_SIZE) {
+            return false;
+        }
+        throw new IllegalArgumentException("허가되지 않은 문자열");
+    }
 }
