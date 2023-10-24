@@ -24,7 +24,8 @@ public class Validator {
 
     private boolean isOneToNineNumber(String playerInput) {
         for (int i = 0; i < PLAYER_NUMBER_DIGIT; i++) {
-            if (playerInput.charAt(i) - '0' == 0) {
+            int nowNum = playerInput.charAt(i) - '0';
+            if (nowNum <= 0 || nowNum > 9) {
                 return false;
             }
         }
