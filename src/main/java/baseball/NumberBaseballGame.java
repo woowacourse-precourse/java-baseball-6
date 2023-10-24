@@ -48,8 +48,8 @@ public class NumberBaseballGame {
    * Returns messages based on calculated strike, balls based on userBalls, computerBalls. ex. "1볼
    * 1스트라이크"
    *
-   * @param userBalls
-   * @param computerBalls
+   * @param userBalls     the user input
+   * @param computerBalls the computer generated answer
    * @return the result message
    */
   public static String computeResultMessage(String userBalls, String computerBalls) {
