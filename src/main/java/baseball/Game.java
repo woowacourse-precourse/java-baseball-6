@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Game implements Runnable {
     private int compareRestartNum = NumberConst.RESTART_NUMBER; // 재시작, 종료 여부를 입력받기 위한 변수
@@ -20,6 +21,9 @@ public class Game implements Runnable {
         try {
             game.start();
             run();
+        } catch (NoSuchElementException exception) {
+            System.out.println("error code: 000");
+            stop();
         } finally {
             stop();
         }
