@@ -8,8 +8,8 @@ import java.util.List;
 
 public class GameService {
 
-    private TargetNumber targetNumber = new TargetNumber();
-    private Score score = new Score();
+    private final TargetNumber targetNumber = new TargetNumber();
+    private final Score score = new Score();
 
     public void setGame() {
         targetNumber.setTargetNumber();
@@ -23,18 +23,23 @@ public class GameService {
 
     private void computeScore(List<Integer> userNumber, List<Integer> targetNumber) {
         countStrike(userNumber, targetNumber);
-        countBall(userNumber, targetNumber);
+        for(int i = 0; i < 3; i++) {
+            countBall(userNumber, targetNumber, i);
+        }
     }
 
     private void countStrike(List<Integer> userNumber, List<Integer> targetNumber) {
         for(int i = 0; i < 3; i++) {
-            if(userNumber[i]==targetNumber[i])
+            if(userNumber.get(i) == targetNumber.get(i))
                 score.incStrikeCount();
         }
     }
 
-    private void countBall(List<Integer> userNumber, List<Integer> targetNumber) {
-
+    private void countBall(List<Integer> userNumber, List<Integer> targetNumber, int index) {
+        for(int i = 0; i < 3; i++) {
+            if(i!=index && userNumber.get(i)==targetNumber.get(index))
+                score.incBallCount();
+        }
     }
 
 
