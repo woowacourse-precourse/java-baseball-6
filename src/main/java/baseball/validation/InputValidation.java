@@ -18,14 +18,12 @@ public final class InputValidation {
         }
     }
 
-    public static int validParseNumeric(String input) {
-        int res;
+    public static void validNumeric(String input) {
         try {
-            res = Integer.parseInt(input);
+            Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        return res;
     }
 
     public static void validRestartInput(int input) {

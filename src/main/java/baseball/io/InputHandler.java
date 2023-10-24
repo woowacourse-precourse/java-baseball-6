@@ -2,7 +2,7 @@ package baseball.io;
 
 
 import static baseball.validation.InputValidation.validExpectedNums;
-import static baseball.validation.InputValidation.validParseNumeric;
+import static baseball.validation.InputValidation.validNumeric;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -12,7 +12,8 @@ public class InputHandler {
 
     public Integer scanInteger() {
         String input = Console.readLine();
-        return validParseNumeric(input);
+        validNumeric(input);
+        return Integer.parseInt(input);
     }
 
     public List<Integer> inputToExpectedNumber(int input) {
