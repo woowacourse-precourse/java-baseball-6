@@ -70,7 +70,6 @@ public class Application {
                 ball++;
             }
         }
-        //CheckNothing();
         if(ball ==  0 && strike == 0){
             System.out.println("낫싱");
         }
