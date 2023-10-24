@@ -1,3 +1,5 @@
+package serviceTest;
+
 import baseball.service.BaseballService;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
