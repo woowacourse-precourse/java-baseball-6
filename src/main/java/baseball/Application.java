@@ -83,35 +83,17 @@ class Baseballgame {
         }
 
         if (strike == 3 && ball == 0) {
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            strike = 0;
-            ball = 0;
-            return true;
+            return compareVariables("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료", true);
+        } else if (strike >= 1 && ball >= 1) {
+            return compareVariables(ball + "볼 " + strike + "스트라이크", false);
+        } else if (strike >= 1 && ball == 0) {
+            return compareVariables(strike + "스트라이크", false);
+        } else if (strike == 0 && ball >= 1) {
+            return compareVariables(ball + "볼", false);
+        } else if (strike == 0 && ball == 0) {
+            return compareVariables("낫싱", false);
         }
-        if (strike >= 1 && ball >= 1) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-            strike = 0;
-            ball = 0;
-            return false;
-        }
-        if (strike >= 1 && ball == 0) {
-            System.out.println(strike + "스트라이크");
-            strike = 0;
-            ball = 0;
-            return false;
-        }
-        if (strike == 0 && ball >= 1) {
-            System.out.println(ball + "볼");
-            strike = 0;
-            ball = 0;
-            return false;
-        }
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            strike = 0;
-            ball = 0;
-            return false;
-        }
+
         return false;
     }
 
@@ -120,6 +102,13 @@ class Baseballgame {
             return var.equals("1");
         }
         throw new IllegalArgumentException();
+    }
+
+    public boolean compareVariables(String args, boolean args2) {
+        strike = 0;
+        ball = 0;
+        System.out.println(args);
+        return args2;
     }
 }
 
