@@ -19,12 +19,7 @@ public class NumberBaseball implements Game {
     @Override
     public void init() {
         isFinished = false;
-
-        answer = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH).stream()
-                .map(String::valueOf)
-                .toArray(String[]::new);
-        answerSet = new HashSet<>(Arrays.asList(answer));
-
+        initializeAnswer();
         initializeBaseballResult();
     }
 
@@ -102,6 +97,20 @@ public class NumberBaseball implements Game {
     @Override
     public String getPlayTurnPrompt() {
         return "숫자를 입력해주세요 : ";
+    }
+
+    private void initializeAnswer() {
+        answer =  new String[ANSWER_LENGTH];
+        answerSet = new HashSet<>();
+
+        while (answerSet.size() != ANSWER_LENGTH) {
+            String randNumberString = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (answerSet.contains(randNumberString))
+                continue;
+
+            answerSet.add(randNumberString);
+            answer[answerSet.size() - 1] = randNumberString;
+        }
     }
 
     private void initializeBaseballResult() {
