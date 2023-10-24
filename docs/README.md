@@ -103,6 +103,75 @@ public static String readLine() {
 
 ---
 
+# **🚩 프로그램 Flow 정리**
+
+## 1. Application에서 main을 실행합니다.
+
+## 2. BaseballGameController.start() 메소드를 호출합니다.
+
+## 3. printStartMessage(); 호출
+
+- BaseballGameController에서 게임 시작 메시지를 출력합니다.
+
+> “숫자 야구 게임을 시작합니다.”
+>
+
+## 4. while(player.continueGame())
+
+- Player의 인스턴스 멤버변수 GameStateNumber 내부의 필드값 Integer stateNumber가 1(=START)이면 4-1, 2(=EXIT)면 5로 진행
+
+### 4-1. computer.makeAnswer() 호출
+
+- Computer 객체의 인스턴스 멤버 GameAnswer에 중복 없는 1에서 9 사이의 숫자 세 개가 저장됩니다.
+
+### 4-2. playOneRound() 호출
+
+#### 4-2-1. computer.initScore()를 호출
+
+︎ Computer의 인스턴스 멤버 Score의 strike, ball 필드를 각각 0으로 초기화 합니다.
+
+#### 4-2-2. **while(!computer.isScoreAllStrike())**를 호출하여 Computer의 인스턴스 멤버변수 Score의 Integer 변수인 strike가 3인지 검사합니다.
+
+-︎ 조건을 만족하면 4-3으로 이동, 그렇지 않으면 4-2-2-1으로 이동
+
+_4-2-2-1. inputView.printGuessNumberInputMessage(); 호출_
+
+- 입력에 관한 메시지를 출력합니다.
+
+> “숫자를 입력해주세요 : ”
+>
+
+_4-2-2-2. player.inputGuessMembers(); 호출_
+
+- ︎ 사용자가 입력을 하면 Player 객체에서 사용자가 입력한 값에 대해 검증이 이루어집니다.  (by `GuessNumbersValidator`, `GuessNumberValidator` )
+
+- ︎ 검증에 성공하면 Player 객체의 `GuessNumbers` 에 값이 저장됩니다.**
+
+- ︎ 검증에 실패하면 IllegalArgumentException()을 throw**
+
+_4-2-2-3. computer.calculateScore(GuessNumbers) 호출_
+
+- ︎ Computer 객체에서 Player 객체의 GuessNumbers와, 4에서 생성한GameAnswer 필드를 비교하여 점수를 계산하여 Computer의 인스턴스 멤버 변수 Score에 저장합니다.
+
+_4-2-2-4. outputView.printResult(computer.getScore()); 호출_
+
+- ︎ OutputView 클래스에서 Score를 파싱하여 사용자에게 콘솔로 출력합니다.
+
+_4-2-2-5. ‘4-2-2’로 이동합니다._
+
+### 4-3. inputView.printRestartOrExitInputMessage();
+
+▶︎ 재시작/종료에 관한 입력 요청 메시지를 출력합니다.
+
+> “게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.”
+>
+
+**▶︎** 출력 후 4로 이동
+
+## 5. 프로그램 종료
+
+---
+
 # **🚩 MVC 패턴에 입각하여 구현 시 지켜야 할 사항**
 
 ### **☑️ Model은 Controller와 View에 의존해서는 안된다.**
