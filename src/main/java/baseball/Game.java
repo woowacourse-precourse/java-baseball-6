@@ -15,7 +15,7 @@ public class Game {
             System.out.print(INPUT_MESSAGE);
             String inputString = Console.readLine().replace(" ", ""); // 공백 실수 허용
             Player player = new Player(inputString);
-            is3Strike = computer.checkResult(player.getDuplicatePlayerList());
+            is3Strike = computer.checkResult(player.getDuplicateplayerNumbers());
         } while (!is3Strike);
     }
 }

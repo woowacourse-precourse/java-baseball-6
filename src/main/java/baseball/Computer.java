@@ -23,7 +23,6 @@ public class Computer {
                 computerNumbers.add(randomNumber);
             }
         }
-        System.out.println(computerNumbers);
     }
 
     public boolean checkResult(List<Integer> playerList) {
