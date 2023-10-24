@@ -64,15 +64,10 @@ class Game {
         int ball = 0, strike = 0;
 
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (computerNumber.get(i).equals(userGuess.get(j))) {
-                    if (i != j) {
-                        ball++;
-                    } else {
-                        strike++;
-                    }
-                    break;
-                }
+            if (computerNumber.get(i).equals(userGuess.get(i))) {
+                strike++;
+            } else if (computerNumber.contains(userGuess.get(i))) {
+                ball++;
             }
         }
 
