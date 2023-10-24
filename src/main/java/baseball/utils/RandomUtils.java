@@ -14,13 +14,13 @@ public class RandomUtils {
 
     private int getUniqueRandomNumber(int[] randomNumbers, int startInclusive, int endInclusive, int index) {
         int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
-        while (!uniqueNumber(index, randomNumbers, randomNumber)) {
+        while (!isUniqueNumber(index, randomNumbers, randomNumber)) {
             randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
         }
         return randomNumber;
     }
 
-    private boolean uniqueNumber(int index, int[] randomNumbers, int randomNumber) {
+    private boolean isUniqueNumber(int index, int[] randomNumbers, int randomNumber) {
         if (randomNumbers[index] == randomNumber) {
             return false;
         }
