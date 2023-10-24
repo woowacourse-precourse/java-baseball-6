@@ -13,7 +13,6 @@ public class BaseBallGameController {
     public void startProgram() {
         outputView.startMessage();
         Game game = initGame();
-        System.out.println(game.getComputer());
         baseBallGame(game);
     }
 
