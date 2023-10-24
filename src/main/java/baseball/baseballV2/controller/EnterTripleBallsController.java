@@ -20,6 +20,7 @@ public class EnterTripleBallsController extends AbstractController {
     @Override
     void doProcess(Map<String, Object> model) {
         outputView.print(model);
+
         model.put(Util.USER_TRIPLE_BALLS_KEY, inputView.input(model));
     }
 }
