@@ -13,16 +13,16 @@ public class BaseballGameService {
     private static final String NOTHING_RESULT_MESSAGE = "낫싱";
     private static final String BALL_MESSAGE = "볼 ";
     private static final String STRIKE_MESSAGE = "스트라이크";
-    private Computer computer = new Computer();
+    private final Computer computer = new Computer();
     private int ballCount;
     private int strikeCount;
 
     public void initGame() {
-        initCount();
+        setCountInit();
         setComputerInit();
     }
 
-    private void initCount() {
+    private void setCountInit() {
         this.ballCount = 0;
         this.strikeCount = 0;
     }
@@ -45,10 +45,14 @@ public class BaseballGameService {
     }
 
     public String resolveBallOrStrikeCount(String inputNumber) {
-        initCount();
+        setCountInit();
         List<Integer> inputNumbers = parseStringToIntArray(inputNumber);
         judgeStrikeOrBall(computer.getNumbers(), inputNumbers);
         return getCountMessage();
+    }
+
+    private static List<Integer> parseStringToIntArray(String inputNumber) {
+        return Stream.of(String.valueOf(inputNumber).split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
     }
 
     private String getCountMessage() {
@@ -63,29 +67,20 @@ public class BaseballGameService {
         }
     }
 
-    private static List<Integer> parseStringToIntArray(String inputNumber) {
-        return Stream.of(String.valueOf(inputNumber).split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-    }
-
     private void judgeStrikeOrBall(List<Integer> computerNumbers, List<Integer> inputNumbers) {
-        int containNumber = 0;
-
         for (int index = 0; index < computerNumbers.size(); index++) {
-            if (computerNumbers.get(index).equals(inputNumbers.get(index))) this.strikeCount += 1;
-
+            if (computerNumbers.get(index).equals(inputNumbers.get(index))) {
+                this.strikeCount++;
+                continue;
+            }
+            if (computerNumbers.contains(inputNumbers.get(index))) {
+                this.ballCount++;
+            }
         }
-
-        for (Integer inputNumber : inputNumbers) {
-            if (computerNumbers.contains(inputNumber)) containNumber += 1;
-        }
-
-        this.ballCount = containNumber - strikeCount;
     }
 
-    public GameStatus changeGameStatusByCommand(String inputRetryOrEndCommand) {
+    public void changeGameStatusByCommand(String inputRetryOrEndCommand) {
         if (inputRetryOrEndCommand.equals(GameStatus.STOP.getCommand())) computer.setGameStatusStop();
         else if (inputRetryOrEndCommand.equals(GameStatus.START.getCommand())) computer.setGameStatusStart();
-
-        return computer.getGameStatus();
     }
 }
