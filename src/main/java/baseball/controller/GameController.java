@@ -1,41 +1,34 @@
 package baseball.controller;
 
-import baseball.controller.hint.HintController;
-import baseball.controller.hint.StrikeController;
-import baseball.domain.Baseball;
-import baseball.domain.GameConstants;
-import baseball.domain.Restart;
-import baseball.domain.hint.Hint;
-import baseball.domain.hint.Strike;
-import baseball.util.ExceptionUtil;
-import baseball.util.InputUtil;
-import baseball.util.IntegerListUtil;
-import baseball.util.IntegerUtil;
+import baseball.domain.NumberBaseball;
+import baseball.service.GameService;
+import baseball.service.GameServiceImpl;
 import baseball.view.*;
-
 
 public class GameController {
 
     private StartView startView;
     private InputView inputView;
     private HintView hintView;
+    private GameService gameService;
 
-    public GameController(StartView startView, InputView inputView, HintView hintView) {
+    public GameController(StartView startView, InputView inputView, HintView hintView,
+                          GameService gameService) {
         this.startView = startView;
         this.inputView = inputView;
         this.hintView = hintView;
+        this.gameService = gameService;
     }
 
-    public List<Integer> generateRandomBaseball() {
-        List<Integer> computerList = new ArrayList<>();
-        while (computerList.size() < GameConstants.NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-            if (!computerList.contains(randomNumber)) {
-                computerList.add(randomNumber);
-            }
-        }
+    public void play() {
+        while (true) {
+            startView.displayStartMessage();
 
-        return computerList;
+            //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
+            NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
+            gameService.playOneGame();
+
+        }
     }
 
 
