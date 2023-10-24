@@ -29,7 +29,7 @@ public class PrintResult {
 
     private void printNothing (int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            System.out.println(NOTHING);
+            System.out.print(NOTHING);
         }
     }
 }
