@@ -1,6 +1,6 @@
 package baseball.model.player;
 
-import static baseball.exception.GuessNumberValidator.isGuessNumberValid;
+import static baseball.exception.GuessNumbersValidator.isGuessNumberValid;
 
 public class GuessNumber {
 
