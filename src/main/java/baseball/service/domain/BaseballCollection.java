@@ -1,9 +1,9 @@
 package baseball.service.domain;
 
-import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_INVALID_LENGTH;
-import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_INVALID_RANGE;
-import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_NON_NUMERIC;
-import static baseball.exception.ExceptionMessage.EXCEPTION_MESSAGE_NON_UNIQUE;
+import static baseball.exception.ExceptionMessage.getExceptionMessageInvalidLength;
+import static baseball.exception.ExceptionMessage.getExceptionMessageInvalidRange;
+import static baseball.exception.ExceptionMessage.getExceptionMessageNonNumeric;
+import static baseball.exception.ExceptionMessage.getExceptionMessageNonUnique;
 import static baseball.service.domain.BaseballConstants.BASEBALL_END_NUMBER;
 import static baseball.service.domain.BaseballConstants.BASEBALL_START_NUMBER;
 import static baseball.service.domain.BaseballConstants.DEFAULT_CAPACITY;
@@ -67,20 +67,20 @@ public class BaseballCollection {
     private void validateLength(List<Integer> baseballs) {
         if (baseballs.size() != DEFAULT_CAPACITY) {
             throw new IllegalArgumentException(
-                    String.format(EXCEPTION_MESSAGE_INVALID_LENGTH, DEFAULT_CAPACITY, baseballs.size()));
+                    getExceptionMessageInvalidLength(DEFAULT_CAPACITY, baseballs.size()));
         }
     }
 
     private void validateUniqueNumbers(List<Integer> baseballs, String number) {
         if (baseballs.size() != number.length()) {
-            throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_NON_UNIQUE, baseballs));
+            throw new IllegalArgumentException(getExceptionMessageNonUnique(baseballs));
         }
     }
 
     private void validateRange(List<Integer> baseballs) {
         for (Integer baseball : baseballs) {
             if (!isInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, baseball)) {
-                throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_INVALID_RANGE, baseball));
+                throw new IllegalArgumentException(getExceptionMessageInvalidRange(baseball));
             }
         }
     }
@@ -89,7 +89,7 @@ public class BaseballCollection {
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_NON_NUMERIC, target), e);
+            throw new IllegalArgumentException(getExceptionMessageNonNumeric(target), e);
         }
     }
 
