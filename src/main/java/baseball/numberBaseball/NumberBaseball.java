@@ -17,7 +17,7 @@ public class NumberBaseball {
             System.out.println("숫자를 생성 했어요. 게임을 시작 할게요!");
             while(!playNumberBaseball.gameOver()){
 //                attempts++;
-                System.out.print("세 자리 숫자를 입력 하세요 : ");
+                System.out.print("숫자를 입력해주세요 : ");
                 String userInput = readLine();
 
                 try {
@@ -27,7 +27,7 @@ public class NumberBaseball {
                 }
                 System.out.println(playNumberBaseball.gameResult());
             }
-            System.out.println("숫자 3개를 모두 맞추 셨네요! 축하 드립니다! 게임 종료!");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작 하려면 1, 종료 하려면 2를 눌러 주세요!");
             String replayInput = readLine();
 
