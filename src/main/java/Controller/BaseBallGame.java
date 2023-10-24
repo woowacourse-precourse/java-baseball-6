@@ -16,7 +16,6 @@ public class BaseBallGame {
     private static int strike;
     private static int ball;
     private static boolean isNothing;
-    private static boolean restarFlag = true;
 
     public BaseBallGame() {
         player = new Player();
@@ -55,11 +54,5 @@ public class BaseBallGame {
                 break;
             }
         } while (true);
-    }
-
-    public void start() {
-        while (restarFlag) {
-            this.run();
-        }
     }
 }
