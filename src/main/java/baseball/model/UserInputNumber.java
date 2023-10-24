@@ -14,8 +14,8 @@ public class UserInputNumber {
 
     //    숫자 타입인지 확인 후 예외 처리
     public static void checkTypeNumber(String userInput) throws IllegalArgumentException {
-        if (!userInput.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        if (!userInput.matches("^[1-9]*$")) {
+            throw new IllegalArgumentException("1-9까지의 숫자만 입력해주세요.");
 
         }
     }
