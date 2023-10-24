@@ -10,7 +10,8 @@ public class Game {
     private final static String SYSTEM_START_MASSAGE = "숫자 야구 게임을 시작합니다.";
     private final static String SYSTEM_INPUT_MASSAGE = "숫자를 입력해주세요 : ";
     private final static String SYSTEM_STRIKE_MASSAGE = "스트라이크";
-    private final static String SYSTEM_BALL_MASSAGE = "볼";
+    private final static String SYSTEM_NOTHING_MASSAGE = "낫싱";
+    private final static String SYSTEM_BALL_MASSAGE = "볼 ";
     private final static String SYSTEM_END_MASSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public final static String RESTART_STRING = "1";
     private final static String END_STRING = "2";
@@ -39,7 +40,7 @@ public class Game {
         computer.createNumbers();
     }
 
-    public void getHint() {
+    public void compareNumber() {
         String playerNumString = player.getPlayerNumString();
         char[] playerNumCharArray = playerNumString.toCharArray();
 
@@ -50,13 +51,19 @@ public class Game {
             if (computerNumbers.contain(playerNumber)) {
                 if (computerNumbers.equalIndex(playerNumber, index)) {
                     strike++;
-                }
-                else {
+                } else {
                     ball++;
                 }
             }
         }
 
+        printHint();
+    }
+    
+    public void printHint() {
+        if (ball == 0 && strike == 0) {
+            System.out.println(SYSTEM_NOTHING_MASSAGE);
+        }
         if (ball != 0) {
             System.out.println(ball + SYSTEM_BALL_MASSAGE);
         }
@@ -68,10 +75,8 @@ public class Game {
     public void playGame() {
         while (!threeStrike()) {
             System.out.print(SYSTEM_INPUT_MASSAGE);
-            this.ball = 0;
-            this.strike = 0;
             readPlayerNumber();
-            getHint();
+            compareNumber();
         }
     }
 
@@ -80,17 +85,16 @@ public class Game {
 
         if (endFlag.equals(RESTART_STRING)) {
             return true;
-        }
-        else if (endFlag.equals(END_STRING)) {
+        } else if (endFlag.equals(END_STRING)) {
             return false;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
 
     public void readPlayerNumber() {
         String playerNumString = Console.readLine();
+
         if (playerNumString.length() > 3) {
             throw new IllegalArgumentException();
         }
@@ -108,7 +112,12 @@ public class Game {
     }
 
     private boolean threeStrike() {
-        return strike == 3;
+        if (strike < 3) {
+            this.ball = 0;
+            this.strike = 0;
+            return false;
+        }
+        return true;
     }
 
 }
