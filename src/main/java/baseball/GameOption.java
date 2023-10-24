@@ -1,10 +1,20 @@
 package baseball;
 
-import java.util.Arrays;
+import static java.util.stream.Collectors.toMap;
+
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public enum GameOption {
     CONTINUE(1),
     EXIT(2);
+
+    private static final Map<Integer, GameOption> options =
+            Collections.unmodifiableMap(Stream.of(values()).collect(
+                    toMap(GameOption::getNumber, option -> option)
+            ));
 
     private final int optionNumber;
 
@@ -12,15 +22,12 @@ public enum GameOption {
         this.optionNumber = optionNumber;
     }
 
-    public static GameOption of(final int optionNumber) {
-        return Arrays.stream(values())
-                .filter(option -> option.matchNumber(optionNumber))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+    public static Optional<GameOption> find(final int optionNumber) {
+        return Optional.ofNullable(options.get(optionNumber));
     }
 
-    private boolean matchNumber(final int optionNumber) {
-        return this.optionNumber == optionNumber;
+    private int getNumber() {
+        return optionNumber;
     }
 
     public boolean isContinue() {

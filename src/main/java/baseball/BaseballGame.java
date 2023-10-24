@@ -47,6 +47,7 @@ public class BaseballGame {
     }
 
     private GameOption createGameOption() {
-        return GameOption.of(InputView.readOptionNumber());
+        return GameOption.find(InputView.readOptionNumber())
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
