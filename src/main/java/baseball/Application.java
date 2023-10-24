@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.Evaluator;
 import baseball.BaseballGame;
+
 public class Application {
     private static Evaluator evaluator;
 

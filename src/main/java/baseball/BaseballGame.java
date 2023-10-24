@@ -1,22 +1,14 @@
 package baseball;
 
 import baseball.AnswerGenerator;
-import baseball.Evaluator;
 import baseball.FeedbackAssistant;
 
 public class BaseballGame {
-    private final AnswerGenerator answerGenerator;
-    private final Evaluator evaluator;
     private final FeedbackAssistant feedbackAssistant;
     private static String answer;
 
-    private static Boolean endOfGame = false;
-    private static Boolean endOfProgram = false;
-
     BaseballGame() {
-        this.answerGenerator = new AnswerGenerator();
-        this.evaluator = new Evaluator();
-        this.feedbackAssistant = new FeedbackAssistant();
+        feedbackAssistant = new FeedbackAssistant();
     }
 
     public void startGame() {
@@ -32,7 +24,7 @@ public class BaseballGame {
 
     public void runGame() throws IllegalArgumentException {
         this.generateAnswer();
-        while (endOfGame != true){
+        while (true){
             if (this.evaluator.evaluateUserInput(this.answer) == true)
                 break;
             else
