@@ -13,27 +13,27 @@ public class GameController {
         this.computer = computer;
     }
 
-    public void startGame(){
+    public void startGame() {
         boolean gameContinues;
         do {
             gameContinues = playGame();
-        } while(gameContinues);
+        } while (gameContinues);
     }
 
-    private boolean playGame(){
+    private boolean playGame() {
         System.out.println("숫자 아구 게임을 시작합니다.");
         computer.setAnswer();
-        while(true){
+        while (true) {
             System.out.println("숫자를 입력해주세요.");
             user.setAnswer();
 
-            if(computer.compareAnswer(user.getAnswer())){
+            if (computer.compareAnswer(user.getAnswer())) {
                 return checkRetry();
             }
         }
     }
 
-    private boolean checkRetry(){
+    private boolean checkRetry() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userReply = Console.readLine();

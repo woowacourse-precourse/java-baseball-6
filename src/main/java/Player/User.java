@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends Player{
+public class User extends Player {
 
-    public List<Integer> getAnswer(){
+    public List<Integer> getAnswer() {
         return this.answer;
     }
 
@@ -15,8 +15,8 @@ public class User extends Player{
     List<Integer> generateAnswer() {
         List<Integer> tempAnswer = new ArrayList<>();
         char[] userInput = Console.readLine().toCharArray();
-        for (char character : userInput){
-            tempAnswer.add((int)character - '0');
+        for (char character : userInput) {
+            tempAnswer.add((int) character - '0');
         }
         checkValidOfAnswerSize(tempAnswer);
         checkValidOfAnswerUnique(tempAnswer);
@@ -34,7 +34,7 @@ public class User extends Player{
     }
 
     private void checkValidOfAnswerSize(List<Integer> tempAnswer) {
-        if (tempAnswer.size() > ANSWER_SIZE || tempAnswer.isEmpty()){
+        if (tempAnswer.size() > ANSWER_SIZE || tempAnswer.isEmpty()) {
             throw new IllegalArgumentException("숫자는 3자리 입력해야 합니다.");
         }
     }
