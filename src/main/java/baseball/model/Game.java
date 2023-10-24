@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 public class Game {
 
@@ -8,8 +8,6 @@ public class Game {
 
     public Game(int[] number) {
         gameNumber = number;
-        strike = 0;
-        ball = 0;
     }
 
     public void initGame() {
