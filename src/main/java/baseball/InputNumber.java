@@ -9,8 +9,8 @@ import java.util.Set;
 public class InputNumber {
     public int userInput() {
 //        System.out.println();
-
-        String input_num = Console.readLine("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 :");
+        String input_num = Console.readLine();
         try {
             if (!input_num.matches("-?\\d+")) {
                 throw new IllegalArgumentException();
