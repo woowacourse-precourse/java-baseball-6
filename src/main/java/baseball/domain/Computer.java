@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.constants.GameConstants.COUNT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class Computer {
 
     public List<Integer> generateRandomNumbers(int startInclusive, int endInclusive, int count) {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < COUNT) {
             int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -26,8 +28,9 @@ public class Computer {
 
     }
 
+    // secretNumbers를 사용자 입력과 비교하여 스트라이크와 볼 count 계산
     public Game computeResult(List<Integer> userInputNumbers) {
-        // 사용자 입력과 비교하여 스트라이크와 볼 계산
+
         int strikes = 0;
         int balls = 0;
 

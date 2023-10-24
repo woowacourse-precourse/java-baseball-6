@@ -1,12 +1,12 @@
 package baseball;
 
-import static baseball.GameConstants.COUNT;
-import static baseball.GameConstants.ENDGAME_MSG;
-import static baseball.GameConstants.END_INCLUSIVE;
-import static baseball.GameConstants.INPUT_MSG;
-import static baseball.GameConstants.REPLAY;
-import static baseball.GameConstants.START_INCLUSIVE;
-import static baseball.GameConstants.START_MSG;
+import static baseball.constants.GameConstants.COUNT;
+import static baseball.constants.GameConstants.ENDGAME_MSG;
+import static baseball.constants.GameConstants.END_INCLUSIVE;
+import static baseball.constants.GameConstants.INPUT_MSG;
+import static baseball.constants.GameConstants.REPLAY;
+import static baseball.constants.GameConstants.START_INCLUSIVE;
+import static baseball.constants.GameConstants.START_MSG;
 
 import baseball.domain.Computer;
 import baseball.domain.Game;
@@ -16,13 +16,14 @@ public class GameController {
 
     private Computer computer;
     private UserInputHandler userInputHandler;
-    //Boolean isWin = false;
+    private Validator validator;
     Boolean continueGame = true;
 
 
     public GameController() {
         computer = new Computer();
         userInputHandler = new UserInputHandler();
+        validator = new Validator();
     }
 
     public void run() throws IllegalArgumentException {
@@ -39,12 +40,12 @@ public class GameController {
         System.out.println(INPUT_MSG);
         while (continueGame) {
             String userInput = userInputHandler.readUserInput();
+
+            validator.checkInputSize(userInput, COUNT);
+            validator.checkValidNumber(userInput);
+
             System.out.println("###userInput = " + userInput);
             List<Integer> userInputNumbers = userInputHandler.parseStringNumbers(userInput);
-
-            if (userInputNumbers.size() != COUNT) {
-                throw new IllegalArgumentException("사용자 입력값의 크기가 같지 않습니다.");
-            }
 
             Game game = computer.computeResult(userInputNumbers);
             System.out.println(game.getResultString());

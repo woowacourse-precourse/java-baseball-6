@@ -1,29 +1,19 @@
 package baseball.domain;
 
+import static baseball.constants.GameConstants.COUNT;
+
 public class Game {
     private int strikes;
     private int balls;
-    int targetCount = 3;
+
 
     public Game(int strikes, int balls) {
         this.strikes = strikes;
         this.balls = balls;
     }
 
-    public int getStrikes() {
-        return strikes;
-    }
-
-    public int getBalls() {
-        return balls;
-    }
-
-    public boolean isNothing() {
-        return strikes == 0 && balls == 0;
-    }
-
     public boolean isWin() {
-        return strikes == targetCount;
+        return strikes == COUNT;
     }
 
     public String getResultString() {
