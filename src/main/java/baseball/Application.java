@@ -19,8 +19,23 @@ public class Application {
                 System.out.println("잘못된 입력입니다. 1부터 9까지의 서로 다른 숫자를 입력하세요.");
                 continue;
             }
+
+            List<Integer> userNumbers = parseInput(input);
+            Result result = calculateResult(computerNumbers, userNumbers);
+            System.out.println(result.toString());
+
+            if (result.is3Strikes()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
+        if (!choice.equals("1")) {
+            break;
         }
     }
+
 
     private static List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
@@ -52,4 +67,31 @@ public class Application {
         return input.chars().distinct().count() == 3;
     }
 
+}
+
+class Result {
+    private int strikes;
+    private int balls;
+
+    public Result(int strikes, int balls) {
+        this.strikes = strikes;
+        this.balls = balls;
+    }
+
+    public boolean is3Strikes() {
+        return strikes == 3;
+    }
+
+    @Override
+    public String toString() {
+        if (strikes > 0 && balls > 0) {
+            return balls + "볼 " + strikes + "스트라이크";
+        } else if (strikes > 0) {
+            return strikes + "스트라이크";
+        } else if (balls > 0) {
+            return balls + "볼";
+        } else {
+            return "낫싱";
+        }
+    }
 }
