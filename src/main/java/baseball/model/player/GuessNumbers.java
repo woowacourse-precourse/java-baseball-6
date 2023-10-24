@@ -1,7 +1,7 @@
 package baseball.model.player;
 
 import static baseball.exception.GuessNumberValidator.isGuessNumbersValid;
-import static baseball.util.StringToIntegerListConverter.StringToGuessNumberList;
+import static baseball.util.StringToGuessNumberListConverter.StringToGuessNumberList;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;

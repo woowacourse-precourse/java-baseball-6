@@ -4,9 +4,9 @@ import baseball.model.player.GuessNumber;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StringToIntegerListConverter {
+public class StringToGuessNumberListConverter {
 
-    private StringToIntegerListConverter() {
+    private StringToGuessNumberListConverter() {
     }
 
     public static List<GuessNumber> StringToGuessNumberList(String input) {

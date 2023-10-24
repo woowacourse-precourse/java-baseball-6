@@ -18,7 +18,7 @@ class StringToGuessNumberListConverterTest {
                 new GuessNumber(4), new GuessNumber(5));
 
         // when
-        List<GuessNumber> resultList = StringToIntegerListConverter.StringToGuessNumberList(input);
+        List<GuessNumber> resultList = StringToGuessNumberListConverter.StringToGuessNumberList(input);
 
         // then
         assertEquals(expectedList, resultList);
