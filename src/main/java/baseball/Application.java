@@ -33,9 +33,10 @@ class Game {
 
 
         }
-        for (int j = 0; j < 3; j++) {
-            System.out.println(answer[j]);
-        }
+//        for (int j = 0; j < 3; j++) {
+//            System.out.print(answer[j]);
+//            System.out.println();
+//        }
 
     }
 
@@ -59,13 +60,12 @@ class Game {
         return new Game(input);
     }
     static void checkAnswer(Game answer,Game rightAnswer){
+        boolean clearOrNot = false;
         int ballCount=0;
         int strikeCount=0;
         String nothing="낫싱";
         String stringAnswer =Array.makeArrayToString(answer.answer);
-        System.out.println(stringAnswer);
         String stringRightAnswer=Array.makeArrayToString(rightAnswer.answer);
-        System.out.println(stringRightAnswer);
         for (int i = 0; i < stringRightAnswer.length(); i++) {
             for (int j = 0; j <stringAnswer.length(); j++) {
                 if(stringRightAnswer.charAt(i)==stringAnswer.charAt(j)){
@@ -79,32 +79,47 @@ class Game {
                 }
             }
         }
-        if(strikeCount>0 && ballCount>0){
+        if(strikeCount>0 && ballCount>0 && strikeCount!=3) {
             System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
             Game.start(rightAnswer);
-        }
-        if(strikeCount==0 && ballCount>0){
+        } else if(strikeCount==0 && ballCount>0) {
             System.out.println(ballCount+"볼");
             Game.start(rightAnswer);
-        }
-        if(strikeCount>0 && ballCount==0){
+        } else if(strikeCount>0 && ballCount==0 && strikeCount!=3) {
             System.out.println(strikeCount+"스트라이크");
             Game.start(rightAnswer);
-        }
-        if(strikeCount == 3){
+
+        } else if(strikeCount == 3) {
             System.out.println(strikeCount+"스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            Game.newGameSelection();
-        }
-        if(strikeCount==0 && ballCount==0) {
+            int newGameAnswer = Game.newGameSelection();
+            if (newGameAnswer == 1) {
+                rightAnswer = new Game();
+                Game.start(rightAnswer);
+            }
+        } else if(strikeCount==0 && ballCount==0) {
             System.out.println(nothing);
+
             Game.start(rightAnswer);
         }
 
     }
-    static void newGameSelection(){
+    static int newGameSelection(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String selection = readLine();
+        return Game.getNewGameSelection(selection);
+    }
+    static int getNewGameSelection(String str){
+        int value;
+        try {
+            value=Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if(value != 1 && value !=2 ){
+            throw new IllegalArgumentException();
+        }
+        return value;
     }
     static boolean checkNum(int a, int[] b) {
         for (int i = 0; i < b.length; i++) {
