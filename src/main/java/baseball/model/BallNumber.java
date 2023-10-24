@@ -6,7 +6,7 @@ public class BallNumber {
     private final int value;
 
     public BallNumber(int value) {
-        if (value < 0 || value > 9) {
+        if (value < 1 || value > 9) {
             throw new IllegalArgumentException("입력값이 잘못되었습니다.");
         }
         this.value = value;
