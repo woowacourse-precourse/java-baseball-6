@@ -13,26 +13,31 @@ public class BaseballGame {
     private Judgment judgment;
 
     public void start() {
+        boolean stop = false;
+        while (!stop) {
+            prepare();
+            repeatedGuess();
+            stop = isStop();
+        }
+    }
+
+    private void prepare() {
         System.out.println(OutMessage.START.getMsg());
         judgment = new Judgment(answerGenerator.generateAnswer());
-        while (true) {
+    }
+
+    private void repeatedGuess() {
+        boolean success = false;
+        while (!success) {
             final List<Integer> guess = guessNumberFromUser.getValue(OutMessage.GUESS);
-            final boolean isAnswer = judgment.judge(guess);
-            if (!isAnswer) {
-                continue;
-            }
-
-            System.out.println(OutMessage.ANSWER.getMsg());
-
-            final int restart = startNumberFromUser.getValue(OutMessage.RESTART);
-            final boolean isRestart = (restart == 1);
-            if (isRestart) {
-                judgment = new Judgment(answerGenerator.generateAnswer());
-                continue;
-            }
-
-            break;
+            success = judgment.judge(guess);
         }
+        System.out.println(OutMessage.ANSWER.getMsg());
+    }
+
+    private boolean isStop() {
+        final int start = startNumberFromUser.getValue(OutMessage.RESTART);
+        return start == 2;
     }
 
 }
