@@ -63,7 +63,7 @@ public class Application {
     public static void isValidInteger() {
         for(int i = 0; i < inputNumber.length(); i++) {
             char ch = inputNumber.charAt(i);
-            if (!Character.isDigit(ch)) {
+            if (!Character.isDigit(ch) || ch == '0') {
                 throw new IllegalArgumentException();
             }
         }
