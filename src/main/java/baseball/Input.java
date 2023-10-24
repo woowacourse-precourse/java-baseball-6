@@ -14,8 +14,8 @@ public class Input {
     List<Integer> getNumber() { //사용자의 숫자를 입력받고 예외가 없다면 반환하는 함수
         List<Integer> user;
         String number = Console.readLine();
+        validate.validateUser(number); // 사용자가 입력한 숫자 예외 확인
         user = toArrayList(number); // 사용자가 입력한 정수 List<Integer>로 변환
-        validate.validateUser(user); // 사용자가 입력한 숫자 예외 확인
         return user;
     }
 
