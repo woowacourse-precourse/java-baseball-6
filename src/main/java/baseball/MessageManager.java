@@ -10,8 +10,7 @@ public class MessageManager extends Messages {
 
     public String getInputNumber() {
         System.out.print(super.getInputText());
-        String inputNumber = readLine();
-        return inputNumber;
+        return readLine();
     }
 
     public void showAnswer(Data data, GameProcessor gameProcessor, MessageManager messageManager) {
