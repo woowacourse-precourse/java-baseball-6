@@ -7,7 +7,7 @@ import java.util.List;
 public class Balls {
     private static final int BALL_COUNT = 3;
     private static final int NOT_FOUND_INDEX = -1;
-
+    private static final String DUPLICATE_BALL_MESSAGE = "중복된 값이 있습니다.";
     private List<Ball> balls = new ArrayList<>();
 
     public Balls() {
@@ -25,7 +25,7 @@ public class Balls {
         if (firstBall.equals(secondBall)
                 || firstBall.equals(thirdBall)
                 || secondBall.equals(thirdBall)) {
-            throw new IllegalArgumentException("중복된 값이 있습니다.");
+            throw new IllegalArgumentException(DUPLICATE_BALL_MESSAGE);
         }
     }
 
