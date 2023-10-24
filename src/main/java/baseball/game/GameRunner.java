@@ -28,7 +28,7 @@ public class GameRunner {
         output.start();
         Game game = new Game(input,output, numberParser);
         game.gameSet(validator,gameLogic,initRandomNum);
-        // 일단 한판 하고 reset하고 recheck 통해 다시 수행
+        // 일단 한판 하고 reset하고 recheck 통해 다시 수행..
         do {
             game.play();
         } while (game.recheck());
