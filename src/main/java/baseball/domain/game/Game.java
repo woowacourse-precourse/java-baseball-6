@@ -23,7 +23,7 @@ public class Game {
         baseBallGame(computerNumber);
     }
 
-    public void baseBallGame(List<String> computerNumber) {
+    private void baseBallGame(List<String> computerNumber) {
         while (STRIKE != 3) {
             setStrikeAndBallZero();
             output.printGetNumberMessage(); // "숫자를 입력해주세요 :"
