@@ -6,7 +6,7 @@ public class Compare {
     public int countTotal(List<Integer> computer, List<Integer> userNumber) {
         int total = 0;
         for (int i = 0; i < userNumber.size(); i++) {
-            if (userNumber.contains(computer.get(i)))
+            if (computer.contains(userNumber.get(i)))
                 total++;
         }
         return total;
