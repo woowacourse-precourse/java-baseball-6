@@ -39,19 +39,21 @@ public class Application extends RuntimeException {
                 System.out.println("숫자를 입력해주세요 :");
                 String userInput = Console.readLine();
 
-                if (userNumber < 1 || userNumber > 9) {
-                    throw new IllegalArgumentException("잘못된 입력: 1에서 9 사이의 숫자를 입력해야 합니다.");
+                // 입력된 문자열의 각 문자를 int로 변환하여 user 리스트에 추가
+                for (int i = 0; i < userInput.length(); i++) {
+                    char digitChar = userInput.charAt(i);
+                    int temp = Character.getNumericValue(digitChar);
+                    user.add(temp);
+                    if (temp < 1 || temp > 9) { // 0을 입력했을 경우
+                        throw new IllegalArgumentException("잘못된 입력: 1에서 9 사이의 숫자를 입력해야 합니다.");
+                    }
+                    if (user.contains(temp)) { // 중복된 숫자를 입력했을 경우
+                        throw new IllegalArgumentException("잘못된 입력: 중복된 숫자를 입력할 수 없습니다.");
+                    }
                 }
-
             } catch (IllegalArgumentException e) {
                 System.err.println("오류: " + e.getMessage());
                 System.exit(1); // 시스템 종료
-            }
-            // 입력된 문자열의 각 문자를 int로 변환하여 user 리스트에 추가
-            for (int i = 0; i < userInput.length(); i++) {
-                char digitChar = userInput.charAt(i);
-                int temp = Character.getNumericValue(digitChar);
-                user.add(temp);
             }
 
             // 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱
@@ -73,12 +75,12 @@ public class Application extends RuntimeException {
                 nothing++;
             }
             // 결과값 출력
-            if(ball!=0){
-                System.out.print(ball+"볼");
+            if (ball != 0) {
+                System.out.print(ball + "볼");
             }
-            if(strike!=0){
-                System.out.print(strike+"스트라이크");
-            }else{
+            if (strike != 0) {
+                System.out.print(strike + "스트라이크");
+            } else {
                 System.out.println("낫싱");
             }
 
