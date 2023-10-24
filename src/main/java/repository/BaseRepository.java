@@ -27,7 +27,9 @@ public class BaseRepository {
 
             if (myNumber.get(i) == baseNumber.get(i)) { // 같은 위치이면 스트라이크++
                 result[STRIKE]++;
-            } else if (baseNumber.contains(myNumber.get(i))){ // 같은 위치가 아니지만 존재하면 볼++;
+                continue;
+            }
+            if (baseNumber.contains(myNumber.get(i))){ // 같은 위치가 아니지만 존재하면 볼++;
                 result[BALL]++;
             }
 
