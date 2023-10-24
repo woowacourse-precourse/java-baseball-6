@@ -18,6 +18,11 @@ public class Baseball {
         if(userInput.length() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
         }
+        for(char c: userInput.toCharArray()) {
+            if(!Character.isDigit(c) || c == '0') {
+                throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
+            }
+        }
 
         List<Integer> userNumber = UserInputUtil.convertStringToIntegerList(userInput);
     }
