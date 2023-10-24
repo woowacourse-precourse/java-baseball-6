@@ -21,6 +21,48 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 잘못된_숫자_입력_예외_테스트() {
+        assertRandomNumberInRangeTest(() ->
+                        assertThatThrownBy(() -> runException("2465", "135", "2"))
+                                .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+
+        assertRandomNumberInRangeTest(() ->
+                        assertThatThrownBy(() -> runException("000", "135", "2"))
+                                .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+
+        assertRandomNumberInRangeTest(() ->
+                        assertThatThrownBy(() -> runException("112", "135", "2"))
+                                .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+
+        assertRandomNumberInRangeTest(() ->
+                        assertThatThrownBy(() -> runException("3", "135", "2"))
+                                .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 잘못된_재시작_명령어_예외_테스트() {
+        assertRandomNumberInRangeTest(() ->
+                        assertThatThrownBy(() -> runException("246", "135", "3"))
+                                .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+
+        assertRandomNumberInRangeTest(() ->
+                        assertThatThrownBy(() -> runException("246", "135", "asd"))
+                                .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
