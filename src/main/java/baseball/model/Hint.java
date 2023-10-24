@@ -4,6 +4,14 @@ public class Hint {
     int strike = 0;
     int ball = 0;
 
+    public Hint() {
+    }
+
+    public Hint(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public void getStrikeAndBallCount(Balls computer, Balls player) {
         for (Ball playerBall : player.getBalls()) {
             if (computer.isStrike(playerBall)) {
