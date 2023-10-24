@@ -14,7 +14,7 @@ public class PrintConsole {
     }
 
     public int printInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         return Integer.parseInt(Console.readLine());
     }
@@ -25,6 +25,10 @@ public class PrintConsole {
 
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
