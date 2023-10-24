@@ -43,7 +43,7 @@ public class ExceptionHandler {
             throw new IllegalArgumentException("숫자가 아닌 입력이 들어왔습니다.");
         }
         if(!ExceptionHandler.isValidLength(userNumber)){
-            throw new IllegalArgumentException("3자리를 초과한 숫자가 입력으로 들어왔습니다.");
+            throw new IllegalArgumentException("3자리가 아닌 숫자가 입력으로 들어왔습니다.");
         }
         if(!ExceptionHandler.isValidNumber(userNumber)){
             throw new IllegalArgumentException("0이 포함되거나 중복된 숫자가 입력으로 들어왔습니다.");
