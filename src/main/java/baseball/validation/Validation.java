@@ -1,6 +1,5 @@
 package baseball.validation;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,5 +38,4 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 서로 다른 숫자를 입력해 주세요");
         }
     }
-
 }

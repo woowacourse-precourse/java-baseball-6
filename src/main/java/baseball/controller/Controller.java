@@ -4,11 +4,8 @@ import baseball.model.Computer;
 import baseball.model.InGame;
 import baseball.model.Player;
 import baseball.model.ReGameOrExit;
-import baseball.utils.Util;
 import baseball.view.Message;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class Controller {
     Computer computer;

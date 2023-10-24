@@ -10,6 +10,7 @@ public class Player {
     static final int MINIMUM_PLAYER_NUMBER = 1;
     static final int MAXIMUM_PLAYER_NUMBER = 9;
     private final List<Integer> playerIntegerList;
+
     public Player(String playerNumStr) {
         Validation.validateInteger(playerNumStr);
         playerIntegerList = Util.stringToIntegerList(playerNumStr);

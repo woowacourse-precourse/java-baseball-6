@@ -6,6 +6,7 @@ import java.util.List;
 public class InGame {
     static final int NUMBER_OF_BALLS = 3;
     static final int THREE_STRIKE = 3;
+
     public static boolean comparePlayerNumWithComputerNum(List<Integer> randomNum, List<Integer> playerNum) {
         int strike = 0;
         int ball = 0;
