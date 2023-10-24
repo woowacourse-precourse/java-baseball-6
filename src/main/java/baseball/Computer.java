@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.BaseballGame.ANSWER_DIGIT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,6 @@ public class Computer {
 
     private static final int NUMBER_START_RANGE = 1;
     private static final int NUMBER_END_RANGE = 9;
-    private static final int ANSWER_DIGIT = 3;
 
     public List<Integer> createCorrectAnswer() {
         correctAnswer.clear();
