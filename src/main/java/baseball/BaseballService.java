@@ -33,26 +33,32 @@ public class BaseballService {
         BaseballUtil.printRestartGame();
 
         String restartNumber = Console.readLine();
-        if (!"1".equals(restartNumber) && !"2".equals(restartNumber)) {
+        if (BaseballUtil.RESTART.equals(restartNumber)) {
+            return true;
+        } else if (BaseballUtil.END.equals(restartNumber)) {
+            return false;
+        } else {
             throw new IllegalArgumentException();
         }
-
-        return "1".equals(restartNumber);
     }
 
     private List<Integer> getInputNumberList() {
         BaseballUtil.printInputNumber();
 
-        String input = Console.readLine();
-        if (!input.matches(BaseballUtil.REGEX_NUMBER)) {
+        String inputNumber = Console.readLine();
+        if (!inputNumber.matches(BaseballUtil.REGEX_NUMBER)) {
             throw new IllegalArgumentException();
         }
 
         List<Integer> inputNumberList = new ArrayList<>();
         for (int i = 0; i < BaseballUtil.MAX; i++) {
-            inputNumberList.add(input.charAt(i) - '0');
+            inputNumberList.add(toIntNumber(inputNumber.charAt(i)));
         }
 
         return inputNumberList;
+    }
+
+    private int toIntNumber(char input) {
+        return input - '0';
     }
 }
