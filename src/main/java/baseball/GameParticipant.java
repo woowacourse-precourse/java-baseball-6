@@ -14,6 +14,7 @@ public class GameParticipant {
     }
     public void playGameByRequest(){
         while(playerStatus == GameStatus.PLAYING){
+            System.out.print("숫자를 입력해주세요 :");
             this.playerGuessedNumber = Console.readLine();
             this.game.processTurn(this.playerGuessedNumber);    // 게임을 진행시킴
         }
