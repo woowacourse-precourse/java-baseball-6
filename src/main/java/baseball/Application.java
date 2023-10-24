@@ -3,7 +3,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -17,15 +16,20 @@ public class Application {
         }
         int retry = 1;
         while(retry == 1) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("숫자를 입력해주세요 : ");
-            int num = scanner.nextInt();
-            if (num < 100) {
-                // 잘못된 값이 입력되었을 때 IllegalArgumentException을 발생시키고 프로그램 종료
-                throw new IllegalArgumentException("입력한 값은 3자리 이하 입니다.");
-            }
-            else if (num > 1000) {
-                throw new IllegalArgumentException("입력한 값은 3자리 이상 입니다.");
+            int num = 0;
+            boolean validInput = false;
+            while (!validInput) {
+                try {
+                    System.out.print("숫자를 입력해주세요 : ");
+                    num = Integer.parseInt(Console.readLine());
+                    if (num >= 100 && num <= 999) {
+                        validInput = true;
+                    } else {
+                        System.out.println("입력한 값이 올바르지 않습니다. 3자리 숫자를 입력해주세요.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("입력한 값이 올바르지 않습니다. 3자리 숫자를 입력해주세요.");
+                }
             }
 
             List<Integer> digits = new ArrayList<>();
@@ -60,7 +64,7 @@ public class Application {
             if (strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                retry = scanner.nextInt();
+                retry = Integer.parseInt(Console.readLine());
             }
         }
     }
