@@ -17,4 +17,10 @@ public class GameRestart {
             throw new IllegalArgumentException("1또는 2를 입력해야 합니다.");
         }
     }
+
+    public static boolean restart() {
+        GameRestart gameRestart = new GameRestart(PlayerInputNumber.restartOrEnd());
+
+        return gameRestart.getRetryNumber().equals("1");
+    }
 }
