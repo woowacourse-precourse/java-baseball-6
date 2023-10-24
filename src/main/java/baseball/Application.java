@@ -16,10 +16,8 @@ class Computer {
     // 종료조건 반환
     boolean userWin(String userInput){
         List<Integer>score = calculateScore(userInput);
-        if (score.get(0) == 3)
-            return true; // 게임 승리!
         printGameScore((score));
-        return false;
+        return score.get(0) == 3; // 게임 승리!
     }
     private void printGameScore(List<Integer> score) {
         int strike = score.get(0);
@@ -47,12 +45,11 @@ class Computer {
             }
         }
         // 아래는 테스트용. 이후 삭제
-        /*
         System.out.print("컴퓨터의 숫자 :");
         for (int item : list)
                 System.out.print(item);
         System.out.print("\n");
-         */
+
     }
 
     // 입력 숫자가 컴퓨터 숫자와 얼마나 일치하는지 판단.
@@ -130,13 +127,8 @@ public class Application {
         boolean continueGame = true;
         // TODO: 프로그램 구현
         while (continueGame) {
-            try {
-                Game gameMaster = new Game();
-                continueGame = gameMaster.playGame();
-            } catch (IllegalArgumentException e) {
-                System.out.println("[오류 발생] : " + e.getMessage());
-                break ;
-            }
+            Game gameMaster = new Game();
+            continueGame = gameMaster.playGame();
         }
     }
 }
