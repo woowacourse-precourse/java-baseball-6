@@ -6,11 +6,7 @@ import java.util.ArrayList;
 public class Computer {
 
     public ArrayList<Integer> setComputerNumber(ArrayList<Integer> computerNumber) {
-        if (!computerNumber.isEmpty()) {
-            while (!computerNumber.isEmpty()) {
-                computerNumber.remove(0);
-            }
-        }
+        computerNumber.clear();
 
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
