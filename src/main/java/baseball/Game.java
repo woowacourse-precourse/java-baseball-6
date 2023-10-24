@@ -24,7 +24,7 @@ public class Game {
         computer.setComputerRandNum();
 
         while (true) {
-            System.out.println(GameMessage.USER_INPUT.getMessage());
+            System.out.print(GameMessage.USER_INPUT.getMessage());
             String input = Console.readLine(); // 사용자 입력
             validator.validateInputNumber(input); // 입력값 검증
             user.setUserRandNum(input);
@@ -40,7 +40,7 @@ public class Game {
     }
 
     public boolean isRestart() {
-        System.out.println(GameMessage.GAME_RESTART);
+        System.out.println(GameMessage.GAME_RESTART.getMessage());
         String input = Console.readLine();
         validator.validateRestartChoice(input);
 
