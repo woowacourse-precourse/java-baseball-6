@@ -144,4 +144,15 @@ public class Application {
         return ball + "볼 " + strike + "스트라이크";
     }
 
+    private static void startNewGame() {
+
+        System.out.println(MAX_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = readLine();
+
+        if (inputNumber.equals("1")) {
+            baseball.Application app = new baseball.Application();
+            app.playGame();
+        }
+
+    }
 }
