@@ -1,6 +1,5 @@
 package baseball.game;
 
-
 import static baseball.utils.RandomNumberGenerator.generateRandomUniqueThreeNumbers;
 
 import baseball.io.UserIOHandler;
@@ -8,8 +7,11 @@ import baseball.model.Score;
 import java.util.List;
 
 public class BaseballGame {
-    private final UserIOHandler userIOHandler = new UserIOHandler();
+    private static final String INVALID_INPUT_MESSAGE = "잘못된 값을 입력하셨습니다.";
+    private static final String OPTION_RESTART = "1";
+    private static final String OPTION_QUIT = "2";
     private final BaseballScoreEvaluator scoreEvaluator = new BaseballScoreEvaluator();
+    private final UserIOHandler userIOHandler = new UserIOHandler();
     private List<Integer> generatedNumbers;
     private GameState currentGameState = GameState.RUNNING;
 
@@ -52,9 +54,13 @@ public class BaseballGame {
         }
     }
 
-
     private void promptForGameRestart() {
-        // todo: prompt for game restart
+        String userInput = userIOHandler.readUserInputForRestart();
+        if (OPTION_QUIT.equals(userInput)) {
+            currentGameState = GameState.STOPPED;
+        } else if (!OPTION_RESTART.equals(userInput)) {
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
+        }
     }
 
     public enum GameState {
