@@ -12,14 +12,17 @@ public class NumberBaseball implements Game {
 
     private final int ANSWER_LENGTH = 3;
     private String[] answer;
+    private HashSet<String> answerSet;
 
     private boolean isFinishGame = false;
 
     @Override
     public void init() {
-        this.answer = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH).stream()
+        answer = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH).stream()
                 .map(String::valueOf)
                 .toArray(String[]::new);
+        this.answerSet = new HashSet<>(Arrays.asList(answer));
+        System.out.println("DEBUG " + Arrays.toString(answer));
     }
 
     @Override
@@ -33,7 +36,7 @@ public class NumberBaseball implements Game {
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             if (userInput[i].equals(answer[i])) {
                 baseballResult.put(ResultType.STRIKE, baseballResult.get(ResultType.STRIKE) + 1);
-            } else if (userInputSet.contains(userInput[i])) {
+            } else if (answerSet.contains(userInput[i])) {
                 baseballResult.put(ResultType.BALL, baseballResult.get(ResultType.BALL) + 1);
             } else {
                 baseballResult.put(ResultType.OUT, baseballResult.get(ResultType.OUT) + 1);
