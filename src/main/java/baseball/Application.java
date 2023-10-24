@@ -28,6 +28,7 @@ class Game {
             if (outcome.strike == 3 && askRestart()) {
                 computerNumber = generateComputerNumber();
             } else {
+                System.out.println("게임 종료!");
                 break;
             }
         }
@@ -46,7 +47,7 @@ class Game {
     private static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
-        validateInput(input);
+        InputVaidator.validateInput(input);
 
         List<Integer> parseInput = new ArrayList<>();
         for (char ch : input.toCharArray()) {
@@ -88,12 +89,6 @@ class Game {
         System.out.println();
     }
 
-    private static boolean checkWinCondition(int strike) {
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-        return strike == 3;
-    }
 
     private boolean askRestart() {
         while (true) {
