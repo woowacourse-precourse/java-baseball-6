@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class UserNumbers {
+    private static final int NUMBERS_SIZE = 3;
     private final List<Integer> numbers;
 
     public UserNumbers(List<Integer> numbers) {
@@ -12,7 +13,7 @@ public final class UserNumbers {
     }
 
     private void validateSize() {
-        if (numbers.size() != 3) {
+        if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
     }
