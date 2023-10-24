@@ -47,5 +47,6 @@ public class GameMC {
             coin = inputReOrEnd.inputCoin(); // 게임 재시작/종료 입력
             inputValidation.coinValidation(coin); // 사용자 입력이 올바른지에 대한 검증
         }
+        System.out.println("게임 종료");
     }
 }
