@@ -49,6 +49,8 @@ public class Application {
 
 
     //클래스 정의 부분
+
+    //랜덤 숫자 생성
     private static List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -60,6 +62,7 @@ public class Application {
         return computer;
     }
 
+    //사용자 숫자 입력
     private static List<Integer> getUserNumber(Scanner sc) {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> user = new ArrayList<>();
@@ -76,6 +79,7 @@ public class Application {
         return user;
     }
 
+    //총 개수 확인
     private static int totalCntCheck(List<Integer> computer, List<Integer> user, int cnt) {
         for (int i = 0; i < user.size(); i++) {
             if (computer.contains(user.get(i))) {
@@ -85,6 +89,7 @@ public class Application {
         return cnt;
     }
 
+    //스트라이크 개수 확인
     private static int strikeCheck(List<Integer> computer, List<Integer> user, int strike) {
         for (int i = 0; i < user.size(); i++) {
             if (computer.get(i) == user.get(i)) {
@@ -94,6 +99,7 @@ public class Application {
         return strike;
     }
 
+    //최종 출력
     private static int printAns(int ans, int cnt, int strike, int ball) {
         int playing;
         if (cnt == 0) {
@@ -113,6 +119,7 @@ public class Application {
         return ans;
     }
 
+    //게임 재시작 여부 확인
     private static int checkPlayAgain(Scanner sc) {
         int playing;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
