@@ -1,16 +1,11 @@
 package baseball.service;
 
-import baseball.domain.GameConstants;
 import baseball.domain.NumberBaseball;
 import baseball.domain.hint.Hint;
 import baseball.domain.hint.HintItem;
 import baseball.service.hint.HintItemService;
 import baseball.util.InputUtil;
-import baseball.util.IntegerUtil;
-import baseball.view.EndView;
-import baseball.view.HintView;
-import baseball.view.InputView;
-import baseball.view.RestartView;
+import baseball.view.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +41,19 @@ public class GameServiceImpl implements GameService {
 
             endOneGame();
         }
+    }
+
+    @Override
+    public Hint createHint(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
+        List<HintItem> hintItems = new ArrayList<>();
+
+        for (HintItemService hintItemServiceImpl : hintItemServices) {
+            HintItem hintItem = hintItemServiceImpl.create(computerBaseball, inputBaseball);
+            if (hintItemServiceImpl.isActive(hintItem)) {
+                hintItems.add(hintItem);
+            }
+        }
+        return Hint.createHint(hintItems);
     }
 
     public void endOneGame() {
