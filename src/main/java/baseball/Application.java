@@ -67,12 +67,16 @@ public class Application {
     }
 
 
+    /**
+     * 컴퓨터의 번호를 랜덤으로 생성
+     * @return 컴퓨터의 번호
+     */
     public static List<Integer> getComputerNumbers() {
         return Computer.getRandomNumbers();
     }
 
     /**
-     * 사용자가 입력한 수를 예외처리와 동시에 List형태로 변환
+     * 사용자가 입력한 수를 List로 변환
      * @return 1~9까지의 숫자 3개가 담긴 리스트
      */
     public static List<Integer> getUserNumbers() {

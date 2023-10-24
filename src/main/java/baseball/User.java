@@ -13,7 +13,10 @@ public class User {
         this.input = input;
     }
 
-    // Input을 List형태로 변환
+    /**
+     * 사용자가 입력한 수를 예외처리와 동시에 List형태로 변환
+     * @return 1~9까지의 숫자 3개가 담긴 리스트
+     */
     public List<Integer> getNumbers() {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
@@ -26,21 +29,34 @@ public class User {
     }
 
 
-    // 입력된 문자가 1~9의 범위가 아닌경우 Exception
+    /**
+     * 문자의 범위가 48 <= c <= 57을 벗어나면 Exception
+     * @param c 범위를 확인할 문자
+     * @throws IllegalArgumentException char is out of range in 48 <= c <= 57
+     */
     private void validateNumberRange(char c) {
         if ((int)c < 49 || (int)c > 57){
             throw new IllegalArgumentException();
         }
     }
 
-    // 입력된 문자열의 길이가 3보다 크거나 작을 때 Exception
+    /**
+     * 입력값의 길이가 3이 아닐 떄 Exception
+     * @param input 사용자가 입력한 값
+     * @throws IllegalArgumentException input length is not 3
+     */
     private void validateInputLength(String input) {
         if (input.length() > NUMBER_LENGTH || input.length() < NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    // 입력된 문자열에 중복된 숫자가 있을 때 Exception
+    /**
+     * 입력된 문자열에 중복된 숫자가 있을 때 Exception
+     * @param numbers 입력된 값들
+     * @param n 중복되었는지 비교할 값
+     * @throws IllegalArgumentException n is in numbers
+     */
     private void validateDuplicate(List<Integer> numbers, int n) {
         if (numbers.contains(n)){
             throw new IllegalArgumentException();
