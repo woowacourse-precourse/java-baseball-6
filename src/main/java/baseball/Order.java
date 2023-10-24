@@ -1,5 +1,15 @@
 package baseball;
 
 enum Order {
-    FIRST, SECOND, THIRD
+    FIRST(1), SECOND(2), THIRD(3);
+
+    private int order;
+
+    Order(int order) {
+        this.order = order;
+    }
+
+    public int getOrder() {
+        return order;
+    }
 }
