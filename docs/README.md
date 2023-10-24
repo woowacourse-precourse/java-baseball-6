@@ -27,7 +27,6 @@
         - 반환형 int
     - `playGameAgain(int)`
         - 게임을 다시 시작할지 말지 물어보는 메서드
-        - *이때 숫자 이외의 값을 입력했을때 1 혹은 2를 다시 입력하게 유도함 → else 써서 구현했기에 수정 필요*
     - `checkBalls(List<Integer>,List<Intrger>)`
         - 두 리스트를 비교해서 낫싱인지 아닌지 체크하는 메서드
         - 반환형 int

@@ -53,12 +53,12 @@ public class GameRule {
             if (gameContinue.equals("1")) {
                 check = true;
                 break;
-            } else if (gameContinue.equals("2")) {
+            }
+            if (gameContinue.equals("2")) {
                 check = false;
                 break;
-            } else {
-                System.out.println(Constants.INSERT_ONE_OR_TWO);
             }
+            System.out.println(Constants.INSERT_ONE_OR_TWO);
         }
         return check;
     }
