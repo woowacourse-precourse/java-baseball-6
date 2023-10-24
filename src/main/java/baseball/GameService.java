@@ -34,8 +34,8 @@ public class GameService {
         return strike == 3;
     }
 
-    private static void printResult(CheckResult checkResult, int ball, int strike) {
-        switch (checkResult) {
+    private static void printResult(ResultCase resultCase, int ball, int strike) {
+        switch (resultCase) {
             case NOTHING -> System.out.println("낫싱");
             case BALL -> System.out.println(ball + "볼");
             case STRIKE -> System.out.println(strike + "스트라이크");
@@ -44,13 +44,13 @@ public class GameService {
     }
 
     private static void checkResult(int strike, int ball) {
-        CheckResult checkResult = CheckResult.NOTHING;
+        ResultCase resultCase = ResultCase.NOTHING;
         if (ball != 0) {
-            checkResult = checkResult.next(1);
+            resultCase = resultCase.next(1);
         }
         if (strike != 0) {
-            checkResult = checkResult.next(2);
+            resultCase = resultCase.next(2);
         }
-        printResult(checkResult, ball, strike);
+        printResult(resultCase, ball, strike);
     }
 }
