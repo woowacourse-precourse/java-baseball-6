@@ -8,25 +8,30 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballComputer {
     private int[] numArray;
 
+    private final int COUNT_MAX = 3;
+    private final int COUNT_MIN = 1;
+    private final int COUNT_ZERO = 0;
+    private final int DIGIT_NUM = 10;
+
     public BaseballComputer() {
-        this.numArray = new int[10];
+        this.numArray = new int[DIGIT_NUM];
     }
 
     public void selectNumber() {
         Arrays.fill(numArray, 0);
-        for (int i = 1; i <= 3; ++i) {
+        for (int i = COUNT_MIN; i <= COUNT_MAX; ++i) {
             int randomNumber;
             do {
                 randomNumber = Randoms.pickNumberInRange(1, 9);
-            } while (numArray[randomNumber] != 0);
+            } while (numArray[randomNumber] != COUNT_ZERO);
             numArray[randomNumber] = i;
         }
     }
 
     public boolean chkInputError(String input) {
-        int[] duplicatedCheck = new int[10];
+        boolean[] duplicatedCheck = new boolean[DIGIT_NUM];
 
-        if (input.length() != 3) {
+        if (input.length() != COUNT_MAX) {
             return true;
         }
         for (char c : input.toCharArray()) {
@@ -34,10 +39,10 @@ public class BaseballComputer {
                 return true;
             }
             int intDigit = Character.getNumericValue(c);
-            if (duplicatedCheck[intDigit] != 0) {
+            if (duplicatedCheck[intDigit]) {
                 return true;
             }
-            duplicatedCheck[intDigit] = 1;
+            duplicatedCheck[intDigit] = true;
         }
         return false;
     }
@@ -57,9 +62,9 @@ public class BaseballComputer {
     }
 
     private void cntStrikesBalls(String input, int[] result) {
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < COUNT_MAX; ++i) {
             int tmpInt = Character.getNumericValue(input.charAt(i));
-            if (numArray[tmpInt] == 0) {
+            if (numArray[tmpInt] == COUNT_ZERO) {
                 continue;
             }
             if (numArray[tmpInt] == i + 1) {
@@ -74,19 +79,19 @@ public class BaseballComputer {
         // int[0] : 스트라이크 갯수, int[1]: 볼 갯수
         int[] strikesBallsNum = new int[2];
         cntStrikesBalls(input, strikesBallsNum);
-        if (strikesBallsNum[0] == 0 && strikesBallsNum[1] == 0) {
+        if (strikesBallsNum[0] == COUNT_ZERO && strikesBallsNum[1] == COUNT_ZERO) {
             System.out.println("낫싱");
             return false;
         }
-        if (strikesBallsNum[1] != 0) {
+        if (strikesBallsNum[1] != COUNT_ZERO) {
             System.out.print(strikesBallsNum[1] + "볼 ");
         }
-        if (strikesBallsNum[0] != 0) {
+        if (strikesBallsNum[0] != COUNT_ZERO) {
             System.out.print(strikesBallsNum[0] + "스트라이크");
         }
         System.out.println();
         // 정답이면 true를 반환
-        if (strikesBallsNum[0] == 3) {
+        if (strikesBallsNum[0] == COUNT_MAX) {
             return true;
         }
         return false;
