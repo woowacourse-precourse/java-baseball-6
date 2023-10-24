@@ -20,6 +20,9 @@ public class GameController {
     public void play() {
         InputView.printStart();
         while (playing) {
+            if (computerNumbers == null) {
+                init();
+            }
             BaseballNumbers userNumbers = getBaseballNumbers();
             Result result = getResult(userNumbers);
             checkResult(result);
@@ -33,22 +36,6 @@ public class GameController {
         }
     }
 
-    private Result getResult(BaseballNumbers userNumbers) {
-        Result result = service.compare(computerNumbers, userNumbers);
-        OutputView.printResult(result);
-        userNumbers.clear();
-        return result;
-    }
-
-    private BaseballNumbers getBaseballNumbers() {
-        if (computerNumbers == null) {
-            init();
-        }
-//        InputView.printCheat(computerNumbers);
-        InputView.printRequestingInput();
-        return InputView.getUserNumbers();
-    }
-
     private void restartOrNot(String input) {
         Command.validate(input);
         if (Command.isExit(input)) {
@@ -57,6 +44,19 @@ public class GameController {
         if (Command.isRestart(input)) {
             init();
         }
+    }
+
+    private Result getResult(BaseballNumbers userNumbers) {
+        Result result = service.compare(computerNumbers, userNumbers);
+        OutputView.printResult(result);
+        userNumbers.clear();
+        return result;
+    }
+
+    private BaseballNumbers getBaseballNumbers() {
+//        InputView.printCheat(computerNumbers);
+        InputView.printRequestingInput();
+        return InputView.getUserNumbers();
     }
 
     public static void setPlayingTrue() {
