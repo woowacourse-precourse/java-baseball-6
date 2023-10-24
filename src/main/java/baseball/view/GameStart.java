@@ -29,7 +29,7 @@ public class GameStart {
     public void run() {
 
         while (true) {
-            initGame(numbersGenerate);
+            initGame();
 
             // resultStr 이 "3스트라이크" 아니면 반복을 한다.
             while (Utill.isNotSameString(hintOfJudge, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
@@ -57,7 +57,7 @@ public class GameStart {
      *
      * @return
      */
-    private void initGame(NumbersGenerate numbersGenerate) {
+    private void initGame() {
         hintOfJudge = MyConstants.RESET_STRING(); // 결과 리셋
         computerList = numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
     }
