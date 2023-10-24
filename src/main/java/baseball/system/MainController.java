@@ -8,9 +8,8 @@ import baseball.view.output.MainOutputView;
 public class MainController {
 
     public void play() {
+        MainOutputView.printGameStartScript();
         do {
-            MainOutputView.printGameStartScript();
-
             BaseballGame baseballGame = BaseballGame.newGame(new RandomBallNumbersGenerateStrategy());
             baseballGame.play();
 
