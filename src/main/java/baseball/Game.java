@@ -76,7 +76,7 @@ public class Game {
 
         printGameResult(ballCnt, strikeCnt);
 
-        return strikeCnt == 3;
+        return strikeCnt == NUM_OF_DIGITS;
     }
 
     private void printGameResult(int ballCnt, int strikeCnt) {
