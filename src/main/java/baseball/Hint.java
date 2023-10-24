@@ -17,7 +17,7 @@ public class Hint {
         private static final Hint INSTANCE = new Hint();
     }
 
-    public void makeHint(ArrayList playerNums, ArrayList computerNums) {
+    public void makeHint(ArrayList<Integer> playerNums, ArrayList<Integer> computerNums) {
         int tempBall = 0;
         int tempStrike = 0;
 

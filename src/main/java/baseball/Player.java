@@ -17,7 +17,7 @@ public class Player {
     }
 
     public void setGuessNums(ArrayList<Integer> guessNums) {
-        this.guessNums = (ArrayList<Integer>) guessNums.clone();
+        this.guessNums = guessNums;
     }
 
     public ArrayList<Integer> getGuessNums() {

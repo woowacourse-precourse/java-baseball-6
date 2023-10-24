@@ -25,14 +25,38 @@ public class Game {
 
     public void getGuessNums() {
         System.out.print("숫자를 입력해주세요 : ");
-        String guessNumsStr = Console.readLine();
-        ArrayList guessNums = new ArrayList<Integer>();
+        int guessNumsInt = toValidInt(Console.readLine());
+        ArrayList<Integer> guessNums = new ArrayList<Integer>();
 
-        for (int i = 0; i < guessNumsStr.length(); i++) {
-            guessNums.add(Integer.parseInt(String.valueOf(guessNumsStr.charAt(i))));
+        for (int i = 0; i < 3; i++) {
+            int num = guessNumsInt % 100;
+            guessNumsInt /= 100;
+            guessNums.add(0, num);
         }
 
         player.setGuessNums(guessNums);
+    }
+
+    public int toValidInt(String guessNumsStr) {
+        int guessNumsInt = 0;
+
+        try {
+            guessNumsInt = Integer.parseInt(guessNumsStr);
+
+            // 0이 들어가지 않았는지
+            if (guessNumsStr.contains("0")) {
+                throw new IllegalArgumentException();
+            }
+
+            // 3자리의 숫자인지
+            if (guessNumsInt / 100 < 1 || guessNumsInt / 100 > 9) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.exit(0);
+        }
+
+        return guessNumsInt;
     }
 
     public int getHint() {
