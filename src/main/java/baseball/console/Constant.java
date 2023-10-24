@@ -1,4 +1,4 @@
-package baseball.Console;
+package baseball.console;
 
 public class Constant {
 

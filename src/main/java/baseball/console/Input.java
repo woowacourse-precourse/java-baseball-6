@@ -1,4 +1,4 @@
-package baseball.Console;
+package baseball.console;
 
 import camp.nextstep.edu.missionutils.Console;
 
