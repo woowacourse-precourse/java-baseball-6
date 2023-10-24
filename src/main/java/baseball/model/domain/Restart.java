@@ -3,11 +3,9 @@ package baseball.model.domain;
 import baseball.model.service.RestartOptionValidator;
 
 public class Restart {
-    private Integer restartOption;
-    private RestartOptionValidator restartOptionValidator;
+    private final Integer restartOption;
 
     private Restart(String inputOption, RestartOptionValidator restartOptionValidator) {
-        this.restartOptionValidator = restartOptionValidator;
         restartOptionValidator.validateRestartOption(inputOption);
         this.restartOption = parse(inputOption);
     }

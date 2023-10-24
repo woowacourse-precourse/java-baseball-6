@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
-    private List<Integer> playerNumbers;
-    private PlayerNumbersValidator playerNumbersValidator;
+    private final List<Integer> playerNumbers;
 
     private Player(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
-        this.playerNumbersValidator = playerNumbersValidator;
         playerNumbersValidator.validatePlayerNumbers(inputNumbers);
         this.playerNumbers = parse(inputNumbers);
     }
