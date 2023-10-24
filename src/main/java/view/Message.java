@@ -1,7 +1,7 @@
 package view;
 
 public class Message {
-    public void printScores(int strike, int ball){
+    public static void printScores(int strike, int ball){
         if (ball == 0 && strike == 0){
             System.out.println("낫싱");
         }
