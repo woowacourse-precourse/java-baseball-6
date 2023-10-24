@@ -2,7 +2,7 @@ package baseball.common.exception.input;
 
 public enum InputErrorCode {
     INVALID_SIZE("세 자리가 아닙니다."),
-    START_WITH_ZERO("0으로 시작하는 숫자일 수 없습니다."),
+    INVALID_DIGIT_RANGE("각 자리수는 1 ~ 9사이 숫자이여야 합니다."),
     NON_NUMERIC("숫자여야 합니다."),
     DUPLICATED("각 문자는 중복을 허용하지 않습니다."),
     INVALID_INPUT_VALUE("입력값은 필수입니다."),
