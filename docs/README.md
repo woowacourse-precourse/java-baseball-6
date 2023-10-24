@@ -11,11 +11,11 @@
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
     - 예외
-      - **사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생 시킨 후 애플리케이션 종료**
-      - `IllegalArgumentException` = 런타임에러
-      - throws 여부 (애플리케이션 종료할 건데 굳이?)
-      - catch 여부 (런타임 에러인데 굳이?)
-      - 추후 적용할 예정: 에러를 throws → 최상단에서 에러메시지 출력 → return (이 경우 에러를 통한 종료가 아닌, 정상적인 프로그램 종료)
+        - **사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생 시킨 후 애플리케이션 종료**
+        - `IllegalArgumentException` = 런타임에러
+        - throws 여부 (애플리케이션 종료할 건데 굳이?)
+        - catch 여부 (런타임 에러인데 굳이?)
+        - 추후 적용할 예정: 에러를 throws → 최상단에서 에러메시지 출력 → return (이 경우 에러를 통한 종료가 아닌, 정상적인 프로그램 종료)
 
 ## 플레이어 (클라이언트)
 - **서로 다른 3개의 숫자를 입력**
@@ -55,7 +55,7 @@
         - 새로운 validator.java?
         - 아니면 player.java?
         - 아니면 input.java?
-      
+
 
 ---
 
@@ -91,23 +91,27 @@
 ---
 
 # 클래스 구성
-1. **도메인 모델 클래스**:
-    - **`Baseballs.class`**: 볼 객체의 집합을 나타내는 클래스 - baseballs(List<Integer>)
-    - **`Computer.class`**: 컴퓨터를 나타내는 클래스(자신(컴퓨터)의 랜덤 볼 생성) - baseballs(Baseballs)
-    - **`Player.class`**: 플레이어를 나타내는 클래스 - baseballs(Baseballs)
-    - **`ScoreBoard.class`**: 게임 점수를 나타내는 클래스- ballCount(int), strikeCount(int)
-    - **`GameStatus.enum`**: 게임의 상태를 나타내는 클래스 (BREAK, CONTINUE, RESTART, EXIT)
-2. **서비스 레이어 클래스**:
-   - **`ComputerService.class`**: 컴퓨터 공 생성, 컴퓨터 공 하고 플레이어 공 비교 (볼 개수, 스트라이크 개수 세기) 기능
-   - **`PlayerComputer.class`**: 플레이어 공 생성 기능
-   - **`ScoreBoardComputer.class`**: 컴퓨터 서비스가 비교해서 만든 결과를 스코어보드에 갱신하고, 그 결과를 문자로 바꿔 출력 해주는 기능
-3. **컨트롤러 클래스**:
-    - **`GameController.class`**: 사용자 입력을 받고, 서비스 레이어와 상호 작용하여 게임을 관리하는 클래스
-    - **`InputController.class`**: 사용자 입력을 처리하는 컨트롤러 클래스
-4. **뷰 클래스**:
-    - **`InputView.class`**: 플레이어 입력을 받아오기 위한 출력을 담당하는 뷰 클래스
-    - **`OutputView.class`**: 게임 관련 시스템 메시지를 출력을 담당하는 뷰 클래스
-5. **validator**:
-    - **`BaseballsValidator.class`**: Baseballs 예외 처리하는 클래스
-6. **util**:
-    - **`Converter.class`**: 플레이어의 입력을 받아와서 Baseball 로 바꾸는 변환 유틸 클래스
+
+### 뷰 레이어
+`InputView.class`: 플레이어 입력을 받아오기 위한 출력을 담당하는 뷰 클래스
+`OutputView.class`: 게임 관련 시스템 메시지를 출력을 담당하는 뷰 클래스
+
+
+### 컨트롤러 레이어
+`GameController.class`: 사용자 입력을 받고, 서비스 레이어와 상호 작용하여 게임을 관리하는 클래스
+`InputController.class`: 사용자 입력을 처리하는 컨트롤러 클래스
+
+### 서비스 레이어
+`ComputerService.class`: 컴퓨터 공 생성, 컴퓨터 공 하고 플레이어 공 비교 (볼 개수, 스트라이크 개수 세기) 기능
+`PlayerComputer.class`: 플레이어 공 생성 기능
+`ScoreBoardComputer.class`: 컴퓨터 서비스가 비교해서 만든 결과를 스코어보드에 갱신하고, 그 결과를 문자로 바꿔 출력 해주는 기능
+
+### 예외 처리 레이어
+`BaseballsValidator.class`: Baseballs 예외 처리하는 클래스
+
+### 도메인 레이어
+`Baseballs.class`: 볼 객체의 집합을 나타내는 클래스 - baseballs(List<Integer>)
+`Computer.class`: 컴퓨터를 나타내는 클래스(자신(컴퓨터)의 랜덤 볼 생성) - baseballs(Baseballs)
+`Player.class`: 플레이어를 나타내는 클래스(플레이어 입력 예외처리 포함) - baseballs(Baseballs)
+`ScoreBoard.class`: 게임 점수를 나타내는 클래스- ballCount(int), strikeCount(int)
+`GameStatus.enum`: 게임의 상태를 나타내는 클래스 (BREAK, CONTINUE, RESTART, EXIT)
