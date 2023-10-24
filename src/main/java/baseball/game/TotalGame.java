@@ -1,25 +1,10 @@
 package baseball.game;
 
-import baseball.numbers.Computer;
-import java.util.Objects;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class TotalGame {
 
-    public TotalGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    public void play() {
-        Computer computer = new Computer();
-        UnitGame baseballGame = new UnitGame(computer.getComputerNumbers());
-        baseballGame.play();
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = readLine();
-        if (Objects.equals(userInput, "1")) {
-            play();
-        }
+    public static void play() {
+        SetOfGame setOfGame = new SetOfGame();
+        setOfGame.play();
         System.out.println("게임 종료");
     }
 }

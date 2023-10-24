@@ -4,7 +4,6 @@ import baseball.game.TotalGame;
 
 public class Application {
     public static void main(String[] args) {
-        TotalGame totalGame = new TotalGame();
-        totalGame.play();
+        TotalGame.play();
     }
 }
