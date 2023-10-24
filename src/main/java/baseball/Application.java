@@ -28,10 +28,9 @@ public class Application {
             List<Integer> user = getUserNumbers(input);
             //step3. 사용자 입력을 바탕으로 스트라이크/볼 개수 기록
             int[] result = countStrikesAndBalls(computer, user);
-            //스트라이크 개수 기록
-            int strike = result[0];
-            //볼 개수 기록
-            int ball = result[1];
+            //step4. 결과 출력
+            printResult(result);
+
         }
     }
 
@@ -98,5 +97,27 @@ public class Application {
             }
         }
         return result;
+    }
+
+    /**
+     * 스트라이크/볼 개수를 바탕으로 결과 출력
+     * 둘 다 개수가 0일 경우 낫싱 출력
+     */
+    public static void printResult(int[] result) {
+        int strike = result[0];
+        int ball = result[1];
+
+        StringBuilder sb = new StringBuilder();
+        if (ball != 0) {
+            sb.append(ball + "볼 ");
+        }
+        if(strike != 0) {
+            sb.append(strike + "스트라이크 ");
+        }
+        if(ball == 0 && strike == 0) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb);
     }
 }
