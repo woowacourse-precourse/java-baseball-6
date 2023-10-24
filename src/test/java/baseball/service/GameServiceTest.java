@@ -23,6 +23,15 @@ class GameServiceTest {
 
         assertEquals(1, result.getStrike());
     }
+    @Test
+    void 볼_판단_테스트() {
+        Integer[] playerNumbers = {1, 2, 3};
+        PlayerBalls playerBalls = new PlayerBalls(playerNumbers);
+        List<Ball> computerBalls = List.of(new Ball(1), new Ball(3), new Ball(2));
+        GameService service = new GameService();
+        GameResult result = service.judge(playerBalls.getBalls(), computerBalls);
+        assertEquals(2, result.getBall());
+    }
 
 
 }
