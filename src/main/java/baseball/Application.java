@@ -11,7 +11,7 @@ public class Application {
         RestartGame restartGame = new RestartGame();
         boolean restart = true;
 
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (restart) {
             List<Integer> computer = randomNumber.create();
