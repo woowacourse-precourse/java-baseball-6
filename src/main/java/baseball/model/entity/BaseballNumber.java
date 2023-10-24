@@ -1,5 +1,7 @@
 package baseball.model.entity;
 
+import baseball.exception.BaseballException.NumberException;
+import baseball.exception.BaseballException.NumberRangeException;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballNumber {
@@ -17,10 +19,10 @@ public class BaseballNumber {
         try {
             number = Integer.parseInt(String.valueOf(c));
         } catch (Exception e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요");
+            throw new NumberException();
         }
         if(number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException("1~9 사이의 숫자를 입력해주세요");
+            throw new NumberRangeException();
         }
         this.number = number;
     }

@@ -1,5 +1,6 @@
 package baseball.model.entity;
 
+import baseball.exception.BaseballException.ListSizeException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class Baseball {
             }
         }
         if(inputNumbers.size() != 3) {
-            throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해주세요");
+            throw new ListSizeException();
         }
         this.numbers = inputNumbers;
     }
