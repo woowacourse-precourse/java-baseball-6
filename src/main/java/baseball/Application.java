@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.Object;
+import java.lang.IllegalArgumentException;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,11 +18,14 @@ public class Application {
             if(startFlag == true) {
                 //랜덤 세 자리 수를 생성하는 함수
                 computer = RanNumber();
+
+                //test 출력
                 System.out.println(computer);
             }
 
             //player의 입력을 받는 함수
             ArrayList<Integer> player = UserInput();
+
 
             //computer와 player의 입력을 비교하여 야구 시작
             int ball = JudgeBall(computer, player);
@@ -29,7 +33,8 @@ public class Application {
 
             //출력하는 함수
             PrintBaseball(ball, strike);
-            String restartFlagString = "3";
+
+            String restartFlagString = "default";
 
             if(strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -38,14 +43,17 @@ public class Application {
                 restartFlagString = Console.readLine();
             }
 
-            if(restartFlagString.equals("1")) {
+            if(restartFlagString.equals("default")) {
+                startFlag = false;
+            }
+            else if(restartFlagString.equals("1")) {
                 startFlag = true;
             }
             else if (restartFlagString.equals("2")) {
                 break;
             }
             else {
-                startFlag = false;
+                throw new IllegalArgumentException("1 혹은 2만 입력하십시오.");
             }
         }
     }
@@ -97,10 +105,29 @@ public class Application {
         String playerInputString = Console.readLine();
         ArrayList<Integer> playerInputArray = new ArrayList<>();
 
+        int[] dupTestArr = new int[10];
+        boolean errorFlag = false;
+
         for(int i=0; i< playerInputString.length(); i++) {
             char charDigit = playerInputString.charAt(i);
             int digit = Character.getNumericValue(charDigit);
+
+            if(dupTestArr[digit] != 0) {
+                errorFlag = true;
+                break;
+            }
+            dupTestArr[digit]++;
+
             playerInputArray.add(digit);
+        }
+
+        if(playerInputString.length() != 3) {
+            errorFlag = true;
+        }
+
+        if(errorFlag == true) {
+            throw new IllegalArgumentException("유효하지 않은 입력입니다. " +
+                    "서로 다른 수로 이루어진 3자리의 수를 입력하세요.");
         }
 
         return playerInputArray;
