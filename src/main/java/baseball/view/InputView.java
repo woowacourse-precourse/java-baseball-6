@@ -11,6 +11,9 @@ public class InputView {
 
     public static int setRetryNumber(){
         String inputRetryNumber = Console.readLine();
+        if (!inputRetryNumber.equals("1") && !inputRetryNumber.equals("2")) {
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+        }
         return Integer.parseInt(inputRetryNumber);
     }
 }
