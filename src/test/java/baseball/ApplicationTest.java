@@ -1,6 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -25,6 +30,21 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임_시작_문구는_한번만_출력된다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("521", "524", "1", "718", "1", "352", "2");
+                    long count = Arrays.stream(output().split("\n"))
+                                    .filter(line -> line.contains("숫자 야구 게임을 시작합니다."))
+                                    .count();
+                    System.out.println(count);
+                    Assertions.assertEquals(1, count);
+                },
+                5,2,4,7,1,8,3,5,2
         );
     }
 
