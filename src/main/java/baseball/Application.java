@@ -1,8 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
-import java.util.*;
 import baseball.util.ResetGame;
 import baseball.view.Output;
 import baseball.controller.GamePlay;
