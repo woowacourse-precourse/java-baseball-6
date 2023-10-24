@@ -34,6 +34,18 @@ class IntegrationTest extends NsTest {
                     1, 3, 5, 5, 8, 9
             );
         }
+
+        @DisplayName("게임을 한 번 하고 종료하는 경우")
+        @Test
+        void play1game() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "123", "2");
+                        assertThat(output()).contains("1볼", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    },
+                    1, 2, 3
+            );
+        }
     }
 
     @Nested
