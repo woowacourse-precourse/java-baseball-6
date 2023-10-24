@@ -31,12 +31,11 @@ public class BaseballGame {
     }
 
     public void play() {
-        List<Integer> playerNumbers = inputView.readPlayerNumbers();
-
+        Player player = Player.from(inputView.readPlayerNumbers());
         computer = Computer.generate();
 
         for (int i = 0; i < 3; i++) {
-            int playerNumber = playerNumbers.get(i);
+            int playerNumber = player.getNumberOf(i);
             int computerNumber = computer.getNumberOf(i);
 
             if (playerNumber == computerNumber) {

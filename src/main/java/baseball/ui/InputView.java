@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
+import static baseball.global.Validator.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class InputView {
@@ -20,10 +21,16 @@ public class InputView {
 	public List<Integer> readPlayerNumbers() {
 		outputView.printInputNumber();
 		String[] input = readNumber();
+		validateInput(input);
 
 		return Arrays.stream(input)
 				.map(Integer::parseInt)
 				.toList();
+	}
+
+	private void validateInput(String[] input) {
+		validateInputLength(input);
+		validateNumbersFormat(input);
 	}
 
 	private String[] readNumber() {
@@ -36,7 +43,7 @@ public class InputView {
 		outputView.printGameRestart();
 		String option = readLine();
 
-		Validator.validateRestart(option);
+		validateRestart(option);
 		return option;
 	}
 }
