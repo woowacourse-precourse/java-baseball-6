@@ -1,17 +1,21 @@
 package baseball.ui;
 
 import baseball.controller.GameController;
+import java.util.Map;
 
 public class GameView {
 
     private final GameController gameController;
     private final UserInputValidator validator;
     private final InputComponent inputComponent;
+    private final ResultFormatStringCreator creator;
 
-    public GameView(GameController gameController, UserInputValidator validator, InputComponent inputComponent) {
+    public GameView(GameController gameController, UserInputValidator validator, InputComponent inputComponent,
+                    ResultFormatStringCreator creator) {
         this.gameController = gameController;
         this.validator = validator;
         this.inputComponent = inputComponent;
+        this.creator = creator;
     }
 
     public void start() {
@@ -30,7 +34,8 @@ public class GameView {
     private void guess() {
         System.out.print("숫자를 입력해주세요 : ");
         String validUserAnswer = validator.check(inputUserAnswer());
-        gameController.checkAnswer(validUserAnswer);
+        Map<String, Integer> resultMap = gameController.checkAnswer(validUserAnswer);
+        System.out.println(creator.toString(resultMap));
     }
 
     private String inputUserAnswer() {
