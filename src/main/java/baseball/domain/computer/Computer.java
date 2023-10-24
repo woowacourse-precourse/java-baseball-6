@@ -3,7 +3,7 @@ package baseball.domain.computer;
 import baseball.domain.ball.Ball;
 import baseball.domain.ball.Balls;
 import baseball.domain.result.Result;
-import baseball.domain.role.BallPicker;
+import baseball.domain.picker.BallPicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Computer {
         this.balls = balls;
     }
 
-    public static Computer generate(BallPicker ballPicker) throws IllegalAccessException {
+    public static Computer generate(BallPicker ballPicker){
         List<Ball> ballList = new ArrayList<>();
 
         while (ballList.size() < ROUNDS) {

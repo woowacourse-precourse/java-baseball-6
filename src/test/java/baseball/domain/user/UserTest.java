@@ -5,8 +5,8 @@ import baseball.domain.ball.Ball;
 import baseball.domain.ball.Balls;
 import baseball.domain.computer.Computer;
 import baseball.domain.result.Result;
-import baseball.domain.role.BallPicker;
-import baseball.domain.role.RandomBallPicker;
+import baseball.domain.picker.BallPicker;
+import baseball.domain.picker.RandomBallPicker;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
