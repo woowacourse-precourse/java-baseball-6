@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Integer;
 
 public class PlayerNumber {
     private static final String INPUT = "숫자를 입력해주세요 : ";
