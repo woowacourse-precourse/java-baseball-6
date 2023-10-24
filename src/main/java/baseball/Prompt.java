@@ -26,6 +26,10 @@ public enum Prompt {
         this.ko = ko;
     }
 
+    public static String winningCond(int digitNumber) {
+        return digitNumber + STRIKE.ko;
+    }
+
     public void println() {
         System.out.println(ko);
     }
