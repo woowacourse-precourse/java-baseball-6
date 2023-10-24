@@ -1,12 +1,44 @@
 package baseball.service;
 
 import baseball.domain.BaseballGame;
-
+import baseball.utils.MakeRandomNumber;
+import baseball.view.BaseballGameConsole;
+import camp.nextstep.edu.missionutils.Console;
 public class BaseballService {
     private int size;
     private BaseballGame baseballGame;
+    private BaseballGameConsole baseballGameConsole = new BaseballGameConsole();
+    public BaseballService(int size){
+        this.size = size;
+        baseballGame = new BaseballGame(MakeRandomNumber.getRandomNumbers(size));
+    }
+    public void playGame() {
+        int strikeCount = 0;
+        while (strikeCount != 3) {
+            playTurn();
+            baseballGameConsole.printScoreMessage(baseballGame.getBall(), baseballGame.getStrike());
+            strikeCount = baseballGame.getStrike();
+        }
+    }
+    private void playTurn(){
+        baseballGame.initStrikeAndBall();
+        int[] userGuess = MakeRandomNumber.getRandomNumbers(size);
+        getScore(userGuess);
+    }
 
-    //TODO : 난수 생성
-    //TODO: 스트라이크 볼 판정 로직
+    //스트라이크 볼 판정 로직
+    private void getScore(int[] userGuess){
+
+        for (int i = 0; i < size; i++) {
+            if (baseballGame.haveDigit(userGuess[i])){
+                if (userGuess[i] == baseballGame.getNumbers()[i]){
+                    baseballGame.increaseStrike();
+                }
+                else{
+                    baseballGame.increaseBall();
+                }
+            }
+        }
+    }
 
 }
