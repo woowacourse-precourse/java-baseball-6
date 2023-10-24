@@ -35,6 +35,8 @@ public class Application {
             }
 
             playerNumbers = reverse(playerNumbers);
+
+            Result result = calculate(computer, playerNumbers);
         }
     }
 
@@ -88,5 +90,21 @@ public class Application {
             reverse.add(playerNumbers.get(i));
         }
         return reverse;
+    }
+
+    static Result calculate (List <Integer> computer, List <Integer> playerNumbers){
+        Result result = new Result();
+        for (int i = 0; i < 3; i++) {
+            Integer playerBall = playerNumbers.get(i);
+
+            if (!computer.contains(playerBall))
+                result.increaseNothing();
+            else if (playerBall != computer.get(i))
+                result.increaseBall();
+            else
+                result.increaseStrike();
+        }
+
+        return result;
     }
 }
