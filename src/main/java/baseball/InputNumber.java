@@ -24,21 +24,38 @@ public class InputNumber {
         return inputArr;
     }
 
-    public void checkNum(int[] inputArry) {
+    public int[] checkNum() {
+        int[] inputArry = createInputArr();
         Set<String> numSet = new HashSet<>();
-
         // 배열의 요소를 Set에 추가
         for (int num : inputArry) {
             numSet.add(String.valueOf(num));
         }
         boolean isRight = numSet.size() == inputArry.length;
         try {
-            if(!isRight){
+            if(!isRight || numSet.size() != 3){
                 throw new IllegalArgumentException();
             }
+            return inputArry;
         } catch (IllegalArgumentException e) {
             throw new RuntimeException(e);
         }
     }
+//    public void checkNum(int[] inputArry) {
+//        Set<String> numSet = new HashSet<>();
+//
+//        // 배열의 요소를 Set에 추가
+//        for (int num : inputArry) {
+//            numSet.add(String.valueOf(num));
+//        }
+//        boolean isRight = numSet.size() == inputArry.length;
+//        try {
+//            if(!isRight || inputArry.length != 3){
+//                throw new IllegalArgumentException();
+//            }
+//        } catch (IllegalArgumentException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 }

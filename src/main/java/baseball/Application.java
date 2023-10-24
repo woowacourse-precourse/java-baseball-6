@@ -18,7 +18,7 @@ public class Application {
             int[] ranNum = randomNumber.createRanArr();
             String counts = "";
             while (!counts.equals("3스트라이크")){
-                counts = returnCount.count(inputNumber.createInputArr(),ranNum);
+                counts = returnCount.count(inputNumber.checkNum(),ranNum);
                 System.out.println(counts);
             }
             retry = replay.replay();
