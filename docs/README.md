@@ -40,11 +40,12 @@ import camp.nextstep.edu.missionutils;
 ### *View*
 #### : 컨트롤러를 통해 모델에서 정보를 받아 출력
 - [x] (숫자 입력 화면) 클래스 (InputView)
-- [ ] (게임 출력 화면) 클래스
+- [x] (게임 출력 화면) 클래스 (OutputView)
 ---
 ### *Contoller*
 #### : 모델과 뷰의 중재자 담당
 - [ ] (입력값과 정답 숫자 비교) 클래스
+- [x] (게임 시작과 중재자 역할) 클래스 (BaseballGame)
 
 
 ### *GameManager*
