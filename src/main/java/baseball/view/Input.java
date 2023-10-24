@@ -20,4 +20,10 @@ public class Input {
         List<Integer> numberList = Arrays.stream(numberArray).boxed().collect(Collectors.toList());
         return new ThreeNumbers(numberList);
     }
+
+    public boolean inputOneOrTwo() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String number = Console.readLine();
+        return number.equals("1");
+    }
 }

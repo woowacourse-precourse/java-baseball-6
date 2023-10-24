@@ -19,6 +19,15 @@ public class PlayBaseballGame {
         while (isReplay) {
             playerNumber.setPlayerNumber(player.inputPlayerNumber());
             play.getHint(playerNumber, computerNumber);
+            if(playerNumber.getStrikeCount() == 3) {
+                isReplay = endGame();
+            }
         }
     }
+
+    private boolean endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        return player.inputOneOrTwo();
+    }
 }
+
