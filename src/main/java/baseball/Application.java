@@ -10,14 +10,9 @@ public class Application {
             baseball_game();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input_num = Console.readLine();
-            try {
-                Integer.parseInt(input_num);
-            } catch (IllegalArgumentException e) {
-                System.exit(0);
-            }
-            if (Integer.parseInt(input_num) == 2) {
+            if (Objects.equals(input_num, "2")) {
                 break;
-            } else if (Integer.parseInt(input_num) == 1) {
+            } else if (Objects.equals(input_num, "1")) {
 
             } else throw new IllegalArgumentException();
         }
@@ -40,13 +35,12 @@ public class Application {
 
             String[] exp_num_split = exp_num_str.split("");
             List<String> exp_num_lst = Arrays.asList(exp_num_split);
+            Set<String> set_exp_num = new HashSet<>(exp_num_lst);
+            List<String> set_lst_exp_num = new ArrayList<>(set_exp_num);
+            if (set_lst_exp_num.size() != 3) {
+                throw new IllegalArgumentException();
+            }
             try{
-                Set<String> set_exp_num = new HashSet<>(exp_num_lst);
-                List<String> set_lst_exp_num = new ArrayList<>(set_exp_num);
-                if (set_lst_exp_num.size() != 3) {
-                    throw new IllegalArgumentException();
-                }
-
                 int exp_num = Integer.parseInt(exp_num_str);
             } catch (Exception e) {
 //                System.out.println(e.getCl®ass().getName());
@@ -62,17 +56,16 @@ public class Application {
                     cnt_lst[0] += 1;
                 }
             }
+            String result_str = "";
             if (cnt_lst[0] != 0) {
-                System.out.print(cnt_lst[0]);
-                System.out.print("볼");
+                result_str += cnt_lst[0] + "볼 ";
             }
             if (cnt_lst[1] != 0) {
-                System.out.print(cnt_lst[1]);
-                System.out.print("스트라이크");
+                result_str += cnt_lst[1] + "스트라이크";
             } else if (cnt_lst[0] == 0) {
-                System.out.print("낫싱");
+                result_str = "낫싱";
             }
-            System.out.print("\n");
+            System.out.println(result_str.trim());
 
             if (cnt_lst[1] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
