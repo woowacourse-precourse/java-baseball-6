@@ -9,20 +9,32 @@ public class User{
 
     private List<Integer> user = new ArrayList<>();
 
-    void setUser() throws IllegalArgumentException{
+    public void setUser() throws IllegalArgumentException{
 
        int num = Integer.parseInt(Console.readLine());
-        user.add(num/100);
-        user.add((num%100)/10);
-        user.add(num%10);
+        int first = num/100;
+        int second = (num%100)/10;
+        int last  = num %10;
+        num = checkError(num,first,second,last);
+        user.add(first);
+        user.add(second);
+        user.add(last);
+
     }
 
-    void clearUser(){
+    public void clearUser(){
         user.clear();
     }
 
     List<Integer> getUser(){
         return user;
+    }
+
+    public int checkError(int num,int first, int second, int last) throws IllegalArgumentException{
+        if(num<100 || num >1000 || first == second  || second == last || first == last){
+            throw new IllegalArgumentException();
+        }
+        return num;
     }
 
 }
