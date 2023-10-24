@@ -1,7 +1,16 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import controller.BaseBallGame;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseBallGame baseBallGame = new BaseBallGame();
+        baseBallGame.gameStart();
     }
 }
