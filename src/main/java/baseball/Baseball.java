@@ -38,8 +38,8 @@ public class Baseball {
 
     // 콘솔에 게임 결과를 출력
     private void printResult(BallStrike result){
-        int ballNum = result.getBall();
-        int strikeNum = result.getStrike();
+        int ballNum = result.ball();
+        int strikeNum = result.strike();
 
         if(ballNum==0 && strikeNum==0) {
             System.out.println("낫싱");
