@@ -20,12 +20,16 @@ public class Game implements Runnable {
     private int countBall; // Ball 개수 확인 용도
     private int countStrike; // Strike 개수 확인 용도
 
-    public void start() throws InterruptedException {
+    public void start() {
         // TODO: Game 진행
         Thread game = new Thread("Game");
         game.start();
-        run();
-        stop();
+        try {
+            run();
+        } finally {
+            stop();
+        }
+
     }
 
     @Override
@@ -44,8 +48,7 @@ public class Game implements Runnable {
         // 게임 시작 메시지 출력
         MessageUtil.initGame();
 
-        // 게임 종료 조건: compareRestartNum 이 stopNumber 인 경우
-        while (compareRestartNum != stopNumber) {
+        while (true) {
             // 유저에게 숫자 입력 요청
             MessageUtil.inputNumber();
             InputString = Console.readLine();
@@ -72,6 +75,11 @@ public class Game implements Runnable {
                 computer = createRandomNumber();
             }
 
+            // 게임 성공 이후 중지 번호 입력 받을 경우 게임 종료
+            if (countStrike == maxCountStrike && compareRestartNum == stopNumber) {
+                break;
+            }
+
             // 볼과 스트라이크 개수 초기화
             countBall = 0;
             countStrike = 0;
@@ -85,7 +93,7 @@ public class Game implements Runnable {
     /*
      * Thread 중지 목적
      */
-    public void stop() {
+    private static void stop() {
         Thread.interrupted();
     }
 
