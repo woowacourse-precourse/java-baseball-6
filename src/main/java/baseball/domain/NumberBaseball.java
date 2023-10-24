@@ -55,6 +55,10 @@ public class NumberBaseball {
         return values;
     }
 
+    public int getValueSize() {
+        return values.size();
+    }
+
     private static void validateStringValue(String stringValue) {
         int stringLen = stringValue.length();
 
