@@ -26,7 +26,7 @@ public class Game {
 
         String userInput = Console.readLine();
 
-        validator.validate(userInput);
+        validator.validateNumberInput(userInput);
 
         List<Character> userNumbers = Parsing.parseIntoList(userInput);
 
