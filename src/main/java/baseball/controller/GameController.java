@@ -31,7 +31,7 @@ public class GameController {
     }
 
     private void playGame() {
-        Computer computer = Computer.createWithGeneratedNumbers(new RandomNumberGenerator());
+        Computer computer = Computer.createFromGeneratedNumbers(new RandomNumberGenerator());
         List<Number> userGuess = new ArrayList<>();
 
         while (!isGameOver(computer, userGuess)) {

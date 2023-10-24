@@ -14,7 +14,7 @@ public class Computer {
         this.answerNumbers = answerNumbers;
     }
 
-    public static Computer createWithGeneratedNumbers(final NumberGenerator generator) {
+    public static Computer createFromGeneratedNumbers(final NumberGenerator generator) {
         return new Computer(generator.generate());
     }
 
@@ -36,7 +36,7 @@ public class Computer {
 
     private boolean isBall(final int index, final List<Number> userNumbers) {
         Number number = userNumbers.get(index);
-        return !this.answerNumbers.get(index).equals(number) && this.answerNumbers.contains(number);
+        return !isStrike(index, userNumbers) && this.answerNumbers.contains(number);
     }
 
     public boolean isThreeStrikes(final List<Number> userNumbers) {

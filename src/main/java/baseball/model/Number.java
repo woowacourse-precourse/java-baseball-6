@@ -10,7 +10,7 @@ public class Number {
 
     private final int value;
 
-    public Number(int value) {
+    public Number(final int value) {
         validateValueRange(value);
         this.value = value;
     }
