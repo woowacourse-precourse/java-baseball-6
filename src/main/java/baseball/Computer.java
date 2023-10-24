@@ -1,25 +1,18 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> secretNumbers = new ArrayList<>();
+    private List<Integer> secretNumbers;
+    private final SecretNumberPicker secretNumberPicker;
 
     public Computer() {
+        this.secretNumberPicker = new SecretNumberPicker();
     }
 
-
     public void pickSecretNumbers() {
-        secretNumbers.clear();
-        while (secretNumbers.size() < GameConstants.NUMBER_LENGTH) {
-            int newNumber = Randoms.pickNumberInRange(GameConstants.MIN_NUMBER, GameConstants.MAX_NUMBER);
-            if (!secretNumbers.contains(newNumber)) {
-                secretNumbers.add(newNumber);
-            }
-        }
+        this.secretNumbers = secretNumberPicker.pickSecretNumbers();
     }
 
     public GameResult countStrikesAndBalls(List<Integer> guessNumbers) {
