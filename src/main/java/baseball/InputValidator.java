@@ -2,6 +2,8 @@ package baseball;
 
 public class InputValidator {
 
+    private static final String VALID_RETRY_INPUT_PATTERN = "[12]";
+
     public void validateGuessNumbers(String input) {
         validateNumeric(input);
         validateLength(input);
@@ -33,8 +35,9 @@ public class InputValidator {
     }
 
     private void validateOneOrTwo(String input) {
-        if (!input.matches("[12]")) {
-            throw new IllegalArgumentException("숫자 1 또는 2를 입력해야됩니다.");
+        if (!input.matches(VALID_RETRY_INPUT_PATTERN)) {
+            throw new IllegalArgumentException(
+                    "숫자 " + GameConstants.RETRY_CHOICE + " 또는 " + GameConstants.EXIT_CHOICE + "를 입력해야됩니다.");
         }
     }
 }

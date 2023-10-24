@@ -36,7 +36,7 @@ public class BaseBallGame {
             }
 
             int retryChoice = input.getRetryChoice();
-            if (retryChoice == 2) {
+            if (retryChoice == GameConstants.EXIT_CHOICE) {
                 break;
             }
         }
