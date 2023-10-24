@@ -1,11 +1,12 @@
 package baseball.service.hint;
 
-import baseball.domain.Baseball;
+import baseball.domain.NumberBaseball;
 import baseball.domain.hint.HintItem;
 
-public interface HintItemService<T extends HintItem> {
+public interface HintItemService { //TODO: 전체 코드 포맷 (Ctrl+Alt+L)
 
-    int count(Baseball computerBaseball, Baseball inputBaseball);
-    boolean active(T object);
+    HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball);
+    int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball);
 
+    boolean active(HintItem ball);
 }
