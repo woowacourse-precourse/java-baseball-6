@@ -23,6 +23,6 @@ public class GameInput {
     public static boolean getContinueInput() {
         String inputContinue = Console.readLine();
         InputValidator.continueInput(inputContinue);
-        return inputContinue.equals(GameStatus.CONTINUE.getStatus());
+        return inputContinue.equals(GameStatus.CONTINUE.status);
     }
 }

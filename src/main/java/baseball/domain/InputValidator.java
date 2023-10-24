@@ -18,8 +18,8 @@ public class InputValidator {
     }
 
     public static void continueInput(String inputContinue) throws IllegalArgumentException {
-        if (!inputContinue.equals(GameStatus.CONTINUE.getStatus()) && !inputContinue.equals(
-                GameStatus.STOP.getStatus())) {
+        if (!inputContinue.equals(GameStatus.CONTINUE.status) && !inputContinue.equals(
+                GameStatus.STOP.status)) {
             throw new IllegalArgumentException(ERROR_INVALID_CONTINUE_INPUT);
         }
     }

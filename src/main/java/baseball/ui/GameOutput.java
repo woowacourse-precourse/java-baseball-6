@@ -37,7 +37,7 @@ public class GameOutput {
     }
 
     public static void showGameContinueInputMessage() {
-        System.out.println("게임을 새로 시작하려면 " + GameStatus.CONTINUE.getStatus() + ", 종료하려면 " + GameStatus.STOP.getStatus()
+        System.out.println("게임을 새로 시작하려면 " + GameStatus.CONTINUE.status + ", 종료하려면 " + GameStatus.STOP.status
                 + "를 입력하세요.");
     }
 }
