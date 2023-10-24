@@ -100,6 +100,14 @@ public class GameUtil {
         System.out.println(Constants.ASK_CONTINUE_COMMENT);
 
         String userInput = Console.readLine();
+        validateContinueInput(userInput);
+
         return (userInput.equals(Constants.CONTINUE_INPUT));
+    }
+
+    private void validateContinueInput(String userInput) {
+        if (!userInput.equals(Constants.CONTINUE_INPUT) && !userInput.equals(Constants.STOP_INPUT)) {
+            throw new IllegalArgumentException();
+        }
     }
 }

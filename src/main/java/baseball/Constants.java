@@ -4,6 +4,7 @@ public class Constants {
     /** 숫자 야구에 사용되는 숫자 목록 */
     static final Integer GAME_NUM_LENGTH = 3;
     static final String CONTINUE_INPUT = "1";
+    static final String STOP_INPUT = "2";
 
     /** 숫자 야구에 사용되는 멘트 */
     static final String START_COMMENT = "숫자 야구 게임을 시작합니다.";
