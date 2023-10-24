@@ -35,7 +35,7 @@ public class Game {
         return new GameResult(strike, ball);
     }
     private void changeGameStatusBy(GameResult gameResult) {
-        if (gameResult.hasThreeStrikes()) {
+        if (gameResult.hasEndCondition()) {
             gameStatus = GameStatus.STOP;
         }
     }

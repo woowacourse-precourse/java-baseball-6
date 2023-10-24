@@ -21,6 +21,9 @@ public class GameResult {
     public boolean hasBall() {
         return ball > 0;
     }
+    public boolean hasEndCondition() {
+        return strike == 3;
+    }
 
     public int getStrike() {
         return strike;
