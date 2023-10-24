@@ -42,15 +42,19 @@ public class GameService {
         String hint = createHint();
         output.printHint(hint);
         if (hint.equals(threeStrikeMessage)) {
-            output.gameEnd();
-            String restartOrEnd = input.getRestartOrEnd();
-            if (restartOrEnd.equals(gameEndMessage)) {
-                return true;
-            }
-            output.gameStart();
-            computerNumber.setNumber(createRandomNumbers());
-            return false;
+            return processThreeStrike();
         }
+        return false;
+    }
+
+    private boolean processThreeStrike() {
+        output.gameEnd();
+        String restartOrEnd = input.getRestartOrEnd();
+        if (restartOrEnd.equals(gameEndMessage)) {
+            return true;
+        }
+        output.gameStart();
+        computerNumber.setNumber(createRandomNumbers());
         return false;
     }
 
