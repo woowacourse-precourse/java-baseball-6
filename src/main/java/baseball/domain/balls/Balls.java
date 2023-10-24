@@ -73,7 +73,7 @@ public class Balls {
 		return Objects.hash(balls);
 	}
 
-	public GameResult compare(final Balls otherBalls) {
+	public GameResult compareBalls(final Balls otherBalls) {
 		GameResult gameResult = new GameResult();
 		this.balls.forEach(ball -> {
 			compareBall(otherBalls, ball, gameResult);
