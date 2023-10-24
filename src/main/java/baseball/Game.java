@@ -8,63 +8,62 @@ import java.util.List;
 public class Game {
 
     private List<Integer> computerNumberList;
+    private Score score;
 
     public Game(){
         this.computerNumberList = Computer.getNumber();
+        this.score = new Score();
     }
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int[] result = {0, 0};
-        while (isProgress(result)){
+        while (score.isOut()){
             List<Integer> numberList = input();
-            result = checkNumber(numberList);
-            printResult(result);
+            checkNumber(numberList);
+            printResult();
         }
     }
 
-    private boolean isProgress(int[] result) {
-        if (result[0] == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return false;
-        }
-        return true;
-    }
-
-    private void printResult(int[] result) {
+    private void printResult() {
         String printString = "";
+        int strikeCount = score.getStrikeCount();
+        int ballCount = score.getBallCount();
 
-        if (result[1] != 0) {
-            printString = printString + result[1] +"볼";
+        if (ballCount > 0) {
+            printString = printString + ballCount +"볼";
         }
 
-        if ((result[0] != 0) && (result[1] != 0)){
+        if ((strikeCount > 0) && (ballCount > 0)){
             printString = printString + " ";
         }
 
-        if (result[0] != 0) {
-            printString = printString + result[0] + "스트라이크";
+        if (strikeCount != 0) {
+            printString = printString + strikeCount + "스트라이크";
         }
 
-        if (printString.equals("")) {
+        if ((strikeCount == 0) && (ballCount == 0)) {
             printString = "낫싱";
         }
         System.out.println(printString);
     }
 
 
-    private int[] checkNumber(List<Integer> numberList) {
-        int[] result = {0, 0};
+    private void checkNumber(List<Integer> numberList) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if ((i == j) && (numberList.get(i) == computerNumberList.get(j))){
-                    result[0] += 1;
+                    strikeCount += 1;
                 } else if (numberList.get(i) == computerNumberList.get(j)) {
-                    result[1] += 1;
+                    ballCount += 1;
                 }
             }
         }
-        return result;
+
+        score.setStrikeCount(strikeCount);
+        score.setBallCount(ballCount);
     }
 
     private List<Integer> input(){
