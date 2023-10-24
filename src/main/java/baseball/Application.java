@@ -18,7 +18,7 @@ public class Application {
             System.out.println(randomNumber);
 
             // 게임 시작
-            start(randomNumber);
+            start(String.valueOf(randomNumber));
 
             // 게임 종료
             game_flag = end();
@@ -26,24 +26,37 @@ public class Application {
         }
     } // main
 
-    private static void start(int randomNumber) {
+    private static void start(String randomNumber) {
 
-        int userNumber;
+        String userNumber;
+        int strike;
 
         while (true) {
 
             System.out.print("숫자를 입력해주세요 : ");
 
+            strike = 0;
+
             // 숫자 입력
             try {
-                userNumber = Integer.parseInt(Console.readLine());
+                userNumber = Console.readLine();
             } catch(Exception e) {
                 throw new IllegalArgumentException();
             }
 
             // 입력된 숫자에 대한 결과
-            if (userNumber == randomNumber)
-                return;
+            for (int i = 0; i < 3; i++) {
+
+                if (randomNumber.charAt(i) == userNumber.charAt(i)) {
+                    strike += 1;
+                }
+            }
+
+            // 결과 출력
+            if (strike > 0) {
+                System.out.println(strike + "스트라이크");
+                if (strike == 3) return;
+            }
         }
     } // start
 
