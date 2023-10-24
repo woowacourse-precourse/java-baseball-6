@@ -28,6 +28,7 @@ public final class MessageConstants {
     public static final String NUMBER_MUST_BE_ONE_OR_TWO =
             ": " + RESTART_NUMBER_STRING + " 또는 " + EXIT_NUMBER_STRING + "여야 합니다.";
     public static final String END = "게임 종료";
+    public static final String NOT_RESTART_OR_EXIT = ": Restart와 Exit에 맞는 숫자가 아닙니다.";
 
     private MessageConstants() {
         throw new AssertionError(CANNOT_INSTANTIATE);
