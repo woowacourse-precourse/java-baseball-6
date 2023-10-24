@@ -46,6 +46,15 @@ public class Application {
             }
         }
 
+        printResult(ball, strike);
+
+        if (strike == 3) {
+            return false;
+        }
+        return true;
+    }
+
+    private static void printResult(int ball, int strike) {
         List<String> results = new ArrayList<>();
         if (ball != 0) {
             results.add(String.format("%d볼", ball));
@@ -62,9 +71,7 @@ public class Application {
 
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return false;
         }
-        return true;
     }
 
     private static List<Integer> parse(String input) {
