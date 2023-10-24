@@ -58,12 +58,6 @@ public class GameModel {
                 computer.add(randomNumber);
             }
         }
-        //컴퓨터 숫자 출력
-        for (Integer i : computer) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-
         return computer;
     }
 
