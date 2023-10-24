@@ -1,14 +1,7 @@
-package others;
+package baseball.others;
 
-import static others.Constant.numberOfNumbers;
-import static others.ExceptionHandling.restartException;
-import static others.Output.printBallAndStrike;
-import static others.Output.printNothing;
-import static others.Output.printOnlyBall;
-import static others.Output.printOnlyStrike;
-import static others.Output.printRestart;
-import static others.Output.printThreeStrike;
-import static others.Player.playerInputRestartNumber;
+import static baseball.others.Constant.numberOfNumbers;
+import static baseball.others.ExceptionHandling.restartException;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,12 +9,6 @@ import java.util.Objects;
 public class ProgramController {
     private static int strike;
     private static int ball;
-
-    public static boolean ifRestart() {
-        printRestart();
-        String restartNumber = playerInputRestartNumber();
-        return restartException(restartNumber);
-    }
 
     public static void compareDigits(final List<Integer> computer, final List<Integer> player) {
         strike = 0;
@@ -41,16 +28,27 @@ public class ProgramController {
 
     public static boolean resultJudgment() {
         if (strike == 3) {
-            printThreeStrike(strike);
+            Output.printThreeStrike(strike);
             return true;
         } else if (ball == 0 && strike == 0) {
-            printNothing();
+            Output.printNothing();
         } else if (ball != 0 && strike == 0) {
-            printOnlyBall(ball);
+            Output.printOnlyBall(ball);
         } else if (ball == 0 && strike != 0) {
-            printOnlyStrike(strike);
+            Output.printOnlyStrike(strike);
         } else {
-            printBallAndStrike(ball, strike);
+            Output.printBallAndStrike(ball, strike);
+        }
+        return false;
+    }
+
+    public static boolean ifRestart(final String restart) {
+        if (Objects.equals(restart, "1")) {
+            return true;
+        } else if (Objects.equals(restart, "2")) {
+            return false;
+        } else {
+            restartException();
         }
         return false;
     }
