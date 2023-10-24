@@ -9,12 +9,12 @@ public class GameManager {
     private Player player;
     private Computer computer;
 
-    public void startGame() {
+    public void startGame(){
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> inputNumbers = player.getNumbers();
             if (!isValid(inputNumbers)) {
-                return new IllegalArgumentException;
+                throw new IllegalArgumentException();
             }
             int[] result = judge(inputNumbers);
             System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
