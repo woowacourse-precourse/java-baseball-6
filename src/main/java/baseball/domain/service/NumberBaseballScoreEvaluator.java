@@ -1,6 +1,9 @@
 package baseball.domain.service;
 
 import baseball.domain.model.ScoreMessage;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class NumberBaseballScoreEvaluator {
 
@@ -15,15 +18,16 @@ public class NumberBaseballScoreEvaluator {
         return strikes;
     }
 
+
+    private static boolean isBall(String inputNumber, String targetNumber, int i) {
+        return targetNumber.indexOf(inputNumber.charAt(i)) != -1
+                && targetNumber.charAt(i) != inputNumber.charAt(i);
+    }
+
     private int countBalls(String inputNumber, String targetNumber) {
-        int balls = 0;
-        for (int i = 0; i < inputNumber.length(); i++) {
-            char currentChar = inputNumber.charAt(i);
-            if (targetNumber.indexOf(currentChar) != -1 && targetNumber.charAt(i) != currentChar) {
-                balls++;
-            }
-        }
-        return balls;
+        return (int) IntStream.range(0, inputNumber.length())
+                .filter(i -> isBall(inputNumber, targetNumber, i))
+                .count();
     }
 
     public String evaluate(String inputNumber, String targetNumber) {
@@ -33,24 +37,25 @@ public class NumberBaseballScoreEvaluator {
     }
 
     private String formatResult(int strikes, int balls) {
-        if (strikes == 0 && balls == 0) {
+        if (isNoHit(strikes, balls)) {
             return ScoreMessage.NOTHING.formatMessage(0);
         }
 
-        StringBuilder result = new StringBuilder();
+        List<String> messages = new ArrayList<>();
 
         if (balls > 0) {
-            result.append(ScoreMessage.BALL.formatMessage(balls));
+            messages.add(ScoreMessage.BALL.formatMessage(balls));
         }
 
         if (strikes > 0) {
-            if (result.length() > 0) {
-                result.append(" ");
-            }
-            result.append(ScoreMessage.STRIKE.formatMessage(strikes));
+            messages.add(ScoreMessage.STRIKE.formatMessage(strikes));
         }
 
-        return result.toString();
+        return String.join(" ", messages);
+    }
+
+    private boolean isNoHit(int strikes, int balls) {
+        return strikes == 0 && balls == 0;
     }
 
 
