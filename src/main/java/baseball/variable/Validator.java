@@ -31,7 +31,6 @@ public class Validator {
 
     private boolean isDuplicate(List number) {
         Set<Integer> numSet = new HashSet<>(number);
-
         return numSet.size() != number.size();
     }
 }
