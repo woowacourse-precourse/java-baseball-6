@@ -5,6 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Author   snorlax1106@naver.com
+ * Version  1.1.0
+ * Since    1.0.0
+ */
 public class BaseballGame {
 
     private static final int DIGIT = 3;
