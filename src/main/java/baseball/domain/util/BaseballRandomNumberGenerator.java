@@ -1,6 +1,8 @@
 package baseball.domain.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BaseballRandomNumberGenerator implements RandomNumberGenerator<Integer,String> {
     @Override
@@ -10,10 +12,8 @@ public class BaseballRandomNumberGenerator implements RandomNumberGenerator<Inte
 
     @Override
     public String generateRandomNumbers() {
-        StringBuilder numbers = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
-            numbers.append(generate());
-        }
-        return numbers.toString();
+        return IntStream.range(0, 3)
+                .mapToObj(i -> String.valueOf(generate()))
+                .collect(Collectors.joining());
     }
 }
