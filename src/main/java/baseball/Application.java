@@ -29,13 +29,10 @@ public class Application {
     private static void start(String randomNumber) {
 
         String userNumber;
-        int strike;
 
         while (true) {
 
             System.out.print("숫자를 입력해주세요 : ");
-
-            strike = 0;
 
             // 숫자 입력
             try {
@@ -45,22 +42,29 @@ public class Application {
             }
 
             // 입력된 숫자에 대한 결과
-            for (int i = 0; i < 3; i++) {
-
-                if (randomNumber.charAt(i) == userNumber.charAt(i)) {
-                    strike += 1;
-                }
-            }
-
-            // 결과 출력
-            if (strike == 3) {
-                System.out.println(strike + "스트라이크");
-                return;
-            }
-
-            if (strike > 0) System.out.println(strike + "스트라이크");
+            if(calculate(randomNumber, userNumber)) return;
         }
     } // start
+
+    private static boolean calculate(String randomNumber, String userNumber) {
+
+        int strike = 0;
+
+        // 계산
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber.charAt(i) == userNumber.charAt(i)) {
+                strike += 1;
+            }
+        }
+
+        // 출력
+        if (strike > 0) {
+            System.out.println(strike + "스트라이크");
+            return strike == 3;
+        }
+
+        return false;
+    }
 
     private static boolean end() {
 
