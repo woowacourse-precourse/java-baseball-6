@@ -10,6 +10,22 @@ public class BaseballGame {
     final static int randomRangeend=9;
     final static int listSize=3;
 
+    public static void gameStart(){
+        int checkNum;
+        userInterface.startWrite();
+        generateRandomNumber();
+        while(true){
+            userInterface.inputWrite();
+            userInterface.userInput();
+            checkNum=userInterface.checkUserGuess(countBallAndStrike());
+            if (checkNum==userInterface.endGameChoice){
+                break;
+            }else if(checkNum==userInterface.restartChoice){
+                generateRandomNumber();
+            }
+        }
+    }
+
     public static void generateRandomNumber(){
         List<Integer> tempComputerNumber = new ArrayList<>();
         while (tempComputerNumber.size() < listSize) {
