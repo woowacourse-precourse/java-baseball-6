@@ -16,4 +16,8 @@ public class GameResult {
     public int getBall() {
         return ball;
     }
+
+    public boolean isGameEnd() {
+        return strike == 3;
+    }
 }
