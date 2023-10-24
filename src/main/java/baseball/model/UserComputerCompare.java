@@ -27,15 +27,18 @@ public class UserComputerCompare {
     }
 
     private void processPlayerNumber(int index) {
-        int number = player.getNumberByPosition(index);
-        if (hasCommonNumber(number)) {
-            BallCount key = isInSamePosition(index) ? BallCount.STRIKE : BallCount.BALL;
+        int playerNumber = player.getNumberByPosition(index);
+        boolean hasCommonNumber = hasCommonNumber(playerNumber);
+        boolean isInSamePosition = isInSamePosition(index, playerNumber);
+
+        BallCount key = BallCount.decideBallCount(hasCommonNumber, isInSamePosition);
+        if (key != BallCount.NOTHING) {
             result.updateBallCount(key);
         }
     }
 
-    private boolean isInSamePosition(int position) {
-        return position == computer.getComputerNumber().indexOf(player.getNumberByPosition(position));
+    private boolean isInSamePosition(int position, int number) {
+        return computer.getNumberByPosition(position) == number;
     }
 
     private boolean hasCommonNumber(int number) {

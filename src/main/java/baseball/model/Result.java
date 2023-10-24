@@ -14,6 +14,7 @@ public class Result {
         Map<BallCount, Integer> result = new HashMap<>();
         result.put(BallCount.BALL, 0);
         result.put(BallCount.STRIKE, 0);
+        result.put(BallCount.NOTHING, 0);
         return new Result(result);
     }
 
