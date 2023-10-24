@@ -3,7 +3,7 @@ package interfaces;
 public interface Game {
     void init();
 
-    String processTurn(String input);
+    String playTurn(String input);
 
     String gameResultToString();
 

@@ -24,7 +24,7 @@ public class NumberBaseball implements Game {
     }
 
     @Override
-    public String processTurn(String input) {
+    public String playTurn(String input) {
         validateGameInput(input);
 
         initializeBaseballResult();

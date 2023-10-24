@@ -25,7 +25,7 @@ public class GameMaster<T extends Game> {
             while (!game.isFinished()) {
                 print(game.getPlayTurnPrompt());
 
-                String gameOutput = game.processTurn(input());
+                String gameOutput = game.playTurn(input());
                 println(gameOutput);
             }
             println(game.getFinishPrompt());
