@@ -28,7 +28,7 @@ public class BaseballController {
             BaseballNumber userBaseballNumber = baseballService.initializeUserNumber(
                     BaseballInputView.readUserNumber());
             resultScore = baseballService.compareBaseballNumber(computerBaseballNumber, userBaseballNumber);
-            resultScore.printBaseballScore();
+            baseballService.showResultScore(resultScore);
         }
         BaseballOutputView.printEndMessage();
     }

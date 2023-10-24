@@ -43,4 +43,8 @@ public class BaseballService {
     public boolean isBaseballGameEnd(BaseballScore resultScore) {
         return resultScore.isStrikeThree();
     }
+
+    public void showResultScore(BaseballScore resultScore) {
+        resultScore.printBaseballScore();
+    }
 }
