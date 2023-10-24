@@ -22,7 +22,7 @@ public enum Message {
 
     public String of(Integer amount) {
         if (this != STRIKE && this != BALL) {
-            throw new IllegalArgumentException("of는 STRIKE와 BALL에서만 작동합니다.");
+            throw new IllegalArgumentException(ErrorCode.NOT_SUPPORTED_OPERATION.toString());
         }
         if (amount.equals(0)) {
             return "";

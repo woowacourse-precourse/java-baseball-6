@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.Util.Validator;
 import baseball.constants.ErrorCode;
+import baseball.constants.Baseball;
 import baseball.dto.Result;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -11,34 +12,40 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameService {
+    private final ScoreService scoreService;
     private final Validator validator;
     private List<Integer> answer;
-    private Boolean isGameEnd;
+    private Boolean isRoundEnd;
 
 
-    public GameService(Validator validator) {
+    public GameService(ScoreService scoreService, Validator validator) {
+        this.scoreService = scoreService;
         this.validator = validator;
         answer = createAnswer();
-        this.isGameEnd = false;
+        this.isRoundEnd = false;
     }
 
 
     public void init() {
-        this.isGameEnd = false;
+        this.isRoundEnd = false;
         this.answer = createAnswer();
     }
 
-    public Result play() {
+    public Result playRound() {
         List<Integer> input = getInput();
-
-        return compare(answer, input);
+        return getResult(answer, input);
     }
 
-    // TODO: 테스트 코드로 인해 public으로 설정했음 private로 변경 필요
-    public List<Integer> createAnswer() {
+    // TODO: 테스트 코드로 인해 protected으로 설정했음 private로 변경 필요
+    protected Result getResult(List<Integer> answer, List<Integer> userInput) {
+        return new Result(scoreService.getStrikes(answer, userInput), scoreService.getBalls(answer, userInput));
+    }
+
+    // TODO: 테스트 코드로 인해 protected으로 설정했음 private로 변경 필요
+    protected List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (answer.size() < Baseball.MAX_SIZE.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(Baseball.MIN_NUMBER.getValue(), Baseball.MAX_NUMBER.getValue());
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
@@ -64,39 +71,20 @@ public class GameService {
         }
     }
 
-    //TODO: 테스트 코드로 인해 public으로 설정했음 private로 변경 필요
-    public Result compare(List<Integer> answer, List<Integer> userInput) {
-        return new Result(getStrikes(answer, userInput), getBalls(answer, userInput));
-    }
-
-    private Integer getStrikes(List<Integer> answer, List<Integer> userInput) {
-        return Math.toIntExact(userInput.stream()
-                .filter((input) ->
-                        answer.contains(input) && (answer.indexOf(input) == userInput.indexOf(input)))
-                .count());
-    }
-
-    private Integer getBalls(List<Integer> answer, List<Integer> userInput) {
-        return Math.toIntExact(userInput.stream()
-                .filter((input) ->
-                        answer.contains(input) && (answer.indexOf(input) != userInput.indexOf(input)))
-                .count());
-    }
-
-
     public boolean isWin(Result result) {
-        return result.getStrike() == 3;
+        return result.getStrike() == Baseball.GOAL.getValue();
     }
 
-    public boolean isGameEnd() {
-        return isGameEnd;
+    public boolean isRoundEnd() {
+        return isRoundEnd;
     }
 
-    public void setGameEnd() {
-        this.isGameEnd = true;
+    public void setRoundEnd() {
+        this.isRoundEnd = true;
     }
 
-    public Integer getCommand() {
-        return validator.validateCommand(Console.readLine());
+    public Boolean askCommand() {
+        Integer command = validator.validateCommand(Console.readLine());
+        return command == Baseball.RESTART.getValue();
     }
 }

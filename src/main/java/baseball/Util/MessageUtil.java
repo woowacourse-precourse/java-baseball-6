@@ -13,7 +13,7 @@ public class MessageUtil {
     }
 
     public void printResult(Result result) {
-        if (result.getStrike() == 0 && result.getBall() == 0) {
+        if (result.isNothing()) {
             System.out.println(Message.NOTHING);
         }
         System.out.println(Message.BALL.of(result.getBall()) + Message.STRIKE.of(result.getStrike()));
@@ -23,7 +23,7 @@ public class MessageUtil {
         System.out.println(Message.GAME_END);
     }
 
-    public void printAskRestart() {
+    public void printAskCommand() {
         System.out.println(Message.ASK_COMMAND);
     }
 }

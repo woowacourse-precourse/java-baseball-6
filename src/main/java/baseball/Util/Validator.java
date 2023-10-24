@@ -1,6 +1,7 @@
 package baseball.Util;
 
 import baseball.constants.ErrorCode;
+import baseball.constants.Baseball;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Validator {
 
     public Integer validateCommand(String input) {
         Integer command = isNumeric(input);
-        if (command != 1 && command != 2) {
+        if (command != Baseball.RESTART.getValue() && command != Baseball.QUIT.getValue()) {
             throw new IllegalArgumentException(ErrorCode.INVALID_COMMAND.toString());
         }
         return command;
@@ -21,7 +22,8 @@ public class Validator {
 
     private void validateRangeAndUnique(List<Integer> inputList) {
         List<Integer> intList = inputList.stream()
-                .filter(a -> 1 <= a && a <= 9)
+                .filter(a -> Baseball.MIN_NUMBER.getValue() <= a
+                        && a <= Baseball.MAX_NUMBER.getValue())
                 .distinct()
                 .toList();
         if (intList.size() != inputList.size()) {
@@ -30,7 +32,7 @@ public class Validator {
     }
 
     private void validateSize(List<Integer> inputList) {
-        if (inputList.size() != 3) {
+        if (inputList.size() != Baseball.MAX_SIZE.getValue()) {
             throw new IllegalArgumentException(ErrorCode.INVALID_SIZE.toString());
         }
     }

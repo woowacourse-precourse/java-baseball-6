@@ -1,7 +1,7 @@
 package baseball.service;
 
-
 import baseball.Util.Validator;
+import baseball.constants.Baseball;
 import baseball.dto.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameServiceTest {
-    private final GameService gameService = new GameService(new Validator());
+    private final GameService gameService = new GameService(new ScoreService(), new Validator());
 
     @Test
     @DisplayName("생성한 정답은 1부터 9까지 중복되지 않는 수로 이루어져 있다.")
@@ -22,7 +22,8 @@ class GameServiceTest {
 
         //when
         List<Integer> filtered = answer.stream()
-                .filter(a -> 1 <= a && a <= 9)
+                .filter(a -> Baseball.MIN_NUMBER.getValue() <= a &&
+                        a <= Baseball.MAX_NUMBER.getValue())
                 .distinct()
                 .toList();
 
@@ -38,7 +39,7 @@ class GameServiceTest {
         List<Integer> userInput = new ArrayList<>(List.of(3, 1, 5));
 
         //when
-        Result result = gameService.compare(answer, userInput);
+        Result result = gameService.getResult(answer, userInput);
 
         //then
         assertThat(result.getStrike()).isEqualTo(1);

@@ -13,26 +13,28 @@ public class GameController {
         this.messageUtil = messageUtil;
     }
 
+
     public void play() {
         messageUtil.printStart();
 
-        while (!gameService.isGameEnd()) {
+        while (!gameService.isRoundEnd()) {
             messageUtil.printInput();
 
-            Result result = gameService.play();
+            Result result = gameService.playRound();
             messageUtil.printResult(result);
 
             if (gameService.isWin(result)) {
                 messageUtil.printWin();
-                gameService.setGameEnd();
+                gameService.setRoundEnd();
             }
         }
+        messageUtil.printAskCommand();
+        restartByCommand();
+    }
 
-        messageUtil.printAskRestart();
-        Integer command = gameService.getCommand();
-
-        if (command.equals(1)) {
-            gameService.init(); // isGameEnd의 값을 false로 재설정
+    private void restartByCommand() {
+        if (gameService.askCommand()) {
+            gameService.init();
             play();
         }
     }
