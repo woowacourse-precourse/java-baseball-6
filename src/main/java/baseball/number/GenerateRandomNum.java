@@ -1,4 +1,4 @@
-package baseball.random;
+package baseball.number;
 
 import java.util.ArrayList;
 import java.util.List;
