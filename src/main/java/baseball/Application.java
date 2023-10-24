@@ -12,13 +12,15 @@ public class Application {
 
         do {
             randomBall.randomNumGenerator();
+
             do{
                 inputBall.inputNumGenerator();
                 result = randomBall.baseballReferee(inputBall);
-                inputBall = new ShootBall();
             }while (!result);
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n");
             ifOver = Console.readLine();
+
         } while (ifOver.charAt(0) != '2');
     }
 }
