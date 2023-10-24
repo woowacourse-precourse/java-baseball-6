@@ -3,7 +3,6 @@ package baseball;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
@@ -86,7 +85,14 @@ public class Application {
         return inputNumber;
     }
 
+    /**
+     * 스트라이크의 개수와 볼의 개수가 같으면 스트라이크의 개수를 출력하고, 볼은 0으로 처리해야 한다.
+     * 3스트라이크가 나오면 게임이 종료된다.
+     * @param computerNumber
+     * @param userNumber
+     */
     private static void printHint(int computerNumber, int userNumber) {
+
         if (computerNumber - userNumber == 0) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -112,26 +118,30 @@ public class Application {
         return count;
     }
 
+    /**
+     * 볼의 개수를 반환한다.
+     * @param computerNumber
+     * @param userNumber
+     * @return count
+     */
     private static int countBall(int computerNumber, int userNumber) {
-        // stringtokenizer로 해결안되니까 다른 방법 찾기!
+        String[] computerValue = String.valueOf(computerNumber).split("");
+        String[] userValue = String.valueOf(userNumber).split("");
 
-        ArrayList<String> computerTokens = new ArrayList<>();
-        ArrayList<String> userTokens = new ArrayList<>();
+        HashSet<String> computerSet = new HashSet<>();
+        int count = 0;
 
-        String computerValue = String.valueOf(computerNumber);
-        String userValue = String.valueOf(userNumber);
-
-        StringTokenizer computerTokenizer = new StringTokenizer(computerValue);
-        while (computerTokenizer.hasMoreTokens()) {
-            computerTokens.add(computerTokenizer.nextToken());
+        for (String character : computerValue) {
+            computerSet.add(character);
         }
 
+        for (String character : userValue) {
+            if (computerSet.contains(character)) {
+                count++;
+            }
+        }
 
-
-        StringTokenizer userTokenizer = new StringTokenizer(userValue);
-
-
-        return 0;
+        return count;
     }
 
     private static int getOptionNumber(String userInput) {
