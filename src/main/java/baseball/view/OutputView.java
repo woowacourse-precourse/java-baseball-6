@@ -37,10 +37,7 @@ public class OutputView {
     public static void countStrikeNumbers() {
         if (strikes > 0) {
             System.out.println(strikes + GameResult.STRIKE.getMessage());
-            if (checkAnswer(strikes)) {
-                correctAnswer = true;
-                System.out.println(GameResult.WIN_STRIKES.getMessage());
-            }
+            checkAnswer(strikes);
         }
     }
 
@@ -51,10 +48,10 @@ public class OutputView {
     }
 
 
-    public static boolean checkAnswer(Integer strikes) {
+    public static void checkAnswer(Integer strikes) {
         if (strikes.equals(RequiredGameProgress.REQUIRED_EXIT_WIN_STRIKES.getProgress())) {
-            return true;
+            correctAnswer = true;
+            System.out.println(GameResult.WIN_STRIKES.getMessage());
         }
-        return false;
     }
 }
