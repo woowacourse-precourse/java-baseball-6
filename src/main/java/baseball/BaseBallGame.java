@@ -28,10 +28,7 @@ public class BaseBallGame {
 
             while (true) {
 
-                System.out.print("숫자를 입력해주세요 : ");
-                List<Integer> input = stringToListInt(Console.readLine());
-
-                inputErrorCheck(input);
+                List<Integer> input = inputNumber();
 
                 int[] result = compareAnswerInput(computer, input);
 
@@ -71,6 +68,22 @@ public class BaseBallGame {
         }
 
         return list;
+    }
+
+    /**
+     * 숫자 입력 및 예외 처리
+     *
+     * @return List<Integer> 타입으로 변환된 입력값
+     */
+    private List<Integer> inputNumber() {
+
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> input = stringToListInt(Console.readLine());
+
+        inputErrorCheck(input);
+
+        return input;
+
     }
 
     /**
