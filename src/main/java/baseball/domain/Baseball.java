@@ -32,4 +32,9 @@ public class Baseball {
         }
         return balls;
     }
+
+
+    public boolean isGameWon(int strikes) {
+        return strikes == 3;
+    }
 }
