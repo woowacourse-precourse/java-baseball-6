@@ -16,7 +16,15 @@ public class NumberBaseballGame {
         this.userIo = userIo;
     }
 
-    void run() {
-        new NumberBaseballGameComputerPlayer(numberGenerator.generateUniqueNumbers(), gameRules);
+    public void run() {
+        NumberBaseballGameComputerPlayer computerPlayer =
+                new NumberBaseballGameComputerPlayer(numberGenerator.generateUniqueNumbers(), gameRules);
+
+        GuessedNumbers guessedNumbers = createGuessedNumbers();
+    }
+
+    private GuessedNumbers createGuessedNumbers() {
+        userIo.print("숫자를 입력해주세요 : ");
+        return new GuessedNumbers(userIo.readNumbers(), gameRules);
     }
 }
