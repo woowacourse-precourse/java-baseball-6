@@ -57,4 +57,35 @@ public class Application {
         return count;
     }
 
+    private static void playGame() {
+        List<Integer> computerNumbers = makeRandomNumbers();
+
+        while (true) {
+            List<Integer> userNumbers = inputNumbers();
+
+            int strikes = countStrikes(computerNumbers, userNumbers);
+            int balls = countBalls(computerNumbers, userNumbers);
+
+            if (strikes == NUM_SIZE) {
+                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+
+            if (strikes == 0 && balls == 0) {
+                System.out.println("낫싱");
+                continue;
+            }
+
+            if (balls > 0) {
+                System.out.print(balls + "볼 ");
+            }
+
+            if (strikes > 0) {
+                System.out.print(strikes + "스트라이크");
+            }
+
+            System.out.println();
+        }
+    }
+
 }
