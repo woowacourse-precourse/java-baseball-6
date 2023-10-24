@@ -4,22 +4,22 @@ public class Computer {
     private Answer correctAnswer;
 
     public Computer() {
-        this.correctAnswer = new Answer();
+        this.correctAnswer = Answer.createCorrectAnswer();
     }
 
     public void updateAnswer() {
-        this.correctAnswer = new Answer();
+        this.correctAnswer = Answer.createCorrectAnswer();
     }
 
     public Result checkAnswer(Answer input) {
-        int strike = countStrike(input);
-        int ball = countSameNum(input) - strike;
+        Integer strike = countStrike(input);
+        Integer ball = countBall(input);
 
         return new Result(strike, ball);
     }
 
-    private int countStrike(Answer input) {
-        int strikeCount = 0;
+    private Integer countStrike(Answer input) {
+        Integer strikeCount = 0;
         String answerStr = this.correctAnswer.getValue();
         String inputStr = input.getValue();
 
@@ -30,8 +30,13 @@ public class Computer {
         return strikeCount;
     }
 
-    private int countSameNum(Answer input) {
-        int sameNumCount = 0;
+    private Integer countBall(Answer input) {
+        return countSameNum(input) - countStrike(input);
+    }
+
+
+    private Integer countSameNum(Answer input) {
+        Integer sameNumCount = 0;
         char[] answerDigits = this.correctAnswer.getValue().toCharArray();
 
         for (char digit : answerDigits) {

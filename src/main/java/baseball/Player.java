@@ -3,11 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-    private Answer input;
-
-    public void setAnswer(final String input) {
-        this.input = new Answer(input);
-    }
 
     public void playGame(Computer computer) {
         boolean inGame = true;
@@ -17,35 +12,41 @@ public class Player {
             playTurn(computer);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String option = Console.readLine();
-            ContinueOption.validate(option);
+            GameOption option = readOption();
 
-            if(option.equals(ContinueOption.RESTART.getValue())) {
+            if(option == GameOption.RESTART) {
                 computer.updateAnswer();
                 continue;
             }
-            if(option.equals(ContinueOption.END.getValue())) {
+            if(option == GameOption.END) {
                 return;
             }
         }
     }
 
     public void playTurn(Computer computer) {
-
         boolean onTurn = true;
         while(onTurn) {
             System.out.print("숫자를 입력해주세요 : ");
-            String inputStr = Console.readLine();
-            setAnswer(inputStr);
-            Result result = computer.checkAnswer(input);
+            Answer inputAnswer = readAnswer();
+            Result result = computer.checkAnswer(inputAnswer);
             result.print();
 
-            if(result.isCorrect(input.getLength())) {
+            if(result.isCorrect(inputAnswer.getLength())) {
                 onTurn = false;
-                continue;
             }
         }
         System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
         System.out.println("게임 종료");
+    }
+
+    private Answer readAnswer() {
+        String input =  Console.readLine();
+        return new Answer(input);
+    }
+
+    private GameOption readOption() {
+        String input =  Console.readLine();
+        return GameOption.of(input);
     }
 }
