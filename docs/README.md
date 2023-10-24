@@ -1,8 +1,10 @@
 # java-Baseball 게임 구현
 
 ### 🕹 구현 전 예외에 대한 고민 
-
-
+1. 3자리가 아닐 경우 -> 예외
+2. 0이 들어간 숫자 -> 예외
+3. 재시작과 종료 시 입력값 1, 2 아닌 경우 -> 예외
+---
 ### 🎮 컴퓨터 기능 구현
 1. computerRanNumList() : 컴퓨터의 랜덤 야구 숫자 생성
    * return : List<Integer>
@@ -34,7 +36,7 @@
    * return : int
 
 
-3. inListCnt() : 컴퓨터와 사용자의 리스트에 같은 숫자가 있는지 체크 해주는 함수.
+3. inListCnt() : 컴퓨터와 사용자의 리스트에 같은 숫자가 있는지 체크 해주는 함수. 
    * return : int
    * strikeCnt - inListCnt 를 빼면 ball의 개수를 확인할 수 있다.
 
