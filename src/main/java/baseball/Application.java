@@ -104,11 +104,9 @@ public class Application {
             if(strike!=0){
                 judgment = judgment + " " + strike + "스트라이크";
             }
-        }
-        else{
+        } else{
             judgment = strike + "스트라이크";
         }
-
         return judgment;
     }
 
