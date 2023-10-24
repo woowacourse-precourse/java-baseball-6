@@ -3,19 +3,36 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         boolean playAgain = true;
-
         while (playAgain) {
-            playGame();
+            int[] computerNumbers = generateRandomNumbers();
+            int attempts = 0;
 
-            System.out.print("게임을 다시 시작하시겠습니까? (y/n): ");
-            String response = Console.readLine();
-            if (!response.equalsIgnoreCase("y")) {
+            while (true) {
+                int[] userGuess = getUserGuess();
+                attempts++;
+
+                if (isCorrectGuess(computerNumbers, userGuess)) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                } else {
+                    int[] result = calculateResult(computerNumbers, userGuess);
+                    if (result[0] == 0 && result[1] == 0) {
+                        System.out.println("낫싱");
+                    } else {
+                        System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
+                    }
+                }
+            }
+
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            int choice = Integer.parseInt(Console.readLine());
+            if (choice == 2) {
                 playAgain = false;
             }
         }
@@ -23,71 +40,85 @@ public class Application {
         System.out.println("게임을 종료합니다.");
     }
 
-    private static void playGame() {
-        List<Integer> computerNumbers = generateRandomNumbers();
-        int attempts = 0;
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("1부터 9까지 서로 다른 숫자 3개를 맞춰보세요.");
-
-        while (true) {
-            List<Integer> userGuess = getUserGuess();
-            int[] result = calculateResult(computerNumbers, userGuess);
-            attempts++;
-
-            if (result[0] == 3) {
-                System.out.println("축하합니다! 모든 숫자를 맞히셨습니다. 시도 횟수: " + attempts);
-                break;
-            } else {
-                System.out.println("결과: " + result[0] + " 스트라이크, " + result[1] + " 볼");
-            }
-        }
-    }
-
-    private static List<Integer> generateRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
+    private static int[] generateRandomNumbers() {
+        int[] computerNumbers = new int[3];
+        int index = 0;
+        while (index < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            boolean exists = false;
+            for (int i = 0; i < index; i++) {
+                if (computerNumbers[i] == randomNumber) {
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists) {
+                computerNumbers[index] = randomNumber;
+                index++;
             }
         }
-        return numbers;
+
+        return computerNumbers;
     }
 
-    private static List<Integer> getUserGuess() {
-        List<Integer> userGuess = new ArrayList<>();
-        while (userGuess.size() < 3) {
-            System.out.print("3개의 숫자를 입력하세요: ");
-            try {
-                int number = Integer.parseInt(Console.readLine());
-                if (number < 1 || number > 9) {
-                    System.out.println("1부터 9 사이의 숫자를 입력하세요.");
-                    continue;
+    private static int[] getUserGuess() {
+        int[] userGuess = new int[3];
+        while (true) {
+            System.out.print("숫자를 입력해주세요: ");
+            String input = Console.readLine();
+            if (input.length() != 3) {
+                System.out.println("3자리 숫자를 입력하세요.");
+                continue;
+            }
+
+            boolean validInput = true;
+            for (int i = 0; i < 3; i++) {
+                char c = input.charAt(i);
+                if (c < '1' || c > '9') {
+                    System.out.println("1부터 9 사이의 숫자만 입력하세요.");
+                    validInput = false;
+                    break;
                 }
-                if (userGuess.contains(number)) {
-                    System.out.println("이미 입력한 숫자입니다. 다른 숫자를 입력하세요.");
-                    continue;
-                }
-                userGuess.add(number);
-            } catch (NumberFormatException e) {
-                System.out.println("올바른 숫자를 입력하세요.");
+                userGuess[i] = c - '0';
+            }
+
+            if (validInput) {
+                break;
             }
         }
+
         return userGuess;
     }
 
-    private static int[] calculateResult(List<Integer> computerNumbers, List<Integer> userGuess) {
+    private static int[] calculateResult(int[] computerNumbers, int[] userGuess) {
         int[] result = new int[2]; // result[0] - 스트라이크, result[1] - 볼
 
         for (int i = 0; i < 3; i++) {
-            if (computerNumbers.get(i).equals(userGuess.get(i))) {
-                result[0]++; // 스트라이크 증가
-            } else if (computerNumbers.contains(userGuess.get(i))) {
-                result[1]++; // 볼 증가
+            if (computerNumbers[i] == userGuess[i]) {
+                result[0]++; // 스트라이크
+            } else if (contains(computerNumbers, userGuess[i])) {
+                result[1]++; // 볼
             }
         }
 
         return result;
+    }
+
+    private static boolean contains(int[] arr, int num) {
+        for (int value : arr) {
+            if (value == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isCorrectGuess(int[] computerNumbers, int[] userGuess) {
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers[i] != userGuess[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
