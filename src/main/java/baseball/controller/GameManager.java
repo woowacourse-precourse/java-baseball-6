@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.BallNumberGenerator;
 import baseball.domain.BallScore;
 import baseball.domain.BaseBalls;
+import baseball.domain.CompareNumber;
 import baseball.domain.DataTypeChanger;
 import baseball.domain.GameResult;
 import baseball.domain.UserInput;
@@ -31,12 +32,12 @@ public class GameManager {
         while (process) {
             OutputView.printInputNumber();
             List<String> userBalls = UserInput.inputGameNumber(validator);
-            process = compareNumbers(DataTypeChanger.mapToInt(userBalls));
+            process = compareNumbers(DataTypeChanger.compareStringNumberFormat(userBalls));
         }
         endOrRestart();
     }
 
-    private boolean compareNumbers(List<Integer> userBalls) {
+    private boolean compareNumbers(List<CompareNumber> userBalls) {
         GameResult compare = generatedNumber.compare(userBalls);
         return isEnd(compare);
     }
