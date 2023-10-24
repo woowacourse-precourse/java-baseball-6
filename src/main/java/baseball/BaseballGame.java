@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.Constant.*;
+
 public class BaseballGame implements NumberGame {
 
     private NumberGameConfiguration baseballGameConfiguration;
@@ -33,7 +35,7 @@ public class BaseballGame implements NumberGame {
             }
         }
 
-        System.out.println(Message.ALL_CORRECT_MESSAGE);
+        System.out.println(UserResponseMessage.ALL_CORRECT_MESSAGE);
     }
 
     private void printHint(Score score) {
@@ -42,22 +44,22 @@ public class BaseballGame implements NumberGame {
         int ballCount = score.getBallCount();
 
         if (ballCount != 0) {
-            hint.append(ballCount).append(Message.BALL_MESSAGE);
+            hint.append(ballCount).append(UserResponseMessage.BALL_MESSAGE);
         }
 
         if (strikeCount != 0) {
-            hint.append(strikeCount).append(Message.STRIKE_MESSAGE);
+            hint.append(strikeCount).append(UserResponseMessage.STRIKE_MESSAGE);
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            hint.append(Message.NOTHING_MESSAGE);
+            hint.append(UserResponseMessage.NOTHING_MESSAGE);
         }
 
         System.out.println(hint);
     }
 
     private boolean shouldRepeatGame() {
-        System.out.println(Message.REPEAT_MESSAGE);
+        System.out.println(UserRequestMessage.REPEAT_MESSAGE);
         String userRepeatNumber = Console.readLine();
         validateUserRepeatNumber(userRepeatNumber);
 
