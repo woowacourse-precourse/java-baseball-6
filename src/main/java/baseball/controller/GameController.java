@@ -1,6 +1,10 @@
 package baseball.controller;
 
-import baseball.model.*;
+import baseball.model.Computer;
+import baseball.model.GameCommand;
+import baseball.model.JudgeResult;
+import baseball.model.Player;
+import baseball.model.Referee;
 import baseball.util.JudgeResultFormatter;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -31,7 +35,7 @@ public class GameController {
             Referee referee = new Referee(computer, player);
             JudgeResult judgeResult = referee.judgeBallCount();
             OutputView.printRoundResult(JudgeResultFormatter.format(judgeResult));
-            if (isGameSuccess(judgeResult)) {
+            if (judgeResult.isGameSuccess()) {
                 OutputView.printGameSuccess();
                 break;
             }
@@ -40,10 +44,6 @@ public class GameController {
 
     private void readRetryCommand() {
         gameCommand = GameCommand.decideGameCommand(InputView.readRetryCommand());
-    }
-
-    private boolean isGameSuccess(JudgeResult judgeResult) {
-        return judgeResult.isGameSuccess();
     }
 
 }

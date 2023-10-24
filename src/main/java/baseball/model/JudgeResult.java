@@ -1,7 +1,6 @@
 package baseball.model;
 
 import baseball.util.Constants;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,24 +17,16 @@ public class JudgeResult {
         judgeResult.put(ballCount, judgeResult.getOrDefault(ballCount, NO_COUNT) + ONE_COUNT);
     }
 
-    public boolean hasBall() {
-        return judgeResult.getOrDefault(BallCount.BALL, NO_COUNT) != NO_COUNT;
-    }
-
-    public boolean hasStrike() {
-        return judgeResult.getOrDefault(BallCount.STRIKE, NO_COUNT) != NO_COUNT;
-    }
-
-    public boolean isNothing() {
-        return !hasBall() && !hasStrike();
-    }
-
     public int getBallCount() {
-        return judgeResult.get(BallCount.BALL);
+        return judgeResult.getOrDefault(BallCount.BALL, NO_COUNT);
     }
 
     public int getStrikeCount() {
-        return judgeResult.get(BallCount.STRIKE);
+        return judgeResult.getOrDefault(BallCount.STRIKE, NO_COUNT);
+    }
+
+    public int getNothingCount() {
+        return judgeResult.getOrDefault(BallCount.NOTHING, NO_COUNT);
     }
 
     public boolean isGameSuccess() {
