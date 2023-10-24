@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.game.enums.BaseballGameMessage;
+import baseball.game.enums.BaseballGameRestarts;
 import baseball.io.Input;
 import baseball.io.Output;
 

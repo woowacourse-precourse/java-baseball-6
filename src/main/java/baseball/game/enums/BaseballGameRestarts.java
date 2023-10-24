@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.enums;
 
 import java.util.Arrays;
 import java.util.Objects;
