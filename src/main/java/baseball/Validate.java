@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.Set;
 
-public class Vaildate {
+public class Validate {
   public static final int INPUT_SIZE = 3;
   public static final int TRUE_NUMBER = 1;
   public static final int FALSE_NUMBER = 2;
@@ -11,16 +11,16 @@ public class Vaildate {
   public static final String ERROR_RESTART_NUMBER = "입력은 1(재시작) 또는 2(종료)로만 이루어져야 합니다.";
   public static final String ERROR_NOT_NUMBER = "입력은 숫자로만 이루어져야 합니다.";
 
-  private static Vaildate vaildate;
-  private Vaildate(){}
+  private static Validate validate;
+  private Validate(){}
 
-  public static Vaildate getInstance(){
-    if(vaildate == null){
-      synchronized (Vaildate.class) {
-        if(vaildate == null) vaildate = new Vaildate();
+  public static Validate getInstance(){
+    if(validate == null){
+      synchronized (Validate.class) {
+        if(validate == null) validate = new Validate();
       }
     }
-    return vaildate;
+    return validate;
   }
 
 

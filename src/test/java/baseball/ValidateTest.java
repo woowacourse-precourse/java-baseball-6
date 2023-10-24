@@ -6,9 +6,9 @@ import java.util.Set;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VaildateTest {
+public class ValidateTest {
 
-  Vaildate vaildate = Vaildate.getInstance();
+  Validate validate = Validate.getInstance();
   @Test
   public void 입력_3개_이상_숫자() throws Exception{
     //given
@@ -16,7 +16,7 @@ public class VaildateTest {
     //when
     Assertions.assertThatThrownBy(
             () ->
-                vaildate.validate(input))
+                validate.validate(input))
         .isInstanceOf(IllegalArgumentException.class);
     //then
   }
@@ -28,7 +28,7 @@ public class VaildateTest {
     //when
     Assertions.assertThatThrownBy(
             () ->
-                vaildate.validate(input))
+                validate.validate(input))
         .isInstanceOf(IllegalArgumentException.class);
     //then
   }
@@ -39,7 +39,7 @@ public class VaildateTest {
     //when
     Assertions.assertThatThrownBy(
             () ->
-                vaildate.validate("a"))
+                validate.validate("a"))
         .isInstanceOf(IllegalArgumentException.class);
     //then
   }
@@ -50,7 +50,7 @@ public class VaildateTest {
     //when
     Assertions.assertThatThrownBy(
             () ->
-                vaildate.validate(3))
+                validate.validate(3))
         .isInstanceOf(IllegalArgumentException.class);
     //then
   }

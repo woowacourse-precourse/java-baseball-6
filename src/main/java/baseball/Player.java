@@ -9,7 +9,7 @@ import java.util.Set;
 public class Player {
   public static final int TRUE_NUMBER = 1;
 
-  private Vaildate vaildate = Vaildate.getInstance();;
+  private Validate validate = Validate.getInstance();;
 
   /**
    * 사용자에게 서로 다른 숫자 3개를 입력
@@ -22,7 +22,7 @@ public class Player {
 
   public List<Integer> getInput(String input) throws IllegalArgumentException {
     String[] inputSplit = input.split("");
-    vaildate.validate(inputSplit);
+    validate.validate(inputSplit);
 
     List<Integer> inputNumbers = new ArrayList<>();
     for (String s : inputSplit) {
@@ -35,7 +35,7 @@ public class Player {
 
   private void checkDuplicationNumber(List<Integer> inputNumbers) {
     Set<Integer> inputNumbersSet = new HashSet<>(inputNumbers);
-    vaildate.validate(inputNumbersSet);
+    validate.validate(inputNumbersSet);
   }
 
   /**
@@ -48,9 +48,9 @@ public class Player {
   }
 
   public boolean getRestart(String input) throws IllegalArgumentException {
-    vaildate.validate(input);
+    validate.validate(input);
     int inputNumber = Integer.parseInt(input);
-    vaildate.validate(inputNumber);
+    validate.validate(inputNumber);
     if (inputNumber == TRUE_NUMBER) {
       return true;
     } else {
