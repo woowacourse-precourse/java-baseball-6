@@ -25,13 +25,17 @@ public class GameService {
         int strike = 0;
 
         while(strike != 3){
-            game.initGame();
-            gameOutputView.printInputNumber();
-            user.setUserNumber(parser.parseUserInput(gameInputView.getUserInput(),3));
-            computeScore(game.getGameNumber(), user.getUserNumber());
+            play();
             gameOutputView.printResult(game.getStrike(), game.getBall());
             strike = game.getStrike();
         }
+    }
+
+    public void play() {
+        game.initGame();
+        gameOutputView.printInputNumber();
+        user.setUserNumber(parser.parseUserInput(gameInputView.getUserInput(),3));
+        computeScore(game.getGameNumber(), user.getUserNumber());
     }
 
     public void endGame() {
