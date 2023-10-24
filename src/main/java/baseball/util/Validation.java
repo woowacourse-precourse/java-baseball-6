@@ -1,14 +1,7 @@
 package baseball.util;
 
-import static baseball.model.MsgConstant.EXCEPTION_NUM_DUPLICATED;
-import static baseball.model.MsgConstant.EXCEPTION_NUM_LENGTH;
-import static baseball.model.MsgConstant.EXCEPTION_NUM_RANGE;
-import static baseball.model.MsgConstant.EXCEPTION_REPLY;
-import static baseball.model.NumConstant.END;
-import static baseball.model.NumConstant.MAX_NUMBER;
-import static baseball.model.NumConstant.MIN_NUMBER;
-import static baseball.model.NumConstant.NUM_LENGTH;
-import static baseball.model.NumConstant.RESTART;
+import static baseball.constant.MsgConstant.*;
+import static baseball.constant.NumConstant.*;
 
 import java.util.List;
 
