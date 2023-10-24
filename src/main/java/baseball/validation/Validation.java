@@ -13,7 +13,7 @@ public class Validation {
 
     public static void validateLength(List<Integer> playerNumList, int numSize) {
         if (playerNumList.size() != numSize) {
-            throw new IllegalArgumentException("[ERROR] "+numSize+"자리 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] " + numSize + "자리 숫자를 입력해 주세요.");
         }
     }
 

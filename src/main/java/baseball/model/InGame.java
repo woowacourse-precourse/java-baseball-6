@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.view.Message;
+
 import java.util.List;
 
 public class InGame {
