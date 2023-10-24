@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.models.CalculateNumber;
 import baseball.models.UserNumber;
+import baseball.models.RegameNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +46,13 @@ class ApplicationTest extends NsTest {
     void 숫자_중복_값_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> UserNumber.isDifferentUserNumber("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 재시작_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> RegameNumber.isCorrectRegameNumber("3"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
