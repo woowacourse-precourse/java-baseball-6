@@ -50,9 +50,9 @@
 
 ### getter 및 setter 제거
 
-- [ ] Player 클래스의 getter 및 setter를 제거하고 비즈니스 로직을 도메인 내에 구현한다.
+- [x] Player 클래스의 getter 및 setter를 제거하고 비즈니스 로직을 도메인 내에 구현한다.
     - [x] Player 클래스의 setter를 제거하고 생성 시에만 필드 변수값을 정할 수 있도록 한다.
-    - [ ] Player 클래스의 getter를 제거하고 비즈니스 로직을 도메인 내에 구현한다.
+    - [x] Player 클래스의 getter를 제거하고 비즈니스 로직을 도메인 내에 구현한다.
 
 ### 기타
 
