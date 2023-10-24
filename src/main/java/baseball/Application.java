@@ -10,6 +10,7 @@ public class Application {
         try{
             int[] userNum = new int[3];
             int[] answerNum = new int[3];
+            int[] result;
 
             generateAnswer(answerNum);
 
@@ -20,12 +21,65 @@ public class Application {
                 String input = Console.readLine();
 
                 validateInput(input, userNum);
+
+                result = compareNum(userNum, answerNum);
+                int strikes = result[0];
+                int balls = result[1];
+
+                if (strikes == 3) {
+                    System.out.println("3스트라이크! 게임 종료");
+                    if (!askForRestart()) {
+                        break;
+                    }else{
+                        generateAnswer(answerNum);
+                        continue;
+                    }
+                }
+
+                if (strikes == 0 && balls == 0) {
+                    System.out.println("낫싱");
+                } else {
+                    if (balls > 0) {
+                        System.out.printf("%d볼 ", balls);
+                    }
+                    if (strikes > 0) {
+                        System.out.printf("%d스트라이크", strikes);
+                    }
+                }
             }
         }catch(IllegalArgumentException e){
             // 그냥 프로그램 종료
-        }finally {
+        }finally{
             Console.close();
         }
+
+    }
+
+    private static boolean askForRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        return switch (input) {
+            case "1" -> true;
+            case "2" -> false;
+            default -> throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
+        };
+    }
+
+    private static int[] compareNum(int[] userNum, int[] answerNum) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < userNum.length; i++) {
+            if (userNum[i]==answerNum[i]) {
+                strikes++;
+            } else {
+                int finalI = i;
+                if (Arrays.stream(answerNum).anyMatch(n -> n == userNum[finalI])) {
+                    balls++;
+                }
+            }
+        }
+        return new int[]{strikes, balls};
     }
 
     private static void generateAnswer(int[] answerNum) {
