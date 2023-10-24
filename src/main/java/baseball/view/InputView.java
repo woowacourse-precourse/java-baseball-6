@@ -1,9 +1,11 @@
-package baseball.model;
+package baseball.view;
 
 import baseball.exception.ErrorMessage;
+import baseball.model.FinishInput;
+import baseball.model.Number;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameInputReader {
+public class InputView {
 
     public Number readNumberInput() {
 
