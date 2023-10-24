@@ -82,6 +82,11 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요: ");
             String input = Console.readLine();
+            if (input.length() != 3) {
+                System.out.println("3자리 숫자를 입력하세요.");
+                //  잘못된 입력 시 예외 발생
+                throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
+            }
 
             boolean validInput = true;
             for (int i = 0; i < 3; i++) {
