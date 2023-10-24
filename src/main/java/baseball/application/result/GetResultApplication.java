@@ -22,7 +22,7 @@ public class GetResultApplication {
             PrintStateApplication.printEndState();
 
             generateAnswerController.initilizeNumbers();
-            isContinue = getUserContinue();
+            isContinue = isContinueNumbers();
 
             if (isContinue) {
                 generateAnswerController.generateNumbers();
@@ -34,7 +34,7 @@ public class GetResultApplication {
         return answer;
     }
 
-    private boolean getUserContinue() {
+    private boolean isContinueNumbers() {
         int val = Console.readLine().charAt(0) - '0';
         boolean result = false;
         switch (val) {
