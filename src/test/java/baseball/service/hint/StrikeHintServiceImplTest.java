@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StrikeServiceTest {
+public class StrikeHintServiceImplTest {
 
-    private final StrikeService strikeService = StrikeService.getInstance();
+    private final StrikeHintServiceImpl strikeHintServiceImpl = StrikeHintServiceImpl.getInstance();
 
     @Test
     void count_zeroStrike() {
@@ -16,7 +16,7 @@ public class StrikeServiceTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
         //when
-        int count = strikeService.count(computerBaseball, inputBaseball);
+        int count = strikeHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
@@ -29,7 +29,7 @@ public class StrikeServiceTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("451");
 
         //when
-        int count = strikeService.count(computerBaseball, inputBaseball);
+        int count = strikeHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
@@ -42,7 +42,7 @@ public class StrikeServiceTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("156");
 
         //when
-        int count = strikeService.count(computerBaseball, inputBaseball);
+        int count = strikeHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isOne();

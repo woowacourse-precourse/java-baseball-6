@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NothingServiceTest {
+public class NothingHintServiceImplTest {
 
-    private final NothingService nothingService = NothingService.getInstance();
+    private final NothingHintServiceImpl nothingHintServiceImpl = NothingHintServiceImpl.getInstance();
 
     @Test
     void count_zeroNothing() {
@@ -16,7 +16,7 @@ public class NothingServiceTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
         //when
-        int count = nothingService.count(computerBaseball, inputBaseball);
+        int count = nothingHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
@@ -29,7 +29,7 @@ public class NothingServiceTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("416");
 
         //when
-        int count = nothingService.count(computerBaseball, inputBaseball);
+        int count = nothingHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isOne();

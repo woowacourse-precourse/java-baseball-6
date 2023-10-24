@@ -2,20 +2,20 @@ package baseball.service.hint;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.Nothing;
+import baseball.domain.hint.Strike;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class NothingService implements HintItemService<Nothing> {
+public class StrikeHintServiceImpl implements HintItemService<Strike> {
 
-    private static final NothingService nothingService = new NothingService();
+    private static final StrikeHintServiceImpl strikeService = new StrikeHintServiceImpl();
 
-    public static NothingService getInstance(){
-        return nothingService;
+    public static StrikeHintServiceImpl getInstance(){
+        return strikeService;
     }
 
-    private NothingService() {
+    private StrikeHintServiceImpl() {
 
     }
 
@@ -25,21 +25,18 @@ public class NothingService implements HintItemService<Nothing> {
         List input = inputBaseball.getValues();
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
-            for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
-                if (ObjectUtil.isSame(computer.get(i), input.get(j))) {
-                    count++;
-                }
+            if (ObjectUtil.isSame(computer.get(i), input.get(i))) {
+                count++;
             }
         }
 
         return count;
     }
 
-    public boolean active(Nothing nothing) {
-        if (nothing.getCount() == 0 ) {
+    public boolean active(Strike strike) {
+        if (strike.getCount() > 0 ) {
             return true;
         } return false;
     }
 
 }
-

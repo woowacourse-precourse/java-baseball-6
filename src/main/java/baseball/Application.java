@@ -20,8 +20,8 @@ public class Application {
     private static GameService createGameService() {
         GameService gameService = new GameServiceImpl(
                 BallHintServiceImpl.getInstance(),
-                StrikeService.getInstance(),
-                NothingService.getInstance()
+                StrikeHintServiceImpl.getInstance(),
+                NothingHintServiceImpl.getInstance()
         );
         return gameService;
     }
