@@ -20,7 +20,6 @@ public class BaseBallController {
     private static final String BALL = BaseBallConstants.BALL;
     private static final String STRIKE = BaseBallConstants.STRIKE;
     private static final String NOTHING = BaseBallConstants.NOTHING;
-
     private static final String CONTINUE_NUMBER = BaseBallConstants.CONTINUE_NUMBER;
     private static final String GAME_TERMINATE_NUMBER = BaseBallConstants.GAME_TERMINATE_NUMBER;
     private int ballCount;
