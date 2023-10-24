@@ -20,5 +20,7 @@ public class GameManager {
     public void startGame(){
         computerRandomNumbers = computer.getRandomComputerNumber(); //랜덤한 3개 컴퓨터 숫자 생성
         userView.printGameStartMessage(); //게임시작 메시지 출력
+        userView.printNumberInputPrompt(); //user input 프롬포트 메시지 출력
+
     }
 }
