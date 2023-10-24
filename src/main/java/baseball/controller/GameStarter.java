@@ -28,7 +28,6 @@ public class GameStarter {
         boolean isContinuedUser = true;
 
         while (isContinuedUser) {
-            selectComputerNumber();
             isContinuedUser = checkNewbie();
         }
     }
@@ -84,6 +83,8 @@ public class GameStarter {
     }
 
     private void inputNumber(){
+        selectComputerNumber();
+        
         boolean isSolved = false;
         String inputValue;
 
