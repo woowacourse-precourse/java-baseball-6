@@ -1,17 +1,18 @@
 package baseball.config;
 
 import baseball.controller.ComputerController;
+import baseball.controller.Controller;
 import baseball.controller.UserController;
 import baseball.service.GameService;
 import baseball.util.Validation;
 
 public class DiContainer {
 
-    public ComputerController computerController() {
+    public Controller computerController() {
         return new ComputerController();
     }
 
-    public UserController userController() {
+    public Controller userController() {
         return new UserController(gameService());
     }
 
