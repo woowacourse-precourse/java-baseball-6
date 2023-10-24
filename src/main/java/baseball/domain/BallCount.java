@@ -1,10 +1,5 @@
 package baseball.domain;
 
-import java.util.List;
-
-import static baseball.domain.GameRules.INPUT_LIMIT;
-
-
 public class BallCount {
     private int strike;
     private int ball;

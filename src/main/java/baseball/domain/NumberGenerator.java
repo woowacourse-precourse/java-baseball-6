@@ -8,7 +8,6 @@ import java.util.List;
 public class NumberGenerator {
     private NumberGenerator() { }
 
-    // 정답 생성 후 answer객체에 저장
     public static List<Integer> generateAnswer() {
         List<Integer> answer = new ArrayList<>();
         while(answer.size() < GameRules.INPUT_LIMIT.getValue()) {
