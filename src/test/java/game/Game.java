@@ -1,3 +1,4 @@
+
 package game;
 
 import static constant.Constant.*;
@@ -14,15 +15,27 @@ public class Game{
         }while(restart());
     }
 
-//  게임 재시작 여부
+//게임 재시작 여부
     private boolean restart(){
         System.out.println(ASK_RESTART_MSG);
         String UserInput = Console.readLine();
-        return compareRestart(UserInput);
-    }
-    private boolean compareRestart(String UserInput){
-        //예외상황
+
+        //예외상황 UserInput.length()>1
+        if(UserInput.length()>1){
+            throw new IllegalArgumentException("입력값의 길이가 유효하지 않습니다.");
+        }
+
         char Input = UserInput.charAt(0);
+
+        //예외상황 Input!='1', Input!='2'
+        if(Input < ESTART_GAME_NUMBER && Input > EXIT_GAME_NUMBER){
+            throw new IllegalArgumentException("유효하지 않은 숫자 범위입니다.");
+        }
+
+        return compareRestart(Input);
+    }
+
+    private boolean compareRestart(char Input){
         if(Input==RESTART_GAME_NUMBER) return true;
         if(Input==EXIT_GAME_NUMBER) return false;
         return false;
@@ -44,10 +57,25 @@ public class Game{
 //사용자 입력값
     private List<Integer> getInputNum(){
         String UserInput = Console.readLine();
-        //예외상황 : 1-9 숫자가 아님,중복된 숫자가 있음, 4개이상의 입력값을 입력함
+
+        //예외상황
+        if(UserInput.length()>1){
+            throw new IllegalArgumentException("입력값의 길이가 유효하지 않습니다.");
+        }
+
         List<Integer> inputNum = new ArrayList<>();
+
         for(int i=0;i<UserInput.length();i++){
             int num = charToInt(UserInput.charAt(i));
+            
+            //예외상황
+            if(num<MIN_NUM && num>MAX_NUM){
+                throw new IllegalArgumentException("유효하지 않은 숫자 범위입니다.");
+            }
+            if(inputNum.contains(num)){
+                throw new IllegalArgumentException("중복된 값이 존재합니다.");
+            }
+
             inputNum.add(num);
         }
         return inputNum;
@@ -86,4 +114,5 @@ public class Game{
         if(strike!=0) System.out.print(" "+strike+STRIKE);
         System.out.println("");
     }
+
 }

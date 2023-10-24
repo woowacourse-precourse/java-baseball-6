@@ -15,8 +15,7 @@
    - start : 게임 실행
    - restart : 게임 재실행 여부 판단
    - gameStart : 야구게임 시작
-   - getRandomNum : 1-9 사이의 랜덤값 3개을 추출
+   - getRandom : 1-9 사이의 랜덤값 3개을 추출
    - getInputNumber : 1-9 사이의 숫자를 사용자로부터 입력받음
    - getResult : 게임의 결과를 판독하고 결과를 츨력한다. 
-   - isValidInput : 입력값 유효성 검사 
-
+   - IllegalArgumentException 

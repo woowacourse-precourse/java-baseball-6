@@ -10,5 +10,9 @@ public class Constant{
     public static String BALL = "볼";
     public static String STRIKE = "스트라이크";
     public static String SUCCESS_MSG = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static int TYPE_RESTART = 1;
+    public static int TYPE_USERINPUT = 2;
+    public static int MIN_NUM = 1;
+    public static int MAX_NUM = 9;
        
 }
