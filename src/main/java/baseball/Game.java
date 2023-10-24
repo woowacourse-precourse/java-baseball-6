@@ -10,6 +10,8 @@ import java.util.List;
 
 public class Game {
 
+    Validator validator = new Validator();
+
     public void start() {
         System.out.println(START_MESSAGE);
     }
@@ -38,7 +40,7 @@ public class Game {
 
     public List<Integer> askGuess(Player player) {
         System.out.println(INPUT_MESSAGE);
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        String[] input = camp.nextstep.edu.missionutils.Console.readLine().split("");
         return player.makeGuess(input);
     }
 
@@ -51,10 +53,8 @@ public class Game {
 
     public boolean askRestart() {
         System.out.println(RESTART_MESSAGE);
-        String option = camp.nextstep.edu.missionutils.Console.readLine();
-        if (!option.equals("1") && !option.equals("2")) {
-            throw new IllegalArgumentException(RESTART_ERROR_MESSAGE);
-        }
-        return option.equals("1");
+        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        validator.validateOption(input);
+        return input.equals("1");
     }
 }
