@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Data {
 
+    public static final int DIGIT_LENGTH_LIMIT = 3;
     public static final int INITIAL_RANDOM_NUMBER = 1;
     public static final int LAST_RANDOM_NUMBER = 9;
-    public static final int DIGIT_LENGTH_LIMIT = 3;
     public static final String CLOSE_GAME_INPUT = "2";
 
     private static final boolean DEFAULT_IS_NO_ERROR = true;
