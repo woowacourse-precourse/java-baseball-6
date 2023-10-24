@@ -10,9 +10,6 @@ public class Game {
     Gamedata gamedata = new Gamedata();
     List<Integer> questionnumber;
     int[] inputnumber;
-    public void refresh() {
-        gamedata = new Gamedata();
-    }
 
     // 다른위치로 빼야한다고 생각함, 숫자 입력 메소드
     public void numberinput() {

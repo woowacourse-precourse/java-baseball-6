@@ -17,13 +17,11 @@ public class Gamedata {
     public int returnball() {
         return ball;
     }
-    public int countstrike() {
+    public void countstrike() {
         strike += 1;
-        return strike;
     }
 
-    public int countball() {
+    public void countball() {
         ball += 1;
-        return ball;
     }
 }
