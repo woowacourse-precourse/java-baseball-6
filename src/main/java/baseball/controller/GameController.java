@@ -27,6 +27,7 @@ public class GameController {
         List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
 
         while (playOption) {
+            System.out.println(randomNumbers);
             outputView.printForInputThreeDigitNumbers();
 
             int[] playersNumbers = inputView.inputThreeDigitNumber();
@@ -37,7 +38,12 @@ public class GameController {
                 outputView.printGameFailResult(gameResult);
                 continue;
             }
+
             outputView.printGameSuccessResult(gameResult);
+            if (inputView.inputRestartOrExit() == 1) {
+                randomNumbers = randomNumberGenerator.generateRandomNumbers();
+                continue;
+            }
             if (inputView.inputRestartOrExit() == 2) {
                 playOption = false;
             }
