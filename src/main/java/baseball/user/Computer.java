@@ -37,25 +37,32 @@ public class Computer {
     }
 
     private BallCountResult compareComputerWith(List<Integer> playerBaseballNumbers) {
-        int strikeCount = 0;
-        int ballCount = 0;
+        int strikeCount = calculateStrikes(playerBaseballNumbers);
+        int ballCount = calculateBalls(playerBaseballNumbers) - strikeCount;
 
+        return new BallCountResult(ballCount, strikeCount);
+    }
+
+    private int calculateStrikes(List<Integer> playerBaseballNumbers) {
+        int strikeCount = 0;
         for (int i = 0; i < baseballNumbers.size(); i++) {
-            for (int j = 0; j < playerBaseballNumbers.size(); j++) {
-                boolean isSameNumber = baseballNumbers.get(i).intValue() == playerBaseballNumbers.get(j).intValue();
-                boolean isSamePosition = (i == j);
-                if (isSameNumber && isSamePosition) {
-                    strikeCount++;
-                    break;
-                }
-                if (isSameNumber) {
-                    ballCount++;
-                    break;
-                }
+            if (baseballNumbers.get(i).intValue() == playerBaseballNumbers.get(i).intValue()) {
+                strikeCount++;
             }
         }
 
-        return new BallCountResult(ballCount, strikeCount);
+        return strikeCount;
+    }
+
+    private int calculateBalls(List<Integer> playerBaseballNumbers) {
+        int ballCount = 0;
+        for (Integer number : playerBaseballNumbers) {
+            if (baseballNumbers.contains(number)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
     }
 
     private void generateBaseballResultMessage(int ballCount, int strikeCount) {
