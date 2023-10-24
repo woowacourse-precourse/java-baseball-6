@@ -41,14 +41,15 @@ class BaseballGame implements GameInterface {
         return decideEndGame();
     }
 
-    private void pickComputerNumber() {
-        while (computerNumber.size() < numberSize) {
+    private List<Integer> generateRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
-        System.out.println(computerNumber);
+        return numbers;
     }
 
     private void playGame() {
