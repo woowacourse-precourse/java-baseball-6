@@ -1,24 +1,26 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Computer {
-    private final List<Integer> secretNumber;
+    private String secretNumber;
 
     public Computer() {
-        secretNumber = new ArrayList<>();
-        while (secretNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!secretNumber.contains(randomNumber)) {
-                secretNumber.add(randomNumber);
-            }
-        }
+        generateSecretNumber();
     }
 
-    public List<Integer> getSecretNumber() {
-        return Collections.unmodifiableList(this.secretNumber);
+    public void generateSecretNumber() {
+        StringBuilder sb = new StringBuilder();
+        while (sb.length() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (sb.indexOf(String.valueOf(randomNumber)) == -1) {
+                sb.append(randomNumber);
+            }
+        }
+        secretNumber = sb.toString();
+    }
+
+    public String getSecretNumber() {
+        return secretNumber;
     }
 }
