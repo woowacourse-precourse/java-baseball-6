@@ -96,11 +96,11 @@ public class Console {
         int[] appearance = new int[10];
 
         for (char inputChar : inputString.toCharArray()) {
-            appearance[inputChar-'0'] ++;
+            appearance[inputChar - '0']++;
         }
 
         for (int appeared : appearance) {
-            if (appeared>=2) {
+            if (appeared >= 2) {
                 throw ILLEGAL_ARGUMENT_EXCEPTION;
             }
         }
@@ -114,19 +114,19 @@ public class Console {
     }
 
 
-    public static void printGameStart(){
+    public static void printGameStart() {
         System.out.println(GAME_START);
     }
 
-    public static void printUserInputMessage(){
+    public static void printUserInputMessage() {
         System.out.print(INPUT_NUMBER);
     }
 
-    public static void printUserInputNumber(String userNumber){
+    public static void printUserInputNumber(String userNumber) {
         System.out.println(userNumber);
     }
 
-    public static void printGameResult(BaseBallGameResult result){
+    public static void printGameResult(BaseBallGameResult result) {
         int strike = result.getStrike();
         int ball = result.getBall();
 
