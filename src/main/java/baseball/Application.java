@@ -15,6 +15,9 @@ public class Application {
     private static final String INPUT_PROMPT = "숫자를 입력해주세요 : ";
     private static final String GAME_WIN_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
     private static final String RESTART_GAME_CODE = "1";
     private static final String EXIT_GAME_CODE = "2";
 
@@ -66,15 +69,15 @@ public class Application {
     private static void printResult(int ball, int strike) {
         String resultMessage = "";
         if (strike == NUMBER_LENGTH) {
-            resultMessage = strike + "스트라이크\n" + NUMBER_LENGTH + GAME_WIN_MESSAGE;
+            resultMessage = strike + STRIKE + "\n" + NUMBER_LENGTH + GAME_WIN_MESSAGE;
         } else if (ball > 0 && strike > 0) {
-            resultMessage = ball + "볼 " + strike + "스트라이크";
+            resultMessage = ball + BALL + " "+ strike + STRIKE;
         } else if (ball > 0) {
-            resultMessage = ball + "볼";
+            resultMessage = ball + BALL;
         } else if (strike > 0) {
-            resultMessage = strike + "스트라이크";
+            resultMessage = strike + STRIKE;
         } else if (ball == 0 && strike == 0) {
-            resultMessage = "낫싱";
+            resultMessage = NOTHING;
         }
         System.out.println(resultMessage);
     }
