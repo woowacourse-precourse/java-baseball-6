@@ -26,9 +26,6 @@ public class InputValidator {
     public boolean IsDifferentEachDigit(String input_number) {
         StringBuilder tmp = new StringBuilder();
         for (char c : input_number.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                return false;
-            }
             if ((tmp.toString()).contains(String.valueOf(c))) {
                 return false;
             }
