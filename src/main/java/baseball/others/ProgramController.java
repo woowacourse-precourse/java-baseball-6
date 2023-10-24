@@ -1,6 +1,6 @@
 package baseball.others;
 
-import static baseball.others.Constant.numberOfNumbers;
+import static baseball.others.Constant.NUMBER_OF_NUMBERS;
 import static baseball.others.ExceptionHandling.restartException;
 
 import java.util.List;
@@ -13,11 +13,11 @@ public class ProgramController {
     public static void compareDigits(final List<Integer> computer, final List<Integer> player) {
         strike = 0;
         ball = 0;
-        for (int i = 0; i < numberOfNumbers; i++) {
+        for (int i = 0; i < NUMBER_OF_NUMBERS; i++) {
             if (Objects.equals(computer.get(i), player.get(i))) {
                 strike++;
             } else {
-                for (int j = 0; j < numberOfNumbers; j++) {
+                for (int j = 0; j < NUMBER_OF_NUMBERS; j++) {
                     if (Objects.equals(computer.get(j), player.get(i))) {
                         ball++;
                     }

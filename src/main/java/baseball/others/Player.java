@@ -1,6 +1,6 @@
-package others;
+package baseball.others;
 
-import static others.Constant.numberOfNumbers;
+import static baseball.others.Constant.NUMBER_OF_NUMBERS;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class Player {
 
     public static List<Integer> playerGenerateNum(final String strNumber) {
         List<Integer> player = new ArrayList<>();
-        for (int i = 0; i < numberOfNumbers; i++) {
+        for (int i = 0; i < NUMBER_OF_NUMBERS; i++) {
             int intNumber = strNumber.charAt(i) - '0';
             player.add(intNumber);
         }
