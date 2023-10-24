@@ -51,6 +51,7 @@ public class Application {
                     }
                 }
 
+
 //		출력
                 if (ball == 0 && strike == 0) {
                     System.out.println("낫싱");
