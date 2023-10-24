@@ -13,10 +13,6 @@ public class Game {
         return status;
     }
 
-    public void pauseGame() {
-        this.status = GameStatus.PAUSE;
-    }
-
     public void restartGame() {
         this.status = GameStatus.IN_PROGRESS;
     }
