@@ -6,11 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         Application application = new Application();
-        // TODO: 프로그램 구현
+        BaseBallGame baseBallGame = new BaseBallGame();
         boolean exitFlag = false;
         while (!exitFlag){
             System.out.println("숫자 야구게임을 시작합니다.");
-            BaseBallGame.run();
+            baseBallGame.run();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             exitFlag = application.exitFlagCheck();
         }
