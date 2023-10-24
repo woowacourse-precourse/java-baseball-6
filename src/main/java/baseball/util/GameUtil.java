@@ -57,4 +57,8 @@ public class GameUtil {
 
         return stringJoiner.toString();
     }
+
+    public boolean checkGameOver() {
+        return false;
+    }
 }
