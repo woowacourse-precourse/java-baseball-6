@@ -16,16 +16,18 @@ public class Game {
     private void play() {
         int strike = 0;
         List<Integer> rivalNumber;
-        List<Integer> myGuessNumber;
+        List<Integer> userGuessNumber;
+        int[] result;
 
         printStartMessage();
         rivalNumber = makeRivalNumber();
         System.out.println(rivalNumber);
 
         while (strike != 3) {
-            myGuessNumber = inputMyGuess();
-            System.out.println(myGuessNumber);
-            strike = 3;
+            userGuessNumber = inputUserGuess();
+            result = checkScore(rivalNumber, userGuessNumber);
+            printResult(result);
+            strike = result[0];
         }
 
         printFinishMessage();
@@ -51,19 +53,50 @@ public class Game {
         return rivalNumber;
     }
 
-    private List inputMyGuess() {
+    private List inputUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
         return toArrayList(input);
     }
 
     private List toArrayList(String input) {
-        List<Integer> myGuessNumber = new ArrayList<>();
+        List<Integer> userGuessNumber = new ArrayList<>();
 
         for (String number : input.split("")) {
-            myGuessNumber.add(Integer.parseInt(number));
+            userGuessNumber.add(Integer.parseInt(number));
         }
-        return myGuessNumber;
+
+        if (userGuessNumber.size() > 3) {
+            throw new IllegalArgumentException();
+        }
+        return userGuessNumber;
+    }
+
+    private int[] checkScore(List<Integer> rivalNumber, List<Integer> userGuessNumber) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < rivalNumber.size(); i++) {
+            if (rivalNumber.get(i).equals(userGuessNumber.get(i))) {
+                strike++;
+            } else if (userGuessNumber.contains(rivalNumber.get(i))) {
+                ball++;
+            }
+        }
+
+        return new int[]{strike, ball};
+    }
+
+    private void printResult(int[] result) {
+        if (result[0] >= 1 && result[1] >= 1) {
+            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
+        } else if (result[0] >= 1 && result[1] == 0) {
+            System.out.println(result[0] + "스트라이크");
+        } else if (result[0] == 0 && result[1] >= 1) {
+            System.out.println(result[1] + "볼");
+        } else if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        }
     }
 
     private boolean inputRegame() {
