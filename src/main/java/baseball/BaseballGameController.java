@@ -2,25 +2,27 @@ package baseball;
 
 public class BaseballGameController {
 
-    public BaseBallGameModel guess(Player computer, String input){
+    public BaseBallGameModel guess(Player computer, String input) {
         NumberBoard computerAnswer = computer.getNumberBoard();
         NumberBoard playerAnswer = new NumberBoard(input);
 
-        return countBallByAnswer(computerAnswer, playerAnswer);
+        int[] ballCount = countBallByAnswer(computerAnswer, playerAnswer);
+        int size = computerAnswer.size();
+        return new BaseBallGameModel(ballCount, size);
     }
 
-    private static BaseBallGameModel countBallByAnswer(NumberBoard computerAnswer, NumberBoard myAnswer) {
+    private static int[] countBallByAnswer(NumberBoard computerAnswer, NumberBoard myAnswer) {
         int strike = 0;
         int ball = 0;
-        int size = myAnswer.size();
+        int size = computerAnswer.size();
 
-        for(int i = 0; i<size; i++){
-            for(int j = 0; j<size; j++){
-                if(myAnswer.get(i) == computerAnswer.get(j) && i==j) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (computerAnswer.get(i) == myAnswer.get(j) && i == j) {
                     strike++;
                     break;
                 }
-                if(myAnswer.get(i) == computerAnswer.get(j) && i!=j) {
+                if (computerAnswer.get(i) == myAnswer.get(j) && i != j) {
                     ball++;
                     break;
                 }
@@ -30,6 +32,6 @@ public class BaseballGameController {
         int[] result = new int[2];
         result[0] = strike;
         result[1] = ball;
-        return new BaseBallGameModel(result, size);
+        return result;
     }
 }

@@ -2,8 +2,8 @@ package baseball;
 
 public class BaseBallGameModel {
 
-    private int[] ballCount;
-    private int size;
+    private final int[] ballCount;
+    private final int size;
 
     public BaseBallGameModel(int[] ballCount, int size) {
         this.ballCount = ballCount;

@@ -1,11 +1,9 @@
 package baseball;
 
-import org.junit.jupiter.api.Test;
 
+public class Test {
 
-public class NumberBoardTest {
-
-    @Test
+    @org.junit.jupiter.api.Test
     public void randomTest(){
         NumberBoard numberBoard = NumberBoard.makeRandomBoard();
         Player player = new Player(numberBoard);
@@ -16,7 +14,7 @@ public class NumberBoardTest {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void inputTest(){
         NumberBoard numberBoard1 = new NumberBoard("012");
         NumberBoard numberBoard2 = new NumberBoard("748");
@@ -32,8 +30,8 @@ public class NumberBoardTest {
         }
     }
 
-    @Test
-    public void controllerTest(){
+    @org.junit.jupiter.api.Test
+    public void mvcTest(){
         NumberBoard numberBoard = new NumberBoard("012");
         Player player = new Player(numberBoard);
         int size = numberBoard.size();
@@ -50,8 +48,5 @@ public class NumberBoardTest {
         view.print(model2);
         view.print(model3);
         view.print(model4);
-
-
-
     }
 }

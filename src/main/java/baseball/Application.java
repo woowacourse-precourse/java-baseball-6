@@ -14,17 +14,17 @@ public class Application {
         int size = computerNumber.size();
         System.out.println("게임을 시작합니다. 길이가 " + size + "인 중복되지 않는 숫자를 입력해주세요.");
 
-        while (true){
+        while (true) {
             String input = Console.readLine();
 
-            if(input.equals("1")) {
+            if (input.equals("1")) {
                 System.out.println("게임을 다시 시작합니다.");
                 computerNumber = NumberBoard.makeRandomBoard();
                 computer = new Player(computerNumber);
                 continue;
             }
 
-            if(input.equals("2")) {
+            if (input.equals("2")) {
                 System.out.println("게임 종료.");
                 break;
             }
