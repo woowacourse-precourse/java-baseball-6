@@ -27,7 +27,7 @@ public class Computer {
 
     public GameResult activateMachine() {
         if (this.gameMachine == null) {
-            throw new NullPointerException("gameMachine shouldn't be NULL");
+            throw new NullPointerException("NULL인 GameMachine을 가동하려 했습니다.");
         }
         return this.gameMachine.playGame();
     }
