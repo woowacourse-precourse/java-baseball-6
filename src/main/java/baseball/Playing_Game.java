@@ -31,22 +31,29 @@ public class Playing_Game {
             strike = count.getStrike();
             ball = count.getBall();
 
-            if (strike == 3) {
-                sb.append(strike).append("스트라이크\n");
-                sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println(sb);
+            if (generateOutput(sb, strike, ball)) {
                 break;
-            } else if (strike > 0 && ball > 0) {
-                sb.append(ball).append("볼 ").append(strike).append("스트라이크");
-            } else if (strike > 0) {
-                sb.append(strike).append("스트라이크");
-            } else if (ball > 0) {
-                sb.append(ball).append("볼");
-            } else if (ball == 0 && strike == 0) {
-                sb.append("낫싱");
             }
-            System.out.println(sb);
         }
+    }
+
+    private static boolean generateOutput(StringBuilder sb, int strike, int ball) {
+        if (strike == 3) {
+            sb.append(strike).append("스트라이크\n");
+            sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(sb);
+            return true;
+        } else if (strike > 0 && ball > 0) {
+            sb.append(ball).append("볼 ").append(strike).append("스트라이크");
+        } else if (strike > 0) {
+            sb.append(strike).append("스트라이크");
+        } else if (ball > 0) {
+            sb.append(ball).append("볼");
+        } else if (ball == 0 && strike == 0) {
+            sb.append("낫싱");
+        }
+        System.out.println(sb);
+        return false;
     }
 
     private static void validateAnswer(List<Integer> user_guess, int[] index, Count count) {
