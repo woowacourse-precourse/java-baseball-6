@@ -10,7 +10,6 @@ import java.util.List;
 public class Controller {
     private Answer answer;
     private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
 
     public void run() {
         inputView.greetingMsg();
@@ -33,6 +32,7 @@ public class Controller {
 
     private boolean checkGameDone(GameScore gameScore, NumberGenerator generator) {
         if (gameScore.isUserFindAnswer()) {
+            OutputView outputView = new OutputView();
             outputView.roundEndMsg();
             inputView.askRestartMsg();
             return receiveDecision(generator);
