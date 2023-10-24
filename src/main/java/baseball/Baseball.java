@@ -77,7 +77,7 @@ public class Baseball {
         String input=Console.readLine();
 
         if(input.equals("1")){
-            // 새로시작
+            // 새로 시작
             this.computerNum=makeRandomNum();
             playGame();
 
@@ -88,11 +88,20 @@ public class Baseball {
 
     // 유저가 입력한 숫자의 타당성검사
     public void checkValidity(String input){
-        // 세자리가 맞는지 확인
+
+        // 세 자리가 맞는지 확인
         if(input.length()!=3){
             throw new IllegalArgumentException();
         }
 
+        // 1~9자리 숫자로 이루어졌는지 확인
+        for(int i=0;i<3;i++) {
+            if (input.charAt(i)<'1' || input.charAt(i)>'9'){
+                throw new IllegalArgumentException();
+            }
+        }
+
+        // 숫자가 중복되지 않았는지 확인
         for(int i=0;i<3;i++){
             for(int j=i+1;j<3;j++){
                 if(input.charAt(i)==input.charAt(j)) throw new IllegalArgumentException();
