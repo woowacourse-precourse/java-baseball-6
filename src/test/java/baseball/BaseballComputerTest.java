@@ -6,17 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ComputerTest {
-    private Computer computer;
+class BaseballComputerTest {
+    private BaseballComputer baseballComputer;
 
     @BeforeEach
     public void setUp() {
         Printer printer = new Printer();
-        computer = new Computer(printer);
+        baseballComputer = new BaseballComputer(printer);
     }
 
     @Test
@@ -29,11 +30,11 @@ class ComputerTest {
         //setUp()에서 실행 완료
 
         //when
-        computer.generateNumber();
+        baseballComputer.generateNumber();
 
         //then
         //1. 3자리 값이다.
-        List<Integer> generatedNumber = computer.getComputerNumber();
+        List<Integer> generatedNumber = baseballComputer.getComputerNumber();
         assertEquals(3, generatedNumber.size());
 
         //2. 각 자릿수는 1부터 9사이의 값이다.
@@ -50,12 +51,12 @@ class ComputerTest {
     @Test
     void 서로_다른_정수_3자리는_유효한_input이다() {
         //given
-        computer.generateNumber();
+        baseballComputer.generateNumber();
         String validInput = "123";
 
         assertDoesNotThrow(() -> {
             //when
-            List<Integer> guessNumber = computer.checkInputFormat(validInput);
+            List<Integer> guessNumber = baseballComputer.checkInputFormat(validInput);
 
             //then
             assertEquals(3, guessNumber.size());
@@ -65,41 +66,68 @@ class ComputerTest {
     @Test
     void 자릿수가_3이_아닌_경우_예외를_던진다() {
         //given
-        computer.generateNumber();
+        baseballComputer.generateNumber();
         String invalidInput = "1234";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            computer.checkInputFormat(invalidInput);
+            baseballComputer.checkInputFormat(invalidInput);
         });
     }
 
     @Test
     void 정수가_아닌_경우_예외를_던진다() {
         //given
-        computer.generateNumber();
+        baseballComputer.generateNumber();
         String invalidInput = "ABC";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            computer.checkInputFormat(invalidInput);
+            baseballComputer.checkInputFormat(invalidInput);
         });
     }
 
     @Test
     void 같은_값이_있는_경우_예외를_던진다() {
         //given
-        computer.generateNumber();
+        baseballComputer.generateNumber();
         String invalidInput = "112";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            computer.checkInputFormat(invalidInput);
+            baseballComputer.checkInputFormat(invalidInput);
         });
     }
 
     @Test
     void checkGuess() {
+        List<Integer> guess = new ArrayList<>();
+        guess.add(1);
+
     }
 
     @Test
-    void checkReplay() {
+    void 길이가_1이_아니면_에러_던짐() {
+        String testError = "error";
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            baseballComputer.checkReplay(testError);
+        });
+    }
+
+    @Test
+    void 길이가_1인_경우_확인하고_에러_던짐() {
+        //given
+        String testOne = "1";
+        String testTwo = "2";
+        String testThree = "3";
+
+        //when
+        boolean testOneResult = baseballComputer.checkReplay(testOne);
+        boolean testTwoResult = baseballComputer.checkReplay(testTwo);
+
+        //then
+        assertEquals(testOneResult, true);
+        assertEquals(testTwoResult, false);
+        assertThrows(IllegalArgumentException.class, () -> {
+            baseballComputer.checkReplay(testThree);
+        });
     }
 }
