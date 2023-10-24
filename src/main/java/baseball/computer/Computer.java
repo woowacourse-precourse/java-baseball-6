@@ -2,7 +2,6 @@ package baseball.computer;
 
 import baseball.player.Guess;
 import baseball.player.Player;
-import baseball.player.RestartFlag;
 
 public class Computer {
     private static final boolean ROUND_ONGOING = true;
@@ -21,8 +20,7 @@ public class Computer {
         while (continueGame) {
             startRound();
             System.out.println(ASK_TO_CONTINUE_MESSAGE);
-            RestartFlag restartFlag = player.makeRestartFlag();
-            continueGame = restartFlag.toBoolean();
+            continueGame = player.makeRestartFlag().toBoolean();
         }
     }
 
