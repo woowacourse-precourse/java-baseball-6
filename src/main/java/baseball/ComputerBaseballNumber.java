@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerBaseballNumber {
-    private static final int BASEBALL_INPUT_NUMBER = 3;
+    private static final int BASEBALL_GENERATION_NUMBER = 3;
     private final List<Integer> baseballNumberList;
     public ComputerBaseballNumber(){
         baseballNumberList = new ArrayList<>();
-        while(baseballNumberList.size() < BASEBALL_INPUT_NUMBER) {
+        while(baseballNumberList.size() < BASEBALL_GENERATION_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addNonDuplicateNumberInList(baseballNumberList, randomNumber);
         }
