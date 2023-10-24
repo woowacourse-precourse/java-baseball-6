@@ -1,4 +1,4 @@
-package domain;
+package domainTest;
 
 import baseball.domain.Computer;
 import baseball.domain.Player;

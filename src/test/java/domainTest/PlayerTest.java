@@ -1,10 +1,9 @@
-package domain;
+package domainTest;
 
 import baseball.domain.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.List;
 
