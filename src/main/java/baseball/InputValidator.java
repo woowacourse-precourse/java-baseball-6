@@ -3,23 +3,21 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class InputValidator {
-    public static void checkPlayerNumber(int input) throws IllegalArgumentException {
-        String inputNumber = Integer.toString(input);
-        if(inputNumber.length()!=3)throw new IllegalArgumentException();
+public final class InputValidator {
+    private InputValidator() {
+    }
 
-        Set<Character> numberSet = new HashSet<>();
-        for(char c : inputNumber.toCharArray()){
-            numberSet.add(c);
+    public static void checkPlayerNumber(String input) {
+        Set<Character> counter = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            counter.add(c);
         }
-        if(numberSet.size()!=3) throw new IllegalArgumentException();
-
+        if (counter.size() != 3 || input.length() != 3)
+            throw new IllegalArgumentException("게임 종료");
     }
 
-    public static void checkRestartNumber(String input) throws IllegalArgumentException {
-        if (!input.equals("1")&& !input.equals("2")) throw new IllegalArgumentException();
-
+    public static void checkRestartResponse(String input) {
+        if (!input.equals("1") && !input.equals("2"))
+            throw new IllegalArgumentException("게임 종료");
     }
-
 }
-
