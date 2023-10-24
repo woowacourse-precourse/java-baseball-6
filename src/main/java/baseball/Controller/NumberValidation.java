@@ -11,6 +11,7 @@ package baseball.Controller;
  */
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,22 +20,32 @@ import java.util.stream.Stream;
 public class NumberValidation {
 
     public List<Integer> validationNumber(String inputNumber) {
-        if (!checkBetween1to9(inputNumber)) {
-            throw new IllegalArgumentException("1~9 사이의 수만 입력이 가능합니다.");
-        } else if (!threeDigit(inputNumber)) {
-            throw new IllegalArgumentException("3자리의 수를 입력해야 합니다.");
-        } else if (!checkDuplication(inputNumber)) {
-            throw new IllegalArgumentException("중복된 수를 사용할 수 없습니다.");
+        try {
+            if (!checkBetween1to9(inputNumber)) {
+                throw new IllegalArgumentException("1~9 사이의 수만 입력이 가능합니다.");
+            } else if (!threeDigit(inputNumber)) {
+                throw new IllegalArgumentException("3자리의 수를 입력해야 합니다.");
+            } else if (!checkDuplication(inputNumber)) {
+                throw new IllegalArgumentException("중복된 수를 사용할 수 없습니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Validation Error: " + e.getMessage());
+            return Collections.emptyList(); // Return an empty list in case of validation error.
         }
 
         return toInputNumber(inputNumber);
     }
 
     public List<Integer> toInputNumber(String inputNumber) {
-        int[] cvtIntArray = Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+        int[] cvtIntArray;
+        try {
+            cvtIntArray = Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+        } catch (NumberFormatException e) {
+            System.out.println("Conversion Error: " + e.getMessage());
+            return Collections.emptyList(); // Return an empty list in case of conversion error.
+        }
         return Arrays.stream(cvtIntArray).boxed().collect(Collectors.toList());
     }
-
 
     private boolean between1to9(char checkNum) {
         return checkNum >= '1' && checkNum <= '9';
@@ -51,7 +62,6 @@ public class NumberValidation {
         return setNums.size() == 3;
     }
 
-
     public boolean checkBetween1to9(String inputNumber) {
         for (int i = 0; i < inputNumber.length(); i++) {
             if (!between1to9(inputNumber.charAt(i))) {
@@ -61,5 +71,13 @@ public class NumberValidation {
         return true;
     }
 
+    public static void main(String[] args) {
+        NumberValidation validator = new NumberValidation();
 
+        // Example usage:
+        List<Integer> validNumbers = validator.validationNumber("123");
+        if (!validNumbers.isEmpty()) {
+            System.out.println("Valid Numbers: " + validNumbers);
+        }
+    }
 }
