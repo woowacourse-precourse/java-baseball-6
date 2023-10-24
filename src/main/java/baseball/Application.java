@@ -1,7 +1,7 @@
 package baseball;
 
+import baseball.game.GameNumber;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +15,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (GAME_MODE) {
-            List<Integer> computerNumber = createRandomNumber();
+            List<Integer> computerNumber = GameNumber.generateNumbers();
             List<Integer> userNumber;
             Result result;
 
@@ -97,17 +97,6 @@ public class Application {
         }
 
         return new Result(strike, ball);
-    }
-
-    private static List<Integer> createRandomNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
-        }
-        return computerNumber;
     }
 }
 
