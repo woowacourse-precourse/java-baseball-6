@@ -12,6 +12,11 @@ public class JugeResult {
         this.strike = 0;
     }
 
+    public void clear() {
+        this.ball = 0;
+        this.strike = 0;
+    }
+
     public void incrementBall() {
         this.ball++;
     }
@@ -26,6 +31,10 @@ public class JugeResult {
 
     public boolean isOnlyStrike() {
         return ball == 0 && strike > 0;
+    }
+
+    public boolean isBallAndStrike() {
+        return ball > 0 && strike > 0;
     }
 
     public boolean isNothing() {
