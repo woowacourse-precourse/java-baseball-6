@@ -1,6 +1,6 @@
 package baseball.moduleTest;
 
-import baseball.UserNumber;
+import baseball.validation.UserNumber;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;

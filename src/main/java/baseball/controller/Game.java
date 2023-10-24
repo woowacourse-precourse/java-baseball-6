@@ -1,5 +1,11 @@
-package baseball;
+package baseball.controller;
 
+import baseball.service.Hint;
+import baseball.validation.ComputerNumber;
+import baseball.validation.ContinueNumber;
+import baseball.validation.UserNumber;
+import baseball.view.Input;
+import baseball.view.Output;
 import java.util.List;
 
 public class Game {

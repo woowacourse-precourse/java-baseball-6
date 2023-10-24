@@ -1,6 +1,6 @@
 package baseball.moduleTest;
 
-import baseball.Output;
+import baseball.view.Output;
 import org.junit.jupiter.api.Test;
 
 public class PrintTest {

@@ -1,6 +1,6 @@
 package baseball.moduleTest;
 
-import baseball.ContinueNumber;
+import baseball.validation.ContinueNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

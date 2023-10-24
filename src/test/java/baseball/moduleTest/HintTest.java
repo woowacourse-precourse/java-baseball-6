@@ -1,6 +1,6 @@
 package baseball.moduleTest;
 
-import baseball.Hint;
+import baseball.service.Hint;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

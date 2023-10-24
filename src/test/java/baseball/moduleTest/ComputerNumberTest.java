@@ -1,6 +1,6 @@
 package baseball.moduleTest;
 
-import baseball.ComputerNumber;
+import baseball.validation.ComputerNumber;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

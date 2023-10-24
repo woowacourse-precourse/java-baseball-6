@@ -1,4 +1,4 @@
-package baseball;
+package baseball.validation;
 
 import java.util.ArrayList;
 import java.util.HashSet;
