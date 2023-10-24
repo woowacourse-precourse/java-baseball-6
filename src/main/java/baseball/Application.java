@@ -31,11 +31,11 @@ public class Application {
                 int strike = 0;
                 for (int m = 0; m < user.size(); m++) {
                     if (map.containsKey(user.get(m)) == true) {
-                        ball++;
                         if (user.get(m) == map.get(user.get(m))) {
-                            ball--;
                             strike++;
+                            continue;
                         }
+                        ball++;
                     }
                 }
                 if(strike==3){
@@ -60,6 +60,7 @@ public class Application {
 
 
     }
+   
     public static void computerUserComparisonList(HashMap<Integer, Integer> map, List<Integer> user, List<Integer> computer){
         for (int k = 0; k < user.size(); k++) {
             map.put(computer.get(k), user.get(k));
