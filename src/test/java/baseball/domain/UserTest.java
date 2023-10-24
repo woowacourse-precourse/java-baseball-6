@@ -51,7 +51,7 @@ class UserTest {
     @Test
     public void 유저가_게임_룰에_맞지_않는_공의_갯수를_입력하면_예외가_발생됨() {
         // given
-        String input = "1234567889";
+        String input = "123456789";
         ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
 
         // when
@@ -61,6 +61,21 @@ class UserTest {
         assertThatThrownBy(() -> user.generatePlayerNumber(NUMBER_BALLS))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("공의 개수는 " + NUMBER_BALLS + "개를 입력해야 합니다.");
+    }
+
+    @Test
+    public void 유저가_중복되는_숫자를_입력하면_예외가_발생함() {
+        // given
+        String input = "111";
+        ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
+
+        // when
+        System.setIn(mockInput);
+
+        // then
+        assertThatThrownBy(() -> user.generatePlayerNumber(NUMBER_BALLS))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("서로 다른 숫자를 입력해야 합니다.");
     }
 
     @Test

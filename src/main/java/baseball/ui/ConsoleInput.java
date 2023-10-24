@@ -14,6 +14,7 @@ public class ConsoleInput implements IInput {
         String input = scan();
 
         Utility.checkIfIsInteger(input);
+        Utility.checkIfIsDifferent(input);
         Utility.checkIfIsValidLength(length, input);
 
         return input;

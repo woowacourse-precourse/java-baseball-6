@@ -1,7 +1,9 @@
 package baseball.utils;
 
 import baseball.domain.Response;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Utility {
@@ -11,6 +13,14 @@ public class Utility {
             Integer.parseInt(number);
         } catch (Exception e) {
             throw new IllegalArgumentException("입력값은 정수이어야 합니다.");
+        }
+    }
+
+    public static void checkIfIsDifferent(final String numbers) {
+        Set<Character> digitSet = new HashSet<>();
+
+        for (char number : numbers.toCharArray()) {
+            if (!digitSet.add(number)) throw new IllegalArgumentException("서로 다른 숫자를 입력해야 합니다.");
         }
     }
 
@@ -43,6 +53,3 @@ public class Utility {
         }
     }
 }
-
-
-
