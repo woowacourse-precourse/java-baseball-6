@@ -12,10 +12,10 @@ public class ComputerBaseballNumber {
         baseballNumberList = new ArrayList<>();
         while(baseballNumberList.size() < BASEBALL_GENERATION_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            addNonDuplicateNumberInList(baseballNumberList, randomNumber);
+            addNonDuplicateNumberInList(randomNumber);
         }
     }
-    private void addNonDuplicateNumberInList(List<Integer> baseballNumberList, int value) {
+    private void addNonDuplicateNumberInList(int value) {
         if(!baseballNumberList.contains(value)) {
             baseballNumberList.add(value);
         }
