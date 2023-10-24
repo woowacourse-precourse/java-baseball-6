@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.global.GameMessage;
 import baseball.global.util.MessagePrinter;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -7,7 +8,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.global.GameMessage.*;
 
 
 public class BaseballGame implements ComputerGame {
@@ -37,26 +37,31 @@ public class BaseballGame implements ComputerGame {
             MessagePrinter.printMessage(result);
             if (result.contains(NUMBER_SIZE + STRIKE)) {
                 win = true;
-                MessagePrinter.printNumberAndMessage(NUMBER_SIZE, BASEBALL_WIN_GAME.message);
+                MessagePrinter.printNumberAndMessage(NUMBER_SIZE, GameMessage.BASEBALL_WIN_GAME);
             }
         }
     }
 
+    public void end() {
+        // 게임 종료
+        MessagePrinter.printMessage(GameMessage.BASEBALL_RESTART);
+        String input = Console.readLine();
+        if (input.equals(GameMessage.RESTART)) {
+            continueGame = true;
+        }
+        else if (input.equals(GameMessage.END)) {
+            continueGame = false;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void play() {
-        MessagePrinter.printMessage(BASEBALL_START_GAME.message);
+        MessagePrinter.printMessage(GameMessage.BASEBALL_START_GAME);
         while (continueGame) {
             this.game();
-            MessagePrinter.printMessage(BASEBALL_RESTART.message);
-            String input = Console.readLine();
-            if (input.equals("1")) {
-                continueGame = true;
-            }
-            else if (input.equals("2")) {
-                continueGame = false;
-            }
-            else {
-                throw new IllegalArgumentException();
-            }
+            this.end();
         }
     }
 
@@ -75,30 +80,41 @@ public class BaseballGame implements ComputerGame {
     }
 
     private List<Integer> getPlayerNumbers() {
-        MessagePrinter.printMessage(GLOBAL_GET_NUMBER.message);
-        String input = Console.readLine();
-        if (input.length() != NUMBER_SIZE) {
-            throw new IllegalArgumentException();
-        }
-        String[] split = input.split("");
+        String playerInput = this.getNumbersString();
+        String[] split = playerInput.split("");
+
         List<Integer> playerNumbers = new ArrayList<>();
         for (String s : split) {
             int n;
+
+            // 타입 변환 (String -> int)
             try {
                 n = Integer.parseInt(s);
             } catch (NumberFormatException ex) {
                 throw new IllegalArgumentException();
             }
-
+            // 중복 숫자가 있을 경우
             if (playerNumbers.contains(n)) {
                 throw new IllegalArgumentException();
             }
+            // 1~9 범위를 벗어난 숫자일 경우
             if (n < NUMBER_RANGE_START || n > NUMBER_RANGE_END) {
                 throw new IllegalArgumentException();
             }
             playerNumbers.add(n);
         }
         return playerNumbers;
+    }
+
+    private String getNumbersString() {
+        MessagePrinter.printMessage(GameMessage.GET_NUMBER);
+        String input = Console.readLine();
+
+        if (input.length() != NUMBER_SIZE) {
+            throw new IllegalArgumentException();
+        }
+
+        return input;
     }
 
     private String compareInputAndNumbers(List<Integer> input) {
