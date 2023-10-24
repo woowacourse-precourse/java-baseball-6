@@ -27,5 +27,4 @@ public class Numbers {
                 + numberList.get(1) * 10
                 + numberList.get(2));
     }
-
 }
