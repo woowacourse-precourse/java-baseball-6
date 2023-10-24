@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class View {
 
-    public static String readUserNumber() {
+    public static String readPlayerNumber() {
         printInputNumberMessage();
         String inputNumber = Console.readLine();
         checkInputNumber(inputNumber);

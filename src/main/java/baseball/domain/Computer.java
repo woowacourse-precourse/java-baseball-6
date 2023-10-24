@@ -31,8 +31,8 @@ public class Computer {
 
         while (true) {
             View.printGameStartMessage();
-            String inputNumber = View.readUserNumber();
-            checkInputNumber(inputNumber);
+            String playerNumber = View.readPlayerNumber();
+            calculateResult(playerNumber);
             View.printResultMessage(ballCount, strikeCount);
 
             if (strikeCount == 3) {
@@ -54,7 +54,7 @@ public class Computer {
 
     }
 
-    private void checkInputNumber(String inputNumber) {
+    private void calculateResult(String playerNumber) {
         int ballCount = 0;
         int strikeCount = 0;
 
