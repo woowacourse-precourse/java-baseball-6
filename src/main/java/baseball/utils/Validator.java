@@ -25,4 +25,12 @@ public class Validator {
 
         return userGuessUniqueLength == userGuess.split("").length;
     }
+
+    public static void validateRestartOption(String userInput) {
+        int input = Integer.parseInt(userInput);
+
+        if (input != 1 && input != 2) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_RESTART_OPTION);
+        }
+    }
 }

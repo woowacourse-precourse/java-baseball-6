@@ -15,6 +15,7 @@ public class InputView {
 
     public Integer readRestartOption() {
         String input = Console.readLine();
+        Validator.validateRestartOption(input);
         return Integer.parseInt(input);
     }
 }
