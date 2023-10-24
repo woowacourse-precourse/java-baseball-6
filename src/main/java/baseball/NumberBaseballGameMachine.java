@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class BaseballGameMachine {
+public class NumberBaseballGameMachine {
     private Message message = new Message();
     private NumberGenerator numberGenerator = new NumberGenerator();
     private InputValidation inputValidation = new InputValidation();

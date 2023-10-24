@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class BaseballGameMachineTest {
+class NumberBaseballGameMachineTest {
 
     @DisplayName("console 테스트")
     @Test
@@ -19,9 +19,9 @@ class BaseballGameMachineTest {
         InputStream inputStream = new ByteArrayInputStream(inputLine.getBytes());
         System.setIn(inputStream);
 
-        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        NumberBaseballGameMachine numberBaseballGameMachine = new NumberBaseballGameMachine();
         //when
-        String input = baseballGameMachine.getInputLine();
+        String input = numberBaseballGameMachine.getInputLine();
         //then
         assertThat(inputLine).isEqualTo(input);
     }
@@ -30,54 +30,54 @@ class BaseballGameMachineTest {
     @Test
     void isSuccessThreeStrikeTest() {
         //given
-        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        NumberBaseballGameMachine numberBaseballGameMachine = new NumberBaseballGameMachine();
         //when
         final List<Integer> playerAnswer = List.of(0, 3);
         //then
-        assertThat(baseballGameMachine.isSuccess(playerAnswer)).isEqualTo(true);
+        assertThat(numberBaseballGameMachine.isSuccess(playerAnswer)).isEqualTo(true);
     }
 
     @DisplayName("유저 input이 낫싱 일때, 게임 성공을 판단하는 테스트")
     @Test
     void isSuccessNothingTest() {
         //given
-        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        NumberBaseballGameMachine numberBaseballGameMachine = new NumberBaseballGameMachine();
         //when
         final List<Integer> playerAnswer = List.of(0, 0);
         //then
-        assertThat(baseballGameMachine.isSuccess(playerAnswer)).isEqualTo(false);
+        assertThat(numberBaseballGameMachine.isSuccess(playerAnswer)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 3 스트라이크 아닐 경우, 게임 성공을 판단하는 테스트")
     @Test
     void isSuccessBallStrikeTest() {
         //given
-        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        NumberBaseballGameMachine numberBaseballGameMachine = new NumberBaseballGameMachine();
         //when
         final List<Integer> playerAnswer = List.of(1, 2);
         //then
-        assertThat(baseballGameMachine.isSuccess(playerAnswer)).isEqualTo(false);
+        assertThat(numberBaseballGameMachine.isSuccess(playerAnswer)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 1일 때, 새로운 게임의 여부를 판단하는 테스트")
     @Test
     void isNewGameTest() {
         //given
-        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        NumberBaseballGameMachine numberBaseballGameMachine = new NumberBaseballGameMachine();
         //when
         final String playerResponse = "1";
         //then
-        assertThat(baseballGameMachine.isGameEnd(playerResponse)).isEqualTo(false);
+        assertThat(numberBaseballGameMachine.isGameEnd(playerResponse)).isEqualTo(false);
     }
 
     @DisplayName("유저 input이 2일 때, 게임 종료 여부를 판단하는 테스트")
     @Test
     void isEndGame() {
         //given
-        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        NumberBaseballGameMachine numberBaseballGameMachine = new NumberBaseballGameMachine();
         //when
         final String playerResponse = "2";
         //then
-        assertThat(baseballGameMachine.isGameEnd(playerResponse)).isEqualTo(true);
+        assertThat(numberBaseballGameMachine.isGameEnd(playerResponse)).isEqualTo(true);
     }
 }
