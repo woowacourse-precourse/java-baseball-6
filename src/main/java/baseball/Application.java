@@ -9,55 +9,7 @@ import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
-
-        boolean startGame = true;
-        int randomMin = 1;
-        int randomMax = 9;
-        int numberSize = 3;
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        while (startGame) {
-
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < numberSize) {
-                int randomNumber = Randoms.pickNumberInRange(randomMin, randomMax);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
-
-            while (true) {
-
-                int strike = 0;
-                int ball = 0;
-
-                System.out.print("숫자를 입력해주세요 : ");
-                int num = Integer.parseInt(Console.readLine());
-                int[] user = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
-                if (user.length != numberSize) throw new IllegalArgumentException();
-
-                for (int i = 0; i < numberSize; i++) {
-                    for (int j = 0; j < numberSize; j++) {
-                        if (j != i) { if (computer.get(i).equals(user[j])) ball++; }
-                        else        { if (computer.get(i).equals(user[j])) strike++; }
-                    }
-                }
-
-                String result = "";
-                if (ball > 0)         result += ball + "볼 ";
-                if (strike > 0)       result += strike + "스트라이크";
-                if (result.isBlank()) result = "낫싱";
-                System.out.println(result);
-
-                if (strike == numberSize) {
-                    System.out.println(numberSize + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    int restart = Integer.parseInt(Console.readLine());
-                    if      (restart == 1) break;
-                    else if (restart == 2) { startGame = false; break; }
-                    else    throw new IllegalArgumentException();
-                }
-            }
-        }
+        Game game = new Game();
+        game.startGame();
     }
 }
