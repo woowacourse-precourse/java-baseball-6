@@ -20,13 +20,11 @@ public class GamePlaying {
     public boolean playGame() {
         computerNumber.clear();
         computerNumber = cpu.setComputerNumber(computerNumber);
-
         int strike = 0;
         while (strike != 3) {
             enterValue();
             strike = guessNumber();
         }
-
         return false;
     }
 
@@ -34,7 +32,6 @@ public class GamePlaying {
         int strike = findStrike();
         int ball = findBall();
         printer.printResult(strike, ball);
-
         return strike;
     }
 
