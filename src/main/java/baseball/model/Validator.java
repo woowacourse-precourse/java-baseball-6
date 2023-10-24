@@ -1,6 +1,8 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Validator {
@@ -14,12 +16,14 @@ public class Validator {
     }
 
 
-    public int[] splitNumbersByDigits(int number) {
-        return new int[]{
-                number / 100,
-                (number / 10) % 10,
-                number % 10
-        };
+    public List<Integer> splitNumbersByDigits(int number) {
+        List<Integer> digits = new ArrayList<>();
+        while (number > 0) {
+            digits.add(0, number % 10);
+            number /= 10;
+        }
+        ;
+        return digits;
     }
 
     private void isInteger(String input) {
@@ -44,7 +48,7 @@ public class Validator {
     }
 
     private void isNoDuplicatedNumbers(int number) {
-        int[] arr = splitNumbersByDigits(number);
+        List<Integer> arr = splitNumbersByDigits(number);
         Set<Integer> setOfArr = new HashSet<>();
         for (int num : arr) {
             setOfArr.add(num);
