@@ -1,6 +1,8 @@
 package baseball.view;
 
 import baseball.domain.game.GameResult;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -32,7 +34,10 @@ public class OutputView {
     }
 
     private static String getResultMessage(String ballMessage, String strikeMessage) {
-        return String.join(" ", ballMessage, strikeMessage).trim();
+        List<String> results = List.of(ballMessage, strikeMessage);
+        return results.stream()
+                .filter(value -> !value.isEmpty())
+                .collect(Collectors.joining(" "));
     }
 
     private static void printResultMessage(String resultMessage) {
