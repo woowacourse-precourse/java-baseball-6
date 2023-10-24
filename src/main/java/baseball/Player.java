@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
-    public List<Integer> player = new ArrayList<>();
+    public List<Integer> playerNumber = new ArrayList<>();
 
     public Player(String input) {
         if (input.length() != 3) {
@@ -20,7 +20,7 @@ public class Player {
             if (number < '1' || number > '9' || !numberSet.add(number)) {
                 throw new IllegalArgumentException();
             }
-            player.add(number - '0');
+            playerNumber.add(number - '0');
         }
     }
 }

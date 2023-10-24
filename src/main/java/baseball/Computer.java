@@ -24,9 +24,9 @@ public class Computer {
         int ballCount = 0;
 
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i).equals(player.player.get(i))) {
+            if (computer.get(i).equals(player.playerNumber.get(i))) {
                 strikeCount++;
-            } else if (computer.contains(player.player.get(i))) {
+            } else if (computer.contains(player.playerNumber.get(i))) {
                 ballCount++;
             }
         }
