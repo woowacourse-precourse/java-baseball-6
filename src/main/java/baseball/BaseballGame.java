@@ -10,6 +10,10 @@ public class BaseballGame {
 
     void start() {
 
+        if (computer.getNumbers().size() == 0) {
+            System.out.println("숫자 야구 게임을 사작합니다.");
+        }
+
         int result = 0;
 
         computer.initNumbers();
