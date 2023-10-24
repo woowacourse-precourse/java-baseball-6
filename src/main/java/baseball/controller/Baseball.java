@@ -11,14 +11,14 @@ public class Baseball {
     ValidateNumber validateNumber = new ValidateNumber();
     ComputerNumber computerNumber = new ComputerNumber();
 
-    public void StartGame() {
+    boolean end = false;
+    boolean game = false;
+
+    public void startGame() {
         //1. 게임 시작
         printMessage.startMessage();
     }
-    public void PlayGame() {
-
-        boolean end = false;
-        boolean game = false;
+    public void playGame() {
         int strike;
         int ball;
         String answer;
@@ -31,9 +31,7 @@ public class Baseball {
             while (!game) {
                 printMessage.inputMessage();
                 answer = Console.readLine();
-                validateNumber.isInRange(answer);
-                validateNumber.isLengthCorrect(answer);
-                validateNumber.isNotDuplicate(answer);
+                validateNumber.Validator(answer);
                 //2.4. 랜덤 숫자와 사용자 입력 숫자 값 비교
                 strike = 0;
                 ball = 0;
@@ -59,17 +57,21 @@ public class Baseball {
                     printMessage.correctMessage();
                     game = true;
                 }
-
             }
-
             //3. 게임 지속 여부 판단
-            printMessage.replayMessage();
-            String endNumber = Console.readLine();
-            validateNumber.isEndNumber(endNumber);
-            if (endNumber.equals("2")) {
-                end = true;
-            } else game = false;
+            replayGame();
             //예외 처리 필요
         }
     }
+
+    public void replayGame(){
+        printMessage.replayMessage();
+        String endNumber = Console.readLine();
+        validateNumber.isEndNumber(endNumber);
+        if (endNumber.equals("2")) {
+            end = true;
+        } else game = false;
+    }
+
+
 }

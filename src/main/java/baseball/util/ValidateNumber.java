@@ -2,6 +2,12 @@ package baseball.util;
 
 public class ValidateNumber {
 
+    public void Validator(String playerNumber){
+        isInRange(playerNumber);
+        isLengthCorrect(playerNumber);
+        isNotDuplicate(playerNumber);
+    }
+
     public void isInRange(String playerNumber) throws IllegalArgumentException {
         try {
             Integer.parseInt(playerNumber);
