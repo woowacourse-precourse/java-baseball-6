@@ -8,15 +8,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    public static void ValidityCheck(String playerInputString){
+        String REGEX = "[0-9]+";
+        if (playerInputString.length() > 3)
+            throw new IllegalArgumentException();
+        if (!playerInputString.matches(REGEX))
+            throw new IllegalArgumentException();
+    }
+
     // 플레이어에게 숫자를 입력받아 ball, strike 체크
     public static ArrayList<Integer> NumberCheck(List<Integer> computer){
         ArrayList<Integer> StrikeBallList = new ArrayList<Integer>();
         StrikeBallList.add(0);
         StrikeBallList.add(0);
         
-        Scanner sc = new Scanner(System.in);
+        // 플레이어에게 숫자 입력 요청
         System.out.print("숫자를 입력해주세요 : ");
         String playerInputString = Console.readLine();
+        ValidityCheck(playerInputString);
 
         for(int i=0; i<computer.size(); i++){
             if(computer.contains(Character.getNumericValue(playerInputString.charAt(i)))){
@@ -33,7 +42,6 @@ public class Application {
     }
 
     public static int GameStart(int gameCoin) {
-
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -41,9 +49,8 @@ public class Application {
                 computer.add(randomNumber);
             }
         }   
-        System.out.println(computer);
     
-        // ikeBallList =  ArrayList<Integer>(strike, ball)
+        // StrikeBallList =  ArrayList<Integer>(strike, ball)
         ArrayList<Integer> StrikeBallList = new ArrayList<Integer>();
 
         while (true){
@@ -69,8 +76,8 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         gameCoin = sc.nextInt();
         return gameCoin;
-
     }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int gameCoin = 1;
