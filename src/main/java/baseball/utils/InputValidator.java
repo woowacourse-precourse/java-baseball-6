@@ -54,8 +54,8 @@ public class InputValidator {
         String restart = Integer.toString(WANNA_KEEP_PLAYING);
         String end = Integer.toString(WANNA_END);
         if (!userInput.equals(restart) && !userInput.equals(end))
-            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. " + WANNA_KEEP_PLAYING +
-                    "혹은 " + WANNA_END + "만 입력하십시오. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. " + WANNA_KEEP_PLAYING
+                    + "혹은 " + WANNA_END + "만 입력하십시오. 프로그램을 종료합니다.");
     }
 
 }
