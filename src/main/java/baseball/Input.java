@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
+
     private final InputValidator inputValidator;
+    private final static String GUESS_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private final static String RETRY_CHOICE_INPUT_MESSAGE =
+            "게임을 새로 시작하려면 " + GameConstants.RETRY_CHOICE + ", 종료하려면 " + GameConstants.EXIT_CHOICE + "를 입력하세요.";
     private final static String WHITESPACE_PATTERN = "\\s";
     private final static String EMPTY_STRING = "";
 
@@ -14,15 +18,14 @@ public class Input {
     }
 
     public List<Integer> getGuessNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(GUESS_NUMBER_INPUT_MESSAGE);
         String input = removeWhiteSpace(Console.readLine());
         inputValidator.validateGuessNumbers(input);
         return covertStringToIntList(input);
     }
 
     public int getRetryChoice() {
-        System.out.println(
-                "게임을 새로 시작하려면 " + GameConstants.RETRY_CHOICE + ", 종료하려면 " + GameConstants.EXIT_CHOICE + "를 입력하세요.");
+        System.out.println(RETRY_CHOICE_INPUT_MESSAGE);
         String input = removeWhiteSpace(Console.readLine());
         inputValidator.validateRetryNumber(input);
         return covertStringToInt(Console.readLine());
