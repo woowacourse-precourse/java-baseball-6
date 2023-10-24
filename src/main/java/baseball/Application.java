@@ -18,8 +18,10 @@ public class Application {
                     inputNumberTest(userInput);
                     isStrikeBallOut(userInput, generatedNumber);                
                 }
-            } catch (Exception e) {
-                System.exit(1);
+            } catch (IllegalArgumentException e) {
+                outerCondition = false;
+                innerCondition = false;
+                break;
             }
             try {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
@@ -32,8 +34,10 @@ public class Application {
                 } else{
                     throw new IllegalArgumentException("잘못된 입력입니다.");
                 }
-            } catch (Exception e) {
-                System.exit(1);
+            } catch (IllegalArgumentException e) {
+                outerCondition = false;
+                innerCondition = false;
+                break;
             }
         }
     }
