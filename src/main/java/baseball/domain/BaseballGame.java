@@ -11,13 +11,11 @@ public class BaseballGame {
     public BaseballGame(){
         Computer computer = new Computer();
         this.computerNumber = computer.randomComputerNumber();
-        System.out.println(this.computerNumber);
     }
 
     public List<Integer> createComputerNumber() {
         Computer computer = new Computer();
         this.computerNumber = computer.randomComputerNumber();
-        System.out.println(this.computerNumber);
         return this.computerNumber;
     }
 

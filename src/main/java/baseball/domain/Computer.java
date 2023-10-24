@@ -9,7 +9,6 @@ public class Computer {
 
     private static final int COMPUTER_START_NUMBER = 1;
     private static final int COMPUTER_END_NUMBER = 9;
-
     private static final int COMPUTER_NUMBER_MAX_SIZE = 3;
 
     List<Integer> computerNumber;
