@@ -3,6 +3,7 @@ package baseball.game;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GameNumber {
 
@@ -17,5 +18,20 @@ public class GameNumber {
             }
         }
         return computerNumber;
+    }
+
+    public static GameResult compare(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            if (Objects.equals(computerNumber.get(index), userNumber.get(index))) {
+                strike++;
+            } else if (computerNumber.contains(userNumber.get(index))) {
+                ball++;
+            }
+        }
+
+        return new GameResult(strike, ball);
     }
 }

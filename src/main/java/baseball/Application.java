@@ -1,10 +1,10 @@
 package baseball;
 
 import baseball.game.GameNumber;
+import baseball.game.GameResult;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Application {
 
@@ -16,12 +16,10 @@ public class Application {
 
         while (GAME_MODE) {
             List<Integer> computerNumber = GameNumber.generateNumbers();
-            List<Integer> userNumber;
-            Result result;
 
             while (true) {
-                userNumber = readUserNumber();
-                result = compare(computerNumber, userNumber);
+                List<Integer> userNumber = readUserNumber();
+                GameResult result = GameNumber.compare(computerNumber, userNumber);
                 result.print();
                 if (gameOver(result)) {
                     GAME_MODE = restart();
@@ -80,52 +78,7 @@ public class Application {
         throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
 
-    private static boolean gameOver(Result result) {
+    private static boolean gameOver(GameResult result) {
         return result.strike == NUMBER_SIZE;
-    }
-
-    private static Result compare(List<Integer> computerNumber, List<Integer> userNumber) {
-        int strike = 0;
-        int ball = 0;
-
-        for (int index = 0; index < NUMBER_SIZE; index++) {
-            if (Objects.equals(computerNumber.get(index), userNumber.get(index))) {
-                strike++;
-            } else if (computerNumber.contains(userNumber.get(index))) {
-                ball++;
-            }
-        }
-
-        return new Result(strike, ball);
-    }
-}
-
-
-class Result {
-    int strike;
-    int ball;
-
-    public Result(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
-
-    public void print() {
-        StringBuilder result = new StringBuilder();
-        if (ball != 0) {
-            result.append(String.format("%d볼", this.ball));
-        }
-        if (strike != 0) {
-            if (!result.isEmpty()) {
-                result.append(" ");
-            }
-            result.append(String.format("%d스트라이크", this.strike));
-        }
-
-        if (result.isEmpty()) {
-            result.append("낫싱");
-        }
-
-        System.out.println(result);
     }
 }
