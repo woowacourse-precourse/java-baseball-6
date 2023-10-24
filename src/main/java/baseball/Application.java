@@ -27,6 +27,7 @@ public class Application {
         String gameCode;
         do {
             List<Integer> randomNumber = createRandomNumber();
+            System.out.println(randomNumber);
             gameCode = checkUserNumber(randomNumber);
         } while (gameCode.equals(RESTART_GAME_CODE));
     }
@@ -61,7 +62,7 @@ public class Application {
         return new int[]{ball, strike};
     }
 
-    private static void printResult(int strike, int ball) {
+    private static void printResult(int ball, int strike) {
         if (strike == NUMBER_LENGTH) {
             System.out.println(strike + "스트라이크");
             System.out.println(NUMBER_LENGTH + GAME_WIN_MESSAGE);
@@ -71,7 +72,7 @@ public class Application {
             System.out.println(ball + "볼");
         } else if (strike > 0) {
             System.out.println(strike + "스트라이크");
-        } else {
+        } else if (ball == 0 && strike == 0){
             System.out.println("낫싱");
         }
     }
