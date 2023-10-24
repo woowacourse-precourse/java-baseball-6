@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.util.validation.InputNumbersValidation;
 import java.util.ArrayList;
 
 public class UserService {
@@ -14,6 +15,8 @@ public class UserService {
         for (String s : splitInput) {
             inputNumber.add(Integer.parseInt(s));
         }
+        InputNumbersValidation.validateAll(inputNumber);
+
         return inputNumber;
     }
 }
