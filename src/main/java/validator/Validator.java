@@ -1,12 +1,13 @@
 package validator;
 
 import java.util.List;
+import constant.Numeric;
 
 public class Validator {
     // input의 길이 체크
     public void validateStringLength(String str) throws IllegalArgumentException {
-        if (str.length() != 3) {
-            throw new IllegalArgumentException(); // "길이가 3이 아닙니다."
+        if (str.length() != Numeric.NUMBER_OF_INPUT) {
+            throw new IllegalArgumentException();
         }
     }
     // 1부터 9까지의 수인지 체크
