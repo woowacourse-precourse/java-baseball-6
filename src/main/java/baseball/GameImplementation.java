@@ -33,7 +33,8 @@ public class GameImplementation implements Game{
 
     @Override
     public List<Integer> makeAnswer() {
-        return Computer.getInstance().makeNewAnswer();
+        Computer computer = Computer.getInstance();
+        return computer.makeNewAnswer();
     }
 
     @Override

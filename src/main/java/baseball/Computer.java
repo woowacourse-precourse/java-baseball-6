@@ -8,13 +8,20 @@ import java.util.List;
 public class Computer {
 
     private static Computer instance = new Computer();
-    private List<Integer> answer = new ArrayList<>();
+    private List<Integer> computer = new ArrayList<>();
 
     private Computer(){
     }
 
     public List<Integer> makeNewAnswer(){
-        return answer = Randoms.pickUniqueNumbersInRange(1,9,3);
+        computer.clear();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 
     public static Computer getInstance() {
