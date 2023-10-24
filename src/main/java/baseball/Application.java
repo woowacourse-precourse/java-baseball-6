@@ -17,9 +17,11 @@ public class Application {
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
+                if (!checkLength(input)) throw new IllegalArgumentException();
+
                 break;
             }
-                play = "2";
+            play = "2";
         }
     }
     private static List<Integer> createComputerNumber() {
@@ -32,5 +34,8 @@ public class Application {
         }
         return computer;
     }
-}
 
+    private static boolean checkLength(String input) {
+        return input.length() == 3;
+    }
+}
