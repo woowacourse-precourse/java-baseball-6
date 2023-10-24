@@ -14,7 +14,6 @@ public class PlayerGame {
                 answerNumber.add(answer.charAt(i) - '0');
             }
         }
-
         if (answerNumber.size() != 3) {
             throw new IllegalArgumentException();
         }
