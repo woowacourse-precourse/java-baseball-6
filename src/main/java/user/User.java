@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class User {
 
@@ -21,17 +22,20 @@ public class User {
     public Balls makeUserNumber(){
         initList();
         String strNumber = Console.readLine();
-        addStringNumberToList(strNumber);
+        convertToInteger(strNumber);
         return new Balls(userNumberList);
     }
 
-    public void addStringNumberToList(String strNumber){
-        int intNumber = Integer.parseInt(strNumber);
-        for (int cur = INIT_INDEX; cur < strNumber.length(); cur++) {
-            userNumberList.add(intNumber % DIVISOR);
-            intNumber = intNumber / DIVISOR;
-        }
+    public List<Integer> convertToInteger(String strNumber){
+            return strNumber.chars()
+                    .boxed()
+                    .collect(Collectors.toList());
+
         //기존의 리스트에는 유저가 입력한 숫자의 반대로 추가되었으므로 다시 그 순서를 뒤집는다.
-        Collections.reverse(userNumberList);
+        //Collections.reverse(userNumberList);
     }
+
+    //public List<String> StringToStringList(String strNumber){
+
+    //}
 }
