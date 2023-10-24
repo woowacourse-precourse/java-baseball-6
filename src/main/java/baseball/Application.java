@@ -70,7 +70,7 @@ public class Application {
         // 숫자 야구 메인 메서드
         List<Integer> computer = new ArrayList<>();
         randomNumber(computer);
-        System.out.println("computer = " + computer);
+//        System.out.println("computer = " + computer); // 컴퓨터 숫자 확인용
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean rightAnswer = false;
         String user = "";
@@ -82,7 +82,7 @@ public class Application {
                     computer.clear();
                     randomNumber(computer);
                     rightAnswer = false;
-                    System.out.println("computer = " + computer);
+//                    System.out.println("computer = " + computer); // 컴퓨터 숫자 확인용
                 } else if (game.equals("2")) {
                     break;
                 } else {
