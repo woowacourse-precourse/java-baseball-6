@@ -16,7 +16,7 @@
 
 ### 예외처리
 - 잘못된 입력 예외처리는 모두 IllegalArgumentException 발생시키기
-- 야구게임 진행 중 입력시 3자리 숫자가 아닐경우
+- 야구게임 진행 중 입력시 3자리의 숫자가 아닐경우
 - 게임을 완료한 후 다시 게임을 진행하는 입력에 '1'이나 '2'가 아닐경우
 
 <br>
@@ -39,6 +39,7 @@
 - 사용 예시는 다음과 같음
 
 ```java
+// 예시
 List<Integer> computer = new ArrayList<>();
 while (computer.size() < 3) {
     int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -50,5 +51,18 @@ while (computer.size() < 3) {
 
 <br>
 
-### 야구게임 진행 알고리즘
-- 
+### 야구게임 구조 예정
+- 뷰 ( BaseBallView.class )
+- 서비스 ( BaseBallCompare.class )
+- 뷰와 서비스를 실행하는 run 클래스 ( BaseBallRun.class )
+- 입력 숫자 객체, 랜덤 숫자 객체 ( InputNumbers.class, RandomNumbers.class )
+
+<br>
+
+### 야구게임 진행
+- 서비스에서 전역 변수로 Console 클래스를 통한 중복되지 않는 1~9 랜덤 3자리 List 생성
+- 뷰를 통해 입력받은 값 -> controller -> 서비스로 전달
+- 서비스에서 받아온 inputNumber 를 사용할 VO 객체 생성. 해당 객체도 마찬가지로 List 생성
+- 서로 리스트에서 같은 위치일 경우 Strike ++, contains 일 일경우 Ball ++
+- 결과 반환 후 3Strike 가 아니라면 반복
+- 3Strike 라면 다시 진행할지 선택
