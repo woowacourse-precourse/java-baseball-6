@@ -5,4 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Input {
+
+    public List<Integer> readPlayerNumber() {
+        String input = Console.readLine();
+        return convertToList(input);
+    }
 }
