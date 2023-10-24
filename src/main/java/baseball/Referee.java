@@ -31,4 +31,5 @@ public class Referee {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
+
 }

@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public static List<Integer> numList;
 
     public static List<Integer> pickNumber() {
-        numList = new ArrayList<>();
+        List<Integer> numList = new ArrayList<>();
         while (numList.size() < 3) {
             int computerNumber = Randoms.pickNumberInRange(1, 9);
             if (!numList.contains(computerNumber)) {
