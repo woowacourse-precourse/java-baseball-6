@@ -16,7 +16,7 @@ public class Computer {
         return answerNumber;
     }
 
-    public void setAnswerNumber(List<Integer> answerNumber) {
+    public void setAnswerNumber() {
         this.answerNumber = answerNumberGenerator.generateAnswerNumber();
     }
 }
