@@ -12,6 +12,8 @@ import java.util.List;
 public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
+    private boolean selectedRetry = true;
+    private boolean isThreeStrike;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -21,22 +23,21 @@ public class GameController {
     public void play() {
         try {
             outputView.printGameStart();
-            while (true) {
+            while (selectedRetry) {
                 Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
                 List<Integer> computerNumber = computer.getComputerNumber();
                 outputView.printComputerNumber(computerNumber);
-                while (true) {
+                while (isThreeStrike) {
                     Player player = Player.createNyNumber(inputView.readPlayerNumber());
                     UserComputerCompare userComputerCompare = UserComputerCompare.judge(computer, player);
                     Result result = userComputerCompare.ResultgetBallCountJudgement();
                     outputView.printGameResult(result);
-                    if (result.isThreeStrike()) {
-                        outputView.printThreeStrike();
-                        break;
-                    }
+                    isThreeStrike = result.isThreeStrike();
                 }
-                if (!GameCommand.selectedRetry(inputView.readGameCommand())) {
-                    break;
+                outputView.printThreeStrike();
+                selectedRetry = GameCommand.selectedRetry(inputView.readGameCommand());
+                if (selectedRetry) {
+                    isThreeStrike = false;
                 }
 
             }

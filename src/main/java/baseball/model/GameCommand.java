@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public enum GameCommand {
 
-    RETRY("1", true), QUIT("2", false);
+    RETRY("1", true),
+    QUIT("2", false);
 
     private final String gameCommand;
     private final boolean selectedRetry;
