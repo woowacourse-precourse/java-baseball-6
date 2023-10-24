@@ -23,7 +23,6 @@ public class Application {
 //            System.out.println(computer.toString());
             Integer n;
             while (true) {
-
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
 
@@ -40,7 +39,7 @@ public class Application {
                     System.out.println(balls + "볼");
                 } else if (balls == 0 && strikes > 0) {
                     System.out.println(strikes + "스트라이크");
-                } else{
+                } else if (balls == 0 && strikes == 0){
                     System.out.println("낫싱");
                 }
                 if (strikes == 3) {
@@ -50,6 +49,7 @@ public class Application {
                 }
             }
             if (flag == 1) {  // 탈출 조건.
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 n = Integer.valueOf(Console.readLine());
                 if (n == 2) { // 종료
                     break;
