@@ -42,11 +42,22 @@ class ApplicationTest extends NsTest {
     @Test
     void 랜덤_숫자_자리수_테스트() {
         Computer computer = new Computer();
-        List nums = computer.generateRandomNums();
+        List<Integer> nums = computer.generateRandomNums();
 
         assertThat(nums.size()).isEqualTo(GameConstants.DIGIT_SIZE);
     }
 
+    @Test
+    void 랜덤_숫자_중복_테스트() {
+        Computer computer = new Computer();
+        List<Integer> nums = computer.generateRandomNums();
+
+        boolean hasDuplicates = nums.stream()
+                .distinct()
+                .count() < nums.size();
+
+        assertThat(hasDuplicates).isEqualTo(false);
+    }
 
     @Override
     public void runMain() {
