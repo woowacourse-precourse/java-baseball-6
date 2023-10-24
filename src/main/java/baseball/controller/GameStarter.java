@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import baseball.model.NumberVO;
 import baseball.utility.Constant;
+import baseball.utility.ExceptionHandler;
 import baseball.view.Input;
 import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +16,13 @@ public class GameStarter {
     private int gameCount = 0;
     private List<Integer> computerNumber = new ArrayList<>();
     private GraderResult graderResult;
+    private ExceptionHandler exceptionHandler = ExceptionHandler.getExceptionHandler();
 
     public GameStarter() {
         graderResult = new GraderResult();
     }
 
-    public void announceStarter() throws IOException {
+    public void announceStarter() {
         output.announceMention(Constant.GAME_START);
 
         boolean isContinuedUser = true;
@@ -32,7 +32,7 @@ public class GameStarter {
         }
     }
 
-    private boolean checkNewbie() throws IOException {
+    private boolean checkNewbie() {
         boolean isNewbie = gameCount == 0 ? true : false;
         boolean gamePlayer;
 
@@ -49,6 +49,7 @@ public class GameStarter {
     }
 
     private void selectComputerNumber() {
+        computerNumber.clear();
         int random;
 
         while (computerNumber.size() < 3) {
@@ -60,17 +61,17 @@ public class GameStarter {
         }
     }
 
-    private boolean askIntension() throws IOException {
+    private boolean askIntension() {
         output.announceMention(Constant.ASK_RESTART);
 
-        int intension = input.inputFromUser();
+        String intension = input.inputFromUser();
         boolean isPlayer = true;
 
         switch (intension) {
-            case 1:
+            case "1":
                 inputNumber();
                 break;
-            case 2:
+            case "2":
                 output.announceMention(Constant.GAME_FINISH);
                 isPlayer = false;
                 break;
@@ -81,16 +82,18 @@ public class GameStarter {
         return isPlayer;
     }
 
-    private void inputNumber() throws IOException {
+    private void inputNumber(){
         selectComputerNumber();
 
         boolean isSolved = false;
         String gameResult;
-        int inputValue;
+        String inputValue;
 
         while (!isSolved) {
             output.announceMention(Constant.ANNOUNCE_INSERT_NUMBER);
             inputValue = input.inputFromUser();
+            exceptionHandler.isSuitabledLength(inputValue);
+            exceptionHandler.isNumber(inputValue);
 
             gameResult = graderResult.setGameResult(computerNumber, inputValue);
 

@@ -5,6 +5,7 @@ import baseball.utility.Constant;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
     private static Input input = new Input();
@@ -16,17 +17,8 @@ public class Input {
         return input;
     }
 
-    public int inputFromUser() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int inputValue;
-
-        try {
-            inputValue = Integer.parseInt(br.readLine());
-        } catch (Exception e) {
-            throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.PROGRAM_END);
-        }
-
-        return inputValue;
+    public String inputFromUser(){
+        return Console.readLine();
     }
 
 }

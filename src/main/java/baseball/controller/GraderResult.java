@@ -7,34 +7,28 @@ import java.util.List;
 
 public class GraderResult {
 
-    int ballCount;
-    int strikeCount;
+    public String setGameResult(List<Integer> computer, String user) {
+        List<Integer> userNumber = cutOneByOne(Integer.parseInt(user));
 
-    public String setGameResult(List<Integer> computer, int user) {
-        ballCount = 0;
-        strikeCount = 0;
-        List<Integer> userNumber = cutOneByOne(user);
-
-        countStrike(computer, userNumber);
-
-        if (strikeCount != 3) {
-            countBall(computer, userNumber);
-        }
+        int strikeCount = countStrike(computer, userNumber);
+        int ballCount = countBall(computer, userNumber);
 
         String sortedResult;
 
         if (ballCount == 0 && strikeCount == 0) {
             sortedResult = String.format("%s\n", Constant.NOTTING);
+            return sortedResult;
         } else if (strikeCount == 0) {
             sortedResult = String.format("%s\n", Constant.BALL);
             sortedResult = String.format(sortedResult, ballCount);
+            return sortedResult;
         } else if (ballCount == 0) {
             sortedResult = String.format("%s\n", Constant.STRIKE);
             sortedResult = String.format(sortedResult, strikeCount);
-        } else {
-            sortedResult = String.format("%s %s\n", Constant.BALL, Constant.STRIKE);
-            sortedResult = String.format(sortedResult, ballCount, strikeCount);
+            return sortedResult;
         }
+        sortedResult = String.format("%s %s\n", Constant.BALL, Constant.STRIKE);
+        sortedResult = String.format(sortedResult, ballCount, strikeCount);
 
         return sortedResult;
     }
@@ -55,7 +49,9 @@ public class GraderResult {
         return list;
     }
 
-    private void countStrike(List<Integer> computer, List<Integer> user) {
+    private int countStrike(List<Integer> computer, List<Integer> user) {
+        int strikeCount = 0;
+
         for (int i = 0; i < 3; i++) {
             if (computer.get(i) == user.get(i)) {
                 strikeCount++;
@@ -63,13 +59,19 @@ public class GraderResult {
                 user.add(i, 0);
             }
         }
+
+        return strikeCount;
     }
 
-    private void countBall(List<Integer> computer, List<Integer> user) {
+    private int countBall(List<Integer> computer, List<Integer> user) {
+        int ballCount = 0;
+
         for (int element : user) {
             if (computer.contains(element)) {
                 ballCount++;
             }
         }
+
+        return ballCount;
     }
 }
