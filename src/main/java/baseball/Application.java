@@ -10,9 +10,14 @@ enum ScoreType {
     STRIKE, BALL
 }
 
-public class Application {
-    public static void main(String[] args) {
-        List<Integer> computerNumber = new ArrayList<>();
+interface GameInterface {
+    void initialize();
+
+    void start();
+
+    boolean defer();
+}
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             pickComputerNumber(computerNumber);
@@ -103,7 +108,18 @@ public class Application {
         }
         if (input.length() == 1 && input.charAt(0) == '2') {
             return true;
+
+
+public class Application {
+    public static void main(String[] args) {
+        GameInterface game = new BaseballGame();
+
+        while (true) {
+            game.initialize();
+            game.start();
+            if (game.defer()) {
+                return;
+            }
         }
-        throw new IllegalArgumentException();
     }
 }
