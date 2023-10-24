@@ -3,16 +3,18 @@ package baseball;
 import java.util.Objects;
 
 public class Ball {
+    private static final int MAX_VALUE = 9;
+    private static final int MIN_VALUE = 1;
     private final int value;
 
     Ball(int value) {
-        checkOneDigit(value);
+        validation(value);
         this.value = value;
     }
 
-    private void checkOneDigit(int value) {
-        if (value > 9 || value < 1) {
-            throw new IllegalArgumentException("한자리 수만 가능합니다.");
+    private void validation(int value) {
+        if (value > MAX_VALUE || value < MIN_VALUE) {
+            throw new IllegalArgumentException("1~9까지 숫자만 입력 가능합니다.");
         }
     }
 
