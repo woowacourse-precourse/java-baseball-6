@@ -24,6 +24,10 @@ public class GameParticipant {
         String replay = Console.readLine();
         if (Objects.equals(replay, "1")){
             playerStatus = GameStatus.PLAYING;
+        }else if(Objects.equals(replay, "2")){
+            playerStatus = GameStatus.STOP;
+        }else{
+            throw new IllegalArgumentException();
         }
         return playerStatus;
     }
