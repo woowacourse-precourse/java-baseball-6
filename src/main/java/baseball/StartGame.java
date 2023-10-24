@@ -15,9 +15,9 @@ public class StartGame {
 
         String input = Console.readLine();
 
-        if (!input.matches("\\d{3}")) {
-            throw new IllegalArgumentException();
-        }
+        isNumber(input);
+        threeNumber(input);
+        duplicatedNumber(input);
 
         List<Integer> playerNumbers = new ArrayList<>();
 
@@ -37,14 +37,53 @@ public class StartGame {
 
         String input = Console.readLine();
 
-        if(!input.equals("1") && (!input.equals("2"))){
-            throw new IllegalArgumentException();
-        }
+        oneOrZero(input);
 
         if(input.equals("1")){
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * 1 혹은 2가 아니라면, 예외를 발생시키는 메소드 입니다.
+     */
+    private void oneOrZero(String input){
+
+        if(!input.equals("1") && (!input.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 입력 받은 3자리 문자열 중 중복된 값이 있는지 확인해주는 메소드 입니다.
+     */
+    private void duplicatedNumber(String input){
+
+        char[] digits = input.toCharArray();
+        if (digits[0] == digits[1] || digits[0] == digits[2] || digits[1] == digits[2]) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 입력 받은 문자열이 3자리 인지 확인해 주는 메소드 입니다.
+     */
+    private void threeNumber(String input){
+
+        if (input.length() != 3){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 입력 받은 문자열이 1 ~ 9 까지의 숫자인지 확인해 주는 메소드 입니다.
+     */
+    private void isNumber(String input){
+
+        if (!input.matches("[1-9]+")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
