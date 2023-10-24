@@ -21,10 +21,7 @@ public class Application {
                 String userInput = Console.readLine(); //사용자가 입력한 정보를 String으로 받음
                 Number user = new Number(userInput); // 사용자가 입력한 값을 Number클래스 생성
 
-                answerCheck = 게임종료_후_재시작(computer.getCardList(), user.getCardList()); // 컴퓨터와 유저의 카드(숫자)리스트를 전달.
-                System.out.println(answerCheck); // 결과 출력
-
-                if (answerCheck.equals("3스트라이크")){ // 만약 결과가 3스트라이크 라면 게임 종료
+                if (게임종료_후_재시작(computer.getCardList(), user.getCardList())){ // 만약 결과가 true라면 3스트라이크 라는 의미기 때문에 종료
                     break;
                 }
             }
@@ -33,8 +30,9 @@ public class Application {
         }
     }
 
-    public static String 게임종료_후_재시작(List<Integer> computer , List<Integer>user)
+    public static Boolean 게임종료_후_재시작(List<Integer> computer , List<Integer>user)
     {
+        Boolean answer  = false;
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3 ;++i)
@@ -52,15 +50,22 @@ public class Application {
             }
         }
         if(ball==0 && strike==0) { // 예측 결과에 따라 출력 결과가 다르기 때문에 상황에 맞게 출력.
-            return "낫싱";
+            System.out.println("낫싱");
         }else if (ball == 0){
-            return strike+"스트라이크";
+            System.out.println(strike+"스트라이크");
+
         }else if(strike == 0)
         {
-            return ball+"볼";
+            System.out.println(ball+"볼");
+
         }else{
-            return ball+"볼 "+strike+"스트라이크";
+            System.out.println(ball+"볼 "+strike+"스트라이크");
         }
+        if (strike == 3)
+        {
+            answer = true;
+        }
+        return answer;
     }
 
 
