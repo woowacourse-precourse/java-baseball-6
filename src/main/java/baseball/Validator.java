@@ -27,6 +27,21 @@ public class Validator {
     inputNumber = Integer.parseInt(inputValue);
   }
 
+  public void changeInputBaseballType() {
+    init();
+    for(Baseball baseball : inputList) {
+      baseball.checkType(randomList);
+    }
+  }
+
+  public Map<String, Integer> calculateResult() {
+    Map<String, Integer> scoreBoard = writeScoreBoard();
+    for(Baseball baseball : inputList) {
+      baseball.calculate(scoreBoard);
+    }
+    return scoreBoard;
+  }
+
   public String writeProgressAnswer(String inputValue) {
     validateContainsSpace(inputValue);
     validateOnlyNumber(inputValue);
@@ -88,21 +103,6 @@ public class Validator {
       this.randomList.add(randomArr[i]);
       this.inputList.add(new Baseball(Integer.parseInt(inputArr[i]), i));
     }
-  }
-
-  public void changeInputBaseballType() {
-    init();
-    for(Baseball baseball : inputList) {
-      baseball.checkType(randomList);
-    }
-  }
-
-  public Map<String, Integer> calculateResult() {
-    Map<String, Integer> scoreBoard = writeScoreBoard();
-    for(Baseball baseball : inputList) {
-      baseball.calculate(scoreBoard);
-    }
-    return scoreBoard;
   }
 
   private Map<String, Integer> writeScoreBoard() {
