@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import view.ViewStart;
 
 /**
  * BaseBallGame.java
@@ -20,7 +21,7 @@ public class BaseBallGame {
 
     public void start() {
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        ViewStart.view();
 
         while (true) {
 
