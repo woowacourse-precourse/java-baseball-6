@@ -17,7 +17,6 @@ public class BallCount {
     private void countStrikeAndBall(List<String> userNumberArr, List<String> randomNumberArr) {
         for (int i = 0; i < 3; i++) {
             String checkNumber = userNumberArr.get(i);
-
             if (randomNumberArr.get(i).equals(checkNumber)) {
                 strike++;
             } else if (randomNumberArr.contains(checkNumber)) {
