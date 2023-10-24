@@ -27,11 +27,10 @@ public class Game {
 
             checkScore();
 
-            int result = showResult();
-            if (result == 2) {
+            String userSelection = showResult();
+            if (userSelection.equals("2")) {
                 break;
-            }
-            if (result == 1) {
+            } else if (userSelection.equals("1")) {
                 computerNumber = computer.setComputerNumber(computerNumber);
             }
         }
@@ -56,13 +55,16 @@ public class Game {
         }
     }
 
-    public int showResult() {
+    public String showResult() {
         if (strikeCount == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int userSelect = Integer.parseInt(Console.readLine());
-            if (userSelect == 2) {
+            String userSelect = Console.readLine();
+            if (!userSelect.matches("^[1-2]$")) {
+                throw new IllegalArgumentException("1과 2의 숫자 중 하나를 입력하셔야합니다.");
+            }
+            if (userSelect.equals("2")) {
                 System.out.println(" *** 게임을 종료합니다 !! *** ");
                 return userSelect;
             }
@@ -76,6 +78,6 @@ public class Game {
         } else if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
         }
-        return 0;
+        return "0";
     }
 }
