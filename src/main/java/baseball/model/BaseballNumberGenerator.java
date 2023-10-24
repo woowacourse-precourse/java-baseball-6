@@ -22,8 +22,10 @@ public class BaseballNumberGenerator {
     }
 
     public List<Integer> createPlayerBaseballNumber(int playerNumber){
-        if(this.checkNumberRange(playerNumber) && this.checkNumberDigit(playerNumber)){
-            return this.checkDuplicateDigit(playerNumber);
+        List<Integer> playerNumberList = Arrays.stream(String.valueOf(playerNumber).split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+
+        if(this.checkNumberRange(playerNumber) && this.checkNumberDigit(playerNumber) && this.checkDuplicateDigit(playerNumberList)){
+            return playerNumberList;
         }
 
         throw new IllegalArgumentException("입력한 숫자는 1부터 9까지 서로 다른 수로 이루어진 3자리가 아닙니다. ");
@@ -31,13 +33,12 @@ public class BaseballNumberGenerator {
 
     }
 
-    private List<Integer> checkDuplicateDigit(int inputNumber){
-        List<Integer> inputNumberList = Arrays.stream(String.valueOf(inputNumber).split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+    private boolean checkDuplicateDigit(List<Integer> inputNumberList){
 
         if(inputNumberList.size() != inputNumberList.stream().distinct().count()){
             throw new IllegalArgumentException("입력한 숫자는 서로 다른 수로 이루어지지 않았습니다.");
         }
-        return inputNumberList;
+        return true;
     }
 
     private boolean checkNumberRange(int inputNumber){
