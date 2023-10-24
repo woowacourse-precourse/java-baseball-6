@@ -8,9 +8,13 @@ public class PlayGame {
 
     public int ball;
     public int strike;
+    public ArrayList<Integer> answerNumbers;
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        this.answerNumbers = GenerateNum.makeAnswer();
+        this.ball = 0;
+        this.strike = 0;
         while (this.strike != 3) {
             startGame();
         }
@@ -18,11 +22,12 @@ public class PlayGame {
     }
 
     public void startGame() {
+        this.ball = 0;
+        this.strike = 0;
         System.out.println("숫자를 입력해주세요 : ");
         String originalInput = Console.readLine();
         validateInput(originalInput);
         ArrayList<Integer> userNumberList = inputToArrayList(originalInput);
-        ArrayList<Integer> answerNumbers = GenerateNum.makeAnswer();
         this.ball = Rule.countBalls(answerNumbers, userNumberList);
         this.strike = Rule.countStrikes(answerNumbers, userNumberList);
         printScore();
@@ -97,16 +102,15 @@ public class PlayGame {
             return;
         }
         if (this.strike > 0 && this.ball > 0) {
-            System.out.printf("%d볼 %d스트라이크", this.ball, this.strike);
-            System.out.println("\n");
+            System.out.printf("%d볼 %d스트라이크\n", this.ball, this.strike);
             return;
         }
         if (this.strike > 0) {
-            System.out.printf("%d스트라이크", this.strike);
+            System.out.printf("%d스트라이크\n", this.strike);
             return;
         }
         if (this.ball > 0) {
-            System.out.printf("%d볼", this.ball);
+            System.out.printf("%d볼\n", this.ball);
             return;
         }
     }
