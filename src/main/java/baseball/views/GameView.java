@@ -29,7 +29,7 @@ public class GameView {
     }
 
     public void gameResult() {
-        System.out.println("낫싱");
+        System.out.println(MessageConstants.RESULT_DEFAULT);
     }
 
     public void gameResult(String result) {
