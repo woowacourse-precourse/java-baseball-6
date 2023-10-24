@@ -1,13 +1,10 @@
 package baseball.controller.input;
 
 import baseball.domain.BallsFixture;
-import baseball.domain.ball.Ball;
 import baseball.domain.ball.Balls;
 import baseball.domain.result.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
