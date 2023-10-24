@@ -32,4 +32,11 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+    static void runException(String num){
+        for (int i = 0; i < num.length(); i++) {
+            if (num.charAt(i) < '1' || num.charAt(i) > '9' || num.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
