@@ -113,7 +113,8 @@ public class BaseballGame {
                 continue;
             }
             //중복된 숫자의 경우 찾기
-            else if (hasDuplicate(input)) {
+//            else if (hasDuplicate(input)) {
+            else if (!input.matches("^(?!.*(.).*\\1)[1-9]{3}$")) {
                 System.out.println("중복된 숫자는 입력할 수 없습니다.");
                 continue;
             }
@@ -127,16 +128,16 @@ public class BaseballGame {
         return numbers;
     }
 
-    private static boolean hasDuplicate(String input) {
-        char[] chars = input.toCharArray();
-        Set<Character> charSet = new HashSet<>();
-
-        for (char c : chars) {
-            if (!charSet.add(c)) {
-                return true; // 중복된 숫자가 있음
-            }
-        }
-        return false; // 중복된 숫자가 없음
-    }
+//    private static boolean hasDuplicate(String input) {
+//        char[] chars = input.toCharArray();
+//        Set<Character> charSet = new HashSet<>();
+//
+//        for (char c : chars) {
+//            if (!charSet.add(c)) {
+//                return true; // 중복된 숫자가 있음
+//            }
+//        }
+//        return false; // 중복된 숫자가 없음
+//    }
 }
 
