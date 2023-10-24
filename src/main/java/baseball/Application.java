@@ -73,7 +73,7 @@ class User {
 
     private void validateUserInput(String userInput) throws IllegalArgumentException {
 
-        if (userInput.length() != 3) {
+        if (userInput.length() != answerSize) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < userInput.length(); i++) {
@@ -94,34 +94,40 @@ class User {
 public class Application {
     public static void main(String[] args) {
         List<Integer> result;
+        String endGameNumber = "2";
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         final Computer computer = new Computer();
         computer.generateAnswer();
         final User user = new User();
-        System.out.println(computer.answer);
         while (true) {
             result = computer.compare(user.userInput());
-
-            if (result.get(0) == (null)) {
-                System.out.print("낫싱\n");
-            } else if (result.get(1) > 2) {
-                System.out.println("3스트라이크");
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                if (Console.readLine().equals("2")) {
+            if (!printGameResult(result)) {
+                if (Console.readLine().equals(endGameNumber)) {
                     break;
                 } else {
                     computer.generateAnswer();
                 }
-            } else if (result.get(0).equals(0) && result.get(1) > 0) {
-                System.out.printf("%d스트라이크\n", result.get(1));
-            } else if (result.get(0) > 0 && result.get(1).equals(0)) {
-                System.out.printf("%d볼\n", result.get(0));
-            } else if (result.get(0) > 0 && result.get(1) > 0) {
-                System.out.printf("%d볼 %d스트라이크\n", result.get(0), result.get(1));
             }
+
         }
 
+    }
+
+    public static boolean printGameResult(List<Integer> result) {
+        if (result.get(0) == (null)) {
+            System.out.print("낫싱\n");
+        } else if (result.get(1) > 2) {
+            System.out.println("3스트라이크");
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return false;
+        } else if (result.get(0).equals(0) && result.get(1) > 0) {
+            System.out.printf("%d스트라이크\n", result.get(1));
+        } else if (result.get(0) > 0 && result.get(1).equals(0)) {
+            System.out.printf("%d볼\n", result.get(0));
+        } else if (result.get(0) > 0 && result.get(1) > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", result.get(0), result.get(1));
+        }
+        return true;
     }
 }
