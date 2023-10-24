@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.lang.Object;
 import java.lang.IllegalArgumentException;
 
 public class Application {
@@ -18,28 +16,24 @@ public class Application {
             if(startFlag == true) {
                 //랜덤 세 자리 수를 생성하는 함수
                 computer = RanNumber();
-
-                //test 출력
-                System.out.println(computer);
             }
 
             //player의 입력을 받는 함수
             ArrayList<Integer> player = UserInput();
 
-
             //computer와 player의 입력을 비교하여 야구 시작
             int ball = JudgeBall(computer, player);
             int strike = JudgeStrike(computer, player);
 
-            //출력하는 함수
+            //형식에 맞춰 출력하는 함수
             PrintBaseball(ball, strike);
 
             String restartFlagString = "default";
 
             if(strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
                 restartFlagString = Console.readLine();
             }
 
@@ -53,7 +47,7 @@ public class Application {
                 break;
             }
             else {
-                throw new IllegalArgumentException("1 혹은 2만 입력하십시오.");
+                throw new IllegalArgumentException("유효하지 않은 입력입니다. 1 혹은 2만 입력하십시오.");
             }
         }
     }
