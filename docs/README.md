@@ -5,6 +5,7 @@
 - ### `숫자 야구 게임을 시작합니다.` 문구가 출력되면, 사용자는 이때 가장 첫 항째 입력을 한다.
 - "숫자를 입력해주세요 :" 와 함께 숫자를 입력한다, 이때 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
 - 사용자는 서로 다른 3자리의 수를 입력해야 한다, 잘못된 값을 입력했을때는 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- 예외처리는 `user class`의 validateUserInput()을 사용한다.
 - 게임이 끝났을때 재시작/종료를 구분하는 1과 2중 하나의 수를 입력받아 재시작할지 끝낼지 결정한다.
 
 ## 2. 게임 알고리즘
@@ -17,7 +18,7 @@
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-    - `Computer` class의 `checkUserAnswer()`와 `printUserResult()` 를 사용한다.
+    - `Computer` class의 `compare()`와 `printGameResult()` 를 사용한다.
 - ### 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다.
     - `Computer` class의 메소드로 역할을 수행한다.
 - ### 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다.

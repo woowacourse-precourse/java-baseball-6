@@ -26,7 +26,7 @@ class Computer {
         answer = computerAnswer;
     }
 
-    public List<Integer> compare(List<Integer> userInput) {
+    public List<Integer> compareAnswer(List<Integer> userInput) {
         int containCount = 0;
         int strikeCount = 0;
         List<Integer> guessResult = new ArrayList<>();
@@ -56,7 +56,7 @@ class Computer {
 class User {
     final int answerSize = 3;
 
-    public List<Integer> userInput() {
+    public List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
         String playerStringNumsInput = Console.readLine();
@@ -100,7 +100,7 @@ public class Application {
         computer.generateAnswer();
         final User user = new User();
         while (true) {
-            result = computer.compare(user.userInput());
+            result = computer.compareAnswer(user.getUserInput());
             if (!printGameResult(result)) {
                 if (Console.readLine().equals(endGameNumber)) {
                     break;
