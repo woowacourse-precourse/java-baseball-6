@@ -47,6 +47,7 @@ public class Application {
     containsDuplicates(user_num);
     isStringLengthCorrect(user_num);
     checkThreeDigitNumber(user_num);
+    checkZore(user_num);
     return user_num;
   }
 
@@ -114,6 +115,15 @@ public class Application {
     for (char c : user_num.toCharArray()) {
       if (!Character.isDigit(c)) {
         throw new NumberFormatException("문자가 포함되어 있습니다.");
+      }
+    }
+  }
+
+  public static void checkZore(String user_num)
+      throws NumberFormatException { // 0이 있는지 확인
+    for (char c : user_num.toCharArray()) {
+      if (c == '0') {
+        throw new NumberFormatException("0이 포함되어 있습니다.");
       }
     }
   }

@@ -37,14 +37,15 @@ public static String user_num_crete() { // 사용자 숫자 받아오기
 예외처리를 해야 하므로 소스를 추가한다.  
 
 ~~~ java
-public static String user_num_crete(){ // 사용자 숫자 받아오기
+public static String user_num_crete() { // 사용자 숫자 받아오기
     System.out.print("숫자를 입력해주세요 :");
-    String user_num=Console.readLine();
+    String user_num = Console.readLine();
     containsDuplicates(user_num);
     isStringLengthCorrect(user_num);
     checkThreeDigitNumber(user_num);
+    checkZore(user_num);
     return user_num;
-    }
+  }
 ~~~
 
 <br>
@@ -160,6 +161,19 @@ public static void checkThreeDigitNumber(String user_num)
     for (char c : user_num.toCharArray()) {
       if (!Character.isDigit(c)) {
         throw new NumberFormatException("문자가 포함되어 있습니다.");
+      }
+    }
+  }
+~~~
+
+### 5. 사용자가 입력한 숫자에 0이 들어가 있는지 확인한다. (checkZero)
+
+~~~ java
+public static void checkZore(String user_num)
+      throws NumberFormatException { // 0이 있는지 확인
+    for (char c : user_num.toCharArray()) {
+      if (c == '0') {
+        throw new NumberFormatException("0이 포함되어 있습니다.");
       }
     }
   }
