@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.util.UserNumber;
+import baseball.util.NumberUtils;
 import java.util.List;
 
 public class BaseBall {
@@ -20,7 +20,7 @@ public class BaseBall {
     public void playBaseBallGame() {
         while (inProgress) {
             Game.printInputMessage();
-            List<Integer> input = UserNumber.getUserNumber();
+            List<Integer> input = NumberUtils.getUserNumber();
             int ballCount = checkBallCount(input, computerNumber);
             int strikeCount = checkStrikeCount(input, computerNumber);
             printScore(ballCount, strikeCount);

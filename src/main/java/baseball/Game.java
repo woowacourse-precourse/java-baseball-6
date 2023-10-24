@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.util.NumberUtils;
 import baseball.util.RandomNumber;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -41,6 +42,7 @@ public class Game {
     public boolean newGame() {
         System.out.println(NEW_GAME_MESSAGE);
         String input = Console.readLine();
+        NumberUtils.validateInputNewGameNumber(input);
         if (input.equals("1")) {
             return true;
         }
