@@ -1,4 +1,4 @@
-package baseball;
+package baseball.dto;
 
 public class BaseBallResult {
     private int strikeCnt;
@@ -10,6 +10,7 @@ public class BaseBallResult {
         this.ballCnt = ballCnt;
         this.isNothing = isNothing;
     }
+
 
     public int getStrikeCnt() {
         return strikeCnt;
