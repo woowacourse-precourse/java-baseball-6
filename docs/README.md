@@ -40,4 +40,4 @@
 
 # 💻프로젝트 구조
 
-<img src="C:\Users\USER\OneDrive\바탕 화면\야구게임 프로젝트 구조.jpg">
+<img src="야구게임 프로젝트 구조.jpg">
