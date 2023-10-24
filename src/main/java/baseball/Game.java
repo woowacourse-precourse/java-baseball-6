@@ -23,6 +23,11 @@ public class Game {
         final String restart = Console.readLine();
         if(restart.equals("1")){
             start();
+        } else if (restart.equals("2")) {
+            System.out.print("게임 종료");
+        }else{
+            final String errorMessage = String.format("%s 올바른 입력이 아닙니다.",restart);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
