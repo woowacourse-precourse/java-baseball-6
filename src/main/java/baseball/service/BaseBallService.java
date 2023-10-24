@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.domain.BaseBall;
-import baseball.repository.BaseBallRepository;
+import baseball.util.Constant;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,8 +10,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+import static baseball.util.Constant.*;
+
 public class BaseBallService {
-    BaseBallRepository baseBallRepository;
+
+    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public boolean isThreeStrike(BaseBall player, BaseBall computer) {
         List<Integer> playerBallNumbers = player.getInputBallNumber();
@@ -26,17 +29,17 @@ public class BaseBallService {
         List<Integer> computerBallNumbers = computer.getInputBallNumber();
 
         int[] score = new int[2];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (playerBallNumbers.get(i).equals(computerBallNumbers.get(j)) && i == j) {
-                    score[1]++;
-                    break;
-                } else if (playerBallNumbers.get(i).equals(computerBallNumbers.get(j)) && i != j) {
-                    score[0]++;
-                    break;
+        IntStream.range(0, playerBallNumbers.size()).forEach(i -> {
+            IntStream.range(0, computerBallNumbers.size()).forEach(j -> {
+                if (playerBallNumbers.get(i).equals(computerBallNumbers.get(j))) {
+                    if (i == j) {
+                        score[1]++;
+                    } else {
+                        score[0]++;
+                    }
                 }
-            }
-        }
+            });
+        });
         return score;
     }
 
@@ -52,9 +55,9 @@ public class BaseBallService {
     }
 
     public int restartGame() throws IOException {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println(FINISH_GAME);
+        System.out.println(RESTART_GAME);
+
         return Integer.parseInt(br.readLine());
     }
 }
