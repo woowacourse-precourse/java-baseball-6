@@ -6,6 +6,9 @@ public class Application {
         Computer computer = new Computer();
         User user = new User();
         computer.setAnswerNum();
-        user.inputNum();
+        while (!computer.checkNum(user.getUserNum())) {
+            user.inputNum();
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
