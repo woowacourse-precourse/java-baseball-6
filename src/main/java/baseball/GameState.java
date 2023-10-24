@@ -2,42 +2,32 @@ package baseball;
 
 public class GameState {
 
-    public static final int GAME_SUCCEED_STATE = 0;
-    public static final int PROGRESS_STATE = 1;
-    public static final int END_STATE = 2;
-    private int gameSwitch;
+        public static final int GAME_SUCCEED_STATE = 0;
+        public static final int PROGRESS_STATE = 1;
+        public static final int END_STATE = 2;
+        private int gameSwitch;
 
-    public GameState(int gameSwitch) {
-        this.gameSwitch = gameSwitch;
-    }
-
-    public void checkGameSucceeded(int strike) {
-        if (strike == 3) {
-            gameSwitch = GAME_SUCCEED_STATE;
+        public GameState(int gameSwitch) {
+                this.gameSwitch = gameSwitch;
         }
-    }
 
-    public void checkGameRetryOrEnd(int retryOrEnd) {
-        validateRetryOrEnd(retryOrEnd);
-        if (retryOrEnd == PROGRESS_STATE) {
-            gameSwitch = PROGRESS_STATE;
+        public void checkGameSucceeded(int strike) {
+                if (strike == 3) {
+                        gameSwitch = GAME_SUCCEED_STATE;
+                }
         }
-        if (retryOrEnd == END_STATE) {
-            gameSwitch = END_STATE;
+
+        public void checkGameRetryOrEnd(int retryOrEnd) {
+                Validator.validateRetryOrEnd(retryOrEnd);
+                if (retryOrEnd == PROGRESS_STATE) {
+                        gameSwitch = PROGRESS_STATE;
+                }
+                if (retryOrEnd == END_STATE) {
+                        gameSwitch = END_STATE;
+                }
         }
-    }
 
-    public boolean isRetryOrEnd(int retryOrEnd) {
-        return retryOrEnd != 1 && retryOrEnd != 2;
-    }
-
-    public void validateRetryOrEnd(int retryOrEnd){
-        if(isRetryOrEnd(retryOrEnd)){
-            throw new IllegalArgumentException();
+        public int getState() {
+                return gameSwitch;
         }
-    }
-
-    public int getState() {
-        return gameSwitch;
-    }
 }

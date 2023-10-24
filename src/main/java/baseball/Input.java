@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 
     public static int inputData(){
-        return Integer.parseInt(Console.readLine());
+        return Validator.validateInputData(Console.readLine());
     }
 
     public static int numberSuggestion() {
