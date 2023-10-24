@@ -10,18 +10,7 @@ import java.util.stream.Collectors;
 
 public class User {
 
-    private static final int INIT_INDEX = 0;
-    private static final int DIVISOR = 10;
-
-    private List userNumberList = new ArrayList<>();
-
-    private void initList(){
-        userNumberList.clear();
-    }
-
     public Balls makeUserNumber(String userNumber){
-        initList();
-
         return new Balls(convertToInteger(userNumber));
     }
 
