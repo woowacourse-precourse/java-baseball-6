@@ -175,10 +175,6 @@
 
       이에 따라 mock데이터를 생성한 후 이것과 Answer를 비교하게 함으로써 간접적으로 난수가 정상적으로 생성된다는 것을 검증했다.
 
-- `CompareTest`: Answer 클래스의 `calcScore`에 대한 단위 테스트
-
-  - 각각의 케이스에 따른 Mock데이터를 생성하여 입력과 정답을 비교하는 로직이 잘 동작하는지 테스트하여 통과하였다.
-
 ### 결과
 
 ![testCaseSuccess](./images/testCaseSuccess.png)
