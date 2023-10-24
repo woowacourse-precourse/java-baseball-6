@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.List;
 
 public class Computer {
-    private BaseballNumberGenerator baseballNumberGenerator;// = new BaseballNumberGenerator();
+    private BaseballNumberGenerator baseballNumberGenerator;
     private List<Integer> baseballNumber;
 
     public Computer(BaseballNumberGenerator baseballNumberGenerator){
