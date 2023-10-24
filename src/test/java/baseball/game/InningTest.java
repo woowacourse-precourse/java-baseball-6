@@ -3,6 +3,7 @@ package baseball.game;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.util.Result;
+import baseball.util.Status;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
@@ -44,7 +45,7 @@ public class InningTest {
     public void 스트라이크1_문구_출력한다() throws IllegalAccessException, InvocationTargetException {
         // given
         Inning inning = new Inning();
-        Result testResult = new Result(0, 1);
+        Result testResult = new Result(new Status(0), new Status(1));
 
         // when
         result.set(inning, testResult);
@@ -60,7 +61,7 @@ public class InningTest {
     public void 볼1_스트라이크2_문구_출력한다() throws IllegalAccessException, InvocationTargetException {
         // given
         Inning inning = new Inning();
-        Result testResult = new Result(1, 2);
+        Result testResult = new Result(new Status(1), new Status(2));
 
         // when
         result.set(inning, testResult);
@@ -76,7 +77,7 @@ public class InningTest {
     public void 볼3_문구_출력한다() throws IllegalAccessException, InvocationTargetException {
         // given
         Inning inning = new Inning();
-        Result testResult = new Result(3, 0);
+        Result testResult = new Result(new Status(3), new Status(0));
 
         // when
         result.set(inning, testResult);
@@ -92,7 +93,7 @@ public class InningTest {
     public void 볼3_문구_출력한다() throws IllegalAccessException, InvocationTargetException {
         // given
         Inning inning = new Inning();
-        Result testResult = new Result(0, 0);
+        Result testResult = new Result(new Status(0), new Status(0));
 
         // when
         result.set(inning, testResult);
@@ -108,7 +109,7 @@ public class InningTest {
     public void 스트라이크3_종료_문구_출력한다() throws InvocationTargetException, IllegalAccessException {
         // given
         Inning inning = new Inning();
-        Result testResult = new Result(0, 3);
+        Result testResult = new Result(new Status(0), new Status(3));
 
         // when
         result.set(inning, testResult);

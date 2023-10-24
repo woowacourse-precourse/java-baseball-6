@@ -14,9 +14,6 @@ public class Inning {
     public void startInning() {
     }
 
-    public void printResult() {
-    }
-
-    public void endInning() {
+    private void endInning() {
     }
 }
