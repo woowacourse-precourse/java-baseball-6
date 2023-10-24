@@ -1,4 +1,4 @@
-package baseball.ModuleTest;
+package baseball.moduleTest;
 
 import baseball.ContinueNumber;
 import org.junit.jupiter.api.Assertions;

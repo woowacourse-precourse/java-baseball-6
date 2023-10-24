@@ -1,4 +1,4 @@
-package baseball.ModuleTest;
+package baseball.moduleTest;
 
 import baseball.ComputerNumber;
 import java.util.List;
