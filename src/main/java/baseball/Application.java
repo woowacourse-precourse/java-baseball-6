@@ -24,7 +24,7 @@ public class Application {
 				}
 			}
 
-			System.out.println(computer); // 컴퓨터가 무슨숫자 등록했는지 테스트
+			// System.out.println(computer); // 컴퓨터가 무슨숫자 등록했는지 테스트
 
 			int firstNumber = computer.get(0);
 			int secondNumber = computer.get(1);
@@ -80,15 +80,13 @@ public class Application {
 					System.out.println("3스트라이크");
 					System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 					System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
 					restart = Integer.parseInt(Console.readLine());
 
 					if (restart == 2) {
 						break;
 					} else if (restart != 1 && restart != 2)
 						throw new IllegalArgumentException("잘못된 값을 입력하였습니다");
-					{
-
-					}
 					break;
 				}
 
@@ -99,10 +97,8 @@ public class Application {
 				else {
 					System.out.println(ball + "볼 " + strike + "스트라이크");
 				}
-
 			}
 		}
-
 	}
 
 	private static String inputNumber() {
