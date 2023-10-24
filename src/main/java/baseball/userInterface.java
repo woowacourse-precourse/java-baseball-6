@@ -39,4 +39,11 @@ public class userInterface {
         }
         userInputNumber=input_int;
     }
+
+    public static void userInput(){
+        String[] input= Console.readLine().split("");
+        if(inputExeption.isUnigueInput(input) && inputExeption.isDigitNumber(input)){
+            stringArrayToIntArray(input);
+        }
+    }
 }
