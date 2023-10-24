@@ -46,4 +46,15 @@ class NumbersTest {
 
 		assertThat(computerNumbers.isSamePosition(playerNumbers,0)).isEqualTo(true);
 	}
+
+	@Test
+	void 다른_포지션에_같은_숫자가_존재하면_참을_반환한다() {
+		List<Integer> answerNumbers = List.of(1,2,3);
+		List<Integer> inputNumbers = List.of(3,4,6);
+
+		Numbers computerNumbers = new Numbers(answerNumbers);
+		Numbers playerNumbers = new Numbers(inputNumbers);
+
+		assertThat(computerNumbers.isSameNumber(playerNumbers,0)).isEqualTo(true);
+	}
 }
