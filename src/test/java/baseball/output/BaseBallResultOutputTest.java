@@ -3,7 +3,6 @@ package baseball.output;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.PrintOutputTest;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

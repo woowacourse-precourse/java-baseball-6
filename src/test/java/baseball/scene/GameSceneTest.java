@@ -11,11 +11,8 @@ import baseball.game.state.GameStateManager;
 import baseball.input.GameSceneInput;
 import baseball.output.GameSceneOutput;
 import baseball.util.RandomNumberGenerator;
-import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayInputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.MockedStatic;
 
 public class GameSceneTest {
