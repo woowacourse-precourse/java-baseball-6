@@ -13,10 +13,9 @@ public class InputToTripleBallsConverter {
     public static TripleBalls convert(String input) throws IllegalArgumentException {
         new TripleBallsValidator(input);
         List<Character> charList = StringToCharList(input);
-        int digit = Util.FIRST_DIGIT;
 
         return new TripleBalls(
-                getTripleBallsWithConverter(charList, digit)
+                getTripleBallsWithConverter(charList, Util.FIRST_DIGIT)
         );
     }
 

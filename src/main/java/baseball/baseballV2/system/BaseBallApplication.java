@@ -25,8 +25,7 @@ public class BaseBallApplication {
     public static final String GAME_START_PATH = "gameStart";
     public static final String ENTER_TRIPLE_BALLS_PATH = "enterTripleBalls";
     public static final String GAME_RESTART_PATH = "gameRestart";
-
-    public static final String GAME_RESTART_VALUE = "1";
+    public static final int BALL_INDEX = 1;
 
     private final Map<String, Controller> controllerMap = new HashMap<>();
 
@@ -49,12 +48,20 @@ public class BaseBallApplication {
     private void startGame(Map<String, Object> model) {
         RestartChoice restartChoice;
         do {
-            controllerMap.put(GAME_RESULT_PATH, new GameResultController(new GameResultOutputView(),
-                    RandomTripleBallsGenerator.generate()));
+            generateComputerTripleBalls();
             playGame(model);
-            restartChoice = (RestartChoice) model.get(GAME_RESTART_CHOICE_KEY);
+            restartChoice = getRestartChoiceFromModel(model);
         } while (isRestart(restartChoice));
 
+    }
+
+    private RestartChoice getRestartChoiceFromModel(Map<String, Object> model) {
+        return (RestartChoice) model.get(GAME_RESTART_CHOICE_KEY);
+    }
+
+    private void generateComputerTripleBalls() {
+        controllerMap.put(GAME_RESULT_PATH, new GameResultController(new GameResultOutputView(),
+                RandomTripleBallsGenerator.generate()));
     }
 
     private void playGame(Map<String, Object> model) {
@@ -73,15 +80,15 @@ public class BaseBallApplication {
         return false;
     }
 
-    private void getRestartChoice(Map<String, Object> model) {
-        controllerMap.get(GAME_RESTART_PATH).process(model);
-    }
-
     private boolean hasThreeStrikes(Map<String, Object> model) {
         List<Integer> ballAndStrikeCounts = (List<Integer>) model.get(GAME_RESULT_PATH);
         return ballAndStrikeCounts.stream()
-                .skip(1)
+                .skip(BALL_INDEX)
                 .allMatch(strikeCount -> strikeCount == 3);
+    }
+
+    private void getRestartChoice(Map<String, Object> model) {
+        controllerMap.get(GAME_RESTART_PATH).process(model);
     }
 
     private void getGameResult(Map<String, Object> model) {
@@ -89,11 +96,7 @@ public class BaseBallApplication {
     }
 
     private void enterTripleBalls(Map<String, Object> model) {
-        try {
-            controllerMap.get(ENTER_TRIPLE_BALLS_PATH).process(model);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        controllerMap.get(ENTER_TRIPLE_BALLS_PATH).process(model);
     }
 
     private void initGame(Map<String, Object> model) {

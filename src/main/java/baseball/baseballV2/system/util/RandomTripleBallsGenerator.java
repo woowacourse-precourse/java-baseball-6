@@ -14,13 +14,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomTripleBallsGenerator {
     public static final int START_INCLUSIVE = 1;
     public static final int END_INCLUSIVE = 9;
-    private static Random random = ThreadLocalRandom.current();
+    private static final Random random = ThreadLocalRandom.current();
 
     public static TripleBalls generate() {
         List<Integer> randomNumbers = generateThreeRandomNumbers();
-        int digit = FIRST_DIGIT;
         return new TripleBalls(
-                getTripleBalls(randomNumbers, digit)
+                getTripleBalls(randomNumbers, FIRST_DIGIT)
         );
     }
 
