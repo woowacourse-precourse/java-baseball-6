@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseballGame {
-    private boolean exitFlag = false;
+    private boolean isExitFlag = false;
     private static final int DIGIT = 3;
     private static final String BALL_PRINT = "볼 ";
     private static final String STRIKE_PRINT = "스트라이크 ";
@@ -18,7 +18,6 @@ public class BaseballGame {
     private static final String RESTART_PRINT = "1";
     private static final String THREE_STRIKE_PRINT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    private boolean isExitFlag = false;
     private List<Integer> computerNumber = new ArrayList<>();
     private List<Integer> userNumber = new ArrayList<>();
 
@@ -37,7 +36,7 @@ public class BaseballGame {
 
     private void setRestartOrExit(){
         String input = inputRestartOrExit();
-        if(input.equals(RESTART_OR_EXIT_PRINT)){
+        if(input.equals(RESTART_PRINT)){
             computerNumber = number.setRandomNumbers();
             return;
         }
@@ -75,7 +74,7 @@ public class BaseballGame {
         StringBuilder sb = new StringBuilder();
         if(strike != 0){
             if(ball != 0){
-                sb.append(ball).append(BALL_PRINT).append("\n");
+                sb.append(ball).append(BALL_PRINT).append(strike).append(STRIKE_PRINT).append("\n");
                 return sb.toString();
             }
             sb.append(strike).append(STRIKE_PRINT);
