@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.utils.GameNoticeUtil;
-import baseball.utils.Printer;
 import baseball.utils.RandomNumberCreator;
 import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.Console;

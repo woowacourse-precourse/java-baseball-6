@@ -1,5 +1,6 @@
-package baseball.utils;
+package baseball.domain;
 
+import baseball.utils.GameNoticeUtil;
 import java.util.List;
 
 /*
