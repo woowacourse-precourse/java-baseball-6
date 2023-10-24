@@ -4,15 +4,15 @@ public class Score {
     private int strikes;
     private int balls;
 
-    public int getStrikeCount(){
+    public int strikeCount(){
         return strikes;
     }
 
-    public int getBallCount(){
+    public int ballCount(){
         return balls;
     }
 
-    public void setScore(int strikes, int balls){
+    public void updateScore(int strikes, int balls){
         this.strikes = strikes;
         this.balls = balls;
     }
