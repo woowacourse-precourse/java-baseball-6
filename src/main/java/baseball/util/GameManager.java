@@ -1,7 +1,9 @@
-package baseball.domain;
+package baseball.util;
 
 import baseball.console.Input;
 import baseball.console.Output;
+import baseball.domain.BaseballGame;
+import baseball.domain.TerminationCondition;
 
 public class GameManager {
 
@@ -15,7 +17,7 @@ public class GameManager {
 
     private boolean isRestart() {
         String isRestart = Input.receiveRestartNumber();
-        TerminationManager terminationManager = new TerminationManager(isRestart);
+        TerminationCondition terminationManager = new TerminationCondition(isRestart);
         return terminationManager.isRestart();
     }
 }

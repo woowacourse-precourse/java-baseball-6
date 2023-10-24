@@ -5,8 +5,8 @@ import static baseball.console.Constant.EXCEPTION_BASEBALL_NUMBER_FORMAT_MESSAGE
 import java.util.Objects;
 
 public class BaseballNumber {
-    static final int NUMBER_MIN_VALUE = 1;
-    static final int NUMBER_MAX_VALUE = 9;
+    private static final int NUMBER_MIN_VALUE = 1;
+    private static final int NUMBER_MAX_VALUE = 9;
     private final int number;
 
     public BaseballNumber(int number) {

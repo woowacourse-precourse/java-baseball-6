@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 public class BaseballNumbers {
 
-    static final int NUMBERS_MAX_SIXE = 3;
+    private static final int NUMBERS_MAX_SIXE = 3;
     private final List<BaseballNumber> numbers;
 
     public BaseballNumbers(List<BaseballNumber> numbers) {

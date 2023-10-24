@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.GameManager;
+import baseball.util.GameManager;
 
 public class Application {
     public static void main(String[] args) {

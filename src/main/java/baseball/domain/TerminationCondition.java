@@ -4,14 +4,14 @@ import static baseball.console.Constant.EXCEPTION_RESTART_CONDITION_FORMAT_MESSA
 
 import baseball.console.Constant;
 
-public class TerminationManager {
+public class TerminationCondition {
 
     private static final int RESTART_NUMBER = 1;
     private static final int TERMINATION_NUMBER = 2;
 
     private final int number;
 
-    public TerminationManager(String condition) {
+    public TerminationCondition(String condition) {
         int num = condition.charAt(0) - Constant.CHAR_ZERO;
         isValidFormat(num);
         this.number = num;
@@ -24,7 +24,7 @@ public class TerminationManager {
         }
     }
 
-    boolean isRestart() {
+    public boolean isRestart() {
         return number == RESTART_NUMBER;
     }
 }

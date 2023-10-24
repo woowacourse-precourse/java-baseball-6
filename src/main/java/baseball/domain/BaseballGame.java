@@ -7,6 +7,8 @@ import static baseball.console.Constant.RESULT_STRIKE;
 
 import baseball.console.Input;
 import baseball.console.Output;
+import baseball.util.Computer;
+import baseball.util.GameFactory;
 
 public class BaseballGame {
 
