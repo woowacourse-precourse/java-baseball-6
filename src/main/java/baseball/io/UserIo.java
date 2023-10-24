@@ -15,4 +15,8 @@ public class UserIo {
     public void print(String message) {
         System.out.print(message);
     }
+
+    public int readInt() {
+        return Integer.parseInt(Console.readLine());
+    }
 }

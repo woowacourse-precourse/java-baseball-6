@@ -22,14 +22,23 @@ public class Application {
         UserIo userIo = new UserIo();
 
         userIo.print("숫자 야구 게임을 시작합니다.\n");
-        NumberBaseballGame game = new NumberBaseballGame(baseballGameRules, numberGenerator, userIo);
-        try {
-            game.run();
-        } catch (Exception exception) {
-            userIo.print(exception.getMessage());
-            throw exception;
-        } finally {
-            Console.close();
+        boolean continueGame = true;
+
+        while (continueGame) {
+            NumberBaseballGame game = new NumberBaseballGame(baseballGameRules, numberGenerator, userIo);
+            try {
+                game.run();
+
+                userIo.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+                int gameOption = userIo.readInt();
+                if (gameOption == 2) {
+                    continueGame = false;
+                }
+            } catch (Exception exception) {
+                userIo.print(exception.getMessage());
+                throw exception;
+            }
         }
+        Console.close();
     }
 }
