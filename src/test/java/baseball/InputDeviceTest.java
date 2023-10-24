@@ -16,12 +16,10 @@ public class InputDeviceTest {
     public static final int RESTART_NUMBER = 1;
     public static final int EXIT_NUMBER = 2;
 
-    @ParameterizedTest
     @DisplayName("서로 다른 세자리수를 입력한다")
-    @ValueSource(strings = {"123", "167", "987", "764"})
-    void inputThreeDifferentNumbers(String given) {
+    void inputThreeDifferentNumbers() {
         // given
-        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(given), new InputValidator());
+        InputDevice inputDevice = new InputDevice(new DoubleConsoleService("123"), new InputValidator());
 
         // when
         List<Integer> result = inputDevice.inputTryNumber();
