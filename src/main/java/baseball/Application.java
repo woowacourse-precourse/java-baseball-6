@@ -45,6 +45,9 @@ public class Application {
                 break;
             }
         }
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하면 2를 입력하세요.");
+        String playerChoose = Console.readLine();
     }
 
     static List<Integer> makeNumbers () {
