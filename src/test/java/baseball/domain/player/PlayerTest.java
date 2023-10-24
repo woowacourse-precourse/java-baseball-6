@@ -29,7 +29,7 @@ class PlayerTest {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Player.createPlayerByIntegerNumbers(input))
-                .withMessageMatching("3개 이상의 공이 입력될 수 없습니다.");
+                .withMessageMatching("4개 이상의 공이 입력될 수 없습니다.");
     }
     @Test
     @DisplayName("3개의 수가 입력될 경우 정상적으로 생성되어야 한다.")

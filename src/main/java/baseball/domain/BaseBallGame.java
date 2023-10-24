@@ -37,7 +37,7 @@ public class BaseBallGame {
     private void playRound() {
         boolean ongoing = false;
         while (!ongoing) {
-            List<Integer> playerNumbers = InputNumbers();
+            List<Integer> playerNumbers = inputNumbers();
             Computer computer = Computer.createComputerAnswerByRandomGenerator(GameState.RUNNING);
             Player player = Player.createPlayerByIntegerNumbers(playerNumbers);
             GameResult gameResult = calculateBaseBallGame(player, computer);
@@ -49,7 +49,7 @@ public class BaseBallGame {
         }
     }
 
-    private static List<Integer> InputNumbers() {
+    public static List<Integer> inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String inputBaseBallNumbers = Console.readLine();
         List<Integer> playerNumbers = Arrays.stream(inputBaseBallNumbers.split(INPUT_NUMBERS_DELIMITER))
@@ -71,7 +71,7 @@ public class BaseBallGame {
             System.out.printf(GAME_RESULT_BALL_MESSAGE + LINE_BREAK, gameResult.ballCount());
             return;
         }
-        System.out.printf(GAME_RESULT_BALL_MESSAGE + BLANK + GAME_RESULT_STRIKE_MESSAGE, gameResult.ballCount(),
+        System.out.printf(GAME_RESULT_BALL_MESSAGE + BLANK + GAME_RESULT_STRIKE_MESSAGE + LINE_BREAK, gameResult.ballCount(),
                 gameResult.strikeCount());
     }
 
@@ -81,5 +81,12 @@ public class BaseBallGame {
         int choice = scanner.nextInt();
         return choice == 1;
     }
-
+    public static GameState inputGameStateCommand(GameResult gameResult) {
+        if (!gameResult.isFinished()) {
+            return GameState.init();
+        }
+        System.out.println(GAME_OVER_MESSAGE);
+        System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
+        return GameState.createByCommand(Integer.parseInt(Console.readLine()));
+    }
 }
