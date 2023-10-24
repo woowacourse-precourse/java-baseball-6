@@ -2,10 +2,10 @@ package baseball.controller;
 
 import static baseball.view.InputView.inputPlayerNumbers;
 
-import baseball.model.Computer;
+import baseball.model.numberstrategy.RandomNumberSelectionStrategy;
 import baseball.model.GameResult;
 import baseball.model.Numbers;
-import baseball.model.Player;
+import baseball.model.numberstrategy.UserInputNumberSelectionStrategy;
 import baseball.view.HintView;
 import baseball.view.InputView;
 
@@ -24,11 +24,12 @@ public class BaseballGame {
     }
 
     private void start() {
-        Numbers computerNumbers = Computer.create().getNumbers();
+        RandomNumberSelectionStrategy computerStrategy = new RandomNumberSelectionStrategy();
+        Numbers computerNumbers = Numbers.createNumbersFrom(computerStrategy);
         GameResult result;
         do {
-            Player player = Player.from(inputPlayerNumbers());
-            Numbers playerNumbers = player.getPlayerNumbers();
+            UserInputNumberSelectionStrategy playerStrategy = new UserInputNumberSelectionStrategy(inputPlayerNumbers());
+            Numbers playerNumbers = Numbers.createNumbersFrom(playerStrategy);
             result = computerNumbers.calculateResult(playerNumbers);
             new HintView(result).printHint();
         } while (!result.isThreeStrikes());
