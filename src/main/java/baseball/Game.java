@@ -21,7 +21,7 @@ public class Game {
 
     public void run() {
         boolean isRun = true;
-        while(isRun) {
+        while (isRun) {
             // 게임 초기화
             init();
 
@@ -32,16 +32,34 @@ public class Game {
     }
 
     private void playingGame() {
-        while(true) {
-
+        while (true) {
+            if (checkAnswer())
+                break;
         }
     }
 
-    private void checkAnswer() {
+    private String inputNumbers() {
+        // 정답 추측 입력을 요구하는 문구 출력
+        System.out.print("숫자를 입력해 주세요 : ");
+
+        // 사용자에게 추측되는 정답을 입력 받음
+        String input = Console.readLine();
+        if (input.length() > 3) throw new IllegalArgumentException();
+
+        return input;
+    }
+
+    private boolean checkAnswer() {
 
     }
 
     private boolean checkPlayAgain() {
-        return false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1"))
+            return true;
+        else if (input.equals("2"))
+            return false;
+        else throw new IllegalArgumentException();
     }
 }
