@@ -8,6 +8,7 @@ import java.util.List;
 public class BaseballGame {
     private String answerComputer;
     private String answerPlayer;
+    private boolean isPlaying;
     final int INPUT_LENGTH_MAX = 3;
 
     final int BALL_MIN = 1;
@@ -19,11 +20,8 @@ public class BaseballGame {
 
 
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        boolean isPlaying = true;
-
-        initAnswer();
+        initGame();
 
         String messageScore;
 
@@ -86,6 +84,15 @@ public class BaseballGame {
     }
 
 
+    public void initGame() {
+        answerComputer = "";
+        answerPlayer = "";
+        initAnswer();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        isPlaying = true;
+        System.out.println("생성된 숫자는 " + answerComputer);
+    }
+
     public void initAnswer() {
         List<Integer> computer = new ArrayList<>();
         StringBuilder answerBuilder = new StringBuilder();
@@ -96,8 +103,8 @@ public class BaseballGame {
                 answerBuilder.append(Integer.toString(randomNumber));
             }
         }
+
         this.answerComputer = answerBuilder.toString();
-        System.out.print("생성된 숫자는 " + answerComputer + "\n");
     }
 
     public boolean restartGame() {
