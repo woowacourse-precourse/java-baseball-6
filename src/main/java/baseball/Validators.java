@@ -30,4 +30,15 @@ public class Validators {
         }
         return true;
     }
+
+    public static boolean validateRepitition(List<Character> playerInputList) {
+        for (int i = 0; i < playerInputList.size(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (playerInputList.get(i) == playerInputList.get(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
