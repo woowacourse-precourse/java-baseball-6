@@ -15,7 +15,8 @@ public class Application {
     private static final String CONTINUE_GAME = "1";
     private static final String EXIT_GAME = "2";
     private static final String CONTINUE_EXIT_MESSAGE
-            = "게임을 새로 시작하려면 " + CONTINUE_GAME + ", 종료하려면 " + EXIT_GAME + "를 입력하세요.";
+            = "게임을 새로 시작하려면 " + CONTINUE_GAME
+            + ", 종료하려면 " + EXIT_GAME + "를 입력하세요.";
 
     public static void main(String[] args) {
         System.out.println(START_MESSAGE);
