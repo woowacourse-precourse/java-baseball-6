@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GameService {
 
-    public static String getHintWith(Player player, Computer computer) {
+    public static String getHint(Player player, Computer computer) {
         List<Integer> listHint = compare(player, computer);
 
         int ball = listHint.get(0);

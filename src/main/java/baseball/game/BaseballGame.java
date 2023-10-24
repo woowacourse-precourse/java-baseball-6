@@ -11,7 +11,7 @@ public class BaseballGame {
     /**
      * 숫자 야구 게임의 흐름 전체를 제어
      */
-    public static void start() {
+    public static void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
@@ -32,7 +32,7 @@ public class BaseballGame {
             Validator.validateProposal(input);
             Player player = Player.create(input);
 
-            hint = GameService.getHintWith(player, computer);
+            hint = GameService.getHint(player, computer);
             System.out.println(hint);
         } while (!hint.equals("3스트라이크"));
 
