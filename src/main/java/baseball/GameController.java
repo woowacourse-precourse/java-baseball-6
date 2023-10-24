@@ -17,16 +17,16 @@ public class GameController {
     }
 
     public void play() {
-        boolean continueGame = true;
+        boolean isGameContinued  = true;
         List<Integer> computerInput = gameComputing.generateComputerInput();
         gameView.printStart();
-        while (continueGame) {
+        while (isGameContinued ) {
             List<Integer> userInput = gameInput.receiveInput();
             inputValidator.validateInput(userInput);
             int result = gameComputing.compute(computerInput, userInput);
             if (result == GAME_OVER) {
-                continueGame = gameView.askContinueGame();
-                if (continueGame) {
+                isGameContinued  = gameView.askContinueGame();
+                if (isGameContinued ) {
                     computerInput = gameComputing.generateComputerInput();
                 }
             }
