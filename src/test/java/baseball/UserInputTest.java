@@ -102,7 +102,7 @@ class UserInputTest {
         String stringValue = "123";
         List<Integer> expectedNumbers = List.of(1, 2, 3);
         UserNumber userNumber = new UserNumber(stringValue);
-        Method method = userNumber.getClass().getDeclaredMethod("StringToList", String.class);
+        Method method = userNumber.getClass().getDeclaredMethod("StringToIntList", String.class);
         method.setAccessible(true);
 
         try {
