@@ -12,8 +12,8 @@
 
 <img width="949" alt="스크린샷 2023-10-24 오후 1 20 07" src="https://github.com/Mingadinga/2023_Study_CS/assets/53958188/af3b57d2-bde4-4b3e-bc59-d0e50bd700ca">
 
-- [ ] GameView : inputAnswer
-- [ ] GameView : validateInputAnswer
+- [x] GameView : inputAnswer
+- [x] GameView : validateInputAnswer
 - [ ] GameState : isAbleToPlay, changeTerminated
 - [ ] Scoring : score
 - [ ] ScoringResultCreator : makeScoreResult
