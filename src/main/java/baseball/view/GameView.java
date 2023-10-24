@@ -1,5 +1,6 @@
 package baseball.view;
 
+
 import static baseball.constant.GameConstant.GAME_END;
 import static baseball.constant.GameConstant.GAME_START;
 import static baseball.constant.GameConstant.INPUT_NUMBER;

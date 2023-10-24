@@ -19,6 +19,7 @@ public class Number {
 
     public void inputUserNumber(String inputNumber) {
         number.clear();
+        errorValidate(inputNumber);
         stringToIntegerList(inputNumber);
     }
 
@@ -38,7 +39,6 @@ public class Number {
     }
 
     private void stringToIntegerList(String inputNumber) {
-        errorValidate(inputNumber);
         for (char charNumber : inputNumber.toCharArray()) {
             number.add(Character.getNumericValue(charNumber));
         }
