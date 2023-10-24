@@ -12,14 +12,15 @@ public class GameManager {
     public GameManager() {
     }
 
-    public void setAnswer(List<Integer> answer){
-        this.answer=answer;
+    public void setAnswer(List<Integer> answer) {
+        this.answer = answer;
     }
 
-    public void setInputConvertList(String input){
+    public void setInputConvertList(String input) {
         this.inputList = input.chars()
                 .mapToObj(c -> Character.getNumericValue(c))
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
+        ;
     }
 
     public boolean isGameOver() {
@@ -43,11 +44,11 @@ public class GameManager {
     }
 
     public boolean isNothing() {
-        return getBallCount() == 0 && getStrikeCount() == 0;
+        return getBallCount()==0 && getStrikeCount()==0;
     }
 
     private boolean isSamePosition(int idx) {
-        return answer.get(idx) == inputList.get(idx);
+        return answer.get(idx)==inputList.get(idx);
     }
 
     private boolean isContainNumber(int idx) {
@@ -55,14 +56,16 @@ public class GameManager {
     }
 
     protected void validateRestartOrExitWrongInput(String input) {
-        if( !(input.equals("1") || input.equals("2"))){
+        if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2, 그 외 입력은 할 수 없습니다.");
         }
     }
-    protected boolean gameRestart(String input){
+
+    protected boolean gameRestart(String input) {
         return input.equals("1");
     }
-    protected boolean gameExit(String input){
+
+    protected boolean gameExit(String input) {
         return input.equals("2");
     }
 }
