@@ -1,17 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class ContinueNumber {
 
-    public String getContinueNumber() {
-        String continueNumber = getReadLine();
-        checkContinueNumber(continueNumber);
-        return continueNumber;
-    }
-
-    private String getReadLine() {
-        return Console.readLine();
+    public String getContinueNumber(String readLine) {
+        checkContinueNumber(readLine);
+        return readLine;
     }
 
     private void checkContinueNumber(String word) throws IllegalArgumentException {

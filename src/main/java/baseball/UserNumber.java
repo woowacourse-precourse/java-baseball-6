@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,19 +7,13 @@ import java.util.Set;
 
 public class UserNumber {
 
-    public List<Integer> getUserNumber() {
+    public List<Integer> getUserNumber(String readLine) {
         List<Integer> userNumber = new ArrayList<>();
-        String readLine = getReadLine();
         checkLength(readLine);
         checkDigit(readLine);
         userNumber = stringToDigit(readLine);
         checkDuplication(userNumber);
         return userNumber;
-    }
-
-    private String getReadLine() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
     }
 
     private void checkLength(String word) {

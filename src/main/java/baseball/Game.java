@@ -9,6 +9,7 @@ public class Game {
     private final Hint hint;
     private final ContinueNumber continueNumber;
     private final Output output;
+    private final Input input;
 
     public Game() {
         this.computerNumber = new ComputerNumber();
@@ -16,6 +17,7 @@ public class Game {
         this.hint = new Hint();
         this.continueNumber = new ContinueNumber();
         this.output = new Output();
+        this.input = new Input();
     }
 
     public void start() {
@@ -23,7 +25,9 @@ public class Game {
         output.printStart();
         boolean check = true;
         while (check) {
-            List<Integer> user = userNumber.getUserNumber();
+            output.printInput();
+            String readLine = input.getReadLine();
+            List<Integer> user = userNumber.getUserNumber(readLine);
             int strikeCount = hint.getStrikeCount(computer, user);
             int ballCount = hint.getBallCount(computer, user);
             output.printHint(strikeCount, ballCount);
@@ -39,7 +43,8 @@ public class Game {
 
     private boolean continueCheck() {
         boolean checked = true;
-        String restart = continueNumber.getContinueNumber();
+        String readLine = input.getReadLine();
+        String restart = continueNumber.getContinueNumber(readLine);
         if (restart.equals("2")) {
             checked = false;
         }
