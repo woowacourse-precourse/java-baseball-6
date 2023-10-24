@@ -4,19 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInputView {
+public class UserView {
     final String InputMessage = "숫자를 입력해주세요 : ";
     List<Integer> userInputList = new ArrayList<>();
 
-    public List<Integer> gameStart() {
+    public UserView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        inputBaseballNumber();
-        return userInputList;
     }
 
-    private void inputBaseballNumber() {
+    public List<Integer> inputBaseballNumber() {
         System.out.print(InputMessage);
         verifys(Console.readLine());
+        return userInputList;
     }
 
     private void verifys(String userInput) {
