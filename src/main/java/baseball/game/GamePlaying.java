@@ -10,6 +10,9 @@ import java.util.Objects;
 
 public class GamePlaying {
 
+    private int strike;
+    private int ball;
+
     List<Integer> computerNumber = new ArrayList<>();
     List<Integer> playerNumber = new ArrayList<>();
 
@@ -19,20 +22,19 @@ public class GamePlaying {
 
     public boolean playGame() {
         computerNumber.clear();
-        computerNumber = cpu.setComputerNumber(computerNumber);
-        int strike = 0;
+        computerNumber = cpu.setComputerNumber(computerNumber);;
         while (strike != 3) {
+            resetValue();
             enterValue();
-            strike = guessNumber();
+            guessNumber();
         }
         return false;
     }
 
-    private int guessNumber() {
-        int strike = findStrike();
-        int ball = findBall();
+    private void guessNumber() {
+        findStrike();
+        findBall(0);
         printer.printResult(strike, ball);
-        return strike;
     }
 
     private void enterValue() {
@@ -40,30 +42,32 @@ public class GamePlaying {
         playerNumber = player.getPlayerNumber(playerNumber);
     }
 
-    private int isSame(int i) {
-        if (computerNumber.get(i) == playerNumber.get(i)) {
+    private int isSameNumber(int i, int j) {
+        if (computerNumber.get(i) == playerNumber.get(j)) {
             return 1;
         }
         return 0;
     }
 
-    private int findStrike() {
-        int strike = 0;
+    private void findStrike() {
         for (int i = 0; i < 3; i++) {
-            strike += isSame(i);
+            strike += isSameNumber(i, i);
         }
-        return strike;
     }
 
-    private int findBall() {
-        int ball = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i != j && computerNumber.get(i) == playerNumber.get(j)) {
-                    ball += 1;
-                }
-            }
+    private void findBall(int i) {
+        if (i >= 3) {
+            ball -= strike;
+            return;
         }
-        return ball;
+        for (int j = 0; j < 3; j++) {
+            ball += isSameNumber(i, j);
+        }
+        findBall(++i);
+    }
+
+    private void resetValue() {
+        ball = 0;
+        strike = 0;
     }
 }
