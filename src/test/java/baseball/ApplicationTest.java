@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.baseballGame.BaseBallGame;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,15 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+
+    @Test
+    void 랜덤한_숫자선택_테스트() {
+        int cnt = 3;
+        BaseBallGame bGame = new BaseBallGame(cnt);
+
+        assertThat(bGame.getNumbers().size()).isEqualTo(cnt);
     }
 
     @Override
