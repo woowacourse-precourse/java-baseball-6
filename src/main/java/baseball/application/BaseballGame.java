@@ -8,21 +8,17 @@ import java.util.List;
 
 
 public class BaseballGame {
-    boolean gameContinue = false;
-
     public void play() {
-        InputView inputView = new InputView();
-        inputView.printStartGameMessage();
         List<Integer> answers = NumberGenerator.generateAnswer();
+        boolean isAnswer = false;
 
-        while(!gameContinue) {
-            Player player = new Player(inputView.inputNumber());
+        while(!isAnswer) {
+            Player player = new Player(InputView.inputNumber());
             Referee referee = new Referee();
             BallCount ballCount = referee.call(answers, player.getPickNumbers());
             ResultView resultView = new ResultView();
             resultView.printResult(ballCount);
-            GameHost gameHost = new GameHost();
-            gameContinue = gameHost.checkGameContinue(ballCount.isAllStrike());
+            isAnswer = ballCount.isAllStrike();
         }
     }
 }

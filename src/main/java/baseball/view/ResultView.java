@@ -37,7 +37,7 @@ public class ResultView {
         return String.format(BALL_MESSAGE, ballCount.getBall());
     }
     private String printStrikeAndBall(BallCount ballCount) {
-        return String.format(STRIKE_AND_BALL_MESSAGE, ballCount.getStrike(), ballCount.getBall());
+        return String.format(STRIKE_AND_BALL_MESSAGE, ballCount.getBall(), ballCount.getStrike());
     }
     private String printNothing() {
         return NOTHING;

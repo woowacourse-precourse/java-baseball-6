@@ -7,8 +7,8 @@ import static baseball.domain.GameRules.*;
 public class PickNumberValidation {
     private PickNumberValidation() { }
     public static void checkValidInput(List<Integer> pickNumbers) {
-        isNumberRange(pickNumbers);
-        isDuplicate(pickNumbers);
+            isNumberRange(pickNumbers);
+            isDuplicate(pickNumbers);
     }
     private static void isNumberRange(List<Integer> pickNumbers) {
         if(pickNumbers.size() != INPUT_LIMIT.getValue()) {
