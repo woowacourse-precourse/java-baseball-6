@@ -76,7 +76,7 @@ public class BaseBallGame {
     /**
      * 문자열을 List<Integer> 타입으로 변경
      *
-     * @param str
+     * @param str 사용자가 입력한 숫자
      * @return List<Integer>타입의 숫자
      */
     private List<Integer> stringToListInt(String str) {
@@ -97,7 +97,7 @@ public class BaseBallGame {
      * <p>
      * 3자리 숫자인가 / 중복되지 않았는가
      *
-     * @param input
+     * @param input 사용자가 입력한 숫자
      */
     private void inputErrorCheck(List<Integer> input) {
 
@@ -121,8 +121,8 @@ public class BaseBallGame {
     /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
      *
-     * @param ans
-     * @param input
+     * @param ans   게임의 정답
+     * @param input 사용자가 입력한 숫자
      * @return int[] 타입의 비교 결과 (index 0 : 볼, 1 : 스트라이크)
      */
     private int[] compareAnswerInput(List<Integer> ans, List<Integer> input) {
@@ -144,7 +144,7 @@ public class BaseBallGame {
     /**
      * result 값 (볼, 스트라이크 갯수)데 다른 결과 출력
      *
-     * @param result
+     * @param result 볼, 스트라이크 수를 포함한 array
      */
     private void printResult(int[] result) {
 
@@ -169,7 +169,7 @@ public class BaseBallGame {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int input = 0;
+        int input;
         try {
             input = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
