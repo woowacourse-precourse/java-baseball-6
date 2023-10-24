@@ -31,4 +31,17 @@ public class Computer {
     private int createRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
+
+    public int getPositionNumber(int position) {
+        return number.get(position);
+    }
+
+    public boolean isStrike(int position, int playerPositionNumber) {
+        return getPositionNumber(position) == playerPositionNumber;
+    }
+
+    public boolean isBall(int playerPositionNumber) {
+        return number.contains(playerPositionNumber);
+    }
+
 }

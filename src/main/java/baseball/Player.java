@@ -14,4 +14,8 @@ public class Player {
         return new Player(number);
     }
 
+    public int getPositionNumber(int position) {
+        return number.get(position);
+    }
+
 }
