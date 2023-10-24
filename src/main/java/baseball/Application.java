@@ -12,15 +12,14 @@ public class Application {
 
         while (true) {
             List<Integer> computer = generateComputerNumber();
-            int tries = 0;
 
             while (true) {
                 String userGuess = getUserInput();
                 List<Integer> userNumbers = parseUserInput(userGuess);
 
                 if (!isValidInput(userNumbers)) {
-                    System.out.println("유효하지 않은 입력입니다. 1부터 9까지 서로 다른 3자리 숫자를 입력하세요.");
-                    continue;
+
+                    return;
                 }
 
                 int[] result = calculateResult(computer, userNumbers);
@@ -31,7 +30,6 @@ public class Application {
                     break;
                 }
 
-                tries++;
             }
 
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
@@ -53,22 +51,27 @@ public class Application {
     }
 
     private static String getUserInput() {
-        String userInput = "";
-        boolean validInput = false;
-        while (!validInput) {
+        String userInput;
+        while (true) {
             System.out.print("숫자를 입력해주세요: ");
             userInput = Console.readLine();
+            if (userInput.equals("exit")) {
+                System.out.println("게임 종료");
+                break; // "exit" 입력일 경우 루프를 종료합니다.
+            }
             try {
                 validateUserInput(userInput);
-                validInput = true;
+                break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+                return userInput;
+                // 유효하지 않은 입력에 대한 예외를 처리하고 현재 루프를 종료합니다.
             }
         }
         return userInput;
     }
 
-    private static void validateUserInput(String userInput) {
+    private static void validateUserInput(String ignoredUserInput) {
     }
 
     private static List<Integer> parseUserInput(String input) {
@@ -80,11 +83,13 @@ public class Application {
     }
 
     private static boolean isValidInput(List<Integer> userNumbers) {
-        return userNumbers.size() == 3
-                && userNumbers.stream().distinct().count() == 3
-                && userNumbers.stream().allMatch(num -> num >= 1 && num <= 9);
+        if (userNumbers.size() != 3
+                || userNumbers.stream().distinct().count() != 3
+                || userNumbers.stream().anyMatch(num -> num < 1 || num > 9)) {
+            throw new IllegalArgumentException("유효하지 않은 입력입니다. 1부터 9까지 서로 다른 3자리 숫자를 입력하세요.");
+        }
+        return true;
     }
-
     private static int[] calculateResult(List<Integer> computer, List<Integer> userNumbers) {
         int[] result = new int[2];
 
@@ -111,5 +116,4 @@ public class Application {
         }
     }
 }
-
 
