@@ -1,20 +1,26 @@
 package baseball.game;
 
 import baseball.validators.Validator;
+import baseball.validators.ValidatorType;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GameLogic {
 
     private final Validator userNumberValidator;
+    private final Validator quitCommandValidator;
 
-    public GameLogic(Validator userNumberValidator) {
+    public GameLogic(Validator userNumberValidator, Validator quitCommandValidator) {
         this.userNumberValidator = userNumberValidator;
+        this.quitCommandValidator = quitCommandValidator;
     }
 
-    void validateUserInput(String userInput) {
+    void validateUserInput(String userInput, ValidatorType validatorType) {
+        switch (validatorType) {
+            case USER_NUMBER -> userNumberValidator.validate(userInput);
+            case QUIT_COMMAND -> quitCommandValidator.validate(userInput);
+        }
         userNumberValidator.validate(userInput);
     }
 

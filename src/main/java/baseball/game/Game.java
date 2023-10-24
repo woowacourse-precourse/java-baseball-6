@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.Computer;
 import baseball.User;
+import baseball.validators.ValidatorType;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.game.GameUI.displayCorrectAnswerMessage;
@@ -39,7 +40,7 @@ public class Game {
             try {
                 gameUI.diplayUserInput();
                 user.inputUserNumber();
-                gameLogic.validateUserInput(user.getUserNumber());
+                gameLogic.validateUserInput(user.getUserNumber(), ValidatorType.USER_NUMBER);
 
                 String hint = inferHint();
                 gameUI.displayHint(inferHint());
