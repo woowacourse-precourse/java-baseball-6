@@ -1,15 +1,14 @@
 package baseball.service;
 
 import baseball.domain.Computer;
-import baseball.domain.User;
 
 
-public class GameService {
+public class ComputerService {
 
     private String computerNumber;
     private final UserService userService; // UserService를 멤버 변수로 변경
 
-    public GameService(UserService userService) {
+    public ComputerService(UserService userService) {
         this.userService = userService; // UserService를 생성자에서 주입받음
     }
 

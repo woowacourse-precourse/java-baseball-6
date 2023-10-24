@@ -1,16 +1,17 @@
 package baseball.controller;
 
-import baseball.service.GameService;
+import baseball.service.ComputerService;
 import baseball.service.UserService;
 
 public class GameController {
     private final UserService userService = new UserService();
-    private final GameService gameService = new GameService(userService);
+    private final ComputerService gameService = new ComputerService(userService);
 
     //게임시작
     public void startGame(){
         gameService.gameStart();
     }
+
     //게임숫자 발급
     public void makeNumber(){
         gameService.gameInitialize();
