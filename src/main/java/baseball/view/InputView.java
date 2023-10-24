@@ -1,6 +1,7 @@
 package baseball.view;
 
 
+import baseball.constant.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 //TODO: 추후삭제
@@ -20,7 +21,7 @@ public class InputView {
             int playerNumber = Integer.parseInt(playerString);
             return playerNumber;
         }catch(NumberFormatException e){
-            throw new IllegalArgumentException("입력한 값이 정수가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INTEGER_EXCEPTION_MESSAGE);
         }
 
 
@@ -38,7 +39,7 @@ public class InputView {
 
 
         }catch(NumberFormatException e){
-            throw new IllegalArgumentException("입력한 값이 정수가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INTEGER_EXCEPTION_MESSAGE);
         }
 
 
@@ -46,7 +47,7 @@ public class InputView {
 
     private int checkChoiceNumber(int inputNumber){
         if(inputNumber!=1&&inputNumber!=2){
-            throw new IllegalArgumentException("입력한 숫자가 1 또는 2가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_CHOICE_NUMBER_EXCEPTION_MESSAGE);
         }
 
         return inputNumber;

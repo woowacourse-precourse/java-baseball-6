@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class BaseballNumberGenerator {
             return playerNumberList;
         }
 
-        throw new IllegalArgumentException("입력한 숫자는 1부터 9까지 서로 다른 수로 이루어진 3자리가 아닙니다. ");
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_EXCEPTION_MESSAGE);
 
 
     }
@@ -36,7 +37,7 @@ public class BaseballNumberGenerator {
     private boolean checkDuplicateDigit(List<Integer> inputNumberList){
 
         if(inputNumberList.size() != inputNumberList.stream().distinct().count()){
-            throw new IllegalArgumentException("입력한 숫자는 서로 다른 수로 이루어지지 않았습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER_EXCEPTION_MESSAGE);
         }
         return true;
     }
@@ -46,7 +47,7 @@ public class BaseballNumberGenerator {
 
         for(int c : inputNumberArray){
             if(c==0){
-                throw new IllegalArgumentException("입력한 숫자가 1 ~ 9 사이의 수가 아닙니다.");
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_RANGE_EXCEPTION_MESSAGE);
 
             }
         }
@@ -57,7 +58,7 @@ public class BaseballNumberGenerator {
 
     private boolean checkNumberDigit(int inputNumber){
         if(String.valueOf(inputNumber).length()!=3){
-            throw new IllegalArgumentException("입력한 숫자가 3 자릿수가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_DIGIT_EXCEPTION_MESSAGE);
         }
         return true;
 
