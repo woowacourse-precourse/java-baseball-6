@@ -235,22 +235,13 @@ public class BaseBallGame {
      */
     private void errorThrow(String str) {
 
-        String message = "";
-
-        switch (str) {
-            case "notNum":
-                message = "숫자를 입력해 주세요";
-                break;
-            case "wrongLen":
-                message = "3자리 숫자가 아닙니다.";
-                break;
-            case "duplicate":
-                message = "중복된 숫자가 존재합니다.";
-                break;
-            case "invalidNum":
-                message = "유효한 숫자가 아닙니다.";
-                break;
-        }
+        String message = switch (str) {
+            case "notNum" -> "숫자를 입력해 주세요";
+            case "wrongLen" -> "3자리 숫자가 아닙니다.";
+            case "duplicate" -> "중복된 숫자가 존재합니다.";
+            case "invalidNum" -> "유효한 숫자가 아닙니다.";
+            default -> "";
+        };
 
         throw new IllegalArgumentException(message);
     }
