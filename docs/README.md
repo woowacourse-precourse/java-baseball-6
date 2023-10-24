@@ -53,10 +53,10 @@
   - [x] game play 하기
   - [x] `printRequestRestartOrFinish` 메서드로 사용자의 게임 재시작 여부 물어보기
   - [x] `validateRange`메서드로 재시작 여부 범위 확인 하기
-- [x] printRequestRestartOrFinish 메서드 구현
-  - [x] "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 문구 출력
-- [x] validateRange 메서드 구현
-  - 재시작 여부 입력 받을 시 1 or 2 이외의 숫자일 경우 IllegalArgumentException 예외 처리
+- ✅ printRequestRestartOrFinish 메서드 구현
+  - ✅ "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 문구 출력
+- ✅ validateRange 메서드 구현
+  - ✅ 재시작 여부 입력 받을 시 1 or 2 이외의 숫자일 경우 IllegalArgumentException 예외 처리
 
 ---
 

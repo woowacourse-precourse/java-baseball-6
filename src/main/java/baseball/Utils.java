@@ -9,8 +9,8 @@ public class Utils {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String RESTART_OR_FINISH = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String RESTART_GAME = "1";
-    public static final String FINISH_GAME = "2";
+    public static final String START_GAME = "1";
+    public static final String END_GAME = "2";
 
     // Numbers
     public static final int DESIGNED_NUM = 3;
