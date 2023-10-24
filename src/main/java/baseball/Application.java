@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Application {
-    final static String errorMessage = "[error] 올바르지 않은 입력입니다.";
+    final static String ERROR_MESSAGE = "[error] 올바르지 않은 입력입니다.";
+    final static int MAX_NUMBERS = 3;
 
     public static void main(String[] args) throws IllegalArgumentException {
         String try_again = "1";
@@ -31,13 +32,13 @@ public class Application {
 
     static void checkUserInput(String input) throws IllegalArgumentException {
         // Check the input size is 3.
-        if (input.length() != 3) {
-            throw new IllegalArgumentException(errorMessage);
+        if (input.length() != MAX_NUMBERS) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         // Check each character is number.
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MAX_NUMBERS; i++) {
             if (!(input.charAt(i) >= '1' && input.charAt(i) <= '9')) {
-                throw new IllegalArgumentException(errorMessage);
+                throw new IllegalArgumentException(ERROR_MESSAGE);
             }
         }
         // Check number are different each other.
@@ -45,20 +46,20 @@ public class Application {
         char secondNum = input.charAt(1);
         char thirdNum = input.charAt(2);
         if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum) {
-            throw new IllegalArgumentException(errorMessage);
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
     static void getUserInput(String userInputString, List<Integer> userInputNum) {
         // Convert user input from a string to an integer ArrayList.
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MAX_NUMBERS; i++) {
             userInputNum.add(userInputString.charAt(i) - '0');
         }
     }
 
     static void getComputerNum(List<Integer> computerNum) {
         // Generate the computer's numbers.
-        while (computerNum.size() < 3) {
+        while (computerNum.size() < MAX_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNum.contains(randomNumber)) {
                 computerNum.add(randomNumber);
@@ -71,7 +72,7 @@ public class Application {
         int ball_count = 0;
         int strike_count = 0;
         boolean is_it_correct = false;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MAX_NUMBERS; i++) {
             if (Objects.equals(userInputNum.get(i), computerNum.get(i))) {
                 strike_count++;
             } else if (computerNum.contains(userInputNum.get(i))) {
@@ -90,7 +91,7 @@ public class Application {
         }
 
         // Check if strike count is 3
-        if (strike_count == 3) {
+        if (strike_count == MAX_NUMBERS) {
             is_it_correct = true;
         }
         return is_it_correct;
@@ -101,7 +102,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String try_again = Console.readLine();
         if (!(try_again.equals("1") || try_again.equals("2"))) {
-            throw new IllegalArgumentException(errorMessage);
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         return try_again;
     }
