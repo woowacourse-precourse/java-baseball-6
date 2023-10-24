@@ -25,7 +25,7 @@ public class GameController {
 
             //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
             NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
-            gameService.playOneGame();
+            gameService.playOneGame(inputView, hintView, computerBaseball);
 
         }
     }
