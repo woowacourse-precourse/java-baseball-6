@@ -48,21 +48,21 @@ public class Validation {
         if (isNothing(strike, ball)) {
             return MessageConstant.NOTHING.message;
         }
-        if (isNoStrikeYesBall(strike, ball)) {
+        if (onlyHasBall(strike, ball)) {
             return ball + MessageConstant.BALL.message;
         }
-        if (isNoBallYesStrike(strike, ball)) {
+        if (onlyHasStrike(strike, ball)) {
             return strike + MessageConstant.STRIKE.message;
         }
 
         return ball + MessageConstant.BALL.message + " " + strike + MessageConstant.STRIKE.message;
     }
 
-    private static boolean isNoBallYesStrike(int strike, int ball) {
+    private static boolean onlyHasStrike(int strike, int ball) {
         return strike != 0 && ball == 0;
     }
 
-    private static boolean isNoStrikeYesBall(int strike, int ball) {
+    private static boolean onlyHasBall(int strike, int ball) {
         return strike == 0 && ball != 0;
     }
 
