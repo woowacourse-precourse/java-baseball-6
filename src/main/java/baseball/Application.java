@@ -1,7 +1,17 @@
 package baseball;
 
+enum ScoreType {
+    STRIKE, BALL
+}
+
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameInterface game = new BaseballGame();
+
+        do {
+            game.initialize();
+            game.start();
+        } while (!game.isEndGame());
     }
 }
