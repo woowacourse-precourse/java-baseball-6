@@ -1,20 +1,28 @@
 # 기능 명세서
 
-## 야구 게임 매니저
-- 야구 게임을 시작할 수 있다.
-- 야구 게임 종료 여부를 위해 메뉴를 입력받을 수 있다.
-- 야구 게임을 위해 컴퓨터 객체와 사용자 객체를 만들어낼 수 있다.
+## Computer(컴퓨터)
+- `List<Integer> generateRandomNumbers()`
+    - 숫자 3개를 랜덤으로 만들어내서 맞추어야할 정답을 만들어낼 수 있다
+- `GameResult calculateGameResult(List<Integer> targetNumbers, List<Integer> userGuess)`
+    - 사용자의 입력을 결과를 검증할 수 있다
+- `void printHint(GameResult result)`
+    - 사용자의 입력에 대하여 힌트를 제공할 수 있다
 
-## 컴퓨터
-- 숫자 3개를 랜덤으로 만들어내서 맞추어야할 정답을 만들어낼 수 있다
-- 사용자의 입력이 정답과 일치하는지 아닌지 판단할 수 있다
-- 사용자의 입력이 정답과 일치하지 않으면 힌트를 제공할 수 있다
+## User(사용자)
+- `List<Integer> changeStringToIntegerList(String userInput)`
+    - 입력을 숫자 배열로 바꾸어줄 수 있다
 
-## 사용자
-- 입력을 숫자 배열로 바꾸어줄 수 있다
+## BaseballGameManager(야구 게임 매니저)
+- `BaseballGameManger(User user, Computer computer)`
+  - 야구 게임을 위해 컴퓨터 객체와 사용자 객체를 사용할 수 있다.
+- `void playBaseballGame()`
+  - 야구 게임을 시작할 수 있다.
+- `int menuChoice()`
+  - 야구 게임 종료 여부를 위해 메뉴를 입력받을 수 있다.
 
 ## 게임 결과
-- 스트라이크와 볼 개수에 따라 게임 종료 여부를 판단해준다
+- `boolean isGameEnd()`
+  - 스트라이크와 볼 개수에 따라 게임 종료 여부를 판단해준다
 
 ---
 ## 테스트 코드
