@@ -28,17 +28,23 @@ public class InputUserNumber {
     public static UserBall inputUserNumber() {
         String input = Console.readLine();
 
+        if(input.length() != NUMBER_SIZE){
+            throw new IllegalArgumentException();
+        }
+
         List<Integer> userNumber = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
+            int inputNumber = input.charAt(i);
+
+            if (inputNumber < 49 || inputNumber > 57) {
+                throw new IllegalArgumentException();
+            }
+            if (userNumber.contains(inputNumber)){
+                throw new IllegalArgumentException();
+            }
             userNumber.add(input.charAt(i) - '0');
         }
-        Set<Integer> duplicateTest = Set.copyOf(userNumber);
-        if (duplicateTest.size() != NUMBER_SIZE) {
-            throw new IllegalArgumentException();
-        }
-        if (duplicateTest.contains(0)) {
-            throw new IllegalArgumentException();
-        }
+
         return new UserBall(userNumber);
     }
 }
