@@ -38,6 +38,13 @@ public class BaseBallGameInputMatcher implements InputMatcher<List<Integer>, Lis
         return false;
     }
 
+    private void resetMatch(int baseBallCount) {
+        strikeCount = 0;
+        ballCount = 0;
+        nothingCount = 0;
+        this.baseBallCount = baseBallCount;
+    }
+
     void increaseStrikeCount() {
         strikeCount++;
         validateScore();
@@ -57,14 +64,6 @@ public class BaseBallGameInputMatcher implements InputMatcher<List<Integer>, Lis
         if (this.strikeCount + this.ballCount + this.nothingCount > baseBallCount) {
             throw new IllegalArgumentException(GAME_ERROR.getMessage());
         }
-    }
-
-
-    private void resetMatch(int baseBallCount) {
-        strikeCount = 0;
-        ballCount = 0;
-        nothingCount = 0;
-        this.baseBallCount = baseBallCount;
     }
 
     private void getMatchResult(int ballCount, int strikeCount, int nothingCount) {
