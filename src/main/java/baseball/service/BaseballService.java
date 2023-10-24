@@ -12,6 +12,10 @@ public class BaseballService {
 
 
     public int[] check(List<Integer> computer, List<Integer> user) {
+        if(user.size()!=3)
+            throw new IllegalArgumentException("잘못 입력하였습니다.");
+
+
         int [] result = new int [2];
 
         result[0] = strike(computer, user);
