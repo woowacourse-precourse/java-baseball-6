@@ -4,13 +4,12 @@ import baseball.model.BallCount;
 import baseball.model.Computer;
 import baseball.model.GameMessage;
 import baseball.model.GameResult;
-import baseball.view.User;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 
 public class GameController {
 
     private final Computer computer = new Computer();
-    private final User user = new User();
+    private final InputView user = new InputView();
     private String computerNumber;
     private String userNumber;
     private boolean gameOver = false;
@@ -37,7 +36,7 @@ public class GameController {
         if (result.equals(endCondition)) {
             System.out.println(GameMessage.SUCCESS_GAME_MESSAGE.getMessage());
             System.out.println(GameMessage.RESTART_GAME_MESSAGE.getMessage());
-            String restart = Console.readLine();
+            String restart = user.userInput();
 
             restartOrEnd(restart);
         }

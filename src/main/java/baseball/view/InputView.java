@@ -4,20 +4,24 @@ import baseball.model.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
-public class User {
+public class InputView {
 
     private static final int NUMBER_LENGTH = 3;
     private static final Pattern pattern = Pattern.compile("([1-9]{3,3})");
     private String userInputNumber;
 
-    public User() {
+    public InputView() {
     }
 
     public void setUserInputNumber() {
         System.out.print(GameMessage.USER_INPUT_NUMBER_MESSAGE.getMessage());
-        String inputNumber = Console.readLine();
+        String inputNumber = userInput();
         validateInputNumber(inputNumber);
         this.userInputNumber = inputNumber;
+    }
+
+    public String userInput() {
+        return Console.readLine();
     }
 
     public String getUserInputNumber() {
