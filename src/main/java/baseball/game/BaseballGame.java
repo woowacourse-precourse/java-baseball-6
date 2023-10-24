@@ -14,35 +14,14 @@ public class BaseballGame {
     public void play() {
         List<Integer> computerNumber = computer.createComputerNumber();
         List<Integer> userNumber = user.createUserNumber();
-        computer.compareEachNumber();
+
+        List<Integer> comparedResult = computer.compareEachNumber(computerNumber, userNumber);
         computer.createResultMessage();
         computer.checkResult();
         computer.decideGameEndAndRestart();
 
 //        public static void Game() {
 //            while (true) {
-//
-//                while (true) {
-//                    System.out.print("숫자를 입력해주세요 : ");
-//                    String userNumberString = Console.readLine();
-//
-//                    ArrayList<Integer> userNumber = validateUserNumber(userNumberString);
-//
-//                    int strike = 0;
-//                    int ball = 0;
-//
-//                    for (int i = 0; i < 3; i++) {
-//                        if (computerNumber.get(i).equals(userNumber.get(i))) {
-//                            strike++;
-//                        }
-//                    }
-//
-//                    for (int number : userNumber) {
-//                        if (computerNumber.contains(number)) {
-//                            ball++;
-//                        }
-//                    }
-//                    ball -= strike;
 //
 //                    if (ball != 0) {
 //                        System.out.printf(ball + "볼 ");
