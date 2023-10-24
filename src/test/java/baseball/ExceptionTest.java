@@ -25,41 +25,30 @@ public class ExceptionTest {
     @Test
     void 유저입력예외처리테스트_길이가3이아닌입력() {
         inputStringToSystemIn("12 ");
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            inputView.getUserNumbers();
-        });
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(inputView::getUserNumbers);
     }
 
     @Test
     void 유저입력예외처리테스트_숫자가아닌입력() {
         inputStringToSystemIn("12d");
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            inputView.getUserNumbers();
-        });
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(inputView::getUserNumbers);
     }
 
     @Test
     void 재시작입력예외처리테스트_길이가1이아닌입력() {
         inputStringToSystemIn(" 12");
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            inputView.getRestartInput();
-        });
-
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(inputView::getUserNumbers);
     }
 
     @Test
     void 재시작입력예외처리테스트_숫자가아닌입력() {
         inputStringToSystemIn("d");
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            inputView.getRestartInput();
-        });
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(inputView::getUserNumbers);
     }
 
     @Test
     void 재시작입력예외처리테스트_1이나2가아닌입력() {
         inputStringToSystemIn("3");
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            inputView.getRestartInput();
-        });
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(inputView::getUserNumbers);
     }
 }
