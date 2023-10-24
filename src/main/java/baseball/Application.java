@@ -1,14 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-    }
+    public static void main(String[] args) throws IOException {
+        System.out.println("숫자 야구 게임을 시작합니다");
+        }
 
     private static List<Integer> makeNum(){
         List<Integer> computer = new ArrayList<>();
@@ -18,8 +18,10 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
         return computer;
-
     }
+
+
+
+
 }
