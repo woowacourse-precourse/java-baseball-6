@@ -13,7 +13,7 @@ import java.util.Set;
 public final class InputValidation {
 
     public static void validExpectedNums(List<Integer> expectedNums) {
-        if (!isSizeThree(expectedNums) || !isInRange(expectedNums) || isDuplicate(expectedNums)) {
+        if (!isSize(expectedNums) || !isInRange(expectedNums) || isDuplicate(expectedNums)) {
             throw new IllegalArgumentException();
         }
     }
@@ -32,7 +32,7 @@ public final class InputValidation {
         }
     }
 
-    private static Boolean isSizeThree(List<Integer> target) {
+    private static Boolean isSize(List<Integer> target) {
         return target.size() == INPUT_MAX_SIZE;
     }
 
