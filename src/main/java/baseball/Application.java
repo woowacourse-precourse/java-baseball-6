@@ -19,6 +19,9 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> user = splitNumber(Integer.parseInt(Console.readLine()));
+            if (!checkException(user)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -41,5 +44,16 @@ public class Application {
         }
         Collections.reverse(user);
         return user;
+    }
+
+    public static boolean checkException(List<Integer> numbers) {
+        String numString = numbers.toString().replace("[","").replace("]","").replaceAll(",","").replaceAll(" ", "");
+        if (numString.length() != 3) {
+            return false;
+        }
+        if (numString.contains("0")) {
+            return false;
+        }
+        return true;
     }
 }
