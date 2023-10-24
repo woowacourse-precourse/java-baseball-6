@@ -12,6 +12,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (go) {
+            int[] cp = new int[3];
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,9 +20,11 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            computer.set(0, 7);
-            computer.set(1, 1);
-            computer.set(2, 3);
+            for (int i = 2; i >= 0; i--) {
+                cp[i] = computer.get(i);
+            }
+
+
             while (true) {
                 int strike = 0, ball = 0;
                 int number;
