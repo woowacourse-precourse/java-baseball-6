@@ -2,6 +2,7 @@ package baseball.util;
 
 import baseball.constant.Number;
 import baseball.domain.BaseballCount;
+import baseball.validation.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -26,34 +27,22 @@ public class GameUtil {
     public static boolean isGameRestart() {
         MessageUtil.printFinishMsg();
         MessageUtil.printRestartMsg();
-        int restartNum = Integer.parseInt(Console.readLine());
-        if (restartNum == Number.RESTART_NUM) {
-            return true;
-        } else if (restartNum == Number.FINISH_NUM) {
-            return false;
-        } else {
-            // TODO : 다른 수가 입력될 경우 예외처리
-            return false;
-        }
+        String input = Console.readLine();
+        InputValidator.validateRestartNum(input);
+        return Integer.parseInt(input) == Number.RESTART_NUM;
     }
 
     public static List<Integer> inputNumber() {
         MessageUtil.printInputMsg();
-        String input = Console.readLine(); //길이, 서로 다른 세 숫자 예외처리 필요
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        List<Integer> userNum = new ArrayList<>();
-        for (String s : input.split("")) {
-            userNum.add(Integer.parseInt(s));
-        }
-        return userNum;
+        String input = Console.readLine();
+        InputValidator.validateInputNum(input);
+        return input.chars().map(Character::getNumericValue).boxed().toList();
     }
 
     public static List<Integer> initRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < Number.GAME_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(Number.RANGE_START, Number.RANGE_END);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
