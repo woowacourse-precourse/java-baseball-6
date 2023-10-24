@@ -17,6 +17,7 @@ public class User {
         String input = Console.readLine();
 
         validateInputLength(input);
+        validateNumericInput(input);
 
         for (int i = 0; i < input.length(); i++) {
 
@@ -52,6 +53,20 @@ public class User {
             throw new IllegalArgumentException("입력 값은 서로 다른 숫자여야 합니다.");
 
         }
-
     }
+
+    // 사용자가 입력한 값이 숫자인지 확인
+    private void validateNumericInput(String input) {
+
+        for (int i = 0; i < input.length(); i++) {
+
+            if (!Character.isDigit(input.charAt(i))) {
+
+                throw new IllegalArgumentException("입력 값은 모두 숫자여야 합니다.");
+
+            }
+        }
+    }
+
+
 }
