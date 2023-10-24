@@ -15,12 +15,12 @@ public class RandomNumberSelectionStrategy implements NumberSelectionStrategy {
         List<Integer> randomUniqueNumbers = new ArrayList<>();
         while (randomUniqueNumbers.size() < DIGIT_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            notContainsNumber(randomUniqueNumbers, randomNumber);
+            addUniqueNumber(randomUniqueNumbers, randomNumber);
         }
         return Collections.unmodifiableList(randomUniqueNumbers);
     }
 
-    private static void notContainsNumber(List<Integer> randomUniqueNumbers, int randomNumber) {
+    private static void addUniqueNumber(List<Integer> randomUniqueNumbers, int randomNumber) {
         if (!randomUniqueNumbers.contains(randomNumber)) {
             randomUniqueNumbers.add(randomNumber);
         }
