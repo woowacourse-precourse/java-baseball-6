@@ -3,13 +3,34 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        String restartFlag;
+        do{
+            run();
+            restartFlag = askPlayerChoice();
+        }while(restartFlag.equals("1"));
+    }
 
+    private static void run(){
+        GameResult gameResult;
+        List<String> computerNumber = createComputerNumber();
+        do{
+            List<String> playerNum = playerInputNumber();
+            validatePlayerNumber(playerNum);
+            gameResult = compareNumList(playerNum, computerNumber);
+            printBallAndStrike(gameResult.getBall(), gameResult.getStrike());
+//            String result = printBallAndStrike2(gameResult.getBall(), gameResult.getStrike());
+//            System.out.println(result);
+        }while(gameResult.getStrike() != 3);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static GameResult compareNumList(List<String> playerNum, List<String> computerNumber) {
@@ -62,6 +83,7 @@ public class Application {
 
     //사용자 입력을 받는 함수
     private static List<String> playerInputNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
         return Arrays.asList(
                 Console.readLine()
                         .split("")
@@ -70,9 +92,9 @@ public class Application {
 
     //사용자 입력 숫자 검증 함수
     private static void validatePlayerNumber(List<String> playerNum){
+        isDigitNumbers(playerNum);
         isThreeNumbers(playerNum);
         isRepeatedNumbers(playerNum);
-        isDigitNumbers(playerNum);
         checkZero(playerNum);
     }
 
