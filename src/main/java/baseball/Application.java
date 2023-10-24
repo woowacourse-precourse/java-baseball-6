@@ -8,36 +8,34 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-
+        game();
     }
     public static void game(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNumber = makeRandomNumber();
-        boolean stopSign=false;
+        int stopSign=0;
         while (true){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             List<Integer> inputNumber = inputUserNumber();
             Result result = checkResult(computerNumber, inputNumber);
             viewResult(result);
             if(checkGame(result)){
                 stopSign = restartOrExit();
-            }
-            if(stopSign){
-                break;
-            }
-            if(!stopSign){
-                computerNumber.clear();
-                makeRandomNumber();
+                if(stopSign==2)break;
+                if(stopSign==1){
+                    computerNumber.clear();
+                    computerNumber=makeRandomNumber();
+                }
             }
         }
     }
 
-    public static boolean restartOrExit() {
+    public static int restartOrExit() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int sign = inputSign();
-        if(sign==1) return false;
-        return true;
+        if(sign==1) return 1;
+        return 2;
     }
 
     public static int inputSign() {
@@ -80,7 +78,7 @@ public class Application {
         }
         for (int i = 0; i < s.length(); i++) {
             int tmp = s.charAt(i) - '0';
-            if (tmp >= 0 && tmp < 10) return true;
+            if (tmp < 0 || tmp > 9) return true;
         }
         return false;
     }
@@ -98,8 +96,7 @@ public class Application {
     public static Result checkResult(List<Integer> computerNumber, List<Integer> inputNumber) {
         Result result = new Result();
 
-        List<Integer> ballList = new ArrayList<>();
-        ballList.addAll(computerNumber);
+        List<Integer> ballList = new ArrayList<>(computerNumber);
 
         for (int i = 0; i < 3; i++) {
             if (computerNumber.get(i).equals(inputNumber.get(i))) {
