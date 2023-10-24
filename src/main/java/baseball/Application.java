@@ -96,9 +96,12 @@ public class Application {
         // 게임 재시작 묻기
         int yesOrNo = replay();
         // 재시작
-        if (yesOrNo == 1) { play();}
+        if (yesOrNo == 1) {
+            play();
+        }
         // 게임 종료
-        if (yesOrNo == 2) {}
+        if (yesOrNo == 2) {
+        }
 
     }
 
