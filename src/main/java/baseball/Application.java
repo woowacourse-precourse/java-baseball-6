@@ -23,9 +23,12 @@ public class Application {
     }
 
     private static void makeRandomAnswer() {//정답 문자열 만들기
-        answer =new StringBuilder();
-        for (int i = 0; i < 3; i++)
-            answer.append(Randoms.pickNumberInRange(1, 9));
+        answer=new StringBuilder();
+        while (answer.length() < 3) {
+            String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (!String.valueOf(answer).contains(randomNumber))
+                answer.append(randomNumber);
+        }
     }
 
     private static void playGames() {
