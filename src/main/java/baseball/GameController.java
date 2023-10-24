@@ -7,16 +7,19 @@ import java.util.List;
 
 public class GameController {
 
+    // 게임 관련 상수 및 변수
     private static final String THREE_STRIKES = "3스트라이크";
     private static final String NOTHING = "낫싱";
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private String randomValue;
 
+    // 게임 생성자 randomValue 초기화
     public GameController() {
         this.randomValue = generateNumber();
     }
 
+    // 게임 진행 메서드
     public void play() {
         while (true) {
             String userInput = getUserInput();
@@ -28,11 +31,12 @@ public class GameController {
                 if (!askForRestart()) {
                     break;
                 }
-                randomValue = generateNumber();
+                randomValue = generateNumber(); // 개선 필요
             }
         }
     }
 
+    // 사용자 입력 받기
     public static String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
@@ -40,10 +44,12 @@ public class GameController {
         return userInput;
     }
 
+    // 게임 종료 여부 확인
     public static boolean isGameOver(String result) {
         return THREE_STRIKES.equals(result);
     }
 
+    // 게임 재시작 여부 확인
     public static boolean askForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = Integer.parseInt(Console.readLine());
