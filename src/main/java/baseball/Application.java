@@ -44,7 +44,7 @@ class User {
         return winning;
     }
 
-    public String readInput() {
+    public String readConsoleInput() {
         input = Console.readLine();
         return input;
     }
@@ -61,12 +61,7 @@ class Computer {
     public Computer() {
         this.numbers = new ArrayList<Integer>();
         // 1~9까지 서로 다른 임의의 수 3개를 생성하여 저장
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
+        generateRandomNumbers();
     }
 
     public List<Integer> getNumbers() {
@@ -100,8 +95,11 @@ class Computer {
         }
     }
 
-    public void regenerateRandomNumbers() {
-        numbers.clear();
+    public void generateRandomNumbers() {
+        // 만약 numbers가 비어있지 않다면 비워준다.
+        if (!numbers.isEmpty()) {
+            numbers.clear();
+        }
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
@@ -194,7 +192,7 @@ class GameManager {
 
     private void setUpBeforeRestartGame() {
         user.lose();
-        computer.regenerateRandomNumbers();
+        computer.generateRandomNumbers();
     }
 
     public void runGame() {
@@ -207,7 +205,7 @@ class GameManager {
 
             printUserInputPrompt();
             // 사용자 입력값이 유효하지 않으면 예외 발생
-            if (!validateUserInput(user.readInput())) {
+            if (!validateUserInput(user.readConsoleInput())) {
                 throw new IllegalArgumentException();
             }
             userGuessJudgement = computer.judgeUserGuess(this.getUserInputVal());
@@ -215,7 +213,7 @@ class GameManager {
             if (checkGuessStageEnd()) {
                 user.win();
                 printGameRestartMessage();
-                if (!validateUserInputForRestartGame(user.readInput())) {
+                if (!validateUserInputForRestartGame(user.readConsoleInput())) {
                     throw new IllegalArgumentException();
                 }
                 switch (this.getUserInputVal()) {
