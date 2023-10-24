@@ -74,7 +74,7 @@ public class Application {
                     else if(ballCnt>0){
                         System.out.printf("%d볼\n",ballCnt);
                     }
-                    else if(strikeCnt>0){
+                    else if(strikeCnt>0 && strikeCnt<3){
                         System.out.printf("%d스트라이크\n",strikeCnt);
                     }
 
@@ -89,7 +89,7 @@ public class Application {
             Console.close();
             int number = Integer.parseInt(num);
             if(number==2){
-                System.exit(0);
+                return;
             }
             else if(number==1){
                 strikeCnt=0;
