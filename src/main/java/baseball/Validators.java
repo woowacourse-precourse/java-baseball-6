@@ -25,7 +25,7 @@ public class Validators {
 
     public static boolean validateIsCharDigit(List<Character> playerInputList) {
         for (int i = 0; i < ANSWER_LENGTH; i++) {
-            if (!Character.isDigit(playerInputList.get(i))) {
+            if (playerInputList.get(i) == '0' || !Character.isDigit(playerInputList.get(i))) {
                 return false;
             }
         }
