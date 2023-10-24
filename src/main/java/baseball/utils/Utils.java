@@ -16,7 +16,7 @@ public class Utils {
         return playerNumber;
     }
 
-    public String readInput() {
+    public static String readInput() {
         return Console.readLine();
     }
 }
