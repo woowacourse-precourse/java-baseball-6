@@ -16,7 +16,32 @@
             123을 제시한 경우 : 1스트라이크
             456을 제시한 경우 : 1볼 1스트라이크
             789를 제시한 경우 : 낫싱
-  4-2: 4-1 과정을 반복해 
+  4-2: 4-1 과정을 반복해 3스트라이크가 나올 시 게임 재시작 여부를 묻는다.
+
+5: 게임 재시작
+  5-1: 게임을 재시작 할려면 1번 종료 할려면 2번을 입력을 해준다.
+  5-2: 게임을 재시작 시 컴퓨터는 새로운 랜덤의 수를 배정받고 게임을 진행한다
+  5-3: 게임을 종료시 게임은 종료된다.
+
+
+예시출력: 
+  숫자 야구 게임을 시작합니다.
+숫자를 입력해주세요 : 123
+1볼 1스트라이크
+숫자를 입력해주세요 : 145
+1볼
+숫자를 입력해주세요 : 671
+2볼
+숫자를 입력해주세요 : 216
+1스트라이크
+숫자를 입력해주세요 : 713
+3스트라이크
+3개의 숫자를 모두 맞히셨습니다! 게임 종료
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+1
+숫자를 입력해주세요 : 123
+1볼
+...
 
 
 
@@ -52,6 +77,78 @@ Java 코드의 열 제한은 120자입니다. "문자"는 유니코드 코드 �
 빈 줄은 가독성을 향상시키기 위해서라면 어디든(예를 들면 논리적으로 코드를 구분하기 위해 문장 사이) 사용 될 수 있습니다. 클래스의 첫 번째 멤버나 초기화(initializer) 또는 마지막 멤버 또는 초기화( initializer) 뒤의 빈 줄은 권장되지도 비권장하지도 않습니다.
 
 클래스의 첫 번째 멤버나 초기화(initializer) 앞에 있는 빈줄을 강제하지 않습니다.
+
+🚀 주석처리 
+
+* 주석처리를 통한 기능 설명과 메서드와 클래스간에 처리를 설명한다.
+  Ex)  // 컴퓨터의 숫자를 랜덤으로 배정하는 메서드
+	 public void generateComputerNumbers() {
+	      computerNumbers = new ArrayList<>();
+	      while (computerNumbers.size() < NUM_DIGITS) {
+	           int num = Randoms.pickNumberInRange(1, 9);
+	           if (!computerNumbers.contains(num)) {
+	                computerNumbers.add(num);
+	            }
+	        }
+	    }
+
+
+🚀 클래스, 메서드 이름 정의
+
+* 클래스와 메서드를 기능과 관련되게 이름 정의한다.
+
+  Ex) 
+	// 볼의 숫자를 얻는 메소드
+	public int getBall() {
+		return ball;
+	}
+	
+	// 스트라이크 숫자를 얻은 메소드
+	public int getStrike() {
+		return strikes;
+	}
+	
+
+🚀 접근 지정자
+* 접근 지정자를 이용하여 캡슐화를 진행한다. 클래스 내의 변수는 private로 감춰주고 변수를 이용시 public인 메서드로 변수를 이용 할 수 있다.
+ Ex)
+  private int strikes = 0;
+	private int ball = 0;
+	
+	
+	// 볼의 숫자를 얻는 메소드
+	public int getBall() {
+		return ball;
+	}
+	
+	// 스트라이크 숫자를 얻은 메소드
+	public int getStrike() {
+		return strikes;
+	}
+
+🚀 SOLID
+* SOLID 원칙을 이용하여 객체지향 원칙을 지킨다. 이러한 원칙은 소프트웨어 시스템을 더 유지보수 가능하고 확장 가능하게 만들기 위한 지침을 제공한다.
+
+* SRP를 이용하여 하나의 클래스는 하나의 책임을 수행하도록 한다.
+
+
+🚀 테스트 코드
+
+테스트 실행 가이드
+
+터미널에서 java -version을 실행하여 Java 버전이 17인지 확인한다. Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 17로 실행되는지 확인한다.
+터미널에서 Mac 또는 Linux 사용자의 경우 ./gradlew clean test 명령을 실행하고, Windows 사용자의 경우 gradlew.bat clean test 또는 ./gradlew.bat clean test 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+EX: BUILD SUCCESSFUL in 0s
+
+
+
+
+
+
+  
+
+
+
 
 
 
