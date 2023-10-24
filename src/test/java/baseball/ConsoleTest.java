@@ -30,53 +30,57 @@ public class ConsoleTest {
             );
         }
 
-        @Test
-        @DisplayName("null을 입력하면 예외가 발생한다.")
-        void inputNull() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(NULL_STRING))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
+        @Nested
+        @DisplayName("예외 테스트")
+        class exceptionTest {
+            @Test
+            @DisplayName("null을 입력하면 예외가 발생한다.")
+            void inputNull() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(NULL_STRING))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
 
-        @Test
-        @DisplayName("숫자가 아닌 입력을 하면 예외가 발생한다.")
-        void inputNotNumber() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(NOT_NUMBER_STRING))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
+            @Test
+            @DisplayName("숫자가 아닌 입력을 하면 예외가 발생한다.")
+            void inputNotNumber() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(NOT_NUMBER_STRING))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
 
-        @Test
-        @DisplayName("범위를 벗어난 수를 입력하면 예외가 발생한다.")
-        void inputOutOfRange() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(OUT_OF_RANGE_NUMBER))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
+            @Test
+            @DisplayName("범위를 벗어난 수를 입력하면 예외가 발생한다.")
+            void inputOutOfRange() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(OUT_OF_RANGE_NUMBER))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
 
-        @Test
-        @DisplayName("정해진 길이를 벗어난 숫자를 입력하면 예외가 발생한다.")
-        void inputInvalidLengthNumber() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(SHORTER_THAN_NUMBER_LENGTH_LIMIT))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(LONGER_THAN_NUMBER_LENGTH_LIMIT))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
+            @Test
+            @DisplayName("정해진 길이를 벗어난 숫자를 입력하면 예외가 발생한다.")
+            void inputInvalidLengthNumber() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(SHORTER_THAN_NUMBER_LENGTH_LIMIT))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(LONGER_THAN_NUMBER_LENGTH_LIMIT))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
 
-        @Test
-        @DisplayName("중복된 수를 입력하면 예외가 발생한다.")
-        void inputDuplicateNumber() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(DUPLICATE_NUMBER_STRING))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
+            @Test
+            @DisplayName("중복된 수를 입력하면 예외가 발생한다.")
+            void inputDuplicateNumber() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(DUPLICATE_NUMBER_STRING))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
         }
 
 
