@@ -9,9 +9,9 @@ public class Game {
         START, PROGRESS, FINISH, TERMINATED
     }
     private Status status;
-    private Computer computer;
-    private Input input;
-    private Output output;
+    private final Computer computer;
+    private final Input input;
+    private final Output output;
 
     public Game(){
         computer = new Computer();
