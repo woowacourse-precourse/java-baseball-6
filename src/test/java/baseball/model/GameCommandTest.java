@@ -1,7 +1,7 @@
 package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -42,12 +42,10 @@ class GameCommandTest {
     @ParameterizedTest(name = "{index}: {2}")
     @MethodSource("invalidParameters")
     void 잘못된_입력으로_생성시에_예외가_발생한다(String input, String expectedExceptionMessage, String exceptionMessage) {
-        // when
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-                () -> GameCommand.createFromInput(input));
-
-        // then
-        assertThat(e.getMessage()).isEqualTo(expectedExceptionMessage);
+        // when & then
+        assertThatThrownBy(() -> GameCommand.createFromInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(expectedExceptionMessage);
     }
 
     static Stream<Arguments> invalidParameters() {

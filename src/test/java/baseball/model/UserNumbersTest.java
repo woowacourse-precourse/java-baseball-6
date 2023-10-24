@@ -1,9 +1,10 @@
 package baseball.model;
 
+import static baseball.fixture.NumberFixture.createNumber;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.helper.TestConverter;
+import baseball.fixture.UserNumbersFixture;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -21,8 +22,9 @@ class UserNumbersTest {
     void 입력으로_리스트를_만든다() {
         // given
         String input = "123";
-        List<Number> expected = TestConverter.makeNumberList(input);
+        UserNumbersFixture.createUserNumbers(input);
         UserNumbers userNumbers = UserNumbers.createFromInput(input);
+        List<Number> expected = List.of(createNumber(1), createNumber(2), createNumber(3));
 
         // when
         List<Number> result = userNumbers.getSelectedNumbers();
@@ -34,12 +36,10 @@ class UserNumbersTest {
     @ParameterizedTest(name = "{index}: {2}")
     @MethodSource("invalidParameters")
     void 잘못된_입력으로_생성시에_예외가_발생한다(String input, String expectedExceptionMessage, String exceptionMessage) {
-        // when
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-                () -> UserNumbers.createFromInput(input));
-
-        // then
-        assertThat(e.getMessage()).isEqualTo(expectedExceptionMessage);
+        // when & then
+        assertThatThrownBy(() -> UserNumbers.createFromInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(expectedExceptionMessage);
     }
 
     static Stream<Arguments> invalidParameters() {

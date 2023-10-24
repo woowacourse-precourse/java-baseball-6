@@ -2,8 +2,8 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.helper.StubNumberGenerator;
-import baseball.helper.TestConverter;
+import baseball.fixture.ComputerFixture;
+import baseball.fixture.UserNumbersFixture;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -20,17 +20,18 @@ class ComputerTest {
 
     @BeforeEach
     void init() {
-        computer = Computer.createWithGeneratedNumbers(new StubNumberGenerator("123"));
+        computer = ComputerFixture.createComputer("123");
     }
 
     @CsvSource({"123, 3", "132,1 ", "567, 0", "125, 2"})
     @ParameterizedTest
     void 스트라이크갯수를_비교하여_반환한다(String input, int expected) {
         // given
-        List<Number> inputNumbers = TestConverter.makeNumberList(input);
+        UserNumbers userNumbers = UserNumbersFixture.createUserNumbers(input);
+        List<Number> selectedNumbers = userNumbers.getSelectedNumbers();
 
         // when
-        int result = computer.countStrikes(inputNumbers);
+        int result = computer.countStrikes(selectedNumbers);
 
         // then
         assertThat(result).isEqualTo(expected);
@@ -40,10 +41,11 @@ class ComputerTest {
     @ParameterizedTest
     void 볼갯수를_비교하여_반환한다(String input, int expected) {
         // given
-        List<Number> inputNumbers = TestConverter.makeNumberList(input);
+        UserNumbers userNumbers = UserNumbersFixture.createUserNumbers(input);
+        List<Number> selectedNumbers = userNumbers.getSelectedNumbers();
 
         // when
-        int result = computer.countBalls(inputNumbers);
+        int result = computer.countBalls(selectedNumbers);
 
         // then
         assertThat(result).isEqualTo(expected);
@@ -53,10 +55,11 @@ class ComputerTest {
     void 쓰리_스트라이크인지_확인한다() {
         // given
         String input = "123";
-        List<Number> inputNumbers = TestConverter.makeNumberList(input);
+        UserNumbers userNumbers = UserNumbersFixture.createUserNumbers(input);
+        List<Number> selectedNumbers = userNumbers.getSelectedNumbers();
 
         // when
-        boolean isThreeStrikes = computer.isThreeStrikes(inputNumbers);
+        boolean isThreeStrikes = computer.isThreeStrikes(selectedNumbers);
 
         // then
         assertThat(isThreeStrikes).isTrue();
