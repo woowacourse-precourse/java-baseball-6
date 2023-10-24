@@ -6,10 +6,8 @@ public class Application {
         // TODO: 프로그램 구현
         InputView inputView = new InputView();
         Game game = new Game();
-        do{
+        do {
             game.playGame();
-        }
-        while(inputView.getRestartInput());
-
+        } while (inputView.getRestartInput());
     }
 }
