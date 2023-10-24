@@ -1,10 +1,9 @@
-package baseball;
+package baseball.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.service.BaseballCollection;
-import baseball.service.Judgement;
-import baseball.service.RandomNumberGenerator;
+import baseball.service.domain.BaseballCollection;
+import baseball.service.domain.RandomNumberGenerator;
 import java.util.List;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
@@ -21,9 +20,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("137");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("3스트라이크");
+        assertThat(gameResult.getHint()).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -34,9 +33,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("893");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("1볼 1스트라이크");
+        assertThat(gameResult.getHint()).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -47,9 +46,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("247");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("1볼");
+        assertThat(gameResult.getHint()).isEqualTo("1볼");
     }
 
     @Test
@@ -60,9 +59,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("243");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("2볼");
+        assertThat(gameResult.getHint()).isEqualTo("2볼");
     }
 
     @Test
@@ -73,9 +72,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("942");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("2볼 1스트라이크");
+        assertThat(gameResult.getHint()).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
@@ -86,9 +85,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("492");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("3볼");
+        assertThat(gameResult.getHint()).isEqualTo("3볼");
     }
 
     @Test
@@ -99,9 +98,9 @@ class JudgementTest {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(() -> computerNums.remove(0));
         BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball("369");
         // when
-        String hint = judgement.calculateHint(computerBalls, playerBalls);
+        GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
         // then
-        assertThat(hint).isEqualTo("낫싱");
+        assertThat(gameResult.getHint()).isEqualTo("낫싱");
     }
 
     @Test
@@ -112,9 +111,9 @@ class JudgementTest {
             BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(new RandomNumberGenerator());
             BaseballCollection playerBalls = BaseballCollection.ofComputerBaseball(new RandomNumberGenerator());
             // when
-            String hint = judgement.calculateHint(computerBalls, playerBalls);
+            GameResult gameResult = judgement.calculateHint(computerBalls, playerBalls);
             // then
-            assertThat(hint).isNotEqualTo("1볼 2스트라이크");
+            assertThat(gameResult.getHint()).isNotEqualTo("1볼 2스트라이크");
         }
     }
 }
