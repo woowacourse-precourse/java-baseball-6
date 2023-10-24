@@ -4,14 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 
-public class Baseball {
+public class BaseballGame {
     private static final int DIGIT_LENGTH = 3;
     private static final int START_NUM_OF_RANGE = 1;
     private static final int END_NUM_OF_RANGE = 9;
-    private static final int MINIMUM_NUM = 123;
-    private static final int MAXIMUM_NUM = 987;
+    private static final int MIN_NUM = 123;
+    private static final int MAX_NUM = 987;
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -49,7 +48,7 @@ public class Baseball {
 
     public List<Integer> convertStringToList(String inputString) {
         List<Integer> inputList = new ArrayList<>();
-        validateInput(inputString);
+        validateInputNum(inputString);
 
         for (int i = 0; i < DIGIT_LENGTH; i++) {
             char c = inputString.charAt(i);
@@ -59,13 +58,16 @@ public class Baseball {
         return inputList;
     }
 
-    // contains로 loop 대신하는 version
-    public void validateInput(String inputString) {
-        if (inputString.length() != DIGIT_LENGTH || inputString.contains("0")) {
+    // loop 도는 version
+    public static void validateInputNum(String inputString) {
+        if (inputString.length() != DIGIT_LENGTH || inputString.contains("0"))
             throw new IllegalArgumentException();
-        }
-        if (Integer.parseInt(inputString) < MINIMUM_NUM || Integer.parseInt(inputString) > MAXIMUM_NUM) {
-            throw new IllegalArgumentException();
+
+        for (int i = 0; i < DIGIT_LENGTH; i++) {
+            char c = inputString.charAt(i);
+            if (!Character.isDigit(c) || inputString.substring(i + 1).contains(String.valueOf(c))) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -78,8 +80,6 @@ public class Baseball {
     }
 
     public void countBallAndStrike(List<Integer> inputNum, final List<Integer> answer) {
-//        int ball = 0;
-//        int strike = 0;
         ball = 0;
         strike = 0;
 
@@ -92,8 +92,6 @@ public class Baseball {
                 ball++;
             }
         }
-//        printResult(ball, strike);
-//        return strike;
     }
 
     private void printResult() {
