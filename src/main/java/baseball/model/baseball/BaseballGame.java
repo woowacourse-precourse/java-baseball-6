@@ -15,14 +15,14 @@ public class BaseballGame {
         this.baseballNumbers = RandomNumberCreateUtil.createBaseballNumbers();
     }
 
-    public long compareBallCount(List<Integer> expectedNumbers) {
+    public long getBallCount(List<Integer> expectedNumbers) {
         return IntStream.range(0, BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue())
                 .filter(i -> !Objects.equals(baseballNumbers.get(i), expectedNumbers.get(i)))
                 .filter(i -> baseballNumbers.contains(expectedNumbers.get(i)))
                 .count();
     }
 
-    public long compareStrikeCount(List<Integer> expectedNumbers) {
+    public long getStrikeCount(List<Integer> expectedNumbers) {
         return IntStream.range(0, BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue())
                 .filter(i -> Objects.equals(baseballNumbers.get(i), expectedNumbers.get(i)))
                 .count();

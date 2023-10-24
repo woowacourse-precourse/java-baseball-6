@@ -20,8 +20,8 @@ public class BaseballManager {
 
     public void updateBallAndStrike(Player player){
         List<Integer> expectedNumbers = player.getExpectedNumbers();
-        ball.updateBallCount(baseballGame.compareBallCount(expectedNumbers));
-        strike.updateStrikeCount(baseballGame.compareStrikeCount(expectedNumbers));
+        ball.updateBallCount(baseballGame.getBallCount(expectedNumbers));
+        strike.updateStrikeCount(baseballGame.getStrikeCount(expectedNumbers));
     }
 
     public String statusBallAndStrike(){
