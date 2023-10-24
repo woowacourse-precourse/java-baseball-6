@@ -14,7 +14,6 @@ public class Application {
                 Correct.add(randomNumber);
             }
         }
-        System.out.println(Correct); //정답 출력(체킹용)
         Check(Correct);//정답이 되는 수를 가지고 Check함수로 이동
         return 0;
     }
@@ -55,11 +54,16 @@ public class Application {
     }
     //사용자의 입력을 받을 때 유효성 확인을 하는 함수
     private static int UserInput(){
-        String UserInput = Console.readLine();
+        String UserInputString = Console.readLine();
         try {
-            return Integer.parseInt(UserInput);
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("유효하지 않은 수입니다.", ex);
+            if(UserInputString.length() !=3) {
+                throw new IllegalArgumentException("유효하지 않은 수 입니다..");
+            }
+            return Integer.parseInt(UserInputString);
+        }
+
+        catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("유효하지 않은 수입니다.",ex);
         }
     }
     //게임 종료
@@ -68,7 +72,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int UserInput = UserInput();
         if (UserInput==1) return Gamestart();
-        if (UserInput==2) System.exit(0);
+        if (UserInput==2) return(0);
         return 0;
     }
 
