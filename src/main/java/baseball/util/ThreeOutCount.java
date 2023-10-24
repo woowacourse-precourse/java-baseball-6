@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 public class ThreeOutCount {
     private static final int OutCount = 3;

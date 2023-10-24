@@ -1,6 +1,6 @@
 package baseball.service;
 
-import static baseball.ThreeOutCount.getTreeOutCount;
+import static baseball.util.ThreeOutCount.getTreeOutCount;
 
 import baseball.config.withinRange;
 import baseball.util.Validate;
