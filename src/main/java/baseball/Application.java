@@ -1,6 +1,6 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ public class Application {
         if(isContinue==1){
             play();
         }else if(isContinue==2){
+            close();
             System.exit(0);
         }
     }
