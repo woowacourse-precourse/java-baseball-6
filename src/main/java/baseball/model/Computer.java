@@ -22,12 +22,16 @@ public class Computer {
     }
 
     public List<Integer> createRandomNumbers() {
-        return IntStream.generate(() -> Randoms.pickNumberInRange(BALL_MIN, BALL_MAX))
+        return IntStream.generate(Computer::createRandomNumber)
                 .boxed()
                 .distinct()
-                .limit(BALL_LENGTH).collect(Collectors.toList());
+                .limit(BALL_LENGTH)
+                .collect(Collectors.toList());
     }
 
+    private static int createRandomNumber() {
+        return Randoms.pickNumberInRange(BALL_MIN, BALL_MAX);
+    }
 
     public int getNumberByPosition(int position) {
         return computerNumber.get(position);
