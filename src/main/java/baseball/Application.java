@@ -47,7 +47,7 @@ public class Application {
             }
         }
 
-        ArrayList<String> results = new ArrayList<>();
+        List<String> results = new ArrayList<>();
         if (ball!=0) {
             results.add(String.format("%d볼", ball));
         }
