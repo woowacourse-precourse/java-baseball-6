@@ -15,7 +15,6 @@ public class GameResult {
             this.result = ball + GameMessage.BALL.getMessage() + " " +
                     strike + GameMessage.STRIKE.getMessage();
         }
-        System.out.println(result);
     }
 
     public String getResult() {

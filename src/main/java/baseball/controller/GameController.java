@@ -5,27 +5,27 @@ import baseball.model.Computer;
 import baseball.model.GameMessage;
 import baseball.model.GameResult;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
 
     private final Computer computer = new Computer();
-    private final InputView user = new InputView();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private String computerNumber;
     private String userNumber;
     private boolean gameOver = false;
 
-
     public void play() {
 
-        System.out.println(GameMessage.START_GAME_MESSAGE.getMessage());
+        outputView.printStartGameMessage();
         startGame();
 
         while (!gameOver) {
             getUserNumber();
-
             BallCount ballCount = new BallCount(computerNumber, userNumber);
             GameResult gameResult = new GameResult(ballCount.getBall(), ballCount.getStrike());
-
+            outputView.printGameResult(gameResult.getResult());
             confirmRestart(gameResult.getResult());
         }
 
@@ -34,9 +34,9 @@ public class GameController {
     private void confirmRestart(String result) {
         String endCondition = "3스트라이크";
         if (result.equals(endCondition)) {
-            System.out.println(GameMessage.SUCCESS_GAME_MESSAGE.getMessage());
-            System.out.println(GameMessage.RESTART_GAME_MESSAGE.getMessage());
-            String restart = user.userInput();
+            outputView.printSuccessGameMessage();
+            outputView.printRestartGameMessage();
+            String restart = inputView.userInput();
 
             restartOrEnd(restart);
         }
@@ -55,8 +55,9 @@ public class GameController {
     }
 
     private void getUserNumber() {
-        user.setUserInputNumber();
-        userNumber = user.getUserInputNumber();
+        outputView.printInputNumberMessage();
+        inputView.setUserInputNumber();
+        userNumber = inputView.getUserInputNumber();
     }
 
     private void startGame() {

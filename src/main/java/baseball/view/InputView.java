@@ -14,7 +14,6 @@ public class InputView {
     }
 
     public void setUserInputNumber() {
-        System.out.print(GameMessage.USER_INPUT_NUMBER_MESSAGE.getMessage());
         String inputNumber = userInput();
         validateInputNumber(inputNumber);
         this.userInputNumber = inputNumber;
