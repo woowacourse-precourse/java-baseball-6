@@ -1,16 +1,16 @@
 package baseball.service;
 
+import baseball.domain.Ball;
 import baseball.domain.GameResult;
+import baseball.domain.MatchResult;
 import baseball.view.OutputView;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GameService {
-
-    public GameService() {
-
-    }
 
     public boolean isGameOver(GameResult gameResult) {
         if (gameResult.getStrike() == 3) {
@@ -22,23 +22,29 @@ public class GameService {
 
     public GameResult checkResult(List<Integer> numbers, List<Integer> computerNumbers) {
         validate(numbers);
+
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < numbers.size(); i++) {
-            Integer player = numbers.get(i);
-            for (int j = 0; j < computerNumbers.size(); j++) {
-                Integer computer = computerNumbers.get(j);
-                if (i == j && player.equals(computer)) {
-                    strike++;
-                }
-                if (i != j && player.equals(computer)) {
-                    ball++;
-                }
+        List<Ball> player = convertToBall(numbers);
+        List<Ball> computer = convertToBall(computerNumbers);
+
+        for (Ball playerBall : player) {
+            MatchResult result = playerBall.match(computer);
+            if (result.isStrike()) {
+                strike++;
+            }
+            if (result.isBall()) {
+                ball++;
             }
         }
 
         return new GameResult(strike, ball);
+    }
+
+    private List<Ball> convertToBall(List<Integer> numbers) {
+        return IntStream.range(0, numbers.size()).mapToObj(i -> new Ball(i, numbers.get(i)))
+                .collect(Collectors.toList());
     }
 
     private static void validate(List<Integer> numbers) {
