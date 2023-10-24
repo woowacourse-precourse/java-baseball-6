@@ -28,6 +28,7 @@ public class Game {
             int ballCount = hint.getBallCount(computer, user);
             output.printHint(strikeCount, ballCount);
             if (strikeCount == 3) {
+                output.printContinue();
                 check = continueCheck();
             }
             if (strikeCount == 3 && check) {
