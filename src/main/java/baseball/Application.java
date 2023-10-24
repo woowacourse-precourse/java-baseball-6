@@ -10,21 +10,22 @@ public class Application {
     public static void main(String[] args) {
         game();
     }
-    public static void game(){
+
+    public static void game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNumber = makeRandomNumber();
-        int stopSign=0;
-        while (true){
+        int stopSign = 0;
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> inputNumber = inputUserNumber();
             Result result = checkResult(computerNumber, inputNumber);
             viewResult(result);
-            if(checkGame(result)){
+            if (checkGame(result)) {
                 stopSign = restartOrExit();
-                if(stopSign==2)break;
-                if(stopSign==1){
+                if (stopSign == 2) break;
+                if (stopSign == 1) {
                     computerNumber.clear();
-                    computerNumber=makeRandomNumber();
+                    computerNumber = makeRandomNumber();
                 }
             }
         }
@@ -34,33 +35,35 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int sign = inputSign();
-        if(sign==1) return 1;
+        if (sign == 1) return 1;
         return 2;
     }
 
     public static int inputSign() {
         String sign = Console.readLine();
-        if(sign.equals("1")) return 1;
+        if (sign.equals("1")) return 1;
         return 2;
     }
 
     public static boolean checkGame(Result result) {
-        if(result.strike==3){
+        if (result.strike == 3) {
             return true;
         }
         return false;
     }
+
     public static void viewResult(Result result) {
         String view = "";
-        if(result.ball>0){
-            view+=Integer.toString(result.ball)+"볼 ";
+        if (result.ball > 0) {
+            view += Integer.toString(result.ball) + "볼 ";
         }
-        if(result.strike>0){
-            view+=Integer.toString(result.strike)+"스트라이크 ";
+        if (result.strike > 0) {
+            view += Integer.toString(result.strike) + "스트라이크 ";
         }
-        if(result.isNothing) view="낫싱";
+        if (result.isNothing) view = "낫싱";
         System.out.println(view);
     }
+
     public static List<Integer> makeRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
@@ -121,8 +124,8 @@ public class Application {
         boolean isNothing;
 
         public Result() {
-            this.strike=0;
-            this.ball=0;
+            this.strike = 0;
+            this.ball = 0;
             this.isNothing = false;
         }
     }
