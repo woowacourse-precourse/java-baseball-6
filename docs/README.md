@@ -8,9 +8,9 @@
   - 야구 게임에서 사용하는 수가 몇 자리의 숫자인지 정의한다.  
 - main 메소드
   - 멤버변수 run 은 boolean 타입으로, 초기값은 true이다.
-    - run 은 애플리케이션의 유지/종료를 담당한다. run 값이 true이면 애플리케이션이 계속 실행되고, false 이면 애플리케이션이 종료된다.
-  - 멤버변수 finish은 boolean 타입으로, 초기값은 false이다.
-    - finish 이 true일 때 사용자의 입력이 컴퓨터의 출력과 일치하여 게임이 종료된다. 
+  - run 은 애플리케이션의 유지/종료를 담당한다. run 값이 true이면 애플리케이션이 계속 실행되고, false 이면 애플리케이션이 종료된다.
+  - 재시작 입력을 받았다면 gameStart 메소드를 재실행한다. 
+  - 종료 입력을 받았다면 애플리케이션을 종료한다. 
 ### BaseballGame
 사용자의 입출력을 전담한다.
 - gameStart 메소드
@@ -21,10 +21,7 @@
 - restartOrEnd 메소드
   - 사용자에게 게임이 끝난 경우 재시작 할 지, 애플리케이션을 종료할 지 질문한다.
   - 사용자로부터 재시작/종료에 대한 입력을 받는다.
-  - 재시작 입력을 받았다면 gameStart 메소드를 재실행한다.
-  - 종료 입력을 받았다면 애플리케이션을 종료한다.
-  - return 타입은 boolean 이다. 
-
+  - return 타입은 boolean 이다.
 ### GenerateRandomNumber
 컴퓨터가 3개의 무작위 번호를 만들어 낸다.
 - generateRandomNumber 메소드
@@ -64,7 +61,6 @@
 ### Validation 
 사용자의 입력을 검증한다. 
 예외가 발생하는 경우 `IllegalArgumentException` 을 발생시키고 애플리케이션을 종료한다.
-
 - inputLengthIsZero 메소드
   - 사용자로부터 받은 입력의 개수가 0개일 때 예외를 발생시킨다.
 - inputLengthIsOver 메소드
@@ -78,8 +74,7 @@
 - userGameStartValidation 메소드
   - 게임을 시작할 때 사용자의 입력을 검증한다.
 - userGameRestartOrEndValidation 메소드
-  - 게임을 종료 또는 재시작하기 위해 사용자의 입력 받을 때 그 입력을 검증한다. 
-  
+  - 게임을 종료 또는 재시작하기 위해 사용자의 입력 받을 때 그 입력을 검증한다.
 ### Converter
 특정 자료형을 다른 자료형으로 변환한다. 
 - stringToIntList
