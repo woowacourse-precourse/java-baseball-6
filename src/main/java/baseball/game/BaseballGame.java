@@ -5,7 +5,6 @@ import baseball.game.status.BaseballGameStatus;
 import baseball.player.ComputerPlayer;
 import baseball.player.UserPlayer;
 import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     public static BaseballGame instance;

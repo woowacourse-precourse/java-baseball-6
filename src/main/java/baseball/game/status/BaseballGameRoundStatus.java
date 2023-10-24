@@ -1,6 +1,6 @@
 package baseball.game.status;
 
-public enum GameRoundStatus {
+public enum BaseballGameRoundStatus {
     CONTINUE,
     EXIT
 }
