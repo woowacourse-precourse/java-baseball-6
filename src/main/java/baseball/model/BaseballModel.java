@@ -28,7 +28,7 @@ public class BaseballModel {
         return randomNumbers;
     }
 
-    public GameResult evaluatePlayerInput(List<Integer> computerNumber, List<Integer> playerNumber) {
+    public GameResult calculateGameResult(List<Integer> computerNumber, List<Integer> playerNumber) {
         for (int i = 0; i < computerNumber.size(); i++) {
             if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
                 gameResult.getStrike().increaseCount();

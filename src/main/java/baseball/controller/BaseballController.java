@@ -31,7 +31,7 @@ public class BaseballController {
         while (!gameResult.isGameEnded()) {
             List<Integer> playerNumber = getPlayerNumberInput();
 
-            gameResult = baseballModel.evaluatePlayerInput(computerNumber, playerNumber);
+            gameResult = baseballModel.calculateGameResult(computerNumber, playerNumber);
 
             baseballView.displayScore(gameResult);
 
