@@ -2,7 +2,6 @@ package baseball;
 
 public class GameResult {
 
-    // TODO: 상수관리 어디서할 지 고민
     private static final String BALL_TEXT = "볼";
     private static final String STRIKE_TEXT = "스트라이크";
     private static final String NOTING_TEXT = "낫싱";
@@ -17,26 +16,34 @@ public class GameResult {
     }
 
     public Boolean isAnswer() {
-        return strikeCount == Computer.NUMBER_DIGIT;
+        return strikeCount.equals(Computer.NUMBER_DIGIT);
     }
 
-    // TODO: 메서드 분리 고려
+    private Boolean isNoting() {
+        return ballCount == 0 && strikeCount == 0;
+    }
+
+    private Boolean isBallExist() {
+        return ballCount > 0;
+    }
+
+    private Boolean isStrikeExist() {
+        return strikeCount > 0;
+    }
+
     @Override
     public String toString() {
-        if (ballCount == 0 && strikeCount == 0) {
+        if (isNoting()) {
             return NOTING_TEXT;
         }
 
         StringBuilder sb = new StringBuilder(10);
-
-        if (ballCount > 0) {
+        if (isBallExist()) {
             sb.append(ballCount).append(BALL_TEXT).append(SPACE);
         }
-
-        if (strikeCount > 0) {
+        if (isStrikeExist()) {
             sb.append(strikeCount).append(STRIKE_TEXT);
         }
-
         return sb.toString().trim();
     }
 }
