@@ -3,16 +3,18 @@ package baseball;
 import java.util.Map;
 
 public class Output {
+    private static final int ZERO = 0;
+
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void hint(Map<String, Integer> result) {
-        if (result.get("스트라이크") == 0 && result.get("볼") == 0) {
-            System.out.print("낫싱");;
+        if (result.get("스트라이크") == ZERO && result.get("볼") == ZERO) {
+            System.out.print("낫싱");
         }
         for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            if (entry.getValue() != 0) {
+            if (entry.getValue() != ZERO) {
                 System.out.print(entry.getValue() + entry.getKey() + " ");
             }
         }
