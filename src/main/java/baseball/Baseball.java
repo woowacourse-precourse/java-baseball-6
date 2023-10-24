@@ -3,8 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static message.ConsoleMessage.*;
+
 public class Baseball {
     private String computerNum;
+    private static final int NUM_LENGTH=3;
 
     // 생성자
     public Baseball(){
@@ -13,7 +16,7 @@ public class Baseball {
 
     private void initGame(){
         // 게임 시작 알림
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_GAME);
 
         // 컴퓨터 수 세팅
         this.computerNum=makeRandomNum();
@@ -23,7 +26,7 @@ public class Baseball {
     private String makeRandomNum(){
         String randomStr = "";
 
-        while(randomStr.length()<3) {
+        while(randomStr.length()<NUM_LENGTH) {
 
             int randomNum = Randoms.pickNumberInRange(1, 9);
             String numToString=Integer.toString(randomNum);
@@ -42,12 +45,12 @@ public class Baseball {
         int strikeNum = result.strike();
 
         if(ballNum==0 && strikeNum==0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
             return;
         }
 
-        if(ballNum!=0) System.out.print(ballNum+"볼 ");
-        if(strikeNum!=0) System.out.print(strikeNum+"스트라이크");
+        if(ballNum!=0) System.out.print(ballNum+BALL+" ");
+        if(strikeNum!=0) System.out.print(strikeNum+STRIKE);
         System.out.print("\n");
     }
 
@@ -56,7 +59,7 @@ public class Baseball {
         int ballNum=0;
         int strikeNum=0;
 
-        for(int i=0;i<3;i++){
+        for(int i=0;i<NUM_LENGTH;i++){
             if(input.charAt(i) == computerNum.charAt(i)) strikeNum++;
             else if(computerNum.contains(String.valueOf(input.charAt(i)))){
                 ballNum++;
@@ -68,7 +71,7 @@ public class Baseball {
 
     // 게임 종료 이후의 처리
     private void afterGame(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(AFTER_GAME);
         String input=Console.readLine();
 
         if(input.equals("1")){
@@ -76,6 +79,7 @@ public class Baseball {
             this.computerNum=makeRandomNum();
             playGame();
 
+            // 잘못된 입력은 에러처리
         }else if(!input.equals("2")){
             throw new IllegalArgumentException();
         }
@@ -85,20 +89,20 @@ public class Baseball {
     private void checkValidity(String input){
 
         // 세 자리가 맞는지 확인
-        if(input.length()!=3){
+        if(input.length()!=NUM_LENGTH){
             throw new IllegalArgumentException();
         }
 
         // 1~9자리 숫자로 이루어졌는지 확인
-        for(int i=0;i<3;i++) {
+        for(int i=0;i<NUM_LENGTH;i++) {
             if (input.charAt(i)<'1' || input.charAt(i)>'9'){
                 throw new IllegalArgumentException();
             }
         }
 
         // 숫자가 중복되지 않았는지 확인
-        for(int i=0;i<3;i++){
-            for(int j=i+1;j<3;j++){
+        for(int i=0;i<NUM_LENGTH;i++){
+            for(int j=i+1;j<NUM_LENGTH;j++){
                 if(input.charAt(i)==input.charAt(j)) throw new IllegalArgumentException();
             }
         }
@@ -108,7 +112,7 @@ public class Baseball {
     public void playGame(){
 
         while(true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(PLEASE_INPUT_NUMBER);
             String input=Console.readLine();
 
             checkValidity(input);
@@ -117,7 +121,7 @@ public class Baseball {
             printResult(bs);
 
             if(bs.isCorrect()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(NUM_LENGTH +CORRECT_MESSAGE);
                 break;
             }
         }
