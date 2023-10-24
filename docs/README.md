@@ -1,0 +1,3 @@
+- 컴퓨터가 랜덤한 숫자 3개를 뽑기 위해 Randoms.pickNumberInRange() 함수 사용
+- 숫자 3개를 Console.readLine()으로 입력 받고 try,catch 구문으로 예외 처리
+- 
