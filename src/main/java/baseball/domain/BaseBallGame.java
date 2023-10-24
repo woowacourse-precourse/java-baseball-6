@@ -20,6 +20,7 @@ public class BaseBallGame {
         this.player = player;
     }
 
+//    게임 시작 및 재시작
     public void startGame(){
         int restart;
         do{
@@ -34,6 +35,7 @@ public class BaseBallGame {
         }while(restart !=EXIT_GAME_NUMBER);
     }
 
+//    게임 진행 중
     private void gameProgress(){
         boolean isCorrect = false;
 
@@ -56,12 +58,10 @@ public class BaseBallGame {
             return ;
         }
 
-        sb.append(resultList.get(BALL_INDEX)!=0? resultList.get(BALL_INDEX)+BALL:"");
-        sb.append(sb.isEmpty()?"":" ");
-        sb.append(resultList.get(STRIKE_INDEX)!=0? resultList.get(STRIKE_INDEX)+STRIKE:"");
+        sb.append(resultList.get(BALL_INDEX)!=0? resultList.get(BALL_INDEX)+BALL_MESSAGE+" ":"");
+        sb.append(resultList.get(STRIKE_INDEX)!=0? resultList.get(STRIKE_INDEX)+STRIKE_MESSAGE:"");
 
         System.out.println(sb.toString());
-
     }
 
     private boolean checkResult(List<Integer> resultList){
