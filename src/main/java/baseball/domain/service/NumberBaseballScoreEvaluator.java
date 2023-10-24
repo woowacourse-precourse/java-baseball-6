@@ -2,15 +2,8 @@ package baseball.domain.service;
 
 public class NumberBaseballScoreEvaluator {
 
-    private final String targetNumber;
-    private final String inputNumber;
 
-    public NumberBaseballScoreEvaluator(String targetNumber, String inputNumber) {
-        this.targetNumber = targetNumber;
-        this.inputNumber = inputNumber;
-    }
-
-    private int countStrikes() {
+    private int countStrikes(String inputNumber, String targetNumber) {
         int strikes = 0;
         for (int i = 0; i < targetNumber.length(); i++) {
             if (targetNumber.charAt(i) == inputNumber.charAt(i)) {
@@ -20,7 +13,7 @@ public class NumberBaseballScoreEvaluator {
         return strikes;
     }
 
-    private int countBalls() {
+    private int countBalls(String inputNumber, String targetNumber) {
         int balls = 0;
         for (int i = 0; i < inputNumber.length(); i++) {
             char currentChar = inputNumber.charAt(i);
@@ -31,9 +24,9 @@ public class NumberBaseballScoreEvaluator {
         return balls;
     }
 
-    public String evaluate() {
-        int strikes = countStrikes();
-        int balls = countBalls();
+    public String evaluate(String inputNumber, String targetNumber) {
+        int strikes = countStrikes(inputNumber, targetNumber);
+        int balls = countBalls(inputNumber, targetNumber);
         return formatResult(strikes, balls);
     }
 
