@@ -55,4 +55,23 @@ class AnswerRandomListTest {
             assertThat(number >= withinRange.startInclusive() && number <= withinRange.endInclusive()).isTrue();
         }
     }
+
+    @DisplayName("withinRange(시작 범위, 종료 범위)를 설정 후 generateThreeRandomNumber()를 실행시 각 값들은 시작 범위 ~ 종료 범위 내 3개의 원소를 갖는 List 를 반환한다.")
+    @Test
+    void elementsValue_4_TO_10_OfList() {
+
+        //given
+        GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
+        int startInclusive = 4;
+        int endInclusive = 8;
+        withinRange withinRange = new withinRange(startInclusive, endInclusive);
+
+        //when
+        List<Integer> answerRandomList = computer.generateRandomNumberList(withinRange);
+
+        //then
+        for (Integer number : answerRandomList) {
+            assertThat(number >= withinRange.startInclusive() && number <= withinRange.endInclusive()).isTrue();
+        }
+    }
 }
