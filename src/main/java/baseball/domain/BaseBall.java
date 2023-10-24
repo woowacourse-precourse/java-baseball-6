@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.util.Constant.*;
+
 public class BaseBall {
     private List<Integer> inputBallNumber;
 
@@ -18,8 +20,8 @@ public class BaseBall {
 
     public List<Integer> initBallNumbers() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < NUMBER_THREE) {
+            int randomNumber = Randoms.pickNumberInRange(START, END);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
