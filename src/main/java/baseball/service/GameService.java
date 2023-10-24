@@ -48,7 +48,8 @@ public class GameService {
     }
 
     public boolean retryGame() {
-        int answer = Integer.parseInt(Console.readLine());
+        int answer = checkAndConvertNum(Console.readLine());
+
         message.printRetryMsg(answer);
 
         if (answer == RETRY.getValue()) {
@@ -77,6 +78,14 @@ public class GameService {
         }
 
         return new BaseballScore(strikeCount, ballCount);
+    }
+
+    private int checkAndConvertNum(String answer) {
+        try {
+            return Integer.parseInt(answer);
+        } catch (NumberFormatException e) {
+            throw new invalidInputException();
+        }
     }
 
 }
