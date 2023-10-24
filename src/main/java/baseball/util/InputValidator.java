@@ -7,16 +7,18 @@ import java.util.Set;
 
 public class InputValidator {
 
-    public void validateGameNumber(String input) {
+    public static void validateGameNumber(String input) {
         is3DigitsNumber(input);
         isConsistsOfUniqueDigits(input);
     }
 
-    public void validateRestartNumber(String input) {
-        is1Or2(input);
+    public static void validateRestartNumber(String input) {
+        if (!input.matches(GameConstant.RESTART_NUMBER_REGEX)) {
+            throw new IllegalArgumentException(ExceptionMessage.REQUIRES_1_OR_2.getMessage());
+        }
     }
 
-    private void is3DigitsNumber(String input) {
+    private static void is3DigitsNumber(String input) {
         if (input.length() != GameConstant.GAME_NUMBER_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.REQUIRES_3_DIGITS.getMessage());
         }
@@ -26,7 +28,7 @@ public class InputValidator {
         }
     }
 
-    private void isConsistsOfUniqueDigits(String input) {
+    private static void isConsistsOfUniqueDigits(String input) {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < input.length(); i++) {
             set.add(input.charAt(i));
@@ -34,12 +36,6 @@ public class InputValidator {
 
         if (set.size() != input.length()) {
             throw new IllegalArgumentException(ExceptionMessage.REQUIRES_UNIQUE_ELEMENTS.getMessage());
-        }
-    }
-
-    private void is1Or2(String input) {
-        if (!input.matches(GameConstant.RESTART_NUMBER_REGEX)) {
-            throw new IllegalArgumentException(ExceptionMessage.REQUIRES_1_OR_2.getMessage());
         }
     }
 }
