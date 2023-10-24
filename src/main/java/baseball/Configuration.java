@@ -11,12 +11,11 @@ import baseball.view.OutputView;
 
 public class Configuration {
     public static BaseballController baseballController() {
-        BaseballController baseballController = new BaseballController(
+        return new BaseballController(
                 new InputView(),
                 new OutputView(),
                 baseballService()
         );
-        return baseballController;
     }
 
     public static BaseballService baseballService() {
