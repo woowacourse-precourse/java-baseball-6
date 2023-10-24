@@ -6,7 +6,7 @@ public class GameService {
     private final InputService inputService = new InputService();
     private final MessageService message = new MessageService();
 
-    public String start(){
+    public boolean start(){
         message.gameStart();
         inputService.computerAnswer();
 
@@ -14,10 +14,10 @@ public class GameService {
             message.numberInput();
             inputService.userAnswer();
 
-            umpireService.umpire(inputService.getUser(),inputService.getComputer());
+            umpireService.umpire(inputService.userValue(),inputService.computerValue());
             if(umpireService.isThreeStrike()){
                 message.gameOver();
-                return umpireService.decision();
+                return umpireService.isRestart();
             }
         }
     }

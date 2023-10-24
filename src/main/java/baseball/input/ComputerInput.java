@@ -3,6 +3,7 @@ package baseball.input;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ComputerInput {
@@ -19,7 +20,7 @@ public class ComputerInput {
     }
 
     public List<String> value() {
-        return computer;
+        return Collections.unmodifiableList(computer);
     }
 
     public void reset() {

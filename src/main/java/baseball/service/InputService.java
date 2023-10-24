@@ -12,7 +12,7 @@ public class InputService {
         computerInput.create();
     }
 
-    public List<String> getComputer(){
+    public List<String> computerValue(){
         return computerInput.value();
     }
 
@@ -21,7 +21,7 @@ public class InputService {
         userInput.checking();
     }
 
-    public String getUser(){
+    public String userValue(){
         return userInput.value();
     }
 }

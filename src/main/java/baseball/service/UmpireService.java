@@ -18,7 +18,7 @@ public class UmpireService {
         return baseballUmpire.threeStrikeVAR();
     }
 
-    public String decision(){
+    public boolean isRestart(){
         return allClear.restartOrExit();
     }
 

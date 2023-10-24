@@ -8,12 +8,12 @@ public class AllClear {
     private String gameSet ="";
     private final ComputerInput computerInput = new ComputerInput();
 
-    public String restartOrExit() {
+    public boolean restartOrExit() {
         computerInput.reset();
         gameSet = readLine();
 
-        if(gameSet.equals("1")) return "재시작";
-        else if(gameSet.equals("2")) return "게임 종료";
+        if(gameSet.equals("1")) return true;
+        else if(gameSet.equals("2")) return false;
         throw new IllegalArgumentException("잘못된 재시작/종료번호 입니다 :"+gameSet);
     }
 }
