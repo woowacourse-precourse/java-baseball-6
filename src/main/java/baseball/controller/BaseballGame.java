@@ -19,7 +19,7 @@ public class BaseballGame {
     public void start() {
         do {
             getNumberFromPlayer();
-            printCount(getNumberCompare());
+            printBallStrikeCount(getNumberCompare());
         } while (!isGameSet());
 
     }
@@ -34,34 +34,20 @@ public class BaseballGame {
         return compareValidator.getNumberCompare(player.getPlayerNumber(), computer.generate());
     }
 
-    public void printCount(int[] count) {
-        printBallCount(count);
-        printStrikeCount(count);
-        printNothing(count);
-    }
-
-    public static void printBallCount(int[] count) {
-        if (count[0] != 0) {
-            if (count[1] != 0) {
-                System.out.print(count[0]);
-                OutputView.printBallMessage();
-            } else {
-                System.out.print(count[0]);
-                OutputView.printBallMessage();
-            }
-        }
-    }
-
-    public static void printStrikeCount(int[] count) {
-        if (count[1] != 0) {
-            System.out.print(count[1]);
-            OutputView.printStrikeMessage();
-        }
-    }
-
-    public static void printNothing(int[] count) {
+    public void printBallStrikeCount(int[] count) {
         if (count[0] == 0 && count[1] == 0) {
             OutputView.printNothingMessage();
+        }
+        if (count[0] != 0 && count[1] != 0) {
+            System.out.println(count[0] + "볼 " + count[1] + "스트라이크");
+        }
+        if (count[0] != 0 && count[1] == 0) {
+            System.out.print(count[0]);
+            OutputView.printBallMessage();
+        }
+        if (count[0] == 0 && count[1] != 0) {
+            System.out.print(count[1]);
+            OutputView.printStrikeMessage();
         }
     }
 

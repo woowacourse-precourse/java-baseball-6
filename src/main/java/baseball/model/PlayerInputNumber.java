@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 // 2. 사용자 입력 받기
 public class PlayerInputNumber {
     public static String playerInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        OutputView.printInputNumMessage();
         String input = Console.readLine();
 
         return input;
