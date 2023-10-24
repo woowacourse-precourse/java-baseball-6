@@ -3,8 +3,12 @@ package baseball.model;
 import java.util.List;
 
 public class Computer {
-    private BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGenerator();
+    private BaseballNumberGenerator baseballNumberGenerator;// = new BaseballNumberGenerator();
     private List<Integer> baseballNumber;
+
+    public Computer(BaseballNumberGenerator baseballNumberGenerator){
+        this.baseballNumberGenerator = baseballNumberGenerator;
+    }
 
     public void createBaseballNumber(){
         this.baseballNumber = baseballNumberGenerator.createRandomBaseballNumber();
