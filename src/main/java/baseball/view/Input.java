@@ -9,10 +9,6 @@ public class Input {
 	private Input() {
 	}
 
-	public static Input getInstance() {
-		return input;
-	}
-
 	public static String getNumber() {
 		return Console.readLine();
 	}

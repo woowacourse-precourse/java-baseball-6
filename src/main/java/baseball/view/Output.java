@@ -4,14 +4,9 @@ import baseball.model.BaseballInformation;
 
 public class Output {
 
-
     private static final Output output = new Output();
 
     private Output() {
-    }
-
-    public static Output getInstance() {
-        return output;
     }
 
     public static void printStartMessage() {
