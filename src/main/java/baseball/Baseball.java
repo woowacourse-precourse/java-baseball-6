@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
-
     public void proceedGame() {
         OutputView.printStartGameMsg();
 
