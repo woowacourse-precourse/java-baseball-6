@@ -1,6 +1,7 @@
 package baseball.domain;
 
 public class Count {
+
     private int ball;
     private int strike;
 
@@ -17,11 +18,12 @@ public class Count {
         return strike;
     }
 
-    public void setBallCount(int count) {
-        this.ball = count;
+    public void setCount(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
     }
 
-    public void setStrikeCount(int count) {
-        this.strike = count;
+    public boolean is3Strike() {
+        return strike == 3;
     }
 }
