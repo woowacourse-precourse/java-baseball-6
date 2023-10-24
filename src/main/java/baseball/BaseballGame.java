@@ -33,7 +33,7 @@ public class BaseballGame implements NumberGame {
             }
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Message.ALL_CORRECT_MESSAGE);
     }
 
     private void printHint(Score score) {
@@ -42,22 +42,22 @@ public class BaseballGame implements NumberGame {
         int ballCount = score.getBallCount();
 
         if (ballCount != 0) {
-            hint.append(ballCount).append("볼 ");
+            hint.append(ballCount).append(Message.BALL_MESSAGE);
         }
 
         if (strikeCount != 0) {
-            hint.append(strikeCount).append("스트라이크");
+            hint.append(strikeCount).append(Message.STRIKE_MESSAGE);
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            hint.append("낫싱");
+            hint.append(Message.NOTHING_MESSAGE);
         }
 
         System.out.println(hint);
     }
 
     private boolean shouldRepeatGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Message.REPEAT_MESSAGE);
         String userRepeatNumber = Console.readLine();
         validateUserRepeatNumber(userRepeatNumber);
 
