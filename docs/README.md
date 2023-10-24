@@ -93,6 +93,7 @@ UserInput 클래스를 이용하여 사용자 입력 값 읽기, ```void checkAn
 ***메서드***
 - ```void setUserInput()```: 사용자 값을 ```readLine()```을 통해 입력받고, ***입력 조건*** 에 맞게 검사한다. ***입력 조건*** 에 어긋나면, `IllegalArgumentException` 후 종료한다.
 > 사용자 입력 값의 길이가 3이 아니라면, `IllegalArgumentException`
+- ```boolean checkUniqueNumber()```: 사용자 값에 중복이 있는 지 검사하는 메서드이다.
 - ```ArrayList<Integer> getUserNumber()```: 사용자 값을 ```String```형에서 ```ArrayList<Integer>```형으로 변환한다. 외부 클래스에서 변환된 사용자 값을 사용할 수 있게 해주는 메서드이다.
 
 
