@@ -2,39 +2,51 @@ package baseball.utils;
 
 
 public class ParseUserInput {
+
     public int[] getUserNumbers(String userInput, int size) throws IllegalArgumentException {
-        return checkInput(userInput, size);
+        return parseInput(userInput, size);
     }
 
-    private static int[] checkInput(String userInput, int size) throws IllegalArgumentException {
-        try {
-            if (userInput.length() < size) {
 
-            }
-            return processInput(userInput, size);
-        } catch (ArrayIndexOutOfBoundsException e) {
+    private static int[] parseInput(String userInput, int size) throws IllegalArgumentException {
+        validateLength(userInput, size);
+        return validateConvertible(userInput, size);
+    }
+
+    private static void validateLength(String userInput, int size) {
+        if (userInput.length() != size) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static int[] processInput(String userInput, int size) throws IllegalArgumentException {
-        String[] strUserNums = userInput.split("");
-        int[] userNums = new int[size];
+
+    private static int[] validateConvertible(String userInput, int size) {
         try {
-            for (int i = 0; i < strUserNums.length; i++) {
-                userNums[i] = Integer.parseInt(strUserNums[i]);
-                if (!checkRange(userNums[i])) {
-                    throw new IllegalArgumentException();
-                }
-            }
+            return convertStringToInt(userInput, size);
         } catch (NumberFormatException i) {
             throw new IllegalArgumentException();
+        }
+    }
+
+
+    private static int[] convertStringToInt(String userInput, int size) {
+        String[] strUserNums = userInput.split("");
+        int[] userNums = new int[size];
+        for (int i = 0; i < strUserNums.length; i++) {
+            userNums[i] = Integer.parseInt(strUserNums[i]);
+            validateNumberRange(userNums, i);
         }
         return userNums;
     }
 
-    private static boolean checkRange(int userNums) {
-        return 0 <= userNums && userNums <= 9;
+    private static void validateNumberRange(int[] userNums, int i) {
+        if (!checkNumberRange(userNums[i])) {
+            throw new IllegalArgumentException();
+        }
     }
 
+
+    private static boolean checkNumberRange(int userNums) {
+        return 0 <= userNums && userNums <= 9;
+    }
 }
