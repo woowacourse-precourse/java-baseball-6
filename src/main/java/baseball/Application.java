@@ -65,7 +65,11 @@ public class Application {
                 balls++;
             }
         }
+        return getResultMessage(strikes, balls);
+    }
 
+    // checkStrikesOrBall 메서드를 기반으로 결과를 출력하는 메서드
+    private String getResultMessage(int strikes, int balls) {
         if (strikes == 3) {
             return "3스트라이크";
         } else if (strikes == 0 && balls == 0) {
