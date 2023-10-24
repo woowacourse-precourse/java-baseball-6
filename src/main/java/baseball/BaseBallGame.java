@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * BaseBallGame.java
@@ -28,6 +30,8 @@ public class BaseBallGame {
 
                 System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> input = stringToListInt(Console.readLine());
+
+                inputErrorCheck(input);
 
                 int[] result = compareAnswerInput(computer, input);
 
@@ -85,6 +89,26 @@ public class BaseBallGame {
             }
         }
         return list;
+    }
+
+    /**
+     * 숫자 input에 대한 유효성 확인
+     * <p>
+     * 3자리 숫자인가 / 중복되지 않았는가
+     *
+     * @param input
+     */
+    private void inputErrorCheck(List<Integer> input) {
+
+        if (input.size() != 3) {
+            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+        }
+
+        Set<Integer> inputSet = new HashSet<>(input);
+        if (inputSet.size() != 3) {
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+        }
+
     }
 
     /**
