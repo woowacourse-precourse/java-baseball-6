@@ -5,6 +5,16 @@ import java.util.Set;
 
 public class Validation {
 
+    public static boolean verifyRestartNumber(String restartNumber){
+        if(restartNumber.equals("1")){
+            return true;
+        }
+        if(restartNumber.equals("2")){
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
 
     public static void verifyUserNumber(String userNumber){
         verifyUserNumberLength(userNumber);
