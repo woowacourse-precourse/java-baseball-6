@@ -34,7 +34,7 @@ public class Application {
         return switch (retry) {
             case gameRetrySign -> Boolean.TRUE;
             case gameEndSign -> Boolean.FALSE;
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException("1 or 2만 입력해주세요");
         };
     }
 
@@ -120,7 +120,6 @@ public class Application {
                     checkUniqueNumber(user, number);
                     user.add(number);
                 }
-
             }
             check3DigitsNumber(user);
             checkEachDigitRange(user);
