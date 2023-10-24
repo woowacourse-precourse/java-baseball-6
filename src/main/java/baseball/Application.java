@@ -17,6 +17,7 @@ public class Application {
         List<Integer>computer = computerNumber.getComputer();
         PlayerNumber playerNumber = new PlayerNumber();
         Compare compare = new Compare();
+        GameEnd gameEnd = new GameEnd();
 
         String result = "";
         while (true) {
@@ -29,7 +30,6 @@ public class Application {
                 break;
             }
         }
-
-        baseballGame();
+        gameEnd.AskReplay();
     }
 }
