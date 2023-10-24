@@ -7,11 +7,15 @@ import java.util.List;
 
 public class ComputerNumber {
 
+    private final static int numberSize = 3;
+    private final static int minNumber = 1;
+    private final static int maxNumber = 9;
+
     private List<Integer> computerNumber = new ArrayList<>();
 
     public ComputerNumber(){
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNumber.size() < numberSize) {
+            int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
             if (!computerNumber.contains(randomNumber)) {
                 this.computerNumber.add(randomNumber);
             }
