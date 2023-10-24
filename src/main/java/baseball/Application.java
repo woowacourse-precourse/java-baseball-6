@@ -2,122 +2,98 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
+import java.util.Set;
 
-public class Application{
+public class Application {
 
-
-  private static int falseRandSix() {
-    int isRandomNum = Randoms.pickNumberInRange(1, 9);
-    return isRandomNum;
+  public static Set<Integer> list(){
+    Set<Integer> list = new HashSet<>();
+    while(list.size() < 3) {
+      list.add(Randoms.pickNumberInRange(1,9));
+    }
+    System.out.println(list);
+    return list;
   }
   public static void main(String[] args) {
-    System.out.println("숫자 야구 게임을 시작합니다.");
-    int falseRandomAfter = 0;
-    List<Integer> computer = new ArrayList<>();
-    for (int i = 0; i < 6; i++) {
-      computer.add(falseRandSix());
-    }
-    List<Integer> change = new ArrayList<>();
-    int isNumThree = computer.get(3);
-    int isNumFour = computer.get(4);
-    int isNumFive = computer.get(5);
-    change.add(isNumThree);
-    change.add(isNumFour);
-    change.add(isNumFive);
 
-    whileLoop:
-    while (true) {
+    System.out.println("숫자 야구 게임을 시작합니다");
+    List<Integer> Computer = new ArrayList<>();
+    Computer.addAll(list());
+
+    outLoop:
+    while(true) {
+      System.out.println("숫자를 입력해주세요 : ");
+
       try {
-        falseRandomAfter++;
         String userChat = Console.readLine();
+        if (userChat.trim().isEmpty()) {throw new IllegalArgumentException("빈 문자열 예외");}
+        if (userChat.length() != 3) {throw new IllegalArgumentException("입력 3칸이 초과");}
 
-        /*System.out.println("지금 while 회전 수");
-        System.out.println(falseRandomAfter);
-        System.out.println("유저 입력 값 디버깅");
-        System.out.println(userChat);*/
-        if (falseRandomAfter == 3) {
-          computer = change;
+        int num0 = Character.getNumericValue(userChat.charAt(0));
+        int num1 = Character.getNumericValue(userChat.charAt(1));
+        int num2 = Character.getNumericValue(userChat.charAt(2));
+
+        if (num0 == num1) {
+          throw new IllegalArgumentException("첫번째 두번째 같은 수 입력");
+        } else if (num0 == num2) {
+          throw new IllegalArgumentException("첫번째 세번째 같은 수 입력");
+        } else if (num1 == num2) {
+          throw  new IllegalArgumentException("두번째 세번째 같은 수 입력");
         }
-        if (userChat.length() == 4){ return;}
-        /*System.out.println("컴퓨터 랜덤 값 디버깅");
-        System.out.println(computer);*/
-        // 1 3 5 5 8 9 발견
 
-        List<Integer> userNumberS = new ArrayList<>();
-        int userNum0 = Character.getNumericValue(userChat.charAt(0));
-        int userNum1 = Character.getNumericValue(userChat.charAt(1));
-        int userNum2 = Character.getNumericValue(userChat.charAt(2));
-        userNumberS.add(userNum0);
-        userNumberS.add(userNum1);
-        userNumberS.add(userNum2);
+        List<Integer> userNumbers = new ArrayList<>();
+        userNumbers.add(num0);
+        userNumbers.add(num1);
+        userNumbers.add(num2);
+        System.out.println(userNumbers);
+
+
+        for (int num : userNumbers) {
+          if (num >= 10) { throw new IllegalArgumentException("문자발견");}
+          else if (num < 1) {throw new IllegalArgumentException("0/음수발견");}
+        }
+
         int st = 0;
         int ball = 0;
         int count = 0;
-        for (int i = 0; i <= 2; i++) {
-          for (int j = 0; j <= 2; j++) {
-            if (computer.get(i).equals(userNumberS.get(i))) {
-              st += 1;
-              break;
-            } else if (computer.get(i).equals(userNumberS.get(j))) {
-              ball += 1;
-              break;
-            } else {
-              count++;
-            }
+
+        for (int i = 0; i <= 2; i++){
+          for (int j = 0; j <= 2; j++){
+            if      (Computer.get(i) == userNumbers.get(i)) { st ++; break; }
+            else if (Computer.get(i).equals(userNumbers.get(j))) { ball ++; break; }
+            else                                            { count ++; }
           }
         }
-        /*System.out.println("총 개수 디버깅");
-        System.out.println(st);
-        System.out.println(ball);
-        System.out.println(count);
-        System.out.println("---------");*/
 
-        List<Integer> gameResult = new ArrayList<>();
-        gameResult.add(st);
-        gameResult.add(ball);
-        gameResult.add(count);
+        if (st != 0){
+          System.out.print(st + "스트라이크 ");
+        }
+        if (ball != 0) {
+          System.out.println(ball + "볼");
+        }
+        if (count == 9) {
+          System.out.println("낫씽");
+        }
+        if (st == 3){
+          System.out.println();
+          System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+          System.out.println("새로운 게임을 시작하려면 1, 종료하려면 2를 입력하세요");
 
-        for (int num : gameResult) {
-          if (num == count && count == 9) {
-            System.out.println("낫씽");
-          }
-          if (num != 0) {
-            if (num == ball) {
-              System.out.print(num + "볼 ");
-            }
-            if (num == st) {
-              System.out.println(num + "스트라이크");
-            }
-          }
-          if (num == st && st == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("새로운 게임을 시작하려면 1, 종료하려면 2를 입력하세요");
-            try {
-              String replay = Console.readLine();
-              /*System.out.println(replay);*/
-              switch (replay) {
-                case "1":
-                  continue whileLoop;
-                case "2":
-                  if (replay != null) {NoSuchElementException e;}
-                  userChat = Randoms.pickUniqueNumbersInRange(1, 9, 3)
-                      .stream().map(String::valueOf)
-                      .collect(Collectors.joining());
-                  return;
+          String RePlay = Console.readLine();
 
-              }
-            }catch (NoSuchElementException e){
-              break ;
-            }
+          switch (Character.getNumericValue(RePlay.charAt(0))) {
+            case 1: Computer.clear(); Computer.addAll(list()); continue outLoop;
+            case 2:            return;
+            default: System.out.println("1/2 이외의 수 발견 : 프로그램을 종료합니다.");
           }
         }
-      }catch (IllegalArgumentException e){
-        e.getMessage();
-      }
-    } // while의 끝
-  }
+
+      } catch (IllegalArgumentException e){
+        System.err.println(e.getMessage());
+        break;
+      }}}
 }
