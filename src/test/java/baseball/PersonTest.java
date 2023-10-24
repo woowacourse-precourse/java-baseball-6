@@ -35,7 +35,7 @@ public class PersonTest {
     @DisplayName("clean 메서드가 리스트를 잘 초기화하는지 테스트")
     public void testClean() {
         person.insertNumberAndValidate("123");
-        person.clean();
+        person.cleanList();
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> person.getNumberAt(0));
     }
 
