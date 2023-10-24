@@ -9,17 +9,19 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Game A = new Game();
+        Game rightAnswer = new Game();
+        Game.start(rightAnswer);
 
     }
 }
 
 class Game {
     static private String INSERT_BLOCK = "숫자를 입력해주세요 : ";
+    static private String GAME_START_COMMENT ="숫자 야구 게임을 시작합니다.";
     int[] answer = new int[3];
 
     Game() {
-        Game.start();
+        System.out.println(GAME_START_COMMENT);
         int numberCount =0;
         while (numberCount<3) {
             int randomNumber = pickNumberInRange(1, 9);
@@ -37,23 +39,73 @@ class Game {
 
     }
 
-    Game(String answer) {
-
+    Game(String input) {
+        for (int i = 0; i < answer.length; i++) {
+            answer[i]= Integer.parseInt(input.charAt(i)+"");
+        }
     }
 
-    static void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        Game.insert();
+    static void start(Game rightAnswer) {
+        Game answer =Game.insert();
+        Game.checkAnswer(answer,rightAnswer);
+
     }
 
     static Game insert() {
 
         System.out.print(INSERT_BLOCK);
         String input = readLine();
-        Game.checkRightInput(input);
+
         return new Game(input);
     }
+    static void checkAnswer(Game answer,Game rightAnswer){
+        int ballCount=0;
+        int strikeCount=0;
+        String nothing="낫싱";
+        String stringAnswer =Array.makeArrayToString(answer.answer);
+        System.out.println(stringAnswer);
+        String stringRightAnswer=Array.makeArrayToString(rightAnswer.answer);
+        System.out.println(stringRightAnswer);
+        for (int i = 0; i < stringRightAnswer.length(); i++) {
+            for (int j = 0; j <stringAnswer.length(); j++) {
+                if(stringRightAnswer.charAt(i)==stringAnswer.charAt(j)){
+                    if(i==j) {
+                        strikeCount++;
+                    }
+                    if (i!=j) {
+                        ballCount++;
+                    }
 
+                }
+            }
+        }
+        if(strikeCount>0 && ballCount>0){
+            System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
+            Game.start(rightAnswer);
+        }
+        if(strikeCount==0 && ballCount>0){
+            System.out.println(ballCount+"볼");
+            Game.start(rightAnswer);
+        }
+        if(strikeCount>0 && ballCount==0){
+            System.out.println(strikeCount+"스트라이크");
+            Game.start(rightAnswer);
+        }
+        if(strikeCount == 3){
+            System.out.println(strikeCount+"스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Game.newGameSelection();
+        }
+        if(strikeCount==0 && ballCount==0) {
+            System.out.println(nothing);
+            Game.start(rightAnswer);
+        }
+
+    }
+    static void newGameSelection(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String selection = readLine();
+    }
     static boolean checkNum(int a, int[] b) {
         for (int i = 0; i < b.length; i++) {
             if (b[i] == a) {
@@ -85,4 +137,14 @@ class Game {
     }
 }
 
+class Array{
+    static String makeArrayToString(int[] a){
+        String result = "";
 
+
+        for (int i = 0; i <a.length ; i++) {
+            result = result + a[i];
+        }
+        return result;
+    }
+}
