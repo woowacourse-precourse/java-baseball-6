@@ -18,7 +18,7 @@ class PlayerTest {
     private static final Integer EXIT = 2;
 
     @BeforeEach
-    void setUp() {
+    void init() {
         guessNumber = new GuessNumber();
         gameStateNumber = new GameStateNumber();
         player = new Player(guessNumber, gameStateNumber);

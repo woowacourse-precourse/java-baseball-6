@@ -18,7 +18,7 @@ class ComputerTest {
     private GameAnswer gameAnswer;
 
     @BeforeEach
-    public void setUp() {
+    public void init() {
         gameAnswer = new GameAnswer();
         score = new Score();
         computer = new Computer(gameAnswer, score);
