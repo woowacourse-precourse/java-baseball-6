@@ -1,13 +1,19 @@
 package baseball.domain.game;
 
-import baseball.domain.computer.Computer;
-import baseball.domain.user.User;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class GameServiceTest {
+
+    private GameService gameService;
 
     @Test
     @DisplayName("동일한 싱글톤 인스턴스를 반환합니다.")
@@ -22,9 +28,50 @@ class GameServiceTest {
         assertThat(instance1).isEqualTo(instance2);
     }
 
-    @Test
-    @DisplayName("한 싸이클의 야구게임을 시작합니다.")
-    void startGame() {
+    @BeforeEach
+    void setUp() {
+        gameService = GameService.getInstance();
+    }
 
+    @AfterEach
+    void tearDown() {
+        GameService.clearInstance();
+    }
+
+    @Test
+    void hasGameEnded() {
+        // GIVEN
+        // randomNumbers 생성
+        List<Integer> randomNumbers = new ArrayList<>();
+        randomNumbers.add(1);
+        randomNumbers.add(2);
+        randomNumbers.add(3);
+        // 정답 문자열 입력
+        String userAnswer = "123";
+        InputStream answerStream = new ByteArrayInputStream(userAnswer.getBytes());
+        System.setIn(answerStream);
+        // 재시작 여부 입력
+        String restartOption = "2";
+        InputStream restartStream = new ByteArrayInputStream(restartOption.getBytes());
+        System.setIn(restartStream);
+
+        // WHEN
+        boolean isGameEnded = gameService.hasGameEnded(randomNumbers);
+
+        // THEN
+        assertThat(isGameEnded).isTrue();
+    }
+
+    @Test
+    void doBaseballGame() {
+
+    }
+
+    @Test
+    void hasRightAnswer() {
+    }
+
+    @Test
+    void getUserAnswerInputs() {
     }
 }

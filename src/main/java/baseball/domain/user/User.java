@@ -35,7 +35,7 @@ public class User {
         List<Integer> parsedUserAnswers = new ArrayList<>();
 
         // 입력문자열이 야구게임 정책인 3자리를 넘어가는 경우, 예외처리를 합니다.
-        validateUserInput(userAnswer.length() > Input.NUMLENGTH.getLength(),
+        validateUserInput(userAnswer.length() != Input.NUMLENGTH.getLength(),
                 String.format("%s자리의 숫자를 입력해주세요", Input.NUMLENGTH.getLength()));
 
         for (int i = 0; i < userAnswer.length(); i++) {

@@ -19,15 +19,15 @@ public class GameService {
     private GameService() {
     }
 
+    /* Test용 ONLY :: GameService 싱글톤 인스턴스 반환  */
+    protected static void clearInstance() {
+        instance = null;
+    }
+
     public boolean hasGameEnded(List<Integer> randomNumbers) {
         // 게임 싸이클 시작
         while (true) {
-            // 사용자 정답값 리스트
-            List<Integer> userAnswerInputs = getUserAnswerInputs();
-            System.out.println(userAnswerInputs.toString());
-
-            // 정답이라면 게임 싸이클 탈출
-            if (hasRightAnswer(userAnswerInputs, randomNumbers)) {
+            if (doBaseballGame(randomNumbers)) {
                 break;
             }
         }
@@ -42,6 +42,18 @@ public class GameService {
 
         // 재시작 / 종료 실행
         return hasSelectedRestartOrEnd(wouldRestartGame);
+    }
+
+    private boolean doBaseballGame(List<Integer> randomNumbers) {
+        // 사용자 정답값 리스트
+        List<Integer> userAnswerInputs = getUserAnswerInputs();
+        System.out.println(userAnswerInputs.toString());
+
+        // 정답이라면 게임 싸이클 탈출
+        if (hasRightAnswer(userAnswerInputs, randomNumbers)) {
+            return true;
+        }
+        return false;
     }
 
     private static boolean hasSelectedRestartOrEnd(Integer wouldRestartGame) {
