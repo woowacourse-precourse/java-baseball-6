@@ -2,6 +2,8 @@ package game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     static boolean restart = true;
@@ -15,48 +17,65 @@ public class Game {
     }
 
     private void play(){
-        String[] computer = getComputerPlay();
+        List<Integer> computer = getComputerPlay();
 
-        String[] player = getUserPlay();
+        List<Integer> user = getUserPlay();
 
-        checkPlay(computer, player);
+        checkPlay(computer, user);
     }
 
-    private String[] getComputerPlay(){
+    private List<Integer> getComputerPlay(){
         //서로 다른 숫자 입력할 수 잇게끔 해야함 -> 리드미 참조!!
-        String[] computerPlay = new String[3];
+        List<Integer> computerPlay = new ArrayList<>();
 
-        String firstBall = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        computerPlay[0] = firstBall;
-        String secondBall = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        computerPlay[1] = secondBall;
-        String thirdBall = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        computerPlay[2] = thirdBall;
+        while (computerPlay.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerPlay.contains(randomNumber)) {
+                computerPlay.add(randomNumber);
+            }
+        }
 
         return computerPlay;
     }
 
-    private String[] getUserPlay(){
+    private List<Integer> getUserPlay(){
+        List<Integer> userPlay = new ArrayList<>();
+
         System.out.print("숫자를 입력해주세요 : ");
 
-        String[] userPlay = Console.readLine().split("");
+        String[] input = Console.readLine().split("");
+
+        int inputSize = input.length;
+
+        for(int i = 0; i < inputSize; i++){
+            int value = Integer.parseInt(input[i]);
+            userPlay.add(value);
+        }
 
         return userPlay;
     }
 
-    private void checkPlay(String[] computerPlay, String[] userPlay){
+    private void checkPlay(List<Integer> computerPlay, List<Integer> userPlay){
         int ballCount = 0;
         int strikeCount = 0;
 
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                if(userPlay[i].equals(computerPlay[j]) && i == j){
-                    strikeCount++;
-                    break;
-                } else if(userPlay[i].equals(computerPlay[j]) && i != j){
-                    ballCount++;
-                }
+        for(int computerNumber : computerPlay){
+            boolean sameNumber = false;
+            if(userPlay.contains(userPlay)){
+                sameNumber = true;
             }
+
+            while(sameNumber){
+
+            }
+//            for(int j = 0; j < 3; j++){
+//                if(userPlay[i].equals(computerPlay[j]) && i == j){
+//                    strikeCount++;
+//                    break;
+//                } else if(userPlay[i].equals(computerPlay[j]) && i != j){
+//                    ballCount++;
+//                }
+//            }
         }
 
         if(ballCount != 0 && strikeCount != 0){
