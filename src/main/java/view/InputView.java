@@ -45,6 +45,20 @@ public class InputView {
         return inputs;
     }
 
+    public boolean ProgramReStartOrExit() {
+        try { // 문자 입력 방지
+            int input = Integer.parseInt(Console.readLine());
+            if (input == 1) {
+                return true;
+            } else if (input == 2) {
+                return false;
+            }
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        return false;
+    }
+
     public void StrikeGameSet() {
         System.out.println(CORRECT_3NUMBER);
     }
