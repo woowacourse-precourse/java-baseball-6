@@ -76,7 +76,7 @@ public class Application {
         if (userInput.length() == 3) {
             return true;
         } else {
-            return false;
+            throw new IllegalArgumentException("입력 길이가 3이 아닌 잘못된 입력입니다.");
         }
     }
 
@@ -89,7 +89,11 @@ public class Application {
             }
         }
 
-        return (digitCount == userInput.length());
+        if ((digitCount == userInput.length())) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("입력에 숫자가 아닌 것이 포함된 잘못된 입력입니다.");
+        }
     }
 
     public static boolean isRightRangeNumber(String userInput) {
@@ -97,9 +101,13 @@ public class Application {
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
 
-        return (1 <= indexZero && indexZero <= 9)
+        if ((1 <= indexZero && indexZero <= 9)
                 && (1 <= indexOne && indexOne <= 9)
-                && (1 <= indexTwo && indexTwo <= 9);
+                && (1 <= indexTwo && indexTwo <= 9)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("입력에 1~9사이 숫자가 아닌 숫자가 포함된 잘못된 입력입니다.");
+        }
     }
 
     public static boolean isDifferentNumber(String userInput) {
@@ -107,9 +115,13 @@ public class Application {
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
 
-        return (indexZero != indexOne)
+        if ((indexZero != indexOne)
                 && (indexOne != indexTwo)
-                && (indexTwo != indexZero);
+                && (indexTwo != indexZero)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("입력에 중복된 숫자가 포함된 잘못된 입력입니다.");
+        }
     }
 
 }
