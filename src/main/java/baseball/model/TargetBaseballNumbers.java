@@ -49,7 +49,7 @@ public class TargetBaseballNumbers {
                 .toList();
     }
 
-    private void verifyInputNumberSize(List<Integer> inputNumbers) {
+    private void verifyInputNumberSize(final List<Integer> inputNumbers) {
         if (TargetBaseballNumbers.BASEBALL_NUMBER_SIZE != inputNumbers.size()) {
             throw new IllegalArgumentException();
         }
