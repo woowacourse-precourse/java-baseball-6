@@ -132,6 +132,8 @@ public class Application {
                 if (startNumOrEndNum == 1){
                     computerNumber.clear();
                     computerNumber = baseballGame.selectRandomNumber(computerNumber);
+                } else if (startNumOrEndNum == 2) {
+                    System.out.println("게임 종료");
                 }
                 isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
             }
