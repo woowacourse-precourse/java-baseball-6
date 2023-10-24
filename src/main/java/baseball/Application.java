@@ -57,6 +57,21 @@ public class Application {
         return numberList;
     }
 
+    public static List<Integer> inputBaseball(String userInput) {
+        List<Integer> numberList = new ArrayList<>();
+
+        if (isLengthThree(userInput)
+                && isDigitNumber(userInput)
+                && isRightRangeNumber(userInput)
+                && isDifferentNumber(userInput)) {
+            numberList = changeStringToList(userInput);
+        } else {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        return numberList;
+    }
+
     public static boolean isLengthThree(String userInput) {
         if (userInput.length() == 3) {
             return true;
