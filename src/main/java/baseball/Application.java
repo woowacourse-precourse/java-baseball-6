@@ -16,7 +16,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = new ArrayList<>();
             computerRandom(computer);
-
+            
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String Numbers = Console.readLine();
@@ -57,10 +57,8 @@ public class Application {
                 + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
                 +"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userOpinion = Console.readLine();
-        if (userOpinion.equals("2")) {
-            return false;
-        }
-        return true;
+        return userOpinion.equals("1");
+
     }
     public static int ballJudge(HashMap<Integer, Integer> map, List<Integer> user, int m, int ball){
         if(user.get(m) != map.get(user.get(m)) && map.containsKey(user.get(m)) == true) {
