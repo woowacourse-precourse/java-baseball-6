@@ -22,14 +22,14 @@ public class GameRound {
     }
 
     private String getInput() {
-        GameMessages.printInputMessage();
+        GamePrinter.inputMessage();
         return Console.readLine();
     }
 
     private void printMessage(BallStrikeCount ballStrikeCount) {
         int ball = ballStrikeCount.getBallCount();
         int strike = ballStrikeCount.getStrikeCount();
-        GameMessages.printStatusMessage(ball, strike);
+        GamePrinter.resultMessage(ball, strike);
     }
 
     private boolean checkContinueGame(BallStrikeCount ballStrikeCount) {

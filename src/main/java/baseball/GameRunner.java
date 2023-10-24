@@ -9,7 +9,7 @@ public class GameRunner {
     }
 
     public void playGame() {
-        GameMessages.printStartMessage();
+        GamePrinter.startMessage();
         while (true) {
             if (!gameRound.playRound()) {
                 return;
