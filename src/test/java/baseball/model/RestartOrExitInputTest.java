@@ -1,7 +1,5 @@
 package baseball.model;
 
-import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
-import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -33,7 +31,7 @@ class RestartOrExitInputTest {
         // then
         assertThatThrownBy(() -> new RestartOrExitInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(INVALID_LENGTH.getMessage());
+                        .hasMessageContaining("입력이 1자리가 아닙니다.");
     }
 
 
@@ -47,7 +45,7 @@ class RestartOrExitInputTest {
         // then
         assertThatThrownBy(() -> new RestartOrExitInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_CHARACTER.getMessage());
+                .hasMessageContaining("1 또는 2의 입력이 아닙니다.");
     }
 
     @Test

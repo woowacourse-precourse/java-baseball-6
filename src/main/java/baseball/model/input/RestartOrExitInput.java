@@ -1,14 +1,11 @@
 package baseball.model.input;
 
-import static baseball.enums.RestartOrExitCommand.EXIT_GAME;
-import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
-import static baseball.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
-
-import baseball.enums.RestartOrExitCommand;
-import java.util.List;
-
 public class RestartOrExitInput extends PlayerInput {
     private static final int VALID_INPUT_LENGTH = 1;
+    private static final String RESTART_GAME = "1";
+    private static final String EXIT_GAME = "2";
+    private static final String INVALID_CHARACTER = "1 또는 2의 입력이 아닙니다.";
+    private static final String INVALID_LENGTH = "입력이 1자리가 아닙니다.";
 
     public RestartOrExitInput(String input) {
         super(input);
@@ -23,18 +20,17 @@ public class RestartOrExitInput extends PlayerInput {
 
     private void checkInputLength() {
         if (input.length() != VALID_INPUT_LENGTH) {
-            throw new IllegalArgumentException(INVALID_LENGTH.getMessage());
+            throw new IllegalArgumentException(INVALID_LENGTH);
         }
     }
 
     private void checkInputCommand() {
-        List<String> validCommands = RestartOrExitCommand.getCommands();
-        if (!validCommands.contains(input)) {
-            throw new IllegalArgumentException(INVALID_CHARACTER.getMessage());
+        if (!(RESTART_GAME.equals(input)) && !(EXIT_GAME.equals(input))) {
+            throw new IllegalArgumentException(INVALID_CHARACTER);
         }
     }
 
     public boolean isExitInput() {
-        return input.equals(EXIT_GAME.getCommand());
+        return EXIT_GAME.equals(input);
     }
 }

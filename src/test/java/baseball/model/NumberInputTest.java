@@ -1,8 +1,5 @@
 package baseball.model;
 
-import static baseball.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
-import static baseball.enums.NumberInputErrorMessage.INVALID_CHARACTER;
-import static baseball.enums.NumberInputErrorMessage.INVALID_LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -33,7 +30,7 @@ class NumberInputTest {
         // then
         assertThatThrownBy(() -> new NumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_LENGTH.getMessage());
+                .hasMessageContaining("입력이 3자리가 아닙니다.");
     }
 
     @Test
@@ -46,7 +43,7 @@ class NumberInputTest {
         // then
         assertThatThrownBy(() -> new NumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_CHARACTER.getMessage());
+                .hasMessageContaining("숫자가 아닌 문자가 입력되었습니다.");
     }
 
     @Test
@@ -59,7 +56,7 @@ class NumberInputTest {
         // then
         assertThatThrownBy(() -> new NumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_CHARACTER.getMessage());
+                .hasMessageContaining("숫자가 아닌 문자가 입력되었습니다.");
     }
 
     @Test
@@ -72,7 +69,7 @@ class NumberInputTest {
         // then
         assertThatThrownBy(() -> new NumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(DUPLICATE_NUMBER.getMessage());
+                .hasMessageContaining("중복된 숫자가 입력되었습니다.");
     }
 
     @Test
