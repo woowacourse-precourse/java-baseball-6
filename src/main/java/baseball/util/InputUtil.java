@@ -16,13 +16,13 @@ public class InputNumber {
     }
 
     public List<Integer> inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(ApplicationConstant.INPUT_NUMBER_MESSAGE);
         String input = Console.readLine();
         return getNumbers(input);
     }
 
     public int inputStatus() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print(ApplicationConstant.INPUT_RESTART_MESSAGE);
         String input = Console.readLine();
         return getStatus(input);
     }
@@ -48,7 +48,7 @@ public class InputNumber {
         try {
             return Integer.parseInt(number);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(NUMBER_TYPE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ExceptionConstant.NUMBER_TYPE_ERROR_MESSAGE);
         }
     }
 

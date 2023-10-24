@@ -13,9 +13,8 @@ public class BaseballProcess {
     public static BaseballProcess of() {
         return new BaseballProcess();
     }
-
-    public void playGame() {
-        System.out.println("게임을 시작합니다.");
+    public void start() {
+        System.out.print(ApplicationConstant.START_GAME_MESSAGE);
         boolean isCheck = true;
         while (isCheck) {
             playRound();
@@ -99,7 +98,7 @@ public class BaseballProcess {
     public boolean isContinue(List<Integer> computer, List<Integer> player) {
         int strike = accountStrike(computer, player);
         if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.print(ApplicationConstant.FINISH_ROUND_MESSAGE);
             return false;
         }
         return true;
