@@ -74,22 +74,20 @@ public class Application {
     }
 
     private static List<Integer> parse(String input) {
-        List<Integer> parsedInput = new ArrayList<>();
-
-        if (input.length() != 3) {
+        if (input.length() != TOTAL_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
 
-        String[] listedInput = input.split("");
+        List<Integer> parsedInput = new ArrayList<>();
 
-        for (String strNumber : listedInput) {
-            int number = Integer.parseInt(strNumber);
+        for (char c : input.toCharArray()) {
+            int number = Character.getNumericValue(c);
 
-            if (!parsedInput.contains(number)) {
-                parsedInput.add(number);
-            } else {
-                throw new IllegalArgumentException();
+            if (parsedInput.contains(number)) {
+                throw new IllegalArgumentException("중복된 숫자가 있습니다.");
             }
+
+            parsedInput.add(number);
         }
 
         return parsedInput;
