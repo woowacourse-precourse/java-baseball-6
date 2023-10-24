@@ -41,10 +41,13 @@ public class GameImplementation implements Game{
         computerAnswer=makeAnswer();
         boolean isAnswer=false;
 
-        while(isAnswer==false) {
-            System.out.printf("숫자를 입력해주세요 : ");
+        while (!isAnswer) {
+            System.out.print("숫자를 입력해주세요: ");
             playerAnswer = Console.readLine();
 
+            if (playerAnswer.length() != 3 || !playerAnswer.matches("\\d{3}")) {
+                throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
+            }
             makePlayerAnswerToList();
             isAnswer = validateAnswer();
         }
@@ -106,14 +109,15 @@ public class GameImplementation implements Game{
         System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
         System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String key=Console.readLine();
-        if ("1".equals(key)) {
+        if("1".equals(key)) {
             gamePlay();
-        } else if ("2".equals(key)) {
+        }
+        else if("2".equals(key)) {
             return;
-        } else {
+        }
+        else{
             throw new IllegalArgumentException("올바르지 않은 값입니다.");
         }
-        return;
     }
 
 }
