@@ -19,7 +19,7 @@ public class Application {
         PrintPackage.printGameStartMessage();
         while (gameStatus) {
             List<Integer> computer = InputClass.extractRandomNumber();
-            compare(computer);
+            gameInProgress(computer);
             gameStatus = gameRetry();
         }
     }
@@ -38,38 +38,45 @@ public class Application {
         };
     }
 
-    private static void compare(List<Integer> computer) {
+    private static void gameInProgress(List<Integer> computer) {
         Boolean correct = Boolean.FALSE;
         while (correct == Boolean.FALSE) {
             List<Integer> user = InputClass.inputUserNumber();
-            Integer strikes = 0;
-            Integer balls = 0;
-
-            for (int i = 0; i < computer.size(); i++) {
-                Integer computerNumber = computer.get(i);
-                Integer userNumber = user.get(i);
-
-                if (computerNumber.equals(userNumber)) {
-                    strikes++;
-                } else if (computer.contains(userNumber)) {
-                    balls++;
-                }
-            }
-            Status status = Status.getStatus(strikes, balls);
+            Status status = compare(computer, user);
             PrintPackage.printResult(status.result);
             correct = (status == Status.CORRECT);
         }
         PrintPackage.printGameEndMessage();
     }
 
-    public enum Status {
-        NOTHING(0, 0, "낫싱"), BALL1(0, 1, "1볼"), BALL2(0, 2, "2볼"), BALL3(0, 3, "3볼"), STRIKE1(1, 0, "1스트라이크"), STRIKE2(
-                2, 0, "2스트라이크"), BALL1_STRIKE1(1, 1, "1볼 1스트라이크"), BALL2_STRIKE1(1, 2, "2볼 1스트라이크"), CORRECT(3, 0,
-                "3스트라이크");
+    private static Status compare(List<Integer> computer, List<Integer> user) {
+        Integer strikes = 0;
+        Integer balls = 0;
 
-        private Integer strike;
-        private Integer ball;
-        private String result;
+        for (int index = 0; index < computer.size(); index++) {
+            if (computer.get(index).equals(user.get(index))) {
+                strikes++;
+            } else if (computer.contains(user.get(index))) {
+                balls++;
+            }
+        }
+        return Status.getStatus(strikes, balls);
+    }
+
+    public enum Status {
+        NOTHING(0, 0, "낫싱"),
+        BALL1(0, 1, "1볼"),
+        BALL2(0, 2, "2볼"),
+        BALL3(0, 3, "3볼"),
+        STRIKE1(1, 0, "1스트라이크"),
+        STRIKE2(2, 0, "2스트라이크"),
+        BALL1_STRIKE1(1, 1, "1볼 1스트라이크"),
+        BALL2_STRIKE1(1, 2, "2볼 1스트라이크"),
+        CORRECT(3, 0, "3스트라이크");
+
+        private final Integer strike;
+        private final Integer ball;
+        private final String result;
 
         Status(Integer strike, Integer ball, String result) {
             this.strike = strike;
