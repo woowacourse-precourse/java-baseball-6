@@ -6,5 +6,9 @@ public class Constant{
     public static int RESTART_GAME_NUMBER = 1;
     public static int EXIT_GAME_NUMBER = 2;
     public static int NUM_DIGITS=3;
+    public static String NOTHING_MSG = "낫싱"
+    public static String BALL = "볼";
+    public static String STRIKE = "스트라이크";
+    public static String SUCCESS_MSG = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
        
 }
