@@ -59,6 +59,6 @@ public class GameUtil {
     }
 
     public boolean checkGameOver() {
-        return false;
+        return this.strikeCount == NUMBER_LENGTH;
     }
 }
