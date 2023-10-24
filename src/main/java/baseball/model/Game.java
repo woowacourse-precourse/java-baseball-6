@@ -13,22 +13,6 @@ public class Game {
     private GameNumbers userGameNumbers;
     private Result result = new Result();
 
-    public GameNumbers getComputerGameNumbers() {
-        return this.computerGameNumbers;
-    }
-
-    public Result getResult() {
-        return this.result;
-    }
-
-    public void setUserNumbers(List<Integer> userNumbers) {
-        this.userGameNumbers = new GameNumbers(userNumbers);
-    }
-
-    public void setResult() {
-        this.result = new Result();
-    }
-
     public void play() {
         for (int i = 0; i < NUMBERS_SIZE; i++) {
             judgeNumberAt(i);
@@ -47,5 +31,21 @@ public class Game {
 
     public boolean isRunning() {
         return this.result.getStrike() < NUMBERS_SIZE;
+    }
+
+    public GameNumbers getComputerGameNumbers() {
+        return this.computerGameNumbers;
+    }
+
+    public Result getResult() {
+        return this.result;
+    }
+
+    public void setUserNumbers(List<Integer> userNumbers) {
+        this.userGameNumbers = new GameNumbers(userNumbers);
+    }
+
+    public void setResult() {
+        this.result = new Result();
     }
 }
