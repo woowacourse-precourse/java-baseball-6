@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static String gameRetrySign = "1";
+    private static String gameEndSign = "2";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         gameStart();
@@ -28,10 +31,12 @@ public class Application {
     }
 
     private static Boolean checkRetry(String retry) {
-        if (retry.equals("1")) {
+        if (retry.equals(gameRetrySign)) {
             return Boolean.TRUE;
+        } else if (retry.equals(gameEndSign)) {
+            return Boolean.FALSE;
         }
-        return Boolean.FALSE;
+        throw new IllegalArgumentException();
     }
 
     private static void compare(List<Integer> computer) {
