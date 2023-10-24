@@ -5,16 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    private String randomNumber;
 
-    public List<Integer> getRandomNumber(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+    public void setRandomNumber(String randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+
+    public String getRandomNumber() {
+        return randomNumber;
+    }
+
+    public String createRandomNumber(){
+        List<Integer> randomNumberList = new ArrayList<>();
+        while (randomNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!randomNumberList.contains(randomNumber)) {
+                randomNumberList.add(randomNumber);
             }
         }
-        return computer;
+        return randomNumberList.toString().replaceAll("[^0-9]","");
     }
 
 }
