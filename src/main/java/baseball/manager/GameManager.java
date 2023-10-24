@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameManager {
     private BaseBalls answers;
 
-    public GameManager(){
+    public GameManager() {
     }
 
     public void play() {
@@ -18,7 +18,7 @@ public class GameManager {
             createAnswers();
             round();
             GamePrinter.printReGameMessage();
-        } while(new ReGameCommand(Console.readLine()).equals(new ReGameCommand(ReGameCommand.RESTART)));
+        } while (new ReGameCommand(Console.readLine()).equals(new ReGameCommand(ReGameCommand.RESTART)));
     }
 
     private void createAnswers() {
@@ -34,7 +34,7 @@ public class GameManager {
             int ballCount = answers.getBallCounts(userNumbers);
             roundResult = new RoundResult(strikeCount, ballCount);
             GamePrinter.printRoundResult(roundResult);
-        } while(!roundResult.isWin());
+        } while (!roundResult.isWin());
         GamePrinter.printWinMessage();
     }
 }

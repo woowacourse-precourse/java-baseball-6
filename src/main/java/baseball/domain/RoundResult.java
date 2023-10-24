@@ -12,28 +12,28 @@ public class RoundResult {
     }
 
     public boolean isOnlyStrike() {
-        if(!strikeCount.equals(NO_COUNT) && ballCount.equals(NO_COUNT)) {
+        if (!strikeCount.equals(NO_COUNT) && ballCount.equals(NO_COUNT)) {
             return true;
         }
         return false;
     }
 
     public boolean isOnlyBall() {
-        if(strikeCount.equals(NO_COUNT) && !ballCount.equals(MAX_COUNT)) {
+        if (strikeCount.equals(NO_COUNT) && !ballCount.equals(MAX_COUNT)) {
             return true;
         }
         return false;
     }
 
     public boolean isNothing() {
-        if(strikeCount.equals(NO_COUNT) && ballCount.equals(NO_COUNT)) {
+        if (strikeCount.equals(NO_COUNT) && ballCount.equals(NO_COUNT)) {
             return true;
         }
         return false;
     }
 
     public boolean isBothOccured() {
-        if(!strikeCount.equals(NO_COUNT) && !ballCount.equals(NO_COUNT)) {
+        if (!strikeCount.equals(NO_COUNT) && !ballCount.equals(NO_COUNT)) {
             return true;
         }
         return false;

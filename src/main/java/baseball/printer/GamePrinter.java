@@ -11,7 +11,7 @@ public class GamePrinter {
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
 
-    public static void printStartMessage(){
+    public static void printStartMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
 
@@ -20,14 +20,15 @@ public class GamePrinter {
     }
 
     public static void printRoundResult(RoundResult roundResult) {
-        if(roundResult.isNothing()) {
+        if (roundResult.isNothing()) {
             System.out.println(NOTHING_MESSAGE);
-        } else if(roundResult.isOnlyStrike()) {
+        } else if (roundResult.isOnlyStrike()) {
             System.out.println(roundResult.getStrikeCount() + STRIKE_MESSAGE);
-        } else if(roundResult.isOnlyBall()) {
+        } else if (roundResult.isOnlyBall()) {
             System.out.println(roundResult.getBallCount() + BALL_MESSAGE);
-        } else if(roundResult.isBothOccured()) {
-            System.out.println(roundResult.getBallCount() +  BALL_MESSAGE + " " + roundResult.getStrikeCount() + STRIKE_MESSAGE);
+        } else if (roundResult.isBothOccured()) {
+            System.out.println(
+                    roundResult.getBallCount() + BALL_MESSAGE + " " + roundResult.getStrikeCount() + STRIKE_MESSAGE);
         }
     }
 

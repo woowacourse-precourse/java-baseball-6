@@ -12,7 +12,7 @@ public class BaseBall {
     }
 
     private void validateRange(int number) {
-        if(number < MIN_NUMBER || number > MAX_NUMBER){
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException("1부터 9사이의 숫자를 입력홰야합니다.");
         }
     }
@@ -22,9 +22,9 @@ public class BaseBall {
     }
 
     public static BaseBall toUserBaseBall(String input) {
-        try{
+        try {
             Integer.parseInt(input);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("3자리의 올바른 숫자 값만을 입력해야합니다.");
         }
         return new BaseBall(Integer.parseInt(input));
@@ -32,7 +32,7 @@ public class BaseBall {
 
     @Override
     public boolean equals(Object object) {
-        if(object instanceof BaseBall){
+        if (object instanceof BaseBall) {
             return this.number == ((BaseBall) object).number;
         }
         return false;
