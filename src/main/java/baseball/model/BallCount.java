@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.ExceptionMessage;
 import java.util.Arrays;
 
 public enum BallCount {
@@ -22,7 +23,7 @@ public enum BallCount {
                 .filter(ballCount -> ballCount.hasCommonNumber == hasCommonNumber)
                 .filter(ballCount -> ballCount.isInSamePosition == isInSamePosition)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("올바른 값을 입력해 주세요."));
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_BALL_COUNT.getMessage()));
     }
 
     public String getBaseballjudgment() {

@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.ExceptionMessage;
 import java.util.Arrays;
 
 public enum GameCommand {
@@ -19,7 +20,7 @@ public enum GameCommand {
         return Arrays.stream(GameCommand.values())
                 .filter(value -> value.gameCommand.equals(gameCommand))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("1, 2 중 입력해 주세요."))
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_GAME_COMMAND.getMessage()))
                 .selectedRetry;
     }
 }

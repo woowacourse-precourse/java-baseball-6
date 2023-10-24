@@ -1,11 +1,13 @@
 package baseball.view;
 
 import baseball.model.Result;
+import baseball.util.ConsoleMessage;
+import baseball.util.ExceptionMessage;
 import java.util.List;
 
 public class OutputView {
     public void printGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(ConsoleMessage.START_GAME);
     }
 
     public void printComputerNumber(List<Integer> computerNumber) {
@@ -17,10 +19,10 @@ public class OutputView {
     }
 
     public void printThreeStrike() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(ConsoleMessage.THREE_STRIKE.getMessage());
     }
 
     public void printExceptionMessage(Exception exception) {
-        System.out.printf("[ERROR] %s", exception.getMessage());
+        System.out.printf(ExceptionMessage.BASE.getMessage(), exception.getMessage());
     }
 }

@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.util.Constants.BALL_LENGTH;
+
 import java.util.stream.IntStream;
 
 public class UserComputerCompare {
@@ -19,7 +21,7 @@ public class UserComputerCompare {
 
 
     public Result ResultgetBallCountJudgement() {
-        IntStream.range(0, 3)
+        IntStream.range(0, BALL_LENGTH)
                 .forEach(this::processPlayerNumber);
 
         return result;
