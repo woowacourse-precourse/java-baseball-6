@@ -1,10 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,19 +27,20 @@ public class Application {
 
             while (restart == 1) {
                 // TODO3: 사용자에게 숫자를 입력받기
-                Scanner scanner = new Scanner(System.in);
                 System.out.print("숫자를 입력해주세요 : ");
-                int selectNumber = scanner.nextInt();
-                int checkNumber = selectNumber;
+                String selectNumber = Console.readLine();
+                int checkNumber = Integer.parseInt(selectNumber);
+                int addNumber = checkNumber;
                 List<Integer> user = new ArrayList<>();
-                user.add(selectNumber / 100);
-                selectNumber %= 100;
-                user.add(selectNumber / 10);
-                selectNumber %= 10;
-                user.add(selectNumber);
+                user.add(addNumber / 100);
+                addNumber %= 100;
+                user.add(addNumber / 10);
+                addNumber %= 10;
+                user.add(addNumber);
                 if (checkNumber < 100 || checkNumber > 999 || user.get(0) == 0 || user.get(1) == 0 || user.get(2) == 0
-                        || user.get(0) == user.get(1) || user.get(1) == user.get(2) || user.get(2) == user.get(0)) {
-                    throw new IllegalArgumentException("잘못된 수를 입력하였습니다.");
+                                    || user.get(0) == user.get(1) || user.get(1) == user.get(2)
+                                    || user.get(2) == user.get(0)) {
+                    throw new IllegalArgumentException();
                 }
 
                 // TODO4: 볼, 스트라이크 갯수 세기
@@ -58,8 +59,7 @@ public class Application {
                 // TODO5: 정답을 맞출 경우 게임 종료 아니면 재입력
                 if (strike == 3) {
                     restart = 0;
-                    System.out.println("3스트라이크\n" +
-                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 } else if (ball > 0 && strike > 0) {
                     System.out.printf("%d볼 %d스트라이크\n", ball, strike);
                 } else if (ball > 0) {
@@ -73,8 +73,11 @@ public class Application {
 
             // TODO6: 게임 종료 후 게임 재시작 유무를 결정
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            Scanner scanner = new Scanner(System.in);
-            gamestart = scanner.nextInt();
+            String newGame = Console.readLine();
+            gamestart = Integer.parseInt(newGame);
+            if (gamestart != 1 && gamestart != 2) {
+                throw new IllegalArgumentException();
+            }
         }
 
     }
