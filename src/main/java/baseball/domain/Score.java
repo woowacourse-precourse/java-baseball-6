@@ -1,6 +1,5 @@
 package baseball.domain;
 
-
 import java.util.Arrays;
 
 public enum Score {
