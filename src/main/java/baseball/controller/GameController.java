@@ -23,10 +23,17 @@ public class GameController {
             Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
             List<Integer> computerNumber = computer.getComputerNumber();
             outputView.printComputerNumber(computerNumber);
-            Player player = Player.createNyNumber(inputView.readPlayerNumber());
-            UserComputerCompare userComputerCompare = UserComputerCompare.judge(computer, player);
-            Result result = userComputerCompare.ResultgetBallCountJudgement();
-            outputView.printGameResult(result);
+            while (true) {
+                Player player = Player.createNyNumber(inputView.readPlayerNumber());
+                UserComputerCompare userComputerCompare = UserComputerCompare.judge(computer, player);
+                Result result = userComputerCompare.ResultgetBallCountJudgement();
+                outputView.printGameResult(result);
+                outputView.printGameResult(result);
+
+                if (result.isThreeStrike()) {
+                    break;
+                }
+            }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

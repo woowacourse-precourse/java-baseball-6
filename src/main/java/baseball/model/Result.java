@@ -49,4 +49,8 @@ public class Result {
         }
         return gameResult.toString();
     }
+
+    public boolean isThreeStrike() {
+        return result.get(BallCount.STRIKE) == 3;
+    }
 }
