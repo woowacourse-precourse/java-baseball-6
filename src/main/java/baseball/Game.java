@@ -3,6 +3,8 @@ package baseball;
 import java.util.List;
 
 import static baseball.Utils.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 
 public class Game {
 //    private final String winMessage = Messages.WIN_MESSAGE;
@@ -25,7 +27,25 @@ public class Game {
     public void gamePlay() {
         List<Integer> userNumbers;
         while (strike < DESIGNED_NUM) {
+            System.out.println(INPUT_MESSAGE);
+            String inputNumbers = readLine();
+        }
+    }
 
+    private void validateDataType(String inputNumbers) {
+        try {
+            Integer.parseInt(inputNumbers);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("The input number is not a Integer");
+        }
+    }
+
+    private void validateCount(List<Integer> userNumbers) {
+        if (userNumbers.size() != DESIGNED_NUM) {
+            throw new IllegalArgumentException("The input length is invalid");
+        }
+        if (userNumbers.stream().distinct().count() != DESIGNED_NUM) {
+            throw new IllegalArgumentException("The input numbers are duplicated");
         }
     }
 }

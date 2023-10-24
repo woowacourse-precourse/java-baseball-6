@@ -24,8 +24,8 @@
 - ✅ initialiser 구현
   - ✅ Oppoent에서 initialise된 값들을 들고 와서(컴퓨터의 랜덤 수) 초기값을 설정
 - [x] gamePlay 매서드 구현
-  - [x] 사용자로 부터 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 받음
-  - [x] `validateDataType` 메서드로 타입 확인
+  - ✅ 사용자로 부터 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 받음
+  - ✅ `validateDataType` 메서드로 타입 확인
   - [x] `toIntegerList` 매서드로 사용자로부터 입력 받은 값으로 Integer List 생성
   - [x] `validateCount` 메서드로 자리수 확인
   - [x] `validateRange` 메서드로 범위 내 존재 여부 확인
@@ -37,10 +37,10 @@
   - [x] 입력한 수에 대한 결과를 스트라이크와 볼로 출력 : 볼이 있으면 [볼 개수 + "볼"] 출력 & 스트라이크가 있으면 [스트라이크 개수 + "스트라이크"] 출력
 - [x] printWinMessage 메서드 구현
   - [x] "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 메세지 출력
-- [x] validateDataType 메서드 구현
-  - [x] 사용자로부터 입력 받은 값을 `Integer.parseInt`로 변환 하여 int 타입인 지 확인 : 예외인 경우 -> IllegalArgumentException
+- ✅ validateDataType 메서드 구현
+  - ✅ 사용자로부터 입력 받은 값을 `Integer.parseInt`로 변환 하여 int 타입인 지 확인 : 예외인 경우 -> IllegalArgumentException
 - [x] validateCount 메서드 구현
-  - [x] 사용자 입력 값이 3자리 수인지 확인 : 예외인 경우 -> IllegalArgumentException
+  - ✅ 사용자 입력 값이 3자리 수인지 확인 : 예외인 경우 -> IllegalArgumentException
   - [x] 사용자 입력 값에 중복된 수가 있는지 확인 : 예외인 경우 -> IllegalArgumentException
 - [x] validateRange 메서드 구현
   - [x] 사용자가 입력한 값의 배열 안의 숫자들이 허용된 범위 안에 존재하는 지 확인 : 예외인 경우 -> IllegalArgumentException
