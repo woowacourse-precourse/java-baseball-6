@@ -9,9 +9,25 @@ public class Game {
     private StringBuilder userNumber;
 
     int[] scoreBoard = {0, 0};
-    Game() {
+    Game() {}
 
+    /*
+    * setter
+    * Game Class의 멤버 변수들에 대한 set method이다.
+    * 멤버 변수들 모두 외부에서는 set할 수 없도록 접근제어자는 private으로 설정한다.
+    * */
+    private void setGameFlag(int gameFlag) {
+        this.gameFlag = gameFlag;
     }
+
+    private void setComputerNumber(StringBuilder computerNumber) {
+        this.computerNumber = computerNumber;
+    }
+
+    private void setUserNumber(StringBuilder userNumber) {
+        this.userNumber = userNumber;
+    }
+    //
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
