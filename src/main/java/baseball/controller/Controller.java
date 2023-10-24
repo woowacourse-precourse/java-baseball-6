@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Model;
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -16,11 +17,18 @@ public class Controller {
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
 
+    View view = new View();
+
     // 사용자의 숫자입력을 받는 기능
     public String numberInput() {
-        String input_number = Console.readLine();
+        view.printUserInput();
+        return Console.readLine();
+    }
 
-        return input_number;
+    // 재시작 여부를 입력받는 기능
+    public String restartNumberInput() {
+        view.printGameRestart();
+        return Console.readLine();
     }
 
     // 입력받은 숫자를 형변환하는 기능
@@ -48,14 +56,12 @@ public class Controller {
 
     // 입력받은 숫자의 볼과 스트라이크의 여부를 체킹하는 기능
     public void checkStrikeAndBall(Model model) {
-        int strike_count = model.getStrike_count();
-        int ball_count = model.getBall_count();
-
         for (int input_index=0; input_index<SIZE; input_index++) {
             for (int comp_index=0; comp_index<SIZE; comp_index++) {
                 checkDetail(model, input_index, comp_index);
             }
         }
+        view.printStrikeBall(model.getStrike_count(), model.getBall_count());
     }
 
     // 실제로 볼과 스트라이크의 여부를 체킹하는 세부 기능 - 체킹하는 방법의 변화가 있을 때 유지보수에 용이하다.
