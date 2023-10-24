@@ -14,7 +14,7 @@ import java.util.List;
  * <p>같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 제공한다.
  */
 public class Computer {
-    private List<Integer> answerNumbers = createAnswer();
+    private List<Integer> answerNumbers;
 
     public void refreshAnswer() {
         this.answerNumbers = createAnswer();
