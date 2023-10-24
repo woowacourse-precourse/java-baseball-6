@@ -8,7 +8,13 @@ public class PlayerBalls implements Balls {
     List<Integer> ballsList;
     @Override
     public void createBalls(){
-        ballsList = new ValidInputBallsList().createInputBallsList();
+        try{
+            ballsList = new ValidInputBallsList().createInputBallsList();
+        }
+        catch(IllegalArgumentException illegalArgumentException){
+            throw illegalArgumentException;
+        }
+
     }
     public List<Integer> getBallsList() {
         return ballsList;
