@@ -21,7 +21,6 @@ public class Game {
 
         while (restartOrExitNumber.equals(GameConstant.RESTART_GAME.number)) {
             initGame();
-            System.out.println(computer);
             playGame();
             restartOrExitNumber = gameOver();
         }
@@ -54,13 +53,13 @@ public class Game {
             Print.showPredictUserInput();
 
             List<Integer> predictNumbers = Utility.input();
-            checkPredictNumber(predictNumbers);
+            comparePredictNumberAndComputerNumber(predictNumbers);
 
             Print.showPredictResult(this.strike, this.ball);
         }
     }
 
-    private void checkPredictNumber(List<Integer> predictNumbers) {
+    private void comparePredictNumberAndComputerNumber(List<Integer> predictNumbers) {
         int ball = 0;
         int strike = 0;
 
@@ -89,5 +88,4 @@ public class Game {
     private static boolean isStrike(Integer computerNumber, Integer predictNumber) {
         return computerNumber.equals(predictNumber);
     }
-
 }
