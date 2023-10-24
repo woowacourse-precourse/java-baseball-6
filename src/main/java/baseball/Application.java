@@ -1,69 +1,76 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO: 프로그램 구현
         //라이브러리 Random 값 추출, 사용자 입력 주어진 거로 수정?
 
-        int numArr[] = new int[3]; // 컴퓨터가 내는 랜덤 3자리
-        int inputArr[] = new int[3]; // 유저의 입력값 3자리
-        int strike = 0; // 입력한 값의 strike 저장
-        int ball = 0; // 입력한 값의 ball 저장
-
 
         while(true) {
+            List<Integer> computer = new ArrayList<>();
+            int strike = 0; // 입력한 값의 strike 저장
+            int ball = 0; // 입력한 값의 ball 저장
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            for(int i =0; i<numArr.length; i++ ) {
-                numArr[i] = (int)(Math.random()*9 + 1); // 1번째 고민: 1에서 9까지라서 +1 함
-                for(int j=0; j<i; j++) { // 2번째 고민: 서로 다른 숫자라서 같은 숫자면 다시 선택하게 해야함, // i가 0일때는 차피 첫번째 선택이라 겹치는 숫자는 없음 그래서 i는 1부터 고려
-                    if(numArr[i] == numArr[j]) {
-                        i--; // i를 줄여 이전 숫자로 가고
-                        break; // 해당 반복문을 탈출해서 다시 랜덤 숫자 받기
-                    }
+            while(computer.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if(!computer.contains(randomNumber)) {
+                    computer.add(randomNumber);
                 }
             }
 
-            for(int i =0; i<numArr.length; i++ ) {
-                System.out.println("랜덤 숫자 테스트" + numArr[i]);
-            }
+//            for(int i: computer) {
+//                System.out.println("랜덤 숫자 테스트" + i);
+//            }
 
             while(true) {
-                System.out.print("숫자를 입력해주세요 :");  // println대신 print로 다음 입력이 개행되지 않게 수정
-                Scanner sc = new Scanner(System.in);
-                int num = sc.nextInt();
+                System.out.print("숫자를 입력해주세요 : ");  // println대신 print로 다음 입력이 개행되지 않게 수정
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                String inputArr = br.readLine();
+
+                int input = Integer.parseInt(inputArr);
+
+                int numberArr[] = new int[3];
 
                 // 사용자가 입력할 때 범위가 벗어나면 오류 표시
-                if(num<100 || num > 999) {
+                if(input<100 || input > 999) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                 }
 
-                inputArr[0] = num/100; // 처음에 num/100 = inputArr[i]로 함
-                num = num - ((num/100)*100);
-                inputArr[1] = num/10;
-                num = num - ((num/10)*10);
-                inputArr[2] = num;
+//                testNumber[0] = input/100; // 처음에 input/100 = inputArr[i]로 함
+                numberArr[0] = input/100;
+                input = input - ((input/100)*100);
+                numberArr[1] = input/10;
+                input = input - ((input/10)*10);
+                numberArr[2] = input;
 
                 // 3번째 고민 3자리 숫자를 사용자한테 입력 받았는데, 어떻게 1자리씩 inputArr에 넣을 것인가
 
 
                 // 입력 받을 때 같은 숫자가 있으면 오류 표시
-                if(inputArr[0] == inputArr[1]) {
+                if(numberArr[0] == numberArr[1]) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-                } else if (inputArr[0] == inputArr[2]) {
+                } else if (numberArr[0] == numberArr[2]) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-                } else if (inputArr[1] == inputArr[2]) {
+                } else if (numberArr[1] == numberArr[2]) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                 }
 
                 // 이중 for문 사용
-                for(int i =0; i<numArr.length; i++) {
-                    for(int j=0; j<inputArr.length; j++) {
-                        if((numArr[i] == inputArr[j]) & (i==j)){ // 숫자도 같고 인덱스도 같으면 strike, & && 차이?
+                for(int i =0; i<computer.size(); i++) {
+                    for(int j=0; j<numberArr.length; j++) {
+                        if((computer.get(i) == numberArr[j]) & (i==j)){ // 숫자도 같고 인덱스도 같으면 strike, & && 차이?
                             strike++;
-                        } else if((numArr[i] == inputArr[j]) & (i!=j)){ // 숫자는 같은데 인덱스는 다르면 ball
+                        } else if((computer.get(i) == numberArr[j]) & (i!=j)){ // 숫자는 같은데 인덱스는 다르면 ball
                             ball++;
                         }
                     }
