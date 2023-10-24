@@ -11,8 +11,8 @@ public class Application {
 
         boolean continueGame = true;
         while (continueGame) {
-            GameRunner gameRunner = new GameRunner();
-            gameRunner.runGameLoop();
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.run();
 
             showGameContinueInputMessage();
             continueGame = GameInputView.getContinueInput();

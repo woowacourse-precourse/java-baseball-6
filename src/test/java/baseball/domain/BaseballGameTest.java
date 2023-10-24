@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class GameRunnerTest {
+public class BaseballGameTest {
     @Test
     public void 숫자_정답시_true_반환_테스트() {
         List<Integer> computer = Arrays.asList(1, 2, 3);

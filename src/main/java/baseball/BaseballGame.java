@@ -7,14 +7,14 @@ import baseball.domain.RandomNumberGenerator;
 import baseball.ui.GameInputView;
 import java.util.List;
 
-public class GameRunner {
+public class BaseballGame {
     List<Integer> computerNumber;
 
-    GameRunner() {
+    BaseballGame() {
         this.computerNumber = RandomNumberGenerator.generate();
     }
 
-    void runGameLoop() {
+    void run() {
         boolean userWin = false;
         while (!userWin) {
             userWin = playGame();
