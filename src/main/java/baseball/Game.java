@@ -67,18 +67,18 @@ public class Game {
                 .boxed()
                 .toList();
 
-        int[] result = judge(submittedNumList);
+        PlayResult result = judge(submittedNumList);
 
         showResult(result);
 
         // 판단 결과에서 strike의 개수가 3이면 true 반환
-        if (result[0] == 3)
+        if (result.getStrikeNum() == 3)
             return true;
 
         return false;
     }
 
-    private int[] judge(List<Integer> submittedList) {
+    private PlayResult judge(List<Integer> submittedList) {
         int strikeNum = 0;
         int ballNum = 0;
         // 제출 된 숫자가 요구 사항에 따라 어떤 결과를 갖는지 판단
@@ -89,19 +89,18 @@ public class Game {
                 ballNum++;
         }
 
-        int[] result = new int[]{ strikeNum, ballNum };
-        return result;
+        return new PlayResult(strikeNum, ballNum);
     }
 
-    private void showResult(int[] resultArray) {
-        int strikeNum = resultArray[0];
-        int ballNum = resultArray[1];
+    private void showResult(PlayResult result) {
+        int strikeNum = result.getStrikeNum();
+        int ballNum = result.getBallNum();
 
         if (strikeNum == 0 && ballNum == 0) {
             System.out.print("낫싱");
         }
         if (ballNum > 0) {
-            System.out.print(resultArray[1] + "볼");
+            System.out.print(ballNum + "볼");
         }
         if (strikeNum > 0) {
             if (ballNum > 0) System.out.print(" ");
@@ -118,5 +117,23 @@ public class Game {
         else if (input.equals("2"))
             return false;
         else throw new IllegalArgumentException();
+    }
+
+    private class PlayResult {
+        private int strikeNum;
+        private int ballNum;
+
+        public PlayResult(int strikeNum, int ballNum) {
+            this.strikeNum = strikeNum;
+            this.ballNum = ballNum;
+        }
+
+        public int getStrikeNum() {
+            return strikeNum;
+        }
+
+        public int getBallNum() {
+            return ballNum;
+        }
     }
 }
