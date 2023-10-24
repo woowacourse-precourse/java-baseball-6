@@ -11,6 +11,8 @@ public class Application {
         String randomNum = RandomGenerator.getRandomNumber();
         String userNum = Input.inputUserNumber();
 
+        CompareNumberService compareNumberService = new CompareNumberService();
+        String result = compareNumberService.CompareNumbers(userNum, randomNum);
 
     }
 
