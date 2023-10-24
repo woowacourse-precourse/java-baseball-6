@@ -8,8 +8,8 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {
-    private Answer answer;
     private final InputView inputView = new InputView();
+    private Answer answer;
 
     public void run() {
         inputView.greetingMsg();
@@ -35,6 +35,7 @@ public class Controller {
             OutputView outputView = new OutputView();
             outputView.roundEndMsg();
             inputView.askRestartMsg();
+
             return receiveDecision(generator);
         }
 
@@ -44,6 +45,7 @@ public class Controller {
     private boolean receiveDecision(NumberGenerator generator) {
         if (inputView.receiveRestartDecisionFromUser()) {
             answer = generator.createAnswer();
+
             return true;
         }
 
