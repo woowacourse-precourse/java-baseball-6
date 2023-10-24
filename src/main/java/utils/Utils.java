@@ -1,11 +1,29 @@
-package Validation;
+package utils;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static baseball.Application.NUMBER_LENGTH;
 
-public class Validation {
+public class Utils {
+    public List<Integer> stringToIntList(String input){
+        List<Integer> intList = new ArrayList<>();
+        for(int i=0; i<input.length(); i++){
+            int split_number = input.charAt(i)-48;
+            intList.add(split_number);
+        }
+        return intList;
+    }
+    public String intListToString(List input){
+        String string = "";
+        for(int i=0; i<input.size(); i++){
+            String split_number = String.valueOf(input.get(i));
+            string= string + split_number;
+        }
+        return string;
+    }
     public void inputLengthIsZero(String input) {
         if(input.equals("")){
             throw new IllegalArgumentException();

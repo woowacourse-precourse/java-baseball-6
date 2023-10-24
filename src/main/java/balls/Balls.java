@@ -1,18 +1,17 @@
 package balls;
 
-import Validation.Validation;
-import converter.Converter;
+import utils.Utils;
+
 import java.util.List;
 
 public class Balls {
     List<Integer> balls;
-    Validation validation= new Validation();
-    Converter converter= new Converter();
+    Utils utils= new Utils();
     public Balls(List<Integer> balls){
         this.balls = balls;
     }
     public Balls(String input){
-        validation.userGameStartValidation(input);
-        this.balls= converter.stringToIntList(input);
+        utils.userGameStartValidation(input);
+        this.balls= utils.stringToIntList(input);
     }
 }

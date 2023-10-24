@@ -1,5 +1,6 @@
 package baseball;
-import converter.Converter;
+
+import utils.Utils;
 
 import java.util.List;
 
@@ -7,9 +8,9 @@ import static baseball.Application.NUMBER_LENGTH;
 
 public class BaseballGameService {
     boolean allStrike = false;
-    Converter converter = new Converter();
+    Utils utils= new Utils();
     public boolean baseballGameServiceStart(String input, List<Integer> computerNumber){
-        List<Integer> userInputList = converter.stringToIntList(input);
+        List<Integer> userInputList = utils.stringToIntList(input);
         int ball = countBall(computerNumber, userInputList);
         int strike = countStrike(computerNumber, userInputList);
         if (strike == NUMBER_LENGTH) {
