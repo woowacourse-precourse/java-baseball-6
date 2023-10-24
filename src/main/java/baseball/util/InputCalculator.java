@@ -24,7 +24,7 @@ public class InputCalculator {
 
     // 유저가 고른 하나의 숫자가 Strike인지 Ball인지 판단
     public static void compareComputerBallAndEachBall(int[] computerBall, int eachBall, int index,
-            StrikeBallCount strikeBallCount) {
+                                                      StrikeBallCount strikeBallCount) {
 
         if (computerBall[eachBall] == index) {
 
