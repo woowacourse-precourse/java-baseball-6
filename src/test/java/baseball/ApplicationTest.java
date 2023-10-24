@@ -46,6 +46,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 볼_개수_테스트() {
+        List<Integer> userInput1 = Arrays.asList(1, 2, 3);
+        List<Integer> userInput2 = Arrays.asList(7, 4, 8);
+        List<Integer> userInput3 = Arrays.asList(5, 6, 7);
+        List<Integer> userInput4 = Arrays.asList(6, 4, 5);
+        List<Integer> result = Arrays.asList(4, 5, 6);
+
+        assertThat(Application.getBallCount(userInput1, result) == 0);
+        assertThat(Application.getBallCount(userInput2, result) == 1);
+        assertThat(Application.getBallCount(userInput3, result) == 2);
+        assertThat(Application.getBallCount(userInput4, result) == 3);
+    }
+
+    @Test
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
 
