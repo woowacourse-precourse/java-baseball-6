@@ -30,6 +30,7 @@ public class Game {
 
         player = null;
         computer = null;
+        Console.close();
     }
 
     public String getGuessNums() {
@@ -146,7 +147,7 @@ public class Game {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            return -1;
+            throw new IllegalArgumentException();
         }
 
         return value;

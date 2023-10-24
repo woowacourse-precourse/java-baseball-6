@@ -23,8 +23,6 @@ public class Application {
                 } else if (state == State.END.ordinal()) {
                     running = false;
                     game.endGame();
-                } else {
-                    break;
                 }
             }
         }
