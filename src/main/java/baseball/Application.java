@@ -28,6 +28,8 @@ public class Application {
 
                 validateRange(number);
 
+                validateDuplication(playerNumbers, number);
+
                 playerNumbers.add(number);
                 playerNumber = playerNumber / 10;
             }
@@ -67,6 +69,13 @@ public class Application {
     private static void validateRange(int number) {
         // 1에서 9까지의 수인지 검증
         if (number < 1 || number > 9) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateDuplication(List<Integer> playerNumbers, int number) {
+        // 서로 다른지 검증
+        if (playerNumbers.contains(number)) {
             throw new IllegalArgumentException();
         }
     }
