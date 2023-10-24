@@ -18,13 +18,30 @@ public class GameMaster {
     shouldContinueRound = true;
   }
 
+  public boolean play() {
+    return shouldContinueRound;
+  }
+
+  public void prepareGame() {
+    Computer computer = new Computer();
+    correctAnswer = computer.getRandomNumber();
+    start();
+  }
+
+  public void playOneRound() {
+    while(!isCorrectAnswerFound) {
+      Validator validator = new Validator(correctAnswer);
+      String answer = progress();
+      validator.writeBaseballAnswer(answer);
+      validator.changeInputBaseballType();
+      String s = printResult(validator.calculateResult());
+      decide(validator, checkResult(s));
+    }
+  }
+
   private void start() {
     isCorrectAnswerFound = false;
     System.out.println("숫자 야구 게임을 시작합니다.");
-  }
-
-  public boolean play() {
-    return shouldContinueRound;
   }
 
   //TODO: 제출하기 전에는 지우기
@@ -71,23 +88,6 @@ public class GameMaster {
   private void conclude(String decideAnswer) {
     isCorrectAnswerFound = true;
     shouldContinueRound = decideAnswer.equals("1");
-  }
-
-  public void prepareGame() {
-    Computer computer = new Computer();
-    correctAnswer = computer.getRandomNumber();
-    start();
-  }
-
-  public void playOneRound() {
-    while(!isCorrectAnswerFound) {
-      Validator validator = new Validator(correctAnswer);
-      String answer = progress();
-      validator.writeBaseballAnswer(answer);
-      validator.changeInputBaseballType();
-      String s = printResult(validator.calculateResult());
-      decide(validator, checkResult(s));
-    }
   }
 
   private void decide(Validator validator, String decide) {
