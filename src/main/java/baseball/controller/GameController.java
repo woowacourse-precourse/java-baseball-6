@@ -24,12 +24,11 @@ public class GameController {
         Player player = new Player();
         Opponent opponent = new Opponent();
 
+        outputView.printGameStartView();
         repeatGuessingAnswerNumbers(player, opponent);
     }
 
     private void repeatGuessingAnswerNumbers(Player player, Opponent opponent) {
-        outputView.printGameStartView();
-
         while (true) {
             String guessNumbers = inputView.readGuessNumbers();
             List<Integer> guessNumberList = new ArrayList<>();
