@@ -1,7 +1,8 @@
-package baseball.domain;
+package baseball.io;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.validation.Validation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,11 @@ public class Input {
     public List<Integer> playerInput(int dataType) {
         char[] player = readLine().toCharArray();
         validation.runValidation(player, dataType);
-        return convertIntoList(player);
+        return charIntoList(player);
     }
 
-    // 인풋 값을 List<Integer> 로 변환합니다.
-    private List<Integer> convertIntoList(char[] target) {
+
+    private List<Integer> charIntoList(char[] target) {
         List<Integer> convertedData = new ArrayList<>();
 
         for (char chr : target) {
