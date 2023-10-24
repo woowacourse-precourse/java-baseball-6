@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class ConsoleIO {
 
-    private static ConsoleIO consoleIO;
     private ConsoleIO() {
     }
 
@@ -17,5 +16,23 @@ public class ConsoleIO {
                 .filter(Character::isDigit)
                 .map(Character::getNumericValue)
                 .collect(Collectors.toList());
+    }
+
+    public static void resultPrint(Integer ballCount, Integer strikeCount) {
+        if(ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        }
+
+        if(ballCount == 0 && strikeCount > 0) {
+            System.out.println(strikeCount + "스트라이크");
+        }
+
+        if(ballCount > 0 && strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        }
+
+        if(ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
     }
 }

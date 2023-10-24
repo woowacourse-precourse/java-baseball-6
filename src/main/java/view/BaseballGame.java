@@ -20,5 +20,6 @@ public class BaseballGame {
         PlayerNumber playerNumber = new PlayerNumber(userInputNumber);
         BallStrikeEvaluator ballStrikeEvaluator = new BallStrikeEvaluator();
         ballStrikeEvaluator.evaluate(computerNumber, playerNumber);
+        ConsoleIO.resultPrint(ballStrikeEvaluator.getBallCount(), ballStrikeEvaluator.getStrikeCount());
     }
 }
