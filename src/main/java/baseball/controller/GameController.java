@@ -1,23 +1,21 @@
 package baseball.controller;
 
-import baseball.domain.Computer;
-import baseball.domain.ComputerNumberGenerator;
-import baseball.domain.GameStatus;
-import baseball.domain.Player;
 import baseball.domain.dto.GameResult;
-import baseball.view.InputView;
+import baseball.domain.game.Computer;
+import baseball.domain.game.ComputerNumberGenerator;
+import baseball.domain.game.GameStatus;
+import baseball.domain.game.Player;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
     private final OutputView outputView;
-    private final InputView inputView;
+    private final InputController inputController;
     private final ComputerNumberGenerator randomComputerNumberGenerator;
 
-    public GameController(OutputView outputView, InputView inputView,
+    public GameController(OutputView outputView, InputController inputController,
                           ComputerNumberGenerator randomComputerNumberGenerator) {
         this.outputView = outputView;
-        this.inputView = inputView;
+        this.inputController = inputController;
         this.randomComputerNumberGenerator = randomComputerNumberGenerator;
     }
 
@@ -25,7 +23,7 @@ public class GameController {
         do {
             Computer computer = generateRandomComputerNumbers();
             playGame(computer);
-        } while (playAgain() == GameStatus.RESTART);
+        } while (inputController.convertToGameStatus() == GameStatus.RESTART);
     }
 
     private Computer generateRandomComputerNumbers() {
@@ -35,8 +33,8 @@ public class GameController {
 
     private void playGame(Computer computer) {
         while (true) {
-            Player player = createPlayerWithInput();
-            GameResult gameResult = computer.calculateAndReturnGameResult(player);
+            Player player = inputController.convertToPlayer();
+            GameResult gameResult = computer.evaluateWith(player);
             outputView.printGameResult(gameResult);
 
             if (gameResult.isThreeStrikes()) {
@@ -45,12 +43,4 @@ public class GameController {
         }
     }
 
-    private Player createPlayerWithInput() {
-        List<Integer> playerInput = inputView.inputOtherThreeNumbers();
-        return Player.of(playerInput);
-    }
-
-    private GameStatus playAgain() {
-        return inputView.inputGameStatus();
-    }
 }
