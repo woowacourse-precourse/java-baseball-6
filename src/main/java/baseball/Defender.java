@@ -20,7 +20,6 @@ public class Defender {
         for (int i = 0; i < 3; i++) {
             target.append(temp.get(i));
         }
-        System.out.println(target); // 테스트용
     }
 
     public static boolean isBall(String answer, int i) {
