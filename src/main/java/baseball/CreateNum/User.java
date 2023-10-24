@@ -1,5 +1,6 @@
-package baseball;
+package baseball.CreateNum;
 
+import baseball.Exception.Exception;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -12,15 +13,14 @@ public class User {
         System.out.print("숫자를 입력해주세요: ");
         String s = Console.readLine();
 
-        if (s.length() > 3) {
-            throw new IllegalArgumentException();
-        }
+        Exception.validateInputLength(s);
 
         for (int x = 0; x < s.length(); x++) {
-            int i1 = Integer.parseInt(String.valueOf(s.charAt(x)));
-            if (i1 < 1 || i1 > 9) {
-                throw new IllegalArgumentException();
-            }
+
+            Exception.validateNonDigitCharacter(s.charAt(x));
+            Exception.validateDuplicates(user,s.charAt(x));
+            Exception.validateMinimumValue(s.charAt(x));
+
             user.add((int) s.charAt(x) - 48);
         }
         return user;
