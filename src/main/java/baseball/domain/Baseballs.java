@@ -2,19 +2,23 @@ package baseball.domain;
 
 import java.util.List;
 
-import static baseball.domain.Baseball.*;
 import static baseball.validator.BaseballsValidator.validate;
+
 
 public class Baseballs {
 
-    private final List<Baseball> baseballs;
+    public static final int MIN_BALL = 1;
+    public static final int MAX_BALL = 9;
+    public static final int BALL_SIZE = 3;
 
-    public Baseballs(List<Baseball> baseballs) {
+    private final List<Integer> baseballs;
+
+    public Baseballs(List<Integer> baseballs) {
         validate(baseballs);
         this.baseballs = List.copyOf(baseballs);
     }
 
-    public Baseball getBall(int index) {
+    public Integer getBall(int index) {
         return baseballs.get(index);
     }
 
@@ -44,18 +48,18 @@ public class Baseballs {
         return strikeCount;
     }
 
-    private boolean containsOtherBall(Baseball otherBaseball) {
-        for (Baseball baseball : baseballs) {
-            if (baseball.isSameNumber(otherBaseball)) {
+    private boolean isStrike(int index, Baseballs playerBaseballs) {
+        Integer computerBaseball = this.getBall(index);
+        Integer playerBaseball = playerBaseballs.getBall(index);
+        return computerBaseball.equals(playerBaseball);
+    }
+
+    private boolean containsOtherBall(Integer otherBaseball) {
+        for (Integer baseball : baseballs) {
+            if (baseball.equals(otherBaseball)) {
                 return true;
             }
         }
         return false;
-    }
-
-    private boolean isStrike(int index, Baseballs playerBaseballs) {
-        Baseball computerBaseball = this.getBall(index);
-        Baseball playerBaseball = playerBaseballs.getBall(index);
-        return computerBaseball.number().equals(playerBaseball.number());
     }
 }

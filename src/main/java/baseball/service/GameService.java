@@ -2,39 +2,45 @@ package baseball.service;
 
 import baseball.domain.Baseballs;
 import baseball.domain.Game;
-import baseball.domain.GameResult;
+import baseball.domain.GameScore;
+import baseball.util.Converter;
 
 public class GameService {
 
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
+    private final Game game;
+    private final GameScore gameScore;
 
-    public Game createGame(BallGeneratorService ballGeneratorService) {
-        return new Game(ballGeneratorService);
+    public GameService(Game game, GameScore gameScore) {
+        this.game = game;
+        this.gameScore = gameScore;
     }
 
-    public GameResult compareAndResult(Baseballs computerBaseballs, Baseballs playerBaseballs) {
+    public void setup() {
+        game.setup();
+    }
+
+    public Baseballs setPlayerBaseballs(String playerGuess) {
+        return new Baseballs(Converter.convertStringToBaseballs(playerGuess));
+    }
+
+    public void calculateStrikeAndBall(Baseballs playerBaseballs) {
+        Baseballs computerBaseballs = game.getComputerBaseballs();
         int balls = computerBaseballs.countBalls(playerBaseballs);
         int strikes = computerBaseballs.countStrikes(playerBaseballs);
-        return new GameResult(balls, strikes);
+        gameScore.setGameScore(balls, strikes);
     }
 
-    public String createGameResult(GameResult gameResult) {
-        return gameResult.createGameResult();
+    public String generateGameResult() {
+        return gameScore.generateGameResult();
     }
 
-    public void updateGameState(Game game, GameResult gameResult) {
-        if (gameResult.isThreeStrike()) {
-            game.setGameOver();
+    public void updateGameState() {
+        if (gameScore.isThreeStrike()) {
+           game.setGameOver();
         }
     }
 
-    public boolean restartGame(String choice) {
-        if (choice.equals(RESTART)) {
-            return true;
-        } if (choice.equals(EXIT)) {
-            return false;
-        }
-        throw new IllegalArgumentException("1 또는 2 중 하나의 유효한 입력이 필요합니다.");
+    public boolean isGameOver() {
+        return game.isGameOver();
     }
 }

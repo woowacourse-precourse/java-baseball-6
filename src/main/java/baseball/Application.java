@@ -2,13 +2,16 @@ package baseball;
 
 import baseball.controller.GameController;
 import baseball.controller.InputController;
-import baseball.service.BallGeneratorService;
+import baseball.domain.Game;
+import baseball.domain.GameScore;
 import baseball.service.GameService;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        GameController gameController = new GameController(inputController(), outputView(), gameService(), ballGeneratorService());
+        GameController gameController = new GameController(inputController(), outputView(), inputView(), gameService());
+        gameController.intro();
         gameController.run();
     }
 
@@ -20,11 +23,19 @@ public class Application {
         return new OutputView();
     }
 
-    private static GameService gameService() {
-        return new GameService();
+    private static InputView inputView() {
+        return new InputView();
     }
 
-    private static BallGeneratorService ballGeneratorService() {
-        return new BallGeneratorService();
+    private static GameService gameService() {
+        return new GameService(game(), gameScore());
+    }
+
+    private static Game game() {
+        return new Game();
+    }
+
+    private static GameScore gameScore() {
+        return new GameScore();
     }
 }

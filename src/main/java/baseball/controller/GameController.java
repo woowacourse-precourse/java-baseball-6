@@ -1,54 +1,75 @@
 package baseball.controller;
 
 import baseball.domain.Baseballs;
-import baseball.domain.Game;
-import baseball.domain.GameResult;
-import baseball.service.BallGeneratorService;
 import baseball.service.GameService;
+import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import static baseball.domain.GameStatus.EXIT;
+import static baseball.domain.GameStatus.RESTART;
 
 public class GameController {
 
     private final InputController inputController;
     private final OutputView outputView;
+    private final InputView inputView;
     private final GameService gameService;
-    private final BallGeneratorService ballGeneratorService;
 
     public GameController(InputController inputController,
                           OutputView outputView,
-                          GameService gameService,
-                          BallGeneratorService ballGeneratorService) {
+                          InputView inputView,
+                          GameService gameService) {
         this.inputController = inputController;
         this.outputView = outputView;
+        this.inputView = inputView;
         this.gameService = gameService;
-        this.ballGeneratorService = ballGeneratorService;
+    }
+
+    public void intro() {
+        outputView.printStartGameMessage();
     }
 
     public void run() {
-        outputView.gameStartMessage();
-        do {
-            playGame();
-            outputView.gameEndMessage();
-        } while (restartGame());
+        setGame();
+        playGame();
+        String restartChoice = requestRestartChoice();
+        handleRestartChoice(restartChoice);
+    }
+
+    private void setGame() {
+        gameService.setup();
     }
 
     private void playGame() {
-        Game game = gameService.createGame(ballGeneratorService);
-        Baseballs computerBaseballs = game.getComputerBalls();
-        while (!game.isGameOver()) {
-            outputView.inputBallsMessage();
-            GameResult gameResult = gameService.compareAndResult(computerBaseballs, getPlayerBalls());
-            outputView.resultMessage(gameService.createGameResult(gameResult));
-            gameService.updateGameState(game, gameResult);
+        while (!gameService.isGameOver()) {
+            String playerGuess = requestPlayerGuess();
+            Baseballs playerBalls = gameService.setPlayerBaseballs(playerGuess);
+            gameService.calculateStrikeAndBall(playerBalls);
+            outputView.printResultMessage(gameService.generateGameResult());
+            gameService.updateGameState();
         }
+        outputView.printEndGameMessage();
     }
 
-    private Baseballs getPlayerBalls() {
-        return ballGeneratorService.generatePlayerBalls(inputController.requestPlayerGuess());
+    private String requestPlayerGuess() {
+        inputView.printPlayerGuessMessage();
+        return inputController.requestPlayerGuess();
     }
 
-    private boolean restartGame() {
-        outputView.inputGameRestartMessage();
-        return gameService.restartGame(inputController.requestRestartChoice());
+    private String requestRestartChoice() {
+        inputView.printRestartChoiceMessage();
+        return inputController.requestRestartChoice();
+    }
+
+    private void handleRestartChoice(String restartChoice) {
+        int value = Integer.parseInt(restartChoice);
+
+        if (value == RESTART.getValue()) {
+            run();
+        } else if (value == EXIT.getValue()) {
+            // 종료 처리를 수행
+        } else {
+            throw new IllegalArgumentException("입력 값은 1 또는 2 입니다. (1: 재 시작, 2: 종료)");
+        }
     }
 }

@@ -1,18 +1,25 @@
 package baseball.domain;
 
-import baseball.service.BallGeneratorService;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static baseball.domain.Baseballs.*;
 
 public class Game {
 
-    private final Baseballs computerBaseballs;
+    private Baseballs computerBaseballs;
     private boolean isGameOver;
 
-    public Game(BallGeneratorService ballGeneratorService) {
-        this.computerBaseballs = ballGeneratorService.generateRandomBalls();
-        this.isGameOver = false;
+    public void setup() {
+        computerBaseballs = new Baseballs(generateRandomNumbers());
+        isGameOver = false;
     }
 
-    public Baseballs getComputerBalls() {
+    public Baseballs getComputerBaseballs() {
         return computerBaseballs;
     }
 
@@ -22,5 +29,13 @@ public class Game {
 
     public boolean isGameOver() {
         return isGameOver;
+    }
+
+    private List<Integer> generateRandomNumbers() {
+        Set<Integer> ballNumbers = new HashSet<>();
+        while (ballNumbers.size() < BALL_SIZE) {
+            ballNumbers.add(Randoms.pickNumberInRange(MIN_BALL, MAX_BALL));
+        }
+        return new ArrayList<>(ballNumbers);
     }
 }
