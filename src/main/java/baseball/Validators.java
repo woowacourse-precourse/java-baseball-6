@@ -38,4 +38,10 @@ public class Validators {
             }
         }
     }
+
+    public static void validateOneTwo(String toRegameOrNotString) {
+        if (!(toRegameOrNotString.equals("1") || toRegameOrNotString.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
