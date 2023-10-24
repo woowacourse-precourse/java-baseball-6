@@ -1,4 +1,4 @@
-package utils;
+package baseball.utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 //3자리 난수 생성을 위한 클래스
@@ -9,6 +9,7 @@ public class Random {
         for(int i = 0; i <3; i++){
             numbers[i] = getUniqueNum(numbers, i);
         }
+
         return numbers;
     }
 
@@ -20,6 +21,8 @@ public class Random {
                 break;
             }
         }
+        //debug
+/*        System.out.println(newNum);*/
         return newNum;
     }
     private static Boolean isUnique(int[] nums, int i, int newNum){
