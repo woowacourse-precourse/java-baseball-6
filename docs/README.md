@@ -18,19 +18,18 @@
 
 
 2. checkLength() : 사용자의 입력 값의 길이가 3인지 체크하는 함수
-   * return : boolean
+   * void
    * 3이 아닐 경우 IllegalArgumentException 발생 후, "3개의 숫자를 입력하세요." 문구 출력
 
 
 3. checkZero() : 사용자의 입력 값이 0이 있는지 체크하는 함수
-   * return : boolean
+   * void
    * 0이 아닐 경우 IllegalArgumentException 발생 후, "1부터 9사이의 숫자만 입력하세요." 문구 출력
 ---
 ### ⚾️ 야구게임 기능 구현
 1. checkAgainGame() : 재시작 혹은 종료를 해주는 함수
    * return : boolean
    * inGame(초기값 : true)이라는 boolean을 만들어서 종료 시 false return, 재시작 시 true return.
-   
 
 2. strikeCnt() : strike를 카운트해주는 함수
    * return : int
