@@ -63,11 +63,6 @@ public class GameView {
                 user.add(digit);
             }
         }
-
-        for (Integer n : user) {
-            System.out.print(n + " ");
-        }
-        System.out.println();
         if (user.size() != 3) {
             throw new IllegalArgumentException("중복되지 않은 수를 입력하세요.");
         }
