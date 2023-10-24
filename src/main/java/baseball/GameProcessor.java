@@ -34,7 +34,7 @@ public class GameProcessor {
         return userNumberList;
     }
 
-    private int calculateBall(List<String> userNumberList, List<String> randomNumberList) {
+    private int computeBallCount(List<String> userNumberList, List<String> randomNumberList) {
         int ball = 0;
 
         for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
@@ -48,7 +48,7 @@ public class GameProcessor {
         return ball;
     }
 
-    private int calculateStrike(List<String> userNumberList, List<String> randomNumberList) {
+    private int computeStrikeCount(List<String> userNumberList, List<String> randomNumberList) {
         int strike = 0;
 
         for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
@@ -74,8 +74,8 @@ public class GameProcessor {
         List<String> userNumberList = generateUserNumberList(data);
         List<String> randomNumberList = generateRandomNumberList(data);
 
-        int ball = calculateBall(userNumberList, randomNumberList);
-        int strike = calculateStrike(userNumberList, randomNumberList);
+        int ball = computeBallCount(userNumberList, randomNumberList);
+        int strike = computeStrikeCount(userNumberList, randomNumberList);
 
         data.setBall(ball);
         data.setStrike(strike);
