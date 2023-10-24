@@ -2,9 +2,17 @@ package baseball;
 
 /* 플레이어가 제시한 숫자를 판정하고 결과를 반환 */
 public class BaseballUmpire {
+	private int ball;
+	private int strike;
+
+	public BaseballUmpire() {
+		ball = 0;
+		strike = 0;
+	}
+
 	public int[] umpire(String com, String user) {
-		int ball = umpireBall(com, user);
-		int strike = umpireStrike(com, user);
+		ball = umpireBall(com, user);
+		strike = umpireStrike(com, user);
 		return new int[] {ball, strike};
 	}
 
@@ -36,5 +44,9 @@ public class BaseballUmpire {
 	private boolean isContains(String com, String user, int index) {
 		// com 문자열이 user의 index번째 문자를 포함하면 true
 		return com.contains(Character.toString(user.charAt(index)));
+	}
+
+	public int getStrike() {
+		return this.strike;
 	}
 }
