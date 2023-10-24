@@ -8,7 +8,9 @@ public class Application {
     private static int ball;
     private static int strike;
     private static boolean isOver;
+    private static String restartOrEndFlag;
     private static boolean isSucceed;
+    private static final String TERMINATE = "2";
 
     public static void main(String[] args) throws IllegalArgumentException {
         //TODO: 숫자 야구 게임 구현
@@ -19,6 +21,7 @@ public class Application {
             while (!isSucceed) {
                 isSucceed();
             }
+            isOver();
         }
     }
 
@@ -72,6 +75,12 @@ public class Application {
     public static void isSucceed() {
         if (strike == 3) {
             isSucceed = true;
+        }
+    }
+
+    public static void isOver() {
+        if (restartOrEndFlag.equals(TERMINATE)) {
+            isOver = true;
         }
     }
 
