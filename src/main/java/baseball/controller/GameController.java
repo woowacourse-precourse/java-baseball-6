@@ -13,16 +13,23 @@ public class GameController {
 
     public void run() {
         OutputView.printStartGame();
+        startOneRound();
+    }
+
+    private void startOneRound() {
         List<Integer> computerNumbers = RandomNumberCreator.createRandomNumber();
-        recursiveGame(computerNumbers);
+        playGame(computerNumbers);
+        askRestartGame();
+    }
+
+    private void askRestartGame() {
         OutputView.printInputRestartGame();
-        // 게임 재시작 여부 묻기
         if (InputView.inputRestartGame() == 1) {
-            run();
+            startOneRound();
         }
     }
 
-    private void recursiveGame(List<Integer> computerNumbers) {
+    private void playGame(List<Integer> computerNumbers) {
         OutputView.printInputNumber();
         List<Integer> numbers = InputView.inputNumber();
         GameResult gameResult = gameService.checkResult(numbers, computerNumbers);
@@ -32,7 +39,6 @@ public class GameController {
             return;
         }
 
-        recursiveGame(computerNumbers);
+        playGame(computerNumbers);
     }
-
 }
