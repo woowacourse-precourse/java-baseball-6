@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.model.BallStrike;
 import baseball.model.BaseballCount;
 import baseball.model.Computer;
 import baseball.model.User;
@@ -8,28 +9,36 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseBallGameService {
-    private BaseballCount baseballCount = new BaseballCount();
+
+    BaseballCount baseballCount = new BaseballCount();
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        BallStrike ballStrike = new BallStrike();
+
         Computer randomNumbers = Computer.createRandomNumbers();
         List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
 
-        while(baseballCount.getStrikeCount() < 3) {
+        while(ballStrike.getStrikeCount() < 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInputNumbers = readLine();
             User user = User.readInputNumbers(userInputNumbers);
             List<Integer> inputNumberList = user.getInputNumberList();
-            playBaseBall(randomNumbersList, inputNumberList);
+            playBaseBall(randomNumbersList, inputNumberList, ballStrike);
+            printResult(ballStrike);
         }
 
     }
 
-    public void playBaseBall(List<Integer> computerNumberList, List<Integer> UserNumberList) {
+    public void playBaseBall(List<Integer> computerNumberList, List<Integer> UserNumberList, BallStrike ballStrike) {
         int strike = baseballCount.countStrike(computerNumberList, UserNumberList);
         int ball = baseballCount.countBall(computerNumberList, UserNumberList);
-        baseballCount.printCountResult(ball, strike);
+        ballStrike.setBallStrike(ball, strike);
+    }
+
+    public void printResult(BallStrike ballStrike) {
+        baseballCount.printCountResult(ballStrike.getBallCount(), ballStrike.getStrikeCount());
     }
 
     public void gameOver() {
@@ -46,6 +55,5 @@ public class BaseBallGameService {
     private String readLine() {
         return Console.readLine();
     }
-
 
 }

@@ -3,46 +3,25 @@ package baseball.model;
 import java.util.List;
 
 public class BaseballCount {
-    private int strikeCount;
-    private int ballCount;
-
-    public BaseballCount() {
-        this.strikeCount = 0;
-        this.ballCount = 0;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
-    public int getBallCount() {
-        return ballCount;
-    }
-
-    public void addStrikeCount() {
-        strikeCount++;
-    }
-
-    public void addBallCount() {
-        ballCount++;
-    }
 
     public int countStrike(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        int strike = 0;
         for(int idx = 0; idx < userNumberList.size(); idx++) {
             if(computerNumberList.get(idx).equals(userNumberList.get(idx))) {
-                addStrikeCount();
+                strike++;
             }
         }
-        return strikeCount;
+        return strike;
     }
 
     public int countBall(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        int ball = 0;
         for(int idx = 0; idx < userNumberList.size(); idx++) {
             if(!computerNumberList.get(idx).equals(userNumberList.get(idx)) && userNumberList.contains(computerNumberList.get(idx))) {
-                addBallCount();
+                ball++;
             }
         }
-        return ballCount;
+        return ball;
     }
 
     public void printCountResult(int ball, int strike) {
