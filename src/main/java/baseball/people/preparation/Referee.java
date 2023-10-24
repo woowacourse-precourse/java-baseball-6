@@ -29,7 +29,7 @@ public class Referee {
     반환 전에 declare 메서드를 호출해서
     볼과 스트라이크의 개수를 출력한다.
      */
-    public int[] judge(int[] numbers) {
+    public boolean strikeOut(int[] numbers) {
         int ball = 0, strike = 0;
         for (int i = 0; i < 3; i++) {
             boolean[] check = targetNumber.has(numbers[i], i);
@@ -45,7 +45,8 @@ public class Referee {
 
         declare(ball, strike);
 
-        return new int[]{ball, strike};
+        if (strike == 3) return true;
+        return false;
     }
 
     private void declare(int ball, int strike) {
