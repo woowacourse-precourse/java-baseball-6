@@ -92,10 +92,8 @@ public class NumberBaseball {
     }
 
     private static void validateOutOfRange(String stringValue) {
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (!stringValue.matches("^[1-9]+$")) {
-                ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
-            } //TODO: 이쪽 if문을 Util로 빼고싶은데..
+        if (!stringValue.matches("^[1-9]+$")) {
+            ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
         }
     }
 }
