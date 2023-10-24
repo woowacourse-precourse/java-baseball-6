@@ -14,7 +14,7 @@ public final class Validator {
     public static void validateDuplicateList(List<Integer> list) {
         Set<Integer> validationList = new HashSet<>(list);
         if (validationList.size() != list.size()) {
-            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException("리스트에 중복된 숫자가 존재합니다.");
         }
     }
 }
