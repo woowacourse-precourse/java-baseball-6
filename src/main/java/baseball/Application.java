@@ -23,9 +23,8 @@ public class Application {
                 }
             }
 //		세자리 수 입력 받기
-            List<Integer> user;
             while (true) {
-                user = new ArrayList<>();
+                List<Integer> user = new ArrayList<>();
                 int strike = 0, ball = 0;
                 System.out.println("숫자를 입력해주세요 :");
                 String[] Input = Console.readLine().split("");
@@ -45,7 +44,6 @@ public class Application {
                 for (int i = 0; i < 3; i++) {
                     if (Objects.equals(computer.get(i), user.get(i))) {
                         strike++;
-                        continue;
                     } else if (computer.contains(user.get(i))) {
                         ball++;
                     }
@@ -53,16 +51,18 @@ public class Application {
 
 
 //		출력
+                StringBuilder answer = new StringBuilder();
                 if (ball == 0 && strike == 0) {
                     System.out.println("낫싱");
                     continue;
                 }
                 if (ball != 0) {
-                    System.out.println(ball + "볼 ");
+                    answer.append(ball).append("볼 ");
                 }
                 if (strike != 0) {
-                    System.out.println(strike + "스트라이크");
+                    answer.append(strike).append("스트라이크");
                 }
+                System.out.println(answer);
 
                 if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
