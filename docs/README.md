@@ -23,13 +23,14 @@
 ### Player
 - 멤버 변수 : number
 
-| 메소드             | 설명                                     | 반환값     |
-|-----------------|----------------------------------------|---------|
-| askNumber       | 사용자 입력을 받아 멤버 변수 "number" 에 저장         | void    |
-| askRestart      | 게임 재시작 값 입력                            | String  |
-| isCorrectLength | [Exception 발생] 사용자 입력이 1자리 또는 3자리인지 확인 | boolean |
-| isDist          | [Exception 발생] 사용자 입력이 숫자인지 확인         | boolean |
-| isDuplication   | [Exception 발생] 사용자 입력에 중복이 없는지 확인      | boolean |
+| 메소드             | 설명                                     | 반환값    |
+|-----------------|----------------------------------------|--------|
+| askNumber       | 사용자 입력을 받아 멤버 변수 "number" 에 저장         | void   |
+| askRestart      | 게임 재시작 값 입력                            | String |
+| isCorrectLength | [Exception 발생] 사용자 입력이 1자리 또는 3자리인지 확인 | void   |
+| isDist          | [Exception 발생] 사용자 입력이 숫자인지 확인         | void   |
+| isDuplication   | [Exception 발생] 사용자 입력에 중복이 없는지 확인      | void   |
+| isCorrectInput  | [Exception 발생] 사용자 입력이 1과 2인지 확인       | void   |
 
 ### Computer
 - 멤버 변수 : number
