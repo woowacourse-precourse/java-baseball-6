@@ -18,7 +18,7 @@ public class Application {
     private static final int START_NUM = 1;
     private static final int END_NUM = 9;
     private static final int COUNT = 3;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException{
         // 게임 시작
         println(WELCOME_MSG);
 
@@ -47,8 +47,6 @@ public class Application {
                 else throw new IllegalArgumentException("잘못된 입력입니다.");
             }
 
-        }catch (IllegalArgumentException e){
-            println(e.getMessage());
         }finally {
             // Scanner 종료
             Console.close();
