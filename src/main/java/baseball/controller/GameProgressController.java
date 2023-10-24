@@ -17,7 +17,7 @@ public class GameProgressController {
         boolean progressState = true;
         while (progressState) {
             outputView.printGameStart();
-            saveComputerGenerateNumbers();
+            computerController.createAndSaveAnswer(gameNumber);
             userGuessing();
             progressState = userRestartOrExit(inputView.getUserRestartOrExitNumber());
         }
@@ -52,9 +52,4 @@ public class GameProgressController {
         List<Integer> validUserInputNumbers = userInputValidator.userInputNumbersValidate(validUserInputString);
         gameNumber.saveUserInputNumbers(validUserInputString, validUserInputNumbers);
     }
-
-    private void saveComputerGenerateNumbers() {
-        computerController.startGame(gameNumber);
-    }
-
 }

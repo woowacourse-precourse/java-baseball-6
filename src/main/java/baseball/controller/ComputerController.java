@@ -19,7 +19,7 @@ public class ComputerController {
 
     RandomUtility randomUtility = new RandomUtility();
 
-    public void startGame(GameNumber gameNumber) {
+    public void createAndSaveAnswer(GameNumber gameNumber) {
         List<Integer> computerGenerateNumbers = Arrays.stream(randomUtility.generateAnswerNumbers()).boxed().collect(Collectors.toList());
         gameNumber.setComputerGenerateNumbers(computerGenerateNumbers);
     }
