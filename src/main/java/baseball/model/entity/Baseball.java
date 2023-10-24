@@ -33,4 +33,29 @@ public class Baseball {
     public List<BaseballNumber> getNumbers() {
         return numbers;
     }
+
+
+    public int countStrike(Baseball number) {
+        if(number == null) {
+            return 0;
+        }
+        Long strike = numbers.stream()
+                .filter(n -> n.equals(number.getNumberByIndex(numbers.indexOf(n))))
+                .count();
+        return strike.intValue();
+    }
+
+    public int countBall(Baseball number) {
+        if(number == null) {
+            return 0;
+        }
+        Long ball = numbers.stream()
+                .filter(n -> number.getNumbers().contains(n) && !number.getNumberByIndex(numbers.indexOf(n)).equals(n))
+                .count();
+        return ball.intValue();
+    }
+
+    public BaseballNumber getNumberByIndex(int index) {
+        return numbers.get(index);
+    }
 }

@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.model.dto.Score;
 import baseball.model.entity.Baseball;
-import baseball.model.entity.BaseballNumber;
 import baseball.model.entity.Computer;
 
 
@@ -13,15 +12,12 @@ public class GameService {
     }
 
     public Score calculateResult(Baseball inputNumbers) {
-        int strike = 0, ball = 0;
-        for(int i = 0; i < 3; i++) {
-            BaseballNumber resultNumber = inputNumbers.getNumbers().get(i);
-            if(resultNumber.equals(computer.getBaseballNumber().getNumbers().get(i))) {
-                strike++;
-            } else if(computer.getBaseballNumber().getNumbers().contains(resultNumber)) {
-                ball++;
-            }
-        }
+
+        Baseball computerNumber = computer.getBaseballNumber();
+
+        int strike = inputNumbers.countStrike(computerNumber);
+        int ball = inputNumbers.countBall(computerNumber);
+
         return new Score(strike, ball);
     }
 }
