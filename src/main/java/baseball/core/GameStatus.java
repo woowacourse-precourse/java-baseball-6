@@ -1,4 +1,4 @@
-package baseball;
+package baseball.core;
 
 import static baseball.constants.Game.QUIT;
 import static baseball.constants.Game.START;

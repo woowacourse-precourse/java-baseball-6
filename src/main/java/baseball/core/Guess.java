@@ -1,4 +1,4 @@
-package baseball;
+package baseball.core;
 
 import static baseball.constants.Game.ANSWER_DIGIT;
 import static baseball.constants.Game.END_INCLUSIVE;
