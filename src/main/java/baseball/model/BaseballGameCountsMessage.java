@@ -4,7 +4,7 @@ import static baseball.model.BaseballGameCounts.BALL;
 import static baseball.model.BaseballGameCounts.STRIKE;
 
 public class BaseballGameCountsMessage {
-    private String message;
+    private String message = "";
 
     public BaseballGameCountsMessage(BaseballGameCounts baseballGameCounts) {
         // 카운트 수를 기반으로 메시지 생성을 위해 변수 지정
@@ -29,12 +29,7 @@ public class BaseballGameCountsMessage {
 
     // 조건에 따라 메시지를 수정해주는 함수
     public void editMessage(String frag) {
-        if (message == null) {
-            this.message = frag;
-            return;
-        }
         this.message = frag + this.message;
-
     }
 
     // 메시지를 출력하는 함수
