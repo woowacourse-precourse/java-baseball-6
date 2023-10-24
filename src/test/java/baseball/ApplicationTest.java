@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.Controller.GameController;
+import baseball.Model.ComputerNum;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +20,32 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void ComputerNumCreate(){
+        ComputerNum computerNumber = new ComputerNum();
+        assertThat(computerNumber.getComputerNum().length()).isEqualTo(3);
+    }
+
+    @Test
+    void GameHintTest() {
+        GameController gameController = new GameController();
+        gameController.GameSet("471");
+
+        gameController.getHint();
+    }
+
+    @Test
+    void 입력숫자_길이_예외테스트() {
+        GameController gameController = new GameController();
+        gameController.GameSet("4713");
+    }
+
+    @Test
+    void 문자입력_예외테스트() {
+        GameController gameController = new GameController();
+        gameController.GameSet("a15");
     }
 
     @Test
