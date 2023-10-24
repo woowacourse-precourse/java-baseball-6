@@ -32,6 +32,10 @@ public class GamePlayController {
     private void hintResult(List<Integer> ballAndStrikeCountList) {
         playerHintUtil.ballAndStrikeResultHint(ballAndStrikeCountList);
 
+        if (ballAndStrikeCountList.get(STRIKE_INDEX) == THREE_STRIKE){
+            outputView.printThreeStrikeResult(THREE_STRIKE);
+            return;
+        }
         outputView.printNotThreeStrikeResult(playerHintUtil.getPlayerHint());
     }
 }
