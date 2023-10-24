@@ -1,9 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,7 +12,7 @@ public class Application {
 
     }
 
-    public static void play(){
+    public static void play() {
         ArrayList<Integer> computerNumList = RandomNumber.randomNumber();
 
         ArrayList<Integer> userNumList = UserInput.userInput();
