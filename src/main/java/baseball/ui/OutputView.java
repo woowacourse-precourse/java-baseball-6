@@ -35,19 +35,18 @@ public class OutputView {
 
     public void printGameResult(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            print(NOTHING_ON_STRIKE);
+            println(NOTHING_MESSAGE);
+            return;
         }
 
         StringBuilder builder = new StringBuilder();
         if (ball > 0) {
-            builder.append(String.format("%d볼", ball));
+            builder.append(String.format(BALL_MESSAGE, ball));
             if (strike > 0) {
-                builder.append(String.format(" %d스트라이크", strike));
+                builder.append(String.format(STRIKE_WITH_BALL_MESSAGE, strike));
             }
         } else {
-            if (strike > 0) {
-                builder.append(String.format("%d스트라이크", strike));
-            }
+            builder.append(String.format(STRIKE_WITHOUT_BALL_MESSAGE, strike));
         }
         println(builder.toString());
     }
