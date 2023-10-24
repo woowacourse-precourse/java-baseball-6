@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.view.Message;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -16,6 +15,9 @@ public class Referee {
         this.goalNumber = generateGoalNumber();
     }
 
+    /**
+     * 1. Goal Number 생성
+     */
     private String generateGoalNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -30,27 +32,42 @@ public class Referee {
                 .collect(Collectors.joining());
     }
 
+    /**
+     * 2. 볼판정하기
+     */
     public int[] callBallCount(String number) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3; i++) {
-            char player_number = number.charAt(i);
-            char goal_number = this.goalNumber.charAt(i);
-
-            if (this.goalNumber.contains(String.valueOf(player_number))) {
-                if (player_number != goal_number)
-                    ball++;
-                else
-                    strike++;
+            if (!isGoalContainPlayerNumber(number.charAt(i)))
+                continue;
+            if (isStrike(number, i)) {
+                strike++;
+                continue;
             }
+            ball++;
         }
         return new int[]{ball, strike};
     }
 
+    private boolean isGoalContainPlayerNumber(char playerNumber) {
+        return this.goalNumber.contains(String.valueOf(playerNumber));
+    }
+
+    private boolean isStrike(String number, int index) {
+        return number.charAt(index) == this.goalNumber.charAt(index);
+    }
+
+    /**
+     * 3. 삼진 아웃 판정
+     */
     public boolean isStrikeOut(int[] ballCount) {
         return ballCount[1] == 3;
     }
 
+    /**
+     * 4. 경기 재시작 요청
+     */
     public boolean isRestart() {
         String number = Console.readLine();
         isValid(number);
