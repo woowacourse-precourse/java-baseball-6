@@ -1,60 +1,170 @@
 # 1주차 미션 : 숫자 야구 기능 목록 (객체가 어떻게 동작 할지에 대해 생각)
 ------------
-## 1. checkForDuplicateDigitsInRandomNumber
->+ camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 활용해서 랜덤으로 3자리 숫자 생성한 숫자 중 중복된 숫자가 있는지 검사하는 기능<br/>
->+ 동작과정
->   1. 3자리 숫자를 각각 체크하여 중복되지 않은 숫자를 추가 할 배열 nonDuplicateDigitsArray 생성
->   2. 각 자리의 숫자가 중복되지 않는 경우를 확인하는 변수 noDuplicateDigits 정의
->   3. 랜덤으로 0~9까지의 숫자 중 하나를 생성하고 while문을 순회하면서 nonDuplicateDigitsArray에 같은 숫자가 없으면 배열에 추가하고 noDuplicateDigits 1증가 , 있으면 다른 랜덤한 숫자 출력 반복
->   4. while noDuplicateDigits < 3 조건을 충족하면(서로 다른 숫자로 구성된 3자리 숫자) 반복문 종료 후, nonDuplicateDigitsArray 반환
-------------
-## 2. checkPlayerNumber 
->+ 입력받은 플레이어의 숫자를 playerGuess의 매개변수로 숫자 중 중복된 숫자가 있는지와 3자리 숫자인 검사하는 기능<br/>
->+ 동작과정
->   1. 매개변수로 입력받은 플레이어의 3자리 숫자인 playerGuess 전달
->   2. 게임을 진행하기에 적절한 숫자인지 판별하는 변수인 isPlayableNumber를 False로 정의
->   3. isPlayableNumber 중 중복된 숫자 판별을 위한 확인 변수 hasDuplicateDigits를 0으로 정의
->   4. 3자리 숫자를 각각 체크하여 중복되지 않은 숫자를 추가 할 배열 nonDuplicateDigitsArray 생성
->   5. 입력받은 playerGuess의 길이가 3이면 숫자 중복검사 실행하고 3이 아니면 "입력하신 숫자가 3자리가 아닙니다" 출력 후 프로그램 종료
->   6. 중복 검사 중 nonDuplicateDigitsArray에 중복된 숫자가 추가되게 되면, "입력하신 숫자 중 중복된 숫자가 있습니다" 출력 후 프로그램 종료
->   7. 반복문 순회 후, hasDuplicateDigits이 중복된 숫자가 없어서 3이면 isPlayableNumber를 True로 정의하고 isPlayableNumber를 반환
-------------
-## 3. countStrikesAndBalls 
->+ 상대방(컴퓨터)의 숫자와 플레이어의 숫자를 대조하여 같은 위치이고 같은 숫자이면 스트라이크, 다른 위치이지만 해당 숫자가 상대방의 숫자에 포함되어 있으면 볼로 설정하고, 스트라이크와 볼의 개수를 확인하는 기능<br/>
->+ 동작과정
->   1. 매개변수로 상대방의 숫자인 nonDuplicateDigitsArray와 플레이어의 숫자인 playerGuess를 매개변수로 전달
->   2. 스트라이크 개수 변수 strikeCount, 볼 개수 변수 ballCount를 0으로 선언
->   3. playerGuess를 반복문을 순회하면서 nonDuplicateDigitsArray와 대조하며 같은 위치의 같은 숫자이면 strikeCount 1 증가, 다른 위치이지만 playerGuess의 숫자가 nonDuplicateDigitsArray에 속해 있으면, ballCount 1 증가
->   4. while문 수행 후 strikeCount와 ballCount를 반환
-------------
-## 4. displayStrikesAndBalls
->+ 스트라이크와 볼의 개수를 개수에 따라 정해진 형식으로 출력하고 스트라이크와 볼이 없으면 낫싱을 출력하는 기<br/>
->+ 동작과정
->   1. strikeCount와 ballCount를 매개변수로 전달
->   2. strikeCount, ballCount에 대한 답변 변수 cntResult 정의
->   3. strikeCount가 0 초과이고, ballCount가 0초과이면, "{}볼 {}스트라이크" 출력
->   4. strikeCount가 0 이고, ballCount가 0초과이면, "{}볼" 출력
->   5. strikeCount가 0 초과이고, ballCount가 0이면, "{}스트라이크" 출력
->   6. strikeCount가 0 이고, ballCount가 0이면, "낫싱" 출력
->   7. cntResult 반환
-------------
-## 5. Application의 main()
->+ 게임 시작부터 게임 종료까지의 모든 과정을 담은 main() 파<br/>
->+ 동작과정
->   1. "숫자 야구 게임을 시작합니다." 출력
->   2. checkForDuplicateDigitsInRandomNumber에서 상대방(컴퓨터) 3자리 숫자 전달 받는다.
->   3. 게임 성공과 실패를 판단하는 변수인 gameIsWon를 True로 초기화
->   4. 플레이어의 숫자를 입력받는 userGuess 정의
->   5. 입력받은 userGuess를 checkPlayerNumber로 전달
->   6. 반환받은 isPlayableNumber가 False이면 gameIsWon를 False로 초기화하여 게임 진행에 적합하지 않은 숫자이므로 프로그램 종료 후 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출략
->   7. 반환받은 isPlayableNumber가 True이면 게임 진행
->   8. checkForDuplicateDigitsInRandomNumber의 상대방 숫자와 userGuess의 플레이어 숫자를 countStrikesAndBalls의 매개변수로 전달
->   9. 반환받은 스트라이크 개수 변수 strikeCount, 볼 개수 변수 ballCount를 displayStrikesAndBalls의 매개변수로 전달
->   10. 반환받은 cntResult 출력
->   11. 3~10번 과정을 while 반복문으로 실행하고, strikeCount가 3이면 숫자를 모두 맞췄으므로 반복 종료
->   12. gameIsWon이 True이면 "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
->   13. 프로그램 종료 후 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
->   14. 1이면 전체 과정을 포함한 while문 다시 실행
->   15. 2이면 프로그램 종료
 
+## 1. Application의 main()
+
+> + 게임을 시작하는 메서드를 호출<br/>
+>+ 동작과정
+   >
+   >
+1. GameStart() 메서드 호출
+------------
+
+## 2. GameStart()
+
+> + 게임을 시작하고 playGame() 메서드 호출<br/>
+>+ 동작과정
+   >
+1. "숫자 야구 게임을 시작합니다." 출력
+>  2. playGame() 메서드 호출
+------------
+
+## 3. playGame()
+
+> + 플레이어(사용자)의 숫자를 입력을 받고 playingGame() 메서드 호출<br/>
+>+ 동작과정
+   >
+1. opponentNumbers 배열을 생성하는 checkForDuplicateDigitsInRandomNumber() 호출
+>  2. playingGame() 메서드를 opponentNumbers를 매개변수로 호출
+------------
+
+## 3-1. checkForDuplicateDigitsInRandomNumber()
+
+> + 상대방(컴퓨터)의 숫자를 한자리씩 무작위로 생성하여 3자리 숫자 생성<br/>
+>+ 동작과정
+   >
+1. nonDuplicateDigitsArray 배열을 생성해서 3자리 숫자 중 1자리씩 1~9의 범위의 무작위 정수를 Randoms.pickNumberInRange 라이브러리를 사용해서 배열 안에 같은 숫자가
+   없으면 추가하는 방식으로 중복되지 않은 3자리 숫자 배열 생성
+>   2. nonDuplicateDigitsArray 반환
+------------
+
+## 4. playingGame()
+
+> + InputPlayerNum() 메서드 호출 및 상대방의 숫자와 플레이어의 숫자로 countStrikesAndBalls() 메서드 호출<br/>
+>+ 동작과정
+   >
+1. 플레이어(사용자)의 3자리 숫자 입력을 받는 InputPlayerNum() 메서드 호출
+>  2. 매개변수로 받은 opponentNumbers와 playerNumbers를 countStrikesAndBalls() 메서드의 매개변수로 전달하여 호출
+------------
+
+## 5. InputPlayerNum()
+
+> + 플레이어(사용자)의 숫자를 입력으로 받고,checkPlayerNumber에() 메서드 호출<br/>
+>+ 동작과정
+   >
+1. "숫자를 입력해 주세요." 출력
+>   2. Console.readLine();으로 사용자의 입력을 받아서 InputNum에 저장
+>   3. checkPlayerNumber에 InputNum를 매개변수로 전달하며 호출
+------------
+
+## 5-1. checkPlayerNumber()
+
+> + 3단계로 플레이어의 숫자를 검사하고 통과하지 못하면 IllegalArgumentException() 처리<br/>
+>+ 동작과정
+   >
+1. checkPlayerNumberLength 메서드 호출 false이면 IllegalArgumentException() 예외 처리하고 프로그램 종료
+>  2. checkPlayerNumberIsNumber 메서드 호출 false이면 IllegalArgumentException() 예외 처리하고 프로그램 종료
+>  3. checkPlayerNumberDulplicate 메서드 호출 false이면 IllegalArgumentException() 예외 처리하고 프로그램 종료
+>  4. 통과하면 stringToList() 메서드 호출
+------------
+
+## 5-1-1. checkPlayerNumberLength()
+
+> + 입력받은 사용자의 숫자가 3자리인지 확인하는 메서드<br/>
+>+ 동작과정
+   >
+1. boolean flag = false로 초기화
+>  2. .length()를 사용하여 길이가 3이면 flag를 true로 초기화
+>  3. flag 반환
+------------
+
+## 5-1-2. checkPlayerNumberIsNumber()
+
+> + 입력받은 사용자의 숫자가 숫자로만 구성되어 있는지 확인하는 메서드<br/>
+>+ 동작과정
+   >
+1. boolean flag = false로 초기화
+>  2. try 구문에서 parseInt로 정수로 변경
+>  3. catch 구문에서 NumberFormatException 에러 예외 처리를 flag를 반환으로 처리
+>  4. flag를 true로 초기화
+>  5. flag 반환
+
+## 5-1-3. checkPlayerNumberDulplicate()
+
+> + findDuplicates의 flag를 확인하여 true이면 flag를 반환하는 메서드<br/>
+>+ 동작과정
+   >
+1. findDuplicates 메서드 호출
+>  2. flag를 true로 초기화
+>  3. findFlag가 true이면 flag를 true로 초기화
+>  4. flag 반환
+
+------------
+
+## 5-1-3-1. findDuplicates()
+
+> + 입력받은 사용자의 숫자 중 중복된 숫자가 있는지 확인하는 메서드<br/>
+>+ 동작과정
+   >
+1. boolean flag = true로 초기화
+>  2. uniqueDigits라는 HashSet 생성
+>  3. playerNum를 반복문을 순회하며 문자열의 각 문자를 uniqueDigits에 없으면 추가
+>  4. uniqueDigits 배열의 크기가 3이 아니면(중복된 숫자가 있으면) flag를 false로 초기화
+>  5. flag 반환
+------------
+
+## 5. stringToList()
+
+> + 플레이어의 숫자를 문자열에서 리스트로 바꾸는 메서드<br/>
+>+ 동작과정
+   >
+1. 반복문을 순회하면서 각 자리의 문자를 정수로 형변환하여 Nums에 추가
+>  2. Nums 배열 반환
+------------
+
+## 6. countStrikesAndBalls()
+
+> + 플레이어와 상대방의 숫자를 대조하여 같은 위치, 같은 숫자이면 스트라이크, 다른 위치에 숫자가 포함되어 있으면 볼을 기준으로 스트라이크의 개수와 볼의 개수 파악하는 메서드<br/>
+>+ 동작과정
+   >
+1. strikeCount, ballCount 라는 각각 스트라이크와 볼의 수를 저장하는 변수 선언
+>  2. 반복문을 순회하면서 스트라이크와 볼의 개수 파악
+>  3. strikeCount, ballCount를 담은 정수 compareList 배열 생성
+>  4. displayGameResult() 메서드에 compareList를 매개변수로 호출
+------------
+
+## 7. displayGameResult()
+
+> + 파악한 스트라이크와 볼의 개수를 정해진 형식으로 출력하는 메서드<br/>
+>+ 동작과정
+   >
+1. 볼과 스트라이크가 0 초과이면 gameResult = ballScore + "볼 " + strikeScore + "스트라이크";
+>  2. 볼은 0초과, 스트라이크가 0이면 gameResult = ballScore + "볼";
+>  3. 볼은 0, 스트라이크가 0 초과 이면 gameResult = strikeScore + "스트라이크";
+>  4. 볼과 스트라이크 모두 0이면 gameResult = "낫싱";
+>  5. gameResult 출력
+>  6. endGame 메서드에 gameResult와 opponentNumbers를 매개변수로 전달하며 호출
+------------
+
+## 8. endGame()
+
+> + 스트라이크 개수가 3이면 selectGame() 메서드 호출하고 3이 아니면 playingGame() 메서드 재귀 호출<br/>
+>+ 동작과정
+   >
+1. 스트라이크 개수가 3이면
+>  2. "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
+>  3. selectGame() 메서드 호출
+>  4. 스트라이크 개수가 3이 아니면
+>  5. playingGame() 메서드를 opponentNumbers를 매개변수로 호출
+------------
+
+## 9. selectGame()
+
+> + 게임을 새로 시작할지 끝낼지 결정하는 메서드<br/>
+>+ 동작과정
+   >
+1. "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
+>  2. Console.readLine()로 사용자의 입력을 받아서 endingNum 변수 초기화
+>  3. endingNum이 "1"이면 playGame() 메서드 재귀 호출
+>  4. 2이면 프로그램 종료
   
