@@ -23,7 +23,9 @@ public final class InputParser {
     }
 
     public GameStatus parseGameStatusInput(final String input) {
+        inputValidator.validateNumbersInput(input);
         final GameStatus gameStatus = GameStatus.of(input);
+
         return switch (gameStatus) {
             case UNKNOWN -> throw new InvalidGameStatusNumberInput();
             default -> gameStatus;
