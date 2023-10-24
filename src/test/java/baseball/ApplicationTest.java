@@ -36,9 +36,12 @@ class ApplicationTest extends NsTest {
     void 임의의_숫자_3개를_생성한다() {
 
         // Given
-        List<Integer> randomNumbers = RandomNumberGenerator.createNumbers();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-        // When & Then
+        // When
+        List<Integer> randomNumbers = randomNumberGenerator.createNumbers();
+
+        // Then
         assertThat(randomNumbers).hasSize(3);
     }
 
@@ -48,9 +51,10 @@ class ApplicationTest extends NsTest {
 
         // Given
         String testNumber = "1234";
-
+        UserNumberValidator userNumberValidator = new UserNumberValidator();
+        
         // When & Then
-        Assertions.assertThatThrownBy(() -> UserNumberValidator.validateThreeDigitNumber(testNumber))
+        Assertions.assertThatThrownBy(() -> userNumberValidator.validateThreeDigitNumber(testNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("세자리 숫자가 아닙니다");
     }
@@ -61,9 +65,10 @@ class ApplicationTest extends NsTest {
 
         // Given
         String testNumber = "112";
+        UserNumberValidator userNumberValidator = new UserNumberValidator();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> UserNumberValidator.validateDuplicatedNumber(testNumber))
+        Assertions.assertThatThrownBy(() -> userNumberValidator.validateDuplicatedNumber(testNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자를 입력했습니다");
     }
