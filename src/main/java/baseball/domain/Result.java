@@ -27,7 +27,7 @@ public class Result {
         } else if (isNothing()) {
             return "낫싱";
         }
-        return String.format("%d볼 %d스트라이크%n", ballCount, strikeCount);
+        return String.format("%d볼 %d스트라이크", ballCount, strikeCount);
     }
 
     public boolean isAllStrike() {
