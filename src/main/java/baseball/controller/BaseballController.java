@@ -41,7 +41,7 @@ public class BaseballController {
             setPlayerNumbers();
             compareNumber();
             hint();
-            if(strikeCount==3){
+            if(strikeCount==BASEBALL_STRIKE_COUNT){
                 OutputView.endMessage();
                 return;
             }

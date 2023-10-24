@@ -28,6 +28,6 @@ public class Number {
     }
 
     public void setPlayerNumber(String playerNumber) {
-        this.playerNumber = playerNumber.replaceAll(" ", "");
+        this.playerNumber = playerNumber;
     }
 }
