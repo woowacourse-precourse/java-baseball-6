@@ -24,7 +24,9 @@ public class GameService {
             int userNum = Character.getNumericValue(guess[i]);
             if (computer[userNum] == i + 1) {
                 strike += 1;
-            } else if (computer[userNum] != 0) {
+                continue;
+            }
+            if (computer[userNum] != 0) {
                 ball += 1;
             }
         }
