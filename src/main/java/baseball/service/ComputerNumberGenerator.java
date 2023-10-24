@@ -7,6 +7,9 @@ public class ComputerNumberGenerator {
 
     private static ComputerNumberGenerator instance = new ComputerNumberGenerator();
 
+    private static final int COMPUTERNUMBER_START_RANGE=1;
+    private static final int COMPUTER_NUMBER_LAST_RANGE=9;
+
     private ComputerNumberGenerator() {
 
     }
@@ -18,7 +21,7 @@ public class ComputerNumberGenerator {
     public String generate() {
         StringBuilder comNumberBuilder = new StringBuilder();
         while (isShorterThanNumberLength(comNumberBuilder)) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9); // builder 에서 tostring 에서 중복되면 더하지 않으면 되잖아??
+            int randomNumber = Randoms.pickNumberInRange(COMPUTERNUMBER_START_RANGE, COMPUTER_NUMBER_LAST_RANGE);
             if (isDuplicated(comNumberBuilder, randomNumber)) {
                 continue;
             }
