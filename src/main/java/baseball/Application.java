@@ -16,12 +16,14 @@ public class Application {
     private static void playBaseball() {
         int numOfBall, numOfStrike;
         List<Integer> computerNumber = getComputerNumber();
+
         do {
             List<Integer> playerNumber = getPlayerNumber();
             numOfBall = getNumberOfBall(computerNumber, playerNumber);
             numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
             printBaseballResult(numOfBall, numOfStrike);
         } while(numOfStrike < NUMBER_SIZE);
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -49,11 +51,16 @@ public class Application {
 
     private static int getNumberOfBall(List<Integer> computerNumber, List<Integer> playerNumber) {
         int ballCount = 0;
-        for (int index = 0; index < NUMBER_SIZE; index++) {
-            int computer = computerNumber.get(index);
-            for (int i = 1; i < NUMBER_SIZE; i++) {
-                if (computer == playerNumber.get((index + i) % NUMBER_SIZE))
-                    ballCount++;
+        for (int computerIndex = 0; computerIndex < NUMBER_SIZE; computerIndex++) {
+            int computerDigit = computerNumber.get(computerIndex);
+
+            for (int playerIndex = 0; playerIndex < NUMBER_SIZE; playerIndex++) {
+                if (computerIndex != playerIndex) {
+                    int playerDigit = playerNumber.get(playerIndex);
+                    if (computerDigit == playerDigit) {
+                        ballCount++;
+                    }
+                }
             }
         }
         return ballCount;
