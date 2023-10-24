@@ -20,6 +20,9 @@ class GamePlayControllerTest {
 
     private static Computer computer;
     private static Player player;
+
+    private GameNumberValidateService gameNumberValidateService = new GameNumberValidateService();
+
     private GamePlayController gamePlayController = new GamePlayController();
     private PlayerHintUtil playerHintUtil = new PlayerHintUtil();
 
@@ -34,10 +37,13 @@ class GamePlayControllerTest {
         //given
         computer = new Computer(new ComputerRandomGameNumber(List.of(3,4,7)));
         player = new Player(playerNumber);
-        
+        List<Integer> ballAndStrikeList = gameNumberValidateService.calculateGameNumber(
+                computer.getComputerGameNumber(), player.getPlayerNumber()
+        );
+
         //when
-        gamePlayController.gameStart(computer, player);
-        
+        gamePlayController.hintResult(ballAndStrikeList);
+
         //then
         Assertions.assertThat(playerHintUtil.getPlayerHint()).isEqualTo(hint);
 
