@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Player {
     public static final int BASEBALL_NUMBERS_LIMIT_SIZE = 3;
@@ -42,13 +43,9 @@ public class Player {
     }
 
     public int calculateStrikeCounts(Player player) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            if (isStrike(player, i)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.rangeClosed(0, 2)
+                .filter(index -> isStrike(player, index))
+                .count();
     }
 
     private boolean isStrike(Player player, int idx) {
