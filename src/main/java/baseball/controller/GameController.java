@@ -7,7 +7,6 @@ import java.util.List;
 
 import baseball.model.GameResult;
 import baseball.service.GameService;
-import baseball.utils.RandomUtils;
 import baseball.view.View;
 
 import camp.nextstep.edu.missionutils.Console;
