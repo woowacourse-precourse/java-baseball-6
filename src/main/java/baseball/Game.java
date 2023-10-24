@@ -13,7 +13,7 @@ import camp.nextstep.edu.missionutils.Console;
         computer.clearComputer();
         computer.setComputer();
     }
-    public void inputNum(){
+    public void inputNum() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         user.clearUser();
         user.setUser();
@@ -67,8 +67,12 @@ import camp.nextstep.edu.missionutils.Console;
         return false;
    }
 
-   public int reStart(){
+   public int reStart() throws  IllegalArgumentException{
         int command = Integer.parseInt(Console.readLine());
+
+        if(command >2 || command <=0){
+            throw new IllegalArgumentException();
+        }
         return command;
    }
 
