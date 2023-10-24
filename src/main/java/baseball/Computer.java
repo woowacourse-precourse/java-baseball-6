@@ -11,7 +11,7 @@ public class Computer {
 
     public static List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
+        while (numbers.size() < Constants.MAX_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
