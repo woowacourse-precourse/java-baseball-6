@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class NumberGenerator {
-    public static final String TO_SMALL_RANGE = "자릿수보다 범위가 더 커야 합니다";
+    private static final String TO_SMALL_RANGE = "자릿수보다 범위가 더 커야 합니다";
 
     private NumberGenerator() {}
 
