@@ -1,21 +1,22 @@
 package baseball;
 
 import baseball.core.Core;
+import baseball.model.Score;
 import baseball.utils.Utils;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseBallGame {
-    public static void run(){
+    Core core = new Core();
+    public void run(){
         BaseBallGame game = new BaseBallGame();
-        Core core = new Core();
+        Score score = new Score();
         List<Integer> computerNumber = Utils.computerCreateNumber();
 
-        String strikeAndBall = "";
-        while (!strikeAndBall.equals("3스트라이크")){
+        while (score.getStrikes() != 3){
             List<Integer> userNumber = game.setUserNumber();
-            strikeAndBall = core.jugement(userNumber,computerNumber);
-            System.out.println(strikeAndBall);
+            counting(userNumber,computerNumber,score);
+            core.jugement(score.getTotal(),score.getStrikes(), score.getBalls());
         }
     }
 
@@ -28,5 +29,13 @@ public class BaseBallGame {
         int number = Integer.parseInt(userNumber);
         return Utils.intToIntList(number);
     }
+
+    public void counting(List<Integer> userNumber, List<Integer> computerNumber,Score score){
+        int total = core.countAll(userNumber,computerNumber);
+        int strikes = core.countStrike(userNumber,computerNumber);
+        score.setCount(total,strikes);
+    }
+
+
 
 }
