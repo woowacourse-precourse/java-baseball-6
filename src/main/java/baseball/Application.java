@@ -43,16 +43,7 @@ public class Application {
                 ans = printAns(ans, cnt, strike, ball);
             }
             //게임 재시작 여부 확인
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String playAgain = sc.next();
-
-            if (playAgain.equals("1")) {
-                playing = 1;
-            } else if (playAgain.equals("2")) {
-                playing = 0;
-            } else {
-                throw new IllegalArgumentException();
-            }
+            playing = checkPlayAgain(sc);
         }
     }
 
@@ -120,5 +111,20 @@ public class Application {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
         return ans;
+    }
+
+    private static int checkPlayAgain(Scanner sc) {
+        int playing;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playAgain = sc.next();
+
+        if (playAgain.equals("1")) {
+            playing = 1;
+        } else if (playAgain.equals("2")) {
+            playing = 0;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return playing;
     }
 }
