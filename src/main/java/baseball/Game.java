@@ -21,4 +21,14 @@ public class Game {
             }
         }
     }
+
+    public void calculateStrikeAndBall(List<Integer> input_number) { //스트라이크와 볼의 개수를 계산
+        this.strike = 0;
+        this.ball = 0;
+
+        for(int i=0; i<3; i++) {
+            if(computer_number.get(i) == input_number.get(i)) this.strike++;
+            else if(computer_number.contains(input_number.get(i))) this.ball++;
+        }
+    }
 }
