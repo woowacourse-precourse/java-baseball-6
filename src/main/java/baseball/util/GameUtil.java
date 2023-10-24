@@ -1,5 +1,7 @@
 package baseball.util;
 
+import java.util.StringJoiner;
+
 public class GameUtil {
 
     private int ballCount = 0;
@@ -39,7 +41,20 @@ public class GameUtil {
     }
 
     public String showHint() {
+        StringJoiner stringJoiner = new StringJoiner(" ");
 
-        return null;
+        if (this.ballCount > 0) {
+            stringJoiner.add(String.format("%d볼", this.ballCount));
+        }
+
+        if (this.strikeCount > 0) {
+            stringJoiner.add(String.format("%d스트라이크", this.strikeCount));
+        }
+
+        if (this.ballCount == 0 && this.strikeCount == 0) {
+            stringJoiner.add("낫싱");
+        }
+
+        return stringJoiner.toString();
     }
 }
