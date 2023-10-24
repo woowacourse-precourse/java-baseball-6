@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBall {
-    private Long id;
     private List<Integer> inputBallNumber;
 
     public BaseBall() {
@@ -26,14 +25,6 @@ public class BaseBall {
             }
         }
         return computer;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public List<Integer> getInputBallNumber() {
