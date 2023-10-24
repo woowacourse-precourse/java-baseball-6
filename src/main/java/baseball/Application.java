@@ -84,6 +84,34 @@ public class Application {
         return new int[]{strikes, balls};
     }
 
+    private static void printResult(int[] result) {
+        int strikes = result[0];
+        int balls = result[1];
+
+        String output = "";
+
+
+        if (balls > 0 && strikes > 0) {
+            output += balls + "볼 ";
+            output += strikes + "스트라이크";
+        }
+
+        else if (strikes > 0) {
+            output += strikes + "스트라이크";
+        }
+
+        else if (balls > 0) {
+            output += balls + "볼";
+        }
+
+        else {
+            //if (strikes == 0 && balls == 0) {
+            output = "낫싱";
+        }
+
+        System.out.println(output);
+    }
+
 
 
 }
