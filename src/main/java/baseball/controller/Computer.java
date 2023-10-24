@@ -5,15 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    static List<Integer> computerNum = new ArrayList<>(3);
+    static Computer computer;
+    private Computer () {}
 
-    public static List<Integer> generate() {
+    public static Computer getInstance() {
+        if (computer == null) {
+            computer = new Computer();
+        }
+        return computer;
+    }
+
+
+    static List<Integer> computerNum = new ArrayList<>(3);
+    public String generate() {
         while (computerNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNum.contains(randomNumber)) {
                 computerNum.add(randomNumber);
             }
         }
-        return computerNum;
+        return computerNum.toString();
     }
 }
