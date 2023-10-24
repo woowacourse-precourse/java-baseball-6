@@ -5,7 +5,10 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.Computer;
+import baseball.util.GameConstants;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -35,6 +38,15 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 랜덤_숫자_자리수_테스트() {
+        Computer computer = new Computer();
+        List nums = computer.generateRandomNums();
+
+        assertThat(nums.size()).isEqualTo(GameConstants.DIGIT_SIZE);
+    }
+
 
     @Override
     public void runMain() {
