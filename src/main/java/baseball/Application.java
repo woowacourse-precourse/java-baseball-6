@@ -15,6 +15,7 @@ public class Application {
 
         rootGame :
         while (true) {
+
             // 1. 컴퓨터가 임의의 서로 다른 3자리의 수 생성
             List<Integer> answerNumberList = getAnswerNumberList();
 
@@ -29,21 +30,11 @@ public class Application {
                 List<Integer> inputNumberList = assertValidNumber(inputNumberStr);
 
                 // 4. 정답과 비교 후 결과 출력, 반복
-                // 4-1) 스트라이크, 볼 수 찾기
-                int strike = 0;
-                int ball = 0;
-                for (int i=0; i<inputNumberList.size(); i++) {
-                    if (answerNumberList.contains(inputNumberList.get(i))) {
-                        if (Objects.equals(answerNumberList.get(i), inputNumberList.get(i))) {
-                            strike++;
-                        } else {
-                            ball++;
-                        }
-                    }
-                }
+                // 4-1) 스트라이크, 볼 수 세기
+                StrikeBallCount strikeBallCount = getStrikeBallCount(inputNumberList, answerNumberList);
 
                 // 4-2) 정답(3 스트라이크)인지 체크
-                if (checkAnswer(strike, ball)) {
+                if (checkAnswer(strikeBallCount.strike(), strikeBallCount.ball())) {
 
                     // 5. 정답일 시, 입력값(1 or 2) 에 따라 따라 재시작 혹은 종료
                     while (true) {
@@ -59,39 +50,17 @@ public class Application {
                         System.out.println("1혹은 2를 입력해 주세요.");
                     }
                 }
+
             }
-        }
-    }
 
-    // 4-2) 정답(3 스트라이크)인지 체크
-    private static boolean checkAnswer(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            return false;
         }
 
-        if (strike == 0) {
-            System.out.println(ball + "볼");
-            return false;
-        }
-
-        if (ball == 0 && strike != 3) {
-            System.out.println(strike + "스트라이크");
-            return false;
-        }
-
-        if (strike == 3) {
-            System.out.println(strike + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return true;
-        }
-
-        System.out.println(ball + "볼 " + strike + "스트라이크");
-        return false;
     }
 
 
+    /**
+     * 1. 컴퓨터가 임의의 서로 다른 3자리의 수 생성 /
+     */
     private static List<Integer> getAnswerNumberList() {
         List<Integer> answerNumberList = new ArrayList<>();
         while (answerNumberList.size() < 3) {
@@ -109,7 +78,6 @@ public class Application {
      * 3-1) 3자리가 맞는지 확인
      * 3-2) 숫자가 맞는지 확인
      * 3-3) 그 3자리 숫자가 서로 다른지 확인
-     *
      */
     static List<Integer> assertValidNumber(String inputNumberStr) {
 
@@ -140,5 +108,54 @@ public class Application {
             returnIntList.add(digitInt);
         }
         return returnIntList;
+    }
+
+    /**
+     * 4-1) 스트라이크, 볼 수 세기
+     */
+    private static StrikeBallCount getStrikeBallCount(List<Integer> inputNumberList, List<Integer> answerNumberList) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i< inputNumberList.size(); i++) {
+            if (answerNumberList.contains(inputNumberList.get(i))) {
+                if (Objects.equals(answerNumberList.get(i), inputNumberList.get(i))) {
+                    strike++;
+                } else {
+                    ball++;
+                }
+            }
+        }
+        return new StrikeBallCount(strike, ball);
+    }
+    private record StrikeBallCount(int strike, int ball) { }
+
+    /**
+     * 4-2) 정답(3 스트라이크)인지 체크
+     */
+    private static boolean checkAnswer(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+
+        if (strike == 0) {
+            System.out.println(ball + "볼");
+            return false;
+        }
+
+        if (strike == 3) {
+            System.out.println(strike + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return true;
+        }
+
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+            return false;
+        }
+
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+        return false;
     }
 }
