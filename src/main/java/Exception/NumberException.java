@@ -1,4 +1,6 @@
-package domain;
+package Exception;
+
+import domain.Computer;
 
 import java.util.Arrays;
 import java.util.HashSet;
