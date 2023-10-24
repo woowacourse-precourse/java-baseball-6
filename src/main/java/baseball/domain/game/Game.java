@@ -26,7 +26,7 @@ public class Game {
 
     public GameResult compareBalls(Balls otherBalls) {
         GameResult gameResult = createGameResult(otherBalls);
-        checkResult(gameResult);
+        changeGameStatusBy(gameResult);
         return gameResult;
     }
     private GameResult createGameResult(Balls otherBalls) {
@@ -34,8 +34,8 @@ public class Game {
         int ball = this.balls.getSameNumberAndOtherPositionCount(otherBalls);
         return new GameResult(strike, ball);
     }
-    private void checkResult(GameResult gameResult) {
-        if (gameResult.getStrike() == 3) {
+    private void changeGameStatusBy(GameResult gameResult) {
+        if (gameResult.hasThreeStrikes()) {
             gameStatus = GameStatus.STOP;
         }
     }
