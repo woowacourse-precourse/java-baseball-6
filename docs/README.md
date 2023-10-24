@@ -35,7 +35,7 @@
 
 ## 📮 필요기능 구현
 ### 프로그램 구현  
-#### 검색 도움 없이 제가 구현할 수 있는 방법으로 구현을 해 보았습니다. 
+#### 검색의 도움 없이 내가 구현 할 수 있는 방법으로 구현을 해 보았습니다. 
 
 ````
     public static void main(String[] args) {
@@ -196,7 +196,7 @@
  * 입력받은 값이 2이면 false를 반환하여 while()을 중지시켜 게임을 종료하도록 하였습니다. 
 
 ## ✏️  리펙터링 
-#### 객체지향적인 코드와 검색의 도움을 받아 간결하고 읽기 좋은 코드로 리펙터링하여 학습해보자.
+#### 검색의 도움을 받아 객체지향 코드와 간결하고 읽기 좋은 코드로 리펙터링하여 학습해보자.
 ````
    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -246,7 +246,7 @@
 * reset() 메서드를 호출하면 상대방(컴퓨터)의 숫자를 초기화하고 다른 값으로 저장합니다.
 ### 2. User
 ````
-static class User {
+  static class User {
         private  List<Integer> numbers;
         private  List<Integer> numberInRange;
 
@@ -309,7 +309,7 @@ static class User {
 * numbers.stream().distinct().count()를 활요하여 중복을 제거하고 제거된 값의 길이와 numbers의 길이를 비교하여 같지 않으면 중복이 있다고 판단하여 검증하였습니다.
 ### 3. BaseballGame
 ````
-static class BaseballGame{
+  static class BaseballGame{
         private User user;
         private Computer computer;
 
