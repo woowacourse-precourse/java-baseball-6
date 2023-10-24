@@ -52,10 +52,12 @@ class ComputerTest {
     @ValueSource(ints = {3, 4, 5})
     void 컴퓨터는_게임_볼_개수_규칙만큼_볼을_생성함(int numberBalls) {
         // given
-        Computer ballsMaker = new Computer(CONSOLE_OUTPUT, numberBalls);
 
-        // when, then
-        assertEquals(numberBalls, ballsMaker.countNumberBalls());
+        // when
+        computer.generatePlayerNumber(numberBalls);
+
+        // then
+        assertEquals(numberBalls, computer.countNumberBalls());
     }
 
     @RepeatedTest(value = 5, name = "{displayName}, {currentRepetition}/{totalRepetitions}")
@@ -64,6 +66,7 @@ class ComputerTest {
                 "test" + repetitionInfo.getCurrentRepetition() + "/" + repetitionInfo.getTotalRepetitions());
 
         // given
+        computer.generatePlayerNumber(NUMBER_BALLS);
         String input = "123";
         ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();

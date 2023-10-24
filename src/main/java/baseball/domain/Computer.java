@@ -17,7 +17,6 @@ public class Computer implements IPlayer {
     public Computer(ConsoleOutput consoleOutput, final int NUMBER_BALLS) {
         CONSOLE_OUTPUT = consoleOutput;
         this.NUMBER_BALLS = NUMBER_BALLS;
-        this.numbers = generateRandomNumber(NUMBER_BALLS);
     }
 
     @Override
@@ -37,22 +36,23 @@ public class Computer implements IPlayer {
     }
 
     public boolean respondsTo(User user) {
+        checkResult(user);
+        announceResult();
+
+        return response.isWrongAnswer();
+    }
+
+    private void checkResult(User user) {
         int strikeCount = 0;
         int ballCount = 0;
         int index = 0;
 
         for (int ball : numbers) {
-            if (user.checkIfIsStrike(ball, index++)) {
-                ++strikeCount;
-            } else if (user.checkIfIsBall(ball)) {
-                ++ballCount;
-            }
+            if (user.checkIfIsStrike(ball, index++)) ++strikeCount;
+            else if (user.checkIfIsBall(ball)) ++ballCount;
         }
 
         response = new Response(new ArrayList<>(Arrays.asList(strikeCount, ballCount)), NUMBER_BALLS);
-        announceResult();
-
-        return response.isEnded();
     }
 
     public int countNumberBalls() {
