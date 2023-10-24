@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.util.Message;
+import baseball.util.exception.invalidInputException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -11,12 +12,6 @@ import java.util.List;
 import static baseball.domain.enums.Constants.*;
 
 public class GameService {
-    //TODO
-    // - stopGame() 게임을 종료시키는 메소드
-    // - retryGame() 게임을 재시작하는 메소드
-    // - checkScore()
-    //
-
     private Game game;
     private User user = new User();
     private List<Integer> computer = new ArrayList<>();
@@ -31,7 +26,6 @@ public class GameService {
 
     public void startGame(){
         message.printStartMessage();
-        //숫자, 자리 둘다 맞으면 strike, 숫자만 맞으면 ball
         int strikeCount = 0;
 
         while(strikeCount != NUM_SIZE.getValue()){
@@ -48,10 +42,16 @@ public class GameService {
     public boolean retryGame(){
         int answer = Integer.parseInt(Console.readLine());
         message.printRetryMessage(answer);
+
         if(answer == RETRY.getValue()){
             return true;
         }
-        return false;
+
+        if(answer == END.getValue()){
+            return false;
+        }
+
+        throw new invalidInputException();
     }
 
     public int[] getUserNum(){
@@ -62,11 +62,13 @@ public class GameService {
 
     public BaseballScore checkCount(int[] user){
         int ballCount = 0, strikeCount = 0;
+
         for(int i=0;i<user.length;i++){
             if(!computer.contains(user[i])) continue;
             if(computer.indexOf(user[i]) == i) strikeCount++;
             else ballCount++;
         }
+
         return new BaseballScore(strikeCount, ballCount);
     }
 
