@@ -8,9 +8,9 @@ public class Computer {
 
     private static final int FIRST_NUMBER = 0;
 
-    private final List<Integer> answerNumbers;
+    private final List<Number> answerNumbers;
 
-    private Computer(final List<Integer> answerNumbers) {
+    private Computer(final List<Number> answerNumbers) {
         this.answerNumbers = answerNumbers;
     }
 
@@ -18,28 +18,28 @@ public class Computer {
         return new Computer(generator.generate());
     }
 
-    public int countStrikes(final List<Integer> userNumbers) {
+    public int countStrikes(final List<Number> userNumbers) {
         return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
                 .filter(index -> isStrike(index, userNumbers))
                 .count();
     }
 
-    private boolean isStrike(final int index, final List<Integer> userNumbers) {
+    private boolean isStrike(final int index, final List<Number> userNumbers) {
         return this.answerNumbers.get(index).equals(userNumbers.get(index));
     }
 
-    public int countBalls(final List<Integer> userNumbers) {
+    public int countBalls(final List<Number> userNumbers) {
         return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
                 .filter(index -> isBall(index, userNumbers))
                 .count();
     }
 
-    private boolean isBall(final int index, final List<Integer> userNumbers) {
-        int number = userNumbers.get(index);
+    private boolean isBall(final int index, final List<Number> userNumbers) {
+        Number number = userNumbers.get(index);
         return !this.answerNumbers.get(index).equals(number) && this.answerNumbers.contains(number);
     }
 
-    public boolean isThreeStrikes(final List<Integer> userNumbers) {
+    public boolean isThreeStrikes(final List<Number> userNumbers) {
         return this.answerNumbers.equals(userNumbers);
     }
 }

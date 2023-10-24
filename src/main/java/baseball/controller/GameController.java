@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.GameCommand;
+import baseball.model.Number;
 import baseball.model.UserNumbers;
 import baseball.util.RandomNumberGenerator;
 import baseball.view.InputView;
@@ -31,7 +32,7 @@ public class GameController {
 
     private void playGame() {
         Computer computer = Computer.createWithGeneratedNumbers(new RandomNumberGenerator());
-        List<Integer> userGuess = new ArrayList<>();
+        List<Number> userGuess = new ArrayList<>();
 
         while (!isGameOver(computer, userGuess)) {
             userGuess = getUserInputNumbers();
@@ -42,11 +43,11 @@ public class GameController {
         outputView.printGameEnd();
     }
 
-    private boolean isGameOver(final Computer computer, final List<Integer> inputNumbers) {
+    private boolean isGameOver(final Computer computer, final List<Number> inputNumbers) {
         return computer.isThreeStrikes(inputNumbers);
     }
 
-    private List<Integer> getUserInputNumbers() {
+    private List<Number> getUserInputNumbers() {
         outputView.printInputNumbersMessage();
         String input = inputView.readInput();
         UserNumbers userNumbers = UserNumbers.createFromInput(input);
