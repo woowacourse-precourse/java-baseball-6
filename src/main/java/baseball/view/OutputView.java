@@ -10,16 +10,23 @@ public class OutputView {
     private static boolean correctAnswer = false;
 
     public static boolean outputResult(List<Integer> numberResult) {
-        //TODO : strikes, balls 받아오는 방법 더 생각해 보기
+        getStrikeAndBall(numberResult);
+        countStrikeAndBall();
+        return correctAnswer;
+    }
+
+    public static void getStrikeAndBall(List<Integer> numberResult) {
         strikes = numberResult.get(0);
         balls = numberResult.get(1);
         correctAnswer = false;
+    }
 
+    public static void countStrikeAndBall() {
         countBallNumbers();
         countStrikeNumbers();
         nothingInValidResult();
-        return correctAnswer;
     }
+
 
     public static void countBallNumbers() {
         if (balls > 0) {
