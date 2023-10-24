@@ -11,7 +11,6 @@ public class GameController {
     ErrorView errorView = new ErrorView();
     Config config = new Config();
     GameService gameService = new GameService(config);
-
     public void run() {
         setupGame();
         play();

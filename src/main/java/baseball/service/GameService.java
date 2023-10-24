@@ -52,10 +52,11 @@ public class GameService {
             errorView.inputNumberLengthError();
         }
 
-        return parseToIntString(input, inputNum);
+        return parseToIntArray(input, inputNum);
     }
 
-    public int[] parseToIntString(String input, int[] inputNum) {
+    // 입력받은
+    public int[] parseToIntArray(String input, int[] inputNum) {
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             if (!Character.isDigit(c)) {
@@ -95,13 +96,14 @@ public class GameService {
         }
     }
 
+    // 게임을 재시작한다.
     public String restart() {
         int mode = Integer.parseInt(Console.readLine());
-        if (mode == 1) {
+        if (mode == 1){
             return "RESTART";
-        } else if (mode == 2) {
+        }else if (mode == 2){
             return "END";
-        } else {
+        }else{
             return "ERROR";
         }
     }
