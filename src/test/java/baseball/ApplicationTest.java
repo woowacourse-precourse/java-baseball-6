@@ -2,7 +2,6 @@ package baseball;
 
 import baseball.domain.GameStandard;
 import baseball.domain.Judge;
-import baseball.domain.NumbersGenerate;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

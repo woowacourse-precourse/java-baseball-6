@@ -67,7 +67,7 @@ public class Application {
             return true;
         }
 
-        // 5. 입력 받는 수자가 1이면 - start
+        // 5. 입력 받는 숫자가 1이면 - start
         return false;
     }
 
