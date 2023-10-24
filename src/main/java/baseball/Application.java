@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import static baseball.InputProcessor.*;
 import static baseball.OutputProcessor.*;
 
@@ -25,14 +26,13 @@ public class Application {
     public void run() {
         initializeNumber();
         printStartMessage();
+
         while (true) {
             printPitchInputMessage();
             String pitchInput = Console.readLine();
 
             validatePitchInput(pitchInput);
-
-            List<Integer> pitches = parsePitchInput(pitchInput);
-            Score score = ScoreCalculator.calculate(pitches, numbers);
+            Score score = ScoreCalculator.calculate(parsePitchInput(pitchInput), numbers);
 
             printScore(score);
 
