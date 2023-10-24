@@ -1,7 +1,14 @@
 package baseball.controller;
 
-public class Scoring {
-    public Scoring(int i) {
-        // TODO : 구현 필요
+public final class Scoring {
+
+    private final String answer;
+
+    public Scoring(Integer answer) {
+        this.answer = answer.toString();
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }
