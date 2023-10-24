@@ -1,10 +1,18 @@
 package baseball;
 
 import baseball.controller.BaseballController;
+import baseball.model.BaseballNumberGenerator;
+import baseball.model.Computer;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballController baseballController = new BaseballController();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        Computer computer = new Computer();
+        BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGenerator();
+        BaseballController baseballController = new BaseballController(inputView,outputView,computer,baseballNumberGenerator);
         baseballController.start();
     }
 }

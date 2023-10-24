@@ -8,10 +8,17 @@ import baseball.model.Computer;
 import java.util.List;
 
 public class BaseballController {
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
-    private Computer computer = new Computer();
-    private BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGenerator();
+    private InputView inputView;
+    private OutputView outputView;
+    private Computer computer;
+    private BaseballNumberGenerator baseballNumberGenerator;
+
+    public BaseballController(InputView inputView,OutputView outputView,Computer computer,BaseballNumberGenerator baseballNumberGenerator ){
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.computer = computer;
+        this.baseballNumberGenerator = baseballNumberGenerator;
+    }
 
     public void start(){
         outputView.printInitialMessage();
