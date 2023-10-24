@@ -1,9 +1,9 @@
 package baseball;
 
-import static baseball.MessagePrinter.*;
+import static baseball.MessageConst.*;
 
 public class GameManager {
-    private InputManager inputManager = InputManager.getInstance();
+    private final InputManager inputManager = InputManager.getInstance();
     private int answerNumber;
     private int digitSize = 3;
 
@@ -14,7 +14,7 @@ public class GameManager {
                 System.out.print(INPUT_YOUR_NUMBER);
                 String inputNumber = inputManager.readNumber();
 
-                BallCount result = calculateNumber(inputNumber);
+                BallCount result = calculateBallCount(inputNumber);
                 printResultMessage(result);
 
                 if(isGameClear(result)) {
@@ -30,7 +30,7 @@ public class GameManager {
         return result.strike() == digitSize;
     }
 
-    private BallCount calculateNumber(String inputNumber) {
+    private BallCount calculateBallCount(String inputNumber) {
         int strike = 0, ball = 0;
 
         String answer = String.valueOf(answerNumber);
@@ -45,7 +45,20 @@ public class GameManager {
         return new BallCount(strike, ball);
     }
 
-    public void init() {
+    private void printResultMessage(BallCount ballCount) {
+        int strike = ballCount.strike();
+        int ball = ballCount.ball();
+
+        if(strike == 0 && ball == 0){
+            System.out.println(NOTHING);
+        } else if (strike == 3) {
+            System.out.println(GAME_CLEAR_MESSAGE);
+        } else {
+            System.out.println(String.format(STRIKE_BALL_COUNT, ball, strike));
+        }
+    }
+
+    private void init() {
         answerNumber = NumberFactory.createNumber();
         System.out.println(GAME_START_MESSAGE);
     }
