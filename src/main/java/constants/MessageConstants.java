@@ -12,7 +12,7 @@ public class MessageConstants {
 
     public static final String ERROR_MESSAGE = "Error: ";
     public static final String INPUT_SAME_NUMBER_ERROR_MESSAGE = "중복된 숫자입니다.";
-    public static final String INPUT_ONLY_INTEGER_ERROR_MESSAGE = "숫자만 입력하세요.";
+    public static final String INPUT_ONLY_INTEGER_ERROR_MESSAGE = "1-9 사이의 숫자만 입력하세요.";
     public static final String INPUT_LENGTH_ERROR_MESSAGE = "3자리의 숫자만 입력하세요.";
     public static final String OPTION_INPUT_ERROR_MESSAGE = "1 (재시작) 혹은 2 (종료) 만 입력하세요.";
 }
