@@ -1,6 +1,6 @@
 # 기능 구현 목록
 
-- pulbic static void printStartMessage() 메서드 구현
+- public static void printStartMessage() 메서드 구현
   > - 시작 메세지를 출력함.
 - public static void makeRandomNumber() 메서드 구현
   > - 3자리 숫자를 생성함
