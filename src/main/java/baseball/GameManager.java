@@ -1,4 +1,5 @@
 package baseball;
+
 import java.util.*;
 
 public class GameManager {
@@ -7,7 +8,8 @@ public class GameManager {
     private GameStatus gameStatus;
     private List<Integer> computerNumber;
     private GameUtils utility;
-    public GameManager(){
+
+    public GameManager() {
         this.counterPlayer = new GameCompetitor();
         this.computerNumber = this.counterPlayer.generateRandomNumber();
         this.utility = new GameUtils();
