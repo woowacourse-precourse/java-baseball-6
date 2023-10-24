@@ -24,8 +24,7 @@ public class InputValidator {
             }
             Integer.parseInt(input);
             return true;
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             return false;
         }
     }
@@ -33,8 +32,7 @@ public class InputValidator {
     private boolean isDuplicated(String input) {
         boolean[] numberArray = new boolean[9];
 
-        for(int index = 0; index < input.length(); index++)
-        {
+        for(int index = 0; index < input.length(); index++) {
             int number = input.charAt(index)-'1';
             if (numberArray[number]) {
                 return false;
