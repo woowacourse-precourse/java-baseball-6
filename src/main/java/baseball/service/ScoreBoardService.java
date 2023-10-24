@@ -25,10 +25,10 @@ public class ScoreBoardService {
             return NOTHING;
         }
         if (scoreBoard.isOnlyBall()) {
-            return scoreBoard.getBalls() + BALL;
+            return scoreBoard.getBallCount() + BALL;
         }
         if (scoreBoard.isOnlyStrike()) {
-            return scoreBoard.getStrikes() + STRIKE;
+            return scoreBoard.getStrikeCount() + STRIKE;
         }
 
         return scoreBoard.toString();

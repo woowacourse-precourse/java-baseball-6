@@ -16,11 +16,11 @@ public class ScoreBoard {
         strikeCount = 0;
     }
 
-    public int getBalls() {
+    public int getBallCount() {
         return ballCount;
     }
 
-    public int getStrikes() {
+    public int getStrikeCount() {
         return strikeCount;
     }
 
