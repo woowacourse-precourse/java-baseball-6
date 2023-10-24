@@ -9,9 +9,10 @@ public class BaseballGame {
     private static final String GAMEOVER_MESSAGE = "게임 종료";
     private static final int EXIT_CODE = 2;
     private static final int ALL_STRIKE = 3;
+    private static BaseballGame baseballGame = new BaseballGame();
 
     public static BaseballGame getInstance() {
-        return new BaseballGame();
+        return baseballGame;
     }
 
 
