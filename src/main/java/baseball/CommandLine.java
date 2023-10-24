@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.io.PrintStream;
-import java.util.Scanner;
 
 public class CommandLine {
 
