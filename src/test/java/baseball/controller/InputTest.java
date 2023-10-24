@@ -53,9 +53,20 @@ public class InputTest extends NsTest {
         assertThat(InputView.getPlayerRestartNumber()).isEqualTo(1);
     }
     @Test
-    @DisplayName("플레이어의 1 자리의 입력수를 화면에서 받는다.")
+    @DisplayName("3을 재시작을 위해 화면에서 받는다.")
     public void inputSingleNumberControllerTest(){
-
+        String inputNumber = "3";
+        run(inputNumber);
+        InputController inputController = new InputController();
+        assertThatThrownBy(inputController::getPlayerRestartNumber).isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    @DisplayName("1을 재시작을 위해 화면에서 받는다.")
+    public void inputSingleNumberForRestartControllerTest(){
+        String inputNumber = "1";
+        run(inputNumber);
+        InputController inputController = new InputController();
+        assertThat(inputController.getPlayerRestartNumber()).isEqualTo(1);
     }
     @Override
     protected void runMain() {
