@@ -12,7 +12,7 @@ class ValidationAnswer extends Validation {
         checkAnswerRepeat(answer);
     }
 
-    // 입력 유효성 검사: 0이 포함되어 있는가? - answer
+    // 입력 유효성 검사: 0이 포함되어 있는가?
     private static void checkAnswerIncludeZero(String answer) {
         for (int i = 0; i < 3; i++) {
             if (answer.charAt(i) == '0') {
@@ -21,14 +21,14 @@ class ValidationAnswer extends Validation {
         }
     }
 
-    // 입력 유효성 검사: 숫자이지만 3자리가 아닌 입력값 확인 - answer
+    // 입력 유효성 검사: 숫자이지만 3자리가 아닌 입력값 확인
     private static void checkAnswerLength(String answer) {
         if (answer.length() != 3) {
             throw new IllegalArgumentException(answerErrorMessage);
         }
     }
 
-    // 입력 유효성 검사: 숫자이며, 3자리이지만 중복되는 입력값 확인 - answer
+    // 입력 유효성 검사: 숫자이며, 3자리이지만 중복되는 입력값 확인
     private static void checkAnswerRepeat(String answer) {
         if (isRepeated(answer)) {
             throw new IllegalArgumentException(answerErrorMessage);

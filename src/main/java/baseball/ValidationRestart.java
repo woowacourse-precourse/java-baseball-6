@@ -10,7 +10,7 @@ class ValidationRestart extends Validation {
         checkRestartAnswer(restart);
     }
 
-    // 입력 유효성 검사: 1 또는 2가 아닌 수 입력 - restart
+    // 입력 유효성 검사: 1 또는 2가 아닌 수 입력
     private static void checkRestartAnswer(String restart) {
         int isRestart = Integer.parseInt(restart);
         if (!(isRestart == 1 || isRestart == 2)) {
