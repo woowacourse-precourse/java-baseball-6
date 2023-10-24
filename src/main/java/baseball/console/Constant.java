@@ -10,6 +10,7 @@ public class Constant {
     public static final String EXCEPTION_BASEBALL_NUMBER_FORMAT_MESSAGE = "숫자는 1~9 범위 내로 입력하세요.";
     public static final String EXCEPTION_BASEBALL_NUMBERS_SIZE_MESSAGE = "3개의 숫자를 입력하세요.";
     public static final String EXCEPTION_BASEBALL_NUMBERS_DUPLICATE_MESSAGE = "중복된 숫자가 존재합니다.";
+    public static final String EXCEPTION_RESTART_CONDITION_FORMAT_MESSAGE = "게임 종료 여부는 1 또는 2로만 입력하세요.";
 
     public static final char CHAR_ZERO = '0';
     public static final int INT_ZERO = 0;
