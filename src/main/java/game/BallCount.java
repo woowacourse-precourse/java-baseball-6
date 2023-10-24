@@ -1,6 +1,6 @@
 package game;
 
-import constants.MessageConstants;
+import constants.Constants;
 
 public class BallCount {
 
@@ -22,7 +22,7 @@ public class BallCount {
 
     public boolean isThreeStrike() {
         boolean flag = false;
-        if (strike == 3) {
+        if (strike == Constants.BALL_SIZE) {
             flag = true;
         }
         return flag;
@@ -31,14 +31,13 @@ public class BallCount {
     public String getBallCount() {
         StringBuffer sb = new StringBuffer();
         if (ball > 0) {
-            sb.append(ball + MessageConstants.BALL);
-            sb.append(" ");
+            sb.append(ball + Constants.BALL + " ");
         }
         if (strike > 0) {
-            sb.append(strike + MessageConstants.STRIKE);
+            sb.append(strike + Constants.STRIKE);
         }
         if (ball == 0 && strike == 0) {
-            sb.append(MessageConstants.NOTHING);
+            sb.append(Constants.NOTHING);
         }
         return sb.toString();
     }

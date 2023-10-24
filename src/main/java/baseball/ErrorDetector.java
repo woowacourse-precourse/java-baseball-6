@@ -1,17 +1,19 @@
 package baseball;
 
+import constants.Constants;
+
 public class ErrorDetector {
 
     public static void throwIfNumberIsWrong(String number) {
         throwIfInputIsString(number);
-        if (number.length() != 3) {
+        if (number.length() != Constants.BALL_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
     public static void throwIfOptionIsWrong(String option) {
         throwIfInputIsString(option);
-        if (!option.equals("1") && !option.equals("2")) {
+        if (!option.equals(Constants.REPLAY) && !option.equals(Constants.FINISH)) {
             throw new IllegalArgumentException();
         }
     }

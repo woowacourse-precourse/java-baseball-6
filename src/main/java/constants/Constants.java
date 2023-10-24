@@ -1,6 +1,6 @@
 package constants;
 
-public class MessageConstants {
+public class Constants {
 
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
@@ -9,4 +9,7 @@ public class MessageConstants {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
+    public static final String REPLAY = "1";
+    public static final String FINISH = "2";
+    public static final int BALL_SIZE = 3;
 }

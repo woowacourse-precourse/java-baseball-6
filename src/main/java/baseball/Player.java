@@ -1,6 +1,6 @@
 package baseball;
 
-import constants.MessageConstants;
+import constants.Constants;
 import game.Ball;
 import game.Computer;
 
@@ -10,7 +10,7 @@ public class Player {
     private Ball playerBall;
 
     public void start() {
-        System.out.print(MessageConstants.GAME_START + "\n");
+        System.out.print(Constants.GAME_START + "\n");
         do {
             reset();
             play();
@@ -23,16 +23,16 @@ public class Player {
 
     private void play() {
         do {
-            System.out.print(MessageConstants.INPUT_NUMBER);
+            System.out.print(Constants.INPUT_NUMBER);
             playerBall = new Ball(Input.readNumber());
         } while (!computer.catchBall(playerBall));
-        System.out.print(MessageConstants.GAME_OVER + "\n");
-        System.out.print(MessageConstants.INPUT_OPTION);
+        System.out.print(Constants.GAME_OVER + "\n");
+        System.out.print(Constants.INPUT_OPTION);
     }
 
     private boolean finish() {
         String option = Input.readOption();
-        return !option.equals("2");
+        return !option.equals(Constants.FINISH);
     }
 
 }

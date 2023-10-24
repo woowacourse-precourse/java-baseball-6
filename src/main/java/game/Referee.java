@@ -1,5 +1,7 @@
 package game;
 
+import constants.Constants;
+
 public class Referee {
 
     private static Ball playerBall;
@@ -21,7 +23,7 @@ public class Referee {
 
     private static void countStrike() {
         int strike = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.BALL_SIZE; i++) {
             String playerNumber = playerBall.ballSubString(i);
             String computerNumber = computerBall.ballSubString(i);
             if (!isNothing(playerNumber) && computerNumber.equals(playerNumber)) {
@@ -33,7 +35,7 @@ public class Referee {
 
     private static void countBall() {
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.BALL_SIZE; i++) {
             String playerNumber = playerBall.ballSubString(i);
             String computerNumber = computerBall.ballSubString(i);
             if (!isNothing(playerNumber) && computerNumber.equals(playerNumber)) {
