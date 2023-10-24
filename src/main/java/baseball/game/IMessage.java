@@ -18,5 +18,6 @@ public interface IMessage {
 
     String retryErrorMessage();
 
-    
+    String inputNumberErrorMessage();
+
 }

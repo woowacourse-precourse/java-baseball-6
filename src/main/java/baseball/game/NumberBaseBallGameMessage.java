@@ -41,4 +41,7 @@ public class NumberBaseBallGameMessage implements IMessage {
         return "1 또는 2의 숫자만 입력해주세요.";
     }
 
+    public String inputNumberErrorMessage() {
+        return "중복 되지 않는 1~9까지의 3자리 숫자를 입력해 주세요";
+    }
 }
