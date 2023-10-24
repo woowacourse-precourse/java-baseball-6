@@ -5,7 +5,6 @@ import baseball.domain.computer.GameState;
 import baseball.domain.player.Player;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -16,10 +15,19 @@ import static baseball.domain.GameResult.calculateBaseBallGame;
 public class BaseBallGame {
     private static String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
     private static String INPUT_NUMBERS_DELIMITER = "";
+
+    private static String LINE_BREAK = "%n";
+    private static String BLANK = " ";
+
+    private static String GAME_RESULT_NOTHING_MESSAGE = "낫싱";
+    private static String GAME_RESULT_BALL_MESSAGE = "%d볼";
+    private static String GAME_RESULT_STRIKE_MESSAGE = "%d스트라이크";
+    private static String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static String INPUT_GAME_STATE_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean playAgain = true;
-
         while (playAgain) {
             playRound();
             playAgain = askPlayAgain();
@@ -28,15 +36,14 @@ public class BaseBallGame {
 
     private void playRound() {
         boolean ongoing = false;
-        while(!ongoing) {
+        while (!ongoing) {
             List<Integer> playerNumbers = InputNumbers();
-
-            Computer computerAnswerByRandomGenerator = Computer.createComputerAnswerByRandomGenerator(GameState.RUNNING);
-            Player playerByIntegerNumbers = Player.createPlayerByIntegerNumbers(playerNumbers);
-            String result = checkGuess(playerByIntegerNumbers, computerAnswerByRandomGenerator);
-            System.out.println(result);
-            if (result.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Computer computer = Computer.createComputerAnswerByRandomGenerator(GameState.RUNNING);
+            Player player = Player.createPlayerByIntegerNumbers(playerNumbers);
+            GameResult gameResult = calculateBaseBallGame(player, computer);
+            gameResultMessage(gameResult);
+            if (gameResult.getStrikeCount() == 3) {
+                System.out.println(GAME_OVER_MESSAGE);
                 ongoing = true;
             }
         }
@@ -51,23 +58,26 @@ public class BaseBallGame {
         return playerNumbers;
     }
 
-    private String checkGuess(Player player, Computer computer) {
-        GameResult gameResult = calculateBaseBallGame(player, computer);
-        System.out.println(computer.getAnswerNumbers());
-        if (gameResult.getStrikeCount() == 0 && gameResult.getBallCount() == 0) {
-            return "낫싱";
-        } else if (gameResult.getStrikeCount() > 0 && gameResult.getBallCount() == 0) {
-            return gameResult.getStrikeCount() + "스트라이크";
-        } else if (gameResult.getStrikeCount() == 0 && gameResult.getBallCount() > 0) {
-            return gameResult.getBallCount() + "볼";
-        } else {
-            return gameResult.getStrikeCount() + "스트라이크 " + gameResult.getBallCount() + "볼";
+    public static void gameResultMessage(GameResult gameResult) {
+        if (gameResult.isNothing()) {
+            System.out.println(GAME_RESULT_NOTHING_MESSAGE);
+            return;
         }
+        if (gameResult.ballCount() == 0) {
+            System.out.printf(GAME_RESULT_STRIKE_MESSAGE + LINE_BREAK, gameResult.strikeCount());
+            return;
+        }
+        if (gameResult.strikeCount() == 0) {
+            System.out.printf(GAME_RESULT_BALL_MESSAGE + LINE_BREAK, gameResult.ballCount());
+            return;
+        }
+        System.out.printf(GAME_RESULT_BALL_MESSAGE + BLANK + GAME_RESULT_STRIKE_MESSAGE, gameResult.ballCount(),
+                gameResult.strikeCount());
     }
 
     private boolean askPlayAgain() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+        System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
         int choice = scanner.nextInt();
         return choice == 1;
     }

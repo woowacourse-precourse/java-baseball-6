@@ -49,6 +49,18 @@ public class GameResult {
         return GameResult.from(strikeCount, ballCount);
     }
 
+    public boolean isNothing() {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    public int strikeCount() {
+        return strikeCount;
+    }
+
+    public int ballCount() {
+        return ballCount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
