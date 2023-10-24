@@ -14,7 +14,7 @@ public class BaseballGame {
 
     private static final Integer ANSWER_DIGIT = 3;
     private static final Integer NOTHING_MATCH_INDEX = -1;
-언
+
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
 
@@ -57,6 +57,7 @@ public class BaseballGame {
                 hintScore.raiseBall();
             }
         }
+        System.out.println(hintScore.toString());
     }
 
     private void validAnswerDistinct(List<Integer> userAnswer) {
