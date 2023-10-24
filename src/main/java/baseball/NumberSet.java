@@ -50,17 +50,26 @@ public class NumberSet {
 
     public static int getStrikes(NumberSet a, NumberSet b) {
         int strikes = 0;
-        strikes += a.getNumbers().get(0) == b.getNumbers().get(0) ? 1 : 0;
-        strikes += a.getNumbers().get(1) == b.getNumbers().get(1) ? 1 : 0;
-        strikes += a.getNumbers().get(2) == b.getNumbers().get(2) ? 1 : 0;
+        for (int i = 0; i < 3; i++) {
+            Integer aDigit = a.getNumbers().get(i);
+            Integer bDigit = b.getNumbers().get(i);
+            if (aDigit.equals(bDigit))
+                strikes++;
+        }
         return strikes;
     }
 
     public static int getBalls(NumberSet a, NumberSet b) {
         int balls = 0;
-        balls += a.getNumbers().get(0) == b.getNumbers().get(1) || a.getNumbers().get(0) == b.getNumbers().get(2) ? 1 : 0;
-        balls += a.getNumbers().get(1) == b.getNumbers().get(0) || a.getNumbers().get(1) == b.getNumbers().get(2) ? 1 : 0;
-        balls += a.getNumbers().get(2) == b.getNumbers().get(0) || a.getNumbers().get(2) == b.getNumbers().get(1) ? 1 : 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j) continue;
+                Integer aDigit = a.getNumbers().get(i);
+                Integer bDigit = b.getNumbers().get(j);
+                if (aDigit.equals(bDigit))
+                    balls++;
+            }
+        }
         return balls;
     }
 
