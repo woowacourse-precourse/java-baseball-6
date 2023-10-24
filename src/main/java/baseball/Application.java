@@ -8,8 +8,31 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
+
+    }
+    public static void game(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computerNumber = makeRandomNumber();
+
+        while (true){
+            System.out.println("숫자를 입력해주세요 : ");
+            List<Integer> inputNumber = inputUserNumber();
+            Result result = checkResult(computerNumber, inputNumber);
+
+        }
     }
 
+    public static void viewResult(Result result) {
+        String view = "";
+        if(result.ball>0){
+            view+=Integer.toString(result.ball)+"볼 ";
+        }
+        if(result.strike>0){
+            view+=Integer.toString(result.strike)+"스트라이크 ";
+        }
+        if(result.isNothing) view="낫싱";
+        System.out.println(view);
+    }
     public static List<Integer> makeRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
@@ -71,6 +94,8 @@ public class Application {
         boolean isNothing;
 
         public Result() {
+            this.strike=0;
+            this.ball=0;
             this.isNothing = false;
         }
     }
