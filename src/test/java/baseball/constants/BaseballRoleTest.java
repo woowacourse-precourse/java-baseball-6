@@ -18,6 +18,11 @@ class BaseballRoleTest {
         assertThat(isGameExit).isTrue();
     }
 
-
+    @Test
+    @DisplayName("게임 재시작 입력을 1 혹은 2로 하지 않았을 때 에러가 발생한다.")
+    void input_game_exit_error(){
+        assertThatThrownBy(() -> BaseballRole.isGameExit(3))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
