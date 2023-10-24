@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static List<Integer> getRandomNumber() {
@@ -25,5 +26,9 @@ public class Application {
         // TODO2: 랜덤 숫자 설정
         List<Integer> computer = getRandomNumber();
 
+        // TODO3: 사용자에게 숫자를 입력받기
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
+        int selectNumber = scanner.nextInt();
     }
 }
