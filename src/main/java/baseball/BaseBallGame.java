@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import view.ViewInput;
 import view.ViewStart;
 
 /**
@@ -75,8 +76,7 @@ public class BaseBallGame {
      */
     private List<Integer> inputNumber() {
 
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> input = stringToListInt(Console.readLine());
+        List<Integer> input = stringToListInt(ViewInput.numInputView());
 
         inputErrorCheck(input);
 
