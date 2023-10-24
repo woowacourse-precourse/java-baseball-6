@@ -30,28 +30,40 @@ public class Game {
         }
     }
 
-    private boolean isNumber(char number) {
-        if (number >= '1' && number <= '9') {
-            return true;
+    private boolean isNumber(String number) {
+        for (int index = 0; index < number.length(); index++) {
+            if (number.charAt(index) < '1' || number.charAt(index) > '9'){
+                return false;
+            }
         }
 
-        return false;
+        return true;
     }
 
-    public void checkBaseballNumber(String baseballNumber) {
-        if (baseballNumber.length() == 3
-                && isNumber(baseballNumber.charAt(0))
-                && isNumber(baseballNumber.charAt(1))
-                && isNumber(baseballNumber.charAt(2))) {
-            return;
+    private boolean isDifferentNumber (String number) {
+        for (int current = 0; current < number.length(); current++) {
+            for (int index = current + 1; index < number.length(); index++) {
+                if (number.charAt(current) ==  number.charAt(index)) {
+                    return false;
+                }
+            }
         }
 
-        throw new IllegalArgumentException();
+        return true;
+    }
+
+    private void checkNumberException(String baseballNumber) {
+        if (baseballNumber.length() != 3
+                || !isNumber(baseballNumber)
+                || !isDifferentNumber(baseballNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void inputUserNumber() {
         String input = readLine();
-        checkBaseballNumber(input);
+
+        checkNumberException(input);
 
         String[] userNumber = input.split("");
         user.clear();
