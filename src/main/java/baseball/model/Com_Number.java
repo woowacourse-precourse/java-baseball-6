@@ -12,7 +12,6 @@ public class Com_Number { // 난수 생성 기능
 	
 	public  Com_Number() {
 		setCom_Number();
-		System.out.println(Com_Number);
 	}
 	
 	public String getCom_Number_Str() {
