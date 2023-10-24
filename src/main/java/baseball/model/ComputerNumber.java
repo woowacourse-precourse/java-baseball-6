@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.validator.ComputerValidator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -29,6 +30,14 @@ public class ComputerNumber {
             if(!computerNumberList.contains(randomNumber)){
                 computerNumberList.add(randomNumber);
             }
+        }
+        try{
+            ComputerValidator.isNumberSizeCorrect(computerNumberList);
+            ComputerValidator.isNumberExistInRange(computerNumberList);
+            ComputerValidator.isNumberDuplicated(computerNumberList);
+        }catch (IllegalArgumentException e) {
+            //예외처리
+            System.out.println("게임 종료:" + e.getMessage());
         }
     }
 
