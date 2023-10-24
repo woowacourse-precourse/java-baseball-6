@@ -18,6 +18,10 @@ public class NumberBaseballGameResult {
 
     @Override
     public String toString() {
+        if (ballCount == 0 && strikeCount == 0) {
+            return "낫싱";
+        }
+
         StringBuilder result = new StringBuilder();
 
         if (ballCount != 0) {

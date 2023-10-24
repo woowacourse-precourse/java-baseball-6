@@ -33,7 +33,7 @@ public class NumberBaseballGame {
             }
         }
 
-        userIo.print(computerPlayer.getNumbersSize() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        userIo.print(computerPlayer.getNumbersSize() + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
     private NumberBaseballGameResult compareNumbers(NumberBaseballGameComputerPlayer computerPlayer,
