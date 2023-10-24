@@ -62,6 +62,8 @@ public class Game {
 
         int[] result = judge(submittedNumList);
 
+        showResult(result);
+
         // 판단 결과에서 strike의 개수가 3이면 true 반환
         if (result[0] == 3)
             return true;
@@ -82,6 +84,23 @@ public class Game {
 
         int[] result = new int[]{ strikeNum, ballNum };
         return result;
+    }
+
+    private void showResult(int[] resultArray) {
+        int strikeNum = resultArray[0];
+        int ballNum = resultArray[1];
+
+        if (strikeNum == 0 && ballNum == 0) {
+            System.out.print("낫싱");
+        }
+        if (ballNum > 0) {
+            System.out.print(resultArray[1] + "볼");
+        }
+        if (strikeNum > 0) {
+            if (ballNum > 0) System.out.print(" ");
+            System.out.print(strikeNum + "스트라이크");
+        }
+        System.out.println();
     }
 
     private boolean checkPlayAgain() {
