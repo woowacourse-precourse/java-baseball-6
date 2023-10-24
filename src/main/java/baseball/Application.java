@@ -10,10 +10,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
-            boolean isCorrect = false;      //정답여부
+            boolean isCorrect = false;      //정답 여부
 
-            // 컴퓨터 3자리 랜덤수 생성
-            List<Integer> computer = new ArrayList<>();
+            List<Integer> computer = new ArrayList<>();     // 컴퓨터 3자리 랜덤수 생성
             while (computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
@@ -22,56 +21,36 @@ public class Application {
             }
 
             do {
-                // 추측 수 입력
                 System.out.print("숫자를 입력해주세요 : ");
-                int inputNum = Integer.parseInt(Console.readLine());
+                String inputNum = Console.readLine();
 
-                //예외처리(3자리가 아닌 경우)
-                int len = (int)(Math.log10(inputNum) + 1);
+                int len = (int)(Math.log10(Integer.parseInt(inputNum)) + 1);
                 if(len != 3)
-                    throw new IllegalArgumentException("");
+                    throw  new IllegalArgumentException("");
 
-                //리스트로 변환(자리수 별로 각 인덱스에 입력)
-                ArrayList<Integer> num = new ArrayList<>();
-                int n1 = inputNum % 100;
-                int n2 = n1 % 10;
-                num.add(inputNum / 100);
-                num.add(n1 / 10);
-                num.add(n2);
+                List<Integer> num = new ArrayList<>();
+                num.add(Integer.parseInt(inputNum.split("")[0]));
+                num.add(Integer.parseInt(inputNum.split("")[1]));
+                num.add(Integer.parseInt(inputNum.split("")[2]));
 
                 int strike = strike(computer, num);     //스트라이크 개수
                 int ball = ball(computer, num);         //볼 개수
 
-                String str = "";
-                str = (ball > 0) ? ball + "볼 " : "";
-                str += (strike > 0) ? strike + "스트라이크" : "";
-                str = (str.isEmpty()) ? "낫싱" : str;
-
-                System.out.println(str);
+                printStr(ball, strike, 0);
 
                 if(strike == 3) isCorrect = true;       //정답인 경우
 
             } while(!isCorrect);        //정답을 맞출 때까지 추측
 
-            String str = "";
-            str = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-            str += "\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-            System.out.println(str);
+            printStr(0, 0, 1);
 
             int newStart = Integer.parseInt(Console.readLine());
 
-            //예외처리(입력값이 1이나 2가 아닌 경우)
             if(newStart != 1 && newStart != 2)
                 throw new IllegalArgumentException("");
 
-            switch (newStart) {
-                case 1:     //재시작
-                    isStart = true;
-                    break;
-                case 2:     //중단
-                    isStart = false;
-                    break;
-            }
+            isStart = (newStart != 2) ? true : false;
+
         } while(isStart);
     }
 
@@ -99,6 +78,24 @@ public class Application {
         }
 
         return sum;
+    }
+
+    public static void printStr(int ball, int strike, int answer){
+        String str = "";
+
+        switch (answer){
+            case 0:
+                str = (ball > 0) ? ball + "볼 " : "";
+                str += (strike > 0) ? strike + "스트라이크" : "";
+                str = (str.isEmpty()) ? "낫싱" : str;
+                break;
+            case 1:
+                str = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                str += "\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+                break;
+        }
+
+        System.out.println(str);
     }
 }
 
