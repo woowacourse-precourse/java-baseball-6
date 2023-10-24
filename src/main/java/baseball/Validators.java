@@ -10,7 +10,8 @@ public class Validators {
 
 
     public static void validatePlayerInput(List<Character> playerInputList) {
-        if (!(validateLength(playerInputList) && validateIsCharDigit(playerInputList))) {
+        if (!(validateLength(playerInputList) && validateIsCharDigit(playerInputList) && validateRepetition(
+                playerInputList))) {
             throw new IllegalArgumentException("Error");
         }
     }
