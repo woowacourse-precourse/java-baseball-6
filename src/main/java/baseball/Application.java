@@ -35,11 +35,12 @@ public class Application {
                 System.out.print(ball + "볼 ");
             }
             if (strike != 0) {
-                System.out.println(strike + "스트라이크");
+                System.out.print(strike + "스트라이크");
             }
             if (strike == 0 && ball == 0) {
-                System.out.println("낫싱");
+                System.out.print("낫싱");
             }
+            System.out.println();
 
             if (strike == 3) {
                 int reStartValue;
@@ -51,7 +52,7 @@ public class Application {
                 }
 
                 if (reStartValue == 2) {
-                    return;
+                    break;
                 }
 
                 computerNumber = shuffleNumber();
