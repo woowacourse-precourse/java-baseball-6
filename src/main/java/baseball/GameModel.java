@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameModel {
     private static final int NUMBER_SIZE = 3;
@@ -34,7 +35,6 @@ public class GameModel {
         result.add(strike);
         result.add(ball);
 
-        //checkRestart(strike);
         return result;
     }
 
@@ -64,7 +64,7 @@ public class GameModel {
     public int calculateStrikes(List<Integer> answer) {
         int strike = 0;
         for (int i = 0; i < answer.size(); i++) {
-            if (answer.get(i) == computer.get(i)) {
+            if (Objects.equals(answer.get(i), computer.get(i))) {
                 strike++;
             }
         }
