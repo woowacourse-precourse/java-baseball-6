@@ -23,7 +23,7 @@ public class Application {
             boolean result = baseballGame.showResult();
 
             if(result){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                baseballUI.printEndGame();
                 baseballUI.printReStart();
                 String startBtn = Console.readLine();
                 //컴퓨터 랜덤 값 재생성
