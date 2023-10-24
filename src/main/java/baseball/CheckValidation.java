@@ -1,81 +1,67 @@
 package baseball;
 
 import static baseball.Enum.END_PROGRAM;
-import static baseball.Enum.INVALID_ANSWER;
-import static baseball.Enum.LETTER_ERROR;
-import static baseball.Enum.LIMIT_THREE_NUMBER;
-import static baseball.Enum.NOT_DUPLICATED;
-import static baseball.Enum.NUMBER;
-import static baseball.Enum.VALID;
+import static baseball.Enum.INVALID_INPUT;
 
 import java.util.HashSet;
 import java.util.Set;
 
 
 public class CheckValidation {
-    private String input;
 
-    CheckValidation(String input) {
-        this.input = input.trim();
-    }
-
-    public int checkAnswerValidation(String s) {
-        s = s.trim();
-        if (s.equals("1")) { // 새로운 게임 시작
+    public int checkAnswerValidation(String answer) {
+        // 새로운 게임 시작
+        if (answer.equals("1")) {
             return 1;
         }
-        if (s.equals("2")) { // 게임 종료
-            System.out.println(END_PROGRAM);
+        // 게임 종료
+        if (answer.equals("2")) {
+            System.out.println(END_PROGRAM.getMsg());
             return 2;
-        } else { // 유효하지 않은 입력
-            System.out.println(INVALID_ANSWER);
-            return -1;
         }
+        throw new IllegalArgumentException(INVALID_INPUT.getMsg());
     }
 
-    public Enum checkNumberValidation() {
+    public void checkNumberValidation(String input) {
         // 문자열 배열로 치환
         String[] inputArr = input.split("");
-        if (checkIfNumber(inputArr) == false) {
-            return LETTER_ERROR;
-        }
-        if (checkLength(inputArr) == false) {
-            return LIMIT_THREE_NUMBER;
-        }
-        if (checkIfDuplicated(inputArr) == false) {
-            return NOT_DUPLICATED;
-        }
-        return VALID;
+        // 1. 입력값이 숫자인지 확인
+        checkIfNumber(inputArr);
+        // 2. 입력 길이 3인지 확인
+        checkLength(inputArr);
+        // 3. 중복값을 입력했는지 확인
+        checkIfDuplicated(inputArr);
+        return;
     }
 
-    // 입력값이 숫자인지 확인
-    private boolean checkIfNumber(String[] strArr) {
-        String num = String.valueOf(NUMBER);
-        for (String s : strArr) {
+    // 1. 입력값이 숫자인지 확인
+    private void checkIfNumber(String[] inputArr) {
+        String num = "123456789";
+        for (String s : inputArr) {
             if (!num.contains(s)) {
-                return false;
+                throw new IllegalArgumentException(INVALID_INPUT.getMsg());
             }
         }
-        return true;
+        return;
     }
 
-    // 입력 길이 3인지 확인
-    private boolean checkLength(String[] strArr) {
-        if (strArr.length != 3) {
-            return false;
+    // 2. 입력 길이 3인지 확인
+    private void checkLength(String[] inputArr) {
+        if (inputArr.length != 3) {
+            throw new IllegalArgumentException(INVALID_INPUT.getMsg());
         }
-        return true;
+        return;
     }
 
-    // 중복값을 입력했는지 확인
-    private boolean checkIfDuplicated(String[] strArr) {
+    // 3. 중복값을 입력했는지 확인
+    private void checkIfDuplicated(String[] inputArr) {
         Set<String> set = new HashSet<>();
-        for (String s : strArr) {
+        for (String s : inputArr) {
             set.add(s);
         }
         if (set.size() != 3) {
-            return false;
+            throw new IllegalArgumentException(INVALID_INPUT.getMsg());
         }
-        return true;
+        return;
     }
 }
