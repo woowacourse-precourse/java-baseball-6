@@ -32,6 +32,6 @@ public class GameResult {
             result += strike + "스트라이크";
         }
 
-        return result;
+        return result.trim();
     }
 }
