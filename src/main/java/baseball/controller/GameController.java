@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.dto.request.RestartAnswerRequest;
 import baseball.dto.response.GameResultResponse;
 import baseball.service.ComputerService;
 import baseball.service.GameService;
@@ -9,6 +10,7 @@ import baseball.service.UserService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.common.config.GameConfig.END_ANSWER;
 import static baseball.common.config.GameConfig.NUMBER_SIZE;
 
 public class GameController {
@@ -23,6 +25,18 @@ public class GameController {
         this.gameService = gameService;
         this.userService = userService;
     }
+
+    public void run() {
+        while (true) {
+            playOneGame();
+            final RestartAnswerRequest restartAnswerRequest = InputView.requestContinueAnswer();
+            if (quit(restartAnswerRequest)) {
+                OutputView.printExitMessage();
+                break;
+            }
+        }
+    }
+
     private void playOneGame() {
         OutputView.printStartMessage();
         final Computer computer = computerService.createComputerNumber();
@@ -40,5 +54,10 @@ public class GameController {
 
     private boolean allSolved(final GameResultResponse gameResultResponse) {
         return gameResultResponse.getStrikeCount() == NUMBER_SIZE;
+    }
+
+    private boolean quit(final RestartAnswerRequest restartAnswerRequest) {
+        final String answer = restartAnswerRequest.getAnswer();
+        return answer.equals(END_ANSWER);
     }
 }
