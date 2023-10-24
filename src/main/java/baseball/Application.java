@@ -11,17 +11,19 @@ import static baseball.CommandLine.showln;
 public class Application {
 
     public static void main(String[] args) {
-
         showln("숫자 야구 게임을 시작합니다.");
+        baseballGame();
+    }
+
+    private static void baseballGame() {
         while (true) {
             List<Integer> computer = settingGame();
-
-            try {
-                if (playGame(computer))
+            while (true) {
+                try {
+                    if (playGame(computer)) return;
+                } catch (IllegalArgumentException e) {
                     return;
-            }
-            catch (IllegalArgumentException e) {
-                return;
+                }
             }
         }
     }
@@ -47,11 +49,12 @@ public class Application {
                 }
             }
         }
-        if (result(count, countB, countS)) return true;
+
+        if (resultGame(count, countB, countS)) return true;
         return false;
     }
 
-    private static boolean result(int count, int countB, int countS) {
+    private static boolean resultGame(int count, int countB, int countS) {
         if (count == 0) {
             showln("낫싱");
         }
@@ -70,9 +73,6 @@ public class Application {
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 // 게임 재시작
                 String in = input();
-                if (in.equals("1")) {
-                    return false;
-                }
                 if (in.equals("2")) {
                     return true;
                 }
@@ -82,7 +82,6 @@ public class Application {
     }
 
     private static List<Integer> settingGame() {
-        // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
