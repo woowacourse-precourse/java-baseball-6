@@ -34,13 +34,16 @@ public class Result {
     StringBuilder result = new StringBuilder();
     if (strike + ball == 0) {
       return "낫싱";
-    } else if (ball != 0) {
-      result.append(ball + "볼");
-    } else if (strike != 0) {
-      if (!result.isEmpty()) {
-        result.append(" ");
+    } else {
+      if (ball != 0) {
+        result.append(ball + "볼");
       }
-      result.append(strike + "스트라이크");
+      if (strike != 0) {
+        if (!result.isEmpty()) {
+          result.append(" ");
+        }
+        result.append(strike + "스트라이크");
+      }
     }
 
     return result.toString();
