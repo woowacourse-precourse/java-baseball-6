@@ -8,7 +8,21 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        playBaseball();
+    }
+
+    // 게임 진행
+    public static void playBaseball() {
+        List<Integer> computer = computerNumber();
+        while(true) {
+            List<Integer> user = userNumber();
+            int ball = countBall(computer, user);
+            int strike = countStrike(computer, user);
+            printResult(ball, strike);
+            if(strike == 3) break;
+        }
+        if(checkRestart()) playBaseball();
     }
 
     // 랜덤 3자리 수 만들기
