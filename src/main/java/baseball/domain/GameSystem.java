@@ -7,6 +7,7 @@ import java.util.List;
 
 public class GameSystem {
     private final List<Integer> systemBaseBallNumber;
+    static final Integer NUMBER_LENGTH = 3;
 
     public GameSystem() {
         this.systemBaseBallNumber = initBaseBallNumber();
@@ -19,7 +20,7 @@ public class GameSystem {
     private List<Integer> initBaseBallNumber() {
         List<Integer> number = new ArrayList<>();
 
-        while (number.size() < 3) {
+        while (number.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!number.contains(randomNumber)) {
                 number.add(randomNumber);

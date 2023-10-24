@@ -7,12 +7,16 @@ public class OutputView {
 
     public void printHint(int ballCount, int strikeCount) {
         String hint = "";
-        if (ballCount > 0)
+
+        if (ballCount > 0) {
             hint += ballCount + "볼 ";
-        if (strikeCount > 0)
+        }
+        if (strikeCount > 0) {
             hint += strikeCount + "스트라이크";
-        if (hint.length() == 0)
+        }
+        if (hint.length() == 0) {
             System.out.print("낫싱");
+        }
 
         System.out.println(hint);
     }

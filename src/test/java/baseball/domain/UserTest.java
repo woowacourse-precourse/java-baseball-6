@@ -3,15 +3,10 @@ package baseball.domain;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class UserTest {
-/**
- * 아래는 private 메소드를 테스트하는 코드 였음.
- * 하지만 private 메소드는 테스트 하는 것이 아님을 깨달음.
- * public 메소드로 private 메소드 또한 검증하는 테스트를 해야함.
- */
+
     @Test
     void 유효하지_않은_입력(){
         //given
@@ -19,25 +14,25 @@ class UserTest {
 
         //when,then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("203");
+            user.setUserBaseballNumber("203");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("-203");
+            user.setUserBaseballNumber("-203");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("-2asd3");
+            user.setUserBaseballNumber("-2asd3");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("303");
+            user.setUserBaseballNumber("303");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("em3");
+            user.setUserBaseballNumber("em3");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("0.3");
+            user.setUserBaseballNumber("0.3");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserBasebsallNumber("233");
+            user.setUserBaseballNumber("233");
         });
     }
 
@@ -49,17 +44,16 @@ class UserTest {
         User user2 = new User();
 
         //when
-        user0.setUserBasebsallNumber("213");
-        user1.setUserBasebsallNumber("295");
-        user2.setUserBasebsallNumber("492");
+        user0.setUserBaseballNumber("213");
+        user1.setUserBaseballNumber("295");
+        user2.setUserBaseballNumber("492");
 
         // then
-        Assertions.assertEquals(List.of(2,1,3), user0.getUserBasebsallNumber());
-        Assertions.assertEquals(List.of(2,9,5), user1.getUserBasebsallNumber());
-        Assertions.assertEquals(List.of(4,9,2), user2.getUserBasebsallNumber());
+        Assertions.assertEquals(List.of(2,1,3), user0.getUserBaseballNumber());
+        Assertions.assertEquals(List.of(2,9,5), user1.getUserBaseballNumber());
+        Assertions.assertEquals(List.of(4,9,2), user2.getUserBaseballNumber());
 
     }
-
 
 
 //    @Test

@@ -18,21 +18,23 @@ public class GameService {
     }
 
     public void setUserBaseballNumber(String input) {
-        user.setUserBasebsallNumber(input);
+        user.setUserBaseballNumber(input);
     }
 
     public boolean restart(String input) {
         if (input.equals("1")) {
             this.gameSystem = new GameSystem();
             return true;
-        } else if (input.equals("2"))
+        }
+        if (input.equals("2")) {
             return false;
+        }
 
         throw new IllegalArgumentException();
     }
 
     public List<Integer> calculateBaseBall() {
-        hint.calculateBaseBall(user.getUserBasebsallNumber(), gameSystem.getSystemBaseBallNumber());
+        hint.calculateBaseBall(user.getUserBaseballNumber(), gameSystem.getSystemBaseBallNumber());
         return List.of(hint.getBallCount(), hint.getStrikeCount());
     }
 

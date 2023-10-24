@@ -20,9 +20,7 @@ public class GameController {
 
     public void play(String input) {
         gameService.setUserBaseballNumber(input);
-
         List<Integer> result = gameService.calculateBaseBall();
-
         outputView.printHint(result.get(0), result.get(1));
     }
 
