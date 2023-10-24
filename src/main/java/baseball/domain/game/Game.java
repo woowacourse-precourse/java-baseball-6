@@ -32,7 +32,7 @@ public class Game {
             setBallsAndStrikes(computerNumber, guessNumber);
             output.printTotalMessage(BALL, STRIKE);
         }
-        output.printAllStrikeMessage(STRIKE);
+        output.printAllStrikeMessage();
         checkRestartGame();
     }
 

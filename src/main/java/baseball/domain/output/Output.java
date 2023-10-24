@@ -11,52 +11,53 @@ public class Output {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
 
-    public void printStartGameMessage(){
+    public void printStartGameMessage() {
         System.out.println(GAME_START);
     }
 
-    public void printEndGameMessage(){
+    public void printEndGameMessage() {
         System.out.println(GAME_END);
     }
 
-    public void printRestartOrNotMessage(){
+    public void printRestartOrNotMessage() {
         System.out.println(RESTART_OR_NOT);
     }
 
-    public void printNumberIsNoneMessage(){
+    public void printNumberIsNoneMessage() {
         System.out.println(NUMBER_IS_NON_1_OR_2);
     }
 
-    public void printGetNumberMessage(){
+    public void printGetNumberMessage() {
         System.out.print(WAITING_NUMBER);
     }
 
-    public String printBallMessage(Integer ball){
-        if (ball != 0){
+    public String printBallMessage(Integer ball) {
+        if (ball != 0) {
             return ball + BALL + " ";
-        } return "";
+        }
+        return "";
     }
 
-    public String printStrikeMessage(Integer strike){
-        if (strike != 0){
+    public String printStrikeMessage(Integer strike) {
+        if (strike != 0) {
             return strike + STRIKE;
-        } return "";
+        }
+        return "";
     }
 
-    public void printAllStrikeMessage(Integer strike){
-        System.out.println(strike+STRIKE);
+    public void printAllStrikeMessage() {
         printEndGameMessage();
     }
 
-    public String totalMessage(Integer ball, Integer strike){
+    public String totalMessage(Integer ball, Integer strike) {
         String totalMessage = printBallMessage(ball) + printStrikeMessage(strike);
-        if (totalMessage.equals("")){
+        if (totalMessage.equals("")) {
             return NO_CORRECT_NUMBER;
         }
         return totalMessage;
     }
 
-    public void printTotalMessage(Integer ball, Integer strike){
+    public void printTotalMessage(Integer ball, Integer strike) {
         System.out.println(totalMessage(ball, strike));
     }
 }
