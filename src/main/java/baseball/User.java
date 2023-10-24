@@ -8,13 +8,13 @@ public class User {
 
 		// 입력받은 숫자가 3자리가 아닐 때 예외 처리
 		if (input.length() != 3) {
-			throw new IllegalStateException();
+			throw new IllegalArgumentException();
 		}
 
 		// 3자리 중에서 하나라도 1-9까지 수가 아닐 때 예외 처리
 		for (int i = 0; i < input.length(); i++) {
 			if (input.charAt(i) < 49 || input.charAt(i) > 57) {
-				throw new IllegalStateException();
+				throw new IllegalArgumentException();
 			}
 		}
 
@@ -22,7 +22,7 @@ public class User {
 		for (int i = 0; i < input.length(); i++) {
 			for (int j = i + 1; j < input.length(); j++) {
 				if (input.charAt(i) == input.charAt(j)) {
-					throw new IllegalStateException();
+					throw new IllegalArgumentException();
 				}
 			}
 		}
@@ -34,7 +34,7 @@ public class User {
 		String input = Console.readLine();
 
 		if (!input.equals("1") && !input.equals("2")) {
-			throw new IllegalStateException();
+			throw new IllegalArgumentException();
 		}
 
 		return Integer.parseInt(input);
