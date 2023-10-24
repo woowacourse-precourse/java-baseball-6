@@ -21,14 +21,14 @@ public class Application {
         ball = 0;
 
         try {
-            List<Integer> computerNumber = ComputerSelectNumber();
+            List<Integer> computerNumbers = ComputerSelectNumber();
 
-            validNumbers(computerNumber);
+            validNumbers(computerNumbers);
             while(strike!=NUMBER_COUNT) {
 
                 List<Integer> playerNumber = PlayerSelectNumber();
                 validNumbers(playerNumber);
-                CompareNumber(computerNumber, playerNumber);
+                CompareNumber(computerNumbers, playerNumber);
 
             }
             System.out.println(NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -38,6 +38,15 @@ public class Application {
         }
     }
 
+    public static void countStrike(List<Integer> computerNumbers) {
+        while(strike!=NUMBER_COUNT) {
+
+            List<Integer> playerNumber = PlayerSelectNumber();
+            validNumbers(playerNumber);
+            CompareNumber(computerNumbers, playerNumber);
+
+        }
+    }
     public static void ReStart() {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
@@ -68,28 +77,28 @@ public class Application {
     }
 
     public static List<Integer> PlayerSelectNumber() {
-        List<Integer> playerNumber = new ArrayList<>();
+        List<Integer> playerNumbers = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
 
         String player = Console.readLine().replaceAll(" ", "");
 
         for(int i=0; i<player.length(); i++) {
-            playerNumber.add(player.charAt(i) - '0');
+            playerNumbers.add(player.charAt(i) - '0');
         }
 
-        return playerNumber;
+        return playerNumbers;
     }
 
-    public static void CompareNumber(List<Integer> computerNumber, List<Integer> playerNumber) {
+    public static void CompareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         strike = 0;
         ball = 0;
 
         for(int i=0; i<NUMBER_COUNT; i++) {
-            if (playerNumber.get(i).equals(computerNumber.get(i))) {
+            if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
                 strike++;
                 continue;
             }
-            if (computerNumber.contains(playerNumber.get(i))) {
+            if (computerNumbers.contains(playerNumbers.get(i))) {
                 ball++;
                 continue;
             }
