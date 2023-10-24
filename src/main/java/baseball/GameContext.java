@@ -5,8 +5,8 @@ public class GameContext {
     private static final String END_POINT = "2";
     private boolean gameContext;
 
-    public GameContext(boolean gameContext) {
-        this.gameContext = gameContext;
+    public GameContext() {
+        this.gameContext = true;
     }
 
     public boolean isGameContext() {

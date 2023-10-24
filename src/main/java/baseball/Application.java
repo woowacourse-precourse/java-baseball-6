@@ -8,11 +8,11 @@ import baseball.view.output.ConsoleOutput;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        GameController gameController = gameController();
-        gameController.runBaseballGame();
+        ProcessManager processManager = gameController();
+        processManager.runBaseballGame();
     }
-    private static GameController gameController() {
-        return new GameController(
+    private static ProcessManager gameController() {
+        return new ProcessManager(
                 input(),
                 output());
     }

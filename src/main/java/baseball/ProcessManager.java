@@ -6,20 +6,20 @@ import baseball.view.input.Input;
 import baseball.view.output.Output;
 import java.util.List;
 
-public class GameController {
+public class ProcessManager {
 
     private final Input input;
     private final Output output;
 
-    public GameController(Input input, Output output) {
+    public ProcessManager(Input input, Output output) {
         this.input = input;
         this.output = output;
     }
 
     public void runBaseballGame() {
         output.printlnMessage("숫자 야구를 시작합니다.");
-        GameContext gameContext = new GameContext(true);
         Computer computer = new Computer(new DefaultBaseballAlgorithm());
+        GameContext gameContext = new GameContext();
         while (gameContext.isGameContext()) {
             List<Integer> randomNumber = computer.generateRandomNumber();
             runEachSet(computer, randomNumber);

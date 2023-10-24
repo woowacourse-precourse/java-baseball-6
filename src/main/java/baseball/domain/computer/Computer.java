@@ -16,6 +16,10 @@ public class Computer {
         this.eachSetContext = true;
     }
 
+    public boolean isEachSetContext() {
+        return eachSetContext;
+    }
+
     public List<Integer> generateRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         while (randomNumber.size() < 3) {
@@ -29,10 +33,6 @@ public class Computer {
 
     public String checkBallAndStrike(List<Integer> randomNumber, String userInput) {
         return baseballAlgorithm.calculateBaseballResult(randomNumber, userInput);
-    }
-
-    public boolean isEachSetContext() {
-        return eachSetContext;
     }
 
     public void updateEachSetContext(String message) {
