@@ -46,7 +46,7 @@ public class GameUtil {
         else {
             HashMap<Character, Integer> countChar = new HashMap<>();
             for (int i = 0; i < 3; i++) {
-                if (countChar.containsKey(userInput.charAt(i))) {
+                if (countChar.containsKey(userInput.charAt(i)) || userInput.charAt(i) == '0') {
                     throw new IllegalArgumentException();
                 } else {
                     countChar.put(userInput.charAt(i), 1);
