@@ -7,18 +7,17 @@ public class GameResult {
 
     private GameResult() {
     }
+    public static GameResult getGameResult() {
+        return gameResult;
+    }
 
     public int[] countResult(String input, List<Integer> list) {
         int[] countArr = new int[]{0, 0};
-        char[] chars = input.toCharArray();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) == chars[i] - '0') countArr[0]++; // strike
-            else if (list.contains(chars[i] - '0')) countArr[1]++; // ball
+            int inputNum = input.charAt(i) - '0';
+            if (list.get(i) == inputNum) countArr[0]++; // strike
+            else if (list.contains(inputNum)) countArr[1]++; // ball
         }
         return countArr;
-    }
-
-    public static GameResult getGameResult() {
-        return gameResult;
     }
 }

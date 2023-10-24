@@ -7,6 +7,9 @@ import java.util.List;
 public class Computer {
     private static final Computer computer = new Computer();
     private Computer() {}
+    public static Computer getComputer() {
+        return computer;
+    }
 
     public List<Integer> makeRandomList(List<Integer> list) {
         while (list.size() < 3) {
@@ -17,9 +20,5 @@ public class Computer {
     }
     private int makeRandomNum() {
         return Randoms.pickNumberInRange(1, 9);
-    }
-
-    public static Computer getComputer() {
-        return computer;
     }
 }
