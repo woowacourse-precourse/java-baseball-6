@@ -17,7 +17,7 @@ public class OutputView {
 
     public static void getStrikeAndBall(List<Integer> numberResult) {
         strikes = numberResult.get(RequiredGameProgress.STRIKE_INDEX_IN_NUMBER_RESULT.getProgress());
-        balls = numberResult.get(RequiredGameProgress.STRIKE_INDEX_IN_NUMBER_RESULT.getProgress());
+        balls = numberResult.get(RequiredGameProgress.BALL_INDEX_IN_NUMBER_RESULT.getProgress());
         correctAnswer = false;
     }
 
