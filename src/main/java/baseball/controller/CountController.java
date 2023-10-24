@@ -6,8 +6,6 @@ import static baseball.controller.GameController.ANSWER_NUMBER;
 
 public class CountController {
 
-    private static final int NUMBER_OF_DIGITS = 3;
-
     public int getStrikeCount(InputNumber inputNumber) {
         int strikeCount = 0;
 
