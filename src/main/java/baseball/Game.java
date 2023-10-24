@@ -16,7 +16,7 @@ public class Game {
     }
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        // 정답 숫자 뽑기 (RandomUtil())
+        computer = RandomUtil.createRandomNumbers();
     }
 
     public boolean onGame(){
