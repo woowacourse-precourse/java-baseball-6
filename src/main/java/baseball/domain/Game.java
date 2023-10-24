@@ -1,7 +1,7 @@
 package baseball.domain;
 
 public class Game {
-    private int[] answer;
+    private final int[] answer;
     private int strike;
     private int ball;
 

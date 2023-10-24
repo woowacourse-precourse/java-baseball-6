@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.config.Config;
 import baseball.service.GameService;
 import baseball.view.PrintView;
 import camp.nextstep.edu.missionutils.Console;

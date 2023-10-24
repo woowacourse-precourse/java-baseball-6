@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.config.Config;
 import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.utils.RandomUtils;
@@ -7,16 +8,18 @@ import baseball.view.ErrorView;
 import baseball.view.PrintView;
 import camp.nextstep.edu.missionutils.Console;
 
-
 public class GameService {
-    int GAME_SIZE = 3;
+    Config config = new Config();
+    private final int size = config.getGameSize();
+    private final int minValue = config.getMinValue();
+    private final int maxValue = config.getMaxValue();
     Game game;
     User user;
     PrintView printView = new PrintView();
     ErrorView errorView = new ErrorView();
 
     public void gameSet() {
-        game = new Game(RandomUtils.getRandomNumbers(GAME_SIZE));
+        game = new Game(RandomUtils.getRandomNumbers(size,minValue,maxValue));
     }
 
     public void startGame() {
@@ -35,9 +38,9 @@ public class GameService {
     // 입력값을 받는다.
     public int[] getInputNumber() {
         printView.printUserInputMessage();
-        int[] inputNum = new int[GAME_SIZE];
+        int[] inputNum = new int[size];
         String input = Console.readLine();
-        if (input.length() != GAME_SIZE) {
+        if (input.length() != size) {
             errorView.inputNumberLengthError();
         }
 
@@ -54,7 +57,6 @@ public class GameService {
         }
         return inputNum;
     }
-
 
     // 입력받은 숫자를 검증한다.
     public void validateInputNumber(int[] answer, int[] inputNum) {
@@ -84,6 +86,4 @@ public class GameService {
             game.increaseStrike();
         }
     }
-
-
 }
