@@ -26,4 +26,7 @@ public class BaseballNumber {
         }
     }
 
+    public int getPosition(int pos) {
+        return numbers.get(pos);
+    }
 }

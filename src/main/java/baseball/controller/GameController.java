@@ -1,12 +1,14 @@
 package baseball.controller;
 
 import baseball.model.BaseballNumber;
+import baseball.model.Decision;
 import baseball.service.NumbersGenerator;
 
 import java.util.List;
 
 public class GameController extends Controller {
     private final NumbersGenerator generator = new NumbersGenerator();
+    private final Decision decision = new Decision();
 
     public void startGame() {
         outputView.printStartGame();
@@ -23,9 +25,10 @@ public class GameController extends Controller {
 
 
     private void playGame(BaseballNumber defenseNumber) {
-        do {
+        while(true) {
             BaseballNumber offenseNumber = makeOffenseNumber();
-        } while (true);
+            String judgement = decision.decide(offenseNumber, defenseNumber);
+        }
     }
 
     private BaseballNumber makeOffenseNumber() {
