@@ -36,7 +36,8 @@ public class InputView {
 			throw new IllegalArgumentException(SAME_NUMBER_EXCEPTION_MESSAGE);
 		}
 		for (int i = 0; i < CORRECT_LENGTH; i++) {
-			if (input.charAt(i) < AVAILABLE_START_NUMBER || input.charAt(i) > AVAILABLE_END_NUMBER) {
+			if (Character.getNumericValue(input.charAt(i)) < AVAILABLE_START_NUMBER ||
+				Character.getNumericValue(input.charAt(i)) > AVAILABLE_END_NUMBER) {
 				throw new IllegalArgumentException(WRONG_RANGE_NUMBER_EXCEPTION_MESSAGE);
 			}
 		}
