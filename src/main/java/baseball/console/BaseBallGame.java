@@ -32,9 +32,11 @@ public class BaseBallGame {
             validateLength(input);
 
             List<Integer> inputNumbers = Arrays.stream(input)
+                    .peek(InputValidate::validateNumberFormat)
                     .map(Integer::parseInt)
                     .peek(InputValidate::validateNumberRange)
                     .toList();
+            validateDuplicateNumbers(inputNumbers);
             player.setInputBallNumber(inputNumbers);
             if (baseBallService.isThreeStrike(player, computer)) { // 3스트라이크 확인
                 System.out.println(NUMBER_THREE + STRIKE);
