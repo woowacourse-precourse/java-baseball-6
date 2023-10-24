@@ -13,7 +13,7 @@ public class NumberBaseballApp{
     void run(){
         while (true){
             start();
-            ComputerNumbers computerNumber = new ComputerNumbers(createComputerRandomNumber());
+            ComputerNumbers computerNumber = new ComputerNumbers();
             gm.playGame(computerNumber);
             if (terminate()){
                 break;
@@ -23,17 +23,6 @@ public class NumberBaseballApp{
 
     private void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    private List<Integer> createComputerRandomNumber(){
-        List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3){
-            int number = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(number)){
-                randomNumbers.add(number);
-            }
-        }
-        return randomNumbers;
     }
 
     private boolean terminate(){
