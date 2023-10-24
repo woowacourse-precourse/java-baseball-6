@@ -5,16 +5,18 @@ import java.util.List;
 
 public class Player {
 
-    private int number;
+    private final int number;
 
     public Player(int number) {
         valid(number);
+        this.number = number;
     }
 
     public Player(String number) {
         try {
             int intNumber = Integer.parseInt(number);
             valid(intNumber);
+            this.number = intNumber;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
@@ -24,7 +26,6 @@ public class Player {
         checkNumberRange(number);
         hasUniqueDigits(number);
         checkDigitOneToNine(number);
-        this.number = number;
     }
 
     private void checkNumberRange(int number) {
@@ -61,10 +62,13 @@ public class Player {
 
     public List<Integer> getNumbersList() {
         List<Integer> numbersList = new ArrayList<>();
-        while (number > 0) {
-            int digit = number % 10;
+
+        int tmpNum = number;
+
+        while (tmpNum > 0) {
+            int digit = tmpNum % 10;
             numbersList.add(0, digit);
-            number = number / 10;
+            tmpNum = tmpNum / 10;
         }
         return numbersList;
     }
