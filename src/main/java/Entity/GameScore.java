@@ -13,11 +13,6 @@ public class GameScore {
         strike = 0;
     }
 
-    public GameScore(int ball, int strike) {
-        this.ball = ball;
-        this.strike = strike;
-    }
-
     public void reset() {
         ball = 0;
         strike = 0;
@@ -44,13 +39,5 @@ public class GameScore {
 
     public int getStrike() {
         return strike;
-    }
-
-    public void setBall(int ball) {
-        this.ball = ball;
-    }
-
-    public void setStrike(int strike) {
-        this.strike = strike;
     }
 }

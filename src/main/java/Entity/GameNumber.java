@@ -13,13 +13,8 @@ public class GameNumber {
     private List<Integer> user;
 
     public GameNumber() {
-        computer = new ArrayList<Integer>();
-        user = new ArrayList<Integer>();
-    }
-
-    public GameNumber(List<Integer> computer, List<Integer> user) {
-        this.computer = computer;
-        this.user = user;
+        computer = new ArrayList<>();
+        user = new ArrayList<>();
     }
 
     public boolean validateUserNumber() {
