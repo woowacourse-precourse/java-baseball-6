@@ -12,7 +12,7 @@ public class Player {
         return playerNumber;
     }
 
-    public void setPlayerNumber(String playerInput) throws IllegalArgumentException {
+    public void setPlayerNumber(String playerInput) {
         validationNumber(playerInput);   // 유효성 검사: 숫자 여부
         List<Integer> inputNumber = changeToInt(playerInput);   // 입력값 정수 리스트로 변환
         validationThree(inputNumber);   // 유효성 검사: 세 자리 수
@@ -32,7 +32,7 @@ public class Player {
     }
 
     // 유효성 검사: 숫자 여부
-    private void validationNumber(String inputNumber) throws IllegalArgumentException {
+    private void validationNumber(String inputNumber) {
         try {
             Integer.valueOf(inputNumber);
         }
@@ -43,7 +43,7 @@ public class Player {
     }
 
     // 유효성 검사: 세 자리 수
-    private void validationThree(List<Integer> playerNumberInt) throws IllegalArgumentException {
+    private void validationThree(List<Integer> playerNumberInt) {
         if (playerNumberInt.size() != 3){
             System.out.println("세 자리 수가 아닙니다.");
             throw new IllegalArgumentException();
@@ -51,7 +51,7 @@ public class Player {
     }
 
     // 유효성 검사: 1~9 사이의 수
-    private void validationRange(List<Integer> playerNumberInt) throws IllegalArgumentException {
+    private void validationRange(List<Integer> playerNumberInt) {
         for (Integer i : playerNumberInt) {
             if (i == 0) {
                 System.out.println("1~9사이의 수가 아닙니다.");
@@ -61,7 +61,7 @@ public class Player {
     }
 
     // 유효성 검사: 중복 여부
-    private void validationDuplicate(List<Integer> playerNumberInt) throws IllegalArgumentException {
+    private void validationDuplicate(List<Integer> playerNumberInt) {
         int length = playerNumberInt.size();
         for (int i = 0; i < length; i++) {
             for (int j = i + 1; j < length; j++) {
