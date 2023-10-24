@@ -12,15 +12,16 @@ public class MakeRandomNumber {
         Arrays.fill(isUnique,true);
 
         for (int i = 0; i < size; i++){
-            numbers[i] = getUniqueRandomNumber(numbers,i);
+            numbers[i] = getUniqueRandomNumber(numbers,i,isUnique);
         }
         return numbers;
     }
-    private static int getUniqueRandomNumber(int[] numbers,int i) {
+    private static int getUniqueRandomNumber(int[] numbers,int i,boolean[] isUnique) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         while (!isUnique(numbers, i, randomNumber)) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
         }
+        isUnique[randomNumber] = false;
         return randomNumber;
     }
     private static boolean isUnique(int[] numbers,int i,int randomNumber){
