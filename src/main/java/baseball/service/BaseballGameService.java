@@ -60,7 +60,6 @@ public class BaseballGameService {
 
     private Baseball getGameCnt(List<Integer> randomNumbers, List<Integer> userInputNumbers) {
         Baseball baseball = new Baseball();
-
         baseball.initGame();
 
         for (Integer randomNumber : randomNumbers) {
