@@ -32,6 +32,6 @@ public class ResultCalculator {
         return new Balls(comparisonNumber.ballNumberList
                 .stream()
                 .filter(computerNumber::hasThis)
-                .count() - numberOfStrikes.getValue());
+                .count() - numberOfStrikes.get());
     }
 }

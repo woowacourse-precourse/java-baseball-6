@@ -14,7 +14,7 @@ public class GameScoreTest {
     void StrikesIsCorrectlySaved() {
         GameScore gameScore = new GameScore(new Strikes(3), new Balls(0));
 
-        assertEquals(gameScore.numberOfStrikes.getValue(), 3);
+        assertEquals(gameScore.numberOfStrikes.get(), 3);
     }
 
     @DisplayName("볼 개수가 제대로 저장됐는지 확인")
@@ -22,6 +22,6 @@ public class GameScoreTest {
     void BallsISCorrectlySaved() {
         GameScore gameScore = new GameScore(new Strikes(0), new Balls(3));
 
-        assertEquals(gameScore.numberOfBalls.getValue(), 3);
+        assertEquals(gameScore.numberOfBalls.get(), 3);
     }
 }

@@ -18,6 +18,6 @@ public class GameScore {
     }
 
     public boolean isAllStrikes() {
-        return numberOfStrikes.getValue() == SystemConstant.DIGIT_SIZE;
+        return numberOfStrikes.get() == SystemConstant.DIGIT_SIZE;
     }
 }

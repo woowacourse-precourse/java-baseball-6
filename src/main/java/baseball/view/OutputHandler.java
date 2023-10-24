@@ -25,13 +25,13 @@ public class OutputHandler {
 
     private static void printBalls(Balls numberOfBalls) {
         if (!numberOfBalls.isZero()) {
-            System.out.print(numberOfBalls.getValue() + "볼 ");
+            System.out.print(numberOfBalls.get() + "볼 ");
         }
     }
 
     private static void printStrikes(Strikes numberOfStrikes) {
         if (!numberOfStrikes.isZero()) {
-            System.out.print(numberOfStrikes.getValue() + "스트라이크");
+            System.out.print(numberOfStrikes.get() + "스트라이크");
         }
     }
 }

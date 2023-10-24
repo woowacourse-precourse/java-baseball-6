@@ -26,7 +26,7 @@ public class GameScoreCalculatorTest {
 
         GameScore gameScore = resultCalculator.calculateResult(comparisonNumber);
 
-        assertEquals(gameScore.numberOfStrikes.getValue(), 2);
+        assertEquals(gameScore.numberOfStrikes.get(), 2);
     }
 
     @DisplayName("볼의 개수를 제대로 계산했는지 확인")
@@ -37,6 +37,6 @@ public class GameScoreCalculatorTest {
 
         GameScore gameScore = resultCalculator.calculateResult(comparisonNumber);
 
-        assertEquals(gameScore.numberOfBalls.getValue(), 2);
+        assertEquals(gameScore.numberOfBalls.get(), 2);
     }
 }

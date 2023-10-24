@@ -11,7 +11,7 @@ class ScoringNumbers {
         return value == 0;
     }
 
-    public int getValue() {
+    public int get() {
         return value;
     }
 }
