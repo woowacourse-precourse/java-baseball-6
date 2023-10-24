@@ -35,7 +35,7 @@ public class Referee {
         int ball = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (answer.get(i).equals(playerInputIntegerList.get(i)) && (i != j)) {
+                if (answer.get(i).equals(playerInputIntegerList.get(j)) && (i != j)) {
                     ball += 1;
                 }
             }
