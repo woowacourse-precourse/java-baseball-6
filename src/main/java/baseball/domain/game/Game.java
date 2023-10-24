@@ -14,19 +14,15 @@ public class Game {
     private static Integer STRIKE;
     private static Integer BALL;
 
-    private static Integer BALL_COUNT;
-    private static Integer STRIKE_COUNT;
-
-
     public void startGame() {
-        STRIKE = 0;
-        BALL = 0;
+        setStrikeAndBallZero();
         List<String> computerNumber = computer.makeRandomNumbers();
         baseBallGame(computerNumber);
     }
 
     public void baseBallGame(List<String> computerNumber) {
         while (STRIKE != 3) {
+            setStrikeAndBallZero();
             output.printGetNumberMessage(); // "숫자를 입력해주세요 :"
             String guessNumber = input.getExpectationNumber();
             input.checkInputNumbers(guessNumber);
@@ -38,26 +34,23 @@ public class Game {
     }
 
     public void setBallsAndStrikes(List<String> computerNumbers, String guessNumber) {
-        BALL_COUNT = 0;
-        STRIKE_COUNT = 0;
 
         for (int i = 0; i < computerNumbers.size(); i++) {
             countBallAndStrike(computerNumbers, computerNumbers.get(i), String.valueOf(guessNumber.charAt(i)));
         }
-        BALL = BALL_COUNT - STRIKE_COUNT;
-        STRIKE = STRIKE_COUNT;
     }
 
     public void countBallAndStrike(List<String> computerNumbers, String computerNumber, String guessNumber) {
         if (isGuessNumberContainsAnswer(computerNumbers, guessNumber)) {
-            BALL_COUNT += 1;
+            BALL += 1;
             checkNumberEquals(computerNumber, guessNumber);
         }
     }
 
     public void checkNumberEquals(String computerNumber, String guessNumber) {
         if (computerNumber.equals(guessNumber)) {
-            STRIKE_COUNT += 1;
+            STRIKE += 1;
+            BALL -= 1;
         }
     }
 
@@ -80,6 +73,11 @@ public class Game {
             default:
                 output.printNumberIsNoneMessage();
         }
+    }
+
+    public void setStrikeAndBallZero() {
+        BALL = 0;
+        STRIKE = 0;
     }
 
     public Game(Input input, Computer computer, Output output) {
