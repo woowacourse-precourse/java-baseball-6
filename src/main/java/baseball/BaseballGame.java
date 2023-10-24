@@ -67,8 +67,10 @@ public class BaseballGame {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (computerNumber.get(i) == userNumber.get(i)) {
                 strike++;
+                continue;
             }
-            if (computerNumber.get(i) != userNumber.get(i) && computerNumber.contains(userNumber.get(i))) {
+
+            if (computerNumber.contains(userNumber.get(i))) {
                 ball++;
             }
         }
