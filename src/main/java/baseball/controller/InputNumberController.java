@@ -24,7 +24,13 @@ public class InputNumberController {
     private GameNumber convertStringToGameNumber(String inputNumber){
         GameNumber gameNumber = new GameNumber();
 
+        String[] numStrings = inputNumber.split("");
+        for(String numString : numStrings){
+            int num = Integer.parseInt(numString);
+            gameNumber.add(num);
+        }
 
+        return gameNumber;
     }
 
 
