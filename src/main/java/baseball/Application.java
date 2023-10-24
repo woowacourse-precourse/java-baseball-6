@@ -51,4 +51,40 @@ public class Application {
 
         return computer;
     }
+
+    static void checkInputValue(String input) {
+        if (!checkMaxLength(input)){
+            throw new IllegalArgumentException();
+        } else if (!checkInteger(input)) {
+            throw new IllegalArgumentException();
+        } else if (checkContinue(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static boolean checkMaxLength(String input){
+        if (input.length() != MAX_COUNT){
+            return false;
+        }
+        return true;
+
+    }
+    static boolean checkInteger(String input){
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    static boolean checkContinue(String input){
+        String[] inputArr = input.split("");
+        if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[1]) == 0 ){
+            return true;
+        } else if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[2]) == 0 ) {
+            return true;
+        }
+        return false;
+    }
 }
