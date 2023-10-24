@@ -24,7 +24,7 @@ public class BaseBallGame {
 
         ViewStart.view();
 
-        while (true) {
+        do {
 
             List<Integer> computer = ModelCreateRandomNumber.createRandomNumber();
 
@@ -43,11 +43,7 @@ public class BaseBallGame {
                 }
             }
 
-            if (ModelRestartOrEnd.isEnd(ViewInput.restartOrEndInputView())) {
-                break;
-            }
-
-        }
+        } while (!ModelRestartOrEnd.isEnd(ViewInput.restartOrEndInputView()));
 
     }
 
