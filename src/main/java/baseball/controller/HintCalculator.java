@@ -80,5 +80,4 @@ public class HintCalculator {
         }
         return emptyString;
     }
-
 }

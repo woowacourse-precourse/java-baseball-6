@@ -57,5 +57,4 @@ public class NumberValidator {
                 .boxed()
                 .collect(Collectors.toList());
     }
-
 }
