@@ -25,4 +25,34 @@ public class Validator {
         }
         return false;
     }
+
+    public static boolean isNumber(String strNum) {
+        try {
+            Integer.parseInt(strNum);
+            return true;
+            
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isDuplicate(String strNum) {
+        int originSize = strNum.length();
+        int checkSize = removeDuplicateString(strNum).length();
+
+        return checkSize < originSize;
+    }
+
+    public static String removeDuplicateString(String str) {
+
+        String answer = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.indexOf(str.charAt(i)) == i) {
+                answer += str.charAt(i);
+            }
+        }
+
+        return answer;
+    }
 }
