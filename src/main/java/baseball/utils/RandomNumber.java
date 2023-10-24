@@ -1,9 +1,10 @@
 package baseball.utils;
 
 import baseball.view.SystemMessage;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Randoms;
+
 public class RandomNumber {
     private List<Integer> numbers;
     int strikeCount;

@@ -14,6 +14,7 @@ public class GameService {
         startMessage();
         setGame();
     }
+
     private void startMessage() {
         systemMessage.printSystemMessage();
     }
