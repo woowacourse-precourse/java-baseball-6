@@ -47,13 +47,13 @@ public class GameModel {
             }
         }
     }
-    public void validateInput(String input) {
+    private void validateInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
 
-    public List<Integer> convertInputToList(String input) {
+    private List<Integer> convertInputToList(String input) {
         List<Integer> answer = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             answer.add(input.charAt(i) - '0');
@@ -61,7 +61,7 @@ public class GameModel {
         return answer;
     }
 
-    public int calculateStrikes(List<Integer> answer) {
+    private int calculateStrikes(List<Integer> answer) {
         int strike = 0;
         for (int i = 0; i < answer.size(); i++) {
             if (Objects.equals(answer.get(i), computer.get(i))) {
@@ -71,7 +71,7 @@ public class GameModel {
         return strike;
     }
 
-    public int calculateBalls(List<Integer> answer) {
+    private int calculateBalls(List<Integer> answer) {
         int ball = 0;
         for (int i = 0; i < answer.size(); i++) {
             if (!answer.get(i).equals(computer.get(i)) && computer.contains(answer.get(i))) {

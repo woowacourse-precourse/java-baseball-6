@@ -33,7 +33,7 @@ public class GameController {
         checkResult(input);
     }
 
-    public void isStarted(String input) {
+    private void isStarted(String input) {
         if (input.equals("1")) {
             isStarted = true;
             return;
