@@ -37,7 +37,7 @@ public class Baseball {
             }
         }
 
-        System.out.println(ball + " " + strike);
+        System.out.println(getHint(ball, strike));
     }
 
     private String compareNumber(List<Integer> computerNumber, int userInputValue, int index) {
@@ -49,5 +49,23 @@ public class Baseball {
             }
         }
         return "낫싱";
+    }
+
+    private String getHint(int ball, int strike) {
+        String hint = "";
+
+        if(strike == 0 && ball == 0) {
+            hint = "낫싱";
+        }
+
+        if(ball > 0) {
+            hint = ball + "볼 ";
+        }
+
+        if(strike > 0) {
+            hint += strike + "스트라이크";
+        }
+
+        return hint;
     }
 }
