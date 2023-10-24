@@ -16,7 +16,7 @@ public class GameController {
     private final Grade grade;
     private final OutputView outputView;
     private final InputView inputView;
-    private InputValidator inputValidator;
+    private final InputValidator inputValidator;
 
     public GameController(Computer computer, Player player, Grade grade, OutputView outputView, InputView inputView, InputValidator inputValidator) {
         this.computer = computer;
@@ -32,8 +32,8 @@ public class GameController {
         while (true) {
             playGame();
             outputView.isContinue();
-            String input = inputView.input();
-            vaildateFinishInput(input);
+            String input = inputView.getPlayerInput();
+            vaildateFinish(input);
             int playerInput = player.getFinishInput(input);
             if (playerInput == Constants.EXIT) {
                 outputView.exitGame();
@@ -46,25 +46,23 @@ public class GameController {
         List<Integer> computerNumbers = computer.getComputerNumber();
         while (true) {
             outputView.inputNumber();
-            String input = inputView.input();
-            vaildateNumbersInput(input);
+            String input = inputView.getPlayerInput();
+            vaildateNumbers(input);
             List<Integer> playerNumbers = player.getPlayerNumbers(input);
             int[] scores = grade.getScore(computerNumbers, playerNumbers);
             String result = grade.getResult(scores);
             System.out.println(result);
-            if (scores[1] == Constants.MAX_SIZE) {
-                break;
-            }
+            if (scores[1] == Constants.MAX_SIZE) break;
         }
     }
 
-    private void vaildateNumbersInput(String input){
+    private void vaildateNumbers(String input){
         if (!inputValidator.isValidNumbersInput(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void vaildateFinishInput(String input){
+    private void vaildateFinish(String input){
         if (!inputValidator.isValidFinishInput(input)) {
             throw new IllegalArgumentException();
         }

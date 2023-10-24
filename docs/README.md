@@ -33,7 +33,7 @@
 ┃ ┃ ┃ ┣ 📂domain
 ┃ ┃ ┃ ┃ ┣ 📜Computer.java
 ┃ ┃ ┃ ┃ ┣ 📜Grade.java
-┃ ┃ ┃ ┃ ┗ 📜Player.java
+┃ ┃ ┃ ┃ ┗ 📜Player.java 
 ┃ ┃ ┃ ┣ 📂utils
 ┃ ┃ ┃ ┃ ┣ 📜Constants.java
 ┃ ┃ ┃ ┃ ┗ 📜InputValidator.java
