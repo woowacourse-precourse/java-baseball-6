@@ -4,33 +4,53 @@ import static java.util.Objects.isNull;
 
 public class InputValidator {
 
-    public static void validateAnswer(String sentence) throws InputException {
+    public void validateAnswer(String sentence) {
         if (isNull(sentence)) {
-            throw new InputException("입력값에 Null 값이 확인되었습니다.");
+            throw new IllegalArgumentException(InputException.INVALID_NULL.getMessage());
         }
 
         if (isNotNumeric(sentence)) {
-            throw new InputException("입력값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(InputException.NOT_A_NUMBER.getMessage());
         }
 
-        if (isTooShort(sentence)) {
-            throw new InputException("입력값의 길이가 2이하입니다.");
+        if (!isThreeLengthSentence(sentence)) {
+            throw new IllegalArgumentException(InputException.INVALID_NUMBER_THREE_LENGTH.getMessage());
         }
 
-        if (isTooLong(sentence)) {
-            throw new InputException("입력값의 길이가 4이상입니다.");
+        if (isDuplicatedNumbers(sentence)) {
+            throw new IllegalArgumentException(InputException.DUPLICATED_NUMBER.getMessage());
         }
+    }
+
+    public void validateContinue(String sentence) {
+        if (isNull(sentence)) {
+            throw new IllegalArgumentException(InputException.INVALID_NULL.getMessage());
+        }
+
+        if (isNotNumeric(sentence)) {
+            throw new IllegalArgumentException(InputException.NOT_A_NUMBER.getMessage());
+        }
+
+        if (!isOneOrTwo(sentence)) {
+            throw new IllegalArgumentException(InputException.NOT_ONE_OR_TWO.getMessage());
+        }
+    }
+
+    private boolean isDuplicatedNumbers(String sentence) {
+        return sentence.chars()
+                .distinct()
+                .count() != sentence.length();
+    }
+
+    private boolean isThreeLengthSentence(String sentence) {
+        return sentence.length() == 3;
+    }
+
+    private boolean isOneOrTwo(String sentence) {
+        return sentence.endsWith("1") || sentence.endsWith("2");
     }
 
     private static boolean isNotNumeric(String sentence) {
         return !sentence.matches("\\d+");
-    }
-
-    private static boolean isTooLong(String sentence) {
-        return sentence.length() > 3;
-    }
-
-    private static boolean isTooShort(String sentence) {
-        return sentence.length() < 3;
     }
 }
