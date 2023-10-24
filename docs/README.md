@@ -1,6 +1,6 @@
 ### 협력관계 파악하기
 
-<img src="./docs/collaborative-relationship.png" >
+<img src="./collaborative-relationship.png" >
 
 ### Model
 
