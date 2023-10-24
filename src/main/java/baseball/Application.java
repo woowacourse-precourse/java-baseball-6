@@ -86,6 +86,7 @@ public class Application {
             }//while end
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String num = Console.readLine();
+            Console.close();
             int number = Integer.parseInt(num);
             if(number==2){
                 System.exit(0);
@@ -97,6 +98,7 @@ public class Application {
                 computer.clear();
             }
          }
+
      }
     public static void setUserList(int num)
     {
