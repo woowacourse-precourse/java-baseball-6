@@ -1,40 +1,28 @@
 package baseball;
 
-public class BallExtractor {
-	String inputString;
-	int number;
-
+public class BallExtractor extends IntegerExtractor{
+	int ball;
 	public Balls extract(String input) {
-		inputString = input;
+		str = input;
 		Balls balls = new Balls();
 
-		int inputNumber = validateNumber();
+		validateNumber();
 
-		while (inputNumber > 0) {
-			number = inputNumber % 10;
-			inputNumber = inputNumber /10;
+		while (number > 0) {
+			ball = number % 10;
+			number = number / 10;
 
 			if (validateRange()) {
-				balls.add(number);
+				balls.add(ball);
 			}
 		}
 
 		balls.reverse();
 		return balls;
 	}
-
-	private int validateNumber() {
-		// 숫자 검증
-		try {
-			number = Integer.parseInt(inputString);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException();
-		}
-		return number;
-	}
 	private boolean validateRange() {
 		// 1에서 9까지의 수인지 검증
-		if (number < 1 || number > 9) {
+		if (ball < 1 || ball > 9) {
 			throw new IllegalArgumentException();
 		}
 		return true;
