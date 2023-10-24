@@ -37,15 +37,16 @@ public class Computer {
         randomNumbers.addAll(set);
     }
 
-    public int checkBallCount(List<Integer> userNumbers) {
+    public int checkBallCount(List<Integer> playerNumbers) {
         return (int) IntStream.range(0, COUNTS)
-                .filter(i -> userNumbers.get(i) != randomNumbers.get(i) && randomNumbers.contains(userNumbers.get(i)))
+                .filter(i -> playerNumbers.get(i) != randomNumbers.get(i) && randomNumbers.contains(
+                        playerNumbers.get(i)))
                 .count();
     }
 
-    public int checkStrikeCount(List<Integer> userNumbers) {
+    public int checkStrikeCount(List<Integer> playerNumbers) {
         return (int) IntStream.range(0, COUNTS)
-                .filter(i -> userNumbers.get(i) == randomNumbers.get(i))
+                .filter(i -> playerNumbers.get(i) == randomNumbers.get(i))
                 .count();
     }
 
