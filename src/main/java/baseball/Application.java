@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.game.BaseballGame;
-import baseball.game.GameInstance;
 
 public class Application {
     public static void main(String[] args) {
