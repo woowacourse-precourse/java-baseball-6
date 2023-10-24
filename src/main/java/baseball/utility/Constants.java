@@ -9,4 +9,6 @@ public final class Constants { //상속을 막기 위해 final 사용
     public static final String STRIKE= "스트라이크";
     public static final String NUMBER_CORRECT_MESSAGE= "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String GAME_PAUSE_OR_RESUME_PROMPT_MESSAGE= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public static final int NUMBER_LIMIT_LENGTH = 3;
 }
