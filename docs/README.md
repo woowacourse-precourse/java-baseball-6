@@ -81,9 +81,7 @@ BaseBallGame
 Ball
 
 - createRandomBall
-- isCorrectBall
 - makeHint
-- getCurrentHint
 
 Hint
 
@@ -98,6 +96,11 @@ View
 Format (String)
 
 - makeString
+
+Process
+
+- getFormat
+- isCorrectBall
 
 ### Utils 정리
 
