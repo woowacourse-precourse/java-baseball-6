@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -17,6 +18,39 @@ public class Game extends Text {
             }
         }
         return computer;
+    }
+
+    public List<Integer> input() {
+        inputMessage();
+        String input = Console.readLine();
+        String[] numberStrings = input.split("");
+        int[] number = new int[numberStrings.length];
+        List<Integer> userList = new ArrayList<>();
+
+        try {
+            for (int i = 0; i < numberStrings.length; i++) {
+                number[i] = Integer.parseInt(numberStrings[i]);
+
+                if (number[i] < 1 || number[i] > 9) {
+                    throw new IllegalArgumentException("1에서 9 사이의 숫자를 입력하세요.");
+                }
+                if (userList.contains(number[i])) {
+                    throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+                }
+                userList.add(number[i]);
+            }
+            if (number.length > 3) {
+                throw new IllegalArgumentException("3개 이상의 숫자를 입력하지 마세요.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력할 수 있습니다.");
+            throw e;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
+        return userList;
     }
 }
 
