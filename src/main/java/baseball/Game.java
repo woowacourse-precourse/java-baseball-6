@@ -9,10 +9,10 @@ public class Game {
 
     public boolean playBaseball() {
         startGame();
-        if(!onGame()){
+        if (!onGame()) {
             return false;
         }
-        if(!quitGame()) {
+        if (!quitGame()) {
             return false;
         }
         return true;
@@ -40,7 +40,7 @@ public class Game {
     }
 
     public boolean quitGame() {
-        int answer = 0;
+        int answer;
         System.out.println("게임을 새로 시작혀려면 1, 종료하려면 2를 입력하세요.");
         try {
             answer = InputDevice.readNumber();

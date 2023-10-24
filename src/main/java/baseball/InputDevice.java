@@ -9,8 +9,7 @@ public class InputDevice {
     }
 
     public static List<Integer> readPlayerNumbers() throws IllegalArgumentException {
-        List<Integer> player = new ArrayList<>();
-        player = parseStringToInteger(Console.readLine());
+        List<Integer> player = parseStringToInteger(Console.readLine());
         validateSize(player, 3);
         validateNumbersInRange(player, 9);
         validateduplication(player);
@@ -18,8 +17,7 @@ public class InputDevice {
     }
 
     public static int readNumber() throws IllegalArgumentException {
-        List<Integer> player = new ArrayList<>();
-        player = parseStringToInteger(Console.readLine());
+        List<Integer> player = parseStringToInteger(Console.readLine());
         validateSize(player, 1);
         validateNumbersInRange(player, 2);
         return player.get(0);
