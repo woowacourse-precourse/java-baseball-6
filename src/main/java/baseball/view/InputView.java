@@ -18,14 +18,8 @@ public class InputView {
         return false;
     }
 
-    public static List<Integer> askUserNumbers() {
+    public static String askUserNumbers() {
 
-        String userString = Console.readLine();
-
-        Util.validateUserString(userString);
-
-        List<Integer> userNumbers = Util.stringToIntegerList(userString);
-
-        return userNumbers;
+        return Console.readLine();
     }
 }

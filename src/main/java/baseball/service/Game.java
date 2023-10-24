@@ -1,6 +1,8 @@
 package baseball.service;
 
 import java.util.List;
+
+import baseball.domain.Balls;
 import baseball.domain.Score;
 import baseball.dto.ScoreDto;
 import baseball.util.Util;
@@ -16,9 +18,10 @@ public class Game {
 
         while(true) {
             OutputView.askUserNumbers();
-            List<Integer> userNumbers = InputView.askUserNumbers();
+            String userInput = InputView.askUserNumbers();
+            Balls balls = new Balls(userInput);
 
-            Score score = Score.getScore(answerNumbers, userNumbers);
+            Score score = Score.getScore(answerNumbers, balls);
             ScoreDto scoreDto = new ScoreDto(score.getStrike(), score.getBall());
             OutputView.printScore(scoreDto);
 
