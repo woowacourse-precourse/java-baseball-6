@@ -2,17 +2,18 @@ package baseball.game;
 
 import baseball.game.enums.BaseballGameMessage;
 import baseball.game.enums.BaseballGameRestarts;
+import baseball.game.enums.BaseballGameStatus;
 import baseball.io.Input;
 import baseball.io.Output;
 
 public class BaseballGame {
 
-    private boolean wantNewGame = true;
+    private BaseballGameStatus gameStatus = BaseballGameStatus.RUNNING;
 
     public void play() {
         announceGameStart();
 
-        while (wantNewGame) {
+        while (gameStatus.isRunning()) {
             Turn turn = new Turn();
             turn.play();
 
@@ -34,7 +35,7 @@ public class BaseballGame {
         BaseballGameRestarts restarts = BaseballGameRestarts.find(Input.consoleNumber());
 
         if (restarts.wantToFinish()) {
-            wantNewGame = false;
+            gameStatus = BaseballGameStatus.STOP;
         }
     }
 
