@@ -1,32 +1,24 @@
 package baseball.view;
 
 import baseball.model.Score;
+import baseball.model.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameView {
 
-    public BaseballGameView() {
-
-    }
+    public BaseballGameView() {}
 
     public void startView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public List<Integer> readUserInputView() {
+    public UserNumber readUserInputView() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> userNumber = new ArrayList<>();
-        Integer input = Integer.parseInt(Console.readLine()); // 정수가 아닌 수 입력되면 여기서 예외 알아서 발생
-
-        while (input / 10 != 0) {
-            userNumber.add(0, input % 10);
-            input /= 10;
-        }
-        userNumber.add(0, input % 10);
+        Integer input = Integer.parseInt(Console.readLine());
+        UserNumber userNumber = new UserNumber(input);
 
         return userNumber;
     }
@@ -58,19 +50,15 @@ public class BaseballGameView {
     public boolean showRestart() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = null;
+        String userInput;
 
-        try {
-            userInput = Console.readLine(); // 입력 예외처리 1, 2이외의 입력에 예외 터뜨려 ??
-            if (!userInput.equals("1") && !userInput.equals("2"))
-                throw new IllegalArgumentException("For incorrect number: " + userInput);
+        userInput = Console.readLine();
+        if (!userInput.equals("1") && !userInput.equals("2"))
+            throw new IllegalArgumentException("For incorrect number: " + userInput);
 
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-
-        if (userInput.equals("1"))
+        if (userInput.equals("1")) {
             return true;
+        }
 
         return false;
     }

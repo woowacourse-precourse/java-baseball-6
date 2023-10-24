@@ -11,20 +11,6 @@ public class BaseballGameUtils {
 
     }
 
-    public List<Integer> makeComputerNumber() {
-        // 예시처럼 구현하고, 사용자 입력도 같은수를 입력받지 못하도록??
-        // 예시에는 같은 수 입력 안되도록 돼있음
-
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
-        }
-        return computerNumber;
-    }
-
     public Score checkScore(List<Integer> computerNumber, List<Integer> userNumber) {
 
         int ball = 0;
@@ -52,8 +38,8 @@ public class BaseballGameUtils {
 
         int count = 0;
 
-        for(int i = 0; i < computerNumber.size(); i++) {
-            if(computerNumber.get(i) == userNumber.get(i)) {
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (computerNumber.get(i) == userNumber.get(i)) {
                 count++;
             }
         }

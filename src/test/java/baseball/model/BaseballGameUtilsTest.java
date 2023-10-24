@@ -16,17 +16,17 @@ public class BaseballGameUtilsTest {
     public void makeRandomTest() {
 
         //given
-        List<Integer> computerNumber = new ArrayList<>();
+        ComputerNumber computerNumber;
 
         //when
-        computerNumber = baseballGameUtils.makeComputerNumber();
+        computerNumber = new ComputerNumber();
 
         //then
-        Assertions.assertThat(computerNumber.size()).isEqualTo(3);
+        Assertions.assertThat(computerNumber.getNumber().size()).isEqualTo(3);
 
-        for (int i = 0; i < computerNumber.size(); i++) {
-            Assertions.assertThat(computerNumber.get(i)).isGreaterThanOrEqualTo(1);
-            Assertions.assertThat(computerNumber.get(i)).isLessThanOrEqualTo(9);
+        for (int i = 0; i < computerNumber.getNumber().size(); i++) {
+            Assertions.assertThat(computerNumber.getNumber().get(i)).isGreaterThanOrEqualTo(1);
+            Assertions.assertThat(computerNumber.getNumber().get(i)).isLessThanOrEqualTo(9);
         }
 
     }
