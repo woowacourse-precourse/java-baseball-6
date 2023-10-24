@@ -22,13 +22,16 @@ public class GameUtil {
         ArrayList<Integer> numberList = new ArrayList<>();
         while (numberList.size() < Constants.GAME_NUM_LENGTH){
             int randomValue = Randoms.pickNumberInRange(1, 9);
-            if (!numberList.contains(randomValue)) numberList.add(randomValue);
+            if (!numberList.contains(randomValue)) {
+                numberList.add(randomValue);
+            }
         }
 
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < Constants.GAME_NUM_LENGTH; i++) {
             answer.append(numberList.get(i));
         }
+
         return answer.toString();
     }
 
@@ -43,15 +46,13 @@ public class GameUtil {
         if (userInput.length() != Constants.GAME_NUM_LENGTH) {
             throw new IllegalArgumentException();
         }
-        else {
-            HashMap<Character, Integer> countChar = new HashMap<>();
-            for (int i = 0; i < Constants.GAME_NUM_LENGTH; i++) {
-                if (countChar.containsKey(userInput.charAt(i)) || userInput.charAt(i) == '0') {
-                    throw new IllegalArgumentException();
-                } else {
-                    countChar.put(userInput.charAt(i), 1);
-                }
+
+        HashMap<Character, Integer> countChar = new HashMap<>();
+        for (int i = 0; i < Constants.GAME_NUM_LENGTH; i++) {
+            if (countChar.containsKey(userInput.charAt(i)) || userInput.charAt(i) == '0') {
+                throw new IllegalArgumentException();
             }
+            countChar.put(userInput.charAt(i), 1);
         }
     }
 
