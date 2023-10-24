@@ -74,18 +74,34 @@ class BaseballGame implements GameInterface {
         }
     }
 
-    private void calculateScore(List<Integer> input, HashMap<ScoreType, Integer> result) {
-        int strike = 0;
-        int ball = 0;
-        for (int i = 0; i < input.size(); i++) {
-            if (input.get(i).equals(computerNumber.get(i))) {
+    private List<Integer> readAndParseInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        InputValidator.validateGameInput(input);
+        return parseString(input);
+    }
+
+    private List<Integer> parseString(String target) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char ch : target.toCharArray()) {
+            numbers.add(ch - '0');
+        }
+        return numbers;
+    }
+
+    private HashMap<ScoreType, Integer> calculateScore(List<Integer> userInput) {
+        int strike = 0, ball = 0;
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i).equals(computerNumber.get(i))) {
                 strike++;
-            } else if (computerNumber.contains(input.get(i))) {
+            } else if (computerNumber.contains(userInput.get(i))) {
                 ball++;
             }
         }
+        HashMap<ScoreType, Integer> result = new HashMap<>();
         result.put(ScoreType.STRIKE, strike);
         result.put(ScoreType.BALL, ball);
+        return result;
     }
 
     private void displayResult(HashMap<ScoreType, Integer> result) {
@@ -106,16 +122,12 @@ class BaseballGame implements GameInterface {
         }
     }
 
-    private void parseString(List<Integer> result, String target) {
-        if (target.length() != numberSize) {
-            throw new IllegalArgumentException();
-        }
-        try {
-            for (int i = 0; i < target.length(); i++) {
-                result.add(target.charAt(i) - '0');
+    private void pickComputerNumber() {
+        while (computerNumber.size() < NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
             }
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
         }
     }
 
