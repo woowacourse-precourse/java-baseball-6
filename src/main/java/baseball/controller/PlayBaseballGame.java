@@ -14,15 +14,20 @@ public class PlayBaseballGame {
     private final Player playerNumber = new Player();
 
     public void play() {
-        computerNumber.setComputerNumber(computer.createRandomNumber());
+        setComputerNumber();
         boolean isReplay = true;
         while (isReplay) {
             playerNumber.setPlayerNumber(player.inputPlayerNumber());
             play.getHint(playerNumber, computerNumber);
             if(playerNumber.getStrikeCount() == 3) {
                 isReplay = endGame();
+                setComputerNumber();
             }
         }
+    }
+
+    private void setComputerNumber() {
+        computerNumber.setComputerNumber(computer.createRandomNumber());
     }
 
     private boolean endGame() {
