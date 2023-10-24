@@ -57,10 +57,10 @@ public class InputValidation {
     }
 
     public List<Integer> convertPlayerInput(String playerInput) {
-        final List<Integer> convertedList = playerInput.chars()
+        final List<Integer> convertedInput = playerInput.chars()
                 .mapToObj(c -> Character.getNumericValue((char) c))
                 .collect(Collectors.toList());
 
-        return convertedList;
+        return convertedInput;
     }
 }
