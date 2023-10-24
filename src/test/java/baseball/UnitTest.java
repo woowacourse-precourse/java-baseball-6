@@ -84,7 +84,10 @@ public class UnitTest {
 
         @Test
         void 입력값이_널이면_예외발생() {
-            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(null, "123"));
+            assertThrowsExactly(
+                    IllegalArgumentException.class,
+                    () -> computer.evaluate(null, "123")
+            );
         }
 
         @Test
@@ -158,6 +161,28 @@ public class UnitTest {
                 String result = computer.evaluate(input, targetNumber);
 
                 assertEquals("3스트라이크", result);
+            }
+        }
+
+        @Nested
+        @DisplayName("볼과 스트라이크를 모두 포함하는 경우")
+        class BallAndStrikeTest {
+            @Test
+            void 원볼_원스트라이크() {
+                String targetNumber = "123";
+                String input = "135";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("1볼 1스트라이크", result);
+            }
+
+            @Test
+            void 투볼_원스트라이크() {
+                String targetNumber = "123";
+                String input = "321";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("2볼 1스트라이크", result);
             }
         }
     }
