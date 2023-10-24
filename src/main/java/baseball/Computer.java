@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    public static final int LENGTH = 3;
+    public static final int MIN_NUM = 1;
+    public static final int MAX_NUM = 9;
     private List<Integer> computerRandNum; // computer의 랜덤한 수
 
     public void setComputerRandNum() { // computer의 랜덤수 세팅
         computerRandNum = new ArrayList<>();
-        while (computerRandNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerRandNum.size() < LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
             if (!computerRandNum.contains(randomNumber)) {
                 computerRandNum.add(randomNumber);
             }
