@@ -15,13 +15,7 @@ public class Application {
 
         while (playing == 1) {
             //랜덤 숫자 생성
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            List<Integer> computer = getRandomNumber();
 
             //사용자 숫자 입력(맞을 때까지 반복)
             int ans = 0;
@@ -92,5 +86,16 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    private static List<Integer> getRandomNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
