@@ -32,6 +32,20 @@ public class Application {
         return strikeCount;
     }
 
+    public static int getBallCount(List<Integer> userInput, List<Integer> result) {
+        int ballCount = 0;
+
+        for (int i = 0; i < result.size() - 1; i++) {
+            for (int j = i + 1; j < result.size(); j++) {
+                if (userInput.get(i) == result.get(j)) {
+                    ballCount++;
+                }
+            }
+        }
+
+        return ballCount;
+    }
+
     public static boolean isNumber(List<Integer> threeNumber) {
         Integer indexZero = threeNumber.get(0);
         Integer indexOne = threeNumber.get(1);
