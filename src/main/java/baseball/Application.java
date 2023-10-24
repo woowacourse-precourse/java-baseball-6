@@ -21,6 +21,13 @@ public class Application {
 
             // 숫자 검증
             int playerNumber = validateNumber(playerInput);
+
+            List<Integer> playerNumbers = new ArrayList<>();
+            while (playerNumber > 0) {
+                int number = playerNumber % 10;
+                playerNumbers.add(number);
+                playerNumber = playerNumber / 10;
+            }
         }
     }
 
