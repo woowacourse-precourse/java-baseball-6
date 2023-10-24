@@ -21,8 +21,8 @@ public class GameController {
     public void run() {
         boolean status = RUNNING;
 
+        OutputView.printGuide(START);
         while (status == RUNNING) {
-            OutputView.printGuide(START);
             computerController.initComputer();
             playing();
             status = replay();
