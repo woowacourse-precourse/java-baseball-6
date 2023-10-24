@@ -4,7 +4,6 @@ import baseball.util.ValidationUtils;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InputView {
     private static final InputView instance = new InputView();
@@ -26,7 +25,7 @@ public class InputView {
     private static List<Integer> convertToNumberList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public String readRetryCommand() {
