@@ -11,11 +11,15 @@ public class NumberBaseball implements Game {
     private HashMap<ResultType, Integer> baseballResult;
 
     private final int ANSWER_LENGTH = 3;
-    private List<Integer> answer;
+    private String[] answer;
+
+    private boolean isFinishGame = false;
 
     @Override
     public void init() {
-        this.answer = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH);
+        this.answer = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH).stream()
+                .map(String::valueOf)
+                .toArray(String[]::new);
     }
 
     @Override
