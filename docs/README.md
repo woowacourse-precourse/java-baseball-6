@@ -11,13 +11,13 @@
    - Random 값 추출 : `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 활용
 
 ### 3. 숫자 입력받기
-   - `RoundExecutor`가 숫자를 입력받는다.
+   - `RoundManager`가 숫자를 입력받는다.
    - "숫자를 입력해주세요 : "
    - 사용자 입력값 : `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
      - 입력값 유효성 검사 수행
 
 ### 4. 입력값 유효성 검사
-   - 유효성 검사는 일급 컬렉션 클래스 `UserNumbers` 내에서 수행한다.
+   - 유효성 검사는 일급 컬렉션 클래스 `PlayerNumbers` 내에서 수행한다.
    - 서로 다른 3개 숫자 입력해야 한다.
      - 숫자가 3자리가 아닌 경우
      - 중복되는 수자가 존재하는 겨웅

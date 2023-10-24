@@ -9,9 +9,9 @@ public class RoundManager{
 
     void playGame(ComputerNumbers computerNumber){
         while (true){
-            List<Integer> userNumber = input();
-            int strike = findStrike(computerNumber, userNumber);
-            int ball = findBall(computerNumber, userNumber, strike);
+            PlayerNumbers playerNumber = new PlayerNumbers(input());
+            int strike = findStrike(computerNumber, playerNumber);
+            int ball = findBall(computerNumber, playerNumber, strike);
             printResult(strike, ball);
             if (isAllStrike(strike)){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -24,64 +24,38 @@ public class RoundManager{
         List<Integer> inputNumbers;
         System.out.print("숫자를 입력해주세요: ");
         String numberInput = readLine();
-        throwIfInvalidNumberInput(numberInput);
-        inputNumbers = stringIntoIntegerList(numberInput);
-        return inputNumbers;
-    }
-
-    private void throwIfInvalidNumberInput(String inputString){
-        if (isNotThreeDigits(inputString) || isDuplicated(inputString) || isNotInRange(inputString)){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean isNotThreeDigits(String inputString){
-        return inputString.length() != 3;
-    }
-
-    private boolean isDuplicated(String inputString){
-        int[] visited = new int[10];
-        for (int i = 0; i < inputString.length(); i++){
-            int number = inputString.charAt(i) - '0';
-            if (visited[number] != 0){
-                return true;
-            }
-            visited[number]++;
-        }
-        return false;
-    }
-
-    private boolean isNotInRange(String inputString){
-        for (int i = 0; i < inputString.length(); i++){
-            int number = inputString.charAt(i) - '0';
-            if (number < 1 || number > 9){
-                return true;
-            }
-        }
-        return false;
+        return stringIntoIntegerList(numberInput);
     }
 
     private List<Integer> stringIntoIntegerList(String inputString){
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < inputString.length(); i++){
-            integerList.add(inputString.charAt(i) - '0');
+            int number = inputString.charAt(i) - '0';
+            throwIfNotNumber(number);
+            integerList.add(number);
         }
         return integerList;
     }
 
-    private int findStrike(ComputerNumbers computerNumber, List<Integer> userNumber){
+    private void throwIfNotNumber(int number){
+        if(number < 1 || number > 9){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private int findStrike(ComputerNumbers computerNumber, PlayerNumbers playerNumbers){
         int strikeCount = 0;
         for (int i = 0; i < 3; i++){
-            if (computerNumber.getComputerNumbers().get(i) == userNumber.get(i)){
+            if (computerNumber.getComputerNumbers().get(i) == playerNumbers.getPlayerNumbers().get(i)){
                 strikeCount++;
             }
         }
         return strikeCount;
     }
 
-    private int findBall(ComputerNumbers computerNumber, List<Integer> userNumber, int strike){
+    private int findBall(ComputerNumbers computerNumber, PlayerNumbers playerNumbers, int strike){
         int ballCount = 0;
-        int[] visited = countExistingNumber(computerNumber.getComputerNumbers(), userNumber);
+        int[] visited = countExistingNumber(computerNumber.getComputerNumbers(), playerNumbers.getPlayerNumbers());
         ballCount = countSameNumber(visited) - strike;
         return ballCount;
     }
