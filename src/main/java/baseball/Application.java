@@ -18,6 +18,9 @@ public class Application {
 
             // 길이 검증
             validateLength(playerInput);
+
+            // 숫자 검증
+            int playerNumber = validateNumber(playerInput);
         }
     }
 
@@ -38,5 +41,16 @@ public class Application {
         if (playerInput.length() != 3) {
             throw new IllegalArgumentException();
         }
+    }
+
+    static int validateNumber (String playerInput){
+        int playerNumber;
+        // 숫자 검증
+        try {
+            playerNumber = Integer.parseInt(playerInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        return playerNumber;
     }
 }
