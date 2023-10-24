@@ -12,6 +12,12 @@ public class Input {
         return convertToList(input);
     }
 
+    public GameCommand readGameCommand() {
+        String input = Console.readLine();
+        Validator.validateGameCommand(input);
+        return GameCommand.from(input);
+    }
+
     private List<Integer> convertToList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)

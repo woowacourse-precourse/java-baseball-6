@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Constants.GAME_COMMAND_LENGTH;
 import static baseball.Constants.NUMBER_LENGTH;
 
 import java.util.Arrays;
@@ -20,6 +21,18 @@ public class Validator {
         }
         if (isDuplicate(playerNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER.getMessage());
+        }
+    }
+
+    public static void validateGameCommand(String gameCommand) {
+        if (isBlank(gameCommand)) {
+            throw new IllegalArgumentException(ExceptionMessage.BLANK.getMessage());
+        }
+        if (isNotNumeric(gameCommand)) {
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC.getMessage());
+        }
+        if (isNotLength(gameCommand, GAME_COMMAND_LENGTH)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_COMMAND_LENGTH.getMessage());
         }
     }
 
