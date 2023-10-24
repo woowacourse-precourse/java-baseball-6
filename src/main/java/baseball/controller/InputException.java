@@ -1,28 +1,25 @@
 package baseball.controller;
 
-import static baseball.utility.Constants.NUMBER_LIMIT_LENGTH;
+import java.util.regex.Pattern;
+
+import static baseball.utility.Constants.VALID_NUMBER_PATTERN;
 
 public class InputException {
     public InputException(){}
 
-    private String input;
-    private boolean isValidNumber;
+    private boolean isValidInput;
 
-    public boolean judgeValidNumber(String input){
-        this.input = input;
-
-        if(!judgeNumberLengthThree()){
+    public boolean judgeValidInput(String input){
+        if(!judgeVaildNumber(input)){
             throw new IllegalArgumentException();
         }
 
-        isValidNumber = true;
-        return isValidNumber;
+        isValidInput = true;
+        return isValidInput;
     }
 
-    private boolean judgeNumberLengthThree(){
-        if(input.length() == NUMBER_LIMIT_LENGTH){
-            return true;
-        }
-        return false;
+    private boolean judgeVaildNumber(String input){ //정규표현식을 사용하여 3자리의 적합한 숫자로 이루어진 문자열인지 확인한다.
+        boolean isValidNumber = Pattern.matches(VALID_NUMBER_PATTERN,input);
+        return isValidNumber;
     }
 }
