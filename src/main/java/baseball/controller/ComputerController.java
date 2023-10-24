@@ -6,26 +6,15 @@ import java.util.List;
 
 public class ComputerController {
 
-    private static List<Integer> computer;
-
-    private ComputerController() {
-    }
-
-    public static synchronized List<Integer> getBaseballNumber() {
-        if (computer == null) {
-            computer = makeBaseballNumber();
-        }
-        return computer;
-    }
-
-    private static List<Integer> makeBaseballNumber() {
-        List<Integer> tempComputer = new ArrayList<>();
-        while (tempComputer.size() < 3) {
+    public List<Integer> makeBaseballNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!tempComputer.contains(randomNumber)) {
-                tempComputer.add(randomNumber);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
             }
         }
-        return tempComputer;
+        System.out.println(computer);
+        return computer;
     }
 }

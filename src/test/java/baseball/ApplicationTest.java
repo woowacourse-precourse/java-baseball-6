@@ -15,7 +15,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 컴퓨터가_생성하는_숫자가_올바른지_테스트() {
-        List<Integer> generatedNumbers = ComputerController.getBaseballNumber();
+        ComputerController computerController = new ComputerController();
+        List<Integer> generatedNumbers = computerController.makeBaseballNumber();
 
         // 숫자가 정확히 3개인지 확인
         assertThat(generatedNumbers).hasSize(3);
