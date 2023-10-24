@@ -6,11 +6,10 @@ import baseball.game.view.exception.DuplicatedNumberException;
 import baseball.game.view.exception.NotMenuOptionException;
 import baseball.game.view.exception.NumberContainsZeroException;
 import baseball.game.view.exception.SizeNotMatchException;
-import java.io.InputStream;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -18,35 +17,23 @@ import java.util.Set;
  */
 public class InputView {
 
-    private final Scanner scanner;
-
-    public InputView(InputStream inputStream) {
-        this.scanner = new Scanner(inputStream);
-    }
-
     public NumberListDto getGuessNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        String rawInput = scanner.nextLine();
+        String rawInput = Console.readLine();
 
         return convertOrThrow(rawInput);
     }
 
     public boolean askForGameContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String rawInput = scanner.nextLine();
+        String rawInput = Console.readLine();
 
-        if ("1".equals(rawInput)) {
-            return true;
-        }
+        isMenuOption(rawInput);
 
-        if ("2".equals(rawInput)) {
-            return false;
-        }
-
-        throw new NotMenuOptionException();
+        return rawInput.equals("1");
     }
 
-    private NumberListDto convertOrThrow(String rawInput) {
+    public NumberListDto convertOrThrow(String rawInput) {
         List<String> stringList = List.of(rawInput.split(""));
         List<Integer> numberList = new ArrayList<>();
 
@@ -86,5 +73,11 @@ public class InputView {
         Set<Integer> numberSet = new HashSet<>(numberList);
 
         return numberSet.size() != numberList.size();
+    }
+
+    public void isMenuOption(String rawInput) {
+        if (!rawInput.equals("1") && !rawInput.equals("2")) {
+            throw new NotMenuOptionException();
+        }
     }
 }

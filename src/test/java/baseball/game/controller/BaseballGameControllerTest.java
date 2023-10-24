@@ -7,11 +7,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class BaseballGameControllerTest extends NsTest {
 
     @Test
+    @DisplayName("게임시작_후_종료")
     void 게임시작_후_종료() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -23,6 +25,7 @@ class BaseballGameControllerTest extends NsTest {
     }
 
     @Test
+    @DisplayName("게임종료_후_재시작")
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -34,6 +37,7 @@ class BaseballGameControllerTest extends NsTest {
     }
 
     @Test
+    @DisplayName("예외_테스트")
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
