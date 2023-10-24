@@ -11,11 +11,6 @@ public class Count {
 
     private static final int THREE_STRIKE = 3;
 
-    /*public void countAndShow(List<Integer> randomNumber, List<Integer> userNumber){
-        compare(randomNumber,userNumber);
-        showStatus();
-    }*/
-
     public void compare(List<Integer> randomNumber, List<Integer> userNumber) {
         ballCount = 0;
         strikeCount = 0;
