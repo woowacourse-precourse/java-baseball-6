@@ -1,37 +1,37 @@
 package baseball.model;
 
+import static baseball.util.Constants.BALL_LENGTH;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Result {
     private Map<BallCount, Integer> result;
 
-    public Result(Map<BallCount, Integer> result) {
+    private Result(Map<BallCount, Integer> result) {
         this.result = result;
     }
 
     public static Result initialBallCount() {
         Map<BallCount, Integer> result = new HashMap<>();
-        result.put(BallCount.BALL, 0);
-        result.put(BallCount.STRIKE, 0);
-        result.put(BallCount.NOTHING, 0);
         return new Result(result);
     }
 
     public int getBall() {
-        return result.get(BallCount.BALL);
+        return result.getOrDefault(BallCount.BALL, 0);
     }
 
     public int getStrike() {
-        return result.get(BallCount.STRIKE);
+        return result.getOrDefault(BallCount.STRIKE, 0);
     }
 
     public void updateBallCount(BallCount ballCount) {
-        result.put(ballCount, result.get(ballCount) + 1);
+
+        result.put(ballCount, result.getOrDefault(ballCount, 0) + 1);
     }
 
 
     public boolean isThreeStrike() {
-        return result.get(BallCount.STRIKE) == 3;
+        return result.getOrDefault(BallCount.STRIKE, 0) == BALL_LENGTH;
     }
 }
