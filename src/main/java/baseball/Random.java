@@ -39,7 +39,6 @@ public class Random {
 
     private void validateBall(List<Validate> balls) {
         Set<Validate> ballSet = new HashSet<>(balls);
-
         if (ballSet.size() != BALLS_COUNT) {
             throw new IllegalArgumentException("공의 숫자가 중복 됩니다.");
         }
