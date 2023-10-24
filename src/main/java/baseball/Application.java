@@ -1,26 +1,24 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import java.util.*;
+
 public class Application {
     public static void main(String[] args) {
 
         Application app = new Application();
+        Baseball baseball = new Baseball();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean isEnd = false;
         while (!isEnd) {
             /* 게임 실행 */
-
+            baseball.start();
 
             /* 종료 의사 확인 */
             isEnd = app.isEnd();
         }
         System.out.println("프로그램을 종료합니다.");
     }
-
-
-
 
 
 
