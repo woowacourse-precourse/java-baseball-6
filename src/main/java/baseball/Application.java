@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Application {
@@ -25,22 +27,32 @@ public class Application {
             }
         }
 
-        Set<Integer> inputNumbers = new HashSet<>();
+        Set<Integer> tempHashSet1 = new HashSet<>();
 
         for (int i = 0; i < input.length(); i++) {
-            inputNumbers.add(input.charAt(i) - '0');
+            tempHashSet1.add(input.charAt(i) - '0');
         }
 
-        if (inputNumbers.size() < 3) {
+        if (tempHashSet1.size() < 3) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
-        Set<Integer> numbers = new HashSet<>();
+        List<Integer> inputNumbers = new ArrayList<>(tempHashSet1);
 
-        while (numbers.size() < 3) {
-            numbers.add(Randoms.pickNumberInRange(1, 9));
+        Set<Integer> tempHashSet2 = new HashSet<>();
+
+        while (tempHashSet2.size() < 3) {
+            tempHashSet2.add(Randoms.pickNumberInRange(1, 9));
         }
 
-        System.out.println(numbers);
+        List<Integer> numbers = new ArrayList<>(tempHashSet2);
+
+        int strikeCount = 0;
+
+        for (int i = 0; i < numbers.size(); i++) {
+            if (inputNumbers.get(i).equals(numbers.get(i))) {
+                strikeCount++;
+            }
+        }
     }
 }
