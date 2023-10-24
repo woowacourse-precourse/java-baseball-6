@@ -9,5 +9,5 @@ package vo;
  * @author Lee NaYeon
  * @since 2023-10-25
  */
-public record Result(int[] result) {
+public record Result(int ball, int strike) {
 }

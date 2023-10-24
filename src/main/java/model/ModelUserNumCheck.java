@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import vo.Balls;
 
 /**
  * ModelUserNumCheck.java
@@ -28,15 +29,15 @@ public class ModelUserNumCheck {
      * 입력받은 문자열을 정답과 비교할 수 있게 변환
      *
      * @param str 사용자로부터 입력 받은 문자열
-     * @return List<Integer> 타입으로 변환된 입력 숫자
+     * @return Balls 타입으로 변환된 입력 숫자
      */
-    public static List<Integer> changeToComparable(String str) {
+    public static Balls changeToComparable(String str) {
 
         List<Integer> input = stringToListInt(str);
 
         inputErrorCheck(input);
 
-        return input;
+        return new Balls(input);
 
     }
 

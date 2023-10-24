@@ -13,8 +13,6 @@ public final class Constants {
     private Constants() {
     }
 
-    public static final int BALL = 0;
-    public static final int STRIKE = 1;
     public static final int NUMBER_LENGTH = 3;
     public static final String NOT_NUMBER = "notNum";
     public static final String WRONG_LENGTH = "wrongLen";

@@ -29,15 +29,17 @@ public class BaseBallGame {
 
             Balls computer = new Balls(ModelCreateRandomNumber.createRandomNumber());
 
+            System.out.println(computer.ball());
+
             while (true) {
 
-                Balls user = new Balls(ModelUserNumCheck.changeToComparable(ViewInput.numInputView()));
+                Balls user = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
 
-                Result result = new Result(ModelCompareAnswerInput.compareAnswerInput(computer, user));
+                Result result = ModelCompareAnswerInput.compareAnswerInput(computer, user);
 
-                ViewResult.view(result.result());
+                ViewResult.view(result);
 
-                if (ModelCompareAnswerInput.isAnswer(result.result())) {
+                if (ModelCompareAnswerInput.isAnswer(result)) {
                     break;
                 }
             }
