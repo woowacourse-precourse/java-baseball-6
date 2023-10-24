@@ -11,6 +11,7 @@ public class Computer {
     public static final String FINISH_COMMAND = "2";
     public static final int NUMBER_SIZE = 3;
 
+    private List<Integer> targetNumber;
     private int ballCount;
     private int strikeCount;
 
@@ -41,17 +42,16 @@ public class Computer {
     }
 
     private void generateTargetNumber() {
-        StringBuilder targetNumber = new StringBuilder();
-        List<Integer> targetNumbers = new ArrayList<>();
-        while (targetNumbers.size() < 3) {
+        List<Integer> targetNumber = new ArrayList<>();
+        while (targetNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!targetNumbers.contains(randomNumber)) {
-                targetNumbers.add(randomNumber);
-                targetNumber.append(randomNumber);
+            if (!targetNumber.contains(randomNumber)) {
+                targetNumber.add(randomNumber);
             }
         }
+        this.targetNumber = targetNumber;
+    }
 
-        this.targetNumber = targetNumber.toString();
     }
 
     private void checkInputNumber(String inputNumber) {
@@ -59,11 +59,9 @@ public class Computer {
         int strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
-            String value = String.valueOf(inputNumber.charAt(i));
-            if (!targetNumber.contains(value)) {
+            if (isNothing(value)) {
                 continue;
             }
-
             if (isStrike(value, i)) {
                 strikeCount++;
                 continue;
@@ -75,9 +73,13 @@ public class Computer {
         this.strikeCount = strikeCount;
     }
 
-    private boolean isStrike(String value, int index) {
-        int targetIndex = targetNumber.indexOf(value);
+    private boolean isNothing(int value) {
+        return !targetNumber.contains(value);
+    }
 
-        return targetIndex == index;
+    private boolean isStrike(int value, int index) {
+        int indexInTargetNumber = targetNumber.indexOf(value);
+
+        return indexInTargetNumber == index;
     }
 }
