@@ -14,6 +14,52 @@ public class GameService {
     }
 
     public String validateInput(String userInput) {
-        return "구현중";
+        validator.validate(userInput);
+        return checkResult(userInput);
+    }
+
+    private String checkResult(String userInput) {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < userInput.length(); i++) {
+            if (isBall(userInput, i)) {
+                ballCount++;
+            } else if (isStrike(userInput, i)) {
+                strikeCount++;
+            }
+        }
+        return getResultMessage(ballCount, strikeCount);
+    }
+
+    private boolean isStrike(String userInput, int index) {
+        return Character.getNumericValue(userInput.charAt(index)) == randomNumbers.get(index);
+    }
+
+    private boolean isBall(String userInput, int index) {
+        int number = Character.getNumericValue(userInput.charAt(index));
+        return randomNumbers.contains(number) && !isStrike(userInput, index);
+    }
+
+    private boolean isNothing(int ballCount, int strikeCount) {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    private String getResultMessage(int ballCount, int strikeCount) {
+        if (isNothing(ballCount, strikeCount)) {
+            return "Nothing";
+        }
+
+        String resultMessage = "";
+
+        if (ballCount > 0) {
+            resultMessage += ballCount+"볼";
+        }
+
+        if (strikeCount > 0) {
+            resultMessage += strikeCount+"스트라이크";
+        }
+
+        return resultMessage.trim();
     }
 }
