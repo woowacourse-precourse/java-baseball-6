@@ -14,18 +14,19 @@ public class BaseballGame {
     public void play() {
         view.showStartMessage();
         computer.pickRandomNumber();
-
-        while (true) {
+        GameResult currentResult;
+        do {
             List<Integer> playerNumbers = view.readNumbers();
-            GameResult currentResult = computer.getResult(playerNumbers);
-            System.out.println(currentResult.toString());
+            currentResult = computer.getResult(playerNumbers);
+            view.showCurrentResult(currentResult.toString());
+        } while(!currentResult.isGameOver() || restart());
+    }
 
-            if (currentResult.isGameOver()) {
-                if (!view.askRestart()) {
-                    break;
-                }
-                computer.pickRandomNumber();
-            }
+    private boolean restart() {
+        if (view.askRestart()) {
+            computer.pickRandomNumber();
+            return true;
         }
+        return false;
     }
 }

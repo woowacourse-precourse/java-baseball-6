@@ -23,6 +23,10 @@ public class GameView {
         return read.equals("1");
     }
 
+    public void showCurrentResult(String result) {
+        System.out.println(result);
+    }
+
     private void validateRestartCommand(String command) {
         if (command.equals("1") || command.equals("2")) {
             return;
