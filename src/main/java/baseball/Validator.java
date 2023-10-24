@@ -1,6 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 public class Validator {
@@ -24,15 +26,32 @@ public class Validator {
                 throw new IllegalArgumentException();
             }
         }
-        // TODO : 중복 처리 로직 추가
+
+        if(!checkDuplication(saveThreeNumbers)){
+            throw new IllegalArgumentException();
+        }
 
         return saveThreeNumbers;
     }
 
     private static int checkZeroToNine(int targetNumber) {
-        if (targetNumber < 0 || 9 < targetNumber){
+        if (targetNumber < 1 || 9 < targetNumber) {
             throw new IllegalArgumentException();
         }
         return targetNumber;
+    }
+
+    private static boolean checkDuplication(List<Integer> threeNumbers) {
+        List<Integer> sortedThreeNumbers = new ArrayList<>(threeNumbers);
+        sortedThreeNumbers.sort(Comparator.naturalOrder());
+
+        for (int i = 0; i < sortedThreeNumbers.size() - 1; i++) {
+            if (sortedThreeNumbers.get(i) == sortedThreeNumbers.get(i + 1)) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 }
