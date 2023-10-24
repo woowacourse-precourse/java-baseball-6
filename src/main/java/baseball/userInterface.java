@@ -53,4 +53,25 @@ public class userInterface {
         inputExeption.isOneAndTwoNumber(re_game);
         return Integer.parseInt(re_game);
     }
+
+    public static int checkUserGuess(int[] userGuess){
+        int ball=userGuess[0];
+        int strike=userGuess[1];
+
+        if(strike==BaseballGame.listSize){
+            System.out.println(strike+strikePhrases);
+            endWrite(BaseballGame.listSize);
+            return choiceGame();
+        }
+        if(strike==0 && ball==0){
+            System.out.println(nothingPhrases);
+        } else if(strike!=0 && ball!=0){
+            System.out.println(ball+ballPhrases+" "+ strike+strikePhrases);
+        }else if(strike==0 && ball!=0){
+            System.out.println(ball+ballPhrases);
+        }else{
+            System.out.println(strike+strikePhrases);
+        }
+        return 0;
+    }
 }
