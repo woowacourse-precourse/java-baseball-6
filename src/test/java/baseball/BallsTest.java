@@ -15,6 +15,25 @@ public class BallsTest {
         answers = new Balls(Arrays.asList(1,2,3));
     }
     @Test
+    void play_nothing() {
+        PlayResult result = answers.play(Arrays.asList(4,5,6));
+        assertThat(result.getStrike()).isEqualTo(0);
+        assertThat(result.getBall()).isEqualTo(0);
+    }
+    @Test
+    void play_3Strike() {
+        PlayResult result = answers.play(Arrays.asList(1,2,3));
+        assertThat(result.getStrike()).isEqualTo(3);
+        assertThat(result.getBall()).isEqualTo(0);
+        assertThat(result.isGameEnd()).isTrue();
+    }
+    @Test
+    void play_1Strike_1ball() {
+        PlayResult played = answers.play(Arrays.asList(1,4,2));
+        assertThat(played.getStrike()).isEqualTo(1);
+        assertThat(played.getBall()).isEqualTo(1);
+    }
+    @Test
     void strike() {
         BallStatus ballStatus = answers.play(new Ball(1,1));
         assertThat(ballStatus).isEqualTo(BallStatus.STRIKE);
