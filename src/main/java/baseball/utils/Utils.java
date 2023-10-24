@@ -42,3 +42,11 @@ public final class Utils {
         }
     }
 
+    public static void validateAllDifferentCharacters(String input) {
+        List<Character> list = input.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+        HashSet<Character> set = new HashSet<>(list);
+        if (set.size() != input.length()) {
+            throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        }
+    }
+
