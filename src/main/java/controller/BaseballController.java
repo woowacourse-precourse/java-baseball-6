@@ -17,6 +17,7 @@ public class BaseballController {
     static boolean RUNNING;
     static boolean ANSWER;
 
+    // 게임을 계속 진행 시키는 함수
     public static void runGame() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
         RUNNING = true;
@@ -28,6 +29,7 @@ public class BaseballController {
         }
     }
 
+    //게임을 운영하는 함수
     public static void game() {
         while (!ANSWER) {
             getPlayerNumber();
@@ -38,6 +40,7 @@ public class BaseballController {
         }
     }
 
+    //랜덤 번호를 생성하는 함수
     public static void getRandomNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -47,6 +50,7 @@ public class BaseballController {
         }
     }
 
+    //사용자의 입력을 받아 체크 후 입력하는 함수
     public static void getPlayerNumber() {
         player.clear();
         System.out.print("숫자를 입력해주세요 : ");
@@ -58,6 +62,7 @@ public class BaseballController {
         }
     }
 
+    //스트라이크, 볼을 판정하는 함수
     public static boolean isRight() {
         int ballCnt = 0;
         int strikeCnt = 0;
@@ -90,6 +95,7 @@ public class BaseballController {
         return false;
     }
 
+    //사용자의 입력을 받아 게임 진행여부를 결정하는 함수
     public static void continueGame() {
         String input = readLine();
         if (Check.checkContinueInput(input)) {
