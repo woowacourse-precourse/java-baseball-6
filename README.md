@@ -1,5 +1,48 @@
 # 미션 - 숫자 야구
 
+## Commit Message Convention
+
+커밋 메시지는 다음과 같은 형식을 따릅니다: `<type>(<scope>): <subject>`
+
+- `type`: 커밋의 유형을 나타냅니다.
+- `scope`: 커밋의 범위를 나타냅니다. (옵션)
+- `subject`: 커밋의 간단한 설명을 나타냅니다.
+
+**예시:**
+
+```plaintext
+feat(user-auth): 새로운 인증 기능 추가
+```
+
+### 타입(Type)
+
+- `feat`: 새로운 기능을 추가할 경우
+- `fix`: 버그를 수정한 경우
+- `style`: 코드 스타일 변경 (포매팅, 누락된 세미콜론 등)
+- `refactor`: 코드 리팩토링
+- `docs`: 문서 변경
+- `test`: 테스트 추가 또는 수정 (프로덕션 코드 변경 없음)
+- `chore`: 빌드 프로세스 또는 보조 도구와 라이브러리 업데이트 등의 기타 변경사항
+- `perf`: 성능 개선
+- `ci`: Continuous Integration과 관련된 변경
+- `build`: 빌드 시스템 또는 의존성에 영향을 주는 변경
+
+### 스코프(Scope)
+
+스코프는 옵셔널입니다. 커밋이 영향을 주는 부분을 나타내기 위해 사용됩니다.
+
+예시:
+
+```plaintext
+fix(login): 로그인 버그 수정
+```
+
+### 서브젝트(Subject)
+
+- 서브젝트는 50자를 넘지 않아야 합니다.
+- 첫 글자는 대문자로 작성합니다.
+- 마침표를 붙이지 않습니다.
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -29,7 +72,9 @@
   Windows 사용자의 경우 `gradlew.bat clean test` 또는 `./gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
 
 ```
+
 BUILD SUCCESSFUL in 0s
+
 ```
 
 ---
@@ -43,7 +88,8 @@ BUILD SUCCESSFUL in 0s
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
+- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
+  숫자에 대한
   결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
@@ -61,31 +107,40 @@ BUILD SUCCESSFUL in 0s
 - 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
 
 ```
+
 1볼 1스트라이크
+
 ```
 
 - 하나도 없는 경우
 
 ```
+
 낫싱
+
 ```
 
 - 3개의 숫자를 모두 맞힐 경우
 
 ```
+
 3스트라이크
 3개의 숫자를 모두 맞히셨습니다! 게임 종료
+
 ```
 
 - 게임 시작 문구 출력
 
 ```
+
 숫자 야구 게임을 시작합니다.
+
 ``` 
 
 #### 실행 결과 예시
 
 ```
+
 숫자 야구 게임을 시작합니다.
 숫자를 입력해주세요 : 123
 1볼 1스트라이크
@@ -103,6 +158,7 @@ BUILD SUCCESSFUL in 0s
 숫자를 입력해주세요 : 123
 1볼
 ...
+
 ```
 
 ---
@@ -126,13 +182,13 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+List<Integer> computer=new ArrayList<>();
+        while(computer.size()< 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
@@ -142,3 +198,4 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+    
