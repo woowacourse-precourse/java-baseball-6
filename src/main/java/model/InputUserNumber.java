@@ -22,7 +22,6 @@ package model;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import vo.UserBall;
 
 public class InputUserNumber {
