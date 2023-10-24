@@ -40,5 +40,6 @@
         - ~~현재 정답 입력값 검증과, 재시작 입력값 검증을 함께하고 있어 응집도가 비교적 낮음~~
         - ~~but 클래스를 분리하기에는 공통된 부분이 존재함~~
         - 서브클래스(상속) 사용으로 해결
-        - ValidationRestart 클래스에서 Validation과 관련없는 기능(Restart에 대한 true, false 리턴)을 하고있음
+        - ~~ValidationRestart 클래스에서 Validation과 관련없는 기능(Restart에 대한 true, false 리턴)을 하고있음~~
+        - ValidationRestart 클래스에서 수행하던 재시작 여부 확인을 Session 클래스로 이동, ValidationRestart 클래스는 유효성 검사만을 수행
 - [ ] 클린 코드 준수
