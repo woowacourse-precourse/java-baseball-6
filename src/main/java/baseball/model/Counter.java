@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.model;
 
 public class Counter {
     private int strikeCount = 0;
