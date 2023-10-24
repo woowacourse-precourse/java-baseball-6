@@ -22,7 +22,7 @@ public class ProgramManager {
             String answerInput = Reader.readInput();
             Validator.validateAnswerInput(answerInput);
 
-            GradeResult gradeResult = answer.gradeAnswer(answerInput);
+            GradeResult gradeResult = answer.gradeInput(answerInput);
 
             if (gradeResult.isAnswer()) {
                 Writer.writeCorrectMent();
