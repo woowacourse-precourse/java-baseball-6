@@ -21,7 +21,7 @@ class GameNumberValidateServiceTest {
     @DisplayName("컴퓨터와 사용자의 자리 수를 비교해 숫자를 비교한다. (볼)")
     @ParameterizedTest
     @CsvSource({"123,0","456,0","345,1","314,2","312,3"})
-    void gameNumberPlaceValidate(String playerNumber, int ballCount) throws Exception{
+    void gameNumberPlaceValidateBall(String playerNumber, int ballCount) throws Exception{
         //given
         computer = new Computer(new ComputerRandomGameNumber(List.of(1,2,3)));
         player = new Player(playerNumber);
