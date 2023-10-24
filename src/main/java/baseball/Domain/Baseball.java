@@ -1,6 +1,7 @@
 package baseball.Domain;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Baseball {
 
@@ -25,20 +26,23 @@ public class Baseball {
         return new BaseballScore(ball, strike);
     }
 
+    @FunctionalInterface
+    private interface Checker {
+        boolean check(int numbers, int index);
+    }
+
     private int countBall(Baseball baseball) {
-        int cnt = 0;
-        for(int i = 0; i < 3; i++) {
-            if(baseball.isBall(numbers.get(i), i)) cnt++;
-        }
-        return cnt;
+        return count(baseball::isBall);
     }
 
     private int countStrike(Baseball baseball) {
-        int cnt = 0;
-        for(int i = 0; i < 3; i++) {
-            if(baseball.isStrike(numbers.get(i), i)) cnt++;
-        }
-        return cnt;
+        return count(baseball::isStrike);
+    }
+
+    private int count(Checker checker) {
+        return (int) IntStream.range(0, 3)
+                .filter(i -> checker.check(numbers.get(i), i))
+                .count();
     }
 
     private boolean isStrike(int number, int index) {
