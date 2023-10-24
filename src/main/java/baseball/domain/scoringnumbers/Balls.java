@@ -5,7 +5,7 @@ public class Balls extends ScoringNumbers {
         super(value);
     }
 
-    public Balls(long value) {
-        super((int) value);
+    public Balls(long value, Strikes strikes) {
+        super((int) value - strikes.get());
     }
 }
