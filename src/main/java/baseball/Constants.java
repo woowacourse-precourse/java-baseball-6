@@ -14,5 +14,6 @@ public interface Constants {
     String endGameMessage = "게임이 종료되었습니다.";
 
     String gameStop = "2";
+    String gameContinue = "1";
 }
 
