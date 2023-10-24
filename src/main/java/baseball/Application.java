@@ -9,6 +9,7 @@ public class Application {
         // TODO: 프로그램 구현
         BaseballGame baseballGame = new BaseballGame();
         BaseballUI baseballUI = new BaseballUI();
+        InputValidator inputValidator = new InputValidator();
 
         baseballUI.printStart();
         //컴퓨터 랜덤 값 생성
@@ -17,7 +18,7 @@ public class Application {
         while(true){
             baseballUI.printInput();
             String playerStr = Console.readLine();
-            baseballGame.inputChk(playerStr);
+            inputValidator.inputChk(playerStr);
             baseballGame.playGame(playerStr, computer);
 
             boolean result = baseballGame.showResult();
