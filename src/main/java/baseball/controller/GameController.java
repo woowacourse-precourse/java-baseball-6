@@ -26,10 +26,15 @@ public class GameController {
         boolean isSuccessValue = false;
         while(!isSuccessValue){
             setUserNumber();
+            setCalculator();
             showHint();
             isSuccessValue = checkSuccess();
         }
         showEndMessage();
+    }
+
+    private static void setCalculator() {
+        hintCalculator = new HintCalculator(userNumber,computerNumber);
     }
 
     private static void showEndMessage() {
@@ -63,7 +68,6 @@ public class GameController {
     }
 
     private static void showHint() {
-        hintCalculator = new HintCalculator(userNumber,computerNumber);
         OutputView.printHint(getHintMessage());
     }
 
