@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Objects;
 
-// contains 대신에 visited로 변경
 public class MakeRandomNumber {
 
     private final static int MAX_RANGE_NUM = 9;

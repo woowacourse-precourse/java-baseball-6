@@ -1,6 +1,5 @@
 package baseball.model;
 
-// 메세지 따로 뺴두기
 public class PlayerInputManager {
 
     private String input;
@@ -11,8 +10,6 @@ public class PlayerInputManager {
 
     private static final String MESSAGE_CHECK_NUMBER_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
 
-
-    // 사용자로부터 잘못 입력받는 경우 IllegalArgumentException 발생
     public PlayerInputManager(String input, GameStatus gameStatus) {
         this.input = input;
         if(gameStatus == GameStatus.PLAYING){
