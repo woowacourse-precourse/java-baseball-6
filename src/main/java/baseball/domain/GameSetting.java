@@ -3,8 +3,6 @@ package baseball.domain;
 import baseball.service.InputService;
 import baseball.service.PrintService;
 
-import static baseball.constant.GameConstant.*;
-
 public class GameSetting {
     private final int size;
     private final int startNum;
