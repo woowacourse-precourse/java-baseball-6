@@ -1,6 +1,7 @@
 package baseball.utils;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class InputValidator {
@@ -12,6 +13,7 @@ public class InputValidator {
 
     public static void checkUserBallInput(final String userBallInput) {
         checkBallNumberLength(userBallInput);
+        checkDuplicateBalls(checkBallNumberIsValidNumber(userBallInput));
     }
 
     private static void checkBallNumberLength(final String userBallInput) {
@@ -33,5 +35,12 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    private static void checkDuplicateBalls(final List<String> balls) {
+        if (MAX_SIZE != new HashSet<>(balls).size()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }
