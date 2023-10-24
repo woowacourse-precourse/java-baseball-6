@@ -33,6 +33,7 @@ public class NumberBaseballGame {
 
     private boolean restartOrStop() {
         String sign = userInput.getUserInput();
+        System.out.println("sign" + sign);
 
         inputValidation.validateRestartOrStop(sign);
         return sign.compareTo(STOP_SIGN) < 0;
