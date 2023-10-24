@@ -1,8 +1,6 @@
 package baseball;
 
 import java.lang.System;
-import java.util.ArrayList;
-import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -39,25 +37,31 @@ public class Baseball {
         return computer;
     }
 
+    public int[] countResult(String input){
+        int strikeNum=0;
+        int ballNum=0;
+
+        for(int i=0;i<3;i++){
+            if(input.charAt(i)==computerNum.charAt(i)) strikeNum++;
+            else if(computerNum.contains(String.valueOf(input.charAt(i)))){
+                ballNum++;
+            }
+        }
+
+        return new int[]{strikeNum,ballNum};
+    }
     public void playBaseball(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-//        System.out.println(computerNum);
+        System.out.println(computerNum);
         do {
-            int strikeNum=0;
-            int ballNum=0;
 
             System.out.print("숫자를 입력해주세요 : ");
             String input=Console.readLine();
 
+            int[] result=countResult(input);
 
-            for(int i=0;i<3;i++){
-                if(input.charAt(i)==computerNum.charAt(i)) strikeNum++;
-                else if(computerNum.contains(String.valueOf(input.charAt(i)))){
-                    ballNum++;
-                }
-            }
-            System.out.println(strikeNum+"스트라이크 "+ballNum+"볼");
-            if(strikeNum==3) break;
+            System.out.println(result[0]+"스트라이크 "+result[1]+"볼");
+            if(result[0]==3) break;
         }while(true);
 
     }
