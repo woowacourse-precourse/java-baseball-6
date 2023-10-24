@@ -1,18 +1,19 @@
-package baseball.process;
+package baseball.util;
 
+import baseball.constant.ApplicationConstant;
+import baseball.constant.ExceptionConstant;
 import camp.nextstep.edu.missionutils.Console;
 import baseball.validation.ValidationNumber;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputNumber {
-    private final String NUMBER_TYPE_ERROR_MESSAGE = "숫자만 입력해주세요.";
-    private InputNumber() {
+public class InputUtil {
+    private InputUtil() {
     }
 
-    public static InputNumber of() {
-        return new InputNumber();
+    public static InputUtil of() {
+        return new InputUtil();
     }
 
     public List<Integer> inputNumber() {

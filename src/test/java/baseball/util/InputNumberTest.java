@@ -1,4 +1,4 @@
-package baseball.process;
+package baseball.util;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class InputNumberTest {
-    final InputNumber inputNumber = InputNumber.of();
+    final InputUtil inputNumber = InputUtil.of();
 
     @Test
     @DisplayName("플레이어에게 세자리수를 입력받는다")
