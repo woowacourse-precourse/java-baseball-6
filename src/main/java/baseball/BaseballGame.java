@@ -53,9 +53,7 @@ public class BaseballGame {
             List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
                     .map(input -> convertStringToInteger(input))
                     .toList();
-            validAnswerDigit(userAnswer);
-            validAnswerDistinct(userAnswer);
-            validAnswerRange(userAnswer);
+            validAnswer(userAnswer);
             hintScore.calculateHint(correctAnswer, userAnswer);
             System.out.println(hintScore);
             if (hintScore.isGameOver()) {
@@ -65,20 +63,26 @@ public class BaseballGame {
         }
     }
 
-    private void validAnswerDistinct(List<Integer> userAnswer) {
+    private void validAnswer(List<Integer> userAnswer) {
+        validDigit(userAnswer);
+        validDistinct(userAnswer);
+        userAnswer.stream().forEach(number -> validNumberRange(number));
+    }
+
+    private void validDistinct(List<Integer> userAnswer) {
         if (userAnswer.stream().distinct().toList().size() != ANSWER_DIGIT) {
             throw new IllegalArgumentException(INPUT_NOT_DISTINCT);
         }
     }
 
-    private void validAnswerDigit(List<Integer> userAnswer) {
+    private void validDigit(List<Integer> userAnswer) {
         if (userAnswer.size() != ANSWER_DIGIT) {
             throw new IllegalArgumentException(INPUT_INVALID_DIGIT);
         }
     }
 
-    private void validAnswerRange(List<Integer> userAnswer) {
-        if (userAnswer.stream().filter(number -> number < NUMBER_MIN_RANGE || number > NUMBER_MAX_RANGE).findAny().isPresent()) {
+    private void validNumberRange(Integer number) {
+        if (number < NUMBER_MIN_RANGE || number > NUMBER_MAX_RANGE) {
             throw new IllegalArgumentException(INPUT_INVALID_RANGE);
         }
     }
