@@ -38,11 +38,10 @@ class ApplicationTest extends NsTest {
         List<Integer> userInput4 = Arrays.asList(4, 5, 6);
         List<Integer> result = Arrays.asList(4, 5, 6);
 
-        assertThat(Application.getStrikeCount(userInput1, result) == 0);
-        assertThat(Application.getStrikeCount(userInput2, result) == 1);
-        assertThat(Application.getStrikeCount(userInput3, result) == 2);
-        assertThat(Application.getStrikeCount(userInput4, result) == 3);
-
+        assertThat(Application.getStrikeCount(userInput1, result)).isEqualTo(0);
+        assertThat(Application.getStrikeCount(userInput2, result)).isEqualTo(1);
+        assertThat(Application.getStrikeCount(userInput3, result)).isEqualTo(2);
+        assertThat(Application.getStrikeCount(userInput4, result)).isEqualTo(3);
     }
 
     @Test
@@ -53,10 +52,10 @@ class ApplicationTest extends NsTest {
         List<Integer> userInput4 = Arrays.asList(6, 4, 5);
         List<Integer> result = Arrays.asList(4, 5, 6);
 
-        assertThat(Application.getBallCount(userInput1, result) == 0);
-        assertThat(Application.getBallCount(userInput2, result) == 1);
-        assertThat(Application.getBallCount(userInput3, result) == 2);
-        assertThat(Application.getBallCount(userInput4, result) == 3);
+        assertThat(Application.getBallCount(userInput1, result)).isEqualTo(0);
+        assertThat(Application.getBallCount(userInput2, result)).isEqualTo(1);
+        assertThat(Application.getBallCount(userInput3, result)).isEqualTo(2);
+        assertThat(Application.getBallCount(userInput4, result)).isEqualTo(3);
     }
 
     @Test
@@ -74,8 +73,8 @@ class ApplicationTest extends NsTest {
                 && (indexOne.equals(indexTwo))
                 && (indexTwo.equals(indexZero));
 
-        assertThat(isNumber);
-        assertThat(isDifferentNumber);
+        assertThat(isNumber).isEqualTo(true);
+        assertThat(isDifferentNumber).isEqualTo(true);
     }
 
     @Override
