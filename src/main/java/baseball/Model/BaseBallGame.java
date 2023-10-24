@@ -12,6 +12,7 @@ public class BaseBallGame {
     private List<Integer> computerNumber;
     private Helper helper;
     private static final int BASEBALL_NUM_SIZE = 3;
+    private static final int STRIKE = 1;
 
 
     public BaseBallGame(Helper helper) {
@@ -26,7 +27,6 @@ public class BaseBallGame {
         List<Integer> listBallStrike = new ArrayList<>();
         int totalCount = 0;
         int strikeCount = 0;
-        int ballCount = 0;
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             if (userInput.contains(computerNumber.get(i))) {
@@ -36,14 +36,14 @@ public class BaseBallGame {
                 strikeCount++;
             }
         }
-        ballCount = totalCount - strikeCount;
-        listBallStrike.add(ballCount);
+
+        listBallStrike.add(totalCount - strikeCount);
         listBallStrike.add(strikeCount);
         return listBallStrike;
     }
 
     public boolean checkThreeStrike(List<Integer> listBallStrike) {
-        if (listBallStrike.get(1) == BASEBALL_NUM_SIZE) {
+        if (listBallStrike.get(STRIKE) == BASEBALL_NUM_SIZE) {
             return true;
         }
         return false;
