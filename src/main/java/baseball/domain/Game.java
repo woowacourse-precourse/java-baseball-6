@@ -36,4 +36,12 @@ public class Game {
 
         return result.trim();
     }
+
+    public int getStrikes() {
+        return strikes;
+    }
+
+    public int getBalls() {
+        return balls;
+    }
 }

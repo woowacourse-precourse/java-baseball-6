@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Computer {
-
     private List<Integer> secretNumbers;
 
     public void setSecretNumbers(List<Integer> secretNumbers) {
@@ -25,7 +24,6 @@ public class Computer {
         }
         setSecretNumbers(computer);
         return secretNumbers;
-
     }
 
     // secretNumbers를 사용자 입력과 비교하여 스트라이크와 볼 count 계산
@@ -34,7 +32,7 @@ public class Computer {
         int strikes = 0;
         int balls = 0;
 
-        strikes = (int) IntStream.range(0, 3)
+        strikes = (int) IntStream.range(0, COUNT)
                 .filter(index -> userInputNumbers.get(index).equals(secretNumbers.get(index)))
                 .count();
 

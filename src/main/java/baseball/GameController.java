@@ -35,16 +35,14 @@ public class GameController {
         System.out.println(START_MSG);
 
         List<Integer> randomNumbers = computer.generateRandomNumbers(START_INCLUSIVE, END_INCLUSIVE, COUNT);
-        System.out.println("###randomNumbers = " + randomNumbers);
 
-        System.out.println(INPUT_MSG);
         while (continueGame) {
+            System.out.print(INPUT_MSG);
             String userInput = userInputHandler.readUserInput();
 
             validator.checkInputSize(userInput, COUNT);
             validator.checkValidNumber(userInput);
 
-            System.out.println("###userInput = " + userInput);
             List<Integer> userInputNumbers = userInputHandler.parseStringNumbers(userInput);
 
             Game game = computer.computeResult(userInputNumbers);
@@ -58,7 +56,7 @@ public class GameController {
 
     public void endGame() {
         System.out.print(ENDGAME_MSG);
-        if (userInputHandler.getInputNum() == REPLAY) {
+        if (Integer.parseInt(userInputHandler.readUserInput()) == REPLAY) {
             continueGame = true;
             run();
         }
