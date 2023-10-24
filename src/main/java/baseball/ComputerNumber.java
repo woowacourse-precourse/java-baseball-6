@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import static baseball.utils.Constants.BALL_SIZE;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -8,7 +10,6 @@ import java.util.List;
 public class ComputerNumber {
     private final int MIN_VALUE = 1;
     private final int MAX_VALUE = 9;
-    private final int MAX_LENGTH = 3;
 
     private List<Character> computerNumbers;
 
@@ -23,7 +24,7 @@ public class ComputerNumber {
     private List<Character> generateRandomNumbers() {
         LinkedHashSet<Character> tempNumbers = new LinkedHashSet<>();
 
-        while (tempNumbers.size() < MAX_LENGTH) {
+        while (tempNumbers.size() < BALL_SIZE) {
             tempNumbers.add(Character.forDigit(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE), 10));
         }
 

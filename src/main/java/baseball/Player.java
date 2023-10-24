@@ -1,14 +1,15 @@
 package baseball;
 
+import static baseball.utils.Constants.BALL_SIZE;
+
 import baseball.utils.PlayMessage;
 import baseball.utils.PlayerInputValidator;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-
-    private final int MAX_LENGTH = 3;
 
     private List<Character> playerNumbers = new ArrayList<>();
 
@@ -25,7 +26,7 @@ public class Player {
 
     private void stringToList(String numbers) {
 
-        for (int i = 0; i < MAX_LENGTH; i++) {
+        for (int i = 0; i < BALL_SIZE; i++) {
             this.playerNumbers.add(numbers.charAt(i));
         }
 

@@ -3,13 +3,15 @@ package baseball;
 import baseball.utils.ExceptionMessage;
 import baseball.utils.PlayMessage;
 import camp.nextstep.edu.missionutils.Console;
+
+import static baseball.utils.Constants.BALL_SIZE;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Game {
 
-    private final int LENGTH = 3;
     private static final String START_NUMBER = "1";
     private static final String END_NUMBER = "2";
     private static final String NOTHING = "낫싱";
@@ -33,7 +35,7 @@ public class Game {
 
             checkBallAndStrike(computer, player.getPlayerNumbers());
             printBallCount();
-            if (strike == LENGTH) {
+            if (strike == BALL_SIZE) {
                 System.out.println(PlayMessage.SUCCESS_MESSAGE.getMessage());
                 System.out.println(PlayMessage.RESTART_OR_END_MESSAGE.getMessage());
                 if (setFlag()) {
@@ -70,7 +72,7 @@ public class Game {
     }
 
     private void checkBallAndStrike(List<Character> computer, List<Character> player) {
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < BALL_SIZE; i++) {
             checkStrike(computer, player, i);
             checkBall(computer, player, i);
         }
@@ -83,7 +85,7 @@ public class Game {
     }
 
     private void checkBall(List<Character> computer, List<Character> player, int index) {
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < BALL_SIZE; i++) {
             if (index != i && computer.get(index).equals(player.get(i))) {
                 ball++;
             }
