@@ -41,16 +41,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String str = Console.readLine();
         checkEndNumberIsValid(str);
-        int endNumber = Integer.parseInt(str);
-//        //종료
-//        if (endNumber == 2) {
-//            isPlay = 2;
-//        }
-//        //재시작
-//        if (endNumber == 1) {
-//            isFinish = false;
-//        }
-        return endNumber;
+        return Integer.parseInt(str);
     }
 
     /**
@@ -133,7 +124,7 @@ public class Application {
     private static int inputThreeNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
-        checkTreeNumbersAreValid(str);
+        checkThreeNumbersAreValid(str);
         return Integer.parseInt(str);
     }
 
@@ -142,7 +133,7 @@ public class Application {
      *
      * @param str
      */
-    private static void checkTreeNumbersAreValid(String str) {
+    private static void checkThreeNumbersAreValid(String str) {
         //3자리를 입력했는지 확인.
         if (str.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야합니다.");
