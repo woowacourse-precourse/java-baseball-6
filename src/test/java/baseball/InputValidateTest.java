@@ -30,6 +30,13 @@ class InputValidateTest  {
         assertThatThrownBy(()->inputValidate.validateContainsZero()).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("입력한 숫자에 중복된 숫자가 있는 경우, 예외처리 ")
+    void 입력_숫자에_중복된_숫자_예외처리(){
+        inputValidate = new InputValidate("773");
+        assertThatThrownBy(()->inputValidate.validateDuplicateNumber()).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 }
