@@ -11,6 +11,9 @@ public class GameService {
     private Computer computer = new Computer();
     private User user = new User();
 
+    int strikeCount = 0;
+    int ballCount = 0;
+
     private Converter converter = new Converter();
     public void playContinuous(){
         while (true){
@@ -19,6 +22,30 @@ public class GameService {
     }
     public void play(){
 
+    }
+
+
+    public void getResult(int[] guessNumbers) {
+        for (int i = 0; i < 3; i++){
+            search(guessNumbers[i], i, computer.getNumbers());
+        }
+
+        OutputMessage.printResultMessage(strikeCount, ballCount);
+    }
+
+
+    private void search(int guessNumber, int index, int[] computerNumbers) {
+
+        if (guessNumber == computerNumbers[index]){
+            strikeCount++;
+            return;
+        }
+
+        for(int i = 0; i < 3; i++){
+            if (guessNumber == computerNumbers[i]){
+                ballCount++;
+            }
+        }
     }
 
     public void setGame() {

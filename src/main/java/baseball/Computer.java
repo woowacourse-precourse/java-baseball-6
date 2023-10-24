@@ -20,4 +20,8 @@ public class Computer {
                 .map(num -> Randoms.pickNumberInRange(1, 9))
                 .toArray();
     }
+
+    public int[] getNumbers() {
+        return numbers;
+    }
 }
