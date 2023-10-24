@@ -25,6 +25,9 @@ public class Application {
             List<Integer> playerNumbers = new ArrayList<>();
             while (playerNumber > 0) {
                 int number = playerNumber % 10;
+
+                validateRange(number);
+
                 playerNumbers.add(number);
                 playerNumber = playerNumber / 10;
             }
@@ -59,5 +62,12 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return playerNumber;
+    }
+
+    private static void validateRange(int number) {
+        // 1에서 9까지의 수인지 검증
+        if (number < 1 || number > 9) {
+            throw new IllegalArgumentException();
+        }
     }
 }
