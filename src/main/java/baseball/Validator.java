@@ -9,8 +9,8 @@ public class Validator {
     private final int maximumCanCreatedValue;
     Validator(){
         this.digitalCount = Config.DEFAULT_DIGIT_COUNT;
-        this.minimumCanCreatedValue = Config.DEFAULT_MINIMUM_CAN_CREATED_VALUE;
-        this.maximumCanCreatedValue = Config.DEFAULT_MAXIMUM_CAN_CREATED_VALUE;
+        this.minimumCanCreatedValue = Config.DEFAULT_CAN_CREATED_MINIMUM_VALUE;
+        this.maximumCanCreatedValue = Config.DEFAULT_CAN_CREATED_MAXIMUM_VALUE;
     }
     Validator(int digitCount,int minimumCanCreatedValue,int maximumCanCreatedValue) {
         this.digitalCount = digitCount;

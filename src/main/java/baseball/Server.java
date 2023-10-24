@@ -6,9 +6,9 @@ public class Server {
     private Computer computer;
     private Player player;
     private Validator validator;
-    private static final int digitalCount = Config.DEFAULT_DIGIT_COUNT;
-    private static final int minimumCanCreatedValue = Config.DEFAULT_MINIMUM_CAN_CREATED_VALUE;
-    private static final int maximumCanCreatedValue= Config.DEFAULT_MAXIMUM_CAN_CREATED_VALUE;
+    private static final int digitCount = Config.DEFAULT_DIGIT_COUNT;
+    private static final int minimumCanCreatedValue = Config.DEFAULT_CAN_CREATED_MINIMUM_VALUE;
+    private static final int maximumCanCreatedValue= Config.DEFAULT_CAN_CREATED_MAXIMUM_VALUE;
 
     private enum GameStatus{
         RUNNING(1),
@@ -29,12 +29,12 @@ public class Server {
 
     Server(){
         this.computer = new Computer(
-            digitalCount,
+            digitCount,
             minimumCanCreatedValue,
             maximumCanCreatedValue
         );
         this.validator = new Validator(
-            digitalCount,
+            digitCount,
             minimumCanCreatedValue,
             maximumCanCreatedValue
         );
@@ -71,15 +71,12 @@ public class Server {
             }
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return;
     }
     private void restart(){
         computer.reGenerateNumberList();
-        return;
     }
     private void quit(){
         gameStatusCode = GameStatus.STOPPED;
-        return;
     }
 
     public GameStatus getGameStatusCode(){

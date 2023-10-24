@@ -5,8 +5,8 @@ public class Util {
         int sliceUnit = (int) Math.pow(10, digitCount - 1);
         var numberList = new int[digitCount];
         for (int i = 0; i < digitCount; i++) {
-            int number = parsingNumber / sliceUnit;
-            numberList[i]=number;
+            int parsedNumber = parsingNumber / sliceUnit;
+            numberList[i]=parsedNumber;
             parsingNumber %= sliceUnit;
             sliceUnit /= 10;
         }

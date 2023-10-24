@@ -9,13 +9,15 @@ public class Computer {
     private final int maximumCanCreatedValue;
     private ArrayList<Integer> numberList;
     private final int digitCount;
+
+    private static int NOT_EXISTED_NUMBER = -1;
     public ArrayList<Integer> getNumberList(){
         return this.numberList;
     }
 
     public Computer() {
-        this.minimumCanCreatedValue = Config.DEFAULT_MINIMUM_CAN_CREATED_VALUE;
-        this.maximumCanCreatedValue = Config.DEFAULT_MAXIMUM_CAN_CREATED_VALUE;
+        this.minimumCanCreatedValue = Config.DEFAULT_CAN_CREATED_MINIMUM_VALUE;
+        this.maximumCanCreatedValue = Config.DEFAULT_CAN_CREATED_MAXIMUM_VALUE;
         this.digitCount = Config.DEFAULT_DIGIT_COUNT;
         this.numberList = generateRandomNumberListWithNotRepeating();
     }
@@ -61,7 +63,7 @@ public class Computer {
      * @param playerNumber 사용자가 입력하는 숫자
      * @return boolean
      */
-    public Boolean checkUserNumberAndResponse(int playerNumber){
+    public boolean checkUserNumberAndResponse(int playerNumber){
 
         var compareNumberList = Util.parsingNumberToNumberList(playerNumber,digitCount);
 
@@ -77,7 +79,7 @@ public class Computer {
         for (int i =0 ; i< digitCount;i++){
             if (compareNumberList[i]==numberList.get(i)){
                 strikeCount++;
-                compareNumberList[i]=-1;
+                compareNumberList[i]=NOT_EXISTED_NUMBER;
             }
         }
         return strikeCount;
@@ -85,7 +87,7 @@ public class Computer {
     private int calculateBallCount(int[] compareNumberList){
         int ballCount = 0;
         for (int i =0; i<digitCount;i++){
-            if (compareNumberList[i]==-1){
+            if (compareNumberList[i]==NOT_EXISTED_NUMBER){
                 continue;
             }
             if (numberList.contains(compareNumberList[i])){
