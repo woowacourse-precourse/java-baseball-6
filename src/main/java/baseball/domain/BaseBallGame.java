@@ -10,21 +10,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static baseball.domain.GameMessage.*;
 import static baseball.domain.GameResult.calculateBaseBallGame;
 
 public class BaseBallGame {
-    private static String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
-    private static String INPUT_NUMBERS_DELIMITER = "";
-
-    private static String LINE_BREAK = "%n";
-    private static String BLANK = " ";
-
-    private static String GAME_RESULT_NOTHING_MESSAGE = "낫싱";
-    private static String GAME_RESULT_BALL_MESSAGE = "%d볼";
-    private static String GAME_RESULT_STRIKE_MESSAGE = "%d스트라이크";
-    private static String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static String INPUT_GAME_STATE_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean playAgain = true;
@@ -49,6 +38,12 @@ public class BaseBallGame {
         }
     }
 
+    private boolean askPlayAgain() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
+        int choice = scanner.nextInt();
+        return choice == 1;
+    }
     public static List<Integer> inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String inputBaseBallNumbers = Console.readLine();
@@ -75,12 +70,6 @@ public class BaseBallGame {
                 gameResult.strikeCount());
     }
 
-    private boolean askPlayAgain() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
-        int choice = scanner.nextInt();
-        return choice == 1;
-    }
     public static GameState inputGameStateCommand(GameResult gameResult) {
         if (!gameResult.isFinished()) {
             return GameState.init();

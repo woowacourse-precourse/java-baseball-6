@@ -21,7 +21,6 @@ class ComputerTest {
         Computer result = Computer.init();
         // then
         assertThat(result).isInstanceOf(Computer.class);
-        System.out.println(result.getAnswerNumbers());
 
     }
     @Nested
