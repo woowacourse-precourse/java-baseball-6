@@ -26,12 +26,19 @@ public class Application {
                 for (int i = 0; i < Numbers.length(); i++) {
                     int userNumber = Numbers.charAt(i) - '0';
 
-                    if ((userNumber >= 1 && userNumber <= 9 && !(user.contains(userNumber)))) {
-                        user.add(userNumber);
-
-                    } else {
+                    if(userNumber<1){
                         throw new IllegalArgumentException();
                     }
+                    if(userNumber>9){
+                        throw new IllegalArgumentException();
+                    }
+                    if(user.contains(userNumber)){
+                        throw new IllegalArgumentException();
+                    }
+
+                    user.add(userNumber);
+
+
 
                 }
 
