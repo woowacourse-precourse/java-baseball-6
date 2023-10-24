@@ -15,8 +15,18 @@ public class GameController {
     }
 
     public void playGame() {
-        computerController.saveRandomNumbers();
-        List<Integer> inputNumbers = playerController.readAndValidateInputNumbers();
-        computerController.provideHint(inputNumbers);
+        Boolean isRunning = true;
+        while (isRunning) {
+            computerController.saveRandomNumbers();
+            proceedGame();
+        }
+    }
+
+    private void proceedGame() {
+        Boolean isCorrectAnswer = false;
+        while (!isCorrectAnswer) {
+            List<Integer> inputNumbers = playerController.readAndValidateInputNumbers();
+            computerController.provideHint(inputNumbers);
+        }
     }
 }
