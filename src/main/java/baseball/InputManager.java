@@ -16,7 +16,7 @@ public class InputManager {
         if(!isNumeric(input))
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         if(input.length() != 3)
-            throw new IllegalArgumentException("3자리 숫자만 입력해 주세요");
+            throw new IllegalArgumentException("3자리 숫자만 입력해 주세요.");
     }
 
     public int readWeatherRestartOrEnd() {
@@ -27,7 +27,7 @@ public class InputManager {
 
     private void validateRestartOrEnd(String input) {
         if(!(input.equals("1") || input.equals("2")))
-            throw new IllegalArgumentException("1또는 2를 입력해주세요");
+            throw new IllegalArgumentException("1또는 2만 입력이 가능합니다.");
     }
 
     private boolean isNumeric(String str) {
