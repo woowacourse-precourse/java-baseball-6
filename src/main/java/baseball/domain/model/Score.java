@@ -25,4 +25,11 @@ public class Score {
                 .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
                         () -> new EnumMap<>(BallCount.class)));
     }
+
+    public Map<String, Integer> getResult() {
+        Object LinkedHashMap;
+        return score.keySet().stream()
+                .collect(Collectors.toMap(BallCount::getValue, score::get, (a, b) -> b, LinkedHashMap::new));
+    }
+
 }
