@@ -1,8 +1,7 @@
-package baseball.game.printmanager;
+package baseball.game.view;
 
 import baseball.game.constant.Constants;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.HashSet;
 
 public class InputManager {

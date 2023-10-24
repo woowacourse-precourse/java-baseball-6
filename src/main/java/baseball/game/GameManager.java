@@ -2,8 +2,8 @@ package baseball.game;
 
 import baseball.game.constant.Constants;
 import baseball.game.domain.BaseBall;
-import baseball.game.printmanager.InputManager;
-import baseball.game.printmanager.OutputManager;
+import baseball.game.view.InputManager;
+import baseball.game.view.OutputManager;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

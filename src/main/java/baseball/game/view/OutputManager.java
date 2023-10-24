@@ -1,4 +1,4 @@
-package baseball.game.printmanager;
+package baseball.game.view;
 
 import static baseball.game.constant.Constants.BASEBALL_SIZE;
 
