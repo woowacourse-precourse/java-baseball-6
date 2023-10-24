@@ -9,10 +9,11 @@ import static baseball.model.Constant.NUM_INVALID_LENGTH;
 import static baseball.model.Constant.NUM_OUT_OF_RANGE;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class BaseballNumber {
-//    List<Integer> number;
+    private List<Integer> number;
 
     public BaseballNumber(String userInput) {
         validateLength(userInput);

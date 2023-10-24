@@ -10,5 +10,15 @@ public class Constant {
     public static final String INPUT_NOT_NUM = "숫자만 입력해 주세요";
     public static final String EXISTS_SAME_NUM = "서로 다른 수를 입력해 주세요";
 
+    public static final String NOTHING_CORRECT = "낫싱";
+
+    public static final String STRIKE_KOREAN = "스트라이크";
+    public static final String BALL_KOREAN = "볼";
+    public static final String BLANK_SPACE_STRING = " ";
+
+
+    public static final String ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    public static final String START_GAME = "숫자 야구 게임을 시작합니다.";
+
 
 }

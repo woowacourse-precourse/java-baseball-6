@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.BaseballNumber;
 import baseball.model.Computer;
 import baseball.view.NumberBaseballView;
 
@@ -16,8 +17,11 @@ public class NumberBaseball {
         computer.createRandomNumber();
         numberBaseballView.startNumberBaseball();
 
+        //반복 필요
         String userNumber = numberBaseballView.getUserInput();
-
+        BaseballNumber baseballNumber = new BaseballNumber(userNumber);
+        String result = computer.getResult(userNumber);
+        numberBaseballView.showBaseballResult(result);
     }
 
 
