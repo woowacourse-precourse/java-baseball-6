@@ -91,6 +91,6 @@ public class BaseballGame {
     }
 
     private boolean checkGameEnd() {
-        return baseballView.inputSelectRestartOrEnd() == 2;
+        return baseballView.inputSelectRestartOrEnd().equals("2");
     }
 }

@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 /* input, output 화면(메세지) 출력 */
 public class BaseballView {
@@ -48,15 +48,13 @@ public class BaseballView {
     /* 값을 입력 받을 때 사용 */
     // 유저 숫자 입력
     public String inputUserNumber() {
-        Scanner sc = new Scanner(System.in);
         outputUserNumber();
-        return sc.nextLine();
+        return Console.readLine();
     }
 
     // 게임 재시작 혹은 종료 선택 입력
-    public int inputSelectRestartOrEnd() {
-        Scanner sc = new Scanner(System.in);
+    public String inputSelectRestartOrEnd() {
         outputSelectRestartOrEnd();
-        return sc.nextInt();
+        return Console.readLine();
     }
 }
