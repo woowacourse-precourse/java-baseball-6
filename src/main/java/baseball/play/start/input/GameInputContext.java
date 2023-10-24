@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameInputContext {
 
-  public static GameStartedEvent inputNumber(InputCommands inputCommands){
+  public static GameStartedEvent startedEvent(InputCommands inputCommands){
     UnvalidatedInputNum unvalidatedInputNum = unvalidatedInputNum();
     ValidatedInputNum validatedInputNum = ValidatedInputNum.of(unvalidatedInputNum.getInput());
     return GameStartedEvent.of(validatedInputNum, inputCommands.getRandomNums());

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GameCompareContext {
 
-  public static GameResult<GameResume, WinningGame> compare(GameStartedEvent event) {
+  public static GameResult<ResumingGame, WinningGame> compare(GameStartedEvent event) {
     String input = event.getInputNum().getInput();
     String randomNums = event.getRandomNums();
     if (input.equals(randomNums)) {
@@ -29,7 +29,8 @@ public class GameCompareContext {
     return categorizeResume(ballCount, strikeCount, randomNums);
   }
 
-  private static GameResult<GameResume, WinningGame> categorizeResume(
+  //볼과 스트라이크의 개수에 따라 결과를 분류한다.
+  private static GameResult<ResumingGame, WinningGame> categorizeResume(
       int ballCount, int strikeCount, String randomNums) {
     return switch (ballCount * 10 + strikeCount) {
       case 0 -> GameResult.resume(new Nothing(randomNums));

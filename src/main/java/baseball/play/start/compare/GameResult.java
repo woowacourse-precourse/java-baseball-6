@@ -1,6 +1,6 @@
 package baseball.play.start.compare;
 
-public class GameResult<T extends GameResume, R extends WinningGame> {
+public class GameResult<T extends ResumingGame, R extends WinningGame> {
 
   private final T gameResume;
   private final R winningGame;
@@ -10,11 +10,11 @@ public class GameResult<T extends GameResume, R extends WinningGame> {
     this.winningGame = winningGame;
   }
 
-  public static GameResult<GameResume,WinningGame> resume(GameResume gameResume) {
+  public static GameResult<ResumingGame,WinningGame> resume(ResumingGame gameResume) {
     return new GameResult(gameResume, null);
   }
 
-  public static GameResult<GameResume,WinningGame> win(WinningGame winningGame) {
+  public static GameResult<ResumingGame,WinningGame> win(WinningGame winningGame) {
     return new GameResult(null, winningGame);
   }
 
