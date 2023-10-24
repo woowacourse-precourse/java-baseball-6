@@ -5,18 +5,10 @@ import baseball.domain.Player;
 import baseball.domain.Result;
 import baseball.exception.InputValidator;
 
-public class BaseballService {
-    private final Computer computer;
-    private final Player player;
-    private final Result result;
-    private final InputValidator inputValidator;
-
-    public BaseballService(Computer computer, Player player, Result result, InputValidator inputValidator) {
-        this.computer = computer;
-        this.player = player;
-        this.result = result;
-        this.inputValidator = inputValidator;
-    }
+public record BaseballService(Computer computer,
+                              Player player,
+                              Result result,
+                              InputValidator inputValidator) {
 
     public void inputAnswer(String inputAnswer) {
         inputValidator.validateAnswer(inputAnswer);
@@ -32,6 +24,7 @@ public class BaseballService {
             result.resetGameScore();
             return true;
         }
+
         return false;
     }
 
