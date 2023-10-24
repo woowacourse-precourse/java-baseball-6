@@ -21,8 +21,8 @@ public class Validator {
         }
     }
 
-    public static void validateInRange(int target, int startInclusive, int endExclusive) {
-        if (!(startInclusive <= target && target <= endExclusive)) {
+    public static void validateInRange(int target, int startInclusive, int endInclusive) {
+        if (!(startInclusive <= target && target <= endInclusive)) {
             throw new IllegalArgumentException("올바른 범위의 수가 아닙니다.");
         }
     }
