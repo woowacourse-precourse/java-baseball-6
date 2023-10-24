@@ -1,10 +1,6 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GameScore {
-
     private static final int GAME_END_SCORE = 3;
 
     private int strike;
@@ -21,13 +17,6 @@ public class GameScore {
 
     public void updateBall() {
         ball++;
-    }
-
-    public List<Integer> getResult() {
-        return new ArrayList<>() {{
-            add(strike);
-            add(ball);
-        }};
     }
 
     public boolean isUserFindAnswer() {
