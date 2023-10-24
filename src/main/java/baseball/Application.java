@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,15 +116,20 @@ public class Application {
     protected static String getScoreMessage(final List<Integer> computer, final List<Integer> userGuess) {
         int[] score = compareWithAnswer(computer, userGuess);
         StringBuilder sb = new StringBuilder();
-        if (score[0] > 0) sb.append(score[0]).append("볼 ");
-        if (score[1] > 0) sb.append(score[1]).append("스트라이크 ");
-        if (sb.isEmpty()) sb.append("낫싱");
+        if (score[0] > 0) {
+            sb.append(score[0]).append("볼 ");
+        }
+        if (score[1] > 0) {
+            sb.append(score[1]).append("스트라이크 ");
+        }
+        if (sb.isEmpty()) {
+            sb.append("낫싱");
+        }
         return sb.toString().trim();
     }
 
     /**
-     * 사용자에게 입력을 받아 1 또는 2를 받은 경우 각각 true(시작), false(종료)를 반환하고
-     * 입력값이 잘못된 경우 IllegalArgumentException을 반환하는 메소드
+     * 사용자에게 입력을 받아 1 또는 2를 받은 경우 각각 true(시작), false(종료)를 반환하고 입력값이 잘못된 경우 IllegalArgumentException을 반환하는 메소드
      *
      * @return boolean
      * @throws IllegalArgumentException

@@ -1,18 +1,17 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 public class MyOwnTest extends NsTest {
 
@@ -92,7 +91,6 @@ public class MyOwnTest extends NsTest {
         assertSimpleTest(() -> {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> userGuess = List.of(1, 2, 3);
-
 
             assertThat(Application.getScoreMessage(computer, userGuess))
                     .isEqualTo("3스트라이크");
