@@ -2,12 +2,14 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
-        game.start();
+        GameManager gameManager = new GameManager();
+        gameManager.printStartMessage();
 
         boolean isRunning = true;
-        while(isRunning) {
-            isRunning = game.run();
+        while (isRunning) {
+            Game game = new Game(gameManager);
+            game.play();
+            isRunning = gameManager.askRestart();
         }
     }
 }
