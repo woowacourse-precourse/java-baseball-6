@@ -7,6 +7,7 @@ public class Round {
     private static final String STRIKE_STRING = "스트라이크";
     private static final String NOTHING_STRING = "낫싱";
     private static final String BLANK_STRING = " ";
+    private static final int CORRECT_GUESS_COUNT = 3;
     private final int ballCount;
     private final int strikeCount;
 
@@ -49,6 +50,6 @@ public class Round {
     }
 
     public boolean isCorrectGuess() {
-        return strikeCount == 3;
+        return strikeCount == CORRECT_GUESS_COUNT;
     }
 }
