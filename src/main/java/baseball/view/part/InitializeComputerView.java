@@ -29,7 +29,6 @@ public record InitializeComputerView(EventListener eventListener) implements Def
         }
 
         private List<Integer> generateRandomNumbers() {
-            // seed는 기본값
             return IntStream.iterate(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER),
                             (i) -> Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER))
                     .distinct()

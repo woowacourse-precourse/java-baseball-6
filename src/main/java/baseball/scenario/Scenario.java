@@ -12,16 +12,25 @@ public interface Scenario {
 
     void play();
 
+
+    /**
+     * 시나리오 유형
+     * <p>previous: 지정한 이전 시나리오로 돌아감</p>
+     * <p>next: 지정한 다음 시나리오로 돌아감</p>
+     */
     enum ScenarioResultType {
         PREVIOUS,
         NEXT,
-        REPEAT,
     }
 
     interface ScenarioAction {
         ScenarioResultType execute();
     }
 
+    /**
+     * @param scenarioAction 동작하는 기능
+     * @param scenarioMap    저장된 시나리오
+     */
     record ConditionalScenario(
             ScenarioAction scenarioAction,
             Map<ScenarioResultType, Supplier<Scenario>> scenarioMap
