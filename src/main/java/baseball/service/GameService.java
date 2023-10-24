@@ -23,7 +23,7 @@ public class GameService {
         this.outputVIew = outputVIew;
     }
 
-    public void solvingProblem() {
+    public void playBallGame() {
         GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
         List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(new withinRange(1, 9));
 
@@ -99,7 +99,7 @@ public class GameService {
         try {
             if (validate.validationReplayInput(input)) {
                 if (input.equals(RE_PLAY)) {
-                    solvingProblem();
+                    playBallGame();
                 }
 
                 if (input.equals(GAME_OVER)) {

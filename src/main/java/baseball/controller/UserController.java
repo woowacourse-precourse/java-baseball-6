@@ -15,6 +15,6 @@ public class UserController implements Controller {
     @Override
     public void gameStart() {
         inputView.renderView();
-        gameService.solvingProblem();
+        gameService.playBallGame();
     }
 }
