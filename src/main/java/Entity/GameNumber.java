@@ -1,11 +1,11 @@
-package baseball;
+package Entity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Constants.NUM_LENGTH;
+import static Constants.Constants.NUM_LENGTH;
 
 public class GameNumber {
 

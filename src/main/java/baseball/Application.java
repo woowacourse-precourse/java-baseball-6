@@ -1,22 +1,21 @@
 package baseball;
 
-import static baseball.Constants.MAX_STRIKE;
-import static baseball.Constants.NUM_LENGTH;
-import static baseball.Constants.NEW_LINE;
-import static baseball.Constants.RESTART;
-import static baseball.Constants.EXIT;
+import static Constants.Constants.MAX_STRIKE;
+import static Constants.Constants.NUM_LENGTH;
+import static Constants.Constants.NEW_LINE;
+import static Constants.Constants.RESTART;
+import static Constants.Constants.EXIT;
 
-import baseball.GameNumber;
-import baseball.GameResult;
-import baseball.GameScore;
-import baseball.Status;
+import Entity.GameNumber;
+import Entity.GameResult;
+import Entity.GameScore;
+import Entity.Status;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class Application {
 
     private static GameNumber gameNumber;

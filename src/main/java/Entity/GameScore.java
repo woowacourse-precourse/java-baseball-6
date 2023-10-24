@@ -1,6 +1,6 @@
-package baseball;
+package Entity;
 
-import static baseball.Constants.NUM_LENGTH;
+import static Constants.Constants.NUM_LENGTH;
 
 import java.util.List;
 

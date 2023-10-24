@@ -1,4 +1,4 @@
-package baseball;
+package Entity;
 
 public enum Status {
     GAME_START("숫자 야구 게임을 시작합니다."),
