@@ -21,7 +21,7 @@ public class Computer {
             result += Integer.toString(number);
         }
 
-        answerNumber = result;
+        this.answerNumber = result;
     }
 
 }
