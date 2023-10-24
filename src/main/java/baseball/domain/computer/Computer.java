@@ -21,12 +21,16 @@ public class Computer {
     }
 
     public static Computer createComputerAnswerByRandomGenerator() {
+        List<Number> answerNumbers = integerToNumber(generateNumbers());
+        return new Computer(answerNumbers);
+    }
+
+    private static ArrayList<Integer> generateNumbers() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() != BASEBALL_NUMBERS_LIMIT_SIZE) {
             numbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
-        List<Number> answerNumbers = integerToNumber(new ArrayList<>(numbers));
-        return new Computer(answerNumbers);
+        return new ArrayList<>(numbers);
     }
 
     public List<Number> getAnswerNumbers() {
