@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BaseballNumbers {
     private static final int ZERO_COUNT = 0;
@@ -65,5 +66,21 @@ public class BaseballNumbers {
             return ONE_COUNT;
         }
         return ZERO_COUNT;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof BaseballNumbers that)) {
+            return false;
+        }
+        return Objects.equals(baseballNumbers, that.baseballNumbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baseballNumbers);
     }
 }
