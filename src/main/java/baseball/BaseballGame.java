@@ -8,8 +8,7 @@ public class BaseballGame {
 	public void start() {
 		OutputView.printGameStart();
 		boolean isCorrected = false;
-		// TODO: 랜덤한 숫자를 생성하는 로직 구현 필요
-		String targetNumber = "123";
+		String targetNumber = NumberGenerator.generateUniqueNumbers(InputView.CORRECT_LENGTH);
 
 		while (isCorrected == false) {
 			String userNumber = InputView.getGameUserInput();
