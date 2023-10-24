@@ -49,6 +49,24 @@ public class Game {
         } while (isGameRestart());
     }
 
+    public void playGame() {
+        while (!threeStrike()) {
+            System.out.print(SYSTEM_INPUT_MASSAGE);
+            readPlayerNumber();
+            compareNumber();
+        }
+    }
+
+    public void readPlayerNumber() {
+        String playerNumString = Console.readLine();
+
+        if (playerNumString.length() > 3) {
+            throw new IllegalArgumentException();
+        }
+
+        player.setPlayerNumString(playerNumString);
+    }
+
     public void compareNumber() {
         String playerNumString = player.getPlayerNumString();
         char[] playerNumCharArray = playerNumString.toCharArray();
@@ -68,7 +86,7 @@ public class Game {
 
         printHint();
     }
-    
+
     public void printHint() {
         if (ball == 0 && strike == 0) {
             System.out.println(SYSTEM_NOTHING_MASSAGE);
@@ -85,14 +103,6 @@ public class Game {
         }
     }
 
-    public void playGame() {
-        while (!threeStrike()) {
-            System.out.print(SYSTEM_INPUT_MASSAGE);
-            readPlayerNumber();
-            compareNumber();
-        }
-    }
-
     public boolean isGameRestart() {
         String endFlag = Console.readLine();
 
@@ -103,16 +113,6 @@ public class Game {
         } else {
             throw new IllegalArgumentException();
         }
-    }
-
-    public void readPlayerNumber() {
-        String playerNumString = Console.readLine();
-
-        if (playerNumString.length() > 3) {
-            throw new IllegalArgumentException();
-        }
-
-        player.setPlayerNumString(playerNumString);
     }
 
     private boolean threeStrike() {
