@@ -12,17 +12,22 @@ public class BaseballGameView {
     private static final String FORMAT_BALL_STRIKE = "%d볼 %d스트라이크";
     private static final String FORMAT_BALL = "%d볼";
     private static final String FORMAT_STRIKE = "%d스트라이크";
-
     private static final String REQUIRED_ONE_OR_TWO = "입력 값은 1또는 2여야 합니다.";
     private static final String REQUIRED_THREE_DIGITS = "입력 값은 3자리 숫자여야 합니다.";
     private static final String REQUIRED_UNIQUE_DIGITS = "서로 다른 3자리의 숫자를 입력해야 합니다.";
     private static final String CONTAINS_ZERO_DIGITS = "0은 입력할 수 없습니다.";
+    private static final String RESTART = "1";
+    private static final String QUIT = "2";
 
     public BaseballGameView() {
     }
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
+    }
+
+    public void printEndMessage() {
+        System.out.println(END_MESSAGE);
     }
 
     public String getPlayerNumbers() {
@@ -67,12 +72,21 @@ public class BaseballGameView {
         }
     }
 
-    public void printEndMessage() {
-        System.out.println(END_MESSAGE);
+    public boolean selectRestartOrQuit() {
+        System.out.println(RESTART_MESSAGE);
+        return inputRestartOrQuit();
     }
 
-    public void printRestartMessage() {
-        System.out.println(RESTART_MESSAGE);
+    private boolean inputRestartOrQuit() {
+        String input = Console.readLine();
+        validateIsOneOrTwo(input);
+        return input.equals(RESTART);
+    }
+
+    private void validateIsOneOrTwo(String input) {
+        if (input.equals(RESTART) || input.equals(QUIT))
+            return;
+        throw new IllegalArgumentException(REQUIRED_ONE_OR_TWO);
     }
 
     public String printBallCount(BallCount ballCount) {

@@ -1,17 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    private static final String RESTART = "1";
-    private static final String QUIT = "2";
-    private static final String REQUIRED_ONE_OR_TWO = "입력 값은 1또는 2여야 합니다.";
-    private static final String REQUIRED_THREE_DIGITS = "입력 값은 3자리 숫자여야 합니다.";
-    private static final String REQUIRED_UNIQUE_DIGITS = "서로 다른 3자리의 숫자를 입력해야 합니다.";
-    private static final String CONTAINS_ZERO_DIGITS = "0은 입력할 수 없습니다.";
+
     private static final int MAX_STRIKE = 3;
     private final BaseballGameLogic baseballGameLogic;
     private final BaseballGameView baseballGameView;
@@ -27,8 +20,7 @@ public class BaseballGame {
         while (keepPlaying) {
             baseballGameView.printStartMessage();
             playUntilThreeStrikes(baseballGameLogic.getRandomThreeDigitNonZero());
-            baseballGameView.printRestartMessage();
-            keepPlaying = inputRestartOrQuit();
+            keepPlaying = baseballGameView.selectRestartOrQuit();
         }
     }
 
@@ -62,17 +54,5 @@ public class BaseballGame {
         }
 
         return digitList;
-    }
-
-    private boolean inputRestartOrQuit() {
-        String input = Console.readLine();
-        validateIsOneOrTwo(input);
-        return input.equals(RESTART);
-    }
-
-    private void validateIsOneOrTwo(String input) {
-        if (input.equals(RESTART) || input.equals(QUIT))
-            return;
-        throw new IllegalArgumentException(REQUIRED_ONE_OR_TWO);
     }
 }
