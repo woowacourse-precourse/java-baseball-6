@@ -1,6 +1,7 @@
 package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -10,25 +11,37 @@ public class GameService {
 
     public GameService() {
         this.validator = new InputValidator();
-        this.randomNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        this.randomNumbers = generateNumbers();
+    }
+
+    private List<Integer> generateNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return numbers;
     }
 
     public String validateInput(String userInput) {
         validator.validate(userInput);
-        return checkResult(userInput);
+        return generateResultMessage(userInput);
     }
 
-    private String checkResult(String userInput) {
+    private String generateResultMessage(String userInput) {
         int ballCount = 0;
         int strikeCount = 0;
 
         for (int i = 0; i < userInput.length(); i++) {
-            if (isBall(userInput, i)) {
-                ballCount++;
-            } else if (isStrike(userInput, i)) {
+            if (isStrike(userInput, i)) {
                 strikeCount++;
+            } else if (isBall(userInput, i)) {
+                ballCount++;
             }
         }
+
         return getResultMessage(ballCount, strikeCount);
     }
 
@@ -37,29 +50,30 @@ public class GameService {
     }
 
     private boolean isBall(String userInput, int index) {
+        if (index >= randomNumbers.size()) {
+            throw new IllegalArgumentException("Invalid index: " + index);
+        }
+
         int number = Character.getNumericValue(userInput.charAt(index));
+
         return randomNumbers.contains(number) && !isStrike(userInput, index);
     }
-
-    private boolean isNothing(int ballCount, int strikeCount) {
-        return strikeCount == 0 && ballCount == 0;
-    }
-
     private String getResultMessage(int ballCount, int strikeCount) {
-        if (isNothing(ballCount, strikeCount)) {
+        if (strikeCount == 0 && ballCount == 0) {
             return "낫싱";
         }
 
-        String resultStrikeMessage = "";
-        String resultBallMessage = "";
+        StringBuilder resultMessageBuilder = new StringBuilder();
 
-        if (ballCount > 0) {
-            resultBallMessage = ballCount + "볼";
+        if(ballCount > 0){
+            resultMessageBuilder.append(ballCount).append("볼 ");
         }
 
-        if (strikeCount > 0) {
-            resultStrikeMessage = strikeCount + "스트라이크";
+        if(strikeCount > 0){
+            resultMessageBuilder.append(strikeCount).append("스트라이크");
         }
-        return resultBallMessage +" "+ resultStrikeMessage;
+
+        // remove the trailing space at the end of the message
+        return resultMessageBuilder.toString().trim();
     }
 }
