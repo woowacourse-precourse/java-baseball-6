@@ -1,15 +1,35 @@
 package baseball.domain.player;
 
 import baseball.domain.game.BaseballGameResult;
-import baseball.domain.game.ContinueAnswer;
+import baseball.domain.game.RetryAnswer;
+import baseball.domain.judgement.BaseballJudgement;
 import baseball.domain.judgement.GameState;
-import baseball.domain.judgement.Judgement;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements BaseballPlayer, Judgement {
+/**
+ * 숫자 야구 게임에 참여하는 플레이어의 역할을 수행하는 컴퓨터 대한 개념 객체를 나타내는 클래스입니다.
+ */
+public class Computer implements BaseballPlayer, BaseballJudgement {
+        /**
+         * 컴퓨터가 생성한 숫자열을 문자열 타입으로 반환합니다.
+         *
+         * @param limitLength 숫자열의 제한 길이
+         * @return 컴퓨터가 생성한 숫자열
+         */
+        @Override
+        public String provideLimitedNumber(int limitLength) {
+                return generateNumber(limitLength);
+        }
+
+        /**
+         * 컴퓨터가 제한 길이에 맞는 숫자열을 생성합니다.
+         *
+         * @param limitLength
+         * @return 생성한 숫자열
+         */
         private String generateNumber(int limitLength) {
                 StringBuilder sb = new StringBuilder();
                 List<Integer> pickNumber = new ArrayList<>();
@@ -25,16 +45,24 @@ public class Computer implements BaseballPlayer, Judgement {
                 return sb.toString();
         }
 
+        /**
+         * 컴퓨터는 오직 YES의 응답만을 반환합니다.
+         *
+         * @return YES
+         */
         @Override
-        public String submitThreeNumber(int limitLength) {
-                return generateNumber(limitLength);
+        public RetryAnswer responseRetryPlay() {
+                return RetryAnswer.YES;
         }
 
-        @Override
-        public ContinueAnswer responseContinuePlay() {
-                return ContinueAnswer.YES;
-        }
-
+        /**
+         * 입력 받은 두 숫자열을 기반으로 게임의 결과를 반환합니다.
+         * 컴퓨터가 심판의 역할을 수행합니다.
+         *
+         * @param num1 플레이어 1번의 숫자로 구성된 문자열
+         * @param num2 플레이어 2번의 숫자로 구성된 문자열
+         * @return 3 STRIKE의 경우 FINISH, 그 외의 경우에는 PROGRESS
+         */
         @Override
         public GameState judgementGameState(String num1, String num2) {
                 int strike = countStrike(num1, num2);
@@ -71,6 +99,13 @@ public class Computer implements BaseballPlayer, Judgement {
                 return GameState.PROGRESS;
         }
 
+        /**
+         * 두 플레이어의 숫자열을 기반으로 스트라이크 수를 계산합니다.
+         *
+         * @param num1 플레이어 1번의 숫자로 구성된 문자열
+         * @param num2 플레이어 2번의 숫자로 구성된 문자열
+         * @return 스트라이크 카운트
+         */
         private int countStrike(String num1, String num2) {
                 int strikePoint = 0;
 
@@ -83,6 +118,13 @@ public class Computer implements BaseballPlayer, Judgement {
                 return strikePoint;
         }
 
+        /**
+         * 두 플레이어의 숫자열을 기반으로 볼 수를 계산합니다.
+         *
+         * @param num1 플레이어 1번의 숫자로 구성된 문자열
+         * @param num2 플레이어 2번의 숫자로 구성된 문자열
+         * @return 볼 카운트
+         */
         private int countBall(String num1, String num2) {
                 int ball = 0;
 
