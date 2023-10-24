@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.constants.MessageConstants;
 import baseball.constants.NumberConstants;
+import baseball.views.GameView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import java.util.List;
 
 public class BaseballGameConsole {
     private Validator validator = Validator.getInstance();
+    private GameView gameView = GameView.getInstance();
     private boolean isContinue;
     private List<Integer> hitterSelection;
     private String pitcherSelection;
@@ -17,7 +18,7 @@ public class BaseballGameConsole {
 
 
     void start() {
-        System.out.println(MessageConstants.GAME_START);
+        gameView.start();
         isContinue = true;
 
         while (isContinue) {
@@ -50,7 +51,7 @@ public class BaseballGameConsole {
     }
 
     private void getPitcherSelection() {
-        System.out.print(MessageConstants.REQUEST_NUMBERS_INPUT);
+        gameView.requestNumbersInput();
         pitcherSelection = Console.readLine();
 
         validator.checkValidInput(pitcherSelection);
@@ -73,28 +74,28 @@ public class BaseballGameConsole {
 
     private void printBallCount() {
         if (ballCount.getStrike() == 0 && ballCount.getBall() == 0) {
-            System.out.println("낫싱");
+            gameView.gameResult();
         } else {
-            String message = "";
+            String result = "";
             if (ballCount.getBall() > 0) {
-                message = ballCount.getBall() + "볼";
+                result = ballCount.getBall() + "볼";
             }
             if (ballCount.getStrike() > 0) {
-                message += (message.isEmpty() ? "" : " ") + ballCount.getStrike() + "스트라이크";
+                result += (result.isEmpty() ? "" : " ") + ballCount.getStrike() + "스트라이크";
             }
-            System.out.println(message);
+            gameView.gameResult(result);
         }
     }
 
     private void checkStrikeOut() {
         if (ballCount.getStrike() == NumberConstants.SIZE) {
-            System.out.println(MessageConstants.END_GAME);
+            gameView.end();
             strikeOut = true;
         }
     }
 
     private void checkContinue() {
-        System.out.println(MessageConstants.REQUEST_RESTART_INPUT);
+        gameView.requestRestartInput();
         String continueAnswer = Console.readLine();
 
         validator.checkValidAnswer(continueAnswer);
