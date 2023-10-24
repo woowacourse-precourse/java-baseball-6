@@ -27,7 +27,10 @@ public class Application {
             {
                 System.out.print("숫자를 입력해 주세요 : ");
                 input = Console.readLine();
-
+                if(input.length()!=3)
+                {
+                    throw new IllegalArgumentException();
+                }
                 for(int i=0;i<input.length();i++)
                 {
                     int userNumber = Character.getNumericValue(input.charAt(i));//string의 각 요소를 int로 형변환
@@ -88,6 +91,10 @@ public class Application {
             else if(input.equals("2"))
             {
                 start=false;
+            }
+            else
+            {
+                throw new IllegalArgumentException();
             }
         }
     }
