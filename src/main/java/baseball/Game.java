@@ -23,6 +23,13 @@ public class Game {
     private static final int FIRST_RANGE_NUMBER = 1;
     private static final int LAST_RANGE_NUMBER = 9;
 
+    // ASCII CODE
+    private static final int ASCII_GAME_START = 49;
+    private static final int ASCII_GAME_END = 50;
+
+    private static final int ASCII_FIRST_RANGE_NUMBER = 49;
+    private static final int ASCII_LAST_RANGE_NUMBER = 57;
+
 
     int[] scoreBoard = {0, 0};
     Game() {}
@@ -112,7 +119,7 @@ public class Game {
         }
 
         for(int i = 0; i < 3 ; i++) {
-            if(!(userNumber.substring(i, i+1).charAt(0) >= 49 && userNumber.substring(i, i+1).charAt(0) <= 57)) {
+            if(!(userNumber.substring(i, i+1).charAt(0) >= ASCII_FIRST_RANGE_NUMBER && userNumber.substring(i, i+1).charAt(0) <= ASCII_LAST_RANGE_NUMBER)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -149,7 +156,7 @@ public class Game {
     }
 
     private void validationCheckReGame(String gameFlag) {
-        if(!(gameFlag.charAt(0) == 49 || gameFlag.charAt(0) == 50)) {
+        if(!(gameFlag.charAt(0) == ASCII_GAME_START || gameFlag.charAt(0) == ASCII_GAME_END)) {
             throw new IllegalArgumentException();
         }
     }
