@@ -1,4 +1,4 @@
-package baseball;
+package baseball.business;
 
 import java.util.List;
 

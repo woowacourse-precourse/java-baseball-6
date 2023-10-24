@@ -1,11 +1,10 @@
-package baseball;
+package baseball.business;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO 이걸 클래스 단위로 구분하는게 맞나? 그런 지침이 있나?
 public class NumberMaker {
 
     public List<Integer> makeRandomNumbers() {

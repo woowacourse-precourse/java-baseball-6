@@ -1,4 +1,7 @@
-package baseball;
+package baseball.business;
+
+import baseball.ui.InputManager;
+import baseball.ui.PrintManager;
 
 import java.util.List;
 

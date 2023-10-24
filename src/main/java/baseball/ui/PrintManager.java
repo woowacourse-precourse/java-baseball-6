@@ -1,4 +1,4 @@
-package baseball;
+package baseball.ui;
 
 public class PrintManager {
 
@@ -10,7 +10,6 @@ public class PrintManager {
         System.out.printf("숫자를 입력해주세요 : ");
     }
 
-    //TODO 리펙토링 고민해보기
     public void printResult(int strike, int ball) {
         if (ball == 0 && strike ==0) {
             System.out.println("낫싱");
