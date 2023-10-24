@@ -47,8 +47,8 @@ public class Game {
     private void terminate(){
         this.status = Status.TERMINATED;
     }
-    private void updateGameStatus(Map<String, Integer> basebalLResult){
-        if(basebalLResult.get("strike") == 3) {
+    private void updateGameStatus(Map<String, Integer> baseballResult){
+        if(baseballResult.get("strike") == 3) {
             this.status = Status.FINISH;
             output.printResumeOrNot();
         }
