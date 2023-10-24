@@ -22,8 +22,7 @@ public class Controller {
             inputView.inputGuideMsg();
             List<Integer> input = inputView.inputByConsole();
             GameScore gameScore = answer.calcScore(input);
-            outputView.printResult(gameScore);
-            checkGameDone(gameScore);
+            gameScore.printResult();
             checkGameDone(gameScore, generator);
         } while (flag);
     }
