@@ -42,6 +42,7 @@ public abstract class NumberClassifier {
 
         return ballsCount;
     }
+
     protected abstract boolean validateBallStrike(int playerNumber);
 
     protected abstract boolean validateStrike(int playerNumber, int partnerNumber);

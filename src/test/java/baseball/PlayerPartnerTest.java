@@ -3,6 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -24,20 +25,20 @@ public class PlayerPartnerTest {
             1, 1, 1, 1, 1,
             0, 0, 1, 0, 0};
 
-    static abstract class NumberClassifier {
+    abstract class NumberClassifier {
 
         private int ballCount = 0;
         private int strikeCount = 0;
 
-        protected int getBallCount(){
-            return ballCount;
+        protected int getBallCount() {
+            return this.ballCount;
         }
 
-        protected int getStrikeCount(){
-            return strikeCount;
+        protected int getStrikeCount() {
+            return this.strikeCount;
         }
 
-        protected void writeBallsCount(int playerNumbers, int partnerNumbers) {
+        protected void compareNumbers(int playerNumbers, int partnerNumbers) {
             int[] ballsCount = getBallsCount(playerNumbers, partnerNumbers);
             int allCount = ballsCount[0];
             int strikeCount = ballsCount[1];
@@ -46,31 +47,18 @@ public class PlayerPartnerTest {
             setBallsCount(strikeCount, ballCount);
         }
 
-        private int getBallCount(int allMatchCount, int strikeCount) {
-            if (allMatchCount - strikeCount < 0) {
-                return 0;
-            } else {
-                return allMatchCount - strikeCount;
-            }
-        }
-
-        private void setBallsCount(int strikeCount, int ballCount) {
-            this.strikeCount = strikeCount;
-            this.ballCount = ballCount;
-        }
-
-        private int[] getBallsCount(int playerNumbers, int partnerNumbers){
+        private int[] getBallsCount(int playerNumbers, int partnerNumbers) {
             int[] ballsCount = new int[2];
 
             while (playerNumbers % 10 > 0) {
                 int playerNumber = playerNumbers % 10;
                 int partnerNumber = partnerNumbers % 10;
 
-                if (checkBallStrike(playerNumber)) {
+                if (validateBallStrike(playerNumber)) {
                     ballsCount[0]++;
                 }
 
-                if (checkStrike(playerNumber, partnerNumber)) {
+                if (validateStrike(playerNumber, partnerNumber)) {
                     ballsCount[1]++;
                 }
 
@@ -81,56 +69,70 @@ public class PlayerPartnerTest {
             return ballsCount;
         }
 
-        protected abstract boolean checkStrike(int playerNumber, int partnerNumber);
+        protected abstract boolean validateBallStrike(int playerNumber);
 
-        protected abstract boolean checkBallStrike(int playerNumber);
+        protected abstract boolean validateStrike(int playerNumber, int partnerNumber);
+
+        private int getBallCount(int allCount, int strikeCount) {
+            if (allCount - strikeCount < 0) {
+                return 0;
+            } else {
+                return allCount - strikeCount;
+            }
+        }
+
+        private void setBallsCount(int strikeCount, int ballCount) {
+            this.strikeCount = strikeCount;
+            this.ballCount = ballCount;
+        }
     }
 
-    static class PlayerPartner extends NumberClassifier {
+    class PlayerPartner extends NumberClassifier {
         private int answer = 0;
         private boolean[] answerSheet = new boolean[10];
 
         public PlayerPartner() {
-        }
 
-        // 테스트 필요
-        private void writeAnswer() {
-            // List<Integer> answers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-            List<Integer> answers = 정답들;
-            int multiple = 100;
-
-            for (Integer number : answers) {
-                this.answerSheet[number] = true;
-                this.answer += (number * multiple);
-                multiple /= 10;
-            }
         }
 
         public void startGame() {
             writeAnswer();
 
-            int strikeCount = 0;
-
-            while (isContinue(strikeCount)) {
+            while (isContinue(getStrikeCount())) {
                 int playerNumbers = Player.nextNumberOf(readLine()).getNumber();
-                writeBallsCount(playerNumbers, this.answer);
+                compareNumbers(playerNumbers, this.answer);
 
                 printBallStatus(getStrikeCount(), getBallCount());
             }
         }
 
-        @Override
-        protected boolean checkStrike(int playerNumber, int partnerNumber) {
-            return playerNumber == partnerNumber;
-        }
+        private void writeAnswer() {
+            StringBuffer stringAnswer = new StringBuffer();
 
-        @Override
-        protected boolean checkBallStrike(int playerNumber) {
-            return this.answerSheet[playerNumber];
+            while (stringAnswer.length() < 3) {
+                int number = Randoms.pickNumberInRange(1, 9);
+
+                if (!this.answerSheet[number]) {
+                    this.answerSheet[number] = true;
+                    stringAnswer.append(number);
+                }
+            }
+
+            this.answer = Integer.parseInt(stringAnswer.toString());
         }
 
         private boolean isContinue(int strikeCount) {
             return strikeCount < 3;
+        }
+
+        @Override
+        protected boolean validateBallStrike(int playerNumber) {
+            return this.answerSheet[playerNumber];
+        }
+
+        @Override
+        protected boolean validateStrike(int playerNumber, int partnerNumber) {
+            return playerNumber == partnerNumber;
         }
 
         private void printBallStatus(int strikeCount, int ballCount) {
@@ -155,35 +157,17 @@ public class PlayerPartnerTest {
     @Test
     void 볼스트라이크_확인() {
         PlayerPartner playerPartner = new PlayerPartner();
-
         playerPartner.writeAnswer();
 
         for (int i = 0; i < 볼스트라이크.length; i++) {
             int 플레이어_숫자 = 볼스트라이크[i];
             int 스트라이크개수 = 스트라이크갯수들[i];
             int 볼개수 = 볼갯수들[i];
-            playerPartner.writeBallsCount(플레이어_숫자, playerPartner.answer);
+            playerPartner.compareNumbers(플레이어_숫자, playerPartner.answer);
 
             assertThat(playerPartner.getStrikeCount()).isEqualTo(스트라이크개수);
             assertThat(playerPartner.getBallCount()).isEqualTo(볼개수);
         }
     }
-
-    /*@Test
-    void 볼_확인() {
-        PlayerPartner playerPartner = new PlayerPartner();
-
-        playerPartner.writeAnswer();
-
-        for (int i = 0; i < 볼스트라이크.length; i++) {
-            int 숫자 = 볼스트라이크[i];
-            int 볼개수 = 볼갯수들[i];
-            int 상대방_스트라이크개수 = playerPartner.getStrikeCount(숫자);
-            int 상대방_볼개수 = playerPartner.getBallCount(숫자, 상대방_스트라이크개수);
-
-            assertThat(상대방_볼개수).isEqualTo(볼개수);
-        }
-    }*/
-
 
 }

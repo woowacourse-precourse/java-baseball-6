@@ -8,13 +8,18 @@ import org.junit.jupiter.api.Test;
 public class PlayerTest {
     private final String 문자정상입력 = "123";
     private final int 숫자정상입력 = 123;
-    private final String[] 예외숫자들 = {"113", "ㄱ&`", "-123", "012", "12",
+    private final String[] 예외숫자들 = {
+            "113", "ㄱ&`", "-123", "012", "12",
             "1234", "ㄱ&ㅈ", "1ㄱ2", "ab2", "!$%",
             "A2@", "311"};
 
     static class Player {
         private int number;
         private int[] numbers = new int[10];
+
+        public static Player nextNumberOf(String stringNumber) {
+            return new Player(stringNumber);
+        }
 
         private Player() {
         }
@@ -27,33 +32,37 @@ public class PlayerTest {
             }
         }
 
+        public int getNumber() {
+            return this.number;
+        }
+
         private boolean isCorrectNumber(String stringNumber) {
-            checkOnlyNumber(stringNumber);
-            checkPositiveInt(stringNumber);
-            checkThreeCount(stringNumber);
-            checkDistinct(stringNumber);
+            validateOnlyNumber(stringNumber);
+            validatePositive(stringNumber);
+            validateThreeCount(stringNumber);
+            validateDistinct(stringNumber);
             return true;
         }
 
-        private void checkPositiveInt(String stringNumber) {
-            if (Integer.parseInt(stringNumber) <= 0) {
-                throw new IllegalArgumentException("입력하신 숫자는 정수가 아닙니다.");
-            }
-        }
-
-        private static void checkOnlyNumber(String stringNumber) {
+        private static void validateOnlyNumber(String stringNumber) {
             if (!stringNumber.matches("[1-9]+")) {
                 throw new IllegalArgumentException("입력하신 내용엔 숫자외 값이 포함되었습니다.");
             }
         }
 
-        private void checkThreeCount(String stringNumber) {
+        private void validatePositive(String stringNumber) {
+            if (Integer.parseInt(stringNumber) <= 0) {
+                throw new IllegalArgumentException("입력하신 숫자는 정수가 아닙니다.");
+            }
+        }
+
+        private void validateThreeCount(String stringNumber) {
             if (stringNumber.length() != 3) {
                 throw new IllegalArgumentException("입력하신 숫자는 3개가 아닙니다.");
             }
         }
 
-        private void checkDistinct(String stringNumber) {
+        private void validateDistinct(String stringNumber) {
             for (int i = 0; i < 3; i++) {
                 int number = stringNumber.charAt(i) - '0';
                 this.numbers[number]++;
@@ -62,14 +71,6 @@ public class PlayerTest {
                     throw new IllegalArgumentException("입력하신 숫자는 중복되었습니다.");
                 }
             }
-        }
-
-        public static Player nextNumberOf(String stringNumber) {
-            return new Player(stringNumber);
-        }
-
-        public int getNumber() {
-            return this.number;
         }
     }
 

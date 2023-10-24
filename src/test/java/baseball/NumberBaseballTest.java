@@ -51,9 +51,9 @@ public class NumberBaseballTest extends NsTest {
     }
 
     @Test
-    void 재시작후_종료(){
-        assertSimpleTest(()->{
-            run( 재시작명령, 종료명령);
+    void 재시작후_종료() {
+        assertSimpleTest(() -> {
+            run(재시작명령, 종료명령);
         });
     }
 
