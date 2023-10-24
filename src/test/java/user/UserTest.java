@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserTest {
 
     @Test
-    @DisplayName("사용자의 숫자가 정확히 입력되었는지 확인")
+    @DisplayName("사용자가 입력한 값이 올바르게 변환되었는지 확인")
     void 입력_테스트(){
         //given
         String input="123";
@@ -31,6 +31,20 @@ class UserTest {
 
         //then
         Assertions.assertThat(userBalls.getBalls()).isEqualTo(balls.getBalls());
+    }
+
+    @Test
+    @DisplayName("유저가 3개 이상의 숫자를 입력했을 때 에러가 발생하는지 확인")
+    void 오류발생_테스트(){
+        //given
+        String userInput="4567";
+        User user=new User();
+
+        //then
+        Assertions.assertThatThrownBy(()->user.makeUserNumber(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3개");
+
     }
 
 
