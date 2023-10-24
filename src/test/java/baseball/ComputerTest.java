@@ -9,7 +9,7 @@ public class ComputerTest {
     @BeforeAll
     static void setup() {
         computer = new Computer();
-        computer.makeNumber();
+        computer.makeNumberSet();
     }
 
     @Test
