@@ -11,15 +11,21 @@ public class GameResult {
 
         int ball = total - strike;
 
-        if (total == 0) {
-            return "낫싱" ;
-        }
-        else if (strike == 0) {
-            return  ball+"볼";
-        } else if (ball == 0) {
-            return strike+"스트라이크";
-        }
-        return ball+"볼 "+strike+"스트라이크";
-    }
+        String score;
 
+        if (total == 0) { // 일치하는 수가 없는 경우
+            score = "낫싱";
+        } else if (ball == 0) { // 볼은 없지만 스트라이크만 존재하는 경우
+            score = strike + "스트라이크";
+            System.out.println("게임 종료");
+            System.out.println("1볼 1스트라이크");
+        } else if (strike == 0) {
+            score = ball + "볼";
+        } else {
+            score = ball + "볼 " + strike + "스트라이크";
+
+        }
+        return score;
+    }
 }
+

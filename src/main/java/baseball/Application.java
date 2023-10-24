@@ -18,16 +18,15 @@ public class Application {
         List<Integer> player;
 
         while (flag) {
+            // System.out.println(computer);
             player = userNumber.player();
+
 
             String result = gameResult.score(computer, player);
             System.out.println(result);
 
             if (result.equals("3스트라이크")) {
                 flag = restartGame.restart();
-                if (flag) {
-                    computer = computerNumber.randomNumber();
-                }
             }
         }
     }
