@@ -6,7 +6,7 @@ public class UserInterface {
     private static String user;
 
 
-    public static String getUser() {
+    public static String requestUserInput() {
         return Console.readLine();
     }
 

@@ -10,7 +10,7 @@ public class ExceptionHandler {
     }
 
 
-    public void handleExecute(String readLine) {
+    public static void handleExecute(String readLine) {
         String outOfRangeMessage = INPUT_THREE_NUMBER.getMessage();
         handleNullOrInvalid(readLine, outOfRangeMessage);
     }
@@ -36,19 +36,4 @@ public class ExceptionHandler {
             throw new IllegalArgumentException(invalidMessage);
         }
     }
-
-    public void handleGameResult(String response, boolean isGameActive) {
-
-        try {
-
-            int input = Integer.parseInt(response);
-            if (input != 1) {
-                isGameActive = false;
-                UserInterface.printMessage(Message.EXIT);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
 }

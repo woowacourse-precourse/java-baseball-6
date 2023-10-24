@@ -1,69 +1,82 @@
 package baseball;
 
-import static baseball.Message.INPUT_RIGHT_NUMBER;
-import static baseball.Message.INPUT_THREE_NUMBER;
+import static baseball.Message.CHOICE;
+import static baseball.Message.COMPLETE;
+import static baseball.Message.DESTINATION;
+import static baseball.Message.EXIT;
+import static baseball.Message.RESTART;
 
 import java.util.List;
 
+
 public class GameManager {
 
-    private boolean isGameActive;
+    private boolean isNewGame = true;
 
-    public GameManager() {
-        this.isGameActive = true;
+    public boolean isNewGame() {
+        return isNewGame;
     }
 
     public void run() {
         UserInterface.printMessage(Message.START);
 
-        while(isGameActive) {
-            playGame();
-            handleGameResult();
+        while (isNewGame) {
+            if (isNewGame) {
+                playGame();
+                chooseNewGame();
+            }
+        }
+    }
+
+    private void chooseNewGame() {
+        System.out.println(CHOICE.getMessage());
+        String response = UserInterface.requestUserInput();
+        ExceptionHandler.handleExit(response);
+
+        if (response.equals(RESTART.getMessage())) {
+            isNewGame = true;
+        }
+
+        if (response.equals(COMPLETE.getMessage())) {
+            isNewGame = false;
+            return;
         }
     }
 
     private void playGame() {
+        String inputResult = getInputResult();
+
+        if (inputResult.equals(DESTINATION.getMessage())) {
+            System.out.println(EXIT.getMessage());
+        }
+
+    }
+
+    private String getInputResult() {
+        String userInput = getRequest();
+        Computer computer = new Computer();
+
+        String inputResult = compareNumbers(userInput, computer.generateComputer());
+        System.out.println(inputResult);
+        return inputResult;
+    }
+
+    private static String getRequest() {
         UserInterface.printMessage(Message.INPUT);
-        String user = UserInterface.getUser();
-
-
-        try {
-            validateUserInput(user);
-
-            List<Integer> computer = Computer.generateComputer();
-            Comparing comparing = new Comparing();
-            Result result = comparing.compareNumbers(user, computer);
-            String resultForUi = ResultMapper.getResult(result.getEqualsNumber() , result.getEqualsPosition());
-
-            System.out.println(resultForUi);
-
-        } catch (IllegalArgumentException e) {
-            System.out.println(INPUT_THREE_NUMBER.getMessage());
-        }
+        String userInput = UserInterface.requestUserInput();
+        System.out.println(userInput);
+        ExceptionHandler.handleExecute(userInput);
+        return userInput;
     }
 
-    private void validateUserInput(String user) {
-        ExceptionHandler exceptionHandler = new ExceptionHandler(user);
-        exceptionHandler.handleExecute(user);
+    private String compareNumbers(String readLine, List<Integer> computer) {
+        Comparing comparing = new Comparing();
+        Result result = comparing.compareNumbers(readLine, computer);
+        int equalsNumber = result.getEqualsNumber();
+        int equalsPosition = result.getEqualsPosition();
+        ResultMapper resultMapper = new ResultMapper();
+
+        return resultMapper.getResult(equalsNumber, equalsPosition);
     }
-
-    public void handleGameResult() {
-        UserInterface.printMessage(Message.EXIT);
-        String response = UserInterface.getUser();
-        ExceptionHandler exceptionHandler = new ExceptionHandler(response);
-
-        try {
-            exceptionHandler.handleExit(response);
-            int input = Integer.parseInt(response);
-
-            if (input != 2) {
-                isGameActive = false;
-                UserInterface.printMessage(Message.EXIT);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(INPUT_RIGHT_NUMBER.getMessage());
-
-        }
-    }
-
 }
+

@@ -19,7 +19,7 @@ class UserInterfaceTest {
         System.setIn(readLine);
 
         String expect = "926";
-        String actual = UserInterface.getUser();
+        String actual = UserInterface.requestUserInput();
 
         assertEquals(expect, actual);
     }
