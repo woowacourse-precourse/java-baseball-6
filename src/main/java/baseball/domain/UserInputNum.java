@@ -24,14 +24,12 @@ public class UserInputNum {
         checkZero(playerNum);
     }
 
-    //세 자리 숫자임을 검증 함수
     private static void isThreeNumbers(List<String> playerNum){
         if(playerNum.size() != BASEBALL_SIZE){
             throw new IllegalArgumentException("입력된 숫자가 3자리가 아닙니다. 게임을 종료합니다");
         }
     }
 
-    //중복된 값이 있는지 검증 함수
     private static void isRepeatedNumbers(List<String> playerNum){
         Set<String> numset = new HashSet<>();
         for(String num : playerNum){
@@ -42,7 +40,6 @@ public class UserInputNum {
         }
     }
 
-    //입력 값이 숫자인지 검증 함수
     private static void isDigitNumbers(List<String> playerNum){
         try{
             for(String number : playerNum){
@@ -53,7 +50,6 @@ public class UserInputNum {
         }
     }
 
-    //입력 값에 0이 있는지 검증 함수
     private static void checkZero(List<String> playerNum){
         for(String number : playerNum){
             int num = Integer.parseInt(number);
