@@ -109,6 +109,16 @@ public class Application {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요. 게임 종료");
         }
     }
+
+    // 입력 값 정수형 변환 메서드
+    private int[] parseInputToNumbers(String playerInput) {
+        int[] playerNumbers = new int[LENGTH];
+        for (int i = 0; i < LENGTH; i++) {
+            char playerNumber = playerInput.charAt(i);
+            playerNumbers[i] = Character.getNumericValue(playerNumber);
+        }
+        return playerNumbers;
+    }
 //        int[] playerNumbers = new int[LENGTH];
 //        System.out.println("숫자를 입력해주세요 : ");
 //        String input = Console.readLine();
