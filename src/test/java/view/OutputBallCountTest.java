@@ -24,7 +24,7 @@ public class OutputBallCountTest {
     @Test
     void 낫싱출력_테스트(){
         //given
-        int[] count = {3,0};
+        int[] count = {0,0};
         OutputBallCount print = new OutputBallCount();
         //when
         print.printCount(count);
