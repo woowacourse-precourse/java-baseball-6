@@ -2,6 +2,8 @@ package baseball.utils;
 
 import static baseball.utils.Constants.EXIT_INPUT;
 import static baseball.utils.Constants.MAX_INPUT_LENGTH;
+import static baseball.utils.Constants.MAX_INPUT_RANGE;
+import static baseball.utils.Constants.MIN_INPUT_RANGE;
 import static baseball.utils.Constants.RESTART_INPUT;
 
 import java.util.List;
@@ -51,7 +53,8 @@ public final class InputValidation {
 
     public static void validateInputRange(String input) {
         int number = Integer.parseInt(input);
-        if (number < 1 || number > 9) {
+        boolean isOutOfRange = (number < MIN_INPUT_RANGE || number > MAX_INPUT_RANGE);
+        if (isOutOfRange) {
             throw new IllegalArgumentException(INVALID_INPUT_RANGE);
         }
     }
