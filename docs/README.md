@@ -50,7 +50,7 @@
       - [X] strike 잘 나오는지!
       - [X] ball 잘 나오는지!
     - [ ] 각 case 별 에러 잘 나오는지 확인!
-      - [ ] user_number 입력에 따른 테스트
+      - [X] user_number 입력에 따른 테스트
       - [ ] restart_number 입력에 따른 테스트
 
 ---
