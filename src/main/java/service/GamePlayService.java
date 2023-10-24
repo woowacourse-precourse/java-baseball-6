@@ -7,6 +7,7 @@ import java.util.List;
 import model.Computer;
 import model.User;
 import util.ValidationCheck;
+import view.GameScoreView;
 import view.GameView;
 
 public class GamePlayService {
@@ -21,6 +22,7 @@ public class GamePlayService {
     private final GameView gameView = new GameView();
     private final ValidationCheck validationCheck = new ValidationCheck();
     private final GameNumberCheckService gameNumberCheckService = new GameNumberCheckService();
+    private final GameScoreView gameScoreView = new GameScoreView();
 
     private List<Integer> countStrikeBall = new ArrayList<>();
     private List<Integer> countStrikeBallList = new ArrayList<>();
@@ -48,7 +50,10 @@ public class GamePlayService {
         countStrikeBall = gameNumberCheckService.compareGameNumber(userNumbers,
                 computer.getComputerNumbers());
 
-        System.out.println("############  " + countStrikeBall);
+        // 7. 3 스트라이크 발생시 게임 종료. 재시작 여부 확인
+        if (countStrikeBall.get(STRIKE_COUNT_INDEX) == STRIKE_COUNT_THREE) {
+            gameScoreView.completeThreeStrikeScore();
+        }
 
     }
 }
