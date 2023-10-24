@@ -23,12 +23,7 @@ public class Application {
                 String Numbers = Console.readLine();
 
                 List<Integer> user = new ArrayList<>();
-                for (int i = 0; i < Numbers.length(); i++) {
-                    int userNumber = Numbers.charAt(i) - '0';
-                    userValid(user, userNumber);
-                    user.add(userNumber);
-
-                }
+                userNumberList(user, Numbers);
 
                 if (!(user.size() == 3)) {
                     throw new IllegalArgumentException();
@@ -78,6 +73,14 @@ public class Application {
             }
         }
 
+    }
+    public static void userNumberList(List<Integer> user,String Numbers){
+        for (int i = 0; i < Numbers.length(); i++) {
+            int userNumber = Numbers.charAt(i) - '0';
+            userValid(user, userNumber);
+            user.add(userNumber);
+
+        }
     }
 
     public static void userValid(List<Integer> user, int userNumber){
