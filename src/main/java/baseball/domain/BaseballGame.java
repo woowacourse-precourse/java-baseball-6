@@ -32,6 +32,6 @@ public class BaseballGame {
         }
         ball -= strike;
 
-        return Result.of(strike, ball);
+        return new Result(strike, ball);
     }
 }
