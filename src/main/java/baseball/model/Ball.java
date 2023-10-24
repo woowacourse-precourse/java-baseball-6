@@ -7,8 +7,8 @@ import static baseball.util.AppConstants.OUT_OF_RANGE_MESSAGE;
 import java.util.Objects;
 
 public class Ball {
-    private static final char CHAR_MIN_NUMBER = '1';
-    private static final char CHAR_MAX_NUMBER = '9';
+    private static final char CHAR_MIN_NUMBER = (char) INT_MIN_NUMBER;
+    private static final char CHAR_MAX_NUMBER = (char) INT_MAX_NUMBER;
 
     private final Integer number;
 
