@@ -2,6 +2,8 @@ package baseball.model;
 
 import static baseball.constant.Constants.GAME_STOP_MESSAGE;
 import static baseball.constant.Constants.INPUT_MAX_SIZE;
+import static baseball.constant.Constants.INPUT_NUM_MAX;
+import static baseball.constant.Constants.INPUT_NUM_MIN;
 import static baseball.constant.Constants.INPUT_PREDICTED_MESSAGE;
 
 import baseball.io.InputHandler;
@@ -17,7 +19,6 @@ public class Baseball implements Game {
     private final List<Integer> computer;
     private final InputHandler inputHandler;
     private final OutputHandler outputHandler;
-    private Boolean status;
 
     public Baseball(InputHandler inputHandler, OutputHandler outputHandler) {
         computer = new ArrayList<>();
@@ -27,9 +28,8 @@ public class Baseball implements Game {
 
     @Override
     public void initGame() {
-        status = true;
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < INPUT_MAX_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(INPUT_NUM_MIN, INPUT_NUM_MAX);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -39,7 +39,7 @@ public class Baseball implements Game {
     @Override
     public void playGame() {
         ResultScoreBoard resultScore = new ResultScoreBoard(0, 0);
-        while (!checkThreeStrike(resultScore.strike())) {
+        while (!isFullStrike(resultScore.strike())) {
             System.out.print(INPUT_PREDICTED_MESSAGE);
             int input = inputHandler.scanInteger();
             List<Integer> expectedNums = inputHandler.inputToExpectedNumber(input);
@@ -63,7 +63,7 @@ public class Baseball implements Game {
         return new ResultScoreBoard(strike, ball);
     }
 
-    private Boolean checkThreeStrike(int strike) {
-        return strike == 3;
+    private Boolean isFullStrike(int strike) {
+        return strike == INPUT_MAX_SIZE;
     }
 }
