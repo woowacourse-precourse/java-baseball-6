@@ -21,6 +21,7 @@ public class Game {
 
         while (restartOrExitNumber.equals(GameConstant.RESTART_GAME.number)) {
             initGame();
+            System.out.println(computer);
             playGame();
             restartOrExitNumber = gameOver();
         }
@@ -35,7 +36,7 @@ public class Game {
 
         do {
             Print.showRestartOrExitInput();
-            restartOrExitNumber = readLine();
+            restartOrExitNumber = readLine().trim();
         }
         while (!Validation.checkRestartOrExitNumber(restartOrExitNumber));
 
