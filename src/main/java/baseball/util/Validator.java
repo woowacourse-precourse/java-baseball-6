@@ -29,17 +29,15 @@ public class Validator {
         for (int i = 0; i < input.length(); i++) {
             int digit = input.charAt(i) - '0';
             // 1~9 사이 수가 아니라면
-            if (digit < Constant.MIN_NUMBER || digit > Constant.MAX_NUMBER) {
+            if (digit < Constant.MIN_NUMBER || digit > Constant.MAX_NUMBER)
                 return false;
-            }
         }
         return true;
     }
 
     public Boolean quitInputValidate(String input) {
-        if (!input.equals(Constant.CONTINUE_INPUT) && !input.equals(Constant.QUIT_INPUT)) {
-            return false;
-        }
-        return true;
+        if (Constant.CONTINUE_INPUT.equals(input) || Constant.QUIT_INPUT.equals(input))
+            return true;
+        return false;
     }
 }
