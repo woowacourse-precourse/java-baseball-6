@@ -27,6 +27,7 @@ public class GameController {
     private void proceedGame() {
         Boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
+            outputView.requestInputNumber();
             List<Integer> inputNumbers = playerController.readAndValidateInputNumbers();
             computerController.provideHint(inputNumbers);
             isCorrectAnswer = computerController.checkCorrectAnswer();
