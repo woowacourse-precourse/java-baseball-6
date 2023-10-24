@@ -14,7 +14,7 @@ public class UserInputValidator {
 
             if (input.length() != 3) {
                 System.out.println("입력은 3자리 숫자여야 합니다.");
-                continue;
+                throw new IllegalArgumentException("잘못 입력한 값입니다.");
             }
 
             try {
