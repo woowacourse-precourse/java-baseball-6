@@ -18,18 +18,23 @@ public class UserInputOutput {
         String input;
         do {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            input = scanner.nextLine();
+            input = readUserInputAsString();
         } while (!isValidRestartOrQuitInput(input));
         return input;
     }
 
     private static int readUserInput() {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("숫자(양수)를 입력해야 합니다.");
-            return -1;
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("숫자(양수)를 입력해야 합니다.");
+            }
         }
+    }
+
+    private static String readUserInputAsString() {
+        return scanner.nextLine();
     }
 
     private static boolean isValidUserNumber(int number) {

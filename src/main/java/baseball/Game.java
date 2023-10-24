@@ -28,6 +28,7 @@ public class Game {
 
         while (!quit) {
             try {
+                System.out.print("숫자를 입력해주세요 : ");
                 int userNumber;
                 try {
                     userNumber = scanner.nextInt();
@@ -36,18 +37,21 @@ public class Game {
                 }
 
                 if (userNumber < 100 || userNumber > 999) {
-                    throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
+                    throw new IllegalArgumentException("3자리의 수를 입력해야 합니다.");
                 }
 
                 if (!isUniqueDigits(userNumber)) {
-                    throw new IllegalArgumentException("중복된 숫자가 없어야 합니다.");
+                    throw new IllegalArgumentException("서로 다른 숫자만 입력해야 합니다.");
                 }
+
+                scanner.nextLine();
 
                 separateNumberToDigits(userNumber);
                 calculateBallAndStrike();
                 displayBallAndStrike();
                 if (strike == NUMBER_LENGTH) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String input = scanner.nextLine();
 
                     if (!input.equals(INPUT_RESTART) && !input.equals(INPUT_QUIT)) {
@@ -64,8 +68,23 @@ public class Game {
     }
 
     private void initializeRandomNumber() {
-        randomNumber = RandomNumberGenerator.generateRandomNumber(100, 999);
+        randomNumber = RandomNumberGenerator.generateRandomNumber(100, 899);
         randomDigits = NumberProcessor.getDigits(randomNumber);
+    }
+
+    private boolean isUniqueDigits(int number) {
+        int[] digits = new int[10];
+        int count = 0;
+        while (number > 0) {
+            int digit = number % 10;
+            if (digits[digit] > 0) {
+                return false;
+            }
+            digits[digit]++;
+            count++;
+            number /= 10;
+        }
+        return count == NUMBER_LENGTH;
     }
 
     private void separateNumberToDigits(int number) {
@@ -100,20 +119,5 @@ public class Game {
         } else {
             System.out.println("1 또는 2를 입력하세요.");
         }
-    }
-
-    private boolean isUniqueDigits(int number) {
-        int[] digits = new int[10];
-        int count = 0;
-        while (number > 0) {
-            int digit = number % 10;
-            if (digits[digit] > 0) {
-                return false;
-            }
-            digits[digit]++;
-            count++;
-            number /= 10;
-        }
-        return count == NUMBER_LENGTH;
     }
 }
