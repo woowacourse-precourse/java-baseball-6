@@ -19,7 +19,6 @@ public class GameController {
 
     Computer computer = new Computer();
     Player player = new Player();
-    ComputerController computerController = new ComputerController();
     GameView gameView = new GameView();
     PlayerAnswer playerAnswer = new PlayerAnswer();
 
