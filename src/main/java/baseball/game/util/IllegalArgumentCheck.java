@@ -23,4 +23,13 @@ public class IllegalArgumentCheck {
             }
         }
     }
+
+    public void checkArgumentWrongAnswer(String inputAnswer){
+        if(inputAnswer.length() != 1){
+            throw new IllegalArgumentException();
+        }
+        if(inputAnswer.charAt(0) != '1' && inputAnswer.charAt(0) != '2' ){
+            throw new IllegalArgumentException();
+        }
+    }
 }

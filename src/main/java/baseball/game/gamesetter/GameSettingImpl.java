@@ -1,9 +1,12 @@
 package baseball.game.gamesetter;
 
 import baseball.AppConfig;
+import baseball.GameStatus;
 import baseball.game.CheckingBoard;
 import baseball.game.Score;
-import baseball.game.gamesetter.GameSetting;
+import baseball.game.displayboard.DisplayBoard;
+import baseball.game.util.IllegalArgumentCheck;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 
@@ -11,9 +14,10 @@ import static baseball.AppConfig.DIGIT_NUM;
 
 public class GameSettingImpl implements GameSetting {
     AppConfig appConfig = new AppConfig();
+    DisplayBoard displayBoard = appConfig.displayBoard();
     @Override
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        displayBoard.displayGameStart();
     }
 
     @Override
@@ -34,24 +38,32 @@ public class GameSettingImpl implements GameSetting {
 
         ball = appConfig.pitcher().pitch();
 
-        System.out.print("숫자를 입력해주세요 : ");
-        bat = appConfig.hitter().swing();
-        checkingBoard = appConfig.umpire().checkStrike(ball, bat, checkingBoard);
-        checkingBoard = appConfig.umpire().checkBall(ball, bat, checkingBoard);
-        score = appConfig.umpire().judge(checkingBoard, score);
-
-        if(score.getBallCount() > 0){
-            System.out.print(score.getBallCount());
-        }
-        if(score.getStrikeCount() > 0){
-            System.out.print(score.getStrikeCount());
+        while (true) {
+            displayBoard.displayRequestNum();
+            bat = appConfig.hitter().swing();
+            checkingBoard = appConfig.umpire().checkStrike(ball, bat, checkingBoard);
+            checkingBoard = appConfig.umpire().checkBall(ball, bat, checkingBoard);
+            score = appConfig.umpire().judge(checkingBoard, score);
+            displayBoard.displayScore(score);
+            if(score.isHomerunCount()){
+                break;
+            }
+            score.initAll();
+            checkingBoard.initAll();
         }
 
     }
 
     @Override
-    public void questionRestartGame() {
-
+    public GameStatus questionRestartGame(GameStatus gameStatus) {
+        IllegalArgumentCheck illegalArgumentCheck = new IllegalArgumentCheck();
+        displayBoard.displayQuestionRestart();
+        String inputAnswer = Console.readLine();
+        illegalArgumentCheck.checkArgumentWrongAnswer(inputAnswer);
+        if(inputAnswer.charAt(0) == '2'){
+            gameStatus = GameStatus.STOP;
+        }
+        return gameStatus;
     }
 
     @Override

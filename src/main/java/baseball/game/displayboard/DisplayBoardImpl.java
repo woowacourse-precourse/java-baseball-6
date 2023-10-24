@@ -18,9 +18,11 @@ public class DisplayBoardImpl implements DisplayBoard {
         if (score.getBallCount() > 0) {
             System.out.print(score.getBallCount());
             System.out.print("볼");
+            if(score.getStrikeCount() > 0){
+                System.out.print(" ");
+            }
         }
         if (score.getStrikeCount() > 0) {
-            System.out.print(" ");
             System.out.print(score.getStrikeCount());
             System.out.print("스트라이크");
         }
