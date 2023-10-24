@@ -1,32 +1,72 @@
 ## 기능 구현 목록
-void startGame()  
-: 게임 시작 멘트 출력  
+<br>
 
-int inputNumber()  
-: int num = 사용자로부터 숫자 입력 받기  
-: return checkNumber(num)  
+### class BaseballGameManager implements GameManager
 
-int checkNumber(int num)  
-: 숫자 검증하기  
-: 올바르지 않으면 IllegalArgumentException  
-: return num  
- 
-void printHint(int num)  
-: 입력 값에 대한 힌트를 출력하기  
+void startGameProcess()  
+: 게임 프로세스를 제어하는 뼈대이다.  
+: 큰 역할은, 게임 객체를 생성하는 것이다.  
+
+<br>
+
+---
+
+### class BaseballGame implements Game
+
+<br>
+
+**∨ 사용자의 '게임 한 판'에 대한 메서드**  
+void startAnnounce()  
+: 최초 게임 시작시, 시작 멘트를 외친다.  
 
 int generateAnswerNumber()  
-: 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)   
-: return 생성한 세자리 양수 
+: 컴퓨터가 정답 숫자를 생성한다.  
 
-int getOptionNumber(String num)  
-: 사용자 입력으로부터 옵션 선택 번호 검증  
-: 올바르지 않으면 IllegalArgumentException  
-: return num  
+void playGame()  
+: '게임 한 판'을 수행한다.   
 
-boolean isContinue(int option)
-: option값 유효성 검증 후
-: return option이 1이면 true, 2이면 false
+boolean isContinue()  
+: 사용자가 게임을 계속 할 것인지 선택한다.  
 
-boolean isDuplicated(String numberString)  
-: 중복 숫자가 존재하는지 검증  
-: return 중복 존재시 true  
+<br>
+
+**∨ 사용자의 숫자 입력 시도 1회에서 호출되는 메서드**
+
+boolean getResult()  
+: 사용자의 숫자 입력 시도 1회에 대해, 성공/실패의 힌트를 제공한다.  
+: return 성공/실패 여부  
+
+int countStrike()  
+: return 스트라이크 개수    
+
+int countBall()  
+: return 볼 개수  
+
+<br>
+
+**∨ 사용자 숫자 입력 관련 메서드**  
+
+int inputNumber()  
+: 사용자로부터 올바른 숫자 입력을 받는다.
+
+int checkInputNumber()    
+: 사용자가 입력한 숫자의 유효성을 검증한다.  
+: 검증 실패시 IllegalArgumentException을 일으킨다.  
+
+다음 4가지의 검증 메서드는 IllegalArgumentException을 발생시켜 checkInputNumber 메서드에게 넘긴다.
+
+    **검증1**  
+    int parseNumber()  
+    : 사용자가 입력한 숫자문자열을 숫자로 변환한다.  
+    
+    **검증2**  
+    void checkInputLength()  
+    : 사용자가 입력한 숫자문자열의 길이는 3이어야 한다.  
+    
+    **검증3**  
+    void checkInvalidNumber()  
+    : 사용자가 입력한 숫자문자열이 0을 포함하지 않아야 한다.  
+    
+    **검증4**  
+    void checkDuplicated()  
+    : 사용자가 입력한 숫자문자열에서 중복숫자가 존재하지 않아야 한다.  
