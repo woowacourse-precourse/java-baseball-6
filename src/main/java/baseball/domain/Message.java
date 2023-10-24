@@ -22,6 +22,6 @@ public class Message {
     }
 
     public static String expire() {
-        return "게임 종료";
+        return "프로그램을 종료합니다.";
     }
 }
