@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,10 @@ public class BaseBallGame {
 
         List<Integer> computer = createRandomNumber();
 
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> input = stringToListInt(Console.readLine());
+
+
     }
 
     /**
@@ -38,6 +43,22 @@ public class BaseBallGame {
             }
         }
 
+        return list;
+    }
+
+    /**
+     * 문자열을 List<Integer> 타입으로 변경
+     * @param str
+     * @return List<Integer>타입의 숫자
+     */
+    private static List<Integer> stringToListInt(String str) {
+        List<Integer> list = new ArrayList<>();
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) {
+                int digit = Character.getNumericValue(c);
+                list.add(digit);
+            }
+        }
         return list;
     }
 
