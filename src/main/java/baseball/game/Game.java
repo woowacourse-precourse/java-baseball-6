@@ -1,6 +1,6 @@
 package baseball.game;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     private Inning inning;
@@ -38,8 +38,7 @@ public class Game {
     }
 
     private String inputNumber() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        return Console.readLine();
     }
 
     private void validateInput(int inputNumber) {

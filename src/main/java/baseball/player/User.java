@@ -2,7 +2,7 @@ package baseball.player;
 
 import baseball.util.Number;
 import baseball.util.Result;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public final class User extends Player {
 
@@ -41,9 +41,7 @@ public final class User extends Player {
 
     private String[] inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        Scanner scanner = new Scanner(System.in);
-
-        return scanner.nextLine().split("");
+        return Console.readLine().split("");
     }
 
     @Override
