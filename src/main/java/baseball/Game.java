@@ -9,11 +9,11 @@ import baseball.global.util.RandomUtil;
 public class Game extends GameController {
 
     private List<Character> answer;
-    private boolean terminate;
+    private int terminate;
 
     Game() {
         System.out.println(Announcement.GAME_START);
-        this.terminate = false;
+        this.terminate = GAME_AGAIN_CODE;
     }
 
     // 게임 진행
@@ -29,10 +29,10 @@ public class Game extends GameController {
 
         System.out.println(Announcement.GAME_WIN);
 
-        this.terminate = checkTerminate();
+        this.terminate = getTerminateInput();
     }
 
-    public boolean getTerminate() {
-        return this.terminate;
+    public boolean isTerminate() {
+        return this.terminate == GAME_TERMINATE_CODE;
     }
 }

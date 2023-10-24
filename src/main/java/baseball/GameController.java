@@ -14,16 +14,10 @@ public class GameController {
     public static final int GAME_AGAIN_CODE = 1;
     public static final int GAME_TERMINATE_CODE = 2;
 
-    // 안내 문구 출력 후 입력 받기
-    private static String getInputWithAnnounce(String announcement) {
-        System.out.print(announcement);
-        return Console.readLine();
-    }
-
     // 입력 받고 올바른 입력인지 확인
     public static String getInGameInput() {
-        String input = getInputWithAnnounce(Announcement.IN_GAME);
-        return InputValidator.inGameInput(input);
+        System.out.print(Announcement.IN_GAME);
+        return InputValidator.inGameInput(Console.readLine());
     }
 
     // 받은 입력의 결과 기록
@@ -68,9 +62,8 @@ public class GameController {
     }
 
     // 게임 종료 여부 체크
-    public static boolean checkTerminate() {
-        String input = getInputWithAnnounce(Announcement.GAME_TERMINATE);
-        Integer code = InputValidator.terminateInput(input);
-        return code == GAME_TERMINATE_CODE;
+    public static Integer getTerminateInput() {
+        System.out.println(Announcement.GAME_TERMINATE);
+        return InputValidator.terminateInput(Console.readLine());
     }
 }

@@ -7,7 +7,7 @@ public class Announcement {
     public static final String IN_GAME = "숫자를 입력하세요 : ";
     public static final String GAME_WIN = Game.INPUT_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String GAME_TERMINATE = 
-            "게임을 새로 시작하려면 " + Game.GAME_AGAIN_CODE + ", 종료하려면 " + Game.GAME_TERMINATE_CODE + "를 입력하세요.\n";
+            "게임을 새로 시작하려면 " + Game.GAME_AGAIN_CODE + ", 종료하려면 " + Game.GAME_TERMINATE_CODE + "를 입력하세요.";
     
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
