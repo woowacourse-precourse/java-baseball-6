@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomValue {
+public class RandomNumber {
 
     List<Integer> randomNumber = new ArrayList<>();
 

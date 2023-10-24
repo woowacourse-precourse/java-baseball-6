@@ -5,27 +5,31 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static java.lang.Integer.parseInt;
+
 public class Game {
 
-    RandomValue randomValue = new RandomValue();
-    String start = "1";
-    List<Integer> userInputList = new ArrayList<>();
+    RandomNumber randomNumber = new RandomNumber();
+    int start = 1;
+    List<Integer> userInputList = new ArrayList<>(3);
     String[] inputs = new String[3];
     Decision decision = new Decision();
 
     public void play() {
 
-        List<Integer> answer = randomValue.createRandomNumber();
+        List<Integer> answer = randomNumber.createRandomNumber();
 
-        while(!start.equals("2")) {
-            System.out.println("answer = " + answer);
+        while(start != 2) {
             System.out.print("숫자를 입력해주세요 : ");
+
             try {
                 String inputNumber = Console.readLine();
+                if(inputNumber.length() != 3) throw new IllegalArgumentException("잘못된 입력입니다. 3자리 숫자를 입력하세요.");
+
                 inputs = inputNumber.split("");
 
                 for(int i=0; i<3; i++) {
-                    userInputList.add(i, Integer.parseInt(inputs[i]));
+                    userInputList.add(i, parseInt(inputs[i]));
                 }
 
                 int countStrike = decision.countStrike(userInputList, answer);
@@ -35,13 +39,12 @@ public class Game {
                 if(countStrike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    start = Console.readLine();
+                    start = parseInt(Console.readLine());
 
-                    if(start.equals("1")) answer = randomValue.createRandomNumber();
+                    if(start == 1) answer = randomNumber.createRandomNumber();
                 }
-
             } catch (IllegalArgumentException e) {
-                throw new IllegalStateException("입력값이 잘못되었습니다. 게임을 종료합니다.");
+                throw new IllegalArgumentException("입력값이 잘못되었습니다. 게임을 종료합니다.");
             }
 
         }
