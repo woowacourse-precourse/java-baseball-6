@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
-  public static final int INPUT_SIZE = 3;
   public static final int TRUE_NUMBER = 1;
-  public static final int FALSE_NUMBER = 2;
 
+  private Vaildate vaildate = Vaildate.getInstance();;
 
   /**
    * 사용자에게 서로 다른 숫자 3개를 입력
@@ -23,10 +22,7 @@ public class Player {
 
   public List<Integer> getInput(String input) throws IllegalArgumentException {
     String[] inputSplit = input.split("");
-
-    if (inputSplit.length != INPUT_SIZE) {
-      throw new IllegalArgumentException();
-    }
+    vaildate.validate(inputSplit);
 
     List<Integer> inputNumbers = new ArrayList<>();
     for (String s : inputSplit) {
@@ -39,9 +35,7 @@ public class Player {
 
   private void checkDuplicationNumber(List<Integer> inputNumbers) {
     Set<Integer> inputNumbersSet = new HashSet<>(inputNumbers);
-    if (inputNumbersSet.size() != INPUT_SIZE) {
-      throw new IllegalArgumentException();
-    }
+    vaildate.validate(inputNumbersSet);
   }
 
   /**
@@ -54,21 +48,13 @@ public class Player {
   }
 
   public boolean getRestart(String input) throws IllegalArgumentException {
-    int inputNumber = parseInt(input);
+    vaildate.validate(input);
+    int inputNumber = Integer.parseInt(input);
+    vaildate.validate(inputNumber);
     if (inputNumber == TRUE_NUMBER) {
       return true;
-    } else if (inputNumber == FALSE_NUMBER) {
-      return false;
     } else {
-      throw new IllegalArgumentException();
-    }
-  }
-
-  private int parseInt(String input) {
-    try {
-      return Integer.parseInt(input);
-    } catch (NumberFormatException e) {
-      throw new IllegalArgumentException();
+      return false;
     }
   }
 
