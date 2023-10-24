@@ -39,22 +39,6 @@ public class BaseballGame {
 
     }
 
-    // 사용자 데이터 입력
-    private List<Integer> setInputNumber() {
-        String line = Console.readLine();
-
-        List<Integer> numbers = new ArrayList<>();
-
-        if (line.length() > 3) {
-            throw new IllegalArgumentException();
-        }
-        for (String number : line.split("")) {
-            numbers.add(Integer.valueOf(number));
-        }
-
-        return numbers;
-    }
-
     // 랜덤 숫자와 입력한 숫자를 비교하여 결과 반환
     private String compareNumbers(List<Integer> randomNumbers, List<Integer> inputNumbers) {
         int ball = 0;
