@@ -6,14 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball<T> {
-    protected List<T> values;
 
     private Baseball() { //생성자 대신 정적 팩터리 메서드 사용
 
-    }
+    private final List<T> values;
 
+    //생성자 대신 정적 팩터리 메서드 사용
     private Baseball(List<T> values) {
         this.values = values;
+    }
+
+    public static Baseball createBaseball(String valueString) {
+        IntegerUtil.validateInteger(valueString);
+        List<Integer> values = IntegerListUtil.parseIntegerList(valueString);
+
+        return new Baseball(values);
     }
 
     public static <T> Baseball<T> createBaseball(List<T> values) {
