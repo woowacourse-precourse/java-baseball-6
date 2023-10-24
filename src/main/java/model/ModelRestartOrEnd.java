@@ -11,6 +11,9 @@ package model;
 
 public class ModelRestartOrEnd {
 
+    private static final int RESTART_NUMBER = 1;
+    private static final int END_NUMBER = 2;
+
     /**
      * 재시작 여부 입력값 이용해 결과 출력
      *
@@ -22,7 +25,7 @@ public class ModelRestartOrEnd {
 
         inputErrorCheck(input);
 
-        return input != 1;
+        return input != RESTART_NUMBER;
 
     }
 
@@ -54,7 +57,7 @@ public class ModelRestartOrEnd {
      */
     private static void inputErrorCheck(int input) {
 
-        if (input != 1 && input != 2) {
+        if (input != RESTART_NUMBER && input != END_NUMBER) {
             ModelErrorThrow.errorThrow("invalidNum");
         }
 

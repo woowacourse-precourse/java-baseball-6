@@ -16,6 +16,7 @@ public class ModelCompareAnsInput {
 
     private static final int BALL = 0;
     private static final int STRIKE = 1;
+    private static final int NUMBER_LENGTH = 3;
 
     /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
@@ -48,7 +49,7 @@ public class ModelCompareAnsInput {
      */
     public static boolean isAns(int[] result) {
 
-        return result[STRIKE] == 3;
+        return result[STRIKE] == NUMBER_LENGTH;
     }
 
 }

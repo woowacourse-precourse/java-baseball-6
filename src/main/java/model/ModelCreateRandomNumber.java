@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class ModelCreateRandomNumber {
 
+    private static final int NUMBER_LENGTH = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+
     /**
      * 3자리 난수 생성
      *
@@ -22,8 +26,8 @@ public class ModelCreateRandomNumber {
     public static List<Integer> createRandomNumber() {
 
         List<Integer> list = new ArrayList<>();
-        while (list.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (list.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!list.contains(randomNumber)) {
                 list.add(randomNumber);
             }

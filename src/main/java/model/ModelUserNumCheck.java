@@ -16,6 +16,14 @@ import java.util.Set;
 
 public class ModelUserNumCheck {
 
+    private static final String NOT_NUMBER = "notNum";
+    private static final String WRONG_LENGTH = "wrongLen";
+    private static final String DUPLICATE_NUMBER = "duplicate";
+    private static final String INVALID_NUMBER = "invalidNum";
+    private static final int NUMBER_LENGTH = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+
     /**
      * 입력받은 문자열을 정답과 비교할 수 있게 변환
      *
@@ -42,7 +50,7 @@ public class ModelUserNumCheck {
         List<Integer> list = new ArrayList<>();
         for (char c : str.toCharArray()) {
             if (!(Character.isDigit(c))) {
-                ModelErrorThrow.errorThrow("notNum");
+                ModelErrorThrow.errorThrow(NOT_NUMBER);
             }
 
             int digit = Character.getNumericValue(c);
@@ -60,18 +68,18 @@ public class ModelUserNumCheck {
      */
     private static void inputErrorCheck(List<Integer> input) {
 
-        if (input.size() != 3) {
-            ModelErrorThrow.errorThrow("wrongLen");
+        if (input.size() != NUMBER_LENGTH) {
+            ModelErrorThrow.errorThrow(WRONG_LENGTH);
         }
 
         Set<Integer> inputSet = new HashSet<>(input);
-        if (inputSet.size() != 3) {
-            ModelErrorThrow.errorThrow("duplicate");
+        if (inputSet.size() != NUMBER_LENGTH) {
+            ModelErrorThrow.errorThrow(DUPLICATE_NUMBER);
         }
 
         for (Integer num : input) {
-            if (num < 1 || num > 9) {
-                ModelErrorThrow.errorThrow("invalidNum");
+            if (num < MIN_NUMBER || num > MAX_NUMBER) {
+                ModelErrorThrow.errorThrow(INVALID_NUMBER);
             }
         }
 
