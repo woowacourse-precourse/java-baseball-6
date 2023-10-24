@@ -5,48 +5,40 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class BaseBallGame {
 
-    public static String GAME_NUM;
     public static final String CONTINUE_NUMBER = "1";
     public static final String END_NUMBER = "2";
 
-    public static List<Integer> computer;
 
     /* 숫자 야구 게임을 시작하는 메서드 */
     public void play() {
-        startGame();
-    }
-
-    /* 컴퓨터 숫자를 만드는 메서드 */
-    public static void makeComputerNumber() {
-        computer = new ArrayList<>();
-        while(computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        do{
+            startGame();
+        } while (restartGame());
     }
 
     /* 게임 시작 메소드 */
-    public static void startGame() {
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        makeComputerNumber();
-        GAME_NUM = CONTINUE_NUMBER;
-        while (GAME_NUM.equals(CONTINUE_NUMBER)) {
-            System.out.print("숫자를 입력해 주세요 : ");
-            String input = Console.readLine();
-            //입력값 올바른 형태인지 체크
-            validateUserInput(input);
-            numberBasketballGame(input);
-        }
+        Balls computerBalls = Balls.makeRandomBalls();
+        Balls userBalls = null;
+        do {
+            String input = inputUserBalls();
+            userBalls = Balls.makeInputToBalls(input);
+            numberBasketballGame(computerBalls, userBalls);
+        } while (restartGame());
+    }
+    private String inputUserBalls(){
+        System.out.print("숫자를 입력해 주세요 : ");
+        String input = getUserInput();
+        validateUserInput(input);
+        return input;
     }
 
     /* 야구 게임 로직 */
-    public static void numberBasketballGame(String input) {
+    public void numberBasketballGame(String input) {
         int strikeCnt = 0;
         int ballCnt = 0;
         for(int i=0; i<3; i++){
@@ -60,21 +52,29 @@ public class BaseBallGame {
             }
         }
         printResult(strikeCnt, ballCnt);
-        if (strikeCnt == 3) endGame();
+        if (strikeCnt == 3) restartGame();
     }
 
     /* 게임을 종료하는 메소드 */
-    private static void endGame() {
+    private boolean restartGame() {
+        printRestart();
+        String input = getUserInput();
+        validateInput(input);
+        return input.equals(CONTINUE_NUMBER);
+    }
+
+    private String getUserInput() {
+        return Console.readLine();
+    }
+
+    private void printRestart(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        GAME_NUM = Console.readLine();
-        validateInput(GAME_NUM);
-        if(GAME_NUM.equals(CONTINUE_NUMBER)) makeComputerNumber(); //컴퓨터 숫자 리셋
     }
 
     /* 종료시, 사용자 입력 값의 유효성 확인 메서드 */
     private static void validateInput(String input) {
-        if ( !input.equals(CONTINUE_NUMBER) && !input.equals(END_NUMBER) ) {
+        if (!input.equals(CONTINUE_NUMBER) && !input.equals(END_NUMBER)) {
             throw new IllegalArgumentException( "1 또는 2만 입력하세요" );
         }
     }
@@ -83,16 +83,6 @@ public class BaseBallGame {
     private static void validateUserInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력 값의 길이가 잘못 되었습니다.");
-        }
-        int[] nums = new int[10];
-        for(int i=0; i<3; i++) {
-            //(2) 숫자가 아니면 error
-            if(!Character.isDigit(input.charAt(i))) throw new IllegalArgumentException("1-9 사이 정수 값을 입력해주세요");
-
-            //(3) 중복된 숫자가 존재할 시 error
-            int num = input.charAt(i) - '0';
-            if(nums[num] != 0) throw new IllegalArgumentException("중복된 숫자가 존재합니다");
-            nums[num]++;
         }
     }
 
