@@ -16,26 +16,26 @@ class BallsTest {
     }
 
     @Test
-    void 스트라이크() {
-        assertThat(balls.compare(4, 0)).isEqualTo(0);
-        assertThat(balls.compare(3, 1)).isEqualTo(0);
-        assertThat(balls.compare(7, 2)).isEqualTo(0);
+    void 볼() {
+        assertThat(balls.compare(new BallNumber(4), 1)).isEqualTo(0);
+        assertThat(balls.compare(new BallNumber(4), 2)).isEqualTo(0);
+        assertThat(balls.compare(new BallNumber(3), 0)).isEqualTo(0);
+        assertThat(balls.compare(new BallNumber(3), 2)).isEqualTo(0);
+        assertThat(balls.compare(new BallNumber(7), 0)).isEqualTo(0);
+        assertThat(balls.compare(new BallNumber(7), 1)).isEqualTo(0);
     }
 
     @Test
-    void 볼() {
-        assertThat(balls.compare(4, 1)).isEqualTo(1);
-        assertThat(balls.compare(4, 2)).isEqualTo(1);
-        assertThat(balls.compare(3, 0)).isEqualTo(1);
-        assertThat(balls.compare(3, 2)).isEqualTo(1);
-        assertThat(balls.compare(7, 0)).isEqualTo(1);
-        assertThat(balls.compare(7, 1)).isEqualTo(1);
+    void 스트라이크() {
+        assertThat(balls.compare(new BallNumber(4), 0)).isEqualTo(1);
+        assertThat(balls.compare(new BallNumber(3), 1)).isEqualTo(1);
+        assertThat(balls.compare(new BallNumber(7), 2)).isEqualTo(1);
     }
 
     @Test
     void 낫싱() {
-        assertThat(balls.compare(2, 0)).isEqualTo(2);
-        assertThat(balls.compare(6, 1)).isEqualTo(2);
-        assertThat(balls.compare(1, 2)).isEqualTo(2);
+        assertThat(balls.compare(new BallNumber(2), 0)).isEqualTo(2);
+        assertThat(balls.compare(new BallNumber(6), 1)).isEqualTo(2);
+        assertThat(balls.compare(new BallNumber(1), 2)).isEqualTo(2);
     }
 }

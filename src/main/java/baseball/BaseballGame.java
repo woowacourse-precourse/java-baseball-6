@@ -5,12 +5,14 @@ import static baseball.view.InputView.getNumbers;
 import static baseball.view.OutputView.printEnd;
 import static baseball.view.OutputView.printHint;
 
+import baseball.domain.BallNumber;
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
 import baseball.domain.EndOption;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import utils.ValidationUtils;
 
 public class BaseballGame {
@@ -47,7 +49,7 @@ public class BaseballGame {
     }
 
     private void play(Balls computer) {
-        List<Integer> balls = getBallNumbers();
+        List<BallNumber> balls = getBalls();
         for (int i = 0; i < BALL_SIZE; i++) {
             int result = computer.compare(balls.get(i), i);
             board[result]++;
@@ -66,12 +68,14 @@ public class BaseballGame {
         return computer;
     }
 
-    private List<Integer> getBallNumbers() {
+    private List<BallNumber> getBalls() {
         String inputNumbers = getNumbers();
         validateInput(inputNumbers);
         List<Integer> numbers = parseNumbers(inputNumbers);
         validateNumbers(numbers);
-        return numbers;
+        return numbers.stream()
+            .map(BallNumber::new)
+            .collect(Collectors.toList());
     }
 
     private void validateInput(String inputNumbers) {
@@ -89,17 +93,8 @@ public class BaseballGame {
     }
 
     private void validateNumbers(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            validateNumber(number);
-        }
         if (!ValidationUtils.isOtherNumbers(numbers)) {
             throw new IllegalArgumentException("잘못된 입력입니다. 서로 다른 숫자를 입력해 주세요.");
-        }
-    }
-
-    private void validateNumber(Integer number) {
-        if (!ValidationUtils.isSingleNumber(number)) {
-            throw new IllegalArgumentException("잘못된 입력입니다. 1-9 사이의 숫자를 입력해 주세요.");
         }
     }
 

@@ -1,27 +1,29 @@
 package baseball.domain;
 
+import static baseball.domain.BallStatus.BALL;
+import static baseball.domain.BallStatus.NOTHING;
+import static baseball.domain.BallStatus.STRIKE;
+
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Balls {
 
-    private static final int STRIKE = 0;
-    private static final int BALL = 1;
-    private static final int NOTHING = 2;
+    private final List<BallNumber> balls;
 
-    private final List<Integer> balls;
-
-    public Balls(List<Integer> balls) {
-        this.balls = balls;
+    public Balls(List<Integer> numbers) {
+        this.balls = numbers.stream()
+            .map(BallNumber::new)
+            .collect(Collectors.toList());
     }
 
-    public int compare(int ball, int i) {
-        if (Objects.equals(balls.get(i), ball)) {
-            return STRIKE;
+    public int compare(BallNumber ball, int i) {
+        if (balls.get(i).equals(ball)) {
+            return STRIKE.getValue();
         }
         if (balls.contains(ball)) {
-            return BALL;
+            return BALL.getValue();
         }
-        return NOTHING;
+        return NOTHING.getValue();
     }
 }

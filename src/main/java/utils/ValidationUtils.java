@@ -7,10 +7,6 @@ import java.util.Set;
 
 public class ValidationUtils {
 
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final List<Integer> END_OPTION = List.of(1, 2);
-
     private ValidationUtils() {
     }
 
@@ -21,10 +17,6 @@ public class ValidationUtils {
             return false;
         }
         return true;
-    }
-
-    public static boolean isSingleNumber(int number) {
-        return number >= MIN_NUMBER && number <= MAX_NUMBER;
     }
 
     public static boolean isOtherNumbers(List<Integer> numbers) {
