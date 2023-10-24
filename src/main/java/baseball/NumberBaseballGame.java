@@ -12,13 +12,25 @@ public class NumberBaseballGame {
 
   private static final String ROUND_OVER_MESSAGE = "3스트라이크";
   private static final String RESTART_GAME_DECISION = "1";
+  private static final String END_GAME_DECISION = "2";
 
+  /**
+   * Play rounds while user decision is 1 End Game when user decision is 2.
+   */
   public static void playGame() {
+    String userDecision;
     do {
       playRound();
-    } while (getUserDecision().equals(RESTART_GAME_DECISION));
+      userDecision = getUserDecision();
+    } while (userDecision.equals(RESTART_GAME_DECISION));
+    if (userDecision.equals(END_GAME_DECISION)) {
+      return;
+    }
   }
 
+  /**
+   * Continue playing rounds until computed result message equals ROUND_OVER_MESSAGE.
+   */
   public static void playRound() {
     String computerBalls = getComputerBalls();
     String message;
@@ -32,6 +44,14 @@ public class NumberBaseballGame {
     displayEndMessage();
   }
 
+  /**
+   * Returns messages based on calculated strike, balls based on userBalls, computerBalls. ex. "1볼
+   * 1스트라이크"
+   *
+   * @param userBalls
+   * @param computerBalls
+   * @return the result message
+   */
   public static String computeResultMessage(String userBalls, String computerBalls) {
     int strike = countStrike(userBalls, computerBalls);
     int ball = countBall(userBalls, computerBalls);
