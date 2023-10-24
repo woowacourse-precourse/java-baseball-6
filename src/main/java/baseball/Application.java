@@ -5,8 +5,33 @@ import java.util.List;
 import java.util.Scanner;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    // 플레이어에게 숫자를 입력받아 ball, strike 체크
+    public static ArrayList<Integer> NumberCheck(List<Integer> computer){
+        ArrayList<Integer> StrikeBallList = new ArrayList<Integer>();
+        StrikeBallList.add(0);
+        StrikeBallList.add(0);
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
+        String playerInputString = Console.readLine();
+
+        for(int i=0; i<computer.size(); i++){
+            if(computer.contains(Character.getNumericValue(playerInputString.charAt(i)))){
+                StrikeBallList.set(1, StrikeBallList.get(1)+1);
+            }
+        }
+        for(int i=0; i<computer.size(); i++){
+            if(computer.get(i) == Character.getNumericValue(playerInputString.charAt(i))){
+                StrikeBallList.set(0, StrikeBallList.get(0)+1);
+                StrikeBallList.set(1, StrikeBallList.get(1)-1);
+            }
+        }
+        return StrikeBallList;
+    }
+
     public static int GameStart(int gameCoin) {
 
         List<Integer> computer = new ArrayList<>();
@@ -15,15 +40,14 @@ public class Application {
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
-        }    
+        }   
+        System.out.println(computer);
     
+        // ikeBallList =  ArrayList<Integer>(strike, ball)
         ArrayList<Integer> StrikeBallList = new ArrayList<Integer>();
-        StrikeBallList.add(3);
-        StrikeBallList.add(0);
-        System.out.println(StrikeBallList);
 
         while (true){
-            // ikeBallList =  ArrayList<Integer>(strike, ball)
+            StrikeBallList = NumberCheck(computer);
             if (StrikeBallList.get(0) == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
