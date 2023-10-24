@@ -22,7 +22,7 @@ public class Computer {
                 randomString += String.valueOf(randomNum);
             }
         }
-        System.out.println("randomString: " + randomString);
+//        System.out.println("randomString: " + randomString);
         return randomString;
     }
 
@@ -47,7 +47,6 @@ public class Computer {
     public void getInput(){
         player = new Player();
         String playerInput;
-
         do{
             playerInput = player.start();
         }while (!chkResult(playerInput));

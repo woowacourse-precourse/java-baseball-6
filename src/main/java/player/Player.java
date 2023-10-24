@@ -1,11 +1,9 @@
 package player;
 
-import constants.MessageConstants;
 import view.Input;
 
 import static constants.MessageConstants.*;
 import static constants.NumConstants.*;
-import static view.Input.readOption;
 
 
 public class Player {
