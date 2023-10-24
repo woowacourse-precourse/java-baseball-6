@@ -19,13 +19,13 @@ public class GameManager {
     }
 
     public void startGame() {
+        boolean process = true;
         List<Integer> generate = new BallNumberGenerator().generateBallNumber();
         generatedNumber = new BaseBalls(DataTypeChanger.compareNumberFormat(generate));
-        inputNumber();
+        inputNumber(process);
     }
 
-    private void inputNumber() {
-        boolean process = true;
+    private void inputNumber(boolean process) {
         Validator validator = new Validator();
         while (process) {
             OutputView.printInputNumber();
