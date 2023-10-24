@@ -10,12 +10,15 @@ import baseball.exception.guess_number.NotUniqueNumberException;
 import java.util.Collections;
 import java.util.List;
 
-public record GuessNumber(List<Integer> guessNumbers) {
+public class GuessNumber {
 
-    public GuessNumber {
+    private final List<Integer> guessNumbers;
+
+    public GuessNumber(final List<Integer> guessNumbers) {
         validateGameNumberDigit(guessNumbers);
         validateUniqueNumber(guessNumbers);
         validateNumberRangeCondition(guessNumbers);
+        this.guessNumbers = guessNumbers;
     }
 
     private void validateGameNumberDigit(final List<Integer> guessNumbers) {
@@ -53,8 +56,7 @@ public record GuessNumber(List<Integer> guessNumbers) {
         return START_INCLUSIVE.getValue() <= guessNumber && guessNumber <= END_INCLUSIVE.getValue();
     }
 
-    @Override
-    public List<Integer> guessNumbers() {
+    public List<Integer> getGuessNumbers() {
         return Collections.unmodifiableList(guessNumbers);
     }
 }
