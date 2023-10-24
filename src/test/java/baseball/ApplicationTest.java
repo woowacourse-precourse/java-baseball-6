@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.model.Retry;
+import baseball.model.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -21,12 +23,46 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 숫자_길이_예외테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.validateUserNumber("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_형식_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.isNotNumber("asd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 숫자_중복_테스트
+            (){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.checkDuplicateNumbers("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 재시작_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() ->Retry.isRetryNumber("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
 
     @Override
     public void runMain() {
