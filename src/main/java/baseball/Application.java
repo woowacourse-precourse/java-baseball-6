@@ -8,7 +8,8 @@ public class Application {
     public static void main(String[] args) {
         // 시작 메시지 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
-        
+
+        // 사용자의 게임 진행 여부 userChoice
         int userChoice = 1;
         while (userChoice == 1) {
             // 상대의 숫자 생성
