@@ -18,7 +18,7 @@ public class BaseballGameService {
     private final NumberDto numberDto = new NumberDto();
     private final StrikeBallResultDto strikeBallDto = new StrikeBallResultDto();
 
-    public void playGame(String playerInput) { //반복되는 게임 진행 역할
+    public void playGame(String playerInput) {
         numberDto.setValidateInput(validator.validateAllInput(playerInput));
         setStrikeBall();
         setGameResult();
