@@ -2,11 +2,13 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    public static void main(String[] args) {
+    public static int GameStart(int gameCoin) {
+
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -39,6 +41,20 @@ public class Application {
                 }
             }
         }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        gameCoin = sc.nextInt();
+        return gameCoin;
 
     }
+    public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int gameCoin = 1;
+
+        while(gameCoin == 1){
+            gameCoin = GameStart(gameCoin);
+        }
+        
+    }
+
 }
