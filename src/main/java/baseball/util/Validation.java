@@ -25,9 +25,12 @@ public class Validation {
         return Pattern.matches(REGEXP_PATTERN_NUMBER, userInput);
     }
 
-    public static boolean checkRestartOrExitNumber(String input) {
-
-        return (input.equals(GameConstant.RESTART_GAME.number) || input.equals(GameConstant.EXIT.number));
+    public static boolean checkRestartOrExitNumber(String input) throws IllegalAccessException {
+        if (input.equals(GameConstant.RESTART_GAME.number) || input.equals(GameConstant.EXIT.number)) {
+            return true;
+        }else{
+            throw new IllegalAccessException();
+        }
     }
 
     public static boolean checkDuplicatedNumber(String input) {

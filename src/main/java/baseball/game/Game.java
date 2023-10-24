@@ -14,7 +14,7 @@ public class Game {
     private int strike = 0;
     private int ball = 0;
 
-    public void play() {
+    public void play() throws IllegalAccessException {
         Print.showIntro();
 
         String restartOrExitNumber = GameConstant.RESTART_GAME.number;
@@ -28,7 +28,7 @@ public class Game {
         Console.close();
     }
 
-    private static String gameOver() {
+    private static String gameOver() throws IllegalAccessException {
         Print.showGameOver();
 
         String restartOrExitNumber;
