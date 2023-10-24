@@ -1,10 +1,8 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import model.ModelCreateRandomNumber;
+import model.ModelUserNumCheck;
 import view.ViewInput;
 import view.ViewResult;
 import view.ViewStart;
@@ -31,7 +29,8 @@ public class BaseBallGame {
             System.out.println(computer);
 
             while (true) {
-                List<Integer> input = inputNumber();
+
+                List<Integer> input = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
 
                 int[] result = compareAnswerInput(computer, input);
 
@@ -50,39 +49,6 @@ public class BaseBallGame {
 
     }
 
-    /**
-     * 숫자 입력 및 예외 처리
-     *
-     * @return List<Integer> 타입으로 변환된 입력값
-     */
-    private List<Integer> inputNumber() {
-
-        List<Integer> input = stringToListInt(ViewInput.numInputView());
-
-        inputErrorCheck(input);
-
-        return input;
-
-    }
-
-    /**
-     * 문자열을 List<Integer> 타입으로 변경
-     *
-     * @param str 사용자가 입력한 문자열
-     * @return List<Integer>타입의 숫자
-     */
-    private List<Integer> stringToListInt(String str) {
-        List<Integer> list = new ArrayList<>();
-        for (char c : str.toCharArray()) {
-            if (!(Character.isDigit(c))) {
-                errorThrow("notNum");
-            }
-
-            int digit = Character.getNumericValue(c);
-            list.add(digit);
-        }
-        return list;
-    }
 
     /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
@@ -135,7 +101,6 @@ public class BaseBallGame {
 
     }
 
-
     /**
      * 문자열을 int 타입으로 변경
      *
@@ -152,32 +117,6 @@ public class BaseBallGame {
         }
 
         return num;
-
-    }
-
-    /**
-     * 숫자 input에 대한 유효성 확인
-     * <p>
-     * 3자리 숫자인가 / 중복되지 않았는가 / 유효한 숫자인가
-     *
-     * @param input 사용자가 입력한 숫자
-     */
-    private void inputErrorCheck(List<Integer> input) {
-
-        if (input.size() != 3) {
-            errorThrow("wrongLen");
-        }
-
-        Set<Integer> inputSet = new HashSet<>(input);
-        if (inputSet.size() != 3) {
-            errorThrow("duplicate");
-        }
-
-        for (Integer num : input) {
-            if (num < 1 || num > 9) {
-                errorThrow("invalidNum");
-            }
-        }
 
     }
 
@@ -201,7 +140,7 @@ public class BaseBallGame {
      *
      * @param str 예외 이유
      */
-    private void errorThrow(String str) {
+    public static void errorThrow(String str) {
 
         String message = switch (str) {
             case "notNum" -> "숫자를 입력해 주세요";
