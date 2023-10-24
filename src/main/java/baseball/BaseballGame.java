@@ -44,7 +44,6 @@ public class BaseballGame {
                 this.ball++;
             }
         }
-        printAnswer(); // 출력
     }
 
     public String startNewGame() {
@@ -73,15 +72,12 @@ public class BaseballGame {
 
         if (strike == 0 && ball == 0) { // 같은 수가 전혀 없으면
             System.out.println("낫싱");
-        }
-        if (strike == 3 && ball == 0) { // 3개의 숫자를 모두 맞히면
+        } else if (strike == 3 && ball == 0) { // 3개의 숫자를 모두 맞히면
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             isContinue = startNewGame();
-        }
-        // 볼만 있을 경우, 스트라이크만 있을 경우, 볼, 스트라이크 둘 다 있으면
-        if (ball > 0) {
+        } else if (ball > 0) { // 볼만 있을 경우, 스트라이크만 있을 경우, 볼, 스트라이크 둘 다 있으면
             System.out.print(ball + "볼 ");
             if (strike > 0) {
                 System.out.print(strike + "스트라이크");
@@ -110,6 +106,8 @@ public class BaseballGame {
             List<Integer> userNum = Array.checkForDuplicateNumbers(userNumber);
 
             getAnswer(computer, userNum); // 볼, 스트라이크 세기
+            printAnswer(); // 출력
+
         } while (!isAllStrike());
 
     }
