@@ -1,16 +1,13 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ComparingInput {
 
     private int strike = 0;
     private int ball = 0;
 
-    public void Compare(int num, String input) {
+    public void compare(int num, String input) {
         String answer = Integer.toString(num);
         char[] answerArr = answer.toCharArray();
         char[] inputArr = input.toCharArray();
@@ -28,7 +25,7 @@ public class ComparingInput {
             }
         }
     }
-    public void PrintResults() {
+    public void printResults() {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         } else if (strike == 0) {

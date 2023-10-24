@@ -2,12 +2,12 @@ package baseball;
 
 public class CheckingInput {
 
-    public void CheckAll(String input) throws IllegalArgumentException {
-        if ((CheckRange(input) && CheckDifference(input)) == false) {
+    public void checkAll(String input) throws IllegalArgumentException {
+        if ((checkRange(input) && checkDifference(input)) == false) {
             throw new IllegalArgumentException();
         }
     }
-    public boolean CheckRange (String input) {
+    public boolean checkRange(String input) {
         Integer int_input = Integer.parseInt(input);
         if (int_input > 111 && int_input < 999) {
             return true;
@@ -15,7 +15,7 @@ public class CheckingInput {
             return false;
         }
     }
-    public boolean CheckDifference (String input) {
+    public boolean checkDifference(String input) {
         char firstNum = input.charAt(0);
         char secondNum = input.charAt(1);
         char thirdNum= input.charAt(2);

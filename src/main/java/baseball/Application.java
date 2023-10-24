@@ -12,11 +12,11 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             CheckingInput checkMachine = new CheckingInput();
-            checkMachine.CheckAll(input);
+            checkMachine.checkAll(input);
 
             ComparingInput compareMachine = new ComparingInput();
-            compareMachine.Compare(randomAnswer, input);
-            compareMachine.PrintResults();
+            compareMachine.compare(randomAnswer, input);
+            compareMachine.printResults();
 
             if (compareMachine.getStrike() == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
