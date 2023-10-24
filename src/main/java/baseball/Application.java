@@ -10,7 +10,7 @@ public class Application {
     private static final int DIGIT_COUNT = 3;
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             if (playGame()) {
                 break;
@@ -47,7 +47,7 @@ public class Application {
     }
 
     private static List<Integer> getUserNumbers() {
-        System.out.print("숫자를 입력해주세요: ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         return parseUserNumbers(input);
     }
