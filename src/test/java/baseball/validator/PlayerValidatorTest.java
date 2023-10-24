@@ -26,7 +26,13 @@ class PlayerValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @ParameterizedTest
+    @DisplayName("사용자가 정상적으로 입력을 한다.")
+    @ValueSource(strings = {"123", "456", "789", "135"})
+    void input_correct(String number){
+        assertThatCode(() -> playerValidator.validateExpectedNumbers(number))
+                .doesNotThrowAnyException();
+    }
 
 
 }
