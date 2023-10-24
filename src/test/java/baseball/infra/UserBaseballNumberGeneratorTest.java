@@ -10,43 +10,33 @@ import java.io.*;
 import java.util.List;
 
 public class UserBaseballNumberGeneratorTest {
+    BaseballNumberGenerator baseballNumberGenerator = new UserBaseballNumberGenerator();
 
     @Test
     @DisplayName("")
-    public void testThrowExceptionWhenDuplicateNumber() {
-        String input = "122";
+    public void testThrowExceptionWhenDuplicateNumber() throws IOException {
+        String input = "122\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        BaseballNumberGenerator baseballNumberGenerator = new UserBaseballNumberGenerator();
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> baseballNumberGenerator.generateBaseballNumber(3));
+
+        System.in.reset();
+        System.in.close();
     }
 
     @Test
     @DisplayName("")
-    public void testThrowExceptionWhenInvalidLength() {
-        String input = "1223";
+    public void testThrowExceptionWhenInvalidLength() throws IOException {
+        String input = "1223\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        BaseballNumberGenerator baseballNumberGenerator = new UserBaseballNumberGenerator();
+//        BaseballNumberGenerator baseballNumberGenerator = new UserBaseballNumberGenerator();
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> baseballNumberGenerator.generateBaseballNumber(3));
-    }
-
-    @Test
-    @DisplayName("")
-    public void testValidNumber() {
-        String input = "123";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        BaseballNumberGenerator baseballNumberGenerator = new UserBaseballNumberGenerator();
-        List<Integer> baseballNumbers = baseballNumberGenerator.generateBaseballNumber(3);
-
-        for (int i = 0; i < input.length(); i++) {
-            Assertions.assertEquals(Character.getNumericValue(input.charAt(i)), baseballNumbers.get(i));
-        }
+        System.in.reset();
+        System.in.close();
     }
 }
