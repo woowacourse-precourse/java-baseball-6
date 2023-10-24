@@ -9,6 +9,11 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        Application.game();
+    }
+
+    public static void game(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,54 +23,92 @@ public class Application {
         }
         System.out.println(computer);
 
-        int[] arr1 = new int[computer.size()];
-        for (int i = 0; i < computer.size(); i++)
-            arr1[i] = computer.get(i).intValue();
-        System.out.println(arr1[0]);
-        System.out.println(arr1[1]);
-        System.out.println(arr1[2]);
-        System.out.println(Arrays.toString(arr1));
+        System.out.print("테스트용 입력 : ");
 
-
-        String number1 = readLine();
-        String number2 = readLine();
-        String number3 = readLine();
-
-        List<String> number = new ArrayList<>();
-        number.add(number1);
-        number.add(number2);
-        number.add(number3);
-        System.out.println(number);
-
-        List<Integer> num = new ArrayList<>();
-        for (String s : number) {
-            num.add(Integer.parseInt(s));
-        }
-        System.out.println(num);
-
-        int[] arr2 = new int[num.size()];
-        for (int i = 0; i < num.size(); i++)
-            arr2[i] = num.get(i).intValue();
-        System.out.println(arr2[0]);
-        System.out.println(arr2[1]);
-        System.out.println(arr2[2]);
-        System.out.println(Arrays.toString(arr2));
-
-
-        if (Arrays.equals(arr1, arr2)){
-            System.out.println("동일");
-        } else {
-            System.out.println("성동일");
+        String inputNum = readLine();
+        try {
+            int changeNum = Integer.parseInt(inputNum);
+            System.out.println(changeNum);
+        } catch (NumberFormatException ex5) {
+            ex5.printStackTrace();
         }
 
-        /*if (computer == num) {
-            System.out.println("yes");
-        } else {
-            System.out.println("no");
-        }*/
-        //boolean isContainsNum = num.contains(computer);
-        //System.out.println(isContainsNum);
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String str1 = readLine();
+        String str2 = readLine();
+        String str3 = readLine();
+
+        try {
+            int number1 = Integer.parseInt(str1);
+            //System.out.println(number1);
+            try {
+                int number2 = Integer.parseInt(str2);
+                //System.out.println(number2);
+                try {
+                    int number3 = Integer.parseInt(str3);
+                    //System.out.println(number3);
+                    if (number1 < 1 || number1 > 9 ||
+                            number2 < 1 || number2 > 9 ||
+                            number3 < 1 || number3 > 9) {
+                        throw new IllegalArgumentException();
+                    }
+                    List<Integer> number = new ArrayList<>();
+                    number.add(number1);
+                    number.add(number2);
+                    number.add(number3);
+                    //System.out.println(number);
+                    boolean result = Arrays.equals(computer.toArray(), number.toArray());
+                    //System.out.println(result);
+
+                    if (result == true){
+                        System.out.println("3스트라이크");
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                        String str4 = readLine();
+                        try{
+                            int choice = Integer.parseInt(str4);
+                            //System.out.println();
+                            if (choice < 1 || choice > 2) {
+                                throw new IllegalArgumentException();
+                            }
+                            if (choice == 1){
+                                Application.game();
+                            }
+                        } catch (NumberFormatException ex4) {
+                            ex4.printStackTrace();
+                        }
+
+                    } else {
+                        int strike = 0;
+                        int ball = 0;
+                        for (int i = 0; i < computer.size(); i ++) {
+                            if (computer.get(i) == number.get(i)) {
+                                strike += 1;
+                            }
+                        }
+                        for (int j = 0; j < computer.size(); j++) {
+                            for (int k = 0; k < number.size(); k++){
+                                if (computer.get(j) == number.get(k)) {
+                                    ball += 1;
+                                }
+                            }
+                        }
+                        System.out.println(strike + "스트라이크 " + (ball-strike) + "볼");
+                    }
 
 
+
+
+                } catch (NumberFormatException ex1){
+                    ex1.printStackTrace();
+                }
+            } catch (NumberFormatException ex2){
+                ex2.printStackTrace();
+            }
+        } catch (NumberFormatException ex3){
+            ex3.printStackTrace();
+        }
     }
+
 }
