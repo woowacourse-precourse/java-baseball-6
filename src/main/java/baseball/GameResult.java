@@ -20,4 +20,13 @@ public class GameResult {
     public boolean isThreeStrike() {
         return result.get(Judgement.STRIKE) == 3;
     }
+
+    @Override
+    public String toString() {
+        int strikeCount = result.get(Judgement.STRIKE);
+        int ballCount = result.get(Judgement.BALL);
+        int outCount = result.get(Judgement.OUT);
+
+        return OutputFormat.getFormat(strikeCount, ballCount, outCount);
+    }
 }

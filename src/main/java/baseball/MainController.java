@@ -6,6 +6,7 @@ public class MainController {
 
     private final InputController inputController;
     private final Referee referee = new Referee();
+    private final OutputView outputView = new OutputView();
 
     public MainController(InputController inputController) {
         this.inputController = inputController;
@@ -23,6 +24,8 @@ public class MainController {
                 Judgement judgement = referee.judge(new Player(numbers), index);
                 gameResult.updateScore(judgement);
             }
+            outputView.printResult(gameResult);
         } while (!gameResult.isThreeStrike());
+        outputView.printGameFinish();
     }
 }
