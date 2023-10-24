@@ -5,7 +5,7 @@ public class Computer {
     public void generateComputerBaseballNumber(){
         computerBaseballNumber = new ComputerBaseballNumber();
     }
-    public BaseballGameResult getBaseballGameResult(UserBaseballNumber userBaseballNumber){
+    public BaseballGameResult makeBaseballGameResult(UserBaseballNumber userBaseballNumber){
         return new BaseballGameResult(computerBaseballNumber, userBaseballNumber);
     }
 }

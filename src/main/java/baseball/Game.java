@@ -40,7 +40,7 @@ public class Game {
     private void progress(){
         output.askUserToInsertNumbers();
         UserBaseballNumber userBaseballNumber = input.getUserBaseballNumber();
-        BaseballGameResult baseballGameResult = computer.getBaseballGameResult(userBaseballNumber);
+        BaseballGameResult baseballGameResult = computer.makeBaseballGameResult(userBaseballNumber);
         baseballGameResult.print();
         updateGameStatus(baseballGameResult);
     }
