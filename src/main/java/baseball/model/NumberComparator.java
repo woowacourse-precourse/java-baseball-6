@@ -1,9 +1,10 @@
 package baseball.model;
 
 
-import java.util.Arrays;
+import baseball.controller.GameController;
+import baseball.util.Result;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberComparator {
 
@@ -37,7 +38,7 @@ public class NumberComparator {
     }
 
 
-    public static void compareNumber(List<Integer> computer, List<String> user){
+    public static Result compareNumber(List<Integer> computer, List<String> user){
 
         checkLength(user);
         checkRedundancy(user);
@@ -53,5 +54,7 @@ public class NumberComparator {
             }
         }
 
+
+        return new Result(strike, ball);
     }
 }

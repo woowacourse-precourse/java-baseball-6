@@ -5,15 +5,16 @@ import baseball.model.UserNumber;
 import baseball.model.NumberComparator;
 
 
-
+import baseball.util.Result;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
+
 
 public class GameController {
 
     private final ComputerNumber computer;
-    private static UserNumber user;
 
 
     public GameController() {
@@ -21,37 +22,36 @@ public class GameController {
     }
 
     public void start() {
-        getNumberFromUser();
-        getNumberCompare();
+        Result result;
+        do {
+            result = getNumberCompare();
+            System.out.println(computer.getNumbers());
+            printCount(result);
+        } while (!isGameSet(result));
 
     }
 
-    public  void getNumberFromUser(){
-        user = new UserNumber(InputView.UserNumbertoList());//user에 vailidate에 입력으로 넣을 예정
+    public List<String> getNumberFromUser(){
+        return InputView.UserNumbertoList();
     }
 
-    public void getNumberCompare(){
-        NumberComparator.compareNumber(ComputerNumber.generateComputerNumbers(),InputView.UserNumbertoList());
-
-    }
-
-    public void printCount(){
+    public Result getNumberCompare(){
+        return NumberComparator.compareNumber(computer.getNumbers(),getNumberFromUser());
 
     }
 
-    public void printStrike(){
-
+    public void printCount(Result count){
+        OutputView.printResultMessage(count.ball, count.strike);
     }
 
-    public void printBall(){
 
+
+    public boolean isGameSet(Result count) {
+        if(count.strike == 3){
+        OutputView.printGameSetMessage();
+        InputView.restart();
+        }
+        return false;
     }
 
-    public void printNothing(){
-
-    }
-
-//    public boolean isGameSet(){
-//
-//    }
 }

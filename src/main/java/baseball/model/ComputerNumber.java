@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
+    private List<Integer> numbers;
+
+    public ComputerNumber() {
+        numbers = generateComputerNumbers();
+    }
+
 
     public static List<Integer> generateComputerNumbers() {
 
@@ -19,6 +25,10 @@ public class ComputerNumber {
                 numbers.add(randomNumber);
             }
         }
+        return numbers;
+    }
+
+    public List<Integer> getNumbers() {
         return numbers;
     }
 }
