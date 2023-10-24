@@ -52,8 +52,7 @@ public class Application{
                     displayResult(result);
                 }
             } catch (IllegalArgumentException e) {
-                System.err.println(e.getMessage());
-                return false;  // 루프 및 게임 종료
+                throw new IllegalArgumentException();
             }
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -62,7 +61,7 @@ public class Application{
 
     private void validateInput(String input) {  // 검증 메소드 수정
         if (input.length() != 3) {
-            throw new IllegalArgumentException("세 자리 수를 입력해주세요.");
+            throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; i++) {
             char ch = input.charAt(i);
