@@ -39,24 +39,21 @@ public class Application {
 
 
   public static void main(String[] args) {
-
-    // List 선언
-    List<Integer> computer = new ArrayList<>();
-
-
+    List<Integer> computer = new ArrayList<>(); // 컴퓨터 List 선언
 
     System.out.println("숫자 야구 게임을 시작합니다.");
-    computer = make_computer();
+    computer = make_computer(); // 컴퓨터 랜덤값 가져오기
 
     while (true) {
+      int ball = 0; // ball값 초기화
+      int strike = 0; // strike값 초기화
 
-      int ball = 0;
-      int strike = 0;
+      System.out.println("컴퓨터 ; " + computer);
 
       System.out.print("숫자를 입력해주세요 : ");
 
-      List<Integer> user = new ArrayList<>();
-      user = get_user();
+      List<Integer> user = new ArrayList<>(); // 사용자 List 선언
+      user = get_user(); // 사용자 입력값 가져오기
 
       // 예외처리
       if (user.size() < 3 || user.size() > 3) {
@@ -76,6 +73,7 @@ public class Application {
         }
       }
 
+      // 게임 결과 출
       if (ball != 0) {
         System.out.print(ball + "볼 ");
       }
@@ -85,8 +83,7 @@ public class Application {
       if (ball == 0 && strike == 0) {
         System.out.print("낫싱");
       }
-
-
+      // 정답을 맞췄을 경우
       if (strike == 3) {
         System.out.println();
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -95,18 +92,14 @@ public class Application {
         if (gostop() == 1) {
           strike = 0; // strike 초기화
           computer = make_computer(); // 컴퓨터값 변경
+          ball = 0; // ball 초기화
+          strike = 0; // strike 초기화
           continue;
         } else {
           break;
         }
       }
-
       System.out.println();
-
-      ball = 0;
-      strike = 0;
-
     }
-
   }
 }
