@@ -21,10 +21,37 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_숫자판별() {
+        // 예외 처리 test 1. 입력이 숫자가 아닌 경우 예외 처리 확인
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자를 입력해주세요.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_자리수판별() {
+        // 예외 처리 test 2. 입력이 3자리 숫자가 아닌 경우 예외 처리 확인
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자리의 숫자를 입력해주세요.")
+        );
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자리의 숫자를 입력해주세요.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복판별() {
+        // 예외 처리 3. 입력에 중복이 있는 경우 예외 처리 확인
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("중복된 숫자가 있습니다.")
         );
     }
 
