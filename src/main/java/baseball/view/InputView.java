@@ -1,15 +1,12 @@
 package baseball.view;
 
+import baseball.vaildation.InputVaild;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public String getUserInput() {
-        try {
-            System.out.print("숫자를 입력해주세요 : ");
-            return Console.readLine();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
-        }
+        System.out.print("숫자를 입력해주세요 : ");
+        return InputVaild.inputVaildation(Console.readLine());
     }
 
     public String getRestartInput() {
