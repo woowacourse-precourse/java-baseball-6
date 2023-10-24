@@ -6,11 +6,6 @@ import java.util.List;
 
 public class Game {
     private String answer;
-    private boolean finished;
-
-    public Game() {
-        finished = false;
-    }
 
     public void initAnswer() {
         List<Integer> integers = new ArrayList<>();
