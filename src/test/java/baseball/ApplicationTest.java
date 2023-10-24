@@ -74,6 +74,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("입력 확인 테스트")
+    void 입력_확인_테스트() {
+        String userInput = "456";
+        List<Integer> result = Arrays.asList(4, 5, 6);
+        String notThreeNumber = "1234";
+        String notDigitNumber = "s14de7";
+        String notRightRangeNumber = "083";
+        String notDifferentNumber = "113";
+
+        assertThat(Application.inputBaseball(userInput)).isEqualTo(result);
+        assertThatThrownBy(() -> Application.inputBaseball(notThreeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.inputBaseball(notDigitNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.inputBaseball(notRightRangeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.inputBaseball(notDifferentNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @Test
     @DisplayName("길이 3인지 테스트")
     void 길이_3인지_테스트() {
         String threeNumber = "123";
