@@ -50,7 +50,7 @@ public class Baseball {
             return ball + GameResult.BALL.name;
         }
         if (strike == 3) {
-            return strike + GameResult.STRIKE.name + "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return GameResult.PERFECT.name;
         }
 
         return ball + GameResult.BALL.name + " " + strike + GameResult.STRIKE.name;
