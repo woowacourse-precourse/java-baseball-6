@@ -1,10 +1,22 @@
 package baseball.game;
 
+import baseball.Computer;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class StartGamePlay implements GamePlay {
     @Override
     public String play(List<String> args) {
-        return null;
+        Computer.number = "";
+
+        for (int i = 0; i < 3; ++i) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (Computer.number.contains("" + randomNumber)) {
+                randomNumber = Randoms.pickNumberInRange(1, 9);
+            }
+            Computer.number += randomNumber;
+        }
+
+        return "";
     }
 }
