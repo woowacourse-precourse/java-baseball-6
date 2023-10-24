@@ -8,6 +8,7 @@ public class BaseballView {
     public BaseballView() {
     }
 
+    //유저 한테 입력 받기 통합
     public int[] getUserGuess() {
         String input = getInputFromUser();
         validateInput(input); // 입력 유효성 검사
@@ -16,14 +17,14 @@ public class BaseballView {
         return guess;
     }
 
-    //숫자 입력받기
+    //문자 입력받기
     private String getInputFromUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         return input;
     }
 
-    // 3자리 수 유효성 검사
+    // 3자리 유효성 검사
     private void validateInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 수를 입력해야 합니다.");
@@ -31,7 +32,7 @@ public class BaseballView {
 
     }
 
-    //입력받은 숫자 배열로 전환
+    //입력받은 문자 숫자 배열로 전환
     private int[] parseInput(String input) {
         int[] guess = new int[3];
         for (int i = 0; i < 3; i++) {
@@ -40,7 +41,7 @@ public class BaseballView {
         return guess;
     }
 
-
+    // ball, strikes 계산 출력
     public void displayResult(int balls, int strikes) {
         String result = "";
 

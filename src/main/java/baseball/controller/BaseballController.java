@@ -13,6 +13,7 @@ public class BaseballController {
         view = new BaseballView();
     }
 
+    //게임 시작
     public void playGame() {
         view.displayGameStartMessage();
 
@@ -48,8 +49,8 @@ public class BaseballController {
         }
     }
 
+    // 유저 입력이 서로 다른 숫자인지 확인
     private boolean isValidInput(int[] guess) {
-        // 서로 다른 숫자인지 확인
         for (int i = 0; i < guess.length; i++) {
             for (int j = i + 1; j < guess.length; j++) {
                 if (guess[i] == guess[j]) {
@@ -61,11 +62,11 @@ public class BaseballController {
         return true;
     }
 
+    // ball, strikes 계산 로직
     private int[] calculateResult(int[] targetNumber, int[] guess) {
         int strikes = 0;
         int balls = 0;
 
-        // 볼과 스트라이크 계산 로직
         for (int i = 0; i < targetNumber.length; i++) {
             for (int j = 0; j < guess.length; j++) {
                 if (targetNumber[i] == guess[j]) {

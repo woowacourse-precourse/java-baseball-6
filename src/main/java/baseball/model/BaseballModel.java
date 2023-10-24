@@ -11,7 +11,7 @@ public class BaseballModel {
         generateRandomNumber();
     }
 
-    // 1~9의 서로 다른 3자리 수 생성 , 캡슐화
+    // 1~9의 서로 다른 3자리 수 생성(난수) , 캡슐화
     private void generateRandomNumber() {
         targetNumber = new int[3];
         for (int i = 0; i < 3; i++) {
@@ -28,7 +28,7 @@ public class BaseballModel {
         return targetNumber;
     }
 
-    // 생성되는 난수의 중복 확인
+    // 난수가 생성될 때 중복 확인
     private boolean containsNumber(int[] array, int number) {
         for (int item : array) {
             if (item == number) {
