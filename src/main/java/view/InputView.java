@@ -1,14 +1,12 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import Exception.CommandException;
-import Exception.NumberException;
+import exception.CommandException;
+import exception.NumberException;
 
 public class InputView {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
 
     public static String inputPlayerNumbers() {
         System.out.print(INPUT_MESSAGE);
@@ -19,10 +17,10 @@ public class InputView {
 
     public static boolean inputRestart() {
         boolean isRestart = false;
-        System.out.printf(RESTART_MESSAGE, RESTART, EXIT);
+        System.out.printf(RESTART_MESSAGE, CommandException.RESTART, CommandException.EXIT);
         String flag = Console.readLine();
         CommandException.commandException(flag);
-        if (flag.equals("1")) {
+        if (flag.equals(CommandException.RESTART)) {
             isRestart = true;
         }
         return isRestart;

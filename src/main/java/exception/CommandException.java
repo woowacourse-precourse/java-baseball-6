@@ -1,8 +1,8 @@
-package Exception;
+package exception;
 
 public class CommandException {
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
+    public static final String RESTART = "1";
+    public static final String EXIT = "2";
     private static final String RANGE_ERROR_MESSAGE = "Error : " + RESTART + "이나 " + EXIT + "를 입력해 주세요.";
 
     public static void commandException(String command) {

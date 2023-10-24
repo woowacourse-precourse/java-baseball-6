@@ -1,4 +1,4 @@
-package Exception;
+package exception;
 
 import domain.Computer;
 
@@ -11,7 +11,7 @@ public class NumberException {
     private static final int MAX_NUMBER = 9;
     private static final String LENGTH_ERROR_MESSAGE = "\nError: " + Computer.LENGTH + "개의 숫자를 입력해 주세요.";
     private static final String DUP_ERROR_MESSAGE = "\nError: 중복되지 않은 숫자를 입력해 주세요.";
-    private static final String RANGE_ERROR_MESSAGE = "\nError: " + MIN_NUMBER + "부터 " + MAX_NUMBER + "까지 범위의 숫자를 입력해 주세요."
+    private static final String RANGE_ERROR_MESSAGE = "\nError: " + MIN_NUMBER + "부터 " + MAX_NUMBER + "까지 범위의 숫자를 입력해 주세요.";
 
     public static void numberException(String inputNumbers) {
         validateNumberLength(inputNumbers);
