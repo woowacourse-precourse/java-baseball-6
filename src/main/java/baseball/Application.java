@@ -29,6 +29,7 @@ public class Application {
                 int userNumber=0;
                 try{
                     String num = Console.readLine();
+                    exceptionLength(num);
                     userNumber = Integer.parseInt(num);
                 }catch(NumberFormatException e) {
                     throw new IllegalArgumentException();
@@ -86,9 +87,9 @@ public class Application {
             }//while end
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String num = Console.readLine();
-            Console.close();
             int number = Integer.parseInt(num);
             if(number==2){
+                Console.close();
                 return;
             }
             else if(number==1){
@@ -96,6 +97,9 @@ public class Application {
                 ballCnt=0;
                 userNum.clear();
                 computer.clear();
+            }
+            else if(number==0 || number>2){
+                throw new IllegalArgumentException();
             }
          }
 
@@ -109,6 +113,11 @@ public class Application {
         newNum=newNum%10;
         userNum.add(newNum);
         newNum= 0;
+    }
+    public static void exceptionLength(String s){
+        if(s.length()!=3){
+            throw new IllegalArgumentException();
+        }
     }
 }
 
