@@ -10,9 +10,10 @@ public class Computer {
         int randomNumber;
 
         answer = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        while (answer.size() < 3) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
-            answer.add(randomNumber);
+            if (!answer.contains(randomNumber))
+                answer.add(randomNumber);
         }
         return (answer);
     }
