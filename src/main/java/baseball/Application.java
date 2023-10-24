@@ -25,7 +25,7 @@ public class Application {
                 if (checkDuplicateNumber(numbers)) throw new IllegalArgumentException();
 
                 Result result = getResult(computer, numbers);
-                isGameFinish = true;
+                isGameFinish = gameResult(result);
             }
             play = "2";
         }
@@ -77,5 +77,25 @@ public class Application {
     }
 
     private record Result(int ballCnt, int strikeCnt) {
+    }
+
+    private static boolean gameResult(Result result) {
+        boolean isGameFinish = false;
+
+        if(result.strikeCnt() == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isGameFinish = true;
+        }else if(result.strikeCnt() + result.ballCnt() == 0){
+            System.out.println("낫싱");
+        }else if(result.ballCnt() == 0){
+            System.out.printf("%d스트라이크\n", result.strikeCnt());
+        }else if(result.strikeCnt() == 0){
+            System.out.printf("%d볼\n", result.ballCnt());
+        }else {
+            System.out.printf("%d볼 %d스트라이크\n", result.ballCnt(), result.strikeCnt());
+        }
+
+        return isGameFinish;
     }
 }
