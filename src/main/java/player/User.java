@@ -6,6 +6,7 @@ import java.util.List;
 
 public class User implements BaseballPlayer {
 
+    private static final String ONLY_NUMBER = "숫자만 입력 가능합니다.";
     private BaseballNumbers baseballNumbers;
 
     @Override
@@ -14,6 +15,7 @@ public class User implements BaseballPlayer {
         String[] userInput = splitStringToArray();
 
         for (String inputNumber : userInput) {
+            validateIsNumeric(inputNumber);
             userInputBaseballNumbers.add(Integer.parseInt(inputNumber));
         }
 
@@ -23,6 +25,14 @@ public class User implements BaseballPlayer {
     @Override
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers.getBaseballNumbers();
+    }
+
+    private void validateIsNumeric(String baseballNumber) {
+        try {
+            Integer.parseInt(baseballNumber);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException(ONLY_NUMBER);
+        }
     }
 
     private String[] splitStringToArray() {
