@@ -1,7 +1,7 @@
 package baseball;
 
 public class GameState {
-        public static final int GAME_SUCCEED_STATE = 0;
+        public static final int GAME_SUCCESS_STATE = 0;
         public static final int PROGRESS_STATE = 1;
         public static final int END_STATE = 2;
 
@@ -11,9 +11,9 @@ public class GameState {
                 this.gameSwitch = gameSwitch;
         }
 
-        public void checkGameSucceeded(int strike) {
+        public void checkGameSuccess(int strike) {
                 if (strike == 3) {
-                        gameSwitch = GAME_SUCCEED_STATE;
+                        gameSwitch = GAME_SUCCESS_STATE;
                 }
         }
 
@@ -27,7 +27,7 @@ public class GameState {
         }
 
         public boolean isGameSucceedState() {
-                return gameSwitch == GAME_SUCCEED_STATE;
+                return gameSwitch == GAME_SUCCESS_STATE;
         }
 
         public boolean isProgressState() {

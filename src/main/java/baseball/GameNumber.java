@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameNumberController {
+public class GameNumber {
 
-        public List<Integer> randomComputerNumberGenerator() {
+        public List<Integer> generateRandomComputerNumber() {
                 List<Integer> computer = new ArrayList<>();
                 while (computer.size() < 3) {
                         int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,7 +18,7 @@ public class GameNumberController {
                 return computer;
         }
 
-        public List<Integer> suggestedNumberConverter(int numberSuggestion) {
+        public List<Integer> modifyNumberSuggestion(int numberSuggestion) {
                 List<Integer> suggestion = new ArrayList<>();
                 suggestion.add(numberSuggestion / 100);
                 suggestion.add((numberSuggestion / 10) % 10);

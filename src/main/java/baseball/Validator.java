@@ -11,17 +11,17 @@ public class Validator {
         }
 
         public static int validateNumberSuggestion(int numberSuggestion) {
-                if (checkNumberSuggestionRange(numberSuggestion) || checkNumberSuggestionOverlap(numberSuggestion)) {
+                if (isNumberSuggestionOutOfRange(numberSuggestion) || isNumberSuggestionOverlap(numberSuggestion)) {
                         throw new IllegalArgumentException();
                 }
                 return numberSuggestion;
         }
 
-        public static boolean checkNumberSuggestionRange(int numberSuggestion) {
+        public static boolean isNumberSuggestionOutOfRange(int numberSuggestion) {
                 return numberSuggestion > 999 || numberSuggestion < 100;
         }
 
-        public static boolean checkNumberSuggestionOverlap(int numberSuggestion) {
+        public static boolean isNumberSuggestionOverlap(int numberSuggestion) {
                 int tripleDigit = numberSuggestion / 100;
                 int doubleDigit = (numberSuggestion / 10) % 10;
                 int singleDigit = numberSuggestion % 10;
@@ -29,13 +29,13 @@ public class Validator {
         }
 
         public static int validateRetryOrEnd(int retryOrEnd) {
-                if (isRetryOrEnd(retryOrEnd)) {
+                if (isRetryOrEndMismatch(retryOrEnd)) {
                         throw new IllegalArgumentException();
                 }
                 return retryOrEnd;
         }
 
-        public static boolean isRetryOrEnd(int retryOrEnd) {
+        public static boolean isRetryOrEndMismatch(int retryOrEnd) {
                 return retryOrEnd != 1 && retryOrEnd != 2;
         }
 }

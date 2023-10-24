@@ -12,7 +12,7 @@ public class GameScore {
                 this.computer = computer;
         }
 
-        public int getStrike() {
+        public int calculateStrike() {
                 int strike = 0;
                 for (int i = 0; i < 3; i++) {
                         if (Objects.equals(suggestion.get(i), computer.get(i))) {
@@ -22,7 +22,7 @@ public class GameScore {
                 return strike;
         }
 
-        public int getBall() {
+        public int calculateBall() {
                 int ball = 0;
                 for (int i = 0; i < 3; i++) {
                         if (computer.contains(suggestion.get(i)) && !Objects.equals(suggestion.get(i), computer.get(i))) {
