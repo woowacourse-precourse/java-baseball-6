@@ -13,7 +13,7 @@ public class ExceptionTest extends NsTest {
     void 문자_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("우테코"))
-                        .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("numbers cannot be out of range")
+                        .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("input is invalid")
         );
     }
 
@@ -21,7 +21,7 @@ public class ExceptionTest extends NsTest {
     void 범위_외_숫자_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("902"))
-                        .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("numbers cannot be out of range")
+                        .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("input is invalid")
         );
     }
 
