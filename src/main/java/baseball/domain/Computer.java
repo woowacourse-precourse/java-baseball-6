@@ -12,7 +12,7 @@ public class Computer {
 	private final Balls balls;
 
 	public Computer() {
-		this.balls = new Balls(createRandomNumbers());
+		this.balls = new Balls(new ArrayList<>(createRandomNumbers()));
 	}
 
 	private List<Integer> createRandomNumbers() {
@@ -24,7 +24,7 @@ public class Computer {
 				numbers.add(randomNumber);
 			}
 		}
-		return numbers;
+		return List.copyOf(numbers);
 	}
 
 	public Balls getBalls() {
