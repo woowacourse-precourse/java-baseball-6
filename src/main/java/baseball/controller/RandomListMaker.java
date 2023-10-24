@@ -11,11 +11,15 @@ public class RandomListMaker {
 
     public static List<Integer> generateRandomNumbers(){
         List<Integer> computerNumber = new ArrayList<>();
+        addComputerNumber(computerNumber);
+        return computerNumber;
+    }
+
+    private static void addComputerNumber(List<Integer> computerNumber) {
         while (!isFull(computerNumber)) {
             int randomNumber = getRandomNumberInRange();
             containNumberInList(computerNumber, randomNumber);
         }
-        return computerNumber;
     }
 
     private static boolean isFull(List<Integer> computerNumber) {
