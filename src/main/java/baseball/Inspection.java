@@ -11,7 +11,6 @@ public class Inspection {
         game.playGame();
     }
     public void askForRestart() {
-
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         try {
             String input = Console.readLine();
@@ -24,10 +23,8 @@ public class Inspection {
                 System.out.print("1 또는 2만 입력하세요.");
             }
         } catch (NoSuchElementException e) {
-            // NoSuchElementException 발생 시 처리
             System.out.println("입력 오류: 값을 읽을 수 없습니다. 다시 시도하세요.");
         }
-
     }
     private boolean hasDuplicate(int[] userNumbers) {
         for (int i = 0; i < userNumbers.length - 1; i++) {
@@ -41,38 +38,30 @@ public class Inspection {
     }
     public int[] getUserInput() {
         int[] userNumbers = new int[3];
-
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 (1에서 9까지 중복되지 않는 3자리 숫자) : ");
                 String input = Console.readLine();
-
                 if (input.equals("1") || input.equals("2")) {
-                    System.out.println("1 또는 2는 게임을 재시작 또는 종료하는 명령어입니다. 숫자를 입력해주세요.");
+                    System.out.println("1 또는 2는 게임을 재시작/종료 명령어입니다. 3자리 숫자를 입력해주세요.");
                     continue;
                 }
-
                 if (input.length() != 3) {
                     throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
                 }
-
                 for (int i = 0; i < 3; i++) {
                     userNumbers[i] = Integer.parseInt(input.substring(i, i + 1));
                     if (userNumbers[i] < 1 || userNumbers[i] > 9) {
                         throw new IllegalArgumentException("1에서 9까지의 숫자만 입력 가능합니다.");
                     }
                 }
-
                 if (hasDuplicate(userNumbers)) {
                     throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다.");
                 }
-
-                return userNumbers; // 모든 조건을 만족하면 사용자 입력 반환
-
+                return userNumbers;
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
     }
-
 }
