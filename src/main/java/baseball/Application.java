@@ -10,6 +10,8 @@ public class Application {
     private static final int DIGIT_COUNT = 3;
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다");
+        List<Integer> userNumbers = getUserNumbers();
     }
 
 
@@ -26,6 +28,30 @@ public class Application {
         if (!list.contains(number)) {
             list.add(number);
         }
+    }
+
+    private static List<Integer> getUserNumbers() {
+        System.out.print("숫자를 입력해주세요: ");
+        String input = Console.readLine();
+        return parseUserNumbers(input);
+    }
+
+    private static List<Integer> parseUserNumbers(String input) {
+        List<Integer> numbers = new ArrayList<>();
+
+        if (input.length() != DIGIT_COUNT) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
+        }
+
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            int number = Character.getNumericValue(input.charAt(i));
+            if (number < 1 || number > 9 || numbers.contains(number)) {
+                throw new IllegalArgumentException("1부터 9까지 서로 다른 숫자만 입력해야 합니다.");
+            }
+            numbers.add(number);
+        }
+
+        return numbers;
     }
 
 
