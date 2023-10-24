@@ -20,12 +20,5 @@ public class Baseball {
         printer.printAskForNewGame();
         new GameContinueSelector().gameContinueSelect();
 
-
-
-        // TODO : 비교
-
-        // TODO : 비교 결과 출력
-
-        // TODO : 다시 실행 or 정상 게임 종료
     }
 }
