@@ -9,7 +9,7 @@ import java.util.List;
 public class BaseballGame {
 
     private static final int NUM_DIGIT = 3;
-
+    private final View view = new View();
     private List<Integer> computer;
     private List<Integer> user;
 
@@ -48,15 +48,23 @@ public class BaseballGame {
         return cnt;
     }
 
+    public void askUser(){
+        this.user = Validator.validate(view.readUser());
+    }
+
+    public boolean askReplay() {
+        return Validator.validateCommand(view.readReplayCommand());
+    }
+
+    // for test
     protected void setComputer(String computer) {
         this.computer = Arrays.stream(computer.split(""))
                 .map(Integer::valueOf)
                 .toList();
     }
 
+    // for test
     protected void setUser(String user) {
-        this.user = Arrays.stream(user.split(""))
-                .map(Integer::valueOf)
-                .toList();
+        this.user = Validator.validate(user);
     }
 }
