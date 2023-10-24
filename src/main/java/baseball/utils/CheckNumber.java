@@ -26,7 +26,8 @@ public class CheckNumber {
     public boolean check(List<Integer> computer, String input){
 
         if(!isValidNumber(input) || !isUnique(input)){
-            throw new IllegalArgumentException();
+            final String errorMessage = String.format("%s 올바른 숫자가 아닙니다.",input);
+            throw new IllegalArgumentException(errorMessage);
         }
         final List<Integer> player = convertStrToIntList(input);
         int ball = 0;
