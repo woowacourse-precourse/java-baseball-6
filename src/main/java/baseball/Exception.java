@@ -19,7 +19,7 @@ public class Exception {
 
     public static void checkNumbers(char[] userInput){
         for (char c : userInput) {
-            if ((int) c < 49 || (int) c > 57) {
+            if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("프로그램 종료");
             }
         }
