@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 import baseball.View;
+import baseball.Computer;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,53 +16,27 @@ public class Application {
       ArrayList<Integer> comArr = new ArrayList<Integer>(3);
       ArrayList<Integer> userArr = new ArrayList<Integer>(3);
       
+      Computer computer = new Computer();
+      
+      
       String restart = "1";
       View.printGameStart();
-      
-      
+   
+        
+        
       while(restart.equals("1")){
-        //컴퓨터 숫자 뽑기
-        for(int i=0;i<3;i++){
-          int pickedNum=Randoms.pickNumberInRange(1,9);
-          boolean isPicked=false;
-          for(int j=0;j<i;j++){
-            if(pickedNum==comArr.get(j))
-                isPicked=true;
-          }
-          if(isPicked){
-            i--;
-            continue;
-          }
-          comArr.add(pickedNum);
-          
-        }
 
-    
+        computer.init();
+        
+        
         while(true){
           View.printEnterNumber();
+          Application.inputUserNumbers(userArr);
           
-          String input = Console.readLine();
-          for(int i=0;i<3;i++){
-            userArr.add(input.charAt(i)-'0');
-          }
-          //System.out.print(userArr);
-
-          int strikeCnt=0, ballCnt=0;
-
-          for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++) {
-              if (i == j && userArr.get(i) == comArr.get(j)) {
-                //System.out.printf("str",i);
-                strikeCnt++;
-              } else if (i != j && userArr.get(i) == comArr.get(j)) {
-                //System.out.printf("ball","i=",i,"j=",j);
-                ballCnt++;
-              }
-            }
-          }
-         View.printResult(ballCnt,strikeCnt);
-          userArr.clear();
-          if(strikeCnt==3){
+          ArrayList<Integer> resultArr =  computer.calculateResult(userArr);
+          View.printResult(resultArr);
+          
+          if(resultArr.get(1)==3){
             View.printGameEnd();
             restart = Console.readLine();
             if(restart.equals("1")){
@@ -82,4 +57,13 @@ public class Application {
         
         }
     }
+    public static void inputUserNumbers(ArrayList<Integer> userArr){
+      userArr.clear();
+      String input = Console.readLine();
+      for(int i=0;i<3;i++){
+        userArr.add(input.charAt(i)-'0');
+      }
+      
+    }
+  
 }
