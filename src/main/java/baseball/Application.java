@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-
     // 컴퓨터 세자리 랜덤 숫자 생성
     public static String computerNumber(){
         String computerAnswer = "";
@@ -14,7 +13,6 @@ public class Application {
                 computerAnswer += ""+randomNumber;
             }
         }
-        //System.out.println(computerAnswer);
         return computerAnswer;
     }
     // 사용자 세자리 숫자 입력
@@ -25,10 +23,8 @@ public class Application {
         if (!isValidInput(userAnswer)){
             throw new IllegalArgumentException("서로 다른 세자리의 숫자를 입력해주세요.");
         }
-
         return userAnswer;
     }
-
     //세자리의 서로다른 숫자를 입력한 지 확인
     public static boolean isValidInput(String input) {
         //숫자가 세자리 인지 확인
@@ -36,8 +32,8 @@ public class Application {
             return false;
         }
 
-        // 입력값이 숫자 인지 확인
-        if (!input.matches("[0-9]+")) {
+        // 입력값이 1-9 까지 숫자 인지 확인
+        if (!input.matches("[1-9]+")) {
             return false;
         }
         // 서로 다른 숫자 인지 확인
@@ -45,9 +41,6 @@ public class Application {
         return inputnumber[0] != inputnumber[1] && inputnumber[1] != inputnumber[2] && inputnumber[0] != inputnumber[2];
 
     }
-
-
-
     //게임 시작
     public static void gameStart(){
         String computerAnswer = computerNumber();
