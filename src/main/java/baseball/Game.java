@@ -54,7 +54,8 @@ public class Game {
 
         // 사용자에게 추측되는 정답을 입력 받음
         String input = Console.readLine();
-        if (input.length() > 3) throw new IllegalArgumentException();
+        if (input.length() != 3) throw new IllegalArgumentException();
+        if (!input.chars().allMatch(Character::isDigit)) throw new IllegalArgumentException();
 
         return input;
     }
