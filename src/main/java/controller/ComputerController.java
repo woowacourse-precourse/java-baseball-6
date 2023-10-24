@@ -7,5 +7,12 @@ public class ComputerController {
 
     public void startGame() {
         gameView.startGame();
+        gameView.guessNumber();
+    }
+
+    public void guessNumber(String numStr) {
+        // TODO: validate
+
+        // TODO: checkAnswer
     }
 }
