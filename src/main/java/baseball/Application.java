@@ -102,6 +102,13 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
+
+    // 입력 자릿수 검증 메서드
+    private void valInputLength(String playerInput) {
+        if (playerInput.length() != LENGTH) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요. 게임 종료");
+        }
+    }
 //        int[] playerNumbers = new int[LENGTH];
 //        System.out.println("숫자를 입력해주세요 : ");
 //        String input = Console.readLine();
