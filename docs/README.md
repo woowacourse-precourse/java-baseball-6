@@ -30,9 +30,9 @@
 
 1. BaseBallNumbers
 
-+ [x] 정답에 해당하는 answerNumbers 저장
++ [x] Numbers 데이터 저장(사용자 입력에 대한값과, 랜덤으로 생성한 값에 저장에 사용)
 + [x] playerInput 데이터를 저장(문자열 형태)
-+ [x] playerNumbers 데이터를 저장(playerInput 을 숫자로 파싱한 것)
++
 
 ### View
 
