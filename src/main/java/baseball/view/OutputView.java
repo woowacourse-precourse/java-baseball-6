@@ -3,11 +3,11 @@ package baseball.view;
 import baseball.model.HumanModel;
 
 public class OutputView {
-    public void displayGameStart() {
+    public static void displayGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void displayScoreboard(HumanModel humanModel) {
+    public static void displayScoreboard(HumanModel humanModel) {
         int strike = humanModel.getStrike();
         int ball = humanModel.getBall();
 
@@ -26,7 +26,7 @@ public class OutputView {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
-    public void displayGameExit() {
+    public static void displayGameExit() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

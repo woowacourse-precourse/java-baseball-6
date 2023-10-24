@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class InputView {
-    public List<Integer> inputNumbers() {
+    public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String numString = Console.readLine();
         List<Integer> numbers = Arrays.stream(numString.split("")).map(Integer::parseInt).toList();
@@ -15,14 +15,14 @@ public class InputView {
         return numbers;
     }
 
-    public int inputNumber() {
+    public static int inputNumber() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int number = Integer.parseInt(Console.readLine());
         validate(number);
         return number;
     }
 
-    private void validate(List<Integer> numbers) {
+    private static void validate(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.contains(0)) {
             throw new IllegalArgumentException();
@@ -32,7 +32,7 @@ public class InputView {
         }
     }
 
-    private void validate(int number) {
+    private static void validate(int number) {
         if (number != 1 && number != 2) {
             throw new IllegalArgumentException();
         }

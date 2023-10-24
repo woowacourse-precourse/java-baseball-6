@@ -11,26 +11,18 @@ import java.util.List;
 
 public class GameController {
     private final int VALUE_RANGE = 3;
-
-    private final InputView inputView;
-    private final OutputView outputView;
     private GameModel gameModel;
     private HumanModel humanModel;
     private ComputerModel computerModel;
 
-    public GameController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-    }
-
     public void startGame() {
-        outputView.displayGameStart();
+        OutputView.displayGameStart();
         gameModel = new GameModel();
         setComputers();
         do {
             setHumans();
             compareNumbers();
-            outputView.displayScoreboard(humanModel);
+            OutputView.displayScoreboard(humanModel);
             if (humanModel.getStrike() == 3) {
                 changeGameState();
             }
@@ -38,7 +30,7 @@ public class GameController {
     }
 
     private void setHumans() {
-        humanModel = new HumanModel(inputView.inputNumbers());
+        humanModel = new HumanModel(InputView.inputNumbers());
     }
 
     private void setComputers() {
@@ -97,8 +89,8 @@ public class GameController {
     }
 
     private void changeGameState() {
-        outputView.displayGameExit();
-        int input = inputView.inputNumber();
+        OutputView.displayGameExit();
+        int input = InputView.inputNumber();
         if (input == 1) {
             setComputers();
         }
