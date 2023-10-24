@@ -1,6 +1,5 @@
 package baseball.service;
 
-import baseball.Util.Validator;
 import baseball.constants.Baseball;
 import baseball.dto.Result;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameServiceTest {
-    private final GameService gameService = new GameService(new ScoreService(), new Validator());
+    private final GameService gameService = new GameService(new ScoreService());
 
     @Test
     @DisplayName("생성한 정답은 1부터 9까지 중복되지 않는 수로 이루어져 있다.")
@@ -32,14 +31,14 @@ class GameServiceTest {
     }
 
     @Test
-    @DisplayName("정답과 입력을 비교해서 스트라이크, 볼 정보를 담은 Result 객체를 반환할 수 있다.")
-    public void compare_InputAndAnswer() {
+    @DisplayName("사용자 입력을 전달했을 때 스트라이크와 볼 결과를 받을 수 있다.")
+    public void should_getResult_when_passUserInput(){
         //given
         List<Integer> answer = new ArrayList<>(List.of(1, 3, 5));
         List<Integer> userInput = new ArrayList<>(List.of(3, 1, 5));
 
         //when
-        Result result = gameService.getResult(answer, userInput);
+        Result result = gameService.playRound(answer, userInput);
 
         //then
         assertThat(result.getStrike()).isEqualTo(1);
