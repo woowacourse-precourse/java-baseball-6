@@ -1,14 +1,14 @@
 package baseball;
 
+import static baseball.Application.NUMBER_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Application.NUMBER_LENGTH;
-
 public class GenerateRandomNumber {
 
-    public List generateRandomNumber(){
+    public List generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (CorrectNumberLength(computer)) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
