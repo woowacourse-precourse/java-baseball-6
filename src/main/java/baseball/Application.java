@@ -1,8 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -52,7 +49,7 @@ public class Application {
 
     private static boolean endCheck() {
         String reTry = readLine();
-        if(reTry.length()==0) throw new IllegalArgumentException();
+        if(reTry.length()!=1) throw new IllegalArgumentException();
 
         Integer status = reTry.charAt(0) - '0';
 
