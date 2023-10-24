@@ -23,4 +23,12 @@ class PlayerBallsTest {
                 new PlayerBalls(input)
         );
     }
+
+    @Test
+    void 중복_숫자_입력_테스트() {
+        Integer[] input = {1, 1, 3};
+        assertThrows(IllegalArgumentException.class, () ->
+                new PlayerBalls(input)
+        );
+    }
 }
