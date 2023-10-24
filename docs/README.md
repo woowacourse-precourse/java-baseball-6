@@ -62,9 +62,9 @@
     - [x] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `BaseballNumbers` 타입 반환.
 - `BaseballNumbers`
     - [x] `calculateScore()`: 숫자 리스트를 사용자의 입력과 비교하여 볼 스트라이크를 계산하여 `Score`객체 반환.
+    - [x] `contains()`: `BaseballNumbers`의 리스트에 같은 값이 있는지 반환.
 - `BaseballNumber`
     - [x] `isSameValue()`: `BaseballNumber`의 값을 비교하여 같은지 반환.
-    - [x] `isContainedIn()`: `BaseballNumbers`의 리스트에 같은 값이 있는지 반환.
 - `Score`
     - [x] `toString()` 메서드를 오버라이딩하여 `"낫싱"`, `"n볼"`, `"n스트라이크"`, `"n볼 m스트라이크"` 출력.
     - [x] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
