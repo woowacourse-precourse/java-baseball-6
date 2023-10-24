@@ -74,9 +74,14 @@ Application
 BaseBallGame
 
 - start
-- loadFormat
 - round
 - close
+
+Process
+
+- getFormat
+- isCorrectBall
+- getCurrentHint
 
 Ball
 
@@ -92,15 +97,9 @@ View
 
 - getInput
 - print
+- println
 
-Format (String)
-
-- makeString
-
-Process
-
-- getFormat
-- isCorrectBall
+ViewType (enum)
 
 ### Utils 정리
 
