@@ -16,7 +16,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = new ArrayList<>();
             computerRandom(computer);
-
+            
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String Numbers = Console.readLine();
@@ -49,18 +49,20 @@ public class Application {
                     break;
                 }
 
-                if (ball == 0 && strike == 0) {
-                    System.out.println("낫싱");
-                }
-                if(!(ball == 0 && strike == 0)){
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                }
+                String judgeResult= ballStrikeResult(ball, strike);
+                System.out.println(judgeResult);
             }
         }
 
 
     }
-   
+    public static String ballStrikeResult(int ball, int strike){
+        if (ball == 0 && strike == 0) {
+            return "낫싱";
+        }
+        return ball + "볼 " + strike + "스트라이크";
+    }
+
     public static void computerUserComparisonList(HashMap<Integer, Integer> map, List<Integer> user, List<Integer> computer){
         for (int k = 0; k < user.size(); k++) {
             map.put(computer.get(k), user.get(k));
