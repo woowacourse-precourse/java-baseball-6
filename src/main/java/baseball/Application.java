@@ -55,6 +55,9 @@ public class Application {
                 int strike = 0;
                 int ball = 0;
 
+                /**
+                 * 유저가 입력한 숫자가 컴퓨터의 숫자와 일치하는지 확인
+                 */
                 for (int i = 0; i < 3; i++) {
                     int targetNum = computer.get(i);
                     if (user.contains(targetNum)) {
