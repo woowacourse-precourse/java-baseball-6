@@ -46,4 +46,11 @@ class UtilitiesTest {
         Set<String> set = new HashSet<>(Arrays.asList("a", "p", "p", "l", "e"));
         Assertions.assertEquals(sizeOfSet(set),4);
     }
+
+    @Test
+    public void countTwoStringSameTest() {
+        String[] strArray1 = {"1", "2", "3", "4"};
+        String[] strArray2 = {"4", "2", "5", "1"};
+        Assertions.assertEquals(countTwoStringSame(strArray1, strArray2),1);
+    }
 }

@@ -1,11 +1,9 @@
 package baseball;
 
-import org.junit.jupiter.api.Assertions;
-
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Utilities {
 
@@ -28,5 +26,11 @@ public class Utilities {
 
     public static int sizeOfSet(Set<String> set) {
         return set.size();
+    }
+
+    public static int countTwoStringSame(String[] strArray1, String[] strArray2) {
+        return (int) IntStream.range(0, strArray1.length)
+                .filter(i -> strArray1[i].equals(strArray2[i]))
+                .count();
     }
 }
