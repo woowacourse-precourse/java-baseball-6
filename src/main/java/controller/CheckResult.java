@@ -3,19 +3,20 @@ import model.Computer;
 import model.Result;
 import model.User;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class CheckResult {
     private Computer computer;
     private User user;
     private Result result = new Result();
 
-    private char[] selectComputers;
-    private char[] selectUsers;
+    private StringBuilder selectComputers;
+    private String selectUsers;
+
+    private int strikeCount = 0;
+    private int ballCount = 0;
 
     private Map<String, Integer> playResult = new HashMap<String, Integer>();
 
@@ -29,40 +30,31 @@ public class CheckResult {
         }
         selectComputers = computer.getterSelectComputerNum();
         selectUsers = user.getterSelectUsersNum();
+        System.out.println(selectComputers);
+        System.out.println(selectUsers);
     }
 
     public boolean equalsComputerAndUser() {
-        int strikeCount = 0;
-        int ballCount = 0;
-
-        Stream<Character> selectComputers = selectComputers;
-        Stream<Character> selectUsers = Arrays.stream(selectUsers);
-
-        for (int i =0; i< selectComputers.length; i++) {
-            for(int j = 0; j < selectUsers.length; j++) {
-                if ((selectComputers[i] == selectUsers[j]) && equalsIndex(i, j)) {
-                    result.setterResult("스트라이크", ++strikeCount);
-                    break;
-                }
-                if ((selectComputers[i] == selectUsers[j]) && !(equalsIndex(i, j))) {
-                    result.setterResult("볼", ++ballCount);
-                    break;
-                }
+        for (int i = 0; i < selectComputers.length(); i++) {
+            for(int j = 0; j < selectUsers.length(); j++) {
+                checkString(i, j);
             }
         }
         playResult = result.getterResult();
         return resultPrint();
     }
 
-    private boolean equalsIndex(int i, int j) {
-        if (i == j) {
-            return true;
+    private void checkString(int i, int j) {
+        if (selectComputers.charAt(i) == selectUsers.charAt(j)) {
+            if(i == j) {
+                result.setterResult("스트라이크", ++strikeCount);
+                return;
+            }
+            result.setterResult("볼", ++ballCount);
         }
-        return false;
     }
 
     private boolean resultPrint() {
-        System.out.println(playResult);
         if(playResult.isEmpty()) {
             System.out.println("낫싱");
             return false;

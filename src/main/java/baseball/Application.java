@@ -17,7 +17,7 @@ public class Application {
             try{
                 System.out.println("숫자를 입력해주세요 : ");//input
 
-                char[] selectUsers = readLine().toCharArray();//user select number
+                String selectUsers = readLine();//user select number
                 SelectUserNum selectUserNum = new SelectUserNum(selectUsers);//create Object
                 User user = selectUserNum.returnSelectUserNum();
 

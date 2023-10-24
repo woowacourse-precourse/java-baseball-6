@@ -1,9 +1,9 @@
 package model;
 
 public class Computer {
-    private char[] selectComputers;
+    private StringBuilder selectComputers;
 
-    public Computer(char[] selectComputers) {
+    public Computer(StringBuilder selectComputers) {
         try {
             this.selectComputers = selectComputers;
         }
@@ -12,7 +12,8 @@ public class Computer {
         }
     }
 
-    public char[] getterSelectComputerNum() {
-        return selectComputers.clone();
+    public StringBuilder getterSelectComputerNum() {
+
+        return new StringBuilder(selectComputers);
     }
 }

@@ -2,12 +2,10 @@ package controller;
 import model.User;
 
 public class SelectUserNum {
-    private static final int MAX_RANGE_OF_NUM = 57;//ASCII 9
-    private static final int MIN_RANGE_OF_NUM = 49;//ASCII 1
-    private char[] selectUsers;
+    private String selectUsers;
 
     private User user;
-    public SelectUserNum(char[] selectUsers) {
+    public SelectUserNum(String selectUsers) {
         try{
             isValid(selectUsers);
             this.selectUsers = selectUsers;
@@ -21,25 +19,21 @@ public class SelectUserNum {
         }
     }
 
-    private void isValid(char[] selectUsers) {
+    private void isValid(String selectUsers) {
         validateSelectNum(selectUsers);
         checkDuplication(selectUsers);
     }
 
-    private void validateSelectNum(char[] selectUsers) {
-        for (int i = 0; i < 3; i++) {
-            if((selectUsers.length != 3) || !((MIN_RANGE_OF_NUM <= selectUsers[i]) && (selectUsers[i] <= MAX_RANGE_OF_NUM))) {//is not int Array
-                throw new IllegalArgumentException("Invalid argument: " + selectUsers[i]);
-            }
+    private void validateSelectNum(String selectUsers) {
+        if((selectUsers.length() != 3) || !(selectUsers.chars().allMatch(Character::isDigit))) {//is not int Array
+            throw new IllegalArgumentException("Invalid argument: " + selectUsers);
         }
     }
 
-    private boolean checkDuplication(char[] selectUsers) {
-        for (int i = 0; i < selectUsers.length; i++) {
-            for (int j = i + 1; j < selectUsers.length; j++) {
-                if (selectUsers[i] == selectUsers[j]) {
-                    throw new IllegalArgumentException("Invalid argument: Duplication");
-                }
+    private boolean checkDuplication(String selectUsers) {
+        for (int i = 0; i < selectUsers.length() - 1; i++) {
+            if (selectUsers.charAt(i) == selectUsers.charAt(i + 1)) {
+                throw new IllegalArgumentException("Invalid argument: Duplication");
             }
         }
         return false;

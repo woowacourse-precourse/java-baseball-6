@@ -1,9 +1,9 @@
 package model;
 
 public class User {
-    private char[] selectUsers;
+    private String selectUsers;
 
-    public User(char[] selectUsers) {
+    public User(String selectUsers) {
         try {
             this.selectUsers = selectUsers;
         }
@@ -12,7 +12,8 @@ public class User {
         }
     }
 
-    public char[] getterSelectUsersNum() {
-        return selectUsers.clone();
+    public String getterSelectUsersNum() {
+        String cloneSelectUser = selectUsers;
+        return cloneSelectUser;
     }
 }

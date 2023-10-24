@@ -3,20 +3,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 import model.Computer;
 
 public class SelectComputerNum {
-    private char[] selectComputers = new char[3];
+    private StringBuilder selectComputers = new StringBuilder();
     private Computer computer;
 
     public Computer randomlySelectComputerNum() {
-            selectComputers[0] = (char)(Randoms.pickNumberInRange(1, 9) + '0');
+            selectComputers.append((char)(Randoms.pickNumberInRange(1, 9) + '0'));
 
-            for (int i = 0 ; i < selectComputers.length ; i++) {
+            while(selectComputers.length() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-                if(checkDuplication((char)(randomNumber + '0'))) {
-                    i--;
-                    continue;
+                if(!(checkDuplication((char)(randomNumber + '0')))) {
+                    selectComputers.append((char)(randomNumber + '0'));
                 }
-                selectComputers[i] = (char)(randomNumber + '0');
             }
             computer = new Computer(selectComputers);//model object 생성
             return computer;
@@ -25,8 +23,8 @@ public class SelectComputerNum {
 
     private boolean checkDuplication(char randomNumber) {
         int i = 0;
-        for (; i < selectComputers.length ; i++ ) {
-            if (selectComputers[i] == randomNumber) {
+        for (; i < selectComputers.length() ; i++ ) {
+            if (selectComputers.charAt(i) == randomNumber) {
                 return true;
             }
         }
