@@ -65,6 +65,14 @@ public class Judge {
         return MyConstants.MSG_BALL_STRIKE(cntBall, cntStrike);
     }
 
+    /**
+     * 유저의 숫자와 컴퓨터의 숫자중 같은 숫자가 몇개인가 확인한다.
+     * 만약 user = (1, 2, 3) com = (1, 2, 4) 이면 결과는 2이다.
+     *
+     * @param computerList 컴퓨터의 임의의 3개의 숫자가 있는 리스트
+     * @param userList     유저의 임의의 3개의 숫자가 있는 리스트.
+     * @return
+     */
     private int getSameAllNumberAndComputer(List<Integer> computerList, List<Integer> userList) {
         return gameStandard.getSameUserNumber2Computer(computerList, userList);
     }
