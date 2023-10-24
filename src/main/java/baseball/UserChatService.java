@@ -33,18 +33,19 @@ public class UserChatService {
   }
 
   public void resultGameCount(BallCountVO countAll){
-    int strike = countAll.getStrike();
-    int ball = countAll.getBall();
-    int count = countAll.getCount();
+    int strike1 = countAll.getStrike();
+    int ball1 = countAll.getBall();
+    int count1 = countAll.getCount();
 
-    if(ball != 0)   {ms.ball(ball);}
-    if(strike != 0) {ms.strike(strike);}
-    if(count == 9)  {ms.nothing();}
+    if(ball1 != 0)   {
+      System.out.print(ms.ball(ball1));
+    }
+    if(strike1 != 0) {
+      System.out.println(ms.strike(strike1));
+    }
+    if(count1 == 9)  {
+      System.out.println(ms.nothing());}
   }
-
-
-
-
 
 
   private List<Integer> inputPasIntList(String input){
