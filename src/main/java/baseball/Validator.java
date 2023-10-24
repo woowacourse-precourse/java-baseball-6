@@ -15,7 +15,7 @@ public class Validator {
 
         List<Integer> saveThreeNumbers = new ArrayList<>(3);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < inputNumbers.length(); i++) {
             try {
                 int convertInt = checkConvertInt(inputNumbers.charAt(i));
                 saveThreeNumbers.add(convertInt);
