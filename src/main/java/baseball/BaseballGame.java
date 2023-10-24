@@ -2,6 +2,7 @@ package baseball;
 
 import balls.Balls;
 import camp.nextstep.edu.missionutils.Console;
+import result.Result;
 import utils.Utils;
 
 public class BaseballGame {
@@ -23,14 +24,8 @@ public class BaseballGame {
 
     public boolean restartOrEnd () {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String restartOrEnd= Console.readLine();
-        utils.userGameRestartOrEndValidation(restartOrEnd);
-        if(restartOrEnd.equals("1")){
-            return true;
-        }
-        if(restartOrEnd.equals("2")){
-            return false;
-        }
-        return false;
+        Result result= new Result(Console.readLine());
+        return result.judgeRestartOrEnd();
+
     }
 }
