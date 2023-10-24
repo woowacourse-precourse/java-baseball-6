@@ -1,9 +1,9 @@
 package baseball.service.domain;
 
-import static baseball.exception.ExceptionMessage.getExceptionMessageInvalidLength;
-import static baseball.exception.ExceptionMessage.getExceptionMessageInvalidRange;
-import static baseball.exception.ExceptionMessage.getExceptionMessageNonNumeric;
-import static baseball.exception.ExceptionMessage.getExceptionMessageNonUnique;
+import static baseball.exception.ExceptionMessage.NOT_NUMERIC;
+import static baseball.exception.ExceptionMessage.NOT_UNIQUE;
+import static baseball.exception.ExceptionMessage.OUT_OF_LENGTH;
+import static baseball.exception.ExceptionMessage.OUT_OF_RANGE;
 import static baseball.service.domain.BaseballConstants.BASEBALL_END_NUMBER;
 import static baseball.service.domain.BaseballConstants.BASEBALL_START_NUMBER;
 import static baseball.service.domain.BaseballConstants.DEFAULT_CAPACITY;
@@ -66,21 +66,20 @@ public class BaseballCollection {
 
     private void validateLength(List<Integer> baseballs) {
         if (baseballs.size() != DEFAULT_CAPACITY) {
-            throw new IllegalArgumentException(
-                    getExceptionMessageInvalidLength(DEFAULT_CAPACITY, baseballs.size()));
+            throw new IllegalArgumentException(OUT_OF_LENGTH.getError(DEFAULT_CAPACITY, baseballs.size()));
         }
     }
 
     private void validateUniqueNumbers(List<Integer> baseballs, String number) {
         if (baseballs.size() != number.length()) {
-            throw new IllegalArgumentException(getExceptionMessageNonUnique(baseballs));
+            throw new IllegalArgumentException(NOT_UNIQUE.getError(baseballs));
         }
     }
 
     private void validateRange(List<Integer> baseballs) {
         for (Integer baseball : baseballs) {
             if (!isInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, baseball)) {
-                throw new IllegalArgumentException(getExceptionMessageInvalidRange(baseball));
+                throw new IllegalArgumentException(OUT_OF_RANGE.getError(baseball));
             }
         }
     }
@@ -89,7 +88,7 @@ public class BaseballCollection {
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(getExceptionMessageNonNumeric(target), e);
+            throw new IllegalArgumentException(NOT_NUMERIC.getError(target), e);
         }
     }
 
