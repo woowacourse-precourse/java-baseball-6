@@ -6,6 +6,10 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
+    final static public int ANSWER_LENGTH = 4;
+    final static public int ANSWER_MIN_VALUE = 1;
+    final static public int ANSWER_MAX_VALUE = 9;
+
     private List<Integer> answer;
 
     public BaseballGame() {
@@ -36,8 +40,8 @@ public class BaseballGame {
     public void generateAnswer() {
         answer = new ArrayList<>();
 
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (answer.size() < ANSWER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(ANSWER_MIN_VALUE, ANSWER_MAX_VALUE);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }

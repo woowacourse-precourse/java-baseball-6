@@ -12,7 +12,7 @@ public class BaseballResultState {
     }
 
     public boolean isGameOver() {
-        return strike == 3;
+        return strike == BaseballGame.ANSWER_LENGTH;
     }
 
     public String toString() {
@@ -31,8 +31,8 @@ public class BaseballResultState {
     static public BaseballResultState match(List<Integer> a, List<Integer> b) {
         int ball = 0, strike = 0;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < BaseballGame.ANSWER_LENGTH; i++) {
+            for (int j = 0; j < BaseballGame.ANSWER_LENGTH; j++) {
                 if (!a.get(i).equals(b.get(j))) {
                     continue;
                 }
