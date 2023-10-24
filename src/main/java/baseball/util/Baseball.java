@@ -6,6 +6,11 @@ import java.util.List;
  * 숫자 야구 게임
  */
 public class Baseball {
+
+    private static String TEXT_BALL = "볼";
+    private static String TEXT_STRIKE = "스트라이크";
+    private static String TEXT_NOTHING = "낫싱";
+
     /**
      * 컴퓨터가 제시한 숫자
      */
@@ -54,19 +59,17 @@ public class Baseball {
      * @param strike
      */
     private static void commentPrint(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
-            System.out.print("낫싱");
-        }
-        if (ball > 0) {
-            System.out.print(ball + "볼");
-        }
-        if (ball > 0 && strike > 0) {
-            System.out.print(" " + strike + "스트라이크");
-        }
-        if (ball == 0 && strike > 0) {
-            System.out.print(strike + "스트라이크");
+        if (ball == 0 && strike == 0) { // 하나도 맞추지 못한 경우
+            System.out.print(TEXT_NOTHING);
+        } else if (ball > 0) { // 볼이 있는 경우
+            System.out.print(ball + TEXT_BALL);
+            if (strike > 0) { // 볼과 함께 맞춘 것도 있는 경우
+                System.out.print(" " + strike + TEXT_STRIKE);
+            }
+        } else if (strike > 0) { // 볼은 없고 맞추기만 한 경우
+            System.out.print(strike + TEXT_STRIKE);
         }
 
-        System.out.println("");
+        System.out.println();
     }
 }
