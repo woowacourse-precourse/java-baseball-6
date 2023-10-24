@@ -5,6 +5,7 @@ import baseball.util.ComputerBallGenerator;
 import baseball.util.InputCalculator;
 import baseball.util.OutputCalculator;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class BaseballService {
             List<Integer> userInput = InputView.userInputNumber();
 
             StrikeBallCount strikeBallCount = InputCalculator.compareComputerBallAndUserInput(computerBall, userInput);
+
+            OutputView.generateResultMessage(strikeBallCount);
 
         } while (gameEnd());
 

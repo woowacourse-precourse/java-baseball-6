@@ -10,19 +10,24 @@ public class StrikeBallCount {
         this.ballCount = 0;
     }
 
-    public void increaseStrikeCount(){
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public void increaseStrikeCount() {
         this.strikeCount++;
     }
 
-    public void increaseBallCount(){
+    public void increaseBallCount() {
         this.ballCount++;
     }
 
     @Override
     public String toString() {
-        return "StrikeBallCount{" +
-                "strikeCount=" + strikeCount +
-                ", ballCount=" + ballCount +
-                '}';
+        return ballCount + "볼 " + strikeCount + "스트라이크";
     }
 }
