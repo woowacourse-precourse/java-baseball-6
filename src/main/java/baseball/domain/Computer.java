@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.domain.Const.FIXED_ANSWER_CIPHERS;
+import static baseball.domain.Const.*;
 
 public class Computer {
     private final List<Integer> threeNumbers = new ArrayList<>();
@@ -14,7 +14,7 @@ public class Computer {
         if (threeNumbers.size() > 0) flushNumbers();
 
         while (threeNumbers.size() < FIXED_ANSWER_CIPHERS) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
             if (!threeNumbers.contains(randomNumber)) threeNumbers.add(randomNumber);
         }
     }

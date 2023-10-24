@@ -80,8 +80,8 @@ class GamePlayerTest {
         String inputtedNumbers4 = "101";
 
         // when
-        assertThat(Const.FROM_NUMBER).isEqualTo(1);
-        assertThat(Const.TO_NUMBER).isEqualTo(9);
+        assertThat(Const.BASEBALL_START_NUMBER).isEqualTo(1);
+        assertThat(Const.BASEBALL_END_NUMBER).isEqualTo(9);
         // 입력 숫자의 범위는 1~9다.
 
         // then

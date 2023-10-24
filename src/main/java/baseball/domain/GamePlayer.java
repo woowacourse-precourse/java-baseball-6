@@ -34,7 +34,7 @@ public class GamePlayer {
 
         // 숫자 중에 0이 포함이 안 됐는지 검증
         for (int i = 0; i < FIXED_ANSWER_CIPHERS; i++) {
-            validator.validateInRange(Character.getNumericValue(inputtedNumbers.charAt(i)), FROM_NUMBER, TO_NUMBER);
+            validator.validateInRange(Character.getNumericValue(inputtedNumbers.charAt(i)), BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
         }
 
         return parsedValidatedInt;
