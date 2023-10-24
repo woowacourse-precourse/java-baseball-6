@@ -5,7 +5,6 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
-
     public List<Integer> inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
@@ -16,16 +15,17 @@ public class InputHandler {
 
     public boolean choiceEndOrReInput() {
         String choice = Console.readLine();
-        while (true) {
-            if (choice.equals("1")) {
-                return false;
-            } else if (choice.equals("2")) {
-                return true;
-            } else {
-                System.out.println("다시 입력하세요");
-            }
+        isValidEndOrInputChoice(choice);
+
+        if (choice.equals("1")) {
+            return false;
+        } else if (choice.equals("2")) {
+            return true;
         }
+
+        return true;
     }
+
 
     private void isValidNumber(String str) {
         if (str.length() != 3) {
@@ -36,6 +36,12 @@ public class InputHandler {
         }
         if (StringManipulator.hasDuplicates(str)) {
             throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
+        }
+    }
+
+    private void isValidEndOrInputChoice(String choice){
+        if (!choice.equals("1") && !choice.equals("2")){
+            throw new IllegalArgumentException("재시작과 종료 선택에 유효한 숫자가 아닙니다.");
         }
     }
 }
