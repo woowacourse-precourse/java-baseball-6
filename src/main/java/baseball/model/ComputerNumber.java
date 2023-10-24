@@ -28,7 +28,7 @@ public class ComputerNumber {
     }
 
     public List<Integer> getNumber() {
-        return Collections.unmodifiableList(computerNumber); //불면성 보장을 위해 unmodifiableList 호출
+        return Collections.unmodifiableList(computerNumber); //불변성 보장을 위해 unmodifiableList 호출
     }
 
 }
