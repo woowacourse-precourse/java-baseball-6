@@ -33,13 +33,13 @@ public class GameService {
     private void play() {
         game.intiField();
         user.setUserNums(requestUserNumbers());
-        compare(game.getResult_arr(), user.getUserNums(), game);
+        compare(game.getRandomNumbers(), user.getUserNums(), game);
     }
 
 
     public void setGame(int size, int startInclusive, int endInclusive) {
         this.size = size;
-        game.setResult_arr(getRandomNumbers(size, startInclusive, endInclusive));
+        game.setRandomNumbers(getRandomNumbers(size, startInclusive, endInclusive));
     }
 
     private int[] getRandomNumbers(int size, int startInclusive, int endInclusive) {
