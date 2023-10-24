@@ -47,7 +47,7 @@ public class GameService {
 
     private String getResultMessage(int ballCount, int strikeCount) {
         if (isNothing(ballCount, strikeCount)) {
-            return "Nothing";
+            return "낫싱";
         }
 
         String resultStrikeMessage = "";
@@ -60,6 +60,6 @@ public class GameService {
         if (strikeCount > 0) {
             resultStrikeMessage = strikeCount + "스트라이크";
         }
-        return resultBallMessage + resultStrikeMessage;
+        return resultBallMessage +" "+ resultStrikeMessage;
     }
 }

@@ -24,5 +24,6 @@ public class GameController {
             result = gameService.validateInput(userInput);
             gameView.printResult(result);
         }
+        gameView.printEndMessage();
     }
 }
