@@ -1,6 +1,6 @@
 package View;
 
-import static Util.Validator.validateMenuChoice;
+import static Util.Validator.validateRetryNumberChoice;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -18,7 +18,7 @@ public class RetryView {
     public boolean printRetryMessage() {
         System.out.println(Message.GAME_END_RETRY.getMessage());
         String retryNumber = Console.readLine();
-        validateMenuChoice(retryNumber);
+        validateRetryNumberChoice(retryNumber);
         if(retryNumber.equals(Message.RETRYGAME.getMessage())){
             return true;
         }
