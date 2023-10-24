@@ -9,14 +9,20 @@ import java.util.Set;
 
 public class NumberBaseballGame {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String USER_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
+    private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String NOTHING_MESSAGE = "낫싱";
 
     private static final List<Integer> computerNumberList = new ArrayList<>();
+
     public void play() {
         System.out.println(GAME_START_MESSAGE);
         while (true) {
             generateComputerNumberList();
 
-            System.out.print("숫자를 입력해 주세요 :");
+            System.out.print(USER_INPUT_MESSAGE);
             String input = Console.readLine();
 
             validate(input);
@@ -25,8 +31,7 @@ public class NumberBaseballGame {
             List<Integer> result = judge(computerNumberList, integers);
             if (isThreeStrikes(result)) {
                 printResult(result);
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
-                        + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println(GAME_FINISH_MESSAGE);
                 String userRetryInput = Console.readLine();
                 if (userRetryInput.equals("1")) {
                     computerNumberList.clear();
@@ -40,19 +45,20 @@ public class NumberBaseballGame {
         }
 
     }
+
     private static void printResult(List<Integer> result) {
         String prompt = "";
         if (result.get(1) > 0) {
-            prompt += result.get(1) + "볼";
+            prompt += result.get(1) + BALL_MESSAGE;
         }
         if (result.get(0) > 0) {
-            if(!prompt.isEmpty()){
+            if (!prompt.isEmpty()) {
                 prompt += " ";
             }
-            prompt += result.get(0) + "스트라이크";
+            prompt += result.get(0) + STRIKE_MESSAGE;
         }
         if (prompt.isEmpty()) {
-            prompt = "낫싱";
+            prompt = NOTHING_MESSAGE;
         }
         System.out.println(prompt);
     }
