@@ -4,7 +4,8 @@ public class Hint {
     private static final String BALL_WORD = "볼";
     private static final String STRIKE_WORD = "스트라이크";
     private static final String NOT_THING_WORD = "낫싱";
-    private Integer ballCount = 0, strikeCount = 0;   //볼과 스트라이크 수
+    private Integer ballCount = 0; //ball의 count
+    private Integer strikeCount = 0; //strike의 count
 
     /**
      * strikeCount를 1만큼 증가
