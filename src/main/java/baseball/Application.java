@@ -136,6 +136,29 @@ public class Application {
         }
     }
 
+    public static void restartLogic(int[] resultArray, int[] answerArray) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String tempInput = inputLogic();
+
+        if (tempInput.equals("1")) {
+            int[] tempAnswerArray = answerInitializer();
+
+            for (int i = 0; i < answerArray.length; i++) {
+                answerArray[i] = tempAnswerArray[i];
+            }
+
+            resultArray[2] = 0;
+        }
+        else {
+            if (tempInput.equals("2")) {
+
+            }
+            else {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
