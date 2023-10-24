@@ -35,7 +35,7 @@ public class Application {
                 }
             }
             if (ball != 0 && strike != 0) {
-                System.out.println(ball + Message.BALL + strike + Message.STRIKE);
+                System.out.println(ball + Message.BALL + " " + strike + Message.STRIKE);
             }
             // 실패 시 playerNumbers 수정
             if (!isFinished) {
