@@ -23,4 +23,12 @@ public class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void input_값에_중복값이_있을_경우() {
+        String inputNum = "223";
+        Assertions.assertThatThrownBy(() -> {
+                    InputValidation.verifyInputNum(inputNum);
+                })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
