@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -53,6 +54,20 @@ public class Application {
         }
         if (numString.contains("0")) {
             return false;
+        }
+        if (!isSameNumber(numString)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameNumber(String numString) {
+        HashMap<Character, Integer> numbers = new HashMap<>();
+        for (int i = 0; i < numString.length(); i++) {
+            if (numbers.containsKey(numString.charAt(i))) {
+                return false;
+            }
+            numbers.put(numString.charAt(i), i);
         }
         return true;
     }
