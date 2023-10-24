@@ -23,10 +23,10 @@ class RefereeTest {
         final String inputNumbers = "456";
 
         //when
-        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, ZERO_STRIKE);
+        Assertions.assertEquals(referee.getStrikeNumber(), ZERO_STRIKE);
     }
 
     @Test
@@ -35,10 +35,10 @@ class RefereeTest {
         final String inputNumbers = "132";
 
         //when
-        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, ONE_STRIKE);
+        Assertions.assertEquals(referee.getStrikeNumber(), ONE_STRIKE);
     }
 
     @Test
@@ -47,10 +47,10 @@ class RefereeTest {
         final String inputNumbers = "125";
 
         //when
-        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, TWO_STRIKE);
+        Assertions.assertEquals(referee.getStrikeNumber(), TWO_STRIKE);
     }
 
     @Test
@@ -59,10 +59,10 @@ class RefereeTest {
         final String inputNumbers = "123";
 
         //when
-        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, THREE_STRIKE);
+        Assertions.assertEquals(referee.getStrikeNumber(), THREE_STRIKE);
     }
 
     @Test
@@ -71,10 +71,10 @@ class RefereeTest {
         final String inputNumbers = "456";
 
         //when
-        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, ZERO_BALL);
+        Assertions.assertEquals(referee.getBallNumber(), ZERO_BALL);
     }
 
     @Test
@@ -83,10 +83,10 @@ class RefereeTest {
         final String inputNumbers = "634";
 
         //when
-        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, ONE_BALL);
+        Assertions.assertEquals(referee.getBallNumber(), ONE_BALL);
     }
 
     @Test
@@ -95,10 +95,10 @@ class RefereeTest {
         final String inputNumbers = "632";
 
         //when
-        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, TWO_BALL);
+        Assertions.assertEquals(referee.getBallNumber(), TWO_BALL);
     }
 
     @Test
@@ -107,10 +107,10 @@ class RefereeTest {
         final String inputNumbers = "231";
 
         //when
-        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
+        referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, THREE_BALL);
+        Assertions.assertEquals(referee.getBallNumber(), THREE_BALL);
     }
 
     @Test
