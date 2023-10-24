@@ -40,20 +40,7 @@ public class Application {
                 int ball = cnt - strike;
 
                 //최종 출력
-                if (cnt == 0) {
-                    System.out.println("낫싱");
-                } else if (strike == 0) {
-                    System.out.println(ball + "볼");
-                } else if (strike == 3) {
-                    System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    ans = 1;
-                    playing = 0;
-                } else if (ball == 0) {
-                    System.out.println(strike + "스트라이크");
-                } else {
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                }
+                ans = printAns(ans, cnt, strike, ball);
             }
             //게임 재시작 여부 확인
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -114,5 +101,24 @@ public class Application {
             }
         }
         return strike;
+    }
+
+    private static int printAns(int ans, int cnt, int strike, int ball) {
+        int playing;
+        if (cnt == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            ans = 1;
+            playing = 0;
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        return ans;
     }
 }
