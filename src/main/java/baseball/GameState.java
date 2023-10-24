@@ -30,10 +30,6 @@ public class GameState {
         return gameSwitch == GAME_SUCCESS_STATE;
     }
 
-    public boolean isProgressState() {
-        return gameSwitch == PROGRESS_STATE;
-    }
-
     public boolean isEndState() {
         return gameSwitch == END_STATE;
     }
