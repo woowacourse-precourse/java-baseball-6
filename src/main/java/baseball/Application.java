@@ -10,10 +10,10 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean isEnd = false;
+
         while (!isEnd) {
             /* 게임 실행 */
             baseball.start();
-
             /* 종료 의사 확인 */
             isEnd = app.isEnd();
         }
@@ -39,7 +39,4 @@ public class Application {
         }
         throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
-
-    /* -------------------- */
-
 }

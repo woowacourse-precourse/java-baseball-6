@@ -47,9 +47,7 @@ public class Baseball {
             if (!newRandom.contains(num)){
                 newRandom.add(num);
             }
-
         }
-
         return newRandom;
     }
 
