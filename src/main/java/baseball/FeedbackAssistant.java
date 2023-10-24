@@ -26,7 +26,7 @@ public class FeedbackAssistant {
     }
 
     private void printStrike(int strikeCount) {
-        System.out.printf("%d스트라이크\n", strikeCount);
+        System.out.printf("%d스트라이크", strikeCount);
     }
 
     private void printHint(int strikeCount, int ballCount) {
@@ -39,6 +39,7 @@ public class FeedbackAssistant {
             this.printWhiteSpace();
             this.printStrike(strikeCount);
         }
+        System.out.print("\n");
     }
 
     public void giveHintToUser(String userInput, String answer) {
@@ -58,4 +59,5 @@ public class FeedbackAssistant {
         }
         this.printHint(strikeCount, ballCount);
     }
+
 }

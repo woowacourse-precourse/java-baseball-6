@@ -30,19 +30,13 @@ public class BaseballGame {
         this.answer = answerGenerator.generateAnswer();
     }
 
-    private void runGame() throws IllegalArgumentException {
+    public void runGame() throws IllegalArgumentException {
         this.generateAnswer();
-//        feedbackAssistant.printString(this.answer); // 테스트 확인 용
         while (endOfGame != true){
             if (this.evaluator.evaluateUserInput(this.answer) == true)
                 break;
             else
                 continue;
         }
-//        evaluator -> 게임 재시작 or 종료 입력 받음
-//        종료시 리턴, 재시작시 runGame 호출(재귀) -> 재귀로 인해 스택 메모리 누적이
-//        걱정 되긴 한다. 딱히 크게 저장하는 게 없으니 규모가 작은 게임(1억번 재시작 하는 사람은 없을거야..)
-//        에선 괜찮을 거라 판단.
     }
-
 }

@@ -34,11 +34,11 @@ public class Evaluator {
     }
 
     private static void isValidInput(String userInput) throws IllegalArgumentException {
-        isLegthValid(userInput);
+        isLengthValid(userInput);
         isMadeOfUniqueDigit(userInput);
     }
 
-    private static void isLegthValid(String userInput) throws IllegalArgumentException {
+    private static void isLengthValid(String userInput) throws IllegalArgumentException {
         if (userInput.length() != 3)
             throw new IllegalArgumentException("서로 다른 3자리 수를 입력하세요. 게임을 종료합니다.");
     }
@@ -54,4 +54,20 @@ public class Evaluator {
         }
     }
 
+    private static String askUserNewGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
+
+    public static Boolean askForNewGame() throws IllegalArgumentException {
+        String[] retryAnswer = {"1", "2"};
+
+        String userInput = askUserNewGame();
+        if ( userInput.equals(retryAnswer[0]))
+            return true;
+        else if ( userInput.equals(retryAnswer[1]))
+            return false;
+        else
+            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
+    }
 }
