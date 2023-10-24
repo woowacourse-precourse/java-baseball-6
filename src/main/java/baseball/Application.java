@@ -6,8 +6,10 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         BaseballGame baseballGame = new BaseballGame();
-        baseballGame.gameStart();
-        baseballGame.inGame();
-        baseballGame.retryCheck();
+
+        do {
+            baseballGame.gameStart();
+            baseballGame.inGame();
+        } while (baseballGame.retryCheck());
     }
 }

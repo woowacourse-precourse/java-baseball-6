@@ -5,7 +5,6 @@ import static baseball.view.OutputView.gameStartMessage;
 import static baseball.view.OutputView.printCelebrate;
 import static baseball.view.OutputView.userInputMessage;
 
-import baseball.Application;
 import baseball.model.BallStrikeCounter;
 import baseball.model.ComputerNumber;
 import baseball.model.RetryCheck;
@@ -16,11 +15,12 @@ import java.util.List;
 
 
 public class BaseballGame {
-    private final BallStrikeCounter ballStrikeCounter = new BallStrikeCounter();
+    private final BallStrikeCounter ballStrikeCounter;
     private List<Integer> computerNumber;
 
     public BaseballGame() {
         this.computerNumber = new ArrayList<>();
+        this.ballStrikeCounter = new BallStrikeCounter();
     }
 
     public void gameStart() {
@@ -58,11 +58,9 @@ public class BaseballGame {
         printCelebrate();
     }
 
-    public void retryCheck() {
+    public boolean retryCheck() {
         RetryCheck retryCheck = new RetryCheck(userInput());
 
-        if (retryCheck.isRetry()) {
-            Application.main(new String[]{});
-        }
+        return retryCheck.isRetry();
     }
 }
