@@ -3,7 +3,7 @@ package baseball.utils;
 import java.util.List;
 
 public class ScoreCounter {
-    public static int countStrike(List<Integer> computer, List<Integer> user) {
+    public int countStrike(List<Integer> computer, List<Integer> user) {
         int count = 0;
         for (int i = 0; i < user.size(); i++) {
             if (computer.get(i).equals(user.get(i))) {
@@ -13,7 +13,7 @@ public class ScoreCounter {
         return count;
     }
 
-    public static int countBall(List<Integer> computer, List<Integer> user) {
+    public int countBall(List<Integer> computer, List<Integer> user) {
         int count = 0;
         for (int i = 0; i < computer.size(); i++) {
             for (int j = 0; j < user.size(); j++) {

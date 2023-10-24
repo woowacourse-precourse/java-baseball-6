@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Game {
 
-    private static Printer printer = new Printer();
-    private static ScoreCounter scoreCounter = new ScoreCounter();
-    private static InputReader inputReader = new InputReader();
+    private final Printer printer = new Printer();
+    private final ScoreCounter scoreCounter = new ScoreCounter();
+    private final InputReader inputReader = new InputReader();
 
     public void start() {
         printer.printGameStart();
