@@ -78,5 +78,4 @@ public class Application {
         }
         return result;
     }//baseball 메소드
-
 }
