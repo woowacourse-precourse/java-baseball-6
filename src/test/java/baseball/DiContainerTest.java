@@ -7,7 +7,7 @@ import baseball.controller.Controller;
 import baseball.controller.UserController;
 import baseball.service.GameService;
 import baseball.util.Validation;
-import baseball.view.ComputerView;
+import baseball.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +36,7 @@ class DiContainerTest {
 
         //when
         Controller userControllerGenerateByDI = diContainer.userController();
-        Controller userControllerGenerateByNew = new UserController(new ComputerView(),
+        Controller userControllerGenerateByNew = new UserController(new InputView(),
                 new GameService(new Validation()));
 
         //then
