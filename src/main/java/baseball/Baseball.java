@@ -9,11 +9,11 @@ public class Baseball {
     public void run() {
         boolean error = false;
 
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNums = createRandomNumber();
 
         while (true) {
-            System.out.print("숫자를 입력해주세요. : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String userNum = camp.nextstep.edu.missionutils.Console.readLine();
 
             if (!validation.runException(userNum, "gaming")) {
