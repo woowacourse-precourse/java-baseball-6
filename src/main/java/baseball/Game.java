@@ -1,8 +1,8 @@
 package baseball;
 
 public class Game {
-    private Player player;
-    private Questioner questioner;
+    private final Player player;
+    private final Questioner questioner;
 
     public Game(Player player, Questioner questioner) {
         this.player = player;
