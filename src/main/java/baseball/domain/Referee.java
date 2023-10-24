@@ -8,8 +8,4 @@ public class Referee {
 		return computerBalls.compareBalls(playerBalls);
 	}
 
-	public String notifyGameResult(GameResult gameResult) {
-		return GameResultMessage.createMessage(gameResult);
-	}
-
 }

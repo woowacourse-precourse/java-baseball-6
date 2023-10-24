@@ -47,27 +47,4 @@ class RefereeTest {
 		);
 	}
 
-	@ParameterizedTest
-	@MethodSource("notifyGameResultData")
-	@DisplayName("게임 결과를 메시지로 생성")
-	void givenGameResult_whenNotifyGameResult_thenReturnMessage(List<Integer> numbers, String expected) {
-		// given
-		Balls playerBalls = new Balls(numbers);
-
-		// when
-		String result = referee.notifyGameResult(referee.judge(computerBalls, playerBalls));
-
-		// then
-		assertThat(result).isEqualTo(expected);
-	}
-
-	private static Stream<Arguments> notifyGameResultData() {
-		return Stream.of(
-				Arguments.of(List.of(1, 4, 5), "1스트라이크"),
-				Arguments.of(List.of(2, 4, 5), "1볼"),
-				Arguments.of(List.of(1, 3, 5), "1볼 1스트라이크"),
-				Arguments.of(List.of(4, 5, 6), "낫싱")
-		);
-	}
-
 }
