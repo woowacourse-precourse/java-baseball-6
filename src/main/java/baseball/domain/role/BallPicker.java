@@ -1,5 +1,7 @@
 package baseball.domain.role;
 
+import baseball.domain.ball.Ball;
+
 public interface BallPicker {
-    int pickNumberInRange(int minValues, int maxValues) throws IllegalAccessException;
+    Ball pickNumberInRange(int minValues, int maxValues) throws IllegalAccessException;
 }

@@ -3,16 +3,19 @@ package baseball.domain.ball;
 import java.util.Objects;
 
 public class Ball {
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
+
     private final int value;
 
-    public Ball(int value, int minRange, int maxRange) {
-        valid(value, minRange, maxRange);
+    public Ball(int value) {
+        valid(value);
         this.value = value;
     }
 
-    private void valid(int value, int minRange, int maxRange) {
-        if (value < minRange || value > maxRange) {
-            throw new IllegalArgumentException("숫자는 " + minRange + " ~ " + maxRange + "까지 사용이 가능합니다.");
+    private void valid(int value) {
+        if (value < MIN_RANGE || value > MAX_RANGE) {
+            throw new IllegalArgumentException("숫자는 " + MIN_RANGE + " ~ " + MAX_RANGE + "까지 사용이 가능합니다.");
         }
     }
 

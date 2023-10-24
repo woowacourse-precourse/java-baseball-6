@@ -81,8 +81,8 @@ class InputTest {
 
         Result result = inputBalls.compare(ballsFixture);
 
-        assertEquals(3, result.getStrike());
-        assertEquals(0, result.getBall());
+        assertEquals(3, result.strike());
+        assertEquals(0, result.ball());
     }
 
     @Test
@@ -98,8 +98,8 @@ class InputTest {
 
         Result result = inputBalls.compare(ballsFixture);
 
-        assertEquals(1, result.getStrike());
-        assertEquals(0, result.getBall());
+        assertEquals(1, result.strike());
+        assertEquals(0, result.ball());
     }
 
     @Test
@@ -115,8 +115,8 @@ class InputTest {
 
         Result result = inputBalls.compare(ballsFixture);
 
-        assertEquals(0, result.getStrike());
-        assertEquals(1, result.getBall());
+        assertEquals(0, result.strike());
+        assertEquals(1, result.ball());
     }
 
     @Test
@@ -132,8 +132,8 @@ class InputTest {
 
         Result result = inputBalls.compare(ballsFixture);
 
-        assertEquals(1, result.getStrike());
-        assertEquals(1, result.getBall());
+        assertEquals(1, result.strike());
+        assertEquals(1, result.ball());
     }
 
     @Test
@@ -149,7 +149,7 @@ class InputTest {
 
         Result result = inputBalls.compare(ballsFixture);
 
-        assertEquals(0, result.getStrike());
-        assertEquals(0, result.getBall());
+        assertEquals(0, result.strike());
+        assertEquals(0, result.ball());
     }
 }

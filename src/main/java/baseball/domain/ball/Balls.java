@@ -3,47 +3,63 @@ package baseball.domain.ball;
 import baseball.domain.result.Result;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class Balls {
+    private static final int ROUNDS = 3;
+    private static final String STRIKE = "strike";
+    private static final String BALL = "ball";
+
     private final List<Ball> values;
 
-    public Balls(List<Ball> values, int rounds) {
-        valid(values, rounds);
+    public Balls(List<Ball> values) {
+        valid(values);
         this.values = new ArrayList<>(values);
     }
 
-    private void valid(List<Ball> values, int rounds) {
-        if (values.size() < rounds) {
-            throw new IllegalArgumentException("입력된 숫자가" + rounds + "개 미만입니다.");
-        } else if (values.size() > rounds) {
-            throw new IllegalArgumentException("입력된 숫자가" + rounds + "개 초과입니다.");
+    private void valid(List<Ball> values) {
+        validSize(values);
+        validDuplicate(values);
+    }
+
+    private void validSize(List<Ball> values) {
+        if (values.size() < ROUNDS) {
+            throw new IllegalArgumentException("입력된 숫자가" + ROUNDS + "개 미만입니다.");
+        } else if (values.size() > ROUNDS) {
+            throw new IllegalArgumentException("입력된 숫자가" + ROUNDS + "개 초과입니다.");
         }
     }
+
+    private void validDuplicate(List<Ball> values) {
+        List<Ball> distinctList = values.stream().distinct().toList();
+
+        if (values.size() != distinctList.size()) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+    }
+
 
     public Result compare(Balls computerBalls) {
         return computerBalls.compare(this.values);
     }
 
     private Result compare(List<Ball> userValues) {
-        Result result = new Result();
+        Map<String, Integer> map = new HashMap<>();
+        map.put(STRIKE, 0);
+        map.put(BALL, 0);
 
-        for (int i = 0; i < userValues.size(); i++) {
-            Ball origin = values.get(i);
-            Ball target = userValues.get(i);
+        IntStream.range(0, userValues.size())
+                .filter(i -> values.contains(userValues.get(i)))
+                .forEach(i -> checkPosition(values.get(i), userValues.get(i), map));
 
-            if (values.contains(target)) {
-                checkPosition(result, origin, target);
-            }
-        }
-
-        return result;
+        return new Result(map.get(STRIKE), map.get(BALL));
     }
 
-    private void checkPosition(Result result, Ball origin, Ball target) {
+    private void checkPosition(Ball origin, Ball target, Map<String, Integer> map) {
         if (origin.equals(target)) {
-            result.increaseStrike();
+            map.put(STRIKE, map.get(STRIKE) + 1);
         } else {
-            result.increaseBall();
+            map.put(BALL, map.get(BALL) + 1);
         }
     }
 }

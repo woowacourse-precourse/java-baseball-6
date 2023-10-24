@@ -1,10 +1,11 @@
 package baseball.domain.role;
 
+import baseball.domain.ball.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomBallPicker implements BallPicker {
     @Override
-    public int pickNumberInRange(int minValues, int maxValues) {
-        return Randoms.pickNumberInRange(minValues, maxValues);
+    public Ball pickNumberInRange(int minValues, int maxValues) {
+        return new Ball(Randoms.pickNumberInRange(minValues, maxValues));
     }
 }

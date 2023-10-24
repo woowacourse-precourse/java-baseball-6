@@ -8,16 +8,12 @@ import java.util.List;
 
 public class BallsFixture {
     private List<Ball> values;
-    private int rounds = 3;
 
     private BallsFixture() {
-        int minRange = 1;
-        int maxRange = 9;
-
         values = new ArrayList<>();
-        values.add(new Ball(4, minRange, maxRange));
-        values.add(new Ball(2, minRange, maxRange));
-        values.add(new Ball(5, minRange, maxRange));
+        values.add(new Ball(4));
+        values.add(new Ball(2));
+        values.add(new Ball(5));
     }
 
     public static BallsFixture fixture() {
@@ -29,12 +25,7 @@ public class BallsFixture {
         return this;
     }
 
-    public BallsFixture rounds(int rounds) {
-        this.rounds = rounds;
-        return this;
-    }
-
     public Balls build() {
-        return new Balls(this.values, this.rounds);
+        return new Balls(this.values);
     }
 }

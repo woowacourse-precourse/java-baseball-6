@@ -9,23 +9,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    private static final int ROUNDS = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
+
     private final Balls balls;
 
     private Computer(Balls balls) {
         this.balls = balls;
     }
 
-    public static Computer generate(BallPicker ballPicker, int rounds, int minValues, int maxValues) throws IllegalAccessException {
+    public static Computer generate(BallPicker ballPicker) throws IllegalAccessException {
         List<Ball> ballList = new ArrayList<>();
 
-        while (ballList.size() < rounds) {
-            int randomBall = ballPicker.pickNumberInRange(minValues, maxValues);
-            Ball ball = new Ball(randomBall, minValues, maxValues);
+        while (ballList.size() < ROUNDS) {
+            Ball ball = ballPicker.pickNumberInRange(MIN_RANGE, MAX_RANGE);
 
-            ballList.add(ball);
+            pickBall(ballList, ball);
         }
 
-        return new Computer(new Balls(ballList, rounds));
+        return new Computer(new Balls(ballList));
+    }
+
+    private static void pickBall(List<Ball> ballList, Ball ball) {
+        if (!ballList.contains(ball)) {
+            ballList.add(ball);
+        }
     }
 
     public Result compare(Balls userBalls) {

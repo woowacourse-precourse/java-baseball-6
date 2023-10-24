@@ -19,8 +19,8 @@ class ConverterTest {
 
         Result result = convertBall.compare(balls);
 
-        assertEquals(3, result.getStrike());
-        assertEquals(0, result.getBall());
+        assertEquals(3, result.strike());
+        assertEquals(0, result.ball());
     }
 
     @Test
