@@ -5,7 +5,7 @@ public class Validation {
     private static final String restartErrorMessage = "1 또는 2로만 입력해주세요.";
 
     // 제시한 답에 대한 유효성 검사
-    public void isValidAnswer(String arg) {
+    public static void isValidAnswerTarget(String arg) {
         checkEmpty(arg, answerErrorMessage);
         checkNumber(arg, answerErrorMessage);
         checkIncludeZero(arg);
@@ -14,7 +14,7 @@ public class Validation {
     }
 
     // 재시작에 대한 유효성 검사
-    public boolean isValidAnswer2(String arg) {
+    public static boolean isValidAnswerReset(String arg) {
         checkEmpty(arg, restartErrorMessage);
         checkNumber(arg, restartErrorMessage);
 
