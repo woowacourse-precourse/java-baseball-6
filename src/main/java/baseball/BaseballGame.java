@@ -20,7 +20,7 @@ public class BaseballGame {
         while (true) {
             BaseballNumber userNumber = inputBaseballNumber();
             BaseballCount baseballCount = checkBaseballResult(computerNumber, userNumber);
-            baseballCount.printBaseballResult();
+            System.out.println(baseballCount.getResultBriefing());
             if (baseballCount.isAllStrike()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
