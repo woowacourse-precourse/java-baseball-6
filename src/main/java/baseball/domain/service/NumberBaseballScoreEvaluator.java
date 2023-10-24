@@ -1,5 +1,7 @@
 package baseball.domain.service;
 
+import baseball.domain.model.ScoreMessage;
+
 public class NumberBaseballScoreEvaluator {
 
 
@@ -31,25 +33,25 @@ public class NumberBaseballScoreEvaluator {
     }
 
     private String formatResult(int strikes, int balls) {
+        if (strikes == 0 && balls == 0) {
+            return ScoreMessage.NOTHING.formatMessage(0);
+        }
+
         StringBuilder result = new StringBuilder();
 
-        if (strikes == 0 && balls == 0) {
-            return "낫싱";
-        }
-
         if (balls > 0) {
-            result.append(balls).append("볼");
-        }
-
-        if (strikes > 0 && balls > 0) {
-            result.append(" ");
+            result.append(ScoreMessage.BALL.formatMessage(balls));
         }
 
         if (strikes > 0) {
-            result.append(strikes).append("스트라이크");
+            if (result.length() > 0) {
+                result.append(" ");
+            }
+            result.append(ScoreMessage.STRIKE.formatMessage(strikes));
         }
 
         return result.toString();
     }
+
 
 }
