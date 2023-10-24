@@ -19,8 +19,12 @@ public class Application {
         List<Validator> validators = Arrays.asList(new LengthValidator(), new NoDuplicateValidator(), new RangeValidator());
         GameUI gameUI = new GameUI();
         GameLogic gameLogic = new GameLogic(validators);
-        Game game = new Game(gameUI, gameLogic);
+        Computer computer = new Computer();
+        User user = new User();
+
+        Game game = new Game(gameUI, gameLogic, computer, user);
 
         game.startGame();
+
     }
 }

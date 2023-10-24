@@ -7,21 +7,23 @@ import camp.nextstep.edu.missionutils.Console;
 import static baseball.game.GameUI.displayCorrectAnswerMessage;
 
 public class Game {
-    private User user;
-    private Computer computer;
+
+    private final User user;
+    private final Computer computer;
     private final GameUI gameUI;
     private final GameLogic gameLogic;
+    private static final int EXITCOMMAND = 2;
 
-    public Game(GameUI gameUI, GameLogic gameLogic) {
-        this.computer = new Computer();
-        this.user = new User();
+    public Game(GameUI gameUI, GameLogic gameLogic, Computer computer, User user) {
+        this.computer = computer;
+        this.user = user;
         this.gameUI = gameUI;
         this.gameLogic = gameLogic;
     }
 
     private static boolean isWantToQuitGame() {
         int exitCommand = Integer.parseInt(Console.readLine());
-        return exitCommand == 2;
+        return exitCommand == EXITCOMMAND;
     }
 
     private String inferHint() {
@@ -61,5 +63,4 @@ public class Game {
     public void startGame() {
         playBaseBallGame();
     }
-
 }

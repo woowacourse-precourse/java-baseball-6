@@ -10,6 +10,7 @@ public class Computer {
     public Computer() {
         this.computerNumber = new ArrayList<>();
         makeRandomComputerNumber();
+        System.out.println("computerNumber = " + computerNumber);
     }
 
     public ArrayList<Integer> getComputerNumber() {
