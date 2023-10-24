@@ -3,6 +3,7 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -18,9 +19,15 @@ public class RandomNumber {
     }
 
     public List<Integer> make() {
-        return IntStream.range(0, 3)
-                .mapToObj(i -> Randoms.pickNumberInRange(1, 9))
-                .collect(Collectors.toList());
+
+        while (num.size() < 3) {
+            int tmp = Randoms.pickNumberInRange(1, 9);
+            if (!num.contains(tmp)) {
+                num.add(tmp);
+            }
+        }
+        return num;
     }
+
 
 }
