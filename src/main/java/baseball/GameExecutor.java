@@ -1,9 +1,9 @@
 package baseball;
 
 public class GameExecutor {
-    private BaseballGame game;
+    private Game game;
 
-    public GameExecutor(BaseballGame game) {
+    public GameExecutor(Game game) {
         this.game = game;
     }
 

@@ -3,7 +3,7 @@ package baseball;
 
 import java.util.regex.Pattern;
 
-public class BaseballGame {
+public class BaseballGame implements Game{
     private final BaseballNumber numbers;
     private final GameRandom random;
     private final GameInputInterface in;
@@ -17,7 +17,7 @@ public class BaseballGame {
         this.out = out;
     }
 
-    public BaseballGame createNewGame() {
+    public Game createNewGame() {
         return new BaseballGame(random, in, out);
     }
 
