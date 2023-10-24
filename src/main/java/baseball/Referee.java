@@ -12,7 +12,7 @@ public class Referee {
                 .count();
         int ballCount = (int) IntStream.range(0, BALL_LENGTH)
                 .filter(idx -> playerNumbers.get(idx) != answerNumbers.get(idx) &&
-                                        answerNumbers.contains(playerNumbers.get(idx)))
+                        answerNumbers.contains(playerNumbers.get(idx)))
                 .count();
         return new BallCount(strikeCount, ballCount);
     }

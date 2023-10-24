@@ -5,6 +5,7 @@ import java.util.List;
 
 public abstract class BaseballNumbersSlot {
     protected List<Integer> numbers = new ArrayList<>();
+
     public abstract void updateNumbers();
 
     public int get(int index) {

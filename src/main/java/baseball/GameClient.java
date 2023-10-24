@@ -30,7 +30,6 @@ public class GameClient {
     }
 
     public void playBaseball() {
-
         BallCount ballCount;
         computer.refreshAnswer();
 
