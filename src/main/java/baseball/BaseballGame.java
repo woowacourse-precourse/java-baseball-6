@@ -72,7 +72,15 @@ public class BaseballGame {
     }
 
     private void calculateScore(Answer answer, PlayerNumbers playerNumbers) {
-        
+        for (int index = 0; index < Answer.SIZE; index++) {
+            if (answer.contains(playerNumbers.getByIndex(index))) {
+                if (answer.getByIndex(index).equals(playerNumbers.getByIndex(index))) {
+                    Score.STRIKE.addCount();
+                    continue;
+                }
+                Score.BALL.addCount();
+            }
+        }
     }
 
     private Answer initializeAnswer() {
