@@ -14,13 +14,21 @@ public class Application {
     private static final String RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 
+    // 사용자 수를 String 배열 -> Int 리스트로 변환하는 함수
+    public static List<Integer> strArrayTointList(String[] userInput){
 
-    public static void main(String[] args) {
+        // str 배열 -> int 배열로 변환
+        int[] userInput_int = Arrays.stream(userInput).mapToInt(Integer::parseInt).toArray();
 
-        // 게임 시작 문구 출력
-        System.out.println(START_GAME);
+        // int 배열 -> int 리스트 변환
+        List<Integer> userInput_result = new ArrayList<>();
+        userInput_result = Arrays.stream(userInput_int).boxed().collect(Collectors.toList());
 
-        // 컴퓨터 수 생성
+        return userInput_result;
+    }
+
+    // 컴퓨터 수 생성하는 메소드
+    public static List<Integer> computerNumberGenerator(){
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -30,6 +38,18 @@ public class Application {
             }
         }
 
+        return computer;
+    }
+
+
+    public static void main(String[] args) {
+
+        // 게임 시작 문구 출력
+        System.out.println(START_GAME);
+
+        // 컴퓨터 수 생성
+        List<Integer> computerNum = computerNumberGenerator();
+
         // 게임 반복 시작점
         while (true) {
 
@@ -37,15 +57,10 @@ public class Application {
             System.out.println(GET_USER_NUMBER);
             String[] userInput_str = readLine().split("");
 
-            // str 배열 -> int 배열로 변환
-            int[] userInput_int = Arrays.stream(userInput_str).mapToInt(Integer::parseInt).toArray();
+            // 사용자 수 strArray -> intList 변환
+            List<Integer> userInput = strArrayTointList(userInput_str);
 
-            // int 배열 -> int 리스트 변환
-            List<Integer> userInput = new ArrayList<>();
-            userInput = Arrays.stream(userInput_int).boxed().collect(Collectors.toList());
-
-
-            // 예외 발생 후 종료하기
+            // 잘못된 입력 값 체크 -> 예외 발생 후 종료
             List<Integer> temp = new ArrayList<>();
 
             try {
@@ -65,7 +80,7 @@ public class Application {
                 }
 
                 // 3자리 숫자가 아닐 경우                
-                if (userInput_int.length != 3) {
+                if (userInput.size() != 3) {
                     throw new IllegalArgumentException();
                 }
                 
@@ -80,18 +95,17 @@ public class Application {
             String nothing = "";
             List<Integer> ballList = new ArrayList<>();
 
-            System.out.println("computer num:" + computer);
+            System.out.println("computer num:" + computerNum);
 
             // 스트라이크 체크
             for (int i = 0; i < 3; i++) {
-                if (userInput.get(i).equals(computer.get(i))) {
+                if (userInput.get(i).equals(computerNum.get(i))) {
                     strike += 1;
                     continue;
                 }
                 // 볼 체크
-                if (Collections.frequency(computer, userInput.get(i)) > 0) {
+                if (Collections.frequency(computerNum, userInput.get(i)) > 0) {
                     ball += 1;
-                    //ballList.add(userInput.get(i));
                 }
             }
 
@@ -101,34 +115,27 @@ public class Application {
             }
 
 
-            // -만약 3스트라이크면 게임 종료
+            // 3 스트라이크 일 경우
             String user_answer = "";
 
             if (strike == 3) {
-                System.out.println(strike + "스트라이크");
-                System.out.println(END_GAME);
-                System.out.println(RESTART_OR_END);
+                System.out.println(strike + "스트라이크" + "\n" + END_GAME + "\n" + RESTART_OR_END);
                 user_answer = readLine();
+
+                // 게임 재시작
                 if (user_answer.equals("1")) {
 
-                    // 컴퓨터 수 생성
-                    computer = new ArrayList<>();
-
-                    while (computer.size() < 3) {
-                        int randomNumber = pickNumberInRange(1, 9);
-                        if (!computer.contains(randomNumber)) {
-                            computer.add(randomNumber);
-                        }
-                    }
-
+                    // 컴퓨터 수 생성 후 처음으로 돌아가기
+                    computerNum = computerNumberGenerator();
                     continue;
 
+                // 게임 종료
                 } else if (user_answer.equals("2")) {
                     return;
                 }
             }
 
-            // -3스트라이크 아닐 경우, 예측 결과 출력
+            // 3 스트라이크 아닐 경우, 사용자 수-컴퓨터 수 판단 결과 출력
             else {
                 String ball_res = (ball > 0) ? (ball + "볼 ") : "";
                 String strike_res = (strike > 0) ? (strike + "스트라이크") : "";
