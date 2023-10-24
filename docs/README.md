@@ -32,3 +32,6 @@
     * [x] : 야구 게임을 실행한다. (모든 테스트 성공!)
         * [x] : Console 작동을 위한 ConsoleService 구현체인 DefaultConsoleService 생성
         * [x] : Randoms 작동을 위한 RandomService 구현체인 DefaultRandomService 생성
+
+* `BasBallGameController`
+    * [x] : Application은 2개의 책임을 가지고 있다. -> 3스트라이크가 나올때까지 게임을 하는 책임을 Controller가 가져가자!
