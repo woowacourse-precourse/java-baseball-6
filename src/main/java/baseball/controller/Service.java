@@ -23,9 +23,7 @@ public class Service {
         }
         initializeGame();
         while (!gameStop) {
-            ball = 0;
-            strike = 0;
-            System.out.print(OutputView.INPUT_MESSAGE);
+            initializeAskNumbers();
             userNumbers = getUserInput(inputView.getUserGameNumber());
             compareComputerAndUser(userNumbers, computerNumbers);
             if (strike == 3) {
@@ -37,6 +35,12 @@ public class Service {
                 scoringGame(ball, strike);
             }
         }
+    }
+
+    public void initializeAskNumbers() {
+        ball = 0;
+        strike = 0;
+        System.out.print(OutputView.INPUT_MESSAGE);
     }
 
     public void initializeGame() {
