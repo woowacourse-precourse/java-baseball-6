@@ -42,7 +42,6 @@ public class BaseballGames implements Game {
             GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
             Message resultMessage = messageGenerateService.makeMessage(gameResult);
             resultMessage.printGameResultMessage();
-            ioAdapter.printMessage(strikeComment);
             if (resultMessage.isResultMessageSameStrikeMessage(strikeComment.getMessage())) {
                 ioAdapter.printMessage(gameEndComment);
                 break;
