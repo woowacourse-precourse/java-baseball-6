@@ -1,5 +1,5 @@
 package baseball;
 
-enum Hint {
+public enum Hint {
     BALL, STRIKE, NOTHING
 }
