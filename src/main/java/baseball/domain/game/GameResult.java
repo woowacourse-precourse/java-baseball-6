@@ -9,11 +9,6 @@ public class GameResult {
         this.strike = strike;
         this.ball = ball;
     }
-    
-    public boolean hasNoting() {
-        return strike == 0 && ball == 0;
-    }
-
     public boolean hasStrike() {
         return strike > 0;
     }
