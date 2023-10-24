@@ -14,9 +14,6 @@
 **난수 만들기 (RandomNumberMaker.class)**
 - 1~9까지 서로 다른 임의의 수 3개를 생성하고 반환한다.
 
-**난수 검증기 (RandomNumberValidator.class)**
-- 만들어진 난수가 1~9까지의 서로 다른 수인지 검증한다.
-
 **입력 메시지 보여주기 (InputMsgView)**
 - 게임 시작 메시지를 출력한다.
 - 숫자 입력을 위한 메시지를 출력한다.
@@ -31,7 +28,8 @@
 - 3개의 숫자를 모두 맞힌 경우, 게임 종료 메시지를 반환한다.
 
 **플레이어의 숫자 검증하기 (UserInputValidator.class)**
-- 플레이어가 값을 잘못 입력한 경우, IllegalArgumentException을 발생시킨다.
+- 플레이어가 3개의 숫자를 잘못 입력한 경우, IllegalArgumentException을 발생시킨다.
+- 플레이어가 게임 재시작 입력 값을 잘못 입력한 경우, IllegalArgumentException을 발생시킨다.
 
 **볼과 스트라이크 계산기 (BallStrikeCounter.class)**
 - 플레이어의 숫자와 상대방의 숫자를 비교하여 볼과 스트라이크 개수를 계산한다.
