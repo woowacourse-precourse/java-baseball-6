@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
->>>>>>> 98c739d (feat: setup precourse baseball project)
 class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
