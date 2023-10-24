@@ -47,15 +47,6 @@ public class User {
         }
     }
 
-    /*private void checkOnlyNumber(String userInput) {
-        for (int i = 0; i < ANSWER_SIZE; i++) {
-            int num = (int)userInput.charAt(i) - 48;
-            if(!(num >= ANSWER_MIN_NUM && num <= ANSWER_MAX_NUM)) {
-                throw new IllegalArgumentException("1~9사이 숫자만 입력 가능합니다.");
-            }
-        }
-    }*/
-
     private void checkOnlyNumber(String userInput) {
         for (int i = 0; i < ANSWER_SIZE; i++) {
             char num = userInput.charAt(i);
