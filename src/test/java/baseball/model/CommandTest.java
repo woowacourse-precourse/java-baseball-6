@@ -21,7 +21,7 @@ class CommandTest {
     }
 
     @DisplayName("게임 재시작/종료 입력 예외 테스트")
-    @ParameterizedTest(name = "{index} {displayName} value={0}, {1}")
+    @ParameterizedTest(name = "{index} {displayName} value={0}")
     @ValueSource(strings = {"3", "0", "", "abd"})
     void checkInvalidateCommand(String value) {
         assertThatIllegalArgumentException()
