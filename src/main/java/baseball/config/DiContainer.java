@@ -5,6 +5,7 @@ import baseball.controller.UserController;
 import baseball.service.GameService;
 import baseball.util.Validation;
 import baseball.view.InputView;
+import baseball.view.OutputVIew;
 import baseball.view.View;
 
 public class DiContainer {
@@ -14,7 +15,7 @@ public class DiContainer {
     }
 
     public GameService gameService() {
-        return new GameService(validation());
+        return new GameService(validation(), outputView());
     }
 
     public Validation validation() {
@@ -23,5 +24,9 @@ public class DiContainer {
 
     public View inputView() {
         return new InputView();
+    }
+
+    public OutputVIew outputView() {
+        return new OutputVIew();
     }
 }
