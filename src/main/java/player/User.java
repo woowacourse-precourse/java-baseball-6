@@ -11,30 +11,22 @@ public class User implements BaseballPlayer {
 
     @Override
     public void inputBaseballNumbers() {
-        List<Integer> userInputBaseballNumbers = new ArrayList<>();
+        List<BaseballNumber> userInputBaseballNumbers = new ArrayList<>();
         String[] userInput = splitStringToArray();
 
         for (String inputNumber : userInput) {
-            validateIsNumeric(inputNumber);
-            userInputBaseballNumbers.add(Integer.parseInt(inputNumber));
+            BaseballNumber baseballNumber = new BaseballNumber(inputNumber);
+            userInputBaseballNumbers.add(baseballNumber);
         }
 
         this.baseballNumbers = new BaseballNumbers(userInputBaseballNumbers);
     }
 
     @Override
-    public List<Integer> getBaseballNumbers() {
+    public List<BaseballNumber> getPlayerBaseballNumbers() {
         return baseballNumbers.getBaseballNumbers();
     }
-
-    private void validateIsNumeric(String baseballNumber) {
-        try {
-            Integer.parseInt(baseballNumber);
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(ONLY_NUMBER);
-        }
-    }
-
+    
     private String[] splitStringToArray() {
         String userInput = Console.readLine();
         return userInput.split("");

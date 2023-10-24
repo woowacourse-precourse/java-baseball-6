@@ -13,7 +13,7 @@ public class Computer implements BaseballPlayer {
 
     @Override
     public void inputBaseballNumbers() {
-        List<Integer> computerBaseballNumber = new ArrayList<>();
+        List<BaseballNumber> computerBaseballNumber = new ArrayList<>();
 
         while (computerBaseballNumber.size() < BASEBALL_LENGTH) {
             addUniqueNumber(computerBaseballNumber);
@@ -23,15 +23,15 @@ public class Computer implements BaseballPlayer {
     }
 
     @Override
-    public List<Integer> getBaseballNumbers() {
+    public List<BaseballNumber> getPlayerBaseballNumbers() {
         return baseballNumbers.getBaseballNumbers();
     }
 
-    private void addUniqueNumber(List<Integer> baseballNumbers) {
-        Integer baseballNumber = Randoms.pickNumberInRange(MINT_NUMBER,
+    private void addUniqueNumber(List<BaseballNumber> baseballNumbers) {
+        int baseballNumber = Randoms.pickNumberInRange(MINT_NUMBER,
                 MAX_NUMBER);
-        if (!baseballNumbers.contains(baseballNumber)) {
-            baseballNumbers.add(baseballNumber);
+        if (!baseballNumbers.contains(new BaseballNumber(baseballNumber))) {
+            baseballNumbers.add(new BaseballNumber(baseballNumber));
         }
     }
 }

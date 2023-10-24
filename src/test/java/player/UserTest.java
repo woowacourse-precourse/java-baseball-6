@@ -40,7 +40,7 @@ public class UserTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"qwe", "asd", "zxc"})
-    @DisplayName("올바르지 않은 입력시 IllegalArgumentException 발생하는지")
+    @DisplayName("문자 입력시 IllegalArgumentException 발생하는지")
     void 플레이어_숫자_외_입력__예외_테스트(String input) {
         //given
         final String playerInput = input;

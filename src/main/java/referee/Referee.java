@@ -36,7 +36,8 @@ public class Referee {
         Message.printIntegerInputFromUserMessage();
         score.clearStrikeAndBall();
         user.inputBaseballNumbers();
-        score.calculateStrikeAndBall(user.getBaseballNumbers(), computer.getBaseballNumbers());
+        score.calculateStrikeAndBall(user.getPlayerBaseballNumbers(),
+                computer.getPlayerBaseballNumbers());
         Message.printHintMessage(score);
     }
 

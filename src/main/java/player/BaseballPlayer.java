@@ -6,5 +6,5 @@ public interface BaseballPlayer {
 
     void inputBaseballNumbers();
 
-    List<Integer> getBaseballNumbers();
+    List<BaseballNumber> getPlayerBaseballNumbers();
 }
