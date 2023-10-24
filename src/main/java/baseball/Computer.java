@@ -14,6 +14,5 @@ public class Computer {
                 this.numbers.add(randomNumber);
             }
         }
-        System.out.println(this.numbers);
     }
 }
