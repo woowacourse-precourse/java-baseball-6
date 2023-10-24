@@ -49,6 +49,10 @@ class Baseball {
 
         //사용자 값의 유효성 판단(no.3, no.4)
         Baseball userAns = Baseball.checkAnsValid(input);
+
+        //사용자 입력 값과 정답 비교(no.5)
+        Score score = new Score();
+        score.compareAnswer(answer, userAns);
     }
 
     private static String getUserInput() {
@@ -90,5 +94,30 @@ class Baseball {
             }
         }
         return true;
+    }
+}
+
+class Score {
+    int ball, strike;
+
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+
+    void compareAnswer(Baseball answer, Baseball userInput) {
+        char currentNum;
+
+        for (int i = 0; i < Baseball.LIMIT_DIGIT; i++) {
+            currentNum = answer.num.charAt(i);
+
+            if (!userInput.num.contains(currentNum + "")) {
+                continue;
+            }
+            if (i == userInput.num.indexOf(currentNum)) {
+                this.strike++;
+                continue;
+            }
+            this.ball++;
+        }
     }
 }
