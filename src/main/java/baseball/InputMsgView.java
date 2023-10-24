@@ -10,6 +10,6 @@ public class InputMsgView {
     }
 
     public void printInputNumberMsg() {
-        System.out.println(INPUT_NUMBER_MSG);
+        System.out.print(INPUT_NUMBER_MSG);
     }
 }
