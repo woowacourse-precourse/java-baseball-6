@@ -22,7 +22,7 @@ public class OutputView {
         if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
-        if (strike > 0 && strike < 3) {
+        if (strike > 0) {
             System.out.print(strike + "스트라이크");
         }
     }
