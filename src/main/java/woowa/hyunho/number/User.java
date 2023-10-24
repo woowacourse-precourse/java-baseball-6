@@ -1,16 +1,15 @@
 package woowa.hyunho.number;
 
+import java.util.List;
 import woowa.hyunho.handler.Random;
+import woowa.hyunho.utilities.Parse;
 
 public class User {
 	String randomNumber;
 	
-	public void setNumber() {
+	public List<Integer> generateUserNumberList() {
 		Random random = new Random();
 		randomNumber = random.randomNumberHandler();
-	}
-	
-	public String getNumber() {
-		return randomNumber;
+		return Parse.parseStringToIntList(randomNumber);
 	}
 }

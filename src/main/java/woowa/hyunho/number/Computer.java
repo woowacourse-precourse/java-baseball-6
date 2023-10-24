@@ -7,13 +7,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
 	List<Integer> computerRandomNumber;
 	
-	public void generateRandomNumber() {
+	public List<Integer> generateRandomNumber() {
 		computerRandomNumber = new ArrayList<>();
 		while (computerRandomNumber.size() < 3) {
 			int randomNumber = generateNumber();
 			addNumber(randomNumber);
 		}
 		System.out.println(computerRandomNumber);
+		return computerRandomNumber;
 	}
 	
 	private int generateNumber() {
@@ -23,9 +24,5 @@ public class Computer {
 	private void addNumber(int n) {
 		if (!computerRandomNumber.contains(n))
 			computerRandomNumber.add(n);
-	}
-	
-	public List<Integer> getRandomNumber() {
-		return computerRandomNumber;
 	}
 }

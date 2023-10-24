@@ -1,5 +1,6 @@
 package woowa.hyunho.process;
 
+import java.util.List;
 import woowa.hyunho.game.End;
 import woowa.hyunho.game.Game;
 import woowa.hyunho.number.Computer;
@@ -7,9 +8,9 @@ import woowa.hyunho.number.Computer;
 public class Process {
 	static final int RESTART = 1;
 	static final int GAMEOVER = 2;
-	Computer computer = new Computer();
-	Game game = new Game();
-	End end = new End();
+	List<Integer> computerRandomNumber;
+	Game game;
+	End end;
 	
 	public void start( ) {
 		setGame();
@@ -18,11 +19,14 @@ public class Process {
 	}
 	
 	private void setGame() {
-		computer.generateRandomNumber();
+		game = new Game();
+		end = new End();
+		Computer computer = new Computer();
+		computerRandomNumber = computer.generateRandomNumber();
 	}
 	
 	private void startGame() {
-		game.startBaseball(computer);
+		game.startBaseball(computerRandomNumber);
 	}
 	
 	private void endGame() {
@@ -37,9 +41,6 @@ public class Process {
 	}
 	
 	private void restartGame() {
-		this.computer = new Computer();
-		this.game = new Game();
-		this.end = new End();
 		start();
 	}
 }

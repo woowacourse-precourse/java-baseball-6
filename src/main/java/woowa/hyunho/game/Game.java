@@ -3,55 +3,45 @@ package woowa.hyunho.game;
 import java.util.List;
 import woowa.hyunho.messages.Messages;
 import woowa.hyunho.number.User;
-import woowa.hyunho.number.Computer;
 import woowa.hyunho.utilities.Compare;
-import woowa.hyunho.utilities.Parse;
 
 public class Game {
 	static final int NUMBER_LENGTH = 3;
+	static final int INDEXOFSTRIKE = 0;
+	static final int INDEXOFBALL = 1;
+	List<Integer> computerNumberList;
+	List<Integer> userNumberList;
 	
-	int strike = 0;
-	int ball = 0;
-	User user = new User();
-	Computer computer;
-	
-	public void startBaseball(Computer computer) {
-		this.computer = computer;
-		do {
-			getNumber();
-			playBaseball();
-		} while(strike != NUMBER_LENGTH);
+	public void startBaseball(List<Integer> computerRandomNumber) {
+		computerNumberList = computerRandomNumber;
+		User user = new User();
+		playBaseBall(user, computerRandomNumber);
 		gameClear();
 	}
 	
-	private void getNumber() {
+	private void playBaseBall(User user, List<Integer> computerRandomNumber) {
+		int strike = 0;
+		int ball = 0;
+		do {
+			userNumberList = getUserNumber(user);
+			List<Integer> strikeAndBall = Compare.countStrikeAndBall(computerNumberList, userNumberList);
+			strike = getStrike(strikeAndBall);
+			ball = getBall(strikeAndBall);
+			Messages.printResult(ball, strike);
+		} while(strike != NUMBER_LENGTH);
+	}
+	
+	private List<Integer> getUserNumber(User user) {
 		Messages.askInput();
-		user.setNumber();
-	}
-	
-	private void playBaseball() {
-		List<Integer> computerNumberList = getComputerNumberList();
-		List<Integer> userNumberList = getUserNumberList();
-		List<Integer> result = Compare.countResult(computerNumberList, userNumberList);
-		strike = getStrike(result);
-		ball = getBall(result);
-		Messages.printResult(ball, strike);
-	}
-	
-	private List<Integer> getComputerNumberList() {
-		return computer.getRandomNumber();
-	}
-	
-	private List<Integer> getUserNumberList() {
-		return Parse.parseStringToIntList(user.getNumber());
+		return user.generateUserNumberList();
 	}
 	
 	private int getStrike(List<Integer> result) {
-		return result.get(0);
+		return result.get(INDEXOFSTRIKE);
 	}
 	
 	private int getBall(List<Integer> result) {
-		return result.get(1);
+		return result.get(INDEXOFBALL);
 	}
 	
 	private void gameClear() {
