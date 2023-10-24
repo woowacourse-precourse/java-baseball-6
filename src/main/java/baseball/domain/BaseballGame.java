@@ -15,14 +15,10 @@ public class BaseballGame {
     private final OutputView outputView;
 
     private static Computer computer;
-    private int strike;
-    private int ball;
 
     public BaseballGame(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        strike = 0;
-        ball = 0;
     }
 
     public void start() {
@@ -34,22 +30,14 @@ public class BaseballGame {
         Player player = Player.from(inputView.readPlayerNumbers());
         computer = Computer.generate();
 
-        for (int i = 0; i < 3; i++) {
-            int playerNumber = player.getNumberOf(i);
-            int computerNumber = computer.getNumberOf(i);
+        GameJudge judge = GameJudge.from(player, computer);
+        judge.analyzeNumbers();
+        judgeResult(judge.getBall(), judge.getStrike());
 
-            if (playerNumber == computerNumber) {
-                ++strike;
-            } else if (computer.containOf(playerNumber)) {
-                ++ball;
-            }
-        }
-
-        judgeResult();
-        proceed();
+        proceed(judge.getBall(), judge.getStrike());
     }
 
-    private void judgeResult() {
+    private void judgeResult(int ball, int strike) {
         if (strike == ALL_STRIKE) {
             outputView.printGameFinish();
         } else {
@@ -57,7 +45,7 @@ public class BaseballGame {
         }
     }
 
-    private void proceed() {
+    private void proceed(int ball, int strike) {
         if (strike == ALL_STRIKE) {
             String option = inputView.readRestart();
             if (option.equals(IS_RESTART)) {
@@ -67,7 +55,6 @@ public class BaseballGame {
                 return;
             }
         } else {
-            outputView.printGameResult(ball, strike);
             play();
         }
     }
