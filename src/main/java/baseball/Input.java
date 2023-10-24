@@ -16,6 +16,7 @@ public class Input {
         checkIfInputNumberLengthIsGivenLength(userInput,3);
         checkIfInputNumberIsNotNumberFormat(userInput);
         checkIfInputNumberIsDuplicate(userInput);
+        checkIfInputNumberContainsZero(userInput);
     }
 
     private void checkIfInputNumberLengthIsGivenLength(String userInput, int length){
@@ -46,6 +47,20 @@ public class Input {
             throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 중복된 숫자를 입력했습니다.");
         }
     }
+
+    private void checkIfInputNumberContainsZero(String userInput){
+        String[] userInputArr = userInput.split("");
+        for (String s : userInputArr) {
+            throwExceptionIfEqualsZero(s);
+        }
+    }
+
+    private void throwExceptionIfEqualsZero(String input){
+        if(input.equals("0")){
+            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력 숫자 중 0이 포함되어 있습니다.");
+        }
+    }
+
     public boolean getResumeInput(){
         String userInput = Console.readLine();
         validateResumeInput(userInput);
