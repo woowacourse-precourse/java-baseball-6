@@ -1,9 +1,9 @@
 package baseball.game;
 
-import baseball.numbers.Computer;
-import java.util.Objects;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import baseball.numbers.ComputerNumbersGenerator;
+import java.util.Objects;
 
 public class SetOfGame {
 
@@ -12,13 +12,14 @@ public class SetOfGame {
     }
 
     public void play() {
-        Computer computer = new Computer();
-        UnitOfGame unitOfGame = new UnitOfGame(computer.getComputerNumbers());
-        unitOfGame.play();
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = readLine();
-        if (Objects.equals(userInput, "1")) {
-            play();
-        }
+        String userInput;
+
+        do {
+            UnitOfGame unitOfGame = new UnitOfGame(new ComputerNumbersGenerator());
+            unitOfGame.play();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            userInput = readLine();
+        } while (Objects.equals(userInput, "1"));
+
     }
 }

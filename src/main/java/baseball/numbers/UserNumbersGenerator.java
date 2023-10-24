@@ -5,9 +5,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
-
-    public List<Integer> getUserNumbers() {
+public class UserNumbersGenerator implements NumbersGenerator{
+    @Override
+    public List<Integer> generate() {
         Numbers numbers = new Numbers(createUserNumbers());
         return numbers.getNumbers();
     }
