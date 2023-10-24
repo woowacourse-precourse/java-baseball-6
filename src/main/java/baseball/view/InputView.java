@@ -11,9 +11,12 @@ import java.util.Scanner;
 public class InputView {
     public int inputPlayerNumber(){
         try{
-            Scanner in = new Scanner(System.in); // Scanner 객체 생성
+            //Scanner in = new Scanner(System.in); // Scanner 객체 생성
 
-            String playerString = in.nextLine();//Console.readLine();
+            //String playerString = in.nextLine();
+
+            String playerString = Console.readLine();
+
             int playerNumber = Integer.parseInt(playerString);
             return playerNumber;
         }catch(NumberFormatException e){
@@ -25,12 +28,13 @@ public class InputView {
 
     public int inputChoiceNumber(){
         try{
-            Scanner in = new Scanner(System.in); // Scanner 객체 생성
+            //Scanner in = new Scanner(System.in); // Scanner 객체 생성
 
-            String playerString = in.nextLine();//Console.readLine();
+            // String playerString = in.nextLine();
+            String playerString = Console.readLine();
             int playerNumber = Integer.parseInt(playerString);
 
-            return this.validChoiceNumber(playerNumber);
+            return this.checkChoiceNumber(playerNumber);
 
 
         }catch(NumberFormatException e){
@@ -40,11 +44,7 @@ public class InputView {
 
     }
 
-    public int validChoiceNumber(int inputNumber){
-        if(String.valueOf(inputNumber).length()!=1){
-            throw new IllegalArgumentException("입력한 숫자가 1자릿수가 아닙니다.");
-        }
-
+    private int checkChoiceNumber(int inputNumber){
         if(inputNumber!=1&&inputNumber!=2){
             throw new IllegalArgumentException("입력한 숫자가 1 또는 2가 아닙니다.");
         }
@@ -52,11 +52,5 @@ public class InputView {
         return inputNumber;
     }
 
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.inputPlayerNumber();
-        inputView.inputChoiceNumber();
 
-
-    }
 }
