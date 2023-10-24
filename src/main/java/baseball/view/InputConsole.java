@@ -84,7 +84,7 @@ public class InputConsole {
 
         private static void endOrStartNumberValidation(String input) {
             int number = input.charAt(0) - '0';
-            if (input.length() != 1 && number != 1 && number != 2) {
+            if (number != 1 && number != 2) {
                 throw new IllegalArgumentException(END_OR_START_NUMBER_EXCEPTION.getMessage());
             }
         }
