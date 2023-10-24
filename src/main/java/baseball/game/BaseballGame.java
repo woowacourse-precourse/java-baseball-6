@@ -1,7 +1,12 @@
 package baseball.game;
 
 
+import static baseball.utils.RandomNumberGenerator.generateRandomUniqueThreeNumbers;
+
+import java.util.List;
+
 public class BaseballGame {
+    private List<Integer> generatedNumbers;
     private GameState currentGameState = GameState.RUNNING;
 
     public void startGame() {
@@ -18,7 +23,7 @@ public class BaseballGame {
     }
 
     private void generateGameNumbers() {
-        // todo: generate game numbers
+        generatedNumbers = generateRandomUniqueThreeNumbers();
     }
 
     private void playUntilRoundWon() {
