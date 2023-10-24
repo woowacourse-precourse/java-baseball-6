@@ -19,6 +19,21 @@ public class BaseballGame {
 
     public void run() {
 
+        createComputerNumber();
+
+        while (true) {
+            askUser();
+
+            int ball = countBall();
+            int strike = countStrike();
+            view.printHint(ball, strike);
+
+            if (strike == NUM_DIGIT) {
+                view.printEnd();
+                break;
+            }
+        }
+
     }
 
     public void createComputerNumber() {

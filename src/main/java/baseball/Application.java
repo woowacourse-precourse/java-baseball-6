@@ -7,5 +7,7 @@ public class Application {
 
         BaseballGame baseballGame = new BaseballGame();
 
+        baseballGame.run();
+
     }
 }
