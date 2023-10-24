@@ -20,17 +20,32 @@ public class BaseballNumbers {
     }
 
     public Score calculateScore(BaseballNumbers inputBaseballNumbers) {
+        int ball = calculateBallCount(inputBaseballNumbers);
+        int strike = calculateStrikeCount(inputBaseballNumbers);
+        return Score.from(Ball.from(ball), Strike.from(strike));
+    }
+
+    private int calculateBallCount(BaseballNumbers inputBaseballNumbers) {
         int ball = ZERO_COUNT;
-        int strike = ZERO_COUNT;
         for (int i = 0; i < baseballNumbers.size(); i++) {
             BaseballNumber currentAnswerBaseballNumber = baseballNumbers.get(i);
             BaseballNumber currentInputBaseballNumber = inputBaseballNumbers.baseballNumbers.get(i);
             boolean isSameValue = currentAnswerBaseballNumber.isSameValue(currentInputBaseballNumber);
             boolean isContainedIn = contains(currentInputBaseballNumber);
             ball += countBall(isSameValue, isContainedIn);
+        }
+        return ball;
+    }
+
+    private int calculateStrikeCount(BaseballNumbers inputBaseballNumbers) {
+        int strike = ZERO_COUNT;
+        for (int i = 0; i < baseballNumbers.size(); i++) {
+            BaseballNumber currentAnswerBaseballNumber = baseballNumbers.get(i);
+            BaseballNumber currentInputBaseballNumber = inputBaseballNumbers.baseballNumbers.get(i);
+            boolean isSameValue = currentAnswerBaseballNumber.isSameValue(currentInputBaseballNumber);
             strike += countStrike(isSameValue);
         }
-        return Score.from(Ball.from(ball), Strike.from(strike));
+        return strike;
     }
 
     private boolean contains(BaseballNumber inputBaseballNumber) {
