@@ -35,8 +35,8 @@ public class User {
         
       }
       catch (Exception e){
-        System.out.println(e);
-        //throw new IllegalArgumentException();
+        ///System.out.println(e);
+        throw new IllegalArgumentException("입력값이 잘못되었습니다.");
       }
      
      
