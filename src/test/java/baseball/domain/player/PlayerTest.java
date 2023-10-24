@@ -1,6 +1,5 @@
 package baseball.domain.player;
 
-import baseball.domain.player.number.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,7 @@ class PlayerTest {
 
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Player.createByIntegerNumbers(input))
+                .isThrownBy(() -> Player.createPlayerByIntegerNumbers(input))
                 .withMessageMatching("3개 이상의 공이 입력될 수 없습니다.");
     }
     @Test
@@ -28,7 +27,7 @@ class PlayerTest {
         List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
 
         // when
-        Player player = Player.createByIntegerNumbers(inputNumbers);
+        Player player = Player.createPlayerByIntegerNumbers(inputNumbers);
 
         // then
         assertThat(player).isNotNull();
@@ -39,7 +38,7 @@ class PlayerTest {
         List<Integer> inputNumbers = Arrays.asList(1, 2, 2);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Player.createByIntegerNumbers(inputNumbers))
+                .isThrownBy(() -> Player.createPlayerByIntegerNumbers(inputNumbers))
                 .withMessage("중복된 숫자는 입력될 수 없습니다.");
     }
 
@@ -49,7 +48,7 @@ class PlayerTest {
         List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
 
         // when
-        Player player = Player.createByIntegerNumbers(inputNumbers);
+        Player player = Player.createPlayerByIntegerNumbers(inputNumbers);
 
         // then
         assertThat(player).isNotNull();

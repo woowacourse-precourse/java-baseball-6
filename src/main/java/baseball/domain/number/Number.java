@@ -1,4 +1,4 @@
-package baseball.domain.player.number;
+package baseball.domain.number;
 
 import baseball.exception.number.NumberOutOfRangeException;
 

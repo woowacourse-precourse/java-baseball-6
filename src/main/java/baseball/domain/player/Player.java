@@ -1,5 +1,6 @@
-package baseball.domain.player.number;
+package baseball.domain.player;
 
+import baseball.domain.number.Number;
 import baseball.exception.player.DuplicateNumberException;
 import baseball.exception.player.InputSizeException;
 
@@ -15,7 +16,7 @@ public class Player {
     private Player(List<Number> numbers) {
         this.numbers = numbers;
     }
-    public static Player createByIntegerNumbers(List<Integer> inputNumbers) {
+    public static Player createPlayerByIntegerNumbers(List<Integer> inputNumbers) {
         checkInputSize(inputNumbers.size());
         checkForDuplicateNumbers(inputNumbers);
         List<Number> players = integerToNumber(inputNumbers);
