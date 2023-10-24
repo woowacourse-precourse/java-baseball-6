@@ -77,12 +77,20 @@ public class BaseballGame {
         if (result == NUM_DIGITS) {
             return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
-        if (result > 0) {
-            int ball = result / 10;
-            int strike = result % 10;
-            return ball + "볼 " + strike + "스트라이크";
+        int ball = result / 10;
+        int strike = result % 10;
+        String resultString = "";
+
+        if (ball > 0) {
+            resultString += ball + "볼 ";
         }
-        return "낫싱";
+        if (strike > 0) {
+            resultString += strike + "스트라이크";
+        }
+        if (resultString.isEmpty()) {
+            return "낫싱";
+        }
+        return resultString;
     }
     private void validateNumber(String input) {
         if (input.length() != NUM_DIGITS) {
