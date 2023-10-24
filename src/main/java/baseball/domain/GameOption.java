@@ -1,6 +1,7 @@
 package baseball.domain;
 
 public enum GameOption {
+
     RESTART("1"),
     END("2");
 

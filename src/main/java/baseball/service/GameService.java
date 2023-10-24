@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.domain.BallCounter;
 import baseball.domain.Balls;
-
 import java.util.List;
 
 public class GameService {
@@ -27,5 +26,4 @@ public class GameService {
     public boolean isEndGameCondition(BallCounter ballCounter) {
         return referee.isEndGameCondition(ballCounter);
     }
-
 }

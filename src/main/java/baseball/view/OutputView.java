@@ -3,10 +3,12 @@ package baseball.view;
 import baseball.domain.BallCounter;
 
 public class OutputView {
+
     private static final int ZERO = 0;
     private static final String STRIKE = "스트라이크 ";
     private static final String BALL = "볼 ";
     private static final String NOTHING = "낫싱 ";
+    
     private StringBuilder stringBuilder;
 
     public void showResult(BallCounter ballCounter) {

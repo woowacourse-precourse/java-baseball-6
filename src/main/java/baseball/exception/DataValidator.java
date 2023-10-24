@@ -1,8 +1,9 @@
 package baseball.exception;
 
 import baseball.domain.GameOption;
-
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DataValidator {
     private static final int MAX_BALL_SIZE = 3;
@@ -53,5 +54,4 @@ public class DataValidator {
             throw new IllegalArgumentException("1~9까지의 숫자만 입력해주세요.");
         }
     }
-
 }

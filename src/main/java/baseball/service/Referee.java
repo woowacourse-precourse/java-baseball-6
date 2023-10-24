@@ -3,7 +3,6 @@ package baseball.service;
 import baseball.domain.BallCounter;
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
-
 import java.util.List;
 
 public class Referee {
@@ -49,5 +48,4 @@ public class Referee {
             ballCounter.increaseBallCount();
         }
     }
-
 }
