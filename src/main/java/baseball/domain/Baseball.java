@@ -1,21 +1,16 @@
 package baseball.domain;
 
-import baseball.util.ExceptionUtil;
-import baseball.util.IntegerListUtil;
-import baseball.util.IntegerUtil;
+import baseball.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
+public class Baseball {
 
-    private static final String TOO_SHORT_INPUT_MESSAGE = "자리수가 3보다 작습니다.";
-    private static final String TOO_LONG_INPUT_MESSAGE = "자리수가 3보다 큽니다.";
+    private static final String TOO_SHORT_LENGTH_MESSAGE = "자리수가 3보다 작습니다.";
+    private static final String TOO_LONG_LENGTH_MESSAGE = "자리수가 3보다 큽니다.";
     private static final String DUPLICATE_DIGITS_MESSAGE = "같은 숫자가 2개 이상 있습니다.";
-    private static final String OUT_OF_RANGE_DIGITS_MESSAGE = "각 자리 숫자가 1에서 9 사이가 아닙니다.";
+    private static final String OUT_OF_RANGE_DIGITS_MESSAGE = "각 자리 숫자가 1에서 9사이가 아닙니다.";
 
     private final List values;
 
@@ -27,6 +22,13 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
 
     public static Baseball createBaseball(String stringValue) {
         IntegerUtil.validateInteger(stringValue);
+
+        int stringLen = stringValue.length();
+        validateShortLength(stringLen);
+        validateLongLength(stringLen);
+        validateDuplicated(stringValue);
+        validateOutOfRange(stringValue);
+
         List values = IntegerListUtil.parseIntegerList(stringValue);
 
         return new Baseball(values);
@@ -53,32 +55,36 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
         return values;
     }
 
-
-    private void validate(String stringValue) {
-
-        int inputNumLen = stringValue.length();
-        if (inputNumLen < GameConstants.NUMBER_LENGTH) {
-            ExceptionUtil.throwInvalidValueException(TOO_SHORT_INPUT_MESSAGE);
+    private static void validateShortLength(int stringLen) {
+        if (stringLen < GameConstants.NUMBER_LENGTH) {
+            ExceptionUtil.throwInvalidValueException(TOO_SHORT_LENGTH_MESSAGE);
         }
+    }
 
-        if (inputNumLen > GameConstants.NUMBER_LENGTH) {
-            ExceptionUtil.throwInvalidValueException(TOO_LONG_INPUT_MESSAGE);
+    private static void validateLongLength(int stringLen) {
+        if (stringLen > GameConstants.NUMBER_LENGTH) {
+            ExceptionUtil.throwInvalidValueException(TOO_LONG_LENGTH_MESSAGE);
         }
+    }
 
+    private static void validateDuplicated(String stringValue) {
         Set numSet = new HashSet();
+
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             numSet.add(stringValue.charAt(i));
         }
+
         if (numSet.size() < GameConstants.NUMBER_LENGTH) {
             ExceptionUtil.throwInvalidValueException(DUPLICATE_DIGITS_MESSAGE);
         }
+    }
 
+    private static void validateOutOfRange(String stringValue) {
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             if (!stringValue.matches("^[1-9]+$")) {
                 ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
             }
         }
     }
-
 
 }
