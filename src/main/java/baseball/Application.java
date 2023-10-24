@@ -37,8 +37,6 @@ public class Application {
 
         } while (opt == 1);
 
-
-
     }
 
     //주요 로직
