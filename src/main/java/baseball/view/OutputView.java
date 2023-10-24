@@ -2,24 +2,39 @@ package baseball.view;
 
 import baseball.model.BallCount;
 import baseball.model.Result;
-import baseball.util.ConsoleMessage;
-import java.util.List;
 
 public class OutputView {
-    public void printGameStart() {
-        System.out.println(ConsoleMessage.OUTPUT_GAME_START.getMessage());
-    }
-
-    public void printComputerNumber(List<Integer> computerNumber) {
-        System.out.println(computerNumber);
-    }
-
     public void printGameResult(Result result) {
-        int strike = result.getResultByBallCount(BallCount.STRIKE);
-        int ball = result.getResultByBallCount(BallCount.BALL);
-        int nothing = result.getResultByBallCount(BallCount.NOTHING);
+        int strikeCount = result.getResultByBallCount(BallCount.STRIKE);
+        int ballCount = result.getResultByBallCount(BallCount.BALL);
 
-        System.out.println(result.getResult());
+        String gameResultMessage = buildGameResultMessage(strikeCount, ballCount);
+        System.out.println(gameResultMessage);
+    }
+
+    private String buildGameResultMessage(int strikeCount, int ballCount) {
+        if (isNothing(strikeCount, ballCount)) {
+            return BallCount.NOTHING.getBaseballjudgment();
+        }
+
+        return formatGameResultMessage(strikeCount, ballCount);
+    }
+
+    private boolean isNothing(int strikeCount, int ballCount) {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    private String formatGameResultMessage(int strikeCount, int ballCount) {
+        StringBuilder gameResult = new StringBuilder();
+
+        if (ballCount > 0) {
+            gameResult.append(String.format("%d %s ", ballCount, BallCount.BALL.getBaseballjudgment()));
+        }
+        if (strikeCount > 0) {
+            gameResult.append(String.format("%d %s", strikeCount, BallCount.STRIKE.getBaseballjudgment()));
+        }
+
+        return gameResult.toString().trim(); // removes any extra spaces
     }
 
 }
