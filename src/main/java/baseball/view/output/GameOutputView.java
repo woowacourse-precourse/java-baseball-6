@@ -16,12 +16,13 @@ public class GameOutputView {
         printNothing(ballCount, strikeCount);
         printBallCount(ballCount);
         printPadding(ballCount, strikeCount);
-        printStrikeCount(ballCount, strikeCount);
+        printStrikeCount(strikeCount);
+        printNewLine();
     }
 
     private static void printNothing(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
     }
 
@@ -37,10 +38,14 @@ public class GameOutputView {
         }
     }
 
-    private static void printStrikeCount(int ballCount, int strikeCount) {
+    private static void printStrikeCount(int strikeCount) {
         if (strikeCount != 0) {
-            System.out.println(ballCount + "스트라이크");
+            System.out.print(strikeCount + "스트라이크");
         }
+    }
+
+    private static void printNewLine() {
+        System.out.println();
     }
 
 }
