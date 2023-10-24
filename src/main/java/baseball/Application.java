@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.HashSet;
+import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -77,6 +78,25 @@ public class Application {
         }
 
         return result;
+    }
+
+    public static int[] answerInitializer() {
+        ArrayList<Integer> answerArrayList = new ArrayList<>(9);
+        int[] answer = new int[3];
+
+        for (int i = 1; i <= 9; i++) {
+            answerArrayList.add(i);
+        }
+
+        for (int i = 0; i < answer.length; i++) {
+            int tempIndex = Randoms.pickNumberInRange(0,answerArrayList.size()-1);
+            int tempValue = answerArrayList.get(tempIndex);
+
+            answer[i] = tempValue;
+            answerArrayList.remove(tempIndex);
+        }
+
+        return answer;
     }
 
 
