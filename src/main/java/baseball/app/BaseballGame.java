@@ -2,10 +2,10 @@ package baseball.app;
 
 import static baseball.constants.Game.ANSWER_DIGIT;
 import static baseball.constants.Game.QUIT;
-import static baseball.constants.Message.GAME_OVER;
-import static baseball.constants.Message.GAME_START;
-import static baseball.constants.Message.INPUT_PROMPT;
-import static baseball.constants.Message.RESTART_PROMPT;
+import static baseball.constants.GameMessage.GAME_OVER;
+import static baseball.constants.GameMessage.GAME_START;
+import static baseball.constants.GameMessage.INPUT_PROMPT;
+import static baseball.constants.GameMessage.RESTART_PROMPT;
 
 import baseball.core.Computer;
 import baseball.core.GameStatus;

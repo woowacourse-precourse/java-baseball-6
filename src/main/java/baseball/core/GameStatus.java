@@ -1,5 +1,6 @@
 package baseball.core;
 
+import static baseball.constants.ExceptionMessage.GAME_STATUS_EXCEPTION;
 import static baseball.constants.Game.QUIT;
 import static baseball.constants.Game.START;
 
@@ -21,7 +22,7 @@ public class GameStatus {
 
     private void validateGameStatusInput(String gameStatusInput) {
         if (!gameStatusInput.equals(START) && !gameStatusInput.equals(QUIT)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GAME_STATUS_EXCEPTION);
         }
     }
 }

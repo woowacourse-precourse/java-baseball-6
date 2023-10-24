@@ -1,5 +1,8 @@
 package baseball.core;
 
+import static baseball.constants.ExceptionMessage.GUESS_FORMAT_EXCEPTION;
+import static baseball.constants.ExceptionMessage.GUESS_LENGTH_EXCEPTION;
+import static baseball.constants.ExceptionMessage.GUESS_NO_DUPLICATE_EXCEPTION;
 import static baseball.constants.Game.ANSWER_DIGIT;
 import static baseball.constants.Game.END_INCLUSIVE;
 import static baseball.constants.Game.START_INCLUSIVE;
@@ -30,14 +33,14 @@ public class Guess {
 
     private void validateLengthOfDigits(String input) {
         if (input.length() != ANSWER_DIGIT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GUESS_LENGTH_EXCEPTION);
         }
     }
 
     private void validateFormatOfDigits(String input) {
         for (char digit : input.toCharArray()) {
             if (!Character.isDigit(digit) || digit < '0' + START_INCLUSIVE || digit > '0' + END_INCLUSIVE) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(GUESS_FORMAT_EXCEPTION);
             }
         }
     }
@@ -46,7 +49,7 @@ public class Guess {
         Set<Character> uniqueDigits = new HashSet<>();
         for (char digit : input.toCharArray()) {
             if (!uniqueDigits.add(digit)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(GUESS_NO_DUPLICATE_EXCEPTION);
             }
         }
 
