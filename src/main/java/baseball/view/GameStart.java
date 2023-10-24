@@ -96,6 +96,9 @@ public class GameStart {
         addNumber2InputList(userList, numInputOfUser);
     }
 
+    /**
+     * userList을 초기화 해주는 메서드
+     */
     private void initUserList() {
         userList = new ArrayList<>();
     }
