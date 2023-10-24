@@ -28,6 +28,7 @@ class NumberBaseballGameInputViewTest {
     @AfterEach
     void restoreStreams() {
         System.setIn(originalIn);
+        Console.close();
     }
 
     @Test
@@ -37,6 +38,14 @@ class NumberBaseballGameInputViewTest {
         System.setIn(inContent);
         String userInput = inputView.readUserInput();
         assertEquals("123", userInput);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1234", "12", "abc",""," "})
+    void readUserInput_다양한_입력값_예외_테스트(String input) {
+        inContent = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inContent);
+        assertThrows(IllegalArgumentException.class, inputView::readUserInput);
     }
 
 
