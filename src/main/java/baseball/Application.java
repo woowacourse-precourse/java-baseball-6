@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.controller.RunController;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RunController runController = new RunController();
+        runController.run();
     }
 }
