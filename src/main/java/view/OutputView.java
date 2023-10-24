@@ -1,6 +1,9 @@
 package view;
 
-import static model.BaseballData.*;
+import static model.BaseballData.BALL;
+import static model.BaseballData.MAX_HIT;
+import static model.BaseballData.MIN_HIT;
+import static model.BaseballData.NOTHING;
 import static model.BaseballData.STRIKE;
 
 public class OutputView {
@@ -34,10 +37,12 @@ public class OutputView {
         } else if (strike == MIN_HIT && ball == MIN_HIT) {
             result.append(NOTHING);
         } else {
-            if (ball > MIN_HIT)
+            if (ball > MIN_HIT) {
                 result.append(ball).append(BALL).append(" ");
-            if (strike > MIN_HIT)
+            }
+            if (strike > MIN_HIT) {
                 result.append(strike).append(STRIKE);
+            }
         }
         System.out.println(result);
     }

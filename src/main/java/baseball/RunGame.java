@@ -25,6 +25,8 @@ public class RunGame {
         outputView.restartGame();
 
         int restart = inputView.inputRetryNumber();
-        if (baseballGame.gameRestart(restart)) playBaseballGame();
+        if (baseballGame.gameRestart(restart)) {
+            playBaseballGame();
+        }
     }
 }

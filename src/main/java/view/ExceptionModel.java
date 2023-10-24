@@ -1,12 +1,13 @@
 package view;
 
-import model.BaseballData;
+import static model.BaseballData.MAX_HIT;
+import static model.BaseballData.MAX_NUMBER;
+import static model.BaseballData.MIN_NUMBER;
+import static view.InputView.changeInteger;
 
 import java.util.List;
 import java.util.regex.Pattern;
-
-import static model.BaseballData.*;
-import static view.InputView.changeInteger;
+import model.BaseballData;
 
 public class ExceptionModel {
     final String IS_NUMBER = "[ERROR] 숫자를 입력하세요.";
@@ -58,7 +59,6 @@ public class ExceptionModel {
             throw new IllegalArgumentException(NUMBER_VALID);
         }
     }
-
 
 
     /**

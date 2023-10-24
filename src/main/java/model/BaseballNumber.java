@@ -1,10 +1,12 @@
 package model;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static model.BaseballData.MAX_HIT;
+import static model.BaseballData.MAX_NUMBER;
+import static model.BaseballData.MIN_NUMBER;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import static model.BaseballData.*;
 
 public class BaseballNumber {
     /**

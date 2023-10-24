@@ -1,10 +1,11 @@
 package baseball;
 
+import static model.BaseballData.MAX_HIT;
+import static model.BaseballData.RESTART_NUMBER;
+
+import java.util.List;
+import java.util.Objects;
 import view.OutputView;
-
-import java.util.*;
-
-import static model.BaseballData.*;
 
 public class BaseballGame {
     List<Integer> computerNumber;
@@ -28,8 +29,9 @@ public class BaseballGame {
     public int isBall() {
         int count = 0;
         for (int i = 0; i < MAX_HIT; i++) {
-            if (!Objects.equals(computerNumber.get(i), myNumber.get(i)) && computerNumber.contains(myNumber.get(i)))
+            if (!Objects.equals(computerNumber.get(i), myNumber.get(i)) && computerNumber.contains(myNumber.get(i))) {
                 count++;
+            }
         }
         return count;
     }
@@ -40,11 +42,13 @@ public class BaseballGame {
     public int isStrike() {
         int count = 0;
         for (int i = 0; i < MAX_HIT; i++) {
-            if (Objects.equals(computerNumber.get(i), myNumber.get(i)))
+            if (Objects.equals(computerNumber.get(i), myNumber.get(i))) {
                 count++;
+            }
         }
-        if (count == MAX_HIT)
+        if (count == MAX_HIT) {
             finish = false;
+        }
         return count;
     }
 
