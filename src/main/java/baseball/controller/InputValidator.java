@@ -5,15 +5,16 @@ import java.util.Set;
 
 public class InputValidator {
 
-    private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
-    private static final char MIN_DIGIT = '1';
-    private static final char MAX_DIGIT = '9';
-    private static final String WRONG_LENGTH_THROW_MESSAGE = "세 자리 숫자를 입력하세요.";
-    private static final String WRONG_RANGE_THROW_MESSAGE = "1-9 사이의 정수를 입력하세요.";
-    private static final String DUPLICATE_INPUT_MESSAGE = "중복되지 않는 서로 다른 숫자를 입력해주세요.";
-    private static final String CONTINUE_NUMBER = "1";
-    private static final String GAME_TERMINATE_NUMBER = "2";
-    private static final String WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE = "재시작/종료 여부는 1 또는 2를 입력해주세요.";
+    private final static int BASEBALL_GAME_NUMBER_LENGTH = BaseBallConstants.BASEBALL_GAME_NUMBER_LENGTH;
+    private final static int MIN_DIGIT = BaseBallConstants.MIN_DIGIT;
+    private final static int MAX_DIGIT = BaseBallConstants.MAX_DIGIT;
+    private static final String WRONG_LENGTH_THROW_MESSAGE = BaseBallConstants.WRONG_LENGTH_THROW_MESSAGE;
+    private static final String WRONG_RANGE_THROW_MESSAGE = BaseBallConstants.WRONG_RANGE_THROW_MESSAGE;
+    private static final String DUPLICATE_INPUT_MESSAGE = BaseBallConstants.DUPLICATE_INPUT_MESSAGE;
+    private static final String CONTINUE_NUMBER = BaseBallConstants.CONTINUE_NUMBER;
+    private static final String GAME_TERMINATE_NUMBER = BaseBallConstants.GAME_TERMINATE_NUMBER;
+    private static final String WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE = BaseBallConstants.WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE;
+
 
     public boolean isThreeLengthLetter(String playerInput) {
         return playerInput.length() == BASEBALL_GAME_NUMBER_LENGTH;

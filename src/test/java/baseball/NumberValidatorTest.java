@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
+import baseball.controller.BaseBallConstants;
 import baseball.controller.InputValidator;
 import org.junit.jupiter.api.Test;
 
@@ -64,7 +65,7 @@ public class NumberValidatorTest {
 
     @Test
     void testIsValidNumber_caseWrongLength() {
-        String errorMessage = "세 자리 숫자를 입력하세요.";
+        String errorMessage = BaseBallConstants.WRONG_LENGTH_THROW_MESSAGE;
         String playerInput = "1234";
 
         try {
@@ -77,7 +78,7 @@ public class NumberValidatorTest {
 
     @Test
     void testIsValidNumber_caseWrongRange() {
-        String errorMessage = "1-9 사이의 정수를 입력하세요.";
+        String errorMessage = BaseBallConstants.WRONG_RANGE_THROW_MESSAGE;
         String playerInput = "0일공";
 
         try {
@@ -90,7 +91,7 @@ public class NumberValidatorTest {
 
     @Test
     void testIsValidNumber_caseDuplicateChars() {
-        String errorMessage = "중복되지 않는 서로 다른 숫자를 입력해주세요.";
+        String errorMessage = BaseBallConstants.DUPLICATE_INPUT_MESSAGE;
         String playerInput = "332";
 
         try {
@@ -113,7 +114,7 @@ public class NumberValidatorTest {
         String playerInput1 = "1";
         String playerInput2 = "2";
         String playerInput3 = "종료";
-        String errorMessage = "재시작/종료 여부는 1 또는 2를 입력해주세요.";
+        String errorMessage = BaseBallConstants.WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE;
 
         assertThat(numberValidator.isValidContinueGameChoice(playerInput1)).isTrue();
         assertThat(numberValidator.isValidContinueGameChoice(playerInput2)).isTrue();

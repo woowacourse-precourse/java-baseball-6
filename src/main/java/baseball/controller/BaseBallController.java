@@ -8,14 +8,12 @@ import java.util.List;
 public class BaseBallController {
     private int ballCount;
     private int strikeCount;
-
     private String playerInput;
-
     private List<Integer> playerNumbers;
     private List<Integer> answerNumbers;
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
+    private static final String BALL = BaseBallConstants.BALL;
+    private static final String STRIKE = BaseBallConstants.STRIKE;
+    private static final String NOTHING = BaseBallConstants.NOTHING;
     private static final OutputView OUTPUT_VIEW = new OutputView();
     private static final InputView INPUT_VIEW = new InputView();
     private static final InputValidator INPUT_VALIDATOR = new InputValidator();
@@ -61,7 +59,7 @@ public class BaseBallController {
     public int countBall() {
         int result = 0;
         for (int i = 0; i < answerNumbers.size(); i++) {
-            if (playerNumbers.contains(answerNumbers.get(i)) && playerNumbers.get(i) != answerNumbers.get(i)) {
+            if (playerNumbers.contains(answerNumbers.get(i)) && playerNumbers.get(i).equals(answerNumbers.get(i))) {
                 result++;
             }
         }
@@ -71,7 +69,7 @@ public class BaseBallController {
     public int countStrike() {
         int result = 0;
         for (int i = 0; i < answerNumbers.size(); i++) {
-            if (playerNumbers.get(i) == answerNumbers.get(i)) {
+            if (playerNumbers.get(i).equals(answerNumbers.get(i))) {
                 result++;
             }
         }
