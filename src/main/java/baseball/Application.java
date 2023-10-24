@@ -8,5 +8,6 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         BaseballGame game = new BaseballGame(sc);
         game.play();
+        sc.close();
     }
 }
