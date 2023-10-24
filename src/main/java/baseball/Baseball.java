@@ -7,11 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
+    private static final int MAX_SIZE = 3;
+    private static final int VALID = 1;
+
     public void proceedGame() {
         OutputView.printStartGameMsg();
 
-        int gameStatus = 1;
-        while (gameStatus == 1) {
+        int gameStatus = VALID;
+        while (gameStatus == VALID) {
             List<Integer> computerNumbers = chooseRandomNumbers();
 
             boolean isCorrect = false;
@@ -29,7 +32,7 @@ public class Baseball {
     private List<Integer> chooseRandomNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
@@ -43,7 +46,7 @@ public class Baseball {
         int strikes = 0;
         int balls = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MAX_SIZE; i++) {
             int compareNumber = userNumbers / (int) Math.pow(10, 2 - i);
             userNumbers %= (int) Math.pow(10, 2 - i);
             if (!computerNumbers.contains(compareNumber)) {
@@ -58,6 +61,6 @@ public class Baseball {
 
         OutputView.printBaseballResult(balls, strikes);
 
-        return strikes == 3;
+        return strikes == MAX_SIZE;
     }
 }
