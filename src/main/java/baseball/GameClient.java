@@ -21,19 +21,15 @@ public class GameClient {
     private final Computer computer;
     private final Player player;
     private final Referee referee;
-    private boolean isFirstTimePlaying = true;
 
     public GameClient() {
         this.player = new Player();
         this.computer = new Computer();
         this.referee = new Referee();
+        System.out.println(MESSAGE_INIT);
     }
 
     public void playBaseball() {
-        if (isFirstTimePlaying) {
-            System.out.println(MESSAGE_INIT);
-            isFirstTimePlaying = false;
-        }
 
         BallCount ballCount;
         computer.refreshAnswer();
