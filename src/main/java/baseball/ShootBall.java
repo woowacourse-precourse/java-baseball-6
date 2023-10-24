@@ -28,10 +28,18 @@ public class ShootBall {
     //(2)번 기능
     public void randomNumGenerator(){
         int randNum;
-        for(int i=1; i<=3;i++) {
+        int i=1;
+        while(i<=3) {
             randNum = Randoms.pickNumberInRange(1, 9);
-            numbers[randNum] = (i*2)+1;
+            if(numbers[randNum]==0)
+                numbers[randNum] = (i*2)+1;
+            else{
+                continue;
+            }
+            i++;
+            System.out.print(randNum);
         }
+        System.out.print('\n');
     }
 
 
