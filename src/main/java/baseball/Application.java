@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Application {
     private static final int MIN_NUMBER = 1;
@@ -34,6 +35,18 @@ public class Application {
     private static String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
+    }
+
+    // 사용자 입력을 숫자 리스트로 변환
+    private static List<Integer> convertInputToNumberList(String input) {
+        validateInputLength(input);
+        validateInputIsNumeric(input);
+        validateUniqueDigits(input);
+
+        return input.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     // 사용자 입력의 길이가 3인지 검증
