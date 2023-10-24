@@ -17,7 +17,6 @@ public class MainGame {
             List<Integer> sb =  com.count(answer, player);
             // 스트라이크 볼 여부로 3개다 맞추면 게임 끝, 아니면 다시 계속
             while(!result(sb)){
-                System.out.println(hint(sb));
                 player = gameProgress();
                 sb = com.count(answer, player);
             }
@@ -35,6 +34,7 @@ public class MainGame {
         return sb.get(1) + "볼" + sb.get(0)+ "스트라이크";
     }
     public boolean result(List<Integer> sb){
+        System.out.println(hint(sb));
         return sb.get(0) == 3;
     }
     public List<Integer> gameStart(){
