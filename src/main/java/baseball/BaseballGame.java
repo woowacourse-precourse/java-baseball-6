@@ -86,6 +86,11 @@ public class BaseballGame {
                 correct = true;
             }
         }
+        
+        do {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restart = Integer.parseInt(Console.readLine());
+        } while(restart != 1 && restart != 2);
 
         return restart;
     }
