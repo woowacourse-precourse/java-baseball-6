@@ -36,13 +36,13 @@ public class Game {
         bulls = computer.strikeCheck(userInputNumbers);
         cows = computer.ballCheck(userInputNumbers) - bulls;
         if (cows > 0) { // 볼의 개수 출력
-            userInterface.BallMessage(cows);
+            userInterface.ballMessage(cows);
         }
         if (bulls > 0) { // 스트라이크의 개수 출력
             userInterface.strikeMessage(bulls);
         }
         if ((cows == 0) && (bulls == 0)) { // 낫싱 출력
-            userInterface.nothing();
+            userInterface.nothingMessage();
         }
         System.out.println();
     }
