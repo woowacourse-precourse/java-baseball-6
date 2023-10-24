@@ -23,10 +23,10 @@ public class GamePlayController {
         hintResult(calculateBallAndStrikeCount(computer, player));
     }
 
-    private List<Integer> calculateBallAndStrikeCount(Computer computer, Player player) {
+    public List<Integer> calculateBallAndStrikeCount(String computerNumber, String playerNumber) {
 
         return gameNumberValidateService.calculateGameNumber(
-                computer.getComputerGameNumber(), player.getPlayerNumber());
+                computerNumber, playerNumber);
     }
 
     private void hintResult(List<Integer> ballAndStrikeCountList) {
