@@ -8,7 +8,6 @@ public class Output {
         int ballCount = baseballResult.get("ball");
         printStrikeAndBall(strikeCount, ballCount);
     }
-
     private void printStrikeAndBall(int strikeCount, int ballCount){
        if(strikeCount == 0 && ballCount == 0){
            System.out.println("낫싱");
@@ -25,6 +24,9 @@ public class Output {
        if(ballCount > 0 && strikeCount > 0){
            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
        }
+    }
+    public void printStartGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
     public void askUserToInsertNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
