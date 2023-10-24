@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class BaseballGame {
 
+    // TODO : 과도한 상수 사용 -> enum으로 교체 (메시지는 특히나)
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String MUST_INPUT_RESTARTS_MESSAGE = "1 또는 2를 입력해야 합니다.";

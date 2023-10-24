@@ -11,6 +11,7 @@ public class Turn {
 
     private boolean isPlaying = true;
 
+    // TODO : new 구문도 메서드 추출하는 것이 의미를 이해하는 것에 도움이 될 수 있을 것 같음.
     public void play() {
         WinningNumbers winningNumbers = new WinningNumbers(new WinningNumbersGenerator());
 
