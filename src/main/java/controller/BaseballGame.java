@@ -28,13 +28,6 @@ public class BaseballGame {
         if (setGame()) {
             run();
         } else {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> eea316e (fix : 출력 문구 수정)
-            return;
->>>>>>> a99376c (feat : 출력 문구 수정)
         }
 
 
