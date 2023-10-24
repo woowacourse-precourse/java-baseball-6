@@ -30,5 +30,5 @@
 - Game.java
   - 게임 Setting 초기화 기능 (유저 숫자, Strike개수, Ball개수) : InitializationGameSetting()
   - 상대방 숫자와 유저 숫자 비교하여 Strike, Ball 개수 Count 기능 : checkScore()
-  - Strike, Ball 개수에 따른 결과 출력 기능 : showResult()
+  - Strike, Ball 개수에 따른 결과 출력 및 3스트라이크일 경우 게임 재개 OR 종료를 위한 유저 입력 받기 : showResult()
 
