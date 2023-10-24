@@ -1,4 +1,4 @@
-package baseball.numGame.baseballGame;
+package baseball.baseballGame;
 
 import baseball.game.Validator;
 import java.util.List;

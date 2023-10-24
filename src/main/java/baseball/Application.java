@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.numGame.baseballGame.BaseballGame;
+import baseball.baseballGame.BaseballGame;
 import baseball.game.UserController;
 
 public class Application {

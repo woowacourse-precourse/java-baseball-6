@@ -1,4 +1,4 @@
-package baseball.numGame.baseballGame;
+package baseball.baseballGame;
 
 public class BaseballForm {
     private Integer ballCnt;

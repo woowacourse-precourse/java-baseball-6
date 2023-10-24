@@ -1,4 +1,4 @@
-package baseball.numGame.baseballGame;
+package baseball.baseballGame;
 
 import baseball.game.Config;
 

@@ -1,10 +1,10 @@
-package baseball.numGame.baseballGame;
+package baseball.baseballGame;
 
 import baseball.game.Config;
 import baseball.game.Game;
 import baseball.game.Printer;
+import baseball.game.RandomNumsGenerator;
 import baseball.game.Validator;
-import baseball.numGame.*;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;

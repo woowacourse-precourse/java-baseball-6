@@ -1,6 +1,5 @@
-package baseball.numGame;
+package baseball.baseballGame;
 
-import baseball.numGame.baseballGame.BaseballForm;
 import java.util.List;
 
 public class CompareMachine {
