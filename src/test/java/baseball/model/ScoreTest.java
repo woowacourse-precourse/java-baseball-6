@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
