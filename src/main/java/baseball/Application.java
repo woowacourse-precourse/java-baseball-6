@@ -11,14 +11,13 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean loof = true;
-        boolean loof2 = true;
 
         while (loof) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = new ArrayList<>();
             computerRandom(computer);
 
-            while (loof2) {
+            while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String Numbers = Console.readLine();
 
@@ -26,8 +25,8 @@ public class Application {
                 userNumberList(user, Numbers);
 
                 userListValid(user);
-
-                computerUserComparisonList(user, computer);
+                HashMap<Integer, Integer> map = new HashMap();
+                computerUserComparisonList(map, user, computer);
                 int ball = 0;
                 int strike = 0;
                 for (int m = 0; m < user.size(); m++) {
@@ -47,7 +46,6 @@ public class Application {
                         String userOpinion = Console.readLine();
                         if (userOpinion.equals("2")) {
                             loof = !loof;
-                            loof2 = !loof2;
                             break;
                         }
                         if (userOpinion.equals("1")) {
@@ -68,8 +66,7 @@ public class Application {
         }
 
     }
-    public static void computerUserComparisonList(List<Integer> user, List<Integer> computer){
-        HashMap<Integer, Integer> map = new HashMap();
+    public static void computerUserComparisonList(HashMap<Integer, Integer> map, List<Integer> user, List<Integer> computer){
         for (int k = 0; k < user.size(); k++) {
             map.put(computer.get(k), user.get(k));
         }
