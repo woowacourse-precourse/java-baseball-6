@@ -13,10 +13,9 @@ public class Error {
         }
     }
 
-    //숫자지만 잘못된 값 또는 잘못된 개수 또는 중복된 숫자를 입력한 예외처리
     public static void check_Numsize(List<Number> User_num) {
         //List의 크기가 3이상이면 예외처리
-        if(User_num.size() != 3) {
+        if(User_num.size() != Constant.MAX_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -29,7 +28,7 @@ public class Error {
     }
 
     public static void exit_error_check(int exit_num) {
-        if(exit_num != 1 && exit_num != 2) {
+        if(exit_num != Constant.EXIT_NUMBER && exit_num != Constant.RESTART_NUMBER) {
             throw new IllegalArgumentException();
         }
     }

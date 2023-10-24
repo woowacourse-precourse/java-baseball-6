@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 public class NumberGroup {
-    private List<Number> numbers;
+    private final List<Number> numbers;
     public NumberGroup(List<Number> numbers){
         Error.check_Numsize(numbers);
         Error.is_Duplicate(numbers);
@@ -31,8 +31,8 @@ public class NumberGroup {
     public static NumberGroup com_num(){
         List<Number> com_num = new ArrayList<>();
 
-        for(int i = 0 ; com_num.size() < 3 ; i++) {
-            Number num = new Number(Randoms.pickNumberInRange(1, 9));
+        for(int i = 0 ; com_num.size() < Constant.MAX_SIZE ; i++) {
+            Number num = new Number(Randoms.pickNumberInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER));
             if(!com_num.contains(num)) {
                 com_num.add(num);
             }

@@ -23,7 +23,7 @@ public class Compare {
     private static int contain(NumberGroup User_num_group, NumberGroup com_num_group) {
         int contain = 0;
 
-        for(int i = 0 ; i < 3 ; i++) {
+        for(int i = 0 ; i < Constant.MAX_SIZE ; i++) {
             if(User_num_group.contains(com_num_group.get(i))) {
                 contain++;
             }
@@ -36,8 +36,7 @@ public class Compare {
     private static int correct(NumberGroup User_num_group, NumberGroup com_num_group) {
         int correct = 0;
 
-        for(int i = 0 ; i < 3 ; i++) {
-            //System.out.println(User_num.get(i) + " " + com_num.get(i));
+        for(int i = 0 ; i < Constant.MAX_SIZE ; i++) {
             if(User_num_group.get(i).equals(com_num_group.get(i))) {
                 correct++;
             }
@@ -50,8 +49,6 @@ public class Compare {
         int contain = getContain();
         int ball = getBall();
         int strike = getStrike();
-
-        System.out.println(contain + " " + ball + " " + strike);
 
         if(contain == 0) {
             return "낫싱";
