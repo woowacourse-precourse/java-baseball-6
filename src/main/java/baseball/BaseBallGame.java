@@ -32,6 +32,7 @@ public class BaseBallGame {
 
             //게임 재시작/종료 입력
             System.out.println(ALL_STRIKE);
+            playOrNot = PlayOrNot.inputNum();
         }
     }
 
