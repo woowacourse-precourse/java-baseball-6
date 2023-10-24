@@ -1,5 +1,7 @@
-package baseball;
+package baseball.Game;
 
+import baseball.Util.Constant;
+import baseball.Util.Exception;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -52,7 +54,7 @@ public class BaseballGame {
         exception.Exception_ReplayNumber(ReplayValue);
 
         // 1일때 재시작, 2일때 return 없이 자동종료 (불필요한 구문)
-        if (ReplayValue.equals(Constant.wantToReplay)) {
+        if (ReplayValue.equals(Constant.GAME_REPLAY)) {
             GameStart();
         }
     }

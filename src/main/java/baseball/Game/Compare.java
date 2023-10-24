@@ -1,5 +1,6 @@
-package baseball;
+package baseball.Game;
 
+import baseball.Util.Constant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Compare {
     public int CountStrike(List<Integer> player, List<Integer> computer) {
         // 스트라이크 개수 확인하는 메소드
         strike = 0;
-        for (int i = 0; i < Constant.gameNumberLength; i++) {
+        for (int i = 0; i < Constant.GAME_NUMBER_LENGTH; i++) {
             if (player.get(i).equals(computer.get(i))) {
                 strike++;
             }
@@ -21,7 +22,7 @@ public class Compare {
     public int CountBall(List<Integer> player, List<Integer> computer) {
         // 볼 개수 확인하는 메소드
         ball = 0;
-        for (int i = 0; i < Constant.gameNumberLength; i++) {
+        for (int i = 0; i < Constant.GAME_NUMBER_LENGTH; i++) {
             if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
                 ball++;
             }

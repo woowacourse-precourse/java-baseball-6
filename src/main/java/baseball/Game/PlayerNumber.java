@@ -1,5 +1,7 @@
-package baseball;
+package baseball.Game;
 
+import baseball.Util.Constant;
+import baseball.Util.Exception;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class PlayerNumber {
         String inputNumber = Console.readLine();
         List<Integer> player = new ArrayList<>();
 
-        for (int i = 0; i < Constant.gameNumberLength; i++) {
+        for (int i = 0; i < Constant.GAME_NUMBER_LENGTH; i++) {
             player.add(Integer.parseInt(inputNumber.substring(i, i + 1)));
         }
 
