@@ -18,13 +18,11 @@ public class RandomNumbers {
         generateRandomNumbers();
     }
 
-    public List<Integer> generateRandomNumbers() {
-
+    public void generateRandomNumbers() {
         while (numbers.size() < NUMBER_LENGTH) {
             int n = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
             validationAdd(n);
         }
-        return numbers;
     }
 
     public void validationAdd(Integer number) {

@@ -61,7 +61,7 @@ public class GameController {
     }
 
     public void printResult(int strikeCnt, int ballCnt) {
-        if (strikeCnt + ballCnt == 0) {
+        if (strikeCnt == 0 && ballCnt == 0) {
             System.out.println("낫싱");
         } else if (strikeCnt == 0) {
             System.out.println(ballCnt + "볼 ");
