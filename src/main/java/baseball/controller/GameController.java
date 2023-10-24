@@ -23,7 +23,7 @@ public class GameController {
     public void playGame() {
         RandomNumber randomNumber = generateRandomNumber();
 
-        while (!gameStatus.isEnd()) {
+        while (gameStatus.isNotEnd()) {
             GameNumberSet gameNumberSet = createGameNumberSet(randomNumber);
             gameStatus = compareGameNumbers(gameNumberSet);
             displayGameResult(gameStatus);

@@ -21,6 +21,10 @@ public class GameStatus {
         return this.strikeCnt == GameNumberSet.NUMBER_LENGTH;
     }
 
+    public boolean isNotEnd() {
+        return this.strikeCnt != GameNumberSet.NUMBER_LENGTH;
+    }
+
     public int getStrikeCnt() {
         return strikeCnt;
     }
