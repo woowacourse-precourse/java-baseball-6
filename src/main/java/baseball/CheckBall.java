@@ -8,6 +8,9 @@ import java.util.stream.Stream;
 
 public class CheckBall {
 
+    private static final boolean CONTINUE = true;
+    private static final boolean STOP = false;
+
     protected static boolean giveBallResult(List<Integer> resultBall, List<Integer> rightBall){
 
         int strike = 0;
@@ -26,12 +29,12 @@ public class CheckBall {
 
         if (strike == 3) {
             System.out.println("3스트라이크");
-            return true;
+            return STOP;
         }
 
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
-            return false;
+            return CONTINUE;
         }
 
         if (ball != 0) {
@@ -43,6 +46,6 @@ public class CheckBall {
         }
 
         System.out.println();
-        return false;
+        return CONTINUE;
     }
 }
