@@ -1,10 +1,10 @@
 package baseball.view;
 
-import baseball.util.ConsoleMessage;
+import baseball.util.GameMessage;
 
 public class OutputView {
     public static void printGameStart() {
-        System.out.println(ConsoleMessage.DISPLAY_GAME_START);
+        System.out.println(GameMessage.DISPLAY_GAME_START);
     }
 
     public static void printRoundResult(String result) {
@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public static void printGameSuccess() {
-        System.out.println(ConsoleMessage.DISPLAY_GAME_SUCCESS);
+        System.out.println(GameMessage.DISPLAY_GAME_SUCCESS);
     }
 
 }

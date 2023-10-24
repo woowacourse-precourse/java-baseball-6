@@ -1,6 +1,6 @@
 package baseball.util;
 
-public class ConsoleMessage {
+public class GameMessage {
     public static final String DISPLAY_GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String DISPLAY_GAME_SUCCESS = String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Constants.BALL_LENGTH);
     public static final String READ_PLAYER_NUMBER = "숫자를 입력해주세요 : ";
