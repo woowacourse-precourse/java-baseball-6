@@ -47,11 +47,11 @@ public class GameController {
     }
 
     private boolean isAnswer() {
-        boolean isAllStrike = numberComparator.isAllStrike(NumberStatus.NUMBER_SIZE);
-        if (isAllStrike) {
+        boolean allStrike = numberComparator.isAllStrike(NumberStatus.NUMBER_SIZE);
+        if (allStrike) {
             OutputView.printEnd();
         }
-        return isAllStrike;
+        return allStrike;
     }
 
     private int[] calculateResult() {
