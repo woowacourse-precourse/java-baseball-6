@@ -13,9 +13,11 @@ public class PrintNothingWhenBothBallAndStrikeNotExistRule implements PrintBaseB
 
     @Override
     public void print() {
-        if (bothBallAndStrikeAreZero()) {
-            System.out.print(STRING_NOTHING);
+        if (!bothBallAndStrikeAreZero()) {
+            return;
         }
+
+        System.out.print(STRING_NOTHING);
     }
 
     private boolean bothBallAndStrikeAreZero() {

@@ -13,8 +13,14 @@ public class PrintBallWhenBallExistRule implements PrintBaseBallResultOutputRule
 
     @Override
     public void print() {
-        if (ballAndStrike.ball() > 0) {
-            System.out.print(ballAndStrike.ball() + STRING_BALL_PREFIX);
+        if (!isBallGreaterThanZero()) {
+            return;
         }
+
+        System.out.print(ballAndStrike.ball() + STRING_BALL_PREFIX);
+    }
+
+    private boolean isBallGreaterThanZero() {
+        return ballAndStrike.ball() > 0;
     }
 }

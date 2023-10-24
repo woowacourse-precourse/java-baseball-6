@@ -13,9 +13,11 @@ public class PrintSplitWhenBallAndStrikeExistRule implements PrintBaseBallResult
 
     @Override
     public void print() {
-        if (bothBallAndStrikeAreGreaterThanZero()) {
-            System.out.print(STRING_SPLIT);
+        if (!bothBallAndStrikeAreGreaterThanZero()) {
+            return;
         }
+
+        System.out.print(STRING_SPLIT);
     }
 
     private boolean bothBallAndStrikeAreGreaterThanZero() {
