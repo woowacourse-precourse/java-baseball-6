@@ -44,7 +44,7 @@ public class GameController {
         if (computerNumbers == null) {
             init();
         }
-        InputView.printCheat(computerNumbers);
+//        InputView.printCheat(computerNumbers);
         InputView.printRequestingInput();
         return InputView.getUserNumbers();
     }
