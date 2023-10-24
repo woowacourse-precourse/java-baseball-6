@@ -1,6 +1,7 @@
 package baseball.model;
 
-import baseball.constant.ExceptionMessage;
+import baseball.constant.BaseBallNumberConstant;
+import baseball.constant.message.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ import java.util.stream.Stream;
 public class BaseballNumberGenerator {
     public List<Integer> createRandomBaseballNumber(){
         List<Integer> randomBaseballNumber = new ArrayList<>();
-        while (randomBaseballNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomBaseballNumber.size() < BaseBallNumberConstant.DIGIT) {
+            int randomNumber = Randoms.pickNumberInRange(BaseBallNumberConstant.START_RANGE, BaseBallNumberConstant.END_RANGE);
             if (!randomBaseballNumber.contains(randomNumber)) {
                 randomBaseballNumber.add(randomNumber);
             }
@@ -25,7 +26,7 @@ public class BaseballNumberGenerator {
     public List<Integer> createPlayerBaseballNumber(int playerNumber){
         List<Integer> playerNumberList = Arrays.stream(String.valueOf(playerNumber).split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
 
-        if(this.checkNumberRange(playerNumber) && this.checkNumberDigit(playerNumber) && this.checkDuplicateDigit(playerNumberList)){
+        if(this.checkNumberRange(playerNumberList) && this.checkNumberDigit(playerNumberList) && this.checkDuplicateDigit(playerNumberList)){
             return playerNumberList;
         }
 
@@ -42,11 +43,10 @@ public class BaseballNumberGenerator {
         return true;
     }
 
-    private boolean checkNumberRange(int inputNumber){
-        int [] inputNumberArray = Stream.of(String.valueOf(inputNumber).split("")).mapToInt(Integer::parseInt).toArray();
+    private boolean checkNumberRange(List<Integer> inputNumberList){
 
-        for(int c : inputNumberArray){
-            if(c==0){
+        for(Integer c : inputNumberList){
+            if(c==BaseBallNumberConstant.EXCLUDED_NUMBER){
                 throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_RANGE_EXCEPTION_MESSAGE);
 
             }
@@ -56,8 +56,8 @@ public class BaseballNumberGenerator {
 
     }
 
-    private boolean checkNumberDigit(int inputNumber){
-        if(String.valueOf(inputNumber).length()!=3){
+    private boolean checkNumberDigit(List<Integer> inputNumberList){
+        if(inputNumberList.size() !=BaseBallNumberConstant.DIGIT){
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_DIGIT_EXCEPTION_MESSAGE);
         }
         return true;
