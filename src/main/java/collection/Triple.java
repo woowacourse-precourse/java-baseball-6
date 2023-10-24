@@ -1,5 +1,6 @@
 package collection;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -52,7 +53,12 @@ public record Triple<T>(
     }
 
     public Set<T> toSet() {
-        return Set.of(first, second, third);
+        final LinkedHashSet<T> set = new LinkedHashSet<>(MAX_SIZE);
+        set.add(first);
+        set.add(second);
+        set.add(third);
+
+        return set;
     }
 
     public boolean contains(final T element) {
