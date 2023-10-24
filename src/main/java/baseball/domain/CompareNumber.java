@@ -5,7 +5,7 @@ import java.util.List;
 public class CompareNumber {
     private int strike;
     private int ball;
-    private final static int fullStrike = 3;
+    private final static int FULL_STRIKE = 3;
 
     public int[] getResult(List<Integer> playerNumber, List<Integer> computerNumber){
         ballCounter(playerNumber, computerNumber);
@@ -33,7 +33,6 @@ public class CompareNumber {
     }
 
     public static boolean successCheck(int[] result){
-        if (result[1] == fullStrike) return true;
-        return false;
+        return result[1] == FULL_STRIKE;
     }
 }

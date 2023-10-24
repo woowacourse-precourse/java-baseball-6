@@ -10,7 +10,7 @@ public class PlayerNumber {
 
     public PlayerNumber(String input){
         NumberCheck.duplicateNumber(input);
-        NumberCheck.nonNumber(input);
+        NumberCheck.notNumber(input);
         NumberCheck.digitNumber(input);
         NumberCheck.rangeOut(input);
 

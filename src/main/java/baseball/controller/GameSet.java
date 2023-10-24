@@ -25,7 +25,7 @@ public class GameSet {
 
     public void answerCheck(){
         do{
-            PlayerNumber playerNumber = new PlayerNumber(InputView.playerNumber());
+            PlayerNumber playerNumber = new PlayerNumber(InputView.getPlayerNumber());
             int[] result = compareNumber.getResult(playerNumber.getPlayerNumber(), computer.getComputerNumber());
             success = compareNumber.successCheck(result);
             OutputView.resultCheck(result);
@@ -33,7 +33,7 @@ public class GameSet {
     }
 
     public boolean reStartOrOver(){
-        String check = InputView.reStartOrOverNumber();
+        String check = InputView.getReStartOrOverNumber();
         if (check.equals("2")) {
             return false;
         }

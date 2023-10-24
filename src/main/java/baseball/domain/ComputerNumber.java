@@ -7,15 +7,15 @@ import java.util.List;
 
 public class ComputerNumber {
 
-    private final static int numberSize = 3;
-    private final static int minNumber = 1;
-    private final static int maxNumber = 9;
+    private final static int NUMBER_SIZE = 3;
+    private final static int MIN_NUMBER = 1;
+    private final static int MAX_NUMBER = 9;
 
     private List<Integer> computerNumber = new ArrayList<>();
 
     public ComputerNumber(){
-        while (computerNumber.size() < numberSize) {
-            int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
+        while (computerNumber.size() < NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!computerNumber.contains(randomNumber)) {
                 this.computerNumber.add(randomNumber);
             }
