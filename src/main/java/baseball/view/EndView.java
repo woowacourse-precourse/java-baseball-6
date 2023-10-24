@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.domain.GameConstants;
-
 import static baseball.domain.GameConstants.NUMBER_LENGTH;
 
 public class EndView {
