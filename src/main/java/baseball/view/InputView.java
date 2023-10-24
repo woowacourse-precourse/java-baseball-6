@@ -8,4 +8,9 @@ public class InputView {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
+
+    public static int setRetryNumber(){
+        String inputRetryNumber = Console.readLine();
+        return Integer.parseInt(inputRetryNumber);
+    }
 }
