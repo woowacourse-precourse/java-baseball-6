@@ -19,7 +19,7 @@ public class Game {
     }
     public void playBall(List<Integer> computer, List<Integer> user){
         for(int i=0;i<3;i++){
-            if(computer.get(i) == user.get(i)){
+            if(computer.get(i)==user.get(i)){
                 strike++;
             } else {
                 if(computer.contains(user.get(i))){
@@ -46,10 +46,7 @@ public class Game {
     }
 
     public boolean checkStriked(){
-        if(strike == 3){
-            return true;
-        }
-        return false;
+        return strike == 3;
     }
 
     public boolean gameOver(){
