@@ -2,8 +2,8 @@ package baseball;
 
 public class BaseBallGame {
 
-    private GameInput input;
-    private GameService service;
+    private final GameInput input;
+    private final GameService service;
 
     public BaseBallGame() {
         input = new GameInput();
