@@ -41,11 +41,18 @@ public class TargetBaseballNumbers {
     }
 
     private List<BaseballNumber> convertInputToBaseballNumbers(final List<Integer> inputNumbers) {
+        verifyInputNumberSize(inputNumbers);
         verifyDuplicates(inputNumbers);
 
         return inputNumbers.stream()
                 .map(BaseballNumber::new)
                 .toList();
+    }
+
+    private void verifyInputNumberSize(List<Integer> inputNumbers) {
+        if (TargetBaseballNumbers.BASEBALL_NUMBER_SIZE != inputNumbers.size()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void verifyDuplicates(final List<Integer> inputPlayerNumbers) {

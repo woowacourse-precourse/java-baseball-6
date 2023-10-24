@@ -29,9 +29,8 @@ public class BaseballGameController {
 
     private void matchingNumber(TargetBaseballNumbers computerNumbers) {
         while (true) {
-            List<Integer> playerNumbers = requestNumber();
-            verifyInputNumber(playerNumbers);
-            GameResult gameResult = computerNumbers.calculateGameResult(playerNumbers);
+            List<Integer> inputNumbers = requestNumber();
+            GameResult gameResult = computerNumbers.calculateGameResult(inputNumbers);
 
             outputView.showGameResult(gameResult);
 
@@ -45,12 +44,6 @@ public class BaseballGameController {
     private List<Integer> requestNumber() {
         outputView.requestNumber();
         return inputView.getPlayerNumbers();
-    }
-
-    private void verifyInputNumberSize(List<Integer> inputNumbers) {
-        if (TargetBaseballNumbers.BASEBALL_NUMBER_SIZE != inputNumbers.size()) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private boolean isWantStopGame() {
