@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class CountResult {
     private final static String NOTHING_SENTENCE = "낫싱";
@@ -16,25 +17,18 @@ public class CountResult {
     }
 
     public int countBall(List<Integer> computerNumber, List<Integer> playerNumber){
-        int count = 0;
-        for(int i=0; i<computerNumber.size(); i++){
-            if(!playerNumber.get(i).equals(computerNumber.get(i))
-            && computerNumber.contains(playerNumber.get(i))){
-                count++;
-            }
-        }
-        return count;
+
+        return (int)Stream.iterate(0, i->i+1).limit(computerNumber.size())
+                .filter(i->!playerNumber.get(i).equals(computerNumber.get(i))
+                        && computerNumber.contains(playerNumber.get(i)))
+                .count();
     }
 
     public int countStrike(List<Integer> computerNumber, List<Integer> playerNumber){
-        int count = 0;
 
-        for(int i=0; i<computerNumber.size(); i++){
-            if(playerNumber.get(i).equals(computerNumber.get(i))){
-                count++;
-            }
-        }
-        return count;
+        return (int)Stream.iterate(0, i->i+1).limit(computerNumber.size())
+                .filter(i->playerNumber.get(i).equals(computerNumber.get(i)))
+                .count();
     }
 
     public String makeHintString(){
