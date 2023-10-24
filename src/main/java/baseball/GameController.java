@@ -3,22 +3,27 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
+    private static final int MAX_STRIKE_NUMBER = 3;
+    private static final int MIN_STRIKE_AND_BALL_NUMBER = 0;
+    private static final String RESTART_NUMBER = "1";
+    private static final String END_NUMBER = "2";
+
     Computer computer;
     Player player;
 
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        PrintCollection.printStartGame();
         playGame();
         endGame();
     }
 
     public void playGame() {
         computer = new Computer();
-        int strikes = 0;
-        int balls = 0;
+        int strikes = MIN_STRIKE_AND_BALL_NUMBER;
+        int balls = MIN_STRIKE_AND_BALL_NUMBER;
 
-        while (strikes != 3) {
-            System.out.print("숫자를 입력해주세요 : ");
+        while (strikes != MAX_STRIKE_NUMBER) {
+            PrintCollection.printInputNumber();
             player = new Player(Console.readLine());
 
             strikes = countStrikes(computer.getRandomNumber(), player.getInputNumber());
@@ -31,22 +36,21 @@ public class GameController {
         boolean restartGame = true;
 
         while (restartGame) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            PrintCollection.printRestartGame();
             String restart = Console.readLine();
 
-            if (restart.equals("1")) {
+            if (restart.equals(RESTART_NUMBER)) {
                 playGame();
-            } else if (restart.equals("2")) {
+            } else if (restart.equals(END_NUMBER)) {
                 restartGame = false;
             } else {
-                throw new IllegalArgumentException("재시작 숫자를 잘못 입력하셨습니다.");
+                throw new IllegalArgumentException(PrintCollection.RESTART_NUMBER_ERROR);
             }
         }
     }
 
     public int countStrikes(String computerNumber, String playerNumber) {
-        int strikes = 0;
+        int strikes = MIN_STRIKE_AND_BALL_NUMBER;
 
         for (int i = 0; i < computerNumber.length(); i++) {
             char computerNumberDigit = computerNumber.charAt(i);
@@ -61,7 +65,7 @@ public class GameController {
     }
 
     public int countBalls(String computerNumber, String playerNumber) {
-        int balls = 0;
+        int balls = MIN_STRIKE_AND_BALL_NUMBER;
 
         for (int i = 0; i < computerNumber.length(); i++) {
             char computerNumberDigit = computerNumber.charAt(i);
@@ -78,19 +82,19 @@ public class GameController {
 
     public void printStrikesAndBalls(int strikes, int balls) {
         if (strikes < 1 && balls < 1) {
-            System.out.println("낫싱");
+            PrintCollection.printNothing();
         }
 
         if (strikes >= 1 && balls < 1) {
-            System.out.println(strikes + "스트라이크");
+            PrintCollection.printStrikes(strikes);
         }
 
         if (strikes < 1 && balls >= 1) {
-            System.out.println(balls + "볼");
+            PrintCollection.printBalls(balls);
         }
 
         if (strikes >= 1 && balls >= 1) {
-            System.out.println(balls + "볼 " + strikes + "스트라이크");
+            PrintCollection.printStrikesAndBalls(strikes, balls);
         }
     }
 }
