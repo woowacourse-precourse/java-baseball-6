@@ -13,10 +13,11 @@ public class Constant {
     public static final String NOTHING = "낫싱\n";
     public static final int NUMBER_ZERO = 0;
     public static final int NUMBER_ONE = 1;
-    public static final int FINISH = 1;
-    public static final int NUMBER_TWO = 2;
-    public static final int RESTART = 2;
     public static final int NUMBER_THREE = 3;
     public static final int NUMBER_NINE = 9;
+    public static final int FINISH = 1;
+    public static final int RESTART = 2;
+    public static final int START = 1;
+    public static final int END = 9;
 
 }
