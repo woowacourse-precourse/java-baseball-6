@@ -10,8 +10,9 @@ public class Application {
 
         String guessStr = "";
         int guessInt = 0;
-        int g1, g2, g3; // guessed numbers on each position
-        int t1, t2, t3; // target numbers on each position
+
+        int[] g = new int[3]; // guessed numbers on each position
+        int[] t = new int[3]; // target numbers on each position
 
         int strike = 0;
         int ball = 0;
@@ -33,9 +34,9 @@ public class Application {
             }
 
             // Storing numbers of target on each index
-            t1 = target.get(0);
-            t2 = target.get(1);
-            t3 = target.get(2);
+            t[0] = target.get(0);
+            t[1] = target.get(1);
+            t[2] = target.get(2);
 
             // Getting guessed input from the user until the user gets it right
             while (true) {
@@ -59,36 +60,36 @@ public class Application {
                 }
 
                 // Storing numbers on each position to compare
-                g1 = guessInt / 100;
-                g2 = guessInt % 100 / 10;
-                g3 = guessInt % 100 % 10;
+                g[0] = guessInt / 100;
+                g[1] = guessInt % 100 / 10;
+                g[2] = guessInt % 100 % 10;
 
-                if (g1 == g2 || g2 == g3 || g1 == g3) {
-                    throw new IllegalArgumentException("Invalid argument: " + g1 + g2 + g3);
+                if (g[0] == g[1] || g[1] == g[2] || g[0] == g[2]) {
+                    throw new IllegalArgumentException("Invalid argument: " + g[0] + g[1] + g[2]);
                 }
 
                 // Comparing value and index, but i think this code is too bulky
-                if (g1 == t1) {
+                if (g[0] == t[0]) {
                     strike++;
-                } else if (g2 == t1) {
+                } else if (g[1] == t[0]) {
                     ball++;
-                } else if (g3 == t1) {
+                } else if (g[2] == t[0]) {
                     ball++;
                 }
 
-                if (g2 == t2) {
+                if (g[1] == t[1]) {
                     strike++;
-                } else if (g1 == t2) {
+                } else if (g[0] == t[1]) {
                     ball++;
-                } else if (g3 == t2) {
+                } else if (g[2] == t[1]) {
                     ball++;
                 }
 
-                if (g3 == t3) {
+                if (g[2] == t[2]) {
                     strike++;
-                } else if (g1 == t3) {
+                } else if (g[0] == t[2]) {
                     ball++;
-                } else if (g2 == t3) {
+                } else if (g[1] == t[2]) {
                     ball++;
                 }
 
@@ -111,8 +112,8 @@ public class Application {
 
             //task if the user wants to continue playing
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String re = Console.readLine();
-            restart = Integer.parseInt(re);
+
+            restart = Integer.parseInt(Console.readLine());
 
             // Throws error in case of wrong input from the user
             if (!(restart == 1 || restart == 2)) {
@@ -120,5 +121,4 @@ public class Application {
             }
         }
     }
-
 }
