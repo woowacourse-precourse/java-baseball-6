@@ -2,7 +2,7 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseballInformation {
+public class GameInformation {
 
     private String answerNumber;
     private int strikeCount;
@@ -10,7 +10,7 @@ public class BaseballInformation {
     private int numberCount;
 
 
-    public BaseballInformation(int numberCount) {
+    public GameInformation(int numberCount) {
         this.numberCount = numberCount;
     }
 

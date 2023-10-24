@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.BaseballInformation;
+import baseball.model.GameInformation;
 
 public class Output {
 
@@ -25,9 +25,9 @@ public class Output {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printHint(BaseballInformation baseballInformation) {
-        int strikeCount = baseballInformation.getStrikeCount();
-        int ballCount = baseballInformation.getBallCount();
+    public static void printHint(GameInformation gameInformation) {
+        int strikeCount = gameInformation.getStrikeCount();
+        int ballCount = gameInformation.getBallCount();
 
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
