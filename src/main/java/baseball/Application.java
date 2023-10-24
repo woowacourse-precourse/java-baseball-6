@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -55,7 +57,7 @@ public class Application {
             } else if (strike != 0 && ball == 0) {
                 System.out.println(strike + "스트라이크");
             } else if (strike != 0 || ball != 0) {
-                System.out.println(ball + "볼" + " " + strike + "스트라이크, ");
+                System.out.println(ball + "볼 " + strike + "스트라이크");
             } else {
                 System.out.println(nothing);
             }
@@ -82,6 +84,21 @@ public class Application {
         for (char ch : input.toCharArray()) {
             if (ch < '0' || ch > '9') {
                 throw new IllegalArgumentException("숫자만 입력해주세요. 게임을 종료합니다.");
+            }
+        }
+        checkForDuplicateNumbers(input);
+    }
+    private static void checkForDuplicateNumbers(String input) {
+        for (int i = 0; i < input.length() - 1; i++) {
+            if (input.charAt(i) == input.charAt(i + 1)) {
+                throw new IllegalArgumentException("연속된 중복된 숫자가 있습니다.");
+            }
+        }
+
+        Set<Character> set = new HashSet<>();
+        for (char ch : input.toCharArray()) {
+            if (!set.add(ch)) {
+                throw new IllegalArgumentException("중복된 숫자가 있습니다.");
             }
         }
     }
