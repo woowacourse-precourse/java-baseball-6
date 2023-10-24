@@ -8,7 +8,7 @@ final class Game_Score
     public Game_Score()
     {
         this.strike = 0;
-        this.strike = 0;
+        this.ball = 0;
     }
     public void Set_Game_Score(int strike, int ball)
     {
