@@ -24,4 +24,8 @@ public class userInterface {
         System.out.print(inputPhrases);
     }
 
+    public static void endWrite(int listSize){
+        System.out.println(listSize+endPhrases);
+    }
+
 }
