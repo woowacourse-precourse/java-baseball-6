@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import baseball.model.Balls;
 import baseball.model.Ground;
