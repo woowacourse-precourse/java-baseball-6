@@ -34,10 +34,6 @@ public class User {
     }
 
 
-    public List<Integer> getUserNumber() {
-        return this.userNumber;
-    }
-
     public void validateUserNumber() {
         validateIsThreeUserNumber();
         validateInRangeUserNumber();
