@@ -2,22 +2,32 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem {
 
     private final List<Integer> answer;
+    private static final int UNIQUE_NUMBER_MIN = 1;
+    private static final int UNIQUE_NUMBER_MAX = 9;
 
-    public Problem(){
+    public Problem() {
         this.answer = createAnswer();
     }
 
-    public List<Integer> makeProblem(){
+    public List<Integer> getAnswer() {
         return answer;
     }
 
-    public List<Integer> createAnswer(){
-        return Randoms.pickUniqueNumbersInRange(1, 9, 3);
+    protected List<Integer> createAnswer() {
+        List<Integer> createAnswer = new ArrayList<>();
+        while(createAnswer.size()!=3) {
+            int randomNumber = Randoms.pickNumberInRange(UNIQUE_NUMBER_MIN, UNIQUE_NUMBER_MAX);
+            if(!createAnswer.contains(randomNumber)){
+                createAnswer.add(randomNumber);
+            }
+        }
+        return createAnswer;
     }
 
 }
