@@ -47,6 +47,20 @@ public class Application {
                 if (userNum.size() != 3) {
                     throw new IllegalArgumentException("서로 다른 3글자를 입력 하세요.");
                 }
+
+                for (int i = 0; i < 3; i++) {
+                    // 스트라이크
+                    if (Objects.equals(computer.get(i), userNum.get(i))) {
+                        strike++;
+                        continue;
+                    }
+                    // 볼
+                    if (computer.contains(userNum.get(i))) {
+                        ball++;
+                    }
+                }
+
+
             }
         }
     }
