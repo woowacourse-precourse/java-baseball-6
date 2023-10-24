@@ -1,9 +1,9 @@
 package baseball;
 
-import static baseball.Constants.validLength;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import static baseball.Constants.*;
 
 public class ExceptionHandler {
     public static boolean isAllDigit(String str) {
@@ -51,7 +51,7 @@ public class ExceptionHandler {
     }
 
     public static boolean isValidContinueCommand(String str) {
-        return str.equals("1") || str.equals("2");
+        return str.equals(gameContinue) || str.equals(gameStop);
     }
 
     public static void raiseContinueCommandException(String continueCommand){
