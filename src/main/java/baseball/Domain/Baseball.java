@@ -1,8 +1,6 @@
 package baseball.Domain;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Baseball {
 
@@ -48,16 +46,12 @@ public class Baseball {
         return cnt;
     }
 
-    private boolean contains(int number) {
-        return numbers.contains(number);
-    }
-
     private boolean isStrike(int number, int index) {
         return numbers.indexOf(number) == index;
     }
 
     private boolean isBall(int number, int index) {
-        return numbers.indexOf(number) != -1 && numbers.indexOf(number) != index;
+        return numbers.contains(number) && numbers.indexOf(number) != index;
     }
 
 }
