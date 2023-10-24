@@ -16,14 +16,22 @@ public class Application {
         while (true) {
             baseball.runGame();
             System.out.println(REPLAY_MESSAGE);
-            String input = Console.readLine();
-            if (input.charAt(0) == REPLAY_GAME) {
-                continue;
-            } else if (input.charAt(0) == FINISH_GAME) {
+            boolean isValidated = validateInputOrThrow();
+            if (!isValidated) {
                 break;
-            } else {
-                throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public static boolean validateInputOrThrow() {
+        String input = Console.readLine();
+
+        if (input.length() == 1 && input.charAt(0) == REPLAY_GAME) {
+            return true;
+        } else if (input.length() == 1 && input.charAt(0) == FINISH_GAME) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }

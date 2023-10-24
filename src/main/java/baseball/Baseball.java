@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 
 public class Baseball {
     private static final int DIGIT_LENGTH = 3;
@@ -14,6 +15,8 @@ public class Baseball {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static int strike;
+    private static int ball;
 
     public void runGame() {
         System.out.println(START_MESSAGE);
@@ -24,8 +27,9 @@ public class Baseball {
             System.out.print(INPUT_MESSAGE);
             String inputString = Console.readLine();
             List<Integer> inputNum = convertStringToList(inputString);
-            int strike = countBallAndStrike(inputNum, answer);
-            if (isAnswer(strike))
+            countBallAndStrike(inputNum, answer);
+            printResult();
+            if (isAnswer())
                 break;
         }
     }
@@ -39,8 +43,8 @@ public class Baseball {
                 answer.add(randomNumber);
             }
         }
+
         return answer;
-//        return Randoms.pickUniqueNumbersInRange(1, 9, DIGIT_LENGTH);
     }
 
     public List<Integer> convertStringToList(String inputString) {
@@ -60,24 +64,12 @@ public class Baseball {
         if (inputString.length() != DIGIT_LENGTH || inputString.contains("0")) {
             throw new IllegalArgumentException();
         }
-
         if (Integer.parseInt(inputString) < MINIMUM_NUM || Integer.parseInt(inputString) > MAXIMUM_NUM) {
             throw new IllegalArgumentException();
         }
     }
 
-    // loop 도는 version
-//    public static void validateInput(String inputString) {
-//        if (inputString.length() != DIGIT_LENGTH)
-//            throw new IllegalArgumentException();
-//
-//        for (int i = 0; i < DIGIT_LENGTH; i++) {
-//            if (!Character.isDigit(inputString.charAt(i)))
-//                throw new IllegalArgumentException();
-//        }
-//    }
-
-    public boolean isAnswer(int strike) {
+    public boolean isAnswer() {
         if (strike == DIGIT_LENGTH) {
             System.out.println(END_MESSAGE);
             return true;
@@ -85,9 +77,11 @@ public class Baseball {
         return false;
     }
 
-    public int countBallAndStrike(List<Integer> inputNum, final List<Integer> answer) {
-        int ball = 0;
-        int strike = 0;
+    public void countBallAndStrike(List<Integer> inputNum, final List<Integer> answer) {
+//        int ball = 0;
+//        int strike = 0;
+        ball = 0;
+        strike = 0;
 
         for (int i = 0; i < DIGIT_LENGTH; i++) {
             int inputDigit = inputNum.get(i);
@@ -98,12 +92,11 @@ public class Baseball {
                 ball++;
             }
         }
-
-        printResult(ball, strike);
-        return strike;
+//        printResult(ball, strike);
+//        return strike;
     }
 
-    private void printResult(int ball, int strike) {
+    private void printResult() {
         if (ball > 0 && strike > 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         } else if (ball > 0) {
