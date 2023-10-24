@@ -16,4 +16,8 @@ public class GamePlayView {
     public String receiveInputFromPlayer() {
         return Console.readLine();
     }
+
+    public void printJudgement(String judgement) {
+        System.out.println(judgement);
+    }
 }
