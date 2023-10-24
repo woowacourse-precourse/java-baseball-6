@@ -41,12 +41,18 @@ public class GameController {
     private void askRestartGame() {
         OutputView.printInputRestartGame();
         int restart = InputView.inputRestartGame();
+        validRestartInput(restart);
 
         if (isGameRestart(restart)) {
             startOneRound();
         }
     }
 
+    private static void validRestartInput(int restart) {
+        if (restart != RESTART_GAME_FLAG && restart != GAME_END_FLAG) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
+    }
 
     private static boolean isGameRestart(int restart) {
         return restart == RESTART_GAME_FLAG;
