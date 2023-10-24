@@ -43,7 +43,7 @@ public class Player {
     }
 
     public int calculateStrikeCounts(Player player) {
-        return (int) IntStream.rangeClosed(0, 2)
+        return (int) IntStream.range(0, BASEBALL_NUMBERS_LIMIT_SIZE)
                 .filter(index -> isStrike(player, index))
                 .count();
     }
@@ -53,7 +53,7 @@ public class Player {
     }
 
     public int calculateBallCounts(Player player) {
-        return (int) IntStream.rangeClosed(0, 2)
+        return (int) IntStream.range(0, BASEBALL_NUMBERS_LIMIT_SIZE)
                 .filter(index -> isBall(player, index))
                 .count();
     }
