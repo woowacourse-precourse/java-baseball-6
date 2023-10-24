@@ -23,7 +23,7 @@ public class Application {
     public static List<Integer> checkUserNum(String num) throws IllegalArgumentException{
         //num 3자리가 아닐 때
         if(num.length() != 3)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
 
         List<Integer> userNum = new ArrayList<>();
         for(int i = 0; i<num.length(); i++){
@@ -35,12 +35,11 @@ public class Application {
 
     public static void main(String[] args) {
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
             //컴퓨터 숫자 세팅
             List<Integer> comNum = createRandomNum();
-
-            System.out.println("숫자 야구 게임을 시작합니다.");
 
             while(true){
                 //사용자 숫자 세팅(다 맞을 때까지 계속 입력 받기)
