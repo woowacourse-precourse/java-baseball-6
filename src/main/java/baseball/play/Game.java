@@ -1,4 +1,4 @@
-package baseball;
+package baseball.play;
 
 import baseball.domain.Count;
 import baseball.utils.Validation;

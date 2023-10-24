@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.view.InputView;
+import baseball.play.Game;
 import baseball.view.OutputView;
 
 public class Application {
