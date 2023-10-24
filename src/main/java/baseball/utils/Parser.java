@@ -2,13 +2,13 @@ package baseball.utils;
 
 public class Parser {
 
-    public int[] parseUserInput(String input) {
-        checkSize(input);
-        return parseInt(input);
+    public int[] parseUserInput(String input, int size) {
+        checkSize(input, size);
+        return parseInt(input, size);
     }
 
-    private void checkSize(String input) {
-        if(input.length() != 3) {
+    private void checkSize(String input, int size) {
+        if(input.length() != size) {
             throw new IllegalArgumentException();
         }
     }
@@ -21,10 +21,10 @@ public class Parser {
         return c - '0';
     }
 
-    private int[] parseInt(String input) {
-        int[] numbers = new int[3];
+    private int[] parseInt(String input, int size) {
+        int[] numbers = new int[size];
 
-        for(int i=0; i<input.length(); i++) {
+        for(int i=0; i<size; i++) {
             if(!checkDigit(input, i)){
                 throw new IllegalArgumentException();
             }
