@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import model.NumberGenerator;
 import model.NumberInput;
 import org.junit.jupiter.api.Test;
+import player.Computer;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +16,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void 컴퓨터_랜덤생성_볼_테스트() {
+        Computer computer = new Computer();
+        int ball = computer.ballCount("123", "435");
+        assertThat(ball).isEqualTo(1);
+    }
+
+    @Test
+    void 컴퓨터_랜덤생성_스트라이크_테스트() {
+        Computer computer = new Computer();
+        int strike = computer.strikeCount("123", "125");
+        assertThat(strike).isEqualTo(2);
+    }
 
     @Test
     void 컴퓨터_랜덤생성_길이테스트() {
