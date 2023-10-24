@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    static final int CAPACITY = 3;
 
     static void pickNumber(List<Integer> computer) {
-        while (computer.size() < 3) {
+        while (computer.size() < CAPACITY) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -20,15 +21,11 @@ public class Application {
         String input = Console.readLine();
         List<Integer> player = new ArrayList<>();
 
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
-        }
-        for (int i = 0; i < 3; ++i) {
+        ExceptionHandler.checkInputSize(input, CAPACITY);
+        for (int i = 0; i < CAPACITY; ++i) {
             int number = input.charAt(i) - '0';
 
-            if (number < 1 || number > 9 || player.contains(number)) {
-                throw new IllegalArgumentException("잘못된 입력입니다.");
-            }
+            ExceptionHandler.checkNumber(number, player);
             player.add(number);
         }
         return player;
@@ -38,7 +35,7 @@ public class Application {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < CAPACITY; ++i) {
             int playerNumber = player.get(i);
 
             if (computer.get(i) == playerNumber) {
@@ -65,23 +62,22 @@ public class Application {
         }
     }
 
-    static boolean checkInput() {
+    static boolean readCommand() {
         String input = Console.readLine();
 
-        if (input.length() != 1) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
-        } else if (input.charAt(0) != '1' && input.charAt(0) != '2') {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
-        }
-        return input.charAt(0) == '2';
+        ExceptionHandler.checkInputSize(input, 1);
+        char command = input.charAt(0);
+
+        ExceptionHandler.checkCommand(command);
+        return command == '2';
     }
 
-    static boolean checkResult(Result result, List<Integer> computer) {
-        if (result.getStrike() == 3) {
+    static boolean isStop(Result result, List<Integer> computer) {
+        if (result.getStrike() == CAPACITY) {
             computer.clear();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return checkInput();
+            return readCommand();
         }
         return false;
     }
@@ -98,7 +94,7 @@ public class Application {
             Result result = evaluate(player, computer);
 
             printResult(result);
-            if (checkResult(result, computer)) {
+            if (isStop(result, computer)) {
                 break;
             }
         }
