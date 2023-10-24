@@ -16,22 +16,18 @@ public class Application {
         while (loof) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) { //중복 제거
-                    computer.add(randomNumber);
-                }
-            }
+            computerRandom(computer);
+
             while (loof2) {
                 System.out.print("숫자를 입력해주세요 : ");
-                String userNumber = Console.readLine();
+                String Numbers = Console.readLine();
 
                 List<Integer> user = new ArrayList<>();
-                for (int i = 0; i < userNumber.length(); i++) {
-                    int temp = userNumber.charAt(i) - '0';
+                for (int i = 0; i < Numbers.length(); i++) {
+                    int userNumber = Numbers.charAt(i) - '0';
 
-                    if ((temp >= 1 && temp <= 9 && user.size() < 3 && !(user.contains(temp)))) {
-                        user.add(temp);
+                    if ((userNumber >= 1 && userNumber <= 9 && !(user.contains(userNumber)))) {
+                        user.add(userNumber);
 
                     } else {
                         throw new IllegalArgumentException();
@@ -61,9 +57,9 @@ public class Application {
                 }
                 switch (strike) {
                     case 3:
-                        System.out.println("3스트라이크");
-                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                        System.out.println("3스트라이크\n"
+                                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                                +"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                         String userOpinion = Console.readLine();
                         if (userOpinion.equals("2")) {
                             loof = !loof;
@@ -88,5 +84,12 @@ public class Application {
         }
 
     }
-
+    public static void computerRandom(List<Integer> computer){
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+    }
 }
