@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Game {
     String randomNumber;
     String userNumber;
@@ -9,8 +7,8 @@ public class Game {
 
     public void play() {
 
-        Output output = new Output();
-        output.printStartGame();
+        GameResultPrinter gameResultPrinter = new GameResultPrinter();
+        gameResultPrinter.printStartGame();
         RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
 
         randomNumber = randomNumberCreater.getRandomNumber();
@@ -18,7 +16,7 @@ public class Game {
 
         while(quit) {
 
-            Input input = new Input();
+            UserInputReader input = new UserInputReader();
             userNumber = input.enterGameNumber();
 
             CheckInputNumber checkInputNumber = new CheckInputNumber();
@@ -26,7 +24,7 @@ public class Game {
             int strike = checkInputNumber.checkStrike(randomNumber, userNumber);
             int ball = checkInputNumber.checkBall(randomNumber, userNumber);
 
-            output.printResult(strike, ball);
+            gameResultPrinter.printResult(strike, ball);
 
             if (strike == 3) {
                 if (input.enterAnswerRestartGame().equals("1")) {
