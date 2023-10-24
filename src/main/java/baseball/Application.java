@@ -12,6 +12,24 @@ public class Application {
 
     }
 
+    public static GameResult compareNumList(List<String> playerNum, List<String> computerNumber) {
+        int ball = 0;
+        int strike = 0;
+
+        System.out.println(computerNumber);
+        for (int i = 0; i < computerNumber.size(); i++) {
+            String tempComNum = computerNumber.get(i);
+            String tempUserNum = playerNum.get(i);
+            if (tempComNum.equals(tempUserNum)) {
+                strike++;
+            }
+            if (!tempComNum.equals(tempUserNum) && computerNumber.contains(tempUserNum)) {
+                ball++;
+            }
+        }
+        return new GameResult(ball, strike);
+    }
+
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int BASEBALL_SIZE = 3;
