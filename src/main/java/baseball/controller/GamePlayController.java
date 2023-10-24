@@ -19,8 +19,10 @@ public class GamePlayController {
         outputView.printCreateController();
     }
 
-    public void gameStart(Computer computer, Player player){
-        hintResult(calculateBallAndStrikeCount(computer, player));
+    public void gameStart(){
+        computer = new Computer(new ComputerRandomGameNumber());
+        player = new Player();
+    }
     }
 
     public List<Integer> calculateBallAndStrikeCount(String computerNumber, String playerNumber) {
