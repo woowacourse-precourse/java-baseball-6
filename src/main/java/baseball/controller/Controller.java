@@ -1,17 +1,21 @@
 package baseball.controller;
 
+import baseball.model.Computer;
+import baseball.model.InGame;
+import baseball.model.Player;
+import baseball.model.ReGameOrExit;
 import baseball.utils.Util;
+import baseball.view.Message;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    List<Integer> randomIntegerList;
+    Computer computer;
+    Player player;
 
     public void run() {
-        startGame();    //재시작 할 때 인사말 안나와야함
+        startGame();
         int reGameOrExit = 1;
         while (reGameOrExit == 1) {
             getRandomNum();
@@ -21,59 +25,25 @@ public class Controller {
     }
 
     private void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Message.gameStartMessage();
     }
 
     private void getRandomNum() {
-        randomIntegerList = new ArrayList<>();  // 이렇게 생성할 필요 있나?
-        for (int i = 0; i < 3; i++) {
-            randomIntegerList.add(Randoms.pickNumberInRange(1, 9));
-        }
-//        System.out.println(randomIntegerList);
+        computer = new Computer();
     }
 
     private void playGame() {
         boolean isThreeStrike = false;
         while (!isThreeStrike) {
-            isThreeStrike = compareUserNumWithRandomNum(randomIntegerList, Util.getPlayerNum());
-        }
-    }
-
-
-    private boolean compareUserNumWithRandomNum(List<Integer> randomIntegerList, List<Integer> playerIntegerList) {
-        int strike = 0;
-        int ball = 0;
-        boolean threeStrike = false;
-        for (int i = 0; i < 3; i++) {
-            if (randomIntegerList.get(i).equals(playerIntegerList.get(i))) {
-                strike += 1;
-            } else if (randomIntegerList.contains(playerIntegerList.get(i))) {
-                ball += 1;
-            }
-        }
-        strikeAndBallMessage(strike, ball);
-        if (strike == 3) {
-            threeStrike = true;
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-        return threeStrike;
-    }
-
-    private void strikeAndBallMessage(int strike, int ball) {
-        if (strike > 0 && ball == 0) {
-            System.out.println(strike+"스트라이크");
-        } else if (strike == 0 && ball > 0) {
-            System.out.println(ball+"볼");
-        } else if (strike > 0 && ball > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        } else {
-            System.out.println("낫싱");
+            Message.inputNumberMessage();
+            player = new Player(Console.readLine());
+            isThreeStrike = InGame.comparePlayerNumWithComputerNum(computer.getRandomIntegerList(), player.getPlayerIntegerList());
         }
     }
 
     private int endGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Util.getReGameOrExitNum();
+        Message.endGameMessage();
+        ReGameOrExit reGameOrExit = new ReGameOrExit(Console.readLine());
+        return reGameOrExit.getReGameOrExitNum();
     }
-
 }
