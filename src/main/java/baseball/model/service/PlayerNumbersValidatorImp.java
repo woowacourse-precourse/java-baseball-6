@@ -21,11 +21,11 @@ public class PlayerNumbersValidatorImp implements PlayerNumbersValidator {
     }
 
     private void isNumbers(String inputNumbers) {
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            if (!Character.isDigit(inputNumbers.charAt(i))) {
+        inputNumbers.chars().forEach(ch -> {
+            if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException(PLAYER_NUMBERS_NON_NUMBER);
             }
-        }
+        });
     }
 
     private void isLength(String inputNumbers) {
@@ -35,22 +35,21 @@ public class PlayerNumbersValidatorImp implements PlayerNumbersValidator {
     }
 
     private void isRange(String inputNumbers) {
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            int num = Character.getNumericValue(inputNumbers.charAt(i));
+        inputNumbers.chars().forEach(ch -> {
+            int num = Character.getNumericValue(ch);
             if (num < GAME_NUMBERS_MIN_VALUE || num > GAME_NUMBERS_MAX_VALUE) {
                 throw new IllegalArgumentException(PLAYER_NUMBERS_RANGE_INVALID);
             }
-        }
+        });
     }
 
     private void isDuplicate(String inputNumbers) {
         Set<Character> numbers = new HashSet<>();
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            char ch = inputNumbers.charAt(i);
+        inputNumbers.chars().forEach(ch -> {
             if (numbers.contains(ch)) {
                 throw new IllegalArgumentException(PLAYER_NUMBERS_DUPLICATED);
             }
-            numbers.add(ch);
-        }
+            numbers.add((char) ch);
+        });
     }
 }

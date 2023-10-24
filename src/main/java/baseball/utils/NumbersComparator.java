@@ -1,8 +1,10 @@
 package baseball.utils;
 
+import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
 import static baseball.model.constants.GameConstants.WIN;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class NumbersComparator {
     private int ball;
@@ -26,19 +28,14 @@ public class NumbersComparator {
     }
 
     private void strikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for (int i = 0; i < playerNumbers.size(); i++) {
-            if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
-                strike++;
-            }
-        }
+        strike = (int) IntStream.range(0, GAME_NUMBERS_SIZE)
+                .filter(i -> playerNumbers.get(i).equals(computerNumbers.get(i)))
+                .count();
+
     }
 
     private void ballCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for (Integer number : playerNumbers) {
-            if (computerNumbers.contains(number)) {
-                ball++;
-            }
-        }
+        ball = (int) playerNumbers.stream().filter(computerNumbers::contains).count();
     }
 
     private void ballExceptStrike() {

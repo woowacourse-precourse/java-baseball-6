@@ -16,11 +16,11 @@ public class RestartOptionValidatorImp implements RestartOptionValidator {
     }
 
     private void isNumber(String inputOption) {
-        for (int i = 0; i < inputOption.length(); i++) {
-            if (!Character.isDigit(inputOption.charAt(i))) {
+        inputOption.chars().forEach(ch -> {
+            if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException(RESTART_OPTION_NON_NUMBER);
             }
-        }
+        });
     }
 
     private void isLength(String inputOption) {

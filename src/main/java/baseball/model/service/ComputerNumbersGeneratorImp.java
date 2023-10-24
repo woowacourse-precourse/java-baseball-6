@@ -7,15 +7,15 @@ import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ComputerNumbersGeneratorImp implements ComputerNumbersGenerator {
     @Override
     public List<Integer> generateComputerNumbers() {
-        List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < GAME_NUMBERS_SIZE) {
-            computerNumbers.add(getRandomUniqueNumber(computerNumbers));
-        }
-        return computerNumbers;
+        return Stream.generate(() -> getRandomUniqueNumber(new ArrayList<>()))
+                .limit(GAME_NUMBERS_SIZE)
+                .collect(Collectors.toList());
     }
 
     private int getRandomUniqueNumber(List<Integer> usedNumbers) {

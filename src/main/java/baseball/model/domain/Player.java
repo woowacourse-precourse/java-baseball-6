@@ -1,8 +1,8 @@
 package baseball.model.domain;
 
 import baseball.model.service.PlayerNumbersValidator;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
     private List<Integer> playerNumbers;
@@ -23,11 +23,6 @@ public class Player {
     }
 
     private List<Integer> parsePlayerNumbers(String inputNumbers) {
-        List<Integer> playerNumbers = new ArrayList<>();
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            int num = Character.getNumericValue(inputNumbers.charAt(i));
-            playerNumbers.add(num);
-        }
-        return playerNumbers;
+        return inputNumbers.chars().map(Character::getNumericValue).boxed().collect(Collectors.toList());
     }
 }
