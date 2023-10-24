@@ -1,8 +1,12 @@
 package baseball;
 
+import static baseball.Constant.BALL_STRING;
 import static baseball.Constant.END_RANGE;
+import static baseball.Constant.NOTHING_STRING;
 import static baseball.Constant.NUMBER_COUNT;
 import static baseball.Constant.START_RANGE;
+import static baseball.Constant.STRIKE_STRING;
+import static baseball.Constant.SUCCESS_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -25,9 +29,8 @@ public class Computer {
         int strike = getStrike(playerList);
         int ball = getBall(playerList) - strike;
 
-        Result result = new Result(strike, ball);
-        System.out.println(result.getHintString());
-        return result.is3Strike();
+        System.out.println(getHintString(strike, ball));
+        return is3Strike(strike);
     }
 
     private boolean isContainedNumber(int randomNumber) {
@@ -35,6 +38,25 @@ public class Computer {
             if (x == randomNumber) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    private String getHintString(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            return NOTHING_STRING;
+        } else if (strike > 0 && ball == 0) {
+            return strike + STRIKE_STRING;
+        } else if (ball > 0 && strike == 0) {
+            return ball + BALL_STRING;
+        }
+        return ball + BALL_STRING + " " + strike + STRIKE_STRING;
+    }
+
+    private boolean is3Strike(int strike) {
+        if (strike == NUMBER_COUNT) {
+            System.out.println(SUCCESS_MESSAGE);
+            return true;
         }
         return false;
     }
