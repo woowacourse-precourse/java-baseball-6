@@ -6,6 +6,9 @@ public class Computer {
 
     private String computerGameNumber;
 
+    public Computer() {
+    }
+
     public Computer(ComputerRandomGameNumber computerRandomGameNumber) {
 
         this.computerGameNumber = computerRandomGameNumber.getComputerGameNumber();

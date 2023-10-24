@@ -7,6 +7,9 @@ import java.util.stream.IntStream;
 public class Player {
     private String playerNumber;
 
+    public Player() {
+    }
+
     public Player(String playerNumber) {
         isStringLengthCorrect(playerNumber);
         isDigitPlayerNumber(playerNumber);
