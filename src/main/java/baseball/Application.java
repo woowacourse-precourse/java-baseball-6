@@ -58,7 +58,7 @@ public class Application {
         return numbersPool;
     }
 
-    private static List<Integer> inputToNumberList(String userInput) throws IllegalArgumentException{
+    public static List<Integer> inputToNumberList(String userInput) throws IllegalArgumentException{
         if(userInput.length() != DIGITS){
             throw new IllegalArgumentException("잘못된 입력입니다. 세 자리의 숫자를 입력해주세요.");
         }
@@ -75,8 +75,6 @@ public class Application {
 
         return numberList;
     }
-
-
 
     private static String checkNumbers(List<Integer> computer,List<Integer> player){
         int strikeCount=0;
