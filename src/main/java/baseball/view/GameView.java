@@ -15,7 +15,7 @@ public class GameView {
         System.out.println(GAME_WIN_MESSAGE);
     }
 
-    public static void printBaseballGameCountsMessage(BaseballGameCountsMessage message) {
-        System.out.println(message.getMessage());
+    public static void printBaseballGameCountsMessage(BaseballGameCountsMessage baseballGameCountsMessage) {
+        baseballGameCountsMessage.printMessage();
     }
 }

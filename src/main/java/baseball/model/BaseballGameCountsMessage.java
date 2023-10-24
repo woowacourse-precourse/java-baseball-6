@@ -31,7 +31,7 @@ public class BaseballGameCountsMessage {
         }
     }
 
-    public String getMessage() {
-        return this.message;
+    public void printMessage() {
+        System.out.println(this.message);
     }
 }
