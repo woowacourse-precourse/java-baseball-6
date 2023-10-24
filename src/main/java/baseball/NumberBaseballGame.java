@@ -8,45 +8,70 @@ import java.util.List;
 import java.util.Set;
 
 public class NumberBaseballGame {
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String USER_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
+    private static final String GAME_PLAY_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String USER_GUESS_INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
     private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String GAME_CONTINUE_COMMAND = "1";
+    private static final String GAME_QUIT_COMMAND = "2";
 
-    private static Balls computerNumberList;
+    private static final int BALL_COUNT = 3;
+
+    private Balls computerBalls;
 
     public void play() {
-        System.out.println(GAME_START_MESSAGE);
-        generateComputerNumberList();
-        while (true) {
-            System.out.print(USER_INPUT_MESSAGE);
-            String input = Console.readLine();
-
-            validate(input);
-            List<Integer> integers = stringToList(input);
-            Balls userBalls = new Balls(integers);
-
-            Result result = Judge.judge(computerNumberList, userBalls, 3);
-            printResult(result);
-            if (result.getStrikeCount() == 3) {
-                System.out.println(GAME_FINISH_MESSAGE);
-                String userRetryInput = Console.readLine();
-                if (userRetryInput.equals("1")) {
-                    generateComputerNumberList();
-                } else {
-                    break;
-                }
-            }
-        }
-
+        System.out.println(GAME_PLAY_START_MESSAGE);
+        do {
+            mainGameLogic();
+        } while (checkUserContinue());
     }
 
-    private static void printResult(Result result) {
+    private void mainGameLogic() {
+        generateComputerBalls();
+        while (true) {
+            String userGuess = getInputWithPrompt(USER_GUESS_INPUT_MESSAGE);
+            validateUserGuessInput(userGuess);
+            Balls userBalls = userGuessToUserBalls(userGuess);
+            Result result = Judge.judge(computerBalls, userBalls, BALL_COUNT);
+            printResult(result);
+            if (isGameEnded(result)) {
+                break;
+            }
+        }
+    }
+
+    private boolean checkUserContinue() {
+        String userRetryInput = getInputWithPrompt(GAME_FINISH_MESSAGE);
+        validateUserRetryInput(userRetryInput);
+        return userRetryInput.equals(GAME_CONTINUE_COMMAND);
+    }
+
+    private boolean isGameEnded(Result result) {
+        return result.strikeCount() == BALL_COUNT;
+    }
+
+    private static void validateUserRetryInput(String userRetryInput) {
+        if (!(userRetryInput.equals(GAME_CONTINUE_COMMAND) || userRetryInput.equals(GAME_QUIT_COMMAND))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private String getInputWithPrompt(String prompt) {
+        System.out.print(prompt);
+        return Console.readLine();
+    }
+
+    private Balls userGuessToUserBalls(String userGuess) {
+        List<Integer> integerList = stringToList(userGuess);
+        return new Balls(integerList);
+    }
+
+    private void printResult(Result result) {
         String prompt = "";
-        int ballCount = result.getBallCount();
-        int strikeCount = result.getStrikeCount();
+        int ballCount = result.ballCount();
+        int strikeCount = result.strikeCount();
         if (ballCount > 0) {
             prompt += ballCount + BALL_MESSAGE;
         }
@@ -63,20 +88,20 @@ public class NumberBaseballGame {
     }
 
 
-    private static void validate(String input) {
-        if (!input.matches("\\d{3}")) {
+    private void validateUserGuessInput(String userGuessInput) {
+        if (!userGuessInput.matches("\\d{3}")) {
             throw new IllegalArgumentException();
         }
         Set<Character> uniqueChars = new HashSet<>();
-        for (char c : input.toCharArray()) {
+        for (char c : userGuessInput.toCharArray()) {
             uniqueChars.add(c);
         }
-        if (uniqueChars.size() != input.length()) {
+        if (uniqueChars.size() != userGuessInput.length()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void generateComputerNumberList() {
+    private void generateComputerBalls() {
         List<Integer> computerSecretNumber = new ArrayList<>();
         while (computerSecretNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -84,10 +109,10 @@ public class NumberBaseballGame {
                 computerSecretNumber.add(randomNumber);
             }
         }
-        computerNumberList = new Balls(computerSecretNumber);
+        computerBalls = new Balls(computerSecretNumber);
     }
 
-    public static List<Integer> stringToList(String str) {
+    public List<Integer> stringToList(String str) {
         List<Integer> result = new ArrayList<>();
         for (char c : str.toCharArray()) {
             if (Character.isDigit(c)) {
