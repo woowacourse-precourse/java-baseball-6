@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,14 +33,14 @@ public class GameStart{
             }
         }
         while(true) {
-            System.out.print("숫자를 입력하세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             int Useranswer = 0;
             try { //사용자에게 숫자 받아오기
-                BufferedReader User = new BufferedReader(new InputStreamReader(System.in));
-                String answer = User.readLine();
+                //BufferedReader User = new BufferedReader(new InputStreamReader(System.in));
+                //String answer = User.readLine();
 
-                Useranswer = Integer.parseInt(answer);
-            } catch (IllegalArgumentException | IOException e) { //정수로 변환이 되지 않을 때 예외 처리
+                Useranswer = Integer.parseInt(readLine());
+            } catch (IllegalArgumentException e) { //정수로 변환이 되지 않을 때 예외 처리
                 System.out.println(e.getMessage());
             }
 
@@ -66,7 +67,6 @@ public class GameStart{
 
             }
 
-
             //1. 자리 확인 (완전 일치)
             if (strike == 3) {
                 System.out.println(strike + "스트라이크");
@@ -74,15 +74,14 @@ public class GameStart{
                 break;
             } else if (strike == 0 && ball == 0){
                 System.out.println("낫싱");
-            } else {
-                if (strike == 0){
+            } else if (ball > 0 && strike > 0){
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            } else if (strike == 0){
                     System.out.println(ball + "볼 ");
-                }else if (ball == 0){
+            } else if (ball == 0){
                     System.out.println(strike + "스트라이크");
-                }else {
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                }
             }
+
 
             user.clear();
 
@@ -97,25 +96,38 @@ public class GameStart{
     public void run() throws IOException {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int AnswerContinue = 0;
 
-        do{
-            GameLogic();
+        GameLogic();
 
-            try { //사용자에게 숫자 받아오기
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int AnswerContinue = 1;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-                BufferedReader Continue = new BufferedReader(new InputStreamReader(System.in));
-                String ContinueGame = Continue.readLine();
+        while(true) {
+            //BufferedReader Continue = new BufferedReader(new InputStreamReader(System.in));
+            //String ContinueGame = Continue.readLine();
 
-                AnswerContinue = Integer.parseInt(ContinueGame);
+            AnswerContinue = Integer.parseInt(readLine());
 
-            } catch (IllegalArgumentException e) { //정수로 변환이 되지 않을 때 예외 처리
-                System.out.println(e.getMessage());
+            if (AnswerContinue != 2 && AnswerContinue != 1) {
+                System.out.println("올바른 숫자를 입력해주세요");
+            } else if (AnswerContinue == 2) {
+                break;
+            } else if (AnswerContinue == 1){
+                GameLogic();
             }
+        }
 
-        }while(AnswerContinue == 1);
-
+//            try { //사용자에게 숫자 받아오기
+//
+//
+//                BufferedReader Continue = new BufferedReader(new InputStreamReader(System.in));
+//                String ContinueGame = Continue.readLine();
+//
+//                AnswerContinue = Integer.parseInt(ContinueGame);
+//
+//            } catch (IllegalArgumentException e) { //정수로 변환이 되지 않을 때 예외 처리
+//                System.out.println(e.getMessage());
+//            }
 
 
     }
