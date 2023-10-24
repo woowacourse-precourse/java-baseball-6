@@ -3,30 +3,54 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
+
+    private static final int MIN_INPUT = 1;
+    private static final int MAX_INPUT = 9;
+    private static final int CNT_INPUT = 3;
+
+
     List<Integer> input(){
         System.out.print("숫자를 입력해주세요 : ");
         String user = Console.readLine();
-        inputValid(user);
+        checkType(user);
+        checkLength(user);
+        checkDuplication(user);
+        checkMinAndMax(user);
         return stringToList(user);
     }
 
-    void inputValid(String user) throws IllegalArgumentException {
-        if(user.length() != 3) throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
-        if(user.charAt(0) == user.charAt(1) || user.charAt(0) == user.charAt(2) || user.charAt(1) == user.charAt(2)) throw new IllegalArgumentException("중복 숫자 입력");
-        if(isNum(user) == false) throw new IllegalArgumentException("숫자를 입력해주세요.");
-        if(user.contains("0")) throw new IllegalArgumentException("1~9까지의 숫자만 입력해주세요.");
+    void checkLength(String user){
+        if(user.length() != CNT_INPUT) throw new IllegalArgumentException(String.format("%d자리 숫자를 입력해주세요", CNT_INPUT));
     }
 
-    boolean isNum(String user){
+    void checkMinAndMax(String user){
+        for(int i = 0; i<user.length(); i++){
+            int inputChar = Integer.parseInt(user.substring(i,i+1));
+            if(inputChar < MIN_INPUT || inputChar > MAX_INPUT) {
+                throw new IllegalArgumentException(String.format("각 자리수는 %d부터 %d까지의 숫자로만 입력해주세요.", MIN_INPUT, MAX_INPUT));
+            }
+        }
+    }
+
+    void checkDuplication(String user){
+        Set<Character> set = new HashSet<>();
+        for(char c : user.toCharArray()){
+            if(set.contains(c)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            set.add(c);
+        }
+    }
+
+    void checkType(String user){
         try{
             Integer.parseInt(user);
         }catch (NumberFormatException e){
-            return false;
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
-        return true;
     }
 
     List<Integer> stringToList(String input){
