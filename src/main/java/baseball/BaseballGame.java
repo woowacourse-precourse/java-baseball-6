@@ -26,12 +26,11 @@ public class BaseballGame {
 
     private void playSingleGame() {
         Computer computer = new Computer();
-        String computerNumbers = computer.getComputerNumbers();
         do {
             playerView.output(INPUT_NUMBERS_MESSAGE);
             String playerNumbers = playerView.input();
             Player player = new Player(playerNumbers);
-            gameResult = referee.judge(computerNumbers, playerNumbers);
+            gameResult = referee.judge(computer, player);
             playerView.output(gameResult.result());
         } while (!gameResult.isWin());
     }

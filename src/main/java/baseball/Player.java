@@ -17,6 +17,10 @@ public class Player {
         this.playerNumbers = playerNumbers;
     }
 
+    public String getPlayerNumbers() {
+        return playerNumbers;
+    }
+
     private void validateNumbers(String numbers) {
         if (!isValidNumeric(numbers)) {
             throw new IllegalArgumentException(INVALID_FORMAT_MESSAGE);
