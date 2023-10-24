@@ -1,8 +1,7 @@
 package baseball.core;
 
-import camp.nextstep.edu.missionutils.Console;
 import baseball.utils.Validator;
-
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Player {

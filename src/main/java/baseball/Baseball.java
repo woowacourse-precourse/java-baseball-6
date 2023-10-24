@@ -1,16 +1,16 @@
 package baseball;
 
+import static baseball.constant.MessageConstant.END_BASEBALL_MSG;
+import static baseball.constant.MessageConstant.PLEASE_INPUT_MSG;
+import static baseball.constant.MessageConstant.RESTART_OR_EXIT_MSG;
+import static baseball.constant.MessageConstant.START_BASEBALL_MSG;
+import static baseball.constant.NumberConstant.MAX_STRIKE;
+import static baseball.constant.NumberConstant.RESTART_NUM;
+
 import baseball.core.Computer;
 import baseball.core.Core;
 import baseball.core.Player;
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.constant.NumberConstant.*;
-import static baseball.constant.MessageConstant.*;
 
 public class Baseball {
     private final Core core = new Core();
@@ -23,7 +23,7 @@ public class Baseball {
         computerNumber = computer.getComputerNumber();
         boolean startFlag = true;
 
-        while(startFlag) {
+        while (startFlag) {
             System.out.print(PLEASE_INPUT_MSG);
             List<Integer> playerNumber = player.getPlayerNumber();
             int strikeCount = core.countStrike(computerNumber, playerNumber);
@@ -35,7 +35,7 @@ public class Baseball {
     }
 
     public boolean checkBaseballEnd(int strike) {
-        if(strike == MAX_STRIKE) {
+        if (strike == MAX_STRIKE) {
             System.out.println(END_BASEBALL_MSG);
             System.out.println(RESTART_OR_EXIT_MSG);
             return isRestartOrExit();

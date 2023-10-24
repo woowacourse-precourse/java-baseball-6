@@ -1,12 +1,19 @@
 package baseball.utils;
 
-import baseball.utils.Utils;
+import static baseball.constant.MessageConstant.BLANK_EXCEPTION_MSG;
+import static baseball.constant.MessageConstant.INPUT_LENGTH_EXCEPTION_MSG;
+import static baseball.constant.MessageConstant.INVALID_CHOICE_EXCEPTION_MSG;
+import static baseball.constant.MessageConstant.NON_DIGIT_EXCEPTION_MSG;
+import static baseball.constant.MessageConstant.NUMBER_DUPLICATE_EXCEPTION_MSG;
+import static baseball.constant.MessageConstant.NUMBER_RANGE_EXCEPTION_MSG;
+import static baseball.constant.NumberConstant.EXIT_NUM;
+import static baseball.constant.NumberConstant.INPUT_LENGTH;
+import static baseball.constant.NumberConstant.MAXIMUM_RANGE_NUMBER;
+import static baseball.constant.NumberConstant.MINIMUM_RANGE_NUMBER;
+import static baseball.constant.NumberConstant.RESTART_NUM;
 
 import java.util.HashSet;
 import java.util.List;
-
-import static baseball.constant.MessageConstant.*;
-import static baseball.constant.NumberConstant.*;
 
 public class Validator {
 

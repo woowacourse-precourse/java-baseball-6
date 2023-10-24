@@ -1,11 +1,12 @@
 package baseball.core;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static baseball.constant.NumberConstant.INPUT_LENGTH;
+import static baseball.constant.NumberConstant.MAXIMUM_RANGE_NUMBER;
+import static baseball.constant.NumberConstant.MINIMUM_RANGE_NUMBER;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.constant.NumberConstant.*;
 
 public class Computer {
     public List<Integer> getComputerNumber() {

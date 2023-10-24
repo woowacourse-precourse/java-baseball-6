@@ -1,9 +1,11 @@
 package baseball.core;
 
-import java.util.List;
-
-import static baseball.constant.MessageConstant.*;
+import static baseball.constant.MessageConstant.BALL_MSG;
+import static baseball.constant.MessageConstant.NOTHING_MSG;
+import static baseball.constant.MessageConstant.STRIKE_MSG;
 import static baseball.constant.NumberConstant.INPUT_LENGTH;
+
+import java.util.List;
 
 public class Core {
     public int countStrike(List<Integer> computer, List<Integer> player) {
