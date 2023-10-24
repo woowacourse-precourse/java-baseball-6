@@ -17,7 +17,8 @@
   - Balls
   - Computer
 - message
-  - Message
+  - ErrorMessage
+  - ResultMessage
 - service
   - game
 - util
