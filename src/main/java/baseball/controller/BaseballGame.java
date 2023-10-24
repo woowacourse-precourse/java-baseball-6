@@ -40,7 +40,8 @@ public class BaseballGame {
         List<Integer> userNum = player.getUserNum();
         // 컴퓨터가 만든 서로 다른 랜덤 3자리 수 computer 와 사용자 입력을 받은 서로 다른 3자리 수 userNum 비교
         for (int i = 0; i < computerNumbers.size(); i++) {
-            if (userNum.get(i).equals(computerNumbers.get(i))) { // 같은 수가 같은 자리에 있으면 스트라이크
+            Integer specificUserNum = userNum.get(i);
+            if (specificUserNum.equals(computerNumbers.get(i))) {
                 player.addStrike();
             } else if (userNum.contains(computerNumbers.get(i))) {
                 player.addBall();
@@ -56,15 +57,14 @@ public class BaseballGame {
         Array.checkArrayNumber(userInput);
         Array.checkOneOrTwo(userInput);
 
-        if (userInput.equals("2")) { // 1이면 게임 다시
-            // 게임 다시
+        if (userInput.equals("2")) {
             return QUIT;
         }
         return CONTINUE;
     }
 
     public boolean isAllStrike(Player player) {
-        if (player.getStrike() == 3 && player.getBall() == 0) { // 3개의 숫자를 모두 맞히면
+        if (player.getStrike() == 3 && player.getBall() == 0) {
             return true;
         }
         return false;
