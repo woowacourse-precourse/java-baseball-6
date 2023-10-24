@@ -46,7 +46,7 @@ public class Application {
     public static String makeRandomNumber() {
         String randomNumber= "";
         while (randomNumber.length() < 3) {
-            String n = String.valueOf(Randoms.pickNumberInRange(1,10));
+            String n = String.valueOf(Randoms.pickNumberInRange(1,9));
             if (!randomNumber.contains(n)) {
                 randomNumber += n;
             }
