@@ -28,6 +28,14 @@ public class SetNumber {
         return stringTolist(inputNumber);
     }
 
+    private List<Integer> stringTolist(String str){
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < str.length(); i++){
+            int number = Character.getNumericValue(str.charAt(i));
+            list.add(number);
+        }
+        return list;
+    }
 
 
     private boolean isValidNumber(String inputNumber){
