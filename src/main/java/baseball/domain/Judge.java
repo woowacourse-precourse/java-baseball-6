@@ -19,7 +19,11 @@ public class Judge {
 
 
     /**
-     * computerList와 userList을
+     * 게임의 결과를 문자열로 리턴한다.
+     * 1. 숫자가 같은 갯수가 없다면 "낫싱"
+     * 2. 볼이 없다면 "3스트라이크"
+     * 3. 볼만 있다면
+     * 4. 볼과 스트라이크이 있다면 "1볼 1스트라이크"
      *
      * @param computerList
      * @param userList
