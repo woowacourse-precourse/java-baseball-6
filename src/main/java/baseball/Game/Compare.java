@@ -32,8 +32,8 @@ public class Compare {
 
     public String CountResult(List<Integer> player, List<Integer> computer) {
         // 스트라이크와 볼 개수를 취합하여 String으로 출력하는 메소드
-        strike = CountStrike(player,computer);
-        ball = CountBall(player,computer);
+        strike = CountStrike(player, computer);
+        ball = CountBall(player, computer);
         List<String> result = new ArrayList<>();
 
         if (strike == 0 && ball == 0) {
@@ -50,6 +50,6 @@ public class Compare {
             result.add("스트라이크");
         }
 
-        return String.join("",result);
+        return String.join("", result);
     }
 }

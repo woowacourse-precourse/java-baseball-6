@@ -10,7 +10,7 @@ public class PlayerNumber {
 
     Exception exception = new Exception();
 
-    public List<Integer> getPlayer() throws IllegalArgumentException{
+    public List<Integer> getPlayer() throws IllegalArgumentException {
         // 플레이어의 숫자를 입력받는 메소드
         String inputNumber = Console.readLine();
         List<Integer> player = new ArrayList<>();
