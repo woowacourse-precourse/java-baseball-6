@@ -1,7 +1,6 @@
 package baseball;
 import java.util.*;
 import java.util.stream.Stream;
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import net.bytebuddy.pool.TypePool;
@@ -16,7 +15,6 @@ public class Application {
         }
         return sCount;
     }
-
 
     public static int isBall(List<Integer> computer, int[] user) {
         int bCount=0;
@@ -46,7 +44,6 @@ public class Application {
     public static boolean isUniqueDigits(int number) {
         if (number < 100 || number > 999) {
             return false;
-
         }
         int digit1 = number / 100;
         int digit2 = (number / 10) % 10;
@@ -66,7 +63,6 @@ public class Application {
             throw new IllegalArgumentException("입력값 오류");
     }
 
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application T = new Application();
@@ -80,27 +76,19 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            for (int n : computer)
-                System.out.println(n);
-
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             while(!gameover) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String user_in = Console.readLine();
                 int t_in = Integer.parseInt(user_in);
-
                 try {
                     chkInput(t_in);
                 }catch(IllegalArgumentException e) {
                     System.err.println(e.toString());
                     throw e;
                 }
-
 //                if(isUniqueDigits(t_in)==false) throw new IllegalArgumentException("입력데이터 형식이 틀렸습니다.");
-
-//                System.out.println(user_in);
-
                 int[] user = Stream.of(String.valueOf(t_in).split(""))
                         .mapToInt(Integer::parseInt)
                         .toArray();
