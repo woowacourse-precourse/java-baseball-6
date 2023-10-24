@@ -20,4 +20,16 @@ public class Baseball {
         }
         return strikes;
     }
+
+
+    public int countBalls(List<Integer> playerNumber) {
+        int balls = 0;
+        for (int i = 0; i < 3; i++) {
+            int playerDigit = playerNumber.get(i);
+            if (computerNumber.contains(playerDigit) && computerNumber.indexOf(playerDigit) != i) {
+                balls++;
+            }
+        }
+        return balls;
+    }
 }
