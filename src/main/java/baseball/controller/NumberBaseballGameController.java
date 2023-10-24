@@ -20,7 +20,7 @@ public class NumberBaseballGameController {
     }
 
     public void playGame() {
-        outputView.printStartGameMessage("숫자 야구");
+        outputView.printStartGameMessage();
         RoundEvaluationResult result;
         do {
             result = playRound();

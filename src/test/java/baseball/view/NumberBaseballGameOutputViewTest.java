@@ -1,6 +1,5 @@
 package baseball.view;
 
-import static baseball.view.NumberBaseballGameOutputView.START_GAME_MESSAGE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -29,9 +28,8 @@ class NumberBaseballGameOutputViewTest {
     @Test
     void 시작_메시지가_올바르게_출력되는지_테스트() {
         NumberBaseballGameOutputView outputView = new NumberBaseballGameOutputView();
-        String gameName = "숫자 야구";
-        outputView.printStartGameMessage(gameName);
-        assertEquals(gameName + START_GAME_MESSAGE + "\r\n", outContent.toString());
+        outputView.printStartGameMessage();
+        assertEquals("숫자 야구 게임을 시작합니다." + "\r\n", outContent.toString());
     }
 
     @Test
