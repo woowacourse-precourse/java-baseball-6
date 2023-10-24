@@ -16,8 +16,16 @@ public class Application {
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String inputNum = in.getInputNum();
+                int count = 0;
 
-                if (ballCount(inputNum)) {
+                for(int i=0; i<3; i++){
+                    if (inputNum.charAt(i) - '0' == 0){
+                        count += 1;
+                    }
+                }
+                if (count >= 1){
+                    System.out.println("재입력해주세요.");
+                } else if (ballCount(inputNum)) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
