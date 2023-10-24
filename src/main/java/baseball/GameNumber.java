@@ -28,6 +28,6 @@ public class GameNumber {
         if (index < Computer.NUMBER_DIGIT) {
             return numbers.get(index);
         }
-        throw new IllegalArgumentException();
+        throw new InvalidIndexException();
     }
 }
