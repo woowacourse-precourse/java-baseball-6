@@ -40,4 +40,34 @@ public class GameService {
         }
         return userNumber;
     }
+
+    boolean isUserNumberCorrect(List<Integer> userNumber) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(userNumber.get(i))) {
+                strike++;
+            } else if (computer.contains(userNumber.get(i))) {
+                ball++;
+            }
+        }
+
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        if(ball == 0 && strike == 0){
+            System.out.print("낫싱");
+        }
+        if(ball > 0){
+            System.out.print(ball + "볼 ");
+        }
+        if(strike > 0){
+            System.out.print(strike + "스트라이크");
+        }
+        System.out.println();
+        return false;
+    }
 }
