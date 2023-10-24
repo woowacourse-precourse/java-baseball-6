@@ -12,5 +12,6 @@ public class Application {
         Runner runner = new Runner(gameConfiguration, io);
 
         runner.run(); //게임 실행
+
     }
 }
