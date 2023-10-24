@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 import static baseball.util.Constant.*;
+import static baseball.util.InputValidate.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class BaseBallService {
@@ -54,6 +55,8 @@ public class BaseBallService {
         System.out.println(FINISH_GAME);
         System.out.println(RESTART_GAME);
 
-        return InputValidate.validateRestartGame(Integer.parseInt(readLine()));
+        String inputNumber = readLine();
+        validateNumberFormat(inputNumber);
+        return validateRestartGame(Integer.parseInt(inputNumber));
     }
 }
