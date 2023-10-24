@@ -34,7 +34,7 @@ public class Application {
                 }
 
                 while (true) {
-                    System.out.println("숫자를 입력해주세요. : ");
+                    System.out.print("숫자를 입력해주세요 : ");
 
                     String n = s.next();
 
@@ -68,10 +68,13 @@ public class Application {
 
                     if (ball != 0) {
                         sb.append(ball);
-                        sb.append("볼 ");
+                        sb.append("볼");
                     }
 
                     if (strike != 0) {
+                        if(ball != 0) {
+                            sb.append(" ");
+                        }
                         sb.append(strike);
                         sb.append("스트라이크");
                     }
