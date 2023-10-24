@@ -5,7 +5,7 @@ import baseball.utility.Constant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraderResult {
+public class JudgementResult {
 
     public String setGameResult(List<Integer> computer, String user) {
         List<Integer> userNumber = cutOneByOne(Integer.parseInt(user));

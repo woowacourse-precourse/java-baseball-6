@@ -15,11 +15,11 @@ public class GameStarter {
     private Input input = Input.getInput();
     private int gameCount = 0;
     private List<Integer> computerNumber = new ArrayList<>();
-    private GraderResult graderResult;
+    private JudgementResult judgementResult;
     private ExceptionHandler exceptionHandler = ExceptionHandler.getExceptionHandler();
 
     public GameStarter() {
-        graderResult = new GraderResult();
+        judgementResult = new JudgementResult();
     }
 
     public void announceStarter() {
@@ -84,7 +84,7 @@ public class GameStarter {
 
     private void inputNumber(){
         selectComputerNumber();
-        
+
         boolean isSolved = false;
         String inputValue;
 
@@ -99,7 +99,7 @@ public class GameStarter {
     }
 
     private boolean judgeNumber(String inputNumber){
-        String gameResult = graderResult.setGameResult(computerNumber, inputNumber);
+        String gameResult = judgementResult.setGameResult(computerNumber, inputNumber);
         output.announceMention(gameResult);
 
         return isSolvedGame(gameResult);
