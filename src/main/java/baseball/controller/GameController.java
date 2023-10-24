@@ -28,7 +28,7 @@ public class GameController {
         while (true) {
             Player player = preparePlayer();
 
-            Hint hint = numberService.getHint(computer, player); // 컴퓨터와 플레이어의 숫자를 비교하여 힌트를 얻는다.
+            Hint hint = numberService.generateHint(computer, player); // 컴퓨터와 플레이어의 숫자를 비교하여 힌트를 얻는다.
             outputView.printHintMessage(hint); // 힌트를 출력, 만약 숫자가 맞는다면 게임 종료 메시지도 출력한다.
             if (hint.isThreeStrike()) { // 숫자를 맞췄다면 끝낸다.
                 break;

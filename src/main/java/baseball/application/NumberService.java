@@ -26,7 +26,7 @@ public class NumberService {
         return new ArrayList<>(numberSet);
     }
 
-    public Hint getHint(Player computer, Player player) {
+    public Hint generateHint(Player computer, Player player) {
         List<Integer> computerNumber = computer.getNumberList();
         List<Integer> playerNumber = player.getNumberList();
         Hint hint = new Hint();
