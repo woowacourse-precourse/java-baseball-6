@@ -35,7 +35,10 @@ public class BaseballGame {
     }
 
     public void inGame() {
-        while (!ballStrikeCounter.isThreeStrike()) {
+        do {
+            //볼, 스트라이크 카운트 초기화
+            ballStrikeCounter.resetBallStrike();
+
             // 사용자 값 입력
             userInputMessage();
             UserNumber userNumber = new UserNumber(userInput());
@@ -45,15 +48,7 @@ public class BaseballGame {
 
             // 볼, 스트라이크 값 출력
             OutputView.printBallStrike(ballStrikeCounter.toString());
-
-            // 3스트라이크 시 while 종료
-            if (ballStrikeCounter.isThreeStrike()) {
-                break;
-            }
-
-            //볼, 스트라이크 카운트 초기화
-            ballStrikeCounter.resetBallStrike();
-        }
+        } while (!ballStrikeCounter.isThreeStrike());
 
         printCelebrate();
     }
@@ -62,5 +57,6 @@ public class BaseballGame {
         RetryCheck retryCheck = new RetryCheck(userInput());
 
         return retryCheck.isRetry();
+        
     }
 }
