@@ -53,7 +53,9 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String end = readLine();
         validateEndNum(end);
-        if(end == "1"){
+        if(end.equals("1")){
+            computer.clear();
+            createComputerNumbers();
             return 1;
         }
         return 2;
@@ -97,7 +99,7 @@ public class BaseballGame {
     }
 
     public void validateEndNum(String num){
-        if(num != "1" || num !="2"){
+        if(!num.equals("1") && !num.equals("2")){
             throw new IllegalArgumentException("1혹은 2만 입력 가능합니다.");
         }
     }
