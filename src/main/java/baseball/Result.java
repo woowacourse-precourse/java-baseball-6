@@ -13,7 +13,7 @@ public class Result {
             System.out.printf("%d스트라이크", strike);
         }
         if (ball == 0 && strike == 0) {
-            System.out.printf("낫싱");
+            System.out.print("낫싱");
         }
         System.out.println();
     }
