@@ -55,4 +55,35 @@ public class Application {
     }
 
 
+    private static int calculateBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int balls = 0;
+
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            if (userNumbers.get(i).equals(computerNumbers.get(i))) {
+                continue; // 동일한 위치의 숫자는 볼이 아니므로 다음으로 넘어감
+            }
+
+            if (computerNumbers.contains(userNumbers.get(i))) {
+                balls++;
+            }
+        }
+
+        return balls;
+    }
+
+    private static int[] calculateResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int strikes = 0;
+        int balls = calculateBalls(computerNumbers, userNumbers);
+
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            if (userNumbers.get(i).equals(computerNumbers.get(i))) {
+                strikes++;
+            }
+        }
+
+        return new int[]{strikes, balls};
+    }
+
+
+
 }
