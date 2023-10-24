@@ -8,6 +8,7 @@ import java.util.List;
 public class BaseballGame {
 
     private final Computer computer;
+    private final HintScore hintScore;
 
     private static final String SEPARATOR = "";
 
@@ -19,8 +20,9 @@ public class BaseballGame {
     private static final String ERROR_INPUT_INVALID_DIGIT = "입력 숫자는 세자리여야 합니다.";
     private static final String ERROR_INPUT_NOT_NUMBER = "입력 형식은 숫자여야합니다.";
 
-    public BaseballGame(Computer computer) {
+    public BaseballGame(Computer computer, HintScore hintScore) {
         this.computer = computer;
+        this.hintScore = hintScore;
     }
 
     public void run() {
@@ -42,6 +44,13 @@ public class BaseballGame {
                 .toList();
         validAnswerDigit(userAnswer);
         validAnswerDistinct(userAnswer);
+
+        for (int i = 0; i < userAnswer.size(); i++) {
+            int matchIndex = correctAnswer.indexOf(userAnswer.get(i));
+            if (matchIndex == i) {
+                hintScore.raiseStrike();
+            }
+        }
     }
 
     private void validAnswerDistinct(List<Integer> userAnswer) {
