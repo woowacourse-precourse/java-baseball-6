@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 //        [] 게임 시작 문구 출력
@@ -25,22 +26,46 @@ class Computer {
 
     private List<Integer> number;
 
-    public Computer(){
+    public Computer() {
         this.number = generateRandomNumber();
     }
 
     private List<Integer> generateRandomNumber() {
-        List <Integer> computerNumber = new ArrayList<>();
-        while(computerNumber.size() < 3){
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if(!computerNumber.contains(randomNumber)){
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
         }
         return computerNumber;
     }
 
-    public List<Integer> getNumber(){
+    public List<Integer> getNumber() {
         return number;
     }
 }
+
+class User {
+
+    private int number;
+
+    public User() {
+        this.number = userInput();
+    }
+
+    private int userInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Integer.parseInt(Console.readLine());
+    }
+
+    public static boolean isValidGuess(int input) {
+        List<Integer> digits = new ArrayList<>();
+        digits.add(input / 100); // 100의자리
+        digits.add((input % 100) / 10); // 10의자리
+        digits.add(input % 10); // 1의자리
+
+        return digits.stream().distinct().count() == 3; // digits 안의 수가 서로 다른 세 수인지 확인
+    }
+}
+
