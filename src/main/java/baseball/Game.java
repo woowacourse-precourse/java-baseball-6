@@ -130,7 +130,7 @@ public class Game implements Runnable {
     /**
      * 컴퓨터가 생성한 숫자와 유저에게 입력 받은 숫자를 확인하여 Strike, Ball 개수 증가
      *
-     * @param: 1. computer : 컴퓨터가 랜덤으로 생성한 숫자 2. user : 유제에게 입력받은 숫자
+     * @param: 1. computer : 컴퓨터가 랜덤으로 생성한 숫자 2. user : 유저에게 입력받은 숫자
      */
     private void updateBallAndStrikeCounts(List<Integer> user, List<Integer> computer) {
         // TODO: 입력받은 값과 생성한 랜덤 숫자 비교하여 Ball, Strike 개수 증가
