@@ -13,23 +13,31 @@ public class Computer {
 
     public int countStrikes(String playerBaseballNumber) {
         int count = 0;
+
         for (int index = 0; index < BASEBALL_NUMBERS_SIZE; index++) {
+
             char targetNumber = playerBaseballNumber.charAt(index);
+
             if (isStrike(targetNumber, index)) {
                 count += 1;
             }
         }
+
         return count;
     }
 
     public int countBalls(String playerBaseballNumber) {
         int count = 0;
+
         for (int index = 0; index < BASEBALL_NUMBERS_SIZE; index++) {
+
             int findIndex = findBaseballNumberIndex(playerBaseballNumber, index);
+
             if (isBall(findIndex, index)) {
                 count += 1;
             }
         }
+
         return count;
     }
 

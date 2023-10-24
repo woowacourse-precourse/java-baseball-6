@@ -17,6 +17,7 @@ public class BaseballController {
     private final BaseballValidator baseballValidator;
 
     public BaseballController() {
+
         this.baseballValidator = new BaseballValidator();
         this.computerService = new ComputerService(baseballValidator);
         this.playerService = new PlayerService();
@@ -38,6 +39,7 @@ public class BaseballController {
         int balls, strikes = 0;
 
         while (strikes != BASEBALL_THREE_STRIKES) {
+
             messageService.inputPlayerNumber();
 
             String baseballNumber = receiveBaseballNumber();

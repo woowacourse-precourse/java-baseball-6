@@ -27,9 +27,11 @@ public class MessageService {
         if (isNothing(countBalls, countStrikes)) {
             sb.append(NOTHING_MESSAGE);
         }
+
         if (hasBall(countBalls)) {
             sb.append(String.format("%d%s ", countBalls, BALLS_MESSAGE));
         }
+
         if (hasStrike(countStrikes)) {
             sb.append(String.format("%d%s", countStrikes, STRIKES_MESSAGE));
         }
