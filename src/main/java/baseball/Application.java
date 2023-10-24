@@ -16,6 +16,7 @@ public class Application {
 
     public static GameState startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         return GameState.EXIT;
     }
 
@@ -99,5 +100,20 @@ public class Application {
         return cloneSet.size();
     }
 
+    private static boolean continuePlaying() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String strInput = Console.readLine();
+
+        if("1".equals(strInput)) {
+            return true;
+        }
+
+        if ("2".equals(strInput)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
+    }
 
 }
