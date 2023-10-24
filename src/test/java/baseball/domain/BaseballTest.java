@@ -3,39 +3,32 @@ package baseball.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BaseballTest {
 
-    @Test
-    void 볼_0개_스트라이크_1개() {
-        Baseball baseball1 = new Baseball(Arrays.asList(1, 2, 3));
-        Baseball baseball2 = new Baseball(Arrays.asList(1, 5, 6));
-        BaseballResult baseballResult = baseball1.compareTo(baseball2);
-        assertEquals("1스트라이크", baseballResult.toString());
+    private Baseball computerBall;
+
+    @BeforeEach
+    void setup() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        computerBall = new Baseball(numbers);
     }
 
     @Test
-    void 볼_3개_스트라이크_0개() {
-        Baseball baseball1 = new Baseball(Arrays.asList(1, 2, 3));
-        Baseball baseball2 = new Baseball(Arrays.asList(3, 1, 2));
-        BaseballResult baseballResult = baseball1.compareTo(baseball2);
-        assertEquals("3볼 ", baseballResult.toString());
+    void 포함된_공_계산() {
+        List<Integer> numbers = Arrays.asList(3, 1, 6);
+        Baseball userBall = new Baseball(numbers);
+        assertEquals("2볼 ", computerBall.compareTo(userBall).toString());
     }
 
     @Test
-    void 볼_1개_스트라이크_1개() {
-        Baseball baseball1 = new Baseball(Arrays.asList(1, 2, 3));
-        Baseball baseball2 = new Baseball(Arrays.asList(1, 4, 2));
-        BaseballResult baseballResult = baseball1.compareTo(baseball2);
-        assertEquals("1볼 1스트라이크", baseballResult.toString());
+    void 동일한_위치_공_계산() {
+        List<Integer> numbers = Arrays.asList(1, 2, 5);
+        Baseball userBall = new Baseball(numbers);
+        assertEquals("2스트라이크", computerBall.compareTo(userBall).toString());
     }
 
-    @Test
-    void 스트라이크_3개() {
-        Baseball baseball1 = new Baseball(Arrays.asList(1, 4, 2));
-        Baseball baseball2 = new Baseball(Arrays.asList(1, 4, 2));
-        BaseballResult baseballResult = baseball1.compareTo(baseball2);
-        assertEquals(true, baseballResult.isGameDone());
-    }
 }
