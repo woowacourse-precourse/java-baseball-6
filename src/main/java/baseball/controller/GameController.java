@@ -52,6 +52,7 @@ public class GameController {
 
 	public void repeatGame(Game computerData) {
 		Game playerData;
+
 		do {
 			playerData = computerController.getPlayerNumbers();
 
