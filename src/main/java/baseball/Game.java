@@ -71,9 +71,19 @@ public class Game implements Runnable {
 
             // 게임 성공 시 처리(countStrike 가 maxCountStrike 와 같은 경우)
             if (countStrike == NumberConst.MAX_COUNT_STRIKE) {
+                // 성공 메시지 출력
                 MessageUtil.printSuccessGame();
+
+                // 게임 재시작 혹은 종료 여부 입력
                 InputString = Console.readLine();
+
+                // 입력 받은 값이 숫자인지 확인
+                Validator.validateInputIsNumeric(InputString);
+
+                // 입력 받은 값 숫자로 변환
                 compareRestartNum = Integer.parseInt(InputString);
+
+                // 입력받은 값이 1 혹은 2만 입력했는지 확인
                 Validator.validationRestartAndStopValue(compareRestartNum);
             }
 
