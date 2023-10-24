@@ -106,6 +106,7 @@ public class Computer {
             if (strike == NOTHING) {
                 System.out.println(NOTHING_MESSAGE);
             } else if (strike == SUCCESS_STRIKE) {
+                System.out.println(strike + STRIKE_MESSAGE);
                 System.out.println(SUCCESS_MESSAGE);
             } else {
                 System.out.println(strike + STRIKE_MESSAGE);
