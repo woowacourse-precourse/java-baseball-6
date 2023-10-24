@@ -26,10 +26,10 @@
   
 # 기능목록
 - controller
-    - BaseBallContoroller : 메인 메서드를 통해 호출받으며 GameMaker를 통해 생성된 computerNumbers를                                          BallAndStrikeChecker에 저장 gameProgress의 값을 확인하며 반복문 실행, 사용자의 값이                              computerNumbers과 일치할경우 FinishView에 있는 gameContinueCheck값을 확인 후 재귀호                              출 여부 판단
+    - BaseBallContoroller : 메인 메서드를 통해 호출받으며 GameMaker를 통해 생성된 computerNumbers를 BallAndStrikeChecker에 저장 gameProgress의 값을 확인하며 반복문 실행, 사용자의 값이 computerNumbers과 일치할경우 FinishView에 있는gameContinueCheck                             값을 확인 후 재귀호출 여부 판단
       
 - model
-    - BallAndStrikeChecker : UserNumbers에 있는 값과 생성자를 통해 지정된 정답을 반복문을 통해 비교하며 ball과                                 stike의 값 BallAndStike에 저장 만약 strike가 3일시 게임진행여부를 판단하는                                       gameProgress를 false값으로 설정
+    - BallAndStrikeChecker : UserNumbers에 있는 값과 생성자를 통해 지정된 정답을 반복문을 통해 비교하며 ball과 stike의 값 BallAndStike에 저장, 만약 strike가 3일 경우에는 게임진행여부를 판단하는 gameProgress를 false값으로 설정
     - GameMaker : 중복하지 않은 1~9 사이의 난수생성 후 리스트로 반환
       
 - view
