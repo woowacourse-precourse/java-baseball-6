@@ -14,7 +14,6 @@ public class Computer {
 
     public Computer(){
         this.number = Computer.createNumber();
-//        System.out.println("숫자가 생성되었습니다!");
     }
 
     public static String createNumber(){
