@@ -94,8 +94,9 @@ public class BaseballGame implements Game{
 
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
+        } else {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         }
-        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
 
         return false;
     }
