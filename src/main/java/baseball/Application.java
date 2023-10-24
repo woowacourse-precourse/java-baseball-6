@@ -1,15 +1,15 @@
 package baseball;
 
-import java.io.*;
 import java.util.*;
 import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Console;
 
 
 public class Application {
     public static String START_MSG = "숫자 야구 게임을 시작합니다.";
     public static String INPUT_MSG = "숫자를 입력해주세요 : ";
     public static int LIST_LEN = 3;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
         //step0. 게임 시작
         System.out.println(START_MSG);
@@ -24,10 +24,7 @@ public class Application {
             }
             //step2. 사용자 입력
             System.out.print(INPUT_MSG);
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String input = br.readLine();
-
+            String input = Console.readLine();
             List<Integer> user = getUserNumbers(input);
             //step3. 사용자 입력을 바탕으로 스트라이크/볼 개수 기록
             int[] result = countStrikesAndBalls(computer, user);
