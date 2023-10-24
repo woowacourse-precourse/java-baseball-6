@@ -1,14 +1,16 @@
 package baseball.controller;
 
+import baseball.utils.Parser;
+import baseball.validators.NumberValidator;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
 
+    private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
-
     private ComputerController computerController = new ComputerController();
-
     private PlayerController playerController = new PlayerController();
 
     public GameController() {
@@ -28,11 +30,17 @@ public class GameController {
         Boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
             outputView.requestInputNumber();
-            List<Integer> inputNumbers = playerController.readAndValidateInputNumbers();
-            computerController.provideHint(inputNumbers);
+            List<Integer> playerNumbers = getPlayerNumbers();
+            computerController.provideHint(playerNumbers);
             isCorrectAnswer = computerController.checkCorrectAnswer();
         }
         outputView.notifyCorrectAnswer();
+    }
+
+    private List<Integer> getPlayerNumbers() {
+        String inputNumbers = inputView.readInputNumbers();
+        NumberValidator.validateNumber(inputNumbers);
+        return Parser.parseStringToList(inputNumbers);
     }
 
     private Boolean askIfContinue() {
