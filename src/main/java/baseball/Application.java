@@ -27,7 +27,7 @@ public class Application {
             String response = Console.readLine();
             List<Integer> prediction = new ArrayList<>();
             for (int i = 0; i < response.length(); i++) {
-                if (!prediction.contains(response.charAt(i) - '0')) {
+                if (!prediction.contains(response.charAt(i) - '0') && 1 <= response.charAt(i) - '0' && response.charAt(i) - '0' <= 10) {
                     prediction.add(response.charAt(i) - '0');
                 }
             }
