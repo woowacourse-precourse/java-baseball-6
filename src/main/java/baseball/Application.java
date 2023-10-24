@@ -161,5 +161,28 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int[] answer = answerInitializer();
+        int[] result = new int[3];
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (result[2] != 1) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = inputLogic();
+
+            if (!inputValidator(input)) {
+                throw new IllegalArgumentException();
+            }
+
+            int[] inputArray = inputParsingToIntArray(input);
+
+            result = compareLogic(inputArray,answer);
+
+            messagePrintingLogic(result);
+
+            if (result[2] == 1) {
+                restartLogic(result, answer);
+            }
+        }
     }
 }
