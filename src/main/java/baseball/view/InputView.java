@@ -1,6 +1,5 @@
 package baseball.view;
 
-import baseball.model.PlayerNumber;
 import baseball.validator.NumberCheck;
 import camp.nextstep.edu.missionutils.Console;
 
