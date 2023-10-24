@@ -7,10 +7,17 @@ import baseball.view.output.MainOutputView;
 
 public class MainController {
 
+    private MainController() {
+    }
+
+    public static MainController instance() {
+        return new MainController();
+    }
+
     public void play() {
         MainOutputView.printGameStartScript();
         do {
-            BaseballGame baseballGame = BaseballGame.newGame(new RandomBallNumbersGenerateStrategy());
+            BaseballGame baseballGame = BaseballGame.newGame(RandomBallNumbersGenerateStrategy.instance());
             baseballGame.play();
 
             MainOutputView.printGameEndScript();

@@ -9,6 +9,13 @@ import java.util.stream.Collectors;
 
 public class RandomBallNumbersGenerateStrategy implements BallNumbersGenerateStrategy {
 
+    private RandomBallNumbersGenerateStrategy() {
+    }
+
+    public static BallNumbersGenerateStrategy instance() {
+        return new RandomBallNumbersGenerateStrategy();
+    }
+
     @Override
     public String generate() {
         List<Integer> randomNumbers = new ArrayList<>(Balls.VALID_BALL_COUNT);

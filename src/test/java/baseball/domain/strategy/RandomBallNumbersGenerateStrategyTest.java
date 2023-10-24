@@ -13,7 +13,7 @@ class RandomBallNumbersGenerateStrategyTest {
     @DisplayName("랜덤하게 1-9 사이의 중복없는 3자리 문자열을 생성한다")
     @Test
     void generate() {
-        BallNumbersGenerateStrategy generateStrategy = new RandomBallNumbersGenerateStrategy();
+        BallNumbersGenerateStrategy generateStrategy = RandomBallNumbersGenerateStrategy.instance();
         String ballNumbers = generateStrategy.generate();
 
         Pattern validNumberPattern = Pattern.compile("[1-9]{3}");
