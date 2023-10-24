@@ -17,15 +17,11 @@ public class Application {
                 String input = Console.readLine();
 
                 // if input is not number, throw IllegalArgumentException and exit
-                try {
-                    if (!Checker.isCorrectInput(input)) {
-                        throw new IllegalArgumentException();
-                    }
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
 
-                    return;
+                if (!Checker.isCorrectInput(input)) {
+                    throw new IllegalArgumentException();
                 }
+
 
                 Integer balls = Checker.numberOfBalls(input, randomNumber);
                 Integer strikes = Checker.numberOfStrikes(input, randomNumber);
@@ -68,13 +64,7 @@ public class Application {
                 break;
             }
 
-            try {
-                throw new IllegalArgumentException();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-
-                return;
-            }
+            throw new IllegalArgumentException();
         }
     }
 }
