@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constants.MessageConstants;
 import baseball.constants.NumberConstants;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -16,7 +17,7 @@ public class BaseballGameConsole {
 
 
     void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(MessageConstants.GAME_START);
         isContinue = true;
 
         while (isContinue) {
@@ -49,7 +50,7 @@ public class BaseballGameConsole {
     }
 
     private void getPitcherSelection() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(MessageConstants.REQUEST_NUMBERS_INPUT);
         pitcherSelection = Console.readLine();
 
         validator.checkValidInput(pitcherSelection);
@@ -87,13 +88,13 @@ public class BaseballGameConsole {
 
     private void checkStrikeOut() {
         if (ballCount.getStrike() == NumberConstants.SIZE) {
-            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", NumberConstants.SIZE);
+            System.out.println(MessageConstants.END_GAME);
             strikeOut = true;
         }
     }
 
     private void checkContinue() {
-        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", NumberConstants.START_NUM, NumberConstants.END_NUM);
+        System.out.println(MessageConstants.REQUEST_RESTART_INPUT);
         String continueAnswer = Console.readLine();
 
         validator.checkValidAnswer(continueAnswer);
