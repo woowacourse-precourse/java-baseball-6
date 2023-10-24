@@ -13,7 +13,7 @@ public class Output {
         System.out.println(START_GAME_MSG);
     }
 
-    public void printResult(int strike, int ball) {
+    public void printResult(int ball, int strike) {
         StringBuilder result = new StringBuilder();
 
         if (ball == 0 && strike == 0) {
