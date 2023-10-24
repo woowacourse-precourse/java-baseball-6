@@ -1,73 +1,34 @@
 package baseball.util;
 
 import baseball.constants.ErrorMessage;
+import java.util.regex.Pattern;
 
 public class Validator {
-    private static final int MAX_SIZE = 3;
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
+    private static final Pattern THREE_DIGITS_REGEX = Pattern.compile("^^[1-9]{3}$");
+    private static final Pattern DUPLICATE_DIGITS_REGEX = Pattern.compile("(\\d).*\\1");
+    private static final Pattern RESTART_OR_EXIT_REGEX = Pattern.compile("[1-2]");
 
-    public static void validateInputNumbers(String numbers) {
-        validateNumbersLength(numbers);
-        validateNumbersType(numbers);
-        validateNumbersRange(numbers);
-        validateNoDuplicate(numbers);
-    }
-
-    public static void validateNumbersLength(String numbers) {
-        if (numbers.length() != MAX_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_LENGTH);
+    public static void validateInputNumbers(String input) {
+        if (!isValidThreeDigits(input) || hasDuplicateDigits(input)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT);
         }
     }
 
-    public static void validateNumbersType(String numbers) {
-        try {
-            Integer.parseInt(numbers);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_TYPE);
-        }
+    public static boolean isValidThreeDigits(String input) {
+        return THREE_DIGITS_REGEX.matcher(input).matches();
     }
 
-    public static void validateNumbersRange(String numbers) {
-        if (!hasValidNumberRange(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
-        }
+    public static boolean hasDuplicateDigits(String input) {
+        return DUPLICATE_DIGITS_REGEX.matcher(input).find();
     }
 
-    public static boolean hasValidNumberRange(String numbers) {
-        return numbers.chars().allMatch(number -> number >= '1' && number <= '9');
-    }
-
-    public static void validateNoDuplicate(String numbers) {
-        if (hasDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_DIGITS);
-        }
-    }
-
-    public static boolean hasDuplicateNumber(String numbers) {
-        return numbers.chars().distinct().count() < numbers.length();
-    }
-
-    public static void validateRestartOrExitNumber(String number) {
-        validateRestartOrExitNumberType(number);
-        validateRestartOrExitNumberValue(number);
-    }
-
-    public static void validateRestartOrExitNumberType(String number) {
-        try {
-            Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_TYPE);
-        }
-    }
-
-    public static void validateRestartOrExitNumberValue(String number) {
-        if (!isRestartOrExitNumber(number)) {
+    public static void validateRestartOrExitNumber(String input) {
+        if (!isValidRestartOrExit(input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RESTART_OR_EXIT);
         }
     }
 
-    public static boolean isRestartOrExitNumber(String number) {
-        return number.equals(RESTART) || number.equals(EXIT);
+    public static boolean isValidRestartOrExit(String input) {
+        return RESTART_OR_EXIT_REGEX.matcher(input).matches();
     }
 }
