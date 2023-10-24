@@ -15,7 +15,7 @@ public class User {
 
 
     if (!userNumber.matches("[0-9]{3,3}")) {
-      throw new IllegalArgumentException("게임 종료");
+      throw new IllegalArgumentException("UNVALID_INPUT");
     } ;
 
     numsToCompare = Arrays.stream(userNumber.split("")).map(Integer::parseInt).toList();
@@ -25,8 +25,9 @@ public class User {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     String input = Console.readLine();
 
-    if (input.matches("/1|2/")) {
-      throw new IllegalArgumentException("게임 종료");
+    
+    if (! (input.equals("1") || input.equals("2"))) {
+      throw new IllegalArgumentException("UNVALID_INPUT");
     }
 
     int progressMenu = Integer.parseInt(input);
