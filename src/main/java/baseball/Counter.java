@@ -1,39 +1,35 @@
 package baseball;
 
-import java.util.stream.IntStream;
-
 public class Counter {
     private int ball;
     private int strike;
 
-    public void addBall() {
-        ball++;
+    // 사용자 숫자와 컴퓨터 숫자 기반 카운트 계산 메서드
+    public void count(int[] com, int[] user) {
+        for (int i = 0; i < user.length; i++) {
+            if (user[i] == com[i]) {  // 위치가 같으면 스트라이크 증가
+                strike++;
+                continue;
+            }
+            for (int computer : com) {
+                if (user[i] == computer) {  // 숫자만 같으면 볼 증가
+                    ball++;
+                }
+            }
+        }
     }
 
-    public void addStrike() {
-        strike++;
-    }
-
-    public boolean isCorrect() {
-        System.out.println(countPrint());
-        if (strike == 3) {
+    // 카운트를 기반으로 숫자가 일치하는지 검사하는 메서드
+    public boolean isEqual() {
+        if (strike == 3) {  // 3 스트라이크라면 true 반환
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;
     }
 
-    public void checkCounts(int[] com, int[] user, Counter counter) {
-        IntStream.range(0, user.length).forEach(i -> {
-            if (user[i] == com[i]) {
-                counter.addStrike();
-            } else {
-                IntStream.range(0, com.length).filter(j -> user[i] == com[j]).forEach(j -> counter.addBall());
-            }
-        });
-    }
-
-    private String countPrint() {
+    // 카운트 출력 문자열을 반환하는 메서드
+    public String print() {
         StringBuilder sb = new StringBuilder();
         if (ball != 0) {
             sb.append(ball);
