@@ -5,88 +5,101 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-class Computer {
-    public List<Integer> comNumbers = new ArrayList<>();
+public class Application {
+    public static void main(String[] args) {
+        int replay = 1;
+        while (replay != 2) {
+            Game game = new Game();
+            ReGame reGame = new ReGame();
 
-    public void choiceComNumbers() {
-        while (comNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!comNumbers.contains(randomNumber)) {
-                comNumbers.add(randomNumber);
-            }
-        }
-    }
-}
-
-class Game extends Computer {
-
-    public void startGame() {
-        choiceComNumbers();
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        int ball = 0;
-        int strike = 0;
-
-        while (strike != 3) {
-            ball = 0;
-            strike = 0;
-
-            System.out.print("숫자를 입력해주세요 : ");
-            String myNumbers = Console.readLine();
-
-            for (int i = 0; i <= 2; i++) {
-                int compare = comNumbers.indexOf(myNumbers.charAt(i) - '0');
-
-                if (compare == -1) {
-                    // 일치하는 숫자 없음
-                } else if (compare == i) {
-                    ++strike;
-                } else {
-                    ++ball;
-                }
-            }
-
-            if (strike == 0 && ball == 0) {
-                System.out.print("낫싱");
-            }
-            if (ball > 0) {
-                System.out.print(ball + "볼 ");
-            }
-            if (strike > 0) {
-                System.out.print(strike + "스트라이크");
-            }
-            System.out.println();
+            game.startGame();
+            replay = reGame.restart();
         }
     }
 }
 
 class ReGame {
     public int restart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int replay = Integer.parseInt(Console.readLine());
-        if (replay == 1) {
-            return 0;
-        } else if (replay == 2) {
-            return 1;
-        } else {
-            return -1;  // 예외처리
+        return replay;
+    }
+}
+
+class Computer {  // 컴퓨터 숫자 지정 클래스
+    public List<Integer> comNumbers = new ArrayList<>();
+
+    public void choiceComNumbers() {
+        while (comNumbers.size() < 3) {
+            randomNumbers();
+        }
+    }
+
+    public void randomNumbers() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!comNumbers.contains(randomNumber)) {
+            comNumbers.add(randomNumber);
         }
     }
 }
 
-public class Application {
-    public static void main(String[] args) {
-        int restart = 0;
+class Game extends Computer {  // 게임 시작 클래스
+    public void startGame() {
+        choiceComNumbers();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (restart == 0) {
-            Game game = new Game();
-            ReGame reGame = new ReGame();
-
-            game.startGame();
-
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            restart = reGame.restart();
+        String endMessage = "";
+        while (!endMessage.equals("3스트라이크")) {
+            List<Integer> inputNumbers = inputNumber();
+            endMessage = ballOrStrike(inputNumbers.get(0), inputNumbers.get(1));
+            System.out.println(endMessage);
         }
+    }
+
+    public List<Integer> inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String myNumbers = Console.readLine();
+        return (compareResult(myNumbers));
+    }
+
+    public List<Integer> compareResult(String myNumbers) {
+        List<Integer> compares = new ArrayList<>();
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i <= 2; i++) {
+            int compareNumber = comNumbers.indexOf(myNumbers.charAt(i) - '0');
+            compares = compare(i, ball, strike, compareNumber);
+            ball = compares.get(0);
+            strike = compares.get(1);
+        }
+        return (compares);
+    }
+
+    public List<Integer> compare(int i, int ball, int strike, int compareNumber) {
+        if (compareNumber == -1) {
+            // 일치하는 숫자 없음
+        } else if (compareNumber == i) {
+            ++strike;
+        } else {
+            ++ball;
+        }
+        List<Integer> compares = new ArrayList<>();
+        compares.add(ball);
+        compares.add(strike);
+        return (compares);
+    }
+
+    public String ballOrStrike(int ball, int strike) {
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+        if (ball > 0 && strike == 0) {
+            return ball + "볼";
+        }
+        if (strike > 0 && ball == 0) {
+            return strike + "스트라이크";
+        }
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
