@@ -11,7 +11,7 @@ public class NumberBaseballApp{
     void run(){
         while (true){
             System.out.println("숫자 야구 게임을 시작합니다.");
-            List<Integer> computerNumber = createComputerRandomNumber();
+            ComputerNumbers computerNumber = new ComputerNumbers(createComputerRandomNumber());
             playGame(computerNumber);
             if (terminate()){
                 break;
@@ -30,7 +30,7 @@ public class NumberBaseballApp{
         return randomNumbers;
     }
 
-    private static void playGame(List<Integer> computerNumber){
+    private static void playGame(ComputerNumbers computerNumber){
         while (true){
             List<Integer> userNumber = input();
             int strike = findStrike(computerNumber, userNumber);
@@ -92,19 +92,19 @@ public class NumberBaseballApp{
         return integerList;
     }
 
-    private static int findStrike(List<Integer> computerNumber, List<Integer> userNumber){
+    private static int findStrike(ComputerNumbers computerNumber, List<Integer> userNumber){
         int strikeCount = 0;
         for (int i = 0; i < 3; i++){
-            if (computerNumber.get(i) == userNumber.get(i)){
+            if (computerNumber.getComputerNumbers().get(i) == userNumber.get(i)){
                 strikeCount++;
             }
         }
         return strikeCount;
     }
 
-    private static int findBall(List<Integer> computerNumber, List<Integer> userNumber, int strike){
+    private static int findBall(ComputerNumbers computerNumber, List<Integer> userNumber, int strike){
         int ballCount = 0;
-        int[] visited = countExistingNumber(computerNumber, userNumber);
+        int[] visited = countExistingNumber(computerNumber.getComputerNumbers(), userNumber);
         ballCount = countSameNumber(visited) - strike;
         return ballCount;
     }
