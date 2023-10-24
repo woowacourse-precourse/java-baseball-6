@@ -7,18 +7,19 @@ import baseball.exception.InputValidator;
 
 public class BaseballService {
     private Computer computer;
-    private Player player;
+    private final Player player;
     private final Result result;
     private final InputValidator inputValidator;
 
-    public BaseballService(Result result, InputValidator inputValidator) {
+    public BaseballService(Player player, Result result, InputValidator inputValidator) {
+        this.player = player;
         this.result = result;
         this.inputValidator = inputValidator;
     }
 
     public void inputAnswer(String inputAnswer) {
         inputValidator.validateAnswer(inputAnswer);
-        player = new Player(inputAnswer);
+        player.setInputAnswer(inputAnswer);
     }
 
     public String palyGame() {
