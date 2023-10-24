@@ -37,7 +37,7 @@ public class BaseballGameCounts {
     private void checkBalls(List<Integer> computerNum, List<Integer> userNum) {
         Integer ballCounts = 0;
         for (Integer userNumberDigit : userNum) {
-            ballCounts = addBallCounts(computerNum, userNumberDigit);
+            ballCounts += addBallCounts(computerNum, userNumberDigit);
         }
 
         ballCounts -= counts.get(STRIKE);
