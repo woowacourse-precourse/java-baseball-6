@@ -52,9 +52,9 @@
    2. pickNumberInRange()
 
 ### User
-   - 사용자의 정답 입력을 수행한다.
+   - 사용자의 정답 입력을 수행한다.✅
    - 사용자의 게임 재시행 여부 입력을 수행한다.
-   - 입력수행 후 예외처리 클래스를 호출한다. 
+   - 입력수행 후 예외처리 클래스를 호출한다.✅ 
    1. readUserNumberInput()
    2. readUserPauseOrResumeInput()
    3. readLine() 
