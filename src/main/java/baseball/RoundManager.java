@@ -30,15 +30,15 @@ public class RoundManager{
     private List<Integer> stringIntoIntegerList(String inputString){
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < inputString.length(); i++){
+            throwIfNotNumericValue(inputString.charAt(i));
             int number = inputString.charAt(i) - '0';
-            throwIfNotNumber(number);
             integerList.add(number);
         }
         return integerList;
     }
 
-    private void throwIfNotNumber(int number){
-        if(number < 1 || number > 9){
+    private void throwIfNotNumericValue(char c){
+        if(c-'0'<0||c-'0'>9){
             throw new IllegalArgumentException();
         }
     }

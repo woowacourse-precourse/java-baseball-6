@@ -14,7 +14,7 @@
    - `RoundManager`가 숫자를 입력받는다.
    - "숫자를 입력해주세요 : "
    - 사용자 입력값 : `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
-     - 입력값 유효성 검사 수행
+     - 입력값 유효성 검사 수행 : 숫자가 아닌 경우
 
 ### 4. 입력값 유효성 검사
    - 유효성 검사는 일급 컬렉션 클래스 `PlayerNumbers` 내에서 수행한다.

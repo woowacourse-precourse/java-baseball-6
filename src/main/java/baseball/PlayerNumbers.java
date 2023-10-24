@@ -9,6 +9,7 @@ public class PlayerNumbers{
     PlayerNumbers (List<Integer> playerNumbers){
         throwIfInvalidLength(playerNumbers);
         throwIfDuplicated(playerNumbers);
+        throwIfNotInRange(playerNumbers);
         this.playerNumbers = playerNumbers;
     }
 
@@ -17,13 +18,9 @@ public class PlayerNumbers{
     }
 
     private void throwIfInvalidLength(List<Integer> playerNumbers){
-        if (isNotThreeDigits(playerNumbers)){
+        if (playerNumbers.size() != 3){
             throw new IllegalArgumentException();
         }
-    }
-
-    private boolean isNotThreeDigits(List<Integer> playerNumbers){
-        return playerNumbers.size() != 3;
     }
 
     private void throwIfDuplicated(List<Integer> playerNumbers){
@@ -39,6 +36,21 @@ public class PlayerNumbers{
                 return true;
             }
             visited[number]++;
+        }
+        return false;
+    }
+
+    private void throwIfNotInRange(List<Integer> playerNumbers){
+        if(isNotInRange(playerNumbers)){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isNotInRange(List<Integer> playerNumbers){
+        for (Integer number : playerNumbers){
+            if(number<1||number>9){
+                return true;
+            }
         }
         return false;
     }
