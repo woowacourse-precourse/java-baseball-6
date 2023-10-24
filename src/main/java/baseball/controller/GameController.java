@@ -17,7 +17,7 @@ public class GameController {
     }
 
     public void startGame() {
-        System.out.println(outputView.printStart());
+        outputView.printStart();
         proceedGame();
     }
 
@@ -28,10 +28,7 @@ public class GameController {
         do {
             inputNumber = new InputNumber();
             inputNumber.setInputNumber(inputView.getPlayerInput());
-
-            String hintMessage = outputView.printHint(countController.getHintMessage(inputNumber));
-            System.out.println(hintMessage);
-
+            outputView.printHint(countController.getHintMessage(inputNumber));
         } while (!isDone(inputNumber));
 
         inputNumber.setQuitNumber(inputView.getRestartOrQuitInput());
@@ -39,12 +36,11 @@ public class GameController {
         if (!isQuit(inputNumber)) {
             proceedGame();
         }
-
     }
 
     public boolean isDone(InputNumber inputNumber) {
         if (countController.getStrikeCount(inputNumber) == NUMBER_OF_DIGITS) {
-            System.out.println(outputView.printSuccess());
+            outputView.printSuccess();
             return true;
         }
         return false;
