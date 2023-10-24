@@ -1,50 +1,25 @@
 package baseball;
 
+import baseball.util.OutputUtil;
+
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class Referee {
-    private static final String START_GAME_MENT = "숫자 야구 게임을 시작합니다.";
-    Validator validator = new Validator();
-    Computer computer = new Computer();
-    User user = new User();
-
-    public void runGame() {
-        System.out.println(START_GAME_MENT);
-        String baseballNum = computer.createValidBaseballNum();
-        while (true) {
-            String userInputNum = user.inputNum();
-            validator.validNums(userInputNum);
-            List<Integer> strikeAndBall = judgeNum(baseballNum, userInputNum);
-            if (countBallAndStrike(strikeAndBall)) {
-                if (!user.continueGame()) {
-                    break;
-                }
-            }
-        }
+    public Referee() {
     }
 
-    public Boolean countBallAndStrike(List<Integer> strikeAndBall) {//카운트 세주는
-        int strike = strikeAndBall.get(0);
-        int ball = strikeAndBall.get(1);
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        } else if (strike == 3) {
-            System.out.println("3스트라이크");
+    public static Boolean isGameEnd(Score score) {
+        int strike = score.getStrike();
+        if (strike == 3) {
             return TRUE;
-        } else if (strike == 0) {
-            System.out.printf("%d볼\n", ball);
-        } else if (ball == 0) {
-            System.out.printf("%d스트라이크\n", strike);
-        } else {
-            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         }
         return FALSE;
     }
 
-    public List<Integer> judgeNum(String baseballNum, String userInputNum) {
+    public Score compare(String baseballNum, String userInputNum) {
         int strike = 0;
         int ball = 0;
         int len = userInputNum.length();
@@ -60,6 +35,6 @@ public class Referee {
                 }
             }
         }
-        return List.of(strike, ball);
+        return new Score(strike,ball);
     }
 }
