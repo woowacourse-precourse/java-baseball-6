@@ -13,7 +13,7 @@ public class GameController {
     private InputView inputView = new InputView();
 
     public void createAnswer() {
-        ANSWER_NUMBER.createRandomNumberList();
+        ANSWER_NUMBER.setRandomNumber();
     }
 
     public void startGame() {
