@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -30,11 +33,14 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 입력_테스트() {
         String inputString = "123";
         입력_받은_수의_에러_여부(inputString);
+        입력_받은_문자를_숫자_배열로_변환(inputString).forEach(System.out::println);
     }
+
     @Test
     void 입력_받은_수의_에러_여부(String inputString) {
         char[] characters = inputString.toCharArray();
@@ -52,7 +58,12 @@ class ApplicationTest extends NsTest {
             throw new IllegalArgumentException("input number is not 3 characters long. ");
         }
     }
-
+    @Test
+    List<Integer> 입력_받은_문자를_숫자_배열로_변환(String inputString) {
+        return Arrays.stream(inputString.split(" "))
+                .mapToInt(Integer::parseInt)
+                .boxed().toList();
+    }
 
     @Override
     public void runMain() {
