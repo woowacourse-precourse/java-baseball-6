@@ -83,7 +83,7 @@ class GenerationQuestionTest {
         //given
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
         int startInclusive = 1;
-        int endInclusive = 3;
+        int endInclusive = 2;
         withinRange withinRange = new withinRange(startInclusive, endInclusive);
 
         //then
