@@ -24,7 +24,7 @@ public class NumberValidator {
 		}
 	}
 
-	private static boolean isNumeric(String stringNumber) {
+	public boolean isNumeric(String stringNumber) {
 		return stringNumber
 			.chars()
 			.anyMatch(c -> !(Character.isDigit((char)c)));
