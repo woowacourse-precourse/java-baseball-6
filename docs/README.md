@@ -36,8 +36,9 @@
     - validateDuplicate() : 중복을 검증하는 함수
     - validateLength() : 길이를 검증하는 함수
     - validateRangeAndType() : 1과 9 사이의 수인지 검증하는 함수
-    - validateGameStatus() : 주어진 입력값이 1 또는 2인지 검증하는 함수
+    - validateIsInArray() : 해당 숫자가 배열 안에 있는지 검증하는 함수
     - validateComputerDuplicate() : 컴퓨터 랜덤 숫자가 중복되었는지 검증하는 함수
+    - validateGameStatus() : 주어진 입력값이 1 또는 2인지 검증하는 함수
 
 ## ● service
 
