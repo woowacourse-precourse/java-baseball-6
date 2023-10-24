@@ -53,7 +53,7 @@ public class BaseballController {
 
     private void showGameResult(BaseballGameResult result) {
         ResultMessageDto resultMessageDto = new ResultMessageDto(result);
-        outputView.showGameResult(resultMessageDto.toMessage());
+        outputView.showGameResult(resultMessageDto);
     }
 
     private boolean askReplayChoice() {

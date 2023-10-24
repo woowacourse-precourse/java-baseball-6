@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.constants.Message;
+import baseball.dto.output.ResultMessageDto;
 import baseball.io.OutputWriter;
 
 public class OutputView {
@@ -15,8 +16,8 @@ public class OutputView {
         writer.writeLine(Message.START_GAME);
     }
 
-    public void showGameResult(String gameResult) {
-        writer.writeLine(gameResult);
+    public void showGameResult(ResultMessageDto resultMessageDto) {
+        writer.writeLine(resultMessageDto.toMessage());
     }
 
     public void clearGame() {
