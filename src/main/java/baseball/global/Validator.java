@@ -3,7 +3,6 @@ package baseball.global;
 import static baseball.global.constant.BaseballGameConstant.*;
 import static baseball.global.constant.ExceptionMessage.*;
 
-import baseball.global.constant.ExceptionMessage;
 import java.util.HashSet;
 import java.util.List;
 

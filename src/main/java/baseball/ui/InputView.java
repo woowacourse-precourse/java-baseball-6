@@ -1,10 +1,10 @@
 package baseball.ui;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static baseball.global.Validator.*;
 import static camp.nextstep.edu.missionutils.Console.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class InputView {
     private final OutputView outputView;
