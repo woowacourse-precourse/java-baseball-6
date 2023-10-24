@@ -21,10 +21,10 @@ public class RandomNumber {
         }
 
         while (randomNumber.size() < InputRange.CORRECT_INPUT_RANGE.getValue()) {
-            int num = Randoms.pickNumberInRange(InputRange.START_RANDOM_RANGE.getValue(),
+            int number = Randoms.pickNumberInRange(InputRange.START_RANDOM_RANGE.getValue(),
                     InputRange.END_RANDOM_RANGE.getValue());
-            if (!randomNumber.contains(num)) {
-                randomNumber.add(num);
+            if (!randomNumber.contains(number)) {
+                randomNumber.add(number);
             }
         }
     }
