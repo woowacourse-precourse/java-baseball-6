@@ -22,7 +22,7 @@ public class Input {
     }
 
     private void validateNumberString(String guess) {
-        if (!guess.matches("^[0-9]*S"))
+        if (!guess.matches("^[0-9]*$"))
             throw new NotNumberStringException();
     }
 
