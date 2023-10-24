@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -9,6 +13,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    Compare compare;
+
+    @BeforeEach
+    void Init(){
+        compare = new Compare();
+    }
+
+    @Test
+    @DisplayName("3볼 테스트")
+    void check_ball(){
+        assertThat("3볼").isEqualTo(compare.classification(Arrays.asList(3,1,2), Arrays.asList(1,2,3)));
+    }
+
+    @Test
+    @DisplayName("3스트라이크 테스트")
+    void check_strike(){
+        assertThat("3스트라이크").isEqualTo(compare.classification(Arrays.asList(1,2,3), Arrays.asList(1,2,3)));
+    }
+
+    @Test
+    @DisplayName("낫싱 테스트")
+    void check_nothing(){
+        assertThat("낫싱").isEqualTo(compare.classification(Arrays.asList(1,2,3), Arrays.asList(4,5,6)));
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
