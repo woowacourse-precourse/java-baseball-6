@@ -1,9 +1,6 @@
 package baseball.controller;
 
-
 import baseball.domain.Computer;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

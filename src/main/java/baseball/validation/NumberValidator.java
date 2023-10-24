@@ -1,5 +1,4 @@
 package baseball.validation;
-
 import java.util.HashSet;
 import java.util.Set;
 public class NumberValidator {

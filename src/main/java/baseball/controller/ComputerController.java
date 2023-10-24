@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.validation.NumberValidator;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
