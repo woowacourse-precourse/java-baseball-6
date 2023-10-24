@@ -2,12 +2,12 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class ComputerNumber {
+public class ComputerNumber extends Number {
     private static final int NUMBER_LENGTH = 3;
     private static final int NUMBER_MIN = 1;
     private static final int NUMBER_MAX = 9;
-    private String number;
 
+    @Override
     public void setNumber() {
         StringBuilder select = new StringBuilder();
 
@@ -20,9 +20,5 @@ public class ComputerNumber {
         }
 
         this.number = select.toString();
-    }
-
-    public String getNumber() {
-        return this.number;
     }
 }
