@@ -1,5 +1,7 @@
 package baseball.game;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class View {
 
     private static final String OPENING_LINE = "숫자 야구 게임을 시작합니다.";
@@ -32,4 +34,14 @@ public class View {
         System.out.println(CLOSING_LINE);
     }
 
+    public String readUser(){
+        System.out.print(QUESTION_LINE);
+        return Console.readLine();
+    }
+
+    public String readReplayCommand(){
+        System.out.print(REPLAY_LINE);
+        return Console.readLine();
+    }
+    
 }
