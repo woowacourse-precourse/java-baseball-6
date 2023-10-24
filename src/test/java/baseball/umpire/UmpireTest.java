@@ -108,10 +108,7 @@ public class UmpireTest {
         Score score = new Score();
 
         Score compareScore = new Score();
-        compareScore.setStrikeCount(compareStrike);
-        compareScore.setBallCount(compareBall);
-        compareScore.setHomerunCount(compareHomerun);
-        compareScore.setNothingCount(compareNothing);
+        compareScore.setAll(compareStrike, compareBall, compareHomerun, compareNothing);
 
         Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
         Arrays.fill(strikeCheckingBoard, false);

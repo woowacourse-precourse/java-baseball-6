@@ -69,10 +69,7 @@ public class ComputerUmpireImpl implements Umpire {
             nothing = true;
         }
 
-        score.setStrikeCount(strike);
-        score.setBallCount(ball);
-        score.setHomerunCount(homerun);
-        score.setNothingCount(nothing);
+        score.setAll(strike, ball, homerun, nothing);
 
         return score;
     }

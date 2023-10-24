@@ -7,6 +7,13 @@ public class Score {
     private boolean homerunCount = false;
     private boolean nothingCount = false;
 
+    public void setAll(int strikeCount, int ballCount, boolean homerunCount, boolean nothingCount) {
+        this.strikeCount = strikeCount;
+        this.ballCount = ballCount;
+        this.homerunCount = homerunCount;
+        this.nothingCount = nothingCount;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }
