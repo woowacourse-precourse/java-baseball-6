@@ -6,8 +6,7 @@ import java.util.List;
 
 public class ComputerNumber {
 
-    public static String makeNumber() {
-        String numbers = "";
+    public static List<Integer> makeUniqueThreeNumbers() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -16,6 +15,11 @@ public class ComputerNumber {
                 computer.add(randomNumber);
             }
         }
+        return computer;
+    }
+
+    public static String listToString(List<Integer> computer) {
+        String numbers = "";
 
         for (int i = 0; i < 3; i++) {
             numbers += computer.get(i).toString();
