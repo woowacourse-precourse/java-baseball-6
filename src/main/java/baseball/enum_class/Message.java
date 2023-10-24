@@ -1,6 +1,7 @@
 package baseball.enum_class;
 
 public enum Message {
+    START_GAME_MESSAGE("숫자 야구 게임을 시작합니다."),
     INPUT_USERNUMBER_MESSAGE("숫자를 입력해 주세요 : "),
     STRIKE_MESSAGE("스트라이크"),
     BALL_MESSAGE("볼 "),
