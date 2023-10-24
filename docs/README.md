@@ -92,19 +92,22 @@
 
 # 클래스 구성
 1. **도메인 모델 클래스**:
-    - **`Baseballs`**: 볼 객체의 집합을 나타내는 클래스 - baseballs(List<Integer>)
-    - **`Game`**: 게임을 나타내는 클래스 - computerBaseballs(baseballs), isGameOver(boolean)
-    - **`GameScore`**: 게임 점수(힌트)를 나타내는 클래스- baseballs(int), strikes(int)
-    - **`GameStatus`**: 게임의 상태를 나타내는 클래스 (CONTINUE, RESTART, EXIT)
+    - **`Baseballs.class`**: 볼 객체의 집합을 나타내는 클래스 - baseballs(List<Integer>)
+    - **`Computer.class`**: 컴퓨터를 나타내는 클래스(자신(컴퓨터)의 랜덤 볼 생성) - baseballs(Baseballs)
+    - **`Player.class`**: 플레이어를 나타내는 클래스 - baseballs(Baseballs)
+    - **`ScoreBoard.class`**: 게임 점수를 나타내는 클래스- ballCount(int), strikeCount(int)
+    - **`GameStatus.enum`**: 게임의 상태를 나타내는 클래스 (BREAK, CONTINUE, RESTART, EXIT)
 2. **서비스 레이어 클래스**:
-    - **`GameService`**: 게임 관련 서비스를 다루는 클래스 (게임 생성, 랜덤 공 하고 플레이어 공 비교, 게임 결과 출력, 게임 종료 후 재 시작 여부 판단)
+   - **`ComputerService.class`**: 컴퓨터 공 생성, 컴퓨터 공 하고 플레이어 공 비교 (볼 개수, 스트라이크 개수 세기) 기능
+   - **`PlayerComputer.class`**: 플레이어 공 생성 기능
+   - **`ScoreBoardComputer.class`**: 컴퓨터 서비스가 비교해서 만든 결과를 스코어보드에 갱신하고, 그 결과를 문자로 바꿔 출력 해주는 기능
 3. **컨트롤러 클래스**:
-    - **`GameController`**: 사용자 입력을 받고, 서비스 레이어와 상호 작용하여 게임을 관리하는 클래스
-    - **`InputController`**: 사용자 입력을 처리하는 컨트롤러 클래스
+    - **`GameController.class`**: 사용자 입력을 받고, 서비스 레이어와 상호 작용하여 게임을 관리하는 클래스
+    - **`InputController.class`**: 사용자 입력을 처리하는 컨트롤러 클래스
 4. **뷰 클래스**:
-    - **`InputView`**: 플레이어 입력을 받아오기 위한 출력을 담당하는 뷰 클래스
-    - **`OutputView`**: 게임 관련 시스템 메시지를 출력을 담당하는 뷰 클래스
+    - **`InputView.class`**: 플레이어 입력을 받아오기 위한 출력을 담당하는 뷰 클래스
+    - **`OutputView.class`**: 게임 관련 시스템 메시지를 출력을 담당하는 뷰 클래스
 5. **validator**:
-    - **`BaseballsValidator`**: Baseball, Baseballs 예외 처리 모음
+    - **`BaseballsValidator.class`**: Baseballs 예외 처리하는 클래스
 6. **util**:
-    - **`Converter`**: 플레이어의 입력을 받아와서 Baseball 로 바꾸는 변환 유틸 클래스
+    - **`Converter.class`**: 플레이어의 입력을 받아와서 Baseball 로 바꾸는 변환 유틸 클래스
