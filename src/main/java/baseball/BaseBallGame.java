@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class BaseBallGame {
+
     private final Input input;
     private final Output output;
     private final Computer computer;
@@ -21,8 +22,7 @@ public class BaseBallGame {
 
             playSingleGame();
 
-            int retryChoice = input.getRetryChoice();
-            if (retryChoice == GameConstants.EXIT_CHOICE) {
+            if (wantsToStop()) {
                 break;
             }
         }
@@ -33,6 +33,7 @@ public class BaseBallGame {
         computer.pickSecretNumbers();
 
         while (true) {
+
             List<Integer> guessNumbers = input.getGuessNumbers();
             GameResult gameResult = computer.countStrikesAndBalls(guessNumbers);
 
@@ -41,5 +42,10 @@ public class BaseBallGame {
                 break;
             }
         }
+    }
+
+    private boolean wantsToStop() {
+        int retryChoice = input.getRetryChoice();
+        return retryChoice == GameConstants.EXIT_CHOICE;
     }
 }
