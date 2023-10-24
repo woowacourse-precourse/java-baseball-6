@@ -2,6 +2,12 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        /**
+         * 야구게임 클래스 생성 및 시작
+         */
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.start();
+
     }
 }
