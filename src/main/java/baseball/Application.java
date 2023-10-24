@@ -1,7 +1,13 @@
 package baseball;
 
+import java.util.Scanner;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Scanner sc = new Scanner(System.in);
+        BaseballGame game = new BaseballGame(sc);
+        game.play();
+        sc.close();
     }
 }
