@@ -14,7 +14,7 @@ public class BaseballGame {
             // 만약 입력한 값이 조건에 만족하지 않으면 예외 발생 후 프로그램 종료
             if (!player.inputNumber()) {
                 return;
-            };
+            }
             computer.checkNumber(computer.computerNumber, player.playerNumber);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -30,5 +30,4 @@ public class BaseballGame {
             return;
         }
     }
-
 }
