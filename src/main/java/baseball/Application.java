@@ -12,6 +12,7 @@ public class Application {
         int[] computerNumbers = generateComputerNumbers();
         System.out.println(Arrays.toString(computerNumbers));
         System.out.println(isValid("124"));
+        System.out.println(Arrays.toString(parseInput("123")));
 
     }
 
@@ -46,7 +47,7 @@ public class Application {
         String input = Console.readLine();
 
         if (isValid(input)) {
-            System.out.println("⭐ 올바른 값입니다.");
+            int[] userNumbers = parseInput(input);
         } else {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
@@ -71,6 +72,13 @@ public class Application {
     }
 
     // 문자열 입력 값 -> 정수 배열로 변환
+    private static int[] parseInput(String input) {
+        int[] numbers = new int[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            numbers[i] = input.charAt(i) - '0';
+        }
+        return numbers;
+    }
 
 
     // 스트라이크 수 계산
