@@ -8,9 +8,40 @@ public class User {
     void inputNum() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         userNum = readLine();
-        if (userNum.length() != 3) {
+        if (userInputError()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    boolean userInputError() {
+        if (userNum.length() != 3) {
+            return (true);
+        }
+        if (checkNumberDuplicated()) {
+            return (true);
+        }
+        for (int i = 0; i < 3; i++) {
+            if (!checkNumberRange(userNum.charAt(i))) {
+                return (true);
+            }
+        }
+        return (false);
+    }
+
+    boolean checkNumberRange(char c) {
+        if (c >= '1' && c <= '9') {
+            return (true);
+        }
+        return (false);
+    }
+
+    boolean checkNumberDuplicated() {
+        if (userNum.charAt(0) == userNum.charAt(1) ||
+                userNum.charAt(0) == userNum.charAt(2)
+                || userNum.charAt(1) == userNum.charAt(2)) {
+            return (true);
+        }
+        return (false);
     }
 
     static boolean chooseRestart() throws IllegalArgumentException {
