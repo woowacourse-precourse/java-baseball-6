@@ -40,7 +40,9 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         StringBuilder userNumber = new StringBuilder(Console.readLine());
         System.out.println(userNumber);
+        this.validationCheckUserNumber(userNumber);
         this.userNumber = userNumber;
+
     }
 
     private void updateScoreBoard() {
@@ -52,6 +54,19 @@ public class Game {
                 } else {
                     this.scoreBoard[0]++;
                 }
+            }
+        }
+    }
+
+    private void validationCheckUserNumber(StringBuilder userNumber) {
+        // 1. 자리수 세자리
+        if(userNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for(int i = 0; i < 3 ; i++) {
+            if(!(userNumber.substring(i, i+1).charAt(0) >= 49 && userNumber.substring(i, i+1).charAt(0) <= 57)) {
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -81,6 +96,14 @@ public class Game {
 
     private void updateGameFlag() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
-        this.gameFlag = Integer.parseInt(Console.readLine());
+        String gameFlag = Console.readLine();
+        this.validationCheckReGame(gameFlag);
+        this.gameFlag = Integer.parseInt(gameFlag);
+    }
+
+    private void validationCheckReGame(String gameFlag) {
+        if(!(gameFlag.charAt(0) == 49 || gameFlag.charAt(0) == 50)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
