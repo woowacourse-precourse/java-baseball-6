@@ -23,7 +23,7 @@ public class BaseballGameController {
 
     public void start() {
         printStartMessage();
-        while (!player.continueGame()) {
+        while (player.continueGame()) {
             computer.makeAnswer();
             playOneRound();
             player.inputGameStateNumber();

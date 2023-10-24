@@ -25,6 +25,6 @@ public class Player {
     }
 
     public boolean continueGame() {
-        return gameStateNumber.isExit();
+        return !gameStateNumber.isExit();
     }
 }
