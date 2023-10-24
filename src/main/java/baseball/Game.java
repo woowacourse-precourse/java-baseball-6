@@ -46,6 +46,7 @@ public class Game {
             gameEnd.printAskingRegameIntentionMessage();
             // 플레이어 입력값 받기
             toRegameOrNotString = gamePlay.receiveInputFromPlayer();
+            Validators.validateOneTwo(toRegameOrNotString);
             toRegameOrNot = gameEnd.checkWhetherToRegameOrNot(toRegameOrNotString);
         } while (toRegameOrNot);
     }
