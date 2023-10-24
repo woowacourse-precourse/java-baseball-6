@@ -20,15 +20,15 @@ public class Result {
         printResult();
         System.out.println();
 
-        return this.strike;
+        return strike;
     }
 
     public void printResult(){
         if (this.ball > 0){
-            System.out.printf(BALL, this.ball);
+            System.out.printf(BALL, ball);
         }
         if (this.strike > 0){
-            System.out.printf(STRIKE, this.strike);
+            System.out.printf(STRIKE, strike);
         }
         if (this.ball == 0 && this.strike == 0){
             System.out.print(NOT_THING);
@@ -38,10 +38,10 @@ public class Result {
     public void countResult(List<Integer> computer, List<Integer> player){
         for (int i = 0; i < 3; i++){
             if (computer.get(i) == player.get(i)){
-                this.strike++;
+                strike++;
             }
             else if (computer.contains(player.get(i))){
-                this.ball++;
+                ball++;
             }
         }
     }
