@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.BaseballController;
+import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.domain.Result;
 import baseball.exception.InputValidator;
@@ -20,6 +21,7 @@ public class Configuration {
 
     public static BaseballService baseballService() {
         return new BaseballService(
+                new Computer(),
                 new Player(),
                 new Result(),
                 new InputValidator()

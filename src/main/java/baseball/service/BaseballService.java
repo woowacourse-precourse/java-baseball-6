@@ -6,12 +6,13 @@ import baseball.domain.Result;
 import baseball.exception.InputValidator;
 
 public class BaseballService {
-    private Computer computer;
+    private final Computer computer;
     private final Player player;
     private final Result result;
     private final InputValidator inputValidator;
 
-    public BaseballService(Player player, Result result, InputValidator inputValidator) {
+    public BaseballService(Computer computer, Player player, Result result, InputValidator inputValidator) {
+        this.computer = computer;
         this.player = player;
         this.result = result;
         this.inputValidator = inputValidator;
@@ -38,7 +39,7 @@ public class BaseballService {
         inputValidator.validateContinue(inputContinue);
 
         if (inputContinue.endsWith("1")) {
-            computer = new Computer();
+            computer.initializeRandomNumbers();
             return true;
         }
 
@@ -46,6 +47,6 @@ public class BaseballService {
     }
 
     public void turnOnComputer() {
-        computer = new Computer();
+        computer.initializeRandomNumbers();
     }
 }
