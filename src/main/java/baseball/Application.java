@@ -41,8 +41,8 @@ public class Application {
                 }
                 int exp_num = Integer.parseInt(exp_num_str);
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getClass().getName());
-                System.out.println(e.getMessage());
+//                System.out.println(e.getClass().getName());
+//                System.out.println(e.getMessage());
                 System.exit(0);
             }
 
