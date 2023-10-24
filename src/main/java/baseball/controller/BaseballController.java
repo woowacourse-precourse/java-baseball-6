@@ -29,7 +29,7 @@ public class BaseballController {
         System.out.println("컴퓨터: " + computerNumber);
 
         while (!gameResult.isGameEnded()) {
-            List<Integer> playerNumber = getPlayerInput();
+            List<Integer> playerNumber = getPlayerNumberInput();
 
             gameResult = baseballModel.evaluatePlayerInput(computerNumber, playerNumber);
 
@@ -41,9 +41,7 @@ public class BaseballController {
     }
 
     private void askForRestart(GameResult gameResult) {
-        baseballView.displayMessage(MessageType.ASK_FOR_RESTART);
-
-        String endInput = getPlayerEndInput();
+        String endInput = getEndGameInput();
 
         if (endInput.equals(MessageType.RESTART.getMessage())) {
             gameResult.restartGame();
@@ -53,7 +51,7 @@ public class BaseballController {
         }
     }
 
-    public List<Integer> getPlayerInput() {
+    public List<Integer> getPlayerNumberInput() {
         baseballView.displayMessage(MessageType.ASK_FOR_NUMBER);
         String input = baseballView.readInput();
         validateInput(input);
@@ -61,7 +59,8 @@ public class BaseballController {
         return getDigits(Integer.parseInt(input));
     }
 
-    public String getPlayerEndInput() {
+    public String getEndGameInput() {
+        baseballView.displayMessage(MessageType.ASK_FOR_RESTART);
         String endInput = baseballView.readInput();
         validateEndInput(endInput);
 
