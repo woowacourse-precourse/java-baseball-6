@@ -1,26 +1,9 @@
 package baseball.controller;
 
-import baseball.controller.GameState.State;
+public interface GameController {
+    boolean isStillWrong();
 
-public class GameController {
+    void start();
 
-    private final GameState gameState;
-    private Scoring scoring;
-
-    public GameController() {
-        this.gameState = new GameState(State.TERMINATED);
-    }
-
-    public void start() {
-        this.gameState.changeStateToStartGame();
-        this.scoring = new Scoring(RandomNumberCreator.create(3));
-    }
-
-    public GameState getGameState() {
-        return this.gameState;
-    }
-
-    public Scoring getScoring() {
-        return this.scoring;
-    }
+    void checkAnswer(String validUserAnswer);
 }
