@@ -15,4 +15,12 @@ public class OutputView {
     public void printGameResult(Result result) {
         System.out.println(result.getFormattedResult());
     }
+
+    public void printThreeStrike() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public void printExceptionMessage(Exception exception) {
+        System.out.printf("[ERROR] %s", exception.getMessage());
+    }
 }

@@ -31,6 +31,7 @@ public class GameController {
                     Result result = userComputerCompare.ResultgetBallCountJudgement();
                     outputView.printGameResult(result);
                     if (result.isThreeStrike()) {
+                        outputView.printThreeStrike();
                         break;
                     }
                 }
@@ -39,8 +40,9 @@ public class GameController {
                 }
 
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException exception) {
+            outputView.printExceptionMessage(exception);
+            throw exception;
         }
     }
 }
