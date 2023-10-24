@@ -10,4 +10,11 @@ public class InputView {
 
 		return Integer.parseInt(userInput);
 	}
+
+	public int gameRestartFlag() {
+		System.out.println(Message.GAME_RESTART_MESSAGE);
+		String userInput = Console.readLine();
+
+		return Integer.parseInt(userInput);
+	}
 }
