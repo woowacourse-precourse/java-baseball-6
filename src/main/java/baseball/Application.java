@@ -17,8 +17,26 @@ public class Application {
 
 
     public static void main(String[] args) {
-
+        runGame();
     }
+
+
+    // 게임 실행
+    private static void runGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            playGame();
+
+            String reGame = askForReGame();
+
+            if (!reGame.equals(RESTART_OPTION)) {
+                System.out.println("게임 종료");
+                break;
+            }
+        }
+    }
+
 
     // 게임 진행
     private static void playGame() {
