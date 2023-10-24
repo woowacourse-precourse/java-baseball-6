@@ -68,36 +68,16 @@ public final class AnswerNumbers {
         return number >= MIN_BASE_BALL_NUMBER && number <= MAX_BASE_BALL_NUMBER;
     }
 
-    public int get(int index) {
-        return values.get(index);
-    }
-
-    public boolean hasNumber(int number) {
-        return values.contains(number);
-    }
-
-    public boolean hasNumberInPosition(int number, int index) {
-        return values.get(index) == number;
-    }
-
     public int count(Predicate<Integer> predicate) {
-        int count = 0;
-        for (int number : values) {
-            if (predicate.test(number)) {
-                count++;
-            }
-        }
-        return count;
+        return (int) values.stream()
+                .filter(predicate)
+                .count();
     }
 
     public int countWithIndex(BiPredicate<Integer, Integer> biPredicate) {
-        int count = 0;
-        for (int i = 0; i < values.size(); i++) {
-            if (biPredicate.test(values.get(i), i)) {
-                count++;
-            }
-        }
-        return count;
+        return (int) IntStream.range(0, values.size())
+                .filter(index -> biPredicate.test(values.get(index), index))
+                .count();
     }
 
     public boolean isBall(int number) {
