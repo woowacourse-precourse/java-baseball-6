@@ -61,5 +61,4 @@ public class BaseballGameController {
         OutputView.answeredCorrectMessage();
         OutputView.restartGameMessage();
     }
-
 }
