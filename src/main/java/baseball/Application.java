@@ -168,17 +168,13 @@ class InputValidator {
     }
 }
 
-
 public class Application {
     public static void main(String[] args) {
         GameInterface game = new BaseballGame();
 
-        while (true) {
+        do {
             game.initialize();
             game.start();
-            if (game.defer()) {
-                return;
-            }
-        }
+        } while (!game.isEndGame());
     }
 }
