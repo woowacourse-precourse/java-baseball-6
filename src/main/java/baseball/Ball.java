@@ -11,7 +11,7 @@ public class Ball {
     }
 
     private void checkOneDigit(int value) {
-        if (value > 9) {
+        if (value > 9 || value < 1) {
             throw new IllegalArgumentException("한자리 수만 가능합니다.");
         }
     }
