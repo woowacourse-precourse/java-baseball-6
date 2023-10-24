@@ -2,7 +2,7 @@ package baseball.util;
 
 public class IntegerUtil {
 
-    public static final String INVALID_INTEGER_MESSAGE = "이 값은 정수로 변환할 수 없습니다.";
+    private static final String INVALID_INTEGER_MESSAGE = "이 값은 정수로 변환할 수 없습니다.";
 
     public static boolean isInteger(String string) {
         try {
