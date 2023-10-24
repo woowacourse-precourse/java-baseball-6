@@ -24,6 +24,8 @@ import vo.UserBall;
 
 public class InputUserNumber {
     public static final int NUMBER_SIZE = 3;
+    public static final int MIN_ASCII_CODE = 49;
+    public static final int MAX_ASCII_CODE = 57;
 
     public static UserBall inputUserNumber() {
         String input = Console.readLine();
@@ -36,7 +38,7 @@ public class InputUserNumber {
         for (int i = 0; i < input.length(); i++) {
             int inputNumber = input.charAt(i);
 
-            if (inputNumber < 49 || inputNumber > 57) {
+            if (inputNumber < MIN_ASCII_CODE || inputNumber > MAX_ASCII_CODE) {
                 throw new IllegalArgumentException();
             }
             if (userNumber.contains(inputNumber - '0')){
