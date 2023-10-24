@@ -70,6 +70,9 @@ public class Baseball {
             System.out.print("숫자를 입력해주세요 : ");
             String input=Console.readLine();
 
+            if(input.length()!=3){
+                throw new IllegalArgumentException();
+            }
             int[] result=countResult(input);
             printResult(result);
 
@@ -84,7 +87,10 @@ public class Baseball {
         if(input.equals("1")){
             initBaseball();
             playBaseball();
-        } // 종료
+        }else if(input.equals("2")){
+            // 종료
+            throw new IllegalArgumentException();
+        }
         // 에러처리
 
     }
