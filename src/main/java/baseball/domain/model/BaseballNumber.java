@@ -1,14 +1,12 @@
 package baseball.domain.model;
 
+import baseball.domain.util.BaseballInputPatterns;
 import java.util.regex.Pattern;
 
 public record BaseballNumber(String value) {
 
-    public BaseballNumber(String value) {
-        if (!isValid(value)) {
-            throw new IllegalArgumentException("BaseballNumber는 3자리의 숫자여야 합니다.");
-        }
-        this.value = value;
+    public BaseballNumber {
+        BaseballInputPatterns.THREE_DIGIT_PATTERN.validate(value);
     }
 
     public char charAt(int index) {
@@ -26,4 +24,5 @@ public record BaseballNumber(String value) {
     private boolean isValid(String str) {
         return Pattern.matches("[0-9]{3}", str);
     }
+
 }

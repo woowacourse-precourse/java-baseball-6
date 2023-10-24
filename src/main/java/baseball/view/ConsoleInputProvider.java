@@ -3,7 +3,7 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 
-public class ConsoleInputProvider implements InputProvider {
+public class ConsoleInputProvider implements InputProvider<String> {
     @Override
     public String readNonNullInput() {
         String input;
