@@ -80,7 +80,7 @@ public class Computer {
         int strike = cntStrike(inputNum);
         printResult(ball, strike);
 
-        return strike == SUCCESS_STRIKE;
+        return (strike == SUCCESS_STRIKE);
     }
 
     // restart or finish
@@ -98,14 +98,16 @@ public class Computer {
     // 결과 출력
     private void printResult(int ball, int strike) {
 
-        if (ball == NOTHING && strike == NOTHING) {
-            System.out.println(NOTHING_MESSAGE);
-        } else if (strike == SUCCESS_STRIKE) {
-            System.out.println(SUCCESS_MESSAGE);
-        } else {
-            if (ball == NOTHING) {
+        if (ball == NOTHING) {
+            if (strike == NOTHING) {
+                System.out.println(NOTHING_MESSAGE);
+            } else if (strike == SUCCESS_STRIKE) {
+                System.out.println(SUCCESS_MESSAGE);
+            } else {
                 System.out.println(strike + STRIKE_MESSAGE);
-            } else if (strike == NOTHING) {
+            }
+        } else {
+            if (strike == NOTHING) {
                 System.out.println(ball + BALL_MESSAGE);
             } else {
                 System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
