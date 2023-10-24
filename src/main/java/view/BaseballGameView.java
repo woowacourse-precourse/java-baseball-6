@@ -13,7 +13,9 @@ public class BaseballGameView {
         return getUserNumberList(parsedUserInput);
     }
 
-    public void printJudgementMessage(int strikeCount, int ballCount) {
+    public void printJudgementMessage(List<Integer> gameResult) {
+        int strikeCount = gameResult.get(0);
+        int ballCount = gameResult.get(1);
 
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
