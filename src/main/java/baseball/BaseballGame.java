@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,9 +12,11 @@ public class BaseballGame {
     private static final int STRIKE_IDX = 0;
     private static final int BALL_IDX = 1;
     private static final int NOTHING_IDX = 2;
+    private static final int DEFAULT_SIZE = 3;
 
     private Computer computer;
     private Player player;
+    private int restart = 1;
 
     public boolean isStrike(int playerNum, int idx, List<Integer> computerNums) {
         return computerNums.get(idx) == playerNum;
@@ -49,5 +53,40 @@ public class BaseballGame {
 
     private void countStrike(List<Integer> computerNums, List<Integer> playerNums, ArrayList<Integer> results, int idx) {
         if(isStrike(playerNums.get(idx), idx, computerNums)) results.set(STRIKE_IDX, results.get(STRIKE_IDX)+1);
+    }
+
+    private void printResult(List<Integer> results) {
+        if(results.get(NOTHING_IDX) == DEFAULT_SIZE) {
+            System.out.print("낫싱");
+            return;
+        }
+
+        if(results.get(BALL_IDX) != 0) {
+            System.out.print(results.get(BALL_IDX) + "볼");
+        }
+
+        if(results.get(BALL_IDX) != 0 && results.get(STRIKE_IDX) != 0){
+            System.out.print(" ");
+        }
+
+        if(results.get(STRIKE_IDX) != 0){
+            System.out.print(results.get(STRIKE_IDX) + "스트라이크");
+        }
+    }
+
+    public int run() throws IllegalArgumentException, NumberFormatException {
+        computer = new Computer(DEFAULT_SIZE);
+
+        boolean correct = false;
+        while(!correct) {
+            player = new Player(DEFAULT_SIZE);
+            List<Integer> results = calcResult(computer.getNums(), player.getPlayerNums());
+            printResult(results);
+            if(results.get(STRIKE_IDX) == 3) {
+                correct = true;
+            }
+        }
+
+        return restart;
     }
 }
