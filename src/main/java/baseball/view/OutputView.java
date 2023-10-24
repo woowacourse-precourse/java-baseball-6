@@ -1,32 +1,36 @@
 package baseball.view;
 
 import baseball.constant.GameResult;
-
-import java.util.Arrays;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class OutputView {
-    public void printGameBegin(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-    public void printGameResult(Map<GameResult, Long> result){
-        System.out.println(getResultToString(result));
-    }
-    public void printGameFinish(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final Long NOT_EXIST = 0L;
+    private static final String BLANK = " ";
+
+    public void printGameStart() {
+        System.out.println(GAME_START_MESSAGE);
     }
 
-    private String getResultToString(Map<GameResult, Long> result){
+    public void printGameResult(Map<GameResult, Long> result) {
+        System.out.println(convertResultToString(result));
+    }
+
+    public void printGameFinish() {
+        System.out.println(GAME_FINISH_MESSAGE);
+    }
+
+    private String convertResultToString(Map<GameResult, Long> result) {
         StringBuilder resultBuilder = new StringBuilder();
-        for(Map.Entry<GameResult, Long> entry : result.entrySet()){
-            if(entry.getKey().equals(GameResult.NOTHING)){
-                return GameResult.NOTHING.getName();
+        for (Map.Entry<GameResult, Long> entry : result.entrySet()) {
+            if (entry.getKey().equals(GameResult.NOTHING)) {
+                return GameResult.NOTHING.getKorean();
             }
-            if(entry.getValue() != 0L){
+            if (entry.getValue() != NOT_EXIST) {
                 resultBuilder.append(entry.getValue());
-                resultBuilder.append(entry.getKey().getName());
-                resultBuilder.append(" ");
+                resultBuilder.append(entry.getKey().getKorean());
+                resultBuilder.append(BLANK);
             }
         }
         return resultBuilder.toString().trim();
