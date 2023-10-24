@@ -1,10 +1,8 @@
 package baseball.controller;
 
-import static baseball.view.Message.endMessage;
-import static baseball.view.Message.resultMessage;
-
 import baseball.model.Result;
 import baseball.util.Computer;
+import baseball.view.Message;
 import java.util.List;
 
 public class Baseball {
@@ -16,9 +14,9 @@ public class Baseball {
         while (true) {
             String userNumber = user.getUserNumber();
             Result result = compareNumber(userNumber, computerNumber);
-            resultMessage(result.getBall(), result.getStrike());
+            Message.resultMessage(result.getBall(), result.getStrike());
             if (result.getStrike() == 3) {
-                endMessage();
+                Message.endMessage();
                 break;
             }
         }

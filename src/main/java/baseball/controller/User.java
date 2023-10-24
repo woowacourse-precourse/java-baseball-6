@@ -1,22 +1,25 @@
 package baseball.controller;
 
-import static baseball.view.Message.inputMessage;
-import static baseball.view.Message.replayMessage;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.view.Message;
 import java.util.HashSet;
 
 public class User {
     public String getUserNumber() {
-        inputMessage();
+        Message.inputMessage();
         String userNumber = readLine();
         checkUserNumber(userNumber);
         return userNumber;
     }
 
     public boolean inputReplay() {
-        replayMessage();
+        Message.replayMessage();
         String input = readLine();
+        return checkInputReplay(input);
+    }
+
+    public boolean checkInputReplay(String input) {
         if (input.equals("1")) {
             return true;
         } else if (input.equals("2")) {
