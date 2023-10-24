@@ -4,6 +4,7 @@ import baseball.Controller.CheckNumberController;
 import baseball.Controller.NumberController;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -21,10 +22,6 @@ public class BaseballGame {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             randomNumbers=numbers.createRandomNumber();
-// 생성된 랜덤 숫자 출력
-            System.out.println("Random Number 1: " + randomNumbers[0]);
-            System.out.println("Random Number 2: " + randomNumbers[1]);
-            System.out.println("Random Number 3: " + randomNumbers[2]);
             do {
                 readUserNumber();
             }while(!checkUserNumber());
@@ -69,10 +66,18 @@ public class BaseballGame {
             }
     }
     public int readEndUserInput() throws IOException, NumberFormatException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int endUserInput = Integer.parseInt(readLine());
-        if (endUserInput != 1 && endUserInput != 2) {
-            throw new IllegalArgumentException();
+        int endUserInput = 0;
+
+        try {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            endUserInput = Integer.parseInt(readLine());
+            if (endUserInput != 1 && endUserInput != 2) {
+                throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            }
+        } catch (NumberFormatException e) {
+            throw e; // 이미 NumberFormatException인 경우는 그대로 던짐
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요."); // NoSuchElementException이 발생하면 IllegalArgumentException으로 변환
         }
         return endUserInput;
     }
