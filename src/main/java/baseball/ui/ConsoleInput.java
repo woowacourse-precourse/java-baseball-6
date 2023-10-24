@@ -13,7 +13,7 @@ public class ConsoleInput implements IInput {
     public String scanGameNumber(final int length) {
         String input = scan();
 
-        Utility.checkIfIsInteger(input);
+        Utility.checkIfIsPositiveDigitInteger(input);
         Utility.checkIfIsDifferent(input);
         Utility.checkIfIsValidLength(length, input);
 

@@ -90,7 +90,7 @@ class UserTest {
         // then
         assertThatThrownBy(() -> user.generatePlayerNumber(NUMBER_BALLS))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("입력값은 정수이어야 합니다.");
+            .hasMessage("입력 값은 양의 일의자리 정수이어야 합니다.");
     }
 
     @Test

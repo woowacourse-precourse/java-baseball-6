@@ -8,24 +8,24 @@ import org.junit.jupiter.api.Test;
 class UtilityTest {
 
     @Test
-    void 정수는_예외_발생하지_않음() {
+    void 양의_일의자리_정수를_입력하면_예외가_발생하지_않음() {
         // given
-        String input = "1234";
+        String input = "123456789";
 
         // when, then
-        assertThatCode(() -> Utility.checkIfIsInteger(input))
+        assertThatCode(() -> Utility.checkIfIsPositiveDigitInteger(input))
             .doesNotThrowAnyException();;
     }
 
     @Test
     void 정수가_아니면_예외가_발생함() {
         // given
-        String input = "hello";
+        String input = "012";
 
         // when, then
-        assertThatThrownBy(() -> Utility.checkIfIsInteger(input))
+        assertThatThrownBy(() -> Utility.checkIfIsPositiveDigitInteger(input))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("입력값은 정수이어야 합니다.");
+            .hasMessage("입력 값은 양의 일의자리 정수이어야 합니다.");
     }
 
 

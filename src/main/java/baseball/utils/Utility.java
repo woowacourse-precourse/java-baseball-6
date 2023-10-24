@@ -8,11 +8,9 @@ import java.util.stream.Collectors;
 
 public class Utility {
 
-    public static void checkIfIsInteger(final String number) {
-        try {
-            Integer.parseInt(number);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("입력값은 정수이어야 합니다.");
+    public static void checkIfIsPositiveDigitInteger(final String number) {
+        if (!number.matches("[1-9]+")) {
+            throw new IllegalArgumentException("입력 값은 양의 일의자리 정수이어야 합니다.");
         }
     }
 
