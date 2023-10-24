@@ -1,60 +1,94 @@
 package baseball;
-import java.util.Scanner;
-import java.util.Random;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
 public class Application {
-
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
-        Random random = new Random();
-        int[] digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] randomNumber = new int[3];
-        for (int i = 0; i < 3; i++) {
-            int index = random.nextInt(10 - i);  // 8
-            randomNumber[i] = digits[index];  // 첫번째 숫자는 8
-            System.out.print(randomNumber[i]);
-        }
-
-        System.out.println();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해 주세요 : ");  //서로 다른 임의의 수 3개 입력
-        Scanner scanner = new Scanner(System.in);
-        int InputNumber = scanner.nextInt();
+        while (true) {
+            playGame();
+            if (!wantsToPlayAgain()) {
+                break;
+            }
+        }
+    }
 
-        int digit1 = InputNumber / 100;
-        int digit2 = (InputNumber % 100) / 10;
-        int digit3 = (InputNumber % 100) % 10;
-        int[] ComputerNumber = {digit1, digit2, digit3};
-
-
-        int ballCount = 0;
-        int strikeCount = 0;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (randomNumber[i] == ComputerNumber[j]) {
-                    if (i == j) {
-                        strikeCount++;
-                        break;
-                    } else {
-                        ballCount++;
-                        break;
-                    }
-                }
+    private static void playGame() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
             }
         }
 
-        if (ballCount > 0 && strikeCount > 0) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        } else if (ballCount > 0) {
-            System.out.println(ballCount + "볼 ");
-        } else if (strikeCount > 0) {
-            System.out.println(strikeCount + "스트라이크");
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+
+            if (userInput.length() != 3) {
+                throw new IllegalArgumentException("입력한 숫자는 3자리가 아닙니다.");
+            }
+
+            List<Integer> userNumbers = parseInput(userInput);
+            int[] result = calculateResult(computer, userNumbers);
+
+            if (result[0] == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            } else {
+                displayResult(result);
+            }
+        }
+    }
+
+    private static List<Integer> parseInput(String userInput) {
+        List<Integer> userNumbers = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            char digitChar = userInput.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            userNumbers.add(digit);
+        }
+        return userNumbers;
+    }
+
+    private static int[] calculateResult(List<Integer> computer, List<Integer> userNumbers) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(userNumbers.get(i))) {
+                strikes++;
+            } else if (computer.contains(userNumbers.get(i))) {
+                balls++;
+            }
         }
 
-        scanner.close();
+        return new int[]{strikes, balls};
+    }
+
+    private static void displayResult(int[] result) {
+        int strikes = result[0];
+        int balls = result[1];
+
+        if (strikes > 0 && balls > 0) {
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
+        } else if (strikes > 0) {
+            System.out.println(strikes + "스트라이크");
+        } else if (balls > 0) {
+            System.out.println(balls + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
+
+    private static boolean wantsToPlayAgain() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choice = Integer.parseInt(Console.readLine());
+        return choice == 1;
     }
 }
-
-
