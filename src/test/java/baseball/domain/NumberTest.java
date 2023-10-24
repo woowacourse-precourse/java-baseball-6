@@ -66,4 +66,29 @@ class NumberTest {
         Assertions.assertEquals(number, o);
     }
 
+    @Test
+    public void parseNumber() throws Exception {
+        int value = 123;
+        Number number = Number.parseNumber(value);
+        Number x = new Number(List.of(1,2,3));
+
+        Assertions.assertEquals(number, x);
+
+        IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Number.parseNumber("abc");
+        });
+
+        Assertions.assertEquals(e.getMessage(),ErrorMessage.NOT_NUMBERS);
+    }
+
+    @Test
+    public void contains() throws Exception {
+        Number number = Number.parseNumber(123);
+
+        boolean contains = number.contains(new Digit(1));
+        Assertions.assertTrue(contains);
+        contains = number.contains(new Digit(5));
+        Assertions.assertFalse(contains);
+    }
+
 }
