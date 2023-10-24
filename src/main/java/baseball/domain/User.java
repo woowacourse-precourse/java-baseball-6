@@ -2,7 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class user {
+public class User {
     // 숫자를 입력하고 결과를 넘겨주는 도메인 객체
     // 유저가 입력한 3자리 번호를 return, 게임종료후, 재시작 여부 숫자 return. (넘겨주고-2개)
     // 본인 번호 입력, 재시작 여부 숫자 입력 (입력받고-2개)
