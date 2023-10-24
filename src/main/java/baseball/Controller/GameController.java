@@ -1,13 +1,13 @@
 package baseball.Controller;
 
 import baseball.Model.BaseBallGame;
-import baseball.Model.NumberGenerator;
+import baseball.Model.Helper;
 import baseball.View.GameView;
 import java.util.List;
 
 public class GameController {
-    NumberGenerator numberGenerator = new NumberGenerator();
-    BaseBallGame baseBallGame = new BaseBallGame(numberGenerator);
+    Helper helper = new Helper();
+    BaseBallGame baseBallGame = new BaseBallGame(helper);
     GameView gameView = new GameView();
 
     private static final int BALL = 0;
@@ -17,7 +17,7 @@ public class GameController {
         gameView.printStartMessage();
         while (!baseBallGame.isGameOver()) {
             String input = gameView.printInputMessage();
-            List<Integer> userInput = baseBallGame.parseUserInput(input);
+            List<Integer> userInput = helper.parseUserInput(input);
             List<Integer> ballStrikeCount = baseBallGame.checkBallCount(userInput);
             int balls = ballStrikeCount.get(BALL);
             int strikes = ballStrikeCount.get(STRIKE);

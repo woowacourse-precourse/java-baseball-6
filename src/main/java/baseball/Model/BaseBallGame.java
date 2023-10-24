@@ -10,13 +10,13 @@ public class BaseBallGame {
      * 본 클래스는 게임의 전체적인데이터와  로직을 관리합니다.
      */
     private List<Integer> computerNumber;
-    private NumberGenerator numberGenerator;
+    private Helper helper;
     private boolean isGameOver;
     private static final int BASEBALL_NUM_SIZE = 3;
 
-    public BaseBallGame(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-        computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
+    public BaseBallGame(Helper helper) {
+        this.helper = helper;
+        computerNumber = helper.generatorComputerNumber(BASEBALL_NUM_SIZE);
         isGameOver = false;
     }
 
@@ -52,7 +52,7 @@ public class BaseBallGame {
      */
     public void restartGame(String userInput) {
         if (userInput.equals("1")) {
-            computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
+            computerNumber = helper.generatorComputerNumber(BASEBALL_NUM_SIZE);
             isGameOver = false;
             return;
         }
@@ -82,28 +82,5 @@ public class BaseBallGame {
     /**
      * 유저가 입력한 String형식의 Input을 List형식으로 파씽함
      */
-    public List<Integer> parseUserInput(String input) {
-        List<Integer> parsedInput = new ArrayList<>();
 
-        if (input.length() != BASEBALL_NUM_SIZE) {
-            throw new IllegalArgumentException("입력 자릿 수 오류");
-        }
-
-        for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
-            char c = input.charAt(i);
-            if (c == '0') {
-                throw new IllegalArgumentException("허가되지 않은 문자열");
-            }
-            if (Character.isDigit(c)) {
-                int digit = Character.getNumericValue(c);
-                parsedInput.add(digit);
-            }
-            if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("허가되지 않은 문자열");
-            }
-
-        }
-
-        return parsedInput;
-    }
 }
