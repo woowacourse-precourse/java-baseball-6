@@ -20,12 +20,6 @@ public class GameService {
 
     CompareUtils compareUtils = new CompareUtils();
 
-    private void play() {
-        game.intiField();
-        user.setUserNums(requestUserNumbers());
-        compare(game.getResult_arr(), user.getUserNums(), game);
-    }
-
     public void playGame(int size, int startInclusive, int endInclusive) {
         int strike = 0;
         systemMessage.printGameStart();
@@ -36,9 +30,15 @@ public class GameService {
         }
     }
 
+    private void play() {
+        game.intiField();
+        user.setUserNums(requestUserNumbers());
+        compare(game.getResult_arr(), user.getUserNums(), game);
+    }
+
+
     public void setGame(int size, int startInclusive, int endInclusive) {
         this.size = size;
-        game.intiField();
         game.setResult_arr(getRandomNumbers(size, startInclusive, endInclusive));
     }
 
@@ -70,6 +70,10 @@ public class GameService {
     private void printGameResult(int strike, int ball) {
         PrintGameResult printGameResult = new PrintGameResult();
         printGameResult.printGameResult(strike, ball);
+        checkGameOver(strike);
+    }
+
+    private void checkGameOver(int strike) {
         if (strike == 3) {
             systemMessage.printGameOver();
         }
