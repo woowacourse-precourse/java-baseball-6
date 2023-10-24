@@ -1,9 +1,11 @@
 package baseball;
 
+import java.util.StringJoiner;
+
 public class Hint {
 
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
 
     public Hint(int strike, int ball) {
         this.strike = strike;
@@ -14,14 +16,23 @@ public class Hint {
     public String toString() {
         if (ball == 0 && strike == 0) {
             return "낫싱";
-        } else if (ball == 0 && strike > 0) {
-            return strike + "스트라이크";
-        } else if (ball > 0 && strike == 0) {
-            return ball + "볼";
-        } else if (ball > 0 && strike > 0) {
-            return ball + "볼 " + strike + "스트라이크";
-        } else {
-            throw new RuntimeException("볼과 스트라이크가 음수입니다.");
+        }
+
+        StringJoiner joiner = new StringJoiner(" ");
+        addStrikeToJoiner(joiner);
+        addBallToJoiner(joiner);
+        return joiner.toString();
+    }
+
+    private void addStrikeToJoiner(StringJoiner joiner) {
+        if (ball > 0) {
+            joiner.add(ball + "볼");
+        }
+    }
+
+    private void addBallToJoiner(StringJoiner joiner) {
+        if (strike > 0) {
+            joiner.add(strike + "스트라이크");
         }
     }
 

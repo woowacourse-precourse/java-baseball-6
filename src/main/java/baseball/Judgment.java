@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Judgment {
 
@@ -11,26 +12,23 @@ public class Judgment {
     }
 
     public boolean judge(List<Integer> guess) {
-        Hint hint = getHintFromGuess(guess);
+        Hint hint = new Hint(countStrike(guess), countBall(guess));
         System.out.println(hint);
 
         return hint.isAnswer();
     }
 
-    private Hint getHintFromGuess(List<Integer> guess) {
-        int strike = 0, ball = 0;
-        for (int i = 0; i < guess.size(); i++) {
-            Integer guessNumber = guess.get(i);
-            if (answer.contains(guessNumber)) {
-                if (answer.get(i).equals(guessNumber)) {
-                    strike++;
-                    continue;
-                }
-                ball++;
-            }
-        }
+    private int countBall(List<Integer> guess) {
+        return (int) IntStream.range(0, 3)
+            .filter(i -> answer.contains(guess.get(i))
+                && !guess.get(i).equals(answer.get(i)))
+            .count();
+    }
 
-        return new Hint(strike, ball);
+    private int countStrike(List<Integer> guess) {
+        return (int) IntStream.range(0, 3)
+            .filter(i -> guess.get(i).equals(answer.get(i)))
+            .count();
     }
 
 }
