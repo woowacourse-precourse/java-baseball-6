@@ -1,4 +1,4 @@
-package baseball;
+package baseball.enum_class;
 
 public enum NumberInfo {
     COUNT(3),

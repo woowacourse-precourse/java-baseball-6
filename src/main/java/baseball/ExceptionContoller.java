@@ -1,8 +1,9 @@
 package baseball;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.NumberInfo.*;
+import static baseball.enum_class.NumberInfo.*;
 
 public class ExceptionContoller {
 
