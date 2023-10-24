@@ -15,6 +15,23 @@ public class Application {
                     Randoms.pickNumberInRange(1, 9)
             };
 
+            while(true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String userNumber = Console.readLine();
+                if (userNumber.length() != 3) {
+                    throw new IllegalArgumentException("세 자리 숫자를 입력해주세요.");
+                }
+                for (int i = 0; i < 3; i++) {
+                    if (userNumber.charAt(i) > '0' && userNumber.charAt(i) <= '9') {
+                        continue;
+                    } else {
+                        throw new IllegalArgumentException("모두 숫자를 입력해주세요.");
+                    }
+                }
+
+
+            }
+
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             execInput = Integer.parseInt(Console.readLine());
