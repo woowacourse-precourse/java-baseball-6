@@ -9,6 +9,11 @@ public class GameResult {
     }
 
     private String formatMessage(GameResultType type, int strike, int ball) {
+        if (strike == 0) {
+            return String.format(type.getGameResultMessage(), ball);
+        } else if (ball == 0) {
+            return String.format(type.getGameResultMessage(), strike);
+        }
         return String.format(type.getGameResultMessage(), ball, strike);
     }
 
