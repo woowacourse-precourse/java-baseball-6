@@ -28,14 +28,14 @@ public class ComputerBalls {
     }
 
     private List<Integer> generateRandomNumbers() {
-        return Arrays.stream(new List[3])
+        return Arrays.stream(new List[Constant.BALLS_LENGTH])
                 .map(num -> Randoms.pickNumberInRange(Constant.START_RANGE, Constant.END_RANGE))
                 .collect(Collectors.toList());
     }
     private Boolean checkDuplicateNumber(List<Integer> numbers) {
         if (numbers.stream()
                 .collect(Collectors.toSet())
-                .size() != 3)
+                .size() != Constant.BALLS_LENGTH)
             return true;
 
         return false;
