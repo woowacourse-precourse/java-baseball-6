@@ -20,12 +20,10 @@ public class GameClient {
 
     private final Computer computer;
     private final Player player;
-    private final Referee referee;
 
     public GameClient() {
         this.player = new Player();
         this.computer = new Computer();
-        this.referee = new Referee();
         System.out.println(MESSAGE_INIT);
     }
 
@@ -38,7 +36,7 @@ public class GameClient {
             player.guessNumbers();
             BaseballNumbersSlot playerNumbers = player.getSlot();
             BaseballNumbersSlot answerNumbers = computer.getSlot();
-            ballCount = referee.calculateBallCount(playerNumbers, answerNumbers);
+            ballCount = BallCount.calculateFrom(playerNumbers, answerNumbers);
             System.out.println(ballCount);
         } while (!ballCount.isOut());
 
