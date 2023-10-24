@@ -16,7 +16,7 @@ public class BaseballGame {
 
 	public void startBaseballGame() {
 		do {
-			String computerNumber = baseballComputer.createComputerNumbers(); // 컴퓨터 숫자 생성
+			String computerNumber = baseballComputer.createComputerNumber(); // 컴퓨터 숫자 생성
 			do {
 				String userNumber = baseballView.inputUserNumber(); // 게임 진행
 				printGameResult(umpire(computerNumber, userNumber)); // 판정 결과 출력
