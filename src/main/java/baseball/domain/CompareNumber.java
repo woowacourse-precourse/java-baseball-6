@@ -11,6 +11,7 @@ public class CompareNumber {
         return new int[]{ball, strike};
     }
 
+
     public void ballCounter(List<Integer> playerNumber, List<Integer> computerNumber){
         ball = 0;
         for (int i = 0; i<playerNumber.size(); i++){

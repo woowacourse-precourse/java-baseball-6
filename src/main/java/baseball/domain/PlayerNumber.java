@@ -9,10 +9,10 @@ public class PlayerNumber {
     private List<Integer> playerNumber = new ArrayList<>();
 
     public PlayerNumber(String input){
-        NumberCheck.DuplicateNumber(input);
-        NumberCheck.NonNumber(input);
-        NumberCheck.DigitNumber(input);
-        NumberCheck.RangeOut(input);
+        NumberCheck.duplicateNumber(input);
+        NumberCheck.nonNumber(input);
+        NumberCheck.digitNumber(input);
+        NumberCheck.rangeOut(input);
 
         for(String number: input.split("")){
             this.playerNumber.add(Integer.parseInt(number));

@@ -1,20 +1,18 @@
 package baseball.controller;
 
-import baseball.model.CompareNumber;
-import baseball.model.ComputerNumber;
-import baseball.model.PlayerNumber;
+import baseball.domain.CompareNumber;
+import baseball.domain.ComputerNumber;
+import baseball.domain.PlayerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.Arrays;
 
 public class GameSet {
 
     private ComputerNumber computer;
-    private PlayerNumber playerNumber;
+    private CompareNumber compareNumber;
     private boolean reGame = true;
     private boolean success = false;
-    private CompareNumber compareNumber;
+
 
     public void gameStart(){
         compareNumber = new CompareNumber();
@@ -22,13 +20,12 @@ public class GameSet {
         do{
             computer = new ComputerNumber();
             answerCheck();
-            reGame = reStartOrOver();
-        }while(reGame);
+        }while(reGame = reStartOrOver());
     }
 
     public void answerCheck(){
         do{
-            playerNumber = new PlayerNumber(InputView.playerNumber());
+            PlayerNumber playerNumber = new PlayerNumber(InputView.playerNumber());
             int[] result = compareNumber.getResult(playerNumber.getPlayerNumber(), computer.getComputerNumber());
             success = compareNumber.successCheck(result);
             OutputView.resultCheck(result);
@@ -37,7 +34,9 @@ public class GameSet {
 
     public boolean reStartOrOver(){
         String check = InputView.reStartOrOverNumber();
-        if (check.equals("2")) return false;
+        if (check.equals("2")) {
+            return false;
+        }
         return true;
     }
 }
