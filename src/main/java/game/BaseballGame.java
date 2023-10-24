@@ -1,6 +1,5 @@
 package game;
 
-import camp.nextstep.edu.missionutils.Console;
 import domain.Ball;
 import domain.BallComparator;
 import domain.Balls;
