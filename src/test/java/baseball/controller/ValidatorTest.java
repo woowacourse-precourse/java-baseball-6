@@ -34,4 +34,11 @@ public class ValidatorTest {
         String invalidInput = "1234";
         assertFalse(Validator.validateInputLength(invalidInput));
     }
+
+    @Test
+    @DisplayName("입력한 숫자가 자릿수마다 다르다")
+    void 플레이어_숫자_입력_자릿수마다_다르다() {
+        String validInput = "123";
+        assertTrue(Validator.validateInputWithDifferentDigit(validInput));
+    }
 }
