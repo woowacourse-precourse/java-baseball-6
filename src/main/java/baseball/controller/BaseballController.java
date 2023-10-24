@@ -9,15 +9,17 @@ import baseball.view.BaseballOutputView;
 public class BaseballController {
     private static final BaseballService baseballService = new BaseballService();
 
+    private BaseballNumber computerBaseballNumber;
+
     public void play() {
-        BaseballNumber computerBaseballNumber = startBaseballGame();
+        startBaseballGame();
         playBaseballGame(computerBaseballNumber);
         reStartOrEndBaseballGame();
     }
 
-    private BaseballNumber startBaseballGame() {
+    private void startBaseballGame() {
         BaseballOutputView.printStartMessage();
-        return baseballService.initializeComputerNumber();
+        computerBaseballNumber = baseballService.initializeComputerNumber();
     }
 
     private void playBaseballGame(BaseballNumber computerBaseballNumber) {
