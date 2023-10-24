@@ -1,8 +1,9 @@
 package baseball.io;
 
-import java.io.IOException;
-import java.io.InputStream;
+
+import java.io.*;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class OutputManager {
     private Properties commonMessage;

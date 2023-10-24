@@ -3,6 +3,7 @@ package baseball;
 import baseball.game.GameManager;
 import baseball.io.InputManager;
 import baseball.io.OutputManager;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class Runner {
                 play();
                 restartGame = isReStart();
             }
+            Console.close();
         } catch (IllegalArgumentException e) {
             outputManager.printMessage("game.end.error");
             throw  e;

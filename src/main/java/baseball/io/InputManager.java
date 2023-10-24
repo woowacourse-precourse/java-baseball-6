@@ -12,6 +12,7 @@ public class InputManager {
     public String readGameInput() throws IOException {
         String input = Console.readLine();
 
+
         validateGameInput(input);
         validateDuplicate(input);
 
