@@ -22,10 +22,6 @@
       - 스트라이크가 0인 경우
 
 ### Player 클래스
-- `setInput()`
-  - 플레이어의 입력값을 받을 때 사용한다.
-  - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-
 - `setThreeNumbersInput()`
   - 플레이어의 서로 다른 3가지 숫자를 입력 받을 때 사용한다.
   - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
@@ -35,6 +31,10 @@
   
 - `validateUniqueness()`
   - 각 자리 숫자를 비교해 하나라도 같을 경우 false를 리턴한다.
+
+- setGameRestartInput()
+  - 플레이어에게 게임 종료 여부를 물어본다.
+  - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 - `getInput()`
   - 플레이어의 입력값을 리턴한다.

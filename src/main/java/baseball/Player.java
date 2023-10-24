@@ -5,16 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class Player {
     private String input;
 
-//    Player() {
-//        input = Console.readLine();
-//    }
-
-//    public void setInput() {
-//        inputBeforeValidation = Console.readLine();
-//
-//        input = validateInput(inputBeforeValidation);
-//    }
-
     public void setThreeNumbersInput() throws IllegalArgumentException {
         int inputToInteger = Integer.parseInt(Console.readLine()); // 변환 실패 시 NumberFormatException 예외 던짐. IllegalArgumentException의 조상 클래스
 
@@ -44,22 +34,14 @@ public class Player {
     }
 
     public void setGameRestartInput() throws IllegalArgumentException {
-        int inputToInteger = Integer.parseInt(Console.readLine()); // 변환 실패 시 NumberFormatException 예외 던짐. IllegalArgumentException의 조상 클래스
+        String inputBeforeValidation = Console.readLine();
 
-        if (!(inputToInteger == 1 || inputToInteger == 2)) {
+        if (!(inputBeforeValidation.equals("1") || inputBeforeValidation.equals("2"))) {
             throw new IllegalArgumentException();
         }
 
-        input = inputToInteger + "";
+        input = inputBeforeValidation;
     }
-
-//    private String validateInput(String inputBeforeValidation) throws IllegalArgumentException {
-//        int inputBeforeValidationToInteger = Integer.parseInt(inputBeforeValidation);
-//
-//        if (!(inputBeforeValidationToInteger == 1 || inputBeforeValidationToInteger == 2 || (111 <= inputBeforeValidationToInteger && inputBeforeValidationToInteger <= 999))) {
-//            throws new IllegalArgumentException();
-//        }
-//    }
 
     public String getInput() {
         return input;
