@@ -32,3 +32,5 @@
 ## GameService : Service            - 게임 관련 처리 
 ## RandomService : Service          - 램덤 관련 처리 
 ## userChatService : service        - 유저 입출력 관련 
+
+# 작성 하다 보니.. 조립 형태로 제작이 되고 있다
