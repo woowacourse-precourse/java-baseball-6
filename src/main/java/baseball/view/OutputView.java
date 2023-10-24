@@ -26,7 +26,7 @@ public class OutputView {
     }
 
     private static boolean isNothing(int countOfBall, int countOfStrike) {
-        return countOfBall == 0 && countOfStrike == 0;
+        return (countOfBall == 0) && (countOfStrike == 0);
     }
 
     private static boolean isOnlyBall(int countOfStrike) {

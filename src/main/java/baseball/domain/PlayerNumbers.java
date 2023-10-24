@@ -32,7 +32,8 @@ public class PlayerNumbers {
 
     private void throwExceptionIfContainsNumberOutOfRange(List<Integer> numbers) {
         if (containsNumberOutOfRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 숫자는 " + MIN_NUMBER + " 이상 " + MAX_NUMBER + " 이하여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자는 " + MIN_NUMBER + " 이상 "
+                    + MAX_NUMBER + " 이하여야 합니다.");
         }
     }
 
@@ -42,7 +43,7 @@ public class PlayerNumbers {
     }
 
     private boolean isOutOfRange(int number) {
-        return !(MIN_NUMBER <= number && number <= MAX_NUMBER);
+        return !((MIN_NUMBER <= number) && (number <= MAX_NUMBER));
     }
 
     private void throwExceptionIfDuplicatedNumber(List<Integer> numbers) {
