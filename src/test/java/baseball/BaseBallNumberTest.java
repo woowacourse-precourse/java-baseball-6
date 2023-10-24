@@ -25,7 +25,7 @@ class BaseBallNumberTest {
     @ParameterizedTest(name = "{0} 실패, 값 : {1}")
     @MethodSource("inValidNumberArray")
     @DisplayName("잘못된 사용자 입력이 들어온 경우 BaseBallNumber 생성 실패 테스트")
-    void InvalidInputStringExceptionThrown(String reason, String inputNumber) {
+    void generateNumber_InvalidInputString_ThrownException(String reason, String inputNumber) {
         // given
         // when
         // then
@@ -35,7 +35,7 @@ class BaseBallNumberTest {
 
     @Test
     @DisplayName("제대로된 사용자 입력이 왔을 때 BaseBallNumber 생성 성공 테스트")
-    void parseNumber() {
+    void generateNumber_ValidInputString_Success() {
         // given
         // when
         BaseBallNumber baseBallNumber = BaseBallNumber.generateNumber("123");
@@ -46,7 +46,7 @@ class BaseBallNumberTest {
 
     @RepeatedTest(500)
     @DisplayName("1 ~ 9 사이의 서로 다른 임의의수가 만들어 지는지 테스트")
-    void createRandomNumbers() {
+    void generateRandomNumbers_Success() {
         // given
         Set<Integer> numberSet = new HashSet<>();
 
@@ -63,10 +63,10 @@ class BaseBallNumberTest {
         assertThat(numberSet).hasSize(3);
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest(name = "입력값 = {0} ->  {1} 스트라이크 {2} 볼")
     @MethodSource("InputStringStream")
     @DisplayName("두 BaseBallNumber 간의 strike와 ball에 대한 계산이 제대로 이루어지는지 확인하는 테스트")
-    void calculateTest(String inputString, int strikeCount, int ballCount) {
+    void calculate_Success(String inputString, int strikeCount, int ballCount) {
         // given
         BaseBallNumber computerNumber = BaseBallNumber.generateNumber("123");
         AtomicInteger strike = new AtomicInteger(0);
