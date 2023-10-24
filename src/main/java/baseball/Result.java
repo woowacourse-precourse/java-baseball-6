@@ -3,16 +3,16 @@ package baseball;
 import java.util.List;
 
 public class Result {
-    private int ball;
-    private int strike;
+    private int ballCount;
+    private int strikeCount;
 
     private final String NOTHING = "낫싱";
     private final String BALL = "볼 ";
     private final String STRIKE = "스트라이크";
 
     public Result() {
-        this.ball = 0;
-        this.strike = 0;
+        this.ballCount = 0;
+        this.strikeCount = 0;
     }
 
     public void calculate(List<Character> userNumbers, List<Character> randomNumbers) {
@@ -22,11 +22,11 @@ public class Result {
             char number = userNumbers.get(index);
 
             if (isSameIndex(index, number, randomNumbers)) {
-                strike++;
+                strikeCount++;
             }
 
             if (!isSameIndex(index, number, randomNumbers) && isExistedIndex(number, randomNumbers)) {
-                ball++;
+                ballCount++;
             }
         }
     }
@@ -38,20 +38,20 @@ public class Result {
             result = NOTHING;
         }
 
-        if (ball != 0) {
-            result += ball + BALL;
+        if (ballCount != 0) {
+            result += ballCount + BALL;
         }
 
-        if (strike != 0) {
-            result += strike + STRIKE;
+        if (strikeCount != 0) {
+            result += strikeCount + STRIKE;
         }
 
         return result;
     }
 
     private void setZero() {
-        ball = 0;
-        strike = 0;
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     private boolean isExistedIndex(char number, List<Character> randomNubers) {
@@ -63,6 +63,6 @@ public class Result {
     }
 
     private boolean isNothing() {
-        return strike == 0 && ball == 0;
+        return strikeCount == 0 && ballCount == 0;
     }
 }
