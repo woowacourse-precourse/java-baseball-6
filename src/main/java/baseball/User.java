@@ -15,6 +15,11 @@ public class User {
         System.out.print("숫자를 입력해주세요: ");
 
         String userInput = Console.readLine();
+
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        }
+
         for (char number : userInput.toCharArray()) {
             userNumbers.add(Character.getNumericValue(number));
         }

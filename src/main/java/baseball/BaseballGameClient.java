@@ -48,7 +48,6 @@ public class BaseballGameClient {
             gameResultMessage.append(gameResult.getStrike()).append("스트라이크");
         }
 
-
         if (gameResult.getStrike() == 0 && gameResult.getBall() == 0) {
             gameResultMessage.append("낫싱");
         }
