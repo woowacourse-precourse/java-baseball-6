@@ -7,10 +7,19 @@ public class Application {
     private static String inputNumber;
     private static int ball;
     private static int strike;
+    private static boolean isOver;
+    private static boolean isSucceed;
 
     public static void main(String[] args) throws IllegalArgumentException {
         //TODO: 숫자 야구 게임 구현
-
+        isOver = false;
+        while (!isOver) {
+            randomNumber = makeRandomNumber();
+            isSucceed = false;
+            while (!isSucceed) {
+                isSucceed();
+            }
+        }
     }
 
     public static String makeRandomNumber() {
@@ -60,6 +69,11 @@ public class Application {
         System.out.println();
     }
 
+    public static void isSucceed() {
+        if (strike == 3) {
+            isSucceed = true;
+        }
+    }
 
 
 }
