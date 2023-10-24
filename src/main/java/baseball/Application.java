@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 
@@ -29,6 +30,9 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
+            }
+            if (!restart()) {
+                return;
             }
         }
     }
@@ -61,6 +65,23 @@ public class Application {
 
         if (strike == 3) {
             return true;
+        }
+        return false;
+    }
+
+    //재시작
+    static boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String selectNum;
+        try {
+            selectNum = Console.readLine();
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        if ("1".equals(selectNum)) {
+            return true;
+        } else if ("2".equals(selectNum)) {
+            return false;
         }
         return false;
     }
