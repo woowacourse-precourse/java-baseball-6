@@ -14,11 +14,12 @@ public class GameController {
 
     public void gameStart() {
         ioController.gameStartNotify();
-        ArrayList<Integer> answer = Computer.getNumbers(3);
-        inGame(answer);
+        inGame();
     }
 
-    private void inGame(ArrayList<Integer> answer) {
+    private void inGame() {
+        Computer computer = new Computer();
+        ArrayList<Integer> answer = computer.getGeneratedNumbers();
         while (true) {
             ArrayList<Integer> input = ioController.inningNumberInput();
             Inning inning = new Inning(answer, input);
@@ -34,8 +35,7 @@ public class GameController {
         ioController.gameEndNotify();
         int restart = ioController.restartNumberInput();
         if (restart == 1) {
-            ArrayList<Integer> answer = Computer.getNumbers(3);
-            inGame(answer);
+            inGame();
         }
     }
 }
