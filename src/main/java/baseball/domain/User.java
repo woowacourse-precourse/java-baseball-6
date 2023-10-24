@@ -10,7 +10,6 @@ import java.util.Set;
 public class User {
 
     public int[] parseUserNum(String userNum, int size) {
-
         checkException(userNum, size);
 
         int[] user = new int[size];

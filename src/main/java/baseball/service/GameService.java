@@ -34,7 +34,10 @@ public class GameService {
         int strikeCount = 0;
 
         while (strikeCount != NUM_SIZE.getValue()) {
-            BaseballScore score = checkCount(getUserNum());
+            String userNum = Console.readLine();
+            message.printInputMsg(userNum);
+
+            BaseballScore score = checkCount(user.parseUserNum(userNum, NUM_SIZE.getValue()));
             message.printScore(score.strikeCount, score.ballCount);
             strikeCount = score.strikeCount;
         }
@@ -57,12 +60,6 @@ public class GameService {
         }
 
         throw new invalidInputException();
-    }
-
-    private int[] getUserNum() {
-        String userNum = Console.readLine();
-        message.printInputMsg(userNum);
-        return user.parseUserNum(userNum, NUM_SIZE.getValue());
     }
 
     private BaseballScore checkCount(int[] user) {
