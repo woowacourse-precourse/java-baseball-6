@@ -12,7 +12,7 @@ public class Application {
 
             game.start();
             game.gameOver();
-            game.restart();
+            gameFlag = game.restart();
         }
     }
 }
