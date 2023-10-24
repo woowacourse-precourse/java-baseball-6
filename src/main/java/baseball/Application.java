@@ -1,7 +1,17 @@
 package baseball;
 
+import baseball.Controller.GameController;
+import baseball.Service.CompareNumberService;
+import baseball.Service.RandomGenerator;
+import baseball.View.Input;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        //TODO: 숫자 야구 게임 구현
+        String randomNum = RandomGenerator.getRandomNumber();
+        String userNum = Input.inputUserNumber();
+
+
     }
+
 }
