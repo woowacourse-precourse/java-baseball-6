@@ -12,7 +12,7 @@ public class Result {
     private int strikeCount;
     private int ballCount;
 
-    public Result(Computer computer, User user){
+    public Result(Computer computer, User user) {
         List<Integer> computerList = computer.getComputerList();
         for (int number : user.getUserList()) {
             if (computerList.contains(number)) {

@@ -13,8 +13,7 @@ public class Computer {
     private List<Integer> computerList;
 
 
-
-    public Computer(){
+    public Computer() {
     }
 
     public void generateComputerNumber() {
@@ -28,11 +27,11 @@ public class Computer {
         this.computerList = computer;
     }
 
-    private int generateRandomNumber(){
+    private int generateRandomNumber() {
         return Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
     }
 
-    public List<Integer> getComputerList(){
+    public List<Integer> getComputerList() {
         return this.computerList;
     }
 }

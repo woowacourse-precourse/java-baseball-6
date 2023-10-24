@@ -34,8 +34,8 @@ public class Validator {
 
     private void checkDuplicate(List<String> input) {
         List<String> list = input.stream()
-                            .distinct()
-                            .toList();
+                .distinct()
+                .toList();
         if (list.size() != INPUT_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_LIST.getMessage());
         }

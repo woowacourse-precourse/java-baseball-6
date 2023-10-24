@@ -26,6 +26,7 @@ public class BaseBallGameController {
         }
 
     }
+
     private void startNewGame() {
         Computer computer = new Computer();
         computer.generateComputerNumber();
@@ -34,7 +35,7 @@ public class BaseBallGameController {
             List<String> inputString = inputView.readPlayerNumber();
             List<Integer> inputInteger = converter.convertToNumericList(inputString);
             User user = new User(inputInteger);
-            Result result = new Result(computer,user);
+            Result result = new Result(computer, user);
             outputView.printResult(result.resultToString());
             continueSign = result.isContinue();
         }
@@ -42,10 +43,10 @@ public class BaseBallGameController {
     }
 
     private boolean isEnd(int sign) {
-        if(sign == 1){
+        if (sign == 1) {
             return true;
         }
-        if(sign == 2){
+        if (sign == 2) {
             return false;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_COMMAND.getMessage());
