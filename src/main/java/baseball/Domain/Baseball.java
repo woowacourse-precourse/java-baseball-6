@@ -7,12 +7,7 @@ public class Baseball {
     private List<Integer> numbers;
 
     public Baseball(List<Integer> numbers) {
-        build(numbers);
-    }
-
-    private void build(List<Integer> numbers) {
-        validateSize(numbers);
-        validateZero(numbers);
+        validateSize(numbers); validateZero(numbers);
         this.numbers = numbers;
     }
 

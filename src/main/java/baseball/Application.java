@@ -24,21 +24,24 @@ public class Application {
         gameView.printStart();
         while(true) {
             Baseball base = gameService.buildRandomBaseball();
-            cycle(base);
+            loopTurn(base);
 
             gameView.printEnd();
+
             String line = gameView.getAnswer();
             if(line.equals("2")) break;
         }
 
     }
 
-    private void cycle(Baseball base) {
+    private void loopTurn(Baseball base) {
 
         while(true) {
             String line = gameView.getNumbers();
             List<Integer> numbers = InputConverter.convertToIntegerList(line);
+
             Baseball now = gameService.buildBaseball(numbers);
+
             BaseballScore score = base.compare(now);
             gameView.printScore(score);
 
@@ -51,7 +54,9 @@ public class Application {
 
         GameView gameView = new GameView(new OutputView());
         GameService gameService = new GameService();
+
         Application app = new Application(gameView, gameService);
+
         app.play();
 
     }

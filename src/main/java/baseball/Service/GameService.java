@@ -10,12 +10,12 @@ import java.util.Set;
 public class GameService {
 
     public Baseball buildRandomBaseball() {
-        Set<Integer> computer = new HashSet<>();
-        while (computer.size() < 3) {
+        Set<Integer> set = new HashSet<>();
+        while (set.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            computer.add(randomNumber);
+            set.add(randomNumber);
         }
-        return new Baseball(computer.stream().toList());
+        return new Baseball(set.stream().toList());
     }
 
     public Baseball buildBaseball(List<Integer> numbers) {

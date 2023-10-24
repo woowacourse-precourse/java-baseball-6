@@ -3,7 +3,6 @@ package baseball.View;
 import baseball.Domain.BaseballScore;
 import camp.nextstep.edu.missionutils.Console;
 
-// TODO: inputview랑 outputview 분리
 public class GameView {
 
     private final OutputView outputView;
