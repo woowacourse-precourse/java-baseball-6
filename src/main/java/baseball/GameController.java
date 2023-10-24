@@ -6,27 +6,27 @@ public class GameController {
     private GameView gameView;
     private GameInput gameInput;
     private GameComputing gameComputing;
-    private InputeValidator inputeValidator;
+    private InputValidator inputValidator;
 
     public GameController() {
         this.gameView = new GameView();
         this.gameInput = new GameInput();
         this.gameComputing = new GameComputing();
-        this.inputeValidator = new InputeValidator();
+        this.inputValidator = new InputValidator();
     }
 
     public void play() {
         boolean continueGame = true;
-        List<Integer> computerInput = gameComputing.getComputerInput();
+        List<Integer> computerInput = gameComputing.generateComputerInput();
         gameView.printStart();
         while (continueGame) {
             List<Integer> userInput = gameInput.getInput();
-            inputeValidator.validateInput(userInput);
+            inputValidator.validateInput(userInput);
             int result = gameComputing.compute(computerInput, userInput);
             if (result == 3) {
                 continueGame = gameView.askContinueGame();
                 if (continueGame) {
-                    computerInput = gameComputing.getComputerInput();
+                    computerInput = gameComputing.generateComputerInput();
                 }
             }
         }

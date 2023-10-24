@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameComputing {
-    public List<Integer> getComputerInput() {
+    public List<Integer> generateComputerInput() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -28,13 +28,24 @@ public class GameComputing {
                 ball++;
             }
         }
-        // 따로 빼기
+        printResult(strike, ball);
+        return strike;
+    }
+
+    public void printResult(int strike, int ball) {
         if (strike != 0 || ball != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            if (strike == 0) {
+                System.out.println(ball + "볼");
+            }
+            else if (ball == 0) {
+                System.out.println(strike + "스트라이크");
+            }
+            else {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            }
         }
         else {
             System.out.println("낫싱");
         }
-        return strike;
     }
 }
