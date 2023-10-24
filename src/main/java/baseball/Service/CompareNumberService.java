@@ -17,7 +17,7 @@ public class CompareNumberService {
         }
 
         if (strike > 0 && ball > 0) {
-            return strike + "스트라이크 " + ball + "볼";
+            return ball + "볼 " + strike + "스트라이크";
         } else if (strike > 0) {
             return strike + "스트라이크";
         } else if (ball > 0) {
