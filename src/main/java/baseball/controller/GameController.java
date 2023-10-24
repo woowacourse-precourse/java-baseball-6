@@ -26,7 +26,7 @@ public class GameController {
      * ComputerNumber 생성
      */
     private static ComputerNumber createComputerNumber() {
-        return ComputerNumber.createComputerNumber();
+        return ComputerNumber.create();
     }
 
     /**
@@ -36,7 +36,7 @@ public class GameController {
 
         OutputView.printGetInput();  //사용자로부터 값 입력 받는 문구 출력
         String input = InputView.readInput();  //사용자로부터 값을 입력 받기
-        PlayerNumber playerNumber = PlayerNumber.createPlayerNumber(input);  //PlayerNumber 객체 생성
+        PlayerNumber playerNumber = PlayerNumber.create(input);  //PlayerNumber 객체 생성
 
         //게임 결과 계산
         GameResultGenerator gameResultGenerator = new GameResultGenerator(computerNumber, playerNumber);

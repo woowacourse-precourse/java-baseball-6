@@ -12,7 +12,7 @@ public class ComputerNumber {
         this.numbers = generateNumbers();
     }
 
-    public static ComputerNumber createComputerNumber () {
+    public static ComputerNumber create() {
         return new ComputerNumber();
     }
 

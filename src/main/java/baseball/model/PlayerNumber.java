@@ -1,8 +1,5 @@
 package baseball.model;
 
-import baseball.view.InputView;
-import baseball.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +14,7 @@ public class PlayerNumber {
         this.numbers = numbers;
     }
 
-    public static PlayerNumber createPlayerNumber(String input) {
+    public static PlayerNumber create(String input) {
         validateNonNumeric(input);
         List<Integer> numbers = convertToIntegerList(input);
         validateNonZero(numbers);
