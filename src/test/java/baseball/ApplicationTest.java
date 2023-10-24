@@ -74,6 +74,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("길이 3인지 테스트")
+    void 길이_3인지_테스트() {
+        String threeNumber = "123";
+        String notThreeNumber = "1234";
+
+        assertThat(Application.isLengthThree(threeNumber)).isEqualTo(true);
+        assertThat(Application.isLengthThree(notThreeNumber)).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("문자열 숫자인지 테스트")
     void 문자열_숫자인지_테스트() {
         String digitNumber = "135";
