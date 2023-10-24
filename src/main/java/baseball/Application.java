@@ -10,8 +10,6 @@ public class Application {
         boolean playAgain = true;
         while (playAgain) {
             int[] computerNumbers = generateRandomNumbers();
-            int attempts = 0;
-
             while (true) {
                 int[] userGuess = null;
                 try {
@@ -22,8 +20,6 @@ public class Application {
                     System.out.println("게임을 종료합니다.");
                     System.exit(0); // 프로그램 종료
                 }
-                attempts++;
-
                 if (isCorrectGuess(computerNumbers, userGuess)) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
@@ -92,7 +88,7 @@ public class Application {
             for (int i = 0; i < 3; i++) {
                 char c = input.charAt(i);
                 if (c < '1' || c > '9') {
-                    throw new IllegalArgumentException("잘못된 문자입니다");
+                    throw new IllegalArgumentException("1부터 9 사이의 숫자만 입력하세요.");
                 }
                 userGuess[i] = c - '0';
             }
