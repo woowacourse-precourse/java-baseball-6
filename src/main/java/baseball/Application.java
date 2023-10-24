@@ -47,20 +47,34 @@ public class Application {
     }
 
     private static void printResults(int strikeCount, int ballCount) {
-        ArrayList<String> result = new ArrayList<>();
-        if(ballCount!=0){
-            String ballOut = ballCount + "볼";
-            result.add(ballOut);
-        }
-        if(strikeCount!=0){
-            String strikeOut = strikeCount + "스트라이크";
-            result.add(strikeOut);
-        }
-        if(ballCount==0 && strikeCount==0){
-            result.add("낫싱");
-        }
-        System.out.println(String.join(" ",result));
+        StringBuilder resultBuilder = new StringBuilder();
+        buildBallMessage(resultBuilder, ballCount);
+        buildStrikeMessage(resultBuilder, strikeCount);
+        buildNothingMessage(resultBuilder);
+
+        System.out.println(resultBuilder);
     }
+
+    private static void buildBallMessage(StringBuilder builder, int ballCount) {
+        if (ballCount > 0) {
+            builder.append(ballCount).append("볼");
+        }
+    }
+
+    private static void buildStrikeMessage(StringBuilder builder, int strikeCount) {
+        if (strikeCount > 0) {
+            builder.append(strikeCount).append("스트라이크");
+            builder.append(" ");
+        }
+    }
+
+    private static void buildNothingMessage(StringBuilder builder) {
+        if (builder.isEmpty()) {
+            builder.append("낫싱");
+        }
+    }
+
+
 
     private static int getBallCount(List<Integer> randomNumbers, List<Integer> inputNumbers) {
         int ballCount = 0;
