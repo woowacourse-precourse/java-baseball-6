@@ -10,9 +10,13 @@ public class User {
     public User() {
     }
 
-    public String inputNum() {
+    public String getNum() throws IllegalArgumentException {
         System.out.print(INPUT_NUMBER_MENT);
-        return readLine();
+        String num = readLine();
+        if(Validator.validNum(num)){
+            return num;
+        }
+        throw new  IllegalArgumentException();
     }
 
     public Boolean continueGame() {
