@@ -1,72 +1,24 @@
 package baseball.view;
 
 import baseball.model.Computer;
-import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
+import baseball.model.User;
 
 public class GameService {
     Computer computer = new Computer();
-    String userInput;
+    User user = new User();
+    String result;
     boolean finishFlag = false;
 
-    public void generateNdigitAnswer(int n) {
-        for (int i = 0; i < n; i++) {
-            computer.addDigit();
-        }
+    //사용자 입력 설정
+    public void setUserInput() {
+        user.setInput();
     }
 
-    public void printAnswer() {
-        System.out.println(computer.getAnswer());
-    }
-
-    public boolean isValidInput(String input) {
-        //3자리가 아닌 경우
-        if (input.length() != 3) {
-            return false;
-        }
-
-        boolean isDuplicated[] = new boolean[10];
-        Arrays.fill(isDuplicated, false);
-
-        for (int i = 0; i < input.length(); i++) {
-            int x = input.charAt(i) - '0';
-
-            //1과 9 사이의 숫자가 아닌 경우
-            if (x < 1 || x > 9) {
-                return false;
-            }
-
-            //서로 다른 숫자가 아닌 경우
-            if (isDuplicated[input.charAt(i) - '0']) {
-                return false;
-            }
-
-            //이미 등장한 숫자임을 표시
-            isDuplicated[input.charAt(i) - '0'] = true;
-        }
-
-        return true;
-    }
-
-    public void getUserInput() {
-        String attempt;
-        System.out.print("숫자를 입력해주세요 : ");
-        attempt = Console.readLine();
-
-        if (!isValidInput(attempt)) {
-            throw new IllegalArgumentException();
-        }
-
-        this.userInput = attempt;
-    }
-
-    public void printUserInput() {
-        System.out.println(userInput);
-    }
-
+    //볼 개수 카운트
     public static int countBall(String input, String target) {
         int ball = 0;
         for (int i = 0; i < input.length(); i++) {
+            //입력 값의 i번째 자리 값을 타켓이 i번째 자리가 아닌 다른 자리에 포함하고 있는 경우
             if (input.charAt(i) != target.charAt(i) && (target.contains(input.substring(i, i + 1)))) {
                 ball += 1;
             }
@@ -74,9 +26,11 @@ public class GameService {
         return ball;
     }
 
+    //스트라이크 개수 카운트
     public static int countStrike(String input, String target) {
         int strike = 0;
         for (int i = 0; i < input.length(); i++) {
+            //i번째 자리 값이 서로 일치하는 경우
             if (input.charAt(i) == target.charAt(i)) {
                 strike += 1;
             }
@@ -84,27 +38,30 @@ public class GameService {
         return strike;
     }
 
-    public String compare() {
-        int ball = countBall(userInput, computer.getAnswer());
-        int strike = countStrike(userInput, computer.getAnswer());
+    //비교 결과 계산
+    public void compare() {
+        int ball = countBall(user.getInput(), computer.getAnswer());
+        int strike = countStrike(user.getInput(), computer.getAnswer());
 
+        //모든 자리를 맞힌 경우
         if (strike == 3) {
+            //게임 종료
             finishFlag = true;
         }
 
         if (ball > 0 && strike > 0) {
-            return ball + "볼 " + strike + "스트라이크";
+            result = ball + "볼 " + strike + "스트라이크";
         } else if (strike > 0) {
-            return strike + "스트라이크";
+            result = strike + "스트라이크";
         } else if (ball > 0) {
-            return ball + "볼";
+            result = ball + "볼";
         } else {
-            return "낫싱";
+            result = "낫싱";
         }
     }
 
-    public void printResult() {
-        System.out.println(compare());
+    public String getResult() {
+        return result;
     }
 
     public boolean getFinishFlag() {

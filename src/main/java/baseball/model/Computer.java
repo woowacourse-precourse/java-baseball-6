@@ -3,9 +3,21 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
+    private static final int N = 3;
     private String answer = "";
 
-    //number에 겹치지 않는 수 한 자리를 추가
+    public Computer() {
+        generateAnswer();
+    }
+
+    //N자리 정답 생성
+    private void generateAnswer() {
+        for (int i = 0; i < N; i++) {
+            addDigit();
+        }
+    }
+
+    //answer에 겹치지 않는 수 한 자리를 추가
     public void addDigit() {
         boolean isDuplicated[] = new boolean[10];
         int randomNumber;
