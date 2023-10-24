@@ -15,6 +15,9 @@ public class Application {
             // 숫자 입력
             System.out.println("숫자를 입력해주세요: ");
             String playerInput = Console.readLine();
+
+            // 길이 검증
+            validateLength(playerInput);
         }
     }
 
@@ -28,5 +31,12 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    static void validateLength (String playerInput){
+        // 길이 검증
+        if (playerInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
