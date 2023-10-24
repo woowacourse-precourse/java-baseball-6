@@ -18,13 +18,16 @@ public class Game{
     private boolean restart(){
         System.out.println(ASK_RESTART_MSG);
         String UserInput = Console.readLine();
-        //예외상황
         return compareRestart(UserInput);
     }
-    private boolean compareRestart(int UserInput){
-        if(UserInput==RESTART_GAME_NUMBER) return true;
-        if(UserInput==EXIT_GAME_NUMBER) return false;
+    private boolean compareRestart(String UserInput){
+        //예외상황
+        char Input = UserInput.charAt(0);
+        if(Input==RESTART_GAME_NUMBER) return true;
+        if(Input==EXIT_GAME_NUMBER) return false;
+        return false;
     }
+
 
 //랜덤값 추출
     private List<Integer> getRandomNum(){
@@ -65,7 +68,7 @@ public class Game{
         List<Integer> inputNumber = new ArrayList<>(getInputNum());
         int ball = getCompare(targetNumber, inputNumber);
         getResult(ball, strike);
-        gameStart(strike);
+        return gameStart(strike);
     }
     private int getCompare(List<Integer> inputNumber, List<Integer> targetNumber){
         int ball;
