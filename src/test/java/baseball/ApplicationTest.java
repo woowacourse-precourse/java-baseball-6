@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -31,5 +32,18 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    public void pickNumberInRange테스트() throws Exception{
+        //given
+        int num1 = 1;
+        int num2 = 9;
+
+        //when
+        int result = Randoms.pickNumberInRange(1, 9);
+
+        //then
+        assertThat(result).isGreaterThanOrEqualTo(num1).isLessThanOrEqualTo(num2);
     }
 }
