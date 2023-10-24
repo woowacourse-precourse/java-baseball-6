@@ -24,7 +24,7 @@ public class baseballView {
         System.out.println(result);
     }
 
-    public void closeConsole() {
+    public void closeConsole() { //게임 종료 -> 콘솔 종료
         Console.close();
     }
 }

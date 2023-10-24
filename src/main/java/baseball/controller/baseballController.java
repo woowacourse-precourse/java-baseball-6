@@ -7,6 +7,8 @@ import java.util.HashSet;
 
 public class baseballController {
 
+    int endValue = 2;
+    String endComment = "게임 종료";
     String exceptionComment = "자릿수가 서로 다른 세 자리의 숫자를 입력해주세요. 예 : 213";
     baseballView view = new baseballView();
     baseballModel model = new baseballModel();
@@ -21,7 +23,7 @@ public class baseballController {
             playBall();
 
             int endFlag = Integer.parseInt(view.endConsole());
-            if (endFlag == 2) {
+            if (endFlag == endValue) {
                 flag = false;
             }
         }
@@ -38,7 +40,7 @@ public class baseballController {
             String result = model.stringResult();
             view.resultConsole(result);
 
-            if (result.contains("게임 종료")) {
+            if (result.contains(endComment)) {
                 break;
             }
         }

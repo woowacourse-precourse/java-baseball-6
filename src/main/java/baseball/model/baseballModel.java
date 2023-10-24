@@ -7,6 +7,7 @@ import java.util.List;
 
 public class baseballModel {
 
+    int digit = 3;
     String STRIKE = "스트라이크";
     String Ball = "볼";
     String Nothing = "낫싱";
@@ -16,7 +17,7 @@ public class baseballModel {
 
     public void computerNumber() { //컴퓨터가 생성하는 서로 다른 세 자리의 숫자
         computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < digit) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -29,7 +30,7 @@ public class baseballModel {
         ball = 0;
         strike = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < digit; i++) {
             list.add(Integer.parseInt(String.valueOf(insert.charAt(i))));
         }
 
@@ -55,8 +56,8 @@ public class baseballModel {
         if (strike != 0) {
             sb.append(strike).append("스트라이크").append("\n");
         }
-        if (strike == 3) {
-            sb.append(3).append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (strike == digit) {
+            sb.append(digit).append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
         return String.valueOf(sb);
