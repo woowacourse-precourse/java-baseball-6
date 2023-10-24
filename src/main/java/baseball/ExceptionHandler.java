@@ -51,7 +51,7 @@ public class ExceptionHandler {
     }
 
     public static boolean isValidContinueCommand(String str) {
-        return str.equals(gameContinue) || str.equals(gameStop);
+        return str.equals(SystemMessage.GAMECONTINUE.get()) || str.equals(SystemMessage.GAMESTOP.get());
     }
 
     public static void raiseContinueCommandException(String continueCommand){

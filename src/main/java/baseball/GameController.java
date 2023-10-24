@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
     public GameController(){
-        System.out.println(startGameMessage);
+        System.out.println(SystemMessage.STARTGAME.get());
     }
     void runGame(){
         while (true) {
@@ -15,13 +15,13 @@ public class GameController {
         }
     }
     boolean askGameContinue(){
-        System.out.println(continueGameMessage);
+        System.out.println(SystemMessage.CONTINUEGAME.get());
 
         String continueCommand = Console.readLine();
         ExceptionHandler.raiseContinueCommandException(continueCommand);
 
-        if (continueCommand.equals(gameStop)) {
-            System.out.println(endGameMessage);
+        if (continueCommand.equals(SystemMessage.GAMESTOP.get())) {
+            System.out.println(SystemMessage.ENDGAMEM.get());
             return true;
         }
         return false;

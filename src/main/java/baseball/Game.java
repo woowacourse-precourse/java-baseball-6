@@ -13,14 +13,14 @@ public class Game {
 
     public void play() {
         while (true) {
-            System.out.print(inputRequestMessage);
+            System.out.print(SystemMessage.INPUTREQUEST.get());
 
             String userNumber = this.user.play();
             ExceptionHandler.raiseException(userNumber);
 
             String computerResponse = this.computer.play(userNumber);
             System.out.println(computerResponse);
-            if (computerResponse.equals(hintAllStrikeMessage)) {
+            if (computerResponse.equals(HintMessage.ALLSTRIKE.get())) {
                 return;
             }
         }

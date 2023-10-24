@@ -38,17 +38,17 @@ public class GameRule {
 
     public static String hintProvider(int cntB, int cntS) {
         if (cntS == 3) {
-            return hintAllStrikeMessage;
+            return HintMessage.ALLSTRIKE.get();
         }
         if (cntB == 0 && cntS == 0) {
-            return hintNothingMessage;
+            return HintMessage.NOTHINGMESSAGE.get();
         }
         if (cntB == 0) {
-            return hintStrikeMessageFormat.formatted(cntS);
+            return HintMessage.STRIKEFORMAT.get().formatted(cntS);
         }
         if (cntS == 0) {
-            return hintBallMessageFormat.formatted(cntB);
+            return HintMessage.BALLFORMAT.get().formatted(cntB);
         }
-        return hintBallStrikeMessageFormat.formatted(cntB, cntS);
+        return HintMessage.BALLSTRIKFORMAT.get().formatted(cntB, cntS);
     }
 }
