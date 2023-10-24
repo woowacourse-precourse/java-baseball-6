@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumber {
+public class Computer {
     private final List<Integer> numArr;
 
-    public ComputerNumber() {
+    private Computer() {
         List<Integer> numArr = new ArrayList<>();
         while (numArr.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,11 +18,12 @@ public class ComputerNumber {
         }
         this.numArr = numArr;
     }
-    public int getDigitNum(int digit){
-        return numArr.get(digit);
+
+    public static Computer of(){
+        return new Computer();
     }
 
-    public Result compareToUser(UserNumber user){
+    public Result compareToUser(User user){
         Result result = new Result(0,0);
         for(int i = 0; i < 3; i++){
             if(numArr.get(i) == user.getDigitNum(i)){
