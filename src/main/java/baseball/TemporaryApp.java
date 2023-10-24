@@ -1,16 +1,12 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
+
 import controller.BaseballGameStart;
-
-
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Objects;
+import view.InputView;
+import view.OutputView;
 
 import static controller.RestartCheck.offerRestartOrQuit;
 
-public class Application {
+public class TemporaryApp {
     public static void main(String[] args) {
         boolean isGameStarted = true;
         BaseballGameStart baseballGameStart = new BaseballGameStart();
@@ -19,5 +15,4 @@ public class Application {
             isGameStarted = offerRestartOrQuit();
         }
     }
-
 }
