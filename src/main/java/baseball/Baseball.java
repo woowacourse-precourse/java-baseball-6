@@ -40,6 +40,11 @@ public class Baseball {
         int strikeNum=result[0];
         int ballNum=result[1];
 
+        if(strikeNum==0 && ballNum==0) {
+            System.out.print("낫싱");
+            return;
+        }
+
         if(strikeNum!=0) System.out.print(strikeNum+"스트라이크 ");
         if(ballNum!=0) System.out.println(ballNum+"볼");
 
@@ -58,6 +63,7 @@ public class Baseball {
 
         return new int[]{strikeNum,ballNum};
     }
+
     public void playBaseball(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.println(computerNum);
