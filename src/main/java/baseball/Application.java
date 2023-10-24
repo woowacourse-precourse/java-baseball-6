@@ -17,7 +17,32 @@ public class Application {
     public static GameState startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        return GameState.EXIT;
+        int computer = generateRandomNumber();
+        Set<Integer> computerSet = new HashSet<>(Utils.parseDigits(computer));
+
+        while(true) {
+            int user = 0, strike = 0, ball = 0;
+            try {
+                user = getUserInput();
+            } catch (Exception e) {
+                throw new IllegalArgumentException(e.getMessage());
+            }
+
+            Set<Integer> userSet = new HashSet<>(Utils.parseDigits(user));
+
+            strike = countStrikes(computer, user, computerSet, userSet);
+            ball = countBalls(computerSet, userSet);
+
+            System.out.println(Utils.reportMessage(strike,ball));
+
+            if (strike == NUMBER_COUNT) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (continuePlaying()) {
+                    return GameState.RESTART;
+                }
+                return GameState.EXIT;
+            }
+        }
     }
 
 
