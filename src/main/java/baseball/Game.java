@@ -11,16 +11,16 @@ public class Game {
     private static final String VICTORY_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
     private static final int RESTART = 1;
     private static final int END = 2;
 
     private static final int NUMBER_LEN = 3;
 
     public Game() {
-        computer = new Computer();
-        user = new User();
-        hint = new Hint();
-        continueGame = true;
+        initGame();
+        System.out.println(START_MESSAGE);
     }
 
     private void initGame() {
