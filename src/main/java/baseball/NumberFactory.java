@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.*;
+
 public class NumberFactory {
 
     public static List<Integer> createByComputer(NumberGameConfiguration numberGameConfiguration) {
@@ -27,7 +29,7 @@ public class NumberFactory {
     }
 
     public static List<Integer> createByUser() {
-        System.out.print(Message.GUESS_NUMBER_REQUEST_MESSAGE);
+        System.out.print(UserRequestMessage.GUESS_NUMBER_REQUEST_MESSAGE);
         String userInput = Console.readLine();
         List<Integer> userNumbers = parseUserInput(userInput);
 
