@@ -2,35 +2,12 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
-import baseball.util.GameConstants;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    private Computer computer;
+    public GameResult checkGuessNumbers(List<Integer> playerNums, Computer computer) {
+        GameResult gameResult = new GameResult();
 
-    public void assignComputerNums() {
-        List<Integer> computerNums = generateRandomNums();
-        computer = new Computer(computerNums);
-    }
-
-    public List<Integer> generateRandomNums() {
-        List<Integer> randomNums = new ArrayList<>();
-
-        while (randomNums.size() < GameConstants.DIGIT_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_RANGE_NUMBER,
-                    GameConstants.MAX_RANGE_NUMBER);
-
-            if (!randomNums.contains(randomNumber)) {
-                randomNums.add(randomNumber);
-            }
-        }
-
-        return randomNums;
-    }
-
-    public void checkGuessNumbers(List<Integer> playerNums, GameResult gameResult) {
         for (int i = 0; i < playerNums.size(); i++) {
             int comparisonNumber = playerNums.get(i);
 
@@ -46,5 +23,7 @@ public class GameService {
                 gameResult.increaseBallCount();
             }
         }
+
+        return gameResult;
     }
 }
