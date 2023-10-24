@@ -1,7 +1,6 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class Computer {
     private List<Integer> computerNumbers;
 
     public List<Integer> generateComputerNumbers() {
-        List<Integer> computerNumbers = new ArrayList<>();
+        this.computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < BALL_NUMBER_LENGTH) {
             int randomNumber = randomNumberGenerator();
