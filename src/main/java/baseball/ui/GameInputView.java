@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameInput {
-    private GameInput() {
+public class GameInputView {
+    private GameInputView() {
     }
 
     public static List<Integer> userNumberInput() {

@@ -1,9 +1,9 @@
 package baseball;
 
-import static baseball.ui.GameOutput.showGameContinueInputMessage;
-import static baseball.ui.GameOutput.showStartMessage;
+import static baseball.ui.GameOutputView.showGameContinueInputMessage;
+import static baseball.ui.GameOutputView.showStartMessage;
 
-import baseball.ui.GameInput;
+import baseball.ui.GameInputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class Application {
             gameRunner.runGameLoop();
 
             showGameContinueInputMessage();
-            continueGame = GameInput.getContinueInput();
+            continueGame = GameInputView.getContinueInput();
         }
     }
 }

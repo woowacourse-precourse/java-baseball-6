@@ -1,10 +1,10 @@
 package baseball;
 
 import static baseball.domain.GameRules.*;
-import static baseball.ui.GameOutput.*;
+import static baseball.ui.GameOutputView.*;
 
 import baseball.domain.RandomNumberGenerator;
-import baseball.ui.GameInput;
+import baseball.ui.GameInputView;
 import java.util.List;
 
 public class GameRunner {
@@ -23,7 +23,7 @@ public class GameRunner {
 
     private boolean playGame() {
         showNumberInputMessage();
-        List<Integer> userNumber = GameInput.userNumberInput();
+        List<Integer> userNumber = GameInputView.userNumberInput();
 
         int strike = countStrike(userNumber, computerNumber);
         int ball = countBall(userNumber, computerNumber) - strike;

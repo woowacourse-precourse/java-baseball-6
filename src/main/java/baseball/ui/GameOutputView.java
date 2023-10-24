@@ -4,8 +4,8 @@ import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 
 import baseball.constant.GameStatus;
 
-public class GameOutput {
-    private GameOutput() {
+public class GameOutputView {
+    private GameOutputView() {
     }
 
     public static void showStartMessage() {
