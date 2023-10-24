@@ -42,7 +42,7 @@ public class GameRunnerTest {
     void 숫자_입력_예외발생_테스트_0입력() {
         String invalidInput = "012";
         assertThatThrownBy(() -> {
-            Validator.numberInput(invalidInput);
+            InputValidator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -50,7 +50,7 @@ public class GameRunnerTest {
     void 숫자_입력_예외발생_테스트_문자() {
         String invalidInput = "dqe";
         assertThatThrownBy(() -> {
-            Validator.numberInput(invalidInput);
+            InputValidator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -58,7 +58,7 @@ public class GameRunnerTest {
     void 숫자_입력_예외발생_테스트_3자리_이상() {
         String invalidInput = "3125";
         assertThatThrownBy(() -> {
-            Validator.numberInput(invalidInput);
+            InputValidator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -66,7 +66,7 @@ public class GameRunnerTest {
     void 숫자_입력_예외발생_테스트_중복() {
         String invalidInput = "114";
         assertThatThrownBy(() -> {
-            Validator.numberInput(invalidInput);
+            InputValidator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -74,7 +74,7 @@ public class GameRunnerTest {
     void 재시작_입력_예외발생_테스트_3입력() {
         String invalidInput = "3";
         assertThatThrownBy(() -> {
-            Validator.continueInput(invalidInput);
+            InputValidator.continueInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -82,7 +82,7 @@ public class GameRunnerTest {
     void 재시작_입력_예외발생_테스트_빈칸입력() {
         String invalidInput = "";
         assertThatThrownBy(() -> {
-            Validator.continueInput(invalidInput);
+            InputValidator.continueInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -90,7 +90,7 @@ public class GameRunnerTest {
     void 재시작_입력_예외발생_테스트_문자() {
         String invalidInput = "ㅇ";
         assertThatThrownBy(() -> {
-            Validator.continueInput(invalidInput);
+            InputValidator.continueInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class Validator {
-    private Validator() {
+public class InputValidator {
+    private InputValidator() {
     }
 
     public static void numberInput(String inputString) throws IllegalArgumentException {

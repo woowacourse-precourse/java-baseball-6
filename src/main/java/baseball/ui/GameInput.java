@@ -1,7 +1,7 @@
 package baseball.ui;
 
 import baseball.constant.GameStatus;
-import baseball.domain.Validator;
+import baseball.domain.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ public class GameInput {
 
     public static List<Integer> userNumberInput() {
         String inputString = Console.readLine();
-        Validator.numberInput(inputString);
+        InputValidator.numberInput(inputString);
 
         return inputString.chars()
                 .map(Character::getNumericValue)
@@ -22,7 +22,7 @@ public class GameInput {
 
     public static boolean getContinueInput() {
         String inputContinue = Console.readLine();
-        Validator.continueInput(inputContinue);
+        InputValidator.continueInput(inputContinue);
         return inputContinue.equals(GameStatus.CONTINUE.getStatus());
     }
 }
