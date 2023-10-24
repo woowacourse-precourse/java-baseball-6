@@ -3,7 +3,6 @@ package baseball.model;
 import baseball.constant.ErrorMessage;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 public enum Command {
 
@@ -30,7 +29,7 @@ public enum Command {
         if (Command.RESTART.equals(command)) {
             return true;
         }
-        throw new NoSuchElementException(ErrorMessage.INVALID_COMMAND);
+        throw new IllegalArgumentException(ErrorMessage.INVALID_COMMAND);
     }
 
     @Override

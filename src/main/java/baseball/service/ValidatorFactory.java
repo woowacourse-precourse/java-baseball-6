@@ -27,10 +27,14 @@ public class ValidatorFactory {
         if (validators.isEmpty()) {
             init();
         }
-        return validators.stream()
-                .filter(validator -> validator.support(target))
-                .findAny()
-                .orElseThrow(IllegalArgumentException::new);
-        //TODO: 적절한 예외 처리
+        try {
+            return validators.stream()
+                    .filter(validator -> validator.support(target))
+                    .findAny()
+                    .orElseThrow(UnsupportedClassVersionError::new);
+        } catch (UnsupportedClassVersionError e) {
+            clear();
+            throw new IllegalArgumentException();
+        }
     }
 }
