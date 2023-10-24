@@ -16,10 +16,26 @@ public class Application {
 
     public static GameState startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         return GameState.EXIT;
     }
 
+
+    private static int generateRandomNumber() {
+        int result = 0;
+
+        // 중복 되지 않은 3개의 무작위 수 생성
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        result = Utils.listToInt(computer);
+
+        return result;
+    }
 
     private static int getUserInput() {
         int result = 0;
@@ -58,6 +74,29 @@ public class Application {
         }
 
         return result;
+    }
+
+    private static int countStrikes(int leftNumber, int rightNumber, Set<Integer> leftSet, Set<Integer> rightSet) {
+        int result = 0;
+
+        List<Integer> leftIntegers = Utils.parseDigits(leftNumber);
+        List<Integer> rightIntegers = Utils.parseDigits(rightNumber);
+
+        for (int i=0; i<leftIntegers.size(); i++) {
+            if (Objects.equals(leftIntegers.get(i), rightIntegers.get(i))) {
+                leftSet.remove(leftIntegers.get(i));
+                rightSet.remove(rightIntegers.get(i));
+                result += 1;
+            }
+        }
+
+        return result;
+    }
+    private static int countBalls(Set<Integer> leftSet, Set<Integer>rightSet) {
+        Set<Integer> cloneSet = new HashSet<>(leftSet);
+        cloneSet.retainAll(rightSet);
+
+        return cloneSet.size();
     }
 
 
