@@ -7,8 +7,8 @@ import java.util.List;
 
 public class baseballModel {
 
-    int digit = 3;
-    String STRIKE = "스트라이크";
+    int Digit = 3;
+    String Strike = "스트라이크";
     String Ball = "볼";
     String Nothing = "낫싱";
     String Result = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -17,7 +17,7 @@ public class baseballModel {
 
     public void computerNumber() { //컴퓨터가 생성하는 서로 다른 세 자리의 숫자
         computer = new ArrayList<>();
-        while (computer.size() < digit) {
+        while (computer.size() < Digit) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -30,7 +30,7 @@ public class baseballModel {
         ball = 0;
         strike = 0;
 
-        for (int i = 0; i < digit; i++) {
+        for (int i = 0; i < Digit; i++) {
             list.add(Integer.parseInt(String.valueOf(insert.charAt(i))));
         }
 
@@ -47,17 +47,17 @@ public class baseballModel {
     public String stringResult() { //입력한 수에 대한 결과 출력
         StringBuilder sb = new StringBuilder();
         if (strike == 0 && ball == 0) { //하나도 없는 경우
-            return "낫싱";
+            return Nothing;
         }
 
         if (ball != 0) {
-            sb.append(ball).append("볼").append(" ");
+            sb.append(ball).append(Ball).append(" ");
         }
         if (strike != 0) {
-            sb.append(strike).append("스트라이크").append("\n");
+            sb.append(strike).append(Strike).append("\n");
         }
-        if (strike == digit) {
-            sb.append(digit).append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (strike == Digit) {
+            sb.append(Digit).append(Result);
         }
 
         return String.valueOf(sb);
