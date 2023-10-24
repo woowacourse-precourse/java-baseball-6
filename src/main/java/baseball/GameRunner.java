@@ -12,7 +12,7 @@ public class GameRunner {
         computer = new Computer();
     }
 
-    public void start() {
+    public void start() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startNewGame();
 
@@ -21,7 +21,7 @@ public class GameRunner {
         }
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws IllegalArgumentException {
         computer.generateAnswer();
 
         while (true){
@@ -35,12 +35,13 @@ public class GameRunner {
 
     }
 
-    private boolean askToStartNewGame() {
-        return switch (player.askToStartNewGame().intValue()) {
+    private boolean askToStartNewGame() throws IllegalArgumentException{
+        Integer userResponse = player.askToStartNewGame();
+
+        return switch (userResponse) {
             case 1 -> true;
             case 2 -> false;
-            // TODO Exception 처리
-            default -> false;
+            default -> throw new IllegalArgumentException(); // unreachable
         };
     }
 }
