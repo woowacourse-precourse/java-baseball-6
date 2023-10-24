@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Constant.BALL;
+import static baseball.Constant.LINE_SEPARATOR;
 import static baseball.Constant.MAX_NUMBER_LENGTH;
 import static baseball.Constant.NOTHING;
 import static baseball.Constant.STRIKE;
@@ -31,7 +32,7 @@ public class GameResult {
         if (strikeCount > 0) {
             resultBuilder.append(strikeCount).append(STRIKE);
         }
-        return resultBuilder.append("\n").toString();
+        return resultBuilder.append(LINE_SEPARATOR).toString();
     }
 
     private boolean isNothing() {
