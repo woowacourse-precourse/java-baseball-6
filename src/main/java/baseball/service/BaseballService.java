@@ -3,7 +3,6 @@ package baseball.service;
 import baseball.dto.StrikeBallCount;
 import baseball.util.ComputerBallGenerator;
 import baseball.util.InputCalculator;
-import baseball.util.OutputCalculator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -24,14 +23,16 @@ public class BaseballService {
 
         int[] computerBall = ComputerBallGenerator.generateComputerBall();
 
+        boolean isCorrect = false;
+
         do {
             List<Integer> userInput = InputView.userInputNumber();
 
             StrikeBallCount strikeBallCount = InputCalculator.compareComputerBallAndUserInput(computerBall, userInput);
 
-            OutputView.generateResultMessage(strikeBallCount);
+            isCorrect = OutputView.generateResultMessage(strikeBallCount);
 
-        } while (gameEnd());
+        } while (!isCorrect);
 
 
     }
