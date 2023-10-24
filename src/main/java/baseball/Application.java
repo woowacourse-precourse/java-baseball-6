@@ -25,6 +25,8 @@ public class Application {
             }
         }
 
+
+
         List<Integer> userAnswers = new ArrayList<>();
 
         String input = Console.readLine();
@@ -42,6 +44,14 @@ public class Application {
                 int number = Character.getNumericValue(input.charAt(i));
 
                 userAnswers.add(number);
+
+            }
+
+            long distinctNumber = userAnswers.stream().distinct().count();
+
+            if (distinctNumber != 3) {
+
+                throw new IllegalArgumentException("입력 값은 서로 다른 숫자여야 합니다.");
 
             }
 
