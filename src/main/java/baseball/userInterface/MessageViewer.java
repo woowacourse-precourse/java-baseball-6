@@ -19,18 +19,16 @@ public class MessageViewer {
     public static void printResultMsg(int ballCount, int strikeCount) {
         StringBuilder resultMsg = new StringBuilder();
 
-        if (ballCount == 0 && strikeCount == 0)
+        if (ballCount == 0 && strikeCount == 0) {
             resultMsg.append("낫싱");
-
-        else if (ballCount > 0 && strikeCount > 0)
+        } else if (ballCount > 0 && strikeCount > 0) {
             resultMsg.append(ballCount).append("볼 ")
                     .append(strikeCount).append("스트라이크");
-
-        else if (ballCount > 0)
+        } else if (ballCount > 0) {
             resultMsg.append(ballCount).append("볼");
-
-        else if (strikeCount > 0)
+        } else if (strikeCount > 0) {
             resultMsg.append(strikeCount).append("스트라이크");
+        }
 
         System.out.println(resultMsg);
     }

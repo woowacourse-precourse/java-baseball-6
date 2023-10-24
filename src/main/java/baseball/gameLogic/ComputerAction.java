@@ -22,8 +22,9 @@ public class ComputerAction {
             int randomNumber = RandomNumberGenerator.pickRandomNaturalNumber();
             List<Integer> randomNumberList = showNumberList();
 
-            if (!randomNumberList.contains(randomNumber))
+            if (!randomNumberList.contains(randomNumber)) {
                 computer.saveNumber(randomNumber);
+            }
         }
     }
 

@@ -26,10 +26,11 @@ public class NumberChecker {
         int strikeCount = 0;
 
         for (int index = 0; index < ANSWER_LENGTH; index++) {
-            if (isStrike(index))
+            if (isStrike(index)) {
                 strikeCount++;
-            else if (isBall(index))
+            } else if (isBall(index)) {
                 ballCount++;
+            }
         }
 
         return new Score(ballCount, strikeCount);
