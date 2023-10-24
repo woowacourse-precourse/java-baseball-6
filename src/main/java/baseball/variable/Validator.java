@@ -34,8 +34,4 @@ public class Validator {
 
         return numSet.size() != number.size();
     }
-
-    // 숫자가 세 자리가 아닌 경우
-    // 숫자에 0이 포함된 경우
-    // 입력 문자가 중복인 경우
 }
