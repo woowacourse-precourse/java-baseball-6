@@ -9,40 +9,36 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Scanner scanner = new Scanner(System.in);
+        String target = generateRandomNumber();
 
         while (true) {
-            String target = generateRandomNumber();
-
-            System.out.println("숫자 야구 게임을 시작합니다.");
-
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                String guess = scanner.nextLine().trim();
+                String guess = scanner.nextLine();
 
-                if (guess.isEmpty()) {
-                    System.out.println("낫싱");
-                    continue;
-                }
+                if (isValidInput(guess)) {
+                    GuessResult result = evaluateGuess(target, guess);
 
-                if (!isValidInput(guess)) {
+                    if (result.strikes == 3) {
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                        break;
+                    } else if (result.balls == 0 && result.strikes == 0) {
+                        System.out.println("낫싱");
+                    } else {
+                        System.out.println(result.balls + "볼 " + result.strikes + "스트라이크");
+                    }
+                } else {
                     scanner.close();
                     throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
-                }
-
-                GuessResult result = evaluateGuess(target, guess);
-
-                if (result.strikes == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다!");
-                    break;
-                } else {
-                    System.out.println(result.balls + "볼 " + result.strikes + "스트라이크");
                 }
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = scanner.nextLine().trim();
 
-            if (!"1".equals(choice)) {
+            if ("1".equals(choice)) {
+                target = generateRandomNumber(); // 재시작을 위해 새로운 숫자 생성
+            } else {
                 System.out.println("게임을 종료합니다.");
                 break;
             }
