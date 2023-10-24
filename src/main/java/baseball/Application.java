@@ -69,9 +69,7 @@ public class Application {
 
         checkInputValidation(input);
         int strikeCnt = countStrike(answer, input);
-        int ballCnt = countBall(answer, input);
-
-        ballCnt -= strikeCnt;
+        int ballCnt = countBall(answer, input) - strikeCnt;
 
         if(strikeCnt == 0 && ballCnt ==0) {
             System.out.println("낫싱");
@@ -90,16 +88,15 @@ public class Application {
     }
 
     public void confirmGameEnd(String choice) {
-
         switch (choice) {
             case "1" -> { onOff = true; }
-            case "2" -> {break;}
-            default -> {checkExitChoiceValidation();}
+            case "2" -> { break; }
+            default -> { checkExitChoiceValidation(choice); }
         }
     }
     public void checkInputValidation(String input) {
         convertToList(input);
-        if (input.length() != 3) {
+        if (input.length() != 3 || !input.matches("\\d+")) {
             throw new IllegalArgumentException();
         }
         char[] digits = input.toCharArray();
@@ -111,8 +108,10 @@ public class Application {
             }
         }
     }
-    public void checkExitChoiceValidation() {
-        throw new IllegalArgumentException();
+    public void checkExitChoiceValidation(String input) {
+        if(!input.equals("1") && !input.equals("2") ) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void main(String[] args) {
@@ -126,8 +125,7 @@ public class Application {
                 application.showBaseballOutcome(answer, input);
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String choice = Console.readLine();
-            application.confirmGameEnd(choice);
+            application.confirmGameEnd(Console.readLine());
         }
     }
 }

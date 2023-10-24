@@ -47,3 +47,7 @@
 1. countCommonNumbers() 메소드 이름을 countBall() 로 변경
 2. compareDigitNumbers() 메소드 이름을 countStrike() 로 변경
 3. String 변수를 arrayList로 변환하는 convertToList() 메소드 추가 구현
+4. 게임을 진행하는 playNumberBaseballGame() 메소드 추가 구현
+ 
+### 4. 수정사항
+1. checkInputValidation() 메소드의 테스트 코드 실패 후, 예외처리 1번 경우에 대한 로직 수정
