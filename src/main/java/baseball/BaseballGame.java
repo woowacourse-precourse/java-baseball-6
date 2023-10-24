@@ -11,7 +11,7 @@ public class BaseballGame {
         gameInfo.createRandomNumber(gameController.createRandomDistinctThreeDigit());
         while (gameInfo.getStrike() < 3) {
             String userInput = gameController.getUserInput();
-            gameController.countStrikeOrBall(gameInfo, userInput);
+            gameController.countStrikeAndBall(gameInfo, userInput);
             gameController.printResultMessageForInput(gameInfo.getBall(), gameInfo.getStrike());
         }
         gameController.controlRestartOrExit();

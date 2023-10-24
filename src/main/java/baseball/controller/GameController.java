@@ -29,8 +29,8 @@ public class GameController {
         return userInput;
     }
 
-    public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
-        gameService.countStrikeOrBall(gameInfo, userInput);
+    public void countStrikeAndBall(GameInfo gameInfo, String userInput) {
+        gameService.countStrikeAndBall(gameInfo, userInput);
     }
 
     public void printResultMessageForInput(int ballCount, int strikeCount) {

@@ -27,7 +27,7 @@ public class GameService {
         return randomNumbers;
     }
 
-    public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
+    public void countStrikeAndBall(GameInfo gameInfo, String userInput) {
         List<Integer> randomNumbers = gameInfo.getRandomNumbers();
         List<Integer> userInputs = stringToList(userInput);
         int strikeCount = (int) IntStream.range(0, userInputs.size())
