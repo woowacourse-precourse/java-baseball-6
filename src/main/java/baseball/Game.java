@@ -8,5 +8,10 @@ public class Game {
     private int strike;
     private int ball;
 
+    public Game(Oppoent oppoent){
+        this.oppoent = oppoent;
+        this.strike = 0;
+        this.ball = 0;
+    }
 
 }
