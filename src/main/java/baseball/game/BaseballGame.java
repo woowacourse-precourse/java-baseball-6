@@ -9,6 +9,7 @@ import java.util.List;
 
 public class BaseballGame {
     private final UserIOHandler userIOHandler = new UserIOHandler();
+    private final BaseballScoreEvaluator scoreEvaluator = new BaseballScoreEvaluator();
     private List<Integer> generatedNumbers;
     private GameState currentGameState = GameState.RUNNING;
 
@@ -42,6 +43,13 @@ public class BaseballGame {
         List<Integer> userGuessNumbers = userIOHandler.validateAndParseUserInput(userInput);
         Score currentScore = scoreEvaluator.evaluate(generatedNumbers, userGuessNumbers);
         determineGameStatusBasedOnScore(currentScore);
+    }
+
+    private void determineGameStatusBasedOnScore(Score currentScore) {
+        userIOHandler.displayRoundOutcome(currentScore);
+        if (currentScore.isGameWon()) {
+            currentGameState = GameState.ROUND_WON;
+        }
     }
 
 
