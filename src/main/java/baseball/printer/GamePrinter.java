@@ -15,27 +15,27 @@ public class GamePrinter {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public static void printRequireNumberMessage(){
+    public static void printRequireNumberMessage() {
         System.out.print(REQUIRE_USER_BASEBALL_MESSAGE);
     }
 
-    public static void printRoundResult(RoundResult roundResult){
-        if(roundResult.isNothing()){
+    public static void printRoundResult(RoundResult roundResult) {
+        if(roundResult.isNothing()) {
             System.out.println(NOTHING_MESSAGE);
-        } else if(roundResult.isOnlyStrike()){
+        } else if(roundResult.isOnlyStrike()) {
             System.out.println(roundResult.getStrikeCount() + STRIKE_MESSAGE);
-        } else if(roundResult.isOnlyBall()){
+        } else if(roundResult.isOnlyBall()) {
             System.out.println(roundResult.getBallCount() + BALL_MESSAGE);
         } else if(roundResult.isBothOccured()) {
             System.out.println(roundResult.getBallCount() +  BALL_MESSAGE + " " + roundResult.getStrikeCount() + STRIKE_MESSAGE);
         }
     }
 
-    public static void printWinMessage(){
+    public static void printWinMessage() {
         System.out.println(WIN_ROUND_MESSAGE);
     }
 
-    public static void printReGameMessage(){
+    public static void printReGameMessage() {
         System.out.println(RE_GAME_MESSAGE);
     }
 }

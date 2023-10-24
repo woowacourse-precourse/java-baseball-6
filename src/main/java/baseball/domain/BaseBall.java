@@ -11,17 +11,17 @@ public class BaseBall {
         this.number = number;
     }
 
-    private void validateRange(int number){
+    private void validateRange(int number) {
         if(number < MIN_NUMBER || number > MAX_NUMBER){
             throw new IllegalArgumentException("1부터 9사이의 숫자를 입력홰야합니다.");
         }
     }
 
-    public static BaseBall toAnswerBaseBall(int number){
+    public static BaseBall toAnswerBaseBall(int number) {
         return new BaseBall(number);
     }
 
-    public static BaseBall toUserBaseBall(String input){
+    public static BaseBall toUserBaseBall(String input) {
         try{
             Integer.parseInt(input);
         } catch (NumberFormatException e){
@@ -31,7 +31,7 @@ public class BaseBall {
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if(object instanceof BaseBall){
             return this.number == ((BaseBall) object).number;
         }
@@ -39,7 +39,7 @@ public class BaseBall {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return this.number;
     }
 }

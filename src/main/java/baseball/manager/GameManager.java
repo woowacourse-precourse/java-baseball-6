@@ -12,7 +12,7 @@ public class GameManager {
     public GameManager(){
     }
 
-    public void play(){
+    public void play() {
         GamePrinter.printStartMessage();
         do {
             createAnswers();
@@ -21,11 +21,11 @@ public class GameManager {
         } while(new ReGameCommand(Console.readLine()).equals(new ReGameCommand(ReGameCommand.RESTART)));
     }
 
-    private void createAnswers(){
+    private void createAnswers() {
         this.answers = BaseBalls.getAnswerBaseBallNumbers();
     }
 
-    private void round(){
+    private void round() {
         RoundResult roundResult = null;
         do {
             GamePrinter.printRequireNumberMessage();
