@@ -10,6 +10,7 @@ import Entity.GameNumber;
 import Entity.GameResult;
 import Entity.GameScore;
 import Entity.Status;
+import Manager.InputManager;
 import Manager.PrintManager;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -31,18 +32,13 @@ public class Application {
         }
     }
 
-    public static void initialize() {
-        gameNumber = new GameNumber();
-        gameScore = new GameScore();
-    }
-
     public static void startBaseballGame() {
-        PrintManager.printStatus(Status.GAME_START, NEW_LINE);
+        PrintManager.showStatus(Status.GAME_START, NEW_LINE);
 
         do {
             playGame();
         }
-        while (inputContinueOrExit());
+        while (isRestart());
     }
 
     public static void playGame() {
@@ -50,8 +46,12 @@ public class Application {
         while (gameScore.getStrike() != MAX_STRIKE) {
             inputUserNumber();
             calculateScore();
-            printGameResult();
         }
+    }
+
+    public static void initialize() {
+        gameNumber = new GameNumber();
+        gameScore = new GameScore();
     }
 
     public static void createComputerNumber() {
@@ -67,18 +67,14 @@ public class Application {
     }
 
     public static void inputUserNumber() {
-        PrintManager.printStatus(Status.INPUT_NUMBER, !NEW_LINE);
-        String inputNumber = Console.readLine();
+        PrintManager.showStatus(Status.INPUT_NUMBER, !NEW_LINE);
 
-        List<Integer> userNumber = inputNumber.chars()
-                .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList());
-
+        String inputNumber = InputManager.getString();
+        List<Integer> userNumber = InputManager.parseInput(inputNumber);
         gameNumber.setUser(userNumber);
 
         boolean isValidate = gameNumber.validateUserNumber();
-        if (isValidate == false) {
+        if (!isValidate) {
             throw new IllegalArgumentException();
         }
     }
@@ -86,15 +82,13 @@ public class Application {
     public static void calculateScore() {
         gameScore.reset();
         gameScore.calculateScore(gameNumber);
+
+        PrintManager.showGameResult(gameScore.getBall(), gameScore.getStrike());
     }
 
-    public static void printGameResult() {
-        PrintManager.printGameResult(gameScore.getBall(), gameScore.getStrike());
-    }
-
-    public static boolean inputContinueOrExit() {
-        PrintManager.printStatus(Status.RESTART_OR_EXIT, NEW_LINE);
-        int inputNumber = Integer.parseInt(Console.readLine());
+    public static boolean isRestart() {
+        PrintManager.showStatus(Status.RESTART_OR_EXIT, NEW_LINE);
+        int inputNumber = InputManager.getInt();
 
         if (inputNumber == RESTART) {
             gameScore.reset();
