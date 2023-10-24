@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
+    static final int MAINTAIN_GAME = 0;
+    static final int RESTART_GAME = 1;
+
     public static List<Integer> makeRandomNumberList() {
         List<Integer> computer = new ArrayList<>();
         int randomNumber = 0;
@@ -17,7 +20,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
+
         return computer;
     }
 
@@ -44,11 +47,11 @@ public class Application {
         if (!checkDuplicateInput(arrayPlayerNumber)) {
             throw new IllegalArgumentException("중복된 수를 입력 하였습니다.");
         }
+
         return arrayPlayerNumber;
     }
 
     public static boolean checkDuplicateInput(int[] playerArray) {
-        System.out.println(playerArray.length);
         List<Integer> list = new ArrayList<>();
         Set<Integer> set = null;
 
@@ -56,6 +59,7 @@ public class Application {
             list.add(j);
         }
         set = new HashSet<Integer>(list);
+
         return set.size() == list.size();
     }
 
@@ -109,8 +113,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        final int MAINTAIN_GAME = 0;
-        final int RESTART_GAME = 1;
         List<Integer> listAnswerNumber = makeRandomNumberList();
         int[] arrayPlayerNumber = null;
         int gameLoopSign = 0;
