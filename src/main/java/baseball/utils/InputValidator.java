@@ -1,5 +1,6 @@
 package baseball.utils;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class InputValidator {
@@ -18,4 +19,19 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    private static List<String> checkBallNumberIsValidNumber(final String userBallInput) {
+        List<String> splitUserBall = Arrays.asList(userBallInput.split(""));
+        for (String ball : splitUserBall) {
+            checkStandardNumber(ball);
+        }
+        return splitUserBall;
+    }
+
+    private static void checkStandardNumber(final String ball) {
+        if (!STANDARD_NUMBER.contains(ball)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
