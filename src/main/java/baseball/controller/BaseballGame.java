@@ -11,15 +11,10 @@ public class BaseballGame {
         //사용자 입력을 받아 컴퓨터 정답과 비교한 후 결과 출력
         while (!gameService.getFinishFlag()) {
             gameService.setUserInput();
-            gameService.compare();
-            printResult();
+            System.out.println(gameService.compare());
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
-    public void printResult() {
-        System.out.println(gameService.getResult());
     }
 
 }

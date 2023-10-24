@@ -6,13 +6,15 @@ import java.util.Objects;
 
 public class Application {
     public static boolean continueGame(String s) {
+        if (Objects.equals(s, "1")) {
+            return true;
+        }
+        
         if (Objects.equals(s, "2")) {
             return false;
-        } else if (Objects.equals(s, "1")) {
-            return true;
-        } else {
-            throw new IllegalArgumentException();
         }
+
+        throw new IllegalArgumentException();
     }
 
     public static void main(String[] args) {

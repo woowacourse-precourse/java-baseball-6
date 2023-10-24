@@ -6,7 +6,6 @@ import baseball.model.User;
 public class GameService {
     Computer computer = new Computer();
     User user = new User();
-    String result;
     boolean finishFlag = false;
 
     //사용자 입력 설정
@@ -39,7 +38,9 @@ public class GameService {
     }
 
     //비교 결과 계산
-    public void compare() {
+    public String compare() {
+        String result = "";
+
         int ball = countBall(user.getInput(), computer.getAnswer());
         int strike = countStrike(user.getInput(), computer.getAnswer());
 
@@ -49,18 +50,17 @@ public class GameService {
             finishFlag = true;
         }
 
-        if (ball > 0 && strike > 0) {
-            result = ball + "볼 " + strike + "스트라이크";
-        } else if (strike > 0) {
-            result = strike + "스트라이크";
-        } else if (ball > 0) {
-            result = ball + "볼";
-        } else {
-            result = "낫싱";
+        if (ball == 0 && strike == 0) {
+            return "낫싱";
         }
-    }
 
-    public String getResult() {
+        if (ball > 0) {
+            result += ball + "볼 ";
+        }
+        if (strike > 0) {
+            result += strike + "스트라이크";
+        }
+
         return result;
     }
 
