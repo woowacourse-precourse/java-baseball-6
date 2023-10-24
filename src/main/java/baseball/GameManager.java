@@ -36,8 +36,8 @@ public class GameManager {
     }
 
     public void printResult(Result result) {
-        int strike = result.getStrike();
-        int ball = result.getBall();
+        int strike = result.strike();
+        int ball = result.ball();
 
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING_MESSAGE);
