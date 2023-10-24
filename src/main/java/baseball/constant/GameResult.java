@@ -5,12 +5,13 @@ public enum GameResult {
     BALL("볼"),
     NOTHING("낫싱");
 
-    private String name;
-    GameResult(String name) {
-        this.name = name;
+    private String korean;
+
+    GameResult(String korean) {
+        this.korean = korean;
     }
 
-    public String getName() {
-        return name;
+    public String getKorean() {
+        return korean;
     }
 }
