@@ -33,7 +33,7 @@
     - 사용자 입력을 분석
     - 3자리 중 1부터 9에 해당하지 않은 수가 있을 시, IllegalArgumentException() 발생
     - 3자리 중 중복된 수가 있을 시, IllegalArgumentException() 발생
-- ### Numbers.java 
+- ### GameComponent.java 
   - 프로그램에 전체적으로 사용되는 상수와 변수를 책임지는 Class
 
 ## 프로그램 진행
