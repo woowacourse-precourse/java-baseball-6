@@ -1,7 +1,17 @@
 package baseball;
 
+import game.Game;
+
 public class Application {
+    public static final int TOTAL_CARDS = 3;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Game game = new Game();
+        game.play();
     }
 }
+
+
+
+
+
