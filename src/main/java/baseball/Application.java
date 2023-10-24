@@ -9,47 +9,65 @@ public class Application {
 	
 	
     public static void main(String[] args) {
-    	
+    	Boolean On = true;
         // TODO: 프로그램 구현
     	do {
     	System.out.println("숫자 야구 게임을 시작합니다.");
-    	Game();
-    	} while (Restart());
+    	On = Game();
+    	} while (On);
     }
     
     
-    public static void Game() {
-      	Calc(SwingBat(), Ballin());
+    public static Boolean Game() {
+    	Boolean On = true;
+    	ArrayList<Integer> Ballin = Ballin();
+    	do {
+      	On=Calc(SwingBat(), Ballin);
+    	} while(On);
+    	return Restart();
     }
     
     
-    public static int[] SwingBat(){
+    public static ArrayList<Integer> SwingBat(){
     	System.out.print("숫자를 입력해주세요 : ");
     	String Keyin = Console.readLine();
     	Integer intKey = null;
-    	int[] Ballin = new int[3];
+    	Boolean error = false;
+    	ArrayList<Integer> Ballin = new ArrayList<>();
+    	//int[] Ballin = new int[3];
     	try {
     		intKey = Integer.parseInt(Keyin);
     	} catch (Exception e1){
-    		System.out.println("숫자를 입력하시오");
+    		error = true;
+    		//System.out.println("게임종료");
     	}
     	if(intKey> 1000 || intKey < 100) {
-    		throw new IllegalArgumentException("공을 3번 던지시오");
+    		error = true;
+    		throw new IllegalArgumentException("게임종료");
 
     	}
-    	Ballin[0]=intKey/100;
-    	Ballin[1]=intKey%100/10;
-    	Ballin[2]=intKey%100%10;
-    	Arrays.sort(Ballin);
-    	if(Ballin[0]==Ballin[1] || Ballin[1]==Ballin[2]) {
-    		throw new IllegalArgumentException("중복된 값이 없도록 다시 제시하시오");
-
+    	Ballin.add(intKey/100);
+    	Ballin.add(intKey%100/10);
+    	Ballin.add(intKey%100%10);
+    	
+    	//Ballin[0]=intKey/100;
+    	//Ballin[1]=intKey%100/10;
+    	//Ballin[2]=intKey%100%10;
+    	//Arrays.sort(Ballin);
+    	if(Ballin.get(0)==Ballin.get(1) || Ballin.get(1)==Ballin.get(2) || Ballin.get(0)==Ballin.get(2)) {
+    		error = true;
+    		throw new IllegalArgumentException("게임종료");
     	}
+    	if(error){
+    		Ballin=SwingBat();
+    	}
+    	
     	return Ballin;
+    	
      	}
     	
-    public static List<Integer> Ballin() {
-    	List<Integer> Randball = new ArrayList<>();
+    public static ArrayList<Integer> Ballin() {
+    	ArrayList<Integer> Randball = new ArrayList<>();
     	while(Randball.size()<3) {
     		int a = Randoms.pickNumberInRange(1, 9);
     		if (!Randball.contains(a)) {
@@ -63,34 +81,38 @@ public class Application {
     }
    
     
-    public static void Calc(int[] a, List<Integer> b) {
+    public static Boolean Calc(List<Integer> swing, List<Integer> ball) {
     	int[] Result = new int[] {0,0};
-        System.out.println(Arrays.toString(a));
-    	System.out.println(b);		
+        System.out.println(swing);
+    	System.out.println(ball);		
     	for(int i=0; i<3;i++) {
-    		if(b.contains(a[i])){
+    		if(ball.get(i)==(swing.get(i))){
     			Result[0]++;
     		}
-    		if(!b.contains(a[i])) {
+    		if(ball.contains(swing.get(i))&&ball.get(i)!=(swing.get(i))) {
     			Result[1]++;
+    			
     		}
     	}
     	//if(a[0]==9) {
     	//	Result = {3,0};
     	//}
+    	//System.out.println(b);
+    	//System.out.println(a);
     	if(Result[0]==3) {//스트라이크
     		System.out.println("3스트라이크");
     		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    		Restart();
+    		return false;//Restart();
     	}
     	if(Result[0]==0) {//낫싱
     		System.out.println("낫싱");
-    		Game();
+    		
     	}
     	if(Result[0]!=0 && Result[0]!=3) {//볼스트라이
     		System.out.printf("%d볼 %d스트라이크\n",Result[1],Result[0]);
-    		Game();
+    		
     	}
+    	return true;
     }
    
     
