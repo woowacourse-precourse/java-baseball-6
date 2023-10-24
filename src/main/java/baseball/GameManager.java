@@ -9,6 +9,12 @@ public class GameManager {
     private Player player;
     private Computer computer;
 
+    public GameManager(Computer computer, Player player)
+    {
+        this.computer = computer;
+        this.player = player;
+    }
+
     public void startGame(){
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
@@ -61,6 +67,4 @@ public class GameManager {
         }
         return isValid;
     }
-
-
 }
