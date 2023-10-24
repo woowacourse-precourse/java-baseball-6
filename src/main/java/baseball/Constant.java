@@ -11,10 +11,6 @@ public class Constant {
         UserRequestMessage(String message) {
             this.message = message;
         }
-
-        public String getMessage() {
-            return message;
-        }
     }
 
     public enum UserResponseMessage{
