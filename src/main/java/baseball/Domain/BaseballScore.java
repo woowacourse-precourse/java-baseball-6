@@ -14,13 +14,9 @@ public class BaseballScore {
     @Override
     public String toString() {
         List<String> parts = new ArrayList<>();
-        buildString(parts, ball, "볼");
-        buildString(parts, strike, "스트라이크");
+        if(ball > 0) parts.add(ball + "볼");
+        if(strike > 0) parts.add(strike + "스트라이크");
         return parts.isEmpty()? "낫싱" : String.join(" ", parts);
-    }
-
-    private void buildString(List<String> parts, int count, String label) {
-        if(count > 0) parts.add(count + label);
     }
 
     public boolean isThreeStrike() {
