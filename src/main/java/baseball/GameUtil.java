@@ -61,7 +61,6 @@ public class GameUtil {
         Integer strikeCount = findStrike(this.userInput, this.answer);
 
         String comment = Constants.NOT_MATCH_COMMENT;
-
         if (ballCount == 0 && strikeCount > 0) {
             comment = String.format(Constants.STRIKE_COMMENT, strikeCount);
         } else if (ballCount > 0 && strikeCount == 0) {
@@ -69,9 +68,14 @@ public class GameUtil {
         } else if (ballCount > 0 && strikeCount > 0){
             comment = String.format(Constants.BALL_AND_STRIKE_COMMENT, ballCount, strikeCount);
         }
-
         System.out.println(comment);
-        return strikeCount.equals(Constants.GAME_NUM_LENGTH);
+
+        boolean isCorrect = strikeCount.equals(Constants.GAME_NUM_LENGTH);
+        if (isCorrect) {
+            System.out.println(Constants.END_COMMENT);
+        }
+
+        return isCorrect;
     }
 
     private Integer findBall(String userInput, String answer) {
@@ -97,7 +101,6 @@ public class GameUtil {
     }
 
     public Boolean checkIsContinue() {
-        System.out.println(Constants.END_COMMENT);
         System.out.println(Constants.ASK_CONTINUE_COMMENT);
 
         String userInput = Console.readLine();
