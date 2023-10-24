@@ -56,7 +56,7 @@ public class NumberBaseballController {
     public int countBallNumber(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int count = 0;
         for (Integer userNumber : userNumbers) {
-            if(isInSameNumber(computerNumbers, userNumber) && !isInSamePlace(userNumbers, computerNumbers, userNumber)) // 같은 수는 있으나 같은 자리이면 안됨
+            if(isInSameNumber(computerNumbers, userNumber) && !isInSamePlace(userNumbers, computerNumbers, userNumber))
                 count++;
         }
         return count;
