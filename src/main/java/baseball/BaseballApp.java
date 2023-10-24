@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballApp {
@@ -21,15 +20,12 @@ public class BaseballApp {
             List<Integer> answer = randomNum.makeRandomNum();
 
             do {
-                System.out.print("숫자를 입력해주세요 : ");
-                List<Integer> input = inputNum.getInputNum();
-                checkNum.checkNumber(answer, input);
+                List<Integer> player = inputNum.getPlayerNum();
+                checkNum.checkNumber(answer, player);
 
             } while (checkNum.finalStrike < 3);
 
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String exit = Console.readLine();
+            String exit = inputNum.getExitNum();
 
             if (exit.equals("2")) {
                 break;

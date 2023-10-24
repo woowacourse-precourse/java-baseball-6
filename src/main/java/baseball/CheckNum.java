@@ -13,7 +13,6 @@ public class CheckNum {
     }
 
     private void checkStrike(List<Integer> randomNum, List<Integer> inputList) {
-        // 3. 스트라이크 계산
         int strike = 0;
         for (int i = 0; i < 3; i++) {
             if (randomNum.get(i) == inputList.get(i)) {
