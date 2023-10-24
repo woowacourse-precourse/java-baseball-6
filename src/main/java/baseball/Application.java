@@ -88,7 +88,7 @@ public class Application {
         return randomNumbers;
     }
 
-    // 플레이어로 부터 숫자를 받는 메서드
+    // 플레이어로 부터 숫자를 압력 받는 메서드
     private int[] getPlayerNumbers() {
         String playerInput = readPlayerInput();
         valInputLength(playerInput);
@@ -96,13 +96,17 @@ public class Application {
         valPlayerNumbers(playerNumbers);
         return playerNumbers;
     }
+
+    // 플레이어로부터 값을 입력 받는 메서드
+    private String readPlayerInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
 //        int[] playerNumbers = new int[LENGTH];
 //        System.out.println("숫자를 입력해주세요 : ");
 //        String input = Console.readLine();
 //
-//        if (input.length() != LENGTH) {
-//            throw new IllegalArgumentException("3자리 숫자를 입력해주세요. 게임 종료");
-//        }
+
 //
 //        for (int i = 0; i < LENGTH; i++) {
 //            char playerNumber = input.charAt(i);
