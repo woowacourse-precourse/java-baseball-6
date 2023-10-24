@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class Play {
+public class Game {
 
     void run(){
         while(true){
@@ -18,10 +18,10 @@ public class Play {
 
     void play(){
         Computer computer = new Computer();
-        Input input = new Input();
+        Player player = new Player();
 
         List<Integer> answer = computer.makeAnswer();
-        List<Integer> user = input.input();
+        List<Integer> user = player.input();
         while(true){
             BallCount ballCount = computer.calBallCount(answer, user);
             int strike = ballCount.getStrike();
@@ -35,7 +35,7 @@ public class Play {
             else if (strike == 0 && ball == 0) System.out.println("낫싱");
             else System.out.println(String.format("%d볼 %d스트라이크", ball, strike));
 
-            user = input.input();
+            user = player.input();
         }
     }
 
