@@ -28,7 +28,8 @@ public class Computer {
 
     public void printBaseballResult(List<Integer> playerBaseballNumbers) {
         ballCountResult = compareComputerWith(playerBaseballNumbers);
-        generateBaseballResultMessage(ballCountResult.ballCount(), ballCountResult.strikeCount());
+        String resultMessage = createBaseballResultMessage(ballCountResult.ballCount(), ballCountResult.strikeCount());
+        printBaseballResultMessage(resultMessage);
     }
 
     private BallCountResult compareComputerWith(List<Integer> playerBaseballNumbers) {
@@ -60,7 +61,7 @@ public class Computer {
         return ballCount;
     }
 
-    private void generateBaseballResultMessage(int ballCount, int strikeCount) {
+    private String createBaseballResultMessage(int ballCount, int strikeCount) {
         StringJoiner sj = new StringJoiner(" ");
         if (ballCount > 0) {
             sj.add(ballCount + "볼");
@@ -71,7 +72,12 @@ public class Computer {
         if (ballCount == 0 && strikeCount == 0) {
             sj.add("낫싱");
         }
-        System.out.println(sj);
+
+        return sj.toString();
+    }
+
+    private void printBaseballResultMessage(String resultMessage) {
+        System.out.println(resultMessage);
 
         if (ballCountResult.isStrikeOut()) {
             System.out.println(MAX_STRIKES + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
