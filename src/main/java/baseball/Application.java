@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.GameNumber.*;
 import static console.Printer.printRestartOrExit;
 import static console.Printer.printInput;
 import static console.Printer.printQuit;
@@ -12,9 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
-    private static final int NUMBER_LIMIT = 3;
-    private static final int RESTART = 1;
-    private static final int EXIT = 2;
     public static void main(String[] args) {
 
         String answer = makeRandomNumber();
@@ -26,14 +24,14 @@ public class Application {
             validateInput(input);
             Result result = Result.calculate(input, answer);
             printResult(result);
-            if (result.getStrike() == NUMBER_LIMIT) {
+            if (result.isAllCorrect()) {
                 printQuit(NUMBER_LIMIT);
                 isCorrect = true;
             }
             if (isCorrect) {
                 printRestartOrExit(RESTART, EXIT);
-                String opiton = Console.readLine();
-                if (Integer.parseInt(opiton) == EXIT) break;
+                String option = Console.readLine();
+                if (Integer.parseInt(option) == EXIT) break;
                 else answer = makeRandomNumber();
             }
         }
