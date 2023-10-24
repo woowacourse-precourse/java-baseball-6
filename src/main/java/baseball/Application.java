@@ -38,6 +38,7 @@ public class Application {
         return result;
     }
 
+    // 입력 데이터의 숫자가 중복되는지 확인하는 함수
     public static boolean diffCheck(String input){
         Set<Character> set = new HashSet<>();
         boolean result = false;
@@ -57,7 +58,7 @@ public class Application {
     public static void inputDataCheck(String input) throws IllegalArgumentException {
         // 정규표현식을 통한 길이 및 숫자 데이터인지 확인
         // input데이터의 숫자들이 중복이 되는지 확인
-        if (!input.matches("[0-9]{3}") || !diffCheck(input))
+        if (!input.matches("[1-9]{3}") || !diffCheck(input))
             throw new IllegalArgumentException(); // 형식에 맞지 않는다면 IllegalArgumentException Throw
 
     }
