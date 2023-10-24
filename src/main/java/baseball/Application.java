@@ -37,7 +37,7 @@ public class Application {
 
     private static Boolean restart() {
         MessageStream.restartMessage();
-        String isRestarting = MessageStream.input();
+        String isRestarting = MessageStream.restartInput();
         return isRestarting.equals("1");
     }
 }

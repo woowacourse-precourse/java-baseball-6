@@ -47,10 +47,6 @@ public class MessageStream {
         System.out.print(restartMessage);
     }
 
-    public static String input() {
-        return readLine();
-    }
-
     public static List<Integer> predictionInput() {
         return convertThreeNumericStringToIntegerList(readLine());
     }
@@ -68,6 +64,18 @@ public class MessageStream {
             throw new IllegalArgumentException();
         }
         if (str.chars().distinct().count() != str.length()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static String restartInput() {
+        String str = readLine();
+        validateRestartNumericString(str);
+        return str;
+    }
+
+    private static void validateRestartNumericString(String str) {
+        if (!str.equals("1") && !str.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
