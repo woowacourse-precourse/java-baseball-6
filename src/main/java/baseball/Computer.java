@@ -6,23 +6,23 @@ import java.util.List;
 
 public class Computer {
 
-  private List<Integer> Num = new ArrayList<>();
+  private List<Integer> ComputerNum = new ArrayList<>();
 
   public Computer() {
-    GenerateRandomNum();
+    GenerateRandomComputerNum();
   }
 
-  public void GenerateRandomNum() {
-    while (Num.size() < 3) {
-      int randomNumber = Randoms.pickNumberInRange(1, 9);
-      if (!Num.contains(randomNumber)) {
-        Num.add(randomNumber);
+  public void GenerateRandomComputerNum() {
+    while (ComputerNum.size() < 3) {
+      int randomComputerNumber = Randoms.pickNumberInRange(1, 9);
+      if (!ComputerNum.contains(randomComputerNumber)) {
+        ComputerNum.add(randomComputerNumber);
       }
     }
-    System.out.println(Num);
+    System.out.println(ComputerNum);
   }
 
-  public List<Integer> getNum() {
-    return Num;
+  public List<Integer> getComputerNum() {
+    return ComputerNum;
   }
 }
