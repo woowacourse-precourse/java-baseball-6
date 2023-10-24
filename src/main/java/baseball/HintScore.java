@@ -9,4 +9,7 @@ public class HintScore {
         strike++;
     }
 
+    public void raiseBall() {
+        ball++;
+    }
 }

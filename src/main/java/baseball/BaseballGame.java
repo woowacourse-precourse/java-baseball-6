@@ -13,6 +13,8 @@ public class BaseballGame {
     private static final String SEPARATOR = "";
 
     private static final Integer ANSWER_DIGIT = 3;
+    private static final Integer NOTHING_MATCH_INDEX = -1;
+언
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
 
@@ -37,6 +39,7 @@ public class BaseballGame {
 
     }
 
+
     private void play(List<Integer> correctAnswer) {
         System.out.print(PRINT_USER_INPUT);
         List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
@@ -49,6 +52,9 @@ public class BaseballGame {
             int matchIndex = correctAnswer.indexOf(userAnswer.get(i));
             if (matchIndex == i) {
                 hintScore.raiseStrike();
+            }
+            if (matchIndex != NOTHING_MATCH_INDEX) {
+                hintScore.raiseBall();
             }
         }
     }
