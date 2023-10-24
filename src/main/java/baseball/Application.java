@@ -11,16 +11,51 @@ public class Application {
     public static void main(String[] args) {
         view.gameStartPrint();
         RandomNumber.getUniqueNumbers();
+        boolean flag = false;
+        do {
+            Game.gameMiddle();
+        } while (Game.gameEnd());
+    }
+}
+
+class Input {
+    public static String inputThreeNumber() {
+        return Console.readLine();
+    }
+
+    public static List<Integer> stringToIntegerList(String stringNumber) {
+        int s1 = Integer.parseInt(stringNumber.substring(0, 1));
+        int s2 = Integer.parseInt(stringNumber.substring(1, 2));
+        int s3 = Integer.parseInt(stringNumber.substring(2, 3));
+        List<Integer> list = new ArrayList<>();
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+        return list;
+    }
+}
+
+class Game {
+    public static void gameMiddle() {
         List<Integer> list;
         do {
             view.gameNumberInputPrint();
-            String stringNumber = Console.readLine();
-            list = StringToIntegerList.stringToIntegerList(stringNumber);
+            String str = Input.inputThreeNumber();
+            list = Input.stringToIntegerList(str);
             List<Integer> result = BaseballCalculate.baseballCalculate(RandomNumber.baseballNumber, list);
             System.out.println(BaseballCalculate.baseballHintPrint(result));
         } while (RandomNumber.baseballNumber.equals(list) == false);
         view.gameEndPrint();
+    }
 
+    public static boolean gameEnd() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int i = Integer.parseInt(Console.readLine());
+        if (i == 1) {
+            return true;
+        }
+        return false;
+        // 나머지 예외처리 ex. 숫자 범위, 숫자가 아닐 때
     }
 }
 
@@ -30,7 +65,7 @@ class view {
     }
 
     public static void gameNumberInputPrint() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static void gameEndPrint() {
@@ -87,18 +122,4 @@ class BaseballCalculate {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
-}
-
-class StringToIntegerList {
-    static List<Integer> stringToIntegerList(String stringNumber) {
-        int s1 = Integer.parseInt(stringNumber.substring(0, 1));
-        int s2 = Integer.parseInt(stringNumber.substring(1, 2));
-        int s3 = Integer.parseInt(stringNumber.substring(2, 3));
-        List<Integer> list = new ArrayList<>();
-        list.add(s1);
-        list.add(s2);
-        list.add(s3);
-        return list;
-    }
-
 }
