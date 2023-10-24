@@ -13,7 +13,7 @@ class AnswerGeneratorTest {
     @Test
     void 정답이_3자리인지_확인() {
         // given & when
-        List<Integer> answer = answerGenerator.generateAnswer();
+        List<Integer> answer = answerGenerator.generate();
 
         // then
         assertThat(answer.size()).isEqualTo(3);
@@ -22,7 +22,7 @@ class AnswerGeneratorTest {
     @Test
     void 정답_숫자들의_범위가_1과_9사이인지_확인() {
         // given & when
-        List<Integer> answer = answerGenerator.generateAnswer();
+        List<Integer> answer = answerGenerator.generate();
 
         // then
         assertThat(answer.stream().allMatch(ans -> ans > 0 && ans < 10)).isTrue();
@@ -31,7 +31,7 @@ class AnswerGeneratorTest {
     @Test
     void 정답_숫자_중복_확인() {
         // given & when
-        List<Integer> answer = answerGenerator.generateAnswer();
+        List<Integer> answer = answerGenerator.generate();
 
         // then
         int distinctSize = new HashSet<>(answer).size();

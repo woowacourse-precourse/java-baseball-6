@@ -6,26 +6,28 @@ import java.util.List;
 
 public class AnswerGenerator {
 
+    private final List<Integer> answer = new ArrayList<>();
+
     private final static int startInclusive = 1;
     private final static int endInclusive = 9;
     private final static int answerSize = 3;
 
-    public List<Integer> generateAnswer() {
-        List<Integer> answer = new ArrayList<>();
+    public List<Integer> generate() {
+        answer.clear();
         while (answer.size() < answerSize) {
-            int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
-            addRandomNumber(answer, randomNumber);
+            addRandomNumber();
         }
         return answer;
     }
 
-    private void addRandomNumber(List<Integer> answer, int randomNumber) {
-        if (validate(answer, randomNumber)) {
+    private void addRandomNumber() {
+        final int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
+        if (validate(randomNumber)) {
             answer.add(randomNumber);
         }
     }
 
-    private boolean validate(List<Integer> answer, int randomNumber) {
+    private boolean validate(int randomNumber) {
         return !answer.contains(randomNumber);
     }
 

@@ -23,7 +23,7 @@ public class BaseballGame {
 
     private void prepare() {
         OutMessage.START.printMsg();
-        judgment = new Judgment(answerGenerator.generateAnswer());
+        judgment = new Judgment(answerGenerator.generate());
     }
 
     private void repeatedGuess() {
