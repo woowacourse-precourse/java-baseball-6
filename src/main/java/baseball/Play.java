@@ -1,37 +1,30 @@
 package baseball;
 
-import baseball.domain.Computer;
+import baseball.domain.BaseBall;
 import baseball.domain.Result;
-import baseball.domain.User;
-
+import baseball.utils.BaseBallParser;
 import baseball.utils.Caculator;
 import baseball.utils.Generator;
-import baseball.utils.BaseBallParser;
-
 import baseball.view.View;
-
-import java.util.List;
-
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Play {
     private final int FINISH = 3;
 
     private int size;
-    private Computer computer;
-    private User user;
+    private BaseBall computer;
+    private BaseBall user;
 
     public Play(int size) {
         this.size = size;
-        computer = new Computer();
-        user = new User();
     }
 
     public void run() {
         Result result;
         do {
-            user.setNumbers(getUserNumbers());
-            result = Caculator.count(computer.getNumbers(), user.getNumbers());
+            user = new BaseBall(getUserNumbers());
+            result = Caculator.count(computer.numbers(), user.numbers());
             View.result(result.getStrike(), result.getBall());
         } while (!isFinish(result));
     }
@@ -47,6 +40,6 @@ public class Play {
     }
 
     public void setPlay(int size, int startRange, int endRange) {
-        computer.setNumbers(Generator.makeNumbers(size, startRange, endRange));
+        computer = new BaseBall(Generator.makeNumbers(size, startRange, endRange));
     }
 }
