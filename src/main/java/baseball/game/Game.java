@@ -29,9 +29,10 @@ public class Game {
             calculateMount();
 
             // 게임 결과 처리
-            System.out.println(judgeMountResult());
+            String result = judgeMountResult();
+            System.out.println(result);
         }
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private String judgeMountResult() {
@@ -39,9 +40,9 @@ public class Game {
             return "낫싱";
         }
 
-        if (this.strikeCount == 0 && this.ballCount != 0) {
+        if (this.strikeCount == 0) {
             return this.ballCount + "볼";
-        } else if (this.strikeCount != 0 && this.ballCount == 0) {
+        } else if (this.ballCount == 0) {
             return this.strikeCount + "스트라이크";
         } else {
             return this.ballCount + "볼 " + this.strikeCount + "스트라이크";
@@ -71,7 +72,6 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
-        System.out.println("computer = " + computer);
         this.computer = computer;
     }
 
