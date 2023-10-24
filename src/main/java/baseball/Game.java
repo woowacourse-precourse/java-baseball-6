@@ -7,7 +7,8 @@ public class Game {
     private int strikes = 0, balls = 0;
     private boolean flag = false;
     private void placeMatch(List<Integer> comList, List<Integer> userList, int strikes, int balls) {
-        for (int i = 0; i < userList.size(); i++) {
+        int size = Math.min(comList.size(), userList.size());
+        for (int i = 0; i < size; i++) {
             if (userList.get(i).equals(comList.get(i))) {
                 strikes++;
             } else if (comList.contains(userList.get(i))) {
@@ -32,8 +33,8 @@ public class Game {
     }
     public void play(List<Integer> comList, List<Integer> userList) {
         flag = false;
-        int strikes = 0;
-        int balls = 0;
+        strikes = 0;
+        balls = 0;
         placeMatch(comList, userList, strikes, balls);
     }
 

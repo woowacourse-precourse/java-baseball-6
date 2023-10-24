@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
-//ToDo : 입력방식 변경 (엔터로 구분)
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
