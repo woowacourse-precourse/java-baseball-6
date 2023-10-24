@@ -1,6 +1,5 @@
 package baseball.Model;
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ public class BaseballGameModel {
     }
 
     //숫자 판단
-    public void calculateResult(String userInput){
+    public String calculateResult(String userInput){
         int strike = 0;
         int ball = 0;
 
@@ -36,6 +35,7 @@ public class BaseballGameModel {
                 ball++;
             }
         }
+        return getResult(ball, strike);
     }
 
     //userInput을 int 리스트로 변환
@@ -46,5 +46,24 @@ public class BaseballGameModel {
             integerList.add(Character.getNumericValue(c));
         }
         return integerList;
+    }
+
+    private String getResult(int ball, int strike){
+        String result = "";
+        if((ball==0)&&(strike==0)) {
+            result += "낫싱";
+        }else if((ball!=0)&&(strike==0)){
+            result += Integer.toString(ball);
+            result += "볼";
+        }else if((ball==0)&&(strike!=0)){
+            result += Integer.toString(strike);
+            result += "스트라이크";
+        }else {
+            result += Integer.toString(ball);
+            result += "볼 ";
+            result += Integer.toString(strike);
+            result += "스트라이크";
+        }
+        return result;
     }
 }
