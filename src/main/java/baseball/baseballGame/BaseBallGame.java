@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BaseBallGame {
     private int cnt; // 맞춰야 할 숫자의 개수
-    private List<Integer> numbers; // 컴퓨터가 선택한 숫자 담을 리스트
+    private int computerNum; // 컴퓨터가 선택한 숫자
 
     public BaseBallGame() {
     }
@@ -15,12 +15,17 @@ public class BaseBallGame {
     public BaseBallGame(int cnt) {
         this.cnt = cnt;
 
-        // cnt 만큼 숫자 선택해서 numbers에 추가
-        numbers = new ArrayList<>();
-        while (numbers.size() < cnt) {
+        int tmp = 0; // 현재 선택한 숫자 개수
+        boolean[] ch = new boolean[10]; // 중복된 숫자 체크 위한 배열
+
+        // cnt 만큼 숫자 선택해서 세 자자리수 숫자로 저장
+        while (tmp < cnt) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            if (!ch[randomNumber]) {
+                ch[randomNumber] = true;
+                computerNum *= 10;
+                computerNum += randomNumber;
+                tmp++;
             }
         }
     }
@@ -29,12 +34,22 @@ public class BaseBallGame {
         return cnt;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public int getComputerNum() {
+        return computerNum;
     }
 
     // 숫자 야구 게임 시작
     public void start() {
+        PrintConsole print = new PrintConsole();
+        CompareNum compareNum = new CompareNum();
+
+        print.printStart();
+        int num = print.printInput();
+        check(num);
     }
 
+    // 컴퓨터 숫자와 사용자 입력 숫자 비교
+    private void check(int num) {
+
+    }
 }

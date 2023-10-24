@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
         int cnt = 3;
         BaseBallGame bGame = new BaseBallGame(cnt);
 
-        assertThat(bGame.getNumbers().size()).isEqualTo(cnt);
+        assertThat(String.valueOf(bGame.getComputerNum()).length()).isEqualTo(cnt);
     }
 
     @Test
