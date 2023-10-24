@@ -24,5 +24,16 @@ class StrikeTest {
         assertThat(isNoCountStrike).isTrue();
     }
 
+    @Test
+    @DisplayName("스트라이크의 개수가 0이 아닌지 확인한다.")
+    void check_strike(){
+        //given
+        strike.updateStrikeCount(2);
 
+        //when
+        boolean isStrike = strike.isStrike();
+
+        //then
+        assertThat(isStrike).isTrue();
+    }
 }
