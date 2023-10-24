@@ -5,13 +5,11 @@ import java.util.List;
 
 public class Data {
 
-    private final List<String> RANDOMNUMBERLIST = new ArrayList<>();
-    private final String RESTARTRESPONSE = "-1";
-    private final boolean ISNOERROR = true;
-    private final boolean ISFULLSTRIKE = false;
+    private static final String RESTART_RESPONSE = "-1";
+    private static final boolean IS_NO_ERROR = true;
+    private static final boolean IS_FULL_STRIKE = false;
     private String userNumber;
     private List<String> userNumberList;
-    private int randomNumber;
     private List<String> randomNumberList;
     private int ball;
     private int strike;
@@ -20,10 +18,10 @@ public class Data {
     private boolean isFullStrike;
 
     public Data() {
-        this.randomNumberList = RANDOMNUMBERLIST;
-        this.isNoError = ISNOERROR;
-        this.restartResponse = RESTARTRESPONSE;
-        this.isFullStrike = ISFULLSTRIKE;
+        this.randomNumberList = new ArrayList<>();
+        this.isNoError = IS_NO_ERROR;
+        this.restartResponse = RESTART_RESPONSE;
+        this.isFullStrike = IS_FULL_STRIKE;
     }
 
     public String getUserNumber() {
@@ -40,14 +38,6 @@ public class Data {
 
     public void setUserNumberList(List<String> userNumberList) {
         this.userNumberList = userNumberList;
-    }
-
-    public int getRandomNumber() {
-        return randomNumber;
-    }
-
-    public void setRandomNumber(int randomNumber) {
-        this.randomNumber = randomNumber;
     }
 
     public List<String> getRandomNumberList() {
