@@ -6,10 +6,10 @@ import java.util.List;
 public class Computer {
     private List<Integer> computerNumber;
     
-    public void generateNumber(){
+    public void generateNumber() {
         List<Integer> computer = new ArrayList<>();
         
-        while (computer.size() < 3){
+        while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)){
                 computer.add(randomNumber);
@@ -23,7 +23,7 @@ public class Computer {
         this.computerNumber = computer;
     }
 
-    List<Integer> getNumber(){
+    public List<Integer> getNumber() {
         return this.computerNumber;
     }
 }
