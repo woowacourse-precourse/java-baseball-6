@@ -8,13 +8,14 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Application {// 게임 구동이 가능해야한다. 최대한 간단하게 적어보자.
     public static void main(String[] args) {
 
+        System.out.println ("숫자 야구 게임을 시작합니다.");
         Game goodAnswer = new Game();
         Game.init(goodAnswer);
     }
 
 }
 class arrayList { //배열적으로 받아서 처리할 수 있는 모든 함수들은 여기에 적었다.
-    static boolean arrayContains(final char[] arr, final int number) {
+    static boolean arrayContains(final int[] arr, final int number) {
         for (int value : arr) {
             if (value == number) {
                 return true;
@@ -23,7 +24,7 @@ class arrayList { //배열적으로 받아서 처리할 수 있는 모든 함수
         return false;
     } //그 배열에 실제 그 단어가 있는지 확인하기 위해서
 
-    static boolean arrayContains(final int[] arr, final int number) {
+    static boolean arrayContains(final char[] arr, final char number) {
         for (int value : arr) {
             if (value == number) {
                 return true;
@@ -56,7 +57,7 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
     private static final int QUIT_GAME = 2;
 
     int[]number=new int[3]; //number는 내가 입력한 숫자.
-    
+
     //게임 돌아가는 알고리즘(숫자 비교)
     Game(){
         int RandNum;
@@ -66,7 +67,7 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
         while (Numbidx<3){
             RandNum=this.getRandomNumber();
 
-            if(!arrayList.arrayContains(number,RandNum)){
+            if(!arrayList.arrayContains(number, RandNum)){
                 number[Numbidx++]=RandNum;
             }
         }
@@ -81,6 +82,7 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
 
     //게임 랜덤숫자 뽑기 함수
     private int getRandomNumber(){
+
         return pickNumberInRange(1,9);
     }
 
@@ -97,7 +99,7 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
             return;
         }
 
-        int newGameAnswer=Game.NewGameStart();
+        int newGameAnswer=Game.NewGame();
         if(newGameAnswer == Game.NEW_GAME){
             goodAnswer=new Game();
             Game.init(goodAnswer);
@@ -105,8 +107,8 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
 
 
     }
-    
-    
+
+
     //게임 시작했을때 돌아가는 것
     public static Game GamePlay() {
         System.out.println("숫자를 입력해주세요 : ");
@@ -115,14 +117,14 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
 
         return new Game(userInput);
     }
-    
+
     //새 게임 스타트 알고리즘
-    public static int NewGameStart() {
+    public static int NewGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 "+Game.NEW_GAME+", 게임을 종료하려면 "+Game.QUIT_GAME+"를 입력하세요.");
 
         String newanswer=readLine();
-        int intValue = Integer.parseInt(newanswer);
+        int intValue;
 
         try{
             intValue=Integer.parseInt(newanswer);
@@ -153,6 +155,8 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
         }
 
     }
+
+
 
     private static boolean checkEqualNumber(String str) {
         char[] checkEqual=new char[str.length()];
@@ -224,7 +228,7 @@ class Hint {
 
         if(this.strike != 0){
             if(this.ball!=0){
-                rs+="";
+                rs+=" ";
             }
             rs+=this.strike + "스트라이크";
 
