@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.global.GameMessage;
-import baseball.global.util.MessagePrinter;
+import baseball.model.GameResult;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,14 +10,10 @@ import java.util.List;
 
 
 
-public class BaseballGame implements ComputerGame {
+public class BaseballGame implements Game {
     static final int NUMBER_RANGE_START = 1;
     static final int NUMBER_RANGE_END = 9;
     static final int NUMBER_SIZE = 3;
-
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
-    private static final String NOTHING = "낫싱";
 
     private final List<Integer> numbers;
     private boolean continueGame = true;
@@ -25,27 +21,32 @@ public class BaseballGame implements ComputerGame {
     public BaseballGame() {
         numbers = new ArrayList<>();
     }
+    private void start() {
+        System.out.println(GameMessage.BASEBALL_START_GAME);
+    }
+
+    public void setting() {
+        this.setComputerNumber();
+    }
 
     public void game() {
-        // 게임 설정
         // 게임 반복
-        setting();
         boolean win = false;
         while (!win) {
             List<Integer> playerNumbers = getPlayerNumbers();
-            String result = compareInputAndNumbers(playerNumbers);
-            MessagePrinter.printMessage(result);
-            if (result.contains(NUMBER_SIZE + STRIKE)) {
+            GameResult result = compareInputWithComputerNumbers(playerNumbers);
+            System.out.println(result.getMessage());
+            if (result.isEnd(NUMBER_SIZE)) {
+                System.out.println(NUMBER_SIZE + GameMessage.BASEBALL_WIN_GAME);
                 win = true;
-                MessagePrinter.printNumberAndMessage(NUMBER_SIZE, GameMessage.BASEBALL_WIN_GAME);
             }
         }
     }
 
     public void end() {
-        // 게임 종료
-        MessagePrinter.printMessage(GameMessage.BASEBALL_RESTART);
+        System.out.println(GameMessage.BASEBALL_RESTART);
         String input = Console.readLine();
+        
         if (input.equals(GameMessage.RESTART)) {
             continueGame = true;
         }
@@ -57,19 +58,18 @@ public class BaseballGame implements ComputerGame {
         }
     }
 
-    public void play() {
-        MessagePrinter.printMessage(GameMessage.BASEBALL_START_GAME);
+    public void execute() {
+        this.start();
+        
         while (continueGame) {
+            this.setting();
             this.game();
             this.end();
         }
     }
 
-    public void setting() {
-        this.setNumber();
-    }
 
-    private void setNumber() {
+    private void setComputerNumber() {
         numbers.clear();
         while (numbers.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
@@ -107,9 +107,9 @@ public class BaseballGame implements ComputerGame {
     }
 
     private String getNumbersString() {
-        MessagePrinter.printMessage(GameMessage.GET_NUMBER);
+        System.out.println(GameMessage.GET_NUMBER);
         String input = Console.readLine();
-
+        // 오버라이드 interface, abstract
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
@@ -117,9 +117,7 @@ public class BaseballGame implements ComputerGame {
         return input;
     }
 
-    private String compareInputAndNumbers(List<Integer> input) {
-        // 숫자 비교
-        // 비교한 결과 출력
+    private GameResult compareInputWithComputerNumbers(List<Integer> input) {
         int ball = 0;
         int strike = 0;
 
@@ -133,19 +131,6 @@ public class BaseballGame implements ComputerGame {
                 }
             }
         }
-        return getCompareResult(ball, strike);
-    }
-
-    private String getCompareResult(int ball, int strike) {
-        StringBuilder sb = new StringBuilder();
-        if (ball + strike == 0)
-            return NOTHING;
-        if (ball > 0) {
-            sb.append(ball).append(BALL).append(" ");
-        }
-        if (strike > 0) {
-            sb.append(strike).append(STRIKE).append(" ");
-        }
-        return sb.toString();
+        return GameResult.from(strike, ball);
     }
 }

@@ -1,8 +1,7 @@
 package baseball;
 
-public interface ComputerGame {
-
-    void play();
+public interface Game {
     void setting();
+    void execute();
     void end();
 }
