@@ -5,7 +5,7 @@ import baseball.utils.ComputerUtils;
 import baseball.utils.MessageUtils;
 import baseball.utils.UserUtils;
 import baseball.verification.InputVerification;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.verification.RestartVerification;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,15 +33,12 @@ public class Application {
             MessageUtils.resultMessage(strike, ball);
 
             if (strike == 3) {
-                String what = Console.readLine();
-                int select = Integer.parseInt(what);
-
-                if (select == 2) {
+                if (!RestartVerification.askForRestart()) {
                     break;
-                } else if (select == 1) {
-                    computerNumber = computerUtils.generateComputerNumber();
                 }
+                computerNumber = computerUtils.generateComputerNumber();
             }
         }
     }
 }
+
