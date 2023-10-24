@@ -1,8 +1,5 @@
 package baseball.ui;
 
-import baseball.global.Validator;
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
 

@@ -1,9 +1,5 @@
 package baseball.domain;
 
-import static baseball.global.constant.BaseballGameConstant.ALL_STRIKE;
-
-import java.util.List;
-
 public class GameJudge {
     private final Player player;
     private final Computer computer;

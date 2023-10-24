@@ -2,13 +2,8 @@ package baseball.domain;
 
 import static baseball.global.constant.BaseballGameConstant.*;
 
-import baseball.global.constant.BaseballGameConstant;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballGame {
     private final InputView inputView;
