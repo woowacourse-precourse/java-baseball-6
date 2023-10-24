@@ -17,6 +17,9 @@ public class MessageManager {
     public static void getRestartOrEndMessage() {
         System.out.println(messages.getString("restartOrEnd.message"));
     }
+    public static void getCorrectAnswerMessage() {
+        System.out.println(messages.getString("correctAnswer.message"));
+    }
 
 }
 
