@@ -9,6 +9,7 @@ public class OutputView {
     public void startGame() {
         System.out.println(GameMessage.GAME_START);
     }
+
     public void printBallCount(int strike, int ball) {
         if (strike == ZERO && ball == ZERO) {
             System.out.println(GameMessage.NOTHING);

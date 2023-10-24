@@ -40,11 +40,11 @@ public class UserNum {
     }
 
     private void duplicateNumCheck(List<Integer> inputNum) {
-        long inputNumSize = inputNum.stream()
+        long nonDuplicateNumSize = inputNum.stream()
                 .distinct()
                 .count();
 
-        if (inputNumSize != NUM_SIZE) {
+        if (nonDuplicateNumSize != NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
