@@ -35,6 +35,7 @@ public class OutputView {
 
         if (gameResult[strikeIndex] > noCount && gameResult[ballIndex] > noCount) {
             printStrikeAndBallHint(gameResult[strikeIndex], gameResult[ballIndex]);
+            return;
         }
         if (gameResult[strikeIndex] > noCount && gameResult[strikeIndex] < maxCount) {
             printStrikeHint(gameResult[strikeIndex]);
@@ -54,8 +55,8 @@ public class OutputView {
     private void printStrikeAndBallHint(int strikeCount, int ballCount) {
         String space = " ";
         System.out.println(
-                strikeCount + GameHint.STRIKE.getMessage() + space
-                + ballCount + GameHint.BALL.getMessage());
+                ballCount + GameHint.BALL.getMessage() + space +
+                        strikeCount + GameHint.STRIKE.getMessage());
     }
 
     private void printBallHint(int ballCount) {
