@@ -57,6 +57,17 @@ public class Application {
     private static void validateInputLength(String inputNumber) {
         if(inputNumber.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_LENGTH + "자리를 입력해야 합니다.");
+        } else if (!isNumeric(inputNumber)) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+    }
+
+    private static boolean isNumeric(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
