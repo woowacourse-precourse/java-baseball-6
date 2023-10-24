@@ -30,9 +30,9 @@ public class Application {
         if (input.length() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
-        //2. 숫자가 아닌 경우
+        //2. 숫자(1~9)가 아닌 경우
         for (int i = 0; i < input.length(); i++) {
-            if ('0' > input.charAt(i) && input.charAt(i) > '9') {
+            if (input.charAt(i) < '1' || '9' < input.charAt(i)) {
                 throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
             }
         }
