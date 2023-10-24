@@ -54,7 +54,6 @@ public class GameStart{
             int strike = 0; // 자리, 숫자 완전 일치할 때
             int ball = 0; //숫자만 포함되어 있을 때
             for (int i=0;i<3;i++){
-
                 if (user.get(i) == computer.get(i)) {
                     strike++;
                 }else if ((user.get(i) != computer.get(i)) && (computer.contains(user.get(i))) ) {

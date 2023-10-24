@@ -8,5 +8,6 @@ public class Application {
 
         GameStart newgame = new GameStart();
         newgame.run();
+
     }
 }
