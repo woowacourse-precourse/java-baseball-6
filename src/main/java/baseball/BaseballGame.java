@@ -14,7 +14,7 @@ public class BaseballGame {
 		this.baseballUmpire = baseballUmpire;
 	}
 
-	public void startBaseballGame() {
+	public void start() {
 		do {
 			String computerNumber = baseballComputer.createComputerNumber(); // 컴퓨터 숫자 생성
 			do {

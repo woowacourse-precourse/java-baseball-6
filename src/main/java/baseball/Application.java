@@ -11,6 +11,6 @@ public class Application {
 
 		// 게임 시작
 		baseballView.printGameStart();
-		baseballGame.startBaseballGame();
+		baseballGame.start();
 	}
 }
