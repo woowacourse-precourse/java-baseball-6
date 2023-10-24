@@ -18,8 +18,28 @@ public class GameModel {
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
 
-    public void generateComputerNumbers() {
-        computer.clear();
+    public GameModel() {
+        this.computer = new ArrayList<>();
+    }
+
+    public List<Integer> checkAnswer(String input) {
+        validateInput(input);
+
+        List<Integer> answer = convertInputToList(input);
+
+        int strike = calculateStrikes(answer);
+        int ball = calculateBalls(answer);
+
+        List<Integer> result = new ArrayList<>();
+        result.add(strike);
+        result.add(ball);
+
+        //checkRestart(strike);
+        return result;
+    }
+
+    public void generateComputerNumber() {
+        computer = new ArrayList<>();
         while (computer.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -27,15 +47,24 @@ public class GameModel {
             }
         }
     }
+    public void validateInput(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
 
-    public GameModel() {
-        this.computer = new ArrayList<>();
+    public List<Integer> convertInputToList(String input) {
+        List<Integer> answer = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            answer.add(input.charAt(i) - '0');
+        }
+        return answer;
     }
 
     public int calculateStrikes(List<Integer> answer) {
         int strike = 0;
         for (int i = 0; i < answer.size(); i++) {
-            if (answer.get(i).equals(computer.get(i))) {
+            if (answer.get(i) == computer.get(i)) {
                 strike++;
             }
         }

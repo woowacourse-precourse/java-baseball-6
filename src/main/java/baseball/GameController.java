@@ -1,4 +1,3 @@
-
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class GameController {
 
-    private List<Integer> computer;
+    //private List<Integer> computer;
     private String input;
     private boolean isStarted;
     private final GameView gameView;
@@ -25,7 +24,7 @@ public class GameController {
         isStarted = true;
 
         do {
-            generateComputerNumber();
+            gameModel.generateComputerNumber();
             play();
         } while (isStarted);
 
@@ -35,7 +34,7 @@ public class GameController {
     public void play() {
         gameView.printMessage(GameModel.ASK_NUMBERS);
         input = Console.readLine();
-        checkAnswer(input);
+        checkResult(input);
     }
 
     public void isStarted(String input) {
@@ -49,80 +48,22 @@ public class GameController {
         throw new IllegalArgumentException();
     }
 
-    public void generateComputerNumber() {
-        computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+    public void checkResult(String input) {
+        List<Integer> result = gameModel.checkAnswer(input);
+
+        int strike = result.get(0);
+        int ball = result.get(1);
+        gameView.displayResult(strike, ball);
+        checkRestart(strike);
+
     }
 
-    public void checkAnswer(String input) {
-        validateInput(input);
-
-        List<Integer> answer = convertInputToList(input);
-
-        int strike = calculateStrikes(answer);
-        int ball = calculateBalls(answer);
-
-        printResult(strike, ball);
-    }
-
-    private void validateInput(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private List<Integer> convertInputToList(String input) {
-        List<Integer> answer = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            answer.add(input.charAt(i) - '0');
-        }
-        return answer;
-    }
-
-    private int calculateStrikes(List<Integer> answer) {
-        int strike = 0;
-        for (int i = 0; i < answer.size(); i++) {
-            if (answer.get(i) == computer.get(i)) {
-                strike++;
-            }
-        }
-        return strike;
-    }
-
-    private int calculateBalls(List<Integer> answer) {
-        int ball = 0;
-        for (int i = 0; i < answer.size(); i++) {
-            if (!answer.get(i).equals(computer.get(i)) && computer.contains(answer.get(i))) {
-                ball++;
-            }
-        }
-        return ball;
-    }
-
-    private void printResult(int strike, int ball) {
-       displayResult(strike, ball);
+    private void checkRestart(int strike) {
 
         if (strike == 3) {
             endGame();
         } else {
             continueGame();
-        }
-    }
-
-    private void displayResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            gameView.printMessage(GameModel.NOTHING);
-        } else if (strike == 0) {
-            gameView.printMessage(ball + GameModel.BALL);
-        } else if (ball == 0) {
-            gameView.printMessage(strike + GameModel.STRIKE);
-        } else {
-            gameView.printStrikeAndBall(strike, ball);
         }
     }
 
@@ -136,7 +77,7 @@ public class GameController {
     private void continueGame() {
         gameView.printMessage(GameModel.ASK_NUMBERS);
         input = Console.readLine();
-        checkAnswer(input);
+        checkResult(input);
     }
 }
 
