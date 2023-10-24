@@ -15,10 +15,11 @@ public class Computer {
     public void generateNumber() {
         List<Integer> list = new ArrayList<>();
 
-        while(list.size() < 3) {
+        while (list.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!list.contains(randomNumber))
+            if (!list.contains(randomNumber)) {
                 list.add(randomNumber);
+            }
         }
 
         number = list.stream()
@@ -31,13 +32,18 @@ public class Computer {
 
         IntStream.range(0, Key.NUMBER_LENGTH)
                 .forEach(index -> {
-                    if(answer.charAt(index) == number.charAt(index))
+                    if (answer.charAt(index) == number.charAt(index)) {
                         hint.increaseStrike();
-                    else if(answer.contains(String.valueOf(number.charAt(index))))
+                    } else if (isCharacterContainString(answer, number.charAt(index))) {
                         hint.increaseBall();
+                    }
                 });
 
         return hint;
+    }
+
+    private boolean isCharacterContainString(String str, char ch) {
+        return str.contains(String.valueOf(ch));
     }
 
     public String getNumber() {

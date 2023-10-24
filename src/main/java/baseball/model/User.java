@@ -17,10 +17,11 @@ public class User {
     }
 
     private void checkUserAnswer() {
-        if(!isAnswerLengthRight()
+        if (!isAnswerLengthRight()
                 || !isAnswerDigit()
-                || isAnswerContainZero())
+                || isAnswerContainZero()) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 
     private boolean isAnswerLengthRight() {

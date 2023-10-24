@@ -1,6 +1,5 @@
 package baseball.play;
 
-import baseball.Key;
 import baseball.model.Hint;
 
 public class Print {
@@ -23,19 +22,20 @@ public class Print {
     }
 
     public static boolean printResult(Hint hint) {
-        if(hint.isThreeStrike()) {
+        if (hint.isThreeStrike()) {
             System.out.println(hint.getStrike() + STRIKE);
             return true;
         }
 
-        if(hint.isNothing())
+        if (hint.isNothing()) {
             System.out.println(NOTHING);
-        else if(hint.isBallZero())
+        } else if (hint.isBallZero()) {
             System.out.println(hint.getStrike() + STRIKE);
-        else if(hint.isStrikeZero())
+        } else if (hint.isStrikeZero())
             System.out.println(hint.getBall() + BALL);
-        else
+        else {
             System.out.println(hint.getBall() + BALL + " " + hint.getStrike() + STRIKE);
+        }
 
         return false;
     }

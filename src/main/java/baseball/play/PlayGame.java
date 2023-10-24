@@ -24,10 +24,11 @@ public class PlayGame {
     public void startGame() {
         print.printStart();
 
-        while(true) {
+        while (true) {
             runBaseBallGame();
-            if(!wantToRestartOrEnd())
+            if(!wantToRestartOrEnd()) {
                 break;
+            }
         }
     }
 
@@ -38,8 +39,9 @@ public class PlayGame {
             print.printInputNumber();
             user.inputAnswer();
             Hint hint = computer.compareNumber(user.getAnswer());
-            if(Print.printResult(hint))
+            if(Print.printResult(hint)) {
                 break;
+            }
         }
     }
 
