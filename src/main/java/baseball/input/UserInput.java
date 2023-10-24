@@ -10,14 +10,19 @@ public class UserInput {
     }
 
     public void create(){
-        input = readLine().replaceAll(" ","");
+        input = readLine();
     }
 
     public void checking(){
+        checkBlank(input);
         checkNum(input);
         checkRange(input);
         checkLength(input);
         checkDuplication(input);
+    }
+
+    private void checkBlank(String input) {
+        checkLength(input.replaceAll(" ",""));
     }
 
     public String value() {
