@@ -8,6 +8,7 @@ public class Result {
     private static final String NON_STRING = "낫싱";
     private static final String BLANK = " ";
     private static final String EMPTY = "";
+    private static final Integer ZERO = 0;
 
 
     private Integer ball;
@@ -53,7 +54,7 @@ public class Result {
     }
 
     private String getStrikeString() {
-        if (strike.equals(0)) {
+        if (strike.equals(ZERO)) {
             return EMPTY;
         }
 
@@ -61,7 +62,7 @@ public class Result {
     }
 
     private String getBallString() {
-        if (ball.equals(0)) {
+        if (ball.equals(ZERO)) {
             return EMPTY;
         }
 
