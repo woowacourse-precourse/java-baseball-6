@@ -10,26 +10,27 @@ public class Game {
     }
 
     public void gameStart() {
+        boolean playGame = true;
         gameManager.startGame();
-        while(true) {
+        while(playGame) {
             gameManager.inputUserNumber();
             gameManager.showBallCount();
 
             boolean gameOver = gameManager.checkGameOver();
 
             if (gameOver) {
-                boolean wantRestart = gameManager.askRestartGame();
-
-                if (wantRestart) {
-                    restartGame();
-                } else if (!wantRestart) {
-                    break;
-                }
+                boolean restartOrNot = gameManager.askRestartGame();
+                playGame = restartGame(restartOrNot);
             }
         }
     }
 
-    private void restartGame() {
+    private boolean restartGame(boolean wantRestart) {
+        if (!wantRestart) {
+            return false;
+        }
+
         gameManager = new GameManager();
+        return true;
     }
 }
