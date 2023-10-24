@@ -25,22 +25,27 @@ public class GameController {
 
     public void run() {
         printGameStartMessage();
-        playingGame();
+        playGame();
     }
 
     private void printGameStartMessage() {
         outputView.printGameStart();
     }
 
-    private void playingGame() {
+    private void playGame() {
         do {
-            BaseBallGame game = initBaseBallGame();
+            BaseBallGame game = initializeBaseBallGame();
             playSingleGameUntilEnd(game);
         } while (isRestartGame());
     }
 
+    private BaseBallGame initializeBaseBallGame() {
+        BaseBallNumbers computerNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+        return BaseBallGame.create(computerNumbers);
+    }
+
     private void playSingleGameUntilEnd(BaseBallGame game) {
-        while (game.isNotEnd()) {
+        while (game.isGameInProgress()) {
             BaseBallNumbers playerNumbers = scanPlayerBaseBallNumbers();
             printGameResult(game, playerNumbers);
         }
@@ -52,13 +57,8 @@ public class GameController {
     }
 
     private void printGameResult(BaseBallGame game, BaseBallNumbers playerNumbers) {
-        BaseBallGameResult baseBallGameResult = game.calculateResult(playerNumbers);
+        BaseBallGameResult baseBallGameResult = game.determineGameResult(playerNumbers);
         outputView.printGameResult(new GameResultDto(baseBallGameResult));
-    }
-
-    private BaseBallGame initBaseBallGame() {
-        BaseBallNumbers computerNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
-        return BaseBallGame.init(computerNumbers);
     }
 
     private boolean isRestartGame() {
