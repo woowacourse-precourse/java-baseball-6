@@ -18,6 +18,4 @@ public class Game {
             is3Strike = computer.checkResult(player.getDuplicatePlayerList());
         } while (!is3Strike);
     }
-
-
 }

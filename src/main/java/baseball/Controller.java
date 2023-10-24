@@ -20,7 +20,6 @@ public class Controller {
     private static boolean restart() {
         System.out.println(RESTART_MESSAGE);
         String inputString = Console.readLine();
-
         if (inputString.equals(RESTART_STRING)) {
             return true;
         } else if (inputString.equals(TERMINATE_STRING)) {

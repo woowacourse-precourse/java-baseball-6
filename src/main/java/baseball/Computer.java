@@ -28,7 +28,6 @@ public class Computer {
     public boolean checkResult(List<Integer> playerList) {
         int strike = getStrike(playerList);
         int ball = getBall(playerList) - strike;
-
         System.out.println(getHintString(strike, ball));
         return is3Strike(strike);
     }
@@ -63,7 +62,6 @@ public class Computer {
 
     private int getStrike(List<Integer> playerList) {
         int strike = 0;
-
         for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).equals(computerNumbers.get(i))) {
                 strike++;
@@ -74,7 +72,6 @@ public class Computer {
 
     private int getBall(List<Integer> playerList) {
         int ball = 0;
-
         for (Integer p : playerList) {
             if (computerNumbers.contains(p)) {
                 ball++;
