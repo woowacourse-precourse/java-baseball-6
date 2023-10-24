@@ -29,7 +29,7 @@ public class Game {
             System.out.print(INPUT_MESSAGE);
             inputString = Console.readLine().replace(" ", ""); // 공백 실수 허용
             Player player = new Player(inputString);
-            is3Strike = checkResult(player.getPlayerList());
+            is3Strike = checkResult(player.getDuplicatePlayerList());
         } while (!is3Strike);
     }
 

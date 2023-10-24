@@ -18,7 +18,7 @@ public class Player {
         }
     }
 
-    public List<Integer> getPlayerList() {
+    public List<Integer> getDuplicatePlayerList() {
         return new ArrayList<>(playerList);
     }
 
