@@ -1,6 +1,6 @@
 ## Feat1. 게임 시작
 
-<img width="945" alt="스크린샷 2023-10-24 오후 1 19 37" src="https://github.com/Mingadinga/2023_Study_CS/assets/53958188/0865f611-88e5-4a3d-a740-fe0238114b67">
+<img width="868" alt="스크린샷 2023-10-24 오후 3 06 38" src="https://github.com/Mingadinga/2023_Study_CS/assets/53958188/ba82ae69-6730-4545-8c65-1287c5530821">
 
 - [x] GameView : start
 - [ ] GameController : start
