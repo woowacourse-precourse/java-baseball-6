@@ -20,8 +20,8 @@ public class Game {
     }
 
     private void judgeNumberAt(int index) {
-        int userNumber = userGameNumbers.getNumbersAt(index);
-        int computerNumber = computerGameNumbers.getNumbersAt(index);
+        int userNumber = userGameNumbers.getNumberAt(index);
+        int computerNumber = computerGameNumbers.getNumberAt(index);
         if (Objects.equals(userNumber, computerNumber)) {
             result.countUpStrike();
         } else if (userGameNumbers.contains(computerNumber)) {

@@ -68,7 +68,7 @@ public class GameNumbers {
         return numbers;
     }
 
-    public int getNumbersAt(int index) {
+    public int getNumberAt(int index) {
         return numbers.get(index);
     }
 
