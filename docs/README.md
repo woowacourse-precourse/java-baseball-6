@@ -15,7 +15,7 @@
     - 스트라이크 카운트 및 볼 카운트
     - 스트라이크, 볼, 낫싱 메세지 반환
 - 게임 종료 조건 검증 기능
-    - 조건에 따라 재시작 및 게임 종료
+    - 조건에 따른 재시작 및 게임 종료
 
 # 순서도
 <img src="./baseball.png">
@@ -37,3 +37,32 @@
     - 변경이 일어나면, 변경 통지에 대한 처리방법을 구현해야한다.
 
 ## util
+    - 프로젝트 전역에서 사용되어야 한다.
+    - 특정 로직이나 독립적인 기능이어야 한다.
+    - 가능하면 어떤 상태를 가지지 않는 기능이어야 한다.
+
+# 디렉토리 구조
+```
+baseball
+    │  Application.java
+    │  
+    ├─ controller
+    │      GameController.java
+    │      
+    ├─ service
+    │      ComputerService.java
+    │      UmpireService.java
+    │      UserService.java
+    │      
+    ├─ util
+    │   │  Constants.java
+    │   │  Messages.java
+    │   │  
+    │   └─validation
+    │          InputNumbersValidation.java
+    │          restartNumberValidation.java
+    │          
+    └─ view
+         InputView.java
+         OutputView.java
+```
