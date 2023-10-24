@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.utils.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class User {
     public List<Integer> inputUserNumber(){
         System.out.println("숫자를 입력해주세요 : ");
         String inputNumbers = Console.readLine();
+        Validation.verifyUserNumber(inputNumbers);
         return setUserNumber(inputNumbers);
     }
 }
