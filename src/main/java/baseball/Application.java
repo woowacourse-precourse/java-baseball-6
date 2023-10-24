@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Application {
     private static final int LENGTH = 3;
@@ -61,11 +63,21 @@ public class Application {
         for (int i = 0; i < LENGTH; i++) {
             if (randomNumbers[i] == playerNumbers[i]) {
                 strikes++;
-            } else if (containsNumber(playerNumbers, randomNumbers[i])) {
+            } else if (checkBall(playerNumbers, randomNumbers[i])) {
                 balls++;
             }
         }
         return getResultMessage(strikes, balls);
+    }
+
+    // ball 계산 메서드 분리
+    private boolean checkBall(int[] numbers, int target) {
+        for (int number : numbers) {
+            if (number == target) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // checkStrikesOrBall 메서드를 기반으로 결과를 출력하는 메서드
@@ -119,38 +131,27 @@ public class Application {
         }
         return playerNumbers;
     }
-//        int[] playerNumbers = new int[LENGTH];
-//        System.out.println("숫자를 입력해주세요 : ");
-//        String input = Console.readLine();
-//
 
-//
-//        for (int i = 0; i < LENGTH; i++) {
-//            char playerNumber = input.charAt(i);
-//            if (playerNumber < '1' || playerNumber > '9') {
-//                throw new IllegalArgumentException("범위밖의 숫자를 입력하였습니다. 게임 종료");
-//            }
-//
-//            int numericValue = Character.getNumericValue(playerNumber);
-//
-//            if (numericValue <= 0) {
-//                throw new IllegalArgumentException("0 이하의 숫자는 입력할 수 없습니다. 게임 종료");
-//            }
-//            if (containsNumber(playerNumbers, numericValue)) {
-//                throw new IllegalArgumentException("중복된 숫자를 입력하였습니다. 게임 종료");
-//            }
-//
-//            playerNumbers[i] = Character.getNumericValue(playerNumber);
-//        }
-//        return playerNumbers;
+    // 범위 외 값 검증 메서드
+    private void valPlayerNumbers(int[] playerNumbers) {
+        for (int number : playerNumbers) {
+            if (number < 1 || number > 9) {
+                throw new IllegalArgumentException("범위밖의 숫자를 입력하였습니다. 게임 종료");
+            }
+            if (containsDuplicate(playerNumbers)) {
+                throw new IllegalArgumentException("중복된 숫자를 입력하였습니다. 게임 종료");
+            }
+        }
     }
 
-    // 플레이어의 중복입력 방지와 ball 계산을 처리
-    private boolean containsNumber(int[] numbers, int target) {
-        for (int number : numbers) {
-            if (number == target) {
+    // 중복 입력 검증 메서드
+    private boolean containsDuplicate(int[] playerNumbers) {
+        Set<Integer> numberSet = new HashSet<>();
+        for (int number : playerNumbers) {
+            if (numberSet.contains(number)) {
                 return true;
             }
+            numberSet.add(number);
         }
         return false;
     }
