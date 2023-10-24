@@ -94,6 +94,6 @@ public class Judge {
      * @return
      */
     private boolean isSamePlaceNumUserAndComputer(List<Integer> computerList, int valueIndexOfUserList, int indexUserList) {
-        return gameStandard.isSamePlaceNumUser2ComNumList(computerList, indexUserList, valueIndexOfUserList);
+        return gameStandard.isSamePlaceIndexNumUser2ComNumList(computerList, indexUserList, valueIndexOfUserList);
     }
 }
