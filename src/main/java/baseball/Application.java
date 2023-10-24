@@ -29,6 +29,17 @@ public class Application {
         return userInput;
     }
 
+    public static boolean validateContinue() {
+        String userInput = Console.readLine();
+        if (userInput.equals("1")) {
+            return true;
+        }
+        if (userInput.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static boolean executeBaseballGame(String user, String cpu) {
         // TODO : 추가 검증 로직 구현
         if (user.equals(cpu)) {
@@ -45,20 +56,14 @@ public class Application {
             String cpuNumber = pickNumber();
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                try {
-                    String userInput = validateUserInput();
-                    if (executeBaseballGame(userInput, cpuNumber)) {
-                        break;
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                String userInput = validateUserInput();
+                if (executeBaseballGame(userInput, cpuNumber)) {
                     break;
                 }
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String isContinue = Console.readLine();
-            if (isContinue.equals("2")) {
+            if (!validateContinue())
                 return;
             }
         }
