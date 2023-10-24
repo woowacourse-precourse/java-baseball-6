@@ -4,8 +4,8 @@ public final class GameConstants {
 
     public static final int NUMBER_LENGTH = 3;
 
-    public static final Character START_NUMBER = '1';
-    public static final Character END_NUMBER = '9';
+    public static final int START_NUMBER = 1;
+    public static final int END_NUMBER = 9;
 
     public static final String GAME_STRIKE_STR = "스트라이크";
     public static final String GAME_BALL_STR = "볼";

@@ -18,6 +18,7 @@ public class BaseballGame {
 
     public void play() {
         String computerBaseballNumber = numberGenerator.generateRandomBaseballNumber();
+        System.out.println(computerBaseballNumber);
         while (!isGameOver) {
             String userBaseballNumber = inputHandler.askUserBaseballNumber();
             isGameOver = outputHandler.printResultMessage(userBaseballNumber, computerBaseballNumber);

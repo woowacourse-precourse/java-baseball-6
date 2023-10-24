@@ -16,6 +16,7 @@ public class NumberGenerator {
                 numbers.add(randomNumber);
             }
         }
+        System.out.println(numbers);
         return convertListToString(numbers);
     }
 
