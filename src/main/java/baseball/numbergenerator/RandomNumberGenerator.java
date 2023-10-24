@@ -1,6 +1,7 @@
 package baseball.numbergenerator;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator implements NumberGenerator {
@@ -16,6 +17,13 @@ public class RandomNumberGenerator implements NumberGenerator {
     }
 
     public List<Integer> generateUniqueNumbers() {
-        return Randoms.pickUniqueNumbersInRange(startInclusive, endInclusive, count);
+        List<Integer> uniqueNumbers = new ArrayList<>();
+        while (uniqueNumbers.size() < count) {
+            int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            if (!uniqueNumbers.contains(randomNumber)) {
+                uniqueNumbers.add(randomNumber);
+            }
+        }
+        return uniqueNumbers;
     }
 }
