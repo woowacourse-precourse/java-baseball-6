@@ -27,7 +27,9 @@ public class GameFunction {
         //System.out.println(computer);
     }
     public static void getUserNumber(String num) {
-        if(num.length() != 3) throw new IllegalArgumentException();
+        if(num.length() != 3) {
+            throw new IllegalArgumentException("잘못된 값 입력");
+        }
         for(int i = 0; i < 3; i ++) {
             userNum[i] = Character.getNumericValue(num.charAt(i));
         }
@@ -43,43 +45,49 @@ public class GameFunction {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         getComputerNumber();
         while(true) {
-            strike = 0;
-            ball = 0;
-            System.out.print("숫자를 입력해주세요 : ");
-            String num = br.readLine();
-            getUserNumber(num);
-            System.out.println("computer num : " + Arrays.toString(compNum));
-            System.out.println("user num : " + Arrays.toString(userNum));
-            for (int i = 0; i < userNum.length; i++) {
-                for (int j = 0; j < compNum.length; j++) {
-                    if (userNum[i] == compNum[j]) {
-                        if (i == j) {
-                            strike++;
-                        } else {
-                            ball++;
+            try {
+                strike = 0;
+                ball = 0;
+                System.out.print("숫자를 입력해주세요 : ");
+                String num = br.readLine();
+                getUserNumber(num);
+                System.out.println("computer num : " + Arrays.toString(compNum));
+                System.out.println("user num : " + Arrays.toString(userNum));
+                for (int i = 0; i < userNum.length; i++) {
+                    for (int j = 0; j < compNum.length; j++) {
+                        if (userNum[i] == compNum[j]) {
+                            if (i == j) {
+                                strike++;
+                            } else {
+                                ball++;
+                            }
                         }
                     }
                 }
-            }
-            if(strike == 0 && ball == 0) {
-                System.out.println("낫싱");
-            }
-            else if(strike == 0) {
-                System.out.println(ball + "볼");
-            }
-            else if(ball == 0) {
-                System.out.println(strike + "스트라이크");
-            }
-            else {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
-            }
-            if(strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int quitcheck = Integer.parseInt(br.readLine());
-                if(quitcheck == 2) break;
+                if (strike == 0 && ball == 0) {
+                    System.out.println("낫싱");
+                } else if (strike == 0) {
+                    System.out.println(ball + "볼");
+                } else if (ball == 0) {
+                    System.out.println(strike + "스트라이크");
+                } else {
+                    System.out.println(ball + "볼 " + strike + "스트라이크");
+                }
+                if (strike == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    int quitcheck = Integer.parseInt(br.readLine());
+                    if (quitcheck != 1) {
+                        System.out.println("게임종료");
+                        break;
+                    }
+                    else {
+                        getComputerNumber();
+                    }
+                }
+            } catch (IllegalArgumentException e) {
+                break;
             }
         }
     }
 }
-        //System.out.println(firstNum  + SecondNum + ThirdNum + firstComputerNum + secondComputerNum + thirdComputerNum);
