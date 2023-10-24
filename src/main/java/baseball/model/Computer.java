@@ -9,10 +9,10 @@ public class Computer {
     static final int NUMBER_OF_BALLS = 3;
     static final int MINIMUM_RANDOM_NUMBER = 1;
     static final int MAXIMUM_RANDOM_NUMBER = 9;
-    List<Integer> randomIntegerList;
+    private List<Integer> randomIntegerList;
 
     public Computer() {
-        this.randomIntegerList = makeRandomNum();
+        randomIntegerList = makeRandomNum();
     }
     private List<Integer> makeRandomNum() {
         randomIntegerList = new ArrayList<>();
