@@ -9,7 +9,7 @@ import java.util.Set;
 public class InputUtil {
     public static String getUserInput() {
         String userInput = Console.readLine();
-        if (userInput.matches("[^1-9]")) {
+        if (!userInput.matches("[0-9]+")) {
             throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요.");
         }
         return userInput;
