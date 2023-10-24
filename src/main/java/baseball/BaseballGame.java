@@ -30,11 +30,7 @@ public class BaseballGame {
             System.out.println(PRINT_GAME_START);
             List<Integer> correctAnswer = computer.createCorrectAnswer();
             play(correctAnswer);
-        } while (restart());
-    }
-
-    private boolean restart() {
-
+        } while (RestartOrExit.isRestart(convertStringToInteger(Console.readLine())));
     }
 
 
@@ -46,7 +42,7 @@ public class BaseballGame {
                     .toList();
             validAnswerDigit(userAnswer);
             validAnswerDistinct(userAnswer);
-            hintScore.calculat경eHint(correctAnswer, userAnswer);
+            hintScore.calculateHint(correctAnswer, userAnswer);
             System.out.println(hintScore.toString());
             if (hintScore.isGameOver()) {
                 break;
