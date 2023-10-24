@@ -13,7 +13,6 @@ public class Computer {
         int strike = strikeBallCount.countStrike(computer, user);
         int ball = strikeBallCount.countBall(computer, user);
         gamePrint.printGameResult(strike, ball);
-
         return strike == 3;
     }
 
