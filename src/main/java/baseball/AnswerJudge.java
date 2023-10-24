@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.View.OutputView;
 import java.util.List;
 
 public class AnswerJudge {
@@ -18,10 +19,11 @@ public class AnswerJudge {
                 ball++;
             }
         }
-        return getResult(strike, ball);
+        return OutputView.printResult(getResult(strike, ball));
     }
 
     private static String getResult(int strike, int ball) {
+
         if (strike == 0 && ball == 0) {
             return NOTHING_MESSAGE;
         }
