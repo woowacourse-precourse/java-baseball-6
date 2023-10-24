@@ -87,10 +87,12 @@ public class BaseBallGame {
     private List<Integer> stringToListInt(String str) {
         List<Integer> list = new ArrayList<>();
         for (char c : str.toCharArray()) {
-            if (Character.isDigit(c)) {
-                int digit = Character.getNumericValue(c);
-                list.add(digit);
+            if (!(Character.isDigit(c))) {
+                throw new IllegalArgumentException("숫자를 입력해 주세요");
             }
+
+            int digit = Character.getNumericValue(c);
+            list.add(digit);
         }
         return list;
     }
