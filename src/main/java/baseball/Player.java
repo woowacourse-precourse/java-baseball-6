@@ -81,12 +81,17 @@ public class Player {
     private void validateDuplicates(List<Integer> playerNumbers) {
         Set<Integer> numberSet = new HashSet<>();
         for (int number : playerNumbers) {
-            if (numberSet.contains(number)) {
-                throw new IllegalArgumentException(INPUT_DUPLICATION_ERROR_MESSAGE);
-            }
-            numberSet.add(number);
+            checkAndAddNumber(numberSet, number);
         }
     }
+
+    private void checkAndAddNumber(Set<Integer> numberSet, int number) {
+        if (numberSet.contains(number)) {
+            throw new IllegalArgumentException(INPUT_DUPLICATION_ERROR_MESSAGE);
+        }
+        numberSet.add(number);
+    }
+
 
     public void printBallCount() {
         String result = "";
