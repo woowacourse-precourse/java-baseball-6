@@ -1,5 +1,6 @@
 package baseball.play;
 
+import baseball.exception.BaseballExceptionMassage;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.User;
@@ -9,7 +10,6 @@ public class PlayGame {
 
     public final static String RESTART = "1";
     public final static String END = "2";
-    private static final String NOT_RIGHT_ANSWER = "1 혹은 2만 입력하실 수 있습니다.";
 
     private final Print print;
     private final Computer computer;
@@ -26,7 +26,7 @@ public class PlayGame {
 
         while (true) {
             runBaseBallGame();
-            if(!wantToRestartOrEnd()) {
+            if (!wantToRestartOrEnd()) {
                 break;
             }
         }
@@ -39,7 +39,7 @@ public class PlayGame {
             print.printInputNumber();
             user.inputAnswer();
             Hint hint = computer.compareNumber(user.getAnswer());
-            if(Print.printResult(hint)) {
+            if (Print.printResult(hint)) {
                 break;
             }
         }
@@ -52,7 +52,7 @@ public class PlayGame {
         return switch (answer) {
             case RESTART -> true;
             case END -> false;
-            default -> throw new IllegalArgumentException(NOT_RIGHT_ANSWER);
+            default -> throw new IllegalArgumentException(BaseballExceptionMassage.ONLY_ONE_OR_TWO);
         };
     }
 

@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.Key;
+import baseball.exception.BaseballExceptionMassage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
@@ -20,7 +21,7 @@ public class User {
         if (!isAnswerLengthRight()
                 || !isAnswerDigit()
                 || isAnswerContainZero()) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException(BaseballExceptionMassage.NOT_RIGHT_ANSWER);
         }
     }
 
