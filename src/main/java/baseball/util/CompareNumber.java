@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class CompareNumber {
-
     public static int countStrike(List<Integer> computer, List<Integer> user) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
@@ -24,6 +23,5 @@ public class CompareNumber {
         }
         return count;
     }
-
 }
 
