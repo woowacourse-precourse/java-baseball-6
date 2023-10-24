@@ -7,9 +7,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class Game {
+    private int strikeCount;
+    private int ballCount;
+
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        // strike, ball 카운트 초기화
+        initializeMountCounts();
         // computer 초기화
         List<Integer> computer = initializeComputer();
 
@@ -20,8 +25,6 @@ public class Game {
         List<Integer> balls = resolveInputBalls(input);
 
         // 스트라이크, 볼 카운트
-        int strikeCount = 0;
-        int ballCount = 0;
 
         for (int i = 0; i < balls.size(); i++) {
             if (Objects.equals(computer.get(i), balls.get(i))) {
@@ -43,6 +46,11 @@ public class Game {
         } else {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
+    }
+
+    private void initializeMountCounts() {
+        this.strikeCount = 0;
+        this.ballCount = 0;
     }
 
     private List<Integer> initializeComputer() {
