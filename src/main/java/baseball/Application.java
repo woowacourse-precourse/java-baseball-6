@@ -2,6 +2,12 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        NumberGameConfiguration baseballGameConfiguration = new NumberGameConfiguration
+                .Builder()
+                .minimumNumberOfRange(1)
+                .maximumNumberOfRange(9)
+                .numberOfDigits(3)
+                .build();
+
     }
 }
