@@ -30,9 +30,11 @@ public class BaseBallGame {
                 List<Integer> guessNumbers = input.getGuessNumbers();
                 GameResult gameResult = computer.countStrikesAndBalls(guessNumbers);
 
-                if (output.printResultAndContinue(gameResult)) {
+                output.printResult(gameResult);
+                if (gameResult.isAllStrikes()) {
                     break;
                 }
+
             }
 
             int retryChoice = input.getRetryChoice();

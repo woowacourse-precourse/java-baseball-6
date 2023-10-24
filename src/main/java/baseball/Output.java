@@ -16,7 +16,7 @@ public class Output {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public boolean printResultAndContinue(GameResult gameResult) {
+    public void printResult(GameResult gameResult) {
 
         if (gameResult.hasBalls()) {
             System.out.print(gameResult.getBalls() + BALL_MESSAGE + " ");
@@ -34,10 +34,6 @@ public class Output {
 
         if (gameResult.isAllStrikes()) {
             printGameEnd();
-            return true;
         }
-
-        return false;
     }
-
 }
