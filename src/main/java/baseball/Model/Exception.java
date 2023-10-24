@@ -1,0 +1,40 @@
+package baseball.Model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Exception {
+    public static boolean checkIsNumber(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            char digitChar = userInput.charAt(i);
+            if (!Character.isDigit(digitChar)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkIsDuplicated(String userInput) {
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!set.add(userInput.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkInputLength(String userInput) {
+        if (userInput.length() != 3) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkIsZero(String userInput) {
+        if (userInput.contains("0")) {
+            return true;
+        }
+        return false;
+    }
+}

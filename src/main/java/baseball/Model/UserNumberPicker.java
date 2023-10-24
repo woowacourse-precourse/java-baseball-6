@@ -5,8 +5,11 @@ import baseball.View.InputView;
 public class UserNumberPicker {
     public final int[] user;
 
-    public UserNumberPicker() {
+    public UserNumberPicker() throws IllegalArgumentException {
         String userInput = InputView.requestBaseballNumber();
+        if(isException(userInput)) {
+            throw new IllegalArgumentException();
+        }
         this.user = convertStringToIntArray(userInput);
     }
 
@@ -16,5 +19,9 @@ public class UserNumberPicker {
             user[i] = userInput.charAt(i) - '0';
         }
         return user;
+    }
+
+    private boolean isException(String userInput) {
+        return !Exception.checkIsNumber(userInput) || Exception.checkIsDuplicated(userInput) || !Exception.checkInputLength(userInput) || Exception.checkIsZero(userInput);
     }
 }
