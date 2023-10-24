@@ -6,6 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseballGame {
     private String answerComputer;
     final int MAX_ANSWER_LENGTH = 3;
+    final int BALL_MIN = 1;
+    final int BALL_MAX = 9;
+
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -25,6 +28,8 @@ public class BaseballGame {
             answerPlayer = Console.readLine();
             exceptLengthInvalid(answerPlayer, MAX_ANSWER_LENGTH);
             exceptNotInteger(answerPlayer);
+            exceptInvalidRange(answerPlayer, BALL_MIN, BALL_MAX);
+
             messageScore = countStrikeBallHits(answerPlayer, answerComputer);
 
             System.out.println(messageScore);
@@ -101,6 +106,16 @@ public class BaseballGame {
         for (int i = 0; i < source.length(); i++) {
             if (!Character.isDigit(source.charAt(i))) {
                 throw new IllegalArgumentException("입력값은 반드시 정수여야 합니다.");
+            }
+        }
+    }
+
+    public void exceptInvalidRange(String source, final int startInclusive, final int endInclusive) {
+        int eachDigit;
+        for (int i = 0; i < source.length(); i++) {
+            eachDigit = Integer.parseInt(String.valueOf(source.charAt(i)));
+            if (eachDigit < startInclusive || endInclusive < eachDigit) {
+                throw new IllegalArgumentException("입력값은 " + startInclusive + " 이상" + endInclusive + " 이하여야 합니다.");
             }
         }
     }
