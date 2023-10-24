@@ -5,7 +5,8 @@ package vo;
  * <p>
  * 야구 게임 결과에 대한 원시 포장
  *
- * @param result
+ * @param ball
+ * @param strike
  * @author Lee NaYeon
  * @since 2023-10-25
  */
