@@ -3,19 +3,20 @@ package baseball.service.hint;
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
 import baseball.domain.hint.Ball;
+import baseball.domain.hint.HintItem;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class BallService implements HintItemService<Ball> {
+public class BallHintServiceImpl implements HintItemService {
 
-    private static final BallService ballService = new BallService();
+    private static final BallHintServiceImpl ballService = new BallHintServiceImpl();
 
-    public static BallService getInstance(){
+    public static BallHintServiceImpl getInstance() {
         return ballService;
     }
 
-    private BallService() {
+    private BallHintServiceImpl() {
 
     }
 
