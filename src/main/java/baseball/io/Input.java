@@ -1,5 +1,6 @@
 package baseball.io;
 
+import baseball.io.enums.InputMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ public class Input {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력값입니다", e);
+            throw new IllegalArgumentException(InputMessage.WRONG_INPUT_VALUE.get(), e);
         }
     }
 
@@ -30,9 +31,9 @@ public class Input {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (PatternSyntaxException e) {
-            throw new IllegalArgumentException("적절하지 않은 구분 정규식", e);
+            throw new IllegalArgumentException(InputMessage.WRONG_SPLIT_REGEX.get(), e);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력값입니다");
+            throw new IllegalArgumentException(InputMessage.WRONG_INPUT_VALUE.get());
         }
     }
 
