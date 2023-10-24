@@ -21,4 +21,8 @@ public class Score {
     public int getStrike() {
         return strike;
     }
+
+    public boolean isAnswer() {
+        return this.strike == 3;
+    }
 }
