@@ -12,21 +12,9 @@ import java.util.stream.IntStream;
 public record RefereeView(EventListener eventListener, OutputView outputView) implements DefaultView {
     @Override
     public ScenarioResultType execute() {
-
         final var score = eventListener.listenWithResult(RefereeEvent::new);
-        final var stringBuilder = new StringBuilder();
-
-        if (score.ball() == 0 && score.strike() == 0) {
-            stringBuilder.append("낫싱");
-        }
-        if (score.ball() > 0) {
-            stringBuilder.append(score.ball()).append("볼");
-        }
-        if (score.strike() > 0) {
-            stringBuilder.append(score.strike()).append("스트라이크");
-        }
-        outputView.printScore(stringBuilder.toString().trim());
-        if (score.strike() == 3) {
+        outputView.printScore(score.getScoreText());
+        if (score.isTreeStrike()) {
             outputView.printGameEnd();
             return ScenarioResultType.NEXT;
         }
@@ -48,15 +36,32 @@ public record RefereeView(EventListener eventListener, OutputView outputView) im
             final var ballCount = IntStream.range(0, SIZE)
                     .map(i -> (int) IntStream.range(0, SIZE)
                             .filter(j -> j != i)
-                            .limit(SIZE)
                             .filter(j -> Objects.equals(computerNumber.get(i), userNumber.get(j)))
-                            .count()
-                    ).sum();
+                            .count())
+                    .sum();
             return new Score(strikeCount, ballCount);
         }
     }
 
     public record Score(int strike, int ball) {
 
+        boolean isTreeStrike() {
+            return strike == 3;
+        }
+
+        String getScoreText() {
+            final var stringBuilder = new StringBuilder();
+
+            if (strike == 0 && ball == 0) {
+                stringBuilder.append("낫싱");
+            }
+            if (ball > 0) {
+                stringBuilder.append(ball).append("볼 ");
+            }
+            if (strike > 0) {
+                stringBuilder.append(strike).append("스트라이크");
+            }
+            return stringBuilder.toString().trim();
+        }
     }
 }
