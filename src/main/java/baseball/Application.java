@@ -87,4 +87,15 @@ public class Application {
         }
         return false;
     }
+
+    public static int countStrikes(List<Integer> number, List<Integer> computer) {
+        int strike = 0;
+        for (int i = 0; i < MAX_COUNT; i++) {
+            if (number.get(i).equals(computer.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
 }
