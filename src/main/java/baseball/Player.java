@@ -4,6 +4,10 @@ public class Player {
     private int number;
     private int[] numbers = new int[10];
 
+    public static Player nextNumberOf(String stringNumber) {
+        return new Player(stringNumber);
+    }
+
     private Player() {
     }
 
@@ -15,33 +19,37 @@ public class Player {
         }
     }
 
+    public int getNumber() {
+        return this.number;
+    }
+
     private boolean isCorrectNumber(String stringNumber) {
-        checkOnlyNumber(stringNumber);
-        checkPositive(stringNumber);
-        checkThreeCount(stringNumber);
-        checkDistinct(stringNumber);
+        validateOnlyNumber(stringNumber);
+        validatePositive(stringNumber);
+        validateThreeCount(stringNumber);
+        validateDistinct(stringNumber);
         return true;
     }
 
-    private static void checkOnlyNumber(String stringNumber) {
+    private static void validateOnlyNumber(String stringNumber) {
         if (!stringNumber.matches("[1-9]+")) {
             throw new IllegalArgumentException("입력하신 내용엔 숫자외 값이 포함되었습니다.");
         }
     }
 
-    private void checkPositive(String stringNumber) {
+    private void validatePositive(String stringNumber) {
         if (Integer.parseInt(stringNumber) <= 0) {
             throw new IllegalArgumentException("입력하신 숫자는 정수가 아닙니다.");
         }
     }
 
-    private void checkThreeCount(String stringNumber) {
+    private void validateThreeCount(String stringNumber) {
         if (stringNumber.length() != 3) {
             throw new IllegalArgumentException("입력하신 숫자는 3개가 아닙니다.");
         }
     }
 
-    private void checkDistinct(String stringNumber) {
+    private void validateDistinct(String stringNumber) {
         for (int i = 0; i < 3; i++) {
             int number = stringNumber.charAt(i) - '0';
             this.numbers[number]++;
@@ -50,13 +58,5 @@ public class Player {
                 throw new IllegalArgumentException("입력하신 숫자는 중복되었습니다.");
             }
         }
-    }
-
-    public static Player nextNumberOf(String stringNumber) {
-        return new Player(stringNumber);
-    }
-
-    public int getNumber() {
-        return this.number;
     }
 }

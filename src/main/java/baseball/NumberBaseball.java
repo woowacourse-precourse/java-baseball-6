@@ -20,7 +20,7 @@ public class NumberBaseball {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        checkRight(command);
+        validateRight(command);
 
         if (command.equals("1")) {
             System.out.println("1");
@@ -30,7 +30,7 @@ public class NumberBaseball {
         return endGame();
     }
 
-    private void checkRight(String command) {
+    private void validateRight(String command) {
         if (!command.equals("1") && !command.equals("2")) {
             throw new IllegalArgumentException("잘못된 명령어입니다.");
         }
