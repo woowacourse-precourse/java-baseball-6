@@ -17,7 +17,7 @@ public class Application {
                     System.out.print("숫자를 입력해주세요: ");
                     String userInput = getUserInput();
                     inputNumberTest(userInput);
-                    isStrikeNumber(userInput, generatedNumber);                
+                    isStrikeBallOut(userInput, generatedNumber);                
                 }
             } catch (Exception e) {
                 System.exit(1);
@@ -57,7 +57,6 @@ public class Application {
 
     public static void inputNumberTest(String input){// 입력한 숫자가 규격에 맞는지 테스트
         if(!input.matches("[1-9]{3}") || uniqueTest(input)){
-            System.out.println("잘못된 입력입니다.");
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
@@ -72,7 +71,7 @@ public class Application {
         return false;
     }
 
-    public static void isStrikeNumber(String inputNum, String solveNum){
+    public static void isStrikeBallOut(String inputNum, String solveNum){
         //스트라이크
         int strike = 0;
         int ball = 0;
