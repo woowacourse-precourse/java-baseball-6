@@ -9,14 +9,14 @@ import java.util.List;
 
 public class GameController {
 
+    private boolean isPossible = true;
 
     public void startGame() {
 
         while (true) {
             Views.printIntro();
-
             List<Integer> answer = Models.generateNumber();
-            boolean isPossible = true;
+
             while(isPossible) {
                 Views.printQuestion();
                 String userNumbers = Views.inputNumber();
