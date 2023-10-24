@@ -20,6 +20,10 @@ public class Hint {
         hint.put("ball", ball);
     }
 
+    private void hintClear(){
+        hint.clear();
+    }
+
     public int loadStrike(){
         return hint.get("strike");
     }
@@ -28,7 +32,4 @@ public class Hint {
         return hint.get("ball");
     }
 
-    public void hintClear(){
-        hint.clear();
-    }
 }
