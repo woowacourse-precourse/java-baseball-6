@@ -51,4 +51,30 @@ public class Computer {
         result.set(1, count);
     }
 
+    public boolean showResult(List<Integer> input) {
+        List<Integer> result = getResult(input);
+
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+
+        if ((ballCount + strikeCount) == 0) {
+            System.out.println("낫싱");
+        } else {
+            String output = "";
+            if (ballCount > 0) {
+                output += ballCount + "볼 ";
+            }
+            if (strikeCount > 0) {
+                output += strikeCount + "스트라이크";
+            }
+            if (strikeCount == 3) {
+                output += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                System.out.println(output);
+                return true;
+            }
+            System.out.println(output);
+        }
+        return false;
+    }
+
 }
