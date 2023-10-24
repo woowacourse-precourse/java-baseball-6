@@ -6,7 +6,6 @@ public class BaseballGame {
 
     public static final int RESTART_OPERATION = 1;
     public static final int EXIT_OPERATION = 2;
-    public static final int BASEBALL_NUMBER_LENGTH = 3;
     int exitNumber = 0;
     Baseball answer;
 
