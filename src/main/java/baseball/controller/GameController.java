@@ -9,14 +9,13 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
-    private final RandomNumberGenerator randomNumberGenerator;
     private final OutputView view;
     private final InputView input;
     private final GameResultCalculator calculator;
+    private RandomNumberGenerator randomNumberGenerator;
     private Number randomNumber;
 
     public GameController() {
-        randomNumberGenerator = new RandomNumberGenerator();
         view = new OutputView();
         input = new InputView();
         calculator = new GameResultCalculator();
@@ -32,7 +31,9 @@ public class GameController {
 
 
     public void startGame() {
-        List<Integer> random = randomNumberGenerator.generateRandomNumber();
+        randomNumberGenerator = new RandomNumberGenerator();
+        List<Integer> random = randomNumberGenerator.getRandomNumber();
+
         this.randomNumber = new Number(random);
     }
 
