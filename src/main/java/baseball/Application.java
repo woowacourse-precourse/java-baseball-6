@@ -47,13 +47,15 @@ public class Application {
     }
 
     public static boolean isDigitNumber(String userInput) {
-        boolean digitNumber = true;
+        int digitCount = 0;
 
         for (int i = 0; i < userInput.length(); i++) {
-            digitNumber = Character.isDigit(userInput.charAt(i));
+            if (Character.isDigit(userInput.charAt(i))) {
+                digitCount++;
+            }
         }
 
-        return digitNumber;
+        return (digitCount == userInput.length());
     }
 
     public static boolean isNumber(List<Integer> threeNumber) {
