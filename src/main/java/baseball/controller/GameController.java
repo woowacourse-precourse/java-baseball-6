@@ -12,13 +12,17 @@ import java.util.List;
 public class GameController {
     private final GameService gameService;
     private final PlayerService playerService;
-    private InputView inputView;
-    private OutputView outputView;
-    private GameResult gameResult;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final GameResult gameResult;
 
-    public GameController(GameService gameService, PlayerService playerService) {
+    public GameController(GameService gameService, PlayerService playerService, InputView inputView,
+                          OutputView outputView, GameResult gameResult) {
         this.gameService = gameService;
         this.playerService = playerService;
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.gameResult = gameResult;
     }
 
     public void startGame() {
@@ -33,9 +37,6 @@ public class GameController {
     }
 
     public void init() {
-        inputView = new InputView();
-        outputView = new OutputView();
-        gameResult = new GameResult();
         gameService.assignComputerNums();
     }
 
@@ -51,13 +52,12 @@ public class GameController {
             int ballCount = gameResult.getBallCount();
 
             outputView.printGameResult(strikeCount, ballCount);
+            gameResult.resetGameResult();
 
             if (strikeCount == GameConstants.DIGIT_SIZE) {
                 outputView.printSuccessMessage();
                 break;
             }
-
-            gameResult.resetGameResult();
         }
     }
 
