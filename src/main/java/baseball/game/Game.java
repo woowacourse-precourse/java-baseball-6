@@ -23,12 +23,11 @@ public class Game {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            matchStart(0, 0, 0);
+            matchStart();
         } while (pitcher.restart());
     }
 
-    private void matchStart(int a, int b, int c) {
-        referee.playBall(a, b, c);
+    private void matchStart() {
         int[] pitch;
         boolean strikeOut;
         do {
