@@ -80,14 +80,19 @@ public class Game {
     }
 
     private void printGameResult(int ballCnt, int strikeCnt) {
-        if (ballCnt > 0 && strikeCnt > 0) {
-            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
-        } else if (ballCnt > 0) {
-            System.out.println(ballCnt + "볼");
-        } else if (strikeCnt > 0) {
-            System.out.println(strikeCnt + "스트라이크");
-        } else {
-            System.out.println("낫싱");
+        StringBuilder message = new StringBuilder();
+
+        if (ballCnt > 0) {
+            message.append(ballCnt).append("볼 ");
         }
+        if (strikeCnt > 0) {
+            message.append(strikeCnt).append("스트라이크");
+        }
+        if (ballCnt == 0 && strikeCnt == 0) {
+            message.append("낫싱");
+        }
+
+        System.out.println(message.toString());
     }
+
 }
