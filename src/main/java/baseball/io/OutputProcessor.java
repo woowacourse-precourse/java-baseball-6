@@ -28,11 +28,14 @@ public class OutputProcessor {
         final StringBuilder resultFormat = new StringBuilder();
 
         if (hasBallCount(result)) {
-            resultFormat.append(result.ballCount()).append(BALL);
+            resultFormat.append(result.ballCount())
+                    .append(BALL);
         }
 
         if (hasStrikeCount(result)) {
-            resultFormat.append(SEPARATOR).append(result.strikeCount()).append(STRIKE);
+            resultFormat.append(SEPARATOR)
+                    .append(result.strikeCount())
+                    .append(STRIKE);
         }
 
         return resultFormat.toString();
