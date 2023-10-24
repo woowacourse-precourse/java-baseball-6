@@ -3,8 +3,8 @@ package baseball.controller;
 import baseball.constant.StringError;
 import baseball.domain.AnswerChecker;
 import baseball.domain.Computer;
-import baseball.domain.Message;
 import baseball.domain.Validator;
+import baseball.io.Output;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -19,9 +19,8 @@ public class BaseballGame {
      * 게임을 동작시키는 기능
      * */
     public static void run() {
-        System.out.println(Message.init());
+        Output.printInit();
         List<Integer> c = Computer.newNumber();
-        System.out.println(c);
         start(c);
     }
 
@@ -33,7 +32,7 @@ public class BaseballGame {
 
         while (!result.equals("3스트라이크")) {
 
-            System.out.print(Message.pending());
+            Output.printUserInput();
             String input = Console.readLine();
 
             if (Validator.isNull(input)) {
@@ -44,7 +43,7 @@ public class BaseballGame {
 
             } else if (!Validator.isNumber(input)) {
                 exit(StringError.wrongInputError);
-                
+
             } else if (Validator.isDuplicate(input)) {
                 exit(StringError.duplicatedInputError);
             }
@@ -53,10 +52,10 @@ public class BaseballGame {
             List<Integer> userInput = stringToIntegerList(input);
             result = AnswerChecker.result(computer, userInput);
 
-            System.out.println(result);
+            Output.printCheckerResult(result);
         }
         // 정답을 맞춘 후 게임을 지속할 지 여부 묻기
-        System.out.println(Message.correct());
+        Output.printCorrect();
         continueGame();
     }
 
@@ -64,7 +63,7 @@ public class BaseballGame {
      * 비정상적인 입력으로 인해 예외를 발생시켜 종료시키는 기능
      * */
     public static void exit(String message) {
-        System.out.println(message);
+        Output.printError(message);
         Console.close();
         throw new IllegalArgumentException(message);
     }
@@ -74,20 +73,19 @@ public class BaseballGame {
      * */
     private static void continueGame() {
 
-        System.out.println(Message.continueOrNot());
+        Output.printContinue();
         String input = Console.readLine();
 
         if (!Validator.reStartChecker(input)) {
             exit(StringError.wrongInputError);
         }
         if (input.equals("1")) {
-            List<Integer> computer = Computer.newNumber();
-            System.out.println(computer);
-            start(computer);
+            List<Integer> c = Computer.newNumber();
+            start(c);
 
         } else if (input.equals("2")) {
             Console.close();
-            System.out.println(Message.expire());
+            Output.printExpire();
         }
     }
 
