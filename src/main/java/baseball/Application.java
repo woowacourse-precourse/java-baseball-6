@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -25,7 +26,13 @@ public class Application {
         try{
             while(true){
                 // 랜덤 3자리 숫자 생성
-                List<Integer> randNum = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT);
+                List<Integer> randNum = new ArrayList<>();
+                while(randNum.size() < COUNT){
+                    int randomNumber = Randoms.pickNumberInRange(START_NUM, END_NUM);
+                    if(!randNum.contains(randomNumber)){
+                        randNum.add(randomNumber);
+                    }
+                }
 
                 while(true){
                     // 사용자 입력 받기
