@@ -25,7 +25,7 @@ public class Application {
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                return;
+                throw new IllegalArgumentException(e.getMessage());
             }
         }
     }
@@ -41,7 +41,6 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             runException(input);
-
             char[] player = input.toCharArray();
             int strike = 0, ball = 0;
             String nothing = "낫싱";
