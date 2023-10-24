@@ -7,21 +7,24 @@ import java.util.List;
 public class GameNumber {
     private static final int BOARD_LIMIT = 3;
     private final List<Integer> board = new ArrayList<Integer>();
+    private static final String INPUT_DUPLICATE_ERROR_MESSAGE = "입력은 서로다른 3자리 수만 가능합니다.";
+    private static final String INPUT_OUT_OF_BOUND_ERROR_MESSAGE = "입력은 서로다른 3자리 수만 가능합니다.";
+    private static final String INPUT_NUMERIC_ERROR_MESSAGE = "양의 정수만 입력 가능합니다.";
 
     private void validateDuplicateNumber(int number) {
         if (board.contains(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     private void validateNumber(String number) {
         if (number.length() > BOARD_LIMIT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_OUT_OF_BOUND_ERROR_MESSAGE);
         }
         for (char c : number.toCharArray()) {
             int integerValue = Character.getNumericValue(c);
             if (integerValue == -1 || integerValue == 0) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(INPUT_NUMERIC_ERROR_MESSAGE);
             }
         }
     }
