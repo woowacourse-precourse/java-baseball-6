@@ -8,15 +8,18 @@ public class NumberBaseBallGame {
 
     private String randomNumber;
     private final String THREE_STRIKE = "3스트라이크";
+    private final NumberBaseballScoreEvaluator numberBaseballScoreEvaluator;
+    private final RandomNumberGenerator randomNumberGenerator;
 
-    public NumberBaseBallGame(RandomNumberGenerator generator) {
-        this.randomNumber = generator.generateNumbers();
+    public NumberBaseBallGame(RandomNumberGenerator generator,
+                              NumberBaseballScoreEvaluator numberBaseballScoreEvaluator) {
+        this.randomNumberGenerator = generator;
+        this.numberBaseballScoreEvaluator = numberBaseballScoreEvaluator;
+        initRandomNumber();
     }
 
     public RoundEvaluationResult evaluateRound(String input) {
-        System.out.println( "random :" + randomNumber);
-        String roundResult = new NumberBaseballScoreEvaluator(randomNumber,
-                input).evaluate();
+        String roundResult = numberBaseballScoreEvaluator.evaluate(input, randomNumber);
         if (Objects.equals(roundResult, THREE_STRIKE)) {
             return new RoundEvaluationResult(GameStatus.GAME_OVER, roundResult);
         }
@@ -24,6 +27,6 @@ public class NumberBaseBallGame {
     }
 
     public void initRandomNumber() {
-        randomNumber = new RandomNumberGenerator().generateNumbers();
+        randomNumber = randomNumberGenerator.generateNumbers();
     }
 }
