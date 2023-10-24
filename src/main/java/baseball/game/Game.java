@@ -2,6 +2,7 @@ package baseball.game;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.constant.GameConstant;
 import baseball.util.Print;
 import baseball.util.Utility;
 import baseball.util.Validation;
@@ -16,10 +17,11 @@ public class Game {
     public void play() {
         Print.showIntro();
 
-        String restartOrExitNumber = "1";
+        String restartOrExitNumber = GameConstant.RESTART_GAME.number;
 
-        while (restartOrExitNumber.equals("1")) {
+        while (restartOrExitNumber.equals(GameConstant.RESTART_GAME.number)) {
             initGame();
+            System.out.println(computer);
             playGame();
             restartOrExitNumber = gameOver();
         }
@@ -28,14 +30,16 @@ public class Game {
     }
 
     private static String gameOver() {
-        String restartOrExitNumber;
         Print.showGameOver();
+
+        String restartOrExitNumber;
 
         do {
             Print.showRestartOrExitInput();
             restartOrExitNumber = readLine();
         }
         while (!Validation.checkRestartOrExitNumber(restartOrExitNumber));
+
         return restartOrExitNumber;
     }
 

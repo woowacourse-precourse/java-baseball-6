@@ -1,34 +1,29 @@
 package baseball.util;
 
+import baseball.constant.Message;
+
 public class Print {
-    private static final String INTRO_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String REQUIRE_USER_INPUT = "숫자를 입력해주세요: ";
-    private static final String NOTHING = "낫싱";
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
-    private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
 
     public static void showIntro() {
-        System.out.println(INTRO_MESSAGE);
+        System.out.println(Message.INTRO_MESSAGE.message);
     }
 
     public static void showPredictUserInput() {
-        System.out.print(REQUIRE_USER_INPUT);
+        System.out.print(Message.REQUIRE_USER_INPUT.message);
     }
 
     public static void showPredictResult(int strike, int ball) {
         if (isNothing(strike, ball)) {
-            System.out.println(NOTHING);
+            System.out.println(Message.NOTHING.message);
         }
         if (isNoStrike(strike, ball)) {
-            System.out.println(ball + BALL);
+            System.out.println(ball + Message.BALL.message);
         }
         if (isNoBall(strike, ball)) {
-            System.out.println(strike + STRIKE);
+            System.out.println(strike + Message.STRIKE.message);
         }
         if (isStrikeAndBall(strike, ball)) {
-            System.out.println(ball + BALL + " " + strike + STRIKE);
+            System.out.println(ball + Message.BALL.message + " " + strike + Message.STRIKE.message);
         }
     }
 
@@ -49,10 +44,10 @@ public class Print {
     }
 
     public static void showGameOver() {
-        System.out.println(GAME_OVER);
+        System.out.println(Message.GAME_OVER.message);
     }
 
     public static void showRestartOrExitInput() {
-        System.out.println(RESTART_OR_EXIT);
+        System.out.println(Message.RESTART_OR_EXIT.message);
     }
 }
