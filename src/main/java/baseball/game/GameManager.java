@@ -5,7 +5,6 @@ import static baseball.resources.GameConst.*;
 
 import baseball.domain.ComputerNum;
 import baseball.domain.UserNum;
-import baseball.printer.Printer;
 import baseball.resources.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -14,53 +13,58 @@ public class GameManager {
     private final UserNum userNum;
     private final ComputerNum computerNum;
     private final BallCounter ballCounter;
-    private final Printer printer;
-
-    private Integer strike;
-    private Integer ball;
 
     public GameManager() {
         this.userNum = new UserNum();
         this.computerNum = new ComputerNum();
         this.ballCounter = new BallCounter();
-        this.printer = new Printer();
     }
 
     public void startGame() {
-        printer.printStartMessage();
+        System.out.println(GameMessage.GAME_START);
     }
 
     public void inputUserNumber() {
-        printer.printInputMessage();
+        System.out.print(GameMessage.INPUT_NUMBER);
         userNum.setNum(Console.readLine());
     }
 
-    public void showBallCount() {
-        int correctNumberSize = ballCounter.countCorrect(userNum.getNum(), computerNum.getNum());
-        strike = ballCounter.countStrike(userNum.getNum(), computerNum.getNum());
-        ball = correctNumberSize - strike;
+    public boolean checkResult() {
+        int strike = ballCounter.countStrike(userNum.getNum(), computerNum.getNum());
+        int ball = ballCounter.countBall(userNum.getNum(), computerNum.getNum());
 
-        printer.printBallCount(strike, ball);
-    }
+        printBallCount(strike, ball);
 
-    public boolean checkGameOver() {
         if (strike == ALL_STRIKE) {
-            printer.printCorrectMessage();
-            return true;
+            System.out.println(GameMessage.CORRECT_MESSAGE);
+            return GAME_OVER;
         }
-        return false;
+
+        return NOT_GAME_OVER;
     }
 
     public boolean askRestartGame() {
-        printer.printAskRestart();
+        System.out.println(GameMessage.ASK_RESTART);
         Integer enterValue = Integer.parseInt(Console.readLine());
 
         if (enterValue == WANT_RESTART) {
-            return true;
-        } else if (enterValue == WANT_END) {
-            return false;
+            return RESTART;
+        } else if (enterValue == WANT_EXIT) {
+            return EXIT_GAME;
         }
 
         throw new IllegalArgumentException();
+    }
+
+    private void printBallCount(int strike, int ball) {
+        if (strike == ZERO && ball == ZERO) {
+            System.out.println(GameMessage.NOTHING);
+        } else if (strike == ZERO && ball > ZERO) {
+            System.out.printf(GameMessage.ONLY_BALL, ball);
+        } else if (strike > ZERO && ball == ZERO) {
+            System.out.printf(GameMessage.ONLY_STRIKE, strike);
+        } else if (strike > ZERO && ball > ZERO) {
+            System.out.printf(GameMessage.BALL_AND_STRIKE, ball, strike);
+        }
     }
 }
