@@ -18,7 +18,7 @@ public class ComputerRandomGameNumber {
     }
 
     public ComputerRandomGameNumber() {
-        this. computerGameNumber = computerNumberListToString(getRandomsNumberList());
+        this.computerGameNumber = computerNumberListToString(getRandomsNumberList());
     }
 
     public String getComputerGameNumber() {

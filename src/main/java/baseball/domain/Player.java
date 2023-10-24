@@ -45,7 +45,7 @@ public class Player {
         this.playerStatus = playerStatus;
     }
 
-    public static void isStringLengthCorrect(String word){
+    public static void isStringLengthCorrect(String word) {
         if (word.length() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.(입력값 3자리수)");
         }

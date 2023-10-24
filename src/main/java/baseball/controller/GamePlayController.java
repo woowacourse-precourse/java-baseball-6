@@ -29,11 +29,11 @@ public class GamePlayController {
         outputView.printCreateController();
     }
 
-    public void gameStart(){
+    public void gameStart() {
         computer = new Computer(new ComputerRandomGameNumber());
         player = new Player();
 
-        while (player.getPlayerStatus() != PlayerStatus.END){
+        while (player.getPlayerStatus() != PlayerStatus.END) {
             inputPlayerNumber();
             hintResult(calculateBallAndStrikeCount(
                     computer.getComputerGameNumber(), player.getPlayerNumber()));
@@ -54,7 +54,7 @@ public class GamePlayController {
     public void hintResult(List<Integer> ballAndStrikeCountList) {
         playerHintUtil.ballAndStrikeResultHint(ballAndStrikeCountList);
 
-        if (ballAndStrikeCountList.get(STRIKE_INDEX) == THREE_STRIKE){
+        if (ballAndStrikeCountList.get(STRIKE_INDEX) == THREE_STRIKE) {
             outputView.printThreeStrikeResult(THREE_STRIKE);
             return;
         }
@@ -62,8 +62,8 @@ public class GamePlayController {
     }
 
     private void isThreeStrikeGameExit() {
-        if (PlayerHintUtil.getPlayerHint().equals(THREE_STRIKE + STRIKE)){
-            gameRetryService.processNextGameStatus(computer,player);
+        if (PlayerHintUtil.getPlayerHint().equals(THREE_STRIKE + STRIKE)) {
+            gameRetryService.processNextGameStatus(computer, player);
         }
     }
 }

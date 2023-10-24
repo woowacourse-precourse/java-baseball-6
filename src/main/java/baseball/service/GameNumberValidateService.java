@@ -30,7 +30,7 @@ public class GameNumberValidateService {
 
     private void isBallCheck(char computerPlaceNumber, int computerPlace, String playerNumber) {
         for (int playerPlace = 0; playerPlace < NUMBER_LENGTH; playerPlace++) {
-            if (computerPlaceNumber == playerNumber.charAt(playerPlace) && computerPlace != playerPlace){
+            if (computerPlaceNumber == playerNumber.charAt(playerPlace) && computerPlace != playerPlace) {
                 ballCount++;
             }
         }
@@ -38,7 +38,7 @@ public class GameNumberValidateService {
 
     private int calculateStrikeCount(String computerGameNumber, String playerNumber) {
         for (int place = 0; place < NUMBER_LENGTH; place++) {
-            if (isStrikeCheck(computerGameNumber.charAt(place), playerNumber.charAt(place))){
+            if (isStrikeCheck(computerGameNumber.charAt(place), playerNumber.charAt(place))) {
                 strikeCount++;
             }
         }
@@ -48,6 +48,7 @@ public class GameNumberValidateService {
     private boolean isStrikeCheck(char computerPlaceNumber, char playerPlaceNumber) {
         return computerPlaceNumber == playerPlaceNumber;
     }
+
     public int getBallCount() {
         return ballCount;
     }

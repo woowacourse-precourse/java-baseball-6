@@ -13,7 +13,7 @@ public class PlayerHintUtil {
 
     private static String playerHint;
 
-    public void ballAndStrikeResultHint(List<Integer> ballAndStrikeCount){
+    public void ballAndStrikeResultHint(List<Integer> ballAndStrikeCount) {
         int ballCount = ballAndStrikeCount.get(BALL_INDEX);
         int strikeCount = ballAndStrikeCount.get(STRIKE_INDEX);
 
