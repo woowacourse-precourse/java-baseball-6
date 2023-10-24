@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.domain.Game;
-import baseball.domain.User;
+import baseball.model.Game;
+import baseball.model.User;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
 import baseball.view.GameInputView;
@@ -19,7 +19,6 @@ public class GameService {
     public void setGame() {
         gameOutputView.printStartGame();
         game = new Game(randomUtils.getGameNumber());
-        System.out.println(game.getGameNumber()[0] + " " + game.getGameNumber()[1] + " " + game.getGameNumber()[2]);
     }
 
     public void playGame() {
@@ -37,6 +36,16 @@ public class GameService {
 
     public void endGame() {
         gameOutputView.printGameOver();
+    }
+
+    public int retryGame() throws IllegalArgumentException{
+        gameOutputView.printRetryGame();
+        int number = parser.parseUserInput(gameInputView.getUserInput(),1)[0];
+        if (number != 1 && number != 2) {
+            throw new IllegalArgumentException();
+        }
+
+        return number;
     }
 
     public void computeScore(int[] gameNumber, int[] userNumber) {
