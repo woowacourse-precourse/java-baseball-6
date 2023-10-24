@@ -1,7 +1,9 @@
 package baseball.service;
 
+import baseball.util.Constants;
 import java.util.ArrayList;
 import java.util.Objects;
+import static baseball.util.Constants.*;
 
 public class UmpireService {
     private int ballCount = 0;
@@ -41,6 +43,13 @@ public class UmpireService {
             }
         }
         return ballCount;
+    }
+
+    public String getRestartNumber(String input) {
+        if (input.equals(RESTART)) {
+            return RESTART;
+        }
+        return END;
     }
 }
 

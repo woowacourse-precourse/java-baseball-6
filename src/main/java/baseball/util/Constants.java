@@ -7,4 +7,6 @@ public class Constants {
     public static final Integer NUMBER_MAX_RANGE = 9;
     public static final Integer ZERO = 0;
     public static final Integer ONE = 1;
+    public static final String RESTART = "1";
+    public static final String END = "2";
 }
