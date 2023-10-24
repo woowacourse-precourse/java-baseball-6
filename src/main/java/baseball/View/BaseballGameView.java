@@ -19,7 +19,7 @@ public class BaseballGameView {
     }
 
     public void printRestartOrQuitMessage() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public int getRestartOrQuitOption() {

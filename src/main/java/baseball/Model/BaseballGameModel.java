@@ -26,7 +26,7 @@ public class BaseballGameModel {
         return answer;
     }
 
-        public String guess(int[] guess) {
+    public String guess(int[] guess) {
         int strikes = 0;
         int balls = 0;
 
@@ -42,8 +42,11 @@ public class BaseballGameModel {
             return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
 
-        return getResultMessage(strikes, balls);
+        int[] result = new int[]{strikes, balls};
+        return formatResult(result);
     }
+
+
 
     private boolean contains(int number) {
         for (int num : answer) {
@@ -54,22 +57,29 @@ public class BaseballGameModel {
         return false;
     }
 
-    private String getResultMessage(int strikes, int balls) {
-        StringBuilder result = new StringBuilder();
-    
-        if (strikes > 0) {
-            result.append(strikes).append("스트라이크 ");
+    private String formatResult(int[] result) {
+        StringBuilder formattedResult = new StringBuilder();
+        boolean hasOutput = false;
+
+        if (result[1] > 0) {
+            formattedResult.append(result[1]).append("볼");
+            hasOutput = true;
         }
-    
-        if (balls > 0) {
-            result.append(balls).append("볼 ");
+
+        if (result[1] > 0 && result[0] > 0) {
+            formattedResult.append(" ");
         }
-    
-        if (strikes == 0 && balls == 0) {
-            result.append("낫싱");
+
+        if (result[0] > 0) {
+            formattedResult.append(result[0]).append("스트라이크");
+            hasOutput = true;
         }
-    
-        return result.toString();
+
+        if (!hasOutput) {
+            formattedResult.append("낫싱");
+        }
+
+        return formattedResult.toString();
     }
-    
+
 }
