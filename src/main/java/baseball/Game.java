@@ -8,13 +8,17 @@ public class Game {
     private User user;
 
     enum QuitInput {
-        RESTART(1),
-        QUIT(2);
+        RESTART("1"),
+        QUIT("2");
 
-        private int num;
+        private String num;
 
-        private QuitInput(int num) {
+        private QuitInput(String num) {
             this.num = num;
+        }
+
+        public String getQuitInput() {
+            return num;
         }
     }
 
@@ -47,7 +51,7 @@ public class Game {
     private void endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         input = user.getQuitInput();
-        if (input.equals(QuitInput.QUIT))
+        if (input.equals(QuitInput.QUIT.getQuitInput()))
             quit = true;
     }
 }

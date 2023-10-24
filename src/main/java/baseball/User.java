@@ -45,7 +45,7 @@ public class User {
         if (!isInputLenRight(input, 1))
             return false;
 
-        if (!input.equals(QuitInput.RESTART) && !input.equals(QuitInput.QUIT))
+        if (!input.equals(QuitInput.RESTART.getQuitInput()) && !input.equals(QuitInput.QUIT.getQuitInput()))
             return false;
 
         return true;
