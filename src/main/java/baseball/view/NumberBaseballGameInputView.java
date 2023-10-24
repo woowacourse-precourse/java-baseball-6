@@ -10,8 +10,19 @@ public class NumberBaseballGameInputView {
     public final String readUserInput() {
         String input = readNonNullInput();
 
+        System.out.println(input);
         if (!isValidInput(input)) {
             throw new IllegalArgumentException("입력값은 3자리의 숫자여야 합니다.");
+        }
+
+        return input;
+    }
+
+    public final String readRestartResponseInput() {
+        String input = readNonNullInput();
+        System.out.println(input);
+        if (!isValidRestartInput(input)) {
+            throw new IllegalArgumentException("입력값은 1또는 2입니다.");
         }
 
         return input;
@@ -29,6 +40,9 @@ public class NumberBaseballGameInputView {
 
     private boolean isValidInput(String str) {
         return Pattern.matches("[0-9]{3}", str);
+    }
+    private boolean isValidRestartInput(String str) {
+        return Pattern.matches("[1-2]", str);
     }
 
 

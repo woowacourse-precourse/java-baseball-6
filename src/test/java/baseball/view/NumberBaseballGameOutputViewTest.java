@@ -41,4 +41,5 @@ class NumberBaseballGameOutputViewTest {
         outputView.printNumberInputRequest();
         assertEquals(printMessage + "\r\n", outContent.toString());
     }
+
 }
