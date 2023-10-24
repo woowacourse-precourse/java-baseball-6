@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.utils.Constant;
+
 public class InputValidator {
 
     public void validate(String userInput) {
@@ -10,11 +12,11 @@ public class InputValidator {
     }
 
     private boolean isNotThreeDigits(String userInput) {
-        return userInput.length() != 3;
+        return userInput.length() != Constant.RANDOM_NUMBER_SIZE;
     }
 
     private boolean containsDuplicateNumber(String userInput) {
-        for (int i = 0; i < userInput.length(); i++) {
+        for (int i = Constant.COUNT_ZERO; i < userInput.length(); i++) {
             char c = userInput.charAt(i);
             if (userInput.indexOf(c) != userInput.lastIndexOf(c)) {
                 return true;
@@ -26,7 +28,7 @@ public class InputValidator {
     private boolean containsInvalidNumber(String userInput) {
         for (char c : userInput.toCharArray()) {
             int number = Character.getNumericValue(c);
-            if (number < 1 || number > 9) {
+            if (number < Constant.RANDOM_NUMBER_START || number > Constant.RANDOM_NUMBER_END) {
                 return true;
             }
         }

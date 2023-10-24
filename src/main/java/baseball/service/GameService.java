@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.utils.Constant;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,9 @@ public class GameService {
 
     private List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (numbers.size() < Constant.RANDOM_NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(Constant.RANDOM_NUMBER_START,
+                    Constant.RANDOM_NUMBER_END);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
@@ -31,10 +33,10 @@ public class GameService {
     }
 
     private String generateResultMessage(String userInput) {
-        int ballCount = 0;
-        int strikeCount = 0;
+        int ballCount = Constant.COUNT_ZERO;
+        int strikeCount = Constant.COUNT_ZERO;
 
-        for (int i = 0; i < userInput.length(); i++) {
+        for (int i = Constant.COUNT_ZERO; i < userInput.length(); i++) {
             if (isStrike(userInput, i)) {
                 strikeCount++;
             } else if (isBall(userInput, i)) {
@@ -53,18 +55,19 @@ public class GameService {
         int number = Character.getNumericValue(userInput.charAt(index));
         return randomNumbers.contains(number) && !isStrike(userInput, index);
     }
+
     private String getResultMessage(int ballCount, int strikeCount) {
-        if (strikeCount == 0 && ballCount == 0) {
+        if (strikeCount == Constant.COUNT_ZERO && ballCount == Constant.COUNT_ZERO) {
             return "낫싱";
         }
 
         StringBuilder resultMessageBuilder = new StringBuilder();
 
-        if(ballCount > 0){
+        if (ballCount > Constant.COUNT_ZERO) {
             resultMessageBuilder.append(ballCount).append("볼 ");
         }
 
-        if(strikeCount > 0){
+        if (strikeCount > Constant.COUNT_ZERO) {
             resultMessageBuilder.append(strikeCount).append("스트라이크");
         }
 
