@@ -1,6 +1,6 @@
 package baseball.domain.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import baseball.domain.util.RandomNumberGenerator;
@@ -24,7 +24,7 @@ class NumberBaseBallGameTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         evaluator = new NumberBaseballScoreEvaluator();
-        when(randomNumberGenerator.generateNumbers()).thenReturn(GENERATED_NUMBER);
+        when(randomNumberGenerator.generateRandomNumbers()).thenReturn(GENERATED_NUMBER);
         numberBaseBallGame = new NumberBaseBallGame(randomNumberGenerator, evaluator);
     }
 

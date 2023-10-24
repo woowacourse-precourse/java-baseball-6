@@ -26,6 +26,6 @@ public class NumberBaseBallGame {
     }
 
     public void initRandomNumber() {
-        randomNumber = randomNumberGenerator.generateNumbers();
+        randomNumber = randomNumberGenerator.generateRandomNumbers();
     }
 }

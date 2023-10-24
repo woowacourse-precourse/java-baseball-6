@@ -1,10 +1,9 @@
 package baseball;
 
 import baseball.controller.NumberBaseballGameController;
-import baseball.domain.service.BaseballScoreCounter;
 import baseball.domain.service.NumberBaseBallGame;
 import baseball.domain.service.NumberBaseballScoreEvaluator;
-import baseball.domain.util.RandomNumberGenerator;
+import baseball.domain.util.BaseballRandomNumberGenerator;
 import baseball.view.NumberBaseballGameInputView;
 import baseball.view.NumberBaseballGameOutputView;
 
@@ -15,7 +14,7 @@ public class Application {
                 new NumberBaseballGameInputView(),
                 new NumberBaseballGameOutputView(),
                 new NumberBaseBallGame(
-                        new RandomNumberGenerator(),
+                        new BaseballRandomNumberGenerator(),
                         new NumberBaseballScoreEvaluator()
                 )
         ).playGame();

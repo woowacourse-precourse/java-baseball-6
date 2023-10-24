@@ -5,7 +5,7 @@ import java.util.Arrays;
 public enum GameStatus {
     GAME_OVER("3스트라이크"),
     CONTINUE(""),
-    EXIT("");
+    EXIT("2");
 
 
     private final String resultMessage;

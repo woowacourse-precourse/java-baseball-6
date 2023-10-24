@@ -6,7 +6,6 @@ import java.util.Objects;
 public class RoundEvaluationResult {
     private GameStatus gameStatus;
     private final String evaluationMessage;
-    private final String EXIT_GAMENUMBER = "2";
 
     public RoundEvaluationResult(GameStatus gameStatus, String evaluationMessage) {
         this.gameStatus = gameStatus;
@@ -26,9 +25,7 @@ public class RoundEvaluationResult {
     }
 
     public void eveluateRestart(String readRestartResponseInput) {
-        if (Objects.equals(readRestartResponseInput, EXIT_GAMENUMBER)) {
-            gameStatus = GameStatus.EXIT;
-        }
+        gameStatus = GameStatus.of(readRestartResponseInput);
     }
 }
 
