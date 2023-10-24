@@ -15,6 +15,8 @@ public class UserNumber {
             throw new IllegalArgumentException("1-9 사이의 숫자가 아닙니다.");
         } else if (checkDuplicate(input)) {
             throw new IllegalArgumentException("서로 다른 숫자를 입력해야합니다.");
+        } else if (input==null || input.isEmpty()) {
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
     }
 
