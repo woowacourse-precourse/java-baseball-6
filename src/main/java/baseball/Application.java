@@ -27,11 +27,7 @@ public class Application {
 
                 userListValid(user);
 
-                HashMap<Integer, Integer> map = new HashMap();
-
-                for (int k = 0; k < user.size(); k++) {
-                    map.put(computer.get(k), user.get(k));
-                }
+                computerUserComparisonList(user, computer);
                 int ball = 0;
                 int strike = 0;
                 for (int m = 0; m < user.size(); m++) {
@@ -71,6 +67,12 @@ public class Application {
             }
         }
 
+    }
+    public static void computerUserComparisonList(List<Integer> user, List<Integer> computer){
+        HashMap<Integer, Integer> map = new HashMap();
+        for (int k = 0; k < user.size(); k++) {
+            map.put(computer.get(k), user.get(k));
+        }
     }
     public static void userListValid(List<Integer> user){
         if (!(user.size() == 3)) {
