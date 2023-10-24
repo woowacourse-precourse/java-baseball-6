@@ -31,4 +31,5 @@
 
 2023.10.24.(TUE)
 -
+- 리팩토링 ✅
 - class로 나눈 기능들 제대로 작동하는지 test한 후 각 class 별 test code 작성
