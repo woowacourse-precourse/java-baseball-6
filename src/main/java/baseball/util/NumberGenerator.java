@@ -8,23 +8,30 @@ import java.util.List;
 
 public class NumberGenerator {
 
-    private final List<Integer> numbers;
+    private final List<Integer> generatedNumber;
 
     public NumberGenerator() {
-        this.numbers = new ArrayList<>();
+        this.generatedNumber = new ArrayList<>();
     }
 
     public List<Integer> generate() {
-        int number = Randoms.pickNumberInRange(
-                GameConstant.GAME_START_INCLUSIVE.getConstant(), GameConstant.GAME_END_INCLUSIVE.getConstant());
-        if (isValidNumber(number)) {
-            numbers.add(number);
+
+        while (generatedNumber.size() < 3) {
+            int number = Randoms.pickNumberInRange(
+                    GameConstant.GAME_START_INCLUSIVE.getConstant(), GameConstant.GAME_END_INCLUSIVE.getConstant());
+            addNumber(number);
         }
-        return numbers;
+        return generatedNumber;
+    }
+
+    private void addNumber(int number) {
+        if (isValidNumber(number)) {
+            generatedNumber.add(number);
+        }
     }
 
     private boolean isValidNumber(int number) {
-        return !numbers.contains(number);
+        return !generatedNumber.contains(number);
     }
 
 }
