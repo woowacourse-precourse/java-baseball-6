@@ -15,12 +15,12 @@ public class BaseballTest {
     void randomConstructorTest() {
         Baseball baseball = new Baseball();
 
-        assertThat(baseball.isDuplicated(baseball.balls)).isFalse();
+        assertThat(baseball.isDuplicated(baseball.toString())).isFalse();
         assertThat(baseball.balls.contains(0)).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"asd", "400", "1", "13"})
+    @ValueSource(strings = {"asd", "406", "558", "1", "13", "0123", "%45", "s23", "7df"})
     void inputConstructorExceptionTest(String input) {
         assertThatThrownBy(() -> new Baseball(input))
                 .isInstanceOf(IllegalArgumentException.class);
