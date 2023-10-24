@@ -35,10 +35,10 @@
 <img src="baseball_flow.png">
 
 ## 체크리스트
-- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-- [ ] JDK 17 버전에서 실행 가능해야 한다.
-- [ ] 프로그램 종료 시 System.exit()를 호출하지 않는다.
-- [ ] Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다.
-- [ ] 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다.
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-- [ ] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- [x] JDK 17 버전에서 실행 가능해야 한다.
+- [x] 프로그램 종료 시 System.exit()를 호출하지 않는다.
+- [x] Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다.
+- [x] 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다.
+- [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
