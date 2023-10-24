@@ -16,19 +16,19 @@ public class Application {
     }
 }
 
-class Game{
-    public void play(){
+class Game {
+    public void play() {
         List<Integer> computerNumber = generateComputerNumber();
-        while (true) { //running game
-            List<Integer> userGuess = getUserInput();
-            int[] result = CheckResult(computerNumber, userGuess);
-            printResult(result);
 
-            if (checkWinCondition(result[1])) {
-                if (restartOrnot() == 1) { //restart 1, end 2
-                    computerNumber = generateComputerNumber();
-                } else
-                    break;
+        while (true) {
+            List<Integer> userGuess = getUserInput();
+            GameOutcome outcome = checkOutcome(computerNumber, userGuess);
+            printOutcome(outcome);
+
+            if (outcome.strike == 3 && askRestart()) {
+                computerNumber = generateComputerNumber();
+            } else {
+                break;
             }
         }
     }
@@ -61,12 +61,12 @@ class Game{
     }
 
     //check&return the number of strike and ball
-    private CheckResult checkreslt (List<Integer> computerNumber, List<Integer> userGuess){
+    private GameOutcome checkOutcome(List<Integer> computerNumber, List<Integer> userGuess) {
         int ball = 0, strike = 0;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (computerNumber.get(i).equals(userGuess.get(j))) {//same number exist
+                if (computerNumber.get(i).equals(userGuess.get(j))) {
                     if (i != j) {
                         ball++;
                     } else {
@@ -77,7 +77,7 @@ class Game{
             }
         }
 
-        return new CheckResult(ball,strike);
+        return new GameOutcome(ball, strike);
     }
 
     private static void printResult(int[] result) {
@@ -116,5 +116,14 @@ class Game{
                 System.out.println("잘못된 입력입니다.");
             }
         }
+    }
+}
+
+class GameOutcome {
+    int ball, strike;
+
+    public GameOutcome(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
     }
 }
