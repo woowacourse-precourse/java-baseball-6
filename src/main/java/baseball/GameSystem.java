@@ -10,9 +10,14 @@ public class GameSystem {
     }
 
     private void startGame() {
+        InputMsgView inputMsgView = new InputMsgView();
+        inputMsgView.printStartMsg();
+
         Computer computer = new Computer();
         computer.generateNumbers();
         List<Integer> computerNumbers = computer.getNumbers();
+
+        inputMsgView.printInputNumberMsg();
     }
 
     private boolean restartGame() {
