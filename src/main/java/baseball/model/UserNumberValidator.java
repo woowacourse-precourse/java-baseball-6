@@ -11,7 +11,7 @@ public class UserNumberValidator {
      * 숫자가 아닐 경우 예외 발생
      */
     private static void checkIsDigit(String inputWord) {
-        if (!inputWord.chars().allMatch(Character::isDigit)) {
+        if (inputWord.chars().noneMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
