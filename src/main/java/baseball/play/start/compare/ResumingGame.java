@@ -1,14 +1,14 @@
 package baseball.play.start.compare;
 
-public sealed interface GameResume permits Nothing, OneBall, OneBallOneStrike, OneBallTwoStrike,
+public sealed interface ResumingGame permits Nothing, OneBall, OneBallOneStrike, OneBallTwoStrike,
     OneStrike, TwoStrike, ThreeBall, TwoBall, TwoBallOneStrike {
 
-  String randomNums();
-
   String getResumeMessage();
+
+  String randomNums();
 }
 
-record Nothing(String randomNums) implements GameResume {
+record Nothing(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -16,7 +16,7 @@ record Nothing(String randomNums) implements GameResume {
   }
 }
 
-record OneBall(String randomNums) implements GameResume {
+record OneBall(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -24,7 +24,7 @@ record OneBall(String randomNums) implements GameResume {
   }
 }
 
-record OneStrike(String randomNums) implements GameResume {
+record OneStrike(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -32,7 +32,7 @@ record OneStrike(String randomNums) implements GameResume {
   }
 }
 
-record OneBallOneStrike(String randomNums) implements GameResume {
+record OneBallOneStrike(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -40,7 +40,7 @@ record OneBallOneStrike(String randomNums) implements GameResume {
   }
 }
 
-record TwoStrike(String randomNums) implements GameResume {
+record TwoStrike(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -48,7 +48,7 @@ record TwoStrike(String randomNums) implements GameResume {
   }
 }
 
-record OneBallTwoStrike(String randomNums) implements GameResume {
+record OneBallTwoStrike(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -56,7 +56,7 @@ record OneBallTwoStrike(String randomNums) implements GameResume {
   }
 }
 
-record TwoBall(String randomNums) implements GameResume {
+record TwoBall(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -64,7 +64,7 @@ record TwoBall(String randomNums) implements GameResume {
   }
 }
 
-record TwoBallOneStrike(String randomNums) implements GameResume {
+record TwoBallOneStrike(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
@@ -72,7 +72,7 @@ record TwoBallOneStrike(String randomNums) implements GameResume {
   }
 }
 
-record ThreeBall(String randomNums) implements GameResume {
+record ThreeBall(String randomNums) implements ResumingGame {
 
   @Override
   public String getResumeMessage() {
