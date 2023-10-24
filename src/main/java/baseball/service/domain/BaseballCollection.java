@@ -93,12 +93,6 @@ public class BaseballCollection {
         return start <= baseball && baseball <= end;
     }
 
-    // 기능: 같은 수가 전혀 없으면 낫싱
-    public boolean isNothing(BaseballCollection playerBalls) {
-        return this.baseball.stream()
-                .noneMatch(playerBalls.baseball::contains);
-    }
-
     public int calculateStrikeCount(BaseballCollection playerBalls) {
         return (int) IntStream.range(0, DEFAULT_CAPACITY)
                 .filter(index -> isStrike(this.baseball.get(index), playerBalls.baseball.get(index)))
