@@ -77,10 +77,10 @@ public class Application {
         return (digitCount == userInput.length());
     }
 
-    public static boolean isRightRangeNumber(List<Integer> threeNumber) {
-        Integer indexZero = threeNumber.get(0);
-        Integer indexOne = threeNumber.get(1);
-        Integer indexTwo = threeNumber.get(2);
+    public static boolean isRightRangeNumber(String userInput) {
+        int indexZero = userInput.charAt(0) - '0';
+        int indexOne = userInput.charAt(1) - '0';
+        int indexTwo = userInput.charAt(2) - '0';
 
         return (1 <= indexZero && indexZero <= 9)
                 && (1 <= indexOne && indexOne <= 9)
