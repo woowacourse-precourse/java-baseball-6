@@ -7,11 +7,6 @@ public class Application {
 
     // main 안에는 하나의 메소드를 호출하는 방식으로, 유지보수가 용이하고 가독성이 좋도록 하였습니다.
     public static void main(String[] args) {
-        playNumberBaseballGame();
-    }
-
-    // 먼저 숫자 야구 게임에 대한 메인 함수를 만들었습니다.
-    public static void playNumberBaseballGame() {
         boolean isGameOver = false; //게임 종료를 판단하기 위한 변수. true: 게임 중, false:게임 종료
         boolean play = true; //두번째 while문 탈출을 위해 만들어둔 변수
 
@@ -49,7 +44,7 @@ public class Application {
 
                 //스트라이크와 볼이 섞인 경우를 특별히 다뤄주자.
                 else if (result[0] > 0 && result[1] > 0) {
-                    System.out.println(result[1] + "볼" + " " + result[0] + " 스트라이크");
+                    System.out.println(result[1] + "볼" + " " + result[0] + "스트라이크");
                 }
                 //볼밖에 없을 때
                 else if (result[1] > 0 && result[0] == 0) {
