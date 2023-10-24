@@ -17,13 +17,13 @@ public class View {
         return new PlayerNumbers(numbers);
     }
 
-    public static GameControlCommand InputRestart() {
+    public static GameControlCommand inputRestart() {
         System.out.println(MESSAGE_INPUT_RESTART);
         String number = Console.readLine();
         return GameControlCommand.of(number);
     }
 
-    public static void PrintResult(Result result) {
+    public static void printResult(Result result) {
         System.out.println(result.getValueToMessage());
     }
 

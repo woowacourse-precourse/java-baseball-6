@@ -21,7 +21,7 @@ public class GameHost {
     }
 
     public void askRestart() {
-        GameControlCommand command = View.InputRestart();
+        GameControlCommand command = View.inputRestart();
         if (command.isEnd()) {
             isGameDone = true;
         }

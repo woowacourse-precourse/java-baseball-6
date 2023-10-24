@@ -15,7 +15,7 @@ public class BaseballGame {
         while (!isDone) {
             PlayerNumbers playerNumbers = View.inputPlayerNumbers();
             Result result = baseballNumbers.checkResult(playerNumbers);
-            View.PrintResult(result);
+            View.printResult(result);
 
             if (result.isThreeStrike()) isDone = true;
         }
