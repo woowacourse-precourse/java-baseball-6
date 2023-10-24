@@ -50,16 +50,16 @@ public class GameService {
             return "Nothing";
         }
 
-        String resultMessage = "";
+        String resultStrikeMessage = "";
+        String resultBallMessage = "";
 
         if (ballCount > 0) {
-            resultMessage += ballCount+"볼";
+            resultBallMessage = ballCount + "볼";
         }
 
         if (strikeCount > 0) {
-            resultMessage += strikeCount+"스트라이크";
+            resultStrikeMessage = strikeCount + "스트라이크";
         }
-
-        return resultMessage.trim();
+        return resultBallMessage + resultStrikeMessage;
     }
 }
