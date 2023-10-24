@@ -1,10 +1,9 @@
-package baseball.unitTests;
-
-import baseball.people.preparation.Referee;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+package baseball.people.preparation;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class RefereeTest {
 
