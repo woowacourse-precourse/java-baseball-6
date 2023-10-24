@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +83,7 @@ public class Application {
         System.out.println();
     }
 
-    public static boolean restartOrExitGame( List<Integer> selectNumber) {
+    public static boolean restartOrExitGame(List<Integer> selectNumber) {
         int exitNumber = 0;
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
