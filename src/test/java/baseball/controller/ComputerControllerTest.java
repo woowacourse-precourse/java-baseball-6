@@ -10,11 +10,12 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("게임 진행 테스트")
 class ComputerControllerTest {
     ComputerController computerController = new ComputerController();
 
     @Test
-    @DisplayName("랜덤값 3자리수 검증")
+    @DisplayName("컴퓨터수는 3자리 수여야 한다.")
     void createComputerNumber1() {
         //when
         List<Integer> computerNumber = RandomUtility.createComputerNumber();
@@ -24,7 +25,7 @@ class ComputerControllerTest {
     }
 
     @Test
-    @DisplayName("랜덤값 서로 다른 1~9 사이의 수 인지 검증")
+    @DisplayName("컴퓨터수는 1~9사이의 서로 다른 숫자로 구성되어야 한다.")
     void createComputerNumber2() {
         //when
         List<Integer> computerNumber = RandomUtility.createComputerNumber();
@@ -39,7 +40,7 @@ class ComputerControllerTest {
     }
 
     @Test
-    @DisplayName("볼과 스트라이크 갯수 검증")
+    @DisplayName("컴퓨터수와 입력값을 비교하여 Ball과 Strike 갯수를 반환한다.")
     void getBallAndStrikeCount() {
         //given
         List<Integer> computerNumber = new ArrayList<>();
@@ -64,7 +65,7 @@ class ComputerControllerTest {
     }
 
     @Test
-    @DisplayName("Hint 메시지 검증")
+    @DisplayName("결과에 따른 힌트 메시지를 반환한다.")
     void getHint() {
         //given
         BallAndStrikeCount threeStrike = new BallAndStrikeCount(0, 3);

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("재시작 입력 값 검증")
+@DisplayName("재시작 입력값 검증")
 class InputAnswerValidatorTest {
 
     @Test
