@@ -1,7 +1,7 @@
 package baseball;
 
 import static baseball.ComputerBalls.getComputerBalls;
-import static baseball.GameMessage.generateResultMessage;
+import static baseball.GameMessageUtil.generateResultMessage;
 import static baseball.NumberBaseballRule.countBall;
 import static baseball.NumberBaseballRule.countStrike;
 import static baseball.UserBalls.getUserInputBalls;
