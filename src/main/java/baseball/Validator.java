@@ -3,6 +3,7 @@ package baseball;
 import static baseball.Constant.DUPLICATE_INPUT_MESSAGE;
 import static baseball.Constant.INVALID_INPUT_MESSAGE;
 import static baseball.Constant.LENGTH_ERROR_MESSAGE;
+import static baseball.Constant.RESTART_ERROR_MESSAGE;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Validator {
 
     public void validateOption(String input) {
         if (!input.equals("1") && !input.equals("2")) {
-            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
+            throw new IllegalArgumentException(RESTART_ERROR_MESSAGE);
         }
     }
 

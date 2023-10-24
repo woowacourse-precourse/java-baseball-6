@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Game {
-
     private final GameManager gameManager;
     private final Computer computer;
     private final Player player;
