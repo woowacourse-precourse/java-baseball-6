@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class GameModel {
 
@@ -13,6 +15,30 @@ public class GameModel {
 
     public static GameModel getInstance() {
         return gameModel;
+    }
+
+    //사용자와 컴퓨터 숫자 비교
+    public List<Integer> compareNums(List<Integer> computer, List<Integer> user) {
+        int ball = 0;
+        int strike = 0;
+        List<Integer> match = computer.stream()
+                .filter(c -> user.stream().anyMatch(Predicate.isEqual(c)))
+                .collect(Collectors.toList());
+
+        if (match.size() > 0) {
+            ball = match.size();
+            for (int i = 0; i < 3; i++) {
+                if (computer.get(i) == user.get(i)) {
+                    strike++;
+                    ball--;
+                }
+            }
+        }
+
+        List<Integer> count = new ArrayList<>(); //[ball, strike]
+        count.add(ball);
+        count.add(strike);
+        return count;
     }
 
     //컴퓨터 숫자 생성
