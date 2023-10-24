@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 /* input, output 화면(메세지) 출력 */
 public class BaseballView {
-    public static final String INPUT_VALID_FORMAT_OF_NUMBER = "1~9 사이의 서로 다른 세 개의 숫자를 공백없이 입력해주세요.";
+    public static final String INPUT_VALID_FORMAT_OF_NUMBER = "1~9 사이의 서로 다른 세 개의 숫자를 공백없이 입력하세요.";
+    public static final String INPUT_VALID_RANGE_OF_OPTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     // 게임 시작 메세지
     public void outputGameStart() {
@@ -60,14 +61,21 @@ public class BaseballView {
     public String inputSelectRestartOrEnd() {
         outputSelectRestartOrEnd();
         String input = Console.readLine();
-        return Console.readLine();
+        checkValidOptionRange(input);
+        return input;
     }
 
     /* 입력 값 예외처리 */
-    private void checkValidNumberFormat(String readLine) {
-        isCorrectLength(readLine);
-        isExistChar(readLine);
-        isExistRepeatedNumber(readLine);
+    private void checkValidNumberFormat(String input) {
+        isCorrectLength(input);
+        isExistChar(input);
+        isExistRepeatedNumber(input);
+    }
+
+    private void checkValidOptionRange(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException(INPUT_VALID_RANGE_OF_OPTION);
+        }
     }
 
     private void isExistChar(String input) {
