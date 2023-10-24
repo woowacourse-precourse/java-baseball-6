@@ -9,6 +9,7 @@ public class InputView {
 		"올바른 게임 명령어가 입력되지 않았습니다.";
 	public static final int CORRECT_LENGTH = 3;
 	public static final String WRONG_LENGTH_EXCEPTION_MESSAGE = "게임 입력으로 " + CORRECT_LENGTH + "자리 숫자를 입력해야 합니다.";
+	public static final String SAME_NUMBER_EXCEPTION_MESSAGE = "게임 입력으로 모두 다른 숫자를 입력해야 합니다.";
 	public static final String INPUT_GAME_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 	public static final String INPUT_GAME_PROCESS_MESSAGE =
 		"게임을 새로 시작하려면 " + GAME_START_CMD + ", 종료하려면 " + GAME_END_CMD + "를 입력하세요.";
@@ -25,6 +26,9 @@ public class InputView {
 	private static void validateGameNumber(String input) {
 		if (input.length() != CORRECT_LENGTH) {
 			throw new IllegalArgumentException(WRONG_LENGTH_EXCEPTION_MESSAGE);
+		}
+		if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+			throw new IllegalArgumentException(SAME_NUMBER_EXCEPTION_MESSAGE);
 		}
 		validateInputNumber(input);
 	}
