@@ -11,13 +11,12 @@ public class BaseBallGame {
      */
     private List<Integer> computerNumber;
     private Helper helper;
-    private boolean isGameOver;
     private static final int BASEBALL_NUM_SIZE = 3;
+
 
     public BaseBallGame(Helper helper) {
         this.helper = helper;
         computerNumber = helper.generatorComputerNumber(BASEBALL_NUM_SIZE);
-        isGameOver = false;
     }
 
     /**
@@ -28,10 +27,6 @@ public class BaseBallGame {
         int totalCount = 0;
         int strikeCount = 0;
         int ballCount = 0;
-
-        if (userInput.size() != BASEBALL_NUM_SIZE) {
-            throw new IllegalArgumentException("입력 자릿 수 오류");
-        }
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             if (userInput.contains(computerNumber.get(i))) {
@@ -47,36 +42,10 @@ public class BaseBallGame {
         return listBallStrike;
     }
 
-    /**
-     * 게임을 다시 시작할때 셋팅해주는 메소드
-     */
-    public void restartGame(String userInput) {
-        if (userInput.equals("1")) {
-            computerNumber = helper.generatorComputerNumber(BASEBALL_NUM_SIZE);
-            isGameOver = false;
-            return;
+    public boolean checkThreeStrike(List<Integer> listBallStrike) {
+        if (listBallStrike.get(1) == BASEBALL_NUM_SIZE) {
+            return true;
         }
-        if (userInput.equals("2")) {
-            isGameOver = true;
-            return;
-        }
+        return false;
     }
-
-    /**
-     * 게임이 현재 끝난 상태인지 반환함
-     */
-    public boolean isGameOver() {
-        return isGameOver;
-    }
-
-    /**
-     * 게임이 끝났는지 체크해줌
-     */
-    public void gameOverCheck(int strike) {
-        if (strike == BASEBALL_NUM_SIZE) {
-            isGameOver = true;
-        }
-    }
-
-
 }

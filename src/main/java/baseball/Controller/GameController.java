@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.Model.BaseBallGame;
+import baseball.Model.GameState;
 import baseball.Model.Helper;
 import baseball.Model.Valid;
 import baseball.View.GameView;
@@ -8,28 +9,31 @@ import java.util.List;
 
 public class GameController {
     private GameView gameView = new GameView();
+    private GameState gameState;
 
     public void startGame() {
         Helper helper = new Helper();
-        BaseBallGame baseBallGame = new BaseBallGame(helper);
+        gameState = GameState.GAME_START;
+
         gameView.printStartMessage();
-        while (!baseBallGame.isGameOver()) {
+
+        while (gameState != GameState.GAME_END) {
+            BaseBallGame baseBallGame = new BaseBallGame(helper);
             playGame(helper, baseBallGame);
             String inputRestart = gameView.printGameOverMessage();
-            baseBallGame.restartGame(inputRestart);
+            gameState = GameState.gameRestart(Valid.restartValid(inputRestart));
         }
     }
 
     public void playGame(Helper helper, BaseBallGame baseBallGame) {
-        while (true) {
+        while (gameState != GameState.GAME_OVER) {
             String input = Valid.startValid(gameView.printInputMessage());
             List<Integer> userInput = helper.parseUserInput(input);
             List<Integer> ballStrikeCount = baseBallGame.checkBallCount(userInput);
 
             gameView.printBallStrikeMessage(ballStrikeCount);
-
-            baseBallGame.gameOverCheck(ballStrikeCount.get(1));
+            gameState = GameState.gameOver(baseBallGame.checkThreeStrike(ballStrikeCount));
         }
-
     }
+
 }
