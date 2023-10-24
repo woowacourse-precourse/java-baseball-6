@@ -52,9 +52,6 @@ public class Application {
         return numbers;
     }
 
-
-
-
     public static void printResult(int[] cnt){
         if (cnt[0] == 0 && cnt[1] == 0) {
             System.out.println(NOTHING);
@@ -63,7 +60,7 @@ public class Application {
             System.out.println(WIN_AND_END);
         } else {
             System.out.println(
-                    String.valueOf(cnt[1]) + BALL
+                    String.valueOf(cnt[1]) + BALL +" "
                             + String.valueOf(cnt[0]) + STRIKE
             );
         }
@@ -88,7 +85,6 @@ public class Application {
     public static boolean isGameEnd(int[] cnt){
         return cnt[0] == 3;
     }
-
 
     public static void main(String[] args) {
         System.out.println(START_GAME);
