@@ -41,7 +41,7 @@ public class Numbers {
     private void validateRange(List<Integer> elements) {
         int max = BallConstant.MAX_NUMBER.getValue();
         int min = BallConstant.MIN_NUMBER.getValue();
-        for (int value: elements) {
+        for (int value : elements) {
             if (!(min <= value && value <= max)) {
                 ExceptionMessage message = ExceptionMessage.INVALID_RANGE;
                 throw new IllegalArgumentException(message.getMessage());

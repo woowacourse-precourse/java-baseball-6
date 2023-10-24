@@ -13,13 +13,14 @@ public enum RetryCommand {
         this.command = command;
     }
 
-    public boolean isEnd() {
-        return this == END;
-    }
     public static RetryCommand getRetryCommand(int command) {
         return Arrays.stream(RetryCommand.values())
                 .filter(value -> value.command == command)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_RETRY_COMMAND.getMessage()));
+    }
+
+    public boolean isEnd() {
+        return this == END;
     }
 }

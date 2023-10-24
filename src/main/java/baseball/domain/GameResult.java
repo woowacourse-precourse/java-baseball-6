@@ -16,7 +16,7 @@ public class GameResult {
     public GameResult() {
         this.elements = new EnumMap<>(BallStatus.class);
         Arrays.stream(BallStatus.values())
-                .forEach(value -> elements.put(value , DEFAULT));
+                .forEach(value -> elements.put(value, DEFAULT));
 
     }
 

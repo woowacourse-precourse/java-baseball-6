@@ -1,10 +1,10 @@
 package baseball.controller;
 
 import baseball.constant.RetryCommand;
+import baseball.domain.BaseBallGame;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
-import baseball.domain.BaseBallGame;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
