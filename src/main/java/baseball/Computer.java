@@ -20,13 +20,12 @@ public class Computer {
     public List<Integer> compareTargetNumbers(List<Integer> inputNumbers) {
         List<Integer> hintCounts = new ArrayList<>(Hints.values().length);
 
-        setListZero(hintCounts);
+        setListZero(hintCounts,Hints.values().length);
 
         for (int i = 0; i < inputNumbers.size(); i++) {
             int hintType = calculateHint(inputNumbers.get(i), i);
             hintCounts.set(hintType, hintCounts.get(hintType) + 1);
         }
-
         return hintCounts;
     }
 
@@ -42,9 +41,9 @@ public class Computer {
         return Hints.NOTHING.ordinal();
     }
 
-    private void setListZero(List<Integer> targetList) {
-        for (int i = 0; i < targetList.size(); i++) {
-            targetList.set(i,0);
+    private void setListZero(List<Integer> targetList,int counts) {
+        for (int i = 0; i < counts; i++) {
+            targetList.add(0);
         }
     }
 

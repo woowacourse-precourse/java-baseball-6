@@ -9,34 +9,44 @@ public class Validator {
 
     public static List<Integer> checkThreeNumbers(String inputNumbers) {
 
-        if (inputNumbers.length() != 3) {
-            throw new IllegalArgumentException();
-        }
+        checkLength(inputNumbers, 3);
 
         List<Integer> saveThreeNumbers = new ArrayList<>(3);
 
         for (int i = 0; i < inputNumbers.length(); i++) {
-            try {
-                int convertInt = checkConvertInt(inputNumbers.charAt(i));
-                saveThreeNumbers.add(convertInt);
-
-            } catch (Exception e) {
-                throw new IllegalArgumentException();
-            }
+            int convertInt = checkConvertInt(inputNumbers.charAt(i), 1, 9);
+            saveThreeNumbers.add(convertInt);
         }
 
-        if(!checkDuplication(saveThreeNumbers)){
+        if (!checkDuplication(saveThreeNumbers)) {
             throw new IllegalArgumentException();
         }
 
         return saveThreeNumbers;
     }
 
-    private static int checkZeroToNine(int targetNumber) {
-        if (targetNumber < 1 || 9 < targetNumber) {
+    public static int checkEndNumber(String inputNumbers) {
+        checkLength(inputNumbers, 1);
+        return checkConvertInt(inputNumbers.charAt(0), 1, 2);
+    }
+
+    private static void checkLength(String inputNumbers, int length) {
+        if (inputNumbers.length() != length) {
             throw new IllegalArgumentException();
         }
-        return targetNumber;
+    }
+
+    private static int checkConvertInt(char inputNumber, int min, int max) {
+        int convertInt = Character.getNumericValue(inputNumber);
+        checkRange(convertInt, min, max);
+
+        return convertInt;
+    }
+
+    private static void checkRange(int targetNumber, int min, int max) {
+        if (targetNumber < min || max < targetNumber) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static boolean checkDuplication(List<Integer> threeNumbers) {
@@ -52,10 +62,5 @@ public class Validator {
         return true;
     }
 
-    private static int checkConvertInt(char inputNumber){
-        int convertInt = Character.getNumericValue(inputNumber);
-        checkZeroToNine(convertInt);
 
-        return convertInt;
-    }
 }

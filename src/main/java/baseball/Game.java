@@ -8,21 +8,25 @@ public class Game {
     }
 
     public void run() {
-
+        while (true) {
+            if (gamePlay() == 2) {
+                break;
+            }
+        }
     }
 
-    private boolean gamePlay(){
+    private int gamePlay() {
         Computer computer = new Computer();
         Player player = new Player();
 
-        while(true) {
+        while (true) {
             List<Integer> hintValues = computer.compareTargetNumbers(player.getNumbers());
             if (printResult(hintValues)) {
                 break;
             }
         }
 
-        return true;
+        return player.getWantEnd();
     }
 
     private boolean printResult(List<Integer> hintValues) {
@@ -49,12 +53,13 @@ public class Game {
 
         System.out.println();
 
-        if (strikes == 3){
+        if (strikes == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
         return false;
     }
+
 
 }
