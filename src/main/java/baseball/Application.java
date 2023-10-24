@@ -46,31 +46,26 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
+            userInputNumber = Integer.parseInt(userInput);
 
             try {
-                userInputNumber = Integer.parseInt(userInput);
-
-                if (userInputNumber < 100 || userInputNumber > 999) {
-                    throw new IllegalArgumentException("# 에러 메세지: 입력된 숫자의 자릿수를 확인해주세요.");
-                }
-
-                for(int i = 2; i >= 0; i--) {
-                    userArray[i] = userInputNumber % 10;
-                    userInputNumber /= 10;
-                }
-                if ((userArray[0] == userArray[1])
-                        || (userArray[1] == userArray[2])
-                        || (userArray[2] == userArray[0])) {
-                    throw new IllegalArgumentException("# 에러 메세지: 중복된 숫자가 있는지 확인해주세요.");
-                }
-
+                Integer.parseInt(userInput);
             } catch (NumberFormatException e) {
-                System.out.println("# 에러 메세지: 숫자만 입력해주세요.");
-                e.printStackTrace();
-                return;
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-                return;
+                throw new IllegalArgumentException("# 에러 메세지: 숫자만 입력해주세요.");
+            }
+
+            if (userInputNumber < 100 || userInputNumber > 999) {
+                throw new IllegalArgumentException("# 에러 메세지: 입력된 숫자의 자릿수를 확인해주세요.");
+            }
+
+            for(int i = 2; i >= 0; i--) {
+                userArray[i] = userInputNumber % 10;
+                userInputNumber /= 10;
+            }
+            if ((userArray[0] == userArray[1])
+                    || (userArray[1] == userArray[2])
+                    || (userArray[2] == userArray[0])) {
+                throw new IllegalArgumentException("# 에러 메세지: 중복된 숫자가 있는지 확인해주세요.");
             }
 
             List<Integer> userRandomNumbers = new ArrayList<>(3);
@@ -113,6 +108,7 @@ public class Application {
                 } else {
                     throw new IllegalArgumentException();
                 }
+
             }
         }
     }
