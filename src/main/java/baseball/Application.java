@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.numberBaseball.NumberBaseball;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        NumberBaseball numberBaseball = new NumberBaseball();
+
+        numberBaseball.playNumberBaseball();
     }
 }
