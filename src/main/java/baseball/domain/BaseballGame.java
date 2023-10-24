@@ -21,18 +21,18 @@ public class BaseballGame {
     private BaseballNumbers computerNumbers;
     private BaseballNumbers userNumbers;
 
-
     public void playGame() {
         computerNumbers = generateComputerNumbers();
         do {
             tryGame();
-        } while (isCorrect());
+        } while (!isCorrect());
+
+        Output.printBaseballGameTermination();
     }
 
     private void tryGame() {
-        Output.printBaseballGameNumberRequest();
         userNumbers = receiveUserNumbers();
-        printResult();
+        Output.printBaseballGameHint(printResult());
     }
 
     private BaseballNumbers generateComputerNumbers() {
@@ -67,19 +67,23 @@ public class BaseballGame {
         return computerNumbers.equals(userNumbers);
     }
 
-    private void printResult() {
+    private String printResult() {
+
+        StringBuilder stringBuilder = new StringBuilder();
 
         int strikeCount = computerNumbers.getStrikeCount(userNumbers);
         int ballCount = computerNumbers.getBallCount(userNumbers);
 
         if (strikeCount == INT_ZERO && ballCount == INT_ZERO) {
-            Output.printBaseballGameHint(RESULT_NOTHING);
+            stringBuilder.append(RESULT_NOTHING);
         } else if (strikeCount != INT_ZERO && ballCount != INT_ZERO) {
-            Output.printBaseballGameHint(ballCount + RESULT_BALL + " " + strikeCount + RESULT_STRIKE);
+            stringBuilder.append(ballCount).append(RESULT_BALL).append(" ")
+                    .append(strikeCount).append(RESULT_STRIKE);
         } else if (strikeCount != INT_ZERO) {
-            Output.printBaseballGameHint(strikeCount + RESULT_STRIKE);
+            stringBuilder.append(strikeCount).append(RESULT_STRIKE);
         } else if (ballCount != INT_ZERO) {
-            Output.printBaseballGameHint(ballCount + RESULT_BALL);
+            stringBuilder.append(ballCount).append(RESULT_BALL);
         }
+        return stringBuilder.toString();
     }
 }
