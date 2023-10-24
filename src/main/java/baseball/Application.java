@@ -9,19 +9,35 @@ import static camp.nextstep.edu.missionutils.Randoms.*;
 import static java.lang.Integer.*;
 
 public class Application {
+
+    public static boolean is3Strike = false;
+
     public static void main(String[] args) {
 
         startGame();
-
         int computerNumber = generateComputerNumber();
         System.out.println("computerNumber = " + computerNumber);
 
-        // userInput이 0인 경우 프로그램을 종료하도록 수정해야 한다.
-        int userNumber = getUserInput();
-        System.out.println("userInput = " + userNumber);
-
-        int countStrike = countStrike(computerNumber, userNumber);
-        System.out.println("countStrike = " + countStrike);
+        while (true) {
+            // 게임에서 3스트라이크를 했을 때 수행
+            if (is3Strike) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                String optionString = readLine();
+                int optionNumber = getOptionNumber(optionString);
+                if (optionNumber == 1) {
+                    computerNumber = generateComputerNumber();
+                    is3Strike = false;
+                    System.out.println("computerNumber = " + computerNumber);
+                } else {
+                    // getOptionNumber로 이미 검증을 거친 상태이기 때문에 넘어올 수 있는 수는 1과 2 둘 중 하나이다.
+                    break;
+                }
+            }
+            // 게임에서 아직 3스트라이크를 달성하지 못한 경우
+            // userInput이 0인 경우 프로그램을 종료하도록 수정해야 한다.
+            int userNumber = getUserInput();
+            printHint(computerNumber,userNumber);
+        }
 
     }
 
@@ -81,7 +97,7 @@ public class Application {
         if (isDuplicate(userInput)) {
             throw new IllegalArgumentException("중복된 숫자가 포함되어 있으면 안됩니다.");
         }
-        
+
         return inputNumber;
     }
 
@@ -96,7 +112,19 @@ public class Application {
         if (computerNumber - userNumber == 0) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            is3Strike = true;
+            return;
         }
+
+        int strike = countStrike(computerNumber, userNumber);
+        int ball = countBall(computerNumber, userNumber);
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+
     }
 
     /**
@@ -146,12 +174,10 @@ public class Application {
 
     private static int getOptionNumber(String userInput) {
         // 게임을 계속하는 것과 관련해서 1과 2가 아닌 수를 입력 받을 시 exception 발생
-        return 0;
-    }
-
-    private static boolean continueOrQuit(int optionNumber) {
-        // getOptionNumber로 검증한 숫자를 받아서 게임을 지속할지 중단할지 결정
-        return true;
+        if (!userInput.equals("1") && !userInput.equals("2")) {
+            throw new IllegalArgumentException("숫자 1 또는 2만 입력할 수 있습니다.");
+        }
+        return parseInt(userInput);
     }
 
     /**
