@@ -1,34 +1,45 @@
 package baseball;
 
-import static others.ExceptionHandling.digitsExceptionTesting;
-import static others.Others.getNumber;
-import static others.Others.ifRestart;
-import static others.Others.printGameStart;
-import static others.Value.compareDigits;
-import static others.Value.computerGenerateNum;
-import static others.Value.playerGenerateNum;
-import static others.Value.printResult;
+import static baseball.others.Computer.computerGenerateNum;
+import static baseball.others.ExceptionHandling.digitsExceptionTesting;
+import static baseball.others.Output.printGameStart;
+import static baseball.others.Output.printInputNumber;
+import static baseball.others.Output.printRestart;
+import static baseball.others.Player.playerGenerateNum;
+import static baseball.others.Player.playerInputGuessingNumber;
+import static baseball.others.Player.playerInputRestartNumber;
+import static baseball.others.ProgramController.compareDigits;
+import static baseball.others.ProgramController.ifRestart;
+import static baseball.others.ProgramController.resultJudgment;
 
 import java.util.List;
 
 public class Application {
+    private static boolean ifGameContinue;
+    private static boolean guess;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         printGameStart();
-        boolean ifGameContinue = true;
-        while (ifGameContinue) {
+        do {
+            resetSetting();
             List<Integer> computerNum = computerGenerateNum();
-            boolean guess = false;
             while (!guess) {
-                String getStrNumber = getNumber();
-                digitsExceptionTesting(getStrNumber);
-                List<Integer> playerNum = playerGenerateNum(getStrNumber);
+                printInputNumber();
+                String guessingNumber = playerInputGuessingNumber();
+                digitsExceptionTesting(guessingNumber);
+                List<Integer> playerNum = playerGenerateNum(guessingNumber);
                 compareDigits(computerNum, playerNum);
-                guess = printResult();
-                if (guess) {
-                    ifGameContinue = ifRestart();
-                }
+                guess = resultJudgment();
             }
-        }
+            printRestart();
+            String restartNumber = playerInputRestartNumber();
+            ifGameContinue = ifRestart(restartNumber);
+        } while (ifGameContinue);
+    }
+
+    private static void resetSetting() {
+        ifGameContinue = true;
+        guess = false;
     }
 }
