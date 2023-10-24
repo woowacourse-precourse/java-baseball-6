@@ -7,7 +7,7 @@ public class Referee {
         strike = 0;
         ball = 0;
     }
-    public void compareNumber(Player player1, Player player2) {
+    public void compareNumbers(Player player1, Player player2) {
         int strike = 0, ball = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -25,12 +25,10 @@ public class Referee {
         this.ball = ball;
     }
     public void printScore() {
-        if (ball > 0) {
+        if (ball > 0)
             System.out.print(ball + "볼 ");
-        }
-        if (strike > 0) {
+        if (strike > 0)
             System.out.print(strike + "스트라이크");
-        }
         if (ball + strike == 0)
             System.out.print("낫싱");
         System.out.println();

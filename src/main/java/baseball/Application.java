@@ -3,16 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
-        Player computer = new Player(new Computer());
-        Player human = new Player();
+        Computer computer = new Computer();
+        Human human = new Human();
         Referee referee = new Referee();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computer.addNumber();
+        computer.setNumber(computer.setInput());
 
         while (true) {
-            human.addNumber();
-            referee.compareNumber(human, computer);
+            human.setNumber(human.setInput());
+            referee.compareNumbers(human, computer);
             referee.printScore();
 
             if(referee.checkComplete()) {
@@ -20,7 +20,7 @@ public class Application {
                 if(Integer.parseInt(Console.readLine()) != 1)
                     break;
                 System.out.println("숫자 야구 게임을 시작합니다.");
-                computer.addNumber();
+                computer.setNumber(computer.setInput());
             }
         }
     }
