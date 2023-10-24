@@ -43,6 +43,11 @@ public class GameController extends Controller {
     }
 
     public boolean continueGame() {
-        return true;
+        outputView.printContinueGame();
+        int isContinue = inputView.inputContinueGame();
+        if (isContinue == 1) {
+            return true;
+        }
+        return false;
     }
 }

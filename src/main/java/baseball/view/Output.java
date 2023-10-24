@@ -20,4 +20,8 @@ public class Output {
     public void printCongratulatoryMessage() {
         System.out.println(OutputConstants.CONGRATULATORY_MESSAGE);
     }
+
+    public void printContinueGame() {
+        System.out.println(OutputConstants.CONTINUE_GAME);
+    }
 }
