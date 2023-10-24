@@ -15,7 +15,7 @@ public class Game {
     this.score = new Score();
   }
 
-  /** 숫자 야구 게임을 시작합니다. */
+  /** 숫자 야구 게임을 시작하는 메소드 */
   public void start() {
     System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -40,9 +40,11 @@ public class Game {
 
     System.out.println("게임을 종료합니다.");
   }
+
   /**
-   CLI 콘솔창에 스트라이크와 볼의 갯수를 출력합니다.
-   @param result 볼과 스트라이크 개수를 담고 있는 정수 배열입니다.
+   * 볼과 스트라이크 결과에 따라 결과를 출력하는 메소드.
+   *
+   * @param result 볼과 스트라이크의 개수를 담은 int 배열. 배열의 첫 번째 요소는 볼의 개수, 두 번째 요소는 스트라이크의 개수
    */
   private void printResult(int[] result) {
     if (result[0] == 0 && result[1] == 0) {
@@ -60,9 +62,10 @@ public class Game {
   }
 
   /**
-   숫자야구 게임이 종료되었는지 여부를 확인합니다.
-   @param result 볼과 스트라이크 개수를 담고 있는 정수 배열입니다.
-   @return 게임이 종료되었으면 true, 아니면 false를 반환합니다.
+   * 게임이 종료되었는지를 확인하는 메소드.
+   *
+   * @param result 볼과 스트라이크의 개수를 담은 int 배열. 배열의 첫 번째 요소는 볼의 개수, 두 번째 요소는 스트라이크의 개수
+   * @return 게임이 종료되었으면 true, 아니면 false
    */
   private boolean isGameOver(int[] result) {
     if (result[1] == 3) {
@@ -73,8 +76,9 @@ public class Game {
   }
 
   /**
-   게임 재시작 여부를 확인합니다.
-   @return 게임을 새로 시작할 경우 true, 종료할 경우 false를 반환합니다.
+   * 게임 재시작 여부를 확인합니다.
+   *
+   * @return 게임을 새로 시작할 경우 true, 종료할 경우 false를 반환합니다.
    */
   private boolean askRestart() {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
