@@ -25,14 +25,14 @@ public class Game {
 
         while (true) {
             System.out.print(GameMessage.USER_INPUT.getMessage());
-            String input = Console.readLine(); // 사용자 입력
-            validator.validateInputNumber(input); // 입력값 검증
+            String input = Console.readLine();
+            validator.validateInputNumber(input);
             user.setUserRandNum(input);
 
             GameResult result = computer.calculateResult(user.getUserRandNum());
             System.out.println(result.resultToString());
 
-            if (result.isComplete()) { // 게임이 끝나는 조건
+            if (result.isComplete()) {
                 System.out.println(GameMessage.GAME_COMPLETE.getMessage());
                 break;
             }
@@ -44,10 +44,10 @@ public class Game {
         String input = Console.readLine();
         validator.validateRestartChoice(input);
 
-        if ("1".equals(input)) { // 게임 재시작
+        if ("1".equals(input)) {
             return true;
-        } else { // 게임 종료
-            return false;
         }
+
+        return false;
     }
 }

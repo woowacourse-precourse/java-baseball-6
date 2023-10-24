@@ -8,9 +8,9 @@ public class Computer {
     public static final int LENGTH = 3;
     public static final int MIN_NUM = 1;
     public static final int MAX_NUM = 9;
-    private List<Integer> computerRandNum; // computer의 랜덤한 수
+    private List<Integer> computerRandNum;
 
-    public void setComputerRandNum() { // computer의 랜덤수 세팅
+    public void setComputerRandNum() {
         computerRandNum = new ArrayList<>();
         while (computerRandNum.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
