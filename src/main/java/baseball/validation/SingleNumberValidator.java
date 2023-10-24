@@ -1,10 +1,11 @@
 package baseball.validation;
 
 import baseball.constant.ErrorMessage;
+import baseball.constant.Number;
 
 public class SingleNumberValidator implements Validator {
 
-    public static final String ONLY_NATURE_NUMBER = "^[1-9]+";
+    public static final String ONLY_NATURE_NUMBER = "^[" + Number.MIN + "-" + Number.MAX + "]+";
 
     @Override
     public boolean support(Class<?> clazz) {
