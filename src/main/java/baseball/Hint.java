@@ -1,28 +1,26 @@
 package baseball;
 
+import java.util.List;
+
 public class Hint {
 
-    public static int calStrike(String answer, String userNum) {
-        int strikes = 0;
+    public HintCountDto calHint(List<Integer> answer, List<Integer> userNum) {
+        HintCountDto hintCountDto = new HintCountDto();
         for (int i = 0; i < 3; i++) {
-            if (answer.charAt(i) == userNum.charAt(i)) {
-                strikes++;
+            if (answer.get(i) == userNum.get(i)) {
+                hintCountDto.plusStrike();
+                continue;
+            }
+            if (answer.contains(userNum.get(i))) {
+                hintCountDto.plusBall();
             }
         }
-        return strikes;
+        return hintCountDto;
     }
 
-    public static int calBall(String answer, String userNum) {
-        int balls = 0;
-        for (int i = 0; i < 3; i++) {
-            if (answer.charAt(i) != userNum.charAt(i) && answer.indexOf(userNum.charAt(i)) != -1) {
-                balls++;
-            }
-        }
-        return balls;
-    }
-
-    public static boolean printHint(int ball, int strike) {
+    public boolean printHint(HintCountDto hintCountDto) {
+        int strike = hintCountDto.getStrike();
+        int ball = hintCountDto.getBall();
 
         if (strike == 3) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -36,6 +34,7 @@ public class Hint {
 
         if (ball > 0 && strike == 0) {
             System.out.printf("%d볼\n", ball);
+            return false;
         }
 
         if (ball == 0 && strike > 0) {
