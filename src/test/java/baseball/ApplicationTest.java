@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,21 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 스트라이크_개수_테스트() {
+        List<Integer> userInput1 = Arrays.asList(1, 2, 3);
+        List<Integer> userInput2 = Arrays.asList(4, 7, 8);
+        List<Integer> userInput3 = Arrays.asList(4, 2, 6);
+        List<Integer> userInput4 = Arrays.asList(4, 5, 6);
+        List<Integer> result = Arrays.asList(4, 5, 6);
+
+        assertThat(Application.getStrikeCount(userInput1, result) == 0);
+        assertThat(Application.getStrikeCount(userInput2, result) == 1);
+        assertThat(Application.getStrikeCount(userInput3, result) == 2);
+        assertThat(Application.getStrikeCount(userInput4, result) == 3);
+
     }
 
     @Test
