@@ -26,6 +26,15 @@ public class Player {
         while (strike < COUNTS) {
             System.out.print(INPUT_REQUEST_MESSAGE);
             String userInput = Console.readLine();
+            validateNumber(userInput);
+        }
+    }
+
+    private void validateNumber(String userInput) {
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Input is not an Integer.");
         }
     }
 }
