@@ -14,7 +14,7 @@ public class Computer {
 
     public void pickSecretNumbers() {
         secretNumbers.clear();
-        while (secretNumbers.size() < GameConstants.NUM_DIGITS) {
+        while (secretNumbers.size() < GameConstants.NUMBER_LENGTH) {
             int newNumber = Randoms.pickNumberInRange(GameConstants.MIN_NUMBER, GameConstants.MAX_NUMBER);
             if (!secretNumbers.contains(newNumber)) {
                 secretNumbers.add(newNumber);
@@ -25,7 +25,7 @@ public class Computer {
     public GameResult countStrikesAndBalls(List<Integer> guessNumbers) {
         int strikes = 0;
         int balls = 0;
-        for (int idx = 0; idx < GameConstants.NUM_DIGITS; idx++) {
+        for (int idx = 0; idx < GameConstants.NUMBER_LENGTH; idx++) {
             if (secretNumbers.get(idx).equals(guessNumbers.get(idx))) {
                 strikes++;
             } else {
