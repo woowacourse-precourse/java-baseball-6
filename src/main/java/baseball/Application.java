@@ -25,6 +25,8 @@ public class Application {
             }
         }
 
+        System.out.println(randomNumbers);
+
         List<Integer> userAnswers = new ArrayList<>();
 
         System.out.print("숫자를 입력해주세요 : ");
@@ -91,6 +93,10 @@ public class Application {
             } else if (ball != 0) {
 
                 System.out.println(ball + "볼");
+
+            } else {
+
+                System.out.println("낫싱");
 
             }
         }
