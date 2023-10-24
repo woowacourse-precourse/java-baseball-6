@@ -15,7 +15,6 @@ public class InputValidator {
     private static final String GAME_TERMINATE_NUMBER = BaseBallConstants.GAME_TERMINATE_NUMBER;
     private static final String WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE = BaseBallConstants.WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE;
 
-
     public boolean isThreeLengthLetter(String playerInput) {
         return playerInput.length() == BASEBALL_GAME_NUMBER_LENGTH;
     }
