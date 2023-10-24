@@ -10,7 +10,11 @@ public class Application {
 
         while (running) {
 
-            game.getGuessNums();
+            String guessNumsStr = game.getGuessNums();
+            if (!game.isValid(guessNumsStr)) {
+                return;
+            }
+
             roundResult = game.getHint();
 
             if (roundResult == 2) {

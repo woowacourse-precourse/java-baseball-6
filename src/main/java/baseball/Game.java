@@ -27,55 +27,65 @@ public class Game {
         computer = null;
     }
 
-    public void getGuessNums() {
+    public String getGuessNums() {
         System.out.print("숫자를 입력해주세요 : ");
-        int guessNumsInt = toValidInt(Console.readLine());
-        ArrayList<Integer> guessNums = new ArrayList<Integer>();
 
-        for (int i = 0; i < 3; i++) {
-            int num = guessNumsInt % 10;
-            guessNumsInt /= 10;
-            guessNums.add(0, num);
-        }
-
-        isDifferentNums(guessNums);
-
-        player.setGuessNums(guessNums);
+        return Console.readLine();
     }
 
-    private int toValidInt(String guessNumsStr) {
-        int guessNumsInt = 0;
+    public Boolean isValid(String guessNumsStr) {
+        int guessNumsInt;
+        ArrayList<Integer> guessNums = new ArrayList<Integer>();
 
         try {
             guessNumsInt = Integer.parseInt(guessNumsStr);
 
             // 0이 들어가지 않았는지
-            if (guessNumsStr.contains("0")) {
+            if (!isValidRange(guessNumsStr)) {
                 throw new IllegalArgumentException();
             }
 
             // 3자리의 숫자인지
-            if (guessNumsInt / 100 < 1 || guessNumsInt / 100 > 9) {
+            if (!isValidLength(guessNumsInt)) {
+                throw new IllegalArgumentException();
+            }
+
+            for (int i = 0; i < 3; i++) {
+                int num = guessNumsInt % 10;
+                guessNumsInt /= 10;
+                guessNums.add(0, num);
+            }
+
+            // 서로 다른 숫자인지
+            if (!isDifferentNums(guessNums)) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.exit(0);
+            return false;
         }
 
-        return guessNumsInt;
+        player.setGuessNums(guessNums);
+
+        return true;
     }
 
-    private void isDifferentNums(ArrayList<Integer> guessNums) {
-        try {
-            for (int i = 0; i < 3; i++) {
-                int g = guessNums.get(i);
-                if (Collections.frequency(guessNums, g) > 1) {
-                    throw new IllegalArgumentException();
-                }
+    private Boolean isValidRange(String guessNumsStr) {
+        return !guessNumsStr.contains("0");
+    }
+
+    private Boolean isValidLength(int guessNumsInt) {
+        return guessNumsInt / 100 >= 1 && guessNumsInt / 100 <= 9;
+    }
+
+    private Boolean isDifferentNums(ArrayList<Integer> guessNums) {
+        for (int i = 0; i < 3; i++) {
+            int g = guessNums.get(i);
+            if (Collections.frequency(guessNums, g) > 1) {
+                return false;
             }
-        } catch (IllegalArgumentException e) {
-            System.exit(0);
         }
+
+        return true;
     }
 
     public int getHint() {
