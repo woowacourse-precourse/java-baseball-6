@@ -11,25 +11,42 @@ public class BaseballController {
     private static final int BASEBALL_LENGTH = 3;
     private static final int BASEBALL_STRIKE_COUNT = 3;
     private static final int ZERO = 0;
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크 ";
+    private static final String BALL = "볼 ";
     private static final String NOTHING = "낫싱";
+    private static final String BASEBALL_RESTART = "1";
+    private static final String BASEBALL_END = "2";
+    private static final String ERROR_MESSAGE = "1 혹은 2만 입력 가능합니다.";
     private int strikeCount;
     private int ballCount;
 
     Number number = new Number();
     Random random = new Random();
 
+    OutputView outputView = new OutputView();
+
     public void start() {
         boolean state = true;
         OutputView.startMessge();
         while (state) {
-            setPlayerNumbers();
             setComputerNumbers();
-            compareNumber();
-
-            state = false;
+            repeatGame();
+            state = restartGame();
         }
+    }
+
+    public void repeatGame(){
+        boolean answer = true;
+        while (answer){
+            setPlayerNumbers();
+            compareNumber();
+            hint();
+            if(strikeCount==3){
+                OutputView.endMessage();
+                return;
+            }
+        }
+
     }
 
     //사용자가 입력한숫자 리스트로저장
@@ -46,6 +63,7 @@ public class BaseballController {
     //컴퓨터 숫자 리스트 저장
     public void setComputerNumbers() {
         number.setComputerNumbers(random.createRandomNumbers());
+
     }
 
     //플레이어 숫자 와 컴퓨터 숫자 비교
@@ -73,6 +91,50 @@ public class BaseballController {
         }
 
     }
+
+    public void hint() {
+        String message = "";
+        message += strikeHint();
+        message += ballHint();
+        message += noting();
+        outputView.baseballHint(message);
+
+    }
+
+    public String strikeHint() {
+        if (strikeCount > 0) {
+            return strikeCount + STRIKE;
+        }
+        return "";
+
+
+    }
+
+    public String ballHint() {
+        if (ballCount > 0) {
+            return ballCount + BALL;
+        }
+        return "";
+    }
+
+    public String noting() {
+        if (ballCount == 0 && strikeCount == 0) {
+            return NOTHING;
+
+        }
+        return "";
+    }
+    public boolean restartGame(){
+        String plyerChoice = InputView.resetGame();
+        if (plyerChoice .equals(BASEBALL_RESTART)){
+            return true;
+        }else if(plyerChoice .equals(BASEBALL_END)){
+            return false;
+        }
+        throw new IllegalArgumentException(ERROR_MESSAGE);
+
+    }
+
 
 
 }

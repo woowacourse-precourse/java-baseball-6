@@ -18,6 +18,7 @@ public class Random {
                     BASEBALL_NUMBER_END);
             if (!randomNumbers.contains(randomNumber)) {
                 return randomNumber;
+                //return 1;
             }
         }
     }

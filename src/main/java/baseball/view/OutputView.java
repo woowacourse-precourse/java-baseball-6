@@ -14,6 +14,9 @@ public class OutputView {
     public static void endMessage() {
         System.out.println(END_MESSAGE);
     }
+    public void baseballHint(String message){
+        System.out.println(message);
+    }
 
 
 }
