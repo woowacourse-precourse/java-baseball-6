@@ -13,5 +13,6 @@ public interface BullsAndCowsService {
     // 게임 종료 여부 값 반환
     boolean isGameRunning();
 
+    // 컴퓨터 랜덤값, 사용자 추측값 비교
     boolean compareUserGuessWithRandom(List<Integer> computer, List<Integer> user);
 }

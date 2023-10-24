@@ -56,7 +56,7 @@ public class BullsAndCowsServiceImpl implements BullsAndCowsService {
         int gameStatus; // 재시작: 1, 종료: 2
 
         do {
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             gameStatus = Integer.parseInt(Console.readLine());
         } while (checkGameStatusValue(gameStatus));
 
