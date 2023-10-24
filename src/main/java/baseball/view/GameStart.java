@@ -114,7 +114,6 @@ public class GameStart {
         int inputInt = RESET_NUM;
 
         printSecondProcessMsg();
-
         inputInt = Utill.inputIntNum(); // 숫자를 입력받는다.
         ValidException.isValidOnlyInputOneTwo(inputInt); // 1과 2가 아니면 예외처리
 
