@@ -52,20 +52,24 @@ Printer 객체를 사용하여 출력을 한다.
 
 ## Computer Refactoring
 
-- [ ] checkInputFormat() 불필요한 try-catch 제외하고 로직 다시 구현하기
+- [x] checkInputFormat() 불필요한 try-catch 제외하고 로직 다시 구현하기
 - invalid한 경우에 바로 throw 하도록 구현 완료
 
 
 - [ ] checkInputFormat() indent 줄이기
 
-- [ ] checkReplay() 불필요한 try-catch 제외하고 로직 다시 구현하기
+- [x] checkReplay() 불필요한 try-catch 제외하고 로직 다시 구현하기
 
-- [ ] checkGuess() indent 줄이기
+- [x] checkGuess() indent 줄이기
 
-- [ ] 인터페이스 상속하도록 변경
+- [x] 인터페이스 상속하도록 변경
+
+- [ ] 클래스 내부에서만 사용하는 함수 private로 변경
+- private로 바꾸면 테스트를 하지 못하는 경우 발생 -> 알아보기!
 
 ## Printer Refactoring
 
 - [ ] printResult() 코드 간결하게 만들기
 
-- [ ] 인터페이스 상속하도록 변경
+- [x] 인터페이스 상속하도록 변경
+
