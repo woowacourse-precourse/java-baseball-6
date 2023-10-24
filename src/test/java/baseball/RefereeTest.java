@@ -19,4 +19,15 @@ public class RefereeTest {
 		Referee referee = new Referee(answerNumbers);
 		Assertions.assertThat(referee.countStrike(playerNumbers)).isEqualTo(2);
 	}
+
+	@Test
+	void 심판은_볼_개수를_셀_수_있다() {
+		List<Integer> randomNumbers = List.of(1,2,7);
+		List<Integer> inputNumbers = List.of(2,1,3);
+		Numbers playerNumbers = new Numbers(inputNumbers);
+		Numbers answerNumbers = new Numbers(randomNumbers);
+
+		Referee referee = new Referee(answerNumbers);
+		Assertions.assertThat(referee.countBall(playerNumbers)).isEqualTo(2);
+	}
 }
