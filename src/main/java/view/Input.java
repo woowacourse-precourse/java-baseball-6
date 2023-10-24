@@ -14,7 +14,7 @@ public class Input {
     }
 
     public static String readOption() {
-        Output.printInputMessage(MessageConstants.RESTART_OR_FINISH_MESSAGE);
+        Output.printMessage(MessageConstants.RESTART_OR_FINISH_MESSAGE);
         String input = Console.readLine();
         ErrorDetector.throwIfOptionInputInvalid(input);
         return input;
