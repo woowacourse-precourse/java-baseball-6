@@ -83,7 +83,7 @@ class UserTest {
 
     @Test
     @DisplayName("Balls의 compare은 1개의 볼,위치가 같고, 1개의 볼만 일치하면 1 스트라이크 1 볼 반환")
-    void Compare은_한개의_값위치동일_한개의_값동일_위치다름_1볼() throws IllegalAccessException {
+    void Compare은_한개의_값위치동일_한개의_값동일_위치다름_1스트라이크_1볼() throws IllegalAccessException {
         BallPicker ballPicker = mock(RandomBallPicker.class);
         when(ballPicker.pickNumberInRange(MIN_RANGE, MAX_RANGE)).thenReturn(4, 5, 6);
 

@@ -130,7 +130,7 @@ class BallsTest {
 
     @Test
     @DisplayName("Balls의 compare은 1개의 볼,위치가 같고, 1개의 볼만 일치하면 1 스트라이크 1 볼 반환")
-    void Balls의_compare은_한개의_값위치동일_한개의_값동일_위치다름_1볼() {
+    void Balls의_compare은_한개의_값위치동일_한개의_값동일_위치다름_1스트라이크_1볼() {
         Balls origin = BallsFixture.fixture().build(); // 4,2,5
 
         Ball one = new Ball(4, MIN_RANGE, MAX_RANGE);
