@@ -13,6 +13,16 @@ public class NumberService {
     public NumberService() {
         init();
     }
+
+    public boolean isCorrect(int userNumber) {
+        Number number = Number.parseNumber(userNumber);
+        if (number.equals(machineNumber)) {
+            return true;
+        }
+
+        return false;
+    }
+
     public void init() {
 
         List<Integer> randomNumbers = new ArrayList<>();
