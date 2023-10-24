@@ -13,7 +13,7 @@ public class GameService {
     }
 
     public static List<Integer> parsingInputNumber(String inputNumber) {
-        ArrayList<Integer> parsingNumber = new ArrayList<>();
+        List<Integer> parsingNumber = new ArrayList<>();
         userInputNumberValidation(inputNumber);
         for (char parsedChar : inputNumber.toCharArray()) {
             validateParsedChar(parsedChar);

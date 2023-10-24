@@ -1,12 +1,10 @@
 package baseball.view;
 
 import baseball.utils.GameResult;
+import baseball.utils.RequiredGameProgress;
 import java.util.List;
 
 public class OutputView {
-    private static final int STRIKE_INDEX_IN_NUMBER_RESULT = 0;
-    private static final int BALL_INDEX_IN_NUMBER_RESULT = 1;
-    private static final int REQUIRED_EXIT_WIN_STRIKES = 3;
     private static Integer strikes;
     private static Integer balls;
     private static boolean correctAnswer = false;
@@ -18,8 +16,8 @@ public class OutputView {
     }
 
     public static void getStrikeAndBall(List<Integer> numberResult) {
-        strikes = numberResult.get(STRIKE_INDEX_IN_NUMBER_RESULT);
-        balls = numberResult.get(BALL_INDEX_IN_NUMBER_RESULT);
+        strikes = numberResult.get(RequiredGameProgress.STRIKE_INDEX_IN_NUMBER_RESULT.getProgress());
+        balls = numberResult.get(RequiredGameProgress.STRIKE_INDEX_IN_NUMBER_RESULT.getProgress());
         correctAnswer = false;
     }
 
@@ -54,7 +52,7 @@ public class OutputView {
 
 
     public static boolean checkAnswer(Integer strikes) {
-        if (strikes.equals(REQUIRED_EXIT_WIN_STRIKES)) {
+        if (strikes.equals(RequiredGameProgress.REQUIRED_EXIT_WIN_STRIKES.getProgress())) {
             return true;
         }
         return false;

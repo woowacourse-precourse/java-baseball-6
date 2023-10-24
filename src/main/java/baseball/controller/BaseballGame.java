@@ -40,6 +40,7 @@ public class BaseballGame {
         }
     }
 
+
     private void initStartGame() {
         System.out.println(GameMessage.BASEBALL_START.getMessage());
         endOrNot = true;
