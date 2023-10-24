@@ -33,6 +33,7 @@ public class Utility {
 
     public static List<Integer> input() {
         String userInput = readLine();
+
         String targetInput = userInput.trim();
 
         if (Validation.checkUserInput(targetInput)) {

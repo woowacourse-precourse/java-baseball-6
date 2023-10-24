@@ -18,15 +18,34 @@ public class Print {
     }
 
     public static void showPredictResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
+        if (isNothing(strike, ball)) {
             System.out.println(NOTHING);
-        } else if (strike == 0 && ball != 0) {
+        }
+        if (isNoStrike(strike, ball)) {
             System.out.println(ball + BALL);
-        } else if (strike != 0 && ball == 0) {
+        }
+        if (isNoBall(strike, ball)) {
             System.out.println(strike + STRIKE);
-        } else if (strike != 0 && ball != 0) {
+        }
+        if (isStrikeAndBall(strike, ball)) {
             System.out.println(ball + BALL + " " + strike + STRIKE);
         }
+    }
+
+    private static boolean isStrikeAndBall(int strike, int ball) {
+        return strike != 0 && ball != 0;
+    }
+
+    private static boolean isNoBall(int strike, int ball) {
+        return strike != 0 && ball == 0;
+    }
+
+    private static boolean isNoStrike(int strike, int ball) {
+        return strike == 0 && ball != 0;
+    }
+
+    private static boolean isNothing(int strike, int ball) {
+        return strike == 0 && ball == 0;
     }
 
     public static void showGameOver() {
