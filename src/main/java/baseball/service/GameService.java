@@ -14,7 +14,6 @@ public class GameService {
     // - retryGame() 게임을 재시작하는 메소드
     // - checkScore()
     //
-
     private final int NUM_SIZE = 3;
     private final int NUM_START = 1;
     private final int NUM_END = 9;
@@ -26,6 +25,8 @@ public class GameService {
     private List<Integer> computer = new ArrayList<>();
     private Message message = new Message();
 
+    static record BaseballScore(int strikeCount, int ballCount){}
+
     public void setGame(){
         game = new Game(NUM_SIZE,NUM_START,NUM_END);
         computer = game.getComputer();
@@ -33,8 +34,6 @@ public class GameService {
 
     public void startGame(){
         message.printStartMessage();
-        setGame();
-
         //숫자, 자리 둘다 맞으면 strike, 숫자만 맞으면 ball
         int strikeCount = 0;
 
@@ -43,20 +42,19 @@ public class GameService {
             message.printScore(score.strikeCount, score.ballCount);
             strikeCount = score.strikeCount;
         }
-        stopGame();
     }
 
     public void stopGame(){
         message.printEndMessage(NUM_SIZE);
-        retryGame();
     }
 
-    public void retryGame(){
+    public boolean retryGame(){
         int answer = Integer.parseInt(Console.readLine());
         message.printRetryMessage(answer);
         if(answer == RETRY){
-            startGame();
+            return true;
         }
+        return false;
     }
 
     public int[] getUserNum(){
@@ -72,15 +70,7 @@ public class GameService {
             if(computer.indexOf(user[i]) == i) strikeCount++;
             else ballCount++;
         }
-        return new BaseballScore(ballCount, strikeCount);
+        return new BaseballScore(strikeCount, ballCount);
     }
 
-    private class BaseballScore{
-        int ballCount;
-        int strikeCount;
-        public BaseballScore(int ballCount, int strikeCount){
-            this.ballCount = ballCount;
-            this.strikeCount = strikeCount;
-        }
-    }
 }
