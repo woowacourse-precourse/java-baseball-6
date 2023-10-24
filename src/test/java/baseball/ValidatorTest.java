@@ -7,12 +7,23 @@ import org.junit.jupiter.api.Test;
 public class ValidatorTest {
 
     NumberValidator numberValidator = new NumberValidator();
+
     @Test
-    void 숫자입력_세자리_미만_입력시_예외_발생(){
+    void 숫자입력_세자리_미만_입력시_예외_발생() {
         String input = "14";
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            numberValidator.validateInputNumber(input,3);
+            numberValidator.validateInputNumber(input, input.length() + 1);
         });
     }
+
+    @Test
+    void 숫자입력_중복_숫자_입력시_예외_발생() {
+        String input = "121";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            numberValidator.validateInputNumber(input, input.length());
+        });
+    }
+
 }
