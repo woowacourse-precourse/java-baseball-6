@@ -10,6 +10,25 @@ public class Output {
         System.out.print(OutputMessage.INPUT_PLAYER_NUMBER.getMessage());
     }
 
+    public void printResult(Result result) {
+        System.out.println(getResultMessage(result));
+    }
+
+    private String getResultMessage(Result result) {
+        if (result.isNothing()) {
+            return Inning.NOTHING.getMessage();
+        }
+        return getBallStrikeMessage(result);
+    }
+
+    private String getBallStrikeMessage(Result result) {
+        StringBuilder message = new StringBuilder();
+        result.ballMessage(message);
+        result.whiteSpaceMessage(message);
+        result.strikeMessage(message);
+        return message.toString();
+    }
+
     public void inningEnd() {
         System.out.println(OutputMessage.INNING_END.getMessage());
     }
