@@ -1,11 +1,7 @@
 package baseball;
-import baseball.Computer.Computer;
-import baseball.Play.Play;
-import baseball.User.User;
-
 
 public class Application {
-    static Integer restart = 0;
+    static int restart = 0;
     public static void main(String[] args) {
         System.out.printf("숫자 야구 게임을 시작합니다.\n");
         Play();

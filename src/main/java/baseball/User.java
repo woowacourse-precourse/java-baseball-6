@@ -1,4 +1,4 @@
-package baseball.User;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -18,8 +18,8 @@ public class User {
     }
 
     public void CheckRepeat(String userInput) throws IllegalArgumentException {
-        for(Integer i = 0; i<3; i++) {
-            for(Integer j=0; j<3; j++) {
+        for(int i = 0; i<3; i++) {
+            for(int j=0; j<3; j++) {
                 if(i != j && userInput.charAt(i) == userInput.charAt(j)) {
                     throw new IllegalArgumentException("서로 다른 숫자만 입력하세요");
                 }

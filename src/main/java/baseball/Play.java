@@ -1,7 +1,4 @@
-package baseball.Play;
-
-import baseball.Computer.Computer;
-import baseball.User.User;
+package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Play {
@@ -9,11 +6,9 @@ public class Play {
     String userNumber = "";
     Computer computer = new Computer();
     String computerNumber = computer.CreateNumber();
-
-    Integer strikes;
-    Integer balls;
-
-    Integer restart = 0;
+    int strikes;
+    int balls;
+    int restart = 0;
 
     public void PlayGame() {
         strikes = 0;
@@ -27,13 +22,13 @@ public class Play {
 
     // 스트라이크, 볼 판정을 하는 메서드
     public void CheckNumber() {
-        for(Integer i=0; i<3; i++) {
+        for(int i=0; i<3; i++) {
             if(userNumber.charAt(i) == computerNumber.charAt(i)) {
                 strikes++;
             }
         }
-        for(Integer i=0; i<3; i++) {
-            for(Integer j=0; j<3; j++) {
+        for(int i=0; i<3; i++) {
+            for(int j=0; j<3; j++) {
                 if(userNumber.charAt(i) == computerNumber.charAt(j))
                     balls++;
             }
@@ -67,10 +62,10 @@ public class Play {
         return;
     }
 
-    public Integer getStrikes() {
+    public int getStrikes() {
         return strikes;
     }
-    public Integer getRestart() {
+    public int getRestart() {
         return restart;
     }
 
