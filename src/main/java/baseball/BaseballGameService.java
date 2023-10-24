@@ -3,12 +3,8 @@ package baseball;
 import static baseball.Application.NUMBER_LENGTH;
 
 import balls.Balls;
-import utils.Utils;
 
 public class BaseballGameService {
-    boolean allStrike = false;
-    Utils utils = new Utils();
-
     public boolean baseballGameServiceStart(Balls computerBalls, Balls userBalls) {
         int ball = countBall(computerBalls, userBalls);
         int strike = countStrike(computerBalls, userBalls);
