@@ -11,9 +11,16 @@ import static baseball.Constant.START_MESSAGE;
 import java.util.Objects;
 
 public class BaseballGame {
-    private PlayerView playerView = new PlayerView();
-    private GameResult gameResult = new GameResult();
-    private Referee referee = new Referee();
+    private final PlayerView playerView = new PlayerView();
+    private GameResult gameResult;
+    private Computer computer;
+    private Referee referee;
+
+    private void initBaseball() {
+        gameResult = new GameResult();
+        computer = new Computer();
+        referee = new Referee();
+    }
 
     public void playGame() {
         playerView.output(START_MESSAGE);
@@ -25,7 +32,7 @@ public class BaseballGame {
     }
 
     private void playSingleGame() {
-        Computer computer = new Computer();
+        initBaseball();
         do {
             playerView.output(INPUT_NUMBERS_MESSAGE);
             String playerNumbers = playerView.input();
