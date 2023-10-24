@@ -19,11 +19,11 @@ public class BaseballGame {
 
         while (true) {
             List<Integer> userNumbers = InputView.getUserNumbers();
-            int[] result = calculateResult(userNumbers);
+            int[] result = checkGuess(userNumbers);
             displayResult(result);
             if (result[0] == NUMBER_LENGTH) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                if (askForRestart()) {
+                if (Restart()) {
                     generateComputerNumbers();
                 } else {
                     break;
@@ -32,7 +32,7 @@ public class BaseballGame {
         }
     }
 
-    private int[] calculateResult(List<Integer> userNumbers) {
+    private int[] checkGuess(List<Integer> userNumbers) {
         if (computerNumbers == null) {
             throw new IllegalStateException("컴퓨터 숫자가 초기화되지 않았습니다.");
         }
@@ -61,7 +61,7 @@ public class BaseballGame {
         System.out.println();
     }
 
-    private boolean askForRestart() {
+    private boolean Restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
         String input = Console.readLine();
         return input.equals("1");
