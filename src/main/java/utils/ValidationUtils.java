@@ -1,5 +1,6 @@
 package utils;
 
+import baseball.domain.EndOption;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,6 +33,6 @@ public class ValidationUtils {
     }
 
     public static boolean isEndOptionNumber(int number) {
-        return END_OPTION.contains(number);
+        return EndOption.isContain(number);
     }
 }
