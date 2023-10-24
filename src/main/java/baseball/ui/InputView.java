@@ -10,40 +10,35 @@ import static baseball.global.Validator.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class InputView {
-	private final OutputView outputView;
+    private final OutputView outputView;
 
-	private static final String SEPARATOR = "";
+    private static final String SEPARATOR = "";
 
-	public InputView(OutputView outputView) {
-		this.outputView = outputView;
-	}
+    public InputView(OutputView outputView) {
+        this.outputView = outputView;
+    }
 
-	public List<Integer> readPlayerNumbers() {
-		outputView.printInputNumber();
-		String[] input = readNumber();
-		validateInput(input);
+    public List<Integer> readPlayerNumbers() {
+        outputView.printInputNumber();
+        String[] input = readNumber();
+        validatePlayerInput(input);
 
-		return Arrays.stream(input)
-				.map(Integer::parseInt)
-				.toList();
-	}
+        return Arrays.stream(input)
+                .map(Integer::parseInt)
+                .toList();
+    }
 
-	private void validateInput(String[] input) {
-		validateInputLength(input);
-		validateNumbersFormat(input);
-	}
+    private String[] readNumber() {
+        String[] inputNumbers = readLine().split(SEPARATOR);
 
-	private String[] readNumber() {
-		String[] inputNumbers = readLine().split(SEPARATOR);
+        return inputNumbers;
+    }
 
-		return inputNumbers;
-	}
+    public String readRestart() {
+        outputView.printGameRestart();
+        String option = readLine();
 
-	public String readRestart() {
-		outputView.printGameRestart();
-		String option = readLine();
-
-		validateRestart(option);
-		return option;
-	}
+        validateRestart(option);
+        return option;
+    }
 }
