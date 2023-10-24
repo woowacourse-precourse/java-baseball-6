@@ -59,7 +59,6 @@ public class BaseballMachine {
         }
     }
 
-
     private void printResult() {
         /* 낫싱 */
         if (strike == 0 && ball == 0) {
