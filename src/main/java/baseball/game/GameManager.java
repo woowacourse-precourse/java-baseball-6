@@ -5,7 +5,6 @@ import baseball.game.domain.BaseBall;
 import baseball.game.printmanager.InputManager;
 import baseball.game.printmanager.OutputManager;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class GameManager {
         }
         return randNumbers;
     }
+
     public BaseBall calculateBaseballGameResult(List<Integer> randBaseballNumber, String userBaseballNumber) {
         int strike = 0;
         int ball = 0;
