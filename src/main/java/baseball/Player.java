@@ -23,7 +23,7 @@ public class Player {
     }
 
     private void validateNumbers(String numbers) {
-        if (isBlank(numbers)) {
+        if (numbers.isBlank()) {
             throw new IllegalArgumentException(INVALID_BLANK_VALUE_MESSAGE);
         }
         if (!isValidNumeric(numbers)) {
@@ -51,9 +51,5 @@ public class Player {
             uniqueDigits.add(element);
         }
         return uniqueDigits.size() == MAX_NUMBER_LENGTH;
-    }
-
-    private boolean isBlank(String numbers) {
-        return numbers.length() == 0;
     }
 }
