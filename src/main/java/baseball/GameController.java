@@ -14,25 +14,25 @@ public class GameController {
         return gameService.createComputerCode();
     }
 
-    public Map<Grade, Integer> guessCode(String inputCode, Long computerCodeId) {
-        List<Integer> code = validateCode(inputCode);
+    public Map<Grade, Integer> guessCode(final String inputCode, final Long computerCodeId) {
+        final List<Integer> code = validateCode(inputCode);
         return gameService.guessCode(code, computerCodeId);
     }
 
-    public boolean determineGameStatus(Map<Grade, Integer> resultMap) {
+    public boolean determineGameStatus(final Map<Grade, Integer> resultMap) {
         return gameService.determinePass(resultMap);
     }
 
-    public boolean determineRestarting(String commandInput) {
-        Integer command = validateCommand(commandInput);
+    public boolean determineRestarting(final String commandInput) {
+        final Integer command = validateCommand(commandInput);
         return gameService.determineRestarting(command);
     }
 
-    public void initializeSetting(Long computerCodeId) {
+    public void initializeSetting(final Long computerCodeId) {
         gameService.removeComputerCode(computerCodeId);
     }
 
-    private List<Integer> validateCode(String inputCode) {
+    private List<Integer> validateCode(final String inputCode) {
         if(inputCode.length() != 3) {
             throw new IllegalArgumentException("length of numbers must be 3.");
         }
@@ -55,7 +55,7 @@ public class GameController {
         return codeNumbers;
     }
 
-    private Integer validateCommand(String command) {
+    private Integer validateCommand(final String command) {
         if(command.length() != 1) {
             throw new IllegalArgumentException("length of command must be 1.");
         }

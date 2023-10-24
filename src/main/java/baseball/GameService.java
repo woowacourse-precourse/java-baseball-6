@@ -21,7 +21,7 @@ public class GameService {
         return codeRepository.save(randomCode);
     }
 
-    public Map<Grade, Integer> guessCode(List<Integer> inputCode, Long computerCodeId) {
+    public Map<Grade, Integer> guessCode(final List<Integer> inputCode, final Long computerCodeId) {
         List<Integer> computerCode = codeRepository.findById(computerCodeId).getNumber();
         Map<Grade, Integer> response = new EnumMap<>(Grade.class);
         response.put(Grade.STRIKE, 0);
@@ -37,21 +37,21 @@ public class GameService {
         return response;
     }
 
-    public boolean determinePass(Map<Grade, Integer> result) {
+    public boolean determinePass(final Map<Grade, Integer> result) {
         if(result.get(Grade.STRIKE) == 3) {
             return true;
         }
         return false;
     }
 
-    public boolean determineRestarting(Integer command) {
+    public boolean determineRestarting(final Integer command) {
         if(command == 1) {
             return true;
         }
         return false;
     }
 
-    public void removeComputerCode(Long computerCodeId) {
+    public void removeComputerCode(final Long computerCodeId) {
         codeRepository.delete(computerCodeId);
     }
 }

@@ -39,7 +39,7 @@ public class Application {
         }
     }
 
-    private static void printResult(Map<Grade, Integer> resultMap) {
+    private static void printResult(final Map<Grade, Integer> resultMap) {
         if(resultMap.get(Grade.BALL) != 0) {
             System.out.print(resultMap.get(Grade.BALL) + "볼");
         }
