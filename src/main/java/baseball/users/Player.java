@@ -14,4 +14,8 @@ public class Player {
         return numbers;
     }
 
+    public void changeNumbers(List<Integer> playerNumbers) {
+        this.numbers = playerNumbers;
+    }
+
 }
