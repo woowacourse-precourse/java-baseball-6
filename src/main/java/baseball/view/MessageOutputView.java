@@ -9,7 +9,6 @@ public class MessageOutputView {
         System.out.println("볼");
     }
 
-    // 볼과 스트라이크가 같이 나왔을 때, 볼 띄어쓰기
     public static void ballSpaceMessage() {
         System.out.print("볼 ");
     }
@@ -19,7 +18,6 @@ public class MessageOutputView {
         System.out.println("스트라이크");
     }
 
-    // 계산된 볼과 스트라이크를 메시지로 출력하는 메소드
     public static void ballStrikeCountMessage(int num) {
         System.out.print(num);
     }
