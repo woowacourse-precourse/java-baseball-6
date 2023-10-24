@@ -2,12 +2,8 @@ package baseball.domain.game;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.input.Input;
-import baseball.domain.input.error.InputError;
-import baseball.domain.input.error.InputException;
 import baseball.domain.output.Output;
-
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Game {
     private final Input input;
@@ -21,18 +17,18 @@ public class Game {
     private static Integer STRIKE_COUNT;
 
 
-    public void startGame(){
+    public void startGame() {
         STRIKE = 0;
         BALL = 0;
         List<String> computerNumber = computer.makeRandomNumbers();
         baseBallGame(computerNumber);
     }
 
-    public void baseBallGame(List<String> computerNumber){
-        while (STRIKE != 3){
+    public void baseBallGame(List<String> computerNumber) {
+        while (STRIKE != 3) {
             output.printGetNumberMessage(); // "숫자를 입력해주세요 :"
             String guessNumber = input.getExpectationNumber();
-            checkInputNumbers(guessNumber);
+            input.checkInputNumbers(guessNumber);
             setBallsAndStrikes(computerNumber, guessNumber);
             output.printTotalMessage(BALL, STRIKE);
         }
@@ -40,52 +36,40 @@ public class Game {
         checkRestartGame();
     }
 
-    public void checkInputNumbers(String numbers){
-        if (!(numbers.length() == 3)){
-            throw new InputException(InputError.NEED_THREE_DIGIT);
-        }
-        if (!numbers.matches("[1-9]+")){
-            throw new InputException(InputError.MUST_BE_DIGIT);
-        }
-        if (numbers.length() != Stream.of(numbers.split("")).distinct().count()){
-            throw new InputException(InputError.NEED_NON_DUPLICATE_NUMBERS);
-        }
-    }
-
-    public void setBallsAndStrikes(List<String> computerNumbers, String guessNumber){
+    public void setBallsAndStrikes(List<String> computerNumbers, String guessNumber) {
         BALL_COUNT = 0;
         STRIKE_COUNT = 0;
 
-        for (int i = 0; i < computerNumbers.size() ; i++){
+        for (int i = 0; i < computerNumbers.size(); i++) {
             countBallAndStrike(computerNumbers, computerNumbers.get(i), String.valueOf(guessNumber.charAt(i)));
         }
         BALL = BALL_COUNT - STRIKE_COUNT;
         STRIKE = STRIKE_COUNT;
     }
 
-    public void countBallAndStrike(List<String> computerNumbers, String computerNumber, String guessNumber){
-        if(isGuessNumberContainsAnswer(computerNumbers, guessNumber)){
+    public void countBallAndStrike(List<String> computerNumbers, String computerNumber, String guessNumber) {
+        if (isGuessNumberContainsAnswer(computerNumbers, guessNumber)) {
             BALL_COUNT += 1;
             checkNumberEquals(computerNumber, guessNumber);
         }
     }
 
-    public void checkNumberEquals(String computerNumber, String guessNumber){
-        if (computerNumber.equals(guessNumber)){
+    public void checkNumberEquals(String computerNumber, String guessNumber) {
+        if (computerNumber.equals(guessNumber)) {
             STRIKE_COUNT += 1;
         }
     }
 
-    public Boolean isGuessNumberContainsAnswer(List<String> computerNumbers, String guessNumber){
+    public Boolean isGuessNumberContainsAnswer(List<String> computerNumbers, String guessNumber) {
         return computerNumbers.contains(guessNumber);
     }
 
-    public void checkRestartGame(){
+    public void checkRestartGame() {
         output.printRestartOrNotMessage();
 
         String opinion = input.getRestartOrNot();
 
-        switch (opinion){
+        switch (opinion) {
             case "1":
                 startGame();
                 break;
