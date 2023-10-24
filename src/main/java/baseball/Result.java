@@ -13,7 +13,7 @@ public class Result {
         if (ball > 0) {
             printBall(ball);
             if (strike > 0) {
-                System.out.println(" ");
+                System.out.print(" ");
             }
         }
         if (strike > 0) {
