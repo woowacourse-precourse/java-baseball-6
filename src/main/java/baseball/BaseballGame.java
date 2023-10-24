@@ -17,19 +17,24 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
-            generateAnswer();
-            while (true) {
-                boolean isOver = query();
-                if (isOver) {
-                    break;
-                }
-            }
-
+            playGame();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } while (isRetry());
     }
 
-    private void generateAnswer() {
+    public void playGame() {
+        generateAnswer();
+
+        while (true) {
+            boolean isGameOver = query();
+
+            if (isGameOver) {
+                break;
+            }
+        }
+    }
+
+    public void generateAnswer() {
         answer = new ArrayList<>();
 
         while (answer.size() < 3) {
@@ -40,7 +45,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean query() throws IllegalArgumentException {
+    public boolean query() {
         System.out.print("숫자를 입력해주세요 : ");
         String string = Console.readLine();
 
@@ -66,7 +71,7 @@ public class BaseballGame {
         return result.isGameOver();
     }
 
-    public boolean isRetry() throws IllegalArgumentException {
+    public boolean isRetry() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String string = Console.readLine();
