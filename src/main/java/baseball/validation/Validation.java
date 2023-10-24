@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.validation;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,7 +7,7 @@ public class Validation {
 
     public void runValidation(char[] data, int dataType) {
         validateSize(data, dataType);
-        validateNumber(data);
+        validateNumber(data, dataType);
         validateDuplicate(data, dataType);
         validateRestartValue(data, dataType);
     }
@@ -15,16 +15,30 @@ public class Validation {
     // 올바른 사이즈인지 확인합니다.
     private void validateSize(char[] target, int inputType) {
         if (target.length != inputType) {
-            throw new IllegalArgumentException(inputType + "개의 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(inputType + ErrorMessage.INVALID_SIZE.getMessage());
         }
     }
 
-    // 숫자인지 확인합니다.
-    private void validateNumber(char[] target) {
+    // 1~9의 숫자인지 확인합니다.
+    private void validateNumber(char[] target, int dataType) {
+        if (dataType == 1) {
+            return;
+        }
         for (char chr : target) {
-            if (chr < 49 || chr > 57) {
-                throw new IllegalArgumentException("숫자만 입력해야 합니다.");
-            }
+            isDigit(chr);
+            isValidRange(chr);
+        }
+    }
+
+    private void isDigit(char target) {
+        if (!Character.isDigit(target)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TYPE.getMessage());
+        }
+    }
+
+    private void isValidRange(char target) {
+        if (target - '0' == 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE.getMessage());
         }
     }
 
@@ -38,7 +52,7 @@ public class Validation {
             checkDuplicateValue.add(chr);
         }
         if (checkDuplicateValue.size() != 3) {
-            throw new IllegalArgumentException("같은 숫자는 입력할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE.getMessage());
         }
     }
 
@@ -48,7 +62,7 @@ public class Validation {
             return;
         }
         if (!(target[0] == ('1')) && !(target[0] == ('2'))) {
-            throw new IllegalArgumentException("1, 2 중 하나를 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_VALUE.getMessage());
         }
     }
 }

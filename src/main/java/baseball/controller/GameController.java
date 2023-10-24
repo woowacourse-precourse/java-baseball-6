@@ -1,8 +1,9 @@
 package baseball.controller;
 
-import baseball.domain.Input;
 import baseball.domain.Judgement;
-import baseball.domain.Output;
+import baseball.domain.Result;
+import baseball.io.Input;
+import baseball.io.Output;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
@@ -20,6 +21,7 @@ public class GameController {
 
         while (run) {
             List<Integer> opponent = createOpponent();
+            System.out.println(opponent);
             guessTilSuccess(opponent);
             run = restart();
         }
@@ -40,7 +42,7 @@ public class GameController {
     private void guessTilSuccess(List<Integer> opponent) {
         System.out.print("숫자를 입력해주세요 : ");
 
-        int[] resultData = judge.judgement(opponent, getInput(3));
+        Result resultData = judge.judgement(opponent, getInput(3));
         //Recursive
         if (output.printResult(resultData)) {
             guessTilSuccess(opponent);

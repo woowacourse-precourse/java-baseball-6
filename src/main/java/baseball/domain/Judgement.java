@@ -1,21 +1,28 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Judgement {
 
-    public int[] judgement(List<Integer> opponent, List<Integer> player) {
+    public Result judgement(List<Integer> opponent, List<Integer> player) {
 
-        int strike = 0;
-        int ball = 0;
+        int strike = countStrike(opponent, player);
+        int ball = countBall(opponent, player);
 
-        for (int i = 0; i < 3; i++) {
-            boolean isStrike = (opponent.get(i) == player.get(i));
-            strike += Boolean.compare(isStrike, false);
+        return new Result(strike, ball);
+    }
 
-            boolean isBall = (opponent.contains(player.get(i)));
-            ball += Boolean.compare(isBall, false);
-        }
-        return new int[]{strike, ball - strike};
+    public int countStrike(List<Integer> opponent, List<Integer> player) {
+        return (int) IntStream.range(0, 3)
+                .filter(i -> opponent.get(i) == player.get(i))
+                .count();
+    }
+
+    public int countBall(List<Integer> opponent, List<Integer> player) {
+        return (int) IntStream.range(0, 3)
+                .filter(i -> opponent.contains(player.get(i)))
+                .filter(i -> opponent.get(i) != player.get(i))
+                .count();
     }
 }
