@@ -13,11 +13,11 @@ public class Game {
         gameManager.startGame();
 
         boolean playGame = true;
+        boolean gameOver;
+
         while(playGame) {
             gameManager.inputUserNumber();
-            gameManager.showBallCount();
-
-            boolean gameOver = gameManager.checkGameOver();
+            gameOver = gameManager.checkResult();
 
             if (gameOver) {
                 boolean restartOrNot = gameManager.askRestartGame();
