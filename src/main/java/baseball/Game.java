@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Game {
 
-    private static final String START_NUMBER = "1";
+    private static final String RESTART_NUMBER = "1";
     private static final String END_NUMBER = "2";
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
@@ -106,9 +106,7 @@ public class Game {
     }
 
     private void validateQuitInput() {
-        List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{START_NUMBER, END_NUMBER}));
-        boolean inputValidation = inputList.contains(checkInput);
-        if (!inputValidation) {
+        if (!(checkInput.equals(RESTART_NUMBER) || checkInput.equals(END_NUMBER))) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE_ERROR.getMessage());
         }
     }
