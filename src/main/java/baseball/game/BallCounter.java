@@ -4,8 +4,10 @@ import java.util.List;
 
 public class BallCounter {
 
+    private int strike;
+    private int ball;
     public Integer countStrike(List<Integer> userNum, List<Integer> comNum) {
-        int strike = 0;
+        strike = 0;
         for (int i = 0; i < userNum.size(); i++) {
             if (userNum.get(i) == comNum.get(i)) {
                 strike++;
@@ -14,13 +16,15 @@ public class BallCounter {
         return strike;
     }
 
-    public Integer countCorrect(List<Integer> userNum, List<Integer> comNum) {
+    public Integer countBall(List<Integer> userNum, List<Integer> comNum) {
         int correct = 0;
         for (int i = 0; i < userNum.size(); i++) {
             if (comNum.contains(userNum.get(i))) {
                 correct++;
             }
         }
-        return correct;
+        ball = correct - strike;
+
+        return ball;
     }
 }
