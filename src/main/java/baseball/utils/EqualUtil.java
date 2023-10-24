@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class EqualUtil {
 
-    public static ArrayList<Integer> equalSingleNumber(int userNum){ //TODO. 중복값 처리 분리
+    public static ArrayList<Integer> equalSingleNumber(int userNum){
         ArrayList<Integer> USER_NUM_LIST = new ArrayList<>();
 
         while(userNum > 0){
