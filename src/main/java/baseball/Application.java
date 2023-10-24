@@ -1,105 +1,115 @@
-import java.util.Random;
-import java.util.Scanner;
-import java.util.List;
+package baseball;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            int[] computerNumber = generateRandomNumber();
-            int attempts = 0;
-
-            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> computer = generateComputerNumber();
+            int tries = 0;
 
             while (true) {
-                System.out.print("숫자를 입력해주세요: ");
-                String input = scanner.nextLine();
+                String userGuess = getUserInput();
+                List<Integer> userNumbers = parseUserInput(userGuess);
 
-                if (input.length() != 3 || !input.matches("[0-9]+")) {
-                    System.out.println("유효하지 않은 입력입니다. 0부터 9까지의 서로 다른 3자리 숫자를 입력하세요.");
+                if (!isValidInput(userNumbers)) {
+                    System.out.println("유효하지 않은 입력입니다. 1부터 9까지 서로 다른 3자리 숫자를 입력하세요.");
                     continue;
                 }
 
-                int[] userGuess = new int[3];
-                for (int i = 0; i < 3; i++) {
-                    userGuess[i] = input.charAt(i) - '0';
-                }
+                int[] result = calculateResult(computer, userNumbers);
+                displayResult(result);
 
-                int[] result = checkGuess(userGuess, computerNumber);
-
-                if (result[0] == 0 && result[1] == 0) {
-                    System.out.println("낫싱");
-                } else if (result[0] == 0) {
-                    System.out.println(result[1] + "스트라이크");
-                } else if (result[1] == 0) {
-                    System.out.println(result[0] + "볼");
-                } else {
-                    System.out.println(result[0] + "볼" + " " + result[1] + "스트라이크");
-                }
-
-
-                attempts++;
-
-                if (result[1] == 3) {
+                if (result[0] == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
+
+                tries++;
             }
 
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-            String choice = scanner.nextLine();
-            if (choice.equals("2")) {
+            if (getUserInput().equals("2")) {
                 break;
             }
         }
-
-        scanner.close();
     }
 
-    public static int[] generateRandomNumber() {
+    private static List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
-
         while (computer.size() < 3) {
-            int randomNumber;
-            do {
-                randomNumber = new Random().nextInt(9) + 1; // 1부터 9 사이의 숫자 생성
-            } while (computer.contains(randomNumber));
-            computer.add(randomNumber);
-        }
-
-        int[] number = new int[3];
-        for (int i = 0; i < 3; i++) {
-            number[i] = computer.get(i);
-        }
-
-        return number;
-    }
-
-
-    public static boolean containsDigit(int[] array, int digit) {
-        for (int num : array) {
-            if (num == digit) {
-                return true;
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
             }
         }
-        return false;
+        return computer;
     }
 
-    public static int[] checkGuess(int[] userGuess, int[] computerNumber) {
-        int[] result = new int[2]; // result[0]는 볼, result[1]은 스트라이크
+    private static String getUserInput() {
+        String userInput = "";
+        boolean validInput = false;
+        while (!validInput) {
+            System.out.print("숫자를 입력해주세요: ");
+            userInput = Console.readLine();
+            try {
+                validateUserInput(userInput);
+                validInput = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return userInput;
+    }
+
+    private static void validateUserInput(String userInput) {
+    }
+
+    private static List<Integer> parseUserInput(String input) {
+        List<Integer> userNumbers = new ArrayList<>();
+        for (char digit : input.toCharArray()) {
+            userNumbers.add(Character.getNumericValue(digit));
+        }
+        return userNumbers;
+    }
+
+    private static boolean isValidInput(List<Integer> userNumbers) {
+        return userNumbers.size() == 3
+                && userNumbers.stream().distinct().count() == 3
+                && userNumbers.stream().allMatch(num -> num >= 1 && num <= 9);
+    }
+
+    private static int[] calculateResult(List<Integer> computer, List<Integer> userNumbers) {
+        int[] result = new int[2];
 
         for (int i = 0; i < 3; i++) {
-            if (userGuess[i] == computerNumber[i]) {
-                result[1]++;
-            } else if (containsDigit(computerNumber, userGuess[i])) {
-                result[0]++;
+            if (computer.get(i).equals(userNumbers.get(i))) {
+                result[0]++; // 스트라이크
+            } else if (computer.contains(userNumbers.get(i))) {
+                result[1]++; // 볼
             }
         }
 
         return result;
     }
+
+    private static void displayResult(int[] result) {
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        } else if (result[0] > 0 && result[1] > 0) {
+            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
+        } else if (result[0] > 0) {
+            System.out.println(result[0] + "스트라이크");
+        } else if (result[1] > 0) {
+            System.out.println(result[1] + "볼");
+        }
+    }
 }
+
 
