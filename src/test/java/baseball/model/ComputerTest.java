@@ -3,7 +3,7 @@ package baseball.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.helper.StubNumberGenerator;
-import java.util.Arrays;
+import baseball.helper.TestConverter;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -23,11 +23,11 @@ class ComputerTest {
         computer = Computer.createWithGeneratedNumbers(new StubNumberGenerator("123"));
     }
 
-    @CsvSource({"1, 2, 3, 3", "1, 3, 2,1 ", "5, 6, 7, 0", "1, 2, 5, 2"})
+    @CsvSource({"123, 3", "132,1 ", "567, 0", "125, 2"})
     @ParameterizedTest
-    void 스트라이크갯수를_비교하여_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
+    void 스트라이크갯수를_비교하여_반환한다(String input, int expected) {
         // given
-        List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
+        List<Number> inputNumbers = TestConverter.makeNumberList(input);
 
         // when
         int result = computer.countStrikes(inputNumbers);
@@ -36,11 +36,11 @@ class ComputerTest {
         assertThat(result).isEqualTo(expected);
     }
 
-    @CsvSource({"1, 2, 3, 0", "1, 3, 2, 2 ", "5, 6, 7, 0", "9, 2, 1, 1"})
+    @CsvSource({"123, 0", "132, 2 ", "567, 0", "921, 1"})
     @ParameterizedTest
-    void 볼갯수를_비교하여_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
+    void 볼갯수를_비교하여_반환한다(String input, int expected) {
         // given
-        List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
+        List<Number> inputNumbers = TestConverter.makeNumberList(input);
 
         // when
         int result = computer.countBalls(inputNumbers);
@@ -52,7 +52,8 @@ class ComputerTest {
     @Test
     void 쓰리_스트라이크인지_확인한다() {
         // given
-        List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
+        String input = "123";
+        List<Number> inputNumbers = TestConverter.makeNumberList(input);
 
         // when
         boolean isThreeStrikes = computer.isThreeStrikes(inputNumbers);
