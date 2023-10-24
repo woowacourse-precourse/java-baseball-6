@@ -38,8 +38,8 @@ public class GameModel {
         isNonDigit(playerNum);
         isThreeDigitNumber(playerNum);
         hasRepeatedDigitNumber(playerNum);
+        hasZeroDigitNumber(playerNum);
     }
-
 
     private long computeBallCount(List<String> playerNum) {
         return playerNum.stream()
@@ -72,7 +72,6 @@ public class GameModel {
         });
     }
 
-
     // 사용자가 입력한 값이 3자리 숫자인지 확인한다.
     private void isThreeDigitNumber(List<String> playerNum) {
         if (playerNum.size() != 3) {
@@ -92,5 +91,11 @@ public class GameModel {
                 });
     }
 
+    // 사용자가 입력한 값에 0이 있는 경우
+    private void hasZeroDigitNumber(List<String> playerNum) {
+        if (playerNum.contains("0")) {
+            throw new IllegalArgumentException("입력 값에 0이 포함되어 있습니다. 게임이 종료됩니다.");
+        }
+    }
 }
 
