@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class InputValidatorTest {
-
     @Test
     void validateAnswer_유효한_답변() {
         InputValidator inputValidator = new InputValidator();

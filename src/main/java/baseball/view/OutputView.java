@@ -15,6 +15,7 @@ public class OutputView {
             System.out.println(ALL_CLEAR_GAME_OVER);
             return;
         }
+
         System.out.println(result);
     }
 

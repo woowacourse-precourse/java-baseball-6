@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ComputerTest {
-
     @Test
     void Computer_랜덤숫자생성() {
         Computer computer = new Computer();

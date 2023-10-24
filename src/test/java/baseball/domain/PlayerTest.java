@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class PlayerTest {
-
     @Test
     void 사용자_입력_초기화() {
         String inputNumbers = "123";

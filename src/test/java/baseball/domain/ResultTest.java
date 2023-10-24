@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class ResultTest {
-
     @Test
     void Result_결과값_생성_낫싱() {
         List<Integer> inputAnswer = List.of(1, 2, 3);
