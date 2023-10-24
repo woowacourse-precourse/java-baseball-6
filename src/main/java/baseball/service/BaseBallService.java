@@ -1,20 +1,15 @@
 package baseball.service;
 
 import baseball.domain.BaseBall;
-import baseball.util.Constant;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
 import static baseball.util.Constant.*;
+import static camp.nextstep.edu.missionutils.Console.*;
 
 public class BaseBallService {
-
-    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public boolean isThreeStrike(BaseBall player, BaseBall computer) {
         List<Integer> playerBallNumbers = player.getInputBallNumber();
@@ -45,19 +40,19 @@ public class BaseBallService {
 
     public String notificationResult(int[] result) {
         if (result[0] > 0 && result[1] > 0) {
-            return String.format("%d볼 %d스트라이크\n", result[0], result[1]);
+            return String.format(BALL_AND_STRIKE_FORMAT, result[0], result[1]);
         } else if (result[0] > 0) {
-            return String.format("%d볼\n", result[0]);
+            return String.format(BALL_FORMAT, result[0]);
         } else if (result[1] > 0) {
-            return String.format("%d스트라이크\n", result[1]);
+            return String.format(STRIKE_FORMAT, result[1]);
         }
-        return "낫싱";
+        return NOTHING;
     }
 
-    public int restartGame() throws IOException {
+    public int restartGame() {
         System.out.println(FINISH_GAME);
         System.out.println(RESTART_GAME);
 
-        return Integer.parseInt(br.readLine());
+        return Integer.parseInt(readLine());
     }
 }
