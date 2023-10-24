@@ -20,4 +20,19 @@ public class BaseballGame {
         }
         computerNumber=tempComputerNumber;
     }
+
+    public static int[] countBallAndStrike(){
+        int strike=0;
+        int ball=0;
+        for(int i=0;i<listSize;i++) {
+            if(computerNumber.contains(userInterface.userInputNumber.get(i))){
+                if(computerNumber.indexOf(userInterface.userInputNumber.get(i))==i){
+                    strike++;
+                }else{
+                    ball++;
+                }
+            }
+        }
+        return new int[] {ball, strike};
+    }
 }
