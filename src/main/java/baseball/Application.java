@@ -31,7 +31,7 @@ public class Application {
                 outerCondition = false;
             }
         }
-
+ 
     }
     
     public static String numberGenerator() {
