@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.baseballGame.BaseBallGame;
+import baseball.baseballGame.CheckValidNum;
 import baseball.baseballGame.CompareNum;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -38,6 +40,8 @@ class ApplicationTest extends NsTest {
         int cnt = 3;
         BaseBallGame bGame = new BaseBallGame(cnt);
 
+        bGame.init();
+
         assertThat(String.valueOf(bGame.getComputerNum()).length()).isEqualTo(cnt);
     }
 
@@ -60,6 +64,17 @@ class ApplicationTest extends NsTest {
         map = cn.compare(125, 851);
         assertThat(map.get("strike")).isEqualTo(0);
         assertThat(map.get("ball")).isEqualTo(2);
+    }
+
+    @Test
+    void 입력_숫자_유효성체크(){
+        CheckValidNum checkNum = new CheckValidNum();
+
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> checkNum.check(012));
+        e = assertThrows(IllegalArgumentException.class, () -> checkNum.check(-135));
+        e = assertThrows(IllegalArgumentException.class, () -> checkNum.check(121));
+        e = assertThrows(IllegalArgumentException.class, () -> checkNum.check(15));
+        e = assertThrows(IllegalArgumentException.class, () -> checkNum.check(4567));
     }
 
     @Override
