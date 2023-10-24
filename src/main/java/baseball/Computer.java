@@ -5,15 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    List<Integer> number = new ArrayList<>();
-    String result;
+    private List<Integer> number = new ArrayList<>();
+    private String result;
 
     public List<Integer> getNumber() {
         return number;
-    }
-
-    public void resetNumber() {
-        number.clear();
     }
 
     public void setRandomNumber() {
@@ -32,6 +28,10 @@ public class Computer {
     }
 
     public void printResult() {
-        System.out.print(result);
+        System.out.println(result);
+    }
+
+    private void resetNumber() {
+        number.clear();
     }
 }

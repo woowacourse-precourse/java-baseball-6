@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    List<Integer> number = new ArrayList<>();
-    int ball;
-    int strike;
+    private List<Integer> number = new ArrayList<>();
+    private int ball;
+    private int strike;
 
     public List<Integer> getNumber() {
         return number;
@@ -16,15 +16,12 @@ public class User {
         number.clear();
     }
 
-    public void addNumber(int newNumber) {
-        number.add(newNumber);
-    }
-
     public boolean validateNumber(String numberFromUser) {
         //3자리인지
         if (numberFromUser.length() != 3) {
             return false;
         }
+
         //같은 숫자 없는지, 숫자가 맞는지
         String[] newNumbers = numberFromUser.split("");
         try {
@@ -59,5 +56,9 @@ public class User {
     public void resetBallAndStrike() {
         ball = 0;
         strike = 0;
+    }
+
+    private void addNumber(int newNumber) {
+        number.add(newNumber);
     }
 }

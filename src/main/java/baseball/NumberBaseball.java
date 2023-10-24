@@ -17,11 +17,11 @@ public class NumberBaseball {
     }
 
     public void startGame() {
-        printMessage();
+        printStartMessage();
 
         setComputerRandomNumber();
-        while (status != Status.EXIT) {
-            setInputNumberMessage();
+        while (playGameByStatus()) {
+            printInputNumberMessage();
             getNumberFromUser();
 
             compareNumber(computer.getNumber(), user.getNumber());
@@ -30,28 +30,28 @@ public class NumberBaseball {
 
             if (finishGame()) {
                 getStatusFromUser();
-
                 setRandomNumberByStatus();
             }
         }
-
     }
 
-    public void printMessage() {
+    private void printStartMessage() {
+        this.message = Message.START_MESSAGE;
         System.out.print(message.getMessage());
     }
 
-    public void setInputNumberMessage() {
+    private void printInputNumberMessage() {
         this.message = Message.INPUT_NUMBER_MESSAGE;
+        System.out.print(message.getMessage());
     }
 
-    public void setAskStatusMessage() {
+    private void printAskStatusMessage() {
         this.message = Message.ASK_STATUS_MESSAGE;
+        System.out.print(message.getMessage());
     }
 
-    public void getStatusFromUser() {
-        setAskStatusMessage();
-        printMessage();
+    private void getStatusFromUser() {
+        printAskStatusMessage();
 
         String statusNumberFromUser = Console.readLine();
         if (!validateStatusNumber(statusNumberFromUser)) {
@@ -59,7 +59,7 @@ public class NumberBaseball {
         }
     }
 
-    public boolean validateStatusNumber(String statusNumber) {
+    private boolean validateStatusNumber(String statusNumber) {
         if (statusNumber.length() != 1) {
             throw new IllegalArgumentException();
         }
@@ -84,9 +84,8 @@ public class NumberBaseball {
         return false;
     }
 
-    public void getNumberFromUser() {
+    private void getNumberFromUser() {
         user.resetNumber();
-        printMessage();
 
         String numberFromUser = Console.readLine();
 
@@ -95,11 +94,11 @@ public class NumberBaseball {
         }
     }
 
-    public void setComputerRandomNumber() {
+    private void setComputerRandomNumber() {
         computer.setRandomNumber();
     }
 
-    public void compareNumber(List<Integer> computerNumber, List<Integer> userNumber) {
+    private void compareNumber(List<Integer> computerNumber, List<Integer> userNumber) {
         user.resetBallAndStrike();
 
         for (int i = 0; i < 3; i++) {
@@ -114,11 +113,11 @@ public class NumberBaseball {
         }
     }
 
-    public void setComputerResult(int ball, int strike) {
+    private void setComputerResult(int ball, int strike) {
         StringBuilder result = new StringBuilder();
 
         if (ball == 0 && strike == 0) {
-            result.append(Result.NOTHING_RESULT.getResult()).append("\n");
+            result.append(Result.NOTHING_RESULT.getResult());
             String computerResult = result.toString();
             computer.setResult(computerResult);
             return;
@@ -140,13 +139,11 @@ public class NumberBaseball {
             result.append(Result.ALL_STRIKE_RESULT.getResult());
         }
 
-        result.append("\n");
-
         String computerResult = result.toString();
         computer.setResult(computerResult);
     }
 
-    public void printComputerResult() {
+    private void printComputerResult() {
         computer.printResult();
     }
 
@@ -162,5 +159,9 @@ public class NumberBaseball {
         if (status == Status.RETRY) {
             setComputerRandomNumber();
         }
+    }
+
+    private boolean playGameByStatus() {
+        return status != Status.EXIT;
     }
 }
