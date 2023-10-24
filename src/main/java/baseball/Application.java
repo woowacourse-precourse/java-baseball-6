@@ -16,7 +16,10 @@ public class Application {
                 systemNumber.add(number);
             }
         }
+
         while (isContinue) {
+            int ball = 0, strike = 0;
+
             String userInput = Console.readLine();
             if (userInput.matches("[^1-9]")) {
                 throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요.");
@@ -28,8 +31,19 @@ public class Application {
                 }
                 userNumber.add(Integer.parseInt(s));
             }
+            if (userNumber.size() != 3) {
+                throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+            }
+
+            for (int u : userNumber) {
+                if (systemNumber.contains(u)) {
+                    if (systemNumber.indexOf(u) == userNumber.indexOf(u)) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+                }
+            }
         }
-
-
     }
 }
