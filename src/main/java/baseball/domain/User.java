@@ -7,4 +7,8 @@ public class User {
     public void setUserNumber(int[] number) {
         userNumber = number;
     }
+
+    public int[] getUserNumber() {
+        return userNumber;
+    }
 }

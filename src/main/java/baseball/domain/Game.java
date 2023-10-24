@@ -11,4 +11,16 @@ public class Game {
         strike = 0;
         ball = 0;
     }
+
+    public int[] getGameNumber() {
+        return gameNumber;
+    }
+
+    public void increaseStrike() {
+        strike++;
+    }
+
+    public void increaseBall() {
+        ball++;
+    }
 }

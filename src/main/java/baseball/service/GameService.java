@@ -18,10 +18,31 @@ public class GameService {
     public void setGame() {
         gameOutputView.printStartGame();
         game = new Game(randomUtils.getGameNumber());
+        System.out.println(game.getGameNumber()[0] + " " + game.getGameNumber()[1] + " " + game.getGameNumber()[2]);
     }
 
     public void playGame() {
         gameOutputView.printInputNumber();
         user.setUserNumber(parser.parseUserInput(gameInputView.getUserInput()));
+        computeScore(game.getGameNumber(), user.getUserNumber());
+    }
+
+    public void computeScore(int[] gameNumber, int[] userNumber) {
+        for(int i=0; i<gameNumber.length; i++) {
+            compareNumber(gameNumber,userNumber,i);
+        }
+    }
+
+    public void compareNumber(int[] gameNumber, int[] userNumber, int index) {
+        for(int i=0; i<gameNumber.length; i++) {
+            if(userNumber[index] == gameNumber[i] && index != i) {
+                game.increaseBall();
+                break;
+            }
+            if(userNumber[index] == gameNumber[i] && index == i) {
+                game.increaseStrike();
+                break;
+            }
+        }
     }
 }
