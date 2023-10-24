@@ -1,23 +1,19 @@
 package baseball;
 
+import baseball.constants.NumberConstants;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballGameConsole {
-    static final int MIN = 1;
-    static final int MAX = 9;
-    static final int SIZE = 3;
-    static final int START_NUM = 1;
-    static final int END_NUM = 2;
+    private Validator validator = Validator.getInstance();
     private boolean isContinue;
     private List<Integer> hitterSelection;
     private String pitcherSelection;
     private BallCount ballCount;
     private boolean strikeOut;
+
 
     void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -44,8 +40,8 @@ public class BaseballGameConsole {
     private void generateHitterSelection() {
         hitterSelection = new ArrayList<>();
 
-        while (hitterSelection.size() < SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
+        while (hitterSelection.size() < NumberConstants.SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(NumberConstants.MIN, NumberConstants.MAX);
             if (!hitterSelection.contains(randomNumber)) {
                 hitterSelection.add(randomNumber);
             }
@@ -56,27 +52,7 @@ public class BaseballGameConsole {
         System.out.print("숫자를 입력해주세요 : ");
         pitcherSelection = Console.readLine();
 
-        checkValidPitcherSelection();
-    }
-
-    private void checkValidPitcherSelection() {
-        String regex = String.format("^[%d-%d]{%d}$", MIN, MAX, SIZE);
-        boolean isValid = pitcherSelection.matches(regex) && !isDuplicated();
-
-        if (!isValid) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean isDuplicated() {
-        Set<Character> set = new HashSet<>();
-
-        for (char c : pitcherSelection.toCharArray()) {
-            if (!set.add(c)) {
-                return true;
-            }
-        }
-        return false;
+        validator.checkValidInput(pitcherSelection);
     }
 
     private void getBallCount() {
@@ -110,22 +86,19 @@ public class BaseballGameConsole {
     }
 
     private void checkStrikeOut() {
-        if (ballCount.getStrike() == SIZE) {
-            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", SIZE);
+        if (ballCount.getStrike() == NumberConstants.SIZE) {
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", NumberConstants.SIZE);
             strikeOut = true;
         }
     }
 
     private void checkContinue() {
-        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", START_NUM, END_NUM);
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", NumberConstants.START_NUM, NumberConstants.END_NUM);
         String continueAnswer = Console.readLine();
-        String regex = String.format("^[%d-%d]$", START_NUM, END_NUM);
 
-        if (!continueAnswer.matches(regex)) {
-            throw new IllegalArgumentException();
-        }
+        validator.checkValidAnswer(continueAnswer);
 
-        if (Integer.toString(END_NUM).equals(continueAnswer)) {
+        if (Integer.toString(NumberConstants.END_NUM).equals(continueAnswer)) {
             isContinue = false;
         }
     }
