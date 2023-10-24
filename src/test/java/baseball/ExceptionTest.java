@@ -5,31 +5,31 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 
 public class ExceptionTest {
-    private final Display display = new Display();
+    private final InputView inputView = new InputView();
     void inputStringToSystemIn(String data){
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
-        display.close();
+        inputView.close();
     }
     @Test
     void 유저입력예외처리테스트_길이가3이아닌입력(){
         inputStringToSystemIn("12 ");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getUserNumbers();
+            inputView.getUserNumbers();
         });
     }
     @Test
     void 유저입력예외처리테스트_숫자가아닌입력(){
         inputStringToSystemIn("12d");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getUserNumbers();
+            inputView.getUserNumbers();
         });
     }
     @Test
     void 재시작입력예외처리테스트_길이가1이아닌입력(){
         inputStringToSystemIn(" 12");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getRestartInput();
+            inputView.getRestartInput();
         });
 
     }
@@ -37,14 +37,14 @@ public class ExceptionTest {
     void 재시작입력예외처리테스트_숫자가아닌입력(){
         inputStringToSystemIn("d");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getRestartInput();
+            inputView.getRestartInput();
         });
     }
     @Test
     void 재시작입력예외처리테스트_1이나2가아닌입력(){
         inputStringToSystemIn("3");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getRestartInput();
+            inputView.getRestartInput();
         });
     }
 }

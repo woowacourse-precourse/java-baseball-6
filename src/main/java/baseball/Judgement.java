@@ -3,13 +3,11 @@ package baseball;
 public class Judgement {
     private int ballCount;
     private int strikeCount;
-    private Display display;
     public Judgement(Numbers userNumbers, Numbers computerNumbers){
-        display = new Display();
         calculateCount(userNumbers, computerNumbers);
     }
     public void printResult(){
-        display.printJudgeResult(ballCount, strikeCount);
+        OutputView.printCountText(ballCount, strikeCount);
     }
     public boolean isOut(){
         return (strikeCount == 3);
@@ -23,7 +21,7 @@ public class Judgement {
     private void countStrike(Numbers userNumbers, Numbers computerNumbers, int index){
         Number userNumber = userNumbers.getNumberByIndex(index);
         Number computerNumber = computerNumbers.getNumberByIndex(index);
-        if(userNumber.isSame(computerNumber)) strikeCount++;
+        if(userNumber.equals(computerNumber)) strikeCount++;
     }
     private void countBallOneByOne(Numbers userNumbers, Numbers computerNumbers, int userIndex){
         for(int computerIndex = 0; computerIndex < 3; computerIndex++){
@@ -32,7 +30,7 @@ public class Judgement {
         }
     }
     private void countBall(Number userNumber, Number computerNumber){
-        if(userNumber.isSame(computerNumber)){
+        if(userNumber.equals(computerNumber)){
             ballCount++;
         }
     }

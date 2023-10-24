@@ -11,10 +11,6 @@ public class Number {
             throw new IllegalArgumentException("1에서 9사이 숫자를 입력해주세요.");
         }
     }
-    public boolean isSame(Number n){
-        return n.number == this.number;
-    }
-
     @Override
     public boolean equals(Object obj) {
         Number n = (Number) obj;
