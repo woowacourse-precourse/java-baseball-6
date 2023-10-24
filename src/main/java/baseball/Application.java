@@ -46,6 +46,17 @@ public class Application {
         return ballCount;
     }
 
+    public static List<Integer> changeStringToList(String userInput) {
+        List<Integer> numberList = new ArrayList<>();
+
+        for (int i = 0; i < userInput.length(); i++) {
+            int charToInt = userInput.charAt(i) - '0';
+            numberList.add(charToInt);
+        }
+
+        return numberList;
+    }
+
     public static boolean isDigitNumber(String userInput) {
         int digitCount = 0;
 
