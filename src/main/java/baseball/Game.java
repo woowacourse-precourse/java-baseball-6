@@ -10,8 +10,8 @@ import java.util.Collections;
 public class Game {
     public enum State {RESTART, END}
 
-    private Player player;
-    private Player computer;
+    private User player;
+    private Computer computer;
 
     private Hint hint = new Hint();
 
@@ -21,8 +21,8 @@ public class Game {
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        player = new Player();
-        computer = new Player();
+        player = new User();
+        computer = new Computer();
     }
 
     public void endGame() {
@@ -38,40 +38,39 @@ public class Game {
         return Console.readLine();
     }
 
-    public Boolean isValidGuessNums(String guessNumsStr) {
+    public void isValidGuessNums(String guessNumsStr) {
         int guessNumsInt;
         ArrayList<Integer> guessNums = new ArrayList<>();
 
         try {
             guessNumsInt = Integer.parseInt(guessNumsStr);
-
-            // 3자리인지
-            if (!isValidLength(guessNumsStr)) {
-                throw new IllegalArgumentException();
-            }
-
-            // 0이 들어가지 않았는지
-            if (!isValidRange(guessNumsStr)) {
-                throw new IllegalArgumentException();
-            }
-
-            for (int i = 0; i < LENGTH; i++) {
-                int num = guessNumsInt % 10;
-                guessNumsInt /= 10;
-                guessNums.add(0, num);
-            }
-
-            // 서로 다른 숫자인지
-            if (!isDifferentNums(guessNums)) {
-                throw new IllegalArgumentException();
-            }
         } catch (IllegalArgumentException e) {
-            return false;
+            throw new IllegalArgumentException();
+        }
+
+        // 3자리인지
+        if (!isValidLength(guessNumsStr)) {
+            throw new IllegalArgumentException();
+        }
+
+        // 0이 들어가지 않았는지
+        if (!isValidRange(guessNumsStr)) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < LENGTH; i++) {
+            int num = guessNumsInt % 10;
+            guessNumsInt /= 10;
+            guessNums.add(0, num);
+        }
+
+        // 서로 다른 숫자인지
+        if (!isDifferentNums(guessNums)) {
+            throw new IllegalArgumentException();
         }
 
         player.setGuessNums(guessNums);
 
-        return true;
     }
 
     private Boolean isValidLength(String guessNumsStr) {
@@ -104,8 +103,16 @@ public class Game {
             System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             result = Hints.ALL_STRIKE.ordinal();
-        } else if (ball >= 1 || strike >= 1) {
+        } else if (ball >= 1 && strike >= 1) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
+
+            result = Hints.BALL_STRIKE.ordinal();
+        } else if (ball >= 1 && strike == 0) {
+            System.out.println(ball + "볼 ");
+
+            result = Hints.BALL_STRIKE.ordinal();
+        } else if (ball == 0 && strike >= 1) {
+            System.out.println(strike + "스트라이크");
 
             result = Hints.BALL_STRIKE.ordinal();
         } else if (ball == 0 && strike == 0) {
@@ -134,7 +141,7 @@ public class Game {
 
         try {
             value = Integer.parseInt(valueStr);
-            
+
             if (value != 1 && value != 2) {
                 throw new IllegalArgumentException();
             }

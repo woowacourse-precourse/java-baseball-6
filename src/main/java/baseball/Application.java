@@ -12,12 +12,8 @@ public class Application {
         game.startGame();
 
         while (running) {
-
             String guessNumsStr = game.getGuessNums();
-            if (!game.isValidGuessNums(guessNumsStr)) {
-                return;
-            }
-
+            game.isValidGuessNums(guessNumsStr);
             roundResult = game.getHint();
 
             if (roundResult == Hints.ALL_STRIKE.ordinal()) {
@@ -28,7 +24,7 @@ public class Application {
                     running = false;
                     game.endGame();
                 } else {
-                    return;
+                    break;
                 }
             }
         }
