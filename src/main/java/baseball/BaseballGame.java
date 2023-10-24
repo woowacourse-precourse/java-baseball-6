@@ -29,10 +29,14 @@ public class BaseballGame {
     private void repeatedGuess() {
         boolean success = false;
         while (!success) {
-            final List<Integer> guess = guessInputConverter.getValue();
-            success = judgment.judge(guess);
+            success = guessAndJudge();
         }
         OutMessage.ANSWER.printMsg();
+    }
+
+    private boolean guessAndJudge() {
+        final List<Integer> guess = guessInputConverter.getValue();
+        return judgment.judge(guess);
     }
 
     private boolean isStop() {
