@@ -1,29 +1,18 @@
 package baseball.utils;
 
 import baseball.domain.BaseBall;
+import baseball.validator.GenerateValidator;
 
 public class HintGenerator {
 
-    public static BaseBall getHint(int[] answer, int[] guess) {
-        if(answer.length!=guess.length) throw new IllegalArgumentException();
-        int size=answer.length;
+    public BaseBall generateHint(int[] answer, int[] input) {
+        GenerateValidator generateValidator = new GenerateValidator();
+        generateValidator.validateInputLength(answer, input);
+
         BaseBall result = new BaseBall();
-        for (int i = 0; i < size ; i++) {
-            if (answer[i] == guess[i]) {
-                result.addStrike();
-            } else if (contains(guess, answer[i])) {
-                result.addBall();
-            }
+        for (int i = 0; i < answer.length; i++) {
+            generateValidator.checkMatch(answer, input, i, result);
         }
         return result;
-    }
-
-    private static boolean contains(int[] array, int element) {
-        for (int number : array) {
-            if (number == element) {
-                return true;
-            }
-        }
-        return false;
     }
 }

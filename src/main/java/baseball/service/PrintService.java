@@ -6,9 +6,9 @@ import baseball.utils.HintGenerator;
 import static baseball.constant.GameConstant.*;
 
 public class PrintService {
-
     public String printResult(int[] answer, int[] input) {
-        BaseBall baseBall = HintGenerator.getHint(answer, input);
+        HintGenerator hintGenerator=new HintGenerator();
+        BaseBall baseBall = hintGenerator.generateHint(answer, input);
         int size = input.length;
 
         if (baseBall.isNothing()) {
