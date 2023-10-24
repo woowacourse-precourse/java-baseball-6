@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Balls {
 
-    private static final int VALID_BALL_COUNT = 3;
+    public static final int VALID_BALL_COUNT = 3;
 
     private final List<Ball> balls;
 

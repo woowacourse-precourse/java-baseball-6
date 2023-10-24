@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 public class Ball {
 
+    public static final int MINIMUM_VALID_NUMBER = 1;
+    public static final int MAXIMUM_VALID_NUMBER = 9;
     private static final Pattern VALID_NUMBER_PATTERN = Pattern.compile("[1-9]");
 
     private final int number;
