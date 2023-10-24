@@ -2,6 +2,7 @@ package baseball.game.enums;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public enum BaseballGameRestarts {
 
@@ -19,9 +20,14 @@ public enum BaseballGameRestarts {
 
     public static BaseballGameRestarts find(Integer restartNumber) {
         return Arrays.stream(BaseballGameRestarts.values())
-                .filter(gameRestart -> Objects.equals(gameRestart.inputRestart, restartNumber))
+                .filter(matchedConstantBy(restartNumber))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(MUST_INPUT_RESTARTS_MESSAGE));
+    }
+
+    private static Predicate<BaseballGameRestarts> matchedConstantBy(
+            Integer restartNumber) {
+        return gameRestart -> Objects.equals(gameRestart.inputRestart, restartNumber);
     }
 
     public boolean wantToFinish() {
