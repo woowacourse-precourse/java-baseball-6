@@ -31,13 +31,11 @@ public class Referee {
     public boolean strikeOut(int[] numbers) {
         int ball = 0, strike = 0;
         for (int i = 0; i < 3; i++) {
-            boolean[] check = targetNumber.has(numbers[i], i);
-
-            if (check[1]) {
+            if (targetNumber.isStrike(numbers[i], i)) {
                 strike++;
                 continue;
             }
-            if (check[0]) {
+            if (targetNumber.isBall(numbers[i])) {
                 ball++;
             }
         }
