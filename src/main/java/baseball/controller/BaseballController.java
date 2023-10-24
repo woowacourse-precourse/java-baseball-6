@@ -20,7 +20,6 @@ public class BaseballController {
 
     public void gameStart() {
         String randomNumber = computerService.createRandomNumber();
-        System.out.println(randomNumber);
         Boolean isDifferent = true;
 
         while (isDifferent) {
