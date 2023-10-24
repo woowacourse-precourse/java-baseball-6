@@ -24,13 +24,8 @@ public class Application {
 
                 try {
                     userArr = getUserNumber();
-                    for(int i=0; i<userArr.length; i++){
-                        System.out.print(userArr[i]);
-                    }
-                    System.out.println();
                 }catch(IllegalArgumentException e){
-                    System.out.println(e);
-                    break;
+                    throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
                 }
 
                 for(int i=0;i<randomArr.length;i++){
@@ -46,11 +41,6 @@ public class Application {
                     }
                 }
 
-                for(int i=0; i<randomArr.length; i++){
-                    System.out.print(randomArr[i]);
-                }
-
-                System.out.println();
 
                 String gameresult="";
 
