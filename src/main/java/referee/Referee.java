@@ -9,8 +9,8 @@ import score.BaseballScore;
 
 public class Referee {
 
-    private static final int START = 1;
-    private static final int END = 2;
+    private static final String START = "1";
+    private static final String END = "2";
     private final BaseballPlayer computer;
     private final BaseballPlayer user;
     private final BaseballScore score;
@@ -44,11 +44,11 @@ public class Referee {
         Message.printContinueOrFinishMessage();
         String userInput = Console.readLine();
 
-        if (Integer.parseInt(userInput) == START) {
+        if (userInput.equals(START)) {
             playBall();
             return;
         }
-        if (Integer.parseInt(userInput) == END) {
+        if (userInput.equals(END)) {
             Message.printEndGameMessage();
             return;
         }
