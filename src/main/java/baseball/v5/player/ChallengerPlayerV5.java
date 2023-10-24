@@ -31,9 +31,6 @@ public class ChallengerPlayerV5 implements PlayerV5 {
                 throw new IllegalArgumentException();
             }
 
-
-
-
 //            입력 받은 수에 중복된 숫자가 있는지 확인
             Set<Integer> uniqueDigits = new HashSet<>();
             for (char ch : input.toCharArray()) {
