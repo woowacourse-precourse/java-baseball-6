@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Helper {
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 9;
+
     public List<Integer> generatorComputerNumber(int baseballNumSize) {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < baseballNumSize) {
-            int num = Randoms.pickNumberInRange(1, 9);
+            int num = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             if (!computerNumber.contains(num)) {
                 computerNumber.add(num);
             }
