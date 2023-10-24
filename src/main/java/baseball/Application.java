@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+
     public static void main(String[] args) {
 
         boolean game_flag = false;          // 게임 진행 여부
@@ -13,16 +14,14 @@ public class Application {
 
         while (!game_flag) {
 
-            // pickNumberInRange(int startInclusive, int endInclusive)
-            randomNumber = Randoms.pickNumberInRange(100, 999);
-            System.out.println(randomNumber);
+            randomNumber = Randoms.pickNumberInRange(100, 999);     // (int startInclusive, int endInclusive)
+//            System.out.println(randomNumber);
 
             // 게임 시작
             start(String.valueOf(randomNumber));
 
             // 게임 종료
             game_flag = end();
-
         }
     } // main
 
@@ -34,35 +33,61 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
 
-            // 숫자 입력
             try {
                 userNumber = Console.readLine();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 throw new IllegalArgumentException();
             }
 
-            // 입력된 숫자에 대한 결과
-            if(calculate(randomNumber, userNumber)) return;
+            // 입력된 숫자에 대한 결과 계산
+            if (calculate(randomNumber, userNumber)) {
+                return;
+            }
         }
     } // start
 
     private static boolean calculate(String randomNumber, String userNumber) {
 
+        char temp;
+
         int strike = 0;
+        int ball = 0;
 
         // 계산
         for (int i = 0; i < 3; i++) {
-            if (randomNumber.charAt(i) == userNumber.charAt(i)) {
+
+            temp = userNumber.charAt(i);
+
+            // 스트라이크
+            if (randomNumber.charAt(i) == temp) {
                 strike += 1;
+                continue;
+            }
+
+            // 볼
+            for (int j = 0; j < 3; j++) {
+                if (randomNumber.charAt(j) == temp) {
+                    ball += 1;
+                    break;
+                }
             }
         }
 
         // 출력
+
+        if (ball > 0) System.out.print(ball + "볼 ");
+
         if (strike > 0) {
-            System.out.println(strike + "스트라이크");
-            return strike == 3;
+            System.out.print(strike + "스트라이크");
+            if (strike == 3){
+                System.out.println();
+                return true;
+            }
         }
 
+        if (ball == 0 && strike == 0) System.out.print("낫싱");
+
+        System.out.println();
         return false;
     }
 
@@ -76,5 +101,6 @@ public class Application {
         if (check == 1) return false;
         else if (check == 2) return true;
         else throw new IllegalArgumentException();
+
     } // end
 }
