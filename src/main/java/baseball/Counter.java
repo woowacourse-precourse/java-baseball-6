@@ -7,9 +7,10 @@ public class Counter {
     private final List<Integer> computerNumber;
     private final List<Integer> playerNumber;
 
+    // 외부에서 사용하는 메서드가 여럿이므로 생성자로 한 번에 인자를 받고 클래스 내에서 재사용한다.
     public Counter(ComputerNumber computerNumber, PlayerNumber playerNumber) {
-        this.computerNumber = computerNumber.getComputerNumber();
-        this.playerNumber = playerNumber.getPlayerNumber();
+        this.computerNumber = computerNumber.getNumber();
+        this.playerNumber = playerNumber.getNumber();
     }
 
     public int countBalls() {

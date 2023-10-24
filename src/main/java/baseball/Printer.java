@@ -3,6 +3,7 @@ package baseball;
 public class Printer {
 
     // 외부에서 메서드를 바로 사용하는 클래스이므로 외부에서 사용할 메서드를 스태틱으로 선언한다.
+    // 외부에서 메서드를 하나만 사용하므로 생성자없이 메서드에서 인자를 바로 받는다.
     public static void printResult(int balls, int strikes) {
         StringBuilder result = new StringBuilder();
 

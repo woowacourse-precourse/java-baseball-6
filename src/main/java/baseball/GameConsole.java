@@ -51,16 +51,12 @@ public class GameConsole {
 
     private static boolean isPlayAgain() {
         // 1, 2 이외 다른 숫자를 입력하거나 숫자를 입력하지 않을 경우 IllegalArgumentException 발생
-        try {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int choice = Integer.parseInt(Console.readLine());
-            return switch (choice) {
-                case 1 -> true;
-                case 2 -> false;
-                default -> throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력하세요.");
-            };
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력하세요.");
-        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choice = Parser.parseNumber();
+        return switch (choice) {
+            case 1 -> true;
+            case 2 -> false;
+            default -> throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력하세요.");
+        };
     }
 }
