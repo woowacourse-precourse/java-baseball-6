@@ -17,8 +17,9 @@ public class Pitch {
     private static final int MIN_STRIKE = 0;
     private static final String SPACE = " ";
     private static final String NOTHING_MESSAGE = "낫싱";
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
+    private static final String STRIKE = "%d스트라이크";
+    private static final String BALL = "%d볼";
+    private static final String STRIKE_AND_BALL = "%d볼 %d스트라이크";
     private static final String END_GAME_MESSAGE = "3개의 숫자를 모두 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하시면 2를 입력하세요.";
 
@@ -90,23 +91,23 @@ public class Pitch {
         }
 
         if (strike == MAX_STRIKE) {
-            System.out.println(strike + STRIKE);
+            System.out.println(String.format(STRIKE, strike));
             System.out.println(END_GAME_MESSAGE);
             System.out.println(RESTART_MESSAGE);
             return;
         }
 
-        if (ball == MIN_BALL) {
-            System.out.println(strike + STRIKE);
-            return;
-        }
-
         if (strike == MIN_STRIKE) {
-            System.out.println(ball + BALL);
+            System.out.println(String.format(BALL, ball));
             return;
         }
 
-        System.out.println(ball + BALL + SPACE + strike + STRIKE);
+        if (ball == MIN_BALL) {
+            System.out.println(String.format(STRIKE, strike));
+            return;
+        }
+
+        System.out.println(String.format(STRIKE_AND_BALL, ball, strike));
     }
 
 }
