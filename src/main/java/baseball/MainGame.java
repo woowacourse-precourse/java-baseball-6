@@ -31,7 +31,7 @@ public class MainGame {
         }else if(sb.get(1) == 0){
             return sb.get(0)+ "스트라이크";
         }
-        return sb.get(1) + "볼" + sb.get(0)+ "스트라이크";
+        return sb.get(1) + "볼 " + sb.get(0)+ "스트라이크";
     }
     public boolean result(List<Integer> sb){
         System.out.println(hint(sb));
