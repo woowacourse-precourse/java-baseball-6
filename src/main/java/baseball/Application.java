@@ -8,7 +8,8 @@ import java.util.List;
 public class Application {
     private static final int RESTART = 1;
     private static final int QUIT = 2;
-    
+    private static final int TOTAL_NUMBER_COUNT = 3;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -57,20 +58,18 @@ public class Application {
     private static void printResult(int ball, int strike) {
         List<String> results = new ArrayList<>();
         if (ball != 0) {
-            results.add(String.format("%d볼", ball));
+            results.add(ball + "볼");
         }
+
         if (strike != 0) {
-            results.add(String.format("%d스트라이크", strike));
+            results.add(strike + "스트라이크");
         }
 
-        if (results.size() != 0) {
-            System.out.println(String.join(" ", results));
-        } else {
-            System.out.println("낫싱");
-        }
+        String resultMessage = results.isEmpty() ? "낫싱" : String.join(" ", results);
+        System.out.println(resultMessage);
 
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (strike == TOTAL_NUMBER_COUNT) {
+            System.out.println(TOTAL_NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
