@@ -1,12 +1,17 @@
 package baseball;
 
+import static baseball.Type.*;
+
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GameMaster {
 
-  boolean shouldContinueRound;
-  boolean isCorrectAnswerFound;
+  private boolean shouldContinueRound;
+  private boolean isCorrectAnswerFound;
 
   public GameMaster() {
     this.shouldContinueRound = true;
@@ -14,6 +19,14 @@ public class GameMaster {
 
   public void init() {
     this.isCorrectAnswerFound = false;
+  }
+
+  public boolean isGameInProgress() {
+    return shouldContinueRound;
+  }
+
+  public boolean findCorrectAnswer() {
+    return isCorrectAnswerFound;
   }
 
   public void start() {
@@ -28,37 +41,36 @@ public class GameMaster {
   public String checkResult(String result) {
     System.out.println(result);
     if(result.equals("3스트라이크")) {
-      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
       return progressOrNot();
     }
     return null;
   }
 
   public String progressOrNot() {
+    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     return Console.readLine();
   }
 
-  public String printResult(Map<String, Integer> resultTable) {
-    StringBuilder sb = new StringBuilder();
-    int strike = resultTable.get("스트라이크");
-    int ball = resultTable.get("볼");
-
-    if (strike == 0 && ball == 0) {
-      sb.append("낫싱");
-    } else if(strike != 0 && ball == 0) {
-      sb.append(strike).append("스트라이크");
-    } else if(strike == 0 && ball != 0) {
-      sb.append(ball).append("볼");
-    } else {
-      sb.append(ball).append("볼 ").append(strike).append("스트라이크");
+  public String printResult(Map<String, Integer> scoreBoard) {
+    String result = read(scoreBoard);
+    if(result.isEmpty()) {
+      return "낫싱";
     }
-
-    return sb.toString();
+    return result;
   }
 
-  public void oneMoreRound(boolean status) {
-    this.shouldContinueRound = status;
+  private String read(Map<String, Integer> scoreBoard) {
+    List<String> typeOrders = getAllKinds();
+    return scoreBoard.entrySet().stream()
+        .filter(type -> type.getValue() != 0)
+        .sorted(Comparator.comparingInt(type -> typeOrders.indexOf(type.getKey())))
+        .map(type -> type.getValue() + type.getKey())
+        .collect(Collectors.joining(" "));
   }
 
+  public void conclude(String decideAnswer) {
+    isCorrectAnswerFound = true;
+    shouldContinueRound = decideAnswer.equals("1");
+  }
 }
