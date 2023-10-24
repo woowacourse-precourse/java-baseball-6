@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
-    private static final int NUMBER_LENGTH = 3;
+import static baseball.BaseballConstants.*;
 
+public class Computer {
     /**
      * 컴퓨터의 수를 생성
      * @return 1~9까지의 숫자 3개가 담긴 리스트

@@ -3,8 +3,9 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.BaseballConstants.*;
+
 public class User {
-    private static final int NUMBER_LENGTH = 3;
     private final String input;
 
     public User(String input) {
