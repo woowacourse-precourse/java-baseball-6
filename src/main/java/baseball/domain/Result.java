@@ -7,8 +7,7 @@ public class Result {
     private int strike;
 
     public String compareInputAnswerToRandomNumbers(List<Integer> inputAnswer, List<Integer> randomNumbers) {
-        ball = 0;
-        strike = 0;
+        resetGameScore();
 
         for (int i = 0; i < inputAnswer.size(); i++) {
             if (inputAnswer.get(i).equals(randomNumbers.get(i))) {
@@ -32,13 +31,11 @@ public class Result {
     }
 
     public boolean isGameOver() {
-        if (strike == 3) {
-            ball = 0;
-            strike = 0;
-            return true;
-        }
+        return strike == 3;
+    }
+
+    public void resetGameScore() {
         ball = 0;
         strike = 0;
-        return false;
     }
 }
