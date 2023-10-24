@@ -17,6 +17,14 @@ public class GameModel {
         return gameModel;
     }
 
+    //정답 여부 반환
+    public boolean completeSame(List<Integer> res) {
+        if (res.get(1) == 3) {
+            return true;
+        }
+        return false;
+    }
+
     //사용자와 컴퓨터 숫자 비교
     public List<Integer> compareNums(List<Integer> computer, List<Integer> user) {
         int ball = 0;
@@ -58,4 +66,5 @@ public class GameModel {
 
         return computer;
     }
+
 }
