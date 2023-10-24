@@ -1,9 +1,9 @@
 package baseball;
 
 public class Application {
-    private GamePlayer player;
+    private GameParticipant player;
     public Application(){
-        player = new GamePlayer();
+        player = new GameParticipant();
     }
     public static void main(String[] args) {
         Application app = new Application();
