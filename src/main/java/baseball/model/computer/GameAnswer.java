@@ -22,6 +22,7 @@ public class GameAnswer {
             int randomNumber = Randoms.pickNumberInRange(FIRST_NUMBER, LAST_NUMBER);
             addIfNotInList(answer, randomNumber);
         }
+//        System.out.println("answer = " + answer);
         this.answer = answer;
     }
 

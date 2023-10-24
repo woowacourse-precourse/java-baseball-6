@@ -1,5 +1,6 @@
 package baseball.util;
 
+import baseball.model.player.GuessNumber;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,10 +9,10 @@ public class StringToIntegerListConverter {
     private StringToIntegerListConverter() {
     }
 
-    public static List<Integer> StringToIntegerList(String input) {
+    public static List<GuessNumber> StringToGuessNumberList(String input) {
         return input.chars()
-                .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList());
+                .mapToObj(c ->
+                        new GuessNumber(Character.getNumericValue(c))
+                ).collect(Collectors.toList());
     }
 }

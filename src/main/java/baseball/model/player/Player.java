@@ -4,24 +4,24 @@ import java.util.List;
 
 public class Player {
 
-    private GuessNumber guessNumber;
+    private GuessNumbers guessNumbers;
     private GameStateNumber gameStateNumber;
 
-    public Player(GuessNumber guessNumber, GameStateNumber gameStateNumber) {
-        this.guessNumber = guessNumber;
+    public Player(GuessNumbers guessNumbers, GameStateNumber gameStateNumber) {
+        this.guessNumbers = guessNumbers;
         this.gameStateNumber = gameStateNumber;
     }
 
     public void inputGuessNumber() {
-        guessNumber.input();
+        guessNumbers.input();
     }
 
     public void inputGameStateNumber() {
         gameStateNumber.input();
     }
 
-    public List<Integer> getGuessNumbers() {
-        return guessNumber.getNumbers();
+    public List<GuessNumber> getGuessNumbers() {
+        return guessNumbers.getNumbers();
     }
 
     public boolean continueGame() {

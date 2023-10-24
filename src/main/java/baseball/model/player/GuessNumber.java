@@ -1,33 +1,23 @@
 package baseball.model.player;
 
-import static baseball.exception.GuessNumberValidator.isGuessNumbersValid;
-import static baseball.util.StringToIntegerListConverter.StringToIntegerList;
-
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
+import static baseball.exception.GuessNumberValidator.isGuessNumberValid;
 
 public class GuessNumber {
 
-    private List<Integer> numbers;
+    private Integer number;
 
-    public GuessNumber() {
-        this.numbers = new ArrayList<>();
+    public GuessNumber(Integer number) {
+        validateGuessNumber(number);
+        this.number = number;
     }
 
-    public void input() {
-        String input = Console.readLine();
-        validateInputNumbers(input);
-        this.numbers = StringToIntegerList(input);
-    }
-
-    private void validateInputNumbers(String input) {
-        if (!isGuessNumbersValid(input)) {
+    private void validateGuessNumber(Integer number) {
+        if (!isGuessNumberValid(number)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public Integer getNumber() {
+        return number;
     }
 }

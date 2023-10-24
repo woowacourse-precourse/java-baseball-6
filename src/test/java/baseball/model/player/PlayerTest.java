@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 class PlayerTest {
 
     private Player player;
-    private GuessNumber guessNumber;
+    private GuessNumbers guessNumbers;
     private GameStateNumber gameStateNumber;
 
     private static final Integer RESTART = 1;
@@ -21,9 +21,9 @@ class PlayerTest {
 
     @BeforeEach
     void init() {
-        guessNumber = new GuessNumber();
+        guessNumbers = new GuessNumbers();
         gameStateNumber = new GameStateNumber();
-        player = new Player(guessNumber, gameStateNumber);
+        player = new Player(guessNumbers, gameStateNumber);
     }
 
     @Test
@@ -59,9 +59,9 @@ class PlayerTest {
     }
 
     private void setGuessNumber(List<Integer> guess) throws NoSuchFieldException, IllegalAccessException {
-        Field numbers = guessNumber.getClass().getDeclaredField("numbers");
+        Field numbers = guessNumbers.getClass().getDeclaredField("numbers");
         numbers.setAccessible(true);
-        numbers.set(guessNumber, guess);
+        numbers.set(guessNumbers, guess);
     }
 
     private void setGameState(Integer state) throws NoSuchFieldException, IllegalAccessException {

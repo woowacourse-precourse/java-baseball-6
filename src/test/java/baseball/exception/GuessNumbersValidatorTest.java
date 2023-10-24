@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class GuessNumberValidatorTest {
+class GuessNumbersValidatorTest {
 
     @Test
     @DisplayName("중복없는 1-9 사이의 3자리 숫자는 입력으로 들어올 수 있다.")

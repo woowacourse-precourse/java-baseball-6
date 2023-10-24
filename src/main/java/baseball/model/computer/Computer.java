@@ -1,5 +1,6 @@
 package baseball.model.computer;
 
+import baseball.model.player.GuessNumber;
 import java.util.List;
 
 public class Computer {
@@ -20,7 +21,7 @@ public class Computer {
         return gameAnswer.getAnswer();
     }
 
-    public void calculateScore(List<Integer> playerInput) {
+    public void calculateScore(List<GuessNumber> playerInput) {
         score.calculate(playerInput, getGameAnswer());
     }
 
