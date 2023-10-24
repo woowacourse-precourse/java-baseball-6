@@ -1,5 +1,7 @@
 package baseball.service;
 
+import camp.nextstep.edu.missionutils.Console;
+
 /**
  * 사용자 입력 값에 대하여 예외 처리 하는 클래스
  */
@@ -28,6 +30,7 @@ public class Validation {
             validateDuplicate(num);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            Console.close();
             throw e;
         }
     }
@@ -46,6 +49,7 @@ public class Validation {
             validateSignRange(sign);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            Console.close();
             throw e;
         }
     }
