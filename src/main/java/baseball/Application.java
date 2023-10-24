@@ -9,11 +9,11 @@ public class Application {
         // TODO: 프로그램 구현
         getStartingMessage();
         while(true){
-            boolean play = PlayBaseballGame.play();
+            PlayBaseballGame.play();
 
-            if(play){
-                break;
-            }
+//            if(play){
+//                break;
+//            }
             getRestartOrEndMessage();
             String input = Console.readLine();
             try {

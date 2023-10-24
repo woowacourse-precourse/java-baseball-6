@@ -7,27 +7,27 @@ import static baseball.MessageManager.getCorrectAnswerMessage;
 import static baseball.MessageManager.getEndingMessage;
 
 public class PlayBaseballGame {
-    public static boolean play() {
+    public static void play() {
         String targetNumber = ComputerRandomNumber.computerRandomNumber();
-        boolean play = true;
+//        boolean play = true;
         while (true) {
             MessageManager.getInputMessage();
             String input = Console.readLine();
-
-            try {
-                InputValidator.validateInput(input);
-            } catch (IllegalArgumentException e) {
-               System.err.println(e.getMessage());
-               break;
-            }
+            InputValidator.validateInput(input);
+//            try {
+//                InputValidator.validateInput(input);
+//            } catch (IllegalArgumentException e) {
+//               System.err.println(e.getMessage());
+//               break;
+//            }
             if (input.equalsIgnoreCase(targetNumber)) {
                 getCorrectAnswerMessage();
                 getEndingMessage();
-                play = false;
+//                play = false;
                 break;
             }
             System.out.println(outputOfJudgment(targetNumber, input));
         }
-        return play;
+//        return play;
     }
 }
