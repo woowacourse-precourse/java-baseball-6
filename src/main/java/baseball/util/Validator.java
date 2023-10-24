@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 public final class Validator {
-    public static void validateListSize(List<Integer> list, int size) {
-        if(list.size() != size) {
+    public static void validateListSize(List<Integer> list) {
+        if(list.size() != 3) {
             throw new IllegalArgumentException("리스트의 크기는 3이어야 합니다!");
         }
     }

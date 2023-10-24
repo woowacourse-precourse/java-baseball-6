@@ -4,6 +4,7 @@ import baseball.model.BallStrike;
 import baseball.model.BaseballCount;
 import baseball.model.Computer;
 import baseball.model.User;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -17,10 +18,14 @@ public class BaseBallGameService {
 
         Computer randomNumbers = Computer.createRandomNumbers();
         List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+        Validator.validateListSize(randomNumbersList);
+        Validator.validateDuplicateList(randomNumbersList);
+
 
         while(ballStrike.getStrikeCount() < 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInputNumbers = readLine();
+            Validator.validateInput(userInputNumbers);
             User user = User.readInputNumbers(userInputNumbers);
             List<Integer> inputNumberList = user.getInputNumberList();
             playBaseBall(randomNumbersList, inputNumberList, ballStrike);
@@ -46,6 +51,7 @@ public class BaseBallGameService {
     public boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartInputNumber = readLine();
+        Validator.validateRestartInput(restartInputNumber);
         if(restartInputNumber.equals("1")) {
             return true;
         }

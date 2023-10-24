@@ -1,7 +1,5 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
