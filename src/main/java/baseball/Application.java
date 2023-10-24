@@ -6,12 +6,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 
     public static int[] getRandomComputerNumber(){
-        return new int[]{
-            Randoms.pickNumberInRange(1, 9),
+        int[] ret = {
+                Randoms.pickNumberInRange(1, 9),
+                Randoms.pickNumberInRange(1, 9),
+                Randoms.pickNumberInRange(1, 9)
+        };
+
+        // 같은 수가 나올 경우 다시 랜덤돌리기
+        while (ret[0]==ret[1] || ret[1]==ret[2] || ret[2] == ret[0]){
+            ret = new int[]{
+                    Randoms.pickNumberInRange(1, 9),
                     Randoms.pickNumberInRange(1, 9),
                     Randoms.pickNumberInRange(1, 9)
-        };
+            };
+        }
+
+        return ret;
     }
+
     public static int[] getUserNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
@@ -78,12 +90,16 @@ public class Application {
             int[] computerNumbers = getRandomComputerNumber();
 
             while(true) {
+                // 사용자 숫자 입력받기
                 int[] userNumbers = getUserNumber();
 
+                // 사용자숫자와 컴퓨터 숫자 매칭된 결과 얻기
                 int[] cnt = calcGameResult(computerNumbers,userNumbers);
 
+                // 계산된 결과 출력
                 printResult(cnt);
 
+                // 만약 게임이 끝났다면 다시 입력받지 않고 게임 재시작문구 출력
                 if (isGameEnd(cnt)){
                     break;
                 }
