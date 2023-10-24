@@ -13,6 +13,7 @@ public class Application {
         System.out.println(Arrays.toString(computerNumbers));
         System.out.println(isValid("124"));
         System.out.println(Arrays.toString(parseInput("123")));
+        System.out.println(countStrikes(computerNumbers, parseInput("912")));
 
     }
 
@@ -48,6 +49,7 @@ public class Application {
 
         if (isValid(input)) {
             int[] userNumbers = parseInput(input);
+            int strikes = countStrikes(computerNumbers, userNumbers);
         } else {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
@@ -82,6 +84,15 @@ public class Application {
 
 
     // 스트라이크 수 계산
+    private static int countStrikes(int[] computerNumbers, int[] userNumbers) {
+        int count = 0;
+        for (int i = 0; i < computerNumbers.length; i++) {
+            if (computerNumbers[i] == userNumbers[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 
     // 볼 수 계산
