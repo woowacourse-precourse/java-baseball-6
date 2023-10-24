@@ -23,17 +23,52 @@ public class Application {
                 }
             }
 
-            System.out.println("숫자를 입력해주세요 : ");
-            String response = Console.readLine();
-            List<Integer> prediction = new ArrayList<>();
-            for (int i = 0; i < response.length(); i++) {
-                if (!prediction.contains(response.charAt(i) - '0') && 1 <= response.charAt(i) - '0' && response.charAt(i) - '0' <= 10) {
-                    prediction.add(response.charAt(i) - '0');
-                }
-            }
+            int numberOfStrike = 0;
+            int numberOfBall = 0;
 
-            if (prediction.size() != 3 || response.length() != 3) {
-                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+            while (numberOfStrike != 3 || numberOfBall != 0) {
+
+                System.out.println("숫자를 입력해주세요 : ");
+                String response = Console.readLine();
+                List<Integer> prediction = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    if (!prediction.contains(response.charAt(i) - '0') && 1 <= response.charAt(i) - '0' && response.charAt(i) - '0' <= 10) {
+                        prediction.add(response.charAt(i) - '0');
+                    }
+                }
+
+                if (prediction.size() != 3 || response.length() != 3) {
+                    throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+                }
+
+                for (int i = 0; i < prediction.size(); i++) {
+                    if (prediction.get(i).equals(numbers.get(i))) {
+                        numberOfStrike++;
+                        continue;
+                    }
+                    if (numbers.contains(prediction.get(i))) {
+                        numberOfBall++;
+                    }
+                }
+
+                if (numberOfStrike == 3) {
+                    System.out.println("3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+
+                if (numberOfStrike == 0 && numberOfBall == 0) {
+                    System.out.println("낫싱");
+                    continue;
+                }
+
+                if (numberOfStrike == 0) {
+                    System.out.printf("%d볼%n", numberOfBall);
+                    continue;
+                }
+
+                if (numberOfBall == 0) {
+                    System.out.printf("%d스트라이크%n", numberOfStrike);
+                }
             }
         }
 
