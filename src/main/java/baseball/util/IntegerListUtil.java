@@ -17,12 +17,20 @@ public class IntegerListUtil {
         return integerList;
     }
 
+    public static void addIfNotContained(List<Integer> list, int value) {
+        if (!list.contains(value)) {
+            list.add(value);
+        }
+    }
+
     public static void validateListType(List<?> list) {
         for (Object item : list) {
             if (!(item instanceof Integer)) {
-                throw new IllegalArgumentException(INVALID_INTEGER_LIST_ELEMENT_MESSAGE);
+                ExceptionUtil.throwInvalidValueException(INVALID_INTEGER_LIST_ELEMENT_MESSAGE);
             }
         }
     }
+
+
 
 }

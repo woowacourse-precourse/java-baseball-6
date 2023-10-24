@@ -44,9 +44,7 @@ public class NumberBaseball {
 
         while (computerList.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-            if (!computerList.contains(randomNumber)) {
-                computerList.add(randomNumber);
-            }
+            IntegerListUtil.addIfNotContained(computerList, randomNumber);
         }
         return createBaseball(computerList);
     }
@@ -97,7 +95,7 @@ public class NumberBaseball {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (!stringValue.matches("^[1-9]+$")) {
                 ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
-            }
+            } //TODO: 이쪽 if문을 Util로 빼고싶은데..
         }
     }
 }
