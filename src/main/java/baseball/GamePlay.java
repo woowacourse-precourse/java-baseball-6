@@ -68,6 +68,7 @@ public class GamePlay {
 		print.ResultMessage(ball,strike);
 		
 		if(strike == 3) {
+			print.CorrectMessage();
 			print.RestartMessage();
 			CheckContinueGame();
 			detector.GameplayDetector(Gameplay);
