@@ -12,15 +12,16 @@ import java.util.stream.IntStream;
 public class Computer {
     private final List<Integer> computerNumber;
 
-    private Computer(List<Integer> computerNumber) {
-        this.computerNumber = computerNumber;
+    private Computer() {
+        this.computerNumber = createRandomNumbers();
     }
 
-    public static Computer createByNumber(List<Integer> computerNumber) {
-        return new Computer(computerNumber);
+    public static Computer createByNumber() {
+
+        return new Computer();
     }
 
-    public static List<Integer> createRandomNumbers() {
+    public List<Integer> createRandomNumbers() {
         return IntStream.generate(() -> Randoms.pickNumberInRange(BALL_MIN, BALL_MAX))
                 .boxed()
                 .distinct()
