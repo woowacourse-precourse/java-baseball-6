@@ -11,6 +11,8 @@ public class Application {
         RestartGame restartGame = new RestartGame();
         boolean restart = true;
 
+
+
         while (restart) {
             List<Integer> computer = randomNumber.create();
             String result = "";
