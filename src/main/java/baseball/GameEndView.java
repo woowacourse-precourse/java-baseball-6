@@ -11,4 +11,8 @@ public class GameEndView {
     public void printAskingRegameIntentionMessage() {
         System.out.println(ASKING_REGAME_INTENTION_MESSAGE);
     }
+
+    public boolean checkWhetherToRegameOrNot(String toRegameOrNotString) {
+        return toRegameOrNotString.equals("1");
+    }
 }
