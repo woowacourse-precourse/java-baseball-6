@@ -7,7 +7,7 @@ public class Array {
     // 3자리 수 초과 입력
     public static void checkArrayLength(String userNumber) {
         if (userNumber.length() != 3) {
-            throw new IllegalArgumentException("3자리 수를 초과했습니다.");
+            throw new IllegalArgumentException();
         }
     }
 
