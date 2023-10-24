@@ -15,11 +15,15 @@ public class BaseballGame implements Game {
 
 
     private static GameStatus gameStatus = GameStatus.START;
-    private static NumbersGenerator numbersGenerator = new NumbersGenerator();
-    private static BallComparator ballComparator = new BallComparator();
+    private static final NumbersGenerator numbersGenerator = new NumbersGenerator();
+    private static final BallComparator ballComparator = new BallComparator();
 
     private static Balls computerBalls;
-    private static View console = new ConsoleView();
+    private static final View console = new ConsoleView();
+
+    private static final int MAX_STRIKE = 3;
+
+    private static final int STOP_NUMBER = 2;
 
     @Override
     public void executeGame() {
@@ -28,8 +32,7 @@ public class BaseballGame implements Game {
         do {
             console.printEnterNumberMsg();
             String number = console.inputNumbers();
-            List<Integer> numbers = StringToIntegerListConvertor.convert(number);
-            List<Ball> userBallList = IntegerListToBallListConvertor.convert(numbers);
+            List<Ball> userBallList = convertStringToBallList(number);
             Balls userBalls = new Balls(userBallList);
             GameResult gameResult = ballComparator.compareStatus(userBalls, computerBalls);
             console.printResult(gameResult);
@@ -38,12 +41,18 @@ public class BaseballGame implements Game {
         } while (gameStatus.isOngoing());
     }
 
+    private List<Ball> convertStringToBallList(String number) {
+        List<Integer> numbers = StringToIntegerListConvertor.convert(number);
+        return IntegerListToBallListConvertor.convert(numbers);
+
+    }
+
     private void checkResultAndRetry(GameResult gameResult) {
         if (isFinish(gameResult)) {
             console.printEndMessage();
             console.printEndOrRetryMessage();
             int menu = Integer.parseInt(console.inputRetryMenu());
-            if (menu == 2) {
+            if (menu == STOP_NUMBER) {
                 gameStatus = GameStatus.END;
                 return;
             }
@@ -59,10 +68,7 @@ public class BaseballGame implements Game {
     }
 
     private boolean isFinish(GameResult gameResult) {
-        if (gameResult.strike() == 3) {
-            return true;
-        }
-        return false;
+        return gameResult.strike() == MAX_STRIKE;
     }
 
     @Override
