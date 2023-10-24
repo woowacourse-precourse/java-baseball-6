@@ -27,4 +27,17 @@ public class UserInputManager {
         return numbers;
     }
 
+    // 재시작 여부 선택 처리 함수
+    // 입력 검증 후 재시작 여부 반환
+    // 입력이 올바르지 않을 경우 예외 발생
+    public boolean processRestartSelectionInput() {
+        String selection = Console.readLine();
+
+        // 입력값이 1 혹은 2가 아닐 경우 예외 발생
+        if (!(selection.equals("1")|| selection.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+
+        return selection.equals("1");
+    }
 }
