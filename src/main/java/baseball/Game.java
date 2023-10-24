@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Exception.NumberValidator;
 import java.util.List;
 
 public class Game {
@@ -21,11 +22,14 @@ public class Game {
     boolean isRestart = true;
     while (isRestart) {
       List<Integer> computerNumbers = computer.generateNumbers();
+      NumberValidator.validate(computerNumbers);
+
       boolean isEnd = false;
 
       while (!isEnd) {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> playerNumbers = player.inputNumbers();
+        NumberValidator.validate(playerNumbers);
         int[] result = score.calculateScore(playerNumbers, computerNumbers);
         printResult(result);
         isEnd = isGameOver(result);

@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.Exception.NumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,6 @@ public class Player {
     String input = Console.readLine();
     System.out.println(input);
     List<Integer> inputNumbers = parseInput(input);
-    NumberValidator.validate(inputNumbers);
     return inputNumbers;
   }
 
