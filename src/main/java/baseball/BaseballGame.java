@@ -61,20 +61,8 @@ public class BaseballGame {
 
         PlayerNumbers playerNumbers = PlayerNumbers.of(inputPlayerNumbers);
 
-        calculateScore(answerNumbers, playerNumbers);
+        answerNumbers.calculateScore(playerNumbers);
 
         outputView.writeMessage(Score.getResultMessage());
-    }
-
-    private void calculateScore(AnswerNumbers answerNumbers, PlayerNumbers playerNumbers) {
-        for (int index = 0; index < AnswerNumbers.SIZE; index++) {
-            if (answerNumbers.contains(playerNumbers.getByIndex(index))) {
-                if (answerNumbers.getByIndex(index).equals(playerNumbers.getByIndex(index))) {
-                    Score.STRIKE.addCount();
-                    continue;
-                }
-                Score.BALL.addCount();
-            }
-        }
     }
 }

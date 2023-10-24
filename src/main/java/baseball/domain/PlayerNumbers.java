@@ -20,10 +20,6 @@ public class PlayerNumbers {
         return new PlayerNumbers(inputString);
     }
 
-    public Integer getByIndex(final int index) {
-        return playerNumbers.get(index);
-    }
-
     private List<Integer> stringToIntegerArray(final String inputPlayerNumbers) {
         return Arrays.stream(inputPlayerNumbers.split(""))
                 .map(Integer::parseInt)
@@ -48,5 +44,9 @@ public class PlayerNumbers {
         if (!inputPlayerNumbers.matches("^[123456789]{3}$")) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
+    }
+
+    public int getNumberByPosition(int position) {
+        return playerNumbers.get(position);
     }
 }

@@ -8,10 +8,10 @@ public class AnswerNumbers {
 
     public static final int SIZE = 3;
 
-    private final List<Integer> targetNumbers;
+    private final List<Integer> answerNumbers;
 
     private AnswerNumbers(List<Integer> targetNumbers) {
-        this.targetNumbers = targetNumbers;
+        this.answerNumbers = targetNumbers;
     }
 
     public static AnswerNumbers generate() {
@@ -19,11 +19,32 @@ public class AnswerNumbers {
         return new AnswerNumbers(randomNumbers);
     }
 
-    public boolean contains(final int expectedNumber) {
-        return targetNumbers.contains(expectedNumber);
+    public boolean isStrike(final int position, final int number) {
+        return answerNumbers.get(position).equals(number);
     }
 
-    public Integer getByIndex(final int index) {
-        return targetNumbers.get(index);
+    public boolean isBall(final int position, final int number) {
+        if (answerNumbers.contains(number)) {
+            return !isStrike(position, number);
+        }
+
+        return false;
+    }
+
+    public void calculateScore(PlayerNumbers playerNumbers) {
+
+        for (int position = 0; position < AnswerNumbers.SIZE; position++) {
+
+            int playerNumberByPosition = playerNumbers.getNumberByPosition(position);
+
+            if (isStrike(position, playerNumberByPosition)) {
+                Score.STRIKE.addCount();
+                continue;
+            }
+
+            if (isBall(position, playerNumberByPosition)) {
+                Score.BALL.addCount();
+            }
+        }
     }
 }
