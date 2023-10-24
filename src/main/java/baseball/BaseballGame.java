@@ -5,7 +5,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.List;
 
 public class BaseballGame {
-    public static void play(List<Integer> target, String input) {
+    public void play(List<Integer> target, String input) {
         List<Integer> reTarget = target;
         int strike = 0;
         int ball = 0;
