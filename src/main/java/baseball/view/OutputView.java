@@ -2,9 +2,10 @@ package baseball.view;
 
 public class OutputView {
     private final static String ALL_CLEAR_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final static String GAME_START = "숫자 야구 게임을 시작합니다.";
 
     public void notifyStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START);
     }
 
     public void notifyGameResult(String result) {
@@ -14,5 +15,9 @@ public class OutputView {
             return;
         }
         System.out.println(result);
+    }
+
+    public void notifyEnd() {
+        System.out.println("게임 종료");
     }
 }
