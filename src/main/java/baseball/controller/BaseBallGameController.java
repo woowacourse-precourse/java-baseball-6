@@ -20,9 +20,9 @@ public class BaseballGameController {
     }
 
     public void play() {
+        outputView.printGameStart();
         Round round;
         String computerNumber = new Computer().getRandomNumber();
-        outputView.printGameStart();
         do {
             String playerNumber = inputView.getSuggestedNumber();
             InputValidator.validatePlayerNumber(playerNumber);
@@ -32,8 +32,8 @@ public class BaseballGameController {
         } while (!round.isCorrectGuess());
     }
 
-    public void end() {
-        outputView.printGameEnd();
+    public void stop() {
+        outputView.printGameStop();
         String continueChoice = inputView.getGameContinueChoice();
         GameEndOption option = GameEndOption.fromString(continueChoice);
         if (option == GameEndOption.TERMINATE) {

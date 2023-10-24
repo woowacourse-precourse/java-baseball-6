@@ -7,7 +7,7 @@ public class Application {
         BaseballGameController gameController = new BaseballGameController();
         while (!gameController.isEnd()) {
             gameController.play();
-            gameController.end();
+            gameController.stop();
         }
     }
 }
