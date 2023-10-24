@@ -4,13 +4,21 @@ import java.util.List;
 
 public class Game {
 
-    public void start() {
-        ComputerNumber computerNumber = new ComputerNumber();
-        UserNumber userNumber = new UserNumber();
-        Hint hint = new Hint();
-        ContinueNumber continueNumber = new ContinueNumber();
-        Output output = new Output();
+    private final ComputerNumber computerNumber;
+    private final UserNumber userNumber;
+    private final Hint hint;
+    private final ContinueNumber continueNumber;
+    private final Output output;
 
+    public Game() {
+        this.computerNumber = new ComputerNumber();
+        this.userNumber = new UserNumber();
+        this.hint = new Hint();
+        this.continueNumber = new ContinueNumber();
+        this.output = new Output();
+    }
+
+    public void start() {
         List<Integer> computer = computerNumber.createComputerNumber();
         output.printStart();
         boolean check = true;
