@@ -1,5 +1,6 @@
 package baseball.utils;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,5 +14,9 @@ public class Utils {
         }
 
         return playerNumber;
+    }
+
+    public String readInput() {
+        return Console.readLine();
     }
 }
