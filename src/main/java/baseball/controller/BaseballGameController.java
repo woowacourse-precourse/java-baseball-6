@@ -16,17 +16,18 @@ public class BaseballGameController {
 
     public void start() {
         outputView.printStartMessage();
+        doStartWhileUntilInputExit();
+    }
+
+    private void doStartWhileUntilInputExit() {
         do {
             List<Integer> computerRandomNumber = NumberGenerator.makeRandomNumber();
             Baseball computerBaseball = new Baseball(computerRandomNumber);
-            System.out.println(computerBaseball);
-            doWhileUntilThreeStrike(computerBaseball);
+            doPlayWhileUntilThreeStrike(computerBaseball);
         } while (isGameRestart());
-        return;
     }
 
-    private void doWhileUntilThreeStrike(Baseball computerBaseball) {
-        String inputUserBaseballValue;
+    private void doPlayWhileUntilThreeStrike(Baseball computerBaseball) {
         BaseballResult gameResult;
         do {
             Baseball userBaseball = getUserBaseball();
@@ -34,19 +35,28 @@ public class BaseballGameController {
             outputView.printBallStrikeResultMessage(gameResult);
         } while (!gameResult.isGameDone());
     }
+    
+    private String askGameRestartOrExit() {
+        outputView.printRestartOrExitMessage();
+        return inputView.input();
+    }
+
+    private String askUserNumbers() {
+        outputView.printInputNumberMessage();
+        return inputView.input();
+    }
 
     private boolean isGameRestart() {
-        outputView.printRestartOrExitMessage();
-        String restartOrExit = inputView.input();
+        String restartOrExit = askGameRestartOrExit();
         return restartOrExit.equals(BaseballSystemConst.RESTART_INPUT);
     }
 
     private Baseball getUserBaseball() {
-        outputView.printInputNumberMessage();
-        String inputUserBaseballValue = inputView.input();
+        String inputUserBaseballValue = askUserNumbers();
         List<Integer> inputUserBaseball = NumberConverter.stringToNumber(inputUserBaseballValue);
         NumberValidator.isValid(inputUserBaseball);
         return new Baseball(inputUserBaseball);
     }
+
 
 }
