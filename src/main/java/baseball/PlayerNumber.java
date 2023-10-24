@@ -12,7 +12,7 @@ public class PlayerNumber {
         char[] playerInput = Console.readLine().toCharArray();
 
         for (char number : playerInput) {
-            if (number < 49 | number > 57) {
+            if (number < '1' || number > '9') {
                 throw new IllegalArgumentException();
             }
         }
