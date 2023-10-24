@@ -1,8 +1,12 @@
 package baseball;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameManagerTest {
@@ -11,9 +15,20 @@ class GameManagerTest {
 
     @Test
     @DisplayName("게임 종료 후 , 재시작 또는 종료 외의 다른 입력시, 예외처리")
-    public void GameManagerTest() {
+    void 종료_후_입력_예외 () {
         assertThatThrownBy(()->gameManager.validateRestartOrExitWrongInput("3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("볼 개수 정상 출력 확인")
+    void 볼_개수_체크(){
+        gameManager.setAnswer(List.of(1,2,3));
+        gameManager.setInputConvertList("392");
+        int ballCount = gameManager.getBallCount();
+        assertThat(ballCount).isEqualTo(2);
+    }
+
+
 
 }
