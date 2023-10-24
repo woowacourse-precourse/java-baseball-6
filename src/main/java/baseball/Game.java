@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,10 @@ public class Game {
 
     private void playingGame() {
         while (true) {
-            if (checkAnswer())
+
+            String input = inputNumbers();
+
+            if (checkAnswer(input))
                 break;
         }
     }
@@ -49,8 +53,23 @@ public class Game {
         return input;
     }
 
-    private boolean checkAnswer() {
+    private boolean checkAnswer(String input) {
 
+    }
+
+    private int[] judge(List<Integer> submittedList) {
+        int strikeNum = 0;
+        int ballNum = 0;
+        // 제출 된 숫자가 요구 사항에 따라 어떤 결과를 갖는지 판단
+        for (int i = 0; i < submittedList.size(); i++) {
+            if (submittedList.get(i).equals(submittedList.get(i)))
+                strikeNum++;
+            else if (submittedList.contains(submittedList.get(i)))
+                ballNum++;
+        }
+
+        int[] result = new int[]{ strikeNum, ballNum };
+        return result;
     }
 
     private boolean checkPlayAgain() {
