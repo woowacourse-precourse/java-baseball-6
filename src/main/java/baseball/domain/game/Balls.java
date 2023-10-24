@@ -66,4 +66,11 @@ public class Balls {
     public int hashCode() {
         return Objects.hash(balls);
     }
+
+    @Override
+    public String toString() {
+        return "Balls{" +
+                "balls=" + balls +
+                '}';
+    }
 }

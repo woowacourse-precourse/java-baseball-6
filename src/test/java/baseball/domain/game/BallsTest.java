@@ -41,7 +41,7 @@ class BallsTest {
                 .hasMessageContaining("공들의 숫자는 중복될 수 없습니다.");
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} : {0} -> {1}")
     @MethodSource("ballAndBallStatus")
     @DisplayName("컴퓨터의 공들과 플레이어의 공 하나를 비교하여 결과를 알 수 있다.")
     void compare(Ball user, BallStatus expected) {

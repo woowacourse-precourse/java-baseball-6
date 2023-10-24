@@ -39,4 +39,12 @@ public class Ball {
     public int hashCode() {
         return Objects.hash(ballNumber, position);
     }
+
+    @Override
+    public String toString() {
+        return "Ball[" +
+                "ballNumber=" + ballNumber +
+                ", position=" + position +
+                ']';
+    }
 }

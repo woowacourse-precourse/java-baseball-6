@@ -32,4 +32,9 @@ public class BallNumber {
     public int hashCode() {
         return Objects.hash(ballNumber);
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(ballNumber);
+    }
 }

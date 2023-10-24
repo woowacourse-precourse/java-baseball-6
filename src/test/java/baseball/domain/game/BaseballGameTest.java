@@ -27,7 +27,7 @@ class BaseballGameTest {
         };
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} : {0} -> {1}")
     @MethodSource("ballsAndPlayResult")
     @DisplayName("컴퓨터의 숫자와 플레이어의 숫자를 통해 숫자 야구 게임을 진행하여 결과를 알 수 있다.")
     void play(Balls userBalls, PlayResult expected) {

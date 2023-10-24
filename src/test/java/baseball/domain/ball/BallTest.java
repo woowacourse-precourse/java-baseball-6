@@ -21,7 +21,7 @@ class BallTest {
         assertThat(ball).isEqualTo(new Ball(1, 1));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} : {0} -> {1}")
     @MethodSource("ballAndBallStatus")
     @DisplayName("컴퓨터의 공과 플레이어의 공을 비교하여 결과를 알 수 있다.")
     void compare(Ball user, BallStatus expected) {
