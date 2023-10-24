@@ -47,7 +47,7 @@ public class GamePlaying {
     }
 
     private int isSame(int i) {
-        if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
+        if (computerNumber.get(i) == playerNumber.get(i)) {
             return 1;
         }
         return 0;
