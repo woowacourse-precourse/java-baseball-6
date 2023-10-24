@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.model.BallNumber;
-import baseball.model.BaseballNumber;
+import baseball.model.Ball;
+import baseball.model.BallNumbers;
 import baseball.model.Result;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +15,8 @@ class BallServiceTest {
     public void randomNumTest() {
         BallService ballService = new BallService();
 
-        BaseballNumber randomNum = ballService.generateRandomNum();
-        assertNotNull(randomNum);
+        BallNumbers randomBallNumbers = ballService.generateRandomBallNumbers();
+        assertNotNull(randomBallNumbers);
     }
 
     @Test
@@ -24,10 +24,10 @@ class BallServiceTest {
         String userInput = "123";
 
         BallService ballService = new BallService();
-        BaseballNumber userBaseballNumber = ballService.initUserNumber(userInput);
+        BallNumbers userBallNumbers = ballService.initUserBallNumbers(userInput);
 
-        Result result = userBaseballNumber.compare(new BaseballNumber(
-                List.of(new BallNumber(1), new BallNumber(2), new BallNumber(3)))
+        Result result = userBallNumbers.compare(new BallNumbers(
+                List.of(new Ball(1), new Ball(2), new Ball(3)))
         );
 
         assertEquals(result.getResult(), "3스트라이크");

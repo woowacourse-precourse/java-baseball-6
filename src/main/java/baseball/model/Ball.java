@@ -2,10 +2,10 @@ package baseball.model;
 
 import java.util.Objects;
 
-public class BallNumber {
+public class Ball {
     private final int value;
 
-    public BallNumber(int value) {
+    public Ball(int value) {
         if (value < 1 || value > 9) {
             throw new IllegalArgumentException("입력값이 잘못되었습니다.");
         }
@@ -20,7 +20,7 @@ public class BallNumber {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        return value == ((BallNumber) obj).value;
+        return value == ((Ball) obj).value;
     }
 
     @Override

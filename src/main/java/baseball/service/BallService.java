@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.model.BallNumber;
-import baseball.model.BaseballNumber;
+import baseball.model.Ball;
+import baseball.model.BallNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -11,30 +11,30 @@ public class BallService {
 
     private static final String ILLEGAL_ARGUMENT = "입력값이 잘못되었습니다.";
 
-    public BaseballNumber generateRandomNum() {
-        List<BallNumber> ballNumberList = new ArrayList<>();
-        while (ballNumberList.size() < 3) {
-            addBallNumberToList(ballNumberList, Randoms.pickNumberInRange(1, 9));
+    public BallNumbers generateRandomBallNumbers() {
+        List<Ball> ballList = new ArrayList<>();
+        while (ballList.size() < 3) {
+            addBallToList(ballList, Randoms.pickNumberInRange(1, 9));
         }
 
-        return new BaseballNumber(ballNumberList);
+        return new BallNumbers(ballList);
     }
 
-    public BaseballNumber initUserNumber(String inputReadLine) {
-        List<BallNumber> ballNumberList = new ArrayList<>();
+    public BallNumbers initUserBallNumbers(String inputReadLine) {
+        List<Ball> ballList = new ArrayList<>();
         char[] charArray = inputReadLine.toCharArray();
         for (char c : charArray) {
-            addBallNumberToList(ballNumberList, Character.getNumericValue(c));
+            addBallToList(ballList, Character.getNumericValue(c));
         }
-        validSize(ballNumberList.size());
+        validSize(ballList.size());
 
-        return new BaseballNumber(ballNumberList);
+        return new BallNumbers(ballList);
     }
 
-    private void addBallNumberToList(List<BallNumber> ballNumberList, int num) {
-        BallNumber ballNumber = new BallNumber(num);
-        if (!ballNumberList.contains(ballNumber)) {
-            ballNumberList.add(ballNumber);
+    private void addBallToList(List<Ball> ballList, int num) {
+        Ball ball = new Ball(num);
+        if (!ballList.contains(ball)) {
+            ballList.add(ball);
         }
     }
 

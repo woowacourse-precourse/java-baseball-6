@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.BaseballNumber;
+import baseball.model.BallNumbers;
 import baseball.model.Result;
 import baseball.service.BallService;
 import baseball.view.View;
@@ -22,13 +22,13 @@ public class GameController {
     }
 
     public void playGame() {
-        BaseballNumber computerNumber = generateComputerNumber();
+        BallNumbers computerBallNumbers = generateComputerBall();
 
         while (true) {
             String userNumberReadLine = view.inputUserNumber();
-            BaseballNumber userNumber = ballService.initUserNumber(userNumberReadLine);
+            BallNumbers userBallNumbers = ballService.initUserBallNumbers(userNumberReadLine);
 
-            Result result = computerNumber.compare(userNumber);
+            Result result = computerBallNumbers.compare(userBallNumbers);
             view.showGameResult(result.getResult());
 
             if (result.isEnd()) {
@@ -43,7 +43,7 @@ public class GameController {
         return "1".equals(restart);
     }
 
-    private BaseballNumber generateComputerNumber() {
-        return ballService.generateRandomNum();
+    private BallNumbers generateComputerBall() {
+        return ballService.generateRandomBallNumbers();
     }
 }
