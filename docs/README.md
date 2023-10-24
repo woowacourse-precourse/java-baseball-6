@@ -58,3 +58,6 @@
     - 1, 2이 아닌 다른 수 입력
 - `IllegalArgumentException` 발생
 
+---
+### 기능 구현 흐름
+![img.png](images/img.png)
