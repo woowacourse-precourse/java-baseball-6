@@ -1,23 +1,56 @@
 package baseball.controller;
 
+import baseball.model.GameNumber;
+import baseball.model.Hint;
+import baseball.model.InputEndChoice;
+import baseball.model.InputEndChoice.Choice;
 import baseball.model.InputNumbers;
 import baseball.view.GameView;
 
 public class BaseBall {
     private final GameView gameView;
 
+    private final InputEndChoice inputEndChoice;
+    private GameNumber gameNumber;
+    private Choice gameChoice;
+
     public BaseBall() {
         gameView = new GameView();
+        inputEndChoice = new InputEndChoice();
+        setNewGame();
+    }
+
+    private void setNewGame() {
+        gameNumber = new GameNumber();
+        gameChoice = InputEndChoice.Choice.RESTART;
+        gameNumber.createRandomNumbers();
+//        List<Integer> numbers = gameNumber.getGameNumbers();
+//        System.out.println("랜덤넘버" + numbers);
     }
 
     public void startBaseBall() {
-        gameView.startBaseballGame();
-        while (true) {
-            String input = gameView.getInput();
-            System.out.println("input : " + input);
+        gameView.startBaseball();
+        while (gameChoice == Choice.RESTART) {
+            String input = gameView.getStartInput();
             InputNumbers inputNumbers = new InputNumbers(input);
-            System.out.println("inputNumber : " + inputNumbers);
+            Hint hint = new Hint(gameNumber, inputNumbers);
+            if (hint.checkAnswer() != null) {
+                gameView.printHintMessage(hint.checkAnswer());
+                choiceEnd();
+            } else {
+                gameView.printHintMessage(hint.createHintMessage());
+            }
+        }
+    }
 
+    public void choiceEnd() {
+        gameView.endBaseBall();
+        String input = gameView.getEndInput();
+        InputEndChoice.Choice choice = inputEndChoice.InputEndChoice(input);
+        if (choice == Choice.RESTART) {
+            setNewGame();
+        } else {
+            gameChoice = Choice.QUIT;
         }
     }
 }
