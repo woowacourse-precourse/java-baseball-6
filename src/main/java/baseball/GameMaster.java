@@ -43,19 +43,10 @@ public class GameMaster<T extends Game> {
                 case RESTART_SELECT:
                     return true;
                 case EXIT_SELECT:
-                    exit();
                     return false;
                 default:
                     break;
             }
         } while (true);
-    }
-
-    private void restart() {
-        play();
-    }
-
-    private void exit() {
-        // nothing to do
     }
 }
