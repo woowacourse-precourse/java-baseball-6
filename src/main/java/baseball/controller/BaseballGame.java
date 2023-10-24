@@ -1,11 +1,9 @@
 package baseball.controller;
 
-import baseball.constant.StringError;
 import baseball.domain.AnswerChecker;
 import baseball.domain.Computer;
-import baseball.domain.Validator;
+import baseball.io.Input;
 import baseball.io.Output;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,53 +17,41 @@ public class BaseballGame {
      * 게임을 동작시키는 기능
      * */
     public static void run() {
-        Output.printInit();
-        List<Integer> c = Computer.newNumber();
-        start(c);
+        Output.initMsg();
+        start();
     }
 
     /*
      * 게임을 동작하는 기능
      * */
-    private static void start(List<Integer> computer) {
+    private static void start() {
+
+        List<Integer> answer = Computer.newNumber();
         String result = "";
 
         while (!result.equals("3스트라이크")) {
 
-            Output.printUserInput();
-            String input = Console.readLine();
-
-            if (Validator.isNull(input)) {
-                exit(StringError.notInputError);
-
-            } else if (!Validator.stringLengthCheck(input)) {
-                exit(StringError.wrongLengthInputError);
-
-            } else if (!Validator.isNumber(input)) {
-                exit(StringError.wrongInputError);
-
-            } else if (Validator.isDuplicate(input)) {
-                exit(StringError.duplicatedInputError);
-            }
+            Output.inputMsg();
+            String input = Input.stringNum();
 
             // 입력받은 StringNum을 List<Integer>로 바꾸어 정답체크 결과출력
             List<Integer> userInput = stringToIntegerList(input);
-            result = AnswerChecker.result(computer, userInput);
+            result = AnswerChecker.result(answer, userInput);
 
-            Output.printCheckerResult(result);
+            Output.checkResultMsg(result);
         }
         // 정답을 맞춘 후 게임을 지속할 지 여부 묻기
-        Output.printCorrect();
+        Output.correctMsg();
         continueGame();
     }
 
     /*
      * 비정상적인 입력으로 인해 예외를 발생시켜 종료시키는 기능
      * */
-    public static void exit(String message) {
-        Output.printError(message);
-        Console.close();
-        throw new IllegalArgumentException(message);
+    public static void exit(String str) {
+
+        Output.errorMsg(str);
+        throw new IllegalArgumentException(str);
     }
 
     /*
@@ -73,19 +59,14 @@ public class BaseballGame {
      * */
     private static void continueGame() {
 
-        Output.printContinue();
-        String input = Console.readLine();
+        Output.continueMsg();
+        String input = Input.reStartOption();
 
-        if (!Validator.reStartChecker(input)) {
-            exit(StringError.wrongInputError);
-        }
         if (input.equals("1")) {
-            List<Integer> c = Computer.newNumber();
-            start(c);
+            start();
 
         } else if (input.equals("2")) {
-            Console.close();
-            Output.printExpire();
+            Output.expireMsg();
         }
     }
 
