@@ -8,21 +8,20 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        baseballClass baseball = new baseballClass();
+        BaseballGame baseballGame = new BaseballGame();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        baseball.Run();
-
+        baseballGame.run();
     }
 }
 
-class baseballClass {
+class BaseballGame {
     private List<Integer> computer = new ArrayList<>(3);
     private List<Integer> player = new ArrayList<>(3);
     private int status = 1;
 
-    private void setComputer(){
+    private void setComputer() {
         computer.clear();
-        while(computer.size() < 3) {
+        while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -30,20 +29,20 @@ class baseballClass {
         }
     }
 
-    public baseballClass(){
+    public BaseballGame() {
         setComputer();
     }
 
-    private void setPlayer(){
+    private void setPlayer() {
         player.clear();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요: ");
         String choiceNumber = Console.readLine();
 
-        if(choiceNumber.length() !=3){
+        if (choiceNumber.length() != 3) {
             throw new IllegalArgumentException();
         }
 
-        for(char c : choiceNumber.toCharArray()){
+        for (char c : choiceNumber.toCharArray()) {
             int numericValue = Character.getNumericValue(c);
 
             if (numericValue < 1 || numericValue > 9 || player.contains(numericValue)) {
@@ -53,36 +52,37 @@ class baseballClass {
         }
     }
 
-    public void Run(){
-        while(status!=2){
+    public void run() {
+        while (status != 2) {
             int strike = 0;
             int ball = 0;
             int nothing = 0;
             setPlayer();
-            if(status==2) break;
-            for(int i = 0; i < 3; i++){
-                if(!computer.contains(player.get(i))){
+            if (status == 2) break;
+
+            for (int i = 0; i < 3; i++) {
+                if (!computer.contains(player.get(i))) {
                     nothing++;
-                } else if(computer.indexOf(player.get(i))==i){
+                } else if (computer.indexOf(player.get(i)) == i) {
                     strike++;
-                } else{
+                } else {
                     ball++;
                 }
             }
-            if(nothing==3){
+
+            if (nothing == 3) {
                 System.out.println("낫싱");
-            }else if(strike==3){
+            } else if (strike == 3) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
                 status = Integer.parseInt(Console.readLine());
-                if(status==1) setComputer();
-            }else{
-                if(ball!=0) System.out.printf("%d볼 ",ball);
-                if(strike!=0) System.out.printf("%d스트라이크",strike);
+                if (status == 1) setComputer();
+            } else {
+                if (ball != 0) System.out.printf("%d볼 ", ball);
+                if (strike != 0) System.out.printf("%d스트라이크", strike);
                 System.out.println();
             }
-
         }
     }
 }
