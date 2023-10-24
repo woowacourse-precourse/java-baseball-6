@@ -12,15 +12,25 @@ public class Evaluator {
     Evaluator(){
         this.feedbackAssistant = new FeedbackAssistant();
     }
-    public Boolean evaluateUserInput() throws IllegalArgumentException {
+    public Boolean evaluateUserInput(String answer) throws IllegalArgumentException {
         String userInput = this.getUserInput();
         this.feedbackAssistant.printString(userInput);
         this.isValidInput(userInput);
-        return true;
+        if (this.isSameWithAnswer(userInput, answer))
+        {
+            this.feedbackAssistant.printEndMessage();
+            return true;
+        }
+        this.feedbackAssistant.giveHintToUser(userInput, answer);
+        return false;
     }
     private static String getUserInput(){
         System.out.println("숫자를 입력해주세요: ");
         return Console.readLine();
+    }
+
+    private static Boolean isSameWithAnswer(String userInput, String answer){
+        return userInput.equals(answer);
     }
 
     private static void isValidInput(String userInput) throws IllegalArgumentException {
