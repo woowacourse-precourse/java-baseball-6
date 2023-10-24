@@ -6,7 +6,6 @@ import java.util.List;
 
 public class GameController {
 
-    //private List<Integer> computer;
     private String input;
     private boolean isStarted;
     private final GameView gameView;
