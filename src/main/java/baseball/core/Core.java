@@ -38,7 +38,7 @@ public class Core {
             return;
         }
         if (ball > 0) {
-            result.append(ball).append(BALL_MSG).append(" ");
+            result.append(ball).append(BALL_MSG + " ");
         }
         if (strike > 0) {
             result.append(strike).append(STRIKE_MSG);
