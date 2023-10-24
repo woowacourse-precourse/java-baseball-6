@@ -16,10 +16,6 @@ public enum GameCommand {
 		return replayCommandInput.equals(REPLAY.commandValue);
 	}
 
-	public String getCommandValue() {
-		return commandValue;
-	}
-
 	public static void validate(final String replayCommandInput) {
 		if (!replayCommandInput.equals(REPLAY.commandValue) && !replayCommandInput.equals(EXIT.commandValue)) {
 			throw new IllegalArgumentException(GAME_COMMAND_ERROR_MESSAGE);
