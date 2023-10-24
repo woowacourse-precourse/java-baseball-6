@@ -44,7 +44,7 @@ public class OutputView {
             System.out.println(computer);
             List<Integer> userNumbers = inputView.scanNumbers();
             Balls user = Balls.of(userNumbers);
-            Ground ground = computer.compute(user);
+            Ground ground = computer.computeFromBallsToGround(user);
             Referee.setAnswerToGround(ground);
             System.out.println(Referee.getAnswer());
         }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class BallsTest {
 
@@ -26,7 +27,7 @@ class BallsTest {
         Balls userBalls = Balls.of(numbers);
 
         // when
-        Ground result = comBalls.compute(userBalls);
+        Ground result = comBalls.computeFromBallsToGround(userBalls);
 
         // then
         assertThat(result).isEqualTo(Ground.of(3, 0));
@@ -40,7 +41,7 @@ class BallsTest {
         Balls userBalls = Balls.of(numbers);
 
         // when
-        Ground result = comBalls.compute(userBalls);
+        Ground result = comBalls.computeFromBallsToGround(userBalls);
 
         // then
         assertThat(result).isEqualTo(Ground.of(0, 3));
@@ -54,10 +55,25 @@ class BallsTest {
         Balls userBalls = Balls.of(numbers);
 
         // when
-        Ground result = comBalls.compute(userBalls);
+        Ground result = comBalls.computeFromBallsToGround(userBalls);
 
         // then
         assertThat(result).isEqualTo(Ground.of(0, 0));
+    }
+
+    @Test
+    @DisplayName("3개의 숫자를 입력하지 않았을 때")
+    void checkRange() {
+        // given
+        List<Integer> numbers = List.of(1, 2);
+        // when
+        // then
+        assertThatThrownBy(
+                () -> {
+                    Balls.of(numbers);
+                }
+        ).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("3개의 숫자를 입력해주세요.");
     }
 
 }

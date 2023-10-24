@@ -24,11 +24,11 @@ public final class Balls {
         }
     }
 
-    public Ground compute(Balls userBalls) {
+    public Ground computeFromBallsToGround(Balls userBalls) {
         int strike = 0;
         int ball = 0;
         for (Ball tempBall : balls) {
-            BallStatus ballStatus = userBalls.compute(tempBall);
+            BallStatus ballStatus = userBalls.computeFromBallToBallStatus(tempBall);
             if (ballStatus.isStrike()) {
                 strike++;
             }
@@ -39,7 +39,7 @@ public final class Balls {
         return Ground.of(strike, ball);
     }
 
-    private BallStatus compute(Ball ball) {
+    private BallStatus computeFromBallToBallStatus(Ball ball) {
         return balls.stream()
                 .map(ball::compute)
                 .filter(BallStatus::isNothing)
