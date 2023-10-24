@@ -1,11 +1,10 @@
 package baseball;
 
+import static baseball.utils.Constants.BALL_SIZE;
+
 import baseball.utils.ExceptionMessage;
 import baseball.utils.PlayMessage;
 import camp.nextstep.edu.missionutils.Console;
-
-import static baseball.utils.Constants.BALL_SIZE;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

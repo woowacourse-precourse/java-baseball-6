@@ -1,8 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import static baseball.utils.Constants.BALL_SIZE;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;

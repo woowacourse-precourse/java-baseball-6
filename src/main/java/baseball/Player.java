@@ -5,7 +5,6 @@ import static baseball.utils.Constants.BALL_SIZE;
 import baseball.utils.PlayMessage;
 import baseball.utils.PlayerInputValidator;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
