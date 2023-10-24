@@ -38,7 +38,7 @@ public class Game {
 
             String input = inputNumbers();
 
-            if (checkAnswer(input))
+            if (!checkAnswer(input))
                 break;
         }
     }
