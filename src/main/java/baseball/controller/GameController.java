@@ -16,21 +16,28 @@ public class GameController {
         outputMessage.printGameStartMessage();
         gameService.setComputerNumbers();
 
-        while (true) {
-            if (gameService.getUserNumbers()) {
-                outputMessage.printGameReallyEndMessage();
+        boolean gameStatus = true;
+        while (gameStatus) {
+            try {
+                gameService.getUserNumbers();
+
+                if (gameService.sameNumbers()) {
+                    outputMessage.printGameEndMessage();
+                    gameStatus = gameService.restart();
+
+                    if (gameStatus) {
+                        gameService.setComputerNumbers();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
                 break;
             }
-            if (gameService.sameNumbers()) {
-                outputMessage.printGameEndMessage();
-                if (gameService.notRestart()) {
-                    outputMessage.printGameReallyEndMessage();
-                    break;
-                } else {
-                    gameService.setComputerNumbers();
-                }
-            }
-
         }
+
+        outputMessage.printGameReallyEndMessage();
     }
+
+
 }

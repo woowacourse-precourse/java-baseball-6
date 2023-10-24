@@ -9,6 +9,7 @@ public class ValidationService {
     private final char START_INCLUSIVE_NUMBER_CHAR;
     private final char END_INCLUSIVE_NUMBER_CHAR;
     private final int SIZE_NUMBER;
+    private static final String INPUT_NUMBER_VALIDATION_MESSAGE = "잘못된 값을 입력하셨습니다.";
 
     public ValidationService(int startInclusive, int endInclusive, int size) {
         START_INCLUSIVE_NUMBER_CHAR = (char) startInclusive;
@@ -18,15 +19,15 @@ public class ValidationService {
     public void inputNumberValidation(String inputNumber) {
         // 세 자리 글자 인지 확인
         if (isNotThreeCharacters(inputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NUMBER_VALIDATION_MESSAGE);
         }
         // 숫자인지 확인
         if (isNotNumber(inputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NUMBER_VALIDATION_MESSAGE);
         }
         // 서로 다른 글자 인지 확인
         if (isNotDifferentChar(inputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NUMBER_VALIDATION_MESSAGE);
         }
     }
 
@@ -60,7 +61,7 @@ public class ValidationService {
         } else if (inputNumber.equals("2")) {
             return false;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NUMBER_VALIDATION_MESSAGE);
         }
     }
 }

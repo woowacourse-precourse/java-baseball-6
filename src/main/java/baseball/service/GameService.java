@@ -29,16 +29,14 @@ public class GameService {
     }
 
     // 유효성 검사에 실패했을 경우 false
-    public boolean getUserNumbers() {
+    public void getUserNumbers() {
         String inputNumber = forInputMessage.InputUserNumbers();
 
         try {
             validationService.inputNumberValidation(inputNumber);
             gameNumber.setPlayerNumber(inputNumber);
-            return false;
         } catch (IllegalStateException e) {
-            outputMessage.printInputsValidationMessage();
-            return true;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -54,15 +52,15 @@ public class GameService {
         return false;
     }
 
-    // 게임 종료 시 true 반환
-    public boolean notRestart() {
+    // 게임 종료 시 false 반환
+    public boolean restart() {
         String inputNumber = forInputMessage.InputRestart();
-
         try {
-            return !validationService.inputRestartValidation(inputNumber);
+            return validationService.inputRestartValidation(inputNumber);
         } catch (IllegalStateException e) {
-            outputMessage.printInputsValidationMessage();
-            return true;
+            System.out.println(e.getMessage());
+            return false;
+
         }
 
     }
