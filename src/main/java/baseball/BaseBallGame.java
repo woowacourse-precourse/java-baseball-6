@@ -103,32 +103,6 @@ public class BaseBallGame {
     }
 
     /**
-     * 숫자 input에 대한 유효성 확인
-     * <p>
-     * 3자리 숫자인가 / 중복되지 않았는가
-     *
-     * @param input 사용자가 입력한 숫자
-     */
-    private void inputErrorCheck(List<Integer> input) {
-
-        if (input.size() != 3) {
-            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
-        }
-
-        Set<Integer> inputSet = new HashSet<>(input);
-        if (inputSet.size() != 3) {
-            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
-        }
-
-        for (Integer num : input) {
-            if (num < 1 || num > 9) {
-                throw new IllegalArgumentException("유효한 숫자 범위가 아닙니다.");
-            }
-        }
-
-    }
-
-    /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
      *
      * @param ans   게임의 정답
@@ -187,9 +161,7 @@ public class BaseBallGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int input = stringToInt(Console.readLine());
 
-        if (input != 1 && input != 2) {
-            throw new IllegalArgumentException("유효하지 않는 옵션 번호 입니다.");
-        }
+        inputErrorCheck(input);
 
         return input != 1;
 
@@ -212,6 +184,47 @@ public class BaseBallGame {
         }
 
         return num;
+
+    }
+
+    /**
+     * 숫자 input에 대한 유효성 확인
+     * <p>
+     * 3자리 숫자인가 / 중복되지 않았는가 / 유효한 숫자인가
+     *
+     * @param input 사용자가 입력한 숫자
+     */
+    private void inputErrorCheck(List<Integer> input) {
+
+        if (input.size() != 3) {
+            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+        }
+
+        Set<Integer> inputSet = new HashSet<>(input);
+        if (inputSet.size() != 3) {
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+        }
+
+        for (Integer num : input) {
+            if (num < 1 || num > 9) {
+                throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+            }
+        }
+
+    }
+
+    /**
+     * 재시작 여부 input에 대한 유효성 확인
+     * <p>
+     * 유효한 숫자인가?
+     *
+     * @param input 사용자가 입력한 숫자
+     */
+    private void inputErrorCheck(int input) {
+
+        if (input != 1 && input != 2) {
+            throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+        }
 
     }
 
