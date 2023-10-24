@@ -4,15 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private final String INPUT_NUMBERS = "숫자를 입력해주세요 :";
-    private final String END_OR_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_NUMBERS = "숫자를 입력해주세요 :";
+    private static final String END_OR_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public String endOrRestartInput() {
+    public static String endOrRestartInput() {
         System.out.println(END_OR_RESTART);
         return Console.readLine();
     }
 
-    public String inputNumbers() {
+    public static String inputNumbers() {
         System.out.println(INPUT_NUMBERS);
         return Console.readLine();
     }

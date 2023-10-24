@@ -4,17 +4,17 @@ import baseball.domain.GameResult;
 
 public class OutputView {
 
-    private final String LINE_CHANGE = "\n";
-    private final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private final String NOTHING = "낫싱";
-    private final String BALL = "%d볼";
-    private final String STRIKE = "%d스트라이크";
-    private final String GAME_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String LINE_CHANGE = "\n";
+    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static final String NOTHING = "낫싱";
+    private static final String BALL = "%d볼";
+    private static final String STRIKE = "%d스트라이크";
+    private static final String GAME_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public void gameStart() {
+    public static void gameStart() {
         System.out.println(GAME_START);
     }
-    public void outputResult(GameResult result) {
+    public static void outputResult(GameResult result) {
         if (result.isNothing()) {
             System.out.println(NOTHING);
         }
@@ -30,7 +30,7 @@ public class OutputView {
         }
     }
 
-    public void gameSuccess() {
+    public static void gameSuccess() {
         System.out.println(GAME_SUCCESS);
     }
 }

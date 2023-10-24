@@ -11,13 +11,10 @@ import static baseball.constants.BaseballGameConstants.*;
 public class GameController {
 
     private final GameService gameService;
-    private final InputView inputView;
-    private final OutputView outputView;
-    public GameController(GameService gameService,InputView inputView,OutputView outputView) {
-        outputView.gameStart();
+
+    public GameController(GameService gameService) {
+        OutputView.gameStart();
         this.gameService = gameService;
-        this.inputView = inputView;
-        this.outputView = outputView;
     }
 
     public void run() {
@@ -27,8 +24,8 @@ public class GameController {
     }
 
     private void gameEndOrRestart() {
-        outputView.gameSuccess();
-        String option = inputView.endOrRestartInput();
+        OutputView.gameSuccess();
+        String option = InputView.endOrRestartInput();
         Validator.isValidGameOption(option);
         if (isRestart(option)) {
             gameService.restart();
@@ -42,10 +39,10 @@ public class GameController {
 
 
     private void gamePlay() {
-        String inputNumbers = inputView.inputNumbers();
+        String inputNumbers = InputView.inputNumbers();
         Validator.isValidNumbers(inputNumbers);
         GameResult result = gameService.getResult(inputNumbers);
-        outputView.outputResult(result);
+        OutputView.outputResult(result);
         if (!isSuccess(result)) {
             gamePlay();
         }
