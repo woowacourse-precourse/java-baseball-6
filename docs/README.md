@@ -1,3 +1,5 @@
+
+
 ## 주요 구현 기능
 1. 게임을 플레이할 playGame메서드를 구현한다.
 2. 유저에게 번호를 입력받을 inputUserNumber메서드 기능을 구현한다.
@@ -26,6 +28,49 @@
 * Message Import 부분 수정 필요
 #### 3차 리팩토링
 * resultMessage 부분 3스트라이크 출력문 삭제 가능 마지막 스트라이크 출력문이 출력
+
+# 최종 주요 기능
+## 컴퓨터
+* getRandomNumber
+   * 컴퓨터의 랜덤번호를 가져온다.
+## 입력받기
+* User
+   * getUserNumber
+      * user의 입력값을 받아 checkUserInput 메서드를 통해 이상이 없을시 userNumber 입력 문자열을 리턴한다.
+   * inputReplay
+      * 게임 종료 후 게임 재시작에대한 입력값을 받는다.
+      * checkInputReplay를 통해 입력문에 이상이 없는지 확인후 게임 재시작에 관한 boolean 을 리턴한다.
+### 예외처리
+* User
+   * checkUserInput
+      * 유저가 입력한 값이 1~9 사이의 숫자가 맞는지 확인한다.
+      * 유저가 입력한 값이 3자리 수를 넘지 않는지 확인한다.
+      * 유저가 입력한 값이 숫자가 아닌 문자가 들어오지 않는지 확인한다.
+      * 중복된 값이 들어오지 않는지 확인한다. (HashSet활용)
+      * 조건을 충족하지 못할시 오류
+   * checkInputReplay
+      * 유저가 입력한 값이 1 과 2 이외의 숫자가 들어오는지 확인한다.
+      * 조건을 충족하지 못할시 오류
+## 결과 - 볼과 스트라이크
+* Result
+   * Result클래스 안에 볼과 스트라이크의 변수를 만들어 compareNumber의 결과 값을 저장하였다.
+* compareNumber 볼과 스트라이크 갯수 세기
+   * userNumber와 computerNumber를 비교하여 스트라이크 갯수를 카운트. 만약 같은 자리에 수가 일치하지 않다면 userNumber가 computerNumber에 포함되는지 확인후 볼의 갯수를 카운트.
+   * result객체를 생성하여 볼과 스트라이크의 값을 저장후 return
+## 게임 플레이
+* BaseBall
+   * playGame
+      * 게임이 진행되는 곳이다. 메서드가 호출되면 getRandomNumber메서드를 통해 컴퓨터의 숫자를 저장한다.
+      * while문을 생성하여 게임을 종료할떄까지 반복한다.
+      * while문이 시작되면 userNumber를 입력받는다.
+      * compareNumber메서드를 호출하여 userNumber 와 computerNumber를 비교하여 결과값을 result에 저장한다.
+      * result에 저장된 값을 가지고 resultMessage메서드를 호출하여 결과값을 출력한다. ex) 1볼 1스트라이크
+      * 만약 result에 저장된 strike값이 3이면 3스트라이크로 endMessage를 출력한후 while문을 종료한다.
+## main
+* main class 에서 Baseball 객체를 생성한다.
+* while문을 생성하여 Baseball의 playGame메서드를 실행한다.
+* replayCheck를 통해 게임을 재시작할지 종료할지 결정한다. 
+
 
 # 나만의 체크 포인트
 ## 예외처리
