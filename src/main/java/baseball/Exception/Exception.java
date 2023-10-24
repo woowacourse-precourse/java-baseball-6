@@ -9,6 +9,9 @@ public class Exception {
     private static void checkDub(char[] guess) {
         StringBuilder sb = new StringBuilder();
         for (char c : guess) {
+            if ('0' == c) {
+                throw new IllegalArgumentException();
+            }
             if (sb.indexOf(String.valueOf(c)) != -1) {
                 throw new IllegalArgumentException();
             }
