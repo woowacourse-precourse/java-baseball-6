@@ -27,3 +27,10 @@ public final class Utils {
         validateStringNaturalNumbers(input);
         validateAllDifferentCharacters(input);
     }
+
+    public static void validateStringLength(String input, int length) {
+        if (input.length() != length) {
+            throw new IllegalArgumentException("입력값의 길이가 " + length + "가 아닙니다. 프로그램을 종료합니다.");
+        }
+    }
+
