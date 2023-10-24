@@ -21,6 +21,7 @@ public class GameService {
         computer.generateNumber();
         user.inputUserNumber();
         game.compare(computer.getComputerNumbers(), user.getUserNumber());
+        game.printCompareResult();
 
     }
 
