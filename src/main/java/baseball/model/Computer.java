@@ -7,7 +7,7 @@ public class Computer {
     private Hint hint = new Hint();
 
     public void saveNumbers(List<Integer> generatedNumbers) {
-        savedNumbers.from(generatedNumbers);
+        this.savedNumbers = Numbers.from(generatedNumbers);
     }
 
     public String provideHint(Numbers inputNumbers) {
