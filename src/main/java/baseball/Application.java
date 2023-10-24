@@ -15,15 +15,15 @@ public class Application {
         boolean is_it_correct;
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (try_again.equals("1")) {
-            List<Integer> computerNum = new ArrayList<>();
-            getComputerNum(computerNum);
+            List<Integer> comInputNum = new ArrayList<>();
+            getComputerNum(comInputNum);
             do {
                 List<Integer> userInputNum = new ArrayList<>();
                 System.out.print("숫자를 입력해주세요 : ");
                 String userInputString = Console.readLine();
                 checkUserInput(userInputString);
                 getUserInput(userInputString, userInputNum);
-                is_it_correct = compareUserWithCom(userInputNum, computerNum);
+                is_it_correct = compareUserWithCom(userInputNum, comInputNum);
                 check3strike(is_it_correct);
             } while (!is_it_correct);
             try_again = restartOrNot();
@@ -45,7 +45,7 @@ public class Application {
         char firstNum = input.charAt(0);
         char secondNum = input.charAt(1);
         char thirdNum = input.charAt(2);
-        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum) {
+        if ((firstNum == secondNum) || (firstNum == thirdNum) || (secondNum == thirdNum)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
@@ -53,29 +53,32 @@ public class Application {
     static void getUserInput(String userInputString, List<Integer> userInputNum) {
         // Convert user input from a string to an integer ArrayList.
         for (int i = 0; i < MAX_NUMBERS; i++) {
-            userInputNum.add(userInputString.charAt(i) - '0');
+            int userNumber = userInputString.charAt(i);
+            userInputNum.add(userNumber - '0');
         }
     }
 
-    static void getComputerNum(List<Integer> computerNum) {
+    static void getComputerNum(List<Integer> comInputNum) {
         // Generate the computer's numbers.
-        while (computerNum.size() < MAX_NUMBERS) {
+        while (comInputNum.size() < MAX_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(randomNumber)) {
-                computerNum.add(randomNumber);
+            if (!comInputNum.contains(randomNumber)) {
+                comInputNum.add(randomNumber);
             }
         }
     }
 
-    static boolean compareUserWithCom(List<Integer> userInputNum, List<Integer> computerNum) {
+    static boolean compareUserWithCom(List<Integer> userInputNum, List<Integer> comInputNum) {
         // Compare user input numbers with computer's numbers.
         int ball_count = 0;
         int strike_count = 0;
         boolean is_it_correct = false;
         for (int i = 0; i < MAX_NUMBERS; i++) {
-            if (Objects.equals(userInputNum.get(i), computerNum.get(i))) {
+            Integer userNumber = userInputNum.get(i);
+            Integer comNumber = comInputNum.get(i);
+            if (Objects.equals(userNumber, comNumber)) {
                 strike_count++;
-            } else if (computerNum.contains(userInputNum.get(i))) {
+            } else if (comInputNum.contains(userNumber)) {
                 ball_count++;
             }
         }
