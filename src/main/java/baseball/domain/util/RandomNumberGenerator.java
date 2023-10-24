@@ -1,7 +1,5 @@
 package baseball.domain.util;
 
-public interface RandomNumberGenerator<T, F> {
-    T generate();
-
-    F generateRandomNumbers();
+public interface RandomNumberGenerator<T> {
+    T generateRandomNumbers();
 }

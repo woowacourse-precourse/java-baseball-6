@@ -9,9 +9,9 @@ public class NumberBaseBallGame {
 
     private BaseballNumber randomNumber;
     private final NumberBaseballScoreEvaluator numberBaseballScoreEvaluator;
-    private final RandomNumberGenerator<Integer, String> randomNumberGenerator;
+    private final RandomNumberGenerator<String> randomNumberGenerator;
 
-    public NumberBaseBallGame(RandomNumberGenerator<Integer, String> generator,
+    public NumberBaseBallGame(RandomNumberGenerator<String> generator,
                               NumberBaseballScoreEvaluator evaluator) {
         this.randomNumberGenerator = generator;
         this.numberBaseballScoreEvaluator = evaluator;
@@ -27,7 +27,11 @@ public class NumberBaseBallGame {
         return new RoundEvaluationResult(status, roundResult);
     }
 
-    public void initRandomNumber() {
+    private void initRandomNumber() {
         randomNumber = new BaseballNumber(randomNumberGenerator.generateRandomNumbers());
+    }
+
+    public void restart() {
+        initRandomNumber();
     }
 }

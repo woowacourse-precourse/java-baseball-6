@@ -44,10 +44,6 @@ public class NumberBaseballGameController {
     private void handleGameOver(RoundEvaluationResult result) {
         outputView.printGameOverMessage();
         result.evaluateRestart(inputView.readRestartResponseInput());
-        initGame();
-    }
-
-    private void initGame() {
-        numberBaseBallGame.initRandomNumber();
+        numberBaseBallGame.restart();
     }
 }
