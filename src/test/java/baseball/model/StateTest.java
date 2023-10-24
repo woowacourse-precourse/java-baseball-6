@@ -31,6 +31,6 @@ class StateTest {
 
         // when & then
         assertThatThrownBy(() -> State.createWith(UndefinedNumber))
-               .isInstanceOf(NotMatchGameStateException.class);
+                .isInstanceOf(NotMatchGameStateException.class);
     }
 }
