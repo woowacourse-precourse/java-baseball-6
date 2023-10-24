@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class Application {
 
-  public static Set<Integer> list(){
+  private static Set<Integer> list(){
     Set<Integer> list = new HashSet<>();
     while(list.size() < 3) {
       list.add(Randoms.pickNumberInRange(1,9));
@@ -18,6 +18,14 @@ public class Application {
     System.out.println(list);
     return list;
   }
+  private static List<Integer> stringChangeIntegerList(String input){
+    List<Integer> numbers = new ArrayList<>();
+    for (char c : input.toCharArray()){
+      numbers.add(Character.getNumericValue(c));
+    }
+    return numbers;
+  }
+
   public static void main(String[] args) {
 
     System.out.println("숫자 야구 게임을 시작합니다");
@@ -33,23 +41,14 @@ public class Application {
         if (userChat.trim().isEmpty()) {throw new IllegalArgumentException("빈 문자열 예외");}
         if (userChat.length() != 3) {throw new IllegalArgumentException("입력 3칸이 초과");}
 
-        int num0 = Character.getNumericValue(userChat.charAt(0));
-        int num1 = Character.getNumericValue(userChat.charAt(1));
-        int num2 = Character.getNumericValue(userChat.charAt(2));
-
-        if (num0 == num1) {
-          throw new IllegalArgumentException("첫번째 두번째 같은 수 입력");
-        } else if (num0 == num2) {
-          throw new IllegalArgumentException("첫번째 세번째 같은 수 입력");
-        } else if (num1 == num2) {
-          throw  new IllegalArgumentException("두번째 세번째 같은 수 입력");
-        }
-
-        List<Integer> userNumbers = new ArrayList<>();
-        userNumbers.add(num0);
-        userNumbers.add(num1);
-        userNumbers.add(num2);
+        List<Integer> userNumbers = stringChangeIntegerList(userChat);
         System.out.println(userNumbers);
+
+        if (new HashSet<>(userNumbers).size() != userNumbers.size()){
+          System.out.println(new HashSet<>(userNumbers).size());
+          System.out.println(userNumbers.size());
+          throw new IllegalArgumentException("중복된 숫자 발견");
+        }
 
 
         for (int num : userNumbers) {
@@ -69,11 +68,11 @@ public class Application {
           }
         }
 
-        if (st != 0){
-          System.out.print(st + "스트라이크 ");
-        }
         if (ball != 0) {
-          System.out.println(ball + "볼");
+          System.out.print(ball + "볼");
+        }
+        if (st != 0){
+          System.out.println(st + "스트라이크 ");
         }
         if (count == 9) {
           System.out.println("낫씽");
