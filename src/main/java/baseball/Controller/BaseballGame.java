@@ -11,12 +11,12 @@ public class BaseballGame {
     Service service = new Service();
 
     public void start() {
-        boolean restartGame = true;
+        boolean isRestartGame = true;
         OutputView.printBaseballGameStart();
-        while (restartGame) {
+        while (isRestartGame) {
             setComputerGame();
             startPlayerGame();
-            restartGame = restartGame();
+            isRestartGame = restartGame();
         }
     }
 
@@ -25,9 +25,9 @@ public class BaseballGame {
     }
 
     private void startPlayerGame() {
-        boolean correctAllAnswer = false;
-        while(!correctAllAnswer) {
-            correctAllAnswer = playGame();
+        boolean isCorrectAllAnswer = false;
+        while(!isCorrectAllAnswer) {
+            isCorrectAllAnswer = playGame();
         }
         OutputView.printAllCorrectAnswer();
     }
@@ -42,8 +42,8 @@ public class BaseballGame {
 
     private boolean restartGame() {
         InputView.printRestartGame();
-        String player = Console.readLine();
-        return service.restartGame(player);
+        String playerInput = Console.readLine();
+        return service.restartGame(playerInput);
     }
 
 }
