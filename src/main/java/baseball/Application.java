@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        view.gameStartPrint();
+        View.gameStartPrint();
         boolean done;
         do {
             Game.gameMiddle();
@@ -39,37 +40,24 @@ class Game {
         List<Integer> list;
         List<Integer> answer = RandomNumber.getUniqueNumbers();
         do {
-            view.gameNumberInputPrint();
+            View.gameNumberInputPrint();
             String str = Input.inputThreeNumber();
             list = Input.stringToIntegerList(str);
             List<Integer> result = BaseballCalculate.baseballCalculate(answer, list);
-            System.out.println(BaseballCalculate.baseballHintPrint(result));
+            String baseballHint = BaseballCalculate.makeBaseballHint(result);
+            View.baseballHintPrint(baseballHint);
         } while (answer.equals(list) == false);
-        view.gameEndPrint();
+        View.gameEndPrint();
     }
 
     public static boolean gameEnd() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        View.gameRestartPrint();
         int i = Integer.parseInt(Console.readLine());
         if (i == 1) {
             return true;
         }
         return false;
         // 나머지 예외처리 ex. 숫자 범위, 숫자가 아닐 때
-    }
-}
-
-class view {
-    public static void gameStartPrint() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    public static void gameNumberInputPrint() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
-
-    public static void gameEndPrint() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
 
@@ -116,7 +104,7 @@ class BaseballCalculate {
         return result;
     }
 
-    static String baseballHintPrint(List<Integer> list) {
+    public static String makeBaseballHint(List<Integer> list) {
         int strike = list.get(0);
         int ball = list.get(1);
         if (strike == 0 && ball == 0) {
@@ -130,4 +118,5 @@ class BaseballCalculate {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
+
 }
