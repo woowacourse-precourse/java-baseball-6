@@ -4,8 +4,7 @@ import java.util.List;
 
 import baseball.models.User;
 
-import static baseball.utils.Constants.ANSWER_LENGTH;
-import static baseball.utils.Constants.RESTART_INPUT_LENGTH;
+import static baseball.utils.Constants.*;
 
 import baseball.utils.InputValidator;
 
@@ -27,7 +26,7 @@ public class UserAction {
 
     public void inputAnswer(){
         String userAnswer = InputViewer.requestUserAnswer();
-        requestValidateAnswer(userAnswer);
+        requestValidateString(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             int digit = requestValidateCharacter(userAnswer.charAt(i));
             user.saveNumber(digit);
@@ -53,7 +52,7 @@ public class UserAction {
         user.clearAnswerList();
     }
 
-    public void requestValidateAnswer(String userAnswer){
+    public void requestValidateString(String userAnswer){
         InputValidator.validateInputLength(userAnswer, ANSWER_LENGTH);
         InputValidator.validateIsDistinct(userAnswer);
     }
@@ -67,12 +66,8 @@ public class UserAction {
     }
 
     public int requestValidateRestartFactor(String userInput){
-        int mind;
         InputValidator.validateInputLength(userInput, RESTART_INPUT_LENGTH);
-        InputValidator.validateIsCharacterDigit(userInput.charAt(0));
-        mind = Integer.parseInt(userInput);
-        InputValidator.validateRestartInput(mind);
-
-        return mind;
+        InputValidator.validateRestartInput(userInput);
+        return Integer.parseInt(userInput);
     }
 }

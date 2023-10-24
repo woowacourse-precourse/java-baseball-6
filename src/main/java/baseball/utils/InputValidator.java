@@ -20,7 +20,7 @@ public class InputValidator {
 
     /*
     문자에 대한 검증을 하는 함수들
-    문자가 Digit인지, Digit이면 1~9에 포함되는지 검증
+    문자가 숫자인지, 숫자면 1~9에 포함되는지 검증
     */
     public static void validateIsCharacterDigit(char answerChar){
         if (!Character.isDigit(answerChar))
@@ -50,9 +50,12 @@ public class InputValidator {
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없이 입력하십시오. 프로그램을 종료합니다.");
     }
 
-    public static void validateRestartInput(int userInput){
-        if (userInput != WANNA_KEEP_PLAYING && userInput != WANNA_END)
-            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 1 혹은 2만 입력하십시오. 프로그램을 종료합니다.");
+    public static void validateRestartInput(String userInput){
+        String restart = Integer.toString(WANNA_KEEP_PLAYING);
+        String end = Integer.toString(WANNA_END);
+        if (!userInput.equals(restart) && !userInput.equals(end))
+            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. " + WANNA_KEEP_PLAYING +
+                    "혹은 " + WANNA_END + "만 입력하십시오. 프로그램을 종료합니다.");
     }
 
 }
