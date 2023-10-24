@@ -36,4 +36,17 @@ class StrikeTest {
         //then
         assertThat(isStrike).isTrue();
     }
+
+    @Test
+    @DisplayName("3스트라이크인지 확인한다.")
+    void check_three_strike(){
+        //given
+        strike.updateStrikeCount(3);
+
+        //when
+        boolean isNotThreeStrike = strike.isNotThreeStrike();
+
+        //then
+        assertThat(isNotThreeStrike).isFalse();
+    }
 }
