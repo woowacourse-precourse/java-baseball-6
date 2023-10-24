@@ -4,8 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.model.player.GuessNumber;
 import java.lang.reflect.Field;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +30,7 @@ class ComputerTest {
     void testInitScore() {
         // given
         computer.makeAnswer();
-        List<Integer> playerInput = Arrays.asList(1, 2, 3);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 2, 3);
         computer.calculateScore(playerInput);
 
         // when
@@ -62,7 +63,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(4, 5, 6);
+        List<GuessNumber> playerInput = playerGuessAnswer(4, 5, 6);
         computer.calculateScore(playerInput);
 
         // then
@@ -77,7 +78,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(1, 4, 5);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 5, 6);
         computer.calculateScore(playerInput);
 
         // then
@@ -92,7 +93,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(1, 2, 5);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 2, 5);
         computer.calculateScore(playerInput);
 
         // then
@@ -107,7 +108,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(1, 2, 3);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 2, 3);
         computer.calculateScore(playerInput);
 
         // then
@@ -122,7 +123,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(4, 5, 1);
+        List<GuessNumber> playerInput = playerGuessAnswer(4, 5, 1);
         computer.calculateScore(playerInput);
 
         // then
@@ -137,7 +138,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(3, 4, 1);
+        List<GuessNumber> playerInput = playerGuessAnswer(3, 4, 1);
         computer.calculateScore(playerInput);
 
         // then
@@ -152,7 +153,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(3, 1, 2);
+        List<GuessNumber> playerInput = playerGuessAnswer(3, 1, 2);
         computer.calculateScore(playerInput);
 
         // then
@@ -167,7 +168,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(1, 3, 5);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 3, 5);
         computer.calculateScore(playerInput);
 
         // then
@@ -182,7 +183,7 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(1, 3, 2);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 3, 2);
         computer.calculateScore(playerInput);
 
         // then
@@ -197,12 +198,23 @@ class ComputerTest {
         computerMakeAnswer(List.of(1, 2, 3));
 
         // when
-        List<Integer> playerInput = Arrays.asList(1, 2, 3);
+        List<GuessNumber> playerInput = playerGuessAnswer(1, 2, 3);
         computer.calculateScore(playerInput);
 
         // then
         assertTrue(score.isAllStrike());
     }
+
+    List<GuessNumber> playerGuessAnswer(Integer first, Integer second, Integer third) {
+        List<GuessNumber> playerInput = new ArrayList<>();
+
+        playerInput.add(new GuessNumber(first));
+        playerInput.add(new GuessNumber(second));
+        playerInput.add(new GuessNumber(third));
+
+        return playerInput;
+    }
+
 
     private void computerMakeAnswer(List<Integer> answer) throws NoSuchFieldException, IllegalAccessException {
         Field answerField = gameAnswer.getClass().getDeclaredField("answer");
