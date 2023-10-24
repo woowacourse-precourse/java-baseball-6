@@ -10,5 +10,6 @@ public class Application {
             baseballComputer.takeInputAndPrint();
             isFinished = baseballComputer.enterFinished();
         } while (!isFinished);
+        System.out.println("게임 종료");
     }
 }
