@@ -14,7 +14,6 @@ public class GameController {
     Computer computer = new Computer();
     Player player = new Player();
     ComputerController computerController = new ComputerController();
-    PlayerController playerController = new PlayerController();
     GameView gameView = new GameView();
     PlayerAnswer playerAnswer = new PlayerAnswer();
 
@@ -34,14 +33,15 @@ public class GameController {
     private boolean repeatFindAnswer() {
 
         boolean correctAnswerFlag = false;
-        List<Integer> playerNumberList;
+        List<Integer> playerNumberList = new ArrayList<>();
 
         while (!correctAnswerFlag) {
-            playerNumberList = new ArrayList<>();
-            System.out.println("playerNumberList = " + playerNumberList);
+
             gameView.printInputNumberMessage();
             playerNumberList = player.getPlayerNumberList(Console.readLine());
+
             validate(playerNumberList);
+
             correctAnswerFlag = compareAnswer(computer.getComputerRandomNumber(), playerNumberList);
             gameView.printAnswerHintMessage(playerAnswer);
 
@@ -85,8 +85,10 @@ public class GameController {
 
             case "2" : return false;
 
+            default: throw new IllegalArgumentException();
+
         }
-        return false;
+
     }
 
     private void validate(List<Integer> playerNumberList) {
@@ -102,6 +104,10 @@ public class GameController {
                 System.out.println("범위 벗어남");
                 throw new IllegalArgumentException();
             }
+        }
+
+        if (playerNumberList.size() != playerNumberList.stream().distinct().count()) {
+            throw new IllegalArgumentException();
         }
 
 
