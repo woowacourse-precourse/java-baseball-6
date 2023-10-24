@@ -22,20 +22,27 @@ public class OutputView {
     }
 
     public static void countStrikeAndBall() {
-        countBallNumbers();
-        countStrikeNumbers();
+        printBallAndStrikeNumbers();
+        printBallNumbers();
+        printStrikeNumbers();
         nothingInValidResult();
     }
 
 
-    public static void countBallNumbers() {
-        if (balls > 0) {
-            System.out.print(balls + GameResult.BALL.getMessage() + " ");
+    public static void printBallAndStrikeNumbers() {
+        if (balls > 0 && strikes > 0) {
+            System.out.println(balls + GameResult.BALL.getMessage() + " " + strikes + GameResult.STRIKE.getMessage());
         }
     }
 
-    public static void countStrikeNumbers() {
-        if (strikes > 0) {
+    public static void printBallNumbers() {
+        if (balls > 0 && strikes == 0) {
+            System.out.println(balls + GameResult.BALL.getMessage());
+        }
+    }
+
+    public static void printStrikeNumbers() {
+        if (balls == 0 && strikes > 0) {
             System.out.println(strikes + GameResult.STRIKE.getMessage());
             checkAnswer(strikes);
         }
