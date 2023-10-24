@@ -43,7 +43,7 @@ public class UserNumber {
         }
     }
 
-    private void checkDuplicateNumbers(String userNumber) {
+    public static void checkDuplicateNumbers(String userNumber) {
         Set<Character> numberSet = new HashSet<>();
         for (char digit : userNumber.toCharArray()) {
             if (!numberSet.add(digit)) {

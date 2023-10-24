@@ -30,6 +30,22 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 숫자_형식_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.isNotNumber("asd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 숫자_중복_테스트
+            (){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.checkDuplicateNumbers("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Test
     void 재시작_입력_예외테스트() {
@@ -46,6 +62,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
 
     @Override
     public void runMain() {
