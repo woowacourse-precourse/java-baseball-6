@@ -6,37 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    static Computer computer;
+    static BallExtractor ballExtractor = new BallExtractor();
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> computer = makeNumbers();
+        computer = new Computer();
+        Balls computerBalls = computer.makeNumbers();
 
         while (true) {
             // 숫자 입력
             System.out.println("숫자를 입력해주세요: ");
-            String playerInput = Console.readLine();
+            Balls playerBalls = ballExtractor.extract(Console.readLine());
 
-            // 길이 검증
-            validateLength(playerInput);
-
-            // 숫자 검증
-            int playerNumber = validateNumber(playerInput);
-
-            List<Integer> playerNumbers = new ArrayList<>();
-            while (playerNumber > 0) {
-                int number = playerNumber % 10;
-
-                validateRange(number);
-
-                validateDuplication(playerNumbers, number);
-
-                playerNumbers.add(number);
-                playerNumber = playerNumber / 10;
-            }
-
-            playerNumbers = reverse(playerNumbers);
-
-            Result result = calculate(computer, playerNumbers);
+            // 결과 계산
+            Result result = calculate(computerBalls, playerBalls);
 
             System.out.println(result);
 
@@ -113,17 +97,14 @@ public class Application {
         return reverse;
     }
 
-    static Result calculate (List <Integer> computer, List <Integer> playerNumbers){
+    private static Result calculate(Balls computerBalls, Balls playerBalls) {
         Result result = new Result();
-        for (int i = 0; i < 3; i++) {
-            Integer playerBall = playerNumbers.get(i);
+        for (int i=0; i<3; i++) {
+            Integer playerBall = playerBalls.get(i);
 
-            if (!computer.contains(playerBall))
-                result.increaseNothing();
-            else if (playerBall != computer.get(i))
-                result.increaseBall();
-            else
-                result.increaseStrike();
+            if (!computerBalls.contains(playerBall)) result.increaseNothing();
+            else if (playerBall != computerBalls.get(i)) result.increaseBall();
+            else result.increaseStrike();
         }
 
         return result;
