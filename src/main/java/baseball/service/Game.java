@@ -22,7 +22,7 @@ public class Game {
 
             Balls balls = new Balls(userInput);
 
-            Score score = Score.getScore(answerNumbers, balls);
+            Score score = Score.create(answerNumbers, balls);
 
             ScoreDto scoreDto = new ScoreDto(score.getStrike(), score.getBall());
             OutputView.printScore(scoreDto);

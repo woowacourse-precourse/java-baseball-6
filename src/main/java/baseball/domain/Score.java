@@ -7,7 +7,7 @@ public class Score {
     private Strike strike;
     private Ball ball;
 
-    public static Score getScore(List<Integer> answerNumbers, Balls balls) {
+    public static Score create(List<Integer> answerNumbers, Balls balls) {
 
         int strike = Strike.calculateStrikeCnt(answerNumbers, balls);
         int ball = Ball.calculateBallCnt(answerNumbers, balls);
@@ -35,6 +35,4 @@ public class Score {
 
         return false;
     }
-
-
 }
