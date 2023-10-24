@@ -98,10 +98,10 @@ class ApplicationTest extends NsTest {
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
 
-        boolean isNumber = Application.isNumber(threeRandomNumber);
+        boolean isRightRangeNumber = Application.isRightRangeNumber(threeRandomNumber);
         boolean isDifferentNumber = Application.isDifferentRandomNumber(threeRandomNumber);
 
-        assertThat(isNumber).isEqualTo(true);
+        assertThat(isRightRangeNumber).isEqualTo(true);
         assertThat(isDifferentNumber).isEqualTo(true);
     }
 

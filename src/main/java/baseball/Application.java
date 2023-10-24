@@ -77,7 +77,7 @@ public class Application {
         return (digitCount == userInput.length());
     }
 
-    public static boolean isNumber(List<Integer> threeNumber) {
+    public static boolean isRightRangeNumber(List<Integer> threeNumber) {
         Integer indexZero = threeNumber.get(0);
         Integer indexOne = threeNumber.get(1);
         Integer indexTwo = threeNumber.get(2);
