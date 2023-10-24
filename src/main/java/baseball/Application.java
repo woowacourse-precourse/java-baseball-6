@@ -1,107 +1,110 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    static final int START = 1;
-    static final int END = 2;
+    private static final String START = "1";
+    private static final String END = "2";
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean onLoop = true;
-        int flag = START;
-        while(onLoop) {
-            switch (flag) {
-            case START:
-                flag = playGame();
-                // fall through
-                break;
-            case END:
-                onLoop = false;
-                break;
-            default:
-                throw new IllegalArgumentException();
+        boolean continueGame = true;
+
+        while (continueGame) {
+            String userChoice = playGame();
+
+            if (userChoice.equals(START)) {
+                continueGame = true;
+            }
+            if(userChoice.equals(END)) {
+                continueGame = false;
             }
         }
     }
 
-    private static int playGame() throws IllegalArgumentException {
+    private static String playGame() {
         List<Integer> computer = generateComputer();
-        while(true){
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputNumber = readLine();
-            checkedException(inputNumber);
+
+        while (true) {
+            String inputNumber = getUserInput("숫자를 입력해주세요 : ");
+            checkException(inputNumber);
 
             int[] strikeAndBall = calculateStrikeBall(computer,inputNumber);
-            int strike = strikeAndBall[0];
-            int ball = strikeAndBall[1];
-            String result = printStrikeBall(strike,ball);
+            String result = printStrikeBall(strikeAndBall[0],strikeAndBall[1]);
             System.out.println(result);
 
-            if (result.equals("3스트라이크")){
+            if (result.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                return Integer.parseInt(readLine());
+                return getUserInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             }
         }
     }
-    public static List generateComputer() {
+    public static List<Integer> generateComputer() {
         List<Integer> computer = new ArrayList<>();
-        while(computer.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
+
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+
         return computer;
     }
     private static int[] calculateStrikeBall(List<Integer> computer, String inputNumber) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < computer.size(); i++){
-            int comparableNumber = Character.getNumericValue(inputNumber.charAt(i));
-            if (computer.get(i) == comparableNumber){
+
+        for (int i = 0; i < computer.size(); i++) {
+            int digit = Character.getNumericValue(inputNumber.charAt(i));
+
+            if (computer.get(i).equals(digit)) {
                 strike++;
-            } else if (computer.contains(comparableNumber)){
+            } else if (computer.contains(digit)) {
                 ball++;
             }
         }
-        int[] strikeAndBall= {strike, ball};
-        return strikeAndBall;
+
+        return new int[]{strike, ball};
     }
     private static String printStrikeBall(int strike, int ball) {
-        String result = "";
-        if (strike==0 && ball==0){
-            result = "낫싱";
-        } else if (strike==0){
-            result = ball + "볼";
-        } else if (ball==0){
-            result  = strike + "스트라이크";
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        } else if (strike == 0) {
+            return ball + "볼";
+        } else if (ball == 0) {
+            return strike + "스트라이크";
         } else {
-            result = ball+"볼 "+strike+"스트라이크";
+            return ball + "볼 " + strike + "스트라이크";
         }
-        return result;
     }
-    private static void checkedException(String inputNumber) {
+    private static void checkException(String inputNumber) {
         String numberRegex = "^[1-9]+$";
-        if (inputNumber.length()!= 3){
-            throw new IllegalArgumentException();
-        }else if (!inputNumber.matches(numberRegex)){
-            throw new IllegalArgumentException();
+
+        if (!inputNumber.matches(numberRegex)) {
+            throw new IllegalArgumentException("Not a valid number: " + inputNumber);
         }
 
-        String tmp = "";
+        if (inputNumber.length()!= 3) {
+            throw new IllegalArgumentException("Invalid input number length : " + inputNumber);
+        }
+
+        Set<Character> uniqueDigits = new HashSet<Character>();
+
         for (char c : inputNumber.toCharArray()) {
-            String comparableNumber = String.valueOf(c);
-            if (!tmp.contains(comparableNumber)) {
-                tmp += comparableNumber;
-            }else if (tmp.contains(comparableNumber)) {
-                throw new IllegalArgumentException();
+            if (!uniqueDigits.add(c)) {
+                throw new IllegalArgumentException("Duplicate digits in the input number: " + inputNumber);
             }
         }
+    }
+    private static String getUserInput(String prompt) {
+        System.out.println(prompt);
+        return Console.readLine();
     }
 }

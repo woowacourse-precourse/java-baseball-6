@@ -12,5 +12,8 @@
 - 스트라이크와 볼을 **출력**하는 기능 : `printStrikeBall()`
   > 사용자가 입력한 값의 계산 결과를 출력해주는 함수
 ***
-- 예외 처리하는 기능 : `checkedException()`
+- 예외 처리하는 기능 : `checkException()`
   > 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시키는 함수 
+***
+- 출력을 해주고 사용자에게 입력받는 기능 : `getUserInput()`
+  > 출력을 해주고 사용자에게 입력을 받는 함수 
