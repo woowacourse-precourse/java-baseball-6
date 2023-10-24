@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static boolean innerCondition = true;
-    public static boolean outerCondition = true;
     public static void main(String[] args) {
         while (outerCondition) {
             String generatedNumber = numberGenerator();
+            System.out.println(generatedNumber);
+            System.out.print("숫자 야구 게임을 시작합니다.");
             try {
                 while (innerCondition) {
                     System.out.print("숫자를 입력해주세요: ");
@@ -31,9 +31,10 @@ public class Application {
                 outerCondition = false;
             }
         }
- 
     }
     
+    public static boolean innerCondition = true;
+    public static boolean outerCondition = true;
     public static String numberGenerator() {
         List<Integer> rNum = new ArrayList<>();
 
@@ -89,7 +90,7 @@ public class Application {
             }
         }
         if(ball==0 && strike == 0){
-            System.out.print("미싱");
+            System.out.print("낫싱");
         } else {
             if(ball>0){
                 System.out.print(ball + "볼 ");
