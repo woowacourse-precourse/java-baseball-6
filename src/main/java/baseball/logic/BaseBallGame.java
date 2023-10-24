@@ -1,14 +1,15 @@
 package baseball.logic;
 
+import baseball.controller.PlayerController;
 import baseball.controller.PlayerControllerImpl;
 import baseball.view.GameView;
 
 public class BaseBallGame implements Game {
     private final GameView view;
-    private final PlayerControllerImpl playerController;
+    private final PlayerController playerController;
     private final int NUMBER_SIZE;
     private boolean running = true;
-    public BaseBallGame(GameView view, PlayerControllerImpl playerController, int numberSize) {
+    public BaseBallGame(GameView view, PlayerController playerController, int numberSize) {
         this.view = view;
         this.playerController = playerController;
         this.NUMBER_SIZE = numberSize;

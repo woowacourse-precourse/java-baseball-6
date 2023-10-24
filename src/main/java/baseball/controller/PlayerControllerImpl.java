@@ -8,8 +8,8 @@ import java.util.List;
 
 public class PlayerControllerImpl implements PlayerController{
     private Player player;
-    public PlayerControllerImpl(Player computer) {
-        this.player = computer;
+    public PlayerControllerImpl(Player player) {
+        this.player = player;
     }
     @Override
     public void reset(final int numberSize){

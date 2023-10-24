@@ -10,6 +10,7 @@
     - void start(void)
     - void exit(void)
 
+
 2. View 인터페이스를 마련하여 추후에 여러 화면을 사용할 수 있도록 한다. 
    - void out(String)
    - String in(void)
