@@ -6,6 +6,11 @@ public class Game {
 	private int ball;
 	private int strike;
 
+	public Game(int ball, int strike) {
+		this.ball = ball;
+		this.strike = strike;
+	}
+
 	private void calculateCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
 		for (int k = 0; k < userNumbers.size(); k++) {
 			if (userNumbers.get(k) == computerNumbers.get(k)) {
