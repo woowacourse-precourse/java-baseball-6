@@ -1,29 +1,24 @@
 package baseball;
 
+import baseball.Common.Messages;
+import baseball.View.GameView;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Baseball {
+public class GameService {
+    private static final GameService instance = new GameService();
+
+    public static final GameService getInstance(){
+        return instance;
+    }
+
     private static int target100, target10, target1;
     private static int userInput;
 
-    private List<Integer> result = new ArrayList<>(Arrays.asList(0, 0));
-
-    public void play(){
-        initGame();
-        while(result.get(0) != 3) {
-            inputNumber();
-            result = referee();
-            printResult();
-        }
-    }
-
-    private void inputNumber() throws IllegalArgumentException{
-        System.out.print(Messages.USER_INPUT_NUMBER);
+    public void inputNumber() throws IllegalArgumentException{
+        GameView.printInputRequest();
         String input = Console.readLine();
 
         if(input.length() != 3)
@@ -49,10 +44,10 @@ public class Baseball {
         int num10 = number / 10 % 10;
         int num1 = number % 10;
 
-        return num100 != num10 && num100 != num1 && num10 != num1;
+        return (num100 != num10) && (num100 != num1) && (num10 != num1) && (num100 * num10 * num1 != 0);
     }
 
-    private void initGame(){
+    public void initGame(){
         target1 = Randoms.pickNumberInRange(1, 9);
         target10 = Randoms.pickNumberInRange(1, 9);
         target100 = Randoms.pickNumberInRange(1, 9);
@@ -67,7 +62,7 @@ public class Baseball {
         }
     }
 
-    private List<Integer> referee(){
+    public List<Integer> referee(){
         int user100 = userInput / 100;
         int user10 = userInput / 10 % 10;
         int user1 = userInput % 10;
@@ -84,14 +79,5 @@ public class Baseball {
         else if (user1 == target10 || user1 == target100) ball++;
 
         return Arrays.asList(strike, ball);
-    }
-
-    private void printResult(){
-        if(result.get(0) == 3)
-            System.out.println(Messages.SUCCESS);
-        else if (result.get(0) + result.get(1) == 0)
-            System.out.println(Messages.FAIL);
-        else
-            System.out.println(Messages.STRIKE_AND_BALL(result));
     }
 }
