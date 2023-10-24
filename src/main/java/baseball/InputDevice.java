@@ -33,24 +33,24 @@ public class InputDevice {
 
     private static void validateSize(final List<Integer> numbers, final int n) {
         if (numbers.isEmpty()) {
-            throw new IllegalArgumentException("입력된 값이 없습니다.");
+            throw new IllegalArgumentException();
         }
         if (numbers.size() != n) {
-            throw new IllegalArgumentException(n + "개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException();
         }
     }
 
     private static void validateNumbersInRange(final List<Integer> numbers, final int endInclusive) {
         for (Integer n : numbers) {
             if (n < 1 || n > endInclusive) {
-                throw new IllegalArgumentException("1 ~" + endInclusive + " 사이의 값이 아닙니다.");
+                throw new IllegalArgumentException();
             }
         }
     }
 
     private static void validateduplication(final List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복 값이 있습니다.");
+            throw new IllegalArgumentException();
         }
     }
 }

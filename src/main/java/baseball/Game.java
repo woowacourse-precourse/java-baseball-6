@@ -26,27 +26,19 @@ public class Game {
     public boolean onGame() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            try {
-                player = InputDevice.readPlayerNumbers();
-            } catch (IllegalArgumentException e) {
-                return false;
-            }
+            player = InputDevice.readPlayerNumbers();
             if (Score.calculateScore(computer, player) == 3) {
                 break;
             }
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         return true;
     }
 
     public boolean quitGame() {
         int answer;
         System.out.println("게임을 새로 시작혀려면 1, 종료하려면 2를 입력하세요.");
-        try {
-            answer = InputDevice.readNumber();
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
+        answer = InputDevice.readNumber();
         if (answer == 1) {
             return true;
         }
