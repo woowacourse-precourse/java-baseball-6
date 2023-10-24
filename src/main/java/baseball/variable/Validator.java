@@ -10,7 +10,7 @@ public class Validator {
     private static final String DUPLICATE = "중복된 숫자는 입력할 수 없습니다.";
 
     public void isValid(List<Integer> number) {
-        if (!isThreeNumbers(number)) {
+        if (!isThreeNumber(number)) {
             throw new IllegalArgumentException(NOT_THREE);
         }
         if (isZeroInclude(number)) {
@@ -21,7 +21,7 @@ public class Validator {
         }
     }
 
-    private boolean isThreeNumbers(List<Integer> number) {
+    private boolean isThreeNumber(List<Integer> number) {
         return number.size() <= 3;
     }
 
