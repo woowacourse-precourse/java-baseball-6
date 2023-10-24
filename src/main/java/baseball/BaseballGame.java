@@ -10,7 +10,17 @@ public class BaseballGame implements NumberGame {
 
     @Override
     public void play() {
-
+        while (true) {
+            proceedGame();
+        }
     }
 
+    private void proceedGame() {
+        Number randomNumber = NumberFactory.createByComputer(baseballGameConfiguration);
+
+        while (true) {
+            Number userGuessNumber = NumberFactory.createByUser();
+        }
+
+    }
 }
