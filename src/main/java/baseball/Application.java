@@ -96,22 +96,21 @@ class Game {
         return strike == 3;
     }
 
-    private static int restartOrnot() {
-        int choice;
-        while (true){
+    private boolean askRestart() {
+        while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
-            try{
-                choice=Integer.parseInt(input);
-                if(choice==1||choice==2)
-                    return choice;
-                else
-                    System.out.println("잘못된 입력입니다.");
-            }catch (IllegalArgumentException e){
+
+            if ("1".equals(input)) {
+                return true;
+            } else if ("2".equals(input)) {
+                return false;
+            } else {
                 System.out.println("잘못된 입력입니다.");
             }
         }
     }
+
 }
 
 class GameOutcome {
