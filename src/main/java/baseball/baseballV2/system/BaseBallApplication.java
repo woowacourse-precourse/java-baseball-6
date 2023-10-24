@@ -8,6 +8,7 @@ import baseball.baseballV2.controller.EnterTripleBallsController;
 import baseball.baseballV2.controller.GameRestartController;
 import baseball.baseballV2.controller.GameResultController;
 import baseball.baseballV2.controller.GameStartController;
+import baseball.baseballV2.model.RestartChoice;
 import baseball.baseballV2.system.util.RandomTripleBallsGenerator;
 import baseball.baseballV2.view.inputview.EnterTripleBallsInputView;
 import baseball.baseballV2.view.inputview.GameRestartInputView;
@@ -46,12 +47,12 @@ public class BaseBallApplication {
     }
 
     private void startGame(Map<String, Object> model) {
-        String restartChoice;
+        RestartChoice restartChoice;
         do {
             controllerMap.put(GAME_RESULT_PATH, new GameResultController(new GameResultOutputView(),
                     RandomTripleBallsGenerator.generate()));
             playGame(model);
-            restartChoice = (String) model.get(GAME_RESTART_CHOICE_KEY);
+            restartChoice = (RestartChoice) model.get(GAME_RESTART_CHOICE_KEY);
         } while (isRestart(restartChoice));
 
     }
@@ -65,8 +66,8 @@ public class BaseBallApplication {
         getRestartChoice(model);
     }
 
-    private boolean isRestart(String restartChoice) {
-        if (restartChoice.equals(GAME_RESTART_VALUE)) {
+    private boolean isRestart(RestartChoice restartChoice) {
+        if (restartChoice == RestartChoice.ONE) {
             return true;
         }
         return false;
