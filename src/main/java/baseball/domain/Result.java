@@ -17,6 +17,10 @@ public class Result {
         strikeCount++;
     }
 
+    public boolean isAllStrike() {
+        return strikeCount == 3;
+    }
+
     public boolean isNothing() {
         return ballCount == 0 && strikeCount == 0;
     }
@@ -28,9 +32,5 @@ public class Result {
             return "낫싱";
         }
         return String.format("%d볼 %d스트라이크", ballCount, strikeCount);
-    }
-
-    public boolean isAllStrike() {
-        return strikeCount == 3;
     }
 }
