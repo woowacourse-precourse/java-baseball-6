@@ -11,4 +11,10 @@ public class Controller {
     private void printRestartRequestMessage() {
         System.out.println(RESTART_REQUEST_MESSAGE);
     }
+
+    private void validateRestartRange(String status) {
+        if (!status.equals(GAME_START) && !status.equals(PROGRAM_EXIT)) {
+            throw new IllegalArgumentException("입력이 1 또는 2가 아닙니다.");
+        }
+    }
 }
