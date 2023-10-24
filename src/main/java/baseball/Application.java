@@ -25,6 +25,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             score = countStrikeAndBall(user, computer);
+            printResult(score);
         } while (!score.get("strike").equals(3));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
@@ -90,5 +91,23 @@ public class Application {
             }
         }
         return score;
+    }
+
+    public static void printResult(HashMap<String, Integer> score) {
+        if (score.get("strike").equals(3)) {
+            System.out.printf("%d%s%n", score.get("strike"), "스트라이크");
+        }
+        if (score.get("strike") > 0 && score.get("strike") < 3 && score.get("ball").equals(0)) {
+            System.out.printf("%d%s%n", score.get("strike"), "스트라이크");
+        }
+        if (score.get("ball") > 0 && score.get("strike").equals(0)) {
+            System.out.printf("%d%s%n", score.get("ball"), "볼");
+        }
+        if (score.get("strike") > 0 && score.get("ball") > 0) {
+            System.out.printf("%d%s %d%s%n",score.get("ball"),"볼",score.get("strike"),"스트라이크");
+        }
+        if (score.get("strike").equals(0) && score.get("ball").equals(0)) {
+            System.out.println("낫싱");
+        }
     }
 }
