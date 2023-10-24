@@ -1,10 +1,15 @@
 package baseball.dto;
 
+import static baseball.util.TestDataUtil.createGuessResult;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.BallStatus;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class GuessResultTest {
 
@@ -37,5 +42,22 @@ class GuessResultTest {
 
         assertThat(guessResult.count(BallStatus.STRIKE)).isEqualTo(2);
         assertThat(guessResult.count(BallStatus.BALL)).isEqualTo(1);
+    }
+
+    @DisplayName("STRIKE가 3개 존재하는 경우 true가 반환된다")
+    @ParameterizedTest
+    @MethodSource("correctArgumentsProvider")
+    void correct(GuessResult guessResult, boolean expected) {
+        assertThat(guessResult.correct()).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> correctArgumentsProvider() {
+        return Stream.of(
+                Arguments.of(createGuessResult(0, 0), false),
+                Arguments.of(createGuessResult(1, 0), false),
+                Arguments.of(createGuessResult(1, 1), false),
+                Arguments.of(createGuessResult(2, 1), false),
+                Arguments.of(createGuessResult(3, 0), true)
+        );
     }
 }

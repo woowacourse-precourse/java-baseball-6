@@ -6,8 +6,9 @@ import java.util.Objects;
 
 public class GuessResult {
 
-    private static final int DEFAULT_COUNT_VALUE = 0;
-    private static final int INITIAL_COUNT_VALUE = 1;
+    private static final int DEFAULT_BALL_COUNT = 0;
+    private static final int INITIAL_BALL_COUNT = 1;
+    private static final int MAXIMUM_BALL_COUNT = 3;
 
     private final EnumMap<BallStatus, Integer> statuses;
 
@@ -19,12 +20,16 @@ public class GuessResult {
         return new GuessResult();
     }
 
+    public boolean correct() {
+        return count(BallStatus.STRIKE) == MAXIMUM_BALL_COUNT;
+    }
+
     public void add(BallStatus ballStatus) {
-        statuses.merge(ballStatus, INITIAL_COUNT_VALUE, Integer::sum);
+        statuses.merge(ballStatus, INITIAL_BALL_COUNT, Integer::sum);
     }
 
     public int count(BallStatus ballStatus) {
-        return statuses.getOrDefault(ballStatus, DEFAULT_COUNT_VALUE);
+        return statuses.getOrDefault(ballStatus, DEFAULT_BALL_COUNT);
     }
 
     @Override

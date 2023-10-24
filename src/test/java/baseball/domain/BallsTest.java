@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.util.TestDataUtil.createGuessResult;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -48,19 +49,6 @@ class BallsTest {
                 Arguments.of(Balls.from("362"), Balls.from("236"), createGuessResult(0, 3)),
                 Arguments.of(Balls.from("362"), Balls.from("263"), createGuessResult(1, 2))
         );
-    }
-
-    private static GuessResult createGuessResult(int strikeCount, int ballCount) {
-        GuessResult guessResult = GuessResult.empty();
-
-        for (int i = 0; i < strikeCount; i++) {
-            guessResult.add(BallStatus.STRIKE);
-        }
-        for (int i = 0; i < ballCount; i++) {
-            guessResult.add(BallStatus.BALL);
-        }
-
-        return guessResult;
     }
 
 }
