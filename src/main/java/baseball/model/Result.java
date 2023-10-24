@@ -20,7 +20,7 @@ public class Result {
             result = result + ball + "볼 ";
         }
         if (strike != 0) {
-            result = result + strike + "스트라이크 ";
+            result = result + strike + "스트라이크";
         }
 
         return result;
