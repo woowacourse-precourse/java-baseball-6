@@ -14,7 +14,7 @@ public class OutputView {
   }
 
   public void printInputMessage() {
-    System.out.println(INPUT_NUMBER_MESSAGE);
+    System.out.print(INPUT_NUMBER_MESSAGE);
   }
 
   public void printGameResult(JugeResult jugeResult) {
@@ -25,29 +25,29 @@ public class OutputView {
 
   private void isPrintBallOrStrike(JugeResult jugeResult) {
     if (jugeResult.isOnlyBall()) {
-      System.out.printf("%d" + HIT_BALL_MESSAGE, jugeResult.getBall());
+      System.out.printf("%d" + HIT_BALL_MESSAGE + "\n", jugeResult.getBall());
     }
 
     if (jugeResult.isOnlyStrike()) {
-      System.out.printf("%d" + HIT_STRIKE_MESSAGE, jugeResult.getStrike());
+      System.out.printf("%d" + HIT_STRIKE_MESSAGE + "\n", jugeResult.getStrike());
     }
   }
 
   private void isPrintBallAndStrike(JugeResult jugeResult) {
-    if (jugeResult.isOnlyBall() && jugeResult.isOnlyStrike()) {
+    if (!(jugeResult.isOnlyBall() && jugeResult.isOnlyStrike())) {
       System.out.printf("%d" + HIT_BALL_MESSAGE + " " +
-              "%d" + HIT_STRIKE_MESSAGE,
+              "%d" + HIT_STRIKE_MESSAGE + "\n",
               jugeResult.getBall(), jugeResult.getStrike());
     }
   }
 
   private static void isPrintNothing(JugeResult jugeResult) {
     if (jugeResult.isNothing()) {
-      System.out.println();
+      System.out.println(HIT_NOTHING_MESSAGE);
     }
   }
 
-  private void printGameSuccessMessage() {
+  public void printGameSuccessMessage() {
     System.out.println(GAME_SUCCESS_MESSAGE);
   }
 
