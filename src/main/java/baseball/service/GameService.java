@@ -15,7 +15,9 @@ public class GameService {
         return RandomNumber;
     }
 
-    public static void Play(int[] RandomNumber) {
+
+
+    public static void Play(int[] RandomNumber) throws IllegalArgumentException{
         while (strike != 3) {
             int[] UserInputList = getUserNumber();
             strike = 0;
@@ -57,7 +59,7 @@ public class GameService {
         if (index == flag) {
             strike += 1;
         }
-        if (index != flag) {
+        if (index != flag && flag != -1) {
             ball += 1;
         }
     }
