@@ -27,7 +27,7 @@ public class GameController {
         gameView.printMessage(GameModel.END_MESSAGE);
     }
 
-    public void play() {
+    private void play() {
         gameView.printMessage(GameModel.ASK_NUMBERS);
         input = Console.readLine();
         checkResult(input);
@@ -44,7 +44,7 @@ public class GameController {
         throw new IllegalArgumentException();
     }
 
-    public void checkResult(String input) {
+    private void checkResult(String input) {
         List<Integer> result = gameModel.checkAnswer(input);
 
         int strike = result.get(0);
