@@ -13,6 +13,10 @@ public class NumberService {
 
     private static final NumberService instance = new NumberService();
 
+    private NumberService() {
+
+    }
+
     public static NumberService getInstance() {
         return instance;
     }
