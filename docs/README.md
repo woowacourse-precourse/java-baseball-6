@@ -34,7 +34,7 @@
     - playGame()
     - `userDecision` 이 1이 아니면 게임 종료
 
-## 🔍 테스트 코드 작성
+## 🔍 테스트 코드 추가
 
 ### InputTest
 
