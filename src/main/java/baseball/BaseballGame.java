@@ -9,6 +9,25 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
     private List<Integer> answer;
 
+    public BaseballGame() {
+        this.answer = null;
+    }
+
+    public void run() {
+        generateAnswer();
+    }
+
+    private void generateAnswer() {
+        answer = new ArrayList<>();
+
+        while (answer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
+    }
+
     static public BaseballResultState match(List<Integer> a, List<Integer> b) {
         int ball = 0, strike = 0;
 
