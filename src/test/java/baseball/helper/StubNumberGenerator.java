@@ -1,7 +1,7 @@
 package baseball.helper;
 
+import baseball.model.Number;
 import baseball.util.NumberGenerator;
-import java.util.Arrays;
 import java.util.List;
 
 public class StubNumberGenerator implements NumberGenerator {
@@ -13,9 +13,9 @@ public class StubNumberGenerator implements NumberGenerator {
     }
 
     @Override
-    public List<Integer> generate() {
-        return Arrays.stream(numbers.split(""))
-                .map(Integer::parseInt)
+    public List<Number> generate() {
+        return numbers.chars()
+                .mapToObj(number -> new Number(Character.getNumericValue(number)))
                 .toList();
     }
 }
