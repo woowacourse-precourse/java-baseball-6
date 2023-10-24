@@ -28,7 +28,7 @@ public class Balls {
 
 	private void validateNumberRange(final List<Integer> numbers) {
 		numbers.stream()
-			   .filter(number -> number < BallsRule.MIN_NUMBER.getValue() || number > BallsRule.MAX_NUMBER.getValue())
+			   .filter(BallsRule::isNumberOutOfRange)
 			   .forEach(number -> {
 				   throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
 			   });

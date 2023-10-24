@@ -30,8 +30,8 @@ public class BallNumber {
 		return Objects.hash(number);
 	}
 
-	private void validate(int number) {
-		if (number < BallsRule.MIN_NUMBER.getValue() || number > BallsRule.MAX_NUMBER.getValue()) {
+	private void validate(final int number) {
+		if (BallsRule.isNumberOutOfRange(number)) {
 			throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
 		}
 	}

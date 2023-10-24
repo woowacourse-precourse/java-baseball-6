@@ -9,6 +9,10 @@ public enum BallsRule {
 		this.value = value;
 	}
 
+	public static boolean isNumberOutOfRange(final int number) {
+		return number < MIN_NUMBER.value || number > MAX_NUMBER.value;
+	}
+
 	public int getValue() {
 		return value;
 	}
