@@ -11,30 +11,45 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("숫자 야구를 게임을 시작합니다.");
-        List<Integer> uniqueNumbers = RandomNumber.getUniqueNumbers();
+        view.gameStartPrint();
+        RandomNumber.getUniqueNumbers();
         List<Integer> list;
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            view.gameNumberInputPrint();
             String stringNumber = Console.readLine();
             list = StringToIntegerList.stringToIntegerList(stringNumber);
-            System.out.println(uniqueNumbers);
-            List<Integer> result = BaseballCalculate.baseballCalculate(uniqueNumbers, list);
+            System.out.println(RandomNumber.baseballNumber);
+            List<Integer> result = BaseballCalculate.baseballCalculate(RandomNumber.baseballNumber, list);
             System.out.println(result);
-        } while (uniqueNumbers.equals(list) == false);
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } while (RandomNumber.baseballNumber.equals(list) == false);
+        view.gameEndPrint();
 
     }
 }
 
+class view {
+    public static void gameStartPrint() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static void gameNumberInputPrint() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
+
+    public static void gameEndPrint() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+}
+
 class RandomNumber {
+    static List<Integer> baseballNumber;
     final static private int startNumber = 1;
     final static private int endNumber = 9;
     final static private int count = 3;
-    static private List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, count);
 
     static List<Integer> getUniqueNumbers() {
-        return uniqueNumbers;
+        baseballNumber = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, count);
+        return baseballNumber;
     }
 }
 
