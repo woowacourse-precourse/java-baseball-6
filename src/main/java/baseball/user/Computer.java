@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 
 public class Computer {
 
-    List<Integer> baseballNumbers;
+    private List<Integer> baseballNumbers;
     private boolean isStrikeOut = false;
 
     public void generateBaseballNumbers() {

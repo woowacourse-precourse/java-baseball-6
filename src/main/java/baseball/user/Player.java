@@ -11,8 +11,8 @@ import java.util.Set;
 
 public class Player {
 
-    List<Integer> baseballNumbers;
-    GameMenu gameMenu = GameMenu.NEW_GAME;
+    private List<Integer> baseballNumbers;
+    private GameMenu gameMenu = GameMenu.NEW_GAME;
 
     public void inputBaseballNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
