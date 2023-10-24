@@ -1,24 +1,31 @@
 package baseball.controller;
 
-import baseball.model.Number;
+import baseball.model.Settings;
 import baseball.view.InputNumber;
+import baseball.view.Output;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseBallGame {
+
+
     public static int restart = 0;
     public static boolean correct = false;
 
     public static void GameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Output.StartMessage();
 
-        while (restart != 2) {
-            List<Integer> computer = Number.GenerateNumbers();
+        while (!Objects.equals(Settings.restart, "2")) {
+            Output.InputMessage();
+            List<Integer> computer = Settings.GenerateNumbers();
             System.out.println(computer); // 확인용
             correct = false;
             while (!correct) {
-                String userInput = InputNumber.getUserInput();
-                CheckNumber.checkNumberRules(userInput);
-                CheckNumber.strikesAndBalls(computer, userInput);
+                Settings.SetElements();
+                String userInput = InputNumber.GetUserInput();
+                CheckNumber.CheckNumberRules(userInput);
+                CheckNumber.StrikesAndBalls(computer, userInput);
+                Output.Hint(computer, userInput);
             }
         }
     }

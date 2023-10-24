@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Number {
+public class Settings {
+    public static int strike = 0;
+    public static int ball = 0;
+    public static String restart = "1";
 
     public static List<Integer> GenerateNumbers() {
         List<Integer> computerNumber = new ArrayList<>();
@@ -14,7 +17,15 @@ public class Number {
                 computerNumber.add(randomNumber);
             }
         }
+
+        SetElements();
+
         return computerNumber;
     }
 
+    public static void SetElements() {
+        strike = 0;
+        ball = 0;
+        restart = "1";
+    }
 }
