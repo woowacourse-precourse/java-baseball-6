@@ -2,11 +2,11 @@ package baseball.model;
 
 import baseball.util.Constants;
 
-public class Referee {
+public class NumberComparator {
     private final ComputerNumber computerNumber;
     private final PlayerNumber playerNumber;
 
-    public Referee(ComputerNumber computerNumber, PlayerNumber playerNumber) {
+    public NumberComparator(ComputerNumber computerNumber, PlayerNumber playerNumber) {
         this.computerNumber = computerNumber;
         this.playerNumber = playerNumber;
     }

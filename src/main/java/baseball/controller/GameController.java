@@ -3,8 +3,8 @@ package baseball.controller;
 import baseball.model.ComputerNumber;
 import baseball.model.GameCommand;
 import baseball.model.JudgeResult;
+import baseball.model.NumberComparator;
 import baseball.model.PlayerNumber;
-import baseball.model.Referee;
 import baseball.util.JudgeResultFormatter;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -16,24 +16,24 @@ public class GameController {
         gameCommand = GameCommand.GAME_START;
     }
 
-    public void play() {
+    public void startGame() {
         OutputView.printGameStart();
         while (gameCommand == GameCommand.GAME_START) {
-            initializeGame();
+            play();
+            readRetryCommand();
         }
     }
 
-    public void initializeGame() {
+    private void play() {
         ComputerNumber computerNumber = new ComputerNumber();
         playSingleRound(computerNumber);
-        readRetryCommand();
     }
 
     private void playSingleRound(ComputerNumber computerNumber) {
         while (true) {
             PlayerNumber playerNumber = new PlayerNumber(InputView.readPlayerNumber());
-            Referee referee = new Referee(computerNumber, playerNumber);
-            JudgeResult judgeResult = referee.judgeBallCount();
+            NumberComparator numberComparator = new NumberComparator(computerNumber, playerNumber);
+            JudgeResult judgeResult = numberComparator.judgeBallCount();
             OutputView.printRoundResult(JudgeResultFormatter.format(judgeResult));
             if (judgeResult.isGameSuccess()) {
                 OutputView.printGameSuccess();
