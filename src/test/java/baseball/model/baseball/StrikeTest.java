@@ -1,7 +1,5 @@
-package baseball.model;
+package baseball.model.baseball;
 
-
-import baseball.model.baseball.Strike;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

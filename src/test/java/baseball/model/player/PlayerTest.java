@@ -1,6 +1,5 @@
-package baseball.model;
+package baseball.model.player;
 
-import baseball.model.player.Player;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
