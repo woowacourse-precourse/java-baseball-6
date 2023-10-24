@@ -10,15 +10,20 @@ public class Output {
     }
 
     public void hint(Map<String, Integer> result) {
-        if (result.get(KeyType.STRIKE.getKey()) == NO_SCORE && result.get(KeyType.BALL.getKey()) == NO_SCORE) {
+        if (isNothing(result)) {
             System.out.print("낫싱");
         }
         for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            if (entry.getValue() != NO_SCORE) {
+            if (!isNothing(result)) {
                 System.out.print(entry.getValue() + entry.getKey() + " ");
             }
         }
         System.out.println();
+    }
+
+    private boolean isNothing(Map<String, Integer> result) {
+        return result.get(KeyType.STRIKE.getKey()) == NO_SCORE
+                && result.get(KeyType.BALL.getKey()) == NO_SCORE;
     }
 
     public void gameOver() {
