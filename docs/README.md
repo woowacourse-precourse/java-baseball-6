@@ -19,7 +19,7 @@
 
 - `gameStart()`: 안내 메시지를 보여주며 게임이 시작된다.
 - `readUserGuess()`: 사용자로부터 3개의 숫자를 입력받고 `GuessVo`인스턴스를 반환한다.
-- `validateUserGuess()`: `GuessVo`인스턴스를 보고 검증하고, 실패시 `IllegalArgumentException`를 발생시킨다.
+- `validateUserGuess()`: 사용자로 부터 입력받은 `String`인스턴스를 보고 검증하고, 실패시 `IllegalArgumentException`를 발생시킨다.
 - `checkUserGuess()`: 사용자의 추론을 실제 컴퓨터가 가지고 있는 값을 비교하여 `ResultGuessVo` 인스턴스를 변환한다.
 - `printResultGuess()`: `ResultGuessVo` 인스턴스의 값을 바탕으로 ?볼 ?스트라이크 또는 낫싱을 출력한다.
 - `isFinished()`: `ResultGuessVo` 인스턴스를 보고 3스트라이크인지 판단한다.
