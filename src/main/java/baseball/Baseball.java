@@ -45,10 +45,6 @@ class Baseball {
     }
   }
 
-  private String getNumberToString() {
-    return String.valueOf(getNumber());
-  }
-
   public void calculate(Map<String, Integer> scoreBoard) {
     if(getType() == null) {
       return;
@@ -56,4 +52,9 @@ class Baseball {
     String myType = type.getType();
     scoreBoard.put(myType, scoreBoard.get(myType)+1);
   }
+
+  private String getNumberToString() {
+    return String.valueOf(getNumber());
+  }
+
 }
