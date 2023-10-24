@@ -2,6 +2,7 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ResultFactoryTest {
@@ -10,8 +11,9 @@ class ResultFactoryTest {
         ResultFactory resultFactory = new ResultFactory();
         UserPrediction userPrediction = new UserPrediction(7,8,9);
         Answer answer = new Answer(7,8,9);
+        List<Hint> hints = answer.getHints(userPrediction);
 
-        Result result = resultFactory.compareAndGetResult(userPrediction, answer);
+        Result result = resultFactory.getResult(hints);
 
         assertEquals(3, result.getNumberOfStrikes());
         assertEquals(0, result.getNumberOfBalls());
@@ -22,8 +24,9 @@ class ResultFactoryTest {
         ResultFactory resultFactory = new ResultFactory();
         UserPrediction userPrediction = new UserPrediction(1,2,3);
         Answer answer = new Answer(7,8,9);
+        List<Hint> hints = answer.getHints(userPrediction);
 
-        Result result = resultFactory.compareAndGetResult(userPrediction, answer);
+        Result result = resultFactory.getResult(hints);
 
         assertEquals(0, result.getNumberOfStrikes());
         assertEquals(0, result.getNumberOfBalls());
@@ -34,8 +37,9 @@ class ResultFactoryTest {
         ResultFactory resultFactory = new ResultFactory();
         UserPrediction userPrediction = new UserPrediction(1,2,3);
         Answer answer = new Answer(3,1,2);
+        List<Hint> hints = answer.getHints(userPrediction);
 
-        Result result = resultFactory.compareAndGetResult(userPrediction, answer);
+        Result result = resultFactory.getResult(hints);
 
         assertEquals(0, result.getNumberOfStrikes());
         assertEquals(3, result.getNumberOfBalls());
