@@ -38,15 +38,19 @@ public class GameProgressController {
         boolean isAnswer = false;
         while (!isAnswer) {
             String userInputString = inputView.getUserGuessingNumbers();
-            String validUserInputString = userInputValidator.userInputStringValidate(userInputString);
-            List<Integer> validUserInputNumbers = userInputValidator.userInputNumbersValidate(validUserInputString);
-            gameNumber.saveUserInputNumbers(validUserInputString, validUserInputNumbers);
+            saveUserNumbers(userInputString);
             isAnswer = computerController.checkUserInputWithAnswer(gameNumber.getUserInputNumbers(), gameNumber.getComputerGenerateNumbers());
             outputView.printHint(computerController.createHintMessage());
         }
         if (isAnswer) {
             outputView.printGameFinish();
         }
+    }
+
+    private void saveUserNumbers(String userInputString) {
+        String validUserInputString = userInputValidator.userInputStringValidate(userInputString);
+        List<Integer> validUserInputNumbers = userInputValidator.userInputNumbersValidate(validUserInputString);
+        gameNumber.saveUserInputNumbers(validUserInputString, validUserInputNumbers);
     }
 
     private void saveComputerGenerateNumbers() {
