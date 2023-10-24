@@ -27,6 +27,10 @@ public class OutputMessage {
         System.out.println(SUCCESS);
     }
 
+    public static void printResult(String result) {
+        System.out.println(result);
+    }
+
     public static String getResultMessage(int ball, int strike) {
         String ballMessage = getBallMessage(ball);
         String strikeMessage = getStrikeMessage(strike);
