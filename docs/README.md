@@ -7,7 +7,7 @@
 
         String start() = 게임 시작 문구 반환
 
-        String requestInput() = 숫자 입력 요청 문구 반환
+        String requestInput() = player 숫자 입력 요청 문구 반환
 
         String success() = 게임 성공 문구 반환 
 
@@ -58,7 +58,7 @@
 
          int validateGameEndRequestInput(String input) = 입력 받은 string이 1, 2인지 검증 후 int로 변경하여 반환, 유효하지 않다면 error 발생
 
-         List<Integer> convertPlayerInput(String playerInput) = 유효성 검증이 끝난 입력을 List로 반환
+         List<Integer> convertPlayerInput(String playerInput) = 유효성 검증이 끝난 입력을 Integer List로 반환
 
 ## 5. NumberMaker class
 - 숫자 생성 메서드
