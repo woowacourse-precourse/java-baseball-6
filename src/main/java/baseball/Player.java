@@ -1,20 +1,10 @@
 package baseball;
 
 import static baseball.utils.Constants.COUNTS;
-import static baseball.utils.Constants.MAXIMUM_NUMBER;
-import static baseball.utils.Constants.MINIMUM_NUMBER;
-import static baseball.utils.ErrorMessage.INPUT_DUPLICATION_ERROR_MESSAGE;
-import static baseball.utils.ErrorMessage.INPUT_LENGTH_INVALID_ERROR_MESSAGE;
-import static baseball.utils.ErrorMessage.INPUT_NOT_INTEGER_ERROR_MESSAGE;
-import static baseball.utils.ErrorMessage.INPUT_OUT_OF_RANGE_ERROR_MESSAGE;
 import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
 import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
-import static baseball.utils.Util.convertToIntegerList;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Player {
     private Computer computer = new Computer();
@@ -31,16 +21,14 @@ public class Player {
     }
 
     public void play() {
-        List<Integer> playerNumbers;
+        PlayerNumbers playerNumbers;
         while (strike < COUNTS) {
             System.out.print(INPUT_REQUEST_MESSAGE);
             String playerInput = Console.readLine();
-            validateIntType(playerInput);
-            playerNumbers = convertToIntegerList(playerInput);
-            validatePlayerNumbers(playerNumbers);
+            playerNumbers = new PlayerNumbers(playerInput);
 
-            strike = computer.checkStrikeCount(playerNumbers);
-            ball = computer.checkBallCount(playerNumbers);
+            strike = playerNumbers.checkStrikeCount(computer);
+            ball = playerNumbers.checkBallCount(computer);
             printBallCount();
         }
         printGameSuccessMessage();
@@ -49,49 +37,6 @@ public class Player {
     private void printGameSuccessMessage() {
         System.out.println(GAME_SUCCESS_MESSAGE);
     }
-
-    private void validateIntType(String playerInput) {
-        try {
-            Integer.parseInt(playerInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INPUT_NOT_INTEGER_ERROR_MESSAGE);
-        }
-    }
-
-    private void validatePlayerNumbers(List<Integer> playerNumbers) {
-        validateCount(playerNumbers);
-        validateRange(playerNumbers);
-        validateDuplicates(playerNumbers);
-    }
-
-    private void validateCount(List<Integer> playerNumbers) {
-        if (playerNumbers.size() != COUNTS) {
-            throw new IllegalArgumentException(INPUT_LENGTH_INVALID_ERROR_MESSAGE);
-        }
-    }
-
-    private void validateRange(List<Integer> playerNumbers) {
-        boolean isInvalid = playerNumbers.stream()
-                .anyMatch(number -> number < MINIMUM_NUMBER || number > MAXIMUM_NUMBER);
-        if (isInvalid) {
-            throw new IllegalArgumentException(INPUT_OUT_OF_RANGE_ERROR_MESSAGE);
-        }
-    }
-
-    private void validateDuplicates(List<Integer> playerNumbers) {
-        Set<Integer> numberSet = new HashSet<>();
-        for (int number : playerNumbers) {
-            checkAndAddNumber(numberSet, number);
-        }
-    }
-
-    private void checkAndAddNumber(Set<Integer> numberSet, int number) {
-        if (numberSet.contains(number)) {
-            throw new IllegalArgumentException(INPUT_DUPLICATION_ERROR_MESSAGE);
-        }
-        numberSet.add(number);
-    }
-
 
     public void printBallCount() {
         String result = "";
