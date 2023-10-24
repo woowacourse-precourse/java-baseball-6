@@ -5,6 +5,7 @@ import baseball.constant.StrikeBall;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public final class BallCount {
 
@@ -27,11 +28,15 @@ public final class BallCount {
     }
 
     public long countStrike() {
-        return values.stream().filter(StrikeBall::isStrike).count();
+        return count(StrikeBall::isStrike);
     }
 
     public long countBall() {
-        return values.stream().filter(StrikeBall::isBall).count();
+        return count(StrikeBall::isBall);
+    }
+
+    private long count(final Predicate<StrikeBall> predicate) {
+        return values.stream().filter(predicate).count();
     }
 
     public ResultStatus checkResultStatus() {
