@@ -37,6 +37,7 @@ public class GameOverScene implements Scene {
         switch (userInput) {
             case STRING_START_INPUT -> gameStateManager.update(GameState.GAME);
             case STRING_EXIT_INPUT -> gameStateManager.update(GameState.EXIT);
+            default -> throw new IllegalArgumentException("지원하지 않는 메뉴입니다.");
         }
     }
 }
