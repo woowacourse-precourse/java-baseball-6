@@ -6,21 +6,22 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseBallController {
-    private int ballCount;
-    private int strikeCount;
-    private String playerInput;
-    private List<Integer> playerNumbers;
-    private List<Integer> answerNumbers;
+
+    private static final Numbers PLAYER_NUMBERS = new Numbers();
+    private static final Numbers ANSWER_NUMBERS = new Numbers();
+    private static final RandomNumberGenerator RANDOM_NUMBER_GENERATOR = new RandomNumberGenerator();
+    private static final InputValidator INPUT_VALIDATOR = new InputValidator();
+    private static final PlayerInputParser PLAYER_INPUT_PARSER = new PlayerInputParser();
     private static final String BALL = BaseBallConstants.BALL;
     private static final String STRIKE = BaseBallConstants.STRIKE;
     private static final String NOTHING = BaseBallConstants.NOTHING;
     private static final OutputView OUTPUT_VIEW = new OutputView();
     private static final InputView INPUT_VIEW = new InputView();
-    private static final InputValidator INPUT_VALIDATOR = new InputValidator();
-    private static final Numbers PLAYER_NUMBERS = new Numbers();
-    private static final Numbers ANSWER_NUMBERS = new Numbers();
-    private static final RandomNumberGenerator RANDOM_NUMBER_GENERATOR = new RandomNumberGenerator();
-    private static final PlayerInputParser PLAYER_INPUT_PARSER = new PlayerInputParser();
+    private int ballCount;
+    private int strikeCount;
+    private String playerInput;
+    private List<Integer> playerNumbers;
+    private List<Integer> answerNumbers;
 
     public void startBaseBallGame() {
         OUTPUT_VIEW.printGameStartMessage();
@@ -80,7 +81,6 @@ public class BaseBallController {
         return strikeCount == 3;
     }
 
-
     private String makeHintMessage() {
         if (ballCount == 0 && strikeCount == 0) {
             return NOTHING;
@@ -102,7 +102,6 @@ public class BaseBallController {
         initGame();
         runGame();
     }
-
 
     private void ChooseGameRepeatOrQuit() {
         if (playerInput.equals("1")) {
