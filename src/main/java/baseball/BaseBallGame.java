@@ -7,6 +7,7 @@ public class BaseBallGame {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
 
     private NumberGenerator numberGenerator;
+    private PlayerNumber playerNumber;
     private boolean allStrike;
     private boolean playOrNot;
 
@@ -34,6 +35,7 @@ public class BaseBallGame {
             //System.out.println(numberGenerator.getComputer());
 
             //입력 받기
+            playerNumber = PlayerNumber.inputPlayer();
             //결과 계산 및 출력
             //allStrike 확인
 
