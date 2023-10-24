@@ -1,5 +1,6 @@
 package baseball.logic;
 
+import baseball.locales.GameScripts;
 import baseball.user.User;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class BaseballGame {
     }
 
     private void printHello() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GameScripts.GAME_START);
     }
 
 

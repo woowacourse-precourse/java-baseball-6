@@ -1,5 +1,7 @@
 package baseball.logic;
 
+import baseball.locales.GameScripts;
+
 public record BaseballResult(
         int strike,
         int ball,
@@ -11,7 +13,7 @@ public record BaseballResult(
 
 
     public void printSuccess() {
-        System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(strike + GameScripts.GAME_SUCCESS);
     }
 
     public void printStatus() {
@@ -20,6 +22,7 @@ public record BaseballResult(
         }
         if (ball != 0) {
             printBall();
+            System.out.print(" ");
         }
         if (strike != 0) {
             printStrike();
@@ -29,15 +32,15 @@ public record BaseballResult(
     }
 
     private void printNothing() {
-        System.out.print("낫싱");
+        System.out.print(GameScripts.RESULT_NOTHING);
     }
 
     private void printBall() {
-        System.out.print(ball + "볼 ");
+        System.out.print(ball + GameScripts.RESULT_BALL);
     }
 
     private void printStrike() {
-        System.out.print(strike + "스트라이크");
+        System.out.print(strike + GameScripts.RESULT_STRIKE);
     }
 
 
