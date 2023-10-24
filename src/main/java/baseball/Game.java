@@ -106,7 +106,7 @@ public class Game {
     }
 
     private void validateQuitInput() {
-        List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{"1", "2"}));
+        List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{START_NUMBER, END_NUMBER}));
         boolean inputValidation = inputList.contains(checkInput);
         if (!inputValidation) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE_ERROR.getMessage());
