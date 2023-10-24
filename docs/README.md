@@ -29,7 +29,7 @@
   - [x] Pitcher 클래스
   - [x] Referee 클래스
   - [x] TargetNumber 클래스
-- [ ] public 메서드 주석 추가하기
+- [x] public 메서드 주석 추가하기
 - [ ] 리팩토링
 
 ### 질문/메모
