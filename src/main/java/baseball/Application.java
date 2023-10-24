@@ -22,7 +22,7 @@ public class Application {
         String userInput = "";
         while (playAgain) {
             game(answerNumber, gameStatus, userInput);
-            nextGameMessage();
+            Message.nextGameMessage();
             againInput = readLine();
             playAgain = isPlayAgain(againInput);
         }
@@ -31,23 +31,19 @@ public class Application {
     private static void game(List<Integer> answerNumber, Map<String, Integer> gameStatus, String userInput) {
         clearStatus(gameStatus);
         getRandomsNumber(answerNumber);
-        System.out.println(answerNumber);
         System.out.println(Constant.START_MESSAGE);
 
         while (gameStatus.get("STRIKE_COUNT") != Constant.NUMBER_COUNT) {
             System.out.print(Constant.INPUT_MESSAGE);
             userInput = readLine();
-            validateInput(userInput);
+            Validate.validateInput(userInput);
             clearStatus(gameStatus);
             getGameStatus(answerNumber, gameStatus, userInput);
-            generateMessage(gameStatus);
+            Message.generateMessage(gameStatus);
         }
     }
 
-    private static void nextGameMessage() {
-        System.out.println(Constant.SUCCESS_MESSAGE);
-        System.out.println(Constant.END_MESSAGE);
-    }
+
 
     private static void clearStatus(Map<String, Integer> gameStatus) {
         gameStatus.clear();
@@ -67,20 +63,7 @@ public class Application {
         return playAgain;
     }
 
-    private static void generateMessage(Map<String, Integer> gameStatus) {
-        int ballCount = gameStatus.get("BALL_COUNT");
-        int strikeCount = gameStatus.get("STRIKE_COUNT");
 
-        if (ballCount > 0 && strikeCount > 0) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        } else if (ballCount > 0) {
-            System.out.println(ballCount + "볼");
-        } else if (strikeCount > 0) {
-            System.out.println(strikeCount + "스트라이크");
-        } else {
-            System.out.println("낫싱");
-        }
-    }
     private static void getGameStatus(List<Integer> answerNumber, Map<String, Integer> setStatus,
         String userInput) {
         for (int i = 0; i < Constant.NUMBER_COUNT; i++) {
@@ -95,30 +78,7 @@ public class Application {
         }
     }
 
-    public static void validateInput(String userInput) {
-        if (!userInput.matches("\\d+")) {
-            throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
-        }
 
-        if (userInput.length() != Constant.NUMBER_COUNT) {
-            throw new IllegalArgumentException("입력이 숫자 3개가 아닙니다.");
-        }
-
-        if (hasDuplicateDigits(userInput)) {
-            throw new IllegalArgumentException("입력에 중복된 숫자가 있습니다.");
-        }
-    }
-
-    public static boolean hasDuplicateDigits(String input) {
-        HashSet<Character> uniqueNumber = new HashSet<>();
-        for (char c : input.toCharArray()) {
-            if (uniqueNumber.contains(c)) {
-                return true;
-            }
-            uniqueNumber.add(c);
-        }
-        return false;
-    }
 
     private static void getRandomsNumber(List<Integer> computer) {
         computer.clear();
@@ -128,6 +88,56 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+    }
+
+    static class Validate {
+        public static void validateInput(String userInput) {
+            if (!userInput.matches("\\d+")) {
+                throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
+            }
+
+            if (userInput.length() != Constant.NUMBER_COUNT) {
+                throw new IllegalArgumentException("입력이 숫자 3개가 아닙니다.");
+            }
+
+            if (hasDuplicateDigits(userInput)) {
+                throw new IllegalArgumentException("입력에 중복된 숫자가 있습니다.");
+            }
+        }
+
+        public static boolean hasDuplicateDigits(String input) {
+            HashSet<Character> uniqueNumber = new HashSet<>();
+            for (char c : input.toCharArray()) {
+                if (uniqueNumber.contains(c)) {
+                    return true;
+                }
+                uniqueNumber.add(c);
+            }
+            return false;
+        }
+
+    }
+
+    static class Message {
+        private static void nextGameMessage() {
+            System.out.println(Constant.SUCCESS_MESSAGE);
+            System.out.println(Constant.END_MESSAGE);
+        }
+        private static void generateMessage(Map<String, Integer> gameStatus) {
+            int ballCount = gameStatus.get("BALL_COUNT");
+            int strikeCount = gameStatus.get("STRIKE_COUNT");
+
+            if (ballCount > 0 && strikeCount > 0) {
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            } else if (ballCount > 0) {
+                System.out.println(ballCount + "볼");
+            } else if (strikeCount > 0) {
+                System.out.println(strikeCount + "스트라이크");
+            } else {
+                System.out.println("낫싱");
+            }
+        }
+
     }
 
     static class Constant {
