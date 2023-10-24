@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 public enum RoundEndAction {
     CONTINUE("1"), // 게임을 계속

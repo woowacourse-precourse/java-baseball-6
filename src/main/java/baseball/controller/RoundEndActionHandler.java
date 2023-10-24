@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 public class RoundEndActionHandler implements PlayerInputHandler<RoundEndAction>{
     RoundEndAction roundEndAction;

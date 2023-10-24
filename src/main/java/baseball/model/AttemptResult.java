@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public class AttemptResult {
     private int strikeCount;

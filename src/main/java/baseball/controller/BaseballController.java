@@ -1,5 +1,9 @@
-package baseball;
+package baseball.controller;
 
+import baseball.GameSettings;
+import baseball.model.AttemptResult;
+import baseball.model.BaseballModel;
+import baseball.view.BaseballView;
 import java.util.Iterator;
 
 public class BaseballController {

@@ -1,7 +1,8 @@
-package baseball;
+package baseball.model;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
+import baseball.GameSettings;
 import java.util.Hashtable;
 
 public class RandomNumber {

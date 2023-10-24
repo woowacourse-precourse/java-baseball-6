@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.GameSettings;
 import java.util.ArrayList;
 import java.util.Iterator;
 
