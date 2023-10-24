@@ -1,5 +1,7 @@
 package baseball.game;
 
+import java.util.List;
+
 public class BaseballGame {
 
     private static Computer computer;
@@ -10,7 +12,7 @@ public class BaseballGame {
     }
 
     public void play() {
-        computer.createComputerNumber();
+        List<Integer> computerNumber = computer.createComputerNumber();
         user.createUserNumber();
         computer.compareEachNumber();
         computer.createResultMessage();
@@ -19,13 +21,6 @@ public class BaseballGame {
 
 //        public static void Game() {
 //            while (true) {
-//                ArrayList<Integer> computerNumber = new ArrayList<>();
-//                while (computerNumber.size() < 3) {
-//                    int number = Randoms.pickNumberInRange(1, 9);
-//                    if (!computerNumber.contains(number)) {
-//                        computerNumber.add(number);
-//                    }
-//                }
 //
 //                while (true) {
 //                    System.out.print("숫자를 입력해주세요 : ");
