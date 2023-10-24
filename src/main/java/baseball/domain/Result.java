@@ -2,6 +2,7 @@ package baseball.domain;
 
 public enum Result {
 
+    // TODO: 클래스로 변경할 것
     THREE_STRIKE(3, 0),
     TWO_STRIKE(2, 0),
     ONE_STRIKE(1, 0),

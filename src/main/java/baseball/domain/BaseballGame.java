@@ -23,6 +23,7 @@ public class BaseballGame {
         }
     }
 
+    // TODO: 객체 간의 대화로 해결할 것
     private Result checkHitsResult(List<Integer> baseballNumbers, List<Integer> playerNumbers) {
         int strike = 0, ball = 0;
         for (int i = 0; i < baseballNumbers.size(); i++) {
