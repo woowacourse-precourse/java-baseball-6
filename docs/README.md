@@ -49,6 +49,7 @@
     - 게임 종료
 - baseball
     - 숫자 생성
+- result
     - 숫자 비교
 - InputException
     - 게임 숫자가 숫자가 아닐 경우
