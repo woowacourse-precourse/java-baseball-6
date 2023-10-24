@@ -30,6 +30,7 @@ public class Game {
     }
 
     private void matchStart() {
+        referee.playBall();
         int[] pitch;
         boolean strikeOut;
         do {

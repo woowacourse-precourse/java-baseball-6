@@ -4,7 +4,6 @@ public class Referee {
     private TargetNumber targetNumber;
 
     Referee() {
-        targetNumber = TargetNumber.generate(0, 0, 0);
     }
 
     /**
@@ -37,6 +36,13 @@ public class Referee {
         declare(ball, strike);
 
         return strike == 3;
+    }
+
+    /**
+     * 멤버 변수 targetNumber를 재설정하는 메서드
+     */
+    public void playBall() {
+        targetNumber = TargetNumber.generate(0, 0, 0);
     }
 
     private void declare(int ball, int strike) {
