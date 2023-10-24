@@ -8,16 +8,6 @@ import static baseball.AppConfig.DIGIT_NUM;
 
 public class ComputerUmpireImpl implements Umpire {
 
-    Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
-    Boolean[] ballCheckingBoard = new Boolean[DIGIT_NUM];
-    Boolean homerunChecker = false;
-    Boolean nothingChecker = false;
-
-    public ComputerUmpireImpl() {
-        Arrays.fill(strikeCheckingBoard, false);
-        Arrays.fill(ballCheckingBoard, false);
-    }
-
     @Override
     public Boolean[] checkStrike(String ball, String bat, Boolean[] strikeCheckingBoard) {
         for(int i = 0 ; i < DIGIT_NUM ; i++){
