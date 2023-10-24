@@ -16,8 +16,9 @@ public class Computer {
 
         while (answer.size() < 3) {
             int num = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(num))
+            if (!answer.contains(num)) {
                 answer.add(num);
+            }
         }
     }
 
@@ -49,14 +50,11 @@ public class Computer {
     private void printResult(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
-        }
-        else if (ballCount == 0) {
+        } else if (ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
-        }
-        else if (strikeCount == 0) {
+        } else if (strikeCount == 0) {
             System.out.println(ballCount + "볼");
-        }
-        else {
+        } else {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }

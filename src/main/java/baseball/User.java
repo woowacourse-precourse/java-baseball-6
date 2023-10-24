@@ -19,14 +19,17 @@ public class User {
     }
 
     private boolean isGameInputRight(String input) {
-        if (!isInputLenRight(input, 3))
+        if (!isInputLenRight(input, 3)) {
             return false;
+        }
 
-        if (!isInputNumber(input))
+        if (!isInputNumber(input)) {
             return false;
+        }
 
-        if (!isInputValueDiff(input))
+        if (!isInputValueDiff(input)) {
             return false;
+        }
 
         return true;
     }
@@ -42,18 +45,21 @@ public class User {
     }
 
     private boolean isQuitInputRight(String input) {
-        if (!isInputLenRight(input, 1))
+        if (!isInputLenRight(input, 1)) {
             return false;
+        }
 
-        if (!input.equals(QuitInput.RESTART.getQuitInput()) && !input.equals(QuitInput.QUIT.getQuitInput()))
+        if (!input.equals(QuitInput.RESTART.getQuitInput()) && !input.equals(QuitInput.QUIT.getQuitInput())) {
             return false;
+        }
 
         return true;
     }
 
     private boolean isInputLenRight(String input, int len) {
-        if (input.length() != len)
+        if (input.length() != len) {
             return false;
+        }
 
         return true;
     }
@@ -62,8 +68,9 @@ public class User {
         for (int i = 0; i < 3; i++) {
             char c = input.charAt(i);
 
-            if (!Character.isDigit(c) || c == '0')
+            if (!Character.isDigit(c) || c == '0') {
                 return false;
+            }
         }
 
         return true;
@@ -75,8 +82,9 @@ public class User {
         for (int i = 0; i < 3; i++) {
             int num = input.charAt(i) - '0';
 
-            if (used[num - 1])
+            if (used[num - 1]) {
                 return false;
+            }
 
             used[num - 1] = true;
         }
