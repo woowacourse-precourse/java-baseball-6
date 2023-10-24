@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.model.Numbers;
-import baseball.model.PlayerInput;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -9,6 +8,8 @@ import java.util.List;
 public class BaseBallController {
     private int ballCount;
     private int strikeCount;
+
+    private String playerInput;
 
     private List<Integer> playerNumbers;
     private List<Integer> answerNumbers;
@@ -18,8 +19,6 @@ public class BaseBallController {
     private static final OutputView OUTPUT_VIEW = new OutputView();
     private static final InputView INPUT_VIEW = new InputView();
     private static final InputValidator INPUT_VALIDATOR = new InputValidator();
-
-    private static final PlayerInput PLAYER_INPUT = new PlayerInput();
     private static final Numbers PLAYER_NUMBERS = new Numbers();
     private static final Numbers ANSWER_NUMBERS = new Numbers();
     private static final RandomNumberGenerator RANDOM_NUMBER_GENERATOR = new RandomNumberGenerator();
@@ -34,9 +33,9 @@ public class BaseBallController {
     private void runGame() {
         while (!isGameCleared()) {
             OUTPUT_VIEW.printPlayerNumberInputPrompt();
-            PLAYER_INPUT.setPlayerInput(INPUT_VIEW.enterPlayerInput());
-            INPUT_VALIDATOR.isValidNumber(PLAYER_INPUT.getPlayerInput());
-            PLAYER_NUMBERS.setNumbers(PLAYER_INPUT_PARSER.ParsePlayerInput(PLAYER_INPUT.getPlayerInput()));
+            playerInput = INPUT_VIEW.enterPlayerInput();
+            INPUT_VALIDATOR.isValidNumber(playerInput);
+            PLAYER_NUMBERS.setNumbers(PLAYER_INPUT_PARSER.ParsePlayerInput(playerInput));
             playerNumbers = PLAYER_NUMBERS.getNumbers();
 
             ballCount = countBall();
@@ -80,7 +79,7 @@ public class BaseBallController {
     }
 
     private boolean isGameCleared() {
-        return answerNumbers.equals(playerNumbers);
+        return strikeCount == 3;
     }
 
 
@@ -97,8 +96,8 @@ public class BaseBallController {
 
     private void askRestartGame() {
         OUTPUT_VIEW.printContinueGameChoicePrompt();
-        PLAYER_INPUT.setPlayerInput(INPUT_VIEW.enterPlayerInput());
-        INPUT_VALIDATOR.isValidContinueGameChoice(PLAYER_INPUT.getPlayerInput());
+        playerInput = INPUT_VIEW.enterPlayerInput();
+        INPUT_VALIDATOR.isValidContinueGameChoice(playerInput);
     }
 
     private void restartGame() {
@@ -108,9 +107,9 @@ public class BaseBallController {
 
 
     private void ChooseGameRepeatOrQuit() {
-        if (PLAYER_INPUT.getPlayerInput().equals("1")) {
+        if (playerInput.equals("1")) {
             restartGame();
-        } else if (PLAYER_INPUT.getPlayerInput().equals("2")) {
+        } else if (playerInput.equals("2")) {
             endGame();
         }
     }

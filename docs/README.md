@@ -31,8 +31,6 @@
 1. BaseBallNumbers
 
 + [x] Numbers 데이터 저장(사용자 입력에 대한값과, 랜덤으로 생성한 값에 저장에 사용)
-+ [x] playerInput 데이터를 저장(문자열 형태)
-+
 
 ### View
 
