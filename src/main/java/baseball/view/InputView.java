@@ -1,18 +1,18 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import baseball.util.Message;
+import baseball.view.OutputView;
 
 public class InputView {
 	public int userInputNumber() {
-		System.out.print(Message.INPUT_NUMBER_MESSAGE);
+		OutputView.printInputNumberMessage();
 		String userInput = Console.readLine();
 
 		return Integer.parseInt(userInput);
 	}
 
 	public int gameRestartFlag() {
-		System.out.println(Message.GAME_RESTART_MESSAGE);
+		OutputView.printGameRestartMessage();
 		String userInput = Console.readLine();
 
 		return Integer.parseInt(userInput);
