@@ -1,49 +1,42 @@
 package baseball.domain;
 
-import java.util.Objects;
+public enum Strike {
+    ZERO(0),
+    ONE(1),
+    TWO(2),
+    THREE(3);
 
-public class Strike {
-    private static final int ZERO_COUNT = 0;
-    private static final int FULL_COUNT = 3;
     private static final String STRIKE_RANGE_EXCEPTION_MESSAGE = "스트라이크의 유효 범위는 0~3 입니다.";
-    private final int strike;
+    public static final String EMPTY = "";
+    public static final String STRIKE_MESSAGE = "스트라이크";
+    private final int count;
 
-    public Strike(int strike) {
-        validateStrikeRange(strike);
-        this.strike = strike;
+    Strike(int strike) {
+        this.count = strike;
     }
 
-    private static void validateStrikeRange(int strike) {
-        if (strike < ZERO_COUNT || FULL_COUNT < strike) {
-            throw new IllegalArgumentException(STRIKE_RANGE_EXCEPTION_MESSAGE);
+    public static Strike from(int count) {
+        for (Strike strike : values()) {
+            if (strike.count == count) {
+                return strike;
+            }
         }
-    }
-
-    int getValue() {
-        return this.strike;
+        throw new IllegalArgumentException(STRIKE_RANGE_EXCEPTION_MESSAGE);
     }
 
     public boolean isEmpty() {
-        return this.strike == ZERO_COUNT;
+        return Strike.ZERO.equals(this);
     }
 
     public boolean isFullCount() {
-        return this.strike == FULL_COUNT;
+        return Strike.THREE.equals(this);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
+    public String toString() {
+        if (isEmpty()) {
+            return EMPTY;
         }
-        if (!(o instanceof Strike strike1)) {
-            return false;
-        }
-        return strike == strike1.strike;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(strike);
+        return this.count + STRIKE_MESSAGE;
     }
 }
