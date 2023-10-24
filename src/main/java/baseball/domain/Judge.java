@@ -169,9 +169,19 @@ public class Judge {
             valueIndexOfUserList = userList.get(indexUserList); // index의 UserList의 값
             isSamePlaceIndexUserAndCom = isSamePlaceNumUserAndComputer(valueIndexOfUserList, indexUserList); // user의 특정 index의 값과 computer의 특정 index의 값이 같은가.
 
-            if (isSamePlaceIndexUserAndCom) { // user의 특정 index의 값과 computer의 특정 index의 값이 같으면.
-                cntStrike = cntStrike + 1; // 스트라이크의 갯수 증가.
-            }
+            cntStrike = increaseCntStrikeIfTrue(cntStrike, isSamePlaceIndexUserAndCom);
+        }
+        return cntStrike;
+    }
+
+    /**
+     * @param cntStrike
+     * @param isTrue
+     * @return
+     */
+    private int increaseCntStrikeIfTrue(int cntStrike, boolean isTrue) {
+        if (isTrue) { // user의 특정 index의 값과 computer의 특정 index의 값이 같으면.
+            cntStrike = cntStrike + 1; // 스트라이크의 갯수 증가.
         }
         return cntStrike;
     }
