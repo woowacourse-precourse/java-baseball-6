@@ -28,12 +28,12 @@
 * 2를 입력 시, while문을 빠져나오며 게임이 종료된다.
 * 이외의 숫자 입력 시, IllegalArgumentException()를 throw한다.
 
-## 🛵 main 함수 
+### 🛵 main 함수 
 
 1. random_pick() 함수를 이용해 랜덤 숫자 3개를 담은 answer_list 생성
 2. 숫자 야구 게임 시작 알림 메시지 
 3. while문으로 숫자야구 진행 
-- input_number() -> check_StrikeAndBall() -> EndOrRestart(조건부) 순서로 반복된다. 
+* input_number() -> check_StrikeAndBall() -> EndOrRestart(조건부) 순서로 반복된다. 
 
 
 
