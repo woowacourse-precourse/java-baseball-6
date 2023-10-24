@@ -19,14 +19,7 @@ public class RetryView {
         System.out.println(Message.GAME_END_RETRY.getMessage());
         String retryNumber = Console.readLine();
         validateRetryNumberChoice(retryNumber);
-        if(retryNumber.equals(Message.RETRYGAME.getMessage())){
-            return true;
-        }
-        if(retryNumber.equals(Message.ENDGAME.getMessage())){
-            return false;
-        }
-
-        return false;
+        return retryNumber.equals(Message.RETRYGAME.getMessage());
     }
 
     public enum Message {
