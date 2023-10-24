@@ -17,6 +17,8 @@ public class Application {
 }
 
 class Game {
+    private static final int NUMBER_LENGTH = 3;
+
     public void play() {
         List<Integer> computerNumber = generateComputerNumber();
 
@@ -38,7 +40,7 @@ class Game {
 
     private static List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber))
                 computer.add(randomNumber);
@@ -63,7 +65,7 @@ class Game {
     private GameOutcome checkOutcome(List<Integer> computerNumber, List<Integer> userGuess) {
         int ball = 0, strike = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (computerNumber.get(i).equals(userGuess.get(i))) {
                 strike++;
             } else if (computerNumber.contains(userGuess.get(i))) {
@@ -115,9 +117,11 @@ class GameOutcome {
 }
 
 class InputValidator{
+    private static final int VALID_INPUT_LENGTH = 3;
+
     public static void validateInput(String input) {
         //\\d will match a single digit (0-9).
-        if (input.length() != 3 || !input.matches("\\d+") || hasDuplicateCharacters(input))
+        if (input.length() != VALID_INPUT_LENGTH || !input.matches("\\d+") || hasDuplicateCharacters(input))
             throw new IllegalArgumentException("3자리의 서로 다른 숫자를 입력해 주세요!");
     }
 
