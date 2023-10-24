@@ -32,7 +32,7 @@ class TargetNumber {
     0 번째 원소는 숫자가 있는지 여부를 말하고,
     1 번째 원소는 숫자가 있다면 위치도 맞는지 여부를 말한다.
      */
-    public boolean[] has(int num, int idx) {
+    boolean[] has(int num, int idx) {
         boolean[] check = new boolean[2];
 
         if (!isValidNumber(num) || !isValidIndex(idx)) {
@@ -51,7 +51,7 @@ class TargetNumber {
         return check;
     }
 
-    public int[] getRandomNumber() {
+    int[] getRandomNumber() {
         boolean[] duplicationCheck = new boolean[10];
         int[] answer = new int[3];
         for (int i = 0; i < 3; i++) {
