@@ -42,9 +42,7 @@ public class GameController {
             outputView.printGameSuccessResult(gameResult);
             if (inputView.inputRestartOrExit() == 1) {
                 randomNumbers = randomNumberGenerator.generateRandomNumbers();
-                continue;
-            }
-            if (inputView.inputRestartOrExit() == 2) {
+            } else {
                 playOption = false;
             }
         }
