@@ -39,6 +39,7 @@ public class Game {
         while (true) {
 
             String input = inputNumbers();
+            validateInputNumbers(input);
 
             if (checkAnswer(input)) {
                 // 정답을 맞춰 게임 종료 문구 출력
@@ -54,11 +55,14 @@ public class Game {
 
         // 사용자에게 추측되는 정답을 입력 받음
         String input = Console.readLine();
+
+        return input;
+    }
+
+    private void validateInputNumbers(String input) {
         if (input.length() != 3) throw new IllegalArgumentException();
         if (!input.chars().allMatch(Character::isDigit)) throw new IllegalArgumentException();
         if (input.chars().distinct().count() != 3) throw new IllegalArgumentException();
-
-        return input;
     }
 
     private boolean checkAnswer(String input) {
