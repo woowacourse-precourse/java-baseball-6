@@ -6,14 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class playerService {
-    private static int NUMBER_MAXSIZE = 3;
-    private printGameMessage gameMessage = new printGameMessage();
+    private final printGameMessage gameMessage = new printGameMessage();
 
     public List<Integer> selectPlayerNumber() {
         gameMessage.inputNumberMessage();
         String playerNumber = Console.readLine();
 
-        if (playerNumber.length() > NUMBER_MAXSIZE) {
+        if (playerNumber.length() > gameConstant.NUMBER_MAXSIZE) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
 
