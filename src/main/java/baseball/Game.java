@@ -8,6 +8,7 @@ public class Game {
     private int gameFlag;
     private StringBuilder computerNumber;
     private StringBuilder userNumber;
+    private int[] scoreBoard = {0, 0};
 
     // 상수
     // 게임을 진행한다는 의미의 상수
@@ -29,9 +30,6 @@ public class Game {
 
     private static final int ASCII_FIRST_RANGE_NUMBER = 49;
     private static final int ASCII_LAST_RANGE_NUMBER = 57;
-
-
-    int[] scoreBoard = {0, 0};
     Game() {}
 
     /*
@@ -50,6 +48,39 @@ public class Game {
     private void setUserNumber(StringBuilder userNumber) {
         this.userNumber = userNumber;
     }
+
+    private void setScoreBoard() {
+        StringBuilder userNumber = this.getUserNumber();
+        StringBuilder computerNumber = this.getComputerNumber();
+        for(int i = 0; i < 3 ; i++) {
+            String userSubNum = userNumber.substring(i , i+1);
+            if(computerNumber.indexOf(userSubNum) > -1) {
+                if(computerNumber.substring(i, i+1).equals(userSubNum)) {
+                    this.scoreBoard[1]++;
+                } else {
+                    this.scoreBoard[0]++;
+                }
+            }
+        }
+    }
+    //
+
+    /* getter */
+    private StringBuilder getComputerNumber() {
+        return this.computerNumber;
+    }
+
+    private StringBuilder getUserNumber() {
+        return this.userNumber;
+    }
+
+    private int getGameFlag() {
+        return this.gameFlag;
+    }
+
+    private int[] getScoreBoard() {
+        return this.scoreBoard;
+    }
     //
 
     // scoreBoard 초기화 메소드
@@ -61,10 +92,6 @@ public class Game {
     // Print Method
     // System.out.print 함수 대신 사용
     private static void print(String content) {
-        System.out.print(content);
-    }
-
-    private static void print(StringBuilder content) {
         System.out.print(content);
     }
 
@@ -94,22 +121,9 @@ public class Game {
         this.initializeScoreBoard();
         print("숫자를 입력해주세요 : ");
         StringBuilder userNumber = new StringBuilder(Console.readLine());
-        print(userNumber);
+        print(userNumber+"\n");
         this.validationCheckUserNumber(userNumber);
         this.setUserNumber(userNumber);
-    }
-
-    private void setScoreBoard() {
-        for(int i = 0; i < 3 ; i++) {
-            String userSubNum = this.userNumber.substring(i , i+1);
-            if(this.computerNumber.indexOf(userSubNum) > -1) {
-                if(this.computerNumber.substring(i, i+1).equals(userSubNum)) {
-                    this.scoreBoard[1]++;
-                } else {
-                    this.scoreBoard[0]++;
-                }
-            }
-        }
     }
 
     private void validationCheckUserNumber(StringBuilder userNumber) {
@@ -119,37 +133,43 @@ public class Game {
         }
 
         for(int i = 0; i < 3 ; i++) {
-            if(!(userNumber.substring(i, i+1).charAt(0) >= ASCII_FIRST_RANGE_NUMBER && userNumber.substring(i, i+1).charAt(0) <= ASCII_LAST_RANGE_NUMBER)) {
+            char c = userNumber.substring(i, i+1).charAt(0);
+            if(!( c >= ASCII_FIRST_RANGE_NUMBER && c <= ASCII_LAST_RANGE_NUMBER)) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
     private void printGameResult() {
-        if(this.scoreBoard[1] == MAX_LENGTH) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        int[] scoreBoard = this.getScoreBoard();
+        int ball = scoreBoard[0];
+        int strike =scoreBoard[1];
+        int gameFlag = this.getGameFlag();
+
+        if(strike == MAX_LENGTH) {
+            print("3스트라이크\n");
+            print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
 
             // updateGameFlag
             this.updateGameFlag();
 
-            if(this.gameFlag == GAME_START) {
+            if(gameFlag == GAME_START) {
                 // generateComputerNumber();
                 this.generateComputerNumber();
             }
-        } else if(this.scoreBoard[0] + this.scoreBoard[1] == 0) {
-            System.out.println("낫싱");
-        } else if(this.scoreBoard[0] > 0 && this.scoreBoard[1] > 0) {
-            System.out.println(this.scoreBoard[0]+"볼 "+this.scoreBoard[1]+"스트라이크");
-        } else if(this.scoreBoard[0] > 0) {
-            System.out.println(this.scoreBoard[0]+"볼");
+        } else if(ball + strike == 0) {
+            print("낫싱\n");
+        } else if(ball > 0 && strike > 0) {
+            print(ball+"볼 "+strike+"스트라이크\n");
+        } else if(ball> 0) {
+            print(ball+"볼\n");
         } else {
-            System.out.println(this.scoreBoard[1]+"스트라이크");
+            print(ball+"스트라이크\n");
         }
     }
 
     private void updateGameFlag() {
-        print("게임을 새로 시작하려면 "+GAME_START+", 종료하려면 "+GAME_END+"를 입력해주세요.%n");
+        print("게임을 새로 시작하려면 "+GAME_START+", 종료하려면 "+GAME_END+"를 입력해주세요.\n");
         String gameFlag = Console.readLine();
         this.validationCheckReGame(gameFlag);
         this.setGameFlag(Integer.parseInt(gameFlag));
