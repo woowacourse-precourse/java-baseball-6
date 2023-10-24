@@ -32,13 +32,11 @@ public class NumberFormat {
      private static List<Integer> convertIntToDigitList(int num) {
           List<Integer> numberList = new ArrayList<>();
           while (num > 0){
-               numberList.add(num%10);
+               numberList.add(0, num%10);
                num/=10;
           }
 
           if (!validateFormat(numberList)) throw new NumberFormatException("자릿수 제약사향: " + DIGIT_CONSTRAINT);
-          Collections.reverse(numberList);
-
           return numberList;
      }
 
