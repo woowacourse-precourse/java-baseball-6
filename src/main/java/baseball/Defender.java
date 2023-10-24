@@ -10,7 +10,6 @@ public class Defender {
     private static int ballCount = 0;
     private static int strikeCount = 0;
 
-
     // 정답 생성 - 3자리 숫자
     public static void reroll() {
         target.setLength(0);
@@ -27,6 +26,11 @@ public class Defender {
         System.out.println(target); // 테스트용
     }
 
+    // 승리조건 확인
+    public static boolean isThreeStrikes() {
+        return strikeCount == 3;
+    }
+
     // 정답 확인하기 - 볼, 스트라이크, 낫싱 출력하기
     public static void printScore(String answer) {
         calculateBallCount(answer);
@@ -41,7 +45,7 @@ public class Defender {
     }
 
     // 정답 확인하기 - 볼
-    public static void calculateBallCount(String answer) {
+    private static void calculateBallCount(String answer) {
         ballCount = 0;
 
         // TODO: indent 정리(depth: 3)
@@ -58,7 +62,7 @@ public class Defender {
     }
 
     // 정답 확인하기 - 스트라이크
-    public static void calculateStrikeCount(String answer) {
+    private static void calculateStrikeCount(String answer) {
         strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -73,10 +77,4 @@ public class Defender {
             Score.append(String.format("%d스트라이크", strikeCount));
         }
     }
-
-    // 조건 확인
-    public static boolean isThreeStrikes() {
-        return strikeCount == 3;
-    }
-
 }

@@ -9,14 +9,14 @@ public class Session {
             System.out.print("숫자를 입력해주세요 : ");
             String answer = Console.readLine();
 
-            Validation.isValidAnswer(answer);
+            Validation.isValidAnswerTarget(answer);
             Defender.printScore(answer);
 
         } while (!endGame());
     }
 
     // 프로그램 종료하기
-    public static boolean endGame() {
+    private static boolean endGame() {
         boolean isRestart = false;
         String endMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
@@ -25,7 +25,7 @@ public class Session {
             String restart = Console.readLine();
 
             // TODO: Validation 클래스 이용
-            isRestart = Validation.isValidAnswer2(restart);
+            isRestart = Validation.isValidAnswerReset(restart);
         }
         return isRestart;
     }
