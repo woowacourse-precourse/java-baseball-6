@@ -53,6 +53,15 @@ class Baseball {
         //사용자 입력 값과 정답 비교(no.5)
         Score score = new Score();
         score.compareAnswer(answer, userAns);
+
+        //사용자의 점수(결과) 출력(no.6)
+        score.getScore();
+
+        //사용자가 정답을 맞추지 못했으면 no.2로 돌아가 다시 값 입력을 받기(no.7)
+        if (score.strike != LIMIT_DIGIT) {
+            Baseball.init(answer);
+            return;
+        }
     }
 
     private static String getUserInput() {
@@ -119,5 +128,24 @@ class Score {
             }
             this.ball++;
         }
+    }
+
+    void getScore() {
+        String score = "";
+        if (this.ball != 0) {
+            score += this.ball + BALL;
+        }
+        if (this.strike != 0) {
+            if (this.ball != 0) {
+                score += " ";
+            }
+            score += this.strike + STRIKE;
+        }
+
+        if (score.equals("")) {
+            score = NOTHING;
+        }
+
+        System.out.println(score);
     }
 }
