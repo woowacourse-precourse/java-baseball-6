@@ -50,6 +50,7 @@ public class Application {
 
     public static boolean exitGame(int[] result, int numLength) {
         if (result[1] == numLength) {
+            System.out.println("3 스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else if (result[0] == 0 && result[1] == 0) {
