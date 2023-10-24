@@ -2,19 +2,24 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 public class Game {
 
     Game() {
         System.out.println();
     }
 
-    private static boolean isDistinct(String x){
-        int []check = new int[10];
-        for(int i=0; i < 3; i++){
-            int k = check[x.charAt(i)-'0'];
-            if(k > 0)
+    private static boolean isDistinct(String x) {
+        int[] check = new int[10];
+        for (int i = 0; i < 3; i++) {
+            int k = check[x.charAt(i) - '0'];
+            if (k > 0) {
+                return false;
+            }
         }
+        return true;
     }
+
     private static int genearteRandomNumber() {
 
         return 1;
