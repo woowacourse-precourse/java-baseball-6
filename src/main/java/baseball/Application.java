@@ -2,14 +2,17 @@ package baseball;
 
 import static baseball.Result.STRIKE;
 import static baseball.Result.BALL;
-import static java.lang.System.out;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 숫자 야구 게임의 흐름을 제어하기 위한 클래스. 잘못된 입력값을 받을 경우 IllegalArgumentException을 던질 수 있습니다.
+ * 숫자 야구 게임의 흐름을 제어하기 위한 클래스.
+ * <p>
+ * 사용자에게 입력값을 받고 각 클래스에게 전달합니다. 각 클래스의 출력값을 사용자에게 전달합니다.
+ * <p>
+ * 잘못된 입력값을 받을 경우 IllegalArgumentException을 던질 수 있습니다.
  */
 public class Application {
     private static final int ANSWER_SIZE = 3;
@@ -21,7 +24,7 @@ public class Application {
         Player.upperBound = UPPER_BOUND;
         Player.lowerBound = LOWER_BOUND;
 
-        out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             play();
         } while (wantsReplay());
@@ -39,7 +42,7 @@ public class Application {
     }
 
     static List<Integer> readNumber() {
-        out.print("숫자를 입력해주세요: ");
+        System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
         int parsedInput = parseInt(input);
         validateRange(parsedInput);
@@ -82,26 +85,26 @@ public class Application {
 
     static void printResult(int[] result) {
         if (result[STRIKE.getIndex()] > 0 && result[BALL.getIndex()] > 0) {
-            out.printf("%d볼 %d스트라이크\n", result[BALL.getIndex()], result[STRIKE.getIndex()]);
+            System.out.printf("%d볼 %d스트라이크\n", result[BALL.getIndex()], result[STRIKE.getIndex()]);
         } else if (result[STRIKE.getIndex()] > 0) {
-            out.printf("%d스트라이크\n", result[STRIKE.getIndex()]);
+            System.out.printf("%d스트라이크\n", result[STRIKE.getIndex()]);
         } else if (result[BALL.getIndex()] > 0) {
-            out.printf("%d볼\n", result[BALL.getIndex()]);
+            System.out.printf("%d볼\n", result[BALL.getIndex()]);
         } else if (result[STRIKE.getIndex()] == 0 && result[BALL.getIndex()] == 0) {
-            out.println("낫싱");
+            System.out.println("낫싱");
         }
     }
 
     static boolean foundAnswer(int[] result) {
         if (result[STRIKE.getIndex()] == ANSWER_SIZE) {
-            out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", ANSWER_SIZE);
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", ANSWER_SIZE);
             return true;
         }
         return false;
     }
 
     static boolean wantsReplay() {
-        out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
