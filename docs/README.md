@@ -27,8 +27,8 @@
 - [ ] 확인하지 않은 유닛 테스트가 있는지 검토하기
   - [ ] Game 클래스
   - [x] Pitcher 클래스
-  - [ ] Referee 클래스
-  - ~~TargetNumber 클래스~~
+  - [x] Referee 클래스
+  - [x] TargetNumber 클래스
 - [ ] public 메서드 주석 추가하기
 - [ ] 리팩토링
 
