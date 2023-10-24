@@ -48,7 +48,7 @@
 <br/>
 
 ## 주의사항
-- [ ] Java 코드 컨벤션 가이드 준수
+- [x] Java 코드 컨벤션 가이드 준수
 - [x] `System.exit()` 호출 금지
 - [x] `ApplicationTest`의 모든 테스트 성공 여부
 - [x] `build.gradle` 변경 금지 및 외부 라이브러리 사용 금지
