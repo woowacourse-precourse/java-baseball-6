@@ -17,6 +17,7 @@ public class gameManage implements gameManageInterface {
         System.out.println("숫자 야구 게임을 시작합니다.");
         try {
             play();
+            playAgain();
         } catch (IllegalArgumentException e) {
             return;
         }
@@ -94,6 +95,20 @@ public class gameManage implements gameManageInterface {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
+        }
+    }
+
+    public void playAgain() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        while (true) {
+            int checkAgain = Integer.parseInt(Console.readLine());
+            if (checkAgain != PLAYAGAIN && checkAgain != EXITGAME) {
+                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+            }
+            if (checkAgain == EXITGAME) {
+                break;
+            }
+            play();
         }
     }
 }
