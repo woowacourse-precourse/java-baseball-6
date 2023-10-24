@@ -11,10 +11,9 @@ public class Input {
         return Console.readLine();
     }
 
-    public static int inputRegame() {
+    public static String inputRegame() {
         System.out.println(INPUT_REGAME_MESSAGE);
-        String inputData = Console.readLine();//validate필요
-        return Integer.parseInt(inputData);
+        return Console.readLine();
     }
 
 }
