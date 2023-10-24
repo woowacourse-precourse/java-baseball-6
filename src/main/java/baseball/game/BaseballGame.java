@@ -3,14 +3,16 @@ package baseball.game;
 
 import static baseball.utils.RandomNumberGenerator.generateRandomUniqueThreeNumbers;
 
+import baseball.io.UserIOHandler;
 import java.util.List;
 
 public class BaseballGame {
+    private final UserIOHandler userIOHandler = new UserIOHandler();
     private List<Integer> generatedNumbers;
     private GameState currentGameState = GameState.RUNNING;
 
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        userIOHandler.displayGameStartMessage();
         executeGameLoop();
     }
 
@@ -29,6 +31,7 @@ public class BaseballGame {
     private void playUntilRoundWon() {
         // todo: play until round won
     }
+
 
     private void promptForGameRestart() {
         // todo: prompt for game restart
