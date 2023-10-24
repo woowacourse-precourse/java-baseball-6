@@ -11,27 +11,23 @@ public class Inspection {
         game.playGame();
     }
     public void askForRestart() {
-        while (true) {
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            try {
-                String input = Console.readLine();
-                int choice = Integer.parseInt(input);
 
-                if (choice == 1) {
-                    Application.main(new String[0]); // main 재시작 명령
-                } else if (choice == 2) {
-                    System.out.print("게임을 종료합니다.");
-                    break;
-                } else {
-                    System.out.print("1 또는 2만 입력하세요.");
-                }
-            } catch (NoSuchElementException e) {
-                // NoSuchElementException 발생 시 처리
-                System.out.println("입력 오류: 값을 읽을 수 없습니다. 다시 시도하세요.");
-            } catch (NumberFormatException e) {
-                System.out.println("입력 오류: 올바른 숫자를 입력하세요.");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            String input = Console.readLine();
+            int choice = Integer.parseInt(input);
+            if (choice == 1) {
+                Application.main(new String[0]); // main 재시작 명령
+            } else if (choice == 2) {
+                System.out.print("게임을 종료합니다.");
+            } else {
+                System.out.print("1 또는 2만 입력하세요.");
             }
+        } catch (NoSuchElementException e) {
+            // NoSuchElementException 발생 시 처리
+            System.out.println("입력 오류: 값을 읽을 수 없습니다. 다시 시도하세요.");
         }
+
     }
     private boolean hasDuplicate(int[] userNumbers) {
         for (int i = 0; i < userNumbers.length - 1; i++) {

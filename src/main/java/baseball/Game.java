@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Game {
     Inspection inspection = new Inspection();
@@ -36,10 +38,17 @@ public class Game {
     }
 
     private void compPick() {
-        for (int i = 0; i < 3; i++) {
-            compArray[i] = Randoms.pickNumberInRange(1, 9);
+        Set<Integer> pickedNumbers = new HashSet<>();
+        while (pickedNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            pickedNumbers.add(randomNumber);
         }
 
+        int index = 0;
+        for (Integer number : pickedNumbers) {
+            compArray[index] = number;
+            index++;
+        }
     }
     private int[] calculateResult(int[] userNumbers) {
         int[] result = new int[2];
