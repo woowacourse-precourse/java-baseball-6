@@ -11,11 +11,19 @@
   - run 은 애플리케이션의 유지/종료를 담당한다. run 값이 true이면 애플리케이션이 계속 실행되고, false 이면 애플리케이션이 종료된다.
   - 재시작 입력을 받았다면 gameStart 메소드를 재실행한다. 
   - 종료 입력을 받았다면 애플리케이션을 종료한다. 
+### Balls
+야구공들의 숫자를 저장하고, 야구공들에 대한 처리를 한다.
+  - List<Integer> 타입의 컬렉션에 야구공들의 수를 저장한다.
+  - 생성자에서 Validation 클래스를 이용해 입력을 검증한다.
+  - 생성자에서 Converter 클래스를 이용해 입력을 변환한다.
 ### BaseballGame
 사용자의 입출력을 전담한다.
 - gameStart 메소드
+  - 컴퓨터 난수를 생성한다.
+    - GenerateRandomNumber 객체를 이용한다. 
+    - 컴퓨터 난수는 정수형 리스트 List<Integer>에 저장되어 Balls 객체로 만들어진다. 
   - 사용자로부터 숫자 야구 게임을 위한 입력을 받는다.
-    - 사용자 입력은 정수형 리스트인 List<Integer> 로 받는다.
+    - 사용자 입력은 정수형 리스트인 List<Integer> 로 받아 Balls 객체로 만든다.
   - 사용자에게 숫자 야구 게임의 결과를 출력한다.
   - return 타입은 boolean 이다. 
 - restartOrEnd 메소드
