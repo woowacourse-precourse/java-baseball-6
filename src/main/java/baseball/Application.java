@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -68,7 +67,7 @@ public class Application {
             String input = Console.readLine();
             if (input.length() != 3) {
                 System.out.println("3자리 숫자를 입력하세요.");
-                continue;
+                throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
             }
 
             boolean validInput = true;
@@ -76,8 +75,7 @@ public class Application {
                 char c = input.charAt(i);
                 if (c < '1' || c > '9') {
                     System.out.println("1부터 9 사이의 숫자만 입력하세요.");
-                    validInput = false;
-                    break;
+                    throw new IllegalArgumentException("1부터 9 사이의 숫자만 입력하세요.");
                 }
                 userGuess[i] = c - '0';
             }
@@ -122,3 +120,4 @@ public class Application {
         return true;
     }
 }
+
