@@ -24,7 +24,7 @@ public class Referee {
 
         if (scoreResult.getStrikeCount() == 3) {
             this.gameStatus = GameStatus.WIN;
-            System.out.println(scoreResult.getStrikeCount()+PointStatus.STRIKE.getDescription());
+            System.out.println(scoreResult.getStrikeCount() + PointStatus.STRIKE.getDescription());
             return;
         }
 

@@ -41,7 +41,7 @@ class NumberPickerTest {
                 .isInstanceOf(IllegalCountException.class);
 
         Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("ssss"))
-            .isInstanceOf(IllegalTypeException.class);
+                .isInstanceOf(IllegalTypeException.class);
     }
 
     @Test

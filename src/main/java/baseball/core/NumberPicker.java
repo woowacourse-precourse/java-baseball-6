@@ -53,10 +53,10 @@ public class NumberPicker {
         }
     }
 
-    private static void privateDuplicate(String[] stringBeforeNumber){
-        for(int i= 0; i<NumberSize.MAX_SIZE.getSize(); i++){
-            for(int j = i+1; j<NumberSize.MAX_SIZE.getSize();j++){
-                if(stringBeforeNumber[i].equals(stringBeforeNumber[j])){
+    private static void privateDuplicate(String[] stringBeforeNumber) {
+        for (int i = 0; i < NumberSize.MAX_SIZE.getSize(); i++) {
+            for (int j = i + 1; j < NumberSize.MAX_SIZE.getSize(); j++) {
+                if (stringBeforeNumber[i].equals(stringBeforeNumber[j])) {
                     throw new IllegalDuplicateException();
                 }
             }

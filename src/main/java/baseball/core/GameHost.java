@@ -5,20 +5,19 @@ import baseball.core.participant.Opponent;
 import baseball.core.participant.Player;
 import baseball.core.rule.PickedNumbers;
 import baseball.core.rule.RuleV1;
+import baseball.exception.IllegalTypeException;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameHost {
-    private final Player player;
-    private final Opponent opponent;
-    private final Referee referee;
 
+    private final Player player;
+    private final Referee referee;
     private final List<Integer> opponentNumberList;
 
 
     protected GameHost(Player player, Opponent opponent, Referee referee) {
         this.player = player;
-        this.opponent = opponent;
         this.referee = referee;
         this.opponentNumberList = opponent.pickNumber();
     }
@@ -45,16 +44,13 @@ public class GameHost {
     }
 
     private GameStatus playRound() {
-        //List<Integer> opponentNumberList = opponent.pickNumber();
-        System.out.println("opponentNumberList = " + opponentNumberList);
-
         System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
-        System.out.println("playerInput = " + playerInput);
 
         List<Integer> playerNumberList = player.pickNumber(playerInput);
 
-        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList, playerNumberList);
+        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList,
+                playerNumberList);
         referee.checkPoint(pickedNumbers);
 
         return referee.getGameStatus();
@@ -72,9 +68,9 @@ public class GameHost {
             Console.close();
         } else {
             System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
+            throw new IllegalTypeException();
         }
     }
-
 
 
 }

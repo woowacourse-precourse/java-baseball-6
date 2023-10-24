@@ -9,7 +9,7 @@ public class ScoreResult {
         strikeCount++;
     }
 
-     void addBall() {
+    void addBall() {
         ballCount++;
     }
 
@@ -34,11 +34,4 @@ public class ScoreResult {
         return ballCount;
     }
 
-    @Override
-    public String toString() {
-        return "ScoreResult{" +
-            "strikeCount=" + strikeCount +
-            ", ballCount=" + ballCount +
-            '}';
-    }
 }

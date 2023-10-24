@@ -3,10 +3,12 @@ package baseball.core.rule;
 import java.util.List;
 
 public class PickedNumbers {
+
     private final List<Integer> opponentNumberList;
     private final List<Integer> playerNumberList;
 
-    public static PickedNumbers createPickedNumbers(List<Integer> opponentNumberList, List<Integer> playerNumberList) {
+    public static PickedNumbers createPickedNumbers(List<Integer> opponentNumberList,
+        List<Integer> playerNumberList) {
         return new PickedNumbers(opponentNumberList, playerNumberList);
     }
 

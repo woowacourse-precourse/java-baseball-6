@@ -15,7 +15,8 @@ class RefereeTest {
     void oneBallOneStrike() {
         List<Integer> opponentNumberList = List.of(1, 2, 3);
         List<Integer> playerNumberList = List.of(1, 3, 4);
-        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList, playerNumberList);
+        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList,
+                playerNumberList);
 
         Referee referee = new Referee(RuleV1.makeScoreStrategy());
         referee.checkPoint(pickedNumbers);
@@ -28,7 +29,8 @@ class RefereeTest {
     void threeStrike() {
         List<Integer> opponentNumberList = List.of(1, 2, 3);
         List<Integer> playerNumberList = List.of(1, 2, 3);
-        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList, playerNumberList);
+        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList,
+                playerNumberList);
 
         Referee referee = new Referee(RuleV1.makeScoreStrategy());
         referee.checkPoint(pickedNumbers);
