@@ -39,11 +39,6 @@ public class BallUtils {
         return false;
     }
 
-
-    public List<Integer> getBalls() {
-        return computer;
-    }
-
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
@@ -72,6 +67,6 @@ public class BallUtils {
             startGame();
             return false;
         }
-        throw new IllegalArgumentException("게임을 새로 시작하는 명령어는 1 혹은 2 입니다.");
+        throw new IllegalArgumentException("1이나 2가 아닌 수가 검증을 통과하였습니다.");
     }
 }
