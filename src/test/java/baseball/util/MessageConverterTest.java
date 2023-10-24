@@ -45,4 +45,10 @@ class MessageConverterTest {
         Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(1, 7, 2));
         assertEquals(messageConverter.getResultMessageToString(testMap), "1볼 1스트라이크");
     }
+
+    @Test
+    void 낫싱_출력() {
+        Map<String, Integer> testMap = messageConverter.getResultMessage(List.of(1, 2, 3), List.of(8, 6, 9));
+        assertEquals(messageConverter.getResultMessageToString(testMap), "낫싱");
+    }
 }
