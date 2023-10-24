@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Computer {
 
@@ -45,8 +46,22 @@ public class Computer {
         if (isNaN(input) || isNotUnique(input) || isNotNaturalNumber(input) || input.length() != 3) {
             throw new IllegalArgumentException();
         }
-        long count = input.chars().filter(c -> containsDigit(targetNumber, c)).count();
-        return count + Prompt.BALL.getMessage();
+        int[] candidates = candidateNumbers(input, targetNumber);
+        int numberOfStrikes = numberOfStrikes(targetNumber, input, candidates);
+        int numberOfBalls = candidates.length - numberOfStrikes;
+        return Prompt.printResult(numberOfBalls, numberOfStrikes);
+    }
+
+    private int[] candidateNumbers(String input, String targetNumber) {
+        return input.chars().filter(c -> containsDigit(targetNumber, c)).toArray();
+    }
+
+    private int numberOfStrikes(String targetNumber, String input, int[] numbers) {
+        return (int) Arrays.stream(numbers).filter(c -> isOnSamePosition(targetNumber, input, c)).count();
+    }
+
+    private boolean isOnSamePosition(String targetNumber, String input, int ch) {
+        return targetNumber.indexOf(ch) == input.indexOf(ch);
     }
 
     /**

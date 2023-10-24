@@ -123,10 +123,41 @@ public class UnitTest {
             @Test
             void 쓰리볼() {
                 String targetNumber = "123";
-                String input = "321";
+                String input = "231";
                 String result = computer.evaluate(input, targetNumber);
 
                 assertEquals("3볼", result);
+            }
+        }
+
+        @Nested
+        @DisplayName("숫자가 포함 되어 있고 자리도 같은 경우 스트라이크.")
+        class StrikeTest {
+            @Test
+            void 원스트라이크() {
+                String targetNumber = "123";
+                String input = "145";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("1스트라이크", result);
+            }
+
+            @Test
+            void 투스트라이크() {
+                String targetNumber = "123";
+                String input = "124";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("2스트라이크", result);
+            }
+
+            @Test
+            void 쓰리스트라이크() {
+                String targetNumber = "123";
+                String input = "123";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("3스트라이크", result);
             }
         }
     }
