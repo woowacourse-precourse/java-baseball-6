@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Compare {
+public class CompareResult {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";

@@ -1,18 +1,17 @@
 package baseball;
 
-import baseball.logic.Compare;
+import baseball.logic.CompareResult;
 import baseball.logic.ComputerCreateRandomNumber;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class Application {
     private final ComputerCreateRandomNumber createRandomNumber;
-    private final Compare compare;
+    private final CompareResult compare;
 
     public Application() {
         this.createRandomNumber = new ComputerCreateRandomNumber();
-        this.compare = new Compare();
+        this.compare = new CompareResult();
     }
 
     // 숫자 야구 게임 실행. 재시작이 false가 되면 종료
@@ -57,8 +56,7 @@ public class Application {
 
         if (againGame == 2) {
             return false;
-        }
-        else if (againGame != 1) {
+        } else if (againGame != 1) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
 

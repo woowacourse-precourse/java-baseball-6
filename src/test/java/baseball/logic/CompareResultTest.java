@@ -1,23 +1,23 @@
 package baseball.logic;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
+class CompareResultTest {
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CompareTest {
-
-    private Compare compare;
+    private CompareResult compareResult;
 
     @BeforeEach
     void setUp() {
-        compare = new Compare();
+        compareResult = new CompareResult();
     }
 
     @DisplayName("같은 수가 같은 자리에 있을 때 스트라이크 확인 테스트")
@@ -28,7 +28,7 @@ class CompareTest {
         List<Integer> computerInput = List.of(4, 2, 5);
 
         // when
-        String result = compare.getGameResult(computerInput, userInput);
+        String result = compareResult.getGameResult(computerInput, userInput);
 
         // then
         assertTrue(result.contains(expectedStrikes + "스트라이크"));
@@ -42,7 +42,7 @@ class CompareTest {
         List<Integer> computerInput = List.of(4, 2, 5);
 
         // when
-        String result = compare.getGameResult(computerInput, userInput);
+        String result = compareResult.getGameResult(computerInput, userInput);
 
         // then
         assertTrue(result.contains(expectedBall + "볼"));
@@ -56,7 +56,7 @@ class CompareTest {
         List<Integer> computerInput = List.of(4, 2, 5);
 
         // when
-        String result = compare.getGameResult(computerInput, userInput);
+        String result = compareResult.getGameResult(computerInput, userInput);
 
         // then
         assertTrue(result.equals("낫싱"));
@@ -71,7 +71,7 @@ class CompareTest {
 
         // when
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
-            compare.getGameResult(computerInput, userInput);
+            compareResult.getGameResult(computerInput, userInput);
         });
 
         // then
@@ -87,7 +87,7 @@ class CompareTest {
 
         // when
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
-            compare.getGameResult(computerInput, userInput);
+            compareResult.getGameResult(computerInput, userInput);
         });
 
         // then
