@@ -1,4 +1,6 @@
-package baseball.ball;
+package baseball.model;
+
+import baseball.model.ball.BallStatus;
 
 public class SwingResult {
     int strikeCount = 0 ;

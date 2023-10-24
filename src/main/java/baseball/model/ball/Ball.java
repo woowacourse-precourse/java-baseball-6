@@ -1,4 +1,4 @@
-package baseball.ball;
+package baseball.model.ball;
 
 import java.util.Objects;
 

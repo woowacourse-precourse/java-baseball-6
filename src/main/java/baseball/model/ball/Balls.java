@@ -1,5 +1,6 @@
-package baseball.ball;
+package baseball.model.ball;
 
+import baseball.model.SwingResult;
 import java.util.ArrayList;
 import java.util.List;
 

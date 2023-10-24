@@ -1,4 +1,4 @@
-package baseball.ball;
+package baseball.model.ball;
 
 public enum BallStatus {
     STRIKE, BALL, NOTHING;
