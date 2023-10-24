@@ -1,10 +1,7 @@
-package baseball.game;
+package baseball;
 
-import baseball.score.Score;
-import baseball.userNumber.UserNumber;
+import baseball.util.RandomNumber;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class Game {
 
@@ -12,6 +9,11 @@ public class Game {
     private static final String GAME_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String NEW_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public void start() {
+        printStartMessage();
+        playGame();
+    }
 
     public static void printStartMessage() {
         System.out.println(GAME_START_MESSAGE);
@@ -25,17 +27,18 @@ public class Game {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void doGame(List<Integer> computerNumber) {
+    public void playGame() {
         while (true) {
-            printInputMessage();
-            List<Integer> input = UserNumber.getUserNumber();
-            if (Score.checkScore(input, computerNumber)) {
+            BaseBall baseball = new BaseBall(RandomNumber.createRandomNumber());
+            baseball.playBaseBallGame();
+            successGame();
+            if (!newGame()) {
                 break;
             }
         }
     }
 
-    public static boolean newGame() {
+    public boolean newGame() {
         System.out.println(NEW_GAME_MESSAGE);
         String input = Console.readLine();
         if (input.equals("1")) {
