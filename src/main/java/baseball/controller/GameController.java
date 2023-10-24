@@ -1,62 +1,34 @@
 package baseball.controller;
 
-import baseball.constant.GameConstant;
-import baseball.model.Computer;
-import baseball.model.Player;
-import baseball.util.StrikeAndBallCounter;
-import baseball.view.ComputerView;
-import baseball.view.InputView;
-import java.util.ArrayList;
-import java.util.List;
+import baseball.model.Answer;
+import baseball.model.Referee;
+import baseball.model.dto.PlayerDto;
+import baseball.model.dto.ResultDto;
+import baseball.view.GameView;
+import baseball.view.PlayerView;
+import baseball.view.RefereeView;
 
 public class GameController {
 
-    private final InputView inputView = new InputView();
-    private final ComputerView computerView = new ComputerView();
-    private Player player = new Player();
-    private Computer computer = new Computer();
-    private List<Integer> strikeAndBall = new ArrayList<>();
-    private Boolean isGameOver = false;
+    private final PlayerView playerView = new PlayerView();
+    private final RefereeView refereeView = new RefereeView();
+    private final GameView gameView = new GameView();
 
     public void startGame() {
-        computer.setComputerGameNumber();
+        Referee referee = new Referee(Answer.generate());
 
-        while (!isGameOver) {
-            getPlayerInput();
-            countBallAndStrike();
-            printGameResult();
+        while (referee.keepGoing()) {
+            PlayerDto playerDto = new PlayerDto(playerView.getPlayerInput());
+            ResultDto resultDto = referee.decidesResult(playerDto);
+            refereeView.printResult(resultDto);
         }
-    }
 
-    private void getPlayerInput() {
-        player.setPlayerGameNumber(inputView.getPlayerInput());
-    }
-
-    private void countBallAndStrike() {
-        strikeAndBall = StrikeAndBallCounter.countStrikeAndBall(player.getPlayerGameNumber(),
-                computer.getComputerGameNumber());
-    }
-
-    private void printGameResult() {
-        if (strikeAndBall.get(GameConstant.STRIKE_INDEX) == GameConstant.THREE_STRIKE) {
-            computerView.printWinResult();
-            askRestart();
-        } else if (strikeAndBall.get(GameConstant.STRIKE_INDEX) != GameConstant.THREE_STRIKE) {
-            computerView.printLostResult(strikeAndBall);
-        }
-    }
-
-    private void askRestart() {
-        Integer restart = inputView.getRestart();
-        if (restart == 1) {
-            isGameOver = false;
-            computer.setComputerGameNumber();
-        } else if (restart == 2) {
-            isGameOver = true;
+        if (gameView.restart()) {
+            startGame();
         }
     }
 
     public GameController() {
-        computerView.printGameStart();
+        gameView.printGameStart();
     }
 }
