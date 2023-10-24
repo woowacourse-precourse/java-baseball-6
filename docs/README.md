@@ -27,167 +27,29 @@
 - 사용자 입력에서 정수가 아닌 다른 문자열을 입력했을 때의 오류 발생 상황
 - 사용자 입력에서의 중복값과 0을 입력했을 때의 오류 발생 상황 추가
 
-## ✅  Application.java 구조 Ver.1
-```java
-// Main Application
-public class Application {
-  public static void main(String[] args) throws IllegalArgumentException {
-    // TODO: 프로그램 구현
-    BaseballGame Game = new BaseballGame();
-    Game.Run();
-  }
-};
-
-// 야구 게임의 클래스 선언
-Class BaseballGame{
-
-    // 메서드 ( Method )
-    
-    // 게임 실행부 
-    public void Run(){};
-
-    // 사용자의 숫자 입력을 받는 부분
-    public void GetUser(){};
-    
-    // 컴퓨터가 자신의 랜덤 숫자 3가리를 선정하는 부분
-    public void GetComputer(){};
-    
-    // 스트라이크 점수를 추가하는 함수
-    public void AddStrike(){};
-    
-    // 볼 점수를 추가하는 함수
-    public void AddBall(){};
-    
-    // 점수를 초기화 하는 함수
-    public void ClearScore(){};
-    
-    // 두개의 숫자에 대해 점수 계산을 진행하는 함수
-    public void CheckNumber(){};
-    
-    // 점수를 확인하고 출력 및 종료와 재시작 여부를 판단하는 코드
-    public void CheckScore(){};
-    
-    // 게임 종료시 유저에게 1과 2를 입력받는 함수
-    public void CheckEnd(){};
-    
-}
-```
-
-## ✅  Application.java 구조 Ver.2
-```java
-public class Application {
-  public static void main(String[] args) throws IllegalArgumentException {
-    // TODO: 프로그램 구현
-    BaseballGameManager newGame = new BaseballGameManager();
-    newGame.start();
-  }
-};
-
-class BaseballGameManager{
-    
-    // 야구 게임을 시작합니다.
-    public void startGame(){
-    };
-    
-    // 유저에게 숫자를 입력받습니다.
-    public void getUserNumberInput(){
-    };
-    
-    // 게임의 재시작 여부를 입력받습니다.
-    public void getGameFinishInput() {
-    };
+### 3️⃣ 2023-10-23
+- Model의 내부 변수들 캡슐화를 위해 private로 선언
 
 
-}
-class BaseballGame {
-
-    // 컴퓨터가 사용할 숫자를 저장할 리스트
-    List<Integer> computerNumbers = new ArrayList<>();
-
-    // 유저가 사용할 숫자를 저장할 리스트
-    List<Integer> userNumbers = new ArrayList<>();
-
-    // 스트라이크 갯수
-    int strikeCount;
-
-    // 볼 갯수
-    int ballCount;
-
-    // 게임 종료 여부를 확인하기 위한 정수
-    int gameFinish;
-
-    // User가 입력한 userRoundNumber가 길이가 3인지 확인합니다.
-    public boolean checkUserInputlength(String userInput){
-    } 
-    
-    // userNumber Array에 숫자를 삽입합니다.
-    public void addUserNumber(int userNumber){
-    }
-    
-    // userNumber Array를 초기화합니다.
-    public void resetUserNumber(){
-    }
-
-    // 유저가 입력한 숫자에서 중복값을 확인
-    public void checkUserForDuplicates() {
-    }
-
-    // 컴퓨터가 게임에 사용할 숫자를 새로 갱신합니다.
-    public void generateComputerNumbers() {
-    }
-
-    // 스트라이크 갯수를 증가시킵니다.
-    public void incrementStrikeCount() {
-    }
-
-    // 볼 갯수를 증가시킵니다.
-    public void incrementBallCount() {
-    }
-
-    // 스트라이크와 볼 갯수를 초기화합니다.
-    public void resetScores() {
-    }
-
-    // Strike의 갯수를 반환합니다.
-    public int getStrikeCount() {
-    }
-
-    // Ball의 갯수를 반환합니다.
-    public int getBallCount() {
-    }
-
-}
+- 하나의 Method내에서 여러가지 기능을 하는 함수 쪼개기
+  - `model.generateComputerNumbers();`
+  - `model.calculateScore();`
 
 
-class OutputView{
-    
-    // 게임의 시작 문구를 출력합니다.
-    public void startGameAnnouncement(){
-    }
-    
-    // 유저에게 숫자를 입력해달라는 문구를 출력합니다.
-    public void promptUserForRoundGuess() {
-    }
+- 입력값의 크기 상수화
 
-    // 매 라운드의 숫자 야구에서 스트라이크를 출력합니다.
-    public void printStrike(int strikeCount) {
-    }
+   `public static final int *ROUND_SIZE* = 3;`
 
-    // 매 라운드의 숫자 야구에서 볼을 출력합니다.
-    public void printBall(int ballCount) {
-    }
+   `public static final int *FINISH_SIZE* = 1;`
 
-    // 매 라운드의 숫자 야구에서 아무 것도 출력하지 않습니다.
-    public void printNothing() {
-    }
+   `public static final int *GAME_FINISH* = 2;`
 
-    // 매 라운드의 숫자 야구에서 스트라이크와 볼을 출력합니다.
-    public void printBoth(int strikeCount, int ballCount) {
-    }
+   `public static final int *GAME_RESTART* = 1;`
 
 
-};
-```
+- 함수의 순서 변경
+  - 코드의 가독성을 높이기 위해 함수들의 순서를 일부 수정합니다.
+
 
 ## ✅  Application.java 구조 Ver.3
 ```java
