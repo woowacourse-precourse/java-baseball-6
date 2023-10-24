@@ -46,6 +46,16 @@ public class Application {
         return ballCount;
     }
 
+    public static boolean isDigitNumber(String userInput) {
+        boolean digitNumber = true;
+
+        for (int i = 0; i < userInput.length(); i++) {
+            digitNumber = Character.isDigit(userInput.charAt(i));
+        }
+
+        return digitNumber;
+    }
+
     public static boolean isNumber(List<Integer> threeNumber) {
         Integer indexZero = threeNumber.get(0);
         Integer indexOne = threeNumber.get(1);
