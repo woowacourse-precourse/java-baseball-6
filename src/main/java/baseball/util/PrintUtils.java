@@ -3,6 +3,9 @@ package baseball.util;
 import baseball.enums.Message;
 
 public class PrintUtils {
+    private PrintUtils() {
+    }
+
     public static void println(String message) {
         System.out.println(message.trim());
     }
