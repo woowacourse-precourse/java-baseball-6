@@ -10,11 +10,11 @@ public class ScoreKeeper {
         return strikeCount == 3;
     }
 
-    // 정답 확인하기 - 볼, 스트라이크, 낫싱 출력하기
+    // 정답 확인하기 - 볼, 스트라이크, 낫싱 출력
     public static void printScore(String answer) {
         calculateBallCount(answer);
         calculateStrikeCount(answer);
-        
+
         if (ballCount == 0 && strikeCount == 0) {
             Score.append("낫싱");
         }
@@ -22,7 +22,7 @@ public class ScoreKeeper {
         Score.setLength(0);
     }
 
-    // 정답 확인하기 - 볼
+    // 점수 계산하기 - 볼
     private static void calculateBallCount(String answer) {
         ballCount = 0;
 
@@ -39,7 +39,7 @@ public class ScoreKeeper {
         }
     }
 
-    // 정답 확인하기 - 스트라이크
+    // 점수 계산하기 - 스트라이크
     private static void calculateStrikeCount(String answer) {
         strikeCount = 0;
 
