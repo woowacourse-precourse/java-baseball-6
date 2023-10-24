@@ -4,6 +4,7 @@ public class Constants {
     public final static int COUNT = 3;
     public final static int MIN_RANGE = 1;
     public final static int MAX_RANGE = 9;
+    public final static String MATCH = "^[1-9]+$";
     public final static String STRIKE = "스트라이크";
     public final static String BALL = "볼";
     public final static String NOTHING = "낫싱";

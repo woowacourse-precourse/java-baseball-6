@@ -40,8 +40,12 @@ public class Controller {
             throw new IllegalArgumentException("numbers cannot be empty");
         }
 
-        if (input.length() != COUNT || !input.matches("^[1-9]+$")) {
-            throw new IllegalArgumentException("Only " + COUNT + " numbers required");
+        if (input.length() != COUNT) {
+            throw new IllegalArgumentException("numbers have wrong in length");
+        }
+
+        if (!input.matches(MATCH)) {
+            throw new IllegalArgumentException("numbers cannot be out of range");
         }
 
         Set<Character> set = new HashSet<>();
