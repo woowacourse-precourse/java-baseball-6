@@ -22,7 +22,8 @@ class ScoreCalculatorTest {
         Score score = scoreCalculator.calculateScore(playerNumbers, answer);
 
         // then
-        assertThat(score.toString()).isEqualTo(expected.toString());
+        assertThat(score.getBall()).isEqualTo(expected.getBall());
+        assertThat(score.getStrike()).isEqualTo(expected.getStrike());
         assertThat(score.isThreeStrike()).isEqualTo(true);
     }
 
@@ -37,7 +38,8 @@ class ScoreCalculatorTest {
         Score score = scoreCalculator.calculateScore(playerNumbers, answer);
 
         // then
-        assertThat(score.toString()).isEqualTo(expected.toString());
+        assertThat(score.getBall()).isEqualTo(expected.getBall());
+        assertThat(score.getStrike()).isEqualTo(expected.getStrike());
         assertThat(score.isThreeStrike()).isEqualTo(false);
     }
 
@@ -52,7 +54,8 @@ class ScoreCalculatorTest {
         Score score = scoreCalculator.calculateScore(playerNumbers, answer);
 
         // then
-        assertThat(score.toString()).isEqualTo(expected.toString());
+        assertThat(score.getBall()).isEqualTo(expected.getBall());
+        assertThat(score.getStrike()).isEqualTo(expected.getStrike());
         assertThat(score.isThreeStrike()).isEqualTo(false);
     }
 
@@ -67,7 +70,8 @@ class ScoreCalculatorTest {
         Score score = scoreCalculator.calculateScore(playerNumbers, answer);
 
         // then
-        assertThat(score.toString()).isEqualTo(expected.toString());
+        assertThat(score.getBall()).isEqualTo(expected.getBall());
+        assertThat(score.getStrike()).isEqualTo(expected.getStrike());
         assertThat(score.isThreeStrike()).isEqualTo(false);
     }
 }

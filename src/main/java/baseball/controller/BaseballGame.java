@@ -27,7 +27,7 @@ public class BaseballGame {
             GameNumbers playerNumbers = new GameNumbers(input.parseInputToIntegerList());
 
             Score score = ScoreCalculator.calculateScore(playerNumbers, answer);
-            OutputView.println(score.toString());
+            OutputView.printScore(score.getBall(), score.getStrike());
             checkThreeStrike(score);
         }
         OutputView.println(EXIT_GAME_MESSAGE.getMessage());
