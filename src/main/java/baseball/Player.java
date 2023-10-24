@@ -1,10 +1,16 @@
 package baseball;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    public List<String> convertStringToList(String playerInput) {
-        return Arrays.asList(playerInput.split(""));
+    public List<Character> convertStringToList(String playerInput) {
+        List<Character> playerInputCharList = new ArrayList<>();
+
+        for (char ch : playerInput.toCharArray()) {
+            playerInputCharList.add(ch);
+        }
+
+        return playerInputCharList;
     }
 }
