@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.model.PlayerAnswer;
-
 public class GameView {
 
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
