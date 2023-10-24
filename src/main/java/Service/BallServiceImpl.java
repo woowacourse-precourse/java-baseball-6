@@ -62,7 +62,6 @@ public class BallServiceImpl implements BallService {
         if (!isValidation(ballCount)) {
             throw new IllegalArgumentException("Wrong Input!!");
         }
-        System.out.println("랜덤" + randomNumber);
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3; i++) {
