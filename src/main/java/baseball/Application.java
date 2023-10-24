@@ -50,4 +50,26 @@ public class Application {
         if(input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2)
                 || input.charAt(0) == input.charAt(2)) throw new IllegalArgumentException();
     }
+
+    // 볼(같은 수가 다른 자리에 있는 경우) 체크
+    public static int countBall(List<Integer> computer, List<Integer> user) {
+        int ball = 0;
+        for(int i=0; i<3; i++) {
+            if(computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    // 스트라이크(같은 수가 같은 자리에 있는 경우) 체크
+    public static int countStrike(List<Integer> computer, List<Integer> user) {
+        int strike = 0;
+        for(int i=0; i<3; i++) {
+            if(computer.get(i).equals(user.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
