@@ -3,9 +3,9 @@ package baseball;
 import java.util.List;
 
 public class BaseBallGameManager {
-    private User user = new User();
-    private Computer computer = new Computer();
-    private BaseballGame baseballGame = new BaseballGame();
+    private final User user = new User();
+    private final Computer computer = new Computer();
+    private final BaseballGame baseballGame = new BaseballGame();
     private boolean roundResult = false;
 
     public void startGame() {
