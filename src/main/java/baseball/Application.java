@@ -12,14 +12,16 @@ public class Application {
 
         while (true) {
             List<Integer> computer = generateComputerNumber();
+            int attempts = 0;
 
             while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
                 String userGuess = getUserInput();
                 List<Integer> userNumbers = parseUserInput(userGuess);
 
                 if (!isValidInput(userNumbers)) {
-
-                    return;
+                    System.out.println("유효하지 않은 입력입니다. 1부터 9까지 서로 다른 3자리 숫자를 입력하세요.");
+                    continue;
                 }
 
                 int[] result = calculateResult(computer, userNumbers);
@@ -30,10 +32,12 @@ public class Application {
                     break;
                 }
 
+                attempts++;
             }
 
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-            if (getUserInput().equals("2")) {
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            String restartInput = getUserInput();
+            if (restartInput.equals("2")) {
                 break;
             }
         }
@@ -52,12 +56,11 @@ public class Application {
 
     private static String getUserInput() {
         String userInput;
-        while (true) {
-            System.out.print("숫자를 입력해주세요: ");
+        do {
             userInput = Console.readLine();
             if (userInput.equals("exit")) {
                 System.out.println("게임 종료");
-                break; // "exit" 입력일 경우 루프를 종료합니다.
+                break;
             }
             try {
                 validateUserInput(userInput);
@@ -65,9 +68,8 @@ public class Application {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 return userInput;
-                // 유효하지 않은 입력에 대한 예외를 처리하고 현재 루프를 종료합니다.
             }
-        }
+        } while (true);
         return userInput;
     }
 
