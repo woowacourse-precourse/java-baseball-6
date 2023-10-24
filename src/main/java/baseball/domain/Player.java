@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class Player {
     private String playerNumber;
+    private int retryNumber;
 
     public Player() {
     }
@@ -15,6 +16,16 @@ public class Player {
         isDigitPlayerNumber(playerNumber);
         isDifferentPlayerNumber(playerNumber);
         this.playerNumber = playerNumber;
+    public Player(int retryNumber) {
+        this.retryNumber = retryNumber;
+    }
+
+    public void setRetryNumber(int retryNumber) {
+        this.retryNumber = retryNumber;
+    }
+
+    public int getRetryNumber() {
+        return retryNumber;
     }
 
     public String getPlayerNumber() {
