@@ -1,13 +1,13 @@
 package baseball.model;
 
+import static baseball.util.AppConstants.BALLS_SIZE;
+import static baseball.util.AppConstants.BALLS_SIZE_MESSAGE;
+import static baseball.util.AppConstants.NO_REPEAT_MESSAGE;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserBalls {
-    private static final int BALLS_SIZE = 3;
-    private static final String NO_REPEAT_MESSAGE = "입력값은 중복되지 않는 3자리 숫자여야 합니다.";
-    private static final String BALLS_SIZE_MESSAGE = "입력값은 " + BALLS_SIZE + "자리 숫자여야 합니다.";
-
     private final List<Ball> userBalls;
 
     public UserBalls(String input) {

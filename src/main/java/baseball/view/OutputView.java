@@ -1,12 +1,12 @@
 package baseball.view;
 
-public class OutputView {
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String STRIKE_MESSAGE = "스트라이크";
-    private static final String BALL_MESSAGE = "볼";
-    private static final String NOTHING_MESSAGE = "낫싱";
-    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+import static baseball.util.AppConstants.BALL_MESSAGE;
+import static baseball.util.AppConstants.GAME_END_MESSAGE;
+import static baseball.util.AppConstants.NOTHING_MESSAGE;
+import static baseball.util.AppConstants.START_MESSAGE;
+import static baseball.util.AppConstants.STRIKE_MESSAGE;
 
+public class OutputView {
     public static void startGame() {
         System.out.println(START_MESSAGE);
     }

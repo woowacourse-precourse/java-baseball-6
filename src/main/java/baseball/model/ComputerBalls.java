@@ -1,12 +1,13 @@
 package baseball.model;
 
+import static baseball.util.AppConstants.BALLS_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class ComputerBalls {
-    private static final int BALLS_SIZE = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 

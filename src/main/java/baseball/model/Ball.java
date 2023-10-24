@@ -1,13 +1,14 @@
 package baseball.model;
 
+import static baseball.util.AppConstants.INT_MAX_NUMBER;
+import static baseball.util.AppConstants.INT_MIN_NUMBER;
+import static baseball.util.AppConstants.OUT_OF_RANGE_MESSAGE;
+
 import java.util.Objects;
 
 public class Ball {
     private static final char CHAR_MIN_NUMBER = '1';
     private static final char CHAR_MAX_NUMBER = '9';
-    private static final int INT_MIN_NUMBER = 1;
-    private static final int INT_MAX_NUMBER = 9;
-    private static final String OUT_OF_RANGE_MESSAGE = "각 입력값은 " + INT_MIN_NUMBER + "과 "+ INT_MAX_NUMBER +" 사이의 숫자여야 합니다.";
 
     private final Integer number;
 

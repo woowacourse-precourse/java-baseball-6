@@ -1,7 +1,8 @@
 package baseball.model;
 
+import static baseball.util.AppConstants.PERFECT_STRIKES;
+
 public class Score {
-    private static final int PERFECT_STRIKES = 3;
     private final int ball;
     private final int strike;
 
