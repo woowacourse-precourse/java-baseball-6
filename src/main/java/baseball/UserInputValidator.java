@@ -9,8 +9,8 @@ public class UserInputValidator {
     private static final String WRONG_NUMBER_RANGE_MSG = "1 ~ 9까지의 숫자를 입력해주세요.";
     private static final String WRONG_NUMBER_LENGTH_MSG = "3 자리의 숫자를 입력해주세요.";
     private static final int NUMBER_LENGTH = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    private static final char MIN_NUMBER = '1';
+    private static final char MAX_NUMBER = '9';
     private static String userInputNumbers = "";
 
     public void validateInputNumbers(String userInput) {
