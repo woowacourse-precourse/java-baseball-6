@@ -73,15 +73,29 @@
 
 - docs: README 수정 예외(IllegalArgumentException) 사항 발생시 애플리케이션 종료
 ### 클래스 다이어그램
-<img style="width:100%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/612459c9-373b-4ea1-9746-d3a8073ab010" />
+<img style="width:80%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/d60af987-0764-4342-b051-183f6f780d04" />
 
-현실에서 숫자 야구 게임을 한다고 했을 때 상대방은 **임의의 숫자**를 정하게 됩니다.
-그리고 플레이어는 숫자를 맞추기 위해 **숫자를 말하게** 되고, 그것을 상대방은 듣고 난 뒤 **스트라이크**와 **볼**의 비율을 확인하고 얼만큼 맞췄는지 전달하게 됩니다.
+최종 클래스 다이어 그램입니다! 
 
-제가 다이어그램을 그리며 조금 어색하다고 느껴지는 것은 상대방(Player Partner)이 무조건 게임을 시작한다는 것인데.. 이부분을 어떻게 고칠지 고민해볼 필요는 있어 보입니다.
+해당 클래스들의 목적은 **숫자 야구를 진행**하는 것입니다. 
+
+진행은 숫자 야구(Number Baseball)의 진행으로 상대방(Player Partner)이 미리 정답을 작성(writeAnswer)합니다.
+
+
+이후 플레이어(Player)는 자신의 숫자를 입력(nextNumberOf)합니다.
+
+입력을 마친 후 상대방의 숫자와 플레이어의 숫자(playerNumber)를 비교(compareNumbers)합니다.
+
+
+상대방 숫자와 플레이어 숫자를 비교하는 것은 전적으로 숫자 분류기(Number Classifier)에 위임합니다. 
+
+숫자 분류기의 분류 작업이 완료되면 곧바로 볼 카운트(getBallCount)와 스트라이크 카운트(getStrikeCount)를 가져옵니다. 
+
+그리고 분류한 결과가 3 스트라이크면 게임을 재시작하거나 종료합니다.  
 
 ### 폴더 구조
-추가 예정
+<img style="width:30%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/261a617f-577f-4d89-bae0-fe4a72ccb64e" />
+
 
 ### 코드 스타일
 #### wootecho 코드 스타일 적용
