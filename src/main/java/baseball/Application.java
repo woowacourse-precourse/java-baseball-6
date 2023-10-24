@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Application {
-    final static String ERROR_MESSAGE = "[error] 올바르지 않은 입력입니다.";
-    final static int MAX_NUMBERS = 3;
+    static final String ERROR_MESSAGE = "[error] 올바르지 않은 입력입니다.";
+    static final int MAX_NUMBERS = 3;
 
     public static void main(String[] args) throws IllegalArgumentException {
         String try_again = "1";
