@@ -10,88 +10,88 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class ValidatorTest {
 
-  public Validator validator;
+    public Validator validator;
 
-  @BeforeEach
-  void preSet() {
-    validator = new Validator(893);
-  }
+    @BeforeEach
+    void preSet() {
+        validator = new Validator(893);
+    }
 
-  @Test
-  void _1스트라이크() {
-    validator.writeBaseballAnswer("857");
-    Map<String, Integer> result = validator.changeInputBaseballType();
-    assertEquals(1, result.get("스트라이크"));
-    assertEquals(0, result.get("볼"));
-  }
+    @Test
+    void _1스트라이크() {
+        validator.writeBaseballAnswer("857");
+        Map<String, Integer> result = validator.changeInputBaseballType();
+        assertEquals(1, result.get("스트라이크"));
+        assertEquals(0, result.get("볼"));
+    }
 
-  @Test
-  void _2스트라이크() {
-    validator.writeBaseballAnswer("853");
-    Map<String, Integer> result = validator.changeInputBaseballType();
-    assertEquals(2, result.get("스트라이크"));
-    assertEquals(0, result.get("볼"));
-  }
+    @Test
+    void _2스트라이크() {
+        validator.writeBaseballAnswer("853");
+        Map<String, Integer> result = validator.changeInputBaseballType();
+        assertEquals(2, result.get("스트라이크"));
+        assertEquals(0, result.get("볼"));
+    }
 
-  @Test
-  void _3스트라이크() {
-    validator.writeBaseballAnswer("893");
-    Map<String, Integer> result = validator.changeInputBaseballType();
-    assertEquals(3, result.get("스트라이크"));
-    assertEquals(0, result.get("볼"));
-  }
+    @Test
+    void _3스트라이크() {
+        validator.writeBaseballAnswer("893");
+        Map<String, Integer> result = validator.changeInputBaseballType();
+        assertEquals(3, result.get("스트라이크"));
+        assertEquals(0, result.get("볼"));
+    }
 
-  @Test
-  void _1볼_1스트라이크() {
-    validator.writeBaseballAnswer("837");
-    Map<String, Integer> result = validator.changeInputBaseballType();
-    assertEquals(1, result.get("스트라이크"));
-    assertEquals(1, result.get("볼"));
-  }
+    @Test
+    void _1볼_1스트라이크() {
+        validator.writeBaseballAnswer("837");
+        Map<String, Integer> result = validator.changeInputBaseballType();
+        assertEquals(1, result.get("스트라이크"));
+        assertEquals(1, result.get("볼"));
+    }
 
-  @Test
-  void _2볼_1스트라이크() {
-    validator.writeBaseballAnswer("839");
-    Map<String, Integer> result = validator.changeInputBaseballType();
-    assertEquals(1, result.get("스트라이크"));
-    assertEquals(2, result.get("볼"));
-  }
+    @Test
+    void _2볼_1스트라이크() {
+        validator.writeBaseballAnswer("839");
+        Map<String, Integer> result = validator.changeInputBaseballType();
+        assertEquals(1, result.get("스트라이크"));
+        assertEquals(2, result.get("볼"));
+    }
 
-  @Test
-  void 낫싱() {
-    validator.writeBaseballAnswer("127");
-    Map<String, Integer> result = validator.changeInputBaseballType();
-    assertEquals(0, result.get("스트라이크"));
-    assertEquals(0, result.get("볼"));
-  }
+    @Test
+    void 낫싱() {
+        validator.writeBaseballAnswer("127");
+        Map<String, Integer> result = validator.changeInputBaseballType();
+        assertEquals(0, result.get("스트라이크"));
+        assertEquals(0, result.get("볼"));
+    }
 
-  @ParameterizedTest
-  @CsvSource(value = {
-      "'123 ', 공백을 제거하고 입력해주세요.",
-      "ㄱ12, 숫자만 입력해주세요.",
-      "58, 3개의 숫자로 입력해주세요.",
-      "5894, 3개의 숫자로 입력해주세요.",
-      "224, 서로 다른 3개의 숫자로 입력해주세요.",
-      "777, 서로 다른 3개의 숫자로 입력해주세요.",
-      "103, 1과 9 사이의 숫자만 입력해주세요.",
-      "530, 1과 9 사이의 숫자만 입력해주세요."
-  })
-  void 숫자야구_입력_예외_테스트(String input, String expectedMessage) {
-    IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-        () -> validator.writeBaseballAnswer(input));
-    assertEquals(e.getMessage(), expectedMessage);
-  }
+    @ParameterizedTest
+    @CsvSource(value = {
+        "'123 ', 공백을 제거하고 입력해주세요.",
+        "ㄱ12, 숫자만 입력해주세요.",
+        "58, 3개의 숫자로 입력해주세요.",
+        "5894, 3개의 숫자로 입력해주세요.",
+        "224, 서로 다른 3개의 숫자로 입력해주세요.",
+        "777, 서로 다른 3개의 숫자로 입력해주세요.",
+        "103, 1과 9 사이의 숫자만 입력해주세요.",
+        "530, 1과 9 사이의 숫자만 입력해주세요."
+    })
+    void 숫자야구_입력_예외_테스트(String input, String expectedMessage) {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+            () -> validator.writeBaseballAnswer(input));
+        assertEquals(e.getMessage(), expectedMessage);
+    }
 
-  @ParameterizedTest
-  @CsvSource(value = {
-      "3, 1과 2 중 하나만 선택해주세요.",
-      "'1 ', 공백을 제거하고 입력해주세요.",
-      "ㄱ, 숫자만 입력해주세요."
-  })
-  void 게임진행여부_입력_예외_테스트(String input, String expectedMessage) {
-    IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-        () -> validator.writeProgressAnswer(input));
-    assertEquals(e.getMessage(), expectedMessage);
-  }
+    @ParameterizedTest
+    @CsvSource(value = {
+        "3, 1과 2 중 하나만 선택해주세요.",
+        "'1 ', 공백을 제거하고 입력해주세요.",
+        "ㄱ, 숫자만 입력해주세요."
+    })
+    void 게임진행여부_입력_예외_테스트(String input, String expectedMessage) {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+            () -> validator.writeProgressAnswer(input));
+        assertEquals(e.getMessage(), expectedMessage);
+    }
 
 }
