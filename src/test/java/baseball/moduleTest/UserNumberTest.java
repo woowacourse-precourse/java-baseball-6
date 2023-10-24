@@ -39,4 +39,14 @@ public class UserNumberTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.testCheckDuplication(inputList));
     }
 
+    @Test
+    void 입력값_0포함_확인() {
+        UserNumber userNumber = new UserNumber();
+        List<Integer> inputList = new ArrayList<>();
+        inputList.add(0);
+        inputList.add(1);
+        inputList.add(2);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userNumber.testCheckZero(inputList));
+    }
+
 }

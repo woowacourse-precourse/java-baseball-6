@@ -12,6 +12,7 @@ public class UserNumber {
         checkLength(readLine);
         checkDigit(readLine);
         userNumber = stringToDigit(readLine);
+        checkZero(userNumber);
         checkDuplication(userNumber);
         return userNumber;
     }
@@ -39,6 +40,14 @@ public class UserNumber {
         return digitList;
     }
 
+    private void checkZero(List<Integer> digitList) {
+        for (int i = 0; i < digitList.size(); i++) {
+            if (digitList.get(i) == 0) {
+                throw new IllegalArgumentException("입력한 수에 0이 포함되어있습니다.");
+            }
+        }
+    }
+
     private void checkDuplication(List<Integer> digitList) {
         Set<Integer> digitSet = new HashSet<>(digitList);
         if (digitSet.size() != digitList.size()) {
@@ -61,5 +70,9 @@ public class UserNumber {
 
     public void testCheckDuplication(List<Integer> digitList) {
         checkDuplication(digitList);
+    }
+
+    public void testCheckZero(List<Integer> digitList) {
+        checkZero(digitList);
     }
 }
