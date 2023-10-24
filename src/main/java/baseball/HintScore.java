@@ -59,4 +59,9 @@ public class HintScore {
     public boolean isGameOver() {
         return strike == ANSWER_DIGIT;
     }
+
+    public void clear() {
+        ball = 0;
+        strike = 0;
+    }
 }
