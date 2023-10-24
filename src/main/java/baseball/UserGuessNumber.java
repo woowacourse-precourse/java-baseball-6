@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserGuessNumber {
 
-    List<Integer> userGuessNumber;
+    private List<Integer> userGuessNumber;
 
     public UserGuessNumber(String guessNumberString) {
         userGuessNumber = numberStringToList(guessNumberString);

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameInput {
 
-    InputValidator inputValidator;
+    private InputValidator inputValidator;
 
     public GameInput() {
         inputValidator = new InputValidator();
