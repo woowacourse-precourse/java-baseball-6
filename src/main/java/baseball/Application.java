@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int RESTART = 1;
+    private static final int QUIT = 2;
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -15,12 +18,9 @@ public class Application {
     }
 
     private static boolean isRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + RESTART + ", 종료하려면 " + QUIT + "를 입력하세요.");
         Integer input = Integer.parseInt(Console.readLine());
-        if (input == 1) {
-            return true;
-        }
-        return false;
+        return input.equals(RESTART);
     }
 
     private static void play() {
