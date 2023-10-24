@@ -7,14 +7,27 @@ public class Game {
 	BallExtractor ballExtractor = new BallExtractor();
 	ChooseValidator chooseValidator = new ChooseValidator();
 	public void start() {
+		welcome();
+		play();
+	}
+
+	public void welcome() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
+	}
 
+	public void play() {
+		Balls computerBalls = setComputerBalls();
+		proceed(computerBalls);
+	}
+
+	public Balls setComputerBalls() {
 		computer = new Computer();
-		Balls computerBalls = computer.makeNumbers();
-
+		return computer.makeNumbers();
+	}
+	public void proceed(Balls computerBalls) {
 		while (true) {
 			// 숫자 입력
-			System.out.println("숫자를 입력해주세요: ");
+			System.out.print("숫자를 입력해주세요 : ");
 			Balls playerBalls = ballExtractor.extract(Console.readLine());
 
 			// 결과 계산
@@ -29,18 +42,23 @@ public class Game {
 				break;
 			}
 		}
+		exit();
+	}
 
-		System.out.println("게임을 새로 시작하려면 1, 종료하면 2를 입력하세요.");
+	public void exit() {
+		int answer = question();
 
-		// 숫자 입력
-		int playerChoose = chooseValidator.validate(Console.readLine());
-
-		if (playerChoose == 1)
-			start();
-		if (playerChoose == 2) {
+		if (answer == 1)
+			play();
+		if (answer == 2) {
 			System.out.println("게임 종료");
 		}
+	}
 
+	public int question() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		// 숫자 입력
+		return chooseValidator.validate(Console.readLine());
 	}
 
 	private Result calculate(Balls computerBalls, Balls playerBalls) {

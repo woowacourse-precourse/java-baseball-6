@@ -9,7 +9,7 @@ public class Balls {
 
 	public boolean add(Integer ball) {
 		// 중복 검사
-		if (balls.contains(ball)) {
+		if (contains(ball)) {
 			throw new IllegalArgumentException();
 		}
 
@@ -30,6 +30,7 @@ public class Balls {
 	public boolean contains(Integer ball) {
 		return balls.contains(ball);
 	}
+
 	public void reverse() {
 		List<Integer> reverse = new ArrayList<>();
 		for (int i = balls.size() - 1; i >= 0; i--) {

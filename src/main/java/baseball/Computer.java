@@ -6,7 +6,6 @@ public class Computer {
 	private Balls balls = new Balls();
 
 	public Balls makeNumbers() {
-
 		// 임의의 수 3개를 만든다.
 		int count = 0;
 
