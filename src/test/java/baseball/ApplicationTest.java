@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.ComputerNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,8 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+
 
     @Override
     public void runMain() {
