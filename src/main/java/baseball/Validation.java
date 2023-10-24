@@ -46,7 +46,7 @@ public class Validation {
     }
 
     public static void checkChoiceRestart(String inputNumber) {
-        if (!inputNumber.equals(Player.GAME_RESTART) && !inputNumber.equals(Player.GAME_END)) {
+        if (!inputNumber.equals(GameRuleNumbers.GAME_RESTART) && !inputNumber.equals(GameRuleNumbers.GAME_END)) {
             throw new IllegalArgumentException(ErrorMessage.CHOICE_NUMBER_ERROR);
         }
     }

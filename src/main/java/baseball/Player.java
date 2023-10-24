@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-
     public static List<Integer> playerNumber = new ArrayList<>();
-    public static final String GAME_RESTART = "1";
-    public static final String GAME_END = "2";
 
     public boolean inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -37,12 +34,12 @@ public class Player {
 
     public static String gamePlayOrNot() {
         String selectNumber = Console.readLine();
-        if (selectNumber.equals(GAME_RESTART)) {
-            return GAME_RESTART;
+        if (selectNumber.equals(GameRuleNumbers.GAME_RESTART)) {
+            return GameRuleNumbers.GAME_RESTART;
         }
-        if (selectNumber.equals(GAME_END)) {
+        if (selectNumber.equals(GameRuleNumbers.GAME_END)) {
             System.out.println("게임을 종료합니다.");
-            return GAME_END;
+            return GameRuleNumbers.GAME_END;
         }
         // 만약 다른 문자가 입력되면 exception 발생
         Validation.checkChoiceRestart(selectNumber);

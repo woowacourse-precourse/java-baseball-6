@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    // 랜덤으로 뽑을 숫자 범위 상수 지정
-    public static final int MIN_NUMBER = 1;
-    public static final int MAX_NUMBER = 9;
     // 컴퓨터가 가지고 있는 숫자
     public static List<Integer> computerNumber = new ArrayList<>();
     // 스트라이크 횟수
@@ -20,7 +17,7 @@ public class Computer {
         // 세 자리 수를 만든다.
         while (computerNumber.size() < 3) {
             // 랜덤한 숫자를 생성한다.
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            int randomNumber = Randoms.pickNumberInRange(GameRuleNumbers.MIN_NUMBER, GameRuleNumbers.MAX_NUMBER);
             // 컴퓨터가 가지고 있지 않은 숫자라면 넣어준다.
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);

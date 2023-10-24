@@ -6,5 +6,5 @@ public class ErrorMessage {
     public static final String INCLUSION_ZERO_ERROR = "1~9까지의 숫자만 입력해주세요. 게임을 종료합니다.";
     public static final String LENGTH_ERROR = "3자리의 서로 다른 숫자를 입력해주세요. 게임을 종료합니다.";
     public static final String CHOICE_NUMBER_ERROR =
-            Player.GAME_RESTART + " 혹은 " + Player.GAME_END + "를 입력해주세요. 게임을 종료합니다.";
+            GameRuleNumbers.GAME_RESTART + " 혹은 " + GameRuleNumbers.GAME_END + "를 입력해주세요. 게임을 종료합니다.";
 }

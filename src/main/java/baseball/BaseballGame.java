@@ -24,7 +24,7 @@ public class BaseballGame {
         if (playersChoice.equals(ErrorMessage.CHOICE_NUMBER_ERROR)) {
             return;
         }
-        if (playersChoice.equals(Player.GAME_END)) {
+        if (playersChoice.equals(GameRuleNumbers.GAME_END)) {
             return;
         }
         // 게임 재시작
