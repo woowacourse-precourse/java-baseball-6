@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomNumberGenerator {
+public class Computer {
     private List<Integer> randomNumber;
 
-    public RandomNumberGenerator() {
+    public Computer() {
         randomNumber = new ArrayList<>();
         generateRandomNumber();
     }

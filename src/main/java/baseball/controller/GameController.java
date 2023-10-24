@@ -1,9 +1,9 @@
 package baseball.controller;
 
+import baseball.model.Computer;
 import baseball.model.FinishInput;
 import baseball.model.GameResultCalculator;
 import baseball.model.Number;
-import baseball.model.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -12,7 +12,7 @@ public class GameController {
     private final OutputView view;
     private final InputView input;
     private final GameResultCalculator calculator;
-    private RandomNumberGenerator randomNumberGenerator;
+    private Computer computer;
     private Number randomNumber;
 
     public GameController() {
@@ -31,8 +31,8 @@ public class GameController {
 
 
     public void startGame() {
-        randomNumberGenerator = new RandomNumberGenerator();
-        List<Integer> random = randomNumberGenerator.getRandomNumber();
+        computer = new Computer();
+        List<Integer> random = computer.getRandomNumber();
 
         this.randomNumber = new Number(random);
     }
