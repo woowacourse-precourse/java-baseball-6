@@ -47,10 +47,12 @@ class Computer {
             }
         }
         // 아래는 테스트용. 이후 삭제
+        /*
         System.out.print("컴퓨터의 숫자 :");
         for (int item : list)
                 System.out.print(item);
-        System.out.println("");
+        System.out.print("\n");
+         */
     }
 
     // 입력 숫자가 컴퓨터 숫자와 얼마나 일치하는지 판단.
@@ -70,8 +72,6 @@ class Computer {
         score.add(ball);
         return score;
     }
-
-
 }
 
 class Game {
