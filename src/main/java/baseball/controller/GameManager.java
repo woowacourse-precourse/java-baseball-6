@@ -12,7 +12,6 @@ public class GameManager {
 
     //변수명
     private ComputerNumberDto computerNumberDto;
-
     private UserNumberDto userNumberDto;
 
     //생성자
@@ -20,7 +19,7 @@ public class GameManager {
         computer = new Computer();
         user = new User();
         userView = new UserView();
-    };
+    }
 
     public void startGame(){
         computerNumberDto = computer.getRandomComputerNumber(); //랜덤한 3개 컴퓨터 숫자 생성
