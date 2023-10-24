@@ -56,6 +56,9 @@ public class GameService {
         throw new IllegalArgumentException("1 또는 2가 아닙니다.");
     }
 
+    /**
+     * 사용자 입력에 따른 스트라이크, 볼 개수를 계산하여 힌트를 출력한다.
+     */
     private void giveHint() {
         if (game.getStrikeCount() == 0 && game.getBallCount() == 0) {
             OutView.printNothing();
@@ -64,6 +67,11 @@ public class GameService {
         }
     }
 
+    /**
+     * 사용자 입력이 유효한지 검증한다.
+     * @param input 사용자 입력
+     * @throws IllegalArgumentException
+     */
     private void validateInput(String input) throws IllegalArgumentException{
         // 입력이 안된 경우
         if(input == null || input.isEmpty()) {
@@ -83,6 +91,11 @@ public class GameService {
         }
     }
 
+    /**
+     * 사용자 입력을 List<Integer>로 변환한다.
+     * @param input 사용자 입력
+     * @return List<Integer>
+     */
     private List<Integer> parseInput(String input) {
         List<Integer> userNumbers = new ArrayList<>();
         for(int i = 0; i < input.length(); i++) {
@@ -92,6 +105,10 @@ public class GameService {
         return userNumbers;
     }
 
+    /**
+     * 사용자 입력에 따른 스트라이크, 볼 개수를 계산한다.
+     * @param userNumbers 사용자 입력
+     */
     private void countStrikeAndBall(List<Integer> userNumbers) {
         game.resetCount();
         for(int i = 0; i < userNumbers.size(); i++) {

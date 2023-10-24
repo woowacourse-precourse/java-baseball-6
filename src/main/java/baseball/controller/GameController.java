@@ -6,6 +6,7 @@ import baseball.service.GameService;
 public class GameController {
     public GameService gameService = new GameService();
 
+    /* 게임을 실행하는 메소드 */
     public void run() throws IllegalArgumentException {
             initGame();
             playGame();
