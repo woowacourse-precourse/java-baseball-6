@@ -13,25 +13,28 @@ public class BaseballGameClient {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        do {
+        boolean isProgramPlaying = true;
+
+        while (isProgramPlaying) {
             play();
-        } while (user.isWantRestart());
+            isProgramPlaying = user.isWantRestart();
+        }
     }
 
     public void play() {
         computer.generateNumbers();
         List<Integer> computerNumbers = computer.getComputerNumbers();
 
-        while (true) {
+        boolean isGamePlaying = true;
+
+        while (isGamePlaying) {
             user.askUserNumbers();
             List<Integer> userNumbers = user.getUserNumbers();
 
             GameResult gameResult = gameCalculator.calculateResult(computerNumbers, userNumbers);
             printGameResult(gameResult);
 
-            if (gameResult.isGameEnd()) {
-                break;
-            }
+            isGamePlaying = !gameResult.isGameEnd();
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
