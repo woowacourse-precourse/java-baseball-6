@@ -12,12 +12,10 @@ public class DefaultBaseballAlgorithm implements BaseballAlgorithm {
         List<String> inputNumbers = new ArrayList<>(List.of(userInput.split("")));
         BallAndStrikeResult ballAndStrikeResult = new BallAndStrikeResult();
 
-        for (int i = 0; i < inputNumbers.size(); i++) {
-            int number = Integer.parseInt(inputNumbers.get(i));
-            if (randomNumber.contains(number)) {
-                countStrikeAndBall(randomNumber, inputNumbers, number, ballAndStrikeResult);
-            }
-        }
+        inputNumbers.stream().
+                mapToInt(Integer::parseInt).
+                filter(randomNumber::contains)
+                .forEach(number -> countStrikeAndBall(randomNumber, inputNumbers, number, ballAndStrikeResult));
 
         String baseballResultMessage = makeBaseballResultMessage(ballAndStrikeResult);
         ballAndStrikeResult.cleansingResult();
