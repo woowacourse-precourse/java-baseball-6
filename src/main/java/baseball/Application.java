@@ -61,10 +61,9 @@ public class Application {
         	//예외처리
         	try {
 	        	if (user.size()<3 || user.size()>3) {
-	        		throw new IllegalArgumentException("3자리 숫자만 입력하세요.");
+	        		throw new IllegalArgumentException();
 	        	}
         	}catch(IllegalArgumentException e){
-        		System.out.println("예외 발생 : " + e.getMessage());
         		break;
         	}
         	
