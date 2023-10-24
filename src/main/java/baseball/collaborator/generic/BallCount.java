@@ -1,14 +1,11 @@
 package baseball.collaborator.generic;
 
+import baseball.collaborator.generic.message.BallCountMessage;
+
 public record BallCount(long countOfStrike, long countOfBall) {
 
     public static final long NO_COUNT = 0L;
     public static final long MAX_COUNT = 3L;
-
-    // TODO : 클래스 상수 -> enum으로 교체할 것
-    public static final String NOTHING = "낫싱";
-    public static final String BALL = "볼";
-    public static final String STRIKE = "스트라이크";
 
     // compact constructor
     public BallCount {
@@ -34,15 +31,16 @@ public record BallCount(long countOfStrike, long countOfBall) {
     @Override
     public String toString() {
         if (countOfBall != NO_COUNT && countOfStrike != NO_COUNT) {
-            return countOfBall + BALL + " " + countOfStrike + STRIKE;
+            return countOfBall + BallCountMessage.BALL.get() +
+                    " " + countOfStrike + BallCountMessage.STRIKE.get();
         }
         if (countOfBall != NO_COUNT) {
-            return countOfBall + BALL;
+            return countOfBall + BallCountMessage.BALL.get();
         }
         if (countOfStrike != NO_COUNT) {
-            return countOfStrike + STRIKE;
+            return countOfStrike + BallCountMessage.STRIKE.get();
         }
-        return NOTHING;
+        return BallCountMessage.NOTHING.get();
     }
 
 }
