@@ -1,7 +1,7 @@
-package baseball.domain.dto;
+package baseball;
 
 
-import static baseball.system.SystemConstant.GAME_DIGIT;
+import static baseball.SystemConstant.GAME_DIGIT;
 
 public class Score {
 

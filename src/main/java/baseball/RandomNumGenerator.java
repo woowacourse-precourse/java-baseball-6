@@ -1,11 +1,11 @@
-package baseball.domain;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.system.SystemConstant.GAME_DIGIT;
+import static baseball.SystemConstant.GAME_DIGIT;
 
 public final class RandomNumGenerator {
 

@@ -3,7 +3,7 @@
 ### 숫자 야구
 ### - 클래스 다이어그램
 
-<img src="img/class1.png">
+<img src="ClassDiagram.png">
 
 ### - 기능 목록 정리
 

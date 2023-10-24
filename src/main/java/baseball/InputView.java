@@ -1,8 +1,8 @@
-package baseball.view;
+package baseball;
 
-import baseball.verifier.BaseBallNumVerifier;
-import baseball.verifier.ControlNumVerifier;
-import baseball.verifier.Verifier;
+import baseball.BaseBallNumVerifier;
+import baseball.ControlNumVerifier;
+import baseball.Verifier;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;

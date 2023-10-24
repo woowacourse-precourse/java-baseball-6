@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball;
 
-import baseball.domain.dto.Score;
+import baseball.Score;
 
 
 

@@ -1,4 +1,4 @@
-package baseball.system;
+package baseball;
 
 public final class ExceptionMessage {
     public static final String NOT_DISTINCT = "중복된 자리수가 존재합니다.";

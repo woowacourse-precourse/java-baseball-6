@@ -1,4 +1,4 @@
-package baseball.system;
+package baseball;
 
 public final class SystemConstant {
 

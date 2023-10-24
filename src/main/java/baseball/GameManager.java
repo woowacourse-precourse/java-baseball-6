@@ -1,13 +1,8 @@
-package baseball.Controller;
-
-import baseball.domain.BaseballGame;
-import baseball.domain.dto.Score;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+package baseball;
 
 import java.util.List;
-import static baseball.system.SystemConstant.GAME_DIGIT;
-import static baseball.system.SystemConstant.GAME_EXIT_CODE;
+import static baseball.SystemConstant.GAME_DIGIT;
+import static baseball.SystemConstant.GAME_EXIT_CODE;
 
 public class GameManager {
 

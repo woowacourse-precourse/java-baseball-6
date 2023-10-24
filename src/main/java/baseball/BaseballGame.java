@@ -1,6 +1,4 @@
-package baseball.domain;
-
-import baseball.domain.dto.Score;
+package baseball;
 
 import java.util.List;
 

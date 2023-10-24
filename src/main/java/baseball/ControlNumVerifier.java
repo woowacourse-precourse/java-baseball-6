@@ -1,9 +1,7 @@
-package baseball.verifier;
+package baseball;
 
-import baseball.system.ExceptionMessage;
-
-import static baseball.system.SystemConstant.GAME_EXIT_CODE;
-import static baseball.system.SystemConstant.GAME_RESTART_CODE;
+import static baseball.SystemConstant.GAME_EXIT_CODE;
+import static baseball.SystemConstant.GAME_RESTART_CODE;
 
 public class ControlNumVerifier implements Verifier {
     @Override

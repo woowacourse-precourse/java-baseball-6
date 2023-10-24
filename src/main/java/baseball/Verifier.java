@@ -1,4 +1,4 @@
-package baseball.verifier;
+package baseball;
 
 public interface Verifier {
 

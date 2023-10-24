@@ -1,11 +1,9 @@
-package baseball.verifier;
-
-import baseball.system.ExceptionMessage;
+package baseball;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.system.SystemConstant.GAME_DIGIT;
+import static baseball.SystemConstant.GAME_DIGIT;
 
 public class BaseBallNumVerifier implements Verifier {
     @Override

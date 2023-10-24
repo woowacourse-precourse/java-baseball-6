@@ -1,11 +1,9 @@
-package baseball.domain;
-
-import baseball.domain.dto.Score;
+package baseball;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static baseball.system.SystemConstant.GAME_DIGIT;
+import static baseball.SystemConstant.GAME_DIGIT;
 
 
 public final class Referee {
