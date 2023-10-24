@@ -55,12 +55,32 @@ public class Application {
     }
 
     public static boolean executeBaseballGame(String user, String cpu) {
-        // TODO : 추가 검증 로직 구현
         if (user.equals(cpu)) {
-            System.out.println("3 스트라이크");
+            System.out.println("3스트라이크");
             return true;
         }
-        System.out.println("일단 3스트라이크는 아님");
+
+        int ballCount, strikeCount = 0;
+        HashSet<Character> checkDuplicate = new HashSet<>();
+        for (int i = 0; i < 3; ++i) {
+            if (user.charAt(i) == cpu.charAt(i)) {
+                strikeCount++;
+            }
+            checkDuplicate.add(user.charAt(i));
+            checkDuplicate.add(cpu.charAt(i));
+        }
+        ballCount = user.length() + cpu.length() - checkDuplicate.size() - strikeCount;
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        if (ballCount != 0) {
+            System.out.printf("%d볼 ", ballCount);
+        }
+        if (strikeCount != 0) {
+            System.out.printf("%d스트라이크", strikeCount);
+        }
+        System.out.println();
         return false;
     }
 
