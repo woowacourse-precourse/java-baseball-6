@@ -20,8 +20,9 @@ public class BaseballGame {
      * */
     public static void run() {
         System.out.println(Message.init());
-        List<Integer> computer = Computer.newNumber();
-        start(computer);
+        List<Integer> c = Computer.newNumber();
+        System.out.println(c);
+        start(c);
     }
 
     /*
@@ -45,9 +46,7 @@ public class BaseballGame {
             List<Integer> userInput = stringToIntegerList(input);
             result = AnswerChecker.result(computer, userInput);
 
-            if (!result.equals("3스트라이크")) {
-                System.out.println(result);
-            }
+            System.out.println(result);
         }
         // 정답을 맞춘 후 게임을 지속할 지 여부 묻기
         System.out.println(Message.correct());
@@ -59,7 +58,6 @@ public class BaseballGame {
      * */
     public static void exit(String message) {
         System.out.println(message);
-        Console.close();
         throw new IllegalArgumentException(message);
     }
 
@@ -76,11 +74,11 @@ public class BaseballGame {
         }
         if (input.equals("1")) {
             List<Integer> computer = Computer.newNumber();
+            System.out.println(computer);
             start(computer);
 
         } else if (input.equals("2")) {
             System.out.println(Message.expire());
-            Console.close();
         }
     }
 
