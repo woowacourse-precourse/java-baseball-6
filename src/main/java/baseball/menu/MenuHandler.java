@@ -2,7 +2,7 @@ package baseball.menu;
 
 import baseball.computer.Computer;
 import baseball.utils.Count;
-import baseball.utils.Communicator;
+import baseball.communicator.Communicator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
