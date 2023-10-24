@@ -1,7 +1,9 @@
 package baseball.view;
 
+import baseball.util.ConsoleMessage;
+
 public class OutputView {
     public void printGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(ConsoleMessage.OUTPUT_GAME_START.getMessage());
     }
 }

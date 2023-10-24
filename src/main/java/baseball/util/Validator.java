@@ -8,6 +8,6 @@ public class Validator {
         validationRules.FormatValidationRule(playerNumber);
         validationRules.NumericValidationRule(playerNumber);
         validationRules.LengthValidationRule(playerNumber);
-        return playerNumber; // Return the playerNumber after validation
+        return playerNumber;
     }
 }
