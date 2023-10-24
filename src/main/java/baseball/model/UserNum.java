@@ -1,6 +1,7 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +9,9 @@ import java.util.regex.Pattern;
 
 public class UserNum {
   public List<Integer> userNum() {
+    OutputView.printInputMessage();
 
-    System.out.println("숫자를 입력해주세요 : ");
-
-    String input = Console.readLine();
+    String input = InputView.setUserNumber();
 
     if (!ValidationInput(input)) {
       throw new IllegalArgumentException("1에서 9까지 서로 다른 3자리 숫자를 입력하세요.");
