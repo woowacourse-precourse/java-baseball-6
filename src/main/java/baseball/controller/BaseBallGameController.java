@@ -6,7 +6,6 @@ import baseball.model.Game;
 import baseball.model.Round;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.Objects;
 
 public class BaseballGameController {
     private final Game game;
@@ -31,6 +30,7 @@ public class BaseballGameController {
         Round round;
         do {
             String playerNumber = inputView.getSuggestedNumber();
+            InputValidator.validatePlayerNumber(playerNumber);
             round = Round.fromPlayerAndSecretNumbers(playerNumber, computerNumber);
             String result = round.generateResultMessage();
             outputView.printRoundResult(result);
@@ -39,7 +39,9 @@ public class BaseballGameController {
 
     public void end() {
         outputView.printGameEnd();
-        if (Objects.equals(inputView.getGameContinueChoice(), "2")) {
+        String continueChoice = inputView.getGameContinueChoice();
+        InputValidator.validateGameChoice(continueChoice);
+        if (continueChoice.equals("2")) {
             game.endGame();
         }
     }
