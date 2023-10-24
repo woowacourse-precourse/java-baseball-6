@@ -11,18 +11,25 @@ public class Turn {
 
     private boolean isPlaying = true;
 
-    // TODO : new 구문도 메서드 추출하는 것이 의미를 이해하는 것에 도움이 될 수 있을 것 같음.
     public void play() {
-        WinningNumbers winningNumbers = new WinningNumbers(new WinningNumbersGenerator());
+        WinningNumbers winningNumbers = getWinningNumbers();
 
         while (isPlaying) {
-            BaseballNumbers baseballNumbers = new BaseballNumbers(new BaseballNumbersGenerator());
+            BaseballNumbers baseballNumbers = getBaseballNumbers();
 
             BallCount ballCount = winningNumbers.ballCounting(baseballNumbers);
 
             Output.consoleLine(ballCount);
             updateIsPlayingBy(ballCount);
         }
+    }
+
+    private static WinningNumbers getWinningNumbers() {
+        return new WinningNumbers(new WinningNumbersGenerator());
+    }
+
+    private static BaseballNumbers getBaseballNumbers() {
+        return new BaseballNumbers(new BaseballNumbersGenerator());
     }
 
     private void updateIsPlayingBy(BallCount ballCount) {
