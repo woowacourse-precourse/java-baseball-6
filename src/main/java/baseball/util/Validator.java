@@ -70,6 +70,22 @@ public class Validator {
     }
 
     /**
+     * 입력받은 값이 숫자인지 유효성 검사
+     *
+     * @param : 유저에게 입력받은 값
+     * @throws : 입력받은 값이 숫자만 포함하지 않을 경우 IllegalArgumentException 발생
+     */
+    public static void validateInputIsNumeric(String inputValue) {
+        // TODO: 입력받은 값이 숫자인지 유효성 검사
+        try {
+            Integer.parseInt(inputValue); // 숫자 변환
+        } catch (NumberFormatException exception) { // 숫자 변환 시 NumberFormatException 발생 : 숫자가 아닌 문자가 포함된 경우
+            MessageUtil.printInvalidNumeric();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
      * 입력받은 숫자 중복 유효성 검사
      *
      * @param : 유저에게 입력받은 값
@@ -93,23 +109,6 @@ public class Validator {
         // TODO: 입력받은 값이 inputNumLength 와 같은지 유효성 검사
         if (inputValue.size() != NumberConst.EXPECTED_INPUT_LENGTH) {
             MessageUtil.printInvalidNumber();
-            throw new IllegalArgumentException();
-        }
-    }
-
-
-    /**
-     * 입력받은 값이 숫자인지 유효성 검사
-     *
-     * @param : 유저에게 입력받은 값
-     * @throws : 입력받은 값이 숫자만 포함하지 않을 경우 IllegalArgumentException 발생
-     */
-    private static void validateInputIsNumeric(String inputValue) {
-        // TODO: 입력받은 값이 숫자인지 유효성 검사
-        try {
-            Integer.parseInt(inputValue); // 숫자 변환
-        } catch (NumberFormatException exception) { // 숫자 변환 시 NumberFormatException 발생 : 숫자가 아닌 문자가 포함된 경우
-            MessageUtil.printInvalidNumeric();
             throw new IllegalArgumentException();
         }
     }
