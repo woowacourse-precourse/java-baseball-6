@@ -1,6 +1,6 @@
 # 구현할 기능 목록
 
-## 1. 입력 scanner 구현
+## 1. 입력 validatorg 구현
 
 ### 각 단계에 맞는 validator 구현
 
