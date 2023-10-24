@@ -1,7 +1,6 @@
 package baseball.game;
 
 import static constant.Constant.GAME_END_MESSAGE;
-import static constant.Constant.NOTHING_MESSAGE;
 import static constant.Constant.RESTART_COMMAND;
 import static constant.Constant.TERMINATE_COMMAND;
 import static constant.ErrorMessage.ERROR_MESSAGE;
@@ -19,7 +18,7 @@ public class ResultHandler {
 
     public void handleInningResult(InningResult inningResult) {
         if (inningResult.noMatchesExists()) {
-            ui.print(NOTHING_MESSAGE);
+            ui.print(inningResult.getNothingMessage());
             ui.print("\n");
             return;
         }

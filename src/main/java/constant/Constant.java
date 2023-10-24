@@ -7,7 +7,6 @@ public class Constant {
     public static int ZERO = 0;
     public static String START_STRING = "숫자 야구 게임을 시작합니다.";
     public static String ENTER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    public static String NOTHING_MESSAGE = "낫싱";
     public static String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static String RESTART_COMMAND = "1";
     public static String TERMINATE_COMMAND = "2";

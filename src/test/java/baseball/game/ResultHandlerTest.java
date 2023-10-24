@@ -19,7 +19,7 @@ class ResultHandlerTest extends NsTest {
     }
 
     @Test
-    void shouldHandleInningResult() {
+    void 해당되는_결과값을_출력해야함() {
         InningResult oneBallOneStrikeExpectation = InningResult.countMatchesBetween(
                 List.of(1, 2, 3),
                 List.of(1, 3, 4)

@@ -15,11 +15,11 @@ public class InningResult {
         this.numberOfStrikes = 0;
     }
 
-    public void increaseBall() {
+    private void increaseBall() {
         numberOfBalls++;
     }
 
-    public void increaseStrike() {
+    private void increaseStrike() {
         numberOfStrikes++;
     }
 
@@ -35,9 +35,9 @@ public class InningResult {
         return this.numberOfStrikes > ZERO;
     }
 
-    public String getBallMessage() {
-        return this.numberOfBalls + "볼 ";
-    }
+    public String getBallMessage() { return this.numberOfBalls + "볼 "; }
+
+    public String getNothingMessage() { return "낫싱"; }
 
     public String getStrikeMessage() {
         return this.numberOfStrikes + "스트라이크";
