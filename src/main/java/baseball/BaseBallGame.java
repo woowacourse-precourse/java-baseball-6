@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseBallGame {
@@ -30,5 +31,6 @@ public class BaseBallGame {
                 computerNumber = rand.makeRandomNumber(); // 컴퓨터가 생성한 숫자를 저장
             }
         } while (newGame);
+        Console.close(); //콘솔을 닫아야 함
     }
 }

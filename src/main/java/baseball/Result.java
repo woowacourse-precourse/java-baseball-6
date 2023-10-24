@@ -12,18 +12,23 @@ public class Result {
         boolean returnValue = false; // 3스트라이크 판별
         if (ball > 0) {
             printBall(ball);
-        } else if (nothing > 0) {
-            printNothing();
+            if (strike > 0) {
+                System.out.println(" ");
+            }
         }
         if (strike > 0) {
             returnValue = printStrike(strike);
         }
+        if (nothing > 0) {
+            printNothing();
+        }
+
         System.out.println();
         return returnValue;
     }
 
     void printBall(int ball) { // ball을 출력하는 함수
-        System.out.print(ball + "볼 ");
+        System.out.print(ball + "볼");
     }
 
     boolean printStrike(int strike) { // strike를 출력하고 정답이면 게임을 재식할지 묻는 함수

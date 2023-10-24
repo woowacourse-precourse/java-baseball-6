@@ -15,7 +15,6 @@ public class Restart {
         String number = Console.readLine(); // 게임을 이어나갈지 사용자에게 값 전달받기
         if (number.equals(EXIT)) {
             System.out.print("게임 종료");
-            Console.close(); //콘솔을 닫아야 함
             return false;
         }
         return true;
