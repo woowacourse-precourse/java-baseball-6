@@ -22,4 +22,8 @@ public class GameStatusNumber {
         }
         return ball;
     }
+    public int countNothing(List<Integer> userNumbers, List<Integer> computerNumbers){
+        int nothing = userNumbers.size() - countStrike(userNumbers, computerNumbers) - countBall(userNumbers, computerNumbers);
+        return nothing;
+    }
 }
