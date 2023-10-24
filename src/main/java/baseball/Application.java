@@ -21,7 +21,7 @@ interface GameInterface {
 }
 
 class BaseballGame implements GameInterface {
-    private final int numberSize = 3;
+    private static final int NUMBER_SIZE = 3;
     private List<Integer> computerNumber;
 
     @Override
