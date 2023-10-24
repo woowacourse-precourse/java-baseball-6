@@ -15,13 +15,16 @@ public record BallCount(long countOfStrike, long countOfBall) {
         validation(countOfStrike, countOfBall);
     }
 
-    // TODO? : 어쩌면 if문의 조건도 메서드로 추출하고 메서드명으로 의미를 더 명확히 할 수 있을지도.
     private static void validation(long countOfStrike, long countOfBall) {
         if (countOfStrike < 0 ||
                 countOfBall < 0 ||
-                MAX_COUNT < countOfStrike + countOfBall) {
+                isTooManyCounts(countOfStrike, countOfBall)) {
             throw new IllegalArgumentException("잘못된 볼카운팅입니다.");
         }
+    }
+
+    private static boolean isTooManyCounts(long countOfStrike, long countOfBall) {
+        return MAX_COUNT < countOfStrike + countOfBall;
     }
 
     public boolean isFullCount() {
