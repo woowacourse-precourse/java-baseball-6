@@ -14,7 +14,6 @@ public class Game {
 
     public void start() {
         computerInputArray = computer.getRandomNumber();
-        System.out.println(computerInputArray);
 
         while (true) {
             alert.userInputStartMessage();
