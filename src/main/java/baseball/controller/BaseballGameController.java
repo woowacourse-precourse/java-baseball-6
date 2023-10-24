@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.model.GameStatus.isRestart;
-
 import baseball.model.Computer;
 import baseball.model.GameStatus;
 import baseball.model.NumberList;
@@ -37,7 +35,7 @@ public class BaseballGameController extends GameController {
     }
 
     private void askRestartGame() {
-        isRunning = isRestart(scanStatus());
+        isRunning = GameStatus.isRestart(scanStatus());
     }
 
     private NumberList scanGuess() {
