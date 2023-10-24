@@ -51,39 +51,10 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void checkNothing(int ball, int strike) {
+    public static void printNothing(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
-    }
-
-    public static int isInt(String toCheck) {
-        int ret;
-        try {
-            ret = Integer.parseInt(toCheck);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        }
-        return ret;
-    }
-
-    public static int doBaseballGame(List<Integer> computer) {
-        // Get user Data
-        List<Integer> user = getUserGameData();
-        List<Integer> result = new ArrayList<>();
-        int numOfBall;
-        int numOfStrike;
-
-        result = compareData(computer, user);
-        numOfBall = result.get(0);
-        numOfStrike = result.get(1);
-
-        // for no ball and no strike
-        checkNothing(numOfBall, numOfStrike);
-
-        // for with strike
-        printBall(numOfBall);
-        return printStrike(numOfStrike);
     }
 
     public static int checkKeepGoing(int keepGoing) {
@@ -97,37 +68,23 @@ public class Application {
         }
     }
 
-    public static void checkUserDataValidate(int userData) {
+    public static int isInt(String toCheck) {
+        int ret;
+        try {
+            ret = Integer.parseInt(toCheck);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return ret;
+    }
+
+    public static void isUserDataValidate(int userData) {
         if (userData < 100) {
             throw new IllegalArgumentException();
         }
         if (userData > 1000) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public static int countStrike(List<Integer> computer, List<Integer> user) {
-        int ret = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computer.get(i).equals(user.get(i))) {
-                ret++;
-            }
-        }
-        return ret;
-    }
-
-    public static int countBall(List<Integer> computer, List<Integer> user) {
-        int ret = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i != j) {
-                    if (user.get(i).equals(computer.get(j))) {
-                        ret++;
-                    }
-                }
-            }
-        }
-        return ret;
     }
 
     /*
@@ -155,13 +112,37 @@ public class Application {
 
         // Check If Input Data has 3 Numbers, and Only Includes Integer
         userInput = isInt(Console.readLine());
-        checkUserDataValidate(userInput);
+        isUserDataValidate(userInput);
 
         user.add(userInput / 100);
         user.add(userInput % 100 / 10);
         user.add(userInput % 10);
 
         return user;
+    }
+
+    public static int countStrike(List<Integer> computer, List<Integer> user) {
+        int ret = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                ret++;
+            }
+        }
+        return ret;
+    }
+
+    public static int countBall(List<Integer> computer, List<Integer> user) {
+        int ret = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i != j) {
+                    if (user.get(i).equals(computer.get(j))) {
+                        ret++;
+                    }
+                }
+            }
+        }
+        return ret;
     }
 
     /*
@@ -174,5 +155,24 @@ public class Application {
         ballStrike.add(countStrike(computer, user));
 
         return ballStrike;
+    }
+
+    public static int doBaseballGame(List<Integer> computer) {
+        // Get user Data
+        List<Integer> user = getUserGameData();
+        List<Integer> result = new ArrayList<>();
+        int numOfBall;
+        int numOfStrike;
+
+        result = compareData(computer, user);
+        numOfBall = result.get(0);
+        numOfStrike = result.get(1);
+
+        // for no ball and no strike
+        printNothing(numOfBall, numOfStrike);
+
+        // for with strike
+        printBall(numOfBall);
+        return printStrike(numOfStrike);
     }
 }
