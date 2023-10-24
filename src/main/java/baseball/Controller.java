@@ -6,33 +6,33 @@ public class Controller {
 
     public Controller(){}
 
-    public static void init(int digits){
+    public static void init(int digits) {
         UserInput userInput = new UserInput(digits);
         OutputView.printStart();
         round(digits, userInput);
         boolean gameState = restart(userInput);
-        while(gameState){
+        while(gameState) {
             round(digits, userInput);
             gameState = restart(userInput);
         }
     }
 
-    public static void round(int digits, UserInput userInput){
-        GenerateAnswer genAns = new GenerateAnswer(digits);
-        List<Integer> genAnswer = genAns.genAnswer();
-        CompareInput compareInput = new CompareInput(genAnswer, digits);
+    public static void round(int digits, UserInput userInput) {
+        GeneratingAnswer generatingAnswer = new GeneratingAnswer(digits);
+        List<Integer> generatedAnswer = generatingAnswer.generateAnswer();
+        ComparingInput comparingInput = new ComparingInput(generatedAnswer, digits);
         while(true) {
             OutputView.printInput();
             List<Integer> userValue = userInput.getInput();
-            List<Integer> ballCount = compareInput.countMatch(userValue);
+            List<Integer> ballCount = comparingInput.countMatch(userValue);
             OutputView.printResult(ballCount);
-            if (ballCount.equals(List.of(0, 3))){
+            if (ballCount.equals(List.of(0, 3))) {
                 break;
             }
         }
     }
 
-    public static boolean restart(UserInput userInput){
+    public static boolean restart(UserInput userInput) {
         OutputView.printRestart();
         return userInput.getRestart().equals("1");
     }
