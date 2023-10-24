@@ -103,7 +103,7 @@ public class Application {
                 answer.inputAnswer();
                 ArrayList<Integer> playAnswer = answer.getAnswer();
                 //Player의 입력값 판정
-                for (int i = 0; i<3; i++) {
+                for (int i = 0; i < 3; i++) {
                     if (problemNumber.contains(playAnswer.get(i)) && problemNumber.get(i).equals(playAnswer.get(i))){
                             strike++;
                         }else if (problemNumber.contains(playAnswer.get(i))){
@@ -112,7 +112,7 @@ public class Application {
                 }
 
                 //판정값 출력
-                if (strike==0&&ball==0) {
+                if (strike == 0 && ball == 0) {
                     System.out.println("낫싱");
                 } else {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
