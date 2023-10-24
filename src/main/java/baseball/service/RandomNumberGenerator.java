@@ -16,13 +16,16 @@ public class RandomNumberGenerator {
     }
 
     private List<Integer> generateUniqueThreeDigitNumbers() {
-//        return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, THREE_DIGIT_NUMBER_RANGE);
         List<Integer> randomNumbers = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
-            randomNumbers.add(Randoms.pickNumberInRange(1,9));
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
         }
-//        System.out.println(randomNumbers);
+
         return randomNumbers;
     }
 }

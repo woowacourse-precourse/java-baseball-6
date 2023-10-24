@@ -9,7 +9,7 @@ public class InputView {
     public int[] inputThreeDigitNumber() {
         String input = Console.readLine();
         validateOnlyNumbers(input);
-//        validateThreeDigitNumber(input);
+        validateThreeDigitNumber(input);
         validateDuplicateDigits(input);
 
         return convertToNumbers(input);
@@ -61,8 +61,8 @@ public class InputView {
     }
 
     private void validateDuplicateDigits(String input) {
-        for (int i = 1; i < input.length()-1; i++) {
-            if (input.charAt(i-1) == input.charAt(i)) {
+        for (int i = 1; i < input.length() - 1; i++) {
+            if (input.charAt(i - 1) == input.charAt(i)) {
                 throw new IllegalArgumentException("중복되지 않는 세 자리의 숫자를 입력해 주세요.");
             }
         }
