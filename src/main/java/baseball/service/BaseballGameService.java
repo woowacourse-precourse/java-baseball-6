@@ -48,10 +48,11 @@ public class BaseballGameService {
 
     private void setStrikeBall() {
         StrikeBallCounterData strikeBallCounterData;
+
         String userInput = numberDto.getValidateInput();
         String randomNumber = numberDto.getRandomNumber();
-
         strikeBallCounterData = strikeBallCounter.createStrikeBall(userInput, randomNumber);
+
         strikeBallDto.setStrike(strikeBallCounterData.getStrike());
         strikeBallDto.setBall(strikeBallCounterData.getBall());
     }

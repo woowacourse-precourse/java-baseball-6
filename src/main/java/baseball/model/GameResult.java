@@ -5,6 +5,7 @@ public class GameResult {
     public GameResultData result(int strike, int ball) {
         GameResultType resultType = GameResultType.findType(strike, ball);
         String formattedMessage = formatMessage(resultType, strike, ball);
+
         return new GameResultData(formattedMessage, resultType.isCorrectAnswer());
     }
 
