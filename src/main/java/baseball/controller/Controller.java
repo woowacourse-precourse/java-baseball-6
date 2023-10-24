@@ -36,12 +36,8 @@ public class Controller {
     }
 
     private void validateInput(String input) {
-        if (input.length() != COUNT) {
-            throw new IllegalArgumentException("numbers have wrong in length");
-        }
-
-        if (!input.matches(MATCH)) {
-            throw new IllegalArgumentException("numbers cannot be out of range");
+        if (!input.matches(MATCH) || input.length() != COUNT) {
+            throw new IllegalArgumentException("input is invalid");
         }
 
         Set<Character> set = new HashSet<>();
