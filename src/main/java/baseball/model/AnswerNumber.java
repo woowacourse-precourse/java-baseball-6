@@ -30,5 +30,4 @@ public class AnswerNumber {
         return Collections.unmodifiableList(answerNumber);
     }
 
-
 }

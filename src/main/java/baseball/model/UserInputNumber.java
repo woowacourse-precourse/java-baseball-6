@@ -24,4 +24,5 @@ public class UserInputNumber {
     public List<Integer> userNumberToList() {
         return Collections.unmodifiableList(userNumber);
     }
+
 }

@@ -53,5 +53,4 @@ public class GameController {
         return choice == RESTART;
     }
 
-
 }

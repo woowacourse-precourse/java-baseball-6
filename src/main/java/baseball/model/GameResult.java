@@ -19,8 +19,8 @@ public class GameResult {
         return new GameResult(ballCount + 1, strikeCount);
     }
 
-    public GameResult incrementStrike(){
-        return new GameResult(ballCount, strikeCount+1);
+    public GameResult incrementStrike() {
+        return new GameResult(ballCount, strikeCount + 1);
     }
 
     public int getBallCount() {

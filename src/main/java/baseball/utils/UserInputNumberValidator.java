@@ -10,7 +10,7 @@ public class UserInputNumberValidator {
     private static final String NON_DIGIT_ERROR_MESSAGE = "입력 값이 숫자가 아닙니다.";
     private static final String DUPLICATION_ERROR_MESSAGE = "입력값에 중복된 값이 있습니다.";
 
-    public static void validate(String userInputNumber){
+    public static void validate(String userInputNumber) {
         validateLength(userInputNumber);
         validateDigit(userInputNumber);
         validateDuplication(userInputNumber);
@@ -32,8 +32,8 @@ public class UserInputNumberValidator {
 
     private static void validateDuplication(String userInputNumber) {
         Set<Character> set = new HashSet<>();
-        for(char ch: userInputNumber.toCharArray()){
-            if(set.contains(ch)){
+        for (char ch : userInputNumber.toCharArray()) {
+            if (set.contains(ch)) {
                 throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
             }
             set.add(ch);

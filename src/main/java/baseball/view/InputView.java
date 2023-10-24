@@ -3,6 +3,7 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+
     private static final String REQUEST_USER_INPUT = "숫자를 입력해주세요 : ";
     private static final String REQUEST_RESTART_OR_NOT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String RESTART = "1";
@@ -24,6 +25,5 @@ public class InputView {
 
         return Integer.parseInt(userInput);
     }
-
 
 }
