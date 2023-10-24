@@ -10,11 +10,11 @@ public enum Constants {
 
     private final int value;
 
-    Constants(int value){
+    Constants(int value) {
         this.value = value;
     }
 
-    public int getValue(){
+    public int getValue() {
         return this.value;
     }
 }

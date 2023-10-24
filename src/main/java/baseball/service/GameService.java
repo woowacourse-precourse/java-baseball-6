@@ -29,6 +29,7 @@ public class GameService {
     }
 
     public void startGame() {
+
         message.printStartMsg();
         int strikeCount = 0;
 
