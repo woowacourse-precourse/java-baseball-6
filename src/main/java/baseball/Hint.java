@@ -3,6 +3,8 @@ package baseball;
 import java.util.ArrayList;
 
 public class Hint {
+    public enum Hints {NOTHING, BALL_STRIKE, ALL_STRIKE}
+
     private int ball;
     private int strike;
 
@@ -22,8 +24,8 @@ public class Hint {
         int tempStrike = 0;
 
         for (int i = 0; i < computerNums.size(); i++) {
-            int p = (int) playerNums.get(i);
-            int c = (int) computerNums.get(i);
+            int p = playerNums.get(i);
+            int c = computerNums.get(i);
             if (playerNums.contains(c)) {
                 if (p == c) {
                     tempStrike += 1;

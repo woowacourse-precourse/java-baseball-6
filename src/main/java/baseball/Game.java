@@ -2,11 +2,14 @@ package baseball;
 
 import static baseball.RandomNum.LENGTH;
 
+import baseball.Hint.Hints;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Game {
+    public enum State {RESTART, END}
+
     private Player player;
     private Player computer;
 
@@ -35,7 +38,7 @@ public class Game {
         return Console.readLine();
     }
 
-    public Boolean isValid(String guessNumsStr) {
+    public Boolean isValidGuessNums(String guessNumsStr) {
         int guessNumsInt;
         ArrayList<Integer> guessNums = new ArrayList<>();
 
@@ -94,40 +97,51 @@ public class Game {
         hint.makeHint(player.getGuessNums(), computer.getNums());
         int ball = hint.getBall();
         int strike = hint.getStrike();
-        // 낫싱: 0, 볼 또는 스트라이크: 1, 3개의 숫자를 모두 맞힐 경우: 2
-        int result = -1;
+        int result = Hints.NOTHING.ordinal();
 
         if (strike == LENGTH) {
             System.out.println(strike + "스트라이크");
             System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-            result = 2;
+            result = Hints.ALL_STRIKE.ordinal();
         } else if (ball >= 1 || strike >= 1) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
 
-            result = 1;
+            result = Hints.BALL_STRIKE.ordinal();
         } else if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
-
-            result = 0;
         }
 
         return result;
     }
 
-    public boolean isRestart() {
-        while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String valueStr = Console.readLine();
-            int value = Integer.parseInt(valueStr);
+    public int isRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String valueStr = Console.readLine();
+        int value = isValidState(valueStr);
 
-            if (value == 1) {
-                return true;
-            } else if (value == 2) {
-                return false;
-            } else {
-                System.out.println("잘못된 입력 값 입니다.");
-            }
+        if (value == 1) {
+            return State.RESTART.ordinal();
+        } else if (value == 2) {
+            return State.END.ordinal();
         }
+
+        return value;
+    }
+
+    private int isValidState(String valueStr) {
+        int value;
+
+        try {
+            value = Integer.parseInt(valueStr);
+            
+            if (value != 1 && value != 2) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            return -1;
+        }
+
+        return value;
     }
 }

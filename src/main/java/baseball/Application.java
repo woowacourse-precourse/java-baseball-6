@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.Game.State;
+import baseball.Hint.Hints;
+
 public class Application {
     public static void main(String[] args) {
         Game game = new Game();
@@ -11,18 +14,21 @@ public class Application {
         while (running) {
 
             String guessNumsStr = game.getGuessNums();
-            if (!game.isValid(guessNumsStr)) {
+            if (!game.isValidGuessNums(guessNumsStr)) {
                 return;
             }
 
             roundResult = game.getHint();
 
-            if (roundResult == 2) {
-                running = game.isRestart();
-                if (running) {
+            if (roundResult == Hints.ALL_STRIKE.ordinal()) {
+                int state = game.isRestart();
+                if (state == State.RESTART.ordinal()) {
                     game.startGame();
-                } else {
+                } else if (state == State.END.ordinal()) {
+                    running = false;
                     game.endGame();
+                } else {
+                    return;
                 }
             }
         }
