@@ -9,6 +9,9 @@ public class Validator {
     private static final String INPUT_NOT_THREE_DIGITS = "입력하신 수가 세자리가 아닙니다.";
     private static final String WHITE_SPACE_INCLUDED = "입력에는 공백이 포함되면 안됩니다.";
     private static final String INPUT_OUT_OF_RANGE = "1~9의 수로 이루어져 있어야 합니다.";
+
+    //---Constants---
+    private static final String ZERO = "0";
     //---------
 
     public static void validateInputString(String inputString) {
@@ -48,7 +51,7 @@ public class Validator {
     }
 
     private static void validateInputNoZero(String inputString) {
-        if (inputString.contains("0")) {
+        if (inputString.contains(ZERO)) {
             throw new IllegalArgumentException(INPUT_OUT_OF_RANGE);
         }
     }
