@@ -44,6 +44,18 @@ public class Answer {
         return number == firstNumber || number == secondNumber || number == thirdNumber;
     }
 
+    public int getFirstNumber() {
+        return firstNumber;
+    }
+
+    public int getSecondNumber() {
+        return secondNumber;
+    }
+
+    public int getThirdNumber() {
+        return thirdNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
