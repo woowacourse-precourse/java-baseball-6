@@ -1,35 +1,34 @@
 package baseball.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RandomNumberGeneratorTest {
 
-    RandomNumberGenerator randomNumberGenerator;
-
-    @BeforeEach
-    public void before() {
-        randomNumberGenerator = new RandomNumberGenerator();
-    }
-
     @Test
-    @DisplayName("랜덤숫자 3자리수가 생성된다.")
-    public void generateThreeRandomRumbers() {
+    public void 랜덤숫자_3자리수가_생성된다() {
+        // given
+        RandomNumberGenerator generator = new RandomNumberGenerator();
+
         // When
-        List<Integer> number = randomNumberGenerator.generateRandomNumber();
+        List<Integer> result = generator.getRandomNumber();
 
         // then
-        assertThat(number.size()).isEqualTo(3);
+        assertThat(result.size()).isEqualTo(Number.NUMBER_SIZE);
 
     }
 
     @Test
-    @DisplayName("랜덤숫자의 각 자릿수가 모두 다르다.")
-    public void generateUniqueDigits() {
-        // TODO
+    public void 랜덤숫자의_각_자릿수가_모두_다르다() {
+        //given
+        RandomNumberGenerator generator = new RandomNumberGenerator();
+
+        //when
+        List<Integer> result = generator.getRandomNumber();
+
+        //then
+        assertThat(result.stream().distinct().count()).isEqualTo(Number.NUMBER_SIZE);
     }
 }
