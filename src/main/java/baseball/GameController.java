@@ -36,8 +36,7 @@ public class GameController {
     public List<Integer> getUserNum() {
         String userInputStr = userInput.readUserInput();
         userInput.checkUserInput(userInputStr);
-        List<Integer> userNum = userInput.stringToList(userInputStr);
-        return userNum;
+        return userInput.stringToList(userInputStr);
     }
 
     public boolean giveHint(List<Integer> computerNum, List<Integer> userNum) {
