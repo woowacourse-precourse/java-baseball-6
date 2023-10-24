@@ -28,6 +28,7 @@ public class BaseballGameController {
             OutputView.printGameResult(round.strikeCount, round.ballCount);
             threeStrike = round.checkThreeStrike();
         } while (!threeStrike);
+        OutputView.printEnd();
     }
 
     private static boolean endGame() throws IllegalArgumentException{
