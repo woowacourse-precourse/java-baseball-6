@@ -39,11 +39,19 @@ public class NumberService {
     private static void compareNumber(List<Integer> computerNumber, List<Integer> playerNumber, Hint hint) {
         for (int i = 0; i < playerNumber.size(); i++) {
             Integer myNumber = playerNumber.get(i);
-            if (Objects.equals(myNumber, computerNumber.get(i))) {
+            if (isStrike(computerNumber, i, myNumber)) {
                 hint.increaseStrike();
-            } else if (computerNumber.contains(myNumber)) {
+            } else if (isBall(computerNumber, myNumber)) {
                 hint.increaseBall();
             }
         }
+    }
+
+    private static boolean isBall(List<Integer> computerNumber, Integer myNumber) {
+        return computerNumber.contains(myNumber);
+    }
+
+    private static boolean isStrike(List<Integer> computerNumber, int i, Integer myNumber) {
+        return Objects.equals(myNumber, computerNumber.get(i));
     }
 }
