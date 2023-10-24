@@ -5,10 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.IntUnaryOperator;
 
 public class Application {
@@ -16,11 +13,12 @@ public class Application {
     // 컴퓨터의 숫자를 담을 List
     static List<Integer> computer;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         // TODO: 프로그램 구현
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         String input = "";
         int ball = 0;
         int strike = 0;
@@ -34,7 +32,7 @@ public class Application {
 
             // 숫자 입력
             System.out.println("숫자를 입력해주세요 : ");
-            input = br.readLine();
+            input = scanner.nextLine();
             
             // 3글자인지 중복된 것은 없는지 체크 
             if(input.length() != 3 && check()) {
@@ -72,7 +70,7 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-                int continueFlag = Integer.parseInt(br.readLine());
+                int continueFlag = Integer.parseInt(scanner.nextLine());
 
                 if(continueFlag == 1 || continueFlag == 2) {
                     // 1 : 이어 할 경우 새로운 랜덤 숫자 생성
