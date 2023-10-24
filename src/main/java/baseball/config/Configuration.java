@@ -14,8 +14,7 @@ public final class Configuration {
     private static boolean isInitialized = false;
 
     public static GameController createUniqueGameController() {
-        ensureIsNotInitialized();
-
+        // ensureIsNotInitialized();
         final AnswerCreator answerCreator = new AnswerCreator(new RandomNumberPicker());
         final InputParser inputParser = new InputParser(new InputValidator());
 
