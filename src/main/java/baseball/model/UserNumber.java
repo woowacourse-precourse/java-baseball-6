@@ -23,7 +23,7 @@ public class UserNumber {
         isCorrectSize(userNumber);
         isInteger(userNumber);
         isContainZero(userNumber);
-        isDupicate(userNumber);
+        isDuplicate(userNumber);
     }
 
     private void isCorrectSize(String userNumber) {
@@ -45,11 +45,11 @@ public class UserNumber {
     }
 
 
-    private void isDupicate(String userNumber) {
-        int hashset = Arrays.asList(userNumber.split("")).stream()
+    private void isDuplicate(String userNumber) {
+        int setSize = Arrays.asList(userNumber.split("")).stream()
                 .distinct()
                 .collect(Collectors.joining()).length();
-        if(!(hashset==3))
+        if(!(setSize==3))
             throw new IllegalArgumentException();
     }
 
