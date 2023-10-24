@@ -72,29 +72,16 @@ public class Number implements Comparable<Number> {
      */
 
     public static Number parseNumber(Integer number) {
-        try {
-            List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
 
-            while (number != 0) {
-                numbers.add(number % 10);
-                number /= 10;
-            }
-            Collections.reverse(numbers);
-            return new Number(numbers);
-
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBERS);
+        while (number != 0) {
+            numbers.add(number % 10);
+            number /= 10;
         }
+        Collections.reverse(numbers);
+        return new Number(numbers);
     }
 
-    public static Number parseNumber(String stringNumber) {
-        try {
-            int number = Integer.parseInt(stringNumber);
-            return parseNumber(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBERS);
-        }
-    }
 
     /**
      * 힌트 정보를 얻기 위해 Number에서 digit이 포홤되었는지 확인함
