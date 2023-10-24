@@ -22,6 +22,9 @@ public class Game {
 
     public void endGame() {
         System.out.println("숫자 야구 게임을 종료합니다.");
+
+        player = null;
+        computer = null;
     }
 
     public void getGuessNums() {
