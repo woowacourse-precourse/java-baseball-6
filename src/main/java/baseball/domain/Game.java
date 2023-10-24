@@ -12,6 +12,11 @@ public class Game {
         ball = 0;
     }
 
+    public void initGame() {
+        strike = 0;
+        ball = 0;
+    }
+
     public int[] getGameNumber() {
         return gameNumber;
     }

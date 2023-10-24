@@ -22,10 +22,16 @@ public class GameService {
     }
 
     public void playGame() {
-        gameOutputView.printInputNumber();
-        user.setUserNumber(parser.parseUserInput(gameInputView.getUserInput()));
-        computeScore(game.getGameNumber(), user.getUserNumber());
-        gameOutputView.printResult(game.getStrike(), game.getBall());
+        int strike = 0;
+
+        while(strike != 3){
+            game.initGame();
+            gameOutputView.printInputNumber();
+            user.setUserNumber(parser.parseUserInput(gameInputView.getUserInput()));
+            computeScore(game.getGameNumber(), user.getUserNumber());
+            gameOutputView.printResult(game.getStrike(), game.getBall());
+            strike = game.getStrike();
+        }
     }
 
     public void computeScore(int[] gameNumber, int[] userNumber) {
