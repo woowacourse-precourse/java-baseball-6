@@ -12,7 +12,10 @@ import java.util.Set;
 
 public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
 
-    private Baseball() { //생성자 대신 정적 팩터리 메서드 사용
+    private static final String TOO_SHORT_INPUT = "자리수가 3보다 작습니다.";
+    private static final String TOO_LONG_INPUT = "자리수가 3보다 큽니다.";
+    private static final String DUPLICATE_DIGITS = "같은 숫자가 2개 이상 있습니다.";
+    private static final String OUT_OF_RANGE_DIGITS = "각 자리 숫자가 1에서 9 사이가 아닙니다.";
 
     private final List values;
 
@@ -22,9 +25,9 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
         IntegerListUtil.validateListType(values);
     }
 
-    public static Baseball createBaseball(String valueString) {
-        IntegerUtil.validateInteger(valueString);
-        List values = IntegerListUtil.parseIntegerList(valueString);
+    public static Baseball createBaseball(String stringValue) {
+        IntegerUtil.validateInteger(stringValue);
+        List values = IntegerListUtil.parseIntegerList(stringValue);
 
         return new Baseball(values);
     }
@@ -46,7 +49,7 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
         return createBaseball(computerList);
     }
 
-    public List<T> getValues() {
+    public List getValues() {
         return values;
     }
 
@@ -54,6 +57,12 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
         this.values = values;
     }
 
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+            if (!stringValue.matches("^[1-9]+$")) {
+                ExceptionUtil.throwInvalidValueException();
+            }
+        }
+    }
 
 
 }
