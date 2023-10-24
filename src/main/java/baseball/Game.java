@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.enums.GameProgressFlag;
+import baseball.enums.GameStatus;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 

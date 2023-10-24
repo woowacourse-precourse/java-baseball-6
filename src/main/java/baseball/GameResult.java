@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.enums.GameResultType;
+
 /**
  * 게임 결과
  */

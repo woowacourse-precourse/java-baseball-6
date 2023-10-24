@@ -1,4 +1,4 @@
-package baseball;
+package baseball.enums;
 
 /**
  * 게임 결과 타입

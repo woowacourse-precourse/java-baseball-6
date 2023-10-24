@@ -1,4 +1,4 @@
-package baseball;
+package baseball.enums;
 
 /**
  * 게임 상태를 나타내는 코드

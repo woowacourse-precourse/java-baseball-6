@@ -1,4 +1,4 @@
-package baseball;
+package baseball.enums;
 
 /**
  * 게임 진행을 어떻게 할지 대한 flag
