@@ -12,7 +12,8 @@
 3. ExceptionClass
     1) generateIllegalArgumentException : 사용자가 잘못된 입력값을 제공했을 경우 IllegalArgumentException을 발생시키는 메소드
 4. Computer Class
-    1) playBaseBall : 숫자야구 게임을 시작하는 메소드
-    2) makeAnswerNumber : 정답 숫자를 만드는 메소드
-    3) JudgeHowManyStrike : Strike가 얼마나 있는지 판단하는 메소드
-    4) JudgeHowManyBall : Ball이 얼마나 있는지 판단하는 메소드
+    1) playBaseBall : 숫자야구 게임 한 단위를 실행하는 메소드
+    2) startBaseballGame : 숫자야구 게임을 시작하는 메소드
+    3) makeAnswerNumber : 정답 숫자를 만드는 메소드
+    4) JudgeHowManyStrike : Strike가 얼마나 있는지 판단하는 메소드
+    5) JudgeHowManyBall : Ball이 얼마나 있는지 판단하는 메소드
