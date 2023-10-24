@@ -24,7 +24,7 @@ public class BaseballService {
         return uniqueNumbers;
     }
 
-    public BaseballGameResult calculateResult(Baseball answer, Baseball guess) {
+    public BaseballGameResult calculateResult(final Baseball answer, final Baseball guess) {
         return answer.match(guess);
     }
 }

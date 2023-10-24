@@ -7,6 +7,7 @@ import static org.mockito.Mockito.mockStatic;
 
 import baseball.model.Baseball;
 import baseball.model.BaseballGameResult;
+import baseball.model.BaseballGameResultType;
 import baseball.model.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
@@ -81,8 +82,8 @@ class BaseballServiceTest {
 
             //then
             assertThat(result).isNotNull();
-            assertThat(result.toString())
-                    .contains(String.valueOf(ballCount), String.valueOf(strikeCount));
+            assertThat(result.getCount(BaseballGameResultType.BALL)).isEqualTo(ballCount);
+            assertThat(result.getCount(BaseballGameResultType.STRIKE)).isEqualTo(strikeCount);
         }
     }
 }

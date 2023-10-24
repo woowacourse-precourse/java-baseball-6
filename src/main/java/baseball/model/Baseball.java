@@ -26,14 +26,14 @@ public class Baseball {
         return baseballNumbers;
     }
 
-    public BaseballGameResult match(Baseball compare) {
+    public BaseballGameResult match(final Baseball compare) {
         BaseballGameResult result = new BaseballGameResult();
 
         updateResult(result, compare);
         return result;
     }
 
-    private void updateResult(BaseballGameResult result, Baseball compare) {
+    private void updateResult(final BaseballGameResult result, final Baseball compare) {
         List<BaseballNumber> compareNumbers = compare.getBaseballNumbers();
 
         for (int i = 0; i < Baseball.LENGTH; i++) {

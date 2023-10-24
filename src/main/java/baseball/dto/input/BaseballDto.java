@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.dto.input;
 
 import baseball.constants.InputPattern;
 import baseball.model.Baseball;

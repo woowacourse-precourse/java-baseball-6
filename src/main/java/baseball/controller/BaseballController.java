@@ -1,8 +1,9 @@
 package baseball.controller;
 
 import baseball.constants.GameStatus;
-import baseball.dto.BaseballDto;
-import baseball.dto.ReplayDto;
+import baseball.dto.input.BaseballDto;
+import baseball.dto.input.ReplayDto;
+import baseball.dto.output.ResultMessageDto;
 import baseball.model.Baseball;
 import baseball.model.BaseballGameResult;
 import baseball.service.BaseballService;
@@ -34,23 +35,24 @@ public class BaseballController {
         return baseballService.createAnswerBaseball();
     }
 
-    private void playGame(Baseball answer) {
+    private void playGame(final Baseball answer) {
         boolean isClear = false;
         while (!isClear) {
             outputView.startGame();
-            BaseballGameResult result = guessAnswer(answer);
-            isClear = result.isClear();
+            isClear = guessAnswer(answer);
         }
         outputView.clearGame();
     }
 
-    private BaseballGameResult guessAnswer(Baseball answer) {
+    private boolean guessAnswer(final Baseball answer) {
         BaseballDto baseballDto = inputView.inputNumber();
+        Baseball baseball = baseballDto.toBaseball();
 
-        BaseballGameResult result = baseballService.calculateResult(answer, baseballDto.toBaseball());
-        outputView.showGameResult(result.getMessage());
+        BaseballGameResult result = baseballService.calculateResult(answer, baseball);
+        ResultMessageDto resultMessageDto = new ResultMessageDto(result);
+        outputView.showGameResult(resultMessageDto.toMessage());
 
-        return result;
+        return result.isClear();
     }
 
     private boolean willReplay() {

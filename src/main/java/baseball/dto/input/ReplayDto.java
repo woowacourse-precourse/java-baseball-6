@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.dto.input;
 
 import baseball.constants.GameStatus;
 import baseball.validator.InputValidator;

@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public void startGame() {
-        writer.writeLine(Message.START_GAME.getValue());
+        writer.writeLine(Message.START_GAME);
     }
 
     public void showGameResult(String gameResult) {
@@ -20,6 +20,6 @@ public class OutputView {
     }
 
     public void clearGame() {
-        writer.writeLine(Message.GAME_CLEAR.getValue());
+        writer.writeLine(Message.GAME_CLEAR);
     }
 }

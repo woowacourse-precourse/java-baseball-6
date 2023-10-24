@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.dto.input;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

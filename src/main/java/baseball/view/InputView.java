@@ -1,8 +1,8 @@
 package baseball.view;
 
 import baseball.constants.Message;
-import baseball.dto.BaseballDto;
-import baseball.dto.ReplayDto;
+import baseball.dto.input.BaseballDto;
+import baseball.dto.input.ReplayDto;
 import baseball.io.InputReader;
 import baseball.io.OutputWriter;
 
@@ -17,14 +17,14 @@ public class InputView {
     }
 
     public BaseballDto inputNumber() {
-        writer.write(Message.INPUT_NUMBER.getValue());
+        writer.write(Message.INPUT_NUMBER);
 
         String input = reader.readLine();
         return new BaseballDto(input);
     }
 
     public ReplayDto replayGame() {
-        writer.write(Message.INPUT_REPLAY.getValue());
+        writer.write(Message.INPUT_REPLAY);
 
         String input = reader.readLine();
         return new ReplayDto(input);
