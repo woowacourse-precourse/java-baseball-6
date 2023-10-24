@@ -22,4 +22,24 @@ public class Game {
         }
         return computerNumbers;
     }
+
+    private int countStrikes(List<Integer> userNumbers) {
+        int strikes = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
+                strikes++;
+            }
+        }
+        return strikes;
+    }
+
+    private int countBalls(List<Integer> userNumbers) {
+        int balls = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.contains(userNumbers.get(i)) && !computerNumbers.get(i).equals(userNumbers.get(i))) {
+                balls++;
+            }
+        }
+        return balls;
+    }
 }
