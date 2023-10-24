@@ -1,40 +1,49 @@
 package baseball;
 
-import baseball.util.OutputUtil;
 
-import java.util.List;
-
+import static baseball.Constant.BASEBALL_NUM_LIMIT_LENGTH;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class Referee {
+    Score score = new Score();
+
     public Referee() {
     }
 
     public static Boolean isGameEnd(Score score) {
         int strike = score.getStrike();
-        if (strike == 3) {
+        if (strike == BASEBALL_NUM_LIMIT_LENGTH) {
             return TRUE;
         }
         return FALSE;
     }
 
-    public Score compare(String baseballNum, String userInputNum) {
-        int strike = 0;
-        int ball = 0;
+    public Score judgeScore(String baseballNum, String userInputNum) {
         int len = userInputNum.length();
         for (int i = 0; i < len; i++) {
-            for (int j = 0; j < len; j++) {
-                if ((i == j) && (baseballNum.charAt(i) == userInputNum.charAt(j))) {
-                    strike++;
-                    continue;
-                }
-                if ((i != j) && (baseballNum.charAt(i) == userInputNum.charAt(j))) {
-                    ball++;
-                    continue;
-                }
-            }
+            compareIsSameNum(baseballNum, userInputNum, i);
         }
-        return new Score(strike,ball);
+        return score;
+    }
+
+    public void compareIsSameNum(String baseballNum, String userInputNum, int index) {
+        int len = userInputNum.length();
+        int tmp = -1;
+        for (int j = 0; j < len; j++) {
+            if (baseballNum.charAt(j) == userInputNum.charAt(index)) {
+                tmp = j;
+                break;
+            }
+            verifyScoreType(tmp, index);
+        }
+    }
+
+    public void verifyScoreType(int tmp, int index) {
+        if (tmp == index) {
+            score.countStrike();
+            return;
+        }
+        score.countBall();
     }
 }
