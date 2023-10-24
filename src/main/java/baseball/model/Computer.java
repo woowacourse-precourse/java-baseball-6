@@ -23,9 +23,14 @@ public class Computer {
         int count = INITIAL_COUNT_VALUE;
         for (int i = 0; i < 3; i++) {
             int gameNumberOfPlayer = gameNumbersOfPlayer.valueAt(i);
-            if (gameNumbersOfComputer.isContains(gameNumberOfPlayer)) {
-                count += 1;
-            }
+            count = updateCountForBall(gameNumberOfPlayer, count);
+        }
+        return count;
+    }
+
+    private int updateCountForBall(final int gameNumberOfPlayer, int count) {
+        if (!gameNumbersOfComputer.isContains(gameNumberOfPlayer)) {
+            count += 1;
         }
         return count;
     }
@@ -34,9 +39,14 @@ public class Computer {
         int count = INITIAL_COUNT_VALUE;
         for (int i = 0; i < 3; i++) {
             int gameNumberOfPlayer = gameNumbersOfPlayer.valueAt(i);
-            if (gameNumbersOfComputer.isSameValueAt(i, gameNumberOfPlayer)) {
-                count += 1;
-            }
+            count = updateCountForStrike(gameNumberOfPlayer, i, count);
+        }
+        return count;
+    }
+
+    private int updateCountForStrike(final int gameNumberOfPlayer, final int index, int count) {
+        if (gameNumbersOfComputer.isSameValueAt(index, gameNumberOfPlayer)) {
+            count += 1;
         }
         return count;
     }

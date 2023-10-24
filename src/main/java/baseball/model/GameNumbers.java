@@ -1,7 +1,6 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,11 +23,15 @@ public class GameNumbers {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() != LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(LOWER_BOUND, UPPER_BOUND);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            addNonDuplicateRandomNumber(numbers, randomNumber);
         }
         return new GameNumbers(numbers);
+    }
+
+    private static void addNonDuplicateRandomNumber(List<Integer> numbers, final int randomNumber) {
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 
     public static GameNumbers getInstance(final List<Integer> numbers) {
@@ -47,7 +50,6 @@ public class GameNumbers {
     private static void checkForDuplicateNumbers(List<Integer> gameNumbersOfPlayer) {
         boolean isDuplicated = new HashSet<>(gameNumbersOfPlayer)
                 .size() < gameNumbersOfPlayer.size();
-
         if (isDuplicated) {
             throw new IllegalArgumentException();
         }
