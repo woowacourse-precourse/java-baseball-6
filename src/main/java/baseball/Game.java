@@ -50,7 +50,7 @@ public class Game {
     private void updateGameStatus(Map<String, Integer> baseballResult){
         if(baseballResult.get("strike") == 3) {
             this.status = Status.FINISH;
-            output.printResumeOrNot();
+            output.askUserToResumeOrNot();
         }
     }
 }
