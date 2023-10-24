@@ -36,14 +36,8 @@ public class Application {
             List<Integer> userNumber = getUserNumber();
             int[] ballAndStrike = calculateBallAndStrike(userNumber, randomNumber);
 
-            for (int i = 0; i < NUMBER_LENGTH; i++) {
-                if (randomNumber.get(i).equals(userNumber.get(i))) {
-                    strike += 1;
-                } else if (randomNumber.contains(userNumber.get(i))) {
-                    ball += 1;
-                }
-            }
             printResult(ballAndStrike[0], ballAndStrike[1]);
+
             if (ballAndStrike[1] == NUMBER_LENGTH) {
                 break;
             }
