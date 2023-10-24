@@ -56,4 +56,13 @@ public class InputViewTest {
         assertThat(e.getClass()).isEqualTo(IllegalArgumentException.class);
         assertThat(e.getMessage()).isEqualTo("서로 다른 3자리의 수를 입력해주세요.");
     }
+
+    @Test
+    void 입력_0값_예외_테스트() {
+        userInput("012");
+
+        Exception e = assertThrows(IllegalAccessException.class, InputView::getUserNumbers);
+        assertThat(e.getClass()).isEqualTo(IllegalArgumentException.class);
+        assertThat(e.getMessage()).isEqualTo("0이 포함되지 않는 수를 입력해주세요.");
+    }
 }
