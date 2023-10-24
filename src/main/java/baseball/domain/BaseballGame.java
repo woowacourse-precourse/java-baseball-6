@@ -1,14 +1,14 @@
 package baseball.domain;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class BaseballGame {
 
+
     private List<Integer> computerNumber;
     private List<Integer> userNumber;
 
-    public BaseballGame(){
+    public BaseballGame() {
         Computer computer = new Computer();
         this.computerNumber = computer.randomComputerNumber();
     }
@@ -19,13 +19,11 @@ public class BaseballGame {
         return this.computerNumber;
     }
 
-    public List<Integer> createUserNumber(String userNumber){
+    public List<Integer> createUserNumber(String userNumber) {
         User user = new User();
         this.userNumber = user.readUserNumber(userNumber);
         return this.userNumber;
     }
-
-
 
 
     public String[] compareTwoNumbers() {
@@ -43,10 +41,6 @@ public class BaseballGame {
         String result = ballCount + "," + strikeCount;
         return result.split(",");
     }
-
-
-
-
 
 
 }

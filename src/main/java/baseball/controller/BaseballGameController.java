@@ -8,6 +8,7 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
 
+
     private static final String ALL_STRIKE = "3";
     private static final int STRIKE_COUNT_RESULT = 1;
     private static final String RESTART_GAME = "1";
@@ -55,8 +56,6 @@ public class BaseballGameController {
             RestartFlag = false;
         }
     }
-
-
 
 
 }
