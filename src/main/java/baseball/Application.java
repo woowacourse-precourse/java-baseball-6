@@ -10,21 +10,39 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        play();
+
+    }
+
+    private static void play() {
         List<Integer> randomNumbers = getRandomNumbers();
         System.out.println(randomNumbers);
 
-        List<Integer> inputNumbers = getInputNumbers();
-        System.out.println(inputNumbers);
+        boolean answer = false;
+        while (!answer) {
+            List<Integer> inputNumbers = getInputNumbers();
+            System.out.println(inputNumbers);
 
-        boolean answer = getAnswer(randomNumbers, inputNumbers);
-        int strikeCount = getStrikeCount(randomNumbers, inputNumbers);
-        int ballCount = getBallCount(randomNumbers, inputNumbers);
+            answer = getAnswer(randomNumbers, inputNumbers);
+            int strikeCount = getStrikeCount(randomNumbers, inputNumbers);
+            int ballCount = getBallCount(randomNumbers, inputNumbers);
 
-        System.out.println(answer);
-        System.out.println(strikeCount);
-        System.out.println(ballCount);
+            System.out.println(answer);
+            System.out.println(strikeCount);
+            System.out.println(ballCount);
 
-        printResults(strikeCount, ballCount);
+            printResults(strikeCount, ballCount);
+        }
+
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int isContinue = Integer.parseInt(readLine());
+        if(isContinue==1){
+            play();
+        }else if(isContinue==2){
+            System.exit(0);
+        }
     }
 
     private static void printResults(int strikeCount, int ballCount) {
