@@ -7,6 +7,9 @@ import java.util.List;
 
 public class User {
 
+    private static final String USER_WANT_RESTART = "1";
+    private static final String USER_WANT_END = "2";
+
     private final List<Integer> userNumbers = new ArrayList<>();
 
     public void askUserNumbers() {
@@ -28,11 +31,11 @@ public class User {
     public boolean isWantRestart() {
         String userResponse = askUserWantRestart();
 
-        if (userResponse.equals("1")) {
+        if (userResponse.equals(USER_WANT_RESTART)) {
             return true;
         }
 
-        if (userResponse.equals("2")) {
+        if (userResponse.equals(USER_WANT_END)) {
             return false;
         }
 
@@ -40,10 +43,9 @@ public class User {
     }
 
     private String askUserWantRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + USER_WANT_RESTART + ", 종료하려면 " + USER_WANT_END + "를 입력하세요.");
         return Console.readLine();
     }
-
 
     public List<Integer> getUserNumbers() {
         return userNumbers;
