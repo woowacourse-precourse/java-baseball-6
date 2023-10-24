@@ -20,6 +20,14 @@ public class Application {
             Scanner scanner = new Scanner(System.in);
             System.out.print("숫자를 입력해주세요 : ");
             int num = scanner.nextInt();
+            if (num < 100) {
+                // 잘못된 값이 입력되었을 때 IllegalArgumentException을 발생시키고 프로그램 종료
+                throw new IllegalArgumentException("입력한 값은 3자리 이하 입니다.");
+            }
+            else if (num > 1000) {
+                throw new IllegalArgumentException("입력한 값은 3자리 이상 입니다.");
+            }
+
             List<Integer> digits = new ArrayList<>();
             digits.add(num / 100);        // 백의 자리
             digits.add((num / 10) % 10);  // 십의 자리
