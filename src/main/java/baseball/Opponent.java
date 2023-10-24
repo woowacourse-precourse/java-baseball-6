@@ -8,15 +8,15 @@ public class Opponent {
     private static final int MINIMUM_NUMBER = 1;
 
     private final int targetLength;
+    private final int[] targetNumbers;
     private final boolean[] isTargetNumber;
-    private final List<Integer> targetNumbers;
 
     public Opponent(int targetLength) {
         this.targetLength = targetLength;
-        this.targetNumbers = generateTarget();
+        this.targetNumbers = new int[targetLength];
         this.isTargetNumber = new boolean[MAXIMUM_NUMBER + 1];
 
-        targetNumbers.forEach(number -> isTargetNumber[number] = true);
+        initTargetNumbers();
     }
 
     public GuessResult guess(List<Integer> guessNumbers) {
@@ -27,7 +27,7 @@ public class Opponent {
 
         for (int i = 0; i < targetLength; i++) {
             int guessNumber = guessNumbers.get(i);
-            int targetNumber = targetNumbers.get(i);
+            int targetNumber = targetNumbers[i];
 
             if (guessNumber == targetNumber) {
                 strike++;
@@ -39,8 +39,15 @@ public class Opponent {
         return new GuessResult(ball, strike);
     }
 
-    private List<Integer> generateTarget() {
-        return Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, targetLength);
+    private void initTargetNumbers() {
+        for (int i = 0; i < targetLength; ) {
+            int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
+
+            if (!isTargetNumber[randomNumber]) {
+                isTargetNumber[randomNumber] = true;
+                targetNumbers[i++] = randomNumber;
+            }
+        }
     }
 
     private void validate(List<Integer> guessNumbers) {
