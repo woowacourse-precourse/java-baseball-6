@@ -39,5 +39,28 @@ public class Application {
         }
         System.out.println(user);
 
+        //숫자의 포함여부와 자리를 확인하여 볼, 스트라이크, 낫싱 판단하여 결과 출력하기
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(user.get(i))) {
+                if (user.get(i) == computer.get(i)) {
+                    strike += 1;
+                }
+                else {
+                    ball += 1;
+                }
+            }
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+
     }
 }
