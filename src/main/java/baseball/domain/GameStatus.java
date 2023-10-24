@@ -13,7 +13,12 @@ public enum GameStatus {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
+    public static GameStatus fromValue(int value) {
+        for (GameStatus status : values()) {
+            if (status.value == value) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("유효하지 않은 게임 상태 값입니다: " + value);
     }
 }

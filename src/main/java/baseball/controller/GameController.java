@@ -17,6 +17,7 @@ public class GameController {
     private final ComputerService computerService;
     private final PlayerService playerService;
     private final ScoreBoardService scoreBoardService;
+
     public GameController(InputController inputController,
                           OutputView outputView,
                           InputView inputView,
@@ -38,14 +39,14 @@ public class GameController {
     public void run() {
         GameStatus gameStatus = RESTART;
         while (gameStatus == RESTART) {
-            setGame();
+            setupGame();
             playGame();
-            String restartChoice = requestRestartChoice();
-            gameStatus = handleRestartChoice(restartChoice);
+            endGame();
+            gameStatus = requestRestartChoice();
         }
     }
 
-    private void setGame() {
+    private void setupGame() {
         computerService.setup();
     }
 
@@ -54,16 +55,21 @@ public class GameController {
         while (roundStatus == CONTINUE) {
             String playerGuess = requestPlayerGuess();
             playerService.generatePlayerBaseballs(playerGuess);
+
             int ballCount = computerService.calculateBallCount();
             int strikeCount = computerService.calculateStrikeCount();
             scoreBoardService.updateScoreBoard(ballCount, strikeCount);
+
             outputView.printResultMessage(scoreBoardService.generateGameResult());
-            roundStatus = updateGameStatus(roundStatus);
+            roundStatus = updateRoundStatus(roundStatus);
         }
+    }
+
+    private void endGame() {
         outputView.printEndGameMessage();
     }
 
-    private GameStatus updateGameStatus(GameStatus roundStatus) {
+    private GameStatus updateRoundStatus(GameStatus roundStatus) {
         if (scoreBoardService.isThreeStrike()) {
             roundStatus = BREAK;
         }
@@ -75,19 +81,8 @@ public class GameController {
         return inputController.requestPlayerGuess();
     }
 
-    private String requestRestartChoice() {
-        inputView.printRestartChoiceMessage();
-        return inputController.requestRestartChoice();
-    }
-
-    private GameStatus handleRestartChoice(String restartChoice) {
-        int value = Integer.parseInt(restartChoice);
-        if (value == RESTART.getValue()) {
-            return RESTART;
-        } else if (value == EXIT.getValue()) {
-            return EXIT;
-        } else {
-            throw new IllegalArgumentException("입력 값은 1 또는 2 입니다. (1: 재 시작, 2: 종료)");
-        }
+    private GameStatus requestRestartChoice() {
+        String choice = inputController.requestRestartChoice();
+        return GameStatus.fromValue(Integer.parseInt(choice));
     }
 }
