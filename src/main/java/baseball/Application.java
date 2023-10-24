@@ -67,6 +67,19 @@ public class Application {
     }
 
     private static void inputUser(String userString) {
+        if (!isCorrectInput(userString)) {
+            throw new IllegalArgumentException();
+        }
+        for (String str : userString.split("")) {
+            int num = Integer.parseInt(str);
+            if (user.contains(num)) {
+                throw new IllegalArgumentException();
+            }
+            user.add(num);
+        }
+    }
+
+    private static boolean isCorrectInput(String userString) {
 
     }
 
