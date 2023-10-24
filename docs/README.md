@@ -23,10 +23,19 @@
 # Computer
 - [x] 랜덤 숫자를 내주는 부분 ✅ 2023-10-24
 == 입력 검증하는 부분 메서드로 빼야함, Compititor에서도 쓸듯
----
-# 역할 및 책임
 
 ---
 # TestCoverage
-- [ ] GameManager
+- [x] GameManager
   - [x] isValidForm
+  - [x] compareBetweenNumbers
+
+- [x] GameParticipant
+  - [x] GameStatus
+
+- [x] GameCompititor
+  - [x] generateRandomNumber
+
+
+
+
