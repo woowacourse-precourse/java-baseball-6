@@ -9,7 +9,7 @@ public class Baseball {
     public void run() {
         boolean error = false;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다");
         List<Integer> computerNums = createRandomNumber();
 
         while (true) {
