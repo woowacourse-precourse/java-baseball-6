@@ -22,7 +22,6 @@ public class Start {
                 compareTwoValues.compareTwoValues(Integer.parseInt(Input.inputNumber));
             }
 
-
             System.out.println(GuideMessageConstant.END_MESSAGE);
             System.out.println(GuideMessageConstant.RESTART_END_MESSAGE);
 

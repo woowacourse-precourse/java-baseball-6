@@ -2,7 +2,6 @@ package computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import constant.StringConstant;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class RandomPickNumber {
         }
     }
 
-    public static void RandomPickClear(){
+    public static void RandomPickClear() {
         computer = new ArrayList<>();
     }
 

@@ -13,5 +13,4 @@ public class StringConstant {
     public static final int DIVISION_NUMBERS = 10;
 
 
-
 }
