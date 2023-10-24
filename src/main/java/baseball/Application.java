@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
@@ -13,9 +15,36 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> randomNumbers = computer.selectNumber();
-        List<Integer> userNumbers = user.userInput();
+        while (true) {
 
-        hint.compareNumber(randomNumbers, userNumbers);
+            List<Integer> randomNumbers = computer.selectNumber();
+
+            hint.reset();
+
+            while (true) {
+
+                List<Integer> userNumbers = user.userInput();
+
+                hint.compareNumber(randomNumbers, userNumbers);
+
+                if (hint.isThreeStrike()) {
+
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                    int input = Integer.parseInt(Console.readLine());
+
+                    if (input == 1) {
+
+                        break;
+
+                    } else if (input == 2) {
+
+                        return;
+
+                    }
+                }
+            }
+        }
     }
 }
