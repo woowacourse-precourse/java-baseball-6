@@ -22,9 +22,11 @@
   - 상대방(컴퓨터) 숫자 랜덤 설정 기능 : setComputerNumber()
 
 - User.java
-  - 유저 숫자 입력 받는 기능 : getUserNumber()
-  - 유저 숫자 입력이 유효한지 판단하여 유효하지 않을시 Exception 출력기능 : isValidInput()
-
+  - 유저 입력 받는 기능 : getUserNumber()
+  - 유저 입력 유효성 검사 기능 : isValidInput()
+    - 입력 데이터 자릿 수 검사 : checkLength()
+    - 입력 데이터 중복 값 검사 : checkDuplication()
+    - 입력 데이터 유효 값 검사 : checkValidNumber()
 - Game.java
   - 게임 Setting 초기화 기능 (유저 숫자, Strike개수, Ball개수) : InitializationGameSetting()
   - 상대방 숫자와 유저 숫자 비교하여 Strike, Ball 개수 Count 기능 : checkScore()
