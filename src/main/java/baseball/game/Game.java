@@ -7,7 +7,9 @@ import baseball.util.Print;
 import baseball.util.Utility;
 import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Comparator;
 import java.util.List;
+import javax.swing.plaf.ComponentUI;
 
 public class Game {
     private List<Integer> computer = null;
@@ -68,17 +70,26 @@ public class Game {
             Integer computerNumber = computer.get(i);
             Integer predictNumber = predictNumbers.get(i);
 
-            if (computerNumber.equals(predictNumber)) {
+            if (isStrike(computerNumber, predictNumber)) {
                 strike++;
-            } else {
-                if (predictNumbers.contains(computerNumber)) {
-                    ball++;
-                }
+                continue;
+            }
+
+            if (isBall(predictNumbers, computerNumber, i)) {
+                ball++;
             }
         }
 
         this.strike = strike;
         this.ball = ball;
+    }
+
+    private static boolean isBall(List<Integer> predictNumbers, Integer computerNumber, int index) {
+        return predictNumbers.contains(computerNumber) && !predictNumbers.get(index).equals(computerNumber);
+    }
+
+    private static boolean isStrike(Integer computerNumber, Integer predictNumber) {
+        return computerNumber.equals(predictNumber);
     }
 
 }
