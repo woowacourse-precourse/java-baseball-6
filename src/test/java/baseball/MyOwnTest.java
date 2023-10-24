@@ -87,15 +87,14 @@ public class MyOwnTest extends NsTest {
     }
 
     @Test
-    @DisplayName("모든_자리가_같으면_0과3을_가진_배열을_반환한다")
+    @DisplayName("모든_자리가_같으면_3스트라이크를_반환한다")
     void 정답이면_0과3을_원소로_갖는다() {
         assertSimpleTest(() -> {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> userGuess = List.of(1, 2, 3);
 
-            Application.printScore(computer, userGuess);
 
-            assertThat(output())
+            assertThat(Application.getScoreMessage(computer, userGuess))
                     .isEqualTo("3스트라이크");
         });
     }
@@ -106,9 +105,7 @@ public class MyOwnTest extends NsTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> user = List.of(2, 9, 3);
 
-            Application.printScore(computer, user);
-
-            assertThat(output())
+            assertThat(Application.getScoreMessage(computer, user))
                     .isEqualTo("1볼 1스트라이크");
 
         });
@@ -120,8 +117,7 @@ public class MyOwnTest extends NsTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> user = List.of(2, 9, 7);
 
-            Application.printScore(computer, user);
-            assertThat(output())
+            assertThat(Application.getScoreMessage(computer, user))
                     .isEqualTo("1볼");
         });
     }
@@ -132,9 +128,7 @@ public class MyOwnTest extends NsTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> user = List.of(4, 5, 6);
 
-            Application.printScore(computer, user);
-
-            assertThat(output())
+            assertThat(Application.getScoreMessage(computer, user))
                     .isEqualTo("낫싱");
 
         });
@@ -144,15 +138,15 @@ public class MyOwnTest extends NsTest {
     @DisplayName("다시_시작할_때_숫자를_넣어야_합니다.")
     void 다시_시작할_때_숫자가_아닐_경우() {
         assertSimpleTest(() ->
-                        assertThatThrownBy(() -> {
-                                    try (MockedStatic<Console> console = mockStatic(Console.class)) {
-                                        when(Console.readLine()).thenReturn("q");
-                                        Application.isGameOver();
-                                    }
-                                }
-                        )
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining("your choice should be in range 1 to 2.")
+                assertThatThrownBy(() -> {
+                            try (MockedStatic<Console> console = mockStatic(Console.class)) {
+                                when(Console.readLine()).thenReturn("q");
+                                Application.isGameOver();
+                            }
+                        }
+                )
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("your choice should be in range 1 to 2.")
         );
 
     }
@@ -161,17 +155,28 @@ public class MyOwnTest extends NsTest {
     @DisplayName("다시_시작할_때_한_자리_수를_넣어야_합니다.")
     void 다시_시작할_때_한자리가_아닐_경우() {
         assertSimpleTest(() ->
-                        assertThatThrownBy(() -> {
-                                    try (MockedStatic<Console> console = mockStatic(Console.class)) {
-                                        when(Console.readLine()).thenReturn("1234");
-                                        Application.isGameOver();
-                                    }
-                                }
-                        )
-                                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> {
+                            try (MockedStatic<Console> console = mockStatic(Console.class)) {
+                                when(Console.readLine()).thenReturn("1234");
+                                Application.isGameOver();
+                            }
+                        }
+                )
+                        .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("your choice should exactly be one digit.")
         );
+    }
 
+    @Test
+    @DisplayName("다시_시작할때_정상적인_입력을_넣으면_boolean을_반환합니다")
+    void 다시_시작할_때_정상값을_넣으면() {
+        assertSimpleTest(() -> {
+            try (MockedStatic<Console> console = mockStatic(Console.class)) {
+                when(Console.readLine()).thenReturn("1", "2");
+                assertThat(Application.isGameOver()).isTrue();
+                assertThat(Application.isGameOver()).isFalse();
+            }
+        });
     }
 
     @Override
