@@ -38,7 +38,7 @@ public class BaseBallParser {
         }
     }
 
-    private static void isDuplicate(List<Integer> numbers, int pick) throws IllegalArgumentException{
+    private static void isDuplicate(List<Integer> numbers, int pick) throws IllegalArgumentException {
         if (numbers.contains(pick)) {
             throw new IllegalArgumentException("duplicate number");
         }
