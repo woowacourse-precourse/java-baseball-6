@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.model.Numbers;
 import baseball.model.Score;
 import baseball.view.ComputerViewer;
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -30,20 +29,19 @@ public class Computer {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            addToComputer(randomNumbers,randomNumber);
+            addRandomNumbers(randomNumbers,randomNumber);
         }
 
         return randomNumbers;
     }
 
-    private void addToComputer(List<Integer> randomNumbers, int randomNumber) {
+    private void addRandomNumbers(List<Integer> randomNumbers, int randomNumber) {
         if (!randomNumbers.contains(randomNumber)) {
             randomNumbers.add(randomNumber);
         }
     }
 
     public boolean isWin(Score score) {
-        String isFinish = "0";
         if (score.getStrike() == 3) {
             viewer.showGameWin();
             return false;
