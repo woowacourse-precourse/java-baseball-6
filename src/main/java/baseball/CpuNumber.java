@@ -15,11 +15,14 @@ public class CpuNumber {
     private void validateContains(int number1, int number2, int number3) {
         if (!cpuNumber.contains(number1)) {
             cpuNumber.add(number1);
-        } else if (!cpuNumber.contains(number2)) {
+        }
+        if (!cpuNumber.contains(number2)) {
             cpuNumber.add(number2);
-        } else if (!cpuNumber.contains(number3)) {
+        }
+        if (!cpuNumber.contains(number3)) {
             cpuNumber.add(number3);
         }
+
     }
 
     public List<Integer> getCPUNumber() {
