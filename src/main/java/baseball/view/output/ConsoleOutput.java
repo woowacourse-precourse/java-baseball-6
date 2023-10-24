@@ -1,7 +1,7 @@
 package baseball.view.output;
 
 
-public class OutputImpl implements Output {
+public class ConsoleOutput implements Output {
 
     @Override
     public void printlnMessage(String message) {

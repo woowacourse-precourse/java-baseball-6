@@ -1,9 +1,9 @@
 package baseball;
 
 import baseball.view.input.Input;
-import baseball.view.input.InputImpl;
+import baseball.view.input.ConsoleInput;
 import baseball.view.output.Output;
-import baseball.view.output.OutputImpl;
+import baseball.view.output.ConsoleOutput;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,11 +18,11 @@ public class Application {
     }
 
     private static Input input() {
-        return new InputImpl();
+        return new ConsoleInput();
     }
 
     private static Output output() {
-        return new OutputImpl();
+        return new ConsoleOutput();
     }
 
 }

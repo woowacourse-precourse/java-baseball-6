@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
-public class InputImpl implements Input {
+public class ConsoleInput implements Input {
 
     private static final String REGEX_BASEBALL = "^[1-9]{3}$";
     private static final String REGEX_END = "[12]{1}";
