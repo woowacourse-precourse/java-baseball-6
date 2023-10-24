@@ -11,9 +11,18 @@ public class Ball {
     }
 
     public boolean isSameNumberAndSamePosition(Ball otherBall) {
-        return this.number.isSameNumber(otherBall.number) && this.position == otherBall.position;
+        return this.number.isSameNumber(otherBall.number) && isSamePosition(otherBall.position);
     }
+
+    private boolean isSamePosition(int otherPositon) {
+        return this.position == otherPositon;
+    }
+
     public boolean isSameNumberAndOtherPosition(Ball otherBall) {
-        return this.number.isSameNumber(otherBall.number) && this.position != otherBall.position;
+        return this.number.isSameNumber(otherBall.number) && isOtherPosition(otherBall.position);
+    }
+
+    private boolean isOtherPosition(int otherPosition) {
+        return this.position != otherPosition;
     }
 }
