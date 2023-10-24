@@ -26,7 +26,7 @@ class Computer {
         int ball = score.get(1);
         String printFormat = "";
         if (ball + strike == 0) {
-            System.out.println("낫싱\n");
+            System.out.println("낫싱");
             return ;
         }
         if (ball != 0) {
@@ -89,27 +89,28 @@ class Game {
             String input = Console.readLine();
             // 잘못된 입력, 게임 종료
             if (!isValidInput(input)) {
-                throw new IllegalArgumentException("정상값을 입력해 주세요.\n");
+                throw new IllegalArgumentException("정상값을 입력해 주세요.");
             }
             if (cp.userWin(input)) {
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break ;
             }
         }
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String gameEnd = Console.readLine();
         // 여기서도 유효한 값인지 확인해야 할듯.
-        //if (endGame)
-        return true;
+        return isGameEnd(gameEnd);
     }
 
     // 사용자가 입력한 input이 유효한지 확인하고, 게임 종료 여부를 해석해 반환한다.
     boolean isGameEnd(String input) {
         if (input.length() != 1 || !input.matches("[0-9]+"))
-            throw new IllegalArgumentException("정상값을 입력해 주세요.\n");
-        if (input.charAt(0) == '1' || input.charAt(0) == '2')
+            throw new IllegalArgumentException("정상값을 입력해 주세요.");
+        if (input.charAt(0) == '1')
             return true;
-        throw new IllegalArgumentException("1 혹은 2로 값을 입력해 주세요.\n");
+        else if (input.charAt(0) == '2')
+            return false;
+        throw new IllegalArgumentException("1 혹은 2로 값을 입력해 주세요.");
     }
 
     // 3개의 '숫자'를 받았는지, 그 중 중복이 있는지를 판단
@@ -137,6 +138,5 @@ public class Application {
                 break ;
             }
         }
-
     }
 }
