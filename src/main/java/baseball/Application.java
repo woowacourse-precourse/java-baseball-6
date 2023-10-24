@@ -86,13 +86,17 @@ class BaseballView {
     public void printResult(int balls, int strikes) {
         if (balls == 0 && strikes == 0) {
             System.out.println("낫싱");
-        } else if (strikes == 0) {
-            System.out.printf("%d볼\n", balls);
-        } else if (balls == 0) {
-            System.out.printf("%d스트라이크\n", strikes);
-        } else {
-            System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
+            return;
         }
+        if (strikes == 0) {
+            System.out.printf("%d볼\n", balls);
+            return;
+        }
+        if (balls == 0) {
+            System.out.printf("%d스트라이크\n", strikes);
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
     }
 
     public String getUserInput() {
