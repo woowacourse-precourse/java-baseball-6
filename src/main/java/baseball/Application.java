@@ -56,6 +56,9 @@ public class Application {
         if (choose == 1) {
             main(new String[]{});
         }
+        if (choose == 2) {
+            System.out.println("게임 종료");
+        }
     }
 
     static List<Integer> makeNumbers () {
