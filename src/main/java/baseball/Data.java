@@ -5,9 +5,15 @@ import java.util.List;
 
 public class Data {
 
-    private static final boolean IS_NO_ERROR = true;
-    private static final boolean IS_FULL_STRIKE = false;
-    private static final String RESTART_RESPONSE = "-1";
+    public static final int INITIAL_RANDOM_NUMBER = 1;
+    public static final int LAST_RANDOM_NUMBER = 9;
+    public static final int DIGIT_LENGTH_LIMIT = 3;
+    public static final String CLOSE_GAME_INPUT = "2";
+
+    private static final boolean DEFAULT_IS_NO_ERROR = true;
+    private static final boolean DEFAULT_IS_FULL_STRIKE = false;
+    private static final String DEFAULT_RESTART_RESPONSE = "-1";
+
     private String userNumber;
     private List<String> userNumberList;
     private List<String> randomNumberList;
@@ -19,9 +25,9 @@ public class Data {
 
     public Data() {
         this.randomNumberList = new ArrayList<>();
-        this.isNoError = IS_NO_ERROR;
-        this.restartResponse = RESTART_RESPONSE;
-        this.isFullStrike = IS_FULL_STRIKE;
+        this.isNoError = DEFAULT_IS_NO_ERROR;
+        this.restartResponse = DEFAULT_RESTART_RESPONSE;
+        this.isFullStrike = DEFAULT_IS_FULL_STRIKE;
     }
 
     public String getUserNumber() {

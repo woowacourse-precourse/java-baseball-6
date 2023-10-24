@@ -6,17 +6,13 @@ import java.util.List;
 
 public class GameProcessor {
 
-    private static final int INITIAL_RANDOM_NUMBER = 1;
-    private static final int LAST_RANDOM_NUMBER = 9;
-    private static final int DIGIT_LENGTH_LIMIT = 3;
-
     private List<String> generateRandomNumberList(Data data) {
         List<String> randomNumberList = data.getRandomNumberList();
 
         if (randomNumberList.isEmpty()) {
-            for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
-                int randomNumber = Randoms.pickNumberInRange(INITIAL_RANDOM_NUMBER,
-                        LAST_RANDOM_NUMBER);
+            for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
+                int randomNumber = Randoms.pickNumberInRange(Data.INITIAL_RANDOM_NUMBER,
+                        Data.LAST_RANDOM_NUMBER);
                 randomNumberList.add(String.valueOf(randomNumber));
             }
             data.setRandomNumberList(randomNumberList);
@@ -28,7 +24,7 @@ public class GameProcessor {
         List<String> userNumberList = new ArrayList<>();
         String userNumberString = data.getUserNumber();
 
-        for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
+        for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
             char digitChar = userNumberString.charAt(i);
             userNumberList.add(String.valueOf(digitChar));
         }
@@ -40,8 +36,8 @@ public class GameProcessor {
             List<String> randomNumberList) {
         int ball = 0;
 
-        for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
-            for (int j = 0; j < DIGIT_LENGTH_LIMIT; j++) {
+        for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
+            for (int j = 0; j < Data.DIGIT_LENGTH_LIMIT; j++) {
                 if (userNumberList.get(i).equals(randomNumberList.get(j)) && i != j) {
                     ball++;
                 }
@@ -54,7 +50,7 @@ public class GameProcessor {
             List<String> randomNumberList) {
         int strike = 0;
 
-        for (int i = 0; i < DIGIT_LENGTH_LIMIT; i++) {
+        for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
             if (userNumberList.get(i).equals(randomNumberList.get(i))) {
                 strike++;
             }
@@ -64,7 +60,7 @@ public class GameProcessor {
 
     public Boolean validateFullStrike(Data data) {
         boolean isFullStrike = false;
-        if (data.getStrike() == DIGIT_LENGTH_LIMIT) {
+        if (data.getStrike() == Data.DIGIT_LENGTH_LIMIT) {
             isFullStrike = true;
         }
         return isFullStrike;
@@ -110,7 +106,7 @@ public class GameProcessor {
 
     public boolean illegalArgumentException(Data data) {
         boolean isError = false;
-        if ((data.getUserNumber().length()) != DIGIT_LENGTH_LIMIT) {
+        if ((data.getUserNumber().length()) != Data.DIGIT_LENGTH_LIMIT) {
             isError = true;
         }
         return isError;
