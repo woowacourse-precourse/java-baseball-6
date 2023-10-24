@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.domain.Hint;
 import baseball.domain.Number;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -21,6 +22,12 @@ public class NumberService {
         }
 
         return false;
+    }
+
+    public String getHint(int userNumber) {
+        Number number = Number.parseNumber(userNumber);
+        Hint hint = machineNumber.getHint(number);
+        return hint.toString();
     }
 
     public void init() {
