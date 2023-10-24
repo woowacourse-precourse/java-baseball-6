@@ -1,6 +1,8 @@
-package baseball.domain.ball;
+package baseball.domain.game;
 
-public record GuessResult(
+import baseball.domain.ball.BallNumbers;
+
+public record GameResult(
         int ballCount,
         int strikeCount
 ) {

@@ -3,7 +3,6 @@ package baseball.domain.game;
 import baseball.domain.ball.Answer;
 import baseball.domain.ball.AnswerCreator;
 import baseball.domain.ball.Guess;
-import baseball.domain.ball.GuessResult;
 
 public final class Computer {
     private final AnswerCreator answerCreator;
@@ -14,11 +13,14 @@ public final class Computer {
         this.answerCreator = answerCreator;
     }
 
-    public void resetAnswer() {
+    public void createAnswer() {
         answer = answerCreator.create();
     }
 
-    public GuessResult check(final Guess guess) {
-        return answer.compare(guess);
+    public GameResult check(final Guess guess) {
+        return new GameResult(
+                answer.getBallCount(guess),
+                answer.getStrikeCount(guess)
+        );
     }
 }
