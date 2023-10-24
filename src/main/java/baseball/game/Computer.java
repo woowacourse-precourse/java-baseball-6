@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public static int[] generateRandomNumbers() {
+    public int[] generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,7 +18,7 @@ public class Computer {
                 .toArray();
     }
 
-    public static int[] calculateResult(int[] guessNumbers, int[] randomNumbers) {
+    public int[] calculateResult(int[] guessNumbers, int[] randomNumbers) {
         int[] result = new int[2];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -34,7 +34,7 @@ public class Computer {
         return result;
     }
 
-    public static String formatResult(int[] result) {
+    public String formatResult(int[] result) {
         if (result[0] > 0 && result[1] > 0) {
             return result[0] + "볼 " + result[1] + "스트라이크";
         } else if (result[0] > 0) {
@@ -46,7 +46,7 @@ public class Computer {
         }
     }
 
-    public static boolean isGameOver(int[] result) {
+    public boolean isGameOver(int[] result) {
         return result[1] == 3;
     }
 }

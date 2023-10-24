@@ -3,7 +3,15 @@ package baseball.game;
 import baseball.view.GameView;
 
 public class BaseballGame {
-    public static void start() {
+    private final Computer computer;
+    private final User user;
+
+    public BaseballGame() {
+        computer = new Computer();
+        user = new User();
+    }
+
+    public void start() {
         GameView.displayGameStartMessage();
         while (true) {
             play();
@@ -14,25 +22,25 @@ public class BaseballGame {
         }
     }
 
-    private static void play() {
-        int[] randomNumbers = Computer.generateRandomNumbers();
+    private void play() {
+        int[] randomNumbers = computer.generateRandomNumbers();
         while (true) {
             GameView.displayUserInputPrompt();
-            int[] guessNumbers = User.getGuessNumbers();
+            int[] guessNumbers = user.getGuessNumbers();
 
-            int[] result = Computer.calculateResult(guessNumbers, randomNumbers);
-            GameView.displayGuessResult(Computer.formatResult(result));
+            int[] result = computer.calculateResult(guessNumbers, randomNumbers);
+            GameView.displayGuessResult(computer.formatResult(result));
 
-            if (Computer.isGameOver(result)) {
+            if (computer.isGameOver(result)) {
                 GameView.displayCorrectGuessMessage();
                 break;
             }
         }
     }
 
-    private static boolean playAgain() {
+    private boolean playAgain() {
         GameView.displayGameRestartPrompt();
-        int choice = User.getChoiceToPlayAgain();
+        int choice = user.getChoiceToPlayAgain();
         return choice == 1;
     }
 }

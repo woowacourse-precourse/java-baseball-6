@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 public class User {
-    public static int[] getGuessNumbers() {
+    public int[] getGuessNumbers() {
         String userInput = Console.readLine();
         if (!ValidationUtils.isValidGuess(userInput)) {
             throw new IllegalArgumentException();
@@ -15,7 +15,7 @@ public class User {
                 .toArray();
     }
 
-    public static int getChoiceToPlayAgain() {
+    public int getChoiceToPlayAgain() {
         String userInput = Console.readLine();
         if (!ValidationUtils.isValidChoice(userInput)) {
             throw new IllegalArgumentException();
