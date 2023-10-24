@@ -1,7 +1,17 @@
 package baseball;
 
+import baseball.menu.PlayMenu;
+import baseball.menu.StartMenu;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Application ap = new Application();
+        ap.start();
+    }
+    // 프로젝트 시작
+    public void start() {
+        PlayMenu playMenu = new PlayMenu();
+        StartMenu startMenu = new StartMenu(playMenu);
+        startMenu.start();
     }
 }
