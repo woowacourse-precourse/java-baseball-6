@@ -12,30 +12,38 @@ public class Validator{
     private final static String SIZE_EXCEPTION = "입력 숫자는 세자리 입니다.";
     private final static String DUPLICATE_EXCEPTION = "중복된 값이 존재합니다.";
     private final static String GAME_END_EXCEPTION = "1 또는 2의 값을 입력하세요.";
+    private final static String EMPTY_EXCEPTION = "비어있지 않은 값을 입력하세요";
 
 
     public Validator() {}
 
     public void checkValidNumbers(List<Integer> numbers) {
         if (!isValidNumbers(numbers)) {
-            throw new IllegalStateException(NUMBER_EXCEPTION);
+            throw new IllegalArgumentException(NUMBER_EXCEPTION);
         }
         if (!isValidSize(numbers)) {
-            throw new IllegalStateException(SIZE_EXCEPTION);
+            throw new IllegalArgumentException(SIZE_EXCEPTION);
         }
         if (!isValidDuplicate(numbers)) {
-            throw new IllegalStateException(DUPLICATE_EXCEPTION);
+            throw new IllegalArgumentException(DUPLICATE_EXCEPTION);
         }
     }
 
     public void checkValidString(String stringNumbers) {
+        if (!isNotEmpty(stringNumbers)) {
+             throw new IllegalArgumentException(EMPTY_EXCEPTION);
+        }
         List<Integer> numbers = stringNumbers.chars()
                 .map(number -> number-48)
                 .boxed()
                 .toList();
         if (!isValidNumbers(numbers)) {
-            throw new IllegalStateException(NUMBER_EXCEPTION);
+            throw new IllegalArgumentException(NUMBER_EXCEPTION);
         }
+    }
+
+    private boolean isNotEmpty(String stringNumbers) {
+        return !stringNumbers.isEmpty();
     }
 
     public void checkValidGameEnd(String gameEndFlag) {
