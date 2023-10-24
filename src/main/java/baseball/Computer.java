@@ -15,7 +15,7 @@ public class Computer {
     public void pickSecretNumbers() {
         secretNumbers.clear();
         while (secretNumbers.size() < GameConstants.NUM_DIGITS) {
-            int newNumber = Randoms.pickNumberInRange(1, 9);
+            int newNumber = Randoms.pickNumberInRange(GameConstants.MIN_NUMBER, GameConstants.MAX_NUMBER);
             if (!secretNumbers.contains(newNumber)) {
                 secretNumbers.add(newNumber);
             }
