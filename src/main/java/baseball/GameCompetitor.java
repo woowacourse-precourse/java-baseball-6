@@ -13,7 +13,6 @@ public class GameCompetitor {
                 CompititorNumber.add(randomNumber);
             }
         }
-        System.out.println(CompititorNumber);
         return CompititorNumber;
     }
 }
