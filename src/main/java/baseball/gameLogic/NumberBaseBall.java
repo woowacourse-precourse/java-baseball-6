@@ -24,7 +24,7 @@ public class NumberBaseBall {
     /*
     멤버 초기화
      */
-    public void init(){
+    public void init() {
         numberChecker = new NumberChecker();
         computerAction = new ComputerAction();
         userAction = new UserAction();
@@ -42,11 +42,11 @@ public class NumberBaseBall {
     6. 게임을 계속 진행할 지 확인
     이하 3. ~  6. 반복
      */
-    public void run(){
+    public void run() {
         generateComputerNumber();
         MessageViewer.printStartMsg();
 
-        while (gameStatus == WANNA_KEEP_PLAYING){
+        while (gameStatus == WANNA_KEEP_PLAYING) {
             getUserAnswer();
             getScore();
             MessageViewer.printResultMsg(score.ballCount, score.strikeCount);
@@ -57,16 +57,16 @@ public class NumberBaseBall {
     /*
     아래 함수들의 기능은 함수 이름과 동일
      */
-    public void getScore(){
+    public void getScore() {
         score = numberChecker.checkNumber(userNumList, computerNumList);
     }
 
-    public void getUserAnswer(){
+    public void getUserAnswer() {
         userAction.inputAnswer();
         userNumList = userAction.showNumberList();
     }
 
-    public void checkKeepPlaying(){
+    public void checkKeepPlaying() {
         userAction.clearAnswer();
 
         if (score.strikeCount == MAX_STRIKES) {
@@ -79,7 +79,7 @@ public class NumberBaseBall {
         }
     }
 
-    public void generateComputerNumber(){
+    public void generateComputerNumber() {
         if (gameStatus == WANNA_KEEP_PLAYING) {
             computerAction.clearAnswer();
             computerAction.generateNumber();

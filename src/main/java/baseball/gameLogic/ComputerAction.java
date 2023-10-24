@@ -17,8 +17,8 @@ import static baseball.utils.Constants.*;
 public class ComputerAction {
     private final Computer computer = new Computer();
 
-    public void generateNumber(){
-        while (computer.getListSize() < ANSWER_LENGTH){
+    public void generateNumber() {
+        while (computer.getListSize() < ANSWER_LENGTH) {
             int randomNumber = RandomNumberGenerator.pickRandomNaturalNumber();
             List<Integer> randomNumberList = showNumberList();
 
@@ -27,11 +27,11 @@ public class ComputerAction {
         }
     }
 
-    public List<Integer> showNumberList(){
+    public List<Integer> showNumberList() {
         return computer.showNumberList();
     }
 
-    public void clearAnswer(){
+    public void clearAnswer() {
         computer.clearAnswerList();
     }
 }

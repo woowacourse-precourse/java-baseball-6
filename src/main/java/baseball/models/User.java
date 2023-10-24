@@ -14,23 +14,23 @@ public class User {
     private final List<Integer> numberList = new ArrayList<>();
     private int mind;
 
-    public void saveNumber(int number){
+    public void saveNumber(int number) {
         numberList.add(number);
     }
 
-    public void changeMind(int restartInt){
+    public void changeMind(int restartInt) {
         mind = restartInt;
     }
 
-    public List<Integer> showNumberList(){
+    public List<Integer> showNumberList() {
         return new ArrayList<>(numberList);
     }
 
-    public int showMind(){
+    public int showMind() {
         return mind;
     }
 
-    public void clearAnswerList(){
+    public void clearAnswerList() {
         numberList.clear();
     }
 

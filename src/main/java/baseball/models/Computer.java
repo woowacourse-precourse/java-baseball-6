@@ -12,12 +12,12 @@ import baseball.utils.InputValidator;
 public class Computer {
     private final List<Integer> numberList = new ArrayList<>();
 
-    public void saveNumber(int randomNumber){
+    public void saveNumber(int randomNumber) {
         InputValidator.validateDigitRange(randomNumber);
         numberList.add(randomNumber);
     }
 
-    public int getListSize(){
+    public int getListSize() {
         return numberList.size();
     }
 
@@ -25,7 +25,7 @@ public class Computer {
         return new ArrayList<>(numberList);
     }
 
-    public void clearAnswerList(){
+    public void clearAnswerList() {
         numberList.clear();
     }
 

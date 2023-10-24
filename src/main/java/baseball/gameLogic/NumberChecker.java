@@ -1,6 +1,7 @@
 package baseball.gameLogic;
 
 import baseball.models.Score;
+
 import java.util.List;
 
 import static baseball.utils.Constants.*;
@@ -13,14 +14,14 @@ public class NumberChecker {
     private List<Integer> user;
     private List<Integer> computer;
 
-    public Score checkNumber(List<Integer> user, List<Integer> computer){
+    public Score checkNumber(List<Integer> user, List<Integer> computer) {
         this.user = user;
         this.computer = computer;
 
         return countBallAndStrike();
     }
 
-    public Score countBallAndStrike(){
+    public Score countBallAndStrike() {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -34,14 +35,14 @@ public class NumberChecker {
         return new Score(ballCount, strikeCount);
     }
 
-    public boolean isStrike(int index){
+    public boolean isStrike(int index) {
         int userDigit = user.get(index);
         int computerDigit = computer.get(index);
 
         return userDigit == computerDigit;
     }
 
-    public boolean isBall(int index){
+    public boolean isBall(int index) {
         int userDigit = user.get(index);
 
         return computer.contains(userDigit);

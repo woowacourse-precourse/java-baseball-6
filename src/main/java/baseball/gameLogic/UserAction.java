@@ -24,7 +24,7 @@ import baseball.userInterface.InputViewer;
 public class UserAction {
     private final User user = new User();
 
-    public void inputAnswer(){
+    public void inputAnswer() {
         String userAnswer = InputViewer.requestUserAnswer();
         requestValidateString(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
@@ -33,31 +33,31 @@ public class UserAction {
         }
     }
 
-    public void inputRestartFactor(){
+    public void inputRestartFactor() {
         int mind;
         String userInput = InputViewer.requestUserRestartFactor();
         mind = requestValidateRestartFactor(userInput);
         user.changeMind(mind);
     }
 
-    public List<Integer> showNumberList(){
+    public List<Integer> showNumberList() {
         return user.showNumberList();
     }
 
-    public int showMind(){
+    public int showMind() {
         return user.showMind();
     }
 
-    public void clearAnswer(){
+    public void clearAnswer() {
         user.clearAnswerList();
     }
 
-    public void requestValidateString(String userAnswer){
+    public void requestValidateString(String userAnswer) {
         InputValidator.validateInputLength(userAnswer, ANSWER_LENGTH);
         InputValidator.validateIsDistinct(userAnswer);
     }
 
-    public int requestValidateCharacter(char userAnswerChar){
+    public int requestValidateCharacter(char userAnswerChar) {
         int digit;
         InputValidator.validateIsCharacterDigit(userAnswerChar);
         digit = Character.getNumericValue(userAnswerChar);
@@ -65,7 +65,7 @@ public class UserAction {
         return digit;
     }
 
-    public int requestValidateRestartFactor(String userInput){
+    public int requestValidateRestartFactor(String userInput) {
         InputValidator.validateInputLength(userInput, RESTART_INPUT_LENGTH);
         InputValidator.validateRestartInput(userInput);
         return Integer.parseInt(userInput);
