@@ -4,55 +4,71 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    private static String answer="";
-    private static int ball=0;// 같은 숫자가 있기만 해도 ++
-    private static int strike=0;// 같은 숫자가 있고, 위치도 같으면 ++
+    private static String answer;
+    private static int ball;// 같은 숫자가 있기만 해도 ++
+    private static int strike;// 같은 숫자가 있고, 위치도 같으면 ++
+    private static int choiceContinue;// 재시작 선택
+    static {
+        initValues();
+    }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        throwBalls();
+        playGames();
     }
 
-    private static void printResult() {
+    private static void printResult() {// 출력 타입 구분 후 출력
         ResultType type = ResultType.getType(ball, strike);
         String message = type.getMessage(ball, strike);
         System.out.println(message);
     }
 
-    private static void makeRandomAnswer() {
+    private static void makeRandomAnswer() {//정답 문자열 만들기
+        answer = "";
         for (int i = 0; i < 3; i++)
             answer += String.valueOf(Randoms.pickNumberInRange(1, 9));
     }
 
-    private static void throwBalls(){
+    private static void playGames() {
         makeRandomAnswer();
-
-        while (strike!=3){
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputLine = Console.readLine();
-            if(inputLine.length()!=3)
-                throw new IllegalArgumentException();
-            strike=0;
-            ball=0;
-
-            calcResult(inputLine);
-
+        while (strike != 3 ) {
+            throwBall();
             printResult();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int choiceContinue = Integer.parseInt(Console.readLine());
-        if(choiceContinue ==1){
-            strike=0;
-            ball=0;
-            answer="";
-            throwBalls();
-        } else if (choiceContinue==2) {
-            return;
-        } else
-            throw new IllegalArgumentException();
+        decideReplayGame();
     }
 
-    private static void calcResult(String inputLine) {
+    private static void decideReplayGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        choiceContinue = Integer.parseInt(Console.readLine());
+        if(choiceContinue != 1 && choiceContinue != 2)
+            throw new IllegalArgumentException();
+        if (choiceContinue == 2)
+            return;
+        restartGame();
+    }
+
+    private static void throwBall() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputLine = Console.readLine();
+        if (inputLine.length() != 3)
+            throw new IllegalArgumentException();
+        initValues();
+        countBallAndStrike(inputLine);
+    }
+
+    private static void initValues() {
+        strike = 0;
+        ball = 0;
+        choiceContinue=0;
+    }
+
+    private static void restartGame() {
+        initValues();
+        playGames();
+    }
+
+    private static void countBallAndStrike(String inputLine) {
         for (int i = 0; i < inputLine.length(); i++) {
             String eachChar = String.valueOf(inputLine.charAt(i));
             if(!answer.contains(eachChar))// 같은 숫자가 없으면
@@ -64,7 +80,8 @@ public class Application {
             ball++;
         }
     }
-    enum ResultType {
+
+    enum ResultType {//공 던진 후 결과 타입
         BOTH_NON_ZERO {
             @Override
             public String getMessage(int ball, int strike) {
@@ -89,7 +106,6 @@ public class Application {
                 return "낫싱";
             }
         };
-
         public abstract String getMessage(int ball, int strike);
 
         public static ResultType getType(int ball, int strike) {
