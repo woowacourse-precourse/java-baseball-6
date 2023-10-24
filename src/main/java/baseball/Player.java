@@ -22,15 +22,15 @@ public class Player {
         List<Integer> nums = new ArrayList<>();
         String input = Console.readLine();
         if(input.length()!=3){
-            throw new IllegalArgumentException("there must be 3 numbers");
+            throw new IllegalArgumentException("there must be only 3 numbers");
         }
 
-        int number = Integer.parseInt(input);
-        nums.add(number/100);
-        number%=100;
-        nums.add(number/10);
-        number%=10;
-        nums.add(number);
+        for(int i=0;i<3;i++){
+            int number = input.charAt(i) - '0';
+            nums.add(number);
+        }
+
+        //System.out.println("player ===  " + nums);
 
         validateNumber(nums);
 
