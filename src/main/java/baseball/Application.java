@@ -62,18 +62,19 @@ public class Application {
     }
 
     private static void printResult(int ball, int strike) {
+        String resultMessage = "";
         if (strike == NUMBER_LENGTH) {
-            System.out.println(strike + "스트라이크");
-            System.out.println(NUMBER_LENGTH + GAME_WIN_MESSAGE);
+            resultMessage = strike + "스트라이크\n" + NUMBER_LENGTH + GAME_WIN_MESSAGE;
         } else if (ball > 0 && strike > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            resultMessage = ball + "볼 " + strike + "스트라이크";
         } else if (ball > 0) {
-            System.out.println(ball + "볼");
+            resultMessage = ball + "볼";
         } else if (strike > 0) {
-            System.out.println(strike + "스트라이크");
-        } else if (ball == 0 && strike == 0){
-            System.out.println("낫싱");
+            resultMessage = strike + "스트라이크";
+        } else if (ball == 0 && strike == 0) {
+            resultMessage = "낫싱";
         }
+        System.out.println(resultMessage);
     }
 
     private static List<Integer> createRandomNumber() {
