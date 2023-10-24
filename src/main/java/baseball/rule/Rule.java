@@ -27,8 +27,20 @@ public class Rule {
 
         int cnt = 0;
 
-        if (c1 == u2 || c1 == u3 || c2 == c3 ) {
-            cnt++;
+        if (c1 != u1) {
+            if (c1 == u2 || c1 == u3){
+                cnt++;
+            }
+        }
+        if (c2 != u2) {
+            if (c2 == u1 || c2 == u3) {
+                cnt++;
+            }
+        }
+        if (c3 != u3){
+            if (c3== u1 || c3 == u2){
+                cnt++;
+            }
         }
 
         return cnt;
