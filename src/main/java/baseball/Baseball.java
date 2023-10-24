@@ -10,9 +10,20 @@ public class Baseball {
     public static void play() { // 0. 게임을 실행하는 메서드
         String[] inputNums;
         List<Integer> answerNums;
-        System.out.println("숫자 야구 게임을 시작합니다.");
         answerNums = pickThreeNumbers();
-        inputNums = inputThreeNums();
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            inputNums = inputThreeNums();
+            String result = countStrikeOrBall(inputNums, answerNums);
+            if (result == "3스트라이크") {
+                System.out.println(result);
+                replayOrExit();
+                break;
+            } else {
+                System.out.println(result);
+            }
+        }
     }
 
     public static List<Integer> pickThreeNumbers() { // 1. 컴퓨터가 가질 3개의 값을 초기화하는 메서드
@@ -59,8 +70,8 @@ public class Baseball {
         }
     }
 
-    public static void countStrikeOrBall(String[] playerNums,
-                                         List<Integer> computerNums) { // 5. 입력한 수에 대한 결과를 볼, 스트라이크 개수로 출력하는 메서드
+    public static String countStrikeOrBall(String[] playerNums,
+                                           List<Integer> computerNums) { // 5. 입력한 수에 대한 결과를 볼, 스트라이크 개수로 출력하는 메서드
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < playerNums.length; i++) {
@@ -75,26 +86,25 @@ public class Baseball {
         }
 
         if (strike == 3) {
-            System.out.println("3스트라이크");
-            replayOrExit();
+            return "3스트라이크";
         } else if (strike == 2 && ball == 0) {
-            System.out.println("2스트라이크");
+            return "2스트라이크";
         } else if (strike == 2 && ball == 1) {
-            System.out.println("1볼 2스트라이크");
+            return "1볼 2스트라이크";
         } else if (strike == 1 && ball == 2) {
-            System.out.println("2볼 1스트라이크");
+            return "2볼 1스트라이크";
         } else if (strike == 1 && ball == 1) {
-            System.out.println("1볼 1스트라이크");
+            return "1볼 1스트라이크";
         } else if (strike == 1 && ball == 0) {
-            System.out.println("1스트라이크");
+            return "1스트라이크";
         } else if (strike == 0 && ball == 3) {
-            System.out.println("3볼");
+            return "3볼";
         } else if (strike == 0 && ball == 2) {
-            System.out.println("2볼");
+            return "2볼";
         } else if (strike == 0 && ball == 1) {
-            System.out.println("1볼");
-        } else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            return "1볼";
+        } else {
+            return "낫싱";
         }
     }
 
