@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame implements Game{
     private final int answerNumber = generateAnswerNumber();
@@ -23,7 +22,7 @@ public class BaseballGame implements Game{
         List<Integer> computer = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         while (computer.size() < 3){
-            int pickedNumber = pickNumberInRange(1, 9);
+            int pickedNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(pickedNumber)) {
                 computer.add(pickedNumber);
                 sb.append(pickedNumber);
@@ -63,7 +62,7 @@ public class BaseballGame implements Game{
      */
     private boolean isContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String inputString = readLine();
+        String inputString = Console.readLine();
         if (inputString.equals("1")) {
             return true;
         }
@@ -134,7 +133,7 @@ public class BaseballGame implements Game{
     private int inputNumber() {
         // 사용자로부터 올바른 숫자 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
-        String inputString = readLine();
+        String inputString = Console.readLine();
         return checkInputNumber(inputString);
     }
 
