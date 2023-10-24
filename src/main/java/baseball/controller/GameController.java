@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
+    private final int VALUE_RANGE = 3;
+
     private final InputView inputView;
     private final OutputView outputView;
     private GameModel gameModel;
@@ -41,7 +43,7 @@ public class GameController {
 
     private void setComputers() {
         List<Integer> computers = new ArrayList<>();
-        while (computers.size() < 3) {
+        while (computers.size() < VALUE_RANGE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computers.contains(randomNumber)) {
                 computers.add(randomNumber);
@@ -59,10 +61,10 @@ public class GameController {
     }
 
     private int[] checkStrike(List<Integer> human, List<Integer> computer) {
-        int[] strikeIdx = new int[3];
+        int[] strikeIdx = new int[VALUE_RANGE];
         int strike = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < VALUE_RANGE; i++) {
             if (human.get(i).equals(computer.get(i))) {
                 strike += 1;
                 strikeIdx[i] = 1;
@@ -76,7 +78,7 @@ public class GameController {
 
     private void checkBall(List<Integer> human, List<Integer> computer, int[] strikeIdx) {
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < VALUE_RANGE; i++) {
             if (strikeIdx[i] == 1) {
                 continue;
             }
