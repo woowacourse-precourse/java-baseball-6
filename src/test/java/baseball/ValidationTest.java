@@ -1,11 +1,14 @@
 package baseball;
 
+import baseball.core.CompareNumber;
 import baseball.validation.GameValidation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -131,6 +134,18 @@ public class ValidationTest extends NsTest {
 
         //then
         assertThat(verify_result).isTrue();
+    }
+
+    @Test
+    void 사용자_입력_리스트_컴퓨터_리스트_개수_비교_예외_테스트(){
+        //given
+        List<Integer> user = List.of(1, 2, 3);
+        List<Integer> computer = List.of(1, 2, 3, 4);
+
+        //when
+        assertThatThrownBy(()->CompareNumber.compareNumberList(user,computer))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[Err] 유저 입력값과 컴퓨터 생성의 수의 개수가 다릅니다.");
     }
 
     @Override
