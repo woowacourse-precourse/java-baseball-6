@@ -2,8 +2,9 @@ package baseball.view;
 
 public class ComputerView implements View {
 
-    @Override
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
     public void renderResult() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
     }
 }
