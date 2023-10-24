@@ -75,10 +75,10 @@ class NumberTest {
         Assertions.assertEquals(number, x);
 
         IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Number.parseNumber("abc");
+            Number.parseNumber(102);
         });
 
-        Assertions.assertEquals(e.getMessage(),ErrorMessage.NOT_NUMBERS);
+        Assertions.assertEquals(e.getMessage(),ErrorMessage.INVALID_RANGE_NUMBER);
     }
 
     @Test
