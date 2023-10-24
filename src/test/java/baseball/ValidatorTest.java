@@ -7,15 +7,87 @@ import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
 
-  public Computer computer = null;
   public Validator validator = null;
 
   @BeforeEach
   void preSet() {
-    computer = new Computer();
     //TODO: validator 생성할 때, computer의 난수를 받아야해서 불필요하게 생성하게 된다.
-    validator = new Validator(computer.getRandomNumber());
+    validator = new Validator(893);
   }
+
+  @Test
+  void _1스트라이크() {
+    GameMaster gameMaster = new GameMaster();
+    validator.writeBaseballAnswer("857");
+
+    validator.init();
+    validator.changeInputBaseballType();
+
+    String s = gameMaster.printResult(validator.calculateResult());
+    assertEquals(s, "1스트라이크");
+  }
+
+  @Test
+  void _2스트라이크() {
+    GameMaster gameMaster = new GameMaster();
+    validator.writeBaseballAnswer("853");
+
+    validator.init();
+    validator.changeInputBaseballType();
+
+    String s = gameMaster.printResult(validator.calculateResult());
+    assertEquals(s, "2스트라이크");
+  }
+
+  @Test
+  void _3스트라이크() {
+    GameMaster gameMaster = new GameMaster();
+    validator.writeBaseballAnswer("893");
+
+    validator.init();
+    validator.changeInputBaseballType();
+
+    String s = gameMaster.printResult(validator.calculateResult());
+    assertEquals(s, "3스트라이크");
+  }
+
+  @Test
+  void _1볼_1스트라이크() {
+    GameMaster gameMaster = new GameMaster();
+    validator.writeBaseballAnswer("837");
+
+    validator.init();
+    validator.changeInputBaseballType();
+
+    String s = gameMaster.printResult(validator.calculateResult());
+    assertEquals(s, "1볼 1스트라이크");
+  }
+
+  @Test
+  void _2볼_1스트라이크() {
+    GameMaster gameMaster = new GameMaster();
+    validator.writeBaseballAnswer("839");
+
+    validator.init();
+    validator.changeInputBaseballType();
+
+    String s = gameMaster.printResult(validator.calculateResult());
+    assertEquals(s, "2볼 1스트라이크");
+  }
+
+  @Test
+  void 낫싱() {
+    GameMaster gameMaster = new GameMaster();
+    validator.writeBaseballAnswer("127");
+
+    validator.init();
+    validator.changeInputBaseballType();
+
+    String s = gameMaster.printResult(validator.calculateResult());
+    assertEquals(s, "낫싱");
+  }
+
+
 
   @Test
   void 공백이_포함되어서는_안된다() {
