@@ -12,12 +12,20 @@ public class BaseballCollection {
     private final int BASEBALL_END_NUMBER = 9;
     private final List<Integer> baseball;
 
-    public BaseballCollection(NumberGenerator numberGenerator) {
+    private BaseballCollection(NumberGenerator numberGenerator) {
         this.baseball = createComputerBalls(numberGenerator);
     }
 
-    public BaseballCollection(String playerInput) {
+    private BaseballCollection(String playerInput) {
         this.baseball = createPlayerBalls(playerInput);
+    }
+
+    public static BaseballCollection ofComputerBaseball(NumberGenerator numberGenerator) {
+        return new BaseballCollection(numberGenerator);
+    }
+
+    public static BaseballCollection ofPlayerBaseball(String playerInput) {
+        return new BaseballCollection(playerInput);
     }
 
     // 기능: 사용자의 공을 입력 받고 생성한다

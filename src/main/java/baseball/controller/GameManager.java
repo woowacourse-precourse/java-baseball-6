@@ -27,10 +27,10 @@ public class GameManager {
 
     // 기능: 게임 순서에 맞게 게임을 진행한다
     private void progressGame() {
-        BaseballCollection computerBalls = new BaseballCollection(new RandomNumberGenerator());
+        BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(new RandomNumberGenerator());
         while (true) {
             Output.printNumberInputMessage();
-            BaseballCollection playerBalls = new BaseballCollection(input.readLine());
+            BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball(input.readLine());
             String hint = judgment.calculateHint(computerBalls, playerBalls);
             Output.printHint(hint);
             if (isGameEnd(hint)) {
