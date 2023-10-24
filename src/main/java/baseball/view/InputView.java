@@ -16,6 +16,8 @@ import baseball.constant.errorMessage.InputError;
 
 public class InputView {
 
+    private static final String YES = "1";
+
 
     public static Integer[] inputPlayerBalls() {
         String input = getInput();
@@ -34,16 +36,16 @@ public class InputView {
     private static void validateNumber(String input) {
         if (!(input.chars()
                 .allMatch(Character::isDigit)))
-            throw new IllegalArgumentException("[error] 잘못된 입력형식입니다. 숫자 이외의 값을 입력할 수 없습니다.");
+            throw new IllegalArgumentException(InputError.WRONG_TOKEN);
     }
 
     private static void validateBlank(String input) {
         if (input == null || input.isBlank())
-            throw new IllegalArgumentException("[error] 잘못된 입력형식입니다. 공백을 입력할 수 없습니다.");
+            throw new IllegalArgumentException(InputError.WRONG_BLANK);
     }
 
     public static Boolean gameRestart() {
-        return getInput().equals("1") ? true : false;
+        return getInput().equals(YES) ? true : false;
     }
     private static String getInput() {
         return Console.readLine();
