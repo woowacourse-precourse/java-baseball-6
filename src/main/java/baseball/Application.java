@@ -37,6 +37,15 @@ public class Application {
         return numbers;
     }
 
+    private static int countStrikes(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < NUM_SIZE; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 
 }
