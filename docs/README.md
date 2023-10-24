@@ -22,6 +22,10 @@
 ### View
 - InputView
 - OutputView
+- Parser
 
 ### Controller
 - GameController
+
+### Service
+- GameService
