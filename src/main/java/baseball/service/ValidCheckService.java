@@ -10,6 +10,7 @@ import java.util.Set;
 public class ValidCheckService {
 
     private final Number num = new Number();
+    private final List<Integer> integerList = new ArrayList<>();
 
     public boolean isValidStringNumber(String input){
         if(isNumberNaturalDigit(input) && isValidLength(input) && sameNumberCheck(input)){
@@ -46,7 +47,7 @@ public class ValidCheckService {
         return true;
     }
     public List<Integer> stringToIntegerList(String input) {
-        List<Integer> integerList = new ArrayList<>();
+        integerList.clear();
         for (String s : input.split("")) {
             integerList.add(Integer.parseInt(s));
         }
