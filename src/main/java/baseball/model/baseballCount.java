@@ -27,13 +27,19 @@ public class baseballCount {
         ballCount++;
     }
 
-    public int countStrike(List<Integer> computerNumberList, List<Integer> userNumberList) {
+    public void countStrike(List<Integer> computerNumberList, List<Integer> userNumberList) {
         for(int idx = 0; idx < userNumberList.size(); idx++) {
             if(computerNumberList.get(idx).equals(userNumberList.get(idx))) {
                 addStrikeCount();
             }
         }
+    }
 
-        return getStrikeCount();
+    public void countBall(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        for(int idx = 0; idx < userNumberList.size(); idx++) {
+            if(!computerNumberList.get(idx).equals(userNumberList.get(idx)) && userNumberList.contains(computerNumberList.get(idx))) {
+                addBallCount();
+            }
+        }
     }
 }
