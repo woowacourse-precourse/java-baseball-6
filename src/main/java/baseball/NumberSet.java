@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class NumberSet {
     private List<Integer> numbers;
@@ -24,11 +22,8 @@ public class NumberSet {
     }
 
     public boolean isUnique() {
-        return (
-                this.numbers.get(0) != this.numbers.get(1)
-                        && this.numbers.get(0) != this.numbers.get(2)
-                        && this.numbers.get(1) != this.numbers.get(2)
-        );
+        Set<Integer> set = new HashSet<>(this.numbers);
+        return set.size() == this.numbers.size();
     }
 
     public static NumberSet parseFrom(int number) throws IllegalArgumentException {
