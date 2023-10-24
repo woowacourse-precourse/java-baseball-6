@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private List<Integer> numList;
+    public List<Integer> numList;
     private String numbers;
     private int number;
 
