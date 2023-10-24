@@ -21,13 +21,7 @@ public class Application {
         while (true) {
             List<Integer> computer = new ArrayList<>();
             index = new int[10];
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                    index[randomNumber] = computer.size();
-                }
-            }
+            set_Random_numbers(index, computer);
 
             playing_game(computer, index);
 
@@ -39,6 +33,16 @@ public class Application {
             }
             if (continue_game == 2) {
                 break;
+            }
+        }
+    }
+
+    private static void set_Random_numbers(int[] index, List<Integer> computer) {
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+                index[randomNumber] = computer.size();
             }
         }
     }
