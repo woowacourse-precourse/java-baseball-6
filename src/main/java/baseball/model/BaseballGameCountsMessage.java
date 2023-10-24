@@ -31,9 +31,10 @@ public class BaseballGameCountsMessage {
     public void editMessage(String frag) {
         if (message == null) {
             this.message = frag;
-        } else {
-            this.message = frag + this.message;
+            return;
         }
+        this.message = frag + this.message;
+
     }
 
     // 메시지를 출력하는 함수
