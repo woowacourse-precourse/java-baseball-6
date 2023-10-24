@@ -11,8 +11,8 @@ import java.util.NoSuchElementException;
 
 public class Game implements Runnable {
     private int compareRestartNum = NumberConst.RESTART_NUMBER; // 재시작, 종료 여부를 입력받기 위한 변수
-    private int countBall; // Ball 개수 확인 용도
-    private int countStrike; // Strike 개수 확인 용도
+    private int countBall = 0; // Ball 개수 확인 용도
+    private int countStrike = 0; // Strike 개수 확인 용도
 
     public Game() {
     }
