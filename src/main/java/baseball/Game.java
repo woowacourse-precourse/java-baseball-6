@@ -7,13 +7,18 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    int start = 1;
+    RandomValue randomValue = new RandomValue();
+    String start = "1";
     List<Integer> userInputList = new ArrayList<>();
     String[] inputs = new String[3];
     Decision decision = new Decision();
 
-    public void play(List<Integer> answer) {
-        while(start != 2) {
+    public void play() {
+
+        List<Integer> answer = randomValue.createRandomNumber();
+
+        while(!start.equals("2")) {
+            System.out.println("answer = " + answer);
             System.out.print("숫자를 입력해주세요 : ");
             try {
                 String inputNumber = Console.readLine();
@@ -30,6 +35,9 @@ public class Game {
                 if(countStrike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    start = Console.readLine();
+
+                    if(start.equals("1")) answer = randomValue.createRandomNumber();
                 }
 
             } catch (IllegalArgumentException e) {

@@ -11,6 +11,7 @@ public class RandomValue {
 
     // 랜덤한 3자리 수 생성
     public List<Integer> createRandomNumber() {
+        randomNumber.clear();
         while(randomNumber.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
             if(!randomNumber.contains(number)) {
