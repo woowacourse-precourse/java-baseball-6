@@ -18,12 +18,9 @@ public class Balls {
     }
 
     public boolean isStrike(Ball ball) {
-        for (Ball computerBall : balls) {
-            if (computerBall.equals(ball)) {
-                return true;
-            }
-        }
-        return false;
+        int ballIndex = ball.getIndex();
+        Ball computerBall = balls.get(ballIndex);
+        return computerBall.equals(ball);
     }
 
     public boolean isBall(Ball ball) {
