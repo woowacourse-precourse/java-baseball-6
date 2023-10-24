@@ -29,8 +29,20 @@ public class NumberBaseball implements Game {
     }
 
     @Override
-    public String toStringResult() {
-        return null;
+    public String gameResultToString() {
+        if (this.baseballResult.get(ResultType.OUT) == ANSWER_LENGTH) {
+            return "낫싱";
+        }
+
+        ArrayList<String> result = new ArrayList<>();
+        if (this.baseballResult.get(ResultType.BALL) > 0) {
+            result.add(String.format("%d볼", this.baseballResult.get(ResultType.BALL)));
+        }
+        if (this.baseballResult.get(ResultType.STRIKE) > 0) {
+            result.add(String.format("%d스트라이크", this.baseballResult.get(ResultType.STRIKE)));
+        }
+
+        return String.join(" ", result);
     }
 
     @Override
