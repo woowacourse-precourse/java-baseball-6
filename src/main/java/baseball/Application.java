@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
         boolean game_flag = false;          // 게임 진행 여부
-        StringBuilder randomNumber;                   // 컴퓨터의 랜덤 숫자
+        StringBuilder randomNumber;         // 컴퓨터의 랜덤 숫자
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -47,30 +47,32 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
 
             userNumber = Console.readLine();
+            inputValidation(userNumber);
 
-            try {
-                Integer.parseInt(userNumber);
-            } catch(Exception e) {
-                throw new IllegalArgumentException();
-            }
-
-            if (userNumber.length() != 3) throw new IllegalArgumentException();
-
-            // 입력된 숫자에 대한 결과 계산
-            if (calculate(randomNumber, userNumber)) {
+            // 입력된 숫자에 대한 스트라이크, 볼, 낫싱 계산
+            if (calculateResult(randomNumber, userNumber)) {
                 return;
             }
         }
-    } // start
+    }
 
-    private static boolean calculate(String randomNumber, String userNumber) {
+    private static void inputValidation(String number) {
+
+        try {
+            Integer.parseInt(number);
+        } catch(Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (number.length() != 3) throw new IllegalArgumentException();
+    }
+
+    private static boolean calculateResult(String randomNumber, String userNumber) {
 
         char temp;
-
         int strike = 0;
         int ball = 0;
 
-        // 계산
         for (int i = 0; i < 3; i++) {
 
             temp = userNumber.charAt(i);
@@ -90,7 +92,6 @@ public class Application {
             }
         }
 
-        // 출력
         return printResult(ball, strike);
     }
 
@@ -122,6 +123,5 @@ public class Application {
         if (check == 1) return false;
         else if (check == 2) return true;
         else throw new IllegalArgumentException();
-
-    } // end
+    }
 }
