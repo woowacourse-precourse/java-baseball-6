@@ -10,15 +10,15 @@ public class Game {
         Result result;
 
         do {
-            Player hitter = new Player(Application.readNumber());
+            Player hitter = new Player(Reader.readNumber(settings));
             result = pitcher.compareWith(hitter);
-            Application.printResult(result);
+            Printer.printResult(result);
         } while (!foundAnswer(result));
     }
 
     public static boolean foundAnswer(Result result) {
         if (result.strike() == settings.answerSize()) {
-            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", settings.answerSize());
+            System.out.printf("%d%s\n", settings.answerSize(), Printer.TERMINATE_MESSAGE);
             return true;
         }
         return false;
