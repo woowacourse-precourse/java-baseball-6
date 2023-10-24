@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameTest {
     private final Game game = new Game(new GameNumberGenerator());
-    private final GameRunner gameRunner = new GameRunner();
 
     @DisplayName("유저 인풋 에러 발생상황 확인")
     @ParameterizedTest
@@ -31,19 +30,5 @@ class GameTest {
     void getValidUserNums() {
         List<Integer> userNums = game.getValidUserNums("123");
         Assertions.assertThat(userNums).isEqualTo(List.of(1, 2, 3));
-    }
-
-    @Test
-    @DisplayName("재실행 하는경우")
-    void isReplay() {
-        boolean replay = gameRunner.isReplay("1");
-        Assertions.assertThat(replay).isTrue();
-    }
-
-    @Test
-    @DisplayName("재실행 하지 않는경우")
-    void isNotReplay() {
-        boolean replay = gameRunner.isReplay("2");
-        Assertions.assertThat(replay).isFalse();
     }
 }
