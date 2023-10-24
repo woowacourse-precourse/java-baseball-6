@@ -8,12 +8,13 @@ public class BaseballGame {
     private final static String START_GAME_SENTENCE = "숫자 야구 게임을 시작합니다.";
     private final static String RESTART_OR_STOP_QUESTION_SENTENCE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private OneGame oneGame = new OneGame();
+    private OneGame oneGame;
 
     public void startBaseballGame(){
         System.out.println(START_GAME_SENTENCE);
 
         do{
+            oneGame = new OneGame();
             oneGame.oneBaseballGame();
         }while(doRestartGame());
 
