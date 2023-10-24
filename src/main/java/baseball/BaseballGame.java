@@ -27,6 +27,7 @@ public class BaseballGame {
         if (playersChoice.equals(Player.GAME_END)) {
             return;
         }
+        // 게임 재시작
         player.resetPlayerNumber();
         computer.resetState();
         computer.resetComputerNumber();

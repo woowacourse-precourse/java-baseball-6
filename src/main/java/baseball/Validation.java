@@ -51,4 +51,10 @@ public class Validation {
             throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
         }
     }
+
+    public static void checkChoiceRestart(String inputNumber) {
+        if (!inputNumber.equals(Player.GAME_RESTART) && !inputNumber.equals(Player.GAME_END)) {
+            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
+        }
+    }
 }

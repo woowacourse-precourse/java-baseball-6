@@ -44,8 +44,8 @@ public class Player {
             System.out.println("게임을 종료합니다.");
             return GAME_END;
         }
-        // 만약 다른 문자가 입력되면 종료
-        System.out.println(Validation.WRONG_INPUT_EXCEPTION);
-        throw new IllegalArgumentException(Validation.WRONG_INPUT_EXCEPTION);
+        // 만약 다른 문자가 입력되면 exception 발생
+        Validation.checkChoiceRestart(selectNumber);
+        return Validation.WRONG_INPUT_EXCEPTION;
     }
 }
