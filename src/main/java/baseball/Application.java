@@ -10,7 +10,6 @@ public class Application {
 
     private static int matchCount;
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         loop:
@@ -37,7 +36,6 @@ public class Application {
                 if (noNumbersMatch(computer, inputs)) {
                     System.out.println("낫싱");
                     continue;
-//                return "낫싱";
                 }
 
                 int strike = 0;
