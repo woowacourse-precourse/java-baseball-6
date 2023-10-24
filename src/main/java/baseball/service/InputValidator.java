@@ -16,22 +16,15 @@ public class InputValidator {
     }
 
     private boolean containsDuplicateNumber(String userInput) {
-        for (int i = Constant.COUNT_ZERO; i < userInput.length(); i++) {
-            char c = userInput.charAt(i);
-            if (userInput.indexOf(c) != userInput.lastIndexOf(c)) {
-                return true;
-            }
-        }
-        return false;
+        return userInput.chars()
+                .distinct()
+                .count() != userInput.length();
     }
 
     private boolean containsInvalidNumber(String userInput) {
-        for (char c : userInput.toCharArray()) {
-            int number = Character.getNumericValue(c);
-            if (number < Constant.RANDOM_NUMBER_START || number > Constant.RANDOM_NUMBER_END) {
-                return true;
-            }
-        }
-        return false;
+        return userInput.chars()
+                .map(Character::getNumericValue)
+                .anyMatch(number -> number < Constant.RANDOM_NUMBER_START
+                        || number > Constant.RANDOM_NUMBER_END);
     }
 }

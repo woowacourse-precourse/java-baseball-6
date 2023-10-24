@@ -14,12 +14,12 @@ public class GameController {
 
     public void playGame() {
         GameView.printStartMessage();
-        String result = "";
-        while (!result.equals("3스트라이크")) {
+        String result;
+        do {
             String userInput = GameView.getUserInput();
             result = gameService.validateInput(userInput);
             GameView.printResult(result);
-        }
+        } while (!result.equals("3스트라이크"));
         GameView.printEndMessage();
     }
 }

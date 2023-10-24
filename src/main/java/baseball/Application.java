@@ -18,7 +18,8 @@ public class Application {
 
         if (retryNumber.equals("1")) {
             return true;
-        } else if (retryNumber.equals("2")) {
+        }
+        if (retryNumber.equals("2")) {
             return false;
         }
         throw new IllegalArgumentException();
