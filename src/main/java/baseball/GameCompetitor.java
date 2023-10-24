@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameCompititor {
+public class GameCompetitor {
     private List<Integer> CompititorNumber = new ArrayList<>();
     public List<Integer> generateRandomNumber(){
         while (CompititorNumber.size() < 3) {
@@ -17,3 +17,5 @@ public class GameCompititor {
         return CompititorNumber;
     }
 }
+
+
