@@ -9,6 +9,8 @@ public class HintScore {
 
     private static final String PRINT_BALL_FORMAT = "%d볼";
     private static final String PRINT_STRIKE_FORMAT = "%d스트라이크";
+    private static final String PRINT_NOTHING_FORMAT = "낫싱";
+
 
     public void raiseStrike() {
         strike++;
@@ -20,6 +22,9 @@ public class HintScore {
 
     @Override
     public String toString() {
+        if (isNothing()) {
+            return PRINT_NOTHING_FORMAT;
+        }
         StringJoiner stringJoiner = new StringJoiner(" ");
         if (ball != 0) {
             stringJoiner.add(String.format(PRINT_BALL_FORMAT, ball));
