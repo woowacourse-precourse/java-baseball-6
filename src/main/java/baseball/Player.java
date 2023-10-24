@@ -20,4 +20,8 @@ public class Player {
         return input;
     }
 
+    public Picks getPicks() {
+        return picks;
+    }
+
 }

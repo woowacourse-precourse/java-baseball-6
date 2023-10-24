@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Picks {
 
-    private static final int MAX_SIZE = 3;
+    public static final int MAX_SIZE = 3;
 
     private List<Pick> picks = new ArrayList<>();
 
@@ -24,6 +24,10 @@ public class Picks {
         picks.add(newPick);
     }
 
+    public Pick get(int index) {
+        return picks.get(index);
+    }
+
     public void initializePicks() {
         picks = new ArrayList<>();
     }
@@ -37,5 +41,19 @@ public class Picks {
             validatePick(picks, newPick);
             picks.add(newPick);
         }
+    }
+
+    public Result compare(Picks playerPicks) {
+        Result result = new Result();
+        for (int i = 0; i < picks.size(); i++) {
+            if (picks.get(i).equals(playerPicks.get(i))) {
+                result.addStrike();
+                continue;
+            }
+            if (picks.contains(playerPicks.get(i))) {
+                result.addBall();
+            }
+        }
+        return result;
     }
 }
