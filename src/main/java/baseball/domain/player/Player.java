@@ -44,10 +44,14 @@ public class Player {
     public int calculateStrikeCounts(Player player) {
         int result = 0;
         for (int i = 0; i < 3; i++) {
-            if (player.numbers.get(i).equals(this.numbers.get(i))) {
+            if (isStrike(player, i)) {
                 result++;
             }
         }
         return result;
+    }
+
+    private boolean isStrike(Player player, int idx) {
+        return player.numbers.get(idx).equals(this.numbers.get(idx));
     }
 }
