@@ -1,29 +1,31 @@
 package baseball.validator;
 
+import baseball.constants.ValidatorConstants;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
 
     public void checkBaseballNumber(String input) {
-        if (input == null || input.length() != 3) {
-            throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
+        if (input == null || input.length() != ValidatorConstants.VALID_INPUT_LENGTH) {
+            throw new IllegalArgumentException(ValidatorConstants.LENGTH_ERROR_MESSAGE);
         }
 
         for (char ch : input.toCharArray()) {
             if (ch < '1' || ch > '9') {
-                throw new IllegalArgumentException("입력 값이 1 ~ 9 사이의 값이 아닙니다.");
+                throw new IllegalArgumentException(ValidatorConstants.RANGE_ERROR_MESSAGE);
             }
         }
 
         if (hasDuplicateNumbers(input)) {
-            throw new IllegalArgumentException("입력 값에 중복된 숫자가 있으면 안 됩니다.");
+            throw new IllegalArgumentException(ValidatorConstants.DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     public void checkRestartInput(String input) {
         if (!("1".equals(input) || "2".equals(input))) {
-            throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ValidatorConstants.RESTART_INPUT_ERROR_MESSAGE);
         }
     }
 
