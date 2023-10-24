@@ -20,6 +20,7 @@ public class Pitcher {
     }
 
     public void getPlayerInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         int randomNumber = Integer.parseInt(Console.readLine());
         Stack<Integer> split = splitNumbers(randomNumber);
 
