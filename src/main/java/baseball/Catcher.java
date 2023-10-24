@@ -18,6 +18,7 @@ public class Catcher {
     }
 
     public void generateRandomNumbers() {
+        numbers.clear();
         while (numbers.size() < maxSize) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
