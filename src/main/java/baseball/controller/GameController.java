@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.GameCommand;
+import baseball.model.GameStatus;
 import baseball.model.Player;
 import baseball.model.Result;
 import baseball.model.UserComputerCompare;
@@ -14,6 +15,7 @@ public class GameController {
     private final OutputView outputView;
     private boolean selectedRetry = true;
     private boolean isThreeStrike;
+    private GameStatus gameStatus = GameStatus.GAME_START;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -23,23 +25,21 @@ public class GameController {
     public void play() {
         try {
             outputView.printGameStart();
-            while (selectedRetry) {
+            while (gameStatus != GameStatus.APPLICATION_EXIT) {
                 Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
                 List<Integer> computerNumber = computer.getComputerNumber();
                 outputView.printComputerNumber(computerNumber);
-                while (isThreeStrike) {
+                while (gameStatus != GameStatus.GAME_OVER) {
                     Player player = Player.createNyNumber(inputView.readPlayerNumber());
                     UserComputerCompare userComputerCompare = UserComputerCompare.judge(computer, player);
                     Result result = userComputerCompare.ResultgetBallCountJudgement();
                     outputView.printGameResult(result);
                     isThreeStrike = result.isThreeStrike();
+                    gameStatus = GameStatus.fromIsThreeStrike(isThreeStrike);
                 }
                 outputView.printThreeStrike();
                 selectedRetry = GameCommand.selectedRetry(inputView.readGameCommand());
-                if (selectedRetry) {
-                    isThreeStrike = false;
-                }
-
+                gameStatus = GameStatus.fromSelectedRetry(selectedRetry);
             }
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
