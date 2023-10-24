@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.util.GameConfig;
+import baseball.util.NumValidator;
 import baseball.util.ScoreChecker;
 
 public class GameModel {
@@ -25,7 +26,7 @@ public class GameModel {
 
     public Value processUserInput(String userInput, Value valueInstance) throws IllegalArgumentException {
         // 사용자 입력 처리
-        //NumValidator.isValid(userInput);
+        NumValidator.isValid(userInput);
         return valueInstance.makeValue(userInput);
     }
 

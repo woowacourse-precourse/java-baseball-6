@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.model.Score;
 import baseball.util.Messages;
+import baseball.util.NumValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
@@ -14,7 +15,7 @@ public class GameView {
         // 사용자 입력을 받아 반환
         System.out.print(Messages.INPUT_PROMPT);
         String num = Console.readLine();
-        //NumValidator.isValid(num);
+        NumValidator.isValid(num);
         return num;
     }
 
