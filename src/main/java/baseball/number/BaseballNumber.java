@@ -65,7 +65,9 @@ public class BaseballNumber {
         List<Integer> randomValues = new ArrayList<>();
         while (randomValues.size() < 3) {
             int randomValue = Randoms.pickNumberInRange(1, 9);
-            if (!randomValues.contains(randomValue)) randomValues.add(randomValue);
+            if (!randomValues.contains(randomValue)) {
+                randomValues.add(randomValue);
+            }
         }
         for (int i = 0; i < 3; i++) {
             this.values[i] = randomValues.get(i);
