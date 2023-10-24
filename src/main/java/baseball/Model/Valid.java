@@ -10,8 +10,8 @@ public class Valid {
         if (userNumber.contains("0")) {
             throw new IllegalArgumentException("허가되지 않은 문자열");
         }
-        if (userNumber.length() > BASEBALL_NUM_SIZE) {
-            throw new IllegalArgumentException("초과 입력");
+        if (userNumber.length() != BASEBALL_NUM_SIZE) {
+            throw new IllegalArgumentException("입력 수 오류");
         }
         return userNumber;
     }
