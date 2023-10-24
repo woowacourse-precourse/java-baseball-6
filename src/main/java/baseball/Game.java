@@ -25,11 +25,13 @@ public class Game {
     private static void inputValidation(String number) {
         try {
             Integer.parseInt(number);
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException();
         }
 
-        if (number.length() != 3) throw new IllegalArgumentException();
+        if (number.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
     protected static boolean end() {
@@ -38,8 +40,12 @@ public class Game {
 
         int check = Integer.parseInt(Console.readLine());
 
-        if (check == 1) return false;
-        else if (check == 2) return true;
-        else throw new IllegalArgumentException();
+        if (check == 1) {
+            return false;
+        } else if (check == 2) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
