@@ -80,13 +80,9 @@ public class NumberBaseball {
     }
 
     private static void validateDuplicated(String stringValue) {
-        Set numSet = new HashSet();
+        Set valueSet = StringUtil.toHashSet(stringValue);
 
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
-            numSet.add(stringValue.charAt(i));
-        }
-
-        if (numSet.size() < NUMBER_LENGTH) {
+        if (valueSet.size() < NUMBER_LENGTH) {
             ExceptionUtil.throwInvalidValueException(DUPLICATE_DIGITS_MESSAGE);
         }
     }
