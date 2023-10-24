@@ -9,6 +9,10 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+        game();
+    }
+
+    public static void game() {
         String status = "1"; // 상태가 1이면 새 게임 시작, 2면 종료
         do {
             List<Integer> comNum = generateNum();   // 컴퓨터가 난수 생성
@@ -30,6 +34,21 @@ public class Application {
         return computer;
     }
 
+    public static void checkInputValid(String input) {
+        try {
+            int number = Integer.parseInt(input);   //  입력받은 난수를 int 형으로 캐스팅하여 값의 유효성 검사
+            if (number < 100 || number > 999) {
+                throw new IllegalArgumentException("세자리 수가 아닙니다."); //  세자리 수가 아니면 오류 처리
+            }
+            if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+                throw new IllegalArgumentException("중복 숫자가 있습니다."); //  중복된 숫자 발견 시 오류 처리
+            }
+        } catch (IllegalArgumentException e) {
+//                System.out.println("예외 발생: " + e.getMessage());
+            throw e;
+        }
+    }
+
     public static boolean playNumberBaseballGame(List<Integer> comNum) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Scanner scanner = new Scanner(System.in);
@@ -37,18 +56,7 @@ public class Application {
         while (true) {
             System.out.print("문자열을 입력하세요 : ");
             input = Console.readLine(); // 사용자로부터 숫자 입력 받음
-            try {
-                int number = Integer.parseInt(input);   //  입력받은 난수를 int 형으로 캐스팅하여 값의 유효성 검사
-                if (number < 100 || number > 999) {
-                    throw new IllegalArgumentException("세자리 수가 아닙니다."); //  세자리 수가 아니면 오류 처리
-                }
-                if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
-                    throw new IllegalArgumentException("중복 숫자가 있습니다."); //  중복된 숫자 발견 시 오류 처리
-                }
-            } catch (IllegalArgumentException e) {
-//                System.out.println("예외 발생: " + e.getMessage());
-                throw e;
-            }
+            checkInputValid(input);
 
             String ScomNum = "";    //  컴퓨터가 생성한 난수를 문자열로 받아오는 변수
             for (int number : comNum) { //  난수를 문자열로 변환하는 프로세스
