@@ -6,37 +6,21 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputViewTest {
 
     private final InputView inputView = new InputView();
 
-    @DisplayName("숫자를 입력받는다.")
+    @DisplayName("숫자를 입력받을때 숫자가 3자리가 아니면 Exception 발생한다.")
     @Test
-    void inputNumber() {
+    void inputNumberNotThreeDigitsThrowsException() {
         // given
-        ByteArrayInputStream inContent = new ByteArrayInputStream("123".getBytes());
-        System.setIn(inContent);
+        String input = "1234";
 
-        // when
-        String input = inputView.inputNumber();
-
-        // then
-        assertThat(input).isEqualTo("123");
+        // when // then
+        assertThatThrownBy(() -> inputView.validateThreeDigitNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 3자리의 숫자를 입력하여야 합니다.");
     }
-
-    @DisplayName("재시작 여부를 입력받는다.")
-    @Test
-    void inputRestartChoice() {
-        // given
-        ByteArrayInputStream inContent = new ByteArrayInputStream("1".getBytes());
-        System.setIn(inContent);
-
-        // when
-        int input = inputView.inputRestartChoice();
-
-        // then
-        assertThat(input).isEqualTo(1);
-    }
-
 }
