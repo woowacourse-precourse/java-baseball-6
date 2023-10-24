@@ -12,6 +12,14 @@ public class Application {
     static List<Integer> userGuess;
 
     public static void main(String[] args) {
+        gameStart();
+
+    }
+
+    /**
+     * 게임을 시작하는 함수
+     */
+    protected static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean moreGame = true;
 
@@ -28,7 +36,6 @@ public class Application {
             moreGame = isGameOver();
         }
         System.out.println("게임 종료");
-
     }
 
     /**
