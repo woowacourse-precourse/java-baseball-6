@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Integer> randomNumber;
+    private List<Integer> randomNumber;
 
     public Computer() {
         this.randomNumber = generateRandomNumber();
@@ -24,5 +24,9 @@ public class Computer {
 
     public List<Integer> getRandomNumber() {
         return randomNumber;
+    }
+
+    public void resetRandomNumber() {
+        this.randomNumber = generateRandomNumber();
     }
 }

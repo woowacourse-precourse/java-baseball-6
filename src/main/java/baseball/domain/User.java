@@ -16,7 +16,7 @@ public class User {
         this.data = data;
     }
 
-    public String getData() {
+    public String getUserData() {
         return data;
     }
 

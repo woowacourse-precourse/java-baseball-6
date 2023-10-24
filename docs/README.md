@@ -41,18 +41,25 @@
   - 1 - 9 까지 중복되지 않은 세자리 수를 입력 받는다.
   - 유저 입력값의 유효성 검사를 할 수 있다.
 
+## dto
+  - `StrikeBallResponse`를 통해 스트라이크, 볼의 개 수를 전달한다.
 
 ## Service
-- ### `BaseballService`
+- ### BaseballService
   - 유저의 값과 비교해 스트라이크, 볼, 낫싱을 되돌려 줄 수 있다.
   - 숫자 야구 게임의 메인 로직이 담겨있다.
-- ### `GameManager`
+- ### GameManager
   - 게임의 시작과 끝 로직을 담당하고있다.
 
 ## Util
-- ## `InvalidInputException`
+- ## InvalidInputException
   - `IllegalArgumentException`을 상속 받았다.
   - 1차 로직에서 예외를 커스텀하니 문제가 발생했기 때문에 일단 보류한다.
-- ## `Message`
+- ## MessageFormatter
   - 출력 구문이 많기 때문에 `MessageFormatter`라는 별도의 클래스를 두고 관리한다.
   - 스트라이크, 볼 개 수에 맞춰 `formatting` 할 수 있다.
+- ## GameResultPrinter
+  - `BaseBallService`가 핵심 로직에만 집중할 수 있게 출력과 관련된 기능을 모두 추출했다.
+  - 서비스 로직에서 출력이 있다면, 가독성이 떨어지는 느낌이 들었기 때문에 분할하였고 결과적으로 출력과 관련된 부분을 별도로 관리할 수 있다는 장점을 얻었다.
+- ## WrappedString
+  - 'Console'에서 입력 받은 문자열을 랩핑하는 유틸 클래스이다.

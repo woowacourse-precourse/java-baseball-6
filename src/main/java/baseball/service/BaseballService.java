@@ -1,102 +1,56 @@
 package baseball.service;
 
-import static baseball.util.MessageFormatter.CURRENT_GAME_CLOSE;
-import static baseball.util.MessageFormatter.NOTHING_MESSAGE;
+import static baseball.util.MessageFormatter.MAX_STRIKES;
 import static baseball.util.MessageFormatter.QUIT;
-import static baseball.util.MessageFormatter.THREE_STRIKE;
 import static baseball.util.MessageFormatter.USER_START;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
-import baseball.util.MessageFormatter;
+import baseball.dto.response.StrikeBallResponse;
+import baseball.util.GameResultPrinter;
+import baseball.util.WrappedString;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class BaseballService {
+    GameResultPrinter gameResultPrinter = new GameResultPrinter();
 
     public void startGame(Computer computer) {
-        while (true) {
+        boolean running = true;
+        while (running) {
             System.out.print(USER_START);
-            String inputStatus = Console.readLine();
-            if (inputStatus.equalsIgnoreCase(QUIT) || handleUserInput(computer, inputStatus)) {
-                handleGameExit();
-                break;
+            WrappedString consoleData = new WrappedString(Console.readLine());
+            String inputData = consoleData.getValue();
+            if (inputData.equalsIgnoreCase(QUIT) || handleUserInput(computer, inputData)) {
+                gameResultPrinter.handleGameExit();
+                running = false;
             }
         }
     }
 
-    private boolean handleUserInput(Computer computer, String inputStatus) {
-        User user = new User(inputStatus);
-        int[] result = playBall(computer, user);
-        if (result[0] == 3) {
-            printThreeStrike(result[0]);
+    private boolean handleUserInput(Computer computer, String inputData) {
+        User user = new User(inputData);
+        StrikeBallResponse result = playBall(computer, user);
+        if (result.getStrikeCount() == MAX_STRIKES) {
+            gameResultPrinter.printThreeStrike(MAX_STRIKES);
             return true;
         }
-        printOtherResult(result);
-        return false;
+        return gameResultPrinter.printOtherResult(result);
     }
 
-    private int[] playBall(Computer computer, User user) {
-        int[] count = new int[2];
-        String userData = user.getData();
+    private StrikeBallResponse playBall(Computer computer, User user) {
         List<Integer> comData = computer.getRandomNumber();
-        for (int i = 0; i < comData.size(); i++) {
-            int numericValue = Character.getNumericValue(userData.charAt(i));
-            if (isStrike(comData, i, numericValue)) {
-                count[0]++;
-            } else if (isBall(comData, numericValue)) {
-                count[1]++;
-            }
-        }
-        return count;
-    }
+        String userDataValue = user.getUserData();
 
-    private boolean isStrike(List<Integer> comData, int index, int numericValue) {
-        return comData.get(index) == numericValue;
-    }
+        long strikeCount = IntStream.range(0, comData.size())
+                .filter(i -> comData.get(i) == Character.getNumericValue(userDataValue.charAt(i)))
+                .count();
 
-    private boolean isBall(List<Integer> comData, int numericValue) {
-        return comData.contains(numericValue);
-    }
-
-    private void printOtherResult(final int[] result) {
-        int strike = result[0];
-        int ball = result[1];
-
-        if (strike != 0 && ball != 0) {
-            handleBallStrike(ball, strike);
-        } else if (strike != 0) {
-            handleStrike(strike);
-        } else if (ball != 0) {
-            handleBall(ball);
-        } else {
-            handelNothing();
-        }
-    }
-
-    private void handleGameExit() {
-        System.out.println(CURRENT_GAME_CLOSE);
-    }
-
-    private void printThreeStrike(int strike) {
-        System.out.println(MessageFormatter.formatStrikeMessage(strike));
-        System.out.println(THREE_STRIKE);
-
-    }
-
-    private void handelNothing() {
-        System.out.println(NOTHING_MESSAGE);
-    }
-
-    private void handleBallStrike(int ball, int strike) {
-        System.out.println(MessageFormatter.formatBallStrikeMessage(ball, strike));
-    }
-
-    private void handleStrike(int strike) {
-        System.out.println(MessageFormatter.formatStrikeMessage(strike));
-    }
-
-    private void handleBall(int ball) {
-        System.out.println(MessageFormatter.formatBallMessage(ball));
+        long ballCount = IntStream.range(0, comData.size())
+                .filter(i -> comData.get(i) != Character.getNumericValue(userDataValue.charAt(i))
+                        && comData.contains(Character.getNumericValue(userDataValue.charAt(i))))
+                .count();
+        return new StrikeBallResponse((int) strikeCount, (int) ballCount);
     }
 }

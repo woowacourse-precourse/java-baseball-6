@@ -24,6 +24,7 @@ public class MessageFormatter {
     public static final String STRIKE_MESSAGE = "%d스트라이크";
     public static final String BALL_MESSAGE = "%d볼";
     public static final String NOTHING_MESSAGE = "낫싱";
+    public static final int MAX_STRIKES = 3;
 
     public static String formatBallStrikeMessage(int ball, int strike) {
         return String.format(BALL_STRIKE_MESSAGE, ball, strike);
