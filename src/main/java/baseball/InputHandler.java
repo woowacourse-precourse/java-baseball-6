@@ -11,7 +11,7 @@ public class InputHandler {
     private static boolean isNumber(String inputString) {
         String isNotNumberRegex = "[^0-9]";
         if(inputString.matches(isNotNumberRegex)) {
-            throw new IllegalArgumentException("Illegal Input values type.");
+            throw new IllegalArgumentException("Illegal Input values type. input string : " + inputString);
         }
         return true;
     }
@@ -23,13 +23,12 @@ public class InputHandler {
 
     private static void inputLengthCheck(int expectSize, int actualSize) {
         if(expectSize != actualSize) {
-            throw new IllegalArgumentException("Illegal Input values Length.");
+            throw new IllegalArgumentException("Illegal Input values Length. except length : " + expectSize + ", actual length : " + actualSize);
         }
     }
 
     private static String getConsoleInput() {
         String inputValue = Console.readLine();
-        Console.close();
 
         return inputValue;
     }
