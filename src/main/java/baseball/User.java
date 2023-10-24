@@ -2,17 +2,10 @@ package baseball;
 
 import java.util.ArrayList;
 
-public class Player {
-    private ArrayList<Integer> nums = new ArrayList<>();
+public class User {
     private ArrayList<Integer> guessNums = new ArrayList<>();
 
-    public Player() {
-        RandomNum randomNum = new RandomNum();
-        nums = randomNum.getNums();
-    }
-
-    public ArrayList<Integer> getNums() {
-        return nums;
+    public User() {
     }
 
     public void setGuessNums(ArrayList<Integer> guessNums) {
