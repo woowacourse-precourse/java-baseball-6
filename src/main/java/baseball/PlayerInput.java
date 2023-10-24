@@ -11,9 +11,6 @@ import java.util.List;
  * <p>메뉴를 선택하는 경우, 1 또는 2로 제한된다.
  */
 public class PlayerInput {
-    public static final int NEW_GAME = 1;
-    public static final int QUIT_GAME = 2;
-
     public List<Integer> getPlayerNumbers() {
         String playerInput = Console.readLine();
         List<Integer> playerNumbers = new ArrayList<>();
@@ -27,11 +24,8 @@ public class PlayerInput {
         return playerNumbers;
     }
 
-    public int getMenuNumber() {
-        String playerInput = Console.readLine();
-        if (!MenuInputValidator.validateMenuString(playerInput)) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(playerInput);
+    public GameMenu getMenu() {
+        String input = Console.readLine();
+        return GameMenu.from(input);
     }
 }

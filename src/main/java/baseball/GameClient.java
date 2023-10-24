@@ -1,8 +1,5 @@
 package baseball;
 
-import static baseball.PlayerInput.NEW_GAME;
-import static baseball.PlayerInput.QUIT_GAME;
-
 import java.util.List;
 
 /**
@@ -17,7 +14,7 @@ public class GameClient {
     private final String MESSAGE_INIT = "숫자 야구 게임을 시작합니다.";
     private final String MESSAGE_PLAYER_INPUT = "숫자를 입력해주세요 : ";
     private final String MESSAGE_GAME_FINISHED_FORMAT = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
-    private final String MESSAGE_REPLAY_FORMAT = "게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n";
+    private final String MESSAGE_REPLAY_FORMAT = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
 
     private final PlayerInput playerInput;
     private final Computer computer;
@@ -48,7 +45,7 @@ public class GameClient {
     }
 
     public boolean askForReplay() {
-        System.out.printf(MESSAGE_REPLAY_FORMAT, NEW_GAME, QUIT_GAME);
-        return playerInput.getMenuNumber() == NEW_GAME;
+        System.out.printf(MESSAGE_REPLAY_FORMAT, GameMenu.REPLAY, GameMenu.EXIT);
+        return playerInput.getMenu() == GameMenu.REPLAY;
     }
 }
