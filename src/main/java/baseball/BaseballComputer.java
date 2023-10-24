@@ -21,4 +21,23 @@ public class BaseballComputer {
             numArray[randomNumber] = i;
         }
     }
+
+    public boolean chkInputError(String input) {
+        int[] duplicatedCheck = new int[10];
+
+        if (input.length() != 3) {
+            return true;
+        }
+        for (char c : input.toCharArray()) {
+            if (c < '1' || c > '9') {
+                return true;
+            }
+            int intDigit = Character.getNumericValue(c);
+            if (duplicatedCheck[intDigit] != 0) {
+                return true;
+            }
+            duplicatedCheck[intDigit] = 1;
+        }
+        return false;
+    }
 }
