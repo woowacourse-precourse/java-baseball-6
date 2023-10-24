@@ -20,12 +20,6 @@ public class GameService {
         game = new Game(RandomUtil.getRandomNumbers(size, start, end));
     }
 
-    private void play() {
-        game.initGame();
-        user.setUserNumbers(getUserNumber());
-        calcScore();
-    }
-
     public void playGame() {
         int strike = 0;
         while (strike != 3) {
@@ -33,6 +27,12 @@ public class GameService {
             systemGameMessage.printScoreMessage(game.getBallCount(), game.getStrikeCount());
             strike = game.getStrikeCount();
         }
+    }
+
+    private void play() {
+        game.initGame();
+        user.setUserNumbers(getUserNumber());
+        calcScore();
     }
 
     private int[] getUserNumber() throws IllegalArgumentException {
