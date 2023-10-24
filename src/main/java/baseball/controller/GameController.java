@@ -11,6 +11,12 @@ import java.util.List;
 
 public class GameController {
 
+    private static final int FIXED_LIST_SIZE = 3;
+    private static final int MIN_OF_NUMBER_RANGE = 1;
+    private static final int MAX_OF_NUMBER_RANGE = 9;
+    private static final String GAME_RESTART_NUMBER = "1";
+    private static final String GAME_EXIT_NUMBER = "2";
+
     Computer computer = new Computer();
     Player player = new Player();
     ComputerController computerController = new ComputerController();
@@ -30,8 +36,8 @@ public class GameController {
     }
 
     private boolean repeatFindAnswer(List<Integer> computerRandomNumberList) {
-        boolean correctAnswerFlag = false;
         List<Integer> playerNumberList = new ArrayList<>();
+        boolean correctAnswerFlag = false;
         String playerRetry;
 
         while (!correctAnswerFlag) {
@@ -41,7 +47,7 @@ public class GameController {
             validate(playerNumberList);
 
             correctAnswerFlag = compareAnswer(computerRandomNumberList, playerNumberList);
-            gameView.printAnswerHintMessage(playerAnswer);
+            gameView.printAnswerHintMessage(playerAnswer.getHint());
 
             if (correctAnswerFlag) {
                 gameView.printSuccessGameMessage();
@@ -55,34 +61,27 @@ public class GameController {
     }
 
     private boolean compareAnswer(List<Integer> computerRandomNumberList, List<Integer> playerNumberList) {
-        playerAnswer.setStrike(0);
-        playerAnswer.setBall(0);
+        playerAnswer.initCountZero();
 
-        for (int i = 0; i < 3; i++) {
-            if (computerRandomNumberList.get(i) == playerNumberList.get(i)) {
-                playerAnswer.setStrike(playerAnswer.getStrike() + 1);
-            }
-            if (computerRandomNumberList.get(i) != playerNumberList.get(i)) {
-                if (computerRandomNumberList.contains(playerNumberList.get(i))) {
-                    playerAnswer.setBall(playerAnswer.getBall() + 1);
-                }
-            }
+        for (int i = 0; i < FIXED_LIST_SIZE; i++) {
+            playerAnswer.countStrikeAndBall(computerRandomNumberList, playerNumberList, i);
         }
-        return playerAnswer.getStrike() == 3;
+
+        return playerAnswer.checkThreeStrike();
     }
 
     private boolean retryGame(String playerOption) {
         switch (playerOption) {
-            case "1" : return true;
+            case GAME_RESTART_NUMBER: return true;
 
-            case "2" : return false;
+            case GAME_EXIT_NUMBER: return false;
 
             default: throw new IllegalArgumentException();
         }
     }
 
     private void validate(List<Integer> playerNumberList) {
-        if (playerNumberList.size() != 3) {
+        if (playerNumberList.size() != FIXED_LIST_SIZE) {
             throw new IllegalArgumentException();
         }
 
@@ -96,7 +95,7 @@ public class GameController {
     }
 
     private void checkNumberRange(List<Integer> playerNumberList, int index) {
-        if (playerNumberList.get(index) < 1 || playerNumberList.get(index) > 9) {
+        if (playerNumberList.get(index) < MIN_OF_NUMBER_RANGE || playerNumberList.get(index) > MAX_OF_NUMBER_RANGE) {
             throw new IllegalArgumentException();
         }
     }
