@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.dto.GameResultDto;
 import baseball.dto.NumberDto;
 import baseball.dto.StrikeBallResultDto;
+import baseball.model.GameRestartOption;
 import baseball.model.GameResult;
 import baseball.model.GameResult.GameResultData;
 import baseball.model.InputNumberValidator;
@@ -28,9 +29,10 @@ public class BaseballGameService {
 
     public void restartGame(String playerRestartInput) {
         String validatedInput = validator.validateRestartInput(playerRestartInput);
+        String restart = GameRestartOption.RESTART.getValue();
 
         numberDto.setValidateInput(validatedInput);
-        if (numberDto.getValidateInput().equals("1")) {
+        if (numberDto.getValidateInput().equals(restart)) {
             gameResultDto.setIsRestart(true);
         }
     }
