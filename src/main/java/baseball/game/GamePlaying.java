@@ -69,8 +69,4 @@ public class GamePlaying {
         }
         return ball;
     }
-
-    private boolean isAnswer(int strike) {
-        return strike != 3;
-    }
 }
