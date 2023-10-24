@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.HashSet;
-
 public class Exception {
     public static void checkException(char[] guess) {
         checkLength(guess.length);
@@ -9,12 +7,12 @@ public class Exception {
     }
 
     private static void checkDub(char[] guess) {
-        HashSet<Character> check = new HashSet<>();
-        for (Character c : guess) {
-            if (check.contains(c)) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : guess) {
+            if (sb.indexOf(String.valueOf(c)) != -1) {
                 throw new IllegalArgumentException();
             }
-            check.add(c);
+            sb.append(c);
         }
     }
 
