@@ -64,10 +64,7 @@ public class Game {
     }
 
     public boolean checkUserInput(String input){
-        if(input.length()==3){
-            return true;
-        }
-        return false;
+        return input.length() == 3;
     }
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
