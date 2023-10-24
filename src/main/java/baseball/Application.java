@@ -57,6 +57,14 @@ public class Application {
         return numberList;
     }
 
+    public static boolean isLengthThree(String userInput) {
+        if (userInput.length() == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static boolean isDigitNumber(String userInput) {
         int digitCount = 0;
 
