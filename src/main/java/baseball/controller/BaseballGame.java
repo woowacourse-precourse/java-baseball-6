@@ -8,16 +8,15 @@ import baseball.model.Numbers;
 import baseball.model.numberstrategy.UserInputNumberSelectionStrategy;
 import baseball.view.HintView;
 import baseball.view.InputView;
+import baseball.view.MessageView;
 
 public class BaseballGame {
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String END_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RETRY = "1";
     private static final String END_GAME = "2";
     private static final String INVALID_INPUT_MESSAGE = "올바른 수를 입력하세요.";
 
     public void play() {
-        System.out.println(START_MESSAGE);
+        MessageView.printStartMessage();
         do {
             start();
         } while (askRestartOrExit());
@@ -28,12 +27,13 @@ public class BaseballGame {
         Numbers computerNumbers = Numbers.createNumbersFrom(computerStrategy);
         GameResult result;
         do {
-            UserInputNumberSelectionStrategy playerStrategy = new UserInputNumberSelectionStrategy(inputPlayerNumbers());
+            UserInputNumberSelectionStrategy playerStrategy = new UserInputNumberSelectionStrategy(
+                    inputPlayerNumbers());
             Numbers playerNumbers = Numbers.createNumbersFrom(playerStrategy);
             result = computerNumbers.calculateResult(playerNumbers);
             new HintView(result).printHint();
         } while (!result.isThreeStrikes());
-        System.out.println(END_GAME_MESSAGE);
+        MessageView.printEndMessage();
     }
 
     private boolean askRestartOrExit() {
