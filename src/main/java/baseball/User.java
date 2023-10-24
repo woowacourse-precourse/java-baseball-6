@@ -17,6 +17,13 @@ public class User {
     }
 
     public void generateNumbers() {
-        // TO -DO Console.readLine();
+        String userInput = Console.readLine();
+        UserInputValidator userInputValidator = new UserInputValidator();
+
+        userInputValidator.validateInputNumbers(userInput);
+
+        for (char input : userInput.toCharArray()) {
+            numbers.add(Character.getNumericValue(input));
+        }
     }
 }
