@@ -1,7 +1,7 @@
 package baseball.input;
 
-public class NullValidator {
+public class ZeroValidator {
     public static boolean isValid(String input) {
-        return input != null;
+        return input.chars().allMatch(c -> c != '0');
     }
 }
