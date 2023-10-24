@@ -33,6 +33,14 @@ class ExceptionTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복된_숫자가_들어옴() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("111"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});

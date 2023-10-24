@@ -1,42 +1,44 @@
 package baseball.global;
 
+import static baseball.global.Constants.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerSingleton {
 
-    private final List<Integer> computer;
+    private final List<Integer> computerNumbers;
 
     private ComputerSingleton() {
-        computer = new ArrayList<>();
-        generateComputer();
+        computerNumbers = new ArrayList<>();
+        generateComputerNumbers();
     }
 
     public static ComputerSingleton getInstance() {
         return ComputerSingletonHolder.INSTANCE;
     }
 
-    public List<Integer> getComputer() {
-        return computer;
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
     }
 
-    public void resetComputer() {
-        computer.clear();
-        generateComputer();
+    public void resetComputerNumbers() {
+        computerNumbers.clear();
+        generateComputerNumbers();
     }
 
-    private void generateComputer() {
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+    private void generateComputerNumbers() {
+        while (computerNumbers.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
     }
 
     private static class ComputerSingletonHolder {
-
         private static final ComputerSingleton INSTANCE = new ComputerSingleton();
     }
 }

@@ -1,34 +1,36 @@
 package baseball.service;
 
+import static baseball.exception.Exception.*;
+
 import baseball.domain.Score;
-import baseball.exception.Exception;
 import baseball.global.ComputerSingleton;
 import java.util.List;
 
 public class Service {
 
     ComputerSingleton computerSingleton = ComputerSingleton.getInstance();
-    List<Integer> computer = computerSingleton.getComputer();
+    List<Integer> computerNumbers = computerSingleton.getComputerNumbers();
     Score score = new Score();
 
     public Score getScore(String input) {
 
-        Exception.validateInputLength(input);
-        Exception.validateNumericInput(input);
+        validateNumericInput(input);
+        validateInputLength(input);
+        validateUniqueNumbers(input);
 
-        score.checkStrike(input, computer);
-        score.checkBall(input, computer);
-        score.setResultState(score.getBall(), score.getStrike());
+        score.checkStrike(input, computerNumbers);
+        score.checkBall(input, computerNumbers);
+        score.setResultState();
 
         return score;
     }
 
     public boolean isRestart(String input) {
 
-        Exception.validateRestartInput(input);
-        
+        validateRestartInput(input);
+
         if (input.equals("1")) {
-            computerSingleton.resetComputer();
+            computerSingleton.resetComputerNumbers();
             return true;
         } else {
             return false;

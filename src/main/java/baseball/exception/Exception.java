@@ -1,16 +1,24 @@
 package baseball.exception;
 
+import static baseball.global.Constants.NUMBER_LENGTH;
+
 public class Exception {
 
     public static void validateInputLength(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        if (input.length() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException(NUMBER_LENGTH + "자리 숫자를 입력해주세요.");
         }
     }
 
     public static void validateNumericInput(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
+        }
+    }
+
+    public static void validateUniqueNumbers(String input) {
+        if (input.length() != input.chars().distinct().count()) {
+            throw new IllegalArgumentException("숫자는 겹치지 않게 입력해주세요.");
         }
     }
 

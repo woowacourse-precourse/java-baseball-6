@@ -10,7 +10,7 @@ public class View {
 
     public void mainView() {
         introView();
-        inGameView();
+        gameplayView();
         outroView();
     }
 
@@ -18,14 +18,14 @@ public class View {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private void inGameView() {
-        boolean isSuccess = false;
+    private void gameplayView() {
+        boolean isGameSuccess = false;
 
-        while (!isSuccess) {
+        while (!isGameSuccess) {
             System.out.println("숫자를 입력해주세요: ");
             String input = Console.readLine();
             Score score = controller.getScore(input);
-            isSuccess = printResult(score);
+            isGameSuccess = displayGameResult(score);
         }
     }
 
@@ -35,30 +35,26 @@ public class View {
         String input = Console.readLine();
         boolean isRestart = controller.isRestart(input);
         if (isRestart) {
-            inGameView();
+            gameplayView();
         }
     }
 
-    private boolean printResult(Score score) {
+    private boolean displayGameResult(Score score) {
 
         switch (score.getResultState()) {
-            case NOTHING:
+            case NOTHING ->
                 System.out.println("낫싱");
-                break;
-            case BALL:
+            case BALL ->
                 System.out.printf("%d볼\n", score.getBall());
-                break;
-            case STRIKE:
+            case STRIKE ->
                 System.out.printf("%d스트라이크\n", score.getStrike());
-                break;
-            case BALL_AND_STRIKE:
+            case BALL_AND_STRIKE ->
                 System.out.printf("%d볼 %d스트라이크\n", score.getBall(), score.getStrike());
-                break;
-            case THREE_STRIKE:
+            case THREE_STRIKE -> {
                 System.out.println("3스트라이크");
                 return true;
+            }
         }
         return false;
     }
-
 }

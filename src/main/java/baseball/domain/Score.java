@@ -42,7 +42,7 @@ public class Score {
         return ball;
     }
 
-    public void setResultState(int ball, int strike) {
+    public void setResultState() {
         if (strike == 3) {
             resultState = ResultState.THREE_STRIKE;
         } else if (ball == 0 && strike == 0) {
