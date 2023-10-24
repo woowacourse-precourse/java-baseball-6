@@ -14,13 +14,12 @@ public class InputView {
     }
 
     public ArrayList<Integer> nextIntArray() {
-        ArrayList<Integer> results = new ArrayList<>();
         String input = next();
 
+        ArrayList<Integer> results = new ArrayList<>();
         for(int i = 0; i < input.length(); i++) {
             results.add(input.charAt(i) - '0');
         }
-
         return results;
     }
 }

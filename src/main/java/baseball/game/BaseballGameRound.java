@@ -11,14 +11,14 @@ public class BaseballGameRound {
 
     private ComputerPlayer computerPlayer;
     private UserPlayer userPlayer;
-    private OutputView outputView;
     private InputView inputView;
+    private OutputView outputView;
 
     public BaseballGameRound(ComputerPlayer computerPlayer, UserPlayer userPlayer) {
         this.computerPlayer = computerPlayer;
         this.userPlayer = userPlayer;
-        this.outputView = new OutputView();
         this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
     public void start() {

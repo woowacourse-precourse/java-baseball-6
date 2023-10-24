@@ -4,6 +4,7 @@ import baseball.common.Constants;
 import baseball.game.status.BaseballGameStatus;
 import baseball.player.ComputerPlayer;
 import baseball.player.UserPlayer;
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -19,12 +20,14 @@ public class BaseballGame {
     private ComputerPlayer computerPlayer;
     private UserPlayer userPlayer;
     private BaseballGameStatus gameStatus;
+    private InputView inputView;
 
 
     public void init() {
         this.computerPlayer = new ComputerPlayer();
         this.userPlayer = new UserPlayer();
-        gameStatus = BaseballGameStatus.CONTINUE;
+        this.gameStatus = BaseballGameStatus.CONTINUE;
+        this.inputView = new InputView();
     }
 
     public void process() {
@@ -35,7 +38,7 @@ public class BaseballGame {
             baseballGameRound = new BaseballGameRound(computerPlayer, userPlayer);
             baseballGameRound.start();
 
-            int mode = Integer.parseInt(Console.readLine());
+            int mode = inputView.nextInt();
             if(mode == Constants.gameExit) gameStatus = BaseballGameStatus.EXIT;
         } while (gameStatus.equals(BaseballGameStatus.CONTINUE));
     }
