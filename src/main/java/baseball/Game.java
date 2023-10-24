@@ -38,7 +38,7 @@ public class Game {
 
             String input = inputNumbers();
 
-            if (!checkAnswer(input))
+            if (checkAnswer(input))
                 break;
         }
     }
@@ -76,9 +76,9 @@ public class Game {
         int ballNum = 0;
         // 제출 된 숫자가 요구 사항에 따라 어떤 결과를 갖는지 판단
         for (int i = 0; i < submittedList.size(); i++) {
-            if (submittedList.get(i).equals(submittedList.get(i)))
+            if (answerList.get(i).equals(submittedList.get(i)))
                 strikeNum++;
-            else if (submittedList.contains(submittedList.get(i)))
+            else if (answerList.contains(submittedList.get(i)))
                 ballNum++;
         }
 
