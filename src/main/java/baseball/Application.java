@@ -80,7 +80,8 @@ public class Application {
         return result;
     }
 
-    public static int[] answerInitializer() {
+    public static int[] answerInitializerOld() {
+        // 해당 방법으로 진행시 Test에 필요한 난수를 배열에 넣지 못하므로 사용하지 않는다.
         ArrayList<Integer> answerArrayList = new ArrayList<>(9);
         int[] answer = new int[3];
 
@@ -94,6 +95,24 @@ public class Application {
 
             answer[i] = tempValue;
             answerArrayList.remove(tempIndex);
+        }
+
+        return answer;
+    }
+
+    public static int[] answerInitializer() {
+        ArrayList<Integer> answerArrayList = new ArrayList<>();
+        int[] answer = new int[3];
+
+        while (answerArrayList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerArrayList.contains(randomNumber)) {
+                answerArrayList.add(randomNumber);
+            }
+        }
+
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = answerArrayList.get(i);
         }
 
         return answer;
