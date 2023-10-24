@@ -50,6 +50,8 @@ public class Application {
         String playerChoose = Console.readLine();
 
         int choose = validateNumber(playerChoose);
+
+        validateValue(choose);
     }
 
     static List<Integer> makeNumbers () {
@@ -118,5 +120,12 @@ public class Application {
         }
 
         return result;
+    }
+
+    private static void validateValue(int choose) throws IllegalArgumentException {
+        // 1, 2인지 검증한다.
+        if (choose != 1 && choose != 2) {
+            throw new IllegalArgumentException();
+        }
     }
 }
