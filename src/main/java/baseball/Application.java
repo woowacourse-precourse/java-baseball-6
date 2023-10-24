@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static List<Integer> makeRandomNumberList() {
@@ -42,7 +44,19 @@ public class Application {
         }
         return arrayPlayerNumber;
     }
-    
+
+    public static boolean checkDuplicateInput(int[] playerArray) {
+        System.out.println(playerArray.length);
+        List<Integer> list = new ArrayList<>();
+        Set<Integer> set = null;
+
+        for (int j : playerArray) {
+            list.add(j);
+        }
+        set = new HashSet<Integer>(list);
+        return set.size() == list.size();
+    }
+
     public static void main(String[] args) {
         List<Integer> listAnswerNumber = makeRandomNumberList();
         int[] arrayPlayerNumber = null;
