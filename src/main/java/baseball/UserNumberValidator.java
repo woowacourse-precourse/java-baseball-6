@@ -3,15 +3,15 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class UserNumberValidator {
+public class UserNumberValidator {
 
-    public static void validateThreeDigitNumber(String userNumber) {
+    public void validateThreeDigitNumber(String userNumber) {
         if (userNumber.length() != 3) {
             throw new IllegalArgumentException("세자리 숫자가 아닙니다");
         }
     }
 
-    public static void validateDuplicatedNumber(String userNumber) {
+    public void validateDuplicatedNumber(String userNumber) {
         Set<Character> set = new HashSet<>();
         for (char digit : userNumber.toCharArray()) {
             set.add(digit);
@@ -22,7 +22,7 @@ public abstract class UserNumberValidator {
         }
     }
 
-    private static boolean isDuplicated(String userNumber, Set<Character> set) {
+    private boolean isDuplicated(String userNumber, Set<Character> set) {
         return userNumber.length() != set.size();
     }
 }

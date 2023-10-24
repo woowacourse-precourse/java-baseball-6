@@ -6,11 +6,21 @@ public class Game {
 
     public void play() {
 
-        List<Integer> randomNumbers = RandomNumberGenerator.createNumbers();
+        GameCounter counter = new GameCounter();
+        Judgement judgement = new Judgement();
+        RandomNumberGenerator computerNumberGenerator = new RandomNumberGenerator();
+        UserNumberReader userNumberReader = new UserNumberReader(new UserNumberValidator());
 
-        while (true) {
-            List<Integer> userNumbers = UserNumberReader.read();
+        List<Integer> computerNumbers = computerNumberGenerator.createNumbers();
+
+        String result = "";
+        while (!result.equals("3스트라이크")) {
+            List<Integer> userNumbers = userNumberReader.read();
+            int total = counter.countTotal(computerNumbers, userNumbers);
+            int strike = counter.countStrike(computerNumbers, userNumbers);
+            result = judgement.judge(total, strike);
+            System.out.println(result);
         }
-
     }
+
 }
