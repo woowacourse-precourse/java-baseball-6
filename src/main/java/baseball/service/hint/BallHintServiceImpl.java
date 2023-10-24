@@ -22,9 +22,8 @@ public class BallHintServiceImpl implements HintItemService {
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
-        HintItem ball = new Ball();
-        ball.setCount(count(computerBaseball, inputBaseball));
-        ball.setActive(active(ball)); //TODO: 역할 분리 가능하면 해야함
+        int count = count(computerBaseball, inputBaseball);
+        HintItem ball = new Ball(count);
 
         return ball;
     }
@@ -49,11 +48,5 @@ public class BallHintServiceImpl implements HintItemService {
         return count;
     }
 
-    @Override
-    public boolean active(HintItem ball) {
-        if (ball.getCount() > 0) {
-            return true;
-        }
-        return false;
-    }
+
 }

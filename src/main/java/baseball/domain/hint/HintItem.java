@@ -6,19 +6,15 @@ public abstract class HintItem {
 
     private boolean isActive;
 
-    public int getCount() {
+    public HintItem(int count) {
+        this.count = count;
+        this.isActive = active();
+    }
+
+    protected int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
+    public abstract boolean active();
 }
