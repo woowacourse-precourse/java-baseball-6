@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -93,5 +97,31 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThrows(IllegalArgumentException.class, () -> Application.isCorrectNumber(userNumber));
+    }
+
+    @Test
+    public void 접수_집계_테스트() throws Exception {
+        Computer computer = new Computer();
+        // given
+        // 테스트 1
+        List<Integer> computerPickNumber1 = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> userNumber1 = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        // 테스트 2
+        List<Integer> computerPickNumber2 = new ArrayList<>(Arrays.asList(1, 2, 5));
+        List<Integer> userNumber2 = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        // when
+        int[] score1 = computer.calculateScore(computerPickNumber1, userNumber1);
+        int[] score2 = computer.calculateScore(computerPickNumber2, userNumber2);
+
+        // then
+        Assertions.assertThat(score1.length).isEqualTo(2);
+        Assertions.assertThat(score1[0]).isEqualTo(3);  // 3 스트라이크
+        Assertions.assertThat(score1[1]).isEqualTo(0);  // 0 볼
+
+        Assertions.assertThat(score2.length).isEqualTo(2);
+        Assertions.assertThat(score2[0]).isEqualTo(2);  // 2 스트라이크
+        Assertions.assertThat(score2[1]).isEqualTo(0);  // 0볼
     }
 }
