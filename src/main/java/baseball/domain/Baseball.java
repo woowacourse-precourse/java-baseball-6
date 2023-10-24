@@ -12,10 +12,10 @@ import java.util.Set;
 
 public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
 
-    private static final String TOO_SHORT_INPUT = "자리수가 3보다 작습니다.";
-    private static final String TOO_LONG_INPUT = "자리수가 3보다 큽니다.";
-    private static final String DUPLICATE_DIGITS = "같은 숫자가 2개 이상 있습니다.";
-    private static final String OUT_OF_RANGE_DIGITS = "각 자리 숫자가 1에서 9 사이가 아닙니다.";
+    private static final String TOO_SHORT_INPUT_MESSAGE = "자리수가 3보다 작습니다.";
+    private static final String TOO_LONG_INPUT_MESSAGE = "자리수가 3보다 큽니다.";
+    private static final String DUPLICATE_DIGITS_MESSAGE = "같은 숫자가 2개 이상 있습니다.";
+    private static final String OUT_OF_RANGE_DIGITS_MESSAGE = "각 자리 숫자가 1에서 9 사이가 아닙니다.";
 
     private final List values;
 
@@ -58,11 +58,11 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
 
         int inputNumLen = stringValue.length();
         if (inputNumLen < GameConstants.NUMBER_LENGTH) {
-            ExceptionUtil.throwInvalidValueException();
+            ExceptionUtil.throwInvalidValueException(TOO_SHORT_INPUT_MESSAGE);
         }
 
         if (inputNumLen > GameConstants.NUMBER_LENGTH) {
-            ExceptionUtil.throwInvalidValueException();
+            ExceptionUtil.throwInvalidValueException(TOO_LONG_INPUT_MESSAGE);
         }
 
         Set numSet = new HashSet();
@@ -70,12 +70,12 @@ public class Baseball { //TODO: NumberBaseball로 이름 바꾸기
             numSet.add(stringValue.charAt(i));
         }
         if (numSet.size() < GameConstants.NUMBER_LENGTH) {
-            ExceptionUtil.throwInvalidValueException();
+            ExceptionUtil.throwInvalidValueException(DUPLICATE_DIGITS_MESSAGE);
         }
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             if (!stringValue.matches("^[1-9]+$")) {
-                ExceptionUtil.throwInvalidValueException();
+                ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
             }
         }
     }
