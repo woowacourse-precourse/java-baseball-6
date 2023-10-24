@@ -3,8 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Comparer {
-
     private final int NUMBER_LENGTH = 3;
+    private final CompareResult compareResult;
     private final List<Integer> computerNumber;
     private final List<Integer> userNumber;
 
@@ -12,32 +12,22 @@ public class Comparer {
     public Comparer(Computer computer, User user) {
         computerNumber = computer.getComputerNumber();
         userNumber = user.getUserNumber();
+        compareResult = generateCompareResult();
+        compareResult.printCompareResult();
     }
 
-    public CompareResult getCompareResult() {
-        int strikeCount = getStrikeCount();
-        int ballCount = getBallCount();
-        printCompareResult(strikeCount, ballCount);
+    private CompareResult generateCompareResult() {
+        int strikeCount = calculateStrikeCount();
+        int ballCount = calculateBallCount();
         return new CompareResult(strikeCount, ballCount);
     }
 
-    private void printCompareResult(int strikeCount, int ballCount) {
-        if (ballCount != 0 && strikeCount != 0) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        }
-        if (ballCount != 0 && strikeCount == 0) {
-            System.out.println(ballCount + "볼");
-        }
-        if (ballCount == 0 && strikeCount != 0) {
-            System.out.println(strikeCount + "스트라이크");
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
-        }
+    public int getStrikeCount() {
+        return compareResult.getStrikeCount();
     }
 
     // Strike 개수 화인
-    private int getStrikeCount() {
+    private int calculateStrikeCount() {
         int strikeCount = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             strikeCount += isStrike(i);
@@ -46,7 +36,7 @@ public class Comparer {
     }
 
     // Ball 개수 확인
-    private int getBallCount() {
+    private int calculateBallCount() {
         int ballCount = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             ballCount += isBall(i);
