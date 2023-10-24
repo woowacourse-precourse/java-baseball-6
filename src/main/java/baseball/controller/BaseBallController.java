@@ -1,0 +1,38 @@
+package baseball.controller;
+
+import baseball.domain.Game;
+import baseball.domain.GameResult;
+import baseball.domain.UserInputNumber;
+import baseball.view.UserInputView;
+import baseball.view.UserOutputView;
+import service.BaseBallService;
+
+public class BaseBallController {
+    private UserInputView userInputView;
+    private UserOutputView userOutputView;
+    private BaseBallService baseBallService;
+    private static final int endCount = 3;
+    private static final int startCode = 1;
+    
+    public void gameStart() {
+        this.baseBallService = new BaseBallService();
+        String restartNumber;
+        do {
+                UserOutputView.startGame();
+                play();
+                userOutputView.finishGame();
+                restartNumber = userInputView.reStartMessage();
+        } while (baseBallService.reStart(restartNumber));
+    }
+
+    private void play() {
+            GameResult result;
+            baseBallService.reStartGame();
+            do {
+                    String input = userInputView.startMessage();
+                    result = baseBallService.compareNumber(input);
+                    new UserOutputView(result).printDescription();
+            } while (result.strikeCount != endCount);
+
+    }
+}
