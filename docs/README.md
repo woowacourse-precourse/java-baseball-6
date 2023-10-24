@@ -1,15 +1,15 @@
 ## ✏️ 과제 진행 요구 사항
+
 - ## 🚀 기능 요구 사항
 
+0. 컴퓨터는 1~9 사이의 중복되지 않는 3자리 숫자를 랜덤으로 생성한다.
 1. 사용자로부터 서로 다른 3자리 숫자를 입력받는다.
 2. 만약 사용자가 아래와 같이 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료된다.
    - 입력받은 숫자가 3자리 숫자가 아닌 경우
    - 입력받은 숫자에 중복된 숫자가 있는 경우
    - 입력받은 숫자가 숫자가 아닌 경우
    - 입력받는 숫자가 1~9가 아닌 경우
-   - 입력받는 숫자가 null인 경우
    - 입력받는 숫자가 공백인 경우
-3. 1~9 사이의 중복되지 않는 3자리 숫자를 랜덤으로 생성한다.
 4. 생성한 숫자와 입력받은 숫자를 비교한다.
 5. 비교한 결과를 볼, 스트라이크라는 힌트와 개수로 출력한다. 
    - 같은 수가 같은 자리에 있으면 스트라이크
@@ -31,4 +31,7 @@
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 - [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
 
-
+- 라이브러리
+  - camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
+  - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+  - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
