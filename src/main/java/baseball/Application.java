@@ -28,10 +28,11 @@ public class Application {
         // 게임 진행을 확인할 flag 변수
         boolean flag = true;
         while (flag) {
-            // 변수
+            // 입력
             System.out.print("숫자를 입력해주세요 : ");
             String input = camp.nextstep.edu.missionutils.Console.readLine();
             int num = 0;
+            // 사용자의 입력값을 저장할 list
             List<Integer> list = new ArrayList<>();
 
             try {
@@ -51,14 +52,19 @@ public class Application {
                 throw new IllegalArgumentException(e);
             }
 
+            // ball, strike 갯수 저장소
             baseballStore store = new baseballStore(0, 0);
             for (int i = 0; i < list.size(); i++) {
                 // computer 와 비교해보며 계산
                 for (int j = 0; j < computer.size(); j++) {
+                    // computer 값과 입력 값이 일치
                     if (computer.get(j) == list.get(i)) {
+                        // 위치가 같으면, strike 갯수 올림
                         if (i == j) {
                             store.strikeCount++;
-                        } else {
+                        }
+                        // 위치가 다르면, ball 갯수 올림
+                        if (i != j){
                             store.ballCount++;
                         }
                     }
@@ -88,6 +94,7 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                 try {
+                    // 1 or 2 의 값을 입력 받고 예외 발생시, IllegalArgumentException 처리
                     int check = checkOneOrTwo(camp.nextstep.edu.missionutils.Console.readLine());
 
                     if (check == 1) {
@@ -134,6 +141,7 @@ public class Application {
         }
     }
 
+    // List에 중복된 값이 있는지 체크
     private static boolean checkDuplicated(List<Integer> list) {
         Set<Integer> set = new HashSet<>(list);
         if (list.size() != set.size()) {
@@ -143,6 +151,7 @@ public class Application {
         return false;
     }
 
+    // integer 값을 자릿수대로 List 자료형으로 변환
     private static List<Integer> integetToList(int num) {
         List<Integer> resultList = new ArrayList<>();
         while (num > 0) {
@@ -154,6 +163,10 @@ public class Application {
         return resultList;
     }
 
+    /**
+     *  String 자료형을 입력 형식에 맞게 Integer로 변환
+     *  입력 형식: 3자리의 서로 다른 자연수
+     */
     private static int changeInteger(String str) {
         if (str.length() != 3) {
             throw new IllegalArgumentException("입력값이 3자리가 아닙니다");
