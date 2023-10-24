@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,14 +11,12 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) throws IllegalAccessException {
         // TODO: 프로그램 구현
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         int strike = 0;
         int ball = 0;
         String restart = "";
-
-        InputStreamReader ir = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(ir);
 
         //컴퓨터와 플레이어의 수 리스트 생성
         ArrayList<Integer> computer = new ArrayList<>();
@@ -39,11 +38,13 @@ public class Application {
             // 수 입력받기 3개 숫자 예외처리하자
             System.out.print("숫자를 입력해주세요 : ");
             try {
-                String com = br.readLine();
+                String com = Console.readLine();
                 for (int i = 0; i < 3; i++) {
                     player.add(Integer.parseInt(com.split("")[i]));
                 }
-            } catch (NullPointerException | IOException e){
+            } catch (NullPointerException e){
+                throw new IllegalArgumentException();
+            } catch (Exception e){
                 throw new IllegalArgumentException();
             }
 
@@ -76,8 +77,10 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 try {
-                    restart = br.readLine();
-                } catch (NullPointerException | IOException e){
+                    restart = Console.readLine();
+                } catch (NullPointerException e){
+                    throw new IllegalArgumentException();
+                } catch (Exception e){
                     throw new IllegalArgumentException();
                 }
 
