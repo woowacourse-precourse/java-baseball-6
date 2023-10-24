@@ -8,6 +8,7 @@ import static baseball.model.Constant.START;
 import baseball.model.DecimalNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class GameController {
     DecimalNumber decimalNumber;
@@ -35,7 +36,10 @@ public class GameController {
         while (status == RUNNING) {
             String inputNumber = InputView.inputGameNumber();
             decimalNumber.setUser(inputNumber);
-            status = computerController.checkAnswer();
+
+            List<Integer> computer = decimalNumber.getComputer();
+            List<Integer> user = decimalNumber.getUser();
+            status = computerController.checkAnswer(computer, user);
         }
     }
 

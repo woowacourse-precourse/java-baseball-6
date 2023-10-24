@@ -20,10 +20,7 @@ public class ComputerController {
         decimalNumber.setComputer();
     }
 
-    public boolean checkAnswer() {
-        List<Integer> computer = decimalNumber.getComputer();
-        List<Integer> user = decimalNumber.getUser();
-
+    public boolean checkAnswer(List<Integer> computer, List<Integer> user) {
         int strike = 0;
         int ball = 0;
 
