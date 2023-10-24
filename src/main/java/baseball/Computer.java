@@ -39,7 +39,7 @@ public class Computer {
                 return Hints.BALL.ordinal();
             }
         }
-        return Hints.NOTTING.ordinal();
+        return Hints.NOTHING.ordinal();
     }
 
     private void setListZero(List<Integer> targetList) {
