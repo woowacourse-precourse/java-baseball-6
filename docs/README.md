@@ -15,3 +15,8 @@
 5. 예외 처리와 코드 리팩토링
 
 위와 같은 방법으로 코드를 구현할 계획이다.
+###구현 중간중간 에러사항 기록
+1. System.out.println() 함수 사용하자마자 한글의 깨진다. 인코딩을 UTF-8로 바꿔주고 vmoption파일에 -Dfile.encoding=UTF-8 추가해주니 해결
+2. List를 사용하기 위해 표준 라이브러리 선언 방법, Arraylist 특성 숙지
+3. 외부 라이브러리 Console과 Randoms 코드 보며 이해하기
+4. randoms 라이브러리 이해 후 3자리 난수 생성까지 완성
