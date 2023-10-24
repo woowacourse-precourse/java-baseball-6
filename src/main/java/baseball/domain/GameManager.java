@@ -5,11 +5,8 @@ import baseball.console.Output;
 
 public class GameManager {
 
-    public GameManager() {
-        Output.printBaseballGameStart();
-    }
-
     public void run() {
+        Output.printBaseballGameStart();
         do {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.playGame();
