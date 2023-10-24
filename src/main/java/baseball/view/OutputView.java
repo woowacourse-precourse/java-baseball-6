@@ -3,11 +3,15 @@ package baseball.view;
 import baseball.domain.Count;
 
 public class OutputView {
-    public static void start() {
+
+    private OutputView() {
+    }
+
+    public static void printStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void result(Count count) {
+    public static void printResult(Count count) {
         int ball = count.getBallCount();
         int strike = count.getStrikeCount();
 
@@ -22,7 +26,7 @@ public class OutputView {
         }
     }
 
-    public static void answer() {
+    public static void printAnswer() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
