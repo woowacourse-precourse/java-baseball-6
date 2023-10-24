@@ -14,6 +14,7 @@ public class Application {
         System.out.println(isValid("124"));
         System.out.println(Arrays.toString(parseInput("123")));
         System.out.println(countStrikes(computerNumbers, parseInput("912")));
+        System.out.println(countBalls(computerNumbers, parseInput("841"), 1));
 
     }
 
@@ -50,6 +51,7 @@ public class Application {
         if (isValid(input)) {
             int[] userNumbers = parseInput(input);
             int strikes = countStrikes(computerNumbers, userNumbers);
+            int balls = countBalls(computerNumbers, userNumbers, strikes);
         } else {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
@@ -82,7 +84,6 @@ public class Application {
         return numbers;
     }
 
-
     // 스트라이크 수 계산
     private static int countStrikes(int[] computerNumbers, int[] userNumbers) {
         int count = 0;
@@ -94,8 +95,16 @@ public class Application {
         return count;
     }
 
-
     // 볼 수 계산
+    private static int countBalls(int[] computerNumbers, int[] userNumbers, int strikes) {
+        int count = 0;
+        for (int userNumber : userNumbers) {
+            if (contains(computerNumbers, userNumber)) {
+                count++;
+            }
+        }
+        return count - strikes;
+    }
 
 
     // 결과 출력
