@@ -8,27 +8,30 @@ import java.util.List;
 public class BaseballNumbers {
     static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 9;
+
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     static List<BaseballNumber> byRandom(int digitSize) {
         List<BaseballNumber> numbers = new ArrayList<>();
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, digitSize);
-        for (int randomNumber : randomNumbers) {
-            numbers.add(new BaseballNumber(randomNumber));
+        while (numbers.size() < digitSize) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            addNumber(numbers, randomNumber);
         }
         return numbers;
+    }
+
+    private static void addNumber(List<BaseballNumber> numbers, int number) {
+        BaseballNumber baseballNumber = new BaseballNumber(number);
+        if (!numbers.contains(baseballNumber)) {
+            numbers.add(baseballNumber);
+        }
     }
 
     static List<BaseballNumber> byInput(int digitSize) {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        try {
-            validateInput(input, digitSize);
-            return generateNumbers(input.split(""));
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        return null;
+        validateInput(input, digitSize);
+        return generateNumbers(input.split(""));
     }
 
     private static void validateInput(String input, int digitSize) {

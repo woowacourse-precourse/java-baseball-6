@@ -7,7 +7,6 @@ public class User implements Player {
 
     public void selectNumbers() {
         numbers = BaseballNumbers.byInput(DIGIT_SIZE);
-        // TODO : null인 경우 생각해보기
     }
 
     BaseballNumber numberOf(int index) {
