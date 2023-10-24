@@ -12,6 +12,7 @@ public class Game {
 
     /**
      * Game 객체를 생성하는 정적 팩토리 메서드
+     *
      * @return Game 객체
      */
     public static Game generate() {

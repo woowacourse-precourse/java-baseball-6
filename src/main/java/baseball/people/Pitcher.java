@@ -9,6 +9,7 @@ public class Pitcher {
 
     /**
      * Pitcher 객체를 생성하는 정적 팩토리 메서드
+     *
      * @return Pitcher 객체
      */
     public static Pitcher enter() {
@@ -17,6 +18,7 @@ public class Pitcher {
 
     /**
      * 사용자의 입력을 받아서 정수 배열로 변환하는 메서드
+     *
      * @return 길이 3인 정수(int 타입) 배열
      */
     public int[] pitch() {
@@ -36,6 +38,7 @@ public class Pitcher {
 
     /**
      * 게임 재시작 여부를 판단하는 메서드
+     *
      * @return boolean 값
      */
     public boolean restart() {

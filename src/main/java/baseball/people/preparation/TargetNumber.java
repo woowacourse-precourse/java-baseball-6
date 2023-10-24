@@ -39,16 +39,16 @@ class TargetNumber {
 
     int[] getRandomNumber() {
         boolean[] duplicationCheck = new boolean[10];
-        int[] answer = new int[3];
+        int[] randomNumber = new int[3];
         for (int i = 0; i < 3; i++) {
             int value = Randoms.pickNumberInRange(1, 9);
             while (duplicationCheck[value]) {
                 value = Randoms.pickNumberInRange(1, 9);
             }
             duplicationCheck[value] = true;
-            answer[i] = value;
+            randomNumber[i] = value;
         }
-        return answer;
+        return randomNumber;
     }
 
     private static boolean isValidNumber(int i) {
