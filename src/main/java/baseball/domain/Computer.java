@@ -9,26 +9,19 @@ import java.util.Set;
 
 import static baseball.domain.Baseballs.*;
 
-public class Game {
+public class Computer {
+    private Baseballs baseballs;
 
-    private Baseballs computerBaseballs;
-    private boolean isGameOver;
-
-    public void setup() {
-        computerBaseballs = new Baseballs(generateRandomNumbers());
-        isGameOver = false;
+    public Baseballs getBaseballs() {
+        return baseballs;
     }
 
-    public Baseballs getComputerBaseballs() {
-        return computerBaseballs;
+    public void setUp() {
+        baseballs = generateBaseballs();
     }
 
-    public void setGameOver() {
-        isGameOver = true;
-    }
-
-    public boolean isGameOver() {
-        return isGameOver;
+    private Baseballs generateBaseballs() {
+        return new Baseballs(generateRandomNumbers());
     }
 
     private List<Integer> generateRandomNumbers() {

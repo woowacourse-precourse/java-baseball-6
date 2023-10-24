@@ -1,28 +1,34 @@
 package baseball.controller;
 
-import baseball.domain.Baseballs;
-import baseball.service.GameService;
+import baseball.domain.GameStatus;
+import baseball.service.ComputerService;
+import baseball.service.PlayerService;
+import baseball.service.ScoreBoardService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import static baseball.domain.GameStatus.EXIT;
-import static baseball.domain.GameStatus.RESTART;
+import static baseball.domain.GameStatus.*;
 
 public class GameController {
 
     private final InputController inputController;
     private final OutputView outputView;
     private final InputView inputView;
-    private final GameService gameService;
-
+    private final ComputerService computerService;
+    private final PlayerService playerService;
+    private final ScoreBoardService scoreBoardService;
     public GameController(InputController inputController,
                           OutputView outputView,
                           InputView inputView,
-                          GameService gameService) {
+                          ComputerService computerService,
+                          baseball.service.PlayerService playerService,
+                          baseball.service.ScoreBoardService scoreBoardService) {
         this.inputController = inputController;
         this.outputView = outputView;
         this.inputView = inputView;
-        this.gameService = gameService;
+        this.computerService = computerService;
+        this.playerService = playerService;
+        this.scoreBoardService = scoreBoardService;
     }
 
     public void intro() {
@@ -30,25 +36,38 @@ public class GameController {
     }
 
     public void run() {
-        setGame();
-        playGame();
-        String restartChoice = requestRestartChoice();
-        handleRestartChoice(restartChoice);
+        GameStatus gameStatus = RESTART;
+        while (gameStatus == RESTART) {
+            setGame();
+            playGame();
+            String restartChoice = requestRestartChoice();
+            gameStatus = handleRestartChoice(restartChoice);
+        }
     }
 
     private void setGame() {
-        gameService.setup();
+        computerService.setup();
     }
 
     private void playGame() {
-        while (!gameService.isGameOver()) {
+        GameStatus roundStatus = CONTINUE;
+        while (roundStatus == CONTINUE) {
             String playerGuess = requestPlayerGuess();
-            Baseballs playerBalls = gameService.setPlayerBaseballs(playerGuess);
-            gameService.calculateStrikeAndBall(playerBalls);
-            outputView.printResultMessage(gameService.generateGameResult());
-            gameService.updateGameState();
+            playerService.generatePlayerBaseballs(playerGuess);
+            int ballCount = computerService.calculateBallCount();
+            int strikeCount = computerService.calculateStrikeCount();
+            scoreBoardService.updateScoreBoard(ballCount, strikeCount);
+            outputView.printResultMessage(scoreBoardService.generateGameResult());
+            roundStatus = updateGameStatus(roundStatus);
         }
         outputView.printEndGameMessage();
+    }
+
+    private GameStatus updateGameStatus(GameStatus roundStatus) {
+        if (scoreBoardService.isThreeStrike()) {
+            roundStatus = BREAK;
+        }
+        return roundStatus;
     }
 
     private String requestPlayerGuess() {
@@ -61,13 +80,12 @@ public class GameController {
         return inputController.requestRestartChoice();
     }
 
-    private void handleRestartChoice(String restartChoice) {
+    private GameStatus handleRestartChoice(String restartChoice) {
         int value = Integer.parseInt(restartChoice);
-
         if (value == RESTART.getValue()) {
-            run();
+            return RESTART;
         } else if (value == EXIT.getValue()) {
-            // 종료 처리를 수행
+            return EXIT;
         } else {
             throw new IllegalArgumentException("입력 값은 1 또는 2 입니다. (1: 재 시작, 2: 종료)");
         }

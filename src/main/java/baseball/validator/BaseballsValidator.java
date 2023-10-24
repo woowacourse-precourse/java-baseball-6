@@ -11,7 +11,7 @@ public class BaseballsValidator {
     private static final String ERROR_NOT_NUMBER = "입력한 숫자가 존재하지 않습니다.";
     private static final String ERROR_SIZE_NUMBER = "입력한 숫자는 3자리여야 합니다.";
     private static final String ERROR_RANGE_NUMBER = "입력한 숫자는 1에서 9사이의 숫자여야 합니다.";
-    private static final String ERROR_DUPLICATE_NUMBER = "입력한 숫자는 중복되지 않아야 합니다..";
+    private static final String ERROR_DUPLICATE_NUMBER = "입력한 숫자는 중복되지 않아야 합니다.";
 
     public static void validate(List<Integer> baseballs) {
         validateNotNullAndNotEmpty(baseballs);

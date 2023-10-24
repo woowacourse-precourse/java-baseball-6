@@ -2,15 +2,25 @@ package baseball;
 
 import baseball.controller.GameController;
 import baseball.controller.InputController;
-import baseball.domain.Game;
-import baseball.domain.GameScore;
-import baseball.service.GameService;
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.domain.ScoreBoard;
+import baseball.service.ComputerService;
+import baseball.service.PlayerService;
+import baseball.service.ScoreBoardService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Application {
+
     public static void main(String[] args) {
-        GameController gameController = new GameController(inputController(), outputView(), inputView(), gameService());
+        Computer computer = new Computer();
+        Player player = new Player();
+        ScoreBoard scoreBoard = new ScoreBoard();
+
+        GameController gameController = new GameController(inputController(),
+                outputView(), inputView(),
+                computerService(computer, player), playerService(player), scoreBoardService(scoreBoard));
         gameController.intro();
         gameController.run();
     }
@@ -27,15 +37,15 @@ public class Application {
         return new InputView();
     }
 
-    private static GameService gameService() {
-        return new GameService(game(), gameScore());
+    private static ComputerService computerService(Computer computer, Player player) {
+        return new ComputerService(computer, player);
     }
 
-    private static Game game() {
-        return new Game();
+    private static PlayerService playerService(Player player) {
+        return new PlayerService(player);
     }
 
-    private static GameScore gameScore() {
-        return new GameScore();
+    private static ScoreBoardService scoreBoardService(ScoreBoard scoreBoard) {
+        return new ScoreBoardService(scoreBoard);
     }
 }
