@@ -13,8 +13,8 @@
 - [x] InputContrast.java : 입력데이터 비교
 - [x] OutputResult.java : 결과값 출력
 - [x] Counter.java : 스트라이크, 볼 카운팅
-- [x] ExceptionResult.java : 예외처리
-- [x] GameMessage : 게임 메세지
+- ✅ ExceptionResult.java : 예외처리
+- ✅ GameMessage : 게임 메세지
 
 #### Exception
 1. 사용자가 3개의 수를 입력할 때
