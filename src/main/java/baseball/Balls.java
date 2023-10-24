@@ -11,7 +11,7 @@ public class Balls {
     private List<Ball> balls = new ArrayList<>();
 
     public Balls() {
-        createRandomNumbers();
+        createRandomBalls();
     }
 
     public Balls(Ball firstBall, Ball secondBall, Ball thirdBall) {
@@ -29,7 +29,7 @@ public class Balls {
         }
     }
 
-    private void createRandomNumbers() {
+    private void createRandomBalls() {
         balls = new ArrayList<>();
 
         while (balls.size() < BALL_COUNT) {
