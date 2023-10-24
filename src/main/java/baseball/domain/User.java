@@ -31,4 +31,10 @@ public class User {
             throw new IllegalArgumentException("입력이 잘못되었습니다.");
         }
     }
+
+    private void validateNumberForPlayAgain(int number) {
+        if(!(number == 1 || number ==2)){
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");
+        }
+    }
 }
