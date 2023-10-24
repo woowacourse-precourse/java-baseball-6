@@ -14,31 +14,30 @@ public class Computer {
     private List<Integer> targetNumber;
     private int ballCount;
     private int strikeCount;
+    private boolean isFinish;
 
     public void run() {
-        boolean isGameEnd = false;
-        while (!isGameEnd) {
-            int command = gameStart();
+        View.printGameStartMessage();
 
-            if (command == END) {
-                isGameEnd = true;
-            }
+        while (!isFinish) {
+            gameStart();
         }
     }
 
-    public int gameStart() {
+    public void gameStart() {
+        initializeGameSetting();
         generateTargetNumber();
 
-        while (true) {
-            View.printGameStartMessage();
+        while (isGameContinue()) {
             String playerNumber = View.readPlayerNumber();
             calculateResult(playerNumber);
             View.printResultMessage(ballCount, strikeCount);
-
-            if (strikeCount == 3) {
-                return View.readGameEndCommand();
-            }
         }
+    }
+
+    private void initializeGameSetting() {
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     private void generateTargetNumber() {
@@ -52,6 +51,17 @@ public class Computer {
         this.targetNumber = targetNumber;
     }
 
+    private boolean isGameContinue() {
+        if (strikeCount == 3) {
+            String command = View.readGameEndCommand();
+
+            if (command.equals(FINISH_COMMAND)) {
+                isFinish = true;
+            }
+            return false;
+        }
+
+        return true;
     }
 
     private void calculateResult(String playerNumber) {
@@ -59,6 +69,7 @@ public class Computer {
         int strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
+            int value = Integer.parseInt(playerNumber.substring(i, i + 1));
             if (isNothing(value)) {
                 continue;
             }
