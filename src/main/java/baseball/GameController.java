@@ -17,13 +17,26 @@ public class GameController {
 
     public void startGame() {
         view.startGame();
-        boolean choice;//true : 1, false : 2
+        boolean choice;
 
         do {
             List<Integer> computer = model.generateComputerNums();
-            // TODO: 게임 플레이
-            
+            play(computer);
             choice = view.replay();
         } while (choice);
+    }
+
+    public void play(List<Integer> computer) {
+        List<Integer> user;
+        List<Integer> res;
+        boolean allMatch = false;
+        do {
+            user = view.userInput();
+            res = model.compareNums(computer, user);
+            view.displayResult(res);
+            if (res.get(1) == 3) {
+                allMatch = true;
+            }
+        } while (!allMatch);
     }
 }
