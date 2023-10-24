@@ -21,6 +21,10 @@ public class RandomNumberGenerator {
     public List<Integer> makeUniQueRandomNumbers(int minNum, int maxNum, int size) {
         List<Integer> uniqueRandomNumbers = new ArrayList<>();
 
+        if (maxNum - minNum + 1 < size) {
+            return null;
+        }
+
         while (uniqueRandomNumbers.size() < size) {
             int randomNum = pickRandomNumber(minNum, maxNum);
             if (isUniqueNumber(randomNum, uniqueRandomNumbers)) {
