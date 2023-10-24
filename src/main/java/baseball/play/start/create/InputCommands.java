@@ -1,4 +1,4 @@
-package baseball;
+package baseball.play.start.create;
 
 public class InputCommands {
   private final String randomNums;

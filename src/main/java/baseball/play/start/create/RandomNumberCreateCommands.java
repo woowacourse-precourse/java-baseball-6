@@ -1,5 +1,6 @@
-package baseball;
+package baseball.play.start.create;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberCreateCommands {
@@ -8,13 +9,16 @@ public class RandomNumberCreateCommands {
 
   private final int limit;
 
-  private final List<Integer> randomNums;
+  private final List<Integer> randomNums = new ArrayList<>();
 
-  public RandomNumberCreateCommands(int startNum, int endNum, int limit, List<Integer> randomNums) {
+  private RandomNumberCreateCommands(int startNum, int endNum, int limit) {
     this.startNum = startNum;
     this.endNum = endNum;
     this.limit = limit;
-    this.randomNums = randomNums;
+  }
+
+  public static RandomNumberCreateCommands of(int startNum, int endNum, int limit) {
+    return new RandomNumberCreateCommands(startNum, endNum, limit);
   }
 
   public int getStartNum() {

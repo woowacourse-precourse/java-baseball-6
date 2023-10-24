@@ -1,6 +1,4 @@
-package baseball;
-
-import java.util.Objects;
+package baseball.play.start.input;
 
 public class UnvalidatedInputNum {
 

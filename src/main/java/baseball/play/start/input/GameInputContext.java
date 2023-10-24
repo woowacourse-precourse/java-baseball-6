@@ -1,21 +1,17 @@
-package baseball;
+package baseball.play.start.input;
 
+import baseball.play.start.create.InputCommands;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameInputContext {
 
   public static GameStartedEvent inputNumber(InputCommands inputCommands){
-    UnvalidatedInputNum inputNum = unvalidatedInputNum();
-    ValidatedInputNum validatedInputNum = ValidatedInputNum.of(inputNum.getInput());
+    UnvalidatedInputNum unvalidatedInputNum = unvalidatedInputNum();
+    ValidatedInputNum validatedInputNum = ValidatedInputNum.of(unvalidatedInputNum.getInput());
     return GameStartedEvent.of(validatedInputNum, inputCommands.getRandomNums());
   }
 
   private static UnvalidatedInputNum unvalidatedInputNum() {
-    printingInputPrompts();
     return UnvalidatedInputNum.of(Console.readLine());
-  }
-
-  private static void printingInputPrompts() {
-    System.out.print("숫자를 입력해주세요 : ");
   }
 }

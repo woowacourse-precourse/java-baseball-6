@@ -1,4 +1,4 @@
-package baseball;
+package baseball.play.start.input;
 
 public class ValidatedInputNum {
 
