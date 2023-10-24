@@ -100,25 +100,26 @@ class BaseBallNumbersTest {
     }
 
     private static Stream<Arguments> providePlayerBaseBallNumbersAndResult() {
+        int threeStrikes = 3;
+        int twoStrikes = 2;
+        int oneStrike = 1;
+        int noStrikes = 0;
+
+        int threeBalls = 3;
+        int twoBalls = 2;
+        int oneBall = 1;
+        int noBalls = 0;
+
         return Stream.of(
-                // 3 strike
-                Arguments.of(List.of(1, 2, 3), BaseBallGameResult.of(3, 0)),
-                // 2 strike
-                Arguments.of(List.of(1, 2, 4), BaseBallGameResult.of(2, 0)),
-                // 1 strike, 2 ball
-                Arguments.of(List.of(1, 3, 2), BaseBallGameResult.of(1, 2)),
-                // 1 strike, 1 ball
-                Arguments.of(List.of(1, 3, 4), BaseBallGameResult.of(1, 1)),
-                // 1 strike
-                Arguments.of(List.of(1, 4, 5), BaseBallGameResult.of(1, 0)),
-                // 3 ball
-                Arguments.of(List.of(2, 3, 1), BaseBallGameResult.of(0, 3)),
-                // 2 ball
-                Arguments.of(List.of(2, 3, 4), BaseBallGameResult.of(0, 2)),
-                // 1 ball
-                Arguments.of(List.of(3, 4, 5), BaseBallGameResult.of(0, 1)),
-                // nothing
-                Arguments.of(List.of(4, 5, 6), BaseBallGameResult.of(0, 0))
+                Arguments.of(List.of(1, 2, 3), BaseBallGameResult.of(threeStrikes, noBalls)),
+                Arguments.of(List.of(1, 2, 4), BaseBallGameResult.of(twoStrikes, noBalls)),
+                Arguments.of(List.of(1, 3, 2), BaseBallGameResult.of(oneStrike, twoBalls)),
+                Arguments.of(List.of(1, 3, 4), BaseBallGameResult.of(oneStrike, oneBall)),
+                Arguments.of(List.of(1, 4, 5), BaseBallGameResult.of(oneStrike, noBalls)),
+                Arguments.of(List.of(2, 3, 1), BaseBallGameResult.of(noStrikes, threeBalls)),
+                Arguments.of(List.of(2, 3, 4), BaseBallGameResult.of(noStrikes, twoBalls)),
+                Arguments.of(List.of(3, 4, 5), BaseBallGameResult.of(noStrikes, oneBall)),
+                Arguments.of(List.of(4, 5, 6), BaseBallGameResult.of(noStrikes, noBalls))
         );
     }
 
