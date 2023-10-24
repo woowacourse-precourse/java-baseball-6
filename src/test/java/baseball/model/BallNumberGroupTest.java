@@ -10,7 +10,7 @@ import java.util.List;
 class BallNumberGroupTest {
     @Test
     @DisplayName("중복된 공이 있으면 예외처리한다.")
-    void throwException_When_BallNumberIsNotUnique() {
+    void throw_exception_when_ball_number_is_not_unique() {
         // given
         List<Integer> testBallNumbers = new ArrayList<>();
         testBallNumbers.add(1);
@@ -25,7 +25,7 @@ class BallNumberGroupTest {
 
     @Test
     @DisplayName("공의 개수가 3이 아니면 예외처리한다.")
-    void throwException_When_BallNumberGroupSizeIsNot3() {
+    void throw_exception_when_ball_number_group_size_is_not3() {
         // given
         List<Integer> testBallNumberGroup = new ArrayList<>();
         testBallNumberGroup.add(1);

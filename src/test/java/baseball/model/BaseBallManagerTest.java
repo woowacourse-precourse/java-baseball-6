@@ -13,7 +13,7 @@ class BaseBallManagerTest {
 
     @Test
     @DisplayName("player가 입력한 공과 computer가 생성한 공의 위치와 값이 같으면 스트라이크 3개가 나와야 한다.")
-    void compareBaseBall() {
+    void assert_strike_if_player_ball_is_same_computer_ball() {
         // stub
         List<Integer> stubBallNumbers = new ArrayList<>();
         for (int ballNumber = 1; ballNumber <= 3; ballNumber++) {
