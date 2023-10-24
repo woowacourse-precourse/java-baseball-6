@@ -9,6 +9,7 @@ public class BaseballGameMachine {
     private NumberGenerator numberGenerator = new NumberGenerator();
     private InputValidation inputValidation = new InputValidation();
     private Referee referee = new Referee();
+    private final int END_GAME = 2;
 
     public String getInputLine() {
         return Console.readLine();
@@ -61,7 +62,7 @@ public class BaseballGameMachine {
     public boolean isGameEnd(String playerInput) {
         final int convertedValue = inputValidation.validateGameEndRequestInput(playerInput);
 
-        if (convertedValue == 2) {
+        if (convertedValue == END_GAME) {
             return true;
         }
 
