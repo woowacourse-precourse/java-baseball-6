@@ -11,29 +11,27 @@ public class Game {
 
     public String playGame(String numberString) {
         user.inputNumber(numberString);
-        int strike = countStrike();
-        int ball = countBall() - strike;
-        return getGameResult(strike, ball);
-    }
-
-    private int countBall() {
+        int strike = 0;
         int ball = 0;
         for (int i = 0; i < 3; i++) {
-            if (computer.hasNumber(user.getDigit(i))) {
-                ball++;
-            }
+            strike += countStrike(i);
+            ball += countBall(i);
         }
-        return ball;
+        return getGameResult(strike, ball - strike);
     }
 
-    private int countStrike() {
-        int strike = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computer.getDigit(i) == user.getDigit(i)) {
-                strike++;
-            }
+    private int countStrike(int index) {
+        if (computer.getDigit(index) == user.getDigit(index)) {
+            return 1;
         }
-        return strike;
+        return 0;
+    }
+
+    private int countBall(int index) {
+        if (computer.hasNumber(user.getDigit(index))) {
+            return 1;
+        }
+        return 0;
     }
 
     public String getGameResult(int strike, int ball) {
