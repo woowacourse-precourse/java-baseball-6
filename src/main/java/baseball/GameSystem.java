@@ -22,6 +22,9 @@ public class GameSystem {
         User user = new User();
         user.generateNumbers();
         List<Integer> userNumbers = user.getNumbers();
+
+        BallStrikeCounter ballStrikeCounter = new BallStrikeCounter(computerNumbers, userNumbers);
+        ballStrikeCounter.countBallAndStrikes();
     }
 
     private boolean restartGame() {
