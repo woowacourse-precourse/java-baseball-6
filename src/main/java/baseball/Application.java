@@ -30,5 +30,25 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         int selectNumber = scanner.nextInt();
+        List<Integer> user = new ArrayList<>();
+        user.add(selectNumber / 100);
+        selectNumber %= 100;
+        user.add(selectNumber / 10);
+        selectNumber %= 10;
+        user.add(selectNumber);
+
+        // TODO4: 볼, 스트라이크 갯수 세기
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j & user.get(i) == computer.get(j)) {
+                    strike += 1;
+                } else if (user.get(i) == computer.get(j)) {
+                    ball += 1;
+                }
+            }
+        }
+
     }
 }
