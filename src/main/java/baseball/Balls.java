@@ -13,6 +13,11 @@ public class Balls {
 			throw new IllegalArgumentException();
 		}
 
+		// overflow 검사
+		if (balls.size() >= 3) {
+			throw new IllegalArgumentException();
+		}
+
 		// 볼 추가
 		balls.add(ball);
 		return true;
