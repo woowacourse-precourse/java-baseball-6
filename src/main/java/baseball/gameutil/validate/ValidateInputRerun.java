@@ -5,6 +5,18 @@ import baseball.message.MessageString;
 
 public class ValidateInputRerun extends ValidateInputCommon implements ValidateInput {
 
+    private static ValidateInputRerun INSTANCE;
+
+    private ValidateInputRerun() {
+    }
+
+    public static ValidateInputRerun getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ValidateInputRerun();
+        }
+        return INSTANCE;
+    }
+
     @Override
     public String validate(String input) {
         if (!checkLength(input, Constant.RESTART_MODE_LENGTH)) {

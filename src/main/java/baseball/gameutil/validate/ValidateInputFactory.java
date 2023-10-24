@@ -10,8 +10,8 @@ public class ValidateInputFactory {
 
     public static ValidateInput getValidateInput(InputMod mod) {
         return switch (mod) {
-            case GAME -> new ValidateInputGame();
-            case RERUN -> new ValidateInputRerun();
+            case GAME -> ValidateInputGame.getInstance();
+            case RERUN -> ValidateInputRerun.getInstance();
             default -> throw new IllegalArgumentException(MessageString.WRONG_RERUN_INPUT_ERROR_STRING);
         };
     }

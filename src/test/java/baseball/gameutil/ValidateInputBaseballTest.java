@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 public class ValidateInputBaseballTest {
 
-    ValidateInput validateInputGame = new ValidateInputGame();
-    ValidateInput validateInputRerun = new ValidateInputRerun();
+    ValidateInput validateInputGame = ValidateInputGame.getInstance();
+    ValidateInput validateInputRerun = ValidateInputRerun.getInstance();
 
     @Test
     void 게임중_세_자리_미만_문자열() {
