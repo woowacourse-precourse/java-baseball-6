@@ -8,7 +8,6 @@
 - [게임을 준비하는 메소드](#정답을-생성하는-메소드)
 
 
-
 #### 입력을 받는 메소드
 - name : getNumbers
 - parameters : 없음
@@ -33,22 +32,24 @@
 - description : 사용자에게 1 또는 2를 입력 받아 게임 진행 여부를 결정하는 함수
 
 #### 정답과 비교하는 메소드
-- name : compareWithComputer
-- parameters : 없음
+- name : compareWithAnswer
+- parameters : 정답인 `List<Integer>` computer와 유저의 입력인 `List<Integer> user`
 - return : 크기가 2인 `int[]`, 0번부터 1번까지 각각 스트라이크, 볼의 개수를 가진다.
 - description : 입력받은 수들과 컴퓨터가 가지고 있는 수들을 비교한 후 힌트를 계산해주는 메소드
 
 #### 힌트를 출력하는 메소드
 - name : printScore
-- parameter :
+- parameter : `compareWithAnswer`에 전달할 정답 `List<Integer>`과 유저 입력인 `List<Integer>`
 - return : 볼, 스트라이크, 낫싱 세 문자열을 조합해 힌트를 출력하는 메소드
 - description : `compareWithComputer`메소드에서 반환받은 `int` 배열인 score를 활용한다.
-  - `StringBuilder`를 활용하여 문자열을 구성하고 출력한다. 
-  - 만약 0번 인덱스가 0보다 크다면 `score[0]`과 볼 그리고 공백문자를 `append`한다.
-    - ex) "2스트라이크 "
-  - 만약 1번 인덱스가 1보다 크다면 `score[1]`과 스트라이크 그리고 공백문자를 `append`한다.
-    - ex) "1볼 "
-  - 만약 배열의 두 값 모두가 0이라면 "낫싱"을 `append`한다.
+  - `StringBuilder` sb를 활용하여 문자열을 구성하고 출력한다. 
+  - 만약 0번 인덱스가 0보다 크다면 `score[0]`과 "볼"을 `append`한다.
+    - ex) "2볼"
+  - 만약 `sb`가 비어있지 않다면(볼을 추가했다면) " " 공백문자를 `append`한다.
+    - ex) "2볼 "
+  - 만약 1번 인덱스가 1보다 크다면 `score[1]`과 "스트라이크"를 `append`한다.
+    - ex) "1스트라이크"
+  - 만약 `StringBuilder`가 비었다면 "낫싱"을 `append`한다.
   - 이후 문자열을 출력한다.
 
 #### 정답을 생성하는 메소드
