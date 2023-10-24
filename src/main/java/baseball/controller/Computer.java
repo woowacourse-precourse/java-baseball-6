@@ -34,15 +34,5 @@ public class Computer {
         return ballCountService.calculateBallCount(playerNumbers, computerNumbers);
     }
 
-    public boolean checkRetry(String retryInput) {
-        if (retryInput.equals("1")) {
-            return true;
-        }
-        if (retryInput.equals("2")) {
-            return false;
-        }
-        throw new RetryInputException();
-
-    }
 
 }

@@ -4,6 +4,7 @@ import static baseball.enums.MessageEnum.GAME_END;
 import static baseball.enums.MessageEnum.GAME_START;
 
 import baseball.controller.Computer;
+import baseball.domain.RetryChecker;
 import baseball.dto.GameResultDto;
 import baseball.enums.MessageEnum;
 import baseball.exception.RetryInputException;
@@ -33,11 +34,11 @@ public class BaseBallGame {
     }
 
     private boolean isRetry() {
-        return computer.checkRetry(RetryInputView.input());
+        RetryChecker retryChecker = new RetryChecker(RetryInputView.input());
+        return retryChecker.isRetry();
     }
 
     private void playGame() {
-
 
         InputPlayerNumber();
         GameResultDto gameResult = getGameResult();

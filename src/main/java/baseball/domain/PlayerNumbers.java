@@ -13,8 +13,8 @@ public class PlayerNumbers implements Numbers{
 
     public PlayerNumbers(String numbersString) {
 
-        List<Number> numbers = stringToNumbers(numbersString);
 
+        List<Number> numbers = stringToNumbers(numbersString);
         checkDuplication(numbers);
         checkLength(numbers);
 
