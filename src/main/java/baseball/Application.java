@@ -45,7 +45,7 @@ class Game {
             return;
         }
 
-        int Restart = Game.CheckRestart();
+        int Restart = Check.CheckRestart();
         if (Restart == 1){
             target = new Game();
             Game.init(target);
@@ -67,28 +67,6 @@ class Game {
         return new Game(UserAnswer); // 문자열을 숫자로 변환
     }
 
-    private static int NewGameUserNumber(String ans){
-        int InputValue;
-        try{
-            InputValue = Integer.parseInt(ans);
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
-        if (InputValue != 1 && InputValue != 2){
-            throw new IllegalArgumentException();
-        }
-        return InputValue;
-    }
-
-    private static int CheckRestart(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        String NewAnswer = readLine();
-        return Game.NewGameUserNumber(NewAnswer);
-    }
-
-
 }
 
 class Check{
@@ -100,7 +78,7 @@ class Check{
         }
         return false;
     }
-    static boolean RepeatNumber(char[] arr, char number){
+    static boolean RepeatNumber(char[] arr, char number){  // 각 자리 숫자가 중복되지 않도록 체크
         for (int num : arr) {
             if (num == number) { // 중복된 숫자가 있을 경우
                 return true;
@@ -135,6 +113,23 @@ class Check{
         return true;
     }
 
+    static int CheckRestart(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String GameRestart = readLine();
+        int Restart;
+        try{
+            Restart = Integer.parseInt(GameRestart);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if (Restart != 1 && Restart != 2){
+            throw new IllegalArgumentException();
+        }
+        return Restart;
+    }
+
     static boolean checkNum(String str){
         try{
             int Value = Integer.parseInt(str);
@@ -144,18 +139,10 @@ class Check{
         char[] NumArray = Game.stringToChar(str);
         return !Check.RepeatNumber(NumArray,'0');
     }
-
-    static int Location(final int[] arr, final int num){
-        for (int i=0; i<3; i++){
-            if (arr[i]==num) return i;
-        }
-        return -1;
-    }
 }
 
 class Hint{
     int ball,strike;
-
     private void StrikeCount(){
         this.strike++;
     }
@@ -169,7 +156,7 @@ class Hint{
             if(!Check.RepeatNumber(target.Answer, tmp)){
                 continue;
             }
-            if (i == Check.Location(target.Answer,tmp)){
+            if (i == Hint.Location(target.Answer,tmp)){
                 StrikeCount();
                 continue;
             }
@@ -189,5 +176,12 @@ class Hint{
             result = "낫싱";
         }
         System.out.println(result);
+    }
+
+    static int Location(final int[] arr, final int num){
+        for (int i=0; i<3; i++){
+            if (arr[i]==num) return i;
+        }
+        return -1;
     }
 }
