@@ -15,10 +15,16 @@ public class Computer {
         numbers = new ArrayList<>();
     }
 
+    /**
+     * 숫자 리스트 초기화
+     */
     private void init() {
         numbers.clear();
     }
 
+    /**
+     * 랜덤 숫자 리스트 생성
+     */
     public void generateNumbers() {
         this.init();
         while (numbers.size() < PICK_SIZE) {
@@ -29,6 +35,12 @@ public class Computer {
         }
     }
 
+    /**
+     * 사용자 입력과 랜덤 숫자 리스트 비교
+     *
+     * @param input
+     * @return
+     */
     public Map<BaseBallType, Integer> compareNumbers(String input) {
         int ballCount = 0, strikeCount = 0;
 
@@ -43,6 +55,11 @@ public class Computer {
         return Map.of(BaseBallType.BALL, ballCount, BaseBallType.STRIKE, strikeCount);
     }
 
+    /**
+     * 랜덤 숫자 리스트 반환
+     *
+     * @return 랜덤 숫자 리스트
+     */
     public String getNumbers() {
         return numbers.toString();
     }

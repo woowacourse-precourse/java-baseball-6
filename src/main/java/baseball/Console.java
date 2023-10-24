@@ -26,6 +26,12 @@ public class Console {
         System.out.println(GAME_RESTART_OR_END_MESSAGE);
     }
 
+    /**
+     * 숫자 야구 게임 결과 출력
+     *
+     * @param ballCount
+     * @param strikeCount
+     */
     public static void printResult(int ballCount, int strikeCount) {
         ArrayList<String> result = new ArrayList<>();
 
@@ -39,10 +45,20 @@ public class Console {
         System.out.println(result.isEmpty() ? NOTHING_MESSAGE : String.join(" ", result));
     }
 
+    /**
+     * 사용자 입력 받기
+     *
+     * @return 사용자 입력
+     */
     private static String readLine() {
         return camp.nextstep.edu.missionutils.Console.readLine();
     }
 
+    /**
+     * 사용자 숫자 입력 받기 & 검증
+     *
+     * @return 사용자 입력 숫자
+     */
     public static String readNumbers() {
         String input = readLine();
         if (input.chars().anyMatch(ch -> ch < '1' || ch > '9')) {
@@ -56,6 +72,11 @@ public class Console {
         return input;
     }
 
+    /**
+     * 게임 재시작 여부 입력 받기 & 검증
+     *
+     * @return 게임 재시작 여부
+     */
     public static String readRestartOrEnd() {
         String input = readLine();
         if (!List.of(GAME_RESTART, GAME_END).contains(Integer.parseInt(input))) {

@@ -8,6 +8,9 @@ import static baseball.constants.Rule.SUCCESS_STRIKE_COUNT;
 public class BaseballGame {
     private static Computer computer;
 
+    /**
+     * 게임을 시작하는 메서드
+     */
     public static void play() {
         computer = new Computer();
         do {
@@ -16,6 +19,9 @@ public class BaseballGame {
         } while (askRestart());
     }
 
+    /**
+     * 게임 한 판 진행
+     */
     private static void gameStart() {
         Console.printGameStartMessage();
         while (true) {
@@ -32,6 +38,11 @@ public class BaseballGame {
         Console.printSuccessEndMessage();
     }
 
+    /**
+     * 게임 재시작 여부를 묻는 메서드
+     *
+     * @return 게임 재시작 여부
+     */
     private static boolean askRestart() {
         Console.printGameRestartOrEndMessage();
         return Console.readRestartOrEnd().equals(String.valueOf(GAME_RESTART));
