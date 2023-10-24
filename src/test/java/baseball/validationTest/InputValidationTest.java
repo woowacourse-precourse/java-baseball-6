@@ -6,11 +6,21 @@ import org.junit.jupiter.api.Test;
 
 public class InputValidationTest {
     @Test
-    void validation_3자리_숫자가_아닌경우() {
+    void input_값이_3자리_숫자가_아닌경우() {
         String inputNum = "1234";
         Assertions.assertThatThrownBy(() -> {
                     InputValidation.verifyInputNum(inputNum);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void input_값이_숫자가_아닌경우() {
+        String inputNum = "우테코";
+        Assertions.assertThatThrownBy(() -> {
+                    InputValidation.verifyInputNum(inputNum);
+                })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
