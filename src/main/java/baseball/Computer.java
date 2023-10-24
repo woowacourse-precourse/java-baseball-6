@@ -1,5 +1,11 @@
 package baseball;
 
+import static baseball.utils.Constants.COUNTS;
+import static baseball.utils.Constants.MAXIMUM_NUMBER;
+import static baseball.utils.Constants.MINIMUM_NUMBER;
+import static baseball.utils.Constants.VERIFICATION_FAILED;
+import static baseball.utils.Constants.VERIFICATION_PASSED;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,12 +14,6 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Computer {
-    public static final int COUNTS = 3;
-    public static final int MAXIMUM_NUMBER = 9;
-    public static final int MINIMUM_NUMBER = 1;
-    private static final boolean VERIFICATION_PASSED = true;
-    private static final boolean VERIFICATION_FAILED = false;
-
     private List<Integer> randomNumbers;
 
     public Computer() {
