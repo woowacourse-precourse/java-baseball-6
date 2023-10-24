@@ -8,7 +8,7 @@ public class Player {
 
     public void setInputNumber(String inputValue) {
         validateInputNumber(inputValue);
-        inputNumbers = changeStringToList(inputValue);
+        inputNumbers = List.copyOf(changeStringToList(inputValue));
     }
 
     private void validateInputNumber(String inputValue) {
