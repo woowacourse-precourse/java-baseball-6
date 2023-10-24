@@ -60,7 +60,6 @@ public class BaseBallGame {
             isGameOver = true;
             return;
         }
-        throw new IllegalArgumentException("허가되지 않은 문자열");
     }
 
     /**

@@ -16,12 +16,12 @@ public class Valid {
         return userNumber;
     }
 
-    public static String restartValid(String userNumber) {
+    public static boolean restartValid(String userNumber) {
         if (userNumber.equals(GAME_RESTART)) {
-            return userNumber;
+            return true;
         }
         if (userNumber.equals(GAME_OVER)) {
-            return userNumber;
+            return false;
         }
         throw new IllegalArgumentException("허가되지 않은 문자열");
     }
