@@ -2,7 +2,7 @@
 
 <img width="945" alt="스크린샷 2023-10-24 오후 1 19 37" src="https://github.com/Mingadinga/2023_Study_CS/assets/53958188/0865f611-88e5-4a3d-a740-fe0238114b67">
 
-- [ ] GameView : start
+- [x] GameView : start
 - [ ] GameController : start
 - [ ] GameState : isAbleToStart, changeActive
 - [ ] RandomNumberCreator : createRandomNumber
