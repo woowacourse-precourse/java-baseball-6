@@ -17,7 +17,7 @@ public class BallTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void createSuccessTest(int ball) {
-        assertThatCode(() -> new Ball(ball))
+        assertThatCode(() -> Ball.from(ball))
                 .doesNotThrowAnyException();
     }
 
@@ -25,7 +25,7 @@ public class BallTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 4})
     void createFailTest(int ball) {
-        assertThatCode(() -> new Ball(ball))
+        assertThatCode(() -> Ball.from(ball))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("볼의 유효 범위는 0~3 입니다.");
     }
@@ -39,10 +39,10 @@ public class BallTest {
 
     static Stream<Arguments> provideIsEmptyTestArguments() {
         return Stream.of(
-                arguments(new Ball(0), true),
-                arguments(new Ball(1), false),
-                arguments(new Ball(2), false),
-                arguments(new Ball(3), false)
+                arguments(Ball.from(0), true),
+                arguments(Ball.from(1), false),
+                arguments(Ball.from(2), false),
+                arguments(Ball.from(3), false)
         );
     }
 }
