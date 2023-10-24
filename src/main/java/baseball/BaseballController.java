@@ -21,7 +21,7 @@ public class BaseballController {
 
             if(baseballService.getResult(player, answer)) {
                 System.out.println(NoticeType.GAME_WIN.getMessage());
-                end();
+                break;
             }
         }
     }
