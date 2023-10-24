@@ -18,11 +18,11 @@ public class GameController {
 
     public void startGame() {
         System.out.println(outputView.printStart());
-        createAnswer();
         proceedGame();
     }
 
     public void proceedGame() {
+        createAnswer();
         InputNumber inputNumber;
 
         do {
@@ -37,7 +37,7 @@ public class GameController {
         inputNumber.setQuitNumber(inputView.getRestartOrQuitInput());
 
         if (!isQuit(inputNumber)) {
-            startGame();
+            proceedGame();
         }
 
     }
