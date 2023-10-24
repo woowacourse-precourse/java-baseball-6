@@ -9,7 +9,7 @@ public class OutputView {
     }
 
     public void requestInputNumber() {
-        System.out.println(GameMessages.NUMBER_REQUEST_MESSAGE);
+        System.out.print(GameMessages.NUMBER_REQUEST_MESSAGE);
     }
 
     public void notifyCorrectAnswer() {
