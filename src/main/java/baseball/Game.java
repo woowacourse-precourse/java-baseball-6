@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Game extends Text {
 
+    private int strike = 0;
+    private int ball = 0;
 
     public List<Integer> computerSet() {
         List<Integer> computer = new ArrayList<>();
@@ -51,6 +53,20 @@ public class Game extends Text {
             throw e;
         }
         return userList;
+    }
+
+    public void gameScore(List<Integer> userList, List<Integer> computer) {
+        strike = 0;
+        ball = 0;
+        for (int number : userList) {
+            int strikeScore = userList.indexOf(number);
+            int ballScore = computer.indexOf(number);
+            if (strikeScore == ballScore) {
+                strike++;
+            } else if (ballScore != -1) {
+                ball++;
+            }
+        }
     }
 }
 
