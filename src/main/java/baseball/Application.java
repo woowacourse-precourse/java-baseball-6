@@ -3,6 +3,15 @@ package baseball;
 import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
 import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
 import static baseball.status.ErrorCode.INVALID_LENGTH_INPUT;
+import static baseball.status.GameMsg.BALL;
+import static baseball.status.GameMsg.BALL_AND_STRIKE;
+import static baseball.status.GameMsg.GAME_OVER;
+import static baseball.status.GameMsg.GAME_START;
+import static baseball.status.GameMsg.NOTHING;
+import static baseball.status.GameMsg.REPLAY_OR_OVER_MESSAGE;
+import static baseball.status.GameMsg.SET_INPUT;
+import static baseball.status.GameMsg.STRIKE;
+import static baseball.status.GameMsg.SUCCESS_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -37,19 +46,20 @@ class Game {
 
         StringBuilder outputMessage = new StringBuilder();
 
-        if (ball > 0) {
-            outputMessage.append(ball).append("볼");
-            if (strike > 0) {
-                outputMessage.append(" ");
-            }
+        if (strike > 0 && ball == 0) {
+            outputMessage.append(STRIKE.getMsg().formatted(strike));
         }
 
-        if (strike > 0) {
-            outputMessage.append(strike).append("스트라이크");
+        if (strike == 0 && ball > 0) {
+            outputMessage.append(BALL.getMsg().formatted(ball));
+        }
+
+        if (strike > 0 && ball > 0) {
+            outputMessage.append(BALL_AND_STRIKE.getMsg().formatted(ball, strike));
         }
 
         if (strike == 0 && ball == 0) {
-            outputMessage.append("낫싱");
+            outputMessage.append(NOTHING.getMsg());
         }
         return outputMessage.toString();
     }
@@ -81,13 +91,13 @@ class Game {
      * 게임 재시작, 종료 여부
      */
     private void replay() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(SUCCESS_MESSAGE.getMsg());
+        System.out.println(REPLAY_OR_OVER_MESSAGE.getMsg());
         int game = Integer.parseInt(Console.readLine());
         if (game == 1) {
             play();
         } else if (game == 2) {
-            System.out.println("--게임 종료--");
+            System.out.println(GAME_OVER.getMsg());
         }
     }
 
@@ -114,7 +124,7 @@ class Game {
      * @return 입력 값
      */
     private String setInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(SET_INPUT.getMsg());
         return Console.readLine();
     }
 
@@ -161,7 +171,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START.getMsg());
         Game game = new Game();
         game.play();
         Console.close();
