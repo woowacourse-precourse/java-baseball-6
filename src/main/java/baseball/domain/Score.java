@@ -12,11 +12,6 @@ public enum Score {
     private final String symbol;
     private int count;
 
-    static {
-        STRIKE.count = 0;
-        BALL.count = 0;
-    }
-
     Score(String symbol) {
         this.symbol = symbol;
     }
