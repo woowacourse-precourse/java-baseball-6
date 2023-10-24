@@ -29,8 +29,7 @@ public class UmpireTest {
         String batt = "153";
         int compareCount = 0;
         int strikeCount = 0;
-        Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
-        Arrays.fill(strikeCheckingBoard, false);
+        CheckingBoard checkingBoard = new CheckingBoard();
 
         for (int i = 0; i < DIGIT_NUM; i++) {
             if (ball.charAt(i) == batt.charAt(i)) {
@@ -38,8 +37,9 @@ public class UmpireTest {
             }
         }
         //when
-        strikeCheckingBoard = umpire.checkStrike(ball, batt, strikeCheckingBoard);
+        checkingBoard = umpire.checkStrike(ball, batt, checkingBoard);
         //then
+        Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
         for (int i = 0; i < DIGIT_NUM; i++) {
             if (strikeCheckingBoard[i] == true) {
                 strikeCount++;
@@ -56,14 +56,14 @@ public class UmpireTest {
         int compareCount = 0;
         int ballCount = 0;
 
-        Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
-        Arrays.fill(strikeCheckingBoard, false);
-        Boolean[] ballCheckingBoard = new Boolean[DIGIT_NUM];
-        Arrays.fill(ballCheckingBoard, false);
+        CheckingBoard checkingBoard = new CheckingBoard();
+
         Boolean[] compareCheckingBoard = new Boolean[DIGIT_NUM];
         Arrays.fill(compareCheckingBoard, false);
 
-        strikeCheckingBoard = umpire.checkStrike(ball, bat, strikeCheckingBoard);
+        checkingBoard = umpire.checkStrike(ball, bat, checkingBoard);
+
+        Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
 
         for (int i = 0; i < DIGIT_NUM; i++) {
             if (strikeCheckingBoard[i] == true) {
@@ -90,9 +90,10 @@ public class UmpireTest {
         }
 
         //when
-        ballCheckingBoard = umpire.checkBall(ball, bat, strikeCheckingBoard, ballCheckingBoard);
+        checkingBoard = umpire.checkBall(ball, bat, checkingBoard);
 
         //then
+        Boolean[] ballCheckingBoard = checkingBoard.getBallCheckingBoard();
         for (int i = 0; i < DIGIT_NUM; i++) {
             if (ballCheckingBoard[i] == true) {
                 ballCount++;
@@ -119,13 +120,8 @@ public class UmpireTest {
 
         CheckingBoard checkingBoard = new CheckingBoard();
 
-        checkingBoard.setStrikeCheckingBoard(umpire.checkStrike(ball, bat, checkingBoard.getStrikeCheckingBoard()));
-        checkingBoard.setBallCheckingBoard(umpire.checkBall(
-                ball,
-                bat,
-                checkingBoard.getStrikeCheckingBoard(),
-                checkingBoard.getBallCheckingBoard()
-        ));
+        checkingBoard = umpire.checkStrike(ball, bat, checkingBoard);
+        checkingBoard = umpire.checkBall(ball, bat, checkingBoard);
 
         //when
         score = umpire.judge(checkingBoard, score);

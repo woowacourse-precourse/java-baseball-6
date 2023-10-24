@@ -1,8 +1,12 @@
 package baseball.game.gamesetter;
 
-public interface GameSetting {
+import baseball.game.CheckingBoard;
+import baseball.game.Score;
 
-    void initGame();
-    void restartGame();
+public interface GameSetting {
+    void startGame();
+    void initGame(CheckingBoard checkingBoard, Score score);
+    void progressGame();
+    void questionRestartGame();
     void setGame();
 }

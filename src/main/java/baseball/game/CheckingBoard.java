@@ -13,6 +13,11 @@ public class CheckingBoard {
         Arrays.fill(ballCheckingBoard, false);
     }
 
+    public void initAll() {
+        Arrays.fill(strikeCheckingBoard, false);
+        Arrays.fill(ballCheckingBoard, false);
+    }
+
     public Boolean[] getStrikeCheckingBoard() {
         return strikeCheckingBoard;
     }

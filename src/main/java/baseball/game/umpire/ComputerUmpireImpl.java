@@ -10,17 +10,21 @@ import static baseball.AppConfig.DIGIT_NUM;
 public class ComputerUmpireImpl implements Umpire {
 
     @Override
-    public Boolean[] checkStrike(String ball, String bat, Boolean[] strikeCheckingBoard) {
+    public CheckingBoard checkStrike(String ball, String bat, CheckingBoard checkingBoard) {
+        Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(ball.charAt(i) == bat.charAt(i)){
                 strikeCheckingBoard[i] = true;
             }
         }
-        return strikeCheckingBoard;
+        checkingBoard.setStrikeCheckingBoard(strikeCheckingBoard);
+        return checkingBoard;
     }
 
     @Override
-    public Boolean[] checkBall(String ball, String bat, Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard) {
+    public CheckingBoard checkBall(String ball, String bat, CheckingBoard checkingBoard) {
+        Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
+        Boolean[] ballCheckingBoard = checkingBoard.getBallCheckingBoard();
 
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(strikeCheckingBoard[i] == true){continue;}
@@ -33,7 +37,8 @@ public class ComputerUmpireImpl implements Umpire {
                 }
             }
         }
-        return ballCheckingBoard;
+        checkingBoard.setBallCheckingBoard(ballCheckingBoard);
+        return checkingBoard;
     }
 
     @Override
@@ -44,8 +49,6 @@ public class ComputerUmpireImpl implements Umpire {
         boolean nothing = false;
         Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
         Boolean[] ballCheckingBoard = checkingBoard.getBallCheckingBoard();
-
-
 
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(strikeCheckingBoard[i] == true){

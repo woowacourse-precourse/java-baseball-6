@@ -2,16 +2,30 @@ package baseball.game;
 
 public class Score {
 
-    private int strikeCount = 0;
-    private int ballCount = 0;
-    private boolean homerunCount = false;
-    private boolean nothingCount = false;
+    private int strikeCount;
+    private int ballCount;
+    private boolean homerunCount;
+    private boolean nothingCount;
+
+    public Score(){
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        this.homerunCount = false;
+        this.nothingCount = false;
+    }
 
     public void setAll(int strikeCount, int ballCount, boolean homerunCount, boolean nothingCount) {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
         this.homerunCount = homerunCount;
         this.nothingCount = nothingCount;
+    }
+
+    public void initAll(){
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        this.homerunCount = false;
+        this.nothingCount = false;
     }
 
     public int getStrikeCount() {
