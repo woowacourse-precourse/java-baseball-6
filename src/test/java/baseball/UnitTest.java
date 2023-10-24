@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -50,47 +51,83 @@ public class UnitTest {
         void 입력값은_3자리이다() {
             String input = "123";
 
-            assertDoesNotThrow(() -> computer.evaluate(input));
+            assertDoesNotThrow(() -> computer.evaluate(input, "123"));
         }
 
         @Test
         void 입력값은_서로다른수이다() {
             String input = "456";
 
-            assertDoesNotThrow(() -> computer.evaluate(input));
+            assertDoesNotThrow(() -> computer.evaluate(input, "123"));
         }
 
         @Test
         void 입력값이_3자리가_아니면_예외발생() {
             String input = "1234";
 
-            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input));
+            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input, "123"));
         }
 
         @Test
         void 입력값이_서로_다른_수가_아니면_예외발생() {
             String input = "112";
 
-            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input));
+            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input, "123"));
         }
 
         @Test
         void 입력값이_숫자가_아니면_예외발생() {
             String input = "abc";
 
-            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input));
+            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input, "123"));
         }
 
         @Test
         void 입력값이_널이면_예외발생() {
-            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(null));
+            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(null, "123"));
         }
 
         @Test
         void 입력값의_각_자리수가_자연수가_아니면_예외발생() {
             String input = "012";
 
-            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input));
+            assertThrowsExactly(IllegalArgumentException.class, () -> computer.evaluate(input, "123"));
+        }
+    }
+
+    @Nested
+    @DisplayName("컴퓨터는 입력한 수에 대한 결과를 출력한다.")
+    class ComputerEvaluationTest {
+
+        @Nested
+        @DisplayName("숫자는 포함 되어 있지만 자리가 다른 경우 볼.")
+        class BallTest {
+            @Test
+            void 원볼() {
+                String targetNumber = "123";
+                String input = "452";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("1볼", result);
+            }
+
+            @Test
+            void 투볼() {
+                String targetNumber = "123";
+                String input = "352";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("2볼", result);
+            }
+
+            @Test
+            void 쓰리볼() {
+                String targetNumber = "123";
+                String input = "321";
+                String result = computer.evaluate(input, targetNumber);
+
+                assertEquals("3볼", result);
+            }
         }
     }
 }

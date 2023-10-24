@@ -33,9 +33,7 @@ public class Computer {
             }
         }
 
-        return selectedNumbers.stream()
-                .mapToInt(Integer::intValue)
-                .reduce(0, (a, b) -> a * 10 + b);
+        return selectedNumbers.stream().mapToInt(Integer::intValue).reduce(0, (a, b) -> a * 10 + b);
     }
 
     /**
@@ -43,10 +41,23 @@ public class Computer {
      *
      * @param input 입력값
      */
-    public void evaluate(String input) {
+    public String evaluate(String input, String targetNumber) {
         if (isNaN(input) || isNotUnique(input) || isNotNaturalNumber(input) || input.length() != 3) {
             throw new IllegalArgumentException();
         }
+        long count = input.chars().filter(c -> containsDigit(targetNumber, c)).count();
+        return count + Prompt.BALL.getMessage();
+    }
+
+    /**
+     * 입력값에 특정 숫자가 포함되어 있는지 확인한다.
+     *
+     * @param input 입력값
+     * @param ch    특정 숫자
+     * @return 입력값에 특정 숫자가 포함되어 있으면 참, 없으면 거짓
+     */
+    private boolean containsDigit(String input, int ch) {
+        return input.indexOf(ch) != -1;
     }
 
     /**
