@@ -9,8 +9,6 @@ public class Computer {
 
     String randomString = new String();
 
-    public
-
     // 3자리 난수 생성
     public String getRandomNumbers(){
         randomString = "";
@@ -22,6 +20,16 @@ public class Computer {
         }
         return randomString;
     }
+
+    public int cntStrike(String inputNum){
+        int strike = 0;
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            if(randomString.charAt(i) == inputNum.charAt(i)){ strike++;
+            }
+        } return strike;
+    }
+
+
 
 
 
