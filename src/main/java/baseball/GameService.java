@@ -31,8 +31,7 @@ public class GameService {
 
     public int[] inputPlayerNumber() {
         outPutView.printRequestInputNumberMessage();
-        String inputPlayerNumber = inputView.inputPlayerNumber();
-        return toIntArray(inputPlayerNumber);
+        return toIntArray(inputView.inputPlayerNumber());
     }
 
     public void settingComputerRandomNumbers() {
