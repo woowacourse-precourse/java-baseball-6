@@ -43,7 +43,7 @@ public class ComputerController {
 		return playerGameData;
 	}
 
-	private static List<Integer> convertNumberStringToList(String stringNumber) {
+	public List<Integer> convertNumberStringToList(String stringNumber) {
 		return stringNumber.chars()
 			.mapToObj(Character::getNumericValue)
 			.collect(Collectors.toList());
