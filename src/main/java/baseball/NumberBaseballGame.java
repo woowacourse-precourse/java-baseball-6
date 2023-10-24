@@ -15,47 +15,46 @@ public class NumberBaseballGame {
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
 
-    private static final List<Integer> computerNumberList = new ArrayList<>();
+    private static Balls computerNumberList;
 
     public void play() {
         System.out.println(GAME_START_MESSAGE);
+        generateComputerNumberList();
         while (true) {
-            generateComputerNumberList();
-
             System.out.print(USER_INPUT_MESSAGE);
             String input = Console.readLine();
 
             validate(input);
             List<Integer> integers = stringToList(input);
+            Balls userBalls = new Balls(integers);
 
-            List<Integer> result = judge(computerNumberList, integers);
-            if (isThreeStrikes(result)) {
-                printResult(result);
+            Result result = Judge.judge(computerNumberList, userBalls, 3);
+            printResult(result);
+            if (result.getStrikeCount() == 3) {
                 System.out.println(GAME_FINISH_MESSAGE);
                 String userRetryInput = Console.readLine();
                 if (userRetryInput.equals("1")) {
-                    computerNumberList.clear();
-                    continue;
-
+                    generateComputerNumberList();
                 } else {
                     break;
                 }
             }
-            printResult(result);
         }
 
     }
 
-    private static void printResult(List<Integer> result) {
+    private static void printResult(Result result) {
         String prompt = "";
-        if (result.get(1) > 0) {
-            prompt += result.get(1) + BALL_MESSAGE;
+        int ballCount = result.getBallCount();
+        int strikeCount = result.getStrikeCount();
+        if (ballCount > 0) {
+            prompt += ballCount + BALL_MESSAGE;
         }
-        if (result.get(0) > 0) {
+        if (strikeCount > 0) {
             if (!prompt.isEmpty()) {
                 prompt += " ";
             }
-            prompt += result.get(0) + STRIKE_MESSAGE;
+            prompt += strikeCount + STRIKE_MESSAGE;
         }
         if (prompt.isEmpty()) {
             prompt = NOTHING_MESSAGE;
@@ -63,36 +62,6 @@ public class NumberBaseballGame {
         System.out.println(prompt);
     }
 
-    private static boolean isThreeStrikes(List<Integer> result) {
-        return result.get(0) == 3;
-    }
-
-    private static List<Integer> judge(List<Integer> computerNumberList, List<Integer> integers) {
-        List<Integer> result = new ArrayList<>();
-        Integer strikeCount = 0;
-        Integer ballCount = 0;
-        // strike first
-        for (int i = 0; i < computerNumberList.size(); i++) {
-            if (computerNumberList.get(i).equals(integers.get(i))) {
-                strikeCount += 1;
-            }
-        }
-        // balls
-        for (int i = 0; i < computerNumberList.size(); i++) {
-            for (int j = 0; j < computerNumberList.size(); j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (computerNumberList.get(i).equals(integers.get(j))) {
-                    ballCount += 1;
-                }
-            }
-        }
-        //
-        result.add(strikeCount);
-        result.add(ballCount);
-        return result;
-    }
 
     private static void validate(String input) {
         if (!input.matches("\\d{3}")) {
@@ -108,19 +77,20 @@ public class NumberBaseballGame {
     }
 
     private static void generateComputerNumberList() {
-
-        while (computerNumberList.size() < 3) {
+        List<Integer> computerSecretNumber = new ArrayList<>();
+        while (computerSecretNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumberList.contains(randomNumber)) {
-                computerNumberList.add(randomNumber);
+            if (!computerSecretNumber.contains(randomNumber)) {
+                computerSecretNumber.add(randomNumber);
             }
         }
+        computerNumberList = new Balls(computerSecretNumber);
     }
 
     public static List<Integer> stringToList(String str) {
         List<Integer> result = new ArrayList<>();
         for (char c : str.toCharArray()) {
-            if (Character.isDigit(c)) { // Only process digits
+            if (Character.isDigit(c)) {
                 result.add(Character.getNumericValue(c));
             }
         }
