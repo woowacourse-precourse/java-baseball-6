@@ -91,7 +91,15 @@ public class Application {
     }
 
     private static void compareValue() {
-
+        for (int i=0; i<digitNumber; i++) {
+            int userValue = user.get(i);
+            int computerValue = computer.get(i);
+            if (userValue == computerValue) {
+                strike++;
+            } else if (computer.contains(userValue)) {
+                ball++;
+            }
+        }
     }
 
     private static void printHint() {
