@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import static baseball.utils.Validator.NUMBER_LENGTH;
 
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Model {
+public class BaseballModel {
     public static final int MAX_STRIKES = 3;
     public final GameResult gameResult;
 
-    public Model(GameResult gameResult) {
+    public BaseballModel(GameResult gameResult) {
         this.gameResult = gameResult;
     }
 

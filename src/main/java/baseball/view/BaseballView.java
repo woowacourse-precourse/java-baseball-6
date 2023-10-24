@@ -1,6 +1,6 @@
-package baseball;
+package baseball.view;
 
-import static baseball.Model.MAX_STRIKES;
+import static baseball.model.BaseballModel.MAX_STRIKES;
 
 import baseball.entity.Ball;
 import baseball.entity.GameResult;
@@ -8,7 +8,7 @@ import baseball.entity.Strike;
 import baseball.enums.MessageType;
 import camp.nextstep.edu.missionutils.Console;
 
-public class View {
+public class BaseballView {
 
     public void displayScore(GameResult result) {
         Strike strike = result.getStrike();

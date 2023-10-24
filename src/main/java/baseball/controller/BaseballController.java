@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import static baseball.utils.NumberUtils.getDigits;
 import static baseball.utils.Validator.validateEndInput;
@@ -6,32 +6,34 @@ import static baseball.utils.Validator.validateInput;
 
 import baseball.entity.GameResult;
 import baseball.enums.MessageType;
+import baseball.model.BaseballModel;
+import baseball.view.BaseballView;
 import java.util.List;
 
-public class Controller {
-    private Model model;
-    private View view;
+public class BaseballController {
+    private BaseballModel baseballModel;
+    private BaseballView baseballView;
 
-    public Controller(Model model, View view) {
-        this.model = model;
-        this.view = view;
+    public BaseballController(BaseballModel baseballModel, BaseballView baseballView) {
+        this.baseballModel = baseballModel;
+        this.baseballView = baseballView;
     }
 
     public void startGame() {
-        view.displayMessage(MessageType.START);
+        baseballView.displayMessage(MessageType.START);
 
-        GameResult gameResult = model.gameResult;
+        GameResult gameResult = baseballModel.gameResult;
 
-        List<Integer> computerNumber = model.generateRandomNumbers();
+        List<Integer> computerNumber = baseballModel.generateRandomNumbers();
         // For debugging purpose
         System.out.println("컴퓨터: " + computerNumber);
 
         while (!gameResult.isGameEnded()) {
             List<Integer> playerNumber = getPlayerInput();
 
-            gameResult = model.evaluatePlayerInput(computerNumber, playerNumber);
+            gameResult = baseballModel.evaluatePlayerInput(computerNumber, playerNumber);
 
-            view.displayScore(gameResult);
+            baseballView.displayScore(gameResult);
 
             gameResult.resetCounts();
         }
@@ -39,7 +41,7 @@ public class Controller {
     }
 
     private void askForRestart(GameResult gameResult) {
-        view.displayMessage(MessageType.ASK_FOR_RESTART);
+        baseballView.displayMessage(MessageType.ASK_FOR_RESTART);
 
         String endInput = getPlayerEndInput();
 
@@ -47,20 +49,20 @@ public class Controller {
             gameResult.restartGame();
             startGame();
         } else if (endInput.equals(MessageType.FINISH.getMessage())) {
-            view.displayMessage(MessageType.GAME_ENDED);
+            baseballView.displayMessage(MessageType.GAME_ENDED);
         }
     }
 
     public List<Integer> getPlayerInput() {
-        view.displayMessage(MessageType.ASK_FOR_NUMBER);
-        String input = view.readInput();
+        baseballView.displayMessage(MessageType.ASK_FOR_NUMBER);
+        String input = baseballView.readInput();
         validateInput(input);
 
         return getDigits(Integer.parseInt(input));
     }
 
     public String getPlayerEndInput() {
-        String endInput = view.readInput();
+        String endInput = baseballView.readInput();
         validateEndInput(endInput);
 
         return endInput;
