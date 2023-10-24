@@ -26,7 +26,7 @@ public class Controller {
             List<Integer> userValue = userInput.getInput();
             List<Integer> ballCount = comparingInput.countMatch(userValue);
             OutputView.printResult(ballCount);
-            if (ballCount.equals(List.of(0, 3))) {
+            if (ballCount.equals(List.of(0, digits))) {
                 break;
             }
         }
