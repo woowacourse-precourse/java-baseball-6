@@ -16,7 +16,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = new ArrayList<>();
             computerRandom(computer);
-            
+
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String Numbers = Console.readLine();
@@ -93,15 +93,16 @@ public class Application {
         }
     }
     public static void userValid(List<Integer> user, int userNumber){
-        if(userNumber<1){
-            throw new IllegalArgumentException();
-        }
-        if(userNumber>9){
+        if(userRangeValid(userNumber)){
             throw new IllegalArgumentException();
         }
         if(user.contains(userNumber)){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static boolean userRangeValid(int userNumber){
+        return userNumber<1 || userNumber>9;
     }
 
     public static void computerRandomList(List<Integer> computer, int randomNumber) {
@@ -115,5 +116,4 @@ public class Application {
             computerRandomList(computer, randomNumber);
         }
     }
-
 }
