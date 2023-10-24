@@ -17,18 +17,18 @@ public class Computer {
         pickNums = new ArrayList<Integer>();
         // 랜덤 값 생성
         while(pickNums.size() < MAX_DIGIT){
-            int randomN = Randoms.pickNumberInRange(MIN_NUM,MAX_NUM);
+            int randomN = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+
             if(!pickNums.contains(randomN)){
                 pickNums.add(randomN);
-                System.out.println(randomN);
             }
         }
     }
 
     // ans와 비교 후 스타라이크 결과 리턴
     public String answerCheck(int checkNum){
-        boolean isStrike [] = new boolean[3];
-        boolean isBoll [] = new boolean[3];
+        boolean isStrike [] = new boolean[MAX_DIGIT];
+        boolean isBoll [] = new boolean[MAX_DIGIT];
         Arrays.fill(isStrike, false);
 
         for(int i=pickNums.size()-1; i >= 0; i--){
@@ -61,7 +61,7 @@ public class Computer {
                 return bollCount + BOLL;
             }
             else{
-                return bollCount + BOLL+ strikeCount + STRIKE;
+                return bollCount + BOLL+ " " + strikeCount + STRIKE;
             }
         }
     }
