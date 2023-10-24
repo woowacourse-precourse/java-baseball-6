@@ -8,10 +8,11 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         String computerNumber = shuffleNumber();
 
         while (true) {
-            System.out.print("숫자를 입력해 주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             System.out.println(computerNumber);
             String userNumber = Console.readLine();
             if (userNumber.length() != 3) {
@@ -32,10 +33,15 @@ public class Application {
             int strike = 0;
 
             for (int i = 0; i < computerNumber.length(); i++) {
-                int computerDigit = computerNumber.charAt(i);
-                int userDigit = userNumber.charAt(i);
-                ball += ballCount(computerDigit, userDigit);
-                strike += strikeCount(computerDigit, userDigit);
+                char computerDigit = computerNumber.charAt(i);
+                char userDigit = userNumber.charAt(i);
+                if (strikeCount(computerDigit, userDigit)) {
+                    strike += 1;
+                    continue;
+                }
+                if (ballCount(computerNumber, String.valueOf(userDigit))) {
+                    ball += 1;
+                }
             }
 
             if (ball != 0) {
@@ -51,7 +57,7 @@ public class Application {
 
             if (strike == 3) {
                 int reStartValue;
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                 reStartValue = Integer.parseInt(Console.readLine());
                 if (reStartValue != 1 && reStartValue != 2) {
@@ -80,19 +86,11 @@ public class Application {
         return String.join("", computer);
     }
 
-    public static int ballCount(int computerNumber, int userNumber) {
-        int ball = 0;
-        if (computerNumber - 1 == userNumber || computerNumber + 1 == userNumber) {
-            ball += 1;
-        }
-        return ball;
+    public static boolean ballCount(String computerNumber, String userNumber) {
+        return computerNumber.contains(userNumber);
     }
 
-    public static int strikeCount(int computerNumber, int userNumber) {
-        int strike = 0;
-        if (computerNumber == userNumber) {
-            strike += 1;
-        }
-        return strike;
+    public static boolean strikeCount(int computerNumber, int userNumber) {
+        return computerNumber == userNumber;
     }
 }
