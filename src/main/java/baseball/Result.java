@@ -6,6 +6,10 @@ public class Result {
     private int ball;
     private int strike;
 
+    private final String NOTHING = "낫싱";
+    private final String BALL = "볼 ";
+    private final String STRIKE = "스트라이크";
+
     public Result() {
         this.ball = 0;
         this.strike = 0;
@@ -31,15 +35,15 @@ public class Result {
         String result = "";
 
         if (isNothing()) {
-            result = "낫싱";
+            result = NOTHING;
         }
 
         if (ball != 0) {
-            result += ball + "볼 ";
+            result += ball + BALL;
         }
 
         if (strike != 0) {
-            result += strike + "스트라이크";
+            result += strike + STRIKE;
         }
 
         return result;
