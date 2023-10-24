@@ -35,7 +35,7 @@ import camp.nextstep.edu.missionutils;
 #### : 비즈니스 로직을 담당, 입출력 데이터 관리
 - [x] (랜덤 수 생성) 클래스 (generateNumber)
 - [x] (잘못된 값 입력) 예외처리 (PlayerNumber)
-- [ ] 게임 재시작, 종료 로직 구현
+- [x] 게임 재시작, 종료 로직 구현 (AskRetry)
 ---
 ### *View*
 #### : 컨트롤러를 통해 모델에서 정보를 받아 출력
@@ -51,4 +51,4 @@ import camp.nextstep.edu.missionutils;
 
 ### *GameManager*
 #### : 게임의 실행을 관리
-- [ ] Application.java
+- [x] Application.java

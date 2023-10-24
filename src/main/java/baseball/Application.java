@@ -1,17 +1,29 @@
 package baseball;
 
-import baseball.model.generateRandom;
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
+import baseball.controller.BaseballGame;
+import baseball.model.AskRetry;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        generateRandom random = new generateRandom();
-        List<Integer> test_num = random.randomNumber();
+        // TODO: 숫자야구게임 구현
 
-        // #1. '랜덤 숫자 생성' 기능 확인
-        System.out.println(test_num);
+        OutputView.printStartGame();
+
+        do{
+            BaseballGame baseballgame = new BaseballGame();
+            baseballgame.start();
+        } while (askRetry());
+    }
+
+    public static boolean askRetry() {
+        AskRetry retryNumber = new AskRetry(InputView.setRetryNum());
+
+        if (retryNumber.getRetryNum().equals("1")) {
+            return true;
+        }
+
+        return false;
     }
 }
