@@ -1,41 +1,40 @@
 package baseball.game;
 
 import baseball.game.model.Computer;
+import baseball.game.model.RestartState;
 import baseball.game.model.Result;
+import baseball.game.model.User;
 
-public class GameController {
-    private GameService gameService;
-    private GameView gameView;
+public class Controller {
+    private View view;
     private Computer computer;
-
-    public void start(){
-        gameView.printStartMessage();
-        do{
-            computer = gameService.createRandomNum();
-            playGame();
-            gameView.printEnd();
-        } while(gameService.isRestart(gameView.askRestart()));
+    public void init(){
+        view.printStartMessage();
+        playGame();
     }
     public void playGame(){
-        if(pitchBalls().isThreeStrike()){
+        computer = computer.of();
+        playRound();
+        view.printEnd();
+        restart(view.askRestart());
+    }
+    public void playRound(){
+        User user = User.of(view.inputNumber());
+        Result result = computer.compareToUser(user);
+        view.printResult(result);
+        if(result.isThreeStrike()){
             return;
         }
-        pitchBalls();
+        playRound();
     }
 
-    public Result pitchBalls(){
-        Result result = getPitchResult(gameView.inputNumber());
-        gameView.printResult(result);
-        return result;
+    public void restart(String restartRequest){
+        RestartState restartState = RestartState.of(restartRequest);
+        if(restartState.isRestart() == true){
+            playGame();
+        }
     }
-
-    public Result getPitchResult(int userNumber){
-        Result result = gameService.countStrikeAndBall(computer,userNumber);
-        return result;
-    }
-
-    public GameController(GameService gameService, GameView gameView) {
-        this.gameService = gameService;
-        this.gameView = gameView;
+    public Controller(View view) {
+        this.view = view;
     }
 }
