@@ -12,6 +12,7 @@ public class Application {
         do {
             GameView.printInputGuideMessage();
             gameController.run();
+            GameView.printDoneMessage();
         } while (gameController.replayOrStop() == REPLAY);
     }
 }

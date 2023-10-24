@@ -18,7 +18,6 @@ public class GameController {
             playGame(inputNumber);
             GameView.printResult(game.getResult());
         } while (game.isRunning());
-        GameView.printDoneMessage();
     }
 
     public void playGame(String number) {
