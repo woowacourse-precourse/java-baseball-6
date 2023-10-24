@@ -47,6 +47,10 @@ public class BaseBallGame {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int option = Integer.parseInt(Console.readLine());
 
+            if (option != 1 && option != 2) {
+                throw new IllegalArgumentException("잘못된 옵션입니다.");
+            }
+
             if (option == 2) {
                 break;
             }
