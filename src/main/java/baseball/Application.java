@@ -23,6 +23,7 @@ public class Application {
             while (!isSucceed) {
                 System.out.print("숫자를 입력해주세요 : ");
                 inputNumber = Console.readLine();
+                isThreeDigitNumber();
                 printAnswerHint();
                 isSucceed();
             }
@@ -42,6 +43,12 @@ public class Application {
             }
         }
         return randomNumber;
+    }
+
+    public static void isThreeDigitNumber() {
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int calculateStrikeCount() {
