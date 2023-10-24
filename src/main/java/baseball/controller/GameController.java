@@ -51,7 +51,7 @@ public class GameController {
         } else if (restart.equals(endNumber)) {
             gameOver = true;
         } else {
-            throw new IllegalArgumentException(GameMessage.INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException(GameMessage.INPUT_RESTART_ERROR_MESSAGE.getMessage());
         }
     }
 

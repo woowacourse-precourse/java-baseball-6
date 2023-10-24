@@ -11,7 +11,7 @@ public enum GameMessage {
     INPUT_LENGTH_ERROR_MESSAGE("3자리수를 입력해주세요."),
     INPUT_DIGIT_ERROR_MESSAGE("숫자가 아닌 값이 입력되었습니다."),
     INPUT_DUPLICATION_ERROR_MESSAGE("중복된 숫자가 있습니다."),
-    INPUT_ERROR_MESSAGE("1 또는 2를 입력해주세요.");
+    INPUT_RESTART_ERROR_MESSAGE("1 또는 2를 입력해주세요.");
 
     private final String message;
 
