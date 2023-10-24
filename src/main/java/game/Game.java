@@ -128,7 +128,6 @@ public class Game {
         }
 
         List<Integer> inputNum = new ArrayList<>();
-
         for (int i = 0; i < UserInput.length(); i++) {
             int num = charToInt(UserInput.charAt(i));
 
