@@ -11,30 +11,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<Integer> computer = new ArrayList<>();
+    private List<Integer> computerNumbers = new ArrayList<>();
 
     public Game() {
-        while (computer.size() < NUMBER_COUNT) {
+        while (computerNumbers.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (!isContainedNumber(randomNumber)) {
-                computer.add(randomNumber);
+                computerNumbers.add(randomNumber);
             }
         }
     }
 
     public void play() {
-        String inputString;
         boolean is3Strike = false;
         do {
             System.out.print(INPUT_MESSAGE);
-            inputString = Console.readLine().replace(" ", ""); // 공백 실수 허용
+            String inputString = Console.readLine().replace(" ", ""); // 공백 실수 허용
             Player player = new Player(inputString);
             is3Strike = checkResult(player.getDuplicatePlayerList());
         } while (!is3Strike);
     }
 
     private boolean isContainedNumber(int randomNumber) {
-        for (Integer x : computer) {
+        for (Integer x : computerNumbers) {
             if (x == randomNumber) {
                 return true;
             }
@@ -42,7 +41,7 @@ public class Game {
         return false;
     }
 
-    private boolean checkResult(List<Integer> playerList) {
+    public boolean checkResult(List<Integer> playerList) {
         int strike = getStrike(playerList);
         int ball = getBall(playerList) - strike;
 
@@ -55,7 +54,7 @@ public class Game {
         int strike = 0;
 
         for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).equals(computer.get(i))) {
+            if (playerList.get(i).equals(computerNumbers.get(i))) {
                 strike++;
             }
         }
@@ -66,10 +65,11 @@ public class Game {
         int ball = 0;
 
         for (Integer p : playerList) {
-            if (computer.contains(p)) {
+            if (computerNumbers.contains(p)) {
                 ball++;
             }
         }
         return ball;
     }
+
 }
