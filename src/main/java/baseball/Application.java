@@ -28,6 +28,14 @@ public class Application {
     public static void restartOrExit() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int sign = inputSign();
+
+    }
+
+    public static int inputSign() {
+        String sign = Console.readLine();
+        if(sign.equals("1")) return 1;
+        return 2;
     }
 
     public static boolean checkGame(Result result) {
