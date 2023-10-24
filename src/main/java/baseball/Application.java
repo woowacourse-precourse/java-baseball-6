@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,23 +14,49 @@ public class Application {
     private static int ASCIININE = 57;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        gameStart();
+        int gameStatus = 1;
+
+        printStart();
+        while (gameStatus == 1) {
+            game();
+            gameStatus = checkReGame();
+        }
     }
 
-    private static void gameStart() {
+    private static void game() {
         final List<Integer> computerNumbers = getComputerNumbers();
 
         boolean gameFlag = true;
         while (gameFlag) {
             final List<Integer> userNumbers = getUserNumbers();
-            System.out.println(computerNumbers);
-            System.out.println(userNumbers);
 
             if (getResult(computerNumbers, userNumbers)) {
                 gameFlag = false;
             }
         }
+    }
+
+    private static int checkReGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String reGame = Console.readLine();
+
+        if (!validateReGameInput(reGame)) {
+            throw new IllegalArgumentException("잘못된 커맨드 입니다.");
+        }
+
+        return Integer.parseInt(reGame);
+    }
+
+    private static boolean validateReGameInput(final String reGame) {
+        if (reGame.equals("1") || reGame.equals("2")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static void printStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private static boolean getResult(final List<Integer> computerNumbers, final List<Integer> userNumbers) {
@@ -110,7 +135,7 @@ public class Application {
         return stringToIntegerList(inputNumbers);
     }
 
-    private static boolean validateUserInput(String inputNumbers) {
+    private static boolean validateUserInput(final String inputNumbers) {
         if (validateInputLength(inputNumbers)
                 && validateInputDuplication(inputNumbers)
                 && validateInputCharacters(inputNumbers)) {
@@ -120,7 +145,7 @@ public class Application {
         return false;
     }
 
-    private static boolean validateInputLength(String inputNumbers) {
+    private static boolean validateInputLength(final String inputNumbers) {
         if(inputNumbers.length() == 3) {
             return true;
         }
@@ -128,7 +153,7 @@ public class Application {
         return false;
     }
 
-    private static boolean validateInputDuplication(String inputNumbers) {
+    private static boolean validateInputDuplication(final String inputNumbers) {
         String[] inputNumberSplits = inputNumbers.split("");
         if(inputNumberSplits[0].equals(inputNumberSplits[1])
                 || inputNumberSplits[0].equals(inputNumberSplits[2])
@@ -139,7 +164,7 @@ public class Application {
         return true;
     }
 
-    private static boolean validateInputCharacters(String inputNumbers) {
+    private static boolean validateInputCharacters(final String inputNumbers) {
         String[] inputNumberSplits = inputNumbers.split("");
         if(checkOneToNine(inputNumberSplits[0])
                 && checkOneToNine(inputNumberSplits[1])
@@ -150,7 +175,7 @@ public class Application {
         return false;
     }
 
-    private static boolean checkOneToNine(String number) {
+    private static boolean checkOneToNine(final String number) {
         if(ASCIIONE > number.charAt(0) || ASCIININE < number.charAt(0)) {
             return false;
         }
@@ -158,7 +183,7 @@ public class Application {
         return true;
     }
 
-    private static List<Integer> stringToIntegerList(String inputNumbers) {
+    private static List<Integer> stringToIntegerList(final String inputNumbers) {
         return Stream.of(inputNumbers.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
