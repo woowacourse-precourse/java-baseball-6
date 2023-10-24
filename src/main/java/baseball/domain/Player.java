@@ -43,6 +43,10 @@ public class Player {
     }
 
     public int inputRun(){
-         return Integer.parseInt(Console.readLine());
+         int Num = Integer.parseInt(Console.readLine());
+         if(Num > 2 && Num < 1){
+             throw new IllegalArgumentException();
+         }
+         return Num;
     }
 }
