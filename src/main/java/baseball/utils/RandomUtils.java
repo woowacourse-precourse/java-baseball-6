@@ -4,11 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomUtils {
 
-    public static int[] getRandomNumbers() {
-        int[] numbers = new int[3];
-        boolean flag = false;
+    public static int[] getRandomNumbers(int size) {
+        int[] numbers = new int[size];
 
-        for(int i=0; i<3;) {
+        for(int i=0; i<size;) {
             int randNum = Randoms.pickNumberInRange(1,9);
             if(checkDuplicated(randNum,numbers)) {
                 numbers[i++]=randNum;
