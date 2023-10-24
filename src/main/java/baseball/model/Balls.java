@@ -24,12 +24,7 @@ public class Balls {
     }
 
     public boolean isBall(Ball ball) {
-        for (Ball computerBall : balls) {
-            if (computerBall.isBall(ball)) {
-                return true;
-            }
-        }
-        return false;
+        return balls.stream().anyMatch(computerBall -> computerBall.isBall(ball));
     }
 
     public List<Ball> getBalls() {
