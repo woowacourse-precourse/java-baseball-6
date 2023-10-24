@@ -18,7 +18,7 @@ public class Application {
         while (playAgain) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = randomNum();
-            System.out.println("answer : " + computer);   //정답
+            //System.out.println("answer : " + computer);   //정답
 
             while (true) {
                 int[] answer = checkNum();
