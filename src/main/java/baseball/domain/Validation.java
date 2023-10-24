@@ -1,6 +1,7 @@
 package baseball.domain;
 
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Validation {
 
@@ -32,11 +33,11 @@ public class Validation {
         if (inputType == 1) {
             return;
         }
-        HashMap<Character, Integer> hashMap = new HashMap<>();
+        Set<Character> checkDuplicateValue = new HashSet<>();
         for (char chr : target) {
-            hashMap.put(chr, 0);
+            checkDuplicateValue.add(chr);
         }
-        if (hashMap.size() != 3) {
+        if (checkDuplicateValue.size() != 3) {
             throw new IllegalArgumentException("같은 숫자는 입력할 수 없습니다.");
         }
     }
