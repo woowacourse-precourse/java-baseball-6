@@ -29,14 +29,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
+    void 문자_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    
+    @Test
+    void 중복_숫자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
