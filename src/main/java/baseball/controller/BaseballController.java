@@ -35,13 +35,12 @@ public class BaseballController {
         }
     }
 
-    public void repeatGame(){
-        boolean answer = true;
-        while (answer){
+    public void repeatGame() {
+        while (true) {
             setPlayerNumbers();
             compareNumber();
             hint();
-            if(strikeCount==BASEBALL_STRIKE_COUNT){
+            if (strikeCount == BASEBALL_STRIKE_COUNT) {
                 OutputView.endMessage();
                 return;
             }
@@ -49,7 +48,6 @@ public class BaseballController {
 
     }
 
-    //사용자가 입력한숫자 리스트로저장
     public void setPlayerNumbers() {
         number.setPlayerNumber(InputView.inputNumber());
         List<Integer> playerNumbers = new ArrayList<>();
@@ -60,13 +58,13 @@ public class BaseballController {
         number.setPlayerNumbers(playerNumbers);
     }
 
-    //컴퓨터 숫자 리스트 저장
+
     public void setComputerNumbers() {
         number.setComputerNumbers(random.createRandomNumbers());
 
     }
 
-    //플레이어 숫자 와 컴퓨터 숫자 비교
+
     public void compareNumber() {
         List<Integer> computer = number.getComputerNumbers();
         List<Integer> player = number.getPlayerNumbers();
@@ -124,17 +122,17 @@ public class BaseballController {
         }
         return "";
     }
-    public boolean restartGame(){
+
+    public boolean restartGame() {
         String plyerChoice = InputView.resetGame();
-        if (plyerChoice .equals(BASEBALL_RESTART)){
+        if (plyerChoice.equals(BASEBALL_RESTART)) {
             return true;
-        }else if(plyerChoice .equals(BASEBALL_END)){
+        } else if (plyerChoice.equals(BASEBALL_END)) {
             return false;
         }
         throw new IllegalArgumentException(ERROR_MESSAGE);
 
     }
-
 
 
 }

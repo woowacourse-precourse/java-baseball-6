@@ -11,7 +11,6 @@ public class Random {
     private static final int BASEBALL_NUMBER_END = 9;
 
 
-    //    램던번호 생성
     public int createRandomNumber(List<Integer> randomNumbers) {
         while (true) {
             int randomNumber = Randoms.pickNumberInRange(BASEBALL_NUMBER_START,
@@ -23,7 +22,7 @@ public class Random {
         }
     }
 
-    //램덤번호 리스트
+
     public List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
