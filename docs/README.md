@@ -38,3 +38,73 @@
 - [ ] 프로그램 종료 시 System.exit()를 호출하지 않는다.
 ### 재시작/종료
 - [ ] 게임이 끝난 경우, 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력하여 게임을 다시 시작하거나 완전히 종료할 수 있다.
+
+---
+# 구현할 기능 목록 (2차)
+기존 작성한 기능 목록에 대해 구현을 하면서 각 객체별 역할에 대해 분석이 부족함을 느꼈습니다.
+
+따라서 핵심 기능, 객체를 다시 분석합니다.
+
+- 정답을 추출한다.
+  - GameZone
+- 게임을 시작한다.
+  - GameZone
+- 라운드를 진행한다.
+  - Game
+- 숫자를 입력한다.
+  - Viewer
+- 결과를 출력한다.
+  - Announcer
+- 게임을 종료한다.
+  - Game
+- 게임을 재시작한다.
+  - GameZone
+
+## 객체 분석
+
+## GameZone
+
+- 게임을 시작한다.
+  - start()
+
+## Game
+
+- 정답을 추출한다.
+  - computer.speakAnswer()
+- 라운드를 진행한다.
+  - playRound()
+- 게임을 종료한다.
+  - end()
+
+## Result
+
+## Judge
+- 결과를 생성한다.
+  - generateResult()
+
+## Validator
+
+- 유효성을 검증한다.
+- 중복을 검증한다.
+  - validate()
+
+## Viewer
+
+- 숫자 리스트를 생성한다.
+  - generateNumberList()
+
+## Announcer
+
+- 게임 진행 멘트를 출력한다.
+- 결과를 출력한다.
+  - announce()
+
+## Computer
+
+- 정답을 제시한다.
+  - speakAnswer()
+
+## Player
+
+- 숫자를 제시한다.
+  - speakNumbers()
