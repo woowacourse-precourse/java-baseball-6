@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class InputView {
-
     public void greetingMsg() {
         System.out.println(InputMessage.START_MSG.getMsg());
     }
