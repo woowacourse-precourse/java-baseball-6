@@ -1,37 +1,51 @@
 package baseball.service;
 
 import baseball.domain.BaseBall;
-import baseball.util.HintGenerator;
+import baseball.utils.HintGenerator;
 
 import static baseball.constant.GameConstant.*;
 
 public class PrintService {
 
-    public static String printResult(int[] answer, int[] input){
-        BaseBall baseBall= HintGenerator.getHint(answer,input);
-        int size=input.length;
-        if(baseBall.isNothing()){
+    public String printResult(int[] answer, int[] input) {
+        BaseBall baseBall = HintGenerator.getHint(answer, input);
+        int size = input.length;
+
+        if (baseBall.isNothing()) {
             return NOTHING;
-        } else {
-            if (size == baseBall.getStrike()) {
-                return getGameOverMessage(size);
-            } else {
-                int ball = baseBall.getBall();
-                int strike = baseBall.getStrike();
-                StringBuilder result = new StringBuilder();
-                if (ball > 0) {
-                    result.append(ball).append(BALL);
-                }
-                if (strike > 0) {
-                    if (result.length() > 0) result.append(" ");
-                    result.append(strike).append(STRIKE);
-                }
-                return result.toString();
-            }
+        }
+
+        if (size == baseBall.getStrike()) {
+            return getGameOverMessage(size);
+        }
+
+        return generateHintMessage(baseBall, size);
+    }
+
+    private String generateHintMessage(BaseBall baseBall, int size) {
+        StringBuilder result = new StringBuilder();
+
+        appendBallHint(baseBall, result);
+        appendStrikeHint(baseBall, result);
+
+        return result.toString();
+    }
+
+    private void appendBallHint(BaseBall baseBall, StringBuilder result) {
+        int ball = baseBall.getBall();
+        if (ball > 0) {
+            result.append(ball).append(BALL).append(" ");
         }
     }
 
-    private static String getGameOverMessage(int size) {
-        return size + STRIKE + "\n" + size + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private void appendStrikeHint(BaseBall baseBall, StringBuilder result) {
+        int strike = baseBall.getStrike();
+        if (strike > 0) {
+            result.append(strike).append(STRIKE);
+        }
+    }
+
+    private String getGameOverMessage(int size) {
+        return size + STRIKE + "\n" + GAME_OVER_PROMPT;
     }
 }
