@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Answer {
@@ -13,16 +15,33 @@ public class Answer {
         this.thirdNumber = thirdNumber;
     }
 
-    public int getFirstNumber() {
-        return firstNumber;
+    public List<Hint> getHints(UserPrediction prediction){
+        List<Hint> hints = new ArrayList<>();
+        hints.add(getHint(prediction.getFirstNumber(), Order.FIRST));
+        hints.add(getHint(prediction.getSecondNumber(), Order.SECOND));
+        hints.add(getHint(prediction.getThirdNumber(), Order.THIRD));
+        return hints;
     }
 
-    public int getSecondNumber() {
-        return secondNumber;
+    private Hint getHint(int number, Order order){
+        if(numAt(order) == number){
+            return Hint.STRIKE;
+        }
+        if(contains(number)){
+            return Hint.BALL;
+        }
+        else return Hint.NOTHING;
     }
 
-    public int getThirdNumber() {
-        return thirdNumber;
+    private int numAt(Order order){
+        int numberOfOrder = order.getOrder();
+        if (numberOfOrder == 1) return firstNumber;
+        else if (numberOfOrder == 2) return secondNumber;
+        else return thirdNumber;
+    }
+
+    private boolean contains(int number){
+        return number == firstNumber || number == secondNumber || number == thirdNumber;
     }
 
     @Override
