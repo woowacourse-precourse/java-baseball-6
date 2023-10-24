@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import model.NumberGenerator;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,6 +20,16 @@ class ApplicationTest extends NsTest {
         String generatedNumber = computerNumber.getGeneratedNumber();
 
         assertThat(generatedNumber.length()).isEqualTo(3);
+    }
+    @Test
+    void 컴퓨터_랜덤생성_중복테스트() {
+        NumberGenerator computerNumber = new NumberGenerator();
+        Set<Integer> computerNumberSet = new HashSet<>();
+
+        for(int i = 0; i < computerNumber.getGeneratedNumber().length(); i++) {
+            computerNumberSet.add(computerNumber.getGeneratedNumber().charAt(i) - '0');
+        }
+        assertThat(computerNumberSet.size()).isEqualTo(3);
     }
     @Test
     void 게임종료_후_재시작() {
