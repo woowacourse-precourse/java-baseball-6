@@ -29,6 +29,14 @@ public class GameService {
         Computer.setAnswer(computer);
     }
 
+    public static void makeHint() {
+        int ball = countBall();
+        int strike = countStrike();
+        Computer.setBall(ball);
+        Computer.setStrike(strike);
+    }
+
+
     public static int countBall() {
         int ball = 0;
         userNumbers = User.getUser();
