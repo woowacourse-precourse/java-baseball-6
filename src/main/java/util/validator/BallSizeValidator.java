@@ -7,9 +7,9 @@ public class BallSizeValidator {
 
     private static BallSizeValidator ballSizeValidator;
 
-    private final int NUMBERS_SIZE = 3;
+    private static final int NUMBERS_SIZE = 3;
 
-    private final String ERR_MSG = "3자리 수만 입력 가능합니다.";
+    private static final String ERR_MSG = "3자리 수만 입력 가능합니다.";
 
     private BallSizeValidator() {
 
@@ -23,7 +23,7 @@ public class BallSizeValidator {
     }
 
     public boolean validate(List<Ball> balls) {
-        if (balls.size() != 3) {
+        if (balls.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(ERR_MSG);
         }
         return true;

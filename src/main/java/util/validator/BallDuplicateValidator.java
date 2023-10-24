@@ -10,9 +10,9 @@ public class BallDuplicateValidator {
 
     private static BallDuplicateValidator ballDuplicateValidator;
 
-    private final int NUMBERS_SIZE = 3;
+    private static final int NUMBERS_SIZE = 3;
 
-    private final String ERR_MSG = "중복된 숫자가 존재합니다.";
+    private static final String ERR_MSG = "중복된 숫자가 존재합니다.";
 
     private BallDuplicateValidator() {
 
