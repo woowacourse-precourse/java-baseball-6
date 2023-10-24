@@ -4,9 +4,25 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
+    // 멤버 변수
     private int gameFlag;
     private StringBuilder computerNumber;
     private StringBuilder userNumber;
+
+    // 상수
+    // 게임을 진행한다는 의미의 상수
+    private static final int GAME_START = 1;
+
+    // 게임을 끝낸다는 의미의 상수
+    private static final int GAME_END = 2;
+
+    // Baseball Game Number의 최대 사이즈
+    private static final int MAX_LENGTH = 3;
+
+    // Baseball Game 숫자 범위
+    private static final int FIRST_RANGE_NUMBER = 1;
+    private static final int LAST_RANGE_NUMBER = 9;
+
 
     int[] scoreBoard = {0, 0};
     Game() {}
@@ -29,14 +45,30 @@ public class Game {
     }
     //
 
+    // scoreBoard 초기화 메소드
+    private void initializeScoreBoard() {
+        this.scoreBoard[0] =0;
+        this.scoreBoard[1] =0;
+    }
+
+    // Print Method
+    // System.out.print 함수 대신 사용
+    private static void print(String content) {
+        System.out.print(content);
+    }
+
+    private static void print(StringBuilder content) {
+        System.out.print(content);
+    }
+
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        this.gameFlag = 1;
+        print("숫자 야구 게임을 시작합니다.\n");
+        setGameFlag(GAME_START);
         this.generateComputerNumber();
 
-        while(this.gameFlag == 1) {
+        while(this.gameFlag == GAME_START) {
             this.inputUserNumber();
-            this.updateScoreBoard();
+            this.setScoreBoard();
             this.printGameResult();
         }
     }
@@ -44,24 +76,23 @@ public class Game {
     // Generate Computer Number
     private void generateComputerNumber() {
         StringBuilder computerNumber = new StringBuilder();
-        for(int i = 0; i < 3 ; i++) {
-            computerNumber.append(Randoms.pickNumberInRange(1, 9));
+        for(int i = 0; i < MAX_LENGTH ; i++) {
+            computerNumber.append(Randoms.pickNumberInRange(FIRST_RANGE_NUMBER, LAST_RANGE_NUMBER));
         }
-        this.computerNumber = computerNumber;
+        this.setComputerNumber(computerNumber);
     }
 
     // Input User Baseball Number
     private void inputUserNumber() {
-        this.scoreBoard = new int[]{0, 0};
-        System.out.print("숫자를 입력해주세요 : ");
+        this.initializeScoreBoard();
+        print("숫자를 입력해주세요 : ");
         StringBuilder userNumber = new StringBuilder(Console.readLine());
-        System.out.println(userNumber);
+        print(userNumber);
         this.validationCheckUserNumber(userNumber);
-        this.userNumber = userNumber;
-
+        this.setUserNumber(userNumber);
     }
 
-    private void updateScoreBoard() {
+    private void setScoreBoard() {
         for(int i = 0; i < 3 ; i++) {
             String userSubNum = this.userNumber.substring(i , i+1);
             if(this.computerNumber.indexOf(userSubNum) > -1) {
@@ -76,7 +107,7 @@ public class Game {
 
     private void validationCheckUserNumber(StringBuilder userNumber) {
         // 1. 자리수 세자리
-        if(userNumber.length() != 3) {
+        if(userNumber.length() != MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
 
@@ -88,14 +119,14 @@ public class Game {
     }
 
     private void printGameResult() {
-        if(this.scoreBoard[1] == 3) {
+        if(this.scoreBoard[1] == MAX_LENGTH) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             // updateGameFlag
             this.updateGameFlag();
 
-            if(this.gameFlag == 1) {
+            if(this.gameFlag == GAME_START) {
                 // generateComputerNumber();
                 this.generateComputerNumber();
             }
@@ -111,10 +142,10 @@ public class Game {
     }
 
     private void updateGameFlag() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
+        print("게임을 새로 시작하려면 "+GAME_START+", 종료하려면 "+GAME_END+"를 입력해주세요.%n");
         String gameFlag = Console.readLine();
         this.validationCheckReGame(gameFlag);
-        this.gameFlag = Integer.parseInt(gameFlag);
+        this.setGameFlag(Integer.parseInt(gameFlag));
     }
 
     private void validationCheckReGame(String gameFlag) {
