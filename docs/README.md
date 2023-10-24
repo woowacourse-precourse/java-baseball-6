@@ -14,16 +14,18 @@
 - List<Ball> 의 일급컬렉션, 3개의 숫자(Ball)을 가지고 있는다
   - `예외` 중복된 수가 입력되는 경우
   - `예외` 3자리가 아닌 수가 입력되는 경우
-- 다른 Balls 간의 비교를 수행하고 GameResult를 생성한다
+- 다른 Balls 간의 비교를 수행하고 GuessResult를 생성한다
 
 ### BaseballGame
 - 게임 시작 시 랜덤한 '컴퓨터 수' Balls를 생성한다
 - 유저에게 숫자를 입력받고 이를 컴퓨터 수를 비교해 GameResult를 생성한다 
 
+### BallStatus
+- 하나의 공에 대한 guess 결과를 나타낸다
+
 ## DTO
-### GameResult
+### GuessResult
 - 매 게임 결과로 몇 개의 스트라이크, 볼이 나왔는지를 갖는다
-- 스트라이크, 볼의 개수를 가지고 있는다
 
 ## UI
 ### InputView
