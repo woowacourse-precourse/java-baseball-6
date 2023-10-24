@@ -36,10 +36,6 @@ public class Controller {
     }
 
     private void validateInput(String input) {
-        if (input.isBlank()) {
-            throw new IllegalArgumentException("numbers cannot be empty");
-        }
-
         if (input.length() != COUNT) {
             throw new IllegalArgumentException("numbers have wrong in length");
         }
