@@ -46,7 +46,6 @@ public class ValidCheckService {
         return true;
     }
     public List<Integer> stringToIntegerList(String input) {
-        isValidStringNumber(input);
         List<Integer> integerList = new ArrayList<>();
         for (String s : input.split("")) {
             integerList.add(Integer.parseInt(s));
