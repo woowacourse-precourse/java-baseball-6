@@ -14,14 +14,9 @@ public class BaseballGame implements NumberGame {
 
     @Override
     public void play() {
-        while (true) {
+        do {
             proceedGame();
-
-            if (shouldRepeatGame()) {
-                continue;
-            }
-            break;
-        }
+        } while (shouldRepeatGame());
     }
 
     private void proceedGame() {
@@ -89,8 +84,8 @@ public class BaseballGame implements NumberGame {
         }
     }
 
-    private void validateUserRepeatNumber(String userRepeatNumber){
-        if(!userRepeatNumber.equals("1") && !userRepeatNumber.equals("2")){
+    private void validateUserRepeatNumber(String userRepeatNumber) {
+        if (!userRepeatNumber.equals("1") && !userRepeatNumber.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
