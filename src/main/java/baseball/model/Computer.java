@@ -5,8 +5,9 @@ import static baseball.util.Constants.BALL_MAX;
 import static baseball.util.Constants.BALL_MIN;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Computer {
     private final List<Integer> computerNumber;
@@ -20,15 +21,12 @@ public class Computer {
     }
 
     public static List<Integer> createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < BALL_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(BALL_MIN, BALL_MAX);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        return numbers;
+        return IntStream.generate(() -> Randoms.pickNumberInRange(BALL_MIN, BALL_MAX))
+                .boxed()
+                .distinct()
+                .limit(BALL_LENGTH).collect(Collectors.toList());
     }
+
 
     public int getNumberByPosition(int position) {
         return computerNumber.get(position);
