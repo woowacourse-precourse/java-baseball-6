@@ -14,15 +14,18 @@ public class NumberBaseball implements Game {
     private String[] answer;
     private HashSet<String> answerSet;
 
-    private boolean isFinishGame = false;
+    private boolean isFinished;
 
     @Override
     public void init() {
+        isFinished = false;
+
         answer = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH).stream()
                 .map(String::valueOf)
                 .toArray(String[]::new);
-        this.answerSet = new HashSet<>(Arrays.asList(answer));
-        System.out.println("DEBUG " + Arrays.toString(answer));
+        answerSet = new HashSet<>(Arrays.asList(answer));
+
+        initializeBaseballResult();
     }
 
     @Override
@@ -42,7 +45,7 @@ public class NumberBaseball implements Game {
             }
         }
 
-        this.isFinishGame = baseballResult.get(ResultType.STRIKE) == ANSWER_LENGTH;
+        isFinished = baseballResult.get(ResultType.STRIKE) == ANSWER_LENGTH;
         return this.gameResultToString();
     }
 
@@ -83,7 +86,7 @@ public class NumberBaseball implements Game {
 
     @Override
     public boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     @Override
@@ -102,8 +105,8 @@ public class NumberBaseball implements Game {
     }
 
     private void initializeBaseballResult() {
-        if (this.baseballResult == null) {
-            this.baseballResult = new HashMap<>();
+        if (baseballResult == null) {
+            baseballResult = new HashMap<>();
         }
 
         for (ResultType type : ResultType.values()) {
