@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class Input {
 
+    public static final String DEFAULT_SPLIT_REGEX = "";
+
     public static String consoleLine() {
         return Console.readLine();
     }
@@ -22,7 +24,7 @@ public class Input {
     }
 
     public static List<Integer> consoleNumbers() {
-        return consoleNumbers("");
+        return consoleNumbers(DEFAULT_SPLIT_REGEX);
     }
 
     public static List<Integer> consoleNumbers(String regex) {
