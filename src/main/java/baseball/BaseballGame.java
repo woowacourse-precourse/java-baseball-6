@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.generator.NumberGenerator;
-import baseball.handler.OutputHandler;
-import baseball.handler.InputHandler;
+import baseball.game.generator.NumberGenerator;
+import baseball.game.handler.OutputHandler;
+import baseball.game.handler.InputHandler;
 
 public class BaseballGame {
 

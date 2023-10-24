@@ -1,4 +1,4 @@
-package baseball.calculator;
+package baseball.game.calculator;
 
 import baseball.constants.GameConstants;
 

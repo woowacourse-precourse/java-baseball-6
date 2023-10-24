@@ -1,6 +1,6 @@
-package baseball.handler;
+package baseball.game.handler;
 
-import baseball.calculator.ResultCalculator;
+import baseball.game.calculator.ResultCalculator;
 import baseball.constants.GameConstants;
 
 public class OutputHandler {

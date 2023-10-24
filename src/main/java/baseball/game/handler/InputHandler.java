@@ -1,4 +1,4 @@
-package baseball.handler;
+package baseball.game.handler;
 
 import baseball.constants.GameConstants;
 import camp.nextstep.edu.missionutils.Console;
