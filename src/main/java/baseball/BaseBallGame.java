@@ -31,6 +31,5 @@ public class BaseBallGame {
                 computerNumber = rand.makeRandomNumber(); // 컴퓨터가 생성한 숫자를 저장
             }
         } while (newGame);
-        Console.close(); //콘솔을 닫아야 함
     }
 }
