@@ -4,9 +4,9 @@ import java.util.*;
 
 public class GameLogic {
     private Map<String, Integer> compareResult = new HashMap<>();
-    private List<Integer> playerGuessNumbers = new ArrayList<>();
 
     public List<Integer> validateAndReturnBaseBallNumber(String playerGuess) {
+        List<Integer> playerGuessNumbers = new ArrayList<>();
         if (playerGuess.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -16,7 +16,6 @@ public class GameLogic {
         for (char c: charArr) {
             if (Character.isDigit(c)) {
                 int number = Character.getNumericValue(c);
-
                 if (number >= 0 && !playerGuessNumbers.contains(number)) {
                     playerGuessNumbers.add(number);
                 } else {
