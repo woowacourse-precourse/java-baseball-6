@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball {
     private String computerNum;
-    private String userNum;
+//    private String userNum;
     // 생성자
     public Baseball(){
         initBaseball();
@@ -20,7 +20,7 @@ public class Baseball {
         // 컴퓨터 수 세팅
         this.computerNum=setComputerNum();
         // 사용자 입력 숫자 초기화
-        this.userNum="";
+//        this.userNum="";
     }
 
     public String setComputerNum(){
@@ -37,13 +37,28 @@ public class Baseball {
         }
 
         return computer;
-
     }
 
     public void playBaseball(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+//        System.out.println(computerNum);
+        do {
+            int strikeNum=0;
+            int ballNum=0;
 
-//        String a=Console.readLine();
+            System.out.print("숫자를 입력해주세요 : ");
+            String input=Console.readLine();
+
+
+            for(int i=0;i<3;i++){
+                if(input.charAt(i)==computerNum.charAt(i)) strikeNum++;
+                else if(computerNum.contains(String.valueOf(input.charAt(i)))){
+                    ballNum++;
+                }
+            }
+            System.out.println(strikeNum+"스트라이크 "+ballNum+"볼");
+            if(strikeNum==3) break;
+        }while(true);
 
     }
 }
