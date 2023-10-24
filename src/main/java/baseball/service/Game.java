@@ -19,9 +19,11 @@ public class Game {
         while(true) {
             OutputView.askUserNumbers();
             String userInput = InputView.askUserNumbers();
+
             Balls balls = new Balls(userInput);
 
             Score score = Score.getScore(answerNumbers, balls);
+
             ScoreDto scoreDto = new ScoreDto(score.getStrike(), score.getBall());
             OutputView.printScore(scoreDto);
 
