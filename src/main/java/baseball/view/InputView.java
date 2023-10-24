@@ -57,7 +57,7 @@ public class InputView {
         }
     }
 
-    private List<Integer> inputConverter(Integer input) {
+    private List<Integer> inputConverter(int input) {
         List<Integer> convertedInput = new ArrayList<>();
 
         for (int i = 100; i >= 1; i /= 10) {
