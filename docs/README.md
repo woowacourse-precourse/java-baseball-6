@@ -23,15 +23,15 @@
 ### Game(게임)
 - ✅ initialiser 구현
   - ✅ Oppoent에서 initialise된 값들을 들고 와서(컴퓨터의 랜덤 수) 초기값을 설정
-- [x] gamePlay 매서드 구현
+- ✅ gamePlay 매서드 구현
   - ✅ 사용자로 부터 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 받음
   - ✅ `validateDataType` 메서드로 타입 확인
-  - [x] `toIntegerList` 매서드로 사용자로부터 입력 받은 값으로 Integer List 생성
-  - [x] `validateCount` 메서드로 자리수 확인
-  - [x] `validateRange` 메서드로 범위 내 존재 여부 확인
-  - [x] strike 와 ball의 개수를 가지고 옴
-  - [x] 정답이 아닌 경우 : `printHint`를 사용하여 사용자에게 힌트를 제공
-  - [x] 정답인 경우 : `printWinMessage`을 사용하여 사용자에게 정답 메세지를 출력해줌
+  - ✅ `toIntegerList` 매서드로 사용자로부터 입력 받은 값으로 Integer List 생성
+  - ✅ `validateCount` 메서드로 자리수 확인
+  - ✅ `validateRange` 메서드로 범위 내 존재 여부 확인
+  - ✅ strike 와 ball의 개수를 가지고 옴
+  - ✅ 정답이 아닌 경우 : `printHint`를 사용하여 사용자에게 힌트를 제공
+  - ✅ 정답인 경우 : `printWinMessage`을 사용하여 사용자에게 정답 메세지를 출력해줌
 - ✅ toIntegerList 메서드 구현
   - ✅ 사용자로부터 입력 받은 String 숫자 값들을 1자리 숫자로 나눠서 List에 저장
 - ✅ printHint 메서드 구현

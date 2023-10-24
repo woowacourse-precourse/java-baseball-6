@@ -31,8 +31,16 @@ public class Game {
             System.out.println(INPUT_MESSAGE);
             String inputNumbers = readLine();
             validateDataType(inputNumbers);
+            userNumbers = toIntegerList(inputNumbers);
+            validateCount(userNumbers);
+            validateRange(userNumbers);
 
+            strike = oppoent.checkStrike(userNumbers);
+            ball = oppoent.checkBall(userNumbers);
+
+            printHint();
         }
+        printWinMessage();
     }
     private List<Integer> toIntegerList(String inputNumbers) {
         String[] splitInput = inputNumbers.split("");
