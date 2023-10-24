@@ -16,6 +16,7 @@ public class Application {
         List<Integer> computer;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (true) {
             // 랜덤값 생성
             computer = createRandomNum();
@@ -24,8 +25,8 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 userInput = Console.readLine();
 
-                int ballCnt = 0;
-                int strikeCnt = 0;
+                int ballCnt;
+                int strikeCnt;
 
                 // 사용자 입력값이 올바른지 검사
                 user = validateNum(userInput);
@@ -56,7 +57,7 @@ public class Application {
         int ballCnt = 0;
         for (int i = 0; i < computer.size(); i++) {
             for (int j = 0; j < user.size(); j++) {
-                if (computer.get(i) == user.get(j) && i != j) {
+                if (computer.get(i).equals(user.get(j)) && i != j) {
                     ballCnt++;
                 }
             }
@@ -67,7 +68,7 @@ public class Application {
     private static int countStrike(List<Integer> computer, List<Integer> user) {
         int strikeCnt = 0;
         for (int i = 0; i < computer.size(); i++) {
-            if(computer.get(i) == user.get(i)) {
+            if(computer.get(i).equals(user.get(i))) {
                 strikeCnt++;
             }
         }
@@ -94,14 +95,11 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
 
-        switch (userInput) {
-            case "1":
-                return false;
-            case "2":
-                return true;
-            default:
-                throw new IllegalArgumentException("1 또는 2만 입력하세요.");
-        }
+        return switch (userInput) {
+            case "1" -> false;
+            case "2" -> true;
+            default -> throw new IllegalArgumentException("1 또는 2만 입력하세요.");
+        };
     }
 
     private static List<Integer> validateNum(String userInput) {
