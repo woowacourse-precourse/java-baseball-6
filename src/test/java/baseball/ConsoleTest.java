@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -20,7 +18,6 @@ public class ConsoleTest {
     @Nested
     @DisplayName("사용자의 3자리 수 입력을 받는 기능")
     class input3DigitNumberTest extends NsTest {
-        List<Integer> successList = new ArrayList<>(List.of(1, 2, 3));
 
         @Test
         @DisplayName("정상적으로 입력한다.")
