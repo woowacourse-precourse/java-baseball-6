@@ -12,13 +12,12 @@ public class Application {
 }
 
 class Room{
-	private static final int SIZE = 3;
 	public static void gameStart(Computer alice){
 		User coh = new User();
 		String userInput = coh.getUserInput();
 		Computer.checkResult(userInput, alice);
 		Message.makeMessage(alice.baseballFlag);
-		if (alice.baseballFlag[0] != SIZE){
+		if (alice.baseballFlag[0] != Computer.SIZE){
 			gameStart(alice);
 			return;
 		}
@@ -32,7 +31,7 @@ class Room{
 }
 
 class Computer {
-	private static final int SIZE = 3;
+	public static final int SIZE = 3;
 	int[] baseballFlag = {0, 0};
 	int[] numbers = new int[SIZE];
 	Computer() {
