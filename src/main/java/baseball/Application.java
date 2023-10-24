@@ -10,6 +10,7 @@ import Entity.GameNumber;
 import Entity.GameResult;
 import Entity.GameScore;
 import Entity.Status;
+import Manager.PrintManager;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -36,16 +37,20 @@ public class Application {
     }
 
     public static void startBaseballGame() {
-        printMessage(Status.GAME_START, NEW_LINE);
-        boolean continueFlag = true;
-        while (continueFlag) {
-            createComputerNumber();
-            while (gameScore.getStrike() != MAX_STRIKE) {
-                inputUserNumber();
-                calculateScore();
-                printGameResult();
-            }
-            continueFlag = inputContinueOrExit();
+        PrintManager.printStatus(Status.GAME_START, NEW_LINE);
+
+        do {
+            playGame();
+        }
+        while (inputContinueOrExit());
+    }
+
+    public static void playGame() {
+        createComputerNumber();
+        while (gameScore.getStrike() != MAX_STRIKE) {
+            inputUserNumber();
+            calculateScore();
+            printGameResult();
         }
     }
 
@@ -62,7 +67,7 @@ public class Application {
     }
 
     public static void inputUserNumber() {
-        printMessage(Status.INPUT_NUMBER, !NEW_LINE);
+        PrintManager.printStatus(Status.INPUT_NUMBER, !NEW_LINE);
         String inputNumber = Console.readLine();
 
         List<Integer> userNumber = inputNumber.chars()
@@ -84,12 +89,11 @@ public class Application {
     }
 
     public static void printGameResult() {
-        String message = GameResult.getMessage(gameScore.getBall(), gameScore.getStrike());
-        System.out.println(message);
+        PrintManager.printGameResult(gameScore.getBall(), gameScore.getStrike());
     }
 
     public static boolean inputContinueOrExit() {
-        printMessage(Status.RESTART_OR_EXIT, NEW_LINE);
+        PrintManager.printStatus(Status.RESTART_OR_EXIT, NEW_LINE);
         int inputNumber = Integer.parseInt(Console.readLine());
 
         if (inputNumber == RESTART) {
@@ -100,15 +104,6 @@ public class Application {
         }
 
         throw new IllegalArgumentException();
-    }
-
-    public static void printMessage(Status status, boolean newLine) {
-        String message = status.getMessage();
-        if (newLine) {
-            System.out.println(message);
-        } else if (!newLine) {
-            System.out.print(message);
-        }
     }
 }
 
