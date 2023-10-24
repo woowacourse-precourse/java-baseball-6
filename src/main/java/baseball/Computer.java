@@ -3,13 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-    private static final int TOTAL_COMPUTER_NUMBERS = 3;
     private String[] computerNumbers;
     private String[] playerNumbers;
     private GameMachine gameMachine;
-    String[] pickedNumbers = new String[TOTAL_COMPUTER_NUMBERS];
+    String[] pickedNumbers = new String[Message.TOTAL_COMPUTER_NUMBERS];
 
     public String[] getComputerNumbers() {
+        if (this.computerNumbers == null) {
+            throw new NullPointerException(Message.COMPUTER_NUMBERS_IS_NULL);
+        }
         return computerNumbers;
     }
 
@@ -27,7 +29,7 @@ public class Computer {
 
     public GameResult activateMachine() {
         if (this.gameMachine == null) {
-            throw new NullPointerException("NULL인 GameMachine을 가동하려 했습니다.");
+            throw new NullPointerException(Message.GAME_MACHINE_IS_NULL);
         }
         return this.gameMachine.playGame();
     }
@@ -35,7 +37,7 @@ public class Computer {
     // Computer 클래스가 Randoms 클래스에 의존함.
     // 변경될 가능성이 있거나 테스트에서 랜덤 값이 아닌 고정 값을 받는 경우 의존성 주입을 고려할 수 있음.
     public void pickComputerNumbers() {
-        for (int count = 0; count < TOTAL_COMPUTER_NUMBERS; count++) {
+        for (int count = 0; count < Message.TOTAL_COMPUTER_NUMBERS; count++) {
             pickedNumbers[count] = String.valueOf(Randoms.pickNumberInRange(1, 9));
         }
         if (pickedNumbers[0].equals(pickedNumbers[1]) || pickedNumbers[0].equals(pickedNumbers[2])

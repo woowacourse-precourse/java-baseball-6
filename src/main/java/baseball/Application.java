@@ -13,7 +13,7 @@ public class Application {
         int ball = 0;
         int strike = 0;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Message.GAME_START);
 
         computer.pickComputerNumbers();
         player.pickPlayerNumbers();
@@ -24,18 +24,18 @@ public class Application {
             ball = gameResult.getBall();
             strike = gameResult.getStrike();
             if (ball == 0 && strike == 0) {
-                System.out.println("낫싱");
+                System.out.println(Message.NOTHING);
             } else if (strike == 0) {
-                System.out.println(ball + "볼");
+                System.out.println(ball + Message.BALL);
             } else if (ball == 0) {
-                System.out.println(strike + "스트라이크");
+                System.out.println(strike + Message.STRIKE);
                 if (strike == STRIKE_COUNT_TO_FINISH) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println(Message.GAME_FINISH);
                     isFinished = true;
                 }
             }
             if (ball != 0 && strike != 0) {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
+                System.out.println(ball + Message.BALL + strike + Message.STRIKE);
             }
             // 실패 시 playerNumbers 수정
             if (!isFinished) {
@@ -45,8 +45,8 @@ public class Application {
             }
             // 게임 종료 후 재시작 여부 묻기
             if (isFinished) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                if (Console.readLine().equals("1")) {
+                System.out.println(Message.GAME_RESTART_OR_QUIT);
+                if (Console.readLine().equals(Message.RESTART)) {
                     isFinished = false;
                     // 컴퓨터, 사용자 입력 새로 받고 게임머신 생성
                     computer.pickComputerNumbers();
