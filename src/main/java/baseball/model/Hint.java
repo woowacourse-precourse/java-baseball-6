@@ -19,7 +19,7 @@ public class Hint {
             return ball + "볼 " + strike + "스트라이크";
         } else if (strike != 0) {
             return strike + "스트라이크";
-        } else if (strike != 0) {
+        } else if (ball != 0) {
             return ball + "볼";
         }
         return "낫싱";
