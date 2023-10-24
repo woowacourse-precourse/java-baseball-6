@@ -1,0 +1,54 @@
+package baseball.domain;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import baseball.constant.Constant;
+
+public class ComputerBalls {
+
+    private final List<Ball> balls;
+
+    public ComputerBalls() {
+        this.balls = createBalls();
+    }
+
+    private List<Ball> createBalls() {
+        List<Integer> numbers = generateNotDuplicateRandomNumbers();
+        return convertIntListToBallList(numbers);
+    }
+
+    private List<Integer> generateNotDuplicateRandomNumbers() {
+        List<Integer> numbers = generateRandomNumbers();
+        while (checkDuplicateNumber(numbers)) {
+            numbers = generateRandomNumbers();
+        }
+        return numbers;
+    }
+
+    private List<Integer> generateRandomNumbers() {
+        return Arrays.stream(new List[3])
+                .map(num -> Randoms.pickNumberInRange(Constant.START_RANGE, Constant.END_RANGE))
+                .collect(Collectors.toList());
+    }
+    private Boolean checkDuplicateNumber(List<Integer> numbers) {
+        if (numbers.stream()
+                .collect(Collectors.toSet())
+                .size() != 3)
+            return true;
+
+        return false;
+    }
+
+    private List<Ball> convertIntListToBallList(List<Integer> numbers) {
+        return numbers.stream()
+                .map(num -> new Ball(num))
+                .collect(Collectors.toList());
+    }
+
+
+    public List<Ball> getBalls() {
+        return Collections.unmodifiableList(this.balls);
+    }
+}
