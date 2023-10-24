@@ -9,23 +9,18 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
     private final Game game;
-    private final Computer computer;
     private final InputView inputView;
     private final OutputView outputView;
 
     public BaseballGameController() {
         this.game = new Game();
-        this.computer = new Computer();
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
-    public void start() {
-        computer.generateSecretNumber();
-        outputView.printGameStart();
-    }
-
     public void play() {
+        outputView.printGameStart();
+        Computer computer = new Computer();
         String computerNumber = computer.getSecretNumber();
         Round round;
         do {
