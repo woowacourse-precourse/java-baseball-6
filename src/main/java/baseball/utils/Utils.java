@@ -11,4 +11,14 @@ public final class Utils {
         }
     }
 
+    public static List<Integer> createRandomNumberList(int length) {
+        List<Integer> computerRandomNumber = new ArrayList<>();
+        while (computerRandomNumber.size() < length) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerRandomNumber.contains(randomNumber)) {
+                computerRandomNumber.add(randomNumber);
+            }
+        }
+        return computerRandomNumber;
+    }
 
