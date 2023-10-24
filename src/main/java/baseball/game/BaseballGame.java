@@ -13,7 +13,7 @@ public class BaseballGame {
 
     public void play() {
         List<Integer> computerNumber = computer.createComputerNumber();
-        user.createUserNumber();
+        List<Integer> userNumber = user.createUserNumber();
         computer.compareEachNumber();
         computer.createResultMessage();
         computer.checkResult();
@@ -76,31 +76,6 @@ public class BaseballGame {
 //            }
 //        }
 //
-//        public static ArrayList<Integer> validateUserNumber(String inputNumber) {
-//            ArrayList<Integer> userNumber = new ArrayList<>();
-//            for (int i = 0; i < inputNumber.length(); i++) {
-//                char numberChar = inputNumber.charAt(i);
-//                if (!Character.isDigit(numberChar)) {
-//                    throw new IllegalArgumentException("숫자가 아닌 입력이 포함되어 있습니다.");
-//                }
-//                userNumber.add((int) numberChar-'0');
-//            }
-//
-//            if (userNumber.size() != 3) {
-//                throw new IllegalArgumentException("입력숫자가 3자리가 아닙니다.");
-//            }
-//
-//            Set<Integer> set = new HashSet<>(userNumber);
-//            if (set.size() != userNumber.size()) {
-//                throw new IllegalArgumentException("중복되는 숫자가 포함되어 있습니다.");
-//            }
-//
-//            for (int number : userNumber) {
-//                if (number == 0) {
-//                    throw new IllegalArgumentException("입력숫자에 0이 포함되어 있습니다.");
-//                }
-//            }
-//            return userNumber;
-//        }
+
     }
 }
