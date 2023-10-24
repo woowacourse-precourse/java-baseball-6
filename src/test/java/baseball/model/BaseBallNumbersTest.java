@@ -17,7 +17,7 @@ class BaseBallNumbersTest {
 
     @ParameterizedTest
     @MethodSource("provideOverSizeIntegers")
-    void 야구_숫자_목록_사이즈에_벗어나는_경우에는_객체_생성_실패한다(List<Integer> overSizeIntegers) {
+    void 야구_숫자_목록_사이즈에_벗어나는_경우에는_야구_숫자_목록_생성_실패한다(List<Integer> overSizeIntegers) {
         assertThatThrownBy(() -> BaseBallNumbers.generateNumbers(overSizeIntegers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -30,7 +30,7 @@ class BaseBallNumbersTest {
     }
 
     @Test
-    void 중복이_있는_야구_숫자는_객체_생성에_실패한다() {
+    void 중복이_있는_야구_숫자는_야구_숫자_목록_생성에_실패한다() {
         List<Integer> duplicateNumbers = List.of(1, 1, 2);
 
         assertThatThrownBy(() -> BaseBallNumbers.generateNumbers(duplicateNumbers))
@@ -38,17 +38,44 @@ class BaseBallNumbersTest {
     }
 
     @Test
-    void 중복이_없는_야구_숫자를_객체_생성에_성공한다() {
+    void 중복이_없는_야구_숫자를_통해_야구_숫자_목록_생성에_성공한다() {
         List<Integer> noDuplicateNumbers = List.of(1, 2, 3);
 
         assertDoesNotThrow(() -> BaseBallNumbers.generateNumbers(noDuplicateNumbers));
     }
 
     @Test
-    void 랜덤으로_야구_숫자_목록을_생성하는데_사이즈에_벗어나지_않는_경우에는_객체_생성에_성공한다() {
-        NumberGenerator numberGenerator = new SequentialNumberGenerator(List.of(1, 2, 3));
+    void 랜덤한_야구_숫자_목록을_생성하는데_랜덤으로_생성된_목록이_중복이_없고_사이즈에_벗어나지_않는_경우_야구숫자_목록_생성에_성공한다() {
+        List<Integer> initialNumbers = List.of(1, 2, 3);
+        NumberGenerator numberGenerator = new SequentialNumberGenerator(initialNumbers);
 
         assertDoesNotThrow(() -> BaseBallNumbers.generateRandomNumbers(numberGenerator));
+    }
+
+    @Test
+    void 랜덤한_야구_숫자_목록을_생성하는데_랜덤으로_생성되는_숫자값이_중복인_경우_다시_랜덤으로_값을_구해_야구_숫자_목록을_생성한다() {
+        List<Integer> duplicatedNumbers = List.of(1, 1, 2, 3);
+        NumberGenerator numberGenerator = new SequentialNumberGenerator(duplicatedNumbers);
+        List<Integer> expectedNumbers = List.of(1, 2, 3);
+        BaseBallNumbers expectedBaseBallNumbers = BaseBallNumbers.generateNumbers(expectedNumbers);
+
+        BaseBallNumbers baseBallNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+
+        assertThat(baseBallNumbers).usingRecursiveComparison()
+                .isEqualTo(expectedBaseBallNumbers);
+    }
+
+    @Test
+    void 랜덤한_야구_숫자_목록을_생성하는데_랜덤으로_생성되는_값이_야구_숫자_목록_사이즈를_벗어나지_않도록_생성한다() {
+        List<Integer> initialNumbers = List.of(1, 2, 3, 4);
+        NumberGenerator numberGenerator = new SequentialNumberGenerator(initialNumbers);
+        List<Integer> expectedNumbers = List.of(1, 2, 3);
+        BaseBallNumbers expectedBaseBallNumbers = BaseBallNumbers.generateNumbers(expectedNumbers);
+
+        BaseBallNumbers baseBallNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+
+        assertThat(baseBallNumbers).usingRecursiveComparison()
+                .isEqualTo(expectedBaseBallNumbers);
     }
 
     @ParameterizedTest
@@ -63,9 +90,12 @@ class BaseBallNumbersTest {
     }
 
     private static Stream<Arguments> provideOverSizeIntegers() {
+        final List<Integer> overSizeIntegers = List.of(1, 2, 3, 4);
+        final List<Integer> underSizeIntegers = List.of(1, 2);
+
         return Stream.of(
-                Arguments.of(List.of(1, 2)),
-                Arguments.of(List.of(1, 2, 3, 4))
+                Arguments.of(underSizeIntegers),
+                Arguments.of(overSizeIntegers)
         );
     }
 
