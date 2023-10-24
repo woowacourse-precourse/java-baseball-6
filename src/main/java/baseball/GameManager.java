@@ -20,27 +20,32 @@ public class GameManager {
     }
 
     public void startGame(){
+        List<Integer> inputNumbers;
+        List<Integer> playerNumbers;
+        int[] result;
+        String input;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> inputNumbers = new ArrayList<>();
-            String input = Console.readLine();
+            inputNumbers = new ArrayList<>();
+            input = Console.readLine();
             for (int i = 0; i < input.length(); i++) {
                 // 문자를 정수로 변환하여 리스트에 추가
                 int digit = Character.getNumericValue(input.charAt(i));
                 inputNumbers.add(digit);
             }
             player.setNumbers(inputNumbers);
-            List<Integer> playerNumbers = player.getNumbers();
+            playerNumbers = player.getNumbers();
             if (!isValid(playerNumbers)) {
                 throw new IllegalArgumentException();
             }
-            int[] result = judge(playerNumbers);
+            result = judge(playerNumbers);
             if (count_msg(result) == false)
                 break ;
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
+        input = Console.readLine();
         if (input.equals("1")) {
             computer.changeNumber();
             startGame();
