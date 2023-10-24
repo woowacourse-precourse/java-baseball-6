@@ -2,8 +2,7 @@ package utils;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UtilsTest {
@@ -24,10 +23,7 @@ public class UtilsTest {
     @Test
     public void 정수형_리스트를_문자열로_변환_테스트(){
         //given
-        List<Integer> intList = new ArrayList<>();
-        intList.add(1);
-        intList.add(2);
-        intList.add(3);
+        List<Integer> intList = Arrays.asList(1,2,3);
         //when
         String string = utils.intListToString(intList);
         //then
