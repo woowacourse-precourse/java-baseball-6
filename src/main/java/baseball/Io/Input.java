@@ -17,9 +17,9 @@ public class Input {
         return numbers;
     }
 
-    public static boolean gameEndFlag() {
+    public static boolean playAgain() {
         String input = Console.readLine();
-        InputValidation.gameEndCommand(input);
-        return input.equals("1");
+        InputValidation.endCommand(input);
+        return "1".equals(input);
     }
 }

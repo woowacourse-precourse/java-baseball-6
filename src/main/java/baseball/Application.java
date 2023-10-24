@@ -26,7 +26,7 @@ public class Application {
                 }
             }
 
-            gameEndFlag = Input.gameEndFlag();
+            gameEndFlag = Input.playAgain();
         }
     }
 }

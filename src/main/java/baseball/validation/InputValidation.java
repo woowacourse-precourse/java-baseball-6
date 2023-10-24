@@ -12,7 +12,7 @@ public class InputValidation {
         }
     }
 
-    public static void gameEndCommand(String input) {
+    public static void endCommand(String input) {
         if (!input.matches("^[1-2]$")) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }
