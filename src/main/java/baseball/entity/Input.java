@@ -24,6 +24,7 @@ public class Input {
     private void reGameValidate() {
         checkIsNum();
         checkLength(1);
+        isOneOrTwo();
     }
 
     private void inGameValidate() {
@@ -35,6 +36,11 @@ public class Input {
     private void checkLength(int length) {
         if (inputString.length() != length) {
             throw new IllegalArgumentException(String.format("입력 길이 초과입니다. 입력길이 : [%s],  예상 길이: [%s]",inputString.length(),length));
+        }
+    }
+    private void isOneOrTwo() {
+        if (!(inputString.equals("1") || inputString.equals("2"))) {
+            throw new IllegalArgumentException(String.format("입력이 1혹은 2가 아닙니다. 입력한 문자 : [%s]",inputString));
         }
     }
     private void checkIsNum(){
