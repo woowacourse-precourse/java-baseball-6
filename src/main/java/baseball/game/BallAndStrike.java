@@ -20,6 +20,12 @@ public class BallAndStrike {
     }
 
     public void set(List<Integer> input, List<Integer> answer) {
+        if (this.ball > 0) {
+            this.ball = 0;
+        }
+        if (this.strike > 0) {
+            this.strike = 0;
+        }
         for (int i = 0; i < input.size(); i++) {
             if (input.get(i) == answer.get(i)) {
                 strike++;

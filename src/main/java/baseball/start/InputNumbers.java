@@ -12,6 +12,10 @@ public class InputNumbers {
 
     private List<Integer> inputNumbers;
 
+    public InputNumbers() {
+        inputNumbers = new ArrayList<>();
+    }
+
     public List<Integer> getInputNumbers() {
         return this.inputNumbers;
     }
@@ -58,7 +62,9 @@ public class InputNumbers {
     }
 
     private void StringToIntegerList(String readLine) {
-        inputNumbers = new ArrayList<>();
+        if (inputNumbers.size() > 0) {
+            inputNumbers = new ArrayList<>();
+        }
         for (int i = 0; i < readLine.length(); i++) {
             char character = readLine.charAt(i);
             String letter = String.valueOf(character);

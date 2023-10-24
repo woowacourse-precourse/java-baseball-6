@@ -1,7 +1,6 @@
 package baseball;
 
 public class Constants {
-    // 클래스 별로 구분해야 하나?
     public static final Integer NUMBER_LENGTH = 3;
 
     public static final String ALERT_START = "숫자 야구 게임을 시작합니다.";

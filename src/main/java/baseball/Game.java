@@ -13,7 +13,7 @@ import baseball.start.Answer;
 import baseball.start.InputNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
-public class BullsAndCows {
+public class Game {
     private Answer answer;
     private InputNumbers inputNumbers;
     private BallAndStrike ballAndStrike;
@@ -21,9 +21,10 @@ public class BullsAndCows {
     private InputChoice inputChoice;
     private Restart restart;
 
-    public BullsAndCows() {
+    public Game() {
         answer = new Answer();
         inputNumbers = new InputNumbers();
+        ballAndStrike = new BallAndStrike();
         result = Result.DEFAULT;
         inputChoice = new InputChoice();
         restart = new Restart();
@@ -79,7 +80,6 @@ public class BullsAndCows {
     }
 
     private void getBallAndStrike() {
-        ballAndStrike = new BallAndStrike();
         ballAndStrike.set(inputNumbers.getInputNumbers(), answer.getAnswer());
     }
 
