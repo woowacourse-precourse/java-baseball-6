@@ -20,16 +20,24 @@ public class Application {
             Result result = checkResult(computerNumber, inputNumber);
             viewResult(result);
             if(checkGame(result)){
-                restartOrExit();
+                stopSign = restartOrExit();
+            }
+            if(stopSign){
+                break;
+            }
+            if(!stopSign){
+                computerNumber.clear();
+                makeRandomNumber();
             }
         }
     }
 
-    public static void restartOrExit() {
+    public static boolean restartOrExit() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int sign = inputSign();
-
+        if(sign==1) return false;
+        return true;
     }
 
     public static int inputSign() {
