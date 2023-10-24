@@ -21,20 +21,27 @@ public class GameController {
     }
 
     public void runGame() {
-        List<Integer> computerNumbers = new ArrayList<>();
-        computerNumbers = computer.createRandomNumber();
+        boolean continueRequested;
 
-        Map compareResult = new HashMap<>();
         do {
-            String playerGuess = gameIO.readPlayerGuess();
+            List<Integer> computerNumbers = new ArrayList<>();
+            computerNumbers = computer.createRandomNumber();
 
-            List<Integer> playerGuessNumbers = new ArrayList<>();
-            playerGuessNumbers = gameLogic.validateAndReturnBaseBallNumber(playerGuess);
+            Map compareResult = new HashMap<>();
+            do {
+                String playerGuess = gameIO.readPlayerGuess();
 
-            compareResult = gameLogic.compareNumbers(playerGuessNumbers, computerNumbers);
-            gameIO.printBallStrike(compareResult);
+                List<Integer> playerGuessNumbers = new ArrayList<>();
+                playerGuessNumbers = gameLogic.validateAndReturnBaseBallNumber(playerGuess);
 
-        } while (!isPlayerGameComplete(compareResult));
+                compareResult = gameLogic.compareNumbers(playerGuessNumbers, computerNumbers);
+                gameIO.printBallStrike(compareResult);
+
+            } while (!isPlayerGameComplete(compareResult));
+
+            continueRequested = gameIO.askPlayerToContinue();
+        } while (continueRequested);
+
     }
 
     public boolean isPlayerGameComplete(Map<String, Integer> compareResult){
