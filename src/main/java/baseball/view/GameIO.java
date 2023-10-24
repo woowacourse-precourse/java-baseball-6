@@ -31,7 +31,18 @@ public class GameIO {
             return;
         }
 
+        if (strike > 0 && balls == 0) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+
+        if (strike == 0 && balls > 0) {
+            System.out.println(balls + "볼");
+            return;
+        }
+
         System.out.println(balls + "볼" + " " + strike + "스트라이크");
+    }
 
     public boolean askPlayerToContinue() {
         System.out.println(RESTART_OPTION_MESSAGE);
