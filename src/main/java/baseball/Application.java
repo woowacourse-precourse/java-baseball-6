@@ -21,7 +21,7 @@ public class Application {
     public static void main(String[] args) {
 
         System.out.println(STARTING_MESSAGE);
-        BaseballGame baseballGame = BaseballGame.getInstance();
+        BaseballGame baseballGame = new BaseballGame();
         boolean isGameEnd = false;
 
         while (!isGameEnd) {

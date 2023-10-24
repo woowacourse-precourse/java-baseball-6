@@ -5,12 +5,6 @@ import java.util.List;
 
 public class BaseballGame {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static BaseballGame baseballGame = new BaseballGame();
-
-    public static BaseballGame getInstance() {
-        return baseballGame;
-    }
-
 
     private GameNumber computerNumber;
     private GameNumber userInput;
@@ -24,11 +18,10 @@ public class BaseballGame {
     }
 
     public void randomizeComputerNumber(){
-        computerNumber = null;
         computerNumber = new GameNumber();
     }
 
-    private BaseballGame() {
+    public BaseballGame() {
         this.computerNumber = new GameNumber();
     }
 
@@ -40,9 +33,9 @@ public class BaseballGame {
     public void printGameScore() {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if (strike == 0 && ball != 0) {
+        } else if (strike == 0) {
             System.out.println(ball + "볼");
-        } else if (strike != 0 && ball == 0) {
+        } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
