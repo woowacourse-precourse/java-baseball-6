@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.entity.Game;
 import baseball.entity.User;
 import baseball.view.SystemInputMessage;
+import baseball.view.SystemOutputMessage;
 import camp.nextstep.edu.missionutils.Console;
 import global.utils.ParseUtil;
 import global.utils.RandomUtil;
@@ -13,6 +14,7 @@ public class BaseballService {
     Game game;
     User user;
     ParseUtil parseUtil;
+    SystemOutputMessage systemOutputMessage = new SystemOutputMessage();
 
     public void initGame(int size, int start, int end) {
         SystemInputMessage.showInitGameMessage();
@@ -25,6 +27,8 @@ public class BaseballService {
         int strike = 0;
         while (strike != 3) {
             play();
+            systemOutputMessage.showScoreMessage(game.getStrikeCount(), game.getBallCount());
+            strike = game.getStrikeCount();
         }
     }
 
@@ -32,10 +36,33 @@ public class BaseballService {
         SystemInputMessage.showInputMessage();
         game.initGame();
         user.setUserNumbers(getUserNumbers());
+        calculateScore(game.getGameNumbers(), user.getUserNumbers());
     }
 
     private int[] getUserNumbers() {
         String input = Console.readLine();
         return parseUtil.parseInput(input, size);
+    }
+
+    private void calculateScore(int[] gameNumbers, int[] userNumbers) {
+        for (int i = 0; i < size; i++) {
+            calculate(gameNumbers, userNumbers, i);
+        }
+    }
+
+    private void calculate(int[] gameNumbers, int[] userNumbers, int idx) {
+        int temp = -1;
+        for (int i = 0; i < size; i++) {
+            if (gameNumbers[i] == userNumbers[idx]) {
+                temp = i;
+                break;
+            }
+        }
+        increaseCount(idx, temp);
+    }
+
+    private void increaseCount(int idx, int temp) {
+        if(idx == temp) game.increaseStrikeCount();
+        if(idx != temp && temp != -1) game.increaseBallCount();
     }
 }

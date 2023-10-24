@@ -25,4 +25,12 @@ public class Game {
         strikeCount = 0;
         ballCount = 0;
     }
+
+    public void increaseStrikeCount() {
+        strikeCount += 1;
+    }
+
+    public void increaseBallCount() {
+        ballCount += 1;
+    }
 }
