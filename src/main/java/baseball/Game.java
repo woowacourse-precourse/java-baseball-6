@@ -6,7 +6,13 @@ import baseball.dto.Result;
 import baseball.global.Announcement;
 import baseball.global.util.RandomUtil;
 
-public class Game extends GameController {
+public class Game {
+
+    public static final int INPUT_LENGTH = 3;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
+    public static final int GAME_AGAIN_CODE = 1;
+    public static final int GAME_TERMINATE_CODE = 2;
 
     private List<Character> answer;
     private int terminate;
@@ -21,15 +27,15 @@ public class Game extends GameController {
         this.answer = RandomUtil.randomNumber();
 
         Result result = new Result();
-        while (!isWin(result)) {
-            String input = getInGameInput();
-            result = recordResult(input, answer);
-            printResult(result);
+        while (!GameController.isWin(result)) {
+            String input = GameController.getInGameInput();
+            result = GameController.recordResult(input, answer);
+            GameController.printResult(result);
         }
 
         System.out.println(Announcement.GAME_WIN);
 
-        this.terminate = getTerminateInput();
+        this.terminate = GameController.getTerminateInput();
     }
 
     public boolean isTerminate() {
