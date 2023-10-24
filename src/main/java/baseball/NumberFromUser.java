@@ -4,10 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 abstract class NumberFromUser<T> {
 
+    protected OutMessage outMessage;
+
     protected T value;
 
-    public T getValue(OutMessage msg) throws IllegalArgumentException {
-        final String input = getInputString(msg);
+    public T getValue() throws IllegalArgumentException {
+        final String input = getInputString();
         value = convertToReturnType(input);
         if (!validate()) {
             throw new IllegalArgumentException();
@@ -16,8 +18,8 @@ abstract class NumberFromUser<T> {
         return value;
     }
 
-    protected String getInputString(OutMessage msg) {
-        System.out.print(msg.getMsg());
+    protected String getInputString() {
+        outMessage.printMsg();
         return Console.readLine();
     }
 

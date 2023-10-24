@@ -13,8 +13,6 @@ class StartNumberFromUserTest {
 
     StartNumberFromUser startNumberFromUser = new StartNumberFromUser();
 
-    final private OutMessage msg = OutMessage.RESTART;
-
     @AfterEach
     void closeScanner() {
         Console.close();
@@ -27,7 +25,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when
-        int startNumber = startNumberFromUser.getValue(msg);
+        int startNumber = startNumberFromUser.getValue();
 
         // then
         assertThat(startNumber).isEqualTo(1);
@@ -40,7 +38,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when
-        int startNumber = startNumberFromUser.getValue(msg);
+        int startNumber = startNumberFromUser.getValue();
 
         // then
         assertThat(startNumber).isEqualTo(2);
@@ -53,7 +51,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when & then
-        assertThatThrownBy(() -> startNumberFromUser.getValue(msg)).isInstanceOf(
+        assertThatThrownBy(() -> startNumberFromUser.getValue()).isInstanceOf(
             IllegalArgumentException.class);
     }
 
@@ -64,7 +62,7 @@ class StartNumberFromUserTest {
         settingForInputStream(input);
 
         // when & then
-        assertThatThrownBy(() -> startNumberFromUser.getValue(msg)).isInstanceOf(
+        assertThatThrownBy(() -> startNumberFromUser.getValue()).isInstanceOf(
             IllegalArgumentException.class);
     }
 

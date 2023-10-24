@@ -6,6 +6,10 @@ import java.util.List;
 
 public class GuessNumberFromUser extends NumberFromUser<List<Integer>> {
 
+    public GuessNumberFromUser() {
+        outMessage = OutMessage.GUESS;
+    }
+
     @Override
     protected List<Integer> convertToReturnType(String input) {
         return Arrays.stream(input.split(""))

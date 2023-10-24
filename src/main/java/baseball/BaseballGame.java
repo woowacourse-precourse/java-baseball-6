@@ -22,21 +22,21 @@ public class BaseballGame {
     }
 
     private void prepare() {
-        System.out.println(OutMessage.START.getMsg());
+        OutMessage.START.printMsg();
         judgment = new Judgment(answerGenerator.generateAnswer());
     }
 
     private void repeatedGuess() {
         boolean success = false;
         while (!success) {
-            final List<Integer> guess = guessNumberFromUser.getValue(OutMessage.GUESS);
+            final List<Integer> guess = guessNumberFromUser.getValue();
             success = judgment.judge(guess);
         }
-        System.out.println(OutMessage.ANSWER.getMsg());
+        OutMessage.ANSWER.printMsg();
     }
 
     private boolean isStop() {
-        final int start = startNumberFromUser.getValue(OutMessage.RESTART);
+        final int start = startNumberFromUser.getValue();
         return start == 2;
     }
 

@@ -14,8 +14,6 @@ class GuessNumberFromUserTest {
 
     GuessNumberFromUser guessNumberFromUser = new GuessNumberFromUser();
 
-    final private OutMessage msg = OutMessage.GUESS;
-
     @AfterEach
     void closeScanner() {
         Console.close();
@@ -28,7 +26,7 @@ class GuessNumberFromUserTest {
         settingForInputStream(input);
 
         // when
-        List<Integer> guessNumber = guessNumberFromUser.getValue(msg);
+        List<Integer> guessNumber = guessNumberFromUser.getValue();
 
         // then
         assertThat(guessNumber).isEqualTo(List.of(1, 2, 3));
@@ -43,7 +41,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
+            assertThatThrownBy(() -> guessNumberFromUser.getValue())
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -57,7 +55,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
+            assertThatThrownBy(() -> guessNumberFromUser.getValue())
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -71,7 +69,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
+            assertThatThrownBy(() -> guessNumberFromUser.getValue())
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -85,7 +83,7 @@ class GuessNumberFromUserTest {
         // when & then
         String[] inputList = input.split("\n");
         for (int i = 0; i < inputList.length; i++) {
-            assertThatThrownBy(() -> guessNumberFromUser.getValue(msg))
+            assertThatThrownBy(() -> guessNumberFromUser.getValue())
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
