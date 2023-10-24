@@ -1,8 +1,8 @@
 package baseball.controllers;
 
-import baseball.model.CalculateNumber;
+import baseball.models.CalculateNumber;
 import baseball.views.InputView;
-import baseball.model.UserNumber;
+import baseball.models.UserNumber;
 import baseball.utils.Validator;
 import baseball.views.OutputView;
 

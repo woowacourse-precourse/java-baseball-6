@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.model.CalculateNumber;
-import baseball.model.UserNumber;
+import baseball.models.CalculateNumber;
+import baseball.models.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
