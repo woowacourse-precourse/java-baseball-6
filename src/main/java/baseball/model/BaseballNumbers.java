@@ -10,12 +10,13 @@ public class BaseballNumbers {
     private static final char NINE = '9';
     private final String numbers;
 
-    public BaseballNumbers(String numbers) {
+    private BaseballNumbers(String numbers) {
         correctSize(numbers);
         isNumber(numbers);
         isDistinct(numbers);
         this.numbers = numbers;
     }
+
     public static BaseballNumbers computerNumbers() {
         return new BaseballNumbers(RandomNumberUtility.generateRandomNumbers());
     }
@@ -27,10 +28,10 @@ public class BaseballNumbers {
     private void isDistinct(String numbers) {
         int[] check = new int[10];
         for (char c : numbers.toCharArray()) {
-            if (check[c-ONE] == 1) {
+            if (check[c - ONE] == 1) {
                 throw new IllegalArgumentException(IS_NOT_DISTINCT);
             }
-            check[c-ONE]++;
+            check[c - ONE]++;
         }
     }
 
@@ -39,6 +40,7 @@ public class BaseballNumbers {
             throw new IllegalArgumentException(SIZE_EXCEPTION);
         }
     }
+
     private void isNumber(String numbers) {
         for (int i = 0; i < numbers.length(); i++) {
             char num = numbers.charAt(i);
