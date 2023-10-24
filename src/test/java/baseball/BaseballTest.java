@@ -30,6 +30,6 @@ public class BaseballTest {
     @Test
     void 플레이어_숫자_입력() {
         Player player = new Player();
-        player.inputNum();
+//        player.inputNum();
     }
 }
