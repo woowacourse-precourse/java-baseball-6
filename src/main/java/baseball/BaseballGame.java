@@ -19,7 +19,7 @@ public class BaseballGame {
     }
 
     private static void newGame() {
-        Computer computer = new Computer();
+        Computer computer = Computer.create();
         String hint;
         do {
             System.out.print("숫자를 입력해주세요 : ");
