@@ -45,8 +45,7 @@ public class Referee {
 
         declare(ball, strike);
 
-        if (strike == 3) return true;
-        return false;
+        return strike == 3;
     }
 
     private void declare(int ball, int strike) {
@@ -58,6 +57,7 @@ public class Referee {
             System.out.println("낫싱");
             return;
         }
+
         StringBuilder print = new StringBuilder();
         if (ball > 0) {
             print.append(String.format("%d볼 ", ball));
