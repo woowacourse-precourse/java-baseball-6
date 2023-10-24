@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,4 +49,16 @@ public class ValidatorTest {
         String validInput = "122";
         assertFalse(Validator.validateInputWithDifferentDigit(validInput));
     }
+
+    @Test
+    @DisplayName("게임중 잘못된 입력의 경우 에외가 발생한다.")
+    void 게임중_플레이어_잘못된_입력_예외발생() {
+        String invalidInput = "";
+        assertThatThrownBy(() ->
+                Validator.validateUserInput(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class
+                );
+    }
+
+
 }
