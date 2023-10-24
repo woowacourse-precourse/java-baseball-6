@@ -16,6 +16,8 @@ public enum Prompt {
             return numberOfStrikes + STRIKE.ko;
         } else if (numberOfBalls != 0 && numberOfStrikes == 0) {
             return numberOfBalls + BALL.ko;
+        } else if (numberOfBalls == 0 && numberOfStrikes == 0) {
+            return NOTHING.ko;
         }
         return numberOfBalls + BALL.ko + " " + numberOfStrikes + STRIKE.ko;
     }

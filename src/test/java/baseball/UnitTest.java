@@ -185,5 +185,14 @@ public class UnitTest {
                 assertEquals("2볼 1스트라이크", result);
             }
         }
+
+        @Test
+        void 볼과_스트라이크가_모두_없는_경우_낫싱() {
+            String targetNumber = "123";
+            String input = "456";
+            String result = computer.evaluate(input, targetNumber);
+
+            assertEquals("낫싱", result);
+        }
     }
 }
