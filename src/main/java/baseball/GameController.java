@@ -40,10 +40,13 @@ public class GameController {
 
     public void isStarted(String input) {
         if (input.equals("1")) {
-           isStarted = true;
+            isStarted = true;
+            return;
         } else if (input.equals("2")) {
             isStarted = false;
+            return;
         }
+        throw new IllegalArgumentException();
     }
 
     public void generateComputerNumber() {
@@ -119,7 +122,7 @@ public class GameController {
         } else if (ball == 0) {
             gameView.printMessage(strike + GameModel.STRIKE);
         } else {
-            gameView.printMessage(ball + "볼 " + strike + "스트라이크");
+            gameView.printStrikeAndBall(strike, ball);
         }
     }
 
