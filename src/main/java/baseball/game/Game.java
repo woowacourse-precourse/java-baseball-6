@@ -2,7 +2,6 @@ package baseball.game;
 
 import baseball.people.Pitcher;
 import baseball.people.preparation.Referee;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     private final Pitcher pitcher = Pitcher.enter();
@@ -25,9 +24,7 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             matchStart(0, 0, 0);
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-        } while (pitcher.restart(Console.readLine()));
-        Console.close();
+        } while (pitcher.restart());
     }
 
     private void matchStart(int a, int b, int c) {
@@ -35,8 +32,7 @@ public class Game {
         int[] pitch;
         boolean strikeOut;
         do {
-            System.out.print("숫자를 입력해주세요 : ");
-            pitch = pitcher.pitch(Console.readLine());
+            pitch = pitcher.pitch();
             strikeOut = referee.strikeOut(pitch);
         } while (!strikeOut);
     }

@@ -1,21 +1,20 @@
 package baseball.people;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Pitcher {
 
     Pitcher() {
     }
 
-    /** Pitcher 객체를 생성하는 정적 팩토리 메서드 */
     public static Pitcher enter() {
         return new Pitcher();
     }
 
-    /**
-     * String 객체가 유효한 입력인지 확인하고,
-     * 유효하지 않다면 IllegalArgumentException 예외를 던진다.
-     * 유효하다면 3자리 정수 배열로 바꿔서 반환한다.
-     */
-    public int[] pitch(String input) {
+    public int[] pitch() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
         if (!isValidInput(input)) {
             throw new IllegalArgumentException();
         }
@@ -27,16 +26,14 @@ public class Pitcher {
         return numbers;
     }
 
-    /**
-     * String 객체가 1 또는 2인지에 따라
-     * 재시작과 관련된 boolean 값을 반환한다.
-     * 잘못된 입력이 들어왔다면 IllegalArgumentException 예외를 던진다.
-     */
-    public boolean restart(String input) {
+    public boolean restart() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+        String input = Console.readLine();
         if (input.equals("1")) {
             return true;
         }
         if (input.equals("2")) {
+            Console.close();
             return false;
         }
 
