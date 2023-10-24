@@ -39,4 +39,11 @@ public class CompareNumber {
     public void computeBallWithoutStrike() {
         ball = ball - strike;
     }
+
+    public boolean isStrikeThree() {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
 }
