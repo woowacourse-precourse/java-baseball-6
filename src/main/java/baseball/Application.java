@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -51,12 +50,8 @@ public class Application {
         }
 
         // 범위 밖의 숫자나 문자를 입력한 경우
-        int[] nums = Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
-        for (int i = 0; i < 3; i++) {
-            int num = nums[i];
-            if (!(num >= 1 && num <= 9)) {
-                throw new IllegalArgumentException();
-            }
+        if (!(input.replaceAll("[1-9]+", "").equals(""))) {
+            throw new IllegalArgumentException();
         }
 
         //중복된 수를 입력한 경우
