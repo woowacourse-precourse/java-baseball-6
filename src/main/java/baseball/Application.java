@@ -2,12 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-public class Application {
+public class Application extends NsTest {
+
 
   private static int falseRandSix() {
     int isRandomNum = Randoms.pickNumberInRange(1, 9);
@@ -95,22 +99,31 @@ public class Application {
           if (num == st && st == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("새로운 게임을 시작하려면 1, 종료하려면 2를 입력하세요");
-            String replay = Console.readLine();
-            /*System.out.println(replay);*/
-            switch (replay) {
-              case "1":
-                continue whileLoop;
-              case "2":
-                userChat = Randoms.pickUniqueNumbersInRange(1,9,3)
-                    .stream().map(String::valueOf)
-                    .collect(Collectors.joining());
-                break;
+            try {
+              String replay = Console.readLine();
+              /*System.out.println(replay);*/
+              switch (replay) {
+                case "1":
+                  continue whileLoop;
+                case "2":
+                  if (replay != null) {NoSuchElementException e;}
+                  userChat = Randoms.pickUniqueNumbersInRange(1, 9, 3)
+                      .stream().map(String::valueOf)
+                      .collect(Collectors.joining());
+                  break;
+
+              }
+            }catch (NoSuchElementException e){
+              break ;
             }
           }
         }
       }catch (IllegalArgumentException e){
         e.getMessage();
       }
-    }
+    } // while의 끝
   }
+  @Test
+  public void runMain() {AllForOne.main(new String[]{});};
+
 }

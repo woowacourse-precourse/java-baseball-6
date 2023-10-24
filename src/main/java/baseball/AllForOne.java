@@ -6,15 +6,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllForOne extends Application{
+public class AllForOne {
 
-  private static List<Integer> list(){
-    List<Integer> Computer =
-        Randoms.pickUniqueNumbersInRange(1,9,3);
-    System.out.println(Computer);
-    return Computer;
+
+  protected static List<Integer> list(){
+  List<Integer> Computer =
+      Randoms.pickUniqueNumbersInRange(1,9,3);
+  System.out.println(Computer);
+  return Computer;
   }
-  public static void main(String[] args) {
+  protected static void main(String[] args) {
 
     System.out.println("숫자 야구 게임을 시작합니다");
     List<Integer> Computer = list();
