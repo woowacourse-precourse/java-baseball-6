@@ -6,6 +6,25 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+class QueryResult {
+    private final int ball;
+    private final int strike;
+
+    QueryResult(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+}
+
+
 public class Game {
     private final List<Integer> answer;
 
@@ -16,7 +35,7 @@ public class Game {
     public void run() {
         while (true) {
             List<Integer> query = this.askQuery();
-            int[] result = this.judge(query);
+            QueryResult result = this.judge(query);
             this.printResult(result);
             if (this.isCorrect(result)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -53,7 +72,7 @@ public class Game {
         return query;
     }
 
-    private int[] judge(List<Integer> query) {
+    private QueryResult judge(List<Integer> query) {
         int[] result = {0, 0};
 
         // Ball judgement
@@ -61,32 +80,32 @@ public class Game {
         Set<Integer> querySet = new HashSet<>(query);
 
         querySet.retainAll(answerSet);
-        result[1] = querySet.size();
+        result[0] = querySet.size();
 
         // Strike judgement
         for (int i = 0; i < 3; i++) {
             if (query.get(i).equals(this.answer.get(i))) {
-                result[0] += 1;
-                result[1] -= 1;
+                result[0] -= 1;
+                result[1] += 1;
             }
         }
 
-        return result;
+        return new QueryResult(result[0], result[1]);
     }
 
-    private void printResult(int[] result) {
-        if (result[0] > 0 && result[1] > 0) {
-            System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
-        } else if (result[0] > 0) {
-            System.out.println(result[0] + "스트라이크");
-        } else if (result[1] > 0) {
-            System.out.println(result[1] + "볼");
+    private void printResult(QueryResult result) {
+        if (result.getBall() > 0 && result.getStrike() > 0) {
+            System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
+        } else if (result.getStrike() > 0) {
+            System.out.println(result.getStrike() + "스트라이크");
+        } else if (result.getBall() > 0) {
+            System.out.println(result.getBall() + "볼");
         } else {
             System.out.println("낫싱");
         }
     }
 
-    private boolean isCorrect(int[] result) {
-        return result[0] == 3;
+    private boolean isCorrect(QueryResult result) {
+        return result.getStrike() == 3;
     }
 }
