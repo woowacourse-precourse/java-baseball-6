@@ -25,9 +25,11 @@ public class Computer {
         int ball = 0;
 
         for(int i = 0; i<computer.size(); i++){
-            if(! computer.contains(user.get(i))) continue;
-            if(computer.get(i) == user.get(i)) strike++;
-            else ball++;
+            int currentUser = user.get(i);
+            int currentComputer = computer.get(i);
+            if(! computer.contains(currentUser)) continue;
+            if(currentComputer == currentUser) strike++;
+            else if(currentComputer != currentUser) ball++;
         }
 
         BallCount ballCount = new BallCount(strike, ball);
