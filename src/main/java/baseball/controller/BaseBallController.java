@@ -9,14 +9,17 @@ public class BaseBallController {
 
     private static final Numbers PLAYER_NUMBERS = new Numbers();
     private static final Numbers ANSWER_NUMBERS = new Numbers();
+    private static final OutputView OUTPUT_VIEW = new OutputView();
+    private static final InputView INPUT_VIEW = new InputView();
     private static final RandomNumberGenerator RANDOM_NUMBER_GENERATOR = new RandomNumberGenerator();
     private static final InputValidator INPUT_VALIDATOR = new InputValidator();
     private static final PlayerInputParser PLAYER_INPUT_PARSER = new PlayerInputParser();
     private static final String BALL = BaseBallConstants.BALL;
     private static final String STRIKE = BaseBallConstants.STRIKE;
     private static final String NOTHING = BaseBallConstants.NOTHING;
-    private static final OutputView OUTPUT_VIEW = new OutputView();
-    private static final InputView INPUT_VIEW = new InputView();
+
+    private static final String CONTINUE_NUMBER = BaseBallConstants.CONTINUE_NUMBER;
+    private static final String GAME_TERMINATE_NUMBER = BaseBallConstants.GAME_TERMINATE_NUMBER;
     private int ballCount;
     private int strikeCount;
     private String playerInput;
@@ -105,9 +108,9 @@ public class BaseBallController {
     }
 
     private void ChooseGameRepeatOrQuit() {
-        if (playerInput.equals("1")) {
+        if (playerInput.equals(CONTINUE_NUMBER)) {
             restartGame();
-        } else if (playerInput.equals("2")) {
+        } else if (playerInput.equals(GAME_TERMINATE_NUMBER)) {
             endGame();
         }
     }
