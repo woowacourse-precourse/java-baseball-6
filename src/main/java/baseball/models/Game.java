@@ -2,6 +2,8 @@ package baseball.models;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import baseball.utils.Utils;
+
 public class Game {
 
     private boolean status; // 게임 진행 여부
@@ -25,12 +27,16 @@ public class Game {
     }
 
     // 사용자에게 숫자 입력을 요청하는 메소드
-    public String askForGuess() {
+    public String askForGuess(int length) {
         String result = "";
-
-        System.out.print("숫자를 입력해주세요 : ");
-        result = Console.readLine();
-
+        try {
+            System.out.print("숫자를 입력해주세요 : ");
+            result = Console.readLine();
+            Utils.validateInputValue(result, length);
+        } catch (IllegalArgumentException e) {
+            System.out.println("입력이 잘못되었습니다.");
+            exit(2);
+        }
         return result;
     }
 
