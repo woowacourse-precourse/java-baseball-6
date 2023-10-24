@@ -33,4 +33,13 @@ class InputValidatorTest {
         );
     }
 
+    @Test
+    @DisplayName("입력 오류 숫자 이외 문자 입력 : 특수문자_1")
+    void 사용자_입력_오류3_1() {
+        String userInput = "3.1";
+        assertThrows(IllegalArgumentException.class,
+                () -> InputValidator.checkUserBallInput(userInput)
+        );
+    }
+
 }
