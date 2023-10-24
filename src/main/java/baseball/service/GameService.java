@@ -26,7 +26,7 @@ public class GameService {
 
 	public boolean isReplay(final String replayCommandInput) {
 		GameCommand.validate(replayCommandInput);
-		return replayCommandInput.equals(GameCommand.REPLAY.getCommandValue());
+		return GameCommand.isReplayCommand(replayCommandInput);
 	}
 
 }

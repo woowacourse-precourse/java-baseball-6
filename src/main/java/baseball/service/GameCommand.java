@@ -12,6 +12,10 @@ public enum GameCommand {
 		this.commandValue = commandValue;
 	}
 
+	public static boolean isReplayCommand(final String replayCommandInput) {
+		return replayCommandInput.equals(REPLAY.commandValue);
+	}
+
 	public String getCommandValue() {
 		return commandValue;
 	}
