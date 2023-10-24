@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 /**
  * 볼과 스트라이크의 개수를 관리하는 클래스입니다.

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.util;
+
+import baseball.common.GameConstants;
 
 /**
  * 입력 데이터의 유효성을 검사하는 유틸리티 클래스입니다.

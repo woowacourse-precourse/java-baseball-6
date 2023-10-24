@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 /**
  * 게임과 관련된 메시지를 출력하는 유틸리티 클래스입니다.

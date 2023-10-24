@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.util.GamePrinter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;

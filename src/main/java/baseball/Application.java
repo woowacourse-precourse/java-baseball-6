@@ -1,5 +1,11 @@
 package baseball;
 
+import baseball.game.GameRunner;
+import baseball.player.Computer;
+import baseball.player.Person;
+import baseball.util.generator.NsRandomGenerator;
+import baseball.util.generator.RandomGenerator;
+
 /**
  * 애플리케이션의 시작점입니다. 필요한 객체를 생성하고 게임을 실행합니다.
  */

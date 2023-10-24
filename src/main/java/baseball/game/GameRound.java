@@ -1,5 +1,10 @@
-package baseball;
+package baseball.game;
 
+import baseball.player.Computer;
+import baseball.common.GameConstants;
+import baseball.util.GamePrinter;
+import baseball.util.InputValidator;
+import baseball.player.Person;
 import camp.nextstep.edu.missionutils.Console;
 
 /**

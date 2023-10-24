@@ -1,4 +1,8 @@
-package baseball;
+package baseball.game;
+
+import baseball.player.Computer;
+import baseball.util.GamePrinter;
+import baseball.player.Person;
 
 /**
  * 게임을 실행하는 클래스입니다.

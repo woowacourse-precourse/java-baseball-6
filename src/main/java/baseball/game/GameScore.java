@@ -1,4 +1,8 @@
-package baseball;
+package baseball.game;
+
+import baseball.player.Computer;
+import baseball.common.GameConstants;
+import baseball.player.Person;
 
 /**
  * 게임 점수를 계산하는 클래스입니다.
