@@ -41,6 +41,23 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("게임 결과에 따른 문자열을 정상적으로 반환한다. ex) 낫싱, 1볼 1스트라이크")
+    @Test
+    void returnCorrectAnswer() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("456", "145", "245",
+                            "124", "234", "312",
+                            "324", "321", "123", "2");
+                    assertThat(output()).contains(
+                            "낫싱", "1스트라이크", "1볼",
+                            "2스트라이크", "2볼", "3볼",
+                            "1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
     @DisplayName("1~9 사이의 숫자가 아닐 경우 예외를 발생시킨다.")
     @Test
     void insertWrongNumber() {
