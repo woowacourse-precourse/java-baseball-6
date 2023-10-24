@@ -1,9 +1,19 @@
 package baseball.util;
 
+import java.util.List;
+import java.util.TreeSet;
+
 import static baseball.util.Constant.*;
 
 public class InputValidate {
 
+    public static void validateNumberFormat(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+    }
     /**
      * 입력값의 길이를 검증
      *
@@ -27,7 +37,7 @@ public class InputValidate {
     }
 
     /**
-     * 게임종료 시 1 또는 2인지 검증
+     * 게임종료 시 입력 값이 1 또는 2인지 검증
      */
     public static int validateRestartGame(int number) {
         if (number != FINISH && number != RESTART) {
@@ -35,5 +45,16 @@ public class InputValidate {
         }
 
         return number;
+    }
+
+    /**
+     * 중복된 숫자가 있는지 검증
+     * @param inputNumbers
+     */
+    public static void validateDuplicateNumbers(List<Integer> inputNumbers) {
+        TreeSet<Integer> treeSet = new TreeSet<>(inputNumbers);
+        if(treeSet.size() != NUMBER_THREE) {
+            throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
+        }
     }
 }
