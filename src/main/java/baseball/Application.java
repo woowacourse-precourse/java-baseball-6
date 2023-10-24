@@ -44,7 +44,7 @@ public class Application {
 
             if (result == true){
                 System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String str4 = readLine();
 
@@ -121,7 +121,7 @@ public class Application {
                                 if (choice == 1) {
                                     Application.game();
                                 } else {
-                                    break;
+
                                 }
                             } catch (NumberFormatException ex4) {
                                 ex4.printStackTrace();
