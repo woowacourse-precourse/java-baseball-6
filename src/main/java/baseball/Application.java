@@ -35,18 +35,7 @@ public class Application {
             BB.playgame(promp);
             
             //결과 출력
-            if (BB.strike == 0 && BB.ball == 0) {
-                System.out.println("낫싱");
-            } else if (BB.strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히였습니다! 게임종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            } else if (BB.strike == 0 && BB.ball != 0) {
-                System.out.println(BB.ball + "볼");
-            } else if (BB.strike != 0 && BB.ball == 0) {
-                System.out.println(BB.strike + "스트라이크");
-            } else if (BB.strike != 0 && BB.ball != 0) {
-                System.out.println(BB.ball + "볼 " + BB.strike + "스트라이크");
-            }
+            BB.printresult();
 
         }
     }
