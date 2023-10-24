@@ -37,10 +37,10 @@ public class PlayGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String retryInput = Console.readLine();
 
-        if (retryInput.equals("1")) {
+        if ("1".equals(retryInput)) {
             return true;
         }
-        if (retryInput.equals("2")) {
+        if ("2".equals(retryInput)) {
             return false;
         }
         throw new IllegalArgumentException("입력값을 1 또는 2만 입력하세요.");
