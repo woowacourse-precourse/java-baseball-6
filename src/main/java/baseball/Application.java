@@ -64,11 +64,11 @@ public class Application {
 
     private static int getBallCount(List<Integer> randomNumbers, List<Integer> inputNumbers) {
         int ballCount = 0;
-        for (int randomNumberIndex=0; randomNumberIndex<3; randomNumberIndex++){
-            for (int inputNumberIndex=0; inputNumberIndex<3; inputNumberIndex++){
-                if ((randomNumberIndex!=inputNumberIndex) && (randomNumbers.get(randomNumberIndex).equals(inputNumbers.get(inputNumberIndex)))) {
-                    ballCount++;
-                }
+        for (int index=0; index<3; index++){
+            boolean isSameNumber = randomNumbers.get(index).equals(inputNumbers.get(index));
+            boolean hasInputNumber = randomNumbers.contains(inputNumbers.get(index));
+            if (!isSameNumber && hasInputNumber) {
+                ballCount++;
             }
         }
         return ballCount;
