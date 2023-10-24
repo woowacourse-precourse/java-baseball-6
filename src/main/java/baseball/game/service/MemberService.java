@@ -25,7 +25,7 @@ public class MemberService {
         return instance;
     }
 
-    public Member readUserNumber(String input) {
+    public Member saveUserNumber(String input) {
         if (!isInput(input)) {
             Console.close();
             throw new IllegalArgumentException(NumberBaseBallException.WRONG_NUMBER);
@@ -59,10 +59,10 @@ public class MemberService {
         return true;
     }
 
-    // 문자열 중 숫자만 HashSet으로 변경
+    // 문자열 중 0을 제외한 숫자만 HashSet으로 변경
     private HashSet<Integer> stringToIntegerHashSetOnlyNumber(String input) {
         return input.chars()
-                .filter(Character::isDigit)
+                .filter(ch -> Character.getNumericValue(ch) != 0 && Character.isDigit(ch))
                 .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toCollection(HashSet::new));

@@ -3,8 +3,8 @@ package baseball.game.entity;
 import java.util.Objects;
 
 public class GameScore {
-    private int strikeCount = 0;
-    private int ballCount = 0;
+    private int strikeCount;
+    private int ballCount;
 
     public GameScore(int strikeCount, int ballCount) {
         this.strikeCount = strikeCount;

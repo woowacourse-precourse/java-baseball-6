@@ -16,13 +16,13 @@ class MemberServiceTest {
     MemberService memberService = MemberService.getInstance(memberRepository);
 
     @Test
-    @DisplayName("서로 다른 3자리 숫자를 입력하면 회원 저장소에 입력값을 List<Integer> 타입으로 저장한다.")
+    @DisplayName("0을 제외한 서로 다른 3자리 숫자를 입력하면 회원 저장소에 입력값을 List<Integer> 타입으로 저장한다.")
     void readUserNumber() {
         // given
         String input = "123";
 
         // when
-        Member member = memberService.readUserNumber(input);
+        Member member = memberService.saveUserNumber(input);
 
         // then
         assertAll(
@@ -34,12 +34,24 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("문자를 포함하여 입력하면 예외가 발생한다.")
+    void readUserNumberExceptionInputWithZero() {
+        // given
+        String input = "023";
+
+        // when // then
+        assertThatThrownBy(() -> memberService.saveUserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NumberBaseBallException.WRONG_NUMBER);
+    }
+
+    @Test
+    @DisplayName("문자를 포함하여 입력하면 예외가 발생한다.")
     void readUserNumberExceptionInputWithString() {
         // given
         String input = "1a3";
 
         // when // then
-        assertThatThrownBy(() -> memberService.readUserNumber(input))
+        assertThatThrownBy(() -> memberService.saveUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NumberBaseBallException.WRONG_NUMBER);
     }
@@ -51,7 +63,7 @@ class MemberServiceTest {
         String input = "113";
 
         // when // then
-        assertThatThrownBy(() -> memberService.readUserNumber(input))
+        assertThatThrownBy(() -> memberService.saveUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NumberBaseBallException.WRONG_NUMBER);
     }
@@ -63,7 +75,7 @@ class MemberServiceTest {
         String input = "1234";
 
         // when // then
-        assertThatThrownBy(() -> memberService.readUserNumber(input))
+        assertThatThrownBy(() -> memberService.saveUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NumberBaseBallException.WRONG_NUMBER);
     }
@@ -75,7 +87,7 @@ class MemberServiceTest {
         String input = "12";
 
         // when // then
-        assertThatThrownBy(() -> memberService.readUserNumber(input))
+        assertThatThrownBy(() -> memberService.saveUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NumberBaseBallException.WRONG_NUMBER);
     }

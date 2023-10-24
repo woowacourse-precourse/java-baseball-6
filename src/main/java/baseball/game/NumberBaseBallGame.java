@@ -70,7 +70,7 @@ public class NumberBaseBallGame {
         // 터미널에서 사용자의 입력값을 읽는다.
         String userNumber = Console.readLine();
         // 사용자가 입력한 숫자 저장
-        Member member = memberService.readUserNumber(userNumber);
+        Member member = memberService.saveUserNumber(userNumber);
 
         // 게임 생성
         Computer computer = computerService.createGame(computerId);
