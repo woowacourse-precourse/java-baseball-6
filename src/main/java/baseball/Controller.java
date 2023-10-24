@@ -3,7 +3,7 @@ package baseball;
 import static baseball.utils.Constants.PROGRAM_EXIT;
 import static baseball.utils.Constants.RESTART_GAME;
 import static baseball.utils.ErrorMessage.STATUS_OUT_OF_RANGE_ERROR_MESSAGE;
-import static baseball.utils.GameMessage.RESTART_OR_EXIT_REQUEST_MESSAGE;
+import static baseball.utils.GameMessage.ASK_RESTART_OR_EXIT_REQUEST_MESSAGE;
 import static baseball.utils.GameMessage.START_GAME_MESSAGE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -18,7 +18,7 @@ public class Controller {
         do {
             player.init();
             player.play();
-            printRestartOrExitMessage();
+            printAskRestartOrExitMessage();
             status = readLine();
             validateStatusRange(status);
         } while (RESTART_GAME.equals(status));
@@ -28,8 +28,8 @@ public class Controller {
         System.out.println(START_GAME_MESSAGE);
     }
 
-    private void printRestartOrExitMessage() {
-        System.out.println(RESTART_OR_EXIT_REQUEST_MESSAGE);
+    private void printAskRestartOrExitMessage() {
+        System.out.println(ASK_RESTART_OR_EXIT_REQUEST_MESSAGE);
     }
 
     private void validateStatusRange(String status) {
