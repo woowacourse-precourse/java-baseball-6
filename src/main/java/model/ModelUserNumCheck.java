@@ -1,5 +1,13 @@
 package model;
 
+import static constant.Constants.DUPLICATE_NUMBER;
+import static constant.Constants.INVALID_NUMBER;
+import static constant.Constants.MAX_NUMBER;
+import static constant.Constants.MIN_NUMBER;
+import static constant.Constants.NOT_NUMBER;
+import static constant.Constants.NUMBER_LENGTH;
+import static constant.Constants.WRONG_LENGTH;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,14 +23,6 @@ import java.util.Set;
  */
 
 public class ModelUserNumCheck {
-
-    private static final String NOT_NUMBER = "notNum";
-    private static final String WRONG_LENGTH = "wrongLen";
-    private static final String DUPLICATE_NUMBER = "duplicate";
-    private static final String INVALID_NUMBER = "invalidNum";
-    private static final int NUMBER_LENGTH = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
 
     /**
      * 입력받은 문자열을 정답과 비교할 수 있게 변환

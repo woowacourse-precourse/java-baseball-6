@@ -1,5 +1,9 @@
 package model;
 
+import static constant.Constants.MAX_NUMBER;
+import static constant.Constants.MIN_NUMBER;
+import static constant.Constants.NUMBER_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +17,6 @@ import java.util.List;
  * @since 2023-10-25
  */
 public class ModelCreateRandomNumber {
-
-    private static final int NUMBER_LENGTH = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
 
     /**
      * 3자리 난수 생성

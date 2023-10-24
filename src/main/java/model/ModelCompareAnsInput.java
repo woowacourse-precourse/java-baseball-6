@@ -1,5 +1,9 @@
 package model;
 
+import static constant.Constants.BALL;
+import static constant.Constants.NUMBER_LENGTH;
+import static constant.Constants.STRIKE;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -13,10 +17,6 @@ import java.util.Objects;
  */
 
 public class ModelCompareAnsInput {
-
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
-    private static final int NUMBER_LENGTH = 3;
 
     /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산

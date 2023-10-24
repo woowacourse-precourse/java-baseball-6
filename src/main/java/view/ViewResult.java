@@ -1,5 +1,9 @@
 package view;
 
+import static constant.Constants.BALL;
+import static constant.Constants.NUMBER_LENGTH;
+import static constant.Constants.STRIKE;
+
 /**
  * ViewResult.java
  * <p>
@@ -11,9 +15,6 @@ package view;
 
 public class ViewResult {
 
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
-    private static final int NUMBER_LENGTH = 3;
 
     public static void view(int[] result) {
 

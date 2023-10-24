@@ -1,5 +1,10 @@
 package model;
 
+import static constant.Constants.DUPLICATE_NUMBER;
+import static constant.Constants.INVALID_NUMBER;
+import static constant.Constants.NOT_NUMBER;
+import static constant.Constants.WRONG_LENGTH;
+
 /**
  * ModelErrorThrow.java
  * <p>
@@ -10,11 +15,6 @@ package model;
  */
 
 public class ModelErrorThrow {
-
-    private static final String NOT_NUMBER = "notNum";
-    private static final String WRONG_LENGTH = "wrongLen";
-    private static final String DUPLICATE_NUMBER = "duplicate";
-    private static final String INVALID_NUMBER = "invalidNum";
 
     /**
      * 예외 던지기

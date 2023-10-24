@@ -1,5 +1,9 @@
 package model;
 
+import static constant.Constants.END_NUMBER;
+import static constant.Constants.NOT_NUMBER;
+import static constant.Constants.RESTART_NUMBER;
+
 /**
  * ModelRestartOrEnd.java
  * <p>
@@ -10,9 +14,6 @@ package model;
  */
 
 public class ModelRestartOrEnd {
-
-    private static final int RESTART_NUMBER = 1;
-    private static final int END_NUMBER = 2;
 
     /**
      * 재시작 여부 입력값 이용해 결과 출력
@@ -41,7 +42,7 @@ public class ModelRestartOrEnd {
         try {
             num = Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            ModelErrorThrow.errorThrow("notNum");
+            ModelErrorThrow.errorThrow(NOT_NUMBER);
         }
 
         return num;
