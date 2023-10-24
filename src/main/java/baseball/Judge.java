@@ -13,48 +13,48 @@ public class Judge {
         printRoundResult(result);
     }
 
-    public void announceEndGame() {
+    public void announceGameOver() {
         printEndGameComment();
     }
 
-    public boolean checkPlayerWantRestart(Player player) {
+    public boolean checkGameOver(Result result) {
+        return result.isAllStrike();
+    }
+
+    public boolean checkRestart(Player player) {
         printRestartGameComment();
         return player.chooseFinishGame();
     }
 
     public Result makeResult(List<Integer> playerNumbers, List<Integer> answer) {
-        int duplicateCount = countDuplicateIntegers(playerNumbers, answer);
-        int strikeCount = countStrike(playerNumbers, answer);
-        int ballCount = calculateBall(duplicateCount, strikeCount);
+        int duplicate = countDuplicateIntegers(playerNumbers, answer);
+        int strike = countStrike(playerNumbers, answer);
+        int ball = calculateBall(duplicate, strike);
 
-        return new Result(strikeCount, ballCount);
+        return new Result(strike, ball);
     }
 
     private int countDuplicateIntegers(List<Integer> playerNumbers, List<Integer> answer) {
-        int duplicateCount = 0;
+        int duplicate = 0;
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (answer.contains(playerNumbers.get(i))) {
-                duplicateCount++;
+                duplicate++;
             }
         }
-        return duplicateCount;
+        return duplicate;
     }
 
     private int countStrike(List<Integer> playerNumbers, List<Integer> answer) {
-        int strikeCount = 0;
+        int strike = 0;
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (answer.get(i) == playerNumbers.get(i)) {
-                strikeCount++;
+                strike++;
             }
         }
-        return strikeCount;
+        return strike;
     }
 
-    private int calculateBall(int duplicateCount, int strikeCount) {
-        return duplicateCount - strikeCount;
-    }
-
-    public boolean checkGameIsFinish(Result result) {
-        return result.isAllStrike();
+    private int calculateBall(int duplicate, int strike) {
+        return duplicate - strike;
     }
 }
