@@ -1,16 +1,13 @@
 package baseball.service;
 
-import baseball.utils.MessageUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserInputService {
-    MessageUtils messageUtils = new MessageUtils();
 
     public List<Integer> userInput(int size) {
-        messageUtils.inputUserNumberMessage();
         String inputStr = Console.readLine();
 
         return getIntegerList(inputStr, size);
