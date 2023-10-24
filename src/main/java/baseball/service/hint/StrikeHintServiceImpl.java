@@ -2,12 +2,13 @@ package baseball.service.hint;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
+import baseball.domain.hint.HintItem;
 import baseball.domain.hint.Strike;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class StrikeHintServiceImpl implements HintItemService<Strike> {
+public class StrikeHintServiceImpl implements HintItemService {
 
     private static final StrikeHintServiceImpl strikeService = new StrikeHintServiceImpl();
 
@@ -19,6 +20,12 @@ public class StrikeHintServiceImpl implements HintItemService<Strike> {
 
     }
 
+    @Override
+    public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
+        return null;
+    }
+
+    @Override
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
@@ -32,11 +39,4 @@ public class StrikeHintServiceImpl implements HintItemService<Strike> {
 
         return count;
     }
-
-    public boolean active(Strike strike) {
-        if (strike.getCount() > 0 ) {
-            return true;
-        } return false;
-    }
-
 }
