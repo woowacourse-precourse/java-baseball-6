@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import java.util.List;
-
 public class Referee {
 
 	private final Numbers answerNumbers;
@@ -20,5 +18,17 @@ public class Referee {
 			position++;
 		}
 		return strike;
+	}
+
+	public int countBall(Numbers playerNumbers) {
+		int position = 0;
+		int ball = 0;
+		for(int i = 0; i < 3; i++) {
+			if(answerNumbers.isSameNumber(playerNumbers,position)) {
+				ball++;
+			}
+			position++;
+		}
+		return ball;
 	}
 }
