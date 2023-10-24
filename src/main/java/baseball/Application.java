@@ -23,12 +23,14 @@ public class Application {
             }
 
             inner : while (true) {
-                String myNum = "";
+                int myIntNum = 0;
                 try {
-                    myNum = br.readLine();
+                    myIntNum= Integer.parseInt(br.readLine());
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    throw new IllegalArgumentException("값을 잘못입력하였습니다.");
                 }
+
+                String myNum = "" + myIntNum;
 
                 if (myNum.length() != 3) {
                     throw new IllegalArgumentException("세 자리수를 입력하세요");
