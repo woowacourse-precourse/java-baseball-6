@@ -25,14 +25,14 @@ public class gameManage implements gameManageInterface {
     }
 
     public List<Integer> selectComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < gameConstant.NUMBER_MAXSIZE) {
+        List<Integer> computerNumbers = new ArrayList<>();
+        while (computerNumbers.size() < gameConstant.NUMBER_MAXSIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
-        return computer;
+        return computerNumbers;
     }
 
     public Integer judgeNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
@@ -70,11 +70,11 @@ public class gameManage implements gameManageInterface {
     }
 
     public void play() {
-        List<Integer> computerNumber = selectComputerNumber();
+        List<Integer> computerNumbers = selectComputerNumber();
         while (true) {
-            List<Integer> playerNumber = playerService.selectPlayerNumber();
-            Integer isMatched = judgeNumber(playerNumber, computerNumber);
-            if (isMatched == gameConstant.MATCH) {
+            List<Integer> playerNumbers = playerService.selectPlayerNumber();
+            Integer matchResult = judgeNumber(playerNumbers, computerNumbers);
+            if (matchResult == gameConstant.MATCH) {
                 GameMessage.numberMatchMessage();
                 break;
             }
