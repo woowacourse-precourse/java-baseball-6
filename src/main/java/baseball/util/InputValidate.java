@@ -7,6 +7,11 @@ import static baseball.util.Constant.*;
 
 public class InputValidate {
 
+    /**
+     * 입력값이 숫자가 아닌 문자 또는 특수문자일경우
+     *
+     * @param input
+     */
     public static void validateNumberFormat(String input) {
         try {
             Integer.parseInt(input);
