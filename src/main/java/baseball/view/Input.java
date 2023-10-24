@@ -29,6 +29,7 @@ public class Input {
     public int inputContinueGame() {
         String input = input();
         formValidation.isOnlyNumbers(input);
+        formValidation.isOnlyOneOrTwo(input);
 
         return Integer.parseInt(input);
     }

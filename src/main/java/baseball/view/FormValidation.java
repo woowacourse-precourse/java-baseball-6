@@ -13,4 +13,11 @@ public class FormValidation {
             throw new IllegalArgumentException(ErrorConstants.NOT_ONLY_THREE_NUMBERS_ERROR);
         }
     }
+
+    public void isOnlyOneOrTwo(String input) {
+        if (input.equals("1") || input.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException(ErrorConstants.NOT_ONLY_ONE_OR_TWO_ERROR);
+    }
 }
