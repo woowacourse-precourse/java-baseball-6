@@ -65,4 +65,8 @@ public class BaseballService {
         if(idx == temp) game.increaseStrikeCount();
         if(idx != temp && temp != -1) game.increaseBallCount();
     }
+
+    public void endGame() {
+        systemOutputMessage.showGameOverMessage();
+    }
 }

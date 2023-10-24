@@ -15,4 +15,8 @@ public class SystemOutputMessage {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
+
+    public void showGameOverMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
