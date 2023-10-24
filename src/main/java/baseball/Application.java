@@ -52,8 +52,7 @@ public class Application {
 
             // 입력값 유효성 검사
             if (!isValid(userInputArray)) {
-                System.out.println("1부터 9까지 서로 다른 세자리 숫자를 입력해주세요.");
-                continue;
+                throw new IllegalArgumentException();
             }
 
             // 스트라이크/볼 개수 검사
