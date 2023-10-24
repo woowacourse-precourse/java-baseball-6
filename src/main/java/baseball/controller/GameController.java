@@ -23,9 +23,10 @@ public class GameController {
         gameService.playGame();
     }
 
+    /* 게임을 종료하는 메소드 */
     public void endGame() {
-        boolean isEnd = gameService.endGame();
-        if(!isEnd) {
+        gameService.endGame();
+        if(gameService.checkRetryGame()){
             run();
         }
     }

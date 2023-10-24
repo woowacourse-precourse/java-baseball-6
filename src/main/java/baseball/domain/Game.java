@@ -48,4 +48,11 @@ public class Game {
         inputSet.add(input);
         return false;
     }
+
+    public void end() {
+        this.programNumbers = null;
+        this.inputSet = null;
+        this.strikeCount = 0;
+        this.ballCount = 0;
+    }
 }

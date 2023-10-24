@@ -27,6 +27,7 @@ public class GameService {
             validateInput(input);
             List<Integer> userNumbers = parseInput(input);
 
+            // 똑같은 입력 값이 들어오면 다시 입력 받도록 한다.
             if(game.checkDuplicatedInput(input)){
                 OutView.printDuplicatedInput();
                 continue;
@@ -37,20 +38,28 @@ public class GameService {
         }
     }
 
-    public boolean endGame() {
+    /**
+     * 현재 진행중인 게임을 종료한다.
+     */
+    public void endGame() {
+        game.end();
         OutView.printEndGame();
-        return askRetryGame();
     }
 
-    private boolean askRetryGame() throws IllegalArgumentException{
+    /**
+     * 사용자가 게임을 다시 시작할지, 종료할지 입력받는다.
+     * @return 게임을 다시 시작하면 true, 이대로 종료하면 false
+     * @throws IllegalArgumentException - 입력이 1 또는 2가 아닌 경우
+     */
+    public boolean checkRetryGame() throws IllegalArgumentException{
         InputView.requestInputRestart();
         String input = Console.readLine();
 
         if(input.equals(INPUT_RETRY_GAME)) {
-            return false;
+            return true;
         }
         if(input.equals(INPUT_END_GAME)) {
-            return true;
+            return false;
         }
 
         throw new IllegalArgumentException("1 또는 2가 아닙니다.");
