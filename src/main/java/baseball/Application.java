@@ -19,9 +19,15 @@ class ComputerNumber {
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+
+            computer = overlapCheck(computer, randomNumber);
+        }
+        return computer;
+    }
+
+    public List<Integer> overlapCheck(List<Integer> computer, int randomNumber) {
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
         }
         return computer;
     }
