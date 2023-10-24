@@ -8,6 +8,7 @@ public class PlayerNumber {
 
     public void setInputNumber(String inputNumber) {
         numberValidator.validateDigit(inputNumber);
+        numberValidator.validateRange(inputNumber);
 
         this.inputNumber = inputNumber;
     }
