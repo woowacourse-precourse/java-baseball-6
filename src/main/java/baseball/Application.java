@@ -94,5 +94,17 @@ public class Application {
         return new int[]{ball, strike};
     }
 
+    // 결과 출력
+    private static void printResult(int[] result) {
+        int ball = result[0];
+        int strike = result[1];
+
+        if (ball > 0 || strike > 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
+
 
 }
