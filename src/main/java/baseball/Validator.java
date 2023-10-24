@@ -37,7 +37,8 @@ public class Validator {
   }
 
   public void validateInputNumberOfRestartAndEnd(String number) {
-    if (!(number.equals(INPUT_RESTART_NUMBER) || number.equals(INPUT_END_NUMBER))) {
+    int intNumber = Integer.parseInt(number);
+    if (intNumber != INPUT_RESTART_NUMBER && intNumber != INPUT_END_NUMBER) {
       throw new IllegalArgumentException(INVALID_RESTART_AND_END_NUMBER);
     }
   }
