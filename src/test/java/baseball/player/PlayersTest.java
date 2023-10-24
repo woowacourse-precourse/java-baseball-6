@@ -54,7 +54,7 @@ public class PlayersTest {
         computerField.set(players, computer);
 
         // when
-        Result result = players.compareNumber();
+        Result result = players.compareNumbers();
 
         // then
         result.printResult();
@@ -80,7 +80,7 @@ public class PlayersTest {
         computerField.set(players, computer);
 
         // when
-        Result result = players.compareNumber();
+        Result result = players.compareNumbers();
 
         // then
         boolean isNothing = result.checkNothing();

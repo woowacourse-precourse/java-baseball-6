@@ -1,7 +1,7 @@
 package baseball.player;
 
 import baseball.util.Number;
-import baseball.util.Numbers;
+import baseball.util.Result;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public final class Computer extends Player {
@@ -21,9 +21,16 @@ public final class Computer extends Player {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         Number number = new Number(randomNumber);
 
-        numbers.checkDuplicate(number);
+        if (numbers.includeNumber(number) != -1) {
+            return null;
+        }
         number.checkValidate();
 
         return number;
+    }
+
+    @Override
+    public Result compareWith(Player other) {
+        return super.compareWith(other);
     }
 }

@@ -11,7 +11,9 @@ public class Numbers {
     }
 
     public void addNumber(Number number) {
-        this.numbers.add(number);
+        if (number != null) {
+            this.numbers.add(number);
+        }
     }
 
     public boolean validateSize() {
@@ -20,19 +22,22 @@ public class Numbers {
 
     public void checkDuplicate(Number number) {
         if (this.numbers.contains(number)) {
-            throw new IllegalArgumentException("Duplicate number " + number);
+            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
         }
     }
 
-    public int getFirstDigit() {
-        return 0;
+    public Result compareWith(Numbers other) {
+        return new NumbersComparator().compareWith(this, other);
     }
 
-    public int getSecondDigit() {
-        return 0;
+    public Number getNumber(int index) {
+        return numbers.get(index);
     }
 
-    public int getThirdDigit() {
-        return 0;
+    public int includeNumber(Number number) {
+        if (numbers.contains(number)) {
+            return numbers.indexOf(number);
+        }
+        return -1;
     }
 }

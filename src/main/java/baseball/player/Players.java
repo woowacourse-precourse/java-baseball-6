@@ -6,20 +6,17 @@ public class Players {
     private User user;
     private Computer computer;
 
-    public Players() {
-        this.user = new User();
-        this.computer = new Computer();
-    }
-
     public void createUserNumber() {
+        user = new User();
         user.createNumbers();
     }
 
     public void createComputerNumber() {
+        computer = new Computer();
         computer.createNumbers();
     }
 
-    public Result compareNumber() {
-        return null;
+    public Result compareNumbers() {
+        return user.compareWith(computer);
     }
 }

@@ -9,13 +9,23 @@ public class Inning {
 
     public Inning() {
         this.players = new Players();
+        this.result = null;
     }
 
     public void startInning() {
         players.createComputerNumber();
-        players.createUserNumber();
+
+        while (result == null || !result.isWin()) {
+            players.createUserNumber();
+
+            result = players.compareNumbers();
+
+            result.checkResult();
+        }
+        endInning();
     }
 
     private void endInning() {
+        result.printWin();
     }
 }

@@ -1,6 +1,7 @@
 package baseball.player;
 
 import baseball.util.Numbers;
+import baseball.util.Result;
 
 public sealed class Player permits User, Computer {
     protected Numbers numbers;
@@ -10,5 +11,9 @@ public sealed class Player permits User, Computer {
     }
 
     public void createNumbers() {
+    }
+
+    public Result compareWith(Player other) {
+        return this.numbers.compareWith(other.numbers);
     }
 }

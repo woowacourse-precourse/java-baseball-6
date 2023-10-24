@@ -1,6 +1,7 @@
 package baseball.player;
 
 import baseball.util.Number;
+import baseball.util.Result;
 import java.util.Scanner;
 
 public final class User extends Player {
@@ -43,5 +44,10 @@ public final class User extends Player {
         Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine().split("");
+    }
+
+    @Override
+    public Result compareWith(Player other) {
+        return super.compareWith(other);
     }
 }
