@@ -15,9 +15,7 @@ class TargetNumber {
         this.number[2] = c;
     }
 
-    /*
-    TargetNumber 객체를 생성하는 정적 팩토리 메서드.
-     */
+    /** TargetNumber 객체를 생성하는 정적 팩토리 메서드. */
     static TargetNumber generate(int a, int b, int c) {
         if (isValidNumber(a) && isValidNumber(b) && isValidNumber(c)) {
             return new TargetNumber(a, b, c);
@@ -25,12 +23,12 @@ class TargetNumber {
         return new TargetNumber();
     }
 
-    /*
-    TargetNumber 객체가
-    특정 숫자 num을 특정 위치 idx에 갖고 있는지 물어보는 메서드.
-    반환 값은 길이가 2인 boolean 타입 배열이다.
-    0 번째 원소는 숫자가 있는지 여부를 말하고,
-    1 번째 원소는 숫자가 있다면 위치도 맞는지 여부를 말한다.
+    /**
+     * TargetNumber 객체가
+     * 특정 숫자 num을 특정 위치 idx에 갖고 있는지 물어보는 메서드.
+     * 반환 값은 길이가 2인 boolean 타입 배열이다.
+     * 0 번째 원소는 숫자가 있는지 여부를 말하고,
+     * 1 번째 원소는 숫자가 있다면 위치도 맞는지 여부를 말한다.
      */
     boolean[] has(int num, int idx) {
         boolean[] check = new boolean[2];
