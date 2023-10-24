@@ -11,15 +11,10 @@ import java.util.List;
 public class Game {
     final private List<Integer> computer;
     final private List<Integer> user;
-    private Script script;
-    private Judgment judgment;
 
     public Game() {
         computer = new ArrayList<>();
         user = new ArrayList<>();
-
-        script = new Script();
-        judgment = new Judgment(computer, user);
     }
 
     private void createComputerNumber() {
@@ -43,7 +38,7 @@ public class Game {
         return false;
     }
 
-    public void checkBaseballNumberValid(String baseballNumber) {
+    public void checkBaseballNumber(String baseballNumber) {
         if (baseballNumber.length() == 3
                 && isNumber(baseballNumber.charAt(0))
                 && isNumber(baseballNumber.charAt(1))
@@ -56,7 +51,7 @@ public class Game {
 
     private void inputUserNumber() {
         String input = readLine();
-        checkBaseballNumberValid(input);
+        checkBaseballNumber(input);
 
         String[] userNumber = input.split("");
         user.clear();
@@ -79,6 +74,9 @@ public class Game {
     }
 
     public void play() {
+        Script script = new Script();
+        Judgment judgment = new Judgment();
+
         createComputerNumber();    //컴퓨터 난수 생성
         script.startGame();
 
@@ -86,7 +84,7 @@ public class Game {
             script.inputNumber();  //유저 - 숫자입력
             inputUserNumber();
 
-            judgment.judge();      //숫자 야구 판정
+            judgment.judge(computer, user);      //숫자 야구 판정
 
             if (judgment.isUserWin()) {
                 script.endGame();
@@ -98,6 +96,5 @@ public class Game {
                 }
             }
         }
-
     }
 }

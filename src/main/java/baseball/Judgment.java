@@ -3,24 +3,19 @@ package baseball;
 import java.util.List;
 
 public class Judgment {
-    final private List<Integer> computer;
-    final private List<Integer> user;
     private int strike;
     private int ball;
 
-    public Judgment(List<Integer> computer, List<Integer> user) {
-        this.computer = computer;
-        this.user = user;
-
-        initJudgment();
+    public Judgment() {
+        initializeJudgment();
     }
 
-    private void initJudgment() {
+    private void initializeJudgment() {
         strike = 0;
         ball = 0;
     }
 
-    public void judgeStrike() {
+    private void judgeStrike(List<Integer> computer, List<Integer> user) {
         for (int index = 0; index < 3; index++) {
             if (computer.get(index).equals(user.get(index))) {
                 strike += 1;
@@ -28,7 +23,7 @@ public class Judgment {
         }
     }
 
-    private boolean isBall(int currentIndex) {
+    private boolean isBall(int currentIndex, List<Integer> computer, List<Integer> user) {
         int userNumber = user.get(currentIndex);
 
         for (int index = 0; index < 3; index++) {
@@ -40,9 +35,9 @@ public class Judgment {
         return false;
     }
 
-    public void judgeBall() {
+    private void judgeBall(List<Integer> computer, List<Integer> user) {
         for (int index = 0; index < 3; index++) {
-            if (isBall(index)) {
+            if (isBall(index, computer, user)) {
                 ball += 1;
             }
         }
@@ -50,17 +45,17 @@ public class Judgment {
 
     public boolean isUserWin() {
         if (strike == 3) {
-            initJudgment();
+            initializeJudgment();
             return true;
         }
 
-        initJudgment();
+        initializeJudgment();
         return false;
     }
 
-    public void judge() {
-        judgeStrike();
-        judgeBall();
+    public void judge(List<Integer> computer, List<Integer> user) {
+        judgeStrike(computer, user);
+        judgeBall(computer, user);
 
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
