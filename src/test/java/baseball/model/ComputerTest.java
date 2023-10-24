@@ -2,7 +2,7 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.model.Computer;
+import baseball.model.ball.Balls;
 import baseball.validate.NumbersValidate;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -31,5 +31,17 @@ public class ComputerTest {
         Computer computer = new Computer();
         List<Integer> computersRandomNumbers = computer.pickNumbers();
         assertThat(NumbersValidate.isNumberInRange(computersRandomNumbers)).isTrue();
+    }
+    @Test
+    @DisplayName("3가지 숫자를 선택하여 공을 만든다.")
+    public void pick3NumberAndGetBallTest() {
+
+        Computer computer = new Computer();
+        List<Integer> computersRandomNumbers = computer.pickNumbers();
+
+        Balls balls = computer.initBallsForGame(computersRandomNumbers);
+        Balls targetBalls = computer.initBallsForGame(computersRandomNumbers);
+
+        assertThat(balls.equals(targetBalls)).isTrue();
     }
 }
