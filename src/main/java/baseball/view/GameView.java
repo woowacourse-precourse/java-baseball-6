@@ -19,7 +19,6 @@ public class GameView {
     }
 
     public static String inputPositiveNumber() {
-        System.out.print(INPUT_GUIDE_MESSAGE);
         String inputString = Console.readLine();
         validateInput(inputString);
         return inputString;
@@ -55,12 +54,19 @@ public class GameView {
         System.out.println(START_MASSAGE);
     }
 
+    public static void printInputGuideMessage() {
+        System.out.print(INPUT_GUIDE_MESSAGE);
+    }
+
     public static void printResult(Result result) {
         System.out.println(result);
     }
 
     public static void printDoneMessage() {
         System.out.println(DONE_MESSAGE);
+    }
+
+    public static void printReplayMessage() {
         System.out.println(ASK_REPLAY_MESSAGE);
     }
 }

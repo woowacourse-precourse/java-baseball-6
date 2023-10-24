@@ -10,6 +10,7 @@ public class Application {
         GameView.printStartMessage();
         GameController gameController = new GameController();
         do {
+            GameView.printInputGuideMessage();
             gameController.run();
         } while (gameController.replayOrStop() == REPLAY);
     }

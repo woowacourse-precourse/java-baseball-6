@@ -29,6 +29,7 @@ public class GameController {
     }
 
     public Status replayOrStop() {
+        GameView.printReplayMessage();
         String inputStatus = GameView.inputPositiveNumber();
         return Status.from(inputStatus);
     }
