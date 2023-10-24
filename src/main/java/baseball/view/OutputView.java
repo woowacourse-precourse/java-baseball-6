@@ -1,18 +1,15 @@
 package baseball.view;
 
 import baseball.domain.ball.BallKind;
-import baseball.domain.ball.GuessResult;
+import baseball.domain.game.GameResult;
 
 public final class OutputView {
 
-    public void printResult(final GuessResult result) {
-        final String renderedResult = renderResult(result);
-
-        System.out.println(renderedResult);
-        System.out.println("게임 종료");
+    public void printResult(final GameResult result) {
+        System.out.println(renderResult(result));
     }
 
-    private String renderResult(final GuessResult result) {
+    private String renderResult(final GameResult result) {
         if (result.hasNothing()) {
             return "낫싱";
         }
@@ -24,9 +21,9 @@ public final class OutputView {
             final BallKind kind,
             final int count
     ) {
-        if (count == 0) {
-            return "";
-        }
-        return kind.toStringWithCount(count);
+        return switch (count) {
+            case 0 -> "";
+            default -> kind.toStringWithCount(count);
+        };
     }
 }
