@@ -26,4 +26,11 @@ public class BaseballValidator implements Validator {
         endOption = config.getEndOption();
     }
 
+    public void validateLength(String input) {
+        if (input.length() != numOfNumbers) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
 }
