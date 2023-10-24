@@ -7,13 +7,24 @@ public class Input {
     public static final String NEW_GAME_CMD = "1";
     public static final String END_CMD = "2";
     public static final String ENTER_USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    public static final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 " + NEW_GAME_CMD + ", 종료하려면 " + END_CMD + "를 입력하세요.";
 
     public static String getUserInput() {
         System.out.print(ENTER_USER_INPUT_MESSAGE);
         String userInput = Console.readLine();
+        validateUserInputNumber(userInput);
+        return userInput;
+    }
+
+    public static boolean isNewGame() {
+        System.out.println(CONTINUE_MESSAGE);
+        String userInput = Console.readLine();
+        return validateGameChoice(userInput);
+    }
+
+    public static void validateUserInputNumber(String userInput) {
         if (userInput.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException("입력한 숫자의 자릿수가" + NUMBER_LENGTH + " 개가 아닙니다.");
+            throw new IllegalArgumentException("입력한 숫자의 자릿수가 " + NUMBER_LENGTH + "개가 아닙니다.");
         }
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
@@ -28,13 +39,9 @@ public class Input {
                 }
             }
         }
-        return userInput;
     }
 
-    public static boolean isNewGame() {
-        System.out.println(CONTINUE_MESSAGE);
-        String userInput = Console.readLine();
-
+    private static boolean validateGameChoice(String userInput) {
         if (userInput.equals(NEW_GAME_CMD)) {
             return true;
         } else if (userInput.equals(END_CMD)) {
