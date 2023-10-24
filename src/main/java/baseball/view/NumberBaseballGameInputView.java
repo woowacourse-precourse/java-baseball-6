@@ -26,11 +26,6 @@ public class NumberBaseballGameInputView {
         return input;
     }
 
-
-    private boolean isValidInput(String str) {
-        return Pattern.matches("[0-9]{3}", str);
-    }
-
     private boolean isValidRestartInput(String str) {
         return Pattern.matches("[1-2]", str);
     }
