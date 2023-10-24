@@ -21,20 +21,15 @@ public class User {
 
     public Balls makeUserNumber(String userNumber){
         initList();
-        convertToInteger(userNumber);
-        return new Balls(userNumberList);
+
+        return new Balls(convertToInteger(userNumber));
     }
 
-    public List<Integer> convertToInteger(String strNumber){
-            return strNumber.chars()
-                    .boxed()
-                    .collect(Collectors.toList());
-
-        //기존의 리스트에는 유저가 입력한 숫자의 반대로 추가되었으므로 다시 그 순서를 뒤집는다.
-        //Collections.reverse(userNumberList);
+    private List<Integer> convertToInteger(String strNumber){
+        return strNumber.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
-    //public List<String> StringToStringList(String strNumber){
-
-    //}
 }
