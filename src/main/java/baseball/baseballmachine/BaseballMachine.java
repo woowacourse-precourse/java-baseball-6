@@ -27,17 +27,17 @@ public class BaseballMachine {
     }
 
     public void run() throws IllegalArgumentException {
-        computerList = computer.createRandomList();
+        computerList = computer.getNewRandomList();
         start = true;
         InputView.printStartMessage();
 
         while (start) {
-            player.initPlayer();
+            player.init();
             strike = 0;
             ball = 0;
 
             InputView.printInputRequestMessage();
-            playerList = player.inputNum();
+            playerList = player.inputNumList();
 
             compareBall();
             printResult();
@@ -46,11 +46,11 @@ public class BaseballMachine {
 
     private void compareBall() {
         for (int i = 0; i < 3; i++) {
-            checkLogic(i);
+            setStrikeBall(i);
         }
     }
 
-    private static void checkLogic(int index) {
+    private static void setStrikeBall(int index) {
         if (computerList.get(index).equals(playerList.get(index))) {
             strike++;
         } else if (playerList.contains(computerList.get(index))) {
@@ -92,8 +92,8 @@ public class BaseballMachine {
     private void isRestart() {
         String select = Console.readLine();
         if (select.equals(RESTART)) {
-            computer.initComputerList();
-            computerList = computer.createRandomList();
+            computer.init();
+            computerList = computer.getNewRandomList();
             return;
         } else if (select.equals(EXIT)) {
             start = false;
