@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Judge {
-    int[] computerNumbers;
-
+    private int[] computerNumbers;
     public Judge(){
         this.computerNumbers = createComputerNumber();
     }
@@ -24,8 +23,8 @@ public class Judge {
     public String checkStrikeAndBall(int[] strikeAndBall) {
         String message =
                 (strikeAndBall[0] > 0 ? strikeAndBall[0] + "볼 " : "") +
-                (strikeAndBall[1] > 0 ? strikeAndBall[1] + "스트라이크" : "낫싱");
-        return message;
+                (strikeAndBall[1] > 0 ? strikeAndBall[1] + "스트라이크" : "");
+        return message.equals("") ? "낫싱" : message;
     }
     public boolean isGameEnd(String gameResult) {
         return gameResult.equals("3스트라이크");
