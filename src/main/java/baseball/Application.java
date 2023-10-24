@@ -29,8 +29,6 @@ public class Application {
             // TODO2: 랜덤 숫자 설정
             List<Integer> computer = getRandomNumber();
 
-            System.out.println(computer);
-
             int restart = 1;
 
             while (restart == 1) {
