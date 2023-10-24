@@ -1,9 +1,10 @@
 package baseball;
 
 public class Result {
-    final String STRING_BALL = "볼 ";
-    final String STRING_STRIKE = "스트라이크 ";
+    final String STRING_BALL = "볼";
+    final String STRING_STRIKE = "스트라이크";
     final String STRING_NOTHING = "낫싱";
+    final String STRING_SPACE = " ";
 
     int strike;
     int ball;
@@ -16,18 +17,20 @@ public class Result {
     }
 
     void print() {
-        System.out.println(stringBuild());
+        System.out.println(message());
     }
 
-    private String stringBuild() {
-        StringBuilder stringBuilder = new StringBuilder();
+    String message() {
         if (nothing == 3) {
-            stringBuilder.append(STRING_NOTHING);
-            return stringBuilder.toString();
+            return STRING_NOTHING;
         }
+        StringBuilder stringBuilder = new StringBuilder();
         if (ball > 0) {
             stringBuilder.append(ball);
             stringBuilder.append(STRING_BALL);
+        }
+        if (ball > 0 && strike > 0) {
+            stringBuilder.append(STRING_SPACE);
         }
         if (strike > 0) {
             stringBuilder.append(strike);
