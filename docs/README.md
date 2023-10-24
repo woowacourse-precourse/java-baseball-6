@@ -1,9 +1,10 @@
 ## Input
-- use "readLine()" in given package named "camp.nextstep.edu.missionutils.Console"
-- Error Handling (IllegalArgumentException)
-  - when input is not integers
-  - when input length is not 3
-  - when input has same number within
+-[ ] use "readLine()" in given package named "camp.nextstep.edu.missionutils.Console"
+-[ ] Error Handling (IllegalArgumentException)
+  - [x] when input is not integers
+  - [x] when input length is not 3
+  -[x] when input has same number within (repeating number) 
+    - ex) "222"
   - new game prompt
     - when input is not in (1,2)
 ## Output
