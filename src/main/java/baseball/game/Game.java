@@ -11,25 +11,45 @@ import java.util.List;
 
 public class Game {
 
-    private String theAnswer;
-    Answer answer = new Answer();
-    User user = new User();
-
-    public void start() {
+    public void welcome(User user) {
         System.out.println(MainSpeaker.GAME_START.getMainCall());
         user.setReady(true);
-        while (user.isReady()) {
-            theAnswer = makeAnswer();
-            System.out.println("answer: " + theAnswer);    // 테스트용
+    }
 
-            answer.setCorrect(false);
-            while (!answer.isCorrect()) {
-                play();
+    public void goodBye(User user) {
+        System.out.println(MainSpeaker.GAME_END.getMainCall());
+        user.setReady(false);
+    }
+
+    public void play(User user) {
+        String theAnswer = makeAnswer();
+        System.out.println("answer: " + theAnswer);    // 테스트용
+        Answer answer = new Answer();
+        while (!answer.isCorrect()) {
+            check(user, theAnswer, answer);
+        }
+    }
+
+    public void check(User user, String theAnswer, Answer answer) {
+        System.out.print(MainSpeaker.GUESS_NUMBER.getMainCall());
+        String guessNum = Console.readLine();
+        GameException.validateInput(guessNum);
+        Counter counter = new Counter();
+        int resultCount = counter.strikeBallCount(guessNum, theAnswer);
+        if (resultCount == 3) {
+            answer.setCorrect(true);
+            System.out.println(MainSpeaker.CORRECT_ANSWER.getMainCall());
+            System.out.println(MainSpeaker.ONE_MORE_GAME.getMainCall());
+            String input = Console.readLine();
+            if (input.equals("1")) {
+                user.setReady(true);
+            } else {
+                goodBye(user);
             }
         }
     }
 
-    private String makeAnswer() {
+    public String makeAnswer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -38,28 +58,5 @@ public class Game {
             }
         }
         return computer.toString().replaceAll("[^0-9]", "");
-    }
-
-    private void play() {
-        System.out.print(MainSpeaker.GUESS_NUMBER.getMainCall());
-        String guessNum = Console.readLine();
-        GameException.validateInput(guessNum);
-        Counter counter = new Counter();
-        int resultCount = counter.strikeBallCount(guessNum, theAnswer);
-        playAgain(resultCount);
-    }
-
-    private void playAgain(int resultCount) {
-        if (resultCount == 3) {
-            answer.setCorrect(true);
-            System.out.println(MainSpeaker.CORRECT_ANSWER.getMainCall());
-            System.out.println(MainSpeaker.ONE_MORE_GAME.getMainCall());
-            int playOrStop = Integer.parseInt(Console.readLine());
-            if (playOrStop == 1) {
-                user.setReady(true);
-            } else if (playOrStop == 2) {
-                user.setReady(false);
-            }
-        }
     }
 }

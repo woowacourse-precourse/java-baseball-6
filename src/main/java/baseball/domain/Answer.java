@@ -7,7 +7,6 @@ public class Answer {
     public boolean isCorrect() {
         return isCorrect;
     }
-
     public void setCorrect(boolean correct) {
         isCorrect = correct;
     }
