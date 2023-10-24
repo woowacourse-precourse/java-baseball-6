@@ -9,9 +9,10 @@ import java.util.stream.IntStream;
 
 public class GameService {
     public GameService() {
+
     }
 
-    public List<Integer> parsingInputNumber(String inputNumber) {
+    public static List<Integer> parsingInputNumber(String inputNumber) {
         ArrayList<Integer> parsingNumber = new ArrayList<>();
         userInputNumberValidation(inputNumber);
         for (char parsedChar : inputNumber.toCharArray()) {
@@ -20,6 +21,7 @@ public class GameService {
         }
         return parsingNumber;
     }
+
 
     public static List<Integer> playGame(List<Integer> computerNumber, List<Integer> userNumber) {
         int strike = getStrikeCount(computerNumber, userNumber);

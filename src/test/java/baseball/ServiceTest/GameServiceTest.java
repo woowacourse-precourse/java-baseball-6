@@ -5,15 +5,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import baseball.service.GameService;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class GameServiceTest {
+    private GameService gameService;
+
+    @BeforeEach
+    public void setUpGameService() {
+        gameService = new GameService();
+    }
+
     @Test
     @DisplayName("사용자에게 입력받은 문자열을 숫자로 파싱된 값을 검증")
     public void 사용자_입력_파싱_검증() throws Exception {
         //given
-        GameService gameService = new GameService();
         List<Integer> parsedInputNumber = gameService.parsingInputNumber("123");
         //when
         List<Integer> expected = List.of(1, 2, 3);
@@ -25,8 +32,6 @@ public class GameServiceTest {
     @DisplayName("입력받은 값이 유효한 범위인지 검증")
     public void 사용자_입력_유효성_검증() throws Exception {
         //given
-        GameService gameService = new GameService();
-
         //when
         /*
         4자리 숫자를 입력한 경우
@@ -66,7 +71,7 @@ public class GameServiceTest {
         List<Integer> userNumber = List.of(1, 3, 9);
 
         //when
-        List<Integer> result = GameService.playGame(computerNumber, userNumber);
+        List<Integer> result = gameService.playGame(computerNumber, userNumber);
 
         //then
         assertEquals(1, result.get(0)); // strike 1
@@ -80,7 +85,7 @@ public class GameServiceTest {
         List<Integer> computerNumber = List.of(1, 2, 3);
         List<Integer> userNumber = List.of(1, 2, 9);
         //when
-        int strikeCount = GameService.getStrikeCount(computerNumber, userNumber);
+        int strikeCount = gameService.getStrikeCount(computerNumber, userNumber);
         //then
         assertEquals(2, strikeCount);
     }
@@ -91,7 +96,7 @@ public class GameServiceTest {
         List<Integer> computerNumber = List.of(3, 4, 1);
         List<Integer> userNumber = List.of(1, 3, 4);
         //when
-        int ballCount = GameService.getBallCount(computerNumber, userNumber);
+        int ballCount = gameService.getBallCount(computerNumber, userNumber);
         //then
         assertEquals(3, ballCount);
     }

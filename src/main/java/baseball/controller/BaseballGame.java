@@ -23,7 +23,7 @@ public class BaseballGame {
         System.out.println("게임 종료");
     }
 
-    public void startOneGame() {
+    private void startOneGame() {
         Computer computer = new Computer();
         boolean oneGameFinished = false;
         List<Integer> computerNumber = computer.getComputerNumber();
@@ -37,12 +37,12 @@ public class BaseballGame {
         }
     }
 
-    public static void initStartGame() {
+    private void initStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         endOrNot = true;
     }
 
-    public static void exitGame() {
+    private void exitGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         if (InputView.Input().equals("2")) {
             endOrNot = false;
