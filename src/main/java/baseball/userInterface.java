@@ -20,4 +20,8 @@ public class userInterface {
         System.out.println(startPhrases);
     }
 
+    public static void inputWrite(){
+        System.out.print(inputPhrases);
+    }
+
 }
