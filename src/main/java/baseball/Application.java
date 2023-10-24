@@ -21,7 +21,7 @@ public class Application {
             }
             writer.close();
         } catch (IOException e) {
-        
+            e.printStackTrace();
         }
         
     }
