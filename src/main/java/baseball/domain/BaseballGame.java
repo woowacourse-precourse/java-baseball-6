@@ -42,7 +42,7 @@ public class BaseballGame {
         if (strike == ALL_STRIKE) {
             outputView.printGameFinish();
         } else {
-            outputView.printGameResult(strike, ball);
+            outputView.printGameResult(ball, strike);
         }
     }
 
