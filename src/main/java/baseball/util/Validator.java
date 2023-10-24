@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.constants.Message;
+import baseball.constants.ErrorMessage;
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -10,7 +10,7 @@ public class Validator {
 
     public static void validateInputNumbers(String input) {
         if (!isValidThreeDigits(input) || hasDuplicateDigits(input)) {
-            throw new IllegalArgumentException(Message.ErrorMessage.INVALID_INPUT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.toString());
         }
     }
 
@@ -24,7 +24,7 @@ public class Validator {
 
     public static void validateRestartOrExitNumber(String input) {
         if (!isValidRestartOrExit(input)) {
-            throw new IllegalArgumentException(Message.ErrorMessage.INVALID_RESTART_OR_EXIT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RESTART_OR_EXIT.toString());
         }
     }
 
