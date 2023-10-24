@@ -89,11 +89,7 @@ public class Application {
     private int[] generateRandomNumbers() {
         int[] randomNumbers = new int[3];
         for (int i = 0; i < 3; i++) {
-            int random;
-            do {
-                random = Randoms.pickNumberInRange(1, 9);
-            } while (containsNumber(randomNumbers, random));
-            randomNumbers[i] = random;
+            randomNumbers[i] = Randoms.pickNumberInRange(1, 9);
         }
         return randomNumbers;
     }
