@@ -1,27 +1,21 @@
-#### 변수
-1. restart : 초기값 1. 게임을 시작할지 안할지 정하는 변수. 1이면 재시작, 2이면 종료.
-2. randomNumber[3] : 상대방 숫자 3가지 random추출
-3. inputNumber[3] : 제시하는 숫자 3가지 
-4. ball = 0 , strike = 0 : 볼과 스트라이크 개수 카운팅 
 
----
-    
-#### 알고리즘
-1. print "숫자 야구 게임을 시작합니다."
-2. restart == 1인 동안 반복문 실행
-   1. strike != 3 동안 반복문 실행 
-      1. ball = 0 , strike = 0
-      2. print "숫자를 입력해주세요 : "
-      3. inputNumber 세가지 입력받는 반복문 실행
-      4. 결과 판독 실행 
-         1. for randomNUmber i 
-            2. for inputNumber j
-               3. if inputNumber[j] == randomNumber[i]
-                  4. if i==j strike +1
-                  5. else ball +1
-      5. if ball != 0 print "ball볼 "
-      6. if strike !=0 print "strike스트라이크"
-      7. if ball==0 strike==0 print 
-   2. print "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-   3. print "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-   4. restart 입력받기
+#### 1. 기능
+   - 게임을 실행시킬지 종료시킬지 판단한다. 
+   - 1-9 사이의 랜덤 숫자 3가지를 추출한다. 
+   - 1-9 사이의 숫자 3가지를 사용자로부터 입력 받는다. 
+   - 랜덤 숫자와 입력 받은 숫자를 비교해가며 결과를 판독한다.
+   - 사용자 입력이 잘못된 경우 IllegalArgumentException 발생시킨 후 애플리케이션 종료시킨다. 
+
+#### 2. 클래스
+   - game : 게임 관련 변수와 메서드
+   - constant : 상수값
+   - exception : 예외사항
+
+#### 3. 메서드
+   - init : 게임 초기화
+   - restart : 게임 재시작 여부 판단
+   - getRandom : 1-9 사이의 랜덤값 3개을 추출
+   - getUserInput : 1-9 사이의 숫자를 사용자로부터 입력받음
+   - getResult : 게임의 결과를 판독하고 결과를 츨력한다. 
+   - isValidInput : 입력값 유효성 검사 
+
