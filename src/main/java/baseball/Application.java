@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class Application {
 
+    private static final int GAME_NUMBER_COUNT = 3;
     private static List<Integer> computerNumber;
     private static int ballCount;
     private static int strikeCount;
@@ -21,7 +22,7 @@ public class Application {
             generateRandomNumbers();
             strikeCount = 0;
 
-            while (strikeCount<3){
+            while (strikeCount<GAME_NUMBER_COUNT){
                 System.out.println("숫자를 입력해주세요 : ");
                 String userInput = Console.readLine();
 
@@ -49,7 +50,7 @@ public class Application {
 
         public static List<Integer> generateRandomNumbers() {
             computerNumber = new ArrayList<>();
-            while (computerNumber.size() < 3) {
+            while (computerNumber.size() < GAME_NUMBER_COUNT) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computerNumber.contains(randomNumber)) {
                     computerNumber.add(randomNumber);
@@ -62,7 +63,7 @@ public class Application {
             ballCount = 0;
             strikeCount = 0;
 
-            for(int i=0; i<3; i++){
+            for(int i=0; i<GAME_NUMBER_COUNT; i++){
                 if(userInput.get(i).equals(computerNumber.get(i))){
                     strikeCount++;
                 } else if (computerNumber.contains(userInput.get(i))) {
@@ -72,8 +73,8 @@ public class Application {
         }
 
         public static boolean isValidInput(String input) {
-            if(input.length()!=3){
-                throw new IllegalArgumentException("3자리의 자연수를 입력하세요.");
+            if (input.length() != GAME_NUMBER_COUNT) {
+                throw new IllegalArgumentException(GAME_NUMBER_COUNT + "자리의 자연수를 입력하세요.");
             }
 
             Set<Character> uniqueChars = new HashSet<>();
