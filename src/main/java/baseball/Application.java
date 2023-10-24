@@ -15,7 +15,7 @@ public class Application {
         //맨 처음 환영 문구는 한번만 출력한다.
         System.out.println("숫자 야구 게임을 시작합니다.");
         //게임을 종료하지 않는 한 계속 한다.
-        while (!isGameOver) {
+        while (true) {
             // 컴퓨터가 숫자 세자리를 가지고 있다, 게임을 시작할 때마다 그에 대한 랜덤 숫자 리스트를 생성한다.
             int[] computerNumbers = generateRandomNumbers();
 
@@ -46,7 +46,7 @@ public class Application {
                 }
 
                 //스트라이크와 볼이 섞인 경우
-                else if (result[0] > 0 && result[1] > 0) {
+                if (result[0] > 0 && result[1] > 0) {
                     System.out.println(result[1] + "볼" + " " + result[0] + "스트라이크");
                 }
                 //볼 밖에 없을 때
@@ -57,6 +57,20 @@ public class Application {
                 else if (result[0] > 0 && result[1] == 0) {
                     System.out.println(result[0] + "스트라이크");
                 }
+
+                //---
+                if (result[1] > 0) {
+                    System.out.print(result[1] + "볼");
+                }
+
+                if (result[0] > 0) {
+                    if (result[1] > 0) {
+                        System.out.print(" ");
+                    }
+                    System.out.println(result[0] +"스트라이크");
+                }
+
+                    // ---
                 //낫싱인 경우
                 else if (result[2] == 3) {
                     System.out.println("낫싱");
@@ -66,10 +80,8 @@ public class Application {
             //1 또는 2를 입력받음
             String playAgain = Console.readLine();
             if (playAgain.equals("2")) {
-                isGameOver = true; //게임 종료로 while 탈출
-            } else if (playAgain.equals("1")) {
-                isGameOver = false; //다시 첫번째 while로 돌아감
-            } else {
+                break; //게임 종료로 while 탈출
+            } else if (!playAgain.equals("1")) {
                 System.out.println("1 또는 2를 입력하세요.");
             }
         }
@@ -80,25 +92,20 @@ public class Application {
     // 무작위로 서로 다른 3자리 숫자를 생성하는 함수
     public static int[] generateRandomNumbers() {
         int[] numbers = new int[3];
-        for (int i = 0; i < 3; i++) {
-            int num;
-            do {
-                // 문제 요구 사항
-                num = Randoms.pickNumberInRange(1, 9);
-            } while (contains(numbers, num)); //하단에 메소드 구현. 생성한 랜덤 넘버가 이미 존재한다면 다시 생성
-            numbers[i] = num;
+        boolean flag = false;
+        int index = 0;
+
+        while(index<3){
+            int num = Randoms.pickNumberInRange(1, 9);
+            for(int value : numbers) {
+                flag = num == value;
+            }
+            if (flag){
+                continue;
+            }
+            numbers[index++]=num;
         }
         return numbers;
-    }
-
-    // 서로 다른 세 숫자익 때문에, 배열에 숫자가 이미 존재하는지 확인하기 위해 만든 함수
-    public static boolean contains(int[] array, int num) {
-        for (int value : array) {
-            if (value == num) {
-                return true;
-            }
-        }
-        return false;
     }
 
     // 길이와 숫자 분야에서 사용자 입력이 유효한지 확인하는 함수
