@@ -3,7 +3,6 @@ package baseball;
 import baseball.model.Computer;
 import baseball.model.Number;
 import baseball.model.User;
-import baseball.util.Baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
