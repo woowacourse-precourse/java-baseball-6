@@ -18,7 +18,7 @@ public class GameController extends Controller {
         } while (continueGame());
     }
 
-    public BaseballNumber makeDefenseNumber() {
+    private BaseballNumber makeDefenseNumber() {
         List<Integer> generateNumbers = generator.makeNumbers();
         return BaseballNumber.create(generateNumbers);
     }
@@ -42,7 +42,7 @@ public class GameController extends Controller {
         return BaseballNumber.create(inputNumbers);
     }
 
-    public boolean continueGame() {
+    private boolean continueGame() {
         outputView.printContinueGame();
         int isContinue = inputView.inputContinueGame();
         if (isContinue == 1) {
