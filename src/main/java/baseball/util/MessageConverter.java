@@ -51,21 +51,16 @@ public class MessageConverter {
      * @Param index 리스트의 인덱스
      * */
     private void getStrikeOrBall(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
-        if (isStrike(userInput, computerNumber, index)) {
+        Integer userInputIndex = userInput.get(index);
+        Integer computerNumberIndex = computerNumber.get(index);
+
+        if (userInputIndex.equals(computerNumberIndex)) {
             resultMessageMap.put(STRIKE, resultMessageMap.get(STRIKE) + 1);
         }
 
-        if (isBall(userInput, computerNumber, index)) {
+        if (userInput.contains(computerNumberIndex) && !userInputIndex.equals(computerNumberIndex)) {
             resultMessageMap.put(BALL, resultMessageMap.get(BALL) + 1);
         }
-    }
-
-    private static boolean isBall(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
-        return userInput.contains(computerNumber.get(index)) && !userInput.get(index).equals(computerNumber.get(index));
-    }
-
-    private static boolean isStrike(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
-        return userInput.get(index).equals(computerNumber.get(index));
     }
 
     /*
