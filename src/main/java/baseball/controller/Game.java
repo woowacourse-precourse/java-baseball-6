@@ -10,8 +10,9 @@ public class Game {
     }
 
     public void gameStart() {
-        boolean playGame = true;
         gameManager.startGame();
+
+        boolean playGame = true;
         while(playGame) {
             gameManager.inputUserNumber();
             gameManager.showBallCount();
