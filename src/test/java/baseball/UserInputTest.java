@@ -1,30 +1,33 @@
 package baseball;
 
 import baseball.controller.GameController;
+import baseball.controller.NumberValidator;
 import baseball.model.UserNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import static org.assertj.core.api.Assertions.*;
 
 class UserInputTest {
+    private NumberValidator numberValidator = new NumberValidator();
 
     @DisplayName("사용자 수 정상적인 값 입력되면 성공")
     @Test
     void inputNormalUserNumber(){
         String inputNumber = "123";
-        UserNumber userNumber = new UserNumber(inputNumber);
-        assertThat(userNumber.getNumber()).isEqualTo(List.of(1, 2, 3));
+        assertThatNoException().isThrownBy(() -> {
+            numberValidator.validateString(inputNumber);
+        });
     }
 
     @DisplayName("사용자 수가 비어있다면 에러 발생")
     @Test
     void inputEmptyUserNumber(){
         String inputNumber = "";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력해주세요");
     }
@@ -33,7 +36,7 @@ class UserInputTest {
     @Test
     void inputBlankUserNumber(){
         String inputNumber = "   ";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력해주세요");
     }
@@ -42,7 +45,7 @@ class UserInputTest {
     @Test
     void inputNotDigitString(){
         String inputNumber = "great";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력해주세요");
     }
@@ -51,7 +54,7 @@ class UserInputTest {
     @Test
     void inputMixedCharacterAndDigitString(){
         String inputNumber = "great1234";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력해주세요");
     }
@@ -60,7 +63,7 @@ class UserInputTest {
     @Test
     void inputOverThreeDigit(){
         String inputNumber = "1234";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("세자리 숫자를 입력해주세요");
     }
@@ -69,7 +72,7 @@ class UserInputTest {
     @Test
     void inputUnderThreeDigit(){
         String inputNumber = "12";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("세자리 숫자를 입력해주세요");
     }
@@ -78,7 +81,7 @@ class UserInputTest {
     @Test
     void inputOutOfRange(){
         String inputNumber = "120";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다");
     }
@@ -87,7 +90,7 @@ class UserInputTest {
     @Test
     void inputDuplicateNumber(){
         String inputNumber = "122";
-        assertThatThrownBy(() -> new UserNumber(inputNumber))
+        assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자가 존재하지 않아야 합니다");
     }
