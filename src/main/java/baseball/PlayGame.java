@@ -65,7 +65,7 @@ public class PlayGame {
 
     public void validateNumberLength(String input) {
         if (input.length() != 3) {
-            throw new IllegalArgumentException("입력값의 길이가 초과되었습니다.");
+            throw new IllegalArgumentException("3자리 길이의 수만 입력해주세요");
         }
     }
 
