@@ -21,7 +21,6 @@ public class Application {
 					computer.add(randomNumber);
 				}
 			}
-			System.out.println(computer);
 			System.out.println("숫자 야구 게임을 시작합니다.");
 			int strike = 0;
 			int ball = 0;
@@ -73,7 +72,7 @@ public class Application {
 			
 		}
 		
-		//유효성 검사 - 게임을 종료한 후 사용자가 1 또는 2가 아닌 값을 입력했을 때
+		//유효성 검사 - 게임이 종료된 뒤 사용자가 1 또는 2가 아닌 값을 입력했을 때
 		if(flag != 1 && flag !=2) {
 			throw new IllegalArgumentException();
 		}
