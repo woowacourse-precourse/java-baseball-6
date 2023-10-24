@@ -8,12 +8,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 public class Application {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
-    private static List<Integer> computerNumberList = new ArrayList<>();
+    private static final List<Integer> computerNumberList = new ArrayList<>();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -64,10 +62,7 @@ public class Application {
     }
 
     private static boolean isThreeStrikes(List<Integer> result) {
-        if (result.get(0) == 3) {
-            return true;
-        }
-        return false;
+        return result.get(0) == 3;
     }
 
     private static List<Integer> judge(List<Integer> computerNumberList, List<Integer> integers) {
