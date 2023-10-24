@@ -11,7 +11,7 @@ public class Application {
 }
 
 class Game {
-    private int[] computer = new int[3];;
+    private int[] computer = new int[3];
 
     public Game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -45,7 +45,7 @@ class Game {
         } else if ("2".equals(userInput)) {
             return false;
         } else {
-            throw new IllegalArgumentException("유효하지 않은 입력입니다.");
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
         }
     }
 
@@ -71,13 +71,9 @@ class Game {
         int[] user = new int[3];
         String userInput;
 
-        try {
-            userInput = Console.readLine();
-            if (userInput.length() != 3) {
-                throw new IllegalArgumentException("유효하지 않은 입력입니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            return null;
+        userInput = Console.readLine();
+        if (!userInput.matches("[0-9]{3}")) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
         }
 
         for (int i = 0; i < 3; i++) {
@@ -111,6 +107,7 @@ class Result {
             }
         }
     }
+
     public void printResult() {
         // 결과 출력
         if (nothing == 3) {
