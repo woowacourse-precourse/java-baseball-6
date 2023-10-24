@@ -20,9 +20,19 @@ public class Player {
 
     private void chkInputString(String inputString){
         if (inputString.length() != INPUT_LENGTH) {
-            throw new IllegalStateException(INPUT_LENGTH_ERROR_MESSAGE);
+            throw new IllegalStateException(ERROR_MESSAGE + INPUT_LENGTH_ERROR_MESSAGE);
         }
-        // 예외처리 추가
+
+        String tmp = "";
+        for (char c : inputString.toCharArray()) {
+            if (c <= '0' || c > '9') {
+                throw new IllegalStateException(ERROR_MESSAGE + INPUT_ONLY_INTEGER_ERROR_MESSAGE);
+            }
+            if (tmp.contains(String.valueOf(c))) {
+                throw new IllegalStateException(ERROR_MESSAGE + INPUT_SAME_NUMBER_ERROR_MESSAGE);
+            }
+            tmp += String.valueOf(c);
+        }
     }
 
 }
