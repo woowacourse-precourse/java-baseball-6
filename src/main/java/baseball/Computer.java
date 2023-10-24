@@ -12,7 +12,7 @@ public class Computer {
     }
 
     private static final List<String> baseballNum = new ArrayList<>();
-    public List<String>createValidBaseballNum(){
+    public String createValidBaseballNum(){
         while(baseballNum.size()<3){
             String invalidNum = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if(!validator.validNumNotInList(invalidNum,baseballNum)){
@@ -20,6 +20,6 @@ public class Computer {
             }
             baseballNum.add(invalidNum);
         }
-        return  baseballNum;
+        return  baseballNum.toString();
     }
 }
