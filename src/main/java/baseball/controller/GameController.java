@@ -28,9 +28,11 @@ public class GameController {
         Balls playerBalls = gameService.getPlayerBalls();
         RoundResult roundResult = playerBalls.compareWith(answer);
         OutputView.print(roundResult);
+
         if (roundResult.isGameEnd()) {
             return;
         }
+
         playRounds(answer);
     }
 
