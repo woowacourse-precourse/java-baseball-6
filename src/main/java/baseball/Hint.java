@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Hint {
     public int checkNumber(List<Integer> computer, String input) {
+        // 문자열 배열로 치환
         String[] inputArr = input.split("");
         StringBuilder sb = new StringBuilder();
         int strike = 0;
@@ -30,7 +31,8 @@ public class Hint {
         }
         // 낫싱
         if (strike + ball == 0) {
-            sb.append(NOTHING.getMsg());
+            System.out.println(NOTHING.getMsg());
+            return -1;
         }
         // 볼
         if (ball != 0) {
