@@ -1,7 +1,7 @@
 package Manager;
 
-import Entity.GameResult;
-import Entity.Status;
+import Enum.GameResult;
+import Enum.Status;
 
 public class PrintManager {
     public static void showStatus(Status status, boolean newLine) {

@@ -7,17 +7,16 @@ import static Constants.Constants.RESTART;
 import static Constants.Constants.EXIT;
 
 import Entity.GameNumber;
-import Entity.GameResult;
 import Entity.GameScore;
-import Entity.Status;
+import Enum.Status;
 import Manager.InputManager;
 import Manager.PrintManager;
-import camp.nextstep.edu.missionutils.Console;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 public class Application {
 
     private static GameNumber gameNumber;
@@ -25,6 +24,7 @@ public class Application {
 
     public static void main(String[] args) {
         initialize();
+
         try {
             startBaseballGame();
         } catch (IllegalArgumentException e) {

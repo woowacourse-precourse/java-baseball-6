@@ -1,4 +1,4 @@
-package Entity;
+package Enum;
 
 import java.util.Arrays;
 
