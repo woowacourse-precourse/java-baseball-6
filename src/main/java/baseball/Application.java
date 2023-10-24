@@ -27,14 +27,28 @@ public class Application {
 
                 s = Console.readLine();
 
-
                 String[] arr = s.split("");
+
+                //사용자가 세 개 미만 혹은 초과의 숫자를 입력할 경우 오류 표시
+                if (arr.length != 3) {
+                    throw new IllegalArgumentException("3개가 아닌 숫자를 입력했습니다. 에러 발생");
+                }
 
 
                 for (int i = 0; i < arr.length; i++) {
-
+                    //세 자리 입력값이 1~9 사이의 숫자인지 확인. 아닐 경우 오류 표시
+                    if (!Pattern.matches("[1-9]",arr[i])){
+                        throw new IllegalArgumentException("1~9사이의 숫자가 아닙니다. 에러 발생");
+                    }
                     nums.add(Integer.parseInt(arr[i]));
                 }
+
+                //사용자가 입력한 값 중 중복의 숫자가 있을 경우 에러 발생
+                if (nums.get(0).equals(nums.get(1)) || nums.get(0).equals(nums.get(2)) || nums.get(1).equals(nums.get(2))) {
+
+                    throw new IllegalArgumentException("중복된 숫자를 입력했습니다. 에러 발생");
+                }
+
 
                 for (int j = 0; j < 3; j++) {
                     if (computer.get(j).equals(nums.get(j))) {
@@ -64,6 +78,9 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String IsEnd = Console.readLine();
+            if(!IsEnd.equals("1") && !IsEnd.equals("2")) {
+                throw new IllegalArgumentException("1 혹은 2가 아닌 값을 입력했습니다. 에러 발생");
+            }
             restart = Integer.parseInt(IsEnd);
 
 
