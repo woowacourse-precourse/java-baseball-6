@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Score;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 
