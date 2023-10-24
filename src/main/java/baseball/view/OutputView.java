@@ -11,6 +11,7 @@ public class OutputView {
     private static final String BALL = "%d볼\n";
     private static final String STRIKE = "%d스트라이크\n";
     private static final String BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
+    private static final int ZERO_SCORE = 0;
 
     public void printGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
@@ -21,15 +22,15 @@ public class OutputView {
     }
 
     public void printScore(Score score) {
-        if (score.getBall() == 0 && score.getStrike() == 0){
+        if (score.getBall() == ZERO_SCORE && score.getStrike() == ZERO_SCORE){
             System.out.println(NOTHING);
             return;
         }
-        if (score.getStrike() == 0){
+        if (score.getStrike() == ZERO_SCORE){
             System.out.printf(BALL, score.getBall());
             return;
         }
-        if (score.getBall() == 0){
+        if (score.getBall() == ZERO_SCORE){
             System.out.printf(STRIKE, score.getStrike());
             return;
         }
