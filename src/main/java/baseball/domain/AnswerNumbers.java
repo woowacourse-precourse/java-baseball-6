@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import baseball.constant.NumberConstant;
-
 import java.util.*;
 
 import static baseball.constant.NumberConstant.*;

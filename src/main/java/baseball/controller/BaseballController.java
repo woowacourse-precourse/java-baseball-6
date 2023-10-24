@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.constant.NumberConstant;
 import baseball.domain.AnswerNumbers;
 import baseball.validation.Validator;
 import baseball.view.InputView;
