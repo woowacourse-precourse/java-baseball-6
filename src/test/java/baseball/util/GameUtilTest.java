@@ -72,4 +72,23 @@ class GameUtilTest {
         Assertions.assertEquals(gameUtil3.showHint(), "1볼 1스트라이크");
 
     }
+
+    @Test
+    @DisplayName("3스트라이크 시 게임 종료 여부 확인")
+    void checkGameOver() {
+        String computerNumber1 = "123";
+        String playerNumber1 = "123";
+        GameUtil gameUtil1 = new GameUtil();
+
+        String computerNumber2 = "143";
+        String playerNumber2 = "532";
+        GameUtil gameUtil2 = new GameUtil();
+
+        gameUtil1.computeCount(computerNumber1, playerNumber1);
+        gameUtil2.computeCount(computerNumber2, playerNumber2);
+
+
+        Assertions.assertTrue(gameUtil1.checkGameOver());
+        Assertions.assertFalse(gameUtil2.checkGameOver());
+    }
 }
