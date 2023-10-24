@@ -51,6 +51,17 @@ public class BaseballGame {
         return cnt;
     }
 
+    public int countBall() {
+        int cnt = 0;
+        for (int i = 0; i < NUM_DIGIT; i++) {
+            int number = user.get(i);
+            if (!computer.get(i).equals(number) && computer.contains(number)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
     protected void setComputer(String computer) {
         this.computer = Arrays.stream(computer.split(""))
                 .map(Integer::valueOf)

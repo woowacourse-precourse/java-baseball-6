@@ -27,4 +27,23 @@ class BaseballGameTest {
 
         assertThat(baseballGame.countStrike()).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("볼 수")
+    void countBall() {
+        baseballGame.setComputer("123");
+        baseballGame.setUser("345");
+
+        assertThat(baseballGame.countBall()).isEqualTo(1);
+
+    }
+
+    @Test
+    @DisplayName("볼 수_스트라이크는 볼이 아니다")
+    void countBall2() {
+        baseballGame.setComputer("456");
+        baseballGame.setUser("456");
+
+        assertThat(baseballGame.countBall()).isEqualTo(0);
+    }
 }
