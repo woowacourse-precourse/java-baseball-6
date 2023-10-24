@@ -15,14 +15,13 @@ public class Game {
         System.out.println(MainSpeaker.GAME_START.getMainCall());
         user.setReady(true);
     }
-
     public void goodBye(User user) {
         System.out.println(MainSpeaker.GAME_END.getMainCall());
         user.setReady(false);
     }
 
     public void play(User user) {
-        String theAnswer = makeAnswer();
+        List<Integer> theAnswer = makeAnswer();
         System.out.println("answer: " + theAnswer);    // 테스트용
         Answer answer = new Answer();
         while (!answer.isCorrect()) {
@@ -30,7 +29,7 @@ public class Game {
         }
     }
 
-    public void check(User user, String theAnswer, Answer answer) {
+    public void check(User user, List<Integer> theAnswer, Answer answer) {
         System.out.print(MainSpeaker.GUESS_NUMBER.getMainCall());
         String guessNum = Console.readLine();
         GameException.validateInput(guessNum);
@@ -49,7 +48,7 @@ public class Game {
         }
     }
 
-    public String makeAnswer() {
+    public List<Integer> makeAnswer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -57,6 +56,6 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
-        return computer.toString().replaceAll("[^0-9]", "");
+        return computer;
     }
 }

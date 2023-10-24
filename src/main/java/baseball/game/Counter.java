@@ -2,20 +2,28 @@ package baseball.game;
 
 import baseball.type.CountSpeaker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Counter {
 
-    public int strikeBallCount(String guessNum, String theAnswer) {
+    public int strikeBallCount(String guessNum, List<Integer> theAnswer) {
         int strikeCount = 0;
         int ballCount = 0;
-        for (int i = 0; i < theAnswer.length(); i++) {
-            for (int j = 0; j < guessNum.length(); j++) {
-
-                if (theAnswer.charAt(i) == guessNum.charAt(j)) {
-                    if (i == j) {
-                        strikeCount++;
-                    } else {
-                        ballCount++;
-                    }
+        List<Integer> list = new ArrayList<>();
+        int[] digits = new int[guessNum.length()];
+        for (int i = 0; i < guessNum.length(); i++) {
+            digits[i] = guessNum.charAt(i) - '0';
+        }
+        for (int num : digits) {
+            list.add(num);
+        }
+        for (int i = 0; i < 3; i++) {
+            if (list.contains(theAnswer.get(i))) {
+                if (list.get(i) == theAnswer.get(i)) {
+                    strikeCount++;
+                } else {
+                    ballCount++;
                 }
             }
         }
