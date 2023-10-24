@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Scanner;
 
 public class Application {
 
@@ -13,24 +12,20 @@ public class Application {
 
     // 먼저 숫자 야구 게임에 대한 메인 함수를 만들었습니다.
     public static void playNumberBaseballGame() {
-        //Console이 private이라 액세스 불가능한 오류 발생 중
-        //Console console = new Console();
-        Scanner scanner = new Scanner(System.in);
-        boolean isGameOver = false;
+        boolean isGameOver = false; //게임 종료를 판단하기 위한 변수. true: 게임 중, false:게임 종료
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (!isGameOver) {
             // 컴퓨터가 숫자 세자리를 가지고 있는 입장이므로, 그에 대한 리스트 생성
             int[] computerNumbers = generateRandomNumbers();
-            System.out.println("숫자 야구 게임을 시작합니다.\n");
+            //System.out.println("숫자 야구 게임을 시작합니다.");
 
-            //int attempts = 0;
             while (true) {
-                // 역시나 private으로 인한 오류 발생 중!!
-                //String input = console.readLine("숫자를 입력해주세요: ");
-                String input = scanner.nextLine();
+                System.out.println("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
 
                 if (!isValidInput(input)) { // 하단에 구현해두었습니다.
-                    throw new IllegalArgumentException("잘못된 입력입니다. 1부터 9까지 서로 다른 숫자로 이루어진 3자리 숫자를 입력하세요.");
+                    throw new IllegalArgumentException("잘못된 입력");
                 }
 
                 //사용자가 제시해나갈 숫자 3자리. 하단에 메소드 위치
@@ -40,10 +35,10 @@ public class Application {
 
                 //아래는 스트라이크, 볼, 낫싱에 대한 판단
                 if (result[0] > 0) {
-                    System.out.println(result[0] + "스트라이크 ");
+                    System.out.println(result[0] + "스트라이크");
                 }
                 if (result[1] > 0) {
-                    System.out.println(result[1] + "볼 ");
+                    System.out.println(result[1] + "볼");
                 }
                 if (result[0] == 0 && result[1] == 0) {
                     System.out.println("낫싱");
@@ -52,19 +47,22 @@ public class Application {
 
                 if (result[0] == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     break;
                 }
             }
 
-            //console이 private이라서 오류 발생 중!!
-            //String playAgain = console.readLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-            String playAgain = scanner.nextLine();
+//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String playAgain = Console.readLine();
             if (playAgain.equals("2")) {
+                //System.out.println("게임 종료");
                 isGameOver = true;
+            } else if (playAgain.equals("1")) {
+                isGameOver = false;
+            } else {
+                System.out.println("1 또는 2를 입력하세요.");
             }
         }
-
-        System.out.println("게임을 종료합니다.");
     }
 
     // 무작위로 서로 다른 3자리 숫자를 생성하는 함수
