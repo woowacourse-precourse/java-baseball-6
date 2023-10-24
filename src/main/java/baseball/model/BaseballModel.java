@@ -16,7 +16,7 @@ public class BaseballModel {
         this.gameResult = gameResult;
     }
 
-    public List<Integer> generateRandomNumbers() {
+    public List<Integer> generateRandomUniqueNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < NUMBER_LENGTH) {

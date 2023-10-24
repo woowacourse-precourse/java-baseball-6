@@ -24,7 +24,7 @@ public class BaseballController {
 
         GameResult gameResult = baseballModel.gameResult;
 
-        List<Integer> computerNumber = baseballModel.generateRandomNumbers();
+        List<Integer> computerNumber = baseballModel.generateRandomUniqueNumbers();
         /** For debugging purpose */
         System.out.println("컴퓨터: " + computerNumber);
 
