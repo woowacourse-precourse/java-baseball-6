@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.domain.PlayerNumbers;
+import baseball.domain.Result;
 import baseball.util.Console;
 
 public class View {
@@ -11,5 +12,9 @@ public class View {
         System.out.print(MESSAGE_INPUT_NUMBERS);
         String numbers = Console.readLine();
         return new PlayerNumbers(numbers);
+    }
+
+    public static void PrintResult(Result result) {
+        System.out.println(result.getValueToMessage());
     }
 }
