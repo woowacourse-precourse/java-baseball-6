@@ -181,4 +181,4 @@
 
 ### 결과
 
-![image-20231022220828792](./images/image-20231022220828792.png)
+![testCaseSuccess](./images/testCaseSuccess.png)
