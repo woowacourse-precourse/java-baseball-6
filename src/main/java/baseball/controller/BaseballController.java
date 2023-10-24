@@ -7,14 +7,7 @@ import baseball.view.BaseballInputView;
 import baseball.view.BaseballOutputView;
 
 public class BaseballController {
-    //컨트롤러에서 서비스의 기능들을 연결시켜준다.
-    //enum 적용 시켜보기
-
     private static final BaseballService baseballService = new BaseballService();
-
-    public BaseballController() {
-        BaseballOutputView.printStartMessage();
-    }
 
     public void play() {
         BaseballNumber computerBaseballNumber = startBaseballGame();
@@ -23,6 +16,7 @@ public class BaseballController {
     }
 
     private BaseballNumber startBaseballGame() {
+        BaseballOutputView.printStartMessage();
         return baseballService.initializeComputerNumber();
     }
 
