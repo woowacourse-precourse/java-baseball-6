@@ -12,7 +12,7 @@
 - [x] 게임 재 시작 / 종료 입력받기
 
 ## 🛠️ 리팩터링 목록 (2차)
-- [ ] `GameState` 를 관리하는 `GameStateManager` 객체 작성
+- [x] `GameState` 를 관리하는 `GameStateManager` 객체 작성
 - [ ] 랜덤으로 숫자를 가져오는 로직 `Util` 패키지로 분리
 - [ ] 화면 도메인 작성
   - [ ] 화면의 입력을 담당하는 `Input` 도메인 작성
