@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
 import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
+import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT2;
 import static baseball.status.ErrorCode.INVALID_LENGTH_INPUT;
 import static baseball.status.GameMsg.BALL;
 import static baseball.status.GameMsg.BALL_AND_STRIKE;
@@ -29,7 +30,7 @@ class Game {
             inputNum = getIntegerInput(input);
             System.out.println(output(computerNum, inputNum));
         }
-        replay();
+        handleGameChoice();
     }
 
     /**
@@ -90,15 +91,38 @@ class Game {
     /**
      * 게임 재시작, 종료 여부
      */
-    private void replay() {
+    public void handleGameChoice() {
         System.out.println(SUCCESS_MESSAGE.getMsg());
         System.out.println(REPLAY_OR_OVER_MESSAGE.getMsg());
-        int game = Integer.parseInt(Console.readLine());
-        if (game == 1) {
+        String input = Console.readLine();
+        String choice = getReplayOrOverInput(input);
+        replayOrOver(choice);
+    }
+
+    /**
+     * 종료 여부에 따른 게임 재시작, 게임 종료
+     *
+     * @param choice 종료 여부
+     */
+    private void replayOrOver(String choice) {
+        if (choice.equals("1")) {
             play();
-        } else if (game == 2) {
+        } else if (choice.equals("2")) {
             System.out.println(GAME_OVER.getMsg());
         }
+    }
+
+    /**
+     * 종료 여부 입력 값 유효성 체크
+     *
+     * @param s 입력 값
+     * @return 입력 값
+     */
+    public String getReplayOrOverInput(String s) {
+        if (!s.matches("^[1-2]$")) {
+            throw new IllegalArgumentException(INVALID_FORMAT_INPUT2.getMsg());
+        }
+        return s;
     }
 
     /**
