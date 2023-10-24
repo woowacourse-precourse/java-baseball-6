@@ -47,30 +47,31 @@ public class Application {
     }
 
     private static void printResults(int strikeCount, int ballCount) {
-        StringBuilder resultBuilder = new StringBuilder();
-        buildBallMessage(resultBuilder, ballCount);
-        buildStrikeMessage(resultBuilder, strikeCount);
-        buildNothingMessage(resultBuilder);
+//        StringBuilder resultBuilder = new StringBuilder();
+        ArrayList<String> result = new ArrayList<>();
 
-        System.out.println(resultBuilder);
+        buildBallMessage(result, ballCount);
+        buildStrikeMessage(result, strikeCount);
+        buildNothingMessage(result);
+
+        System.out.println(String.join(" ",result));
     }
 
-    private static void buildBallMessage(StringBuilder builder, int ballCount) {
+    private static void buildBallMessage(ArrayList<String> result, int ballCount) {
         if (ballCount > 0) {
-            builder.append(ballCount).append("볼");
+            result.add(ballCount + "볼");
         }
     }
 
-    private static void buildStrikeMessage(StringBuilder builder, int strikeCount) {
+    private static void buildStrikeMessage(ArrayList<String> result, int strikeCount) {
         if (strikeCount > 0) {
-            builder.append(strikeCount).append("스트라이크");
-            builder.append(" ");
+            result.add(strikeCount + "스트라이크");
         }
     }
 
-    private static void buildNothingMessage(StringBuilder builder) {
-        if (builder.isEmpty()) {
-            builder.append("낫싱");
+    private static void buildNothingMessage(ArrayList<String> result) {
+        if (result.isEmpty()) {
+            result.add("낫싱");
         }
     }
 
