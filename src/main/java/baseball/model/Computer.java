@@ -15,6 +15,9 @@ public class Computer {
     private int ballCount;
     private int strikeCount;
 
+    public Computer() {
+    }
+
     public void resetCount() {
         ballCount = 0;
         strikeCount = 0;
