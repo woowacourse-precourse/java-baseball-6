@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.List;
+
 public class Ball {
 
     private final int position;
@@ -10,23 +12,24 @@ public class Ball {
         this.number = number;
     }
 
-    public MatchResult match(Ball otherBall) {
-        if (isStrike(otherBall)) {
-            return MatchResult.STRIKE;
-        }
-
-        if (isBall(otherBall)) {
-            return MatchResult.BALL;
+    public MatchResult match(List<Ball> otherBalls) {
+        for (Ball computer : otherBalls) {
+            if (isStrike(computer)) {
+                return MatchResult.STRIKE;
+            }
+            if (isBall(computer)) {
+                return MatchResult.BALL;
+            }
         }
 
         return MatchResult.NOTHING;
     }
 
-    public boolean isStrike(Ball otherBall) {
+    private boolean isStrike(Ball otherBall) {
         return isSameNumber(otherBall) && isSamePosition(otherBall);
     }
 
-    public boolean isBall(Ball otherBall) {
+    private boolean isBall(Ball otherBall) {
         return isSameNumber(otherBall) && !isSamePosition(otherBall);
     }
 
