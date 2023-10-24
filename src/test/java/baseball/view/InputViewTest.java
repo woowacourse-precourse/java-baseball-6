@@ -1,6 +1,7 @@
 package baseball.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -20,4 +21,12 @@ public class InputViewTest {
         assertThat(userNumbers).isEqualTo(234);
     }
 
+    @Test
+    void 문자_포함_예외_테스트() {
+        userInput("a34");
+
+        Exception e = assertThrows(IllegalArgumentException.class, InputView::getUserNumbers);
+        assertThat(e.getClass()).isEqualTo((IllegalArgumentException.class));
+        assertThat(e.getMessage()).isEqualTo("숫자를 입력해주세요.");
+    }
 }
