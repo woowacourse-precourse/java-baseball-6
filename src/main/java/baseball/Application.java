@@ -12,6 +12,8 @@ public class Application {
                 new StartView(),
                 new InputView(),
                 new HintView(),
+                new EndView(),
+                new RestartView(),
                 createGameService());
 
         gameController.play();
