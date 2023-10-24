@@ -9,7 +9,6 @@ public class Application {
     Application app = new Application();
 
     while (app.playNumberBaseball());
-    return;
   }
 
   private boolean playNumberBaseball() {
