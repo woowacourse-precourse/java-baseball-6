@@ -9,8 +9,8 @@
 - 3 스트라이크가 나오면 사용자 입력 여부에 따라 재시작 및 종료한다.
 
 #### 핵심 기능 클래스
-- [x] StartGame.java : 게임시작
-- [x] InputComparator.java : 입력데이터 비교
+- ✅ StartGame.java : 게임시작
+- [x] InputContrast.java : 입력데이터 비교
 - [x] OutputResult.java : 결과값 출력
 - [x] Counter.java : 스트라이크, 볼 카운팅
 - [x] ExceptionResult.java : 예외처리
