@@ -26,6 +26,15 @@ class View{
         }
         return inputList;
     }
+    static boolean startOrEnd(){
+        System.out.println(startOrEndSpeak);
+        int choice = Integer.pareseInt(Console.readLine());
+
+        if(choice ==1)
+            return true;
+        else
+            return false;
+    }
 }
 
 
