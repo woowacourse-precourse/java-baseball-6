@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.util.BaseBallManagerStub;
+import baseball.stub.BaseBallManagerStub;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

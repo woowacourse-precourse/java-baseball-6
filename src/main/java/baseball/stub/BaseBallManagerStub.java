@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.stub;
 
 import baseball.model.BallNumber;
 import baseball.model.BallNumberGroup;
