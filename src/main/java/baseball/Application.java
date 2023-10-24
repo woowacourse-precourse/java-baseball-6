@@ -32,11 +32,9 @@ public class Application {
             throw new IllegalArgumentException("정수 3자리만 입력 해야 합니다.");
         }
 
-        //입력된 수를 문자열로 변환 후 숫자 배열로 변환
         stringPlayerNumber = Integer.toString(userInputNumber);
         arrayPlayerNumber = new int[stringPlayerNumber.length()];
 
-        //예외 처리2-2, 2-3에 대한 에러 처리
         for (int i = 0; i < stringPlayerNumber.length(); i++) {
             arrayPlayerNumber[i] = stringPlayerNumber.charAt(i) - '0';
         }
@@ -106,6 +104,7 @@ public class Application {
                 throw new IllegalArgumentException("1 또는 2를 선택하지 않았습니다.");
             }
         }
+
         return result;
     }
 
