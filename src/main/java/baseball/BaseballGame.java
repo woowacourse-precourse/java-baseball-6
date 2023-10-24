@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.ErrorMessage.INPUT_INVALID_DIGIT;
+import static baseball.ErrorMessage.INPUT_INVALID_RANGE;
 import static baseball.ErrorMessage.INPUT_NOT_DISTINCT;
 import static baseball.ErrorMessage.INPUT_NOT_NUMBER;
 
@@ -16,6 +17,9 @@ public class BaseballGame {
     private static final String SEPARATOR = "";
 
     public static final Integer ANSWER_DIGIT = 3;
+
+    private static final int NUMBER_MIN_RANGE = 1;
+    private static final int NUMBER_MAX_RANGE = 9;
 
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
@@ -51,6 +55,7 @@ public class BaseballGame {
                     .toList();
             validAnswerDigit(userAnswer);
             validAnswerDistinct(userAnswer);
+            validAnswerRange(userAnswer);
             hintScore.calculateHint(correctAnswer, userAnswer);
             System.out.println(hintScore);
             if (hintScore.isGameOver()) {
@@ -72,6 +77,11 @@ public class BaseballGame {
         }
     }
 
+    private void validAnswerRange(List<Integer> userAnswer) {
+        if (userAnswer.stream().filter(number -> number < NUMBER_MIN_RANGE || number > NUMBER_MAX_RANGE).findAny().isPresent()) {
+            throw new IllegalArgumentException(INPUT_INVALID_RANGE);
+        }
+    }
     private Integer convertStringToInteger(String input) {
         try {
             return Integer.parseInt(input);
