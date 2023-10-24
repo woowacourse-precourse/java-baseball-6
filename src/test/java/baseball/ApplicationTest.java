@@ -62,16 +62,8 @@ class ApplicationTest extends NsTest {
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
 
-        Integer indexZero = threeRandomNumber.get(0);
-        Integer indexOne = threeRandomNumber.get(1);
-        Integer indexTwo = threeRandomNumber.get(2);
-
         boolean isNumber = Application.isNumber(threeRandomNumber);
-
-        boolean isDifferentNumber = false;
-        isDifferentNumber = (indexZero.equals(indexOne))
-                && (indexOne.equals(indexTwo))
-                && (indexTwo.equals(indexZero));
+        boolean isDifferentNumber = Application.isDifferentRandomNumber(threeRandomNumber);
 
         assertThat(isNumber).isEqualTo(true);
         assertThat(isDifferentNumber).isEqualTo(true);
