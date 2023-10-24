@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.Arrays;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ValidationTest extends NsTest {
