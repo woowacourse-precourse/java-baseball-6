@@ -8,13 +8,13 @@ public class ValidUserInput {
     }
 
     //3의 자리가 아닐 때,
-    private void notThreeNumber(String input, int size) throws IllegalArgumentException{
+    public void notThreeNumber(String input, int size) throws IllegalArgumentException{
         if(input.length() != size){
             throw new IllegalArgumentException();
         }
     }
 
-    private int[] notNumber(String input, int size) throws IllegalArgumentException{
+    public int[] notNumber(String input, int size) throws IllegalArgumentException{
 
         int[] resInput = new int[size];
 
@@ -30,7 +30,7 @@ public class ValidUserInput {
     }
 
     //서로 다른 3개의 숫자가 아닌 경우
-    private int notDifferNumber(int[] resInput, char c, int index) throws IllegalArgumentException {
+    public int notDifferNumber(int[] resInput, char c, int index) throws IllegalArgumentException {
         int num = c - '0';
         for(int i=0; i<index; i++){
             if(resInput[i] == num) throw new IllegalArgumentException();
