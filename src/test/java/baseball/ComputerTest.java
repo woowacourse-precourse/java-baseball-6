@@ -1,7 +1,9 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -46,7 +48,51 @@ class ComputerTest {
     }
 
     @Test
-    void checkInputFormat() {
+    void 서로_다른_정수_3자리는_유효한_input이다() {
+        //given
+        computer.generateNumber();
+        String validInput = "123";
+
+        assertDoesNotThrow(() -> {
+            //when
+            List<Integer> guessNumber = computer.checkInputFormat(validInput);
+
+            //then
+            assertEquals(3, guessNumber.size());
+        });
+    }
+
+    @Test
+    void 자릿수가_3이_아닌_경우_예외를_던진다() {
+        //given
+        computer.generateNumber();
+        String invalidInput = "1234";
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            computer.checkInputFormat(invalidInput);
+        });
+    }
+
+    @Test
+    void 정수가_아닌_경우_예외를_던진다() {
+        //given
+        computer.generateNumber();
+        String invalidInput = "ABC";
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            computer.checkInputFormat(invalidInput);
+        });
+    }
+
+    @Test
+    void 같은_값이_있는_경우_예외를_던진다() {
+        //given
+        computer.generateNumber();
+        String invalidInput = "112";
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            computer.checkInputFormat(invalidInput);
+        });
     }
 
     @Test
