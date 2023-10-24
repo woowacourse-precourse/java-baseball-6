@@ -2,14 +2,22 @@ package baseball.game.io;
 
 import java.util.Scanner;
 
+import static baseball.constant.GameConstant.INPUT_USER_NUMBER;
+import static baseball.constant.GameConstant.INPUT_REPLAY_USER_NUMBER;
+
 public class Input {
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
+
+    public Input() {
+        this.scanner = new Scanner(System.in);
+    }
+
     public String input(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_USER_NUMBER);
         return scanner.nextLine();
     }
     public String replayInput() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(INPUT_REPLAY_USER_NUMBER);
         return scanner.nextLine();
     }
 }

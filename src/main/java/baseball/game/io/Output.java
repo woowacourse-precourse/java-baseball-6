@@ -2,24 +2,26 @@ package baseball.game.io;
 
 import baseball.game.GameResult;
 
+import static baseball.constant.GameConstant.*;
+
 public class Output {
     public void success() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(OUTPUT_USER_SUCCESS);
     }
     public void result(GameResult gameResult) {
         if (gameResult.getBall() != 0) {
-            System.out.print(gameResult.getBall()+"볼 ");
+            System.out.print(gameResult.getBall()+OUTPUT_BALL);
         }
         if (gameResult.getStrike() != 0) {
-            System.out.print(gameResult.getStrike() + "스트라이크");
+            System.out.print(gameResult.getStrike() + OUTPUT_STRIKE);
         }
         if (gameResult.getBall() == 0 && gameResult.getStrike() == 0) {
-            System.out.print("낫싱");
+            System.out.print(OUTPUT_NOTING);
         }
         System.out.println();
     }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(OUTPUT_START_GAME);
     }
 }
