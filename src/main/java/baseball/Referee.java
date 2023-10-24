@@ -5,21 +5,20 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Random;
+import org.assertj.core.internal.bytebuddy.utility.RandomString;
 
 public class Referee {
     private static List<Integer> computer = new ArrayList<>();
-    private int[] score = new int[3]; // index 0번은 스트라이크, 1번은 볼, 2번은 낫싱의 개수 저장
+    private int[] score = new int[3];
 
-    public Referee() {
+    public List<Integer> randomNumber() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-    }
-
-    public List<Integer> getComputer() {
         return computer;
     }
 
@@ -28,6 +27,7 @@ public class Referee {
         HashSet<Integer> playerNumberSet = new HashSet<>(playerNumber);
         HashSet<Integer> computerSet = new HashSet<>(computer);
         HashSet<Integer> intersection = new HashSet<>(playerNumberSet);
+        score = new int[3];
 
         intersection.retainAll(computerSet); // 교집합 생성
         Iterator<Integer> iterator = intersection.iterator();
@@ -82,6 +82,16 @@ public class Referee {
             System.out.println(score[0] + "스트라이크");
         } else if ((score[0] == 0) && (score[1] > 0)) {
             System.out.println(score[1] + "볼");
+        } else if (score[0] == 3) {
+            System.out.println(score[0] + "스트라이크");
+        }
+    }
+
+    public int judgmentStop() {
+        if (score[0] == 3) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 }
