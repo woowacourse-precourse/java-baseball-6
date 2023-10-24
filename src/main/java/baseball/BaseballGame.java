@@ -15,6 +15,7 @@ public class BaseballGame {
         userNumberList = getUsetNumberList();
         int[] compareResult = new CompareNumber().getCompareResult(userNumberList, computerNumberList);
         showCount(compareResult);
+        isMatchShowFinish(compareResult);
     }
 
     private static void showStart() {
@@ -60,6 +61,12 @@ public class BaseballGame {
     private static void showNothing(int[] compareResult) {
         if (compareResult[0] == 0 && compareResult[1] == 0) {
             System.out.println("낫싱");
+        }
+    }
+
+    private static void isMatchShowFinish(int[] compareResult) {
+        if (compareResult[1] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 }
