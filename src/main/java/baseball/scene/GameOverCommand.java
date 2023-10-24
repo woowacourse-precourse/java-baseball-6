@@ -1,5 +1,7 @@
 package baseball.scene;
 
+import baseball.game.state.GameState;
+import baseball.game.state.GameStateManager;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
@@ -39,4 +41,12 @@ public enum GameOverCommand {
         return Optional.ofNullable(commands.get(command)).orElse(UNKNOWN);
     }
 
+    public static void updateFromUserInput(final GameStateManager gameStateManager, final String userInput) {
+        final GameOverCommand gameOverCommand = GameOverCommand.find(userInput);
+        switch (gameOverCommand) {
+            case RE_START -> gameStateManager.update(GameState.GAME);
+            case EXIT -> gameStateManager.update(GameState.EXIT);
+            default -> throw new IllegalArgumentException("지원하지 않는 메뉴입니다.");
+        }
+    }
 }
