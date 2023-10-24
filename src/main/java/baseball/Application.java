@@ -1,69 +1,36 @@
 package baseball;
 
-
-
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
-
-import baseball.View;
-import baseball.Computer;
 
 public class Application {
     public static void main(String[] args) {
-
-      ArrayList<Integer> comArr = new ArrayList<Integer>(3);
-      ArrayList<Integer> userArr = new ArrayList<Integer>(3);
+      
       
       Computer computer = new Computer();
+      User user = new User();
       
-      
-      String restart = "1";
       View.printGameStart();
-   
+      while(GameManager.isGameRestart){
         
-        
-      while(restart.equals("1")){
-
+        //컴퓨터 숫자 초기화
         computer.init();
         
-        
-        while(true){
+        while(!GameManager.isGameEnd()){
+          // 유저가 숫자 입력
           View.printEnterNumber();
-          Application.inputUserNumbers(userArr);
+          user.inputUserNumbers();
           
-          ArrayList<Integer> resultArr =  computer.calculateResult(userArr);
-          View.printResult(resultArr);
+          //strike, ball 결과 계산
+          GameManager.calculateResult(computer.getComNumbers(), user.getUserNumbers());
+          View.printResult(GameManager.resultArr);
           
-          if(resultArr.get(1)==3){
-            View.printGameEnd();
-            restart = Console.readLine();
-            if(restart.equals("1")){
-//              System.out.print("다시 ㄱㄱ");
-            }
-            else if(restart.equals("2")){
-//              System.out.print("다시 ㄱㄱ안해요");
-            }
-            comArr.clear();
-            userArr.clear();
-            break;
-          }
-
-
         }
-
-        
+        View.printGameEnd();
+        GameManager.setIsGameRestart();
         
         }
     }
-    public static void inputUserNumbers(ArrayList<Integer> userArr){
-      userArr.clear();
-      String input = Console.readLine();
-      for(int i=0;i<3;i++){
-        userArr.add(input.charAt(i)-'0');
-      }
-      
-    }
+    
   
 }

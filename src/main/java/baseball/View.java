@@ -14,7 +14,7 @@ public class View {
   public static void printResult(ArrayList<Integer> resultArr){
     int ballCnt = resultArr.get(0);
     int strikeCnt = resultArr.get(1);
-    System.out.println(ballCnt+strikeCnt);
+    
     if(strikeCnt==0 && ballCnt==0){
       System.out.print("낫싱");
     }
