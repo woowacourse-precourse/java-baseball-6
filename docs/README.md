@@ -35,3 +35,8 @@
 
 * `BasBallGameController`
     * [x] : Application은 2개의 책임을 가지고 있다. -> 3스트라이크가 나올때까지 게임을 하는 책임을 Controller가 가져가자!
+
+* `OutputDevice`
+    * [x] : 게임 시작 멘트를 출력한다.
+    * [x] : 게임 종료 멘트를 출력한다.
+    * [x] : 게임 결과를 출력한다.

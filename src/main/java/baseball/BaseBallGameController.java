@@ -6,10 +6,12 @@ public class BaseBallGameController {
 
     private final InputDevice inputDevice;
     private final BaseBallGame baseBallGame;
+    private final OutputDevice outputDevice;
 
-    public BaseBallGameController(InputDevice inputDevice, BaseBallGame baseBallGame) {
+    public BaseBallGameController(InputDevice inputDevice, BaseBallGame baseBallGame, OutputDevice outputDevice) {
         this.inputDevice = inputDevice;
         this.baseBallGame = baseBallGame;
+        this.outputDevice = outputDevice;
     }
 
     public String competeWith(List<Integer> answerNumbers) {
@@ -17,7 +19,7 @@ public class BaseBallGameController {
         do {
             List<Integer> tryNumbers = inputDevice.inputTryNumber();
             gameResult = baseBallGame.createGameResult(tryNumbers, answerNumbers);
-            System.out.println(gameResult);
+            outputDevice.printGameResult(gameResult);
         } while (notThreeStrike(gameResult));
         return gameResult;
     }
