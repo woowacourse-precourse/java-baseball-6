@@ -32,7 +32,7 @@ public class Application {
                 numberOfStrike = 0;
                 numberOfBall = 0;
 
-                System.out.println("숫자를 입력해주세요 : ");
+                System.out.print("숫자를 입력해주세요 : ");
                 String response = Console.readLine();
                 List<Integer> prediction = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
