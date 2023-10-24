@@ -26,16 +26,7 @@ public class GameOverScene implements Scene {
 
         while (gameStateManager.isInGameOver()) {
             final String userInput = input.getUserInput();
-            updateFromUserInput(userInput);
-        }
-    }
-
-    private void updateFromUserInput(final String userInput) {
-        final GameOverCommand gameOverCommand = GameOverCommand.find(userInput);
-        switch (gameOverCommand) {
-            case RE_START -> gameStateManager.update(GameState.GAME);
-            case EXIT -> gameStateManager.update(GameState.EXIT);
-            default -> throw new IllegalArgumentException("지원하지 않는 메뉴입니다.");
+            GameOverCommand.updateFromUserInput(gameStateManager, userInput);
         }
     }
 }
