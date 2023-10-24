@@ -32,6 +32,8 @@ public class BaseBallController {
         while (isContinueBaseBall) {
             isContinueBaseBall = startOneBattle();
         }
+
+        baseBallView.finishView();
     }
 
     private boolean startOneBattle() {
