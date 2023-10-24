@@ -15,11 +15,7 @@ public class BaseballController {
         while(continueGame) {
             List<Integer> computer = Computer.createRandomNumbers();
             playGame(computer);
-
-            OutputView.correctInputPrint();
-            OutputView.restartAndGameOverPrint();
-
-            continueGame = InputView.inputRestartDecision();
+            continueGame = askForRestartOrEnd();
         }
         OutputView.gameOverPrint();
     }
@@ -32,5 +28,10 @@ public class BaseballController {
             result = compare.generateResult();
             OutputView.gameResultPrint(result);
         } while(!result.equals(GAME_OVER_CONDITION));
+    }
+    private static boolean askForRestartOrEnd() {
+        OutputView.correctInputPrint();
+        OutputView.restartAndGameOverPrint();
+        return InputView.inputRestartDecision();
     }
 }
