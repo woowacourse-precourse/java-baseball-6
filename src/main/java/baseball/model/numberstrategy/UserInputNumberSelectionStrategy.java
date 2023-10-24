@@ -55,13 +55,18 @@ public class UserInputNumberSelectionStrategy implements NumberSelectionStrategy
     }
 
     private static void isUniqueDigits(String guessNumber) {
+        Set<Character> duplicateSet = createDuplicateSet(guessNumber);
+        if (duplicateSet.size() != guessNumber.length()) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_INPUT_NOT_ALLOWED);
+        }
+    }
+
+    private static Set<Character> createDuplicateSet(String guessNumber) {
         Set<Character> duplicateSet = new HashSet<>();
         for (char number : guessNumber.toCharArray()) {
             duplicateSet.add(number);
         }
-        if (duplicateSet.size() != guessNumber.length()) {
-            throw new IllegalArgumentException(DUPLICATE_NUMBER_INPUT_NOT_ALLOWED);
-        }
+        return duplicateSet;
     }
 
     private static void isValidDigitLength(String guessNumber) {
