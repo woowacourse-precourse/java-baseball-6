@@ -7,10 +7,15 @@ public class Application {
         // TODO: 프로그램 구현
         Game game = new Game();
         try {
-            game.startGame();
+            playBaseball(game);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        game.endGame();
+    }
+
+    private static void playBaseball(Game game) {
+        while (game.checkRestart()) {
+            game.startGame();
+        }
     }
 }
