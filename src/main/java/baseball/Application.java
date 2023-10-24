@@ -29,14 +29,27 @@ public class Application {
 
         String input = Console.readLine();
 
-        for (int i = 0; i < 3; i++) {
+        try {
 
-            int number = Character.getNumericValue(input.charAt(i));
+            if (input.length() != 3) {
 
-            userAnswers.add(number);
+                throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
+
+            }
+
+            for (int i = 0; i < input.length(); i++) {
+
+                int number = Character.getNumericValue(input.charAt(i));
+
+                userAnswers.add(number);
+
+            }
+
+        } catch (IllegalArgumentException e) {
+
+            throw new IllegalArgumentException(e.getMessage());
 
         }
-
 
 
 
