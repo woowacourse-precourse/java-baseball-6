@@ -1,13 +1,17 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameMethod {
 
-    //컴퓨터 랜덤수 만들기
+
+    /**
+     * 세자리 난수 생성해 ArrayList에 저장
+     *
+     * @param computer
+     */
     public static void uniqueRandomNumber(List<Integer> computer) {
         for (int i = 0; i < 3; i++) {
             int num = Randoms.pickNumberInRange(1, 9);
@@ -19,7 +23,8 @@ public class GameMethod {
     }
 
     /**
-     * String 형태 숫자를 int 형태로 바꿔서 한자리씩 ArrayList에 저장
+     * String으로 입력된 숫자를 int로 바꿔서 한 자리씩 ArrayList에 저장
+     *
      * @param input
      * @return ArrayList size of 3
      */
@@ -34,6 +39,7 @@ public class GameMethod {
 
     /**
      * 스트라이크, 볼 판별
+     *
      * @param player
      * @param computer
      * @return [number of strikes, number of balls]
@@ -43,6 +49,7 @@ public class GameMethod {
         for (int i = 0; i < 3; i++) {
             int cnum = computer.get(i);
             int pnum = player.get(i);
+
             if (cnum == pnum) {
                 strikeAndBall[0]++; //strike
             } else if (computer.contains(pnum)) {

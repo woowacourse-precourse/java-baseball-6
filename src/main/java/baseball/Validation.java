@@ -4,6 +4,7 @@ public class Validation {
 
     /**
      * 사용자가 입력한 예상 숫자가 형식에 맞는지 확인
+     *
      * @param playerNumber
      */
     public static void validateNumber(String playerNumber) {
@@ -30,18 +31,20 @@ public class Validation {
     }
 
     /**
-     * 게임 더 할건지 말건지 물어볼 때 사용자가 1, 2를 잘 입력했는지 체크.
-     * 1 입력시 true 반환, 2 입력시 false 반환, 나머지 입력시 IllegalArgumentException 던집
+     * 게임 더 할건지 말건지 물어볼 때 사용자가 1, 2를 잘 입력했는지 체크. 1 입력시 true 반환, 2 입력시 false 반환, 나머지 입력시 IllegalArgumentException 던집
+     *
      * @param input
      * @return
      */
     public static boolean isValidKey(String input) {
+
         int restart;
         try {
-            restart = Integer.parseInt(input);
+            restart = Integer.parseInt(input); //"1", "2"를 int로 변환 시도
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 키를 입력했습니다. 프로그램을 종료합니다.");
         }
+
         if (restart == 1) {
             return true;
         } else if (restart == 2) {
