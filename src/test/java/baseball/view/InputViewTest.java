@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class InputViewTest {
-    private final InputView inputView = new InputView();
     private InputStream inputStream;
 
     @Test
@@ -20,7 +19,7 @@ class InputViewTest {
             inputStream = new ByteArrayInputStream(playerNumbers.getBytes());
             System.setIn(inputStream);
 
-            String actualInput = inputView.setGameInput();
+            String actualInput = InputView.setGameInput();
 
             assertEquals(playerNumbers, actualInput);
         } catch (Exception ignored) {
@@ -36,7 +35,7 @@ class InputViewTest {
             inputStream = new ByteArrayInputStream(restartNumber.getBytes());
             System.setIn(inputStream);
 
-            String actualInput = inputView.setRestartInput();
+            String actualInput = InputView.setRestartInput();
 
             assertEquals(restartNumber, actualInput);
         } catch (Exception ignored) {
