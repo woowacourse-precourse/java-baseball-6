@@ -2,7 +2,7 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-class UserInput {
+public class UserInput {
 
     static String getUserNumber() {
         String userInput = readLine().trim();
