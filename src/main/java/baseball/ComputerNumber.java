@@ -7,22 +7,23 @@ import java.util.List;
 public class ComputerNumber {
 
     public static List<Integer> makeUniqueThreeNumbers() {
-        List<Integer> computer = new ArrayList<>();
+        List<Integer> randomNumbers = new ArrayList<>();
 
-        while (computer.size() < 3) {
+        while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
-        return computer;
+
+        return randomNumbers;
     }
 
-    public static String listToString(List<Integer> computer) {
+    public static String listToString(List<Integer> randomNumbers) {
         String numbers = "";
 
         for (int i = 0; i < 3; i++) {
-            numbers += computer.get(i).toString();
+            numbers += randomNumbers.get(i).toString();
         }
 
         return numbers;
