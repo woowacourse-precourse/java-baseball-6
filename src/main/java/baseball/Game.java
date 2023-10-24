@@ -37,13 +37,16 @@ class Game {
         private void checkInputError(String rawInput) {
             String[] rawInputArray = rawInput.split("");
 
-            if (checkNullError(rawInputArray) || checkLengthError(rawInputArray, 3) || checkNumericError(rawInputArray)
-                    || checkEach1to9Error(rawInputArray) || checkDuplicateError(rawInputArray)) {
+            if (checkEmptyError(rawInputArray)
+                    || checkLengthError(rawInputArray, 3)
+                    || checkNumericError(rawInputArray)
+                    || checkEach1to9Error(rawInputArray)
+                    || checkDuplicateError(rawInputArray)) {
                 throw new IllegalArgumentException();
             }
         }
 
-        private boolean checkNullError(String[] rawInputArray) {
+        private boolean checkEmptyError(String[] rawInputArray) {
             if (rawInputArray == null || rawInputArray.length == 0) {
                 return true;
             }
@@ -147,8 +150,12 @@ class Game {
         for (int i = 0; i < userNumberList.size(); i++) {
             Integer userNumber1 = userNumberList.get(i);
             for (int j = 0; j < comNumberList.size(); j++) {
+                if (i == j) {
+                    continue;
+                }
                 Integer comNumber1 = comNumberList.get(j);
-                ballCount += Boolean.compare(i != j && userNumber1 == comNumber1, false);
+                ballCount += (userNumber1 == comNumber1) ? 1 : 0;
+                // ballCount += Boolean.compare(userNumber1 == comNumber1, false);
             }
         }
         return ballCount;
