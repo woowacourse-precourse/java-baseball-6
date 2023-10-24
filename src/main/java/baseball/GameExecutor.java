@@ -17,16 +17,18 @@ public class GameExecutor {
     }
 
     private int[] getRandomNumbers() {
-        Set<Integer> result = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
+        int[] result = new int[3];
 
-        while (result.size() < 3) {
+        while (set.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
-            result.add(number);
+            if(!set.contains(number)){
+                result[set.size()] = number;
+            }
+            set.add(number);
         }
 
-        return result.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        return result;
     }
 
     public void run() {

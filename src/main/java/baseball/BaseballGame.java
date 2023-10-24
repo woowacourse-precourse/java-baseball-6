@@ -24,16 +24,15 @@ public class BaseballGame {
     }
 
     public void run(ConsoleInput consoleInput, ConsoleLogger consoleLogger) {
-        consoleLogger.print(Arrays.toString(numbers.getNumbers()) + "\n");
         while (true) {
             consoleLogger.print("숫자를 입력해주세요 :");
             String input = consoleInput.getInput();
             checkInputs(input);
             BaseballNumber otherNumbers = BaseballNumber.ofString(input);
+            consoleLogger.print(numbers.getHintFrom(otherNumbers).toString());
             if (numbers.equals(otherNumbers)) {
                 break;
             }
-            consoleLogger.print(numbers.getHintFrom(otherNumbers).toString());
         }
         sayBi(consoleLogger);
     }
