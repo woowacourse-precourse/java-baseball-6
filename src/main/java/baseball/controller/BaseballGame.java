@@ -29,8 +29,10 @@ public class BaseballGame {
 
     private void startOneGame() {
         gamePreparation();
-        while (!gameProgress()) {
-
+        while (true) {
+            if (gameProgress()) {
+                break;
+            }
         }
     }
 
