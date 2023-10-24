@@ -104,6 +104,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("서로 다른 숫자 테스트")
+    void 서로_다른_숫자_테스트() {
+        String differentNumber = "183";
+        String notDifferentNumber = "113";
+
+        assertThat(Application.isDifferentRandomNumber(differentNumber)).isEqualTo(true);
+        assertThat(Application.isDifferentRandomNumber(notDifferentNumber)).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("서로 다른 랜덤숫자 테스트")
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
