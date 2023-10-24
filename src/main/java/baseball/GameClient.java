@@ -1,6 +1,8 @@
 package baseball;
 
-import java.util.List;
+import baseball.participant.Computer;
+import baseball.participant.Player;
+import baseball.slot.BaseballNumbersSlot;
 
 /**
  * 숫자야구 게임의 전반적인 진행을 담당하는 클래스.
@@ -16,13 +18,15 @@ public class GameClient {
     private final String MESSAGE_GAME_FINISHED_FORMAT = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private final String MESSAGE_REPLAY_FORMAT = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
 
-    private final PlayerInput playerInput;
     private final Computer computer;
+    private final Player player;
+    private final Referee referee;
     private boolean isFirstTimePlaying = true;
 
     public GameClient() {
-        this.playerInput = new PlayerInput();
+        this.player = new Player();
         this.computer = new Computer();
+        this.referee = new Referee();
     }
 
     public void playBaseball() {
@@ -36,8 +40,10 @@ public class GameClient {
 
         do {
             System.out.print(MESSAGE_PLAYER_INPUT);
-            List<Integer> playerNumbers = playerInput.getPlayerNumbers();
-            ballCount = computer.calculateBallCount(playerNumbers);
+            player.guessNumbers();
+            BaseballNumbersSlot playerNumbers = player.getSlot();
+            BaseballNumbersSlot answerNumbers = computer.getSlot();
+            ballCount = referee.calculateBallCount(playerNumbers, answerNumbers);
             System.out.println(ballCount);
         } while (!ballCount.isOut());
 
@@ -46,6 +52,6 @@ public class GameClient {
 
     public boolean askForReplay() {
         System.out.printf(MESSAGE_REPLAY_FORMAT, GameMenu.REPLAY, GameMenu.EXIT);
-        return playerInput.getMenu() == GameMenu.REPLAY;
+        return player.getMenu() == GameMenu.REPLAY;
     }
 }
