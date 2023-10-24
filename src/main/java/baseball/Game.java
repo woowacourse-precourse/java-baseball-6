@@ -10,13 +10,17 @@ public class Game {
 
     public static void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (Data.isPlaying){
+        while (true){
             initComputerNumber();
-            System.out.println(Data.computerNumber); // 디버깅용
+            //System.out.println(Data.computerNumber); // 디버깅용
             setPlayerNumber();
             getResult();
             printHint();
             checkAnswer();
+            if(!Data.isPlaying){
+                break;
+            }
+
 
         }
     }
@@ -25,7 +29,6 @@ public class Game {
         if(Data.strike == Data.ANSWER_STRIKE){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             Data.isPlaying = restartGame();
-            System.out.println(Data.isPlaying);
             Data.isCreated = false;
         }
 
