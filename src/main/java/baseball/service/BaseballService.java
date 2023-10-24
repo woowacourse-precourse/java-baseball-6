@@ -70,11 +70,9 @@ public class BaseballService {
     private String makeBaseBallGameSentence(int ballCnt, int strikeCnt) {
         if (ballCnt > 0 && strikeCnt > 0) {
             return ballCnt + BALL + " " + strikeCnt + STRIKE;
-        }
-        else if (ballCnt > 0) {
+        } else if (ballCnt > 0) {
             return ballCnt + BALL;
-        }
-        else if (strikeCnt > 0) {
+        } else if (strikeCnt > 0) {
             return strikeCnt + STRIKE;
         }
 
