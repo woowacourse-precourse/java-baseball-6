@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-// TODO : 현재까지는 '정답숫자'라는 이름으로 사용해왔으나, 좀 더 직관적인 이름으로 변경할 것.
 public class WinningNumbers {
 
     private final List<Integer> winningNumbers;
