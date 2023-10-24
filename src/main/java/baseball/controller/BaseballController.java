@@ -33,8 +33,6 @@ public class BaseballController {
     private void play() {
         while (true) {
             GameNumbers answer = new GameNumbers(RandomNumbersGenerator.generate());
-            //TODO: 디버깅 용 출력문 지우기
-            System.out.println("computer = " + answer);
             guess(answer);
             if (isRestart()) {
                 continue;
