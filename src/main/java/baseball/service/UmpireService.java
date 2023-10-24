@@ -1,6 +1,5 @@
 package baseball.service;
 
-import baseball.util.Constants;
 import java.util.ArrayList;
 import java.util.Objects;
 import static baseball.util.Constants.*;
@@ -20,15 +19,15 @@ public class UmpireService {
 
     public ArrayList<Integer> getResult(ArrayList<Integer> randomNumbers, ArrayList<Integer> inputNumbers) {
         ArrayList<Integer> ballStrikeCount = new ArrayList<>();
-        ballStrikeCount.add(getStrikeCount(randomNumbers, inputNumbers));
         ballStrikeCount.add(getBallCount(randomNumbers, inputNumbers));
-
+        ballStrikeCount.add(getStrikeCount(randomNumbers, inputNumbers));
         return ballStrikeCount;
     }
 
     private int getStrikeCount(ArrayList<Integer> randomNumbers, ArrayList<Integer> inputNumbers) {
-        for (int i = 0; i < randomNumbers.size(); i++) {
-            if (Objects.equals(randomNumbers.get(i), inputNumbers.get(i))) {
+        for (int i = 0; i < randomNumbers.size() && i < inputNumbers.size(); i++) {
+            int inputNumber = inputNumbers.get(i);
+            if (Objects.equals(randomNumbers.get(i), inputNumber)) {
                 this.strikeCount++;
             }
         }
@@ -36,9 +35,9 @@ public class UmpireService {
     }
 
     private int getBallCount(ArrayList<Integer> randomNumbers, ArrayList<Integer> inputNumbers) {
-        for (int i = 0; i < randomNumbers.size(); i++) {
-            if (!(Objects.equals(randomNumbers.get(i), inputNumbers.get(i))) && randomNumbers.contains(
-                    inputNumbers.get(i))) {
+        for (int i = 0; i < randomNumbers.size() && i < inputNumbers.size(); i++) {
+            int inputNumber = inputNumbers.get(i);
+            if (!(Objects.equals(randomNumbers.get(i), inputNumber)) && randomNumbers.contains(inputNumber)) {
                 this.ballCount++;
             }
         }
