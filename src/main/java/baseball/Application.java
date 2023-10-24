@@ -33,6 +33,8 @@ public class Application {
                 playerNumbers.add(number);
                 playerNumber = playerNumber / 10;
             }
+
+            playerNumbers = reverse(playerNumbers);
         }
     }
 
@@ -78,5 +80,13 @@ public class Application {
         if (playerNumbers.contains(number)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    static public List<Integer> reverse (List < Integer > playerNumbers) {
+        List<Integer> reverse = new ArrayList<>();
+        for (int i = playerNumbers.size() - 1; i >= 0; i--) {
+            reverse.add(playerNumbers.get(i));
+        }
+        return reverse;
     }
 }
