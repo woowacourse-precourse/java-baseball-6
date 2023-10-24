@@ -14,7 +14,16 @@ public class PrintService {
             if(size==baseBall.getStrike()) {
                 return size + "스트라이크\n" + size + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
             }else{
-                return baseBall.getBall()+"볼 "+baseBall.getStrike()+"스트라이크";
+                int ball=baseBall.getBall();
+                int strike=baseBall.getStrike();
+                String result="";
+                if(ball>0){
+                    result+=ball+"볼 ";
+                }
+                if(strike>0){
+                    result+=strike+"스트라이크";
+                }
+                return result;
             }
         }
     }
