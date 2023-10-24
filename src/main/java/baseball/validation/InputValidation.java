@@ -2,7 +2,7 @@ package baseball.validation;
 
 public class InputValidation {
 
-    public static void Number (String input) {
+    public static void number(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
         }
@@ -11,7 +11,7 @@ public class InputValidation {
         }
     }
 
-    public static void GameEnd(String input) {
+    public static void gameEndCommand(String input) {
         if (!input.matches("^[1-2]*$")) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }

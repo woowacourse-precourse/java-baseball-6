@@ -48,37 +48,37 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력된_값이_3자리가_맞는지_테스트() {
-        assertThatThrownBy(() -> InputValidation.Number("12"))
+        assertThatThrownBy(() -> InputValidation.number("12"))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() -> InputValidation.Number("1234"))
+        assertThatThrownBy(() -> InputValidation.number("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력된_값이_숫자인지_테스트() {
-        assertThatThrownBy(() -> InputValidation.Number("abc"))
+        assertThatThrownBy(() -> InputValidation.number("abc"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 스트라이크_개수_판별_테스트() {
-        assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(1, 2, 3))).isEqualTo(3);
-        assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(1, 2, 4))).isEqualTo(2);
-        assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(1, 4, 5))).isEqualTo(1);
-        assertThat(CompareNumber.CountStrike(List.of(1, 2, 3), List.of(4, 5, 6))).isEqualTo(0);
+        assertThat(CompareNumber.countStrike(List.of(1, 2, 3), List.of(1, 2, 3))).isEqualTo(3);
+        assertThat(CompareNumber.countStrike(List.of(1, 2, 3), List.of(1, 2, 4))).isEqualTo(2);
+        assertThat(CompareNumber.countStrike(List.of(1, 2, 3), List.of(1, 4, 5))).isEqualTo(1);
+        assertThat(CompareNumber.countStrike(List.of(1, 2, 3), List.of(4, 5, 6))).isEqualTo(0);
     }
 
     @Test
     void 볼_개수_판별_테스트() {
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(1, 2, 3))).isEqualTo(0);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(4, 5, 6))).isEqualTo(0);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(1, 3, 4))).isEqualTo(1);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(3, 2, 5))).isEqualTo(1);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(5, 3, 4))).isEqualTo(1);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(2, 1, 4))).isEqualTo(2);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(1, 3, 2))).isEqualTo(2);
-        assertThat(CompareNumber.CountBall(List.of(1, 2, 3), List.of(3, 1, 2))).isEqualTo(3);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(1, 2, 3))).isEqualTo(0);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(4, 5, 6))).isEqualTo(0);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(1, 3, 4))).isEqualTo(1);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(3, 2, 5))).isEqualTo(1);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(5, 3, 4))).isEqualTo(1);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(2, 1, 4))).isEqualTo(2);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(1, 3, 2))).isEqualTo(2);
+        assertThat(CompareNumber.countBall(List.of(1, 2, 3), List.of(3, 1, 2))).isEqualTo(3);
     }
 
     @Override

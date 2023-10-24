@@ -13,10 +13,10 @@ public class Application {
         while(gameEndFlag) {
             List<Integer> computer = RandomNumberGenerator.generate();
             while (true) {
-                List<Integer> user = Input.Numbers();
+                List<Integer> user = Input.numbers();
 
-                int strikeCount = CompareNumber.CountStrike(computer, user);
-                int ballCount = CompareNumber.CountBall(computer, user);
+                int strikeCount = CompareNumber.countStrike(computer, user);
+                int ballCount = CompareNumber.countBall(computer, user);
 
                 Output.printGameResult(strikeCount, ballCount);
 
@@ -26,7 +26,7 @@ public class Application {
                 }
             }
 
-            gameEndFlag = Input.GameEndFlag();
+            gameEndFlag = Input.gameEndFlag();
         }
     }
 }

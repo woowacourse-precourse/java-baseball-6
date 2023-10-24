@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-    public static List<Integer> Numbers() {
+    public static List<Integer> numbers() {
         String input = Console.readLine();
-        InputValidation.Number(input);
+        InputValidation.number(input);
 
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -17,9 +17,9 @@ public class Input {
         return numbers;
     }
 
-    public static boolean GameEndFlag() {
+    public static boolean gameEndFlag() {
         String input = Console.readLine();
-        InputValidation.GameEnd(input);
+        InputValidation.gameEndCommand(input);
         return input.equals("1");
     }
 }
