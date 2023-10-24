@@ -33,15 +33,20 @@ public class GameManager {
     private void progressGame() {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(new RandomNumberGenerator());
         while (true) {
-            Output.printNumberInputMessage();
-            BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball(input.readLine());
-            GameResult gameResult = judgment.calculateHint(computerBalls, playerBalls);
-            Output.printHint(gameResult.getHint());
+            GameResult gameResult = startGameRound(computerBalls);
             if (gameResult.isGameEnd()) {
                 Output.printGameEndMessage();
                 break;
             }
         }
+    }
+
+    private GameResult startGameRound(BaseballCollection computerBalls) {
+        Output.printNumberInputMessage();
+        BaseballCollection playerBalls = BaseballCollection.ofPlayerBaseball(input.readLine());
+        GameResult gameResult = judgment.calculateHint(computerBalls, playerBalls);
+        Output.printHint(gameResult.getHint());
+        return gameResult;
     }
 
     // 기능: 게임 종료 후, 게임 재시작 여부
