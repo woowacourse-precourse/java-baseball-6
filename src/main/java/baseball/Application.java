@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.*;
 
 
@@ -47,10 +46,13 @@ public class Application {
         String answer = "";
         if (strike == 0 && ball == 0) {
             answer = NOTHING;
-        }
-        else {
-            if (ball > 0) answer += ball+BALL+" ";
-            if (strike > 0) answer += strike+STRIKE;
+        } else {
+            if (ball > 0) {
+                answer += ball+BALL+" ";
+            }
+            if (strike > 0) {
+                answer += strike+STRIKE;
+            }
         }
 
         return answer;
@@ -85,8 +87,9 @@ public class Application {
         String answer = makeAnswer(strike, ball);
         System.out.println(answer);
 
-        if (strike != 3) return baseballGame(computerNum);
-        else {
+        if (strike != 3) {
+            return baseballGame(computerNum);
+        } else {
             return isReplay();
         }
     }
