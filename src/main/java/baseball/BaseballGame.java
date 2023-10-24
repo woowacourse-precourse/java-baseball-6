@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class BaseballGame {
@@ -9,6 +10,9 @@ public class BaseballGame {
     private static final int STRIKE_IDX = 0;
     private static final int BALL_IDX = 1;
     private static final int NOTHING_IDX = 2;
+
+    private Computer computer;
+    private Player player;
 
     public boolean isStrike(int playerNum, int idx, List<Integer> computerNums) {
         return computerNums.get(idx) == playerNum;
@@ -32,7 +36,7 @@ public class BaseballGame {
             countNothing(computerNums, playerNums, results, idx);
         }
 
-        return results;
+        return Collections.unmodifiableList(results);
     }
 
     private void countNothing(List<Integer> computerNums, List<Integer> playerNums, ArrayList<Integer> results, int idx) {

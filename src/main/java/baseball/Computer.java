@@ -9,7 +9,15 @@ public class Computer {
 
     private List<Integer> computerNums;
 
-    void createRandomNums(int size) {
+    public Computer() {
+        createRandomNums(3);
+    }
+
+    public Computer(int size) {
+        createRandomNums(size);
+    }
+
+    private void createRandomNums(int size) {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,7 +27,6 @@ public class Computer {
         }
         this.computerNums = computer;
     }
-
 
     public List<Integer> getNums() {
         return Collections.unmodifiableList(computerNums);
