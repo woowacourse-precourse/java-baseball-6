@@ -10,12 +10,12 @@ public class BaseballGameController {
     private int isContinue = 1;
 
     public void repeatBaseballGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        baseballGameView.printGameStartingMessage();
 
         while (isContinue == 1) {
             doBaseballGame();
 
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            baseballGameView.printGameClosingMessage();
             isContinue = baseballGameView.isContinue();
         }
     }

@@ -35,6 +35,14 @@ public class BaseballGameView {
         return Integer.parseInt(userInput);
     }
 
+    public void printGameStartingMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public void printGameClosingMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private int parseUserNumberInput(String userNumberInput) {
         int parsedUserNumber;
 
