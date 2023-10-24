@@ -15,11 +15,10 @@ public class Baseball {
         answerBalls = new RandomBalls();
         answerBalls.createBalls();
         System.out.println(answerBalls.getBallsList());
-
-        // TODO : 플레이어 공 입력 받기
-        playerBalls = new PlayerBalls();
-        playerBalls.createBalls();
-        System.out.println(playerBalls.getBallsList());
+        new GuessingPlayer().guess(answerBalls);
+        printer.printGameEndingSentence();
+        printer.printAskForNewGame();
+        new GameContinueSelector().gameContinueSelect();
 
 
 
