@@ -26,16 +26,17 @@ public class BaseBallGame {
 
             List<Integer> computer = createRandomNumber();
 
+            System.out.println(computer);
+
             while (true) {
 
                 List<Integer> input = inputNumber();
 
                 int[] result = compareAnswerInput(computer, input);
 
-                printResult(result);
+                boolean isAns = printResult(result);
 
-                if (result[1] == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (isAns) {
                     break;
                 }
 
@@ -155,11 +156,12 @@ public class BaseBallGame {
     }
 
     /**
-     * result 값 (볼, 스트라이크 갯수)데 다른 결과 출력
+     * result 값 (볼, 스트라이크 갯수)에 다른 결과 출력
      *
      * @param result 볼, 스트라이크 수를 포함한 array
+     * @return 정답 : true, 오답 : false
      */
-    private void printResult(int[] result) {
+    private boolean printResult(int[] result) {
 
         if (result[0] == 0 && result[1] == 0) {
             System.out.println("낫싱");
@@ -171,6 +173,12 @@ public class BaseBallGame {
             System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
         }
 
+        if (result[1] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 
     /**
