@@ -1,18 +1,20 @@
 package baseball.game.model;
 
+import baseball.game.Validator;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserNumber {
+public class User {
     private final List<Integer> numArr;
 
-    public static UserNumber of(int nums){
-        return new UserNumber(nums);
+    public static User of(int nums){
+        return new User(nums);
     }
 
 
-    private UserNumber(int nums) {
-        validateNums(nums);
+    private User(int nums) {
+        Validator.validDigit(nums);
         List<Integer> numArr = new ArrayList<>();
 
         numArr.add(nums / 100);
@@ -24,8 +26,5 @@ public class UserNumber {
     }
     public int getDigitNum(int digit){
         return numArr.get(digit);
-    }
-    private void validateNums(int num) {
-        if(num > 999 || num < 100) throw new IllegalArgumentException("잘못된 입력");
     }
 }
