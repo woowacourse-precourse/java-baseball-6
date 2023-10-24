@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.CalculateNumber;
+import baseball.model.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,6 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
     @Test
     void 컴퓨터숫자_랜덤_생성(){
         CalculateNumber calculateNumber = new CalculateNumber();
@@ -27,7 +27,27 @@ class ApplicationTest extends NsTest {
 
         assertThat(calculateNumber.getCalculateNumber().length()).isEqualTo(3);
     }
-
+    @Test
+    void 숫자이외의_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.isDigitUserNumber("a23"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 숫자_길이_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.isStringLengthCorrect("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 숫자_중복_값_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> UserNumber.isDifferentUserNumber("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
