@@ -44,7 +44,7 @@ public class Application {
             return userAction == UserAction.CONTINUE;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 }
