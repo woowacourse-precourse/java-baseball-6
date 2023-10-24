@@ -22,6 +22,11 @@ public class User {
             return false;
         }
 
+        //0을 포함하지 않는지
+        if (numberFromUser.contains("0")) {
+            return false;
+        }
+
         //같은 숫자 없는지, 숫자가 맞는지
         String[] newNumbers = numberFromUser.split("");
         try {
