@@ -10,7 +10,7 @@ public class PrintService {
     public static String printResult(int[] answer, int[] input){
         BaseBall baseBall= HintGenerator.getHint(answer,input);
         int size=input.length;
-        if(baseBall.checkNothing()){
+        if(baseBall.isNothing()){
             return NOTHING;
         } else {
             if (size == baseBall.getStrike()) {

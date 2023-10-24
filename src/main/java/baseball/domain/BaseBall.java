@@ -16,7 +16,8 @@ public class BaseBall {
     public int getStrike(){
         return this.strike;
     }
-    public boolean checkNothing(){
+
+    public boolean isNothing() {
         return (this.ball==0&&this.strike==0);
     }
 }
