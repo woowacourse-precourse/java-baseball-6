@@ -17,14 +17,18 @@ public class ComputerNumber {
     private void assignNumber() {
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+            addNumber(randomNumber);
+        }
+    }
+
+    private void addNumber(int randomNumber) {
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
         }
     }
 
     public List<Integer> getNumber() {
-        return Collections.unmodifiableList(computerNumber);
+        return Collections.unmodifiableList(computerNumber); //불면성 보장을 위해 unmodifiableList 호출
     }
 
 }

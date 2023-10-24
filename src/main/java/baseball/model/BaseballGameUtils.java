@@ -1,18 +1,11 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameUtils {
-
-    public BaseballGameUtils() {
-
-    }
+    public BaseballGameUtils() {}
 
     public Score checkScore(List<Integer> computerNumber, List<Integer> userNumber) {
-
         int ball = 0;
         int strike = 0;
 
@@ -23,25 +16,35 @@ public class BaseballGameUtils {
     }
 
     public int checkBall(List<Integer> computerNumber, List<Integer> userNumber) {
-
         int count = 0;
 
         for (int i = 0; i < computerNumber.size(); i++) {
-            if (computerNumber.contains(userNumber.get(i)) && computerNumber.indexOf(userNumber.get(i)) != i)
-                count++;
+            count = incrementBallCount(computerNumber, userNumber, count, i);
         }
 
         return count;
     }
 
-    public int checkStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+    private int incrementBallCount(List<Integer> computerNumber, List<Integer> userNumber, int count, int i) {
+        if (computerNumber.contains(userNumber.get(i)) && computerNumber.indexOf(userNumber.get(i)) != i)
+            count++;
 
+        return count;
+    }
+
+    public int checkStrike(List<Integer> computerNumber, List<Integer> userNumber) {
         int count = 0;
 
         for (int i = 0; i < computerNumber.size(); i++) {
-            if (computerNumber.get(i) == userNumber.get(i)) {
-                count++;
-            }
+            count = incrementStrikeCount(computerNumber, userNumber, count, i);
+        }
+
+        return count;
+    }
+
+    private static int incrementStrikeCount(List<Integer> computerNumber, List<Integer> userNumber, int count, int i) {
+        if (computerNumber.get(i) == userNumber.get(i)) {
+            count++;
         }
 
         return count;

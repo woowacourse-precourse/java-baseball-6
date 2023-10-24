@@ -18,12 +18,12 @@ public class BaseballGameController {
     public boolean startGame() {
         ComputerNumber computerNumber = new ComputerNumber();
         UserNumber userNumber;
+        Score result;
         boolean isAnswer = false;
 
         while (!isAnswer) {
-
-            userNumber = baseballGameView.readUserInputView();
-            Score result = baseballGameUtils.checkScore(computerNumber.getNumber(), userNumber.getNumber());
+            userNumber = baseballGameView.readUserNumber();
+            result = baseballGameUtils.checkScore(computerNumber.getNumber(), userNumber.getNumber());
             isAnswer = baseballGameView.showResult(result);
         }
 

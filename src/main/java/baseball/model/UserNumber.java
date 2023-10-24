@@ -8,7 +8,7 @@ public class UserNumber {
     public UserNumber(Integer input) {
         userNumber = new ArrayList<>();
         assignNumber(input);
-        isVerified();
+        verifyUserNumber();
     }
 
     private void assignNumber(Integer input) {
@@ -16,10 +16,11 @@ public class UserNumber {
             userNumber.add(0, input % 10);
             input /= 10;
         }
+
         userNumber.add(0, input % 10);
     }
 
-    public void isVerified() {
+    private void verifyUserNumber() {
         Set<Integer> userNumberSet = new HashSet<>(userNumber);
         if (userNumberSet.size() != userNumber.size()) {
             throw new IllegalArgumentException("For duplicated numbers");

@@ -3,8 +3,6 @@ package baseball.view;
 import baseball.model.Score;
 import baseball.model.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballGameView {
 
@@ -14,7 +12,7 @@ public class BaseballGameView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public UserNumber readUserInputView() {
+    public UserNumber readUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
 
         Integer input = Integer.parseInt(Console.readLine());
@@ -24,11 +22,11 @@ public class BaseballGameView {
     }
 
     public boolean showResult(Score result) {
-
         if (result.getStrike() == 3) {
             System.out.println("3스트라이크");
             return true;
         }
+
         if (result.getBall() == 0 && result.getStrike() == 0) {
             System.out.println("낫싱");
             return false;
@@ -37,14 +35,16 @@ public class BaseballGameView {
         if (result.getBall() != 0) {
             System.out.print(result.getBall() + "볼 ");
         }
+
         if (result.getStrike() == 0) {
             System.out.println();
         }
+
         if (result.getStrike() != 0) {
             System.out.println(result.getStrike() + "스트라이크");
         }
-        return false;
 
+        return false;
     }
 
     public boolean showRestart() {
@@ -53,6 +53,7 @@ public class BaseballGameView {
         String userInput;
 
         userInput = Console.readLine();
+
         if (!userInput.equals("1") && !userInput.equals("2"))
             throw new IllegalArgumentException("For incorrect number: " + userInput);
 
@@ -62,6 +63,5 @@ public class BaseballGameView {
 
         return false;
     }
-
 
 }
