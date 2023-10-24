@@ -63,8 +63,6 @@ public class Game {
 
         if (user.getNumberForPlayAgain() == 1) {
             startGame();
-        }else {
-            return;
         }
     }
 }
