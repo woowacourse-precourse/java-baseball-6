@@ -1,25 +1,21 @@
-package baseball.model;
+package baseball.model.numberstrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class Player {
+public class UserInputNumberSelectionStrategy implements NumberSelectionStrategy {
     private static final int VALID_LENGTH = 3;
     private static final String ONLY_NUMBERS_FROM_ONE_TO_NINE_ALLOWED = "1 ~ 9 사이의 숫자만 입력이 가능합니다.";
     private static final String ONLY_NUMBERS_ALLOWED = "숫자만 입력이 가능합니다.";
     private static final String DUPLICATE_NUMBER_INPUT_NOT_ALLOWED = "중복 된 숫자는 입력할 수 없습니다.";
     private static final String ONLY_THREE_DIGITS_ALLOWED = "세 자리의 숫자만 입력이 가능합니다.";
-    private final Numbers playerNumbers;
+    private final String guessNumber;
 
-    private Player(Numbers playerNumbers) {
-        this.playerNumbers = playerNumbers;
-    }
-
-    public static Player from(String guessNumber) {
-        validateInputNumber(guessNumber);
-        return new Player(convertStringToIntegerList(guessNumber));
+    public UserInputNumberSelectionStrategy(String guessNumber) {
+        this.guessNumber = guessNumber;
     }
 
     private static void validateInputNumber(String guessNumber) {
@@ -29,12 +25,12 @@ public class Player {
         isValidRange(guessNumber);
     }
 
-    private static Numbers convertStringToIntegerList(String guessNumber) {
+    private static List<Integer> convertStringToIntegerList(String guessNumber) {
         ArrayList<Integer> numberList = new ArrayList<>();
         for (char number : guessNumber.toCharArray()) {
             numberList.add(Character.getNumericValue(number));
         }
-        return new Numbers(Collections.unmodifiableList(numberList));
+        return Collections.unmodifiableList(numberList);
     }
 
     private static void isValidRange(String guessNumber) {
@@ -73,7 +69,9 @@ public class Player {
         }
     }
 
-    public Numbers getPlayerNumbers() {
-        return playerNumbers;
+    @Override
+    public List<Integer> createNumbers() {
+        validateInputNumber(guessNumber);
+        return convertStringToIntegerList(guessNumber);
     }
 }
