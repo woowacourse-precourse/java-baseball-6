@@ -17,18 +17,23 @@ public class GameRunner {
     void runGameLoop() {
         boolean userWin = false;
         while (!userWin) {
-            showNumberInputMessage();
-            List<Integer> userNumber = GameInput.userNumberInput();
-
-            int strike = countStrike(userNumber, computerNumber);
-            int ball = countBall(userNumber, computerNumber) - strike;
-
-            printLoopResult(ball, strike);
-
-            if (isUserWin(strike)) {
-                showWinMessage();
-                userWin = true;
-            }
+            userWin = playGame();
         }
+    }
+
+    private boolean playGame() {
+        showNumberInputMessage();
+        List<Integer> userNumber = GameInput.userNumberInput();
+
+        int strike = countStrike(userNumber, computerNumber);
+        int ball = countBall(userNumber, computerNumber) - strike;
+
+        printLoopResult(ball, strike);
+
+        if (isUserWin(strike)) {
+            showWinMessage();
+            return true;
+        }
+        return false;
     }
 }
