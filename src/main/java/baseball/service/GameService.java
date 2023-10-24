@@ -14,6 +14,7 @@ public class GameService {
     RandomUtils randomUtils = new RandomUtils();
     GameInputView gameInputView = new GameInputView();
     GameOutputView gameOutputView = new GameOutputView();
+    boolean[] bool;
 
     public void setGame() {
         gameOutputView.printStartGame();
@@ -39,6 +40,7 @@ public class GameService {
     }
 
     public void computeScore(int[] gameNumber, int[] userNumber) {
+        bool = new boolean[3];
         for(int i=0; i<gameNumber.length; i++) {
             compareNumber(gameNumber,userNumber,i);
         }
@@ -46,12 +48,13 @@ public class GameService {
 
     public void compareNumber(int[] gameNumber, int[] userNumber, int index) {
         for(int i=0; i<gameNumber.length; i++) {
-            if(userNumber[index] == gameNumber[i] && index != i) {
-                game.increaseBall();
-                break;
-            }
             if(userNumber[index] == gameNumber[i] && index == i) {
                 game.increaseStrike();
+                bool[index] = true;
+                break;
+            }
+            if(userNumber[index] == gameNumber[i] && index != i && !bool[i]) {
+                game.increaseBall();
                 break;
             }
         }
