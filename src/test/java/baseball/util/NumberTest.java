@@ -1,47 +1,42 @@
 package baseball.util;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class NumberTest {
     @Test
-    @DisplayName("첫번째 숫자가 반환된다.")
-    public void 첫번째_숫자가_반환된다() {
+    @DisplayName("Number가 반환된다.")
+    public void createNumber() {
         // given
-        Number number = new Number(123);
+        Number number = new Number(1);
 
         // when
-        int firstDigit = number.getFirstDigit();
+        int result = number.number();
 
         // then
-        assertThat(firstDigit).isEqualTo(1);
+        assertEquals(1, result);
     }
 
     @Test
-    @DisplayName("두번째 숫자가 반환된다.")
-    public void 두번째_숫자가_반환된다() {
+    @DisplayName("음수일 경우 IllegalArgumentException을 반환한다.")
+    public void 음수일_경우_IllegalArgumentException을_반환한다() {
         // given
-        Number number = new Number(123);
+        Number number = new Number(-1);
 
-        // when
-        int secondDigit = number.getSecondDigit();
-
-        // then
-        assertThat(secondDigit).isEqualTo(1);
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> number.checkValidate());
     }
 
     @Test
-    @DisplayName("세번째 숫자가 반환된다.")
-    public void 세번째_숫자가_반환된다() {
+    @DisplayName("숫자가 4 이상일 경우 IllegalArgumentException을 반환한다.")
+    public void 숫자가_4_이상일_경우_IllegalArgumentException을_반환한다() {
         // given
-        Number number = new Number(123);
+        Number number = new Number(4);
 
-        // when
-        int thirdDigit = number.getThirdDigit();
-
-        // then
-        assertThat(thirdDigit).isEqualTo(2);
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> number.checkValidate());
     }
 }

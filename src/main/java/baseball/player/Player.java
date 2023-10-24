@@ -1,11 +1,19 @@
 package baseball.player;
 
-public sealed class Player permits User, Computer {
-    protected Number number;
+import baseball.util.Numbers;
+import baseball.util.Result;
 
-    public void createNumber() {
+public sealed class Player permits User, Computer {
+    protected Numbers numbers;
+
+    public Player() {
+        this.numbers = new Numbers();
     }
 
-    public void validateNumber() {
+    public void createNumbers() {
+    }
+
+    public Result compareWith(Player other) {
+        return this.numbers.compareWith(other.numbers);
     }
 }
