@@ -97,10 +97,19 @@ class ApplicationTest extends NsTest {
     @DisplayName("서로 다른 랜덤숫자 테스트")
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
+        String threeRandomNumberString = "";
 
-        boolean rightRangeNumber = Application.isRightRangeNumber(threeRandomNumber);
-        boolean differentNumber = Application.isDifferentRandomNumber(threeRandomNumber);
+        for (int i = 0; i < threeRandomNumber.size(); i++) {
+            threeRandomNumberString += Integer.toString(threeRandomNumber.get(i));
+        }
 
+        boolean lengthThree = Application.isLengthThree(threeRandomNumberString);
+        boolean digitNumber = Application.isDigitNumber(threeRandomNumberString);
+        boolean rightRangeNumber = Application.isRightRangeNumber(threeRandomNumberString);
+        boolean differentNumber = Application.isDifferentRandomNumber(threeRandomNumberString);
+
+        assertThat(lengthThree).isEqualTo(true);
+        assertThat(digitNumber).isEqualTo(true);
         assertThat(rightRangeNumber).isEqualTo(true);
         assertThat(differentNumber).isEqualTo(true);
     }
