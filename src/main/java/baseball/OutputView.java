@@ -12,17 +12,17 @@ class Message{
     public static final String Restart = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 }
 
-public class View {
+public class OutputView {
 
-    public void printStart(){
+    public static void printStart(){
         System.out.println(Message.Start);
     }
 
-    public void printInput(){
+    public static void printInput(){
         System.out.println(Message.GetInput);
     }
 
-    public void printResult(List<Integer> ballCount){
+    public static void printResult(List<Integer> ballCount){
         int ball = ballCount.get(0);
         int strike = ballCount.get(1);
         if (ball == 0 && strike == 0){
@@ -32,7 +32,7 @@ public class View {
         System.out.println(ball + Message.Ball + " " + strike + Message.Strike);
     }
 
-    public void printRestart(){
+    public static void printRestart(){
         System.out.println(Message.Match);
         System.out.println(Message.Restart);
     }
