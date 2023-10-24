@@ -1,11 +1,12 @@
 package baseball;
 
+import baseball.dto.BallAndStrike;
+
 import java.util.List;
 
 public class Compare {
-    int ball;
-    int strike;
-    public void setBallAndStrike(List<Integer> userInput, List<Integer> answer){
+
+    public BallAndStrike makeBallAndStrikeData(List<Integer> userInput, List<Integer> answer){
         int ball = 0;
         int strike = 0;
 
@@ -17,19 +18,8 @@ public class Compare {
                 ball++;
             }
         }
-        setBall(ball);
-        setStrike(strike);
+        BallAndStrike data = new BallAndStrike(ball,strike);
+        return data;
     }
-    public int getBall() {
-        return ball;
-    }
-    public void setBall(int ball) {
-        this.ball = ball;
-    }
-    public int getStrike() {
-        return strike;
-    }
-    public void setStrike(int strike) {
-        this.strike = strike;
-    }
+
 }
