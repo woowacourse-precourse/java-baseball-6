@@ -59,14 +59,12 @@ public class Application {
         System.out.println("게임 종료");
     }
 
-    public static Optional<List<Integer>> getUserInputNumber() {
+    public static Optional<List<Integer>> getUserInputNumber() throws IllegalArgumentException{
         String[] userInputString = Console.readLine().split("");
 
         // 사용자가 입력한 숫자가 올바른 형식인지 검사
-        try {
-            isCorrectNumber(userInputString);
-        } catch (IllegalArgumentException ie) {
-            System.err.println("게임 종료");
+        boolean result = isCorrectNumber(userInputString);
+        if (!result) {
             return Optional.empty();
         }
 
