@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.numberBaseball.NumberBaseball;
 
-public class BaseballApplication {
+public class Application {
     public static void main(String[] args) {
         NumberBaseball numberBaseball = new NumberBaseball();
 

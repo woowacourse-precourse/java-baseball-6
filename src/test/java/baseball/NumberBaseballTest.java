@@ -30,6 +30,6 @@ class NumberBaseballTest extends NsTest {
 
     @Override
     public void runMain() {
-        BaseballApplication.main(new String[]{});
+        Application.main(new String[]{});
     }
 }
