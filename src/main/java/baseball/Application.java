@@ -13,15 +13,16 @@ public class Application {
             List<Integer> computer = generateComputerNumbers();
             while (true) {
                 List<Integer> userGuess = getUserInput();
-                String result = calculateResult(computer, userGuess);
-                System.out.println(result);
+                List<Integer> result = calculateStrikesBalls(computer, userGuess);
+                String message = makeMessage(result);
+                System.out.println(message);
 
-                if ("3스트라이크".equals(result)) {
+                if ("3스트라이크".equals(message)) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
             }
-            
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int choice = Console.readLine().charAt(0) - '0';
             if (choice == 2) {
@@ -60,7 +61,8 @@ public class Application {
         return userGuess;
     }
 
-    private static String calculateResult(List<Integer> computer, List<Integer> userGuess) {
+    private static List<Integer> calculateStrikesBalls(List<Integer> computer, List<Integer> userGuess) {
+        List<Integer> counts = new ArrayList<>();
         int strikes = 0;
         int balls = 0;
         for (int i = 0; i < 3; i++) {
@@ -70,15 +72,26 @@ public class Application {
                 balls++;
             }
         }
+        counts.add(strikes);
+        counts.add(balls);
 
-        if (strikes > 0 && balls > 0) {
-            return strikes + "스트라이크 " + balls + "볼";
-        } else if (strikes > 0) {
-            return strikes + "스트라이크";
-        } else if (balls > 0) {
-            return balls + "볼";
-        } else {
-            return "낫싱";
-        }
+        return counts;
     }
+
+    private static String makeMessage(List<Integer> result) {
+        int strikes = result.get(0);
+        int balls = result.get(1);
+        String message = "";
+        if (balls > 0 && strikes > 0) {
+            message = balls + "볼" + strikes + "스트라이크 ";
+        } else if (strikes > 0) {
+            message = strikes + "스트라이크";
+        } else if (balls > 0) {
+            message = balls + "볼";
+        } else if (balls == 0 && strikes == 0) {
+            message = "낫싱";
+        }
+        return message;
+    }
+
 }
