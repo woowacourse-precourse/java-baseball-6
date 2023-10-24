@@ -28,6 +28,24 @@ public class Application {
             }
         }
 
+        userInputCompare(gameSize, computer);
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String num = readLine();
+
+        switch (num){
+            case "1" :
+                System.out.println("게임을 다시 시작합니다.");
+                baseballStart();
+            case "2" :
+                System.out.println("프로그램을 종료합니다.");
+                return;
+            default :
+                throw new IllegalArgumentException();
+        }
+    }
+
+    public static void userInputCompare(int gameSize, List<Integer> computer){
         int strike = 0;
         int ball = 0;
         while (true) {
@@ -78,20 +96,7 @@ public class Application {
                 break;
             }
         }
-
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-        String num = readLine();
-
-        switch (num){
-            case "1" :
-                System.out.println("게임을 다시 시작합니다.");
-                baseballStart();
-            case "2" :
-                System.out.println("프로그램을 종료합니다.");
-                return;
-            default :
-                throw new IllegalArgumentException();
-        }
     }
+
 }
 
