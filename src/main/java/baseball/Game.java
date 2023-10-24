@@ -33,31 +33,12 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
 
-        checkInputFormat(input);
+        InputValidator.checkRestartInputFormat(input);
 
         if (input.equals("2")) {
             isRestarted = false;
         }
 
         return isRestarted;
-    }
-
-    private static void checkInputFormat(String input) {
-        checkNumeric(input);
-        checkOneOrTwo(input);
-    }
-
-    private static void checkNumeric(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            if (!Character.isDigit(input.charAt(i))) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    private static void checkOneOrTwo(String input) {
-        if (!(input.equals("1") || input.equals("2"))) {
-            throw new IllegalArgumentException();
-        }
     }
 }
