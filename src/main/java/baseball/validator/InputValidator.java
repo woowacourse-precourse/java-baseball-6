@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
+
+	private final static int MAX_NUMBER_SIZE = 3;
+
 	public static void checkNumber(String input) {
 		checkSize(input);
 		isDistinct(input);
@@ -12,18 +15,18 @@ public class InputValidator {
 
 	public static void isDistinct(String input) {
 		Set<Character> numberSet = new HashSet<>();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
 			numberSet.add(input.charAt(i));
 		}
-		if (numberSet.size() != 3) {
+		if (numberSet.size() != MAX_NUMBER_SIZE) {
 			throw new IllegalArgumentException("Distinct Number Detected");
 		}
 
 	}
 
 	public static void isDigit(String input) {
-		for (int i = 0; i < 3; i++) {
-			if ((int) input.charAt(i) < '1' || (int) input.charAt(i) > '9') {
+		for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
+			if (input.charAt(i) < '1' || input.charAt(i) > '9') {
 				throw new IllegalArgumentException("Not Digits Detected");
 			}
 		}
@@ -31,7 +34,7 @@ public class InputValidator {
 
 	public static void checkSize(String input) {
 		int inputSize = input.length();
-		if (inputSize != 3) {
+		if (inputSize != MAX_NUMBER_SIZE) {
 			throw new IllegalArgumentException("Incorrect Size");
 		}
 	}

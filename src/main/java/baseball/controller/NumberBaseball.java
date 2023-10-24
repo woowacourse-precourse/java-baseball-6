@@ -1,25 +1,20 @@
 package baseball.controller;
 
-import static baseball.model.MakeHint.getBall;
-import static baseball.model.MakeHint.getStrike;
-import static baseball.view.InputView.insertNumber;
-import static baseball.view.InputView.restartGame;
-import static baseball.view.OutputView.printEndGame;
-import static baseball.view.OutputView.printHint;
-
 import baseball.model.AnswerGenerator;
+import baseball.model.MakeHint;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class NumberBaseball {
+
 	String AnswerNumbers;
-
-	public void printStart() {
-		OutputView.printStartGame();
-	}
-
 
 	public void getAnswerNumbers() {
 		AnswerNumbers = AnswerGenerator.getRandomNumber();
+	}
+
+	public void printStart() {
+		OutputView.printStartGame();
 	}
 
 	public void startGame() {
@@ -33,13 +28,13 @@ public class NumberBaseball {
 
 	private boolean playGame() {
 		while (true) {
-			String playerNumbers = insertNumber();
-			int ballCount = getBall(playerNumbers, AnswerNumbers);
-			int strikeCount = getStrike(playerNumbers, AnswerNumbers);
-			printHint(ballCount, strikeCount);
+			String playerNumbers = InputView.insertNumber();
+			int ballCount = MakeHint.getBall(playerNumbers, AnswerNumbers);
+			int strikeCount = MakeHint.getStrike(playerNumbers, AnswerNumbers);
+			OutputView.printHint(ballCount, strikeCount);
 			if (strikeCount == 3) {
-				printEndGame();
-				return restartGame();
+				OutputView.printEndGame();
+				return InputView.restartGame();
 			}
 		}
 	}

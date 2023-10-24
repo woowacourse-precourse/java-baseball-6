@@ -15,15 +15,13 @@ public class OutputView {
 			print += "낫싱";
 		}
 		if (ballCount != 0) {
-			print += ballCount;
-			print += "볼";
+			print += ballCount + "볼";
 		}
 		if (strikeCount != 0) {
 			if (ballCount != 0) {
 				print += " ";
 			}
-			print += strikeCount;
-			print += "스트라이크";
+			print += strikeCount + "스트라이크";
 		}
 		System.out.println(print);
 	}
