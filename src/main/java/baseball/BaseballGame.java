@@ -12,7 +12,6 @@ public class BaseballGame {
     private static final String SEPARATOR = "";
 
     public static final Integer ANSWER_DIGIT = 3;
-    private static final Integer NOTHING_MATCH_INDEX = -1;
 
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
@@ -47,16 +46,7 @@ public class BaseballGame {
                     .toList();
             validAnswerDigit(userAnswer);
             validAnswerDistinct(userAnswer);
-
-            for (int i = 0; i < userAnswer.size(); i++) {
-                int matchIndex = correctAnswer.indexOf(userAnswer.get(i));
-                if (matchIndex == i) {
-                    hintScore.raiseStrike();
-                }
-                if (matchIndex != NOTHING_MATCH_INDEX) {
-                    hintScore.raiseBall();
-                }
-            }
+            hintScore.calculat경eHint(correctAnswer, userAnswer);
             System.out.println(hintScore.toString());
             if (hintScore.isGameOver()) {
                 break;
