@@ -15,7 +15,6 @@ public class Computer {
                 computerNumber.add(randomNumber);
             }
         }
-        System.out.println("computerNumber = " + computerNumber);
         return computerNumber;
     }
 
