@@ -36,5 +36,10 @@ public class GameController {
     private Boolean askIfContinue() {
         System.out.println(CORRECT_ANSWER_MESSAGE);
         System.out.println(GAME_RESTART_OR_OVER);
+        Integer answer = playerController.restartOrOver();
+        if (answer == 1) {
+            return true;
+        }
+        return false;
     }
 }
