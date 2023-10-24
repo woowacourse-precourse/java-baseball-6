@@ -25,8 +25,16 @@ public class GameController {
 
 
     public void playball() {
-        GameStateDto gamestate;
         computerNumber = getComputerNumber();
+        try {
+            logicStart();
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
+    private void logicStart() {
+        GameStateDto gamestate;
         do {
             outputView.printInputInitMessage();
             String userNumber = getUserNumber();
