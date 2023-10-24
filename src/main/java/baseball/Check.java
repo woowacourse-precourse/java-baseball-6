@@ -4,13 +4,14 @@ import java.util.List;
 
 public class Check {
 
-    public static final int NUMBER_COUNT = 3;
-    public static final int THREE_STRIKE = 3;
-    public static final int ZERO_COUNT = 0;
-    public static final String GAME_CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String NOTHING = "낫싱";
-    public static final String BALL = "볼";
-    public static final String STRIKE = "스트라이크";
+    private static final int NUMBER_COUNT = 3;
+    private static final int THREE_STRIKE = 3;
+    private static final int ZERO_COUNT = 0;
+    private static final String GAME_CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String NOTHING = "낫싱";
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String EXCEPTION = "존재하지 않는 결과입니다.";
     private final List<Integer> computerNumber;
     private final List<Integer> playerNumber;
     private static boolean isThreeStrike;
@@ -53,7 +54,7 @@ public class Check {
         if (strikeCount != ZERO_COUNT && ballCount != ZERO_COUNT) {
             return ballCount + BALL + " " + strikeCount + STRIKE;
         }
-        throw new IllegalArgumentException("존재하지 않는 결과입니다.");
+        throw new IllegalArgumentException(EXCEPTION);
     }
 
     public static boolean isThreeStrike() {
