@@ -9,7 +9,7 @@ public class LogicTest {
     @Test
     public void scoringResultTest() {
         int inputAnswer = 123;
-        int correctAnswer = 321;
+        int[] correctAnswer = {3, 2, 1};
 
         Logic logic = new Logic();
 

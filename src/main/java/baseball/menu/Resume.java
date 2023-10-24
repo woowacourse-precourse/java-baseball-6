@@ -7,7 +7,7 @@ import java.io.IOException;
 public enum Resume {
     CONTINUE("1") {
         @Override
-        public void execute() throws IOException {
+        public void execute() {
             playGame.play();
         }
     },
@@ -25,5 +25,5 @@ public enum Resume {
         this.description = description;
     }
 
-    public abstract void execute() throws IOException;
+    public abstract void execute();
 }

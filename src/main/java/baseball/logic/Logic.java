@@ -20,12 +20,11 @@ public class Logic {
         return false;
     }
 
-    public int[] scoringResult(int inputAnswer, int correctAnswer) {
+    public int[] scoringResult(int inputAnswer, int[] splitCorrectAnswer) {
         int strike = 0;
         int ball = 0;
 
         int[] splitInputAnswer = splitNumber(inputAnswer);
-        int[] splitCorrectAnswer = splitNumber(correctAnswer);
 
         for (int i = 0; i < 3; i++) {
             if (splitInputAnswer[i] == splitCorrectAnswer[i]) {

@@ -14,7 +14,7 @@ public class RunController {
     public static ViewInput viewInput = new ViewInput();
     public static PlayGame playGame = new PlayGame();
 
-    public void run() throws IOException {
+    public void run() {
         viewOutput.startGame();
         playGame.play();
 
@@ -30,11 +30,7 @@ public class RunController {
                         .findFirst()
                         .ifPresentOrElse(
                                 resume -> {
-                                    try {
                                         resume.execute();
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
                                 },
                                 () -> System.out.println("없는 보기입니다. 다시 입력하세요.")
                         );
