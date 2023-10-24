@@ -9,7 +9,7 @@ public class Session {
             System.out.print("숫자를 입력해주세요 : ");
             String answer = Console.readLine();
 
-            Validation.isValidAnswerTarget(answer);
+            ValidationAnswer.isValid(answer);
             ScoreKeeper.printScore(answer);
 
         } while (!endGame());
@@ -25,7 +25,7 @@ public class Session {
             String restart = Console.readLine();
 
             // TODO: Validation 클래스 이용
-            isRestart = Validation.isValidAnswerReset(restart);
+            isRestart = ValidationRestart.isValid(restart);
         }
         return isRestart;
     }
