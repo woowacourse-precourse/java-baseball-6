@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     private static final int MIN_NUMBER = 1;
@@ -45,6 +47,18 @@ public class Application {
     private static void validateInputIsNumeric(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("입력은 숫자여야 합니다.");
+        }
+    }
+
+    // 사용자 입력의 각 숫자가 서로 다른지 검증
+    private static void validateUniqueDigits(String input) {
+        Set<Character> uniqueDigits = new HashSet<>();
+
+        for (char digitChar : input.toCharArray()) {
+            if (uniqueDigits.contains(digitChar)) {
+                throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야 합니다.");
+            }
+            uniqueDigits.add(digitChar);
         }
     }
 
