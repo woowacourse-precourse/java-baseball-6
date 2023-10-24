@@ -98,7 +98,12 @@ public class GameUtils {
     }
 
     /**
-     *
+     * 집합을 이용하려는 이유는 '볼'을 쉽게 카운팅하기 위해서인데 '스트라이크'인 숫자를 각각의 집합에서
+     * 제거하고 난 후, 두 집합의 교집합을 구하면 '볼'을 쉽게 구할 수 있기 때문이다.
+     * @param leftNumber : 3자리 숫자로 computer가 만든 임의의 숫자가 들어온다.
+     * @param rightNumber : 3자리 숫자로 user가 입력한 임의의 숫자가 들어온다.
+     * @param leftSet : computer가 만든 임의의 숫자 3개의 집합이다.
+     * @param rightSet : user가 만든 임의의 숫자 3개의 집합이다.
      */
     private static int countStrikes(int leftNumber, int rightNumber, Set<Integer> leftSet, Set<Integer> rightSet) {
         int result = 0;
@@ -117,6 +122,11 @@ public class GameUtils {
         return result;
     }
 
+    /**
+     * 매개변수로 받은 두 집합의 교집합을 구하면 '볼'을 구할 수 있다.
+     * @param leftSet
+     * @param rightSet
+     */
     private static int countBalls(Set<Integer> leftSet, Set<Integer>rightSet) {
         Set<Integer> cloneSet = new HashSet<>(leftSet);
         cloneSet.retainAll(rightSet);
