@@ -2,14 +2,13 @@ package baseball;
 
 import java.util.List;
 
-import static baseball.Printer.*;
+import static baseball.Printer.printInputNumberComment;
 
 public class Game {
     private final Computer computer;
     private final Player player;
     private final Judge judge;
-    private boolean isEnd = false;
-    private boolean isRestart = false;
+    private boolean isOver = false;
 
     public Game(Computer computer, Player player, Judge judge) {
         this.computer = computer;
@@ -19,36 +18,30 @@ public class Game {
 
     public void start() {
         judge.announceStartGame();
-        playGame();
+        play();
     }
 
-    // TODO: 적절한 이름이 무엇일지 고민
-    //  -> playGame(): 클래스명과 중복, play(): playOneRound 와 혼동 가능성
-    public void playGame() {
+    public void play() {
+        List<Integer> answer = computer.speakNumbers();
+
         while (true) {
-            playOneRound();
-            if (isEnd) break;
+            Result result = playRound(answer);
+            judge.announceResult(result);
+            isOver = judge.checkGameOver(result);
+            if (isOver) break;
         }
 
         end();
     }
 
-    private void playOneRound() {
+    private Result playRound(List<Integer> answer) {
         printInputNumberComment();
-        List<Integer> answer = computer.loadRandomNumberList();
-        List<Integer> playerNumbers = player.load3NumberList();
+        List<Integer> playerNumbers = player.speakNumbers();
 
-        Result result = judge.makeResult(answer, playerNumbers);
-        isEnd = judge.checkGameIsFinish(result);
-        judge.announceResult(result);
+        return judge.makeResult(answer, playerNumbers);
     }
 
-    public void end() {
-        judge.announceEndGame();
-        isRestart = judge.checkPlayerWantRestart(player);
-    }
-
-    public boolean isRestart() {
-        return isRestart;
+    private void end() {
+        judge.announceGameOver();
     }
 }
