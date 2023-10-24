@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
@@ -11,5 +12,12 @@ public class ValidatorTest {
     void 플레이어_숫자_입력_참() {
         String validInput = "123";
         assertTrue(Validator.validateInputIsNumber(validInput));
+    }
+
+    @Test
+    @DisplayName("입력값이 숫자가 아니다.")
+    void 플레이어_숫자외입력_거짓() {
+        String invalidInput = "1b3";
+        assertFalse(Validator.validateInputIsNumber(invalidInput));
     }
 }
