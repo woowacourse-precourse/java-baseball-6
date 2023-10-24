@@ -13,14 +13,13 @@ import java.util.List;
 
 public class GameManager {
     private BaseBalls generatedNumber;
-    private final BallScore STRIKE = BallScore.STRIKE;
 
     public GameManager() {
         OutputView.printStartMessage();
     }
 
     public void startGame() {
-        List<Integer> generate  = new BallNumberGenerator().generateBallNumber();
+        List<Integer> generate = new BallNumberGenerator().generateBallNumber();
         generatedNumber = new BaseBalls(DataTypeChanger.compareNumberFormat(generate));
         inputNumber();
     }
@@ -42,15 +41,13 @@ public class GameManager {
     }
 
     private boolean isEnd(GameResult compare) {
-        if (compare.getResult(STRIKE) != 3) {
-            OutputView.printScore(compare);
-            return true;
-        }
-        if (compare.getResult(STRIKE) == 3) {
+        if (compare.getResult(BallScore.STRIKE) == 3) {
             OutputView.printScore(compare);
             OutputView.printGameEnd();
+            return false;
         }
-        return false;
+        OutputView.printScore(compare);
+        return true;
     }
 
     private void endOrRestart() {
