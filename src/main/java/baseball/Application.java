@@ -9,37 +9,47 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computerNumbers = getComputerNumbers();
-        System.out.println(computerNumbers);
 
-        while (true) {
-            List<Integer> userNumbers = getUserNumbers();
-            int strikeCount = 0;
-            for (int i = 0; i < computerNumbers.size() ; i++) {
-                if (computerNumbers.get(i)==userNumbers.get(i)){
-                    strikeCount++;
+        boolean isGameOn = true;
+        while(isGameOn) {
+            List<Integer> computerNumbers = getComputerNumbers();
+            System.out.println(computerNumbers);
+
+            while (true) {
+                List<Integer> userNumbers = getUserNumbers();
+                int strikeCount = 0;
+                for (int i = 0; i < computerNumbers.size(); i++) {
+                    if (computerNumbers.get(i) == userNumbers.get(i)) {
+                        strikeCount++;
+                    }
+                }
+                System.out.println(strikeCount + "스트라이크");
+
+                int ballCount = 0;
+                for (int j = 0; j < computerNumbers.size(); j++) {
+                    if (computerNumbers.get(j) != userNumbers.get(j) && computerNumbers.contains(userNumbers.get(j))) {
+                        ballCount++;
+                    }
+                }
+                System.out.println(ballCount + "볼");
+
+                if (strikeCount == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
                 }
             }
-            System.out.println(strikeCount + "스트라이크");
-
-            int ballCount = 0;
-            for (int j = 0; j < computerNumbers.size(); j++) {
-                if (computerNumbers.get(j)!= userNumbers.get(j) && computerNumbers.contains(userNumbers.get(j))) {
-                    ballCount++;
-                }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String putNumber = Console.readLine();
+            if (putNumber.equals("1")) {
+                isGameOn = true;
+            } else if (putNumber.equals("2")) {
+                isGameOn = false;
+            } else{
+                throw new IllegalArgumentException(" 1이나 2를 입력하세요.");
             }
-            System.out.println(ballCount + "볼");
 
-            if(strikeCount == 3){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
         }
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-
-
-        // TODO :: computerNumbers랑 userNumbers를 비교
     }
 
     private static List<Integer> getComputerNumbers() {
