@@ -13,4 +13,15 @@ public class Player {
 
         return playerInputCharList;
     }
+
+    public List<Integer> convertCharToIntegerList(List<Character> playerInputCharList) {
+        List<Integer> playerInputIntegerList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            int integerConvertedFromChar = Character.getNumericValue(playerInputCharList.get(i));
+            playerInputIntegerList.add(integerConvertedFromChar);
+        }
+
+        return playerInputIntegerList;
+    }
 }
