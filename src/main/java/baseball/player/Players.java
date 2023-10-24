@@ -12,9 +12,7 @@ public class Players {
     }
 
     public void createUserNumber() {
-    }
-
-    public void validateComputerNumber() {
+        user.createNumbers();
     }
 
     public void createComputerNumber() {

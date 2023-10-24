@@ -6,9 +6,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public final class Computer extends Player {
 
+    public Computer() {
+        super();
+    }
+
     @Override
     public void createNumbers() {
-        numbers = new Numbers();
         while (!numbers.validateSize()) {
             numbers.addNumber(generateUniqueNumber());
         }

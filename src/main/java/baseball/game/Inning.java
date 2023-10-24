@@ -13,6 +13,7 @@ public class Inning {
 
     public void startInning() {
         players.createComputerNumber();
+        players.createUserNumber();
     }
 
     private void endInning() {
