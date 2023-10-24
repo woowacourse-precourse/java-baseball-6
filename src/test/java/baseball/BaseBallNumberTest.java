@@ -6,7 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import baseball.model.BaseBallNumber;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +29,7 @@ class BaseBallNumberTest {
         // given
         // when
         // then
-        Assertions.assertThatThrownBy(() -> BaseBallNumber.parse(inputNumber))
+        Assertions.assertThatThrownBy(() -> BaseBallNumber.generateNumber(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,7 +38,7 @@ class BaseBallNumberTest {
     void parseNumber() {
         // given
         // when
-        BaseBallNumber baseBallNumber = BaseBallNumber.parse("123");
+        BaseBallNumber baseBallNumber = BaseBallNumber.generateNumber("123");
 
         // then
         assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
@@ -60,7 +62,6 @@ class BaseBallNumberTest {
         assertThat(Arrays.stream(numbers).allMatch(number -> number >= 1 && number <= 9)).isTrue();
         assertThat(numberSet).hasSize(3);
     }
-
     static Stream<Arguments> inValidNumberArray() {
         return Stream.of(
                 Arguments.of("3자리보다 큰 숫자 문자열이 들어온 경우", "1234"),

@@ -12,7 +12,7 @@ public class BaseBallGame {
     }
 
     public BallCount play(String inputAnswer) {
-        BaseBallNumber inputBaseBallNumber = BaseBallNumber.parse(inputAnswer);
+        BaseBallNumber inputBaseBallNumber = BaseBallNumber.generateNumber(inputAnswer);
 
         return calculateStrikeAndBall(inputBaseBallNumber);
     }

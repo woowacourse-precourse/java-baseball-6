@@ -31,7 +31,7 @@ public class BaseBallNumber {
                 randomNumbers.stream().mapToInt(Integer::intValue).toArray());
     }
 
-    public static BaseBallNumber parse(String inputString) {
+    public static BaseBallNumber generateNumber(String inputString) {
 
         int[] numbers = inputString.chars()
                 .map(Character::getNumericValue)
