@@ -115,6 +115,12 @@ public class BaseBallGame {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
 
+        for (Integer num : input) {
+            if (num < 1 || num > 9) {
+                throw new IllegalArgumentException("유효한 숫자 범위가 아닙니다.");
+            }
+        }
+
     }
 
     /**
