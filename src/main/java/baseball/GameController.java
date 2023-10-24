@@ -29,22 +29,22 @@ public class GameController {
         this.restartOrEnd();
     }
 
-    public List<Integer> makeComputerNum() {
+    private List<Integer> makeComputerNum() {
         return computerNumber.makeThreeUniqueNums();
     }
 
-    public List<Integer> getUserNum() {
+    private List<Integer> getUserNum() {
         String userInputStr = userInput.readUserInput();
         userInput.checkUserInput(userInputStr);
         return userInput.stringToList(userInputStr);
     }
 
-    public boolean giveHint(List<Integer> computerNum, List<Integer> userNum) {
+    private boolean giveHint(List<Integer> computerNum, List<Integer> userNum) {
         HintDto hintDto = hint.calHint(computerNum, userNum);
         return hint.printHint(hintDto);
     }
 
-    public void restartOrEnd() {
+    private void restartOrEnd() {
         boolean isRestart = gameStartController.restartOrEnd();
         if (isRestart) {
             this.play();
