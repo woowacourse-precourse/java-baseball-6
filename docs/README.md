@@ -18,7 +18,7 @@
     - `generateSecretNumber()` : 랜덤으로 생성한 숫자 저장
     - `getSecretNumber()` : 저장된 숫자 반환
 
-### GameStatus
+### Game
 
 - attributes
     - `status` : 현재 게임 상태 (대기, 진행 중)
@@ -53,7 +53,7 @@
 
 ## 📡 Controller
 
-### GameController
+### BaseballGameController
 
 - attributes
     - `player` : 플레이어 숫자 관리
@@ -70,13 +70,13 @@
         - (v)getGameContineuChoice → (m)restartGame, (m)generateSecretNumber, (m)getSecretNumber
         - or (v)getGameContineuChoice → (m)endGame, (m)
 
-## 👮🏻‍ Exception
-
 ### ExceptionHandler
 
 - methods
     - `validateSuggestedNumber()` :  플레이어가 제시한 숫자 유효성 검사
     - `validateGameStatus()` : 플레이어가 제시한 게임 지속 여부 유효성 검사
+
+## 🔑 Enums
 
 ### ErrorCode
 
@@ -84,6 +84,11 @@
 - 중복된 숫자가 있습니다.
 - 1~9 사이의 숫자가 아닙니다.
 - 지속 여부를 표시하는 1~2 사이의 숫자가 아닙니다.
+
+### GameStatus
+
+- 진행 중
+- 대기
 
 ## A. Requirement list
 
