@@ -17,24 +17,24 @@ public class Referee {
         ballNumber = Constants.ZERO;
     }
 
-    public boolean isNothing(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers == Constants.ZERO && ballNumbers == Constants.ZERO;
+    public boolean isNothing() {
+        return strikeNumber == Constants.ZERO && ballNumber == Constants.ZERO;
     }
 
-    public boolean isOnlyBall(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers == Constants.ZERO && ballNumbers != Constants.ZERO;
+    public boolean isOnlyBall() {
+        return strikeNumber == Constants.ZERO && ballNumber != Constants.ZERO;
     }
 
-    public boolean isOnlyStrike(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers != Constants.ZERO && ballNumbers == Constants.ZERO;
+    public boolean isOnlyStrike() {
+        return strikeNumber != Constants.ZERO && ballNumber == Constants.ZERO;
     }
 
-    public boolean isStrikeAndBall(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers != Constants.ZERO && ballNumbers != Constants.ZERO;
+    public boolean isStrikeAndBall() {
+        return strikeNumber != Constants.ZERO && ballNumber != Constants.ZERO;
     }
 
-    public boolean isThreeStrike(int strikeNumbers) {
-        return strikeNumbers == Constants.THREE_STRIKE;
+    public boolean isThreeStrike() {
+        return strikeNumber == Constants.THREE_STRIKE;
     }
 
     public int getStrikeNumber() {

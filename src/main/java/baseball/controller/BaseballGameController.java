@@ -32,8 +32,8 @@ public class BaseballGameController {
             Validation.validateInputThreeNumber(inputNumbers);
 
             referee.calculateBallAndStrikeNumber(randomNumbers, inputNumbers);
-            determineResult(referee.getStrikeNumber(), referee.getBallNumber());
-        } while (!referee.isThreeStrike(referee.getStrikeNumber()));
+            determineResult();
+        } while (!referee.isThreeStrike());
     }
 
     private boolean isRestart() {
@@ -43,18 +43,18 @@ public class BaseballGameController {
         return Constants.GAME_RESTART_NUMBER.equals(restartOrEndNumber);
     }
 
-    private void determineResult(int strikeNumbers, int ballNumbers) {
-        if (referee.isNothing(strikeNumbers, ballNumbers)) {
+    private void determineResult() {
+        if (referee.isNothing()) {
             OutputView.printNothing();
         }
-        if (referee.isOnlyBall(strikeNumbers, ballNumbers)) {
-            OutputView.printOnlyBall(ballNumbers);
+        if (referee.isOnlyBall()) {
+            OutputView.printOnlyBall(referee.getBallNumber());
         }
-        if (referee.isOnlyStrike(strikeNumbers, ballNumbers)) {
-            OutputView.printOnlyStrike(strikeNumbers);
+        if (referee.isOnlyStrike()) {
+            OutputView.printOnlyStrike(referee.getStrikeNumber());
         }
-        if (referee.isStrikeAndBall(strikeNumbers, ballNumbers)) {
-            OutputView.printBallAndStrike(ballNumbers, strikeNumbers);
+        if (referee.isStrikeAndBall()) {
+            OutputView.printBallAndStrike(referee.getBallNumber(), referee.getStrikeNumber());
         }
     }
 }
