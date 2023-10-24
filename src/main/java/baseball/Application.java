@@ -55,11 +55,6 @@ class Game {
         return parseInput;
     }
 
-    public static void validateInput(String input) {
-        if (input.length() != 3)
-            throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
-    }
-
     //check&return the number of strike and ball
     private GameOutcome checkOutcome(List<Integer> computerNumber, List<Integer> userGuess) {
         int ball = 0, strike = 0;
@@ -125,5 +120,12 @@ class GameOutcome {
     public GameOutcome(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+    }
+}
+
+class InputVaidator{
+    public static void validateInput(String input) {
+        if (input.length() != 3)
+            throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
     }
 }
