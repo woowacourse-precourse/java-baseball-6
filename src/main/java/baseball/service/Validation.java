@@ -16,7 +16,7 @@ public class Validation {
     /**
      * 사용자가 제시한 세자리 수 유효 한지 확인
      * <p>
-     * 길이,숫자 여부,중복 여부에 대하여 확인
+     * 길이,범위,중복 여부에 대하여 확인
      *
      * @param num 사용자 입력값
      * @throws IllegalArgumentException 올바르지 않은 입력값
@@ -35,7 +35,7 @@ public class Validation {
     /**
      * 재시작 여부에 대한 입력값 유효 한지 확인
      * <p>
-     * 길이,1/2 여부에 대한 확인
+     * 길이,범위에 대한 확인
      *
      * @param sign 사용자 입력값
      * @throws IllegalArgumentException 올바르지 않은 입력값
@@ -75,7 +75,7 @@ public class Validation {
     }
 
     /**
-     * 해당 문자가 숫자를 나타 내는지 아스키 코드값 확인
+     * 해당 문자가 1~9 숫자를 나타 내는지 아스키 코드값 확인
      *
      * @param number 사용자 입력값의 각 자리값
      * @return 숫자를 나타 내면 true 이외면 false
@@ -88,7 +88,7 @@ public class Validation {
     }
 
     /**
-     * 모든 자리에 숫자를 입력 했는지 확인
+     * 모든 자리에 1~9 숫자를 입력 했는지 확인
      *
      * @param num 사용자 입력값
      * @throws IllegalArgumentException 숫자가 아닌 것을 입력한 경우

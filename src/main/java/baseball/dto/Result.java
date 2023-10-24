@@ -41,9 +41,9 @@ public class Result {
     }
 
     /**
-     * 정답 상태 값 설정
+     * 정답 여부 설정
      *
-     * @param status
+     * @param status 정답 여부
      */
     public void setStatus(boolean status) {
         this.status = status;

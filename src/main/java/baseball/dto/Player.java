@@ -29,18 +29,18 @@ public class Player {
     }
 
     /**
-     * 난수의 각 자리의 수와 위치 정보를 저장한 배열 반환
+     * 입력값 정보를 저장한 배열 반환
      *
-     * @return playerNumberBall
+     * @return playerNumberBall 입력값 정보를 저장한 배열
      */
     public int[] getPlayerNumberBall() {
         return playerNumberBall;
     }
 
     /**
-     * 난수의 각 자리의 수와 위치 정보를 저장한 배열 설정
+     * 입력값 정보를 저장한 배열 설정
      *
-     * @param playerNumberBall 난수의 각 자리의 수와 위치 정보를 저장한 배열
+     * @param playerNumberBall 입력값 정보를 저장한 배열
      */
     public void setPlayerNumberBall(int[] playerNumberBall) {
         this.playerNumberBall = playerNumberBall;
