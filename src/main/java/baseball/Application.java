@@ -42,11 +42,8 @@ public class Application {
     
     // 게임 결과 출력
  	public static int printResult(int ball, int strike) {
- 		if((ball + strike) == 0) {
- 			System.out.print("낫싱");
- 		}
  		
- 		else if(strike == 3) {
+ 		if(strike == 3) {
  			System.out.println("3스트라이크");
  			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
  			return 0;
@@ -59,6 +56,11 @@ public class Application {
  		if(strike != 0) {
  			System.out.print(strike + "스트라이크");
  		}
+ 		
+ 		else if((ball + strike) == 0) {
+ 			System.out.print("낫싱");
+ 		}
+ 		
  		System.out.println();
  		return 1;
  	}
