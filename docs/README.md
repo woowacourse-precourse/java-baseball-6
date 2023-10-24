@@ -47,7 +47,8 @@
 >
 >
 >---
->-[ ] ApplicationTest
+>- [x] ApplicationTest
+>- [x] NumberTest
 
 
 ># MVC 형태 설계

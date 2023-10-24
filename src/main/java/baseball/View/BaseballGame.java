@@ -27,9 +27,9 @@ public class BaseballGame {
         }
     }
     public void readUserNumber(){
-        System.out.print("숫자를 입력해주세요 :");
+        System.out.print("\n숫자를 입력해주세요 :");
         String userSay = readLine();
-        numbers.checkLenth(userSay);
+        numbers.checkLength(userSay);
         userNumbers=numbers.getUserNumber(userSay);
 
     }
@@ -43,10 +43,7 @@ public class BaseballGame {
         else return false;
     }
     public boolean isEnd(){
-        int EndUserInput;
-        do {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            EndUserInput = Integer.parseInt(readLine());
+        int EndUserInput=readEndUserInput();
 
             if (EndUserInput == NUMOFRESTART) {
                 return false;
@@ -54,10 +51,20 @@ public class BaseballGame {
                 System.out.println("게임을 종료합니다.");
                 return true;
             } else {
+                throw new IllegalArgumentException();
+            }
+    }
+    public int readEndUserInput(){
+        int EndUserInput;
+        while(true){
+            try {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                EndUserInput = Integer.parseInt(readLine());
+                return EndUserInput;
+            }catch (Exception e){
                 System.out.println("1 혹은 2 중 하나를 입력해주세요.");
             }
-        } while (true);
+        }
     }
-
 }
 

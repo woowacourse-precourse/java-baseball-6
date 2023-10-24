@@ -21,7 +21,7 @@ public class NumberController {
         return uniqueNumbers.toArray(new Integer[0]);
 
     }
-    public void checkLenth(String userSay){
+    public void checkLength(String userSay){
         if(userSay.length()!=NUMOFDIGIT) throw new IllegalArgumentException("3자리 숫자를 입력해주세요. 프로그램을 종료합니다.");
 
     }
