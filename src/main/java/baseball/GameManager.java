@@ -14,8 +14,7 @@ public class GameManager {
     private Player player;
     private Computer computer;
 
-    public GameManager(Computer computer, Player player)
-    {
+    public GameManager(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
     }
@@ -49,18 +48,23 @@ public class GameManager {
         else if (input.equals("2")) {
             return ;
         }
-        else
+        else {
             throw new IllegalArgumentException();
+        }
     }
     private boolean count_msg(int[] result) {
-        if (result[0] == 0 && result[1] == 0)
+        if (result[0] == 0 && result[1] == 0){
             System.out.println("낫싱");
-        if (result[0] > 0 && result[1] > 0)
+        }
+        if (result[0] > 0 && result[1] > 0){
             System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
-        if (result[0] > 0 && result[1] == 0)
+        }
+        if (result[0] > 0 && result[1] == 0){
             System.out.println(result[0] + "스트라이크 ");
-        if (result[0] == 0 && result[1] > 0)
+        }
+        if (result[0] == 0 && result[1] > 0){
             System.out.println(result[1] + "볼 ");
+        }
         if (result[0] == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
@@ -91,8 +95,9 @@ public class GameManager {
         if (numbers.size() != 3){
             isValid = false;
         }
-        if (numbers.size() != set.size())
+        if (numbers.size() != set.size()) {
             return false;
+        }
         else{
             for(Integer number : numbers){
                 if (number < 0 || number > 9){
