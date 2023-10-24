@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Data {
 
-    private static final String RESTART_RESPONSE = "-1";
     private static final boolean IS_NO_ERROR = true;
     private static final boolean IS_FULL_STRIKE = false;
+    private static final String RESTART_RESPONSE = "-1";
     private String userNumber;
     private List<String> userNumberList;
     private List<String> randomNumberList;
     private int ball;
     private int strike;
-    private String restartResponse;
     private boolean isNoError;
     private boolean isFullStrike;
+    private String restartResponse;
 
     public Data() {
         this.randomNumberList = new ArrayList<>();
@@ -64,12 +64,12 @@ public class Data {
         this.strike = strike;
     }
 
-    public String getRestartResponse() {
-        return restartResponse;
+    public boolean getIsNoError() {
+        return isNoError;
     }
 
-    public void setRestartResponse(String restartResponse) {
-        this.restartResponse = restartResponse;
+    public void setIsNoError(boolean noError) {
+        this.isNoError = noError;
     }
 
     public boolean getIsFullStrike() {
@@ -80,11 +80,11 @@ public class Data {
         this.isFullStrike = isFullStrike;
     }
 
-    public boolean getIsNoError() {
-        return isNoError;
+    public String getRestartResponse() {
+        return restartResponse;
     }
 
-    public void setIsNoError(boolean noError) {
-        this.isNoError = noError;
+    public void setRestartResponse(String restartResponse) {
+        this.restartResponse = restartResponse;
     }
 }
