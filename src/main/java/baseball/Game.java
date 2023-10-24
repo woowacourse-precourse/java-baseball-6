@@ -38,6 +38,7 @@ public class Game {
         user = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             checkIsNumber(i);
+            checkDuplicateNumber(i);
             user.add(input.charAt(i) - '0');
         }
     }
@@ -47,8 +48,13 @@ public class Game {
             throw new IllegalArgumentException();
         }
     }
-
-    public void checkIsNumber(int index) {
+    public void checkIsNumber(int index)
+    {
+        if (input.charAt(index) < '0' || input.charAt(index) > '9') {
+            throw new IllegalArgumentException();
+        }
+    }
+    public void checkDuplicateNumber(int index) {
         if (user.contains(input.charAt(index) - '0')) {
             throw new IllegalArgumentException();
         }
@@ -89,7 +95,7 @@ public class Game {
         System.out.println();
     }
 
-    public void ableExit() {
+    public void checkExit() {
         exit = Integer.parseInt(Console.readLine());
         if (exit == 1) {
             makeComputerNumber();
@@ -104,7 +110,7 @@ public class Game {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            ableExit();
+            checkExit();
         }
     }
 
