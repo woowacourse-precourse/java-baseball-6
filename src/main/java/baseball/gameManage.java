@@ -13,8 +13,10 @@ public class gameManage implements gameManageInterface {
     final int PLAYAGAIN = 1;
     final int EXITGAME = 2;
 
+    final printGameMessage printGameMessage = new printGameMessage();
+
     public void init() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printGameMessage.gameStartMessage();
         try {
             play();
             playAgain();
@@ -35,7 +37,7 @@ public class gameManage implements gameManageInterface {
     }
 
     public void selectPlayerNumber(playerEntity playerEntity) {
-        System.out.println("숫자를 입력해주세요 : ");
+        printGameMessage.inputNumberMessage();
         String playerNumber = Console.readLine();
 
         if (playerNumber.length() > 3) {
@@ -95,14 +97,14 @@ public class gameManage implements gameManageInterface {
             selectPlayerNumber(playerEntity);
             resultCompareNumber isMatched = judgeNumber(playerEntity.getHumanNumber(), computerNumber);
             if (isMatched == resultCompareNumber.MATCH) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                printGameMessage.numberMatchMessage();
                 break;
             }
         }
     }
 
     public void playAgain() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        printGameMessage.gameRestartMessage();
         while (true) {
             int checkAgain = Integer.parseInt(Console.readLine());
             if (checkAgain != PLAYAGAIN && checkAgain != EXITGAME) {
