@@ -32,10 +32,9 @@ class GameTest {
         IllegalArgumentException exception3 = assertThrows(
                 IllegalArgumentException.class, () -> game.getIntegerInput(""));
 
-        assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception.getMessage());
-        assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception.getMessage());
-        assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception2.getMessage());
-        assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception3.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(INVALID_LENGTH_INPUT.getMsg());
+        assertThat(exception2.getMessage()).isEqualTo(INVALID_LENGTH_INPUT.getMsg());
+        assertThat(exception3.getMessage()).isEqualTo(INVALID_LENGTH_INPUT.getMsg());
     }
 
     @Test
@@ -45,7 +44,7 @@ class GameTest {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class, () -> game.getIntegerInput("1234"));
 
-        assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(INVALID_LENGTH_INPUT.getMsg());
     }
 
     @Test
@@ -59,9 +58,9 @@ class GameTest {
         IllegalArgumentException exception3 = assertThrows(
                 IllegalArgumentException.class, () -> game.getIntegerInput("pen"));
 
-        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception.getMessage());
-        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
-        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception3.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(INVALID_FORMAT_INPUT.getMsg());
+        assertThat(exception2.getMessage()).isEqualTo(INVALID_FORMAT_INPUT.getMsg());
+        assertThat(exception3.getMessage()).isEqualTo(INVALID_FORMAT_INPUT.getMsg());
     }
 
     @Test
@@ -71,7 +70,7 @@ class GameTest {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class, () -> game.getIntegerInput("120"));
 
-        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(INVALID_FORMAT_INPUT.getMsg());
     }
 
     @Test
@@ -83,8 +82,8 @@ class GameTest {
         IllegalArgumentException exception2 = assertThrows(
                 IllegalArgumentException.class, () -> game.getIntegerInput("133"));
 
-        assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception.getMessage());
-        assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(INVALID_DISTINCT_INPUT.getMsg());
+        assertThat(exception2.getMessage()).isEqualTo(INVALID_DISTINCT_INPUT.getMsg());
     }
 
     @Test
@@ -161,8 +160,8 @@ class GameTest {
         IllegalArgumentException exception3 = assertThrows(
                 IllegalArgumentException.class, () -> game.getReplayOrOverInput("12"));
 
-        assertThat(INVALID_FORMAT_INPUT2.getMsg()).isEqualTo(exception.getMessage());
-        assertThat(INVALID_FORMAT_INPUT2.getMsg()).isEqualTo(exception2.getMessage());
-        assertThat(INVALID_FORMAT_INPUT2.getMsg()).isEqualTo(exception3.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(INVALID_FORMAT_INPUT2.getMsg());
+        assertThat(exception2.getMessage()).isEqualTo(INVALID_FORMAT_INPUT2.getMsg());
+        assertThat(exception3.getMessage()).isEqualTo(INVALID_FORMAT_INPUT2.getMsg());
     }
 }
