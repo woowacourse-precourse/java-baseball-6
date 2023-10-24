@@ -21,7 +21,7 @@ public class NumberBaseballGame {
 
   public static void playRound() {
     String computerBalls = getComputerBalls();
-    String message = "";
+    String message;
 
     do {
       String userBalls = getUserInputBalls();
