@@ -8,6 +8,7 @@ public class BaseBallGame {
     private int computerNum; // 컴퓨터가 선택한 숫자
     PrintConsole print = new PrintConsole(); // 콘솔 출력 위한 참조변수
     CompareNum compareNum = new CompareNum(); // 숫자 비교 위한 참조변수
+    CheckValidNum checkNum = new CheckValidNum(); // 사용자 입력 숫자 유효성 확인 위한 참조변수
 
     public BaseBallGame() {
     }
@@ -48,19 +49,35 @@ public class BaseBallGame {
         print.printStart();
         while (true) {
             int num = print.printInput();
-            print.printOutput(compareNum.compare(this.computerNum, num));
 
-            if (this.computerNum == num) {
+            checkNum.check(num); // 사용자가 올바른 숫자 입력했는지 확인
+            print.printOutput(compareNum.compare(this.computerNum, num)); // 숫자 비교해서 결과 출력
+
+            if (this.computerNum == num) { // 숫자 맞추면 게임 종료
+                int result = end();
+                if (result == 1) { // 재시작
+                    start();
+                } else if (result == 2) { // 종료
+                    return;
+                }
             }
+        }
+    }
 
+    // 숫자 야구 게임 종료
+    public int end() {
+        print.printEnd();
 
+        int num = print.printInput();
+        // 게임 종료 시 1 또는 2만 입력 받기
+        if (num == 1) { // 게임 재시작
+            return 1;
+        } else if (num == 2) { // 게임 종료
+            return 2;
+        } else { // 예외 발생
+            throw new IllegalArgumentException();
         }
     }
 
 
-
-    // 컴퓨터 숫자와 사용자 입력 숫자 비교
-    private void check(int num) {
-
-    }
 }
