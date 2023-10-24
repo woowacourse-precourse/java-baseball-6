@@ -19,6 +19,7 @@ public class Application {
         int retry = 0;
         while(retry < 2) {
             if (retry == 1){
+                retry = 0;
                 computer.clear();
                 while (computer.size() < 3) {
                     int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -26,7 +27,6 @@ public class Application {
                         computer.add(randomNumber);
                     }
                 }
-                retry = 0;
             }
             int num = 0;
             System.out.print("숫자를 입력해주세요: ");
