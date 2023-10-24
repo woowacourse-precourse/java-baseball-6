@@ -32,16 +32,13 @@ public class ScoreCounter {
     }
 
     private boolean isBall(Integer computerDigit, List<Integer> user, Integer index) {
-        boolean isMatch=false;
-
         for (int i = 0; i < user.size(); i++) {
-            if(i == index) continue;
-            if(user.get(i).equals(computerDigit)){
-                isMatch=true;
-            };
+            if (i != index && user.get(i).equals(computerDigit)) {
+                return true;
+            }
         }
 
-        return isMatch;
+        return false;
     }
 
 }
