@@ -20,7 +20,9 @@ public class Referee {
     }
 
     private boolean isStrike(String computerNumbers, String playerNumbers, int index) {
-        return computerNumbers.charAt(index) == playerNumbers.charAt(index);
+        char computerDigit = computerNumbers.charAt(index);
+        char playerDigit = playerNumbers.charAt(index);
+        return computerDigit == playerDigit;
     }
 
     public int getBallCount(String computerNumbers, String playerNumbers) {
@@ -34,7 +36,9 @@ public class Referee {
     }
 
     private boolean isBall(String computerNumbers, String playerNumbers, int index) {
-        return (computerNumbers.charAt(index) != playerNumbers.charAt(index)) &&
-                computerNumbers.contains(String.valueOf(playerNumbers.charAt(index)));
+        char computerDigit = computerNumbers.charAt(index);
+        char playerDigit = playerNumbers.charAt(index);
+        return (computerDigit != playerDigit) &&
+                computerNumbers.contains(String.valueOf(playerDigit));
     }
 }
