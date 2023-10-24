@@ -34,9 +34,9 @@ public class OutputView {
   }
 
   private void isPrintBallAndStrike(JugeResult jugeResult) {
-    if (!(jugeResult.isOnlyBall() && jugeResult.isOnlyStrike())) {
+    if (jugeResult.isBallAndStrike()) {
       System.out.printf("%d" + HIT_BALL_MESSAGE + " " +
-              "%d" + HIT_STRIKE_MESSAGE + "\n",
+                      "%d" + HIT_STRIKE_MESSAGE + "\n",
               jugeResult.getBall(), jugeResult.getStrike());
     }
   }
