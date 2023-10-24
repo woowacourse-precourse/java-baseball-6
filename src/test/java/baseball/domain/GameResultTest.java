@@ -15,4 +15,11 @@ class GameResultTest {
         assertEquals(2, result.getStrike());
         assertEquals(1, result.getBall());
     }
+
+    @Test
+    void 스트라이크_제한_개수_초과_테스트() {
+        assertThrows(IllegalStateException.class,
+                () -> new GameResult(10, 1)
+        );
+    }
 }
