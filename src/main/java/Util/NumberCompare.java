@@ -1,5 +1,6 @@
 package Util;
 
+import Model.BaseballNumberConstants;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class NumberCompare {
     }
 
     private void ballCount(String computerNumber, String userNumber) {
-        for (int i = 0; i < userNumber.length(); i++) {
+        for (int i = 0; i < BaseballNumberConstants.INPUT_MAX_COUNTS; i++) {
             if (computerNumber.contains(Character.toString(userNumber.charAt(i)))) {
                 ball++;
             }
@@ -30,7 +31,7 @@ public class NumberCompare {
     }
 
     private void strikeCount(String computerNumber, String userNumber) {
-        for (int i = 0; i < userNumber.length(); i++) {
+        for (int i = 0; i < BaseballNumberConstants.INPUT_MAX_COUNTS; i++) {
             if (computerNumber.charAt(i) == userNumber.charAt(i)) {
                 strike++;
             }
