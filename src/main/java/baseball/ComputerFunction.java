@@ -12,8 +12,8 @@ public class ComputerFunction {
     public List<Integer> createRandomNumber(){
         List<Integer> randomNumber = new ArrayList<>();
 
-        while(randomNumber.size() < SIZE_OF_NUMBER.getNumberInfo()){
-            int randomNumberDigit = Randoms.pickNumberInRange(START_OF_RANGE.getNumberInfo(), END_OF_RANGE.getNumberInfo());
+        while(randomNumber.size() < COUNT.getNumberInfo()){
+            int randomNumberDigit = Randoms.pickNumberInRange(START.getNumberInfo(), END.getNumberInfo());
 
             if(!randomNumber.contains(randomNumberDigit)){
                 randomNumber.add(randomNumberDigit);
@@ -30,7 +30,7 @@ public class ComputerFunction {
             int ballCount = 0;
             int strikeCount = 0;
 
-            for (int i=0; i<SIZE_OF_NUMBER.getNumberInfo(); i++) {
+            for (int i=0; i<COUNT.getNumberInfo(); i++) {
                 int tmp = userNumber.charAt(i) - '0';
 
                 if (randomNumber.indexOf(tmp) == i) {
@@ -41,7 +41,7 @@ public class ComputerFunction {
                 }
             }
 
-            if (strikeCount == SIZE_OF_NUMBER.getNumberInfo()) {
+            if (strikeCount == COUNT.getNumberInfo()) {
                 System.out.println(strikeCount + STRIKE_MESSAGE.getMessage());
                 System.out.println(CORRECT_MESSAGE.getMessage());
                 break;
