@@ -30,29 +30,43 @@ public class Game {
 
     // 게임의 결과를 업데이트하는 메서드
     public void updateGameResult(int[] userNumbers) {
+        if (userNumbers == null || userNumbers.length != 3) {
+            throw new IllegalArgumentException("사용자 숫자가 유효하지 않습니다.");
+        }
+
         int[] result = calculateStrikesAndBalls(userNumbers);
         strikes = result[0];
         balls = result[1];
+
+//        if (strikes == 3) {
+//            System.out.println("3스트라이크 3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+//        }
     }
 
-    private int[] calculateStrikesAndBalls(int[] userNumbers) {
-        int[] result = new int[2];
-        List<Integer> computerNumbers = computer.getAnswer(); // Computer 객체에서 숫자 가져옴
 
-        if (computerNumbers == null || computerNumbers.size() != 3 || userNumbers.length != 3) {
+
+    private int[] calculateStrikesAndBalls(int[] userNumbers) {
+        if (userNumbers == null || userNumbers.length != 3) {
+            throw new IllegalArgumentException("사용자 숫자가 유효하지 않습니다.");
+        }
+
+        int[] result = new int[2];
+        List<Integer> computerNumbers = computer.getAnswer();
+
+        if (computerNumbers == null || computerNumbers.size() != 3) {
             throw new IllegalArgumentException("컴퓨터 숫자가 유효하지 않습니다.");
         }
+
         for (int i = 0; i < 3; i++) {
-            if (i < userNumbers.length) {
-                if (userNumbers[i] == computerNumbers.get(i)) {
-                    result[0]++; // 스트라이크
-                } else if (computerNumbers.contains(userNumbers[i])) {
-                    result[1]++; // 볼
-                }
+            if (userNumbers[i] == computerNumbers.get(i)) {
+                result[0]++; // 스트라이크
+            } else if (computerNumbers.contains(userNumbers[i])) {
+                result[1]++; // 볼
             }
         }
         return result;
     }
+
 
     // 게임 초기화 메서드
     public void resetGame() {

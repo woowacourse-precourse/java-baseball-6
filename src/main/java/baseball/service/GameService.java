@@ -22,29 +22,29 @@ public class GameService {
     public String playGame(String userInput) {
         int[] userNumbers = parseUserInput(userInput);
         game.updateGameResult(userNumbers);
-        if (userNumbers == null) {
-            return "유효하지 않은 입력입니다. 3자리 숫자를 입력하세요.";
-        }
+//        if (userNumbers == null) {
+//            return "유효하지 않은 입력입니다. 3자리 숫자를 입력하세요.";
+//        }
 
         int strikes = game.getStrikes();
         int balls = game.getBalls();
 
 
         if (strikes == 3 && balls == 0) {
-            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return "3스트라이크 3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
 
         StringBuilder resultMessage = new StringBuilder();
 
         if (strikes > 0) {
-            resultMessage.append(strikes+"스트라이크");
+            resultMessage.append(strikes).append("스트라이크 ");
         }
 
         if (balls > 0) {
-            resultMessage.append(balls+"볼 ");
+            resultMessage.append(balls).append("볼");
         }
 
-        if (resultMessage.length() == 0) {
+        if (resultMessage.isEmpty()) {
             resultMessage.append("낫싱");
         }
 

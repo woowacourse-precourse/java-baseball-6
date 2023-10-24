@@ -29,7 +29,7 @@ public class GameController {
             String resultMessage = gameService.playGame(userInput);
             OutputView.printGameResult(resultMessage);
 
-            if (resultMessage.equals("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
+            if (resultMessage.equals("3스트라이크 3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
                 isGameFinished = true;
             }
 
