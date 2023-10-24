@@ -1,19 +1,15 @@
 package baseball;
 
-import baseball.manager.BaseBallNumberManager;
+import baseball.input.UserInput;
 import baseball.manager.NumberMatcher;
 import baseball.manager.RandomNumberGenerator;
-import baseball.input.BaseBallGameUserInput;
-import baseball.input.UserInput;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
 
-    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator =
-        new BaseBallNumberManager();
-    private final NumberMatcher<BaseBallNumberCollection> numberMatcher = new BaseBallNumberManager();
-    private final UserInput<BaseBallNumberCollection> baseBallUserInput = new BaseBallGameUserInput();
-    private final Integer baseBallGameSize;
+    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator;
+    private final NumberMatcher<BaseBallNumberCollection> numberMatcher;
+    private final UserInput<BaseBallNumberCollection> baseBallUserInput;
 
     private static final String CONTINUE_GAME_CODE = "1";
     private static final String STOP_GAME_CODE = "2";
@@ -22,27 +18,33 @@ public class BaseBallGame {
     private static final String CONTINUE_GAME_QUESTION_FORMAT =
         String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.",CONTINUE_GAME_CODE, STOP_GAME_CODE);
 
-    public BaseBallGame(final Integer gameSize) {
-        baseBallGameSize= gameSize;
+    public BaseBallGame(RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator,
+                        NumberMatcher<BaseBallNumberCollection> numberMatcher,
+                        UserInput<BaseBallNumberCollection> baseBallUserInput) {
+        this.randomNumberGenerator = randomNumberGenerator;
+        this.numberMatcher = numberMatcher;
+        this.baseBallUserInput = baseBallUserInput;
     }
 
-    public void startGame(){
+    public void startGame(final Integer baseBallGameSize){
         System.out.println(BASE_BALL_GAME_START_FORMAT);
         do{
-            final BaseBallNumberCollection randomNumberList = generateNumber();
+            final BaseBallNumberCollection randomNumberList = generateNumber(baseBallGameSize);
             BaseBallNumberCollection userInput;
             do{
                 userInput=baseBallUserInput.input(baseBallGameSize);
-            }while(matchingNumber(userInput, randomNumberList));
+            }while(matchingNumber(userInput, randomNumberList, baseBallGameSize));
         }while(checkContinuationGame());
         baseBallUserInput.close();
     }
 
-    private BaseBallNumberCollection generateNumber(){
+    private BaseBallNumberCollection generateNumber(final Integer baseBallGameSize){
         return randomNumberGenerator.generate(baseBallGameSize);
     }
 
-    private Boolean matchingNumber(final BaseBallNumberCollection userInput, final BaseBallNumberCollection randomNumber){
+    private Boolean matchingNumber(final BaseBallNumberCollection userInput,
+                                   final BaseBallNumberCollection randomNumber,
+                                   final Integer baseBallGameSize){
         if(numberMatcher.match(userInput, randomNumber)){
             System.out.println(String.format(WIN_GAME_FORMAT,baseBallGameSize));
             return false;
