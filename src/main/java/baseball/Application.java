@@ -13,13 +13,12 @@ public class Application {
     public static void main(String[] args) throws IOException {
         // TODO: 프로그램 구현
         //라이브러리 Random 값 추출, 사용자 입력 주어진 거로 수정?
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true) {
             List<Integer> computer = new ArrayList<>();
             int strike = 0; // 입력한 값의 strike 저장
             int ball = 0; // 입력한 값의 ball 저장
-            System.out.println("숫자 야구 게임을 시작합니다.");
 
             while(computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -109,10 +108,8 @@ public class Application {
                 strike = 0;
                 ball = 0;
 
-
             }
         }
-
 
     }
 }
