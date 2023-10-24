@@ -16,14 +16,18 @@ public class GameMaster<T extends Game> {
     }
 
     public void play() {
-        gameInit();
+        boolean isRunningGame = true;
 
-        while (!game.isFinished()) {
-            playTurn();
+        while (isRunningGame) {
+            gameInit();
+
+            while (!game.isFinished()) {
+                playTurn();
+            }
+            gameFinish();
+
+            isRunningGame = isContinueGame();
         }
-        gameFinish();
-
-        handleGameEnd();
     }
 
     private void gameInit() {
@@ -43,20 +47,21 @@ public class GameMaster<T extends Game> {
         println(game.getFinishPrompt());
     }
 
-    private void handleGameEnd() {
-        println(END_GAME_HANDLE_PROMPT);
+    private boolean isContinueGame() {
+        do {
+            println(END_GAME_HANDLE_PROMPT);
+            String userInput = input();
 
-        String userInput = input();
-        switch (userInput) {
-            case RESTART_SELECT:
-                restart();
-                break;
-            case EXIT_SELECT:
-                exit();
-                break;
-            default:
-                handleGameEnd();
-        }
+            switch (userInput) {
+                case RESTART_SELECT:
+                    return true;
+                case EXIT_SELECT:
+                    exit();
+                    return false;
+                default:
+                    break;
+            }
+        } while (true);
     }
 
     private void restart() {
