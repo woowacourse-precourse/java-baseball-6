@@ -12,6 +12,7 @@ import java.util.List;
 public class GameStart {
     private static final int NOT_AGAIN_GAME = 2;
     private static final int RESET_NUM = 0;
+    private static final int USER_INPUT_SIZE = 3;
     private String hintOfJudge; // 결과를 담는 문자열
     private List<Integer> computerList; // 컴퓨터의 3개의 랜덤 숫자 리스트
     private List<Integer> userList; // 입력을 받는 userList
@@ -55,7 +56,7 @@ public class GameStart {
      * 메인 야구 게임의 진행 상황을 시작한다.
      */
     private void playMainBaseBallGame() {
-        inputRanNumOfUser(); // 유저의 입력을 받아서 userList을 얻는다.
+        makeUserListFromInputTreeNum(); // 유저의 입력을 받아서 userList을 얻는다.
         hintOfJudge = gameProgress.getHintOfJudge(computerList, userList); // judge의 힌트를 얻는다.
         printHintMsg();
     }
@@ -77,14 +78,11 @@ public class GameStart {
      * @return "123" => {1 , 2, 3}
      */
 
-    private void inputRanNumOfUser() {
+    private void makeUserListFromInputTreeNum() {
         initUserList();
-
-        System.out.print(MyConstants.MSG_INPUT_NUMBER_STR()); // 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
+        printMsgBeforInputNum(); // 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
         String numInputOfUser = Utill.inputNum(); // 숫자 입력을 받는다.
-
-        // 입력을 받은 문자렬을 split을 한다음 inputList에 추가를 한다. => [ 1, 2, 3]
-        addNumber2InputList(userList, numInputOfUser);
+        addNumber2userList(userList, numInputOfUser); // 입력을 받은 문자렬을 split을 한다음 userList에 추가를 한다. => [ 1, 2, 3]
     }
 
     /**
@@ -100,8 +98,8 @@ public class GameStart {
      * @param inputList      입력받는 문자열을 추가한 리스트 {1, 2, 3}
      * @param numInputOfUser 입력받는 문자열 "123"
      */
-    private void addNumber2InputList(List<Integer> inputList, String numInputOfUser) {
-        String[] inputStrArr;
+    private void addNumber2userList(List<Integer> inputList, String numInputOfUser) {
+        String[] inputStrArr = new String[USER_INPUT_SIZE];
 
         inputStrArr = Utill.getSplitStrArr(numInputOfUser);
         Utill.makeListFromArr(inputList, inputStrArr);
@@ -141,5 +139,12 @@ public class GameStart {
      */
     private void printHintMsg() {
         System.out.println(hintOfJudge); // 힌트를 출력한다.
+    }
+
+    /**
+     * 입력을 받기전 출력 문구 생성 "숫자를 입력해주세요 : "
+     */
+    private void printMsgBeforInputNum() {
+        System.out.print(MyConstants.MSG_INPUT_NUMBER_STR());
     }
 }
