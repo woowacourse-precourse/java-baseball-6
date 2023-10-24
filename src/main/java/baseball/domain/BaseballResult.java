@@ -26,11 +26,11 @@ public class BaseballResult {
 
     private String formatResult() {
         List<String> results = new ArrayList<>();
-        if (strikeResult != Strike.ZERO) {
-            results.add(strikeResult.toString());
-        }
         if (ballResult != Ball.ZERO) {
             results.add(ballResult.toString());
+        }
+        if (strikeResult != Strike.ZERO) {
+            results.add(strikeResult.toString());
         }
         return String.join(" ", results);
     }
