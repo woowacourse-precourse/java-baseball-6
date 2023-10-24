@@ -18,19 +18,20 @@ public class ComputerController {
     RandomNumberController randomNumberController = new RandomNumberController();
     OutputView outputView = new OutputView();
 
-    public ComputerController(){
-        strikeCount = INIT_ZERO;
-        ballCount = INIT_ZERO;
-    }
-
     public GameNumber startGame(){
         return randomNumberController.generateGameNumber();
     }
 
     public boolean proceedTodo(GameNumber computerNumber, GameNumber playerNumber){
+        initZero();
         countStrikeAndBall(computerNumber, playerNumber);
         provideHint();
         return isThreeStrike();
+    }
+
+    private void initZero(){
+        strikeCount = INIT_ZERO;
+        ballCount = INIT_ZERO;
     }
 
     private void countStrikeAndBall(GameNumber computerNumber, GameNumber playerNumber){

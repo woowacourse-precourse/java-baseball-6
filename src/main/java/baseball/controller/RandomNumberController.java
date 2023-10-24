@@ -10,9 +10,11 @@ public class RandomNumberController {
     private static final int GAME_NUMBER_LENGTH = 3;
     private static final int START_INCLUSIVE_NUMBER = 1;
     private static final int END_INCLUSIVE_NUMBER = 9;
-    private final GameNumber gameNumber = new GameNumber();
+
 
     public GameNumber generateGameNumber(){
+        GameNumber gameNumber = new GameNumber();
+
         while(gameNumber.size() < GAME_NUMBER_LENGTH){
             int randomNumber = generateRandomNumber();
             gameNumber.add(randomNumber);
