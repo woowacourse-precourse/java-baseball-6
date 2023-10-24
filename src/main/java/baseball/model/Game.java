@@ -22,10 +22,10 @@ public class Game {
 	}
 
 	public int getStrikeCount() {
-		return strikeCount;
+		return this.strikeCount;
 	}
 
 	public int getBallCount() {
-		return ballCount;
+		return this.ballCount;
 	}
 }
