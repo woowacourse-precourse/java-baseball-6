@@ -19,6 +19,10 @@ public class PrintConsole {
         return Integer.parseInt(Console.readLine());
     }
 
+    public int input() {
+        return Integer.parseInt(Console.readLine());
+    }
+
     public void printOutput(Map<String, Integer> map) {
         int strike = map.get("strike");
         int ball = map.get("ball");

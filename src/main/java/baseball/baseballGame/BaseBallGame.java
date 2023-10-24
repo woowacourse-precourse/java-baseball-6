@@ -1,7 +1,6 @@
 package baseball.baseballGame;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import org.mockito.internal.stubbing.answers.ThrowsException;
 
 public class BaseBallGame {
     private int cnt; // 맞춰야 할 숫자의 개수
@@ -68,7 +67,7 @@ public class BaseBallGame {
     public int end() {
         print.printEnd();
 
-        int num = print.printInput();
+        int num = print.input();
         // 게임 종료 시 1 또는 2만 입력 받기
         if (num == 1) { // 게임 재시작
             return 1;
