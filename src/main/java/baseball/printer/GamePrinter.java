@@ -1,8 +1,8 @@
-package baseball.view;
+package baseball.printer;
 
 import baseball.domain.RoundResult;
 
-public class GameView {
+public class GamePrinter {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String REQUIRE_USER_BASEBALL_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String WIN_ROUND_MESSAGE = "게임 숫자를 모두 맞히셨습니다! 게임 종료";
