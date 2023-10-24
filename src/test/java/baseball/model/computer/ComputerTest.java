@@ -18,21 +18,15 @@ class ComputerTest {
     private GameAnswer gameAnswer;
 
     @BeforeEach
-    public void init() {
+    void init() {
         gameAnswer = new GameAnswer();
         score = new Score();
         computer = new Computer(gameAnswer, score);
     }
 
-    private void computerMakeAnswer(List<Integer> answer) throws NoSuchFieldException, IllegalAccessException {
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, answer);
-    }
-
     @Test
     @DisplayName("initScore 메소드 호출 시 strike, ball 값은 0 이어야 한다.")
-    public void testInitScore() {
+    void testInitScore() {
         // given
         computer.makeAnswer();
         List<Integer> playerInput = Arrays.asList(1, 2, 3);
@@ -49,7 +43,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("컴퓨터는 3개의 난수를 생성한다.")
-    public void testMakeAnswer() {
+    void makeAnswer_Test() {
         // given
         computer.makeAnswer();
 
@@ -63,7 +57,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("낫싱 점수 계산 테스트")
-    public void CalculateScoreTest_Nothing() throws Exception {
+    void calculateScoreTest_Nothing() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -78,7 +72,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("1스트라이크 점수 계산 테스트")
-    public void CalculateScoreTest_OneStrike() throws Exception {
+    void calculateScoreTest_OneStrike() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -93,7 +87,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("2스트라이크 점수 계산 테스트")
-    public void CalculateScoreTest_TwoStrike() throws Exception {
+    void calculateScoreTest_TwoStrike() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -108,7 +102,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("3스트라이크 점수 계산 테스트")
-    public void CalculateScoreTest_ThreeStrike() throws Exception {
+    void calculateScoreTest_ThreeStrike() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -123,7 +117,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("1볼 점수 계산 테스트")
-    public void CalculateScoreTest_OneBall() throws Exception {
+    void calculateScoreTest_OneBall() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -138,7 +132,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("2볼 점수 계산 테스트")
-    public void CalculateScoreTest_TwoBall() throws Exception {
+    void calculateScoreTest_TwoBall() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -153,7 +147,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("3볼 점수 계산 테스트")
-    public void CalculateScoreTest_ThreeBall() throws Exception {
+    void calculateScoreTest_ThreeBall() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -168,7 +162,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("1볼 1스트라이크 점수 계산 테스트")
-    public void CalculateScoreTest_OneBall_OneStrike() throws Exception {
+    void calculateScoreTest_OneBall_OneStrike() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -183,7 +177,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("2볼 1스트라이크 점수 계산 테스트")
-    public void CalculateScoreTest_TwoBall_OneStrike() throws Exception {
+    void calculateScoreTest_TwoBall_OneStrike() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -198,7 +192,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("3 스트라이크인 경우 isAllStrike()는 true를 리턴해야 한다.")
-    public void IsAllStrikeTest() throws Exception {
+    void isAllStrikeTest() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -208,5 +202,11 @@ class ComputerTest {
 
         // then
         assertTrue(score.isAllStrike());
+    }
+
+    private void computerMakeAnswer(List<Integer> answer) throws NoSuchFieldException, IllegalAccessException {
+        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
+        answerField.setAccessible(true);
+        answerField.set(gameAnswer, answer);
     }
 }
