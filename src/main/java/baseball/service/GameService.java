@@ -17,6 +17,8 @@ public class GameService {
     private static final int BALL_COUNT_INCREASE_VALUE = 1;
     private static final int STRIKE_COUNT_INCREASE_VALUE = 1;
 
+    private Map<String, Integer> ballAndStrikeCount;
+
     public List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < COMPUTER_NUMBER_SIZE) {
@@ -33,14 +35,9 @@ public class GameService {
     }
 
     public String getCompareResult(List<Integer> computerNumber, List<Integer> userNumber) {
-        Map<String, Integer> ballAndStrikeCount = getBallAndStrikeCount(computerNumber, userNumber);
+        ballAndStrikeCount = ballAndStrikeCountInitialization();
+        calculateBallAndStrikeCount(computerNumber, userNumber);
         return getResultMessage(ballAndStrikeCount);
-    }
-
-    private Map<String, Integer> getBallAndStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
-        Map<String, Integer> ballAndStrikeCount = ballAndStrikeCountInitialization();
-        ballAndStrikeCount(computerNumber, userNumber, ballAndStrikeCount);
-        return ballAndStrikeCount;
     }
 
     private Map<String, Integer> ballAndStrikeCountInitialization() {
@@ -50,15 +47,16 @@ public class GameService {
         return ballAndStrikeCount;
     }
 
-    private void ballAndStrikeCount(List<Integer> computerNumber, List<Integer> userNumber,
-                                    Map<String, Integer> ballAndStrikeCount) {
+    private void calculateBallAndStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         for (int i = 0; i < userNumber.size(); i++) {
-            if (isBall(computerNumber, userNumber, i)) {
-                increaseBallCount(ballAndStrikeCount);
-            }
-            if (isStrike(computerNumber, userNumber, i)) {
-                increaseStrikeCount(ballAndStrikeCount);
-            }
+            checkBallAndCount(computerNumber, userNumber, i);
+            checkStrikeAndCount(computerNumber, userNumber, i);
+        }
+    }
+
+    private void checkBallAndCount(List<Integer> computerNumber, List<Integer> userNumber, int index) {
+        if (isBall(computerNumber, userNumber, index)) {
+            increaseBallCount();
         }
     }
 
@@ -66,15 +64,21 @@ public class GameService {
         return (computerNumber.contains(userNumber.get(index))) && (computerNumber.get(index) != userNumber.get(index));
     }
 
-    private void increaseBallCount(Map<String, Integer> ballAndStrikeCount) {
+    private void increaseBallCount() {
         ballAndStrikeCount.put("ballCount", ballAndStrikeCount.get("ballCount") + BALL_COUNT_INCREASE_VALUE);
+    }
+
+    private void checkStrikeAndCount(List<Integer> computerNumber, List<Integer> userNumber, int index) {
+        if (isStrike(computerNumber, userNumber, index)) {
+            increaseStrikeCount();
+        }
     }
 
     private boolean isStrike(List<Integer> computerNumber, List<Integer> userNumber, int index) {
         return computerNumber.get(index) == userNumber.get(index);
     }
 
-    private void increaseStrikeCount(Map<String, Integer> ballAndStrikeCount) {
+    private void increaseStrikeCount() {
         ballAndStrikeCount.put("strikeCount", ballAndStrikeCount.get("strikeCount") + STRIKE_COUNT_INCREASE_VALUE);
     }
 
