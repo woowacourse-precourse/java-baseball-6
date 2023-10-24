@@ -1,10 +1,12 @@
 package baseball.controller;
 
+import baseball.common.InputAnswerValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    public static final String RESTART_YES_ANSWER = "1";
+
+    private static final String RESTART_YES_ANSWER = "1";
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     ComputerController computerController = new ComputerController();
@@ -18,7 +20,9 @@ public class GameController {
     public void endGame() {
         outputView.printEndGame();
         outputView.printAskRestartGame();
-        if(inputView.restartAnswer().equals(RESTART_YES_ANSWER)) {
+        String inputAnswer = inputView.restartAnswer();
+        InputAnswerValidator.validate(inputAnswer);
+        if(inputAnswer.equals(RESTART_YES_ANSWER)) {
             gameStart();
         }
     }

@@ -6,7 +6,7 @@ public class InputNumberValidator {
     public static final String WRONG_INPUT_SIZE_MESSAGE = "세자리를 입력해주세요.";
     public static final String WRONG_INPUT_UNIQUE_MESSAGE = "서로 다른 숫자만 입력 가능합니다.";
 
-    static public void validate(String inputNumber) {
+    public static void validate(String inputNumber) {
         //1. 숫자인지 확인
         //2. 세 자리인지 확인
         //3. 서로 다른 숫자인지 확인
