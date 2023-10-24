@@ -1,5 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -16,16 +23,17 @@ public class Application {
     }
 
     private static void play(){
-        int randomNum = generateRandomNumber();
+        List<Integer> randomNum = generateRandomNumber();
+        List<Integer> userNum;
         String userInput;
         boolean win = false;
 
         do{
             System.out.print("숫자를 입력해주세요:");
-            userInput = camp.nextstep.edu.missionutils.Console.readLine();
-            checkUserInput(userInput);
+            userInput = Console.readLine();
+            userNum = checkUserInput(userInput);
 
-            if(getResult(randomNum, Integer.parseInt(userInput))){
+            if(getGameResult(randomNum,userNum)){
                 win = true;
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
@@ -33,82 +41,71 @@ public class Application {
         }while(!win);
     }
 
-    public static int generateRandomNumber(){
-        int randomNum;
-        do{
-            randomNum = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(100,999);
-        }while(!checkNumber(randomNum));
-
-        return randomNum;
-    }
-
-    private static boolean checkNumber(int number){
-        int[] numArr = new int[3];
-        boolean[] checkNum = {false, false, false, false, false, false, false, false, false};
-
-        for(int i = 0; i < 3; i++){
-
-            if(number % 10 == 0){
-                return false;
+    public static List<Integer> generateRandomNumber(){
+        List<Integer> computer = new ArrayList<>();
+        while(computer.size() < 3){
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if(!computer.contains(randomNumber)){
+                computer.add(randomNumber);
             }
-
-            if(checkNum[number % 10 - 1]){
-                return false;
-            }
-
-            numArr[2 - i] = number % 10;
-            checkNum[number % 10 - 1] = true;
-            number /= 10;
-
         }
-        return true;
+
+        return computer;
     }
 
-    public static void checkUserInput(String userInput){
+    public static List<Integer> checkUserInput(String userInput){
         if(userInput.length() > 3){
-            throw new IllegalArgumentException("입력값은 세자리 숫자여야 합니다.: "+userInput);
+            throw new IllegalArgumentException();
         }
 
-        char temp = 0;
-        for(int i = 0; i<userInput.length();i++){
-            temp = userInput.charAt(i);
-            if(temp < '0' || temp > '9'){
-                throw new IllegalArgumentException("입력값은 세자리 숫자여야 합니다.: "+userInput);
+        int num = 0;
+        try{
+             num = Integer.parseInt(userInput);
+        } catch (IllegalArgumentException e){
+            System.out.println("IllegalArgumentException 발생");
+        }
+
+        List<Integer> userNumber = userNumToList(num);
+
+        for(Integer i : userNumber){
+            if(i == 0){
+                throw new IllegalArgumentException();
+            }
+            if(Collections.frequency(userNumber, i) >= 2) {
+                throw new IllegalArgumentException();
             }
         }
 
-        if(!checkNumber(Integer.parseInt(userInput))){
-            throw new IllegalArgumentException("입력값은 세자리 숫자여야 합니다.: "+userInput);
-        }
+        return userNumber;
     }
+    public static List<Integer> userNumToList(int num){
+        List<Integer> numArr = new ArrayList<>();
+        while(numArr.size() < 3){
+            numArr.add(num % 10);
+            num /= 10;
+        }
 
-    public static boolean getResult(int randomNum, int userNum){
-        int[] randomArr = intToArray(randomNum);
-        int[] userArr = intToArray(userNum);
+        Collections.reverse(numArr);
+
+        return numArr;
+    }
+    public static boolean getGameResult(List<Integer> randomNum, List<Integer> userNum){
         int strike = 0;
         int ball = 0;
 
-        for(int i = 0 ; i < 3; i++){
-            for(int j = 0; j < 3;j++){
-                if(userArr[i] == randomArr[j]){
-                    if(i == j){
-                        strike++;
-                        break;
-                    }
-                    ball++;
-                }
+        for(int i = 0; i < 3; i++){
+            if(randomNum.get(i) == userNum.get(i)){
+                strike++;
             }
         }
 
-        if(strike != 0 && ball != 0){
-            System.out.println(ball+"볼 "+strike+"스트라이크");
-        } else if (strike != 0) {
-            System.out.println(strike+"스트라이크");
-        } else if (ball != 0) {
-            System.out.println(ball+"볼");
-        }else{
-            System.out.println("낫싱");
+        for(int i = 0; i < 3; i++){
+            if(randomNum.get(i) != userNum.get(i) && randomNum.contains(userNum.get(i))){
+                ball++;
+            }
         }
+
+        printBallAndStrike(ball, strike);
 
         if(strike == 3){
             return true;
@@ -117,15 +114,19 @@ public class Application {
         }
     }
 
-    public static int[] intToArray(int n){
-        int[] arr = new int[3];
-
-        for(int i = 0; i < 3; i++){
-            arr[2 - i] = n % 10;
-            n /= 10;
+    private static void printBallAndStrike(int ball, int strike){
+        StringBuilder sb = new StringBuilder();
+        if(strike != 0 && ball != 0){
+            sb.append(ball).append("볼 ").append(strike).append("스트라이크");
+        } else if (strike != 0) {
+            sb.append(strike).append("스트라이크");
+        } else if (ball != 0) {
+            sb.append(ball).append("볼");
+        }else{
+            sb.append("낫싱");
         }
 
-        return arr;
+        System.out.println(sb.toString());
     }
 
     public static boolean askContinue(){
