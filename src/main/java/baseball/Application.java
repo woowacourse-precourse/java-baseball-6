@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.controller.GameProgress;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameProgress gameProgress = new GameProgress();
+        gameProgress.startGame();
     }
 }
