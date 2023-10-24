@@ -11,7 +11,7 @@ public class BaseballController {
     private static final int BASEBALL_LENGTH = 3;
     private static final int BASEBALL_STRIKE_COUNT = 3;
     private static final int ZERO = 0;
-    private static final String STRIKE = "스트라이크 ";
+    private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼 ";
     private static final String NOTHING = "낫싱";
     private static final String BASEBALL_RESTART = "1";
@@ -92,8 +92,8 @@ public class BaseballController {
 
     public void hint() {
         String message = "";
-        message += strikeHint();
         message += ballHint();
+        message += strikeHint();
         message += noting();
         outputView.baseballHint(message);
 

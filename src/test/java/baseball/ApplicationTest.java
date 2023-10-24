@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,27 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 길이_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> InputView.validationNumber("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> InputView.validationNumber("as1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 중복_값_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> InputView.validationNumber("112"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

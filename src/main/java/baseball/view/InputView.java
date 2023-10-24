@@ -29,7 +29,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    private static void validationNumber(String input) {
+    public static void validationNumber(String input) {
         if (inputNumberLength(input)) {
             throw new IllegalArgumentException(INPUT_NUMBER_LENGTH_EXCEPTION);
         }
@@ -50,7 +50,7 @@ public class InputView {
         return !inputNumber.matches(INPUT_NUMBER_TYPE);
     }
 
-    public static boolean differentNumber(String inputNumber) {
+    private static boolean differentNumber(String inputNumber) {
         List<String> inputNumberList = Arrays.asList(inputNumber.split(""));
         Set<String> inputNumberSet = new HashSet<>(inputNumberList);
         return inputNumberSet.size() != INPUT_NUMBER_LENGTH;
