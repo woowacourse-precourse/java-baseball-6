@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.Controller;
+import baseball.model.Model;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -49,10 +50,11 @@ class ApplicationTest extends NsTest {
     void 볼_스트라이크_여부확인_테스트() {
         int[] input_number = {1, 2, 3};
         List<Integer> computer_number = List.of(1, 2, 3);
-        int[] expected_strike_ball = {1, 1};
 
-        int[] strike_ball = controller.checkStrikeAndBall(input_number, computer_number);
-        org.assertj.core.api.Assertions.assertThat(strike_ball.equals(expected_strike_ball));
+        Model model = new Model(input_number, computer_number, 0, 0);
+
+        controller.checkStrikeAndBall(model);
+        Assertions.assertEquals(model.getStrike_count(), 3);
     }
 
     @Test

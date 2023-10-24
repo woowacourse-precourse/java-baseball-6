@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Model;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -46,24 +47,27 @@ public class Controller {
     }
 
     // 입력받은 숫자의 볼과 스트라이크의 여부를 체킹하는 기능
-    public int[] checkStrikeAndBall(int[] input_number, List<Integer> computer_number) {
-        int[] strike_ball = {0,0}; // {볼, 스트라이크}
+    public void checkStrikeAndBall(Model model) {
+        int strike_count = model.getStrike_count();
+        int ball_count = model.getBall_count();
 
         for (int input_index=0; input_index<SIZE; input_index++) {
             for (int comp_index=0; comp_index<SIZE; comp_index++) {
-                checkDetail(input_number, computer_number, strike_ball, input_index, comp_index);
+                checkDetail(model, input_index, comp_index);
             }
         }
-        return strike_ball;
     }
 
     // 실제로 볼과 스트라이크의 여부를 체킹하는 세부 기능 - 체킹하는 방법의 변화가 있을 때 유지보수에 용이하다.
-    private void checkDetail(int[] input_number, List<Integer> computer_number, int[] strike_ball, int input_index, int comp_index) {
+    private void checkDetail(Model model, int input_index, int comp_index) {
+        int[] input_number = model.getInput_number();
+        List<Integer> computer_number = model.getComputer_number();
+
         if (input_number[input_index] == computer_number.get(comp_index)) {
             if(input_index == comp_index) {
-                strike_ball[STRIKE_INDEX] += 1;
+                model.updateStrikeCount();
             } else {
-                strike_ball[BALL_INDEX] += 1;
+                model.updateBallCount();
             }
         }
     }

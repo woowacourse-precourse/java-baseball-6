@@ -24,9 +24,8 @@ public class Application {
             model.setInput_number(input_number);
             controller.exceptionUserInput(model.getInput_number());
 
-            int[] strike_ball = controller.checkStrikeAndBall(model.getInput_number(), model.getComputer_number());
-            model.setBall_count(strike_ball[0]);
-            model.setStrike_count(strike_ball[1]);
+//            int[] strike_ball = controller.checkStrikeAndBall(model.getInput_number(), model.getComputer_number());
+            controller.checkStrikeAndBall(model);
             view.printStrikeBall(model.getStrike_count(), model.getBall_count());
 
             if(model.getStrike_count() == SIZE) {
