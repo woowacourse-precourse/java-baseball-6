@@ -89,18 +89,10 @@ public class GameManager {
         List<Integer> correctNumber = new ArrayList<>();
         while(correctNumber.size() < 3) {
             int n = Randoms.pickNumberInRange(1, 9);
-            boolean isDuplicated = false;
-            for (Integer i : correctNumber) {
-                if (i == n) {
-                    isDuplicated = true;
-                    break;
-                }
-            }
-
-            if (!isDuplicated)
+            if (!correctNumber.contains(n)) {
                 correctNumber.add(n);
+            }
         }
-
         return correctNumber;
     }
 }
