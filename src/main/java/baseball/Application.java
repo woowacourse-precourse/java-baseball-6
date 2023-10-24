@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Computer {
-    final List<Integer> answer;
+    List<Integer> answer;
     final int answerSize = 3;
 
 
@@ -14,7 +14,7 @@ class Computer {
         return Randoms.pickNumberInRange(1, 9);
     }
 
-    public Computer() {
+    public void generateAnswer() {
         List<Integer> computerAnswer = new ArrayList<>();
 
         while (computerAnswer.size() < answerSize) {
@@ -57,7 +57,7 @@ class User {
     final int answerSize = 3;
 
     public List<Integer> userInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         String playerStringNumsInput = Console.readLine();
         List<Integer> playerNumsTemp = new ArrayList<>();
@@ -77,6 +77,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         final Computer computer = new Computer();
+        computer.generateAnswer();
         final User user = new User();
         System.out.println(computer.answer);
         while (true) {
@@ -86,8 +87,13 @@ public class Application {
             if (result.get(0) == (null)) {
                 System.out.print("낫싱\n");
             } else if (result.get(1) > 2) {
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                if (Console.readLine().equals("2")) {
+                    break;
+                } else {
+                    computer.generateAnswer();
+                }
             } else if (result.get(0).equals(0) && result.get(1) > 0) {
                 System.out.printf("%d스트라이크\n", result.get(1));
             } else if (result.get(0) > 0 && result.get(1).equals(0)) {
