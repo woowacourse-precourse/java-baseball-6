@@ -10,5 +10,6 @@ public class Application {
                 .build();
 
         NumberGame baseballGame = new BaseballGame(baseballGameConfiguration);
+        baseballGame.play();
     }
 }
