@@ -22,15 +22,39 @@ public class GameService {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String option;
         do {
-            computer.generateNumber();
-            do {
-                user.inputUserNumber();
-                game.compare(computer.getComputerNumbers(), user.getUserNumber());
-                game.printCompareResult();
-            } while (game.getStrike() != 3);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            playGame();
             option = restartOrExit();
         }while(!option.equals("2"));
+    }
+
+    private void playGame() {
+        generateRandomNumber();
+        do {
+            guessRandomNumber();
+            printResult();
+        } while (!isAnswer());
+        endGame();
+    }
+
+    private boolean isAnswer() {
+        return game.getStrike() == 3;
+    }
+
+    private void printResult() {
+        game.printCompareResult();
+    }
+
+    private void guessRandomNumber() {
+        user.inputUserNumber();
+        game.compare(computer.getComputerNumbers(), user.getUserNumber());
+    }
+
+    private void generateRandomNumber() {
+        computer.generateNumber();
+    }
+
+    private void endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static String restartOrExit(){
