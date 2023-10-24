@@ -50,8 +50,8 @@ public class BaseballManager {
         }
     }
 
-    public boolean isThreeStrike(){
-        return strike.isThreeStrike();
+    public boolean isClearGame(){
+        return strike.isNotThreeStrike();
     }
 
 }

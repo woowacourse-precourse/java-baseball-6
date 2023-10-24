@@ -30,7 +30,7 @@ public class BaseballController {
 
     private void startGame() {
         BaseballManager baseballManager = new BaseballManager();
-        while (baseballManager.isThreeStrike()){
+        while (baseballManager.isClearGame()){
             requestExpectedNumber();
             resultExpectedNumber(baseballManager);
         }

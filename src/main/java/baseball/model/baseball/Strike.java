@@ -22,7 +22,7 @@ public class Strike {
         return strikeCount != BaseballRole.NO_COUNT.getValue();
     }
 
-    public boolean isThreeStrike(){
+    public boolean isNotThreeStrike(){
         return strikeCount != BaseballRole.THREE_STRIKE.getValue();
     }
 
