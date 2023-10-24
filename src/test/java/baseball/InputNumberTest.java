@@ -23,7 +23,7 @@ public class InputNumberTest {
     }
     @Test
     void 사용자_중복된_숫자_입력(){
-        List<Integer> input = List.of(1,1,2);
+        String input = "122";
         assertThatThrownBy(()->InputException.duplicateException(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자가 있습니다.");
@@ -37,7 +37,7 @@ public class InputNumberTest {
     }
     @Test
     void 사용자_범위를_벗어난_숫자_입력_테스트(){
-        List<Integer> input = List.of(1,0,9);
+        String input = "109";
         assertThatThrownBy(()->InputException.outOfRangeException(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1~9의 범위를 벗어난 숫자가 있습니다.");
