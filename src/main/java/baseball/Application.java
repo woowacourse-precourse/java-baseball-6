@@ -2,10 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -61,37 +58,64 @@ class BaseballGame {
     }
 
     private Boolean isContinue(String game) {
-        return game == "1";
+        return Integer.parseInt(game) == 1;
     }
 
     private void printResult(List<Integer> comparing) {
+        String result = "";
         if (comparing.get(0) > 0) {
-            System.out.printf("%d볼 ", comparing.get(0));
+            result += String.format("%d볼 ", comparing.get(0));
         }
         if (comparing.get(1) > 0) {
-            System.out.printf("%d스트라이크", comparing.get(1));
+            result += String.format("%d스트라이크", comparing.get(1));
         }
-        System.out.println();
+        if (result.length() > 0) {
+            System.out.println(result);
+        }
+    }
+
+    private void validateNumber(String number) throws IllegalArgumentException {
+        if (number.length() != 3)
+            throw new IllegalArgumentException();
+        char num;
+        Set<Character> distinctNumber = new HashSet<>();
+        for (int i=0;i<3;i++) {
+            num = number.charAt(i);
+            if ('1' > num || num > '9')
+                throw new IllegalArgumentException();
+            distinctNumber.add(num);
+        }
+        if (distinctNumber.size() < 3)
+            throw new IllegalArgumentException();
+
+    }
+
+    private void validateContinueGame(String number) throws IllegalArgumentException {
+        if (number.length() != 1)
+            throw new IllegalArgumentException();
+        if (!(number.equals("1") || number.equals("2")))
+            throw new IllegalArgumentException();
     }
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        String input, game;
+        String number, continueGame;
         List<Integer> userInput;
         List<Integer> comparing;
         List<Integer> answer;
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             answer = generateAnswer();
-            System.out.println(Arrays.toString(answer.toArray()));
+//            System.out.println(Arrays.toString(answer.toArray()));
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                input = scanner.nextLine();
-                userInput = convertUserInputToList(input);
+                number = scanner.nextLine();
+                validateNumber(number);
+                userInput = convertUserInputToList(number);
                 comparing = compareAnswerWithUserInput(answer, userInput);
                 printResult(comparing);
                 if (isCorrect(comparing)) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
                 if (isNothing(comparing)) {
@@ -99,29 +123,11 @@ class BaseballGame {
                 }
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            game = scanner.nextLine();
-            if (!isContinue(game)) {
+            continueGame = scanner.nextLine().strip();
+            validateContinueGame(continueGame);
+            if (!isContinue(continueGame)) {
                 break;
             }
         }
     }
 }
-/*
-숫자 야구 게임을 시작합니다.
-숫자를 입력해주세요 : 123
-1볼 1스트라이크
-숫자를 입력해주세요 : 145
-1볼
-숫자를 입력해주세요 : 671
-2볼
-숫자를 입력해주세요 : 216
-1스트라이크
-숫자를 입력해주세요 : 713
-3스트라이크
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-1
-숫자를 입력해주세요 : 123
-1볼
-...
- */
