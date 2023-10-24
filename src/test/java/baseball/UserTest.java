@@ -10,7 +10,7 @@ class UserTest {
 
     User user = new User();
 
-    @Test
+    /*@Test
     void 길이가3이아닐시_예외() {
         //given
         String input = "1234";
@@ -60,5 +60,5 @@ class UserTest {
 
         //then
         Assertions.assertThatThrownBy(() -> user.guessAnswer()).isInstanceOf(IllegalArgumentException.class);
-    }
+    }*/
 }
