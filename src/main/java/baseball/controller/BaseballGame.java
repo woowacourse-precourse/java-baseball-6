@@ -10,5 +10,6 @@ public class BaseballGame {
     public void startGame() {
         gameService.generateNdigitAnswer(N);
         gameService.printAnswer();
+        gameService.getUserInput();
     }
 }
