@@ -27,8 +27,10 @@ public class Game {
             // 게임 초기화
             init();
 
+            // 게임을 진행 하는 메서드
             playingGame();
 
+            // 게임 재시작을 물어봄
             isRun = checkPlayAgain();
         }
     }
