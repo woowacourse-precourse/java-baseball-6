@@ -55,7 +55,9 @@ public class Application {
             for (int i = 0; i < gameSize; i++) {
                 if (computer.get(i).equals(inputNumber.get(i))) {
                     strike++;
-                } else if (computer.contains(inputNumber.get(i))) {
+                    continue;
+                }
+                if (computer.contains(inputNumber.get(i))) {
                     ball++;
                 }
             }
@@ -76,18 +78,19 @@ public class Application {
                 break;
             }
         }
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String num = readLine();
-        if (num.equals("1")) {
-            System.out.println("게임을 다시 시작합니다");
-            baseballStart();
-        }
-        else if(num.equals("2")){
-            System.out.println("프로그램을 종료합니다.");
-            return;
-        }
-        else{
-            throw new IllegalArgumentException();
+
+        switch (num){
+            case "1" :
+                System.out.println("게임을 다시 시작합니다.");
+                baseballStart();
+            case "2" :
+                System.out.println("프로그램을 종료합니다.");
+                return;
+            default :
+                throw new IllegalArgumentException();
         }
     }
 }
