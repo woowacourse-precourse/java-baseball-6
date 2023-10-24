@@ -48,4 +48,19 @@ public class RefereeTest {
         Assertions.assertThat(ball).isEqualTo(1);
         Assertions.assertThat(strike).isEqualTo(1);
     }
+
+    @Test
+    void 낫싱_테스트() {
+        // given
+        GameRule ballRule = new BallRule();
+        GameRule strikeRule = new StrikeRule();
+        PlayNumber computerNumber = PlayNumber.from("123");
+        PlayNumber userNumber = PlayNumber.from("456");
+        // when
+        int ball = Referee.answerResult(ballRule, computerNumber, userNumber);
+        int strike = Referee.answerResult(strikeRule, computerNumber, userNumber);
+        // then
+        Assertions.assertThat(ball).isEqualTo(0);
+        Assertions.assertThat(strike).isEqualTo(0);
+    }
 }
