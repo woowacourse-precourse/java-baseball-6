@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -58,11 +59,47 @@ class ApplicationTest extends NsTest {
             throw new IllegalArgumentException("input number is not 3 characters long. ");
         }
     }
-    @Test
     List<Integer> 입력_받은_문자를_숫자_배열로_변환(String inputString) {
         return Arrays.stream(inputString.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed().toList();
+    }
+
+    @Test
+    void 정답_테스트() {
+        List<Integer> answer = 정답_생성();
+        List<Integer> inputNumbers = new ArrayList<>();
+        inputNumbers.add(1);
+        inputNumbers.add(2);
+        inputNumbers.add(3);
+
+        System.out.println(입력_받은_수의_정답_여부(inputNumbers,answer));
+    }
+    List<Integer> 정답_생성() {
+        List<Integer> randNumbers = Randoms.pickUniqueNumbersInRange(1,9,3);
+        randNumbers.forEach(System.out::println);
+        return randNumbers;
+    }
+
+    String 입력_받은_수의_정답_여부(List<Integer> inputNumbers, List<Integer> answer) {
+        int strike = 0, ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if(Objects.equals(inputNumbers.get(i), answer.get(i))) {
+                strike += 1;
+            } else if (answer.contains(inputNumbers.get(i))) {
+                ball += 1;
+            }
+        }
+
+        if(strike == 0 && ball == 0) {
+            return "낫싱";
+        } else if (strike == 0){
+            return ball + "볼";
+        } else if (ball == 0) {
+            return strike + "스트라이크";
+        } else {
+            return  ball + "볼" + " " + strike + "스트라이크";
+        }
     }
 
     @Override
