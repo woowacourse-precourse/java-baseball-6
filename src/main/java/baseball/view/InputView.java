@@ -9,4 +9,9 @@ public class InputView {
         List<Integer> userNumber = InputException.changeStringToNumbers(userInput);
         User.setUser(userNumber);
     }
+
+    public static void makeGameRestart(String userInput) {
+        int restartNumber = InputException.changeStringToNumber(userInput);
+        User.setRestart(restartNumber);
+    }
 }
