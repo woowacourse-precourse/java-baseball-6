@@ -37,6 +37,11 @@ public class GameController {
         } else {
             if (count[0] != 0) {
                 Output.ballCount(count[0]);
+                if (count[1] == 0) {
+                    System.out.println();
+                } else {
+                    System.out.print(" ");
+                }
             }
             if (count[1] != 0) {
                 Output.strikeCount(count[1]);

@@ -6,7 +6,7 @@ public class Output {
     }
 
     public static void ballCount(int ball) {
-        System.out.println(ball + "볼");
+        System.out.print(ball + "볼");
     }
 
     public static void strikeCount(int strike) {
