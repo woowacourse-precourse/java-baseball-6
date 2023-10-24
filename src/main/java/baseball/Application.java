@@ -27,7 +27,7 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             NumberSet input = readAnswer();
-            GuessResult result = NumberSet.compare(input, answer);
+            GuessResult result = new GuessResult(input, answer);
             printResult(result);
             strikes = result.getStrikes();
         } while (strikes != 3);

@@ -47,36 +47,4 @@ public class NumberSet {
         }
         return NumberSet.parseFrom(number);
     }
-
-    public static int getStrikes(NumberSet a, NumberSet b) {
-        int strikes = 0;
-        for (int i = 0; i < 3; i++) {
-            Integer aDigit = a.getNumbers().get(i);
-            Integer bDigit = b.getNumbers().get(i);
-            if (aDigit.equals(bDigit))
-                strikes++;
-        }
-        return strikes;
-    }
-
-    public static int getBalls(NumberSet a, NumberSet b) {
-        int balls = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == j) continue;
-                Integer aDigit = a.getNumbers().get(i);
-                Integer bDigit = b.getNumbers().get(j);
-                if (aDigit.equals(bDigit))
-                    balls++;
-            }
-        }
-        return balls;
-    }
-
-    public static GuessResult compare(NumberSet a, NumberSet b) {
-        return new GuessResult(
-                getStrikes(a, b),
-                getBalls(a, b)
-        );
-    }
 }
