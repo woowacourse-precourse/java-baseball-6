@@ -15,6 +15,6 @@ public enum UserAction {
             if (userAction.value == value) return userAction;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("1, 2 입력값만 유효함");
     }
 }
