@@ -1,7 +1,12 @@
 package baseball;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-    }
-}
+
+  private static BaseballController bc = new BaseballController();
+  public static void main(String[] args) {
+
+  bc.GameStart();
+
+
+}//main 종료
+}// 클래스 종료
