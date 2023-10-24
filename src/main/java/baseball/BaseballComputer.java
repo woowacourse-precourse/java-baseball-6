@@ -23,12 +23,13 @@ public class BaseballComputer {
             int randomNumber;
             do {
                 randomNumber = Randoms.pickNumberInRange(1, 9);
-            } while (numArray[randomNumber] != COUNT_ZERO);
-            numArray[randomNumber] = i;
+            } while (numArray[randomNumber] != COUNT_ZERO); // 나오지 않은 숫자가 나올 때까지 반복
+            numArray[randomNumber] = i; // 현재 순서를 저장(입력값과 비교 위해서)
         }
     }
 
     public boolean chkInputError(String input) {
+        // 현재 숫자를 인덱스 넘버로 true로 저장하는 배열
         boolean[] duplicatedCheck = new boolean[DIGIT_NUM];
 
         if (input.length() != COUNT_MAX) {
@@ -64,6 +65,7 @@ public class BaseballComputer {
     private void cntStrikesBalls(String input, int[] result) {
         for (int i = 0; i < COUNT_MAX; ++i) {
             int tmpInt = Character.getNumericValue(input.charAt(i));
+            // numArray[tmpInt]: 컴퓨터 숫자에서 tmpInt의 순서
             if (numArray[tmpInt] == COUNT_ZERO) {
                 continue;
             }
