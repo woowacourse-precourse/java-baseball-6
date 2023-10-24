@@ -49,12 +49,12 @@ public class Game {
 
     public List<Integer> convertStringInputToIntegerList(String stringInput) {
         List<Integer> integerInputList = new ArrayList<>();
-        if (stringInput.length() != 3) {
+        if (stringInput.length() != SIZE) {
             throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
         }
         for (int i = 0; i < stringInput.length(); i++) {
             int number = stringInput.charAt(i) - '0';
-            if (number <= 0 || number >= 20) {
+            if (number <= 0 || number >= 10) {
                 throw new IllegalArgumentException("숫자는 1~9 사이여야 합니다.");
             }
             integerInputList.add(number);
