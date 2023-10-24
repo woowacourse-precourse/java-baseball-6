@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NumberFactory {
 
-    public static Number createByComputer(NumberGameConfiguration numberGameConfiguration) {
+    public static List<Integer> createByComputer(NumberGameConfiguration numberGameConfiguration) {
         int minimumNumberOfRange = numberGameConfiguration.getMinimumNumberOfRange();
         int maximumNumberOfRange = numberGameConfiguration.getMaximumNumberOfRange();
         int numberOfDigits = numberGameConfiguration.getNumberOfDigits();
@@ -23,15 +23,15 @@ public class NumberFactory {
             }
         }
 
-        return new Number(computerNumbers);
+        return computerNumbers;
     }
 
-    public static Number createByUser() {
+    public static List<Integer> createByUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         List<Integer> userNumbers = parseUserInput(userInput);
 
-        return new Number(userNumbers);
+        return userNumbers;
     }
 
     private static List<Integer> parseUserInput(String userInput) {

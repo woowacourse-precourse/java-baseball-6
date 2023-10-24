@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class BaseballGame implements NumberGame {
 
     private NumberGameConfiguration baseballGameConfiguration;
@@ -16,10 +18,10 @@ public class BaseballGame implements NumberGame {
     }
 
     private void proceedGame() {
-        Number randomNumber = NumberFactory.createByComputer(baseballGameConfiguration);
+        List<Integer> randomNumber = NumberFactory.createByComputer(baseballGameConfiguration);
 
         while (true) {
-            Number userGuessNumber = NumberFactory.createByUser();
+            List<Integer> userGuessNumber = NumberFactory.createByUser();
         }
 
     }
