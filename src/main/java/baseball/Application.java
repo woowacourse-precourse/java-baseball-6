@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.BaseballGame;
 import game.Game;
 import game.GameExecutor;
 
