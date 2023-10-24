@@ -1,4 +1,4 @@
-package baseball;
+package baseball.printer;
 
 public class BaseballPrinter implements Printer {
 

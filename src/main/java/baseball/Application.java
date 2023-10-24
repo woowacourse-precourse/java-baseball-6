@@ -1,5 +1,10 @@
 package baseball;
 
+import baseball.computer.BaseballComputer;
+import baseball.computer.Computer;
+import baseball.printer.BaseballPrinter;
+import baseball.printer.Printer;
+
 public class Application {
     public static void main(String[] args) {
         Printer printer = new BaseballPrinter();

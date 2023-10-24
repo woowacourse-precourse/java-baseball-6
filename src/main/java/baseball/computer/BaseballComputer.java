@@ -1,5 +1,6 @@
-package baseball;
+package baseball.computer;
 
+import baseball.printer.Printer;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

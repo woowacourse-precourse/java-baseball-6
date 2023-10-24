@@ -1,4 +1,4 @@
-package baseball;
+package baseball.printer;
 
 public interface Printer {
     //숫자를 입력 받기 위해 '숫자를 입력해주세요 : ' 출력 기능

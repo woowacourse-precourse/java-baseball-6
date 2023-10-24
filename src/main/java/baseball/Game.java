@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.computer.Computer;
+
 public class Game {
 
     private Computer computer;
@@ -13,7 +15,9 @@ public class Game {
     public void start() {
         while (true) {
             boolean shouldRestartGame = computer.play();
-            if (!shouldRestartGame) break;
+            if (!shouldRestartGame) {
+                break;
+            }
         }
     }
 
