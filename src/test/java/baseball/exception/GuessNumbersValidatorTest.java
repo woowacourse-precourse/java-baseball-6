@@ -25,22 +25,6 @@ class GuessNumbersValidatorTest {
         });
     }
 
-//    @Test
-//    @DisplayName("입력에 문자가 있을 시 예외가 발생해야 한다.")
-//    void isNotNumeric_Test() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            GuessNumberValidator.isGuessNumbersValid("1a2");
-//        });
-//    }
-//
-//    @Test
-//    @DisplayName("입력에 0의 숫자가 있을 시 예외가 발생해야 한다.")
-//    void isNotBetweenOneAndNine_Test() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            GuessNumberValidator.isGuessNumbersValid("023");
-//        });
-//    }
-
     @Test
     @DisplayName("입력에 중복된 숫자가 있을 시 예외가 발생해야 한다.")
     void isDuplicate_Test() {
@@ -48,5 +32,4 @@ class GuessNumbersValidatorTest {
             GuessNumbersValidator.isGuessNumbersValid("112");
         });
     }
-
 }

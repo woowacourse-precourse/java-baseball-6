@@ -27,7 +27,7 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("플레이어가 입력한 숫자게임의 값은 GuessNumbers에 저장된다.")
+    @DisplayName("플레이어가 입력한 숫자게임의 값은 GuessNumbers에 저장되어야 한다.")
     void getGuessNumbers_Test() throws Exception {
         // given
         List<GuessNumber> playerInput = List.of(new GuessNumber(1), new GuessNumber(2), new GuessNumber(3));

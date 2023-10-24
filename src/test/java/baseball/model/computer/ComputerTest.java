@@ -215,7 +215,6 @@ class ComputerTest {
         return playerInput;
     }
 
-
     private void computerMakeAnswer(List<Integer> answer) throws NoSuchFieldException, IllegalAccessException {
         Field answerField = gameAnswer.getClass().getDeclaredField("answer");
         answerField.setAccessible(true);
