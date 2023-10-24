@@ -45,7 +45,7 @@ public class ShootBall {
             tmp = input.charAt(i);
 
             //정수형 외의 문자가 입력됐을 때
-            if( tmp>'9'||tmp<'0')
+            if( tmp>'9'||tmp<'1')
                 throw new IllegalArgumentException("잘못된 입력입니다.");
 
             //중복된 입력이 있을 때
