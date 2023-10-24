@@ -8,8 +8,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-//        new Application().solution();
-        new ApplicationV2().solution();
+        //new Application().solution();
+        new BaseballGame().run();
     }
 
     private void solution() {
@@ -79,9 +79,9 @@ public class Application {
         // 플레이어가 입력한 값을 상대방(컴퓨터)이 입력한 값과 비교
         for (int i = 0; i < length; i++) {
             number = Integer.parseInt(String.valueOf(currentInput.charAt(i)));
-            for (int j = 0; j < length; j++) {
-                if (i == j && number == computer.get(j)) { // 같은 수가 같은 자리에 있으면 스트라이크
-                    System.out.println("스트라이크!");
+            for (int j = 0; j < length; j++) { // depth 1
+                if (i == j && number == computer.get(j)) { // depth 2 같은 수가 같은 자리에 있으면 스트라이크
+                    System.out.println("스트라이크!"); // depth 3
                     strike++;
                     break;
                 }
