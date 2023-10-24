@@ -28,11 +28,20 @@ public class NumberBaseball implements Game {
 
     @Override
     public void validateGameInput(String input) throws IllegalArgumentException {
-        String gameInputRegex = "^[1-9]{3}$";
-        if (input.matches(gameInputRegex)) {
-            return;
+        boolean isValid = true;
+
+        if (input.length() != ANSWER_LENGTH) {
+            isValid = false;
+        } else {
+            HashSet<String> set = new HashSet<>(List.of(input.split("")));
+            if (set.size() != ANSWER_LENGTH) {
+                isValid = false;
+            }
         }
-        throw new IllegalArgumentException("Invalid game input");
+
+        if (!isValid) {
+            throw new IllegalArgumentException("Invalid game input");
+        }
     }
 
     @Override
