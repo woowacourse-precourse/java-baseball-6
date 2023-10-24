@@ -32,7 +32,7 @@ public class TestConstants {
     public static final String SHORTER_THAN_NUMBER_LENGTH_LIMIT = "12";
     public static final String LONGER_THAN_NUMBER_LENGTH_LIMIT = "1234";
     public static final String DUPLICATE_NUMBER_STRING = "112";
-    public static final String NOT_BOTH_RESTART_AND_TERMINATE = "3";
+    public static final String NEITHER_RESTART_NOR_TERMINATE = "3";
 
 
 }

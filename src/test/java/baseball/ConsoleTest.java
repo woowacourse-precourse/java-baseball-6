@@ -24,8 +24,8 @@ public class ConsoleTest {
         void success() {
             assertSimpleTest(
                     () -> {
-                        run(SUCCESS_STRING);
-                        assertThat(output()).isEqualTo(SUCCESS_LIST_TO_STRING);
+                        run(FIRST_SUCCESS_STRING);
+                        assertThat(output()).isEqualTo(FIRST_LIST_TO_STRING);
                     }
             );
         }
@@ -97,10 +97,10 @@ public class ConsoleTest {
             assertRandomNumberInRangeTest(
                     () -> {
                         run(EMPTY_STRING);
-                        assertThat(output()).isEqualTo(SUCCESS_LIST_TO_STRING);
+                        assertThat(output()).isEqualTo(FIRST_LIST_TO_STRING);
                     },
-                    SUCCESS_LIST_FIRST_ELEMENT,
-                     SUCCESS_LIST_REMAINING_ELEMENTS
+                    FULL_LIST_FIRST_ELEMENT,
+                    FULL_LIST_REMAINING_ELEMENTS
             );
         }
 
@@ -166,7 +166,7 @@ public class ConsoleTest {
             @DisplayName("범위를 벗어난 수를 입력하면 예외가 발생한다.")
             void inputOutOfRange() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(NOT_BOTH_RESTART_AND_TERMINATE))
+                        assertThatThrownBy(() -> runException(NEITHER_RESTART_NOR_TERMINATE))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
