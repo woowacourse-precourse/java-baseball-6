@@ -13,7 +13,6 @@ public class Application {
                 }
                 game.deleteValues();
                 game.changeComAnswer();
-                continue;
             }
         }
     }

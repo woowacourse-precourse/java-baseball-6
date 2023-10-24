@@ -46,15 +46,12 @@ public class GameProcess {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < userAnswer.getSize(); i++) {
-            if (comAnswer.isContain(userAnswer.getValue(i))) {
-                if (comAnswer.getValue(i) == userAnswer.getValue(i)) {
-                    strike++;
-                } else if (comAnswer.getValue(i) != userAnswer.getValue(i)) {
-                    ball++;
-                }
+            if (comAnswer.isContain(userAnswer.getValue(i)) && comAnswer.getValue(i) == userAnswer.getValue(i)) {
+                strike++;
+            } else if (comAnswer.isContain(userAnswer.getValue(i)) && comAnswer.getValue(i) != userAnswer.getValue(i)) {
+                ball++;
             }
         }
-
         return printResult(ball, strike);
     }
 
