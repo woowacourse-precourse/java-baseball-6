@@ -44,11 +44,11 @@ public class GameManager {
 
     private boolean isEnd(GameResult compare) {
         if (compare.getResult(STRIKE) != 3) {
-            OutputView.printScore(compare.getResult(BALL), compare.getResult(STRIKE));
+            OutputView.printScore(compare);
             return true;
         }
         if (compare.getResult(STRIKE) == 3) {
-            OutputView.printScore(compare.getResult(BALL), compare.getResult(STRIKE));
+            OutputView.printScore(compare);
             OutputView.printGameEnd();
         }
         return false;
