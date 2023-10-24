@@ -14,8 +14,9 @@ public class BaseballService {
 
     public List<Integer> userPlayInput() {
         String input = Console.readLine();
-        List<Integer> userInput = new ArrayList<>();
-        return stringToList(input);
+        List<Integer> userInput = stringToList(input);
+
+        return userInput;
     }
 
     public int userRestartInput() {
@@ -52,6 +53,7 @@ public class BaseballService {
     }
 
     public boolean isRestart(int num) {
+
         if(num == 1) {
             return true;
         }
@@ -69,7 +71,7 @@ public class BaseballService {
     public List<Integer> stringToList(String str) {
         List<Integer> list = new ArrayList<>();
         for(String s : str.split("")) {
-            list.add(Integer.parseInt(s));
+                list.add(Integer.parseInt(s));
         }
 
         return list;
