@@ -24,6 +24,7 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             answerPlayer = Console.readLine();
             exceptLengthInvalid(answerPlayer, MAX_ANSWER_LENGTH);
+            exceptNotInteger(answerPlayer);
             messageScore = countStrikeBallHits(answerPlayer, answerComputer);
 
             System.out.println(messageScore);
@@ -84,6 +85,7 @@ public class BaseballGame {
         } else if (playerInput.equals("2")) {
             isRestart = false;
         }
+
         return isRestart;
 
     }
@@ -92,6 +94,14 @@ public class BaseballGame {
         if (source.length() != exclusive) {
             throw new IllegalArgumentException("입력값의 길이는 " + Integer.toString(exclusive) + " 과(와) 같아야 합니다.");
         }
-
     }
+
+    public void exceptNotInteger(String source) {
+        for (int i = 0; i < source.length(); i++) {
+            if (!Character.isDigit(source.charAt(i))) {
+                throw new IllegalArgumentException("입력값은 반드시 정수여야 합니다.");
+            }
+        }
+    }
+
 }
