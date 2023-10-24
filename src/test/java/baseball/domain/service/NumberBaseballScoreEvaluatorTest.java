@@ -2,7 +2,6 @@ package baseball.domain.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.domain.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,6 +19,6 @@ class NumberBaseballScoreEvaluatorTest {
     })
     void 숫자_볼_스트라이크_테스트(String target, String input, String expected) {
         NumberBaseballScoreEvaluator evaluator = new NumberBaseballScoreEvaluator();
-        assertEquals(expected, evaluator.evaluate(input, target));
+        assertEquals(expected, evaluator.evaluate(new BaseballScoreCounter(input, target)));
     }
 }
