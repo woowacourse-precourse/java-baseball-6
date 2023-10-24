@@ -89,16 +89,17 @@ public class Application {
             int userNumber = Numbers.charAt(i) - '0';
             userValid(user, userNumber);
             user.add(userNumber);
-
         }
     }
     public static void userValid(List<Integer> user, int userNumber){
         userRangeValid(userNumber);
+        userduplicate(user, userNumber);
+    }
+    public static void userduplicate(List<Integer> user, int userNumber){
         if(user.contains(userNumber)){
             throw new IllegalArgumentException();
         }
     }
-
     public static void userRangeValid(int userNumber){
         if(userNumberRange(userNumber)){
             throw new IllegalArgumentException();
