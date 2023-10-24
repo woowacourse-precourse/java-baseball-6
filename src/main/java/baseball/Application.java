@@ -32,15 +32,8 @@ public class Application {
 
             String userDecide = readLine();
             if (userDecide.equals("1")) {
-                RandomNumber randomNum1 = new RandomNumber(1, 9);
-                int randomNumber1 = randomNum1.getRandomNumber();
-                RandomNumber randomNum2 = new RandomNumber(1, 9);
-                int randomNumber2 = randomNum2.getRandomNumber();
-                RandomNumber randomNum3 = new RandomNumber(1, 9);
-                int randomNumber3 = randomNum3.getRandomNumber();
-
-                CpuNumber cpuNum = new CpuNumber(randomNumber1, randomNumber2, randomNumber3);
-                List<Integer> cpuNewInput = cpuNum.getCPUNumber();
+                RandomNumber randomNumbers = new RandomNumber();
+                List<Integer> cpuNewInput = randomNumbers.getRandomNumbers();
                 System.out.println("컴퓨터 숫자:" + cpuNewInput);
                 System.out.print("숫자를 입력해주세요 : ");
                 String userNewInput = readLine();
@@ -84,29 +77,15 @@ public class Application {
     public static void main(String[] args) {
 // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        RandomNumber randomNum1 = new RandomNumber(1, 9);
-        int randomNumber1 = randomNum1.getRandomNumber();
-        System.out.println(randomNumber1);
-        RandomNumber randomNum2 = new RandomNumber(1, 9);
-        int randomNumber2 = randomNum2.getRandomNumber();
-        System.out.println(randomNumber2);
-        RandomNumber randomNum3 = new RandomNumber(1, 9);
-        int randomNumber3 = randomNum3.getRandomNumber();
-        System.out.println(randomNumber3);
 
-        CpuNumber cpuNum = new CpuNumber(randomNumber1, randomNumber2, randomNumber3);
-        List<Integer> cpuInput = cpuNum.getCPUNumber();
+        RandomNumber randomNumbers = new RandomNumber();
+        List<Integer> cpuInput = randomNumbers.getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuInput);
         System.out.print("숫자를 입력해주세요 : ");
-        String userInput = readLine();
-        if (userInput.length() != 3 ||
-                !Character.isDigit(userInput.charAt(0)) ||
-                !Character.isDigit(userInput.charAt(1)) ||
-                !Character.isDigit(userInput.charAt(2))) {
-            throw new IllegalArgumentException("입력한 값이 세 자리 숫자가 아닙니다. 프로그램을 종료합니다.");
-        }
+        UserNumber userNumber = new UserNumber(readLine());
+        String userInput = userNumber.getUserNumber();
         play(cpuInput, userInput);
     }
-    //
+
 
 }
