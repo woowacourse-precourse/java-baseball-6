@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 import baseball.service.GameService;
+import baseball.utils.GameMessage;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -20,7 +21,7 @@ public class BaseballGame {
             startOneGame();
             exitGame();
         }
-        System.out.println("게임 종료");
+        System.out.println(GameMessage.EXIT_GAME.getMessage());
     }
 
     private void startOneGame() {
@@ -28,7 +29,7 @@ public class BaseballGame {
         boolean oneGameFinished = false;
         List<Integer> computerNumber = computer.getComputerNumber();
         while (!oneGameFinished) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(GameMessage.REQUIRED_INPUT_NUMBER.getMessage());
             List<Integer> userNumber = gameService.parsingInputNumber(InputView.Input());
             List<Integer> gameResult = gameService.playGame(computerNumber, userNumber);
             if (OutputView.outputResult(gameResult)) {
@@ -38,12 +39,12 @@ public class BaseballGame {
     }
 
     private void initStartGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GameMessage.BASEBALL_START.getMessage());
         endOrNot = true;
     }
 
     private void exitGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GameMessage.DECIDE_CONTINUE_OR_EXIT.getMessage());
         if (InputView.Input().equals("2")) {
             endOrNot = false;
         }
