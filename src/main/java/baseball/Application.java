@@ -10,7 +10,9 @@ public class Application {
     private static final int NUM_SIZE = 3;
 
     public static void main(String[] args) {
-
+        do {
+            playGame();
+        } while (keepGoing());
     }
     private static List<Integer> makeRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
@@ -86,6 +88,12 @@ public class Application {
 
             System.out.println();
         }
+    }
+
+    private static boolean keepGoing() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        return "1".equals(input);
     }
 
 }
