@@ -44,7 +44,7 @@ public class BaseBallGame {
     }
 
     private static void startOneBattle() {
-        changeHitter(baseBallView.numbersInputView());
+        changeHitter();
         result = pitcher.throwBalls(hitter);
 
         baseBallView.resultGameView(result.toString());
@@ -52,7 +52,8 @@ public class BaseBallGame {
         checkIsFinish();
     }
 
-    private static void changeHitter(String numberString) {
+    private static void changeHitter() {
+        String numberString = baseBallView.numbersInputView();
         hitter = Hitter.create(convertStringToNumbers(numberString));
     }
 
@@ -73,7 +74,8 @@ public class BaseBallGame {
     }
 
     private static void checkContinueGame() {
-        if (isContinueGame(baseBallView.continueInputView())) {
+        String continueInputString = baseBallView.continueInputView();
+        if (isContinueGame(continueInputString)) {
             startGame();
         }
     }
