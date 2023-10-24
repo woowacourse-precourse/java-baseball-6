@@ -116,7 +116,12 @@ class GameOutcome {
 
 class InputValidator{
     public static void validateInput(String input) {
-        if (input.length() != 3)
-            throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
+        //\\d will match a single digit (0-9).
+        if (input.length() != 3 || !input.matches("\\d+") || hasDuplicateCharacters(input))
+            throw new IllegalArgumentException("3자리의 서로 다른 숫자를 입력해 주세요!");
+    }
+
+    private static boolean hasDuplicateCharacters(String input) {
+        return input.chars().distinct().count() != input.length();
     }
 }
