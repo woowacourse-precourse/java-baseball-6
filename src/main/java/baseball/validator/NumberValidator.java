@@ -15,7 +15,8 @@ public class NumberValidator {
     }
 
     public void validateMenu(String menu) {
-        if (isInteger(menu) == false || Integer.parseInt(menu) > MENU_COUNT || Integer.parseInt(menu) <= 0) {
+        //정수인지, 메뉴가 1~2사이인지 검증
+        if (isInteger(menu) == false || isInRangeOneToMenuSize(menu)==false) {
             throw new IllegalArgumentException();
         }
     }
@@ -29,6 +30,13 @@ public class NumberValidator {
         return false; // 0을 발견하지 못하면 false를 반환
     }
 
+    public static boolean isInRangeOneToMenuSize(String menu){
+        int num = Integer.parseInt(menu);
+        if(num<=0 || num>MENU_COUNT) {
+            return false; //0보다 작거나 같은 수이거나 Menu개수보다 크면 false 반환
+        }
+        return true; //1~Meue개수 사이라면 true 반환
+    }
     public static boolean isInteger(String number) {
         try {
             Integer.parseInt(number);
