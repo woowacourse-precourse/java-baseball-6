@@ -12,7 +12,7 @@ public class PlayerNumber {
         String inputNumber = Console.readLine();
         List<Integer> player = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constant.gameNumberLength; i++) {
             player.add(Integer.parseInt(inputNumber.substring(i, i + 1)));
         }
 

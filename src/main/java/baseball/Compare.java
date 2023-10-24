@@ -11,7 +11,7 @@ public class Compare {
             List<Integer> computer
     ) {
         strike = 0;
-        for (int i=0;i<3;i++) {
+        for (int i = 0; i < 3; i++) {
             if (player.get(i).equals(computer.get(i))) {
                 strike++;
             }
@@ -24,7 +24,7 @@ public class Compare {
             List<Integer> computer
     ) {
         ball = 0;
-        for (int i=0;i<3;i++) {
+        for (int i = 0; i < 3; i++) {
             if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
                 ball++;
             }

@@ -4,17 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballGame {
+
     ComputerNumber computerNumber = new ComputerNumber();
     PlayerNumber playerNumber = new PlayerNumber();
     Compare compare = new Compare();
     Exception exception = new Exception();
-
-
+    List<Integer> computer;
+    List<Integer> player;
 
     public void GameStart() {
 
         System.out.print("숫자 야구 게임을 시작합니다.\n");
-        List<Integer> computer = computerNumber.getComputer();
+        computer = computerNumber.getComputer();
 
         GamePlay(computer);
     }
@@ -22,7 +23,7 @@ public class BaseballGame {
     public void GamePlay(List<Integer> computer) {
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> player = playerNumber.getPlayer();
+        player = playerNumber.getPlayer();
         String CountResult = compare.CountResult(player, computer);
         System.out.println(CountResult);
 
@@ -41,9 +42,9 @@ public class BaseballGame {
         String ReplayValue = Console.readLine();
         exception.Exception_ReplayNumber(ReplayValue);
 
-        if (ReplayValue.equals("1")) {
+        if (ReplayValue.equals(Constant.wantToReplay)) {
             GameStart();
-        } else if (ReplayValue.equals("2")) {
+        } else if (ReplayValue.equals(Constant.gameExit)) {
             return;
         }
     }
