@@ -13,12 +13,6 @@ public class BaseBallNumbers {
     private static final int ZERO_INDEX = 0;
     private final List<BaseBallNumber> numbers;
 
-    public static BaseBallNumbers from(List<Integer> playerNumbers) {
-        return playerNumbers.stream()
-                .map(BaseBallNumber::from)
-                .collect(collectingAndThen(toList(), BaseBallNumbers::new));
-    }
-
     private BaseBallNumbers(List<BaseBallNumber> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -50,6 +44,12 @@ public class BaseBallNumbers {
                 .stream()
                 .distinct()
                 .count() != NUMBER_SIZE;
+    }
+
+    public static BaseBallNumbers from(List<Integer> playerNumbers) {
+        return playerNumbers.stream()
+                .map(BaseBallNumber::from)
+                .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
     public static BaseBallNumbers createRandomNumbers(NumberGenerator numberGenerator) {

@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.model.ExceptionMessage.RESTART_EXCEPTION_MESSAGE;
+
 import java.util.stream.Stream;
 
 public enum GameRestartOption {
@@ -17,7 +19,7 @@ public enum GameRestartOption {
         return Stream.of(values())
                 .filter(gameRestartOption -> gameRestartOption.optionNumber == optionNumber)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.RESTART_EXCEPTION_MESSAGE));
+                .orElseThrow(() -> new IllegalArgumentException(RESTART_EXCEPTION_MESSAGE));
     }
 
     public boolean isRestart() {
