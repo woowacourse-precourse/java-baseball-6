@@ -12,15 +12,15 @@ import java.util.List;
 
 public class DecimalNumber {
 
-    private static List<Integer> computer;
-    private static List<Integer> user;
+    private List<Integer> computer;
+    private List<Integer> user;
 
     public List<Integer> getComputer() {
         return computer;
     }
 
     public void setComputer() {
-        DecimalNumber.computer = generateRandomNum();
+        this.computer = generateRandomNum();
     }
 
     public List<Integer> getUser() {
@@ -29,7 +29,7 @@ public class DecimalNumber {
 
     public void setUser(String input) {
         Validation.validationGameNumber(input);
-        DecimalNumber.user = stringToList(input);
+        this.user = stringToList(input);
     }
 
     private List<Integer> generateRandomNum() {
@@ -47,11 +47,12 @@ public class DecimalNumber {
     private List<Integer> stringToList(String input) {
         String[] strArr = input.split("");
         Integer[] intArr = new Integer[strArr.length];
+
         for (int i = 0; i < strArr.length; i++) {
             intArr[i] = Integer.parseInt(strArr[i]);
         }
-        List<Integer> list = new ArrayList<>(Arrays.asList(intArr));
+        List<Integer> result = new ArrayList<>(Arrays.asList(intArr));
 
-        return list;
+        return result;
     }
 }
