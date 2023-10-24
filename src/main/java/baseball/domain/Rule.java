@@ -11,6 +11,8 @@ public class Rule {
         int[] inputNumbers = validateInputFormat(input);
         // 정답 길이와 일치하는 입력을 했는지 확인
         validateLength(inputNumbers);
+        // 숫자 0을 포함하여 입력했는지 확인
+        validateHasNotZero(inputNumbers);
         // 입력한 숫자에 중복한 수가 있는지 확인
         validateDuplicate(inputNumbers);
 
@@ -31,6 +33,14 @@ public class Rule {
     private void validateLength(int[] inputNums) {
         if (inputNums.length != ANSWER_NUMBER_LENGTH.getLength()) {
             throw new IllegalArgumentException(WRONG_INPUT_LENGTH.toString());
+        }
+    }
+
+    private void validateHasNotZero(int[] inputNumbers) {
+        for (int inputNumber : inputNumbers) {
+            if (inputNumber == 0) {
+                throw new IllegalArgumentException(INPUT_HAS_ZERO.toString());
+            }
         }
     }
 
