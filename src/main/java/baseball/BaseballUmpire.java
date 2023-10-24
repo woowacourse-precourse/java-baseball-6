@@ -4,29 +4,13 @@ import java.util.List;
 
 public class BaseballUmpire {
 
-    public static GameStatus judgeGameStatus(List<Integer> botNumbers, List<Integer> playerNumbers) {
+    private GameRule gameRule;
 
-        int strikes = 0;
-        int balls = 0;
+    public BaseballUmpire(GameRule gameRule) {
+        this.gameRule = gameRule;
+    }
 
-        for (int i = 0; i < botNumbers.size(); i++) {
-            if (botNumbers.get(i).equals(playerNumbers.get(i))) {
-                strikes++;
-            } else if (botNumbers.contains(playerNumbers.get(i))) {
-                balls++;
-            }
-        }
-
-        if (strikes == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return GameStatus.END;
-        } else if (strikes == 0 && balls == 0) {
-            System.out.println("낫싱");
-            return GameStatus.ONGOING;
-        } else {
-            System.out.println(balls + "볼 " + strikes + "스트라이크");
-            return GameStatus.ONGOING;
-        }
+    public GameStatus getGameStatus(List<Integer> botNumbers, List<Integer> playerNumbers) {
+        return gameRule.determineGameStatus(botNumbers, playerNumbers);
     }
 }
