@@ -12,10 +12,14 @@ public class InputHandler {
     public String getPlayInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        validateInput(input);
+        return input;
+    }
+
+    private void validateInput(String input) {
         validateIsNumber(input);
         validateNumberSize(input);
         validateNoDuplicate(input);
-        return input;
     }
 
     private void validateIsNumber(String input) {
