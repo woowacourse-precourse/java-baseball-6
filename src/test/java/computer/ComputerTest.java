@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ComputerTest {
 
     @Test
-    @DisplayName("컴퓨터 수 유효성 검사")
+    @DisplayName("컴퓨터 숫자가 정상적으로 만들어지는지 테스트")
     void 컴퓨터_숫자(){
         //given
         Computer computer=new Computer();

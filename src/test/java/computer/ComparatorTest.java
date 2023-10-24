@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ComparatorTest {
 
     @Test
-    @DisplayName("컴퓨터의 숫자와 사용자 숫자 비교")
+    @DisplayName("컴퓨터의 숫자와 사용자 숫자 비교가 정상적으로 실행되는지 테스트")
     void 힌트_테스트o(){
         //given
         Balls computerBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,2,4)));
@@ -31,7 +31,6 @@ class ComparatorTest {
         Assertions.assertThat(hint.loadStrike()).isEqualTo(1);
         Assertions.assertThat(hint.loadBall()).isEqualTo(2);
     }
-
 
 
 }
