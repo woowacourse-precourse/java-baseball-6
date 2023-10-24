@@ -10,7 +10,7 @@ public class Play {
         int flag = 1;
         nums.setComputer();
 
-        while (flag >= 1) {
+        while (true) {
             if (flag == 2) {  // 다시하기 분기
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -19,8 +19,8 @@ public class Play {
                     nums.setComputer();
                     flag = ans;
                 } else if (ans == 2) {  // 게임 종료
-                    flag = 0;
                     System.out.println("게임이 종료되었습니다.");
+                    break;
                 } else
                     throw new IllegalArgumentException();
             } else if (flag == 1) {
