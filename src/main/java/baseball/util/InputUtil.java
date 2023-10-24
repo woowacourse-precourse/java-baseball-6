@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.constant.GameConstant;
+import baseball.constant.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -12,9 +12,10 @@ public class InputUtil {
 
     public List<Integer> input() {
         playerNumber = new ArrayList<>();
+        String inputString = "";
         boolean isValidInput = false;
         while (!isValidInput) {
-            String inputString = Console.readLine();
+            inputString = Console.readLine();
             isValidInput = isValidString(inputString);
             makeStringToList(inputString);
         }
@@ -30,19 +31,25 @@ public class InputUtil {
 
     public int inputReplay() {
         String command = "";
-        while (!isValidReplayCommand(command)) {
+        boolean isValidCommand = false;
+        while (!isValidCommand) {
             command = Console.readLine();
-            System.out.println("InputUtil.inputReplay : " + command);
+            isValidCommand = isValidReplayCommand(command);
         }
         return Integer.parseInt(command);
     }
 
-    //서로다른 3가지 숫자인지 체크
     private boolean isValidString(String input) {
+        if (!input.matches("^(?!.*(.).*\\1)[1-9]{3}$")) {
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_FORMAT_ERROR.getError());
+        }
         return input.matches("^(?!.*(.).*\\1)[1-9]{3}$");
     }
 
     private boolean isValidReplayCommand(String replayCommand) {
+        if (!replayCommand.matches("^[12]$")) {
+            throw new IllegalArgumentException(ErrorMessage.REPLAY_COMMAND_ERROR.getError());
+        }
         return replayCommand.matches("^[12]$");
     }
 }
