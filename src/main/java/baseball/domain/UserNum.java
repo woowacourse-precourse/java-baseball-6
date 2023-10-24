@@ -13,19 +13,12 @@ public class UserNum {
     private List<Integer> number;
 
     public UserNum(String inputNum) {
-        List<Integer> temp = strToList(inputNum);
-        validation(temp);
-        this.number = temp;
+        validation(strToList(inputNum));
+        this.number = strToList(inputNum);
     }
 
     public List<Integer> getNum() {
         return number;
-    }
-    private List<Integer> strToList(String enterNum) {
-        return Arrays.stream(enterNum.split(""))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .collect(Collectors.toList());
     }
 
     private void validation(List<Integer> inputNum) {
@@ -54,5 +47,12 @@ public class UserNum {
         if (inputNumSize != NUM_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private List<Integer> strToList(String enterNum) {
+        return Arrays.stream(enterNum.split(""))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
