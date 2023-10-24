@@ -5,6 +5,7 @@ import baseball.model.BaseBallNumber;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -22,6 +23,17 @@ class BaseBallNumberTest {
         // then
         Assertions.assertThatThrownBy(() -> BaseBallNumber.parse(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("제대로된 사용자 입력이 왔을 때 BaseBallNumber 생성 성공 테스트")
+    void parseNumber() {
+        // given
+        // when
+        BaseBallNumber baseBallNumber = BaseBallNumber.parse("123");
+
+        // then
+        Assertions.assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
     }
 
     static Stream<Arguments> inValidNumberArray() {
