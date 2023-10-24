@@ -52,6 +52,33 @@ public class Application {
         return intArray;
     }
 
+    public static boolean inputValidator(String input) {
+        boolean result = true;
+        int[] intArray = new int[3];
+        HashSet<Integer> intArrayHashSet = new HashSet<>(3);
+
+        if (input.length() != 3) {
+            result = false;
+        }
+
+        try {
+            intArray = inputParsingToIntArray(input);
+        }
+        catch (NumberFormatException event) {
+            result = false;
+        }
+
+        for (int i = 0; i < intArray.length; i++) {
+            intArrayHashSet.add(intArray[i]);
+        }
+
+        if (intArrayHashSet.size() != 3) {
+            result = false;
+        }
+
+        return result;
+    }
+
 
 
     public static void main(String[] args) {
