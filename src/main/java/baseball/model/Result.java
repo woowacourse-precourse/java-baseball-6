@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.util.Constants.RESULT_SPACE;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +44,7 @@ public class Result {
             gameResult.append("" + ball + BallCount.BALL.getBaseballjudgment());
         }
         if (ball > 0 && strike > 0) {
-            gameResult.append(" ");
+            gameResult.append(RESULT_SPACE);
         }
         if (strike > 0) {
             gameResult.append("" + strike + BallCount.STRIKE.getBaseballjudgment());
