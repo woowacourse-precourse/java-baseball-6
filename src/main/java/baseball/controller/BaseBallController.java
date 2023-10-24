@@ -21,24 +21,22 @@ public class BaseBallController {
 
     public void run() {
         outputView.printGameStartMessage();
+        do {
+            playGame();
+            outputView.printGameOver();
+            outputView.printGameRestartMessage();
+        } while (inputView.inputRestartOption());
+    }
+
+    private void playGame() {
         List<Integer> computerNumbers = NumberGenerator.createComputerNumbers();
-        while (true) {
+        boolean isGameOvered;
+        do {
             outputView.printUserInputMessage();
             String inputUserNumbers = inputView.inputUserNumber();
             Score score = baseballService.calculateGameScore(inputUserNumbers, computerNumbers);
             outputView.printScore(score);
-            if (score.isAnswer()) {
-                outputView.printGameOver();
-                outputView.printGameRestartMessage();
-                String restartOption = inputView.inputRestartOption();
-                if (restartOption.equals("1")) {
-                    computerNumbers = NumberGenerator.createComputerNumbers();
-                    continue;
-                }
-                if (restartOption.equals("2")) {
-                    break;
-                }
-            }
-        }
+            isGameOvered = !score.isAnswer();
+        } while (isGameOvered);
     }
 }
