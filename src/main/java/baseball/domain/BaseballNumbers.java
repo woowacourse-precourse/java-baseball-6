@@ -30,7 +30,7 @@ public class BaseballNumbers {
             ball += countBall(isSameValue, isContainedIn);
             strike += countStrike(isSameValue);
         }
-        return new Score(new Ball(ball), new Strike(strike));
+        return Score.from(Ball.from(ball), Strike.from(strike));
     }
 
     private int countBall(boolean isSameValue, boolean isContainedIn) {
