@@ -21,9 +21,16 @@ public class Util {
 
     public static void validateUserInput(String input) {
 
-        validateStringOnlyNumbers(input);
         validateStringLength(input, 3);
+        validateStringOnlyNumbers(input);
         validateStringDuplicate(input);
+    }
+
+    public static void validateStringLength(String input, int length) {
+
+        if(input.length() != length) {
+            throw new IllegalArgumentException(length + "개의 수를 입력해야 합니다.");
+        }
     }
 
     public static void validateStringOnlyNumbers(String input) {
@@ -35,13 +42,6 @@ public class Util {
             if(c == '0') {
                 throw new IllegalArgumentException("1~9 사이의 값을 입력해야 합니다.");
             }
-        }
-    }
-
-    public static void validateStringLength(String input, int length) {
-
-        if(input.length() != length) {
-            throw new IllegalArgumentException(length + "개의 수를 입력해야 합니다.");
         }
     }
 
