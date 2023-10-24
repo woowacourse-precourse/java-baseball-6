@@ -21,15 +21,15 @@ public class GameResult {
     @Override
     public String toString() {
         if (strike + ball == 0) {
-            return "낫싱";
+            return BallStatus.NOTING.toString();
         }
 
         String result = "";
         if (ball > 0) {
-            result = ball + "볼 ";
+            result = ball + BallStatus.BALL.toString() + " ";
         }
         if (strike > 0) {
-            result += strike + "스트라이크";
+            result += strike + BallStatus.STRIKE.toString();
         }
 
         return result.trim();
