@@ -20,8 +20,8 @@
 ## 프로그래밍 요구사항
 - ✅JDK 17 버전에서 실행
 - ✅프로그램 실행의 시작점 Application의 main()
-- Java 코드 컨벤션 가이드 준수
-- ApplicationTest 의 테스트 실행
+- ✅Java 코드 컨벤션 가이드 준수
+- ✅ApplicationTest 의 테스트 실행
 - ✅camp.nextstep.edu.missionutils.Randoms 난수 라이브러리 사용
 - ✅camp.nextstep.edu.missionutils.Console 입력 라이브러리 사용
 
