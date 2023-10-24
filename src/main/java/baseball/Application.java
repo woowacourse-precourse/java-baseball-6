@@ -21,13 +21,19 @@ public class Application {
             } catch (Exception e) {
                 System.exit(1);
             }
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-            int oneOrTwo = Integer.parseInt(getUserInput());
-            if(oneOrTwo == 1){
-                outerCondition = true;
-                innerCondition = true;
-            } else if(oneOrTwo == 2){
-                outerCondition = false;
+            try {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                int oneOrTwo = Integer.parseInt(getUserInput());
+                if(oneOrTwo == 1){
+                    outerCondition = true;
+                    innerCondition = true;
+                } else if(oneOrTwo == 2){
+                    outerCondition = false;
+                } else{
+                    throw new IllegalArgumentException("잘못된 입력입니다.");
+                }
+            } catch (Exception e) {
+                System.exit(1);
             }
         }
     }
