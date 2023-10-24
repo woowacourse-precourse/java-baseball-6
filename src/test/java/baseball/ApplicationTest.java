@@ -13,29 +13,29 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력_성공() {
+        BaseballGameReferee baseballGameReferee = new BaseballGameReferee();
         String input1 = "789";
-        if(BaseballGameNumber.validateBaseballGameNumber(input1)) {
-            BaseballGameNumber number = new BaseballGameNumber(input1);
-        }
+        baseballGameReferee.validateBaseballGameNumber(input1);
     }
 
     @Test
     void 입력_실패() {
+        BaseballGameReferee baseballGameReferee = new BaseballGameReferee();
         String input1 = "1324";
         String input2 = "031";
         String input3 = "112";
         String input4 = "13n";
 
-        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input1)
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input1)
         ).isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input2)
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input2)
         ).isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input3)
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input3)
         ).isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input4)
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input4)
         ).isInstanceOf(IllegalArgumentException.class);
 
     }
