@@ -13,6 +13,7 @@ public class DataTypeChanger {
         });
         return compareNumbers;
     }
+
     public static List<CompareNumber> compareStringNumberFormat(List<String> generatedBall) {
         ArrayList<CompareNumber> compareNumbers = new ArrayList<>();
         generatedBall.forEach(v -> {
