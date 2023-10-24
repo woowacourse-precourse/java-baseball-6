@@ -27,7 +27,7 @@ public class NumberList {
     }
 
     public void validateDuplicate(Number number) {
-        for (int i = 0; i < this.numbers.size() - 1; i++) {
+        for (int i = 0; i < this.numbers.size(); i++) {
             if (number.equals(numbers.get(i))) {
                 throw new IllegalArgumentException("Numbers are duplicated.");
             }
