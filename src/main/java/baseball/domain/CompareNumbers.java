@@ -1,5 +1,7 @@
 package baseball.domain;
+
 import java.util.List;
+
 public class CompareNumbers {
     private final List<Integer> computer;
     private final List<Integer> player;
@@ -7,25 +9,29 @@ public class CompareNumbers {
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
-    public CompareNumbers(List<Integer> computer, List<Integer> player){
+
+    public CompareNumbers(List<Integer> computer, List<Integer> player) {
         this.computer = computer;
         this.player = player;
     }
-    private int totalHitsCount(){
+
+    private int totalHitsCount() {
         int count = 0;
-        for(int num : player){
-            if(computer.contains(num)) count++;
+        for (int num : player) {
+            if (computer.contains(num)) count++;
         }
         return count;
     }
-    private int strikeCount(){
+
+    private int strikeCount() {
         int count = 0;
-        for(int i = 0; i < 3; i++) {
-            if(computer.get(i).equals(player.get(i))) count++;
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(player.get(i))) count++;
         }
         return count;
     }
-    public String generateResult(){
+
+    public String generateResult() {
         int totalHits = totalHitsCount();
         int strike = strikeCount();
         int ball = totalHits - strike;

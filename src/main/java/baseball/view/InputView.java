@@ -13,31 +13,35 @@ import static baseball.exception.InputException.gameDecisionException;
 
 public class InputView {
 
-    public static List<Integer> inputPlayerNumbers(){
+    public static List<Integer> inputPlayerNumbers() {
         String input = Console.readLine();
 
         validateInputNumber(input);
 
         List<Integer> playerNumbers = new ArrayList<>();
-        for(String num : input.split("")) {
+        for (String num : input.split("")) {
             int number = Integer.parseInt(num);
             playerNumbers.add(number);
         }
 
         return playerNumbers;
     }
+
     private static void validateInputNumber(String input) {
         notNumericException(input);
         lengthException(input);
         duplicateException(input);
         outOfRangeException(input);
     }
-    public static boolean inputRestartDecision(){
+
+    public static boolean inputRestartDecision() {
         String input = Console.readLine();
 
         gameDecisionException(input);
 
-        if(input.equals("1")) { return true; }
+        if (input.equals("1")) {
+            return true;
+        }
         return false;
     }
 }
