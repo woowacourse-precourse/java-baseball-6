@@ -7,6 +7,8 @@ public class BaseballGame {
     ComputerNumber computerNumber = new ComputerNumber();
     PlayerNumber playerNumber = new PlayerNumber();
     Compare compare = new Compare();
+    Exception exception = new Exception();
+
     List<Integer> computer = computerNumber.getComputer();
 
     public void GameStart() {
@@ -35,18 +37,12 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String ReplayValue = Console.readLine();
-        Exception_WrongReplayValue(ReplayValue);
+        exception.Exception_ReplayNumber(ReplayValue);
 
         if (ReplayValue.equals("1")) {
             GameStart();
         } else if (ReplayValue.equals("2")) {
             return;
-        }
-    }
-
-    public void Exception_WrongReplayValue(String ReplayValue) {
-        if (!ReplayValue.equals("1") && !ReplayValue.equals("2")) {
-            throw new IllegalArgumentException("입력된 값이 올바르지 않습니다.");
         }
     }
 }
