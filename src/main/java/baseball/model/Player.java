@@ -3,7 +3,6 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Player {
@@ -14,28 +13,28 @@ public class Player {
     private static final String ONLY_THREE_DIGITS_ALLOWED = "세 자리의 숫자만 입력이 가능합니다.";
     private final Numbers playerNumbers;
 
-    public Player(String guessNumber) {
-        validateInputNumber(guessNumber);
-        this.playerNumbers = new Numbers(convertStringToIntegerList(guessNumber));
+    private Player(Numbers playerNumbers) {
+        this.playerNumbers = playerNumbers;
     }
 
-    private void validateInputNumber(String guessNumber) {
+    public static Player from(String guessNumber) {
+        validateInputNumber(guessNumber);
+        return new Player(convertStringToIntegerList(guessNumber));
+    }
+
+    private static void validateInputNumber(String guessNumber) {
         isDigits(guessNumber);
         isValidDigitLength(guessNumber);
         isUniqueDigits(guessNumber);
         isValidRange(guessNumber);
     }
 
-    private List<Integer> convertStringToIntegerList(String guessNumber) {
-        ArrayList<Integer> list = new ArrayList<>();
+    private static Numbers convertStringToIntegerList(String guessNumber) {
+        ArrayList<Integer> numberList = new ArrayList<>();
         for (char number : guessNumber.toCharArray()) {
-            list.add(Character.getNumericValue(number));
+            numberList.add(Character.getNumericValue(number));
         }
-        return Collections.unmodifiableList(list);
-    }
-
-    public Numbers getPlayerNumbers() {
-        return playerNumbers;
+        return new Numbers(Collections.unmodifiableList(numberList));
     }
 
     private static void isValidRange(String guessNumber) {
@@ -72,5 +71,9 @@ public class Player {
         if (guessNumber.length() != VALID_LENGTH) {
             throw new IllegalArgumentException(ONLY_THREE_DIGITS_ALLOWED);
         }
+    }
+
+    public Numbers getPlayerNumbers() {
+        return playerNumbers;
     }
 }

@@ -11,11 +11,15 @@ public class Computer {
     private static final int MAX_NUMBER = 9;
     private final Numbers numbers;
 
-    public Computer() {
-        this.numbers = createRandomUniqueNumbers();
+    private Computer(Numbers numbers) {
+        this.numbers = numbers;
     }
 
-    private Numbers createRandomUniqueNumbers() {
+    public static Computer create() {
+        return new Computer(createRandomUniqueNumbers());
+    }
+
+    private static Numbers createRandomUniqueNumbers() {
         List<Integer> randomUniqueNumbers = new ArrayList<>();
         while (randomUniqueNumbers.size() < DIGIT_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);

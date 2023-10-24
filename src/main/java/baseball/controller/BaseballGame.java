@@ -21,10 +21,10 @@ public class BaseballGame {
     }
 
     private void start() {
-        Numbers computerNumbers = new Computer().getNumbers();
+        Numbers computerNumbers = Computer.create().getNumbers();
         GameResult result;
         do {
-            Player player = new Player(inputPlayerNumbers());
+            Player player = Player.from(inputPlayerNumbers());
             Numbers playerNumbers = player.getPlayerNumbers();
             result = computerNumbers.calculateResult(playerNumbers);
             printHint(result);
