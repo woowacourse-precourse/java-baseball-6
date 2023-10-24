@@ -3,11 +3,11 @@ package interfaces;
 public interface Game {
     void init();
 
-    String processTurn(String input) throws IllegalArgumentException;
+    String processTurn(String input);
 
     String toStringResult();
 
-    boolean isValidInput();
+    void validateGameInput(String input) throws IllegalArgumentException;
 
     boolean isFinished();
 

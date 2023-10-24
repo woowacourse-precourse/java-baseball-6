@@ -16,7 +16,7 @@ public class NumberBaseball implements Game {
     }
 
     @Override
-    public String processTurn(String input) throws IllegalArgumentException {
+    public String processTurn(String input) {
         return null;
     }
 
@@ -26,8 +26,7 @@ public class NumberBaseball implements Game {
     }
 
     @Override
-    public boolean isValidInput() {
-        return false;
+    public void validateGameInput(String input) throws IllegalArgumentException {
     }
 
     @Override
