@@ -10,15 +10,6 @@ public class GameNumbers {
 
     private final List<SingleNumber> gameNumber;
 
-    public GameNumbers(List<Integer> value) {
-        List<SingleNumber> gameNumber = value
-                .stream()
-                .map(SingleNumber::new)
-                .toList();
-        validate(gameNumber);
-        this.gameNumber = gameNumber;
-    }
-
     public GameNumbers(String value) {
         List<SingleNumber> gameNumber = Arrays.stream(value.split(""))
                 .map(SingleNumber::new)

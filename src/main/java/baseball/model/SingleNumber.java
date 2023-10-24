@@ -12,12 +12,7 @@ public class SingleNumber {
         this.number = Integer.parseInt(target);
     }
 
-    public SingleNumber(Integer target) {
-        validate(target);
-        this.number = target;
-    }
-
-    private void validate(Object target) {
+    private void validate(String target) {
         Validator validator = ValidatorFactory.getValidator(target.getClass());
         validator.validate(target);
     }

@@ -3,22 +3,23 @@ package baseball.util;
 import baseball.constant.Number;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RandomNumbersGenerator {
 
     private RandomNumbersGenerator() {
     }
 
-    public static List<Integer> generate() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < Number.SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(Number.MIN, Number.MAX);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
+    public static String generate() {
+        return IntStream.generate(RandomNumbersGenerator::pickNumber)
+                .distinct()
+                .limit(Number.SIZE)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining());
+    }
+
+    private static int pickNumber() {
+        return Randoms.pickNumberInRange(Number.MIN, Number.MAX);
     }
 }
