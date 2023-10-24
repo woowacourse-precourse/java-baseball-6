@@ -62,6 +62,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("문자열 리스트로 변경 테스트")
+    void 문자열_리스트로_변경_테스트() {
+        String number = "123";
+
+        List<Integer> numberList = Application.changeStringToList(number);
+
+        assertThat(numberList.get(0)).isEqualTo(1);
+        assertThat(numberList.get(1)).isEqualTo(2);
+        assertThat(numberList.get(2)).isEqualTo(3);
+    }
+
+    @Test
     @DisplayName("문자열 숫자인지 테스트")
     void 문자열_숫자인지_테스트() {
         String digitNumber = "135";
