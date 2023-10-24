@@ -28,8 +28,8 @@ public class Validator {
     }
 
     public void checkRange(String[] input) {
-        for(String s : input) {
-            if(!isValidNumber(Integer.valueOf(s))) {
+        for (String s : input) {
+            if (!isValidNumber(Integer.valueOf(s))) {
                 throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
             }
         }
@@ -37,7 +37,7 @@ public class Validator {
 
     public void checkDuplication(String[] input) {
         Set<String> set = new HashSet<>(List.of(input));
-        if(input.length != set.size()){
+        if (input.length != set.size()) {
             throw new IllegalArgumentException(DUPLICATE_INPUT_MESSAGE);
         }
     }

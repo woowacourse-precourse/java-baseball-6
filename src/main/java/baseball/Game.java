@@ -2,7 +2,6 @@ package baseball;
 
 import static baseball.Constant.CORRECT_MESSAGE;
 import static baseball.Constant.INPUT_MESSAGE;
-import static baseball.Constant.RESTART_ERROR_MESSAGE;
 import static baseball.Constant.RESTART_MESSAGE;
 import static baseball.Constant.START_MESSAGE;
 
@@ -22,16 +21,15 @@ public class Game {
 
         computer.createNumber();
         play(player, computer.answer);
-
         return askRestart();
     }
 
     public void play(Player player, List<Integer> answer) {
-        while(true) {
+        while (true) {
             List<Integer> guess = askGuess(player);
             boolean isCorrect = judgeGuess(answer, guess);
 
-            if(isCorrect) {
+            if (isCorrect) {
                 System.out.println(CORRECT_MESSAGE);
                 break;
             }
