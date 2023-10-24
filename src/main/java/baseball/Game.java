@@ -9,19 +9,19 @@ public class Game {
     private int strike;
     private int ball;
 
-    public void setBall(int ball) {
+    private void setBall(int ball) {
         this.ball = ball;
     }
 
-    public void setStrike(int strike) {
+    private void setStrike(int strike) {
         this.strike = strike;
     }
 
-    public int getBall() {
+    private int getBall() {
         return ball;
     }
 
-    public int getStrike() {
+    private int getStrike() {
         return strike;
     }
 
@@ -34,17 +34,16 @@ public class Game {
     private void play() {
         List<Integer> rivalNumber;
         List<Integer> userGuessNumber;
-        int strike = 0;
+        setStrike(0);
 
         printStartMessage();
         rivalNumber = makeRivalNumber();
         System.out.println(rivalNumber);
 
-        while (strike != 3) {
+        while (getStrike() != 3) {
             userGuessNumber = inputUserGuess();
             checkScore(rivalNumber, userGuessNumber);
             printResult(getStrike(), getBall());
-            strike = getStrike();
         }
 
         printFinishMessage();
@@ -89,18 +88,18 @@ public class Game {
     }
 
     private void checkScore(List<Integer> rivalNumber, List<Integer> userGuessNumber) {
-        int ball = 0;
-        int strike = 0;
+        int ballCount = 0;
+        int strikeCount = 0;
 
         for (int i = 0; i < rivalNumber.size(); i++) {
             if (rivalNumber.get(i).equals(userGuessNumber.get(i))) {
-                strike++;
+                strikeCount++;
             } else if (userGuessNumber.contains(rivalNumber.get(i))) {
-                ball++;
+                ballCount++;
             }
         }
-        setStrike(strike);
-        setBall(ball);
+        setStrike(strikeCount);
+        setBall(ballCount);
     }
 
     private void printResult(int strike, int ball) {
@@ -118,9 +117,6 @@ public class Game {
     private boolean inputRegame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (input.equals("1")) {
-            return true;
-        }
-        return false;
+        return input.equals("1");
     }
 }
