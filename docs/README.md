@@ -15,26 +15,29 @@
 - ### Controller
     - GameController
         - 게임 시작 및 종료 관리
-        - Player와 Computer의 입출력 관리
 - ### Model
-    - Player
-        - Player의 숫자를 관리
-    - Computer
-        - Computer의 숫리를 관리
+    - Referee
+        - 정답을 갖고 있고, 채점을 할 수 있음
+    - Answer
+        - 새로운 정답을 생성할 수 있음
+- ### DTO
+    - PlayerDto
+        - Player의 입력값 전달
+    - ResultDto
+        - 게임 결괏값을 전달
 - ### View
-    - InputView
+    - PlayerView
         - Player 입장의 뷰
-    - ComputerView
-        - Computer 입장의 뷰
+    - RefereeView
+        - Referee 입장의 뷰
+    - GameView
+        - 게임 시작과 종료를 관리하는 뷰
 - ### Util
-    - RandomNumberGenerator
-        - 랜덤한 세자리수 생성
-    - InputValidator
-        - Player의 입력값의 유효성을 판별
     - StringToIntegerListParser
         - String 입력값을 Integer 리스트로 변환
-    - StrikeAndBallCounter
-      - Player의 입력값 채점
+- ### Validator
+    - InputValidator
+      - Player의 입력값의 유효성을 판별
 - ### Constant
     - GameConstant
         - 게임 관련 상수 모음
