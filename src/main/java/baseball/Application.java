@@ -62,6 +62,13 @@ class Baseball {
             Baseball.init(answer);
             return;
         }
+
+        //사용자가 정답을 맞춘 경우, 정답을 맞췄음을 알리고, 새로운 게임 시작 여부에 대해 입력 받기(no.8)
+        String restartNum = Baseball.checkRestart();
+        if (restartNum.equals(Baseball.NEW_GAME)) {
+            answer = new Baseball();
+            Baseball.init(answer);
+        }
     }
 
     private static String getUserInput() {
@@ -103,6 +110,22 @@ class Baseball {
             }
         }
         return true;
+    }
+
+    private static String checkRestart() {
+        System.out.print(SUCCESS_MESSAGE);
+        System.out.print(RESTART_CHECK_MESSAGE);
+
+        String checkRestart = readLine();
+        return checkValidRestartNum(checkRestart);
+    }
+
+    private static String checkValidRestartNum(String str) {
+        if (!str.equals(NEW_GAME) && !str.equals(END_GAME)) {
+            throw new IllegalArgumentException();
+        }
+
+        return str;
     }
 }
 
