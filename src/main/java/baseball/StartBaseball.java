@@ -1,8 +1,7 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Console;
 
 public class StartBaseball {
-    public static String GameStart(){
+    public static void GameStart(){
 
         int[] comNum = ComputerNumGenerator.ComNumGen();
         int[] playerNum = new int[3];
@@ -29,7 +28,7 @@ public class StartBaseball {
             }
 
             if(strike == 3){
-                String set = GameEnd.GameEnd();
+                String set = EndGame.EndGame();
                 if (set.equals("2")){
                     break;
                 }
@@ -43,6 +42,6 @@ public class StartBaseball {
             else System.out.println("낫싱");
 
             }
-        return " ";
+
         }
     }
