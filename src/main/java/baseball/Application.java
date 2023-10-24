@@ -17,9 +17,10 @@ class Room{
 		String userInput = coh.getUserInput();
 		Computer.checkResult(userInput, alice);
 		Message.makeMessage(alice.baseballFlag);
-		if (alice.baseballFlag[0] != Computer.SIZE){
-			gameStart(alice);
-			return;
+		while (alice.baseballFlag[0] != Computer.SIZE){
+			userInput = coh.getUserInput();
+			Computer.checkResult(userInput, alice);
+			Message.makeMessage(alice.baseballFlag);
 		}
 		Message.getSuccessMsg();
 		Message.newGameMsg();
