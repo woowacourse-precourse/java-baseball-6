@@ -25,7 +25,7 @@ public class BallContainer {
 
     public PitchResult pitch(BallContainer otherContainer) {
         final List<Ball> otherBalls = otherContainer.getBalls();
-        final PitchResult result = new PitchResult(0, 0);
+        final PitchResult result = new PitchResult();
 
         balls.forEach(ball -> otherBalls.forEach(other -> {
             if (ball.isStrike(other)) {

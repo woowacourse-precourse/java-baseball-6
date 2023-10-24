@@ -18,6 +18,10 @@ public class PitchResult {
         this.ballCount = ballCount;
     }
 
+    public PitchResult() {
+        this(ZERO, ZERO);
+    }
+
     public void strike() {
         this.strikeCount++;
     }
