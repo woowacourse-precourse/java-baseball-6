@@ -109,13 +109,13 @@ BUILD SUCCESSFUL in 0s
 
 ## 🎯 프로그래밍 요구 사항
 
-- JDK 17 버전에서 실행 가능해야 한다. **JDK 17에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- 프로그램 실행의 시작점은 `Application`의 `main()`이다.
-- `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
-- [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+-[x] JDK 17 버전에서 실행 가능해야 한다. **JDK 17에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
+-[x] 프로그램 실행의 시작점은 `Application`의 `main()`이다.
+-[x] `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
+-[x] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
+-[x] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
+-[x] 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
+-[x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 
 ### 라이브러리
 
