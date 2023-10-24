@@ -30,15 +30,33 @@ public class BaseballGame {
         int ballCount = results[0];
         int strikeCount = results[1];
 
-        if (isNothing(ballCount, strikeCount)) {
-            baseballView.printResultNothing();
-        } else {
-            if (isBall(ballCount)) {
-                baseballView.printResultBall(ballCount);
-            }
+        printNothing(ballCount, strikeCount);
+        printBall(ballCount, strikeCount);
+        printStrike(strikeCount);
+    }
+
+    private void printStrike(int strikeCount) {
+        if (isStrike(strikeCount)) {
+            baseballView.outputCount(strikeCount);
+            baseballView.outputResultStrike();
+        }
+    }
+
+    private void printBall(int ballCount, int strikeCount) {
+        if (isBall(ballCount)) {
             if (isStrike(strikeCount)) {
-                baseballView.printResultStrike(strikeCount);
+                baseballView.outputCount(ballCount);
+                baseballView.outputResultBallWithStrike();
+            } else {
+                baseballView.outputCount(ballCount);
+                baseballView.outputResultBallWithoutStrike();
             }
+        }
+    }
+
+    private void printNothing(int ballCount, int strikeCount) {
+        if (isNothing(ballCount, strikeCount)) {
+            baseballView.outputResultNothing();
         }
     }
 
@@ -57,7 +75,7 @@ public class BaseballGame {
     private boolean isThreeStrike() {
         // 3 strike인지 확인
         if (checkThreeStrike()) {
-            baseballView.printFinishGame();
+            baseballView.outputFinishGame();
             return true;
         }
         return false;

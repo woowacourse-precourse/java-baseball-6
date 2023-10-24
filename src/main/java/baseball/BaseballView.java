@@ -15,16 +15,20 @@ public class BaseballView {
     }
 
     // 판정 결과 출력 - 볼, 스트라이크, 낫싱
-    public void printResultBall(int count) {
-        System.out.printf("%d볼\n", count);
+    public void outputCount(int count) {
+        System.out.print(count);
     }
 
-    public void outputResultBall(int count) {
-        System.out.println("%d볼", count);
+    public void outputResultBallWithoutStrike() {
+        System.out.println("볼");
     }
 
-    public void outputResultStrike(int count) {
-        System.out.println("%d스트라이크", count);
+    public void outputResultBallWithStrike() {
+        System.out.print("볼 ");
+    }
+
+    public void outputResultStrike() {
+        System.out.println("스트라이크");
     }
 
     public void outputResultNothing() {

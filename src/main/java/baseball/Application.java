@@ -8,7 +8,7 @@ public class Application {
         BaseballGame baseballGame = new BaseballGame(baseballView, baseballComputer, baseballUmpire);
 
         // 게임 시작
-        baseballView.printGameStart();
+        baseballView.outputGameStart();
         baseballGame.start();
     }
 }
