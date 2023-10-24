@@ -29,7 +29,7 @@ public class Output {
 
         System.out.println();
 
-        if (strikes == GameConstants.NUM_DIGITS) {
+        if (strikes == GameConstants.NUMBER_LENGTH) {
             printGameEnd();
             return true;
         }

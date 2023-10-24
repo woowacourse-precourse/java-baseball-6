@@ -22,16 +22,16 @@ public class InputValidator {
     }
 
     private void validateLength(String input) {
-        if (input.length() != GameConstants.NUM_DIGITS) {
-            throw new IllegalArgumentException(GameConstants.NUM_DIGITS + "자리의 숫자가 아닙니다.");
+        if (input.length() != GameConstants.NUMBER_LENGTH) {
+            throw new IllegalArgumentException(GameConstants.NUMBER_LENGTH + "자리의 숫자가 아닙니다.");
         }
     }
 
     private void validateNoDuplicated(String input) {
         if (input.chars()
                 .distinct()
-                .count() != GameConstants.NUM_DIGITS) {
-            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야됩니다.");
+                .count() != GameConstants.NUMBER_LENGTH) {
+            throw new IllegalArgumentException("서로 다른 숫자 " + GameConstants.NUMBER_LENGTH + "개를 입력해야됩니다.");
         }
     }
 

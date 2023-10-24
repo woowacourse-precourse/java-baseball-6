@@ -19,7 +19,8 @@ public class Input {
     }
 
     public int getRetryChoice() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(
+                "게임을 새로 시작하려면 " + GameConstants.RETRY_CHOICE + ", 종료하려면 " + GameConstants.EXIT_CHOICE + "를 입력하세요.");
         String input = removeWhiteSpace(Console.readLine());
         inputValidator.validateRetryNumber(input);
         return covertStringToInt(Console.readLine());
