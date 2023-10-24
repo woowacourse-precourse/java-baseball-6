@@ -49,7 +49,7 @@ public class BaseballGame {
         OutputView.printGameStart();
         do {
             playGame();
-        } while (isRestart());
+        } while (!isFinish());
     }
 
     private void playGame() {
@@ -57,7 +57,7 @@ public class BaseballGame {
         do {
             getNumbersFromPlayer();
             printHint(getCompareResult());
-        } while (!isFinish());
+        } while (!isWin());
         OutputView.printGameClear();
         getRestartOptionFromPlayer();
     }
@@ -108,7 +108,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean isFinish() {
+    private boolean isWin() {
         return numberComparator.isCorrect();
     }
 
@@ -116,7 +116,7 @@ public class BaseballGame {
         restart = Restart.of(InputView.setRestartInput(), restartOptionValidator);
     }
 
-    private boolean isRestart() {
-        return restart.getRestartOption().equals(RESTART_OPTION.getValue());
+    private boolean isFinish() {
+        return !restart.getRestartOption().equals(RESTART_OPTION.getValue());
     }
 }
