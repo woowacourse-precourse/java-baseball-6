@@ -18,7 +18,7 @@ public class GameStandard {
         int cntSameNum = 0; // 유저의 숫자가 computerList에 포함한 갯수
 
         for (Integer numOfUser : userList) {
-            if (isContainList(computerList, numOfUser)) { // computerList에 유저가 입력한 값이 포함되어 있으면
+            if (isContainNum2ComList(computerList, numOfUser)) { // computerList에 유저가 입력한 값이 포함되어 있으면
                 cntSameNum = cntSameNum + 1; // 같은 숫자가 있을때 conunter + 1
             }
         }
@@ -48,7 +48,7 @@ public class GameStandard {
      * @param numOfUser
      * @return
      */
-    private boolean isContainList(List<Integer> computerList, Integer numOfUser) {
+    private boolean isContainNum2ComList(List<Integer> computerList, Integer numOfUser) {
         return computerList.contains(numOfUser);
     }
 }
