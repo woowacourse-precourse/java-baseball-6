@@ -72,16 +72,15 @@ public class game {
         return 0;
     }
 
-    int playerChoice() { //플레이어 재시작/종료 선택
+    String playerChoice() { //플레이어 재시작/종료 선택
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString = Console.readLine();
-        input = Integer.parseInt(inputString);
 
-        if(input != 1 && input!= 2) {
+        if (!inputString.equals("1") && !inputString.equals("2")) {
             exceptionHandler();
         }
 
-        return input;
+        return inputString;
     }
 
     void exceptionHandler(){ //예외 처리

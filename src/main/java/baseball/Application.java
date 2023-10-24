@@ -13,6 +13,6 @@ public class Application {
                 play.compareNumbers();
                 play.printResult();
             }
-        } while (play.playerChoice() == 1);
+        } while (play.playerChoice().equals("1"));
     }
 }
