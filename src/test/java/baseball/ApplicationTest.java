@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import javax.management.InvalidApplicationException;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
