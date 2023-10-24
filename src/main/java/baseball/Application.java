@@ -36,6 +36,9 @@ public class Application {
     }
 
     public static void validateGuess(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("빈 입력값은 허용되지 않습니다.");
+        }
         if (!Util.isLengthThree(input)) {
             throw new IllegalArgumentException("입력값의 길이는 3자리여야 합니다.");
         }
@@ -48,6 +51,9 @@ public class Application {
     }
 
     public static void validateChoice(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("빈 입력값은 허용되지 않습니다.");
+        }
         if (!Util.isOneOrTwo(input)) {
             throw new IllegalArgumentException("입력값은 1 또는 2여야 합니다.");
         }
