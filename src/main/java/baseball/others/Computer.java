@@ -1,8 +1,8 @@
-package others;
+package baseball.others;
 
-import static others.Constant.maxRange;
-import static others.Constant.minRange;
-import static others.Constant.numberOfNumbers;
+import static baseball.others.Constant.maxRange;
+import static baseball.others.Constant.minRange;
+import static baseball.others.Constant.numberOfNumbers;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

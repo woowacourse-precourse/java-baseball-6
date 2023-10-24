@@ -1,10 +1,10 @@
 package others;
 
+import static others.Constant.numberOfNumbers;
+
 import java.util.Objects;
 
 public class ExceptionHandling {
-    private static final int numberOfNumbers = 3;
-
     public static void digitsExceptionTesting(final String strNumber) {
         isNull(strNumber);
         isThree(strNumber);
