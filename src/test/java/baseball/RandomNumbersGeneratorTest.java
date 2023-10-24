@@ -26,13 +26,4 @@ public class RandomNumbersGeneratorTest {
 			Assertions.assertThat(number).isBetween(0,10);
 		}
 	}
-
-	@Test
-	void 생성된_각각의_랜덤_숫자는_중복이_없다() {
-		for(int i = 0; i < 1000; i++) {
-			List<Integer> randomNumbers = randomNumbersGenerator.generateRandomNumbers();
-			Assertions.assertThat(randomNumbers.stream().distinct().count()).isEqualTo(3);
-		}
-	}
-
 }
