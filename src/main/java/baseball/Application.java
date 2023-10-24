@@ -25,7 +25,6 @@ public class Application {
         while(true) {
             Baseball base = gameService.buildRandomBaseball();
             loopTurn(base);
-
             gameView.printEnd();
 
             String line = gameView.getAnswer();
@@ -39,7 +38,6 @@ public class Application {
         while(true) {
             String line = gameView.getNumbers();
             List<Integer> numbers = InputConverter.convertToIntegerList(line);
-
             Baseball now = gameService.buildBaseball(numbers);
 
             BaseballScore score = base.compare(now);
@@ -54,7 +52,6 @@ public class Application {
 
         GameView gameView = new GameView(new OutputView());
         GameService gameService = new GameService();
-
         Application app = new Application(gameView, gameService);
 
         app.play();
