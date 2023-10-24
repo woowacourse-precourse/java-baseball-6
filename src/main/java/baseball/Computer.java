@@ -20,13 +20,15 @@ public class Computer {
     }
 
     public void init() {
-        while (VERIFICATION_PASSED) {
+        do {
             generateRandomNumbers();
-            if (validateNumbers(randomNumbers) == VERIFICATION_PASSED) {
-                break;
-            }
-        }
+        } while (!isVerificationPassed());
     }
+
+    private boolean isVerificationPassed() {
+        return validateNumbers(randomNumbers) == VERIFICATION_PASSED;
+    }
+
 
     private void generateRandomNumbers() {
         randomNumbers = new ArrayList<>();
