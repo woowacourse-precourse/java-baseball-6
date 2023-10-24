@@ -1,6 +1,6 @@
 package baseball.Game;
 
-//전체적인 숫자야구 게임의 반복실행을 위한 class
+//전체적인 숫자야구 게임의 반복실행 class
 
 public class GameRun {
 
