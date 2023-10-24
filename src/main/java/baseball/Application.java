@@ -17,7 +17,7 @@ public class Application {
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
-                if (!checkLength(input)) throw new IllegalArgumentException();
+                if (!checkLength(input) || !checkIsNumber(input)) throw new IllegalArgumentException();
 
                 break;
             }
@@ -37,5 +37,14 @@ public class Application {
 
     private static boolean checkLength(String input) {
         return input.length() == 3;
+    }
+
+    private static boolean checkIsNumber(String input) {
+        for(int i = 0; i < input.length() ; i++){
+            if(!Character.isDigit(input.charAt(i))){
+                return false;
+            }
+        }
+        return true;
     }
 }
