@@ -92,7 +92,7 @@ public class Application {
             for (int i = 0; i < 3; i++) {
                 char c = input.charAt(i);
                 if (c < '1' || c > '9') {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("잘못된 문자입니다");
                 }
                 userGuess[i] = c - '0';
             }
