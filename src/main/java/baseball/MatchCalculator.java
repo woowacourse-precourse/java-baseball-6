@@ -1,7 +1,7 @@
 package baseball;
 
 import static baseball.Constant.THREE_STRIKE;
-import static baseball.GameController.hasWon;
+import static baseball.GameController.victory;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class MatchCalculator {
 
     private void checkWin(int strikeCount) {
         if (strikeCount == THREE_STRIKE) {
-            hasWon();
+            victory();
         }
     }
 }

@@ -25,7 +25,7 @@ public class GameController {
         while (!hasWon) {
             loopThroughGame();
         }
-        outputView.gameOvermessage();
+        outputView.gameOverMessage();
         restartOrExit(userInput.promptUserForRestart());
     }
 
@@ -48,7 +48,7 @@ public class GameController {
         }
     }
 
-    public static void hasWon() {
+    public static void victory() {
         hasWon = true;
     }
 }
