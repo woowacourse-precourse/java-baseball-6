@@ -14,8 +14,8 @@ public class Computer {
         this.baseballNumber = baseballNumberGenerator.createRandomBaseballNumber();
     }
 
-    public int countStrike(List<Integer> playerBaseballNumber){
-        int strike =0;
+    public Integer countStrike(List<Integer> playerBaseballNumber){
+        Integer strike =0;
 
         for(int i=0;i<playerBaseballNumber.size();i++){
             if(playerBaseballNumber.get(i).equals(this.baseballNumber.get(i))){
@@ -27,7 +27,7 @@ public class Computer {
 
     }
 
-    public int countBall(List<Integer> playerBaseballNumber){
+    public Integer countBall(List<Integer> playerBaseballNumber){
         int ball =0;
 
         for(int i=0;i<playerBaseballNumber.size();i++){

@@ -49,13 +49,13 @@ public class BaseballController {
 
     }
 
-    private int strikeCountInOneRound(){
+    private Integer strikeCountInOneRound(){
         outputView.printInputNumberInfoMessage();
-        int playerNumber = inputView.inputPlayerNumber();
+        Integer playerNumber = inputView.inputPlayerNumber();
         List<Integer> playerBaseballNumber = baseballNumberGenerator.createPlayerBaseballNumber(playerNumber);
 
-        int strike = computer.countStrike(playerBaseballNumber);
-        int ball= computer.countBall(playerBaseballNumber);
+        Integer strike = computer.countStrike(playerBaseballNumber);
+        Integer ball= computer.countBall(playerBaseballNumber);
 
         outputView.printResultMessage(strike,ball);
 

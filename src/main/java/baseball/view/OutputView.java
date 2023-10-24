@@ -11,7 +11,7 @@ public class OutputView {
         System.out.print(OutputMessage.INPUT_NUMBER_INFO_MESSAGE);
     }
 
-    public void printResultMessage(int strike, int ball){
+    public void printResultMessage(Integer strike, Integer ball){
         if(strike==0 && ball==0){
             System.out.println(OutputMessage.NOTHING_RESULT_MESSAGE);
         } else if (strike == 0) {

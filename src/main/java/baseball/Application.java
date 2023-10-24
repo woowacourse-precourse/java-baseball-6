@@ -13,6 +13,7 @@ public class Application {
         BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGenerator();
         Computer computer = new Computer(baseballNumberGenerator);
         BaseballController baseballController = new BaseballController(inputView,outputView,computer,baseballNumberGenerator);
+
         baseballController.start();
     }
 }
