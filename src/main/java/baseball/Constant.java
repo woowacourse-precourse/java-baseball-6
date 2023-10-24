@@ -11,6 +11,11 @@ public class Constant {
         UserRequestMessage(String message) {
             this.message = message;
         }
+
+        @Override
+        public String toString() {
+            return message;
+        }
     }
 
     public enum UserResponseMessage{
@@ -23,6 +28,11 @@ public class Constant {
 
         UserResponseMessage(String message) {
             this.message = message;
+        }
+
+        @Override
+        public String toString() {
+            return message;
         }
     }
 }
