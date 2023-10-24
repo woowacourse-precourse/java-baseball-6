@@ -9,7 +9,7 @@ public interface gameManageInterface {
 
     Integer judgeNumber(List<Integer> playerNumber, List<Integer> computerNumber);
 
-    Integer PrintNumber(int strikeCount, int ballCount);
+    Integer printResultNumber(int strikeCount, int ballCount);
 
     void play();
 

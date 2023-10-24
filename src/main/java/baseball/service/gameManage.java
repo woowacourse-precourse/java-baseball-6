@@ -45,10 +45,10 @@ public class gameManage implements gameManageInterface {
                 ballCount++;
             }
         }
-        return PrintNumber(strikeCount, ballCount);
+        return printResultNumber(strikeCount, ballCount);
     }
 
-    public Integer PrintNumber(int strikeCount, int ballCount) {
+    public Integer printResultNumber(int strikeCount, int ballCount) {
         String printResult = "";
         printNumberFormat printNumber = new printNumberFormat();
         if (strikeCount == gameConstant.ALL_STRIKE) {
