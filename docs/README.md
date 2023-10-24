@@ -17,7 +17,6 @@
 * Java 17
 * IntelliJ IDEA Ultimate
 ### 기능 목록
-* 게임 시작 기능
 * 컴퓨터 숫자 설정
 * 사용자 숫자 입력
 - 심판 기능
