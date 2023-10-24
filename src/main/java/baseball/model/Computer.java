@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Computer {
 
+    private static final int FIXED_LIST_SIZE = 3;
+    private static final int MIN_OF_NUMBER_RANGE = 1;
+    private static final int MAX_OF_NUMBER_RANGE = 9;
     private List<Integer> randomNumberList;
 
     public List<Integer> getComputerRandomNumber() {
@@ -18,9 +21,9 @@ public class Computer {
     private List<Integer> generateRandomNumber() {
         int newRandomNumber;
 
-        while(randomNumberList.size() < 3) {
+        while(randomNumberList.size() < FIXED_LIST_SIZE) {
 
-            newRandomNumber = Randoms.pickNumberInRange(1, 9);
+            newRandomNumber = Randoms.pickNumberInRange(MIN_OF_NUMBER_RANGE, MAX_OF_NUMBER_RANGE);
 
             if (!randomNumberList.contains(newRandomNumber)) {
                 randomNumberList.add(newRandomNumber);
