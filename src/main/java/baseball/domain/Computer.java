@@ -17,7 +17,8 @@ public class Computer {
     public void play() {
         Player player = new Player();
         Baseball baseball = new Baseball();
-//        baseball.compare(number);
+        baseball.compare(number.make(), player.start());
+        System.out.println(baseball.getResult());
     }
 
 

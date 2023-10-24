@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.app.Baseball;
+import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.domain.RandomNumber;
 import java.util.Arrays;
@@ -28,8 +29,9 @@ public class BaseballTest {
     }
 
     @Test
-    void 플레이어_숫자_입력() {
-        Player player = new Player();
-//        player.inputNum();
+    void 플레이어_숫자_입력_() {
+        Computer computer = new Computer();
+        computer.init();
+        computer.play();
     }
 }
