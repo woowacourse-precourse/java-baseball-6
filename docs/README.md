@@ -19,14 +19,14 @@
     - [x] 낫싱
 
 ### GameManager(게임 관리자 및 Controller)
-- [ ] ComputerPlayer 생성
+- [x] ComputerPlayer 생성
   -  camp.nextstep.edu.missionutils에서 제공하는 Randoms 함수 사용
-- [ ] 게임 진행
-  - [ ] Viewer 와 Entity 를 연결 및 관리
-  - [ ] 새로운 게임 시작 및 종료 관리
+- [x] 게임 진행
+  - [x] Viewer 와 Entity 를 연결 및 관리
+  - [x] 새로운 게임 시작 및 종료 관리
 
 ### Viewer
-- [ ] 출력
+- [x] 출력
   - [x] 게임 시작 문구 "숫자 야구 게임을 시작합니다."
   - [x] 숫자 입력 문구 "숫자를 입력해주세요 : "
   - [ ] 결과 표시 문구 "볼", "스트라이크", "x볼 x스트라이크", "낫싱"
