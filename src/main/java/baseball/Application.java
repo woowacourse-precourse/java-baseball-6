@@ -3,12 +3,12 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         PlayGame playGame = new PlayGame();
-        boolean flag = true;
+        boolean isContinue = true;
 
-        while (flag) {
+        while (isContinue) {
             playGame.run();
             if (!playGame.retryGame()) {
-                flag = false;
+                isContinue = false;
             }
         }
     }
