@@ -109,6 +109,12 @@ public class Application {
         return result;
     }
 
+    public static String inputLogic() {
+        String input = Console.readLine();
+
+        return input;
+    }
+
 
 
     public static void main(String[] args) {
