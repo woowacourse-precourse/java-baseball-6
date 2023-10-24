@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.Game;
+import baseball.utils.RandomUtils;
 
 public class GameService {
     int size;
@@ -12,7 +13,7 @@ public class GameService {
 
     public void setGame(int min, int max, int size) {
         this.size = size;
-
+        game = new Game(RandomUtils.getRandomNumbers(min, max, size));
     }
 
 }
