@@ -27,7 +27,7 @@ public class NumberFactory {
     }
 
     public static List<Integer> createByUser() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Message.GUESS_NUMBER_REQUEST_MESSAGE);
         String userInput = Console.readLine();
         List<Integer> userNumbers = parseUserInput(userInput);
 
