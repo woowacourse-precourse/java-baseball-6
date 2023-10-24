@@ -6,12 +6,17 @@ import java.util.List;
 
 public class CheckRestart {
     public  User user = new User();
+    public Validation validation = new Validation();
     public CheckBallStrike checkBallStrike = new CheckBallStrike();
     public String strikeNum(List<Integer> computerNumber) {
         int strike = 0;
         while (strike != Constant.MAX_STRIKE) {
             System.out.print("숫자를 입력해주세요 : ");
             String userNum = user.inputNum();
+
+            validation.inputLengthCheck(userNum);
+            validation.inputRangeCheck(userNum);
+            validation.inputDuplicateCheck(userNum);
 
             strike = checkBallStrike.checkBallStrike(computerNumber, userNum);
         }
