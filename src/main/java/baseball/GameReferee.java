@@ -10,41 +10,10 @@ public class GameReferee {
     }
 
     public Score judge(Ball tryBall) {
-
-        boolean isNothing = true;
-        for (Integer answerNumber : answerBall.getNumbers()) {
-            if (tryBall.getNumbers().contains(answerNumber)) {
-                isNothing = false;
-                break;
-            }
-        }
-
-        if (isNothing) {
+        if (answerBall.hasNoRelationWith(tryBall)) {
             return NOTHING;
         }
 
-        int ballCnt = 0;
-        int strikeCnt = 0;
-
-        for (int ballNumberPlace = 0; ballNumberPlace < 3; ballNumberPlace++) {
-            if (isStrike(tryBall, ballNumberPlace)) {
-                strikeCnt++;
-                continue;
-            }
-
-            if (tryBallHasAnswerNumber(tryBall, answerBall.getNumbers().get(ballNumberPlace))) {
-                ballCnt++;
-            }
-        }
-
-        return Score.toScore(ballCnt, strikeCnt);
-    }
-
-    private boolean isStrike(Ball tryBall, int ballNumberPlace) {
-        return answerBall.getNumbers().get(ballNumberPlace).equals(tryBall.getNumbers().get(ballNumberPlace));
-    }
-
-    private boolean tryBallHasAnswerNumber(Ball tryBall, Integer answerNumber) {
-        return tryBall.getNumbers().contains(answerNumber);
+        return answerBall.compareWith(tryBall);
     }
 }
