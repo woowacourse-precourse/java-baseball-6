@@ -4,8 +4,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
 
-    public static final int RESTART_OPERATION = 1;
-    public static final int EXIT_OPERATION = 2;
+    private static final int RESTART_OPERATION = 1;
+    private static final int EXIT_OPERATION = 2;
     int exitNumber = 0;
     Baseball answer;
 
@@ -17,7 +17,7 @@ public class BaseballGame {
             Baseball expected = new Baseball(readLine());
 
             Score resultScore = expected.checkResult(answer);
-            printGameResult(resultScore);
+            resultScore.printGameResult();
 
             if (resultScore.getIsCompleted() && isExit()) {
                 return;
@@ -28,24 +28,6 @@ public class BaseballGame {
     private void resetGame() {
         answer = new Baseball();
         exitNumber = 0;
-    }
-
-    private void printGameResult(Score score) {
-        if (score.getBallCount() != 0) {
-            System.out.print(score.getBallCount() + "볼 ");
-        }
-        if (score.getStrikeCount() != 0) {
-            System.out.print(score.getStrikeCount() + "스트라이크");
-        }
-        if (score.getBallCount() == 0 && score.getStrikeCount() == 0) {
-            System.out.print("낫싱");
-        }
-
-        System.out.println();
-
-        if (score.getIsCompleted()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
     }
 
     public boolean isExit() {
