@@ -1,5 +1,6 @@
 package baseball.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -40,4 +41,35 @@ public class IntegerUtilTest {
         });
     }
 
+    @Test
+    public void isSame_true() {
+        //given
+        Integer i1 = 42;
+        Integer i2 = 42;
+
+        //when
+        boolean result = IntegerUtil.isSame(i1, i2);
+
+        //then
+        assertTrue(result);
+    }
+
+    @Test
+    public void isSame_false() {
+        Integer i1 = 42;
+        Integer i2 = 17;
+
+        boolean result = IntegerUtil.isSame(i1, i2);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testParseInteger() {
+        char character = '7';
+
+        Integer result = IntegerUtil.parseInteger(character);
+
+        assertEquals(Integer.valueOf(7), result);
+    }
 }
