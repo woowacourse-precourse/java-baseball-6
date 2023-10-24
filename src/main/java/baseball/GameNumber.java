@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class GameNumber {
@@ -21,9 +22,9 @@ public class GameNumber {
         if (number.length() > BOARD_LIMIT) {
             throw new IllegalArgumentException(INPUT_OUT_OF_BOUND_ERROR_MESSAGE);
         }
-        for (char c : number.toCharArray()) {
-            int integerValue = Character.getNumericValue(c);
-            if (integerValue == -1 || integerValue == 0) {
+        for (int i = 0; i < number.length(); i++) {
+            char c = number.charAt(i);
+            if (c < '1' || c > '9') {
                 throw new IllegalArgumentException(INPUT_NUMERIC_ERROR_MESSAGE);
             }
         }
@@ -38,7 +39,12 @@ public class GameNumber {
         }
     }
 
+    private void initBoard(){
+        this.board.clear();
+    }
+
     public GameNumber(String number) {
+       initBoard();
         validateNumber(number);
         for (char c : number.toCharArray()) {
             int numericValue = Character.getNumericValue(c);
@@ -48,7 +54,9 @@ public class GameNumber {
     }
 
     public GameNumber() {
+        initBoard();
         generateRandomizeNumber();
+        System.out.println(getBoard());
     }
 
     public List<Integer> getBoard() {

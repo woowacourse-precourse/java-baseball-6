@@ -13,7 +13,7 @@ public class Application {
     private static final int ALL_STRIKE = 3;
 
     private static void inputValidate(String line) {
-        if (line == null || line.length() != 1 || !Character.isDigit(line.charAt(0)) || line.charAt(0) > '2') {
+        if (line == null || line.length() != 1 || !Character.isDigit(line.charAt(0)) || line.charAt(0) < '1' || line.charAt(0) > '2') {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
     }
