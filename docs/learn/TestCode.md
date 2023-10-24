@@ -36,6 +36,10 @@ void 재시작입력예외처리테스트(){
 ```
 
 `display.getSplitedUserInput(" 12")`은 일부러 IllegalArgumentException을 발생시키는 명령이다. 이 명령으로 인해 예외가 발생하면 테스트 성공.
+
+- exception
+  - assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {...}) : {...} 안에서 코드가 돌아갈 때 타깃 예외가 일어나는지 검사한다. 
+  - assertThatNoException().isThrownBy(() -> {...}) : {...} 안에서 아무 예외가 일어나지 않는지 검사한다.
 ## 메서드 분리
 테스트 코드를 작성하던 중에 살짝 곤혹스러웠던 부분이 있었다. 테스트를 할 때 기능이 분리되어있지 않아 예외처리 테스트를 할 때 어떻게 콘솔 입력을 해야할 지 고민했었다. 하지만 기능을 분리하여 해결할 수 있었다.
 (Mock을 통해 콘솔 입력을 하는 방법이 있다.)
