@@ -1,9 +1,11 @@
 package baseball.model;
 
 import baseball.util.NumberValidator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerNumber {
-    private String inputNumber;
+    private List<Integer> numbers;
     NumberValidator numberValidator = new NumberValidator();
 
     public void setInputNumber(String inputNumber) {
@@ -12,10 +14,14 @@ public class PlayerNumber {
         numberValidator.validateDuplicateNumber(inputNumber);
         numberValidator.validateNonNumeric(inputNumber);
 
-        this.inputNumber = inputNumber;
+        this.numbers = convertStringToInt(inputNumber);
     }
 
-    public String getInputNumber() {
-        return inputNumber;
+    public List<Integer> convertStringToInt(String inputNumber) {
+        ArrayList<Integer> transformNumbers = new ArrayList<>();
+        for (char number : inputNumber.toCharArray()) {
+            transformNumbers.add(Character.getNumericValue(number));
+        }
+        return transformNumbers;
     }
 }

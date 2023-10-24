@@ -13,6 +13,6 @@ public class InputView {
         String inputNumber = Console.readLine();
 
         playerNumber.setInputNumber(inputNumber);
-        System.out.println("inputNumber : " + playerNumber.getInputNumber());
+        System.out.println("inputNumber : " + playerNumber.convertStringToInt(inputNumber));
     }
 }
