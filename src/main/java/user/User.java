@@ -19,10 +19,9 @@ public class User {
         userNumberList.clear();
     }
 
-    public Balls makeUserNumber(){
+    public Balls makeUserNumber(String userNumber){
         initList();
-        String strNumber = Console.readLine();
-        convertToInteger(strNumber);
+        convertToInteger(userNumber);
         return new Balls(userNumberList);
     }
 

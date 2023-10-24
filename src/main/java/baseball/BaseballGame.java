@@ -45,8 +45,8 @@ public class BaseballGame implements Game{
 
     public void receiveUserBalls(){
         User user=new User();
-        inputView.enterUserAnswer();
-        userBalls=user.makeUserNumber();
+
+        userBalls=user.makeUserNumber(inputView.enterUserAnswer());
     }
 
     public void compare(boolean pass){
