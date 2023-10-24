@@ -19,7 +19,6 @@ public class GameController {
 
             play();
 
-            OutputView.askExit();
             exitFlag = InputView.askExit();
         }
 
@@ -32,7 +31,6 @@ public class GameController {
         gameService.createAnswerBalls();
 
         while(true) {
-            OutputView.askUserNumbers();
             String userInput = InputView.askUserNumbers();
             Util.validateUserInput(userInput);
 

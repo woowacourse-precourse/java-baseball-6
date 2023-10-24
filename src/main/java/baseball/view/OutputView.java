@@ -14,16 +14,6 @@ public class OutputView {
         System.out.println("게임을 종료합니다.");
     }
 
-    public static void askExit() {
-
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
-    public static void askUserNumbers() {
-
-        System.out.print("숫자를 입력해주세요 : ");
-    }
-
     public static void printScore(ScoreDto scoreDto) {
 
         int strike = scoreDto.getStrike();
