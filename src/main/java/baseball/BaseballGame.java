@@ -1,11 +1,13 @@
 package baseball;
 
+import static baseball.view.InputView.getEndOption;
 import static baseball.view.InputView.getNumbers;
 import static baseball.view.OutputView.printEnd;
 import static baseball.view.OutputView.printHint;
 
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
+import baseball.domain.EndOption;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,11 @@ public class BaseballGame {
             play(computer);
         } while (!isMatch());
         printEnd();
+    }
+
+    public boolean isEnd() {
+        int option = getOptionNumber();
+        return option == EndOption.END.getValue();
     }
 
     private Balls createComputerBalls() {
@@ -90,9 +97,23 @@ public class BaseballGame {
         }
     }
 
-    private static void validateNumber(Integer number) {
+    private void validateNumber(Integer number) {
         if (!ValidationUtils.isSingleNumber(number)) {
             throw new IllegalArgumentException("잘못된 입력입니다. 1-9 사이의 숫자를 입력해 주세요.");
+        }
+    }
+
+    private int getOptionNumber() {
+        String option = getEndOption();
+        validateInput(option);
+        int number = Integer.parseInt(option);
+        validateOption(number);
+        return number;
+    }
+
+    private void validateOption(int number) {
+        if (!ValidationUtils.isEndOptionNumber(number)) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 1(재시작) 또는 2(종료)를 입력해주세요.");
         }
     }
 }
