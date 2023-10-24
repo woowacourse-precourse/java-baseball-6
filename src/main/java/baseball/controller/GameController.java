@@ -35,6 +35,7 @@ public class GameController {
                 }
             } catch (IllegalArgumentException e) {
                 view.displayErrorMessage(e.getMessage()); // 예외 메시지 출력
+                throw new IllegalArgumentException();
             }
 
         }
