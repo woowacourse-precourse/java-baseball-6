@@ -9,41 +9,41 @@ public class View {
 
     public static String readPlayerNumber() {
         printInputNumberMessage();
-        String inputNumber = Console.readLine();
-        checkInputNumber(inputNumber);
+        String playerNumber = Console.readLine();
+        checkInputNumber(playerNumber);
 
-        return inputNumber;
+        return playerNumber;
     }
 
-    private static void checkInputNumber(String inputNumber) {
-        checkIsNumber(inputNumber);
-        checkNumberSize(inputNumber);
-        checkNumberRange(inputNumber);
-        checkDuplicatedNumber(inputNumber);
+    private static void checkInputNumber(String playerNumber) {
+        checkIsNumber(playerNumber);
+        checkNumberSize(playerNumber);
+        checkNumberRange(playerNumber);
+        checkDuplicatedNumber(playerNumber);
     }
 
-    private static void checkIsNumber(String inputNumber) {
+    private static void checkIsNumber(String playerNumber) {
         try {
-            Integer.parseInt(inputNumber);
+            Integer.parseInt(playerNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력이 가능합니다.");
         }
     }
 
-    private static void checkNumberSize(String inputNumber) {
-        if (inputNumber.length() != Computer.NUMBER_SIZE) {
+    private static void checkNumberSize(String playerNumber) {
+        if (playerNumber.length() != Computer.NUMBER_SIZE) {
             throw new IllegalArgumentException("반드시 3개의 숫자여야 합니다.");
         }
     }
 
-    private static void checkNumberRange(String inputNumber) {
-        if (inputNumber.contains("0")) {
+    private static void checkNumberRange(String playerNumber) {
+        if (playerNumber.contains("0")) {
             throw new IllegalArgumentException("1부터 9까지의 숫자만 입력이 가능합니다.");
         }
     }
 
-    private static void checkDuplicatedNumber(String inputNumber) {
-        String[] numbers = inputNumber.split("");
+    private static void checkDuplicatedNumber(String playerNumber) {
+        String[] numbers = playerNumber.split("");
         long count = Arrays.stream(numbers).distinct().count();
 
         if (count != Computer.NUMBER_SIZE) {
