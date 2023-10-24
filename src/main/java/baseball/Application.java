@@ -7,6 +7,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -14,23 +15,17 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
         int retry = 1;
         while(retry == 1) {
             int num = 0;
-            boolean validInput = false;
-            while (!validInput) {
-                try {
-                    System.out.print("숫자를 입력해주세요 : ");
-                    num = Integer.parseInt(Console.readLine());
-                    if (num >= 100 && num <= 999) {
-                        validInput = true;
-                    } else {
-                        System.out.println("입력한 값이 올바르지 않습니다. 3자리 숫자를 입력해주세요.");
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("입력한 값이 올바르지 않습니다. 3자리 숫자를 입력해주세요.");
-                }
+            System.out.print("숫자를 입력해주세요: ");
+            String input = Console.readLine();
+            if (input.length() != 3) {
+                throw new IllegalArgumentException("입력한 값이 올바르지 않습니다. 3자리 숫자를 입력해주세요.");
             }
+            num = Integer.parseInt(input);
+
 
             List<Integer> digits = new ArrayList<>();
             digits.add(num / 100);        // 백의 자리
@@ -65,6 +60,15 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 retry = Integer.parseInt(Console.readLine());
+                if(retry == 1){
+                    computer.clear();
+                    while (computer.size() < 3) {
+                        int randomNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!computer.contains(randomNumber)) {
+                            computer.add(randomNumber);
+                        }
+                    }
+                }
             }
         }
     }
