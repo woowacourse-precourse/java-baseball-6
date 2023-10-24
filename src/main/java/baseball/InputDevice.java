@@ -5,11 +5,24 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputDevice {
-    // 값을 입력 받는 클래스
-    // 값을 잘못 입력한 경우 IllegalArgumentException를 throw해야함
-    // 1~9 3가지의 각자 다른 정수를 입력 받는 메서드 >> String으로 받기
-    // 1또는 2를 입력받는 메서드
     private InputDevice() {
+    }
+
+    public static List<Integer> readPlayerNumbers() throws IllegalArgumentException {
+        List<Integer> player = new ArrayList<>();
+        player = parseStringToInteger(Console.readLine());
+        validateSize(player, 3);
+        validateNumbersInRange(player, 9);
+        validateduplication(player);
+        return player;
+    }
+
+    public static List<Integer> readNumber() throws IllegalArgumentException {
+        List<Integer> player = new ArrayList<>();
+        player = parseStringToInteger(Console.readLine());
+        validateSize(player, 1);
+        validateNumbersInRange(player, 2);
+        return player;
     }
 
     private static List<Integer> parseStringToInteger(String s) {
@@ -20,12 +33,12 @@ public class InputDevice {
         return result;
     }
 
-    private static void validateSize(final List<Integer> numbers) {
+    private static void validateSize(final List<Integer> numbers, final int n) {
         if (numbers.isEmpty()) {
             throw new IllegalArgumentException("입력된 값이 없습니다.");
         }
-        if (numbers.size() != 3) {
-            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+        if (numbers.size() != n) {
+            throw new IllegalArgumentException(n + "개의 숫자를 입력해주세요.");
         }
     }
 
