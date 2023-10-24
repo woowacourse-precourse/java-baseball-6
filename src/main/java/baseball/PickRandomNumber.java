@@ -19,7 +19,7 @@ public class PickRandomNumber {
 
     private String numToStr(List<Integer> numberList) {
         String str = "";
-        for(int i = 0 ; i < numberList.size() ; i++) {
+        for (int i = 0; i < numberList.size(); i++) {
             str += numberList.get(i) + "";
         }
 

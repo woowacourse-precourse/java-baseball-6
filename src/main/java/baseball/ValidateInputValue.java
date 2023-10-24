@@ -1,7 +1,6 @@
 package baseball;
 
 public class ValidateInputValue {
-
     String inputValue;
     char[] charArrInputValue;
 
