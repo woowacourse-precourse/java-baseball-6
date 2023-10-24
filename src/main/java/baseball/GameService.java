@@ -28,25 +28,27 @@ public class GameService {
                 ball += 1;
             }
         }
-        printResult(strike, ball);
+        checkResult(strike, ball);
         return strike == 3;
     }
 
-    private static void printResult(int strike, int ball) {
-        StringBuilder sb = new StringBuilder();
+    private static void printResult(CheckResult checkResult, int ball, int strike) {
+        switch (checkResult) {
+            case NOTHING -> System.out.println("낫싱");
+            case BALL -> System.out.println(ball + "볼");
+            case STRIKE -> System.out.println(strike + "스트라이크");
+            case BALL_AND_STRIKE -> System.out.println(ball + "볼" + " " + strike + "스트라이크");
+        }
+    }
+
+    private static void checkResult(int strike, int ball) {
+        CheckResult checkResult = CheckResult.NOTHING;
         if (ball != 0) {
-            sb.append(ball).append("볼");
+            checkResult = checkResult.next(1);
         }
         if (strike != 0) {
-            if (sb.length() != 0) {
-                sb.append(" ");
-            }
-            sb.append(strike).append("스트라이크");
+            checkResult = checkResult.next(2);
         }
-        if (sb.length() != 0) {
-            System.out.println(sb);
-            return;
-        }
-        System.out.println("낫싱");
+        printResult(checkResult, ball, strike);
     }
 }
