@@ -34,7 +34,7 @@ public class Player {
         try{
             int numInt = Integer.parseInt(num);
             if (num.length() != 3) {
-                System.out.println("입력된 숫자의 자리수가 3이 아닙니다.");
+                System.out.println("입력된 숫자가 3자리가 아닙니다.");
                 throw new IllegalArgumentException();
             }
             if (num.chars().distinct().count() != num.length()) {
