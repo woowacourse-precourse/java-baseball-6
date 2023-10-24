@@ -25,7 +25,7 @@ public class GameService {
         Exception.checkException(userGuess);
 
         Result result = new Result(computer, userGuess);
-        checkResult(result.getStrike(), result.getBall());
+        checkResult(result);
 
         return result.getStrike() == 3;
     }
@@ -39,14 +39,14 @@ public class GameService {
         }
     }
 
-    private static void checkResult(int strike, int ball) {
+    private static void checkResult(Result result) {
         ResultCase resultCase = ResultCase.NOTHING;
-        if (ball != 0) {
+        if (result.getBall() != 0) {
             resultCase = resultCase.next(1);
         }
-        if (strike != 0) {
+        if (result.getStrike() != 0) {
             resultCase = resultCase.next(2);
         }
-        printResult(resultCase, ball, strike);
+        printResult(resultCase, result.getBall(), result.getStrike());
     }
 }
