@@ -3,6 +3,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import net.bytebuddy.pool.TypePool;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Application {
 
     // Answer Check Method
@@ -35,10 +38,28 @@ public class Application {
         return result;
     }
 
+    public static boolean diffCheck(String input){
+        Set<Character> set = new HashSet<>();
+        boolean result = false;
+
+        for(int i = 0; i < input.length(); i++){
+            set.add(input.charAt(i));
+        }
+
+        if(set.size() == 3){
+            result = true;
+        }
+
+        return result;
+    }
+
     // 입력데이터의 형식 확인 및 예외 throw
     public static void inputDataCheck(String input) throws IllegalArgumentException {
-        if (input.length() != 3 || !input.matches("[0-9]{3}"))
-            throw new IllegalArgumentException();
+        // 정규표현식을 통한 길이 및 숫자 데이터인지 확인
+        // input데이터의 숫자들이 중복이 되는지 확인
+        if (!input.matches("[0-9]{3}") || !diffCheck(input))
+            throw new IllegalArgumentException(); // 형식에 맞지 않는다면 IllegalArgumentException Throw
+
     }
 
     // 게임 재실행 여부 형식 확인 및 예외 throw
