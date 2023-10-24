@@ -1,24 +1,23 @@
 package baseball.controller;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
 import baseball.constant.Constant;
 import baseball.model.Computer;
+import baseball.model.Counter;
 import baseball.model.Player;
-import baseball.util.Counter;
 import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.view.View;
 
-public class BaseballController {
-    private static BaseballController baseballController = new BaseballController();
+public class BaseballGame {
+    private static BaseballGame baseballController = new BaseballGame();
     // View
-    private View view = new View();
-    private OutputView outputView = view.outputView;
-    private InputView inputView = view.getInputView();
+    private OutputView outputView = new OutputView();
+    private InputView inputView = outputView.getInputView();
     // Model
     private Computer computer = new Computer();
     private Player player = new Player();
@@ -26,10 +25,10 @@ public class BaseballController {
     private Validator validator = new Validator();
     private Counter counter = new Counter();
 
-    private BaseballController() {
+    private BaseballGame() {
     }
 
-    public static BaseballController getInstance() {
+    public static BaseballGame getInstance() {
         return baseballController;
     }
 
@@ -38,7 +37,7 @@ public class BaseballController {
 
         while (true) {
             play();
-            if (quit())
+            if (quitGame())
                 break;
         }
     }
@@ -56,18 +55,19 @@ public class BaseballController {
             outputView.printInputMessage(playerInput);
             player.setNumbers(playerInput);
 
-            compare(computer.getNumbers(), player.getNumbers());
+            compareNumbers(computer.getNumbers(), player.getNumbers());
             showResult();
             if (threeStrike())
+                outputView.printGameEndMessage();
                 break;
         }
     }
 
-    public void compare(List<Integer> computerNumbers, int[] playerNumbers) {
+    public void compareNumbers(List<Integer> computerNumbers, int[] playerNumbers) {
         for (int i = 0; i < computerNumbers.size(); i++) {
             int computerNumber = computerNumbers.get(i);
             int playerNumber = playerNumbers[i];
-
+            
             if (computerNumber == playerNumber)
                 counter.setStrikeCount(counter.getStrikeCount() + 1);
             else if (computerNumbers.contains(playerNumber))
@@ -76,29 +76,29 @@ public class BaseballController {
     }
 
     public void showResult() {
+        String result = generateResultMessage();
+        outputView.printResultMessage(result);
+    }
+    
+    public String generateResultMessage() {
         int ballCount = counter.getBallCount();
         int strikeCount = counter.getStrikeCount();
 
         StringBuffer result = new StringBuffer();
 
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == 0 && strikeCount == 0)
             result.append("낫싱");
-        }
-        if (ballCount != 0) {
+        if (ballCount != 0)
             result.append(ballCount + "볼 ");
-        }
         if (strikeCount != 0)
             result.append(strikeCount + "스트라이크");
-
-        outputView.printResultMessage(result.toString().trim());
+        
+        return result.toString().trim();
     }
 
     public Boolean threeStrike() {
-        Map<String, String> map = new HashMap<>();
-        map.put("maxDigit", Integer.toString(Constant.MAX_DIGIT));
         int strikeCount = counter.getStrikeCount();
         if (strikeCount == Constant.MAX_DIGIT) {
-            outputView.printGameEndMessage(map);
             return true;
         }
         return false;
@@ -111,19 +111,17 @@ public class BaseballController {
         outputView.printContinueOrQuitMessage(map);
     }
 
-    public Boolean quit() {
+    public Boolean quitGame() {
         showToBeContinue();
 
         String input = inputView.getInputLine();
-
         if (!validator.quitInputValidate(input))
             throw new IllegalArgumentException();
-
-        outputView.printContinueOrQuitMessage(input);
+        outputView.printInputMessage(input);
 
         if (input.equals(Constant.QUIT_INPUT)) {
             outputView.printQuitMessage();
-            return true;
+            return true;    
         }
 
         return false;

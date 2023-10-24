@@ -25,8 +25,8 @@ public class OutputView {
         System.out.println(result);
     }
 
-    public void printGameEndMessage(Map<String, String> map) {
-        System.out.println("" + map.get("maxDigit") + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    public void printGameEndMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void printContinueOrQuitMessage(Map<String, String> map) {
