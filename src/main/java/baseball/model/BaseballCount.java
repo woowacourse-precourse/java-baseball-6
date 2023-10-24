@@ -2,11 +2,11 @@ package baseball.model;
 
 import java.util.List;
 
-public class baseballCount {
+public class BaseballCount {
     private int strikeCount;
     private int ballCount;
 
-    private baseballCount() {
+    private BaseballCount() {
         this.strikeCount = 0;
         this.ballCount = 0;
     }
