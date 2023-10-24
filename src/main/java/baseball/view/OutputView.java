@@ -10,6 +10,7 @@ public class OutputView {
     private static final String NOTHING_MESSAGE = "낫싱";
     private final static String GAME_SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final static String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final static String GAME_RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void printStartGame() {
         System.out.println(GAME_START_MESSAGE);
@@ -39,6 +40,10 @@ public class OutputView {
 
     public static void printEndGame() {
         System.out.println(GAME_END_MESSAGE);
+    }
+
+    public static void printRestartOrEnd() {
+        System.out.println(GAME_RESTART_OR_END_MESSAGE);
     }
 
 }

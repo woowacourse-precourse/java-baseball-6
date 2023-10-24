@@ -7,9 +7,11 @@ import baseball.util.NumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseballGame {
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
+    private static final String RESTART = "1";
 
     InputView inputView = new InputView();
     GenerateRandomNumbers generateRandomNumbers = new GenerateRandomNumbers();
@@ -17,10 +19,12 @@ public class BaseballGame {
     GameNumber gameNumber = new GameNumber();
 
     public void startGame() {
-        List<Integer> getRandomNumbers = generateRandomNumbers.getRandomNumbers();
-        gameNumber.setComputerNumbers(getRandomNumbers);
-        System.out.println(getRandomNumbers);
-        oneGame();
+        OutputView.printStartGame();
+        do {
+            List<Integer> getRandomNumbers = generateRandomNumbers.getRandomNumbers();
+            gameNumber.setComputerNumbers(getRandomNumbers);
+            oneGame();
+        } while (restart());
     }
 
     public void oneGame() {
@@ -62,4 +66,7 @@ public class BaseballGame {
         return ballCount;
     }
 
+    private boolean restart() {
+        return Objects.equals(InputView.readRestartOrEndGame(), RESTART);
+    }
 }
