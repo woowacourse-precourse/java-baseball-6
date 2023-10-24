@@ -26,6 +26,9 @@ public class Application {
 				if(input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
 					throw new IllegalArgumentException("서로 다른 숫자로 이루어진 3자리수");
 				}
+				if(input.charAt(0) == 0 || input.charAt(1) == 0 || input.charAt(2) == 0) {
+					throw new IllegalArgumentException("1~9로 이루어진 숫자");
+				}
 				
 				for (String number : input.split("")) {
 					userNumber.add(Integer.parseInt(number)); // 사용자가 입력한 번호 유저넘에 입력
