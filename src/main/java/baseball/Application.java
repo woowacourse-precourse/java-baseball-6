@@ -41,7 +41,16 @@ public class Application {
             System.out.println(result);
             if (score[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                break;
+                String restart = readLine().trim();
+                if (!(restart.equals("1") || restart.equals("2"))) {
+                    throw new IllegalArgumentException();
+                }
+                if (restart.equals("1")) {
+                    computer = getRandomList();
+                } else {
+                    System.out.println("게임 종료");
+                    break;
+                }
             }
             result = "";
             score[0] = 0;
