@@ -9,47 +9,36 @@ import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) throws IOException {
-        int restart = 0;
 
-        while (restart!=2) {
+        playGame();
+    }
+
+
+    private static List<Integer> makeNum(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
+
+    }
+
+
+    private static void playGame(){
+        int restartButton=0;
+
+        while (restartButton!=2) {
             List<Integer> computer = makeNum(); //임의의 세 개 값 만들기
 
-            while (true) {
-                String s;
-                List<Integer> nums = new ArrayList<>();
 
+            while (true) {
                 int strike = 0;
                 int ball = 0;
-
-
-                System.out.print("숫자를 입력해주세요 : ");
-
-
-                s = Console.readLine();
-
-                String[] arr = s.split("");
-
-                //사용자가 세 개 미만 혹은 초과의 숫자를 입력할 경우 오류 표시
-                if (arr.length != 3) {
-                    throw new IllegalArgumentException("3개가 아닌 숫자를 입력했습니다. 에러 발생");
-                }
-
-
-                for (int i = 0; i < arr.length; i++) {
-                    //세 자리 입력값이 1~9 사이의 숫자인지 확인. 아닐 경우 오류 표시
-                    if (!Pattern.matches("[1-9]",arr[i])){
-                        throw new IllegalArgumentException("1~9사이의 숫자가 아닙니다. 에러 발생");
-                    }
-                    nums.add(Integer.parseInt(arr[i]));
-                }
-
-                //사용자가 입력한 값 중 중복의 숫자가 있을 경우 에러 발생
-                if (nums.get(0).equals(nums.get(1)) || nums.get(0).equals(nums.get(2)) || nums.get(1).equals(nums.get(2))) {
-
-                    throw new IllegalArgumentException("중복된 숫자를 입력했습니다. 에러 발생");
-                }
-
-
+                List<Integer> nums = receiveInput();
                 for (int j = 0; j < 3; j++) {
                     if (computer.get(j).equals(nums.get(j))) {
                         strike += 1;
@@ -81,7 +70,7 @@ public class Application {
             if(!IsEnd.equals("1") && !IsEnd.equals("2")) {
                 throw new IllegalArgumentException("1 혹은 2가 아닌 값을 입력했습니다. 에러 발생");
             }
-            restart = Integer.parseInt(IsEnd);
+            restartButton = Integer.parseInt(IsEnd);
 
 
 
@@ -89,18 +78,57 @@ public class Application {
         }
     }
 
-    private static List<Integer> makeNum(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+    private static List<Integer> receiveInput(){
+        String s;
+        List<Integer> nums = new ArrayList<>();
+
+
+
+
+        System.out.print("숫자를 입력해주세요 : ");
+
+
+        s = Console.readLine();
+
+
+        String[] arr = s.split("");
+
+
+        //사용자가 세 개 미만 혹은 초과의 숫자를 입력할 경우 오류 표시
+        if (arr.length != 3) {
+            throw new IllegalArgumentException("3개가 아닌 숫자를 입력했습니다. 에러 발생");
+        }
+
+
+
+
+        for (int i = 0; i < arr.length; i++) {
+
+            if (!Pattern.matches("[1-9]",arr[i])){
+                throw new IllegalArgumentException("1~9사이의 숫자가 아닙니다. 에러 발생");
             }
+            nums.add(Integer.parseInt(arr[i]));
         }
-        return computer;
+
+
+        //사용자가 입력한 값 중 중복의 숫자가 있을 경우 에러 발생
+        if (nums.get(0).equals(nums.get(1)) || nums.get(0).equals(nums.get(2)) || nums.get(1).equals(nums.get(2))) {
+
+            throw new IllegalArgumentException("중복된 숫자를 입력했습니다. 에러 발생");
+        }
+
+        return nums;
+
     }
-
-
 
 
 }
+
+
+
+
+
+
+
+
+
