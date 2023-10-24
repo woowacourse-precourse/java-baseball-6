@@ -14,7 +14,20 @@ public class BaseballGame {
     }
 
     public void run() {
-        generateAnswer();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            generateAnswer();
+            while (true) {
+                boolean isOver = query();
+                if (isOver)
+                    break;
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (!isRetry())
+                break;
+        }
     }
 
     private void generateAnswer() {
@@ -26,6 +39,35 @@ public class BaseballGame {
                 answer.add(randomNumber);
             }
         }
+    }
+
+    private boolean query() throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
+        String string = Console.readLine();
+
+        if (string.length() != 3)
+            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+
+        int num = -1;
+        try {
+            num = Integer.parseInt(string);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+        }
+
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (int i = 2; i >= 0; i--) {
+            arr.add(0, num % 10);
+            num /= 10;
+        }
+
+        BaseballResultState result = match(answer, arr);
+        System.out.println(result);
+        return result.isGameOver();
+    }
+
+    public boolean isRetry() {
+        return false;
     }
 
     static public BaseballResultState match(List<Integer> a, List<Integer> b) {
