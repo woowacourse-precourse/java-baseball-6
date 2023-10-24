@@ -1,7 +1,4 @@
 package baseball.service;
-// 숫자 입력
-// 재시작 옵션 입력
-//
 
 import baseball.domain.User;
 
