@@ -1,10 +1,11 @@
 package baseball.view;
 
 import baseball.game.Hint;
+import baseball.utils.GameMessage;
 
 public class OutputView {
     public static void printStartGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print(GameMessage.GAME_START_MESSAGE);
     }
 
     public static void printHint(Hint hint) {
@@ -12,17 +13,17 @@ public class OutputView {
         int strike = hint.getStrike();
 
         if (ball != 0 && strike == 0) {
-            System.out.println(ball + "볼");
+            System.out.printf(GameMessage.BALL_HINT_MESSAGE, ball);
         } else if (ball == 0 && strike != 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.printf(GameMessage.STRIKE_HINT_MESSAGE, strike);
         } else if (ball != 0 && strike != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.printf(GameMessage.BALL_AND_STRIKE_HINT_MESSAGE, ball, strike);
         } else if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            System.out.print(GameMessage.NOTHING_HINT_MESSAGE);
         }
     }
 
     public static void printEndGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print(GameMessage.GAME_END_MESSAGE);
     }
 }

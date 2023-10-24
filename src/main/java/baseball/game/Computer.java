@@ -22,6 +22,7 @@ public class Computer {
 
             answer.add(randomNumber);
         }
+
         return new GameNumbers(answer);
     }
 
