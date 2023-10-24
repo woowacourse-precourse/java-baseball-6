@@ -1,5 +1,7 @@
 package service;
 
+import static util.StringToArrayList.StringToArrayList;
+
 import java.util.ArrayList;
 import java.util.List;
 import model.Computer;
@@ -18,6 +20,7 @@ public class GamePlayService {
 
     private final GameView gameView = new GameView();
     private final ValidationCheck validationCheck = new ValidationCheck();
+    private final GameNumberCheckService gameNumberCheckService = new GameNumberCheckService();
 
     private List<Integer> countStrikeBall = new ArrayList<>();
     private List<Integer> countStrikeBallList = new ArrayList<>();
@@ -33,8 +36,19 @@ public class GamePlayService {
         computer.setComputerNumbers();
 
         // 3. 사용자 숫자 입력
-        String userInput = gameView.userInput(); // 3. 사용자 숫자 입력
-        validationCheck.checkUserInput(userInput); // 4. 사용자 숫자 유효성 체크
+        String userInput = gameView.userInput();
+
+        // 4. 사용자 숫자 유효성 체크
+        validationCheck.checkUserInput(userInput);
+
+        // 5. 사용자 입력 값 List로 변환
+        List<Integer> userNumbers = StringToArrayList(userInput);
+
+        // 6. 플레이어의 숫자와 컴퓨터의 숫자를 비교해 스트라이크와 볼을 계산
+        countStrikeBall = gameNumberCheckService.compareGameNumber(userNumbers,
+                computer.getComputerNumbers());
+
+        System.out.println("############  " + countStrikeBall);
 
     }
 }
