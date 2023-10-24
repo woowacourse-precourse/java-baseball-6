@@ -38,14 +38,20 @@ public class Computer {
     }
 
     private void checkStrikeAndBall(List<Integer> targetNumbers, List<Integer> userGuess) {
-        for (int targetDigit : targetNumbers) {
-            int i = targetNumbers.indexOf(targetDigit);
-            if (targetDigit == userGuess.get(i)) {
-                result.put(KeyType.STRIKE.getKey(), result.get(KeyType.STRIKE.getKey()) + 1);
-            } else if (isContains(targetNumbers, userGuess.get(i))) {
-                result.put(KeyType.BALL.getKey(), result.get(KeyType.BALL.getKey()) + 1);
+        int strikeCount = result.get(KeyType.STRIKE.getKey());
+        int ballCount = result.get(KeyType.BALL.getKey());
+
+        for (int i = 0; i < targetNumbers.size(); i++) {
+            int targetDigit = targetNumbers.get(i);
+            int userGuessDigit = userGuess.get(i);
+            if (targetDigit == userGuessDigit) {
+                strikeCount++;
+            } else if (isContains(targetNumbers, userGuessDigit)) {
+                ballCount++;
             }
         }
+        result.put(KeyType.STRIKE.getKey(), strikeCount);
+        result.put(KeyType.BALL.getKey(), ballCount);
     }
 
     private boolean isContains(List<Integer> targetNumbers, int userGuess) {
