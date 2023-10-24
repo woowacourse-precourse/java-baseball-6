@@ -62,4 +62,43 @@ public class GameService {
     public void printUserInput() {
         System.out.println(userInput);
     }
+
+    public static int countBall(String input, String target) {
+        int ball = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != target.charAt(i) && (target.contains(input.substring(i, i + 1)))) {
+                ball += 1;
+            }
+        }
+        return ball;
+    }
+
+    public static int countStrike(String input, String target) {
+        int strike = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == target.charAt(i)) {
+                strike += 1;
+            }
+        }
+        return strike;
+    }
+
+    public String compare() {
+        int ball = countBall(userInput, computer.getAnswer());
+        int strike = countStrike(userInput, computer.getAnswer());
+
+        if (ball > 0 && strike > 0) {
+            return ball + "볼 " + strike + "스트라이크";
+        } else if (strike > 0) {
+            return strike + "스트라이크";
+        } else if (ball > 0) {
+            return ball + "볼";
+        } else {
+            return "낫싱";
+        }
+    }
+
+    public void printResult() {
+        System.out.println(compare());
+    }
 }

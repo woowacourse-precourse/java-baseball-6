@@ -11,5 +11,6 @@ public class BaseballGame {
         gameService.generateNdigitAnswer(N);
         gameService.printAnswer();
         gameService.getUserInput();
+        gameService.printResult();
     }
 }
