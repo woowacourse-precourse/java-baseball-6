@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Input {
     public static List<Integer> numbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         InputValidation.number(input);
 
