@@ -10,10 +10,10 @@ public class Application {
         // TODO: 프로그램 구현
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true) {
+        while (true) {
             NumberBaseball game = new NumberBaseball();
 
-            while(true) {
+            while (true) {
                 System.out.print("숫자를 입력해 주세요 : ");
                 String inputString = Console.readLine();
 
@@ -21,8 +21,8 @@ public class Application {
 
                 System.out.println(game.getResultMsg(userNumber));
 
-                if(game.isEnd()) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (game.isEnd()) {
+                    System.out.println(NumberBaseball.MAX_CNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
             }
@@ -30,11 +30,11 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartInput = Console.readLine();
 
-            if(!InputManager.validateRestartInput(restartInput)) {
+            if (!InputManager.validateRestartInput(restartInput)) {
                 throw new IllegalArgumentException();
             }
 
-            if(restartInput.equals("2")) {
+            if (restartInput.equals("2")) {
                 break;
             }
         }

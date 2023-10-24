@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class InputManager {
 
-    private static final Pattern inputValidator = Pattern.compile("^([1-9]{3})$");
+    private static final Pattern inputValidator = Pattern.compile("^([1-9]{" + NumberBaseball.MAX_CNT + "})$");
 
     public static int[] parseInput(String inputString) throws IllegalArgumentException {
-        if(!inputValidator.matcher(inputString).matches()) {
+        if (!inputValidator.matcher(inputString).matches()) {
             throw new IllegalArgumentException();
         }
 
@@ -16,7 +16,7 @@ public class InputManager {
                 element -> Integer.parseInt(element)
         ).toArray();
 
-        if(doContainDupNumber(userNumber)) {
+        if (doContainDupNumber(userNumber)) {
             throw new IllegalArgumentException();
         }
         return userNumber;
@@ -28,8 +28,8 @@ public class InputManager {
 
     private static boolean doContainDupNumber(int[] input) {
         boolean[] numberFlag = new boolean[10];
-        for(int i = 0; i < 3; i++) {
-            if(numberFlag[input[i]]) {
+        for (int i = 0; i < 3; i++) {
+            if (numberFlag[input[i]]) {
                 return true;
             }
             numberFlag[input[i]] = true;
