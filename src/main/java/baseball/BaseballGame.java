@@ -113,15 +113,16 @@ public class BaseballGame {
         exceptLengthInvalid(playerInput, INPUT_RESTART_LENGTH_MAX);
         exceptNotInteger(playerInput);
         exceptInvalidRange(playerInput, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
-        boolean isRestart = true;
+
         if (playerInput.equals("1")) {
             initAnswer();
-        } else if (playerInput.equals("2")) {
-            isRestart = false;
+            return true;
+        }
+        if (playerInput.equals("2")) {
+            return false;
         }
 
-        return isRestart;
-
+        return false;
     }
 
     public void exceptLengthInvalid(String source, int exclusive) {
