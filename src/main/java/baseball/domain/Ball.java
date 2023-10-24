@@ -1,11 +1,11 @@
 package baseball.domain;
 
+import baseball.constant.Constant;
+
 import java.util.Objects;
 
 public class Ball {
 
-    private static final Integer START_RANGE = 1;
-    private static final Integer END_RANGE = 9;
 
     private final Integer ball;
 
@@ -20,7 +20,7 @@ public class Ball {
 
 
     private void validateRange(Integer number) {
-        if (!(START_RANGE <= number && number <= END_RANGE))
+        if (!(Constant.START_RANGE <= number && number <= Constant.END_RANGE))
             throw new IllegalArgumentException("[error] 잘못된 숫자를 입력했습니다. 숫자 허용 범위는 1~9입니다.");
     }
 
