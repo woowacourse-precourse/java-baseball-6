@@ -13,14 +13,14 @@ public class User {
     public void inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String input = Console.readLine();
-        validateIntegerType(input);
+        validateInput(input);
         numbers = new Numbers(parseIntegers(input));
     }
 
     public GameCommand inputGameCommand() {
         System.out.println(INPUT_GAME_COMMAND_MESSAGE);
         String input = Console.readLine();
-        validateIntegerType(input);
+        validateInput(input);
         return GameCommand.findByCommand(parseInteger(input));
     }
 
@@ -39,11 +39,22 @@ public class User {
         return numbers.getNumbers();
     }
 
+    private static void validateInput(String input) {
+        validateBlank(input);
+        validateIntegerType(input);
+    }
+
     private static void validateIntegerType(String input) {
         try {
             Integer.parseInt(input);
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException(INTEGER_TYPE_ERROR);
+        }
+    }
+
+    private static void validateBlank(String input){
+        if(input.trim().isEmpty()){
+            throw new IllegalArgumentException(BLANK_ERROR);
         }
     }
 }
