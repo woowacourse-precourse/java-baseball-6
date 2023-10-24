@@ -29,7 +29,7 @@ public class InputView {
 
     private enum ConsoleMessage {
         INPUT_NUMBER("숫자를 입력해주세요 : "),
-        INPUT_GAME_OPTION("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        INPUT_GAME_OPTION("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
 
         private final String message;
 
