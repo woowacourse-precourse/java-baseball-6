@@ -16,7 +16,8 @@ public enum GameStatusCommand {
         return Arrays.stream(GameStatusCommand.values())
                 .filter(command -> command.number == number)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("1 또는 2만 입력 가능합니다."));
+                .orElseThrow(() ->
+                        new IllegalArgumentException(RESTART.number + " 또는 " + QUIT.number + "만 입력 가능합니다."));
     }
 
     public boolean isQuit() {
