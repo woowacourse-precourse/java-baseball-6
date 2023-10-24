@@ -1,10 +1,10 @@
 package baseball;
 
-public class Result {
+public class ResultDTO {
     private int strike;
     private int ball;
 
-    public Result(int strike, int ball) {
+    public ResultDTO(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
