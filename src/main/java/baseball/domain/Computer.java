@@ -26,7 +26,7 @@ public class Computer {
         return secretNumbers;
     }
 
-    // secretNumbers를 사용자 입력과 비교하여 스트라이크와 볼 count 계산
+    // secretNumbers를 사용자 입력과 비교하여 strike,balls 계산
     public Game computeResult(List<Integer> userInputNumbers) {
 
         int strikes = 0;

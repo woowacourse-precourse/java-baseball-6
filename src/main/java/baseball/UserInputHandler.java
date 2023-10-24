@@ -8,7 +8,7 @@ public class UserInputHandler {
     public String readUserInput() {
         return Console.readLine();
     }
-
+    
     public List<Integer> parseStringNumbers(String userInput) throws IllegalArgumentException {
         List<Integer> userInputNumbers = new ArrayList<>();
         for (char digit : userInput.toCharArray()) {

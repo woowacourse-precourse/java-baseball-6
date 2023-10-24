@@ -34,7 +34,7 @@ public class GameController {
     public void startGame() throws IllegalArgumentException {
         System.out.println(START_MSG);
 
-        List<Integer> randomNumbers = computer.generateRandomNumbers(START_INCLUSIVE, END_INCLUSIVE, COUNT);
+        computer.generateRandomNumbers(START_INCLUSIVE, END_INCLUSIVE, COUNT);
 
         while (continueGame) {
             System.out.print(INPUT_MSG);

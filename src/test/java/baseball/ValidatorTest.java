@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class ValidatorTest {
-
     @Test
     public void testCheckValidNumber_ValidInput() {
         Validator validator = new Validator();

@@ -17,7 +17,6 @@ public class ComputerTest extends NsTest {
 
     @Override
     protected void runMain() {
-        // 실제 테스트 대상 메서드를 실행하는 부분
     }
 
     @Test
