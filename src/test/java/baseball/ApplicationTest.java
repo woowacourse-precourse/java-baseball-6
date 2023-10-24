@@ -60,7 +60,7 @@ class ApplicationTest extends NsTest {
     }
     @Test
     List<Integer> 입력_받은_문자를_숫자_배열로_변환(String inputString) {
-        return Arrays.stream(inputString.split(" "))
+        return Arrays.stream(inputString.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed().toList();
     }
