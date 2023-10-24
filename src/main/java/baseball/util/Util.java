@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Util {
 
-    public static List<Integer> getRandomNumber(int length) {
+    public static List<Integer> createRandomNumbers(int length) {
 
         List<Integer> numbers = new ArrayList<>();
         while(numbers.size() < length) {
@@ -19,7 +19,7 @@ public class Util {
         return numbers;
     }
 
-    public static void validateUserString(String input) {
+    public static void validateUserInput(String input) {
 
         validateStringOnlyNumbers(input);
         validateStringLength(input, 3);
