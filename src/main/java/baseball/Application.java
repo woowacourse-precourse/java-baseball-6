@@ -1,10 +1,11 @@
 package baseball;
 
-import baseball.controller.GameController;
+import baseball.controller.GameControllerImpl;
 import baseball.ui.GameView;
+import baseball.ui.UserInputValidator;
 
 public class Application {
     public static void main(String[] args) {
-        new GameView(new GameController()).start();
+        new GameView(new GameControllerImpl(), new UserInputValidator()).start();
     }
 }
