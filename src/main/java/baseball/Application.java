@@ -42,7 +42,7 @@ public class Application {
             play();
         }else if(isContinue==2){
             close();
-            System.exit(0);
+            return;
         }
     }
 
