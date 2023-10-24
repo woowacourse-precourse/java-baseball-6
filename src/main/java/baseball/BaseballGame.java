@@ -16,10 +16,13 @@ public class BaseballGame {
             computerNumberList = computer.generateComputerNumber();
             showInputUserNumber();
             userNumberList = getUsetNumberList();
-            int[] compareResult = new CompareNumber().getCompareResult(userNumberList, computerNumberList);
+            CompareNumber compareNumber = new CompareNumber();
+            int[] compareResult = compareNumber.getCompareResult(userNumberList, computerNumberList);
             showCount(compareResult);
-            isMatchShowFinish(compareResult);
-            playAgain = retry();
+            if (compareNumber.isStrikeThree()) {
+                isMatchShowFinish(compareResult);
+                playAgain = retry();
+            }
         }
     }
 
