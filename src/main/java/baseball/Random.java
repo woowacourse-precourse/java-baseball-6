@@ -24,6 +24,7 @@ public class Random {
                 balls.add(validate);
             }
         }
+
         return new Random(balls);
     }
 

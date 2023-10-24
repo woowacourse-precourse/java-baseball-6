@@ -5,6 +5,7 @@ public class Validate {
 
     public Validate(int number) {
         validateRange(number);
+
         this.number = number;
     }
 
@@ -21,6 +22,7 @@ public class Validate {
     @Override
     public boolean equals(Object obj) {
         Validate validate = (Validate) obj;
+
         return this.number.equals(validate.number);
     }
 

@@ -86,5 +86,6 @@ public class Result {
     }
     private void printEndMessage() {
         System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", BALLS_COUNT);
+
     }
 }
