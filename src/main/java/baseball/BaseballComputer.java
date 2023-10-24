@@ -11,6 +11,7 @@ public class BaseballComputer {
     public BaseballComputer() {
         this.numArray = new int[10];
     }
+
     public void selectNumber() {
         Arrays.fill(numArray, 0);
         for (int i = 1; i <= 3; ++i) {
@@ -37,6 +38,54 @@ public class BaseballComputer {
                 return true;
             }
             duplicatedCheck[intDigit] = 1;
+        }
+        return false;
+    }
+
+    public void takeInputAndPrint() {
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            if (chkInputError(input)) {
+                throw new IllegalArgumentException();
+            }
+            if (printResult(input)) {
+                break;
+            }
+        }
+    }
+
+    private void cntStrikesBalls(String input, int[] result) {
+        for (int i = 0; i < 3; ++i) {
+            int tmpInt = Character.getNumericValue(input.charAt(i));
+            if (numArray[tmpInt] == 0) {
+                continue;
+            }
+            if (numArray[tmpInt] == i + 1) {
+                result[0]++;
+            } else {
+                result[1]++;
+            }
+        }
+    }
+
+    private boolean printResult(String input) {
+        int[] strikesBallsNum = new int[2];
+        cntStrikesBalls(input, strikesBallsNum);
+        if (strikesBallsNum[0] == 0 && strikesBallsNum[1] == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        if (strikesBallsNum[1] != 0) {
+            System.out.print(strikesBallsNum[1] + "볼 ");
+        }
+        if (strikesBallsNum[0] != 0) {
+            System.out.print(strikesBallsNum[0] + "스트라이크");
+        }
+        System.out.println();
+        // 정답이면 true를 반환
+        if (strikesBallsNum[0] == 3) {
+            return true;
         }
         return false;
     }
