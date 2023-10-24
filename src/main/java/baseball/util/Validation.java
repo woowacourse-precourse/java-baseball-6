@@ -39,8 +39,10 @@ public class Validation {
     }
 
 //  게임 재시작에 대한 입력값 검증
-    public static boolean verifyRestartInput(int number){
-        return (number != 1) && (number !=2);
+    public static void verifyRestartInput(int number){
+        if((number != 1) && (number !=2)){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
     }
 
 

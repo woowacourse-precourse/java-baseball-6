@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.domain.BaseBallGame.*;
+
 public class Computer {
 
     private final List<Integer> numbers;
-    private final int STRIKE_INDEX = 0;
-    private final int BALL_INDEX = 1;
-    private final int OUT_INDEX = 2;
+
 
     private Computer(List<Integer> numbers){
         this.numbers = numbers;
