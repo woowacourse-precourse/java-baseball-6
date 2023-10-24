@@ -33,15 +33,16 @@ public class Application {
     private static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 컴퓨터 랜덤값 입력
+        // 컴퓨터 랜덤값 input
         computer = new ArrayList<>();
         inputComputer();
 
         while (true) {
+            // strike, ball 초기화
             strike = 0;
             ball = 0;
 
-            // 사용자 랜덤값 입력
+            // 사용자 입력값 input
             System.out.print("숫자를 입력해주세요 : ");
             String userString = Console.readLine();
             user = new ArrayList<>();
@@ -51,6 +52,7 @@ public class Application {
             // 힌트값 출력
             printHint();
 
+            // 정답을 맞췄을 경우, 게임 종료 안내문구 출력 && 사용자 입력 중지
             if (isAnswer()) {
                 System.out.println(digitNumber + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
@@ -61,19 +63,19 @@ public class Application {
     private static void inputComputer() {
         while (computer.size() < digitNumber) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
-            if (!computer.contains(randomNumber)) {
+            if (!computer.contains(randomNumber)) {  // 숫자 중복 방지
                 computer.add(randomNumber);
             }
         }
     }
 
     private static void inputUser(String target) {
-        if (!isCorrectInput(target)) {
+        if (!isCorrectInput(target)) {               // 자릿수 및 1-9 숫자 체크 : **예외 발생
             throw new IllegalArgumentException();
         }
         for (String str : target.split("")) {
             int num = Integer.parseInt(str);
-            if (user.contains(num)) {
+            if (user.contains(num)) {                // 숫자 중복 체크 : **예외 발생
                 throw new IllegalArgumentException();
             }
             user.add(num);
@@ -94,6 +96,7 @@ public class Application {
         for (int i=0; i<digitNumber; i++) {
             int userValue = user.get(i);
             int computerValue = computer.get(i);
+            // strike,ball Count
             if (userValue == computerValue) {
                 strike++;
             } else if (computer.contains(userValue)) {
@@ -126,7 +129,7 @@ public class Application {
             return true;
         } else if (target.equals("2")) {
             return false;
-        } else {
+        } else {   // 사용자 입력값 오류 : 1 또는 2가 아닌 다른 값을 입력한 경우 : **예외 발생
             throw new IllegalArgumentException();
         }
     }
