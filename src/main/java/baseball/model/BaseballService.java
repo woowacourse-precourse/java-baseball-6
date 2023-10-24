@@ -8,7 +8,9 @@ public class BaseballService {
         ArrayList<Integer> computerNum = computer.getComputer();
         ArrayList<Integer> playerNum = player.getPlayer();
         for (int i=0; i<3; i++) {
-            if(playerNum.get(i).equals(computerNum.get(i))){
+            int playerIdxNum = playerNum.get(i);
+            int computerIdxNum = computerNum.get(i);
+            if(playerIdxNum==computerIdxNum){
                 cnt+=1;
             }
         }
