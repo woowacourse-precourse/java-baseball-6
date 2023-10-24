@@ -46,22 +46,18 @@ public class Compare {
     }
 
     public String Output() {
-        int contain = getContain();
-        int ball = getBall();
-        int strike = getStrike();
-
-        if(contain == 0) {
+        if(is_Nothing()) {
             return "낫싱";
         }
-        if(strike == 0) {
-            return ball + "볼";
+        if(no_Strike()) {
+            return getBall() + "볼";
         }
 
-        if(ball == 0) {
+        if(no_Ball()) {
             return strike + "스트라이크";
         }
 
-        return ball + "볼" + " " + strike + "스트라이크";
+        return getBall() + "볼" + " " + strike + "스트라이크";
     }
 
     public boolean success(){
@@ -71,12 +67,26 @@ public class Compare {
         return false;
     }
 
-    private int getContain(){
-        return contain;
+    private boolean is_Nothing(){
+        if(contain == 0){
+            return true;
+        }
+        return false;
     }
 
-    private int getStrike(){
-        return strike;
+    private boolean no_Ball(){
+        int ball = contain - strike;
+        if(ball == 0){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean no_Strike(){
+        if(strike == 0){
+            return true;
+        }
+        return false;
     }
 
     private int getBall(){

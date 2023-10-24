@@ -16,20 +16,20 @@ public class Error {
     public static void check_Numsize(List<Number> User_num) {
         //List의 크기가 3이상이면 예외처리
         if(User_num.size() != Constant.MAX_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자를 3개만 입력해주세요..");
         }
     }
 
     public static void is_Duplicate(List<Number> User_num){
         //중복된 숫자가 있다면 예외처리
         if(User_num.size() != User_num.stream().distinct().count()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자가 있습니다..");
         }
     }
 
     public static void exit_error_check(int exit_num) {
         if(exit_num != Constant.EXIT_NUMBER && exit_num != Constant.RESTART_NUMBER) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("올바른 숫자만 입력해주세요..");
         }
     }
 }

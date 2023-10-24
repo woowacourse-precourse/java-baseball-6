@@ -40,13 +40,21 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
+        int choice = get_is_exit_number();
+
+        return choice == Constant.RESTART_NUMBER;
+    }
+
+    private int get_is_exit_number(){
         String str_choice = Input_user_num();
 
-        Error.is_Not_number(str_choice);
+        if(Error.is_Not_number(str_choice)){
+            throw new IllegalArgumentException("숫자를 입력해주세요..");
+        }
 
         int choice = Integer.parseInt(str_choice);
         Error.exit_error_check(choice);
 
-        return choice == Constant.RESTART_NUMBER;
+        return choice;
     }
 }
