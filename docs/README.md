@@ -62,6 +62,6 @@
 
 ## ✏️ 과제 진행 요구 사항
 
-- [ ] `docs/README.md`에서 구현한 기능 목록 확인
-- [ ] [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/main/precourse#%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C)
+- [x] `docs/README.md`에서 구현한 기능 목록 확인
+- [x] [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/main/precourse#%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C)
   확인
