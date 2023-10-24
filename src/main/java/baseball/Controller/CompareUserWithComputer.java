@@ -1,4 +1,4 @@
-package baseball.Domain;
+package baseball.Controller;
 
 public class CompareUserWithComputer {
     private String userNumber;
@@ -7,30 +7,31 @@ public class CompareUserWithComputer {
     private int strikeNum;
     private int ballNum;
 
-    public CompareUserWithComputer(String userNumber, String computerNumber){
+    public CompareUserWithComputer(String userNumber, String computerNumber) {
         this.userNumber = userNumber;
         this.computerNumber = computerNumber;
     }
 
-    public int getStrikeNum(){
+    public int getStrikeNum() {
         return strikeNum;
     }
 
-    public int getBallNum(){
+    public int getBallNum() {
         return ballNum;
     }
 
-    public void countStrikeNum(){
+    public void countStrikeNum() {
         for (int i = 0; i < userNumber.length(); i++) {
-            if(userNumber.charAt(i) == computerNumber.charAt(i)){
+            if (userNumber.charAt(i) == computerNumber.charAt(i)) {
                 this.strikeNum++;
             }
         }
     }
 
-    public void countBallNum(){
+    public void countBallNum() {
         for (int i = 0; i < userNumber.length(); i++) {
-            if(userNumber.charAt(i) != computerNumber.charAt(i) && computerNumber.contains(String.valueOf(userNumber.charAt(i)))){
+            if (userNumber.charAt(i) != computerNumber.charAt(i) && computerNumber.contains(
+                    String.valueOf(userNumber.charAt(i)))) {
                 this.ballNum++;
             }
         }

@@ -1,4 +1,4 @@
-package baseball.Domain;
+package baseball.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,13 +9,13 @@ public class ComputerNumber {
 
     private String number;
 
-    public void GeneratedRandomNumber(){
+    public void GeneratedRandomNumber() {
 
         StringBuilder sb = new StringBuilder();
 
-        while(sb.length() < 3){
+        while (sb.length() < 3) {
             String newNumber = String.valueOf(Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END));
-            if(!sb.toString().contains(newNumber)){
+            if (!sb.toString().contains(newNumber)) {
                 sb.append(newNumber);
             }
         }
@@ -23,7 +23,7 @@ public class ComputerNumber {
         this.number = sb.toString();
     }
 
-    public String getNumber(){
+    public String getNumber() {
         return number;
     }
 }
