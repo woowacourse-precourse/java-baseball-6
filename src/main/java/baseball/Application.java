@@ -12,34 +12,34 @@ public class Application {
 
         int run = 1;
 
-        while (run==1){
+        while (run == 1){
             System.out.println("숫자 야구 게임을 시작합니다.");
             play.play();
             run = play.getNext();
         }
     }
 
+
+    // 문제 생성 클래스
     public static class Problem {
         private final ArrayList<Integer> computer = new ArrayList<>();
 
         public void creatNumber() {
             computer.clear();
-            for (int i = 0; i < 3; i++) {
-                int number = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(number)) {
-                    computer.add(i, number);
-                } else {
-                    i--;
+            while (computer.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computer.contains(randomNumber)) {
+                    computer.add(randomNumber);
                 }
             }
         }
-
         public ArrayList<Integer> getComputer() {
             return computer;
         }
     }
 
 
+    //정답 입력 클래스
     public static class Answer {
         private final ArrayList<Integer> answer = new ArrayList<>();
 
@@ -58,10 +58,19 @@ public class Application {
             } else {
                 throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
             }
+            if (answer.get(0).equals(answer.get(1))) {
+                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
+            }
+            if (Objects.equals(answer.get(0), answer.get(2))) {
+                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
+            }
+            if (answer.get(0).equals(answer.get(2))) {
+                throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
+            }
         }
     }
 
-
+    //동작부
     public static class Play{
         Answer answer = new Answer();
         Problem problem = new Problem();
