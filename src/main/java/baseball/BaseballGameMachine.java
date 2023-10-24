@@ -24,7 +24,7 @@ public class BaseballGameMachine {
         while (!gameEnd) {
             display(message.start() + '\n');
             gameProcess();
-            display(message.requestRetryOrEnd() + '\n');
+            display(message.requestNewGameOrEnd() + '\n');
 
             gameEnd = isGameEnd(getInputLine());
         }
@@ -36,7 +36,7 @@ public class BaseballGameMachine {
 
         referee.setAnswer(numberGenerator.generateRandomAnswer());
         while (!success) {
-            display(message.requestInput());
+            display(message.requestPlayerGuess());
             String playerInput = getInputLine();
             inputValidation.validatePlayerInput(playerInput);
             List<Integer> playerAnswer = inputValidation.convertPlayerInput(playerInput);

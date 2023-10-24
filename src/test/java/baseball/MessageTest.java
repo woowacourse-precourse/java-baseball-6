@@ -26,7 +26,7 @@ class MessageTest {
         //given
         Message message = new Message();
         //when
-        final String requestInputMessage = message.requestInput();
+        final String requestInputMessage = message.requestPlayerGuess();
         //then
         assertThat(requestInputMessage).isEqualTo("숫자를 입력해주세요 : ");
     }
@@ -48,7 +48,7 @@ class MessageTest {
         //given
         Message message = new Message();
         //when
-        final String requestRetryOrEndMessage = message.requestRetryOrEnd();
+        final String requestRetryOrEndMessage = message.requestNewGameOrEnd();
         //then
         assertThat(requestRetryOrEndMessage).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
