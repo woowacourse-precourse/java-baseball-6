@@ -24,10 +24,10 @@ public class GamePlaying {
         computerNumber.clear();
         computerNumber = cpu.setComputerNumber(computerNumber);;
         while (strike != 3) {
-            resetValue();
             enterValue();
             guessNumber();
         }
+        resetValue();
         return false;
     }
 
@@ -39,6 +39,7 @@ public class GamePlaying {
 
     private void enterValue() {
         playerNumber.clear();
+        resetValue();
         playerNumber = player.getPlayerNumber(playerNumber);
     }
 
