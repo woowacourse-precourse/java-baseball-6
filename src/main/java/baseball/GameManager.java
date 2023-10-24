@@ -14,7 +14,7 @@ public class GameManager {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> inputNumbers = player.getNumbers();
             if (!isValid(inputNumbers)) {
-                return (new IllegalArgumentException);
+                return new IllegalArgumentException;
             }
             int[] result = judge(inputNumbers);
             System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
@@ -46,6 +46,20 @@ public class GameManager {
             }
         }
         return result;
+    }
+    private boolean isValid(List<Integer> numbers) {
+        boolean isValid = true;
+        if (numbers.size() != 3) {
+            isValid = false;
+        } else {
+            for (Integer number : numbers) {
+                if (number < 0 || number > 9) {
+                    isValid = false;
+                    break;
+                }
+            }
+        }
+        return isValid;
     }
 
 
