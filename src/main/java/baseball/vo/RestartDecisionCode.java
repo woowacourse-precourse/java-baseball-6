@@ -1,6 +1,6 @@
 package baseball.vo;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import baseball.service.InputConvertService;
 
 public final class RestartDecisionCode {
     private final Integer code;
@@ -9,8 +9,8 @@ public final class RestartDecisionCode {
         this.code = code;
     }
 
-    public RestartDecisionCode makeRestartDecisionCode() {
-        int code = Integer.parseInt(readLine());
+    public RestartDecisionCode makeRestartDecisionCode(InputConvertService inputConvertService) {
+        Integer code = inputConvertService.convertInteger();
         return new RestartDecisionCode(code);
     }
 

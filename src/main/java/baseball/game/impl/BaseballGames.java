@@ -1,7 +1,9 @@
 package baseball.game.impl;
 
 import baseball.game.Game;
+import baseball.ioadapter.IoAdapter;
 import baseball.message.GameMessages;
+import baseball.service.InputConvertService;
 import baseball.service.MessageGenerateService;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
@@ -15,9 +17,16 @@ public class BaseballGames implements Game {
     private final ValidateJudgeService validateJudgeService;
     private final MessageGenerateService messageGenerateService;
 
-    public BaseballGames(ValidateJudgeService validateJudgeService, MessageGenerateService messageGenerateService) {
+    private final IoAdapter ioAdapter;
+
+    private final InputConvertService inputConvertService;
+
+    public BaseballGames(ValidateJudgeService validateJudgeService, MessageGenerateService messageGenerateService,
+                         IoAdapter ioAdapter, InputConvertService inputConvertService) {
         this.validateJudgeService = validateJudgeService;
         this.messageGenerateService = messageGenerateService;
+        this.ioAdapter = ioAdapter;
+        this.inputConvertService = inputConvertService;
     }
 
     public void playBaseball(BaseballCode baseballCode) {
@@ -27,14 +36,15 @@ public class BaseballGames implements Game {
         GameMessages strikeComment = GameMessages.THREE_STRIKE_COMMENT;
         GameMessages numberInputComment = GameMessages.NUMBER_INPUT_COMMENT;
         while (true) {
-            System.out.print(numberInputComment.getMessage());
-            UserCode userCode = codes.makeNewUserCode();
+            ioAdapter.printMessage(numberInputComment);
+            UserCode userCode = codes.makeNewUserCode(inputConvertService);
             validateJudgeService.validateLegalUserCode(userCode);
             GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
             Message resultMessage = messageGenerateService.makeMessage(gameResult);
             resultMessage.printGameResultMessage();
+            ioAdapter.printMessage(strikeComment);
             if (resultMessage.isResultMessageSameStrikeMessage(strikeComment.getMessage())) {
-                System.out.println(gameEndComment.getMessage());
+                ioAdapter.printMessage(gameEndComment);
                 break;
             }
         }

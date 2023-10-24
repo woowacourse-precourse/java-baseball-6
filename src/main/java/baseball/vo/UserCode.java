@@ -1,8 +1,6 @@
 package baseball.vo;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
-import java.util.Arrays;
+import baseball.service.InputConvertService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,8 +13,8 @@ public final class UserCode {
         this.codes = codes;
     }
 
-    public UserCode makeNewUserCode() {
-        List<Integer> codes = Arrays.stream(readLine().split("")).map(Integer::parseInt).toList();
+    public UserCode makeNewUserCode(InputConvertService inputConvertService) {
+        List<Integer> codes = inputConvertService.convertIntegerList();
         return new UserCode(codes);
     }
 
