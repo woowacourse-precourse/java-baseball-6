@@ -1,8 +1,8 @@
 package baseball.model.service;
 
-import static baseball.model.constants.GameConstants.GAME_NUMBERS_MAX_VALUE;
-import static baseball.model.constants.GameConstants.GAME_NUMBERS_MIN_VALUE;
-import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
+import static baseball.model.constants.Rule.GAME_NUMBERS_MAX_VALUE;
+import static baseball.model.constants.Rule.GAME_NUMBERS_MIN_VALUE;
+import static baseball.model.constants.Rule.GAME_NUMBERS_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ComputerNumbersGeneratorImp implements ComputerNumbersGenerator {
     @Override
     public List<Integer> generateComputerNumbers() {
         return Stream.generate(() -> getRandomUniqueNumber(new ArrayList<>()))
-                .limit(GAME_NUMBERS_SIZE)
+                .limit(GAME_NUMBERS_SIZE.getValue())
                 .collect(Collectors.toList());
     }
 
@@ -27,6 +27,6 @@ public class ComputerNumbersGeneratorImp implements ComputerNumbersGenerator {
     }
 
     private int getRandomNumber() {
-        return Randoms.pickNumberInRange(GAME_NUMBERS_MIN_VALUE, GAME_NUMBERS_MAX_VALUE);
+        return Randoms.pickNumberInRange(GAME_NUMBERS_MIN_VALUE.getValue(), GAME_NUMBERS_MAX_VALUE.getValue());
     }
 }

@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import static baseball.model.constants.GameConstants.RESTART_OPTION;
+import static baseball.model.constants.Rule.RESTART_OPTION;
 
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
@@ -114,6 +114,6 @@ public class BaseballGame {
     }
 
     private boolean isRestart() {
-        return restart.getRestartOption().equals(RESTART_OPTION);
+        return restart.getRestartOption().equals(RESTART_OPTION.getValue());
     }
 }

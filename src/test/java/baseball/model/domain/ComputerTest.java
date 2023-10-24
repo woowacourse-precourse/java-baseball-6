@@ -1,6 +1,6 @@
 package baseball.model.domain;
 
-import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
+import static baseball.model.constants.Rule.GAME_NUMBERS_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.model.service.ComputerNumbersGenerator;
@@ -23,6 +23,6 @@ class ComputerTest {
     void 세자리_랜덤_숫자_생성() {
         Computer computer = Computer.from(computerNumbersGenerator);
         List<Integer> randomNumbers = computer.getComputerNumbers();
-        assertEquals(GAME_NUMBERS_SIZE, randomNumbers.size());
+        assertEquals(GAME_NUMBERS_SIZE.getValue(), randomNumbers.size());
     }
 }

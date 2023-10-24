@@ -1,7 +1,7 @@
 package baseball.utils;
 
-import static baseball.model.constants.GameConstants.GAME_NUMBERS_SIZE;
-import static baseball.model.constants.GameConstants.WIN;
+import static baseball.model.constants.Rule.GAME_NUMBERS_SIZE;
+import static baseball.model.constants.Rule.GAME_WIN;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -19,7 +19,7 @@ public class NumbersComparator {
     }
 
     public boolean isCorrect() {
-        return strike == WIN;
+        return strike == GAME_WIN.getValue();
     }
 
     private void resetCount() {
@@ -28,7 +28,7 @@ public class NumbersComparator {
     }
 
     private void strikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        strike = (int) IntStream.range(0, GAME_NUMBERS_SIZE)
+        strike = (int) IntStream.range(0, GAME_NUMBERS_SIZE.getValue())
                 .filter(i -> playerNumbers.get(i).equals(computerNumbers.get(i)))
                 .count();
 
