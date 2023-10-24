@@ -7,7 +7,27 @@ public class Application {
 	public static void main(String[] args) {
 		Message.getStartMsg();
 		Computer alice = new Computer();
-		Computer.gameStart(alice);
+		Room.gameStart(alice);
+	}
+}
+
+class Room{
+	private static final int SIZE = 3;
+	public static void gameStart(Computer alice){
+		User coh = new User();
+		String userInput = coh.getUserInput();
+		Computer.checkResult(userInput, alice);
+		Message.makeMessage(alice.baseballFlag);
+		if (alice.baseballFlag[0] != SIZE){
+			gameStart(alice);
+			return;
+		}
+		Message.getSuccessMsg();
+		Message.newGameMsg();
+		if (User.newGameFlag() == 1){
+			Computer newGame = new Computer();
+			gameStart(newGame);
+		}
 	}
 }
 
@@ -32,7 +52,7 @@ class Computer {
 		return false;
 	}
 
-	private static void checkResult(String userInput, Computer alice){
+	public static void checkResult(String userInput, Computer alice){
 		int tempNumber;
 		alice.baseballFlag[0] = 0;
 		alice.baseballFlag[1] = 0;
@@ -52,25 +72,6 @@ class Computer {
 				alice.baseballFlag[1] += 1; // ball
 				return;
 			}
-		}
-	}
-	public void getComputerNumber(){
-		System.out.println("" + numbers[0] + numbers[1] + numbers[2]);
-	}
-	public static void gameStart(Computer alice){
-		User coh = new User();
-		String userInput = coh.getUserInput();
-		checkResult(userInput, alice);
-		Message.makeMessage(alice.baseballFlag);
-		if (alice.baseballFlag[0] != SIZE){
-			Computer.gameStart(alice);
-			return;
-		}
-		Message.getSuccessMsg();
-		Message.newGameMsg();
-		if (User.newGameFlag() == 1){
-			Computer newGame = new Computer();
-			Computer.gameStart(newGame);
 		}
 	}
 }
