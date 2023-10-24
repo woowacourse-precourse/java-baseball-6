@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class game {
+public class setComputer {
 
     List<Integer> setRandom(){
         List<Integer> computer = new ArrayList<>();
@@ -17,6 +17,4 @@ public class game {
         }
         return computer;
     }
-
-
 }
