@@ -53,10 +53,12 @@ public class Application {
             }
 
             // 결과 출력
-            if (strike > 0) {
+            if (strike == 3) {
                 System.out.println(strike + "스트라이크");
-                if (strike == 3) return;
+                return;
             }
+
+            if (strike > 0) System.out.println(strike + "스트라이크");
         }
     } // start
 
