@@ -6,6 +6,8 @@ public class Validation implements Validate {
 
     private final static int EXPECTED_LENGTH = 3;
     private final static int EXPECTED_RETRY_LENGTH = 1;
+    private final static String GAME_REPLAY = "1";
+    private final static String GAME_EXIT = "2";
 
     @Override
     public boolean combinedValidation(String input) {
@@ -67,11 +69,11 @@ public class Validation implements Validate {
 
     public boolean validationReplayInput(String input) {
         if (validateInputType(input) && validateInputLength(input, EXPECTED_RETRY_LENGTH)) {
-            if (input.equals("1")) {
+            if (input.equals(GAME_REPLAY)) {
                 return true;
             }
 
-            if (input.equals("2")) {
+            if (input.equals(GAME_EXIT)) {
                 return true;
             }
         }
