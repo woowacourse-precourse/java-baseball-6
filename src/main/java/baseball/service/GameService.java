@@ -9,9 +9,18 @@ public class GameService {
     RandomNumber randomNumber = new RandomNumber();
     SystemMessage systemMessage = new SystemMessage();
     UserInput userInput = new UserInput();
+
     public void runGame() {
+        startMessage();
+        setGame();
+    }
+    private void startMessage() {
         systemMessage.printSystemMessage();
+    }
+
+    private void setGame() {
         List<Integer> number = generateRandomNum();
+        randomNumber.setStrikeCount();
         while (randomNumber.getStrikeCount() != 3) {
             handleUserInput(number);
             if (randomNumber.getStrikeCount() == 3) {
@@ -20,6 +29,7 @@ public class GameService {
             }
         }
     }
+
     private List<Integer> generateRandomNum() {
         randomNumber.setNumbers();
         return randomNumber.getNumbers();
@@ -28,15 +38,19 @@ public class GameService {
     private void handleUserInput(List<Integer> number) {
         String input = userInput.requestUserInput();
         randomNumber.compareNumbers(number, input);
+        randomNumber.comparedResult();
     }
 
     private void askRetry() {
         String input = userInput.sendRetryMessage();
-        if (input.equals("1")) {
-            randomNumber.setStrikeCount();
-            randomNumber.setNumbers();
+        String RESTART_COMMAND = "1";
+        String END_COMMAND = "2";
+        if (!input.equals(RESTART_COMMAND) && !input.equals(END_COMMAND)) {
+            throw new IllegalArgumentException();
         } else {
-
+            if (input.equals(RESTART_COMMAND)) {
+                setGame();
+            }
         }
     }
 }

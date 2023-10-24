@@ -51,10 +51,9 @@ public class RandomNumber {
                 }
             }
         }
-        comparedResult();
     }
 
-    private void comparedResult() {
+    public void comparedResult() {
         systemMessage.printResultMessage(this.ballCount, this.strikeCount);
     }
 
