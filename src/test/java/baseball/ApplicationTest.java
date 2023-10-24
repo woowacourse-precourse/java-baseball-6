@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -31,6 +32,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("스트라이크 개수 테스트")
     void 스트라이크_개수_테스트() {
         List<Integer> userInput1 = Arrays.asList(1, 2, 3);
         List<Integer> userInput2 = Arrays.asList(4, 7, 8);
@@ -45,6 +47,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("볼 개수 테스트")
     void 볼_개수_테스트() {
         List<Integer> userInput1 = Arrays.asList(1, 2, 3);
         List<Integer> userInput2 = Arrays.asList(7, 4, 8);
@@ -59,6 +62,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("서로 다른 랜덤숫자 테스트")
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
 
