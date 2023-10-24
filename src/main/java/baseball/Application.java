@@ -33,7 +33,14 @@ public class Application {
     }
 
     public static NumberSet readAnswer() {
-        return NumberSet.parseFrom(readLine());
+        String string = readLine();
+        int number;
+        try {
+            number = Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        return new NumberSet(number);
     }
 
     public static void printResult(GuessResult result) {

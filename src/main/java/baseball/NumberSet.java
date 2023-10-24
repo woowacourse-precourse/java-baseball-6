@@ -1,50 +1,35 @@
 package baseball;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class NumberSet {
     private List<Integer> numbers;
 
-    public NumberSet(List<Integer> numbers) {
-        this.numbers = numbers;
-    }
-
-    public NumberSet(Integer... digits) {
-        this.numbers = Arrays.asList(digits);
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    public void setNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
-    }
-
-    public boolean isUnique() {
-        Set<Integer> set = new HashSet<>(this.numbers);
-        return set.size() == this.numbers.size();
-    }
-
-    public static NumberSet parseFrom(int number) throws IllegalArgumentException {
-        if (number < 100 || number > 999)
+    public NumberSet(Integer digit1, Integer digit2, Integer digit3) {
+        List<Integer> numbers = Arrays.asList(digit1, digit2, digit3);
+        boolean is1Digit = numbers.stream().allMatch(digit -> 1 <= digit && digit <= 9);
+        if (!is1Digit)
             throw new IllegalArgumentException();
-        return new NumberSet(
+        this.numbers = numbers;
+    }
+
+    public NumberSet(Integer number) {
+        this(
                 number / 100,
                 (number / 10) % 10,
                 number % 10
         );
     }
 
-    public static NumberSet parseFrom(String string) throws IllegalArgumentException {
-        if (string.length() != 3)
-            throw new IllegalArgumentException();
-        int number;
-        try {
-            number = Integer.parseInt(string);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-        return NumberSet.parseFrom(number);
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public boolean isUnique() {
+        Set<Integer> set = new HashSet<>(this.numbers);
+        return set.size() == this.numbers.size();
     }
 }
