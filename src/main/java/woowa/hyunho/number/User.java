@@ -1,15 +1,16 @@
 package woowa.hyunho.number;
 
-import camp.nextstep.edu.missionutils.Console;
+import woowa.hyunho.handler.Random;
 
 public class User {
-	String inputNumber;
+	String randomNumber;
 	
 	public void setNumber() {
-		inputNumber = Console.readLine();
+		Random random = new Random();
+		randomNumber = random.randomNumberHandler();
 	}
 	
 	public String getNumber() {
-		return inputNumber;
+		return randomNumber;
 	}
 }

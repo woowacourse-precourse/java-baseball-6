@@ -1,11 +1,11 @@
-package woowa.hyunho.game;
+package woowa.hyunho.process;
 
+import woowa.hyunho.game.End;
+import woowa.hyunho.game.Game;
 import woowa.hyunho.number.Computer;
-import woowa.hyunho.messages.Messages;
-import woowa.hyunho.process.Game;
-import woowa.hyunho.process.End;
 
 public class Process {
+	static final int RESTART = 1;
 	Computer computer = new Computer();
 	Game game = new Game();
 	End end = new End();
@@ -30,7 +30,7 @@ public class Process {
 	}
 	
 	private void checkSelector(int selector) {
-		if (selector==1) {
+		if (selector==RESTART) {
 			restartGame();
 		}
 	}

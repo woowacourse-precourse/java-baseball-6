@@ -1,6 +1,7 @@
 package woowa.hyunho.messages;
 
 public class Messages {
+	static final int ZERO = 0;
 	public static void printStart() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 	}
@@ -10,15 +11,15 @@ public class Messages {
 	}
 	
 	public static void printResult(int ball, int strike) {
-		if (ball==0 && strike==0) {
+		if (ball==ZERO && strike==ZERO) {
 			System.out.println("낫싱");
 			return ;
 		}
-		if (ball == 0) {
+		if (ball == ZERO) {
 			System.out.println(strike + "스트라이크");
 			return ;
 		}
-		if (strike == 0) {
+		if (strike == ZERO) {
 			System.out.println(ball + "볼");
 			return ;
 		}

@@ -1,19 +1,16 @@
-package woowa.hyunho.process;
+package woowa.hyunho.game;
 
 import woowa.hyunho.messages.Messages;
 import woowa.hyunho.utilities.Parse;
-
-import java.util.List;
-
-import camp.nextstep.edu.missionutils.Console;
+import woowa.hyunho.handler.Selector;
 
 public class End {
-	List<Integer> selector;
+	int selectorNumber;
 	
 	public int endProcess() {
 		printEndMessages();
 		getSelector();
-		return selector.get(0);
+		return selectorNumber;
 	}
 	
 	private void printEndMessages() {
@@ -21,8 +18,9 @@ public class End {
 	}
 	
 	private void getSelector() {
-		String num = Console.readLine();
-		selector = Parse.parseString(num);
+		Selector selector = new Selector();
+		String num = selector.selectorNumberHandler();
+		selectorNumber = Parse.parseStringToInt(num);
 	}
 	
 }

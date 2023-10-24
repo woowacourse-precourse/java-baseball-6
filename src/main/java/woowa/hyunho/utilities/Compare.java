@@ -1,27 +1,36 @@
 package woowa.hyunho.utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Compare {
-	public static int checkStrike(List<Integer> computer, List<Integer> user) {
-		int i = 0;
-		int strike = 0;
-		while (i < computer.size()) {
-			if (computer.get(i)==user.get(i)) 
-					strike++; 
-			i++;
-		}
-		return strike;
+	public static List<Integer> countResult(List<Integer> computer, List<Integer> user) {
+		return countMatchingElements(computer, user);
 	}
 	
-	public static int checkBall(List<Integer> computer, List<Integer> user) {
-		int i = 0;
+	private static List<Integer> countMatchingElements(List<Integer> computer, List<Integer> user) {
+		int i =0;
+		List<Integer> result = new ArrayList<>();
+		int strike = 0;
 		int ball = 0;
 		while (i < computer.size()) {
-			if (computer.contains(user.get(i))) 
-					ball++; 
+			strike += checkStrike(computer.get(i), user.get(i));
+			ball += checkBall(computer, user.get(i));
 			i++;
 		}
-		return ball;
+		ball = ball - strike;
+		result.add(strike);
+		result.add(ball);
+		return result; 
+	}
+	
+	private static int checkStrike(int computer, int user) {
+		if (computer == user) return 1;
+		return 0;
+	}
+	
+	private static int checkBall(List<Integer> computer, int user) {
+		if (computer.contains(user)) return 1;
+		return 0;
 	}
 }
