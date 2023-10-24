@@ -16,4 +16,11 @@ public class inputExeption {
         }
         return true;
     }
+
+    public static boolean isDigitNumber(String[] input){
+        if(input.length !=BaseballGame.listSize){
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
 }
