@@ -2,7 +2,7 @@ package baseball.util;
 
 import java.util.List;
 
-public interface RandomNumGenerator {
+public interface NumberGenerator {
     List<Integer> getRandomNumber();
 
 }

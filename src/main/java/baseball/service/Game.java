@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.dto.Score;
-import baseball.util.RandomNumGenerator;
+import baseball.util.NumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.platform.commons.util.StringUtils;
 
@@ -21,7 +21,7 @@ public class Game {
         this.score = score;
     }
 
-    public Game(RandomNumGenerator gameNumberGenerator) {
+    public Game(NumberGenerator gameNumberGenerator) {
         this(new Computer(gameNumberGenerator.getRandomNumber()), new Score());
     }
 

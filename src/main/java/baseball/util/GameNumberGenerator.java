@@ -7,7 +7,7 @@ import java.util.List;
 
 import static baseball.constants.Constants.*;
 
-public class GameNumberGenerator implements RandomNumGenerator {
+public class GameNumberGenerator implements NumberGenerator {
 
     @Override
     public List<Integer> getRandomNumber() {
