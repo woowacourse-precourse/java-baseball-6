@@ -13,6 +13,7 @@ public class GenerateAnswer {
         computerNumbers.add(randomNumber);
       }
     }
+    
     return computerNumbers;
   }
 }
