@@ -2,21 +2,9 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static List<Integer> setCPU() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
 
     public static void play(List<Integer> target, String input) {
         List<Integer> reTarget = target;
@@ -44,7 +32,15 @@ public class Application {
 
             String userDecide = readLine();
             if (userDecide.equals("1")) {
-                List<Integer> cpuNewInput = setCPU();
+                RandomNumber randomNum1 = new RandomNumber(1, 9);
+                int randomNumber1 = randomNum1.getRandomNumber();
+                RandomNumber randomNum2 = new RandomNumber(1, 9);
+                int randomNumber2 = randomNum2.getRandomNumber();
+                RandomNumber randomNum3 = new RandomNumber(1, 9);
+                int randomNumber3 = randomNum3.getRandomNumber();
+
+                CpuNumber cpuNum = new CpuNumber(randomNumber1, randomNumber2, randomNumber3);
+                List<Integer> cpuNewInput = cpuNum.getCPUNumber();
                 System.out.println("컴퓨터 숫자:" + cpuNewInput);
                 System.out.print("숫자를 입력해주세요 : ");
                 String userNewInput = readLine();
@@ -88,7 +84,18 @@ public class Application {
     public static void main(String[] args) {
 // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> cpuInput = setCPU();
+        RandomNumber randomNum1 = new RandomNumber(1, 9);
+        int randomNumber1 = randomNum1.getRandomNumber();
+        System.out.println(randomNumber1);
+        RandomNumber randomNum2 = new RandomNumber(1, 9);
+        int randomNumber2 = randomNum2.getRandomNumber();
+        System.out.println(randomNumber2);
+        RandomNumber randomNum3 = new RandomNumber(1, 9);
+        int randomNumber3 = randomNum3.getRandomNumber();
+        System.out.println(randomNumber3);
+
+        CpuNumber cpuNum = new CpuNumber(randomNumber1, randomNumber2, randomNumber3);
+        List<Integer> cpuInput = cpuNum.getCPUNumber();
         System.out.println("컴퓨터 숫자:" + cpuInput);
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
