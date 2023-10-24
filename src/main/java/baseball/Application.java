@@ -1,7 +1,14 @@
 package baseball;
 
+
 public class Application {
+    static final int DIGIT = 3;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballGame game;
+        do {
+            game = new BaseballGame(DIGIT);
+            game.play();
+        } while (game.retry());
     }
 }
