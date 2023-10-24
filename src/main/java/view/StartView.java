@@ -1,7 +1,7 @@
 /*
  * <pre>
- * Class : Application
- * Comment: Application 시작 클래스
+ * Class : StartView
+ * Comment: Application 시작 화면 출력 클래스
  * History
  * ================================================================
  * DATE             AUTHOR           NOTE
@@ -14,12 +14,10 @@
  * @see
  */
 
-package baseball;
+package view;
 
-import controller.BaseballController;
-
-public class Application {
-    public static void main(String[] args) {
-        BaseballController.startBaseball();
+public class StartView {
+    public static void startView() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
