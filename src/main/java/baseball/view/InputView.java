@@ -13,8 +13,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String inputRestartOption() {
-        System.out.println(INPUT_RESTART_MESSAGE);
+    public static String inputRestartOption(String doRestartOption, String dontRestartOption) {
+        System.out.println(String.format(INPUT_RESTART_MESSAGE, doRestartOption, dontRestartOption));
         return Console.readLine();
     }
 }

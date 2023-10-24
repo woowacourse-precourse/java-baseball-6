@@ -13,7 +13,7 @@ public class RestartOption {
     }
 
     private void chooseRestartGameOption() {
-        String restartOption = InputView.inputRestartOption();
+        String restartOption = InputView.inputRestartOption(DO_RESTART_OPTION, DONT_RESTART_OPTION);
         checkValidRestartOption(restartOption);
         this.restartOption = restartOption;
     }
