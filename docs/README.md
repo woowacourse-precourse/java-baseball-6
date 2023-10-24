@@ -21,6 +21,23 @@
 
 ## 🏛️ 프로젝트 패키지 구조
 
+```bash
+├── main
+│   ├── Application.java
+│   ├── AppConfig.java
+│   ├── GameController.java
+│   ├── GameService.java
+│   ├── CodeRepository.java
+│   ├── Code.java
+│   └── Grade.java
+│
+└── test
+    ├── ApplicationTest.java
+    ├── CodeRepositoryTest.java
+    └── GameServiceTest.java
+
+```
+
 1. <b>Application</b><br>
    프로그램을 실행하고 게임 플레이어로부터 입력 받아 요청을 전달한다. 게임 진행 안내와 결과를 출력한다.<br><br>
 
@@ -48,7 +65,6 @@
 
 ## 📑 로그
 1. **첫 번째 구현 (2023.10.21)** <br><br>
-   ✦ 주요고민사항 <br>
     1. 프로젝트 구조 <br>
        스프링의 계층적 설계를 생각하며 프로그램의 구조를 설계하였다. 단순한 프로그램이기에 불필요한 계층이 있지는 않은지 추후 생각해야 한다. 계층 간의 역할 분리를 하여 <b>책임이 최대한 분명하게 구분되도록</b> 노력하였다. 이를테면 처음에는 출력을 Controller에서 하였지만 Application이 가장 상위 계층이기에 모든 출력을 담당하였다. 대신 Controller에서는 입력 값(요청)에 대한 validation을 진행한다. <br><br>
     2. Indent와 가독성
@@ -81,4 +97,32 @@
              }
          }
        ```
-       indent를 줄이고 게임 통과와 재시작은 다른 기능이기 때문에 다른 boolean 변수에 담았다.(pass와 restart) 변경 전의 경우, 각 코드의 역할을 한 눈에 파악하기 어렵다. 
+       indent를 줄이고 게임 통과와 재시작은 다른 기능이기 때문에 다른 boolean 변수에 담았다.(pass와 restart) 변경 전의 경우, 각 코드의 역할을 한 눈에 파악하기 어렵다. <br><br>
+1. **두 번째 구현 (2023.10.24)** <br><br>
+   1. 클린 코드<br>
+      우테코와 구글의 자바 코드를 꼼꼼히 읽어 본 후 들여쓰기, 공백부터 살펴보며 리팩토링을 하였다. 메서드명을 기능을 이해하기 쉽게 고치거나 변경되지 않을 메서드 매개변수에 final을 붙이는 증 추가적인 리팩토링도 진행하였다.
+   2. Dependency Injection 도입<br>
+      처음에는 아래와 같이 의존관계가 있는 클래스들을 클래스 내부에서 직접 인스턴스를 생성하여 사용하였다.
+      ```java
+      class GameController {
+        private final GameService gameService = new GameService();
+      }
+      ```
+      하지만 이는 확장성 측면에서도 좋지 않은 코드이고 DIP에도 어긋난다. 따라서 생성자 주입으로 각 클래스의 의존성을 주입하고 설정 파일(AppConfig)에서 의존성을 설정하도록 하였다.
+      ```java
+      class GameController {
+        private final GameService gameService;
+        public GameController(final GameService gameService) {
+            this.gameService = gameService;
+        }
+        // 생략
+      }
+      ```
+      ```java
+      class AppConfig {
+        // 생략
+        public GameController gameController() {
+          return new GameController(gameService());
+        }
+      }
+      ```
