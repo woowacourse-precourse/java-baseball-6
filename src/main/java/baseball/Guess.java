@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Guess {
-    private String guess;
+    private final String guess;
 
     private static final int START_INCLUSIVE = Constants.START_INCLUSIVE;
     private static final int END_INCLUSIVE = Constants.END_INCLUSIVE;
@@ -19,7 +19,7 @@ public class Guess {
     }
 
     public String getGuess() {
-        return this.guess;
+        return guess;
     }
 
     private void validateNumberInput(String input) {

@@ -1,13 +1,13 @@
 package baseball;
 
 public class Computer {
-    private Answer answer;
+    private final Answer answer;
 
     public Computer(Answer answer) {
         this.answer = answer;
     }
 
-    public void printResult(Guess guess) {
+    public void printResult(String guess) {
         int strikes = getStrikesCount(guess);
         int balls = getBallsCount(guess);
 
@@ -16,22 +16,22 @@ public class Computer {
         System.out.println(comment);
     }
 
-    private int getBallsCount(Guess guess) {
+    private int getBallsCount(String guess) {
         int balls = 0;
-        for (int i = 0; i < guess.getGuess().length(); i++) {
-            char inputChar = guess.getGuess().charAt(i);
-            if (this.answer.getAnswer().contains("" + inputChar)) {
+        for (int i = 0; i < guess.length(); i++) {
+            char inputChar = guess.charAt(i);
+            if (answer.getAnswer().contains("" + inputChar)) {
                 balls++;
             }
         }
         return balls - getStrikesCount(guess);
     }
 
-    public int getStrikesCount(Guess guess) {
+    public int getStrikesCount(String guess) {
         int strikes = 0;
-        for (int i = 0; i < guess.getGuess().length(); i++) {
-            char inputChar = guess.getGuess().charAt(i);
-            char answerChar = this.answer.getAnswer().charAt(i);
+        for (int i = 0; i < guess.length(); i++) {
+            char inputChar = guess.charAt(i);
+            char answerChar = answer.getAnswer().charAt(i);
             if (inputChar == answerChar) {
                 strikes++;
             }

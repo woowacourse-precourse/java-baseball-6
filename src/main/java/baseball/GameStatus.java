@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameStatus {
-    private String gameStatus;
+    private final String gameStatus;
 
     private static final String START = Constants.START;
     private static final String QUIT = Constants.QUIT;

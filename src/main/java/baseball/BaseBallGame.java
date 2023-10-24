@@ -9,7 +9,7 @@ public class BaseBallGame {
     private static final String GAME_OVER = Constants.GAME_OVER;
     private static final String RESTART_PROMPT = Constants.RESTART_PROMPT;
     private static final String QUIT = Constants.QUIT;
-    
+
     public void startGame() {
         System.out.println(GAME_START);
         runGame();
@@ -31,8 +31,8 @@ public class BaseBallGame {
 
     private void playRound(Computer computer) {
         Guess guess = getGuessFromUser();
-        computer.printResult(guess);
-        strikes = computer.getStrikesCount(guess);
+        computer.printResult(guess.getGuess());
+        strikes = computer.getStrikesCount(guess.getGuess());
         if (strikes == ANSWER_DIGIT) {
             System.out.println(GAME_OVER);
             System.out.println(RESTART_PROMPT);
