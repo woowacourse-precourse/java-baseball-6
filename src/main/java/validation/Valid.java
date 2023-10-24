@@ -14,11 +14,15 @@ public class Valid {
 
 
     public void myNumberValid(String number) {
-        if (number == null || number.length() != MAX_LENGTH) throw new IllegalArgumentException(MAX_LENGTH + "개의 숫자를 입력해야함");
+        if (number == null || number.length() != MAX_LENGTH) {
+            throw new IllegalArgumentException(MAX_LENGTH + "개의 숫자를 입력해야함");
+        }
 
         p = Pattern.compile("[^1-9]");
         m = p.matcher(number);
-        if (m.find()) throw new IllegalArgumentException("문자와 0은 사용할 수 없음");
+        if (m.find()) {
+            throw new IllegalArgumentException("문자와 0은 사용할 수 없음");
+        }
 
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < number.length(); i++) {
