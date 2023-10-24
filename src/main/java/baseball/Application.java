@@ -21,6 +21,7 @@ public class Application {
     }
 
     public static String validateUserInput() {
+        // TODO : 추가 검증 로직 구현
         String userInput = Console.readLine();
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
@@ -29,6 +30,7 @@ public class Application {
     }
 
     public static boolean executeBaseballGame(String user, String cpu) {
+        // TODO : 추가 검증 로직 구현
         if (user.equals(cpu)) {
             System.out.println("3 스트라이크");
             return true;
