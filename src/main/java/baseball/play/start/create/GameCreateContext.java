@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class GameCreateContext {
 
   public static InputCommands inputCommand(RandomNumberCreateCommands createCommands) {
-    return new InputCommands(createRandomNumbs(createCommands));
+    return InputCommands.of(createRandomNumbs(createCommands));
   }
 
   private static String createRandomNumbs(RandomNumberCreateCommands createCommands) {
