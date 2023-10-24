@@ -17,6 +17,16 @@ public class ExceptionTest extends NsTest {
         }
     }
 
+    @Test
+    void 사용자의_숫자가_세자리수가_아님() {
+        String[] testValues = {"12", "3452675", "0"};
+
+        for (String testValue : testValues) {
+            assertThatThrownBy(() -> runException(testValue))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
