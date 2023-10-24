@@ -44,28 +44,22 @@ public class GameManager {
         if (input.equals("1")) {
             computer.changeNumber();
             startGame();
-        }
-        else if (input.equals("2")) {
+        } else if (input.equals("2")) {
             return ;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
     private boolean count_msg(int[] result) {
         if (result[0] == 0 && result[1] == 0){
             System.out.println("낫싱");
-        }
-        if (result[0] > 0 && result[1] > 0){
+        }if (result[0] > 0 && result[1] > 0){
             System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
-        }
-        if (result[0] > 0 && result[1] == 0){
+        }if (result[0] > 0 && result[1] == 0){
             System.out.println(result[0] + "스트라이크 ");
-        }
-        if (result[0] == 0 && result[1] > 0){
+        }if (result[0] == 0 && result[1] > 0){
             System.out.println(result[1] + "볼 ");
-        }
-        if (result[0] == 3) {
+        }if (result[0] == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
@@ -77,8 +71,7 @@ public class GameManager {
         for (int i = 0; i < 3; i++){
             if (numbers.get(i) == computer.getNumbers().get(i)){
                 result[0]++;
-            }
-            else{
+            } else{
                 for (int j = 0; j < 3; j++) {
                     if (numbers.get(i) == computer.getNumbers().get(j)){
                         result[1]++;
@@ -94,11 +87,9 @@ public class GameManager {
         Set<Integer> set = new HashSet<>(numbers);
         if (numbers.size() != 3){
             isValid = false;
-        }
-        if (numbers.size() != set.size()) {
+        }if (numbers.size() != set.size()) {
             return false;
-        }
-        else{
+        } else{
             for(Integer number : numbers){
                 if (number < 0 || number > 9){
                     isValid = false;
