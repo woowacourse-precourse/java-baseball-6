@@ -23,5 +23,20 @@ public class Application {
         return numbers;
     }
 
+    private static List<Integer> inputNumbers() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        String input = Console.readLine();
+        if (input.length() != NUM_SIZE) {
+            throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해 주세요.");
+        }
+
+        List<Integer> numbers = new ArrayList<>();
+        for (char ch : input.toCharArray()) {
+            numbers.add(Character.getNumericValue(ch));
+        }
+        return numbers;
+    }
+
+
 
 }
