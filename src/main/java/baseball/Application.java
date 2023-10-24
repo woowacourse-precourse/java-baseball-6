@@ -1,8 +1,5 @@
 package baseball;
 
-import static baseball.Result.STRIKE;
-import static baseball.Result.BALL;
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,14 +67,14 @@ public class Application {
         }
     }
 
-    static void printResult(int[] result) {
-        if (result[STRIKE.getIndex()] > 0 && result[BALL.getIndex()] > 0) {
-            System.out.printf("%d볼 %d스트라이크\n", result[BALL.getIndex()], result[STRIKE.getIndex()]);
-        } else if (result[STRIKE.getIndex()] > 0) {
-            System.out.printf("%d스트라이크\n", result[STRIKE.getIndex()]);
-        } else if (result[BALL.getIndex()] > 0) {
-            System.out.printf("%d볼\n", result[BALL.getIndex()]);
-        } else if (result[STRIKE.getIndex()] == 0 && result[BALL.getIndex()] == 0) {
+    static void printResult(Result result) {
+        if (result.strike() > 0 && result.ball() > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", result.strike(), result.ball());
+        } else if (result.strike() > 0) {
+            System.out.printf("%d스트라이크\n", result.strike());
+        } else if (result.ball() > 0) {
+            System.out.printf("%d볼\n", result.ball());
+        } else if (result.strike() == 0 && result.ball() == 0) {
             System.out.println("낫싱");
         }
     }

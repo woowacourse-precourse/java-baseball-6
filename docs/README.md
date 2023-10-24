@@ -10,17 +10,8 @@
 1. class Application
 
 - [x] 전체 게임의 설정 관리 (정답 길이, 개별 숫자 범위)
-
-~~- [x] 개별 게임 시작~~
-
-~~- [x] 정답 객체 생성~~
-
 - [x] 사용자 입력값 검증
-- [x] 사용자 입력 객체 생성
 - [x] 결과 출력
-
-~~- [x] 정답 확인 시 게임 종료~~
-
 - [x] 재시작 여부 질문
 
 2. class Game
@@ -34,13 +25,17 @@
 2. class Player
 
 - [x] List\<Integer>를 포장하는 Player 클래스 정의
-- [x] 무작위 객체 생성하기
-- [x] 주어진 입력에 맞는 객체 생성하기
+- [x] 무작위 객체 (컴퓨터, 투수) 생성하기
+- [x] 주어진 입력에 맞는 객체 (사용자, 타자) 생성하기
 - [x] 두 객체 비교하기
 
-3. enum Result
+3. class Result
 
-- [x] STRIKE, BALL 값의 인덱스를 표시하는 열거형 정의
+- [x] strike, ball 결과값을 담는 DTO 정의.
+
+4. class Preference
+
+- [x] Application 클래스에서 Player 클래스로 게임 설정을 전달하기 위한 DTO 정의.
 
 # Flowchart
 

@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.Result.STRIKE;
-
 public class Game {
     private static Preference settings;
 
@@ -9,7 +7,7 @@ public class Game {
         settings = preference;
 
         Player pitcher = new Player(settings);
-        int[] result;
+        Result result;
 
         do {
             Player hitter = new Player(Application.readNumber());
@@ -18,8 +16,8 @@ public class Game {
         } while (!foundAnswer(result));
     }
 
-    public static boolean foundAnswer(int[] result) {
-        if (result[STRIKE.getIndex()] == settings.answerSize()) {
+    public static boolean foundAnswer(Result result) {
+        if (result.strike() == settings.answerSize()) {
             System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", settings.answerSize());
             return true;
         }
