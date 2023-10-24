@@ -1,11 +1,10 @@
 package baseball.domain.computer;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static baseball.domain.script.Script.GAME_START;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.domain.script.Script.GAME_START;
 
 public class Computer {
     List<Integer> numbers;
@@ -25,7 +24,7 @@ public class Computer {
         return numbers.get(i);
     }
 
-    public void resetNumbers(){
+    public void resetNumbers() {
         System.out.println(GAME_START.getMessage());
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
