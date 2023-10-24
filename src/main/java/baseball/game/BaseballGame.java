@@ -13,6 +13,7 @@ public class BaseballGame {
         User user = new User();
 
         boolean correctAnswer = false;
+        boolean restart = false;
 
         List<Integer> computerNumber = computer.createComputerNumber();
         while (true) {
@@ -30,32 +31,9 @@ public class BaseballGame {
             }
         }
 
-        computer.decideGameEndAndRestart();
-
-//        public static void Game() {
-//            while (true) {
-//
-//                    if (strike == 3) {
-//                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-//                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//                        String restartOrExit = Console.readLine();
-//                        validateRestartOrExitNumber(restartOrExit);
-//                        if (restartOrExit.equals("1")) {
-//                            break;
-//                        } else if (restartOrExit.equals("2")) {
-//                            return;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        private static void validateRestartOrExitNumber(String restartOrExit) {
-//            if (!restartOrExit.equals("1") && !restartOrExit.equals("2")) {
-//                throw new IllegalArgumentException("게임 재시작 또는 종료 입력이 잘못되었습니다.");
-//            }
-//        }
-//
-
+        restart = computer.decideRestartOrExit();
+        if (restart) {
+            play();
+        }
     }
 }

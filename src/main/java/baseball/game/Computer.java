@@ -1,5 +1,6 @@
 package baseball.game;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,8 +77,19 @@ public class Computer {
         return resultMessage.equals("3스트라이크");
     }
 
-    public void decideGameEndAndRestart() {
+    public boolean decideRestartOrExit() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartOrExit = Console.readLine();
+        validateRestartOrExitNumber(restartOrExit);
+
+        return restartOrExit.equals("1");
     }
 
+    public void validateRestartOrExitNumber(String restartOrExit) {
+        if (!restartOrExit.equals("1") && !restartOrExit.equals("2")) {
+            throw new IllegalArgumentException("게임 재시작 또는 종료 입력이 잘못되었습니다.");
+        }
+    }
 
 }
