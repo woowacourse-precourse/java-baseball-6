@@ -9,14 +9,18 @@ import java.util.List;
 
 public class Game {
 
+    private static Printer printer = new Printer();
+    private static ScoreCounter scoreCounter = new ScoreCounter();
+    private static InputReader inputReader = new InputReader();
+
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printer.printGameStart();
         boolean isGameActive = true;
         while (isGameActive) {
             newGame();
             isGameActive = askRestartOrExit();
         }
-        System.out.println("게임이 종료됩니다.");
+        printer.printGameEnd();
     }
 
     private void newGame() {
@@ -28,17 +32,17 @@ public class Game {
         int ball;
         int strike = 0;
         while (strike != 3) {
-            List<Integer> user = InputReader.getUserNumber();
-            ball = ScoreCounter.countBall(computer, user);
-            strike = ScoreCounter.countStrike(computer, user);
-            Printer.printGameResult(ball, strike);
+            List<Integer> user = inputReader.getUserNumber();
+            ball = scoreCounter.countBall(computer, user);
+            strike = scoreCounter.countStrike(computer, user);
+            printer.printGameResult(ball, strike);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        printer.printCorrect();
         return strike;
     }
 
     private boolean askRestartOrExit() {
-        return InputReader.getUserGameAction() == 1;
+        return inputReader.getUserGameAction() == 1;
     }
 
 }
