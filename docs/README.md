@@ -66,6 +66,7 @@
 ```
 
 - 콘솔 실행 결과
+
 ![img_3](https://github.com/20191777/java-baseball-6/assets/97873629/dd80b5d3-6252-4b74-afec-277e77fa9f08)
 ![img_4](https://github.com/20191777/java-baseball-6/assets/97873629/cde72e0a-3c5d-4553-ad1e-394d6d85c7f2)
 
