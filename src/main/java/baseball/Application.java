@@ -93,15 +93,17 @@ public class Application {
         }
     }
     public static void userValid(List<Integer> user, int userNumber){
-        if(userNumberRange(userNumber)){
-            throw new IllegalArgumentException();
-        }
+        userRangeValid(userNumber);
         if(user.contains(userNumber)){
             throw new IllegalArgumentException();
         }
     }
 
-
+    public static void userRangeValid(int userNumber){
+        if(userNumberRange(userNumber)){
+            throw new IllegalArgumentException();
+        }
+    }
     public static boolean userNumberRange(int userNumber){
         return userNumber<1 || userNumber>9;
     }
