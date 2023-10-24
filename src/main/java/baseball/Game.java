@@ -15,8 +15,11 @@ public class Game {
         computerBalls = new Balls();
     }
 
+    private void gameOver(GameResult gameResult) {
+        if (!gameResult.isThreeStrike()) {
+            return;
+        }
 
-    private void gameOver() {
         GameIO.gameRestartPrint();
         Command command = Command.findByCommand(Console.readLine());
         if (command.isEnd()) {
@@ -35,11 +38,9 @@ public class Game {
 
             Balls playerBalls = GameIO.scanGameBalls();
             GameResult gameResult = computerBalls.getGameResult(playerBalls);
+            GameIO.gameResultPrint(gameResult);
 
-            System.out.println(gameResult);
-            if (gameResult.isThreeStrike()) {
-                gameOver();
-            }
+            gameOver(gameResult);
         }
     }
 }
