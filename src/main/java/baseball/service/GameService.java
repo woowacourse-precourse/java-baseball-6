@@ -11,11 +11,16 @@ public class GameService {
     private final Hint hint;
     private GameSystem gameSystem;
 
-    public GameService() {
-        user = new User();
-        gameSystem = new GameSystem();
-        hint = new Hint();
+    public GameService(final User user, final Hint hint, final GameSystem gameSystem){
+        this.user = user;
+        this.hint = hint;
+        this.gameSystem = gameSystem;
     }
+    
+    public GameService() {
+        this(new User(), new Hint(), new GameSystem());
+    }
+
 
     public void setUserBaseballNumber(String input) {
         user.setUserBaseballNumber(input);

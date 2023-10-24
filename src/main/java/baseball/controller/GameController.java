@@ -9,9 +9,13 @@ public class GameController {
     private final GameService gameService;
     private final OutputView outputView;
 
+    public GameController(final GameService gameService, final OutputView outputView){
+        this.gameService = gameService;
+        this.outputView = outputView;
+    }
+
     public GameController() {
-        gameService = new GameService();
-        outputView = new OutputView();
+        this(new GameService(), new OutputView());
     }
 
     public void start() {
