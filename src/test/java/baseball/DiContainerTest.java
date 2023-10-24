@@ -3,7 +3,11 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.config.DiContainer;
-import baseball.controller.ComputerController;
+import baseball.controller.Controller;
+import baseball.controller.UserController;
+import baseball.service.GameService;
+import baseball.util.Validation;
+import baseball.view.ComputerView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +21,7 @@ class DiContainerTest {
         DiContainer diContainer = new DiContainer();
 
         //when
-        ComputerController computerController = diContainer.computerController();
+        Controller computerController = diContainer.userController();
 
         //then
         assertThat(computerController).isNotNull();
@@ -31,11 +35,12 @@ class DiContainerTest {
         DiContainer diContainer = new DiContainer();
 
         //when
-        ComputerController computerControllerForMakeDI = diContainer.computerController();
-        ComputerController computerControllerForNew = new ComputerController();
+        Controller userControllerGenerateByDI = diContainer.userController();
+        Controller userControllerGenerateByNew = new UserController(new ComputerView(),
+                new GameService(new Validation()));
 
         //then
-        assertThat(computerControllerForMakeDI).isInstanceOf(computerControllerForNew.getClass());
-        assertThat(computerControllerForNew).isInstanceOf(computerControllerForMakeDI.getClass());
+        assertThat(userControllerGenerateByDI).isInstanceOf(userControllerGenerateByNew.getClass());
+        assertThat(userControllerGenerateByNew).isInstanceOf(userControllerGenerateByDI.getClass());
     }
 }
