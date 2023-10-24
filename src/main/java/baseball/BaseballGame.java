@@ -18,16 +18,48 @@ public class BaseballGame {
     SetNumber number = new SetNumber();
 
 
-        public void start() {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            computerNumber = number.setRandomNumbers();
-            while (!exitFlag) {
-                userNumber = number.setUserNumber();
-                printHint(computerNumber, userNumber);
+    public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computerNumber = number.setRandomNumbers();
+        while (!exitFlag) {
+            userNumber = number.setUserNumber();
+            printHint(computerNumber, userNumber);
+        }
+    }
+
+    private void printHint(List<Integer> answer, List<Integer> input) {
+        int strike = countStrike(answer, input);
+        int ball = countBall(answer, input);
+
+        System.out.println(determineHint(strike, ball));
+        if (strike == DIGIT) {
+            System.out.println(THREE_STRIKE_PRINT);
+            // setRestartOrExit();
+            // }
+
+        }
+    }
+
+    private int countStrike(List<Integer> answer, List<Integer> input) {
+        int count = 0;
+        for (int index = 0; index < answer.size(); index++) {
+            if (answer.get(index).equals(input.get(index))) {
+                count++;
             }
         }
-
-
-
-
+        return count;
     }
+
+    private int countBall(List<Integer> answer, List<Integer> input) {
+        int count = 0;
+        for (int index = 0; index < answer.size(); index++) {
+            if (!answer.get(index).equals(input.get(index))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+}
+
