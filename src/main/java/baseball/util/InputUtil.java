@@ -13,7 +13,6 @@ public class InputUtil {
     public List<Integer> input() {
         playerNumber = new ArrayList<>();
         boolean isValidInput = false;
-
         while (!isValidInput) {
             String inputString = Console.readLine();
             isValidInput = isValidString(inputString);
@@ -25,26 +24,25 @@ public class InputUtil {
 
     private void makeStringToList(String inputString) {
         for (int i = 0; i < inputString.length(); i++) {
-            playerNumber.add((int) inputString.charAt(i));
+            playerNumber.add(Integer.parseInt(String.valueOf(inputString.charAt(i))));
         }
     }
 
     public int inputReplay() {
         String command = "";
-        while (isValidReplayCommand(command)) {
+        while (!isValidReplayCommand(command)) {
             command = Console.readLine();
+            System.out.println("InputUtil.inputReplay : " + command);
         }
         return Integer.parseInt(command);
     }
 
     //서로다른 3가지 숫자인지 체크
     private boolean isValidString(String input) {
-        String regex = "^(?!.*(.).*\\1)[" + GameConstant.GAME_START_INCLUSIVE +
-                "-" + GameConstant.GAME_END_INCLUSIVE + "]{" + GameConstant.NUMBER_COUNT + "}$";
-        return input.matches(regex);
+        return input.matches("^(?!.*(.).*\\1)[1-9]{3}$");
     }
 
     private boolean isValidReplayCommand(String replayCommand) {
-        return replayCommand.matches("[12]");
+        return replayCommand.matches("^[12]$");
     }
 }
