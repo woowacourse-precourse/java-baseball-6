@@ -16,16 +16,23 @@ public class BaseBallService {
 
     private static InputValidator inputValidator = new InputValidator();
 
+    //생성된 컴퓨터 번호 저장
     public void init(List<Integer> generatedComputerNum) {
         computerNum = generatedComputerNum;
-        initStrikeAndBall();
     }
 
+    // 매 추론마다 비교를 위해 스트라이크와 볼 초기화
     public void initStrikeAndBall() {
         strike = 0;
         ball = 0;
     }
 
+    /*
+    1. initStrikeAndBall: 스트라이크 및 볼 초기화
+    2. receiveUserInput: 유저의 입력값 받기
+    3. compareUserAndComputer: 컴퓨터의 번호와 입력값 비교
+    4. judegeStrikeAndBall: 게임 종료 및 진행 판단
+     */
     public void start() {
 
         do {
@@ -35,6 +42,7 @@ public class BaseBallService {
         } while (judgeStrikeAndBall());
     }
 
+    // 스트라이크 개수를 통해 게임 종료 및 진행 판단 및 결과 출력
     public boolean judgeStrikeAndBall() {
         if (strike == NUMBER_LENGTH) {
             System.out.println("3스트라이크");
@@ -52,6 +60,7 @@ public class BaseBallService {
         return true;
     }
 
+    // 컴퓨터의 번호와 입력값 비교: 숫자와 자리가 같으면 스트라이크, 숫자가 같고 위치가 다르면 볼, 다르면 카운트 안함
     public void compareUserAndComputer() {
         strike = (int) IntStream.range(0, 3)
                 .filter(i -> userNum.get(i).equals(computerNum.get(i)))
@@ -62,12 +71,14 @@ public class BaseBallService {
                 .count();
     }
 
+    // 유저 입력값을 판단하기 위한 함수: 자리가 3자리인지, 허용된 범위의 숫자인지, 중복은 없는지 체크
     public void checkValid(String strUserNum) {
         if (!inputValidator.isValidLength(strUserNum) || !inputValidator.isValidNumber(strUserNum)) {
             throw new IllegalArgumentException();
         }
     }
 
+    // 유저의 입력값 받기: ArrayList로 저장
     public void receiveUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String strUserNum = Console.readLine();

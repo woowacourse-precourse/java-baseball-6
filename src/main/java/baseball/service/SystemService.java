@@ -10,6 +10,7 @@ import java.util.List;
 
 public class SystemService {
 
+    //중복없이 컴퓨터 번호 입력받기: ArrayList로 저장
     public List<Integer> generateComputerNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < NUMBER_LENGTH) {
@@ -21,6 +22,7 @@ public class SystemService {
         return computerNum;
     }
 
+    //게임 재시작 여부 확인
     public boolean restart(String userInput) {
 
         if (userInput.equals(RESTART)) {
