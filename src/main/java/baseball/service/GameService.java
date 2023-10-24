@@ -1,5 +1,7 @@
 package baseball.service;
 
+import static baseball.ThreeOutCount.getTreeOutCount;
+
 import baseball.config.withinRange;
 import baseball.util.Validate;
 import baseball.view.OutputVIew;
@@ -58,7 +60,7 @@ public class GameService {
             intArr[i] = Integer.parseInt(input.substring(i, i + 1));
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < getTreeOutCount(); i++) {
             if (answerList.get(i) == (intArr[i])) {
                 ++strikeCount;
             }
@@ -69,7 +71,7 @@ public class GameService {
         }
         printResultMessage(strikeCount, ballCount);
 
-        if (strikeCount == 3) {
+        if (strikeCount == getTreeOutCount()) {
             printGameEndMessage();
         }
     }
