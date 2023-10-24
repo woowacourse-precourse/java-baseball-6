@@ -4,9 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class AnswerNumberGenerator {
-    private final static int MAX_NUMBBER_LENGTH = 3;
-    private final static int MAX_NUMBER_RANGE = 9;
-    private final static int MIN_NUMBER_RANGE = 9;
 
     ArrayList<Integer> answerNumberList = new ArrayList<Integer>(3);
 
