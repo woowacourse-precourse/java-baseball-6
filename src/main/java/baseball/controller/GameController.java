@@ -2,12 +2,17 @@ package baseball.controller;
 
 import baseball.domain.Balls;
 import baseball.domain.RoundResult;
-import baseball.util.RandomNumberGenerator;
+import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
+
+    private final GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
 
     public void run() {
         OutputView.printStartMessage();
@@ -15,12 +20,12 @@ public class GameController {
     }
 
     private void playGame() {
-        playRounds(createAnswerBalls());
+        playRounds(gameService.createAnswerBalls());
         endGame();
     }
 
     private void playRounds(Balls answer) {
-        Balls playerBalls = getPlayerBalls();
+        Balls playerBalls = gameService.getPlayerBalls();
         RoundResult roundResult = playerBalls.compareWith(answer);
         OutputView.print(roundResult);
         if (roundResult.isGameEnd()) {
@@ -33,15 +38,5 @@ public class GameController {
         if (InputView.retryOrExit()) {
             playGame();
         }
-    }
-
-    private Balls createAnswerBalls() {
-        List<Integer> numbers = RandomNumberGenerator.generate();
-        return Balls.of(numbers);
-    }
-
-    private Balls getPlayerBalls() {
-        List<Integer> numbers = InputView.getNumbers();
-        return Balls.of(numbers);
     }
 }
