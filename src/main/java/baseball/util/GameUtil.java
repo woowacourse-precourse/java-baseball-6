@@ -61,4 +61,8 @@ public class GameUtil {
         return computer;
     }
 
+    public static boolean isUnitGameFinish(BaseballCount count) {
+        return count.getStrike() == Number.GAME_LENGTH;
+    }
+
 }
