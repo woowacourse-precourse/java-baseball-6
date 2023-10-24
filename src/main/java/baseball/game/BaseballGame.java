@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.common.Constants;
 import baseball.game.status.BaseballGameStatus;
 import baseball.player.ComputerPlayer;
 import baseball.player.UserPlayer;
@@ -27,11 +28,15 @@ public class BaseballGame {
     }
 
     public void process() {
+        BaseballGameRound baseballGameRound;
+
         do {
             init();
-            GameRound gameRound = new GameRound(computerPlayer, userPlayer);
+            baseballGameRound = new BaseballGameRound(computerPlayer, userPlayer);
+            baseballGameRound.start();
+
             int mode = Integer.parseInt(Console.readLine());
-            if(mode == 2) gameStatus = BaseballGameStatus.EXIT;
+            if(mode == Constants.gameExit) gameStatus = BaseballGameStatus.EXIT;
         } while (gameStatus.equals(BaseballGameStatus.CONTINUE));
     }
 }

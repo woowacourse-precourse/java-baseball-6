@@ -37,6 +37,6 @@ public class ComputerPlayer {
             }
         }
 
-        return new StrikeBall(strikeCnt, ballCnt);
+        return new StrikeBall(strike, ball);
     }
 }
