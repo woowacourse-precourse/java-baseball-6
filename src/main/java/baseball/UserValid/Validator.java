@@ -14,7 +14,7 @@ public class Validator {
         CheckDuplicate(userNum);
     }
 
-    private static void CheckNumber(String userNum){
+    public static void CheckNumber(String userNum){
         int checkIntNUm;
         try {
             checkIntNUm = Integer.parseInt(userNum);
@@ -22,7 +22,7 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
-    private static void  CheckDuplicate(String userNum){
+    public static void  CheckDuplicate(String userNum){
         int[] userNumArr = userNum.chars()
                 .map(Character::getNumericValue)
                 .toArray();
@@ -36,7 +36,7 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
-    private static void  CheckLength(String userNum){
+    public static void  CheckLength(String userNum){
         if (userNum.length() != MAX_LEN) {
             throw new IllegalArgumentException();
         }
