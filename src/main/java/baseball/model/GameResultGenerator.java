@@ -1,8 +1,6 @@
 package baseball.model;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class GameResultGenerator {
     private boolean isNothing = false;
@@ -11,27 +9,6 @@ public class GameResultGenerator {
 
     public GameResultGenerator(ComputerNumber computerNumber, PlayerNumber playerNumber) {
         calculateResult(computerNumber.getNumbers(), playerNumber.getNumbers());
-    }
-
-
-    private void calculateResult(List<Integer> computerNumber, List<Integer> playerNumber) {
-        if (computerNumber.equals(playerNumber)) {
-            strikeCount = 3;
-            return;
-        }
-
-        for (int i = 0; i < playerNumber.size(); i++) {
-            if (computerNumber.contains(playerNumber.get(i))) {  //같은 숫자가 존재하고
-                if (computerNumber.get(i).equals(playerNumber.get(i))) {  //같은 위치에 있으면
-                    strikeCount++;
-                    continue;
-                }
-                ballCount++;
-            }
-        }
-        if ((ballCount == 0) && (strikeCount == 0)) {
-            isNothing = true;
-        }
     }
 
     public boolean isNothing() {
@@ -48,5 +25,46 @@ public class GameResultGenerator {
 
     public boolean isThreeStrike() {
         return strikeCount == 3;
+    }
+
+    private void calculateResult(List<Integer> computerNumber, List<Integer> playerNumber) {
+        if (isEqualNumbers(computerNumber, playerNumber)) {
+            strikeCount = 3;
+            return;
+        }
+
+        calculateBallAndStrikeCount(computerNumber, playerNumber);
+
+        if (isBallAndStrikeZero()) {
+            isNothing = true;
+        }
+    }
+
+    private boolean isEqualNumbers(List<Integer> computerNumber, List<Integer> playerNumber) {
+        return computerNumber.equals(playerNumber);
+    }
+
+    private void calculateBallAndStrikeCount(List<Integer> computerNumber, List<Integer> playerNumber) {
+        for (int i = 0; i < playerNumber.size(); i++) {
+            if (isSameNumberExist(computerNumber, playerNumber.get(i))) {
+                if (isSamePosition(computerNumber.get(i), playerNumber.get(i))) {
+                    strikeCount++;
+                    continue;
+                }
+                ballCount++;
+            }
+        }
+    }
+
+    private boolean isSameNumberExist(List<Integer> computerNumber, Integer playerNumber) {
+        return computerNumber.contains(playerNumber);
+    }
+
+    private boolean isSamePosition(Integer computerNumber, Integer playerNumber) {
+        return computerNumber.equals(playerNumber);
+    }
+
+    private boolean isBallAndStrikeZero() {
+        return ballCount == 0 && strikeCount == 0;
     }
 }
