@@ -35,7 +35,7 @@ public class User {
     }
 
     private void checkUserNumSize(String userNum, int size) {
-        if (userNum.length() != size) {
+        if (userNum.length() != size || userNum.isBlank()) {
             throw new invaildInputLengthException();
         }
     }
