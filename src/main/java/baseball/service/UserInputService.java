@@ -11,7 +11,7 @@ public class UserInputService {
         return userInput;
     }
 
-    private void checkValidation(UserInput userInput){
+    public void checkValidation(UserInput userInput){
         checkInputLength(userInput);
         checkValidNumber(userInput);
         checkDuplicateNumber(userInput);

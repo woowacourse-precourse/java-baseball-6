@@ -36,7 +36,6 @@ public class GameController {
         }
         return GameState.CONTINUE;
     }
-
     private GameState promptForContinue(){
         InputView.continueGameMessage();
         UserInput userInput = userInputService.getUserInput();
@@ -44,7 +43,6 @@ public class GameController {
         if (userInput.getUserInput().equals("1"))
             return GameState.RESTART;
 
-        OutputView.gameEnd();
         return GameState.END;
 
     }
@@ -52,7 +50,9 @@ public class GameController {
         if (gameState == GameState.START)
             InputView.startGameMessage();
         InputView.requestInputMessage();
-        return userInputService.getUserInput();
+        UserInput userInput = userInputService.getUserInput();
+        userInputService.checkValidation(userInput);
+        return userInput;
     }
     private void promptForStrike(GameSystem gameSystem){
         if (gameSystem.getStrike() != 0 && gameSystem.getBallCount() == 0)
@@ -77,7 +77,7 @@ public class GameController {
     }
     private RandomNumber createNewRandomNumber(RandomNumber randomNumber, GameState gameState){
         if (gameState != GameState.CONTINUE)
-            return randomGeneratorService.createRandomNumber();
+            return randNum = randomGeneratorService.createRandomNumber();
         return randomNumber;
     }
     private GameSystem playBaseBallGame(UserInput userInput, RandomNumber randomNumber){

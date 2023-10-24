@@ -9,7 +9,7 @@ public class RandomGeneratorService {
         while(stringRandomNumber.length() < 3){
             stringRandomNumber = concatString(stringRandomNumber, Integer.toString(Randoms.pickNumberInRange(1, 9)));
         }
-
+        System.out.println(stringRandomNumber);
         return new RandomNumber(stringRandomNumber);
     }
 
