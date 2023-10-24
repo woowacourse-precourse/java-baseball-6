@@ -13,52 +13,64 @@ public class Application {
     // 먼저 숫자 야구 게임에 대한 메인 함수를 만들었습니다.
     public static void playNumberBaseballGame() {
         boolean isGameOver = false; //게임 종료를 판단하기 위한 변수. true: 게임 중, false:게임 종료
+        boolean play = true; //두번째 while문 탈출을 위해 만들어둔 변수
 
+        //맨 처음 환영 문구는 한번만 출력한다.
         System.out.println("숫자 야구 게임을 시작합니다.");
+        //게임을 종료하지 않는 한 계속 한다.
         while (!isGameOver) {
-            // 컴퓨터가 숫자 세자리를 가지고 있는 입장이므로, 그에 대한 리스트 생성
+            // 컴퓨터가 숫자 세자리를 가지고 있는 입장이므로, 게임을 시작할 때마다 그에 대한 리스트 생성
             int[] computerNumbers = generateRandomNumbers();
-            //System.out.println("숫자 야구 게임을 시작합니다.");
 
-            while (true) {
+            while(play) {
                 System.out.println("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
 
+                //사용자 입력에 대한 예외처리
                 if (!isValidInput(input)) { // 하단에 구현해두었습니다.
                     throw new IllegalArgumentException("잘못된 입력");
                 }
 
-                //사용자가 제시해나갈 숫자 3자리. 하단에 메소드 위치
+                //사용자가 제시해나갈 숫자 3자리를 숫자로 바꾸고
                 int[] userNumbers = convertInputToNumbers(input);
                 //결과판단. 하단에 메소드 위치
                 int[] result = calculateResult(computerNumbers, userNumbers);
 
                 //아래는 스트라이크, 볼, 낫싱에 대한 판단
-                if (result[0] > 0) {
-                    System.out.println(result[0] + "스트라이크");
-                }
-                if (result[1] > 0) {
-                    System.out.println(result[1] + "볼");
-                }
-                if (result[0] == 0 && result[1] == 0) {
-                    System.out.println("낫싱");
-                }
-                System.out.println();
-
+                //세 수 모두 스트라이크일 때
                 if (result[0] == 3) {
+                    System.out.println(result[0] + "스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    break;
+                    //play = false; //while 탈출
+                    break; //if 탈출
+                    //하단의 1, 2 입략을 받는 부분으로 이동
+                }
+
+                //스트라이크와 볼이 섞인 경우를 특별히 다뤄주자.
+                else if (result[0] > 0 && result[1] > 0) {
+                    System.out.println(result[1] + "볼" + " " + result[0] + " 스트라이크");
+                }
+                //볼밖에 없을 때
+                else if (result[1] > 0 && result[0] == 0) {
+                    System.out.println(result[1] + "볼");
+                }
+                //스트라이크밖에 없을 때
+                else if (result[0] > 0 && result[1] == 0) {
+                    System.out.println(result[0] + "스트라이크");
+                }
+                //낫싱인 경우
+                else if (result[2] == 3) {
+                    System.out.println("낫싱");
                 }
             }
 
-//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            //1 또는 2를 입력받음
             String playAgain = Console.readLine();
             if (playAgain.equals("2")) {
-                //System.out.println("게임 종료");
                 isGameOver = true;
             } else if (playAgain.equals("1")) {
-                isGameOver = false;
+                isGameOver = false; //다시 첫번째 while로 돌아감
             } else {
                 System.out.println("1 또는 2를 입력하세요.");
             }
