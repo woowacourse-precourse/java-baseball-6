@@ -2,7 +2,7 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class inputView {
+public class InputView {
     // 유저가 숫자를 입력합니다.
     public static String enterUserNumber() {
         System.out.println("숫자를 입력해주세요 : ");
