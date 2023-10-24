@@ -29,7 +29,6 @@ public class GameManager {
                     displayGameEnd();
                     break;
                 }
-
             }
 
             int choice = askForRestart();
