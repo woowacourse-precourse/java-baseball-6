@@ -23,7 +23,7 @@ public class GameService {
     private void play() {
         game.intiField();
         user.setUserNums(requestUserNumbers());
-        compare(game.getResult_arr(), user.getUserNums());
+        compare(game.getResult_arr(), user.getUserNums(), game);
     }
 
     public void playGame(int size, int startInclusive, int endInclusive) {
@@ -53,15 +53,10 @@ public class GameService {
     }
 
 
-    private void compare(int[] gameNumber, int[] userNumber) {
+    private void compare(int[] gameNumber, int[] userNumber, Game game) {
         for (int i = 0; i < gameNumber.length; i++) {
             for (int j = 0; j < userNumber.length; j++) {
-                if (compareUtils.isaStrike(gameNumber, userNumber, i, j)) {
-                    game.strikeCount();
-                }
-                if (compareUtils.isaBall(gameNumber, userNumber, i, j)) {
-                    game.ballCount();
-                }
+                compareUtils.validateResult(gameNumber, userNumber, i, j, game);
             }
         }
     }
