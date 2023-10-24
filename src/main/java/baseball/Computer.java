@@ -15,8 +15,10 @@ class Computer {
 
     public List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
+        // 자릿수를 채울 때까지 반복
         while (numbers.size() < numberOfDigits) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            // 생성된 숫자가 중복이 아닌 경우 추가
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
