@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.utils.Constant;
+import baseball.utils.Constant.*;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -42,7 +44,6 @@ class ApplicationTest extends NsTest {
         입력_받은_문자를_숫자_배열로_변환(inputString).forEach(System.out::println);
     }
 
-    @Test
     void 입력_받은_수의_에러_여부(String inputString) {
         char[] characters = inputString.toCharArray();
         Integer count = 0; //입력한 문자가 3자리 인지 확인하는 변수
@@ -92,13 +93,13 @@ class ApplicationTest extends NsTest {
         }
 
         if(strike == 0 && ball == 0) {
-            return "낫싱";
+            return BallCount.getBallCount(BallCount.NOTHING);
         } else if (strike == 0){
-            return ball + "볼";
+            return ball + BallCount.getBallCount(BallCount.BALL);
         } else if (ball == 0) {
-            return strike + "스트라이크";
+            return strike + BallCount.getBallCount(BallCount.STRIKE);
         } else {
-            return  ball + "볼" + " " + strike + "스트라이크";
+            return  ball + BallCount.getBallCount(BallCount.BALL) + " " + strike + BallCount.getBallCount(BallCount.STRIKE);
         }
     }
 
