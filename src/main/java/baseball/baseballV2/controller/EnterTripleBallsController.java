@@ -18,7 +18,6 @@ public class EnterTripleBallsController extends AbstractController {
 
     @Override
     void doProcess(Map<String, Object> model) {
-        model.put("inputNumberPath", "숫자를 입력해주세요");
         outputView.print(model);
         model.put("userTripleBalls", inputView.input(model));
     }

@@ -5,6 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public class GameResultOutputView implements OutputView {
+
+    public static final int BALL_INDEX = 0;
+    public static final int STRIKE_INDEX = 1;
+    public static final String BOTH_FORMAT = "%d%s %d%s\n";
+    public static final String BALL_FORMAT = "%d%s\n";
+    public static final String STRIKE_FORMAT = "%d%s\n";
+
     @Override
     public void print(Map<String, Object> model) {
         List<Integer> ballAndStrikeCounts = (List<Integer>) model.get("gameResult");
@@ -12,8 +19,8 @@ public class GameResultOutputView implements OutputView {
     }
 
     private void checkBallAndStrike(List<Integer> ballAndStrikeCounts) {
-        int ballCount = ballAndStrikeCounts.get(0);
-        int strikeCount = ballAndStrikeCounts.get(1);
+        int ballCount = ballAndStrikeCounts.get(BALL_INDEX);
+        int strikeCount = ballAndStrikeCounts.get(STRIKE_INDEX);
 
         if (ballCount > 0 && strikeCount > 0) {
             printBothBallAndStrike(ballCount, strikeCount);
@@ -38,15 +45,17 @@ public class GameResultOutputView implements OutputView {
     }
 
     private void printBothBallAndStrike(Integer ballCount, Integer strikeCount) {
-        System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
+        System.out.printf(BOTH_FORMAT, ballCount, Result.BALL.getDescription(),
+                strikeCount, Result.STRIKE.getDescription());
     }
 
-
     private void printOnlyBall(int ballCount) {
-        System.out.printf("%d볼\n", ballCount);
+        System.out.printf(BALL_FORMAT, ballCount,
+                Result.BALL.getDescription());
     }
 
     private void printOnlyStrike(int strikeCount) {
-        System.out.printf("%d스트라이크\n", strikeCount);
+        System.out.printf(STRIKE_FORMAT, strikeCount,
+                Result.STRIKE.getDescription());
     }
 }

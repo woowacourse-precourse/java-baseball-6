@@ -3,7 +3,7 @@ package baseball.baseballV2.view.outputview;
 import java.util.Map;
 
 public class ErrorMessageOutputView implements OutputView {
-    public static final String ERROR_MESSAGE_FORMAT = " %s | %s \n";
+    public static final String ERROR_MESSAGE_FORMAT = " %s %s \n";
     public static final String ERROR_PATH = "errorMessage";
 
     @Override

@@ -2,7 +2,6 @@ package baseball.baseballV2.controller;
 
 import baseball.baseballV2.model.TripleBalls;
 import baseball.baseballV2.view.outputview.OutputView;
-import java.util.List;
 import java.util.Map;
 
 public class GameResultController extends AbstractController {
@@ -17,8 +16,7 @@ public class GameResultController extends AbstractController {
     @Override
     void doProcess(Map<String, Object> model) {
         TripleBalls tripleBalls = (TripleBalls) model.get("userTripleBalls");
-        List<Integer> ballAndStrikeCounts = tripleBalls.compareTripleBallCondition(computerTripleBalls);
-        model.put("gameResult", ballAndStrikeCounts);
+        model.put("gameResult", tripleBalls.compareTripleBallCondition(computerTripleBalls));
 
         outputView.print(model);
     }

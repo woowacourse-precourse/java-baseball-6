@@ -21,7 +21,7 @@ public class BaseBallApplication {
     public static final String GAME_START_PATH = "gameStart";
     public static final String ENTER_TRIPLE_BALLS_PATH = "enterTripleBalls";
     public static final String GAME_RESULT_PATH = "gameResult";
-    public static final String GAME_RESTART = "gameRestart";
+    public static final String GAME_RESTART_PATH = "gameRestart";
 
     private final Map<String, Controller> controllerMap = new HashMap<>();
 
@@ -30,7 +30,7 @@ public class BaseBallApplication {
         controllerMap.put(ENTER_TRIPLE_BALLS_PATH, new EnterTripleBallsController(
                 new EnterTripleBallsOutputView(), new EnterTripleBallsInputView()
         ));
-        controllerMap.put(GAME_RESTART, new GameRestartController(new GameRestartOutputView(),
+        controllerMap.put(GAME_RESTART_PATH, new GameRestartController(new GameRestartOutputView(),
                 new GameRestartInputView()));
     }
 
@@ -69,7 +69,7 @@ public class BaseBallApplication {
     }
 
     private void getRestartChoice(Map<String, Object> model) {
-        controllerMap.get(GAME_RESTART).process(model);
+        controllerMap.get(GAME_RESTART_PATH).process(model);
     }
 
     private boolean hasThreeStrikes(Map<String, Object> model) {
