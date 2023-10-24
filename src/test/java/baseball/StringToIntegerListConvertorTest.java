@@ -16,7 +16,7 @@ public class StringToIntegerListConvertorTest {
     @ParameterizedTest
     @MethodSource("provideStringAndExpectedList")
     @DisplayName("문자열 숫자 리스트로 변환 검증")
-    void validationWrongValue(String value, List<Integer> expect) {
+    void convertStringListToIntListTest(String value, List<Integer> expect) {
         //when
         List<Integer> numbers = StringToIntegerListConvertor.convert(value);
 

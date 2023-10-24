@@ -23,7 +23,7 @@ public class BallIndexTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1, 4})
-    @DisplayName("옳은 인덱스 값 검증")
+    @DisplayName("잫못된 인덱스 값 검증")
     void validationWrongValue(int number) {
         //given
         BallIndexValidator ballIndexValidator = BallIndexValidator.getInstance();
