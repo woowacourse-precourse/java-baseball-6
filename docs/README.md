@@ -10,7 +10,7 @@
 
 #### 핵심 기능 클래스
 - ✅ StartGame.java : 게임시작
-- ✅ InputContrast.java : 입력데이터 비교
+- [x] InputContrast.java : 입력데이터 비교
 - [x] OutputResult.java : 결과값 출력
 - ✅ Counter.java : 스트라이크, 볼 카운팅
 - ✅ ExceptionResult.java : 예외처리
