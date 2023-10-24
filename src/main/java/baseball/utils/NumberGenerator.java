@@ -10,11 +10,13 @@ public class NumberGenerator {
 
     public List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
+        boolean[] checkUsedNumber = new boolean[MAX_NUMBER+1];
 
         while (numbers.size() < NUMBER_LENGTH) {
             int number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!numbers.contains(number)) {
+            if (!checkUsedNumber[number]) {
                 numbers.add(number);
+                checkUsedNumber[number] = true;
             }
         }
 
