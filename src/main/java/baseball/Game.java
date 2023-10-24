@@ -24,7 +24,7 @@ public class Game {
     }
 
     private void newGame() {
-        List<Integer> computer = NumberGenerator.generateUnique3DigitNum();
+        List<Integer> computer = NumberGenerator.generateUnique3DigitNumber();
         playGame(computer);
     }
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    public static List<Integer> generateUnique3DigitNum() {
+    public static List<Integer> generateUnique3DigitNumber() {
         List<Integer> list = new ArrayList<>();
         while (list.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
