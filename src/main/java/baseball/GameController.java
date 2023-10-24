@@ -4,20 +4,20 @@ import java.util.List;
 
 public class GameController {
 
-    private final GameStartController gameStartController;
+    private final GameStarter gameStarter;
     private final ComputerNumber computerNumber;
     private final Hint hint;
     private final UserInput userInput;
 
     GameController() {
-        this.gameStartController = new GameStartController();
+        this.gameStarter = new GameStarter();
         this.computerNumber = new ComputerNumber();
         this.hint = new Hint();
         this.userInput = new UserInput();
     }
 
     public void play() {
-        gameStartController.start();
+        gameStarter.start();
         List<Integer> computerNum = this.makeComputerNum();
         List<Integer> userNum;
         boolean isGameDone;
@@ -45,7 +45,7 @@ public class GameController {
     }
 
     private void restartOrEnd() {
-        boolean isRestart = gameStartController.restartOrEnd();
+        boolean isRestart = gameStarter.restartOrEnd();
         if (isRestart) {
             this.play();
         }
