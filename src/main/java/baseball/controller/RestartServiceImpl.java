@@ -1,6 +1,6 @@
-package baseball.member;
+package baseball.controller;
 
-public class RestartOption {
+public class RestartServiceImpl implements RestartService {
     private static final String DO_RESTART_OPTION = "1";
     private static final String DONT_RESTART_OPTION = "2";
 

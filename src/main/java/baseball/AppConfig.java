@@ -1,19 +1,19 @@
 package baseball;
 
 import baseball.controller.BaseballGameController;
-import baseball.controller.StrikeBallCountable;
-import baseball.controller.StrikeBallCountableImpl;
-import baseball.member.RestartOption;
+import baseball.controller.StrikeBallCountService;
+import baseball.controller.StrikeBallCountServiceImpl;
+import baseball.controller.RestartServiceImpl;
 
 public class AppConfig {
     public static BaseballGameController baseballGameController() {
         return new BaseballGameController(strikeBallCountable(), restartOption());
     }
-    private static StrikeBallCountable strikeBallCountable() {
-        return new StrikeBallCountableImpl();
+    private static StrikeBallCountService strikeBallCountable() {
+        return new StrikeBallCountServiceImpl();
     }
 
-    private static RestartOption restartOption() {
-        return new RestartOption();
+    private static RestartServiceImpl restartOption() {
+        return new RestartServiceImpl();
     }
 }

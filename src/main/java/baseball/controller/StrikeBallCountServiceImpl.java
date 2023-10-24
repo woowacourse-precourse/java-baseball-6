@@ -4,7 +4,7 @@ import baseball.member.ComputerNumbers;
 import baseball.member.PlayerNumbers;
 import baseball.view.OutputView;
 
-public class StrikeBallCountableImpl implements StrikeBallCountable {
+public class StrikeBallCountServiceImpl implements StrikeBallCountService {
     private int strike;
     private int ball;
 

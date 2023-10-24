@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.member.ComputerNumbers;
-import baseball.member.RestartOption;
 import baseball.member.PlayerNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,12 +9,12 @@ public class BaseballGameController {
     public static final int GAME_NUMBER_DIGIT = 3;
     private PlayerNumbers playerNumbers;
     private ComputerNumbers computerNumbers;
-    private final RestartOption restartOption;
-    private final StrikeBallCountable strikeBallCountable;
+    private final RestartServiceImpl restartServiceImpl;
+    private final StrikeBallCountService strikeBallCountService;
 
-    public BaseballGameController(StrikeBallCountable strikeBallCountable, RestartOption restartOption) {
-        this.strikeBallCountable = strikeBallCountable;
-        this.restartOption = restartOption;
+    public BaseballGameController(StrikeBallCountService strikeBallCountService, RestartServiceImpl restartServiceImpl) {
+        this.strikeBallCountService = strikeBallCountService;
+        this.restartServiceImpl = restartServiceImpl;
     }
 
     public void playBaseballGame() {
@@ -29,8 +28,8 @@ public class BaseballGameController {
         setComputerNumbers();
         do {
             inputPlayerNumbers();
-            strikeBallCountable.countStrikeAndBall(playerNumbers, computerNumbers);
-        } while (!strikeBallCountable.isGameClear());
+            strikeBallCountService.countStrikeAndBall(playerNumbers, computerNumbers);
+        } while (!strikeBallCountService.isGameClear());
     }
 
     private void setComputerNumbers() {
@@ -42,6 +41,6 @@ public class BaseballGameController {
     }
 
     private boolean wantsToRestartGame() {
-       return restartOption.chooseRestartOption(InputView.inputRestartOption());
+       return restartServiceImpl.chooseRestartOption(InputView.inputRestartOption());
     }
 }
