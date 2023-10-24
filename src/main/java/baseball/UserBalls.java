@@ -77,6 +77,11 @@ class UserBalls {
     }
   }
 
+  /**
+   * Returns true if all digits are different.
+   *
+   * @return true if all digits are different
+   */
   private static boolean areDigitsDifferent(String input) {
     Set<Character> charSet = new HashSet<>();
     for (char x : input.toCharArray()) {
@@ -85,6 +90,11 @@ class UserBalls {
     return charSet.size() == input.length();
   }
 
+  /**
+   * Returns true if input contains zero.
+   *
+   * @return true if input contains zero
+   */
   private static boolean containsZero(String input) {
     Set<Character> charSet = new HashSet<>();
     for (char x : input.toCharArray()) {
@@ -93,6 +103,11 @@ class UserBalls {
     return charSet.contains('0');
   }
 
+  /**
+   * Returns true input consists of Digits.
+   *
+   * @return true input consists of Digits
+   */
   private static boolean areAllNumbers(String input) {
     return input.chars().allMatch(Character::isDigit);
   }
