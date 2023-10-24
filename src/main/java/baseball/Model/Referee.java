@@ -10,25 +10,25 @@ public class Referee {
     int strike;
     int ball;
 
-    public Map<String,Integer> judge(Numbers userNumbers, Numbers computerNumbers) {
-        calculateStrikeAndBall(userNumbers, computerNumbers);
+    public Map<String,Integer> judge(Balls userBalls, Balls computerBalls) {
+        calculateStrikeAndBall(userBalls, computerBalls);
         return makeJudgement();
     }
 
-    private void calculateStrikeAndBall(Numbers userNumbers, Numbers computerNumbers) {
-        int ballAndStrike = countBallsAndStrikes(userNumbers, computerNumbers);
-        int strike = countStrikes(userNumbers, computerNumbers);
+    private void calculateStrikeAndBall(Balls userBalls, Balls computerBalls) {
+        int ballAndStrike = countBallsAndStrikes(userBalls, computerBalls);
+        int strike = countStrikes(userBalls, computerBalls);
 
         this.strike = strike;
         this.ball = ballAndStrike - strike;
     }
 
-    private int countBallsAndStrikes(Numbers userNumbers, Numbers computerNumbers) {
-        return userNumbers.countSameNumber(computerNumbers);
+    private int countBallsAndStrikes(Balls userBalls, Balls computerBalls) {
+        return userBalls.countSameNumber(computerBalls);
     }
 
-    private int countStrikes(Numbers userNumbers, Numbers computerNumbers) {
-        return userNumbers.countSameIndexAndNumber(computerNumbers);
+    private int countStrikes(Balls userBalls, Balls computerBalls) {
+        return userBalls.countSameIndexAndNumber(computerBalls);
     }
 
     private Map<String,Integer> makeJudgement() {

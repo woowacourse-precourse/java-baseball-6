@@ -10,8 +10,8 @@ import java.util.Map;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RefereeTest {
-    private Numbers userNumbers;
-    private Numbers computerNumbers;
+    private Balls userBalls;
+    private Balls computerBalls;
     private Referee referee;
 
     @BeforeEach
@@ -23,9 +23,9 @@ public class RefereeTest {
     @Test
     @DisplayName("판정 테스트")
     public void ballJudgeTest() {
-        userNumbers = new Numbers(List.of(1,2,3));
-        computerNumbers = new Numbers(List.of(1,3,4));
-        Map<String,Integer> judgement = referee.judge(userNumbers, computerNumbers);
+        userBalls = new Balls(List.of(1,2,3));
+        computerBalls = new Balls(List.of(1,3,4));
+        Map<String,Integer> judgement = referee.judge(userBalls, computerBalls);
 
         assertThat(judgement.get("ball")).isEqualTo(1);
         assertThat(judgement.get("strike")).isEqualTo(1);
@@ -34,9 +34,9 @@ public class RefereeTest {
     @Test
     @DisplayName("스트라이크 판정 테스트")
     public void strikeJudgeTest() {
-        userNumbers = new Numbers(List.of(1,2,3));
-        computerNumbers = new Numbers(List.of(1,2,3));
-        Map<String,Integer> judgement = referee.judge(userNumbers, computerNumbers);
+        userBalls = new Balls(List.of(1,2,3));
+        computerBalls = new Balls(List.of(1,2,3));
+        Map<String,Integer> judgement = referee.judge(userBalls, computerBalls);
 
         assertThat(judgement.get("ball")).isEqualTo(0);
         assertThat(judgement.get("strike")).isEqualTo(3);
@@ -45,9 +45,9 @@ public class RefereeTest {
     @Test
     @DisplayName("낫싱 테스트")
     public void nothingJudgeTest() {
-        userNumbers = new Numbers(List.of(1,2,3));
-        computerNumbers = new Numbers(List.of(4,5,6));
-        Map<String,Integer> judgement = referee.judge(userNumbers, computerNumbers);
+        userBalls = new Balls(List.of(1,2,3));
+        computerBalls = new Balls(List.of(4,5,6));
+        Map<String,Integer> judgement = referee.judge(userBalls, computerBalls);
 
         assertThat(judgement.get("ball")).isEqualTo(0);
         assertThat(judgement.get("strike")).isEqualTo(0);

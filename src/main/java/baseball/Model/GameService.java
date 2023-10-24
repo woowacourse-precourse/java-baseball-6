@@ -7,16 +7,16 @@ import java.util.Map;
 
 public class GameService {
 
-    Numbers computerNumbers;
+    Balls computerBalls;
 
     public void readyGame() {
-        computerNumbers = new Numbers(RandomNumberGenerator.generateRandomThreeNumber());
+        computerBalls = new Balls(RandomNumberGenerator.generateRandomThreeNumber());
     }
 
     public Map<String,Integer> playRound(List<Integer> inputNumbers) {
         Referee referee = new Referee();
-        Numbers userNumbers = new Numbers(inputNumbers);
+        Balls userBalls = new Balls(inputNumbers);
 
-        return referee.judge(userNumbers, computerNumbers);
+        return referee.judge(userBalls, computerBalls);
     }
 }
