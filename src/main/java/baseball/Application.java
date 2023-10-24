@@ -27,7 +27,7 @@ class Game {
             GameOutcome outcome = checkOutcome(computerNumber, userGuess);
             printOutcome(outcome);
 
-            if (outcome.strike == 3) {
+            if (outcome.isThreeStrikes()) {
                 if (askRestart()) {
                     computerNumber = generateComputerNumber();
                 } else {
@@ -113,6 +113,10 @@ class GameOutcome {
     public GameOutcome(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+    }
+
+    public boolean isThreeStrikes(){
+        return strike==3;
     }
 }
 
