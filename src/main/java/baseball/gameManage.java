@@ -50,10 +50,14 @@ public class gameManage implements gameManageInterface {
     public Integer judgeNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
         int strikeCount = 0;
         int ballCount = 0;
-        //strikeCount = strikeCount(playerNumber,computerNumber);
-        //ballCount = ballCount(playerNumber,computerNumber);
-        return 0;
+        strikeCount = strikeCount(playerNumber, computerNumber);
+        ballCount = ballCount(playerNumber, computerNumber);
+        //return numberMatch(strikeCount, ballCount);
     }
+
+    /*public Integer numberMatch(Integer strikeCount, Integer ballCount){
+
+    }*/
 
     public Integer strikeCount(List<Integer> playerNumber, List<Integer> computerNumber) {
         int strikeCount = 0;
