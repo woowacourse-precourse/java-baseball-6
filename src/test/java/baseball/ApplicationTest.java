@@ -51,6 +51,34 @@ class ApplicationTest extends NsTest {
     class 사용자가_숫자를_입력했을때 {
 
         @Test
+        @DisplayName("중간에 문자가 포함되어 있으면 예외를 반환한다")
+        void 중간에_문자가_포함되어_있으면_예외를_반환한다() {
+
+            // Given
+            String testNumber = "12a";
+            UserNumberValidator userNumberValidator = new UserNumberValidator();
+
+            // When & Then
+            Assertions.assertThatThrownBy(() -> userNumberValidator.validateNumericValue(testNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("숫자가 아닌 문자는 들어올 수 없습니다");
+        }
+
+        @Test
+        @DisplayName("1부터 9범위 밖의 숫자가 들어오면 예외를 반환한다")
+        void _1부터_9범위_밖의_숫자가_들어오면_예외를_반환한다() {
+
+            // Given
+            String testNumber = "120";
+            UserNumberValidator userNumberValidator = new UserNumberValidator();
+
+            // When & Then
+            Assertions.assertThatThrownBy(() -> userNumberValidator.validateNumberRange(testNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("1부터 9까지의 숫자만 입력할 수 있습니다");
+        }
+
+        @Test
         @DisplayName("3자리가 아니면 예외를 반환한다")
         void 사용자가_입력한_숫자가_3자리인지_체크한다() {
 

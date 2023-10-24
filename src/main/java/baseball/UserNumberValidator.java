@@ -11,6 +11,18 @@ public class UserNumberValidator {
         }
     }
 
+    public void validateNumberRange(String userNumber) {
+        for (char num : userNumber.toCharArray()) {
+            checkNumberRange(num - '0');
+        }
+    }
+
+    public void validateNumericValue(String userNumber) {
+        for (char num : userNumber.toCharArray()) {
+            checkNumericValue(num);
+        }
+    }
+
     public void validateDuplicatedNumber(String userNumber) {
         Set<Character> set = new HashSet<>();
         for (char digit : userNumber.toCharArray()) {
@@ -24,5 +36,17 @@ public class UserNumberValidator {
 
     private boolean isDuplicated(String userNumber, Set<Character> set) {
         return userNumber.length() != set.size();
+    }
+
+    private void checkNumberRange(int userNumber) {
+        if (userNumber < 1 || userNumber > 9) {
+            throw new IllegalArgumentException("1부터 9까지의 숫자만 입력할 수 있습니다");
+        }
+    }
+
+    private void checkNumericValue(char userNumber) {
+        if (Character.isDigit(userNumber)) {
+            throw new IllegalArgumentException("숫자가 아닌 문자는 들어올 수 없습니다");
+        }
     }
 }
