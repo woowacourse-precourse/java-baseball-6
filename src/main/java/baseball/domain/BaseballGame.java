@@ -1,22 +1,31 @@
-package baseball.game;
+package baseball.domain;
+
+import static baseball.constants.SystemMessage.GAME_CREATE_MESSAGE;
 
 import java.util.List;
 
 public class BaseballGame {
 
+    private static Computer computer;
+    private static User user;
+
     public BaseballGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printGameCreateMessage();
+    }
+
+    private static void printGameCreateMessage() {
+        System.out.println(GAME_CREATE_MESSAGE);
     }
 
     public void play() {
-        Computer computer = new Computer();
-        User user = new User();
+        computer = new Computer();
+        user = new User();
 
         boolean correctAnswer = false;
         boolean restart = false;
 
         List<Integer> computerNumber = computer.createComputerNumber();
-        while (true) {
+        do {
             List<Integer> userNumber = user.createUserNumber();
 
             List<Integer> comparedResult = computer.compareEachNumber(computerNumber, userNumber);
@@ -26,10 +35,7 @@ public class BaseballGame {
 
             correctAnswer = computer.checkAnswer(resultMessage);
 
-            if (correctAnswer) {
-                break;
-            }
-        }
+        } while (!correctAnswer);
 
         restart = computer.decideRestartOrExit();
         if (restart) {
