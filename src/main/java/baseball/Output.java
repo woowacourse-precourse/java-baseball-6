@@ -11,18 +11,19 @@ public class Output {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
-    public void printResult(int ball, int strike, int nothing) {
-        if (nothing > 0) {
+    public void printResult(int[] matchList) {
+        if (matchList[MatchState.NOTHING.getValue()] > 0) {
             System.out.println(NOTHING);
         }
-        else if (ball > 0 && strike > 0) {
-            System.out.println(ball + BALL + " " + strike + STRIKE);
+        else if (matchList[MatchState.BALL.getValue()] > 0 &&
+                matchList[MatchState.STRIKE.getValue()] > 0) {
+            System.out.println(matchList[0] + BALL + " " + matchList[1] + STRIKE);
         }
-        else if (ball > 0) {
-            System.out.println(ball + BALL);
+        else if (matchList[MatchState.BALL.getValue()] > 0) {
+            System.out.println(matchList[0] + BALL);
         }
-        else if (strike > 0) {
-            System.out.println(strike + STRIKE);
+        else if (matchList[MatchState.STRIKE.getValue()] > 0) {
+            System.out.println(matchList[1] + STRIKE);
         }
     }
 
@@ -30,15 +31,13 @@ public class Output {
         System.out.println(startMessage);
     }
 
-    public void printInputMessage() {
+    public void printInputMessage(String input) {
         System.out.print(inputMessage);
+        System.out.println(input);
     }
 
     public void printGameEndMessage() {
         System.out.println(gameEndMessage);
-    }
-
-    public void printGameRestartMessage() {
         System.out.println(gameRestartMessage);
     }
 }
