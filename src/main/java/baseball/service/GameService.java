@@ -14,7 +14,7 @@ public class GameService {
     private final String INPUT_END_GAME = "2";
 
     public void initGame() {
-        List<Integer> programNumbers = numberGenerator.generateNumbers();
+        List<Integer> programNumbers = numberGenerator.generateProgramNumbers();
         this.game = new Game(programNumbers);
         OutView.printStartGame();
     }

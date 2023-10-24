@@ -8,7 +8,7 @@ public class NumberGenerator {
     private final int MAX_NUMBER = 9;
     private final int NUMBER_LENGTH = 3;
 
-    public List<Integer> generateNumbers() {
+    public List<Integer> generateProgramNumbers() {
         List<Integer> numbers = new ArrayList<>();
         boolean[] checkUsedNumber = new boolean[MAX_NUMBER+1];
 
