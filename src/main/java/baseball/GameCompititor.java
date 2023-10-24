@@ -1,13 +1,19 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameCompititor {
-    private StringBuffer CompititorNumber = new StringBuffer();
-    public String generateRandomNumber(){
-        for (int i = 0; i < 3; i++){
-            int num = Randoms.pickNumberInRange(1, 9);
-            CompititorNumber = CompititorNumber.append(num);
+    private List<Integer> CompititorNumber = new ArrayList<>();
+    public List<Integer> generateRandomNumber(){
+        while (CompititorNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!CompititorNumber.contains(randomNumber)) {
+                CompititorNumber.add(randomNumber);
+            }
         }
         System.out.println(CompititorNumber);
-        return CompititorNumber.toString();
+        return CompititorNumber;
     }
 }
