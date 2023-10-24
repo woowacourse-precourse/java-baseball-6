@@ -42,6 +42,18 @@ public class Application {
         return sum;
     }
 
+    public static int[] inputParsingToIntArray(String input) {
+        int[] intArray = new int[input.length()];
+
+        for(int i = 0; i < input.length(); i++){
+            intArray[i] = Integer.parseInt(String.valueOf(input.charAt(i)));
+        }
+
+        return intArray;
+    }
+
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
