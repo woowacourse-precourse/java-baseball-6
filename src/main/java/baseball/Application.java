@@ -51,14 +51,14 @@ public class Application {
             printHint();
 
             if (isAnswer()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(digitNumber + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
     }
 
     private static void inputComputer() {
-        while (computer.size() < 3) {
+        while (computer.size() < digitNumber) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
