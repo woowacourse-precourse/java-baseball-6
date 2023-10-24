@@ -4,6 +4,7 @@ import static baseball.baseballV2.system.util.Util.StringToCharList;
 
 import baseball.baseballV2.model.Ball;
 import baseball.baseballV2.model.TripleBalls;
+import baseball.baseballV2.system.util.Util;
 import baseball.baseballV2.system.validator.TripleBallsValidator;
 import java.util.Arrays;
 import java.util.List;
@@ -12,13 +13,18 @@ public class InputToTripleBallsConverter {
     public static TripleBalls convert(String input) throws IllegalArgumentException {
         new TripleBallsValidator(input);
         List<Character> charList = StringToCharList(input);
+        int digit = Util.FIRST_DIGIT;
 
         return new TripleBalls(
-                Arrays.asList(
-                        new Ball(0, charToInteger(charList.get(0))),
-                        new Ball(1, charToInteger(charList.get(1))),
-                        new Ball(2, charToInteger(charList.get(2)))
-                )
+                getTripleBallsWithConverter(charList, digit)
+        );
+    }
+
+    private static List<Ball> getTripleBallsWithConverter(List<Character> charList, int digit) {
+        return Arrays.asList(
+                new Ball(digit, charToInteger(charList.get(digit++))),
+                new Ball(digit, charToInteger(charList.get(digit++))),
+                new Ball(digit, charToInteger(charList.get(digit)))
         );
     }
 

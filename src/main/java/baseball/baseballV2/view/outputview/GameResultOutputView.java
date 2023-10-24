@@ -1,5 +1,7 @@
 package baseball.baseballV2.view.outputview;
 
+import static baseball.baseballV2.system.util.Util.GAME_RESULT_PATH;
+
 import baseball.baseballV2.model.Result;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +16,7 @@ public class GameResultOutputView implements OutputView {
 
     @Override
     public void print(Map<String, Object> model) {
-        List<Integer> ballAndStrikeCounts = (List<Integer>) model.get("gameResult");
+        List<Integer> ballAndStrikeCounts = (List<Integer>) model.get(GAME_RESULT_PATH);
         checkBallAndStrike(ballAndStrikeCounts);
     }
 

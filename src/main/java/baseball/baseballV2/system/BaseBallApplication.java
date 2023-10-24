@@ -1,5 +1,8 @@
 package baseball.baseballV2.system;
 
+import static baseball.baseballV2.system.util.Util.GAME_RESTART_CHOICE_KEY;
+import static baseball.baseballV2.system.util.Util.GAME_RESULT_PATH;
+
 import baseball.baseballV2.controller.Controller;
 import baseball.baseballV2.controller.EnterTripleBallsController;
 import baseball.baseballV2.controller.GameRestartController;
@@ -20,8 +23,9 @@ import java.util.Map;
 public class BaseBallApplication {
     public static final String GAME_START_PATH = "gameStart";
     public static final String ENTER_TRIPLE_BALLS_PATH = "enterTripleBalls";
-    public static final String GAME_RESULT_PATH = "gameResult";
     public static final String GAME_RESTART_PATH = "gameRestart";
+
+    public static final String GAME_RESTART_VALUE = "1";
 
     private final Map<String, Controller> controllerMap = new HashMap<>();
 
@@ -47,7 +51,7 @@ public class BaseBallApplication {
             controllerMap.put(GAME_RESULT_PATH, new GameResultController(new GameResultOutputView(),
                     RandomTripleBallsGenerator.generate()));
             playGame(model);
-            restartChoice = (String) model.get("restartChoice");
+            restartChoice = (String) model.get(GAME_RESTART_CHOICE_KEY);
         } while (isRestart(restartChoice));
 
     }
@@ -62,7 +66,7 @@ public class BaseBallApplication {
     }
 
     private boolean isRestart(String restartChoice) {
-        if (restartChoice.equals("1")) {
+        if (restartChoice.equals(GAME_RESTART_VALUE)) {
             return true;
         }
         return false;
@@ -73,7 +77,7 @@ public class BaseBallApplication {
     }
 
     private boolean hasThreeStrikes(Map<String, Object> model) {
-        List<Integer> ballAndStrikeCounts = (List<Integer>) model.get("gameResult");
+        List<Integer> ballAndStrikeCounts = (List<Integer>) model.get(GAME_RESULT_PATH);
         return ballAndStrikeCounts.stream()
                 .skip(1)
                 .allMatch(strikeCount -> strikeCount == 3);

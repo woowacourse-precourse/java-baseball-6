@@ -1,6 +1,7 @@
 package baseball.baseballV2.controller;
 
 import baseball.baseballV2.model.TripleBalls;
+import baseball.baseballV2.system.util.Util;
 import baseball.baseballV2.view.inputview.InputView;
 import baseball.baseballV2.view.outputview.OutputView;
 import java.util.Map;
@@ -19,6 +20,6 @@ public class EnterTripleBallsController extends AbstractController {
     @Override
     void doProcess(Map<String, Object> model) {
         outputView.print(model);
-        model.put("userTripleBalls", inputView.input(model));
+        model.put(Util.USER_TRIPLE_BALLS_KEY, inputView.input(model));
     }
 }

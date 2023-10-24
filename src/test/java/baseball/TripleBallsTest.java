@@ -16,8 +16,9 @@ public class TripleBallsTest {
     @BeforeEach
     void setUp() {
         game = new Game();
-        computerTripleBalls = new TripleBalls(Arrays.asList(new Ball(1, 1),
-                new Ball(2, 2), new Ball(3, 3)));
+        int digit = 1;
+        computerTripleBalls = new TripleBalls(Arrays.asList(new Ball(digit++, 1),
+                new Ball(digit++, 2), new Ball(digit, 3)));
     }
 
     @Test
