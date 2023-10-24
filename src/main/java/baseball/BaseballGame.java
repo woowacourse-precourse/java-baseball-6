@@ -12,14 +12,10 @@ public class BaseballGame {
     private static BaseballGame baseballGame = null;
     private final InputView inputView;
     private final OutputView outputView;
-    private final PlayerManager playerManager;
-    private final Referee referee;
 
     private BaseballGame() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.playerManager = new PlayerManager();
-        this.referee = new Referee();
     }
 
     public static BaseballGame getInstance() {
@@ -68,11 +64,15 @@ public class BaseballGame {
         inputView.playerNumber();
         String inputPlayerNumbers = inputView.readLine();
 
-        PlayerNumbers playerNumbers = playerManager.getPlayerNumbers(inputPlayerNumbers);
+        PlayerNumbers playerNumbers = PlayerNumbers.of(inputPlayerNumbers);
 
-        referee.calculateScore(answer, playerNumbers);
+        calculateScore(answer, playerNumbers);
 
         outputView.writeMessage(Score.getResultMessage());
+    }
+
+    private void calculateScore(Answer answer, PlayerNumbers playerNumbers) {
+        
     }
 
     private Answer initializeAnswer() {
