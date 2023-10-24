@@ -42,9 +42,9 @@ public class BaseBallGame {
 
             }
 
-            int option = inputRestartOrEnd();
+            boolean isEnd = inputRestartOrEnd();
 
-            if (option == 2) {
+            if (isEnd) {
                 break;
             }
 
@@ -184,9 +184,9 @@ public class BaseBallGame {
     /**
      * 재시작 여부 입력 및 예외 처리
      *
-     * @return int 타입으로 변환된 입력값
+     * @return 1(재시작) : false, 2(끝내기) : true
      */
-    private int inputRestartOrEnd() {
+    private boolean inputRestartOrEnd() {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -201,7 +201,7 @@ public class BaseBallGame {
             throw new IllegalArgumentException("유효하지 않는 옵션 번호 입니다.");
         }
 
-        return input;
+        return input != 1;
 
     }
 
