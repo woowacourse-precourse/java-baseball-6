@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class NumbersValidate {
     public static void gameInputValidateCheck(List<Integer> givenNumbers){
-        if(isCorrectSize(givenNumbers) || isCorrectSize(givenNumbers) || isNumberInRange(givenNumbers)){
+        if(isCorrectSize(givenNumbers) && isCorrectSize(givenNumbers) && isNumberInRange(givenNumbers)){
             return;
         }
         throw new IllegalArgumentException("violateRule");
