@@ -4,7 +4,6 @@ import baseball.domain.Computer;
 import baseball.validation.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,15 +41,23 @@ public class ComputerController {
         int strike = strikeCheck(playerNumbers, computerNumbers);
         int ball = ballCheck(playerNumbers, computerNumbers);
 
+        print_hint(strike, ball);
+    }
+
+    private void print_hint(int strike, int ball) {
         if (strike != 0 && ball != 0) {
             outputView.print_strike_and_ball(ball, strike);
-        } else if (strike != 0 && ball == 0) {
-            outputView.print_strike(strike);
-        } else if (strike == 0 && ball != 0) {
-            outputView.print_ball(ball);
-        } else {
-            outputView.print_nothing();
+            return;
         }
+        if (strike != 0 && ball == 0) {
+            outputView.print_strike(strike);
+            return;
+        }
+        if (strike == 0 && ball != 0) {
+            outputView.print_ball(ball);
+            return;
+        }
+        outputView.print_nothing();
     }
 
     private int ballCheck(List<Integer> playerNumbers, List<Integer> computerNumbers) {
