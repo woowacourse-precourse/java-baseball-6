@@ -22,7 +22,7 @@
   - [x] 화면을 관리하는 `SceneManager` 객체 작성
   - [x] 화면을 생성해주는 `SceneFactory` 객체 작성
 - [ ] 게임 도메인 작성
-  - [ ] 게임 전반적인 흐름을 제어하는 `GameManager` 작성
+  - [x] 게임 전반적인 흐름을 제어하는 `GameManager` 작성
   - [ ] 게임 결과 값을 담는 `BallAndStrike` 작성
   - [ ] 게임 결과를 계산하는 `BaseBallResult` 객체 작성
 - [ ] 게임 규칙 도메인 작성
