@@ -4,6 +4,9 @@ import baseball.model.number.PlayNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static baseball.ExceptionMessage.PLAY_NUMBER_DUPLICATE_EXCEPTION;
+import static baseball.ExceptionMessage.PLAY_NUMBER_LENGTH_EXCEPTION;
+import static baseball.ExceptionMessage.PLAY_NUMBER_VALUE_EXCEPTION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PlayNumberTest {
@@ -15,7 +18,7 @@ public class PlayNumberTest {
             PlayNumber playNumber = PlayNumber.from("1234");
         });
         // then
-        assertThat(exception.getMessage()).isEqualTo("길이는 3이어야 합니다.");
+        assertThat(exception.getMessage()).isEqualTo(PLAY_NUMBER_LENGTH_EXCEPTION.toString());
     }
 
     @Test
@@ -25,7 +28,7 @@ public class PlayNumberTest {
             PlayNumber playNumber = PlayNumber.from("12a");
         });
         // then
-        assertThat(exception.getMessage()).isEqualTo("1 ~ 9 사이의 값이어야만 합니다.");
+        assertThat(exception.getMessage()).isEqualTo(PLAY_NUMBER_VALUE_EXCEPTION.toString());
     }
 
     @Test
@@ -35,7 +38,7 @@ public class PlayNumberTest {
             PlayNumber playNumber = PlayNumber.from("111");
         });
         // then
-        assertThat(exception.getMessage()).isEqualTo("숫자들이 중복되면 안 됩니다.");
+        assertThat(exception.getMessage()).isEqualTo(PLAY_NUMBER_DUPLICATE_EXCEPTION.toString());
     }
 
     @Test

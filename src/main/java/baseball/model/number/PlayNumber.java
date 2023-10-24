@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import static baseball.Constant.PLAY_NUMBER_DIGIT;
+import static baseball.ExceptionMessage.PLAY_NUMBER_DUPLICATE_EXCEPTION;
+import static baseball.ExceptionMessage.PLAY_NUMBER_LENGTH_EXCEPTION;
+import static baseball.ExceptionMessage.PLAY_NUMBER_VALUE_EXCEPTION;
 
 public class PlayNumber {
 
@@ -27,13 +30,13 @@ public class PlayNumber {
 
     private void validateNumberValue(final String number) {
         if (!number.matches("^[1-9]+$")) {
-            throw new IllegalArgumentException("1 ~ 9 사이의 값이어야만 합니다.");
+            throw new IllegalArgumentException(PLAY_NUMBER_VALUE_EXCEPTION.toString());
         }
     }
 
     private void validateDigitLength(final String number) {
         if (number.length() != PLAY_NUMBER_DIGIT.getValue()) {
-            throw new IllegalArgumentException("길이는 3이어야 합니다.");
+            throw new IllegalArgumentException(PLAY_NUMBER_LENGTH_EXCEPTION.toString());
         }
     }
 
@@ -41,7 +44,7 @@ public class PlayNumber {
         List<String> splitNumbers = List.of(number.split(""));
         Set<String> numberSet = new HashSet<>(splitNumbers);
         if (numberSet.size() != splitNumbers.size()) {
-            throw new IllegalArgumentException("숫자들이 중복되면 안 됩니다.");
+            throw new IllegalArgumentException(PLAY_NUMBER_DUPLICATE_EXCEPTION.toString());
         }
     }
 

@@ -2,12 +2,11 @@ package baseball.model.number;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.Constant.END_NUMBER;
 import static baseball.Constant.PLAY_NUMBER_DIGIT;
+import static baseball.Constant.START_NUMBER;
 
 public class RandomNumber {
-
-    private static final int START_NUMBER = 1;
-    private static final int END_NUMBER = 9;
 
     private RandomNumber() {
     }
@@ -28,7 +27,7 @@ public class RandomNumber {
     }
 
     private static void saveNewNumber(final StringBuilder numberBuilder) {
-        int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+        int randomNumber = Randoms.pickNumberInRange(START_NUMBER.getValue(), END_NUMBER.getValue());
         String randomValue = String.valueOf(randomNumber);
         String pickedNumber = numberBuilder.toString();
 
