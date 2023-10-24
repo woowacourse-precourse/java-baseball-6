@@ -3,12 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Game {
     int ball, strike;
-
     public List<Integer> makeRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -64,21 +62,32 @@ public class Game {
             return true;
         }
     }
+
+    public boolean checkUserInput(String input){
+        if(input.length()==3){
+            return true;
+        }
+        return false;
+    }
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
-        while(true) {
+
+        while(true){
             List<Integer> number = makeRandomNumber();
 
-            while (true) {
+            while(true){
                 ball = 0;
                 strike = 0;
 
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
 
+                if(!checkUserInput(input)) {
+                    throw new IllegalArgumentException("세 개의 서로 다른 숫자를 입력해주세요.");
+                }
+
                 List<Integer> inputList = new ArrayList<>();
-                for (char i : input.toCharArray()) {
+                for(char i:input.toCharArray()){
                     inputList.add(Character.getNumericValue(i));
                 }
 
@@ -96,6 +105,5 @@ public class Game {
             }
         }
         System.out.println("게임 종료");
-
     }
 }
