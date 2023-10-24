@@ -8,11 +8,7 @@ public class Application {
 
         // 게임 시작
         BaseballGame baseballGame = new BaseballGame(baseballView, baseballComputer, baseballUmpire);
-        try {
-            baseballView.outputGameStart();
-            baseballGame.start();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("1~9 사이의 서로 다른 세 개의 숫자를 공백없이 입력해주세요.");
-        }
+        baseballView.outputGameStart();
+        baseballGame.start();
     }
 }

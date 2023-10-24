@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 /* input, output 화면(메세지) 출력 */
 public class BaseballView {
+    public static final String INPUT_CORRECT_FORM_OF_NUMBER = "1~9 사이의 서로 다른 세 개의 숫자를 공백없이 입력해주세요.";
+
     // 게임 시작 메세지
     public void outputGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -49,7 +51,35 @@ public class BaseballView {
     // 유저 숫자 입력
     public String inputUserNumber() {
         outputUserNumber();
-        return Console.readLine();
+        String readLine = Console.readLine();
+        checkInputValidNumber(readLine);
+        return readLine;
+    }
+
+    private void checkInputValidNumber(String readLine) {
+        isCorrectLength(readLine);
+        isExistChar(readLine);
+        isExistRepeatedNumber(readLine);
+    }
+
+    private void isExistChar(String readLine) {
+        for (int i = 0; i < readLine.length(); i++) {
+            if (readLine.charAt(i) < 48 || readLine.charAt(i) > 57) {
+                throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
+            }
+        }
+    }
+
+    private void isCorrectLength(String readLine) {
+        if (readLine.length() != 3) {
+            throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
+        }
+    }
+
+    private void isExistRepeatedNumber(String readLine) {
+        if (readLine.length() != 3) {
+            throw new IllegalArgumentException(INPUT_CORRECT_FORM_OF_NUMBER);
+        }
     }
 
     // 게임 재시작 혹은 종료 선택 입력
