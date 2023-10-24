@@ -9,10 +9,15 @@ public class Application {
         while (true) {
             baseball_game();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int input_num = Integer.parseInt(Console.readLine());
-            if (input_num == 2) {
+            String input_num = Console.readLine();
+            try {
+                Integer.parseInt(input_num);
+            } catch (IllegalArgumentException e) {
+                System.exit(0);
+            }
+            if (Integer.parseInt(input_num) == 2) {
                 break;
-            } else if (input_num == 1) {
+            } else if (Integer.parseInt(input_num) == 1) {
 
             } else throw new IllegalArgumentException();
         }
@@ -41,11 +46,12 @@ public class Application {
                 if (set_lst_exp_num.size() != 3) {
                     throw new IllegalArgumentException();
                 }
+
                 int exp_num = Integer.parseInt(exp_num_str);
-            } catch (IllegalArgumentException e) {
-//                System.out.println(e.getClass().getName());
+            } catch (Exception e) {
+//                System.out.println(e.getCl®ass().getName());
 //                System.out.println(e.getMessage());
-                System.exit(0);
+                throw new IllegalArgumentException();
             }
 
             int[] cnt_lst = {0, 0}; // ball, strike
