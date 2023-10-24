@@ -8,8 +8,13 @@ public class Application {
 
         while(mode == 1) {
             Baseball baseball = new Baseball();
-            baseball.play();
-            mode = inputMode();
+            try {
+                baseball.play();
+                mode = inputMode();
+            }catch (IllegalArgumentException e){
+                e.printStackTrace();
+                break;
+            }
         }
     }
 
