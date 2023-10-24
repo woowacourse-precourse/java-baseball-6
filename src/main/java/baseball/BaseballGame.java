@@ -36,11 +36,11 @@ public class BaseballGame {
         boolean isThreeStrike = false;
 
         while (!isThreeStrike) {
-            baseballGameView.printInputGuideMessage();
+            String playerNumbers = baseballGameView.getPlayerNumbers();
 
             BallCount ballCount = baseballGameLogic.checkBallCount(
                     randomThreeDigits,
-                    changeStringToDigit(inputThreeDigits())
+                    changeStringToDigit(playerNumbers)
             );
 
             baseballGameView.printBallCount(ballCount);
@@ -62,43 +62,6 @@ public class BaseballGame {
         }
 
         return digitList;
-    }
-
-    private String inputThreeDigits() {
-        String threeDigitsInput = Console.readLine();
-        validatePlayerGameNumber(threeDigitsInput);
-        return threeDigitsInput;
-    }
-
-    private void validatePlayerGameNumber(String input) {
-        validateThreeDigits(input);
-        validateContainsZero(input);
-        validateUniqueDigits(input);
-    }
-
-    private void validateThreeDigits(String input) {
-        if (!input.matches("\\d{3}")) {
-            throw new IllegalArgumentException(REQUIRED_THREE_DIGITS);
-        }
-    }
-
-    private void validateUniqueDigits(String input) {
-        int length = input.length();
-
-        for (int i = 0; i < length - 1; i++) {
-            char currentDigit = input.charAt(i);
-            for (int j = i + 1; j < length; j++) {
-                if (currentDigit == input.charAt(j)) {
-                    throw new IllegalArgumentException(REQUIRED_UNIQUE_DIGITS); // 중복된 숫자가 존재
-                }
-            }
-        }
-    }
-
-    private void validateContainsZero(String input) {
-        if (input.contains("0")) {
-            throw new IllegalArgumentException(CONTAINS_ZERO_DIGITS);
-        }
     }
 
     private boolean inputRestartOrQuit() {
