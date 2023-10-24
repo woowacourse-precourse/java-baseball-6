@@ -56,10 +56,11 @@ public class Application {
                 int ball = 0;
 
                 for (int i = 0; i < 3; i++) {
-                    if (user.contains(computer.get(i))) {
-                        if (user.indexOf(computer.get(i)) == i) {
+                    int targetNum = computer.get(i);
+                    if (user.contains(targetNum)) {
+                        if (user.indexOf(targetNum) == i) {
                             strike++;
-                        } else if(user.indexOf(computer.get(i)) != i) {
+                        } else if(user.indexOf(targetNum) != i) {
                             ball++;
                         }
                     }
