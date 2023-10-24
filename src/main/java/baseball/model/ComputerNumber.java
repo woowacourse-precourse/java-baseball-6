@@ -14,6 +14,16 @@ public class ComputerNumber {
         }
     }
 
+    public ComputerNumber(String strComputer) {
+        for (int i = 0; i < strComputer.length(); i++) {
+            char c = strComputer.charAt(i);
+            if (Character.isDigit(c)) {
+                int digit = Character.getNumericValue(c);
+                computerNumber.add(digit);
+            }
+        }
+    }
+
     // 컴퓨터 번호를 랜덤으로 생성해주는 함수
     private void generateRandomNumber(List<Integer> computerNumber) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
