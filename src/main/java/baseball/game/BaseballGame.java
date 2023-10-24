@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.game.message.BaseballGameMessage;
 import baseball.io.Input;
 import baseball.io.Output;
 import java.util.Objects;
@@ -8,11 +9,6 @@ import java.util.Set;
 public class BaseballGame {
 
     // TODO : 과도한 상수 사용 -> enum으로 교체 (메시지는 특히나)
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String MUST_INPUT_RESTARTS_MESSAGE = "1 또는 2를 입력해야 합니다.";
-
-    public static final String GAME_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final Integer GAME_RESTART = 1;
     private static final Integer GAME_FINISH = 2;
     private static final Set<Integer> INPUT_RESTARTS = Set.of(GAME_RESTART, GAME_FINISH);
@@ -32,20 +28,20 @@ public class BaseballGame {
     }
 
     private void announceGameStart() {
-        Output.consoleLine(GAME_START_MESSAGE);
+        Output.consoleLine(BaseballGameMessage.GAME_START_MESSAGE.get());
     }
 
     private void announceWin() {
-        Output.consoleLine(GAME_WIN_MESSAGE);
+        Output.consoleLine(BaseballGameMessage.GAME_WIN_MESSAGE.get());
     }
 
     // TODO : 과도한 상수 사용 -> enum으로 교체
     private void askRestart() {
-        Output.consoleLine(GAME_RESTART_MESSAGE);
+        Output.consoleLine(BaseballGameMessage.GAME_RESTART_MESSAGE.get());
         Integer inputRestart = Input.consoleNumber();
 
         if (!INPUT_RESTARTS.contains(inputRestart)) {
-            throw new IllegalArgumentException(MUST_INPUT_RESTARTS_MESSAGE);
+            throw new IllegalArgumentException(BaseballGameMessage.MUST_INPUT_RESTARTS_MESSAGE.get());
         }
 
         if (Objects.equals(inputRestart, GAME_FINISH)) {
