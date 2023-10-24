@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -7,47 +8,25 @@ import java.util.List;
 
 public class Game {
 
+    private View view;
     private List<Integer> computerNumberList;
     private Score score;
 
-    public Game(){
+    public Game(View view){
         this.computerNumberList = Computer.getNumber();
         this.score = new Score();
+        this.view = view;
     }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        view.printGameStartMessage();
         while (score.isOut()){
             List<Integer> numberList = input();
             checkNumber(numberList);
-            printResult();
+            view.printGameResultMessage(score);
         }
+        view.printGameEndMessage();
     }
-
-    private void printResult() {
-        String printString = "";
-        int strikeCount = score.getStrikeCount();
-        int ballCount = score.getBallCount();
-
-        if (ballCount > 0) {
-            printString = printString + ballCount +"볼";
-        }
-
-        if ((strikeCount > 0) && (ballCount > 0)){
-            printString = printString + " ";
-        }
-
-        if (strikeCount != 0) {
-            printString = printString + strikeCount + "스트라이크";
-        }
-
-        if ((strikeCount == 0) && (ballCount == 0)) {
-            printString = "낫싱";
-        }
-        System.out.println(printString);
-    }
-
-
     private void checkNumber(List<Integer> numberList) {
         int strikeCount = 0;
         int ballCount = 0;
@@ -66,7 +45,7 @@ public class Game {
     }
 
     private List<Integer> input(){
-        System.out.print("숫자를 입력해주세요 : ");
+        view.printInputMessage();
         String stringNumber = Console.readLine();
         if (!validation(stringNumber)) {
             throw new IllegalArgumentException();
