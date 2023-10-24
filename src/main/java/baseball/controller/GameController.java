@@ -18,7 +18,7 @@ public class GameController {
     }
 
 
-    public boolean checkGameResult(){
+    public boolean checkIfRoundEnd(){
         List<Integer> result = GameService.compareNumberFormat(computerNumber, userNumber);
         printResultMessage(result.get(0), result.get(1));
         return (result.get(0) == NumberFormat.DIGIT_CONSTRAINT) ? true : false;
