@@ -28,7 +28,6 @@ public class BaseballGame {
         if (setGame()) {
             run();
         } else {
-            return;
         }
 
 
@@ -40,7 +39,7 @@ public class BaseballGame {
         if (strike == 3) {
             isStrikeCount(strike);
             System.out.println();
-            gameView.printCorrectNumber();
+            GameView.printCorrectNumber();
             return true;
         } else if (ball == 0 && strike == 0) {
             GameView.printNothingNumber();
