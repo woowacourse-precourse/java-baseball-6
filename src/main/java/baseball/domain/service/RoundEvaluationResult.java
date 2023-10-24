@@ -1,7 +1,6 @@
 package baseball.domain.service;
 
 import baseball.domain.model.GameStatus;
-import java.security.PublicKey;
 import java.util.Objects;
 
 public class RoundEvaluationResult {
@@ -23,7 +22,7 @@ public class RoundEvaluationResult {
     }
 
     public boolean isExit() {
-        return gameStatus != GameStatus.EXIT;
+        return gameStatus == GameStatus.EXIT;
     }
 
     public void eveluateRestart(String readRestartResponseInput) {

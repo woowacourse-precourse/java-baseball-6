@@ -27,7 +27,7 @@ public class NumberBaseballGameController {
             if (result.isgameOver()) {
                 handleGameOver(result);
             }
-        } while (result.isExit());
+        } while (!result.isExit());
     }
 
     private RoundEvaluationResult playRound() {
