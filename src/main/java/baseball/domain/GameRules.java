@@ -3,29 +3,22 @@ package baseball.domain;
 import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class GameRules {
     private GameRules() {
     }
 
     public static int countBall(List<Integer> userNumber, List<Integer> computerNumber) {
-        int ball = 0;
-        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            if (computerNumber.contains(userNumber.get(i))) {
-                ball++;
-            }
-        }
-        return ball;
+        return (int) userNumber.stream()
+                .filter(computerNumber::contains)
+                .count();
     }
 
     public static int countStrike(List<Integer> userNumber, List<Integer> computerNumber) {
-        int strike = 0;
-        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            if (computerNumber.get(i).equals(userNumber.get(i))) {
-                strike++;
-            }
-        }
-        return strike;
+        return (int) IntStream.range(0, MAX_NUMBER_LENGTH)
+                .filter(i -> userNumber.get(i).equals(computerNumber.get(i)))
+                .count();
     }
 
     public static boolean isUserWin(int strike) {
