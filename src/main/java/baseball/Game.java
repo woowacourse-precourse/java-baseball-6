@@ -10,6 +10,7 @@ public class Game {
     private static final int NUMBER_SIZE = 3;
 
     private List<Integer> target;
+
     public Game() {
         setNewTarget();
     }
@@ -54,7 +55,9 @@ public class Game {
         }
         return userInput;
     }
+
     // TODO: refactor
+    //
     // Change in the implementation guide
     private int[] compareUserInput(int[] userInput) {
         int[] ret = new int[]{0, 0};
@@ -75,5 +78,4 @@ public class Game {
     public int getNumberSize() {
         return NUMBER_SIZE;
     }
-
 }
