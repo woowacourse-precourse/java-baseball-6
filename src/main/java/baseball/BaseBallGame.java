@@ -29,21 +29,17 @@ public class BaseBallGame {
             System.out.println(computer);
 
             while (true) {
-
                 List<Integer> input = inputNumber();
 
                 int[] result = compareAnswerInput(computer, input);
 
                 boolean isAns = printResult(result);
-
                 if (isAns) {
                     break;
                 }
-
             }
 
             boolean isEnd = inputRestartOrEnd();
-
             if (isEnd) {
                 break;
             }
@@ -90,7 +86,7 @@ public class BaseBallGame {
     /**
      * 문자열을 List<Integer> 타입으로 변경
      *
-     * @param str 사용자가 입력한 숫자
+     * @param str 사용자가 입력한 문자열
      * @return List<Integer>타입의 숫자
      */
     private List<Integer> stringToListInt(String str) {
@@ -189,19 +185,33 @@ public class BaseBallGame {
     private boolean inputRestartOrEnd() {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        int input;
-        try {
-            input = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해 주세요");
-        }
+        int input = stringToInt(Console.readLine());
 
         if (input != 1 && input != 2) {
             throw new IllegalArgumentException("유효하지 않는 옵션 번호 입니다.");
         }
 
         return input != 1;
+
+    }
+
+
+    /**
+     * 문자열을 int 타입으로 변경
+     *
+     * @param str 사용자가 입력한 문자열
+     * @return int 타입으로 변환된 숫자
+     */
+    private int stringToInt(String str) {
+
+        int num;
+        try {
+            num = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요");
+        }
+
+        return num;
 
     }
 
