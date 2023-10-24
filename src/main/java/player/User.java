@@ -10,18 +10,23 @@ public class User implements BaseballPlayer {
 
     @Override
     public void inputBaseballNumbers() {
-        List<Integer> playerInputBaseballNumber = new ArrayList<>();
-        String[] playerInput = Console.readLine().split("");
+        List<Integer> userInputBaseballNumbers = new ArrayList<>();
+        String[] userInput = splitStringToArray();
 
-        for (String inputNumber : playerInput) {
-            playerInputBaseballNumber.add(Integer.parseInt(inputNumber));
+        for (String inputNumber : userInput) {
+            userInputBaseballNumbers.add(Integer.parseInt(inputNumber));
         }
 
-        this.baseballNumbers = new BaseballNumbers(playerInputBaseballNumber);
+        this.baseballNumbers = new BaseballNumbers(userInputBaseballNumbers);
     }
 
     @Override
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers.getBaseballNumbers();
+    }
+
+    private String[] splitStringToArray() {
+        String userInput = Console.readLine();
+        return userInput.split("");
     }
 }

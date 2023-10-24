@@ -6,18 +6,17 @@ import java.util.List;
 
 public class Computer implements BaseballPlayer {
 
-    private static final int MAX_LENGTH = 3;
+    private static final int MINT_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int BASEBALL_LENGTH = 3;
     private BaseballNumbers baseballNumbers;
 
     @Override
     public void inputBaseballNumbers() {
         List<Integer> computerBaseballNumber = new ArrayList<>();
 
-        while (computerBaseballNumber.size() < MAX_LENGTH) {
-            Integer baseballNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerBaseballNumber.contains(baseballNumber)) {
-                computerBaseballNumber.add(baseballNumber);
-            }
+        while (computerBaseballNumber.size() < BASEBALL_LENGTH) {
+            addUniqueNumber(computerBaseballNumber);
         }
 
         this.baseballNumbers = new BaseballNumbers(computerBaseballNumber);
@@ -26,5 +25,13 @@ public class Computer implements BaseballPlayer {
     @Override
     public List<Integer> getBaseballNumbers() {
         return baseballNumbers.getBaseballNumbers();
+    }
+
+    private void addUniqueNumber(List<Integer> baseballNumbers) {
+        Integer baseballNumber = Randoms.pickNumberInRange(MINT_NUMBER,
+                MAX_NUMBER);
+        if (!baseballNumbers.contains(baseballNumber)) {
+            baseballNumbers.add(baseballNumber);
+        }
     }
 }
