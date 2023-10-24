@@ -32,7 +32,7 @@ public class GameController {
 
         do {
             progress();
-        } while (!isRestartState());
+        } while (isRestartState());
     }
 
     private void progress() {
