@@ -28,9 +28,10 @@ public class BaseballDataUsingThreeNumber implements IBaseballData<Integer> {
                 if (value1Arr[i] == value2Arr[j]) {
                     if (i == j) {
                         strikeCount++;
-                    } else {
-                        ballCount++;
+                        continue;
                     }
+                    ballCount++;
+                    
                 }
             }
         }
