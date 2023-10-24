@@ -8,7 +8,7 @@ public class Player {
         this.guess = guess;
     }
 
-    public Player(){
+    public Player() {
         this.guess = Count.provideCount("123");
     }
 
