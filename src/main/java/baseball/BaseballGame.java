@@ -15,15 +15,15 @@ public class BaseballGame {
     }
 
 
-    public void sayHello(ConsoleLogger consoleLogger) {
+    public void sayHello(GameOutputInterface consoleLogger) {
         consoleLogger.print("숫자 야구 게임을 시작합니다.\n");
     }
 
-    public void sayBi(ConsoleLogger consoleLogger) {
+    public void sayBi(GameOutputInterface consoleLogger) {
         consoleLogger.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
-    public void run(ConsoleInput consoleInput, ConsoleLogger consoleLogger) {
+    public void run(GameInputInterface consoleInput, GameOutputInterface consoleLogger) {
         while (true) {
             consoleLogger.print("숫자를 입력해주세요 :");
             String input = consoleInput.getInput();

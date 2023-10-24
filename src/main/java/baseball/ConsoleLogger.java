@@ -1,7 +1,8 @@
 package baseball;
 
-public class ConsoleLogger {
-    void print(String s) {
+public class ConsoleLogger implements GameOutputInterface {
+    @Override
+    public void print(String s) {
         System.out.print(s);
     }
 }

@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 public class GameExecutor {
     private BaseballGame game;
-    private ConsoleInput consoleInput;
-    private ConsoleLogger consoleLogger;
+    private GameInputInterface consoleInput;
+    private GameOutputInterface consoleLogger;
     private GameRandom random;
 
     public GameExecutor() {
