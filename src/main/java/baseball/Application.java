@@ -19,7 +19,7 @@ public class Application {
             do {
                 //플레이어 숫자 입력 요청 메시지 출력 및 메시지 입력 받기(예외처리(3자리수 이외의 숫자, 숫자가 아닌 경우))
                 controller.printRequirePlayerInput();
-                controller.setPlayerNumbers(controller.playerNumsInput());
+                controller.setPlayerNumbers(controller.getPlayerNumsInput());
 
                 //컴퓨터 랜덤 3자리 숫자와 플레이어 3자리 숫자 비교하여 볼, 스트라이크 개수 추출
                 controller.countBall(controller.getComputerNumbers(), controller.getPlayerNumbers());
@@ -35,7 +35,7 @@ public class Application {
                 //게임 재시작 여부 확인 메시지 출력
                 controller.printAskRestart();
                 //게임 재시작 진행을 위한 값 입력 받기(예외처리(1,2 이외의 값 입력 시 IllegalArgumentsException))
-                controller.restartInput();
+                controller.getRestartInput();
 
             if (controller.getGameRepetition().equals("2")) {
                 break;

@@ -53,10 +53,10 @@ public class BaseballManageController {
         this.gameData.setComputerNumbers(computer);
     }
 
-    public List<Integer> playerNumsInput() {
+    public List<Integer> getPlayerNumsInput() {
         String playerStringNumsInput = Console.readLine();
-        this.playerNumsInputCheck(playerStringNumsInput);
-        this.playerInputTypeCheck(playerStringNumsInput);
+        this.checkPlayerNumsInputValidate(playerStringNumsInput);
+        this.checkPlayerInputTypeValidate(playerStringNumsInput);
         List<Integer> playerNumsTemp = new ArrayList<>();
         int maxNumberCount = 3;
         for (int i = 0; i < maxNumberCount; i++) {
@@ -104,10 +104,10 @@ public class BaseballManageController {
         }
     }
 
-    public void restartInput() {
+    public void getRestartInput() {
 
         String restart = Console.readLine();
-        this.RestartInputCheck(restart);
+        this.checkRestartInputValidate(restart);
         this.gameData.setGameRepetition(restart);
     }
 
@@ -127,7 +127,7 @@ public class BaseballManageController {
         view.printAskRestart();
     }
 
-    public void playerNumsInputCheck(String playerInput) throws IllegalArgumentException{
+    public void checkPlayerNumsInputValidate(String playerInput) throws IllegalArgumentException{
 
         int maxNumberCount = 3;
         //입력 자리수 확인
@@ -149,7 +149,7 @@ public class BaseballManageController {
         }
     }
 
-    public void playerInputTypeCheck(String playerInput) throws IllegalArgumentException{
+    public void checkPlayerInputTypeValidate(String playerInput) throws IllegalArgumentException{
 
         try {
             Double.parseDouble(playerInput);
@@ -158,7 +158,7 @@ public class BaseballManageController {
         }
     }
 
-    public void RestartInputCheck(String restartInput) throws IllegalArgumentException{
+    public void checkRestartInputValidate(String restartInput) throws IllegalArgumentException{
 
         List<String> restartInputList = List.of("1", "2");
         if(!restartInputList.contains(restartInput)) {
