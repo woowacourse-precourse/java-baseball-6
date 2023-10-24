@@ -21,7 +21,7 @@ public class View {
     }
 
     public String endGameAndRestartInputNumber() {
-        System.out.println(END_MESSAGE.getMessage() + "\n" + INPUT_END_NUMBER.getMessage());
+        System.out.println(END_MESSAGE.getMessage());
 
         return Console.readLine();
     }

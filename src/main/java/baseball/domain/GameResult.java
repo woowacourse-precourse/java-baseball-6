@@ -9,6 +9,7 @@ public class GameResult {
     private final String NOTHING_STR = "낫싱";
     private final String BALL_STR = "볼";
     private final String STRIKE_STR = "스트라이크";
+    private final int WIN = 3;
 
     public void strikeOrBall(List<Integer> baseballNumbers, List<Integer> userInputNumbers) {
         this.strike = 0;
@@ -40,7 +41,7 @@ public class GameResult {
     }
 
     public boolean isWin() {
-        if (this.strike == 3) return true;
+        if (this.strike == WIN) return true;
 
         return false;
     }
