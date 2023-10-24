@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.view.InputView;
+import baseball.controller.BaseballGame;
 import baseball.view.OutputView;
 
 public class Application {
@@ -8,8 +8,8 @@ public class Application {
         OutputView outputView = new OutputView();
         outputView.printStartGame();
 
-        InputView inputView = new InputView();
-        inputView.readGameNumber();
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.startGame();
 
     }
 }
