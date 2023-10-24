@@ -31,4 +31,25 @@ public class Game {
             else if(computer_number.contains(input_number.get(i))) this.ball++;
         }
     }
+
+    public boolean getResult(List<Integer> gamer_number) { //게임의 결과를 출력
+        calculateStrikeAndBall(gamer_number);
+        if(this.strike == 3) { //3개의 숫자를 모두 맞힌 경우
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        else if(this.strike == 0 && this.ball == 0) { //하나도 없는 경우
+            System.out.println("낫싱");
+            return false;
+        } else if(this.strike > 0 && this.ball == 0) { //스트라이크만 있는 경우
+            System.out.println(this.strike + "스트라이크");
+            return false;
+        } else if(this.strike == 0 && this.ball > 0) { //볼만 있는 경우
+            System.out.println(this.ball + "볼");
+            return false;
+        } else { //볼과 스트라이크가 모두 있는 경우
+            System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+            return false;
+        }
+    }
 }
