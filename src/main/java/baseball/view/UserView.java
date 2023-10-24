@@ -44,4 +44,9 @@ public class UserView {
         System.out.println(strikeAndBall[1] + "볼" + strikeAndBall[0] + "스트라이크");
     }
 
+    public String restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
+
 }
