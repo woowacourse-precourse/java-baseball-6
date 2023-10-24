@@ -2,6 +2,7 @@ package baseball.domain.computer;
 
 import baseball.domain.number.Number;
 import baseball.domain.player.Player;
+import baseball.exception.computer.ComputerEndStateRefreshException;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -44,4 +45,15 @@ public class Computer {
     public List<Number> getAnswerNumbers() {
         return answerNumbers;
     }
+
+    public Computer refresh() {
+        if (gameState.isEndGame()) {
+            throw new ComputerEndStateRefreshException();
+        }
+        if (gameState.isRestartGame()) {
+            return init();
+        }
+        return this;
+    }
+
 }
