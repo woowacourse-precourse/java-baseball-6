@@ -46,4 +46,11 @@ public class userInterface {
             stringArrayToIntArray(input);
         }
     }
+
+    public static int choiceGame() {
+        choiceWrite();
+        String re_game=Console.readLine();
+        inputExeption.isOneAndTwoNumber(re_game);
+        return Integer.parseInt(re_game);
+    }
 }
