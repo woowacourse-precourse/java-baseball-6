@@ -11,7 +11,7 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
 
-            BaseballGameNumber.validateBaseballGameNumber(input);
+            baseballGameReferee.validateBaseballGameNumber(input);
             BaseballGameJudgement judgement = baseballGameReferee.judgement(new BaseballGameNumber(input));
             judgement.printJudgement();
 
