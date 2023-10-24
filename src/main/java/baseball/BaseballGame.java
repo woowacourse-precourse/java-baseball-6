@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.domain.*;
-import baseball.util.RandomNumberGenerator;
+import baseball.domain.AnswerNumbers;
+import baseball.domain.PlayerNumbers;
+import baseball.domain.RestartCommand;
+import baseball.domain.Score;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.List;
 
 public class BaseballGame {
 

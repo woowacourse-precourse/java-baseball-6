@@ -12,8 +12,7 @@ public class PlayerNumbers {
 
     private PlayerNumbers(final String inputString) {
         validate(inputString);
-        List<Integer> numbers = stringToIntegerArray(inputString);
-        this.playerNumbers = numbers;
+        this.playerNumbers = stringToIntegerArray(inputString);
     }
 
     public static PlayerNumbers of(final String inputString) {
