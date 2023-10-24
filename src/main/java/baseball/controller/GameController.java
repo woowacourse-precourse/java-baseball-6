@@ -18,7 +18,7 @@ public class GameController {
 
         boolean gameStatus = true;
         while (gameStatus) {
-            try {
+//            try {
                 gameService.getUserNumbers();
 
                 if (gameService.sameNumbers()) {
@@ -30,10 +30,10 @@ public class GameController {
                     }
                 }
 
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                break;
-            }
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//                break;
+//            }
         }
 
         outputMessage.printGameReallyEndMessage();
