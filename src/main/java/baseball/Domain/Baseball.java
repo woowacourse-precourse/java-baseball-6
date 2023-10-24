@@ -57,7 +57,7 @@ public class Baseball {
     }
 
     private boolean isBall(int number, int index) {
-        return numbers.indexOf(number) != index;
+        return numbers.indexOf(number) != -1 && numbers.indexOf(number) != index;
     }
 
 }

@@ -43,7 +43,16 @@ public class BaseballTest {
         BaseballScore score = b1.compare(b2), expect = new BaseballScore(2, 1);
 
         Assertions.assertThat(score.toString()).isEqualTo(expect.toString());
+    }
 
+    @Test
+    @DisplayName("낫싱 출력 확인")
+    void 낫싱_테스트() {
+        Baseball b1 = new Baseball(List.of(1,2,3)), b2 = new Baseball(List.of(4,5,6));
+
+        BaseballScore score = b1.compare(b2), expect = new BaseballScore(0,0);
+
+        Assertions.assertThat(score.toString()).isEqualTo(expect.toString());
     }
 
 }
