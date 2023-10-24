@@ -47,10 +47,6 @@ public class Game {
         int choice = Integer.parseInt(str_choice);
         Error.exit_error_check(choice);
 
-        if(choice == Constant.EXIT_NUMBER){
-            return true;
-        }
-
-        return false;
+        return choice == Constant.RESTART_NUMBER;
     }
 }
