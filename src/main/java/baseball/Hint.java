@@ -4,23 +4,23 @@ import java.util.List;
 
 public class Hint {
 
-    public HintCountDto calHint(List<Integer> answer, List<Integer> userNum) {
-        HintCountDto hintCountDto = new HintCountDto();
+    public HintDto calHint(List<Integer> answer, List<Integer> userNum) {
+        HintDto hintDto = new HintDto();
         for (int i = 0; i < 3; i++) {
             if (answer.get(i) == userNum.get(i)) {
-                hintCountDto.plusStrike();
+                hintDto.plusStrike();
                 continue;
             }
             if (answer.contains(userNum.get(i))) {
-                hintCountDto.plusBall();
+                hintDto.plusBall();
             }
         }
-        return hintCountDto;
+        return hintDto;
     }
 
-    public boolean printHint(HintCountDto hintCountDto) {
-        int strike = hintCountDto.getStrike();
-        int ball = hintCountDto.getBall();
+    public boolean printHint(HintDto hintDto) {
+        int strike = hintDto.getStrike();
+        int ball = hintDto.getBall();
 
         if (strike == 3) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");

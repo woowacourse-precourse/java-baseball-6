@@ -41,8 +41,8 @@ public class GameController {
     }
 
     public boolean giveHint(List<Integer> computerNum, List<Integer> userNum) {
-        HintCountDto hintCountDto = hint.calHint(computerNum, userNum);
-        return hint.printHint(hintCountDto);
+        HintDto hintDto = hint.calHint(computerNum, userNum);
+        return hint.printHint(hintDto);
     }
 
     public void restartOrEnd() {

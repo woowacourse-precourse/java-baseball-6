@@ -1,6 +1,6 @@
 package baseball;
 
-public class HintCountDto {
+public class HintDto {
 
     private int strike;
     private int ball;

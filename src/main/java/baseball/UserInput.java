@@ -8,8 +8,7 @@ public class UserInput {
 
     public String readUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        return userInput;
+        return Console.readLine();
     }
 
     public void checkUserInput(String userInput) {
