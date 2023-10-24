@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.Ball;
+import baseball.domain.NumberBall;
 import baseball.domain.GameResult;
 import baseball.domain.MatchResult;
 import baseball.view.OutputView;
@@ -26,11 +26,11 @@ public class GameService {
         int strike = 0;
         int ball = 0;
 
-        List<Ball> player = convertToBall(numbers);
-        List<Ball> computer = convertToBall(computerNumbers);
+        List<NumberBall> player = convertToBall(numbers);
+        List<NumberBall> computer = convertToBall(computerNumbers);
 
-        for (Ball playerBall : player) {
-            MatchResult result = playerBall.match(computer);
+        for (NumberBall playerNumberBall : player) {
+            MatchResult result = playerNumberBall.match(computer);
             if (result.isStrike()) {
                 strike++;
             }
@@ -42,8 +42,8 @@ public class GameService {
         return new GameResult(strike, ball);
     }
 
-    private List<Ball> convertToBall(List<Integer> numbers) {
-        return IntStream.range(0, numbers.size()).mapToObj(i -> new Ball(i, numbers.get(i)))
+    private List<NumberBall> convertToBall(List<Integer> numbers) {
+        return IntStream.range(0, numbers.size()).mapToObj(i -> new NumberBall(i, numbers.get(i)))
                 .collect(Collectors.toList());
     }
 
