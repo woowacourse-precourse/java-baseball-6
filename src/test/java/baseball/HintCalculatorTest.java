@@ -12,7 +12,7 @@ public class HintCalculatorTest {
 
     @DisplayName("userList와 computerList가 하나도 겹치지 않을 때 낫싱 출력")
     @Test
-    void printNothingHint(){
+    void printNothingHint() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(4, 5, 6);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
@@ -23,7 +23,7 @@ public class HintCalculatorTest {
 
     @DisplayName("볼 개수가 0이고 스트라이크 개수가 0이 아닐 때 스트라이크만 출력")
     @Test
-    void printOnlyStrikeCount(){
+    void printOnlyStrikeCount() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(1, 4, 5);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
@@ -34,7 +34,7 @@ public class HintCalculatorTest {
 
     @DisplayName("스트라이크 개수가 0이고 볼 개수가 0이 아닐 때 볼만 출력")
     @Test
-    void printOnlyBallCount(){
+    void printOnlyBallCount() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(3, 1, 2);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
@@ -45,7 +45,7 @@ public class HintCalculatorTest {
 
     @DisplayName("스트라이크, 볼 개수 모두 0이 아닐 때")
     @Test
-    void printBothStrikeAndBallCount(){
+    void printBothStrikeAndBallCount() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(3, 2, 4);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
@@ -56,7 +56,7 @@ public class HintCalculatorTest {
 
     @DisplayName("userNumber와 computerNumber가 일치할 때 3스트라이크 출력")
     @Test
-    void printThreeStrikeCount(){
+    void printThreeStrikeCount() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(1, 2, 3);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
@@ -67,7 +67,7 @@ public class HintCalculatorTest {
 
     @DisplayName("userNumber와 computerNumber가 일치할 때 게임 성공")
     @Test
-    void checkSuccess(){
+    void checkSuccess() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(1, 2, 3);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
@@ -76,7 +76,7 @@ public class HintCalculatorTest {
 
     @DisplayName("userNumber와 computerNumber가 다를 때 게임 실패")
     @Test
-    void checkFail(){
+    void checkFail() {
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(4, 2, 3);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);

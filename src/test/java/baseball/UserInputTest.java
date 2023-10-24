@@ -5,6 +5,7 @@ import baseball.controller.NumberValidator;
 import baseball.model.UserNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -16,7 +17,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수 정상적인 값 입력되면 성공")
     @Test
-    void inputNormalUserNumber(){
+    void inputNormalUserNumber() {
         String inputNumber = "123";
         assertThatNoException().isThrownBy(() -> {
             numberValidator.validateString(inputNumber);
@@ -25,7 +26,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수가 비어있다면 에러 발생")
     @Test
-    void inputEmptyUserNumber(){
+    void inputEmptyUserNumber() {
         String inputNumber = "";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -34,7 +35,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수가 여러개의 공백으로 입력된다면 에러 발생")
     @Test
-    void inputBlankUserNumber(){
+    void inputBlankUserNumber() {
         String inputNumber = "   ";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -43,7 +44,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수가 숫자값이 아니라면 에러 발생")
     @Test
-    void inputNotDigitString(){
+    void inputNotDigitString() {
         String inputNumber = "great";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -52,7 +53,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수가 숫자와 문자가 섞인 값이 입력된다면 에러 발생")
     @Test
-    void inputMixedCharacterAndDigitString(){
+    void inputMixedCharacterAndDigitString() {
         String inputNumber = "great1234";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -61,7 +62,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수의 길이가 3보다 큰 값이 입력되면 에러 발생")
     @Test
-    void inputOverThreeDigit(){
+    void inputOverThreeDigit() {
         String inputNumber = "1234";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -70,7 +71,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수의 길이가 3보다 작은 값이 입력되면 에러 발생")
     @Test
-    void inputUnderThreeDigit(){
+    void inputUnderThreeDigit() {
         String inputNumber = "12";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -79,7 +80,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수가 범위를 넘어가면 에러 발생")
     @Test
-    void inputOutOfRange(){
+    void inputOutOfRange() {
         String inputNumber = "120";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -88,7 +89,7 @@ class UserInputTest {
 
     @DisplayName("사용자 수에 중복된 값 존재하면 에러 발생")
     @Test
-    void inputDuplicateNumber(){
+    void inputDuplicateNumber() {
         String inputNumber = "122";
         assertThatThrownBy(() -> numberValidator.validateString(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -97,14 +98,14 @@ class UserInputTest {
 
     @DisplayName("String 타입을 List<Integer> 타입으로 교체하는 함수")
     @Test
-    void convertStringToIntegerList() throws NoSuchMethodException{
+    void convertStringToIntegerList() throws NoSuchMethodException {
         String stringValue = "123";
         List<Integer> expectedNumbers = List.of(1, 2, 3);
         UserNumber userNumber = new UserNumber(stringValue);
         Method method = userNumber.getClass().getDeclaredMethod("StringToList", String.class);
         method.setAccessible(true);
 
-        try{
+        try {
             List<Integer> resultList = (List<Integer>) method.invoke(userNumber, stringValue);
             assertThat(expectedNumbers).isEqualTo(resultList);
 
@@ -115,13 +116,13 @@ class UserInputTest {
 
     @DisplayName("재시작 여부 값으로 1을 입력하였을 시 성공")
     @Test
-    void inputRestartValueOne() throws NoSuchMethodException{
+    void inputRestartValueOne() throws NoSuchMethodException {
         String stringValue = "1";
         GameController gameController = new GameController();
         Method method = gameController.getClass().getDeclaredMethod("checkRestart", String.class);
         method.setAccessible(true);
 
-        try{
+        try {
             boolean resultValue = (boolean) method.invoke(gameController, stringValue);
             assertThat(resultValue).isTrue();
 
@@ -132,13 +133,13 @@ class UserInputTest {
 
     @DisplayName("재시작 여부 값으로 2를 입력하였을 시 성공")
     @Test
-    void inputRestartValueTwo() throws NoSuchMethodException{
+    void inputRestartValueTwo() throws NoSuchMethodException {
         String stringValue = "2";
         GameController gameController = new GameController();
         Method method = gameController.getClass().getDeclaredMethod("checkRestart", String.class);
         method.setAccessible(true);
 
-        try{
+        try {
             boolean resultValue = (boolean) method.invoke(gameController, stringValue);
             assertThat(resultValue).isFalse();
 
@@ -149,15 +150,14 @@ class UserInputTest {
 
     @DisplayName("재시작 여부 값으로 1과 2외의 값을 입력하였을 시 에러 발생")
     @Test
-    void inputWrongRestartValue() throws NoSuchMethodException{
+    void inputWrongRestartValue() throws NoSuchMethodException {
         String stringValue = "0";
         GameController gameController = new GameController();
-        try{
+        try {
             Method method = gameController.getClass().getDeclaredMethod("checkRestart", String.class);
             method.setAccessible(true);
             method.invoke(gameController, stringValue);
-        }
-        catch(InvocationTargetException | IllegalAccessException e){
+        } catch (InvocationTargetException | IllegalAccessException e) {
             Throwable cause = e.getCause();
             assertThat(cause instanceof IllegalArgumentException).isTrue();
         }

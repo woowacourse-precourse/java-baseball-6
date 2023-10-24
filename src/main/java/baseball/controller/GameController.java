@@ -15,7 +15,7 @@ public class GameController {
     public static void proceedGame() {
         showStartMessage();
         boolean restartValue = true;
-        while(restartValue){
+        while (restartValue) {
             setComputerNumber();
             playGame();
             restartValue = checkRestart(getRestartValue());
@@ -23,18 +23,18 @@ public class GameController {
     }
 
     private static void playGame() {
-        boolean isSuccessValue = false;
-        while(!isSuccessValue){
+        boolean successValue = false;
+        while (!successValue) {
             setUserNumber();
             setCalculator();
             showHint();
-            isSuccessValue = checkSuccess();
+            successValue = checkSuccess();
         }
         showEndMessage();
     }
 
     private static void setCalculator() {
-        hintCalculator = new HintCalculator(userNumber,computerNumber);
+        hintCalculator = new HintCalculator(userNumber, computerNumber);
     }
 
     private static void showEndMessage() {
@@ -42,10 +42,9 @@ public class GameController {
     }
 
     private static boolean checkRestart(String restartValue) {
-        if(restart(restartValue)){
+        if (restart(restartValue)) {
             return true;
-        }
-        else if(quit(restartValue)){
+        } else if (quit(restartValue)) {
             return false;
         }
         throw new IllegalArgumentException("1과 2중에 입력해야 합니다.");

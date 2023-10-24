@@ -20,11 +20,11 @@ public class HintCalculator {
         }
     }
 
-    public boolean isThreeStrike(){
+    public boolean isThreeStrike() {
         return strikeCnt == SUCCESS_STRIKE_COUNT;
     }
 
-    public String getHintString(){
+    public String getHintString() {
         String hintString = "";
         hintString += getNothingString();
         hintString += getBallString();
@@ -33,14 +33,15 @@ public class HintCalculator {
     }
 
     private void addStrikeCount(int userDigit, int computerDigit) {
-        if(isStrike(userDigit, computerDigit)){
+        if (isStrike(userDigit, computerDigit)) {
             ++strikeCnt;
         }
     }
 
     private void addBallCount(int userDigit, int computerDigit, List<Integer> computerList) {
-        if(isBall(userDigit, computerDigit, computerList)){
-            ++ballCnt;;
+        if (isBall(userDigit, computerDigit, computerList)) {
+            ++ballCnt;
+            ;
         }
     }
 
@@ -53,29 +54,28 @@ public class HintCalculator {
     }
 
     private String getNothingString() {
-        if(strikeCnt == 0 && ballCnt == 0){
+        if (strikeCnt == 0 && ballCnt == 0) {
             return nothingString;
         }
         return emptyString;
-
     }
 
     private String getBallString() {
         if (ballCnt != 0) {
-            return ballCnt+ballString+getBlankString();
+            return ballCnt + ballString + getBlankString();
         }
         return emptyString;
     }
 
     private String getStrikeString() {
         if (strikeCnt != 0) {
-            return strikeCnt+strikeString;
+            return strikeCnt + strikeString;
         }
         return emptyString;
     }
 
     private String getBlankString() {
-        if(strikeCnt != 0){
+        if (strikeCnt != 0) {
             return spaceString;
         }
         return emptyString;

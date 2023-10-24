@@ -7,14 +7,14 @@ public class UserNumber {
     private final List<Integer> number;
 
     public UserNumber(String number) {
-        this.number = StringToList(number);
+        this.number = StringToIntList(number);
     }
 
     public List<Integer> getNumber() {
         return number;
     }
 
-    private List<Integer> StringToList(String number) {
+    private List<Integer> StringToIntList(String number) {
         return number.chars()
                 .map(Character::getNumericValue)
                 .boxed()

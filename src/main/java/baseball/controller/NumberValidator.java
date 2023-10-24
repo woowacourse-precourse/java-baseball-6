@@ -8,51 +8,47 @@ public class NumberValidator {
     private final static int MAXIMUM_NUM_IN_RANGE = 9;
     private final static int LIST_SIZE = 3;
 
-    public static String validateString(String number) {
-        if(isEmpty(number)|| !isDigit(number)){
+    public static String validateString(String inputString) {
+        if (isEmpty(inputString) || !isNumber(inputString)) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
-        }
-        else if(!isThreeDigit(number)){
+        } else if (!isThreeDigit(inputString)) {
             throw new IllegalArgumentException("세자리 숫자를 입력해주세요");
         }
-        validateList(StringToList(number));
-        return number;
+        validateList(StringToIntList(inputString));
+        return inputString;
     }
 
-    public static void validateList(List<Integer> list) {
-        if(!isInRange(list)){
+    public static void validateList(List<Integer> intList) {
+        if (!isInRange(intList)) {
             throw new IllegalArgumentException("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다");
-        }
-        else if(!isDistinct(list)){
+        } else if (!isDistinct(intList)) {
             throw new IllegalArgumentException("중복된 숫자가 존재하지 않아야 합니다");
         }
     }
 
-    private static boolean isEmpty(String number) {
-        return number == null || number.isBlank();
+    private static boolean isEmpty(String inputString) {
+        return inputString == null || inputString.isBlank();
     }
 
-    private static boolean isDigit(String number) {
-        return number.chars().allMatch(Character::isDigit);
+    private static boolean isNumber(String inputString) {
+        return inputString.chars().allMatch(Character::isDigit);
     }
 
-    private static boolean isThreeDigit(String number) {
-        return number.length() == LIST_SIZE;
+    private static boolean isThreeDigit(String inputString) {
+        return inputString.length() == LIST_SIZE;
     }
 
-    private static boolean isInRange(List<Integer> numberList) {
-        return numberList.stream()
-                .allMatch(num -> num>=MINIMUM_NUM_IN_RANGE && num<=MAXIMUM_NUM_IN_RANGE);
+    private static boolean isInRange(List<Integer> intList) {
+        return intList.stream()
+                .allMatch(num -> num >= MINIMUM_NUM_IN_RANGE && num <= MAXIMUM_NUM_IN_RANGE);
     }
 
-    private static boolean isDistinct(List<Integer> numberList) {
-        return numberList.stream()
-                .distinct()
-                .count() == LIST_SIZE;
+    private static boolean isDistinct(List<Integer> intList) {
+        return intList.stream().distinct().count() == LIST_SIZE;
     }
 
-    private static List<Integer> StringToList(String number) {
-        return number.chars()
+    private static List<Integer> StringToIntList(String inputString) {
+        return inputString.chars()
                 .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList());

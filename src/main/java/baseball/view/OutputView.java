@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println(endMessage);
     }
 
-    public static void printHint(String hintMessage){
+    public static void printHint(String hintMessage) {
         System.out.println(hintMessage);
     }
 }
