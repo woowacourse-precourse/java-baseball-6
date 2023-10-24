@@ -1,6 +1,5 @@
 package model;
 
-import baseball.BaseBallGame;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -43,7 +42,7 @@ public class ModelUserNumCheck {
         List<Integer> list = new ArrayList<>();
         for (char c : str.toCharArray()) {
             if (!(Character.isDigit(c))) {
-                BaseBallGame.errorThrow("notNum");
+                ModelErrorThrow.errorThrow("notNum");
             }
 
             int digit = Character.getNumericValue(c);
@@ -62,17 +61,17 @@ public class ModelUserNumCheck {
     private static void inputErrorCheck(List<Integer> input) {
 
         if (input.size() != 3) {
-            BaseBallGame.errorThrow("wrongLen");
+            ModelErrorThrow.errorThrow("wrongLen");
         }
 
         Set<Integer> inputSet = new HashSet<>(input);
         if (inputSet.size() != 3) {
-            BaseBallGame.errorThrow("duplicate");
+            ModelErrorThrow.errorThrow("duplicate");
         }
 
         for (Integer num : input) {
             if (num < 1 || num > 9) {
-                BaseBallGame.errorThrow("invalidNum");
+                ModelErrorThrow.errorThrow("invalidNum");
             }
         }
 

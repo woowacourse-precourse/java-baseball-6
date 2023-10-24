@@ -1,7 +1,5 @@
 package model;
 
-import baseball.BaseBallGame;
-
 /**
  * ModelRestartOrEnd.java
  * <p>
@@ -40,7 +38,7 @@ public class ModelRestartOrEnd {
         try {
             num = Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            BaseBallGame.errorThrow("notNum");
+            ModelErrorThrow.errorThrow("notNum");
         }
 
         return num;
@@ -57,7 +55,7 @@ public class ModelRestartOrEnd {
     private static void inputErrorCheck(int input) {
 
         if (input != 1 && input != 2) {
-            BaseBallGame.errorThrow("invalidNum");
+            ModelErrorThrow.errorThrow("invalidNum");
         }
 
     }

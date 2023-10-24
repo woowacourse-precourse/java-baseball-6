@@ -51,21 +51,4 @@ public class BaseBallGame {
 
     }
 
-    /**
-     * 예외에 따른 메세지 설정 및 예외 던지기
-     *
-     * @param str 예외 이유
-     */
-    public static void errorThrow(String str) {
-
-        String message = switch (str) {
-            case "notNum" -> "숫자를 입력해 주세요";
-            case "wrongLen" -> "3자리 숫자가 아닙니다.";
-            case "duplicate" -> "중복된 숫자가 존재합니다.";
-            case "invalidNum" -> "유효한 숫자가 아닙니다.";
-            default -> "";
-        };
-
-        throw new IllegalArgumentException(message);
-    }
 }
