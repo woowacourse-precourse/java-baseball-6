@@ -24,19 +24,19 @@ public class Core {
         return strike;
     }
 
-    public String jugement(List<Integer> userNumber, List<Integer> computerNumber) {
-        int total = countAll(userNumber, computerNumber);
-        int strike = countStrike(userNumber, computerNumber);
-        int ball = total - strike;
 
+    public void jugement(int total,int strikes, int balls) {
         if (total == 0) {
-            return "낫싱";
-        } else if (strike == 0) {
-            return ball + "볼";
-        } else if (ball == 0) {
-            return strike + "스트라이크";
+            System.out.println("낫싱");
+            return;
+        } else if (strikes == 0) {
+            System.out.printf("%d볼\n",balls);
+            return;
+        } else if (balls == 0) {
+            System.out.printf("%d스트라이크\n",strikes);
+            return;
         }
-        return ball + "볼 " + strike + "스트라이크";
+        System.out.printf("%d볼 %d스트라이크\n",balls,strikes);
     }
 
 }
