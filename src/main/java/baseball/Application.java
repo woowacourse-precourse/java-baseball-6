@@ -24,27 +24,23 @@ class BaseballGame {
     public void start() {
         System.out.println(START_MESSAGE);
         while (true) {
-            playRound();
-            if (!shouldContinue()) {
-                break;
-            }
+            if (!playRound()) break;
         }
     }
 
-    private void playRound() {
+    private boolean playRound() {
         List<Integer> computer = generateRandomNumbers();
         while (true) {
             String input = getUserInput(INPUT_MESSAGE);
             validateInput(input);
-
             Result result = check(input, computer);
             printResult(result);
-
             if (result.getStrikes() == NUM_DIGITS) {
-                printWinMessage();
+                printFinishMessage();
                 break;
             }
         }
+        return printRestart();
     }
 
     private String getUserInput(String prompt) {
@@ -55,18 +51,26 @@ class BaseballGame {
     private List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUM_DIGITS) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNum)) {
-                numbers.add(randomNum);
-            }
+            addRandomNumber(numbers);
         }
         return numbers;
     }
 
+    private void addRandomNumber(List<Integer> numbers) {
+        int randomNum = Randoms.pickNumberInRange(1, 9);
+        if (!numbers.contains(randomNum)) {
+            numbers.add(randomNum);
+        }
+    }
+
     private void validateInput(String input) {
-        if (input.length() != NUM_DIGITS || !isAllDigits(input) || hasDuplicateCharacters(input)) {
+        if (isInvalidLength(input) || !isAllDigits(input) || isDuplicateNumbers(input)) {
             throwInvalidInputException();
         }
+    }
+
+    private boolean isInvalidLength(String input) {
+        return input.length() != NUM_DIGITS;
     }
 
     private boolean isAllDigits(String input) {
@@ -78,7 +82,7 @@ class BaseballGame {
         return true;
     }
 
-    private boolean hasDuplicateCharacters(String input) {
+    private boolean isDuplicateNumbers(String input) {
         List<Character> characters = new ArrayList<>();
         for (char ch : input.toCharArray()) {
             if (characters.contains(ch)) {
@@ -99,17 +103,28 @@ class BaseballGame {
         for (int i = 0; i < NUM_DIGITS; i++) {
             int inputDigit = Character.getNumericValue(input.charAt(i));
             if (computer.contains(inputDigit)) {
-                if (computer.get(i).equals(inputDigit)) {
-                    strikes++;
-                } else {
-                    balls++;
-                }
+                strikes = updateStrikes(computer, inputDigit, i, strikes);
+                balls = updateBalls(computer, inputDigit, i, balls);
             }
         }
         return new Result(balls, strikes);
     }
 
-    private boolean shouldContinue() {
+    private int updateStrikes(List<Integer> computer, int inputDigit, int index, int strikes) {
+        if (computer.get(index).equals(inputDigit)) {
+            strikes++;
+        }
+        return strikes;
+    }
+
+    private int updateBalls(List<Integer> computer, int inputDigit, int index, int balls) {
+        if (!computer.get(index).equals(inputDigit)) {
+            balls++;
+        }
+        return balls;
+    }
+
+    private boolean printRestart() {
         return "1".equals(getUserInput(RESTART_MESSAGE));
     }
 
@@ -117,7 +132,7 @@ class BaseballGame {
         System.out.println(result);
     }
 
-    private void printWinMessage() {
+    private void printFinishMessage() {
         System.out.println(FINISH_MESSAGE);
     }
 }
