@@ -21,7 +21,8 @@ public class InputValidator {
     }
 
     public static void validateRetryInput(String retryInput) {
-        if (!retryInput.equals(Player.RETRY_COMMAND) && !retryInput.equals(Player.END_COMMAND)) {
+        if (!retryInput.equals(GameController.RETRY_COMMAND) && !retryInput.equals(
+            GameController.END_COMMAND)) {
             throw new IllegalArgumentException();
         }
     }

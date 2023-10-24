@@ -75,9 +75,9 @@
 - [x]  정답 여부 얻기
     - 숫자가 3개면 3스트라이크 일때 `true`, 아니면 `false` 반환
 
-### Player.java
+### Player.java -> GameController.java
 
-📝**설명**: 사용자의 상태와 입력을 관리하는 클래스
+📝**설명**: 사용자의 입력을 관리하는 클래스
 
 - [x]  숫자 입력 받기
     - `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용

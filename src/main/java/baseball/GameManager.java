@@ -2,11 +2,11 @@ package baseball;
 
 public class GameManager {
 
-    private Player player;
+    private GameController controller;
     private Computer computer;
 
     public GameManager() {
-        this.player = new Player();
+        this.controller = new GameController();
     }
 
     public void start() {
@@ -15,14 +15,14 @@ public class GameManager {
             setGame();
             playGame();
             MessagePrinter.printRetryInputMessage();
-        } while (player.getIsRetry());
+        } while (controller.getIsRetry());
     }
 
     private void playGame() {
         Boolean isGameEnd = false;
         while (!isGameEnd) {
             MessagePrinter.printNumberInputMessage();
-            GameResult result = computer.calculateGameResult(player.getInputGameNumber());
+            GameResult result = computer.calculateGameResult(controller.getInputGameNumber());
             MessagePrinter.printResultMessage(result);
             isGameEnd = result.isAnswer();
         }

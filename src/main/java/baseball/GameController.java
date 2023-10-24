@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Player {
+public class GameController {
 
     // TODO: 재시작 커맨드 상수 관리 어디서할 지 고민
     public static final String RETRY_COMMAND = "1";
@@ -19,7 +19,7 @@ public class Player {
         return input.equals(RETRY_COMMAND);
     }
 
-    public Player() {
+    public GameController() {
 
     }
 }
