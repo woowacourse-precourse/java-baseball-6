@@ -10,6 +10,6 @@ public class UserView {
     }
 
     public void printNumberInputPrompt(){
-        System.out.println(NUMBER_INPUT_PROMPT_MESSAGE);
+        System.out.print(NUMBER_INPUT_PROMPT_MESSAGE);
     }
 }
