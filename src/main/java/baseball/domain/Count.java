@@ -16,14 +16,12 @@ public class Count {
         strikeCount = 0;
 
         for (int i = 0; i < THREE_NUMBER; i++) {
-            if (randomNumber.contains(userNumber.get(i))) {
-                ballCount++;
-            }
             if (randomNumber.get(i).equals(userNumber.get(i))) {
                 strikeCount++;
+            } else if (randomNumber.contains(userNumber.get(i))) {
+                ballCount++;
             }
         }
-        ballCount -= strikeCount;
     }
 
     public boolean checkStrike() {
