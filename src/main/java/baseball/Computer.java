@@ -26,7 +26,7 @@ public class Computer {
 
     for (int i = 0; i < 3; i++) {
 
-      if (answer.contains(input)) {
+      if (answer.contains(input.get(i))) {
         if (answer.get(i) == input.get(i)) {
           result.addStrike();
         } else {
