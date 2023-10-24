@@ -39,10 +39,10 @@ public class InputUserNumber {
             if (inputNumber < 49 || inputNumber > 57) {
                 throw new IllegalArgumentException();
             }
-            if (userNumber.contains(inputNumber)){
+            if (userNumber.contains(inputNumber - '0')){
                 throw new IllegalArgumentException();
             }
-            userNumber.add(input.charAt(i) - '0');
+            userNumber.add(inputNumber - '0');
         }
 
         return new UserBall(userNumber);
