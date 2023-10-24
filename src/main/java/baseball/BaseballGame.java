@@ -1,54 +1,60 @@
 package baseball;
 
+import static baseball.SimpleMessageBundle.CORRECT;
+import static baseball.SimpleMessageBundle.INPUT_NUM;
+import static baseball.SimpleMessageBundle.RESTART;
+import static baseball.SimpleMessageBundle.START;
+import static baseball.SimpleMessageBundle.WRONG_INPUT;
+
 import java.util.Scanner;
 
 public class BaseballGame {
 
-    private Scanner sc;
+    private final Scanner sc;
 
     public BaseballGame(Scanner sc) {
         this.sc = sc;
     }
 
     public void play() {
-        System.out.println(SimpleMessageBundle.START);
-        boolean wannaPlay = true;
+        System.out.println(START);
+        boolean continuePlaying = true;
 
-        while (wannaPlay) {
-            newGame();
-            wannaPlay = restart();
+        while (continuePlaying) {
+            playRound();
+            continuePlaying = confirmRestart();
         }
     }
 
-    private void newGame() {
+    private void playRound() {
         Num target = Num.random();
         boolean correct = false;
 
         while (!correct) {
-            Num guess = input();
+            Num guess = createNumFromInput();
             Score score = new Score(target, guess);
             score.printScore();
             correct = score.isCorrect();
             if (correct) {
-                System.out.println(SimpleMessageBundle.CORRECT);
+                System.out.println(CORRECT);
             }
         }
     }
 
-    private boolean restart() {
-        System.out.println(SimpleMessageBundle.RESTART);
+    private boolean confirmRestart() {
+        System.out.println(RESTART);
         return sc.nextInt() == 1;
     }
 
-    private Num input() {
-        System.out.print(SimpleMessageBundle.INPUT_NUM);
+    private Num createNumFromInput() {
+        System.out.print(INPUT_NUM);
         int input;
         try {
             input = sc.nextInt();
+            return new Num(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException(SimpleMessageBundle.WRONG_INPUT);
+            throw new IllegalArgumentException(WRONG_INPUT);
         }
-        return new Num(input);
     }
 
 }

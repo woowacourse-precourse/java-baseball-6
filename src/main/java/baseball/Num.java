@@ -7,46 +7,46 @@ import java.util.Set;
 public class Num {
 
     public static final int DIGIT = 3; // 자릿수
-    private int[] numsByDigit = new int[DIGIT];
-    private int num;
+    private final int[] digitList = new int[DIGIT];
+    private final int value;
 
-    public Num(int num) {
-        this.num = num;
-        numsByDigit[0] = num / 100;
-        numsByDigit[1] = (num % 100) / 10;
-        numsByDigit[2] = num % 10;
-        validate();
+    public Num(int value) {
+        this.value = value;
+        digitList[0] = value / 100;
+        digitList[1] = (value % 100) / 10;
+        digitList[2] = value % 10;
+        checkValidity();
     }
 
-    private void validate() {
-        if (DIGIT != String.valueOf(num).length()) { // 자리수 체크
+    private void checkValidity() {
+        if (DIGIT != String.valueOf(value).length()) { // 자리수 체크
             throw new IllegalArgumentException();
         }
 
-        if (numsByDigit[1] == 0 || numsByDigit[2] == 0) {
+        if (digitList[1] == 0 || digitList[2] == 0) {
             throw new IllegalArgumentException();
         }
 
-        if (duplicatedNumExist()) {
+        if (hasDuplicateDigits()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean duplicatedNumExist() {
+    private boolean hasDuplicateDigits() {
         Set<Integer> set = new HashSet<>();
-        for (int n : numsByDigit) {
+        for (int n : digitList) {
             set.add(n);
         }
         return set.size() != DIGIT;
     }
 
     public static Num random() {
-        Set<Integer> uniqueDigits = generateUniqueDigits();
+        Set<Integer> uniqueDigits = createUniqueDigits();
         int result = calculateNumber(uniqueDigits);
         return new Num(result);
     }
 
-    private static Set<Integer> generateUniqueDigits() {
+    private static Set<Integer> createUniqueDigits() {
         Set<Integer> uniqueDigits = new HashSet<>();
         while (uniqueDigits.size() < DIGIT) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
@@ -63,13 +63,13 @@ public class Num {
         return result;
     }
 
-    public int getDigit(int i) {
-        return numsByDigit[i];
+    public int getDigitAt(int i) {
+        return digitList[i];
     }
 
     public boolean contains(int num) {
         boolean result = false;
-        for (int n : numsByDigit) {
+        for (int n : digitList) {
             if (n == num) {
                 result = true;
                 break;
