@@ -8,17 +8,11 @@ import java.util.List;
 
 public class ComputerService {
     public static List<Integer> generateBaseballNumber() {
-        List<Integer> digits = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            digits.add(i);
-        }
-
         List<Integer> baseballNumber = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            int randomIndex = Randoms.pickNumberInRange(0, digits.size() - 1);
-            int digit = digits.remove(randomIndex);
-            baseballNumber.add(digit);
+        while (baseballNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!baseballNumber.contains(randomNumber))
+                baseballNumber.add(randomNumber);
         }
         return baseballNumber;
     }

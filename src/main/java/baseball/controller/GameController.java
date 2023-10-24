@@ -26,7 +26,6 @@ public class GameController {
         this.computer = new Computer();
         BaseballNumber computerWithRandomNumber = ComputerService.createComputerWithRandomNumber();
         computer.updateBaseballNumber(computerWithRandomNumber);
-        //System.out.println("=====computer :" + computer.getBaseballNumber());
         do {
             setPlayerBaseballNumber();
         } while (!checkGuessNumber()); //맞을 때까지
@@ -41,7 +40,6 @@ public class GameController {
         System.out.print(REQUEST_INPUT_NUMBER.getMessage());
         String input = Console.readLine();
         List<Integer> inputToList = convertStringToList(input);
-        //System.out.println("=====player :" + inputToList);
         ValidatorPlayerInput.validateNumberSizeAndDuplicate(inputToList);
         BaseballNumber playerInputNumber = new BaseballNumber(inputToList);
         player.updateBaseballNumber(playerInputNumber);
