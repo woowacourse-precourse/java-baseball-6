@@ -1,6 +1,8 @@
 package baseball.game;
 
+import java.util.List;
+
 public interface GamePlay {
 
-    String play(String... args);
+    String play(List<String> args);
 }
