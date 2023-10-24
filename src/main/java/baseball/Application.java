@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumberList = computerRanNumList();
 
         boolean inGame = true;
 
-        while(inGame) {
+        while (inGame) {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             List<Integer> userNumberList = userInputNumList(userInput);
@@ -48,82 +48,81 @@ public class Application {
         }
         return computerNumberList;
     }
+
     //user
-    private static List<Integer> userInputNumList(String userInput){
+    private static List<Integer> userInputNumList(String userInput) {
         List<Integer> userInputNumberList = new ArrayList<>();
         checkLength(userInput);
-        for(String splitUserNumber : userInput.split("")){
-            if(!splitUserNumber.isEmpty()){
+        for (String splitUserNumber : userInput.split("")) {
+            if (!splitUserNumber.isEmpty()) {
                 userInputNumberList.add(Integer.parseInt(splitUserNumber));
             }
         }
-        for(int i = 0; i < userInputNumberList.size(); i++){
+        for (int i = 0; i < userInputNumberList.size(); i++) {
             checkZero(userInputNumberList.get(i));
         }
         return userInputNumberList;
     }
 
     private static void checkLength(String inputNumber) {
-        if (inputNumber.length() != 3){
+        if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자를 입력하세요.");
         }
     }
 
-    private static void checkZero(int number){
-        if (number <= 0){
+    private static void checkZero(int number) {
+        if (number <= 0) {
             throw new IllegalArgumentException("1부터 9사이의 숫자만 입력하세요.");
         }
     }
 
     //game
-    private static boolean checkAgainGame(String againNum){
-        if(againNum.equals("1")){
+    private static boolean checkAgainGame(String againNum) {
+        if (againNum.equals("1")) {
             return true;
         }
-        if(againNum.equals("2")){
+        if (againNum.equals("2")) {
             return false;
         }
         throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
     }
 
-    private static int strikeCnt(List<Integer> computer, List<Integer> player){
+    private static int strikeCnt(List<Integer> computer, List<Integer> player) {
         int strikeCount = 0;
-        for (int i = 0; i < computer.size(); i++){
-            if(computer.get(i) == player.get(i)){
-                strikeCount ++;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i) == player.get(i)) {
+                strikeCount++;
             }
         }
         return strikeCount;
     }
 
-    private static int inListCnt(List<Integer> computer, List<Integer> player){
+    private static int inListCnt(List<Integer> computer, List<Integer> player) {
+
         int inListCount = 0;
-        for (int i = 0; i < computer.size(); i++){
-            if(computer.contains(player.get(i))){
-                inListCount ++;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(player.get(i))) {
+                inListCount++;
             }
         }
         return inListCount;
     }
 
-    private static void printScore(int ball, int strike){
-        if(ball == 0 && strike == 0){
+    private static void printScore(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
             return;
         }
 
-        if(ball == 0 && 1 <= strike && strike <= 3){
+        if (ball == 0 && 1 <= strike && strike <= 3) {
             System.out.println(strike + "스트라이크");
             return;
         }
 
-        if(strike == 0 && 1 <= ball && ball <= 3){
+        if (strike == 0 && 1 <= ball && ball <= 3) {
             System.out.println(ball + "볼");
             return;
         }
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
-
 }
-
-
