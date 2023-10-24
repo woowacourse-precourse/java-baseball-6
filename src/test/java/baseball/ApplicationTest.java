@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,6 +32,10 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        try {
+            Application.main(new String[]{});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
