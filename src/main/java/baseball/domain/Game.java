@@ -19,7 +19,6 @@ public class Game {
     public void gameStart() {
         // 게임 시작
         computer.generateNumber();
-        System.out.println(computer.getNumber());
         gameState();
     }
 
@@ -30,7 +29,7 @@ public class Game {
                 System.out.print("숫자를 입력해주세요 : ");
                 user.setUserGuessNumber();
             } catch (Exception e){
-                gameStop();
+                gameStop(e);
             }
             int[] result = matchingNumber();
             int strike = strikeOrBall(result);
@@ -49,11 +48,13 @@ public class Game {
             System.out.print(ball + "볼 ");
         }
         if (strike != 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.print(strike + "스트라이크");
         }
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
+        System.out.println();
+
         
         return strike;
     }
@@ -64,7 +65,7 @@ public class Game {
         
         int strike = 0;
         int ball = 0;
-        
+    
         for (int i = 0; i < computerNumber.size(); i++){
             if (computerNumber.get(i) == userNumber.get(i)){
                 strike++;
@@ -90,9 +91,13 @@ public class Game {
         }
     }
 
+    private void gameStop(Exception e) {
+        // 게임 중지
+        throw new GameStopExeception("게임을 종료합니다.");
+    }
+
     private void gameStop() {
         // 게임 중지
         isGameEnd = true;
-        throw new GameStopExeception("게임을 종료합니다.");
     }
 }
