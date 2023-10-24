@@ -23,36 +23,25 @@
 # 테스트 구현 목표
 
 1. Game
-    - startGame()시 Inning이 만들어지는지 확인한다.
-    - checkingRestart()시
-        - 1일 경우 startGame()을 호출하는지 확인한다.
-        - 1이나 2가 아닐 경우 에러가 반환되는지 확인한다.
-    - endGame()시 프로그램이 main으로 빠져나가 종료되는지 확인한다.
+    - Inning()이 3스트라이크로 종료 시 재시작/종료 안내 문구가 요구사항대로 출력되는지 확인한다.
+    - Inning()이 오류로 인해 종료 시 재시작/종료 안내 문구가 요구사항대로 출력되는지 확인한다.
 2. Inning
-    - startInning()시
-        - Players가 만들어지는지 확인한다.
-        - Players에 한 명의 User와 한 명의 Computer가 있는지 확인한다.
-    - startInning() 후, Result가 있는지 확인한다.
     - printResult()시
-        - 문제에서 요구하는 형식에 맞춰 출력되는지 확인한다.
-        - Result 변수의 값과 같은 값이 출력되는지 확인한다.
+        - Result 변수의 값과 같은 값이 요구사항대로 출력되는지 확인한다.
+        - Nothing일 경우, 요구사항대로 출력되는지 확인한다.
     - endInning()시
-        - 종료 문구가 설정한대로 출력되는지 확인한다.
+        - 3스트라이크 시, 종료 문구가 요구사항대로 출력되는지 확인한다.
+        - 오류 발생 시, 종료 문구가 요구사항대로 출력되는지 확인한다.
 3. User
-    - createNumber()시 stdout으로 받은 숫자가 들어가는지 확인한다.
     - validateNumber()시
-        - validate하다면 true를 반환하는지 확인한다.
-        - non-validate하다면 exception을 반환하는지 확인한다.
+        - 세 자리 숫자가 아니며, 각각의 자릿수가 1이상 9이하가 아니라면 exception을 반환하는지 확인한다.
 4. Computer
-    - createNumber()시 random으로 숫자가 생성되는지 확인한다.
     - validateNumber()시
-        - validate하다면 true를 반환하는지 확인한다.
-        - non-validate하다면 exception을 반환하는지 확인한다.
+        - 세 자리 숫자가 아니며, 각각의 자릿수가 1이상 9이하가 아니라면 exception을 반환하는지 확인한다.
 5. Number
     - getXDigit()시 해당 숫자가 잘 반환되는지 확인한다.
-    - 각각의 숫자가 1이상 9이하인지 확인한다.
 6. Result
-    - checkValidate()시 strike + ball의 값이 3이하인지 확인한다.
+    - checkValidate()시 strike + ball의 값이 0이상 3이하의 값이 아니라면 exception을 반환한다.
     - checkNothing()시
         - 낫싱일 경우 true를 반환하는지 확인한다.
         - 낫싱이 아닐 경우 false를 반환하는지 확인한다.
@@ -64,7 +53,6 @@
         - 변수의 개수와 동일하게 출력되는지 확인한다.
 7. Players
     - compareNumbers()시
-        - Result 객체가 반환되는지 확인한다.
         - 정답과 맞는 값이 객체에 담겨있는지 확인한다.
 8. Status
     - Getter가 동작하는지 확인한다.
