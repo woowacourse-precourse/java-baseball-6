@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,19 @@ public class BaseballGame {
 
     private static void showInputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    private static void showAskRetry() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private static boolean retry() {
+        showAskRetry();
+        int inputNum = Integer.parseInt(Console.readLine());
+        if (inputNum == 1) {
+            return true;
+        }
+        return false;
     }
 
     private static List<Integer> getUsetNumberList() {
