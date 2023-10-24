@@ -30,10 +30,8 @@ public class ShootBall {
         int randNum;
         for(int i=1; i<=3;i++) {
             randNum = Randoms.pickNumberInRange(1, 9);
-            numbers[randNum] = i;
-            //System.out.print(randNum);
+            numbers[randNum] = (i*2)+1;
         }
-        System.out.print('\n');
     }
 
 
