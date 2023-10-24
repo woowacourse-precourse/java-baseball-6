@@ -21,7 +21,7 @@ public class ValidatePlayerNumber {
     private static void validateNaturalNumber(String numbers) {
         try {
             int n = Integer.parseInt(numbers);
-        } catch (Error e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_NATURAL_NUMBER);
         }
     }
