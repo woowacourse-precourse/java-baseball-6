@@ -19,7 +19,7 @@ class NumberValidatorTest {
 
     @DisplayName("양의 정수인 5를 넣으면 예외가 발생하지 않는다.")
     @Test
-    void validateNaturalNumber() {
+    void validate_natural_number() {
         // given
         int invalidNumber = 5;
 
@@ -31,7 +31,7 @@ class NumberValidatorTest {
 
     @DisplayName("양의 정수의 경계선인 0을 넣으면 예외가 발생한다.")
     @Test
-    void validateNaturalNumberWithZero() {
+    void validate_natural_number_with_zero() {
         // given
         int invalidNumber = 0;
 
@@ -44,7 +44,7 @@ class NumberValidatorTest {
 
     @DisplayName("양의 정수의 경계선인 10을 넣으면 예외가 발생한다.")
     @Test
-    void validateNaturalNumberWithTen() {
+    void validate_natural_number_with_ten() {
         // given
         int invalidNumber = 10;
 
@@ -57,7 +57,7 @@ class NumberValidatorTest {
 
     @DisplayName("경계인 3이라면 False를 반환한다.")
     @Test
-    void isBelowRequiredLength() {
+    void is_below_required_length() {
         // given
         int invalidNumber = 3;
 
@@ -68,7 +68,7 @@ class NumberValidatorTest {
 
     @DisplayName("경계인 3보다 작다면 True를 반환한다.")
     @Test
-    void isBelowRequiredLengthWithTwo() {
+    void is_below_required_length_with_two() {
         // given
         int invalidNumber = 2;
 
@@ -79,7 +79,7 @@ class NumberValidatorTest {
 
     @DisplayName("중복된 숫자가 있다면 예외가 발생한다.")
     @Test
-    void validateDuplicateNumberWithDuplicateNumber() {
+    void validate_duplicate_number_with_duplicate_number() {
         // given
         int duplicateNumber = 122;
 
@@ -92,7 +92,7 @@ class NumberValidatorTest {
 
     @DisplayName("중복된 숫자가 없다면 예외가 발생하지 않는다.")
     @Test
-    void validateDuplicateNumberWithValidNumber() {
+    void validate_duplicate_number_with_valid_number() {
         // given
         int validNumber = 123;
 
@@ -104,7 +104,7 @@ class NumberValidatorTest {
 
     @DisplayName("3자리 문자 중 숫자 외의 값을 넣으면 예외가 발생한다.")
     @Test
-    void validateAllDigitsWithString() {
+    void validate_all_digits_with_string() {
         // given
         String invalidInput = "12a";
 
@@ -117,7 +117,7 @@ class NumberValidatorTest {
 
     @DisplayName("3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
     @Test
-    void validateAllDigitsWithOnlyDigit() {
+    void validate_all_digits_with_only_digit() {
         // given
         String validInput = "489";
 
@@ -129,7 +129,7 @@ class NumberValidatorTest {
 
     @DisplayName("입력 받는 문자가 3글자이기 때문에 예외가 발생하지 않는다.")
     @Test
-    void validateRequiredLengthWithThree() {
+    void validate_required_length_with_three() {
         // given
         String validInput = "123";
 
@@ -141,7 +141,7 @@ class NumberValidatorTest {
 
     @DisplayName("입력 받는 문자가 3글자가 아니라면 예외를 발생한다.")
     @Test
-    void validateRequiredLengthWithNotThree() {
+    void validate_required_length_with_not_three() {
         // given
         String invalidInput = "1234";
 
