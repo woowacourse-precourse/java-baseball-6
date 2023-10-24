@@ -8,9 +8,10 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
+        
         System.out.println("숫자 야구 게임을 시작합니다.");
+        
         while (true) {
-
             // 서로 다른 수로 이루어진 3자리의 수
             int number1 = Randoms.pickNumberInRange(1, 9);
             int number2 = 0;
@@ -76,6 +77,7 @@ public class Application {
                 }
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            
             String newGameYN = Console.readLine();
             if (newGameYN.length() != 1) {
                 throw new IllegalArgumentException();
