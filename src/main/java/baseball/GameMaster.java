@@ -43,11 +43,6 @@ public class GameMaster {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    //TODO: 제출하기 전에는 지우기
-    public int getCorrectAnswer() {
-        return correctAnswer;
-    }
-
     private String requestInput() {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
@@ -56,18 +51,18 @@ public class GameMaster {
     private String isCorrectAnswer(String result) {
         System.out.println(result);
         if (result.equals("3스트라이크")) {
-            return progressOrNot();
+            return requestProgressInput();
         }
         return null;
     }
 
-    private String progressOrNot() {
+    private String requestProgressInput() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
     }
 
-    public String printResult(Map<String, Integer> scoreBoard) {
+    private String printResult(Map<String, Integer> scoreBoard) {
         String result = read(scoreBoard);
         if (result.isEmpty()) {
             return "낫싱";
@@ -84,7 +79,7 @@ public class GameMaster {
             .collect(Collectors.joining(" "));
     }
 
-    private void decide(String decideAnswer) {
+    private void saveDecision(String decideAnswer) {
         isCorrectAnswerFound = true;
         shouldContinueRound = decideAnswer.equals("1");
     }
@@ -92,7 +87,7 @@ public class GameMaster {
     private void requestOneMore(Validator validator, String checkResult) {
         if (checkResult != null) {
             String decideAnswer = validator.getProgressAnswer(checkResult);
-            decide(decideAnswer);
+            saveDecision(decideAnswer);
         }
     }
 }

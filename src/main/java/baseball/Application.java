@@ -6,7 +6,6 @@ public class Application {
         GameMaster gameMaster = new GameMaster();
         while (gameMaster.play()) {
             gameMaster.prepareGame();
-//            System.out.println(gameMaster.getCorrectAnswer());
             gameMaster.playOneRound();
         }
     }
