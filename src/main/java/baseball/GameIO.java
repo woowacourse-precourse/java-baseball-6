@@ -12,6 +12,8 @@ public class GameIO {
     private static final char NUMBER_ZERO_ASCII_CODE = '0';
     private static final int GAME_INPUT_LENGTH = 3;
     private static final String VALUE_REGEXP = "[1-9]+";
+    private static final String COMMAND_REGEXP = "[1-2]+";
+    private static final String NOT_COMMAND_FORMAT_MESSAGE = "1또는 2만 입력 가능합니다.";
 
     static void gameResultPrint(GameResult result) {
         System.out.println(result);
@@ -45,6 +47,18 @@ public class GameIO {
         }
         if (!input.matches(VALUE_REGEXP)) {
             throw new IllegalArgumentException(NOT_NUMBER_MESSAGE);
+        }
+    }
+
+    public static String scanGameCommand() {
+        String command = Console.readLine();
+        validationCommand(command);
+        return command;
+    }
+
+    private static void validationCommand(String command) {
+        if (!command.matches(COMMAND_REGEXP)) {
+            throw new IllegalArgumentException(NOT_COMMAND_FORMAT_MESSAGE);
         }
     }
 

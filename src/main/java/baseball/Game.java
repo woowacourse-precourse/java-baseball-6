@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Game {
 
     private Balls computerBalls;
@@ -21,7 +19,7 @@ public class Game {
         }
 
         GameIO.gameRestartPrint();
-        Command command = Command.findByCommand(Console.readLine());
+        Command command = Command.findByCommand(GameIO.scanGameCommand());
         if (command.isEnd()) {
             status = GameStatus.END;
             return;
