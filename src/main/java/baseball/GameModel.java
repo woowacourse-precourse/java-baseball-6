@@ -13,6 +13,19 @@ public class GameModel {
     public GameModel(Computer computer) {
         this.computer = computer;
     }
+
+    public void setRandomNumberInComputer() {
+        StringBuilder sb = new StringBuilder();
+        Set<Integer> nums = new HashSet<>();
+        while (nums.size() < 3) {
+            nums.add(Randoms.pickNumberInRange(1, 9));
+        }
+        for (int num : nums) {
+            sb.append(num);
+        }
+        computer.setNumber(sb.toString());
+    }
+
     public ResultAndView compareUserAndComputerNumber(String userNumber) {
         // 유효성 검사
         if (!Pattern.matches("^[1-9][1-9][1-9]$", userNumber)) throw new IllegalArgumentException();
