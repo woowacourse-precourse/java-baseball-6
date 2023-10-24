@@ -28,7 +28,7 @@ public class Input {
         System.out.println(RETRY_CHOICE_INPUT_MESSAGE);
         String input = removeWhiteSpace(Console.readLine());
         inputValidator.validateRetryNumber(input);
-        return covertStringToInt(Console.readLine());
+        return covertStringToInt(input);
     }
 
     private String removeWhiteSpace(String input) {

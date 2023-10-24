@@ -15,27 +15,11 @@ public class BaseBallGame {
 
     public void play() {
 
-        boolean gameFirstStarted = true;
+        output.printGameStart();
 
         while (true) {
 
-            if (gameFirstStarted) {
-                output.printGameStart();
-                gameFirstStarted = false;
-            }
-
-            computer.pickSecretNumbers();
-
-            while (true) {
-                List<Integer> guessNumbers = input.getGuessNumbers();
-                GameResult gameResult = computer.countStrikesAndBalls(guessNumbers);
-
-                output.printResult(gameResult);
-                if (gameResult.isAllStrikes()) {
-                    break;
-                }
-
-            }
+            playSingleGame();
 
             int retryChoice = input.getRetryChoice();
             if (retryChoice == GameConstants.EXIT_CHOICE) {
@@ -44,4 +28,18 @@ public class BaseBallGame {
         }
     }
 
+    private void playSingleGame() {
+
+        computer.pickSecretNumbers();
+
+        while (true) {
+            List<Integer> guessNumbers = input.getGuessNumbers();
+            GameResult gameResult = computer.countStrikesAndBalls(guessNumbers);
+
+            output.printResult(gameResult);
+            if (gameResult.isAllStrikes()) {
+                break;
+            }
+        }
+    }
 }
