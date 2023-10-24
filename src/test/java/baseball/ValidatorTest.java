@@ -20,7 +20,6 @@ class ValidatorTest {
     GameMaster gameMaster = new GameMaster();
     validator.writeBaseballAnswer("857");
 
-    validator.init();
     validator.changeInputBaseballType();
 
     String s = gameMaster.printResult(validator.calculateResult());
@@ -32,7 +31,6 @@ class ValidatorTest {
     GameMaster gameMaster = new GameMaster();
     validator.writeBaseballAnswer("853");
 
-    validator.init();
     validator.changeInputBaseballType();
 
     String s = gameMaster.printResult(validator.calculateResult());
@@ -44,7 +42,6 @@ class ValidatorTest {
     GameMaster gameMaster = new GameMaster();
     validator.writeBaseballAnswer("893");
 
-    validator.init();
     validator.changeInputBaseballType();
 
     String s = gameMaster.printResult(validator.calculateResult());
@@ -56,7 +53,6 @@ class ValidatorTest {
     GameMaster gameMaster = new GameMaster();
     validator.writeBaseballAnswer("837");
 
-    validator.init();
     validator.changeInputBaseballType();
 
     String s = gameMaster.printResult(validator.calculateResult());
@@ -68,7 +64,6 @@ class ValidatorTest {
     GameMaster gameMaster = new GameMaster();
     validator.writeBaseballAnswer("839");
 
-    validator.init();
     validator.changeInputBaseballType();
 
     String s = gameMaster.printResult(validator.calculateResult());
@@ -80,7 +75,6 @@ class ValidatorTest {
     GameMaster gameMaster = new GameMaster();
     validator.writeBaseballAnswer("127");
 
-    validator.init();
     validator.changeInputBaseballType();
 
     String s = gameMaster.printResult(validator.calculateResult());

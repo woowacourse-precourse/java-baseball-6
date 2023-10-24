@@ -12,33 +12,32 @@ public class GameMaster {
 
   private boolean shouldContinueRound;
   private boolean isCorrectAnswerFound;
+  private int correctAnswer;
 
   public GameMaster() {
-    this.shouldContinueRound = true;
+    shouldContinueRound = true;
   }
 
-  public void init() {
-    this.isCorrectAnswerFound = false;
-  }
-
-  public boolean isGameInProgress() {
-    return shouldContinueRound;
-  }
-
-  public boolean findCorrectAnswer() {
-    return isCorrectAnswerFound;
-  }
-
-  public void start() {
+  private void start() {
+    isCorrectAnswerFound = false;
     System.out.println("숫자 야구 게임을 시작합니다.");
   }
 
-  public String progress() {
+  public boolean play() {
+    return shouldContinueRound;
+  }
+
+  //TODO: 제출하기 전에는 지우기
+  public int getCorrectAnswer() {
+    return correctAnswer;
+  }
+
+  private String progress() {
     System.out.print("숫자를 입력해주세요 : ");
     return Console.readLine();
   }
 
-  public String checkResult(String result) {
+  private String checkResult(String result) {
     System.out.println(result);
     if(result.equals("3스트라이크")) {
       return progressOrNot();
@@ -46,7 +45,7 @@ public class GameMaster {
     return null;
   }
 
-  public String progressOrNot() {
+  private String progressOrNot() {
     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     return Console.readLine();
@@ -69,8 +68,32 @@ public class GameMaster {
         .collect(Collectors.joining(" "));
   }
 
-  public void conclude(String decideAnswer) {
+  private void conclude(String decideAnswer) {
     isCorrectAnswerFound = true;
     shouldContinueRound = decideAnswer.equals("1");
+  }
+
+  public void prepareGame() {
+    Computer computer = new Computer();
+    correctAnswer = computer.getRandomNumber();
+    start();
+  }
+
+  public void playOneRound() {
+    while(!isCorrectAnswerFound) {
+      Validator validator = new Validator(correctAnswer);
+      String answer = progress();
+      validator.writeBaseballAnswer(answer);
+      validator.changeInputBaseballType();
+      String s = printResult(validator.calculateResult());
+      decide(validator, checkResult(s));
+    }
+  }
+
+  private void decide(Validator validator, String decide) {
+    if(decide != null) {
+      String decideAnswer = validator.writeProgressAnswer(decide);
+      conclude(decideAnswer);
+    }
   }
 }

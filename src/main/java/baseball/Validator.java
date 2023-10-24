@@ -77,13 +77,13 @@ public class Validator {
     }
   }
 
-  public void init() {
+  private void init() {
     String[] splitRandom = String.valueOf(randomNumber).split("");
     String[] splitInput = String.valueOf(inputNumber).split("");
     addToList(splitRandom, splitInput);
   }
 
-  public void addToList(String[] randomArr, String[] inputArr) {
+  private void addToList(String[] randomArr, String[] inputArr) {
     for(int i=0; i<3; i++) {
       this.randomList.add(randomArr[i]);
       this.inputList.add(new Baseball(Integer.parseInt(inputArr[i]), i));
@@ -91,6 +91,7 @@ public class Validator {
   }
 
   public void changeInputBaseballType() {
+    init();
     for(Baseball baseball : inputList) {
       baseball.checkType(randomList);
     }
