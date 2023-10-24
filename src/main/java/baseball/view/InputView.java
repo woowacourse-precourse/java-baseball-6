@@ -26,7 +26,7 @@ public class InputView {
         return input;
     }
 
-    public static void validateNumericAndThreeDigit(String input) {
+    public static void validateNumericAndThreeDigit(String input) { // 숫자이면서 3자리 수인지 검증
         Matcher matcher = Pattern.compile(THREE_DIGIT_NUMBER_REGEX).matcher(input);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(DIGIT_EXCEPTION_MESSAGE);
@@ -41,7 +41,7 @@ public class InputView {
     }
 
     public static void validateOneOrTwo(String input) {
-        Matcher matcher = Pattern.compile(ONE_OR_TWO_REGEX).matcher(input);
+        Matcher matcher = Pattern.compile(ONE_OR_TWO_REGEX).matcher(input); // 입력값이 1 또는 2인지(다른 숫자, 문자 안됨) 검증
         if (!matcher.matches()) {
             throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
         }

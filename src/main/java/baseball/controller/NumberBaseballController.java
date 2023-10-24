@@ -15,24 +15,21 @@ public class NumberBaseballController {
     private static final OutputView outputView = new OutputView();
     private static final InputView inputView = new InputView();
 
-
-
     public void run() {
-        int restartNum = 1;
         outputView.printStartMessage();
-        while (restartNum != 2) {
+        int restartNum;
+        do {
             playGame();
             restartNum = getRestartNumber();
-        }
+        } while (restartNum != 2);
     }
 
     public void playGame() {
         int ballCnt, strikeCnt;
         List<Integer> computerNumbers = makeComputerNumber();
-        List<Integer> userNumbers;
 
         do {
-            userNumbers = getUserNumbers();
+            List<Integer> userNumbers = getUserNumbers();
             ballCnt = countBallNumber(userNumbers, computerNumbers);
             strikeCnt = countStrikeNumber(userNumbers, computerNumbers);
 
@@ -46,15 +43,14 @@ public class NumberBaseballController {
 
     public List<Integer> getUserNumbers() {
         int userNumber = Integer.parseInt(inputView.printInputNumber());
-        List<Integer> userNumbers = chageIntToList(userNumber);
+        List<Integer> userNumbers = changeIntToList(userNumber);
 
-        isNotInSameNumber(userNumbers); // 중복 값 검증
+        validateDuplicateNumbers(userNumbers); // 중복 값 검증
         return userNumbers;
     }
 
     public int getRestartNumber() {
-        int restartNum = Integer.parseInt(inputView.printRestartNumber());
-        return restartNum;
+        return Integer.parseInt(inputView.printRestartNumber());
     }
 
     public int countBallNumber(List<Integer> userNumbers, List<Integer> computerNumbers) {
@@ -83,15 +79,15 @@ public class NumberBaseballController {
         return computerNumbers.indexOf(userNumber) == userNumbers.indexOf(userNumber);
     }
 
-    public void isNotInSameNumber(List<Integer> userNumbers) {
+    public void validateDuplicateNumbers(List<Integer> userNumbers) {
         int originSize = userNumbers.size();
-        List<Integer> distinct = userNumbers.stream().distinct().toList();
+        List<Integer> distinctList = userNumbers.stream().distinct().toList();
 
-        if (originSize != distinct.size())
+        if (originSize != distinctList.size())
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION_MESSAGE);
     }
 
-    public List<Integer> chageIntToList(int userNumber) {
+    public List<Integer> changeIntToList(int userNumber) {
         List<Integer> userNumbers = new ArrayList<>();
 
         while (userNumber > 0) {
