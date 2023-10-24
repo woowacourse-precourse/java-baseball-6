@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -19,5 +21,13 @@ public class BaseBallTest {
         assertEquals(expected, result);
     }
 
-
+    @Test
+    @DisplayName("플레어 수가 비정상적으로 들어옴")
+    void 플레이어_수_입력_테스트_거짓() {
+        String invalidInput = "4567";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BaseBall.getPlayerInputNumber(invalidInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
