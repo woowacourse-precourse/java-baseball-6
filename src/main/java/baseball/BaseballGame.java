@@ -60,15 +60,12 @@ public class BaseballGame {
     //  1~9 수 중 중복되지 않은 수 3개 input 받기
     public List<Integer> getThreeNum() throws IllegalArgumentException{
         List<Integer> user = new ArrayList<>();
-
         System.out.print(Message.REQUIRE_NUMBER_MESSAGE);
         String input = Console.readLine();
-
         validator.isRightSize(input);
-        for (int i = 0; i< Numeric.NUMBER_OF_INPUT; i++) {
+        for (int i=0; i<Numeric.NUMBER_OF_INPUT; i++) {
             char charValue = input.charAt(i);
-            String stringValue = String.valueOf(charValue);
-            Integer intValue = validator.changeToInteger(stringValue);
+            Integer intValue = charValue - '0';
             validator.isRightRange(intValue);
             validator.isContain(user, intValue);
             user.add(intValue);

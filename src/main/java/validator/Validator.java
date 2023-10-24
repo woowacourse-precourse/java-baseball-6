@@ -9,14 +9,9 @@ public class Validator {
             throw new IllegalArgumentException(); // "길이가 3이 아닙니다."
         }
     }
-    // input 받은 값이 int로 변환 가능한지 체크
-    public Integer changeToInteger(String str) throws IllegalArgumentException {
-        Integer integer = Integer.parseInt(str);
-        return integer;
-    }
     // 1부터 9까지의 수인지 체크
     public void isRightRange(Integer integer) throws IllegalArgumentException {
-        if (integer == 0) {
+        if (integer < 1 || integer > 9) {
            throw new IllegalArgumentException();
         }
     }
