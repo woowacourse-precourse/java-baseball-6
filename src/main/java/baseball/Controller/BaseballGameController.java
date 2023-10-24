@@ -1,5 +1,6 @@
 package baseball.Controller;
 
+import baseball.model.Restart;
 import baseball.service.CompareNumber;
 import baseball.service.ComputerService;
 import baseball.service.PlayerService;
@@ -18,6 +19,9 @@ public class BaseballGameController {
 
     private static CompareNumber compareNumber = new CompareNumber();
 
+    private static Restart restart;
+
+    private static final int RESTART_GAME = 1;
     public void gameStart() {
         View.printStart();
         compareResult();
@@ -35,10 +39,10 @@ public class BaseballGameController {
     }
 
     public static void restartGame() {
-        View.printRestart();
-        String input = Console.readLine();
+        String input = View.printRestart();
+        restart = new Restart(input);
         int parsedInput = Integer.parseInt(input);
-        if (parsedInput == 1) {
+        if (parsedInput == RESTART_GAME) {
             computer = computerService.createComputerList();
             compareResult();
         }
