@@ -36,11 +36,11 @@ public class Game {
                 }
 
                 if (userNumber < 100 || userNumber > 999) {
-                    throw new IllegalArgumentException("3자리의 수를 입력해야 합니다.");
+                    throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
                 }
 
                 if (!isUniqueDigits(userNumber)) {
-                    throw new IllegalArgumentException("서로 다른 숫자만 입력해야 합니다.");
+                    throw new IllegalArgumentException("중복된 숫자가 없어야 합니다.");
                 }
 
                 separateNumberToDigits(userNumber);
@@ -51,7 +51,7 @@ public class Game {
                     String input = scanner.nextLine();
 
                     if (!input.equals(INPUT_RESTART) && !input.equals(INPUT_QUIT)) {
-                        throw new IllegalArgumentException("1 또는 2만 입력하세요.");
+                        throw new IllegalArgumentException("1 또는 2를 입력하세요.");
                     }
 
                     handleQuitOrRestart(input);
