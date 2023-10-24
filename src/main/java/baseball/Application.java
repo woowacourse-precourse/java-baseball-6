@@ -88,18 +88,22 @@ class BaseballGame implements GameInterface {
         result.put(ScoreType.BALL, ball);
     }
 
-    private void printResult(int strike, int ball) {
-        String resultString = "";
+    private void displayResult(HashMap<ScoreType, Integer> result) {
+        int strike = result.get(ScoreType.STRIKE);
+        int ball = result.get(ScoreType.BALL);
+
         if (strike == 0 && ball == 0) {
-            resultString = "낫싱";
+            System.out.println("낫싱");
+            return;
         }
-        if (ball != 0) {
-            resultString += ball + "볼 ";
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
         }
-        if (strike != 0) {
-            resultString += strike + "스트라이크";
+        if (strike > 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println();
         }
-        System.out.println(resultString);
     }
 
     private void parseString(List<Integer> result, String target) {
