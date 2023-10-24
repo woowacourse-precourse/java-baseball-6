@@ -16,7 +16,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (try_again.equals("1")) {
             List<Integer> comInputNum = new ArrayList<>();
-            getComputerNum(comInputNum);
+            getComInputNum(comInputNum);
             do {
                 List<Integer> userInputNum = new ArrayList<>();
                 System.out.print("숫자를 입력해주세요 : ");
@@ -58,7 +58,7 @@ public class Application {
         }
     }
 
-    static void getComputerNum(List<Integer> comInputNum) {
+    static void getComInputNum(List<Integer> comInputNum) {
         // Generate the computer's numbers.
         while (comInputNum.size() < MAX_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
