@@ -1,4 +1,4 @@
-package baseball;
+package baseball.create;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -7,13 +7,8 @@ import java.util.stream.Collectors;
 
 public class GameCreateContext {
 
-  public static InputCommands inputCommand() {
-    RandomNumberCreateCommands createCommands = createRandomNumberCommand();
+  public static InputCommands inputCommand(RandomNumberCreateCommands createCommands) {
     return new InputCommands(createRandomNumbs(createCommands));
-  }
-
-  private static RandomNumberCreateCommands createRandomNumberCommand() {
-    return new RandomNumberCreateCommands(1, 9, 3, new ArrayList<>());
   }
 
   private static String createRandomNumbs(RandomNumberCreateCommands createCommands) {
