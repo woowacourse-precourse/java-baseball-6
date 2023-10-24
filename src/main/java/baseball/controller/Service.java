@@ -11,14 +11,17 @@ public class Service {
     User user = new User();
     InputView inputView = new InputView();
     boolean gameStop = false;
+    boolean isFirstGame = true;
     int ball;
     int strike;
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
 
     public void gameStart() {
+        if (isFirstGame) {
+            System.out.println(OutputView.STARTING_MESSAGE);
+        }
         initializeGame();
-        System.out.println(OutputView.STARTING_MESSAGE);
         while (!gameStop) {
             ball = 0;
             strike = 0;
@@ -59,6 +62,7 @@ public class Service {
     public void askRestartGame(String input) {
         if (input.equals("1")) {
             gameStop = false;
+            isFirstGame = false;
             gameStart();
         }
     }
