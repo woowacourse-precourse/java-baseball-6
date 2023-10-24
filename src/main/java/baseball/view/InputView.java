@@ -12,9 +12,9 @@ public class InputView {
         return input;
     }
 
-    public String inputRestartOption() {
+    public boolean inputRestartOption() {
         String input = Console.readLine();
         GameOptionValidator.validateGameRestartOption(input);
-        return input;
+        return input.equals(GameOptionValidator.RESTART_GAME_OPTION);
     }
 }
