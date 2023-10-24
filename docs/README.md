@@ -39,16 +39,17 @@
 ### 기능 구현 시 class 분할
 
 - model
-    - **NumberGenerator**(컴퓨터 숫자 생성)
+    - **ComputerNumber**(컴퓨터 숫자 생성)
+    - **UserNumber**(사용자의 입력에 대한 검증)
     - **NumberComparator**(컴퓨터 숫자와 유저 입력을 비교후 **GameController**로 전달)
 
 - controller
     - **GameController**(게임의 시작 및 종료를 결정)
-        - 유저의 입력을 **NumberComparator로 전달**
+        - 유저의 입력을 **UserNumber로 전달**
         - **NumberComparator** 결과를 OutputView로 전달
 
 - view
-    - **InputView** (유저 입력을 받고 여기서 입력된 값을 GameController에 전달)
+    - **InputView** (유저 입력 받아오고 GameController로 전달)
     - **OutputView** (compare한 후 결과를 출력)
 
 - vailidator
