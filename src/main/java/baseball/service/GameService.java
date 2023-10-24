@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.model.GameNumber;
 import baseball.view.ForInputMessage;
-import baseball.view.OutputMessage;
 import utils.RandomUtils;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class GameService {
 
     private RandomUtils randomUtils = new RandomUtils();
     private GameNumber gameNumber = new GameNumber();
-    private OutputMessage outputMessage = new OutputMessage();
     private ForInputMessage forInputMessage = new ForInputMessage();
 
     private ValidationService validationService = new ValidationService(
