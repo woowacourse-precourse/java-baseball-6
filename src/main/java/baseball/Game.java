@@ -54,26 +54,48 @@ public class Game {
         return false;
     }
 
+    public boolean gameOver(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int check = Integer.parseInt(Console.readLine());
+
+        if(check == 1){
+            return false;
+        } else {
+            return true;
+        }
+    }
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
+        while(true) {
+            List<Integer> number = makeRandomNumber();
 
-        List<Integer> number = makeRandomNumber();
+            while (true) {
+                ball = 0;
+                strike = 0;
 
-        while(true){
-            ball = 0;
-            strike = 0;
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
 
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
+                List<Integer> inputList = new ArrayList<>();
+                for (char i : input.toCharArray()) {
+                    inputList.add(Character.getNumericValue(i));
+                }
 
-            List<Integer> inputList = new ArrayList<>();
-            for(char i:input.toCharArray()){
-                inputList.add(Character.getNumericValue(i));
+                playBall(number, inputList);
+                printResult();
+
+                if(checkStriked()){
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                    break;
+                }
             }
 
-            playBall(number, inputList);
-
+            if(gameOver()) {
+                break;
+            }
         }
+        System.out.println("게임 종료");
+
     }
 }
