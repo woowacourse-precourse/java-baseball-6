@@ -22,13 +22,13 @@ public class BaseballResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (ball.compareTo(Ball.ZERO) > 0) {
-            sb.append(String.format(BaseballMessageConst.BALL, ball.getBallCount())).append(" ");
+            sb.append(String.format(BaseballMessageConst.BALL_MESSAGE, ball.getBallCount())).append(" ");
         }
         if (strike.compareTo(Strike.ZERO) > 0) {
-            sb.append(String.format(BaseballMessageConst.STRIKE, strike.getStrikeCount()));
+            sb.append(String.format(BaseballMessageConst.STRIKE_MESSAGE, strike.getStrikeCount()));
         }
         if (strike == Strike.ZERO && ball == Ball.ZERO) {
-            sb.append(BaseballMessageConst.NOTHING);
+            sb.append(BaseballMessageConst.NOTHING_MESSAGE);
         }
         return sb.toString();
     }

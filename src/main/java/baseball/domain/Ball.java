@@ -18,6 +18,6 @@ public enum Ball {
                 return ball;
             }
         }
-        throw new IllegalArgumentException(BaseballMessageConst.OUT_OF_RANGE_BALL);
+        throw new IllegalArgumentException(BaseballMessageConst.OUT_OF_RANGE_BALL_ERROR);
     }
 }

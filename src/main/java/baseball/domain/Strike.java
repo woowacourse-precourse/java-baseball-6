@@ -18,7 +18,7 @@ public enum Strike {
                 return strike;
             }
         }
-        throw new IllegalArgumentException(BaseballMessageConst.OUT_OF_RANGE_BALL);
+        throw new IllegalArgumentException(BaseballMessageConst.OUT_OF_RANGE_BALL_ERROR);
     }
 
 }
