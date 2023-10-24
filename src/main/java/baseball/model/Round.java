@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.stream.IntStream;
+
 public class Round {
     private static final String BALL_STRING = "볼";
     private static final String STRIKE_STRING = "스트라이크";
@@ -8,12 +10,24 @@ public class Round {
     private final int ballCount;
     private final int strikeCount;
 
-    public Round(int ballCount, int strikeCount) {
+    private Round(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
 
-    public String calculateResult() {
+    public static Round fromPlayerAndSecretNumbers(String playerNumber, String secretNumber) {
+        int ballCount = (int) IntStream.range(0, playerNumber.length())
+                .filter(i -> playerNumber.charAt(i) != secretNumber.charAt(i))
+                .filter(i -> secretNumber.contains(String.valueOf(playerNumber.charAt(i))))
+                .count();
+        int strikeCount = (int) IntStream.range(0, playerNumber.length())
+                .filter(i -> playerNumber.charAt(i) == secretNumber.charAt(i))
+                .count();
+
+        return new Round(ballCount, strikeCount);
+    }
+
+    public String generateResultMessage() {
         StringBuilder result = new StringBuilder();
 
         if (ballCount > 0) {
