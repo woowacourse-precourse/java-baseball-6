@@ -5,7 +5,7 @@ public class Score {
     int ball;
 
 
-    public int getSrike() {
+    public int getStrike() {
 
         return strike;
     }

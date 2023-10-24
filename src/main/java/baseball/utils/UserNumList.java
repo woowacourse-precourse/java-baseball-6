@@ -2,7 +2,6 @@ package utils;
 
 public class UserNumList {
 
-
     public static int[] UserInputList(String num) {
         int[] userInputList = new int[num.length()];
         for (int i = 0; i < num.length(); i++) {
