@@ -46,13 +46,13 @@ public class BaseballGame {
 
     private void validAnswerDistinct(List<Integer> userAnswer) {
         if (userAnswer.stream().distinct().toList().size() != ANSWER_DIGIT) {
-            throw new IllegalArgumentException(ERROR_INPUT_NOT_DISTINCT)
+            throw new IllegalArgumentException(ERROR_INPUT_NOT_DISTINCT);
         }
     }
 
     private void validAnswerDigit(List<Integer> userAnswer) {
         if (userAnswer.size() != ANSWER_DIGIT) {
-            throw new IllegalArgumentException(ERROR_INPUT_INVALID_DIGIT)
+            throw new IllegalArgumentException(ERROR_INPUT_INVALID_DIGIT);
         }
     }
 
