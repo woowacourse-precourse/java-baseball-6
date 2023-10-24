@@ -6,7 +6,6 @@ import baseball.model.GameResultCalculator;
 import baseball.model.Number;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
     private final OutputView view;
@@ -19,6 +18,7 @@ public class GameController {
         view = new OutputView();
         input = new InputView();
         calculator = new GameResultCalculator();
+        computer = new Computer();
     }
 
     public void start() {
@@ -30,26 +30,25 @@ public class GameController {
     }
 
 
-    public void startGame() {
-        computer = new Computer();
-        List<Integer> random = computer.getRandomNumber();
-
-        this.randomNumber = new Number(random);
+    private void startGame() {
+        computer.generateRandomNumber();
+        this.randomNumber = new Number(computer.getRandomNumber());
     }
 
-    public void playGame() {
+    private void playGame() {
         Number inputNumber;
         do {
             inputNumber = input.readNumberInput();
 
-            String result = calculator.makeGameResult(randomNumber, inputNumber);
-            view.printGameResult(result);
+            calculator.makeGameResult(randomNumber, inputNumber);
+
+            view.printGameResult(calculator.toString());
 
         } while (!calculator.isThreeStrike(randomNumber, inputNumber));
 
     }
 
-    public boolean isEndGame() {
+    private boolean isEndGame() {
         view.printSuccessAndEndMessage();
         FinishInput finishInput = input.readFinishInput();
 

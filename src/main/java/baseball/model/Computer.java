@@ -9,18 +9,22 @@ public class Computer {
 
     public Computer() {
         randomNumber = new ArrayList<>();
-        generateRandomNumber();
     }
 
     public List<Integer> getRandomNumber() {
         return randomNumber;
     }
 
-    private void generateRandomNumber() {
+    public void generateRandomNumber() {
+        initRandomNumber();
         while (randomNumber.size() < Number.NUMBER_SIZE) {
             int digit = Randoms.pickNumberInRange(1, 9);
             addUniqueNumber(digit);
         }
+    }
+
+    private void initRandomNumber() {
+        randomNumber = new ArrayList<>();
     }
 
     private void addUniqueNumber(int digit) {
