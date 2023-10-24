@@ -6,8 +6,6 @@ public class PlayGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
 
-        //System.out.println("컴퓨터 : " + computer.getRandomNums());
-
         boolean success = false;
 
         while(!success){

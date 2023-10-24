@@ -19,7 +19,7 @@ public class Restart {
 
     public static void validateInput(String input){
         if(input == null){
-            throw new IllegalArgumentException("you must choose one option.");
+            throw new IllegalArgumentException("you must choose a option.");
         }
     }
     public static void validateNumber(int choice){

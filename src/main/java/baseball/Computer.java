@@ -11,7 +11,7 @@ public class Computer {
         this.randomNums = generateRandomNumber();
     }
 
-    public List<Integer> getRandomNums() {
+    public List<Integer> getRandomNum() {
         return randomNums;
     }
 
@@ -26,4 +26,5 @@ public class Computer {
         }
         return numberList;
     }
+
 }
