@@ -13,9 +13,9 @@ public class BaseballGame {
     public static final String MUST_INPUT_RESTARTS_MESSAGE = "1 또는 2를 입력해야 합니다.";
 
     public static final String GAME_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String GAME_RESTART = "1";
-    private static final String GAME_FINISH = "2";
-    private static final Set<String> INPUT_RESTARTS = Set.of(GAME_RESTART, GAME_FINISH);
+    private static final Integer GAME_RESTART = 1;
+    private static final Integer GAME_FINISH = 2;
+    private static final Set<Integer> INPUT_RESTARTS = Set.of(GAME_RESTART, GAME_FINISH);
 
     private boolean isStart = true;
 
@@ -40,10 +40,9 @@ public class BaseballGame {
     }
 
     // TODO : 과도한 상수 사용 -> enum으로 교체
-    // TODO : Input.consoleLine() -> consoleNumber()로 교체
     private void askRestart() {
         Output.consoleLine(GAME_RESTART_MESSAGE);
-        String inputRestart = Input.consoleLine();
+        Integer inputRestart = Input.consoleNumber();
 
         if (!INPUT_RESTARTS.contains(inputRestart)) {
             throw new IllegalArgumentException(MUST_INPUT_RESTARTS_MESSAGE);
