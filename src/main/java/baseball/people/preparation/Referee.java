@@ -4,21 +4,15 @@ public class Referee {
     private TargetNumber targetNumber;
 
     Referee() {
-    }
-
-    /** Referee 객체를 생성하는 정적 팩토리 메서드 */
-    public static Referee enter() {
-        return new Referee();
+        targetNumber = TargetNumber.generate(0, 0, 0);
     }
 
     /**
-     * 3개의 숫자를 순서대로 받아서 멤버 변수인 targetNumber 값을 정할 수 있다.
-     * (0, 0, 0)이 입력되면 임의의 3자리 숫자가 선택되고,
-     * 1 ~ 9 중 3개의 서로 다른 숫자를 입력하는 것으로 targetNumber를 지정할 수 있다.
-     * (값을 지정하는 것은 테스트를 위해 사용되었다.)
+     * Referee 객체를 생성하는 정적 팩토리 메서드
+     * @return Referee 객체
      */
-    public void playBall(int a, int b, int c) {
-        targetNumber = TargetNumber.generate(a, b, c);
+    public static Referee enter() {
+        return new Referee();
     }
 
     /**
