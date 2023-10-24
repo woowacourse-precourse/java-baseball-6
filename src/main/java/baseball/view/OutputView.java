@@ -10,13 +10,14 @@ public class OutputView {
     private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
 
-
     public static boolean generateResultMessage(StrikeBallCount strikeBallCount) {
 
         if (strikeBallCount.getStrikeCount() == 3) {
 
             System.out.println(strikeBallCount.getStrikeCount() + STRIKE_MESSAGE);
+
             System.out.println(THREE_STRIKE_MESSAGE);
+            
             return true;
 
         } else if (strikeBallCount.getStrikeCount() == 0 && strikeBallCount.getBallCount() == 0) {

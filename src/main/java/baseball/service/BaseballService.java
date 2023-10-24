@@ -27,23 +27,23 @@ public class BaseballService {
 
         int[] computerBall = ComputerBallGenerator.generateComputerBall();
 
-        boolean isCorrect = false;
+        StrikeBallCount strikeBallCount;
 
         do {
             List<Integer> userInput = InputView.userInputNumber();
 
-            StrikeBallCount strikeBallCount = InputCalculator.compareComputerBallAndUserInput(computerBall, userInput);
+            strikeBallCount = InputCalculator.compareComputerBallAndUserInput(computerBall, userInput);
 
-            isCorrect = OutputView.generateResultMessage(strikeBallCount);
-
-        } while (!isCorrect);
+        } while (!OutputView.generateResultMessage(strikeBallCount));
 
 
     }
 
     private static boolean gameEnd() {
 
-        if(RestartCalculator.isRestart()) return true;
+        if (RestartCalculator.isRestart()) {
+            return true;
+        }
 
         return false;
     }

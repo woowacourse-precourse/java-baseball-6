@@ -13,7 +13,7 @@ public class InputCalculator {
 
         for (int i = 0; i < SELECTION_COUNT; i++) {
 
-            compareComputerBallAndEachBall(computerBall, userInput.get(i), i+1, strikeBallCount);
+            compareComputerBallAndEachBall(computerBall, userInput.get(i), i + 1, strikeBallCount);
 
         }
 
@@ -23,11 +23,11 @@ public class InputCalculator {
     public static void compareComputerBallAndEachBall(int[] computerBall, int eachBall, int index,
             StrikeBallCount strikeBallCount) {
 
-        if(computerBall[eachBall] == index){
+        if (computerBall[eachBall] == index) {
 
             strikeBallCount.increaseStrikeCount();
 
-        }else if(computerBall[eachBall] != 0 ){
+        } else if (computerBall[eachBall] != 0) {
 
             strikeBallCount.increaseBallCount();
 

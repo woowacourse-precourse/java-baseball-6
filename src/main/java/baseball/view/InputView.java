@@ -13,11 +13,14 @@ public class InputView {
 
     // 맨 처음 시작할 때, 메시지 출력하기
     public static void getStartMessage() {
+
         System.out.println(START_MESSAGE);
+
     }
 
     // 유저가 세 숫자를 입력할 때, 배열로 넣어주기
     public static List<Integer> userInputNumber() {
+
         System.out.print(USER_INPUT_MESSAGE);
 
         try {
@@ -28,6 +31,7 @@ public class InputView {
             List<Integer> userInput = convertInputFormat(input);
 
             return userInput;
+
         } catch (IllegalArgumentException e) {
 
             throw new IllegalArgumentException(e.getMessage());
