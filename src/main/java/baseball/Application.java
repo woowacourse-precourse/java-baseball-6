@@ -24,31 +24,35 @@ public class Application {
         Scanner scan = new Scanner(System.in);
         List<Integer> computer = new ArrayList<>();
 
-         while (computer.size() < 3) {
-             int randomNumber = Randoms.pickNumberInRange(1, 9);
-             if (!computer.contains(randomNumber)) {
-                 computer.add(randomNumber);
-             }
-         }
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         int power = 1;
+        boolean flag = false;
 
         while(power!=2){
+            if(!flag) {
+                computer.clear();
+                while (computer.size() < 3) {
+                    int randomNumber = Randoms.pickNumberInRange(1, 9);
+                    if (!computer.contains(randomNumber)) {
+                        computer.add(randomNumber);
+                    }
+                }
+                flag = true;
+            }
 
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.printf("%s -> 숫자를 입력해주세요 : ", computer.toString());
             String str = readLine();
 
             if (str.length() != 3)
-                throw new IllegalArgumentException("Invalid argument: " + str);
+                throw new IllegalArgumentException("사용자 입력값 오류 : " + str);
             else if(str.charAt(0) == '0' ||
                     str.charAt(1) == '0' ||
                     str.charAt(2) == '0')
-                throw new IllegalArgumentException("Invalid argument: " + str);
+                throw new IllegalArgumentException("사용자 입력값 오류 : " + str);
             else if(countChar(str,str.charAt(0))>1 ||
                     countChar(str,str.charAt(1))>1 ||
                     countChar(str,str.charAt(2))>1)
-                throw new IllegalArgumentException("Invalid argument: " + str);
+                throw new IllegalArgumentException("사용자 입력값 오류 : " + str);
 
 
             List<Integer> user = new ArrayList<>();
@@ -83,7 +87,9 @@ public class Application {
                 power = Integer.parseInt(readLine());
 
                 if(power!=1 && power!=2)
-                    throw new IllegalArgumentException("Invalid argument: " + power);
+                    throw new IllegalArgumentException("power 입력값 오류: " + power);
+
+                flag = false;
                 }
             }
         }
