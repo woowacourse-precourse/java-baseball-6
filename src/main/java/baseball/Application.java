@@ -63,12 +63,12 @@ public class Application {
             } else if (result[0] == 0 && result[1] > 0) {
                 System.out.println(result[1] + "스트라이크");
             } else if (result[0] > 0 && result[1] > 0) {
-                System.out.println(result[0] + "볼" + result[1] + "스트라이크");
+                System.out.println(result[0] + "볼" + " " + result[1] + "스트라이크");
             } else {
                 System.out.println("낫싱");
             }
             if (result[1] == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
