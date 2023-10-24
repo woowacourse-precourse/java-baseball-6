@@ -5,4 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 public final class Utils {
+    public static void validateRestartOrExitInput(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        }
+    }
+
 
