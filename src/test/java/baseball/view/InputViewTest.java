@@ -1,22 +1,20 @@
 package baseball.view;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class InputViewTest {
-
-    private static InputView view=new InputView();
+    private static InputView view = new InputView();
 
     @DisplayName("사용자 Numbers 입력 기능")
     @Test
-    void 사용자_Numbers_입력_테스트(){
-        String input="123";
-        InputStream in=new ByteArrayInputStream((input+"\n").getBytes());
+    void 사용자_Numbers_입력_테스트() {
+        String input = "123";
+        InputStream in = new ByteArrayInputStream((input + "\n").getBytes());
         System.setIn(in);
 
         assertThat(view.inputNumbers()).isEqualTo(input);

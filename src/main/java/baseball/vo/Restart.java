@@ -6,14 +6,14 @@ import baseball.model.Validator;
 public class Restart {
     private String option;
 
-    public Restart(String input){
-        Validator validator=new RestartValidator();
+    public Restart(String input) {
+        Validator validator = new RestartValidator();
         validator.validate(input);
 
-        option=input;
+        option = input;
     }
 
-    public boolean isContinue(){
+    public boolean isContinue() {
         return option.equals("1");
     }
 
