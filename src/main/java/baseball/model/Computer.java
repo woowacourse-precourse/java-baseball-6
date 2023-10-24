@@ -13,15 +13,18 @@ public class Computer {
     }
 
     public void generateRandomNumbers() {
-        if (numbers.size() == Constant.MAX_DIGIT)
-            numbers.clear();
+        init();
         while (numbers.size() < Constant.MAX_DIGIT) {
             int randomNumber = Randoms.pickNumberInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER);
             if (!numbers.contains(randomNumber))
                 numbers.add(randomNumber);
         }
     }
-
+    
+    public void init() {
+        numbers.clear();
+    }
+    
     public List<Integer> getNumbers() {
         return numbers;
     }
