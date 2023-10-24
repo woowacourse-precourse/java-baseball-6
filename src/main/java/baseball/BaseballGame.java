@@ -22,6 +22,7 @@ public class BaseballGame implements NumberGame {
 
         while (true) {
             List<Integer> userGuessNumber = NumberFactory.createByUser();
+            Score score = ScoreFactory.calculateScore(randomNumber, userGuessNumber);
         }
 
     }
