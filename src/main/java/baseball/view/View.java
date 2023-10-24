@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 public class View {
 
@@ -28,16 +28,17 @@ public class View {
 
     public static void result(final int strike, final int ball) {
         StringBuilder sb = new StringBuilder();
+
         if (strike == 0 && ball == 0) {
             sb.append(NOTING);
         }
         if (ball != 0) {
-            sb.append(ball).append(BALL);
+            sb.append(ball).append(BALL).append(" ");
         }
-        sb.append(" ");
         if (strike != 0) {
             sb.append(strike).append(STRIKE);
         }
+
         System.out.println(sb);
     }
 }

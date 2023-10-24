@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.view.View;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
@@ -9,7 +11,7 @@ public class GameController {
     private final int RESTART = 1;
     private final int GAME_OVER = 2;
 
-    Play play = new Play();
+    Play play = new Play(SIZE);
 
     public void start() {
         View.start();
@@ -17,6 +19,7 @@ public class GameController {
             play.setPlay(SIZE, START_INCLUSIVE, END_INCLUSIVE);
             play.run();
         } while (restart());
+        View.end();
     }
 
     private boolean restart() {
