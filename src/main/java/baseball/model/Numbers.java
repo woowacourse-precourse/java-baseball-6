@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.ExceptionMessage;
 import java.util.List;
 
 public class Numbers {
@@ -16,7 +17,7 @@ public class Numbers {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException("숫자는 3개를 가져야 합니다");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBERS_SIZE);
         }
     }
 
@@ -26,7 +27,7 @@ public class Numbers {
                 .findAny()
                 .ifPresent(number ->
                 {
-                    throw new IllegalArgumentException("숫자는 1부터 9까지의 수로 이루어져야 합니다");
+                    throw new IllegalArgumentException(ExceptionMessage.NUMBERS_RANGE);
                 });
     }
 
@@ -35,7 +36,7 @@ public class Numbers {
                 .distinct()
                 .count();
         if (distinctNumberSize != NUMBERS_SIZE) {
-            throw new IllegalArgumentException("숫자는 서로 다른 수로 이루어져 있어야 한다");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBERS_DUPLICATE);
         }
     }
 

@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.constant.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -31,13 +32,13 @@ public class InputView {
 
     private void validateNumeric(String input) {
         if (input.isBlank() || !NUMERIC_PATTERN.matcher(input).matches()) {
-            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NUMERIC);
         }
     }
 
     private void validateSingleLetter(String input) {
         if (input.length() != 1) {
-            throw new IllegalArgumentException("한 글자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.SINGLE_LETTER);
         }
     }
 

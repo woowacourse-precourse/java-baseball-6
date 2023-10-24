@@ -6,7 +6,7 @@ public enum GameStatus {
     RESTART(1),
     QUIT(2);
 
-    private int decisionNumber;
+    private final int decisionNumber;
 
     GameStatus(int decisionNumber) {
         this.decisionNumber = decisionNumber;
@@ -16,7 +16,7 @@ public enum GameStatus {
         return Arrays.stream(GameStatus.values())
                 .filter(status -> status.decisionNumber == number)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("숫자 1 혹은 2를 입력해야 합니다."));
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.DECISION_NUMBER));
     }
 
 
