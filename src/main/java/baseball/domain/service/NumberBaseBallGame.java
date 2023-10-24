@@ -20,10 +20,8 @@ public class NumberBaseBallGame {
 
     public RoundEvaluationResult evaluateRound(String input) {
         String roundResult = numberBaseballScoreEvaluator.evaluate(input, randomNumber);
-        if (Objects.equals(roundResult, THREE_STRIKE)) {
-            return new RoundEvaluationResult(GameStatus.GAME_OVER, roundResult);
-        }
-        return new RoundEvaluationResult(GameStatus.CONTINUE, roundResult);
+        GameStatus status = GameStatus.of(roundResult);
+        return new RoundEvaluationResult(status, roundResult);
     }
 
     public void initRandomNumber() {
