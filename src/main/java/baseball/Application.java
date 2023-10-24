@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.message.ApplicationMessage;
 import baseball.io.Output;
 import baseball.game.BaseballGame;
 
@@ -10,7 +11,7 @@ public class Application {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.play();
         } catch (IllegalArgumentException e) {
-            Output.consoleLine("예외가 발생하여 어플리케이션을 종료합니다.");
+            Output.consoleLine(ApplicationMessage.EXCEPTION_OCCURRED_MESSAGE.get());
             throw e;
         }
     }
