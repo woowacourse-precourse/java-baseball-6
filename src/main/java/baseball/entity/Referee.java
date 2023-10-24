@@ -5,8 +5,12 @@ import java.util.Objects;
 
 public class Referee {
 
-    private final Player playerOne;
-    private final Player playerTwo;
+    boolean treeStrike = false;
+    private Player playerOne;
+    private Player playerTwo;
+
+    public Referee() {
+    }
 
     public Referee(Player playerOne, Player playerTwo) {
         this.playerOne = playerOne;
@@ -17,7 +21,13 @@ public class Referee {
         GameResult gameResult = calculateStrikeAndBall(playerOne.getNumbersList(),
                 playerTwo.getNumbersList());
 
-        return gameResult.getResult();
+        String result = gameResult.getResult();
+
+        if (result.equals("3스트라이크")) {
+            treeStrike = true;
+        }
+
+        return result;
     }
 
     private GameResult calculateStrikeAndBall(List<Integer> playerOneNumbers,
@@ -33,5 +43,9 @@ public class Referee {
             }
         }
         return new GameResult(strike, ball);
+    }
+
+    public boolean isTreeStrike() {
+        return treeStrike;
     }
 }
