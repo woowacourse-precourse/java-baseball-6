@@ -31,11 +31,10 @@
 `List<Integer>`를 래핑한 일급 컬렉션
 
 - 리스트 크기를 반환해주는 `size()`
-- 리스트에 존재하는 `BaseballNumber`를 가져오는 `get(int index)`
-- `List<Integer>`에 매개변수로 받은 `Integer`를 포함하고 있는지 판별하는 `contains(Integer baseballNumber)`
 - 자리 수 검증하는 `validateMaxLength()`
 - 중복된 수 검증하는 `validateDuplcateNumber()`
 - 1보다 작은 수가 들어오는지 검증하는 `validateBelowRange()`
+- `Collections.unmodifiableList()` 사용해서 불변객체 반환하는 `getBaseballNumbers()`
 
 ---
 
@@ -44,7 +43,7 @@
 strike와 ball 계산을 위한 클래스
 
 - `BaseballNumbers` 두 개를 받아 strike, ball을
-  계산해주는`calculateStrikeAndBall(BaseballNumbers computerBaseballNumber, BaseballNumbers playerBaseballNumber)`
+  계산해주는`calculateStrikeAndBall(List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber)`
 - strike, ball 0으로 초기화 시켜주는 함수 `clearStrikeAndBall()`
 - 스트라이크 개수 반환 `getStrike()`
 - 볼 개수 반환 `getBall()`
