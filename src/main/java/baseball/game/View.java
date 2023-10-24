@@ -40,7 +40,7 @@ public class View {
     }
 
     public String readReplayCommand(){
-        System.out.print(REPLAY_LINE);
+        System.out.println(REPLAY_LINE);
         return Console.readLine();
     }
     
