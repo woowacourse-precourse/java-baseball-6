@@ -1,9 +1,9 @@
 package baseball.controller;
 
-import baseball.model.Computer;
+import baseball.model.ComputerNumber;
 import baseball.model.GameCommand;
 import baseball.model.JudgeResult;
-import baseball.model.Player;
+import baseball.model.PlayerNumber;
 import baseball.model.Referee;
 import baseball.util.JudgeResultFormatter;
 import baseball.view.InputView;
@@ -24,15 +24,15 @@ public class GameController {
     }
 
     public void initializeGame() {
-        Computer computer = new Computer();
-        playSingleRound(computer);
+        ComputerNumber computerNumber = new ComputerNumber();
+        playSingleRound(computerNumber);
         readRetryCommand();
     }
 
-    private void playSingleRound(Computer computer) {
+    private void playSingleRound(ComputerNumber computerNumber) {
         while (true) {
-            Player player = new Player(InputView.readPlayerNumber());
-            Referee referee = new Referee(computer, player);
+            PlayerNumber playerNumber = new PlayerNumber(InputView.readPlayerNumber());
+            Referee referee = new Referee(computerNumber, playerNumber);
             JudgeResult judgeResult = referee.judgeBallCount();
             OutputView.printRoundResult(JudgeResultFormatter.format(judgeResult));
             if (judgeResult.isGameSuccess()) {

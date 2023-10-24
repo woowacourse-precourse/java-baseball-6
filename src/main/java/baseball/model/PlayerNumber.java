@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.validator.ValidatePlayerNumber;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ public class PlayerNumber {
     private final List<BallNumber> playerNumber;
 
     public PlayerNumber(String numbers) {
+        ValidatePlayerNumber.validate(numbers);
         this.playerNumber = generatePlayerNumber(numbers);
     }
 

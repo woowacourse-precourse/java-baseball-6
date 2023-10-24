@@ -3,12 +3,12 @@ package baseball.model;
 import baseball.util.Constants;
 
 public class Referee {
-    private final Computer computer;
-    private final Player player;
+    private final ComputerNumber computerNumber;
+    private final PlayerNumber playerNumber;
 
-    public Referee(Computer computer, Player player) {
-        this.computer = computer;
-        this.player = player;
+    public Referee(ComputerNumber computerNumber, PlayerNumber playerNumber) {
+        this.computerNumber = computerNumber;
+        this.playerNumber = playerNumber;
     }
 
     public JudgeResult judgeBallCount() {
@@ -21,11 +21,11 @@ public class Referee {
     }
 
     private boolean numberMatching(int position) {
-        return computer.hasNumber(player.getNumberByPosition(position));
+        return computerNumber.hasNumber(playerNumber.getNumberByPosition(position));
     }
 
     private boolean positionMatching(int position) {
-        return computer.getNumberByPosition(position).equals(player.getNumberByPosition(position));
+        return computerNumber.getNumberByPosition(position).equals(playerNumber.getNumberByPosition(position));
     }
 
 }
