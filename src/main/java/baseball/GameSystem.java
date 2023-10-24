@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class GameSystem {
     public void playGame() {
         do {
@@ -8,6 +10,9 @@ public class GameSystem {
     }
 
     private void startGame() {
+        Computer computer = new Computer();
+        computer.generateNumbers();
+        List<Integer> computerNumbers = computer.getNumbers();
     }
 
     private boolean restartGame() {
