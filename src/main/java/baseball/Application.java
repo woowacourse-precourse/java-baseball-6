@@ -53,25 +53,30 @@ public class Application {
             // 입력 요청 메시지
             System.out.print("숫자를 입력해주세요 : ");
 
-            // 입력받은 사용자의 수를 어레이로 각 자리수 저장
+            // 입력받은 사용자의 수를 ArrayList로 각 자리수 저장
             String userNumber = readLine();
             if (userNumber.length() != 3 || !userNumber.matches("[+-]?\\d*(\\.\\d+)?")) {
                 // 3자리의 숫자가 아니라면 Exception
-                throw new IllegalArgumentException("3자리의 숫자만 입력 가능합니다." );
+                throw new IllegalArgumentException("3자리의 중복되지 않은 숫자만 입력 가능합니다." );
             }
-            int[] user = new int[userNumber.length()];
+            ArrayList<Integer> user = new ArrayList<>();
             for (int i = 0; i < userNumber.length(); i++) {
-                user[i] = userNumber.charAt(i) - '0';
+                if (user.contains(userNumber.charAt(i) - '0')) {
+                    // 먼저 포함된 숫자를 확인하여 중복된 수 발견시에 Exception
+                    throw new IllegalArgumentException("3자리의 증복되지 않은 숫자만 입력 가능합니다." );
+                }
+                user.add(userNumber.charAt(i) - '0');
             }
+
 
             // 컴퓨터와 사용자의 수 비교 및 출력
             int strike = 0;
             int ball = 0;
             for (int i = 0; i < computer.size(); i++) {
-                if (computer.get(i) == user[i]){
+                if (Objects.equals(computer.get(i), user.get(i))){
                     strike += 1;
                 }
-                else if (computer.contains(user[i])) {
+                else if (computer.contains(user.get(i))) {
                     ball += 1;
                 }
             }
