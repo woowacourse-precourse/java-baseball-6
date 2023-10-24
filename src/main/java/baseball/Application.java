@@ -7,10 +7,10 @@ public class Application {
         while(gameMaster.isGameInProgress()) {
             Computer computer = new Computer();
             gameMaster.init();
-//            System.out.println(computer.randomNumber);
+//            System.out.println(computer.getRandomNumber());
             gameMaster.start();
             while(!gameMaster.findCorrectAnswer()) {
-                Validator validator = new Validator(computer.randomNumber);
+                Validator validator = new Validator(computer.getRandomNumber());
                 String answer = gameMaster.progress();
                 validator.inputNumber = Integer.parseInt(validator.writeBaseballAnswer(answer));
 

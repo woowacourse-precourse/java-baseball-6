@@ -11,7 +11,7 @@ class ComputerTest {
   @Test
   void 난수는_항상_3자리의_숫자여야_한다() {
     Computer computer = new Computer();
-    String generatedNumber = String.valueOf(computer.randomNumber);
+    String generatedNumber = String.valueOf(computer.getRandomNumber());
     assertEquals(3, generatedNumber.length());
   }
 
@@ -20,7 +20,7 @@ class ComputerTest {
     Computer computer = new Computer();
     Set<Character> set = new HashSet<>();
 
-    String generatedNumber = String.valueOf(computer.randomNumber);
+    String generatedNumber = String.valueOf(computer.getRandomNumber());
     char[] generatedChars = generatedNumber.toCharArray();
 
     for(char each : generatedChars) {
@@ -32,7 +32,7 @@ class ComputerTest {
   @Test
   void 난수는_항상_1과_9사이에_있다() {
     Computer computer = new Computer();
-    String generatedNumber = String.valueOf(computer.randomNumber);
+    String generatedNumber = String.valueOf(computer.getRandomNumber());
     boolean result = true;
 
     char[] generatedChars = generatedNumber.toCharArray();

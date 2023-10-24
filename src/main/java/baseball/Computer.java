@@ -6,10 +6,14 @@ import java.util.Set;
 
 public class Computer {
 
-  int randomNumber;
+  private final int randomNumber;
 
   public Computer() {
     this.randomNumber = Integer.parseInt(generateRandomNumber());
+  }
+
+  public int getRandomNumber() {
+    return randomNumber;
   }
 
   public String generateRandomNumber() {

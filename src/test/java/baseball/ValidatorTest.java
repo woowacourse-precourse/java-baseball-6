@@ -14,7 +14,7 @@ class ValidatorTest {
   void preSet() {
     computer = new Computer();
     //TODO: validator 생성할 때, computer의 난수를 받아야해서 불필요하게 생성하게 된다.
-    validator = new Validator(computer.randomNumber);
+    validator = new Validator(computer.getRandomNumber());
   }
 
   @Test
