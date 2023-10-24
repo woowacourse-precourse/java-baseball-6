@@ -24,6 +24,7 @@ public class MainController {
         Output.printStartMessage();
         do {
             baseballController.playGame();
+            Output.printGameEndMessage();
             Output.printRestartMessage();
 
             String input = Input.getMenu();
