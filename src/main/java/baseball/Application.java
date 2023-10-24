@@ -38,9 +38,17 @@ public class Application {
         if (sign == 1) return 1;
         return 2;
     }
-
+    public static boolean checkSignError(String sign){
+        if(!sign.equals("1")&&!sign.equals("2")){
+            return true;
+        }
+        return false;
+    }
     public static int inputSign() {
         String sign = Console.readLine();
+        if(checkSignError(sign)){
+            throw new IllegalArgumentException();
+        }
         if (sign.equals("1")) return 1;
         return 2;
     }
