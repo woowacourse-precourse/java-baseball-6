@@ -156,7 +156,7 @@ public class Application {
         String[] computerValue = String.valueOf(computerNumber).split("");
         String[] userValue = String.valueOf(userNumber).split("");
 
-        HashSet<String> computerSet = new HashSet<>();
+        /*HashSet<String> computerSet = new HashSet<>();
         int count = 0;
 
         for (String character : computerValue) {
@@ -166,6 +166,18 @@ public class Application {
         for (String character : userValue) {
             if (computerSet.contains(character)) {
                 count++;
+            }
+        }*/
+        int count = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j) {
+                    continue;
+                }
+                if (computerValue[i].equals(userValue[j])) {
+                    count++;
+                }
             }
         }
 
