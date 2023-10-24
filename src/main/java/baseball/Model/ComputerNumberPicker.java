@@ -9,7 +9,7 @@ public class ComputerNumberPicker {
     public ComputerNumberPicker() {
         int[] computer = Stream.generate(() -> Randoms.pickNumberInRange(1, 9))
                 .distinct()
-                .limit(3)
+                .limit(GameConstant.MAX_NUM)
                 .mapToInt(Integer::intValue)
                 .toArray();
         this.computer = computer;

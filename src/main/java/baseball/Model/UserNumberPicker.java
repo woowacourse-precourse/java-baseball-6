@@ -14,7 +14,7 @@ public class UserNumberPicker {
     }
 
     private int[] convertStringToIntArray(String userInput) {
-        int[] user = new int[3];
+        int[] user = new int[GameConstant.MAX_NUM];
         for (int i = 0; i < userInput.length(); i++) {
             user[i] = userInput.charAt(i) - '0';
         }

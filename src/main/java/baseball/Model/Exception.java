@@ -25,7 +25,7 @@ public class Exception {
     }
 
     public static boolean checkInputLength(String userInput) {
-        if (userInput.length() != 3) {
+        if (userInput.length() != GameConstant.MAX_NUM) {
             return false;
         }
         return true;

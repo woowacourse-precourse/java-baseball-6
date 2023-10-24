@@ -15,7 +15,7 @@ public class BaseballComparator {
 
     private int checkStrike(int[] computer, int[] user) {
         int strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GameConstant.MAX_NUM; i++) {
             if (user[i] == computer[i]) {
                 strikeCount++;
             }
@@ -25,7 +25,7 @@ public class BaseballComparator {
 
     private int checkBall(int[] computer, int[] user) {
         int ballCount = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GameConstant.MAX_NUM; i++) {
             final int userNum = user[i];
             if (user[i] != computer[i] && IntStream.of(computer).anyMatch(number -> number == userNum)) {
                 ballCount++;
@@ -35,6 +35,6 @@ public class BaseballComparator {
     }
 
     public boolean checkThreeStrike() {
-        return strikeCount == 3;
+        return strikeCount == GameConstant.MAX_NUM;
     }
 }
