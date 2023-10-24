@@ -13,7 +13,8 @@
     - 1 또는 2의 숫자만 입력
         - 길이가 1인지 검사
         - ‘1’인지 ‘2’인지 검사
-- 검증 실패 시 throw IllegalArgumentException
+
+-> 검증 실패 시 throw IllegalArgumentException
 
 ## **✅ 난수(숫자게임의 정답) 생성 클래스 (Computer - GameAnswer)**
 
@@ -39,7 +40,7 @@
 
 ```
 public static String readLine() {
-    returngetInstance().nextLine();
+    return getInstance().nextLine();
 }
 ```
 
@@ -54,19 +55,23 @@ public static String readLine() {
 1. Computer(Model) : 숫자게임의 정답인 난수를 스스로 생성해서 필드로 가지고 있는 객체이자, 플레이어가 제시한 입력에 대한 점수를 계산한 결과를 가지고 있는 객체.
     - (GameAnswer) - 숫자게임의 정답인 난수를 클래스 내부에서 생성하여 가지고 있음.
         - 내부 필드는 List<Integer>를 가진다.
+        - 정답은 클래스 내부에서 생성한다.
     - (Score) - Player로부터 값을 받아 숫자게임의 정답(GameAnswer)과 비교해서 계산한 점수를 가지고 있음.
-    - Score(Model) : 숫자게임의 결과인 스코어를 담고 있는 객체
-        - 내부 필드는 Integer strike, Integer Ball을 가진다.
+        - 숫자게임의 결과인 스코어를 담고 있는 객체
+        - 내부 필드는 Integer strike, Integer ball을 가진다.
+        - 점수는 클래스 내부에서 계산한다.
 
 **❗️즉,**  **GameAnswer, Score는 일급 컬렉션으로 관리한다.**
 
-1. Player(Model) : 사용자가 입력한 값(숫자야구게임에서 제시한 값, 재시작/종료 여부에 대한 값)을 담고 있는 객체
+2. Player(Model) : 사용자가 입력한 값(숫자야구게임에서 제시한 값, 재시작/종료 여부에 대한 값)을 담고 있는 객체
     - (GuessNumber) - 숫자게임에 대한 입력값을 가지고 있다.
         - 내부 필드는 List<Integer>를 가진다.
+        - 필드에 할당할 입력, 검증은 클래스 내부에서 이루어진다.
     - (GameStateNumber) - 게임상태의 입력값을 가지고 있다.
         - 내부 필드는 Integer stateNumber를 가진다.
+        - 필드에 할당할 입력, 검증은 클래스 내부에서 이루어진다.
 
-**❗️즉, GuessNumber, GameStateNumber는 일급 컬렉션으로 관리한다.**
+**❗️GuessNumber, GameStateNumber는 일급 컬렉션으로 관리한다.**
 
 ‘’입력한 값에 대한 검증은 위에서 구현한 validator를 사용해 자체적으로 클래스 내부에서 검사한다.’’ -> 검증 실패 시 예외 발생
 
@@ -79,14 +84,14 @@ public static String readLine() {
 
 2. InputView
     1. Score(Model)로부터 점수, 결과를 받아서 콘솔로 출력하자.
-    2. 사용자에게 ‘모두 동일하게’ 출력해야 하는 메시지(입력에 대한 요청 메시지)를 출력
+    2. 사용자에게 ‘모두 동일하게’ 출력해야 하는 메시지인 (입력에 대한 요청 메시지)를 출력
 
    > "숫자 야구 게임을 시작합니다." "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." "숫자를 입력해주세요 : "
 
 ## **🎮 Controller**
 
 1. BaseballGameController
-    1. Model과 View를 연결하여, 전반적인 프로그램의 흐름을 조율한다.
+    1. Model과 View를 연결하는 역할로, 전반적인 프로그램의 흐름을 조율한다.
     2. Model로부터 데이터를 받는다.
     3. 2에서 받은 데이터를 View에게 전달한다.
 
