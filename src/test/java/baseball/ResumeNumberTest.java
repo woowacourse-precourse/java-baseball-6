@@ -4,6 +4,7 @@ import baseball.model.number.ResumeNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static baseball.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResumeNumberTest {
@@ -15,7 +16,7 @@ public class ResumeNumberTest {
             ResumeNumber resumeNumber = ResumeNumber.from("123");
         });
         // then
-        assertThat(exception.getMessage()).isEqualTo("재시작/종료 입력값이 잘못되었습니다.");
+        assertThat(exception.getMessage()).isEqualTo(RESUME_VALUE_EXCEPTION.toString());
     }
 
     @Test
@@ -25,7 +26,7 @@ public class ResumeNumberTest {
             ResumeNumber resumeNumber = ResumeNumber.from("a");
         });
         // then
-        assertThat(exception.getMessage()).isEqualTo("재시작/종료 입력값이 잘못되었습니다.");
+        assertThat(exception.getMessage()).isEqualTo(RESUME_VALUE_EXCEPTION.toString());
     }
 
     @Test
