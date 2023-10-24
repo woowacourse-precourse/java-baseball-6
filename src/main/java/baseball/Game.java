@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Game {
     private Player player;
@@ -34,11 +35,12 @@ public class Game {
             guessNums.add(0, num);
         }
 
-        System.out.println(guessNums);
+        isDifferentNums(guessNums);
+
         player.setGuessNums(guessNums);
     }
 
-    public int toValidInt(String guessNumsStr) {
+    private int toValidInt(String guessNumsStr) {
         int guessNumsInt = 0;
 
         try {
@@ -58,6 +60,19 @@ public class Game {
         }
 
         return guessNumsInt;
+    }
+
+    private void isDifferentNums(ArrayList<Integer> guessNums) {
+        try {
+            for (int i = 0; i < 3; i++) {
+                int g = guessNums.get(i);
+                if (Collections.frequency(guessNums, g) > 1) {
+                    throw new IllegalArgumentException();
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.exit(0);
+        }
     }
 
     public int getHint() {
