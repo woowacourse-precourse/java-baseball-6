@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.Constant.BALL_MESSAGE;
+import static baseball.Constant.NOTHING_MESSAGE;
+import static baseball.Constant.STRIKE_MESSAGE;
+
 import java.util.List;
 
 public class Judge {
@@ -26,17 +30,17 @@ public class Judge {
     }
 
     public void printResult() {
-        if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        } else if (strike == 0) {
-            System.out.println(ball + "볼");
-        } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        if(strike == 0 && ball == 0) {
+            System.out.println(NOTHING_MESSAGE);
+        }
+        else if(strike == 0) {
+            System.out.println(ball + BALL_MESSAGE);
+        }
+        else if(ball == 0) {
+            System.out.println(strike + STRIKE_MESSAGE);
+        }
+        else {
+            System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
         }
     }
 

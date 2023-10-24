@@ -1,10 +1,16 @@
 package baseball;
 
+import static baseball.Constant.CORRECT_MESSAGE;
+import static baseball.Constant.INPUT_MESSAGE;
+import static baseball.Constant.RESTART_ERROR_MESSAGE;
+import static baseball.Constant.RESTART_MESSAGE;
+import static baseball.Constant.START_MESSAGE;
+
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE);
         boolean game = true;
         while(game) {
             Computer computer = new Computer();
@@ -13,7 +19,7 @@ public class Application {
             Player player = new Player();
 
             while (true) {
-                System.out.print("숫자를 입력해주세요 : ");
+                System.out.println(INPUT_MESSAGE);
                 String input = camp.nextstep.edu.missionutils.Console.readLine();
                 List<Integer> guess = player.makeGuess(input);
 
@@ -22,7 +28,8 @@ public class Application {
                 judge.printResult();
 
                 if(judge.isCorrect()) {
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    System.out.println(CORRECT_MESSAGE);
+                    System.out.println(RESTART_MESSAGE);
                     String restart = camp.nextstep.edu.missionutils.Console.readLine();
                     if (restart.equals("1")) {
                         break;
@@ -30,7 +37,7 @@ public class Application {
                         game = false;
                         break;
                     } else {
-                        throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+                        throw new IllegalArgumentException(RESTART_ERROR_MESSAGE);
                     }
                 }
             }
