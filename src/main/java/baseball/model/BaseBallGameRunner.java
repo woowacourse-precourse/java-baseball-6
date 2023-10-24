@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.model.GameStatus.*;
+import static baseball.model.GameStatus.GUESS_WRONG;
 
 public class BaseBallGameRunner {
     private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -56,7 +56,7 @@ public class BaseBallGameRunner {
         if (userAction.equals("2")) {
             return false;
         }
-        throw new IllegalArgumentException("INVALID_INPUT_MESSAGE");
+        throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
     }
 
     private String getPlayerInput(String message) {
