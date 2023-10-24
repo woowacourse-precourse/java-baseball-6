@@ -7,14 +7,14 @@ import java.util.List;
 
 // 2. 사용자 입력 받기
 public class PlayerInputNumber {
-    public String playerInput() {
+    public static String playerInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         return input;
     }
 
-    public List<Integer> inputNumberList(String input) {
+    public static List<Integer> inputNumberList(String input) {
         List<Integer> playerNum = new ArrayList<>();
 
         for (String number : input.split("")) {

@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.List;
+
 import static baseball.validator.PlayerNumberValidator.*;
 
 public class PlayerNumber {
@@ -16,7 +18,9 @@ public class PlayerNumber {
         this.playerNumber = number;
     }
 
-    public String getPlayerNumber() {
-        return playerNumber;
+    public List<Integer> getPlayerNumber() {
+        List<Integer> playNum= PlayerInputNumber.inputNumberList(playerNumber);
+
+        return playNum;
     }
 }
