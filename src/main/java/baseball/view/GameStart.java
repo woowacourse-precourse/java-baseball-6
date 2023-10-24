@@ -82,7 +82,7 @@ public class GameStart {
         initUserList();
         printMsgBeforInputNum(); // 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
         String numInputOfUser = Utill.inputNum(); // 숫자 입력을 받는다.
-        addNumber2userList(userList, numInputOfUser); // 입력을 받은 문자렬을 split을 한다음 userList에 추가를 한다. => [ 1, 2, 3]
+        addNumber2userListFromInputStr(userList, numInputOfUser); // 입력을 받은 문자렬을 split을 한다음 userList에 추가를 한다. => [ 1, 2, 3]
     }
 
     /**
@@ -98,7 +98,7 @@ public class GameStart {
      * @param inputList      입력받는 문자열을 추가한 리스트 {1, 2, 3}
      * @param numInputOfUser 입력받는 문자열 "123"
      */
-    private void addNumber2userList(List<Integer> inputList, String numInputOfUser) {
+    private void addNumber2userListFromInputStr(List<Integer> inputList, String numInputOfUser) {
         String[] inputStrArr = new String[USER_INPUT_SIZE];
 
         inputStrArr = Utill.getSplitStrArr(numInputOfUser);
