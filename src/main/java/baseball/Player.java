@@ -22,11 +22,11 @@ public class Player {
     }
 
     public void play() {
-        List<Integer> userNumbers;
+        List<Integer> playerNumbers;
         while (strike < COUNTS) {
             System.out.print(INPUT_REQUEST_MESSAGE);
-            String userInput = Console.readLine();
-            validateNumber(userInput);
+            String playerInput = Console.readLine();
+            validateNumber(playerInput);
         }
     }
 
