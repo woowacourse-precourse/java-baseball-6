@@ -25,6 +25,7 @@ public class GameService {
         gameOutputView.printInputNumber();
         user.setUserNumber(parser.parseUserInput(gameInputView.getUserInput()));
         computeScore(game.getGameNumber(), user.getUserNumber());
+        gameOutputView.printResult(game.getStrike(), game.getBall());
     }
 
     public void computeScore(int[] gameNumber, int[] userNumber) {
