@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.dto.StrikeBallCount;
 import baseball.util.ComputerBallGenerator;
 import baseball.util.InputCalculator;
+import baseball.util.RestartCalculator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -14,7 +15,10 @@ public class BaseballService {
 
         InputView.getStartMessage();
 
-        gamePlay();
+        do {
+            gamePlay();
+
+        } while (gameEnd());
 
     }
 
@@ -38,6 +42,8 @@ public class BaseballService {
     }
 
     private static boolean gameEnd() {
+
+        if(RestartCalculator.isRestart()) return true;
 
         return false;
     }

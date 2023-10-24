@@ -23,7 +23,7 @@ public class InputView {
         try {
             String input = Console.readLine();
 
-            checkInput(input);
+            checkInput(input, SELECTION_COUNT);
 
             List<Integer> userInput = convertInputFormat(input);
 
@@ -35,8 +35,18 @@ public class InputView {
         }
     }
 
+
+    public static void checkInput(String input, int inputLength) {
+
+        checkInputLength(input, inputLength);
+
+        checkInputNotNumber(input);
+
+    }
+
+
     // 세 숫자를 배열에 넣어주기
-    public static List<Integer> convertInputFormat(String input) {
+    private static List<Integer> convertInputFormat(String input) {
 
         List<Integer> userInput = new ArrayList<>();
 
@@ -54,18 +64,10 @@ public class InputView {
 
     }
 
-    public static void checkInput(String input) {
-
-        checkInputLength(input);
-
-        checkInputNotNumber(input);
-
-    }
-
     // Input이 세자리가 아닌 수 예외처리하기
-    public static void checkInputLength(String input) {
+    private static void checkInputLength(String input, int inputLength) {
 
-        if (input.length() != SELECTION_COUNT) {
+        if (input.length() != inputLength) {
 
             throw new IllegalArgumentException("길이가 너무 짧습니다!");
 
@@ -73,7 +75,7 @@ public class InputView {
     }
 
     // Input이 1~9가 아닌 수 또는 문자라면 예외처리하기
-    public static void checkInputNotNumber(String input) {
+    private static void checkInputNotNumber(String input) {
 
         for (char eachNumber : input.toCharArray()) {
 
@@ -88,7 +90,7 @@ public class InputView {
     }
 
     // 세 숫자 중 하나라도 중복 예외처리하기
-    public static void checkInputDuplicate(List<Integer> userInput, int eachNumber) {
+    private static void checkInputDuplicate(List<Integer> userInput, int eachNumber) {
 
         if (userInput.contains(eachNumber)) {
 
