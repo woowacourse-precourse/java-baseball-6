@@ -29,12 +29,16 @@ public class InputUserNumber {
     public static final int MIN_ASCII_CODE = 49;
     public static final int MAX_ASCII_CODE = 57;
 
+    public static void checkLengthException(int length){
+        if(length != NUMBER_SIZE){
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static UserBall inputUserNumber() {
         String input = Console.readLine();
 
-        if(input.length() != NUMBER_SIZE){
-            throw new IllegalArgumentException();
-        }
+        checkLengthException(input.length());
 
         List<Integer> userNumber = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
