@@ -14,7 +14,7 @@ public class Number {
     }
 
 
-    public static Number from(int number){
+    public static Number from(int number) {
         checkNumberRange(number);
         return new Number(number);
     }
@@ -24,6 +24,7 @@ public class Number {
             throw new NumberOutOfRangeException();
         }
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

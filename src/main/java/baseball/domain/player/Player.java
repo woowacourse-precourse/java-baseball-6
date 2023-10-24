@@ -25,6 +25,7 @@ public class Player {
         List<Number> players = integerToNumber(inputNumbers);
         return new Player(players);
     }
+
     public List<Number> getNumbers() {
         return numbers;
     }
@@ -34,6 +35,7 @@ public class Player {
             throw new InputSizeException();
         }
     }
+
     public static void checkForDuplicateNumbers(List<Integer> inputNumbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(inputNumbers);
         if (uniqueNumbers.size() != inputNumbers.size()) {

@@ -16,6 +16,7 @@ public class GameResult {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }
+
     public static GameResult init() {
         return new GameResult(0, 0);
     }

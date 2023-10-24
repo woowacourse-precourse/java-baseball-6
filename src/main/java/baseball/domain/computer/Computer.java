@@ -25,15 +25,17 @@ public class Computer {
 
     public static Computer createComputerAnswerByRandomGenerator(GameState gameState) {
         List<Number> answerNumbers = integerToNumber(generateNumbers());
-        return new Computer(answerNumbers,gameState);
+        return new Computer(answerNumbers, gameState);
     }
 
     public static Computer from(Player answerNumbers, GameState gameState) {
-        return new Computer(answerNumbers.getNumbers(),gameState);
+        return new Computer(answerNumbers.getNumbers(), gameState);
     }
+
     public static Computer init() {
         return createComputerAnswerByRandomGenerator(GameState.init());
     }
+
     private static ArrayList<Integer> generateNumbers() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() != BASEBALL_NUMBERS_LIMIT_SIZE) {

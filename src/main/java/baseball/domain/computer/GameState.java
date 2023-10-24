@@ -7,8 +7,7 @@ import java.util.Arrays;
 public enum GameState {
     RUNNING(0),
     RESTART(1),
-    END(2),
-            ;
+    END(2);
 
     private final int command;
 
@@ -23,6 +22,7 @@ public enum GameState {
     public boolean isEndGame() {
         return this == END;
     }
+
     public boolean isRestartGame() {
         return this == RESTART;
     }
