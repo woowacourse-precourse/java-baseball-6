@@ -53,6 +53,7 @@ class Game {
 
     private static void playRoutine() {
         playGame();
+        printResult();
         checkDone();
     }
 
@@ -84,6 +85,25 @@ class Game {
         result += Integer.toString(strike_cnt);
 
         user.setResult(result);
+    }
+
+    private static void printResult() {
+        final String result = user.getResult();
+        final int nothing = result.charAt(0) - '0';
+        final int ball = result.charAt(1) - '0';
+        final int strike = result.charAt(2) - '0';
+
+        if (nothing == Condition.NUM_LENGTH) {
+            System.out.print(Message.NOTHING_MESSAGE);
+        }
+        if (ball != 0) {
+            System.out.print(ball + Message.BALL_MESSAGE);
+        }
+        if (strike != 0) {
+            System.out.print(strike + Message.STRIKE_MESSAGE);
+        }
+
+        System.out.println("");
     }
 
     private static void checkDone() {
@@ -127,25 +147,8 @@ class User {
     private String user_input;
     private String result;
 
-    public int setResult(String result) {
-        final int nothing = result.charAt(0) - '0';
-        final int ball = result.charAt(1) - '0';
-        final int strike = result.charAt(2) - '0';
-
-        if (nothing == Condition.NUM_LENGTH) {
-            System.out.print(Message.NOTHING_MESSAGE);
-        }
-        if (ball != 0) {
-            System.out.print(ball + Message.BALL_MESSAGE);
-        }
-        if (strike != 0) {
-            System.out.print(strike + Message.STRIKE_MESSAGE);
-        }
-
-        System.out.println("");
-
+    public void setResult(String result) {
         this.result = result;
-        return strike;
     }
 
     public String getResult() {
