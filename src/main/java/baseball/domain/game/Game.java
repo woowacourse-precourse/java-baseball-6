@@ -69,13 +69,13 @@ public class Game {
         output.printRestartOrNotMessage();
 
         String opinion = input.getRestartOrNot();
-        Console.close();
 
         switch (opinion) {
             case "1":
                 startGame();
                 break;
             case "2":
+                Console.close();
                 return;
             default:
                 output.printNumberIsNoneMessage();
