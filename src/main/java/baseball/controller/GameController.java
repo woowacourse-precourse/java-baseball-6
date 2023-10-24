@@ -14,6 +14,8 @@ public class GameController {
         this.isGameFinished = false;
     }
 
+
+
     public void startGame() {
         OutputView.printGameStartMessage();
         gameService.startNewGame();
