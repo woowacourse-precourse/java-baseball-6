@@ -16,13 +16,13 @@ public class GameScore {
             int personNum = person.getNumberAt(i);
 
             if (computer.containsNumber(personNum)) {
-                updateScore(i, personNum, ballStrikeCount);
+                updateBallStrikeCount(i, personNum, ballStrikeCount);
             }
         }
         return ballStrikeCount;
     }
 
-    private void updateScore(int i, int personNum, BallStrikeCount ballStrikeCount) {
+    private void updateBallStrikeCount(int i, int personNum, BallStrikeCount ballStrikeCount) {
         if (computer.getNumberAt(i) == personNum) {
             ballStrikeCount.increaseStrike();
             return;
