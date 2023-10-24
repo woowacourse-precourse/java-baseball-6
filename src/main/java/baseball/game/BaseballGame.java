@@ -5,6 +5,7 @@ import baseball.view.GameView;
 public class BaseballGame {
     private final Computer computer;
     private final User user;
+    private static final int PLAY_AGAIN_CHOICE = 1;
 
     public BaseballGame() {
         computer = new Computer();
@@ -13,17 +14,20 @@ public class BaseballGame {
 
     public void start() {
         GameView.displayGameStartMessage();
+
         while (true) {
-            play();
-            if (!playAgain()) {
+            playGame();
+
+            if (!wantsToPlayAgain()) {
                 GameView.displayGameEndMessage();
                 break;
             }
         }
     }
 
-    private void play() {
+    private void playGame() {
         int[] randomNumbers = computer.generateRandomNumbers();
+
         while (true) {
             GameView.displayUserInputPrompt();
             int[] guessNumbers = user.getGuessNumbers();
@@ -38,9 +42,9 @@ public class BaseballGame {
         }
     }
 
-    private boolean playAgain() {
+    private boolean wantsToPlayAgain() {
         GameView.displayGameRestartPrompt();
         int choice = user.getChoiceToPlayAgain();
-        return choice == 1;
+        return choice == PLAY_AGAIN_CHOICE;
     }
 }

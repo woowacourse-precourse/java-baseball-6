@@ -1,17 +1,16 @@
 package baseball.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Computer {
     public int[] generateRandomNumbers() {
-        List<Integer> randomNumbers = new ArrayList<>();
+        Set<Integer> randomNumbers = new HashSet<>();
         while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
-            }
+            randomNumbers.add(randomNumber);
         }
         return randomNumbers.stream()
                 .mapToInt(Integer::intValue)
@@ -19,19 +18,30 @@ public class Computer {
     }
 
     public int[] calculateResult(int[] guessNumbers, int[] randomNumbers) {
-        int[] result = new int[2];
+        int balls = countBalls(guessNumbers, randomNumbers);
+        int strikes = countStrikes(guessNumbers, randomNumbers);
+
+        return new int[]{balls, strikes};
+    }
+
+    private int countBalls(int[] guessNumbers, int[] randomNumbers) {
+        int balls = 0;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (guessNumbers[i] == randomNumbers[j]) {
-                    if (i == j) {
-                        result[1]++;
-                    } else {
-                        result[0]++;
-                    }
-                }
+            if (guessNumbers[i] != randomNumbers[i] && Arrays.asList(randomNumbers).contains(guessNumbers[i])) {
+                balls++;
             }
         }
-        return result;
+        return balls;
+    }
+
+    private int countStrikes(int[] guessNumbers, int[] randomNumbers) {
+        int strikes = 0;
+        for (int i = 0; i < 3; i++) {
+            if (guessNumbers[i] == randomNumbers[i]) {
+                strikes++;
+            }
+        }
+        return strikes;
     }
 
     public String formatResult(int[] result) {

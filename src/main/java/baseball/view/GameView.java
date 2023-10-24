@@ -1,10 +1,6 @@
 package baseball.view;
 
 public class GameView {
-    private static void displayMessage(String message) {
-        System.out.print(message);
-    }
-
     public static void displayGameStartMessage() {
         displayMessage("숫자 야구 게임을 시작합니다.\n");
     }
@@ -27,5 +23,9 @@ public class GameView {
 
     public static void displayGameEndMessage() {
         displayMessage("게임을 종료합니다.\n");
+    }
+
+    private static void displayMessage(String message) {
+        System.out.print(message);
     }
 }
