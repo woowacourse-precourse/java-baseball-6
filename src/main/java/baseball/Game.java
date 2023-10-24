@@ -38,8 +38,11 @@ public class Game {
 
             String input = inputNumbers();
 
-            if (checkAnswer(input))
+            if (checkAnswer(input)) {
+                // 정답을 맞춰 게임 종료 문구 출력
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
+            }
         }
     }
 
