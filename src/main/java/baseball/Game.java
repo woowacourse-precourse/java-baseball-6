@@ -46,7 +46,7 @@ public class Game {
         if ("1".equals(choice)) {
             return true;
         } else if ("2".equals(choice)) {
-            System.out.println("종료");
+            System.out.println("게임 종료");
             return false;
         } else {
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
