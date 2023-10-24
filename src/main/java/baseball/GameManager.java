@@ -16,12 +16,12 @@ public class GameManager {
     }
 
     public void startGame() {
-        List<Integer> correctNumber = generateRandomNumber();
+        BaseballNumber correctNumber = BaseballNumber.generateRandomNumber();
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String answer = Console.readLine();
-            List<Integer> answerNumber = answerStringToNumber(answer);
+            BaseballNumber answerNumber = new BaseballNumber(answer);
 
             if (isMatched(answerNumber, correctNumber)) {
                 break;
@@ -29,13 +29,13 @@ public class GameManager {
         }
     }
 
-    private boolean isMatched(List<Integer> answerNumber, List<Integer> correctNumber) {
+    private boolean isMatched(BaseballNumber answerNumber, BaseballNumber correctNumber) {
         int ball = 0;
         int strike = 0;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (Objects.equals(answerNumber.get(i), correctNumber.get(j))) {
+                if (Objects.equals(answerNumber.getNumbers().get(i), correctNumber.getNumbers().get(j))) {
                     if (i == j) strike++;
                     else ball++;
                 }
@@ -55,44 +55,5 @@ public class GameManager {
         System.out.println();
 
         return strike == 3;
-    }
-
-    private List<Integer> answerStringToNumber(String answer) {
-        validateAnswerLength(answer);
-
-        List<Integer> answerNumbers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            int number = answer.charAt(i) - 48;
-            validateAnswerNumberRange(number);
-            validateNumberDuplicated(number, answerNumbers);
-            answerNumbers.add(number);
-        }
-        return answerNumbers;
-    }
-
-    private void validateAnswerNumberRange(int n) {
-        if (n < 1 || n > 9)
-            throw new IllegalArgumentException();
-    }
-
-    private void validateAnswerLength(String answer) {
-        if (answer.length() != 3)
-            throw new IllegalArgumentException();
-    }
-
-    private void validateNumberDuplicated(int n, List<Integer> answerNumbers) {
-        if (answerNumbers.stream().anyMatch(m -> m == n))
-            throw new IllegalArgumentException();
-    }
-
-    private List<Integer> generateRandomNumber() {
-        List<Integer> correctNumber = new ArrayList<>();
-        while(correctNumber.size() < 3) {
-            int n = Randoms.pickNumberInRange(1, 9);
-            if (!correctNumber.contains(n)) {
-                correctNumber.add(n);
-            }
-        }
-        return correctNumber;
     }
 }
