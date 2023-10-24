@@ -46,6 +46,6 @@ public class Player {
         }
         // 만약 다른 문자가 입력되면 exception 발생
         Validation.checkChoiceRestart(selectNumber);
-        return Validation.WRONG_INPUT_EXCEPTION;
+        return ErrorMessage.CHOICE_NUMBER_ERROR;
     }
 }

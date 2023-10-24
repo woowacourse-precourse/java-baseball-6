@@ -21,7 +21,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String playersChoice = Player.gamePlayOrNot();
-        if (playersChoice.equals(Validation.WRONG_INPUT_EXCEPTION)) {
+        if (playersChoice.equals(ErrorMessage.CHOICE_NUMBER_ERROR)) {
             return;
         }
         if (playersChoice.equals(Player.GAME_END)) {

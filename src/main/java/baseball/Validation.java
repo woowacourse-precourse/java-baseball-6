@@ -1,19 +1,12 @@
 package baseball;
 
-// 검증 기증들을 모아놓은 클래스
+// 검증 기능들을 모아놓은 클래스
 public class Validation {
-    public static final String WRONG_INPUT_EXCEPTION = "잘못된 입력입니다. 게임을 종료합니다.";
-
     public static void validateInputNumber(String inputNumber) {
-        try {
-            checkInclusionString(inputNumber);
-            checkLength(inputNumber);
-            checkInclusionZero(inputNumber);
-            checkDuplicate(inputNumber);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
-        }
-
+        checkInclusionString(inputNumber);
+        checkLength(inputNumber);
+        checkInclusionZero(inputNumber);
+        checkDuplicate(inputNumber);
     }
 
     // 입력값 문자 포함 확인
@@ -21,7 +14,7 @@ public class Validation {
         try {
             int inputNumberToInteger = Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
+            throw new IllegalArgumentException(ErrorMessage.INCLUSION_STRING_ERROR);
         }
     }
 
@@ -34,27 +27,27 @@ public class Validation {
         int thirdDigit = inputNumberToInt % 10;
 
         if (firstDigit == secondDigit || secondDigit == thirdDigit || firstDigit == thirdDigit) {
-            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER_ERROR);
         }
     }
 
     // 숫자 0 포함 확인
     public static void checkInclusionZero(String inputNumber) {
         if (inputNumber.contains("0")) {
-            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
+            throw new IllegalArgumentException(ErrorMessage.INCLUSION_ZERO_ERROR);
         }
     }
 
     // 글자 수 확인
     public static void checkLength(String inputNumber) {
         if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
+            throw new IllegalArgumentException(ErrorMessage.LENGTH_ERROR);
         }
     }
 
     public static void checkChoiceRestart(String inputNumber) {
         if (!inputNumber.equals(Player.GAME_RESTART) && !inputNumber.equals(Player.GAME_END)) {
-            throw new IllegalArgumentException(WRONG_INPUT_EXCEPTION);
+            throw new IllegalArgumentException(ErrorMessage.CHOICE_NUMBER_ERROR);
         }
     }
 }
