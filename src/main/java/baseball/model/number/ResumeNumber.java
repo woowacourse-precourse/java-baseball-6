@@ -9,17 +9,17 @@ public class ResumeNumber {
 
     private final int resumeNumber;
 
-    private ResumeNumber(final int number) {
-        validateAnswer(String.valueOf(number));
-        this.resumeNumber = number;
+    private ResumeNumber(final String answer) {
+        validateAnswer(answer);
+        this.resumeNumber = Integer.parseInt(answer);
     }
 
     public static ResumeNumber from(final String answer) {
-        return new ResumeNumber(Integer.parseInt(answer));
+        return new ResumeNumber(answer);
     }
 
     public static ResumeNumber createDefault() {
-        return new ResumeNumber(PLAY_WANT.getValue());
+        return new ResumeNumber(PLAY_WANT.toString());
     }
 
     private void validateAnswer(final String answer) {
