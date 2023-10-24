@@ -15,4 +15,12 @@ public class StringUtil {
         }
         return numSet;
     }
+
+    public static String convertZeroToEmptyString(int value) {
+        String stringValue = String.valueOf(value);
+        if (value == 0) {
+            stringValue = "";
+        }
+        return stringValue;
+    }
 }
