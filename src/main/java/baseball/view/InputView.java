@@ -7,9 +7,11 @@ import java.util.List;
 
 public class InputView {
 
+    private static final String INPUT_NUMBERS_REGEX = "";
+
     public static List<Integer> readNumbers() {
         final String input = readLine(ConsoleMessage.INPUT_NUMBER);
-        return Arrays.stream(input.split(""))
+        return Arrays.stream(input.split(INPUT_NUMBERS_REGEX))
                 .map(Integer::parseInt)
                 .toList();
     }
