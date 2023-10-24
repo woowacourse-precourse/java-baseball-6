@@ -29,6 +29,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 문자열_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 게임_종료_입력_예외_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
