@@ -24,6 +24,7 @@ public class GameController {
         outputView.displayMessage("숫자 야구 게임을 시작합니다.");
         computerController.setGameClearNumber();
         do{
+            outputView.nolineDisplayMessage("숫자를 입력해주세요 : ");
             String userInput = inputView.inputNumber();
             numberValidator.isValidNumber(userInput);
             if(logicController.judge(userInput)){
@@ -46,7 +47,7 @@ public class GameController {
     }
     public boolean ynReStart(){
         boolean playAgain;
-        outputView.displayMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        outputView.displayMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartNumber = inputView.restartInputNumber();
         playAgain = (restartNumber.equals("1")) ? true : false;
         return playAgain;
