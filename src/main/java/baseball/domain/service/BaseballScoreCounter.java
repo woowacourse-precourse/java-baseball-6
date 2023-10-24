@@ -1,6 +1,7 @@
 package baseball.domain.service;
 
 import baseball.domain.model.BaseballNumber;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 public class BaseballScoreCounter {
@@ -28,5 +29,7 @@ public class BaseballScoreCounter {
         return targetNumber.indexOf(ComputerNumber.charAt(i)) != -1
                 && targetNumber.charAt(i) != ComputerNumber.charAt(i);
     }
+
+
 }
 

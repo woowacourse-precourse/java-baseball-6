@@ -3,6 +3,7 @@ package baseball.domain.service;
 import baseball.domain.model.BaseballNumber;
 import baseball.domain.model.GameStatus;
 import baseball.domain.util.RandomNumberGenerator;
+import java.util.function.Consumer;
 
 public class NumberBaseBallGame {
 
@@ -11,9 +12,9 @@ public class NumberBaseBallGame {
     private final RandomNumberGenerator<Integer, String> randomNumberGenerator;
 
     public NumberBaseBallGame(RandomNumberGenerator<Integer, String> generator,
-                              NumberBaseballScoreEvaluator numberBaseballScoreEvaluator) {
+                              NumberBaseballScoreEvaluator evaluator) {
         this.randomNumberGenerator = generator;
-        this.numberBaseballScoreEvaluator = numberBaseballScoreEvaluator;
+        this.numberBaseballScoreEvaluator = evaluator;
         initRandomNumber();
     }
 
