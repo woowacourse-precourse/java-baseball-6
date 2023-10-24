@@ -53,24 +53,14 @@ class BaseballGame implements GameInterface {
     }
 
     private void playGame() {
-        List<Integer> parsedInput = new ArrayList<>();
-        HashMap<ScoreType, Integer> result = new HashMap<>();
-
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
-
-            InputValidator.validateGameInput(input);
-
-            parseString(parsedInput, input);
-            calculateScore(parsedInput, result);
-            printResult(result.get(ScoreType.STRIKE), result.get(ScoreType.BALL));
-            if (result.get(ScoreType.STRIKE) == 3) {
+            List<Integer> userInput = readAndParseInput();
+            HashMap<ScoreType, Integer> result = calculateScore(userInput);
+            displayResult(result);
+            if (isGameWon(result)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;
             }
-            parsedInput.clear();
-            result.clear();
         }
     }
 
