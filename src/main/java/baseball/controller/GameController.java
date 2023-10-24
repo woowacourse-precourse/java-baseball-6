@@ -9,6 +9,9 @@ import java.util.List;
 
 public class GameController {
 
+    public static final int RESTART_GAME_FLAG = 1;
+    public static final int GAME_END_FLAG = 2;
+
     private final GameService gameService = new GameService();
 
     public void run() {
@@ -22,13 +25,6 @@ public class GameController {
         askRestartGame();
     }
 
-    private void askRestartGame() {
-        OutputView.printInputRestartGame();
-        if (InputView.inputRestartGame() == 1) {
-            startOneRound();
-        }
-    }
-
     private void playGame(List<Integer> computerNumbers) {
         OutputView.printInputNumber();
         List<Integer> numbers = InputView.inputNumber();
@@ -40,5 +36,19 @@ public class GameController {
         }
 
         playGame(computerNumbers);
+    }
+
+    private void askRestartGame() {
+        OutputView.printInputRestartGame();
+        int restart = InputView.inputRestartGame();
+
+        if (isGameRestart(restart)) {
+            startOneRound();
+        }
+    }
+
+
+    private static boolean isGameRestart(int restart) {
+        return restart == RESTART_GAME_FLAG;
     }
 }
