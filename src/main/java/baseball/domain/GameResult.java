@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.constant.Constant;
+import baseball.constant.Message;
 
 public class GameResult {
     private final int strikes;
@@ -29,5 +30,20 @@ public class GameResult {
 
     public int getBalls() {
         return balls;
+    }
+
+    public String getFormattedResult() {
+        if (strikes == INITIAL_STRIKES && balls == INITIAL_BALLS) {
+            return Message.NOTHING.getMessage();
+        }
+
+        StringBuilder output = new StringBuilder();
+        if (balls > INITIAL_BALLS) {
+            output.append(Message.BALL.format(balls));
+        }
+        if (strikes > INITIAL_STRIKES) {
+            output.append(Message.STRIKE.format(strikes));
+        }
+        return output.toString();
     }
 }
