@@ -23,4 +23,8 @@ public class Computer {
     public List<Integer> getNumbers() {
         return numbers;
     }
+    public void changeNumber()
+    {
+        numbers = generateNumber();
+    }
 }

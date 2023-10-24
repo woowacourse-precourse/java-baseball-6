@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class GameManager {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> inputNumbers = new ArrayList<>();
-            String input = readLine();
+            String input = Console.readLine();
             for (int i = 0; i < input.length(); i++) {
                 // 문자를 정수로 변환하여 리스트에 추가
                 int digit = Character.getNumericValue(input.charAt(i));
@@ -33,20 +35,37 @@ public class GameManager {
                 throw new IllegalArgumentException();
             }
             int[] result = judge(playerNumbers);
-            System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
-            if (result[0] == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+            if (count_msg(result) == false)
+                break ;
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = readLine();
+        String input = Console.readLine();
         if (input.equals("1")) {
+            computer.changeNumber();
             startGame();
-        } else {
-            System.out.println("게임을 종료합니다.");
         }
+        else if (input.equals("2")) {
+            return ;
+        }
+        else
+            throw new IllegalArgumentException();
     }
+    private boolean count_msg(int[] result) {
+        if (result[0] == 0 && result[1] == 0)
+            System.out.println("낫싱");
+        if (result[0] > 0 && result[1] > 0)
+            System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
+        if (result[0] > 0 && result[1] == 0)
+            System.out.println(result[0] + "스트라이크 ");
+        if (result[0] == 0 && result[1] > 0)
+            System.out.println(result[1] + "볼 ");
+        if (result[0] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        return true;
+    }
+
     private int[] judge(List<Integer> numbers) {
         int[] result = new int[2];
         for (int i = 0; i < 3; i++) {
