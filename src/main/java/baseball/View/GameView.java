@@ -21,7 +21,7 @@ public class GameView {
     }
 
     public void printScore(BaseballScore score) {
-        System.out.println(score);
+        outputView.printScore(score);
     }
 
     public void printEnd() {
