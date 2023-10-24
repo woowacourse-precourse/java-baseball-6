@@ -30,7 +30,7 @@ public class Application {
         User user = new UserImpl();
         Game game = new NumberBaseballGameImpl();
         GameMachine gameMachine = new GameMachineImpl(user, game);
-
+        gameMachine.runGame();
 
 
     }

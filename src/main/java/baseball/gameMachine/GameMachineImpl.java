@@ -6,9 +6,9 @@ import baseball.game.Game;
 import baseball.user.User;
 
 public class GameMachineImpl implements GameMachine {
-    private final String askingRegame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. 을 출력한다.";
+    private final String askingRegame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
 
-    User user;
+    static User user;
     Game game;
     public GameMachineImpl(User user, Game game) {
         this.user = user;
@@ -16,9 +16,9 @@ public class GameMachineImpl implements GameMachine {
     }
 
     @Override
-    public void runGame(Game game) {
+    public void runGame() {
         do {
-            game.startGame();
+            game.runGame();
         } while (askForReGame());
     }
 
@@ -26,8 +26,9 @@ public class GameMachineImpl implements GameMachine {
     public boolean askForReGame() {
         printText(askingRegame);
         String userInput = getInput();
-        HandleGameMachineException.handleException(userInput, askingRegame);
-        if (userInput == "1") {
+        HandleGameMachineException.askingReGameException(userInput);
+        int checkValue = Integer.parseInt(userInput);
+        if (checkValue == 1) {
             return true;
         } else {
             return false;
@@ -36,13 +37,11 @@ public class GameMachineImpl implements GameMachine {
 
     }
 
-    @Override
-    public void printText(String text) {
-        System.out.println(text);
+    public static void printText(String text) {
+        System.out.print(text);
     }
 
-    @Override
-    public String getInput() {
+    public static String getInput() {
         String userInput = user.inputUserNumber();
         return userInput;
     }
