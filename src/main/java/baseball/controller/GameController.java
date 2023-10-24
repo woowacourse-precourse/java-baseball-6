@@ -5,12 +5,12 @@ import baseball.model.dto.Score;
 import baseball.model.entity.Baseball;
 import baseball.service.GameService;
 import baseball.view.InputView;
-import baseball.view.OutView;
+import baseball.view.OutputView;
 
 public class GameController {
     private final InputView inputView = new InputView();
     private final GameService gameService = new GameService();
-    private final OutView outView = new OutView();
+    private final OutputView outView = new OutputView();
     private String restartMessage;
 
     public void startGame() {
