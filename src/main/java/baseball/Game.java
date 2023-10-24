@@ -1,19 +1,21 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
 
-    private List<Integer> computer; // 정답을 담을 리스트
-    private List<Integer> player; // 사용자의 입력값을 담을 리스트
+    private List<Integer> computer;
+    private List<Integer> player;
 
     public boolean playBaseball() {
-        // startGame();
-        // while(!onGame())
-        // if(!quiteGame()) (
-        // return true;
-        return false;
+        startGame();
+        if(!onGame()){
+            return false;
+        }
+        if(!quitGame()) {
+            return false;
+        }
+        return true;
     }
 
     public void startGame() {
@@ -38,9 +40,16 @@ public class Game {
     }
 
     public boolean quitGame() {
-        // 게임을 새로 시작혀려면 1, 종료하려면 2를 입력하세요.
-        // 입력받는 메서드 호출
-        // 결과 값에 따라 프로그램 종료 or start game()
+        int answer = 0;
+        System.out.println("게임을 새로 시작혀려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            answer = InputDevice.readNumber();
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        if (answer == 1) {
+            return true;
+        }
         return false;
     }
 }

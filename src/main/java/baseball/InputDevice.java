@@ -17,12 +17,12 @@ public class InputDevice {
         return player;
     }
 
-    public static List<Integer> readNumber() throws IllegalArgumentException {
+    public static int readNumber() throws IllegalArgumentException {
         List<Integer> player = new ArrayList<>();
         player = parseStringToInteger(Console.readLine());
         validateSize(player, 1);
         validateNumbersInRange(player, 2);
-        return player;
+        return player.get(0);
     }
 
     private static List<Integer> parseStringToInteger(String s) {
