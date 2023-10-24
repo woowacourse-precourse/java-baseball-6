@@ -9,6 +9,48 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+
+    @Test
+    void 입력_성공() {
+        BaseballGameReferee baseballGameReferee = new BaseballGameReferee();
+        String input1 = "789";
+        baseballGameReferee.validateBaseballGameNumber(input1);
+    }
+
+    @Test
+    void 입력_실패() {
+        BaseballGameReferee baseballGameReferee = new BaseballGameReferee();
+        String input1 = "1324";
+        String input2 = "031";
+        String input3 = "112";
+        String input4 = "13n";
+
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input1)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input2)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input3)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(()-> baseballGameReferee.validateBaseballGameNumber(input4)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @Test
+    void 입력_채점() {
+        BaseballGameReferee referee = new BaseballGameReferee();
+
+        String[] inputs = new String[]{"123","231","864","987","563","786","624","391","418","175"};
+        System.out.println();
+        for (String str : inputs) {
+            referee.judgement(new BaseballGameNumber(str)).printJudgement();
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
