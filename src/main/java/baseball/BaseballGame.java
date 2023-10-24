@@ -7,6 +7,7 @@ import java.util.List;
 
 public class BaseballGame {
     private String answerComputer;
+    private String answerPlayer;
     final int INPUT_LENGTH_MAX = 3;
 
     final int BALL_MIN = 1;
@@ -24,17 +25,11 @@ public class BaseballGame {
 
         initAnswer();
 
-        String answerPlayer;
-
         String messageScore;
 
         do {
 
-            System.out.print("숫자를 입력해주세요 : ");
-            answerPlayer = Console.readLine();
-            exceptLengthInvalid(answerPlayer, INPUT_LENGTH_MAX);
-            exceptNotInteger(answerPlayer);
-            exceptInvalidRange(answerPlayer, BALL_MIN, BALL_MAX);
+            inputAnswerPlayer();
 
             messageScore = countStrikeBallHits(answerPlayer, answerComputer);
 
@@ -47,6 +42,16 @@ public class BaseballGame {
         } while (isPlaying);
     }
 
+    private void inputAnswerPlayer() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputPlayer = Console.readLine();
+        exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
+        exceptNotInteger(inputPlayer);
+        exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
+        exceptInputSameNumber(inputPlayer);
+        this.answerPlayer = inputPlayer;
+
+    }
 
     public String countStrikeBallHits(String source, String answer) {
         int ballCnt = 0;
@@ -118,6 +123,7 @@ public class BaseballGame {
         }
     }
 
+
     public void exceptNotInteger(String source) {
         for (int i = 0; i < source.length(); i++) {
             if (!Character.isDigit(source.charAt(i))) {
@@ -136,5 +142,14 @@ public class BaseballGame {
         }
     }
 
+    public void exceptInputSameNumber(String source) {
+        for (int i = 0; i < source.length(); i++) {
+            for (int j = i + 1; j < source.length(); j++) {
+                if (source.charAt(i) == source.charAt(j)) {
+                    throw new IllegalArgumentException("입력값은 서로 다른 숫자로 이루어져야 합니다.");
+                }
+            }
+        }
+    }
 
 }
