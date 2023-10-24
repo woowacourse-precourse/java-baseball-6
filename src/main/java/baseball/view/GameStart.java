@@ -41,7 +41,7 @@ public class GameStart {
             }
         }
     }
-할
+
     /**
      * 메인 야구 게임의 진행 상황을 시작한다.
      */
