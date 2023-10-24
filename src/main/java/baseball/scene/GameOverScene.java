@@ -6,9 +6,6 @@ import baseball.input.GameOverSceneInput;
 import baseball.output.GameOverSceneOutput;
 
 public class GameOverScene implements Scene {
-    private static final String STRING_START_INPUT = "1";
-    private static final String STRING_EXIT_INPUT = "2";
-
     private final GameStateManager gameStateManager;
     private final GameOverSceneInput input;
     private final GameOverSceneOutput output;
@@ -34,9 +31,10 @@ public class GameOverScene implements Scene {
     }
 
     private void updateFromUserInput(final String userInput) {
-        switch (userInput) {
-            case STRING_START_INPUT -> gameStateManager.update(GameState.GAME);
-            case STRING_EXIT_INPUT -> gameStateManager.update(GameState.EXIT);
+        final GameOverCommand gameOverCommand = GameOverCommand.find(userInput);
+        switch (gameOverCommand) {
+            case RE_START -> gameStateManager.update(GameState.GAME);
+            case EXIT -> gameStateManager.update(GameState.EXIT);
             default -> throw new IllegalArgumentException("지원하지 않는 메뉴입니다.");
         }
     }
