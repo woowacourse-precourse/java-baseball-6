@@ -37,7 +37,6 @@ public class Application {
         int ball = 0;
         int strike = 0;
 
-        System.out.println(computerNumber);
         for (int i = 0; i < computerNumber.size(); i++) {
             String tempComNum = computerNumber.get(i);
             String tempUserNum = playerNum.get(i);
@@ -147,7 +146,7 @@ public class Application {
 
     //사용자 선택 검증 함수
     private static void isValidChoice(String choice){
-        if(choice != "1" || choice != "2"){
+        if(!(choice.equals("1") || choice.equals("2"))){
             throw new IllegalArgumentException("사용자의 입력이 1또는 2가 아닙니다. 게임을 종료합니다.");
         }
     }
