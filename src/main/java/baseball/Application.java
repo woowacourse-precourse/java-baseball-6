@@ -10,11 +10,18 @@ public class Application {
     public static void main(String[] args) {
         //(게임 시작 문구 출력)
         System.out.println("숫자 야구 게임을 시작합니다");
-        //random number generation for computer
+
+        Game game = new Game();
+        game.play();
+    }
+}
+
+class Game{
+    public void play(){
         List<Integer> computerNumber = generateComputerNumber();
         while (true) { //running game
             List<Integer> userGuess = getUserInput();
-            int[] result = checkResult(computerNumber, userGuess);
+            int[] result = CheckResult(computerNumber, userGuess);
             printResult(result);
 
             if (checkWinCondition(result[1])) {
@@ -24,11 +31,7 @@ public class Application {
                     break;
             }
         }
-
     }
-
-
-
     private static List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -58,7 +61,7 @@ public class Application {
     }
 
     //check&return the number of strike and ball
-    private static int[] checkResult (List<Integer> computerNumber, List<Integer> userGuess){
+    private CheckResult checkreslt (List<Integer> computerNumber, List<Integer> userGuess){
         int ball = 0, strike = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -74,7 +77,7 @@ public class Application {
             }
         }
 
-        return new int[]{ball, strike};
+        return new CheckResult(ball,strike);
     }
 
     private static void printResult(int[] result) {
@@ -115,4 +118,3 @@ public class Application {
         }
     }
 }
-
