@@ -36,7 +36,7 @@ public class ExceptionUtil {
     }
 
     public void checkOneOrTwoException(String input) {
-        if (input.equals("1") || input.equals("2")) {
+        if (input.equals("1") || input.equals("2")) { //1이나 2인 숫자일 경우 throw 발생 X
             return;
         }
         throw new IllegalArgumentException("1이나 2가 아닌 숫자를 입력하였습니다. 프로그램을 종료합니다.");

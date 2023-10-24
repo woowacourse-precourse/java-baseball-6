@@ -63,7 +63,7 @@ public class Computer {
         }
     }
 
-    public void run() {
+    public void run() { //랜덤 숫자 생성 및 정답 확인
         List<Integer> computer = generateNumber();
         Player p = new Player();
         int result = 0;
