@@ -7,5 +7,5 @@ public interface HintItemService { //TODO: 전체 코드 포맷 (Ctrl+Alt+L)
 
     HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball);
     int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball);
-
+    boolean isActive(HintItem hintItem);
 }

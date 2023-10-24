@@ -43,5 +43,10 @@ public class NothingHintServiceImpl implements HintItemService {
 
         return count;
     }
+
+    @Override
+    public boolean isActive(HintItem hintItem) {
+        return hintItem.isActive();
+    }
 }
 

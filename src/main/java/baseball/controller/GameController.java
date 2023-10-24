@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.domain.NumberBaseball;
 import baseball.service.GameService;
-import baseball.service.GameServiceImpl;
 import baseball.view.*;
 
 public class GameController {

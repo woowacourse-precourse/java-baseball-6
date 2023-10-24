@@ -11,10 +11,13 @@ public abstract class HintItem {
         this.isActive = active();
     }
 
+    public abstract boolean active();
+
     protected int getCount() {
         return count;
     }
 
-
-    public abstract boolean active();
+    public boolean isActive() {
+        return isActive;
+    }
 }
