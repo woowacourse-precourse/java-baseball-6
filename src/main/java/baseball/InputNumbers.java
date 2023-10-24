@@ -8,10 +8,9 @@ import java.util.Set;
 public class InputNumbers {
     private static final int INPUT_NUMBERS_SIZE = 3;
 
-    private List<Integer> inputNumbers = new ArrayList<>();
+    private List<Integer> inputNumbers;
 
     public InputNumbers(String inputNumbers) {
-        System.out.print("숫자를 입력해주세요 : ");
         validateSize(inputNumbers);
         validateIsDigit(inputNumbers);
         List<Integer> list = new ArrayList<>();
@@ -33,7 +32,7 @@ public class InputNumbers {
 
     public void validateIsDigit(String numbers) {
         //숫자외 입력 예외처리
-        if (isDigit(numbers)) {
+        if (!isDigit(numbers)) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
 
@@ -61,5 +60,21 @@ public class InputNumbers {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public int compareBallCount(Integer computerNum){
+        if(inputNumbers.contains(computerNum)){
+            return 1;
+        }
+        return 0;
+    }
+
+    public int compareStrikeCount(List<Integer> computer,int i){
+        Integer inputNum = inputNumbers.get(i);
+        Integer computerNum = computer.get(i);
+        if(inputNum.equals(computerNum)){
+            return 1;
+        }
+        return 0;
     }
 }
