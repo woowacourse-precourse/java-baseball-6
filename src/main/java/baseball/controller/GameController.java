@@ -21,7 +21,7 @@ public class GameController {
         } while (isRestart());
     }
 
-    public void playGame() {
+    private void playGame() {
         BallNumbers computerBallNumbers = generateComputerBall();
 
         while (true) {
