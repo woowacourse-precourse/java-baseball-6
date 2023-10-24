@@ -5,11 +5,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
+    final String MESSAGE_GAME_START = "숫자 야구 게임을 시작합니다.";
+    final String MESSAGE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    final String MESSAGE_GAME_END_ASK = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
+
     Game() {
         System.out.println();
     }
 
-    private static boolean isDistinct(String x) {
+    private static boolean isNumberValid(String x) {
+        if(x <)
         int[] check = new int[10];
         for (int i = 0; i < 3; i++) {
             int k = check[x.charAt(i) - '0'];
@@ -21,12 +27,16 @@ public class Game {
     }
 
     private static int genearteRandomNumber() {
-
+        while(true) {
+            Game.getRandomNumber();
+        }
+        }
         return 1;
     }
 
     static void start() {
         while (true) {
+
             play(getRandomNumber());
         }
     }
@@ -42,7 +52,6 @@ public class Application {
         Game.start();
         int a = Game.getRandomNumber();
         while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
             String b = "";
             StringBuffer sb = new StringBuffer();
             boolean[] vis = new boolean[10];
