@@ -5,10 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
     private String answerComputer;
-    final int MAX_ANSWER_LENGTH = 3;
+    final int INPUT_LENGTH_MAX = 3;
+
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
 
+    final int INPUT_RESTART_LENGTH_MAX = 1;
     final int INPUT_RESTART_MIN = 1;
     final int INPUT_RESTART_MAX = 2;
 
@@ -29,7 +31,7 @@ public class BaseballGame {
 
             System.out.print("숫자를 입력해주세요 : ");
             answerPlayer = Console.readLine();
-            exceptLengthInvalid(answerPlayer, MAX_ANSWER_LENGTH);
+            exceptLengthInvalid(answerPlayer, INPUT_LENGTH_MAX);
             exceptNotInteger(answerPlayer);
             exceptInvalidRange(answerPlayer, BALL_MIN, BALL_MAX);
 
@@ -86,7 +88,7 @@ public class BaseballGame {
     public boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String playerInput = Console.readLine();
-        exceptLengthInvalid(playerInput, 1);
+        exceptLengthInvalid(playerInput, INPUT_RESTART_LENGTH_MAX);
         exceptNotInteger(playerInput);
         exceptInvalidRange(playerInput, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
         boolean isRestart = true;
