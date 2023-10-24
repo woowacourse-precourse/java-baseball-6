@@ -47,13 +47,13 @@ class BallsTest {
     }
 
 
-    @DisplayName("Balls끼리 가지고 있는 Ball중에서 같은 숫자,같은 위치의 개수를 구한다.")
+    @DisplayName("Balls끼리 가지고 있는 Ball중에서 Strike(같은 숫자,같은 위치)의 개수를 구한다.")
     @ParameterizedTest
     @MethodSource("createBallsWithSameNumberAndSamePositionData")
     void 같은숫자_같은위치_개수(List<Integer> numbers, List<Integer> otherNumbers, int expected) {
         Balls balls = new Balls(numbers);
         Balls otherBalls = new Balls(otherNumbers);
-        assertThat(balls.getSamePositionAndSameNumberCount(otherBalls)).isEqualTo(expected);
+        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> createBallsWithSameNumberAndSamePositionData() {
@@ -65,13 +65,13 @@ class BallsTest {
         );
     }
 
-    @DisplayName("Balls끼리 가지고 있는 Ball중에서 같은 숫자,다른 위치의 개수를 구한다.")
+    @DisplayName("Balls끼리 가지고 있는 Ball중에서 (같은 숫자,다른 위치)의 개수를 구한다.")
     @ParameterizedTest
     @MethodSource("createBallsWithSameNumberAndOtherPositionData")
     void 같은숫자_다른위치_개수(List<Integer> numbers, List<Integer> otherNumbers, int expected) {
         Balls balls = new Balls(numbers);
         Balls otherBalls = new Balls(otherNumbers);
-        assertThat(balls.getOtherPositionAndSameNumberCount(otherBalls)).isEqualTo(expected);
+        assertThat(balls.getBallCount(otherBalls)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> createBallsWithSameNumberAndOtherPositionData() {

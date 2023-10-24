@@ -10,7 +10,7 @@ public class Ball {
         this.position = position;
     }
 
-    public boolean isSameNumberAndSamePosition(Ball otherBall) {
+    public boolean isMatch(Ball otherBall) {
         return this.number.isSameNumber(otherBall.number) && isSamePosition(otherBall.position);
     }
 
@@ -18,7 +18,7 @@ public class Ball {
         return this.position == otherPositon;
     }
 
-    public boolean isSameNumberAndOtherPosition(Ball otherBall) {
+    public boolean isPartialMatch(Ball otherBall) {
         return this.number.isSameNumber(otherBall.number) && isOtherPosition(otherBall.position);
     }
 

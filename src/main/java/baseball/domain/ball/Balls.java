@@ -17,36 +17,36 @@ public class Balls {
         this.balls = createBalls(values);
     }
 
-    public int getSamePositionAndSameNumberCount(Balls otherBalls) {
+    public int getStrikeCount(Balls otherBalls) {
         int result = 0;
         for (Ball ball : this.balls) {
-            if(otherBalls.isSamePositionAndSameNumber(ball)) {
+            if(otherBalls.isStrike(ball)) {
                 result++;
             }
         }
         return result;
     }
-    private boolean isSamePositionAndSameNumber(Ball otherBall) {
+    private boolean isStrike(Ball otherBall) {
         for (Ball ball : this.balls) {
-            if(ball.isSameNumberAndSamePosition(otherBall)) {
+            if(ball.isMatch(otherBall)) {
                 return true;
             }
         }
         return false;
     }
 
-    public int getSameNumberAndOtherPositionCount(Balls otherBalls) {
+    public int getBallCount(Balls otherBalls) {
         int result = 0;
         for (Ball ball : this.balls) {
-            if(otherBalls.isSameNumberOtherPositionAnd(ball)) {
+            if(otherBalls.isBall(ball)) {
                 result++;
             }
         }
         return result;
     }
-    private boolean isSameNumberOtherPositionAnd(Ball otherBall) {
+    private boolean isBall(Ball otherBall) {
         for (Ball ball : this.balls) {
-            if(ball.isSameNumberAndOtherPosition(otherBall)) {
+            if(ball.isPartialMatch(otherBall)) {
                 return true;
             }
         }

@@ -16,7 +16,7 @@ class BallTest {
     @ParameterizedTest
     @MethodSource("createSameNumberSamePositionData")
     void Ball_같은위치_같은포지션_true(Ball ball, Ball otherBall) {
-        Assertions.assertThat(ball.isSameNumberAndSamePosition(otherBall)).isTrue();
+        Assertions.assertThat(ball.isMatch(otherBall)).isTrue();
     }
 
     public static Stream<Arguments> createSameNumberSamePositionData() {
@@ -31,7 +31,7 @@ class BallTest {
     @ParameterizedTest
     @MethodSource("createNotSameNumberOrNotSamePositionData")
     void Ball_같은위치_같은포지션_false(Ball ball, Ball otherBall) {
-        Assertions.assertThat(ball.isSameNumberAndSamePosition(otherBall)).isFalse();
+        Assertions.assertThat(ball.isMatch(otherBall)).isFalse();
     }
 
     public static Stream<Arguments> createNotSameNumberOrNotSamePositionData() {
@@ -47,7 +47,7 @@ class BallTest {
     @ParameterizedTest
     @MethodSource("createSameNumberOrOtherPositionData")
     void Ball_같은위치_다른포지션_true(Ball ball, Ball otherBall) {
-        Assertions.assertThat(ball.isSameNumberAndOtherPosition(otherBall)).isTrue();
+        Assertions.assertThat(ball.isPartialMatch(otherBall)).isTrue();
     }
 
     public static Stream<Arguments> createSameNumberOrOtherPositionData() {
@@ -62,7 +62,7 @@ class BallTest {
     @ParameterizedTest
     @MethodSource("createNotSameNumberOrNotSamePositionData")
     void Ball_같은위치_다른포지션_false(Ball ball, Ball otherBall) {
-        Assertions.assertThat(ball.isSameNumberAndOtherPosition(otherBall)).isFalse();
+        Assertions.assertThat(ball.isPartialMatch(otherBall)).isFalse();
     }
 
 
