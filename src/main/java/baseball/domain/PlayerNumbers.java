@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class PlayerNumbers {
 
+    private static final int INITIAL_INDEX = 0;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
@@ -50,7 +51,7 @@ public class PlayerNumbers {
     }
 
     private void throwExceptionIfDuplicatedNumber(List<Integer> numbers) {
-        for (int indexOfCurrentNumber = 0; indexOfCurrentNumber < numbers.size(); indexOfCurrentNumber++) {
+        for (int indexOfCurrentNumber = INITIAL_INDEX; indexOfCurrentNumber < numbers.size(); indexOfCurrentNumber++) {
             List<Integer> remainingNumbers = numbers.subList(indexOfCurrentNumber + 1, numbers.size());
             int currentNumber = numbers.get(indexOfCurrentNumber);
             if (remainingNumbers.contains(currentNumber)) {
@@ -60,7 +61,7 @@ public class PlayerNumbers {
     }
 
     public void checkForBallCount(ComputerNumbers computerNumbers, int digitNumber) {
-        for (int indexOfPlayerNumber = 0; indexOfPlayerNumber < digitNumber; indexOfPlayerNumber++) {
+        for (int indexOfPlayerNumber = INITIAL_INDEX; indexOfPlayerNumber < digitNumber; indexOfPlayerNumber++) {
             int playerNumber = numbers.get(indexOfPlayerNumber);
             computerNumbers.compare(playerNumber, indexOfPlayerNumber);
         }

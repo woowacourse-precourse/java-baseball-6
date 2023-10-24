@@ -8,6 +8,10 @@ import java.util.Map;
  */
 public class BallCounter {
 
+
+    private static final int INITIAL_COUNT = 0;
+    private static final int INCREMENT_COUNT = 1;
+
     private static final Map<PitchResult, Integer> ballCounter = new HashMap<>();
 
     private BallCounter() {
@@ -17,14 +21,14 @@ public class BallCounter {
      * 볼 개수를 1 증가시킨다.
      */
     public static void countBall() {
-        ballCounter.put(PitchResult.BALL, getCountOfBall() + 1);
+        ballCounter.put(PitchResult.BALL, getCountOfBall() + INCREMENT_COUNT);
     }
 
     /**
      * 스트라이크 개수를 1 증가시킨다.
      */
     public static void countStrike() {
-        ballCounter.put(PitchResult.STRIKE, getCountOfStrike() + 1);
+        ballCounter.put(PitchResult.STRIKE, getCountOfStrike() + INCREMENT_COUNT);
     }
 
     /**
@@ -38,15 +42,15 @@ public class BallCounter {
      * 볼과 스트라이크의 개수를 초기화한다.
      */
     public static void reset() {
-        ballCounter.replace(PitchResult.BALL, 0);
-        ballCounter.replace(PitchResult.STRIKE, 0);
+        ballCounter.replace(PitchResult.BALL, INITIAL_COUNT);
+        ballCounter.replace(PitchResult.STRIKE, INITIAL_COUNT);
     }
 
     public static int getCountOfBall() {
-        return ballCounter.getOrDefault(PitchResult.BALL, 0);
+        return ballCounter.getOrDefault(PitchResult.BALL, INITIAL_COUNT);
     }
 
     public static int getCountOfStrike() {
-        return ballCounter.getOrDefault(PitchResult.STRIKE, 0);
+        return ballCounter.getOrDefault(PitchResult.STRIKE, INITIAL_COUNT);
     }
 }
