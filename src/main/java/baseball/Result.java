@@ -19,9 +19,8 @@ public class Result {
         int strike = 0;
         int ball = 0;
         for(int i=0; i<input.length(); i++) {
-            String number = input.substring(i, i+1);
             if (input.charAt(i) == answer.charAt(i)) strike++;
-            else if (answer.contains(number)) ball++;
+            else if (answer.contains(String.valueOf(input.charAt(i)))) ball++;
         }
         return new Result(ball, strike);
     }

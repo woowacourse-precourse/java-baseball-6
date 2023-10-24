@@ -6,6 +6,8 @@ import static console.Printer.printInput;
 import static console.Printer.printQuit;
 import static console.Printer.printResult;
 import static console.Printer.printStart;
+import static console.Validator.validateInput;
+import static console.Validator.validateOption;
 
 import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
@@ -31,19 +33,11 @@ public class Application {
             if (isCorrect) {
                 printRestartOrExit(RESTART, EXIT);
                 String option = Console.readLine();
+                validateOption(option);
                 if (Integer.parseInt(option) == EXIT) break;
                 else answer = makeRandomNumber();
             }
         }
-    }
-
-    private static void validateInput(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 타입입니다.");
-        }
-        if (input.length() != NUMBER_LIMIT) throw new IllegalArgumentException("입력값은 세자리여야 합니다.");
     }
 
     static String makeRandomNumber() {
