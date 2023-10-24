@@ -14,8 +14,12 @@ public class BaseballGame implements Game{
     public BaseballGame() {
     }
 
+    /**
+     * 컴퓨터가 정답 번호를 생성한다.
+     *
+     * @return 중복 숫자가 없는 세자리 정수
+     */
     private int generateAnswerNumber() {
-        // 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)
         List<Integer> computer = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         while (computer.size() < 3){
@@ -34,12 +38,12 @@ public class BaseballGame implements Game{
     }
 
     /**
-     * 게임 한판을 수행한다.
-     * @return 게임 리플레이 여부
+     * 게임 한판이 끝날 때까지 수행한다.
+     *
+     * @return 게임 리플레이 여부의 true / false
      */
     @Override
     public boolean playGame() {
-        // 게임 진행은 크게 세 단계를 반복 진행한다.
         while(true) {
             // 1. 입력 받기
             int number = inputNumber();
@@ -52,7 +56,11 @@ public class BaseballGame implements Game{
         }
     }
 
-    // 리플레이 옵션 선택하기
+    /**
+     * 사용자에게 리플레이 옵션을 선택하게 한다.
+     *
+     * @return 리플레이 여부의 true / false
+     */
     private boolean isContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString = readLine();
@@ -68,27 +76,22 @@ public class BaseballGame implements Game{
 
     /**
      * 입력 숫자와 정답 숫자를 비교하여 숫자 야구 힌트를 준다.
-     * @param inputNumber 서로 다른 1~9 숫자로 구성된 세자리 수, 입력 숫자
-     * @param answerNumber 서로 다른 1~9 숫자로 구성된 세자리 수, 정답 숫자
-     * @return 성공 여부의 true/false
+     *
+     * @param inputNumber 서로 다른 1~9 숫자로 구성된 세자리 수
+     * @param answerNumber 서로 다른 1~9 숫자로 구성된 세자리 수
+     * @return 성공 여부의 true / false
      */
     private boolean getResult(int inputNumber, int answerNumber) {
-        // 3스트라이크
         if (inputNumber - answerNumber == 0) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
-
         String[] inputArray = String.valueOf(inputNumber).split("");
         String[] answerArray = String.valueOf(answerNumber).split("");
-        // 스트라이크 개수 세기
         int strike = countStrike(inputArray, answerArray);
-
-        // 볼 개수 세기
         int ball = countBall(inputArray, answerArray);
 
-        // 결과 출력
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
         }
@@ -122,6 +125,11 @@ public class BaseballGame implements Game{
         return ball;
     }
 
+    /**
+     * 사용자로부터 올바른 숫자를 입력받는다.
+     *
+     * @return 검증 완료된 세자리 정수
+     */
     private int inputNumber() {
         // 사용자로부터 올바른 숫자 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
@@ -129,7 +137,12 @@ public class BaseballGame implements Game{
         return checkInputNumber(inputString);
     }
 
-    // 고민: 예외를 어디서 catch해야 할까? 나는 여기서 다 해야 한다고 생각한다. 결국 모두 인풋값 검증시 발생한 예외니까.
+    /**
+     * 사용자의 숫자 인풋값의 유효성을 검증한다.
+     *
+     * @param inputString 사용자가 입력한 숫자 문자열
+     * @return 사용자 입력 문자열을 int로 파싱한 값
+     */
     private int checkInputNumber(String inputString) {
         int number;
         try {
@@ -147,6 +160,13 @@ public class BaseballGame implements Game{
         return number;
     }
 
+    /**
+     * 사용자 입력 검증 1 - 사용자는 숫자만 입력해야 한다.
+     *
+     * @param inputString 사용자가 입력한 숫자 문자열
+     * @return 숫자 문자열을 int로 파싱한 결과값
+     * @throws IllegalArgumentException if 문자열의 int 파싱이 불가능
+     */
     private int parseNumber(String inputString) throws IllegalArgumentException {
         int number;
         try {
@@ -157,18 +177,36 @@ public class BaseballGame implements Game{
         return number;
     }
 
+    /**
+     * 사용자 입력 검증 2 - 사용자 입력 문자열은 길이가 3이어야 한다.
+     *
+     * @param inputString 사용자가 입력한 문자열
+     * @throws IllegalArgumentException if 문자열 길이가 3이 아님
+     */
     private void checkInputLength(String inputString) throws IllegalArgumentException {
         if (inputString.length() != 3) {
             throw new IllegalArgumentException("세 자리 숫자를 입력해야 합니다.");
         }
     }
 
+    /**
+     * 사용자 입력 검증 3 - 사용자 입력 문자열에 0이 포함되지 않아야 한다.
+     *
+     * @param inputString 사용자가 입력한 문자열
+     * @throws IllegalArgumentException if 문자열에 0이 포함됨
+     */
     private void checkInvalidNumber(String inputString) throws IllegalArgumentException {
         if (inputString.contains("0")){
             throw new IllegalArgumentException("0은 포함할 수 없습니다.");
         }
     }
-    
+
+    /**
+     * 사용자 입력 검증 4 - 사용자가 입력한 숫자 문자열은 중복된 숫자를 가지면 안 된다.
+     *
+     * @param numberString 사용자가 입력한 숫자 문자열
+     * @throws IllegalArgumentException if 중복 숫자가 존재함
+     */
     private void checkDuplicated(String numberString) throws IllegalArgumentException {
         Set<Character> numberSet = new HashSet<>();
         for (char uniqueNumber : numberString.toCharArray()){
