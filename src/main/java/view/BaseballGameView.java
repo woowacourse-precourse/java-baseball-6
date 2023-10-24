@@ -13,16 +13,15 @@ public class BaseballGameView {
         return getUserNumberList(parsedUserInput);
     }
 
-    public void printJudgementMessage(int strikeCount, int includedNumberCount) {
-        int ballCount = includedNumberCount - strikeCount;
+    public void printJudgementMessage(int strikeCount, int ballCount) {
 
-        if (includedNumberCount == 0) {
+        if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
-        } else if (strikeCount == 0) {
+        } else if (strikeCount == 0 && ballCount > 0) {
             System.out.println(ballCount + "볼");
-        } else if (strikeCount == includedNumberCount) {
+        } else if (strikeCount > 0 && ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
-        } else if (strikeCount > 0) {
+        } else if (strikeCount > 0 && ballCount > 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }
