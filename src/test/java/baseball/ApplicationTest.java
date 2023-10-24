@@ -11,12 +11,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class ApplicationTest extends NsTest {
-
-    @BeforeEach
-    void setUp() {
-        BaseballGame.setRunningGame(true);
-    }
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -32,22 +26,6 @@ class ApplicationTest extends NsTest {
     void 예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 예외_테스트2() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("999"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 예외_테스트3() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

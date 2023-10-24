@@ -7,7 +7,6 @@ import java.util.List;
 
 public class GetNumbers {
     private static final int MAX_NUM_LENGTH = 3;
-
     public List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
