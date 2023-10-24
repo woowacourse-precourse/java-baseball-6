@@ -42,11 +42,14 @@ public class Player {
         String result = "";
         if (ball.getResultMessage().equals("0볼") && strike.getResultMessage().equals("0스트라이크")) {
             result = "낫싱";
-        } else if (ball.getResultMessage().equals("0볼") && !strike.getResultMessage().equals("0스트라이크")) {
+        }
+        if (ball.getResultMessage().equals("0볼") && !strike.getResultMessage().equals("0스트라이크")) {
             result = strike.getResultMessage();
-        } else if (!ball.getResultMessage().equals("0볼") && strike.getResultMessage().equals("0스트라이크")) {
+        }
+        if (!ball.getResultMessage().equals("0볼") && strike.getResultMessage().equals("0스트라이크")) {
             result = ball.getResultMessage();
-        } else if (!ball.getResultMessage().equals("0볼") && !strike.getResultMessage().equals("0스트라이크")) {
+        }
+        if (!ball.getResultMessage().equals("0볼") && !strike.getResultMessage().equals("0스트라이크")) {
             result = ball.getResultMessage() + " " + strike.getResultMessage();
         }
         System.out.println(result);
