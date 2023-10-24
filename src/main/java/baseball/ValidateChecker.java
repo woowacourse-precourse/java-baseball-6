@@ -21,11 +21,10 @@ public class ValidateChecker {
         }
     }
 
-    boolean isRangeValidate(String userInput, int start, int end) {
+    boolean isRangeValidate(String userInput, char start, char end) {
         for (int i = 0; i < userInput.length(); i++) {
             if (userInput.charAt(i) < start || userInput.charAt(i) > end)
-                return (false);
-        }
+                return (false);}
         return (true);
     }
 
@@ -38,14 +37,14 @@ public class ValidateChecker {
 
     void isUserInputValidate(String userInput) {
         checkLengthValidate(userInput, 3);
-        if (!isRangeValidate(userInput, 1, 9))
+        if (!isRangeValidate(userInput, '1', '9'))
                 exception.generateInvalidAnswerRangeException();
         checkDuplicateValidate(userInput);
     }
 
     void isRetryInputValidate(String retryInput) {
         checkLengthValidate(retryInput, 1);
-        if (!isRangeValidate(retryInput, 1, 2))
+        if (!isRangeValidate(retryInput, '1', '2'))
             exception.generateInvalidAnswerRangeException();
     }
 }
