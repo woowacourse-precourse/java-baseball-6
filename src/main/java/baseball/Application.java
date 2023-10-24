@@ -105,8 +105,8 @@ public class Application {
         newNum=newNum%100;
         userNum.add(newNum/10);
         newNum=newNum%10;
-        userNum.add(newNum/1);
-        newNum=newNum%1;
+        userNum.add(newNum);
+        newNum= 0;
     }
 }
 
