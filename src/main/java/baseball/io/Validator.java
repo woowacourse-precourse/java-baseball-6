@@ -28,10 +28,15 @@ public final class Validator {
     }
 
     public static void validateDigit(String input, int length) {
-        String regex = "^[1-9]{" + length + "}$";
-        if (!input.matches(regex)) {
+        String digitLengthRegex = generateExactDigitLengthRegex(length);
+        if (!input.matches(digitLengthRegex)) {
             throw new IllegalArgumentException("The input string has the invalid character");
         }
+    }
+
+
+    private static String generateExactDigitLengthRegex(int length) {
+        return "^[1-9]{" + length + "}$";
     }
 
 
