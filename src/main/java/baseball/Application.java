@@ -11,7 +11,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        do {
+            playGame();
+        } while (replay());
     }
     public static void playGame() {
         List<Integer> computer = makeRandom();
@@ -109,5 +111,16 @@ public class Application {
         if (score.get("strike").equals(0) && score.get("ball").equals(0)) {
             System.out.println("낫싱");
         }
+    }
+    public static boolean replay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int replayNumber = Integer.parseInt(Console.readLine());
+
+        if (replayNumber == 1){
+            return true;
+        } else if (replayNumber == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
