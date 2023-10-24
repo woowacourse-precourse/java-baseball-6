@@ -79,8 +79,5 @@ public class BaseBallGame {
         }
     }
 
-    /**
-     * 유저가 입력한 String형식의 Input을 List형식으로 파씽함
-     */
 
 }

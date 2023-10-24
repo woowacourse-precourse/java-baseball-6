@@ -2,6 +2,7 @@ package baseball.Controller;
 
 import baseball.Model.BaseBallGame;
 import baseball.Model.Helper;
+import baseball.Model.Valid;
 import baseball.View.GameView;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class GameController {
     public void startGame() {
         gameView.printStartMessage();
         while (!baseBallGame.isGameOver()) {
-            String input = gameView.printInputMessage();
+            String input = Valid.checkValid(gameView.printInputMessage());
             List<Integer> userInput = helper.parseUserInput(input);
             List<Integer> ballStrikeCount = baseBallGame.checkBallCount(userInput);
             int balls = ballStrikeCount.get(BALL);
