@@ -1,9 +1,11 @@
 package baseball.controller;
 
+import java.util.Map;
+
 public interface GameController {
     boolean isStillWrong();
 
     void start();
 
-    void checkAnswer(String validUserAnswer);
+    Map<String, Integer> checkAnswer(String validUserAnswer);
 }

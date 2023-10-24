@@ -15,7 +15,7 @@
 - [x] GameView : inputAnswer
 - [x] GameView : validateInputAnswer
 - [ ] GameState : isAbleToPlay, changeTerminated
-- [ ] Scoring : score
+- [x] Scoring : score
 - [ ] ScoringResultCreator : makeScoreResult
 
 ## Feat3. 게임 종료
