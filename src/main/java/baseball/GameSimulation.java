@@ -14,6 +14,7 @@ public class GameSimulation {
     private List<Integer> computer;
     private List<Integer> user;
 
+    // 게임 시뮬레이터
     public GameSimulation(){
         init();
     }
@@ -21,9 +22,9 @@ public class GameSimulation {
     // 컴퓨터의 랜덤 숫자를 설정하는 메소드
     void init(){
         computer=new ArrayList<>();
-        for (int i = 0; i < 3;){
-            int randomNumber= Randoms.pickNumberInRange(1,9);
-            if (!computer.contains(randomNumber)){
+        for (int i = 0; i < 3;) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
                 i++;
             }
@@ -60,11 +61,12 @@ public class GameSimulation {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput=Console.readLine();
         this.user=userInit(userInput);
-        judgeUser();
-        compareNumber();
+        judgeUser(); // 판단 로직
+        compareNumber(); // 숫자 비교 로직
         System.out.println(compareNumberResult());
     }
 
+    // 컴퓨터와 사용자의 숫자 비교 로직
     public void compareNumber(){
         this.strikeCount = 0;
         this.ballCount = 0;
