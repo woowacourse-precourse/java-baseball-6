@@ -20,7 +20,7 @@ public class Game {
     }
 
     public boolean onGame(){
-        // 숫자를 입력 받기 위한 매세지 출력
+        System.out.print("숫자를 입력해주세요 : ");
         // 입력받는 메서드 호출
         // 점수 계산하는 score 메서드 호출 / 결과값 출력
         // 정답을 맞추면 return true / 틀리면 return false
