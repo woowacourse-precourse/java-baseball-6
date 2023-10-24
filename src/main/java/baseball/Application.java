@@ -20,7 +20,7 @@ public class Application {
 
         try {
             computerNums = choiceComputerNums();
-            printComputerNums(computerNums);
+//            printComputerNums(computerNums);
 
             while (!gameResult) {
                 userNums = inputUserNums();
