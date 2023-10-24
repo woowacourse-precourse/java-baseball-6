@@ -16,6 +16,7 @@ public class OutputView {
     public void write(String message) {
         try {
             writer.write(message);
+            writer.flush();
         } catch (IOException e) {
             throw new RuntimeException(IOMessage.IOEXCEPTION_WHILE_RUNTIME);
         }
