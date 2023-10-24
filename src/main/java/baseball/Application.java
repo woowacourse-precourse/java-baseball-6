@@ -13,15 +13,14 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        GameStart();
+        numberBaseballGameStart();
     }
 
-    public static void GameStart() {
-        strike = 0;
-        ball = 0;
+    public static void numberBaseballGameStart() {
+        initData();
 
         try {
-            List<Integer> computerNumbers = ComputerSelectNumber();
+            List<Integer> computerNumbers = inputComputerNumbers();
 
             validNumbers(computerNumbers);
             countStrike(computerNumbers);
@@ -36,9 +35,9 @@ public class Application {
     public static void countStrike(List<Integer> computerNumbers) {
         while(strike!=NUMBER_COUNT) {
 
-            List<Integer> playerNumber = PlayerSelectNumber();
-            validNumbers(playerNumber);
-            CompareNumber(computerNumbers, playerNumber);
+            List<Integer> playerNumbers = inputPlayerNumbers();
+            validNumbers(playerNumbers);
+            compareNumbers(computerNumbers, playerNumbers);
 
         }
     }
@@ -49,13 +48,13 @@ public class Application {
         validInputNumber(reStartNumber);
 
         if (reStartNumber.equals("1")) {
-            GameStart();
+            numberBaseballGameStart();
             return;
         }
         System.out.println("게임이 종료되었습니다.");
     }
 
-    public static List<Integer> ComputerSelectNumber() {
+    public static List<Integer> inputComputerNumbers() {
 
         List<Integer> computer = new ArrayList<>();
 
@@ -71,7 +70,7 @@ public class Application {
         return computer;
     }
 
-    public static List<Integer> PlayerSelectNumber() {
+    public static List<Integer> inputPlayerNumbers() {
         List<Integer> playerNumbers = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
 
@@ -84,9 +83,8 @@ public class Application {
         return playerNumbers;
     }
 
-    public static void CompareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        strike = 0;
-        ball = 0;
+    public static void compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        initData();
 
         for(int i=0; i<NUMBER_COUNT; i++) {
             if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
@@ -95,13 +93,12 @@ public class Application {
             }
             if (computerNumbers.contains(playerNumbers.get(i))) {
                 ball++;
-                continue;
             }
         }
-        System.out.println(PrintResult());
+        System.out.println(printResult());
     }
 
-    public static String PrintResult() {
+    public static String printResult() {
         if(ball == 0 && strike == 0) {
             return "낫싱";
         }
@@ -112,6 +109,11 @@ public class Application {
             return ball + "볼";
         }
         return ball + "볼 " + strike + "스트라이크";
+    }
+
+    public static void initData() {
+        strike = 0;
+        ball = 0;
     }
 
     public static void validNumbers(List<Integer> numbers) {
