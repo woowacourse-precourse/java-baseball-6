@@ -24,14 +24,22 @@ public class Game {
             System.out.println("숫자를 입력해 주세요 : ");
             answer = new ArrayList<>();
             String anw = Console.readLine();
+            boolean[] num = new boolean[10];
             if (anw.length() != SIZE){
                 throw new IllegalArgumentException();
             }
-            if (answer.contains(Integer.parseInt(anw))) {
-                throw new IllegalArgumentException();
+//            if (answer.contains(Integer.parseInt(anw))) {
+//                throw new IllegalArgumentException();
+//            }
+            for(int i = 0; i < SIZE; i++){
+                char c = anw.charAt(i);
+                int x = c - '0';
+                num[x] = true;
+                answer.add(x);
             }
             if(check(answer)){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
             }
         }
 
