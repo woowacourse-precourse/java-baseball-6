@@ -65,4 +65,8 @@ public class ValidException {
         ValidException.isValidNumVerification(inputStr); // 입력 받은 문자열이 숫자로 변환 가능한지 확인
         ValidException.isValidPositiveInt(inputStr); // 입력 받은 문자열이 양수로 인지 확인
     }
+
+    public static String isValidNotAccuracyGameResult() {
+        throw new IllegalArgumentException(ValidConstants.MSG_NOT_ACCURACY_GAME_RESULT());
+    }
 }

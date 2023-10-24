@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.string.MyConstants;
 import baseball.utill.Utill;
+import baseball.utill.ValidException;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class Judge {
             return resultHintOfJudge;
         }
 
-        return "";
+        return ValidException.isValidNotAccuracyGameResult();
     }
 
     /**

@@ -20,4 +20,8 @@ public class ValidConstants {
     public static String MSG_ONLY_INPUT_NUM_TYPE() {
         return "숫자만 입력가능 합니다.";
     }
+
+    public static String MSG_NOT_ACCURACY_GAME_RESULT() {
+        return "게임의 결과가 정확하지 않습니다.";
+    }
 }
