@@ -36,6 +36,14 @@ public class GameService {
         Computer.setStrike(strike);
     }
 
+    public static boolean correctAnswer() {
+        int strike = Computer.getStrike();
+        boolean flag = GameRule.defaultBool;
+        if (strike == 3) {
+            flag = GameRule.correctBool;
+        }
+        return flag;
+    }
 
     public static int countBall() {
         int ball = 0;
