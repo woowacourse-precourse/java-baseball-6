@@ -38,4 +38,13 @@ public class InputViewTest {
         assertThat(e.getClass()).isEqualTo(IllegalArgumentException.class);
         assertThat(e.getMessage()).isEqualTo("3자리의 수를 입력해주세요.");
     }
+
+    @Test
+    void 입력_길이_초과_예외_테스트() {
+        userInput("1234");
+
+        Exception e = assertThrows(IllegalAccessException.class, InputView::getUserNumbers);
+        assertThat(e.getClass()).isEqualTo(IllegalArgumentException.class);
+        assertThat(e.getMessage()).isEqualTo("3자리의 수를 입력해주세요.");
+    }
 }
