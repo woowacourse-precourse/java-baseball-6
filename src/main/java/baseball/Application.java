@@ -13,35 +13,23 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해 주세요 : ");
 
-            String user = Console.readLine();
-            if (user.length() != 3) {
+            String userNumber = Console.readLine();
+            if (userNumber.length() != 3) {
                 throw new IllegalArgumentException("3개의 값을 입력해주세요");
             }
-            if (!user.chars().allMatch(Character::isDigit)) {
+            if (!userNumber.chars().allMatch(Character::isDigit)) {
                 throw new IllegalArgumentException("숫자만 입력해주세요");
             }
             String tmp = "";
-            for (char c : user.toCharArray()) {
+            for (char c : userNumber.toCharArray()) {
                 if (tmp.equals(String.valueOf(c))) {
                     throw new IllegalArgumentException("중복되지 않는 숫자로 입력해주세요");
                 }
                 tmp += String.valueOf(c);
             }
 
-            int ball = 0;
-            int strike = 0;
-            for (int i = 0; i < computerNumber.length(); i++) {
-                int computerDigit = computerNumber.charAt(i);
-                int userDigit = user.charAt(i);
-
-                if (computerDigit - 1 == userDigit || computerDigit + 1 == userDigit) {
-                    ball += 1;
-                }
-
-                if (computerDigit == user.charAt(i)) {
-                    strike += 1;
-                }
-            }
+            int ball = ballCount(computerNumber, userNumber);
+            int strike = strikeCount(computerNumber, userNumber);
 
             if (ball != 0) {
                 System.out.print(ball + "볼 ");
@@ -84,5 +72,31 @@ public class Application {
         }
 
         return String.join("", computer);
+    }
+
+    public static int ballCount(String computerNumber, String userNumber) {
+        int ball = 0;
+        for (int i = 0; i < computerNumber.length(); i++) {
+            int computerDigit = computerNumber.charAt(i);
+            int userDigit = userNumber.charAt(i);
+
+            if (computerDigit - 1 == userDigit || computerDigit + 1 == userDigit) {
+                ball += 1;
+            }
+        }
+        return ball;
+    }
+
+    public static int strikeCount(String computerNumber, String userNumber) {
+        int strike = 0;
+        for (int i = 0; i < computerNumber.length(); i++) {
+            int computerDigit = computerNumber.charAt(i);
+            int userDigit = userNumber.charAt(i);
+
+            if (computerDigit == userDigit) {
+                strike += 1;
+            }
+        }
+        return strike;
     }
 }
