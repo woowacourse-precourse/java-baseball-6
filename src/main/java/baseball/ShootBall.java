@@ -22,8 +22,6 @@ public class ShootBall {
             input_num = input.charAt(i) - '0';
             numbers[input_num]= i+1;
         }
-
-        Console.close();
     }
 
     //(2)번 기능
@@ -65,7 +63,7 @@ public class ShootBall {
         int strike=0,ball=0;
         boolean result = false;
         int[] inputNumbers = inputBall.getNumbers();
-        for(int i=1;i<=10;i++){
+        for(int i=1;i<=9;i++){
             if((numbers[i] & inputNumbers[i])!=0)
                 if(numbers[i] == inputNumbers[i])
                     strike++;
