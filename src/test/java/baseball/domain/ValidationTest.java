@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.validation.Validation;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
