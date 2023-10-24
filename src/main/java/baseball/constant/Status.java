@@ -5,9 +5,7 @@ public enum Status {
     NEW,
     GAME,
     SET,
-    JUDGE,
-    SET_FINISH,
-    REPLAY,
+    MATCHED,
     EXIT
 
 }
