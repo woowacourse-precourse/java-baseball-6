@@ -1,4 +1,4 @@
-package baseball;
+package utills;
 
 public class ValidateUtils {
     public static final int MIN_VALUE = 1;
