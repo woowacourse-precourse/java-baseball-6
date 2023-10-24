@@ -1,11 +1,11 @@
 package baseball.util;
 
 public enum Err {
-    ERROR_NUMBERS_DUPLICATION_MESSAGE("[ERROR] 서로 다른 숫자를 입력해주세요."),
-    ERROR_NOT_THREE_SIZE_MESSAGE("[ERROR] 3자리의 숫자를 입력해주세요."),
-    ERROR_GAME_ACTION_INPUT_MESSAGE("[ERROR] 게임 재실행 또는 종료에 대한 입력 값은 1 또는 2만 가능합니다."),
-    ERROR_INPUT_NOT_NUMBERS_MESSAGE("[ERROR] 숫자만 입력할 수 있습니다."),
-    ERROR_INPUT_SCOPE_MESSAGE("[ERROR] 1부터 9까지의 범위에 있는 숫자만 입력할 수 있습니다.");
+    DUPLICATE_NUMBERS("서로 다른 숫자만 있어야 합니다."),
+    INVALID_NUMBERS_SIZE("세 자리의 숫자가 있어야 합니다."),
+    INVALID_GAME_STATUS("게임 재실행 또는 종료하려면, 1 또는 2만 입력해야 합니다."),
+    INVALID_NUMERIC_INPUT("숫자 문자만 입력할 수 있습니다."),
+    OUT_OF_RANGE_NUMBERS("1부터 9까지의 범위에 있는 숫자만 가능합니다.");
 
     private final String message;
 
@@ -14,6 +14,6 @@ public enum Err {
     }
 
     public String getMessage() {
-        return message;
+        return "[ERROR] " + message;
     }
 }
