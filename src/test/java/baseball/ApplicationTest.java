@@ -21,6 +21,39 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임_한번_진행() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("583", "2");
+                    assertThat(output()).contains("3스트라이크", "게임 종료");
+                },
+                5, 8, 3
+        );
+    }
+
+    @Test
+    void 게임_볼_또는_스트라이크만_나올_때_확인() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("456", "356", "126", "132", "256", "216", "213", "2");
+                    assertThat(output()).contains("낫싱", "1볼", "2볼", "3볼", "1스트라이크", "2스트라이크", "3스트라이크","게임 종료");
+                },
+                2, 1, 3
+        );
+    }
+
+    @Test
+    void 게임_볼과_스트라이크가_섞인_경우_확인() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "321", "123", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크","게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
