@@ -1,27 +1,4 @@
-<p align="center">
-    <img src="./BullsandCows.png" alt="숫자야구이미지" width="250px">
-</p>
-
-# 1주차 미션 - 숫자 야구
-> 1주차 미션 숫자 야구를 구현한 저장소입니다.
-
-<p align="center">
-    <img src="./Application.gif" alt="기능실행이미지" width="750px">
-</p>
-
-## 목차
- - [실행하기](#실행하기)
- - [기능](#기능)
-	- [게임 시작](#게임-시작)
-	- [맞추기](#맞추기)
-	- [반복](#반복)
-
-## 실행하기
-현재 Repository를 Clone한 후 Eclipse(혹은 그 외 IDE)를 통해 실행합니다.
-	git clone -b as --single-branch https://github.com/ilot12/java-baseball-6.git
-
-
-
+# 미션 - 숫자 야구
 
 ## 🔍 진행 방식
 
