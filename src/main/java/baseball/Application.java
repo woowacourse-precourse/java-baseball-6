@@ -42,10 +42,18 @@ public class Application {
             ballAndStrike = calculateBallAndStrike(userNumber, randomNumber);
 
             printResult(ballAndStrike[0], ballAndStrike[1]);
-            } while (ballAndStrike[1] != NUMBER_LENGTH);
+        } while (ballAndStrike[1] != NUMBER_LENGTH);
 
-        System.out.println(GAME_RESTART_MESSAGE);
-        return (Console.readLine());
+        return getValidGameCode();
+    }
+
+    private static String getValidGameCode() {
+        String gameCode;
+        do {
+            System.out.println(GAME_RESTART_MESSAGE);
+            gameCode = Console.readLine();
+        } while (!gameCode.equals(RESTART_GAME_CODE) && !gameCode.equals(EXIT_GAME_CODE));
+        return gameCode;
     }
 
     private static int[] calculateBallAndStrike(List<Integer> userNumber, List<Integer> randomNumber) {
@@ -71,7 +79,7 @@ public class Application {
         if (strike == NUMBER_LENGTH) {
             resultMessage = strike + STRIKE + "\n" + NUMBER_LENGTH + GAME_WIN_MESSAGE;
         } else if (ball > 0 && strike > 0) {
-            resultMessage = ball + BALL + " "+ strike + STRIKE;
+            resultMessage = ball + BALL + " " + strike + STRIKE;
         } else if (ball > 0) {
             resultMessage = ball + BALL;
         } else if (strike > 0) {
