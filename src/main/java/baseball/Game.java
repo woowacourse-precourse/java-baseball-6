@@ -33,7 +33,7 @@ public class Game {
     }
 
     private void start(){
-        computer.generateRandNums();
+        computer.generateComputerBaseballNumber();
         this.status = Status.PROGRESS;
         progress();
     }

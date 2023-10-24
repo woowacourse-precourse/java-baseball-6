@@ -2,7 +2,7 @@ package baseball;
 
 public class Computer {
     private ComputerBaseballNumber computerBaseballNumber;
-    public void generateRandNums(){
+    public void generateComputerBaseballNumber(){
         computerBaseballNumber = new ComputerBaseballNumber();
     }
     public BaseballGameResult getBaseballGameResult(UserBaseballNumber userBaseballNumber){
