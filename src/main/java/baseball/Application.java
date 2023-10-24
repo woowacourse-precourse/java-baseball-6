@@ -8,7 +8,7 @@ public class Application {
         AppConfig appConfig = new AppConfig();
         GameController gameController = appConfig.gameController();
 
-        System.out.print("숫자 야구 게임을 시작합니다.\n");
+        printMessage("숫자 야구 게임을 시작합니다.\n");
         Long computerCodeId = gameController.gameStart();
 
         boolean pass = false;
@@ -17,7 +17,7 @@ public class Application {
         String command;
         Map<Grade, Integer> result;
         while(!pass) {
-            System.out.print("숫자를 입력해주세요 : ");
+            printMessage("숫자를 입력해주세요 : ");
             input = Console.readLine();
             result = gameController.guessCode(input, computerCodeId);
             pass = gameController.determineGameStatus(result);
@@ -25,8 +25,8 @@ public class Application {
             printResult(result);
 
             if(pass) {
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-                System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+                printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+                printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
                 command = Console.readLine();
                 restart = gameController.determineRestarting(command);
 
@@ -54,5 +54,9 @@ public class Application {
             System.out.print("낫싱");
         }
         System.out.print("\n");
+    }
+
+    private static void printMessage(final String message) {
+        System.out.print(message);
     }
 }
