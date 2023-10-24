@@ -136,4 +136,16 @@ class GameTest {
         assertThat(output).isEqualTo("1볼 1스트라이크");
         assertThat(output2).isEqualTo("2볼 1스트라이크");
     }
+
+    @Test
+    @DisplayName("올바른 입력_게임 종료 시 1, 2 입력")
+    void handleGameChoiceTest() {
+        Game game = new Game();
+
+        String input = game.getReplayOrOverInput("1");
+        String input2 = game.getReplayOrOverInput("2");
+
+        assertThat(input).isEqualTo("1");
+        assertThat(input2).isEqualTo("2");
+    }
 }
