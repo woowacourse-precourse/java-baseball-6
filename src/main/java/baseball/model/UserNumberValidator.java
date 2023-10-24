@@ -21,7 +21,7 @@ public class UserNumberValidator {
      */
     private static void checkNumberSize(int numberSize, String inputWord) {
         if (inputWord.length() != numberSize) {
-            throw new IllegalArgumentException("세자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException(numberSize + "자리 숫자가 아닙니다.");
         }
     }
 
