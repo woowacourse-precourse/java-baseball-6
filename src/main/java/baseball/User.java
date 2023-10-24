@@ -38,6 +38,7 @@ public class User {
         checkSize(userInput);
         checkOnlyNumber(userInput);
         checkDuplicated(userInput);
+        checkNumberRange(userInput);
     }
 
     private void checkSize(String userInput) {
@@ -46,10 +47,28 @@ public class User {
         }
     }
 
-    private void checkOnlyNumber(String userInput) {
+    /*private void checkOnlyNumber(String userInput) {
         for (int i = 0; i < ANSWER_SIZE; i++) {
             int num = (int)userInput.charAt(i) - 48;
             if(!(num >= ANSWER_MIN_NUM && num <= ANSWER_MAX_NUM)) {
+                throw new IllegalArgumentException("1~9사이 숫자만 입력 가능합니다.");
+            }
+        }
+    }*/
+
+    private void checkOnlyNumber(String userInput) {
+        for (int i = 0; i < ANSWER_SIZE; i++) {
+            char num = userInput.charAt(i);
+            if (!Character.isDigit(num)) {
+                throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            }
+        }
+    }
+
+    private void checkNumberRange(String userInput) {
+        for (int i = 0; i < ANSWER_SIZE; i++) {
+            int num = Character.getNumericValue(userInput.charAt(i));
+            if (!(num >= ANSWER_MIN_NUM && num <= ANSWER_MAX_NUM)) {
                 throw new IllegalArgumentException("1~9사이 숫자만 입력 가능합니다.");
             }
         }
