@@ -19,7 +19,7 @@ public class Turn {
 
             BallCount ballCount = winningNumbers.ballCounting(baseballNumbers);
 
-            Output.consoleLine(ballCount);
+            announceResultOf(ballCount);
             updateIsPlayingBy(ballCount);
         }
     }
@@ -30,6 +30,10 @@ public class Turn {
 
     private static BaseballNumbers getBaseballNumbers() {
         return new BaseballNumbers(new BaseballNumbersGenerator());
+    }
+
+    private static void announceResultOf(BallCount ballCount) {
+        Output.consoleLine(ballCount);
     }
 
     private void updateIsPlayingBy(BallCount ballCount) {
