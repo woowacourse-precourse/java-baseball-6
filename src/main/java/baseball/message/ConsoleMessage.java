@@ -14,7 +14,7 @@ public final class ConsoleMessage {
             return "낫싱";
         }
 
-        String strikeMessage = "", ballMessage = "";
+        String strikeMessage = "", ballMessage = "", space = "";
 
         if (strike != 0) {
             strikeMessage = strike + "스트라이크";
@@ -22,9 +22,10 @@ public final class ConsoleMessage {
 
         if (ball != 0) {
             ballMessage = ball + "볼";
+            space = " ";
         }
 
-        return ballMessage + " " + strikeMessage;
+        return ballMessage + space + strikeMessage;
     }
 
 }

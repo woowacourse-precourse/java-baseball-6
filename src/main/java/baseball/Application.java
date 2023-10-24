@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.message.ConsoleMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -11,50 +12,36 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int computer = generateRandomNumber();
-        int user = 0;
-
         while(true) {
+            System.out.println(ConsoleMessage.GAME_START_MESSAGE);
+
+            int computer = generateRandomNumber();
+
             Set<Integer> computerSet = new HashSet<>(parseDigits(computer));
-            int strike = 0, ball = 0;
 
-            try {
-                user = getUserInput();
-            } catch (Exception e) {
-                throw new IllegalArgumentException(e.getMessage());
-            }
-
-            Set<Integer> userSet = new HashSet<>(parseDigits(user));
-
-            if (checkIsNothing(computerSet, userSet)) {
-                System.out.println("낫싱");
-                continue;
-            }
-
-            strike = countStrikes(computer, user, computerSet, userSet);
-            ball = countBalls(computerSet, userSet);
-
-            if (strike == 3) {
-                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            while(true) {
+                int user, strike = 0, ball = 0;
                 try {
+                    user = getUserInput();
+                } catch (Exception e) {
+                    throw new IllegalArgumentException(e.getMessage());
+                }
+
+                Set<Integer> userSet = new HashSet<>(parseDigits(user));
+
+                strike = countStrikes(computer, user, computerSet, userSet);
+                ball = countBalls(computerSet, userSet);
+
+                System.out.println(ConsoleMessage.reportMessage(strike, ball));
+
+                if (strike == 3) {
+                    System.out.println(ConsoleMessage.CORRECT_ANSWER_MESSAGE);
                     if (continuePlaying()) {
-                        computer = generateRandomNumber();
-                        continue;
+                        break;
                     }
-                } catch (IOException ignored) {}
-                break;
+                    return;
+                }
             }
-
-            String consoleStrike = "", consoleBall = "";
-            if (strike != 0) {
-                consoleStrike = strike + "스트라이크";
-            }
-
-            if (ball != 0) {
-                consoleBall = Integer.toString(ball) + "볼";
-            }
-
-            System.out.println(consoleBall + " " + consoleStrike);
         }
     }
 
@@ -111,7 +98,7 @@ public class Application {
     private static int getUserInput() throws IOException {
         int result = 0;
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println(ConsoleMessage.USER_INPUT_MESSAGE);
         String strInput = Console.readLine();
 
         // 사용자 입력이 3자리 이상의 입력인 경우 예외 던지기
@@ -178,15 +165,12 @@ public class Application {
         return cloneSet.size();
     }
 
-    private static boolean continuePlaying() throws IOException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private static boolean continuePlaying() {
+        System.out.println(ConsoleMessage.PLAY_AGAIN_MESSAGE);
 
-        String strInput = Console.readLine();;
+        String strInput = Console.readLine();
 
-        if ("1".equals(strInput)) {
-            return true;
-        }
-        return false;
+        return "1".equals(strInput);
     }
 
 }
