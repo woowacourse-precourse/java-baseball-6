@@ -16,7 +16,7 @@ public class ScoreTest {
     @ParameterizedTest
     @MethodSource("provideCreateSuccessTestArguments")
     void createSuccessTest(int ball, int strike) {
-        assertThatCode(() -> new Score(new Ball(ball), new Strike(strike)))
+        assertThatCode(() -> Score.from(Ball.from(ball), Strike.from(strike)))
                 .doesNotThrowAnyException();
     }
 
@@ -38,7 +38,7 @@ public class ScoreTest {
     @ParameterizedTest
     @MethodSource("provideCreateFailTestArguments")
     void createFailTest(int ball, int strike) {
-        assertThatCode(() -> new Score(new Ball(ball), new Strike(strike)))
+        assertThatCode(() -> Score.from(Ball.from(ball), Strike.from(strike)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("볼과 스트라이크 갯수의 합은 0 이상 3 이하여야 합니다.");
     }
@@ -61,8 +61,8 @@ public class ScoreTest {
 
     static Stream<Arguments> provideIsStrikeOutTestArguments() {
         return Stream.of(
-                arguments(new Score(new Ball(0), new Strike(3)), true),
-                arguments(new Score(new Ball(1), new Strike(1)), false)
+                arguments(Score.from(Ball.from(0), Strike.from(3)), true),
+                arguments(Score.from(Ball.from(1), Strike.from(1)), false)
         );
     }
 }
