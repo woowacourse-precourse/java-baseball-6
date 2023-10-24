@@ -3,13 +3,13 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-    private String secretNumber;
+    private String randomNumber;
 
     public Computer() {
-        generateSecretNumber();
+        generateRandomNumber();
     }
 
-    public void generateSecretNumber() {
+    public void generateRandomNumber() {
         StringBuilder sb = new StringBuilder();
         while (sb.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,10 +17,10 @@ public class Computer {
                 sb.append(randomNumber);
             }
         }
-        secretNumber = sb.toString();
+        randomNumber = sb.toString();
     }
 
-    public String getSecretNumber() {
-        return secretNumber;
+    public String getRandomNumber() {
+        return randomNumber;
     }
 }

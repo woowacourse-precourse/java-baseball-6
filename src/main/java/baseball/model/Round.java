@@ -16,13 +16,13 @@ public class Round {
         this.strikeCount = strikeCount;
     }
 
-    public static Round fromPlayerAndSecretNumbers(String playerNumber, String secretNumber) {
+    public static Round fromPlayerAndComputerNumbers(String playerNumber, String computerNumber) {
         int ballCount = (int) IntStream.range(0, playerNumber.length())
-                .filter(i -> playerNumber.charAt(i) != secretNumber.charAt(i))
-                .filter(i -> secretNumber.contains(String.valueOf(playerNumber.charAt(i))))
+                .filter(i -> playerNumber.charAt(i) != computerNumber.charAt(i))
+                .filter(i -> computerNumber.contains(String.valueOf(playerNumber.charAt(i))))
                 .count();
         int strikeCount = (int) IntStream.range(0, playerNumber.length())
-                .filter(i -> playerNumber.charAt(i) == secretNumber.charAt(i))
+                .filter(i -> playerNumber.charAt(i) == computerNumber.charAt(i))
                 .count();
 
         return new Round(ballCount, strikeCount);
