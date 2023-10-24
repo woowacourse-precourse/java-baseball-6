@@ -32,11 +32,11 @@ public class Application {
                 for(int i=0; i<input.length(); i++){
                     int tmp = Integer.parseInt(String.valueOf(input.charAt(i)));
                     if(computer.contains(tmp)){
-                        ball++;
                         if(computer.get(i).equals(tmp)){
                             strike++;
-                            ball--;
+                            continue;
                         }
+                        ball++;
                     }
                 }
 
