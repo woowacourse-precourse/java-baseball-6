@@ -44,5 +44,9 @@ public class Application {
         if (number == 1) {
             gameStart();
         }
+
+        if (!(number == 2)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
