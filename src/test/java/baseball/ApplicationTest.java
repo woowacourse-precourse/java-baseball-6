@@ -37,6 +37,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    public void 특수문자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("⊙▨▧"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     public void 중복_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("111"))
