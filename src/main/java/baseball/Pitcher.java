@@ -24,6 +24,7 @@ public class Pitcher {
         int randomNumber = Integer.parseInt(Console.readLine());
         Stack<Integer> split = splitNumbers(randomNumber);
 
+        numbers.clear();
         while (numbers.size() < maxSize) {
             numbers.add(split.pop());
         }
