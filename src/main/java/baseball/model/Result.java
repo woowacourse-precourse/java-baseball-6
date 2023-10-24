@@ -17,12 +17,11 @@ public class Result {
         this.computerNumbers = computerNumbers;
     }
 
-    public Map<String, Integer> getResult(List<Integer> player) {
+    public Map<String, Integer> getResult(List<Integer> playerNumbers) {
         init();
-        for (int i = 0; i < player.size(); i++) {
-            countScore(player, i);
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            compareComputer(playerNumbers, i);
         }
-
         return result;
     }
 
@@ -33,9 +32,9 @@ public class Result {
         }};
     }
 
-    private void countScore(List<Integer> player, Integer i) {
+    private void compareComputer(List<Integer> playerNumbers, Integer i) {
         Integer computerAnswer = computerNumbers.get(i);
-        Integer playerAnswer = player.get(i);
+        Integer playerAnswer = playerNumbers.get(i);
 
         if(isStrike(computerAnswer, playerAnswer)) {
             result.put(STRIKE, result.get(STRIKE)+1);

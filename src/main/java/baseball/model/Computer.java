@@ -10,7 +10,7 @@ public class Computer {
         this.result = new Result(computerNumbers);
     }
 
-    public Map<String, Integer> getResult(List<Integer> player) {
-        return  result.getResult(player);
+    public Map<String, Integer> getResult(List<Integer> playerNumbers) {
+        return  result.getResult(playerNumbers);
     }
 }

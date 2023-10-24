@@ -8,12 +8,12 @@ public class ComputerNumber {
     public static List<Integer> createBaseballNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
-            createUnduplicateNumbers(numbers);
+            createUnduplicatedNumbers(numbers);
         }
         return numbers;
     }
 
-    private static void createUnduplicateNumbers(List<Integer> numbers) {
+    private static void createUnduplicatedNumbers(List<Integer> numbers) {
         Integer number = Randoms.pickNumberInRange(1, 9);
         if(!numbers.contains(number)) {
  //           System.out.print(number);
