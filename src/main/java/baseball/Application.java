@@ -18,15 +18,6 @@ public class Application {
     }
 }
 
-class ReGame {
-    public int restart() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int replay = Integer.parseInt(Console.readLine());
-        return replay;
-    }
-}
-
 class Computer {  // 컴퓨터 숫자 지정 클래스
     public List<Integer> comNumbers = new ArrayList<>();
 
@@ -45,6 +36,7 @@ class Computer {  // 컴퓨터 숫자 지정 클래스
 }
 
 class Game extends Computer {  // 게임 시작 클래스
+
     public void startGame() {
         choiceComNumbers();
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -60,6 +52,9 @@ class Game extends Computer {  // 게임 시작 클래스
     public List<Integer> inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String myNumbers = Console.readLine();
+        if (!myNumbers.matches("^[1-9]{3}$")) {
+            throw new IllegalArgumentException("게임 진행 중 잘못된 숫자를 입력하셨습니다.");
+        }
         return (compareResult(myNumbers));
     }
 
@@ -77,8 +72,7 @@ class Game extends Computer {  // 게임 시작 클래스
     }
 
     public List<Integer> compare(int i, int ball, int strike, int compareNumber) {
-        if (compareNumber == -1) {
-            // 일치하는 숫자 없음
+        if (compareNumber == -1) {  // 일치하는 숫자 없음
         } else if (compareNumber == i) {
             ++strike;
         } else {
@@ -101,5 +95,17 @@ class Game extends Computer {  // 게임 시작 클래스
             return strike + "스트라이크";
         }
         return ball + "볼 " + strike + "스트라이크";
+    }
+}
+
+class ReGame {  // 재시작 여부 클래스
+    public int restart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int replay = Integer.parseInt(Console.readLine());
+        if (replay != 1 && replay != 2) {
+            throw new IllegalArgumentException("재시작 여부를 묻는 질문에서 잘못된 숫자를 입력하셨습니다.");
+        }
+        return replay;
     }
 }
