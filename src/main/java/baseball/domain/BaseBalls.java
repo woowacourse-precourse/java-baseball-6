@@ -8,10 +8,10 @@ public class BaseBalls {
     public BaseBalls(List<CompareNumber> generatedBall) {
         this.generatedBalls = generatedBall;
     }
-    public GameResult compare(List<Integer> userBalls) {
+    public GameResult compare(List<CompareNumber> userBalls) {
         GameResult gameResult = new GameResult();
         for (int i = 0; i < userBalls.size(); i++) {
-            CompareNumber compareNumber = new CompareNumber(i + 1, userBalls.get(i));
+            CompareNumber compareNumber = userBalls.get(i);
             gameResult.saveResult(getScore(compareNumber));
         }
         return gameResult;
