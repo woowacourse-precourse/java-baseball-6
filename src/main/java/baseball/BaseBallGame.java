@@ -28,8 +28,6 @@ public class BaseBallGame {
 
             List<Integer> computer = ModelCreateRandomNumber.createRandomNumber();
 
-            System.out.println(computer);
-
             while (true) {
 
                 List<Integer> input = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
