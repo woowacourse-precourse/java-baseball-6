@@ -5,9 +5,9 @@ import java.util.Set;
 
 public class InputValidator {
 
-    private final static int BASEBALL_GAME_NUMBER_LENGTH = BaseBallConstants.BASEBALL_GAME_NUMBER_LENGTH;
-    private final static int MIN_DIGIT = BaseBallConstants.MIN_DIGIT;
-    private final static int MAX_DIGIT = BaseBallConstants.MAX_DIGIT;
+    private static final int BASEBALL_GAME_NUMBER_LENGTH = BaseBallConstants.BASEBALL_GAME_NUMBER_LENGTH;
+    private static final int MIN_DIGIT = BaseBallConstants.MIN_DIGIT;
+    private static final int MAX_DIGIT = BaseBallConstants.MAX_DIGIT;
     private static final String WRONG_LENGTH_THROW_MESSAGE = BaseBallConstants.WRONG_LENGTH_THROW_MESSAGE;
     private static final String WRONG_RANGE_THROW_MESSAGE = BaseBallConstants.WRONG_RANGE_THROW_MESSAGE;
     private static final String DUPLICATE_INPUT_MESSAGE = BaseBallConstants.DUPLICATE_INPUT_MESSAGE;
