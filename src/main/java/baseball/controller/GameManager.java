@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.model.Rule;
 import baseball.service.NumberBaseballService;
-import baseball.validation.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -28,7 +27,6 @@ public class GameManager {
         while (!isCompleted) {
             String playerNumber = inputView.enterPlayerNumber();
 
-            InputValidator.validatePatternWithUnique(playerNumber);
             numberBaseballService.setPlayerNumbers(playerNumber);
 
             numberBaseballService.comparePlayerWithComputer();
@@ -45,8 +43,6 @@ public class GameManager {
 
     private void endOrRestart() {
         String isRestart = inputView.enterRestartGame();
-
-        InputValidator.validateRestartNumber(isRestart);
 
         if (isRestart.equals(Rule.RESTART_NUMBER)) {
             startGame();

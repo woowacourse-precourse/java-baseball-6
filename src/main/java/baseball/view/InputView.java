@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.model.Rule;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -14,6 +15,16 @@ public class InputView {
 
     public String enterRestartGame() {
         System.out.print(ASK_RESET_GAME_MESSAGE);
-        return Console.readLine();
+        String inputValue = Console.readLine();
+
+        validateRestartNumber(inputValue);
+
+        return inputValue;
+    }
+
+    private void validateRestartNumber(String stringNumber) {
+        if (!stringNumber.equals(Rule.RESTART_NUMBER) && !stringNumber.equals(Rule.EXIT_NUMBER)) {
+            throw new IllegalArgumentException("재시작을 원하신다면 1, 종료를 원하신다면 2를 입력하세요.");
+        }
     }
 }

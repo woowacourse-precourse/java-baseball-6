@@ -3,8 +3,6 @@ package baseball.service;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Rule;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberBaseballService {
     private Computer computer;
@@ -21,7 +19,7 @@ public class NumberBaseballService {
 
     public void setPlayerNumbers(String playerNumber) {
         player.init();
-        player.setNumbers(stringToIntegerList(playerNumber));
+        player.setNumbers(playerNumber);
     }
 
     public void comparePlayerWithComputer() {
@@ -55,11 +53,4 @@ public class NumberBaseballService {
         return computer.getNumbers().contains(playerNumber);
     }
 
-    private List<Integer> stringToIntegerList(String stringNumber) {
-        List<Integer> numberList = stringNumber.chars()
-                .map(Character::getNumericValue).boxed()
-                .collect(Collectors.toList());
-
-        return numberList;
-    }
 }

@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
     private List<Integer> numbers;
@@ -18,8 +19,11 @@ public class Player {
         return numbers;
     }
 
-    public void setNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
+    public void setNumbers(String number) {
+        validateNumberWithPattern(number);
+        validateUniqueNumber(number);
+
+        this.numbers = stringToIntegerList(number);
     }
 
     public void addStrikeCount() {
@@ -72,5 +76,36 @@ public class Player {
         return ballCount > 0;
     }
 
+    private void validateNumberWithPattern(String stringNumber) {
+        String pattern = "^["
+                + Rule.START_NUMBER
+                + "-"
+                + Rule.END_NUMBER
+                + "]{" + Rule.MAX_LENGTH + "}$";
+
+        if (!stringNumber.matches(pattern)) {
+            throw new IllegalArgumentException("1~9 사이의 숫자를 3개 입력해주세요.");
+        }
+    }
+
+    private void validateUniqueNumber(String stringNumber) {
+        int[] digitCounts = new int[10];
+
+        for (char c : stringNumber.toCharArray()) {
+            int digit = Character.getNumericValue(c);
+            digitCounts[digit]++;
+            if (digitCounts[digit] > 1) {
+                throw new IllegalArgumentException("각 숫자는 한 번만 나와야 합니다.");
+            }
+        }
+    }
+
+    private List<Integer> stringToIntegerList(String stringNumber) {
+        List<Integer> numberList = stringNumber.chars()
+                .map(Character::getNumericValue).boxed()
+                .collect(Collectors.toList());
+
+        return numberList;
+    }
 }
 
