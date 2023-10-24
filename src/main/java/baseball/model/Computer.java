@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Computer {
     private final List<Integer> hiddenNumber = new ArrayList<>();
-    private final boolean[] doesExist = new boolean[10];
 
     public Computer() {
         initializeHiddenNumber();
@@ -18,27 +17,21 @@ public class Computer {
     }
 
     private void initializeHiddenNumber() {
+        boolean[] doesExist = new boolean[10];
         while (hiddenNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            checkDuplicateAndAddToList(randomNumber);
+            checkDuplicateAndAddToList(doesExist, randomNumber);
         }
     }
 
-    private void checkDuplicateAndAddToList(int randomNumber) {
+    private void checkDuplicateAndAddToList(boolean[] doesExist, int randomNumber) {
         if (!doesExist[randomNumber]) {
             hiddenNumber.add(randomNumber);
             doesExist[randomNumber] = true;
         }
     }
 
-    private void resetDoesExist() {
-        for (int i = 0; i < 10; i++) {
-            doesExist[i] = false;
-        }
-    }
-
     public void resetForNewGame() {
-        resetDoesExist();
         hiddenNumber.clear();
         initializeHiddenNumber();
     }
