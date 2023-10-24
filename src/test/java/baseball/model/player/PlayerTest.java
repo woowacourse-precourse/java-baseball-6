@@ -1,9 +1,11 @@
 package baseball.model.player;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,18 @@ class PlayerTest {
     }
 
     @Test
+    @DisplayName("플레이어가 입력한 숫자게임의 값은 guessNumber에 저장된다.")
+    void getGuessNumbers_Test() throws Exception {
+        // given
+        List<Integer> inputNumbers = List.of(1, 2, 3);
+        setGuessNumber(List.of(1, 2, 3));
+
+        // then
+        assertEquals(player.getGuessNumbers().size(), 3);
+        assertEquals(player.getGuessNumbers(), inputNumbers);
+    }
+
+    @Test
     @DisplayName("재시작/종료여부 입력값이 1이면 게임을 계속 진행한다.")
     void gameState_RESTART_Test() throws Exception {
         // when
@@ -42,6 +56,12 @@ class PlayerTest {
 
         // then
         assertFalse(player.continueGame());
+    }
+
+    private void setGuessNumber(List<Integer> guess) throws NoSuchFieldException, IllegalAccessException {
+        Field numbers = guessNumber.getClass().getDeclaredField("numbers");
+        numbers.setAccessible(true);
+        numbers.set(guessNumber, guess);
     }
 
     private void setGameState(Integer state) throws NoSuchFieldException, IllegalAccessException {
