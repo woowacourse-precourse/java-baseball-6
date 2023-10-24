@@ -8,11 +8,14 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        boolean isContinue = true;
-        int strike = 0, ball, number;
+        boolean isContinue;
+        int strike, ball, number;
         int[] computer, user;
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        isContinue = true;
+        strike = 0;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (isContinue) {
             computer = getComputerNumber();
 
@@ -22,9 +25,6 @@ public class Application {
 
                 System.out.print("숫자를 입력해주세요 : ");
                 number = inputNumber();
-                if (number < 100 || number > 999) {
-                    throw new IllegalArgumentException();
-                }
                 user = convertInt2IntArray(number);
 
                 // Count strike
@@ -94,6 +94,9 @@ public class Application {
         try {
             number = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if (number < 100 || number > 999) {
             throw new IllegalArgumentException();
         }
         return number;
