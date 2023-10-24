@@ -6,9 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class UserNumber {
+public class NumberUtils {
 
-    public static void validateInputNumber(String input) {
+    public static void validateInputUserNumber(String input) {
         if (input.length()!=3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야합니다.");
         } else if (!input.matches("^[1-9]+$")) {
@@ -17,6 +17,12 @@ public class UserNumber {
             throw new IllegalArgumentException("서로 다른 숫자를 입력해야합니다.");
         } else if (input==null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+    }
+
+    public static void validateInputNewGameNumber(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("1과 2 중 입력해야합니다.");
         }
     }
 
@@ -48,7 +54,7 @@ public class UserNumber {
 
     public static List<Integer> getUserNumber() {
         String input = Console.readLine();
-        validateInputNumber(input);
+        validateInputUserNumber(input);
 
         return toIntegerList(input);
     }
