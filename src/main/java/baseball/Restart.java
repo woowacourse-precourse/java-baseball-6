@@ -16,8 +16,8 @@ public class Restart {
         if (number.equals(RESTART)) {
             return true;
         } else if (number.equals(EXIT)) {
-            System.out.print("게임 종료");
             Console.close(); //콘솔을 닫아야 함
+            System.out.print("게임 종료");
             return false;
         } else {
             throw new IllegalArgumentException();

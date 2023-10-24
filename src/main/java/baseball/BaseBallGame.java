@@ -21,14 +21,16 @@ public class BaseBallGame {
 
     void start() {
         computerNumber = rand.makeRandomNumber(); // 컴퓨터가 생성한 숫자를 저장
-        do {
+        while (newGame) {
             System.out.print("숫자를 입력해주세요 : ");
             inputNumber = input.getNumber(); // 사용자로부터 숫자를 입력받고 저장
             success = check.compareNumber(inputNumber, computerNumber); // 사용자와 컴퓨터 숫자를 비교
             if (success) { // 3스트라이크인 경우
                 newGame = restart.choiceRestart();
-                computerNumber = rand.makeRandomNumber(); // 컴퓨터가 생성한 숫자를 저장
+                if (newGame) {
+                    computerNumber = rand.makeRandomNumber(); // 컴퓨터가 생성한 숫자를 저장
+                }
             }
-        } while (newGame);
+        }
     }
 }

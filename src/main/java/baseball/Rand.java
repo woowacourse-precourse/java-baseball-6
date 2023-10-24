@@ -14,6 +14,7 @@ public class Rand {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9); // 1~9까지 랜덤한 정수 생성
             if (!computer.contains(randomNumber)) { // 중복되지 않는 값으로 선별
+                System.out.println(randomNumber);
                 computer.add(randomNumber);
             }
         }
