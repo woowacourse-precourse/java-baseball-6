@@ -9,7 +9,7 @@ public class Player {
     private static final List<Integer> userInputList = new ArrayList<>();
     private static String inputStr;
 
-    public List<Integer> inputNum() throws IllegalArgumentException {
+    public List<Integer> inputNumList() throws IllegalArgumentException {
         inputStr = Console.readLine();
         for (int i = 0; i < inputStr.length(); i++) {
             validInput(inputStr.charAt(i) - '0');
@@ -21,7 +21,7 @@ public class Player {
     /*
      * player list 초기화
      *  */
-    public void initPlayer() {
+    public void init() {
         userInputList.clear();
     }
 
