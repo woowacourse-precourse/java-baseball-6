@@ -18,7 +18,7 @@ public class User {
      */
     public User(String input) {
         List<Integer> inNumbers = new ArrayList<>();
-        validationLength(input); // 입력 값의 길이가 3인지 확인
+        validationTextLength(input); // 입력 값의 길이가 3인지 확인
 
         // 입력한 숫자를 분할하여 저장한다.
         for (int i = 0; i < input.length(); i++) {
@@ -51,7 +51,7 @@ public class User {
      *
      * @param input 길이를 검증할 문자열
      */
-    private void validationLength(String input) {
+    private void validationTextLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
