@@ -1,7 +1,5 @@
 package baseball;
 
-import baseball.computer.Computer;
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
@@ -11,8 +9,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String userInput = readLine().trim();
-            isValidInput(userInput);
+            String userInput = UserInput.getUserNumber();
             int[] score = computer.getResult(userInput);
             if (score[1] != 0) {
                 result += score[1] + "볼";
@@ -29,11 +26,8 @@ public class Application {
             System.out.println(result);
             if (score[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String restart = readLine().trim();
-                if (!(restart.equals("1") || restart.equals("2"))) {
-                    throw new IllegalArgumentException();
-                }
-                if (restart.equals("1")) {
+                boolean restart = UserInput.getUserRestart();
+                if (restart) {
                     computer.resetNumber();
                 } else {
                     System.out.println("게임 종료");
@@ -41,13 +35,6 @@ public class Application {
                 }
             }
             result = "";
-        }
-    }
-
-    private static void isValidInput(final String input) {
-        if (input.length() != 3 || !input.matches("\\d+") || input.charAt(0) == input.charAt(1)
-                || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
-            throw new IllegalArgumentException();
         }
     }
 }
