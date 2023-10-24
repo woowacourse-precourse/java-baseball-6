@@ -69,9 +69,14 @@ public class Game {
         if(!isOneOrTwo(input)){
             throw new IllegalArgumentException("게임을 시작하려면 1혹은 2를 입력해야 합니다.");
         }
+        init();
 
         if(Integer.parseInt(input) == 2){
             playing = false;
         }
+    }
+
+    public boolean isThreeStrike(){
+        return !(strikeCnt == 3);
     }
 }

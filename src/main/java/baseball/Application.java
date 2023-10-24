@@ -8,20 +8,24 @@ public class Application {
 
         game.setGame();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (game.isPlaying()){
             computer.init();
-            user.init();
 
             // 상대방(컴퓨터)은 1에서 9까지 서로 다른 임의의 수(랜덤) 3개를 선택
             computer.selectRandomNumber();
-            // 사용자로부터 입력 받기
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            System.out.print("숫자를 입력 해 주세요 : ");
-            user.selectUserNumber();
+            computer.printComputerNumber();
 
-            // 입력한 숫자에 대한 결과 출력
-            game.play(computer, user);
-            System.out.println(game.getGameResult());
+            while (game.isThreeStrike()){
+                System.out.print("숫자를 입력 해 주세요 : ");
+                user.init();
+                user.selectUserNumber();
+
+                // 입력한 숫자에 대한 결과 출력
+                game.play(computer, user);
+                System.out.println(game.getGameResult());
+            }
 
             game.isReplay();
         }
