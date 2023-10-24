@@ -17,7 +17,7 @@ public class BaseballGame implements Game{
     /**
      * 컴퓨터가 정답 번호를 생성한다.
      *
-     * @return 중복 숫자가 없는 세자리 정수
+     * @return 정답 번호 문자열
      */
     private String generateAnswer() {
         List<Integer> computer = new ArrayList<>();
@@ -73,7 +73,6 @@ public class BaseballGame implements Game{
         throw new IllegalArgumentException();
     }
 
-
     /**
      * 입력 숫자와 정답 숫자를 비교하여 숫자 야구 힌트를 준다.
      *
@@ -125,7 +124,7 @@ public class BaseballGame implements Game{
     /**
      * 사용자로부터 올바른 숫자를 입력받는다.
      *
-     * @return 검증 완료된 세자리 정수
+     * @return 검증 완료한 올바른 숫자 문자열
      */
     private String inputNumber() {
         // 사용자로부터 올바른 숫자 입력 받기
@@ -138,17 +137,17 @@ public class BaseballGame implements Game{
      * 사용자의 숫자 인풋값의 유효성을 검증한다.
      *
      * @param userInput 사용자가 입력한 숫자 문자열
-     * @return 검증 성공한 사용자 입력 문자열
+     * @return 검증 성공한 숫자 문자열
      */
     private String validateInputNumber(String userInput) {
         try {
             // 검증1: int로 파싱 가능해야 한다.
             checkParsingNumber(userInput);
-            // 검증1: 사용자 입력 문자열 길이는 INPUT_LENGTH 다.
+            // 검증2: 사용자 입력 문자열 길이는 INPUT_LENGTH 이다.
             checkInputLength(userInput);
-            // 검증2: "0"이 포함되지 않아야 한다.
+            // 검증3: "0"이 포함되지 않아야 한다.
             checkInvalidNumber(userInput);
-            // 검증3: 동일 숫자 존재하지 않아야 한다.
+            // 검증4: 동일 숫자 존재하지 않아야 한다.
             checkDuplicated(userInput);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(String.format("[숫자 입력 오류] %s", e.getMessage()));
