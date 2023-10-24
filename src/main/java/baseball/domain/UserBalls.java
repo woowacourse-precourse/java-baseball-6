@@ -3,7 +3,11 @@ package baseball.domain;
 import java.util.Arrays;
 
 public class UserBalls {
-    private static final String ERROR_MESSAGE = "입력 값이 올바르지 않습니다. 1~9사이의 중복되지 않는 3자리의 숫자를 입력해주세요.";
+    private static final String ERROR_MESSAGE_OF_SIZE = "3자리 값만 입력해야 합니다.";
+    private static final String ERROR_MESSAGE_OF_NAN = "숫자만 입력해야 합니다.";
+    private static final String ERROR_MESSAGE_OUT_OF_RANGE = "1~9사이의 값만 입력해야 합니다.";
+    private static final String ERROR_MESSAGE_OF_DUPLICATED = "중복되지 않은 값만 입력해야 합니다.";
+    private static final int MIN_VALUE = 1;
     private static final int BALL_SIZE = 3;
     private final String balls;
 
@@ -17,35 +21,43 @@ public class UserBalls {
     }
 
     private void validateBalls(String input) {
-        if (!isOkBallSize(input) || isNan(input) || isLessThan1(input) || isDuplicate(input)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+        validateBallSize(input);
+        validateNan(input);
+        validateRange(input);
+        validateDuplicate(input);
+    }
+
+    private void validateBallSize(String data) {
+        if (data.length() != BALL_SIZE) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_OF_SIZE);
         }
     }
 
-    private boolean isOkBallSize(String data) {
-        return data.length() == BALL_SIZE;
-    }
-
-    private boolean isNan(String data) {
+    private void validateNan(String data) {
         try {
             Integer.parseInt(data);
         } catch (NumberFormatException exception) {
-            return true;
+            throw new IllegalArgumentException(ERROR_MESSAGE_OF_NAN);
         }
-        return false;
     }
 
-    private boolean isLessThan1(String data) {
+    private void validateRange(String data) {
         String[] splitedData = data.split("");
-        return Arrays.stream(splitedData)
+        Arrays.stream(splitedData)
                 .map(Integer::parseInt)
-                .anyMatch((number) -> number < 1);
+                .filter(number -> number < MIN_VALUE)
+                .findAny()
+                .ifPresent(result -> {
+                    throw new IllegalArgumentException(ERROR_MESSAGE_OUT_OF_RANGE);
+                });
     }
 
-    private boolean isDuplicate(String data) {
+    private void validateDuplicate(String data) {
         long deduplicatedDataSize = data.chars()
                 .distinct()
                 .count();
-        return deduplicatedDataSize != BALL_SIZE;
+        if (deduplicatedDataSize != BALL_SIZE) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_OF_DUPLICATED);
+        }
     }
 }
