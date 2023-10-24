@@ -10,6 +10,9 @@ public class NumberValidator {
     private static final String NOT_VALID_LENGTH_ERROR_MESSAGE = "입력된 수의 자리 수는 3이어야 합니다.";
     private static final String DUPLICATE_DIGIT_ERROR_MESSAGE = "입력된 수는 서로 다른 수로 구성되어야 합니다.";
 
+    private NumberValidator() {
+    }
+
     public static void validateThreeDistinctDigitsInRange(String number) {
         isDigit(number);
         isValidSize(number);

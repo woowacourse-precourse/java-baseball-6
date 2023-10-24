@@ -11,6 +11,9 @@ public class NumberGenerator {
     private static final int MAX_NUMBER = 9;
     private static final int MAX_NUMBER_SIZE = 3;
 
+    private NumberGenerator() {
+    }
+
     public static List<Integer> createComputerNumbers() {
         LinkedHashSet<Integer> computerNumbers = new LinkedHashSet<>();
         while (computerNumbers.size() < MAX_NUMBER_SIZE) {
