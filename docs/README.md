@@ -12,7 +12,7 @@
 - ✅ StartGame.java : 게임시작
 - [x] InputContrast.java : 입력데이터 비교
 - [x] OutputResult.java : 결과값 출력
-- [x] Counter.java : 스트라이크, 볼 카운팅
+- ✅ Counter.java : 스트라이크, 볼 카운팅
 - ✅ ExceptionResult.java : 예외처리
 - ✅ GameMessage : 게임 메세지
 
