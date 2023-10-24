@@ -23,7 +23,7 @@ class GameDispatcherTest {
 
         GamePlay testGamePlay = mock(GamePlay.class);
         String testResult = "1볼 1스트라이크";
-        when(testGamePlay.play(testArgs)).then("testResult");
+        when(testGamePlay.play(testArgs)).thenReturn(testResult);
 
         // when
         GameDispatcher gameDispatcher = new GameDispatcherImpl(testGamePlay);
