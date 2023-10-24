@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import model.ModelCompareAnsInput;
 import model.ModelCreateRandomNumber;
 import model.ModelUserNumCheck;
 import view.ViewInput;
@@ -32,7 +33,7 @@ public class BaseBallGame {
 
                 List<Integer> input = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
 
-                int[] result = compareAnswerInput(computer, input);
+                int[] result = ModelCompareAnsInput.compareAnsInput(computer, input);
 
                 boolean isAns = printResult(result);
                 if (isAns) {
@@ -49,29 +50,6 @@ public class BaseBallGame {
 
     }
 
-
-    /**
-     * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
-     *
-     * @param ans   게임의 정답
-     * @param input 사용자가 입력한 숫자
-     * @return int[] 타입의 비교 결과 (index 0 : 볼, 1 : 스트라이크)
-     */
-    private int[] compareAnswerInput(List<Integer> ans, List<Integer> input) {
-
-        int[] result = {0, 0};
-
-        for (int i = 0; i < ans.size(); i++) {
-            if (ans.get(i).equals(input.get(i))) {
-                result[1]++;
-            } else if (ans.contains(input.get(i))) {
-                result[0]++;
-            }
-        }
-
-        return result;
-
-    }
 
     /**
      * result 값 (볼, 스트라이크 갯수)에 다른 결과 출력
