@@ -2,9 +2,7 @@ package baseball.validation;
 
 import java.util.HashSet;
 import java.util.Set;
-
 public class NumberValidator {
-
     public String isValidNumber(String input) {
         Set<Character> numberSet = new HashSet<>();
         for (char digit : input.toCharArray()) {

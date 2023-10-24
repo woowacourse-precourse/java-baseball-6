@@ -3,6 +3,7 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,14 +19,10 @@ public class LogicController {
         }
         return scoreboard;
     }
-
     public Boolean judge(String userInput){
-        getScoreboard();
+        scoreboard = getScoreboard();
         scoreboard.put("ball",0);
         scoreboard.put("strike",0);
-
-        //System.out.printf("hack computer Number : %s \n",computer.getComputerNumber());
-
         int[] computerNumber = convertStringToIntArray(computer.getComputerNumber());
         int[] userNumber = convertStringToIntArray(userInput);
         for (int i = 0; i < computerNumber.length; i++) {
@@ -37,7 +34,6 @@ public class LogicController {
         if(scoreboard.get("strike")==3)return true;
         return false;
     }
-
     public static int[] convertStringToIntArray(String numbersString) {
         int[] numbers = new int[numbersString.length()];
         for (int i = 0; i < numbersString.length(); i++) {
@@ -46,5 +42,4 @@ public class LogicController {
         }
         return numbers;
     }
-
 }

@@ -24,5 +24,4 @@ public class InputView {
             return "-1";
         }
     }
-
 }

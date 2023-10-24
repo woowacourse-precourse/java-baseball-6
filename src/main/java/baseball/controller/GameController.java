@@ -31,9 +31,9 @@ public class GameController {
                 setEndGame(true);
             }else {
                 Map<String, Integer> scoreboard = logicController.getScoreboard();
-                if (scoreboard.get("ball") != 0) outputView.displayBallScore(scoreboard.get("ball"));
-                if (scoreboard.get("strike") != 0) outputView.displayStrikeScore(scoreboard.get("strike"));
-                else if(scoreboard.get("ball") != 0 && scoreboard.get("strike") != 0 ) {
+                if (scoreboard.get("ball") != 0 && (scoreboard.get("strike") == 0)) outputView.displayBallScore(scoreboard.get("ball"));
+                if (scoreboard.get("strike") != 0 && (scoreboard.get("ball")==0)) outputView.displayStrikeScore(scoreboard.get("strike"));
+                else if(scoreboard.get("ball") == 0 && scoreboard.get("strike") == 0 ) {
                     outputView.displayMessage("낫싱");
                 } else if(scoreboard.get("strike") != 0 && scoreboard.get("ball") != 0 ){
                     outputView.displayScore(scoreboard.get("ball"),scoreboard.get("strike"));
@@ -51,6 +51,4 @@ public class GameController {
         playAgain = (restartNumber.equals("1")) ? true : false;
         return playAgain;
     }
-
-
 }

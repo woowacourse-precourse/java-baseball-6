@@ -30,5 +30,4 @@ public class ComputerController {
         numberValidator.isValidNumber(stringBuilder.toString());
         computer.setComputerNumber(stringBuilder.toString());
     }
-
 }
