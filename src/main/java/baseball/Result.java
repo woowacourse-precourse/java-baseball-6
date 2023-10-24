@@ -2,12 +2,12 @@ package baseball;
 
 public class Result {
 	public static void printResult(int ball, int strike) {
-		if (ball == 0 && strike != 0) {
+		if (ball != 0 && strike == 0) {
 			System.out.println(ball + "볼");
 			return;
 		}
 
-		if (ball != 0 && strike == 0) {
+		if (ball == 0 && strike != 0) {
 			System.out.println(strike + "스트라이크");
 			return;
 		}

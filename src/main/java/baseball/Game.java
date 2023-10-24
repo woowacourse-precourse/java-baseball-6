@@ -11,7 +11,7 @@ public class Game {
 		this.strike = strike;
 	}
 
-	private void calculateCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
+	public void calculateCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
 		for (int k = 0; k < userNumbers.size(); k++) {
 			if (userNumbers.get(k) == computerNumbers.get(k)) {
 				addStrike();
