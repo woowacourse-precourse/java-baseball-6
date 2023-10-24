@@ -16,7 +16,6 @@ class TargetNumber {
         this.number[2] = c;
     }
 
-    /** TargetNumber 객체를 생성하는 정적 팩토리 메서드. */
     static TargetNumber generate(int a, int b, int c) {
         if (isValidNumber(a) && isValidNumber(b) && isValidNumber(c)) {
             return new TargetNumber(a, b, c);
@@ -25,10 +24,16 @@ class TargetNumber {
     }
 
     boolean isStrike(int num, int idx) {
+        if (!isValidNumber(num) || !isValidIndex(idx)) {
+            return false;
+        }
         return number[idx] == num;
     }
 
     boolean isBall(int num) {
+        if (!isValidNumber(num)) {
+            return false;
+        }
         return Arrays.stream(number).anyMatch(i -> i == num);
     }
 
