@@ -18,6 +18,10 @@ public class GameSystem {
         List<Integer> computerNumbers = computer.getNumbers();
 
         inputMsgView.printInputNumberMsg();
+
+        User user = new User();
+        user.generateNumbers();
+        List<Integer> userNumbers = user.getNumbers();
     }
 
     private boolean restartGame() {
