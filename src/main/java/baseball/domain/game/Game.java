@@ -44,10 +44,16 @@ public class Game {
         return GameStatus.isRun(gameStatus);
     }
 
+    public boolean isEnd() {
+        return !isRun();
+    }
+
     public void performCommand(String inputCommand) {
         GameHandlerCommand command = GameHandlerCommand.findCommand(inputCommand);
         if(GameHandlerCommand.isRestartCommand(command)) {
             init();
         }
     }
+
+
 }

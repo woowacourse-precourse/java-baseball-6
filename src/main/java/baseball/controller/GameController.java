@@ -16,7 +16,6 @@ public class GameController {
     public void run() {
         init();
         play();
-        checkRestart();
     }
 
     private void init() {
@@ -27,14 +26,14 @@ public class GameController {
             Balls playerBalls = createPlayerBalls();
             GameResult gameResult = game.compareBalls(playerBalls);
             OutputView.printResult(gameResult);
+            checkGameEnd();
         }
     }
-    private void checkRestart() {
-        OutputView.printEnd();
-        String command = InputView.askRestart();
-        game.performCommand(command);
-        if(game.isRun()) {
-            play();
+    private void checkGameEnd() {
+        if(game.isEnd()) {
+            OutputView.printEnd();
+            String command = InputView.askRestart();
+            game.performCommand(command);
         }
     }
 
