@@ -16,6 +16,8 @@ public class User {
 
         String input = Console.readLine();
 
+        validateInputLength(input);
+
         for (int i = 0; i < input.length(); i++) {
 
             int number = Character.getNumericValue(input.charAt(i));
@@ -25,5 +27,16 @@ public class User {
         }
 
         return userAnswers;
+    }
+
+    // 사용자가 입력한 숫자가 3자리인지 확인
+    private void validateInputLength(String input) {
+
+        if (input.length() != 3) {
+
+            throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
+
+        }
+
     }
 }
