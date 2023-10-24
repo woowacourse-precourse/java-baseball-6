@@ -40,11 +40,8 @@ public class Game {
 
 
     private boolean checkGameOver(Map<GameResult, Long> result) {
-        if (result.containsKey(GameResult.STRIKE)
-                && result.get(GameResult.STRIKE) == GAME_OVER_CONDITION) {
-            return true;
-        }
-        return false;
+        return result.containsKey(GameResult.STRIKE)
+                && result.get(GameResult.STRIKE) == GAME_OVER_CONDITION;
     }
 
 }

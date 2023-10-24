@@ -5,7 +5,7 @@ public enum GameResult {
     BALL("볼"),
     NOTHING("낫싱");
 
-    private String korean;
+    private final String korean;
 
     GameResult(String korean) {
         this.korean = korean;

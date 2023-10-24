@@ -22,7 +22,7 @@ public class OutputView {
     }
 
     private String convertResultToString(Map<GameResult, Long> result) {
-        if(result.containsKey(GameResult.NOTHING)){
+        if (result.containsKey(GameResult.NOTHING)) {
             return GameResult.NOTHING.getKorean();
         }
         String convertedResult = attach(GameResult.BALL, result.get(GameResult.BALL))
@@ -30,8 +30,8 @@ public class OutputView {
         return convertedResult.trim();
     }
 
-    private String attach(GameResult gameResult, Long count){
-        if(count != ZERO){
+    private String attach(GameResult gameResult, Long count) {
+        if (count != ZERO) {
             return count + gameResult.getKorean() + BLANK;
         }
         return BLANK;
