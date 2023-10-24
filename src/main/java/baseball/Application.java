@@ -13,13 +13,14 @@ public class Application {
             int attempts = 0;
 
             while (true) {
-                int[] userGuess;
+                int[] userGuess = null;
                 try {
                     userGuess = getUserGuess();
                 } catch (IllegalArgumentException e) {
+                    // 사용자가 잘못된 값을 입력한 경우 예외 처리
                     System.out.println(e.getMessage());
                     System.out.println("게임을 종료합니다.");
-                    return; // 사용자 입력이 잘못된 경우 프로그램 종료
+                    System.exit(0); // 프로그램 종료
                 }
                 attempts++;
 
@@ -82,7 +83,6 @@ public class Application {
             System.out.print("숫자를 입력해주세요: ");
             String input = Console.readLine();
             if (input.length() != 3) {
-                System.out.println("3자리 숫자를 입력하세요.");
                 throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
             }
 
@@ -90,8 +90,7 @@ public class Application {
             for (int i = 0; i < 3; i++) {
                 char c = input.charAt(i);
                 if (c < '1' || c > '9') {
-                    System.out.println("1부터 9 사이의 숫자만 입력하세요.");
-                    throw new IllegalArgumentException("1부터 9 사이의 숫자만 입력하세요.");
+                    throw new IllegalArgumentException("");
                 }
                 userGuess[i] = c - '0';
             }
@@ -105,7 +104,7 @@ public class Application {
     }
 
     private static int[] calculateResult(int[] computerNumbers, int[] userGuess) {
-        int[] result = new int[2]; 
+        int[] result = new int[2];
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] == userGuess[i]) {
                 result[0]++;
@@ -126,3 +125,5 @@ public class Application {
         return false;
     }
 }
+
+
