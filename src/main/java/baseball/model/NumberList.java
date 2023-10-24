@@ -10,9 +10,7 @@ public class NumberList {
     private List<Integer> numberList;
 
     public NumberList(List<Integer> numberList) {
-        Validator.validateSize(numberList, 3);
-        validateIsInRange(numberList);
-        validateRepeatedNumber(numberList);
+        validate(numberList);
         this.numberList = numberList;
     }
 
@@ -27,11 +25,17 @@ public class NumberList {
     public static NumberList stringToNumberList(String numberString) {
         List<Integer> numberList = new ArrayList<>() {{
             for (int i = 0; i < numberString.length(); i++) {
-                int number = numberString.charAt(i) - '0';
-                add(number);
+                add(numberString.charAt(i) - '0');
             }
         }};
         return new NumberList(numberList);
+    }
+
+    private void validate(List<Integer> numberList) {
+        Validator.validateNull(numberList);
+        Validator.validateSize(numberList, 3);
+        validateIsInRange(numberList);
+        validateRepeatedNumber(numberList);
     }
 
     private void validateIsInRange(List<Integer> numberList) {
@@ -46,7 +50,7 @@ public class NumberList {
             throw new IllegalArgumentException("중복된 원소가 있습니다.");
         }
     }
-
+    
     public boolean equals(NumberList a) {
         boolean isEqual = true;
         for (int i = 0; isEqual && i < numberList.size(); i++) {
