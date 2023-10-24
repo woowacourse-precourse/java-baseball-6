@@ -11,7 +11,7 @@ public class ComputerNumber {
         this.computerNum = generateComputerNumber();
     }
     public String getComputerNumber(){
-        return computerNum;
+        return this.computerNum;
     }
     public String generateComputerNumber(){
         List<Integer> computer = new ArrayList<>();

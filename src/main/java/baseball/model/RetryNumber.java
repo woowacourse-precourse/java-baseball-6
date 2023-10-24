@@ -11,7 +11,7 @@ public class RetryNumber {
         }
     }
     public String getRetryNumber(){
-        return retryNumber;
+        return this.retryNumber;
     }
     public boolean validateNumber(String playerInput){
         if (playerInput.equals(RESTART) || playerInput.equals(END)){

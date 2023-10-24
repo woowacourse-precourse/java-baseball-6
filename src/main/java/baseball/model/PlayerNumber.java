@@ -16,7 +16,7 @@ public class PlayerNumber {
         }
     }
     public String getPlayerNumber(){
-        return playerNumber;
+        return this.playerNumber;
     }
 
     public boolean validateAll(String playerInput){

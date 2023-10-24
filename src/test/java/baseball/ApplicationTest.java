@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
@@ -20,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @Test
     @DisplayName("게임종료 후 재시작")
-    void retry() {
+    void startGameAndRetry() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
@@ -47,25 +48,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
     @DisplayName("컴퓨터 숫자와 사용자입력 숫자 비교하기")
-    void calculateStrikeOrBallOrNothing(){
-        Comparer comparer = new Comparer();
-        comparer.calculateStrikeOrBallOrNothing("123", "135");
+    @ParameterizedTest
+    @CsvSource({"123,713", "145,145", "216,384"})
+    void compareComputerNumberAndPlayerNumber(String computerNumber, String playerNumber){
+        Comparer comparer = new Comparer(computerNumber, playerNumber);
+        System.out.println("볼: "+comparer.getBallCount());
+        System.out.println("스트라이크: "+comparer.getStrikeCount());
     }
 
     @Test
     @DisplayName("비교 결과 출력하기")
     void printResult(){
         BaseballGame baseballGame = new BaseballGame();
-        baseballGame.printResult(new int[]{1,1});
+        baseballGame.printResult(new int[] {1,1});
     }
 
 
     @DisplayName("게임종료 후 사용자 입력 예외사항 처리")
     @ParameterizedTest
     @ValueSource(strings = {"0","i","3",""," "})
-    void validateNumber(String playerInput){
+    void validateRetryNumber(String playerInput){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> new RetryNumber(playerInput))
                         .isInstanceOf(IllegalArgumentException.class)
