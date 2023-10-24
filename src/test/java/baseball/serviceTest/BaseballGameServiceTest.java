@@ -1,15 +1,14 @@
 package baseball.serviceTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+
 import baseball.service.BaseballGameService;
+import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.Assertions.*;
-
-
-import java.util.HashMap;
 
 public class BaseballGameServiceTest {
 
@@ -40,14 +39,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 0);
         testResult.put("STRIKE", 3);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "123";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -59,14 +56,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 0);
         testResult.put("STRIKE", 2);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "129";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -78,14 +73,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 0);
         testResult.put("STRIKE", 1);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "146";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -97,14 +90,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 1);
         testResult.put("STRIKE", 0);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "451";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -116,14 +107,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 2);
         testResult.put("STRIKE", 0);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "351";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -135,14 +124,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 3);
         testResult.put("STRIKE", 0);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "231";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -154,14 +141,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 1);
         testResult.put("STRIKE", 1);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "421";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -173,14 +158,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 2);
         testResult.put("STRIKE", 1);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "132";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
@@ -192,14 +175,12 @@ public class BaseballGameServiceTest {
         HashMap<String, Integer> testResult = new HashMap<>();
         testResult.put("BALL", 0);
         testResult.put("STRIKE", 0);
+
+        baseballGameService.initUserResult();
         String computerNum = "123";
         String inputNum = "456";
 
-        baseballGameService.initUserResult();
-
         HashMap<String, Integer> userResult = baseballGameService.judgeResult(inputNum, computerNum);
-        int strikeCnt = baseballGameService.getUserResult().get("STRIKE");
-        int ballCnt = baseballGameService.getUserResult().get("BALL");
 
         assertThat(testResult).isEqualTo(userResult);
 
