@@ -13,7 +13,7 @@ public class GameStart {
     private static final int INPUT_NUM_SIZE = 3;
     private static final int NOT_AGAIN_GAME = 2;
     private static final int RESET_NUM = 0;
-    private static String hintOfJudge; // 결과를 담는 문자열
+    private String hintOfJudge; // 결과를 담는 문자열
     private List<Integer> computerList; // 컴퓨터의 3개의 랜덤 숫자 리스트
     private List<Integer> userList; // 입력을 받는 userList
     private Judge judge; // 게임의 심판
@@ -30,11 +30,11 @@ public class GameStart {
     public void run() {
 
         while (true) {
-            computerList = initGame(numbersGenerate);
+            initGame(numbersGenerate);
 
             // resultStr 이 "3스트라이크" 아니면 반복을 한다.
             while (Utill.isNotSameString(hintOfJudge, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
-                userList = inputRanNumOfUser(); // 1. 유저의 입력을 받아서 userList을 얻는다.
+                inputRanNumOfUser(); // 1. 유저의 입력을 받아서 userList을 얻는다.
                 hintOfJudge = judge.CheckProgressBaseballGame(computerList, userList); // 2. judge의 힌트를 얻는다.
                 System.out.println(hintOfJudge); // 3. 힌트를 출력한다.
             }
@@ -45,14 +45,15 @@ public class GameStart {
         }
     }
 
+
     /**
      * 게임을 초기화 할때 사용을 한다. 힌트의 값과, 컴퓨터의 랜덤 리스트를 초기화한다..
      *
      * @return
      */
-    private List<Integer> initGame(NumbersGenerate numbersGenerate) {
+    private void initGame(NumbersGenerate numbersGenerate) {
         hintOfJudge = MyConstants.RESET_STRING(); // 결과 리셋
-        return numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
+        computerList = numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
     }
 
     /**
@@ -85,17 +86,18 @@ public class GameStart {
      * @return "123" => {1 , 2, 3}
      */
 
-    private List<Integer> inputRanNumOfUser() {
-        List<Integer> inputList = new ArrayList<>();
-        String inputStrArr[] = new String[INPUT_NUM_SIZE];
+    private void inputRanNumOfUser() {
+        initUserList();
 
         System.out.print(MyConstants.MSG_INPUT_NUMBER_STR()); // 1. 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
         String numInputOfUser = Utill.inputNum(); // 2. 숫자 입력을 받는다.
 
         // 3. 입력을 받은 문자렬을 split을 한다음 inputList에 추가를 한다. => [ 1, 2, 3]
-        addNumber2InputList(inputList, numInputOfUser);
+        addNumber2InputList(userList, numInputOfUser);
+    }
 
-        return inputList;
+    private void initUserList() {
+        userList = new ArrayList<>();
     }
 
     /**
