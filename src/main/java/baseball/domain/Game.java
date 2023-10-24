@@ -5,6 +5,19 @@ public class Game {
     private int strike;
     private int ball;
 
+    public Game(int[] answer) {
+        this.answer = answer;
+    }
+
+    public void initScore() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
+    public int[] getAnswer() {
+        return answer;
+    }
+
     public int getBall() {
         return ball;
     }
@@ -14,10 +27,10 @@ public class Game {
     }
 
     public void increaseBall() {
-        this.ball++;
+        this.ball += 1;
     }
 
     public void  increaseStrike() {
-        this.strike++;
+        this.strike += 1;
     }
 }

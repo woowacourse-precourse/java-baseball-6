@@ -1,24 +1,25 @@
 package baseball.controller;
 
+import baseball.domain.Game;
+import baseball.domain.User;
 import baseball.utils.RandomUtils;
 import baseball.view.ErrorView;
 import baseball.view.PrintView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
-    int strike = 0;
-    int ball = 0;
 
+    User user;
+    Game game;
     PrintView printView = new PrintView();
-
 
     // 게임 시작전 세팅하는 함수
     public void gameSet() {
-        int[] answer = RandomUtils.getRandomNumbers();
+        game = new Game(RandomUtils.getRandomNumbers());
         for (int i = 0; i < 3; i++) {
-            System.out.println(answer[i]);
+            System.out.println();
         }
-        gameStart(answer);
+        gameStart(game.getAnswer());
         printView.printGameEndMessage();
 
         gameRestart();
@@ -27,11 +28,11 @@ public class GameController {
     // 게임을 시작한다.
     public void gameStart(int[] answer) {
         printView.printGameStartMessage();
-        boolean state = true;
-        while (state) {
+        while (game.getStrike()!=3) {
+            game.initScore();
             printView.printUserInputMessage();
-            int[] inputNum = getInputNumber();
-            state = analyzeInputNumber(answer, inputNum);
+            user = new User(getInputNumber());
+            analyzeInputNumber(answer, user.getInputNum());
         }
     }
 
@@ -54,18 +55,14 @@ public class GameController {
     }
 
     // 입력받은 숫자와 정답을 비교한다.
-    public boolean analyzeInputNumber(int[] answer, int[] inputNum) {
-
-        strike = 0;
-        ball = 0;
+    public void analyzeInputNumber(int[] answer, int[] inputNum) {
 
         for (int i = 0; i < answer.length; i++) {
             compareNumber(answer, inputNum, i);
         }
 
-        printView.printScoreMessage(strike, ball);
+        printView.printScoreMessage(game.getStrike(), game.getBall());
 
-        return strike != 3;
     }
 
 
@@ -82,10 +79,10 @@ public class GameController {
     // 스트라이크와 볼의 갯수를 구한다.
     public void getCount(int index, int j) {
         if (index != j) {
-            ball++;
+            game.increaseBall();
         }
         if (index == j) {
-            strike++;
+            game.increaseStrike();
         }
     }
 
@@ -94,6 +91,7 @@ public class GameController {
         printView.printRestartMessage();
         int mode = Integer.parseInt(Console.readLine());
         if (mode == 1) {
+            game.initScore();
             gameSet();
         }else if(mode == 2) {
             printView.printRestartEndMessage();

@@ -1,2 +1,4 @@
-package baseball.service;public class GameService {
+package baseball.service;
+
+public class GameService {
 }
