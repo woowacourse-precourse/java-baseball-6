@@ -3,25 +3,25 @@ package baseball;
 import java.util.List;
 
 public class BaseballGame {
-    private Player player;
     private Computer computer;
+    private GameView view;
 
     BaseballGame() {
-        player = new Player();
         computer = new Computer();
+        view = new GameView();
     }
 
     public void play() {
+        view.showStartMessage();
         computer.pickRandomNumber();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (true) {
-            List<Integer> playerNumbers = player.readNumber();
+            List<Integer> playerNumbers = view.readNumbers();
             GameResult currentResult = computer.getResult(playerNumbers);
             System.out.println(currentResult.toString());
 
             if (currentResult.isGameOver()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                if (player.askRestart() == 2) {
+                if (!view.askRestart()) {
                     break;
                 }
                 computer.pickRandomNumber();
