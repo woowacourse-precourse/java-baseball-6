@@ -50,7 +50,7 @@ class Game {
     private static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
-        InputVaidator.validateInput(input);
+        InputValidator.validateInput(input);
 
         List<Integer> parseInput = new ArrayList<>();
         for (char ch : input.toCharArray()) {
@@ -119,7 +119,7 @@ class GameOutcome {
     }
 }
 
-class InputVaidator{
+class InputValidator{
     public static void validateInput(String input) {
         if (input.length() != 3)
             throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
