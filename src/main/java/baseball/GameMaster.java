@@ -31,10 +31,10 @@ public class GameMaster {
     public void playOneRound() {
         while (!isCorrectAnswerFound) {
             Validator validator = new Validator(correctAnswer);
-            String answer = progress();
-            validator.writeBaseballAnswer(answer);
-            String s = printResult(validator.changeInputBaseballType());
-            decide(validator, checkResult(s));
+            String answer = requestInput();
+            validator.getBaseballAnswer(answer);
+            String result = printResult(validator.checkAnswer());
+            requestOneMore(validator, isCorrectAnswer(result));
         }
     }
 
@@ -48,12 +48,12 @@ public class GameMaster {
         return correctAnswer;
     }
 
-    private String progress() {
+    private String requestInput() {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
 
-    private String checkResult(String result) {
+    private String isCorrectAnswer(String result) {
         System.out.println(result);
         if (result.equals("3스트라이크")) {
             return progressOrNot();
@@ -84,15 +84,15 @@ public class GameMaster {
             .collect(Collectors.joining(" "));
     }
 
-    private void conclude(String decideAnswer) {
+    private void decide(String decideAnswer) {
         isCorrectAnswerFound = true;
         shouldContinueRound = decideAnswer.equals("1");
     }
 
-    private void decide(Validator validator, String decide) {
-        if (decide != null) {
-            String decideAnswer = validator.writeProgressAnswer(decide);
-            conclude(decideAnswer);
+    private void requestOneMore(Validator validator, String checkResult) {
+        if (checkResult != null) {
+            String decideAnswer = validator.getProgressAnswer(checkResult);
+            decide(decideAnswer);
         }
     }
 }

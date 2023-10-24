@@ -39,7 +39,7 @@ class Baseball {
     }
 
     public void checkType(ArrayList<String> randomList) {
-        String baseballNumber = getNumberToString();
+        String baseballNumber = String.valueOf(getNumber());
         if (randomList.contains(baseballNumber)) {
             changeType((randomList.indexOf(baseballNumber) == getIndex() ? STRIKE : BALL));
         }
@@ -51,10 +51,6 @@ class Baseball {
         }
         String myType = type.getType();
         scoreBoard.put(myType, scoreBoard.get(myType) + 1);
-    }
-
-    private String getNumberToString() {
-        return String.valueOf(getNumber());
     }
 
 }

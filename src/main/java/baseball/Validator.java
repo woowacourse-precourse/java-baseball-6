@@ -19,7 +19,7 @@ public class Validator {
         this.randomNumber = randomNumber;
     }
 
-    public void writeBaseballAnswer(String inputValue) {
+    public void getBaseballAnswer(String inputValue) {
         validateContainsSpace(inputValue);
         validateOnlyNumber(inputValue);
         validateLengthThree(inputValue);
@@ -28,15 +28,15 @@ public class Validator {
         inputNumber = Integer.parseInt(inputValue);
     }
 
-    public Map<String, Integer> changeInputBaseballType() {
+    public Map<String, Integer> checkAnswer() {
         init();
         for (Baseball baseball : inputList) {
             baseball.checkType(randomList);
         }
-        return calculateResult();
+        return calculateScore();
     }
 
-    private Map<String, Integer> calculateResult() {
+    private Map<String, Integer> calculateScore() {
         Map<String, Integer> scoreBoard = writeScoreBoard();
         for (Baseball baseball : inputList) {
             baseball.calculate(scoreBoard);
@@ -44,7 +44,7 @@ public class Validator {
         return scoreBoard;
     }
 
-    public String writeProgressAnswer(String inputValue) {
+    public String getProgressAnswer(String inputValue) {
         validateContainsSpace(inputValue);
         validateOnlyNumber(inputValue);
         validateOneOrTwo(inputValue);

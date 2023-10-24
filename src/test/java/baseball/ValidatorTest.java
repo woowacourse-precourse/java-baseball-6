@@ -19,48 +19,48 @@ class ValidatorTest {
 
     @Test
     void _1스트라이크() {
-        validator.writeBaseballAnswer("857");
-        Map<String, Integer> result = validator.changeInputBaseballType();
+        validator.getBaseballAnswer("857");
+        Map<String, Integer> result = validator.checkAnswer();
         assertEquals(1, result.get("스트라이크"));
         assertEquals(0, result.get("볼"));
     }
 
     @Test
     void _2스트라이크() {
-        validator.writeBaseballAnswer("853");
-        Map<String, Integer> result = validator.changeInputBaseballType();
+        validator.getBaseballAnswer("853");
+        Map<String, Integer> result = validator.checkAnswer();
         assertEquals(2, result.get("스트라이크"));
         assertEquals(0, result.get("볼"));
     }
 
     @Test
     void _3스트라이크() {
-        validator.writeBaseballAnswer("893");
-        Map<String, Integer> result = validator.changeInputBaseballType();
+        validator.getBaseballAnswer("893");
+        Map<String, Integer> result = validator.checkAnswer();
         assertEquals(3, result.get("스트라이크"));
         assertEquals(0, result.get("볼"));
     }
 
     @Test
     void _1볼_1스트라이크() {
-        validator.writeBaseballAnswer("837");
-        Map<String, Integer> result = validator.changeInputBaseballType();
+        validator.getBaseballAnswer("837");
+        Map<String, Integer> result = validator.checkAnswer();
         assertEquals(1, result.get("스트라이크"));
         assertEquals(1, result.get("볼"));
     }
 
     @Test
     void _2볼_1스트라이크() {
-        validator.writeBaseballAnswer("839");
-        Map<String, Integer> result = validator.changeInputBaseballType();
+        validator.getBaseballAnswer("839");
+        Map<String, Integer> result = validator.checkAnswer();
         assertEquals(1, result.get("스트라이크"));
         assertEquals(2, result.get("볼"));
     }
 
     @Test
     void 낫싱() {
-        validator.writeBaseballAnswer("127");
-        Map<String, Integer> result = validator.changeInputBaseballType();
+        validator.getBaseballAnswer("127");
+        Map<String, Integer> result = validator.checkAnswer();
         assertEquals(0, result.get("스트라이크"));
         assertEquals(0, result.get("볼"));
     }
@@ -78,7 +78,7 @@ class ValidatorTest {
     })
     void 숫자야구_입력_예외_테스트(String input, String expectedMessage) {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> validator.writeBaseballAnswer(input));
+            () -> validator.getBaseballAnswer(input));
         assertEquals(e.getMessage(), expectedMessage);
     }
 
@@ -90,7 +90,7 @@ class ValidatorTest {
     })
     void 게임진행여부_입력_예외_테스트(String input, String expectedMessage) {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> validator.writeProgressAnswer(input));
+            () -> validator.getProgressAnswer(input));
         assertEquals(e.getMessage(), expectedMessage);
     }
 
