@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.service.GameService;
 import baseball.service.PlayerService;
@@ -14,15 +15,15 @@ public class GameController {
     private final PlayerService playerService;
     private final InputView inputView;
     private final OutputView outputView;
-    private final GameResult gameResult;
+    private final Computer computer;
 
     public GameController(GameService gameService, PlayerService playerService, InputView inputView,
-                          OutputView outputView, GameResult gameResult) {
+                          OutputView outputView, Computer computer) {
         this.gameService = gameService;
         this.playerService = playerService;
         this.inputView = inputView;
         this.outputView = outputView;
-        this.gameResult = gameResult;
+        this.computer = computer;
     }
 
     public void startGame() {
@@ -37,7 +38,7 @@ public class GameController {
     }
 
     public void init() {
-        gameService.assignComputerNums();
+        computer.assignComputerNums();
     }
 
     public void run() {
@@ -46,13 +47,12 @@ public class GameController {
             String guessNumber = playerService.inputGuessNumber();
             List<Integer> playerNums = playerService.assignPlayerNums(guessNumber);
 
-            gameService.checkGuessNumbers(playerNums, gameResult);
+            GameResult gameResult = gameService.checkGuessNumbers(playerNums, computer);
 
             int strikeCount = gameResult.getStrikeCount();
             int ballCount = gameResult.getBallCount();
 
             outputView.printGameResult(strikeCount, ballCount);
-            gameResult.resetGameResult();
 
             if (strikeCount == GameConstants.DIGIT_SIZE) {
                 outputView.printSuccessMessage();
