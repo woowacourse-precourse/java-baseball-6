@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ComputerController {
 
-    DecimalNumber decimalNumber;
+    private final DecimalNumber decimalNumber;
 
     public ComputerController(DecimalNumber decimalNumber) {
         this.decimalNumber = decimalNumber;

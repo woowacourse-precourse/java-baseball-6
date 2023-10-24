@@ -12,8 +12,8 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
-    DecimalNumber decimalNumber;
-    ComputerController computerController;
+    private final DecimalNumber decimalNumber;
+    private final ComputerController computerController;
 
     public GameController(DecimalNumber decimalNumber, ComputerController computerController) {
         this.decimalNumber = decimalNumber;
