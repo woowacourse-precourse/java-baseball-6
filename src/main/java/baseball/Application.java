@@ -11,9 +11,25 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다");
-        List<Integer> userNumbers = getUserNumbers();
+        while (true) {
+            if (playGame()) {
+                break;
+            }
+        }
     }
 
+    private static boolean playGame() {
+        List<Integer> computerNumbers = getRandomNumber();
+
+        List<Integer> userNumbers;
+        do {
+            userNumbers = getUserNumbers();
+            int[] result = calculateResult(computerNumbers, userNumbers);
+            printResult(result);
+        } while (!isGameOver(userNumbers, computerNumbers));
+
+        return !wantsToPlayAgain();
+    }
 
     public static ArrayList<Integer> getRandomNumber() {
         ArrayList<Integer> answerNumberList = new ArrayList<>();
@@ -112,6 +128,19 @@ public class Application {
         System.out.println(output);
     }
 
+    private static boolean isGameOver(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        return userNumbers.equals(computerNumbers);
+    }
+
+    private static boolean wantsToPlayAgain() {
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        String input = Console.readLine();
+        if (!"2".equals(input) && !"1".equals(input)) {
+            throw new IllegalArgumentException();
+        }
+        return "1".equals(input);
+    }
 
 
 }
