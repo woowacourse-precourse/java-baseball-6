@@ -6,7 +6,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
-    final static public int ANSWER_LENGTH = 4;
+    final static public int ANSWER_LENGTH = 3;
     final static public int ANSWER_MIN_VALUE = 1;
     final static public int ANSWER_MAX_VALUE = 9;
 
