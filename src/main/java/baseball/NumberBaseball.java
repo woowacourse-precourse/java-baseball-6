@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class NumberBaseball implements Game {
-    private enum ResultType {
+    private enum BaseballResultType {
         STRIKE, BALL, OUT
     }
-    private HashMap<ResultType, Integer> baseballResult;
+    private HashMap<BaseballResultType, Integer> baseballResult;
 
     private final int ANSWER_LENGTH = 3;
     private String[] answer;
@@ -20,42 +20,42 @@ public class NumberBaseball implements Game {
     public void init() {
         isFinished = false;
         initializeAnswer();
-        initializeBaseballResult();
+        initializeTurnResult();
     }
 
     @Override
     public String playTurn(String input) {
         validateGameInput(input);
 
-        initializeBaseballResult();
+        initializeTurnResult();
         String[] userInput = input.split("");
 
         for (int i = 0; i < ANSWER_LENGTH; i++) {
             if (userInput[i].equals(answer[i])) {
-                baseballResult.put(ResultType.STRIKE, baseballResult.get(ResultType.STRIKE) + 1);
+                baseballResult.put(BaseballResultType.STRIKE, baseballResult.get(BaseballResultType.STRIKE) + 1);
             } else if (answerSet.contains(userInput[i])) {
-                baseballResult.put(ResultType.BALL, baseballResult.get(ResultType.BALL) + 1);
+                baseballResult.put(BaseballResultType.BALL, baseballResult.get(BaseballResultType.BALL) + 1);
             } else {
-                baseballResult.put(ResultType.OUT, baseballResult.get(ResultType.OUT) + 1);
+                baseballResult.put(BaseballResultType.OUT, baseballResult.get(BaseballResultType.OUT) + 1);
             }
         }
 
-        isFinished = baseballResult.get(ResultType.STRIKE) == ANSWER_LENGTH;
+        isFinished = baseballResult.get(BaseballResultType.STRIKE) == ANSWER_LENGTH;
         return this.gameResultToString();
     }
 
     @Override
     public String gameResultToString() {
-        if (baseballResult.get(ResultType.OUT) == ANSWER_LENGTH) {
+        if (baseballResult.get(BaseballResultType.OUT) == ANSWER_LENGTH) {
             return "낫싱";
         }
 
         ArrayList<String> result = new ArrayList<>();
-        if (baseballResult.get(ResultType.BALL) > 0) {
-            result.add(String.format("%d볼", baseballResult.get(ResultType.BALL)));
+        if (baseballResult.get(BaseballResultType.BALL) > 0) {
+            result.add(String.format("%d볼", baseballResult.get(BaseballResultType.BALL)));
         }
-        if (baseballResult.get(ResultType.STRIKE) > 0) {
-            result.add(String.format("%d스트라이크", baseballResult.get(ResultType.STRIKE)));
+        if (baseballResult.get(BaseballResultType.STRIKE) > 0) {
+            result.add(String.format("%d스트라이크", baseballResult.get(BaseballResultType.STRIKE)));
         }
 
         return String.join(" ", result);
@@ -113,12 +113,12 @@ public class NumberBaseball implements Game {
         }
     }
 
-    private void initializeBaseballResult() {
+    private void initializeTurnResult() {
         if (baseballResult == null) {
             baseballResult = new HashMap<>();
         }
 
-        for (ResultType type : ResultType.values()) {
+        for (BaseballResultType type : BaseballResultType.values()) {
             baseballResult.put(type, 0);
         }
     }
