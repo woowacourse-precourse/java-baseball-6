@@ -26,7 +26,6 @@ public class Play {
                 count++;
             }
         }
-        System.out.println(count);
         playerNumber.setBallCount(count);
     }
 
@@ -40,7 +39,6 @@ public class Play {
                 count++;
             }
         }
-        System.out.println(count);
         playerNumber.setStrikeCount(count);
     }
 
@@ -59,7 +57,6 @@ public class Play {
         if (strikeCount > 0) {
             result += strikeCount + "스트라이크";
         }
-        System.out.println();
         return result;
     }
 }
