@@ -25,15 +25,14 @@ public class Baseball {
     }
 
     public Result compareNumber(String userNumber, List<Integer> computerNumber) {
-        String[] number = userNumber.split("");
         int ball = 0;
         int strike = 0;
 
         for (int i = 0; i < 3; i++) {
-            int num = Integer.parseInt(number[i]);
-            if (computerNumber.get(i) == num) {
+            int number = userNumber.charAt(i) - '0';
+            if (computerNumber.get(i) == number) {
                 strike++;
-            } else if (computerNumber.contains(num)) {
+            } else if (computerNumber.contains(number)) {
                 ball++;
             }
         }
