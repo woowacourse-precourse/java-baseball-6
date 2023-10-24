@@ -1,4 +1,4 @@
-package baseball.constant;
+package baseball.constant.message;
 
 public class ExceptionMessage {
     public static final String INVALID_INPUT_EXCEPTION_MESSAGE = "입력한 숫자는 1부터 9까지 서로 다른 수로 이루어진 3자리가 아닙니다. ";

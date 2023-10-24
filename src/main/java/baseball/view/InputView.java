@@ -1,12 +1,11 @@
 package baseball.view;
 
 
-import baseball.constant.ExceptionMessage;
+import baseball.constant.ChoiceNumberConstant;
+import baseball.constant.message.ExceptionMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 //TODO: 추후삭제
-
-import java.util.Scanner;
 
 
 public class InputView {
@@ -46,7 +45,7 @@ public class InputView {
     }
 
     private int checkChoiceNumber(int inputNumber){
-        if(inputNumber!=1&&inputNumber!=2){
+        if(inputNumber!= ChoiceNumberConstant.CONTINUE &&inputNumber!=ChoiceNumberConstant.END){
             throw new IllegalArgumentException(ExceptionMessage.INVALID_CHOICE_NUMBER_EXCEPTION_MESSAGE);
         }
 

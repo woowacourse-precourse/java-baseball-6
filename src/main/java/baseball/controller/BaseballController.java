@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.constant.BaseBallNumberConstant;
+import baseball.constant.ChoiceNumberConstant;
 import baseball.model.BaseballNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -25,8 +27,8 @@ public class BaseballController {
 
         while(true){
             playGame();
-            outputView.printChoiceInfoMessage();
-            if(inputView.inputChoiceNumber()==2){
+            outputView.printChoiceNumberInfoMessage();
+            if(inputView.inputChoiceNumber()== ChoiceNumberConstant.END){
                 break;
             }
 
@@ -38,7 +40,7 @@ public class BaseballController {
     private void playGame(){
         computer.createBaseballNumber();
         while(true){
-            if(strikeCountInOneRound()==3){
+            if(strikeCountInOneRound()== BaseBallNumberConstant.DIGIT){
                 outputView.printClosingMessage();
                 break;
             }
@@ -48,7 +50,7 @@ public class BaseballController {
     }
 
     private int strikeCountInOneRound(){
-        outputView.printInputInfoMessage();
+        outputView.printInputNumberInfoMessage();
         int playerNumber = inputView.inputPlayerNumber();
         List<Integer> playerBaseballNumber = baseballNumberGenerator.createPlayerBaseballNumber(playerNumber);
 

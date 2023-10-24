@@ -1,34 +1,36 @@
 package baseball.view;
 
+import baseball.constant.message.OutputMessage;
+
 public class OutputView {
     public void printInitialMessage(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(OutputMessage.INITIAL_MESSAGE);
     }
 
-    public void printInputInfoMessage(){
-        System.out.print("숫자를 입력해주세요 : ");
+    public void printInputNumberInfoMessage(){
+        System.out.print(OutputMessage.INPUT_NUMBER_INFO_MESSAGE);
     }
 
     public void printResultMessage(int strike, int ball){
         if(strike==0 && ball==0){
-            System.out.println("낫싱");
+            System.out.println(OutputMessage.NOTHING_RESULT_MESSAGE);
         } else if (strike == 0) {
-            System.out.println(ball+"볼");
+            System.out.println(ball+OutputMessage.BALL_RESULT_MESSAGE);
 
         } else if (ball ==0) {
-            System.out.println(strike+"스트라이크");
+            System.out.println(strike+OutputMessage.STRIKE_RESULT_MESSAGE);
         }
         else{
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            System.out.println(ball+OutputMessage.BALL_RESULT_MESSAGE+" "+strike+OutputMessage.STRIKE_RESULT_MESSAGE);
         }
 
     }
 
     public void printClosingMessage(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(OutputMessage.CLOSING_MESSAGE);
     }
 
-    public void printChoiceInfoMessage(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public void printChoiceNumberInfoMessage(){
+        System.out.println(OutputMessage.CHOICE_NUMBER_INFO_MESSAGE);
     }
 }
