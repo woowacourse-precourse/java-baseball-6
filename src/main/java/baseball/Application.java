@@ -6,7 +6,7 @@ public class Application {
     public  static  boolean askGameContinue(){
         System.out.println(continueGameMessage);
         String continueCommand = Console.readLine(); // TODO: error handle
-        if (continueCommand.equals(gameContinue)) {
+        if (continueCommand.equals(gameStop)) {
             System.out.println(endGameMessage);
             return true;
         }
