@@ -12,8 +12,15 @@ public class GameUtil {
     }
 
     private int computeStrikeCount(String computerNumber, String playerNumber) {
+        int strike = 0;
 
-        return 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++){
+            if (computerNumber.charAt(i) == playerNumber.charAt(i)) {
+                strike++;
+            }
+        }
+
+        return strike;
     }
 
     private int computeBallCount(String computerNumber, String playerNumber) {
