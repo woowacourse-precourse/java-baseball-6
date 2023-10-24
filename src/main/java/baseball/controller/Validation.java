@@ -4,6 +4,11 @@ import static baseball.constant.Message.INPUT_ASK_RESTART_EXCEPTION_MSG;
 import static baseball.constant.Message.INPUT_DUPLICATE_EXCEPTION_MSG;
 import static baseball.constant.Message.INPUT_LENGTH_EXCEPTION_MSG;
 import static baseball.constant.Message.INPUT_RANGE_EXCEPTION_MSG;
+import static baseball.constant.Number.END_NUM;
+import static baseball.constant.Number.INPUT_LENGTH;
+import static baseball.constant.Number.NUM_FIRST;
+import static baseball.constant.Number.NUM_LAST;
+import static baseball.constant.Number.RESTART_NUM;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,28 +32,28 @@ public class Validation {
     }
 
     public void validateInputLength(String input) {
-        if (input.length() != 3) {
+        if (input.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
     }
 
     public void validateInputRange(List<Integer> inputNums) {
         boolean checkRange = inputNums.stream()
-                .allMatch(num -> 1 <= num && num <= 9);
+                .allMatch(num -> NUM_FIRST <= num && num <= NUM_LAST);
 
         if (!checkRange) {
             throw new IllegalArgumentException(INPUT_RANGE_EXCEPTION_MSG);
         }
     }
-    
+
     public void validateInputDuplicated(List<Integer> inputNums) {
-        if (inputNums.stream().distinct().count() != 3) {
+        if (inputNums.stream().distinct().count() != INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_DUPLICATE_EXCEPTION_MSG);
         }
     }
 
     public void validateGameControlInput(int input) {
-        if (input < 1 || input > 2) {
+        if (input < RESTART_NUM || input > END_NUM) {
             throw new IllegalArgumentException(INPUT_ASK_RESTART_EXCEPTION_MSG);
         }
     }

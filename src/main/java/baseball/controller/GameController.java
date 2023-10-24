@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import static baseball.constant.Number.INPUT_LENGTH;
+import static baseball.constant.Number.RESTART_NUM;
+import static baseball.constant.Number.STRIKE_OUT;
+
 import baseball.view.Input;
 import baseball.view.Output;
 import java.util.List;
@@ -19,10 +23,10 @@ public class GameController {
     }
 
     public void startGame() {
-        int gameControlNum = 1;
+        int gameControlNum = RESTART_NUM;
         computerNumbers = randomUtil.generateRandomNumber();
 
-        while (gameControlNum == 1) {
+        while (gameControlNum == RESTART_NUM) {
             input.printInputMsg();
             String userInput = userUtil.getInputNumber();
             List<Integer> userNums = validation.validateInputNum(userInput);
@@ -50,7 +54,7 @@ public class GameController {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < INPUT_LENGTH; i++) {
             int computerNum = computerNumbers.get(i);
             int userNum = userNums.get(i);
 
@@ -68,9 +72,9 @@ public class GameController {
     }
 
     private int checkStrikeCount(int strike) {
-        int gameControlInput = 1;
+        int gameControlInput = RESTART_NUM;
 
-        if (strike == 3) {
+        if (strike == STRIKE_OUT) {
             output.printSuccessGame();
             gameControlInput = Integer.parseInt(userUtil.getInputNumber());
             validation.validateGameControlInput(gameControlInput);
@@ -82,7 +86,7 @@ public class GameController {
     }
 
     private void checkRestartAndMakeRandomNumber(int gameControlInput) {
-        if (gameControlInput == 1) {
+        if (gameControlInput == RESTART_NUM) {
             computerNumbers = randomUtil.generateRandomNumber();
         }
     }
