@@ -16,7 +16,7 @@ public class Computer {
         numbers.add(randomNumber);
       }
     }
-    System.out.println("Computer Class에서 생성된 컴퓨터 숫자 : " + numbers);
+//    System.out.println("Computer Class에서 생성된 컴퓨터 숫자 : " + numbers);
     // 1부터 9까지 서로 다른 임의의 숫자 3개를 생성하여 numbers 리스트에 추가
     return numbers;
   }

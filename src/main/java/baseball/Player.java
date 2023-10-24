@@ -1,20 +1,25 @@
 package baseball;
 
+import baseball.Exception.NumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
 
+public class Player {
+  /** 사용자로부터 숫자를 입력받고 해당 입력값을 정수 리스트로 변환 */
   public List<Integer> inputNumbers() {
-    System.out.print("숫자를 입력해주세요: ");
     String input = Console.readLine();
     System.out.println(input);
+    List<Integer> inputNumbers = parseInput(input);
+    NumberValidator.validate(inputNumbers);
+    return inputNumbers;
+  }
+
+  /** 문자열 형태의 입력값을 정수 리스트로 변환*/
+  private List<Integer> parseInput(String input) {
     List<Integer> inputNumbers = new ArrayList<>();
-    // 입력받은 문자열을 공백을 기준으로 분할하여 배열로 변환
     String[] numberStrings = input.split("");
-    System.out.println(numberStrings[0] + numberStrings[1] + numberStrings[2]);
-    // 각 문자열을 정수로 변환하여 numbers 리스트에 추가
     for (String numberString : numberStrings) {
       int number = Integer.parseInt(numberString);
       inputNumbers.add(number);
