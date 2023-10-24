@@ -5,6 +5,7 @@ import baseball.entity.User;
 import baseball.view.SystemInputMessage;
 import baseball.view.SystemOutputMessage;
 import camp.nextstep.edu.missionutils.Console;
+import static global.Constants.*;
 import global.utils.ParseUtil;
 import global.utils.RandomUtil;
 
@@ -68,5 +69,18 @@ public class BaseballService {
 
     public void endGame() {
         systemOutputMessage.showGameOverMessage();
+    }
+
+    public boolean askRetry() {
+        SystemInputMessage.showRetryMessage();
+        return getInputNumber() == RETRY;
+    }
+
+    private int getInputNumber() {
+        int input = Integer.parseInt(Console.readLine());
+        if (input == 0 || input > GAME_OVER) {
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
 }
