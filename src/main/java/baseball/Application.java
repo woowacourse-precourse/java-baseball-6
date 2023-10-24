@@ -29,11 +29,7 @@ public class Application {
                 //총 개수 확인
                 int cnt = 0;
 
-                for (int i = 0; i < user.size(); i++) {
-                    if (computer.contains(user.get(i))) {
-                        cnt += 1;
-                    }
-                }
+                cnt = totalCntCheck(computer, user, cnt);
 
                 //스트라이크 개수 확인
                 int strike = 0;
@@ -77,6 +73,7 @@ public class Application {
         }
     }
 
+
     //클래스 정의 부분
     private static List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -103,5 +100,14 @@ public class Application {
             throw new IllegalArgumentException("입력된 숫자를 확인해주세요.");
         }
         return user;
+    }
+
+    private static int totalCntCheck(List<Integer> computer, List<Integer> user, int cnt) {
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.contains(user.get(i))) {
+                cnt += 1;
+            }
+        }
+        return cnt;
     }
 }
