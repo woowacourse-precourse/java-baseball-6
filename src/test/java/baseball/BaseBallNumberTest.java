@@ -2,9 +2,12 @@ package baseball;
 
 
 import baseball.model.BaseBallNumber;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -34,6 +37,25 @@ class BaseBallNumberTest {
 
         // then
         Assertions.assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
+    }
+
+    @RepeatedTest(500)
+    @DisplayName("1 ~ 9 사이의 서로 다른 임의의수가 만들어 지는지 테스트")
+    void createRandomNumbers() {
+        // given
+        Set<Integer> numberSet = new HashSet<>();
+
+        // when
+        BaseBallNumber baseBallNumber = BaseBallNumber.generateRandomNumbers();
+        int[] numbers = baseBallNumber.getNumbers();
+
+        // then
+        Assertions.assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
+        for(int number : numbers) {
+            numberSet.add(number);
+            Assertions.assertThat(number).isBetween(1, 9);
+        }
+        Assertions.assertThat(numberSet).hasSize(3);
     }
 
     static Stream<Arguments> inValidNumberArray() {
