@@ -17,19 +17,18 @@ public class GameCompareContext {
     int ballCount = 0;
     int strikeCount = 0;
     for (int i = 0; i < inputs.size(); i++) {
-      String inputNum = inputs.get(i);
-      if (randomNumList.contains(inputNum)) {
-        if (randomNumList.indexOf(inputNum) == i) {
-          strikeCount++;
-        } else {
-          ballCount++;
-        }
+      if (inputs.get(i).equals(randomNumList.get(i))) {
+        strikeCount++;
+        continue;
+      }
+      if (randomNumList.contains(inputs.get(i))) {
+        ballCount++;
       }
     }
     return categorizeResume(ballCount, strikeCount, randomNums);
   }
 
-  //볼과 스트라이크의 개수에 따라 결과를 분류한다.
+  //볼과 스트라이크의 개수에 결과를 분류한다.
   private static GameResult<ResumingGame, WinningGame> categorizeResume(
       int ballCount, int strikeCount, String randomNums) {
     return switch (ballCount * 10 + strikeCount) {
