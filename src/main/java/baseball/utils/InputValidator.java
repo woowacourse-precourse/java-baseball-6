@@ -10,6 +10,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateUserInputForRestart(String input) {
+        if (!isValidInputForRestart(input)) {
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
+        }
+    }
+
     private static boolean isValidInput(String input) {
         return hasValidLength(input) && isNumeric(input) && isUnique(input);
     }
@@ -30,5 +36,9 @@ public class InputValidator {
     private static boolean isUnique(String input) {
         char[] chars = input.toCharArray();
         return chars[0] != chars[1] && chars[1] != chars[2] && chars[0] != chars[2];
+    }
+
+    private static boolean isValidInputForRestart(String input) {
+        return input.equals("1") || input.equals("2");
     }
 }

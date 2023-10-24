@@ -14,11 +14,14 @@ public class OutputView {
     public static void printRoundResult(Score score) {
         if (score.isGameWon()) {
             printGameWonMessage(score.strikes());
-        } else if (score.strikes() == 0 && score.balls() == 0) {
-            System.out.println(NOTHING_MESSAGE);
-        } else {
-            printPartialScore(score);
+            return;
         }
+
+        if (score.isNothing()) {
+            System.out.println(NOTHING_MESSAGE);
+            return;
+        }
+        printPartialScore(score);
     }
 
     private static void printGameWonMessage(int strikes) {
@@ -27,11 +30,17 @@ public class OutputView {
     }
 
     private static void printPartialScore(Score score) {
-        if (score.balls() > 0 && score.strikes() > 0) {
+        if (score.isBall() && score.isStrike()) {
             System.out.printf("%d볼 %d스트라이크%n", score.balls(), score.strikes());
-        } else if (score.balls() > 0) {
+            return;
+        }
+
+        if (score.balls() > 0) {
             System.out.printf("%d볼%n", score.balls());
-        } else {
+            return;
+        }
+
+        if (score.strikes() > 0) {
             System.out.printf("%d스트라이크%n", score.strikes());
         }
     }
