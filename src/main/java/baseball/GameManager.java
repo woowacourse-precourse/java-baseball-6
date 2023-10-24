@@ -68,6 +68,7 @@ public class GameManager {
         return strike == NUMBER_LENGTH;
     }
 
+    // 재시작 질의를 했을 때 받은 입력이 1인지 2인지, 아니면 다른것인지 체크합니다.
     public boolean isRetry(String input) {
         return switch (input) {
             case "1" -> true;
