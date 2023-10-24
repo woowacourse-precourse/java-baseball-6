@@ -2,7 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        while (true) {
+        while (true) { //
             Computer computer = new Computer();
             Player player = new Player();
             Judge judge = new Judge();
@@ -10,7 +10,7 @@ public class Application {
             Game game = new Game(computer, player, judge);
             game.start();
 
-            if (judge.checkRestart(player)) break;
+            if (judge.checkRestart(player)) break; //
         }
     }
 }

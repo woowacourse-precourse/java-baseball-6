@@ -24,11 +24,10 @@ public class Game {
     public void play() {
         List<Integer> answer = computer.speakNumbers();
 
-        while (true) {
+        while (!isOver) {
             Result result = playRound(answer);
             judge.announceResult(result);
             isOver = judge.checkGameOver(result);
-            if (isOver) break;
         }
 
         end();
