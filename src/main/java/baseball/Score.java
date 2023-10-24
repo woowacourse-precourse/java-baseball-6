@@ -30,5 +30,20 @@ public class Score {
         this.ballCount = ballCount;
     }
 
+    @Override
+    public String toString() {
+        if ((strikeCount > 0) && (ballCount > 0)) {
+            return ballCount + "볼 " + strikeCount + "스트라이크";
+        }
 
+        if (ballCount > 0) {
+            return ballCount + "볼";
+        }
+
+        if (strikeCount > 0) {
+            return strikeCount + "스트라이크";
+        }
+
+        return "낫싱";
+    }
 }

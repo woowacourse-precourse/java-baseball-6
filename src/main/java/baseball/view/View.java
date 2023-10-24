@@ -9,27 +9,7 @@ public class View {
     }
 
     public void printGameResultMessage(Score score) {
-        int strikeCount = score.getStrikeCount();
-        int ballCount = score.getBallCount();
-
-        if ((strikeCount == 0) && (ballCount == 0)) {
-            System.out.println("낫싱");
-            return;
-        }
-
-        if ((strikeCount > 0) && (ballCount > 0)) {
-            System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
-            return;
-        }
-
-        if (ballCount > 0) {
-            System.out.printf("%d볼\n", ballCount);
-            return;
-        }
-
-        if (strikeCount > 0) {
-            System.out.printf("%d스트라이크\n", strikeCount);
-        }
+        System.out.println(score);
     }
 
     public void printInputMessage() {
