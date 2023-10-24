@@ -1,13 +1,16 @@
 package baseball.service;
 
+import static baseball.domain.Constants.BALL;
+import static baseball.domain.Constants.NOTHING;
 import static baseball.domain.Constants.NUMBER_OF_BASEBALL;
+import static baseball.domain.Constants.STRIKE;
 
 import baseball.domain.BaseballNumbers;
 
 public class HintService {
     public String createHintMessage(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
         if (computerNumber.isNothing(inputNumber)) {
-            return "낫싱";
+            return NOTHING;
         }
 
         int ballCount = computerNumber.getBallCount(inputNumber);
@@ -31,13 +34,13 @@ public class HintService {
 
     public void appendBallCount(StringBuilder hintMsg, int ballCount) {
         if (ballCount > 0) {
-            hintMsg.append(ballCount).append("볼");
+            hintMsg.append(ballCount).append(BALL);
         }
     }
 
     public void appendStrikeCount(StringBuilder hintMsg, int strikeCount) {
         if (strikeCount > 0) {
-            hintMsg.append(strikeCount).append("스트라이크");
+            hintMsg.append(strikeCount).append(STRIKE);
         }
     }
 
