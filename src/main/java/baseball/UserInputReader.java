@@ -9,14 +9,22 @@ public class UserInputReader {
     public String enterGameNumber() {
         System.out.print(INPUT_NUMBER_MESSAGE);
         String inputNumber = Console.readLine();
+        isValidUserNumberInput(inputNumber);
         return inputNumber;
     }
 
     public String enterAnswerRestartGame() {
         System.out.print(ASK_RESET_GAME_MESSAGE);
         String inputAnswer = Console.readLine();
+        isValidUserAnswerInput(inputAnswer);
         return inputAnswer;
     }
 
+    private void isValidUserNumberInput(String input) {
+        InputValidator.isValidUserNumberInput(input);
+    }
+    private void isValidUserAnswerInput(String input) {
+        InputValidator.isValidUserAnswerInput(input);
+    }
 
 }
