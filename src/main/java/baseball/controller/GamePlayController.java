@@ -29,7 +29,7 @@ public class GamePlayController {
                 computerNumber, playerNumber);
     }
 
-    private void hintResult(List<Integer> ballAndStrikeCountList) {
+    public void hintResult(List<Integer> ballAndStrikeCountList) {
         playerHintUtil.ballAndStrikeResultHint(ballAndStrikeCountList);
 
         if (ballAndStrikeCountList.get(STRIKE_INDEX) == THREE_STRIKE){
