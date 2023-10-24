@@ -22,4 +22,11 @@ class GameResultTest {
                 () -> new GameResult(10, 1)
         );
     }
+
+    @Test
+    void 볼_제한_개수_테스트() {
+        assertThrows(IllegalStateException.class,
+                () -> new GameResult(1, 10)
+        );
+    }
 }
