@@ -17,8 +17,9 @@ public class Application {
         String randomNumber= "";
         while (randomNumber.length() < 3) {
             String n = String.valueOf(Randoms.pickNumberInRange(1,10));
-            if (!randomNumber.contains(n))
+            if (!randomNumber.contains(n)) {
                 randomNumber += n;
+            }
         }
         return randomNumber;
     }
@@ -26,8 +27,9 @@ public class Application {
     public static int calculateStrikeCount() {
         int cnt = 0;
         for (int i = 0; i < 3; i++) {
-            if(randomNumber.charAt(i) == inputNumber.charAt(i))
+            if(randomNumber.charAt(i) == inputNumber.charAt(i)) {
                 cnt++;
+            };
         }
         return cnt;
     }
@@ -36,8 +38,9 @@ public class Application {
         int cnt = 0;
         for (int i = 0; i < 3; i++) {
             if (randomNumber.contains(inputNumber.substring(i, i + 1))
-                 && randomNumber.charAt(i) != inputNumber.charAt(i))
+                 && randomNumber.charAt(i) != inputNumber.charAt(i)) {
                 cnt++;
+            }
         }
         return cnt;
     }
@@ -45,13 +48,18 @@ public class Application {
     public static void printAnswerHint() {
         strike = calculateStrikeCount();
         ball = calculateBallCount();
-        if (ball == 0 && strike == 0)
+        if (ball == 0 && strike == 0) {
             System.out.print("낫싱");
-        if (ball > 0)
+        }
+        if (ball > 0) {
             System.out.print(ball + "볼 ");
-        if (strike > 0)
+        }
+        if (strike > 0) {
             System.out.print(strike + "스트라이크 ");
+        }
         System.out.println();
     }
+
+
 
 }
