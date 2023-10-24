@@ -6,6 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private int strike;
+    private int ball;
+
+    public void setBall(int ball) {
+        this.ball = ball;
+    }
+
+    public void setStrike(int strike) {
+        this.strike = strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 
     public void run() {
         do {
@@ -14,10 +32,9 @@ public class Game {
     }
 
     private void play() {
-        int strike = 0;
         List<Integer> rivalNumber;
         List<Integer> userGuessNumber;
-        int[] result;
+        int strike = 0;
 
         printStartMessage();
         rivalNumber = makeRivalNumber();
@@ -25,9 +42,9 @@ public class Game {
 
         while (strike != 3) {
             userGuessNumber = inputUserGuess();
-            result = checkScore(rivalNumber, userGuessNumber);
-            printResult(result);
-            strike = result[0];
+            checkScore(rivalNumber, userGuessNumber);
+            printResult(getStrike(), getBall());
+            strike = getStrike();
         }
 
         printFinishMessage();
@@ -71,7 +88,7 @@ public class Game {
         return userGuessNumber;
     }
 
-    private int[] checkScore(List<Integer> rivalNumber, List<Integer> userGuessNumber) {
+    private void checkScore(List<Integer> rivalNumber, List<Integer> userGuessNumber) {
         int ball = 0;
         int strike = 0;
 
@@ -82,18 +99,18 @@ public class Game {
                 ball++;
             }
         }
-
-        return new int[]{strike, ball};
+        setStrike(strike);
+        setBall(ball);
     }
 
-    private void printResult(int[] result) {
-        if (result[0] >= 1 && result[1] >= 1) {
-            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
-        } else if (result[0] >= 1 && result[1] == 0) {
-            System.out.println(result[0] + "스트라이크");
-        } else if (result[0] == 0 && result[1] >= 1) {
-            System.out.println(result[1] + "볼");
-        } else if (result[0] == 0 && result[1] == 0) {
+    private void printResult(int strike, int ball) {
+        if (ball >= 1 && strike >= 1) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (ball >= 1 && strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0 && strike >= 1) {
+            System.out.println(strike + "스트라이크");
+        } else if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
     }
