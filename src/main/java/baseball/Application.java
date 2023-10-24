@@ -1,7 +1,19 @@
 package baseball;
 
+import baseball.game.GameManager;
+import baseball.game.constant.Constants;
+import baseball.game.view.InputManager;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameManager gameManager = new GameManager();
+        InputManager inputManager = new InputManager();
+        while (true) {
+            gameManager.playGame();
+            String checkRegame = inputManager.askRegame();
+            if (checkRegame.equals(Constants.REGAME)) {
+                break;
+            }
+        }
     }
 }
