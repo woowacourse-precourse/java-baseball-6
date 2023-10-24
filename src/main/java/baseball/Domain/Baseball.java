@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 public class Baseball {
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Baseball(List<Integer> numbers) {
         validateSize(numbers); validateZero(numbers);
@@ -26,22 +26,15 @@ public class Baseball {
         return new BaseballScore(ball, strike);
     }
 
-    @FunctionalInterface
-    private interface Checker {
-        boolean check(int numbers, int index);
-    }
-
     private int countBall(Baseball baseball) {
-        return count(baseball::isBall);
+        return (int) IntStream.range(0, 3)
+                .filter(i -> baseball.isBall(numbers.get(i), i))
+                .count();
     }
 
     private int countStrike(Baseball baseball) {
-        return count(baseball::isStrike);
-    }
-
-    private int count(Checker checker) {
         return (int) IntStream.range(0, 3)
-                .filter(i -> checker.check(numbers.get(i), i))
+                .filter(i -> baseball.isStrike(numbers.get(i), i))
                 .count();
     }
 
