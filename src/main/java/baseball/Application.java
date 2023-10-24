@@ -8,8 +8,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import baseball.utils.ValidationUtils;
 
-import baseball.utils.NumberListGenerator;
-
 public class Application {
 
     public static void main(String[] args) {
@@ -26,17 +24,15 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         ValidationUtils.validateOneOrTwo(input);
-        if(input.equals("1")){
+        if (input.equals("1")) {
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 
 
-
     private static void newGame() {
-        List<Integer> computer = NumberListGenerator.generateUnique3DigitNum();
+        List<Integer> computer = generateUnique3DigitNum();
         playGame(computer);
     }
 
@@ -67,7 +63,7 @@ public class Application {
     private static int countStrike(List<Integer> computer, List<Integer> user) {
         int count = 0;
         for (int i = 0; i < user.size(); i++) {
-            if (computer.get(i) == user.get(i)) {
+            if (computer.get(i).equals(user.get(i))) {
                 count++;
             }
         }
@@ -78,7 +74,7 @@ public class Application {
         int count = 0;
         for (int i = 0; i < computer.size(); i++) {
             for (int j = 0; j < user.size(); j++) {
-                if (i != j && computer.get(i) == user.get(j)) {
+                if (i != j && computer.get(i).equals(user.get(j))) {
                     count++;
                 }
             }
@@ -96,5 +92,20 @@ public class Application {
         }
         return list;
     }
+
+
+
+    private static List<Integer> generateUnique3DigitNum() {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!list.contains(randomNumber)) {
+                list.add(randomNumber);
+            }
+        }
+        return list;
+    }
+
+
 
 }
