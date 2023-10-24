@@ -120,8 +120,6 @@ class ApplicationTest extends NsTest {
         return clientNumbers;
     }
 
-
-
     private ClientNumbers provideClientNumbersPartlySameComputerNumbers(ComputerNumbers computerNumbers) {
         List<Integer> numbers = computerNumbers.getNumbers();
         StringBuilder sb = new StringBuilder();
@@ -132,7 +130,6 @@ class ApplicationTest extends NsTest {
 
         return clientNumbers;
     }
-
 
     /**
      * 예외 테스트
