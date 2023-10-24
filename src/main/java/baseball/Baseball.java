@@ -21,7 +21,7 @@ public class Baseball {
         List<Integer> computer = getComputerNum();
 
         /* --- 유저 입력값 받기 --- */
-        while (score.strikeCount() < 4){
+        while (score.strikeCount() < 3){
             /* --- 유저 입력값 확인 --- */
             List<Integer> user = getUserNum();
 
