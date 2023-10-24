@@ -23,6 +23,7 @@ public class Application {
             while (!isSucceed) {
                 System.out.print("숫자를 입력해주세요 : ");
                 inputNumber = Console.readLine();
+                isValidInteger();
                 isThreeDigitNumber();
                 printAnswerHint();
                 isSucceed();
@@ -48,6 +49,15 @@ public class Application {
     public static void isThreeDigitNumber() {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isValidInteger() {
+        for(int i = 0; i < inputNumber.length(); i++) {
+            char ch = inputNumber.charAt(i);
+            if (!Character.isDigit(ch)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
