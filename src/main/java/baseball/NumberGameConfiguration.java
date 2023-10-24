@@ -9,6 +9,18 @@ public class NumberGameConfiguration {
     private NumberGameConfiguration() {
     }
 
+    public int getMinimumNumberOfRange() {
+        return minimumNumberOfRange;
+    }
+
+    public int getMaximumNumberOfRange() {
+        return maximumNumberOfRange;
+    }
+
+    public int getNumberOfDigits() {
+        return numberOfDigits;
+    }
+
     public static class Builder {
         private NumberGameConfiguration configuration;
 
