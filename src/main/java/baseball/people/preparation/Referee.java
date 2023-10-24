@@ -16,11 +16,10 @@ public class Referee {
     }
 
     /**
-     * 3 자리 정수 배열이 들어왔을 때,
-     * 볼과 스트라이크의 개수를 계산해서
-     * 스트라이크의 개수가 3개인지 여부를 반환한다.
-     * 반환 전에 declare 메서드를 호출해서
-     * 볼과 스트라이크의 개수를 출력한다.
+     * 주어진 3자리 정수 배열이 3스트라이크인지 판별하는 메서드
+     * 값을 반환하기 전에 볼과 스트라이크의 개수를 출력한다.
+     * @param numbers 3자리 정수 배열
+     * @return 3스트라이크면 true, 그렇지 않으면 false
      */
     public boolean strikeOut(int[] numbers) {
         int ball = 0, strike = 0;
