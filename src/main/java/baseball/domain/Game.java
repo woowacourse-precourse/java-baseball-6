@@ -24,9 +24,9 @@ public class Game {
         return balls;
     }
 
-//    public List<Integer> getComputerNumbers() {
-//        return computer.getAnswer(); // Computer 객체의 숫자를 가져옴
-//    }
+    public List<Integer> getComputerNumbers() {
+        return computer.getAnswer(); // Computer 객체의 숫자를 가져옴
+    }
 
     // 게임의 결과를 업데이트하는 메서드
     public void updateGameResult(int[] userNumbers) {
@@ -39,14 +39,16 @@ public class Game {
         int[] result = new int[2];
         List<Integer> computerNumbers = computer.getAnswer(); // Computer 객체에서 숫자 가져옴
 
-        if (computerNumbers == null || computerNumbers.size() != 3) {
+        if (computerNumbers == null || computerNumbers.size() != 3 || userNumbers.length != 3) {
             throw new IllegalArgumentException("컴퓨터 숫자가 유효하지 않습니다.");
         }
         for (int i = 0; i < 3; i++) {
-            if (userNumbers[i] == computerNumbers.get(i)) {
-                result[0]++; // 스트라이크
-            } else if (computerNumbers.contains(userNumbers[i])) {
-                result[1]++; // 볼
+            if (i < userNumbers.length) {
+                if (userNumbers[i] == computerNumbers.get(i)) {
+                    result[0]++; // 스트라이크
+                } else if (computerNumbers.contains(userNumbers[i])) {
+                    result[1]++; // 볼
+                }
             }
         }
         return result;
@@ -65,5 +67,4 @@ public class Game {
 
 
 }
-
 
