@@ -18,9 +18,9 @@ public class GameView {
 
     public void printBallStrikeMessage(List<Integer> ballStrikeCount) {
         if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) == 0) {
-            System.out.print(ballStrikeCount.get(BALL) + "볼 ");
-        } else if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) != 0) {
             System.out.println(ballStrikeCount.get(BALL) + "볼");
+        } else if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) != 0) {
+            System.out.print(ballStrikeCount.get(BALL) + "볼 ");
         }
 
         if (ballStrikeCount.get(STRIKE) != 0) {
