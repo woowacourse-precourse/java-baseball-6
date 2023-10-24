@@ -27,4 +27,20 @@ public class Result {
     public boolean isCorrect() {
         return strike == NUMBER_LENGTH;
     }
+
+    public void print() {
+        if (isNothing()) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if (getBall() != 0) {
+            sb.append(getBall() + "볼 ");
+        }
+        if (getStrike() != 0) {
+            sb.append(getStrike() + "스트라이크");
+        }
+        System.out.println(sb);
+    }
 }

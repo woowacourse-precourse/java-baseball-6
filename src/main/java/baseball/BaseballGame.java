@@ -35,7 +35,7 @@ public class BaseballGame {
         do {
             List<Integer> userNumber = setUserNumber();
             result = compareNumber(computerNumber, userNumber);
-            printResult(result);
+            result.print();
         } while (!result.isCorrect());
     }
 
@@ -78,21 +78,6 @@ public class BaseballGame {
         }
 
         return new Result(ball, strike);
-    }
-
-    private void printResult(Result result) {
-        if (result.isNothing()) {
-            System.out.print("낫싱");
-        }
-
-        StringBuilder sb = new StringBuilder();
-        if (result.getBall() != 0) {
-            sb.append(result.getBall() + "볼 ");
-        }
-        if (result.getStrike() != 0) {
-            sb.append(result.getStrike() + "스트라이크");
-        }
-        System.out.println(sb);
     }
 
     public static boolean checkGameEnd() {

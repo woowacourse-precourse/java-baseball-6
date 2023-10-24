@@ -22,9 +22,6 @@
     - 컴퓨터의 숫자와 사용자 숫자를 비교하는 메서드
     - 같은 숫자가 있을 때 자리도 같으면 스트라이크 개수 증가, 자리가 다르면 볼 개수 증가
     - 스트라이크 개수와 볼 개수가 담긴 **_Result_** 객체 반환
-- void printResult(Result)
-    - result에 들어있는 ball, strike 개수를 요구사항에 맞춰 출력
-    - StringBuilder 사용
 - boolean checkGameEnd()
     - 숫자 야구 한판이 끝난 후 재시작할지 종료할지 판단하는 메서드
     - **_InputChecker_** 를 이용해 사용자 입력 검사
@@ -51,3 +48,6 @@
 - ball, strike 변수를 위한 DTO
 - boolean isNothing(): 스트라이크, 볼 둘 다 0이면 true 반환
 - boolean isCorrect(): 3스트라이크(정답)이면 true 반환
+- void print()
+    - result에 들어있는 ball, strike 개수를 요구사항에 맞춰 출력
+    - StringBuilder 사용
