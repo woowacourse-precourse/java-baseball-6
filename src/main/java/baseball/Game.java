@@ -9,7 +9,7 @@ public class Game {
 
     public void start() {
         //게임 시작 멘트 출력
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constants.startState);
         //컴퓨터 객체에게 난수 생성
         computer.makeNumber();
         // <-- 정답 맞출때까지 반복 -->
@@ -19,8 +19,8 @@ public class Game {
                 String result = computer.makeResult(
                         changeInputStringToNumberList(input));//문제 없으면 컴퓨터 객체에게 입력값에 대해서 결과값 검증
                 System.out.println(result);//결과값 출력
-                if (result.equals("3스트라이크")) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (result.equals(Constants.gameClearState)) {
+                    System.out.println(Constants.endState);
                     end();//만약 결과값 맞다 -> end 호출
                     break;
                 }
@@ -31,7 +31,7 @@ public class Game {
     }
 
     public Boolean checkGameInput(String input) {
-        if (input.length() != 3) {
+        if (input.length() != Constants.gameInputLength) {
             return false;
         }
         for (int i = 0; i < input.length(); i++) {
@@ -45,7 +45,7 @@ public class Game {
     }
 
     public Boolean checkRestartInput(String input) {
-        if (input.length() != 1) {
+        if (input.length() != Constants.gameRestartInputLength) {
             return false;
         }
         try {
@@ -69,13 +69,13 @@ public class Game {
     }
 
     public void end() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");//재시작할지 여부 묻기
+        System.out.println(Constants.restartState);//재시작할지 여부 묻기
         String input = player.getInput();//사용자 객체에게 입력 받기
         if (checkRestartInput(input)) {//입력 검증 -> checkInput()
             int numInput = changeInputStringToNumber(input);//1 받았으면 start() 재호출, 2 받았으면 그대로 종료
-            if (numInput == 1) {
+            if (numInput == Constants.gameRestartNumber) {
                 start();
-            } else if (numInput == 2) {
+            } else if (numInput == Constants.gameEndNumber) {
                 return;//게임 종료
             }
         } else {

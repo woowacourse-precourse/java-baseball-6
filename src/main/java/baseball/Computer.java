@@ -9,8 +9,8 @@ public class Computer {
 
     public void makeNumber() {
         number = new ArrayList<>();
-        while (number.size() < 3) {
-            int tmp = Randoms.pickNumberInRange(1, 9);
+        while (number.size() < Constants.gameInputLength) {
+            int tmp = Randoms.pickNumberInRange(Constants.gameNumberRangeMin, Constants.gameNumberRangeMax);
             if (!number.contains(tmp)) {
                 number.add(tmp);
             }
@@ -20,7 +20,7 @@ public class Computer {
     public String makeResult(List<Integer> predictedNumbers) {
         int ball = 0;
         int strike = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < predictedNumbers.size(); i++) {
             if (accurateCheckPredictedValue(predictedNumbers.get(i), number.get(i))) {
                 strike += 1;
             } else if (checkPredictedValue(predictedNumbers.get(i))) {
@@ -33,13 +33,16 @@ public class Computer {
     private String makeResultState(int ball, int strike) {
         String result = "";
         if (ball != 0) {
-            result += ball + "볼 ";
+            result += ball + Constants.ballState;
         }
         if (strike != 0) {
-            result += strike + "스트라이크";
+            if (ball != 0) {
+                result += " ";
+            }
+            result += strike + Constants.strikeState;
         }
         if (result.length() == 0) {
-            result = "낫싱";
+            result = Constants.nothingState;
         }
         return result;
     }
