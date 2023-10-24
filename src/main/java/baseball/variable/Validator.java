@@ -9,7 +9,7 @@ public class Validator {
     private static final String INCLUE_ZERO = "1 ~ 9 사이의 값을 입력해주세요. 0은 입력할 수 없습니다.";
     private static final String DUPLICATE = "중복된 숫자는 입력할 수 없습니다.";
 
-    public void isValid(List number) {
+    public void isValid(List<Integer> number) {
         if (!isThreeNumbers(number)) {
             throw new IllegalArgumentException(NOT_THREE);
         }
@@ -21,15 +21,15 @@ public class Validator {
         }
     }
 
-    private boolean isThreeNumbers(List number) {
+    private boolean isThreeNumbers(List<Integer> number) {
         return number.size() <= 3;
     }
 
-    private boolean isZeroInclue(List number) {
+    private boolean isZeroInclude(List<Integer> number) {
         return number.contains(0);
     }
 
-    private boolean isDuplicate(List number) {
+    private boolean isDuplicate(List<Integer> number) {
         Set<Integer> numSet = new HashSet<>(number);
         return numSet.size() != number.size();
     }
