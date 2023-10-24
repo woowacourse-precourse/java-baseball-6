@@ -1,0 +1,17 @@
+## TODOS
+- [x] java version 확인
+- [x] 코드컨벤션 검토 및 제공된 xml 적용
+- [x] 기초 설계 구상
+- [x] GoalValue 및 Test 구현
+  - [x] create 및 validate 구현
+  - [x] createRandom 구현
+  - [x] equals 구현
+- [x] CompareResult 구현
+  - [x] toString 구현
+  - [x] GoalValue.compare() 구현
+  - [x] equals 구현
+- [x] GoalValue 리팩토링
+  - [x] UniqueNumberString 으로 변경
+  - [x] RuleSet 도입 
+- [x] Shell 구현
+- [x] main() 구현
