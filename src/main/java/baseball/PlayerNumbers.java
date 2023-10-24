@@ -6,7 +6,7 @@ public class PlayerNumbers{
 
     List<Integer> playerNumbers;
 
-    PlayerNumbers (List<Integer> playerNumbers){
+    PlayerNumbers(List<Integer> playerNumbers){
         throwIfInvalidLength(playerNumbers);
         throwIfDuplicated(playerNumbers);
         throwIfNotInRange(playerNumbers);
@@ -41,14 +41,14 @@ public class PlayerNumbers{
     }
 
     private void throwIfNotInRange(List<Integer> playerNumbers){
-        if(isNotInRange(playerNumbers)){
+        if (isNotInRange(playerNumbers)){
             throw new IllegalArgumentException("Player numbers not in range : Player numbers should be between 1 and 9.");
         }
     }
 
     private boolean isNotInRange(List<Integer> playerNumbers){
         for (Integer number : playerNumbers){
-            if(number<1||number>9){
+            if (number < 1 || number > 9){
                 return true;
             }
         }

@@ -12,7 +12,7 @@ public class GameManager{
     void playGame(ComputerNumbers computerNumber){
         while (true){
             PlayerNumbers playerNumber = new PlayerNumbers(input());
-            Result result = judge.getResult(computerNumber,playerNumber);
+            Result result = judge.getResult(computerNumber, playerNumber);
             result.printResult();
             if (result.isAllStrike()){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -38,7 +38,7 @@ public class GameManager{
     }
 
     private void throwIfNotNumericValue(char c){
-        if(c-'0'<0||c-'0'>9){
+        if (c - '0' < 0 || c - '0' > 9){
             throw new IllegalArgumentException("Invalid number input : Number input should be a numeric value");
         }
     }

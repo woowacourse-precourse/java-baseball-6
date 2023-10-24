@@ -7,7 +7,7 @@ public class Judge{
     public Result getResult(ComputerNumbers computerNumber, PlayerNumbers playerNumber){
         int strike = countStrike(computerNumber, playerNumber);
         int ball = countBall(computerNumber, playerNumber, strike);
-        return new Result(ball,strike);
+        return new Result(ball, strike);
     }
 
     private int countStrike(ComputerNumbers computerNumber, PlayerNumbers playerNumbers){
