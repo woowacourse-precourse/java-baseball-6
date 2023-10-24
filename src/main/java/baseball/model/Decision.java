@@ -8,15 +8,29 @@ public class Decision {
     private static final int BASEBALL_SIZE = 3;
 
     public String decide(BaseballNumber offense, BaseballNumber defense) {
-        int strike = 0, ball = 0;
+        int strike = countStrike(offense, defense);
+        int ball = countBall(offense, defense, strike);
+        return convert(strike, ball);
+    }
+
+    private int countStrike(BaseballNumber offense, BaseballNumber defense) {
+        int strike  = 0;
         for (int position = 0; position < BASEBALL_SIZE; position++) {
             if (offense.getPosition(position) == defense.getPosition(position)) {
                 strike += 1;
-                continue;
             }
-            ball += 1;
         }
-        return convert(strike, ball);
+        return strike;
+    }
+
+    private int countBall(BaseballNumber offense, BaseballNumber defense, int strike) {
+        int totalSame = 0;
+        for (int position = 0; position < BASEBALL_SIZE; position++) {
+            if (defense.contain(offense.getPosition(position))) {
+                totalSame += 1;
+            }
+        }
+        return totalSame - strike;
     }
 
     private String convert(int strike, int ball) {

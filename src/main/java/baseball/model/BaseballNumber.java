@@ -29,4 +29,8 @@ public class BaseballNumber {
     public int getPosition(int pos) {
         return numbers.get(pos);
     }
+
+    public boolean contain(int number) {
+        return numbers.contains(number);
+    }
 }
