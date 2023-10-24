@@ -11,4 +11,10 @@ public class InputView {
         return input;
     }
 
+    //게임 재시작 여부 입력받기
+    public static String restart(){
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
+
 }
