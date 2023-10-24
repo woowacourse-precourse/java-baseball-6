@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.platform.commons.util.StringUtils;
-
 public class Exception {
 
 	public List<Integer> InputException(String input) {
