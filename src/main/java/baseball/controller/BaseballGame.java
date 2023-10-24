@@ -57,7 +57,7 @@ public class BaseballGame {
         do {
             getNumbersFromPlayer();
             printHint(getCompareResult());
-        } while (isContinue());
+        } while (!isFinish());
         OutputView.printGameClear();
         getRestartOptionFromPlayer();
     }
@@ -108,8 +108,8 @@ public class BaseballGame {
         }
     }
 
-    private boolean isContinue() {
-        return !numberComparator.isCorrect();
+    private boolean isFinish() {
+        return numberComparator.isCorrect();
     }
 
     private void getRestartOptionFromPlayer() {
