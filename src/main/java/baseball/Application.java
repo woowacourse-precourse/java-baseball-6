@@ -142,12 +142,7 @@ public class Application {
                     for (int i = 0; i < 3; i++) {
                         computer.set(i, 0);
                     }
-                    for (int i = 0; i < 3; i++) {
-                        int randomNumber = Randoms.pickNumberInRange(1, 9);
-                        if (!computer.contains(randomNumber)) {
-                            computer.set(i, randomNumber);
-                        }
-                    }
+                    makeThreeNumbers();
                 }
                 if (isEnd == 2) {
                     break;
