@@ -12,6 +12,11 @@ public class Application {
     private final static int NUMBER_COUNT = 3;
 
     public static void main(String[] args) {
+        while(true) {
+            if(startGame() == GameState.EXIT) {
+                break;
+            }
+        }
     }
 
     public static GameState startGame() {
