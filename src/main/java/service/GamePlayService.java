@@ -23,6 +23,7 @@ public class GamePlayService {
     private final ValidationCheck validationCheck = new ValidationCheck();
     private final GameNumberCheckService gameNumberCheckService = new GameNumberCheckService();
     private final GameScoreView gameScoreView = new GameScoreView();
+    private final GameFlowManagementService gameFlowManagementService = new GameFlowManagementService();
 
     private List<Integer> countStrikeBall = new ArrayList<>();
     private List<Integer> countStrikeBallList = new ArrayList<>();
@@ -53,6 +54,7 @@ public class GamePlayService {
         // 7. 3 스트라이크 발생시 게임 종료. 재시작 여부 확인
         if (countStrikeBall.get(STRIKE_COUNT_INDEX) == STRIKE_COUNT_THREE) {
             gameScoreView.completeThreeStrikeScore();
+            gameFlowManagementService.nextGameFlow(computer);
         }
 
     }
