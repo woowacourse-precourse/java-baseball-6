@@ -122,7 +122,6 @@ public class Application {
                                 if (choice == 1) {
                                     Application.game();
                                 } else {
-                                    System.out.println("종료");
                                     break;
                                 }
                             } catch (NumberFormatException ex4) {
