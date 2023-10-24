@@ -52,6 +52,10 @@ public class Application {
         int choose = validateNumber(playerChoose);
 
         validateValue(choose);
+
+        if (choose == 1) {
+            main(new String[]{});
+        }
     }
 
     static List<Integer> makeNumbers () {
