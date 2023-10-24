@@ -65,4 +65,60 @@ public class PlayerTest {
 
         assertThat(result).isEqualTo(prediction);
     }
+
+    @Test
+    void inputWhetherOfGamePlay_재시작_테스트() {
+
+        Player player = new Player();
+
+        systemIn("1\n");
+
+        int result = player.inputWhetherOfGamePlay();
+        int prediction = 1;
+
+        assertThat(result).isEqualTo(prediction);
+
+    }
+
+    @Test
+    void inputWhetherOfGamePlay_게임종료_테스트() {
+
+        Player player = new Player();
+
+        systemIn("2\n");
+
+        int result = player.inputWhetherOfGamePlay();
+        int prediction = 2;
+
+        assertThat(result).isEqualTo(prediction);
+
+    }
+
+    @Test
+    void inputWhetherOfGamePlay_길이제한_예외_테스트() {
+
+        Player player = new Player();
+
+        systemIn("13\n");
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> player.inputWhetherOfGamePlay())
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+    }
+
+    @Test
+    void inputWhetherOfGamePlay_잘못된입력_예외_테스트() {
+
+        Player player = new Player();
+
+        systemIn("A\n");
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> player.inputWhetherOfGamePlay())
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+    }
 }
