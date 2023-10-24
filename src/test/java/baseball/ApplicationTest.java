@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -51,6 +52,45 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             run();
             assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
+        });
+    }
+
+    @Test
+    void 사용자_입력_테스트() {
+        assertSimpleTest(() -> {
+            run("123");
+            assertThat(output()).contains("숫자를 입력하세요.");
+        });
+    }
+
+    @Test
+        // error handling for sizecheck
+    void 사용자_숫자_입력_테스트() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("1234");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("12");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("1");
+        });
+    }
+
+    @Test
+        // error handling for numbercheck
+    void 사용자_숫자_입력_테스트2() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("111");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("112");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("311");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            runException("121");
         });
     }
 

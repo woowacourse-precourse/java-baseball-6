@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.ComputerNumberGenerator;
+import baseball.UserNumberInput;
 import java.util.List;
 
 public class GameController {
@@ -17,5 +18,9 @@ public class GameController {
     public void run() {
         List<Integer> ComputerNumber = ComputerNumberGenerator.generate();
         System.out.println(ComputerNumber);
+
+        System.out.print(INPUT_MESSAGE);
+        List<Integer> UserNumber = UserNumberInput.input();
+        System.out.println(UserNumber);
     }
 }
