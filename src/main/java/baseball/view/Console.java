@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static baseball.util.GameResultMessageGenerator.*;
 import static baseball.util.ConsoleMessages.*;
@@ -31,11 +32,18 @@ public class Console {
     }
 
     private static String readLine() {
-        String inputString = camp.nextstep.edu.missionutils.Console.readLine();
-        validateInputNotNull(inputString);
-        validateInputIsNumber(inputString);
+        try {
+            String inputString = camp.nextstep.edu.missionutils.Console.readLine();
 
-        return inputString;
+            validateInputNotNull(inputString);
+            validateInputNotBlank(inputString);
+            validateInputIsNumber(inputString);
+
+            return inputString;
+        } catch (NoSuchElementException e) {
+            throw ILLEGAL_ARGUMENT_EXCEPTION;
+        }
+
     }
 
     public static List<Integer> input3DigitNumber() {
@@ -60,6 +68,12 @@ public class Console {
 
     private static void validateInputNotNull(String inputString) {
         if (inputString == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateInputNotBlank(String inputString) {
+        if (inputString.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
