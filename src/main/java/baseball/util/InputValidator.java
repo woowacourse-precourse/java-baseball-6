@@ -8,7 +8,6 @@ public class InputValidator {
     private static final String NUMBER_FORMAT = "\\d+";
     private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 올바른 숫자를 입력해주세요.";
     private static final String NUMBER_COUNT_EXCEPTION_MESSAGE = "[ERROR] 3자리의 숫자를 입력해주세요.";
-    private static final String RETRY_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 1 또는 2로 입력해야합니다.";
 
     public static void validateBalls(String rawBalls) {
         if (!isNumber(rawBalls)) {
@@ -28,15 +27,5 @@ public class InputValidator {
 
     private static boolean hasThreeDigits(List<Integer> ballList) {
         return ballList.size() == BALL_COUNT;
-    }
-
-    public static void validateRetry(String rawRetry) {
-        if (!isRetryForm(rawRetry)) {
-            throw new IllegalArgumentException(RETRY_FORMAT_EXCEPTION_MESSAGE);
-        }
-    }
-
-    private static boolean isRetryForm(String rawRetry) {
-        return rawRetry.equals("1") || rawRetry.equals("2");
     }
 }

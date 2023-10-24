@@ -20,14 +20,4 @@ public class InputConvertor {
         }
         return ballList;
     }
-
-    public static Retry converRetry(String rawRetry) {
-        if (rawRetry.equals(RETRY_INPUT_NUMBER)) {
-            return Retry.RETRY;
-        }
-        if (rawRetry.equals(END_INPUT_NUMBER)) {
-            return Retry.END;
-        }
-        throw new IllegalArgumentException(RETRY_FORMAT_EXCEPTION_MESSAGE);
-    }
 }
