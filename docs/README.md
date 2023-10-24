@@ -43,19 +43,21 @@
 
 ---
 
+
+<br></br>
+<br></br>
+
 # ***RandomNumber* 구현**
 
-<aside>
+
 📌 난수를 저장하는 자료구조로 정수형, 문자열, 해시테이블 세 가지를 시도한 결과 **해시테이블**로 결정
 
-</aside>
 
 
 
 
 
-
-
+<br></br>
 ### 1️⃣ 정수형 세 자리 난수
 <details>
 <summary>난수 생성 과정 예시</summary>
@@ -230,14 +232,14 @@ public String generateRandomNumber(){
 
 ball, strike, 또는 nothing을 반환해주는 method를 구현했다.
 
+<br></br>
 # *Player* **구현**
 
-<aside>
-📌 플레이어의 행동은 두 가지 ‘**중첩되지 않은 세 자리 숫자 입력**’
 
+📌 플레이어의 행동은 두 가지 ‘**중첩되지 않은 세 자리 숫자 입력**’
 또는 ‘**재시작과 종료 제어 숫자 입력**’ 이다.
 
-</aside>
+<br></br>
 
 ## 중첩되지 않은 세 자리 숫자 입력
 
@@ -255,13 +257,13 @@ ball, strike, 또는 nothing을 반환해주는 method를 구현했다.
 > ***IllegalArgumentException***을 발생시키고 프로그램 종료
 >
 
-설계 초기에는 사용자 입력 전달하기 위해 ***ArrayList<Integer>***를 반환.
+설계 초기에는 사용자 입력 전달하기 위해 <strong><em>ArrayList&lt;Integer&gt;</em></strong>를 반환.
 
-그러나, 요구사항이 바뀌어 ***ArrayList***가 아닌 ******다른 자료구조로 변경될 수도 있다고 가정.
+그러나, 요구사항이 바뀌어 ***ArrayList***가 아닌 다른 자료구조로 변경될 수도 있다고 가정.
 
 이러한 구현 변경이 다른 클래스에도 전달될 수 있다고 판단해,
 
-두 개의 getter( ***getInputCount***, *******getNumberAt*** )를 두어 사용자 입력에 접근할 수 있도록 설계.
+두 개의 getter( ***getInputCount***, ***getNumberAt*** )를 두어 사용자 입력에 접근할 수 있도록 설계.
 
 ## 재시작과 종료 제어 숫자 입력
 
@@ -290,10 +292,10 @@ method를 사용하는 측의 처리 로직도 변경되어야 한다.
 
 
 
-<aside>
+
 ❗ **각 클래스에 너무 많은 기능이 담겨있어 다른 방식으로 분류할 필요성 인지**
 
-</aside>
+
 
 ---
 
@@ -334,19 +336,20 @@ method를 사용하는 측의 처리 로직도 변경되어야 한다.
 ![Untitled](./images/classDiagram2.png)
 </details>
 
-  
 
 
 
+<br></br>
 
 ## 관심사 분리 ( MVC Pattern )
 
-<aside>
-📌 첫 번째 시도에서 각 클래스의 여러 기능이 혼재된 근본 원인을 **관심사 분리의 실패**로 판단
 
+📌 첫 번째 시도에서 각 클래스의 여러 기능이 혼재된 근본 원인을 **관심사 분리의 실패**로 판단
 수업 시간에 배운 **MVC 패턴**에 따라 모델, 뷰, 컨트롤로 나누는 것으로 시작
 
-</aside>
+
+<br></br>
+
 
 ![Untitled](./images/MVC1.png)
 
@@ -365,6 +368,8 @@ method를 사용하는 측의 처리 로직도 변경되어야 한다.
 - 뷰에서 입력 문자열 예외처리, 가공 후 모델에 전달
 - 모델에서 처리된 데이터를 뷰에 전달
 
+<br></br>
+<br></br>
 ## 더 작은 구성요소로 분리 ( SRP )
 
 <aside>
@@ -415,13 +420,14 @@ Validator와 StringProcessor 두 개의 클래스로 나누는 것보다
 
 ![Untitled](./images/MVC3.png)
 
+<br></br>
+<br></br>
 ## Program to an Interface ( DIP )
 
-<aside>
+
 📌  ❓ 근데 플레이어 입력의 종류(***PlayerGuess, RoundEndAction***)는 두 개잖아❓
 
-</aside>
-
+<br></br>
 ![Untitled](./images/MVC4.png)
 
 두 종류의 플레이어 입력에 따른 두 종류의 Handler 클래스가 필요하며,
@@ -437,7 +443,7 @@ Validator와 StringProcessor 두 개의 클래스로 나누는 것보다
 1. **컨트롤러**의 높은 의존성 해결
 2. Handler 클래스의 추가 및 변경에 유연하게 대응( OCP )
 
-### How Did you Solve Those Problems?
+### How to?
 
 Handler 클래스가 제공해야 하는 기능을 인터페이스로 추상화하고
 
@@ -448,6 +454,8 @@ Handler 클래스가 제공해야 하는 기능을 인터페이스로 추상화�
 
 ![Untitled](./images/MVC5.png)
 
+<br></br>
+<br></br>
 ## 심볼의 상수화
 
 <aside>
@@ -459,8 +467,8 @@ Handler 클래스가 제공해야 하는 기능을 인터페이스로 추상화�
 2. ***RoundEndAction***: {  CONTINUE(”1”), QUIT(”2”) }
 3. ***GameSettings***: 여러 클래스에서 두루 쓰이는 상수의 모음
     1. *`NUM_DIGITS`* : RandomNumber와 PlayerGuess의 자릿수
-    2.  ***`MIN_RANDOM_NUMBER`* , *`MAX_RANDOM_NUMBER`* : RandomNumber의 각 자릿수의 범위
-    3. *`MIN_INPUT_CHARACTER`* , ***`MAX_INPUT_CHARACTER`*: PlayerGuess의 각 자릿수의 범위
+    2.  *`MIN_RANDOM_NUMBER`* , *`MAX_RANDOM_NUMBER`* : RandomNumber의 각 자릿수의 범위
+    3. *`MIN_INPUT_CHARACTER`* , *`MAX_INPUT_CHARACTER`*: PlayerGuess의 각 자릿수의 범위
 
 ### 상수화의 장점
 
@@ -473,6 +481,8 @@ Handler 클래스가 제공해야 하는 기능을 인터페이스로 추상화�
     - 자릿수가 세 자리에서 네 자리로 변경된다면, *`NUM_DIGITS`*의 값을 3에서 4로 수정해주면 된다.
     - 그러나, 상수를 사용하지 않고 ‘3’이라는 값으로 하드코딩이 되어있다면 프로그래머는 자릿수가 등장하는 모든 부분을 4로 수정해야 한다.
 
+<br></br>
+<br></br>
 ## 자료구조 선택 이유
 
 ### RandomNumber: ***HashTable***
@@ -481,18 +491,23 @@ Handler 클래스가 제공해야 하는 기능을 인터페이스로 추상화�
 
 1. 난수 생성 시, 반복문 없이 중복 체크
 2. PlayerGuess와 비교할 때 이중 반복문을 사용하지 않아도 된다
-    - 예시
-        1. strike
+    <details>
+    <summary>예시</summary>
+    
+    1. strike
+    
+       ![Untitled](./images/RandomNumber_hash_usuage_exam1-1.png)
+    
+       2. ball
+    
+          ![Untitled](./images/RandomNumber_hash_usuage_exam1-2.png)
+    
+       3. Neither
+    
+          ![Untitled](./images/RandomNumber_hash_usuage_exam1-3.png)
 
-           ![Untitled](./images/RandomNumber_hash_usuage_exam1-1.png)
-
-        2. ball
-
-           ![Untitled](./images/RandomNumber_hash_usuage_exam1-2.png)
-
-        3. Neither
-
-           ![Untitled](./images/RandomNumber_hash_usuage_exam1-3.png)
+</details>
+        
 
 
 ### PlayerGuessNumberList: ***ArrayList***
@@ -500,7 +515,8 @@ Handler 클래스가 제공해야 하는 기능을 인터페이스로 추상화�
 1. 순서가 있는 자료구조
 2. 데이터의 중간 삽입과 삭제가 없음
 3. Iterator를 반환함으로써 구현을 감추고 데이터 전달 가능 → 구현 변경 시 파급 최소화
-
+   <br></br>
+   <br></br>
 ## 동작 과정
 
 1. 모델: RandomNumber(***Hashtable***) 생성
