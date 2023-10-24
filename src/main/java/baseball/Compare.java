@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Compare {
@@ -29,13 +30,22 @@ public class Compare {
     public String CountResult(List<Integer> player, List<Integer> computer) {
         strike = CountStrike(player,computer);
         ball = CountBall(player,computer);
+        List<String> result = new ArrayList<>();
+
         if (strike == 0 && ball == 0) {
             return "낫싱";
-        } else if (strike==0) {
-            return ball+"볼";
-        } else if (ball==0) {
-            return strike+"스트라이크";
         }
-        return ball+"볼 "+strike+"스트라이크";
+
+        if (ball != 0) {
+            result.add(Integer.toString(ball));
+            result.add("볼 ");
+        }
+
+        if (strike != 0) {
+            result.add(Integer.toString(strike));
+            result.add("스트라이크");
+        }
+
+        return String.join("",result);
     }
 }
