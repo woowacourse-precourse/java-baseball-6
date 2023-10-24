@@ -2,8 +2,10 @@ package study;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import baseball.constant.MessageConstant;
+import baseball.utils.Utils;
 import baseball.utils.Validator;
 import java.util.ArrayList;
 import java.util.List;
@@ -161,5 +163,21 @@ public class StudyTest {
                 validator.validateRestartOrExitNumber(playerInput3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(MessageConstant.INVALID_CHOICE_EXCEPTION_MSG);
+    }
+
+    @DisplayName("문자열을 정수형 리스트로 변환 테스트")
+    @Test
+    void 문자열을_정수형_리스토로_변환() {
+        //given
+        String input1 = "123";
+        String input2 = "456";
+
+        //when
+        List<Integer> result1 = Utils.convertStringToIntList(input1);
+        List<Integer> result2 = Utils.convertStringToIntList(input2);
+
+        //then
+        assertThat(result1).isEqualTo(List.of(1, 2, 3));
+        assertThat(result2).isEqualTo(List.of(4, 5, 6));
     }
 }
