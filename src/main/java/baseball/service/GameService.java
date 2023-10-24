@@ -11,26 +11,46 @@ public class GameService {
 
     public GameService(Game game) {
         this.game = game;
+
     }
 
     public void startNewGame() {
         game.resetGame();
+
     }
 
-    public void playGame(String userInput) {
+    public String playGame(String userInput) {
         int[] userNumbers = parseUserInput(userInput);
-
         game.updateGameResult(userNumbers);
-
-        if (game.isWin()) {
-            OutputView.printGameResult(3, 0); // 3스트라이크 출력
-        } else {
-            int strikes = game.getStrikes();
-            int balls = game.getBalls();
-            OutputView.printGameResult(strikes, balls);
+        if (userNumbers == null) {
+            return "유효하지 않은 입력입니다. 3자리 숫자를 입력하세요.";
         }
 
+        int strikes = game.getStrikes();
+        int balls = game.getBalls();
+
+
+        if (strikes == 3 && balls == 0) {
+            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+
+        StringBuilder resultMessage = new StringBuilder();
+
+        if (strikes > 0) {
+            resultMessage.append(strikes+"스트라이크");
+        }
+
+        if (balls > 0) {
+            resultMessage.append(balls+"볼 ");
+        }
+
+        if (resultMessage.length() == 0) {
+            resultMessage.append("낫싱");
+        }
+
+        return resultMessage.toString();
     }
+
     // 사용자 입력 문자열을 파싱하여 숫자 배열로 변환
     private int[] parseUserInput(String userInput) {
         int[] userNumbers = new int[3];
