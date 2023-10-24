@@ -1,7 +1,7 @@
 package baseball.baseballGamePlay;
 
 
-import static baseball.print.OutputMessage.getGameStatusInput;
+import static baseball.print.InputMessage.getGameStatusInput;
 import static baseball.print.OutputMessage.printMessageStartBaseballGame;
 
 import baseball.baseballNumber.RamdomNumber;

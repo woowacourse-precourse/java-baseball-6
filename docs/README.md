@@ -1,33 +1,51 @@
-기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
-
-- 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
-    - 예) 상대방(컴퓨터)의 수가 425일 때
-        - 123을 제시한 경우 : 1스트라이크
-        - 456을 제시한 경우 : 1볼 1스트라이크
-        - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
-  숫자에 대한
-  결과를 출력한다.
-- 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
-- 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-
 # 기능 목록
 
 ---
 
 ## GamePlay
 
-- `baseballGamePlay()` 함수는 야구 게임을 진행하는 주요 함수입니다.
-- `printMessageStartBaseballGame()` 를 사용하여 야구 게임이 시작되었다는 메시지를 출력합니다.
-- `gameCount` 를 0으로 초기화를 합니다.
-- while 루프가 실행되며, `gameCount` 변수값이 2에 도달할 때까지 계속 실행됩니다.
-    - `baseballNumber` 야구 게임의 컴퓨터가 지정한 랜덤값을 저장하는 변수입니다.
-    - `gameHint.baseballGameHint(baseballNumber)` 사용자가 숫자를 입력하여 컴퓨터가 지정한 랜덤 값을 맞추는 함수입니다.
-    - 만약에 반환된 값이 `THREE_STRIKE` 이면 `inputStartEndBaseballGame()` 를 실행합니다.
-    - `getGameStatusInput()` : 사용자로부터 게임 상태에 대한 입력값을 입력 받습니다.
+- `baseballGamePlay()` 는 야구 게임이 시작되면서 랜덤한 숫자를 지정하고, 사용자가 해당 숫자를 맞추는 과정을 진행합니다. 이 과정에서 3 스트라이크가 발생하면 게임을 종료합니다.
 
 ---
 
 ## RamdomNumber
 
+- `ramdomBaseballNumber()` 는 세 개의 숫자를 랜덤하게 생성하여 저장합니다.
+
+---
+
+## GameHint
+
+- `baseballGameHint()` 는 랜덤 숫자 3개와 사용자 입력 숫자 3개를 `comparePositionsNumber()` 함수에 넘겨줍니다. `comparePositionsNumber()` 함수의
+  결과가 3스트라이크면 `baseballGameHint()` 함수는 3을 반환합니다.
+
+---
+
+## ComparePositions
+
+- `comparePositionsNumber()` 는 스트라이크와 볼을 구하고, 그 결과를 변수에 저장하는 함수입니다.
+- `getStrikes()` 는 스트라이크 개수를 구하는 함수입니다.
+- `getBalls()` 는 사용자 입력 숫자와 지정된 랜덤 숫자가 일치하면 개수를 증가시키는 함수입니다.
+
+---
+
+## InputMessage
+
+- `inputMessageNumber()` 는 사용자로부터 숫자를 입력받는 함수입니다.
+- `getGameStatusInput()` 는 게임이 종료된 후 게임을 다시 시작할 것인지, 종료할 것인지 사용자의 입력을 받는 함수입니다.
+
+---
+
+## OutputMessage
+
+- `printMessageStartBaseballGame()` 는 "숫자 야구 게임을 시작합니다" 라는 문장을 출력하는 함수입니다.
+- `printEnterNumber()`는 "숫자를 입력해주세요" 라는 문장를 출력하는 함수입니다.
+- `outputStrikeBallConsoleMessage()` 는 스트라이크 개수와 볼 개수를 입력받아, 스트라이크와 볼이 있으면 내용을 출력하고, 없으면 "낫싱"을 출력하는 함수입니다.
+
+## Validation
+
+- `validationCheck()`는 사용자가 입력한 3개의 숫자가 유효한지 검증하는 함수입니다.
+    - 검증 내용
+    - 3자리 이상 입력할 경우 `IllegalArgumentException`을 발생
+    - 1~9 까지의 숫자를 입력 하지 않았을 경우 `IllegalArgumentException`을 발생
+    - 동일한 숫자를 2개 이상 입력했을 경우 `IllegalArgumentException`을 발생
