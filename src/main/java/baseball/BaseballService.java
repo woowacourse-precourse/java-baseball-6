@@ -21,16 +21,17 @@ public class BaseballService {
 
         while (true) {
             Result result = computer.compareNumbers(getInputNumberList());
-            System.out.println(BaseballUtil.STRIKE_BALL[result.getStrike()][result.getBall()]);
+            BaseballUtil.printStrikeBallResult(result.getStrike(), result.getBall());
             if (result.getStrike() == BaseballUtil.MAX) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                BaseballUtil.printEndGame();
                 return;
             }
         }
     }
 
     public boolean isRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        BaseballUtil.printRestartGame();
+
         String restartNumber = Console.readLine();
         if (!"1".equals(restartNumber) && !"2".equals(restartNumber)) {
             throw new IllegalArgumentException();
@@ -40,6 +41,8 @@ public class BaseballService {
     }
 
     private List<Integer> getInputNumberList() {
+        BaseballUtil.printInputNumber();
+
         String input = Console.readLine();
         if (!input.matches(BaseballUtil.REGEX_NUMBER)) {
             throw new IllegalArgumentException();
