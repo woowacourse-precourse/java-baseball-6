@@ -1,5 +1,7 @@
 package baseball.domain.ball;
 
+import baseball.exception.InvalidBallNumberRangeException;
+
 public record BallNumber(
         int number
 ) {
@@ -9,7 +11,7 @@ public record BallNumber(
 
     public BallNumber {
         if (number < MIN_BALL_NUMBER || number > MAX_BALL_NUMBER) {
-            throw new IllegalArgumentException("BallNumbers는 1~9 사이의 3자리 수여야 합니다.");
+            throw new InvalidBallNumberRangeException();
         }
     }
 

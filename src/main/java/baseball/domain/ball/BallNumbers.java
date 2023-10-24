@@ -1,5 +1,6 @@
 package baseball.domain.ball;
 
+import baseball.exception.DuplicateBallNumbersException;
 import collection.Triple;
 
 public abstract class BallNumbers {
@@ -16,7 +17,7 @@ public abstract class BallNumbers {
     private static void validateDuplicateNumbers(final Triple<BallNumber> numbers) {
         final int size = numbers.toSet().size();
         if (size != BALL_COUNT) {
-            throw new IllegalArgumentException("BallNumbers에 중복 숫자가 존재하면 안 됩니다.");
+            throw new DuplicateBallNumbersException();
         }
     }
 
