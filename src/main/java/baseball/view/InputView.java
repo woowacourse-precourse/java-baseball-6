@@ -7,4 +7,8 @@ public class InputView {
         System.out.println("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
+
+    public String readRestartOrOver() {
+        return Console.readLine();
+    }
 }
