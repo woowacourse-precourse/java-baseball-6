@@ -42,8 +42,8 @@ public class Game {
     }
     private void progress(){
         output.askUserToInsertNumbers();
-        List<Integer> userInputList = input.getUserInputNumbers();
-        Map<String, Integer> baseballResult = computer.getBaseballResult(userInputList);
+        UserBaseballNumber userBaseballNumber = input.getUserBaseballNumber();
+        Map<String, Integer> baseballResult = computer.getBaseballResult(userBaseballNumber);
         output.printBaseballResult(baseballResult);
         updateGameStatus(baseballResult);
     }

@@ -3,64 +3,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Input {
-    public List<Integer> getUserInputNumbers(){
+    public UserBaseballNumber getUserBaseballNumber(){
         String userInput = Console.readLine();
-        validateBaseballInput(userInput);
-        return parseUserInput(userInput);
+        return new UserBaseballNumber(userInput);
     }
-    private void validateBaseballInput(String userInput){
-        checkIfInputNumberLengthIsGivenLength(userInput,3);
-        checkIfInputNumberIsNotNumberFormat(userInput);
-        checkIfInputNumberIsDuplicate(userInput);
-        checkIfInputNumberContainsZero(userInput);
-    }
-
-    private void checkIfInputNumberLengthIsGivenLength(String userInput, int length){
-        if(userInput.length() != length){
-            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력의 길이가 " + length + "가 아닙니다.");
-        }
-    }
-    private void checkIfInputNumberIsNotNumberFormat(String userInput){
-        try{
-            Integer.parseInt(userInput);
-        } catch(NumberFormatException ex){
-            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 숫자 형식의 입력이 아닙니다.");
-        }
-    }
-    private void checkIfInputNumberIsDuplicate(String userInput){
-        String[] userInputArr = userInput.split("");
-        for(int compareIdx = 0; compareIdx < userInputArr.length; compareIdx++){
-            checkDuplicate(userInputArr, compareIdx);
-        }
-    }
-    private void checkDuplicate(String[] userInputArr, int compareIdx){
-        for(int i = compareIdx + 1; i < userInputArr.length; i++){
-            throwExceptionIfDuplicate(userInputArr[i], userInputArr[compareIdx]);
-        }
-    }
-    private void throwExceptionIfDuplicate(String input, String compareInput){
-        if(input.equals(compareInput)){
-            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 중복된 숫자를 입력했습니다.");
-        }
-    }
-
-    private void checkIfInputNumberContainsZero(String userInput){
-        String[] userInputArr = userInput.split("");
-        for (String s : userInputArr) {
-            throwExceptionIfEqualsZero(s);
-        }
-    }
-
-    private void throwExceptionIfEqualsZero(String input){
-        if(input.equals("0")){
-            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력 숫자 중 0이 포함되어 있습니다.");
-        }
-    }
-
     public boolean getResumeInput(){
         String userInput = Console.readLine();
         validateResumeInput(userInput);
@@ -68,9 +16,24 @@ public class Input {
     }
 
     private void validateResumeInput(String userInput){
-        checkIfInputNumberLengthIsGivenLength(userInput,1);
+        checkIfInputNumberLength(userInput);
         checkIfInputNumberIsNotNumberFormat(userInput);
     }
+
+    private void checkIfInputNumberLength(String userInput){
+        if(userInput.length() != 1){
+            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력의 길이가 1이 아닙니다.");
+        }
+    }
+
+    private void checkIfInputNumberIsNotNumberFormat(String userInput){
+        try{
+            Integer.parseInt(userInput);
+        } catch(NumberFormatException ex){
+            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 숫자 형식의 입력이 아닙니다.");
+        }
+    }
+
     private boolean parseResumeInput(String userInput){
         if(userInput.equals("1")){
             return true;
@@ -79,15 +42,5 @@ public class Input {
             return false;
         }
         throw new IllegalArgumentException("잘못된 입력입니다. : 1 또는 2 값이 아닙니다.");
-    }
-
-    private List<Integer> parseUserInput(String userInput){
-        List<Integer> userInputNumbers = new ArrayList<>();
-        String[] userInputArr = userInput.split("");
-        for (String s : userInputArr) {
-            Integer number = Integer.parseInt(s);
-            userInputNumbers.add(number);
-        }
-        return userInputNumbers;
     }
 }
