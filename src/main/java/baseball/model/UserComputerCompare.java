@@ -2,8 +2,6 @@ package baseball.model;
 
 import static baseball.util.Constants.BALL_LENGTH;
 
-import java.util.stream.IntStream;
-
 public class UserComputerCompare {
     private final Computer computer;
     private final Player player;
@@ -21,28 +19,23 @@ public class UserComputerCompare {
 
 
     public Result ResultgetBallCountJudgement() {
-        IntStream.range(0, BALL_LENGTH)
-                .forEach(this::processPlayerNumber);
-
+        Result result = Result.initialBallCount();
+        for (int position = 0; position < BALL_LENGTH; position++) {
+            result.updateBallCount(getBallCount(position));
+        }
         return result;
     }
 
-    private void processPlayerNumber(int index) {
-        int playerNumber = player.getNumberByPosition(index);
-        boolean hasCommonNumber = hasCommonNumber(playerNumber);
-        boolean isInSamePosition = isInSamePosition(index, playerNumber);
-
-        BallCount key = BallCount.decideBallCount(hasCommonNumber, isInSamePosition);
-        if (key != BallCount.NOTHING) {
-            result.updateBallCount(key);
-        }
+    private BallCount getBallCount(int position) {
+        return BallCount.decideBallCount(hasCommonNumber(position), isInSamePosition(position));
     }
 
-    private boolean isInSamePosition(int position, int number) {
-        return computer.getNumberByPosition(position) == number;
+    private boolean isInSamePosition(int position) {
+        return computer.getNumberByPosition(position) == player.getNumberByPosition(position);
     }
 
-    private boolean hasCommonNumber(int number) {
-        return computer.getComputerNumber().contains(number);
+
+    private boolean hasCommonNumber(int position) {
+        return computer.hasCommonNumber(player.getNumberByPosition(position));
     }
 }
