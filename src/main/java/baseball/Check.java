@@ -6,6 +6,7 @@ public class Check {
 
     public static final int NUMBER_COUNT = 3;
     public static final int THREE_STRIKE = 3;
+    public static final int ZERO_COUNT = 0;
     public static final String GAME_CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";
@@ -32,13 +33,13 @@ public class Check {
     }
 
     public void printResult() {
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == ZERO_COUNT && strikeCount == ZERO_COUNT) {
             System.out.println(NOTHING);
-        } else if (strikeCount == 0) {
+        } else if (strikeCount == ZERO_COUNT) {
             System.out.println(ballCount + BALL);
-        } else if (ballCount == 0) {
+        } else if (ballCount == ZERO_COUNT) {
             System.out.println(strikeCount + STRIKE);
-        } else {
+        } else if (strikeCount != ZERO_COUNT && ballCount != ZERO_COUNT) {
             System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
         }
 
