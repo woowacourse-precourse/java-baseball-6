@@ -25,6 +25,7 @@ public class Answer {
         return score;
     }
 
+    // 리팩터링을 위해 2중 for문을 분리한 메서드
     private void preCompare(List<Integer> input, GameScore score, int answerIdx) {
         for (int inputIdx = FIRST_IDX; inputIdx < END_PLUS_ONE_IDX; inputIdx++) {
             compareNumberAndUpdateScore(input, score, answerIdx, inputIdx);
