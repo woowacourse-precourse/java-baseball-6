@@ -19,7 +19,7 @@ public class Game {
         boolean isFinished = false;
 
         while (!isFinished) {
-            System.out.print("숫자를 입력해주세요 : ");
+            GameView.printUserInputMessage();
             player.enterNumber();
             isFinished = judge.judgmentFinish(player, computer);
         }
@@ -30,7 +30,7 @@ public class Game {
     private boolean checkRestart() {
         boolean isRestarted = true;
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        GameView.printRestartMessage();
         String input = Console.readLine();
 
         InputValidator.checkRestartInputFormat(input);

@@ -15,7 +15,7 @@ public class Judge {
         int ballCount = getBallCount(playerNumberList, computerNumberList);
         int strikeCount = getStrikeCount(playerNumberList, computerNumberList);
 
-        printResult(ballCount, strikeCount);
+        GameView.printResultMessage(ballCount, strikeCount);
 
         if (strikeCount == 3) {
             isFinished = true;
@@ -53,29 +53,5 @@ public class Judge {
         return strikeCount;
     }
 
-    private static void printResult(int ballCount, int strikeCount) {
-        if (ballCount != 0) {
-            System.out.print(ballCount + "볼");
-        }
 
-        if (ballCount != 0 && strikeCount != 0) {
-            System.out.print(" ");
-        }
-
-        if (strikeCount != 0) {
-            System.out.print(strikeCount + "스트라이크");
-
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.print("낫싱");
-        }
-
-        if (strikeCount == 3) {
-            System.out.println();
-            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-        }
-
-        System.out.println();
-    }
 }
