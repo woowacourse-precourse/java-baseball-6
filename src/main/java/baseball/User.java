@@ -17,7 +17,7 @@ public class User {
         String userNumber = Console.readLine();
         List<Integer> userList = new ArrayList<>();
         for (int i = 0; i < userNumber.length(); i++) {
-            userList.add((int) userNumber.charAt(i));
+            userList.add(Integer.parseInt(userNumber.substring(i,i+1)));
         }
         checkNumber(userList);
 
@@ -29,17 +29,25 @@ public class User {
         }
         for (int i = 0; i < userList.size()-1; i++) {
             int checkedNum=userList.get(i);
+            System.out.println(checkedNum);
             if(Collections.frequency(userList,checkedNum)!=1){
-                throw new IllegalArgumentException("중복된 숫자를 입력하지 마세요");
+                throw new IllegalArgumentException("중복된 숫자를 입력하지 마세요.");
             }
             if(!(1<=checkedNum && checkedNum <=9)){
-                throw new IllegalArgumentException("숫자를 입력하세요");
+                throw new IllegalArgumentException("숫자를 입력해야합니다.");
             }
 
         }
 
     }
-    public void inputRestart(){
-
+    public boolean inputRestart(){
+        String userNumber = Console.readLine();
+        if (userNumber.equals("1")){
+            return true;
+        } else if (userNumber.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("1과 2중의 숫자를 입력해야합니다.");
+        }
     }
 }
