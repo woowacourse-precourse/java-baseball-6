@@ -18,7 +18,7 @@ public class Application {
                     // 사용자가 잘못된 값을 입력한 경우 예외 처리
                     System.out.println(e.getMessage());
                     System.out.println("게임을 종료합니다.");
-                    System.exit(0); // 프로그램 종료
+                    System.exit(0); 
                 }
                 if (isCorrectGuess(computerNumbers, userGuess)) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -123,5 +123,3 @@ public class Application {
         return false;
     }
 }
-
-
