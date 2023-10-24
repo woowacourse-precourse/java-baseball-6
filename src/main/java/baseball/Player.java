@@ -1,8 +1,10 @@
 package baseball;
 
-import static baseball.Computer.COUNTS;
-import static baseball.Computer.MAXIMUM_NUMBER;
-import static baseball.Computer.MINIMUM_NUMBER;
+import static baseball.utils.Constants.COUNTS;
+import static baseball.utils.Constants.MAXIMUM_NUMBER;
+import static baseball.utils.Constants.MINIMUM_NUMBER;
+import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
+import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -11,8 +13,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
-    private static final String INPUT_REQUEST_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String GAME_SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private Computer computer = new Computer();
     private int strike;
     private int ball;
@@ -46,9 +46,9 @@ public class Player {
         System.out.println(GAME_SUCCESS_MESSAGE);
     }
 
-    private void validateNumber(String userInput) {
+    private void validateNumber(String playerInput) {
         try {
-            Integer.parseInt(userInput);
+            Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Input is not an Integer.");
         }
