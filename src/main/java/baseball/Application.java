@@ -10,11 +10,11 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         view.gameStartPrint();
-        RandomNumber.getUniqueNumbers();
-        boolean flag = false;
+        boolean done;
         do {
             Game.gameMiddle();
-        } while (Game.gameEnd());
+            done = Game.gameEnd();
+        } while (done);
     }
 }
 
@@ -24,13 +24,12 @@ class Input {
     }
 
     public static List<Integer> stringToIntegerList(String stringNumber) {
-        int s1 = Integer.parseInt(stringNumber.substring(0, 1));
-        int s2 = Integer.parseInt(stringNumber.substring(1, 2));
-        int s3 = Integer.parseInt(stringNumber.substring(2, 3));
         List<Integer> list = new ArrayList<>();
-        list.add(s1);
-        list.add(s2);
-        list.add(s3);
+        for (int i = 0; i < stringNumber.length(); i++) {
+            char c = stringNumber.charAt(i);
+            int digit = Character.getNumericValue(c);
+            list.add(digit);
+        }
         return list;
     }
 }
@@ -38,13 +37,14 @@ class Input {
 class Game {
     public static void gameMiddle() {
         List<Integer> list;
+        List<Integer> answer = RandomNumber.getUniqueNumbers();
         do {
             view.gameNumberInputPrint();
             String str = Input.inputThreeNumber();
             list = Input.stringToIntegerList(str);
-            List<Integer> result = BaseballCalculate.baseballCalculate(RandomNumber.baseballNumber, list);
+            List<Integer> result = BaseballCalculate.baseballCalculate(answer, list);
             System.out.println(BaseballCalculate.baseballHintPrint(result));
-        } while (RandomNumber.baseballNumber.equals(list) == false);
+        } while (answer.equals(list) == false);
         view.gameEndPrint();
     }
 
@@ -74,13 +74,18 @@ class view {
 }
 
 class RandomNumber {
-    static List<Integer> baseballNumber;
-    final static private int startNumber = 1;
-    final static private int endNumber = 9;
-    final static private int count = 3;
+    private static List<Integer> baseballNumber;
 
     static List<Integer> getUniqueNumbers() {
-        baseballNumber = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, count);
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        baseballNumber = computer;
+        System.out.println(baseballNumber);
         return baseballNumber;
     }
 }
@@ -88,6 +93,9 @@ class RandomNumber {
 class BaseballCalculate {
     static List<Integer> baseballCalculate(List<Integer> list1, List<Integer> list2) {
         // 공통된 숫자의 수와 같은 위치에 있는 숫자의 수를 세기 위한 변수 초기화
+        if (list1.size() != 3 || list2.size() != 3) {
+            throw new IllegalArgumentException();
+        }
         int samePositionCount = 0;
         Set<Integer> set1 = new HashSet<>(list1);
         Set<Integer> set2 = new HashSet<>(list2);
