@@ -52,12 +52,7 @@ public class Game {
     public boolean gameOver(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int check = Integer.parseInt(Console.readLine());
-
-        if(check == 1){
-            return false;
-        } else {
-            return true;
-        }
+        return check == 2;
     }
 
     public boolean checkUserInput(String input){
