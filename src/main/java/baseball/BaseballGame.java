@@ -5,9 +5,15 @@ import java.util.List;
 import static baseball.NumberInfo.*;
 import static baseball.Message.*;
 public class BaseballGame {
-    ComputerFunction computerFunction = new ComputerFunction();
+    private final ComputerFunction computerFunction;
+
+    public BaseballGame(ComputerFunction computerFunction) {
+        this.computerFunction = computerFunction;
+    }
 
     public void run(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while(true) {
             playGame();
 
@@ -28,13 +34,13 @@ public class BaseballGame {
         String cmd = Console.readLine();
         int restart = Integer.parseInt(cmd);
 
-        if(restart == RESTART_TRUE_NUMBER.getNumberInfo()){
+        if(restart == RESTART_TRUE.getNumberInfo()){
             return true;
         }
-        if(restart == RESTART_FALSE_NUMBER.getNumberInfo()){
+        else if(restart == RESTART_FALSE.getNumberInfo()){
             return false;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("재시작을 원하시면 1, 종료를 원하시면 2를 입력하세요.");
     }
 }
