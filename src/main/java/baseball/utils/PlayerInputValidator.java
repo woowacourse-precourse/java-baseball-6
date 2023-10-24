@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class PlayerInputValidator {
 
     private static final int MAX_LENGTH = 3;
-    private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3,3}");
+    private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3}");
 
     public static void validatePlayerNumber(String playerNumber) {
         validateNumbersLength(playerNumber);
