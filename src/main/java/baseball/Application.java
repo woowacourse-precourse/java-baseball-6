@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.controller.SystemManager;
+import baseball.view.OutputHandler;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        OutputHandler.printGameStart();
+        SystemManager.newGame();
     }
 }
