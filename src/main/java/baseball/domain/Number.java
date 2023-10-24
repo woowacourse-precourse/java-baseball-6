@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.utils.message.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -63,6 +64,39 @@ public class Number implements Comparable<Number> {
 
         return true;
     }
+
+    /**
+     *
+     * 사용자 입력 int, string의 숫자를 Number 객채로 변경하는 메소드
+     * Integer, String 처럼 parse 메소드를 이용한 정적 팩토리 메소드를 사용
+     */
+
+    public static Number parseNumber(Integer number) {
+        try {
+            List<Integer> numbers = new ArrayList<>();
+
+            while (number != 0) {
+                numbers.add(number % 10);
+                number /= 10;
+            }
+            Collections.reverse(numbers);
+            return new Number(numbers);
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBERS);
+        }
+    }
+
+    public static Number parseNumber(String stringNumber) {
+        try {
+            int number = Integer.parseInt(stringNumber);
+            return parseNumber(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBERS);
+        }
+    }
+
+
 
     /**
      *
