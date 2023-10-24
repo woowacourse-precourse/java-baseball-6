@@ -48,4 +48,14 @@ public class GameModel {
             return new ResultAndView(sb.toString(), true);
         }
     }
+
+    public boolean isGameExit(String userInput) {
+        // 유효성 검사
+        if (!Pattern.matches("^[12]$", userInput)) throw new IllegalArgumentException();
+        return userInput.equals("2");
+    }
+
+    public Computer getComputer() {
+        return computer;
+    }
 }
