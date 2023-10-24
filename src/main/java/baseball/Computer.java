@@ -14,6 +14,7 @@ public class Computer {
   }
 
   public void init() {
+    comNumbers.clear();
     while(comNumbers.size()<3){
       int pickedNum= Randoms.pickNumberInRange(1,9);
       if(comNumbers.contains(pickedNum))
