@@ -8,4 +8,5 @@ public class Message {
 	public static final String BALL_MESSAGE = "볼";
 	public static final String STRIKE_MESSAGE = "스트라이크";
 	public static final String NOTHING_MESSAGE = "낫싱";
+	public static final String INPUT_ERROR_MESSAGE = "유효하지 않은 입력입니다. 프로그램을 종료합니다.";
 }
