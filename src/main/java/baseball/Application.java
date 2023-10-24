@@ -8,9 +8,8 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             baseball_game();
-            Scanner sc = new Scanner(System.in);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int input_num = Integer.parseInt(sc.next());
+            int input_num = Integer.parseInt(Console.readLine());
             if (input_num != 1) {
                 break;
             }
@@ -18,7 +17,7 @@ public class Application {
     }
 
     public static void baseball_game() {
-        ArrayList<Integer> random_list = new ArrayList<>();
+        List<Integer> random_list = new ArrayList<>();
 
         while (random_list.size() < 3) {
             int random_num = Randoms.pickNumberInRange(1, 9);
@@ -28,11 +27,9 @@ public class Application {
         }
 //        System.out.println(random_list);
 
-        Scanner sc = new Scanner(System.in);
-
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String exp_num_str = sc.next();
+            String exp_num_str = Console.readLine();
 
             String[] exp_num_split = exp_num_str.split("");
             List<String> exp_num_lst = Arrays.asList(exp_num_split);
