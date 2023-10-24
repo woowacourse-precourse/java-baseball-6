@@ -6,12 +6,7 @@ public sealed class ConsoleWriter permits InputView, OutputView {
         System.out.println(data);
     }
 
-    protected void newLine() {
-        this.println("");
-    }
-
     protected void print(final Object data) {
         System.out.print(data);
-
     }
 }
