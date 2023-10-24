@@ -21,4 +21,24 @@ public class Utils {
         return result;
     }
 
+    // 사용자 입력이 유효한지 확인하는 메소드
+    public static void validateInputValue(String inputValue, int length) {
+        // 1. 길이가 length인가?
+        if (inputValue.length() != length) {
+            throw new IllegalArgumentException();
+        }
+
+        // 2. 숫자가 맞는가?
+        // 3. 모두 다른 숫자인가?
+        int[] visited = new int[10];
+        for (int idx=0; idx<length; idx++) {
+            char charAtidx = inputValue.charAt(idx);
+            int charToInt = charAtidx - '0';
+            if (Character.isDigit(charAtidx) || visited[charToInt] == 1) {
+                throw new IllegalArgumentException();
+            }
+            visited[charToInt] = 1;
+        }
+    }
+
 }
