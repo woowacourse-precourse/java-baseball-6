@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.Answer;
 import baseball.BaseballGame;
-import baseball.JudgedCounts;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 public class BaseballGameController {
