@@ -9,13 +9,12 @@ import java.util.Objects;
 public class Application {
     public static void main(String[] args) {
         Play play = new Play();
-
-        int run = 1;
+        int run = 1;        //  시작,재사작 변수
 
         while (run == 1){
             System.out.println("숫자 야구 게임을 시작합니다.");
             play.play();
-            run = play.getNext();
+            run = play.getNext();       //게임 메소드 종료후 재시작 여부 불러오기
         }
     }
 
@@ -33,13 +32,14 @@ public class Application {
                 }
             }
         }
+
         public ArrayList<Integer> getComputer() {
             return computer;
         }
     }
 
 
-    //정답 입력 클래스
+    //Player의 정답 입력 클래스
     public static class Answer {
         private final ArrayList<Integer> answer = new ArrayList<>();
 
@@ -51,6 +51,8 @@ public class Application {
             System.out.println("숫자를 입력해주세요");
             String stringAnswer = Console.readLine();
             String integers = "[0-9]+";
+
+            // 3자릿수 확인
             if (stringAnswer.length() == 3 && stringAnswer.matches(integers)) {
                 answer.add(0, Character.getNumericValue(stringAnswer.charAt(0)));
                 answer.add(1, Character.getNumericValue(stringAnswer.charAt(1)));
@@ -58,6 +60,8 @@ public class Application {
             } else {
                 throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
             }
+
+            // 숫자 중복확인
             if (answer.get(0).equals(answer.get(1))) {
                 throw new IllegalArgumentException("3자리 정수를 입력하세요. :)");
             }
@@ -74,6 +78,7 @@ public class Application {
     public static class Play{
         Answer answer = new Answer();
         Problem problem = new Problem();
+
         private int next;
         private int strike;
         private int ball;
@@ -88,16 +93,18 @@ public class Application {
             int status = 0;
             while (status == 0){
                 answer.inputAnswer();
-                ArrayList<Integer> answer1 = answer.getAnswer();
+                ArrayList<Integer> playAnswer = answer.getAnswer();
 
-                //judge
+                //Player의 입력값 판정
                 for (int i = 0; i<3; i++) {
-                    if (problemNumber.contains(answer1.get(i)) && Objects.equals(problemNumber.get(i), answer1.get(i))){
+                    if (problemNumber.contains(playAnswer.get(i)) && problemNumber.get(i).equals(playAnswer.get(i))){
                             strike++;
-                        }else if (problemNumber.contains(answer1.get(i))){
+                        }else if (problemNumber.contains(playAnswer.get(i))){
                             ball++;
                     }
                 }
+
+                //판정값 출력
                 if (strike==0&&ball==0) {
                     System.out.println("낫싱");
                 } else {
@@ -109,9 +116,10 @@ public class Application {
                 }
                 strike = 0; ball = 0;
             }
+
+            //재시작 확인
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             next = Integer.parseInt(Console.readLine());
         }
     }
 }
-
