@@ -21,5 +21,8 @@ public class GameRetryService {
             Computer refreshComputer = new Computer(new ComputerRandomGameNumber());
             computer.setComputerGameNumber(refreshComputer.getComputerGameNumber());
         }
+        if (player.getRetryNumber() == END_GAME) {
+            player.setPlayerStatus(PlayerStatus.END);
+        }
     }
 }

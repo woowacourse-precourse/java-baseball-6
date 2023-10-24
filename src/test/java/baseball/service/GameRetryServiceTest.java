@@ -30,4 +30,20 @@ class GameRetryServiceTest {
                 .isNotEqualTo("123");
         assertThat(player.getPlayerStatus()).isNotEqualTo(PlayerStatus.END);
     }
+
+    @DisplayName("플레이어는 게임을 완전 종료할 수 있다.")
+    @Test
+    void playerRetryNumberGameEnd() throws Exception{
+        //given
+        Computer computer = new Computer(new ComputerRandomGameNumber(List.of(1, 2, 3)));
+        Player player = new Player(2);
+
+        //when
+        gameRetryService.setNextGameStatus(computer, player);
+
+        //then
+        assertThat(computer.getComputerGameNumber())
+                .isEqualTo("123");
+        assertThat(player.getPlayerStatus()).isEqualTo(PlayerStatus.END);
+    }
 }
