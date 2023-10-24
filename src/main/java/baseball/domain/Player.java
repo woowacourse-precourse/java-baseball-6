@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private final List<Integer> inputAnswer;
+    private List<Integer> inputAnswer;
 
-    public Player(String stringInputAnswer) {
+    public void setInputAnswer(String stringInputAnswer) {
         this.inputAnswer = convertStringInputToIntegerList(stringInputAnswer);
     }
 
