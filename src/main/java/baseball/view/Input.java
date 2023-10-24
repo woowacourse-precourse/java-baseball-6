@@ -26,6 +26,13 @@ public class Input {
                 .collect(Collectors.toUnmodifiableList());
     }
 
+    public int inputContinueGame() {
+        String input = input();
+        formValidation.isOnlyNumbers(input);
+
+        return Integer.parseInt(input);
+    }
+
     private String input() {
         return Console.readLine();
     }
