@@ -48,7 +48,7 @@
 - [x]  사용자가 게임 종료 또는 재시작 메뉴에서 1 또는 2 이외의 값 입력한 경우
 
 ### Test:
-- [ ]  ApplicationTest의 모든 테스트 성공
+- [x]  ApplicationTest의 모든 테스트 성공
 
 ## 📝 문제 요약 (Problem Summary)
 ### 숫자 야구 게임 ⚾️
