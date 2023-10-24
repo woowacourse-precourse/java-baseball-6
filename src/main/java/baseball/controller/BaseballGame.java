@@ -15,7 +15,7 @@ public class BaseballGame {
     }
 
     public boolean isPlaying() {
-        return GameStatus.isPlaying(gameStatus);
+        return gameStatus.isPlaying();
     }
 
     public GameResult getTryResultList(Balls playerBalls) {
