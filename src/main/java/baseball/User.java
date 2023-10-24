@@ -2,11 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
-    private final LinkedList<Integer> userNumbers = new LinkedList<>();
+    private final List<Integer> userNumbers = new ArrayList<>();
 
     public void askUserNumbers() {
         userNumbers.clear();
@@ -17,7 +18,7 @@ public class User {
         }
     }
 
-    public LinkedList<Integer> getUserNumbers() {
+    public List<Integer> getUserNumbers() {
         return userNumbers;
     }
 }
