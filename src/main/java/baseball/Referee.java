@@ -71,8 +71,17 @@ public class Referee {
                 break;
         }
         return score;
-
     }
 
-
+    public void judgmentPrint() {
+        if (score[2] == 3) {
+            System.out.println("낫싱");
+        } else if ((score[0] > 0) && (score[1] > 0)) {
+            System.out.println(score[1] + "볼 " + score[0] + "스트라이크");
+        } else if ((score[0] > 0) && (score[1] == 0)) {
+            System.out.println(score[0] + "스트라이크");
+        } else if ((score[0] == 0) && (score[1] > 0)) {
+            System.out.println(score[1] + "볼");
+        }
+    }
 }

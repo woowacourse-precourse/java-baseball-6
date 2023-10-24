@@ -12,6 +12,7 @@ public class Application {
         List<Integer> computerNumbers = referee.getComputer();
         System.out.println(computerNumbers);
         System.out.println(Arrays.toString(referee.judgment(player)));
+        referee.judgmentPrint();
     }
 
 }
