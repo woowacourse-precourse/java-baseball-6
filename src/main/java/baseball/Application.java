@@ -24,8 +24,6 @@ public class Application {
             // 인덱스 0: 백의 자리, 인덱스 1: 십의 자리, 인덱스 2: 일의 자리
             List<Integer> computer = makeComputerNumber();
 
-            // System.err.println(computer.get(0) + " " + computer.get(1) + " " + computer.get(2));
-
             // TODO: 숫자 야구 게임 진행
             System.out.println(GAMESTART_MESSAGE);
 
