@@ -11,7 +11,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         boolean isGameOn = true;
-        while(isGameOn) {
+        while (isGameOn) {
             List<Integer> computerNumbers = getComputerNumbers();
             System.out.println(computerNumbers);
 
@@ -23,16 +23,22 @@ public class Application {
                         strikeCount++;
                     }
                 }
-                System.out.println(strikeCount + "스트라이크");
-
                 int ballCount = 0;
                 for (int j = 0; j < computerNumbers.size(); j++) {
                     if (computerNumbers.get(j) != userNumbers.get(j) && computerNumbers.contains(userNumbers.get(j))) {
                         ballCount++;
                     }
                 }
-                System.out.println(ballCount + "볼");
-
+                if (strikeCount == 0 && ballCount == 0) {
+                    System.out.println("낫싱");
+                } else if (strikeCount == 0 && ballCount != 0) {
+                    System.out.println(ballCount + "볼");
+                } else if (strikeCount != 0 && ballCount == 0) {
+                    System.out.println(strikeCount + "스트라이크");
+                } else {
+                    System.out.print(ballCount + "볼 ");
+                    System.out.println(strikeCount + "스트라이크");
+                }
                 if (strikeCount == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
@@ -44,7 +50,7 @@ public class Application {
                 isGameOn = true;
             } else if (putNumber.equals("2")) {
                 isGameOn = false;
-            } else{
+            } else {
                 throw new IllegalArgumentException(" 1이나 2를 입력하세요.");
             }
 
