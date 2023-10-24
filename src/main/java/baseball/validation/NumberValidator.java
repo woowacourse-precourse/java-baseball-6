@@ -3,9 +3,9 @@ package baseball.validation;
 public class NumberValidator {
 
 	public NumberValidator(String playerInputNumber) {
-		numberValidateIsThreeNumber(playerInputNumber);
-		numberValidateIsDigit(playerInputNumber);
-		numberValidateIsSameDigit(playerInputNumber);
+		validateIsThreeNumber(playerInputNumber);
+		validateIsDigit(playerInputNumber);
+		validateIsSameDigit(playerInputNumber);
 		validateForZero(playerInputNumber);
 	}
 
@@ -15,7 +15,7 @@ public class NumberValidator {
 		}
 	}
 
-	public void numberValidateIsSameDigit(String stringNumber) {
+	public void validateIsSameDigit(String stringNumber) {
 		for (int i = 0; i < 2; i++) {
 			for (int j = i + 1; j < 3; j++) {
 				if (stringNumber.charAt(i) == stringNumber.charAt(j)) {
@@ -26,7 +26,7 @@ public class NumberValidator {
 
 	}
 
-	public void numberValidateIsDigit(String stringNumber) {
+	public void validateIsDigit(String stringNumber) {
 		if (isNumeric(stringNumber)) {
 			throw new IllegalArgumentException();
 		}
@@ -42,7 +42,7 @@ public class NumberValidator {
 		return stringNumber.length() != 3;
 	}
 
-	public void numberValidateIsThreeNumber(String stringNumber) {
+	public void validateIsThreeNumber(String stringNumber) {
 		if (isThreeNumber(stringNumber)) {
 			throw new IllegalArgumentException();
 		}
