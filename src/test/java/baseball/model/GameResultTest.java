@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.BaseballScoreMessage;
 import org.junit.jupiter.api.DisplayName;

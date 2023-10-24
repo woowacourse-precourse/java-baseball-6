@@ -1,6 +1,7 @@
 package baseball.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.model.GameResult;
 import java.util.Arrays;
