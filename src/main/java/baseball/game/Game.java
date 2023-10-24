@@ -88,4 +88,5 @@ public class Game {
     private static boolean isStrike(Integer computerNumber, Integer predictNumber) {
         return computerNumber.equals(predictNumber);
     }
+
 }

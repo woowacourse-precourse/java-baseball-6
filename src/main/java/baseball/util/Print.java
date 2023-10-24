@@ -24,4 +24,5 @@ public class Print {
     public static void showRestartOrExitInput() {
         System.out.println(MessageConstant.RESTART_OR_EXIT.message);
     }
+
 }

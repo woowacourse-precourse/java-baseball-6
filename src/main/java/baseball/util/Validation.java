@@ -1,7 +1,5 @@
 package baseball.util;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import baseball.constant.GameConstant;
 import baseball.constant.MessageConstant;
 import baseball.game.Game;
@@ -23,6 +21,7 @@ public class Validation {
         if (!checkDuplicatedNumber(userInput)) {
             return false;
         }
+
         return Pattern.matches(REGEXP_PATTERN_NUMBER, userInput);
     }
 
