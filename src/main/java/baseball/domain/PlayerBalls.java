@@ -2,6 +2,7 @@ package baseball.domain;
 
 
 import baseball.constant.Constant;
+import baseball.constant.errorMessage.InputError;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,13 +36,13 @@ public class PlayerBalls {
         if (balls.stream()
                 .collect(Collectors.toSet())
                 .size() != Constant.BALLS_LENGTH)
-            throw new IllegalArgumentException("[error] 잘못된 입력 형식입니다. 중복된 숫자를 입력할 수 없습니다.");
+            throw new IllegalArgumentException(InputError.WRONG_DUPLICATE_NUMBER);
     }
 
 
     private static void validateLength(List<Ball> balls) {
         if (Constant.BALLS_LENGTH != balls.size())
-            throw new IllegalArgumentException("[error] 잘못된 입력 형식입니다. 입력해야하는 숫자 개수를 확인해주세요");
+            throw new IllegalArgumentException(InputError.WRONG_COUNT);
     }
 
 
