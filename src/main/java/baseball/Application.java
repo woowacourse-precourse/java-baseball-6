@@ -8,10 +8,7 @@ public class Application {
 
         game.startGame();
 
-        while (true) {
-            if (!running) {
-                break;
-            }
+        while (running) {
 
             game.getGuessNums();
             roundResult = game.getHint();
