@@ -8,10 +8,6 @@ import static baseball.Reader.*;
 public class Player {
     private List<Integer> userNumberList;
 
-    public Player() {
-        this.userNumberList = null;
-    }
-
     public List<Integer> speakNumbers() {
         chooseNumbers();
         return userNumberList;
