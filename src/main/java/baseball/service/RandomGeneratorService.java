@@ -6,13 +6,19 @@ public class RandomGeneratorService {
     public RandomNumber createRandomNumber(){
         String stringRandomNumber = "";
         int MAX_LENGTH = 3;
-        for (int i = 0; i < MAX_LENGTH; i++){
-            stringRandomNumber = stringRandomNumber.concat(integerToString(Randoms.pickNumberInRange(1, 9)));
+        while(stringRandomNumber.length() < 3){
+            stringRandomNumber = concatString(stringRandomNumber, Integer.toString(Randoms.pickNumberInRange(1, 9)));
         }
+
         return new RandomNumber(stringRandomNumber);
     }
 
     private String integerToString(int number){
         return Integer.toString(number);
+    }
+
+    private String concatString(String a, String b){
+        if (a.contains(b))return a;
+        return a.concat(b);
     }
 }

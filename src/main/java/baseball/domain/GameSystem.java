@@ -1,32 +1,38 @@
 package baseball.domain;
 
 public class GameSystem {
-    private String roundNumber;
-    private Long strike;
-    private Long ballCount;
+    private int roundNumber;
+    private int strike;
+    private int ballCount;
+
+    public GameSystem() {
+        this.roundNumber = 0;
+        this.strike = 0;
+        this.ballCount = 0;
+    }
 
 
-    public String getRoundNumber() {
+    public int getRoundNumber() {
         return roundNumber;
     }
 
-    public void setRoundNumber(String roundNumber) {
+    public void setRoundNumber(int roundNumber) {
         this.roundNumber = roundNumber;
     }
 
-    public Long getStrike() {
+    public int getStrike() {
         return strike;
     }
 
-    public void setStrike(Long strike) {
+    public void setStrike(int strike) {
         this.strike = strike;
     }
 
-    public Long getBallCount() {
+    public int getBallCount() {
         return ballCount;
     }
 
-    public void setBallCount(Long ballCount) {
+    public void setBallCount(int ballCount) {
         this.ballCount = ballCount;
     }
 }
