@@ -16,16 +16,22 @@ import baseball.view.OutputView;
 public class BaseballGame {
     private static BaseballGame baseballController = new BaseballGame();
     // View
-    private OutputView outputView = new OutputView();
-    private InputView inputView = outputView.getInputView();
+    private final OutputView outputView;
+    private final InputView inputView; 
     // Model
-    private Computer computer = new Computer();
-    private Player player = new Player();
+    private final Computer computer;
+    private final Player player;
+    private final Counter counter;
     // Util
-    private Validator validator = new Validator();
-    private Counter counter = new Counter();
+    private final Validator validator;
 
     private BaseballGame() {
+        this.outputView = new OutputView();
+        this.inputView = outputView.getInputView();
+        this.computer = new Computer();
+        this.player = new Player();
+        this.counter = new Counter();
+        this.validator = new Validator();
     }
 
     public static BaseballGame getInstance() {
@@ -46,8 +52,7 @@ public class BaseballGame {
         computer.generateRandomNumbers();
 
         while (true) {
-            this.counter = new Counter();
-
+            counter.init();
             outputView.printInputMessage();
             String playerInput = inputView.getInputLine();
             if (!validator.gameInputVaildate(playerInput))
@@ -65,15 +70,21 @@ public class BaseballGame {
     }
 
     public void compareNumbers(List<Integer> computerNumbers, int[] playerNumbers) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        
         for (int i = 0; i < computerNumbers.size(); i++) {
             int computerNumber = computerNumbers.get(i);
             int playerNumber = playerNumbers[i];
             
             if (computerNumber == playerNumber)
-                counter.setStrikeCount(counter.getStrikeCount() + 1);
+                strikeCount++;
             else if (computerNumbers.contains(playerNumber))
-                counter.setBallCount(counter.getBallCount() + 1);
+                ballCount++;
         }
+        
+        counter.setStrikeCount(strikeCount);
+        counter.setBallCount(ballCount);
     }
 
     public void showResult() {
