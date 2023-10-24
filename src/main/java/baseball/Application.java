@@ -1,7 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
-
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,30 +9,31 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        playGame();
+    }
 
-        while (true) {
-            List<Integer> computerNums;
-            List<Integer> userNums;
-            List<Integer> userResult;
-            boolean gameResult = false;
+    public static void playGame() {
+        List<Integer> computerNums;
+        List<Integer> userNums;
+        List<Integer> userResult;
+        boolean gameResult = false;
 
-            try {
-                computerNums = choiceComputerNums();
-                printComputerNums(computerNums);
+        try {
+            computerNums = choiceComputerNums();
+            printComputerNums(computerNums);
 
-                while (!gameResult) {
-                    userNums = inputUserNums();
-                    userResult = calculateResult(computerNums, userNums);
-                    gameResult = displayResult(userResult);
+            while (!gameResult) {
+                userNums = inputUserNums();
+                userResult = calculateResult(computerNums, userNums);
+                gameResult = displayResult(userResult);
 
-                    if (gameResult) {
-                        finishGame();
-                    }
+                if (gameResult) {
+                    finishGame();
                 }
-
-            } catch (IllegalArgumentException ex) {
-                closeSetting();
             }
+
+        } catch (IllegalArgumentException ex) {
+            close();
         }
     }
 
@@ -51,7 +52,7 @@ public class Application {
     }
 
     public static List<Integer> inputUserNums() {
-        List<Integer> userNums = new ArrayList<>();
+        List<Integer> userNums;
 
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
@@ -59,20 +60,22 @@ public class Application {
         List<String> userInput = splitStr(input);
 
         //공백과 함께 입력했을 시, 공백을 제외하고 나머지 입력에서 판단을 해주는 기능
-        userInput = userInput.stream().filter(str -> !str.equals(" ")).toList();
+        userInput = userInput.stream()
+                .filter(str -> !str.equals(" ")).toList();
 
-
-        // 서로 다른 3개의 숫자가 아닌 예외 상황 구현
+//      3개가 아니게 들어 왔을 경우 예외 터뜨림
         if (userInput.size() != 3) {
-//            System.out.println("3개가 아니게 들어옴");
             throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
-        if (userInput.stream().distinct().count() != userInput.size()) {
-//            System.out.println("서로 다르지 않음");
+//       서로 다르지 않을 경우 예외 터뜨림
+        if (userInput.stream()
+                .distinct()
+                .count() != userInput.size()) {
             throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
-        if (!userInput.stream().allMatch(Application::checkNum)) {
-//            System.out.println("1~9를 제외한 다른 값이 들어옴");
+//      1~9를 제외한 다른 값이 들어와서 예외 터뜨림
+        if (!userInput.stream()
+                .allMatch(Application::checkNum)) {
             throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
         }
 
@@ -98,7 +101,8 @@ public class Application {
     }
 
     private static boolean checkNum(String string) {
-        return string.charAt(0) >= 49 && string.charAt(0) <= 57;
+        return string.matches("[1-9]");
+//        return string.charAt(0) >= 49 && string.charAt(0) <= 57;
     }
 
     public static List<Integer> calculateResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
@@ -120,13 +124,8 @@ public class Application {
     }
 
     private static boolean contains(int num, List<Integer> nums) {
-//            return nums.stream().anyMatch(n -> n.equals(num));
-        for (int i : nums) {
-            if (i == num) {
-                return true;
-            }
-        }
-        return false;
+        return nums.stream()
+                .anyMatch(n -> n.equals(num));
     }
 
     // 스트라이크와 볼 결과 출력
@@ -159,22 +158,17 @@ public class Application {
 
         switch (input) {
             case "1":
+                playGame();
                 break;
             case "2":
-                closeSetting();
+                close();
                 break;
             default:
-                throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력해야합니다.");
         }
-//        if (input.equals("1")) {
-//        } else if (input.equals("2")) {
-//            closeSetting();
-//        } else {
-//            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//        }
     }
 
-    private static void closeSetting() {
+    private static void close() {
         Console.close();
         System.exit(0);
     }
