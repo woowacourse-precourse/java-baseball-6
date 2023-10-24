@@ -21,17 +21,25 @@ public class InputValidator {
         }
     }
 
-    private static boolean validateInputLength(String inputBalls) {
-        return inputBalls.length() == GameConstants.BALL_COUNT;
+    public static void validateRetryOrEndFlag(String flag) {
+        if (flag.equals(GameConstants.RETRY) || flag.equals(GameConstants.END)) {
+            return;
+        }
+
+        throw new IllegalArgumentException();
     }
 
-    private static boolean validateInputIsNumber(String inputBalls) {
-        return inputBalls.matches(GameConstants.NUMBER_REGX);
+    private static boolean validateInputLength(String input) {
+        return input.length() == GameConstants.BALL_COUNT;
     }
 
-    private static boolean validateInputDuplication(String inputBalls) {
+    private static boolean validateInputIsNumber(String input) {
+        return input.matches(GameConstants.NUMBER_REGX);
+    }
+
+    private static boolean validateInputDuplication(String input) {
         Set<Character> set = new HashSet<>();
-        for (Character c : inputBalls.toCharArray()) {
+        for (Character c : input.toCharArray()) {
             set.add(c);
         }
 
