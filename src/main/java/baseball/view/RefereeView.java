@@ -1,23 +1,27 @@
 package baseball.view;
 
-import baseball.constant.GameConstant;
 import baseball.constant.GameMessage;
-import java.util.List;
+import baseball.model.dto.ResultDto;
 
-public class ComputerView {
+public class RefereeView {
 
-    public void printGameStart() {
-        System.out.println(GameMessage.START.getMessage());
+    public void printResult(ResultDto resultDto) {
+        Integer strike = resultDto.getStrike();
+        Integer ball = resultDto.getBall();
+
+        if (strike == 3 && ball == 0) {
+            printWinResult();
+            return;
+        }
+
+        printLostResult(strike, ball);
     }
 
     public void printWinResult() {
         System.out.println(GameMessage.WIN.getMessage());
     }
 
-    public void printLostResult(List<Integer> strikeAndBall) {
-        Integer strike = strikeAndBall.get(GameConstant.STRIKE_INDEX);
-        Integer ball = strikeAndBall.get(GameConstant.BALL_INDEX);
-
+    public void printLostResult(Integer strike, Integer ball) {
         if (strike == 0 && ball == 0) {
             System.out.println(GameMessage.NOTHING.getMessage());
         } else if (strike != 0 && ball == 0) {
