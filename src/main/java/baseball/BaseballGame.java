@@ -2,10 +2,10 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-
 
     public void rePlay() {
         RandomNumber randomNumbers = new RandomNumber();
@@ -18,23 +18,25 @@ public class BaseballGame {
     }
 
     public void play(List<Integer> target, String input) {
-        List<Integer> reTarget = target;
+        List<Integer> reTarget = new ArrayList<>(target);
+
         int strike = 0;
         int ball = 0;
         String message = "";
-        char targetArr[] = {
-                String.valueOf(target.get(0)).charAt(0),
-                String.valueOf(target.get(1)).charAt(0),
-                String.valueOf(target.get(2)).charAt(0)
-        };
-        char inputArr[] = {input.charAt(0), input.charAt(1), input.charAt(2)};
-        for (int i = 0; i <= 2; i++) {
-            if (inputArr[i] == targetArr[i]) {
+
+        List<Integer> inputNumbers = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            inputNumbers.add(Character.getNumericValue(input.charAt(i)));
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (inputNumbers.get(i).equals(target.get(i))) {
                 strike++;
-                inputArr[i] = 'A';
-                targetArr[i] = 'B';
+                inputNumbers.set(i, -1);  // set to an impossible value
+                target.set(i, -2);        // set to another impossible value
             }
         }
+
         if (strike == 3) {
             System.out.println(
                     strike + "스트라이크\n"
@@ -45,15 +47,14 @@ public class BaseballGame {
             if (userDecide.equals("1")) {
                 rePlay();
             } else if (userDecide.equals("2")) {
-
+                // 종료
             }
         } else {
-            for (int i = 0; i <= 2; i++) {
-                for (int j = 0; j <= 2; j++) {
-                    if (targetArr[i] == inputArr[j]) {
-                        if (i == j) {
-                        } else {
-                            ++ball;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (target.get(i).equals(inputNumbers.get(j))) {
+                        if (i != j) {
+                            ball++;
                         }
                     }
                 }
@@ -64,13 +65,10 @@ public class BaseballGame {
                 if (strike == 0) {
                     message = ball + "볼";
                 } else if (ball == 0) {
-                    if (strike != 3) {
-                        message = strike + "스트라이크";
-                    }
-                } else if (ball != 0 && strike != 0) {
+                    message = strike + "스트라이크";
+                } else {
                     message = ball + "볼 " + strike + "스트라이크";
                 }
-
             }
 
             System.out.println(message);
