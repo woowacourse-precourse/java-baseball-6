@@ -98,4 +98,15 @@ public class Application {
         return strike;
     }
 
+    public static int countBall(List<Integer> number, List<Integer> computer) {
+        int balls = 0;
+        for (int i = 0; i < MAX_COUNT; i++) {
+            int matchIndex = number.indexOf(computer.get(i));
+            if (matchIndex != i && matchIndex != -1) {
+                balls++;
+            }
+        }
+        return balls;
+    }
+
 }
