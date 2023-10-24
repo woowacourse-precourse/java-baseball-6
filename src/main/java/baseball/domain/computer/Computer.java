@@ -10,7 +10,9 @@ public class Computer {
 
     // 사용자가 정답을 입력하면 참을 반환
     public boolean isAnswer(List<Integer> userInputs, List<Integer> randomNumbers) {
+        // 정답 비교
         countBallAndStrike(userInputs, randomNumbers);
+        // 3스트라이크라면 true, 아니라면 false
         if (this.strikeCount == Input.NUMLENGTH.getLength()) {
             return true;
         }
@@ -21,7 +23,7 @@ public class Computer {
     public void countBallAndStrike(List<Integer> userInputs, List<Integer> randomNumbers) {
         // ballCount, strikeCount 초기화
         this.clear();
-        
+
         // 각 사용자 입력수에 대해
         for (int i = 0; i < userInputs.size(); i++) {
             // 랜덤수 리슽트가 사용자 입력수를 가지고 있다면

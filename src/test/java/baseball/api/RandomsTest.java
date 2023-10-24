@@ -1,14 +1,12 @@
 package baseball.api;
-import camp.nextstep.edu.missionutils.Randoms;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class RandomsTest {
 
@@ -22,10 +20,10 @@ public class RandomsTest {
         try {
             // WHEN
             int i = Randoms.pickNumberInRange(startInclusive, endInclusive);
-                    // startInclusive + defaultRandom.nextInt(endInclusive - startInclusive + 1); : 10-1+1
-        // THEN
-        System.out.println(i);
-        }catch (Exception e){
+            // startInclusive + defaultRandom.nextInt(endInclusive - startInclusive + 1); : 10-1+1
+            // THEN
+            System.out.println(i);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -38,7 +36,7 @@ public class RandomsTest {
         // GIVEN
         List<Integer> userInputs = new ArrayList<>();
         Integer size = 15;
-        for (int i = 0; i <size ; i++) {
+        for (int i = 0; i < size; i++) {
             userInputs.add(i);
         }
 
@@ -60,19 +58,23 @@ public class RandomsTest {
         inputs.add(2);
         inputs.add(3);
 
-
         // WHEN
-        List<Integer> shuffledInputs = Randoms.shuffle(inputs);
+        List<Integer> shuffledInputs = Randoms.shuffle(inputs); // does not always different ordered list
 
         // THEN
-        assertNotEquals(inputs, shuffledInputs);
+        assertThat(inputs).hasSize(shuffledInputs.size()); // has same size
+        assertThat(inputs).containsAll(shuffledInputs);
+        System.out.println("inputs : " + inputs.toString());
+        System.out.println("shuffledInputs : " + shuffledInputs.toString());
+
+
     }
 
     @Test
     @DisplayName("startInclusive부터 endInclusive까지의 리스트를 섞고 count만큼 자른 List를 반환합니다.")
     public void test_pickUniqueNumbersInRange() throws Exception {
         // GIVEN
-        List<Integer> integers = Randoms.pickUniqueNumbersInRange(0,10,3);
+        List<Integer> integers = Randoms.pickUniqueNumbersInRange(0, 10, 3);
 
         // WHEN
 

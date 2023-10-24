@@ -19,40 +19,64 @@ public class GameService {
     private GameService() {
     }
 
-
-    // 한 싸이클의 야구 게임 시작
-    public void startGame(List<Integer> randomNumbers) throws IllegalArgumentException {
-        // 유저
-        User user = new User();
-        Computer computer = new Computer();
-
-        // 랜덤수 , 사용자 정답입력값 비교 :: 맞다면 게임 종료 이후, 재시작 여부 / 아니라면 계속 비교
+    public boolean hasGameEnded(List<Integer> randomNumbers) {
+        // 게임 싸이클 시작
         while (true) {
-            // Computer 초기화 :: ballCount,strikeCount 초기화
-            computer.clear();
-
-            System.out.println(computer.getStrikeCount());
-            System.out.println(computer.getBallCount());
-
-            // 숫자 입력 안내 뷰
-            System.out.print("숫자를 입력해주세요 : ");
-
             // 사용자 정답값 리스트
             List<Integer> userAnswerInputs = getUserAnswerInputs();
             System.out.println(userAnswerInputs.toString());
 
-            // 정답 여부 판단
-            boolean isAnswer = computer.isAnswer(userAnswerInputs, randomNumbers);
-
-            System.out.println(computer.getStrikeCount());
-            System.out.println(computer.getBallCount());
-            System.out.println(computer.showResult());
-
-            if (isAnswer) {
-                // 정답이라면 게임 종료
+            // 정답이라면 게임 싸이클 탈출
+            if (hasRightAnswer(userAnswerInputs, randomNumbers)) {
                 break;
             }
         }
+
+        // 게임 완료 후
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        // 재시작 여부 입력
+        String userOption = Console.readLine();
+        Integer wouldRestartGame = User.getWouldRestartGame(userOption); // 검증 후, 숫자로 변환
+        System.out.println(wouldRestartGame);
+
+        // 재시작 / 종료 실행
+        return hasSelectedRestartOrEnd(wouldRestartGame);
+    }
+
+    private static boolean hasSelectedRestartOrEnd(Integer wouldRestartGame) {
+        // 게임 종료 선택 했다면
+        if (wouldRestartGame == GameOption.END.getOption()) {
+            // 게임 종료
+            System.out.println("게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    // 주어진 랜덤값과 사용자 입력값 정답 비교
+    public boolean hasRightAnswer(List<Integer> userAnswerInputs, List<Integer> randomNumbers)
+            throws IllegalArgumentException {
+        // 컴퓨터 인스턴스 :: 정답 계산
+        Computer computer = new Computer();
+        System.out.println(computer.getStrikeCount());
+        System.out.println(computer.getBallCount());
+
+        // 숫자 입력 안내 뷰
+        System.out.print("숫자를 입력해주세요 : ");
+
+        // 정답 여부 판단
+        boolean isAnswer = computer.isAnswer(userAnswerInputs, randomNumbers);
+
+        System.out.println(computer.getStrikeCount());
+        System.out.println(computer.getBallCount());
+        System.out.println(computer.showResult());
+
+        if (isAnswer) {
+            // 정답이라면 게임 종료
+            return true;
+        }
+        return false;
     }
 
     public static List<Integer> getUserAnswerInputs() throws IllegalArgumentException {
