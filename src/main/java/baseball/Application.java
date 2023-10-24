@@ -13,7 +13,14 @@ public class Application {
             int attempts = 0;
 
             while (true) {
-                int[] userGuess = getUserGuess();
+                int[] userGuess;
+                try {
+                    userGuess = getUserGuess();
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("게임을 종료합니다.");
+                    return; // 사용자 입력이 잘못된 경우 프로그램 종료
+                }
                 attempts++;
 
                 if (isCorrectGuess(computerNumbers, userGuess)) {
@@ -39,7 +46,6 @@ public class Application {
         System.out.println("게임을 종료합니다.");
     }
 
-    // 수정: 정답과 사용자 추측이 일치하는지 확인
     private static boolean isCorrectGuess(int[] computerNumbers, int[] userGuess) {
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] != userGuess[i]) {
@@ -70,7 +76,6 @@ public class Application {
         return computerNumbers;
     }
 
-    // 수정: 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생
     private static int[] getUserGuess() {
         int[] userGuess = new int[3];
         while (true) {
@@ -100,13 +105,12 @@ public class Application {
     }
 
     private static int[] calculateResult(int[] computerNumbers, int[] userGuess) {
-        int[] result = new int[2]; // result[0] - 스트라이크, result[1] - 볼
-
+        int[] result = new int[2]; 
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] == userGuess[i]) {
-                result[0]++; // 스트라이크
+                result[0]++;
             } else if (contains(computerNumbers, userGuess[i])) {
-                result[1]++; // 볼
+                result[1]++;
             }
         }
 
@@ -122,8 +126,3 @@ public class Application {
         return false;
     }
 }
-
-
-
-
-
