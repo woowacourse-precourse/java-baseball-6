@@ -49,7 +49,7 @@ public class Helper {
         throw new IllegalArgumentException("허가되지 않은 문자열");
     }
 
-    public List<Integer> convertToIntegerList(String input) {
+    public List<Integer> parseList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
