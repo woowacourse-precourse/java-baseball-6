@@ -5,40 +5,49 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Number {
-    Number(String number){
-        this.number = this.toArrayList(number);
+    Number() {
     }
-    public ArrayList<Integer> number;
-    private ArrayList<Integer> toArrayList(String number){
+
+    Number(String string) {
+        this.list = toArrayList(string);
+    }
+
+    public ArrayList<Integer> list = new ArrayList<>();
+
+    public ArrayList<Integer> toArrayList(String number) {
         checkValidity(number);
         ArrayList<Integer> numberArray = new ArrayList<>();
-        String[] s = number.split("");
-        for(int i=0;i<3;i++){
-            numberArray.add(Integer.parseInt(s[i]));
+        String[] strArr = number.split("");
+        for (String str : strArr) {
+            numberArray.add(Integer.parseInt(str));
         }
+        checkRedundancy(numberArray);
         return numberArray;
     }
-    public void checkValidity(String str){
-        try{
+
+    private void checkValidity(String str) {
+        try {
             Integer.parseInt(str);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             error();
         }
-        if(str.length()!=3){
+        if (str.length() != 3) {
             error();
         }
     }
-    public void checkRedundancy(){
+
+    private void checkRedundancy(ArrayList<Integer> number) {
         Set<Integer> set = new HashSet<>();
-        for(int i : this.number){
-            if(set.contains(i)){
+        for (int i : number) {
+            if (set.contains(i)) {
                 error();
             } else {
                 set.add(i);
             }
         }
     }
-    public static void error(){
+
+    private void error() {
         throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
     }
 }
