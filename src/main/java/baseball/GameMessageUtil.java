@@ -6,6 +6,11 @@ import static baseball.GameMessage.STRIKE;
 
 public class GameMessageUtil {
 
+  /**
+   * Returns formatted game result message based on strike, ball counts.
+   *
+   * @return the formatted game result message
+   */
   public static String generateResultMessage(int strike, int ball) {
 
     if (isNothing(strike, ball)) {

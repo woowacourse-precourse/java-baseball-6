@@ -8,6 +8,11 @@ import java.util.Set;
 
 class UserBalls {
 
+  /**
+   * Displays Input Message. Returns user input, after checking it is valid.
+   *
+   * @return the user input
+   */
   public static String getUserInputBalls() {
     displayInputMessage();
     String input = Console.readLine();
@@ -15,6 +20,12 @@ class UserBalls {
     return input;
   }
 
+  /**
+   * Checks if user input is valid. Throws IllegalArgumentException and ends program if input is not
+   * valid.
+   *
+   * @param input the user input
+   */
   private static void checkUserInput(String input) throws IllegalArgumentException {
     checkLength(input);
     checkAllNumbers(input);
@@ -22,24 +33,44 @@ class UserBalls {
     checkDifferentDigits(input);
   }
 
+  /**
+   * Checks if user input length is 3.
+   *
+   * @param input the user input
+   */
   private static void checkLength(String input) {
     if (input.length() != 3) {
       throw new IllegalArgumentException("[ERROR] 입력된 숫자가 3자리가 아닙니다");
     }
   }
 
+  /**
+   * Checks if user input consists of 3 different digits.
+   *
+   * @param input the user input
+   */
   private static void checkDifferentDigits(String input) {
     if (!areDigitsDifferent(input)) {
       throw new IllegalArgumentException("[ERROR] 서로 다른 3자리가 아닙니다");
     }
   }
 
+  /**
+   * Checks if user input is in valid range(1~9).
+   *
+   * @param input the user input
+   */
   private static void checkInValidRange(String input) {
     if (containsZero(input)) {
       throw new IllegalArgumentException("[ERROR] 1이상 9이하 숫자가 아닙니다");
     }
   }
 
+  /**
+   * Checks if user input consists of all integers.
+   *
+   * @param input the user input
+   */
   private static void checkAllNumbers(String input) {
     if (!areAllNumbers(input)) {
       throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다");

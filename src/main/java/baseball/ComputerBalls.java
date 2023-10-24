@@ -7,6 +7,11 @@ import java.util.stream.Collectors;
 
 public class ComputerBalls {
 
+  /**
+   * Returns randomly generated 3-digit number.
+   *
+   * @return the String type of randomly generated numbers
+   */
   public static String getComputerBalls() {
     Set<Integer> computer = new HashSet<>();
     while (computer.size() < 3) {
