@@ -6,7 +6,7 @@
         - [ ] 3자리 숫자
         - [ ] 1~9까지의 수
 
-    * Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+    * Random 값 추출은 cmp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
 
 - 사용자 클래스
     - [ ] 서로 다른 수 확인 함수
