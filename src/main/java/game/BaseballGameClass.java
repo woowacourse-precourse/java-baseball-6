@@ -21,15 +21,25 @@ public class BaseballGameClass implements Game{
             }
         }
         RandomAnswerGeneratedInInit =  RandomAnswerGenerated;
-        System.out.println("RandomAnswerGenerated = " + RandomAnswerGenerated);
+        //System.out.println("RandomAnswerGenerated = " + RandomAnswerGenerated);
     }
 
 
     @Override
-    public void gamePlay(){
+    public void gamePlay() throws IllegalArgumentException{
         while(true) {
             System.out.printf("숫자를 입력해주세요: ");
             String inputNumber = scanner.nextLine();
+
+            if(inputNumber.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+            for(int i=0; i<inputNumber.length(); i++){
+                if(inputNumber.charAt(i) < '1' || inputNumber.charAt(i) >'9'){
+                    throw new IllegalArgumentException();
+                }
+            }
+
             Integer ballCount = 0, strikeCount = 0;
             for (int i = 0; i < inputNumber.length(); i++) {
                 if (inputNumber.charAt(i) == RandomAnswerGeneratedInInit.get(i)+'0') {
@@ -59,7 +69,12 @@ public class BaseballGameClass implements Game{
     }
 
     @Override
-    public void gameExit() {
-
+    public Integer gameExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = scanner.nextLine();
+        if(inputNumber.charAt(0) == '2') {
+            return 2;
+        }
+        return 1;
     }
 }
