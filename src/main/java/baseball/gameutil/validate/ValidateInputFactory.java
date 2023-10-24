@@ -1,6 +1,7 @@
 package baseball.gameutil.validate;
 
 import baseball.gameutil.InputMod;
+import baseball.message.MessageString;
 
 public class ValidateInputFactory {
 
@@ -8,12 +9,10 @@ public class ValidateInputFactory {
     }
 
     public static ValidateInput getValidateInput(InputMod mod) {
-        if (mod == InputMod.GAME) {
-            return new ValidateInputGame();
-        }
-        if (mod == InputMod.RERUN) {
-            return new ValidateInputRerun();
-        }
-        throw new IllegalArgumentException("Wrong input length");
+        return switch (mod) {
+            case GAME -> new ValidateInputGame();
+            case RERUN -> new ValidateInputRerun();
+            default -> throw new IllegalArgumentException(MessageString.WRONG_RERUN_INPUT_ERROR_STRING);
+        };
     }
 }

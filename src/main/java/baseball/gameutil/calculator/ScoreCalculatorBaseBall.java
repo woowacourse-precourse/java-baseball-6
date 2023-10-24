@@ -4,6 +4,7 @@ import baseball.gameutil.Score;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class ScoreCalculatorBaseBall implements ScoreCalculator {
 
@@ -16,24 +17,16 @@ public class ScoreCalculatorBaseBall implements ScoreCalculator {
     }
 
     private int calStrike(List<Integer> userInput, List<Integer> computerInput) {
-        int count = 0;
-        for (int i = 0; i < userInput.size(); i++) {
-            if (userInput.get(i) == computerInput.get(i)) {
-                count += 1;
-            }
-        }
-        return count;
+        return (int) IntStream.range(0, userInput.size())
+            .filter(idx -> userInput.get(idx) == computerInput.get(idx))
+            .count();
     }
 
     private int calBall(List<Integer> userInput, List<Integer> computerInput) {
         Set<Integer> computerInputSet = new HashSet<>(computerInput);
-        int count = 0;
-        for (int i = 0; i < userInput.size(); i++) {
-            Integer targetNumber = userInput.get(i);
-            if (targetNumber != computerInput.get(i) && computerInputSet.contains(targetNumber)) {
-                count += 1;
-            }
-        }
-        return count;
+        return (int) IntStream.range(0, userInput.size())
+            .filter(idx -> userInput.get(idx) != computerInput.get(idx))
+            .filter(idx -> computerInputSet.contains(userInput.get(idx)))
+            .count();
     }
 }

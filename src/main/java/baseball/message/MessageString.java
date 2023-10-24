@@ -13,6 +13,7 @@ public class MessageString {
         Constant.NUMBER_MIN, Constant.NUMBER_MAX, Constant.NUMBER_LENGTH);
     public static final String WRONG_RERUN_INPUT_ERROR_STRING = "입력은 %d 아니면 %d입니다!".formatted(
         Constant.RESTART_RESTART, Constant.RESTART_END);
+
     public static final String END_MSG = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료".formatted(
         Constant.NUMBER_LENGTH);
     public static final String RESTART_MSG = "게임을 새로 시작하려면 %d, 종료하려면 %s를 입력하세요.".formatted(

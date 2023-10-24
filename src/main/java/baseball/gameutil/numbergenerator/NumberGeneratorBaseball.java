@@ -2,7 +2,9 @@ package baseball.gameutil.numbergenerator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class NumberGeneratorBaseball implements NumberGenerator {
 
@@ -12,21 +14,10 @@ public class NumberGeneratorBaseball implements NumberGenerator {
         int end,
         int count
     ) {
-        List<Integer> ret = new ArrayList<>();
+        Set<Integer> ret = new HashSet<>();
         while(ret.size() < count){
-            addUniqueNumbers(ret, start, end);
+            ret.add(Randoms.pickNumberInRange(start, end));
         }
-        return ret;
-    }
-
-    private void addUniqueNumbers(
-        List<Integer> ret,
-        int start,
-        int end
-    ) {
-        Integer digit = Randoms.pickNumberInRange(start, end);
-        if (!ret.contains(digit)) {
-            ret.add(digit);
-        }
+        return new ArrayList<>(ret);
     }
 }

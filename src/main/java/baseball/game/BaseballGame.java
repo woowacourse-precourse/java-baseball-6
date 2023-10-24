@@ -37,17 +37,15 @@ public class BaseballGame implements Game {
     public void run() {
         output.print(MessageString.INIT_MSG);
         output.print(MessageString.NEW_LINE);
+        List<Integer> convertedUserInput;
 
-        while (true) {
+        do {
             runOneGame();
             output.print(MessageString.RESTART_MSG);
             output.print(MessageString.NEW_LINE);
-            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(InputMod.RERUN);
+            convertedUserInput = gameInputConverter.convertBaseballInput(InputMod.RERUN);
+        } while (convertedUserInput.get(0) != Constant.RESTART_END);
 
-            if (convertedUserInput.get(0) == Constant.RESTART_END) {
-                break;
-            }
-        }
     }
 
     private void runOneGame() {
@@ -55,19 +53,16 @@ public class BaseballGame implements Game {
 //        output.print(computerInput.toString());
 //        output.print(MessageString.NEW_LINE);
 
-        while (true) {
+        Score score;
+        do {
             output.print(MessageString.PROMT_MSG);
-            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(InputMod.GAME);
+            List<Integer> convertedUserInput = gameInputConverter.convertBaseballInput(
+                InputMod.GAME);
 
-            Score score = scoreCalculator.calScore(convertedUserInput, computerInput);
+            score = scoreCalculator.calScore(convertedUserInput, computerInput);
             output.print(resultStringGenerator.result(score));
             output.print(MessageString.NEW_LINE);
-
-            if (score.getStrike() == Constant.NUMBER_LENGTH) {
-                break;
-            }
-
-        }
+        } while (score.getStrike() != Constant.NUMBER_LENGTH);
         output.print(MessageString.END_MSG);
         output.print(MessageString.NEW_LINE);
     }
