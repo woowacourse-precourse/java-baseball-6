@@ -5,10 +5,11 @@ public class BaseballUtil {
     public static final int MAX = 3;
     public static final String REGEX_NUMBER = "[1-9]{3}";
     public static final String[][] STRIKE_BALL = {
-        {"낫싱", "1볼", "2볼", "3볼"},
-        {"1스트라이크", "1볼 1스트라이크", "1볼 2스트라이크", ""},
-        {"2스트라이크", "1볼 2스트라이크", "", ""},
-        {"3스트라이크", "", "", ""}};
+            {"낫싱", "1볼", "2볼", "3볼"},
+            {"1스트라이크", "1볼 1스트라이크", "1볼 2스트라이크", ""},
+            {"2스트라이크", "1볼 2스트라이크", "", ""},
+            {"3스트라이크", "", "", ""}
+    };
     public static final String END_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String RESTART_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String RESTART = "1";
