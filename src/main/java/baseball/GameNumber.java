@@ -17,30 +17,24 @@ public class GameNumber {
     }
 
     private static void validate(String input) {
-        validateLength(input);
-        validateDigitRange(input);
-        validateDistinctDigit(input);
-    }
-
-    private static void validateLength(String input) {
-        if (input.length() != 3) {
+        if (!isValid(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateDigitRange(String input) {
-        input.chars().forEach(digit -> {
-            if (digit < '1' || digit > '9') {
-                throw new IllegalArgumentException();
-            }
-        });
+    public static boolean isValid(String input) {
+        return hasThreeDigits(input) && hasProperRange(input) && hasDistinctDigits(input);
     }
 
-    private static void validateDistinctDigit(String input) {
-        long count = input.chars().distinct().count();
-        
-        if (count != 3) {
-            throw new IllegalArgumentException();
-        }
+    private static boolean hasThreeDigits(String input) {
+        return input.length() == 3;
+    }
+
+    private static boolean hasProperRange(String input) {
+        return input.chars().allMatch(digit -> digit >= '1' && digit <= '9');
+    }
+
+    private static boolean hasDistinctDigits(String input) {
+        return input.chars().distinct().count() == 3;
     }
 }
