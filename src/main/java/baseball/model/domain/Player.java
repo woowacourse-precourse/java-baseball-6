@@ -11,7 +11,7 @@ public class Player {
     private Player(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
         this.playerNumbersValidator = playerNumbersValidator;
         playerNumbersValidator.validatePlayerNumbers(inputNumbers);
-        this.playerNumbers = parsePlayerNumbers(inputNumbers);
+        this.playerNumbers = parse(inputNumbers);
     }
 
     public static Player of(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
@@ -22,7 +22,7 @@ public class Player {
         return playerNumbers;
     }
 
-    private List<Integer> parsePlayerNumbers(String inputNumbers) {
+    private List<Integer> parse(String inputNumbers) {
         return inputNumbers.chars().map(Character::getNumericValue).boxed().collect(Collectors.toList());
     }
 }

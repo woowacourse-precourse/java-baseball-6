@@ -9,7 +9,7 @@ public class Restart {
     private Restart(String inputOption, RestartOptionValidator restartOptionValidator) {
         this.restartOptionValidator = restartOptionValidator;
         restartOptionValidator.validateRestartOption(inputOption);
-        this.restartOption = parseRestartOption(inputOption);
+        this.restartOption = parse(inputOption);
     }
 
     public static Restart of(String inputOption, RestartOptionValidator restartOptionValidator) {
@@ -20,7 +20,7 @@ public class Restart {
         return restartOption;
     }
 
-    private Integer parseRestartOption(String inputOption) {
+    private Integer parse(String inputOption) {
         return Integer.parseInt(inputOption);
     }
 }
