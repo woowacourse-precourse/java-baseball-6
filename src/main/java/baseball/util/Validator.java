@@ -7,10 +7,6 @@ import java.util.stream.Collectors;
 
 public class Validator {
     // TODO: 입력받은 값의 유효성 검사
-    private static final int validationMaxValue = NumberConst.MAX_INPUT_VALUE; // 입력 받은 값의 최대 값
-    private static final int validationMinValue = NumberConst.MIN_INPUT_VALUE; // 입력 받은 값의 최소 값
-    private static final int inputNumLength = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
-
     private Validator() {
     }
 
@@ -93,7 +89,7 @@ public class Validator {
      */
     private static void validateInputLength(List<Integer> inputValue) {
         // TODO: 입력받은 값이 inputNumLength 와 같은지 유효성 검사
-        if (inputValue.size() != inputNumLength) {
+        if (inputValue.size() != NumberConst.EXPECTED_INPUT_LENGTH) {
             MessageUtil.printInvalidNumber();
             throw new IllegalArgumentException();
         }
@@ -122,7 +118,8 @@ public class Validator {
      */
     private static void validateInputIsOneToNine(List<Integer> inputValue) {
         // TODO: 입력받은 값이 VALIDATION_MIN_VALUE 부터 VALIDATION_MAX_VALUE 사이 존재 하는지 유효성 검사
-        if (!inputValue.stream().allMatch(element -> element >= validationMinValue && element <= validationMaxValue)) {
+        if (!inputValue.stream().allMatch(
+                element -> element >= NumberConst.MIN_INPUT_VALUE && element <= NumberConst.EXPECTED_INPUT_LENGTH)) {
             MessageUtil.printInvalidRange();
             throw new IllegalArgumentException();
         }

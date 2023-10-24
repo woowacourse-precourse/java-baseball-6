@@ -9,22 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game implements Runnable {
-    private static final int restartNumber = NumberConst.RESTART_NUMBER; // 게임 재 시작 상수
-    private static final int stopNumber = NumberConst.STOP_NUMBER; // 게임 중지 상수
-    private static final int minInputValue = NumberConst.MIN_INPUT_VALUE; // 입력할 수 있는 숫자의 최솟 값
-    private static final int maxInputValue = NumberConst.MAX_INPUT_VALUE; // 입력할 수 있는 숫자의 최대 값
-    private static final int inputLength = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
-    private static final int maxCountStrike = NumberConst.MAX_COUNT_STRIKE; // 성공의 기준이 되는 스트라이크 개수
-
-    private int compareRestartNum = restartNumber; // 재시작, 종료 여부를 입력받기 위한 변수
+    private int compareRestartNum = NumberConst.RESTART_NUMBER; // 재시작, 종료 여부를 입력받기 위한 변수
     private int countBall; // Ball 개수 확인 용도
     private int countStrike; // Strike 개수 확인 용도
 
     public void start() {
         // TODO: Game 진행
         Thread game = new Thread("Game");
-        game.start();
+
         try {
+            game.start();
             run();
         } finally {
             stop();
@@ -63,7 +57,7 @@ public class Game implements Runnable {
             MessageUtil.printResultGame(countBall, countStrike);
 
             // 게임 성공 시 처리(countStrike 가 maxCountStrike 와 같은 경우)
-            if (countStrike == maxCountStrike) {
+            if (countStrike == NumberConst.MAX_COUNT_STRIKE) {
                 MessageUtil.printSuccessGame();
                 InputString = Console.readLine();
                 compareRestartNum = Integer.parseInt(InputString);
@@ -71,12 +65,12 @@ public class Game implements Runnable {
             }
 
             // 게임 성공이면서 게임 재시작인 경우 새로운 랜덤 숫자 생성
-            if (countStrike == maxCountStrike && compareRestartNum == restartNumber) {
+            if (countStrike == NumberConst.MAX_COUNT_STRIKE && compareRestartNum == NumberConst.RESTART_NUMBER) {
                 computer = createRandomNumber();
             }
 
             // 게임 성공 이후 중지 번호 입력 받을 경우 게임 종료
-            if (countStrike == maxCountStrike && compareRestartNum == stopNumber) {
+            if (countStrike == NumberConst.MAX_COUNT_STRIKE && compareRestartNum == NumberConst.STOP_NUMBER) {
                 break;
             }
 
@@ -84,6 +78,8 @@ public class Game implements Runnable {
             countBall = 0;
             countStrike = 0;
         }
+
+        // Scanner 입력 Stream 중지
         Console.close();
     }
 
@@ -103,11 +99,11 @@ public class Game implements Runnable {
     private List<Integer> createRandomNumber() {
         // TODO: 랜덤 숫자 생성 (inputLength 자리 수)
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < inputLength) {
+        while (randomNumbers.size() < NumberConst.EXPECTED_INPUT_LENGTH) {
             // minInputValue 부터 maxInputValue 랜덤 값 생성
             int randomNumber = Randoms.pickNumberInRange(
-                    minInputValue,
-                    maxInputValue
+                    NumberConst.MIN_INPUT_VALUE,
+                    NumberConst.MAX_INPUT_VALUE
             );
 
             // 중복 값이 있는지 확인
@@ -127,7 +123,7 @@ public class Game implements Runnable {
      */
     private void updateBallAndStrikeCounts(List<Integer> user, List<Integer> computer) {
         // TODO: 입력받은 값과 생성한 랜덤 숫자 비교하여 Ball, Strike 개수 증가
-        for (int i = 0; i < inputLength; i++) {
+        for (int i = 0; i < NumberConst.EXPECTED_INPUT_LENGTH; i++) {
             int userNumber = user.get(i);
             int computerNumber = computer.get(i);
 
