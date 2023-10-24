@@ -7,9 +7,14 @@ public class Application {
 
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        Game();
+        StopOrRestart();
+    }
+
+    public static void Game() {
         int strike = 0;
         int ball = 0;
-        Application app = new Application();
         ArrayList<Integer> computerNumbers = ComputerNumbers();
 
         while(strike < 3) {
@@ -36,13 +41,24 @@ public class Application {
             }
             if(strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             }
         }
     }
 
+    public static void StopOrRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String menuNumber = Console.readLine();
+        if(menuNumber.trim().equals("2")) {
+            System.out.println("222");
+            System.exit(0);
+        } else if (menuNumber.trim().equals("1")) {
+            System.out.println("111");
+            Game();
+
+        }
+    }
     public static ArrayList<Integer> ComputerNumbers() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
         ArrayList<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
