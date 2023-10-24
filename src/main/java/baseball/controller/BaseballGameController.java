@@ -13,12 +13,15 @@ public class BaseballGameController {
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true) {
+//        while (true) {
             System.out.print(INPUT_MESSAGE);
-            // Todo: 컴퓨터가 가질 값 랜덤 생성
             pc = new Computer();
             pc.setNumber();
 
-        }
+            //todo  3. player의 값 입력받기
+            user = new User();
+            user.setNumber(Console.readLine());
+
+//        }
     }
 }
