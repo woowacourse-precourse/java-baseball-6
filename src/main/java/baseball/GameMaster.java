@@ -33,8 +33,7 @@ public class GameMaster {
       Validator validator = new Validator(correctAnswer);
       String answer = progress();
       validator.writeBaseballAnswer(answer);
-      validator.changeInputBaseballType();
-      String s = printResult(validator.calculateResult());
+      String s = printResult(validator.changeInputBaseballType());
       decide(validator, checkResult(s));
     }
   }
