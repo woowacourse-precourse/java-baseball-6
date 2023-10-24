@@ -42,6 +42,9 @@ public class Application {
         if (arrayPlayerNumber.length != 3) {
             throw new IllegalArgumentException("3자리의 정수가 입력되지 않았습니다.");
         }
+        if (!checkDuplicateInput(arrayPlayerNumber)) {
+            throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
+        }
         return arrayPlayerNumber;
     }
 
