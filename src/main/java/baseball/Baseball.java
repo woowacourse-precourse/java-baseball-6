@@ -85,6 +85,7 @@ public class Baseball {
         try{
             resetUserNumber(inputNumber);
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             throw e;
         }
     }
