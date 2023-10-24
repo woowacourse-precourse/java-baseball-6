@@ -29,9 +29,9 @@ public class ComputerController {
         ballCount = INIT_ZERO;
     }
 
-    public boolean checkUserInputWithAnswer(List<Integer> userInputNumbers, List<Integer> computerGenerateNumbers) {
+    public boolean checkUserInputWithAnswer(GameNumber gameNumber) {
         initStrikeAndBallCount();
-        checkStrikeAndBall(userInputNumbers, computerGenerateNumbers);
+        checkStrikeAndBall(gameNumber);
         return isThreeStrikes();
     }
 
@@ -42,23 +42,17 @@ public class ComputerController {
         return false;
     }
 
-    private void checkStrikeAndBall(List<Integer> userInputNumbers, List<Integer> computerGenerateNumbers) {
-        for (int i = 0; i < userInputNumbers.size(); i++) {
-            countStrike(userInputNumbers.get(i), computerGenerateNumbers.get(i));
-            countBall(computerGenerateNumbers, userInputNumbers.get(i), i);
-        }
+    private void checkStrikeAndBall(GameNumber gameNumber) {
+        countStrike(gameNumber);
+        countBall(gameNumber);
     }
 
-    private void countStrike(int userInputNumber, int computerGenerateNumber) {
-        if (userInputNumber == computerGenerateNumber) {
-            strikeCount++;
-        }
+    private void countStrike(GameNumber gameNumber) {
+        strikeCount = gameNumber.countSamePlacesAndNumbers();
     }
 
-    private void countBall(List<Integer> computerGenerateNumbers, int userInputNumber, int index) {
-        if (userInputNumber != computerGenerateNumbers.get(index) && computerGenerateNumbers.contains(userInputNumber)) {
-            ballCount++;
-        }
+    private void countBall(GameNumber gameNumber) {
+        ballCount = gameNumber.countOtherPlacesAndSameNumbers();
     }
 
     public String createHintMessage() {

@@ -12,15 +12,29 @@ public class GameNumber {
         this.userInputNumbers = userInputNumbers;
     }
 
-    public List<Integer> getUserInputNumbers() {
-        return this.userInputNumbers;
+    public int countSamePlacesAndNumbers() {
+        int samePlaceAndNumberCount = 0;
+
+        for (int i = 0; i < userInputNumbers.size(); i++) {
+            if (userInputNumbers.get(i) == computerGenerateNumbers.get(i)) {
+                samePlaceAndNumberCount++;
+            }
+        }
+        return samePlaceAndNumberCount;
+    }
+
+    public int countOtherPlacesAndSameNumbers() {
+        int otherPlaceAndSameNumberCount = 0;
+
+        for (int i = 0; i < userInputNumbers.size(); i++) {
+            if (computerGenerateNumbers.get(i) != userInputNumbers.get(i) && computerGenerateNumbers.contains(userInputNumbers.get(i))) {
+                otherPlaceAndSameNumberCount++;
+            }
+        }
+        return otherPlaceAndSameNumberCount;
     }
 
     public void setComputerGenerateNumbers(List<Integer> computerGenerateNumbers) {
         this.computerGenerateNumbers = computerGenerateNumbers;
-    }
-
-    public List<Integer> getComputerGenerateNumbers() {
-        return this.computerGenerateNumbers;
     }
 }

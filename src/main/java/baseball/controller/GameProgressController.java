@@ -39,7 +39,7 @@ public class GameProgressController {
         while (!isAnswer) {
             String userInputString = inputView.getUserGuessingNumbers();
             saveUserNumbers(userInputString);
-            isAnswer = computerController.checkUserInputWithAnswer(gameNumber.getUserInputNumbers(), gameNumber.getComputerGenerateNumbers());
+            isAnswer = computerController.checkUserInputWithAnswer(gameNumber);
             outputView.printHint(computerController.createHintMessage());
         }
         if (isAnswer) {
