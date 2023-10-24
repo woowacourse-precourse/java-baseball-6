@@ -1,7 +1,5 @@
 package baseball;
 
-import java.lang.System;
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -41,13 +39,13 @@ public class Baseball {
         int ballNum=result[1];
 
         if(strikeNum==0 && ballNum==0) {
-            System.out.print("낫싱");
+            System.out.println("낫싱");
             return;
         }
 
         if(strikeNum!=0) System.out.print(strikeNum+"스트라이크 ");
-        if(ballNum!=0) System.out.println(ballNum+"볼");
-
+        if(ballNum!=0) System.out.print(ballNum+"볼");
+        System.out.print("\n");
     }
 
     public int[] countResult(String input){
@@ -84,6 +82,7 @@ public class Baseball {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input=Console.readLine();
         if(input.equals("1")){
+            initBaseball();
             playBaseball();
         } // 종료
         // 에러처리
