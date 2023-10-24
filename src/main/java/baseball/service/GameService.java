@@ -9,14 +9,22 @@ import baseball.view.PrintView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
-    Config config = new Config();
-    private final int size = config.getGameSize();
-    private final int minValue = config.getMinValue();
-    private final int maxValue = config.getMaxValue();
+
+    private final Config config;
+    private final int size;
+    private final int minValue;
+    private final int maxValue;
     Game game;
     User user;
     PrintView printView = new PrintView();
     ErrorView errorView = new ErrorView();
+
+    public GameService(Config config) {
+        this.config = config;
+        this.size = config.getGameSize();
+        this.minValue = config.getMinValue();
+        this.maxValue = config.getMaxValue();
+    }
 
     public void gameSet() {
         game = new Game(RandomUtils.getRandomNumbers(size,minValue,maxValue));

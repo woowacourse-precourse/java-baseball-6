@@ -7,8 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
     PrintView printView = new PrintView();
-
-   private final GameService gameService = new GameService();
+    Config config = new Config();
+    GameService gameService = new GameService(config);
 
     public void run() {
         setupGame();

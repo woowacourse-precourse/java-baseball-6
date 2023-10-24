@@ -1,7 +1,5 @@
 package baseball.config;
 
-import baseball.domain.Game;
-
 public class Config {
     private static final int GAME_SIZE = 3;
     private static final int MIN_VALUE = 1;
