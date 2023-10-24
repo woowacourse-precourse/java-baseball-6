@@ -29,4 +29,5 @@ class GameResultTest {
                 () -> new GameResult(1, 10)
         );
     }
+
 }
