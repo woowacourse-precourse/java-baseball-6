@@ -19,7 +19,7 @@ public class Controller {
     }
 
     private void setGame() {
-        gameService.setGage(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_OF_DIGIT);
+        gameService.setGame(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_OF_DIGIT);
     }
 
     private void startGame() throws IllegalArgumentException {

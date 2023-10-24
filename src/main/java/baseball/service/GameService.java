@@ -10,8 +10,9 @@ public class GameService {
 
     }
 
-    public void setGage(int min, int max, int size) {
+    public void setGame(int min, int max, int size) {
         this.size = size;
+
     }
 
 }
