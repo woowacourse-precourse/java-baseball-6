@@ -3,8 +3,8 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.app.Baseball;
+import baseball.domain.Player;
 import baseball.domain.RandomNumber;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -25,5 +25,11 @@ public class BaseballTest {
         baseball.compare(num1, num2);
 
         assertThat(baseball.getResult()).isEqualTo("1볼 1스트라이크");
+    }
+
+    @Test
+    void 플레이어_숫자_입력() {
+        Player player = new Player();
+        player.inputNum();
     }
 }
