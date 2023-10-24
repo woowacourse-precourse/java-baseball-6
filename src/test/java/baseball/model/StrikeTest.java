@@ -1,0 +1,28 @@
+package baseball.model;
+
+
+import baseball.model.baseball.Strike;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
+
+class StrikeTest {
+
+    Strike strike = new Strike(1);
+
+    @Test
+    @DisplayName("스트라이크의 개수가 0인지 확인한다.")
+    void check_no_count(){
+        //given
+        strike.updateStrikeCount(0);
+
+        //when
+        boolean isNoCountStrike = strike.isNoCountStrike();
+
+        //then
+        assertThat(isNoCountStrike).isTrue();
+    }
+
+
+}
