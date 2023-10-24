@@ -3,6 +3,7 @@ package baseball.domain.game;
 import baseball.domain.computer.Computer;
 import baseball.domain.input.Input;
 import baseball.domain.output.Output;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
@@ -68,6 +69,7 @@ public class Game {
         output.printRestartOrNotMessage();
 
         String opinion = input.getRestartOrNot();
+        Console.close();
 
         switch (opinion) {
             case "1":
