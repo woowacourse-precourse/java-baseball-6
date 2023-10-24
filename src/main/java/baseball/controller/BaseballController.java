@@ -23,39 +23,40 @@ public class BaseballController {
     }
 
     public void run() {
-        boolean play = true;
         outputView.startGame();
+
+        boolean play = true;
         while (play) {
-            Baseball answer = createAnswer();
-            playGame(answer);
-            play = willReplay();
+            playGame();
+            play = askReplayChoice();
         }
     }
 
-    private Baseball createAnswer() {
-        return baseballService.createAnswerBaseball();
-    }
+    private void playGame() {
+        Baseball answer = baseballService.createAnswerBaseball();
 
-    private void playGame(final Baseball answer) {
         boolean isClear = false;
         while (!isClear) {
-            isClear = guessAnswer(answer);
+            Baseball guess = getGuessBaseball();
+            BaseballGameResult result = baseballService.calculateResult(answer, guess);
+            showGameResult(result);
+            isClear = result.isClear();
         }
+
         outputView.clearGame();
     }
 
-    private boolean guessAnswer(final Baseball answer) {
+    private Baseball getGuessBaseball() {
         BaseballDto baseballDto = inputView.inputNumber();
-        Baseball baseball = baseballDto.toBaseball();
-
-        BaseballGameResult result = baseballService.calculateResult(answer, baseball);
-        ResultMessageDto resultMessageDto = new ResultMessageDto(result);
-        outputView.showGameResult(resultMessageDto.toMessage());
-
-        return result.isClear();
+        return baseballDto.toBaseball();
     }
 
-    private boolean willReplay() {
+    private void showGameResult(BaseballGameResult result) {
+        ResultMessageDto resultMessageDto = new ResultMessageDto(result);
+        outputView.showGameResult(resultMessageDto.toMessage());
+    }
+
+    private boolean askReplayChoice() {
         ReplayDto replayDto = inputView.replayGame();
         GameStatus gameStatus = GameStatus.from(replayDto.replay());
 
