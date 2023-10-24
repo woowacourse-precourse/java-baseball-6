@@ -86,34 +86,43 @@ public class Application {
         return cnt[0] == 3;
     }
 
+    public static void game(){
+        int[] computerNumbers = getRandomComputerNumber();
+
+        while(true) {
+            // 사용자 숫자 입력받기
+            int[] userNumbers = getUserNumber();
+
+            // 사용자숫자와 컴퓨터 숫자 매칭된 결과 얻기
+            int[] cnt = calcGameResult(computerNumbers,userNumbers);
+
+            // 계산된 결과 출력
+            printResult(cnt);
+
+            // 만약 게임이 끝났다면 다시 입력받지 않고 게임 재시작문구 출력
+            if (isGameEnd(cnt)){
+                break;
+            }
+        }
+    }
+    public static int restartInput(){
+        System.out.println(RESTART_GAME_OR_NOT);
+        int execInput = Integer.parseInt(Console.readLine());
+
+        if (!(execInput == 1 || execInput == 2)){
+            throw new IllegalArgumentException(CHOICE_ONE_OR_TWO);
+        }
+        return execInput;
+    }
+
     public static void main(String[] args) {
         System.out.println(START_GAME);
         int execInput = 1;
         while (execInput == 1){
-            int[] computerNumbers = getRandomComputerNumber();
 
-            while(true) {
-                // 사용자 숫자 입력받기
-                int[] userNumbers = getUserNumber();
+            game();
 
-                // 사용자숫자와 컴퓨터 숫자 매칭된 결과 얻기
-                int[] cnt = calcGameResult(computerNumbers,userNumbers);
-
-                // 계산된 결과 출력
-                printResult(cnt);
-
-                // 만약 게임이 끝났다면 다시 입력받지 않고 게임 재시작문구 출력
-                if (isGameEnd(cnt)){
-                    break;
-                }
-            }
-
-            System.out.println(RESTART_GAME_OR_NOT);
-            execInput = Integer.parseInt(Console.readLine());
-
-            if (!(execInput == 1 || execInput == 2)){
-                throw new IllegalArgumentException(CHOICE_ONE_OR_TWO);
-            }
+            execInput = restartInput();
 
         }
     }
