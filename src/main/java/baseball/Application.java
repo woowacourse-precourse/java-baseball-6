@@ -23,18 +23,7 @@ public class Application {
             while (ans == 0) {
                 //잘못 입력 시 (IllegalArgumentException 발생)
 
-                System.out.print("숫자를 입력해주세요 : ");
-                List<Integer> user = new ArrayList<>();
-
-                String input = sc.next();
-
-                for (String num : input.split("")) {
-                    user.add(Integer.parseInt(num));
-                }
-
-                if (user.size() != 3 || user.size() != user.stream().distinct().count()) {
-                    throw new IllegalArgumentException("입력된 숫자를 확인해주세요.");
-                }
+                List<Integer> user = getUserNumber(sc);
 
                 //숫자 비교
                 //총 개수 확인
@@ -88,6 +77,7 @@ public class Application {
         }
     }
 
+    //클래스 정의 부분
     private static List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -97,5 +87,21 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    private static List<Integer> getUserNumber(Scanner sc) {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> user = new ArrayList<>();
+
+        String input = sc.next();
+
+        for (String num : input.split("")) {
+            user.add(Integer.parseInt(num));
+        }
+
+        if (user.size() != 3 || user.size() != user.stream().distinct().count()) {
+            throw new IllegalArgumentException("입력된 숫자를 확인해주세요.");
+        }
+        return user;
     }
 }
