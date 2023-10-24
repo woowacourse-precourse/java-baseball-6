@@ -30,6 +30,21 @@ public class Application {
         return new GameResult(ball, strike);
     }
 
+    public static void printBallAndStrike(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        if (ball > 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        if (ball == 0 && strike > 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        if (ball > 0 && strike > 0) {
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+        }
+    }
+
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int BASEBALL_SIZE = 3;
