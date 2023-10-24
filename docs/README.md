@@ -1,7 +1,36 @@
 
-# 구현할 기능 목록
+# 미션 - 숫자 야구
+## 🎯 요구 사항
+### 프로그래밍 요구 사항
+- [x] 프로그램 종료 시 `System.exit()` 호출하지 않는다.
+- [x] `ApplicationTest` 모든 테스트 성공해야 한다.
+- [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+  - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+  - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
-## 기능 목록
+
+### 진행 요구 사항
+- [x] 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
+
+## ⚙ 구현할 기능
+### 📮 패키지 구조
+-  📁baseball
+    - 📁 controller
+      - BaseballGameController.java
+    - 📁 domain
+      - Computer.java
+      - User.java
+    - 📁 domain
+      - BaseballGameService.java 
+    - 📁 service
+      - BaseballGameService.java
+    - 📁 validation
+      - BaseballGameValidation.java
+    - 📁 view
+      - BaseballGameView.java
+    - Application.java
+
+### 🚀 기능 
 - [x] 컴퓨터가 1 ~ 9 범위 내 서로 다른 랜덤한 생성
   - [x] 라이브러리에서 제공하는 API를 사용하여 랜덤한 번호 생성
   
@@ -32,7 +61,7 @@
   - [x] 재시작하는 화면 출력
   - [x] 볼, 스트라이크 결과 출력
 
-## 테스트 목록
+### 🎫테스트 
 - [x] 도메인 테스트
   - [x] 유저 테스트
     - [x] 유저 입력 테스트
