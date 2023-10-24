@@ -1,11 +1,12 @@
-package baseball.game;
+package baseball.service;
 
 import java.util.List;
 
-public class BallCounter {
+public class BallCountService {
 
     private int strike;
     private int ball;
+
     public Integer countStrike(List<Integer> userNum, List<Integer> comNum) {
         strike = 0;
         for (int i = 0; i < userNum.size(); i++) {
