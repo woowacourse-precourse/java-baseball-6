@@ -23,10 +23,6 @@ public class Output {
         System.out.println(RESTART_OR_NOT);
     }
 
-    public void printNumberIsNoneMessage() {
-        System.out.println(NUMBER_IS_NON_1_OR_2);
-    }
-
     public void printGetNumberMessage() {
         System.out.print(WAITING_NUMBER);
     }

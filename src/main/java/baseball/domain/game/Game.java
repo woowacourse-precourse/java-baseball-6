@@ -1,5 +1,7 @@
 package baseball.domain.game;
 
+import static baseball.domain.output.Output.NUMBER_IS_NON_1_OR_2;
+
 import baseball.domain.computer.Computer;
 import baseball.domain.input.Input;
 import baseball.domain.output.Output;
@@ -70,7 +72,7 @@ public class Game {
                 Console.close();
                 return;
             default:
-                output.printNumberIsNoneMessage();
+                throw new IllegalArgumentException(NUMBER_IS_NON_1_OR_2);
         }
     }
 
