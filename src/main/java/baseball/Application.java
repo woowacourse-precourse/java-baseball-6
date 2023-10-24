@@ -3,6 +3,9 @@ package baseball;
 import java.util.List;
 
 public class Application {
+
+    public static final int EXIT_NUMBER = 2;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         BaseBallGame baseBallGame = new BaseBallGame(new RandomNumberGenerator(new DefaultRandomService()));
@@ -23,7 +26,7 @@ public class Application {
     private static boolean playingGame(String gameResult, InputDevice inputDevice) {
         if (gameResult.equals(Score.THREE_STRIKE.getName())) {
             int restartOrExit = inputDevice.restartOrExit();
-            return restartOrExit != 2;
+            return restartOrExit != EXIT_NUMBER;
         }
         return true;
     }
