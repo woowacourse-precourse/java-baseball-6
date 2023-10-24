@@ -8,7 +8,7 @@ import java.util.List;
 public class BaseBallGame {
 
 
-    public void GameStart() {
+    public static void GameStart() {
         Output.StartMessage();
         do {
             Settings.computer = Settings.GenerateNumbers();
@@ -19,7 +19,7 @@ public class BaseBallGame {
         } while (Settings.restart.equals("1"));
     }
 
-    public void ComparingNumbers(List<Integer> computer) {
+    public static void ComparingNumbers(List<Integer> computer) {
         do {
             Settings.Init();
             Output.RequestInputMessage();
@@ -32,13 +32,13 @@ public class BaseBallGame {
         } while (Settings.strike != 3);
     }
 
-    public void ChangeInputToInt(String userInput) {
+    public static void ChangeInputToInt(String userInput) {
         for (char c : userInput.toCharArray()) {
             Settings.user.add(c - '0');
         }
     }
 
-    public void CountStrike(List<Integer> user) {
+    public static void CountStrike(List<Integer> user) {
         for (int i = 0; i < user.size(); i++) {
             if (Settings.computer.contains(user.get(i)) && Settings.computer.indexOf(user.get(i)) == i) {
                 Settings.strike++;
@@ -46,7 +46,7 @@ public class BaseBallGame {
         }
     }
 
-    public void CountBall(List<Integer> user) {
+    public static void CountBall(List<Integer> user) {
         for (int i = 0; i < user.size(); i++) {
             if (Settings.computer.contains(user.get(i)) && Settings.computer.indexOf(user.get(i)) != i) {
                 Settings.ball++;
