@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.Computer;
+import baseball.domain.GameResult;
+import baseball.domain.GameResultMessage;
 import baseball.domain.Player;
 import baseball.service.GameService;
 import baseball.view.InputView;
@@ -30,11 +32,11 @@ public class GameController {
 	}
 
 	private void repeatBaseballGamePlayingUntilEnding(final Computer computer) {
-		String gameResultMessage = "";
-		while (!gameService.isEnded(gameResultMessage)) {
+		GameResult gameResult = new GameResult();
+		while (!gameService.isEnded(gameResult)) {
 			final Player player = new Player(getNumbersInput());
-			gameResultMessage = gameService.requestJudgment(computer, player);
-			OutputView.printGameResultMessage(gameResultMessage);
+			gameResult = gameService.requestJudgment(computer, player);
+			OutputView.printGameResultMessage(GameResultMessage.createMessage(gameResult));
 		}
 	}
 

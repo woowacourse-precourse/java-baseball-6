@@ -8,23 +8,20 @@ import baseball.domain.balls.Balls;
 
 public class GameService {
 
-	private static final String END_CONDITION = "3스트라이크";
-
 	public Computer createComputer() {
 		return new Computer();
 	}
 
-	public String requestJudgment(final Computer computer, final Player player) {
-		Referee referee = new Referee();
-		Balls computerBalls = computer.getBalls();
-		Balls playerBalls = player.getBalls();
+	public GameResult requestJudgment(final Computer computer, final Player player) {
+		final Referee referee = new Referee();
+		final Balls computerBalls = computer.getBalls();
+		final Balls playerBalls = player.getBalls();
 
-		GameResult gameResult = referee.judge(computerBalls, playerBalls);
-		return referee.notifyGameResult(gameResult);
+		return referee.judge(computerBalls, playerBalls);
 	}
 
-	public boolean isEnded(final String gameResultMessage) {
-		return gameResultMessage.equals(END_CONDITION);
+	public boolean isEnded(final GameResult gameResult) {
+		return gameResult.isEnded();
 	}
 
 	public boolean isReplay(final String replayCommandInput) {
