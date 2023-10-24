@@ -41,7 +41,7 @@ public class Computer {
         return this.numbers.contains(randomNumber);
     }
 
-    public String getGameResultMessage(List<Integer> player) {
+    public String getGameResultMessage(Player player) {
         Result result = calculateGameResult(player);
         int strike = result.getStrike();
         int ball = result.getBall();
@@ -70,14 +70,14 @@ public class Computer {
         return message.toString();
     }
 
-    public Result calculateGameResult(List<Integer> player) {
+    public Result calculateGameResult(Player player) {
         int strike = 0;
         int ball = 0;
 
         int computerNumber, playerNumber;
         for (int i = 0; i < this.numbers.size(); i++) {
             computerNumber = this.numbers.get(i);
-            playerNumber = player.get(i);
+            playerNumber = player.getNumbers().get(i);
 
             if (computerNumber == playerNumber) {
                 strike++;
