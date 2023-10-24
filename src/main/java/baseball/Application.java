@@ -87,14 +87,14 @@ public class Application {
                 && (1 <= indexTwo && indexTwo <= 9);
     }
 
-    public static boolean isDifferentRandomNumber(List<Integer> threeRandomNumber) {
-        Integer indexZero = threeRandomNumber.get(0);
-        Integer indexOne = threeRandomNumber.get(1);
-        Integer indexTwo = threeRandomNumber.get(2);
+    public static boolean isDifferentRandomNumber(String userInput) {
+        int indexZero = userInput.charAt(0) - '0';
+        int indexOne = userInput.charAt(1) - '0';
+        int indexTwo = userInput.charAt(2) - '0';
 
-        return (!indexZero.equals(indexOne))
-                && (!indexOne.equals(indexTwo))
-                && (!indexTwo.equals(indexZero));
+        return (indexZero != indexOne)
+                && (indexOne != indexTwo)
+                && (indexTwo != indexZero);
     }
 
 }
