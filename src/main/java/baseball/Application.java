@@ -14,6 +14,7 @@ public class Application {
         while (gameButton == 1) {
             // 컴퓨터 랜덤 숫자 선택
             Computer computer = new Computer();
+            computer.setComputerNumber();
             List<Integer> computerNumber = computer.getComputerNumber();
             System.out.println(computerNumber);
 
@@ -22,6 +23,8 @@ public class Application {
                 try {
                     // 플레이어 숫자 입력
                     Player player = new Player();
+                    System.out.println("숫자를 입력해주세요 : ");
+                    player.setPlayerNumber(Console.readLine());
                     List<Integer> playerNumber = player.getPlayerNumber();
 
                     // 숫자 비교

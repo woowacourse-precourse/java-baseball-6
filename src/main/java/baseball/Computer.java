@@ -13,7 +13,7 @@ public class Computer {
         return computerNumber;
     }
 
-    public Computer() {
+    public void setComputerNumber() {
         this.computerNumber = pickRandomNumber();
     }
 

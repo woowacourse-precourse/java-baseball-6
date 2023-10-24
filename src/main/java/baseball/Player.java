@@ -12,21 +12,14 @@ public class Player {
         return playerNumber;
     }
 
-    public Player() throws IllegalArgumentException {
-        String inputNumber = playerInput();   // 플레이어 숫자 입력
-        validationNumber(inputNumber);   // 유효성 검사: 숫자 여부
-        List<Integer> inputNumberInt = changeToInt(inputNumber);   // 입력값 정수 리스트로 변환
-        validationThree(inputNumberInt);   // 유효성 검사: 세 자리 수
-        validationRange(inputNumberInt);   // 유효성 검사: 1~9 사이의 수
-        validationDuplicate(inputNumberInt);   // 유효성 검사: 중복 여부
+    public void setPlayerNumber(String playerInput) throws IllegalArgumentException {
+        validationNumber(playerInput);   // 유효성 검사: 숫자 여부
+        List<Integer> inputNumber = changeToInt(playerInput);   // 입력값 정수 리스트로 변환
+        validationThree(inputNumber);   // 유효성 검사: 세 자리 수
+        validationRange(inputNumber);   // 유효성 검사: 1~9 사이의 수
+        validationDuplicate(inputNumber);   // 유효성 검사: 중복 여부
 
-        this.playerNumber = inputNumberInt;
-    }
-
-    // 플레이어 숫자 입력
-    public String playerInput() {
-        System.out.println("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        this.playerNumber = inputNumber;
     }
 
     // 입력값 정수 리스트로 변환
