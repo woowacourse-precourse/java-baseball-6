@@ -21,7 +21,12 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(quit != 2){
             System.out.printf("숫자를 입력해주세요 : ");
-            inputnumber = user.saveinput(Integer.parseInt(Console.readLine()));
+            try {
+                inputnumber = user.saveinput(Integer.parseInt(Console.readLine()));
+            }
+            catch (Exception e){
+                throw new IllegalArgumentException();
+            }
             count = referee.judgecount(inputnumber, randomnumber);
             quit = referee.printcount(count);
             if(quit == 1){
