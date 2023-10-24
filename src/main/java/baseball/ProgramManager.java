@@ -7,5 +7,11 @@ public class ProgramManager {
     private Answer answer;
     private Validator validator;
 
+    public ProgramManager() {
+        reader = new Reader();
+        writer = new Writer();
+        answer = new Answer();
+        validator = new Validator();
+    }
 
 }
