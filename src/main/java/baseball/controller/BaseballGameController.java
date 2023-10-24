@@ -1,29 +1,39 @@
 package baseball.controller;
 
-import baseball.dto.GameResultDto;
 import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
-    GameResultDto gameResultDto = new GameResultDto();
     InputView inputView = new InputView();
-    BaseballGameService game = new BaseballGameService(gameResultDto);
+    BaseballGameService game = new BaseballGameService();
 
     public BaseballGameController() {
         displayStartMessage();
     }
 
     public void run() {
-        game.initGame();
-        while (!gameResultDto.getIsCorrectAnswer()) {
+        initGame();
+        playGame();
+        askToRestartGame();
+    }
+
+    private void initGame() {
+        game.initDto();
+    }
+
+    private void playGame() {
+        while (!game.getIsCorrectAnswer()) {
             displayNumberInputMessage();
             game.playGame(getUserInput());
-            OutputView.gameResultMessage(gameResultDto.getGameResultMessage());
+            OutputView.gameResultMessage(game.getResultMessage());
         }
+    }
+
+    private void askToRestartGame() {
         displayWhenAnsweredCorrectMessage();
         game.restartGame(getUserInput());
-        if (gameResultDto.getIsRestart()) {
+        if (game.getIsRestart()) {
             run();
             return;
         }

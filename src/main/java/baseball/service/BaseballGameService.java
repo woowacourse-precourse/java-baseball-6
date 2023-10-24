@@ -14,13 +14,9 @@ public class BaseballGameService {
     private final InputNumberValidator validator = new InputNumberValidator();
     private final StrikeBallCounter strikeBallCounter = new StrikeBallCounter();
     private final GameResult gameResult = new GameResult();
-    private final GameResultDto gameResultDto;
+    private final GameResultDto gameResultDto = new GameResultDto();
     private final NumberDto numberDto = new NumberDto();
     private final StrikeBallResultDto strikeBallDto = new StrikeBallResultDto();
-
-    public BaseballGameService(GameResultDto gameResultDto) {
-        this.gameResultDto = gameResultDto;
-    }
 
     public void playGame(String playerInput) { //반복되는 게임 진행 역할
         numberDto.setValidateInput(validator.validateAllInput(playerInput));
@@ -35,7 +31,7 @@ public class BaseballGameService {
         }
     }
 
-    public void initGame() {
+    public void initDto() {
         RandomNumberGenerator computerNumber = new RandomNumberGenerator();
         gameResultDto.setIsRestart(false);
         gameResultDto.setIsCorrectAnswer(false);
@@ -53,5 +49,17 @@ public class BaseballGameService {
         GameResultData gameResultData = gameResult.result(strikeBallDto.getStrike(), strikeBallDto.getBall());
         gameResultDto.setGameResultMessage(gameResultData.getGameResultMessage());
         gameResultDto.setIsCorrectAnswer(gameResultData.getIsCorrectAnswered());
+    }
+
+    public boolean getIsCorrectAnswer() {
+        return gameResultDto.getIsCorrectAnswer();
+    }
+
+    public String getResultMessage() {
+        return gameResultDto.getGameResultMessage();
+    }
+
+    public boolean getIsRestart() {
+        return gameResultDto.getIsRestart();
     }
 }
