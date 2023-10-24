@@ -2,8 +2,6 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.model.CompareNumber;
-import baseball.model.JudgementResult;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,18 +20,18 @@ class JudgementResultTest {
     @Test
     @DisplayName("3볼 확인")
     void checkBall() {
-        assertThat("3볼").isEqualTo(judgementResult.judgementResult(Arrays.asList(3,1,2),Arrays.asList(1,2,3)));
+        assertThat("3볼").isEqualTo(judgementResult.judgementResult(Arrays.asList(3, 1, 2), Arrays.asList(1, 2, 3)));
     }
 
     @Test
     @DisplayName("3스트라이크 확인")
     void checkStrike() {
-        assertThat("3스트라이크").isEqualTo(judgementResult.judgementResult(Arrays.asList(1,2,3),Arrays.asList(1,2,3)));
+        assertThat("3스트라이크").isEqualTo(judgementResult.judgementResult(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3)));
     }
 
     @Test
     @DisplayName("낫싱 확인")
-    void checkNothing(){
-        assertThat("낫싱").isEqualTo(judgementResult.judgementResult(Arrays.asList(1,2,3),Arrays.asList(4,5,6)));
+    void checkNothing() {
+        assertThat("낫싱").isEqualTo(judgementResult.judgementResult(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)));
     }
 }
