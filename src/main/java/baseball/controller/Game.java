@@ -2,10 +2,9 @@ package baseball.controller;
 
 import baseball.constant.GameResult;
 import baseball.model.Computer;
-import baseball.model.GameNumber;
+import baseball.model.Numbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.List;
 import java.util.Map;
 
@@ -19,24 +18,24 @@ public class Game {
     public Game() {
         outputView = new OutputView();
         inputView = new InputView();
-        computer = generateComputer();
+        computer = createComputer();
     }
 
-    public void play(List<Integer> userNumbers) {
-        GameNumber userGameNumber = new GameNumber(userNumbers);
-        Map<GameResult, Long> result = computer.compare(userGameNumber);
+    public void play(List<Integer> inputNumbers) {
+        Numbers userNumbers = new Numbers(inputNumbers);
+        Map<GameResult, Long> result = computer.compare(userNumbers);
         outputView.printGameResult(result);
-        if (!checkGameOver(result)) {
-            play(inputView.inputGameNumbers());
-            return ;
+        if (checkGameOver(result)) {
+            outputView.printGameFinish();
+            return;
         }
-        outputView.printGameFinish();
+        play(inputView.inputNumbers());
     }
 
 
-    private Computer generateComputer() {
-        List<Integer> computerNumber = Computer.createNumbers();
-        return new Computer(computerNumber);
+    private Computer createComputer() {
+        List<Integer> numbers = Computer.createNumbers();
+        return new Computer(numbers);
     }
 
 
