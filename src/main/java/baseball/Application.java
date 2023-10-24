@@ -60,14 +60,43 @@ public class Application {
         return set.size() == list.size();
     }
 
+    public static int getHintForAnswer(int[] arrayPlayerNumber, List<Integer> listAnswerNumber) {
+        int numberOfStrikes = 0;
+        int numOfBalls = 0;
+
+        for (int i = 0; i < listAnswerNumber.size(); i++) {
+            if (listAnswerNumber.get(i) == arrayPlayerNumber[i]) {
+                numberOfStrikes++;
+                continue;
+            }
+            if (listAnswerNumber.contains(arrayPlayerNumber[i])) {
+                numOfBalls++;
+            }
+        }
+
+        System.out.printf((numOfBalls != 0) ? "%d볼 " : "", numOfBalls);
+        System.out.printf((numberOfStrikes != 0) ? "%d스트라이크" : "", numberOfStrikes);
+
+        if (numOfBalls != 0 || numberOfStrikes != 0) {
+            System.out.println();
+        }
+        if ((numOfBalls == 0) && (numberOfStrikes == 0)) {
+            System.out.println("낫싱");
+        }
+
+        return numberOfStrikes;
+    }
+
     public static void main(String[] args) {
         List<Integer> listAnswerNumber = makeRandomNumberList();
         int[] arrayPlayerNumber = null;
+        int numberOfStrikes = 0;
 
         System.out.println("숫자 야구 게임을 시작합니다. ");
         while (true) {
             System.out.print("숫자를 입력해주세요: ");
             arrayPlayerNumber = inputAndGetUserNumbers();
+            numberOfStrikes = getHintForAnswer(arrayPlayerNumber, listAnswerNumber);
         }
 
     }
