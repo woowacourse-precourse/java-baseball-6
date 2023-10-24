@@ -62,6 +62,49 @@ class BaseBallNumberTest {
         assertThat(Arrays.stream(numbers).allMatch(number -> number >= 1 && number <= 9)).isTrue();
         assertThat(numberSet).hasSize(3);
     }
+
+    @ParameterizedTest()
+    @MethodSource("InputStringStream")
+    @DisplayName("두 BaseBallNumber 간의 strike와 ball에 대한 계산이 제대로 이루어지는지 확인하는 테스트")
+    void calculateTest(String inputString, int strikeCount, int ballCount) {
+        // given
+        BaseBallNumber computerNumber = BaseBallNumber.generateNumber("123");
+        AtomicInteger strike = new AtomicInteger(0);
+        AtomicInteger ball = new AtomicInteger(0);
+
+        // when
+        BaseBallNumber inputBaseBallNumber = BaseBallNumber.generateNumber(inputString);
+
+        computerNumber.calculate((targetNumber, computerIndex) ->
+                inputBaseBallNumber.calculate((inputNumber, inputIndex) -> {
+                    if(!Objects.equals(targetNumber, inputNumber)) return;
+
+                    if(computerIndex.equals(inputIndex)) {
+                        strike.getAndIncrement();
+                    }
+                    else {
+                        ball.getAndIncrement();
+                    }
+                })
+        );
+
+        // then
+        assertThat(strike.get()).isEqualTo(strikeCount);
+        assertThat(ball.get()).isEqualTo(ballCount);
+
+    }
+
+    static Stream<Arguments> InputStringStream() {
+        return Stream.of(
+                Arguments.of("123", 3, 0),
+                Arguments.of("234", 0, 2),
+                Arguments.of("456", 0, 0),
+                Arguments.of("789", 0, 0),
+                Arguments.of("321", 1, 2),
+                Arguments.of("132", 1, 2)
+        );
+    }
+
     static Stream<Arguments> inValidNumberArray() {
         return Stream.of(
                 Arguments.of("3자리보다 큰 숫자 문자열이 들어온 경우", "1234"),
