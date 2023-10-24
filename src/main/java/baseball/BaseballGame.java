@@ -44,8 +44,6 @@ public class BaseballGame {
 
         if (ReplayValue.equals(Constant.wantToReplay)) {
             GameStart();
-        } else if (ReplayValue.equals(Constant.gameExit)) {
-            return;
         }
     }
 }
