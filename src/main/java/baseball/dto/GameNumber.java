@@ -20,7 +20,7 @@ public class GameNumber {
     }
 
     private static List<Integer> inputToNumbers(String input) {
-        List<Integer> numbers = new ArrayList<Integer>();
+        List<Integer> numbers = new ArrayList<>();
         for (Character c : input.toCharArray()) {
             numbers.add(Character.getNumericValue(c));
         }

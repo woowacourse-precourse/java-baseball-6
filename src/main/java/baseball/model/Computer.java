@@ -23,7 +23,6 @@ public class Computer {
         answerList = setToIntegerList(answerSet);
     }
 
-    // TODO: Computer에서 GameResult 생성 로직을 관리하는 것이 맞는지 고민하기
     public GameResult calculateGameResult(GameNumber gameNumber) {
         Integer ballCount = 0;
         Integer strikeCount = 0;

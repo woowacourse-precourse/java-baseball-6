@@ -1,10 +1,10 @@
 package baseball.exception;
 
+import baseball.constant.ErrorMessage;
+
 public class InvalidRetryInputException extends IllegalArgumentException {
 
-    private static final String MESSAGE = "유효하지 않은 재시도 여부 입력입니다.";
-
     public InvalidRetryInputException() {
-        super(MESSAGE);
+        super(ErrorMessage.RETRY_INPUT_ERROR.toString());
     }
 }
