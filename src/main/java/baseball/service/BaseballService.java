@@ -6,8 +6,8 @@ import java.util.List;
 
 public class BaseballService {
 
-    final String BALL = "볼";
-    final String STRIKE = "스트라이크";
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
 
     public BaseballService() {
 
@@ -20,8 +20,6 @@ public class BaseballService {
      * @return 게임 결과
      */
     public String getGameResult(String tryGame, String answer) {
-        String result = "낫싱";
-
         int strikeCnt = 0;
         int ballCnt = 0;
 
@@ -33,16 +31,7 @@ public class BaseballService {
             }
         }
 
-        if (ballCnt > 0) {
-            result = ballCnt + BALL + " ";
-        } else if (strikeCnt != 0) {
-            result = "";
-        }
-        if (strikeCnt > 0) {
-            result += strikeCnt + STRIKE;
-        }
-
-        return result;
+        return makeBaseBallGameSentence(ballCnt, strikeCnt);
     }
 
     public String makeNewGame() {
@@ -61,12 +50,8 @@ public class BaseballService {
         if (target.length() != 3) {
             return false;
         }
-        if (target.charAt(0) == target.charAt(1) || target.charAt(1) == target.charAt(2)
-                || target.charAt(2) == target.charAt(0)) {
-            return false;
-        }
-
-        return true;
+        return target.charAt(0) != target.charAt(1) && target.charAt(1) != target.charAt(2)
+                && target.charAt(2) != target.charAt(0);
     }
 
     private boolean isStrike(int point, char target, String answer) {
@@ -80,5 +65,19 @@ public class BaseballService {
             }
         }
         return false;
+    }
+
+    private String makeBaseBallGameSentence(int ballCnt, int strikeCnt) {
+        if (ballCnt > 0 && strikeCnt > 0) {
+            return ballCnt + BALL + " " + strikeCnt + STRIKE;
+        }
+        else if (ballCnt > 0) {
+            return ballCnt + BALL;
+        }
+        else if (strikeCnt > 0) {
+            return strikeCnt + STRIKE;
+        }
+
+        return "낫싱";
     }
 }
