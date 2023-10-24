@@ -14,14 +14,14 @@ public class Input {
     }
 
     private void validate(String userInput){
-        checkIfInputNumberLengthIsThree(userInput);
+        checkIfInputNumberLengthIsGivenLength(userInput,3);
         checkIfInputNumberIsNotNumberFormat(userInput);
         checkIfInputNumberIsDuplicate(userInput);
     }
 
-    private void checkIfInputNumberLengthIsThree(String userInput){
-        if(userInput.length() != 3){
-            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력의 길이가 3이 아닙니다.");
+    private void checkIfInputNumberLengthIsGivenLength(String userInput, int length){
+        if(userInput.length() != length){
+            throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력의 길이가 " + length + "가 아닙니다.");
         }
     }
     private void checkIfInputNumberIsNotNumberFormat(String userInput){

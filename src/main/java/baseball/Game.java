@@ -11,10 +11,12 @@ public class Game {
     private Status status;
     private Computer computer;
     private Input input;
+    private Output output;
 
     public Game(){
         computer = new Computer();
         input = new Input();
+        output = new Output();
     }
 
     public void init(){
