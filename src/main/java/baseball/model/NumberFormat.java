@@ -17,7 +17,6 @@ public class NumberFormat {
      }
 
      public static NumberFormat generateRandomNumber(){
-//          List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
           List<Integer> randomNumberList = new ArrayList<>();
           while (randomNumberList.size() < DIGIT_CONSTRAINT){
                int randomNumber = Randoms.pickNumberInRange(1, 9);
