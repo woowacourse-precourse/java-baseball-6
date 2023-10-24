@@ -4,7 +4,7 @@ import baseball.domain.scoringnumbers.Balls;
 import baseball.domain.scoringnumbers.Strikes;
 
 public class OutputHandler {
-    public static void theGameStart() {
+    public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
