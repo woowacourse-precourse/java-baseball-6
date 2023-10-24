@@ -4,6 +4,7 @@ public class Game {
 
     private Player player;
     private Computer computer;
+    private State state;
 
     public Game(Computer c, Player p) {
         computer = c;
@@ -11,7 +12,9 @@ public class Game {
     }
 
     public void start() {
-        // TODO: 숫자 야구 게임 시작 프린트 문 추가
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        state = State.PROGRESS;
+        playGame();
     }
 
     public void playGame() {
@@ -23,6 +26,6 @@ public class Game {
     }
 
     public void restart() {
-        // TODO: 게임 재시작 로직 추가
+        // TODO: 게임 재시작 로직 추
     }
 }
