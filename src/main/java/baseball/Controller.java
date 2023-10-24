@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.config.GameConfiguration;
 import baseball.service.GameService;
 
 public class Controller {
@@ -20,7 +19,7 @@ public class Controller {
     }
 
     private void setGame() {
-        new GameConfiguration(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_OF_DIGIT);
+        gameService.setGage(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_OF_DIGIT);
     }
 
     private void startGame() throws IllegalArgumentException {
