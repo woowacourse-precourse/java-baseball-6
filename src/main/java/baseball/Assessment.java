@@ -8,8 +8,8 @@ public class Assessment {
     // 결과 판정
     public static void assessment(ArrayList<Integer> c, ArrayList<Integer> u) {
 
-        int ball = 0 ;
-        int strike = 0 ;
+        int ball = 0;
+        int strike = 0;
 
         for (int i = 0; i < c.size(); i++) {
             if (c.get(i).equals(u.get(i))) {
@@ -40,7 +40,6 @@ public class Assessment {
             ArrayList<Integer> newUserinput = UserInput.userInput();
             Assessment.assessment(c, newUserinput);
         }
-
 
 
     }
