@@ -60,6 +60,8 @@ class User {
         System.out.print("숫자를 입력해주세요 : ");
 
         String playerStringNumsInput = Console.readLine();
+        validateUserInput(playerStringNumsInput);
+
         List<Integer> playerNumsTemp = new ArrayList<>();
 
         for (int i = 0; i < answerSize; i++) {
@@ -69,6 +71,24 @@ class User {
         return playerNumsTemp;
     }
 
+    private void validateUserInput(String userInput) throws IllegalArgumentException {
+
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < userInput.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (userInput.charAt(i) == (userInput.charAt(j))) {
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
+        if (userInput.contains("0")) {
+            throw new IllegalArgumentException();
+
+        }
+
+    }
 }
 
 public class Application {
@@ -82,11 +102,11 @@ public class Application {
         System.out.println(computer.answer);
         while (true) {
             result = computer.compare(user.userInput());
-            System.out.println(result);
 
             if (result.get(0) == (null)) {
                 System.out.print("낫싱\n");
             } else if (result.get(1) > 2) {
+                System.out.println("3스트라이크");
                 System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 if (Console.readLine().equals("2")) {
