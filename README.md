@@ -1,3 +1,18 @@
+## Method
+1. List<Integer> randomNum()
+   - 컴퓨터가 1~9로 이루어진 랜덤 숫자 3자리 생성
+2. int strike(List<Integer> comNumber, List<Integer> userNumber)
+   - 스트라이크 갯수
+3. int ball(List<Integer> comNumber, List<Integer> userNumber)
+   - 볼 갯수
+
+## 예외처리
+- 입력 숫자를 3자리값이 아닌 수를 입력한 경우
+- 1~9가 아닌 같은 숫자를 입력한 경우
+- 0을 입력했을 경우
+- 재시작 시 1,2 이외를 입력했을 경우
+
+
 # 미션 - 숫자 야구
 
 ## 🔍 진행 방식
