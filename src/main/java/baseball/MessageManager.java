@@ -4,16 +4,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class MessageManager extends Messages {
 
-    private String inputNumber;
-    private String continueResponse;
-
     public void showIntro() {
         System.out.println(super.getIntroText());
     }
 
     public String getInputNumber() {
         System.out.print(super.getInputText());
-        inputNumber = readLine();
+        String inputNumber = readLine();
         return inputNumber;
     }
 
@@ -23,7 +20,7 @@ public class MessageManager extends Messages {
 
     public String getContinueResponse() {
         System.out.println(super.getWillRestartText());
-        continueResponse = readLine();
+        String continueResponse = readLine();
         System.out.println();
         return continueResponse;
     }
