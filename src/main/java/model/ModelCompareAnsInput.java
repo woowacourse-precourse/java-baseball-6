@@ -36,4 +36,15 @@ public class ModelCompareAnsInput {
 
     }
 
+    /**
+     * 비교 결과를 통해 정답 여부 확인
+     *
+     * @param result 입력과 정답 비교 결과
+     * @return 정답 : true, 오답 : false
+     */
+    public static boolean isAns(int[] result) {
+
+        return result[1] == 3;
+    }
+
 }

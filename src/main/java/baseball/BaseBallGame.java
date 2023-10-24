@@ -35,8 +35,9 @@ public class BaseBallGame {
 
                 int[] result = ModelCompareAnsInput.compareAnsInput(computer, input);
 
-                boolean isAns = printResult(result);
-                if (isAns) {
+                ViewResult.view(result);
+
+                if (ModelCompareAnsInput.isAns(result)) {
                     break;
                 }
             }
@@ -50,19 +51,6 @@ public class BaseBallGame {
 
     }
 
-
-    /**
-     * result 값 (볼, 스트라이크 갯수)에 다른 결과 출력
-     *
-     * @param result 볼, 스트라이크 수를 포함한 array
-     * @return 정답 : true, 오답 : false
-     */
-    private boolean printResult(int[] result) {
-
-        ViewResult.view(result);
-
-        return result[1] == 3;
-    }
 
     /**
      * 재시작 여부 입력 및 예외 처리
