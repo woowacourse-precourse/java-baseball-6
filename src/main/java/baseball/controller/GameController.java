@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.model.AnswerNumber;
 import baseball.model.GameResult;
-import baseball.model.UserNumber;
+import baseball.model.UserInputNumber;
 import baseball.service.NumberMatcher;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -32,9 +32,9 @@ public class GameController {
         AnswerNumber answerNumber = new AnswerNumber();
         while (true) {
             String userInput = inputView.requestUserNumber();
-            UserNumber userNumber = new UserNumber(userInput);
+            UserInputNumber userInputNumber = new UserInputNumber(userInput);
 
-            GameResult result = numberMatcher.match(userNumber.userNumberToList(),
+            GameResult result = numberMatcher.match(userInputNumber.userNumberToList(),
                 answerNumber.answerNumberToList());
 
             outputView.displayResult(result.getBallCount(), result.getStrikeCount());
