@@ -19,7 +19,6 @@ public class BaseballValidator {
 
     public static void validateInput(final String input) {
         validateInputDigit(input);
-
     }
 
     private static void validateInputDigit(final String input) {
@@ -30,12 +29,12 @@ public class BaseballValidator {
         }
     }
 
-    public static void validateCommand(String command) {
+    public static void validateCommand(final String command) {
         validateCommandDigit(command);
         validateCommandRange(command);
     }
 
-    private static void validateCommandDigit(String command) {
+    private static void validateCommandDigit(final String command) {
         try {
             Integer.parseInt(command);
         } catch (NumberFormatException e) {
@@ -43,14 +42,14 @@ public class BaseballValidator {
         }
     }
 
-    private static void validateCommandRange(String command) {
+    private static void validateCommandRange(final String command) {
         int value = Integer.parseInt(command);
         if (value != RESTART_COMMAND && value != FINISH_COMMAND) {
             throw new IllegalArgumentException(ILLEGAL_FINISH_COMMAND_MESSAGE);
         }
     }
 
-    public static void validateUserPick(List<Integer> pick) {
+    public static void validateUserPick(final List<Integer> pick) {
         validatePickSize(pick);
         validatePickDuplicate(pick);
         validatePickNoZeros(pick);

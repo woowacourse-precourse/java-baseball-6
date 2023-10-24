@@ -22,7 +22,6 @@ public class BaseballGame implements Game {
         while (true) {
 
             takeTurn();
-
             int command = getCommand();
             boolean isGameContinue = (command == RESTART_COMMAND);
 
@@ -34,7 +33,6 @@ public class BaseballGame implements Game {
 
     private void takeTurn() {
         BaseballPick answer = new BaseballPick(createNumbers());
-        answer.print();
         while (true) {
             Output.printMessage(GAME_NUMBER_INPUT_MESSAGE);
             user.pickNumber();

@@ -1,5 +1,6 @@
 package baseball.domain.baseball;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,10 @@ public class BaseballPick {
 
     public Integer get(final int index) {
         return picks.get(index);
+    }
+
+    public List<Integer> getPicks() {
+        return Collections.unmodifiableList(picks);
     }
 
     public boolean isContain(final Integer value) {
