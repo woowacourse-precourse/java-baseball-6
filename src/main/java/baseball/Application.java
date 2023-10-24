@@ -1,7 +1,10 @@
 package baseball;
 
 public class Application {
+    static final GameManager gameManager = new GameManager();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        gameManager.initGame();
+        gameManager.startGame();
     }
 }
