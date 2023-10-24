@@ -11,7 +11,7 @@ class BaseballResultStateTest {
         int[] strikes = {1, 2, 0, 0};
         String[] answers = {"2볼 1스트라이크", "2스트라이크", "1볼", "낫싱"};
 
-        for (int i=0; i<balls.length; i++) {
+        for (int i = 0; i < balls.length; i++) {
             int ball = balls[i];
             int strike = strikes[i];
             String answer = answers[i];

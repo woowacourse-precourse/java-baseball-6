@@ -16,7 +16,7 @@ public class BaseballGame {
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true) {
+        do {
             generateAnswer();
             while (true) {
                 boolean isOver = query();
@@ -25,9 +25,7 @@ public class BaseballGame {
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            if (!isRetry())
-                break;
-        }
+        } while (isRetry());
     }
 
     private void generateAnswer() {
@@ -35,9 +33,8 @@ public class BaseballGame {
 
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
+            if (!answer.contains(randomNumber))
                 answer.add(randomNumber);
-            }
         }
     }
 
@@ -48,7 +45,7 @@ public class BaseballGame {
         if (string.length() != 3)
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
 
-        int num = -1;
+        int num;
         try {
             num = Integer.parseInt(string);
         } catch (Exception e) {
@@ -66,8 +63,15 @@ public class BaseballGame {
         return result.isGameOver();
     }
 
-    public boolean isRetry() {
-        return false;
+    public boolean isRetry() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String string = Console.readLine();
+        if (string.equals("1"))
+            return true;
+        if (string.equals("2"))
+            return false;
+        throw new IllegalArgumentException("입력이 올바르지 않습니다.");
     }
 
     static public BaseballResultState match(List<Integer> a, List<Integer> b) {
