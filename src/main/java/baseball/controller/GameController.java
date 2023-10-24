@@ -38,12 +38,16 @@ public class GameController {
 			String answer = inputView.enterAnswerReGame();
 			gameRestartNumberValidator.checkRestartNumberValidity(answer);
 
-			if (answer.equals(BASEBALL_GAME_END_NUMBER_STRING)) {
-				isEndGame = false;
-			}
+			updateEndGameStatus(answer);
 			return false;
 		}
 		return true;
+	}
+
+	public void updateEndGameStatus(String answer) {
+		if (answer.equals(BASEBALL_GAME_END_NUMBER_STRING)) {
+			isEndGame = false;
+		}
 	}
 
 	public void repeatGame(Game computerData) {
