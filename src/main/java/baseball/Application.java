@@ -1,12 +1,12 @@
 package baseball;
 
 import baseball.config.DiContainer;
-import baseball.controller.ComputerController;
+import baseball.controller.Controller;
 
 public class Application {
     public static void main(String[] args) {
         DiContainer diFactory = new DiContainer();
-        ComputerController computerController = diFactory.computerController();
-        computerController.gameStart();
+        Controller GameController = diFactory.userController();
+        GameController.gameStart();
     }
 }
