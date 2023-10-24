@@ -142,3 +142,11 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 기능 목록
+1. 컴퓨터 랜덤 수 생성 구현
+2. 사용자 입력 구현
+3. 잘못된 입력 검증 추가
+4. 게임 플레이 구현
+5. 게임 재시작/종료 구현
+6. 컴퓨터 랜덤 숫자 초기화 후 새롭게 생성 구현
