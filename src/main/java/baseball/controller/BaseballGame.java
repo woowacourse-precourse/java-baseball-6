@@ -59,6 +59,7 @@ public class BaseballGame {
      * */
     public static void exit(String message) {
         System.out.println(message);
+        Console.close();
         throw new IllegalArgumentException(message);
     }
 
@@ -79,6 +80,7 @@ public class BaseballGame {
 
         } else if (input.equals("2")) {
             System.out.println(Message.expire());
+            Console.close();
         }
     }
 
