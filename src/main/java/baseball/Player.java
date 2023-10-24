@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Player {
-	private List<Integer> numberList = new ArrayList<>();
+	private List<Integer> numberList = new ArrayList<>();   // 사용자가 입력한 숫자 리스트
 
+	/**
+	 * 사용자에게 숫자를 입력받아 리스트에 저장하는 메서드
+	 */
 	public void init() {
 		numberList.clear();
-		
+
 		System.out.print("숫자를 입력해주세요 : ");
 
 		try {
@@ -33,6 +36,10 @@ public class Player {
 		}
 	}
 
+	/**
+	 * 사용자가 입력한 숫자 리스트 반환을 위한 getter 메서드
+	 * @return 사용자가 입력한 숫자 리스트
+	 */
 	public List<Integer> getNumberList() {
 		return numberList;
 	}
