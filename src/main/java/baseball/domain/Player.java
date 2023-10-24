@@ -1,12 +1,13 @@
-package baseball;
+package baseball.domain;
 
-import java.util.List;
+import static baseball.utils.AppConstants.GAME_END_NUMBER;
+import static baseball.utils.AppConstants.GAME_RESTART_NUMBER;
+
+import baseball.utils.MessagePrinter;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Player {
-    private static final String GAME_RESTART_NUMBER = "1";
-    private static final String GAME_END_NUMBER = "2";
-
     private final GameManager gameManager;
 
     public Player(GameManager gameManager) {
@@ -15,17 +16,17 @@ public class Player {
 
     public void playGame() {
         List<Integer> computerNumbers = Computer.generateRandomNumber();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        MessagePrinter.printGameStartMessage();
         String playerNumbers;
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            MessagePrinter.printRequestPlayerInputMessage();
             playerNumbers = Console.readLine();
             gameManager.validPlayerNumbers(playerNumbers);
         } while (gameManager.compareNumbers(computerNumbers, playerNumbers));
     }
 
     public boolean restartGame() {
-        System.out.println("게임을 새로 시작하려면 " + GAME_RESTART_NUMBER + ", 종료하려면 " + GAME_END_NUMBER + "를 입력하세요.");
+        MessagePrinter.printRestartGameMessage();
         String playerDecision = Console.readLine();
         if (playerDecision.equals(GAME_RESTART_NUMBER)) {
             return true;
