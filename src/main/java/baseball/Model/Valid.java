@@ -7,12 +7,17 @@ public class Valid {
 
 
     public static String startValid(String userNumber) {
-        if (userNumber.contains("0")) {
+        // 숫자로만 이루어진 문자열인지 확인하는 정규 표현식
+        String regex = "^[0-9]+$";
+
+        if (!userNumber.matches(regex)) {
             throw new IllegalArgumentException("허가되지 않은 문자열");
         }
+
         if (userNumber.length() != BASEBALL_NUM_SIZE) {
             throw new IllegalArgumentException("입력 수 오류");
         }
+
         return userNumber;
     }
 
