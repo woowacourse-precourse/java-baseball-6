@@ -40,7 +40,7 @@ public class OutputView {
 
     public void printGameResult(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            println("낫싱");
+            print("낫싱");
         }
 
         StringBuilder builder = new StringBuilder();

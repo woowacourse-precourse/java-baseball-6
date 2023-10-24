@@ -23,12 +23,13 @@ public class BaseballGame {
 
     public void start() {
         outputView.printGameStart();
+        computer = Computer.generate();
+
         play();
     }
 
     public void play() {
         Player player = Player.from(inputView.readPlayerNumbers());
-        computer = Computer.generate();
 
         GameJudge judge = GameJudge.from(player, computer);
         judge.analyzeNumbers();
