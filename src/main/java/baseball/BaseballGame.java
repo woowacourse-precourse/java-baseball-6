@@ -7,8 +7,6 @@ import java.util.List;
 import static baseball.Error.*;
 
 public class BaseballGame {
-    final public static int numLength = 3;
-
     public void initGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -54,18 +52,18 @@ public class BaseballGame {
         List<Integer> inputList = new ArrayList<>();
 
         if(input.isEmpty() || input.isBlank())
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throwError(INVALID_INPUT);
 
         if(input.length() != numLength)
-            throw new IllegalArgumentException("입력의 길이는 " + numLength + "만 가능합니다.");
+            throwError(INVALID_LENGTH);
 
         for(int i=0; i<numLength; i++) {
             int num = input.charAt(i) - '0';
             if(num<1 || num>9)
-                throw new IllegalArgumentException("숫자 1 ~ 9까지만 입력 가능합니다.");
+                throwError(INVALID_DIGIT);
 
             if(!inputList.isEmpty() && inputList.contains(num))
-                throw new IllegalArgumentException("중복된 숫자는 입력 불가합니다.");
+                throwError(DUPLICATED_NUMBER);
 
             inputList.add(num);
         }
@@ -113,17 +111,17 @@ public class BaseballGame {
 
     public int getGameState(){
         String input;
-        int inputToInt;
+        int inputToInt = 0;
 
         try{
             input = Console.readLine();
             inputToInt = Integer.parseInt(input);
         }catch (Exception e){
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            throwError(INVALID_INPUT);
         }
 
-        if(!GAME_STATE.contains(inputToInt))
-            throw new IllegalArgumentException("1과 2의 숫자만 입력 가능합니다.");
+        if(inputToInt != GAME_STATE_CONTINUE && inputToInt != GAME_STATE_END)
+            throwError(INVALID_GAME_STATE);
 
         return inputToInt;
     }
