@@ -32,10 +32,14 @@ public class BaseballGame {
             System.out.println(PRINT_GAME_START);
             List<Integer> correctAnswer = computer.createCorrectAnswer();
             play(correctAnswer);
-            System.out.println(PRINT_IS_RESTART);
-        } while (RestartOrExit.isRestart(convertStringToInteger(Console.readLine())));
+        } while (isRestart());
     }
 
+    private boolean isRestart() {
+        System.out.println(PRINT_IS_RESTART);
+        Integer userInput = convertStringToInteger(Console.readLine());
+        return RestartOrExit.isRestart(userInput);
+    }
 
     private void play(List<Integer> correctAnswer) {
         while (true) {
