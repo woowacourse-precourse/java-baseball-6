@@ -8,7 +8,7 @@ import static baseball.Constants.*;
 public class Application {
 
 
-    public static int[] getRandomComputerNumber(){
+    private static int[] getRandomComputerNumber(){
         int[] numbers = new int[3];
 
         // 같은 수가 나올 경우 다시 랜덤돌리기
@@ -24,11 +24,11 @@ public class Application {
         return numbers;
     }
 
-    public static boolean isDuplication(int[] numbers){
+    private static boolean isDuplication(int[] numbers){
         return numbers[0] == numbers[1] || numbers[1] == numbers[2] || numbers[2] == numbers[0];
     }
 
-    public static int[] getUserNumber(){
+    private static int[] getUserNumber(){
         int[] numbers = new int[3];
 
         do {
@@ -52,7 +52,7 @@ public class Application {
         return numbers;
     }
 
-    public static void printResult(int[] cnt){
+    private static void printResult(int[] cnt){
         if (cnt[0] == 0 && cnt[1] == 0) {
             System.out.println(NOTHING);
         } else if (cnt[0] == 3) {
@@ -66,7 +66,7 @@ public class Application {
         }
     }
 
-    public static int[] calcGameResult(int[] computer, int[] user){
+    private static int[] calcGameResult(int[] computer, int[] user){
         int[] cnt = new int[2];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -82,11 +82,11 @@ public class Application {
         return cnt;
     }
 
-    public static boolean isGameEnd(int[] cnt){
+    private static boolean isGameEnd(int[] cnt){
         return cnt[0] == 3;
     }
 
-    public static void game(){
+    private static void game(){
         int[] computerNumbers = getRandomComputerNumber();
 
         while(true) {
@@ -105,7 +105,7 @@ public class Application {
             }
         }
     }
-    public static int restartInput(){
+    private static int restartInput(){
         System.out.println(RESTART_GAME_OR_NOT);
         int execInput = Integer.parseInt(Console.readLine());
 
@@ -126,4 +126,5 @@ public class Application {
 
         }
     }
+
 }
