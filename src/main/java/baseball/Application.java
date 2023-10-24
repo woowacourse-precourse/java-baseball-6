@@ -61,9 +61,9 @@ public class Application {
         Integer indexOne = threeRandomNumber.get(1);
         Integer indexTwo = threeRandomNumber.get(2);
 
-        return (indexZero.equals(indexOne))
-                && (indexOne.equals(indexTwo))
-                && (indexTwo.equals(indexZero));
+        return (!indexZero.equals(indexOne))
+                && (!indexOne.equals(indexTwo))
+                && (!indexTwo.equals(indexZero));
     }
 
 }
