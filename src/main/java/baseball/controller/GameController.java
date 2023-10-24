@@ -5,6 +5,8 @@ import baseball.model.Inning;
 
 import java.util.ArrayList;
 
+import static baseball.Config.SUCCESS;
+
 public class GameController {
     private final IOController ioController;
 
@@ -24,7 +26,7 @@ public class GameController {
             ArrayList<Integer> input = ioController.inningNumberInput();
             Inning inning = new Inning(answer, input);
             ioController.showResult(inning.calculateResult());
-            if (inning.calculateResult().equals("3스트라이크")) {
+            if (inning.calculateResult().equals(SUCCESS)) {
                 restart();
                 break;
             }
