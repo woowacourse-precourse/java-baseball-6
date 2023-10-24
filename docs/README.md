@@ -14,7 +14,7 @@
 
 - [x] GameView : inputAnswer
 - [x] GameView : validateInputAnswer
-- [ ] GameState : isAbleToPlay, changeTerminated
+- [x] GameState : isAbleToPlay, changeTerminated
 - [x] Scoring : score
 - [ ] ScoringResultCreator : makeScoreResult
 
