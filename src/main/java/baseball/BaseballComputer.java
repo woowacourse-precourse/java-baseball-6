@@ -49,6 +49,7 @@ public class BaseballComputer {
             if (chkInputError(input)) {
                 throw new IllegalArgumentException();
             }
+            // 3스트라이크면 종료
             if (printResult(input)) {
                 break;
             }
@@ -70,6 +71,7 @@ public class BaseballComputer {
     }
 
     private boolean printResult(String input) {
+        // int[0] : 스트라이크 갯수, int[1]: 볼 갯수
         int[] strikesBallsNum = new int[2];
         cntStrikesBalls(input, strikesBallsNum);
         if (strikesBallsNum[0] == 0 && strikesBallsNum[1] == 0) {
@@ -88,5 +90,17 @@ public class BaseballComputer {
             return true;
         }
         return false;
+    }
+
+    public boolean enterFinished() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            return false;
+        } else if (input.equals("2")) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
