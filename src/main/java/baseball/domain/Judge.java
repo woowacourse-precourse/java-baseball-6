@@ -31,7 +31,6 @@ public class Judge {
      * @param userList
      * @return
      */
-    // Check the progress of the baseball game.
     public String CheckProgressBaseballGame(List<Integer> computerList, List<Integer> userList) {
         int cntSameAllNumUserAndComputer = 0; // computerList 중에 userList와 같은 것이 몇개인가.
         int cntStrike = 0; // strike의 갯수
