@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utills.ValidateUtils;
+import baseball.utills.ValidateUtils;
 
 public class ValidationUtilsTest {
 
