@@ -1,37 +1,33 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Ball {
 
-    private List<Integer> randomBall;
-    private ArrayList<Map<String, Integer>> hintLog;
+    private List<Integer> randomBalls;
     private int size;
 
-    public void createRandomBall(int size) {
-        this.size = size;
+    public Ball(List<Integer> randomBalls) {
+        this.randomBalls = randomBalls;
     }
 
-    private boolean isCorrectBall(String userBall) {
-        Map<String, Integer> currentHint = getHint();
-        hintLog.add(currentHint);
+    public Hint makeHint(String userBalls) {
+        int[] usrBallsTemp = Arrays.stream(userBalls.split("")).mapToInt(Integer::parseInt).toArray();
+        int ball = 0;
+        int strike = 0;
+        int userIndex = 0;
 
-        if (currentHint.get("strike") >= 3) {
-            return false;
+        for (int userBall : usrBallsTemp) {
+            int randomIndex = randomBalls.indexOf(userBall);
+
+            if (userIndex == randomIndex) {
+                strike++;
+            } else if (randomIndex > 0) {
+                ball++;
+            }
+            userIndex++;
         }
-        return true;
-    }
-
-    public Map<String, Integer> getCurrentHint() {
-        Map<String, Integer> result = new HashMap<>();
-        return result;
-    }
-
-    private Map<String, Integer> getHint() {
-        Map<String, Integer> result = new HashMap<>();
-        return result;
+        return new Hint(ball, strike);
     }
 }
