@@ -17,11 +17,12 @@
     - 실제 숫자 야구 게임 로직 (`NumberBaseballRule`)
         - 문자열에서 자리 & 숫자 일치하면 strike++ (`countStrike`)
         - 컴퓨터가 생성한 숫자 Set 이 사용자의 input 을 contain && 자리는 일치하지 않으면 ball++(`countBall`)
-    - 게임 결과 출력(`GameMessage`)
-        - 결과1. ball == 0 && strike == 0 이면 "낫싱" 출력
-        - 결과2. ball == 0 이면 "스트라이크" 의 개수만 출력
-        - 결과3. strike == 0 이면 "볼" 의 개수만 출력
-        - 결과4. 위의 경우가 아니면 "볼" , "스트라이크" 개수 둘 다 출력
+    - 게임 결과 출력(`GameMessageUtil`)
+        - Nothing, Ball, Strike 는 `GameMessage` enum 클래스에 저장
+            - 결과1. ball == 0 && strike == 0 이면 "낫싱" 출력
+            - 결과2. ball == 0 이면 "스트라이크" 의 개수만 출력
+            - 결과3. strike == 0 이면 "볼" 의 개수만 출력
+            - 결과4. 위의 경우가 아니면 "볼" , "스트라이크" 개수 둘 다 출력
     - 게임 결과를 바탕으로 정답 여부 판단(`playRound`)
         - "3스트라이크" 메세지 출력시 게임 종료 메세지 출력
 
