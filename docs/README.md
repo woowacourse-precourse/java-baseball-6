@@ -9,19 +9,18 @@
     - [x] 서로 다른 수로 이루어진 3자리의 수 검증
     - [x] 입력 가능한 수 범위 123 ~ 987
 
-### ComputerPlayer(상대 사용자)
-- [ ] Player 생성 시 Random 함수 사용
-
 ### Referee(심판)
-- [ ] 두명의 Player 값 비교
-  - [ ] 한자리 숫자 비교
-    - [ ] 같음, 다름
-  - [ ] 세자리 숫자 비교
-    - [ ] 숫자 포함 확인 -> 볼
-      - [ ] 같은 자리에 위치하는지 확인 -> 스트라이크
-    - [ ] 낫싱
+- [x] 두명의 Player 값 비교
+  - [x] 한자리 숫자 비교
+    - [x] 같음, 다름
+  - [x] 세자리 숫자 비교
+    - [x] 숫자 포함 확인 -> 볼
+      - [x] 같은 자리에 위치하는지 확인 -> 스트라이크
+    - [x] 낫싱
 
 ### GameManager(게임 관리자 및 Controller)
+- [ ] ComputerPlayer 생성
+  -  camp.nextstep.edu.missionutils에서 제공하는 Randoms 함수 사용
 - [ ] 게임 진행
   - [ ] Viewer 와 Entity 를 연결 및 관리
   - [ ] 새로운 게임 시작 및 종료 관리
