@@ -29,7 +29,6 @@ public class Input {
             Console.close();
             BaseballGame.exit(StringError.duplicatedInputError);
         }
-        Console.close();
 
         return input;
     }
@@ -42,7 +41,6 @@ public class Input {
             Console.close();
             BaseballGame.exit(StringError.wrongInputError);
         }
-        Console.close();
 
         return input;
     }

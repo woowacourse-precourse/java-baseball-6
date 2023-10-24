@@ -4,6 +4,7 @@ import baseball.domain.AnswerChecker;
 import baseball.domain.Computer;
 import baseball.io.Input;
 import baseball.io.Output;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,6 +68,7 @@ public class BaseballGame {
 
         } else if (input.equals("2")) {
             Output.expireMsg();
+            Console.close();
         }
     }
 
