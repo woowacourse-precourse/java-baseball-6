@@ -8,7 +8,7 @@ import java.util.List;
 public class Numbers {
     private final List<Number> numbers;
 
-    public Numbers(String input) {
+    public Numbers(final String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
@@ -39,7 +39,7 @@ public class Numbers {
         return (hasNumber(target)) && numbers.get(index).equals(target);
     }
 
-    public GameResult compareWith(Numbers target) {
+    public GameResult compareWith(final Numbers target) {
         GameResult gameResult = new GameResult();
 
         for (int i = 0; i < GameConstants.NUMBER_SIZE.getNumber(); i++) {
