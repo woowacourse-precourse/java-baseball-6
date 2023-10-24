@@ -90,7 +90,6 @@ public class Application {
             Score score = getScore(computer);
             int strike = score.strike;
             int ball = score.ball;
-
             if (strike == 0 && ball == 0) {
                 System.out.println("낫싱");
             } else if (strike != 0 && ball != 0) {
