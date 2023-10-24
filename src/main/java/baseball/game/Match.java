@@ -15,8 +15,10 @@ public class Match {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
+
             String input = Console.readLine();
             GameNumber player = new GameNumber(input);
+
             int ball = GameNumber.ball(computer, player);
             int strike = GameNumber.strike(computer, player);
 
@@ -32,7 +34,7 @@ public class Match {
             }
             System.out.println(output);
 
-            if (strike == GameNumber.size) {
+            if (strike == GameNumber.SIZE) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
                 break;
             }
