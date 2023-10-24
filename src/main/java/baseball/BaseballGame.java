@@ -131,7 +131,7 @@ public class BaseballGame implements Game{
         // 사용자로부터 올바른 숫자 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
-        return checkInputNumber(userInput);
+        return validateInputNumber(userInput);
     }
 
     /**
@@ -140,10 +140,10 @@ public class BaseballGame implements Game{
      * @param userInput 사용자가 입력한 숫자 문자열
      * @return 검증 성공한 사용자 입력 문자열
      */
-    private String checkInputNumber(String userInput) {
+    private String validateInputNumber(String userInput) {
         try {
             // 검증1: int로 파싱 가능해야 한다.
-            parseNumber(userInput);
+            checkParsingNumber(userInput);
             // 검증1: 사용자 입력 문자열 길이는 INPUT_LENGTH 다.
             checkInputLength(userInput);
             // 검증2: "0"이 포함되지 않아야 한다.
@@ -162,7 +162,7 @@ public class BaseballGame implements Game{
      * @param inputString 사용자가 입력한 숫자 문자열
      * @throws IllegalArgumentException if 문자열의 int 파싱이 불가능
      */
-    private void parseNumber(String inputString) throws IllegalArgumentException {
+    private void checkParsingNumber(String inputString) throws IllegalArgumentException {
         try {
             Integer.parseInt(inputString);
         } catch (NumberFormatException e){
