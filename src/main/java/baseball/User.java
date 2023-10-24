@@ -7,8 +7,6 @@ public class User {
 
     private List<Integer> userNumber = new ArrayList<>();
 
-
-
     public List<Integer> getUserNumber() {
         return userNumber;
     }
