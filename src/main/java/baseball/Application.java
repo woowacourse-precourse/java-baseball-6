@@ -115,7 +115,10 @@ public class Application {
     }
 
     private static boolean isAnswer() {
-        //return ;
+        if (strike == digitNumber) {
+            return true;
+        }
+        return false;
     }
 
     private static boolean restartGame(String target) {
