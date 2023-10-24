@@ -77,17 +77,4 @@ public class Computer {
         }
         System.out.println(hint);
     }
-
-    public boolean validateComputerNumber(String computerNumber) {
-        // 각 자리를 비교하기 위한 String 배열
-        String[] computerNumberSplit = computerNumber.split("");
-        // 조건에 맞지 않으면 예외 발생
-        if (computerNumberSplit.length != 3 || Arrays.asList(computerNumberSplit).contains("0") ||
-                computerNumberSplit[0].equals(computerNumberSplit[1]) || computerNumberSplit[1].equals(computerNumberSplit[2]) ||
-                computerNumberSplit[0].equals(computerNumberSplit[2])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
