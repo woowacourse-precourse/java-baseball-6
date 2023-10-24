@@ -9,7 +9,7 @@ public class Baseball {
     Utils utils = new Utils();
     Exceptions exception = new Exceptions();
 
-    public void run() {
+    public void run() { // 야구게임 시작 및 숫자 입력
         Units units = new Units();
         List<Integer> computer = utils.makeBaseball();
         while (units.getStrike() != 3) {
@@ -27,7 +27,7 @@ public class Baseball {
         restartBall(n);
     }
 
-    public boolean restartBall(String input){
+    public boolean restartBall(String input){ // 재시작 메서드
         exception.isInvalidNumberRestart(input);
         if (input.equals("1")){
             run();
@@ -38,13 +38,13 @@ public class Baseball {
     }
 
 
-    public void playBall(List<Integer> computer, String inputNum,Units units){
+    public void playBall(List<Integer> computer, String inputNum,Units units){ // 스트라이크, 볼 값 선언
         int strike = utils.strikeCount(computer,inputNum);
         int ball = utils.ballCount(computer,inputNum);
         units.setUnits(strike,ball);
     }
 
-    public void result(Units units){
+    public void result(Units units){ // 스트라이크, 볼 결과값 출력
         utils.isCountMsg(units.getStrike(), units.getBall());
     }
 }

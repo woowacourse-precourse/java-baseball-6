@@ -7,9 +7,8 @@ import java.util.List;
 
 public class Utils {
 
-    Exceptions exceptions = new Exceptions();
 
-    public List<Integer> makeBaseball(){
+    public List<Integer> makeBaseball(){ // 랜덤한 숫자야구 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,7 +20,7 @@ public class Utils {
         return computer;
     }
 
-    public int strikeCount(List<Integer> computer, String inputNum) {
+    public int strikeCount(List<Integer> computer, String inputNum) { // 스트라이크 카운트
         int count =0;
 
         int first = Integer.parseInt(inputNum.substring(0,1));
@@ -40,7 +39,7 @@ public class Utils {
         return count;
     }
 
-    public int ballCount(List<Integer> computer, String inputNum) {
+    public int ballCount(List<Integer> computer, String inputNum) { // 볼 카운트
         int count =0;
 
         int first = Integer.parseInt(inputNum.substring(0,1));
@@ -59,7 +58,7 @@ public class Utils {
         return count;
     }
 
-    public void isCountMsg(int strike,int ball){
+    public void isCountMsg(int strike,int ball){ // 출력 메세지
 
         if (ball > 0 && strike > 0) {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
@@ -73,14 +72,5 @@ public class Utils {
             System.out.println("낫싱");
         }
     }
-
-//    public String inputNumber(){
-//        String num = Console.readLine();
-//        exceptions.isInvalidNumberDuplication(num);
-//        exceptions.isInvalidNumberLength(num);
-//        return num;
-//    }
-
-
 
 }
