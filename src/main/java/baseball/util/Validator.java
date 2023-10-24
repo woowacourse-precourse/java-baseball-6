@@ -1,8 +1,10 @@
 package baseball.util;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public final class Validator {
     public static void validateListSize(List<Integer> list) {
@@ -31,5 +33,13 @@ public final class Validator {
             return;
         }
         throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
+    }
+
+    public static void validateInputDuplication(String input) {
+        Set<String> duplication = new HashSet<>(List.of(input.split("")));
+        if(duplication.size() == 3) {
+            return;
+        }
+        throw new IllegalArgumentException("사용자의 입력값에 중복된 숫자가 존재합니다. 프로그램을 종료합니다.");
     }
 }
