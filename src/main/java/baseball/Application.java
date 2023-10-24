@@ -7,6 +7,6 @@ public class Application {
     // TODO: 프로그램 구현
 
     //게임 시작
-    new GameStart();
+    GameSystem gameSystem = new GameSystem();
   }
 }
