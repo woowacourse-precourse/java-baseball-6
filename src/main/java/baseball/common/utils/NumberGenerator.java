@@ -1,6 +1,6 @@
-package baseball.utils;
+package baseball.common.utils;
 
-import baseball.domain.BaseballSystemConst;
+import baseball.common.config.BaseballSystemConst;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

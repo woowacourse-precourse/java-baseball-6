@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.common.config;
 
 public class BaseballMessageConst {
     public static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";

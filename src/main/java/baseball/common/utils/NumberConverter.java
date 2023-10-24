@@ -1,6 +1,6 @@
-package baseball.utils;
+package baseball.common.utils;
 
-import baseball.domain.BaseballMessageConst;
+import baseball.common.config.BaseballMessageConst;
 import java.util.ArrayList;
 import java.util.List;
 

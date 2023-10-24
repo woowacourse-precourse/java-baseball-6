@@ -3,7 +3,8 @@ package baseball.utils;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.domain.BaseballMessageConst;
+import baseball.common.config.BaseballMessageConst;
+import baseball.common.utils.NumberValidator;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;

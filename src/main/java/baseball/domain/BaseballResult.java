@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.common.config.BaseballMessageConst;
+
 public class BaseballResult {
     private Ball ball;
     private Strike strike;

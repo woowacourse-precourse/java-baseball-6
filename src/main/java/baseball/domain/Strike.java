@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.common.config.BaseballMessageConst;
+
 public enum Strike {
     ZERO(0), ONE(1), TWO(2), THREE(3);
     private final int strikeCount;

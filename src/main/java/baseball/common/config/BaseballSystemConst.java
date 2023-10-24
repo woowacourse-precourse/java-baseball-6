@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.common.config;
 
 public class BaseballSystemConst {
     public static final int MAX_BALL_SIZE = 3;

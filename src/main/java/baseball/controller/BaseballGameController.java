@@ -1,11 +1,11 @@
 package baseball.controller;
 
+import baseball.common.config.BaseballSystemConst;
+import baseball.common.utils.NumberConverter;
+import baseball.common.utils.NumberGenerator;
+import baseball.common.utils.NumberValidator;
 import baseball.domain.Baseball;
 import baseball.domain.BaseballResult;
-import baseball.domain.BaseballSystemConst;
-import baseball.utils.NumberConverter;
-import baseball.utils.NumberGenerator;
-import baseball.utils.NumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -35,7 +35,7 @@ public class BaseballGameController {
             outputView.printBallStrikeResultMessage(gameResult);
         } while (!gameResult.isGameDone());
     }
-    
+
     private String askGameRestartOrExit() {
         outputView.printRestartOrExitMessage();
         return inputView.input();

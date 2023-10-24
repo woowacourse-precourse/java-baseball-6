@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.common.config.BaseballSystemConst;
 import java.util.List;
 
 public class Baseball {

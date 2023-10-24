@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.BaseballMessageConst;
+import baseball.common.config.BaseballMessageConst;
 import baseball.domain.BaseballResult;
 
 public class OutputView {
