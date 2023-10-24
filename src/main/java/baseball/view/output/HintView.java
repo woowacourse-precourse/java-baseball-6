@@ -4,9 +4,9 @@ import baseball.domain.game.GameResult;
 import io.Renderable;
 
 public final class HintView implements Renderable {
-    private static final String NOTHING = "낫싱";
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
+    public static final String NOTHING = "낫싱";
+    public static final String STRIKE = "스트라이크";
+    public static final String BALL = "볼";
 
     private final GameResult result;
 

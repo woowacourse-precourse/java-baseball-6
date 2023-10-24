@@ -3,6 +3,7 @@ package baseball.domain.ball;
 import static baseball.domain.ball.BallNumbersTest.createTripleBallNumbers;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.domain.TripleNumberPicker;
 import collection.Triple;
 import number.NumberPicker;
 import org.junit.jupiter.api.DisplayName;

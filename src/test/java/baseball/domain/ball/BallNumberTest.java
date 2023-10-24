@@ -3,6 +3,7 @@ package baseball.domain.ball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.exception.InvalidBallNumberRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,12 +32,13 @@ final class BallNumberTest {
                 () -> new BallNumber(0)
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("BallNumbers는 1~9 사이의 3자리 수여야 합니다.");
+                .isInstanceOf(InvalidBallNumberRangeException.class)
+                .hasMessage(InvalidBallNumberRangeException.INVALID_BALL_NUMBER_RANGE_MESSAGE);
 
         assertThatThrownBy(
                 () -> new BallNumber(10)
         )
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("BallNumbers는 1~9 사이의 3자리 수여야 합니다.");
+                .isInstanceOf(InvalidBallNumberRangeException.class)
+                .hasMessage(InvalidBallNumberRangeException.INVALID_BALL_NUMBER_RANGE_MESSAGE);
     }
 }

@@ -2,6 +2,7 @@ package baseball.domain.ball;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.exception.DuplicateBallNumbersException;
 import collection.Triple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -121,8 +122,10 @@ public final class BallNumbersTest {
         assertThatThrownBy(
                 () -> Guess.of(ballNumbers)
         )
+                .isInstanceOf(DuplicateBallNumbersException.class)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("BallNumbers에 중복 숫자가 존재하면 안 됩니다.");
+                .hasMessage(DuplicateBallNumbersException.DUPLICATE_BALL_NUMBERS_EXCEPTION);
+
     }
 
     @DisplayName("중복된 숫자로 Answer 생성 시 예외 발생")
@@ -136,7 +139,7 @@ public final class BallNumbersTest {
         assertThatThrownBy(
                 () -> Answer.of(ballNumbers)
         )
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("BallNumbers에 중복 숫자가 존재하면 안 됩니다.");
+                .isInstanceOf(DuplicateBallNumbersException.class)
+                .hasMessage(DuplicateBallNumbersException.DUPLICATE_BALL_NUMBERS_EXCEPTION);
     }
 }

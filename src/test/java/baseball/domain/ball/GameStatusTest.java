@@ -12,12 +12,15 @@ public final class GameStatusTest {
     @Test
     void gameStatusSuccess() {
         // given
+        final String input1 = "1";
+        final String input2 = "2";
+
         // when
-        final GameStatus status = GameStatus.of("1");
-        final GameStatus status2 = GameStatus.of("2");
+        final GameStatus status1 = GameStatus.of(input1);
+        final GameStatus status2 = GameStatus.of(input2);
 
         // then
-        assertThat(status).isEqualTo(GameStatus.REPLAY);
+        assertThat(status1).isEqualTo(GameStatus.REPLAY);
         assertThat(status2).isEqualTo(GameStatus.EXIT);
     }
 

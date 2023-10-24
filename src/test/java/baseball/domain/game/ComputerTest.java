@@ -3,10 +3,10 @@ package baseball.domain.game;
 import static baseball.domain.ball.BallNumbersTest.createTripleBallNumbers;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.domain.TripleNumberPicker;
 import baseball.domain.ball.AnswerCreator;
 import baseball.domain.ball.BallNumber;
 import baseball.domain.ball.Guess;
-import baseball.domain.ball.TripleNumberPicker;
 import collection.Triple;
 import number.NumberPicker;
 import org.junit.jupiter.api.DisplayName;
@@ -40,7 +40,7 @@ final class ComputerTest {
     @Test
     void ballCountTest() {
         // given
-        NumberPicker numberPicker = new TripleNumberPicker(1, 2, 3);
+        final NumberPicker numberPicker = new TripleNumberPicker(1, 2, 3);
         final AnswerCreator answerCreator = new AnswerCreator(numberPicker);
         final Computer computer = new Computer(answerCreator);
         final Triple<BallNumber> guessBallNumbers = createTripleBallNumbers(2, 3, 1);
@@ -62,7 +62,7 @@ final class ComputerTest {
     @Test
     void nothingTest() {
         // given
-        NumberPicker numberPicker = new TripleNumberPicker(1, 2, 3);
+        final NumberPicker numberPicker = new TripleNumberPicker(1, 2, 3);
         final AnswerCreator answerCreator = new AnswerCreator(numberPicker);
         final Computer computer = new Computer(answerCreator);
         computer.createAnswer();
