@@ -68,24 +68,23 @@ public class gameManage implements gameManageInterface {
     }
 
     public resultCompareNumber PrintNumber(int strikeCount, int ballCount) {
+        String printResult = "";
         printNumberFormat printNumber = new printNumberFormat();
         if (strikeCount == ALLSTRIKE) {
-            printNumber.onlyStrike(strikeCount);
+            printResult = printNumber.printStrike(strikeCount);
+            System.out.println(printResult);
             return resultCompareNumber.MATCH;
         }
         if (strikeCount == NOSTRIKE && ballCount == NOBALL) {
-            printNumber.nothing();
+            printResult += printNumber.nothing();
         }
-        if (strikeCount != NOSTRIKE && ballCount != NOBALL) {
-            printNumber.ballAndStrike(ballCount, strikeCount);
+        if (ballCount != NOBALL) {
+            printResult += printNumber.printBall(ballCount);
         }
-        if (ballCount == NOBALL) {
-            printNumber.onlyStrike(strikeCount);
+        if (strikeCount != NOSTRIKE) {
+            printResult += printNumber.printStrike(strikeCount);
         }
-        if (strikeCount == NOSTRIKE) {
-            printNumber.onlyBall(ballCount);
-        }
-
+        System.out.println(printResult.trim());
         return resultCompareNumber.NOT_MATCH;
     }
 

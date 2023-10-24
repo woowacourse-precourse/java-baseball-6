@@ -16,4 +16,5 @@ public class playerEntity {
     public List<Integer> getHumanNumber() {
         return this.humanNumber;
     }
+
 }
