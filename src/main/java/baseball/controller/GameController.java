@@ -25,13 +25,18 @@ public class GameController {
 
     private void playGameLoop() {
         while (model.isGameRunning()) {
-            Value value = model.processUserInput(view.getUserInput(), new Value());
-            Score score = model.calculateScore(value);
-            view.displayScore(score);
+            try {
+                Value value = model.processUserInput(view.getUserInput(), new Value());
+                Score score = model.calculateScore(value);
+                view.displayScore(score);
 
-            if (model.isGameOver(score)) {
-                handleGameEnd();
+                if (model.isGameOver(score)) {
+                    handleGameEnd();
+                }
+            } catch (IllegalArgumentException e) {
+                view.displayErrorMessage(e.getMessage()); // 예외 메시지 출력
             }
+
         }
     }
 

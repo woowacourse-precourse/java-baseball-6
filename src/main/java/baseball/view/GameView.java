@@ -45,7 +45,7 @@ public class GameView {
         return replay != 2;
     }
 
-    public static void displayErrorMessage(String errorMessage) {
+    public void displayErrorMessage(String errorMessage) {
         // 예외 메시지 출력
         System.err.println(errorMessage);
     }
