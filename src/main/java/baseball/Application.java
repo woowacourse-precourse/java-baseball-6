@@ -18,6 +18,24 @@ public class Application {
 
     }
 
+    // 게임 진행
+    private static void playGame() {
+        List<Integer> computer = createRandomNumbers();
+
+        while (true) {
+            String userInput = getUserInput();
+            List<Integer> userNumbers = convertInputToNumberList(userInput);
+            int[] result = calculateResult(computer, userNumbers);
+            printResult(result);
+
+            if (result[1] == DIGIT_COUNT) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞혔습니다! 게임 종료");
+                return;
+            }
+        }
+    }
+
 
     // 무작위 숫자 리스트를 반환
     private static List<Integer> createRandomNumbers() {
