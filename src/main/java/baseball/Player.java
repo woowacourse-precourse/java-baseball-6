@@ -25,13 +25,13 @@ public class Player {
         return numList;
     }
 
-    private void isSuitableNumber(String Numbers) {
-        if (Numbers.length() != 3) {
+    private void isSuitableNumber(String numbers) {
+        if (numbers.length() != 3) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
 
-    private void isSuitableNumber(int Number) {
+    private void isSuitableNumber(int number) {
         if (number <= 0) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
