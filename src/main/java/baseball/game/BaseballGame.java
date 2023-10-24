@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import baseball.domain.Computer;
 import baseball.dto.GameResult;
