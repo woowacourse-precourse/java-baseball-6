@@ -1,8 +1,6 @@
-package others;
+package baseball.others;
 
-import static others.Constant.numberOfNumbers;
-
-import java.util.Objects;
+import static baseball.others.Constant.numberOfNumbers;
 
 public class ExceptionHandling {
     public static void digitsExceptionTesting(final String strNumber) {
@@ -45,13 +43,7 @@ public class ExceptionHandling {
         }
     }
 
-    public static boolean restartException(final String restart) {
-        if (Objects.equals(restart, "1")) {
-            return true;
-        } else if (Objects.equals(restart, "2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하셔야 합니다. 게임을 종료합니다.");
-        }
+    public static void restartException() {
+        throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하셔야 합니다. 게임을 종료합니다.");
     }
 }
