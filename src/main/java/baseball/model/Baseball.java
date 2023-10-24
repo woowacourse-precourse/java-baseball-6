@@ -9,6 +9,7 @@ import baseball.io.OutputHandler;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Baseball implements Game {
@@ -37,17 +38,15 @@ public class Baseball implements Game {
 
     @Override
     public void playGame() {
-        while (status) {
+        ResultScoreBoard resultScore = new ResultScoreBoard(0, 0);
+        while (!checkThreeStrike(resultScore.strike())) {
             System.out.print(INPUT_PREDICTED_MESSAGE);
             int input = inputHandler.scanInteger();
             List<Integer> expectedNums = inputHandler.inputToExpectedNumber(input);
-            ResultScoreBoard resultScoreBoard = compareExpect(expectedNums);
-            outputHandler.printScore(resultScoreBoard);
-            if (resultScoreBoard.strike() == 3) {
-                System.out.println(GAME_STOP_MESSAGE);
-                status = false;
-            }
+            resultScore = compareExpect(expectedNums);
+            outputHandler.printScore(resultScore);
         }
+        System.out.println(GAME_STOP_MESSAGE);
     }
 
     private ResultScoreBoard compareExpect(List<Integer> expectedNums) {
@@ -56,11 +55,15 @@ public class Baseball implements Game {
                 .count();
 
         int strike = (int) IntStream.range(0, INPUT_MAX_SIZE)
-                .filter(i -> computer.get(i) == expectedNums.get(i))
+                .filter(i -> Objects.equals(expectedNums.get(i), computer.get(i)))
                 .count();
 
         ball -= strike;
 
         return new ResultScoreBoard(strike, ball);
+    }
+
+    private Boolean checkThreeStrike(int strike) {
+        return strike == 3;
     }
 }
