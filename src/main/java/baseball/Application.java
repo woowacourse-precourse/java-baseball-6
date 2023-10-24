@@ -24,7 +24,7 @@ public class Application {
             printBaseballResult(numOfBall, numOfStrike);
         } while(numOfStrike < NUMBER_SIZE);
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(NUMBER_SIZE + " 개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static void printBaseballResult(int numOfBall, int numOfStrike) {
@@ -32,7 +32,6 @@ public class Application {
 
         if (numOfBall == 0 && numOfStrike == 0) {
             resultBuilder.append("낫싱");
-            return;
         } else {
             if (numOfBall > 0)
                 resultBuilder.append(numOfBall).append("볼 ");
@@ -97,7 +96,7 @@ public class Application {
     }
 
     private static int askToContinue() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + CONTINUE_CHOICE + ", 종료하려면 " + EXIT_CHOICE + "를 입력하세요.");
         String continueOrNot = Console.readLine();
 
         if (!isValidChoice(continueOrNot)) {
