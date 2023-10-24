@@ -34,11 +34,7 @@ public class Application {
                 //스트라이크 개수 확인
                 int strike = 0;
 
-                for (int i = 0; i < user.size(); i++) {
-                    if (computer.get(i) == user.get(i)) {
-                        strike += 1;
-                    }
-                }
+                strike = strikeCheck(computer, user, strike);
 
                 //볼 개수 확인
                 int ball = cnt - strike;
@@ -109,5 +105,14 @@ public class Application {
             }
         }
         return cnt;
+    }
+
+    private static int strikeCheck(List<Integer> computer, List<Integer> user, int strike) {
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.get(i) == user.get(i)) {
+                strike += 1;
+            }
+        }
+        return strike;
     }
 }
