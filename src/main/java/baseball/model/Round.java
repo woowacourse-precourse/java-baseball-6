@@ -47,4 +47,8 @@ public class Round {
 
         return result.toString().trim();
     }
+
+    public boolean isCorrectGuess() {
+        return strikeCount == 3;
+    }
 }
