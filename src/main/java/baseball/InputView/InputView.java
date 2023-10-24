@@ -6,7 +6,7 @@ import java.util.List;
 
 public class InputView {
     public static List<Integer> getUserNumbers() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         if (!isValidInput(input)) {
@@ -22,6 +22,11 @@ public class InputView {
     }
 
     private static boolean isValidInput(String input) {
-        return input.length() == 3 && input.matches("[1-9]+");
+        if (input.length() != 3) {
+            return false;
+        }
+
+        char[] digits = input.toCharArray();
+        return digits[0] != digits[1] && digits[0] != digits[2] && digits[1] != digits[2] && input.matches("[1-9]+");
     }
 }
