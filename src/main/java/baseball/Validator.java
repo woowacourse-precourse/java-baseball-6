@@ -1,6 +1,7 @@
 package baseball;
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,8 +42,13 @@ public class Validator {
     }
 
     private static Boolean checkDuplicationNum(String invalidNums) {
-        Set<String> invalidNums1 = Set.of(invalidNums);
-        if (invalidNums1.size() != BASEBALL_NUM_LIMIT_LENGTH) {
+
+        char[] chars = invalidNums.toCharArray();
+        HashSet<Character> invalidNumSet = new HashSet<>();
+        for (char aChar : chars) {
+            invalidNumSet.add(aChar);
+        }
+        if (invalidNumSet.size() != BASEBALL_NUM_LIMIT_LENGTH) {
             return FALSE;
         }
         return TRUE;
