@@ -27,7 +27,7 @@ public class BasketBallGame {
         }
     }
 
-    private List<Integer> setStringToListInteger(String userInputNumber) {
+    public List<Integer> setStringToListInteger(String userInputNumber) {
         List<Integer> userNumber = new ArrayList<>();
         for (char digit : userInputNumber.toCharArray()) {
             userNumber.add(Character.getNumericValue(digit));
@@ -35,7 +35,7 @@ public class BasketBallGame {
         return userNumber;
     }
 
-    private int[] getStrikeAndBallCount(List<Integer> computerNumber,
+    public int[] getStrikeAndBallCount(List<Integer> computerNumber,
         List<Integer> userNumber) {
         int[] strikeAndBallCount = new int[2];
         for (int index = 0; index < Constants.NUMBER_SIZE; index++) {

@@ -23,7 +23,7 @@ public class Validator {
         }
     }
 
-    private boolean ensureRange(String userInputValue, int min, int max) {
+    public boolean ensureRange(String userInputValue, int min, int max) {
         for (char digit : userInputValue.toCharArray()) {
             int numericValue = Character.getNumericValue(digit);
             if (numericValue < min || numericValue > max) {
@@ -33,7 +33,7 @@ public class Validator {
         return true;
     }
 
-    private boolean existsDuplicateNumber(String userInputNumber) {
+    public boolean existsDuplicateNumber(String userInputNumber) {
         for (char digit : userInputNumber.toCharArray()) {
             if (userInputNumber.chars().filter(c -> c == digit).count() != 1) {
                 return true;
