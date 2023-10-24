@@ -31,4 +31,8 @@ public class Decision {
         }
         return String.format(BALL_AND_STRIKE, ball, strike);
     }
+
+    public boolean isEnd(String judgement) {
+        return judgement.equals(String.format(STRIKE, BASEBALL_SIZE));
+    }
 }
