@@ -1,12 +1,21 @@
 package baseball;
 
+import baseball.domain.Count;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static baseball.exception.Exception.*;
+
 public class Application {
+
+    // 1 - 게임 계속 진행,  2 - 게임 종료
+    static String CONTINUE_GAME = "1";
+    static String STOP_GAME = "2";
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -28,12 +37,11 @@ public class Application {
                 // 정답을 맞힌 경우
                 if (computer.equals(number)) {
 
-                    // 1 - 게임 계속 진행,  2 - 게임 종료
                     String finishCheck = getFinishCheck();
 
-                    if (finishCheck.equals("1")) {
+                    if (finishCheck.equals(CONTINUE_GAME)) {
                         break;
-                    } else if (finishCheck.equals("2")) {
+                    } else if (finishCheck.equals(STOP_GAME)) {
                         continueGame = false;
                         break;
                     }
@@ -48,16 +56,16 @@ public class Application {
 
 
     private static void printHint(String computer, String number) {
-        Count result = checkStrikeAndBall(computer, number);
+        Count count = checkStrikeAndBall(computer, number);
 
-        if (result.strike() == 0 && result.ball() == 0) {
+        if (count.getStrike() == 0 && count.getBall() == 0) {
             System.out.println("낫싱");
-        } else if (result.strike() > 0 && result.ball() == 0) {
-            System.out.println(result.strike() + "스트라이크");
-        } else if (result.strike() == 0 && result.ball() > 0) {
-            System.out.println(result.ball() + "볼");
-        } else if (result.strike() > 0 && result.ball() > 0) {
-            System.out.println(result.ball() + "볼 " + result.strike() + "스트라이크");
+        } else if (count.getStrike() > 0 && count.getBall() == 0) {
+            System.out.println(count.getStrike() + "스트라이크");
+        } else if (count.getStrike() == 0 && count.getBall() > 0) {
+            System.out.println(count.getBall() + "볼");
+        } else if (count.getStrike() > 0 && count.getBall() > 0) {
+            System.out.println(count.getBall() + "볼 " + count.getStrike() + "스트라이크");
         }
     }
 
@@ -78,10 +86,7 @@ public class Application {
                 }
             }
         }
-        Count result = new Count(strike, ball);
-        return result;
-    }
-    private record Count(int strike, int ball) {
+        return new Count(strike, ball);
     }
 
 
@@ -91,11 +96,8 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String line = Console.readLine();
 
-        checkException(line, 1);
-
-        if (!line.equals("1") && !line.equals("2")) {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-        }
+        checkBasicException(line, 1);
+        checkGameContinueException(line);
 
         return line;
     }
@@ -105,39 +107,10 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String line = Console.readLine();
 
-        checkException(line, 3);
-
-        if (duplicatedLine(line)) {
-            throw new IllegalArgumentException("겹치는 않는 숫자를 입력해주세요.");
-        }
+        checkBasicException(line, 3);
+        checkDuplicatedException(line);
 
         return line;
-    }
-
-
-    private static boolean duplicatedLine(String line) {
-        List<String> list = new ArrayList<>(Arrays.asList(line.split("")));
-        Set<String> set = new HashSet<>(list);
-
-        if (list.size() > set.size()) {
-            return true;
-        }
-        return false;
-    }
-
-
-    private static void checkException(String line, int numDigit) {
-        if (line.isEmpty()) {
-            throw new IllegalArgumentException("값을 입력해주세요.");
-        }
-
-        if (!line.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
-        }
-
-        if (line.length() != numDigit) {
-            throw new IllegalArgumentException(numDigit + "자리 숫자를 입력해주세요.");
-        }
     }
 
 
