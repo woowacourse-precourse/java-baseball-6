@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.validate.NumberValidate;
 import org.junit.jupiter.api.Test;
 public class NumberValidateTest {
     @Test

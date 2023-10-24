@@ -1,4 +1,4 @@
-package baseball;
+package baseball.validate;
 
 public class NumberValidate {
     public static Integer MAX_VALUE = 9;
