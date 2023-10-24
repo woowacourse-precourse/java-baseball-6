@@ -23,7 +23,6 @@ public class Application {
 
         // 문자열의 각 문자를 int로 변환하여 어레이리스트에 저장
         for (int i = 0; i < maxSize; i++) {
-            // 문자를 숫자로 변환하고 어레이리스트에 저장
             numbers.add(Integer.parseInt(input.substring(i, i + 1)));
         }
 
@@ -82,7 +81,7 @@ public class Application {
                 if ("2".equals(checkStart)){
                     System.out.println("게임 종료");
                     break;
-                } else {
+                } else if ("1".equals(checkStart)) {
                     randomNumbers = generateRandomNumbers(); // 완전히 새로운 게임 시작 전 랜덤 숫자 재생성
                     isContinue = true;
                 }
