@@ -53,6 +53,7 @@ public class GameModel {
     }
 
     public void updateResult(Result result) {
+        // 게임 재시작시 정답값 재설정
         this.result = result.makeResult(GameConfig.GAME_NUM_SIZE.getValue());
         this.isRunning = true;
     }
