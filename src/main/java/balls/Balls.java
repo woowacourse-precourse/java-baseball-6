@@ -4,7 +4,7 @@ import java.util.List;
 import utils.Utils;
 
 public class Balls {
-    List<Integer> balls;
+    private final List<Integer> balls;
     Utils utils = new Utils();
 
     public Balls(List<Integer> balls) {
@@ -20,12 +20,16 @@ public class Balls {
         return balls.size();
     }
 
-    public int getBalls(int index) {
+    public int getBall(int index) {
         return balls.get(index);
     }
 
+    public List<Integer> getBalls() {
+        return balls;
+    }
+
     public boolean equals(int digit, int anotherBall) {
-        return getBalls(digit) == anotherBall;
+        return getBall(digit) == anotherBall;
     }
 
     public boolean compareToByBall(Balls anotherBalls, int digit) {
@@ -33,7 +37,7 @@ public class Balls {
             if (digit == index) {
                 continue;
             }
-            if (equals(digit, anotherBalls.getBalls(index))) {
+            if (equals(digit, anotherBalls.getBall(index))) {
                 return true;
             }
         }
@@ -41,7 +45,7 @@ public class Balls {
     }
 
     public boolean compareToByStrike(Balls anotherBalls, int digit) {
-        if (equals(digit, anotherBalls.getBalls(digit))) {
+        if (equals(digit, anotherBalls.getBall(digit))) {
             return true;
         }
         return false;
