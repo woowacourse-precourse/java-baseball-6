@@ -3,6 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Application {
     private static String randomNumber;
     private static String inputNumber;
@@ -25,6 +30,7 @@ public class Application {
                 inputNumber = Console.readLine();
                 isValidInteger();
                 isThreeDigitNumber();
+                hasDuplicateDigits();
                 printAnswerHint();
                 isSucceed();
             }
@@ -58,6 +64,19 @@ public class Application {
             if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public static void hasDuplicateDigits() {
+        List<Character> digitList = new ArrayList<>();
+        for (char digit : inputNumber.toCharArray()) {
+            digitList.add(digit);
+        }
+
+        Set<Character> digitSet = new HashSet<>(digitList);
+
+        if (digitList.size() != digitSet.size()) {
+            throw new IllegalArgumentException();
         }
     }
 
