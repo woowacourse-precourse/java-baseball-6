@@ -51,13 +51,13 @@ public class View {
         }
     }
 
-    public static int readGameEndCommand() {
+    public static String readGameEndCommand() {
         printGameEndMessage();
-        String inputCommand = Console.readLine();
+        String command = Console.readLine();
 
-        checkEndCommandType(inputCommand);
+        checkEndCommandType(command);
 
-        return Integer.parseInt(inputCommand);
+        return command;
     }
 
     private static void checkEndCommandType(String command) {
