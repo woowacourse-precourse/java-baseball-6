@@ -13,29 +13,30 @@ public class BaseballGameController {
     private final Referee referee = new Referee();
 
     public void play() {
+        OutputView.printBaseballGameStartMessage();
+        do {
+            playSingleBaseballGame();
+            OutputView.printAnswerMessage();
+            OutputView.printRestartOrEndInputMessage();
+        } while (isRestart());
+    }
+
+    private void playSingleBaseballGame() {
         String randomNumbers = computer.generateRandomNumbers();
 
         do {
+            referee.setUpGame();
             OutputView.printMessageToInputNumbers();
 
             String inputNumbers = InputView.inputNumbers();
-
             Validation.validateInputThreeNumber(inputNumbers);
 
-            int strikeNumbers = referee.calculateStrikeNumbers(randomNumbers, inputNumbers);
-            int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
-
-            determineResult(strikeNumbers, ballNumbers);
-
-            if (referee.isThreeStrike(strikeNumbers)) {
-                OutputView.printAnswerMessage();
-                OutputView.printRestartOrEndInputMessage();
-                break;
-            }
-        } while (true);
+            referee.calculateBallAndStrikeNumber(randomNumbers, inputNumbers);
+            determineResult(referee.getStrikeNumber(), referee.getBallNumber());
+        } while (!referee.isThreeStrike(referee.getStrikeNumber()));
     }
 
-    public boolean isRestart() {
+    private boolean isRestart() {
         String restartOrEndNumber = InputView.inputNumbers();
         Validation.validateRestartOrEnd(restartOrEndNumber);
 
