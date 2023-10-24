@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        int gameStatus = 0; //게임 상태 값 0: 초기상태, 1: 재시작, 2: 종료
+
+        GameState gameState = GameState.START;
         Computer computer = new Computer();
 
         //개임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (gameStatus < 2) {
+        while (gameState != GameState.END) {
             //컴퓨터가 서로 다른 랜덤한 숫자 3개를 선택한다(1)
             computer.GenerateRandomNumber();
 
@@ -31,7 +32,11 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartAnswer = Console.readLine();
             if (restartAnswer.equals("1") || restartAnswer.equals("2")) {
-                gameStatus = Integer.parseInt(restartAnswer);
+                if (Integer.parseInt(restartAnswer) == GameState.RESTART.ordinal()) {
+                    gameState = GameState.RESTART;
+                } else {
+                    gameState = GameState.END;
+                }
             } else {
                 throw new IllegalArgumentException();
             }
