@@ -47,5 +47,14 @@ public class Application {
         return count;
     }
 
+    private static int countBalls(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < NUM_SIZE; i++) {
+            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 }
