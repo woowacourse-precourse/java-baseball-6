@@ -15,16 +15,24 @@ public class BaseballGame {
             BaseballGameJudgement judgement = baseballGameReferee.judgement(new BaseballGameNumber(input));
             judgement.printJudgement();
 
-            if(judgement.isThreeStrike()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                if(Integer.parseInt(Console.readLine())==1) {
-                    baseballGameReferee.refreshAnswer();
-                    continue;
-                }
+            if(!resumeBaseballGame(judgement)) {
                 break;
             }
         }
+    }
+
+
+    private boolean resumeBaseballGame(BaseballGameJudgement judgement) {
+        if(judgement.isThreeStrike()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            if(Integer.parseInt(Console.readLine())==1) {
+                baseballGameReferee.refreshAnswer();
+                return true;
+            }
+            return false;
+        }
+        return true;
     }
 
 
