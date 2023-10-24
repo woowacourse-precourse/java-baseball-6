@@ -37,4 +37,54 @@ public class Computer {
                 .mapToInt(Integer::intValue)
                 .reduce(0, (a, b) -> a * 10 + b);
     }
+
+    /**
+     * 입력값을 평가한다.
+     *
+     * @param input 입력값
+     */
+    public void evaluate(String input) {
+        if (isNaN(input) || isNotUnique(input) || isNotNaturalNumber(input) || input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 입력값이 숫자가 아닌지 확인한다.
+     *
+     * @param input 입력값
+     * @return 입력값이 숫자가 아니면 참, 숫자이면 거짓
+     */
+    private boolean isNaN(String input) {
+        if (input == null) {
+            return true;
+        }
+        return !input.chars().allMatch(Character::isDigit);
+    }
+
+    /**
+     * 입력값에 중복되는 숫자가 있는지 확인한다.
+     *
+     * @param input 입력값
+     * @return 입력값에 중복되는 숫자가 있으면 참, 없으면 거짓
+     */
+    private boolean isNotUnique(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException();
+        }
+        return input.chars().distinct().count() != input.length();
+    }
+
+    /**
+     * 입력값에 0이 있는지 확인한다.
+     *
+     * @param input 입력값
+     * @return 입력값에 0이 있으면 참, 없으면 거짓
+     */
+    private boolean isNotNaturalNumber(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException();
+        }
+        return input.chars().anyMatch(c -> c == '0');
+    }
 }
