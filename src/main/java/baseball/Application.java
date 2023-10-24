@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -132,6 +133,24 @@ public class Application {
             return true;
         } else {
             throw new IllegalArgumentException("입력에 중복된 숫자가 포함된 잘못된 입력입니다.");
+        }
+    }
+
+    public void startOneGame(List<Integer> result) {
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+
+            List<Integer> userInputList = Application.inputBaseball(userInput);
+
+            int strike = Application.getStrikeCount(userInputList, result);
+            int ball = Application.getBallCount(userInputList, result);
+
+            outputBaseball(strike, ball);
+
+            if (strike == 3) {
+                break;
+            }
         }
     }
 
