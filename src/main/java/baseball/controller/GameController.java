@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
-import baseball.model.GameStatus;
+import baseball.model.GameCommand;
 import baseball.model.Player;
 import baseball.model.Result;
 import baseball.model.UserComputerCompare;
@@ -21,22 +21,23 @@ public class GameController {
     public void play() {
         try {
             outputView.printGameStart();
-            Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
-            List<Integer> computerNumber = computer.getComputerNumber();
-            outputView.printComputerNumber(computerNumber);
             while (true) {
-                Player player = Player.createNyNumber(inputView.readPlayerNumber());
-                UserComputerCompare userComputerCompare = UserComputerCompare.judge(computer, player);
-                Result result = userComputerCompare.ResultgetBallCountJudgement();
-                outputView.printGameResult(result);
-                outputView.printGameResult(result);
-
-                boolean isThreeStrike = result.isThreeStrike();
-                boolean selectedRetry = false;
-
-                if (GameStatus.findGameState(isThreeStrike, selectedRetry) == GameStatus.APPLICATION_EXIT) {
+                Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
+                List<Integer> computerNumber = computer.getComputerNumber();
+                outputView.printComputerNumber(computerNumber);
+                while (true) {
+                    Player player = Player.createNyNumber(inputView.readPlayerNumber());
+                    UserComputerCompare userComputerCompare = UserComputerCompare.judge(computer, player);
+                    Result result = userComputerCompare.ResultgetBallCountJudgement();
+                    outputView.printGameResult(result);
+                    if (result.isThreeStrike()) {
+                        break;
+                    }
+                }
+                if (!GameCommand.selectedRetry(inputView.readGameCommand())) {
                     break;
                 }
+
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
