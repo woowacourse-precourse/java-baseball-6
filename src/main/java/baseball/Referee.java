@@ -1,8 +1,13 @@
 package baseball;
 
+import java.sql.Ref;
 import java.util.List;
 
 public class Referee {
+    private int maxSize;
+    public Referee(int maxSize) {
+        this.maxSize = maxSize;
+    }
     public GameResult judgeGameResult(List<Integer> catcher, List<Integer> pitcher) {
         int strike = 0, ball = 0;
 
@@ -16,6 +21,6 @@ public class Referee {
             }
         }
 
-        return new GameResult(strike, ball);
+        return new GameResult(strike, ball, maxSize);
     }
 }
