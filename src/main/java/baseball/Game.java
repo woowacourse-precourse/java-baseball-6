@@ -1,10 +1,21 @@
 package baseball;
 
+
+import java.util.List;
+import java.util.Map;
+
 public class Game {
     private enum Status{
         START, PROGRESS, FINISH, TERMINATED
     }
     private Status status;
+    private Computer computer;
+    private Input input;
+
+    public Game(){
+        computer = new Computer();
+        input = new Input();
+    }
 
     public void init(){
         this.status = Status.START;
@@ -30,5 +41,4 @@ public class Game {
     private void terminate(){
         this.status = Status.TERMINATED;
     }
-
 }
