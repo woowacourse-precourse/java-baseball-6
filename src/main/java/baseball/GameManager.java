@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -85,9 +87,12 @@ public class GameManager {
     }
     private boolean isValid(List<Integer> numbers){
         boolean isValid = true;
+        Set<Integer> set = new HashSet<>(numbers);
         if (numbers.size() != 3){
             isValid = false;
         }
+        if (numbers.size() != set.size())
+            return false;
         else{
             for(Integer number : numbers){
                 if (number < 0 || number > 9){
