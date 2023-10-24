@@ -46,6 +46,10 @@ public class BaseBallNumber {
         }
     }
 
+    public int[] getNumbers() {
+        return numbers;
+    }
+
     public int getBaseBallNumberCount() {
         return numbers.length;
     }
