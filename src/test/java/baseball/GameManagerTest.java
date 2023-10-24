@@ -37,6 +37,15 @@ class GameManagerTest {
         assertThat(strikeCount).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("낫싱 정상 출력 확인")
+    void 낫싱_테스트(){
+        gameManager.setAnswer(List.of(1,5,3));
+        gameManager.setInputConvertList("768");
+        boolean isNoting = gameManager.isNothing();
+        assertThat(isNoting).isTrue();
+    }
+
 
 
 }
