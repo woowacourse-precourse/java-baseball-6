@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Utils.*;
@@ -32,6 +33,13 @@ public class Game {
             validateDataType(inputNumbers);
 
         }
+    }
+    private List<Integer> toIntegerList(String inputNumbers) {
+        String[] splitInput = inputNumbers.split("");
+        return Arrays
+                .stream(splitInput)
+                .map(Integer :: parseInt)
+                .toList();
     }
 
     private void printHint() {
