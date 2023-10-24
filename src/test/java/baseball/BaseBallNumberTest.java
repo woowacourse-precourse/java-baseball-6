@@ -1,7 +1,10 @@
 package baseball;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import baseball.model.BaseBallNumber;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -36,7 +39,7 @@ class BaseBallNumberTest {
         BaseBallNumber baseBallNumber = BaseBallNumber.parse("123");
 
         // then
-        Assertions.assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
+        assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
     }
 
     @RepeatedTest(500)
@@ -48,14 +51,14 @@ class BaseBallNumberTest {
         // when
         BaseBallNumber baseBallNumber = BaseBallNumber.generateRandomNumbers();
         int[] numbers = baseBallNumber.getNumbers();
-
-        // then
-        Assertions.assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
         for(int number : numbers) {
             numberSet.add(number);
-            Assertions.assertThat(number).isBetween(1, 9);
         }
-        Assertions.assertThat(numberSet).hasSize(3);
+
+        // then
+        assertThat(baseBallNumber.getBaseBallNumberCount()).isEqualTo(3);
+        assertThat(Arrays.stream(numbers).allMatch(number -> number >= 1 && number <= 9)).isTrue();
+        assertThat(numberSet).hasSize(3);
     }
 
     static Stream<Arguments> inValidNumberArray() {
