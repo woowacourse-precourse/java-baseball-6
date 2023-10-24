@@ -52,25 +52,18 @@ public class GameStart{
                 user.add(arrNum[i]);
             }
 
-            System.out.println(user);
-            System.out.println(computer);
-
-            //입력 값이 숫자가 아닐 경우 코드 작성
 
             //사용자 입력 값 검증
             int strike = 0; // 자리, 숫자 완전 일치할 때
             int ball = 0; //숫자만 포함되어 있을 때
             for (int i=0;i<3;i++){
 
-                System.out.println("0 : user:" +user.get(i) + "computer:" +computer.get(i));
-
-
                 if (user.get(i) == computer.get(i)) {
                     strike++;
                 }else if ((user.get(i) != computer.get(i)) && (computer.contains(user.get(i))) ) {
                     ball++;
                 }
-                System.out.println(strike +""+ ball);
+
             }
 
 
@@ -101,7 +94,7 @@ public class GameStart{
 
 
 
-    public void Play() throws IOException {
+    public void run() throws IOException {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         int AnswerContinue = 0;
