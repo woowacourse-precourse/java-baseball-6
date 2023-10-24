@@ -12,4 +12,11 @@ class BallTest {
         Ball ball2 = new Ball(4);
         Assertions.assertEquals(ball1, ball2);
     }
+
+    @Test
+    void 잘못된_숫자_입력_테스트() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Ball(10)
+        );
+    }
 }
