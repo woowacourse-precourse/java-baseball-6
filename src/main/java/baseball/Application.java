@@ -31,9 +31,7 @@ public class Application {
                 int strike = 0;
                 for (int m = 0; m < user.size(); m++) {
                     strike = strikeJudge(map, user, m, strike);
-                    if(user.get(m) != map.get(user.get(m)) && map.containsKey(user.get(m)) == true) {
-                        ball++;
-                    }
+                    ball = ballJudge(map, user, m, ball);
                 }
                 if(strike==3){
                     loof =gameRestartEnd(loof);
@@ -61,6 +59,13 @@ public class Application {
             return false;
         }
         return true;
+    }
+    public static int ballJudge(HashMap<Integer, Integer> map, List<Integer> user, int m, int ball){
+        if(user.get(m) != map.get(user.get(m)) && map.containsKey(user.get(m)) == true) {
+            ball++;
+            return ball;
+        }
+        return ball;
     }
     public static int strikeJudge(HashMap<Integer, Integer> map, List<Integer> user, int m, int strike){
         if (user.get(m) == map.get(user.get(m))) {
