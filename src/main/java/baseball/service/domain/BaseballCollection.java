@@ -1,4 +1,8 @@
-package baseball.service;
+package baseball.service.domain;
+
+import static baseball.service.domain.BaseballConstants.BASEBALL_END_NUMBER;
+import static baseball.service.domain.BaseballConstants.BASEBALL_START_NUMBER;
+import static baseball.service.domain.BaseballConstants.DEFAULT_CAPACITY;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,9 +11,6 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class BaseballCollection {
-    private final int DEFAULT_CAPACITY = 3;
-    private final int BASEBALL_START_NUMBER = 1;
-    private final int BASEBALL_END_NUMBER = 9;
     private final List<Integer> baseball;
 
     private BaseballCollection(NumberGenerator numberGenerator) {
