@@ -9,7 +9,6 @@ import baseball.view.SystemInputMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
-    
     int size;
     Game game;
     User user = new User();
@@ -67,5 +66,4 @@ public class GameService {
             game.addStrikeCount();
         }
     }
-
 }
