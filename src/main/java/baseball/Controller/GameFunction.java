@@ -52,15 +52,18 @@ public class GameFunction {
         return ch;
     }
 
+
     public boolean branchChoice(String branchNum){
+        Vaildation vaildation = new Vaildation();
         if (branchNum.equals("1")){
             return true;
         }
         else if(branchNum.equals("2")){
             return false;
         }
-        else{
-            throw new IllegalArgumentException();
-        }
+        else if(branchNum != "1" || branchNum !="2")
+            vaildation.exptionBranch();
+        
+        return false;
     }    
 }
