@@ -16,17 +16,16 @@ public class GameController {
     OutputView outputView = new OutputView();
 
     public void start(){
-        int gameStatus = GameStatus.PLAY.status;
         outputView.printGameStartMessage();
-        //
-        List<Integer> answer = computer.makeNewNumber();
+        int gameStatus = GameStatus.PLAY.status;
         // gameStatus가 PLAY 인 경우만
         while(gameStatus == GameStatus.PLAY.status){
-            gameStatus = play(answer);
+            gameStatus = play();
         }
     }
 
-    public int play(List<Integer> answer){
+    public int play(){
+        List<Integer> answer = computer.makeNewNumber();
         while(true){
             //userInput 생성
             List<Integer> userInput = inputView.getUserInput();
@@ -35,8 +34,10 @@ public class GameController {
             //ball, strike 값 출력
             outputView.printBallAndStrike(data.getBall(), data.getStrike());
             // strike == 3, 즉, 정답을 맞추면 while문 탈출
-            if(data.getStrike() == 3)
+            if(data.getStrike() == 3){
+                outputView.printGameOverMessage();
                 break;
+            }
         }
         //
         return inputView.askForNewGame();
