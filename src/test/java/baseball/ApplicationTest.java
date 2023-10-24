@@ -28,7 +28,15 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
+    @Test
+    void 예외_테스트2() {
+        // 숫자가 아닌 값 입력시
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a34"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    
 
 
     @Override
