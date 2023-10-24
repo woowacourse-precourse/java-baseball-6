@@ -24,6 +24,8 @@ public class Application {
             printAskRestartStmt();
 
             String restartInput = Console.readLine();
+            validateRestartInput(restartInput);
+
             restartGame = restartInput.equals("1");
         } while (restartGame);
     }
@@ -109,6 +111,12 @@ public class Application {
             if (!input.matches("[1-9]+")) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private static void validateRestartInput(String restartInput) {
+        if (restartInput == null || restartInput.length() > 1 || !restartInput.matches("[12]")) {
+            throw new IllegalArgumentException();
         }
     }
 
