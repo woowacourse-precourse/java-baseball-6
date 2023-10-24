@@ -1,6 +1,5 @@
 package baseball;
 
-import static baseball.Constant.END_NUMBER;
 import static baseball.Constant.NUMBER_LENGTH;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -54,7 +53,7 @@ public class BaseballGame {
     private List<Integer> setUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        InputChecker.checkUserNumber(input);
+        InputValidation.checkUserNumber(input);
 
         return Arrays.stream(input.split(""))
                 .map(Integer::valueOf)
@@ -66,31 +65,14 @@ public class BaseballGame {
         int strike = 0;
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            for (int j = 0; j < NUMBER_LENGTH; j++) {
-                if (computerNumber.get(i) == userNumber.get(j)) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
-                }
+            if (computerNumber.get(i) == userNumber.get(i)) {
+                strike++;
+            }
+            if (computerNumber.get(i) != userNumber.get(i) && computerNumber.contains(userNumber.get(i))) {
+                ball++;
             }
         }
 
         return new Result(ball, strike);
-    }
-
-    public static boolean checkGameEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        String input = Console.readLine();
-        InputChecker.checkRestartNumber(input);
-
-        if (input.equals(END_NUMBER)) {
-            return true;
-        }
-
-        return false;
     }
 }

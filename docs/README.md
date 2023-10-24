@@ -2,6 +2,9 @@
 
 - main()
     - 숫자 야구 게임 시작
+- boolean checkEnd()
+    - 숫자 야구 한판이 끝난 후 재시작할지 종료할지 판단하는 메서드
+    - **_InputValidation_** 를 이용해 사용자 입력 검사
 
 ## 2. BaseballGame
 
@@ -16,15 +19,12 @@
     - Randoms.pickNumberInRange() 사용
 - List setUserNumber()
     - 사용자 숫자 세팅 후 List로 반환
-    - **_InputChecker_** 를 이용해 사용자 입력 검사
+    - **_InputValidation_** 를 이용해 사용자 입력 검사
 - Result compareNumber(List, List)
     - 컴퓨터의 숫자 List, 사용자 숫자 List를 파라미터로 전달
     - 컴퓨터의 숫자와 사용자 숫자를 비교하는 메서드
     - 같은 숫자가 있을 때 자리도 같으면 스트라이크 개수 증가, 자리가 다르면 볼 개수 증가
     - 스트라이크 개수와 볼 개수가 담긴 **_Result_** 객체 반환
-- boolean checkGameEnd()
-    - 숫자 야구 한판이 끝난 후 재시작할지 종료할지 판단하는 메서드
-    - **_InputChecker_** 를 이용해 사용자 입력 검사
 
 ## 3. Constant
 
@@ -33,7 +33,7 @@
 - END_NUMBER: "2"
 - NUMBER_LENGTH : 게임 진행 시 숫자 길이(3)
 
-## 4. InputChecker</h2>
+## 4. InputValidation</h2>
 
 - 입력 예외 처리용 객체
 - void checkUserNumber(String)

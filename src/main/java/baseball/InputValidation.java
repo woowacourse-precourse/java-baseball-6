@@ -2,9 +2,9 @@ package baseball;
 
 import java.util.regex.Pattern;
 
-public class InputChecker {
+public class InputValidation {
 
-    private InputChecker() {
+    private InputValidation() {
     }
 
     public static void checkUserNumber(String input) {
