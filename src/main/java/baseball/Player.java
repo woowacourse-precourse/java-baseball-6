@@ -34,7 +34,7 @@ public class Player {
         while (strike < COUNTS) {
             System.out.print(INPUT_REQUEST_MESSAGE);
             String playerInput = Console.readLine();
-            validateNumber(playerInput);
+            validateIntType(playerInput);
             playerNumbers = convertToIntegerList(playerInput);
             validatePlayerNumbers(playerNumbers);
 
@@ -49,7 +49,7 @@ public class Player {
         System.out.println(GAME_SUCCESS_MESSAGE);
     }
 
-    private void validateNumber(String playerInput) {
+    private void validateIntType(String playerInput) {
         try {
             Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
@@ -65,7 +65,7 @@ public class Player {
 
     private void validateCount(List<Integer> playerNumbers) {
         if (playerNumbers.size() != COUNTS) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("사이즈가 안맞아");
         }
     }
 
