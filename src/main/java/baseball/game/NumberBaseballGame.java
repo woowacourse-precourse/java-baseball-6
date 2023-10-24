@@ -12,6 +12,7 @@ public class NumberBaseballGame {
 
     public NumberBaseballGame() {
         this.computer = new Computer();
+        OutputView.printStartGame();
     }
 
     public void run() {
@@ -26,8 +27,6 @@ public class NumberBaseballGame {
     }
 
     private void playGame() {
-        OutputView.printStartGame();
-
         while (gameState == GameState.PLAY) {
             GameNumbers userNumbers = InputView.readUserNumbers();
             Hint hint = computer.getHint(userNumbers);
