@@ -7,19 +7,20 @@ import baseball.view.ScoreViewer;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
+    private final String STOP = "2";
     String continueGame = "1";
 
     public BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (!continueGame.equals("2")) {
+        while (!continueGame.equals(STOP)) {
             Computer computer = new Computer();
             Player player = new Player();
 
 
             ScoreHandler scoreHandler = new ScoreHandler();
 
-            while (!scoreHandler.hasThreeStrikes()) {
+            while (!scoreHandler.isThreeStrikes()) {
                 player.getAttempt();
                 scoreHandler.ScoreHandler(computer.getComputer(), player.getPlayer());
                 ScoreViewer scoreViewer = new ScoreViewer(scoreHandler);
