@@ -18,8 +18,23 @@ public class MessageConverter {
     private Map<String, Integer> resultMessageMap;
 
     /*
-    * ConcurrentHashMap 초기화 메서드
-    * */
+     * 플레이어와 컴퓨터의 숫자를 비교하는 전체 메서드
+     * @Param userInput 플레이어의 숫자
+     * @Param computerNumber 컴퓨터의 숫자
+     * */
+    public Map<String, Integer> getResultMessage(List<Integer> userInput, List<Integer> computerNumber) {
+        initializeResultMessageMap();
+
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            getStrikeOrBall(userInput, computerNumber, index);
+        }
+
+        return resultMessageMap;
+    }
+
+    /*
+     * ConcurrentHashMap 초기화 메서드
+     * */
     private void initializeResultMessageMap() {
         resultMessageMap = new ConcurrentHashMap<>() {
             {
@@ -30,34 +45,27 @@ public class MessageConverter {
     }
 
     /*
-    * 플레이어와 컴퓨터의 숫자를 비교하는 전체 메서드
-    * @Param userInput 플레이어의 숫자
-    * @Param computerNumber 컴퓨터의 숫자
-    * */
-    public Map<String, Integer> getResultMessage(List<Integer> userInput, List<Integer> computerNumber) {
-        initializeResultMessageMap();
-
-        for(int index = 0; index < NUMBER_SIZE; index++) {
-            getStrikeOrBall(userInput, computerNumber, index);
-        }
-
-        return resultMessageMap;
-    }
-
-    /*
      * 플레이어와 컴퓨터의 숫자를 비교하는 메서드
      * @Param userInput 플레이어의 숫자
      * @Param computerNumber 컴퓨터의 숫자
      * @Param index 리스트의 인덱스
      * */
     private void getStrikeOrBall(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
-        if (userInput.get(index).equals(computerNumber.get(index))) {
-           resultMessageMap.put(STRIKE, resultMessageMap.get(STRIKE) + 1);
+        if (isStrike(userInput, computerNumber, index)) {
+            resultMessageMap.put(STRIKE, resultMessageMap.get(STRIKE) + 1);
         }
 
-        if (userInput.contains(computerNumber.get(index)) && !userInput.get(index).equals(computerNumber.get(index))) {
+        if (isBall(userInput, computerNumber, index)) {
             resultMessageMap.put(BALL, resultMessageMap.get(BALL) + 1);
         }
+    }
+
+    private static boolean isBall(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
+        return userInput.contains(computerNumber.get(index)) && !userInput.get(index).equals(computerNumber.get(index));
+    }
+
+    private static boolean isStrike(List<Integer> userInput, List<Integer> computerNumber, Integer index) {
+        return userInput.get(index).equals(computerNumber.get(index));
     }
 
     /*

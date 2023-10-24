@@ -35,6 +35,7 @@ public class GameService {
         String userInput = userUtil.getUserInput();
         List<Integer> userInputList = inputNumberValidator.validateInputNumber(userInput);
         Map<String, Integer> resultMessageMap = messageConverter.getResultMessage(userInputList, computerNumber);
+
         return messageConverter.getResultMessageToString(resultMessageMap);
     }
 
