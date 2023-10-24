@@ -24,6 +24,12 @@ class ComputerTest {
         computer = new Computer(gameAnswer, score);
     }
 
+    private void computerMakeAnswer(List<Integer> answer) throws NoSuchFieldException, IllegalAccessException {
+        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
+        answerField.setAccessible(true);
+        answerField.set(gameAnswer, answer);
+    }
+
     @Test
     @DisplayName("initScore 메소드 호출 시 strike, ball 값은 0 이어야 한다.")
     public void testInitScore() {
@@ -59,9 +65,7 @@ class ComputerTest {
     @DisplayName("낫싱 점수 계산 테스트")
     public void CalculateScoreTest_Nothing() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(4, 5, 6);
@@ -76,9 +80,7 @@ class ComputerTest {
     @DisplayName("1스트라이크 점수 계산 테스트")
     public void CalculateScoreTest_OneStrike() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(1, 4, 5);
@@ -93,9 +95,7 @@ class ComputerTest {
     @DisplayName("2스트라이크 점수 계산 테스트")
     public void CalculateScoreTest_TwoStrike() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(1, 2, 5);
@@ -110,9 +110,7 @@ class ComputerTest {
     @DisplayName("3스트라이크 점수 계산 테스트")
     public void CalculateScoreTest_ThreeStrike() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(1, 2, 3);
@@ -127,9 +125,7 @@ class ComputerTest {
     @DisplayName("1볼 점수 계산 테스트")
     public void CalculateScoreTest_OneBall() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(4, 5, 1);
@@ -144,9 +140,7 @@ class ComputerTest {
     @DisplayName("2볼 점수 계산 테스트")
     public void CalculateScoreTest_TwoBall() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(3, 4, 1);
@@ -161,9 +155,7 @@ class ComputerTest {
     @DisplayName("3볼 점수 계산 테스트")
     public void CalculateScoreTest_ThreeBall() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(3, 1, 2);
@@ -178,9 +170,7 @@ class ComputerTest {
     @DisplayName("1볼 1스트라이크 점수 계산 테스트")
     public void CalculateScoreTest_OneBall_OneStrike() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(1, 3, 5);
@@ -195,9 +185,7 @@ class ComputerTest {
     @DisplayName("2볼 1스트라이크 점수 계산 테스트")
     public void CalculateScoreTest_TwoBall_OneStrike() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
         List<Integer> playerInput = Arrays.asList(1, 3, 2);
@@ -208,17 +196,14 @@ class ComputerTest {
         assertEquals(score.getStrike(), 1);
     }
 
-
     @Test
     @DisplayName("3 스트라이크인 경우 isAllStrike()는 true를 리턴해야 한다.")
     public void IsAllStrikeTest() throws Exception {
         // given
-        Field answerField = gameAnswer.getClass().getDeclaredField("answer");
-        answerField.setAccessible(true);
-        answerField.set(gameAnswer, List.of(1, 2, 3));
-        List<Integer> playerInput = Arrays.asList(1, 2, 3);
+        computerMakeAnswer(List.of(1, 2, 3));
 
         // when
+        List<Integer> playerInput = Arrays.asList(1, 2, 3);
         computer.calculateScore(playerInput);
 
         // then
