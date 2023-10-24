@@ -12,42 +12,42 @@ import java.util.stream.Collectors;
 public class UserNum {
     private List<Integer> number;
 
-    public UserNum() {
-        this.number = new ArrayList<>();
-    }
-
-    public void setNum(String enterNum) {
-        this.number = Arrays.stream(enterNum.split(""))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .collect(Collectors.toList());
-        validation();
+    public UserNum(String inputNum) {
+        List<Integer> temp = strToList(inputNum);
+        validation(temp);
+        this.number = temp;
     }
 
     public List<Integer> getNum() {
         return number;
     }
-
-    private void validation() {
-        checkLength();
-        checkContainZero();
-        duplicateNumCheck();
+    private List<Integer> strToList(String enterNum) {
+        return Arrays.stream(enterNum.split(""))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
-    private void checkLength() {
-        if (number.size() != NUM_SIZE) {
+    private void validation(List<Integer> inputNum) {
+        checkLength(inputNum);
+        checkContainZero(inputNum);
+        duplicateNumCheck(inputNum);
+    }
+
+    private void checkLength(List<Integer> inputNum) {
+        if (inputNum.size() != NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkContainZero() {
-        if (number.contains(ZERO)) {
+    private void checkContainZero(List<Integer> inputNum) {
+        if (inputNum.contains(ZERO)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void duplicateNumCheck() {
-        long inputNumSize = number.stream()
+    private void duplicateNumCheck(List<Integer> inputNum) {
+        long inputNumSize = inputNum.stream()
                 .distinct()
                 .count();
 
