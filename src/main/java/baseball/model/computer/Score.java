@@ -44,22 +44,21 @@ public class Score {
 
     private Integer calculateStrike(List<Integer> playerInput, List<Integer> answer) {
         return (int) IntStream.range(FIRST_INDEX, LAST_INDEX)
-                .filter(index -> playerInput.get(index)
-                        .equals(answer.get(index)))
+                .filter(index -> isStrike(playerInput, answer, index))
                 .count();
     }
 
     private Integer calculateBall(List<Integer> playerInput, List<Integer> answer) {
         return (int) IntStream.range(FIRST_INDEX, LAST_INDEX)
-                .filter(index -> excludeStrike(playerInput, answer, index) && includeBall(playerInput, answer, index))
+                .filter(index -> !isStrike(playerInput, answer, index) && isBall(playerInput, answer, index))
                 .count();
     }
 
-    private boolean excludeStrike(List<Integer> playerInput, List<Integer> answer, int index) {
-        return !playerInput.get(index).equals(answer.get(index));
+    private boolean isStrike(List<Integer> playerInput, List<Integer> answer, int index) {
+        return playerInput.get(index).equals(answer.get(index));
     }
 
-    private boolean includeBall(List<Integer> playerInput, List<Integer> answer, int index) {
+    private boolean isBall(List<Integer> playerInput, List<Integer> answer, int index) {
         return playerInput.contains(answer.get(index));
     }
 }
