@@ -154,4 +154,14 @@ public class Application {
         }
     }
 
+    public int startGame() {
+        List<Integer> result = Application.getThreeRandomNumber();
+        startOneGame(result);
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userInputStartOrEnd = Console.readLine();
+        return Application.inputStartOrEnd(userInputStartOrEnd);
+    }
+
 }
