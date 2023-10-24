@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import net.bytebuddy.description.field.FieldDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class Application {
                 String input = Console.readLine();
 
                 if(!inputValidation(input))
-                    throw new IllegalStateException();
+                    throw new IllegalArgumentException();
 
                 int[] inputResultArray = checkAnswer(answer, conversionNumStringToList(input));
 
@@ -52,7 +51,7 @@ public class Application {
             String finishInput = Console.readLine();
 
             if(!finishInputValidation(finishInput))
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
 
             gameStartFlag = Integer.parseInt(finishInput);
         }
@@ -97,7 +96,7 @@ public class Application {
     public static List<Integer> conversionNumStringToList(String input) {
         List<Integer> result = new ArrayList<>();
         for(char c : input.toCharArray()) {
-            result.add((int)c);
+            result.add(Character.getNumericValue(c));
         }
         return result;
     }
