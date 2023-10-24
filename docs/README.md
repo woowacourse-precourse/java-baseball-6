@@ -10,54 +10,7 @@
 
 ------------------------------------
 
-## 설계 이유
-
-- ball, strike 판단 위해서 루프 반복이 잦음
-    + 랜덤한 값 추출 시 동일 숫자 존재 여부 판단
-    + 사용자 숫자 입력 시 동일 숫자 존재 여부 판단
-    + strike, ball 판단 위한 루프
-- 입력, 추출한 3자리 숫자 분리할 필요성 높다고 판단
-
-- ---------------------------------------
-
-## 게임 로직 구현 1.0 ver
-
-### 1. 랜덤한 숫자 추출 (Randoms API 활용)
-
-+ 동일 숫자 존재 시 (1.로 회귀)
-
-### 2. 사용자로부터 inputNumber 입력
-
-### 3. randomNumber와 inputNumber의 100, 10, 1의 자리 값 비교 루프
-
-+ randomNumber 100의 자리와 inPutNumber 100, 10, 1의 자리 비교
-    + 같은 자리 숫자끼리 동일 시 strike+1 및 루프 종료
-    + 다른 자리 숫자와 동일 시 ball+1 및 루프 종료
-+ randomNumber 10의 자리와 inPutNumber 100, 10, 1의 자리 비교
-    + 같은 자리 숫자끼리 동일 시 strike+1 및 루프 종료
-    + 다른 자리 숫자와 동일 시 ball+1 및 루프 종료
-+ randomNumber 1의 자리와 inPutNumber 100, 10, 1의 자리 비교
-    + 같은 자리 숫자끼리 동일 시 strike+1 및 루프 종료
-    + 다른 자리 숫자와 동일 시 ball+1 및 루프 종료
-
-### 5. strike, ball 횟수에 따른 문구 출력
-
-+ 3strike시 게임 종료 및 재시작 요청 문구 출력
-    + 1 입력 시 게임 재시작(1.로 회귀)
-    + 2 입력 시 게임 종료
-+ strike, ball 없을 시
-    + '낫싱' 문구 출력 후 (2.로 회귀)
-+ 나머지 경우
-    + strike, ball 횟수 출력 후 (2.로 회귀)
-
-### 예외처리 - IllegalArgumentException 발생
-
-1. inputNumber에 '3자리', '숫자'가 입력되었는가
-2. 사용자 입력 구문에 1,2외의 다른 문구가 들어갔는가?
-
--------------------------------------------
-
-## 게임 로직 구현 2.1 ver
+## 게임 로직 구현 2.2 ver
 
 ### 1. (Print) 숫자 야구 시작 선언
 
@@ -74,25 +27,27 @@
 ### 4. (While) strike 3 전까지 숫자 입력 반복
 
 + String으로 input 값 제시받음
-+ 5 method 통한 int형 배열로 전환
++ (method) 통한 List<Integer>로 전환
 + 6,7, 메서드 통한 strike, ball 값 출력
 + 6번 메서드를 strike 변수 값으로 받음
 
-### 5. (Method) String input을 int형 배열로 전환
+### 5. (Method) String input을 List<Integer>로 전환
 
-+ split, Integer.parseInt 통한 분할 저장
++ stirng -> char로 전환 후 numericvalue로 int로 전환
 
-### 6. (Method) strike, ball 결과 출력 (random값과 input 값 인수로)
+### 6. (Method) strike, ball 판단 (random값과 input 값 인수로)
+
++ Strike, ball 개수 파악 -> 6-1 인수로
+
+### 6-1 : strike, ball 결과 출력 메서드
 
 + 스트라이크 볼 개수 출력 및 strike 개수 return
-
-### 6-1 : strike, ball 판단 메서드
-
-+ Strike, ball 개수 return
 
 ### 7. 게임 종료 후 재시작, 종료 input 받기
 
 + parseInt로 string -> int 변경
+
+-------------------------------------------
 
 ## 리펙터링 요소 1.1 ver
 
@@ -114,7 +69,3 @@
 #### 5. inputNumber 입력시 겹치는 수 ex)111,121 가능성
 
 + 예외처리 진행
-
-#### (고민) 복잡도를 낮추는게 좋은가, 뜻을 잘 나타내는 코드가 좋은가...
-
-#### 전체 내용 정리 후 회고 문서 작성할 것
