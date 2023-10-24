@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -52,8 +51,8 @@ public class User {
         }
     }
 
-    public void checkRange(List<Integer> userNumbers){
-        if(userNumbers.contains(OVER_RANGE_NUMBER)){
+    public void checkRange(List<Integer> userNumbers) {
+        if (userNumbers.contains(OVER_RANGE_NUMBER)) {
             throw new IllegalArgumentException("1부터 9까지의 숫자를 입력하세요.");
         }
     }
