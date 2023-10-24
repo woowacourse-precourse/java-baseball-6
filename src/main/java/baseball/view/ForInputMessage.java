@@ -12,7 +12,7 @@ public class ForInputMessage {
     }
 
     public String InputRestart() {
-        System.out.print(FOR_RESTART_MESSAGE);
+        System.out.println(FOR_RESTART_MESSAGE);
         return Console.readLine();
     }
 
