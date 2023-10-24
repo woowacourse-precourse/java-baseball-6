@@ -24,7 +24,7 @@ public class Result {
     public int calculateBalls() {
         int ballCount = 0;
         for (Integer inputNumber : inputNumbers) {
-            if (computerNumbers.contains(inputNumber) && !inputNumber.equals(computerNumbers.get(inputNumbers.indexOf(inputNumber))) {
+            if (computerNumbers.contains(inputNumber) && !inputNumber.equals(computerNumbers.get(inputNumbers.indexOf(inputNumber)))) {
                 ballCount++;
             }
         }
