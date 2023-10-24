@@ -19,8 +19,8 @@ public class Game {
         boolean finished = false;
         while (!finished) {
             String input = Utils.printAndInput("숫자를 입력해주세요 : ");
-            Player.isValidInput(input, size);
-            finished = Player.getResult(computer, input, size);
+            isValidInput(input, size);
+            finished = getResult(computer, input, size);
         }
         System.out.println(size + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
@@ -40,5 +40,24 @@ public class Game {
             }
         }
         return computer;
+    }
+
+    private boolean getResult(List<Integer> computer, String input, int size) {
+        List<Integer> userNumberList = Utils.stringArrToIntegerList(input);
+
+        Player player = new Player(computer, userNumberList, size);
+        player.printResult();
+
+        return player.getStrike() == size;
+    }
+
+    private void isValidInput(String input, int size) {
+        if (!Utils.isNaturalNumbers(input)) {
+            throw new IllegalArgumentException("자연수만 입력해야합니다.");
+        } else if (!Utils.isValidSize(input, size)) {
+            throw new IllegalArgumentException("세 개의 수를 입력해야합니다.");
+        } else if (!Utils.isNotDuplication(input)) {
+            throw new IllegalArgumentException("중복된 수를 입력했습니다.");
+        }
     }
 }

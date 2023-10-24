@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -72,39 +74,28 @@ class ApplicationTest extends NsTest {
         assertThat(computerNumberList.size()).isEqualTo(new HashSet<>(computerNumberList).size());
     }
 
-    @DisplayName("사용자 입력을 숫자 리스트로 변환하는 메서드 테스트")
-    @Test
-    void stringArrToIntegerListTest() {
-        // given
-        final String input1 = "123";
-        final String input2 = "654";
-        final String input3 = "369";
-
-        // when
-        final List<Integer> result1 = Player.stringArrToIntegerList(input1);
-        final List<Integer> result2 = Player.stringArrToIntegerList(input2);
-        final List<Integer> result3 = Player.stringArrToIntegerList(input3);
-
-        // then
-        assertThat(result1).isEqualTo(Arrays.asList(1, 2, 3));
-        assertThat(result2).isEqualTo(Arrays.asList(6, 5, 4));
-        assertThat(result3).isEqualTo(Arrays.asList(3, 6, 9));
-    }
-
     @DisplayName("사용자 숫자 입력 정상처리 테스트")
     @Test
     void userNumberListRangeTest() {
         // given
         final int size = 3;
+
+        Game game1 = new Game(size);
         final String input1 = "123";
+
+        Game game2 = new Game(size);
         final String input2 = "456";
 
         // when
         final Throwable throwable1 = catchThrowable(() -> {
-            Player.isValidInput(input1, size);
+            Method method1 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method1.setAccessible(true);
+            method1.invoke(game1, input1, size);
         });
         final Throwable throwable2 = catchThrowable(() -> {
-            Player.isValidInput(input2, size);
+            Method method2 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method2.setAccessible(true);
+            method2.invoke(game2, input2, size);
         });
 
         // then
@@ -117,38 +108,52 @@ class ApplicationTest extends NsTest {
     void userNumberListRangeExceptionTest() {
         // given
         final int size = 3;
+
+        Game game1 = new Game(size);
         final String input1 = "String";
+        Game game2 = new Game(size);
         final String input2 = "12 3";
+        Game game3 = new Game(size);
         final String input3 = "12!";
+        Game game4 = new Game(size);
         final String input4 = "abcd7";
 
         // when
         final Throwable throwable1 = catchThrowable(() -> {
-            Player.isValidInput(input1, size);
+            Method method1= Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method1.setAccessible(true);
+            method1.invoke(game1, input1, size);
         });
         final Throwable throwable2 = catchThrowable(() -> {
-            Player.isValidInput(input2, size);
+            Method method2= Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method2.setAccessible(true);
+            method2.invoke(game2, input2, size);
         });
         final Throwable throwable3 = catchThrowable(() -> {
-            Player.isValidInput(input3, size);
+            Method method3= Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method3.setAccessible(true);
+            method3.invoke(game3, input3, size);
         });
         final Throwable throwable4 = catchThrowable(() -> {
-            Player.isValidInput(input4, size);
+            Method method4= Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method4.setAccessible(true);
+            method4.invoke(game4, input4, size);
         });
 
         // then
-        assertThat(throwable1)
+        assertThat(((InvocationTargetException) throwable1).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자연수만 입력해야합니다.");
-        assertThat(throwable2)
+        assertThat(((InvocationTargetException) throwable2).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자연수만 입력해야합니다.");
-        assertThat(throwable3)
+        assertThat(((InvocationTargetException) throwable3).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자연수만 입력해야합니다.");
-        assertThat(throwable4)
+        assertThat(((InvocationTargetException) throwable4).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자연수만 입력해야합니다.");
+
     }
 
     @DisplayName("사용자 숫자 입력 예외처리 테스트 - 숫자 개수")
@@ -156,36 +161,49 @@ class ApplicationTest extends NsTest {
     void userNumberListSizeExceptionTest() {
         // given
         final int size = 3;
+
+        Game game1 = new Game(size);
         final String input1 = "1";
+        Game game2 = new Game(size);
         final String input2 = "22";
+        Game game3 = new Game(size);
         final String input3 = "4444";
+        Game game4 = new Game(size);
         final String input4 = "55555";
 
         // when
         final Throwable throwable1 = catchThrowable(() -> {
-            Player.isValidInput(input1, size);
+            Method method1 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method1.setAccessible(true);
+            method1.invoke(game1, input1, size);
         });
         final Throwable throwable2 = catchThrowable(() -> {
-            Player.isValidInput(input2, size);
+            Method method2 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method2.setAccessible(true);
+            method2.invoke(game2, input2, size);
         });
         final Throwable throwable3 = catchThrowable(() -> {
-            Player.isValidInput(input3, size);
+            Method method3 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method3.setAccessible(true);
+            method3.invoke(game3, input3, size);
         });
         final Throwable throwable4 = catchThrowable(() -> {
-            Player.isValidInput(input4, size);
+            Method method4 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method4.setAccessible(true);
+            method4.invoke(game4, input4, size);
         });
 
         // then
-        assertThat(throwable1)
+        assertThat(((InvocationTargetException) throwable1).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 개의 수를 입력해야합니다.");
-        assertThat(throwable2)
+        assertThat(((InvocationTargetException) throwable2).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 개의 수를 입력해야합니다.");
-        assertThat(throwable3)
+        assertThat(((InvocationTargetException) throwable3).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 개의 수를 입력해야합니다.");
-        assertThat(throwable4)
+        assertThat(((InvocationTargetException) throwable4).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 개의 수를 입력해야합니다.");
     }
@@ -195,68 +213,109 @@ class ApplicationTest extends NsTest {
     void userNumberListDuplicationExceptionTest() {
         // given
         final int size = 3;
+
+        Game game1 = new Game(size);
         final String input1 = "111";
+        Game game2 = new Game(size);
         final String input2 = "112";
+        Game game3 = new Game(size);
         final String input3 = "121";
+        Game game4 = new Game(size);
         final String input4 = "122";
 
         // when
         final Throwable throwable1 = catchThrowable(() -> {
-            Player.isValidInput(input1, size);
+            Method method1 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method1.setAccessible(true);
+            method1.invoke(game1, input1, size);
         });
         final Throwable throwable2 = catchThrowable(() -> {
-            Player.isValidInput(input2, size);
+            Method method2 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method2.setAccessible(true);
+            method2.invoke(game2, input2, size);
         });
         final Throwable throwable3 = catchThrowable(() -> {
-            Player.isValidInput(input3, size);
+            Method method3 = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method3.setAccessible(true);
+            method3.invoke(game3, input3, size);
         });
         final Throwable throwable4 = catchThrowable(() -> {
-            Player.isValidInput(input4, size);
+            Method method = Game.class.getDeclaredMethod("isValidInput", String.class, int.class);
+            method.setAccessible(true);
+            method.invoke(game4, input4, size);
         });
 
         // then
-        assertThat(throwable1)
+        assertThat(((InvocationTargetException) throwable1).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 수를 입력했습니다.");
-        assertThat(throwable2)
+        assertThat(((InvocationTargetException) throwable2).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 수를 입력했습니다.");
-        assertThat(throwable3)
+        assertThat(((InvocationTargetException) throwable3).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 수를 입력했습니다.");
-        assertThat(throwable4)
+        assertThat(((InvocationTargetException) throwable4).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 수를 입력했습니다.");
     }
 
+    @DisplayName("사용자 입력을 숫자 리스트로 변환하는 메서드 테스트")
+    @Test
+    void stringArrToIntegerListTest() {
+        // given
+        final String input1 = "123";
+        final String input2 = "654";
+        final String input3 = "369";
+
+        // when
+        final List<Integer> result1 = Utils.stringArrToIntegerList(input1);
+        final List<Integer> result2 = Utils.stringArrToIntegerList(input2);
+        final List<Integer> result3 = Utils.stringArrToIntegerList(input3);
+
+        // then
+        assertThat(result1).isEqualTo(Arrays.asList(1, 2, 3));
+        assertThat(result2).isEqualTo(Arrays.asList(6, 5, 4));
+        assertThat(result3).isEqualTo(Arrays.asList(3, 6, 9));
+    }
+
     @DisplayName("스트라이크 개수 세는 테스트")
     @Test
-    void countStrikeTest() {
+    void countStrikeTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // given
         final int size = 3;
         final List<Integer> computer = Arrays.asList(1, 3, 5);
 
         final List<Integer> user1 = Arrays.asList(2, 4, 8); // 0 strike
+        Player player1 = new Player(computer, user1, size);
 
         final List<Integer> user2 = Arrays.asList(1, 7, 9); // 1 strike
+        Player player2 = new Player(computer, user2, size);
         final List<Integer> user3 = Arrays.asList(2, 3, 8); // 1 strike
+        Player player3 = new Player(computer, user3, size);
         final List<Integer> user4 = Arrays.asList(4, 7, 5); // 1 strike
+        Player player4 = new Player(computer, user4, size);
 
         final List<Integer> user5 = Arrays.asList(1, 3, 9); // 2 strike
+        Player player5 = new Player(computer, user5, size);
         final List<Integer> user6 = Arrays.asList(1, 2, 5); // 2 strike
+        Player player6 = new Player(computer, user6, size);
         final List<Integer> user7 = Arrays.asList(2, 3, 5); // 2 strike
+        Player player7 = new Player(computer, user7, size);
 
         final List<Integer> user8 = Arrays.asList(1, 3, 5); // 3 strike
+        Player player8 = new Player(computer, user8, size);
 
         // when
-        final int result1 = Player.countStrike(computer, user1, 3);
-        final int result2 = Player.countStrike(computer, user2, 3);
-        final int result3 = Player.countStrike(computer, user3, 3);
-        final int result4 = Player.countStrike(computer, user4, 3);
-        final int result5 = Player.countStrike(computer, user5, 3);
-        final int result6 = Player.countStrike(computer, user6, 3);
-        final int result7 = Player.countStrike(computer, user7, 3);
-        final int result8 = Player.countStrike(computer, user8, 3);
+        final int result1 = player1.getStrike();
+        final int result2 = player2.getStrike();
+        final int result3 = player3.getStrike();
+        final int result4 = player4.getStrike();
+        final int result5 = player5.getStrike();
+        final int result6 = player6.getStrike();
+        final int result7 = player7.getStrike();
+        final int result8 = player8.getStrike();
+
 
         // then
         assertThat(result1).isEqualTo(0);
@@ -277,26 +336,34 @@ class ApplicationTest extends NsTest {
         final List<Integer> computer = Arrays.asList(1, 3, 5);
 
         final List<Integer> user1 = Arrays.asList(2, 4, 8); // 0 ball
+        Player player1 = new Player(computer, user1, size);
 
         final List<Integer> user2 = Arrays.asList(9, 8, 1); // 1 ball
+        Player player2 = new Player(computer, user2, size);
         final List<Integer> user3 = Arrays.asList(9, 1, 8); // 1 ball
+        Player player3 = new Player(computer, user3, size);
         final List<Integer> user4 = Arrays.asList(7, 5, 8); // 1 ball
+        Player player4 = new Player(computer, user4, size);
 
         final List<Integer> user5 = Arrays.asList(3, 5, 9); // 2 ball
+        Player player5 = new Player(computer, user5, size);
         final List<Integer> user6 = Arrays.asList(9, 1, 3); // 2 ball
+        Player player6 = new Player(computer, user6, size);
         final List<Integer> user7 = Arrays.asList(5, 9, 1); // 2 ball
+        Player player7 = new Player(computer, user7, size);
 
         final List<Integer> user8 = Arrays.asList(3, 5, 1); // 3 ball
+        Player player8 = new Player(computer, user8, size);
 
         // when
-        final int result1 = Player.countBall(computer, user1, 3);
-        final int result2 = Player.countBall(computer, user2, 3);
-        final int result3 = Player.countBall(computer, user3, 3);
-        final int result4 = Player.countBall(computer, user4, 3);
-        final int result5 = Player.countBall(computer, user5, 3);
-        final int result6 = Player.countBall(computer, user6, 3);
-        final int result7 = Player.countBall(computer, user7, 3);
-        final int result8 = Player.countBall(computer, user8, 3);
+        final int result1 = player1.getBall();
+        final int result2 = player2.getBall();
+        final int result3 = player3.getBall();
+        final int result4 = player4.getBall();
+        final int result5 = player5.getBall();
+        final int result6 = player6.getBall();
+        final int result7 = player7.getBall();
+        final int result8 = player8.getBall();
 
         // then
         assertThat(result1).isEqualTo(0);
@@ -313,42 +380,43 @@ class ApplicationTest extends NsTest {
     @Test
     void printResultTest() {
         // given
-        final List<Integer> strikeBallCnt1 = List.of(0, 0); // 낫싱
-        final List<Integer> strikeBallCnt2 = List.of(0, 1); // 1볼
-        final List<Integer> strikeBallCnt3 = List.of(0, 2); // 2볼
-        final List<Integer> strikeBallCnt4 = List.of(1, 0); // 1스트라이크
-        final List<Integer> strikeBallCnt5 = List.of(2, 0); // 2스트라이크
-        final List<Integer> strikeBallCnt6 = List.of(3, 0); // 3스트라이크
-        final List<Integer> strikeBallCnt7 = List.of(1, 2); // 2볼 1스트라이크
+        final int size = 3;
+        Player player1 = new Player(List.of(1, 2, 3), List.of(4, 5, 6), size); // 낫싱
+        Player player2 = new Player(List.of(2, 4, 8), List.of(1, 2, 3), size); // 1볼
+        Player player3 = new Player(List.of(2, 4, 8), List.of(4, 8, 9), size); // 2볼
+        Player player4 = new Player(List.of(3, 6, 9), List.of(2, 4, 9), size); // 1스트라이크
+        Player player5 = new Player(List.of(3, 6, 9), List.of(3, 5, 9), size); // 2스트라이크
+        Player player6 = new Player(List.of(1, 2, 3), List.of(1, 2, 3), size); // 3스트라이크
+        Player player7 = new Player(List.of(1, 2, 3), List.of(3, 2, 1), size); // 2볼 1스트라이크
 
         // when
         final OutputStream result1 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result1));
-        Player.printResult(strikeBallCnt1.get(0), strikeBallCnt1.get(1));
+        player1.printResult();
 
         final OutputStream result2 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result2));
-        Player.printResult(strikeBallCnt2.get(0), strikeBallCnt2.get(1));
+        player2.printResult();
 
         final OutputStream result3 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result3));
-        Player.printResult(strikeBallCnt3.get(0), strikeBallCnt3.get(1));
+        player3.printResult();
 
         final OutputStream result4 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result4));
-        Player.printResult(strikeBallCnt4.get(0), strikeBallCnt4.get(1));
+        player4.printResult();
 
         final OutputStream result5 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result5));
-        Player.printResult(strikeBallCnt5.get(0), strikeBallCnt5.get(1));
+        player5.printResult();
 
         final OutputStream result6 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result6));
-        Player.printResult(strikeBallCnt6.get(0), strikeBallCnt6.get(1));
+        player6.printResult();
 
         final OutputStream result7 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result7));
-        Player.printResult(strikeBallCnt7.get(0), strikeBallCnt7.get(1));
+        player7.printResult();
 
         // then
         assertThat(result1.toString().strip()).isEqualTo("낫싱");
