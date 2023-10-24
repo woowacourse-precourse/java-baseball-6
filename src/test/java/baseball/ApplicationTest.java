@@ -1,6 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import util.RandomThreeNumber;
+import java.util.*;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -27,7 +34,25 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 서로다른숫자_3개생성_테스트() {
+    	String result = RandomThreeNumber.getRandomNumber();
 
+        // 길이 검사
+        assertEquals(3, result.length(), "문자열의 길이가 3이 아님!");
+
+        // 중복 검사
+        assertTrue(AllNumUnique(result), "결과 문자열의 모든 문자가 고유하지 않음!");
+    }
+    private boolean AllNumUnique(String s) {
+        Set<Character> set = new HashSet<>();
+        for (char c : s.toCharArray()) {
+            set.add(c);
+        }
+        return set.size() == s.length();
+    }
+    
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
