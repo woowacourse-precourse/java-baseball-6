@@ -24,10 +24,12 @@ public class Application {
                 String inputNum = Console.readLine();
                 if (inputNum.equals("2")) {
                     break;
-                } else {
+                } else if (inputNum.equals("1")) {
                     randomAnswer = answerMachine.getRandomNumber();
                     System.out.println(randomAnswer);
                     System.out.println("숫자 야구 게임을 시작합니다.");
+                } else {
+                    throw new IllegalArgumentException();
                 }
             }
 
