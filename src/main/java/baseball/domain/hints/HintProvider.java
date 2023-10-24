@@ -1,42 +1,43 @@
 package baseball.domain.hints;
 
-import baseball.domain.numbers.AnswerNumbers;
+import baseball.domain.numbers.AnswerBaseBallNumber;
+import baseball.domain.numbers.BaseBallNumber;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
 public final class HintProvider {
     public static final int ONLY_ONE = 1;
 
-    private final AnswerNumbers answerNumbers;
+    private final AnswerBaseBallNumber answerBaseBallNumber;
 
-    public HintProvider(AnswerNumbers answerNumbers) {
-        this.answerNumbers = answerNumbers;
+    public HintProvider(AnswerBaseBallNumber answerBaseBallNumber) {
+        this.answerBaseBallNumber = answerBaseBallNumber;
     }
 
-    public Map<HintType, Integer> compareNumbers(List<Integer> playerNumber) {
+    public Map<HintType, Integer> compareNumbers(BaseBallNumber playerNumber) {
         Map<HintType, Integer> hintMap = new HashMap<>();
 
-        for (int i = 0; i < playerNumber.size(); i++) {
-            HintType type = compareToAnswer(playerNumber.get(i), i);
+        for (int i = 0; i < BaseBallNumber.NUMBER_LENGTH; i++) {
+            HintType type = compareToAnswer(playerNumber, i);
             hintMap.merge(type, 1, increaseHintCount());
         }
         trimHint(hintMap);
         return hintMap;
     }
 
-    private HintType compareToAnswer(int number, int index) {
-        Integer answerIndex = answerNumbers.findIndexOfSameNumber(number);
+    private HintType compareToAnswer(BaseBallNumber number, int index) {
+        boolean isMatch = answerBaseBallNumber.isSameNumberOfIndex(number, index);
+        boolean hasContain = answerBaseBallNumber.hasContainNumberOfIndex(number, index);
 
-        if (answerIndex == null) {
-            return HintType.NOTHING;
-        }
-        if (answerIndex == index) {
+        if (isMatch) {
             return HintType.STRIKE;
         }
-        return HintType.BALL;
+        if (hasContain) {
+            return HintType.BALL;
+        }
+        return HintType.NOTHING;
     }
 
     private BiFunction<Integer, Integer, Integer> increaseHintCount() {
