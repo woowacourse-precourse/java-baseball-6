@@ -25,6 +25,9 @@ public class GameSystem {
 
         BallStrikeCounter ballStrikeCounter = new BallStrikeCounter(computerNumbers, userNumbers);
         ballStrikeCounter.countBallAndStrikes();
+
+        ResultMsgView resultMsgView = new ResultMsgView();
+        resultMsgView.printGameResultMsg(ballStrikeCounter.getBallCount(), ballStrikeCounter.getStrikeCount());
     }
 
     private boolean restartGame() {
