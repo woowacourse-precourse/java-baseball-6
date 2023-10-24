@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UserView {
     final String InputMessage = "숫자를 입력해주세요 : ";
-    List<Integer> userInputList = new ArrayList<>();
+    List<Integer> userInputList;
 
     public UserView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -14,6 +14,7 @@ public class UserView {
 
     public List<Integer> inputBaseballNumber() {
         System.out.print(InputMessage);
+        userInputList = new ArrayList<>();
         verifys(Console.readLine());
         return userInputList;
     }
@@ -37,6 +38,10 @@ public class UserView {
             }
             userInputList.add(Character.getNumericValue(ch));
         }
+    }
+
+    public void printStrikeAndBall(int[] strikeAndBall) {
+        System.out.println(strikeAndBall[1] + "볼" + strikeAndBall[0] + "스트라이크");
     }
 
 }
