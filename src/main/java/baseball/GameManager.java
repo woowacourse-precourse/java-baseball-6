@@ -5,7 +5,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoundManager{
+public class GameManager{
 
     private final Judge judge = new Judge();
 
