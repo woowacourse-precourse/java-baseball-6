@@ -19,7 +19,7 @@ public class Player {
         return number;
     }
 
-    // 입력 받은 숫자가 유효한 지 확인한다.
+    // 입력 받은 숫자가 유효한 지 확인 한다.
     private boolean isValid(String str) {
         // 잘못된 값 1 : 길이가 다를 경우
         if (str.length() != 3) {
@@ -27,8 +27,7 @@ public class Player {
         }
 
         // 잘못된 값 2 : 서로 다른 숫자가 아닐 경우
-        if (str.charAt(0) == str.charAt(1) || str.charAt(1) == str.charAt(2)
-                || str.charAt(0) == str.charAt(2)) {
+        if (str.charAt(0) == str.charAt(1) || str.charAt(1) == str.charAt(2) || str.charAt(0) == str.charAt(2)) {
             return false;
         }
 

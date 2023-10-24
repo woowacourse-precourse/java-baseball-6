@@ -1,21 +1,20 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     private Player player;
     private Computer computer;
-    public GameState gameState; // 게임 상태
+    private GameState gameState; // 게임 상태
 
-    public enum GameState {
+    private enum GameState {
         PROGRESS,
         END,
     }
 
-    public Game(Computer c, Player p) {
-        computer = c;
-        player = p;
+    public Game(Computer _computer, Player _player) {
+        computer = _computer;
+        player = _player;
     }
 
 
@@ -47,6 +46,7 @@ public class Game {
             }
         }
 
+        // 게임이 종료되면 게임 재시작 여부를 입력 받는다.
         inputToRetry();
     }
 
@@ -55,7 +55,6 @@ public class Game {
         gameState = GameState.END;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-
 
     // 게임 재시작 여부를 입력 받는다.
     private void inputToRetry() {
