@@ -61,3 +61,8 @@
 - [X] PlayerNumber 객체
 - [ ] BaseballGame 객체
 - [ ] GameUtil 객체
+
+
+## Refactor 목록
+- Number 객체 상속
+  - ComputerNumber 및 PlayerNumber가 Number 객체 상속받도록 변경
