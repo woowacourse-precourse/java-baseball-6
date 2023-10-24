@@ -9,21 +9,36 @@ public class OutputView {
     }
 
     public static void printResult(GameResult gameResult) {
-        StringBuilder stringBuilder = new StringBuilder();
-        if (gameResult.getBall() != 0) {
-            stringBuilder.append(gameResult.getBall()).append("볼");
+        String ballMessage = getBallMessage(gameResult);
+        String strikeMessage = getStrikeMessage(gameResult);
+        String resultMessage = getResultMessage(ballMessage, strikeMessage);
+        printResultMessage(resultMessage);
+    }
+    private static String getBallMessage(GameResult gameResult) {
+        String ballMessage = "";
+        if (gameResult.hasBall()) {
+            ballMessage = gameResult.getBall() + "볼";
         }
-        if (gameResult.getStrike() != 0) {
-            if(!stringBuilder.isEmpty()) {
-                stringBuilder.append(" ");
-            }
-            stringBuilder.append(gameResult.getStrike()).append("스트라이크");
+        return ballMessage;
+    }
+
+    private static String getStrikeMessage(GameResult gameResult) {
+        String strikeMessage = "";
+        if (gameResult.hasStrike()) {
+            strikeMessage = gameResult.getStrike() + "스트라이크";
         }
-        if (stringBuilder.isEmpty()) {
+        return strikeMessage;
+    }
+
+    private static String getResultMessage(String ballMessage, String strikeMessage) {
+        return String.join(" ", ballMessage, strikeMessage).trim();
+    }
+
+    private static void printResultMessage(String resultMessage) {
+        if (resultMessage.isEmpty()) {
             System.out.println("낫싱");
             return;
         }
-        System.out.println(stringBuilder);
+        System.out.println(resultMessage);
     }
-
 }
