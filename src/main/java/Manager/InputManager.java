@@ -1,7 +1,6 @@
 package Manager;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

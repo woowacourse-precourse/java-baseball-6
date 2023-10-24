@@ -11,9 +11,7 @@ import Entity.GameScore;
 import Enum.Status;
 import Manager.InputManager;
 import Manager.PrintManager;
-
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
