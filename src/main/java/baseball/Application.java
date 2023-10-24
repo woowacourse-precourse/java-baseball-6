@@ -75,18 +75,17 @@ class Game {
         return new GameOutcome(ball, strike);
     }
 
-    private static void printResult(int[] result) {
-        if (result[0] == 0 && result[1] == 0) {
+    private void printOutcome(GameOutcome outcome) {
+        if (outcome.ball == 0 && outcome.strike == 0) {
             System.out.println("낫싱");
             return;
         }
-        if (result[0] > 0)
-            System.out.print(result[0] + "볼 ");
-        if (result[1] > 0)
-            System.out.print(result[1] + "스트라이크");
+        if (outcome.ball > 0)
+            System.out.print(outcome.ball + "볼 ");
+        if (outcome.strike > 0)
+            System.out.print(outcome.strike + "스트라이크");
 
         System.out.println();
-        return;
     }
 
     private static boolean checkWinCondition(int strike) {
