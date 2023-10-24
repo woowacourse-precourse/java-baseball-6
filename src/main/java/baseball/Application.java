@@ -26,7 +26,9 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = Console.readLine();
-            if ("2".equals(choice)) {
+            if (!choice.equals("1") && !choice.equals("2")){
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            } else if (choice.equals("2")) {
                 break;
             }
         }
@@ -55,7 +57,7 @@ public class Application {
                 }
                 return userGuess;
             } else {
-                throw new IllegalArgumentException("잘못된 입력입니다. 다시 시도하세요.");
+                throw new IllegalArgumentException("잘못된 입력입니다.");
             }
         }
     }
