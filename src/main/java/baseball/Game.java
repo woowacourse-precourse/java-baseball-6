@@ -28,12 +28,10 @@ public class Game {
             if (anw.length() != SIZE){
                 throw new IllegalArgumentException();
             }
-//            if (answer.contains(Integer.parseInt(anw))) {
-//                throw new IllegalArgumentException();
-//            }
             for(int i = 0; i < SIZE; i++){
                 char c = anw.charAt(i);
                 int x = c - '0';
+                if(num[x]) throw new IllegalArgumentException();
                 num[x] = true;
                 answer.add(x);
             }
