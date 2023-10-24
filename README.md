@@ -142,3 +142,15 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+### 구현할 기능 목록 
+
+1 컴퓨터에 랜덤한 숫자 저장
+    -ArrayList사용
+2 사용자가 입력한 숫자 저장
+    -ArrayList사용
+3 사용자가 입력한 입력한 숫자가 잘못되었을 경우 예외처리
+    -ArrayList.size()가 3이 아니면 예외처리
+4 컴퓨터와 사용자 입력 숫자 비교
+    -get()으로 원소접근
+5 정답 시 재시작 or 종료 선택
