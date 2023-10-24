@@ -41,9 +41,9 @@ public class BaseballGameController {
 
     public void gamePlay() {
         while (baseballGameService.StrikeCount() != THREE_STRIKE_COUNT) {
+            gameInit();
             String playerNum = InputView.inputNum();
             baseballGameService.judgeCorrectNum(playerNum);
-            gameInit();
             HashMap<String, Integer> result = baseballGameService
                     .judgeResult(playerNum, baseballGameService.getComputer().getComputerNum());
             OutputView.gameResultOutput(result.get(STRIKE_KEY), result.get(BALL_KEY));

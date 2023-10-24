@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.model.Computer;
-import baseball.util.Randomutil;
+import baseball.util.RandomUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class BaseballGameService {
     }
 
     public void createComputer() {
-        computer = new Computer(Randomutil.CreateRandomNum());
+        computer = new Computer(RandomUtil.CreateRandomNum());
         judgeCorrectNum(computer.getComputerNum());
     }
 
