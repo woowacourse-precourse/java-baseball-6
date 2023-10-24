@@ -1,5 +1,6 @@
-package baseball;
+package baseball.utils;
 
+import baseball.utils.ScoreJudge;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
