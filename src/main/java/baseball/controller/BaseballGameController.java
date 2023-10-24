@@ -9,7 +9,7 @@ public class BaseballGameController {
     BaseballGameService game = new BaseballGameService();
 
     public BaseballGameController() {
-        displayStartMessage();
+        OutputView.startGameMessage();
     }
 
     public void run() {
@@ -24,7 +24,7 @@ public class BaseballGameController {
 
     private void playGame() {
         while (!game.getIsCorrectAnswer()) {
-            displayNumberInputMessage();
+            OutputView.numberInputMessage();
             game.playGame(getUserInput());
             OutputView.gameResultMessage(game.getResultMessage());
         }
@@ -37,19 +37,6 @@ public class BaseballGameController {
             run();
             return;
         }
-        displayEndGameMessage();
-    }
-
-    private void displayStartMessage() {
-        OutputView.startGameMessage();
-    }
-
-    private void displayNumberInputMessage() {
-        OutputView.numberInputMessage();
-    }
-
-
-    private void displayEndGameMessage() {
         OutputView.endGameMessage();
     }
 
