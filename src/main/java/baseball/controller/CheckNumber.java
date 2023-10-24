@@ -1,9 +1,8 @@
 package baseball.controller;
 
 import baseball.model.Settings;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 public class CheckNumber {
     public static void InputLengthCheck(String userInput) {
@@ -13,19 +12,37 @@ public class CheckNumber {
     }
 
     public static void NotOneToNine(String userInput) {
-        String afterRegexInput = userInput.replaceAll("[^1-9]", "");
-        if (afterRegexInput.length() != 3) {
+//        String afterRegexInput = userInput.replaceAll("[^1-9]", "");
+//        if (afterRegexInput.length() != 3) {
+//            throw new IllegalArgumentException();
+//        }
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void IsThereDuplicate(String userInput) {
-        Set<Character> inputSet = new HashSet<>();
-
-        for (char c : userInput.toCharArray()) {
-            inputSet.add(c);
+    public static void validateRange(String input) {
+        String[] numbers = input.split("");
+        for (String number : numbers) {
+            if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 9) {
+                throw new IllegalArgumentException();
+            }
         }
-        if (inputSet.size() != 3) {
+    }
+
+    public static void IsThereDuplicate(String userInput) {
+//        Set<Character> inputSet = new HashSet<>();
+//
+//        for (char c : userInput.toCharArray()) {
+//            inputSet.add(c);
+//        }
+//        if (inputSet.size() != 3) {
+//            throw new IllegalArgumentException();
+//        }
+        String[] numbers = userInput.split("");
+        if (numbers.length != Arrays.stream(numbers).distinct().count()) {
             throw new IllegalArgumentException();
         }
     }
@@ -34,6 +51,7 @@ public class CheckNumber {
         InputLengthCheck(userInput);
         NotOneToNine(userInput);
         IsThereDuplicate(userInput);
+        validateRange(userInput);
     }
 
     public static void StrikesAndBalls(List<Integer> computer, String userInput) {

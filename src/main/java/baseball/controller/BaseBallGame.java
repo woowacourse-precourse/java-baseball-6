@@ -12,8 +12,7 @@ public class BaseBallGame {
     public static int restart = 0;
     public static boolean correct = false;
 
-    public static void GameStart() {
-        Output.StartMessage();
+    public void GameStart() {
 
         while (!Objects.equals(Settings.restart, "2")) {
             Output.InputMessage();
