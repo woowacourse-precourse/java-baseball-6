@@ -9,6 +9,10 @@ import java.util.List;
 
 public class NumberBallsValidator {
 
+    private static final String NUMBER_COUNT_ERROR_MESSAGE = "[ERROR] 숫자 수량이 잘못되었습니다.";
+    private static final String NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 숫자 범위가 잘못되었습니다.";
+    private static final String NUMBER_DUPLICATE_ERROR_MESSAGE = "[ERROR] 중복된 숫자가 있습니다.";
+
     private NumberBallsValidator() {
     }
 
@@ -18,7 +22,7 @@ public class NumberBallsValidator {
 
     public void validateNumberSize(List<Integer> numberList) {
         if (numberList.size() != NUMBER_COUNT) {
-            throw new IllegalArgumentException("[ERROR] 숫자 수량이 잘못되었습니다.");
+            throw new IllegalArgumentException(NUMBER_COUNT_ERROR_MESSAGE);
         }
     }
 
@@ -27,7 +31,7 @@ public class NumberBallsValidator {
                 .anyMatch(this::isInvalidRange);
 
         if (isInvalid) {
-            throw new IllegalArgumentException("[ERROR] 범위가 잘못되었습니다.");
+            throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
         }
     }
 
@@ -37,7 +41,7 @@ public class NumberBallsValidator {
 
     public void validateDuplicateNumber(List<Integer> numberList) {
         if (numberList.size() != new HashSet<>(numberList).size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
 

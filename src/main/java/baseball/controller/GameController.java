@@ -8,6 +8,7 @@ public class GameController {
 
     private static final String CONTINUE_GAME_SIG = "1";
     private static final String END_GAME_SIG = "2";
+    private static final String WRONG_INPUT_ERROR_MESSAGE = "[ERROR] 잘못된 입력입니다.";
     private static final BaseBallView baseBallView  = BaseBallView.create();
 
     private GameController() {
@@ -40,7 +41,7 @@ public class GameController {
             return false;
         }
 
-        throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+        throw new IllegalArgumentException(WRONG_INPUT_ERROR_MESSAGE);
     }
 
 }
