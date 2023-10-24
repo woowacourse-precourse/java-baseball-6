@@ -1,5 +1,6 @@
 package baseball;
 
+
 import baseball.view.UserInput;
 import baseball.view.Result;
 
@@ -29,6 +30,7 @@ public class Application {
 
         return false;
     }
+
 
 
 
