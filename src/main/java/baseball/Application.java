@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -51,18 +53,21 @@ public class Application {
 
     // 사용자 숫자 사용 가능 여부 확인
     public static void checkValue(String input) {
-        // 3자리가 아닌 경우 사용 불가능
-        if(input.length() != 3) throw new IllegalArgumentException();
-
-        // 1~9 숫자 이외의 값을 입력한 경우 사용 불가능
-        for(int i=0; i<3; i++) {
-            char c = input.charAt(i);
-            if (c > '9' || c < '1') throw new IllegalArgumentException();
+        // 3자리가 아닌 경우, 1~9 숫자 이외의 값을 입력한 경우, 중복된 숫자를 입력한 경우 사용 불가능
+        if(input.length() != 3 || !input.matches("[1-9]+") || checkDuplication(input)) {
+            throw new IllegalArgumentException();
         }
+    }
 
-        // 중복된 숫자를 입력한 경우 사용 불가능
-        if(input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2)
-                || input.charAt(0) == input.charAt(2)) throw new IllegalArgumentException();
+    // 숫자 중복 확인
+    public static boolean checkDuplication(String input) {
+        Set<Character> set = new HashSet<>();
+        for(char c : input.toCharArray()) {
+            if(!set.add(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // 볼(같은 수가 다른 자리에 있는 경우) 체크
