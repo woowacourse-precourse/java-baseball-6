@@ -1,20 +1,16 @@
 package baseball;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import static baseball.View.displayRestartMessage;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class UserDecision {
 
-  public static String userDecision(Scanner sc) {
-    displayEndMessage();
-    String input = sc.next();
+  public static String getUserDecision() {
+    displayRestartMessage();
+    String input = Console.readLine();
     checkUserDecision(input);
     return input;
-
-  }
-
-  private static void displayEndMessage() {
-    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
   }
 
   private static void checkUserDecision(String input) throws IllegalArgumentException {

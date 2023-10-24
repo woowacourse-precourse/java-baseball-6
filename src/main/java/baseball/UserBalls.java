@@ -1,27 +1,25 @@
 package baseball;
 
+import static baseball.View.displayInputMessage;
+
+import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.Set;
 
-class UserInput {
+class UserBalls {
 
-  public static String userInput(Scanner sc) {
+  public static String getUserInputBalls() {
     displayInputMessage();
-    String input = sc.next();
+    String input = Console.readLine();
     checkUserInput(input);
     return input;
   }
 
-  private static void displayInputMessage() {
-    System.out.println("숫자를 입력해주세요 : ");
-  }
 
   private static void checkUserInput(String input) throws IllegalArgumentException {
     checkLength(input);
     checkAllNumbers(input);
-    checkContainsZero(input);
+    checkInValidRange(input);
     checkDifferentDigits(input);
   }
 
@@ -37,7 +35,7 @@ class UserInput {
     }
   }
 
-  private static void checkContainsZero(String input) {
+  private static void checkInValidRange(String input) {
     if (containsZero(input)) {
       throw new IllegalArgumentException("[ERROR] 1이상 9이하 숫자가 아닙니다");
     }
