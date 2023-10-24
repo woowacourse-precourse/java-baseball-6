@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -20,5 +21,15 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static List<Integer> splitNumber(int number) {
+        List<Integer> user = new ArrayList<>();
+        while (number > 0) {
+            user.add(number % 10);
+            number /= 10;
+        }
+        Collections.reverse(user);
+        return user;
     }
 }
