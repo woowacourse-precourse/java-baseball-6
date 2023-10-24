@@ -55,7 +55,7 @@ public class Application {
     private static boolean reGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Number number = new Number(Console.readLine()); // 사용자의 선택 입력받기
-        if (number.getNumber() < 0 || number.getNumber() > 2) { // 메뉴 범위에 맞는 숫자인지 확인
+        if (number.getNumber() < 1 || number.getNumber() > 2) { // 메뉴 범위에 맞는 숫자인지 확인
             throw new IllegalArgumentException(); // 잘못된 범위로 숫자를 입력한 경우 예외 발생
         }
 
