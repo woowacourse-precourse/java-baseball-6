@@ -4,6 +4,24 @@ public class Validation {
     private static final String answerErrorMessage = "각 자리 수가 1~9이며, 서로 중복되지 않는 3자리 수를 입력해주세요.";
     private static final String restartErrorMessage = "1 또는 2로만 입력해주세요.";
 
+    // 제시한 답에 대한 유효성 검사
+    public void isValidAnswer(String arg) {
+        checkEmpty(arg, answerErrorMessage);
+        checkNumber(arg, answerErrorMessage);
+        checkIncludeZero(arg);
+        checkLength(arg);
+        checkRepeat(arg);
+    }
+
+    // 재시작에 대한 유효성 검사
+    public boolean isValidAnswer2(String arg) {
+        checkEmpty(arg, restartErrorMessage);
+        checkNumber(arg, restartErrorMessage);
+
+        int restart = Integer.parseInt(arg);
+        return checkRestart(restart);
+    }
+
     // 입력 유효성 검사 1. 빈 입력값 확인 - answer, restart
     private static void checkEmpty(String arg, String message) {
         if (arg.isEmpty()) {
@@ -57,24 +75,5 @@ public class Validation {
             return true;
         }
         return false;
-    }
-
-
-    // 제시한 답에 대한 유효성 검사
-    public static void isValidAnswer(String arg) {
-        checkEmpty(arg, answerErrorMessage);
-        checkNumber(arg, answerErrorMessage);
-        checkIncludeZero(arg);
-        checkLength(arg);
-        checkRepeat(arg);
-    }
-
-    // 재시작에 대한 유효성 검사
-    public static boolean isValidAnswer2(String arg) {
-        checkEmpty(arg, restartErrorMessage);
-        checkNumber(arg, restartErrorMessage);
-
-        int restart = Integer.parseInt(arg);
-        return checkRestart(restart);
     }
 }
