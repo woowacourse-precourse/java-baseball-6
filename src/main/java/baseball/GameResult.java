@@ -2,17 +2,18 @@ package baseball;
 
 public class GameResult {
 
-    private String result;
+    private final String result;
 
     public GameResult(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            this.result = "낫싱";
-        } else if (ball == 0 && strike != 0) {
-            this.result = strike + "스트라이크";
-        } else if (ball != 0 && strike == 0) {
-            this.result = ball + "볼";
+            this.result = GameMessage.NOTHING.getMessage();
+        } else if (ball == 0) {
+            this.result = strike + GameMessage.STRIKE.getMessage();
+        } else if (strike == 0) {
+            this.result = ball + GameMessage.BALL.getMessage();
         } else {
-            this.result = ball + "볼" + " " + strike + "스트라이크";
+            this.result = ball + GameMessage.BALL.getMessage() + " " +
+                    strike + GameMessage.STRIKE.getMessage();
         }
         System.out.println(result);
     }

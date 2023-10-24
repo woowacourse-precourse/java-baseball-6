@@ -5,18 +5,15 @@ import java.util.regex.Pattern;
 
 public class User {
 
-    private static final String USER_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int NUMBER_LENGTH = 3;
     private static final Pattern pattern = Pattern.compile("([1-9]{3,3})");
-    private static final String INPUT_LENGTH_ERROR_MESSAGE = "3자리수를 입력해주세요.";
-    private static final String INPUT_DIGIT_ERROR_MESSAGE = "숫자가 아닌 값이 입력되었습니다.";
     private String userInputNumber;
 
     public User() {
     }
 
     public void setUserInputNumber() {
-        System.out.print(USER_INPUT_NUMBER_MESSAGE);
+        System.out.print(GameMessage.USER_INPUT_NUMBER_MESSAGE.getMessage());
         String inputNumber = Console.readLine();
         validateInputNumber(inputNumber);
         this.userInputNumber = inputNumber;
@@ -33,13 +30,13 @@ public class User {
 
     private static void validatePattern(String inputNumber) {
         if (!pattern.matcher(inputNumber).matches()) {
-            throw new IllegalArgumentException(INPUT_DIGIT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(GameMessage.INPUT_DIGIT_ERROR_MESSAGE.getMessage());
         }
     }
 
     private static void validateLength(String inputNumber) {
         if (inputNumber.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException(INPUT_LENGTH_ERROR_MESSAGE);
+            throw new IllegalArgumentException(GameMessage.INPUT_LENGTH_ERROR_MESSAGE.getMessage());
         }
     }
 }
