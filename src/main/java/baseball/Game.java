@@ -3,9 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Game {
 
     private final String answer = generateAnswer(); // 1부터 9까지 서로 다른 수로 이루어진 3자리의 수
@@ -23,18 +20,16 @@ public class Game {
     }
 
     private String generateAnswer() {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-
+        boolean[] isUsed = new boolean[10];
         StringBuilder sb = new StringBuilder();
 
-        for (int number : numbers) {
+        while (sb.length() < 3) {
+            int number = Randoms.pickNumberInRange(1, 9);
+
+            if (isUsed[number])
+                continue;
+
+            isUsed[number] = true;
             sb.append(number);
         }
 
@@ -78,9 +73,11 @@ public class Game {
 
     public boolean isEnd() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        if (Console.readLine().equals("1")) {
+        String input = Console.readLine();
+
+        if (input.equals("1")) {
             return false;
-        } else if (Console.readLine().equals("2")) {
+        } else if (input.equals("2")) {
             return true;
         } else {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요!");
