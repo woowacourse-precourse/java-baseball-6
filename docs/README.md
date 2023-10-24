@@ -45,7 +45,7 @@
 - 게임 동작시에 발생하는 exception에 대한 여러 예외들을 관리하는 패키지
   - `invaildInputLengthException` : 입력 길이에 대한 예외 클래스
   - `duplicateNumberException` : 숫자 중복 입력에 대한 예외 클래스
-  - `numberOutOfRangeException` : 입력 숫자 범위 초과에 대한 예외 클래스
+  - `inputOutOfRangeException` : 입력 숫자 범위 초과에 대한 예외 클래스
   - `invalidInputException` : 올바르지 않은 입력에 대한 예외 클래스
 
 
