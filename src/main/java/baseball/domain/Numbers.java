@@ -3,11 +3,9 @@ package baseball.domain;
 import static baseball.domain.NumbersValidator.*;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class Numbers {
-	private static final int NUMBERS_LENGTH = 3;
+
 	private final List<Integer> numbers;
 
 	public Numbers(List<Integer> inputNumbers) {
@@ -22,17 +20,12 @@ public class Numbers {
 		this.numbers = randomNumbersGenerator.generateRandomNumbers();
 	}
 
-	public int countStrike(Numbers inputNumbers) {
-		return (int)IntStream.range(0, NUMBERS_LENGTH)
-			.filter(i -> valueOfIndex(i).equals(inputNumbers.valueOfIndex(i)))
-			.count();
+	public boolean isSamePosition(Numbers inputNumbers ,int position) {
+		return valueOfIndex(position).equals(inputNumbers.valueOfIndex(position));
 	}
 
-	public int countBall(Numbers inputNumbers) {
-		return (int)IntStream.range(0, NUMBERS_LENGTH)
-			.filter(i -> numbers.contains(inputNumbers.valueOfIndex(i)))
-			.filter(i -> !Objects.equals(valueOfIndex(i), inputNumbers.valueOfIndex(i)))
-			.count();
+	public boolean isSameNumber(Numbers inputNumbers, int position) {
+		return numbers.contains(inputNumbers.valueOfIndex(position)) && !isSamePosition(inputNumbers,position);
 	}
 
 	private Integer valueOfIndex(int position) {
