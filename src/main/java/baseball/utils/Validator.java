@@ -14,6 +14,21 @@ public class Validator {
         validateNoDuplication(input);
     }
 
+    public static void validateEndInput(String input) {
+        validateIsNumber(input);
+        if (!(input.equals(MessageType.RESTART.getMessage()) || input.equals(MessageType.FINISH.getMessage()))) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
+
+    public static void validateIsNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 정수를 입력해주세요.");
+        }
+    }
+
     public static void validateLength(String input) {
         if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("잘못된 길이의 값을 입력했습니다. 3자리 정수를 입력해주세요.");
@@ -35,21 +50,6 @@ public class Validator {
 
         if (inputs.size() != input.length()) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 중복 되지 않는 정수를 입력해주세요.");
-        }
-    }
-
-    public static void validateEndInput(String input) {
-        validateIsNumber(input);
-        if (!(input.equals(MessageType.RESTART.getMessage()) || input.equals(MessageType.FINISH.getMessage()))) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        }
-    }
-
-    public static void validateIsNumber(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 정수를 입력해주세요.");
         }
     }
 }
