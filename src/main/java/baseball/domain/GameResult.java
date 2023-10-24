@@ -20,14 +20,6 @@ public class GameResult {
         return new GameResult(0, 0);
     }
 
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
-    public int getBallCount() {
-        return ballCount;
-    }
-
     public static GameResult from(int strikeCount, int ballCount) {
         checkStrikeAndBallTotalCount(strikeCount, ballCount);
         return new GameResult(strikeCount, ballCount);

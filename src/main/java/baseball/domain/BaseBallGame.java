@@ -1,49 +1,16 @@
 package baseball.domain;
 
-import baseball.domain.computer.Computer;
 import baseball.domain.computer.GameState;
-import baseball.domain.player.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import static baseball.domain.GameMessage.*;
-import static baseball.domain.GameResult.calculateBaseBallGame;
 
 public class BaseBallGame {
-    public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean playAgain = true;
-        while (playAgain) {
-            playRound();
-            playAgain = askPlayAgain();
-        }
-    }
 
-    private void playRound() {
-        boolean ongoing = false;
-        while (!ongoing) {
-            List<Integer> playerNumbers = inputNumbers();
-            Computer computer = Computer.createComputerAnswerByRandomGenerator(GameState.RUNNING);
-            Player player = Player.createPlayerByIntegerNumbers(playerNumbers);
-            GameResult gameResult = calculateBaseBallGame(player, computer);
-            gameResultMessage(gameResult);
-            if (gameResult.getStrikeCount() == 3) {
-                System.out.println(GAME_OVER_MESSAGE);
-                ongoing = true;
-            }
-        }
-    }
-
-    private boolean askPlayAgain() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
-        int choice = scanner.nextInt();
-        return choice == 1;
-    }
     public static List<Integer> inputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String inputBaseBallNumbers = Console.readLine();
