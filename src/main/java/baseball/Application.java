@@ -16,7 +16,6 @@ public class Application {
         boolean play = true;
         while (play) {
             List<Integer> computer = generateRandomNumber();
-            System.out.println(computer); /* 정답 확인용 */
             int strike = 0;
             while (strike < 3) {
                 List<Integer> player = getPlayerNumber();
@@ -41,6 +40,42 @@ public class Application {
         return computer;
     }
 
+    public List<Integer> getPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        return validatePlayerNumber(input);
+    }
+
+    public List<Integer> validatePlayerNumber(String input) {
+        isThreeDigits(input);
+        isInRangeOneToNine(input);
+        return hasUniqueNumber(input);
+    }
+
+    private void isThreeDigits(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("3자리가 아닙니다.");
+        }
+    }
+
+    private void isInRangeOneToNine(String input) {
+        if (!input.matches("[1-9]+")) {
+            throw new IllegalArgumentException("1에서 9 사이의 숫자가 아닙니다.");
+        }
+    }
+
+    private List<Integer> hasUniqueNumber(String input) {
+        List<Integer> player = new ArrayList<>();
+        for (char c : input.toCharArray()) {
+            int playerNumber = Character.getNumericValue(c);
+            if (player.contains(playerNumber)) {
+                throw new IllegalArgumentException("서로 다르지 않습니다.");
+            }
+            player.add(playerNumber);
+        }
+        return player;
+    }
+
     public int[] calculateResult(List<Integer> computer, List<Integer> player) {
         int[] result = new int[2]; //[strike, ball]
         for (int i = 0; i < player.size(); i++) {
@@ -53,42 +88,9 @@ public class Application {
         return result;
     }
 
-    public List<Integer> getPlayerNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        return validatePlayerNumber(input);
-    }
-
-    public List<Integer> validatePlayerNumber(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리가 아닙니다.");
-        }
-        List<Integer> player = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            if (c < '1' || c > '9') {
-                throw new IllegalArgumentException("수가 아닙니다.");
-            }
-            int playerNumber = Character.getNumericValue(c);
-            if (player.contains(playerNumber)) {
-                throw new IllegalArgumentException("서로 다르지 않습니다.");
-            }
-            player.add(playerNumber);
-        }
-        return player;
-    }
-
-    public boolean getRestartOrExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if (!input.equals("1") && !input.equals("2")) {
-            throw new IllegalArgumentException("1과 2 중 하나의 수여야 합니다.");
-        }
-        return input.equals("1");
-    }
-
     public void printResult(int[] result) {
-        int strike = result[0], ball = result[1];
+        int strike = result[0];
+        int ball = result[1];
         if (strike == 0 && ball == 0) {
             System.out.print("낫싱");
         }
@@ -99,5 +101,14 @@ public class Application {
             System.out.print(strike + "스트라이크");
         }
         System.out.println();
+    }
+
+    public boolean getRestartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("1과 2 중 하나의 수여야 합니다.");
+        }
+        return input.equals("1");
     }
 }
