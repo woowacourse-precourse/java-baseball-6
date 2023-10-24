@@ -106,6 +106,30 @@ public class Application {
         }
     }
 
+    public static int countStrike(List<Integer> computer, List<Integer> user) {
+        int ret = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                ret++;
+            }
+        }
+        return ret;
+    }
+
+    public static int countBall(List<Integer> computer, List<Integer> user) {
+        int ret = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i != j) {
+                    if (user.get(i).equals(computer.get(j))) {
+                        ret++;
+                    }
+                }
+            }
+        }
+        return ret;
+    }
+
     /*
      * @return Random Computer Data
      */
@@ -145,22 +169,9 @@ public class Application {
      */
     public static List<Integer> compareData(List<Integer> computer, List<Integer> user) {
         List<Integer> ballStrike = new ArrayList<>();
-        int ball = 0, strike = 0;
 
-        for (int i = 0; i < user.size(); i++) {
-            for (int j = 0; j < computer.size(); j++) {
-                if (user.get(i).equals(computer.get(j))) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
-                }
-            }
-        }
-
-        ballStrike.add(ball);
-        ballStrike.add(strike);
+        ballStrike.add(countBall(computer, user));
+        ballStrike.add(countStrike(computer, user));
 
         return ballStrike;
     }
