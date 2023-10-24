@@ -23,8 +23,17 @@
     - readme.md : 문서 구현할 기능 세부 정리.
     - 기능(feature) 패키지 생성
     - feature 패키지 내부 기능 클래스 생성
+      - confirmNumbers
+      - confirmRules
+      - RandomNumberMaker
 
 ## **10.24**
 
 - ### 추가
+  - RandomNumberMaker() 추가
+  - RandomNumberMaker.maker() 테스트 추가 
+- ### 취소
+  - 입출력 기능은 라이브러리가 제공되고 여러군데 쓰이고 특별한 과정이 필요 없으므로 클래스를 통한 구현이 필요 없다고 판단
+- ### 진행중
+  
     
