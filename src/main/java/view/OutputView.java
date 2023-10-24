@@ -22,16 +22,16 @@ public final class OutputView {
         System.out.println(message);
     }
 
-    public void startGame() {
+    public void printGameStartConsole() {
         write(GAME_START_MESSAGE);
     }
 
-    public void missionClear() {
+    public void printMissionClearConsole() {
         write(GAME_WIN_MESSAGE);
         write(GAME_RESTART_OR_QUIT_PROMPT);
     }
 
-    public void hint(int strike, int ball) {
+    public void printHintConsole(int strike, int ball) {
         validator.totalCountsNotExceedingLimit(strike, ball);
         String hintMessage = convertor.ballCountToHint(strike, ball);
         write(hintMessage);

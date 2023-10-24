@@ -24,7 +24,7 @@ public final class NumberBaseballController {
     }
 
     public void run() {
-        outputView.startGame();
+        outputView.printGameStartConsole();
         do {
             Computer computer = setupGame();
             playGame(computer);
@@ -35,12 +35,12 @@ public final class NumberBaseballController {
         List<Integer> userBaseballNumber = getUserBaseballNumber();
         User user = User.create(userBaseballNumber);
         GameScoreboard gameScoreboard = gameController.run(user, computer);
-        outputView.hint(gameScoreboard.getStrike(), gameScoreboard.getBall());
+        outputView.printHintConsole(gameScoreboard.getStrike(), gameScoreboard.getBall());
         if (gameController.isRunning(gameScoreboard)) {
             playGame(computer);
             return;
         }
-        outputView.missionClear();
+        outputView.printMissionClearConsole();
     }
 
     private boolean isUserWantToQuit() {
