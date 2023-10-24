@@ -9,8 +9,8 @@ import baseball.output.Printer;
 public class Baseball {
     Printer printer = new Printer();
     public void play() {
-        Balls answerBalls, playerBalls;
-
+        printer.printGameStartingSentence();
+        Balls answerBalls;
         // TODO : 정답 공 번호들 생성
         answerBalls = new RandomBalls();
         answerBalls.createBalls();
