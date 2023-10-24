@@ -26,11 +26,11 @@ public class Score {
     }
 
     public Integer getStrike() {
-        return strike;
+        return this.strike;
     }
 
     public Integer getBall() {
-        return ball;
+        return this.ball;
     }
 
     public boolean isAllStrike() {

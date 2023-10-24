@@ -18,6 +18,6 @@ public class GuessNumber {
     }
 
     public Integer getNumber() {
-        return number;
+        return this.number;
     }
 }

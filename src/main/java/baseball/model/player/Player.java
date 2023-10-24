@@ -12,7 +12,7 @@ public class Player {
         this.gameStateNumber = gameStateNumber;
     }
 
-    public void inputGuessNumber() {
+    public void inputGuessNumbers() {
         guessNumbers.input();
     }
 

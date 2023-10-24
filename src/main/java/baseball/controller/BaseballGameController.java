@@ -33,12 +33,12 @@ public class BaseballGameController {
     private void playOneRound() {
         computer.initScore();
         while (!computer.isScoreAllStrike()) {
-            inputView.printSuggestNumberMessage();
-            player.inputGuessNumber();
+            inputView.printGuessNumberInputMessage();
+            player.inputGuessNumbers();
             computer.calculateScore(player.getGuessNumbers());
             outputView.printResult(computer.getScore());
         }
-        inputView.printRestartOrExitMessage();
+        inputView.printRestartOrExitInputMessage();
     }
 
     public void printStartMessage() {

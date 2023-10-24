@@ -31,6 +31,7 @@ public class OutputView {
             System.out.println(score.getStrike() + STRIKE);
             return;
         }
+
         System.out.println(score.getBall() + BALL + score.getStrike() + STRIKE);
     }
 }
