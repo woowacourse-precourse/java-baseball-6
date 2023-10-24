@@ -49,4 +49,14 @@ public class ExceptionHandler {
             throw new IllegalArgumentException("0이 포함되거나 중복된 숫자가 입력으로 들어왔습니다.");
         }
     }
+
+    public static boolean isValidContinueCommand(String str) {
+        return str.equals("1") || str.equals("2");
+    }
+
+    public static void raiseContinueCommandException(String continueCommand){
+        if(!isValidContinueCommand(continueCommand)){
+            throw new IllegalArgumentException("1 또는 2가 아닌 잘못된 입력이 들어왔습니다.");
+        }
+    }
 }

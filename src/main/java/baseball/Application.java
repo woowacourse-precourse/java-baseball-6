@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public  static  boolean askGameContinue(){
         System.out.println(continueGameMessage);
-        String continueCommand = Console.readLine(); // TODO: error handle
+        String continueCommand = Console.readLine();
+        ExceptionHandler.raiseContinueCommandException(continueCommand);
+
         if (continueCommand.equals(gameStop)) {
             System.out.println(endGameMessage);
             return true;
