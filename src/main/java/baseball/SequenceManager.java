@@ -37,9 +37,11 @@ public class SequenceManager {
 
     public boolean validateRestart() {
         boolean restart = true;
+
         if (data.getRestartResponse().equals(Data.CLOSE_GAME_INPUT) || !data.getIsNoError()) {
             restart = false;
         }
+
         return restart;
     }
 }

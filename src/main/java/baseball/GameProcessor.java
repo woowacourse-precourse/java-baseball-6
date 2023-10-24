@@ -17,6 +17,7 @@ public class GameProcessor {
             }
             data.setRandomNumberList(randomNumberList);
         }
+
         return randomNumberList;
     }
 
@@ -29,11 +30,11 @@ public class GameProcessor {
             userNumberList.add(String.valueOf(digitChar));
         }
         data.setUserNumberList(userNumberList);
+
         return userNumberList;
     }
 
-    private int calculateBall(List<String> userNumberList,
-            List<String> randomNumberList) {
+    private int calculateBall(List<String> userNumberList, List<String> randomNumberList) {
         int ball = 0;
 
         for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
@@ -43,11 +44,11 @@ public class GameProcessor {
                 }
             }
         }
+
         return ball;
     }
 
-    private int calculateStrike(List<String> userNumberList,
-            List<String> randomNumberList) {
+    private int calculateStrike(List<String> userNumberList, List<String> randomNumberList) {
         int strike = 0;
 
         for (int i = 0; i < Data.DIGIT_LENGTH_LIMIT; i++) {
@@ -55,14 +56,17 @@ public class GameProcessor {
                 strike++;
             }
         }
+
         return strike;
     }
 
     public Boolean validateFullStrike(Data data) {
         boolean isFullStrike = false;
+
         if (data.getStrike() == Data.DIGIT_LENGTH_LIMIT) {
             isFullStrike = true;
         }
+
         return isFullStrike;
     }
 
@@ -106,9 +110,11 @@ public class GameProcessor {
 
     public boolean illegalArgumentException(Data data) {
         boolean isError = false;
+
         if ((data.getUserNumber().length()) != Data.DIGIT_LENGTH_LIMIT) {
             isError = true;
         }
+
         return isError;
     }
 }

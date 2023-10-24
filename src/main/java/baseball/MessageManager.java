@@ -10,6 +10,7 @@ public class MessageManager extends Messages {
 
     public String getInputNumber() {
         System.out.print(super.getInputText());
+
         return readLine();
     }
 
@@ -19,8 +20,10 @@ public class MessageManager extends Messages {
 
     public String getContinueResponse() {
         System.out.println(super.getWillRestartText());
+
         String continueResponse = readLine();
         System.out.println();
+
         return continueResponse;
     }
 }
