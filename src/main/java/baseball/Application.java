@@ -17,7 +17,7 @@ interface GameInterface {
 
     void start();
 
-    boolean defer();
+    boolean isEndGame();
 }
 
 class BaseballGame implements GameInterface {
@@ -37,8 +37,8 @@ class BaseballGame implements GameInterface {
     }
 
     @Override
-    public boolean defer() {
-        return isEndGame();
+    public boolean isEndGame() {
+        return decideEndGame();
     }
 
     private void pickComputerNumber() {
@@ -114,16 +114,15 @@ class BaseballGame implements GameInterface {
         }
     }
 
-    private static boolean isEndGame() throws IllegalArgumentException {
+    private boolean isGameWon(HashMap<ScoreType, Integer> result) {
+        return result.get(ScoreType.STRIKE) == 3;
+    }
+
+    private boolean decideEndGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String input = Console.readLine();
-
         InputValidator.validateRestartOrEndInput(input);
-
-        if (input.charAt(0) == '1') {
-            return false;
-        }
-        return true;
+        return input.charAt(0) == '2';
     }
 }
 
