@@ -17,7 +17,7 @@ public class BaseballGame {
 
         List<Integer> comparedResult = computer.compareEachNumber(computerNumber, userNumber);
         String resultMessage = computer.createResultMessage(comparedResult);
-        computer.checkResult();
+        Boolean answerCorrect = computer.checkAnswer(resultMessage);
         computer.decideGameEndAndRestart();
 
 //        public static void Game() {

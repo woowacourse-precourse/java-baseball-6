@@ -72,7 +72,8 @@ public class Computer {
         return resultMessage;
     }
 
-    public void checkResult() {
+    public boolean checkAnswer(String resultMessage) {
+        return resultMessage.equals("3스트라이크");
     }
 
     public void decideGameEndAndRestart() {
