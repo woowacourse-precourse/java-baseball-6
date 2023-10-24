@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 public class Input {
 
     private final InputValidator inputValidator;
-    private final static String GUESS_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private final static String RETRY_CHOICE_INPUT_MESSAGE =
+    private static final String GUESS_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String RETRY_CHOICE_INPUT_MESSAGE =
             "게임을 새로 시작하려면 " + GameConstants.RETRY_CHOICE + ", 종료하려면 " + GameConstants.EXIT_CHOICE + "를 입력하세요.";
-    private final static String WHITESPACE_PATTERN = "\\s";
-    private final static String EMPTY_STRING = "";
+    private static final String WHITESPACE_PATTERN = "\\s";
+    private static final String EMPTY_STRING = "";
 
     public Input() {
         this.inputValidator = new InputValidator();
