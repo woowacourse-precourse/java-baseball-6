@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.RoundResult;
+import baseball.domain.RoundResult;
 
 public class OutputView {
 

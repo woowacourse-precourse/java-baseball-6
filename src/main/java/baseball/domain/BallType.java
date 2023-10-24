@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public enum BallType {
     STRIKE,

@@ -1,5 +1,8 @@
-package baseball;
+package baseball.controller;
 
+import baseball.domain.Balls;
+import baseball.domain.RoundResult;
+import baseball.util.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
