@@ -32,11 +32,6 @@ public class TargetBaseballNumbers {
 
     public GameResult calculateGameResult(final List<Integer> inputNumbers) {
         List<BaseballNumber> playerBaseballNumbers = convertInputToBaseballNumbers(inputNumbers);
-
-        if (baseballNumbers.size() != playerBaseballNumbers.size()) {
-            throw new IllegalArgumentException();
-        }
-
         return createGameResult(playerBaseballNumbers);
     }
 
@@ -55,10 +50,10 @@ public class TargetBaseballNumbers {
         }
     }
 
-    private void verifyDuplicates(final List<Integer> inputPlayerNumbers) {
-        Set<Integer> uniqueNumbers = new HashSet<>(inputPlayerNumbers);
+    private void verifyDuplicates(final List<Integer> inputNumbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(inputNumbers);
 
-        if (uniqueNumbers.size() != inputPlayerNumbers.size()) {
+        if (uniqueNumbers.size() != inputNumbers.size()) {
             throw new IllegalArgumentException();
         }
     }
