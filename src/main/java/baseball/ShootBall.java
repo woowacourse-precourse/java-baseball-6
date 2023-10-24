@@ -15,6 +15,7 @@ public class ShootBall {
 
     //(3)번 기능
     public void inputNumGenerator(){
+        clearArr();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         validNumInspect(input);
@@ -30,6 +31,7 @@ public class ShootBall {
     public void randomNumGenerator(){
         int randNum;
         int i=1;
+        clearArr();
         while(i<=3) {
             randNum = Randoms.pickNumberInRange(1, 9);
             if(numbers[randNum]==0)
