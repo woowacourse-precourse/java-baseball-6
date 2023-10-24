@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.ComputerNumber;
 import baseball.util.ComputeBallCount;
+import baseball.util.CheckBallCount;
 import baseball.util.ValidateNumber;
 import baseball.view.InputMessage;
 import baseball.view.OutputMessage;
@@ -15,9 +16,10 @@ public class Baseball {
     ValidateNumber validateNumber = new ValidateNumber();
     ComputerNumber computerNumber = new ComputerNumber();
     ComputeBallCount computeBallCount = new ComputeBallCount();
+    CheckBallCount checkBallCount = new CheckBallCount();
 
     boolean terminate = false;
-    boolean game = false;
+    boolean finish = false;
 
     public void startGame() {
         //1. 게임 시작
@@ -31,7 +33,7 @@ public class Baseball {
             //2.1. 랜덤 숫자 생성
             List<Integer> computer = computerNumber.makeComputerNumber();
             //2.2. "숫자를 입력해주세요 :" 출력과 함께 사용자 입력
-            while (!game) {
+            while (!finish) {
                 guessCount(computer);
             }
             //3. 게임 지속 여부 판단
@@ -50,9 +52,8 @@ public class Baseball {
         //2.4.1
         inputMessage.callBallCount(count);
         //2.4.2
-        if (count[1] == 3) {
-            outputMessage.correctMessage();
-            game = true;
+        if (checkBallCount.strikeOut(count)){
+            finish = true;
         }
     }
 
@@ -62,6 +63,6 @@ public class Baseball {
         validateNumber.isEndNumber(endNumber);
         if (endNumber.equals("2")) {
             terminate = true;
-        } else game = false;
+        } else finish = false;
     }
 }
