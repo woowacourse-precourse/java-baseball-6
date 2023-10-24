@@ -1,9 +1,9 @@
 package baseball;
 
+import baseball.io.UserIo;
+import baseball.numbergenerator.NumberGenerator;
 import baseball.numbers.GuessedNumbers;
 import baseball.numbers.NumberBaseballGameComputerPlayer;
-import baseball.numbergenerator.NumberGenerator;
-import baseball.io.UserIo;
 
 public class NumberBaseballGame {
 
@@ -38,7 +38,7 @@ public class NumberBaseballGame {
 
     private NumberBaseballGameResult compareNumbers(NumberBaseballGameComputerPlayer computerPlayer,
             GuessedNumbers guessedNumbers) {
-        return computerPlayer.compareWith(guessedNumbers.getNumbers());
+        return computerPlayer.compareWith(guessedNumbers);
     }
 
     private GuessedNumbers createGuessedNumbers() {

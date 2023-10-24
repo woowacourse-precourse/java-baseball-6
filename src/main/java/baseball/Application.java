@@ -1,8 +1,8 @@
 package baseball;
 
+import baseball.io.UserIo;
 import baseball.numbergenerator.NumberGenerator;
 import baseball.numbergenerator.RandomNumberGenerator;
-import baseball.io.UserIo;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {

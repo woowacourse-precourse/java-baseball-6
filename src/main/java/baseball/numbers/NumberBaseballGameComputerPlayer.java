@@ -17,10 +17,8 @@ public class NumberBaseballGameComputerPlayer {
         return numbers.size();
     }
 
-    public NumberBaseballGameResult compareWith(List<Integer> otherNumbers) {
-        if (otherNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException("비교하려는 숫자의 개수가 컴퓨터의 숫자 개수와 일치하지 않습니다.");
-        }
+    public NumberBaseballGameResult compareWith(GuessedNumbers guessedNumbers) {
+        List<Integer> otherNumbers = guessedNumbers.getNumbers();
 
         int strikeCount = calculateStrikeCount(otherNumbers);
         int ballCount = calculateBallCount(otherNumbers);
