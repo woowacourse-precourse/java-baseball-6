@@ -70,6 +70,7 @@
 ┃ ┃ ┗ 📜Output.java
 ┃ ┃
 ┃ ┣ 📂type
+┃ ┃ ┗ 📜ReStartFlag.java
 ┃ ┗ 📜Application.java
 ┃ ┗ ...
 ┣ ...
