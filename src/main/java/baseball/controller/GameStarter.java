@@ -15,7 +15,7 @@ public class GameStarter {
     private Output output = Output.getOutput();
     private Input input = Input.getInput();
     private int gameCount = 0;
-    private NumberVO numberVO;
+    private List<Integer> computerNumber = new ArrayList<>();
     private GraderResult graderResult;
 
     public GameStarter() {
@@ -49,7 +49,6 @@ public class GameStarter {
     }
 
     private void selectComputerNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
         int random;
 
         while (computerNumber.size() < 3) {
@@ -59,8 +58,6 @@ public class GameStarter {
                 computerNumber.add(random);
             }
         }
-
-        numberVO = new NumberVO(computerNumber);
     }
 
     private boolean askIntension() throws IOException {
@@ -95,7 +92,7 @@ public class GameStarter {
             output.announceMention(Constant.ANNOUNCE_INSERT_NUMBER);
             inputValue = input.inputFromUser();
 
-            gameResult = graderResult.setGameResult(numberVO, inputValue);
+            gameResult = graderResult.setGameResult(computerNumber, inputValue);
 
             output.announceMention(gameResult);
 

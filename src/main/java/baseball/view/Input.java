@@ -26,8 +26,6 @@ public class Input {
             throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.PROGRAM_END);
         }
 
-        br.close();
-
         return inputValue;
     }
 

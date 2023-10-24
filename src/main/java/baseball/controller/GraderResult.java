@@ -1,10 +1,8 @@
 package baseball.controller;
 
-import baseball.model.NumberVO;
 import baseball.utility.Constant;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GraderResult {
@@ -12,11 +10,17 @@ public class GraderResult {
     int ballCount;
     int strikeCount;
 
-    public String setGameResult(NumberVO computer, int user) {
+    public String setGameResult(List<Integer> computer, int user) {
+        ballCount = 0;
+        strikeCount = 0;
         List<Integer> userNumber = cutOneByOne(user);
 
-        strikeCount = countStrike(computer, userNumber);
-        
+        countStrike(computer, userNumber);
+
+        if (strikeCount != 3) {
+            countBall(computer, userNumber);
+        }
+
         String sortedResult;
 
         if (ballCount == 0 && strikeCount == 0) {
@@ -51,7 +55,21 @@ public class GraderResult {
         return list;
     }
 
-    private int countStrike(NumberVO computer, List<Integer> user) {
+    private void countStrike(List<Integer> computer, List<Integer> user) {
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i) == user.get(i)) {
+                strikeCount++;
+                user.remove(i);
+                user.add(i, 0);
+            }
+        }
+    }
 
+    private void countBall(List<Integer> computer, List<Integer> user) {
+        for (int element : user) {
+            if (computer.contains(element)) {
+                ballCount++;
+            }
+        }
     }
 }
