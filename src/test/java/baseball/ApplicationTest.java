@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.model.ComputerNumber;
+import baseball.util.CompareNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -18,6 +22,14 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void 컴퓨터_난수_생성(){
+        ComputerNumber computerNumber = new ComputerNumber();
+        computerNumber.generateRandomNumber();
+
+        assertThat(computerNumber.getComputerNumber().size()).isEqualTo(3);
     }
 
     @Test

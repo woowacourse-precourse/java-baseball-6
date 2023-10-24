@@ -18,21 +18,15 @@ public class OutputView {
     }
 
     public static void printOnlyBall(int ball, int strike){
-        if(ball>0 && strike==default_number){
             System.out.println(ball + "볼");
-        }
     }
 
     public static void printOnlyStrike(int ball, int strike){
-        if(ball==default_number && strike>0){
             System.out.println(strike + "스트라이크");
-        }
     }
     
     public static void printNothing(int ball, int strike){
-        if(ball==default_number && strike==default_number){
             System.out.println("낫싱");
-        }
     }
 
 }

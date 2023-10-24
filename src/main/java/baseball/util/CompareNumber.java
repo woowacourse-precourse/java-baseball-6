@@ -9,51 +9,51 @@ public class CompareNumber {
     private int ball;
     private int strike;
 
-    public CompareNumber(){
+    public CompareNumber() {
         ball = 0;
         strike = 0;
     }
-    
-    //스트라이크, 볼 개수를 계산하는 메서드
-    public void countStrikeAndBall(List<Integer> computerNumber, List<Integer> playerNumber){
+
+    // 스트라이크, 볼 개수를 계산하는 메서드
+    public void countStrikeAndBall(List<Integer> computerNumber, List<Integer> playerNumber) {
         resetCount();
 
-        for(int i=0; i<3; i++){
+        for (int i = 0; i < 3; i++) {
             int computerDigit = computerNumber.get(i);
             int playerDigit = playerNumber.get(i);
 
-            if(computerDigit == playerDigit){
+            if (computerDigit == playerDigit) {
                 incrementStrike();
-            }
-            if(computerNumber.contains(playerNumber)){
+            } else if (computerNumber.contains(playerDigit)) {
                 incrementBall();
             }
         }
     }
 
-    //볼, 스트라이크 카운트 리셋
-    private void resetCount(){
+    // 볼, 스트라이크 카운트 리셋
+    private void resetCount() {
         ball = 0;
         strike = 0;
     }
 
-    //난수, 플레이어 숫자 비교 후 스트라이크 개수 증가
-    private void incrementStrike(){
+    // 스트라이크 개수 증가
+    private void incrementStrike() {
         strike++;
     }
 
-    //난수, 플레이어 숫자 비교 후 볼 개수 증가
-    private void incrementBall(){
+    // 볼 개수 증가
+    private void incrementBall() {
         ball++;
     }
 
-    //스트라이크 개수 가져오기
+    // 스트라이크 개수 가져오기
     public int getStrikeCount() {
         return strike;
     }
 
-    //볼 개수 가져오기
+    // 볼 개수 가져오기
     public int getBallCount() {
         return ball;
     }
 }
+

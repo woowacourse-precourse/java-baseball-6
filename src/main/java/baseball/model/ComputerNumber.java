@@ -32,8 +32,8 @@ public class ComputerNumber {
         }
     }
 
-    //게임 재시작 메서드
-    public void resetGame(){
+    //난수 리셋 메서드
+    public void reset(){
         generateRandomNumber();
     }
 

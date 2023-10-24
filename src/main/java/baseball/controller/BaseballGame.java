@@ -19,43 +19,54 @@ public class BaseballGame {
         compareNumber = new CompareNumber();
     }
 
-    public void startGame() {
+    public void start() {
         OutputView.gameStartMessage();
+        do {
+            getPlayerNumber();
+            printCount();
+        } while (!isGameOver());
+    }
 
-        while (true) {
-            //컴퓨터 난수 생성
-            computerNumber.generateRandomNumber();
+    public void getPlayerNumber(){
+        String playerInput = InputView.setPlayerNumber();
+        playerNumber.setPlayerNumber(playerInput);
+    }
 
-            //플레이어로부터 숫자 입력 받기
-            String playerInput = InputView.setPlayerNumber();
-            playerNumber.setPlayerNumber(playerInput);
+    public void printCount(){
+        List<Integer> playerNumbers = playerNumber.getPlayerNumber();
+        List<Integer> computerNumbers = computerNumber.getComputerNumber();
+        compareNumber.countStrikeAndBall(computerNumbers, playerNumbers);
 
-            //숫자 비교 및 결과 출력
-            List<Integer> playerNumbers = playerNumber.getPlayerNumber();
-            List<Integer> computerNumbers = computerNumber.getComputerNumber();
-            compareNumber.countStrikeAndBall(computerNumbers, playerNumbers);
+        int ball = compareNumber.getBallCount();
+        int strike = compareNumber.getStrikeCount();
 
-            int ball = compareNumber.getBallCount();
-            int strike = compareNumber.getStrikeCount();
-
+        if(ball > 0 && strike > 0){
             OutputView.printBallAndStrike(ball, strike);
-
-            //게임 종료 조건
-            if (strike == 3) {
-                OutputView.gameOverMessage();
-                break;
-            }
         }
-
-        //게임 재시작 여부 확인
-        int gameRestart = Integer.parseInt(InputView.setRetryGame());
-        if (gameRestart == 1) {
-            computerNumber.resetGame();
-            startGame();
+        if(ball == 0 && strike > 0){
+            OutputView.printOnlyStrike(ball, strike);
+        }
+        if(ball > 0 && strike == 0){
+            OutputView.printOnlyBall(ball, strike);
+        }
+        if(ball == 0 && strike == 0){
+            OutputView.printNothing(ball, strike);
         }
     }
-    public static void main(String[] args){
-        BaseballGame game = new BaseballGame();
-        game.startGame();
+
+    public boolean isGameOver() {
+        int strike = compareNumber.getStrikeCount();
+
+        if (strike == 3) {
+            OutputView.gameOverMessage();
+            return true;
+        }
+        return false;
+    }
+
+    public void restartGame(){
+        computerNumber.reset();
+        playerNumber = new PlayerNumber();
+        compareNumber = new CompareNumber();
     }
 }
