@@ -1,24 +1,44 @@
 package baseball.model;
 
+import java.util.List;
+
 public class PlayerAnswer {
 
     private int ball = 0;
     private int strike = 0;
 
-    public int getBall() {
-        return ball;
+
+    public void countStrikeAndBall(List<Integer> computerRandomNumberList, List<Integer> playerNumberList, int i) {
+        if (computerRandomNumberList.get(i) == playerNumberList.get(i)) {
+            strike++;
+        }
+        if (computerRandomNumberList.get(i) != playerNumberList.get(i)) {
+            if (computerRandomNumberList.contains(playerNumberList.get(i))) {
+                ball++;
+            }
+        }
     }
 
-    public void setBall(int ball) {
-        this.ball = ball;
+    public void initCountZero() {
+        strike = 0;
+        ball = 0;
     }
 
-    public int getStrike() {
-        return strike;
+    public boolean checkThreeStrike() {
+        return strike == 3;
     }
 
-    public void setStrike(int strike) {
-        this.strike = strike;
+    public String getHint() {
+        String hint = "";
+
+        if (ball > 0) {
+            hint += ball + "볼 ";
+        }
+        if (strike > 0) {
+            hint += strike + "스트라이크";
+        }
+
+        return hint.equals("") ? "낫싱" : hint;
     }
 
 
