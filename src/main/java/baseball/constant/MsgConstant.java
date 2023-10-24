@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.constant;
 
 public final class MsgConstant {
 

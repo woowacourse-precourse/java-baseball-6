@@ -1,9 +1,7 @@
 package baseball.view;
 
-import static baseball.model.MsgConstant.BALL;
-import static baseball.model.MsgConstant.NOTHING;
-import static baseball.model.MsgConstant.STRIKE;
-import static baseball.model.NumConstant.FULL_STRIKE;
+import static baseball.constant.MsgConstant.*;
+import static baseball.constant.NumConstant.*;
 
 import baseball.Baseball;
 
