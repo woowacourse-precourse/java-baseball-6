@@ -178,9 +178,9 @@ public class Game {
     }
 
     private void validationCheckReGame(String gameFlag) {
-        int _gameFlag = gameFlag.charAt(0);
-        if (!(_gameFlag == ASCII_GAME_START
-                || _gameFlag == ASCII_GAME_END)
+        int _gameFlagAt0 = gameFlag.charAt(0);
+        if (!(_gameFlagAt0 == ASCII_GAME_START
+                || _gameFlagAt0 == ASCII_GAME_END)
         ) {
             throw new IllegalArgumentException();
         }
