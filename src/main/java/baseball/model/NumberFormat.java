@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberFormat {
      public static final int DIGIT_CONSTRAINT = 3;
@@ -27,10 +26,10 @@ public class NumberFormat {
      }
 
      public static NumberFormat createNumberFormat(int num) {
-          return new NumberFormat(convertInttoDigitList(num));
+          return new NumberFormat(convertIntToDigitList(num));
      }
 
-     private static List<Integer> convertInttoDigitList(int num) {
+     private static List<Integer> convertIntToDigitList(int num) {
           List<Integer> numberList = new ArrayList<>();
           while (num > 0){
                numberList.add(num%10);
