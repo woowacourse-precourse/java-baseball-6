@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class InputeValidator {
+public class InputValidator {
     public void validateInput(List<Integer> input) {
         if (input.size() != 3) {
             throw new IllegalArgumentException("입력은 3개의 숫자여야 합니다.");
