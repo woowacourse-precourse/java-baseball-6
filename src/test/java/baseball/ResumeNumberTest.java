@@ -10,16 +10,22 @@ public class ResumeNumberTest {
 
     @Test
     void 재시작_또는_종료값은_한자릿수여야만_한다() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        // given & when
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ResumeNumber resumeNumber = ResumeNumber.from("123");
         });
+        // then
+        assertThat(exception.getMessage()).isEqualTo("재시작/종료 입력값이 잘못되었습니다.");
     }
 
     @Test
     void 재시작_또는_종료값은_숫자여야만_한다() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        // given & when
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ResumeNumber resumeNumber = ResumeNumber.from("a");
         });
+        // then
+        assertThat(exception.getMessage()).isEqualTo("재시작/종료 입력값이 잘못되었습니다.");
     }
 
     @Test
@@ -44,6 +50,7 @@ public class ResumeNumberTest {
     void 종료_상태는_2이다() {
         // given & when
         ResumeNumber resumeNumber = ResumeNumber.from("2");
+        // then
         assertThat(resumeNumber.isWantMoreGame()).isFalse();
     }
 }
