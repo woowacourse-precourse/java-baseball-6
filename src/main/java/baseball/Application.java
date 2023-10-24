@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,6 +21,19 @@ public class Application {
                     numbers.add(number);
                     k--;
                 }
+            }
+
+            System.out.println("숫자를 입력해주세요 : ");
+            String response = Console.readLine();
+            List<Integer> prediction = new ArrayList<>();
+            for (int i = 0; i < response.length(); i++) {
+                if (!prediction.contains(response.charAt(i) - '0')) {
+                    prediction.add(response.charAt(i) - '0');
+                }
+            }
+
+            if (prediction.size() != 3 || response.length() != 3) {
+                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
             }
         }
 
