@@ -12,12 +12,12 @@ public class UserBaseballNumber {
         baseballNumberList = parseUserInput(userInput);
     }
     private void validateBaseballInput(String userInput){
-        checkIfInputNumberLength(userInput);
+        checkInputNumberLength(userInput);
         checkIfInputNumberIsNotNumberFormat(userInput);
         checkIfInputNumberIsDuplicate(userInput);
         checkIfInputNumberContainsZero(userInput);
     }
-    private void checkIfInputNumberLength(String userInput){
+    private void checkInputNumberLength(String userInput){
         if(userInput.length() != BASEBALL_INPUT_NUMBER){
             throw new IllegalArgumentException("잘못된 사용자 입력입니다. : 입력의 길이가 " + BASEBALL_INPUT_NUMBER + "이 아닙니다.");
         }
