@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class InputView {
+    private static final String RESTART_CHOOSE = "1";
+
     public void greetingMsg() {
         System.out.println(InputMessage.START_MSG.getMsg());
     }
@@ -28,7 +30,7 @@ public class InputView {
     }
 
     public boolean receiveRestartDecisionFromUser() {
-        return Objects.equals(Console.readLine(), "1");
+        return Objects.equals(Console.readLine(), RESTART_CHOOSE);
     }
 
     private void userInputValidation(String input) {
