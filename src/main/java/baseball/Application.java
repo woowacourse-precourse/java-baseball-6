@@ -25,6 +25,9 @@ public class Application {
 
                 System.out.print("숫자를 입력해주세요 : ");
                 number = inputNumber();
+                if (number < 100 || number > 999) {
+                    throw new IllegalArgumentException();
+                }
                 user = convertInt2IntArray(number);
 
                 // Count strike
@@ -94,9 +97,6 @@ public class Application {
         try {
             number = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-        if (number < 100 || number > 999) {
             throw new IllegalArgumentException();
         }
         return number;
