@@ -93,7 +93,7 @@ public class BaseBallGame {
         List<Integer> list = new ArrayList<>();
         for (char c : str.toCharArray()) {
             if (!(Character.isDigit(c))) {
-                throw new IllegalArgumentException("숫자를 입력해 주세요");
+                errorThrow("notNum");
             }
 
             int digit = Character.getNumericValue(c);
@@ -176,11 +176,11 @@ public class BaseBallGame {
      */
     private int stringToInt(String str) {
 
-        int num;
+        int num = 0;
         try {
             num = Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해 주세요");
+            errorThrow("notNum");
         }
 
         return num;
@@ -197,17 +197,17 @@ public class BaseBallGame {
     private void inputErrorCheck(List<Integer> input) {
 
         if (input.size() != 3) {
-            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+            errorThrow("wrongLen");
         }
 
         Set<Integer> inputSet = new HashSet<>(input);
         if (inputSet.size() != 3) {
-            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+            errorThrow("duplicate");
         }
 
         for (Integer num : input) {
             if (num < 1 || num > 9) {
-                throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+                errorThrow("invalidNum");
             }
         }
 
@@ -223,9 +223,35 @@ public class BaseBallGame {
     private void inputErrorCheck(int input) {
 
         if (input != 1 && input != 2) {
-            throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+            errorThrow("invalidNum");
         }
 
     }
 
+    /**
+     * 예외에 따른 메세지 설정 및 예외 던지기
+     *
+     * @param str 예외 이유
+     */
+    private void errorThrow(String str) {
+
+        String message = "";
+
+        switch (str) {
+            case "notNum":
+                message = "숫자를 입력해 주세요";
+                break;
+            case "wrongLen":
+                message = "3자리 숫자가 아닙니다.";
+                break;
+            case "duplicate":
+                message = "중복된 숫자가 존재합니다.";
+                break;
+            case "invalidNum":
+                message = "유효한 숫자가 아닙니다.";
+                break;
+        }
+
+        throw new IllegalArgumentException(message);
+    }
 }
