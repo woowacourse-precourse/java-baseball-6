@@ -6,20 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    Validator validator= new Validator();
+    Validator validator = new Validator();
 
     public Computer() {
     }
 
-    private static final List<String> baseballNum = new ArrayList<>();
-    public String createValidBaseballNum(){
-        while(baseballNum.size()<3){
+    private List<String> baseballNum = new ArrayList<>();
+
+    public String createValidBaseballNum() {
+        while (baseballNum.size() < 3) {
             String invalidNum = String.valueOf(Randoms.pickNumberInRange(1, 9));
-            if(!validator.validNumNotInList(invalidNum,baseballNum)){
+            if (validator.validNumNotInList(invalidNum, baseballNum)) {
                 continue;
             }
             baseballNum.add(invalidNum);
         }
-        return  baseballNum.toString();
+        return String.join("", baseballNum);
     }
 }
