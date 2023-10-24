@@ -20,6 +20,18 @@ public class Application {
         return computer;
     }
 
+    public static int getStrikeCount(List<Integer> userInput, List<Integer> result) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < result.size(); i++) {
+            if (userInput.get(i) == result.get(i)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
     public static boolean isNumber(List<Integer> threeNumber) {
         Integer indexZero = threeNumber.get(0);
         Integer indexOne = threeNumber.get(1);
