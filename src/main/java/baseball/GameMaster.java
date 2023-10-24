@@ -16,35 +16,22 @@ public class GameMaster<T extends Game> {
     }
 
     public void play() {
-        boolean isRunningGame = true;
+        println(game.getStartPrompt());
 
+        boolean isRunningGame = true;
         while (isRunningGame) {
-            gameInit();
+            game.init();
 
             while (!game.isFinished()) {
-                playTurn();
+                print(game.getPlayTurnPrompt());
+
+                String gameOutput = game.processTurn(input());
+                println(gameOutput);
             }
-            gameFinish();
+            println(game.getFinishPrompt());
 
             isRunningGame = isContinueGame();
         }
-    }
-
-    private void gameInit() {
-        game.init();
-        println(game.getStartPrompt());
-    }
-
-    private void playTurn() {
-        print(game.getPlayTurnPrompt());
-
-        String gameInput = input();
-        String gameOutput = game.processTurn(gameInput);
-        println(gameOutput);
-    }
-
-    private void gameFinish() {
-        println(game.getFinishPrompt());
     }
 
     private boolean isContinueGame() {
