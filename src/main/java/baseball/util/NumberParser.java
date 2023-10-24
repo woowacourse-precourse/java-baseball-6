@@ -1,0 +1,32 @@
+package baseball.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NumberParser {
+    private NumberParser() {
+    }
+
+    public static List<Integer> parseIntegerList(String numberString) {
+        List<Integer> parsedNumbers = new ArrayList<>();
+        validateNotEmptyString(numberString);
+        for (int i = 0; i < numberString.length(); i++) {
+            char ch = numberString.charAt(i);
+            parsedNumbers.add(parseIntCharacter(ch));
+        }
+        return parsedNumbers;
+    }
+
+    private static int parseIntCharacter(char ch) {
+        if (!('0' <= ch && ch <= '9')) {
+            throw new IllegalArgumentException("0 ~ 9 사이의 숫자만 허용됩니다.");
+        }
+        return Character.getNumericValue(ch);
+    }
+
+    private static void validateNotEmptyString(String numberString) {
+        if (numberString == null || numberString.isEmpty()) {
+            throw new IllegalArgumentException("비어있지 않은 문자열이 입력되어야 합니다.");
+        }
+    }
+}
