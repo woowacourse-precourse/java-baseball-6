@@ -35,4 +35,10 @@ class ValidationTest {
         assertThatThrownBy(() -> Validation.validateRestartOrEnd("3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    public void 입력한_숫자가_1에서_9사이의_숫자가_아니면_예외_발생() {
+        assertThatThrownBy(() -> Validation.validateInputThreeNumber("012"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
