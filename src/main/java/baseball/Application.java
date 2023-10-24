@@ -12,6 +12,8 @@ public class Application {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int DIGIT_COUNT = 3;
+    private static final String RESTART_OPTION = "1";
+    private static final String EXIT_OPTION = "2";
 
 
     public static void main(String[] args) {
@@ -33,6 +35,18 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞혔습니다! 게임 종료");
                 return;
             }
+        }
+    }
+
+    // 재시작 여부 입력
+    private static String askForReGame() {
+        System.out.print("게임을 새로 시작하려면 " + RESTART_OPTION + ", 종료하려면 " + EXIT_OPTION + "를 입력하세요: ");
+        String reGame = Console.readLine();
+
+        if (reGame.equals(RESTART_OPTION) || reGame.equals(EXIT_OPTION)) {
+            return reGame;
+        } else {
+            throw new IllegalArgumentException("유효하지 않은 입력입니다. " + RESTART_OPTION + " 또는 " + EXIT_OPTION + "를 입력하세요.");
         }
     }
 
