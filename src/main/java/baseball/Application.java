@@ -73,11 +73,13 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
                 String answer = Console.readLine();
-                if (answer == "1") {
-                    System.out.println("숫자를 입력해주세요 : ");
-                } else if (answer == "2") {
+                if ("1".equals(answer)) {
+                    computerNumbers = generateNumber();
+                    // 게임 재시작 하는 경우에 랜덤 숫자 갱신 필요
+                } else if ("2".equals(answer)) {
                     break;
                 }
+                // 종료 처리 코딩 수정 필요
 
             }
         }
