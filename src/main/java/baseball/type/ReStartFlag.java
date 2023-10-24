@@ -1,12 +1,12 @@
 package baseball.type;
 
-public enum RestartFlag {
+public enum ReStartFlag {
     RESTART(1),
     END(2);
 
     final int number;
 
-    RestartFlag(int number) {
+    ReStartFlag(int number) {
         this.number = number;
     }
 

@@ -4,7 +4,7 @@ import baseball.domain.AnswerChecker;
 import baseball.domain.Computer;
 import baseball.io.Input;
 import baseball.io.Output;
-import baseball.type.RestartFlag;
+import baseball.type.ReStartFlag;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -65,9 +65,9 @@ public class BaseballGame {
         Output.continueMsg();
         String input = Input.reStartOption();
 
-        if (RestartFlag.isRestart(input)) {
+        if (ReStartFlag.isRestart(input)) {
             start();
-        } else if (RestartFlag.isEnd(input)) {
+        } else if (ReStartFlag.isEnd(input)) {
             Output.expireMsg();
             Console.close();
         }
