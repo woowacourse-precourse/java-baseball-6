@@ -41,5 +41,12 @@ public class Application {
         }
     }
 
+    // 사용자 입력이 숫자로만 이루어져 있는지 검증
+    private static void validateInputIsNumeric(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("입력은 숫자여야 합니다.");
+        }
+    }
+
 
 }
