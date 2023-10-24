@@ -22,11 +22,14 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
+        // 제한 개수 초과 입력시
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+
 
     @Override
     public void runMain() {
