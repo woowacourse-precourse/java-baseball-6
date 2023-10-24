@@ -28,6 +28,21 @@ public class Application {
                         throw new IllegalArgumentException("모두 숫자를 입력해주세요.");
                     }
                 }
+                int[] cnt = {0, 0, 0};
+
+                // 스트라이크
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (userNumber.charAt(i) - '0' == computerNumber[j]) {
+                            if (i == j) {
+                                cnt[0] += 1;
+                            } else {
+                                cnt[1] += 1;
+                            }
+                        }
+                    }
+                }
+
 
 
             }
