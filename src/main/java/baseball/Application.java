@@ -13,7 +13,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Application.game();
     }
-
     public static void game(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
