@@ -30,7 +30,7 @@ public class Validation {
 
     private static void verifyUserNumberRange(String userNumber){
         for(char eachNumber : userNumber.toCharArray()){
-            if(eachNumber >= 1 && eachNumber <= 9){
+            if(eachNumber >= '1' && eachNumber <= '9'){
                 continue;
             }
             throw new IllegalArgumentException();
