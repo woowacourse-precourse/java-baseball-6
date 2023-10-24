@@ -3,6 +3,8 @@ package baseball;
 import baseball.controller.GameController;
 import baseball.service.GameService;
 import baseball.service.GameServiceImpl;
+import baseball.service.hint.HintService;
+import baseball.service.hint.HintServiceImpl;
 import baseball.service.hint.item.BallServiceImpl;
 import baseball.service.hint.item.NothingServiceImpl;
 import baseball.service.hint.item.StrikeServiceImpl;
@@ -16,17 +18,19 @@ public class Application {
                 new HintView(),
                 new EndView(),
                 new RestartView(),
-                createGameService());
+                createHintService(),
+                new GameServiceImpl());
 
         gameController.play();
     }
 
-    private static GameService createGameService() {
-        GameService gameService = new GameServiceImpl(
+    private static HintService createHintService() {
+        HintService hintService = new HintServiceImpl(
                 BallServiceImpl.getInstance(),
                 StrikeServiceImpl.getInstance(),
                 NothingServiceImpl.getInstance()
         );
-        return gameService;
+        return hintService;
     }
+
 }

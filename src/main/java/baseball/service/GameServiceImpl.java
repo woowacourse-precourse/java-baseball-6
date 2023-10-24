@@ -2,25 +2,20 @@ package baseball.service;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.hint.Hint;
-import baseball.domain.hint.HintItem;
-import baseball.service.hint.HintItemService;
+import baseball.service.hint.HintService;
 import baseball.util.InputUtil;
 import baseball.view.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameServiceImpl implements GameService {
 
-    //★DB를 사용하는 구조라면 Repository에 의존하면 되지만 여기서는 그렇지 않으므로 Service에 의존
-    private List<HintItemService> hintItemServices;
+    public GameServiceImpl() {
 
-    public GameServiceImpl(HintItemService... hintItemServices) {
-        this.hintItemServices = List.of(hintItemServices);
     }
 
     @Override
     public void playOneGame(InputView inputView, HintView hintView,
                             EndView endView, RestartView restartView,
+                            HintService hintService,
                             NumberBaseball computerBaseball) {
         while (true) {
             inputView.displayInputMessage();
@@ -28,38 +23,18 @@ public class GameServiceImpl implements GameService {
             String inputNum = InputUtil.inputString();
             NumberBaseball inputBaseball = NumberBaseball.createBaseball(inputNum);
 
-            List<HintItem> hintItems = new ArrayList<>();
-            for (HintItemService hintItemServiceImpl : hintItemServices) {
-                HintItem hintItem = hintItemServiceImpl.create(computerBaseball, inputBaseball);
-                if (hintItemServiceImpl.isActive(hintItem)) {
-                    hintItems.add(hintItem);
-                }
-            }
-
-            Hint hint = Hint.createHint(hintItems);
+            Hint hint = hintService.createHint(computerBaseball, inputBaseball);
             hintView.displayHintMessage(hint);
 
             endOneGame();
         }
     }
 
-    @Override
-    public Hint createHint(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
-        List<HintItem> hintItems = new ArrayList<>();
-
-        for (HintItemService hintItemServiceImpl : hintItemServices) {
-            HintItem hintItem = hintItemServiceImpl.create(computerBaseball, inputBaseball);
-            if (hintItemServiceImpl.isActive(hintItem)) {
-                hintItems.add(hintItem);
-            }
-        }
-        return Hint.createHint(hintItems);
-    }
 
     public void endOneGame() {
         //[게임 종료]
         //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
-        if (strike == GameConstants.NUMBER_LENGTH) {
+        /*if (strike == GameConstants.NUMBER_LENGTH) {
             endView.displayEndMessage();
             restartView.displayRestartChoiceMessage();
             String regameNum = InputUtil.inputString();
@@ -80,6 +55,6 @@ public class GameServiceImpl implements GameService {
             if (restart == Restart.OTHER_CHOICE) {
                 ExceptionUtil.throwInvalidValueException();
             }
-        }
+        }*/ //TODO:
     }
 }
