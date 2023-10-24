@@ -11,7 +11,6 @@ public class Controller {
     }
 
     public void startGame() {
-        Computer computer = new Computer();
         Player player = new Player();
         String status;
         do {
