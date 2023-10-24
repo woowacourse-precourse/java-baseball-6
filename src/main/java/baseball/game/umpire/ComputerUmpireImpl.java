@@ -1,5 +1,6 @@
 package baseball.game.umpire;
 
+import baseball.game.CheckingBoard;
 import baseball.game.Score;
 
 import java.util.Arrays;
@@ -36,11 +37,15 @@ public class ComputerUmpireImpl implements Umpire {
     }
 
     @Override
-    public Score judge(Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard, Score score) {
+    public Score judge(CheckingBoard checkingBoard, Score score) {
         int strike = 0;
         int ball = 0;
         boolean homerun = false;
         boolean nothing = false;
+        Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
+        Boolean[] ballCheckingBoard = checkingBoard.getBallCheckingBoard();
+
+
 
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(strikeCheckingBoard[i] == true){

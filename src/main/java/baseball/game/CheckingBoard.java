@@ -8,7 +8,7 @@ public class CheckingBoard {
     Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
     Boolean[] ballCheckingBoard = new Boolean[DIGIT_NUM];
 
-    public void CheckingBoard() {
+    public CheckingBoard() {
         Arrays.fill(strikeCheckingBoard, false);
         Arrays.fill(ballCheckingBoard, false);
     }

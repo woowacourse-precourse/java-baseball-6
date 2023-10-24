@@ -1,6 +1,7 @@
 package baseball.umpire;
 
 import baseball.AppConfig;
+import baseball.game.CheckingBoard;
 import baseball.game.Score;
 import baseball.game.umpire.Umpire;
 import org.assertj.core.api.Assertions;
@@ -16,13 +17,13 @@ public class UmpireTest {
     Umpire umpire;
 
     @BeforeEach
-    public void BeforeEach(){
+    public void BeforeEach() {
         AppConfig appConfig = new AppConfig();
         umpire = appConfig.umpire();
     }
 
     @Test
-    void umpireStrikeCheck(){
+    void umpireStrikeCheck() {
         //given
         String ball = "123";
         String batt = "153";
@@ -31,16 +32,16 @@ public class UmpireTest {
         Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
         Arrays.fill(strikeCheckingBoard, false);
 
-        for(int i = 0 ; i < DIGIT_NUM ; i++){
-            if(ball.charAt(i) == batt.charAt(i)){
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (ball.charAt(i) == batt.charAt(i)) {
                 compareCount++;
             }
         }
         //when
         strikeCheckingBoard = umpire.checkStrike(ball, batt, strikeCheckingBoard);
         //then
-        for(int i = 0 ; i < DIGIT_NUM ; i++){
-            if(strikeCheckingBoard[i] == true){
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (strikeCheckingBoard[i] == true) {
                 strikeCount++;
             }
         }
@@ -48,7 +49,7 @@ public class UmpireTest {
     }
 
     @Test
-    void umpireBallCheck(){
+    void umpireBallCheck() {
         //given
         String ball = "011";
         String bat = "110";
@@ -64,20 +65,26 @@ public class UmpireTest {
 
         strikeCheckingBoard = umpire.checkStrike(ball, bat, strikeCheckingBoard);
 
-        for(int i = 0 ; i < DIGIT_NUM ; i++){
-            if(strikeCheckingBoard[i] == true){continue;}
-            for(int j = 0 ; j < DIGIT_NUM ; j++){
-                if(strikeCheckingBoard[j] == true){continue;}
-                if(compareCheckingBoard[j] == true){continue;}
-                if(ball.charAt(i) == bat.charAt(j)){
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (strikeCheckingBoard[i] == true) {
+                continue;
+            }
+            for (int j = 0; j < DIGIT_NUM; j++) {
+                if (strikeCheckingBoard[j] == true) {
+                    continue;
+                }
+                if (compareCheckingBoard[j] == true) {
+                    continue;
+                }
+                if (ball.charAt(i) == bat.charAt(j)) {
                     compareCheckingBoard[j] = true;
                     break;
                 }
             }
         }
 
-        for(int i = 0 ; i < DIGIT_NUM ; i++){
-            if(compareCheckingBoard[i] == true){
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (compareCheckingBoard[i] == true) {
                 compareCount++;
             }
         }
@@ -86,8 +93,8 @@ public class UmpireTest {
         ballCheckingBoard = umpire.checkBall(ball, bat, strikeCheckingBoard, ballCheckingBoard);
 
         //then
-        for(int i = 0 ; i < DIGIT_NUM ; i++){
-            if(ballCheckingBoard[i] == true){
+        for (int i = 0; i < DIGIT_NUM; i++) {
+            if (ballCheckingBoard[i] == true) {
                 ballCount++;
             }
         }
@@ -95,7 +102,7 @@ public class UmpireTest {
     }
 
     @Test
-    void umpireJudgeCheck(){
+    void umpireJudgeCheck() {
         //given
         String ball = "111";
         String bat = "111";
@@ -110,16 +117,18 @@ public class UmpireTest {
         Score compareScore = new Score();
         compareScore.setAll(compareStrike, compareBall, compareHomerun, compareNothing);
 
-        Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
-        Arrays.fill(strikeCheckingBoard, false);
-        Boolean[] ballCheckingBoard = new Boolean[DIGIT_NUM];
-        Arrays.fill(ballCheckingBoard, false);
+        CheckingBoard checkingBoard = new CheckingBoard();
 
-        strikeCheckingBoard = umpire.checkStrike(ball, bat, strikeCheckingBoard);
-        ballCheckingBoard = umpire.checkBall(ball, bat, strikeCheckingBoard, ballCheckingBoard);
+        checkingBoard.setStrikeCheckingBoard(umpire.checkStrike(ball, bat, checkingBoard.getStrikeCheckingBoard()));
+        checkingBoard.setBallCheckingBoard(umpire.checkBall(
+                ball,
+                bat,
+                checkingBoard.getStrikeCheckingBoard(),
+                checkingBoard.getBallCheckingBoard()
+        ));
 
         //when
-        score = umpire.judge(strikeCheckingBoard, ballCheckingBoard, score);
+        score = umpire.judge(checkingBoard, score);
 
         //then
         Assertions.assertThat(score).usingRecursiveComparison().isEqualTo(compareScore);
