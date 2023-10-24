@@ -14,10 +14,12 @@ public class Result {
         this.strike = strike;
     }
 
+    /* 모두 스트라이크인지 확인하는 메소드 */
     public boolean isAllStrike(){
         return strike == BALL_SIZE;
     }
 
+    /* 게임 결과를 만드는 메소드 */
     public static Result makeResult(Balls computerBalls, Balls userBalls) {
         int ballCnt = 0;
         int strikeCnt = 0;
@@ -35,6 +37,7 @@ public class Result {
         return new Result(ballCnt, strikeCnt);
     }
 
+    /* 게임 결과를 출력하는 메소드 */
     public static void printResult(Result result){
         StringBuilder sb = new StringBuilder();
         if (result.strike == 0 && result.ball == 0) sb.append(NOTHING);

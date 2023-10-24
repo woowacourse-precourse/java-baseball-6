@@ -2,12 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 public class BaseBallGame {
-
     public static final String CONTINUE_NUMBER = "1";
     public static final String END_NUMBER = "2";
 
-
-    /* 숫자 야구 게임을 시작하는 메서드 */
+    /* 숫자 야구 게임을 시작하는 메소드 */
     public void play() {
         do{
             startGame();
@@ -28,6 +26,12 @@ public class BaseBallGame {
         } while (!result.isAllStrike());
     }
 
+    /* 사용자에게 입력을 받는 메소드 */
+    private String getUserInput() {
+        return Console.readLine();
+    }
+
+    /* 사용자에게 볼을 입력받는 메소드 */
     private String inputUserBalls(){
         System.out.print("숫자를 입력해 주세요 : ");
         String input = getUserInput();
@@ -43,10 +47,7 @@ public class BaseBallGame {
         return input.equals(CONTINUE_NUMBER);
     }
 
-    private String getUserInput() {
-        return Console.readLine();
-    }
-
+    /* 다시 시작 메시지를 출력하는 메소드 */
     private void printRestart(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -55,7 +56,7 @@ public class BaseBallGame {
     /* 종료시, 사용자 입력 값의 유효성 확인 메서드 */
     private void validateInput(String input) {
         if (!input.equals(CONTINUE_NUMBER) && !input.equals(END_NUMBER)) {
-            throw new IllegalArgumentException( "1 또는 2만 입력하세요" );
+            throw new IllegalArgumentException("1 또는 2만 입력하세요.");
         }
     }
 
