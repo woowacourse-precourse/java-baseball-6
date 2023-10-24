@@ -27,8 +27,6 @@ public class Application {
             validatePlayerNumber(playerNum);
             gameResult = compareNumList(playerNum, computerNumber);
             printBallAndStrike(gameResult.getBall(), gameResult.getStrike());
-//            String result = printBallAndStrike2(gameResult.getBall(), gameResult.getStrike());
-//            System.out.println(result);
         }while(gameResult.getStrike() != 3);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
