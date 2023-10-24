@@ -1,11 +1,8 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CreatingAnswer {
 
@@ -25,8 +22,8 @@ public class CreatingAnswer {
         }
 
         String str = randomList.stream()
-                        .map(Object::toString)
-                        .collect(Collectors.joining());
+                .map(Object::toString)
+                .collect(Collectors.joining());
 
         randomNumber = Integer.parseInt(str);
 
