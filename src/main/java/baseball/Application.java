@@ -20,17 +20,19 @@ public class Application {
         }
         return computerNumber;
     }
-    public static boolean checkError(String s){
-        if(s.length()!=3){
+
+    public static boolean checkError(String s) {
+        if (s.length() != 3) {
             return true;
         }
         for (int i = 0; i < s.length(); i++) {
             int tmp = s.charAt(i) - '0';
-            if(tmp>=0&&tmp<10) return true;
+            if (tmp >= 0 && tmp < 10) return true;
         }
         return false;
     }
-    public static List<Integer> inputUserNumber(){
+
+    public static List<Integer> inputUserNumber() {
         String s = Console.readLine();
         if (checkError(s)) throw new IllegalArgumentException();
         List<Integer> inputNumber = new ArrayList<>();
@@ -47,7 +49,7 @@ public class Application {
         ballList.addAll(computerNumber);
 
         for (int i = 0; i < 3; i++) {
-            if(computerNumber.get(i).equals(inputNumber.get(i))){
+            if (computerNumber.get(i).equals(inputNumber.get(i))) {
                 result.strike++;
                 ballList.set(i, -1);
             }
@@ -57,18 +59,19 @@ public class Application {
                 result.ball++;
             }
         }
-        if(result.ball==0&&result.strike==0){
-            result.isNothing=true;
+        if (result.ball == 0 && result.strike == 0) {
+            result.isNothing = true;
         }
         return result;
     }
 
-    public static class Result{
+    public static class Result {
         int strike;
         int ball;
         boolean isNothing;
+
         public Result() {
-            this.isNothing=false;
+            this.isNothing = false;
         }
     }
 }
