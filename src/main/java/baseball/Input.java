@@ -12,10 +12,10 @@ public class Input {
     }
 
     List<Integer> getNumber() { //사용자의 숫자를 입력받고 예외가 없다면 반환하는 함수
-        List<Integer> user = new ArrayList<>();
+        List<Integer> user;
         String number = Console.readLine();
-        user = toArrayList(number);
-        validate.validateUser(user);
+        user = toArrayList(number); // 사용자가 입력한 정수 List<Integer>로 변환
+        validate.validateUser(user); // 사용자가 입력한 숫자 예외 확인
         return user;
     }
 
@@ -24,6 +24,6 @@ public class Input {
         for (int i = 0; i < number.length(); i++) {
             inputNumber.add(number.charAt(i) - '0');
         }
-        return inputNumber;
+        return inputNumber; // List<Integer>로 변환된 변수 반환
     }
 }
