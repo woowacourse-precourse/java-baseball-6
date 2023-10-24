@@ -34,6 +34,8 @@ public class Computer {
             computer.getRandomNumbers();    // Computer 난수 생성
             computer.getInput();    // User의 입력
             if (computer.chkRestartOrFinish()) {
+                // true: Restart
+                // false: Finish
                 computer = new Computer();
             } else {
                 break;
@@ -41,6 +43,7 @@ public class Computer {
         }while(true);
     }
 
+    // User의 입력값 받아오기
     public void getInput(){
         player = new Player();
         String playerInput;
@@ -50,7 +53,7 @@ public class Computer {
         }while (!chkResult(playerInput));
     }
 
-    // 스트라이크 갯수 파악
+    // strike 갯수 카운트
     private int cntStrike(String inputNum) {
         int strike = 0;
         for (int i = 0; i < INPUT_LENGTH; i++) {
@@ -61,6 +64,7 @@ public class Computer {
         return strike;
     }
 
+    // ball의 갯수 카운트
     private int cntBall(String inputNum) {
         int ball = 0;
         for (int i = 0; i < INPUT_LENGTH; i++) {
@@ -80,6 +84,7 @@ public class Computer {
         return strike == SUCCESS_STRIKE;
     }
 
+    // restart or finish
     private boolean chkRestartOrFinish(){
         String playerOption = Input.readOption();
         if (playerOption.equals(String.valueOf(OPTION_RESTART))) {
