@@ -109,8 +109,8 @@ class ApplicationTest extends NsTest {
         String differentNumber = "183";
         String notDifferentNumber = "113";
 
-        assertThat(Application.isDifferentRandomNumber(differentNumber)).isEqualTo(true);
-        assertThat(Application.isDifferentRandomNumber(notDifferentNumber)).isEqualTo(false);
+        assertThat(Application.isDifferentNumber(differentNumber)).isEqualTo(true);
+        assertThat(Application.isDifferentNumber(notDifferentNumber)).isEqualTo(false);
     }
 
     @Test
@@ -126,7 +126,7 @@ class ApplicationTest extends NsTest {
         boolean lengthThree = Application.isLengthThree(threeRandomNumberString);
         boolean digitNumber = Application.isDigitNumber(threeRandomNumberString);
         boolean rightRangeNumber = Application.isRightRangeNumber(threeRandomNumberString);
-        boolean differentNumber = Application.isDifferentRandomNumber(threeRandomNumberString);
+        boolean differentNumber = Application.isDifferentNumber(threeRandomNumberString);
 
         assertThat(lengthThree).isEqualTo(true);
         assertThat(digitNumber).isEqualTo(true);

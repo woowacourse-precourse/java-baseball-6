@@ -87,7 +87,7 @@ public class Application {
                 && (1 <= indexTwo && indexTwo <= 9);
     }
 
-    public static boolean isDifferentRandomNumber(String userInput) {
+    public static boolean isDifferentNumber(String userInput) {
         int indexZero = userInput.charAt(0) - '0';
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
