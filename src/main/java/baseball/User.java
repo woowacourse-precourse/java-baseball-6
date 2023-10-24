@@ -12,7 +12,7 @@ public class User {
      */
     public List<Integer> userInput() {
 
-        List<Integer> userAnswers = new ArrayList<>();
+        List<Integer> userNumbers = new ArrayList<>();
 
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
@@ -24,13 +24,13 @@ public class User {
 
             int number = Character.getNumericValue(input.charAt(i));
 
-            userAnswers.add(number);
+            userNumbers.add(number);
 
         }
 
-        validateDistinctNumbers(userAnswers);
+        validateDistinctNumbers(userNumbers);
 
-        return userAnswers;
+        return userNumbers;
     }
 
     // 사용자가 입력한 숫자가 3자리인지 확인
@@ -41,7 +41,6 @@ public class User {
             throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
 
         }
-
     }
 
     // 사용자가 입력한 숫자가 모두 다른 숫자인지 확인
