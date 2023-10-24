@@ -69,6 +69,11 @@ public class Application {
 
         if(strikeNums == 0 && ballNums == 0) {
             System.out.println("낫싱");
+        } else if (strikeNums == 0) {
+            System.out.println(String.format("%d스트라이크", ballNums));
+        }
+        else if (ballNums == 0){
+            System.out.println(String.format("%d볼", strikeNums));
         }
         else {
             System.out.println(String.format("%d볼 %d스트라이크", ballNums, strikeNums));
