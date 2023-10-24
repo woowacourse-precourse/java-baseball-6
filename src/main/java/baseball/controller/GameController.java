@@ -30,7 +30,7 @@ public class GameController {
     public void start() {
         outputView.startGame();
         while (true) {
-            playGame();
+            play();
             outputView.isContinue();
             String input = inputView.getPlayerInput();
             vaildateFinish(input);
@@ -42,7 +42,7 @@ public class GameController {
         }
     }
 
-    private void playGame() {
+    private void play() {
         List<Integer> computerNumbers = computer.getComputerNumber();
         while (true) {
             outputView.inputNumber();
