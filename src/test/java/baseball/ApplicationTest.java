@@ -23,7 +23,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Application.inputToNumberList("1234"))
+                assertThatThrownBy(() -> Application.runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

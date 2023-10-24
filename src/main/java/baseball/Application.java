@@ -23,7 +23,7 @@ public class Application {
                 String userInput = Console.readLine();
 
                 try {
-                    List<Integer> userNumbers = inputToNumberList(userInput);
+                    List<Integer> userNumbers = runException(userInput);
                     String resultMessage = checkNumbers(computerNumbers, userNumbers);
 
                     System.out.println(resultMessage);
@@ -58,7 +58,7 @@ public class Application {
         return numbersPool;
     }
 
-    public static List<Integer> inputToNumberList(String userInput) throws IllegalArgumentException{
+    public static List<Integer> runException(String userInput) throws IllegalArgumentException{
         if(userInput.length() != DIGITS){
             throw new IllegalArgumentException("잘못된 입력입니다. 세 자리의 숫자를 입력해주세요.");
         }
