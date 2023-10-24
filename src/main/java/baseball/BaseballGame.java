@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame implements Game{
     private final int answerNumber = generateAnswerNumber();
+    private final int INPUT_LENGTH = 3;
 
     public BaseballGame() {
     }
@@ -21,7 +22,7 @@ public class BaseballGame implements Game{
     private int generateAnswerNumber() {
         List<Integer> computer = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        while (computer.size() < 3){
+        while (computer.size() < INPUT_LENGTH){
             int pickedNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(pickedNumber)) {
                 computer.add(pickedNumber);
@@ -82,8 +83,8 @@ public class BaseballGame implements Game{
      */
     private boolean getResult(int inputNumber, int answerNumber) {
         if (inputNumber - answerNumber == 0) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.printf("%d스트라이크\n", INPUT_LENGTH);
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", INPUT_LENGTH);
             return true;
         }
         String[] inputArray = String.valueOf(inputNumber).split("");
@@ -102,7 +103,7 @@ public class BaseballGame implements Game{
 
     private int countStrike(String[] inputArray, String[] answerArray) {
         int strike = 0;
-        for (int idx=0; idx<3; idx++){
+        for (int idx = 0; idx< INPUT_LENGTH; idx++){
             if (inputArray[idx].equals(answerArray[idx])) {
                 strike++;
             }
@@ -148,7 +149,7 @@ public class BaseballGame implements Game{
         try {
             // 검증1: int로 파싱 가능해야 한다.
             number = parseNumber(inputString);
-            // 검증1: 사용자 인풋이 3자리여야 한다.
+            // 검증1: 사용자 입력 문자열 길이는 INPUT_LENGTH 다.
             checkInputLength(inputString);
             // 검증2: "0"이 포함되지 않아야 한다.
             checkInvalidNumber(inputString);
@@ -178,14 +179,14 @@ public class BaseballGame implements Game{
     }
 
     /**
-     * 사용자 입력 검증 2 - 사용자 입력 문자열은 길이가 3이어야 한다.
+     * 사용자 입력 검증 2 - 사용자 입력 문자열 길이는 INPUT_LENGTH 이다.
      *
      * @param inputString 사용자가 입력한 문자열
-     * @throws IllegalArgumentException if 문자열 길이가 3이 아님
+     * @throws IllegalArgumentException if 문자열 길이가 불일치
      */
     private void checkInputLength(String inputString) throws IllegalArgumentException {
         if (inputString.length() != 3) {
-            throw new IllegalArgumentException("세 자리 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(String.format("%d자리 숫자를 입력해야 합니다.", INPUT_LENGTH));
         }
     }
 
