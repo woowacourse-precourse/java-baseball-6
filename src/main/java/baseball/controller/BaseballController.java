@@ -43,7 +43,7 @@ public class BaseballController {
             String inputNumber = inputView.inputNumber();
             player.updateNumbers(inputNumber);
             boolean endGameSign = baseballGame.updateGameCompare(player);
-            BaseballGameResult baseballGameResult = BaseballGameResult.from(baseballGame);
+            BaseballGameResult baseballGameResult = new BaseballGameResult(baseballGame);
             outputView.showResult(baseballGameResult);
 
             if (isGameEnd(endGameSign)) {

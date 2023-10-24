@@ -7,13 +7,9 @@ public class BaseballGameResult {
     private final int ball;
     private final int strike;
 
-    private BaseballGameResult(final int ball, final int strike) {
-        this.ball = ball;
-        this.strike = strike;
-    }
-
-    public static BaseballGameResult from(final BaseballGame baseballGame) {
-        return new BaseballGameResult(baseballGame.getBall(), baseballGame.getStrike());
+    public BaseballGameResult(final BaseballGame baseballGame) {
+        this.ball = baseballGame.getBall();
+        this.strike = baseballGame.getStrike();
     }
 
     public int getBallCount() {
