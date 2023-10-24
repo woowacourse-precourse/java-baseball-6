@@ -15,13 +15,14 @@ public class GameManager {
     public void setAnswer(List<Integer> answer){
         this.answer=answer;
     }
-    public void setInputList(String input){
+
+    public void setInputConvertList(String input){
         this.inputList = input.chars()
                 .mapToObj(c -> Character.getNumericValue(c))
                 .collect(Collectors.toList());;
     }
 
-    public boolean isCorrect() {
+    public boolean isGameOver() {
         return getStrikeCount()==3;
     }
 
@@ -53,4 +54,15 @@ public class GameManager {
         return answer.contains(inputList.get(idx));
     }
 
+    protected void validateRestartOrExitWrongInput(String input) {
+        if( !(input.equals("1") || input.equals("2"))){
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2, 그 외 입력은 할 수 없습니다.");
+        }
+    }
+    protected boolean gameRestart(String input){
+        return input.equals("1");
+    }
+    protected boolean gameExit(String input){
+        return input.equals("2");
+    }
 }
