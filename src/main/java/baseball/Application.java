@@ -35,8 +35,8 @@ public class Application {
     public static int getBallCount(List<Integer> userInput, List<Integer> result) {
         int ballCount = 0;
 
-        for (int i = 0; i < result.size() - 1; i++) {
-            for (int j = i + 1; j < result.size(); j++) {
+        for (int i = 0; i < result.size(); i++) {
+            for (int j = 0; j < result.size(); j++) {
                 if (userInput.get(i) == result.get(j)) {
                     ballCount++;
                 }
