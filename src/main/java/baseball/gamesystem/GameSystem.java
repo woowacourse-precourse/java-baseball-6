@@ -7,7 +7,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GameSystem {
-    public void validate(String userInput){
+
+    public void start(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        doGame();
+    }
+
+    private void doGame(){
+
+    }
+
+    private void validate(String userInput){
         Set<Character> uniqueInputs = new HashSet<>();
         if(userInput.length() != 3){
             throw new IllegalArgumentException("서로 다른 3개의 수를 입력해주세요.");
