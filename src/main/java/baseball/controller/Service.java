@@ -27,9 +27,7 @@ public class Service {
             compareComputerAndUser(userNumbers, computerNumbers);
             if (strike == 3) {
                 gameStop = true;
-                System.out.println(strike + OutputView.STRIKE_MESSAGE);
-                System.out.println(OutputView.EXIT_MESSAGE);
-                System.out.println(OutputView.CONTINUE_MESSAGE);
+                printGameEndMessage(strike);
                 askRestartGame(inputView.getUserGameContinue());
             }
             if (strike != 3) {
@@ -63,6 +61,12 @@ public class Service {
             gameStop = false;
             gameStart();
         }
+    }
+
+    public void printGameEndMessage(int strike) {
+        System.out.println(strike + OutputView.STRIKE_MESSAGE);
+        System.out.println(OutputView.EXIT_MESSAGE);
+        System.out.println(OutputView.CONTINUE_MESSAGE);
     }
 
     public void scoringGame(int ball, int strike) {
