@@ -4,16 +4,22 @@ import static baseball.model.message.ErrorMessage.DO_NOT_CALL_THIS_CODE;
 import static baseball.model.message.ErrorMessage.INVALID_INPUT;
 import static baseball.model.message.ErrorMessage.INVALID_NUMBER;
 import static baseball.model.message.ErrorMessage.POSITIVE_NUMBER_NEED;
+import static baseball.model.message.UserMessage.ASK_REPLAY_MESSAGE;
+import static baseball.model.message.UserMessage.DONE_MESSAGE;
+import static baseball.model.message.UserMessage.INPUT_GUIDE_MESSAGE;
+import static baseball.model.message.UserMessage.START_MASSAGE;
 
+import baseball.model.Result;
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputView {
+public class GameView {
 
-    private InputView() {
+    private GameView() {
         throw new AssertionError(DO_NOT_CALL_THIS_CODE.getMessage());
     }
 
     public static String inputPositiveNumber() {
+        System.out.print(INPUT_GUIDE_MESSAGE);
         String inputString = Console.readLine();
         validateInput(inputString);
         return inputString;
@@ -45,4 +51,16 @@ public class InputView {
         }
     }
 
+    public static void printStartMessage() {
+        System.out.println(START_MASSAGE);
+    }
+
+    public static void printResult(Result result) {
+        System.out.println(result);
+    }
+
+    public static void printDoneMessage() {
+        System.out.println(DONE_MESSAGE);
+        System.out.println(ASK_REPLAY_MESSAGE);
+    }
 }

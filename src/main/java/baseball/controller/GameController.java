@@ -4,8 +4,7 @@ import static baseball.util.GameHelper.changeNumberToIntegerList;
 
 import baseball.model.Game;
 import baseball.model.Status;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.view.GameView;
 import java.util.List;
 
 public class GameController {
@@ -15,12 +14,11 @@ public class GameController {
     public void run() {
         game = new Game();
         do {
-            OutputView.printInputGuideMessage();
-            String inputNumber = InputView.inputPositiveNumber();
+            String inputNumber = GameView.inputPositiveNumber();
             playGame(inputNumber);
-            OutputView.printResult(game.getResult());
+            GameView.printResult(game.getResult());
         } while (game.isRunning());
-        OutputView.printDoneMessage();
+        GameView.printDoneMessage();
     }
 
     public void playGame(String number) {
@@ -31,7 +29,7 @@ public class GameController {
     }
 
     public Status replayOrStop() {
-        String inputStatus = InputView.inputPositiveNumber();
+        String inputStatus = GameView.inputPositiveNumber();
         return Status.from(inputStatus);
     }
 }
