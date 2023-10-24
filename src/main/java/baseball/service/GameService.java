@@ -20,7 +20,7 @@ public class GameService {
     public List<Integer> parseInput(String userInputString) {
         List<Integer> result = new ArrayList<>();
         Set<Integer> duplicateCheckSet = new HashSet<>();
-        checkLength(userInputString,GAME_SIZE);
+        checkLength(userInputString, GAME_SIZE);
         for (String input : userInputString.split("")) {
             Integer converted = converIntegerOrThorwIllegalException(input);
             if (DIGIT_START <= converted && converted > DIGIT_END) {
@@ -48,7 +48,7 @@ public class GameService {
         }
     }
 
-    private void checkLength(String userInputString,int targetSize) {
+    private void checkLength(String userInputString, int targetSize) {
         if (userInputString.length() != targetSize) {
             throw new IllegalArgumentException(String.format("입력받은 사용자 문자의 길이 = %d , 제한길이 %d",
                     userInputString.length(), targetSize));
