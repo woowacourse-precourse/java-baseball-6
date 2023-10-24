@@ -27,7 +27,7 @@ public class BaseballController {
     public void run() {
         outputView.printStartMessage();
         play();
-        ValidatorFactory.clear();
+        clear();
     }
 
     private void play() {
@@ -47,12 +47,16 @@ public class BaseballController {
         return Command.isRestart(readGameCommand());
     }
 
+    private void clear() {
+        ValidatorFactory.clear();
+    }
+
     private void guess(GameNumbers answer) {
         while (true) {
             GameNumbers guess = new GameNumbers(inputView.readGuessNumber());
             Score score = calculateScore(answer, guess);
             outputView.printScore(score);
-            if (isCorrect(score)) {
+            if (isPerfect(score)) {
                 break;
             }
         }
@@ -70,10 +74,7 @@ public class BaseballController {
         return Command.fromValue(value);
     }
 
-    private Boolean isCorrect(Score score) {
-        if (score == null) {
-            return false;
-        }
+    private Boolean isPerfect(Score score) {
         return score.isStrikeOut();
     }
 }
