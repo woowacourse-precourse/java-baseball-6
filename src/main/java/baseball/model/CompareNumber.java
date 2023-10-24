@@ -1,17 +1,27 @@
 package baseball.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-// hash를 사용하는 자료구조로 변경
 public class CompareNumber {
 
     private int strike;
     private int ball;
 
+    private final HashMap<Integer, String> computerNumberMap = new HashMap<>();
+    private final HashMap<Integer, String> playerNumberMap = new HashMap<>();
+
+
     public CompareNumber(String playerNumber, ArrayList<String> computerNumber){
         strike = 0; ball = 0;
-        CountBall(playerNumber, computerNumber);
-        CountStrike(playerNumber, computerNumber);
+
+        for(int i = 0; i < computerNumber.size(); i++) {
+            computerNumberMap.put(i, computerNumber.get(i));
+            playerNumberMap.put(i, playerNumber.substring(i, i+1));
+        }
+
+        CountBall(playerNumberMap, computerNumberMap);
+        CountStrike(playerNumberMap, computerNumberMap);
         ExceptBallInStrike();
     }
 
@@ -19,16 +29,16 @@ public class CompareNumber {
         ball = ball - strike;
     }
 
-    public void CountBall(String p, ArrayList<String> c){
+    private void CountBall(HashMap<Integer, String> playerNumberMap, HashMap<Integer, String> computerNumberMap){
         // 다른자리에 숫자가 있는경우 +1
-        for(String num : c){
-            if(p.contains(num)) ball++;
+        for(int i = 0; i < computerNumberMap.size(); i++){
+            if(playerNumberMap.containsValue(computerNumberMap.get(i))) ball++;
         }
     }
 
-    public void CountStrike(String p, ArrayList<String> c){
-        for(String num : c){
-            if(p.indexOf(num) == c.indexOf(num)) strike++;
+    private void CountStrike(HashMap<Integer, String> playerNumberMap, HashMap<Integer, String> computerNumberMap){
+        for(int i = 0; i < computerNumberMap.size(); i++){
+            if(playerNumberMap.get(i).equals(computerNumberMap.get(i))) strike++;
         }
     }
 
