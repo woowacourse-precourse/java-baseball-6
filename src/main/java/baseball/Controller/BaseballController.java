@@ -63,6 +63,7 @@ public class BaseballController {
     }
 
     public void validate(String inputNumber) {
+        inputNumberService.validateNumber(inputNumber);
         inputNumberService.validateNumberSize(inputNumber);
         inputNumberService.validateFirstNumber(inputNumber);
     }

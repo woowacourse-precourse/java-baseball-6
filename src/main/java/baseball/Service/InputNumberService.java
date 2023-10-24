@@ -15,6 +15,14 @@ public class InputNumberService {
         return inputNumberList;
     }
 
+    public void validateNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void validateNumberSize(String input) {
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
@@ -26,4 +34,5 @@ public class InputNumberService {
             throw new IllegalArgumentException();
         }
     }
+
 }

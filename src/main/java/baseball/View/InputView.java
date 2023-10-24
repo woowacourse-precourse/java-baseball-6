@@ -18,6 +18,9 @@ public class InputView {
         if (selectInput.equals("1")) {
             return true;
         }
-        return false;
+        if (selectInput.equals("2")){
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
