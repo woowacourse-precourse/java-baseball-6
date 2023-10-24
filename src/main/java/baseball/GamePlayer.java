@@ -12,7 +12,7 @@ public class GamePlayer {
         }
 
         public void playGame() {
-                while (gameState.getState() != GameState.END_STATE) {
+                while (!gameState.isEndState()) {
                         makeAnotherSuggestion(gameNumberController.randomComputerNumberGenerator());
                         Output.gameSucceeded();
                         gameState.checkGameRetryOrEnd(Input.retryOrEnd());
@@ -20,7 +20,7 @@ public class GamePlayer {
         }
 
         private void makeAnotherSuggestion(List<Integer> computer) {
-                while (gameState.getState() != GameState.GAME_SUCCEED_STATE) {
+                while (!gameState.isGameSucceedState()) {
                         GameScore gameScore = new GameScore(gameNumberController.suggestedNumberConverter(Input.numberSuggestion()), computer);
                         Output.drawOutResult(gameScore.getBall(), gameScore.getStrike());
                         gameState.checkGameSucceeded(gameScore.getStrike());

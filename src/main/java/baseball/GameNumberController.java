@@ -19,7 +19,6 @@ public class GameNumberController {
         }
 
         public List<Integer> suggestedNumberConverter(int numberSuggestion) {
-                Validator.validateNumberSuggestion(numberSuggestion);
                 List<Integer> suggestion = new ArrayList<>();
                 suggestion.add(numberSuggestion / 100);
                 suggestion.add((numberSuggestion / 10) % 10);

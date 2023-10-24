@@ -18,7 +18,6 @@ public class GameState {
         }
 
         public void checkGameRetryOrEnd(int retryOrEnd) {
-                Validator.validateRetryOrEnd(retryOrEnd);
                 if (retryOrEnd == PROGRESS_STATE) {
                         gameSwitch = PROGRESS_STATE;
                 }
@@ -27,7 +26,15 @@ public class GameState {
                 }
         }
 
-        public int getState() {
-                return gameSwitch;
+        public boolean isGameSucceedState() {
+                return gameSwitch == GAME_SUCCEED_STATE;
+        }
+
+        public boolean isProgressState() {
+                return gameSwitch == PROGRESS_STATE;
+        }
+
+        public boolean isEndState() {
+                return gameSwitch == END_STATE;
         }
 }
