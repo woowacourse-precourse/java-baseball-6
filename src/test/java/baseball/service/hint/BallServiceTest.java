@@ -11,20 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BallServiceTest {
 
     private final BallService ballService = BallService.getInstance();
-    private Baseball computerBaseball;
-    private Baseball inputBaseball;
 
-    @BeforeEach
-    void setup() {
-        computerBaseball = new Baseball();
-        inputBaseball = new Baseball();
-    }
 
     @Test
     void count_zeroBall() {
         //given
-        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
-        inputBaseball.setValues(IntegerListUtil.parseIntegerList("456"));
+        Baseball computerBaseball = Baseball.createBaseball("123");
+        Baseball inputBaseball = Baseball.createBaseball("456");
 
         //when
         int count = ballService.count(computerBaseball, inputBaseball);
@@ -36,8 +29,8 @@ public class BallServiceTest {
     @Test
     void count_zeroBall_samePlace() {
         //given
-        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
-        inputBaseball.setValues(IntegerListUtil.parseIntegerList("156"));
+        Baseball computerBaseball = Baseball.createBaseball("123");
+        Baseball inputBaseball = Baseball.createBaseball("156");
 
         //when
         int count = ballService.count(computerBaseball, inputBaseball);
@@ -49,8 +42,8 @@ public class BallServiceTest {
     @Test
     void count_oneBall() {
         //given
-        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
-        inputBaseball.setValues(IntegerListUtil.parseIntegerList("256"));
+        Baseball computerBaseball = Baseball.createBaseball("123");
+        Baseball inputBaseball = Baseball.createBaseball("256");
 
         //when
         int count = ballService.count(computerBaseball, inputBaseball);
