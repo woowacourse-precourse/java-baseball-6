@@ -9,12 +9,7 @@ import java.util.stream.Stream;
 
 public class CreatingAnswer {
 
-    /*
-    1️⃣ 정답을 만드는 기능
-    - 상대방 (컴퓨터) 의 3자리 수를 랜덤하게 생성한다.
-    */
-
-    private int random_number;
+    private int randomNumber;
 
     public CreatingAnswer() {
     }
@@ -32,9 +27,10 @@ public class CreatingAnswer {
         String str = randomList.stream()
                         .map(Object::toString)
                         .collect(Collectors.joining());
-        System.out.println(str);
-        System.out.println(Integer.parseInt(str));
-        return Integer.parseInt(str);
+
+        randomNumber = Integer.parseInt(str);
+
+        return randomNumber;
     }
 
 }

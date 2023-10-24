@@ -2,11 +2,6 @@ package baseball;
 
 public class CheckingInput {
 
-    /*
-    2️⃣ 잘못된 값을 검사하는 기능
-    - 사용자의 입력값이 잘못된 경우, Exception을 발생시킨다.
-     */
-
     public void CheckAll(String input) throws IllegalArgumentException {
         if ((CheckRange(input) && CheckDifference(input)) == false) {
             throw new IllegalArgumentException();
