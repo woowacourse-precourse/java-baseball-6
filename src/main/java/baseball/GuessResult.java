@@ -1,6 +1,4 @@
 package baseball;
 
-public record GuessResult(
-        boolean isCorrect,
-        String message) {
+public record GuessResult(int ball, int strike) {
 }
