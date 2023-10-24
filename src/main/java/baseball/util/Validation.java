@@ -34,28 +34,19 @@ public class Validation implements Validate {
 
     @Override
     public boolean validateInputLength(String input, int expectedLength) {
-        if (input.length() != expectedLength) {
-            return false;
-        }
-        return true;
+        return input.length() == expectedLength;
     }
 
     @Override
     public boolean validateEqualInput(char input, char validate) {
-        if (input == validate) {
-            return false;
-        }
-        return true;
+        return input != validate;
     }
 
     @Override
     public boolean validationEachDifferentElement(String input) {
         int[] intArr = inputToArr(input);
 
-        if (Arrays.stream(intArr).distinct().count() == EXPECTED_LENGTH) {
-            return true;
-        }
-        return false;
+        return Arrays.stream(intArr).distinct().count() == EXPECTED_LENGTH;
     }
 
     public int[] inputToArr(String input) {
