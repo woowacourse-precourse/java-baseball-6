@@ -24,7 +24,7 @@ public class UserInput {
             }
             return input_list;
         }
-        return List.of(-1);
+        throw new IllegalArgumentException();
     }
 
     public boolean isValidInput(String inputs){
@@ -43,19 +43,15 @@ public class UserInput {
         return set.size() == digits;
     }
 
-    public boolean getRestart(){
+    public String getRestart(){
         String restart = Console.readLine();
         if (isValidRestart(restart)) {
-            return restart.equals("1");
+            return restart;
         }
-        /* TODO */
-        return false;
+        throw new IllegalArgumentException();
     }
 
     public boolean isValidRestart(String restart) {
-        if (restart.equals("1")||restart.equals("2")){
-            return true;
-        }
-        return false;
+        return restart.equals("1") || restart.equals("2");
     }
 }
