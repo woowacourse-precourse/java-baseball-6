@@ -3,31 +3,28 @@ package baseball.Controller;
 import baseball.DTO.Computer;
 import baseball.DTO.User;
 import baseball.Service.JudgmentService;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.View;
 
 public class GameController {
-
+    private final View view;
+    private final JudgmentService judgmentService;
     private final Computer computer;
     public GameController(){
+        view = new View();
+        judgmentService = new JudgmentService();
         computer = new Computer();
+        System.out.println(computer.getComputerNumbers().toString());
     }
 
-    public void input(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
+    public void controlGameFlow(){
         Integer strike = 0;
         while (strike < 3) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
+            User user = new User(view.input());
 
-            User user = new User(userInput);
+            strike = judgmentService.countStrike(user.getUserNumbers(),computer.getComputerNumbers());
+            Integer ball = judgmentService.judgeBall(user.getUserNumbers(),computer.getComputerNumbers());
 
-            JudgmentService judgmentService = new JudgmentService(user, computer);
-
-            strike = judgmentService.judgeStrike();
-            Integer ball = judgmentService.judgeBall();
-
-            System.out.println(judgeUserInput(strike, ball));
+            view.printJudgement(judgeUserInput(strike,ball));
         }
         endGame();
     }
@@ -47,12 +44,10 @@ public class GameController {
     }
 
     public void endGame(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String againGame = Console.readLine();
-        if (againGame.equals("1")){
+        String isAgainStart = view.againStart();
+        if (isAgainStart.equals("1")){
             GameController gameController = new GameController();
-            gameController.input();
+            gameController.controlGameFlow();
         }
     }
 }
