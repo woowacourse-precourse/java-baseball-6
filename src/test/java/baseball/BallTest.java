@@ -26,7 +26,7 @@ class BallTest {
     }
 
     @DisplayName("볼 결과를 정확히 판단하는지 확인합니다.")
-    @ParameterizedTest
+    @ParameterizedTest(name = "주어진 공의 위치가 2일때, 값은 동일하고 위치가 {0}인 경우")
     @ValueSource(ints = {0, 1})
     void isBall(int location) {
         Ball other = new Ball(3, location);
