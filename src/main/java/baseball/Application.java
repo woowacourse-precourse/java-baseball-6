@@ -12,7 +12,7 @@ public class Application {
 
         while (true) {
             System.out.print("숫자를 입력해 주세요 : ");
-
+            System.out.println(computerNumber);
             String userNumber = Console.readLine();
             if (userNumber.length() != 3) {
                 throw new IllegalArgumentException("3개의 값을 입력해주세요");
@@ -28,8 +28,15 @@ public class Application {
                 tmp += String.valueOf(c);
             }
 
-            int ball = ballCount(computerNumber, userNumber);
-            int strike = strikeCount(computerNumber, userNumber);
+            int ball = 0;
+            int strike = 0;
+
+            for (int i = 0; i < computerNumber.length(); i++) {
+                int computerDigit = computerNumber.charAt(i);
+                int userDigit = userNumber.charAt(i);
+                ball += ballCount(computerDigit, userDigit);
+                strike += strikeCount(computerDigit, userDigit);
+            }
 
             if (ball != 0) {
                 System.out.print(ball + "볼 ");
@@ -73,28 +80,18 @@ public class Application {
         return String.join("", computer);
     }
 
-    public static int ballCount(String computerNumber, String userNumber) {
+    public static int ballCount(int computerNumber, int userNumber) {
         int ball = 0;
-        for (int i = 0; i < computerNumber.length(); i++) {
-            int computerDigit = computerNumber.charAt(i);
-            int userDigit = userNumber.charAt(i);
-
-            if (computerDigit - 1 == userDigit || computerDigit + 1 == userDigit) {
-                ball += 1;
-            }
+        if (computerNumber - 1 == userNumber || computerNumber + 1 == userNumber) {
+            ball += 1;
         }
         return ball;
     }
 
-    public static int strikeCount(String computerNumber, String userNumber) {
+    public static int strikeCount(int computerNumber, int userNumber) {
         int strike = 0;
-        for (int i = 0; i < computerNumber.length(); i++) {
-            int computerDigit = computerNumber.charAt(i);
-            int userDigit = userNumber.charAt(i);
-
-            if (computerDigit == userDigit) {
-                strike += 1;
-            }
+        if (computerNumber == userNumber) {
+            strike += 1;
         }
         return strike;
     }
