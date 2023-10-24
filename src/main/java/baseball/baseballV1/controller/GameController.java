@@ -1,12 +1,12 @@
-package baseball.controller;
+package baseball.baseballV1.controller;
 
-import baseball.model.Game;
-import baseball.model.Player;
-import baseball.model.TripleBalls;
-import baseball.util.Constants;
-import baseball.util.Util;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.baseballV1.model.Game;
+import baseball.baseballV1.model.Player;
+import baseball.baseballV1.model.TripleBalls;
+import baseball.baseballV1.util.Constants;
+import baseball.baseballV1.util.Util;
+import baseball.baseballV1.view.InputView;
+import baseball.baseballV1.view.OutputView;
 
 public class GameController {
     private Player registeringPlayer;

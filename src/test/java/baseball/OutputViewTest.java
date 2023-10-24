@@ -1,15 +1,14 @@
 package baseball;
 
-import baseball.model.Ball;
-import baseball.model.Game;
-import baseball.model.TripleBalls;
-import baseball.view.OutputView;
+import baseball.baseballV1.model.Ball;
+import baseball.baseballV1.model.Game;
+import baseball.baseballV1.model.TripleBalls;
+import baseball.baseballV1.view.OutputView;
+import java.util.Arrays;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-public class OutputViewTest extends IOTest{
+public class OutputViewTest extends IOTest {
     @Test
     void output_동작_확인() {
         OutputView.displaySentence("check output()");
@@ -29,8 +28,6 @@ public class OutputViewTest extends IOTest{
 
         Assertions.assertThat(output()).isEqualTo("3스트라이크\n");
     }
-
-
 
 
 }

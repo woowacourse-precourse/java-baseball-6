@@ -1,7 +1,7 @@
-package baseball.model;
+package baseball.baseballV1.model;
 
-import baseball.util.InputNumberValidator;
-import baseball.util.Util;
+import baseball.baseballV1.util.InputNumberValidator;
+import baseball.baseballV1.util.Util;
 
 public class Player {
     private final TripleBalls playerTripleBalls;

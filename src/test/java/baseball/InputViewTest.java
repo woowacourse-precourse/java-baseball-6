@@ -1,11 +1,13 @@
 package baseball;
 
-import baseball.controller.InputController;
-import baseball.model.Ball;
-import baseball.model.Player;
-import baseball.model.TripleBalls;
-import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.baseballV1.controller.InputController;
+import baseball.baseballV1.model.Ball;
+import baseball.baseballV1.model.Player;
+import baseball.baseballV1.model.TripleBalls;
+import baseball.baseballV1.view.InputView;
+import java.io.InputStream;
+import java.util.Scanner;
+import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,27 +15,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.InputStream;
-import java.util.Scanner;
-import java.util.stream.Stream;
-
 public class InputViewTest extends IOTest {
-    @ParameterizedTest
-    @ValueSource(strings = {"checking my IoTest"})
-    void generateMultiInputString(String input) {
-        String[] inputArray = input.split(" ");
-        String sentence = generateMultipleInputString(inputArray);
-
-        setInUserInput(generateUserInputStream(sentence));
-        String result = Console.readLine();
-        String resultB = Console.readLine();
-        String resultC = Console.readLine();
-
-        System.out.println("result = " + result);
-        System.out.println("resultB = " + resultB);
-        System.out.println("resultC = " + resultC);
-    }
-
     @ParameterizedTest(name = "user :{0} result : {1}")
     @CsvSource(value = {"checking:checking"}, delimiterString = ":")
     void InputView_newPlayer_Test(String userInput, String result) {
@@ -41,7 +23,7 @@ public class InputViewTest extends IOTest {
         System.out.println(result);
 
         setInUserInput(generateUserInputStream(userInput));
-        String playerInput = InputView.getPlayerInput();
+        String playerInput = new Scanner(System.in).nextLine();
 
         Assertions.assertThat(playerInput).isEqualTo(result);
     }

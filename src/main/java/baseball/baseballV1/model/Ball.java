@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.baseballV1.model;
 
 import java.util.Objects;
 
@@ -33,8 +33,12 @@ public class Ball {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Ball ball = (Ball) o;
         return digit == ball.digit && value == ball.value;
     }

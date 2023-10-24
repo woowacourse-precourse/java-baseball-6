@@ -1,10 +1,9 @@
-package baseball.util;
+package baseball.baseballV1.util;
 
-import baseball.model.Ball;
-import baseball.model.GameResult;
-import baseball.model.TripleBalls;
+import baseball.baseballV1.model.Ball;
+import baseball.baseballV1.model.GameResult;
+import baseball.baseballV1.model.TripleBalls;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,7 +58,8 @@ public class Util {
         List<Integer> computerGeneratedNumbers = new ArrayList<>();
 
         while (computerGeneratedNumbers.size() != THREE_BALLS) {
-            int randomNumber = Randoms.pickNumberInRange(VALUE_START_INCLUSIVE, VALUE_END_INCLUSIVE); // Verifiaction 적용한 구간
+            int randomNumber = Randoms.pickNumberInRange(VALUE_START_INCLUSIVE,
+                    VALUE_END_INCLUSIVE); // Verifiaction 적용한 구간
             if (!computerGeneratedNumbers.contains(randomNumber)) {
                 computerGeneratedNumbers.add(randomNumber);
             }

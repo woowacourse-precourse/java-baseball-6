@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.baseballV1.model;
 
 public class Game {
     public GameResult compareBalls(Ball playerBall, Ball computerBall) {

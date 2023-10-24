@@ -1,13 +1,12 @@
 package baseball;
 
-import baseball.model.Ball;
-import baseball.model.Game;
-import baseball.model.TripleBalls;
+import baseball.baseballV1.model.Ball;
+import baseball.baseballV1.model.Game;
+import baseball.baseballV1.model.TripleBalls;
+import java.util.Arrays;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 public class TripleBallsTest {
     private Game game;

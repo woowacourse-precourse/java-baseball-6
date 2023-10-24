@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.model.Ball;
-import baseball.model.Player;
-import baseball.model.TripleBalls;
+import baseball.baseballV1.model.Ball;
+import baseball.baseballV1.model.Player;
+import baseball.baseballV1.model.TripleBalls;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

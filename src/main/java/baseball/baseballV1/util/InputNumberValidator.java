@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.baseballV1.util;
 
 import java.util.List;
 
@@ -27,7 +27,8 @@ public class InputNumberValidator {
 
     private void hasWrongCharacters() {
         if (!Constants.NUMBER_PATTERN.matcher(validationTarget).matches()) {
-            throw new IllegalArgumentException(Constants.ERROR_PREFIX_MESSAGE + Constants.WRONG_CHARACTER_SUFFIX_MESSAGE);
+            throw new IllegalArgumentException(
+                    Constants.ERROR_PREFIX_MESSAGE + Constants.WRONG_CHARACTER_SUFFIX_MESSAGE);
         }
     }
 
@@ -35,7 +36,8 @@ public class InputNumberValidator {
         List<Character> convertedCharList = Util.convertStringToCharList(validationTarget);
 
         if (convertedCharList.size() != convertedCharList.stream().distinct().count()) {
-            throw new IllegalArgumentException(Constants.ERROR_PREFIX_MESSAGE + Constants.DUPLICATED_NUMBER_SUFFIX_MESSAGE);
+            throw new IllegalArgumentException(
+                    Constants.ERROR_PREFIX_MESSAGE + Constants.DUPLICATED_NUMBER_SUFFIX_MESSAGE);
         }
     }
 }

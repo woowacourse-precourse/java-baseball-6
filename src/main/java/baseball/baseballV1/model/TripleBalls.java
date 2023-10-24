@@ -1,8 +1,7 @@
-package baseball.model;
+package baseball.baseballV1.model;
 
-import baseball.util.Constants;
-import baseball.util.Util;
-
+import baseball.baseballV1.util.Constants;
+import baseball.baseballV1.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 

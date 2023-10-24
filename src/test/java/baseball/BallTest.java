@@ -1,14 +1,15 @@
 package baseball;
 
-import baseball.model.Ball;
-import baseball.model.Game;
-import baseball.model.GameResult;
+import baseball.baseballV1.model.Ball;
+import baseball.baseballV1.model.Game;
+import baseball.baseballV1.model.GameResult;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class BallTest {
     private Game game;
+
     @BeforeEach
     void setUp() {
         game = new Game();
