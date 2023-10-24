@@ -1,10 +1,28 @@
 package baseball.service;
 
+import baseball.domain.NumberBaseball;
+import baseball.domain.hint.Hint;
+import baseball.domain.hint.HintItem;
+import baseball.service.hint.HintItemService;
+import baseball.util.InputUtil;
+import baseball.util.IntegerUtil;
+import baseball.view.HintView;
+import baseball.view.InputView;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameServiceImpl implements GameService {
 
     public void playOneGame() {
         /*while (true) { //TODO:
             //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
+    //★DB를 사용하는 구조라면 Repository에 의존하면 되지만 여기서는 그렇지 않으므로 Service에 의존
+    private List<HintItemService> hintItemServices;
+
+    public GameServiceImpl(HintItemService... hintItemServices) {
+        this.hintItemServices = List.of(hintItemServices);
+    }
+
             inputView.displayInputMessage();
 
             String inputNum = InputUtil.inputString();
