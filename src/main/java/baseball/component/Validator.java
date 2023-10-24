@@ -63,10 +63,6 @@ public class Validator {
      * 낫싱 판별을 위해 스트라이크와 볼의 갯수를 필요로 하므로 해당 두 메서드가 선 호출 되어야 함.
      */
     private void isNoting() {
-        if (ball == 0 && strike == 0) {
-            noting = true;
-        } else {
-            noting = false;
-        }
+        noting = ball == 0 && strike == 0;
     }
 }
