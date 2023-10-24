@@ -5,15 +5,15 @@
   - "숫자 야구 게임을 시작합니다." 출력
 - [x] makeRivalNumber: 상대방 숫자 생성하기
   - 1부터 9까지의 숫자를 한 번씩 사용하여 3자리의 숫자 생성
-- [x] inputMyGuess: 예상 숫자 입력 받기
+- [x] inputUserGuess: 예상 숫자 입력 받기
   - "숫자를 입력해주세요: " 출력
   - 사용자로부터 3자리의 숫자 입력 받기
   - 입력 받은 숫자가 적절하지 못할 시 IllegalArgumentException 예외 반환, 게임 종료
 - [ ] checkScore: 컴퓨터와 사용자의 숫자 비교하여 스트라이크, 볼 개수 집계
   - 같은 수가 같은 자리에 있으면 스트라이크 증가
   - 같은 수가 다른 자리에 있으면 볼 증가
-    - countStrike: 스트라이크 개수 반환
-    - countBall: 볼 개수 반환
+    - countStrike: 스트라이크 개수 집계
+    - countBall: 볼 개수 집계
 - [ ] printResult - 점수 출력하기
   - 스트라이크와 볼의 개수를 받아와 출력
   - 볼 1개 이상일 때: "n볼 " 출력
