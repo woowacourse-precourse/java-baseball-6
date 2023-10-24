@@ -10,10 +10,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true){
-            System.out.println("숫자 야구 게임을 시작합니다.");
-
             List<Integer> computerNumber = getComputerNumber();
 
             while (true){
