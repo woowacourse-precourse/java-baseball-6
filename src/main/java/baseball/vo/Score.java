@@ -3,8 +3,8 @@ package baseball.vo;
 public class Score {
 
     private static final int GAME_ANSWER_VALUE = 3;
-    int ball;
-    int strike;
+    private int ball;
+    private int strike;
 
     public Score(int ball) {
         this.ball = ball;
