@@ -3,7 +3,6 @@ package baseball.gamesystem;
 import baseball.broadcaster.Broadcaster;
 import baseball.broadcaster.RESULT;
 import baseball.computer.Computer;
-import baseball.exception.IllegalArgumentException;
 import baseball.umpire.Umpire;
 import camp.nextstep.edu.missionutils.Console;
 

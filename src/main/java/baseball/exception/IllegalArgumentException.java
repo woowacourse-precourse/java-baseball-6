@@ -1,6 +1,6 @@
 package baseball.exception;
 
-public class IllegalArgumentException extends RuntimeException{
+public class IllegalArgumentException extends java.lang.IllegalArgumentException {
     public IllegalArgumentException(){
         super();
     }
