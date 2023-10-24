@@ -1,5 +1,6 @@
 package baseball.Controller;
 
+import baseball.Utils.ExceptionProcess;
 import baseball.Utils.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -14,31 +15,28 @@ public class OutputResult {
 
         if (ball == 0 && strike == 0) {
             System.out.println(GameMessage.NOTHING);
-            return false;
-        }
-//        if (ball != 0) {
-//            System.out.print(ball + GameMessage.BALL);
-//            return false;
-//        }
-//        if (strike != 0) {
-        else {
-            if(strike == 3) {
+            return true;
+        } else {
+            if (strike == 3) {
+                System.out.println(strike + GameMessage.STRIKE);
                 System.out.println(GameMessage.OUTPUT);
-                System.out.println(GameMessage.END);
+                System.out.println(GameMessage.CHOICE);
                 String choice = Console.readLine();
-                if(choice.equals(REGAME)) {
+                if (choice.equals(REGAME)) {
                     startGame.reStart();
-                }else if(choice.equals(EXIT)){
-                    return true;
-                }else{
-                    // 1 또는 2가 아닌 수 입력 시 예외처리
-                    System.out.println("예외처리");
                     return false;
+                } else if (choice.equals(EXIT)) {
+                    System.out.println(GameMessage.END);
+                    return false;
+                } else {
+                    ExceptionProcess.missingInputException();
+                    return null;
                 }
+            } else {
+                System.out.print(ball + GameMessage.BALL);
+                System.out.println(strike + GameMessage.STRIKE);
+                return true;
             }
-            System.out.print(ball + GameMessage.BALL);
-            System.out.println(strike + GameMessage.STRIKE);
         }
-        return false;
     }
 }
