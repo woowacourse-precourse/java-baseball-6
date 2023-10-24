@@ -20,8 +20,9 @@ public class BaseballGame {
             generateAnswer();
             while (true) {
                 boolean isOver = query();
-                if (isOver)
+                if (isOver) {
                     break;
+                }
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -33,8 +34,9 @@ public class BaseballGame {
 
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber))
+            if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
+            }
         }
     }
 
@@ -42,8 +44,9 @@ public class BaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
         String string = Console.readLine();
 
-        if (string.length() != 3)
+        if (string.length() != 3) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+        }
 
         int num;
         try {
@@ -67,10 +70,12 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String string = Console.readLine();
-        if (string.equals("1"))
+        if (string.equals("1")) {
             return true;
-        if (string.equals("2"))
+        }
+        if (string.equals("2")) {
             return false;
+        }
         throw new IllegalArgumentException("입력이 올바르지 않습니다.");
     }
 
@@ -79,13 +84,15 @@ public class BaseballGame {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (!a.get(i).equals(b.get(j)))
+                if (!a.get(i).equals(b.get(j))) {
                     continue;
+                }
 
-                if (i == j)
+                if (i == j) {
                     strike++;
-                else
+                } else {
                     ball++;
+                }
             }
         }
 
