@@ -7,7 +7,7 @@ import java.util.Scanner;
 import static baseball.utils.ErrorCode.*;
 import static baseball.utils.Message.*;
 
-public abstract class InputUtil {
+public class InputUtil {
 
     public static final String RESTART_NUMBER = "1";
     public static final String END_NUMBER = "2";
