@@ -33,20 +33,27 @@ public class Check {
     }
 
     public void printResult() {
-        if (ballCount == ZERO_COUNT && strikeCount == ZERO_COUNT) {
-            System.out.println(NOTHING);
-        } else if (strikeCount == ZERO_COUNT) {
-            System.out.println(ballCount + BALL);
-        } else if (ballCount == ZERO_COUNT) {
-            System.out.println(strikeCount + STRIKE);
-        } else if (strikeCount != ZERO_COUNT && ballCount != ZERO_COUNT) {
-            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
-        }
+        System.out.println(makeResultMessage());
+    }
 
-        if (strikeCount == THREE_STRIKE) {
-            isThreeStrike = true;
-            System.out.println(GAME_CLEAR);
+    public String makeResultMessage() {
+        if (ballCount == ZERO_COUNT && strikeCount == ZERO_COUNT) {
+            return NOTHING;
         }
+        if (strikeCount == ZERO_COUNT) {
+            return ballCount + BALL;
+        }
+        if (ballCount == ZERO_COUNT) {
+            if (strikeCount == THREE_STRIKE) {
+                isThreeStrike = true;
+                return strikeCount + STRIKE + "\n" + GAME_CLEAR;
+            }
+            return strikeCount + STRIKE;
+        }
+        if (strikeCount != ZERO_COUNT && ballCount != ZERO_COUNT) {
+            return ballCount + BALL + " " + strikeCount + STRIKE;
+        }
+        throw new IllegalArgumentException("존재하지 않는 결과입니다.");
     }
 
     public static boolean isThreeStrike() {
