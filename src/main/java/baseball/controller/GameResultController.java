@@ -23,7 +23,7 @@ public class GameResultController {
         StringBuilder result = new StringBuilder();
 
         if(strikeCount == 3) {
-            return "3 스트라이크";
+            return "3스트라이크";
         }
 
         if(ballCount > 0) {
