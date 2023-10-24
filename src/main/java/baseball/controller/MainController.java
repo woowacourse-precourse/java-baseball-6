@@ -23,7 +23,7 @@ public class MainController {
     public void run() {
         Output.printStartMessage();
         do {
-            baseballController.playGame();
+            baseballController.startNumberBaseballGame();
             Output.printGameEndMessage();
             Output.printRestartMessage();
 
