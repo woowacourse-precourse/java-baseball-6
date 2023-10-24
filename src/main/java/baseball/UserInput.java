@@ -13,26 +13,26 @@ public class UserInput {
 
     public void checkUserInput(String userInput) {
         try {
-            checkIfIncludesZero(userInput);
-            int userNum = checkIfInteger(userInput);
-            checkIfValidRange(userNum);
+            isZeroIncluded(userInput);
+            int userNum = isInteger(userInput);
+            isValidRange(userNum);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    public int checkIfInteger(String userInput) throws NumberFormatException {
-        return Integer.parseInt(userInput);
-    }
-
-    public void checkIfValidRange(int userNum) throws NumberFormatException {
-        if (0 > userNum || userNum > 999) {
+    public void isZeroIncluded(String userInput) throws NumberFormatException {
+        if (userInput.indexOf('0') != -1) {
             throw new NumberFormatException();
         }
     }
 
-    public void checkIfIncludesZero(String userInput) throws NumberFormatException {
-        if (userInput.indexOf('0') != -1) {
+    public int isInteger(String userInput) throws NumberFormatException {
+        return Integer.parseInt(userInput);
+    }
+
+    public void isValidRange(int userNum) throws NumberFormatException {
+        if (0 > userNum || userNum > 999) {
             throw new NumberFormatException();
         }
     }
