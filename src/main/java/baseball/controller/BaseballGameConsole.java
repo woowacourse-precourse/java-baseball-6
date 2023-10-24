@@ -1,6 +1,7 @@
-package baseball;
+package baseball.controller;
 
 import baseball.constants.NumberConstants;
+import baseball.model.BallCount;
 import baseball.views.GameView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -17,7 +18,7 @@ public class BaseballGameConsole {
     private boolean strikeOut;
 
 
-    void start() {
+    public void start() {
         gameView.start();
         isContinue = true;
 

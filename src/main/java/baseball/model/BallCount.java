@@ -1,7 +1,7 @@
-package baseball;
+package baseball.model;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public class BallCount {
     private final Map<String, Integer> ballCount = new HashMap<>();
@@ -11,19 +11,19 @@ public class BallCount {
         ballCount.put("ball", 0);
     }
 
-    void addStrike() {
+    public void addStrike() {
         ballCount.put("strike", ballCount.get("strike") + 1);
     }
 
-    void addBall() {
+    public void addBall() {
         ballCount.put("ball", ballCount.get("ball") + 1);
     }
 
-    int getStrike() {
+    public int getStrike() {
         return ballCount.get("strike");
     }
 
-    int getBall() {
+    public int getBall() {
         return ballCount.get("ball");
     }
 }

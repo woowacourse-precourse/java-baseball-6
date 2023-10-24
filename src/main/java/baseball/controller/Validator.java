@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import baseball.constants.NumberConstants;
 import java.util.HashSet;
