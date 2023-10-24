@@ -23,12 +23,12 @@ public class BaseballGameCounts {
     // 입력받은 유저 번호에 따라 스트라이크를 체크하는 함수
     private void checkStrikes(List<Integer> computerNum, List<Integer> userNum) {
         for (int idx = 0; idx <userNum.size(); idx++) {
-            addStrikeCounts(computerNum, userNum, idx);
+            addStrikeCounts(computerNum.get(idx), userNum.get(idx));
         }
     }
 
-    private void addStrikeCounts(List<Integer> computerNum, List<Integer> userNum, Integer idx) {
-        if (userNum.get(idx).equals(computerNum.get(idx))) {
+    private void addStrikeCounts(Integer computerIdx, Integer userIdx) {
+        if (userIdx.equals(computerIdx)) {
             counts.set(STRIKE, counts.get(STRIKE) + 1);
         }
     }
@@ -37,14 +37,15 @@ public class BaseballGameCounts {
     private void checkBalls(List<Integer> computerNum, List<Integer> userNum) {
         Integer ballCounts = 0;
         for (Integer userNumberDigit : userNum) {
-            ballCounts = addBallCounts(computerNum, userNumberDigit, ballCounts);
+            ballCounts = addBallCounts(computerNum, userNumberDigit);
         }
 
         ballCounts -= counts.get(STRIKE);
         counts.set(BALL, ballCounts);
     }
 
-    private Integer addBallCounts(List<Integer> computerNum, Integer userNumberDigit, Integer ballCounts) {
+    private Integer addBallCounts(List<Integer> computerNum, Integer userNumberDigit) {
+        Integer ballCounts = 0;
         if (computerNum.contains(userNumberDigit)) {
             ballCounts++;
         }
