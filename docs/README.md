@@ -1,5 +1,7 @@
 ## ✨ 구현해야 할 기능 목록
 
+[해당 구현 기능 목록 기반 실제 구현 로직 정리 문서](https://github.com/ssook1222/java-baseball-6/blob/ssook1222/docs/implement_class.md)
+
 ### 1. 게임 관련 문구 출력
 
 #### 1-1. 게임 시작 문구 출력
