@@ -17,7 +17,7 @@ public class InputNumberValidator {
      * 플레이어의 입력값(String) 전체 검증 메서드
      * @Param userInput 플레이어의 숫자
      * */
-    public boolean validateInputNumber(String userInput) {
+    public static boolean validateInputNumber(String userInput) {
         validateInputSize(userInput);
         validateInputType(userInput);
         validateInputDuplication(userInput);
@@ -64,7 +64,7 @@ public class InputNumberValidator {
      * 게임 재시작 물음 시 플레이어의 입력값 검증 메서드
      * @Param userInput 플레이어의 숫자
      * */
-    public void validateGameStateInput(String userInput) {
+    public static void validateGameStateInput(String userInput) {
         if (!(userInput.equals(RESTART) || userInput.equals(STOP))) {
             throw new IllegalArgumentException();
         }

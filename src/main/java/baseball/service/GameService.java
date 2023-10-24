@@ -13,24 +13,21 @@ public class GameService {
     private static final String END = "2";
     private static List<Integer> computerNumber;
 
-    private final ComputerUtil computerUtil = new ComputerUtil();
-    private final UserUtil userUtil = new UserUtil();
     private final MessageConverter messageConverter = new MessageConverter();
-    private final InputNumberValidator inputNumberValidator = new InputNumberValidator();
 
     /*
      * 게임 초기설정 메서드
      * */
     public void setGame() {
-        computerNumber = computerUtil.generateComputerNumber();
+        computerNumber = ComputerUtil.generateComputerNumber();
     }
 
     /*
      * 게임 진행 메서드
      * */
     public String playGame() {
-        String userInput = userUtil.getUserInput();
-        inputNumberValidator.validateInputNumber(userInput);
+        String userInput = UserUtil.getUserInput();
+        InputNumberValidator.validateInputNumber(userInput);
         List<Integer> userInputList = messageConverter.convertStrToList(userInput);
         Map<String, Integer> resultMessageMap = messageConverter.getResultMessage(userInputList, computerNumber);
 
@@ -42,8 +39,8 @@ public class GameService {
      * true : 게임 종료 false : 재시작
      * */
     public boolean stopGame() {
-        String userInput = userUtil.getUserInput();
-        inputNumberValidator.validateGameStateInput(userInput);
+        String userInput = UserUtil.getUserInput();
+        InputNumberValidator.validateGameStateInput(userInput);
 
         return Objects.equals(userInput, END);
     }
