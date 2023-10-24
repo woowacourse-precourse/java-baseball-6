@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.computer.Computer;
 import baseball.player.Player;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,9 @@ public class Application {
             playerBalls.add(Integer.valueOf(ball));
         }
 
-        Player player = new Player(playerBalls);
+        Ball answerBall = new Ball(Randoms.pickUniqueNumbersInRange(1,9,3));
+        Ball playerBall = new Ball(playerBalls);
+        CompareResult compareResult = answerBall.compareBall(playerBall);
+        System.out.println(compareResult.getResultMessage());
     }
 }
