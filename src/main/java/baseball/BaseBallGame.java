@@ -5,6 +5,7 @@ import java.util.List;
 //게임 전체 컨트롤
 public class BaseBallGame {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static final String ALL_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private NumberGenerator numberGenerator;
     private PlayerNumber playerNumber;
@@ -30,6 +31,7 @@ public class BaseBallGame {
             runGame();
 
             //게임 재시작/종료 입력
+            System.out.println(ALL_STRIKE);
         }
     }
 
