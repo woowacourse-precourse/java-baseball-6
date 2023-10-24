@@ -2,12 +2,16 @@ package baseball.numbers;
 
 import baseball.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public List<Integer> createComputerNumbers() {
+
+    public List<Integer> getComputerNumbers() {
+        Numbers numbers = new Numbers(createComputerNumbers());
+        return numbers.getNumbers();
+    }
+    private List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < Constants.BASEBALL_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(Constants.COMPUTER_NUMBER_START, Constants.COMPUTER_NUMBER_END);
@@ -16,12 +20,8 @@ public class Computer {
         return computerNumbers;
     }
 
-    private static boolean isDuplicated(List<Integer> computerNumbers, int randomNumber) {
-        return computerNumbers.contains(randomNumber);
-    }
-
-    private static void addRandomNumber(List<Integer> computerNumbers, int randomNumber) {
-        if (!isDuplicated(computerNumbers, randomNumber)) {
+    private void addRandomNumber(List<Integer> computerNumbers, int randomNumber) {
+        if (!computerNumbers.contains(randomNumber)) {
             computerNumbers.add(randomNumber);
         }
     }

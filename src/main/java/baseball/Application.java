@@ -1,8 +1,10 @@
 package baseball;
 
+import baseball.game.TotalGame;
+
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
-        game.play();
+        TotalGame totalGame = new TotalGame();
+        totalGame.play();
     }
 }
