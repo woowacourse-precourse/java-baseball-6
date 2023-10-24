@@ -10,7 +10,16 @@ public class BaseballGame {
         this.player = new Player();
     }
 
-    public void play() {
+    public void run() {
+        initiallizeGame();
+    }
+
+    public void initiallizeGame() {
+        computer.createRandomPicks();
+        player.makePicks();
+    }
+
+    public void playGame() {
 
     }
 
