@@ -37,15 +37,19 @@ public class Baseball {
         return computerNums;
     }
 
-    public void endGame() { // 2. 게임을 종료하는 메서드
-
-    }
-
     public static String[] inputThreeNums() { // 3. 사용자로부터 숫자 3개를 입력받는 메서드
         String inputNums;
         String[] listedInputNums;
         System.out.println("숫자를 입력해주세요 : ");
         inputNums = Console.readLine();
+        // 7. 사용자가 3개의 숫자만 입력해야 하는데 4개의 수를 입력했을 때
+        if (inputNums.length() != 3) {
+            throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
+        }
+        // 8. 사용자가 1~9사이의 숫자만 입력하지 않고, 0을 입력했을 때
+        if (inputNums.contains("0")) {
+            throw new IllegalArgumentException("1~9사이의 숫자를 입력해야 합니다.");
+        }
         listedInputNums = inputNums.split("");
         return listedInputNums;
     }
