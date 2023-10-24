@@ -25,11 +25,20 @@ public class BaseballController {
             BaseballNumber playerNumber = getPlayerInput();
             BaseballResult result = baseballService.calculateResult(computerNumber, playerNumber);
             outputView.printGameResult(result);
+
+            if (isGameFinished(result)) {
+                outputView.printGameEnd();
+                break;
+            }
         }
     }
 
     private BaseballNumber getPlayerInput() {
         String input = inputView.readPlayerNumbers();
         return BaseballNumberConverter.convert(input);
+    }
+
+    private boolean isGameFinished(BaseballResult result) {
+        return result.toString().contains("3스트라이크");
     }
 }
