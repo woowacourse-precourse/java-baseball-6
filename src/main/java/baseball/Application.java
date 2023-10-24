@@ -24,13 +24,8 @@ public class Application {
             List<Integer> computerNumbers = ComputerSelectNumber();
 
             validNumbers(computerNumbers);
-            while(strike!=NUMBER_COUNT) {
+            countStrike(computerNumbers);
 
-                List<Integer> playerNumber = PlayerSelectNumber();
-                validNumbers(playerNumber);
-                CompareNumber(computerNumbers, playerNumber);
-
-            }
             System.out.println(NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             ReStart();
         } catch(IllegalArgumentException e) {
