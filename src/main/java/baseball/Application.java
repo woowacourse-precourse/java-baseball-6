@@ -103,7 +103,8 @@ public class Application {
         }
         if (ball != 0 && strike != 0) {
             System.out.print(ball + "볼 ");
-        } else {
+        }
+        if(ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         }
         if (strike != 0) {
