@@ -26,12 +26,12 @@ public class BaseBallService {
         List<Integer> computerBallNumbers = computer.getInputBallNumber();
 
         int[] score = new int[2];
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                if(playerBallNumbers.get(i).equals(computerBallNumbers.get(j)) && i == j) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (playerBallNumbers.get(i).equals(computerBallNumbers.get(j)) && i == j) {
                     score[1]++;
                     break;
-                } else if(playerBallNumbers.get(i).equals(computerBallNumbers.get(j)) && i != j) {
+                } else if (playerBallNumbers.get(i).equals(computerBallNumbers.get(j)) && i != j) {
                     score[0]++;
                     break;
                 }
@@ -41,13 +41,14 @@ public class BaseBallService {
     }
 
     public String notificationResult(int[] result) {
-        if(result[0] > 0 && result[1] > 0) {
+        if (result[0] > 0 && result[1] > 0) {
             return String.format("%d볼 %d스트라이크\n", result[0], result[1]);
-        } else if(result[0] > 0) {
+        } else if (result[0] > 0) {
             return String.format("%d볼\n", result[0]);
-        } else if(result[1] > 0) {
+        } else if (result[1] > 0) {
             return String.format("%d스트라이크\n", result[1]);
-        } return "낫싱";
+        }
+        return "낫싱";
     }
 
     public int restartGame() throws IOException {
