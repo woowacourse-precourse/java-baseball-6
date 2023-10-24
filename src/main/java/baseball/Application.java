@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+	static final int numberSize = 3;
 
 	public static void main(String[] args) {
 		startGame();
@@ -25,11 +26,16 @@ public class Application {
 		//컴퓨터 숫자 맞출 때까지 무한 루프
 		while (true) {
 			List<Integer> userNumbers = readUserNumbers();
-			List<Integer> result = calculate(computerNumbers, userNumbers);
-			printResult(result);
+			if (userNumbers.size() != numberSize) {
+				throw new IllegalArgumentException();
+			}
+
+			List<Integer> calculatedValues = calculate(computerNumbers, userNumbers);
+			StringBuilder result = getResult(calculatedValues);
+			System.out.println(result.toString());
 
 			/*컴퓨터 숫자 모두 맞추면 게임 종료*/
-			if (result.size() == 3 && !result.contains(1)) {
+			if (calculatedValues.size() == numberSize && !calculatedValues.contains(1)) {
 				System.out.println("3개의 숫자를 모두 맞히셨습니다. 게임 종료");
 				return; // 게임 종료
 			}
@@ -39,7 +45,7 @@ public class Application {
 	/*컴퓨터 숫자 생성*/
 	public static List<Integer> generateComputerNumbers() {
 		List<Integer> computerNumbers = new ArrayList<>();
-		while (computerNumbers.size() < 3) {
+		while (computerNumbers.size() < numberSize) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!computerNumbers.contains(randomNumber)) {
 				computerNumbers.add(randomNumber);
@@ -64,7 +70,7 @@ public class Application {
 	/*컴퓨터 숫자와 사용자 숫자 비교*/
 	public static List<Integer> calculate(List<Integer> computerNumbers, List<Integer> userNumbers) {
 		List<Integer> result = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < numberSize; i++) {
 			if (computerNumbers.get(i).equals(userNumbers.get(i))) {
 				result.add(0); // 스트라이크
 			} else if (computerNumbers.contains(userNumbers.get(i))) {
@@ -75,7 +81,7 @@ public class Application {
 	}
 
 	/*스크라이크와 볼의 수 결과*/
-	public static void printResult(List<Integer> result) {
+	public static StringBuilder getResult(List<Integer> result) {
 		int strikeCount = 0;
 		int ballCount = 0;
 
@@ -100,7 +106,7 @@ public class Application {
 		if (strikeCount == 0 && ballCount == 0) {
 			gameResult.append("낫싱");
 		}
-		System.out.println(gameResult.toString());
+		return gameResult;
 	}
 
 	/*다시 시작, 종료 선택*/
