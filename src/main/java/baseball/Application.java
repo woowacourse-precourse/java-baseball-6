@@ -12,7 +12,7 @@ public class Application {
             while(!gameMaster.findCorrectAnswer()) {
                 Validator validator = new Validator(computer.getRandomNumber());
                 String answer = gameMaster.progress();
-                validator.inputNumber = Integer.parseInt(validator.writeBaseballAnswer(answer));
+                validator.writeBaseballAnswer(answer);
 
                 validator.init();
                 validator.changeInputBaseballType();
