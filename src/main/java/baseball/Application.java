@@ -25,14 +25,17 @@ class Game {
             GameOutcome outcome = checkOutcome(computerNumber, userGuess);
             printOutcome(outcome);
 
-            if (outcome.strike == 3 && askRestart()) {
-                computerNumber = generateComputerNumber();
-            } else {
-                System.out.println("게임 종료!");
-                break;
+            if (outcome.strike == 3) {
+                if (askRestart()) {
+                    computerNumber = generateComputerNumber();
+                } else {
+                    System.out.println("게임 종료");
+                    break;
+                }
             }
         }
     }
+
     private static List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
