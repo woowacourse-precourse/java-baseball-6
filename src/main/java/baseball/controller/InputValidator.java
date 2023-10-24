@@ -3,29 +3,26 @@ package baseball.controller;
 import baseball.common.Command;
 import baseball.common.Size;
 
-public class InputValidator {
-    int checkOutOfNumber(int input) {
-        if (Size.isInSize(input)) {
-            return checkOutOfRange(Integer.toString(input));
-        }
-        throw new IllegalArgumentException();
-    }
+import java.util.ArrayList;
+import java.util.List;
 
-    int checkOutOfRange(String input) {
+public class InputValidator {
+    List<Integer> checkOutOfRange(String input) {
+        List<Integer> result = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
-            if (!Size.isInRange(Character.getNumericValue(input.charAt(i)))) {
+            if (isNotInRange(input.charAt(i))) {
                 throw new IllegalArgumentException();
             }
+            result.add(Character.getNumericValue(input.charAt(i)));
         }
-        return Integer.parseInt(input);
+        return result;
     }
 
-    int isInteger(String input) {
-        try {
-            return checkOutOfNumber(Integer.parseInt(input));
-        } catch (NumberFormatException e) {
+    List<Integer> checkBall(String input) {
+        if (input.length() != Size.NUMBER.getValue()) {
             throw new IllegalArgumentException();
         }
+        return checkOutOfRange(input);
     }
 
     String checkCommand(String input) {
@@ -33,5 +30,9 @@ public class InputValidator {
             return input;
         }
         throw new IllegalArgumentException();
+    }
+
+    private boolean isNotInRange(char number) {
+        return !Size.isInRange(Character.getNumericValue(number));
     }
 }

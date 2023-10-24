@@ -20,7 +20,7 @@ public enum Message {
         return message;
     }
 
-    public static String getScore(int ball, int strike) {
+    public static String getScoreMessage(int ball, int strike) {
         if (ball > 0 && strike > 0) {
             return String.format("%s %s", BALL.convert(ball), STRIKE.convert(strike));
         }

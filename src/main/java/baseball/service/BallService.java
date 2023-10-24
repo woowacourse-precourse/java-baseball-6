@@ -20,10 +20,10 @@ public class BallService {
         inputController = new InputController();
         outputView = new OutputView();
         running = true;
-        outputView.printStart();
     }
 
     public void start() {
+        outputView.printStart();
         while (running) {
             mainSequence();
         }
@@ -46,12 +46,12 @@ public class BallService {
         }
     }
 
-    private void checkUsersBall() {
-        score = ball.compareBall(inputController.getBall());
-    }
-
     private boolean scoreIs3Strike() {
         return score[1] == Size.NUMBER.getValue();
+    }
+
+    private void checkUsersBall() {
+        score = ball.compareBall(inputController.getBall());
     }
 
     private void checkUsersCommand() {

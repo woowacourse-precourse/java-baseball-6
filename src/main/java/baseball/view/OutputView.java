@@ -17,6 +17,6 @@ public class OutputView {
     }
 
     public void printResult(int[] score) {
-        System.out.println(Message.getScore(score[0], score[1]));
+        System.out.println(Message.getScoreMessage(score[0], score[1]));
     }
 }

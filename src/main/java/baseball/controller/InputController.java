@@ -2,6 +2,8 @@ package baseball.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class InputController {
     private final InputValidator validator;
 
@@ -9,8 +11,8 @@ public class InputController {
         validator = new InputValidator();
     }
 
-    public int getBall() {
-        return validator.isInteger(Console.readLine());
+    public List<Integer> getBall() {
+        return validator.checkBall(Console.readLine());
     }
 
     public String getCommand() {
