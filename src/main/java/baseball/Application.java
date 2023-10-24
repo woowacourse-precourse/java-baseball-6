@@ -7,24 +7,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
+
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        //TODO: 프로그램 구현
         String reGame = "1";
         String stop = "2";
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-            while (reGame.equals("1")) {
-                baseball();
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String reStart = Console.readLine();
-                if (reStart.equals(stop)) {
-                    break;
-                }
+        while (reGame.equals("1")) {
+            baseball();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String reStart = Console.readLine();
+            if (reStart.equals(stop)) {
+                break;
             }
-
+        }
 
 
     }
@@ -41,26 +40,26 @@ public class Application {
         int ball = 0;
         boolean nothing = false;
         while (strike != 3) {
-
             System.out.print("숫자를 입력해주세요 : ");
             String playerInput = Console.readLine();
-            if(playerInput.length() != 3){
+
+            if (playerInput.length() != 3) {
                 throw new IllegalArgumentException();
             }
             int[] playerNumber = new int[3];
 
             for (int i = 0; i < 3; i++) {
-                playerNumber[i] = playerInput.charAt(i)-'0';
+                playerNumber[i] = playerInput.charAt(i) - '0';
                 int checkInteger = playerNumber[i];
-                if(checkInteger == 0  || checkInteger > 9){
+                if (checkInteger == 0 || checkInteger > 9) {
                     throw new IllegalArgumentException();
                 }
             }
             int[] checkDuplication = Arrays.stream(playerNumber)
                     .distinct()
                     .toArray();
-            if(checkDuplication.length != playerNumber.length){
-                throw  new IllegalArgumentException();
+            if (checkDuplication.length != playerNumber.length) {
+                throw new IllegalArgumentException();
             }
 
 
@@ -82,10 +81,10 @@ public class Application {
                     }
                 }
             }
-            if(strike == 3){
+            if (strike == 3) {
                 System.out.println(strike + "스트라이크");
                 break;
-            }else if (strike > 0 && ball == 0) {
+            } else if (strike > 0 && ball == 0) {
                 System.out.println(strike + "스트라이크 ");
                 strike = 0;
 
@@ -97,11 +96,12 @@ public class Application {
                 strike = 0;
                 ball = 0;
 
-            } else if (nothing == true) {
+            } else if (nothing) {
                 System.out.println("낫싱");
                 nothing = false;
             }
         }
+        System.out.print("3개의 숫자를 모두 맞히셨습니다!  ");
         System.out.println("게임 종료");
 
 
