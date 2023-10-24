@@ -20,3 +20,4 @@
 2. List를 사용하기 위해 표준 라이브러리 선언 방법, Arraylist 특성 숙지
 3. 외부 라이브러리 Console과 Randoms 코드 보며 이해하기
 4. randoms 라이브러리 이해 후 3자리 난수 생성까지 완성
+5. Console.readline()을 이용해 사용자에게 문자열 입력받기 구현 완료
