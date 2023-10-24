@@ -75,5 +75,24 @@ public class Application {
         }
     }
 
+    // 볼과 스트라이크를 계산
+    private static int[] calculateResult(List<Integer> computer, List<Integer> userInput) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            int computerDigit = computer.get(i);
+            int userDigit = userInput.get(i);
+
+            if (computerDigit == userDigit) {
+                strike++;
+            } else if (computer.contains(userDigit)) {
+                ball++;
+            }
+        }
+
+        return new int[]{ball, strike};
+    }
+
 
 }
