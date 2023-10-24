@@ -17,7 +17,6 @@ public class BaseballController {
     private final BaseballValidator baseballValidator;
 
     public BaseballController() {
-
         this.baseballValidator = new BaseballValidator();
         this.computerService = new ComputerService(baseballValidator);
         this.playerService = new PlayerService();
@@ -31,7 +30,7 @@ public class BaseballController {
     }
 
     private boolean askToContinue() {
-        String optionNumber = Console.readLine();
+        String optionNumber = receiveInput();
         return playerService.selectOption(optionNumber);
     }
 
@@ -53,7 +52,7 @@ public class BaseballController {
     }
 
     private String receiveBaseballNumber() {
-        String baseballNumber = Console.readLine();
+        String baseballNumber = receiveInput();
         baseballValidator.validate(baseballNumber);
         return baseballNumber;
     }
@@ -61,5 +60,9 @@ public class BaseballController {
     private Computer initializeComputer() {
         messageService.announceStartGame();
         return computerService.create();
+    }
+
+    private String receiveInput() {
+        return Console.readLine();
     }
 }
