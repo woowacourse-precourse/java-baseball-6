@@ -6,12 +6,15 @@ import baseball.model.Number;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private final String ASK_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String ASK_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public Number readNumberInput() {
         System.out.println(ASK_INPUT_MESSAGE);
         int number = readLineParseInt();
+
+        validateInputNumberSize(number);
+
         return new Number(number);
     }
 
@@ -32,6 +35,13 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.NON_NUMERIC_STRING.getMessage());
         }
+    }
+
+    private void validateInputNumberSize(Integer number) {
+        if (number < 100 || number > 999) {
+            throw new IllegalArgumentException(ErrorMessage.INPUT_LENGTH_IS_NOT_THREE.getMessage());
+        }
+
     }
 
 }

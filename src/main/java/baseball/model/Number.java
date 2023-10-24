@@ -16,7 +16,6 @@ public class Number {
     }
 
     public Number(Integer number) {
-        validateInputNumberSize(number);
         List<Integer> digits = getDigits(number);
 
         firstDigit = digits.get(0);
@@ -50,12 +49,6 @@ public class Number {
         }
     }
 
-    private void validateInputNumberSize(Integer number) {
-        if (number < 100 || number > 999) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_LENGTH_IS_NOT_THREE.getMessage());
-        }
-
-    }
 
     public boolean contains(Integer number) {
         return firstDigit == number || secondDigit == number || thirdDigit == number;

@@ -2,10 +2,10 @@ package baseball.model;
 
 public class GameResultCalculator {
 
-    private final String BALL_RESULT = "볼";
-    private final String STRIKE_RESULT = "스트라이크";
-    private final String NOTHING_RESULT = "낫싱";
-    private final String BLANK = " ";
+    private static final String BALL_RESULT = "볼";
+    private static final String STRIKE_RESULT = "스트라이크";
+    private static final String NOTHING_RESULT = "낫싱";
+    private static final String BLANK = " ";
 
     public int countStrike(Number random, Number input) {
         int strikeCount = 0;
