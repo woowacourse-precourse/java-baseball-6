@@ -24,6 +24,7 @@ public class Player {
         String restart = Console.readLine();
         isCorrectLength(restart, 1);
         isDist(restart);
+        isCorrectInput(restart);
 
         return restart;
     }
@@ -49,6 +50,12 @@ public class Player {
                     throw new IllegalArgumentException("입력에 중복 값이 있습니다.");
                 }
             }
+        }
+    }
+
+    private void isCorrectInput(String number) throws IllegalArgumentException {
+        if (!(number.equals("1") || number.equals("2"))) {
+            throw new IllegalArgumentException("잘못된 입력 값 입니다");
         }
     }
 }
