@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import baseball.utils.ValidationUtils;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -21,7 +23,7 @@ public class Application {
     private static boolean askRestartOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        validateOneOrTwo(input);
+        ValidationUtils.validateOneOrTwo(input);
         if(input.equals("1")){
             return true;
         }else{
@@ -29,12 +31,7 @@ public class Application {
         }
     }
 
-    private static void validateOneOrTwo(String input) {
-        if (input.equals("1") || input.equals("2")) {
-            return;
-        }
-        throw new IllegalArgumentException("잘못된 입력 값입니다. 애플리케이션을 종료합니다.");
-    }
+
 
     private static void newGame() {
         List<Integer> computer = generateUnique3DigitNum();
@@ -90,7 +87,7 @@ public class Application {
     private static List<Integer> getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        validateUnique3DigitNum(input);
+        ValidationUtils.validateUnique3DigitNum(input);
         List<Integer> list = new ArrayList<>();
         for (String s : input.split("")) {
             list.add(Integer.parseInt(s));
@@ -111,20 +108,6 @@ public class Application {
         return list;
     }
 
-    private static void validateUnique3DigitNum(String input) {
-        if (input.length() != 3) //세자리수가 아닐 경우
-            throw new IllegalArgumentException("잘못된 입력 값입니다. 애플리케이션을 종료합니다.");
-        boolean[] visit = new boolean[10];
-        for (int i = 0; i < input.length(); i++) {
-            int num = (int) input.charAt(i) - '0';
-            if (num < 1 || num > 9) { //1에서 9사이의 숫자가 아닐 경우
-                throw new IllegalArgumentException("잘못된 입력 값입니다. 애플리케이션을 종료합니다.");
-            } else if (visit[num]) { //서로다른 숫자가 아닐 경우
-                throw new IllegalArgumentException("잘못된 입력 값입니다. 애플리케이션을 종료합니다.");
-            } else {
-                visit[num] = true;
-            }
-        }
-    }
+
 
 }
