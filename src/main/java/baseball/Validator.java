@@ -27,14 +27,15 @@ public class Validator {
     inputNumber = Integer.parseInt(inputValue);
   }
 
-  public void changeInputBaseballType() {
+  public Map<String, Integer> changeInputBaseballType() {
     init();
     for(Baseball baseball : inputList) {
       baseball.checkType(randomList);
     }
+    return calculateResult();
   }
 
-  public Map<String, Integer> calculateResult() {
+  private Map<String, Integer> calculateResult() {
     Map<String, Integer> scoreBoard = writeScoreBoard();
     for(Baseball baseball : inputList) {
       baseball.calculate(scoreBoard);
@@ -49,14 +50,14 @@ public class Validator {
     return inputValue;
   }
 
-  public void validateContainsSpace(String input) {
+   private void validateContainsSpace(String input) {
     String trimmedValue = input.trim();
     if(input.length() != trimmedValue.length()) {
       throw new IllegalArgumentException("공백을 제거하고 입력해주세요.");
     }
   }
 
-  public void validateOnlyNumber(String input) {
+  private void validateOnlyNumber(String input) {
     try {
       int inputInteger = Integer.parseInt(input);
     } catch(IllegalArgumentException e) {
@@ -64,13 +65,13 @@ public class Validator {
     }
   }
 
-  public void validateLengthThree(String input) {
+  private void validateLengthThree(String input) {
     if(input.length() != 3) {
       throw new IllegalArgumentException("3개의 숫자로 입력해주세요.");
     }
   }
 
-  public void validateDuplicate(String input) {
+  private void validateDuplicate(String input) {
     Set<Character> set = new HashSet<>();
     for(char each : input.toCharArray()) {
       set.add(each);
@@ -80,13 +81,13 @@ public class Validator {
     }
   }
 
-  public void validateZero(String input) {
+  private void validateZero(String input) {
     if(input.contains("0")) {
       throw new IllegalArgumentException("1과 9 사이의 숫자만 입력해주세요.");
     }
   }
 
-  public void validateOneOrTwo(String input) {
+  private void validateOneOrTwo(String input) {
     if(!(input.equals("1") || input.equals("2"))) {
       throw new IllegalArgumentException("1과 2 중 하나만 선택해주세요.");
     }
