@@ -17,13 +17,6 @@ public final class Balls {
         return new Balls(newBalls);
     }
 
-    private static void checkRange(List<Integer> numbers) {
-        if (numbers.size() != 3) {
-            System.out.println(numbers.size());
-            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
-        }
-    }
-
     public Ground computeFromBallsToGround(Balls userBalls) {
         int strike = 0;
         int ball = 0;
@@ -37,6 +30,13 @@ public final class Balls {
             }
         }
         return Ground.of(strike, ball);
+    }
+
+    private static void checkRange(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            System.out.println(numbers.size());
+            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+        }
     }
 
     private BallStatus computeFromBallToBallStatus(Ball ball) {
