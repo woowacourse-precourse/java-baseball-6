@@ -28,4 +28,13 @@ public class Application {
         }
         return inputNumber;
     }
+
+
+    public static class Result{
+        int strike;
+        int ball;
+        boolean isNothing;
+        public Result() {
+        }
+    }
 }
