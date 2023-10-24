@@ -6,22 +6,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.CommandLine.*;
+import static baseball.CommandLine.showln;
 
-public class Application {
+public class Computer {
 
-    public static void main(String[] args) {
-        showln("숫자 야구 게임을 시작합니다.");
-        baseballGame();
+    private Computer() {}
+
+    public static Computer create() {
+        return new Computer();
     }
 
-    private static void baseballGame() {
+    public void runBaseballGame(){
+        showln("숫자 야구 게임을 시작합니다.");
+        run();
+    }
+
+    private void run() {
         List<Integer> computer = settingGame();
         if (endGame(computer)) {
             // 게임 재시작
             String in = inputln("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             validateRegameCommand(in);
             if (in.equals("1")) {
-                baseballGame();
+                run();
             }
         }
     }
@@ -105,5 +112,3 @@ public class Application {
         return computer;
     }
 }
-
-

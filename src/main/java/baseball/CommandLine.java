@@ -24,5 +24,11 @@ public class CommandLine {
         show(message);
         return Console.readLine();
     }
+    public static String inputln(String message){
+        showln(message);
+        return Console.readLine();
+    }
+
+
 
 }
