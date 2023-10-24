@@ -43,6 +43,11 @@ public class NumberFactory {
             }
 
             int number = Integer.parseInt(String.valueOf(digit));
+
+            if (userNumbers.contains(number)) {
+                throw new IllegalArgumentException();
+            }
+
             userNumbers.add(number);
         }
 
