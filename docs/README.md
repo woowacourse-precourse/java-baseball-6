@@ -33,13 +33,13 @@ import camp.nextstep.edu.missionutils;
 # Process :
 ### *Model* 
 #### : 비즈니스 로직을 담당, 입출력 데이터 관리
-- [x] (랜덤 수 생성) 클래스 (generateNumber.java)
-- [x] (잘못된 값 입력) 예외처리 (PlayerNumber.java)
+- [x] (랜덤 수 생성) 클래스 (generateNumber)
+- [x] (잘못된 값 입력) 예외처리 (PlayerNumber)
 - [ ] 게임 재시작, 종료 로직 구현
 ---
 ### *View*
 #### : 컨트롤러를 통해 모델에서 정보를 받아 출력
-- [ ] (숫자 입력 화면) 클래스
+- [x] (숫자 입력 화면) 클래스 (InputView)
 - [ ] (게임 출력 화면) 클래스
 ---
 ### *Contoller*

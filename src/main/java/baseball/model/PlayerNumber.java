@@ -13,6 +13,7 @@ public class PlayerNumber {
         isDigitNumber(playerNum);
         isStringLengthCorrect(playerNum);
 
+        // 받아온 입력값으로 각 함수 별 예외처리 판단
         this.playerNum = playerNum;
     }
 
