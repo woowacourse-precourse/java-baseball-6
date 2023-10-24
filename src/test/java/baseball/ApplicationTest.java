@@ -80,7 +80,8 @@ class ApplicationTest extends NsTest {
         String notThreeNumber = "1234";
 
         assertThat(Application.isLengthThree(threeNumber)).isEqualTo(true);
-        assertThat(Application.isLengthThree(notThreeNumber)).isEqualTo(false);
+        assertThatThrownBy(() -> Application.isLengthThree(notThreeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -90,7 +91,8 @@ class ApplicationTest extends NsTest {
         String notDigitNumber = "s14de7";
 
         assertThat(Application.isDigitNumber(digitNumber)).isEqualTo(true);
-        assertThat(Application.isDigitNumber(notDigitNumber)).isEqualTo(false);
+        assertThatThrownBy(() -> Application.isDigitNumber(notDigitNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -100,7 +102,8 @@ class ApplicationTest extends NsTest {
         String notRightRangeNumber = "083";
 
         assertThat(Application.isRightRangeNumber(rightRangeNumber)).isEqualTo(true);
-        assertThat(Application.isRightRangeNumber(notRightRangeNumber)).isEqualTo(false);
+        assertThatThrownBy(() -> Application.isRightRangeNumber(notRightRangeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -110,7 +113,8 @@ class ApplicationTest extends NsTest {
         String notDifferentNumber = "113";
 
         assertThat(Application.isDifferentNumber(differentNumber)).isEqualTo(true);
-        assertThat(Application.isDifferentNumber(notDifferentNumber)).isEqualTo(false);
+        assertThatThrownBy(() -> Application.isDifferentNumber(notDifferentNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
