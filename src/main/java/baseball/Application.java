@@ -1,9 +1,7 @@
 package baseball;
 
 
-import camp.nextstep.edu.missionutils.Console;
-
-import static baseball.GameController.*;
+import static baseball.controller.GameController.initNumberBaseballGame;
 
 public class Application {
     public static void main(String[] args) {
