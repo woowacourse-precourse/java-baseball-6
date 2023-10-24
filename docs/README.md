@@ -28,12 +28,21 @@
 
 ---
 
+## BaseballNumber
+
+`int baseballNumber`를 래핑한 클래스
+
+- 문자 검증해주는 `validateNumeric(String baseballNumber)`
+- 기본형 값 리턴하는 `getBaseballNumber()`;
+- 비교 위해 오버라이드 한 `equals()`, `hashCode()`
+
+---
+
 ## BaseballNumbers
 
 `List<Integer>`를 래핑한 일급 컬렉션
 
-- 리스트 크기를 반환해주는 `size()`
-- 자리 수 검증하는 `validateMaxLength()`
+- 자리 수 검증하는 `validateNumberLength()`
 - 중복된 수 검증하는 `validateDuplcateNumber()`
 - 1보다 작은 수가 들어오는지 검증하는 `validateBelowRange()`
 - `Collections.unmodifiableList()` 사용해서 불변객체 반환하는 `getBaseballNumbers()`

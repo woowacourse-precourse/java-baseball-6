@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User implements BaseballPlayer {
-
-    private static final String ONLY_NUMBER = "숫자만 입력 가능합니다.";
+    
     private BaseballNumbers baseballNumbers;
 
     @Override
@@ -26,7 +25,7 @@ public class User implements BaseballPlayer {
     public List<BaseballNumber> getPlayerBaseballNumbers() {
         return baseballNumbers.getBaseballNumbers();
     }
-    
+
     private String[] splitStringToArray() {
         String userInput = Console.readLine();
         return userInput.split("");
