@@ -49,7 +49,7 @@ class Baseball{
     }
 }
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args)  {
         Baseball computer = new Baseball(); //난수 값 3개를 가진 computer
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -61,28 +61,23 @@ public class Application {
             int ballCount = 0;
 
             //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-            try{
-                input = readLine();
+            input = readLine();
 
-                /*if(input.length() !=3)
-                    throw new IllegalArgumentException();*/
-                //runException(input);
-                //strike, ball 판단
-                for (int i = 0; i < input.length(); i++) {
-                    if(input.charAt(i) < '0' || input.charAt(i) > '9'  ) {
-                        throw new IllegalArgumentException();
-                        //return;
-                    }
-                    int num = input.charAt(i) - '0';
-                    if (computer.isStrike(num, i))
-                        strikeCount++;
-                    else if (computer.isBall(num))
-                        ballCount++;
+            if (input.length() != 3)
+                throw new IllegalArgumentException();
+
+            //strike, ball 판단
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) < '0' || input.charAt(i) > '9') {
+                    throw new IllegalArgumentException();
                 }
-            } catch (IllegalArgumentException e) {
-                System.out.println("잘못된 값 입력" );
-                return;
+                int num = input.charAt(i) - '0';
+                if (computer.isStrike(num, i))
+                    strikeCount++;
+                else if (computer.isBall(num))
+                    ballCount++;
             }
+
             //결과 출력
             print(strikeCount,ballCount);
 
@@ -108,13 +103,6 @@ public class Application {
             //else
             //  System.out.println(ball + "볼 " + strike + "스트라이크");
             System.out.println();
-        }
-    }
-    static void runException(String num){
-        for (int i = 0; i < num.length(); i++) {
-            if (num.charAt(i) < '1' || num.charAt(i) > '9' || num.length() != 3) {
-                throw new IllegalArgumentException();
-            }
         }
     }
 }

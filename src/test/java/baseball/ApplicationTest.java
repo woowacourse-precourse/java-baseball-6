@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IndexOutOfBoundsException.class)
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
