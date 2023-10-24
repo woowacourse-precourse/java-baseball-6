@@ -1,27 +1,23 @@
 package baseball.util;
 
-import static baseball.util.MessageFormatter.CURRENT_GAME_CLOSE;
-import static baseball.util.MessageFormatter.NOTHING_MESSAGE;
-import static baseball.util.MessageFormatter.THREE_STRIKE;
+import static baseball.util.MessageFormatter.*;
 
 import baseball.dto.response.StrikeBallResponse;
 
 public class GameResultPrinter {
 
-    public boolean printOtherResult(StrikeBallResponse response) {
-        boolean hasStrike = response.hasStrike();
-        boolean hasBall = response.hasBall();
+    public String printOtherResult(StrikeBallResponse response) {
 
-        if (hasStrike && hasBall) {
-            handleBallStrike(response.getBallCount(), response.getStrikeCount());
-        } else if (hasStrike) {
-            handleStrike(response.getStrikeCount());
-        } else if (hasBall) {
-            handleBall(response.getBallCount());
-        } else {
-            handelNothing();
+        if (response.hasBallStrike()) {
+            return handleBallStrike(response.getBallCount(), response.getStrikeCount());
         }
-        return false;
+        if (response.hasStrike()) {
+            return handleStrike(response.getStrikeCount());
+        }
+        if (response.hasBall()) {
+            return handleBall(response.getBallCount());
+        }
+        return handelNothing();
     }
 
     public void handleGameExit() {
@@ -33,19 +29,19 @@ public class GameResultPrinter {
         System.out.println(THREE_STRIKE);
     }
 
-    private void handelNothing() {
-        System.out.println(NOTHING_MESSAGE);
+    private String handelNothing() {
+        return NOTHING_MESSAGE;
     }
 
-    private void handleBallStrike(int ball, int strike) {
-        System.out.println(MessageFormatter.formatBallStrikeMessage(ball, strike));
+    private String handleBallStrike(int ball, int strike) {
+        return MessageFormatter.formatBallStrikeMessage(ball, strike);
     }
 
-    private void handleStrike(int strike) {
-        System.out.println(MessageFormatter.formatStrikeMessage(strike));
+    private String handleStrike(int strike) {
+        return MessageFormatter.formatStrikeMessage(strike);
     }
 
-    private void handleBall(int ball) {
-        System.out.println(MessageFormatter.formatBallMessage(ball));
+    private String handleBall(int ball) {
+        return MessageFormatter.formatBallMessage(ball);
     }
 }

@@ -1,12 +1,6 @@
 package baseball.service;
 
-import static baseball.util.MessageFormatter.GAME_EXIT;
-import static baseball.util.MessageFormatter.GAME_RESTART;
-import static baseball.util.MessageFormatter.GAME_START;
-import static baseball.util.MessageFormatter.INPUT_OPTION;
-import static baseball.util.MessageFormatter.INVALID_INPUT;
-import static baseball.util.MessageFormatter.OPTION_EXIT;
-import static baseball.util.MessageFormatter.OPTION_RETRY;
+import static baseball.util.MessageFormatter.*;
 
 import baseball.domain.Computer;
 import baseball.util.WrappedString;

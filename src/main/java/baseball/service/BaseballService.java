@@ -1,8 +1,6 @@
 package baseball.service;
 
-import static baseball.util.MessageFormatter.MAX_STRIKES;
-import static baseball.util.MessageFormatter.QUIT;
-import static baseball.util.MessageFormatter.USER_START;
+import static baseball.util.MessageFormatter.*;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballService {
-    GameResultPrinter gameResultPrinter = new GameResultPrinter();
+    private final GameResultPrinter gameResultPrinter = new GameResultPrinter();
 
     public void startGame(Computer computer) {
         boolean running = true;
@@ -36,7 +34,8 @@ public class BaseballService {
             gameResultPrinter.printThreeStrike(MAX_STRIKES);
             return true;
         }
-        return gameResultPrinter.printOtherResult(result);
+        System.out.println(gameResultPrinter.printOtherResult(result));
+        return false;
     }
 
     private StrikeBallResponse playBall(Computer computer, User user) {

@@ -1,24 +1,12 @@
 package baseball.dto.response;
 
 public class StrikeBallResponse {
-    private int strikeCount;
-    private int ballCount;
+    private final int strikeCount;
+    private final int ballCount;
 
     public StrikeBallResponse(int strike, int ball) {
         this.strikeCount = strike;
         this.ballCount = ball;
-    }
-
-    public void incrementStrike(boolean condition) {
-        if (condition) {
-            strikeCount++;
-        }
-    }
-
-    public void incrementBall(boolean condition) {
-        if (condition) {
-            ballCount++;
-        }
     }
 
     public int getStrikeCount() {
@@ -27,6 +15,10 @@ public class StrikeBallResponse {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public boolean hasBallStrike() {
+        return strikeCount != 0 && ballCount != 0;
     }
 
     public boolean hasStrike() {
