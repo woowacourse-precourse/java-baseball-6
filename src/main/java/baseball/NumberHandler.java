@@ -45,7 +45,7 @@ public class NumberHandler {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
-        if(userInput.length() < countOfNumbers) throw new IllegalArgumentException();
+        if(userInput.length() > countOfNumbers) throw new IllegalArgumentException();
 
         List<Integer> numbersList = new ArrayList<>();
         for (char c : userInput.toCharArray()) {

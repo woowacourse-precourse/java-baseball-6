@@ -30,7 +30,10 @@ public class BaseballGameManager {
                 if (isAllStrike) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    gameProcess = Character.getNumericValue(Console.readLine().charAt(0));
+                    String restart = Console.readLine();
+                    if(restart.length() > 1) throw new IllegalArgumentException();
+                    gameProcess = Character.getNumericValue(restart.charAt(0));
+                    if(gameProcess != GAME_TERMINATE && gameProcess != GAME_CONTINUE) throw new IllegalArgumentException();
                 }
                 baseball.initBaseball();
             }
