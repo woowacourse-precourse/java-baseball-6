@@ -15,7 +15,7 @@ public class Ball {
         if (this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if (this.matchBallNumber(ballNumber)) {
+        if (ball.matchBallNumber(ballNumber)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
