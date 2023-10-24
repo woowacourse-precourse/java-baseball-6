@@ -1,16 +1,28 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Validation {
+public class Guess {
+    private String guess;
+
     private static final int START_INCLUSIVE = Constants.START_INCLUSIVE;
     private static final int END_INCLUSIVE = Constants.END_INCLUSIVE;
     private static final int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
-    private static final String START = Constants.START;
-    private static final String QUIT = Constants.QUIT;
 
-    public void validateNumberInput(String input) {
+    public Guess() {
+        String input = Console.readLine();
+        validateNumberInput(input);
+
+        this.guess = input;
+    }
+
+    public String getGuess() {
+        return this.guess;
+    }
+
+    private void validateNumberInput(String input) {
         validateLengthOfDigits(input);
         validateFormatOfDigits(input);
         validateNoDuplicateDigits(input);
@@ -38,11 +50,5 @@ public class Validation {
             }
         }
 
-    }
-
-    public void validateGameStatusInput(String gameStatusInput) {
-        if (!gameStatusInput.equals(START) && !gameStatusInput.equals(QUIT)) {
-            throw new IllegalArgumentException();
-        }
     }
 }

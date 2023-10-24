@@ -1,29 +1,28 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+public class BaseBallGame {
+    private static int strikes = 0;
 
-public class BaseBallGame extends Validation {
     private static final int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
     private static final String INPUT_PROMPT = Constants.INPUT_PROMPT;
     private static final String GAME_START = Constants.GAME_START;
     private static final String GAME_OVER = Constants.GAME_OVER;
     private static final String RESTART_PROMPT = Constants.RESTART_PROMPT;
     private static final String QUIT = Constants.QUIT;
-    private static int strikes = 0;
-
+    
     public void startGame() {
         System.out.println(GAME_START);
         runGame();
     }
 
     private void runGame() {
-        Computer computer = new Computer();
+        Answer answer = new Answer();
+        Computer computer = new Computer(answer);
         playRound(computer);
 
-        String gameStatusInput = Console.readLine();
-        this.validateGameStatusInput(gameStatusInput);
+        GameStatus gameStatus = new GameStatus();
 
-        if (gameStatusInput.equals(QUIT)) {
+        if (gameStatus.getGameStatus().equals(QUIT)) {
             strikes = 0;
             return;
         }
@@ -31,7 +30,7 @@ public class BaseBallGame extends Validation {
     }
 
     private void playRound(Computer computer) {
-        String guess = getGuessFromUser();
+        Guess guess = getGuessFromUser();
         computer.printResult(guess);
         strikes = computer.getStrikesCount(guess);
         if (strikes == ANSWER_DIGIT) {
@@ -42,11 +41,10 @@ public class BaseBallGame extends Validation {
         playRound(computer);
     }
 
-    private String getGuessFromUser() {
+    private Guess getGuessFromUser() {
         System.out.print(INPUT_PROMPT);
-        String input = Console.readLine();
-        this.validateNumberInput(input);
 
-        return input;
+        Guess guess = new Guess();
+        return guess;
     }
 }

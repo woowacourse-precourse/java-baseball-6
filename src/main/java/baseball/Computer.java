@@ -1,56 +1,37 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Computer {
-    public static String answer;
-    int START_INCLUSIVE = Constants.START_INCLUSIVE;
-    int END_INCLUSIVE = Constants.END_INCLUSIVE;
-    int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
+    private Answer answer;
 
-    public Computer() {
-        answer = chooseRandomNumber();
+    public Computer(Answer answer) {
+        this.answer = answer;
     }
 
-    private String chooseRandomNumber() {
-        List<String> randomNumberList = new ArrayList<>(ANSWER_DIGIT);
-        while (randomNumberList.size() < ANSWER_DIGIT) {
-            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-            if (!randomNumberList.contains("" + randomNumber)) {
-                randomNumberList.add("" + randomNumber);
-            }
-        }
-
-        return String.join("", randomNumberList);
-    }
-
-    public void printResult(String input) {
-        int strikes = getStrikesCount(input);
-        int balls = getBallsCount(input);
+    public void printResult(Guess guess) {
+        int strikes = getStrikesCount(guess);
+        int balls = getBallsCount(guess);
 
         String comment = (strikes == 0 && balls == 0) ? "낫싱" : ((balls > 0 ? balls + "볼 " : "") +
                 (strikes > 0 ? strikes + "스트라이크" : ""));
         System.out.println(comment);
     }
 
-    private int getBallsCount(String input) {
+    private int getBallsCount(Guess guess) {
         int balls = 0;
-        for (int i = 0; i < input.length(); i++) {
-            char inputChar = input.charAt(i);
-            if (answer.contains("" + inputChar)) {
+        for (int i = 0; i < guess.getGuess().length(); i++) {
+            char inputChar = guess.getGuess().charAt(i);
+            if (this.answer.getAnswer().contains("" + inputChar)) {
                 balls++;
             }
         }
-        return balls - getStrikesCount(input);
+        return balls - getStrikesCount(guess);
     }
 
-    public int getStrikesCount(String input) {
+    public int getStrikesCount(Guess guess) {
         int strikes = 0;
-        for (int i = 0; i < input.length(); i++) {
-            char inputChar = input.charAt(i);
-            char answerChar = answer.charAt(i);
+        for (int i = 0; i < guess.getGuess().length(); i++) {
+            char inputChar = guess.getGuess().charAt(i);
+            char answerChar = this.answer.getAnswer().charAt(i);
             if (inputChar == answerChar) {
                 strikes++;
             }
