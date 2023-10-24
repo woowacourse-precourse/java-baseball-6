@@ -1,5 +1,8 @@
 package baseball.view;
 
+import baseball.domain.BallScore;
+import baseball.domain.GameResult;
+
 public class OutputView {
     public static final String START_MESSAGE =  "숫자 야구 게임을 시작합니다. ";
 
@@ -26,13 +29,19 @@ public class OutputView {
         System.out.print(INPUT_NUMBER_MESSAGE);
     }
 
-    public static void printScore(int ball, int strike) {
+    public static void printScore(GameResult compare) {
+        int ball = compare.getResult(BallScore.BALL);
+        int strike = compare.getResult(BallScore.STRIKE);
         System.out.print(messageBuilder(ball, BALL));
         System.out.print(messageBuilder(strike, STRIKE));
+        isNothing(ball, strike);
+        System.out.print(NEW_LINE);
+    }
+
+    private static void isNothing(int ball, int strike) {
         if (ball + strike == 0) {
             System.out.print(NOTHING);
         }
-        System.out.print(NEW_LINE);
     }
 
 
