@@ -1,5 +1,6 @@
-package baseball;
+package baseball.view;
 
+import baseball.model.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 

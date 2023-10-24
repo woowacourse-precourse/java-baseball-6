@@ -1,5 +1,10 @@
-package baseball;
+package baseball.controller;
 
+import baseball.model.BallCount;
+import baseball.model.Computer;
+import baseball.model.GameMessage;
+import baseball.model.GameResult;
+import baseball.view.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {

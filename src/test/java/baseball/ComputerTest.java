@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.model.Computer;
 import org.junit.jupiter.api.Test;
 
 class ComputerTest {
