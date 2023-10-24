@@ -1,4 +1,4 @@
-package baseball.computer;
+package baseball.numbers;
 
 import baseball.BaseballGameRules;
 import baseball.NumberBaseballGameResult;

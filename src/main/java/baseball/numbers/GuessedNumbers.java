@@ -1,5 +1,6 @@
-package baseball;
+package baseball.numbers;
 
+import baseball.BaseballGameRules;
 import java.util.Collections;
 import java.util.List;
 

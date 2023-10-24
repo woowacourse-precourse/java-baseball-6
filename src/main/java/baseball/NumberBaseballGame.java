@@ -1,8 +1,9 @@
 package baseball;
 
-import baseball.computer.NumberBaseballGameComputerPlayer;
+import baseball.numbers.GuessedNumbers;
+import baseball.numbers.NumberBaseballGameComputerPlayer;
 import baseball.numbergenerator.NumberGenerator;
-import baseball.user.UserIo;
+import baseball.io.UserIo;
 
 public class NumberBaseballGame {
 

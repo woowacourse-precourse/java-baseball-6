@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.numbergenerator.NumberGenerator;
 import baseball.numbergenerator.RandomNumberGenerator;
-import baseball.user.UserIo;
+import baseball.io.UserIo;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
