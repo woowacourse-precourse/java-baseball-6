@@ -6,20 +6,20 @@ import java.util.stream.Collectors;
 public class CheckInput {
     private static final int INPUT_LENGTH = 3;
 
-    public static void validateUserInput(String userInput) {
-        validateLength(userInput);
-        validateInteger(userInput);
-        validateHasZero(userInput);
-        validateDuplicate(userInput);
+    public static void validatePlayerInput(String userInput) {
+        checkLength(userInput);
+        checkInteger(userInput);
+        checkHasZero(userInput);
+        checkDuplicate(userInput);
     }
 
-    private static void validateLength(String userInput) {
+    private static void checkLength(String userInput) {
         if (userInput.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateInteger(String userInput) {
+    private static void checkInteger(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (IllegalArgumentException error) {
@@ -27,13 +27,13 @@ public class CheckInput {
         }
     }
 
-    private static void validateHasZero(String userInput) {
+    private static void checkHasZero(String userInput) {
         if (userInput.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateDuplicate(String userInput) {
+    private static void checkDuplicate(String userInput) {
         Set<Character> characterSet = userInput.chars()
                 .mapToObj(ch -> (char) ch)
                 .collect(Collectors.toSet());
