@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Session {
+    private static final String victoryMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static boolean isSessionRunning = true;
+
     // 프로그램 시작, 응답받기
     public static void startGame() {
         do {
@@ -12,21 +15,31 @@ public class Session {
             ValidationAnswer.isValid(answer);
             ScoreKeeper.printScore(answer);
 
-        } while (!endGame());
+            if (ScoreKeeper.isThreeStrikes()) {
+                askRestartOrEnd();
+            }
+        } while (isSessionRunning);
     }
 
-    // 프로그램 종료하기
-    private static boolean endGame() {
-        boolean isRestart = false;
-        String endMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    // 프로그램 종료여부
+    private static void askRestartOrEnd() {
+        System.out.println(victoryMessage);
+        String restart = Console.readLine();
 
-        if (ScoreKeeper.isThreeStrikes()) {
-            System.out.println(endMessage);
-            String restart = Console.readLine();
+        ValidationRestart.isValid(restart);
 
-            // TODO: Validation 클래스 이용
-            isRestart = ValidationRestart.isValid(restart);
+        int isRestart = Integer.parseInt(restart);
+        if (isRestart == 1) {
+            restartGame();
         }
-        return isRestart;
+        if (isRestart == 2) {
+            System.out.println("프로그램을 종료합니다.");
+            isSessionRunning = false;
+        }
+    }
+
+    // 프로그램 재시작
+    private static void restartGame() {
+        Defender.reroll();
     }
 }
