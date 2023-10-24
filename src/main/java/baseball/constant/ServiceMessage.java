@@ -10,8 +10,4 @@ public enum ServiceMessage {
     ServiceMessage(String serviceMessage) {
         this.serviceMessage = serviceMessage;
     }
-
-    public static String getServiceName(String serviceMessage) {
-        return serviceMessage;
-    }
 }
