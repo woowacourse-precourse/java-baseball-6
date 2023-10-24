@@ -17,8 +17,15 @@ public class BaseballNumbers {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public Result checkResult(PlayerNumbers playerNumbers) {
+        int strike = 0, ball = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (playerNumbers.contains(numbers.get(i))) ball++;
+            if (numbers.get(i).equals(playerNumbers.get(i))) strike++;
+        }
+        ball -= strike;
+
+        return new Result(strike, ball);
     }
 
     public static BaseballNumbers generateBaseballNumbers() {

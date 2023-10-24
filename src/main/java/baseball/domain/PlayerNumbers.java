@@ -32,14 +32,18 @@ public class PlayerNumbers {
 
     private void validateContainsDuplicateNumber(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>();
-        for(Integer number : numbers) {
+        for (Integer number : numbers) {
             if (!set.add(number)) {
                 throw new IllegalArgumentException("중복된 값이 존재한다.");
             }
         }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public boolean contains(Integer number) {
+        return numbers.contains(number);
+    }
+
+    public Integer get(Integer index) {
+        return numbers.get(index);
     }
 }
