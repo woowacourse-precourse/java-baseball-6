@@ -38,21 +38,6 @@ class Player {
         return numbers;
     }
 
-    // 볼, 스트라이크 계산 후 결과 출력
-    public void showResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        } else {
-            if (ball > 0) System.out.print(ball + "볼 ");
-            if (strike > 0) System.out.print(strike + "스트라이크");
-            System.out.println();
-        }
-    }
-
-    public void win(int strike) {
-        System.out.println(strike + "스트라이크");
-        System.out.println(NUMBER_OF_DIGITS + "개의 숫자를 모두 맞히셨습니다! 게임 종료"); // all strike인 경우 게임 종료 문구 출력
-    }
 
     // 게임 재실행 여부 확인
     public boolean choiceRestart() {
