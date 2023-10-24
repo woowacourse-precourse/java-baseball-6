@@ -5,6 +5,9 @@ import java.util.Set;
 
 public class Validator {
   private static final int INPUT_NUMBERS_SIZE = 3;
+  private static final int INPUT_RESTART_NUMBER = 1;
+  private static final int INPUT_END_NUMBER = 2;
+
   private static final String INVALID_NUMBER_SIZE = "입력 길이는 3만 가능합니다.";
   private static final String INVALID_NUMERIC_NUMBER = "숫자만 입력해주세요.";
   private static final String INVALID_DUPLICATED_NUMBER = "입력에 중복된 수가 존재합니다.";
@@ -30,6 +33,12 @@ public class Validator {
       if (!set.add(number)) {
         throw new IllegalArgumentException(INVALID_DUPLICATED_NUMBER);
       }
+    }
+  }
+
+  public void validateInputNumberOfRestartAndEnd(String number) {
+    if (!(number.equals(INPUT_RESTART_NUMBER) || number.equals(INPUT_END_NUMBER))) {
+      throw new IllegalArgumentException(INVALID_RESTART_AND_END_NUMBER);
     }
   }
 }
