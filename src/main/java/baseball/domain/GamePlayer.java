@@ -8,7 +8,6 @@ import java.util.List;
 import static baseball.domain.Const.*;
 
 public class GamePlayer {
-    private final Validator validator = new Validator();
     private final List<Integer> threeNumbers = new ArrayList<>();
 
     public void initThreeNumbers(String inputtedNumbers) {
@@ -28,13 +27,13 @@ public class GamePlayer {
 
     private int validateNumbers(String inputtedNumbers) {
         // 정수로 변환 검증
-        int parsedValidatedInt = validator.parseValidatedInt(inputtedNumbers);
+        int parsedValidatedInt = Validator.parseValidatedInt(inputtedNumbers);
         // 세자리 수가 맞는지 검증
-        validator.validateCiphers(parsedValidatedInt, FIXED_ANSWER_CIPHERS);
+        Validator.validateCiphers(parsedValidatedInt, FIXED_ANSWER_CIPHERS);
 
         // 숫자 중에 0이 포함이 안 됐는지 검증
         for (int i = 0; i < FIXED_ANSWER_CIPHERS; i++) {
-            validator.validateInRange(Character.getNumericValue(inputtedNumbers.charAt(i)), BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
+            Validator.validateInRange(Character.getNumericValue(inputtedNumbers.charAt(i)), BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
         }
 
         return parsedValidatedInt;

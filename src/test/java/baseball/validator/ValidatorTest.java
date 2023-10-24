@@ -7,13 +7,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidatorTest {
 
-    Validator validator = new Validator();
-
     @Test
     @DisplayName("숫자로 입력을 받지 못하면 IllegalArgumentException을 던집니다.")
     void parseValidatedInt() {
         String inputString = "가나다";
-        assertThatThrownBy(() -> validator.parseValidatedInt(inputString))
+        assertThatThrownBy(() -> Validator.parseValidatedInt(inputString))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -30,16 +28,16 @@ class ValidatorTest {
         int 네자릿수 = 1000;
 
         // then
-        assertThatThrownBy(() -> validator.validateCiphers(한자릿수, 원하는_자릿수))
+        assertThatThrownBy(() -> Validator.validateCiphers(한자릿수, 원하는_자릿수))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() -> validator.validateCiphers(두자릿수, 원하는_자릿수))
+        assertThatThrownBy(() -> Validator.validateCiphers(두자릿수, 원하는_자릿수))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 세자릿수면 에러가 발생하지 않음
-        validator.validateCiphers(세자릿수, 원하는_자릿수);
+        Validator.validateCiphers(세자릿수, 원하는_자릿수);
 
-        assertThatThrownBy(() -> validator.validateCiphers(네자릿수, 원하는_자릿수))
+        assertThatThrownBy(() -> Validator.validateCiphers(네자릿수, 원하는_자릿수))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -56,11 +54,11 @@ class ValidatorTest {
         int TEN = 10;
 
         // then
-        assertThatThrownBy(() -> validator.validateInRange(ZERO, 원하는_범위_시작, 원하는_범위_끝))
+        assertThatThrownBy(() -> Validator.validateInRange(ZERO, 원하는_범위_시작, 원하는_범위_끝))
                 .isInstanceOf(IllegalArgumentException.class);
         // 1을 입력하면 에러가 발생하지 않음
-        validator.validateInRange(ONE, 원하는_범위_시작, 원하는_범위_끝);
-        assertThatThrownBy(() -> validator.validateInRange(TEN, 원하는_범위_시작, 원하는_범위_끝))
+        Validator.validateInRange(ONE, 원하는_범위_시작, 원하는_범위_끝);
+        assertThatThrownBy(() -> Validator.validateInRange(TEN, 원하는_범위_시작, 원하는_범위_끝))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
