@@ -1,12 +1,11 @@
 package baseball;
 
+import static baseball.utils.Constants.PROGRAM_EXIT;
+import static baseball.utils.Constants.RESTART_GAME;
+import static baseball.utils.GameMessage.RESTART_REQUEST_MESSAGE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
-    private static final String RESTART_REQUEST_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String RESTART_GAME = "1";
-    private static final String PROGRAM_EXIT = "2";
-
     public Controller() {
     }
 
