@@ -71,7 +71,7 @@ public class BaseballGame {
                 ball++;
             }
         }
-        return strike + ball * 10; // 30
+        return strike + ball * 10;
     }
     private String printResult(int result) {
         if (result == NUM_DIGITS) {
