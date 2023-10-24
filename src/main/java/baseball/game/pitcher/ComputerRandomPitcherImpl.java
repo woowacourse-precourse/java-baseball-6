@@ -6,7 +6,6 @@ import static baseball.AppConfig.MIN_NUMBER;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class ComputerRandomPitcherImpl implements Pitcher {
-
     @Override
     public String pitch() {
         String ball = "";

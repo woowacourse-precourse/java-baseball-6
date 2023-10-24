@@ -7,13 +7,11 @@ import baseball.game.umpire.Umpire;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 
 import static baseball.AppConfig.DIGIT_NUM;
 
 public class UmpireTest {
-
     Umpire umpire;
 
     @BeforeEach

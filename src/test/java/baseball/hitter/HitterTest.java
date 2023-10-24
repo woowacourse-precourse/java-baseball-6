@@ -2,11 +2,9 @@ package baseball.hitter;
 
 import baseball.AppConfig;
 import baseball.game.hitter.Hitter;
-import baseball.game.util.IllegalArgumentCheck;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 

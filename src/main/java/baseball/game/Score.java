@@ -7,7 +7,7 @@ public class Score {
     private boolean homerunCount;
     private boolean nothingCount;
 
-    public Score(){
+    public Score() {
         this.strikeCount = 0;
         this.ballCount = 0;
         this.homerunCount = false;
@@ -21,7 +21,7 @@ public class Score {
         this.nothingCount = nothingCount;
     }
 
-    public void initAll(){
+    public void initAll() {
         this.strikeCount = 0;
         this.ballCount = 0;
         this.homerunCount = false;

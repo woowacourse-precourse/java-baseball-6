@@ -3,12 +3,9 @@ package baseball.game.umpire;
 import baseball.game.CheckingBoard;
 import baseball.game.Score;
 
-import java.util.Arrays;
-
 import static baseball.AppConfig.DIGIT_NUM;
 
 public class ComputerUmpireImpl implements Umpire {
-
     @Override
     public CheckingBoard checkStrike(String ball, String bat, CheckingBoard checkingBoard) {
         Boolean[] strikeCheckingBoard = checkingBoard.getStrikeCheckingBoard();
@@ -66,9 +63,7 @@ public class ComputerUmpireImpl implements Umpire {
         if(strike == 0 && ball == 0){
             nothing = true;
         }
-
         score.setAll(strike, ball, homerun, nothing);
-
         return score;
     }
 }

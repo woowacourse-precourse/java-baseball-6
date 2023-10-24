@@ -8,25 +8,13 @@ import baseball.game.displayboard.DisplayBoard;
 import baseball.game.util.IllegalArgumentCheck;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-
-import static baseball.AppConfig.DIGIT_NUM;
-
 public class GameSettingImpl implements GameSetting {
     AppConfig appConfig = new AppConfig();
     DisplayBoard displayBoard = appConfig.displayBoard();
+
     @Override
     public void startGame() {
         displayBoard.displayGameStart();
-    }
-
-    @Override
-    public void initGame(CheckingBoard checkingBoard, Score score) {
-        Boolean[] initBoard = new Boolean[DIGIT_NUM];
-        Arrays.fill(initBoard, false);
-        checkingBoard.setStrikeCheckingBoard(initBoard);
-        checkingBoard.setBallCheckingBoard(initBoard);
-        score.setAll(0, 0, false, false);
     }
 
     @Override
@@ -45,7 +33,7 @@ public class GameSettingImpl implements GameSetting {
             checkingBoard = appConfig.umpire().checkBall(ball, bat, checkingBoard);
             score = appConfig.umpire().judge(checkingBoard, score);
             displayBoard.displayScore(score);
-            if(score.isHomerunCount()){
+            if (score.isHomerunCount()) {
                 break;
             }
             score.initAll();
@@ -60,14 +48,9 @@ public class GameSettingImpl implements GameSetting {
         displayBoard.displayQuestionRestart();
         String inputAnswer = Console.readLine();
         illegalArgumentCheck.checkArgumentWrongAnswer(inputAnswer);
-        if(inputAnswer.charAt(0) == '2'){
+        if (inputAnswer.charAt(0) == '2') {
             gameStatus = GameStatus.STOP;
         }
         return gameStatus;
-    }
-
-    @Override
-    public void setGame() {
-
     }
 }
