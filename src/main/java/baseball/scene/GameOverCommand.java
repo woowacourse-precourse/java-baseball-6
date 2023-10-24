@@ -10,10 +10,11 @@ import java.util.stream.Stream;
 public enum GameOverCommand {
     RE_START(GameOverCommand.STRING_RE_START_INPUT),
     EXIT(GameOverCommand.STRING_EXIT_INPUT),
-    UNKNOWN("UNKNOWN");
+    UNKNOWN(GameOverCommand.STRING_UNKNOWN);
 
     public static final String STRING_RE_START_INPUT = "1";
     public static final String STRING_EXIT_INPUT = "2";
+    public static final String STRING_UNKNOWN = "UNKNOWN";
 
     private final String command;
 
