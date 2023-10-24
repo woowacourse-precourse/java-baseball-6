@@ -19,8 +19,7 @@ public class BaseballService {
 
     private static List<Integer> convertToList(String number) {
         return number.chars()
-            .map(c -> c - '0')
-            .boxed()
+            .mapToObj(Character::getNumericValue)
             .toList();
     }
 
