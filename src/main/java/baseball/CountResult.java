@@ -16,7 +16,7 @@ public class CountResult {
         this.strikeCount = countStrike(computerNumber, playerNumber);
     }
 
-    public int countBall(List<Integer> computerNumber, List<Integer> playerNumber){
+    private int countBall(List<Integer> computerNumber, List<Integer> playerNumber){
 
         return (int)Stream.iterate(0, i->i+1).limit(computerNumber.size())
                 .filter(i->!playerNumber.get(i).equals(computerNumber.get(i))
@@ -24,14 +24,18 @@ public class CountResult {
                 .count();
     }
 
-    public int countStrike(List<Integer> computerNumber, List<Integer> playerNumber){
+    private int countStrike(List<Integer> computerNumber, List<Integer> playerNumber){
 
         return (int)Stream.iterate(0, i->i+1).limit(computerNumber.size())
                 .filter(i->playerNumber.get(i).equals(computerNumber.get(i)))
                 .count();
     }
 
-    public String makeHintString(){
+    public void printHintString(){
+        System.out.println(makeHintString());
+    }
+
+    private String makeHintString(){
 
         if (ballCount==0 && strikeCount==0){
             return NOTHING_SENTENCE;
