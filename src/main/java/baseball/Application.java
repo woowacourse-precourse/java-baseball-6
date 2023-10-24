@@ -4,12 +4,12 @@ public class Application {
     public static void main(String[] args) {
         GameMaster gameMaster = new GameMaster();
 
-        while(gameMaster.shouldContinueRound) {
+        while(gameMaster.isGameInProgress()) {
             Computer computer = new Computer();
             gameMaster.init();
 //            System.out.println(computer.randomNumber);
             gameMaster.start();
-            while(!gameMaster.isCorrectAnswerFound) {
+            while(!gameMaster.findCorrectAnswer()) {
                 Validator validator = new Validator(computer.randomNumber);
                 String answer = gameMaster.progress();
                 validator.inputNumber = Integer.parseInt(validator.writeBaseballAnswer(answer));
@@ -21,8 +21,7 @@ public class Application {
                 String decide = gameMaster.checkResult(s);
                 if(decide != null) {
                     String decideAnswer = validator.writeProgressAnswer(decide);
-                    gameMaster.shouldContinueRound = validator.answerOfProgress(decideAnswer);
-                    gameMaster.isCorrectAnswerFound = true;
+                    gameMaster.conclude(decideAnswer);
                 }
             }
         }
