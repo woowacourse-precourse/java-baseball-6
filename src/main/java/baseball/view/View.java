@@ -1,25 +1,27 @@
 package baseball.view;
 
-
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.Arrays;
 
-public class InputView {
+public class View {
     private static final String END_COMMAND = "1";
     private static final String RESTART_COMMAND = "2";
     private static final int INPUT_NUMBER_SIZE = 3;
 
     public static String readUserNumber() {
-        OutputView.printInputNumberMessage();
+        printInputNumberMessage();
         String inputNumber = Console.readLine();
+        checkInputNumber(inputNumber);
 
+        return inputNumber;
+    }
+
+    private static void checkInputNumber(String inputNumber) {
         checkIsNumber(inputNumber);
         checkNumberSize(inputNumber);
         checkNumberRange(inputNumber);
         checkDuplicatedNumber(inputNumber);
-
-        return inputNumber;
     }
 
     private static void checkIsNumber(String inputNumber) {
@@ -52,7 +54,7 @@ public class InputView {
     }
 
     public static int readGameEndCommand() {
-        OutputView.printGameEndMessage();
+        printGameEndMessage();
         String inputCommand = Console.readLine();
 
         checkEndCommandType(inputCommand);
@@ -64,5 +66,35 @@ public class InputView {
         if (!inputCommand.equals(END_COMMAND) && !inputCommand.equals(RESTART_COMMAND)) {
             throw new IllegalArgumentException("잘못된 종료 커멘드입니다.");
         }
+    }
+
+    public static void printGameStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static void printInputNumberMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public static void printResultMessage(int ballCount, int strikeCount) {
+
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        StringBuilder builder = new StringBuilder();
+        if (ballCount != 0) {
+            builder.append(ballCount).append("볼 ");
+        }
+        if (strikeCount != 0) {
+            builder.append(strikeCount).append("스트라이크");
+        }
+        System.out.println(builder);
+    }
+
+    public static void printGameEndMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }

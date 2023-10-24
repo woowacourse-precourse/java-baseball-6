@@ -1,7 +1,6 @@
 package baseball.domain;
 
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -28,13 +27,13 @@ public class Computer {
         generateTargetNumber();
 
         while (true) {
-            OutputView.printGameStartMessage();
-            String inputNumber = InputView.readUserNumber();
+            View.printGameStartMessage();
+            String inputNumber = View.readUserNumber();
             checkInputNumber(inputNumber);
-            OutputView.printResultMessage(ballCount, strikeCount);
+            View.printResultMessage(ballCount, strikeCount);
 
             if (strikeCount == 3) {
-                return InputView.readGameEndCommand();
+                return View.readGameEndCommand();
             }
         }
     }
