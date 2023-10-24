@@ -16,6 +16,7 @@ public class Application {
     public static void playGame() {
         List<Integer> computer = makeRandom();
         System.out.println("숫자 야구 게임을 시작합니다.");
+        HashMap<String, Integer> score;
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
@@ -23,7 +24,9 @@ public class Application {
             if (!checkException(user)) {
                 throw new IllegalArgumentException();
             }
-        }
+            score = countStrikeAndBall(user, computer);
+        } while (!score.get("strike").equals(3));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static List<Integer> makeRandom() {
@@ -70,5 +73,22 @@ public class Application {
             numbers.put(numString.charAt(i), i);
         }
         return true;
+    }
+
+    public static HashMap<String, Integer> countStrikeAndBall(List<Integer> user, List<Integer> computer) {
+        HashMap<String, Integer> score = new HashMap<>();
+        score.put("strike", 0);
+        score.put("ball", 0);
+
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.contains(user.get(i))) {
+                score.put("ball", score.get("ball") + 1);
+            }
+            if (user.get(i).equals(computer.get(i))) {
+                score.put("ball", score.get("ball") - 1);
+                score.put("strike", score.get("strike" + 1));
+            }
+        }
+        return score;
     }
 }
