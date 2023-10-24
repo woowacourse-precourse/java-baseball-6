@@ -25,9 +25,9 @@ public class Foul {
         }
     }
 
-    public static String validateInputContine(String start) {
+    public static void validateInputContine(String start) {
         if (Objects.equals(start, "1") || Objects.equals(start, "2")) {
-            return start;
+            return;
         }
         throw new IllegalArgumentException();
     }
