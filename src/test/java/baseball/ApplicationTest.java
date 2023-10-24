@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.model.Computer;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -27,6 +31,17 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    @DisplayName("컴퓨터가 랜덤으로 3자리 숫자를 생성하는지 테스트")
+    void 컴퓨터_숫자_생성_테스트() {
+        Computer randomNumbers = Computer.createRandomNumbers();
+        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+
+        assertThat(randomNumbersList.size()).isEqualTo(3);
+    }
+
+
 
     @Override
     public void runMain() {
