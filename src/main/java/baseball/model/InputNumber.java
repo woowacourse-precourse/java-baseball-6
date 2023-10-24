@@ -6,7 +6,7 @@ import java.util.List;
 public class InputNumber {
     private static final int NUMBER_OF_DIGITS = 3;
     private static final String INPUT_REGEX_PATTERN = "^(?!.*(\\d).*\\1)[1-9]{3}$";
-    private List<Integer> inputNumber = new ArrayList<>();
+    private final List<Integer> inputNumber = new ArrayList<>();
     private String quitNumber = "";
 
     public List<Integer> getInputNumber() {
