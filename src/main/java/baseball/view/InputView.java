@@ -24,7 +24,7 @@ public class InputView {
     }
 
     public ReplayDto replayGame() {
-        writer.write(Message.INPUT_REPLAY);
+        writer.writeLine(Message.INPUT_REPLAY);
 
         String input = reader.readLine();
         return new ReplayDto(input);

@@ -24,6 +24,7 @@ public class BaseballController {
 
     public void run() {
         boolean play = true;
+        outputView.startGame();
         while (play) {
             Baseball answer = createAnswer();
             playGame(answer);
@@ -38,7 +39,6 @@ public class BaseballController {
     private void playGame(final Baseball answer) {
         boolean isClear = false;
         while (!isClear) {
-            outputView.startGame();
             isClear = guessAnswer(answer);
         }
         outputView.clearGame();
