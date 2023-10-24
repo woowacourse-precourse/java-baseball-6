@@ -1,9 +1,9 @@
-package baseball;
+package baseball.game;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static baseball.Constants.*;
+import static baseball.common.Constants.*;
 
 public class Result {
     private Integer strike;

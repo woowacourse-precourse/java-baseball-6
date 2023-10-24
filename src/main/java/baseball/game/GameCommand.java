@@ -1,8 +1,8 @@
-package baseball;
+package baseball.game;
 
 import java.util.Arrays;
 
-import static baseball.Constants.FIND_COMMAND_ERROR;
+import static baseball.common.Constants.FIND_COMMAND_ERROR;
 
 public enum GameCommand {
     RETRY(1),

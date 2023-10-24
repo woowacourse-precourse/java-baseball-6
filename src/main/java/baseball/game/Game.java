@@ -1,6 +1,9 @@
-package baseball;
+package baseball.game;
 
-import static baseball.Constants.*;
+import baseball.player.Computer;
+import baseball.player.User;
+
+import static baseball.common.Constants.*;
 
 public class Game {
     private Computer computer;

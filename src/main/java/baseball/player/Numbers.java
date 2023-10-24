@@ -1,10 +1,10 @@
-package baseball;
+package baseball.player;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Constants.*;
+import static baseball.common.Constants.*;
 
 public class Numbers {
     private List<Integer> numbers;

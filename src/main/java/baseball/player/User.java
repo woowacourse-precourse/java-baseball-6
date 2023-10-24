@@ -1,11 +1,12 @@
-package baseball;
+package baseball.player;
 
+import baseball.game.GameCommand;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.Constants.*;
+import static baseball.common.Constants.*;
 
 public class User {
     private Numbers numbers;
@@ -52,8 +53,8 @@ public class User {
         }
     }
 
-    private static void validateBlank(String input){
-        if(input.trim().isEmpty()){
+    private static void validateBlank(String input) {
+        if (input.trim().isEmpty()) {
             throw new IllegalArgumentException(BLANK_ERROR);
         }
     }
