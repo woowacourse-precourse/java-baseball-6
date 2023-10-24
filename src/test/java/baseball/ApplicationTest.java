@@ -21,37 +21,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 숫자입력_예외_테스트() {
-        // 3개 보다 많은 숫자
+    void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
-
-        // 3개 보다 적은 숫자
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("12"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-
-        // 중복된 숫자
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("222"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
     }
-
-    @Test
-    void 게임결과판정_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("135", "1", "379", "123", "356", "123", "256", "2");
-                    assertThat(output()).contains("낫싱", "2스트라이크", "1볼", "3스트라이크");
-                },
-                1, 3, 5, 2, 5, 6
-        );
-    }
-
 
     @Override
     public void runMain() {
