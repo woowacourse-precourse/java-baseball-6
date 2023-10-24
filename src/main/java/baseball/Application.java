@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.service.GameService;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
