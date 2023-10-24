@@ -28,4 +28,8 @@ public class userInterface {
         System.out.println(listSize+endPhrases);
     }
 
+    public static void choiceWrite(){
+        System.out.println(String.format(restartChoicePhrases, restartChoice, endGameChoice));
+    }
+
 }
