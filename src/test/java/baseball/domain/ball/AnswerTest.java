@@ -18,7 +18,7 @@ final class AnswerTest {
         final Triple<BallNumber> tripleBallNumbers =
                 createTripleBallNumbers(1, 2, 3);
 
-        NumberPicker numberPicker =
+        final NumberPicker numberPicker =
                 new TripleNumberPicker(1, 2, 3);
 
         final AnswerCreator answerCreator = new AnswerCreator(numberPicker);
