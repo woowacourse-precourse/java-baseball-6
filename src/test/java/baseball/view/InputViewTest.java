@@ -22,6 +22,13 @@ public class InputViewTest {
     }
 
     @Test
+    void 게임_재시작_입력_테스트() {
+        userInput("1");
+        int userNumbers = InputView.getRestart();
+        assertThat(userNumbers).isEqualTo(1);
+    }
+
+    @Test
     void 문자_포함_예외_테스트() {
         userInput("a34");
 
