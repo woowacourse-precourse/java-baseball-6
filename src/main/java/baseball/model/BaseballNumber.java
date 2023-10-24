@@ -19,7 +19,7 @@ public class BaseballNumber {
             BallNumber computerBallNumber = baseballNumberList.get(i);
             BallNumber userBallNumber = userBallNumberList.get(i);
 
-            if (computerBallNumber.getValue() == userBallNumber.getValue()) {
+            if (computerBallNumber.equals(userBallNumber)) {
                 strike++;
             } else if (baseballNumberList.contains(userBallNumber)) {
                 ball++;

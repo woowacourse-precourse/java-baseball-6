@@ -12,10 +12,6 @@ public class BallNumber {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -24,7 +20,7 @@ public class BallNumber {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        return value == ((BallNumber) obj).getValue();
+        return value == ((BallNumber) obj).value;
     }
 
     @Override
