@@ -2,21 +2,30 @@ package baseball.service.hint;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.Nothing;
+import baseball.domain.hint.Ball;
+import baseball.domain.hint.HintItem;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class NothingHintServiceImpl implements HintItemService<Nothing> {
+public class NothingHintServiceImpl implements HintItemService {
 
     private static final NothingHintServiceImpl nothingService = new NothingHintServiceImpl();
 
-    public static NothingHintServiceImpl getInstance(){
+    public static NothingHintServiceImpl getInstance() {
         return nothingService;
     }
 
     private NothingHintServiceImpl() {
 
+    }
+
+    @Override
+    public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
+        int count = count(computerBaseball, inputBaseball);
+        HintItem nothing = new Ball(count);
+
+        return nothing;
     }
 
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
@@ -34,12 +43,5 @@ public class NothingHintServiceImpl implements HintItemService<Nothing> {
 
         return count;
     }
-
-    public boolean active(Nothing nothing) {
-        if (nothing.getCount() == 0 ) {
-            return true;
-        } return false;
-    }
-
 }
 

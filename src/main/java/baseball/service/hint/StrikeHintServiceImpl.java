@@ -2,6 +2,7 @@ package baseball.service.hint;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
+import baseball.domain.hint.Ball;
 import baseball.domain.hint.HintItem;
 import baseball.domain.hint.Strike;
 import baseball.util.ObjectUtil;
@@ -22,7 +23,10 @@ public class StrikeHintServiceImpl implements HintItemService {
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
-        return null;
+        int count = count(computerBaseball, inputBaseball);
+        HintItem strike = new Ball(count);
+
+        return strike;
     }
 
     @Override
