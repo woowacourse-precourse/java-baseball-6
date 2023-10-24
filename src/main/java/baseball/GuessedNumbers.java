@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GuessedNumbers {
@@ -9,6 +10,10 @@ public class GuessedNumbers {
     public GuessedNumbers(List<Integer> numbers, BaseballGameRules gameRules) {
         validateNumbers(numbers, gameRules);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 
     private void validateNumbers(List<Integer> numbers, BaseballGameRules gameRules) {

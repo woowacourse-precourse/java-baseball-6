@@ -20,7 +20,24 @@ public class NumberBaseballGame {
         NumberBaseballGameComputerPlayer computerPlayer =
                 new NumberBaseballGameComputerPlayer(numberGenerator.generateUniqueNumbers(), gameRules);
 
-        GuessedNumbers guessedNumbers = createGuessedNumbers();
+        boolean isGameRunning = true;
+        while (isGameRunning) {
+            GuessedNumbers guessedNumbers = createGuessedNumbers();
+
+            NumberBaseballGameResult result = compareNumbers(computerPlayer, guessedNumbers);
+            userIo.print(result.toString() + "\n");
+
+            if (result.isAllStrike()) {
+                isGameRunning = false;
+            }
+        }
+
+        userIo.print(computerPlayer.getNumbersSize() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private NumberBaseballGameResult compareNumbers(NumberBaseballGameComputerPlayer computerPlayer,
+            GuessedNumbers guessedNumbers) {
+        return computerPlayer.compareWith(guessedNumbers.getNumbers());
     }
 
     private GuessedNumbers createGuessedNumbers() {
