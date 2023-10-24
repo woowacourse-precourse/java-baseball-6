@@ -1,7 +1,7 @@
 package baseball.domain.player;
 
 import baseball.domain.judgement.GameState;
-import baseball.domain.judgement.Judgement;
+import baseball.domain.judgement.BaseballJudgement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ComputerJudgementTest {
-        private Judgement judgement;
+        private BaseballJudgement judgement;
 
         @BeforeEach
         void init() {

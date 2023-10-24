@@ -1,6 +1,6 @@
 package baseball.domain.game;
 
-import baseball.domain.judgement.Judgement;
+import baseball.domain.judgement.BaseballJudgement;
 import baseball.domain.player.BaseballPlayer;
 import baseball.domain.player.Computer;
 import baseball.mock.FakePlayer;
@@ -18,9 +18,9 @@ class BaseballGameTest {
 
         @BeforeEach
         void init() {
-                Judgement judgement = new Computer();
-                BaseballPlayer playerA = new FakePlayer(ContinueAnswer.YES, "123");
-                BaseballPlayer playerB = new FakePlayer(ContinueAnswer.NO, "123");
+                BaseballJudgement judgement = new Computer();
+                BaseballPlayer playerA = new FakePlayer(RetryAnswer.YES, "123");
+                BaseballPlayer playerB = new FakePlayer(RetryAnswer.NO, "123");
                 baseballGame = new BaseballGame(judgement, playerA, playerB);
         }
 
@@ -47,9 +47,9 @@ class BaseballGameTest {
         @DisplayName("성공: 3 스트라이크 였을 때 게임을 1번 다시 하는 경우")
         void call_start_and_1_retry() {
                 //given
-                Judgement judgement = new Computer();
-                BaseballPlayer playerA = new FakePlayer(ContinueAnswer.YES, "123");
-                BaseballPlayer playerB = new FakePlayer(ContinueAnswer.YES, "123");
+                BaseballJudgement judgement = new Computer();
+                BaseballPlayer playerA = new FakePlayer(RetryAnswer.YES, "123");
+                BaseballPlayer playerB = new FakePlayer(RetryAnswer.YES, "123");
                 baseballGame = new BaseballGame(judgement, playerA, playerB);
 
                 OutputStream out = new ByteArrayOutputStream();

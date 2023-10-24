@@ -1,6 +1,6 @@
 package baseball.domain.player;
 
-import baseball.domain.game.ContinueAnswer;
+import baseball.domain.game.RetryAnswer;
 import baseball.mock.FakeGameConsoleReader;
 import baseball.util.GameConsole;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +23,7 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 //when
-                String result = baseballPlayer.submitThreeNumber(LIMIT_NUMBER);
+                String result = baseballPlayer.provideLimitedNumber(LIMIT_NUMBER);
 
                 //then
                 assertThat(number).isEqualTo(result);
@@ -37,7 +37,7 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 // then
-                assertThatThrownBy(() -> baseballPlayer.submitThreeNumber(LIMIT_NUMBER))
+                assertThatThrownBy(() -> baseballPlayer.provideLimitedNumber(LIMIT_NUMBER))
                         .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -49,7 +49,7 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 // then
-                assertThatThrownBy(() -> baseballPlayer.submitThreeNumber(LIMIT_NUMBER))
+                assertThatThrownBy(() -> baseballPlayer.provideLimitedNumber(LIMIT_NUMBER))
                         .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -61,7 +61,7 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 // then
-                assertThatThrownBy(() -> baseballPlayer.submitThreeNumber(LIMIT_NUMBER))
+                assertThatThrownBy(() -> baseballPlayer.provideLimitedNumber(LIMIT_NUMBER))
                         .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -74,10 +74,10 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 //when
-                ContinueAnswer continueAnswer = baseballPlayer.responseContinuePlay();
+                RetryAnswer continueAnswer = baseballPlayer.responseRetryPlay();
 
                 //then
-                assertThat(continueAnswer).isEqualTo(ContinueAnswer.YES);
+                assertThat(continueAnswer).isEqualTo(RetryAnswer.YES);
         }
 
         @Test
@@ -89,10 +89,10 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 //when
-                ContinueAnswer continueAnswer = baseballPlayer.responseContinuePlay();
+                RetryAnswer continueAnswer = baseballPlayer.responseRetryPlay();
 
                 //then
-                assertThat(continueAnswer).isEqualTo(ContinueAnswer.NO);
+                assertThat(continueAnswer).isEqualTo(RetryAnswer.NO);
         }
 
         @Test
@@ -104,7 +104,7 @@ class BaseballGameParticipantTest {
                 baseballPlayer = new BaseballGameParticipant(gameConsole);
 
                 //then
-                assertThatThrownBy(() -> baseballPlayer.responseContinuePlay())
+                assertThatThrownBy(() -> baseballPlayer.responseRetryPlay())
                         .isInstanceOf(IllegalArgumentException.class);
         }
 }
