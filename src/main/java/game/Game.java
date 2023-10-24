@@ -45,8 +45,8 @@ public class Game{
 //랜덤값 추출
     private List<Integer> getRandomNum(){
         List<Integer> randomNumber = new ArrayList<>();
-        while (randomNumber.size() < 3) {
-            int Num = Randoms.pickNumberInRange(1, 9);
+        while (randomNumber.size() < NUM_DIGITS) {
+            int Num = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
             if (!randomNumber.contains(Num)) {
                 randomNumber.add(Num);
             }
