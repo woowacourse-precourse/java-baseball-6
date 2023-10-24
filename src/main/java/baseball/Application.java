@@ -30,9 +30,7 @@ public class Application {
                 int ball = 0;
                 int strike = 0;
                 for (int m = 0; m < user.size(); m++) {
-                    if (user.get(m) == map.get(user.get(m))) {
-                        strike++;
-                    }
+                    strike = strikeJudge(map, user, m, strike);
                     if(user.get(m) != map.get(user.get(m)) && map.containsKey(user.get(m)) == true) {
                         ball++;
                     }
@@ -64,7 +62,12 @@ public class Application {
         }
         return true;
     }
-
+    public static int strikeJudge(HashMap<Integer, Integer> map, List<Integer> user, int m, int strike){
+        if (user.get(m) == map.get(user.get(m))) {
+            strike++;
+        }
+        return strike;
+    }
     public static void computerUserComparisonList(HashMap<Integer, Integer> map, List<Integer> user, List<Integer> computer){
         for (int k = 0; k < user.size(); k++) {
             map.put(computer.get(k), user.get(k));
