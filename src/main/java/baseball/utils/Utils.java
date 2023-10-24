@@ -41,4 +41,18 @@ public class Utils {
         }
     }
 
+    // 볼 개수를 반환하는 메소드
+    public int checkBallCnt(String answerNumber, String inputValue) {
+        int result = 0;
+
+        for (int idx=0; idx<answerNumber.length(); idx++) {
+            char charAtIdx = inputValue.charAt(idx);
+            if (answerNumber.charAt(idx) != charAtIdx && answerNumber.contains(Character.toString(charAtIdx))) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
 }
