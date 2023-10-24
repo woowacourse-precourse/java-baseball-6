@@ -24,7 +24,7 @@
 5. 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 6. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 
-## ✏️ 필요기능 
+## 🚨️  필요기능 
 1. 사용자가 숫자를 입력하는 기능
 2. 입력받은 숫자를 검증하는 기능
 3. 사용자의 숫자를 저장하는 기능
@@ -33,7 +33,7 @@
 6. 사용자의 숫자와 상대방의 숫자를 비교하며 결과를 확인하는 기능
 7. 정답을 맞추면 재시작 또는 종료하는 기능
 
-## ✏️ 필요기능 구현
+## 📮 필요기능 구현
 ### 프로그램 구현  
 #### 검색 도움 없이 제가 구현할 수 있는 방법으로 구현을 해 보았습니다. 
 
@@ -194,6 +194,187 @@
  * 입력받은 값이 1 또는 2 두 숫자이기 때문에 검증하기 위해 if(input.equals("1")), else if(input.equals("2")) 조건을 주었고 그외 입력받은 값은 IllegalArgumentException 예외를 발생하여 검증하였습니다.  
  * 입력받은 값이 1이면 재시작이기 때문에 computer.clear()을 활용하여 상대방(컴퓨터)의 List를 초기화 하고, 값을 다시 설정한 후 true를 반환하여 재시작하도록 하였습니다.
  * 입력받은 값이 2이면 false를 반환하여 while()을 중지시켜 게임을 종료하도록 하였습니다. 
-  
+
+## ✏️  리펙터링 
+#### 객체지향적인 코드와 검색의 도움을 받아 간결하고 읽기 좋은 코드로 리펙터링하여 학습해보자.
+````
+   public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        Computer computer = new Computer();                             <=== 1
+        User user = new User();                                         <=== 2
+        baseballGame baseballGame = new baseballGame(user,computer);    <=== 3
+
+        while (baseballGame.gameStart());
+    }
+````
+### 1. Computer
+````
+ static class Computer{
+        private  List<Integer> numbers;
+        
+        public Computer() {
+            this.numbers = new ArrayList<>();
+            while (numbers.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!numbers.contains(randomNumber)) {
+                    numbers.add(randomNumber);
+                }
+            }
+        }
+
+        public List<Integer> getNumbers() {
+            return numbers;
+        }
+
+        public void reset(){
+            this.numbers.clear();
+            while (numbers.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!numbers.contains(randomNumber)) {
+                    numbers.add(randomNumber);
+                }
+            }
+        }
+
+
+    }
+````
+* computer() 메서드를 Computer 클래스로 변경하였습니다.
+* Computer 클래스의 인스턴스변수는 List< Integer > numbers는 상대방(컴퓨터)의 값을 관리합니다.
+* Computer() 생성자를 활용하여 Computer 클래스의 인스턴스가 생성될 때 중복되지 않는 랜덤한 3가지 수가 인스턴스 변수 numbers에 추가됩니다.
+* getNumbers() 메서드를 호출하면 상대방(컴퓨터)의 숫자를 가져 올 수 있습니다.
+* reset() 메서드를 호출하면 상대방(컴퓨터)의 숫자를 초기화하고 다른 값으로 저장합니다.
+### 2. User
+````
+static class User {
+        private  List<Integer> numbers;
+        private  List<Integer> numberInRange;
+
+        public User() {
+            this.numbers = new ArrayList<>();
+            this.numberInRange = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        }
+
+        public List<Integer> getNumbers() {
+            return numbers;
+        }
+
+        public void reset(){
+            this.numbers.clear();
+        }
+
+        public void inputNumber(){
+            reset();
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+
+            try {
+                // 3자리  검증
+                if(!(3 == input.length())){
+                    throw new IllegalArgumentException("잘못 입력하셨습니다. 3자리 수를 입력하세요.");
+                }
+                
+                // 1~9사이의 숫자 검증
+                for (int i = 0 ; i < input.length() ; i++){
+
+                    int inputNumber = Integer.parseInt(String.valueOf(input.charAt(i)));
+
+                    if(numberInRange.contains(inputNumber)){
+                        numbers.add(inputNumber);
+                    }else {
+                        throw new IllegalArgumentException("잘못 입력하셨습니다. 1~9사이의 숫자를 입력하세요.");
+                    }
+                }
+                
+                // 중복검증
+                if(numbers.size() != numbers.stream().distinct().count()){
+                    throw new IllegalArgumentException("잘못 입력하셨습니다. 숫자를 중복없이 입력하세요.");
+                }
+
+            } catch (NumberFormatException e){
+               throw  new IllegalArgumentException("잘못 입력하셨습니다. 1~9사이의 숫자를 입력하세요.");
+            } catch (IllegalArgumentException e){
+               throw  new IllegalArgumentException(e.getMessage());
+            }
+        }
+    }
+````
+* user() 메서드를 User 클래스로 변경하였습니다.
+* User 클래스의 인스턴수 변수 List< Integer > numbers는 사용자의 값을 관리하고, List<Integer> numberInRange는 사용자의 값의 유효 범위를 관리합니다.
+* User() 생성자를 활용하여 User 클래스의 인스턴스가 생성될 때  인스턴스 변수 numberInRange에 1~9의 범위를 설정합니다.
+* getNumbers() 메서드를 호출하면 사용자의 숫자를 가져 올 수 있습니다.
+* reset() 메서드를 호출하면 사용자의 숫자를 초기화 할 수 있습니다.
+* inputNumber() 메서드를 호츨하면 가장먼저 reset()을 호출하여 인스턴스 변수  numbers를 초기화합니다. 그렇지 않으면 사용자가 입력한 값이 계속 저장 되기 때문에 3자리의 숫자를 초과하여 정확한 비교가 어렵기 떄문입니다.
+* 입력받은 값을 검증하기 위해 try-catch를 사용하였고 Integer.parseInt()의 파싱 과정중 NumberFormatException이 발생하면 catch에서 IllegalArgumentException으로 예외를 처리하여 가독성을 높였습니다.
+* numbers.stream().distinct().count()를 활요하여 중복을 제거하고 제거된 값의 길이와 numbers의 길이를 비교하여 같지 않으면 중복이 있다고 판단하여 검증하였습니다.
+### 3. BaseballGame
+````
+static class BaseballGame{
+        private User user;
+        private Computer computer;
+
+        public BaseballGame(User user, Computer computer) {
+            this.user = user;
+            this.computer = computer;
+        }
+
+        public boolean gameStart(){
+            int strike = 0;
+            int ball = 0;
+            String message = "";
+
+            user.inputNumber();
+
+            for (int i = 0 ; i <  user.getNumbers().size(); i++){
+                if( i == computer.getNumbers().indexOf(user.getNumbers().get(i))){
+                    strike++;
+                    continue;
+                }
+
+                if(computer.getNumbers().contains(user.getNumbers().get(i))){
+                    ball++;
+                }
+            }
+
+            if(strike == 0 && ball == 0){
+                System.out.println("낫싱");
+                return true;
+            }
+
+            if(strike==3){
+                System.out.println(strike+"스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String input = Console.readLine();
+
+                if(input.equals("1")){
+                    computer.reset();
+                    return true;
+                }else if(input.equals("2")){
+                    return false;
+                }else {
+                    throw new IllegalArgumentException("잘못 입력하셨습니다.");
+                }
+            }else {
+                if(ball!=0){
+                    message += ball+"볼 ";
+                }
+                if(strike!=0){
+                    message += strike+"스트라이크";
+                }
+                System.out.println(message);
+                return true;
+            }
+        }
+    }
+````
+* gameStart() 메서드를 BaseballGame 클래스로 변경하였습니다.
+* BaseballGame(User user, Computer computer) 생성자를 활용하여 필수 파라미터 User, Computer를 받아 인스턴스 변수에 할당하였습니다.
+* gameStart() 메서드를 호출하여 게임을 진행 할 수있습니다.
+* gameStart() 메서드는 지역변수 strike, ball, message를 가지며, 최초에 user.inputNumber()를 호출하여 사용자에게 값을 입력하도록 합니다.
+* 입력받은 값은 User 객체의 inputNumber()에서 검증을 하도록 관심사를 분리하였습니다.
+* 사용자와 상대방(컴퓨터)의 값을 비교하기 위해 computer.getNumbers().indexOf(user.getNumbers().get(i))를 활용하여 사용자의 user.getNumbers().get(i)의 값이 상대방의 값에 존재하면 그 값의 index 번호를 반환하고 반환한 index 번호와 i가 같으면 같은 위치에 같은 값이 존재하기 때문에 strike의 카운터를 증가시킵니다. 만약 값이 존재하지 않으면 -1을 반환합니다.
+* while(baseballGame.gameStart())으로 변경하여  gameStart()메서드가 false가 될때까지 반복되고 false의 조건은 게임을 완료하고 게임종료 버튼인 2의값을 입력하면 게임이 종료됩니다.
+* 게임을 완료한 후 1의 값을 입력하면 computer.reset()을 호출하여 computer의 값을 초기화하고 게임을 재시작 하도록 true값을 반환합니다.
 
 
