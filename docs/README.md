@@ -27,3 +27,8 @@
 * `BaseBallGame`
     * [x] : Application 에게 정답 공의 숫자를 생성하라는 메시지를 받으면 게임을 시작해 정답 공의 숫자들을 가져온다.
     * [x] : Application 에게 게임 결과를 알려달라는 메시지를 받으면 게임 결과를 가져온다.
+
+* `Application`
+    * [] : 야구 게임을 실행한다.
+        * [x] : Console 작동을 위한 ConsoleService 구현체인 DefaultConsoleService 생성
+        * [x] : Randoms 작동을 위한 RandomService 구현체인 DefaultRandomService 생성
