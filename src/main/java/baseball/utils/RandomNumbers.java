@@ -1,7 +1,7 @@
-package baseball;
+package baseball.utils;
 
-import static baseball.InputRange.END_RANDOM_RANGE;
-import static baseball.InputRange.START_RANDOM_RANGE;
+import static baseball.domain.utils.InputRange.END_RANDOM_RANGE;
+import static baseball.domain.utils.InputRange.START_RANDOM_RANGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

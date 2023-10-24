@@ -1,8 +1,9 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.InputRange.MAX_INPUT_RANGE;
-import static baseball.InputRange.MIN_INPUT_RANGE;
+import static baseball.domain.utils.InputRange.MAX_INPUT_RANGE;
+import static baseball.domain.utils.InputRange.MIN_INPUT_RANGE;
 
+import baseball.utils.RandomNumbers;
 import java.util.stream.IntStream;
 
 public class Pitch {

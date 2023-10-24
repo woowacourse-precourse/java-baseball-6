@@ -1,7 +1,10 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.Pitch.MAX_STRIKE;
+import static baseball.domain.Pitch.MAX_STRIKE;
 
+import baseball.domain.utils.GameOption;
+import baseball.domain.utils.InputRange;
+import baseball.utils.RandomNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
