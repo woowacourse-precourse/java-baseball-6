@@ -8,8 +8,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class GetResultApplication {
     boolean isContinue;
     boolean isCorrect;
-    private BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
-    private GenerateNumbersApplication generateAnswerController = new GenerateNumbersApplication();
+    private static final BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
+    private static final GenerateNumbersApplication generateAnswerController = new GenerateNumbersApplication();
+
     public GetResultApplication() {
     }
 
@@ -34,7 +35,7 @@ public class GetResultApplication {
     }
 
     private boolean getUserContinue() {
-        int val = Console.readLine().charAt(0)-'0';
+        int val = Console.readLine().charAt(0) - '0';
         boolean result = false;
         switch (val) {
             case 1:
@@ -48,19 +49,20 @@ public class GetResultApplication {
     }
 
     private boolean isCorrectNumbers(Integer countBall, Integer countStrike) {
-        if (countBall == 0 && countStrike == 0)
+        if (countBall == 0 && countStrike == 0) {
             System.out.println("낫싱");
-        else {
-            if (countBall != 0){
-                System.out.print(countBall +"볼 ");
+        } else {
+            if (countBall != 0) {
+                System.out.print(countBall + "볼 ");
             }
-            if (countStrike != 0)
-                System.out.println(countStrike +"스트라이크");
-            else System.out.println();
+            if (countStrike != 0) {
+                System.out.println(countStrike + "스트라이크");
+            } else {
+                System.out.println();
+            }
         }
 
-        if (countStrike == 3) return true;
-        else return false;
+        return countStrike == 3;
     }
 
 }

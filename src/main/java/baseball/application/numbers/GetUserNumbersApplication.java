@@ -4,7 +4,7 @@ import baseball.domain.UserNumberRepository;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GetUserNumbersApplication {
-    private static UserNumberRepository userNumberRepository = UserNumberRepository.getInstance();
+    private static final UserNumberRepository userNumberRepository = UserNumberRepository.getInstance();
 
     public GetUserNumbersApplication() {
         getNumbers();
@@ -16,16 +16,12 @@ public class GetUserNumbersApplication {
         if (snum.length() != 3) {
             throw new IllegalArgumentException();
         }
-        for (int i = 0 ; i < 3 ; i++) {
+        for (int i = 0; i < 3; i++) {
 
-            if (snum.charAt(i) < '1' || snum.charAt(i) > '9'){
+            if (snum.charAt(i) < '1' || snum.charAt(i) > '9') {
                 throw new IllegalArgumentException();
             }
-            userNumberRepository.addValue(snum.charAt(i)-'0');
+            userNumberRepository.addValue(snum.charAt(i) - '0');
         }
-    }
-
-    public void initilizeNumbers() {
-        userNumberRepository.clear();
     }
 }

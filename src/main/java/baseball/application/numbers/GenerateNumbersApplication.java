@@ -4,16 +4,16 @@ import baseball.domain.AnswerNumberRepository;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GenerateNumbersApplication {
-    private static AnswerNumberRepository answerNumberRepository = AnswerNumberRepository.getInstance();
+    private static final AnswerNumberRepository answerNumberRepository = AnswerNumberRepository.getInstance();
 
     public GenerateNumbersApplication() {
         generateNumbers();
     }
 
     public void generateNumbers() {
-        while (answerNumberRepository.size() < 3){
+        while (answerNumberRepository.size() < 3) {
             int pickNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerNumberRepository.contain(pickNumber)){
+            if (!answerNumberRepository.contain(pickNumber)) {
                 answerNumberRepository.addValue(pickNumber);
             }
         }

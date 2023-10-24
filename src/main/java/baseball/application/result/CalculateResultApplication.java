@@ -1,13 +1,14 @@
 package baseball.application.result;
 
-import baseball.domain.*;
+import baseball.domain.AnswerNumberRepository;
+import baseball.domain.BaseballResultRepository;
+import baseball.domain.UserNumberRepository;
 
 public class CalculateResultApplication {
 
-    private static BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
-    private AnswerNumberRepository answerNumberRepository = AnswerNumberRepository.getInstance();
-    private UserNumberRepository userNumberRepository = UserNumberRepository.getInstance();
-
+    private static final BaseballResultRepository baseballResultRepository = BaseballResultRepository.getInstance();
+    private static final AnswerNumberRepository answerNumberRepository = AnswerNumberRepository.getInstance();
+    private static final UserNumberRepository userNumberRepository = UserNumberRepository.getInstance();
 
 
     public CalculateResultApplication() {
