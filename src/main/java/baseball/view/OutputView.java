@@ -23,11 +23,11 @@ public class OutputView {
             System.out.println("낫싱");
             return;
         }
-        if (isOnlyBall(countOfStrike)) {
+        if (isCountOfStrikeZero(countOfStrike)) {
             System.out.println(countOfBall + "볼");
             return;
         }
-        if (isOnlyStrike(countOfBall)) {
+        if (isCountOfBallZero(countOfBall)) {
             System.out.println(countOfStrike + "스트라이크");
             return;
         }
@@ -35,14 +35,14 @@ public class OutputView {
     }
 
     private static boolean isNothing(int countOfBall, int countOfStrike) {
-        return (countOfBall == 0) && (countOfStrike == 0);
+        return isCountOfStrikeZero(countOfStrike) && isCountOfBallZero(countOfBall);
     }
 
-    private static boolean isOnlyBall(int countOfStrike) {
+    private static boolean isCountOfStrikeZero(int countOfStrike) {
         return countOfStrike == 0;
     }
 
-    private static boolean isOnlyStrike(int countOfBall) {
+    private static boolean isCountOfBallZero(int countOfBall) {
         return countOfBall == 0;
     }
 
