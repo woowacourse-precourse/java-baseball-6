@@ -35,6 +35,24 @@
 ### ✅ 과제 진행 요구사항
 - [x] java-baseball-6 저장소를 Fork & Clone
 - [x] docs/README.md에 구현할 기능 목록을 정리해 추가
-- [ ] 완료 후 Pull Request 생성
-- [ ] 우아한테크코스 지원 플랫폼에 소감 작성 후 제출
-- [ ] 제출한 후 결과 확인, 통과하지 못했다면 수정해 재제출
+- [x] 완료 후 Pull Request 생성
+- [x] 우아한테크코스 지원 플랫폼에 소감 작성 후 제출
+- [x] 제출한 후 결과 확인, 통과하지 못했다면 수정해 재제출
+
+### ✅ 추가 학습 목표
+- [x] Google Java Style Guide 정독 및 적용 
+- [x] MVC 패턴 학습 및 적용
+```text
+├─ controller
+│  └─ GameController
+├─ model
+│  └─ Game
+├─ service
+│  ├─ GameService [게임 전체 흐름 주요 로직]
+│  └─ HintService [게임 중 힌트 관련 주요 로직]
+├─ view
+│  ├─ StartView [게임 시작시 문구 출력]
+│  ├─ HintView [게임 진행중 힌트 출력]
+│  └─ EndView [게임 종료시 문구 출력]
+└─ Application
+```
