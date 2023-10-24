@@ -23,4 +23,10 @@ public class PlayerInputNumber {
         }
         return playerNum;
     }
+
+    public static String restartOrEnd(){
+        OutputView.printRestartMessage();
+
+        return Console.readLine();
+    }
 }
