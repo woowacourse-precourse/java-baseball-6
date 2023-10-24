@@ -20,7 +20,8 @@ public class ShootBall {
         int input_num;
         for(int i=0;i<3;i++){
             input_num = input.charAt(i) - '0';
-            numbers[input_num]= i+1;
+            //단순히 1,2,3,으로 하면 1,2,가 됐을때 and연산을 해도 0이 된다.
+            numbers[input_num]= (i+1)*2+1;
         }
     }
 
@@ -30,7 +31,9 @@ public class ShootBall {
         for(int i=1; i<=3;i++) {
             randNum = Randoms.pickNumberInRange(1, 9);
             numbers[randNum] = i;
+            //System.out.print(randNum);
         }
+        System.out.print('\n');
     }
 
 
