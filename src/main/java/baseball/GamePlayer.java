@@ -22,7 +22,7 @@ public class GamePlayer {
         private void makeAnotherSuggestion(List<Integer> computer) {
                 while (!gameState.isGameSucceedState()) {
                         GameScore gameScore = new GameScore(gameNumber.modifyNumberSuggestion(Input.makeNumberSuggestion()), computer);
-                        Output.drawOutResult(gameScore.calculateBall(), gameScore.calculateStrike());
+                        Output.notifyGameScore(gameScore.calculateBall(), gameScore.calculateStrike());
                         gameState.checkGameSuccess(gameScore.calculateStrike());
                 }
         }

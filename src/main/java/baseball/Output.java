@@ -9,7 +9,7 @@ public class Output {
         return PROGRESS_STATE;
     }
 
-    public static void drawOutResult(int ball, int strike) {
+    public static void notifyGameScore(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
