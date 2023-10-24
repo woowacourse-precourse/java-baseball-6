@@ -8,7 +8,6 @@ import java.util.Map;
  */
 public class BallCounter {
 
-
     private static final int INITIAL_COUNT = 0;
     private static final int INCREMENT_COUNT = 1;
 
