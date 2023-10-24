@@ -1,4 +1,4 @@
-package baseball;
+package baseball.menu;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -23,5 +23,9 @@ public enum Menu {
 
     private boolean isMatching(String menuInput) {
         return Objects.equals(menuCode, menuInput);
+    }
+
+    public boolean isRunning() {
+        return this != TERMINATE;
     }
 }

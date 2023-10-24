@@ -1,5 +1,8 @@
-package baseball;
+package baseball.menu;
 
+import baseball.computer.Computer;
+import baseball.utils.Count;
+import baseball.utils.Communicator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -35,16 +38,15 @@ public class MenuHandler {
         boolean runningFlag = true;
         while (runningFlag) {
             Menu menu = Communicator.instructMenu();
-            runningFlag = switch (menu) {
-                case START -> {
-                    runGame();
-                    yield true;
-                }
-                case TERMINATE -> {
-                    Communicator.printTerminate();
-                    yield false;
-                }
-            };
+            executeMenu(menu);
+            runningFlag = menu.isRunning();
+        }
+    }
+
+    private void executeMenu(Menu menu) {
+        switch (menu) {
+            case START -> runGame();
+            case TERMINATE -> Communicator.printTerminate();
         }
     }
 

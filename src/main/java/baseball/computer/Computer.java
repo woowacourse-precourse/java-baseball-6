@@ -1,5 +1,6 @@
-package baseball;
+package baseball.computer;
 
+import baseball.utils.Count;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,10 +43,10 @@ public class Computer {
                 ballCount++;
             }
         }
-        
+
         counts.put(Count.STRIKE, strikeCount);
         counts.put(Count.BALL, ballCount);
-        
+
         return counts;
     }
 }
