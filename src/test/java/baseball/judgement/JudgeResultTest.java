@@ -1,5 +1,6 @@
 package baseball.judgement;
 
+import baseball.computer.judgement.JudgeResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

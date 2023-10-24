@@ -1,4 +1,4 @@
-package baseball.judgement;
+package baseball.computer.judgement;
 
 import java.util.Objects;
 
