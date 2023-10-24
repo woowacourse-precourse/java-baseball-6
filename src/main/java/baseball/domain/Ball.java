@@ -3,10 +3,10 @@ package baseball.domain;
 import java.util.List;
 
 public class Ball {
-    private List<Integer> numbers;
+    private List<Integer> threeNumbers;
 
-    public Ball(List<Integer> numbers) {
-        this.numbers = numbers;
+    public Ball(List<Integer> threeNumbers) {
+        this.threeNumbers = threeNumbers;
     }
 }
 
