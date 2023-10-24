@@ -19,14 +19,17 @@ public class BaseballGame {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        // 게임 재시작 시 컴퓨터 숫자와 플레이어 입력값, 상태값 모두 초기화
-        if (Player.gamePlayOrNot()) {
-            player.resetPlayerNumber();
-            computer.resetState();
-            computer.resetComputerNumber();
-            BaseballGame.start();
+
+        String playersChoice = Player.gamePlayOrNot();
+        if (playersChoice.equals(Validation.WRONG_INPUT_EXCEPTION)) {
+            return;
         }
-        System.out.println("게임을 종료합니다.");
-        return;
+        if (playersChoice.equals(Player.GAME_END)) {
+            return;
+        }
+        player.resetPlayerNumber();
+        computer.resetState();
+        computer.resetComputerNumber();
+        BaseballGame.start();
     }
 }
