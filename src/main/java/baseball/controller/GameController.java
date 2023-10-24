@@ -44,7 +44,7 @@ public class GameController {
         startView.displayStartMessage();
 
         NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
-        System.out.println(computerBaseball.getValues());
+        //System.out.println(computerBaseball.getValues());
         gameService.playOneGame(inputView, hintView, endView, restartView, hintService, computerBaseball);
     }
 
