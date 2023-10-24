@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerPlayer {
-    private List<Integer> computer = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
 
     public ComputerPlayer() {
         generateNumbers();
     }
 
     public void generateNumbers() {
-        while(computer.size() < Constants.numDigit) {
+        while(numbers.size() < Constants.maxNumDigit) {
             int randomNumber = Randoms.pickNumberInRange(Constants.startNum, Constants.lastNum);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
     }
 
     public List<Integer> getComputerNumber() {
-        return computer;
+        return numbers;
     }
 }

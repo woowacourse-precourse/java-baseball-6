@@ -1,45 +1,39 @@
 package baseball.player;
 
-import static baseball.common.Constants.numDigit;
-
-import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import baseball.common.Constants;
+import baseball.common.ErrorConstants;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserPlayer {
 
-    static final String USER_INVALID_INPUT_ERROR = "입력 값이 유효하지 않습니다.";
-    static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    static HashSet<Integer> user;
+    private List<Integer> numbers = new ArrayList<>();
 
-    public void input() {
-        System.out.printf(USER_INPUT_MESSAGE);
-        String number = Console.readLine();
-        user = new LinkedHashSet<>();
-        for(int i = 0; i < number.length(); i++) {
-            user.add(number.charAt(i) - '0');
-        }
+    public void updateUserNumbers(List<Integer> inputNumbers) {
+        verify(inputNumbers);
 
-        validate();
+        this.numbers = inputNumbers;
     }
 
-    private void validate() {
-        if(user.size() > numDigit) {
-            throw new IllegalArgumentException(USER_INVALID_INPUT_ERROR);
+    public void verify(List<Integer> inputNumbers) {
+        if(inputNumbers.size() < Constants.minNumDigit) {
+            throw new IllegalArgumentException(ErrorConstants.NO_INPUT_NUMBER_ERROR);
         }
 
-        if(user.contains(0)) {
-            throw new IllegalArgumentException(USER_INVALID_INPUT_ERROR);
+        if(inputNumbers.size() > Constants.maxNumDigit) {
+            throw new IllegalArgumentException(ErrorConstants.EXCEEDS_THREE_DIGITS_ERROR);
+        }
+
+        if(inputNumbers.stream().distinct().toList().size() != inputNumbers.size()) {
+            throw new IllegalArgumentException(ErrorConstants.DUPLICATE_NUMBER_ERROR);
+        }
+
+        if(inputNumbers.contains(Constants.invalidNum)) {
+            throw new IllegalArgumentException(ErrorConstants.INVALID_NUMBER_ERROR);
         }
     }
 
-    private void clear() {
-        this.user.clear();
-    }
-
-    public List<Integer> getUserNumber() {
-        return user.stream().collect(Collectors.toList());
+    public List<Integer> getUserNumbers(){
+        return numbers;
     }
 }
