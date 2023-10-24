@@ -6,22 +6,17 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class OutputManager {
-    private Properties commonMessage;
+//    private Properties commonMessage;
+//
+//    public OutputManager() throws IOException {
+//        InputStream commonMessageProperties = this.getClass().getResourceAsStream("/commonMessage.properties");
+//
+//        this.commonMessage = new Properties();
+//        this.commonMessage.load(commonMessageProperties);
+//    }
 
-    public OutputManager() throws IOException {
-        InputStream commonMessageProperties = this.getClass().getResourceAsStream("/commonMessage.properties");
-
-        this.commonMessage = new Properties();
-        this.commonMessage.load(commonMessageProperties);
-    }
-
-    public void printMessage(String messageCommand) {
-        if(messageCommand.equals("game.input")) {
-            System.out.print(commonMessage.getProperty(messageCommand));
-            System.out.println();
-        } else {
-            System.out.println(commonMessage.getProperty(messageCommand));
-        }
+    public void printMessage(CommonMessage commonMessage) {
+        System.out.println(commonMessage.getText());
     }
 
     public void printHint(char[] hintArr) {

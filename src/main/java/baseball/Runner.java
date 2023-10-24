@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.game.GameManager;
+import baseball.io.CommonMessage;
 import baseball.io.InputManager;
 import baseball.io.OutputManager;
 import camp.nextstep.edu.missionutils.Console;
@@ -29,13 +30,13 @@ public class Runner {
             }
             Console.close();
         } catch (IllegalArgumentException e) {
-            outputManager.printMessage("game.end.error");
+            outputManager.printMessage(CommonMessage.GAME_END_ERROR);
             throw  e;
         }
     }
 
     public boolean isReStart() throws IOException {
-        outputManager.printMessage("game.restart");
+        outputManager.printMessage(CommonMessage.GAME_RESTART);
         String gameInput =  inputManager.readRestartInput();
 
         return gameManager.isReStart(gameInput);
@@ -50,16 +51,16 @@ public class Runner {
             isAnswer = isAnswer(gameInput);
         }
 
-        outputManager.printMessage("game.end");
+        outputManager.printMessage(CommonMessage.GAME_END);
     }
 
     public void startGame() {
-        outputManager.printMessage("game.start");
+        outputManager.printMessage(CommonMessage.GAME_START);
         gameManager.initGameAnswer();
     }
 
     public String readGameInput() throws IOException {
-        outputManager.printMessage("game.input");
+        outputManager.printMessage(CommonMessage.GAME_INPUT);
         String gameInput = inputManager.readGameInput();
 
         return gameInput;
