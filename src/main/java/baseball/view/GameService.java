@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class GameService {
     Computer computer = new Computer();
     String userInput;
+    boolean finishFlag = false;
 
     public void generateNdigitAnswer(int n) {
         for (int i = 0; i < n; i++) {
@@ -87,6 +88,10 @@ public class GameService {
         int ball = countBall(userInput, computer.getAnswer());
         int strike = countStrike(userInput, computer.getAnswer());
 
+        if (strike == 3) {
+            finishFlag = true;
+        }
+
         if (ball > 0 && strike > 0) {
             return ball + "볼 " + strike + "스트라이크";
         } else if (strike > 0) {
@@ -100,5 +105,9 @@ public class GameService {
 
     public void printResult() {
         System.out.println(compare());
+    }
+
+    public boolean getFinishFlag() {
+        return finishFlag;
     }
 }
