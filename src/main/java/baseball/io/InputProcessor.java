@@ -21,10 +21,10 @@ public class InputProcessor {
         final String userInput = Console.readLine();
         BASEBALL_INPUT_VALIDATOR.validate(userInput);
 
-        return convertBaseballs(userInput);
+        return convertStringToList(userInput);
     }
 
-    private static List<Integer> convertBaseballs(final String userInput) {
+    private static List<Integer> convertStringToList(final String userInput) {
         return Arrays.stream(userInput.split(""))
                 .map(Integer::parseInt)
                 .toList();
