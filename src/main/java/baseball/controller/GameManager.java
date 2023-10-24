@@ -11,7 +11,7 @@ public class GameManager {
     private final BallNumber computerNumber;
 
     GameManager() {
-        computerNumber = RandomNumberGenerator.generate();
+        computerNumber = new BallNumber(RandomNumberGenerator.generate());
     }
 
     void playRound() {
