@@ -5,19 +5,20 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // computer 생성
-        Computer computer = new Computer();
-        List<Integer> computerNumber = computer.getRandomNumber();
-
-        // player 생성
-        Player player = new Player();
-
         // start
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         String choice = "1"; // 반복문 시작을 위해 1로 설정
+
         while (choice.equals("1")) {
+            // computer 생성
+            Computer computer = new Computer();
+            List<Integer> computerNumber = computer.getRandomNumber();
+
+            // player 생성
+            Player player = new Player();
+
             String result = "낫싱"; // 게임 시작 전 결과는 낫싱으로 설정
+
             while (!result.equals("3스트라이크")) { // 3스트라이크일 때, 게임이 종료됨
                 List<Integer> playerNumber = player.setNumber();
                 // 숫자 비교값을 설정
