@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public enum InputValidateRegex {
     GAME_NUMBER_REGEX("^(?!.*(.).*\\1)\\d{3}$"),

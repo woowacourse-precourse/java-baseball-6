@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.dto.GameNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.LinkedHashSet;

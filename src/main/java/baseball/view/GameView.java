@@ -1,6 +1,9 @@
-package baseball;
+package baseball.view;
 
-public class MessagePrinter {
+import baseball.model.GameResult;
+import baseball.constant.GameMessage;
+
+public class GameView {
 
     public static void printGameStartMessage() {
         System.out.println(GameMessage.GAME_START);

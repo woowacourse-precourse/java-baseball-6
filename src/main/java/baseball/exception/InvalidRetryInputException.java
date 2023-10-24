@@ -1,4 +1,4 @@
-package baseball;
+package baseball.exception;
 
 public class InvalidRetryInputException extends IllegalArgumentException {
 

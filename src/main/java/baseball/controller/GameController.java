@@ -1,5 +1,7 @@
-package baseball;
+package baseball.controller;
 
+import baseball.dto.GameNumber;
+import baseball.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {

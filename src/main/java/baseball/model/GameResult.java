@@ -1,4 +1,6 @@
-package baseball;
+package baseball.model;
+
+import baseball.model.Computer;
 
 public class GameResult {
 

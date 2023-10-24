@@ -1,5 +1,8 @@
-package baseball;
+package baseball.dto;
 
+import baseball.model.Computer;
+import baseball.validator.InputValidator;
+import baseball.exception.InvalidIndexException;
 import java.util.ArrayList;
 import java.util.List;
 

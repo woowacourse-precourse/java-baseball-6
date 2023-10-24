@@ -1,5 +1,10 @@
 package baseball;
 
+import baseball.controller.GameController;
+import baseball.model.Computer;
+import baseball.model.GameResult;
+import baseball.view.GameView;
+
 public class GameManager {
 
     private GameController controller;
@@ -10,23 +15,23 @@ public class GameManager {
     }
 
     public void start() {
-        MessagePrinter.printGameStartMessage();
+        GameView.printGameStartMessage();
         do {
             setGame();
             playGame();
-            MessagePrinter.printRetryInputMessage();
+            GameView.printRetryInputMessage();
         } while (controller.getIsRetry());
     }
 
     private void playGame() {
         Boolean isGameEnd = false;
         while (!isGameEnd) {
-            MessagePrinter.printNumberInputMessage();
+            GameView.printNumberInputMessage();
             GameResult result = computer.calculateGameResult(controller.getInputGameNumber());
-            MessagePrinter.printResultMessage(result);
+            GameView.printResultMessage(result);
             isGameEnd = result.isAnswer();
         }
-        MessagePrinter.printGameEndMessage();
+        GameView.printGameEndMessage();
     }
 
     private void setGame() {
