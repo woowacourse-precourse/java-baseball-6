@@ -56,6 +56,9 @@ public class Application {
             String strikeOut = strikeCount + "스트라이크";
             result.add(strikeOut);
         }
+        if(ballCount==0 && strikeCount==0){
+            result.add("낫싱");
+        }
         System.out.println(String.join(" ",result));
     }
 
