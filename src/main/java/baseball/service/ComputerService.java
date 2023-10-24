@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.model.BaseballNumber;
-import baseball.model.Computer;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -24,9 +23,9 @@ public class ComputerService {
         return baseballNumber;
     }
 
-    public static void createComputerWithRandomNumber(Computer computer) {
+    public static BaseballNumber createComputerWithRandomNumber() {
         List<Integer> randomNumbers = generateBaseballNumber();
         BaseballNumber baseballNumber = new BaseballNumber(randomNumbers);
-        computer.updateBaseballNumber(baseballNumber);
+        return baseballNumber;
     }
 }

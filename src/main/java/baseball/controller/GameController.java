@@ -4,6 +4,7 @@ import baseball.model.BaseballNumber;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.service.ComputerService;
+import baseball.util.ValidatorPlayerInput;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -17,31 +18,39 @@ public class GameController {
 
     public void startGame() {
         System.out.println(GAME_START.getMessage());
-        this.computer = new Computer();
-        ComputerService.createComputerWithRandomNumber(this.computer);
-        this.player = new Player();
         doGame();
     }
 
     public void doGame() {
+        this.player = new Player();
+        this.computer = new Computer();
+        BaseballNumber computerWithRandomNumber = ComputerService.createComputerWithRandomNumber();
+        computer.updateBaseballNumber(computerWithRandomNumber);
+        //System.out.println("=====computer :" + computer.getBaseballNumber());
         do {
-            System.out.print(REQUEST_INPUT_NUMBER.getMessage());
-            String input = Console.readLine();
-            System.out.println("===========input" + input);
-            BaseballNumber playerInputNumber = new BaseballNumber(convertStringToList(input));
-            player.updateBaseballNumber(playerInputNumber);
-        } while (!checkGuessNumber());
+            setPlayerBaseballNumber();
+        } while (!checkGuessNumber()); //맞을 때까지
+        System.out.println(GAME_END.getMessage());
 
         if (wantsToKeepPlaying()) {
-            ComputerService.createComputerWithRandomNumber(this.computer);
             doGame();
         }
+    }
+
+    public void setPlayerBaseballNumber() {
+        System.out.print(REQUEST_INPUT_NUMBER.getMessage());
+        String input = Console.readLine();
+        List<Integer> inputToList = convertStringToList(input);
+        //System.out.println("=====player :" + inputToList);
+        ValidatorPlayerInput.validateNumberSizeAndDuplicate(inputToList);
+        BaseballNumber playerInputNumber = new BaseballNumber(inputToList);
+        player.updateBaseballNumber(playerInputNumber);
     }
 
     public boolean wantsToKeepPlaying() {
         System.out.println(ASK_KEEP_GOING_GAME.getMessage());
         String input = Console.readLine();
-        checkResumeInput(input);
+        ValidatorPlayerInput.checkResumeInput(input);
         return input.equals("1");
     }
 
@@ -62,7 +71,6 @@ public class GameController {
 
         if (strikes == 3) {
             System.out.println(strikes + STRIKE.getMessage());
-            System.out.println(GAME_END.getMessage());
             return true;
         }
         if (balls > 0 || strikes > 0) {
@@ -78,12 +86,6 @@ public class GameController {
         }
         System.out.println(NOTHING.getMessage());
         return false;
-    }
-
-    private void checkResumeInput(String input) {
-        if (!(input.equals("1") || input.equals("2"))) {
-            throw new IllegalArgumentException("시작이나 종료의 입력값이 아닙니다.");
-        }
     }
 
     private List<Integer> convertStringToList(String input) {
