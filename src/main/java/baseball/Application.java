@@ -59,14 +59,10 @@ public class Application {
         	user = get_user();
         	
         	//예외처리
-        	try {
-	        	if (user.size()<3 || user.size()>3) {
-	        		throw new IllegalArgumentException();
-	        	}
-        	}catch(IllegalArgumentException e){
-        		break;
-        	}
-        	
+        	if (user.size()<3 || user.size()>3) {
+	       		throw new IllegalArgumentException();
+	       	}
+	    
         	//문자열 확인하기
         	for(int i=0; i<user.size(); i++) {
         		for(int j=0; j<user.size(); j++) {
