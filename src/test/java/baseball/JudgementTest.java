@@ -1,11 +1,12 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JudgementTest {
     ByteArrayOutputStream testOut = new ByteArrayOutputStream();
@@ -53,7 +54,7 @@ public class JudgementTest {
     void assertJudgeResultOutput(Numbers userNumbers, Numbers computerNumbers, String outputToCompare) {
         Judgement result = new Judgement(userNumbers, computerNumbers);
         result.printResult();
-        Assertions.assertThat(testOut.toString()).isEqualTo(outputToCompare);
+        assertThat(testOut.toString()).isEqualTo(outputToCompare);
         testOut.reset();
     }
 }

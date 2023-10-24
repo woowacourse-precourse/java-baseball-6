@@ -1,12 +1,11 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {
     private final Computer computer = new Computer();
@@ -18,7 +17,7 @@ public class ComputerTest {
 
             List<Number> duplicateCheck = new ArrayList<>();
             for (int j = 0; j < 3; j++) {
-                Assertions.assertThat(duplicateCheck.contains(numbers.getNumberByIndex(j))).isFalse();
+                assertThat(duplicateCheck.contains(numbers.getNumberByIndex(j))).isFalse();
                 duplicateCheck.add(numbers.getNumberByIndex(j));
             }
         }
