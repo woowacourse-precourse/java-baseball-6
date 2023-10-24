@@ -27,12 +27,11 @@ public class Application {
         String gameCode;
         do {
             List<Integer> randomNumber = createRandomNumber();
-            System.out.println(randomNumber);
-            gameCode = checkUserNumber(randomNumber);
+            gameCode = playSingleRound(randomNumber);
         } while (gameCode.equals(RESTART_GAME_CODE));
     }
 
-    private static String checkUserNumber(List<Integer> randomNumber) {
+    private static String playSingleRound(List<Integer> randomNumber) {
         while (true) {
             List<Integer> userNumber = getUserNumber();
             int[] ballAndStrike = calculateBallAndStrike(userNumber, randomNumber);
@@ -91,16 +90,16 @@ public class Application {
 
     private static List<Integer> getUserNumber() {
         List<Integer> userNumber = new ArrayList<>();
-        String number;
+        String userInput;
         String[] tempNumber;
         boolean isValid;
 
         System.out.print(INPUT_PROMPT);
-        number = Console.readLine();
-        isValid = isValidNumber(number);
+        userInput = Console.readLine();
+        isValid = isValidNumber(userInput);
 
         if (isValid) {
-            tempNumber = number.split("");
+            tempNumber = userInput.split("");
             for (String s : tempNumber) {
                 userNumber.add(Integer.parseInt(s));
             }
