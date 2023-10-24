@@ -21,7 +21,13 @@ public class BaseballGame implements Game {
 
     @Override
     public void playGame() {
-
+        preset();
+        while (!result.getCorrect()) {
+            printer.printGuessNumMessage();
+            inputUserNumber();
+            judge();
+            printer.printScore(result);
+        }
     }
 
     @Override
@@ -45,5 +51,28 @@ public class BaseballGame implements Game {
                 config.getNumOfNumbers());
         compareMachine = new CompareMachine();
         validator = new BaseballValidator(config);
+    }
+
+    void preset() {
+        targetNums = new ArrayList<>();
+        targetNums = targetNumsGenerator.generate();
+        result = new BaseballForm();
+    }
+
+    void judge() {
+        compareMachine.compare(targetNums, userNums, config.getNumOfNumbers());
+        result = compareMachine.getResult();
+    }
+
+    void inputUserNumber() {
+        userNums = new ArrayList<>();
+        String inStr;
+        inStr = Console.readLine();
+        validator.validateLength(inStr);
+        for (char cur : inStr.toCharArray()) {
+            validator.validateRange(cur);
+            validator.validateDuplication(cur, userNums);
+            userNums.add(cur - '0');
+        }
     }
 }
