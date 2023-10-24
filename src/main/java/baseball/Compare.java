@@ -32,7 +32,7 @@ public class Compare {
         return ball;
     }
 
-    public String TotalCount(
+    public String CountResult(
             List<Integer> player,
             List<Integer> computer
     ) {
@@ -45,6 +45,6 @@ public class Compare {
         } else if (ball==0) {
             return strike+"스트라이크";
         }
-        return ball+"볼 "+strike+"스트라이크";
+        return ball+"볼 "+strike+"스트라이크"; // 스트링 리스트에 add 하는 구문으로 분기처리 없이
     }
 }
