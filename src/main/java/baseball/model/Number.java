@@ -15,6 +15,16 @@ public class Number {
     }
 
     /**
+     * char 타입의 숫자를 받은 다음에 정수로 변환하여 저장
+     *
+     * @param num
+     */
+    public Number(char num) {
+        validationNumber(num + ""); // 정수가 맞는지 검증
+        this.number = Character.getNumericValue(num); // char -> int 변환 후 저장
+    }
+
+    /**
      * 입력한 정수를 반환한다.
      *
      * @return
