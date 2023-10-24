@@ -58,10 +58,14 @@ public class BaseballCollection {
                 .map(this::parseToInt)
                 .distinct()
                 .collect(Collectors.toList());
+        validate(number, baseballs);
+        return baseballs;
+    }
+
+    private void validate(String number, List<Integer> baseballs) {
         validateLength(baseballs);
         validateUniqueNumbers(baseballs, number);
         validateRange(baseballs);
-        return baseballs;
     }
 
     private void validateLength(List<Integer> baseballs) {
