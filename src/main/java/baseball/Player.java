@@ -5,9 +5,9 @@ import static baseball.utils.Constants.MAXIMUM_NUMBER;
 import static baseball.utils.Constants.MINIMUM_NUMBER;
 import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
 import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
+import static baseball.utils.Util.convertToIntegerList;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -82,18 +82,6 @@ public class Player {
             }
             numberSet.add(number);
         }
-    }
-
-
-    private List<Integer> convertToIntegerList(String userInput) {
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            char c = userInput.charAt(i);
-            if (Character.isDigit(c)) {
-                integerList.add(Character.getNumericValue(c));
-            }
-        }
-        return integerList;
     }
 
     public void printBallCount() {
