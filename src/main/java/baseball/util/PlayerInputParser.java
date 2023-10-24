@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.util;
 
 import java.util.List;
 import java.util.stream.Collectors;

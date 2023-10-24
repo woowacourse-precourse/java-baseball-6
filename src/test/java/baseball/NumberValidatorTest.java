@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
 import baseball.controller.BaseBallConstants;
-import baseball.controller.InputValidator;
+import baseball.util.InputValidator;
 import org.junit.jupiter.api.Test;
 
 public class NumberValidatorTest {

@@ -1,5 +1,6 @@
-package baseball.controller;
+package baseball.util;
 
+import baseball.controller.BaseBallConstants;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

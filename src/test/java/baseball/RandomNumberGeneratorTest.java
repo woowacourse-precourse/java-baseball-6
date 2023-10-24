@@ -3,7 +3,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.controller.RandomNumberGenerator;
+import baseball.util.RandomNumberGenerator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

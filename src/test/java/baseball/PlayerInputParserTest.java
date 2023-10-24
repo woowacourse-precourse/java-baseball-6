@@ -2,7 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.controller.PlayerInputParser;
+import baseball.util.PlayerInputParser;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
