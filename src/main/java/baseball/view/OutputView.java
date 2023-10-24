@@ -3,7 +3,11 @@ package baseball.view;
 import java.util.Map;
 
 public class OutputView {
-
+    private InputView inputView = new InputView();
+    
+    public InputView getInputView() {
+        return inputView;
+    }
     // OUTPUT
     public void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -27,10 +31,6 @@ public class OutputView {
 
     public void printContinueOrQuitMessage(Map<String, String> map) {
         System.out.println("게임을 새로 시작하려면 " + map.get("continueInput") + ",종료하려면 " + map.get("quitInput") + "를 입력하세요.");
-    }
-
-    public void printContinueOrQuitMessage(String input) {
-        System.out.println(input);
     }
 
     public void printQuitMessage() {
