@@ -29,4 +29,13 @@ public class OutputView {
 	private void print(String message) {
 		System.out.print(message);
 	}
+
+	public void printGameFinish() {
+		println("3스트라이크");
+		println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+	}
+
+	public void printGameResult(int ball, int strike) {
+		println(String.format("%d볼 %d스트라이크", ball, strike));
+	}
 }
