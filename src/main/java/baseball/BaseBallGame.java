@@ -1,7 +1,7 @@
 package baseball;
 
 import java.util.List;
-import model.ModelCompareAnsInput;
+import model.ModelCompareAnswerInput;
 import model.ModelCreateRandomNumber;
 import model.ModelRestartOrEnd;
 import model.ModelUserNumCheck;
@@ -32,11 +32,11 @@ public class BaseBallGame {
 
                 List<Integer> input = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
 
-                int[] result = ModelCompareAnsInput.compareAnsInput(computer, input);
+                int[] result = ModelCompareAnswerInput.compareAnswerInput(computer, input);
 
                 ViewResult.view(result);
 
-                if (ModelCompareAnsInput.isAns(result)) {
+                if (ModelCompareAnswerInput.isAnswer(result)) {
                     break;
                 }
             }
