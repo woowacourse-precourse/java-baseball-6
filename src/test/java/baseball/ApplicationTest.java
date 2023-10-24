@@ -37,12 +37,15 @@ class ApplicationTest extends NsTest {
         Integer indexOne = threeRandomNumber.get(1);
         Integer indexTwo = threeRandomNumber.get(2);
 
-        boolean isNumber = false;
-        isNumber = (indexZero.equals(indexOne))
+        boolean isNumber = Application.isNumber(threeRandomNumber);
+
+        boolean isDifferentNumber = false;
+        isDifferentNumber = (indexZero.equals(indexOne))
                 && (indexOne.equals(indexTwo))
                 && (indexTwo.equals(indexZero));
 
         assertThat(isNumber);
+        assertThat(isDifferentNumber);
     }
 
     @Override
