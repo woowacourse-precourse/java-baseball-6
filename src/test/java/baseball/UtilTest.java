@@ -17,7 +17,7 @@ class UtilTest {
         int length = 3;
 
         //when
-        List<Integer> randomNumber = Util.getRandomNumber(length);
+        List<Integer> randomNumber = Util.createRandomNumbers(length);
 
         //then
         Assertions.assertEquals(length, randomNumber.size());
@@ -29,7 +29,7 @@ class UtilTest {
 
         //given
         int length = 3;
-        List<Integer> randomNumber = Util.getRandomNumber(length);
+        List<Integer> randomNumber = Util.createRandomNumbers(length);
 
         //when
         boolean isDuplicated = false;
