@@ -1,13 +1,8 @@
 package baseball.game;
 
-import static baseball.game.GameMessages.GAME_OVER;
-import static baseball.game.GameMessages.GAME_START;
-import static baseball.game.GameMessages.INPUT_NUMBER;
-import static baseball.util.ConsoleUtil.printMsg;
-import static baseball.util.ConsoleUtil.printMsg_newLine;
-
 import baseball.game.balls.Balls;
 import baseball.input.UserInput;
+import baseball.util.ConsoleUtil;
 import java.util.ArrayList;
 
 public class GameManager {
@@ -19,7 +14,7 @@ public class GameManager {
 	private final GameService gameService = new GameService();
 
 	public void start() {
-		printMsg_newLine(GAME_START.getMessage());
+		ConsoleUtil.printMsg_newLine(GameMessages.GAME_START.getMessage());
 
 		boolean gameEnd = true;
 		while (gameEnd) {
@@ -35,15 +30,15 @@ public class GameManager {
 		boolean isAnswer = false;
 
 		while (!isAnswer) {
-			printMsg(INPUT_NUMBER.getMessage());
+			ConsoleUtil.printMsg(GameMessages.INPUT_NUMBER.getMessage());
 
 			setUserNumbers();
 
-			printMsg_newLine(gameService.giveHint(user.getBalls(), answer.getBalls()));
+			ConsoleUtil.printMsg_newLine(gameService.giveHint(user.getBalls(), answer.getBalls()));
 			isAnswer = isGameEndedWith3Strikes();
 		}
 
-		printMsg_newLine(GAME_OVER.getMessage());
+		ConsoleUtil.printMsg_newLine(GameMessages.GAME_OVER.getMessage());
 	}
 
 	private boolean isGameEndedWith3Strikes() {

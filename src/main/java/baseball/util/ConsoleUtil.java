@@ -1,9 +1,6 @@
 package baseball.util;
 
-import static baseball.game.GameMessages.BALL;
-import static baseball.game.GameMessages.BALL_STRIKE;
-import static baseball.game.GameMessages.NOTHING;
-import static baseball.game.GameMessages.STRIKE;
+import baseball.game.GameMessages;
 
 public class ConsoleUtil {
 
@@ -17,13 +14,13 @@ public class ConsoleUtil {
 
 	public static String hintFormatter(int balls, int strikes) {
 		if (balls > 0 && strikes > 0) {
-			return BALL_STRIKE.getMessage().formatted(balls, strikes);
+			return GameMessages.BALL_STRIKE.getMessage().formatted(balls, strikes);
 		} else if (balls > 0) {
-			return BALL.getMessage().formatted(balls);
+			return GameMessages.BALL.getMessage().formatted(balls);
 		} else if (strikes > 0) {
-			return STRIKE.getMessage().formatted(strikes);
+			return GameMessages.STRIKE.getMessage().formatted(strikes);
 		} else {
-			return NOTHING.getMessage();
+			return GameMessages.NOTHING.getMessage();
 		}
 	}
 }

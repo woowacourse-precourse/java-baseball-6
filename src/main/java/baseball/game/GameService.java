@@ -1,7 +1,6 @@
 package baseball.game;
 
-import static baseball.util.ConsoleUtil.hintFormatter;
-
+import baseball.util.ConsoleUtil;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class GameService {
 		int balls = countBall(player, answer);
 		int strikes = countStrike(player, answer);
 
-		return hintFormatter(balls, strikes);
+		return ConsoleUtil.hintFormatter(balls, strikes);
 	}
 
 	public List<Integer> generateRandomNumber() {
