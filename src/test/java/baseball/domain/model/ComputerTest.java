@@ -23,5 +23,12 @@ class ComputerTest {
         assertThat(computer.compareWithUserBall("7", 2)).isEqualTo(BallCount.STRIKE);
     }
 
+    @Test
+    void BallCount_판정_볼() {
+        assertThat(computer.compareWithUserBall("3", 1)).isEqualTo(BallCount.BALL);
+        assertThat(computer.compareWithUserBall("5", 2)).isEqualTo(BallCount.BALL);
+        assertThat(computer.compareWithUserBall("7", 0)).isEqualTo(BallCount.BALL);
+    }
+
 
 }
