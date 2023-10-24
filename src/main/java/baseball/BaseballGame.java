@@ -16,14 +16,7 @@ public class BaseballGame {
 
     public Answer answerGenerate() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        List<Integer> answerNumbers = new ArrayList<>();
-        while (answerNumbers.size() < 3) {
-            int randomNumber = randomNumberGenerator.getRandoms();
-            if (!answerNumbers.contains(randomNumber)) {
-                answerNumbers.add(randomNumber);
-            }
-        }
-        return new Answer(answerNumbers);
+        return new Answer(randomNumberGenerator.setAnswerList());
     }
 
     public String judgeAnswer(Answer answer, int inputNumber) {
