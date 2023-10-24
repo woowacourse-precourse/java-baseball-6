@@ -10,7 +10,7 @@ import static baseball.constant.Hint.STRIKE;
 
 public class Score {
 
-    private static final String NOT_THING = "낫싱";
+    private static final String NOTHING = "낫싱";
 
     private final Map<Hint, Integer> score;
 
@@ -33,15 +33,15 @@ public class Score {
         return this.score.get(hint);
     }
 
-    private Boolean hasNotThing() {
+    private Boolean hasNothing() {
         return score.keySet().stream().noneMatch(this::hasHint);
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        if (hasNotThing()) {
-            builder.append(NOT_THING);
+        if (hasNothing()) {
+            builder.append(NOTHING);
         }
         if (hasHint(BALL)) {
             builder.append(count(BALL)).append(BALL);
