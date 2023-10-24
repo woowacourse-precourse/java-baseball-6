@@ -5,12 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.View.InputView.readRetryNumber;
-
 public class Computer {
     public static List<Integer> gameNum;
-    private final int NashingNum = -1;
-    private static int MAX_LEN = 3;
+    private static final int MAX_LEN = 3;
     public static void InitGame(){
         gameNum = new ArrayList<>();
         while (gameNum.size() < 3) {
@@ -23,11 +20,9 @@ public class Computer {
 
     public static void checkNum(int[] userNums){
         for (int i = 0; i < MAX_LEN; i++) {
-            int userNumIndex = i;
-            //Integer targetInteger = Integer.valueOf(userNums[i]);
             int gameNumIndex = gameNum.indexOf(userNums[i]);
 
-            if (userNumIndex == gameNumIndex){
+            if (i == gameNumIndex){
                 BallCount.Strike();
             }
             else if(gameNumIndex != -1){
