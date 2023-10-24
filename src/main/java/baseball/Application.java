@@ -39,9 +39,16 @@ class Baseball {
         }
     }
 
+    Baseball(String str) {
+        num = str;
+    }
+
     public static void init(Baseball answer) {
         //사용자 값 입력 받기(no.2)
         String input = Baseball.getUserInput();
+
+        //사용자 값의 유효성 판단(no.3, no.4)
+        Baseball userAns = Baseball.checkAnsValid(input);
     }
 
     private static String getUserInput() {
@@ -51,4 +58,37 @@ class Baseball {
         return userVal;
     }
 
+    private static Baseball checkAnsValid(final String input) {
+        if (input.length() != LIMIT_DIGIT) {
+            throw new IllegalArgumentException();
+        }
+        if (!isValidNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!isEachNumDiff(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        return new Baseball(input);
+    }
+
+    static boolean isValidNumber(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return !str.contains("0");
+    }
+
+    static boolean isEachNumDiff(String str) {
+        for (int i = 0; i < str.length() - 1; i++) {
+            for (int j = i+1; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
