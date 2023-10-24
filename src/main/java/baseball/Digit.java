@@ -37,31 +37,3 @@ final class Digit {
         return Objects.hash(digit);
     }
 }
-//
-//
-//class Test {
-//    int digit;
-//
-//    private Test() {
-//    }
-//
-//
-////    Test randomTest()
-//    static final class Random {
-//
-//        static public Test makeTest() {
-//            return null;
-//        }
-//    }
-//
-//    static final class fixed {
-//
-//        public Test makeTest() {
-//            return null;
-//
-//        }
-//    }
-//
-//}
-//
-//
