@@ -143,16 +143,16 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(((InvocationTargetException) throwable1).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자연수만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_NATURAL_NUMBER);
         assertThat(((InvocationTargetException) throwable2).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자연수만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_NATURAL_NUMBER);
         assertThat(((InvocationTargetException) throwable3).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자연수만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_NATURAL_NUMBER);
         assertThat(((InvocationTargetException) throwable4).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자연수만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_NATURAL_NUMBER);
 
     }
 
@@ -196,16 +196,16 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(((InvocationTargetException) throwable1).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("세 개의 수를 입력해야합니다.");
+                .hasMessageContaining(size + PrintMessage.ONLY_THIS_SIZE);
         assertThat(((InvocationTargetException) throwable2).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("세 개의 수를 입력해야합니다.");
+                .hasMessageContaining(size + PrintMessage.ONLY_THIS_SIZE);
         assertThat(((InvocationTargetException) throwable3).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("세 개의 수를 입력해야합니다.");
+                .hasMessageContaining(size + PrintMessage.ONLY_THIS_SIZE);
         assertThat(((InvocationTargetException) throwable4).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("세 개의 수를 입력해야합니다.");
+                .hasMessageContaining(size + PrintMessage.ONLY_THIS_SIZE);
     }
 
     @DisplayName("사용자 숫자 입력 예외처리 테스트 - 중복")
@@ -248,16 +248,16 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(((InvocationTargetException) throwable1).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 수를 입력했습니다.");
+                .hasMessageContaining(PrintMessage.NOT_DUPLICATE_NUMBER);
         assertThat(((InvocationTargetException) throwable2).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 수를 입력했습니다.");
+                .hasMessageContaining(PrintMessage.NOT_DUPLICATE_NUMBER);
         assertThat(((InvocationTargetException) throwable3).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 수를 입력했습니다.");
+                .hasMessageContaining(PrintMessage.NOT_DUPLICATE_NUMBER);
         assertThat(((InvocationTargetException) throwable4).getTargetException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 수를 입력했습니다.");
+                .hasMessageContaining(PrintMessage.NOT_DUPLICATE_NUMBER);
     }
 
     @DisplayName("사용자 입력을 숫자 리스트로 변환하는 메서드 테스트")
@@ -468,19 +468,19 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(throwable1)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_ONE_OR_TWO);
         assertThat(throwable2)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_ONE_OR_TWO);
         assertThat(throwable3)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_ONE_OR_TWO);
         assertThat(throwable4)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_ONE_OR_TWO);
         assertThat(throwable5)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2만 입력해야합니다.");
+                .hasMessageContaining(PrintMessage.ONLY_ONE_OR_TWO);
     }
 
     @DisplayName("게임 재시작/종료 입력 유효성 확인 메서드 정상처리 테스트")
