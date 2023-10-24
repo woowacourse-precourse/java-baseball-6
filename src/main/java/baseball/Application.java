@@ -32,16 +32,15 @@ public class Application {
     }
 
     private static String playSingleRound(List<Integer> randomNumber) {
-        while (true) {
+        int[] ballAndStrike;
+
+        do {
             List<Integer> userNumber = getUserNumber();
-            int[] ballAndStrike = calculateBallAndStrike(userNumber, randomNumber);
+            ballAndStrike = calculateBallAndStrike(userNumber, randomNumber);
 
             printResult(ballAndStrike[0], ballAndStrike[1]);
+            } while (ballAndStrike[1] != NUMBER_LENGTH);
 
-            if (ballAndStrike[1] == NUMBER_LENGTH) {
-                break;
-            }
-        }
         System.out.println(GAME_RESTART_MESSAGE);
         return (Console.readLine());
     }
@@ -51,9 +50,12 @@ public class Application {
         int strike = 0;
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (randomNumber.get(i).equals(userNumber.get(i))) {
+            Integer randomDigit = randomNumber.get(i);
+            Integer userDigit = userNumber.get(i);
+
+            if (randomDigit.equals(userDigit)) {
                 strike += 1;
-            } else if (randomNumber.contains(userNumber.get(i))) {
+            } else if (randomNumber.contains(userDigit)) {
                 ball += 1;
             }
         }
