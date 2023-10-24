@@ -2,31 +2,33 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class Game {
+    private static Alert alert = new Alert();
+    private Judge judge = new Judge();
+    private Computer computer = new Computer();
+    private User user = new User();
     ArrayList<Integer> computerInputArray = new ArrayList<>();
+    ArrayList<Integer> userInputArray = new ArrayList<>();
 
-    public void Start() {
-        // 게임을 시작합니다.
-        computerInputArray = Computer.getRandomNumber();
-//        System.out.println(computerInputArray);
+    public void start() {
+        computerInputArray = computer.getRandomNumber();
+        System.out.println(computerInputArray);
 
         while (true) {
-            Alert.userInputStartMessage();
-            ArrayList<Integer> userInputArray = User.getNumber();
+            alert.userInputStartMessage();
+            userInputArray = user.getNumber();
 
-            if (Judge.judge(userInputArray, computerInputArray).equals("Strike")) {
-                Alert.gameFinishMessage();
+            if (judge.judge(userInputArray, computerInputArray).equals("Strike")) {
+                alert.gameFinishMessage();
                 break;
             }
-
         }
     }
 
     public static boolean reStart() {
-        Alert.reStartMessage();
+        alert.reStartMessage();
         String re = Console.readLine();
         if (re.equals("1")) {
             return true;
@@ -36,5 +38,4 @@ public class Game {
             throw new IllegalArgumentException("잘못된 숫자 입력");
         }
     }
-
 }

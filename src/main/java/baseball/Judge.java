@@ -1,17 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class Judge {
+    private static Alert alert = new Alert();
 
     public static String judge(ArrayList<Integer> user, ArrayList<Integer> computer) {
 
         int strike = 0;
         int nothing = 0;
-
 
         for (int i = 0; i < 3; i++) {
             if (!computer.contains(user.get(i))) {
@@ -26,19 +23,18 @@ public class Judge {
         int ball = 3 - strike - nothing;
 
         if (strike == 3) {
-            System.out.println(strike + Alert.STRIKE);
+            System.out.println(strike + alert.STRIKE);
             return "Strike";
         } else if (ball > 0 && strike == 0) {
-            System.out.println(ball + Alert.BALL);
+            System.out.println(ball + alert.BALL);
         } else if (ball == 0 && strike > 0) {
-            System.out.println(strike + Alert.STRIKE);
+            System.out.println(strike + alert.STRIKE);
         } else if (ball > 0 && strike > 0) {
-            System.out.println(ball + Alert.BALL + " " + strike + Alert.STRIKE);
+            System.out.println(ball + alert.BALL + " " + strike + alert.STRIKE);
         } else if (nothing == 3) {
-            Alert.NothingMessage();
+            alert.nothingMessage();
         }
 
         return "";
     }
-
 }
