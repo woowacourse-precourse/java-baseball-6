@@ -19,10 +19,8 @@ public class BaseballGame {
     //1에서 9 사이 서로 다른 3자리 랜덤 숫자 생성
     public List<Integer> computer(){
         List<Integer> computer = new ArrayList<>();
-        int randomNum = randomNum();
-        computer.add(randomNum);
-        while(computer.size() < NUMBER_LENGTH){
-            randomNum = randomNum();
+        while(computer == null || computer.size() < NUMBER_LENGTH){
+            int randomNum = randomNum();
             if(!computer.contains(randomNum)) computer.add(randomNum);
         }
         this.computerNum = computer;
