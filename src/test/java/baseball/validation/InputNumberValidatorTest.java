@@ -1,10 +1,8 @@
 package baseball.validation;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputNumberValidatorTest {
 
@@ -17,11 +15,12 @@ class InputNumberValidatorTest {
         String uncorrectExampleByType = "안1";
         String uncorrectExampleByDuplicate = "112";
 
-        assertTrue(inputNumberValidator.convertStrToList(correctExample) instanceof List<Integer>);
-
-        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateInputNumber(uncorrectExampleBySize));
-        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateInputNumber(uncorrectExampleByType));
-        assertThrows(IllegalArgumentException.class, () -> inputNumberValidator.validateInputNumber(uncorrectExampleByDuplicate));
+        assertThrows(IllegalArgumentException.class,
+                () -> inputNumberValidator.validateInputNumber(uncorrectExampleBySize));
+        assertThrows(IllegalArgumentException.class,
+                () -> inputNumberValidator.validateInputNumber(uncorrectExampleByType));
+        assertThrows(IllegalArgumentException.class,
+                () -> inputNumberValidator.validateInputNumber(uncorrectExampleByDuplicate));
     }
 
 //    @Test
@@ -33,12 +32,6 @@ class InputNumberValidatorTest {
 //
 //        assertTrue(InputNumberValidator.convertStrToList(example) instanceof List<Integer>);
 //    }
-
-    @Test
-    void String을_List로_변환() {
-        String example = "316";
-        assertTrue(inputNumberValidator.convertStrToList(example) instanceof List<Integer>);
-    }
 
     @Test
     void 숫자가_1이나_2가_아니면_예외발생() {

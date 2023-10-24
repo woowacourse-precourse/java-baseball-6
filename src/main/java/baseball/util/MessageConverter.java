@@ -1,8 +1,10 @@
 package baseball.util;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /*
  * 플레이어와 컴퓨터의 숫자를 비교하여 스트라이크, 볼로 변환하는 클래스
@@ -16,6 +18,16 @@ public class MessageConverter {
     private static final int DEFAULT_NUMBER = 0;
 
     private Map<String, Integer> resultMessageMap;
+
+    /*
+     * 플레이어의 입력값(String)을 List로 변환하는 메서드
+     * @Param userInput 플레이어의 숫자
+     * */
+    public List<Integer> convertStrToList(String userInput) {
+        return Arrays.stream(userInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 
     /*
      * 플레이어와 컴퓨터의 숫자를 비교하는 전체 메서드

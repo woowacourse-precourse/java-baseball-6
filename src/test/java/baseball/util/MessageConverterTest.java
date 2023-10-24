@@ -1,15 +1,20 @@
 package baseball.util;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class MessageConverterTest {
 
     private MessageConverter messageConverter = new MessageConverter();
+
+    @Test
+    void String을_List로_변환() {
+        String example = "316";
+        assertTrue(messageConverter.convertStrToList(example) instanceof List<Integer>);
+    }
 
     @Test
     void 스트라이크_볼_카운팅_메서드() {

@@ -1,14 +1,11 @@
 package baseball.validation;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /*
-* 플레이어가 입력한 숫자를 검증하는 클래스
-* */
+ * 플레이어가 입력한 숫자를 검증하는 클래스
+ * */
 public class InputNumberValidator {
 
     private static final String RESTART = "1";
@@ -20,22 +17,12 @@ public class InputNumberValidator {
      * 플레이어의 입력값(String) 전체 검증 메서드
      * @Param userInput 플레이어의 숫자
      * */
-    public List<Integer> validateInputNumber(String userInput) {
+    public boolean validateInputNumber(String userInput) {
         validateInputSize(userInput);
         validateInputType(userInput);
         validateInputDuplication(userInput);
 
-        return convertStrToList(userInput);
-    }
-
-    /*
-    * 플레이어의 입력값(String)을 List로 변환하는 메서드
-    * @Param userInput 플레이어의 숫자
-    * */
-    public List<Integer> convertStrToList(String userInput) {
-        return Arrays.stream(userInput.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        return true;
     }
 
     /*
