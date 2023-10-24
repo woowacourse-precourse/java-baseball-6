@@ -7,9 +7,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Application {
-    static int[] noCheck = new int[3];
+    static int numberSize = 3;
+    static int[] noCheck;
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         int start = 1;
         while (start == 1) {
             playBaseballGame();
@@ -23,8 +23,7 @@ public class Application {
         }
 
     }
-
-    private static boolean playBaseballGame() {
+    private static void playBaseballGame() {
         List<Integer> computerNumber = generateComputerNumber();
         boolean endGame = false;
 
@@ -33,7 +32,7 @@ public class Application {
             System.out.print("숫자를 입력해 주세요 : ");
             String input = Console.readLine();
             if (!checkInputNumber(input)) {
-                throw new IllegalArgumentException("서로 다른 3자리 숫자가 입력 되어야 합니다.");
+                throw new IllegalArgumentException("서로 다른 " + numberSize + "개의 숫자가 입력 되어야 합니다.");
             }
 
             int strike = checkStrike(input, computerNumber);
@@ -42,16 +41,15 @@ public class Application {
                 endGame = true;
             }
         }
-        return true;
     }
 
     private static boolean checkInputNumber(String input) {
-        return input.matches("^[1-9]{3}$") && input.chars().distinct().count() == 3;
+        return input.matches("^[1-9]{" + numberSize + "}$") && input.chars().distinct().count() == numberSize;
     }
 
     private static boolean printResult(int ball, int strike) {
-        if (strike == 3) {
-            System.out.println(strike + "스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (strike == numberSize) {
+            System.out.println(strike + "스트라이크\n" + numberSize +  "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
@@ -70,28 +68,23 @@ public class Application {
 
     public static List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < numberSize) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        System.out.print("computer number : ");
-        for (int i : computer) {
-            System.out.print(i);
-        }
-        System.out.println();
 
         return computer;
     }
 
     private static int checkBall(String input, List<Integer> computerNumber) {
         int ballCount = 0;
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < numberSize; i++) {
                 if (noCheck[i] == 1) {
                     continue;
                 }
-                for (int j = 0; j < 3; j++) {
+                for (int j = 0; j < numberSize; j++) {
                     if (noCheck[i] == 1) {
                         continue;
                     }
@@ -100,14 +93,13 @@ public class Application {
                     }
                 }
         }
-
         return ballCount;
     }
 
     private static int checkStrike(String input, List<Integer> computerNumber) {
         int strikeCount = 0;
-        noCheck = new int[3];
-        for (int i = 0; i < 3; i++) {
+        noCheck = new int[numberSize];
+        for (int i = 0; i < numberSize; i++) {
             if (computerNumber.get(i) == Integer.parseInt(String.valueOf(input.charAt(i)))) {
                     strikeCount++;
                     noCheck[i] = 1;
