@@ -12,14 +12,14 @@ public class Computer {
     private List<Integer> RandomNumber;
 
     public Computer() {
-        RandomNumber = generateListOf3RandomNumber();
+        RandomNumber = loadList();
     }
 
-    private int chooseRandomNumber() {
-        return pickNumberInRange(RANDOM_NUMBER_MIN_RANGE, RANDOM_NUMBER_MAX_RANGE);
+    public List<Integer> speakNumbers() {
+        return RandomNumber;
     }
 
-    private List<Integer> generateListOf3RandomNumber() {
+    private List<Integer> loadList() {
         List<Integer> randomNumberList = new ArrayList<>();
 
         for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
@@ -35,8 +35,8 @@ public class Computer {
         return randomNumberList;
     }
 
-    public List<Integer> loadRandomNumberList() {
-        return RandomNumber;
+    private int chooseRandomNumber() {
+        return pickNumberInRange(RANDOM_NUMBER_MIN_RANGE, RANDOM_NUMBER_MAX_RANGE);
     }
 
     private boolean isDuplicatedNumber(final List<Integer> randomNumberList, final int number) {
