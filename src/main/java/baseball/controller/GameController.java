@@ -29,9 +29,9 @@ public class GameController {
         while (gameControlNum == RESTART_NUM) {
             input.printInputMsg();
             String userInput = userUtil.getInputNumber();
-            List<Integer> userNums = validation.validateInputNum(userInput);
+            List<Integer> userNumbers = validation.validateInputNum(userInput);
 
-            ResultCount result = compareNumber(computerNumbers, userNums);
+            ResultCount result = compareNumber(computerNumbers, userNumbers);
             int ball = result.ballCount;
             int strike = result.strikeCount;
             output.printResult(ball, strike);
