@@ -8,7 +8,7 @@ public class PlayerInputAccepter {
 	String ReadNum;
 	List<Integer> PlayerInput;
 	
-	public void InputUserNum(String input) {
+	public void InputUserNum(String input) {//사용자의 INPUT을 List화
 		List<Integer> PlayerInput = new ArrayList<>();
 		String[] SplitInput = input.split("");
 		
@@ -18,7 +18,7 @@ public class PlayerInputAccepter {
 		this.PlayerInput = PlayerInput;
 	}
 	
-	public void ReadNumber() {
+	public void ReadNumber() {//입력값 받기
 		ReadNum = Console.readLine();
 	}
 }

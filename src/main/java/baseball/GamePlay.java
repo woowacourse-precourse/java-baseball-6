@@ -20,7 +20,7 @@ public class GamePlay {
 	int ball = 0;
 	int strike = 0;
 	
-	public GamePlay() { 
+	public GamePlay() { //게임 동작 logic
 		while(Gameplay.equals("1")) {
 			answers.RandomNumGeneration();
 			correct = false;
@@ -36,13 +36,13 @@ public class GamePlay {
 		}
 	}
 	
-	public void Gameplay(List<Integer> answer,List<Integer> UserNums) {
+	public void Gameplay(List<Integer> answer,List<Integer> UserNums) {//게임 진행
 			CountBall(answer, UserNums);
 			CountStrike(answer, UserNums);
 			Result();
 		}
 	
-	public void CountBall(List<Integer> answer,List<Integer> UserNums) {
+	public void CountBall(List<Integer> answer,List<Integer> UserNums) {//볼 count
 		for(int i = 0; i < 3; i++) {
 			if(answer.contains(UserNums.get(i))){
 				ball++;
@@ -50,7 +50,7 @@ public class GamePlay {
 		}
 	}
 	
-	public void CountStrike(List<Integer> answer,List<Integer> UserNums) {
+	public void CountStrike(List<Integer> answer,List<Integer> UserNums) {//스트라이크 count
 		for(int i = 0; i < 3; i++) {
 			if(answer.get(i).equals(UserNums.get(i))){
 				strike++;
@@ -58,11 +58,13 @@ public class GamePlay {
 			}
 		}
 	}
-	public void InitialCount() {
+	
+	public void InitialCount() {// ball과 strike count 초기화
 		ball = 0;
 		strike = 0;
 	}
-	public void Result() {
+	
+	public void Result() {// 스트라이크와 볼에 따른 결과 출력
 		print.ResultMessage(ball,strike);
 		
 		if(strike == 3) {
@@ -75,7 +77,7 @@ public class GamePlay {
 		InitialCount();
 		}
 	
-	public void CheckContinueGame() {
+	public void CheckContinueGame() {//게임 종료 후 1과 2중 하나를 받음
 		Gameplay = Console.readLine();
 	}
 	

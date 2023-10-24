@@ -15,19 +15,19 @@ public class PrintMessage {
 	;
 	public static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	
-	 public void StartMessage() {
+	 public void StartMessage() {//시작메시지 출력
 		 System.out.println(START_GAME_MESSAGE);
 	 }
 	 
-	 public void InputMessage() {
+	 public void InputMessage() {//숫자입력 메시지 출력
 		 System.out.print(INPUT_NUM_MESSAGE);
 	 }
 	 
-	 public void CorrectMessage() {
+	 public void CorrectMessage() {//정답 메시지 출력
 		 System.out.println(CORRECT_MESSAGE);
 	 }
 	 
-	 public void ResultMessage(int ball, int strike) {
+	 public void ResultMessage(int ball, int strike) {//ball과 stike의 수에 따른 결과메시지 출력
 			StringBuilder resultMessage = new StringBuilder();
 			if(ball == 0 && strike == 0)
 				resultMessage.append(NOTHING_MESSAGE);
@@ -41,7 +41,7 @@ public class PrintMessage {
 			System.out.println(resultMessage.toString().trim());
 	 }
 	 
-	 public void RestartMessage() {
+	 public void RestartMessage() {//게임 재시작 메시지 출력
 		 System.out.println(RESTART_MESSAGE);
 	 }
 }
