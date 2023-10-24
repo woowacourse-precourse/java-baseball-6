@@ -9,8 +9,4 @@ public enum StatusMessage {
     StatusMessage(String statusName) {
         this.statusName = statusName;
     }
-
-    private String getStatusName(String statusName) {
-        return statusName;
-    }
 }
