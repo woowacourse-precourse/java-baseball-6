@@ -1,7 +1,6 @@
 package baseball.number;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class NumberMatcher {
      * 사용자가 입력한 숫자를 List로 반환
      * @return
      */
-    private static List<Integer> getUserInputAsList(
+    public static List<Integer> getUserInputAsList(
             int startInclusive,
             int endInclusive,
             int count
@@ -44,7 +43,7 @@ public class NumberMatcher {
      * 유효한 사용자 입력을 int 반환
      * @return
      */
-    private static int readValidUserInput(
+    public static int readValidUserInput(
             int startInclusive,
             int endInclusive,
             int count
@@ -55,6 +54,9 @@ public class NumberMatcher {
             if (!isValidNumber(inputNumber, startInclusive, endInclusive, count)) {
                 throw new IllegalArgumentException("입력한 숫자는 범위 내에 있지 않거나 최소값 혹은 최대값 범위를 벗어났습니다.");
             }
+
+            duplicatedInputCheck(inputNumber);
+
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
@@ -62,11 +64,26 @@ public class NumberMatcher {
     }
 
     /**
+     * 중복 숫자 확인
+     * @param inputNumber
+     */
+    public static void duplicatedInputCheck(int inputNumber) {
+        String strNumber = String.valueOf(inputNumber);
+
+        for (int i = 0; i < strNumber.length(); i++) {
+            char currentChar = strNumber.charAt(i);
+            if (strNumber.indexOf(currentChar, i + 1) != -1) {
+                throw new IllegalArgumentException("중복된 숫자가 있습니다: " + currentChar);
+            }
+        }
+    }
+
+    /**
      * 입력 받은 숫자를 List로 반환
      * @param number
      * @return
      */
-    private static List<Integer> convertNumberToList(int number) {
+    public static List<Integer> convertNumberToList(int number) {
         List<Integer> result = new ArrayList<>();
         while (number > 0) {
             result.add(0, number % 10);
@@ -82,7 +99,7 @@ public class NumberMatcher {
      * @param computer
      * @return
      */
-    private static int countStrikes(List<Integer> userInput, List<Integer> computer, int numberLength) {
+    public static int countStrikes(List<Integer> userInput, List<Integer> computer, int numberLength) {
         int count = 0;
         for (int i = 0; i < numberLength; i++) {
             if (userInput.get(i).equals(computer.get(i))) {
@@ -99,7 +116,7 @@ public class NumberMatcher {
      * @param computer
      * @return
      */
-    private static int countBalls(List<Integer> userInput, List<Integer> computer, int numberLength) {
+    public static int countBalls(List<Integer> userInput, List<Integer> computer, int numberLength) {
         int count = 0;
         for (int i = 0; i < numberLength; i++) {
             if (!userInput.get(i).equals(computer.get(i)) && computer.contains(userInput.get(i))) {
@@ -115,7 +132,7 @@ public class NumberMatcher {
      * @param balls
      * @return
      */
-    private static String formatResult(int strikes, int balls) {
+    public static String formatResult(int strikes, int balls) {
         if (strikes == 0 && balls == 0) {
             return "낫싱";
         }
@@ -142,22 +159,6 @@ public class NumberMatcher {
     }
 
     /**
-     * 입력한 숫자 값이 1~9 사이에 있는지 체크
-     * @param number
-     * @return
-     */
-    public static boolean isAllDigitsBetween(int number, int min, int max) {
-        while (number > 0) {
-            int digit = number % 10;
-            if (digit < min || digit > max) {
-                return false;
-            }
-            number /= 10;
-        }
-        return true;
-    }
-
-    /**
      * 자릿수의 최소값을 반환
      * @param digits
      * @return
@@ -177,5 +178,22 @@ public class NumberMatcher {
     public static int calculateMaxValue(int digits) {
         return (int) Math.pow(10, digits) - 1;
     }
+
+    /**
+     * 입력한 숫자 값이 1~9 사이에 있는지 체크
+     * @param number
+     * @return
+     */
+    public static boolean isAllDigitsBetween(int number, int min, int max) {
+        while (number > 0) {
+            int digit = number % 10;
+            if (digit < min || digit > max) {
+                return false;
+            }
+            number /= 10;
+        }
+        return true;
+    }
+
 }
 
