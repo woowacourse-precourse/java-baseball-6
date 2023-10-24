@@ -32,4 +32,28 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+    @Test
+    void 입력_중복된_숫자_포함_예외_테스트() {
+        try{
+            run("112");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo("서로 다른 세자리 숫자만 입력 가능합니다.");
+        }
+    }
+    @Test
+    void 입력_범위_예외_테스트() {
+        try{
+            run("a12");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo("1~9 사이의 숫자만 입력 가능합니다.");
+        }
+    }
+    @Test
+    void 입력_길이_예외_테스트() {
+        try{
+            run("1234");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo("세 자리만 입력 가능합니다.");
+        }
+    }
 }
