@@ -5,13 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class InputException {
-
-    //예외처리
-
-    //- 사용자가 입력한 숫자가 3자리 숫자가 아닌 경우
-    //- 사용자가 입력한 숫자에 중복된 숫자가 있는 경우
-    //- 사용자가 입력한 값이 숫자가 아닌경우
-
+    
     public void checkInputExection(List<Integer> numbers) {
 
         overLengthNumber(numbers);
