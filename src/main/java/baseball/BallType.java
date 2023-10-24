@@ -1,12 +1,12 @@
 package baseball;
 
 public enum BallType {
-	STRIKE,
-	BALL,
-	NOTHING;
+    STRIKE,
+    BALL,
+    NOTHING;
 
-	public boolean isNotNothing() {
-		return this != NOTHING;
-	}
+    public boolean isNotNothing() {
+        return this != NOTHING;
+    }
 
 }
