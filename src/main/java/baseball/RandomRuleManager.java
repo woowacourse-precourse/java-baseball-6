@@ -6,7 +6,7 @@ import java.util.List;
 import static baseball.NumberInfo.*;
 import static baseball.Message.*;
 
-public class ComputerFunction implements NumberManager{
+public class RandomRuleManager implements NumberManager{
     UserFunction userFunction = new UserFunction();
 
     public List<Integer> createNumber(){
