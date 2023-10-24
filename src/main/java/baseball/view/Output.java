@@ -1,17 +1,20 @@
 package baseball.view;
 
+import static baseball.Constants.END_STRIKE_COUNT;
+import static baseball.Constants.INITIAL_COUNT;
+
 public class Output {
     public void printHint(int strikeCount, int ballCount) {
-        if (strikeCount == 3) {
+        if (strikeCount == END_STRIKE_COUNT) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else if (strikeCount == 0 && ballCount == 0) {
+        } else if (strikeCount == INITIAL_COUNT && ballCount == INITIAL_COUNT) {
             System.out.println("낫싱");
-        } else if (strikeCount == 0 && ballCount > 0) {
+        } else if (strikeCount == INITIAL_COUNT && ballCount > INITIAL_COUNT) {
             System.out.println(ballCount + "볼");
-        } else if (strikeCount > 0 && ballCount == 0) {
+        } else if (strikeCount > INITIAL_COUNT && ballCount == INITIAL_COUNT) {
             System.out.println(strikeCount + "스트라이크");
-        } else if (strikeCount > 0 && ballCount > 0) {
+        } else if (strikeCount > INITIAL_COUNT && ballCount > INITIAL_COUNT) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }

@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.Constants.END_STRIKE_COUNT;
+
 import baseball.service.Hint;
 import baseball.validation.ComputerNumber;
 import baseball.validation.ContinueNumber;
@@ -37,11 +39,11 @@ public class Game {
             int strikeCount = hint.getStrikeCount(computer, user);
             int ballCount = hint.getBallCount(computer, user);
             output.printHint(strikeCount, ballCount);
-            if (strikeCount == 3) {
+            if (strikeCount == END_STRIKE_COUNT) {
                 output.printContinue();
                 check = continueCheck();
             }
-            if (strikeCount == 3 && check) {
+            if (strikeCount == END_STRIKE_COUNT && check) {
                 computer = computerNumber.createComputerNumber();
             }
         }

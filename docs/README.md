@@ -99,3 +99,5 @@ ContinueNumber에 대한 검증 수행
     - 추후 입력방식 교체시 Input클래스만 변경함으로 교체가능
 - [X] 비슷한 기능에 따른 패키지 구분 미흡
     - 역할에 따른 controller, service, validation, view로 패키지 구분
+- [ ] 매직넘버를 상수로 치환
+- 

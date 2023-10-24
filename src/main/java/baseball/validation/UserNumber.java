@@ -1,5 +1,10 @@
 package baseball.validation;
 
+import static baseball.Constants.INPUT_MAX_NUM;
+import static baseball.Constants.INPUT_MIN_NUM;
+import static baseball.Constants.MAX_INDEX_SIZE;
+import static baseball.Constants.START_INDEX_NUM;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,13 +23,13 @@ public class UserNumber {
     }
 
     private void checkLength(String word) {
-        if (word.length() != 3) {
+        if (word.length() != MAX_INDEX_SIZE) {
             throw new IllegalArgumentException("입력한 수가 3자리가 아닙니다.");
         }
     }
 
     private void checkDigit(String word) {
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = START_INDEX_NUM; i < word.length(); i++) {
             if (!Character.isDigit(word.charAt(i))) {
                 throw new IllegalArgumentException("문자를 입력하였습니다.");
             }
@@ -33,7 +38,7 @@ public class UserNumber {
 
     private List<Integer> stringToDigit(String word) {
         List<Integer> digitList = new ArrayList<>();
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = START_INDEX_NUM; i < word.length(); i++) {
             int digit = Character.getNumericValue(word.charAt(i));
             digitList.add(digit);
         }
@@ -41,8 +46,8 @@ public class UserNumber {
     }
 
     private void checkZero(List<Integer> digitList) {
-        for (int i = 0; i < digitList.size(); i++) {
-            if (digitList.get(i) == 0) {
+        for (int i = START_INDEX_NUM; i < digitList.size(); i++) {
+            if (digitList.get(i) < INPUT_MIN_NUM || digitList.get(i) > INPUT_MAX_NUM) {
                 throw new IllegalArgumentException("입력한 수에 0이 포함되어있습니다.");
             }
         }
