@@ -12,8 +12,8 @@
 * 볼과 스트라이크를 저장하는 int[] result 변수가 주석이 없다면 무슨기능을 하는지 한 번에 알아보기힘듬 클래스로 분리하여 객체로 분리 필요
 * 평소 알고리즘을 풀던대로 절차지향적인 코드를 작성하다보니 객체지향 언어인 자바의 장점을 살리지 못함 기능별로 클래스 분리 필요
     * mvc 패턴을 만족하려 노력해보기
-    * model - ball과 strike의 변수를 가지는 Result 클래스
-    * view - 결과와 게임플레이 message를 출력하는 Message 클래스
+    * model - ball과 strike의 변수를 가지는 Result 클래스 생성하기
+    * view - 결과와 게임플레이 message를 출력하는 Message 클래스 생성하기
     * controller - 게임 동작을 담당하는 User, Computer, Baseball 클래스 구현하기 
 #### 1차 리팩토링
 * Computer 클래스 util 로 이동 model과 view에 전혀 접점이 없음
@@ -53,3 +53,6 @@
 * 자바 코드컨벤션 가이드
 * userNumber 중복검사에 사용한 HashSet 
 * 컴퓨터 넘버를 리스트에 담는 것과 배열에 담는것중 어느것이 좋은지 공부하기
+* 테스트코드 작성법 공부하기
+
+
