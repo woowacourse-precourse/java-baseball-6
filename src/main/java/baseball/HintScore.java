@@ -31,7 +31,7 @@ public class HintScore {
             if (matchIndex == i) {
                 raiseStrike();
             }
-            if (matchIndex != NOTHING_MATCH_INDEX) {
+            if (matchIndex != i && matchIndex != NOTHING_MATCH_INDEX) {
                 raiseBall();
             }
         }
