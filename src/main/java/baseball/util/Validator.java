@@ -9,9 +9,10 @@ public class Validator {
     // TODO: 입력받은 값의 유효성 검사
     private static final int validationMaxValue = NumberConst.MAX_INPUT_VALUE; // 입력 받은 값의 최대 값
     private static final int validationMinValue = NumberConst.MIN_INPUT_VALUE; // 입력 받은 값의 최소 값
-    private static final MessageUtil MessageUtil = new MessageUtil(); // 메시지 출력 용도
     private static final int inputNumLength = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
 
+    private Validator() {
+    }
 
     /*
      * 유저에게 입력받은 값을 String 타입에서 List<Integer> 타입으로 변환 목적

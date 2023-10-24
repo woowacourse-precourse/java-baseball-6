@@ -16,13 +16,13 @@ public class MessageUtil {
     private static final String invalidInputRangeMessage = MessageConst.INVALID_INPUT_RANGE_MESSAGE;
     private static final String invalidRestartStopValueMessage = MessageConst.INVALID_RESTART_STOP_VALUE_MESSAGE;
 
-
-    public MessageUtil() {}
+    private MessageUtil() {
+    }
 
     /*
      * 게임 시작시 나오는 메시지
      */
-    public void initGame() {
+    public static void initGame() {
         // TODO:
         System.out.println(startMessage);
     }
@@ -30,14 +30,14 @@ public class MessageUtil {
     /*
      * 사용자에게 입력을 받기 위해 출력되는 메시지
      */
-    public void inputNumber() {
+    public static void inputNumber() {
         System.out.print(inputNumberMessage);
     }
 
     /*
      * 스트라이크 개수를 전부 맞힐 경우 출력
      */
-    public void printSuccessGame() {
+    public static void printSuccessGame() {
         System.out.println(successGameMessage);
         System.out.println(gameControlMessage);
     }
@@ -45,7 +45,7 @@ public class MessageUtil {
     /*
      * 사용자에게 입력 받은 이후 볼,스트라이크 개수, 낫싱인지 출력
      */
-    public void printResultGame(int countBall, int countStrike) {
+    public static void printResultGame(int countBall, int countStrike) {
         StringBuilder result = new StringBuilder("");
 
         if (countBall == 0 && countStrike == 0) {
@@ -67,35 +67,35 @@ public class MessageUtil {
     /*
      * 입력받은 값 중 중복 숫자가 있을경우 메시지 출력
      */
-    public void printDuplicatedInputNumber() {
+    public static void printDuplicatedInputNumber() {
         System.out.println(invalidInputDuplicateNumberMessage);
     }
 
     /*
      * 입력받은 값이 EXPECTED_INPUT_LENGTH 이 아닐 경우 메시지 출력
      */
-    public void printInvalidNumber() {
+    public static void printInvalidNumber() {
         System.out.println(invalidInputLengthMessage);
     }
 
     /*
      * 입력받은 값 중 숫자만 포함되지 않을 경우 메시지 출력
      */
-    public void printInvalidNumeric() {
+    public static void printInvalidNumeric() {
         System.out.println(invalidInputIsNumericMessage);
     }
 
     /*
      * NumberConst.MIN_INPUT_VALUE 부터 NumberConst.MAX_INPUT_VALUE 사이 값이 입력되지 않았을 경우 메시지 출력
      */
-    public void printInvalidRange() {
+    public static void printInvalidRange() {
         System.out.println(invalidInputRangeMessage);
     }
 
     /*
      * 게임 종료 이후 NumberConst.RESTART_NUMBER, NumberConst.STOP_NUMBER 값이 아닌 경우 메시지 출력
      */
-    public void printInvalidGameControlInput() {
+    public static void printInvalidGameControlInput() {
         System.out.println(invalidRestartStopValueMessage);
     }
 }

@@ -1,11 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
 
 public class ValidatorTest extends NsTest {
     @Test
@@ -32,6 +31,16 @@ public class ValidatorTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_3자리이상() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
-    public void runMain() { Application.main(new String[]{}); }
+    public void runMain() {
+        Application.main(new String[]{});
+    }
 }

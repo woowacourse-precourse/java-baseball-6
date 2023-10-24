@@ -2,28 +2,25 @@ package baseball;
 
 import baseball.constant.NumberConst;
 import baseball.util.MessageUtil;
-import baseball.validation.InputValidator;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class Game implements Runnable {
-    private static final int restartNumber = NumberConst.RESTART_NUMBER; // 중지 목적 종료 숫자 확인
-    private static final int stopNumber = NumberConst.STOP_NUMBER;
+    private static final int restartNumber = NumberConst.RESTART_NUMBER; // 게임 재 시작 상수
+    private static final int stopNumber = NumberConst.STOP_NUMBER; // 게임 중지 상수
+    private static final int minInputValue = NumberConst.MIN_INPUT_VALUE; // 입력할 수 있는 숫자의 최솟 값
+    private static final int maxInputValue = NumberConst.MAX_INPUT_VALUE; // 입력할 수 있는 숫자의 최대 값
     private static final int inputLength = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
-    private static final MessageUtil messageUtil = new MessageUtil(); // 메시지 출력 용도
-    private static final InputValidator valid = new InputValidator(); // 유효성 검사 용도
     private static final int maxCountStrike = NumberConst.MAX_COUNT_STRIKE; // 성공의 기준이 되는 스트라이크 개수
-
-    private static Game instance = null;
 
     private int compareRestartNum = restartNumber; // 재시작, 종료 여부를 입력받기 위한 변수
     private int countBall; // Ball 개수 확인 용도
     private int countStrike; // Strike 개수 확인 용도
 
-    public void startGame() throws InterruptedException {
+    public void start() throws InterruptedException {
         // TODO: Game 진행
         Thread game = new Thread("Game");
         game.start();
@@ -45,57 +42,44 @@ public class Game implements Runnable {
         List<Integer> user;
 
         // 게임 시작 메시지 출력
-        messageUtil.initGame();
+        MessageUtil.initGame();
 
-        try {
-            // 게임 종료 조건: compareRestartNum이 STOP_NUMBER인 경우
-            while (compareRestartNum != stopNumber) {
-                // 유저에게 숫자 입력 요청
-                messageUtil.inputNumber();
+        // 게임 종료 조건: compareRestartNum 이 stopNumber 인 경우
+        while (compareRestartNum != stopNumber) {
+            // 유저에게 숫자 입력 요청
+            MessageUtil.inputNumber();
+            InputString = Console.readLine();
+
+            // 입력 값 유효성 검사 및 리스트로 변환
+            user = Validator.validateInputValueAndReturnList(InputString);
+
+            // 볼과 스트라이크 개수 확인하여 업데이트
+            updateBallAndStrikeCounts(user, computer);
+
+            // 결과 출력
+            MessageUtil.printResultGame(countBall, countStrike);
+
+            // 게임 성공 시 처리(countStrike 가 maxCountStrike 와 같은 경우)
+            if (countStrike == maxCountStrike) {
+                MessageUtil.printSuccessGame();
                 InputString = Console.readLine();
-
-                // 입력 값 유효성 검사 및 리스트로 변환
-                user = valid.validateInputValueAndReturnList(InputString);
-
-                // 볼과 스트라이크 개수 확인하여 업데이트
-                updateBallAndStrikeCounts(user, computer);
-
-                // 결과 출력
-                messageUtil.printResultGame(countBall, countStrike);
-
-                // 게임 성공 시 처리(countStrike가 MAX_COUNT_STRIKE와 같은 경우)
-                if (countStrike == maxCountStrike) {
-                    messageUtil.printSuccessGame();
-                    InputString = Console.readLine();
-                    compareRestartNum = Integer.parseInt(InputString);
-                    InputValidator.validationRestartAndStopValue(compareRestartNum);
-
-                    // 게임 재시작인 경우 새로운 랜덤 숫자 생성
-                    if (compareRestartNum == restartNumber) {
-                        computer = createRandomNumber();
-                    }
-                }
-
-                // 볼과 스트라이크 개수 초기화
-                countBall = 0;
-                countStrike = 0;
+                compareRestartNum = Integer.parseInt(InputString);
+                Validator.validationRestartAndStopValue(compareRestartNum);
             }
-        } catch (NoSuchElementException exception) {
-            stop();
-        } finally {
-            Console.close();
+
+            // 게임 성공이면서 게임 재시작인 경우 새로운 랜덤 숫자 생성
+            if (countStrike == maxCountStrike && compareRestartNum == restartNumber) {
+                computer = createRandomNumber();
+            }
+
+            // 볼과 스트라이크 개수 초기화
+            countBall = 0;
+            countStrike = 0;
         }
+        Console.close();
     }
 
-    private Game() {
-    }
-
-    public static Game getInstance() {
-        if (instance == null) {
-            instance = new Game();
-        }
-
-        return instance;
+    public Game() {
     }
 
     /*
@@ -109,12 +93,19 @@ public class Game implements Runnable {
      * 컴퓨터가 생성하는 랜덤 숫자 (3자리 수이며 각 숫자 간 중복은 없음)
      */
     private List<Integer> createRandomNumber() {
-        // TODO: 랜덤 숫자 생성 (3자리 수)
+        // TODO: 랜덤 숫자 생성 (inputLength 자리 수)
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9); // 1부터 9 랜덤 값 생성
-            if (!randomNumbers.contains(randomNumber)) { // 중복 값이 있는지 확인
-                randomNumbers.add(randomNumber); // 중복 값이 없을 경우 List Element 추가
+        while (randomNumbers.size() < inputLength) {
+            // minInputValue 부터 maxInputValue 랜덤 값 생성
+            int randomNumber = Randoms.pickNumberInRange(
+                    minInputValue,
+                    maxInputValue
+            );
+
+            // 중복 값이 있는지 확인
+            if (!randomNumbers.contains(randomNumber)) {
+                // 중복 값이 없을 경우 List Element 추가
+                randomNumbers.add(randomNumber);
             }
         }
         return randomNumbers;
@@ -131,11 +122,14 @@ public class Game implements Runnable {
         for (int i = 0; i < inputLength; i++) {
             int userNumber = user.get(i);
             int computerNumber = computer.get(i);
-            if (userNumber == computerNumber) { // 동일 위치 동일 숫자 경우 스트라이크 증가
+
+            // 동일 위치 동일 숫자 경우 스트라이크 증가
+            if (userNumber == computerNumber) {
                 countStrike++;
                 continue;
             }
-            if (computer.contains(userNumber)) { // 현재 위치는 아니나 다른 위치 값 존재 시 볼 증가
+            // 현재 위치는 아니나 다른 위치 값 존재 시 볼 증가
+            if (computer.contains(userNumber)) {
                 countBall++;
             }
         }
