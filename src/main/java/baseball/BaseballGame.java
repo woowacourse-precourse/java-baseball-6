@@ -2,12 +2,15 @@ package baseball;
 
 /* 게임을 반복 진행 */
 public class BaseballGame {
-    private final BaseballView baseballView; // 입출력 스크립트
+    private final BaseballInputView baseballInputView; // 입력문
+    private final BaseballOutputView baseballOutputView; // 출력문
     private final BaseballComputer baseballComputer; // 게임에 필요한 숫자를 생성
     private final BaseballUmpire baseballUmpire; // 유저가 입력한 숫자를 판정
 
-    public BaseballGame(BaseballView baseballView, BaseballComputer baseballComputer, BaseballUmpire baseballUmpire) {
-        this.baseballView = baseballView;
+    public BaseballGame(BaseballInputView baseballInputView, BaseballOutputView baseballOutputView,
+                        BaseballComputer baseballComputer, BaseballUmpire baseballUmpire) {
+        this.baseballInputView = baseballInputView;
+        this.baseballOutputView = baseballOutputView;
         this.baseballComputer = baseballComputer;
         this.baseballUmpire = baseballUmpire;
     }
@@ -15,8 +18,9 @@ public class BaseballGame {
     public void start() {
         do {
             String computerNumber = baseballComputer.createComputerNumber(); // 컴퓨터 숫자 생성
+            System.out.println(computerNumber);
             do {
-                String userNumber = baseballView.inputUserNumber(); // 유저 숫자 입력
+                String userNumber = baseballInputView.inputUserNumber(); // 유저 숫자 입력
                 printGameResult(umpire(computerNumber, userNumber)); // 판정 결과 출력
             } while (!isThreeStrike());
         } while (!isGameEnd());
@@ -37,26 +41,26 @@ public class BaseballGame {
 
     private void printStrike(int strikeCount) {
         if (isStrike(strikeCount)) {
-            baseballView.outputCount(strikeCount);
-            baseballView.outputResultStrike();
+            baseballOutputView.outputCount(strikeCount);
+            baseballOutputView.outputResultStrike();
         }
     }
 
     private void printBall(int ballCount, int strikeCount) {
         if (isBall(ballCount)) {
             if (isStrike(strikeCount)) {
-                baseballView.outputCount(ballCount);
-                baseballView.outputResultBallWithStrike();
+                baseballOutputView.outputCount(ballCount);
+                baseballOutputView.outputResultBallWithStrike();
             } else {
-                baseballView.outputCount(ballCount);
-                baseballView.outputResultBallWithoutStrike();
+                baseballOutputView.outputCount(ballCount);
+                baseballOutputView.outputResultBallWithoutStrike();
             }
         }
     }
 
     private void printNothing(int ballCount, int strikeCount) {
         if (isNothing(ballCount, strikeCount)) {
-            baseballView.outputResultNothing();
+            baseballOutputView.outputResultNothing();
         }
     }
 
@@ -75,7 +79,7 @@ public class BaseballGame {
     private boolean isThreeStrike() {
         // 3 strike인지 확인
         if (checkThreeStrike()) {
-            baseballView.outputFinishGame();
+            baseballOutputView.outputFinishGame();
             return true;
         }
         return false;
@@ -91,6 +95,6 @@ public class BaseballGame {
     }
 
     private boolean checkGameEnd() {
-        return baseballView.inputSelectRestartOrEnd().equals("2");
+        return baseballInputView.inputSelectRestartOrEnd().equals("2");
     }
 }

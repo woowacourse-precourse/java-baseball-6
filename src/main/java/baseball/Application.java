@@ -2,13 +2,15 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballView baseballView = new BaseballView();
+        BaseballInputView baseballInputView = new BaseballInputView();
+        BaseballOutputView baseballOutputView = new BaseballOutputView();
         BaseballComputer baseballComputer = new BaseballComputer();
         BaseballUmpire baseballUmpire = new BaseballUmpire();
 
         // 게임 시작
-        BaseballGame baseballGame = new BaseballGame(baseballView, baseballComputer, baseballUmpire);
-        baseballView.outputGameStart();
+        BaseballGame baseballGame = new BaseballGame(baseballInputView, baseballOutputView, baseballComputer,
+                baseballUmpire);
+        baseballOutputView.outputGameStart();
         baseballGame.start();
     }
 }
