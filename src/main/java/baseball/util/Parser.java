@@ -16,6 +16,10 @@ public class Parser {
         return '0' <= input.charAt(i) && input.charAt(i) <= '9';
     }
 
+    private int convertCharToInt(String input, int i) {
+        return input.charAt(i) - '0';
+    }
+
     private int[] getParseInt(String input, int size) throws IllegalArgumentException {
         int[] parseInt = new int[size];
 
@@ -26,9 +30,5 @@ public class Parser {
             parseInt[i] = convertCharToInt(input, i);
         }
         return parseInt;
-    }
-
-    private int convertCharToInt(String input, int i) {
-        return input.charAt(i) - '0';
     }
 }
