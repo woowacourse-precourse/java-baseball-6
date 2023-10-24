@@ -3,15 +3,19 @@ package baseball.domain;
 import baseball.domain.computer.Computer;
 import baseball.domain.computer.GameState;
 import baseball.domain.player.Player;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static baseball.domain.GameResult.calculateBaseBallGame;
 
 public class BaseBallGame {
-
+    private static String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+    private static String INPUT_NUMBERS_DELIMITER = "";
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean playAgain = true;
@@ -25,17 +29,8 @@ public class BaseBallGame {
     private void playRound() {
         boolean ongoing = false;
         while(!ongoing) {
-            System.out.print("숫자를 입력해주세요: ");
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
-            List<Integer> playerNumbers = new ArrayList<>();
+            List<Integer> playerNumbers = InputNumbers();
 
-            for (char c : input.toCharArray()) {
-                if (Character.isDigit(c)) {
-                    int digit = Character.getNumericValue(c);
-                    playerNumbers.add(digit);
-                }
-            }
             Computer computerAnswerByRandomGenerator = Computer.createComputerAnswerByRandomGenerator(GameState.RUNNING);
             Player playerByIntegerNumbers = Player.createPlayerByIntegerNumbers(playerNumbers);
             String result = checkGuess(playerByIntegerNumbers, computerAnswerByRandomGenerator);
@@ -46,6 +41,16 @@ public class BaseBallGame {
             }
         }
     }
+
+    private static List<Integer> InputNumbers() {
+        System.out.print(INPUT_NUMBERS_MESSAGE);
+        String inputBaseBallNumbers = Console.readLine();
+        List<Integer> playerNumbers = Arrays.stream(inputBaseBallNumbers.split(INPUT_NUMBERS_DELIMITER))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        return playerNumbers;
+    }
+
     private String checkGuess(Player player, Computer computer) {
         GameResult gameResult = calculateBaseBallGame(player, computer);
         System.out.println(computer.getAnswerNumbers());
