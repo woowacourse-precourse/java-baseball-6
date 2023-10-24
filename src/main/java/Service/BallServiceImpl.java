@@ -48,7 +48,7 @@ public class BallServiceImpl implements BallService {
             if (number < '1' || number > '9') { // 1 ~ 9 가 아닐경우
                 return false;
             }
-            
+
             if (checkNumber[number - '0']) { //이미 중복된 숫자가 있는 경우
                 return false;
             }
@@ -67,18 +67,29 @@ public class BallServiceImpl implements BallService {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (randomNumber.charAt(i) != ballCount.charAt(j)) {//랜덤 숫자와 입력한 숫자가 다를 경우
+                //랜덤 숫자와 입력한 숫자가 다를 경우
+                if (randomNumber.charAt(i) != ballCount.charAt(j)) {
                     continue;
                 }
-
-                if (i == j) { //자리에 있는 숫자가 같을 때 스트라이크!
+                //자리에 있는 숫자가 같을 때 스트라이크!
+                if (i == j) {
                     strike++;
-                } else if (i != j) { //자리는 다르지만 같은 숫자가 있을 때 볼!
+                }//자리는 다르지만 같은 숫자가 있을 때 볼!
+                else if (i != j) {
                     ball++;
                 }
             }
         }
 
+        printBallCount(ball, strike);
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void printBallCount(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (ball > 0 && strike > 0) {
@@ -87,10 +98,6 @@ public class BallServiceImpl implements BallService {
             System.out.println(ball + "볼");
         } else if (ball == 0 && strike > 0) {
             System.out.println(strike + "스트라이크");
-            if (strike == 3) {
-                return true;
-            }
         }
-        return false;
     }
 }
