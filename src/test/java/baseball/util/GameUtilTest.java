@@ -3,6 +3,7 @@ package baseball.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.mockito.InjectMocks;
 
 import java.lang.reflect.InvocationTargetException;
@@ -44,5 +45,31 @@ class GameUtilTest {
 
         Assertions.assertEquals(method.invoke(gameUtil, computerNumber1, playerNumber1), 3);
         Assertions.assertEquals(method.invoke(gameUtil, computerNumber2, playerNumber2), 1);
+    }
+
+    @Test
+    @DisplayName("Ball Count 및 Strike Count의 Hint 문자열")
+    void showHint() {
+        String computerNumber1 = "123";
+        String playerNumber1 = "123";
+        GameUtil gameUtil1 = new GameUtil();
+
+        String computerNumber2 = "143";
+        String playerNumber2 = "532";
+        GameUtil gameUtil2 = new GameUtil();
+
+        String computerNumber3 = "143";
+        String playerNumber3 = "132";
+        GameUtil gameUtil3 = new GameUtil();
+
+        gameUtil1.computeCount(computerNumber1, playerNumber1);
+        gameUtil2.computeCount(computerNumber2, playerNumber2);
+        gameUtil3.computeCount(computerNumber3, playerNumber3);
+
+
+        Assertions.assertEquals(gameUtil1.showHint(), "3스트라이크");
+        Assertions.assertEquals(gameUtil2.showHint(), "1볼");
+        Assertions.assertEquals(gameUtil3.showHint(), "1볼 1스트라이크");
+
     }
 }
