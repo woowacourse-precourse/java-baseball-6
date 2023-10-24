@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class Application {
@@ -21,11 +22,24 @@ public class Application {
     }
 
     public static String validateUserInput() {
-        // TODO : 추가 검증 로직 구현
         String userInput = Console.readLine();
+
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
         }
+
+        char[] userInputArray = userInput.toCharArray();
+        HashSet<Character> checkDuplicate = new HashSet<>();
+        for (char ch : userInputArray) {
+            if (ch > '9' || ch < '1') {
+                throw new IllegalArgumentException();
+            }
+            checkDuplicate.add(ch);
+        }
+        if (checkDuplicate.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+
         return userInput;
     }
 
@@ -63,7 +77,7 @@ public class Application {
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if (!validateContinue())
+            if (!validateContinue()) {
                 return;
             }
         }
