@@ -2,11 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
+
     public static void main(String[] args) {
 
         while (true) {
@@ -31,8 +34,9 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String fin = Console.readLine();
-            if (fin.equals("1")) {
-            } else if (fin.equals("2")) {
+
+            if (fin.equals(RESTART)) {
+            } else if (fin.equals(EXIT)) {
                 break;
             } else {
                 throw new IllegalArgumentException();
