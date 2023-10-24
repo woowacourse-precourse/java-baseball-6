@@ -33,10 +33,7 @@ public class GenerationQuestionList {
     }
 
     private boolean includeNumber(int randomNumber, List<Integer> checkedList) {
-        if (checkedList.contains(randomNumber)) {
-            return true;
-        }
-        return false;
+        return checkedList.contains(randomNumber);
     }
 
     public boolean validWithinRange(withinRange randomNumberInRange) {
