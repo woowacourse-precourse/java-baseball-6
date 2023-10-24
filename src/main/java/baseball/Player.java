@@ -14,6 +14,7 @@ public class Player {
         this.inputHandler = new InputHandler();
     }
 
+    // 입력된 문자에 대해 예외 처리 및 숫자로 변환
     public List<Integer> getNumbers() {
         System.out.print(PROMPT_NUMBER_INPUT);
         String input = Console.readLine();
