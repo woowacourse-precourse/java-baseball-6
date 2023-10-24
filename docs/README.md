@@ -21,8 +21,8 @@
   - ✅ 그 결과 도출된 ball의 값을 반환
 
 ### Game(게임)
-- [x] initialiser 구현
-  - [x] Oppoent에서 initialise된 값들을 들고 와서(컴퓨터의 랜덤 수) 초기값을 설정
+- ✅ initialiser 구현
+  - ✅ Oppoent에서 initialise된 값들을 들고 와서(컴퓨터의 랜덤 수) 초기값을 설정
 - [x] gamePlay 매서드 구현
   - [x] 사용자로 부터 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 받음
   - [x] `validateDataType` 메서드로 타입 확인
