@@ -6,22 +6,28 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
+import baseball.models.Score;
+import baseball.rule.Rule;
 
 public class Baseball {
-    int score;
-
+    //규칙
+    Rule rule = new Rule();
     public void start() {
+
+        //점수
+        Score score = new Score();
+
         /* --- 컴퓨터 정답 생성 --- */
         List<Integer> computer = getComputerNum();
 
         /* --- 유저 입력값 받기 --- */
-        while (score < 4){
+        while (score.strikeCount() < 4){
             /* --- 유저 입력값 확인 --- */
             List<Integer> user = getUserNum();
 
             /* --- 야구 게임 진행 --- */
             countScore(computer, user, score);
-
+            printFinal(score);
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -50,6 +56,11 @@ public class Baseball {
         System.out.println("숫자를 입력해주세요 : ");
         String userNumInput = readLine();
         isUserNum(userNumInput);
+        List<Integer> userNum = new ArrayList<>();
+        for (String s : userNumInput.split("")){
+            userNum.add(Integer.parseInt(s));
+        }
+        return userNum;
     }
 
 
@@ -79,5 +90,15 @@ public class Baseball {
 
     }
 
+    /* --- 야구 게임 진행 --- */
+    public void countScore(List<Integer> computer,List<Integer>  user, Score s){
+        int strikes = rule.numStrike(computer, user);
+        int balls = rule.numBall(computer, user);
+        s.updateScore(strikes, balls);
+    }
+
+    public void printFinal(Score score){
+        rule.printResult(score.strikeCount(), score.ballCount());
+    }
 
 }
