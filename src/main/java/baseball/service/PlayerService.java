@@ -10,7 +10,8 @@ public class PlayerService {
     public String inputGuessNumber() {
         String input = Console.readLine();
         InputValidator.validateDigitCount(input);
-
+        InputValidator.validateDuplicates(input);
+        
         return input;
     }
 
