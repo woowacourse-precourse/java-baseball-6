@@ -107,4 +107,51 @@ class PlayerTest {
             assertThat(result).isEqualTo(expected);
         }
     }
+
+    @Nested
+    @DisplayName("[Ball 단일 계산 테스트]")
+    class CaculateBallTest {
+
+        @Test
+        @DisplayName("볼 수가 1개이면 볼 수를 1개 반환할 수 있다.")
+        void caculateOneBall() {
+            // given
+            Player input = Player.createPlayerByIntegerNumbers(Arrays.asList(3, 4, 5));
+            int expected = 1;
+
+            // when
+            int result = answerNumbers.calculateBallCounts(input);
+
+            // then
+            assertThat(result).isEqualTo(expected);
+        }
+
+        @Test
+        @DisplayName("볼 수가 2개이면 볼 수를 2개 반환할 수 있다.")
+        void calculateTwoBall() {
+            // given
+            Player input = Player.createPlayerByIntegerNumbers(Arrays.asList(2, 3, 4));
+            int expected = 2;
+
+            // when
+            int result = answerNumbers.calculateBallCounts(input);
+
+            // then
+            assertThat(result).isEqualTo(expected);
+        }
+
+        @Test
+        @DisplayName("볼 수가 3개이면 볼 수를 3개 반환할 수 있다.")
+        void calculateThreeBall() {
+            // given
+            Player input = Player.createPlayerByIntegerNumbers(Arrays.asList(3, 1, 2));
+            int expected = 3;
+
+            // when
+            int result = answerNumbers.calculateBallCounts(input);
+
+            // then
+            assertThat(result).isEqualTo(expected);
+        }
+    }
 }

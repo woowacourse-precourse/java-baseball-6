@@ -51,4 +51,17 @@ public class Player {
     private boolean isStrike(Player player, int idx) {
         return player.numbers.get(idx).equals(this.numbers.get(idx));
     }
+
+    public int calculateBallCounts(Player player) {
+        return (int) IntStream.rangeClosed(0, 2)
+                .filter(index -> isBall(player, index))
+                .count();
+    }
+
+    private boolean isBall(Player player, int index) {
+        if (isStrike(player, index)) {
+            return false;
+        }
+        return this.numbers.contains(player.numbers.get(index));
+    }
 }
