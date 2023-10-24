@@ -74,6 +74,23 @@ public class GameView {
         return user;
     }
 
+    //재시작 여부 입력받기
+    public boolean replay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String ans = Console.readLine();
+
+        if (ans.length() > 1) {
+            throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
+        }
+        if (!ans.equals("1") && !ans.equals("2")) {
+            throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
+        }
+        if (ans.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
     //게임 시작
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
