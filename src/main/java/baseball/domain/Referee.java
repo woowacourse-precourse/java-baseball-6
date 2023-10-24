@@ -21,11 +21,8 @@ public class Referee {
 
     public void checkResult(){
         init();
-        int strike = checkStrike();
-        int ball = checkBall();
-
-        OutputView outputView = new OutputView();
-        outputView.printResultMessage(strike,ball);
+        checkStrike();
+        checkBall();
     }
 
     void init(){

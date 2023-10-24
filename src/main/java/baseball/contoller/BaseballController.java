@@ -48,6 +48,8 @@ public class BaseballController {
 
             referee.checkResult();
 
+            outputView.printResultMessage(referee.getStrike(),referee.getBall());
+
             if(referee.getStrike() == 3){
                 outputView.printMatchAllNumberMessage();
                 restart = baseballService.restart(inputView.inputRestart());
