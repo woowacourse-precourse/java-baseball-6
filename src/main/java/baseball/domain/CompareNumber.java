@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class CompareNumber {
     public void ballCounter(List<Integer> playerNumber, List<Integer> computerNumber){
         ball = 0;
         for (int i = 0; i<playerNumber.size(); i++){
-            if(computerNumber.contains(playerNumber.get(i))){
+            if(computerNumber.get(i)!=playerNumber.get(i) && computerNumber.contains(playerNumber.get(i))){
                 ball++;
             }
         }
@@ -28,7 +28,6 @@ public class CompareNumber {
                 strike++;
             }
         }
-        ball = ball - strike;
     }
 
     public static boolean successCheck(int[] result){
