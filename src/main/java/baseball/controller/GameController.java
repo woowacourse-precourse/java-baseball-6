@@ -9,9 +9,14 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private final NumberComparator numberComparator = new NumberComparator();
-    private final ProgramNumber programNumber = new ProgramNumber();
+    private final NumberComparator numberComparator;
+    private final ProgramNumber programNumber;
     private UserNumber userNumber;
+
+    public GameController(NumberComparator numberComparator, ProgramNumber programNumber) {
+        this.numberComparator = numberComparator;
+        this.programNumber = programNumber;
+    }
 
     public void startGame() {
         OutputView.printStart();
