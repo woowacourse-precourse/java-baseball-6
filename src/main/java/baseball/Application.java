@@ -53,19 +53,22 @@ public class Application {
     }
 
     public static boolean restartEndGame() {
-        System.out.println("3스트라이크\n"
-                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
-                +"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        makeResultThreeStrike();
         String userOpinion = Console.readLine();
         return userOpinion.equals("1");
 
+    }
+    public static void makeResultThreeStrike(){
+        System.out.println("3스트라이크\n"
+                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                +"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
     public static int judgeBall(HashMap<Integer, Integer> map, List<Integer> user, int m, int ball) {
         if(user.get(m) != map.get(user.get(m)) && map.containsKey(user.get(m)) == true) {
             ball++;
             return ball;
         }
-        
+
         return ball;
     }
     public static int judgeStrike(HashMap<Integer, Integer> map, List<Integer> user, int m, int strike) {
