@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.counter.CountResult;
+import baseball.counter.Counter;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -41,10 +43,10 @@ public class Computer {
         return this.numbers.contains(randomNumber);
     }
 
-    public String getGameResultMessage(Player player) {
-        Result result = calculateGameResult(player);
-        int strike = result.getStrike();
-        int ball = result.getBall();
+    public String generateGameResultMessage(Player player) {
+        CountResult countStrikeAndBall = Counter.countStrikeAndBall(this.numbers, player.getNumbers());
+        int strike = countStrikeAndBall.strike();
+        int ball = countStrikeAndBall.ball();
 
         if (strike == 0 && ball == 0) {
             return RESULT_NOTHING;
@@ -68,26 +70,5 @@ public class Computer {
         }
 
         return message.toString();
-    }
-
-    public Result calculateGameResult(Player player) {
-        int strike = 0;
-        int ball = 0;
-
-        int computerNumber, playerNumber;
-        for (int i = 0; i < this.numbers.size(); i++) {
-            computerNumber = this.numbers.get(i);
-            playerNumber = player.getNumbers().get(i);
-
-            if (computerNumber == playerNumber) {
-                strike++;
-            }
-
-            if (this.numbers.contains(playerNumber) && computerNumber != playerNumber) {
-                ball++;
-            }
-        }
-
-        return new Result(strike, ball);
     }
 }
