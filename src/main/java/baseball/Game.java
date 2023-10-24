@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.RandomNum.LENGTH;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,22 +37,22 @@ public class Game {
 
     public Boolean isValid(String guessNumsStr) {
         int guessNumsInt;
-        ArrayList<Integer> guessNums = new ArrayList<Integer>();
+        ArrayList<Integer> guessNums = new ArrayList<>();
 
         try {
             guessNumsInt = Integer.parseInt(guessNumsStr);
+
+            // 3자리인지
+            if (!isValidLength(guessNumsStr)) {
+                throw new IllegalArgumentException();
+            }
 
             // 0이 들어가지 않았는지
             if (!isValidRange(guessNumsStr)) {
                 throw new IllegalArgumentException();
             }
 
-            // 3자리의 숫자인지
-            if (!isValidLength(guessNumsInt)) {
-                throw new IllegalArgumentException();
-            }
-
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < LENGTH; i++) {
                 int num = guessNumsInt % 10;
                 guessNumsInt /= 10;
                 guessNums.add(0, num);
@@ -69,16 +71,16 @@ public class Game {
         return true;
     }
 
+    private Boolean isValidLength(String guessNumsStr) {
+        return guessNumsStr.length() == LENGTH;
+    }
+
     private Boolean isValidRange(String guessNumsStr) {
         return !guessNumsStr.contains("0");
     }
 
-    private Boolean isValidLength(int guessNumsInt) {
-        return guessNumsInt / 100 >= 1 && guessNumsInt / 100 <= 9;
-    }
-
     private Boolean isDifferentNums(ArrayList<Integer> guessNums) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             int g = guessNums.get(i);
             if (Collections.frequency(guessNums, g) > 1) {
                 return false;
@@ -95,7 +97,7 @@ public class Game {
         // 낫싱: 0, 볼 또는 스트라이크: 1, 3개의 숫자를 모두 맞힐 경우: 2
         int result = -1;
 
-        if (strike == 3) {
+        if (strike == LENGTH) {
             System.out.println(strike + "스트라이크");
             System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 

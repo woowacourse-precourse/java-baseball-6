@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class RandomNum {
-    private static final int LENGTH = 3;
-    private static final int MIN_NUM = 1;
-    private static final int MAX_NUM = 9;
+    public static final int LENGTH = 3;
+    public static final int MIN_NUM = 1;
+    public static final int MAX_NUM = 9;
     private ArrayList<Integer> nums = new ArrayList<>();
 
     public RandomNum() {
