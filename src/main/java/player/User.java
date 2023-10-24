@@ -21,7 +21,7 @@ public class User implements BaseballPlayer {
     }
 
     @Override
-    public BaseballNumbers getBaseballNumbers() {
-        return this.baseballNumbers;
+    public List<Integer> getBaseballNumbers() {
+        return baseballNumbers.getBaseballNumbers();
     }
 }

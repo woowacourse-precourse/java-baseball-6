@@ -1,8 +1,10 @@
 package player;
 
+import java.util.List;
+
 public interface BaseballPlayer {
 
     void inputBaseballNumbers();
 
-    BaseballNumbers getBaseballNumbers();
+    List<Integer> getBaseballNumbers();
 }

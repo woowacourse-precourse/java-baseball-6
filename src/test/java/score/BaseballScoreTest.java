@@ -36,7 +36,8 @@ public class BaseballScoreTest {
         BaseballNumbers playerInput = new BaseballNumbers(baseballNumbers1);
 
         //when
-        score.calculateStrikeAndBall(computerInput, playerInput);
+        score.calculateStrikeAndBall(computerInput.getBaseballNumbers(),
+                playerInput.getBaseballNumbers());
 
         //then
         assertThat(score.getStrike()).isEqualTo(2);
@@ -60,7 +61,8 @@ public class BaseballScoreTest {
         BaseballNumbers playerInput = new BaseballNumbers(baseballNumbers1);
 
         //when
-        score.calculateStrikeAndBall(computerInput, playerInput);
+        score.calculateStrikeAndBall(computerInput.getBaseballNumbers(),
+                playerInput.getBaseballNumbers());
 
         //then
         assertThat(score.getBall()).isEqualTo(2);
@@ -84,7 +86,8 @@ public class BaseballScoreTest {
         BaseballNumbers playerInput = new BaseballNumbers(baseballNumbers1);
 
         //when
-        score.calculateStrikeAndBall(computerInput, playerInput);
+        score.calculateStrikeAndBall(computerInput.getBaseballNumbers(),
+                playerInput.getBaseballNumbers());
 
         //then
         assertThat(score.getBall()).isEqualTo(1);

@@ -1,6 +1,6 @@
 package score;
 
-import player.BaseballNumbers;
+import java.util.List;
 
 public class BaseballScore {
 
@@ -12,8 +12,8 @@ public class BaseballScore {
         this.ball = 0;
     }
 
-    public void calculateStrikeAndBall(BaseballNumbers playerNumbers,
-                                       BaseballNumbers otherPlayerNumbers) {
+    public void calculateStrikeAndBall(List<Integer> playerNumbers,
+                                       List<Integer> otherPlayerNumbers) {
         for (int i = 0; i < playerNumbers.size(); i++) {
             Integer playerNumber = playerNumbers.get(i);
             Integer otherPlayerNumber = otherPlayerNumbers.get(i);

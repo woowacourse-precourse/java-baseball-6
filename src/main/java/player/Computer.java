@@ -23,7 +23,8 @@ public class Computer implements BaseballPlayer {
         this.baseballNumbers = new BaseballNumbers(computerBaseballNumber);
     }
 
-    public BaseballNumbers getBaseballNumbers() {
-        return this.baseballNumbers;
+    @Override
+    public List<Integer> getBaseballNumbers() {
+        return baseballNumbers.getBaseballNumbers();
     }
 }

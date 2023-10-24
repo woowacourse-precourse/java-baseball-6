@@ -1,5 +1,6 @@
 package player;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +12,6 @@ public class BaseballNumbers {
     private static final String ONLY_THREE_NUMBER = "3자리의 숫자만 입력가능합니다.";
     private static final String NO_DUPLICATE_NUMBER = "중복된 숫자는 입력 불가능합니다.";
     private static final String INVALID_NUMBER_RANGE = "각 숫자는 1 ~ 9 까지만 입력 가능합니다.";
-
     private final List<Integer> baseballNumbers;
 
     public BaseballNumbers(List<Integer> baseballNumbers) {
@@ -19,18 +19,6 @@ public class BaseballNumbers {
         validateNumberLength();
         validateDuplicateNumber();
         validateBelowRange();
-    }
-
-    public int size() {
-        return baseballNumbers.size();
-    }
-
-    public Integer get(int index) {
-        return baseballNumbers.get(index);
-    }
-
-    public boolean contains(Integer baseballNumber) {
-        return baseballNumbers.contains(baseballNumber);
     }
 
     private void validateNumberLength() {
@@ -53,5 +41,9 @@ public class BaseballNumbers {
                 throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
             }
         }
+    }
+
+    public List<Integer> getBaseballNumbers() {
+        return Collections.unmodifiableList(baseballNumbers);
     }
 }
