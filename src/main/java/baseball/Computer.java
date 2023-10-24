@@ -38,4 +38,9 @@ public class Computer {
     return result;
   }
 
+  // 테스트용 메서드
+  public List<Integer> getAnswer() {
+    return answer;
+  }
+
 }
