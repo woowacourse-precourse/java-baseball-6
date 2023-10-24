@@ -58,7 +58,7 @@ public class ValidException {
     }
 
     /**
-     * 숫자입력에 대한 기본적인 예외처리
+     * 숫자입력에 대한 기본 적인 예외처리
      * 숫자타입, 양수검사
      */
     public static void isValidBasicNumException(String inputStr) {
