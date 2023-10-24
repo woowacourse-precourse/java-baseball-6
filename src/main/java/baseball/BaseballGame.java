@@ -5,6 +5,18 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.List;
 
 public class BaseballGame {
+
+
+    public void rePlay() {
+        RandomNumber randomNumbers = new RandomNumber();
+        List<Integer> cpuNewInput = randomNumbers.getRandomNumbers();
+        System.out.println("컴퓨터 숫자:" + cpuNewInput);
+        System.out.print("숫자를 입력해주세요 : ");
+        String userNewInput = readLine();
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.play(cpuNewInput, userNewInput);
+    }
+
     public void play(List<Integer> target, String input) {
         List<Integer> reTarget = target;
         int strike = 0;
@@ -31,12 +43,7 @@ public class BaseballGame {
 
             String userDecide = readLine();
             if (userDecide.equals("1")) {
-                RandomNumber randomNumbers = new RandomNumber();
-                List<Integer> cpuNewInput = randomNumbers.getRandomNumbers();
-                System.out.println("컴퓨터 숫자:" + cpuNewInput);
-                System.out.print("숫자를 입력해주세요 : ");
-                String userNewInput = readLine();
-                play(cpuNewInput, userNewInput);
+                rePlay();
             } else if (userDecide.equals("2")) {
 
             }
