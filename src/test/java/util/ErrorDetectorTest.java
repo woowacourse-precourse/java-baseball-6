@@ -1,4 +1,4 @@
-package baseball;
+package util;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static util.ErrorDetector.throwIfNumbersInputInvalid;
