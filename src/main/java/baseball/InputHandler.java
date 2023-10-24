@@ -14,6 +14,7 @@ public class InputHandler {
         String input = Console.readLine();
         validateIsNumber(input);
         validateNumberSize(input);
+        validateNoDuplicate(input);
         return input;
     }
 
@@ -23,9 +24,18 @@ public class InputHandler {
         }
     }
 
-    private static void validateNumberSize(String input) {
+    private void validateNumberSize(String input) {
         if (input.length() != MAX_NUMBER_SIZE) {
             throw new IllegalArgumentException(MAX_NUMBER_SIZE + "자리의 수를 입력해주세요.");
+        }
+    }
+
+    private void validateNoDuplicate(String input) {
+        long distinctCount = input.chars()
+                .distinct()
+                .count();
+        if (distinctCount < input.length()) {
+            throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해주세요.");
         }
     }
 }
