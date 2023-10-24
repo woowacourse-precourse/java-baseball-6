@@ -8,12 +8,15 @@ import java.util.stream.Collectors;
 
 public class GenerateRandomNum {
     private String computerNumber;
-    public GenerateRandomNum(){
-       makeRandomNumber();
+
+    public GenerateRandomNum() {
+        makeRandomNumber();
     }
-    public String getComputerNumber(){
+
+    public String getComputerNumber() {
         return computerNumber;
     }
+
     public String makeRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -22,6 +25,6 @@ public class GenerateRandomNum {
                 computer.add(randomNumber);
             }
         }
-        return this.computerNumber=computer.stream().map(String::valueOf).collect(Collectors.joining(""));
+        return this.computerNumber = computer.stream().map(String::valueOf).collect(Collectors.joining(""));
     }
 }

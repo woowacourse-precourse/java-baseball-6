@@ -17,41 +17,41 @@ public class PlayGame {
         validator = new Validator();
     }
 
-    private void getNumber(){
+    private void getNumber() {
         player = new PlayerNumber(RequestMessage.requestNumber());
         player.getPlayerNumber();
     }
 
-    public void startGame(){
+    public void startGame() {
         SystemMessage.printGameStart();
-        do{
+        do {
             generateRandomNum = new GenerateRandomNum();
             playOneGame();
-        }while (isReplay());
+        } while (isReplay());
     }
 
-    public int[] numberCompare(){
-        return validator.getNumberCompare(player.getPlayerNumber(),generateRandomNum.getComputerNumber());
+    public int[] numberCompare() {
+        return validator.getNumberCompare(player.getPlayerNumber(), generateRandomNum.getComputerNumber());
     }
 
-    public void playOneGame(){
-        do{
+    public void playOneGame() {
+        do {
             getNumber();
             SystemMessage.pintResult(numberCompare());
-        }while(!isGmaeset());
+        } while (!isGmaeset());
     }
 
-    public boolean isGmaeset(){
-        if(validator.idCorrect()){
+    public boolean isGmaeset() {
+        if (validator.idCorrect()) {
             SystemMessage.printGameSetMessage();
             return true;
         }
         return false;
     }
 
-    public boolean isReplay(){
+    public boolean isReplay() {
         ReplayGame replayGame = new ReplayGame(RequestMessage.requestPlay());
-        if(replayGame.getReplayNumber().equals("1")){
+        if (replayGame.getReplayNumber().equals("1")) {
             return true;
         }
         return false;
