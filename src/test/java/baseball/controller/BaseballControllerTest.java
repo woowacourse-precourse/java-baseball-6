@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.Application;
+import baseball.model.Command;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,10 +29,15 @@ class BaseballControllerTest extends NsTest {
     }
 
     static Stream<Arguments> parametersProvider() {
-        String a = "123,".repeat(6000);
-        a = a + "456,2";
+        int first = 4;
+        int second = 5;
+        int third = 6;
+        String wrongNumber = "123";
+        String infiniteFailureInput = (wrongNumber + ",").repeat(6000);
+        String correctInput = first + String.valueOf(second) + third;
+        String[] testCase = (infiniteFailureInput + correctInput + "," + Command.QUIT).split(",");
         return Stream.of(
-                Arguments.arguments(a.split(","), 4, 5, 6)
+                Arguments.arguments(testCase, first, second, third)
         );
     }
 
