@@ -10,11 +10,14 @@ public class Computer {
     }
 
     public Computer(ComputerRandomGameNumber computerRandomGameNumber) {
-
         this.computerGameNumber = computerRandomGameNumber.getComputerGameNumber();
     }
 
     public String getComputerGameNumber() {
         return computerGameNumber;
+    }
+
+    public void setComputerGameNumber(String computerGameNumber) {
+        this.computerGameNumber = computerGameNumber;
     }
 }
