@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballGame {
-    private static final String STARTING_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String GAMEOVER_MESSAGE = "게임 종료";
-    private static final int EXIT_CODE = 2;
-    private static final int ALL_STRIKE = 3;
     private static BaseballGame baseballGame = new BaseballGame();
 
     public static BaseballGame getInstance() {
@@ -70,26 +66,5 @@ public class BaseballGame {
             }
         }
     }
-
-//    enum GameResult {
-//        END, ALL_STRIKE, WRONG
-//    }
-//
-//
-
-//    public GameResult runGame(){
-//        boolean isGameEnd = false;
-//        while (!isGameEnd){
-//            inputNumbers();
-//            calculateScore();
-//            printGameScore();
-//            if (strike == ALL_STRIKE) {
-//                System.out.println(GAMEOVER_MESSAGE);
-//                return GameResult.ALL_STRIKE;
-//            }
-//
-//            return GameResult.WRONG;
-//        }
-//    }
 
 }
