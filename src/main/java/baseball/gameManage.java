@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class gameManage implements gameManageInterface {
+    final int ALLSTRIKE = 3;
+    final int NOSTRIKE = 0;
+    final int NOBALL = 0;
+    final int PLAYAGAIN = 1;
+    final int EXITGAME = 2;
+
     public void init() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         try {
@@ -47,36 +53,35 @@ public class gameManage implements gameManageInterface {
         return digits;
     }
 
-    public Integer judgeNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
+    public resultCompareNumber judgeNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
         int strikeCount = 0;
         int ballCount = 0;
-        strikeCount = strikeCount(playerNumber, computerNumber);
-        ballCount = ballCount(playerNumber, computerNumber);
-        //return numberMatch(strikeCount, ballCount);
-    }
-
-    /*public Integer numberMatch(Integer strikeCount, Integer ballCount){
-
-    }*/
-
-    public Integer strikeCount(List<Integer> playerNumber, List<Integer> computerNumber) {
-        int strikeCount = 0;
         for (int i = 0; i < playerNumber.size(); i++) {
             if (Objects.equals(playerNumber.get(i), computerNumber.get(i))) {
                 strikeCount++;
-            }
-        }
-        return strikeCount;
-    }
-
-    public Integer ballCount(List<Integer> playerNumber, List<Integer> computerNumber) {
-        int ballCount = 0;
-        for (Integer integer : playerNumber) {
-            if (computerNumber.contains(integer)) {
+            } else if (computerNumber.contains(playerNumber.get(i))) {
                 ballCount++;
             }
         }
-        return ballCount;
+        return PrintNumber(strikeCount, ballCount);
+    }
+
+    public resultCompareNumber PrintNumber(int strikeCount, int ballCount) {
+        printNumberFormat printNumber = new printNumberFormat();
+        if (strikeCount == ALLSTRIKE) {
+            printNumber.onlyStrike(strikeCount);
+            return resultCompareNumber.MATCH;
+        }
+        if (strikeCount == NOSTRIKE && ballCount == NOBALL) {
+            printNumber.nothing();
+        }
+        if (ballCount == NOBALL) {
+            printNumber.onlyStrike(strikeCount);
+        }
+        if (strikeCount == NOSTRIKE) {
+            printNumber.onlyBall(ballCount);
+        }
+        return resultCompareNumber.NOT_MATCH;
     }
 
     public void play() {
@@ -84,8 +89,11 @@ public class gameManage implements gameManageInterface {
         playerEntity playerEntity = new playerEntity();
         while (true) {
             selectPlayerNumber(playerEntity);
-            int judgePlayerNumber = judgeNumber(playerEntity.getHumanNumber(), computerNumber);
-            //checkMatch(verifyPlayerNumber);
+            resultCompareNumber isMatched = judgeNumber(playerEntity.getHumanNumber(), computerNumber);
+            if (isMatched == resultCompareNumber.MATCH) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 }
