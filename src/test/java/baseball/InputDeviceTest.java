@@ -11,12 +11,15 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputDeviceTest {
 
+    public static final String RESTART_NUMBER = "1";
+    public static final String EXIT_NUMBER = "2";
+
     @ParameterizedTest
     @DisplayName("서로 다른 세자리수를 입력한다")
     @ValueSource(strings = {"123", "167", "987", "764"})
-    void inputThreeDifferentNumbers() {
+    void inputThreeDifferentNumbers(String given) {
         // given
-        InputDevice inputDevice = new InputDevice(new DoubleConsoleService("123"), new InputValidator());
+        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(given), new InputValidator());
 
         // when
         List<Integer> result = inputDevice.inputTryNumber();
@@ -41,7 +44,7 @@ public class InputDeviceTest {
     @DisplayName("재시작을 위해 1을 입력한다")
     void inputOneForRestart() {
         // given
-        InputDevice inputDevice = new InputDevice(new DoubleConsoleService("1"), new InputValidator());
+        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(RESTART_NUMBER), new InputValidator());
 
         // when
         int result = inputDevice.restartOrExit();
@@ -54,7 +57,7 @@ public class InputDeviceTest {
     @DisplayName("종료를 위해 2를 입력한다.")
     void inputTwoForExit() {
         // given
-        InputDevice inputDevice = new InputDevice(new DoubleConsoleService("2"), new InputValidator());
+        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(EXIT_NUMBER), new InputValidator());
 
         // when
         int result = inputDevice.restartOrExit();
