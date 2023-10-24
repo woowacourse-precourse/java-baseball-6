@@ -23,7 +23,28 @@ public class BaseballGame implements NumberGame {
         while (true) {
             List<Integer> userGuessNumber = NumberFactory.createByUser();
             Score score = ScoreFactory.calculateScore(randomNumber, userGuessNumber);
+            printHint(score);
+
+        }
+    }
+
+    private void printHint(Score score) {
+        StringBuilder hint = new StringBuilder();
+        int strikeCount = score.getStrikeCount();
+        int ballCount = score.getBallCount();
+
+        if (ballCount != 0) {
+            hint.append(ballCount).append("볼 ");
         }
 
+        if (strikeCount != 0) {
+            hint.append(strikeCount).append("스트라이크");
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            hint.append("낫싱");
+        }
+
+        System.out.println(hint);
     }
 }
