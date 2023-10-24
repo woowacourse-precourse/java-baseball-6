@@ -17,7 +17,7 @@ public class StrikeTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void createSuccessTest(int strike) {
-        assertThatCode(() -> new Strike(strike))
+        assertThatCode(() -> Strike.from(strike))
                 .doesNotThrowAnyException();
     }
 
@@ -25,7 +25,7 @@ public class StrikeTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 4})
     void createFailTest(int strike) {
-        assertThatCode(() -> new Strike(strike))
+        assertThatCode(() -> Strike.from(strike))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("스트라이크의 유효 범위는 0~3 입니다.");
     }
@@ -39,10 +39,10 @@ public class StrikeTest {
 
     static Stream<Arguments> provideIsEmptyTestArguments() {
         return Stream.of(
-                arguments(new Strike(0), true),
-                arguments(new Strike(1), false),
-                arguments(new Strike(2), false),
-                arguments(new Strike(3), false)
+                arguments(Strike.from(0), true),
+                arguments(Strike.from(1), false),
+                arguments(Strike.from(2), false),
+                arguments(Strike.from(3), false)
         );
     }
 
@@ -55,10 +55,10 @@ public class StrikeTest {
 
     static Stream<Arguments> provideIsFullCountTestArguments() {
         return Stream.of(
-                arguments(new Strike(0), false),
-                arguments(new Strike(1), false),
-                arguments(new Strike(2), false),
-                arguments(new Strike(3), true)
+                arguments(Strike.from(0), false),
+                arguments(Strike.from(1), false),
+                arguments(Strike.from(2), false),
+                arguments(Strike.from(3), true)
         );
     }
 }
