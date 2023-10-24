@@ -18,7 +18,7 @@ public class RandomNum {
 
         int Num = Randoms.pickNumberInRange(1, 9);
 
-        while (!ChkDigit.ChkUnique(Number,i,Num)) {
+        while (!ChkDigit.chkUnique(Number,i,Num)) {
             Num = Randoms.pickNumberInRange(1,9);
         }
         return Num;

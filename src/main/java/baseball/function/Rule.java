@@ -24,7 +24,7 @@ public class Rule {
         }
     }
 
-    public void compareNumber(int[] computerNumber, int[] userNumber, int userIndex) {
+    private void compareNumber(int[] computerNumber, int[] userNumber, int userIndex) {
         int isNon = -1;
         for (int j = 0; j < 3; j++) {
             if (computerNumber[j] == userNumber[userIndex]) {
@@ -35,7 +35,7 @@ public class Rule {
         addCount(isNon, userIndex);
     }
 
-    public void addCount(int isNon, int userIndex) {
+    private void addCount(int isNon, int userIndex) {
         if (isNon != -1 && isNon == userIndex) {
             gameCount.strike();
         }

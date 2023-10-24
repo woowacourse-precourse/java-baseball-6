@@ -6,8 +6,8 @@ public class ResultNum {
 
     int[] userNumber;
 
-    public void setComputerNum(int[] RandomNum){
-        computerNumber = RandomNum;
+    public void setComputerNum(int[] randomNum){
+        computerNumber = randomNum;
     }
 
     public int[] getComputerNumber(){

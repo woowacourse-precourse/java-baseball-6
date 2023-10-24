@@ -6,23 +6,23 @@ import camp.nextstep.edu.missionutils.Console;
 public class GetUserNumber {
     public static int[] getUserNumber() throws IllegalArgumentException {
 
-        Message.InputNessage();
+        Message.inputMessage();
         String input = Console.readLine();
         ChkDigit chkDigit = new ChkDigit();
-        chkDigit.ChkIsNum(input);
-        chkDigit.ChkSize(input);
+        chkDigit.chkIsNum(input);
+        chkDigit.chkSize(input);
 
 
-        int []inputnum  = new int[3];
+        int[] inputNum  = new int[3];
         for (int i = 0; i < 3; i++) {
-            inputnum[i] = input.charAt(i) - '0';
+            inputNum[i] = input.charAt(i) - '0';
         }
 
         for (int i = 0; i < 3; i++) {
-            if (!chkDigit.ChkUnique(inputnum, i, inputnum[i])) {
+            if (!chkDigit.chkUnique(inputNum, i, inputNum[i])) {
                 throw new IllegalArgumentException();
             }
         }
-        return inputnum;
+        return inputNum;
     }
 }

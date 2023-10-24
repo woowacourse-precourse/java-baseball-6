@@ -2,7 +2,7 @@ package baseball.function;
 
 public class ChkDigit {
 
-    public Boolean ChkUnique(int[] numbers, int i, int number) {
+    public Boolean chkUnique(int[] numbers, int i, int number) {
         for (int j = 0; j < i; j++) {
             if (numbers[j] == number) {
                 return false;
@@ -11,13 +11,13 @@ public class ChkDigit {
         return true;
     }
 
-    public void ChkSize(String Number) throws IllegalArgumentException{
+    public void chkSize(String Number) throws IllegalArgumentException{
         if(Number.length() != 3){
             throw new IllegalArgumentException();
         }
     }
 
-    public void ChkIsNum(String Number) throws IllegalArgumentException{
+    public void chkIsNum(String Number) throws IllegalArgumentException{
         if (!Number.matches("[1-9]+")){
             throw new IllegalArgumentException();
         }

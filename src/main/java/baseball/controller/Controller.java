@@ -9,8 +9,8 @@ import baseball.view.Message;
 
 public class Controller {
     ResultNum resultNum = new ResultNum();
-    RandomNum randomNum = new RandomNum();
-    GetUserNumber userNumber = new GetUserNumber();
+//    RandomNum randomNum = new RandomNum();
+//    GetUserNumber userNumber = new GetUserNumber();
 
     Message message = new Message();
 
@@ -18,20 +18,20 @@ public class Controller {
     Rule rule;
 
     public void run(){
-        GameSetting();
+        gameSetting();
         play();
         reGame();
     }
 
-    public void GameSetting() {
-        resultNum.setComputerNum(randomNum.getRandomNum());
+    public void gameSetting() {
+        resultNum.setComputerNum(RandomNum.getRandomNum());
         this.rule = new Rule(resultNum, gameCount);
     }
     public void play(){
 
         while(true){
             gameCount.initGame();
-            resultNum.setUserNumber(userNumber.getUserNumber());
+            resultNum.setUserNumber(GetUserNumber.getUserNumber());
             rule.checkMatches();
             message.scoreMessage(gameCount.getBall(), gameCount.getStrike());
 
