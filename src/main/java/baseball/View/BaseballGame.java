@@ -3,6 +3,8 @@ package baseball.View;
 import baseball.Controller.CheckNumberController;
 import baseball.Controller.NumberController;
 
+import java.io.IOException;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
@@ -19,7 +21,10 @@ public class BaseballGame {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             randomNumbers=numbers.createRandomNumber();
-
+// 생성된 랜덤 숫자 출력
+            System.out.println("Random Number 1: " + randomNumbers[0]);
+            System.out.println("Random Number 2: " + randomNumbers[1]);
+            System.out.println("Random Number 3: " + randomNumbers[2]);
             do {
                 readUserNumber();
             }while(!checkUserNumber());
@@ -43,7 +48,16 @@ public class BaseballGame {
         else return false;
     }
     public boolean isEnd(){
-        int EndUserInput=readEndUserInput();
+        int EndUserInput = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                EndUserInput = readEndUserInput();
+                validInput = true; // 올바른 입력을 받았을 때 반복문을 종료하기 위해 플래그를 설정
+            } catch (IOException | IllegalArgumentException e) {
+                System.out.println("1 또는 2를 입력해주세요.");
+            }
+        }
 
             if (EndUserInput == NUMOFRESTART) {
                 return false;
@@ -54,17 +68,13 @@ public class BaseballGame {
                 throw new IllegalArgumentException();
             }
     }
-    public int readEndUserInput(){
-        int EndUserInput;
-        while(true){
-            try {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                EndUserInput = Integer.parseInt(readLine());
-                return EndUserInput;
-            }catch (Exception e){
-                System.out.println("1 혹은 2 중 하나를 입력해주세요.");
-            }
+    public int readEndUserInput() throws IOException, NumberFormatException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int endUserInput = Integer.parseInt(readLine());
+        if (endUserInput != 1 && endUserInput != 2) {
+            throw new IllegalArgumentException();
         }
+        return endUserInput;
     }
 }
 
