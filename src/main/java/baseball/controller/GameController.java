@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.utils.Parser;
 import baseball.validators.NumberValidator;
+import baseball.validators.RestartOrExitValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -11,7 +12,6 @@ public class GameController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private ComputerController computerController = new ComputerController();
-    private PlayerController playerController = new PlayerController();
 
     public GameController() {
         outputView.gameStart();
@@ -22,7 +22,7 @@ public class GameController {
         while (isRunning) {
             computerController.saveRandomNumbers();
             proceedGame();
-            isRunning = askIfContinue();
+            isRunning = requestRestartOrExit();
         }
     }
 
@@ -32,6 +32,7 @@ public class GameController {
             outputView.requestInputNumber();
             List<Integer> playerNumbers = getPlayerNumbers();
             computerController.provideHint(playerNumbers);
+            outputView.askRestartOrExit();
             isCorrectAnswer = computerController.checkCorrectAnswer();
         }
         outputView.notifyCorrectAnswer();
@@ -43,12 +44,9 @@ public class GameController {
         return Parser.parseStringToList(inputNumbers);
     }
 
-    private Boolean askIfContinue() {
-        outputView.askRestartOrExit();
-        Integer answer = playerController.restartOrOver();
-        if (answer == 1) {
-            return true;
-        }
-        return false;
+    private Boolean requestRestartOrExit() {
+        String response = inputView.readRestartOrOver();
+        RestartOrExitValidator.validateRestartOrExit(response);
+        return response.equals("1");
     }
 }
