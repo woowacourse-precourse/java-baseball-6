@@ -16,7 +16,7 @@ public class BaseBallGame {
     private static int strike;
     private static int ball;
     private static boolean isNothing;
-    private static boolean restarFlag=true;
+    private static boolean restarFlag = true;
 
     public BaseBallGame() {
         player = new Player();
@@ -50,16 +50,16 @@ public class BaseBallGame {
             GameInterface.PrintResult(strike, ball, isNothing);
             if (GameInterface.GameClear(strike)) {
                 if (GameInterface.GameRestart()) {
-                    break;
+                    this.run();
                 }
-                restarFlag=false;
                 break;
             }
         } while (true);
     }
-    public void start(){
-        while (restarFlag){
-            run();
+
+    public void start() {
+        while (restarFlag) {
+            this.run();
         }
     }
 }
