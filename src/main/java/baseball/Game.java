@@ -14,6 +14,12 @@ public class Game implements Runnable {
     private int countBall; // Ball 개수 확인 용도
     private int countStrike; // Strike 개수 확인 용도
 
+    public Game() {
+    }
+
+    /**
+     * Game 진행 Thread 생성, Exception 처리를 위하여 메소드로 추출
+     */
     public void start() {
         // TODO: Game 진행
         Thread game = new Thread("Game");
@@ -30,6 +36,9 @@ public class Game implements Runnable {
 
     }
 
+    /**
+     * 숫자 야구 게임 랜덤 숫자를 생성하며 유저에게 입력받은 값과 랜덤 생성한 값을 비교하여 볼, 스트라이크, 낫싱 확인 이후 출력 게임 종료 이후 재시작 종료 여부 확인
+     */
     @Override
     public void run() {
         // TODO: Game 진행
@@ -87,18 +96,17 @@ public class Game implements Runnable {
         Console.close();
     }
 
-    public Game() {
-    }
-
-    /*
+    /**
      * Thread 중지 목적
      */
     private static void stop() {
         Thread.interrupted();
     }
 
-    /* *
+    /**
      * 컴퓨터가 생성하는 랜덤 숫자 (3자리 수이며 각 숫자 간 중복은 없음)
+     *
+     * @return : List, 길이 = NumberConst.EXPECTED_INPUT_LENGTH, 랜덤 숫자
      */
     private List<Integer> createRandomNumber() {
         // TODO: 랜덤 숫자 생성 (inputLength 자리 수)
@@ -119,11 +127,10 @@ public class Game implements Runnable {
         return randomNumbers;
     }
 
-    /*
+    /**
      * 컴퓨터가 생성한 숫자와 유저에게 입력 받은 숫자를 확인하여 Strike, Ball 개수 증가
-     * 매개 변수:
-     *  1. computer : 컴퓨터가 랜덤으로 생성한 숫자
-     *  2. user : 유제에게 입력받은 숫자
+     *
+     * @param: 1. computer : 컴퓨터가 랜덤으로 생성한 숫자 2. user : 유제에게 입력받은 숫자
      */
     private void updateBallAndStrikeCounts(List<Integer> user, List<Integer> computer) {
         // TODO: 입력받은 값과 생성한 랜덤 숫자 비교하여 Ball, Strike 개수 증가
