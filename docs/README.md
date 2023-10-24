@@ -4,11 +4,11 @@
   - `숫자 야구 게임을 시작합니다.` 출력
 - 컴퓨터가 숫자를 선택
   - 컴퓨터는 1에서 9까지 서로 다른 임의의 수를 3개 선택
-    - Missionutils 라이브러리의 Randoms.pickNumberInRange() 를 활용
+  - Missionutils 라이브러리 Randoms.pickNumberInRange()
 
 ### 사용자 입력을 받을 경우
 - 사용자는 1에서 9까지 서로 다른 3자리 수를 입력
-  - Missionutils 라이브러리의 Console.readLine() 을 활용
+  - Missionutils 라이브러리 Console.readLine()
 - (예외) 3자리가 아닌 경우 throw 문으로 종료
 - (예외) 모두 다른 숫자가 아닌 경우 throw 문으로 종료
 - (예외) 숫자가 아닌 경우 throw 문으로 종료
