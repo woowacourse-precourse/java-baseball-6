@@ -1,9 +1,53 @@
 package baseball.controller;
 
+import baseball.model.Game;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+
+    public void runGame() {
+        outputView.printGameStartMessage();
+
+        boolean gameInProgress = true;
+        while (gameInProgress) {
+            Game game = new Game();
+
+            gameInProgress = playGame(game);
+
+            if (!gameInProgress) {
+                gameInProgress = !promptForRestartOrExit();
+                if (!gameInProgress) {
+                    outputView.printGameEndMessage();
+                    outputView.printEndMessage();
+                }
+            }
+        }
+        outputView.closeConsole();
+    }
+
+    private boolean playGame(Game game) {
+        boolean gameInProgress = true;
+        while (gameInProgress) {
+            String userInput = inputView.getUserInput();
+            List<Integer> userNumbers = parseUserInput(userInput);
+
+            if (userNumbers.size() != 3) {
+                throw new IllegalArgumentException("1에서 9 사이의 수만 입력 가능합니다.");
+            }
+
+            if (game.isCorrectGuess(userNumbers)) {
+                gameInProgress = false;
+            }
+        }
+        return gameInProgress;
+    }
+
     private List<Integer> parseUserInput(String userInput) {
         List<Integer> userNumbers = parseInputNumbers(userInput);
         validateUserInput(userNumbers);
@@ -51,5 +95,13 @@ public class GameController {
             }
         }
         return true;
+    }
+
+    private boolean promptForRestartOrExit() {
+        int choice = inputView.getRestartOrExitChoice();
+        if (!(choice == 1 || choice == 2)) {
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
+        return choice == 2;
     }
 }
