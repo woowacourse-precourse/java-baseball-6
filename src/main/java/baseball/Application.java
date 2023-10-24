@@ -20,4 +20,14 @@ public class Application {
         return computer;
     }
 
+    public static boolean isNumber(List<Integer> threeNumber) {
+        Integer indexZero = threeNumber.get(0);
+        Integer indexOne = threeNumber.get(1);
+        Integer indexTwo = threeNumber.get(2);
+
+        return (1 <= indexZero && indexZero <= 9)
+                && (1 <= indexOne && indexOne <= 9)
+                && (1 <= indexTwo && indexTwo <= 9);
+    }
+
 }
