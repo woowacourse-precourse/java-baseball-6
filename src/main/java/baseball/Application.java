@@ -82,15 +82,12 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요: ");
             String input = Console.readLine();
-            if (input.length() != 3) {
-                throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
-            }
 
             boolean validInput = true;
             for (int i = 0; i < 3; i++) {
                 char c = input.charAt(i);
                 if (c < '1' || c > '9') {
-                    throw new IllegalArgumentException("");
+                    throw new IllegalArgumentException();
                 }
                 userGuess[i] = c - '0';
             }
