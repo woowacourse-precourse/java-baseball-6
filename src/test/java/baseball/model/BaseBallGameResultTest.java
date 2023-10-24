@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class BaseBallGameResultTest {
 
     @Test
-    void of로_만들어지는_객체들이_가지는_값이_같다면_같은_객체로_판단한다() {
+    void 게임결과가_같다면_같은_객체로_판단한다() {
         BaseBallGameResult baseBallGameResult = BaseBallGameResult.of(1, 2);
         BaseBallGameResult expectedBaseBallGameResult = BaseBallGameResult.of(1, 2);
 
@@ -15,14 +15,14 @@ class BaseBallGameResultTest {
     }
 
     @Test
-    void isGameEnd는_게임이_끝난_상태면_true응답한다() {
+    void 게임결과가_모두_스트라이크이면_게임이_종료됨을_의미한다() {
         BaseBallGameResult baseBallGameResult = BaseBallGameResult.of(3, 0);
 
         assertThat(baseBallGameResult.isGameEnd()).isTrue();
     }
 
     @Test
-    void isGameEnd는_게임이_끝나지_않은_상태면_false응답한다() {
+    void 게임결과가_모두_스트라이크가_아니라면_게임이_끝나지_않음을_의미한다() {
         BaseBallGameResult baseBallGameResult = BaseBallGameResult.of(2, 0);
 
         assertThat(baseBallGameResult.isGameEnd()).isFalse();
