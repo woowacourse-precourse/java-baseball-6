@@ -25,7 +25,24 @@ class GameStateTest {
         });
 
         assertThat(i.getMessage().contains("게임을 시작할 수 없는 상태입니다."));
+    }
 
+    @Test
+    public void 플레이상태라면_종료상태로_변경할수있다() {
+        GameState gameState = new GameState(State.PLAYING);
+        gameState.changeStateToTerminateGame();
+
+        assertEquals(gameState.getState(), State.TERMINATED);
+    }
+
+    @Test
+    public void 이미_종료상태라면_종료상태로_변경할수없다() {
+        IllegalStateException i = Assertions.assertThrows(IllegalStateException.class, () -> {
+            GameState gameState = new GameState(State.TERMINATED);
+            gameState.changeStateToTerminateGame();
+        });
+
+        assertThat(i.getMessage().contains("게임을 시작할 수 없는 상태입니다."));
     }
 
 }
