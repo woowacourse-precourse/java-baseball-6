@@ -1,17 +1,12 @@
 package baseball.domain.ball;
 
 import collection.Triple;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public final class Answer extends BallNumbers {
 
     private Answer(final Triple<BallNumber> numbers) {
         super(numbers);
-    }
-
-    public static Answer of(final Set<BallNumber> numbers) {
-        return Answer.of(numbers);
     }
 
     public static Answer of(final Triple<BallNumber> numbers) {
