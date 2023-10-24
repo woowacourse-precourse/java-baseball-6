@@ -1,5 +1,7 @@
 package baseball;
 
+import static constant.Constant.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,12 +13,12 @@ public class Game {
     List<Integer> answerNum = new ArrayList<>();
 
     public void playGame(){
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println(PLAYGAME_INTRO);
 
         do{
             initGame();
             playTurn();
-            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(PLAYGAME_OUTTRO);
         }while (restartGame());
 
     }
@@ -43,7 +45,7 @@ public class Game {
         }
     }
     public String getNum(){
-        System.out.print("\n숫자를 입력해주세요 : ");
+        System.out.print(GETNUM_MESSEAGE);
         String answer = Console.readLine();
         illegalArgumentException(answer);
         return answer;
@@ -78,24 +80,24 @@ public class Game {
     public void printCheckResult(int ball, int strike) {
 
         if(ball !=0){
-            System.out.print(ball +"볼 ");
+            System.out.print(ball + BALL_MESSEAGE);
         }
         if(strike !=0){
-            System.out.print(strike + "스트라이크");
+            System.out.print(strike + STRIKE_MESSEAGE);
         }
         if(strike ==0 && ball ==0){
-            System.out.print("낫싱");
+            System.out.print(NOTHING_MESSEAGE);
         }
 
     }
 
     public boolean restartGame(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." );
+        System.out.println(RESTARTGAME_INTRO);
         String s = Console.readLine();
 
-        if(s.equals("1")){
+        if(s.equals(RESTART_NUM)){
             return true;
-        } else if (s.equals("2")) {
+        } else if (s.equals(EXIT_NUM)) {
             return false;
         }else {
             throw new IllegalStateException();
