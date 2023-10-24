@@ -54,7 +54,7 @@ public class Game {
         checkInput = Console.readLine();
         validateQuitInput();
 
-        if (checkInput.equals(START_NUMBER)) {
+        if (checkInput.equals(RESTART_NUMBER)) {
             initComputerNumber();
             return false;
         }
