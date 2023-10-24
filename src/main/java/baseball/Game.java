@@ -36,13 +36,24 @@ public class Game {
     }
 
     private void start(){
-
+        computer.generateRandNums();
+        status = Status.PROGRESS;
+        progress();
     }
     private void progress(){
-
+        output.askUserToInsertNumbers();
+        List<Integer> userInputList = input.getUserInputNumbers();
+        Map<String, Integer> baseballResult = computer.getBaseballResult(userInputList);
+        output.printBaseballResult(baseballResult);
+        updateGameStatus(baseballResult);
     }
     private void finish(){
-
+        boolean resume = input.getResumeInput();
+        if(resume){
+            this.status = Status.START;
+            return;
+        }
+        terminate();
     }
     private void terminate(){
         this.status = Status.TERMINATED;
