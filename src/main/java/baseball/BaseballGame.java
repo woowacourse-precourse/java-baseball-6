@@ -96,7 +96,7 @@ public class BaseballGame {
         }
     }
     private boolean choiceRestart() {
-        System.out.println("게임을 새로 시작하려면 " + RESTART + ",종료하려면 " + EXIT + "를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + RESTART + ", 종료하려면 " + EXIT + "를 입력하세요.");
         String input = Console.readLine();
 
         if (input.equals(String.valueOf(RESTART))) {
