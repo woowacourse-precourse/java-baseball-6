@@ -13,12 +13,14 @@ public class Application {
         int numberCount = 3;
         BaseballGameRules baseballGameRules = new BaseballGameRules(minNumber, maxNumber, numberCount);
 
-        NumberGenerator computerNumberGenerator = new RandomNumberGenerator(
+        NumberGenerator numberGenerator = new RandomNumberGenerator(
                 baseballGameRules.getMinNumber(),
                 baseballGameRules.getMaxNumber(),
                 baseballGameRules.getNumberCount()
         );
-        NumberBaseballGameComputerPlayer computerPlayer = new NumberBaseballGameComputerPlayer(computerNumberGenerator);
+
+        NumberBaseballGameComputerPlayer computerPlayer = new NumberBaseballGameComputerPlayer(
+                numberGenerator.generateUniqueNumbers());
 
         UserIo userIo = new UserIo();
 
