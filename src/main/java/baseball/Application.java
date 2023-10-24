@@ -22,7 +22,7 @@ public class Application {
             }
             String tmp = "";
             for (char c : userNumber.toCharArray()) {
-                if (tmp.equals(String.valueOf(c))) {
+                if (tmp.contains(String.valueOf(c))) {
                     throw new IllegalArgumentException("중복되지 않는 숫자로 입력해주세요");
                 }
                 tmp += String.valueOf(c);
@@ -56,8 +56,6 @@ public class Application {
                 }
 
                 computerNumber = shuffleNumber();
-                tmp = "";
-                continue;
             }
         }
     }
