@@ -20,7 +20,7 @@ public class InputView {
     public List<Integer> InputUserNumber() {
         while (userInputNumberList.size() < 3) {
             System.out.println(INPUT_NUMBER);
-            String inputs = Console.readLine();
+            String inputs = ValidateInputNumber(Console.readLine());
             for (int i = 0; i < inputs.length(); i++) {
                 char input = inputs.charAt(i);
                 if (!userInputNumberList.contains(input - '0')) {
@@ -29,5 +29,17 @@ public class InputView {
             }
         }
         return userInputNumberList;
+    }
+
+    public  String ValidateInputNumber(String inputs) {
+        if (inputs.length() != 3) { // 3자리수 입력 안한 경우
+            throw new IllegalArgumentException();
+        }
+        try { // int로 변경 불가인 경우
+            Integer.parseInt(inputs);
+        } catch (IllegalArgumentException e){
+            throw e;
+        }
+        return inputs;
     }
 }
