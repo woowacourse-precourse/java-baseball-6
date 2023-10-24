@@ -18,21 +18,15 @@ public class GameController {
 
         boolean gameStatus = true;
         while (gameStatus) {
-            try {
-                gameService.getUserNumbers();
+            gameService.getUserNumbers();
 
-                if (gameService.sameNumbers()) {
-                    outputMessage.printGameEndMessage();
-                    gameStatus = gameService.restart();
+            if (gameService.sameNumbers()) {
+                outputMessage.printGameEndMessage();
+                gameStatus = gameService.restart();
 
-                    if (gameStatus) {
-                        gameService.setComputerNumbers();
-                    }
+                if (gameStatus) {
+                    gameService.setComputerNumbers();
                 }
-
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                break;
             }
         }
 
