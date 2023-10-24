@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
+    private static final int BALL_COUNT = 3;
+    private static final int NOT_FOUND_INDEX = -1;
+
     private List<Ball> balls = new ArrayList<>();
 
     public Balls() {
@@ -29,10 +32,10 @@ public class Balls {
     private void createRandomNumbers() {
         balls = new ArrayList<>();
 
-        while (balls.size() < 3) {
+        while (balls.size() < BALL_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             Ball randomBall = new Ball(randomNumber);
-            if (indexOf(randomBall) == -1) {
+            if (indexOf(randomBall) == NOT_FOUND_INDEX) {
                 balls.add(randomBall);
             }
         }
@@ -56,6 +59,6 @@ public class Balls {
                 return i;
             }
         }
-        return -1;
+        return NOT_FOUND_INDEX;
     }
 }
