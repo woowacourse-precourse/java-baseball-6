@@ -21,10 +21,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_3자리수_아님() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트2_숫자가_아님() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("12a"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트3_중복값() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("112"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
