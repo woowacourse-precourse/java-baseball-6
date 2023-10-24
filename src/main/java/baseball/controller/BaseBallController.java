@@ -41,7 +41,7 @@ public class BaseBallController {
         boolean continueGame = true;
         while (continueGame) {
             User user = new User(new Balls(inputView.readUserNumber()));
-            PlayResult result = computer.play(user);
+            PlayResult result = computer.play(user.balls());
 
             outputView.printResult(result);
             continueGame = !isGameEnd(result);

@@ -7,7 +7,6 @@ import baseball.util.RandomNumberGenerator;
 import java.util.List;
 
 public class ComputerBalls {
-
     private Balls balls;
     private RandomNumberGenerator randomNumberGenerator;
 
@@ -24,8 +23,7 @@ public class ComputerBalls {
         return balls;
     }
 
-    public PlayResult play(User user) {
-        Balls userBalls = user.getBalls();
+    public PlayResult play(Balls userBalls) {
         return balls.play(userBalls);
     }
 }
