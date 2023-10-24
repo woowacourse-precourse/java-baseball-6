@@ -1,5 +1,4 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -9,8 +8,9 @@ public class Application {
         String ifOver;
         ShootBall randomBall = new ShootBall();
         ShootBall inputBall = new ShootBall();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true) {
+        do {
             randomBall.randomNumGenerator();
             while (!result) {
                 inputBall.inputNumGenerator();
@@ -18,7 +18,6 @@ public class Application {
             }
             System.out.print("게임을 종료하시겠습니까? (yes: y /no: any key)");
             ifOver = Console.readLine();
-            if(ifOver=="y") break;
-        }
+        } while (ifOver != "y");
     }
 }
