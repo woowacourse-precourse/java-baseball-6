@@ -11,7 +11,7 @@ public class RandomNum {
     private static final int RANDOM_NUM_END = 9;
     private static final int RANDOM_NUM_LENGTH = 3;
 
-    public List<Integer> generateRandomNum() {
+    public List<Integer> generateRandomNumbers() {
         List<Integer> randomNum = new ArrayList<>();
         while (randomNum.size() < RANDOM_NUM_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_NUM_START, RANDOM_NUM_END);
@@ -19,7 +19,6 @@ public class RandomNum {
                 randomNum.add(randomNumber);
             }
         }
-        System.out.println(randomNum);
         return randomNum;
     }
 }

@@ -3,20 +3,20 @@ package baseball.model;
 public class EndGame {
     public static final String RESTART = "1";
     public static final String END = "2";
-    private String lastNum;
+    private final String userChoice;
 
-    public EndGame(String lastNum) {
-        lastNumCheck(lastNum);
-        this.lastNum = lastNum;
+    public EndGame(String userChoice) {
+        validateUserChoice(userChoice);
+        this.userChoice = userChoice;
     }
 
-    public boolean isLast() {
-        return this.lastNum.equals(RESTART);
+    public boolean isRestart() {
+        return userChoice.equals(RESTART);
     }
 
-    private void lastNumCheck(String lastNum) {
-        if (!lastNum.equals(RESTART) && !lastNum.equals(END)) {
-            throw new IllegalArgumentException();
+    private void validateUserChoice(String choice) {
+        if (!choice.equals(RESTART) && !choice.equals(END)) {
+            throw new IllegalArgumentException("Invalid choice. Use '1' to restart or '2' to end the game.");
         }
     }
 }

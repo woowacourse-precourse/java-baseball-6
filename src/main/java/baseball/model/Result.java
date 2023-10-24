@@ -3,34 +3,31 @@ package baseball.model;
 import java.util.List;
 
 public class Result {
-    private List<Integer> computerArr;
-    private List<Integer> inputNumArr;
+    private List<Integer> computerNumbers;
+    private List<Integer> inputNumbers;
 
-    public Result(List<Integer> userNum, List<Integer> comNum) {
-        this.computerArr = comNum;
-        this.inputNumArr = userNum;
+    public Result(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
+        this.inputNumbers = userNumbers;
     }
 
-    public int calculateStrike() {
-        int strikeNum = 0;
-        int index = 0;
-        for (Integer num : computerArr) {
-            if (num.equals(inputNumArr.get(index))) {
-                strikeNum++;
+    public int calculateStrikes() {
+        int strikeCount = 0;
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.get(i).equals(inputNumbers.get(i))) {
+                strikeCount++;
             }
-            index++;
         }
-        return strikeNum;
+        return strikeCount;
     }
 
-    public int calculateBall() {
-        int ballNum = 0;
-        for (Integer num : inputNumArr) {
-            if (computerArr.contains(num)) {
-                ballNum++;
+    public int calculateBalls() {
+        int ballCount = 0;
+        for (Integer inputNumber : inputNumbers) {
+            if (computerNumbers.contains(inputNumber) && !inputNumber.equals(computerNumbers.get(inputNumbers.indexOf(inputNumber)))) {
+                ballCount++;
             }
         }
-        ballNum -= calculateStrike();
-        return ballNum;
+        return ballCount;
     }
 }

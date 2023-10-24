@@ -7,22 +7,22 @@ import java.util.Set;
 
 public class InputNum {
     private static final int INPUT_LENGTH = 3;
-    private static final String INPUT_CONTENT = "^[1-9]+$";
-    private List<Integer> inputArr;
+    private static final String INPUT_CONTENT_REGEX = "^[1-9]+$";
+    private List<Integer> inputNumbers;
 
     public InputNum() {
-        this.inputArr = new ArrayList<>();
+        this.inputNumbers = new ArrayList<>();
     }
 
-    public List<Integer> convertInputToArr(String inputNum) {
-        this.inputArr = new ArrayList<>();
+    public List<Integer> convertInputToNumbers(String inputNum) {
+        this.inputNumbers = new ArrayList<>();
         if (!isValidInput(inputNum)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid input.");
         }
         for (char digit : inputNum.toCharArray()) {
-            inputArr.add(Character.getNumericValue(digit));
+            inputNumbers.add(Character.getNumericValue(digit));
         }
-        return inputArr;
+        return inputNumbers;
     }
 
     public boolean isValidInput(String inputNum) {
@@ -31,8 +31,8 @@ public class InputNum {
             inputSet.add(digit);
         }
         if (inputSet.size() < 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input should have exactly 3 unique digits.");
         }
-        return inputNum.length() == INPUT_LENGTH && inputNum.matches(INPUT_CONTENT);
+        return inputNum.length() == INPUT_LENGTH && inputNum.matches(INPUT_CONTENT_REGEX);
     }
 }
