@@ -1,19 +1,15 @@
 package baseball.domain;
 
-import java.util.List;
-
 public class Score {
 
     private Strike strike;
     private Ball ball;
 
-    public static Score create(List<Integer> answerNumbers, Balls balls) {
+    public static Score create(Balls answerBalls, Balls userBalls) {
 
-        int strike = Strike.calculateStrikeCnt(answerNumbers, balls);
-        int ball = Ball.calculateBallCnt(answerNumbers, balls);
         Score score = new Score();
-        score.strike = new Strike(strike);
-        score.ball = new Ball(ball);
+        score.strike = new Strike(userBalls.calculateStrike(answerBalls));
+        score.ball = new Ball(userBalls.calculateBall(answerBalls));
         return score;
     }
 
