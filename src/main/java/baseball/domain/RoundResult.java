@@ -21,15 +21,24 @@ public class RoundResult {
         return results.isEmpty();
     }
 
-    public int getStrikeCount() {
-        return results.getOrDefault(BallType.STRIKE, DEFAULT_VALUE);
-    }
-
-    public int getBallCount() {
-        return results.getOrDefault(BallType.BALL, DEFAULT_VALUE);
-    }
-
     public boolean isGameEnd() {
-        return getStrikeCount() == GAME_END_COUNT;
+        return results.getOrDefault(BallType.STRIKE, 0) == GAME_END_COUNT;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        if (isNothing()) {
+            return BallType.NOTHING.toString();
+        }
+
+        for (BallType ballType : BallType.values()) {
+            Integer count = results.get(ballType);
+            if (count != null && count > 0) {
+                sb.append(count).append(ballType).append(" ");
+            }
+        }
+        return sb.toString().trim();
     }
 }

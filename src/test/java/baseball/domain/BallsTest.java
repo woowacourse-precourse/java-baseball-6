@@ -36,8 +36,7 @@ public class BallsTest {
     void compareTest_3STRIKE() {
         playerBalls = Balls.of(List.of(1, 2, 3));
         RoundResult result = playerBalls.compareWith(answer);
-        assertEquals(3, result.getStrikeCount());
-        assertEquals(0, result.getBallCount());
+        assertEquals("3스트라이크", result.toString());
 
         assertFalse(result.isNothing());
         assertTrue(result.isGameEnd());
@@ -47,8 +46,7 @@ public class BallsTest {
     void compareTest_1BALL_1STRIKE() {
         playerBalls = Balls.of(List.of(1, 3, 4));
         RoundResult result = playerBalls.compareWith(answer);
-        assertEquals(1, result.getStrikeCount());
-        assertEquals(1, result.getBallCount());
+        assertEquals("1볼 1스트라이크", result.toString());
 
         assertFalse(result.isNothing());
         assertFalse(result.isGameEnd());
@@ -58,10 +56,10 @@ public class BallsTest {
     void compareTest_NOTHING() {
         playerBalls = Balls.of(List.of(4, 5, 6));
         RoundResult result = playerBalls.compareWith(answer);
-        assertEquals(0, result.getStrikeCount());
-        assertEquals(0, result.getBallCount());
+        assertEquals("낫싱", result.toString());
 
         assertTrue(result.isNothing());
         assertFalse(result.isGameEnd());
     }
+
 }
