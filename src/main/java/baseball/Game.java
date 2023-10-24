@@ -40,7 +40,6 @@ public class Game {
                 }
             }
         }
-
         score.setScore(strikeCount, ballCount);
     }
 

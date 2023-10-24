@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-
     public static List<Integer> getNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
@@ -17,6 +16,4 @@ public class Computer {
         }
         return computerNumber;
     }
-
-
 }

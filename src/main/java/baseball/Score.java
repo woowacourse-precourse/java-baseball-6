@@ -43,7 +43,6 @@ public class Score {
         if (strikeCount > 0) {
             return strikeCount + "스트라이크";
         }
-
         return "낫싱";
     }
 }
