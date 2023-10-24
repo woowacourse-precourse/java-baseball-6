@@ -27,7 +27,7 @@ public class Problem {
                 createAnswer.add(randomNumber);
             }
         }
-        return createAnswer;c
+        return createAnswer;
     }
 
 }
