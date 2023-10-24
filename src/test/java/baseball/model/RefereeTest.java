@@ -23,7 +23,7 @@ public class RefereeTest {
         referee.setGame();
     }
 
-    @DisplayName("[Referee]GoalNumber-3자리 수 인지 test")
+    @DisplayName("[Referee] 1. Goal Number 생성 : 세자리 수 여부 test")
     @Test
     void generateGoalNumber_Test1() {
         // Given
@@ -32,7 +32,7 @@ public class RefereeTest {
         assertEquals(3, goalNumber.length());
     }
 
-    @DisplayName("[Referee]GoalNumber-연속하지 않은 수 인지 test")
+    @DisplayName("[Referee] 1. Goal Number 생성 : 연속 숫자인지 여부 test")
     @Test
     void generateGoalNumber_Test2() {
         String goalNumber = referee.goalNumber;
@@ -41,7 +41,7 @@ public class RefereeTest {
         assertEquals(3, distinctCount);
     }
 
-    @DisplayName("[Referee]GoalNumber-1~9인지 test")
+    @DisplayName("[Referee]  1. Goal Number 생성 : 1~9로 이루어진 수 여부 test")
     @Test
     void generateGoalNumber_Test3() {
         String goalNumber = referee.goalNumber;
@@ -52,7 +52,7 @@ public class RefereeTest {
         }
     }
 
-    @DisplayName("[Referee] 볼판정 확인")
+    @DisplayName("[Referee] 2. 볼판정 확인")
     @ParameterizedTest(name = "{index} => playerNumber={0}, expected={1}")
     @MethodSource("provideNumbersForCallBallCount")
     void callBallCount_Test(String playerNumber, int[] expected) {
@@ -72,6 +72,17 @@ public class RefereeTest {
                 Arguments.of("826", new int[]{2, 1}),
                 Arguments.of("286", new int[]{3, 0})
         );
+    }
+
+    @DisplayName("[Referee] 3. 삼진 아웃 판정 : ")
+    @Test
+    void isStrikeOut_Test() {
+        // Given
+        int[] ballCount_strikeOut = new int[]{0,3};
+        int[] ballCount_ball = new int[]{1, 2};
+        //When && Then
+        assertThat(referee.isStrikeOut(ballCount_strikeOut)).isEqualTo(true);
+        assertThat(referee.isStrikeOut(ballCount_ball)).isEqualTo(false);
     }
 
 
