@@ -1,15 +1,12 @@
 package game;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class BaseballGameClass implements Game{
-    private Scanner scanner = new Scanner(System.in);
     private List<Integer> RandomAnswerGeneratedInInit;
     @Override
     public void gameInit() {
@@ -29,7 +26,7 @@ public class BaseballGameClass implements Game{
     public void gamePlay() throws IllegalArgumentException{
         while(true) {
             System.out.printf("숫자를 입력해주세요: ");
-            String inputNumber = scanner.nextLine();
+            String inputNumber = Console.readLine();
 
             if(inputNumber.length() != 3) {
                 throw new IllegalArgumentException();
@@ -71,7 +68,7 @@ public class BaseballGameClass implements Game{
     @Override
     public Integer gameExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String inputNumber = scanner.nextLine();
+        String inputNumber = Console.readLine();
         if(inputNumber.charAt(0) == '2') {
             return 2;
         }
