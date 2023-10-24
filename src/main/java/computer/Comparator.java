@@ -37,17 +37,14 @@ public class Comparator {
     }
 
     private boolean isSameValueAtSameLocation(int location){
-        if (computer.getBalls().get(location).equals(user.getBalls().get(location))) {
-            return true;
-        }
-        return false;
+        return computer.getBalls().get(location)
+                .equals(user.getBalls().get(location));
     }
 
     private boolean isContainInComputerNumber(int location){
-        if (computer.getBalls().contains(user.getBalls().get(location))) {
-            return true;
-        }
-        return false;
+        return computer.getBalls()
+                .contains(user.getBalls().get(location));
+
     }
 
     private void storeToHint(int strike,int ball){
