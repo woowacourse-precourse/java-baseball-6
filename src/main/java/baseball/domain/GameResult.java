@@ -18,14 +18,6 @@ public class GameResult {
         return tryResults;
     }
 
-    public boolean hasStrike() {
-        return tryResults.contains(TryResult.STRIKE);
-    }
-
-    public boolean hasBall() {
-        return tryResults.contains(TryResult.BALL);
-    }
-
     public boolean isNothing() {
         return !tryResults.contains(TryResult.STRIKE) && !tryResults.contains(TryResult.BALL);
     }

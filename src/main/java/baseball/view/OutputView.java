@@ -38,7 +38,7 @@ public class OutputView {
     }
 
     private String insertSpace(GameResult gameResult) {
-        if (gameResult.hasBall() && gameResult.hasStrike()) {
+        if (gameResult.hasResult(TryResult.BALL) && gameResult.hasResult(TryResult.STRIKE)) {
             return " ";
         }
         return BLANK;
