@@ -3,11 +3,11 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
 
-        Game game = new Game();
+        BaseballGame baseballGame = new BaseballGame();
 
         do {
-            game.play();
+            baseballGame.play();
         }
-        while (game.isRestart());
+        while (baseballGame.isRestart());
     }
 }

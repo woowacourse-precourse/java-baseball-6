@@ -4,14 +4,14 @@ import baseball.generator.NumberGenerator;
 import baseball.handler.OutputHandler;
 import baseball.handler.InputHandler;
 
-public class Game {
+public class BaseballGame {
 
     private final InputHandler inputHandler = new InputHandler();
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private final OutputHandler outputHandler = new OutputHandler();
     private boolean isGameOver;
 
-    public Game() {
+    public BaseballGame() {
         this.isGameOver = false;
         outputHandler.printGameStartMessage();
     }
