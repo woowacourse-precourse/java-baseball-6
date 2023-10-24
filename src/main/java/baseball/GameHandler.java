@@ -7,11 +7,11 @@ public class GameHandler {
         this.game = game;
     }
 
-    public GameHandler from(Game game) {
+    public static GameHandler from(Game game) {
         return new GameHandler(game);
     }
 
-    public void execute() {
+    public void executeGame() {
         game.execute();
     }
 }
