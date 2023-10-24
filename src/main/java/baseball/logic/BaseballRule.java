@@ -23,7 +23,7 @@ public class BaseballRule {
         int strike = countStrikes(inputNumbers);
         int ball = countBalls(inputNumbers);
 
-        return new BaseballResult(strike, ball, false);
+        return BaseballResult.strikeAndBall(strike, ball);
     }
 
 

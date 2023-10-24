@@ -11,6 +11,10 @@ public record BaseballResult(
         return new BaseballResult(strike, 0, true);
     }
 
+    public static BaseballResult strikeAndBall(int strike, int ball) {
+        return new BaseballResult(strike, ball, false);
+    }
+
 
     public void printSuccess() {
         System.out.println(strike + GameScripts.GAME_SUCCESS);
