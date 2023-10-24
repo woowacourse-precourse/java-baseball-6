@@ -11,7 +11,7 @@ public class Baseball {
         initGame();
     }
 
-    public void initGame(){
+    private void initGame(){
         // 게임 시작 알림
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -20,7 +20,7 @@ public class Baseball {
     }
 
     // 서로 다른 세자리 수 생성
-    public String makeRandomNum(){
+    private String makeRandomNum(){
         String randomStr = "";
 
         while(randomStr.length()<3) {
@@ -37,9 +37,9 @@ public class Baseball {
     }
 
     // 콘솔에 게임 결과를 출력
-    public void printResult(int[] result){
-        int ballNum = result[0];
-        int strikeNum = result[1];
+    private void printResult(BallStrike result){
+        int ballNum = result.getBall();
+        int strikeNum = result.getStrike();
 
         if(ballNum==0 && strikeNum==0) {
             System.out.println("낫싱");
@@ -52,7 +52,7 @@ public class Baseball {
     }
 
     // 볼과 스트라이크 갯수를 세는 함수
-    public int[] countResult(String input){
+    private BallStrike countResult(String input){
         int ballNum=0;
         int strikeNum=0;
 
@@ -63,16 +63,11 @@ public class Baseball {
             }
         }
 
-        return new int[] {ballNum,strikeNum};
-    }
-
-    // 숫자를 모두 맞추었는지 확인
-    public boolean isCorrect(int strikeNum){
-        return strikeNum == 3;
+        return new BallStrike(ballNum,strikeNum);
     }
 
     // 게임 종료 이후의 처리
-    public void afterGame(){
+    private void afterGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input=Console.readLine();
 
@@ -87,7 +82,7 @@ public class Baseball {
     }
 
     // 유저가 입력한 숫자의 타당성검사
-    public void checkValidity(String input){
+    private void checkValidity(String input){
 
         // 세 자리가 맞는지 확인
         if(input.length()!=3){
@@ -118,10 +113,10 @@ public class Baseball {
 
             checkValidity(input);
 
-            int[] result=countResult(input);
-            printResult(result);
+            BallStrike bs=countResult(input);
+            printResult(bs);
 
-            if(isCorrect(result[1])) {
+            if(bs.isCorrect()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
