@@ -15,6 +15,7 @@ public class NumberBaseballGameOutputView {
     }
 
     public void printGameOverMessage() {
+        askForGameRestart();
         NumberBaseballOutPutMessage.GAME_OVER.print();
     }
 
