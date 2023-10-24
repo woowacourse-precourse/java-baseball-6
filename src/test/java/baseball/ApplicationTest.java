@@ -89,6 +89,20 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @Test
+    void 결과_출력() {
+        // given
+        int strike = 2;
+        int ball = 1;
+
+        // when
+        Core core = new Core();
+        core.printToResult(strike, ball);
+
+        // then
+        assertThat(output()).contains("1볼 2스트라이크");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
