@@ -11,13 +11,13 @@ public class BaseballHint {
 
     @Override
     public String toString() {
-        if(strikes == 0 && balls == 0) {
+        if (strikes == 0 && balls == 0) {
             return "낫싱\n";
         }
-        if(strikes == 0){
+        if (strikes == 0) {
             return String.format("%d볼\n", balls);
         }
-        if(balls == 0){
+        if (balls == 0) {
             return String.format("%d스트라이크\n", strikes);
         }
         return String.format("%d볼 %d스트라이크\n", balls, strikes);

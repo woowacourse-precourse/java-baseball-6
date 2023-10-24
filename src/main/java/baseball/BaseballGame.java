@@ -24,6 +24,7 @@ public class BaseballGame {
     }
 
     public void run(ConsoleInput consoleInput, ConsoleLogger consoleLogger) {
+        consoleLogger.print(Arrays.toString(numbers.getNumbers()) + "\n");
         while (true) {
             consoleLogger.print("숫자를 입력해주세요 :");
             String input = consoleInput.getInput();
@@ -41,7 +42,7 @@ public class BaseballGame {
         if (Pattern.matches("[0-9]{3}", s)) {
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("0~9까지 숫자 3자리수가 아닙니다.");
     }
 
 }

@@ -49,7 +49,9 @@ public class BaseballNumber {
             assert (0 < number && number < 10);
             set.add(number);
         }
-        assert (set.size() == 3);
+        if (set.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 3자리 수가 아닙니다. :" + Arrays.toString(numbers));
+        }
     }
 
     private int getBalls(BaseballNumber other) {
@@ -57,8 +59,8 @@ public class BaseballNumber {
 
         return (int) IntStream.range(0, 3)
                 .filter(i -> numbers[i] != otherNumbers[i])
-                .filter(i -> Arrays.asList(otherNumbers)
-                        .contains(numbers[i]))
+                .filter(i -> Arrays.stream(otherNumbers)
+                        .anyMatch(n -> n == numbers[i]))
                 .count();
     }
 

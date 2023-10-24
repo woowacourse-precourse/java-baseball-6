@@ -36,16 +36,17 @@ public class GameExecutor {
             consoleLogger.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             String input = consoleInput.getInput();
             checkInput(input);
-            if("2".equals(input)){
+            if ("2".equals(input)) {
                 break;
             }
             game = new BaseballGame(getRandomNumbers());
         }
     }
 
-    private void checkInput(String input){
-        if(Pattern.matches("[12]",input))
+    private void checkInput(String input) {
+        if (Pattern.matches("[12]", input)) {
             return;
-        throw new IllegalArgumentException();
+        }
+        throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
     }
 }
