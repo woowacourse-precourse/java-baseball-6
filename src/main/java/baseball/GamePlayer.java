@@ -13,15 +13,15 @@ public class GamePlayer {
 
         public void playGame() {
                 while (!gameState.isEndState()) {
-                        makeAnotherSuggestion(gameNumber.generateRandomComputerNumber());
+                        makeAttempt(gameNumber.generateRandomComputerNumber());
                         Output.notifyGameSuccess();
                         gameState.checkGameRetryOrEnd(Input.chooseRetryOrEnd());
                 }
         }
 
-        private void makeAnotherSuggestion(List<Integer> computer) {
-                while (!gameState.isGameSucceedState()) {
-                        GameScore gameScore = new GameScore(gameNumber.modifyNumberSuggestion(Input.makeNumberSuggestion()), computer);
+        private void makeAttempt(List<Integer> computer) {
+                while (!gameState.isGameSuccessState()) {
+                        GameScore gameScore = new GameScore(gameNumber.modifyNumberSuggestion(Input.inputNumberSuggestion()), computer);
                         Output.notifyGameScore(gameScore.calculateBall(), gameScore.calculateStrike());
                         gameState.checkGameSuccess(gameScore.calculateStrike());
                 }

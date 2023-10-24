@@ -26,7 +26,7 @@ public class GameState {
                 }
         }
 
-        public boolean isGameSucceedState() {
+        public boolean isGameSuccessState() {
                 return gameSwitch == GAME_SUCCESS_STATE;
         }
 
