@@ -23,7 +23,23 @@ public class Converter {
             }
             rawinputnumber[i] = input.charAt(i) - '0';
         }
+        checksamenumber(rawinputnumber);
         return rawinputnumber;
+    }
+
+    /// 수정 할 것
+    private static void checksamenumber(int[] rawinputnumber) {
+        if (rawinputnumber[0]==rawinputnumber[1]) {
+            throw new IllegalArgumentException();
+        }
+
+        if (rawinputnumber[0]==rawinputnumber[2]) {
+            throw new IllegalArgumentException();
+        }
+
+        if (rawinputnumber[1]==rawinputnumber[2]) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private  static boolean checknumber(String input, int i) {
