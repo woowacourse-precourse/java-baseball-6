@@ -120,8 +120,8 @@ public class Game {
     }
 
     private class PlayResult {
-        private int strikeNum;
-        private int ballNum;
+        private final int strikeNum;
+        private final int ballNum;
 
         public PlayResult(int strikeNum, int ballNum) {
             this.strikeNum = strikeNum;
