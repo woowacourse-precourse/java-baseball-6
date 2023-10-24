@@ -1,14 +1,13 @@
 package baseball.viewTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import baseball.view.OutputView;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class OutputViewTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -32,21 +31,17 @@ public class OutputViewTest {
     @Test
     void 게임결과_출력_테스트() {
 
-        // 스트라이크 1, 볼 2인 경우
         OutputView.gameResultOutput(1, 2);
         assertThat("2볼 1스트라이크").isEqualTo(output.toString().trim());
 
-        // 스트라이크 0, 볼 3인 경우
-        output.reset();  // 출력 내용 초기화
+        output.reset();
         OutputView.gameResultOutput(0, 3);
         assertThat("3볼").isEqualTo(output.toString().trim());
 
-        // 스트라이크 2, 볼 0인 경우
         output.reset();
         OutputView.gameResultOutput(2, 0);
         assertThat("2스트라이크").isEqualTo(output.toString().trim());
 
-        // 낫싱인 경우
         output.reset();
         OutputView.gameResultOutput(0, 0);
         assertThat("낫싱").isEqualTo(output.toString().trim());
