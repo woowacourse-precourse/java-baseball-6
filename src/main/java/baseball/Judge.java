@@ -22,7 +22,7 @@ public class Judge {
         int strikeCount = countStrike();
         GameResult gameResult = new GameResult(ballCount, strikeCount);
         if (strikeCount == GameConstant.MAXIMUM_STRIKE_COUNT.getConstant()) {
-            GameController.gameStatus = Status.SET_FINISH;
+            GameController.gameStatus = Status.MATCHED;
         }
         generateResultMessage(gameResult);
     }
@@ -30,14 +30,14 @@ public class Judge {
     public void generateResultMessage(GameResult gameResult) {
         if (gameResult.isBallStrike()) {
             System.out.printf(GameMessage.BALL_STRIKE.getMessage(), gameResult.ballCnt(), gameResult.strikeCnt());
-        } else if (gameResult.isOnlyStrike()) {
+        } else if (gameResult.isOnlyStrike() && !gameResult.isThreeStrike()) {
             System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.strikeCnt());
         } else if (gameResult.isOnlyBall()) {
             System.out.printf(GameMessage.BALL.getMessage(), gameResult.ballCnt());
         } else if (gameResult.isNothing()) {
             System.out.println(GameMessage.NOTHING.getMessage());
         } else if (gameResult.isThreeStrike()) {
-            System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.ballCnt());
+            System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.strikeCnt());
             System.out.printf(GameMessage.THREE_STRIKE.getMessage(), GameConstant.MAXIMUM_STRIKE_COUNT.getConstant());
         }
     }
@@ -52,7 +52,7 @@ public class Judge {
     }
 
     private int countStrike() {
-        return  (int) IntStream.range(0, GameConstant.NUMBER_COUNT.getConstant())
+        return (int) IntStream.range(0, GameConstant.NUMBER_COUNT.getConstant())
                 .filter(index -> {
                     int currentNumber = playerNumber.get(index);
                     return computerNumber.contains(currentNumber) && computerNumber.indexOf(currentNumber) == index;

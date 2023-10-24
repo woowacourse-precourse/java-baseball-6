@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 public enum SystemMessage {
 
     NEW("숫자 야구 게임을 시작합니다.", Status.NEW, System.out::println),
-    INPUT("숫자를 입력해주세요 : ", Status.SET, System.out::print);
+    SET("숫자를 입력해주세요 : ", Status.SET, System.out::print);
 
     private final String message;
     private final Status status;

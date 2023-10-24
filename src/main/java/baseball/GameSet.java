@@ -16,16 +16,15 @@ public class GameSet {
 
     public GameSet(List<Integer> computerNumber) {
         this.computerNumber = computerNumber;
+        GameController.gameStatus = Status.SET;
     }
 
     public void startSet() {
         this.player = new Player();
-        SystemMessage.INPUT.printMessage(GameController.gameStatus);
+        SystemMessage.SET.printMessage(GameController.gameStatus);
         playerNumber = player.inputNumber();
-        System.out.println("GameSet.startSet : " + playerNumber);
         calculateSetScore();
-        if (GameController.gameStatus == Status.SET_FINISH) {
-            System.out.println("=== 세트 종료됨 ===");
+        if (GameController.gameStatus == Status.MATCHED) {
             askPlayerReplay();
         }
     }
