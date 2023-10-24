@@ -9,6 +9,8 @@ import java.util.Objects;
 public class Game {
     private int strikeCount;
     private int ballCount;
+    List<Integer> computer;
+    List<Integer> balls;
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -16,35 +18,39 @@ public class Game {
         // strike, ball 카운트 초기화
         initializeMountCounts();
         // computer 초기화
-        List<Integer> computer = initializeComputer();
+        initializeComputer();
 
         // 숫자 입력 및 컴퓨터 야구공 초기화
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-
-        List<Integer> balls = resolveInputBalls(input);
+        resolveInputBalls();
 
         // 스트라이크, 볼 카운트
-
-        for (int i = 0; i < balls.size(); i++) {
-            if (Objects.equals(computer.get(i), balls.get(i))) {
-                strikeCount++;
-            } else if (computer.contains(balls.get(i))) {
-                ballCount++;
-            }
-        }
+        judgeStrikeOrBall();
 
         // 게임 결과 처리
-        if (strikeCount == 0 && ballCount == 0) {
+        calculateMountResult();
+    }
+
+    private void calculateMountResult() {
+        if (this.strikeCount == 0 && this.ballCount == 0) {
             System.out.println("낫싱");
         }
 
-        if (strikeCount == 0 && ballCount != 0) {
-            System.out.println(ballCount + "볼");
-        } else if (strikeCount != 0 && ballCount == 0) {
-            System.out.println(strikeCount + "스트라이크");
+        if (this.strikeCount == 0 && this.ballCount != 0) {
+            System.out.println(this.ballCount + "볼");
+        } else if (this.strikeCount != 0 && this.ballCount == 0) {
+            System.out.println(this.strikeCount + "스트라이크");
         } else {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            System.out.println(this.ballCount + "볼 " + this.strikeCount + "스트라이크");
+        }
+    }
+
+    private void judgeStrikeOrBall() {
+        for (int i = 0; i < balls.size(); i++) {
+            if (Objects.equals(computer.get(i), balls.get(i))) {
+                this.strikeCount++;
+            } else if (computer.contains(balls.get(i))) {
+                this.ballCount++;
+            }
         }
     }
 
@@ -53,7 +59,7 @@ public class Game {
         this.ballCount = 0;
     }
 
-    private List<Integer> initializeComputer() {
+    private void initializeComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -61,10 +67,13 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+        this.computer = computer;
     }
 
-    private List<Integer> resolveInputBalls(String input) {
+    private void resolveInputBalls() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
         List<Integer> balls = new ArrayList<>();
 
         try {
@@ -85,7 +94,7 @@ public class Game {
             throw new IllegalArgumentException(e.getMessage());
         }
 
-        return balls;
+        this.balls = balls;
     }
 
     private void validateInputBallRange(int inputBall) {
