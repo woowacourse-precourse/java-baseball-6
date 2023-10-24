@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.BaseballGenerator.createBaseballs;
+import static baseball.BaseballsGenerator.createBaseballs;
 import static baseball.GameStatus.IN_PROGRESS;
 
 public class Game {
