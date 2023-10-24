@@ -4,6 +4,7 @@ import baseball.controller.BaseballGame;
 import baseball.model.Comparer;
 import baseball.model.ComputerNumber;
 import baseball.model.PlayerNumber;
+import baseball.model.RetryNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,6 +59,17 @@ class ApplicationTest extends NsTest {
     void printResult(){
         BaseballGame baseballGame = new BaseballGame();
         baseballGame.printResult(new int[]{1,1});
+    }
+
+
+    @DisplayName("게임종료 후 사용자 입력 예외사항 처리")
+    @ParameterizedTest
+    @ValueSource(strings = {"0","i","3",""," "})
+    void validateNumber(String playerInput){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new RetryNumber(playerInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Override

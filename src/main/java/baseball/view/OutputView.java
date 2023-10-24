@@ -10,10 +10,10 @@ public class OutputView {
         System.out.print(BALL_MESSAGE);
     }
     public static void printStrikeMessage(){
-        System.out.print(STRIKE_MESSAGE);
+        System.out.println(STRIKE_MESSAGE);
     }
     public static void printNothingMessage(){
-        System.out.print(NOTHING_MESSAGE);
+        System.out.println(NOTHING_MESSAGE);
     }
     public static void printCount(int count){
         System.out.print(count);

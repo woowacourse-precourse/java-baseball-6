@@ -7,7 +7,7 @@ import static constant.MessageList.INPUT_MESSAGE;
 
 public class InputView {
     public static String getNumberFromPlayer(){
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
         return Console.readLine();
     }
     public static String restartGameOrNot(){
