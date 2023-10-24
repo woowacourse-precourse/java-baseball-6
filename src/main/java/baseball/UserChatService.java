@@ -7,6 +7,7 @@ import java.util.List;
 
 public class UserChatService {
 
+  private static MsgService ms = new MsgService();
   public UserChatService(){}
 
   /*
@@ -19,7 +20,9 @@ public class UserChatService {
     String input = Console.readLine();
     System.out.println();
 
-    iaException(input);
+    if(iaException(input) != null) {
+      input = "No";
+    }
     return input;
   }
 
@@ -29,26 +32,20 @@ public class UserChatService {
     return result;
   }
 
-private Object iaException(String input){
-  List<Integer> intExceptionTest;
-  intExceptionTest = inputPasIntList(input);
-    try {
-      if (input.isEmpty()){throw new IllegalArgumentException("빈 문자");}
-      if (input.length() != 3){throw new IllegalArgumentException("3글자 아님");}
-      if (input.charAt(0) == input.charAt(1)
-          || input.charAt(0) == input.charAt(2)
-          || input.charAt(1) == input.charAt(2)){
-        throw new IllegalArgumentException("중복 문자 발견");
-      }
-      for(int num : intExceptionTest){
-        if(num >= 10){throw new IllegalArgumentException("지정된 값을 입력 하세요");}
-        else if(num < 1){throw new IllegalArgumentException("0/음수 발견");}
-      }
-    }catch (IllegalArgumentException e){
-      System.err.println(e.getMessage());
-    }
-    return 1;
-}
+  public void resultGameCount(BallCountVO countAll){
+    int strike = countAll.getStrike();
+    int ball = countAll.getBall();
+    int count = countAll.getCount();
+
+    if(ball != 0)   {ms.ball(ball);}
+    if(strike != 0) {ms.strike(strike);}
+    if(count == 9)  {ms.nothing();}
+  }
+
+
+
+
+
 
   private List<Integer> inputPasIntList(String input){
     List<Integer> pasInt = new ArrayList<>();
@@ -61,6 +58,27 @@ private Object iaException(String input){
     return pasInt;
   }
 
+  private IllegalArgumentException iaException(String input){
+    List<Integer> intExceptionTest;
+    intExceptionTest = inputPasIntList(input);
+    try {
+      if (input.isEmpty()){throw new IllegalArgumentException("빈 문자");}
+      if (input.length() != 3){throw new IllegalArgumentException("3글자 아님");}
+      if (input.charAt(0) == input.charAt(1)
+          || input.charAt(0) == input.charAt(2)
+          || input.charAt(1) == input.charAt(2)){
+        throw new IllegalArgumentException("중복 문자 발견");
+      }
+      for(int num : intExceptionTest){
+        if(num >= 10){throw new IllegalArgumentException("지정된 값을 입력 하세요");}
+        else if(num < 1){throw new IllegalArgumentException("0/음수 발견");}
+      }
 
+    }catch (IllegalArgumentException e){
+      System.err.println(e.getMessage());
+      return new IllegalArgumentException();
+    }
+    return null;
+  }
 
 }

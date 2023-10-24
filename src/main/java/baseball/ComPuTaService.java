@@ -26,8 +26,8 @@ public class ComPuTaService {
 
   private ComPuTaVO newComPuTa(ComPuTaVO com, List<String> listS){
     if(listS.size() >= 1) com.setOneValue(listS.get(0));
-    if(listS.size() >= 2) com.setOneValue(listS.get(1));
-    if(listS.size() >= 3) com.setOneValue(listS.get(2));
+    if(listS.size() >= 2) com.setTwoValue(listS.get(1));
+    if(listS.size() >= 3) com.setThreeValue(listS.get(2));
     return com;
   }
 
