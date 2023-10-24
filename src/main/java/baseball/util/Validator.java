@@ -14,7 +14,7 @@ public class Validator {
 
     public static void validateNumbersLength(String numbers) {
         if (numbers.length() != MAX_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값은 3자리 숫자여야 합니다.");
         }
     }
 
@@ -22,13 +22,13 @@ public class Validator {
         try {
             Integer.parseInt(numbers);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값은 숫자여야 합니다.");
         }
     }
 
     public static void validateNumbersRange(String numbers) {
         if (!hasValidNumberRange(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("모든 자릿수는 1이상 9이하여야 합니다.");
         }
     }
 
@@ -38,7 +38,7 @@ public class Validator {
 
     public static void validateNoDuplicate(String numbers) {
         if (hasDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("모든 자릿수는 서로 중복될 수 없습니다.");
         }
     }
 
@@ -55,13 +55,13 @@ public class Validator {
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값은 숫자여야 합니다.");
         }
     }
 
     public static void validateRestartOrExitNumberValue(String number) {
         if (!isRestartOrExitNumber(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값은 1 (재시작) 또는 2 (종료) 여야 합니다.");
         }
     }
 
