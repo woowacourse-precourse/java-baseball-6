@@ -26,13 +26,13 @@
 
 ## 구현 기능 목록
 
-- [ ] num - int 변수 3개,
-    - [ ] compareNum()
-- [ ] baseballGameService
-    - [ ] initNum() : user, computer num 생성
-    - [ ] compareNum() : user, computer num 비교
-    - [ ] reInputUserNum() : user num 입력받기
-    - [ ] inputRestart() : 재시작 여부 입력받기
-    - [ ] game() : 게임 진행
-    - [ ] exitGame() : 게임 종료
+- [x] num - int 변수 3개,
+    - [x] compareNum()
+- [x] baseballGameService
+    - [x] initNum : user, computer num 생성
+    - [x] compareNum : user, computer num 비교
+    - [x] reInputUserNum : user num 입력받기
+    - [x] inputRestart : 재시작 여부 입력받기
+    - [x] game : 게임 진행
+    - [x] exitGame : 게임 종료
 
