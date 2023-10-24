@@ -1,10 +1,9 @@
 package baseball.player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<Integer> number = new ArrayList<>();
+    private List<Integer> number;
     private int strikes;
     private int balls;
 
@@ -14,10 +13,6 @@ public class User {
 
     public List<Integer> getNumber() {
         return number;
-    }
-
-    public void setNumber(List<Integer> number) {
-        this.number = number;
     }
 
     public int getStrikes() {
