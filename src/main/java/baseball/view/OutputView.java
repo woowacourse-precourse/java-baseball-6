@@ -25,21 +25,32 @@ public class OutputView {
     }
 
     public String getFormattedResult(Result result) {
-        int strike = result.getStrike();
-        int ball = result.getBall();
-        if (strike == 0 && ball == 0) {
+        return getDisplay(result.getStrike(), result.getBall());
+    }
+
+    private static String getDisplay(int strike, int ball) {
+        if (isNothing(strike, ball)) {
             return BallCount.NOTHING.getBaseballjudgment();
         }
+        return formatBallCount(strike, ball);
+    }
+
+    private static String formatBallCount(int strike, int ball) {
+
         StringBuilder gameResult = new StringBuilder();
         if (ball > 0) {
-            gameResult.append("" + ball + BallCount.BALL.getBaseballjudgment());
+            gameResult.append(ball).append(BallCount.BALL.getBaseballjudgment());
         }
         if (ball > 0 && strike > 0) {
             gameResult.append(RESULT_SPACE);
         }
         if (strike > 0) {
-            gameResult.append("" + strike + BallCount.STRIKE.getBaseballjudgment());
+            gameResult.append(strike).append(BallCount.STRIKE.getBaseballjudgment());
         }
         return gameResult.toString();
+    }
+
+    private static boolean isNothing(int strike, int ball) {
+        return strike == 0 && ball == 0;
     }
 }

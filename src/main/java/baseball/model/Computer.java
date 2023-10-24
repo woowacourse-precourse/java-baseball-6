@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Computer {
+
     private final List<Integer> computerNumber;
 
     private Computer() {
