@@ -8,15 +8,6 @@ public class Model {
     private int strike_count;
     private int ball_count;
 
-    public Model() {}
-
-    public Model(int[] input_number, List<Integer> computer_number, int strike_count, int ball_count) {
-        this.input_number = input_number;
-        this.computer_number = computer_number;
-        this.strike_count = strike_count;
-        this.ball_count = ball_count;
-    }
-
     public int[] getInput_number() {
         return input_number;
     }
@@ -39,19 +30,15 @@ public class Model {
         return strike_count;
     }
 
-    public void setStrike_count(int strike_count) {
-        this.strike_count = strike_count;
-    }
-
     public int getBall_count() {
         return ball_count;
     }
 
-    public void setBall_count(int ball_count) {
-        this.ball_count = ball_count;
+    public void updateBallCount() {
+        this.ball_count += 1;
     }
 
-    public void updateBallCount() { this.ball_count += 1;}
-
-    public void updateStrikeCount() { this.strike_count += 1;}
+    public void updateStrikeCount() {
+        this.strike_count += 1;
+    }
 }
