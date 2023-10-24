@@ -19,7 +19,7 @@ public class ErrorDetector {
     private static void throwIfContainsDuplicateNumbers(String numbers) {
         Set<String> set = new HashSet<>(List.of(numbers.split("")));
         if (set.size() != NumberConstants.MAX_BALL_SIZE) {
-            System.out.println(MessageConstants.INVALID_NUMBERS_CONTAINS_DUPLICATE_NUMBER);
+            Output.printErrorMessage(MessageConstants.INVALID_NUMBERS_CONTAINS_DUPLICATE_NUMBER);
             throw new IllegalArgumentException();
         }
     }
