@@ -12,6 +12,13 @@ public class Game {
         computerNumbers = generateRandomNumber();
     }
 
+    public boolean isCorrectGuess(List<Integer> userNumbers) {
+        int strikes = countStrikes(userNumbers);
+        int balls = countBalls(userNumbers);
+
+        return strikes == 3;
+    }
+
     private List<Integer> generateRandomNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
