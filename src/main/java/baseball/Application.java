@@ -22,7 +22,7 @@ public class Application {
             while(roundContinues){
                 List<Integer> userInput = getUserInput(); // 사용자의 숫자 입력 받기
                 PlayGame result = new PlayGame(computer.getNumbers(), userInput); // 게임 결과 생성
-                System.out.println(result); // 결과 출력
+                System.out.println(result.getResult()); // 결과 출력
                 if (result.getStrikes() == 3){ // 3 스트라이크이면
                     roundContinues = false; // 이번 판 종료
                     System.out.println(GAME_END_MESSAGE); // 종료 메세지 출력
