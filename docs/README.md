@@ -38,7 +38,8 @@
     - [x] 자리수가 3자리가 넘어가면 예외를 발생시킨다.
 
 
-- [x] AnswerBaseBallNumber : BaseBallNumber를 상속받는다.
+- [x] AnswerNumber : 숫자 번호를 가진다
+    - [x] BaseBallNumber을 생성자로 가진다.
     - [x] 정답 번호를 가진다.
     - [x] NumberGenerator를 호출해서 중복이 없을때까지 n개의 숫자를 생성한다.
     - [x] 매개변수와 같은 번호인지를 확인하는 isSameNumbers를 가진다.
