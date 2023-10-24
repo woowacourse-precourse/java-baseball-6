@@ -29,11 +29,12 @@ public class Game {
         ArrayList<Integer> guessNums = new ArrayList<Integer>();
 
         for (int i = 0; i < 3; i++) {
-            int num = guessNumsInt % 100;
-            guessNumsInt /= 100;
+            int num = guessNumsInt % 10;
+            guessNumsInt /= 10;
             guessNums.add(0, num);
         }
 
+        System.out.println(guessNums);
         player.setGuessNums(guessNums);
     }
 
