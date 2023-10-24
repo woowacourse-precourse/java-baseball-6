@@ -10,6 +10,8 @@ import static baseball.message.GameResultMessage.*;
 
 // 게임 진행을 위한 클래스
 public class Game {
+    private final static String END_SIGNAL = "2";
+
     public static void startGame() {
         printGameStartMessage();
 
@@ -33,7 +35,7 @@ public class Game {
             String userSignal = Console.readLine();
             checkSignalValidation(userSignal);
 
-            if(userSignal.equals("2")) break; // 사용자가 2를 입력할 경우, 게임 종료
+            if(userSignal.equals(END_SIGNAL)) break; // 사용자가 2를 입력할 경우, 게임 종료
 
             targetNumber = getRandomNumber();
         }
