@@ -48,7 +48,6 @@ public class Application {
 
     public static List<Integer> inputToList(String stringInput) {
         List<Integer> inputToList = new ArrayList<>();
-
         for (int i = 0; i < stringInput.length(); i++) {
             char inputSplitChar = stringInput.charAt(i);
             int inputSplitInt = Character.getNumericValue(inputSplitChar);
