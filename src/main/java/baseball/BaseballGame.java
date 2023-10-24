@@ -62,12 +62,12 @@ public class BaseballGame {
         List<Integer> user = new ArrayList<>();
         System.out.print(Message.REQUIRE_NUMBER_MESSAGE);
         String input = Console.readLine();
-        validator.isRightSize(input);
+        validator.validateStringLength(input);
         for (int i=0; i<Numeric.NUMBER_OF_INPUT; i++) {
             char charValue = input.charAt(i);
             Integer intValue = charValue - '0';
-            validator.isRightRange(intValue);
-            validator.isContain(user, intValue);
+            validator.validateNumberRange(intValue);
+            validator.validateDuplicateNumbers(user, intValue);
             user.add(intValue);
         }
         return user;
