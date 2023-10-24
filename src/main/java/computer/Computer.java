@@ -87,7 +87,7 @@ public class Computer {
         } else if (playerOption.equals(String.valueOf(OPTION_FINISH))) {
             return false;
         } else {
-            throw new IllegalStateException(OPTION_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(OPTION_INPUT_ERROR_MESSAGE);
         }
     }
 
