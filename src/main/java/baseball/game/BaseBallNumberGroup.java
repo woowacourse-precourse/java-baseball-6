@@ -16,7 +16,7 @@ public class BaseBallNumberGroup {
 
     private void validateSize(final List<Integer> baseBallNumbers) {
         if (baseBallNumbers.size() != GameConstants.SIZE_RANDOM_NUMBER) {
-            throw new IllegalArgumentException("숫자 야구 개수는 3개만 가능합니다.");
+            throw new IllegalArgumentException("숫자 야구 개수는 " + GameConstants.SIZE_RANDOM_NUMBER + "개만 가능합니다.");
         }
     }
 
