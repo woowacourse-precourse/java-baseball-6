@@ -13,10 +13,17 @@ public class Number {
     public Number(){
     }
 
+    static int[] stringToIntArray(String string){
+        int[] array=new int[3];
+        for(int i=0;i<3;i++){
+            array[i]=string.charAt(i)-'0';
+        }
+        return array;
+    }
+
     public static int[] getUserInput(){
-        int[] ret=new int[3];
         String string=Console.readLine();
-        return ret;
+        return stringToIntArray(string);
     }
 
     public int[] makeComputerAnswer(){
