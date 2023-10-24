@@ -10,9 +10,6 @@ public class CompareUserWithComputer {
     public CompareUserWithComputer(String userNumber, String computerNumber){
         this.userNumber = userNumber;
         this.computerNumber = computerNumber;
-
-        countStrikeNum();
-        countBallNum();
     }
 
     public int getStrikeNum(){
@@ -23,7 +20,7 @@ public class CompareUserWithComputer {
         return ballNum;
     }
 
-    private void countStrikeNum(){
+    public void countStrikeNum(){
         for (int i = 0; i < userNumber.length(); i++) {
             if(userNumber.charAt(i) == computerNumber.charAt(i)){
                 this.strikeNum++;
@@ -31,7 +28,7 @@ public class CompareUserWithComputer {
         }
     }
 
-    private void countBallNum(){
+    public void countBallNum(){
         for (int i = 0; i < userNumber.length(); i++) {
             if(userNumber.charAt(i) != computerNumber.charAt(i) && computerNumber.contains(String.valueOf(userNumber.charAt(i)))){
                 this.ballNum++;

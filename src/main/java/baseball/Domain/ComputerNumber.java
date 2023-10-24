@@ -9,12 +9,7 @@ public class ComputerNumber {
 
     private String number;
 
-
-    public ComputerNumber(){
-        GeneratedRandomNumber();
-    }
-
-    private void GeneratedRandomNumber(){
+    public void GeneratedRandomNumber(){
 
         StringBuilder sb = new StringBuilder();
 

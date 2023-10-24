@@ -34,7 +34,7 @@ public class BaseBallGameController {
             getCompareUserWithComputer();
 
             if(isThreeStrike()){
-                GameOver();
+                gameOverOrRestart();
             }
         }
 
@@ -45,11 +45,15 @@ public class BaseBallGameController {
     }
 
     public void setComputerNumber(){
+
         computerNumber = new ComputerNumber();
+        computerNumber.GeneratedRandomNumber();
     }
 
     public void getCompareUserWithComputer(){
         compareUserWithComputer = new CompareUserWithComputer(userNumber.getNumber(),computerNumber.getNumber());
+        compareUserWithComputer.countStrikeNum();
+        compareUserWithComputer.countBallNum();
         OutputView.showCompareResult(compareUserWithComputer.getStrikeNum(), compareUserWithComputer.getBallNum());
     }
 
@@ -57,10 +61,11 @@ public class BaseBallGameController {
         return compareUserWithComputer.getStrikeNum() == 3;
     }
 
-    public void GameOver(){
+    public void gameOverOrRestart(){
         String value = InputView.inputGameOverOrRestart();
         if("1".equals(value)){
             isRestartedGame = true;
+            return;
         }
 
         if("2".equals(value)){
