@@ -6,10 +6,10 @@ import java.util.List;
 
 public class NumberFactory {
 
-    public static int createNumber() {
+    public static int createNumber(int digitSize) {
         List<Integer> numberList = new ArrayList<>();
 
-        while (numberList.size() < 3) {
+        while (numberList.size() < digitSize) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!numberList.contains(randomNumber)) {
                 numberList.add(randomNumber);
@@ -21,6 +21,12 @@ public class NumberFactory {
     }
 
     private static int combineNumber(List<Integer> numberList) {
-        return numberList.get(0) * 100 + numberList.get(1) * 10 + numberList.get(2);
+        int result = 0;
+        int len = numberList.size();
+        for (int i = 0; i < len; i++) {
+            result += numberList.get(i) * Math.pow(10, len-1-i);
+        }
+
+        return result;
     }
 }

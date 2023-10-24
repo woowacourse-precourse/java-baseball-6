@@ -10,7 +10,6 @@ public class GameManager {
     public void launch() {
         while (true) {
             init();
-            System.out.println(answerNumber);
             while (true) {
                 System.out.print(INPUT_YOUR_NUMBER);
                 String inputNumber = inputManager.readNumber();
@@ -63,7 +62,7 @@ public class GameManager {
     }
 
     private void init() {
-        answerNumber = NumberFactory.createNumber();
+        answerNumber = NumberFactory.createNumber(digitSize);
         System.out.println(GAME_START_MESSAGE);
     }
 }
