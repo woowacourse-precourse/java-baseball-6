@@ -9,8 +9,8 @@ public class BaseballGameManager implements GameManager{
         // 최초 게임시작 멘트를 출력한다.
         game.startAnnounce();
 
-        // 게임 한판을 진행한다.
         while(true) {
+            // 게임 한판을 진행한다.
             boolean replay = game.playGame();
 
             // 새 게임을 진행하거나 종료한다.
