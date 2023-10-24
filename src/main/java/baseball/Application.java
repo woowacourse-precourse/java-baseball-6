@@ -122,6 +122,12 @@ public class Application {
     }
 
     private static boolean restartGame(String target) {
-        //return ;
+        if (target.equals("1")) {
+            return true;
+        } else if (target.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
