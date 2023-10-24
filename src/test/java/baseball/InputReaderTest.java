@@ -15,7 +15,7 @@ class InputReaderTest {
     private InputReader inputReader;
 
     @BeforeEach
-    public void setInputReader() {
+    public void setUp() {
         inputReader = new InputReader(new GuessedNumberValidator(), new ContinueModeNumberValidator());
     }
 

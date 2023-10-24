@@ -9,12 +9,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
 class RandomNumberGeneratorTest {
 
     private static final int TEST_CASE_COUNT = 50;
-    private static RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    private RandomNumberGenerator randomNumberGenerator;
+
+    @BeforeEach
+    public void setUp() {
+        randomNumberGenerator = new RandomNumberGenerator();
+    }
 
     @RepeatedTest(TEST_CASE_COUNT)
     public void 길이_테스트() {

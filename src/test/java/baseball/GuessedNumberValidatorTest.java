@@ -1,16 +1,17 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class GuessedNumberValidatorTest {
 
-    InputValidator guessedNumberValidator;
+    private InputValidator guessedNumberValidator;
 
     @BeforeEach
-    public void setValidator() {
+    public void setUp() {
         guessedNumberValidator = new GuessedNumberValidator();
     }
 

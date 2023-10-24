@@ -4,11 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RefereeTest {
 
-    private Referee referee = new Referee();
+    private Referee referee;
+
+    @BeforeEach
+    public void setUp() {
+        referee = new Referee();
+    }
 
     @Test
     public void 심판_테스트() {

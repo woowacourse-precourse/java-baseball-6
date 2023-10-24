@@ -2,11 +2,17 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class AnnouncerTest {
 
-    private static Announcer announcer = new Announcer();
+    private Announcer announcer;
+
+    @BeforeEach
+    public void setUp() {
+        announcer = new Announcer();
+    }
 
     @Test
     public void 점수_출력_메시지_리졸버_테스트() {

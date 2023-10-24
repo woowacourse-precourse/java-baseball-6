@@ -1,16 +1,17 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ContinueModeNumberValidatorTest {
 
-    InputValidator continueModeNumberValidator;
+    private InputValidator continueModeNumberValidator;
 
     @BeforeEach
-    public void setValidator() {
+    public void setUp() {
         continueModeNumberValidator = new ContinueModeNumberValidator();
     }
 
@@ -27,6 +28,7 @@ class ContinueModeNumberValidatorTest {
         String input = "3";
         assertThrows(IllegalArgumentException.class, () -> continueModeNumberValidator.validate(input));
     }
+
     @Test
     public void 타입_오류_추측값_검증_테스트() {
         String input = "a";
