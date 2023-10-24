@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.view.InputView.getNumbers;
+import static baseball.view.OutputView.printHint;
 
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
@@ -36,6 +37,7 @@ public class BaseballGame {
             int result = computer.compare(balls.get(i), i);
             board[result]++;
         }
+        printHint(board);
     }
 
     private List<Integer> createComputer() {
