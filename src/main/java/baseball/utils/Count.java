@@ -4,6 +4,11 @@ public enum Count {
     STRIKE("스트라이크"),
     BALL("볼 ");
 
+    //---Constants---
+    private static final String EMPTY_STRING = "";
+    private static final int NO_COUNT = 0;
+    //---------
+
     private final String countMark;
 
     Count(String countMark) {
@@ -11,8 +16,8 @@ public enum Count {
     }
 
     public String getCountMarkFrom(int count) {
-        if (count < 1) {
-            return "";
+        if (count == NO_COUNT) {
+            return EMPTY_STRING;
         }
 
         return count + countMark;

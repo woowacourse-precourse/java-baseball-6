@@ -12,6 +12,10 @@ public class Validator {
 
     //---Constants---
     private static final String ZERO = "0";
+    private static final String WHITE_SPACE = " ";
+    private static final int INPUT_DIGITS = 3;
+    private static final int MIN_ALLOWED_INTEGER = 1;
+    private static final int MAX_ALLOWED_INTEGER = 9;
     //---------
 
     public static void validateInputString(String inputString) {
@@ -27,7 +31,7 @@ public class Validator {
 
     private static void validateInputIsNumber(char input) {
         int inputNumber = Character.getNumericValue(input);
-        if (inputNumber < 1 || inputNumber > 9) {
+        if (inputNumber < MIN_ALLOWED_INTEGER || inputNumber > MAX_ALLOWED_INTEGER) {
             throw new IllegalArgumentException(NON_NUMBER_CONTAINED);
         }
     }
@@ -39,13 +43,13 @@ public class Validator {
     }
 
     private static void validateInputLength(String inputString) {
-        if (inputString.length() != 3) {
+        if (inputString.length() != INPUT_DIGITS) {
             throw new IllegalArgumentException(INPUT_NOT_THREE_DIGITS);
         }
     }
 
     private static void validateInputNoWhiteSpace(String inputString) {
-        if (inputString.contains(" ")) {
+        if (inputString.contains(WHITE_SPACE)) {
             throw new IllegalArgumentException(WHITE_SPACE_INCLUDED);
         }
     }

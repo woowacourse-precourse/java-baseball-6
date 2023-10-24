@@ -13,7 +13,11 @@ public class Communicator {
     private static final String USER_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String MENU_SELECTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String TERMINATE_MESSAGE = "시스템을 종료합니다.";
+
+    //---Constants---
     private static final String NOTHING = "낫싱";
+    private static final int MAX_STRIKE_COUNTS = 3;
+    private static final int NO_COUNT = 0;
     //---------
 
     public static void printStart() {
@@ -46,11 +50,11 @@ public class Communicator {
 
         System.out.println(ballMark + strikeMark);
 
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == NO_COUNT && strikeCount == NO_COUNT) {
             System.out.println(NOTHING);
         }
 
-        if (strikeCount == 3) {
+        if (strikeCount == MAX_STRIKE_COUNTS) {
             System.out.println(USER_WIN_MESSAGE);
         }
     }

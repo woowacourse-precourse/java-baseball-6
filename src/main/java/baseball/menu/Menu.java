@@ -7,7 +7,10 @@ public enum Menu {
     START("1"),
     TERMINATE("2");
 
+    //---Message---
     private static final String INCORRECT_MENU_MESSAGE = "없는 메뉴 번호입니다.";
+    //---------
+
     private final String menuCode;
 
     Menu(String menuCode) {

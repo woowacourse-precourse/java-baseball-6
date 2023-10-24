@@ -8,6 +8,10 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class MenuHandler {
+    //---Constants---
+    private static final int MAX_STRIKE_COUNTS = 3;
+    //---------
+
     private final Computer computer;
 
     public MenuHandler(Computer computer) {
@@ -63,6 +67,6 @@ public class MenuHandler {
     }
 
     private boolean isCorrect(int strikeCount) {
-        return strikeCount == 3;
+        return strikeCount == MAX_STRIKE_COUNTS;
     }
 }
