@@ -25,7 +25,7 @@ public class Referee {
     public int countBall(Numbers playerNumbers) {
         int position = 0;
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBERS_LENGTH; i++) {
             if (answerNumbers.isSameNumber(playerNumbers, position)) {
                 ball++;
             }
