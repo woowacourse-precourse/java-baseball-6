@@ -56,13 +56,4 @@ public class GameManager {
     private boolean isCorrectBaseballNumber(int strike) {
         return strike == Constants.BASEBALL_SIZE;
     }
-
-    private boolean isCorrectBaseballNumber(List<Integer> randBaseballNumber, String userBaseballNumber) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Integer integer : randBaseballNumber) {
-            stringBuilder.append(integer);
-        }
-
-        return stringBuilder.toString().equals(userBaseballNumber);
-    }
 }
