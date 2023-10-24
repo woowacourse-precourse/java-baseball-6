@@ -10,17 +10,17 @@ import baseball.domain.hint.Ball;
 import baseball.domain.hint.Hint;
 import baseball.domain.hint.Nothing;
 import baseball.domain.hint.Strike;
-import baseball.service.hint.BallHintServiceImpl;
-import baseball.service.hint.NothingHintServiceImpl;
-import baseball.service.hint.StrikeHintServiceImpl;
+import baseball.service.hint.BallServiceImpl;
+import baseball.service.hint.NothingServiceImpl;
+import baseball.service.hint.StrikeServiceImpl;
 import org.junit.jupiter.api.Test;
 
 public class GameServiceImplTest {
 
     private final GameService gameService = new GameServiceImpl(
-            BallHintServiceImpl.getInstance(),
-            StrikeHintServiceImpl.getInstance(),
-            NothingHintServiceImpl.getInstance()
+            BallServiceImpl.getInstance(),
+            StrikeServiceImpl.getInstance(),
+            NothingServiceImpl.getInstance()
     );
 
     @Test

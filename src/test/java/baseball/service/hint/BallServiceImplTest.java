@@ -9,16 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BallHintServiceImplTest {
+public class BallServiceImplTest {
 
-    private final BallHintServiceImpl ballHintServiceImpl = BallHintServiceImpl.getInstance();
+    private final BallServiceImpl ballServiceImpl = BallServiceImpl.getInstance();
 
     @Test
     void create() {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
-        HintItem ballHint = ballHintServiceImpl.create(computerBaseball, inputBaseball);
+        HintItem ballHint = ballServiceImpl.create(computerBaseball, inputBaseball);
 
         assertTrue(ballHint instanceof Ball);
     }
@@ -31,7 +31,7 @@ public class BallHintServiceImplTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
         //when
-        int count = ballHintServiceImpl.count(computerBaseball, inputBaseball);
+        int count = ballServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
@@ -44,7 +44,7 @@ public class BallHintServiceImplTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("156");
 
         //when
-        int count = ballHintServiceImpl.count(computerBaseball, inputBaseball);
+        int count = ballServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
@@ -57,7 +57,7 @@ public class BallHintServiceImplTest {
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("451");
 
         //when
-        int count = ballHintServiceImpl.count(computerBaseball, inputBaseball);
+        int count = ballServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isOne();

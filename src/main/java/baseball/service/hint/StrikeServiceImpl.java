@@ -2,22 +2,21 @@ package baseball.service.hint;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.Ball;
 import baseball.domain.hint.HintItem;
 import baseball.domain.hint.Strike;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class StrikeHintServiceImpl implements HintItemService {
+public class StrikeServiceImpl implements HintItemService {
 
-    private static final StrikeHintServiceImpl strikeService = new StrikeHintServiceImpl();
+    private static final StrikeServiceImpl strikeService = new StrikeServiceImpl();
 
-    public static StrikeHintServiceImpl getInstance(){
+    public static StrikeServiceImpl getInstance(){
         return strikeService;
     }
 
-    private StrikeHintServiceImpl() {
+    private StrikeServiceImpl() {
 
     }
 

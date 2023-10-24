@@ -2,33 +2,32 @@ package baseball.service.hint;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.Ball;
 import baseball.domain.hint.HintItem;
+import baseball.domain.hint.Nothing;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class BallHintServiceImpl implements HintItemService {
+public class NothingServiceImpl implements HintItemService {
 
-    private static final BallHintServiceImpl ballService = new BallHintServiceImpl();
+    private static final NothingServiceImpl nothingService = new NothingServiceImpl();
 
-    public static BallHintServiceImpl getInstance() {
-        return ballService;
+    public static NothingServiceImpl getInstance() {
+        return nothingService;
     }
 
-    private BallHintServiceImpl() {
+    private NothingServiceImpl() {
 
     }
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem ball = new Ball(count);
+        HintItem nothing = new Nothing(count);
 
-        return ball;
+        return nothing;
     }
 
-    @Override
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
@@ -36,10 +35,7 @@ public class BallHintServiceImpl implements HintItemService {
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (ObjectUtil.isSame(computer.get(i), input.get(j))) { //TODO: BaseBall 역할로 분리하기
+                if (ObjectUtil.isSame(computer.get(i), input.get(j))) {
                     count++;
                 }
             }
@@ -52,6 +48,5 @@ public class BallHintServiceImpl implements HintItemService {
     public boolean isActive(HintItem hintItem) {
         return hintItem.isActive();
     }
-
-
 }
+

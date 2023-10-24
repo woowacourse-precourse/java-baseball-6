@@ -4,31 +4,31 @@ import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
 import baseball.domain.hint.Ball;
 import baseball.domain.hint.HintItem;
-import baseball.domain.hint.Nothing;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class NothingHintServiceImpl implements HintItemService {
+public class BallServiceImpl implements HintItemService {
 
-    private static final NothingHintServiceImpl nothingService = new NothingHintServiceImpl();
+    private static final BallServiceImpl ballService = new BallServiceImpl();
 
-    public static NothingHintServiceImpl getInstance() {
-        return nothingService;
+    public static BallServiceImpl getInstance() {
+        return ballService;
     }
 
-    private NothingHintServiceImpl() {
+    private BallServiceImpl() {
 
     }
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem nothing = new Nothing(count);
+        HintItem ball = new Ball(count);
 
-        return nothing;
+        return ball;
     }
 
+    @Override
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
@@ -36,7 +36,10 @@ public class NothingHintServiceImpl implements HintItemService {
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
-                if (ObjectUtil.isSame(computer.get(i), input.get(j))) {
+                if (i == j) {
+                    continue;
+                }
+                if (ObjectUtil.isSame(computer.get(i), input.get(j))) { //TODO: BaseBall 역할로 분리하기
                     count++;
                 }
             }
@@ -49,5 +52,6 @@ public class NothingHintServiceImpl implements HintItemService {
     public boolean isActive(HintItem hintItem) {
         return hintItem.isActive();
     }
-}
 
+
+}

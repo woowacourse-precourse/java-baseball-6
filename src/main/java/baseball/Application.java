@@ -21,9 +21,9 @@ public class Application {
 
     private static GameService createGameService() {
         GameService gameService = new GameServiceImpl(
-                BallHintServiceImpl.getInstance(),
-                StrikeHintServiceImpl.getInstance(),
-                NothingHintServiceImpl.getInstance()
+                BallServiceImpl.getInstance(),
+                StrikeServiceImpl.getInstance(),
+                NothingServiceImpl.getInstance()
         );
         return gameService;
     }

@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StrikeHintServiceImplTest {
+public class StrikeServiceImplTest {
 
-    private final StrikeHintServiceImpl strikeHintServiceImpl = StrikeHintServiceImpl.getInstance();
+    private final StrikeServiceImpl strikeHintServiceImpl = StrikeServiceImpl.getInstance();
 
     @Test
     void create() {
