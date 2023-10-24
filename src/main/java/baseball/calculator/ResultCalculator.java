@@ -1,5 +1,7 @@
 package baseball.calculator;
 
+import baseball.constants.GameConstants;
+
 public class ResultCalculator {
 
     public String calculateResult(String userInput, String computerNumber) {
@@ -20,9 +22,9 @@ public class ResultCalculator {
 
     private String formatResult(int strikes, int balls) {
         if (strikes == 3) {
-            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return GameConstants.VICTORY_MESSAGE;
         } else if (strikes == 0 && balls == 0) {
-            return "낫싱";
+            return GameConstants.GAME_NOTHING_STR;
         } else {
             return generateResultString(balls, strikes);
         }
@@ -32,10 +34,10 @@ public class ResultCalculator {
         StringBuilder result = new StringBuilder();
 
         if (balls > 0) {
-            result.append(balls).append("볼 ");
+            result.append(balls).append(GameConstants.GAME_BALL_STR + " ");
         }
         if (strikes > 0) {
-            result.append(strikes).append("스트라이크");
+            result.append(strikes).append(GameConstants.GAME_STRIKE_STR);
         }
 
         return result.toString().trim();
