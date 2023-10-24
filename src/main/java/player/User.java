@@ -19,7 +19,7 @@ public class User implements Player {
         int choice = Integer.parseInt(userChoiceInput);
         endInputNumberValidation(choice);
 
-        if (choice == 0)
+        if (choice == 1)
             return false;
 
         return true;
@@ -31,7 +31,7 @@ public class User implements Player {
     }
 
     private void endInputNumberValidation(int choice){
-        if(choice<0 || choice>1)
+        if(choice<1 || choice>2)
             throw new IllegalArgumentException("user input is not appropriate");
     }
 
