@@ -122,7 +122,7 @@ public class Validator {
     private static void validateInputIsOneToNine(List<Integer> inputValue) {
         // TODO: 입력받은 값이 VALIDATION_MIN_VALUE 부터 VALIDATION_MAX_VALUE 사이 존재 하는지 유효성 검사
         if (!inputValue.stream().allMatch(
-                element -> element >= NumberConst.MIN_INPUT_VALUE && element <= NumberConst.EXPECTED_INPUT_LENGTH)) {
+                element -> element >= NumberConst.MIN_INPUT_VALUE && element <= NumberConst.MAX_INPUT_VALUE)) {
             MessageUtil.printInvalidRange();
             throw new IllegalArgumentException();
         }
