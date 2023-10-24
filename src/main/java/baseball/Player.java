@@ -32,11 +32,11 @@ public class Player {
         String selectNumber = Console.readLine();
         if (selectNumber.equals("1")) {
             return true;
-        } else if (selectNumber.equals("2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         }
+        if (selectNumber.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
     }
 
     public boolean validateInputNumber(String inputNumber) {

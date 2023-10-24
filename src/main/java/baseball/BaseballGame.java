@@ -25,9 +25,8 @@ public class BaseballGame {
             computer.resetState();
             computer.resetComputerNumber();
             BaseballGame.start();
-        } else {
-            System.out.println("게임을 종료합니다.");
-            return;
         }
+        System.out.println("게임을 종료합니다.");
+        return;
     }
 }
