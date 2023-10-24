@@ -35,25 +35,21 @@ class baseballClass {
     }
 
     private void setPlayer(){
-        try {
-            player.clear();
-            System.out.print("숫자를 입력해주세요 : ");
-            String choiceNumber = Console.readLine();
+        player.clear();
+        System.out.print("숫자를 입력해주세요 : ");
+        String choiceNumber = Console.readLine();
 
-            if(choiceNumber.length() !=3){
+        if(choiceNumber.length() !=3){
+            throw new IllegalArgumentException();
+        }
+
+        for(char c : choiceNumber.toCharArray()){
+            int numericValue = Character.getNumericValue(c);
+
+            if (numericValue < 1 || numericValue > 9 || player.contains(numericValue)) {
                 throw new IllegalArgumentException();
             }
-
-            for(char c : choiceNumber.toCharArray()){
-                int numericValue = Character.getNumericValue(c);
-
-                if (numericValue < 1 || numericValue > 9 || player.contains(numericValue)) {
-                    throw new IllegalArgumentException();
-                }
-                player.add(numericValue);
-            }
-        } catch (IllegalArgumentException e) {
-            status = 2;
+            player.add(numericValue);
         }
     }
 
