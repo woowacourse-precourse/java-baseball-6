@@ -3,9 +3,10 @@ package baseball;
 import static baseball.utils.Constants.COUNTS;
 import static baseball.utils.Constants.MAXIMUM_NUMBER;
 import static baseball.utils.Constants.MINIMUM_NUMBER;
+import static baseball.utils.ErrorMessage.INPUT_DUPLICATION_ERROR_MESSAGE;
+import static baseball.utils.ErrorMessage.INPUT_LENGTH_INVALID_ERROR_MESSAGE;
 import static baseball.utils.ErrorMessage.INPUT_NOT_INTEGER_ERROR_MESSAGE;
-import static baseball.utils.ErrorMessage.PLAYER_INPUT_DUPLICATION_ERROR_MESSAGE;
-import static baseball.utils.ErrorMessage.PLAYER_INPUT_OUT_OF_RANGE_ERROR_MESSAGE;
+import static baseball.utils.ErrorMessage.INPUT_OUT_OF_RANGE_ERROR_MESSAGE;
 import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
 import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
 import static baseball.utils.Util.convertToIntegerList;
@@ -65,7 +66,7 @@ public class Player {
 
     private void validateCount(List<Integer> playerNumbers) {
         if (playerNumbers.size() != COUNTS) {
-            throw new IllegalArgumentException("사이즈가 안맞아");
+            throw new IllegalArgumentException(INPUT_LENGTH_INVALID_ERROR_MESSAGE);
         }
     }
 
@@ -73,7 +74,7 @@ public class Player {
         boolean isInvalid = playerNumbers.stream()
                 .anyMatch(number -> number < MINIMUM_NUMBER || number > MAXIMUM_NUMBER);
         if (isInvalid) {
-            throw new IllegalArgumentException(PLAYER_INPUT_OUT_OF_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(INPUT_OUT_OF_RANGE_ERROR_MESSAGE);
         }
     }
 
@@ -81,7 +82,7 @@ public class Player {
         Set<Integer> numberSet = new HashSet<>();
         for (int number : playerNumbers) {
             if (numberSet.contains(number)) {
-                throw new IllegalArgumentException(PLAYER_INPUT_DUPLICATION_ERROR_MESSAGE);
+                throw new IllegalArgumentException(INPUT_DUPLICATION_ERROR_MESSAGE);
             }
             numberSet.add(number);
         }
