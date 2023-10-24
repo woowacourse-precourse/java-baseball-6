@@ -1,0 +1,22 @@
+### 구현 기능 목록
+
+- makeRandomNumber( )
+  - 1에서 9까지 서로 다른 수를 랜덤으로 3개 생성해서 저장하기.
+- 게임 시작 문구 출력 후, 숫자 입력하기.
+- validateInputLength( )
+  - 3자리 숫자를 입력하지 않으면, IllegalArgumentException 을 발생시키고 애플리케이션 종료하기.
+- parseAndAddInputsToList( )
+  - 입력 받은 문자를 int로 parsing 한 후에, list에 추가하기.
+- getStrikeCount( )
+  - 같은 수가 같은 자리에 있으면, 스트라이크 수를 카운팅
+- getBallCount( )
+  - 같은 수가 다른 자리에 있으면, 볼 수를 카운팅
+- printBallCountAndStrikeCount( )
+  - 볼 수와 스트라이크 수를 출력하기.
+  - 같은 수가 전혀 없으면, 낫싱 출력하기.
+- print3Strike( )
+  - 3개의 수를 모두 맞히면, 게임 종료 멘트 출력
+- isRestart( )
+  - 함께 게임을 새로 시작할 지, 종료할 지 입력 하기.
+    - 1을 입력하면, 게임을 다시 시작하기.
+    - 2를 입력하면, 완전히 종료하기.
