@@ -44,7 +44,7 @@ public class Game {
         String input = Console.readLine();
         validator.validateRestartChoice(input);
 
-        if (Integer.parseInt(input) == 1) { // 게임 재시작
+        if ("1".equals(input)) { // 게임 재시작
             return true;
         } else { // 게임 종료
             return false;
