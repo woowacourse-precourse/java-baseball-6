@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 public class ErrorCatcher {
     private static final String ERROR_MESSAGE_SIZE = "입력 숫자는 총 3개여야 합니다.";

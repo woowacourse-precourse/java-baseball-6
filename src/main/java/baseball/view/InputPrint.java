@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.controller.ErrorCatcher;
 
 import java.util.ArrayList;
 import java.util.List;

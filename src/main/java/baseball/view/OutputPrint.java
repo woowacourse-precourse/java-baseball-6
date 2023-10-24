@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 public class OutputPrint {
     public static void printResult(int strike, int ball){

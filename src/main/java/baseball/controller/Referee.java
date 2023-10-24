@@ -1,5 +1,7 @@
-package baseball;
+package baseball.controller;
 
+
+import baseball.model.Ball;
 
 public class Referee {
     int strike;

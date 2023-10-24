@@ -1,4 +1,9 @@
-package baseball;
+package baseball.controller;
+
+import baseball.controller.Referee;
+import baseball.model.Ball;
+import baseball.view.InputPrint;
+import baseball.view.OutputPrint;
 
 public class BaseBall {
     private Ball userBall = new Ball();
