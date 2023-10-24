@@ -40,4 +40,10 @@ public class Exception {
             }
         }
     }
+
+    public void validateOneOrTwo(String number) {
+        if (!(number.equals("1") || number.equals("2"))) {
+            throw new IllegalArgumentException("입력값은 1 또는 2여야 합니다.");
+        }
+    }
 }
