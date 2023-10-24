@@ -2,7 +2,8 @@ package baseball;
 
 public class SequenceManager {
 
-    private final String CLOSE_GAME_INPUT = "2";
+    private static final String CLOSE_GAME_INPUT = "2";
+
     private MessageManager messageManager = new MessageManager();
     private Data data = new Data();
     private GameProcessor gameProcessor = new GameProcessor();
