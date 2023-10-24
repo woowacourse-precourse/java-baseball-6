@@ -14,8 +14,8 @@ import java.util.List;
 
 
 public class GameController {
-    Computer computer;
-    Player player;
+    private Computer computer;
+    private Player player;
     private final GameOutput output = new GameOutput();
     private final UserInput input = new UserInput();
     private final BallException ballException = new BallException();

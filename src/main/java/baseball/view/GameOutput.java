@@ -18,25 +18,23 @@ public class GameOutput {
 
         if (strike == 0 && ball == 0) printNothing();
     }
-
-    public void printGameStart(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public void printStrikeAndBallResult(){
+        System.out.printf(String.format("%d%s %d%s%n", ball, BALL, strike, STRIKE));
     }
-
-    public void printNothing(){
-        System.out.println("낫싱");
+    public void printStrikeResult(){
+        System.out.println(strike + STRIKE);
     }
 
     public void printBallResult(){
         System.out.println(ball + BALL);
     }
 
-    public void printStrikeResult(){
-        System.out.println(strike + STRIKE);
+    public void printNothing(){
+        System.out.println("낫싱");
     }
 
-    public void printStrikeAndBallResult(){
-        System.out.printf(String.format("%d%s %d%s%n", ball, BALL, strike, STRIKE));
+    public void printGameStart(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void printGameEnd(){
