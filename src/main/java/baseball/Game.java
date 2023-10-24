@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.BaseballGenerator.createBaseballs;
 import static baseball.GameStatus.IN_PROGRESS;
 
 public class Game {
@@ -35,22 +36,10 @@ public class Game {
     }
 
     public void getResult(String input) {
-        Baseballs userBaseballs = new Baseballs(convertInputToBaseball(input));
+        Baseballs userBaseballs = createBaseballs(input);
         Result result = computer.getResult(userBaseballs);
         gameScreen.printResult(result.getResult());
         if (result.isClear()) retryOrEnd();
-    }
-
-    private List<Baseball> convertInputToBaseball(String input) {
-        List<Baseball> converted = new ArrayList<>();
-        for (int index = 0; index < input.length(); index++) {
-            try {
-                converted.add(new Baseball(Integer.parseInt(String.valueOf(input.charAt(index)))));
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
-            }
-        }
-        return converted;
     }
 
     private void retryOrEnd() {
