@@ -36,4 +36,18 @@ class PlayerTest {
                             .hasMessage("잘못된 값을 입력하셨습니다.(입력값 3자리수)")
                 );
     }
+
+    @DisplayName("각 자리수가 1부터 9까지의 숫자가 아닌경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"0z3","-11","z12","#$#"})
+    void setPlayerNumberIsDigitCharInString(String playerNumber) throws Exception{
+        //given parameter
+
+        //when //then
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new Player(playerNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("잘못된 값을 입력하셨습니다.(자연수가 아닌 수가 존재합니다.)")
+        );
+    }
 }
