@@ -2,6 +2,8 @@ package Entity;
 
 import static Constants.Constants.NUM_LENGTH;
 
+import Manager.InputManager;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,19 +35,26 @@ public class GameNumber {
         return true;
     }
 
+    public void createComputerNumber() {
+        computer.clear();
+        while (computer.size() < NUM_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {   // 서로 다른 수 3개를 선택
+                computer.add(randomNumber);
+            }
+        }
+    }
+
+    public void createUserNumber() {
+        String inputNumber = InputManager.getString();
+        user = InputManager.parseInput(inputNumber);
+    }
+
     public List<Integer> getComputer() {
         return computer;
     }
 
     public List<Integer> getUser() {
         return user;
-    }
-
-    public void setComputer(List<Integer> computer) {
-        this.computer = computer;
-    }
-
-    public void setUser(List<Integer> user) {
-        this.user = user;
     }
 }

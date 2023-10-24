@@ -25,6 +25,7 @@ public class GameScore {
         List<Integer> computerNumber = gameNumber.getComputer();
         List<Integer> userNumber = gameNumber.getUser();
 
+        reset();
         for(int i = 0; i < NUM_LENGTH; i++) {
             Integer computerDigit = computerNumber.get(i);
             Integer userDigit = userNumber.get(i);

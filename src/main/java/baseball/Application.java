@@ -46,7 +46,7 @@ public class Application {
     }
 
     public static void playGame() {
-        createComputerNumber(); // 컴퓨터의 랜덤 값 생성
+        gameNumber.createComputerNumber(); // 컴퓨터의 랜덤 값 생성
         while (gameScore.getStrike() != MAX_STRIKE) {   // 3 Strike면 탈출
             inputUserNumber();  // 사용자 수 입력
             calculateScore();   // Ball과 Strike를 계산
@@ -58,25 +58,10 @@ public class Application {
         gameScore = new GameScore();
     }
 
-    public static void createComputerNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < NUM_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {   // 서로 다른 수 3개를 선택
-                computerNumber.add(randomNumber);
-            }
-        }
-
-        gameNumber.setComputer(computerNumber);
-    }
-
     public static void inputUserNumber() {
         PrintManager.showStatus(Status.INPUT_NUMBER, !NEW_LINE);
 
-        String inputNumber = InputManager.getString();
-        List<Integer> userNumber = InputManager.parseInput(inputNumber);
-        gameNumber.setUser(userNumber);
-
+        gameNumber.createUserNumber();  // 유저에게 숫자를 입력받음
         boolean isValidate = gameNumber.validateUserNumber();   // 세 자리 숫자를 입력했는지 확인
         if (!isValidate) {
             // 유효하지 않은 입력이면 에러 throw
@@ -85,7 +70,6 @@ public class Application {
     }
 
     public static void calculateScore() {
-        gameScore.reset();
         // 같은 수가 다른 자리에 있으면 볼
         // 같은 수가 같은 자리에 있으면 스트라이크
         gameScore.calculateScore(gameNumber);
