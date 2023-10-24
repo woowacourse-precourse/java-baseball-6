@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.util.PrintMessage;
+import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,61 +13,61 @@ public class BaseBallGame {
     private static String GAME_FLAG = "1";
 
     public BaseBallGame() {
-        this.numbers = new Numbers();
-        initNumbers();
-    }
-
-    public BaseBallGame(int startInclusive, int endInclusive) {
-        this.numbers = new Numbers();
-        START_INCLUSIVE = startInclusive;
-        END_INCLUSIVE = endInclusive;
-        initNumbers();
     }
 
     public void run() {
         PrintMessage.printInitMessage();
         while (GAME_FLAG.equals("1")) {
-            GAME_FLAG = playGame();
+            this.numbers = new Numbers();
+            initNumbers();
+            playGame();
         }
     }
 
-    private String playGame() {
-        if (oneWayOfGame()) {
-            PrintMessage.printSuccessMessage();
-            GAME_FLAG = Console.readLine();
+    private void playGame() {
+        GameResult gameResult;
+        while (true) {
+            gameResult = oneWayOfGame();
+
+            if (gameResult.isSuccess())
+                break;
+
+            gameResult.printGameResult();
         }
-        return GAME_FLAG;
+        PrintMessage.printSuccessMessage();
+
+        GAME_FLAG = Validation.isValidGameFlag(Console.readLine());
     }
 
-    private boolean oneWayOfGame() {
+
+    private GameResult oneWayOfGame() {
         PrintMessage.printInputMessage();
+
         String inputNum = Console.readLine();
-        String number = numbers.toString();
-        int ballCnt = 0;
-        int strikeCnt = 0;
+        Validation.isValidInputNumber(inputNum);
 
+        String computerNum = numbers.toString();
+        GameResult gameResult = new GameResult();
 
-        for (String input : inputNum.split("")) {
-            for (String num : number.split("")) {
-                if (input.equals(num)) {
-                    strikeCnt += 1;
-                } else if (number.contains(input)) {
-                    ballCnt += 1;
-                }
+        for (int i = 0; i < inputNum.length(); i++) {
+            //자리수와 문자가 같으면 스트라이크
+            if (inputNum.charAt(i) == computerNum.charAt(i)) {
+                gameResult.addStrikeCnt();
+                continue;
+            }
+            //해당 자리엔 없어도 다른 곳에 포함되어 있으면 ball
+            if (computerNum.contains(Character.toString(inputNum.charAt(i)))) {
+                gameResult.addBallCnt();
+                continue;
             }
         }
-        if (strikeCnt == DIGIT)
-            return true;
-        if(strikeCnt > 0){
-            PrintMessage.printStrikeMessage(strikeCnt);
-            return false;
-        }
-
-        PrintMessage.printBallMessage(ballCnt);
-        return false;
+        if (gameResult.getStrikeCnt() == DIGIT)
+            gameResult.setSuccess(true);
+        return gameResult;
     }
 
     private void initNumbers() {
+        numbers = new Numbers();
         while (!numbers.isReady(DIGIT)) {
             int randomNum = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             numbers.addNumber(randomNum);
