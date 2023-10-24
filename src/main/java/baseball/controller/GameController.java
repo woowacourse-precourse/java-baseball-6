@@ -10,16 +10,16 @@ public class GameController {
    private final GameService gameService = new GameService();
 
     public void run() {
-        gameSet();
-        gameStart();
+        setupGame();
+        play();
         gameRestart();
     }
     // 게임 시작전 세팅하는 함수
-    public void gameSet() {
+    public void setupGame() {
         gameService.gameSet();
     }
     // 게임을 시작한다.
-    public void gameStart() {
+    public void play() {
         gameService.startGame();
     }
 

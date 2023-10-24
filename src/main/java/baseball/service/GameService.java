@@ -23,12 +23,12 @@ public class GameService {
         printView.printGameStartMessage();
         while (game.getStrike()!=3) {
             game.initScore();
-            userSet();
+            setupUser();
             validateInputNumber(game.getAnswer(), user.getInputNum());
         }
         printView.printGameEndMessage();
     }
-    public void userSet() {
+    public void setupUser() {
         user = new User(getInputNumber());
     }
 
@@ -69,14 +69,14 @@ public class GameService {
     public void compareNumber(int[] answer, int[] inputNum, int index) {
         for (int j = 0; j < inputNum.length; j++) {
             if (answer[index] == inputNum[j]) {
-                getCount(index, j);
+                updateScore(index, j);
                 break;
             }
         }
     }
 
     // 스트라이크와 볼의 갯수를 구한다.
-    public void getCount(int index, int j) {
+    public void updateScore(int index, int j) {
         if (index != j) {
             game.increaseBall();
         }
