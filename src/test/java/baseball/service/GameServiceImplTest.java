@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.domain.NumberBaseball;
-import baseball.domain.hint.Ball;
+import baseball.domain.hint.item.Ball;
 import baseball.domain.hint.Hint;
-import baseball.domain.hint.Nothing;
-import baseball.domain.hint.Strike;
-import baseball.service.hint.BallServiceImpl;
-import baseball.service.hint.NothingServiceImpl;
-import baseball.service.hint.StrikeServiceImpl;
+import baseball.domain.hint.item.Nothing;
+import baseball.domain.hint.item.Strike;
+import baseball.service.hint.item.BallServiceImpl;
+import baseball.service.hint.item.NothingServiceImpl;
+import baseball.service.hint.item.StrikeServiceImpl;
 import org.junit.jupiter.api.Test;
 
 public class GameServiceImplTest {

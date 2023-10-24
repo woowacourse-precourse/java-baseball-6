@@ -1,63 +1,61 @@
-package baseball.service.hint;
+package baseball.service.hint.item;
 
 import baseball.domain.NumberBaseball;
-import baseball.domain.hint.Ball;
-import baseball.domain.hint.HintItem;
+import baseball.domain.hint.item.HintItem;
+import baseball.domain.hint.item.Strike;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BallServiceImplTest {
+public class StrikeServiceImplTest {
 
-    private final BallServiceImpl ballServiceImpl = BallServiceImpl.getInstance();
+    private final StrikeServiceImpl strikeHintServiceImpl = StrikeServiceImpl.getInstance();
 
     @Test
     void create() {
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
-        HintItem ballHint = ballServiceImpl.create(computerBaseball, inputBaseball);
+        HintItem strikeHint = strikeHintServiceImpl.create(computerBaseball, inputBaseball);
 
-        assertTrue(ballHint instanceof Ball);
+        assertTrue(strikeHint instanceof Strike);
     }
 
-
     @Test
-    void count_zeroBall() {
+    void count_zeroStrike() {
         //given
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
         //when
-        int count = ballServiceImpl.count(computerBaseball, inputBaseball);
+        int count = strikeHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isZero();
     }
 
     @Test
-    void count_zeroBall_samePlace() {
-        //given
-        NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
-        NumberBaseball inputBaseball = NumberBaseball.createBaseball("156");
-
-        //when
-        int count = ballServiceImpl.count(computerBaseball, inputBaseball);
-
-        //then
-        assertThat(count).isZero();
-    }
-
-    @Test
-    void count_oneBall() {
+    void count_zeroStrike_differentPlace() {
         //given
         NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
         NumberBaseball inputBaseball = NumberBaseball.createBaseball("451");
 
         //when
-        int count = ballServiceImpl.count(computerBaseball, inputBaseball);
+        int count = strikeHintServiceImpl.count(computerBaseball, inputBaseball);
+
+        //then
+        assertThat(count).isZero();
+    }
+
+    @Test
+    void count_oneStrike() {
+        //given
+        NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
+        NumberBaseball inputBaseball = NumberBaseball.createBaseball("156");
+
+        //when
+        int count = strikeHintServiceImpl.count(computerBaseball, inputBaseball);
 
         //then
         assertThat(count).isOne();

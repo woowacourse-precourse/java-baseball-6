@@ -1,33 +1,34 @@
-package baseball.service.hint;
+package baseball.service.hint.item;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.HintItem;
-import baseball.domain.hint.Nothing;
+import baseball.domain.hint.item.Ball;
+import baseball.domain.hint.item.HintItem;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class NothingServiceImpl implements HintItemService {
+public class BallServiceImpl implements HintItemService {
 
-    private static final NothingServiceImpl nothingService = new NothingServiceImpl();
+    private static final BallServiceImpl ballService = new BallServiceImpl();
 
-    public static NothingServiceImpl getInstance() {
-        return nothingService;
+    public static BallServiceImpl getInstance() {
+        return ballService;
     }
 
-    private NothingServiceImpl() {
+    private BallServiceImpl() {
 
     }
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem nothing = new Nothing(count);
+        HintItem ball = new Ball(count);
 
-        return nothing;
+        return ball;
     }
 
+    @Override
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
@@ -35,7 +36,10 @@ public class NothingServiceImpl implements HintItemService {
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
-                if (ObjectUtil.isSame(computer.get(i), input.get(j))) {
+                if (i == j) {
+                    continue;
+                }
+                if (ObjectUtil.isSame(computer.get(i), input.get(j))) { //TODO: BaseBall 역할로 분리하기
                     count++;
                 }
             }
@@ -48,5 +52,6 @@ public class NothingServiceImpl implements HintItemService {
     public boolean isActive(HintItem hintItem) {
         return hintItem.isActive();
     }
-}
 
+
+}

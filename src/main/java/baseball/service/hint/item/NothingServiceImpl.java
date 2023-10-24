@@ -1,42 +1,43 @@
-package baseball.service.hint;
+package baseball.service.hint.item;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.HintItem;
-import baseball.domain.hint.Strike;
+import baseball.domain.hint.item.HintItem;
+import baseball.domain.hint.item.Nothing;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class StrikeServiceImpl implements HintItemService {
+public class NothingServiceImpl implements HintItemService {
 
-    private static final StrikeServiceImpl strikeService = new StrikeServiceImpl();
+    private static final NothingServiceImpl nothingService = new NothingServiceImpl();
 
-    public static StrikeServiceImpl getInstance(){
-        return strikeService;
+    public static NothingServiceImpl getInstance() {
+        return nothingService;
     }
 
-    private StrikeServiceImpl() {
+    private NothingServiceImpl() {
 
     }
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem strike = new Strike(count);
+        HintItem nothing = new Nothing(count);
 
-        return strike;
+        return nothing;
     }
 
-    @Override
     public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
         List input = inputBaseball.getValues();
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
-            if (ObjectUtil.isSame(computer.get(i), input.get(i))) {
-                count++;
+            for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
+                if (ObjectUtil.isSame(computer.get(i), input.get(j))) {
+                    count++;
+                }
             }
         }
 
@@ -48,3 +49,4 @@ public class StrikeServiceImpl implements HintItemService {
         return hintItem.isActive();
     }
 }
+

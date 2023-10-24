@@ -1,8 +1,8 @@
-package baseball.domain.hint;
+package baseball.domain.hint.item;
 
-public class Strike extends HintItem {
+public class Ball extends HintItem {
 
-    public Strike(int count) {
+    public Ball(int count) {
         super(count);
     }
 

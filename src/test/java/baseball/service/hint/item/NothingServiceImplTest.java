@@ -1,8 +1,8 @@
-package baseball.service.hint;
+package baseball.service.hint.item;
 
 import baseball.domain.NumberBaseball;
-import baseball.domain.hint.HintItem;
-import baseball.domain.hint.Nothing;
+import baseball.domain.hint.item.HintItem;
+import baseball.domain.hint.item.Nothing;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

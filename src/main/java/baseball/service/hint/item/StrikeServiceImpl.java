@@ -1,31 +1,31 @@
-package baseball.service.hint;
+package baseball.service.hint.item;
 
 import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
-import baseball.domain.hint.Ball;
-import baseball.domain.hint.HintItem;
+import baseball.domain.hint.item.HintItem;
+import baseball.domain.hint.item.Strike;
 import baseball.util.ObjectUtil;
 
 import java.util.List;
 
-public class BallServiceImpl implements HintItemService {
+public class StrikeServiceImpl implements HintItemService {
 
-    private static final BallServiceImpl ballService = new BallServiceImpl();
+    private static final StrikeServiceImpl strikeService = new StrikeServiceImpl();
 
-    public static BallServiceImpl getInstance() {
-        return ballService;
+    public static StrikeServiceImpl getInstance(){
+        return strikeService;
     }
 
-    private BallServiceImpl() {
+    private StrikeServiceImpl() {
 
     }
 
     @Override
     public HintItem create(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = count(computerBaseball, inputBaseball);
-        HintItem ball = new Ball(count);
+        HintItem strike = new Strike(count);
 
-        return ball;
+        return strike;
     }
 
     @Override
@@ -35,13 +35,8 @@ public class BallServiceImpl implements HintItemService {
         List input = inputBaseball.getValues();
 
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
-            for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (ObjectUtil.isSame(computer.get(i), input.get(j))) { //TODO: BaseBall 역할로 분리하기
-                    count++;
-                }
+            if (ObjectUtil.isSame(computer.get(i), input.get(i))) {
+                count++;
             }
         }
 
@@ -52,6 +47,4 @@ public class BallServiceImpl implements HintItemService {
     public boolean isActive(HintItem hintItem) {
         return hintItem.isActive();
     }
-
-
 }

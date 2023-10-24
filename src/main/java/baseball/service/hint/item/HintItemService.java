@@ -1,7 +1,7 @@
-package baseball.service.hint;
+package baseball.service.hint.item;
 
 import baseball.domain.NumberBaseball;
-import baseball.domain.hint.HintItem;
+import baseball.domain.hint.item.HintItem;
 
 public interface HintItemService { //TODO: 전체 코드 포맷 (Ctrl+Alt+L)
 

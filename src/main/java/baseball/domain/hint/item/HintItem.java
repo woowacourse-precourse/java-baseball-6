@@ -1,4 +1,4 @@
-package baseball.domain.hint;
+package baseball.domain.hint.item;
 
 public abstract class HintItem {
 

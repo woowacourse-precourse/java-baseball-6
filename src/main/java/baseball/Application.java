@@ -3,7 +3,9 @@ package baseball;
 import baseball.controller.GameController;
 import baseball.service.GameService;
 import baseball.service.GameServiceImpl;
-import baseball.service.hint.*;
+import baseball.service.hint.item.BallServiceImpl;
+import baseball.service.hint.item.NothingServiceImpl;
+import baseball.service.hint.item.StrikeServiceImpl;
 import baseball.view.*;
 
 public class Application {
