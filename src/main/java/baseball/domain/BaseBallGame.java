@@ -25,8 +25,9 @@ public class BaseBallGame {
         do{
             this.computer = Computer.create();
 
-             gameProgress();
-
+            gameProgress();
+            System.out.println(FINISH_MESSAGE);
+            System.out.println(RESTART_MESSAGE);
             restart = Integer.parseInt(Console.readLine());
             verifyRestartInput(restart);
 
@@ -37,12 +38,12 @@ public class BaseBallGame {
         boolean isCorrect = false;
 
         while (!isCorrect){
-            System.out.println(INPUT_NUMBER_MESSAGE);
-            List<Integer> playerNumbers = player.guessNumbers();
+            System.out.print(INPUT_NUMBER_MESSAGE);
+            List<Integer> resultList = computer.compareNumbers(player.guessNumbers());
 
-            printResult(playerNumbers);
+            printResult(resultList);
 
-            isCorrect = checkResult(playerNumbers);
+            isCorrect = checkResult(resultList);
         }
 
     }
@@ -56,14 +57,15 @@ public class BaseBallGame {
         }
 
         sb.append(resultList.get(BALL_INDEX)!=0? resultList.get(BALL_INDEX)+BALL:"");
+        sb.append(sb.isEmpty()?"":" ");
         sb.append(resultList.get(STRIKE_INDEX)!=0? resultList.get(STRIKE_INDEX)+STRIKE:"");
 
         System.out.println(sb.toString());
 
     }
 
-    private boolean checkResult(List<Integer> playerNumbers){
-        return playerNumbers.get(STRIKE_INDEX) == playerNumbers.size();
+    private boolean checkResult(List<Integer> resultList){
+        return resultList.get(STRIKE_INDEX) == resultList.size();
     }
 
 
