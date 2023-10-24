@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,5 +22,20 @@ public class Application {
         }
 
         return result;
+    }
+
+    public int[] checkAnswer(List<Integer> answer, List<Integer> input) {
+        int strike = 0, ball = 0;
+
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
+                if(Objects.equals(answer.get(i), input.get(j))) {
+                    if(i == j) strike++;
+                    else ball++;
+                }
+            }
+        }
+
+        return new int[]{strike, ball};
     }
 }
