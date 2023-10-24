@@ -10,10 +10,6 @@ public class Application {
         getStartingMessage();
         while(true){
             PlayBaseballGame.play();
-
-//            if(play){
-//                break;
-//            }
             getRestartOrEndMessage();
             String input = Console.readLine();
             try {
