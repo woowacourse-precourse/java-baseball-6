@@ -11,6 +11,14 @@
     2) takeUserEndOrRetryInput : 유저가 게임을 종료할 지 재시작 할 지 여부를 입력하는 input을 받기 위한 메소드
 3. ExceptionClass
     1) generateIllegalArgumentException : 사용자가 잘못된 입력값을 제공했을 경우 IllegalArgumentException을 발생시키는 메소드
+    2) dealUserAnswerInputException : 에러 메시지 출력
+       - 숫자가 아닌 다른 문자가 입력되었을 경우
+       - 숫자가 3개 초과 혹은 3개 미만으로 입력되었을 경우
+       - 같은 숫자가 여러개 입력되었을 경우
+    3) dealUserEndOrRetryInputException : 에러메시지 출력
+       - 숫자가 아닌 다른 문자가 입력되었을 경우
+       - 숫자가 1개 초과 혹은 1개 미만으로 입력되었을 경우
+       - 숫자가 1, 2가 아닌 경우
 4. Computer Class
     1) playBaseBall : 숫자야구 게임 한 단위를 실행하는 메소드
     2) startBaseballGame : 숫자야구 게임을 시작하는 메소드
