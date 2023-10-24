@@ -137,7 +137,7 @@ class ApplicationTest extends NsTest {
         List<Integer> userList = new ArrayList<>(List.of(num1, num2, num3));
 
         // when
-        int result = gameStandard.getSameNumber2Computer(computerList, userList);
+        int result = gameStandard.getSameUserNumber2Computer(computerList, userList);
 
         // then
         assertThat(result).isEqualTo(expectCntSameNum);

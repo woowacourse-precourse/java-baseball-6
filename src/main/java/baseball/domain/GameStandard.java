@@ -14,7 +14,7 @@ public class GameStandard {
      * @param userList     유저의 3개의 랜덤 LIST [2, 3, 4]
      * @return
      */
-    public int getSameNumber2Computer(List<Integer> computerList, List<Integer> userList) {
+    public int getSameUserNumber2Computer(List<Integer> computerList, List<Integer> userList) {
         int cntSameNum = 0; // 유저의 숫자가 computerList에 포함한 갯수
 
         for (Integer numOfUser : userList) {

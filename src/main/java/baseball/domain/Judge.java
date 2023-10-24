@@ -58,7 +58,7 @@ public class Judge {
     }
 
     private int getSameTotalNumberAndComputer(List<Integer> computerList, List<Integer> userList) {
-        return gameStandard.getSameNumber2Computer(computerList, userList);
+        return gameStandard.getSameUserNumber2Computer(computerList, userList);
     }
 
     /**
