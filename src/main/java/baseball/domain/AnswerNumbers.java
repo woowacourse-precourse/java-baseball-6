@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.util.RandomNumberGenerator;
+
 import java.util.List;
 
 public class AnswerNumbers {
@@ -12,8 +14,9 @@ public class AnswerNumbers {
         this.targetNumbers = targetNumbers;
     }
 
-    public static AnswerNumbers of(final List<Integer> parsedNumbers) {
-        return new AnswerNumbers(parsedNumbers);
+    public static AnswerNumbers generate() {
+        List<Integer> randomNumbers = RandomNumberGenerator.pickNumbersInRangeWithoutDuplication(1, 9);
+        return new AnswerNumbers(randomNumbers);
     }
 
     public boolean contains(final int expectedNumber) {

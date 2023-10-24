@@ -30,7 +30,7 @@ public class BaseballGame {
 
         while (isPlaying) {
 
-            AnswerNumbers answerNumbers = initializeAnswer();
+            AnswerNumbers answerNumbers = AnswerNumbers.generate();
 
             guessAnswer(answerNumbers);
 
@@ -76,11 +76,5 @@ public class BaseballGame {
                 Score.BALL.addCount();
             }
         }
-    }
-
-    private AnswerNumbers initializeAnswer() {
-        List<Integer> randomNumbers = RandomNumberGenerator.pickNumbersInRangeWithoutDuplication(1, 9);
-
-        return AnswerNumbers.of(randomNumbers);
     }
 }
