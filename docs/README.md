@@ -15,6 +15,7 @@
 `BaseballPlayer` 의 구현체
 
 - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 이용하여 구현한 `inputBaseballNumbers()`
+- 문자열 분리해주는 `splitStringToArray()`
 
 ---
 
@@ -23,6 +24,7 @@
 `BaseballPlayer` 의 구현체
 
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 이용하여 구현한 `inputBaseballNumbers()`
+- 중복되지 않는 숫자만 List에 추가해주는 `addUniqueNumbers()`
 
 ---
 
