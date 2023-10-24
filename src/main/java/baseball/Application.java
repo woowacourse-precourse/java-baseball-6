@@ -12,8 +12,8 @@ public class Application {
 
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
-        boolean onGoingGame;
-        boolean gameContinue = true;
+        Boolean onGoingGame;
+        Boolean gameContinue = true;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(gameContinue) {
@@ -64,7 +64,7 @@ public class Application {
 
         for(int i=0; i<input.length(); i++){
             int number = Character.getNumericValue(input.charAt(i));
-            if(computer.get((i+1)%3) == number || computer.get((i+2)%3) == number){
+            if(computer.get((i+1)%3) == number || computer.get((i+2)%3) == number){ //입력한 값은 맞지만 위치가 다를 때
                 ++ball;
             }
         }
@@ -91,7 +91,7 @@ public class Application {
         int count = 0;
         while(count < size){
             Integer number = Randoms.pickNumberInRange(1, 9);
-            if(computer.contains(number)) continue;
+            if(computer.contains(number)) continue; //웁복수 제거
             count++;
             computer.add(number);
         }
@@ -104,20 +104,22 @@ public class Application {
      *  3. 중복되는 숫자가 있는지 확인한다.
      */
     private static void isValidInput(String input) {
-        if(!input.matches(REGEX)) {
+        if(input.length() != 3){ //입력의 길이가 3자가 아닌 경우
+            throw  new IllegalArgumentException("입력은 3자리 숫자만 입력해야 합니다.");
+        }
+
+        if(!input.matches(REGEX)) { //입력에 1~9이외의 문자가 있는 경우
             throw new IllegalArgumentException("입력에 문자 입력과 숫자 0은 불가능합니다.");
         }
-        if(input.length() >= 4){
-            throw  new IllegalArgumentException("입력의 길이는 3자리 숫자만 입력해야 합니다.");
-        }
+
         //중복 수 확인 (ex) 339, 333, 787 등..)
         boolean[] chk = new boolean[10];
         for(char digit : input.toCharArray()){
-            int num = digit - '0';
-            if(chk[num]){
-                throw new IllegalArgumentException("중복되는 숫자입력은 불가능 합니다.");
-            }
+            int num = Character.getNumericValue(digit);
+            if(chk[num]) throw new IllegalArgumentException("중복되는 숫자입력은 불가능 합니다.");
             chk[num] = true;
         }
     }
+
+
 }
