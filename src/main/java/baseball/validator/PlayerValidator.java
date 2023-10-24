@@ -6,11 +6,6 @@ import java.util.Set;
 
 public class PlayerValidator {
 
-    public static void isNumberSizeCorrect(List<Integer> playerNumberList)throws IllegalArgumentException{
-        if(playerNumberList.size() != 3){
-            throw new IllegalArgumentException("잘못된 값이 생성되었습니다. 세 자리수만 생성되어야 합니다.");
-        }
-    }
 
     public static void isNumberExistInRange(List<Integer> playerNumberList)throws IllegalArgumentException{
         for(Integer number : playerNumberList){
