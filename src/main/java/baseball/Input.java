@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class Input {
     private final InputValidator inputValidator;
+    private final static String WHITESPACE_PATTERN = "\\s";
+    private final static String EMPTY_STRING = "";
 
     public Input() {
         this.inputValidator = new InputValidator();
@@ -27,7 +29,7 @@ public class Input {
     }
 
     private String removeWhiteSpace(String input) {
-        return input.replaceAll("\\s", "");
+        return input.replaceAll(WHITESPACE_PATTERN, EMPTY_STRING);
     }
 
     private List<Integer> covertStringToIntList(String input) {
