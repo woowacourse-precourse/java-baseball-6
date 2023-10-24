@@ -2,7 +2,7 @@
 
 
 ### 1. 게임 시작
-   - `NumberBaseballApp`이 `GameNotifier`에게 게임 시작을 요청한다. 
+   - `NumberBaseballApp`가 게임을 시작한다. 
    - 게임 시작 : "숫자 야구 게임을 시작합니다."
 
 ### 2. 컴퓨터의 랜덤 숫자 생성
