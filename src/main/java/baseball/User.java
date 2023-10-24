@@ -2,11 +2,11 @@ package baseball;
 
 import java.util.List;
 
-public class User implements Player {
+public class User implements Rule {
     List<BaseballNumber> numbers;
 
     public void selectNumbers() {
-        numbers = BaseballNumbers.selectByInput(DIGIT_SIZE);
+        numbers = BaseballNumbers.selectByInput();
     }
 
     BaseballNumber numberOf(int index) {

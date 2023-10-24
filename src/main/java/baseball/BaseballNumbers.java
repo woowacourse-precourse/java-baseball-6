@@ -5,15 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballNumbers {
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 9;
-
+public class BaseballNumbers implements Rule {
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    static List<BaseballNumber> selectByRandom(int size) {
+    static List<BaseballNumber> selectByRandom() {
         List<BaseballNumber> numbers = new ArrayList<>();
-        while (numbers.size() < size) {
+        while (numbers.size() < DIGIT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             addNumber(numbers, randomNumber);
         }
@@ -27,15 +24,15 @@ public class BaseballNumbers {
         }
     }
 
-    static List<BaseballNumber> selectByInput(int size) {
+    static List<BaseballNumber> selectByInput() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        validateInput(input, size);
+        validateInput(input);
         return generateNumbers(input.split(""));
     }
 
-    private static void validateInput(String input, int size) {
-        if (input.length() != size) {
+    private static void validateInput(String input) {
+        if (input.length() != DIGIT_SIZE) {
             throw new IllegalArgumentException();
         }
     }

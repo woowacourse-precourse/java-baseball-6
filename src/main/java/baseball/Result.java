@@ -1,6 +1,6 @@
 package baseball;
 
-public class Result {
+public class Result implements Rule {
     final String STRING_BALL = "볼";
     final String STRING_STRIKE = "스트라이크";
     final String STRING_NOTHING = "낫싱";
@@ -21,7 +21,7 @@ public class Result {
     }
 
     String message() {
-        if (nothing == 3) {
+        if (nothing == DIGIT_SIZE) {
             return STRING_NOTHING;
         }
         StringBuilder stringBuilder = new StringBuilder();
@@ -40,6 +40,6 @@ public class Result {
     }
 
     boolean isMatched() {
-        return (strike == 3);
+        return (strike == DIGIT_SIZE);
     }
 }

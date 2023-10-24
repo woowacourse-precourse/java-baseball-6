@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Game {
-    private final int DIGIT_SIZE = 3;
-
+public class Game implements Rule {
     private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -46,7 +44,7 @@ public class Game {
             strike += computer.testStrike(index, userNumber);
             nothing += computer.testNothing(userNumber);
         }
-        int ball = 3 - strike - nothing;
+        int ball = DIGIT_SIZE - strike - nothing;
         return new Result(strike, ball, nothing);
     }
 

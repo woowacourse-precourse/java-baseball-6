@@ -1,8 +1,6 @@
 package baseball;
 
-public class BaseballNumber {
-    final int MIN_NUMBER = 1;
-    final int MAX_NUMBER = 9;
+public class BaseballNumber implements Rule {
     int number;
 
     BaseballNumber(int number) {

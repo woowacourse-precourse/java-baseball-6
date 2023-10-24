@@ -2,12 +2,11 @@ package baseball;
 
 import java.util.List;
 
-public class Computer implements Player {
+public class Computer implements Rule {
     List<BaseballNumber> numbers;
 
-    @Override
     public void selectNumbers() {
-        numbers = BaseballNumbers.selectByRandom(DIGIT_SIZE);
+        numbers = BaseballNumbers.selectByRandom();
     }
 
     int testNothing(BaseballNumber number) {
