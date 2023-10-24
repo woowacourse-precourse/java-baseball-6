@@ -13,43 +13,39 @@ import java.util.List;
  * 게임 동작
  */
 public class Game {
-    boolean gameState = true;
 
     public void play() {
-        CountCheck countCheck = new CountCheck();
+        BallCount ballCount = new BallCount();
         Count count = new Count();
-        /**
-         * 테스트용 코드
-         */
-        List<Integer> answer = countCheck.getAnswer();
-        System.out.println(answer);
-
-        while(count.getStrikeCount() != 3) {
+        while (!count.is3Strike()) {
             List<Integer> input = getInput();
-            countCheck.checkCount(input, count);
-            OutputView.result(count);
+            ballCount.checkCount(input, count);
+            OutputView.printResult(count);
         }
-        OutputView.answer();
+        OutputView.printAnswer();
     }
 
-    public List<Integer> getInput() {
-        InputView.input();
+    private List<Integer> getInput() {
+        InputView.printInput();
         String string = Console.readLine();
-        List<Integer> inputNumber = new ArrayList<>();
+        List<Integer> input = stringToList(string);
+        Validation.validateInputNumber(input);
+        return input;
+    }
+
+    private List<Integer> stringToList(String string) {
+        List<Integer> input = new ArrayList<>();
+
         for (String str : string.split("")) {
-            inputNumber.add(Integer.parseInt(str));
+            input.add(Integer.parseInt(str));
         }
-        Validation.validateNumber(inputNumber);
-        return inputNumber;
+        return input;
     }
 
-    public boolean isRestart() {
+    public boolean shouldRestart() {
+        InputView.printRestart();
         String string = Console.readLine();
-        Validation.validateRestart(string);
-        if (string.equals("1")) {
-            return true;
-        } else {
-            return false;
-        }
+        Validation.validateRestartNumber(string);
+        return string.equals("1");
     }
 }
