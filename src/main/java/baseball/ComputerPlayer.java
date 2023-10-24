@@ -1,22 +1,27 @@
 package baseball;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
+
 
 public class ComputerPlayer {
-    public static int[] generateRandomNumber() {
-        Random random = new Random();
-        int[] number = new int[3];
-        boolean[] used = new boolean[10];
 
-        for (int i = 0; i < 3; i++) {
-            int digit;
-            do {
-                digit = random.nextInt(10);
-            } while (used[digit]);
-            number[i] = digit;
-            used[digit] = true;
+    public static int[] generateRandomNumber() {
+
+        List<Integer> computer = new ArrayList<>();
+        int[] number = new int[3];
+
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
         }
 
+        for (int i = 0; i < 3; i++) {
+            number[i] = computer.get(i);
+        }
+        
         return number;
     }
 }

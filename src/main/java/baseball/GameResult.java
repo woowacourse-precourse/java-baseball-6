@@ -18,6 +18,6 @@ public class GameResult {
         if (strikes == 0 && balls == 0) {
             return "낫싱";
         }
-        return strikes + "스트라이크 " + balls + "볼";
+        return balls + "볼 " + strikes + "스트라이크 " ;
     }
 }

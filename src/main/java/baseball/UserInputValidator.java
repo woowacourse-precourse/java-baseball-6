@@ -1,15 +1,16 @@
 package baseball;
 
-import java.util.Scanner;
+// import java.util.*;
+import camp.nextstep.edu.missionutils.Console;
 
 public class UserInputValidator {
     public int[] getUserInput() {
-        Scanner scanner = new Scanner(System.in);
+        
         int[] userInput = new int[3];
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String input = scanner.nextLine();
+            String input = Console.readLine();
 
             if (input.length() != 3) {
                 System.out.println("입력은 3자리 숫자여야 합니다.");
