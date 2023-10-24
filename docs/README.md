@@ -1,6 +1,5 @@
-function makeRandom_Num()
-기능 : 3자리의 Random 한 숫자 생성
-
-function isStrike()
-기능 : 입력한 값이 낫싱, 스트라이크, 볼을 판별
-
+class RunGame() 기능: 게임을 실행해주는 클래스
+<br/>
+class ErrorManage() 기능: 에러를 관리해주는 클래스
+<br/>
+class constant()  기능: 매직 넘버와 매직 리터럴 등을 상수로 선언해 저장해주는 클래스

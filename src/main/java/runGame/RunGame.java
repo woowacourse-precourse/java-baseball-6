@@ -39,7 +39,7 @@ public class RunGame {
      * @return void
      */
     public RunGame() {
-        List<Integer> c_number = new ArrayList<>();
+        List<Integer> c_number = new ArrayList<>(); // 정답을 저장할 리스트
         while (c_number.size() < ANSWER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (!c_number.contains(randomNumber)) {
@@ -75,7 +75,7 @@ public class RunGame {
      * @return void
      */
     private void gaemStart() {
-        ErrorManage errorManage = new ErrorManage();
+        ErrorManage errorManage = new ErrorManage(); // 에러 관리 클래스
         String user_number; // 유저가 입력한 숫자
 
         do {
@@ -92,7 +92,7 @@ public class RunGame {
      * @return result
      */
     private String gameResult(String user_number) {
-        String result = NumOfStrikeAndBall(isStrike(user_number), isBall(user_number));
+        String result = NumOfStrikeAndBall(isStrike(user_number), isBall(user_number)); // 게임 결과
         System.out.println(result);
 
         return result;
@@ -105,8 +105,8 @@ public class RunGame {
      * @return restart || exit
      */
     private boolean gameOver() {
-        ErrorManage errorManage = new ErrorManage();
-        String exit;
+        ErrorManage errorManage = new ErrorManage(); // 에러 관리 클래스
+        String exit; // 종료 메세지
 
         System.out.println(GAME_OVER);
         System.out.println(RESTART_GAEM);
@@ -124,7 +124,7 @@ public class RunGame {
      * @return strike
      */
     private int isStrike(String numbers) {
-        int strike = 0;
+        int strike = 0; // 스트라이크 수
 
         for (int i = 0; i < computer_num.length(); i++) {
             if (numbers.charAt(i) == computer_num.charAt(i)) {
@@ -141,7 +141,7 @@ public class RunGame {
      * @return ball
      */
     private int isBall(String numbers) {
-        int ball = 0;
+        int ball = 0; // 볼 수
 
         for (int i = 0; i < numbers.length(); i++) {
             String number = numbers.substring(i, i + 1);
@@ -159,7 +159,7 @@ public class RunGame {
      * @return answer
      */
     private String NumOfStrikeAndBall(int strike, int ball) {
-        String answer = "";
+        String answer = ""; // 스트라이크와 볼 값을 담을 변수
 
         if (strike == 0 && ball == 0) {
             answer = NOTHING;
