@@ -76,12 +76,16 @@ public class gameManage implements gameManageInterface {
         if (strikeCount == NOSTRIKE && ballCount == NOBALL) {
             printNumber.nothing();
         }
+        if (strikeCount != NOSTRIKE && ballCount != NOBALL) {
+            printNumber.ballAndStrike(ballCount, strikeCount);
+        }
         if (ballCount == NOBALL) {
             printNumber.onlyStrike(strikeCount);
         }
         if (strikeCount == NOSTRIKE) {
             printNumber.onlyBall(ballCount);
         }
+
         return resultCompareNumber.NOT_MATCH;
     }
 
