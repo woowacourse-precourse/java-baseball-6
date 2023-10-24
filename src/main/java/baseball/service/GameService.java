@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.Game;
 import baseball.utils.RandomUtils;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
     int size;
@@ -16,4 +17,18 @@ public class GameService {
         game = new Game(RandomUtils.getRandomNumbers(min, max, size));
     }
 
+    private int[] getUserNumber() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        if (input.length() != size) {
+            throw new IllegalArgumentException();
+        }
+        return getParseInt(input, size);
+    }
+
+    private int[] getParseInt(String input, int size) throws IllegalArgumentException {
+        int[] parseInt = new int[size];
+
+        return parseInt;
+    }
 }
