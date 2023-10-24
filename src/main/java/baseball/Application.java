@@ -1,5 +1,6 @@
 package baseball;
 
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.utils.Utils;
@@ -28,3 +29,4 @@ public class Application {
         return false;
     }
 }
+
