@@ -109,6 +109,35 @@ interface GameInterface {
         if (input.length() == 1 && input.charAt(0) == '2') {
             return true;
 
+class InputValidator {
+
+    private static final int VALID_GAME_INPUT_SIZE = 3;
+    private static final char RESTART_GAME = '1';
+    private static final char END_GAME = '2';
+
+    public static void validateGameInput(String input) {
+        if (input.length() != VALID_GAME_INPUT_SIZE) {
+            throw new IllegalArgumentException("유저 입력은 3이여야 합니다.");
+        }
+        Set<Character> inputList = new HashSet<>();
+        for (char ch : input.toCharArray()) {
+            if (ch < '1' || ch > '9') {
+                throw new IllegalArgumentException("입력은 숫자 1~9만 들어올 수 있습니다.");
+            }
+            if (inputList.contains(ch)) {
+                throw new IllegalArgumentException("입력은 중복될 수 없습니다.");
+            }
+            inputList.add(ch);
+        }
+    }
+
+    public static void validateRestartOrEndInput(String input) {
+        if (input.length() != 1 || (input.charAt(0) != RESTART_GAME && input.charAt(0) != END_GAME)) {
+            throw new IllegalArgumentException("입력은 1(재시작) 혹은 2(종료)만 들어올 수 있습니다.");
+        }
+    }
+}
+
 
 public class Application {
     public static void main(String[] args) {
