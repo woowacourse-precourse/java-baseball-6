@@ -1,6 +1,5 @@
 package baseball.util;
 
-import baseball.constant.Message;
 import baseball.constant.Number;
 import baseball.domain.BaseballCount;
 import camp.nextstep.edu.missionutils.Console;
@@ -25,7 +24,8 @@ public class GameUtil {
     }
 
     public static boolean isGameRestart() {
-        System.out.println(Message.GAME_RESTART_MSG);
+        MessageUtil.printFinishMsg();
+        MessageUtil.printRestartMsg();
         int restartNum = Integer.parseInt(Console.readLine());
         if (restartNum == Number.RESTART_NUM) {
             return true;
@@ -38,6 +38,7 @@ public class GameUtil {
     }
 
     public static List<Integer> inputNumber() {
+        MessageUtil.printInputMsg();
         String input = Console.readLine(); //길이, 서로 다른 세 숫자 예외처리 필요
         if (input.length() != 3) {
             throw new IllegalArgumentException();
