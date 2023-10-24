@@ -13,7 +13,7 @@ public class BaseballGame {
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
     private static final int NUMBER_LENGTH = 3;
-
+    private static final int NOTHING = 0;
     //1에서 9 사이 서로 다른 3자리 랜덤 숫자 생성
     public List<Integer> computer(){
         List<Integer> computer = new ArrayList<>();
@@ -60,19 +60,19 @@ public class BaseballGame {
     }
 
     private boolean threeStrikes(){
-        return strikeCount == 3;
+        return strikeCount == NUMBER_LENGTH;
     }
     private boolean nothing(){
-        return (strikeCount == 0 && ballCount == 0);
+        return (strikeCount == NOTHING && ballCount == NOTHING);
     }
     private boolean ballAndStrike(){
-        return (strikeCount != 0 && ballCount != 0);
+        return (strikeCount != NOTHING && ballCount != NOTHING);
     }
     private boolean ballOnly(){
-        return (strikeCount == 0 && ballCount != 0);
+        return (strikeCount == NOTHING && ballCount != NOTHING);
     }
     private boolean strikeOnly(){
-        return (strikeCount != 0 && ballCount == 0);
+        return (strikeCount != NOTHING && ballCount == NOTHING);
     }
 
     //스트라이크와 볼 수에 따라 결과를 표시
