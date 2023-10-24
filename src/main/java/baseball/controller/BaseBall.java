@@ -16,7 +16,6 @@ public class BaseBall {
     public void playBall(){
         printService.printBeforeStart();
         List<Integer> computer = gameService.generateRandomNumber(num.NUM_LENGTH);
-        System.out.println("computer = " + computer);
         Score score = new Score();
         play(computer, score);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
