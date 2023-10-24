@@ -1,7 +1,11 @@
 package baseball.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
-    public int number;
+
+    private int number;
 
     public Player(int number) {
         valid(number);
@@ -22,6 +26,7 @@ public class Player {
         checkDigitOneToNine(number);
         this.number = number;
     }
+
     private void checkNumberRange(int number) {
         if (!isInRange(number)) {
             throw new IllegalArgumentException("입력 가능한 수 범위는 123 ~ 987 입니다.");
@@ -52,5 +57,15 @@ public class Player {
                 throw new IllegalArgumentException("각 자리의 수는 1 ~ 9 로 이루어져야 합니다.");
             }
         }
+    }
+
+    public List<Integer> getNumbersList() {
+        List<Integer> numbersList = new ArrayList<>();
+        while (number > 0) {
+            int digit = number % 10;
+            numbersList.add(0, digit);
+            number = number / 10;
+        }
+        return numbersList;
     }
 }

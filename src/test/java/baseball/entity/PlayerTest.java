@@ -1,11 +1,11 @@
 package baseball.entity;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class PlayerTest {
+
     @ParameterizedTest
     @ValueSource(ints = {123, 456, 789, 987})
     void 정상_값_정수_입력(int input) {
