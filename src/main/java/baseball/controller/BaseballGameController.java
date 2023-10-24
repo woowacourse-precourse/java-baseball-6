@@ -7,7 +7,6 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGameController {
-    private static final int BASEBALL_NUMBER_SIZE = 3;
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -20,7 +19,7 @@ public class BaseballGameController {
         outputView.gameStart();
 
         while (true) {
-            matchingNumber(TargetBaseballNumbers.randomInstance(BASEBALL_NUMBER_SIZE));
+            matchingNumber(TargetBaseballNumbers.randomInstance());
 
             if (isWantStopGame()) {
                 break;
@@ -36,8 +35,8 @@ public class BaseballGameController {
 
             outputView.showGameResult(gameResult);
 
-            if (gameResult.isPerfectGame(BASEBALL_NUMBER_SIZE)) {
-                outputView.goodGame(BASEBALL_NUMBER_SIZE);
+            if (gameResult.isPerfectGame()) {
+                outputView.goodGame(TargetBaseballNumbers.BASEBALL_NUMBER_SIZE);
                 break;
             }
         }
@@ -48,8 +47,8 @@ public class BaseballGameController {
         return inputView.getPlayerNumbers();
     }
 
-    private void verifyInputNumber(List<Integer> inputNumberText) {
-        if (BASEBALL_NUMBER_SIZE != inputNumberText.size()) {
+    private void verifyInputNumberSize(List<Integer> inputNumbers) {
+        if (TargetBaseballNumbers.BASEBALL_NUMBER_SIZE != inputNumbers.size()) {
             throw new IllegalArgumentException();
         }
     }

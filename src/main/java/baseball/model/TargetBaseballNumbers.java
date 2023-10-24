@@ -7,16 +7,17 @@ import java.util.List;
 import java.util.Set;
 
 public class TargetBaseballNumbers {
+    public static final int BASEBALL_NUMBER_SIZE = 3;
     private final List<BaseballNumber> baseballNumbers;
 
     private TargetBaseballNumbers(final List<BaseballNumber> baseballNumbers) {
         this.baseballNumbers = baseballNumbers;
     }
 
-    public static TargetBaseballNumbers randomInstance(final int size) {
+    public static TargetBaseballNumbers randomInstance() {
         List<BaseballNumber> uniqueBaseballNumbers = new ArrayList<>();
 
-        while (uniqueBaseballNumbers.size() < size) {
+        while (uniqueBaseballNumbers.size() < BASEBALL_NUMBER_SIZE) {
             BaseballNumber randomBaseballNumber = BaseballNumber.createRandomNumber();
 
             if (uniqueBaseballNumbers.contains(randomBaseballNumber)) {
@@ -73,6 +74,6 @@ public class TargetBaseballNumbers {
             }
         }
 
-        return new GameResult(correctCount, similarCount);
+        return new GameResult(BASEBALL_NUMBER_SIZE, correctCount, similarCount);
     }
 }
