@@ -27,19 +27,21 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("플레이어가 입력한 숫자게임의 값은 guessNumber에 저장된다.")
+    @DisplayName("플레이어가 입력한 숫자게임의 값은 GuessNumbers에 저장된다.")
     void getGuessNumbers_Test() throws Exception {
         // given
-        List<Integer> inputNumbers = List.of(1, 2, 3);
-        setGuessNumber(List.of(1, 2, 3));
+        List<GuessNumber> playerInput = List.of(new GuessNumber(1), new GuessNumber(2), new GuessNumber(3));
+
+        // when
+        setPlayerInput(playerInput);
 
         // then
         assertEquals(player.getGuessNumbers().size(), 3);
-        assertEquals(player.getGuessNumbers(), inputNumbers);
+        assertEquals(player.getGuessNumbers(), playerInput);
     }
 
     @Test
-    @DisplayName("재시작/종료여부 입력값이 1이면 게임을 계속 진행한다.")
+    @DisplayName("재시작/종료여부에 대한 입력값이 1인 경우 게임을 계속 진행한다.")
     void gameState_RESTART_Test() throws Exception {
         // when
         setGameState(RESTART);
@@ -49,7 +51,7 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("재시작/종료 여부 입력값이 2이면 게임을 종료한다.")
+    @DisplayName("재시작/종료여부에 대한 입력값이 2인 경우 게임을 종료한다.")
     void gameState_EXIT_Test() throws Exception {
         // when
         setGameState(EXIT);
@@ -58,10 +60,10 @@ class PlayerTest {
         assertFalse(player.continueGame());
     }
 
-    private void setGuessNumber(List<Integer> guess) throws NoSuchFieldException, IllegalAccessException {
+    private void setPlayerInput(List<GuessNumber> playerInput) throws NoSuchFieldException, IllegalAccessException {
         Field numbers = guessNumbers.getClass().getDeclaredField("numbers");
         numbers.setAccessible(true);
-        numbers.set(guessNumbers, guess);
+        numbers.set(guessNumbers, playerInput);
     }
 
     private void setGameState(Integer state) throws NoSuchFieldException, IllegalAccessException {
