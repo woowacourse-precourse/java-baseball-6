@@ -30,7 +30,9 @@ public class Application {
         if (endInput.equals("1")){
             return false;
         }
+        System.out.println("test");
         return true;
+
     }
 
     public static void isValidateEnd(String input){
