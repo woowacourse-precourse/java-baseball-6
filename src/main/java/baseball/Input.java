@@ -9,11 +9,11 @@ import java.util.List;
 public class Input {
     public List<Integer> getUserInputNumbers(){
         String userInput = Console.readLine();
-        validate(userInput);
+        validateBaseballInput(userInput);
         return parseUserInput(userInput);
     }
 
-    private void validate(String userInput){
+    private void validateBaseballInput(String userInput){
         checkIfInputNumberLengthIsGivenLength(userInput,3);
         checkIfInputNumberIsNotNumberFormat(userInput);
         checkIfInputNumberIsDuplicate(userInput);
