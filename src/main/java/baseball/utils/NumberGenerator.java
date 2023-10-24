@@ -9,10 +9,11 @@ public class NumberGenerator {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final int MAX_NUMBER_SIZE = 3;
 
     public static List<Integer> createComputerNumbers() {
         LinkedHashSet<Integer> computerNumbers = new LinkedHashSet<>();
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < MAX_NUMBER_SIZE) {
             computerNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
 
