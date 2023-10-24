@@ -5,11 +5,24 @@ import java.util.List;
 
 public class Validator {
 
+    private static final String gameRestartMessage = "1";
+    private static final String gameEndMessage = "2";
+
     private static final int PLAYER_NUMBER_DIGIT = 3;
 
     public List<Integer> proceedValidation(String playerInput) {
         validatePlayerInput(playerInput);
         return changeToPlayerNumbers(playerInput);
+    }
+
+    public void validateRestartOrEndInput(String restartOrEnd) {
+        if (!isRestartOrEndMessage(restartOrEnd)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isRestartOrEndMessage(String restartOrEnd) {
+        return restartOrEnd.equals(gameRestartMessage) || restartOrEnd.equals(gameEndMessage);
     }
 
     private void validatePlayerInput(String playerInput) {

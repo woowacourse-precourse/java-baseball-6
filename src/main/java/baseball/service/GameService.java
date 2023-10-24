@@ -50,6 +50,7 @@ public class GameService {
     private boolean processThreeStrike() {
         output.gameEnd();
         String restartOrEnd = input.getRestartOrEnd();
+        validator.validateRestartOrEndInput(restartOrEnd);
         if (restartOrEnd.equals(gameEndMessage)) {
             return true;
         }
