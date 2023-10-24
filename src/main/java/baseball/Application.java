@@ -8,11 +8,12 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자야구 게임을 시작합니다. 1부터 9까지의 숫자 중 중복되지 않는 3자리 숫자를 맞춰보세요.");
 
+        Scanner scanner = new Scanner(System.in);  // Scanner를 main 메소드 내에서 선언
         List<Integer> computer = generateRandomNumber();
         int attempts = 0;
 
         while (true) {
-            List<Integer> userGuess = getUserGuess();
+            List<Integer> userGuess = getUserGuess();  // scanner를 getUserGuess 메소드에 전달
             int strikes = 0;
             int balls = 0;
 
@@ -29,10 +30,20 @@ public class Application {
 
             if (strikes == 3) {
                 System.out.println("축하합니다! " + attempts + "번 만에 숫자를 맞추셨습니다.");
-                break;
+                System.out.print("게임을 종료하려면 1, 재시작하려면 2를 입력하세요: ");
+                int choice = scanner.nextInt();
+                if (choice == 1) {
+                    break; // 게임 종료
+                } else if (choice == 2) {
+                    // 게임을 다시 시작 (원하는 동작 수행)
+                } else {
+                    System.out.println("올바른 선택이 아닙니다. 다시 입력하세요.");
+                }
             }
         }
     }
+
+
 
     private static List<Integer> generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
