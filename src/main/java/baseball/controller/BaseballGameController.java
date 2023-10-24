@@ -40,11 +40,11 @@ public class BaseballGameController {
         displayEndGameMessage();
     }
 
-    public void displayStartMessage() {
+    private void displayStartMessage() {
         OutputView.startGameMessage();
     }
 
-    public void displayNumberInputMessage() {
+    private void displayNumberInputMessage() {
         OutputView.numberInputMessage();
     }
 
