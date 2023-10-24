@@ -37,7 +37,7 @@ public class NumberFormat {
                num/=10;
           }
 
-          if (!validateFormat(numberList)) throw new NumberFormatException();
+          if (!validateFormat(numberList)) throw new NumberFormatException("자릿수 제약사향: " + DIGIT_CONSTRAINT);
           Collections.reverse(numberList);
 
           return numberList;
