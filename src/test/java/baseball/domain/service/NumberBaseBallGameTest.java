@@ -3,6 +3,7 @@ package baseball.domain.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import baseball.domain.model.BaseballNumber;
 import baseball.domain.util.RandomNumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,8 +31,9 @@ class NumberBaseBallGameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"123", "456", "789", GENERATED_NUMBER})
-    void 입력된_숫자에_따른_게임오버_여부_테스트(String inputNumber) {
+    void 입력된_숫자에_따른_게임오버_여부_테스트(String input) {
+        BaseballNumber inputNumber = new BaseballNumber(input);
         RoundEvaluationResult result = numberBaseBallGame.evaluateRound(inputNumber);
-        assertEquals(GENERATED_NUMBER.equals(inputNumber), result.isgameOver());
+        assertEquals(GENERATED_NUMBER.equals(input), result.isgameOver());
     }
 }

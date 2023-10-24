@@ -3,6 +3,7 @@ package baseball.view;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import baseball.domain.model.BaseballNumber;
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -37,8 +38,8 @@ class NumberBaseballGameInputViewTest {
         String input = "123\n";
         inContent = new ByteArrayInputStream(input.getBytes());
         System.setIn(inContent);
-        String userInput = inputView.readUserInput();
-        assertEquals("123", userInput);
+        BaseballNumber userInput = inputView.readUserInput();
+        assertEquals("123", userInput.value());
     }
 
     @ParameterizedTest

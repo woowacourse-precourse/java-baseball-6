@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.domain.model.BaseballNumber;
 import java.util.regex.Pattern;
 
 public class NumberBaseballGameInputView {
@@ -9,15 +10,10 @@ public class NumberBaseballGameInputView {
         this.inputProvider = inputProvider;
     }
 
-    public final String readUserInput() {
+    public final BaseballNumber readUserInput() {
         String input = inputProvider.readNonNullInput();
-
         System.out.println(input);
-        if (!isValidInput(input)) {
-            throw new IllegalArgumentException("입력값은 3자리의 숫자여야 합니다.");
-        }
-
-        return input;
+        return new BaseballNumber(input);
     }
 
     public final String readRestartResponseInput() {

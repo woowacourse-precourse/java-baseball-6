@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.model.BaseballNumber;
 import baseball.domain.service.NumberBaseBallGame;
 import baseball.domain.service.RoundEvaluationResult;
 import baseball.view.NumberBaseballGameInputView;
@@ -32,8 +33,8 @@ public class NumberBaseballGameController {
 
     private RoundEvaluationResult playRound() {
         outputView.printNumberInputRequest();
-        String userinput = inputView.readUserInput();
-        RoundEvaluationResult result = numberBaseBallGame.evaluateRound(userinput);
+        BaseballNumber baseballNumber = inputView.readUserInput();
+        RoundEvaluationResult result = numberBaseBallGame.evaluateRound(baseballNumber);
         outputView.printScoreSummary(result.getEvaluationMessage());
         return result;
     }
