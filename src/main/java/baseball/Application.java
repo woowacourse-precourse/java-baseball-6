@@ -101,7 +101,7 @@ public class Application {
                 result = 1;
             } else if (userInputNumber == 2) {
                 System.out.println("게임 종료");
-                return 2;
+                result = 2;
             } else {
                 throw new IllegalArgumentException("1 또는 2를 선택하지 않았습니다.");
             }
