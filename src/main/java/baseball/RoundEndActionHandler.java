@@ -15,7 +15,7 @@ public class RoundEndActionHandler implements PlayerInputHandler<RoundEndAction>
             roundEndAction =  RoundEndAction.QUIT;
             return;
         }
-
+        System.out.println(RoundEndAction.CONTINUE.getValue() + " 또는 " + RoundEndAction.QUIT.getValue() + "를 입력해주세요.");
         throw new IllegalArgumentException();
     }
     public RoundEndAction getHandledResult(){

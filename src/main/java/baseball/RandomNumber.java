@@ -16,13 +16,15 @@ public class RandomNumber {
         while (sequenceNumber != GameSettings.NUM_DIGITS){
             int randomDigit = pickNumberInRange(GameSettings.MIN_RANDOM_NUMBER, GameSettings.MAX_RANDOM_NUMBER);
 
-            if (!RandomNumberTable.containsKey(randomDigit)){
+            if (!isDuplicated(randomDigit)){
                 RandomNumberTable.put(randomDigit, sequenceNumber);
                 sequenceNumber++;
-//                System.out.print(randomDigit);
             }
         }
-//        System.out.println();
+    }
+
+    private boolean isDuplicated(int randomDigit){
+        return RandomNumberTable.containsKey(randomDigit);
     }
 
     public PitchingResult checkPitchingResult(int pitchingNumber, int pitchingSequenceNumber){
