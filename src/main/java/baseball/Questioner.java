@@ -16,13 +16,9 @@ public class Questioner {
             int randInt = Randoms.pickNumberInRange(100, 999);
             String currentTargetNumber = String.valueOf(randInt);
 
-            try {
+            if (GameNumber.isValid(currentTargetNumber)) {
                 return GameNumber.from(currentTargetNumber);
-            } catch (IllegalArgumentException e) {
-                continue;
             }
         }
     }
-
-
 }
