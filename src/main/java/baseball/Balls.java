@@ -33,7 +33,7 @@ public class Balls {
         balls = new ArrayList<>();
 
         while (balls.size() < BALL_COUNT) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(Ball.MIN_VALUE, Ball.MAX_VALUE);
             Ball randomBall = new Ball(randomNumber);
             if (indexOf(randomBall) == NOT_FOUND_INDEX) {
                 balls.add(randomBall);
