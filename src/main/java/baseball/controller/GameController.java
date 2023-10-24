@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.model.NumberFormat;
+import baseball.model.RoundResult;
 import baseball.service.GameService;
-import java.util.List;
 
 public class GameController {
 
@@ -17,13 +17,14 @@ public class GameController {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-
     public boolean checkIfRoundEnd(){
-        List<Integer> result = GameService.compareNumberFormat(computerNumber, userNumber);
-        printResultMessage(result.get(0), result.get(1));
-        return (result.get(0) == NumberFormat.DIGIT_CONSTRAINT) ? true : false;
+        RoundResult result = GameService.compareNumberFormat(computerNumber, userNumber);
+        printResultMessage(result);
+        return result.isRoundEnd();
     }
-    public void printResultMessage(int strikeCount, int ballCount){
+    public void printResultMessage(RoundResult result){
+        int strikeCount = result.strikeCount();
+        int ballCount = result.ballCount();
         if (strikeCount > 0 && ballCount > 0)
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         else if (ballCount > 0)
