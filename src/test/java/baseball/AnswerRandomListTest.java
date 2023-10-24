@@ -2,7 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.service.AnswerRandomList;
+import baseball.service.GenerationQuestionList;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ class AnswerRandomListTest {
     void threeSizeOfList() {
 
         //given
-        AnswerRandomList computer = new AnswerRandomList(new ArrayList<>());
+        GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
 
         //when
         List<Integer> answerRandomList = computer.generateThreeRandomNumber();
@@ -29,7 +29,7 @@ class AnswerRandomListTest {
     void notSameElementOfList() {
 
         //given
-        AnswerRandomList computer = new AnswerRandomList(new ArrayList<>());
+        GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
 
         //when
         List<Integer> answerRandomList = computer.generateThreeRandomNumber();
@@ -44,7 +44,7 @@ class AnswerRandomListTest {
     void elementsValue1To9OfList() {
 
         //given
-        AnswerRandomList computer = new AnswerRandomList(new ArrayList<>());
+        GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
 
         //when
         List<Integer> answerRandomList = computer.generateThreeRandomNumber();

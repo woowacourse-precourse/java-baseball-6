@@ -14,7 +14,7 @@ public class GameService {
     }
 
     public void solvingProblem() {
-        AnswerRandomList answerRandomListFactory = new AnswerRandomList(new ArrayList<>());
+        GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
         List<Integer> answerRandomList = answerRandomListFactory.generateThreeRandomNumber();
 
         while (play) {
