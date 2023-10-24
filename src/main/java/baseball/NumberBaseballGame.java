@@ -20,14 +20,12 @@ public class NumberBaseballGame {
     public void run() {
         NumberBaseballGameComputerPlayer computerPlayer =
                 new NumberBaseballGameComputerPlayer(numberGenerator.generateUniqueNumbers(), gameRules);
-
         boolean isGameRunning = true;
+
         while (isGameRunning) {
-            GuessedNumbers guessedNumbers = createGuessedNumbers();
+            NumberBaseballGameResult result = playInning(computerPlayer);
 
-            NumberBaseballGameResult result = compareNumbers(computerPlayer, guessedNumbers);
             userIo.print(result.toString() + "\n");
-
             if (result.isAllStrike()) {
                 isGameRunning = false;
             }
@@ -36,8 +34,8 @@ public class NumberBaseballGame {
         userIo.print(computerPlayer.getNumbersSize() + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
-    private NumberBaseballGameResult compareNumbers(NumberBaseballGameComputerPlayer computerPlayer,
-            GuessedNumbers guessedNumbers) {
+    private NumberBaseballGameResult playInning(NumberBaseballGameComputerPlayer computerPlayer) {
+        GuessedNumbers guessedNumbers = createGuessedNumbers();
         return computerPlayer.compareWith(guessedNumbers);
     }
 
