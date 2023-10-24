@@ -1,7 +1,6 @@
 package baseball.service;
 
 import java.util.List;
-
 import baseball.domain.Score;
 import baseball.dto.ScoreDto;
 import baseball.util.Util;
