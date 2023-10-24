@@ -10,16 +10,20 @@ public class Numbers {
 
     private final List<Integer> numbers;
 
-    public Numbers(List<Integer> inputNumbers) {
+    private Numbers(List<Integer> inputNumbers) {
         validateNumbersSize(inputNumbers);
         validateDuplicateNumber(inputNumbers);
         validateNumberRange(inputNumbers);
         this.numbers = inputNumbers;
     }
 
-    public Numbers() {
+    public static Numbers createRandomNumbers() {
         RandomNumbersGenerator randomNumbersGenerator = new RandomNumbersGenerator();
-        this.numbers = randomNumbersGenerator.generateRandomNumbers();
+        return new Numbers(randomNumbersGenerator.generateRandomNumbers());
+    }
+
+    public static Numbers fromInputNumbers(List<Integer> inputNumbers) {
+        return new Numbers(inputNumbers);
     }
 
     public boolean isSamePosition(Numbers inputNumbers, int position) {
