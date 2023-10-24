@@ -9,10 +9,9 @@
 2. user : 사용자가 입력한 값
 
 - 사용자가 입력한 값을 저장 할 변수
-- 게임 종료 후 restart Or exit 결정할 변수
 - 점수 저장하는 변수 (strike, ball)
 
-### Service
+### Service (클래스 별 테스트 코드 추가)
 
 ```
 1. MakeComputerRandom : createRandom()
@@ -47,8 +46,7 @@
     1. 유저가 입력한 값이 컴퓨터의 값에 포함되어 있다. && 두 인덱스까지 똑같다. -- strike
     2. 유저가 입력한 값이 컴퓨터의 값에 포함되어 있다. && 두 인덱스는 다르다. -- ball
     3. strike와 ball값을 User 객체에 저장
-
-    - 이유 : User가 입력한 값에 의한 결과 값이므로 User 객체에 묶는게 좋다고 판단
+        - 이유 : User가 입력한 값에 의한 결과 값이므로 User 객체에 묶는게 좋다고 판단
 - result() : User에 저장된 strike & ball 변수를 이용해 결과 출력
 - restartOrExit() : '3 스트라이크' 인 경우 재시작 or 종료를 위해 사용자 입력 받기 + 검증 로직 실행
 - restartValid() :
