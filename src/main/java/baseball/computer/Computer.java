@@ -9,14 +9,16 @@ public class Computer {
     private static final List<Integer> randomList = new ArrayList<>();
 
     // 난수 생성
-    public void init() {
-        createRandomList();
+    public void initComputerList() {
+        randomList.clear();
     }
 
-    private void createRandomList() {
+    public List<Integer> createRandomList() {
         while(randomList.size() < 3) {
             isContain(Randoms.pickNumberInRange(1, 9));
         }
+
+        return randomList;
     }
 
     private static void isContain(int randomNumber) {
