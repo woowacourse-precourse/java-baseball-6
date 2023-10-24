@@ -15,6 +15,7 @@ public class UserInputNumberSelectionStrategy implements NumberSelectionStrategy
     private final String guessNumber;
 
     public UserInputNumberSelectionStrategy(String guessNumber) {
+        validateInputNumber(guessNumber);
         this.guessNumber = guessNumber;
     }
 
@@ -71,7 +72,6 @@ public class UserInputNumberSelectionStrategy implements NumberSelectionStrategy
 
     @Override
     public List<Integer> createNumbers() {
-        validateInputNumber(guessNumber);
         return convertStringToIntegerList(guessNumber);
     }
 }
