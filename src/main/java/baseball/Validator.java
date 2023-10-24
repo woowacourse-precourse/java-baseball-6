@@ -7,6 +7,12 @@ public class Validator {
     private final String CONTAIN_ZERO_ERROR_MESSAGE = "0은 입력할 수 없습니다.";
     private final String RESTART_INPUT_ERROR_MESSAGE = "1과 2 이외의 숫자는 입력할 수 없습니다.";
 
+    private final Integer CORRECT_LENGTH = 3;
+    private final String RESTART_NUMBER = "1";
+    private final String EXIT_NUMBER = "2";
+    private final String ZERO = "0";
+    private final String VALID_NUMBER_REGEX = "^[0-9]*$";
+
     public void validateNumberInput(String input) {
         if (isEmptyValue(input)) {
             throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
@@ -29,15 +35,15 @@ public class Validator {
     }
 
     public boolean isNotOneOrTwo(String input) {
-        return !input.equals("1") && !input.equals("2");
+        return !input.equals(RESTART_NUMBER) && !input.equals(EXIT_NUMBER);
     }
 
     private boolean isContainingZero(String input) {
-        return input.contains("0");
+        return input.contains(ZERO);
     }
 
     private boolean isCorrectLength(String input) {
-        return input.length() == 3;
+        return input.length() == CORRECT_LENGTH;
     }
 
     private boolean isEmptyValue(String input) {
@@ -45,6 +51,6 @@ public class Validator {
     }
 
     private boolean isNumberType(String input) {
-        return input.matches("^[0-9]*$");
+        return input.matches(VALID_NUMBER_REGEX);
     }
 }
