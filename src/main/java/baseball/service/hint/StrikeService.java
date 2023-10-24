@@ -1,6 +1,6 @@
 package baseball.service.hint;
 
-import baseball.domain.Baseball;
+import baseball.domain.NumberBaseball;
 import baseball.domain.GameConstants;
 import baseball.domain.hint.Strike;
 import baseball.util.ObjectUtil;
@@ -19,7 +19,7 @@ public class StrikeService implements HintItemService<Strike> {
 
     }
 
-    public int count(Baseball computerBaseball, Baseball inputBaseball) {
+    public int count(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
         int count = 0;
         List computer = computerBaseball.getValues();
         List input = inputBaseball.getValues();

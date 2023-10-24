@@ -1,9 +1,6 @@
 package baseball.service.hint;
 
-import baseball.domain.Baseball;
-import baseball.service.hint.NothingService;
-import baseball.util.IntegerListUtil;
-import org.junit.jupiter.api.BeforeEach;
+import baseball.domain.NumberBaseball;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,8 +12,8 @@ public class NothingServiceTest {
     @Test
     void count_zeroNothing() {
         //given
-        Baseball computerBaseball = Baseball.createBaseball("123");
-        Baseball inputBaseball = Baseball.createBaseball("456");
+        NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
+        NumberBaseball inputBaseball = NumberBaseball.createBaseball("456");
 
         //when
         int count = nothingService.count(computerBaseball, inputBaseball);
@@ -28,8 +25,8 @@ public class NothingServiceTest {
     @Test
     void count_oneNothing() {
         //given
-        Baseball computerBaseball = Baseball.createBaseball("123");
-        Baseball inputBaseball = Baseball.createBaseball("416");
+        NumberBaseball computerBaseball = NumberBaseball.createBaseball("123");
+        NumberBaseball inputBaseball = NumberBaseball.createBaseball("416");
 
         //when
         int count = nothingService.count(computerBaseball, inputBaseball);

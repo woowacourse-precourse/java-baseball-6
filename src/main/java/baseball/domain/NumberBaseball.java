@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class Baseball {
+public class NumberBaseball {
 
     private static final String TOO_SHORT_LENGTH_MESSAGE = "자리수가 3보다 작습니다.";
     private static final String TOO_LONG_LENGTH_MESSAGE = "자리수가 3보다 큽니다.";
@@ -15,12 +15,12 @@ public class Baseball {
     private final List values;
 
     //생성자 대신 정적 팩터리 메서드 사용
-    private Baseball(List values) {
+    private NumberBaseball(List values) {
         this.values = values;
         IntegerListUtil.validateListType(values);
     }
 
-    public static Baseball createBaseball(String stringValue) {
+    public static NumberBaseball createBaseball(String stringValue) {
         IntegerUtil.validateInteger(stringValue);
 
         int stringLen = stringValue.length();
@@ -31,14 +31,14 @@ public class Baseball {
 
         List values = IntegerListUtil.parseIntegerList(stringValue);
 
-        return new Baseball(values);
+        return new NumberBaseball(values);
     }
 
-    public static Baseball createBaseball(List values) {
-        return new Baseball(values);
+    public static NumberBaseball createBaseball(List values) {
+        return new NumberBaseball(values);
     }
 
-    public static Baseball createRandomBaseball() { //정적 팩터리 메서드
+    public static NumberBaseball createRandomBaseball() { //정적 팩터리 메서드
         List<Integer> computerList = new ArrayList<>();
 
         while (computerList.size() < GameConstants.NUMBER_LENGTH) {
@@ -86,5 +86,4 @@ public class Baseball {
             }
         }
     }
-
 }
