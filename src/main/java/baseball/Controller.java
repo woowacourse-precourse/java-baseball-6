@@ -49,4 +49,8 @@ public class Controller {
         }
         throw new IllegalArgumentException("입력이 올바르지 않습니다.");
     }
+
+    public static void showResult(BaseballResultState result) {
+        System.out.println(result);
+    }
 }

@@ -48,13 +48,11 @@ public class BaseballGame {
         ArrayList<Integer> inputValue = Controller.queryNumber();
 
         BaseballResultState result = BaseballResultState.match(answer, inputValue);
-        System.out.println(result);
+        Controller.showResult(result);
         return result.isGameOver();
     }
 
     public boolean isRetry() {
         return Controller.queryRetry();
     }
-
-
 }

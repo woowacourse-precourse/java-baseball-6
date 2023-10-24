@@ -19,10 +19,10 @@ public class BaseballResultState {
         if (ball == 0 && strike == 0) {
             return "낫싱";
         }
-        if (ball != 0 && strike == 0) {
+        if (strike == 0) {
             return String.format("%d볼", ball);
         }
-        if (ball == 0 && strike != 0) {
+        if (ball == 0) {
             return String.format("%d스트라이크", strike);
         }
         return String.format("%d볼 %d스트라이크", ball, strike);
