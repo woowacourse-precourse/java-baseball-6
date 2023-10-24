@@ -5,19 +5,19 @@ import baseball.util.Sentence;
 
 public class OutputView {
     public void printGameStartMessage() {
-        System.out.println(Sentence.GAME_START_MESSAGE.getMessage());
+        System.out.println(Sentence.GAME_START.getMessage());
     }
 
     public void printInputNumbersMessage() {
-        System.out.print(Sentence.INPUT_NUMBER_MESSAGE.getMessage());
+        System.out.print(Sentence.INPUT_NUMBER.getMessage());
     }
 
     public void printGameSuccessMessage() {
-        System.out.println(Sentence.GAME_SUCCESS_MESSAGE.getMessage());
+        System.out.println(Sentence.GAME_SUCCESS.getMessage());
     }
 
     public void printGameActionMessage() {
-        System.out.println(Sentence.GAME_RESTART_EXIT_MESSAGE.getMessage());
+        System.out.println(Sentence.GAME_RESTART_OR_EXIT.getMessage());
     }
 
     public void printGameResult(GameResult gameResult) {
