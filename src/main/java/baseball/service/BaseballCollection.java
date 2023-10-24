@@ -1,11 +1,10 @@
 package baseball.service;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class BaseballCollection {
     private final int DEFAULT_CAPACITY = 3;
@@ -34,23 +33,11 @@ public class BaseballCollection {
 
     private String createUniqueNumbers(NumberGenerator numberGenerator) {
         StringBuilder uniqueNumbers = new StringBuilder();
-        Set<Integer> usedNumbers = new HashSet<>();
-        while (doesNotExceedCapacity(uniqueNumbers)) {
-            int number = numberGenerator.generate();
-            appendIfUniqueNumber(number, uniqueNumbers, usedNumbers);
-        }
+        Stream.generate(numberGenerator::generate)
+                .distinct()
+                .limit(3)
+                .forEach(uniqueNumbers::append);
         return uniqueNumbers.toString();
-    }
-
-    private boolean doesNotExceedCapacity(StringBuilder target) {
-        return target.length() < DEFAULT_CAPACITY;
-    }
-
-    private void appendIfUniqueNumber(int number, StringBuilder target, Set<Integer> usedNumbers) {
-        if (!usedNumbers.contains(number)) {
-            target.append(number);
-            usedNumbers.add(number);
-        }
     }
 
     private List<Integer> createValidBaseballs(String number) {
