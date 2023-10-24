@@ -9,5 +9,6 @@ public class Application {
                 .numberOfDigits(3)
                 .build();
 
+        NumberGame baseballGame = new BaseballGame(baseballGameConfiguration);
     }
 }
