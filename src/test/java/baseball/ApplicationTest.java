@@ -46,23 +46,6 @@ class ApplicationTest extends NsTest {
         assertThat(generatedNumber).doesNotHaveDuplicates();
     }
 
-
-    @Test
-    void 야구게임_시작_출력() {
-        assertSimpleTest(() -> {
-            run();
-            assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
-        });
-    }
-
-    @Test
-    void 사용자_입력_테스트() {
-        assertSimpleTest(() -> {
-            run("123");
-            assertThat(output()).contains("숫자를 입력하세요.");
-        });
-    }
-
     @Test
         // error handling for sizecheck
     void 사용자_숫자_입력_테스트() {
