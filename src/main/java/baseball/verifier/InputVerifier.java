@@ -4,35 +4,35 @@ import baseball.system.SystemConstant;
 import baseball.system.SystemException;
 
 public class InputVerifier {
-    public static void checkBallNumber(String isBallNumber) throws IllegalArgumentException {
-        checkNumeric(isBallNumber);
-        checkRange(isBallNumber);
-        checkDistinct(isBallNumber);
-        checkDigitRange(isBallNumber);
+    public static void checkBallNumber(String ballNumber) throws IllegalArgumentException {
+        checkNumeric(ballNumber);
+        checkRange(ballNumber);
+        checkDistinct(ballNumber);
+        checkDigitRange(ballNumber);
     }
 
-    public static void checkGameNumber(String isGameNumber) throws IllegalArgumentException {
-        if (!isGameNumber.equals(SystemConstant.NEW_GAME) && !isGameNumber.equals(SystemConstant.END_GAME)) {
+    public static void checkGameNumber(String gameNumber) throws IllegalArgumentException {
+        if (!gameNumber.equals(SystemConstant.NEW_GAME) && !gameNumber.equals(SystemConstant.END_GAME)) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_GAME_NUMBER);
         }
     }
 
-    private static void checkNumeric(String isNumeric) {
+    private static void checkNumeric(String ballNumber) {
         try {
-            Integer.parseInt(isNumeric);
+            Integer.parseInt(ballNumber);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_NUMERIC);
         }
     }
 
-    private static void checkRange(String inRange) {
-        if (inRange.length() != SystemConstant.DIGIT_SIZE) {
+    private static void checkRange(String ballNumber) {
+        if (ballNumber.length() != SystemConstant.DIGIT_SIZE) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_RANGE);
         }
     }
 
-    private static void checkDigitRange(String inRange) {
-        inRange.chars()
+    private static void checkDigitRange(String ballnumber) {
+        ballnumber.chars()
                 .map(Character::getNumericValue)
                 .forEach(InputVerifier::outOfEachDigitRange);
     }
@@ -54,10 +54,10 @@ public class InputVerifier {
         }
     }
 
-    private static void checkDistinct(String isDistinct) {
-        if (isDistinct.chars()
+    private static void checkDistinct(String ballNumber) {
+        if (ballNumber.chars()
                 .distinct()
-                .count() != isDistinct.length()) {
+                .count() != ballNumber.length()) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_DISTINCT);
         }
     }
