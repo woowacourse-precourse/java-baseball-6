@@ -23,6 +23,13 @@ class InputValidateTest  {
         assertThatThrownBy(()->inputValidate.validateNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("입력한 숫자에 0을 포함한 경우, 예외처리 ")
+    void 입력_숫자에_0_포함_예외처리(){
+        inputValidate = new InputValidate("102");
+        assertThatThrownBy(()->inputValidate.validateContainsZero()).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 }
