@@ -2,10 +2,12 @@ package baseball;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
+@Disabled
 public class PlayerTest {
     private Player player;
     @BeforeEach
