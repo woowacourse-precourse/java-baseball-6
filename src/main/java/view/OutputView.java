@@ -1,5 +1,8 @@
 package view;
 
+import controller.ComputerController;
+import controller.GameController;
+
 /**
  * packageName    : view
  * fileName       : OutputView

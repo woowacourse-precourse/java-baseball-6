@@ -56,6 +56,19 @@ public class ValidationControllerTest {
     }
 
     @Test
+    void 사용자_입력_숫자_유효성_검사_범위_외_값_입력() {
+        String playerInput = "12d";
+        String exceptionMessage = "1 ~ 9 사이의 숫자를 입력해주세요.";
+
+        Throwable throwable = catchThrowable(() -> {
+            validationController.validate(playerInput);
+        });
+        //예외가 코드에서 예상한 예외 타입인지를 확인
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable).hasMessage(exceptionMessage);
+    }
+
+    @Test
     void 사용자_입력_숫자_유효성_검사_비정상_입력_범위를_벗어남(){
         String playerInput = "12345";
         String exceptionMessage = "숫자 세 자리를 입력해주세요.";

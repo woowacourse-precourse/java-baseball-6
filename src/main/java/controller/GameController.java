@@ -19,6 +19,10 @@ import java.util.List;
  */
 public class GameController {
 
+    private static final String WRONG_ANSWER_INPUT_MESSAGE = "1 혹은 2만 입력 가능합니다.";
+    private static final String BASEBALL_GAME_RESTART_ANSWER = "1";
+    private static final String BASEBALL_GAME_END_ANSWER = "2";
+
     OutputView outputView = new OutputView();
     GameNumber gameNumber = new GameNumber();
     ComputerController computer = new ComputerController();
@@ -32,7 +36,23 @@ public class GameController {
             outputView.printGameStart();
             computer.startGame(gameNumber);
             messagePrint();
+            gameState = askRestartGame();
         }
+    }
+
+    private boolean askRestartGame() {
+        String answer = inputView.enterAnswerRestartGame();
+        return wantRestartGame(answer);
+    }
+
+    public boolean wantRestartGame(String answer) {
+        if (answer.equals(BASEBALL_GAME_RESTART_ANSWER)) {
+            return true;
+        } else if (answer.equals(BASEBALL_GAME_END_ANSWER)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException(WRONG_ANSWER_INPUT_MESSAGE);
     }
 
     private void messagePrint(){

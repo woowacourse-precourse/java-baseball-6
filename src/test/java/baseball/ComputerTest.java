@@ -34,6 +34,16 @@ public class ComputerTest extends NsTest {
     }
 
     @Test
+    void 사용자_컴퓨터_숫자_비교_3볼() {
+        List<Integer> playerNumbers = Arrays.asList(1, 2, 3);
+        List<Integer> computerNumbers = Arrays.asList(2, 3, 1);
+        String hintMessage = "3볼";
+
+        computerController.compareNumbers(playerNumbers, computerNumbers);
+        assertThat(output()).isEqualTo(hintMessage);
+    }
+
+    @Test
     void 사용자_컴퓨터_숫자_비교_1볼_1스트라이크() {
         List<Integer> playerNumbers = Arrays.asList(1, 4, 3);
         List<Integer> computerNumbers = Arrays.asList(2, 1, 3);
