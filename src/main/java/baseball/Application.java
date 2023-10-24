@@ -10,28 +10,11 @@ import java.util.List;
 public class Application {
         public static void main(String[] args) {
                 // TODO: 프로그램 구현
-                List<Integer> computer = new ArrayList<>();
-                List<Integer> user = new ArrayList<>();
-                boolean Set = true;
-                String answerSB = "";
-                System.out.println("숫자 야구 게임을 시작합니다.");
 
-                //컴퓨터 함수 부분
-                computer = computerNumber();
-                while (Set) {
-                        //입력 부문
-                        user = userNumber();
-                        //strike
-                        int strike = countStrike(computer, user);
-                        //ball
-                        int ball = countBall(computer, user);
-                        answerSB = answer(strike, ball);
-                        System.out.println(answerSB);
-                        if (strike == 3) {
-                                computer = computerNumber(); //초기화
-                                Set = gameSet();
-                        }
-                }
+                System.out.println("숫자 야구 게임을 시작합니다.");
+                playGame();
+
+
         }
 
 
@@ -43,11 +26,30 @@ public class Application {
                                 isNumeric = false;
                         }
                 }
-                if (user.length() != 3 || !isNumeric) {
+                if (user.length() > 3 || !isNumeric) {
                         throw new IllegalArgumentException("3자리 정수를 입력해주세요");
                 }
         }
+        //게임시작
+        public static void playGame() {
+                boolean continueGame = true;
+                while (continueGame){
+                        List<Integer> computer = computerNumber();
+                        while (true) {
+                                List<Integer> user = userNumber();
+                                int strike = countStrike(computer, user);
+                                int ball = countBall(computer, user);
+                                String answer = answer(strike, ball);
+                                System.out.println(answer);
+                                if (strike == 3) {
+                                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                                        break;
+                                }
+                        }
+                        continueGame = gameSet();
 
+                }
+        }
         // 컴퓨터 부분
         public static List<Integer> computerNumber() {
                 List<Integer> computer = new ArrayList<>();
@@ -106,15 +108,16 @@ public class Application {
                 } else if (ball == 0) {
                         return strike + "스트라이크";
                 }
-                return ball + "볼" + strike + "스트라이크 ";
+                return ball + "볼" + " "+strike + "스트라이크 ";
         }
 
         //게임 종료
         public static boolean gameSet() {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
                 char answer = Console.readLine().charAt(0);
                 if (answer == '2') {
+                        System.out.print("게임 종료");
                         return false;
                 }
                 return true;
