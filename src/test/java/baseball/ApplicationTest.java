@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.model.GameStatus;
+import baseball.model.PlayerInputManager;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +27,35 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자범위_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("104"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    void 숫자중복_예외테스트() {
+        // given
+
+        // when
+
+        // then
+
+
+    }
+
+    @Test
+    void 게임_종료_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            run("123", "456", "789", "2");
+            assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        },
+                7, 8, 9
         );
     }
 
