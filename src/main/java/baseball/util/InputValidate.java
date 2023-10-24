@@ -30,8 +30,8 @@ public class InputValidate {
      * 게임종료 시 1 또는 2인지 검증
      */
     public static int validateRestartGame(int number) {
-        if (number != NUMBER_ONE && number != NUMBER_TWO) {
-            throw new IllegalArgumentException("1부터 9사이의 숫자를 입력해야 합니다.");
+        if (number != FINISH && number != RESTART) {
+            throw new IllegalArgumentException("1또는 2를 입력해야 합니다.");
         }
 
         return number;
