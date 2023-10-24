@@ -59,12 +59,9 @@ public class Baseball {
     }
 
     public Score checkResult(Baseball compare) {
-        int strikeCount, ballCount;
-        boolean isComplete;
-
-        strikeCount = computeStrike(compare.balls);
-        ballCount = computeBall(compare.balls);
-        isComplete = (strikeCount == BASEBALL_NUMBER_LENGTH);
+        int strikeCount = computeStrike(compare.balls);
+        int ballCount = computeBall(compare.balls);
+        boolean isComplete = (strikeCount == BASEBALL_NUMBER_LENGTH);
 
         return new Score(strikeCount, ballCount, isComplete);
     }
