@@ -1,7 +1,7 @@
 package baseball.config;
 
-import baseball.game.BaseballGames;
 import baseball.game.Game;
+import baseball.game.impl.BaseballGames;
 import baseball.launcher.GameLauncher;
 import baseball.service.MessageGenerateService;
 import baseball.service.ValidateJudgeService;

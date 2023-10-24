@@ -1,5 +1,6 @@
-package baseball.game;
+package baseball.game.impl;
 
+import baseball.game.Game;
 import baseball.message.GameMessages;
 import baseball.service.MessageGenerateService;
 import baseball.service.ValidateJudgeService;
