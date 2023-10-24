@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Answer {
-
-    private final List<Integer> answer;
     private static final int INIT_VAL = 0;
     private static final int FIRST_IDX = 0;
     private static final int END_PLUS_ONE_IDX = 3;
+
+    private final List<Integer> answer;
 
     public Answer(List<Integer> answer) {
         this.answer = answer;
