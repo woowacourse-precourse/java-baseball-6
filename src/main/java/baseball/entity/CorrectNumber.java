@@ -1,13 +1,12 @@
 package baseball.entity;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import baseball.util.RandomNumGenerator;
 import java.util.List;
 
 // CorrectNumber는 정답 생성, 관리, 비교
 public class CorrectNumber {
 
-    private List<Integer> correctNumbers = new ArrayList<>();
+    private List<Integer> correctNumbers;
 
     public Result compareTo(String input) {
         int strikeNumber = 0;
@@ -23,18 +22,11 @@ public class CorrectNumber {
                 }
             }
         }
-        return new Result(strikeNumber,ballNumber);
+        return new Result(strikeNumber, ballNumber);
     }
 
-    public void generateCorrectNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        this.correctNumbers = computer;
+    public void generateNewCorrectNum() {
+        this.correctNumbers = RandomNumGenerator.generate();
     }
 
     public List<Integer> getCorrectNumbers() {

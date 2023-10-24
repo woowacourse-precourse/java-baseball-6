@@ -9,14 +9,15 @@ public class Result {
         this.strikeNumber = strikeNumber;
         this.ballNumber = ballNumber;
     }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if (strikeNumber!= 0) {
-            sb.append(strikeNumber).append("스트라이크 ");
-        }
-        if(ballNumber!= 0) {
+        if (ballNumber != 0) {
             sb.append(ballNumber).append("볼 ");
+        }
+        if (strikeNumber != 0) {
+            sb.append(strikeNumber).append("스트라이크 ");
         }
         if (ballNumber == 0 && strikeNumber == 0) {
             sb.append("낫싱 ");
