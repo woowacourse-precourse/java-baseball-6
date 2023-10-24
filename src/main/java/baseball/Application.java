@@ -60,6 +60,7 @@ public class Application {
         }
 
         int strike = 0;
+        int ball = 0;
 
         for (int i = 0; i < randomNumbers.size(); i++) {
 
@@ -67,10 +68,35 @@ public class Application {
 
                 strike++;
 
+            } else {
+
+                if (randomNumbers.contains(userAnswers.get(i))) {
+
+                    ball++;
+
+                }
             }
         }
 
-        System.out.println(strike + "스트라이크");
+        if (strike != 0 && ball != 0) {
+
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+
+        } else {
+
+            if (strike != 0) {
+
+                System.out.println(strike + "스트라이크");
+
+            } else if (ball != 0) {
+
+                System.out.println(ball + "볼");
+
+            }
+        }
+
+
+
 
     }
 }
