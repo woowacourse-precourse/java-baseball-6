@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class PlayerTest {
     GameController gameController = new GameController();
-    BaseBall baseBall = new BaseBall();
     NumberValidator numberValidator = new NumberValidator();
 
     @Test
