@@ -45,13 +45,13 @@
   - [X] 재시작 했을 때 입력이 1 or 2인지 확인! 아닐 경우 오류!
 
 - ### Test 
-  - [ ] BaseballService 에 대한 테스트
+  - [X] BaseballService 에 대한 테스트
     - [X] calculate 에 대한 테스트 점검!
       - [X] strike 잘 나오는지!
       - [X] ball 잘 나오는지!
-    - [ ] 각 case 별 에러 잘 나오는지 확인!
+    - [X] 각 case 별 에러 잘 나오는지 확인!
       - [X] user_number 입력에 따른 테스트
-      - [ ] restart_number 입력에 따른 테스트
+      - [X] restart_number 입력에 따른 테스트
 
 ---
 
