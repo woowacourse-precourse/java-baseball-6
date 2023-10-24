@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Session {
     private static final String victoryMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static boolean isSessionRunning = true;
+    private static boolean isGameRunning = true;
 
     // 프로그램 시작, 응답받기
     public static void startGame() {
@@ -18,7 +18,7 @@ public class Session {
             if (ScoreKeeper.isThreeStrikes()) {
                 askRestartOrEnd();
             }
-        } while (isSessionRunning);
+        } while (isGameRunning);
     }
 
     // 프로그램 종료여부
@@ -36,7 +36,7 @@ public class Session {
                 break;
             case 2:
                 System.out.println("프로그램을 종료합니다.");
-                isSessionRunning = false;
+                isGameRunning = false;
                 break;
             default:
                 break;
