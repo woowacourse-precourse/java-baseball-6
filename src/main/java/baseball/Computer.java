@@ -16,5 +16,19 @@ public class Computer {
             }
         }
     }
-    
+
+    public GameResult calculateResult(List<Integer> userRandNum) {
+        int ballCnt = 0, strikeCnt = 0;
+        for (int i = 0; i < computerRandNum.size(); i++) {
+            if (computerRandNum.get(i) == userRandNum.get(i)) {
+                strikeCnt++;
+                continue;
+            }
+
+            if (computerRandNum.contains(userRandNum.get(i))) {
+                ballCnt++;
+            }
+        }
+        return new GameResult(strikeCnt, ballCnt);
+    }
 }
