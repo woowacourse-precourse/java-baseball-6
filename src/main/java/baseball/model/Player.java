@@ -9,7 +9,7 @@ public class Player {
         this.playerNumber = playerNumber;
     }
 
-    public static Player createNyNumber(List<Integer> playerNumber) {
+    public static Player createByNumber(List<Integer> playerNumber) {
         return new Player(playerNumber);
     }
 

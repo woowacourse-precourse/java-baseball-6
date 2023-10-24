@@ -27,4 +27,11 @@ public enum GameStatus {
         throw new IllegalArgumentException("해당하는 게임 상태가 없습니다.");
     }
 
+    public static boolean isApplicationExit(GameStatus gameStatus) {
+        return gameStatus == GameStatus.APPLICATION_EXIT;
+    }
+
+    public static boolean isGameOver(GameStatus gameStatus) {
+        return gameStatus == GameStatus.GAME_OVER;
+    }
 }
