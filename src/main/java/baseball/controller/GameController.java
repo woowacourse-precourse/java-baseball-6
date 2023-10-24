@@ -1,8 +1,12 @@
 package baseball.controller;
 
 import baseball.domain.NumberBaseball;
+import baseball.domain.Restart;
 import baseball.service.GameService;
 import baseball.service.hint.HintService;
+import baseball.util.ExceptionUtil;
+import baseball.util.InputUtil;
+import baseball.util.IntegerUtil;
 import baseball.view.*;
 
 public class GameController {
@@ -29,14 +33,38 @@ public class GameController {
 
     public void play() {
         while (true) {
-            startView.displayStartMessage();
-
-            //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
-            NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
-            gameService.playOneGame(inputView, hintView, endView, restartView, hintService, computerBaseball);
-
+            startGame();
+            if (restartGame()) {
+                return;
+            }
         }
     }
 
+    private void startGame() {
+        startView.displayStartMessage();
 
+        NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
+        System.out.println(computerBaseball.getValues());
+        gameService.playOneGame(inputView, hintView, endView, restartView, hintService, computerBaseball);
+    }
+
+    private boolean restartGame(){
+        restartView.displayRestartChoiceMessage();
+        String regameNum = InputUtil.inputString();
+
+        IntegerUtil.validateInteger(regameNum);
+        int parsedRegameNum = Integer.parseInt(regameNum);
+        Restart restart = RestartController.validateValue(parsedRegameNum);
+
+        if (restart == Restart.RESTART_GAME) {
+            return false;
+        }
+        if (restart == Restart.EXIT_GAME) {
+            return true;
+        }
+        if (restart == Restart.OTHER_CHOICE) {
+            ExceptionUtil.throwInvalidValueException();
+        }
+        return false;
+    }
 }
