@@ -11,24 +11,16 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = selectNumbers();
         game(computer);
     }
 
-    //
     public static String inputNumbers() {
         System.out.print("숫자를 입력해주세요: ");
         return Console.readLine();
     }
 
-    public static String inputResultNumber() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Console.readLine();
-    }
-
-//    computer
     public static List<Integer> selectNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -40,7 +32,6 @@ public class Application {
         return computer;
     }
 
-//    player
     public static void game(List<Integer> computer) {
           String input = inputNumbers();
           if(input.length() != 3) {
@@ -49,7 +40,6 @@ public class Application {
             gameResult(computer, input);
     }
 
-//    computer 역할
     public static void gameResult(List<Integer> computer, String input) {
         int cntStrike = 0;
         int cntBall = 0;
@@ -57,13 +47,14 @@ public class Application {
         for(int i=0; i<computer.size(); i++) {
             int num = stringToInt(input, i);
             checkOverlap.add(num);
+            if (num<1 | num>9) throw new IllegalArgumentException("1~9를 이용한 3자리의 수를 입력하세요.");
             if((num) == computer.get(i)) {
                 cntStrike += 1;
             } else if (computer.contains(num)) {
                 cntBall += 1;
             }
         }
-        if(checkOverlap.size() < 3) {
+        if(checkOverlap.size() != 3) {
             throw new IllegalArgumentException("서로 다른 3자리의 수를 입력하세요.");
         }
         count(cntStrike, cntBall);
@@ -80,7 +71,6 @@ public class Application {
         return num;
     }
 
-    // computer 역할
     public static void count(int cntStrike, int cntBall) {
         if (cntStrike == 0 && cntBall == 0) System.out.println("낫싱");
         else if (cntStrike == 0 && cntBall > 0 ) System.out.println(cntBall + "볼");
@@ -91,19 +81,22 @@ public class Application {
         }
 
     }
-//
+
+    public static String inputResultNumber() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
+
     public static void restartOrNot() {
         String input = inputResultNumber();
         int num = stringToInt(input,0);
         if (num == 1) gameRestart();
-        else if (num != 2) throw new IllegalArgumentException("서로 다른 3자리의 수를 입력하세요.");
+        else if (num != 2) throw new IllegalArgumentException("1,2 이외의 숫자는 입력할 수 없습니다.");
     }
 
-// computer 게임 재시작 , 구현
     public static void gameRestart() {
         List<Integer> computer = selectNumbers();
         game(computer);
     }
-
 
 }
