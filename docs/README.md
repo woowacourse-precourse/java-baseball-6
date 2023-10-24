@@ -79,7 +79,8 @@
 
 구현 후 코드 리펙토링이 필요해 보이는 요소들
 
-- [ ] game.start 메소드에 많은 기능 결합
+- [X] game.start 메소드에 많은 기능 결합
+    - 종료조건 판단 기능 함수화
 - [X] game.start가 실행될 때 마다 객체들이 생성됨
     - 생성자를 통해 game가 생성될때 객체들이 생성되도록 설정
 - [ ] UserNumber와 ContinueNumber에 입력받는코드가 중복

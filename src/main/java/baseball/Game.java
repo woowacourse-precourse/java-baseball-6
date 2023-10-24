@@ -22,19 +22,26 @@ public class Game {
         List<Integer> computer = computerNumber.createComputerNumber();
         output.printStart();
         boolean check = true;
-        do {
+        while (check) {
             List<Integer> user = userNumber.getUserNumber();
             int strikeCount = hint.getStrikeCount(computer, user);
             int ballCount = hint.getBallCount(computer, user);
             output.printHint(strikeCount, ballCount);
             if (strikeCount == 3) {
-                String restart = continueNumber.getContinueNumber();
-                if (restart.equals("1")) {
-                    computer = computerNumber.createComputerNumber();
-                } else if (restart.equals("2")) {
-                    check = false;
-                }
+                check = continueCheck();
             }
-        } while (check);
+            if (strikeCount == 3 && check) {
+                computer = computerNumber.createComputerNumber();
+            }
+        }
+    }
+
+    private boolean continueCheck() {
+        boolean checked = true;
+        String restart = continueNumber.getContinueNumber();
+        if (restart.equals("2")) {
+            checked = false;
+        }
+        return checked;
     }
 }
