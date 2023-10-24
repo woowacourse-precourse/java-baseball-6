@@ -2,10 +2,10 @@ package baseball.game.model;
 
 import baseball.game.Validator;
 
-public class Restart {
+public class RestartState {
     boolean isRestart;
 
-    private Restart(boolean isRestart) {
+    private RestartState(boolean isRestart) {
         this.isRestart = isRestart;
     }
 
@@ -13,12 +13,12 @@ public class Restart {
         return isRestart;
     }
 
-    public static Restart of(String str){
+    public static RestartState of(String str){
         int num = Integer.parseInt(str);
         Validator.validRestartNum(num);
         if(num == 1){
-            return new Restart(true);
+            return new RestartState(true);
         }
-        return new Restart(false);
+        return new RestartState(false);
     }
 }
