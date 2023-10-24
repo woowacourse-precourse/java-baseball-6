@@ -2,7 +2,6 @@ package baseball.util;
 
 public class AppConstants {
     public static final int BALLS_SIZE = 3;
-    public static final int PERFECT_STRIKES = 3;
     public static final int INT_MIN_NUMBER = 1;
     public static final int INT_MAX_NUMBER = 9;
 
