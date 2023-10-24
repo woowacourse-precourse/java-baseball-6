@@ -62,6 +62,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("문자열 숫자인지 테스트")
+    void 문자열_숫자인지_테스트() {
+        String digitNumber = "135";
+        String notDigitNumber = "s14de7";
+
+        assertThat(Application.isDigitNumber(digitNumber)).isEqualTo(true);
+        assertThat(Application.isDigitNumber(notDigitNumber)).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("서로 다른 랜덤숫자 테스트")
     void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
