@@ -14,6 +14,9 @@ public class User {
     public void inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
+        if (str.length() != 3) {
+            throw new IllegalArgumentException("Invalid argument: " + str);
+        }
         String[] strArr = str.split("");
         for (String s : strArr) {
             this.numbers.add(Integer.parseInt(s));
