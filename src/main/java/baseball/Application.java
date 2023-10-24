@@ -13,16 +13,21 @@ public class Application {
     public static void game(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNumber = makeRandomNumber();
-
+        boolean stopSign=false;
         while (true){
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> inputNumber = inputUserNumber();
             Result result = checkResult(computerNumber, inputNumber);
             viewResult(result);
             if(checkGame(result)){
-                break;
+                restartOrExit();
             }
         }
+    }
+
+    public static void restartOrExit() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static boolean checkGame(Result result) {
