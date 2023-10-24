@@ -20,8 +20,4 @@ public class ComputerNumber {
         }
         return getRandomNumber(number);
     }
-
-    public void clearComputerNumber(List<Integer> number) {
-        number.clear();
-    }
 }
