@@ -30,4 +30,14 @@ public class Application {
         return cnt;
     }
 
+    public static int calculateBallCount() {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber.contains(inputNumber.substring(i, i + 1))
+                 && randomNumber.charAt(i) != inputNumber.charAt(i))
+                cnt++;
+        }
+        return cnt;
+    }
+
 }
