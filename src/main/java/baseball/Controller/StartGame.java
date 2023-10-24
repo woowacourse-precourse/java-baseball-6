@@ -1,6 +1,5 @@
 package baseball.Controller;
 
-import baseball.Utils.ExceptionProcess;
 import baseball.Utils.GameMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -18,7 +17,7 @@ public class StartGame {
         List<Integer> computer = computerSetting();
         do {
             enter = inputComparator.contrastList(computer, userSetting());
-        }while(!enter);
+        }while(enter);
     }
 
     public List<Integer> computerSetting() {
