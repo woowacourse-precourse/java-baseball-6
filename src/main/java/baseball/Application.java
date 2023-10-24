@@ -28,16 +28,19 @@ public class Application {
     }
 
     private static void printBaseballResult(int numOfBall, int numOfStrike) {
+        StringBuilder resultBuilder = new StringBuilder();
+
         if (numOfBall == 0 && numOfStrike == 0) {
-            System.out.println("낫싱");
+            resultBuilder.append("낫싱");
             return;
+        } else {
+            if (numOfBall > 0)
+                resultBuilder.append(numOfBall).append("볼 ");
+            if (numOfStrike > 0)
+                resultBuilder.append(numOfStrike).append("스트라이크");
         }
-        String result = "";
-        if (numOfBall > 0)
-            result += (numOfBall + "볼 ");
-        if (numOfStrike > 0)
-            result += (numOfStrike + "스트라이크");
-        System.out.println(result);
+
+        System.out.println(resultBuilder);
     }
 
     private static int getNumberOfStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
