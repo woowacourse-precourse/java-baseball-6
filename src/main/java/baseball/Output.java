@@ -15,4 +15,8 @@ public class Output {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }
+
+    public void printStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 }

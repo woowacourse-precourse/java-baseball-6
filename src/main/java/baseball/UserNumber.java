@@ -19,6 +19,7 @@ public class UserNumber {
     }
 
     private String getReadLine() {
+        System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
 
