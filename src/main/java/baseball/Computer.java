@@ -16,7 +16,7 @@ public class Computer {
     return randomNumber;
   }
 
-  public String generateRandomNumber() {
+  private String generateRandomNumber() {
     Set<Integer> computer = new HashSet<>();
     StringBuilder computerRandom = new StringBuilder();
     while (computer.size() < 3) {
