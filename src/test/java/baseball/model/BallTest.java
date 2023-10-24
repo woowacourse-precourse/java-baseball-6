@@ -24,6 +24,18 @@ class BallTest {
     }
 
 
+    @Test
+    @DisplayName("볼의 개수가 0이 아닌지 확인한다.")
+    void check_ball(){
+        //given
+        ball.updateBallCount(3);
 
+        //when
+        boolean isBall = ball.isBall();
+
+        //then
+        assertThat(isBall).isTrue();
+
+    }
 
 }
