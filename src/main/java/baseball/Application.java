@@ -16,15 +16,11 @@ public class Application {
 
             GameManager gameManager = new GameManager();
             List<Integer> randomNumber = gameManager.createRandomNumber();
-//            System.out.println("randomNumber = " + randomNumber);
 
             while (!isCorrect) {
 
                 System.out.print("숫자를 입력하세요: ");
                 List<Integer> userNumber = gameManager.getUserNumber();
-
-
-//                System.out.println("입력값 = " + userNumber);
 
                 String result = gameManager.match(randomNumber, userNumber);
                 System.out.println(result);

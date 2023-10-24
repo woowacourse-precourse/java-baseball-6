@@ -57,6 +57,5 @@ public class GameManager {
         }
 
         return result;
-
     }
 }
