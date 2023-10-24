@@ -28,7 +28,9 @@ public class BaseBallNumber {
         }
 
         return new BaseBallNumber(
-                randomNumbers.stream().mapToInt(Integer::intValue).toArray());
+                randomNumbers.stream()
+                        .mapToInt(Integer::intValue)
+                        .toArray());
     }
 
     public static BaseBallNumber generateNumber(String inputString) {
