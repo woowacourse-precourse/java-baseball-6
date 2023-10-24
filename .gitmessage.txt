@@ -1,5 +1,4 @@
 
-
 # type : subject	-> 제목
 
 # body (optional) 	-> 본문
@@ -46,3 +45,4 @@
 # Resolves :	이슈를 해결한 경우
 # Ref :	        참조할 이슈가 있을 때 사용
 # Related to :	해당 커밋에 관련된 이슈 번호(아직 해결되지 않은 경우)
+
