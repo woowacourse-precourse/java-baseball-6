@@ -17,13 +17,13 @@ public class Input {
 
     public void checkInputNumbers(String numbers) {
         if (!(numbers.length() == 3)) {
-            throw new InputException(InputError.NEED_THREE_DIGIT);
+            throw new InputException(numbers, InputError.NEED_THREE_DIGIT);
         }
         if (!numbers.matches("[1-9]+")) {
-            throw new InputException(InputError.MUST_BE_DIGIT);
+            throw new InputException(numbers, InputError.MUST_BE_DIGIT);
         }
         if (numbers.length() != Stream.of(numbers.split("")).distinct().count()) {
-            throw new InputException(InputError.NEED_NON_DUPLICATE_NUMBERS);
+            throw new InputException(numbers, InputError.NEED_NON_DUPLICATE_NUMBERS);
         }
     }
 }
