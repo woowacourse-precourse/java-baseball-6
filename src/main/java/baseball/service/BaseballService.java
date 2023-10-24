@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.dto.StrikeBallCount;
 import baseball.util.ComputerBallGenerator;
 import baseball.util.InputCalculator;
 import baseball.util.OutputCalculator;
@@ -13,9 +14,7 @@ public class BaseballService {
 
         InputView.getStartMessage();
 
-
-            gamePlay();
-
+        gamePlay();
 
     }
 
@@ -27,9 +26,9 @@ public class BaseballService {
         do {
             List<Integer> userInput = InputView.userInputNumber();
 
+            StrikeBallCount strikeBallCount = InputCalculator.compareComputerBallAndUserInput(computerBall, userInput);
 
-        }while(gameEnd());
-
+        } while (gameEnd());
 
 
     }
