@@ -6,31 +6,31 @@ public class Output {
     private Output() {
     }
 
-    public static void printInit() {
+    public static void initMsg() {
         System.out.println(Message.init());
     }
 
-    public static void printUserInput() {
+    public static void inputMsg() {
         System.out.print(Message.pending());
     }
 
-    public static void printCheckerResult(String result) {
+    public static void checkResultMsg(String result) {
         System.out.println(result);
     }
 
-    public static void printCorrect() {
+    public static void correctMsg() {
         System.out.println(Message.correct());
     }
 
-    public static void printError(String message) {
+    public static void errorMsg(String message) {
         System.out.println(message);
     }
 
-    public static void printContinue() {
+    public static void continueMsg() {
         System.out.println(Message.continueOrNot());
     }
 
-    public static void printExpire() {
+    public static void expireMsg() {
         System.out.println(Message.expire());
     }
 }
