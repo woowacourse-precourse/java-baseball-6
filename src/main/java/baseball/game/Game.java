@@ -8,7 +8,7 @@ import static baseball.common.Constants.*;
 public class Game {
     private Computer computer;
     private User user;
-    private Result result;
+    private GameResult result;
 
     public Game() {
         System.out.println(GAME_START_MESSAGE);
@@ -24,7 +24,7 @@ public class Game {
     private void setGame() {
         computer = new Computer();
         user = new User();
-        result = new Result();
+        result = new GameResult();
     }
 
     private void playGame() {

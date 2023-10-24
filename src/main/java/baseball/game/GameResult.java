@@ -5,11 +5,11 @@ import java.util.stream.IntStream;
 
 import static baseball.common.Constants.*;
 
-public class Result {
+public class GameResult {
     private Integer strike;
     private Integer ball;
 
-    public Result() {
+    public GameResult() {
         this.strike = EMPTY_COUNT;
         this.ball = EMPTY_COUNT;
     }
