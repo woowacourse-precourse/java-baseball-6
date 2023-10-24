@@ -108,7 +108,6 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-//        showln("right answer for test : " + String.join("", computer.stream().map(String::valueOf).toList())); // 나중에 지워야 함.
         return computer;
     }
 }
