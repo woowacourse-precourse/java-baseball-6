@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> computerRandomNumbers = new ArrayList<>();
+    private List<Integer> computerRandomNumbers;
     private ComputerNumberDto computerNumberDto;
+
+    public Computer(){
+        computerRandomNumbers = new ArrayList<>();
+        computerNumberDto = new ComputerNumberDto();
+    }
 
     public ComputerNumberDto getRandomComputerNumber(){
         setTargetNumber();
