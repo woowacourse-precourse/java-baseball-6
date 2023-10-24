@@ -29,7 +29,7 @@ public class DecimalNumber {
 
     public void setUser(String input) {
         Validation.validationGameNumber(input);
-        DecimalNumber.user = getStringToList(input);
+        DecimalNumber.user = stringToList(input);
     }
 
     private List<Integer> generateRandomNum() {
@@ -44,7 +44,7 @@ public class DecimalNumber {
         return computer;
     }
 
-    private List<Integer> getStringToList(String input) {
+    private List<Integer> stringToList(String input) {
         String[] strArr = input.split("");
         Integer[] intArr = new Integer[strArr.length];
         for (int i = 0; i < strArr.length; i++) {
