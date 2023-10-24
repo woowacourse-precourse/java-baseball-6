@@ -2,7 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        Printer printer = new Printer();
+        Printer printer = new BaseballPrinter();
         Computer computer = new BaseballComputer(printer);
         Game game = new Game(computer);
 

@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PrinterTest {
-    private Printer printer;
+class BaseballPrinterTest {
+    private BaseballPrinter baseballPrinter;
 
     @BeforeEach
     public void setUp() {
-        printer = new Printer();
+        baseballPrinter = new BaseballPrinter();
     }
 
     @Test
@@ -20,7 +20,7 @@ class PrinterTest {
         int strike = 0;
 
         //when
-        String result = printer.printResult(ball, strike);
+        String result = baseballPrinter.printResult(ball, strike);
 
         //then
         String expectedResult = "낫싱";
@@ -34,7 +34,7 @@ class PrinterTest {
         int strike = 2;
 
         //when
-        String result = printer.printResult(ball, strike);
+        String result = baseballPrinter.printResult(ball, strike);
 
         //then
         String expectedResult = "1볼 2스트라이크";
@@ -48,7 +48,7 @@ class PrinterTest {
         int strike = 0;
 
         //when
-        String result = printer.printResult(ball, strike);
+        String result = baseballPrinter.printResult(ball, strike);
 
         //then
         String expectedResult = "1볼";

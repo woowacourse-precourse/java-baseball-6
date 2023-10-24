@@ -16,8 +16,8 @@ class BaseballComputerTest {
 
     @BeforeEach
     public void setUp() {
-        Printer printer = new Printer();
-        baseballComputer = new BaseballComputer(printer);
+        BaseballPrinter baseballPrinter = new BaseballPrinter();
+        baseballComputer = new BaseballComputer(baseballPrinter);
     }
 
     @Test
