@@ -16,7 +16,7 @@ public class TerminateNumber {
             return false;
         }
 
-        if (number.equals(ExitCode.CON.getExitCode()) || number.equals(ExitCode.EXIT.getExitCode())) {
+        if (number.equals(ExitCode.CONTINUE.getExitCode()) || number.equals(ExitCode.EXIT.getExitCode())) {
             return true;
         } else {
             return false;
