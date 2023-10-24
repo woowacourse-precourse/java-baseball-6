@@ -42,6 +42,7 @@ public class Application {
 	                    String userInput = Console.readLine();
 
 	                    // 사용자 입력이 정확한지 판별
+	                    //
 	                    isRightInput(userInput);
 
 	                    // 결과 판정 후 루프 탈출 결정
