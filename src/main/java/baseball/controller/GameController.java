@@ -22,10 +22,8 @@ public class GameController {
 
             if (!gameInProgress) {
                 gameInProgress = !promptForRestartOrExit();
-                if (!gameInProgress) {
-                    outputView.printGameEndMessage();
-                    outputView.printEndMessage();
-                }
+                outputView.printGameEndMessage();
+                outputView.printEndMessage();
             }
         }
         outputView.closeConsole();
@@ -36,10 +34,6 @@ public class GameController {
         while (gameInProgress) {
             String userInput = inputView.getUserInput();
             List<Integer> userNumbers = parseUserInput(userInput);
-
-            if (userNumbers.size() != 3) {
-                throw new IllegalArgumentException("1에서 9 사이의 수만 입력 가능합니다.");
-            }
 
             if (game.isCorrectGuess(userNumbers)) {
                 gameInProgress = false;
