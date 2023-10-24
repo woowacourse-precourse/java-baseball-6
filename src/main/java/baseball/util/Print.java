@@ -13,34 +13,8 @@ public class Print {
     }
 
     public static void showPredictResult(int strike, int ball) {
-        if (isNothing(strike, ball)) {
-            System.out.println(MessageConstant.NOTHING.message);
-        }
-        if (isNoStrike(strike, ball)) {
-            System.out.println(ball + MessageConstant.BALL.message);
-        }
-        if (isNoBall(strike, ball)) {
-            System.out.println(strike + MessageConstant.STRIKE.message);
-        }
-        if (isStrikeAndBall(strike, ball)) {
-            System.out.println(ball + MessageConstant.BALL.message + " " + strike + MessageConstant.STRIKE.message);
-        }
-    }
-
-    private static boolean isStrikeAndBall(int strike, int ball) {
-        return strike != 0 && ball != 0;
-    }
-
-    private static boolean isNoBall(int strike, int ball) {
-        return strike != 0 && ball == 0;
-    }
-
-    private static boolean isNoStrike(int strike, int ball) {
-        return strike == 0 && ball != 0;
-    }
-
-    private static boolean isNothing(int strike, int ball) {
-        return strike == 0 && ball == 0;
+        String resultString = Validation.checkPredict(strike, ball);
+        System.out.println(resultString);
     }
 
     public static void showGameOver() {

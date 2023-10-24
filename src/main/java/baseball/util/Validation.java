@@ -1,5 +1,6 @@
 package baseball.util;
 
+import baseball.constant.MessageConstant;
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -27,6 +28,7 @@ public class Validation {
     public static boolean checkRestartOrExitNumber(String input) {
         return (input.equals("1") || input.equals("2"));
     }
+
     public static boolean checkDuplicatedNumber(String input) {
         for (int index = 0; index < input.length(); index++) {
             if (compareIndexInString(input, index)) {
@@ -40,6 +42,32 @@ public class Validation {
     private static boolean compareIndexInString(String input, int index) {
         char target = input.charAt(index);
         return (input.indexOf(target) != index);
+    }
+
+    public static String checkPredict(int strike, int ball) {
+        if (isNothing(strike, ball)) {
+            return MessageConstant.NOTHING.message;
+        }
+        if (isNoStrikeYesBall(strike, ball)) {
+            return ball + MessageConstant.BALL.message;
+        }
+        if (isNoBallYesStrike(strike, ball)) {
+            return strike + MessageConstant.STRIKE.message;
+        }
+
+        return ball + MessageConstant.BALL.message + " " + strike + MessageConstant.STRIKE.message;
+    }
+
+    private static boolean isNoBallYesStrike(int strike, int ball) {
+        return strike != 0 && ball == 0;
+    }
+
+    private static boolean isNoStrikeYesBall(int strike, int ball) {
+        return strike == 0 && ball != 0;
+    }
+
+    private static boolean isNothing(int strike, int ball) {
+        return strike == 0 && ball == 0;
     }
 
 }
