@@ -1,6 +1,12 @@
 package validation;
 
-import static validation.Constant.*;
+import static model.Constant.DUPLICATED_STRING;
+import static model.Constant.HAS_CHAR_INPUT;
+import static model.Constant.NUMBER_SIZE;
+import static model.Constant.QUIT;
+import static model.Constant.RESTART;
+import static model.Constant.WRONG_INPUT_SIZE;
+import static model.Constant.WRONG_RESTART_INPUT;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,10 +1,10 @@
 package controller;
 
-import static validation.Constant.END_GAME_MESSAGE;
-import static validation.Constant.NUMBER_SIZE;
-import static validation.Constant.RESTART;
-import static validation.Constant.RESTART_MESSAGE;
-import static validation.Constant.STRIKE_SUCCESS;
+import static model.Constant.END_GAME_MESSAGE;
+import static model.Constant.NUMBER_SIZE;
+import static model.Constant.RESTART;
+import static model.Constant.RESTART_MESSAGE;
+import static model.Constant.STRIKE_SUCCESS;
 
 import java.util.List;
 import model.Answer;
@@ -14,6 +14,7 @@ import view.OutputView;
 
 public class Game {
     private final Answer answer;
+    private List<Integer> answerNumber;
 
     public Game() {
         answer = new Answer();
@@ -58,7 +59,7 @@ public class Game {
     }
 
     private int getStrike(int[] inputNumber) {
-        List<Integer> answerNumber = answer.getAnswerNumber();
+        answerNumber = answer.getAnswerNumber();
         int strike = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (samePosition(inputNumber[i], answerNumber.get(i))) {
@@ -87,8 +88,8 @@ public class Game {
     }
 
     private boolean isInAnswer(int ithInput, int ithAnswer) {
-        List<Integer> answerInput = answer.getAnswerNumber();
-        if (ithInput != ithAnswer && answerInput.contains(ithInput)) {
+        answerNumber = answer.getAnswerNumber();
+        if (ithInput != ithAnswer && answerNumber.contains(ithInput)) {
             return true;
         }
         return false;

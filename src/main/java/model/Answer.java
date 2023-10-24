@@ -1,8 +1,8 @@
 package model;
 
-import static validation.Constant.MAX_RANDOM_NUMBER;
-import static validation.Constant.MIN_RANDOM_NUMBER;
-import static validation.Constant.NUMBER_SIZE;
+import static model.Constant.MAX_RANDOM_NUMBER;
+import static model.Constant.MIN_RANDOM_NUMBER;
+import static model.Constant.NUMBER_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

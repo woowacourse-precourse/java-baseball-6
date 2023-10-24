@@ -1,9 +1,9 @@
 package view;
 
-import static validation.Constant.BALL;
-import static validation.Constant.NOTHING;
-import static validation.Constant.START_MESSAGE;
-import static validation.Constant.STRIKE;
+import static model.Constant.BALL;
+import static model.Constant.NOTHING;
+import static model.Constant.START_MESSAGE;
+import static model.Constant.STRIKE;
 
 import java.util.List;
 

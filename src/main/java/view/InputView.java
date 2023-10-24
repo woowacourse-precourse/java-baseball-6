@@ -1,6 +1,6 @@
 package view;
 
-import static validation.Constant.INPUT_MESSAGE;
+import static model.Constant.INPUT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import validation.Validation;

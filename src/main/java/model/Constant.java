@@ -1,4 +1,4 @@
-package validation;
+package model;
 
 public class Constant {
     public static int MIN_RANDOM_NUMBER = 1;

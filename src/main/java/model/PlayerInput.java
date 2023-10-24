@@ -7,7 +7,6 @@ public class PlayerInput {
 
     public PlayerInput(String playerInput) {
         checkPlayerInput(playerInput);
-
         this.playerInput = playerInput;
     }
 
