@@ -50,16 +50,16 @@ public class Application {
         Baseball baseball = new Baseball(computer.getRandomNumbers(), user.getNumbers());
         boolean result = baseball.play(); // 경기를 진행한다.
 
-        return result ? true : false;
+        return result; // 정답 여부 반환
     }
 
     private static boolean reGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Number number = new Number(Console.readLine());
-        if (number.getNumber() < 0 || number.getNumber() > 2) {
-            throw new IllegalArgumentException();
+        Number number = new Number(Console.readLine()); // 사용자의 선택 입력받기
+        if (number.getNumber() < 0 || number.getNumber() > 2) { // 메뉴 범위에 맞는 숫자인지 확인
+            throw new IllegalArgumentException(); // 잘못된 범위로 숫자를 입력한 경우 예외 발생
         }
 
-        return number.getNumber() == 1;
+        return number.getNumber() == 1; // 만약 재시작을 하려 한다면 true 반환
     }
 }

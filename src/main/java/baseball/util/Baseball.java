@@ -55,8 +55,8 @@ public class Baseball {
     /**
      * 게임 결과를 출력한다.
      *
-     * @param ball
-     * @param strike
+     * @param ball 카운트 된 ball의 수
+     * @param strike 카운트 된 strike의 수
      */
     private static void commentPrint(int ball, int strike) {
         if (ball == 0 && strike == 0) { // 하나도 맞추지 못한 경우
