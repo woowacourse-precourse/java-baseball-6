@@ -1,5 +1,6 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -39,5 +40,17 @@ class ValidatorTest {
 
         assertThrows(IllegalArgumentException.class, ()
                 -> validator.validateInputNumbersDuplicated(numbers));
+    }
+
+    @Test
+    @DisplayName("1또는 2만 입력 가능하다.")
+    void validateInputNumberIs1Or2() {
+        String exceptionNumber = "3";
+        String nonExceptionNumber = "1";
+
+        assertThrows(IllegalArgumentException.class, ()
+                -> validator.validateInputNumberOfRestartAndEnd(exceptionNumber));
+
+        assertDoesNotThrow(() -> validator.validateInputNumberOfRestartAndEnd(nonExceptionNumber));
     }
 }
