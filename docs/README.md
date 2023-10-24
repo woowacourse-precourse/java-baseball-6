@@ -175,6 +175,7 @@ while (computer.size() < 3) {
    │        └─ game
    │           └─ Game.java
    │        └─ utils
+   │           ├─ Common.java
    │           ├─ Constant.java
    │           └─ HandleError.java
    └─ test
