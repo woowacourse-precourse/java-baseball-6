@@ -8,8 +8,6 @@ import baseball.utill.Converter;
 import baseball.utill.ExceptionMessage;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGameController {

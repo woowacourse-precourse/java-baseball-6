@@ -33,10 +33,9 @@ public class Validator {
     }
 
     private void checkDuplicate(List<String> input) {
-        List<String> list = input
-            .stream()
-            .distinct()
-            .toList();
+        List<String> list = input.stream()
+                            .distinct()
+                            .toList();
         if (list.size() != INPUT_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_LIST.getMessage());
         }
@@ -49,7 +48,7 @@ public class Validator {
     }
 
     private void checkEndSignRange(int sign) {
-        if (sign > 2) {
+        if (sign > 2 || sign < 1) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_COMMAND.getMessage());
         }
     }

@@ -12,7 +12,7 @@ class ResultTest extends NsTest {
     void 사용자와_컴퓨터_리스트_비교_3스트라이크(){
 
         Computer computer = new Computer();
-         computer.generateComputerNumber();
+        computer.generateComputerNumber();
         Result result = new Result(computer,new User(computer.getComputerList()));
         assert (result.resultToString().equals("3스트라이크"));
     }
