@@ -93,4 +93,4 @@
 - [x]  요구 사항에 명시된 출력 값이 나왔는지 확인
 - [x]  **`IS_TEST` 변수 false로 수정하고 제출**
 - [x]  커밋 메시지는 `소문자: 영어 내용` 으로 작성
-- [ ]  [미션 제출 방법](https://github.com/muyaaho/java-baseball-6#-%EB%AF%B8%EC%85%98-%EC%A0%9C%EC%B6%9C-%EB%B0%A9%EB%B2%95) 확인해서 제출, pull & request, 사이트 제출
+- [x]  [미션 제출 방법](https://github.com/muyaaho/java-baseball-6#-%EB%AF%B8%EC%85%98-%EC%A0%9C%EC%B6%9C-%EB%B0%A9%EB%B2%95) 확인해서 제출, pull & request, 사이트 제출
