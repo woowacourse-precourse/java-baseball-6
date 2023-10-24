@@ -2,13 +2,12 @@ package baseball.object;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
+import camp.nextstep.edu.missionutils.Console;
 public class Human {
-    public static List<Integer> DigitSetting(Scanner scanner) {
+    public static List<Integer> DigitSetting() {
         String number;
         List<Integer> human = new ArrayList<>();
-        number = scanner.nextLine();
+        number = Console.readLine();
         Validation(number);
         int tenDig = 100,IntNumber;
         IntNumber = Integer.parseInt(number);

@@ -1,10 +1,10 @@
 package baseball.activity;
 
 import baseball.object.Referee;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class RefereeActivity {
     public static void StrikeAndBallCount(Referee referee, List<Integer> computer, List<Integer> human) {
@@ -31,12 +31,12 @@ public class RefereeActivity {
             }
         }
     }
-    public static Integer ReStartAndExit(Referee referee, Scanner scanner){
+    public static Integer ReStartAndExit(Referee referee){
         if(referee.getStrike()== referee.getCount()){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String gameStartEndInput;
-            gameStartEndInput = scanner.nextLine();
+            gameStartEndInput = Console.readLine();
             if(gameStartEndInput.contentEquals("1")){
                 return 1;
             }else if(gameStartEndInput.contentEquals("2")){
