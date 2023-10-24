@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,23 +40,28 @@ public class BaseballGame {
 
 
     private void play(List<Integer> correctAnswer) {
-        System.out.print(PRINT_USER_INPUT);
-        List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
-                .map(input -> convertStringToInteger(input))
-                .toList();
-        validAnswerDigit(userAnswer);
-        validAnswerDistinct(userAnswer);
+        while (true) {
+            System.out.print(PRINT_USER_INPUT);
+            List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
+                    .map(input -> convertStringToInteger(input))
+                    .toList();
+            validAnswerDigit(userAnswer);
+            validAnswerDistinct(userAnswer);
 
-        for (int i = 0; i < userAnswer.size(); i++) {
-            int matchIndex = correctAnswer.indexOf(userAnswer.get(i));
-            if (matchIndex == i) {
-                hintScore.raiseStrike();
+            for (int i = 0; i < userAnswer.size(); i++) {
+                int matchIndex = correctAnswer.indexOf(userAnswer.get(i));
+                if (matchIndex == i) {
+                    hintScore.raiseStrike();
+                }
+                if (matchIndex != NOTHING_MATCH_INDEX) {
+                    hintScore.raiseBall();
+                }
             }
-            if (matchIndex != NOTHING_MATCH_INDEX) {
-                hintScore.raiseBall();
+            System.out.println(hintScore.toString());
+            if (hintScore.isGameOver()) {
+                break;
             }
         }
-        System.out.println(hintScore.toString());
     }
 
     private void validAnswerDistinct(List<Integer> userAnswer) {
