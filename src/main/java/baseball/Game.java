@@ -1,50 +1,39 @@
 package baseball;
 
 public class Game {
-
     private final int NUM_COUNT=3;
     private int[] computerAnswer;
     private int strike=0;
     private int ball=0;
+    Number number;
 
     public Game(){
+        number=new Number();
     }
 
     public void reset(){
-        setStrike(0);
-        setBall(0);
+        this.strike=0;
+        this.ball=0;
     }
 
-    public void setComputerAnswer(){
-        Number number=new Number();
+    public int[] setComputerAnswer(){
         computerAnswer=number.makeComputerAnswer();
-    }
-
-    public int[] getComputerAnswer(){
         return computerAnswer;
     }
 
-    void setStrike(int strike){
-        this.strike=strike;
-    }
-
-    void setBall(int ball){
-        this.ball=ball;
-    }
-
-    void increaseStrike(){
+    public void increaseStrike(){
         this.strike++;
     }
 
-    void increaseBall(){
+    public void increaseBall(){
         this.ball++;
     }
 
-    int getStrike(){
+    public int getStrike(){
         return this.strike;
     }
 
-    int getBall(){
+    public int getBall(){
         return this.ball;
     }
 }

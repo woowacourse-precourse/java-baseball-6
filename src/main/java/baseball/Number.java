@@ -3,19 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.NavigableMap;
-
 public class Number {
-
     private static final int NUM_COUNT=3;
     private final int NUM_START=1;
     private final int NUM_END=9;
-    int[] randomNumber;
+    private int[] randomNumber;
 
     public Number(){
     }
 
-    static int[] stringToIntArray(String string){
+    public int[] stringToIntArray(String string){
         int[] array=new int[3];
         for(int i=0;i<3;i++){
             array[i]=string.charAt(i)-'0';
@@ -23,11 +20,11 @@ public class Number {
         return array;
     }
 
-    public static boolean checkLength(String input){
+    private boolean checkLength(String input){
         return input.length() == NUM_COUNT;
     }
 
-    public static boolean checkDigit(String input){
+    private boolean checkDigit(String input){
         for(int i=0;i<NUM_COUNT;i++) {
             if(!Character.isDigit(input.charAt(i)) || input.charAt(i)=='0'){
                 return false;
@@ -36,7 +33,7 @@ public class Number {
         return true;
     }
 
-    public static boolean checkUnique(String input){
+    private boolean checkUnique(String input){
         if(input.charAt(0)==input.charAt(1)){
             return false;
         }
@@ -49,7 +46,7 @@ public class Number {
         return true;
     }
 
-    public static void isValid(String input){
+    public void isValid(String input){
         if(!checkLength(input)){
             throw new IllegalArgumentException();
         }
@@ -59,12 +56,6 @@ public class Number {
         if(!checkUnique(input)){
             throw new IllegalArgumentException();
         }
-    }
-
-    public static int[] getUserInput(){
-        String string=Console.readLine();
-        isValid(string);
-        return stringToIntArray(string);
     }
 
     public int[] makeComputerAnswer(){
@@ -81,12 +72,18 @@ public class Number {
         return randomNumber;
     }
 
-    boolean isUnique(int[] randomNumber, int number){
+    private boolean isUnique(int[] randomNumber, int number){
         for(int i=0;i<NUM_COUNT;i++){
             if(randomNumber[i]==number){
                 return false;
             }
         }
         return true;
+    }
+
+    public void isValidExitCode(String input){
+        if(!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException();
+        }
     }
 }
