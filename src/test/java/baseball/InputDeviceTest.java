@@ -1,7 +1,7 @@
 package baseball;
 
-import static baseball.InputValidator.EXIT_NUMBER;
-import static baseball.InputValidator.RESTART_NUMBER;
+import static baseball.InputValidator.EXIT;
+import static baseball.InputValidator.RESTART;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -12,6 +12,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputDeviceTest {
+
+    public static final int RESTART_NUMBER = 1;
+    public static final int EXIT_NUMBER = 2;
 
     @ParameterizedTest
     @DisplayName("서로 다른 세자리수를 입력한다")
@@ -43,25 +46,25 @@ public class InputDeviceTest {
     @DisplayName("재시작을 위해 1을 입력한다")
     void inputOneForRestart() {
         // given
-        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(RESTART_NUMBER), new InputValidator());
+        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(RESTART), new InputValidator());
 
         // when
         int result = inputDevice.restartOrExit();
 
         // then
-        assertThat(result).isEqualTo(1);
+        assertThat(result).isEqualTo(RESTART_NUMBER);
     }
 
     @Test
     @DisplayName("종료를 위해 2를 입력한다.")
     void inputTwoForExit() {
         // given
-        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(EXIT_NUMBER), new InputValidator());
+        InputDevice inputDevice = new InputDevice(new DoubleConsoleService(EXIT), new InputValidator());
 
         // when
         int result = inputDevice.restartOrExit();
 
         // then
-        assertThat(result).isEqualTo(2);
+        assertThat(result).isEqualTo(EXIT_NUMBER);
     }
 }

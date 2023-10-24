@@ -11,8 +11,8 @@ public class InputValidator {
     public static final String NOT_THREE_DIGIT_ERROR_MESSAGE = "자릿 수가 3자리 초과거나, 미만입니다.";
     public static final int ZERO = 0;
     public static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "중복되는 숫자가 존재합니다.";
-    public static final String RESTART_NUMBER = "1";
-    public static final String EXIT_NUMBER = "2";
+    public static final String RESTART = "1";
+    public static final String EXIT = "2";
     public static final int CORRECT_SIZE = 3;
 
     public void valid(String value) {
@@ -23,7 +23,7 @@ public class InputValidator {
     }
 
     public void validRestartOrExit(String value) {
-        if (!value.equals(RESTART_NUMBER) && !value.equals(EXIT_NUMBER)) {
+        if (!value.equals(RESTART) && !value.equals(EXIT)) {
             throw new IllegalArgumentException(RESTART_OR_EXIT_ERROR_MESSAGE);
         }
     }
