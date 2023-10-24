@@ -120,6 +120,9 @@ public class Application {
         if(checkDuplicateNumber(numbers, 0, 0)) {
             throw new IllegalArgumentException();
         }
+        if(checkOutOfRangeNumber(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void validInputNumber(String InputNumber) {
