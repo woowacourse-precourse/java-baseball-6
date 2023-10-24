@@ -17,13 +17,13 @@ public class UserNum {
       throw new IllegalArgumentException("1에서 9까지 서로 다른 3자리 숫자를 입력하세요.");
     }
 
-    List<Integer> player_num = new ArrayList<>();
+    List<Integer> userNum = new ArrayList<>();
 
     for(String number : input.split("")) {
-      player_num.add(Integer.parseInt(number));
+      userNum.add(Integer.parseInt(number));
     }
 
-    return player_num;
+    return userNum;
   }
 
   private boolean ValidationInput(String input) {
