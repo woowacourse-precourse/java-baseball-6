@@ -7,51 +7,46 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        try{
-            int[] userNum = new int[3];
-            int[] answerNum = new int[3];
-            int[] result;
+        int[] userNum = new int[3];
+        int[] answerNum = new int[3];
+        int[] result;
 
-            generateAnswer(answerNum);
+        generateAnswer(answerNum);
 
-            System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-            while (true){
-                System.out.print("숫자를 입력해주세요 : ");
-                String input = Console.readLine();
+        while (true){
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
 
-                validateInput(input, userNum);
+            validateInput(input, userNum);
 
-                result = compareNum(userNum, answerNum);
-                int strikes = result[0];
-                int balls = result[1];
+            result = compareNum(userNum, answerNum);
+            int strikes = result[0];
+            int balls = result[1];
 
-                if (strikes == 3) {
-                    System.out.println("3스트라이크! 게임 종료");
-                    if (!askForRestart()) {
-                        break;
-                    }else{
-                        generateAnswer(answerNum);
-                        continue;
-                    }
-                }
-
-                if (strikes == 0 && balls == 0) {
-                    System.out.println("낫싱");
-                } else {
-                    if (balls > 0) {
-                        System.out.printf("%d볼 ", balls);
-                    }
-                    if (strikes > 0) {
-                        System.out.printf("%d스트라이크", strikes);
-                    }
+            if (strikes == 3) {
+                System.out.println("3스트라이크! 게임 종료");
+                if (!askForRestart()) {
+                    break;
+                }else{
+                    generateAnswer(answerNum);
+                    continue;
                 }
             }
-        }catch(IllegalArgumentException e){
-            // 그냥 프로그램 종료
-        }finally{
-            Console.close();
+
+            if (strikes == 0 && balls == 0) {
+                System.out.println("낫싱");
+            } else {
+                if (balls > 0) {
+                    System.out.printf("%d볼 ", balls);
+                }
+                if (strikes > 0) {
+                    System.out.printf("%d스트라이크", strikes);
+                }
+            }
         }
+        Console.close();
 
     }
 
