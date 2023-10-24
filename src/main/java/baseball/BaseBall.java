@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.List;
 import java.util.ArrayList;
-
 import baseball.computer.Score;
 import camp.nextstep.edu.missionutils.*;
 import baseball.computer.Util;
