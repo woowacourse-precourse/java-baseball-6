@@ -3,13 +3,19 @@ package baseball.controller;
 import baseball.service.GameService;
 
 public class GameController {
-    //TODO
-    // - run() 게임을 실행시키는 메소드
-    // - retry() ?
-
     GameService gameService = new GameService();
 
     public void run(){
-        gameService.startGame();
+        boolean retry = true;
+
+        while(retry){
+            gameService.setGame();
+            gameService.startGame();
+            gameService.stopGame();
+
+            if(!gameService.retryGame()){
+                retry = false;
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.domain.enums.Constants.*;
+
 public class GameService {
     //TODO
     // - stopGame() 게임을 종료시키는 메소드
@@ -15,54 +17,47 @@ public class GameService {
     // - checkScore()
     //
 
-    private final int NUM_SIZE = 3;
-    private final int NUM_START = 1;
-    private final int NUM_END = 9;
-
-    private final int RETRY = 1;
-    private final int END = 2;
     private Game game;
     private User user = new User();
     private List<Integer> computer = new ArrayList<>();
     private Message message = new Message();
 
+    static record BaseballScore(int strikeCount, int ballCount){}
+
     public void setGame(){
-        game = new Game(NUM_SIZE,NUM_START,NUM_END);
+        game = new Game(NUM_SIZE.getValue(), NUM_START.getValue(), NUM_END.getValue());
         computer = game.getComputer();
     }
 
     public void startGame(){
         message.printStartMessage();
-        setGame();
-
         //숫자, 자리 둘다 맞으면 strike, 숫자만 맞으면 ball
         int strikeCount = 0;
 
-        while(strikeCount != NUM_SIZE){
+        while(strikeCount != NUM_SIZE.getValue()){
             BaseballScore score = checkCount(getUserNum());
             message.printScore(score.strikeCount, score.ballCount);
             strikeCount = score.strikeCount;
         }
-        stopGame();
     }
 
     public void stopGame(){
-        message.printEndMessage(NUM_SIZE);
-        retryGame();
+        message.printEndMessage(NUM_SIZE.getValue());
     }
 
-    public void retryGame(){
+    public boolean retryGame(){
         int answer = Integer.parseInt(Console.readLine());
         message.printRetryMessage(answer);
-        if(answer == RETRY){
-            startGame();
+        if(answer == RETRY.getValue()){
+            return true;
         }
+        return false;
     }
 
     public int[] getUserNum(){
         String userNum = Console.readLine();
         message.printAskMessage(userNum);
-        return user.parseUserNum(userNum, NUM_SIZE);
+        return user.parseUserNum(userNum, NUM_SIZE.getValue());
     }
 
     public BaseballScore checkCount(int[] user){
@@ -72,15 +67,7 @@ public class GameService {
             if(computer.indexOf(user[i]) == i) strikeCount++;
             else ballCount++;
         }
-        return new BaseballScore(ballCount, strikeCount);
+        return new BaseballScore(strikeCount, ballCount);
     }
 
-    private class BaseballScore{
-        int ballCount;
-        int strikeCount;
-        public BaseballScore(int ballCount, int strikeCount){
-            this.ballCount = ballCount;
-            this.strikeCount = strikeCount;
-        }
-    }
 }
