@@ -1,16 +1,9 @@
 package baseball;
 
-import java.util.Objects;
+public record Ball(Number number, Position position) {
 
-public class Ball {
-
-    private final Number number;
-
-    private final int position;
-
-    public Ball(final int number, final int position) {
-        this.number = Number.of(number);
-        this.position = position;
+    public static Ball of(final int number, final int position) {
+        return new Ball(Number.of(number), Position.of(position));
     }
 
     public CompareResult compare(final Ball other) {
@@ -23,28 +16,7 @@ public class Ball {
         return CompareResult.NOTHING;
     }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final Ball other = (Ball) o;
-        return matchNumber(other) && matchPosition(other);
-    }
-
     private boolean matchNumber(final Ball other) {
-        return this.number.equals(other.number);
-    }
-
-    private boolean matchPosition(final Ball other) {
-        return this.position == other.position;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, position);
+        return number.equals(other.number);
     }
 }

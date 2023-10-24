@@ -38,7 +38,7 @@ public class Balls {
 
     private List<Ball> mapBallNumbers(final List<Integer> numbers) {
         return IntStream.range(0, BALL_NUMBERS_SIZE)
-                .mapToObj(i -> new Ball(numbers.get(i), i))
+                .mapToObj(i -> Ball.of(numbers.get(i), i))
                 .toList();
     }
 
