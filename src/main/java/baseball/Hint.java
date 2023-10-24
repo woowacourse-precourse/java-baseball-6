@@ -16,10 +16,6 @@ public class Hint {
         return new Hint(computerNumbers, playerNumbers.getNumbers());
     }
 
-    public boolean isThreeStrike() {
-        return strike == Constants.GAME_WIN;
-    }
-
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         for (int i = 0; i < Constants.NUMBERS_SIZE; i++) {
             if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
@@ -31,6 +27,10 @@ public class Hint {
                 ball++;
             }
         }
+    }
+
+    public boolean isThreeStrike() {
+        return strike == Constants.GAME_WIN;
     }
 
     private boolean isBallAndStrike(int ball, int strike) {
