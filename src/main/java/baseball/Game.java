@@ -36,6 +36,5 @@ public class Game {
             pitch = pitcher.pitch(input);
             judge = referee.judge(pitch);
         } while (judge[1] != 3);
-        Console.close();
     }
 }
