@@ -83,7 +83,7 @@ public class Application {
         int balls = result.get(1);
         String message = "";
         if (balls > 0 && strikes > 0) {
-            message = balls + "볼" + strikes + "스트라이크 ";
+            message = balls + "볼" + " " + strikes + "스트라이크 ";
         } else if (strikes > 0) {
             message = strikes + "스트라이크";
         } else if (balls > 0) {
