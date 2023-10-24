@@ -4,6 +4,8 @@ import baseball.model.GameNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.List;
+
 public class GameProgressController {
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
@@ -36,7 +38,9 @@ public class GameProgressController {
         boolean isAnswer = false;
         while (!isAnswer) {
             String userInputString = inputView.getUserGuessingNumbers();
-            saveUserInputNumbers(userInputString);
+            String validUserInputString = userInputValidator.userInputStringValidate(userInputString);
+            List<Integer> validUserInputNumbers = userInputValidator.userInputNumbersValidate(validUserInputString);
+            gameNumber.saveUserInputNumbers(validUserInputString, validUserInputNumbers);
             isAnswer = computerController.checkUserInputWithAnswer(gameNumber.getUserInputNumbers(), gameNumber.getComputerGenerateNumbers());
             outputView.printHint(computerController.createHintMessage());
         }
@@ -49,8 +53,4 @@ public class GameProgressController {
         computerController.startGame(gameNumber);
     }
 
-    private void saveUserInputNumbers(String userInputString) {
-        gameNumber.setUserInputString(userInputValidator.userInputStringValidate(userInputString));
-        gameNumber.setUserInputNumbers(userInputValidator.userInputNumbersValidate(gameNumber.getUserInputString()));
-    }
 }

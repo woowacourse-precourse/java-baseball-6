@@ -7,16 +7,9 @@ public class GameNumber {
     private List<Integer> userInputNumbers;
     private List<Integer> computerGenerateNumbers;
 
-    public void setUserInputString(String inputString) {
-        this.userInputString = inputString;
-    }
-
-    public String getUserInputString() {
-        return this.userInputString;
-    }
-
-    public void setUserInputNumbers(List<Integer> inputNumbers) {
-        this.userInputNumbers = inputNumbers;
+    public void saveUserInputNumbers(String userInputString, List<Integer> userInputNumbers) {
+        this.userInputString = userInputString;
+        this.userInputNumbers = userInputNumbers;
     }
 
     public List<Integer> getUserInputNumbers() {
