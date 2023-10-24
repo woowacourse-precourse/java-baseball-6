@@ -14,16 +14,16 @@ public class Game {
         ballCount = 0;
     }
 
+    public int[] getGameNumbers() {
+        return gameNumbers;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }
 
     public int getBallCount() {
         return ballCount;
-    }
-
-    public int[] getGameNumbers() {
-        return gameNumbers;
     }
 
     public void addStrikeCount() {
