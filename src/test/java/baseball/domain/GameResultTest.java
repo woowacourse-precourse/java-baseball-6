@@ -3,6 +3,7 @@ package baseball.domain;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.computer.GameState;
+import baseball.domain.game.GameResult;
 import baseball.domain.player.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

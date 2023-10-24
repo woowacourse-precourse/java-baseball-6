@@ -1,8 +1,8 @@
-package baseball.domain;
+package baseball.domain.game;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.player.Player;
-import baseball.exception.GameResultTotalCountException;
+import baseball.exception.game.GameResultTotalCountException;
 
 import java.util.Objects;
 

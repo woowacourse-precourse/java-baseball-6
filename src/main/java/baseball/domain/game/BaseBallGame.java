@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.game;
 
 import baseball.domain.computer.GameState;
 import camp.nextstep.edu.missionutils.Console;
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.domain.GameMessage.*;
+import static baseball.domain.game.GameMessage.*;
 
 public class BaseBallGame {
 

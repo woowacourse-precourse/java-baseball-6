@@ -1,13 +1,13 @@
 package baseball;
 
-import baseball.domain.GameResult;
+import baseball.domain.game.GameResult;
 import baseball.domain.player.Player;
 import baseball.domain.computer.Computer;
 
 
-import static baseball.domain.BaseBallGame.*;
-import static baseball.domain.GameMessage.GAME_START_MESSAGE;
-import static baseball.domain.GameResult.calculateBaseBallGame;
+import static baseball.domain.game.BaseBallGame.*;
+import static baseball.domain.game.GameMessage.GAME_START_MESSAGE;
+import static baseball.domain.game.GameResult.calculateBaseBallGame;
 
 
 public class Application {
