@@ -8,10 +8,10 @@ import java.util.stream.IntStream;
 
 public class BallComparator {
 
-    private static int BEGIN_INDEX = 0;
-    private static int END_INDEX = 2;
+    private final static int BEGIN_INDEX = 0;
+    private final static int END_INDEX = 2;
 
-    private static int MAX_STRIKE = 3;
+    private final static int MAX_STRIKE = 3;
 
     public GameResult compareStatus(Balls userBalls, Balls computerBalls) {
         int strike = countStrike(userBalls.getBalls(), computerBalls.getBalls());

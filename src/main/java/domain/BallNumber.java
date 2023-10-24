@@ -4,7 +4,7 @@ import util.validator.BallNumberValidator;
 
 public class BallNumber {
 
-    int ballNumber;
+    private final int ballNumber;
 
     public BallNumber(int ballNumber) {
         BallNumberValidator numberValidator = BallNumberValidator.getInstance();
