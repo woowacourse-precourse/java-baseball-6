@@ -46,7 +46,7 @@ public class PredictGamePlay implements GamePlay {
         }
 
         if (ret == "") {
-            ret = "넛싱";
+            ret = "낫싱";
         }
 
         return ret;
