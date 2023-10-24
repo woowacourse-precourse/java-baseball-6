@@ -17,4 +17,16 @@ public class RefereeTest {
         int actualStrikeCount = referee.getStrikeCount(computerNumbers, playerNumbers);
         assertEquals(expectedStrikeCount, actualStrikeCount);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "135, 214, 1",
+            "135, 314, 2",
+            "135, 351, 3"
+    })
+    void 볼_개수_판단(String computerNumbers, String playerNumbers, int expectedBallCount) {
+        Referee referee = new Referee();
+        int actualBallCount = referee.getBallCount(computerNumbers, playerNumbers);
+        assertEquals(expectedBallCount, actualBallCount);
+    }
 }
