@@ -7,10 +7,11 @@ public class BaseballInformation {
     private String answerNumber;
     private int strikeCount;
     private int ballCount;
-    private int numberCount = 3;
+    private int numberCount;
 
 
-    public BaseballInformation() {
+    public BaseballInformation(int numberCount) {
+        this.numberCount = numberCount;
     }
 
     //random 3자리 수 초기화

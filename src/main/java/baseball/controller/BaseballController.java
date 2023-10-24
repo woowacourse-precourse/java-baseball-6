@@ -10,7 +10,7 @@ public class BaseballController {
     private String answerNumber;
     private String inputNumber;
 
-    private BaseballInformation baseballInformation = new BaseballInformation();
+    private BaseballInformation baseballInformation = new BaseballInformation(3);
     private NumberValidator numberValidator = new NumberValidator();
 
     public void playGame() {
