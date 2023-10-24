@@ -21,14 +21,6 @@ public class BallCount {
         this.ball = ball;
     }
 
-    public boolean isOut() {
-        return this.strike == BALL_LENGTH;
-    }
-
-    private boolean isNothing() {
-        return this.strike == 0 && this.ball == 0;
-    }
-    
     public static BallCount calculateFrom(BaseballNumbersSlot playerNumbers, BaseballNumbersSlot answerNumbers) {
         int strikeCount = (int) IntStream.range(0, BALL_LENGTH)
                 .filter(idx -> playerNumbers.get(idx) == answerNumbers.get(idx))
@@ -38,6 +30,14 @@ public class BallCount {
                         answerNumbers.contains(playerNumbers.get(idx)))
                 .count();
         return new BallCount(strikeCount, ballCount);
+    }
+
+    public boolean isOut() {
+        return this.strike == BALL_LENGTH;
+    }
+
+    private boolean isNothing() {
+        return this.strike == 0 && this.ball == 0;
     }
 
     @Override
