@@ -2,39 +2,23 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
 
     private static final int MAX_NUMBER_LENGTH = BaseballValues.MAX_NUMBER_LENGTH.getValue();
-    private static final int MIN_NUMBER = BaseballValues.MIN_NUMBER.getValue();
-    private static final int MAX_NUMBER = BaseballValues.MAX_NUMBER.getValue();
-
-    private final List<Integer> computerNumbers;
-    private final List<Integer> playerNumbers;
-
-    BaseballGame() {
-        computerNumbers = new ArrayList<>();
-        playerNumbers = new ArrayList<>();
-    }
-
-    BaseballGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        this.computerNumbers = computerNumbers;
-        this.playerNumbers = playerNumbers;
-    }
-
-
+    private final Computer computer = new Computer();
+    private final Player player = new Player();
+    
     void start() {
-
-        initComputerNumbers();
 
         int result = 0;
 
+        computer.initNumbers();
+
         while (result != 3) {
 
-            initUserNumbers();
+            player.initNumbers();
 
             int[] gameResult = calculateResult();
 
@@ -44,41 +28,6 @@ public class BaseballGame {
         }
 
         checkAgain();
-    }
-
-    private void initComputerNumbers() {
-
-        computerNumbers.clear();
-
-        while (computerNumbers.size() < MAX_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
-            }
-        }
-    }
-
-    private void initUserNumbers() {
-
-        playerNumbers.clear();
-
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputNumbers = readLine();
-
-        if (inputNumbers.length() != MAX_NUMBER_LENGTH) {
-            throw new IllegalArgumentException("입력한 숫자 길이가 맞지 않습니다.");
-        }
-
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            int number = Character.getNumericValue(inputNumbers.charAt(i));
-
-            if (MIN_NUMBER > number || number > MAX_NUMBER) {
-                throw new IllegalArgumentException("입력한 문자는 숫자가 아닙니다.");
-            }
-
-            playerNumbers.add(number);
-        }
     }
 
     private int[] calculateResult() {
@@ -94,28 +43,46 @@ public class BaseballGame {
     private int calculateBall() {
         int ball = 0;
 
-        for (int userNumber : playerNumbers) {
-            if (computerNumbers.contains(userNumber)) {
-                ball++;
-            }
+        List<Integer> playerNumbers = player.getNumbers();
+        List<Integer> computerNumbers = computer.getNumbers();
+
+        for (int playerNumber : playerNumbers) {
+            ball += checkContainNumber(computerNumbers, playerNumber);
         }
 
         return ball;
     }
 
+    private int checkContainNumber(List<Integer> computerNumbers, int userNumber) {
+        if (computerNumbers.contains(userNumber)) {
+            return 1;
+        }
+
+        return 0;
+    }
+
     private int calculateStrike() {
         int strike = 0;
+
+        List<Integer> playerNumbers = player.getNumbers();
+        List<Integer> computerNumbers = computer.getNumbers();
 
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             int computerNumber = computerNumbers.get(i);
             int userNumber = playerNumbers.get(i);
 
-            if (computerNumber == userNumber) {
-                strike++;
-            }
+            strike += checkEqualsNumber(computerNumber, userNumber);
         }
 
         return strike;
+    }
+
+    private int checkEqualsNumber(int computerNumber, int userNumber) {
+        if (computerNumber == userNumber) {
+            return 1;
+        }
+
+        return 0;
     }
 
     private void printGameResultMessage(int[] gameResult) {
