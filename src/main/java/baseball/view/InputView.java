@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.util.Convertion;
+import baseball.util.Conversion;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class InputView {
         System.out.print("숫자를 입력해주세요 :");
         String input = Console.readLine();
         InputException.validateInput(input);
-        return Convertion.stringToArrayList(input);
+        return Conversion.stringToArrayList(input);
     }
 
     public Integer restartInput() {

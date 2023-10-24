@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.exception.InputException;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -15,11 +16,15 @@ public class IOController {
     }
 
     public ArrayList<Integer> inningNumberInput() {
-        return inputView.numberInput();
+        ArrayList<Integer> numberInput = inputView.numberInput();
+        InputException.validateInput(numberInput);
+        return numberInput;
     }
 
     public int restartNumberInput() {
-        return inputView.restartInput();
+        int restartNumber = inputView.restartInput();
+        InputException.validateRestartInput(restartNumber);
+        return restartNumber;
     }
 
     public void gameStartNotify() {
