@@ -22,7 +22,7 @@ public class Computer {
         continue;
       comNumbers.add(pickedNum);
     }
-    System.out.println(comNumbers);
+//    System.out.println(comNumbers);
   }
  
    

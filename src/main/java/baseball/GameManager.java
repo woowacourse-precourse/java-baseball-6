@@ -19,6 +19,9 @@ public class GameManager {
       isGameRestart = true;
     else
       isGameRestart = false;
+
+    resultArr.set(0,0);
+    resultArr.set(1,0);
   }
 
  
