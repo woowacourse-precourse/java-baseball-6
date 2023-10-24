@@ -12,14 +12,14 @@ public class Game {
 
     public void startGame() {
         GameController.gameStatus = Status.GAME;
-        SystemMessage.NEW.printMessage(GameController.gameStatus);
+        SystemMessage.NEW.printMessage(Status.SET);
         generateNumber();
         startGameSet();
     }
 
     private void startGameSet() {
         GameSet gameSet = new GameSet(computerNumber);
-        while (GameController.gameStatus != Status.EXIT) {
+        while (GameController.gameStatus == Status.SET) {
             gameSet.startSet();
         }
     }
@@ -28,7 +28,6 @@ public class Game {
     private void generateNumber() {
         NumberGenerator generator = new NumberGenerator();
         computerNumber = generator.generate();
-        System.out.println("Game.generateNumber : " + computerNumber);
     }
 
 }
