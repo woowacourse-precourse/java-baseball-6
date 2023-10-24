@@ -41,7 +41,7 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private List makeRivalNumber() {
+    private List<Integer> makeRivalNumber() {
         List<Integer> rivalNumber = new ArrayList<>();
 
         while (rivalNumber.size() < 3) {
@@ -53,21 +53,20 @@ public class Game {
         return rivalNumber;
     }
 
-    private List inputUserGuess() {
+    private List<Integer> inputUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
+        if (input.length() > 3) {
+            throw new IllegalArgumentException();
+        }
         return toArrayList(input);
     }
 
-    private List toArrayList(String input) {
+    private List<Integer> toArrayList(String input) {
         List<Integer> userGuessNumber = new ArrayList<>();
 
         for (String number : input.split("")) {
             userGuessNumber.add(Integer.parseInt(number));
-        }
-
-        if (userGuessNumber.size() > 3) {
-            throw new IllegalArgumentException();
         }
         return userGuessNumber;
     }
