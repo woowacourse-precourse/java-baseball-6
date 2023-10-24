@@ -8,35 +8,56 @@ public class Application {
     public static void main(String[] args) {
         startNewGame();
     }
-
     private static void startNewGame() {
-        System.out.println("숫자 야구 게임을 시작합니다."); //이거 외부라이브러리면.. 스트링으로 저장한 후 리턴해야겠다
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean isGameOver = false;
         while (true) {
             Game game = new Game();
-            boolean isGameOver = false;
-
             while (!isGameOver) {
-                System.out.print("숫자를 입력해주세요: ");
-                String inputString = readLine();
-                inputNumber = Integer.parseInt(inputString);
+                try{
+                    System.out.print("숫자를 입력해주세요: ");
+                    String inputString = readLine();
+                    inputNumber = 0;
+                    inputNumber = parseAndValidateInput(inputString);
+                    //입력이 잘못됐다면 inputNumber==0이 된다.
+                    if (inputNumber==0){
+                        isGameOver=true;
+                    }
+                    String result = game.evaluation(inputNumber);
+                    System.out.println(result);
 
-                String result = game.evaluation(inputNumber);
-                System.out.println(result);
-
-                if (result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
+                    if (result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
+                        isGameOver = true;
+                    }
+                }catch(IllegalArgumentException e){
+                    System.out.println("잘못 입력하셨습니다.");
                     isGameOver = true;
                 }
             }
-
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String inputString = readLine();
             inputNumber = Integer.parseInt(inputString);
+            if (inputNumber==1){
+                isGameOver=false;
+            }
             if (inputNumber == 2) {
                 break;
             }
         }
+    }
 
+    // 사용자 입력을 파싱하고 유효성을 검사하는 함수
+    private static int parseAndValidateInput(String inputString) {
+        try {
+            int inputNumber = Integer.parseInt(inputString);
+            if (inputString.length() != 3 || !RandomNumberGenerator.isDistinct(
+                    inputNumber / 100, (inputNumber / 10) % 10, inputNumber % 10)) {
+                throw new IllegalArgumentException("세 자리 숫자 중 중복 또는 잘못된 값이 있습니다.");
+            }
+            return inputNumber;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 숫자 형식이 아닙니다.");
+        }
     }
 }
 
