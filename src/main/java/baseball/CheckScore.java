@@ -28,9 +28,5 @@ class CheckScore {
         }
         return ball;
     }
-
-    public boolean isGameWon(int strike) {
-        return strike == numberOfDigits;
-    }
 }
 
