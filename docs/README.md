@@ -133,46 +133,56 @@ Process finished with exit code 1
 
 ### ✔ 게임 진행
 
-#### 1. 숫자 요청 문구 출력 및 입력 기능 (_getNumber()_)
+#### 1. 게임 시작 문구 출력 (_printGameStart()_)
 
-- 숫자 요청 문구 출력
-- 문자열을 입력받고 공백들을 제거하여 리턴
+#### 2. 숫자 요청 문구 출력 및 문자 입력 기능
 
-#### 2. 입력 받은 값을 숫자 타입으로 저장하는 기능 (_playerGenerateNum()_)
+- 숫자 요청 문구 출력 (_printInputNumber()_)
+- 문자열을 입력받고 공백들을 제거하여 리턴 (_playerInputGuessingNumber()_)
+
+#### 3. 입력 받은 값을 숫자 타입으로 저장하는 기능 (_playerGenerateNum()_)
 
 - Integer List 'player' 변수 선언
 - String 'strNumber'의 element를 하나씩 integer로 바꿔 int 'intNumber'변수에 저장
 - 'player'에 'intNumber' 추가
 
-#### 3. 컴퓨터와 사용자의 숫자 비교 기능 (_compareDigits()_)
+#### 4. 컴퓨터와 사용자의 숫자 비교 기능 (_compareDigits()_)
 
 - 스트라이크 개수 찾기
     - 'computer'와 'player'의 인덱스와 값이 모두 같으면 'strike'값 증가
 - 볼 개수 찾기
     - 'computer'와 'player'의 인덱스는 다르지만 값이 같으면 'ball'값 증가 <br> 중복 체크 피하기 위해 'player'의 인덱스는 고정시키고 'computer'인덱스만 증가시켜 이와 비교
 
-#### 4. 비교한 결과 출력 기능 (_printResult()_)
+#### 5. 비교한 결과 판단 기능 (_resultJudgment()_)
 
 - 3스트라이크 판단
     - 'strike'가 3
+    - 'printThreeStrike()'로 결과 출력
     - 'true'를 리턴하여 'guess'에 할당
 
 - 낫싱 판단
     - 'strike'와 'ball' 모두 0
+    - 'printNothing()'로 결과 출력
 - 볼만 있는 경우
     - 'strike'는 0, 'ball'은 0이 아님
+    - 'printOnlyBall()'로 결과 출력
 - 스트레이크만 있는 경우
     - 'strike'는 0이 아님, 'ball'은 0
+    - 'printOnlyStrike()'로 결과 출력
 - 볼과 스트라이크 둘다 있는 경우
     - 'strike'과 'ball'은 0이 아님
+    - 'printBallAndStrike()'로 결과 출력
 
 - 'false'를 리턴하여 'guess'에 할당
 
-#### 5. 재게임 여부 입력 기능 (_ifRestart()_)
+#### 6. 재게임 여부 입력 관련 기능
 
-- 재게임 여부 의미하는 숫자 요청 문구 출력
-- 'restart'에 문자열을 입력받고 공백들을 제거한 값 할당
-- restartException()에 'restart'을 넘겨주고 값을 판단 <br> 이 값을 리턴해 재시작 여부를 나타내는 'ifGameContinue'에 할당
+- 재게임 안내 문구 출력 (_printRestart()_)
+- 문자열을 입력받고 공백들을 제거한 값 리턴 (_playerInputRestartNumber()_)
+- 재게임 여부를 나타내는 입력값 판단 (_ifRestart()_)
+    - "1"이라는 값을 받으면 'true'를 리턴해 'ifGameContinue'에 할당
+    - "2"라는 값을 받으면 'false'를 리턴해 'ifGameContinue'에 할당
+    - 이 외의 값을 받으면 'restartException()'을 호출
 
 <br>
 
@@ -197,6 +207,4 @@ Process finished with exit code 1
 
 #### 2. 재게임 여부를 의미하는 숫자에 대한 예외 처리 기능 (_restartException()_)
 
-- "1"이라는 값을 받으면 'true'를 리턴해 'restart'에 할당
-- "2"라는 값을 받으면 'false'를 리턴해 'restart'에 할당
-- 이 외에 값을 받으면 IllegalArgumentException을 발생시키고 게임 종료
+- 잘못된 값을 입력했으니 IllegalArgumentException을 발생시키고 게임 종료
