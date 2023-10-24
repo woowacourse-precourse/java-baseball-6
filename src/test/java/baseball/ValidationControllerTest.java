@@ -1,5 +1,5 @@
 package baseball;
-
+  
 import camp.nextstep.edu.missionutils.test.NsTest;
 import controller.GameController;
 import controller.ValidationController;
