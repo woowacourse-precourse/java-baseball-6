@@ -1,7 +1,21 @@
 package baseball;
-
+import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println(Messages.START_GAME);
+
+        int mode = 1;
+
+        while(mode == 1) {
+            Baseball baseball = new Baseball();
+            baseball.play();
+            mode = inputMode();
+        }
+        System.out.println(Messages.EXIT_GAME);
+    }
+
+    private static int inputMode(){
+        System.out.println(Messages.SELECT_MODE);
+        return Integer.parseInt(Console.readLine());
     }
 }
