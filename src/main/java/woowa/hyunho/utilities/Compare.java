@@ -8,6 +8,14 @@ public class Compare {
 		return countMatchingElements(computer, user);
 	}
 	
+	public static boolean compareInt(int a, int b) {
+		int result = Integer.compare(a, b);
+		if (result==0) {
+			return true;
+		}
+		return false;
+	}
+	
 	private static List<Integer> countMatchingElements(List<Integer> computer, List<Integer> user) {
 		int i =0;
 		List<Integer> result = new ArrayList<>();

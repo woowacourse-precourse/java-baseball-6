@@ -6,6 +6,7 @@ import woowa.hyunho.number.Computer;
 
 public class Process {
 	static final int RESTART = 1;
+	static final int GAMEOVER = 2;
 	Computer computer = new Computer();
 	Game game = new Game();
 	End end = new End();
