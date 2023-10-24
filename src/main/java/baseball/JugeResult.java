@@ -20,9 +20,18 @@ public class JugeResult {
         this.strike++;
     }
 
+    public boolean isOnlyBall() {
+        return ball > 0 && strike == 0;
+    }
+
+    public boolean isOnlyStrike() {
+        return ball == 0 && strike > 0;
+    }
+
     public boolean isNothing() {
         return strike == 0 && ball == 0;
     }
+
 
     public boolean isSuccess() {
         return strike == SUCCESS_STRIKE;
@@ -35,4 +44,5 @@ public class JugeResult {
     public int getStrike() {
         return strike;
     }
+
 }
