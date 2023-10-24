@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerNumbers {
-    private List<Integer> playerNumbers;
+    private final List<Integer> playerNumbers;
 
     public PlayerNumbers(String inputValue) {
         this.playerNumbers = createPlayerNumbers(inputValue);

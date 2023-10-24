@@ -22,7 +22,7 @@ public class BaseballGameController {
         OutputView.printGameStartMessage();
         do {
             playOneBaseballGame();
-        } while(restartOption.wantRestartGame());
+        } while (wantsToRestartGame());
     }
 
     private void playOneBaseballGame() {
@@ -30,7 +30,7 @@ public class BaseballGameController {
         do {
             inputPlayerNumbers();
             strikeBallCountable.countStrikeAndBall(playerNumbers, computerNumbers);
-        } while(!strikeBallCountable.isGameClear());
+        } while (!strikeBallCountable.isGameClear());
     }
 
     private void setComputerNumbers() {
@@ -39,5 +39,9 @@ public class BaseballGameController {
 
     private void inputPlayerNumbers() {
         this.playerNumbers = new PlayerNumbers(InputView.inputPlayerNumbers());
+    }
+
+    private boolean wantsToRestartGame() {
+       return restartOption.chooseRestartOption(InputView.inputRestartOption());
     }
 }
