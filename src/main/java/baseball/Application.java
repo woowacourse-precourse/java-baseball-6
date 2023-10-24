@@ -10,6 +10,7 @@ public class Application {
         RandomNumber randomNumber = new RandomNumber();
         InputNumber inputNumber = new InputNumber();
         CompareNumber compareNumber = new CompareNumber();
+        ReturnCount returnCount = new ReturnCount();
 //        CompareNumber.CountDTO countDTO = new CompareNumber.CountDTO();
 //        CompareNumber.CountDTO countDTO = new CompareNumber.CountDTO();
 //        int[] a = inputNumber.createInputArr();
@@ -23,7 +24,8 @@ public class Application {
             int[] a = inputNumber.createInputArr();
             System.out.println(Arrays.toString(a));
             System.out.println(Arrays.toString(b));
-            System.out.println(compareNumber.getCount(a,b));
+            String count = returnCount.count(a,b);
+            System.out.println(count);
         }
 
 
