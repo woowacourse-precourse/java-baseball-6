@@ -6,9 +6,10 @@ import baseball.input.Input;
 import baseball.util.GameUtil;
 import baseball.validator.InputValidator;
 
-public class BaseballGame {
-    private static final int NUMBER_LENGTH = 3;
+import static baseball.constant.MessageConstant.*;
+import static baseball.constant.SystemConstant.*;
 
+public class BaseballGame {
     private final GameUtil gameUtil;
     private final ComputerNumber computerNumber;
     private final PlayerNumber playerNumber;
@@ -20,7 +21,7 @@ public class BaseballGame {
     }
 
     public void run(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
         do{
             play();
         } while(checkRestartGame());
@@ -35,14 +36,14 @@ public class BaseballGame {
             System.out.println(gameUtil.showHint());
         } while(!gameUtil.checkGameOver());
 
-        System.out.println(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", NUMBER_LENGTH));
+        System.out.printf(GAME_OVER_MESSAGE, NUMBER_LENGTH);
     }
 
     private boolean checkRestartGame(){
-        String inputNumber = Input.inputString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        String inputNumber = Input.inputString(RESTART_INPUT_MESSAGE);
 
         InputValidator.validateCheckRestartGameInput(inputNumber);
 
-        return inputNumber.equals("1");
+        return inputNumber.equals(GAME_RESTART_NUMBER);
     }
 }

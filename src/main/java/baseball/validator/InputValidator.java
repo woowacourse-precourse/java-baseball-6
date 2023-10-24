@@ -5,28 +5,27 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import static baseball.constant.MessageConstant.*;
+import static baseball.constant.SystemConstant.*;
+
 public class InputValidator {
-    private static final int NUMBER_LENGTH = 3;
-    private static final String NUMBER_PATTERN = "^[1-9]*$";
-
-
     public static void validateCheckRestartGameInput(String input) {
-        if (!(input.equals("1") || input.equals("2"))) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+        if (!(input.equals(GAME_RESTART_NUMBER) || input.equals(GAME_END_NUMBER))) {
+            throw new IllegalArgumentException(GAME_RESTART_INPUT_ERROR);
         }
     }
 
     public static void validatePlayerInput(String input) {
         if (!checkLength(input)) {
-            throw new IllegalArgumentException("잘못된 길이의 문자열을 입력했습니다.");
+            throw new IllegalArgumentException(PLAYER_INPUT_LENGTH_ERROR);
         }
 
         if (!checkNumberType(input)) {
-            throw new IllegalArgumentException("유효하지 않는 문자를 입력했습니다.");
+            throw new IllegalArgumentException(PLAYER_INPUT_NUMBER_TYPE_ERROR);
         }
 
         if (!checkDuplicateNumber(input)) {
-            throw new IllegalArgumentException("중복된 숫자를 포함한 문자열을 입력했습니다.");
+            throw new IllegalArgumentException(PLAYER_INPUT_NUMBER_DUPLICATE_ERROR);
         }
     }
 

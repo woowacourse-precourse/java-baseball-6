@@ -2,11 +2,12 @@ package baseball.util;
 
 import java.util.StringJoiner;
 
+import static baseball.constant.SystemConstant.*;
+
 public class GameUtil {
 
     private int ballCount = 0;
     private int strikeCount = 0;
-    private static final int NUMBER_LENGTH = 3;
 
     public void computeCount(String computerNumber, String playerNumber) {
         this.strikeCount = computeStrikeCount(computerNumber, playerNumber);
@@ -41,18 +42,18 @@ public class GameUtil {
     }
 
     public String showHint() {
-        StringJoiner stringJoiner = new StringJoiner(" ");
+        StringJoiner stringJoiner = new StringJoiner(SPACE);
 
         if (this.ballCount > 0) {
-            stringJoiner.add(String.format("%d볼", this.ballCount));
+            stringJoiner.add(String.format(BALL, this.ballCount));
         }
 
         if (this.strikeCount > 0) {
-            stringJoiner.add(String.format("%d스트라이크", this.strikeCount));
+            stringJoiner.add(String.format(STRIKE, this.strikeCount));
         }
 
         if (this.ballCount == 0 && this.strikeCount == 0) {
-            stringJoiner.add("낫싱");
+            stringJoiner.add(NOTHING);
         }
 
         return stringJoiner.toString();
