@@ -8,7 +8,17 @@ import java.util.List;
 
 public class GameService {
     private final Validate validate;
-    boolean play = true;
+    private final static String REQUEST_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private final static String BALL = "볼 ";
+    private final static String STRIKE = "스트라이크";
+    private final static String NOTHING = "낫싱";
+    private final static String RE_PLAY = "1";
+    private final static String GAME_OVER = "2";
+    private final static String GAME_OVER_MESSAGE = "게임을 종료합니다.";
+    private final static String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final static String WRONG_INPUT_MESSAGE = "잘못된 입력입니다.";
+
+    private boolean play = true;
 
     public GameService(Validate validate) {
         this.validate = validate;
@@ -16,18 +26,16 @@ public class GameService {
 
     public void solvingProblem() {
         GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
-
-        List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(
-                new withinRange(1, 9));
+        List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(new withinRange(1, 9));
 
         while (play) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(REQUEST_INPUT_NUMBER_MESSAGE);
             String str = Console.readLine();
 
             try {
                 validate.combinedValidation(str);
             } catch (IllegalArgumentException e) {
-                play = false;
+                gamePause();
                 e.setStackTrace(e.getStackTrace());
             }
 
@@ -35,6 +43,10 @@ public class GameService {
                 checkResult(str, answerRandomList);
             }
         }
+    }
+
+    private void gamePause() {
+        play = false;
     }
 
     public void checkResult(String input, List<Integer> answerList) {
@@ -65,38 +77,38 @@ public class GameService {
 
     public void printResultMessage(int StrikeCount, int BallCount) {
         if (BallCount > 0) {
-            System.out.print(BallCount + "볼 ");
+            System.out.print(BallCount + BALL);
         }
 
         if (StrikeCount > 0) {
-            System.out.print(StrikeCount + "스트라이크");
+            System.out.print(StrikeCount + STRIKE);
         }
 
         if (StrikeCount == 0 && BallCount == 0) {
-            System.out.print("낫싱");
+            System.out.print(NOTHING);
         }
 
         System.out.println();
     }
 
     public void printGameEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_CLEAR_MESSAGE);
         String input = Console.readLine();
 
         try {
             if (validate.validationReplayInput(input)) {
-                if (input.equals("1")) {
+                if (input.equals(RE_PLAY)) {
                     solvingProblem();
                 }
 
-                if (input.equals("2")) {
-                    play = false;
-                    System.out.println("게임을 종료합니다.");
+                if (input.equals(GAME_OVER)) {
+                    gamePause();
+                    System.out.println(GAME_OVER_MESSAGE);
                 }
             }
         } catch (IllegalArgumentException e) {
-            play = false;
-            System.out.println("잘못된 입력입니다.");
+            gamePause();
+            System.out.println(WRONG_INPUT_MESSAGE);
             e.getMessage();
         }
     }
