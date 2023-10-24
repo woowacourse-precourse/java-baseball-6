@@ -21,7 +21,8 @@ public class gameManage implements gameManageInterface {
             play();
             playAgain();
         } catch (IllegalArgumentException e) {
-            return;
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -36,7 +37,7 @@ public class gameManage implements gameManageInterface {
         return computer;
     }
 
-    public void selectPlayerNumber(playerEntity playerEntity) {
+    public void selectPlayerNumber(playerEntity playerEntity) throws IllegalArgumentException {
         printGameMessage.inputNumberMessage();
         String playerNumber = Console.readLine();
 
@@ -103,7 +104,7 @@ public class gameManage implements gameManageInterface {
         }
     }
 
-    public void playAgain() {
+    public void playAgain() throws IllegalArgumentException {
         printGameMessage.gameRestartMessage();
         while (true) {
             int checkAgain = Integer.parseInt(Console.readLine());
