@@ -6,7 +6,6 @@ import java.util.List;
 public class BaseballGame {
     private static boolean runningGame = true;
     private static final int MAX_NUM_LENGTH = 3;
-
     public static void setRunningGame(boolean runningGame) {
         BaseballGame.runningGame = runningGame;
     }
