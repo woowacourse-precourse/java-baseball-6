@@ -9,7 +9,7 @@ public class Answer {
     private static final int MIN_VALID_DIGIT = 1;
     private static final int MAX_VALID_DIGIT = 9;
 
-    private final List<Character> answer = new ArrayList<>();
+    private final List<Integer> answer = new ArrayList<>();
 
     public Answer() {
         while (answer.size() < VALID_LENGTH) {
@@ -17,18 +17,17 @@ public class Answer {
         }
     }
 
-    private char generateRandomNumber() {
-        int randomIntNumber = Randoms.pickNumberInRange(MIN_VALID_DIGIT, MAX_VALID_DIGIT);
-        return (char) ('0' + randomIntNumber);
+    private int generateRandomNumber() {
+        return Randoms.pickNumberInRange(MIN_VALID_DIGIT, MAX_VALID_DIGIT);
     }
 
-    private void addUniqueRandomNumber(char randomNumber) {
+    private void addUniqueRandomNumber(int randomNumber) {
         if (!answer.contains(randomNumber)) {
             answer.add(randomNumber);
         }
     }
 
-    public List<Character> getAnswerAsChars() {
+    public List<Integer> getAnswerAsList() {
         return answer;
     }
 }

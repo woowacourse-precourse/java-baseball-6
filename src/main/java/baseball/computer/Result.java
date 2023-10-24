@@ -24,7 +24,7 @@ public class Result {
 
     private int computeStrikeAndBall(Guess guess, Answer answer) {
         int totalCount = INITIAL_COUNT;
-        for (char guessDigit : guess.getGuessAsChars()) {
+        for (int guessDigit : guess.getGuessAsList()) {
             totalCount += countIfContained(guessDigit, answer);
         }
         return totalCount;
@@ -32,10 +32,10 @@ public class Result {
 
     private int computeStrike(Guess guess, Answer answer) {
         int strikeCount = INITIAL_COUNT;
-        List<Character> guessAsChars = guess.getGuessAsChars();
-        List<Character> answerAsChars = answer.getAnswerAsChars();
+        List<Integer> guessAsList = guess.getGuessAsList();
+        List<Integer> answerAsList = answer.getAnswerAsList();
         for (int i = START_INDEX; i < NUMBER_LENGTH; i++) {
-            strikeCount += countIfMatched(guessAsChars.get(i), answerAsChars.get(i));
+            strikeCount += countIfMatched(guessAsList.get(i), answerAsList.get(i));
         }
         return strikeCount;
     }
@@ -54,16 +54,16 @@ public class Result {
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
 
-    private int countIfContained(char guessDigit, Answer answer) {
-        List<Character> answerAsChars = answer.getAnswerAsChars();
-        if (answerAsChars.contains(guessDigit)) {
+    private int countIfContained(int guessDigit, Answer answer) {
+        List<Integer> answerAsList = answer.getAnswerAsList();
+        if (answerAsList.contains(guessDigit)) {
             return CONTAINED_VALUE;
         }
         return NOT_CONTAINED_VALUE;
     }
 
-    private int countIfMatched(Character answerAsChar, Character playerInputAsChar) {
-        if (playerInputAsChar.equals(answerAsChar)) {
+    private int countIfMatched(int guessDigit, int answerDigit) {
+        if (guessDigit == answerDigit) {
             return MATCHED_VALUE;
         }
         return NOT_MATCHED_VALUE;
