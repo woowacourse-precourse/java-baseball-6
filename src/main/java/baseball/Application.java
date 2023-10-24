@@ -35,6 +35,15 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
 
+            try {
+                if (userInput.length() != 3) {
+                    throw new IllegalArgumentException("예외가 발생했습니다.");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                break;
+            }
+
             System.out.println("사용자가 입력한 값: " + userInput);
             String str[] = userInput.split("");
 
