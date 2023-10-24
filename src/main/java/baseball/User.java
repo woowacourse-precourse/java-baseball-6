@@ -13,6 +13,16 @@ public class User {
         }
     }
 
+    static boolean chooseRestart() throws IllegalArgumentException {
+        String userNum;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        userNum = readLine();
+        if (userNum.length() != 1 || (userNum.charAt(0) != '1' && userNum.charAt(0) != '2')) {
+            throw new IllegalArgumentException();
+        }
+        return (userNum.charAt(0) == '1');
+    }
+
     String getUserNum() {
         if (userNum == null) {
             return (null);
