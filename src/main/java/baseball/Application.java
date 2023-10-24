@@ -6,44 +6,52 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 
     public static int[] getRandomComputerNumber(){
-        int[] ret = {
-                Randoms.pickNumberInRange(1, 9),
-                Randoms.pickNumberInRange(1, 9),
-                Randoms.pickNumberInRange(1, 9)
-        };
+        int[] numbers = new int[3];
 
         // 같은 수가 나올 경우 다시 랜덤돌리기
-        while (ret[0]==ret[1] || ret[1]==ret[2] || ret[2] == ret[0]){
-            ret = new int[]{
+        do {
+            numbers = new int[]{
                     Randoms.pickNumberInRange(1, 9),
                     Randoms.pickNumberInRange(1, 9),
                     Randoms.pickNumberInRange(1, 9)
             };
         }
+        while (isDuplication(numbers));
 
-        return ret;
+        return numbers;
+    }
+
+    public static boolean isDuplication(int[] numbers){
+        if (numbers[0]==numbers[1] || numbers[1]==numbers[2] || numbers[2]==numbers[0]){
+            return true;
+        }
+
+        return false;
     }
 
     public static int[] getUserNumber(){
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        int[] userNumbers = new int[3];
-        if (userInput.length() != 3) {
-            throw new IllegalArgumentException("세 자리 숫자를 입력해주세요.");
-        }
-        for (int i = 0; i < 3; i++) {
-            if (userInput.charAt(i) > '0' && userInput.charAt(i) <= '9') {
-                continue;
-            } else {
-                throw new IllegalArgumentException("모두 숫자를 입력해주세요.");
+
+        int[] numbers = new int[3];
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+
+            if (userInput.length() != 3)
+                throw new IllegalArgumentException("세 자리 숫자를 입력해주세요.");
+
+            for (int i = 0; i < 3; i++) {
+                if (!(userInput.charAt(i) > '0' || userInput.charAt(i) <= '9'))
+                    throw new IllegalArgumentException("모두 숫자를 입력해주세요.");
             }
-        }
 
-        for (int i = 0; i < 3; i++) {
-            userNumbers[i] = userInput.charAt(i)-'0';
-        }
+            for (int i = 0; i < 3; i++) {
+                numbers[i] = userInput.charAt(i) - '0';
+            }
 
-        return userNumbers;
+        }while (isDuplication(numbers));
+
+        return numbers;
     }
     public static void printResult(int[] cnt){
         if (cnt[0] == 0 && cnt[1] == 0) {
