@@ -40,12 +40,7 @@ public class GameController {
         outputController.printNotice(INPUT);
         Input input = inputController.playerInput(true);
         player.setInputString(input.getInputString());
-
-        System.out.println(player.getInputString()); //임시용
-        game.printAnswer(); //임시용
-
         Result result = game(player, game);
-        System.out.println(result.strike +" "+result.ball); //임시용
 
         outputController.printResult(result.strike, result.ball);
         if (result.isAnswer) {

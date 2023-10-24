@@ -22,7 +22,6 @@ public class Application {
         game = new Game();
         player  = new Player();
 
-        game.printAnswer();
         GameController gameController = new GameController(inputController,outputController,game,player);
 
         gameController.start();
