@@ -25,5 +25,29 @@ public class Application {
                 }
             }
 
+            List<Integer> userNum;
+
+            while (true) {
+                userNum = new ArrayList<>();
+                int strike = 0, ball = 0;
+
+                System.out.print("숫자를 입력해주세요 : ");
+                String[] input = Console.readLine().split("");
+
+                if (input.length != 3) {
+                    throw new IllegalArgumentException("3글자를 입력 하세요");
+                }
+
+                for (String s : input) {
+                    if (!userNum.contains(Integer.parseInt(s))) {
+                        userNum.add(Integer.parseInt(s));
+                    }
+                }
+
+                if (userNum.size() != 3) {
+                    throw new IllegalArgumentException("서로 다른 3글자를 입력 하세요.");
+                }
+            }
+        }
     }
 }
