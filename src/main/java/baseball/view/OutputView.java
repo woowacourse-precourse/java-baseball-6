@@ -2,12 +2,15 @@ package baseball.view;
 
 public class OutputView {
 
+    private static final String NOTHING = "0";
+    private static final int BALL_RESULT = 0;
+    private static final int STRIKE_RESULT = 1;
 
     public OutputView(String[] result) {
-        if (!result[0].equals("0") && result[1].equals("0")) printOnlyBallCountMessage(result[0]);
-        if (!result[1].equals("0") && result[0].equals("0")) printOnlyStrikeCountMessage(result[1]);
-        if (!result[0].equals("0") && !result[1].equals("0")) printBallAndStrikeCountMessage(result[0], result[1]);
-        if (result[0].equals("0") && result[1].equals("0")) printNothingMessage();
+        if (!result[BALL_RESULT].equals(NOTHING) && result[STRIKE_RESULT].equals(NOTHING)) printOnlyBallCountMessage(result[BALL_RESULT]);
+        if (result[BALL_RESULT].equals(NOTHING)&&!result[STRIKE_RESULT].equals(NOTHING)) printOnlyStrikeCountMessage(result[STRIKE_RESULT]);
+        if (!result[BALL_RESULT].equals(NOTHING) && !result[STRIKE_RESULT].equals(NOTHING)) printBallAndStrikeCountMessage(result[BALL_RESULT], result[STRIKE_RESULT]);
+        if (result[BALL_RESULT].equals(NOTHING) && result[STRIKE_RESULT].equals(NOTHING)) printNothingMessage();
     }
 
 
