@@ -10,6 +10,7 @@ public class GameController {
     private String userNumber;
     private boolean gameOver = false;
 
+
     public void play() {
 
         System.out.println(GameMessage.START_GAME_MESSAGE.getMessage());
@@ -27,18 +28,25 @@ public class GameController {
     }
 
     private void confirmRestart(String result) {
-        if (result.equals("3스트라이크")) {
+        String endCondition = "3스트라이크";
+        if (result.equals(endCondition)) {
             System.out.println(GameMessage.SUCCESS_GAME_MESSAGE.getMessage());
             System.out.println(GameMessage.RESTART_GAME_MESSAGE.getMessage());
             String restart = Console.readLine();
 
-            if (restart.equals("1")) {
-                startGame();
-            } else if (restart.equals("2")) {
-                gameOver = true;
-            } else {
-                throw new IllegalArgumentException(GameMessage.INPUT_ERROR_MESSAGE.getMessage());
-            }
+            restartOrEnd(restart);
+        }
+    }
+
+    private void restartOrEnd(String restart) {
+        String restartNumber = "1";
+        String endNumber = "2";
+        if (restart.equals(restartNumber)) {
+            startGame();
+        } else if (restart.equals(endNumber)) {
+            gameOver = true;
+        } else {
+            throw new IllegalArgumentException(GameMessage.INPUT_ERROR_MESSAGE.getMessage());
         }
     }
 
