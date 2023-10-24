@@ -13,6 +13,16 @@ import java.util.List;
 */
 
 public class Application {
+    static void isThreeDigitNumbers(String input) {
+        try {
+            int number = Integer.parseInt(input);
+            if (number < 100 || number > 999) {
+                throw new IllegalArgumentException("숫자 범위 오류");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아님");
+        }
+    }
     public static void main(String[] args) {
         // TODO: 숫자야구 프로그램 구현
         // 1. 숫자형식 구현
@@ -32,6 +42,7 @@ public class Application {
             //입력에서 잘못된 값 유형시 에러
             try {
                 //에러 판단 함수
+                isThreeDigitNumbers(input);
             }catch (IllegalArgumentException e){
             }
         }
