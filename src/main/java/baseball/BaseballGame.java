@@ -6,7 +6,6 @@ public class BaseballGame {
 	}
 
 	public void start() {
-		OutputView.printGameStart();
 		boolean isCorrected = false;
 		String targetNumber = NumberGenerator.generateUniqueNumbers(InputView.CORRECT_LENGTH);
 
