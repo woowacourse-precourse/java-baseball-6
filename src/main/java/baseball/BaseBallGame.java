@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.List;
 import model.ModelCompareAnswerInput;
 import model.ModelCreateRandomNumber;
 import model.ModelRestartOrEnd;
@@ -8,6 +7,8 @@ import model.ModelUserNumCheck;
 import view.ViewInput;
 import view.ViewResult;
 import view.ViewStart;
+import vo.Balls;
+import vo.Result;
 
 /**
  * BaseBallGame.java
@@ -26,17 +27,17 @@ public class BaseBallGame {
 
         do {
 
-            List<Integer> computer = ModelCreateRandomNumber.createRandomNumber();
+            Balls computer = new Balls(ModelCreateRandomNumber.createRandomNumber());
 
             while (true) {
 
-                List<Integer> input = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
+                Balls user = new Balls(ModelUserNumCheck.changeToComparable(ViewInput.numInputView()));
 
-                int[] result = ModelCompareAnswerInput.compareAnswerInput(computer, input);
+                Result result = new Result(ModelCompareAnswerInput.compareAnswerInput(computer, user));
 
-                ViewResult.view(result);
+                ViewResult.view(result.result());
 
-                if (ModelCompareAnswerInput.isAnswer(result)) {
+                if (ModelCompareAnswerInput.isAnswer(result.result())) {
                     break;
                 }
             }

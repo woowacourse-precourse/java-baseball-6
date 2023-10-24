@@ -6,6 +6,7 @@ import static constant.Constants.STRIKE;
 
 import java.util.List;
 import java.util.Objects;
+import vo.Balls;
 
 /**
  * ModelCompareAnswerInput.java
@@ -21,13 +22,16 @@ public class ModelCompareAnswerInput {
     /**
      * input값과 정답값을 비교해서 볼, 스트라이크 개수 계산
      *
-     * @param answer   게임의 정답
-     * @param input 사용자가 입력한 숫자
+     * @param computer 게임의 정답
+     * @param user     사용자가 입력한 숫자
      * @return int[] 타입의 비교 결과 (index 0 : 볼, 1 : 스트라이크)
      */
-    public static int[] compareAnswerInput(List<Integer> answer, List<Integer> input) {
+    public static int[] compareAnswerInput(Balls computer, Balls user) {
 
         int[] result = {0, 0};
+
+        List<Integer> answer = computer.ball();
+        List<Integer> input = user.ball();
 
         for (int i = 0; i < answer.size(); i++) {
             if (Objects.equals(answer.get(i), input.get(i))) {
