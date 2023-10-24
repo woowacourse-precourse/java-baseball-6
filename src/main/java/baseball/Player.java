@@ -18,7 +18,7 @@ public class Player {
         }
     }
 
-    public List<Integer> getDuplicatePlayerList() {
+    public List<Integer> getDuplicateplayerNumbers() {
         return new ArrayList<>(playerNumbers);
     }
 
@@ -31,7 +31,6 @@ public class Player {
     private void checkIsDigit(String inputString) {
         for (int i = 0; i < inputString.length(); i++) {
             int number = inputString.charAt(i);
-
             if (!Character.isDigit(number)) {
                 throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. (1~9의 자연수만 가능)");
             }

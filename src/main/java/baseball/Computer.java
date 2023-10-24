@@ -18,6 +18,7 @@ public class Computer {
     public Computer() {
         while (computerNumbers.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+
             if (!isContainedNumber(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
@@ -62,6 +63,7 @@ public class Computer {
 
     private int getStrike(List<Integer> playerList) {
         int strike = 0;
+
         for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).equals(computerNumbers.get(i))) {
                 strike++;
@@ -72,6 +74,7 @@ public class Computer {
 
     private int getBall(List<Integer> playerList) {
         int ball = 0;
+
         for (Integer p : playerList) {
             if (computerNumbers.contains(p)) {
                 ball++;
