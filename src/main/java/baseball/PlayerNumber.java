@@ -8,7 +8,7 @@ public class PlayerNumber {
 
     Exception exception = new Exception();
 
-    public List<Integer> getPlayer() {
+    public List<Integer> getPlayer() throws IllegalArgumentException{
         String inputNumber = Console.readLine();
         List<Integer> player = new ArrayList<>();
 
