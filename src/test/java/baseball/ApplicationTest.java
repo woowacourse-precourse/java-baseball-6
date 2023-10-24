@@ -38,7 +38,6 @@ class ApplicationTest extends NsTest {
                     long count = Arrays.stream(output().split("\n"))
                                     .filter(line -> line.contains("숫자 야구 게임을 시작합니다."))
                                     .count();
-                    System.out.println(count);
                     Assertions.assertEquals(1, count);
                 },
                 5,2,4,7,1,8,3,5,2
