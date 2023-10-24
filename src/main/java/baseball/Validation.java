@@ -21,7 +21,7 @@ public class Validation {
     }
 
     // 입력 유효성 검사 3. 0이 포함되어 있는가? - answer
-    public static void checkIncludeZero(String arg) {
+    private static void checkIncludeZero(String arg) {
         for (int i = 0; i < 3; i++) {
             if (arg.charAt(i) == '0') {
                 throw new IllegalArgumentException(answerErrorMessage);
@@ -30,14 +30,14 @@ public class Validation {
     }
 
     // 입력 유효성 검사 4. 숫자이지만 3자리가 아닌 입력값 확인 - answer
-    public static void checkLength(String arg) {
+    private static void checkLength(String arg) {
         if (arg.length() != 3) {
             throw new IllegalArgumentException(answerErrorMessage);
         }
     }
 
     // 입력 유효성 검사 5. 숫자이며, 3자리이지만 중복되는 입력값 확인 - answer
-    public static void checkRepeat(String arg) {
+    private static void checkRepeat(String arg) {
         if (arg.charAt(0) == arg.charAt(1) || arg.charAt(0) == arg.charAt(2)
                 || arg.charAt(1) == arg.charAt(2)) {
             throw new IllegalArgumentException(answerErrorMessage);
@@ -45,7 +45,7 @@ public class Validation {
     }
 
     // 입력 유효성 검사 6. 1 또는 2가 아닌 수 입력 - restart
-    public static boolean checkRestart(int arg) {
+    private static boolean checkRestart(int arg) {
         if (arg != 1 && arg != 2) {
             throw new IllegalArgumentException(restartErrorMessage);
         }
