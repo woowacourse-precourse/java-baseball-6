@@ -16,6 +16,7 @@ public class BaseballGame {
     private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
     private static final String PRINT_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String PRINT_IS_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private static final String ERROR_INPUT_NOT_DISTINCT = "입력 숫자는 모두 서로 다른 수여야 합니다.";
     private static final String ERROR_INPUT_INVALID_DIGIT = "입력 숫자는 세자리여야 합니다.";
@@ -31,6 +32,7 @@ public class BaseballGame {
             System.out.println(PRINT_GAME_START);
             List<Integer> correctAnswer = computer.createCorrectAnswer();
             play(correctAnswer);
+            System.out.println(PRINT_IS_RESTART);
         } while (RestartOrExit.isRestart(convertStringToInteger(Console.readLine())));
     }
 
