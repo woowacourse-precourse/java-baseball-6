@@ -9,21 +9,23 @@ public class Application {
         System.out.println("숫자 야구게임을 시작합니다.");
 
         // 1. 컴퓨터
-        List<Integer> computer = Computer.pickNumber();
+        List<Integer> computerNumList = Computer.pickNumber();
 
         // 2. 플레이어
         while (true) {
-            List<Integer> player = Player.inputNumber();
+            Player player = new Player();
+            List<Integer> playerNumList = player.inputNumber();
 
             // 3. 점수판별
             int ball = 0;
             int strike = 0;
 
             for (int i = 0; i < 3; i++) {
-                if (computer.get(i) == player.get(i)) {
+                if (computerNumList.get(i) == playerNumList.get(i)) {
                     strike++;
                 }
-                if ((computer.get(i) != player.get(i)) && computer.contains(player.get(i))) {
+                if ((computerNumList.get(i) != playerNumList.get(i)) && computerNumList.contains(
+                        playerNumList.get(i))) {
                     ball++;
                 }
             }
@@ -43,7 +45,7 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int menu = Integer.parseInt(Console.readLine());
                 if (menu == 1) {
-                    computer = Computer.pickNumber();
+                    computerNumList = Computer.pickNumber();
                     continue;
                 }
                 if (menu == 2) {
@@ -55,6 +57,4 @@ public class Application {
             }
         }
     }
-
-
 }
