@@ -1,4 +1,4 @@
-package baseball.gameManage;
+package baseball.service;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.view;
 
 public class printNumberFormat {
     public String printStrike(int strike) {
