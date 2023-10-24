@@ -5,19 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball {
     private String computerNum;
-//    private String userNum;
+
     // 생성자
     public Baseball(){
         initBaseball();
     }
 
-
     public void initBaseball(){
+        // 게임 시작 알림
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         // 컴퓨터 수 세팅
         this.computerNum=setComputerNum();
-        // 사용자 입력 숫자 초기화
-//        this.userNum="";
     }
 
     public String setComputerNum(){
@@ -64,7 +63,7 @@ public class Baseball {
     }
 
     public void playBaseball(){
-//        System.out.println(computerNum);
+
         do {
 
             System.out.print("숫자를 입력해주세요 : ");
@@ -94,10 +93,7 @@ public class Baseball {
             this.computerNum=setComputerNum();
             playBaseball();
         }else if(!input.equals("2")){
-            // 종료
             throw new IllegalArgumentException();
         }
-        // 에러처리
-
     }
 }
