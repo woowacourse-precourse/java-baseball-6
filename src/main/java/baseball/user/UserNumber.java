@@ -1,17 +1,29 @@
 package baseball.user;
 
 import baseball.game.GameConst;
+import baseball.io.GameMessageOutput;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserNumber {
 
+    private final List<Integer> numbers;
+
+    public static UserNumber of() {
+        return new UserNumber();
+    }
+
     private UserNumber() {
+        this.numbers = readUserNumbers();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public static List<Integer> readUserNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
+        GameMessageOutput.printUserNumberInputMessage();
 
         String answer = Console.readLine().strip();
 

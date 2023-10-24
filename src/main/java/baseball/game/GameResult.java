@@ -1,11 +1,9 @@
 package baseball.game;
 
-import static baseball.game.GameConst.NUMBER_SIZE;
-
 public class GameResult {
 
-    public int strike;
-    public int ball;
+    private final int strike;
+    private final int ball;
 
     public GameResult(int strike, int ball) {
         this.strike = strike;
@@ -14,9 +12,11 @@ public class GameResult {
 
     public void print() {
         StringBuilder result = new StringBuilder();
+
         if (ball != 0) {
             result.append(String.format("%d%s", this.ball, GameConst.BALL));
         }
+
         if (strike != 0) {
             if (!result.isEmpty()) {
                 result.append(" ");
@@ -32,7 +32,6 @@ public class GameResult {
     }
 
     public boolean gameEnd() {
-        return this.strike == NUMBER_SIZE;
+        return this.strike == GameConst.NUMBER_SIZE;
     }
-
 }
