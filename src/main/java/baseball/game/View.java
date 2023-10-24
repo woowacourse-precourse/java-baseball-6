@@ -3,7 +3,7 @@ package baseball.game;
 import baseball.game.model.Result;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameView {
+public class View {
 
     // 시작메세지
     public void printStartMessage(){
@@ -22,8 +22,8 @@ public class GameView {
     public void printEnd(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    public int askRestart(){
+    public String askRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
