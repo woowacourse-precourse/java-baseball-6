@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-
+    름
     private static final String STARTING_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAMEOVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
             "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -26,7 +26,7 @@ public class Application {
             baseballGame.inputNumbers();
             baseballGame.calculateScore();
             baseballGame.printGameScore();
-            if (baseballGame.getStrike() != ALL_STRIKE) {
+            if (baseballGame.countStrike() != ALL_STRIKE) {
                 continue;
             }
 
@@ -34,6 +34,7 @@ public class Application {
 
             String line = Console.readLine();
             inputValidate(line);
+
             int code = Integer.parseInt(line);
             if (code == EXIT_CODE) {
                 isGameEnd = true;

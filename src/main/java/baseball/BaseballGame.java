@@ -19,7 +19,7 @@ public class BaseballGame {
     private int ball;
 
 
-    public int getStrike() {
+    public int countStrike() {
         return strike;
     }
 
