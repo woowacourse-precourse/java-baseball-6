@@ -24,19 +24,13 @@ public class Application {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
     }
     public static void playGame() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        List<Integer> computer = getComputerNumber();
+
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
@@ -69,6 +63,18 @@ public class Application {
             System.out.println(computer);
         }
     }
+
+    private static List<Integer> getComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
     public static void runException(String input) {
         if (input == null || input.length() != 3) {
             throw new IllegalArgumentException("정확히 3자리 숫자를 입력해주세요. 게임을 종료합니다.");
