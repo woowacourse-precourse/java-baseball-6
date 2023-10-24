@@ -28,10 +28,14 @@ public class Validation {
         List<Character> checkList = new ArrayList<>();
 
         for (char singleNumber : numbers.toCharArray()) {
-            if (checkList.contains(singleNumber)) {
-                throw new IllegalArgumentException(SAME_NUMBER_EXCEPTION_MESSAGE);
-            }
+            validateCheckListContainsSingleNumber(checkList, singleNumber);
             checkList.add(singleNumber);
+        }
+    }
+
+    private static void validateCheckListContainsSingleNumber(List<Character> checkList, char singleNumber) {
+        if (checkList.contains(singleNumber)) {
+            throw new IllegalArgumentException(SAME_NUMBER_EXCEPTION_MESSAGE);
         }
     }
 
