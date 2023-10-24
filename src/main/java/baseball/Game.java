@@ -51,6 +51,19 @@ public class Game {
         }
     }
 
+    public List<Integer> getComputerNum() {
+        return computerNum;
+    }
+
+    public List<Integer> userNumber(String input) {
+        List<Integer> userNum = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            userNum.add(input.charAt(i) - '0');
+        }
+
+        return userNum;
+    }
+
     public String check(List<Integer> computerNum, List<Integer> userNum) {
         int strike = 0;
         int ball = 0;
@@ -89,4 +102,6 @@ public class Game {
 
         return sb.toString();
     }
+
+
 }
