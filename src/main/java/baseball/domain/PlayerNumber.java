@@ -42,11 +42,10 @@ public class PlayerNumber {
     }
 
     private static void tempConverterToSet(String numbers, HashSet<Integer> sameDigitChecker) {
-        for (int i = 0; i < numbers.length(); i++) {
-            char temp = numbers.charAt(i);
-            int number = Character.getNumericValue(temp);
-            sameDigitChecker.add(number);
-        }
+        numbers.chars()
+                .mapToObj(Character::getNumericValue)
+                .map(x -> sameDigitChecker.add(x))
+                .collect(Collectors.toList());
     }
 
     private static void checkLength(String numbers) {
@@ -68,6 +67,4 @@ public class PlayerNumber {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
-
-
 }
