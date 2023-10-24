@@ -36,18 +36,18 @@ public class GameStart {
                 playMainBaseBallGame();
             }
 
-            if (isNotProceedGame()) { // 4.게임의 종료 상황을 알려주고, 4.1 숫자 2을 누르면 게임 종료 진행
+            if (isNotProceedGame()) { // 게임의 종료 상황을 알려주고, 4.1 숫자 2을 누르면 게임 종료 진행
                 break;
             }
         }
     }
-
+할
     /**
      * 메인 야구 게임의 진행 상황을 시작한다.
      */
     private void playMainBaseBallGame() {
-        inputRanNumOfUser(); // 1. 유저의 입력을 받아서 userList을 얻는다.
-        hintOfJudge = gameProgress.getHintOfJudge(computerList, userList); // 2. judge의 힌트를 얻는다.
+        inputRanNumOfUser(); // 유저의 입력을 받아서 userList을 얻는다.
+        hintOfJudge = gameProgress.getHintOfJudge(computerList, userList); // judge의 힌트를 얻는다.
         printHintMsg();
     }
 
@@ -71,10 +71,10 @@ public class GameStart {
     private void inputRanNumOfUser() {
         initUserList();
 
-        System.out.print(MyConstants.MSG_INPUT_NUMBER_STR()); // 1. 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
-        String numInputOfUser = Utill.inputNum(); // 2. 숫자 입력을 받는다.
+        System.out.print(MyConstants.MSG_INPUT_NUMBER_STR()); // 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
+        String numInputOfUser = Utill.inputNum(); // 숫자 입력을 받는다.
 
-        // 3. 입력을 받은 문자렬을 split을 한다음 inputList에 추가를 한다. => [ 1, 2, 3]
+        // 입력을 받은 문자렬을 split을 한다음 inputList에 추가를 한다. => [ 1, 2, 3]
         addNumber2InputList(userList, numInputOfUser);
     }
 
@@ -108,10 +108,10 @@ public class GameStart {
 
         printSecondProcessMsg();
 
-        inputInt = Utill.inputIntNum(); // 3. 숫자를 입력받는다.
+        inputInt = Utill.inputIntNum(); // 숫자를 입력받는다.
         ValidException.isValidOnlyInputOneTwo(inputInt); // 1과 2가 아니면 예외처리
 
-        if (Utill.isSameInteger(inputInt, NOT_AGAIN_GAME)) {  // 4. 입력 받는 숫자가 2이면 true - STOP
+        if (Utill.isSameInteger(inputInt, NOT_AGAIN_GAME)) {  // 입력 받는 숫자가 2이면 true - STOP
             return true;
         }
 
@@ -123,14 +123,14 @@ public class GameStart {
      * 2번째 게임 진행상황의 문자열을 출력한다.
      */
     private void printSecondProcessMsg() {
-        System.out.println(MyConstants.MSG_END_GAME_COMMENT_STR()); // 1. "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-        System.out.println(MyConstants.MSG_GAME_PROGRESS_SELECTION_STATUS_STR()); // 2. "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+        System.out.println(MyConstants.MSG_END_GAME_COMMENT_STR()); // "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+        System.out.println(MyConstants.MSG_GAME_PROGRESS_SELECTION_STATUS_STR()); // "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
     }
 
     /**
      * 힌트를 출력해주는 메서드
      */
     private void printHintMsg() {
-        System.out.println(hintOfJudge); // 3. 힌트를 출력한다.
+        System.out.println(hintOfJudge); // 힌트를 출력한다.
     }
 }
