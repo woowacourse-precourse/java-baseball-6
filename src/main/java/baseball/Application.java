@@ -20,12 +20,24 @@ public class Application {
         return Integer.toString(result);
     }
 
+    public static String validateUserInput() {
+        String userInput = Console.readLine();
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        return userInput;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
-            System.out.printf("User : %s, Cpu : %s\n", userInput, pickNumber());
+            try {
+                String userInput = validateUserInput();
+                System.out.printf("User : %s, Cpu : %s\n", userInput, pickNumber());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
