@@ -16,7 +16,6 @@ public class PlayerTest {
     })
     void 플레이어_숫자_유효성_성공_테스트(String playerNumbers) {
         Player player = new Player(playerNumbers);
-
         assertEquals(playerNumbers, player.getPlayerNumbers());
     }
 
