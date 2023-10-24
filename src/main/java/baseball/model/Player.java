@@ -9,10 +9,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class NumberList {
+public class Player {
     List<Integer> numberList;
 
-    public NumberList(List<Integer> numberList) {
+    public Player(List<Integer> numberList) {
         validateSize(numberList);
         validateDuplication(numberList);
         this.numberList = numberList;

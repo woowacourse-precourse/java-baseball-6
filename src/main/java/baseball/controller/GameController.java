@@ -1,9 +1,8 @@
 package baseball.controller;
 
 import static baseball.util.Constants.CONTINUE;
-import static baseball.util.Constants.CORRECT_ANSWER;
 import static baseball.util.Constants.EXIT;
-import static baseball.util.Constants.WRONG_ANSWER;
+import static baseball.util.Constants.WRONG;
 
 import baseball.Service.ComputerService;
 import baseball.Service.GameService;
@@ -15,36 +14,34 @@ public class GameController {
     private final GameService gameService = new GameService();
     private final UserService userService = new UserService();
 
-    public void start() {
+    public void run() {
         initGame();
         startGame();
+        endGame();
     }
 
     public void initGame() {
-        gameService.init();//출력
-        computerService.init(); //난수생성해서 객체 생성
+        gameService.init();
+        computerService.init();
     }
 
     public void startGame() {
-        List<Integer> userAnswer = userService.readAnswer();
-        List<Integer> resultList = computerService.compareAnswer(userAnswer);
-        int result = gameService.analyze(resultList);
-        if (result == CORRECT_ANSWER) {
-            winGame();
-        }
-        if (result == WRONG_ANSWER) {
-            startGame();
+        int result = WRONG;
+        while (result == WRONG) {
+            List<Integer> userAnswer = userService.inputAnswer();
+            List<Integer> resultList = computerService.compareAnswer(userAnswer);
+            result = gameService.analyze(resultList);
         }
     }
 
-    public void winGame() {
-        String select = gameService.success();
+    public void endGame() {
+        String select = gameService.end();
 
         if (select.equals(CONTINUE)) {
-            start();
+            run();
         }
         if (select.equals(EXIT)) {
-            gameService.end();
+            gameService.exit();
         }
         if (!select.equals(CONTINUE) && !select.equals(EXIT)) {
             throw new IllegalArgumentException();

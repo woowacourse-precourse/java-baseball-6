@@ -13,8 +13,8 @@ public final class Constants {
     public static final int BALL = 5;
     public static final int STRIKE = 6;
     public static final int NOTHING = 7;
-    public static final int CORRECT_ANSWER = 1;
-    public static final int WRONG_ANSWER = 0;
+    public static final int CORRECT = 1;
+    public static final int WRONG = 0;
     public static final String CONTINUE = "1";
     public static final String EXIT = "2";
 }
