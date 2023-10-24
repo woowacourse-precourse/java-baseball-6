@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.Objects;
+
 public class Ball {
     private static final char CHAR_MIN_NUMBER = '1';
     private static final char CHAR_MAX_NUMBER = '9';
@@ -18,7 +20,7 @@ public class Ball {
     }
 
     public static boolean equals(Ball a, Ball b) {
-        return a.number == b.number;
+        return Objects.equals(a.number, b.number);
     }
 
     private Integer validateIsNaturalNumber(char val) {
