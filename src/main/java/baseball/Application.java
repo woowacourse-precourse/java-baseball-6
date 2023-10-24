@@ -18,10 +18,19 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> inputNumber = inputUserNumber();
             Result result = checkResult(computerNumber, inputNumber);
-
+            viewResult(result);
+            if(checkGame(result)){
+                break;
+            }
         }
     }
 
+    public static boolean checkGame(Result result) {
+        if(result.strike==3){
+            return true;
+        }
+        return false;
+    }
     public static void viewResult(Result result) {
         String view = "";
         if(result.ball>0){
