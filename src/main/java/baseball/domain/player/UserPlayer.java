@@ -4,16 +4,15 @@ import baseball.utils.StringException;
 import baseball.utils.StringUtil;
 import camp.nextstep.edu.missionutils.Console;
 public class UserPlayer {
-    private static int SIZE = 3;
-    public static int[] userNum = new int[SIZE];
+
+    public static String userString;
 
     public static void setUserNumber() {
         String userString = Console.readLine();
-        // 예외처리 어디서 하지 (타입관련)
-        int[] userNum = StringUtil.stringToIntArray(userString);
+        userString.replaceAll("\\s+", "").trim();
     }
-    public static int[] getUserNumber() {
-        return userNum;
+    public static String getUserNumber() {
+        return userString;
     }
 }
 

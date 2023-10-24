@@ -1,14 +1,41 @@
 package baseball.controller;
 
-public class GameController {
-    public static boolean start() {
-        boolean restart = false;
+import baseball.console.InputConsole;
+import baseball.console.MainController;
+import baseball.domain.player.ComputerPlayer;
+import baseball.domain.player.UserPlayer;
+import baseball.domain.rules.Rules;
 
-        return restart;
+public class GameController {
+    // getReplaymanual() 이거 true면 다시 시작
+    private static UserPlayer userPlayer;
+    private ComputerPlayer computerPlayer;
+    private MainController mainController;
+    private Rules rules;
+
+    public void start() {
+        boolean restart = true;
+        while (restart) {
+            this.userPlayer = new UserPlayer();
+            this.computerPlayer = new ComputerPlayer();
+            MainController.printStartingGame();
+            computerPlayer.setComputerNumber();
+            play();
+            mainController.printFinish();
+            restart = mainController.getReplaymanual();
+        }
+
     }
 
-    public static boolean play() {
+    public static void play() {
         boolean isGameOver = false;
-        return isGameOver;
+
+        while (!isGameOver) {
+            int[] score;
+            userPlayer.setUserNumber();
+            InputConsole.userNumSetting(userPlayer.getUserNumber());
+            score = Rules.userScore(); // 메인 컨트롤러에 인풋콘솔 정리하고 re
+
+        }
     }
 }
