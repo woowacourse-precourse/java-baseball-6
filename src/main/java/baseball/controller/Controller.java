@@ -4,7 +4,6 @@ import baseball.model.Model;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,8 +13,7 @@ public class Controller {
     private static final int SIZE = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-    private static final int BALL_INDEX = 0;
-    private static final int STRIKE_INDEX = 1;
+    private static final String RESTART_FLAG = "1";
 
     View view = new View();
 
@@ -90,7 +88,7 @@ public class Controller {
     }
 
     // 입력한 값내에 중복된 숫자가 있는지 확인
-    public static boolean hasDuplicates(int[] numbers) {
+    public boolean hasDuplicates(int[] numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
         for (Integer number : numbers) {
@@ -100,5 +98,18 @@ public class Controller {
             }
         }
         return false; // 중복된 숫자가 없으면 false 반환
+    }
+
+    // 재시작을 확인해주는 기능
+    public boolean checkRestart(Controller controller, Model model) {
+        if (model.getStrike_count() == SIZE) {
+            String restart_number = controller.restartNumberInput();
+            if (restart_number.equals(RESTART_FLAG)) {
+                model.setComputer_number(controller.randomNumber());
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 }
