@@ -20,4 +20,11 @@ public class ValidatorTest {
         String invalidInput = "1b3";
         assertFalse(Validator.validateInputIsNumber(invalidInput));
     }
+
+    @Test
+    @DisplayName("입력한 숫자의 길이가 3이다")
+    void 플레이어_숫자_입력_길이3() {
+        String validInput = "123";
+        assertTrue(Validator.validateInputLength(validInput));
+    }
 }
