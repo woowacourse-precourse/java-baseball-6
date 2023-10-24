@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.BaseBall;
+import baseball.util.InputValidate;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,11 +40,11 @@ public class BaseBallService {
     }
 
     public String notificationResult(int[] result) {
-        if (result[0] > 0 && result[1] > 0) {
+        if (result[0] > NUMBER_ZERO && result[1] > NUMBER_ZERO) {
             return String.format(BALL_AND_STRIKE_FORMAT, result[0], result[1]);
-        } else if (result[0] > 0) {
+        } else if (result[0] > NUMBER_ZERO) {
             return String.format(BALL_FORMAT, result[0]);
-        } else if (result[1] > 0) {
+        } else if (result[1] > NUMBER_ZERO) {
             return String.format(STRIKE_FORMAT, result[1]);
         }
         return NOTHING;
@@ -53,6 +54,6 @@ public class BaseBallService {
         System.out.println(FINISH_GAME);
         System.out.println(RESTART_GAME);
 
-        return Integer.parseInt(readLine());
+        return InputValidate.validateRestartGame(Integer.parseInt(readLine()));
     }
 }
