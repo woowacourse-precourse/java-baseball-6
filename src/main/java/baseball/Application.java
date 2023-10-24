@@ -1,10 +1,10 @@
 package baseball;
 
-import baseballgame.GameFlowmanager;
+import baseballgame.GameFlowManager;
 
 public class Application {
     public static void main(String[] args) {
-    	GameFlowmanager gf = new GameFlowmanager();
+    	GameFlowManager gf = new GameFlowManager();
     	
     	gf.run();
     }
