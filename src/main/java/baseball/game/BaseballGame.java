@@ -12,6 +12,7 @@ public class BaseballGame {
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String MUST_INPUT_RESTARTS_MESSAGE = "1 또는 2를 입력해야 합니다.";
 
+    public static final String GAME_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GAME_RESTART = "1";
     private static final String GAME_FINISH = "2";
     private static final Set<String> INPUT_RESTARTS = Set.of(GAME_RESTART, GAME_FINISH);
@@ -34,9 +35,8 @@ public class BaseballGame {
         Output.consoleLine(GAME_START_MESSAGE);
     }
 
-    // TODO : 리터럴 상수 제거할 것
     private void announceWin() {
-        Output.consoleLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Output.consoleLine(GAME_WIN_MESSAGE);
     }
 
     // TODO : 과도한 상수 사용 -> enum으로 교체
