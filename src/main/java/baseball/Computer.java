@@ -13,7 +13,6 @@ public class Computer {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             CheckRepeatNumber(randomNumber);
         }
-        //ListToString(RandomNumber);
         computer = String.join("", RandomNumber);
         return computer;
     }
