@@ -6,6 +6,9 @@ import baseball.domain.User;
 import baseball.utils.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.utils.Const.ANSWER;
+import static baseball.utils.Const.EXIT;
+
 public class GameService {
 
     private static Computer computer;
@@ -24,7 +27,7 @@ public class GameService {
         do {
             playGame();
             option = restartOrExit();
-        }while(!option.equals("2"));
+        }while(!option.equals(EXIT));
     }
 
     private void playGame() {
@@ -37,7 +40,7 @@ public class GameService {
     }
 
     private boolean isAnswer() {
-        return game.getStrike() == 3;
+        return game.getStrike() == ANSWER;
     }
 
     private void printResult() {
