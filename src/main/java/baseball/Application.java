@@ -5,12 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         view.gameStartPrint();
         RandomNumber.getUniqueNumbers();
         List<Integer> list;
@@ -18,9 +16,8 @@ public class Application {
             view.gameNumberInputPrint();
             String stringNumber = Console.readLine();
             list = StringToIntegerList.stringToIntegerList(stringNumber);
-            System.out.println(RandomNumber.baseballNumber);
             List<Integer> result = BaseballCalculate.baseballCalculate(RandomNumber.baseballNumber, list);
-            System.out.println(result);
+            System.out.println(BaseballCalculate.baseballHintPrint(result));
         } while (RandomNumber.baseballNumber.equals(list) == false);
         view.gameEndPrint();
 
@@ -56,11 +53,10 @@ class RandomNumber {
 class BaseballCalculate {
     static List<Integer> baseballCalculate(List<Integer> list1, List<Integer> list2) {
         // 공통된 숫자의 수와 같은 위치에 있는 숫자의 수를 세기 위한 변수 초기화
-        int commonCount = 0;
         int samePositionCount = 0;
         Set<Integer> set1 = new HashSet<>(list1);
         Set<Integer> set2 = new HashSet<>(list2);
-        // 두 Set의 교집합을 구합니다.
+        // 두 Set의 교집합을 구한다
         set1.retainAll(set2);
         // 두 리스트를 순회하면서 비교
         for (int i = 0; i < 3; i++) {
@@ -75,6 +71,21 @@ class BaseballCalculate {
         result.add(samePositionCount);
         result.add(set1.size() - samePositionCount);
         return result;
+    }
+
+    static String baseballHintPrint(List<Integer> list) {
+        int strike = list.get(0);
+        int ball = list.get(1);
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+        if (strike == 0) {
+            return ball + "볼";
+        }
+        if (ball == 0) {
+            return strike + "스트라이크";
+        }
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
 
