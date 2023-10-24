@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
 public class IntegerUtilTest {
 
     @Test
-    public void isInteger_Integer() {
+    void isInteger_Integer() {
         assertTrue(IntegerUtil.isInteger("123"));
         assertTrue(IntegerUtil.isInteger("-456"));
     }
 
     @Test
-    public void isInteger_NonInteger() {
+    void isInteger_NonInteger() {
         assertFalse(IntegerUtil.isInteger("abc"));
         assertFalse(IntegerUtil.isInteger("12.34"));
         assertFalse(IntegerUtil.isInteger("12345678901234567890"));
@@ -42,7 +42,7 @@ public class IntegerUtilTest {
     }
 
     @Test
-    public void isSame_true() {
+    void isSame_true() {
         //given
         Integer i1 = 42;
         Integer i2 = 42;
@@ -55,7 +55,7 @@ public class IntegerUtilTest {
     }
 
     @Test
-    public void isSame_false() {
+    void isSame_false() {
         Integer i1 = 42;
         Integer i2 = 17;
 
@@ -65,7 +65,7 @@ public class IntegerUtilTest {
     }
 
     @Test
-    public void testParseInteger() {
+    void testParseInteger() {
         char character = '7';
 
         Integer result = IntegerUtil.parseInteger(character);
