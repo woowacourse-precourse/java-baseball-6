@@ -1,13 +1,13 @@
 package baseball;
 
-public class JugeResult {
+public class JudgeResult {
 
     private static final int SUCCESS_STRIKE = 3;
 
     private int ball;
     private int strike;
 
-    public JugeResult() {
+    public JudgeResult() {
         this.ball = 0;
         this.strike = 0;
     }

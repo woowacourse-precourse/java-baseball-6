@@ -3,16 +3,16 @@ package baseball;
 import java.util.List;
 
 public class Judge {
-    private JugeResult jugeResult = new JugeResult();
+    private JudgeResult judgeResult = new JudgeResult();
 
     private static final int START_ROUND = 1;
     private static final int END_ROUND = 3;
 
     public void init() {
-        jugeResult.clear();
+        judgeResult.clear();
     }
 
-    public JugeResult inProgress(List<Ball> computerBaseBall, List<Ball> playerBaseBall) {
+    public JudgeResult inProgress(List<Ball> computerBaseBall, List<Ball> playerBaseBall) {
         init();
 
         for (int i = START_ROUND - 1; i < END_ROUND; i++) {
@@ -22,21 +22,21 @@ public class Judge {
             judging(playerBaseBall, computer, player);
         }
 
-        return jugeResult;
+        return judgeResult;
     }
 
     private void judging(List<Ball> playerBaseBall, Ball computer, Ball player) {
         if (isStrike(computer, player)) {
-            jugeResult.incrementStrike();
+            judgeResult.incrementStrike();
             return;
         }
         if (isBall(computer, playerBaseBall)) {
-            jugeResult.incrementBall();
+            judgeResult.incrementBall();
         }
     }
 
     public boolean isSuccessed() {
-        return jugeResult.isSuccess();
+        return judgeResult.isSuccess();
     }
 
     private boolean isBall(Ball computer, List<Ball> playerBaseBall) {

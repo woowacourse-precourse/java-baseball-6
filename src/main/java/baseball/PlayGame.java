@@ -27,7 +27,7 @@ public class PlayGame {
             outputView.printInputMessage();
 
             playerBaseBall = initPlayer(inputView.inputNumbers());
-            JugeResult jugeResult = judge.inProgress(computerBaseBall.getBalls(), playerBaseBall.getBalls());
+            JudgeResult jugeResult = judge.inProgress(computerBaseBall.getBalls(), playerBaseBall.getBalls());
 
             outputView.printGameResult(jugeResult);
         }

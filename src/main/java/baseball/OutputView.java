@@ -17,13 +17,13 @@ public class OutputView {
     System.out.print(INPUT_NUMBER_MESSAGE);
   }
 
-  public void printGameResult(JugeResult jugeResult) {
+  public void printGameResult(JudgeResult jugeResult) {
     isPrintNothing(jugeResult);
     isPrintBallAndStrike(jugeResult);
     isPrintBallOrStrike(jugeResult);
   }
 
-  private void isPrintBallOrStrike(JugeResult jugeResult) {
+  private void isPrintBallOrStrike(JudgeResult jugeResult) {
     if (jugeResult.isOnlyBall()) {
       System.out.printf("%d" + HIT_BALL_MESSAGE + "\n", jugeResult.getBall());
     }
@@ -33,7 +33,7 @@ public class OutputView {
     }
   }
 
-  private void isPrintBallAndStrike(JugeResult jugeResult) {
+  private void isPrintBallAndStrike(JudgeResult jugeResult) {
     if (jugeResult.isBallAndStrike()) {
       System.out.printf("%d" + HIT_BALL_MESSAGE + " " +
                       "%d" + HIT_STRIKE_MESSAGE + "\n",
@@ -41,7 +41,7 @@ public class OutputView {
     }
   }
 
-  private static void isPrintNothing(JugeResult jugeResult) {
+  private static void isPrintNothing(JudgeResult jugeResult) {
     if (jugeResult.isNothing()) {
       System.out.println(HIT_NOTHING_MESSAGE);
     }
