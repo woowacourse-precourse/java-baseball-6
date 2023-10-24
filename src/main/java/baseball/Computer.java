@@ -12,29 +12,42 @@ public class Computer {
     private static final Integer MIN_NUM = 1;
     private static final Integer MAX_NUM = 9;
 
-    private Set<Integer> answer = new LinkedHashSet<>();
+    private Set<Integer> answerSet = new LinkedHashSet<>();
+    private List<Integer> answerList;
 
-    // TODO: 메소드 분리하기
+    public Computer() {
+        while (answerSet.size() < NUMBER_DIGIT) {
+            answerSet.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
+        }
+        answerList = setToIntegerList(answerSet);
+    }
+
+    // TODO: Computer에서 GameResult 생성 로직을 관리하는 것이 맞는지 고민하기
     public GameResult calculateGameResult(GameNumber gameNumber) {
         Integer ballCount = 0;
         Integer strikeCount = 0;
-        List<Integer> nums = Arrays.asList(answer.toArray(new Integer[0]));
+
         for (int i = 0; i < NUMBER_DIGIT; i++) {
             int num = gameNumber.getNumberAt(i);
-            if (num == nums.get(i)) {
-                strikeCount += 1;
-                continue;
-            }
-            if (answer.contains(num)) {
-                ballCount += 1;
+
+            if (isStrike(i, num)) {
+                strikeCount++;
+            } else if (isBall(num)) {
+                ballCount++;
             }
         }
         return new GameResult(ballCount, strikeCount);
     }
 
-    public Computer() {
-        while (answer.size() < NUMBER_DIGIT) {
-            answer.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
-        }
+    private Boolean isStrike(Integer index, Integer num) {
+        return num.equals(answerList.get(index));
+    }
+
+    private Boolean isBall(Integer num) {
+        return answerSet.contains(num);
+    }
+
+    private List<Integer> setToIntegerList(Set<Integer> set) {
+        return Arrays.asList(set.toArray(new Integer[0]));
     }
 }
