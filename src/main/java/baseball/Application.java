@@ -34,5 +34,12 @@ public class Application {
         return Console.readLine();
     }
 
+    // 사용자 입력의 길이가 3인지 검증
+    private static void validateInputLength(String input) {
+        if (input.length() != DIGIT_COUNT) {
+            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
+        }
+    }
+
 
 }
