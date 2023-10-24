@@ -6,17 +6,15 @@ public class Application {
     private static Computer computer;
 
     public static void main(String[] args) {
-        boolean isGameContinuing = true;
         start();
-        while (isGameContinuing) {
+        do {
             init();
             process();
-            isGameContinuing = restart();
-        }
+        } while (restart());
     }
 
     private static void start() {
-        MessageStream.printStartMessage();
+        OutputMessage.printStartMessage();
     }
 
     private static void init() {
@@ -24,20 +22,24 @@ public class Application {
     }
 
     private static void process() {
-        while (true) {
-            MessageStream.printInputMessage();
-            List<Integer> userInput = MessageStream.predictionInput();
-            List<Integer> compareResult = computer.compareWithAnswer(userInput);
-            MessageStream.printResultMessage(compareResult.get(0), compareResult.get(1));
-            if (compareResult.get(1).equals(3)) {
-                break;
-            }
-        }
+        int ballCount, strikeCount;
+        do {
+            OutputMessage.printInputMessage();
+
+            List<Integer> compareResult = computer.compareWithAnswer(InputMessage.predictionInput());
+            ballCount = compareResult.get(0);
+            strikeCount = compareResult.get(1);
+
+            OutputMessage.printResultMessage(ballCount, strikeCount);
+        } while (!gameEnded(strikeCount));
+    }
+
+    private static Boolean gameEnded(int strikeCount) {
+        return strikeCount == 3;
     }
 
     private static Boolean restart() {
-        MessageStream.restartMessage();
-        String isRestarting = MessageStream.restartInput();
-        return isRestarting.equals("1");
+        OutputMessage.restartMessage();
+        return InputMessage.restartInput().equals("1");
     }
 }
