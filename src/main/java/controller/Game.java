@@ -62,7 +62,7 @@ public class Game {
         answerNumber = answer.getAnswerNumber();
         int strike = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (samePosition(inputNumber[i], answerNumber.get(i))) {
+            if (inputNumber[i] == answerNumber.get(i)) {
                 strike++;
             }
         }
@@ -77,7 +77,7 @@ public class Game {
     }
 
     private int getBall(int[] inputNumber) {
-        List<Integer> answerNumber = answer.getAnswerNumber();
+        answerNumber = answer.getAnswerNumber();
         int ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (isInAnswer(inputNumber[i], answerNumber.get(i))) {
