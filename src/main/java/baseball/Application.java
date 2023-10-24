@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.*;
 public class Application {
     public static String START_MSG = "숫자 야구 게임을 시작합니다.";
     public static String INPUT_MSG = "숫자를 입력해주세요 : ";
+    public static int LIST_LEN = 3;
 
     public static void main(String[] args) throws IOException {
         // TODO: 프로그램 구현
@@ -23,7 +24,12 @@ public class Application {
             String input = br.readLine();
 
             List<Integer> user = getUserNumbers(input);
-
+            //step3. 사용자 입력을 바탕으로 스트라이크/볼 개수 기록
+            int[] result = countStrikesAndBalls(computer, user);
+            //스트라이크 개수 기록
+            int strike = result[0];
+            //볼 개수 기록
+            int ball = result[1];
         }
     }
 
@@ -69,5 +75,26 @@ public class Application {
         }
 
         return user;
+    }
+
+    /**
+     * 사용자의 입력 리스트 바탕으로 스트라이크/볼 개수를 배열에 저장해 반환하는 함수
+     * result[0]은 strike를 의미
+     * 같은 수가 같은 자리에 있으면 strike
+     * result[1]은 ball을 의미
+     * 같은 수가 다른 자리에 있으면 ball
+     */
+    public static int[] countStrikesAndBalls(List<Integer> computer, List<Integer> user) {
+        int[] result = {0, 0};
+        for(int i = 0; i < LIST_LEN; i++) {
+            if(Objects.equals(computer.get(i), user.get(i))) {
+                result[0]++;
+            } else {
+                if(computer.contains(user.get(i))) {
+                    result[1]++;
+                }
+            }
+        }
+        return result;
     }
 }
