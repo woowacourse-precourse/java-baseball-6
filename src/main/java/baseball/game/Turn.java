@@ -37,7 +37,7 @@ public class Turn {
     }
 
     private void updateIsPlayingBy(BallCount ballCount) {
-        if (ballCount.isFullCount()) {
+        if (!ballCount.isFullCount()) {
             return;
         }
         turnStatus = TurnStatus.TURNOVER;
