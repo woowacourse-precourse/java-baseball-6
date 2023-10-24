@@ -45,7 +45,7 @@ public class NumberBaseballApp{
 
     private void throwIfInvalidExitInput(String exitInput){
         if (!exitInput.equals("1") && !exitInput.equals("2")){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid exit input : Exit input should be 1 or 2.");
         }
     }
 

@@ -39,7 +39,7 @@ public class GameManager{
 
     private void throwIfNotNumericValue(char c){
         if(c-'0'<0||c-'0'>9){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid number input : Number input should be a numeric value");
         }
     }
 

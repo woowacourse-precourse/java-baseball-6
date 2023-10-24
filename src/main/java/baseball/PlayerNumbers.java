@@ -19,13 +19,13 @@ public class PlayerNumbers{
 
     private void throwIfInvalidLength(List<Integer> playerNumbers){
         if (playerNumbers.size() != 3){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid player numbers length : Player numbers should be 3 length.");
         }
     }
 
     private void throwIfDuplicated(List<Integer> playerNumbers){
         if (isDuplicated(playerNumbers)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Duplicated player numbers : Player numbers should not have duplicated numbers.");
         }
     }
 
@@ -42,7 +42,7 @@ public class PlayerNumbers{
 
     private void throwIfNotInRange(List<Integer> playerNumbers){
         if(isNotInRange(playerNumbers)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Player numbers not in range : Player numbers should be between 1 and 9.");
         }
     }
 
