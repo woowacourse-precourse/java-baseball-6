@@ -6,15 +6,20 @@ import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
+
+    private static List<Integer> convertToIntegerList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 
     public List<Integer> readPlayerNumber() {
         printConsoleMessage(ConsoleMessage.INPUT_PLAYER_NUMBER.getMessage());
         String input = Validator.getValidatedPlayerNumber(Console.readLine());
-        return Arrays.stream(input.split(""))
-                .map(Integer::parseInt)
-                .toList();
+        return convertToIntegerList(input);
     }
 
     public String readGameCommand() {
