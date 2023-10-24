@@ -3,16 +3,20 @@ package game;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
-    private static Validation err_check = new Validation();
-    public String input;
 
-    public boolean InputNum() {
-        System.out.print("숫자를 입력해주세요: ");
-        String num = Console.readLine();
-        if(err_check.validation_check(num)){
-            input = num;
-            return true;
-        }
-        return false;
+    private static Validation validation = new Validation();
+
+    // 입력, 입력 검사
+    public String Input() {
+        String input = Console.readLine();
+        validation.validation_check(input);
+        return input;
+    }
+
+    // 게임 재시작/종료 입력
+    public static boolean restart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return validation.change(Console.readLine());
     }
 }
