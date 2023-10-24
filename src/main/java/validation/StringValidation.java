@@ -1,12 +1,12 @@
 package validation;
 
 public class StringValidation {
-    private StringValidation() {}
+
+    private StringValidation() {
+    }
 
     // 문자열에 중복되는 문자가 존재하는지 확인하는 함수
     public static void validateDuplication(final String str) {
-        char ch;
-
         // 중복되는 문자가 존재하면 true 리턴
         for (int i = 0; i < str.length(); i++) {
             if (str.indexOf(str.charAt(i)) != i) {
@@ -16,7 +16,7 @@ public class StringValidation {
     }
 
     public static void validateLength(final String str, final int length) {
-        if(str.length() > length) {
+        if (str.length() > length) {
             throw new IllegalArgumentException();
         }
     }
@@ -25,7 +25,7 @@ public class StringValidation {
     public static int validateInteger(final String str) {
         try {
             return Integer.parseInt(str);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
