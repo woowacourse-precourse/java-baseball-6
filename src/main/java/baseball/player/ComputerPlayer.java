@@ -1,35 +1,27 @@
 package baseball.player;
 
-import static baseball.common.Constants.endInclusive;
-import static baseball.common.Constants.numDigit;
-import static baseball.common.Constants.startInclusive;
-
+import baseball.common.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ComputerPlayer {
-    private HashSet<Integer> computer;
+    private List<Integer> computer = new ArrayList<>();
 
     public ComputerPlayer() {
-        pickNumber();
+        generateNumbers();
     }
 
-    public void pickNumber() {
-        computer = new LinkedHashSet<>();
-        while(computer.size() < numDigit) {
-            int randomNum = Randoms.pickNumberInRange(startInclusive, endInclusive);
-            computer.add(randomNum);
+    public void generateNumbers() {
+        while(computer.size() < Constants.numDigit) {
+            int randomNumber = Randoms.pickNumberInRange(Constants.startNum, Constants.lastNum);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
         }
     }
 
-    public void clear() {
-        this.computer.clear();
-    }
-
     public List<Integer> getComputerNumber() {
-        return computer.stream().collect(Collectors.toList());
+        return computer;
     }
 }
