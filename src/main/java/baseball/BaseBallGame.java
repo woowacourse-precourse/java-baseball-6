@@ -26,12 +26,12 @@ public class BaseBallGame {
         } while (!result.isAllStrike());
     }
 
-    /* 사용자에게 입력을 받는 메소드 */
+    /* 입력 받는 메소드 */
     private String getUserInput() {
         return Console.readLine();
     }
 
-    /* 사용자에게 볼을 입력받는 메소드 */
+    /* 사용자에게 볼 입력받는 메소드 */
     private String inputUserBalls(){
         System.out.print("숫자를 입력해 주세요 : ");
         String input = getUserInput();
@@ -53,14 +53,14 @@ public class BaseBallGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    /* 종료시, 사용자 입력 값의 유효성 확인 메서드 */
+    /* 종료시, 사용자 입력 값의 유효성 확인 메소드 */
     private void validateInput(String input) {
         if (!input.equals(CONTINUE_NUMBER) && !input.equals(END_NUMBER)) {
             throw new IllegalArgumentException("1 또는 2만 입력하세요.");
         }
     }
 
-    /* 사용자가 제대로된 값을 입력했는지 확인하는 메소드 */
+    /* 사용자가 제대로 된 값을 입력 했는지 확인하는 메소드 */
     private void validateUserInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력 값의 길이가 잘못 되었습니다.");
