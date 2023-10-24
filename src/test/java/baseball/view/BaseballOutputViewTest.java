@@ -54,12 +54,12 @@ public class BaseballOutputViewTest {
 
     static Stream<Arguments> provideMatchResultTestArguments() {
         return Stream.of(
-                arguments(new Score(new Ball(1), new Strike(1)), "1볼 1스트라이크\n", false),
-                arguments(new Score(new Ball(1), new Strike(0)), "1볼\n", false),
-                arguments(new Score(new Ball(2), new Strike(0)), "2볼\n", false),
-                arguments(new Score(new Ball(0), new Strike(1)), "1스트라이크\n", false),
-                arguments(new Score(new Ball(0), new Strike(0)), "낫싱\n", false),
-                arguments(new Score(new Ball(0), new Strike(3)), "3스트라이크\n", true)
+                arguments(Score.from(Ball.from(1), Strike.from(1)), "1볼 1스트라이크\n", false),
+                arguments(Score.from(Ball.from(1), Strike.from(0)), "1볼\n", false),
+                arguments(Score.from(Ball.from(2), Strike.from(0)), "2볼\n", false),
+                arguments(Score.from(Ball.from(0), Strike.from(1)), "1스트라이크\n", false),
+                arguments(Score.from(Ball.from(0), Strike.from(0)), "낫싱\n", false),
+                arguments(Score.from(Ball.from(0), Strike.from(3)), "3스트라이크\n", true)
         );
     }
 }
