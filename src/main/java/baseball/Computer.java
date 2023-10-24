@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Computer {
+
     // 컴퓨터 숫자 랜덤 설정
     public ArrayList<Integer> setComputerNumber(ArrayList<Integer> computerNumber) {
         // computerNumber 초기화를 위함
         // computerNumber 내에 원소가 하나라도 있다면 비우기
-        if (!computerNumber.isEmpty()){
-            while(!computerNumber.isEmpty()){
+        if (!computerNumber.isEmpty()) {
+            while (!computerNumber.isEmpty()) {
                 computerNumber.remove(0);
             }
         }
