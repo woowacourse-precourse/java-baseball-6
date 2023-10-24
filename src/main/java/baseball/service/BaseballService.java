@@ -10,11 +10,12 @@ import java.util.List;
 /*
  *   야구 게임의 기능을 담당하는 클래스
  * */
+
 public class BaseballService {
     private static final int COMPUTER_NUMBER_BEGIN = 1;
     private static final int COMPUTER_NUMBER_END = 9;
     private static final int COMPUTER_NUMBER_SIZE = 3;
-    private static final String STRING_ONE = "1";
+    private static final String CONTINUE_GAME = "1";
 
     public BaseballNumber initializeComputerNumber() {
         List<Integer> computerNumber = Util.createRandomNumberList(COMPUTER_NUMBER_SIZE, COMPUTER_NUMBER_BEGIN,
@@ -24,7 +25,7 @@ public class BaseballService {
 
     public boolean isContinueGame(String inputRestartOrEnd) {
         Validator.validateStringIsOneOrTwo(inputRestartOrEnd);
-        return inputRestartOrEnd.equals(STRING_ONE);
+        return inputRestartOrEnd.equals(CONTINUE_GAME);
     }
 
     public BaseballScore compareBaseballNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {

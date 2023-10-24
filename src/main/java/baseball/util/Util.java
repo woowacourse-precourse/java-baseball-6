@@ -5,11 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ *   기능을 작은 단위로 나눴을때에 일반화될 가능성이 있는 메서드를 모은 클래스
+ * */
+
 public class Util {
     public static final String NATURAL_NUMBER_REGULAR_EXPRESSION = "^[0-9]*$";
     private static final int COUNT_ZERO = 0;
     private static final char CHAR_ZERO = '0';
-
 
     public static List<Integer> createRandomNumberList(int size, int numberBegin, int numberEnd) {
         List<Integer> randomNumberList = new ArrayList<>();
@@ -22,7 +25,6 @@ public class Util {
         return randomNumberList;
     }
 
-    //완성시 모든 메서드 테스트
     public static List<Integer> naturalNumberstringToIntegerList(String string) {
         Validator.validateStringIsNaturalNumber(string, "문자열이 자연수로 이루어있지않습니다.");
         List<Integer> integerList = new ArrayList<>();
