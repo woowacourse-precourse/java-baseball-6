@@ -14,7 +14,7 @@ public class Application {
                 String restartInput = Console.readLine();
                 if (!restartInput.equalsIgnoreCase("1") && !restartInput.equalsIgnoreCase("2")) {
                     System.out.println("잘못 입력하셨습니다.");
-                    continue;
+                    throw new IllegalArgumentException("잘못 입력한 값입니다.");
                 } else if (restartInput.equalsIgnoreCase("2")) {
                     break;
                 }

@@ -30,8 +30,10 @@ public class UserInputValidator {
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("1부터 9 사이의 서로 다른 숫자를 입력해주세요.");
+                throw new IllegalArgumentException("잘못 입력한 값입니다.");
             } catch (IllegalArgumentException e) {
                 System.out.println("서로 다른 숫자를 입력해주세요.");
+                throw new IllegalArgumentException("잘못 입력한 값입니다.");
             }
         }
 
