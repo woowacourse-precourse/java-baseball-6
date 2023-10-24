@@ -4,16 +4,19 @@ import baseball.service.GameResult;
 import baseball.service.Judgement;
 import baseball.service.domain.BaseballCollection;
 import baseball.service.domain.RandomNumberGenerator;
-import baseball.view.ConsoleInput;
 import baseball.view.Input;
 import baseball.view.Output;
 
 public class GameManager {
-    // TODO: 객체 직접 생성 제거하도록 리팩터링 해야함
-    // TODO: 컴퓨터 공과 사용자 공은 핵심 비즈니스이다. 이 정보를 굳이 컨트롤러에 노출하는게 맞을까?
-    private RestartCommandValidator validator = new RestartCommandValidator();
-    private Judgement judgment = new Judgement();
-    private Input input = new ConsoleInput();
+    private final RestartCommandValidator validator;
+    private final Judgement judgment;
+    private final Input input;
+
+    public GameManager(RestartCommandValidator validator, Judgement judgment, Input input) {
+        this.validator = validator;
+        this.judgment = judgment;
+        this.input = input;
+    }
 
     // 기능: 게임을 최초로 시작한다
     public void initialGameStart() {
@@ -46,9 +49,6 @@ public class GameManager {
         Output.printRestartGameMessage();
         String restartCommand = input.readLine();
         validator.validateRestartCommandInput(restartCommand);
-        if (restartCommand.equals("2")) {
-            return true;
-        }
-        return false;
+        return restartCommand.equals("2");
     }
 }
