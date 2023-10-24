@@ -6,7 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
     List<Integer> randomNum = new ArrayList<>();
@@ -36,6 +38,7 @@ public class Game {
         do{
             answer = getNum();
             changeIntArray(answer);
+            validateDuplcate(answerNum);
         }while (checkResult()!=3);
     }
     public void changeIntArray(String answer) {
@@ -47,14 +50,29 @@ public class Game {
     public String getNum(){
         System.out.print(GETNUM_MESSEAGE);
         String answer = Console.readLine();
-        illegalArgumentException(answer);
+        validateSize(answer);
+        validateType(answer);
+
         return answer;
     }
-    public void illegalArgumentException(String answer) {
-        if(answer.length()!=3 || !answer.matches("\\d+")){
+    public void validateSize(String answer) {
+        if(answer.length()!=3){
             throw new IllegalArgumentException();
         }
     }
+    public void validateType(String answer) {
+        if(!answer.matches("\\d+")){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateDuplcate(List<Integer> answerNum){
+        Set<Integer> nonDuplicateNumbers = new HashSet<>(answerNum);
+        if(nonDuplicateNumbers.size() != answerNum.size()){
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public int checkResult(){
 
