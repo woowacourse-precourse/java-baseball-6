@@ -18,7 +18,7 @@ public class Game {
         List<Integer> rivalNumber;
         List<Integer> myGuessNumber;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printStartMessage();
         rivalNumber = makeRivalNumber();
         System.out.println(rivalNumber);
 
@@ -28,8 +28,15 @@ public class Game {
             strike = 3;
         }
 
+        printFinishMessage();
+    }
+
+    private void printStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private void printFinishMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private List makeRivalNumber() {
@@ -60,6 +67,7 @@ public class Game {
     }
 
     private boolean inputRegame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
