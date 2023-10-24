@@ -58,6 +58,7 @@ class BaseballGame {
                     if (askNewGame()) { // 게임 재시작 o
                         startNewGame();
                     } else { // 재시작 x
+                        isGameover = true;
                         break;
                     }
                 }
@@ -167,7 +168,23 @@ class User {
 
     public int userInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        int userInput = Integer.parseInt(Console.readLine());
+        String userInputStr = Console.readLine().trim();
+
+        if (userInputStr.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        int userInput;
+        try {
+            userInput = Integer.parseInt(userInputStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!isValidGuess(userInput)) {
+            throw new IllegalArgumentException();
+        }
+
         return userInput;
     }
 
@@ -176,11 +193,10 @@ class User {
         List<Integer> digits = new ArrayList<>();
         int length = (int) (Math.log10(input) + 1);
 
-        digits.add(input / 100); // 100의자리
-        digits.add((input % 100) / 10); // 10의자리
-        digits.add(input % 10); // 1의자리
+        digits.add(input / 100); 
+        digits.add((input % 100) / 10);
+        digits.add(input % 10);
 
         return (length == 3) && (digits.stream().distinct().count() == 3);
-        // digits 안의 수가 서로 다른 세 수인지 확인
     }
 }
