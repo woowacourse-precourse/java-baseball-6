@@ -9,6 +9,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        StringBuilder sb = new StringBuilder();
 
         // 입력 받은 내용을 처리하거나 출력하기
         List<Integer> computer = new ArrayList<>();
@@ -23,17 +24,43 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-//        while(true){
+        while(true){
             System.out.print("숫자를 입력해주세요 : ");
 
             String userInput = readLine();
 
             System.out.println("사용자가 입력한 값: " + userInput);
 
+            String str[] = userInput.split("");
 
-//        }
+            int strike = 0;
+            int ball = 0;
 
+            for(int i=0; i<userInput.length(); i++){
+                if(computer.get(i) == Integer.parseInt(str[i])){
+                    strike++;
+                } else if(computer.contains(Integer.parseInt(str[i]))){
+                    ball++;
+                }
+            }
+            if(ball != 0){
+                System.out.print(ball + "볼 ");
+            }
+            if(strike != 0){
+                System.out.print(strike + "스트라이크");
+            }
 
+            System.out.println();
 
+            if(strike == 3) {
+
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                String tf = readLine();
+
+                if(tf.equals("2")) break;
+            }
+        }
     }
 }
