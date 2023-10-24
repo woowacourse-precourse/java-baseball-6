@@ -32,8 +32,11 @@
 - ### 추가
   - RandomNumberMaker() 추가
   - RandomNumberMaker.maker() 테스트 추가 
+  - makeUserNumber 메소드 추가 (Application class내부)
+  - makeUserNumber 메소드 테스트 추가
 - ### 취소
   - 입출력 기능은 라이브러리가 제공되고 여러군데 쓰이고 특별한 과정이 필요 없으므로 클래스를 통한 구현이 필요 없다고 판단
 - ### 진행중
+  - ConfirmNumber 관련 기능 제작중
   
     
