@@ -1,8 +1,9 @@
 package baseball;
 
 public class Game {
+    private static final String GAME_OVER_MESSAGE = "게임을 종료합니다.";
 
-    public static void run() {
+    public static void start() {
         Computer computer = new Computer();
 
         while (!Check.isThreeStrike()) {
@@ -11,16 +12,23 @@ public class Game {
             check.printResult();
         }
 
-        rerun();
+        determineRestartGame(Player.isRestart());
     }
 
-    public static void rerun() {
-        boolean result = Player.isRerun();
+    public static void determineRestartGame(boolean result) {
         if (result) {
-            Check.setIsThreeStrike(false);
-            run();
+            restartGame();
         } else {
-            System.out.println("게임을 종료합니다.");
+            quitGame();
         }
+    }
+
+    public static void restartGame() {
+        Check.setIsThreeStrike(false);
+        start();
+    }
+
+    public static void quitGame() {
+        System.out.println(GAME_OVER_MESSAGE);
     }
 }
