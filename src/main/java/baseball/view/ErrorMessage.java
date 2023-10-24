@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.game.constant.GameConstant;
-
 public enum ErrorMessage {
     INVALID_NULL("값을 입력해 주세요."),
     INVALID_INTEGER("입력 값이 정수로 구성되지 않았습니다."),

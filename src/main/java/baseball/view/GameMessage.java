@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.game.constant.GameConstant;
-
 public enum GameMessage {
     GAME_START_MESSAGE("숫자 야구 게임을 시작합니다.\n"),
     PROMPT_FOR_NUMBER("숫자를 입력해주세요 : "),
