@@ -6,7 +6,7 @@ public class Game {
         Computer computer = new Computer();
 
         while (!Check.isThreeStrike()) {
-            Check check = new Check(computer.getComputerNumber(), View.getPlayerNumber());
+            Check check = new Check(computer.getComputerNumber(), Player.getPlayerNumber());
             check.countBallAndStrike();
             check.printResult();
         }
@@ -15,7 +15,7 @@ public class Game {
     }
 
     public static void rerun() {
-        boolean result = View.isRerun();
+        boolean result = Player.isRerun();
         if (result) {
             Check.setIsThreeStrike(false);
             run();
