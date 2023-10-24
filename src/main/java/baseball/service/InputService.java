@@ -10,8 +10,7 @@ public class InputService {
         }
         return input;
     }
-    public static boolean restart(int restartNum, int exitNum){
-        String input=Console.readLine();
+    public static boolean restart(String input, int restartNum, int exitNum){
         if(!isValidNumberInput(input,1,2,1)){
             throw new IllegalArgumentException("일력값이 유효하지 않습니다.");
         }
