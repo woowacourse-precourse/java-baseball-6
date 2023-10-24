@@ -4,20 +4,32 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private static Computer computer;
-    private static User user;
-
     public BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void play() {
-        List<Integer> computerNumber = computer.createComputerNumber();
-        List<Integer> userNumber = user.createUserNumber();
+        Computer computer = new Computer();
+        User user = new User();
 
-        List<Integer> comparedResult = computer.compareEachNumber(computerNumber, userNumber);
-        String resultMessage = computer.createResultMessage(comparedResult);
-        Boolean answerCorrect = computer.checkAnswer(resultMessage);
+        boolean correctAnswer = false;
+
+        List<Integer> computerNumber = computer.createComputerNumber();
+        while (true) {
+            List<Integer> userNumber = user.createUserNumber();
+
+            List<Integer> comparedResult = computer.compareEachNumber(computerNumber, userNumber);
+
+            String resultMessage = computer.createResultMessage(comparedResult);
+            System.out.println(resultMessage);
+
+            correctAnswer = computer.checkAnswer(resultMessage);
+
+            if (correctAnswer) {
+                break;
+            }
+        }
+
         computer.decideGameEndAndRestart();
 
 //        public static void Game() {
