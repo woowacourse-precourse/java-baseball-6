@@ -22,3 +22,8 @@ public final class Utils {
         return computerRandomNumber;
     }
 
+    public static void validateUserInput(String input) {
+        validateStringLength(input, 3);
+        validateStringNaturalNumbers(input);
+        validateAllDifferentCharacters(input);
+    }
