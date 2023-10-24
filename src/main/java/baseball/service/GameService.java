@@ -45,6 +45,17 @@ public class GameService {
         return flag;
     }
 
+    public static boolean restartGame() {
+        int restart = User.getRestart();
+        boolean flag = GameRule.defaultBool;
+        if (restart == 1) {
+            flag = GameRule.correctBool;
+        } else if (restart == 2) {
+            flag = GameRule.defaultBool;
+        }
+        return flag;
+    }
+
     public static int countBall() {
         int ball = 0;
         userNumbers = User.getUser();
