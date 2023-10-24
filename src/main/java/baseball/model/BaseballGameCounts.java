@@ -48,10 +48,6 @@ public class BaseballGameCounts {
         return counts.get(STRIKE).equals(3);
     }
 
-    public void resetCounts() {
-        counts.set(BALL, 0);
-        counts.set(STRIKE, 0);
-    }
 
     public List<Integer> getCounts() {
         return counts;

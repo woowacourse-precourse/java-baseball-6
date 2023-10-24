@@ -41,8 +41,4 @@ public class UserNumber {
             throw new IllegalArgumentException("잘못된 입력입니다. 중복된 자리 수가 있습니다.");
         }
     }
-
-    public void resetUserNumber() {
-        this.userNumber.clear();
-    }
 }

@@ -33,10 +33,6 @@ public class BaseballGame {
                 GameView.printGameWinMessage();
                 return;
             }
-
-            baseballGameCounts.resetCounts();
-
-            user.resetUserNumber();
         }
     }
 }
