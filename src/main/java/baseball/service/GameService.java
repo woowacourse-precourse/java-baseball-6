@@ -2,34 +2,33 @@ package baseball.service;
 
 import baseball.config.withinRange;
 import baseball.util.Validate;
+import baseball.view.OutputVIew;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
+    public final static String RE_PLAY = "1";
+    public final static String GAME_OVER = "2";
+
     private final Validate validate;
-    private final static String REQUEST_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private final static String BALL = "볼 ";
-    private final static String STRIKE = "스트라이크";
-    private final static String NOTHING = "낫싱";
-    private final static String RE_PLAY = "1";
-    private final static String GAME_OVER = "2";
-    private final static String GAME_OVER_MESSAGE = "게임을 종료합니다.";
-    private final static String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final static String WRONG_INPUT_MESSAGE = "잘못된 입력입니다.";
+    private final OutputVIew outputVIew;
 
     private boolean play = true;
 
-    public GameService(Validate validate) {
+    public GameService(Validate validate, OutputVIew outputVIew) {
         this.validate = validate;
+        this.outputVIew = outputVIew;
     }
 
     public void solvingProblem() {
         GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
         List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(new withinRange(1, 9));
 
+        System.out.println(answerRandomList);
+
         while (play) {
-            System.out.print(REQUEST_INPUT_NUMBER_MESSAGE);
+            outputVIew.printRequestInputNumberMessage();
             String str = Console.readLine();
 
             try {
@@ -75,24 +74,24 @@ public class GameService {
         }
     }
 
-    public void printResultMessage(int StrikeCount, int BallCount) {
-        if (BallCount > 0) {
-            System.out.print(BallCount + BALL);
+    public void printResultMessage(int strikeCount, int ballCount) {
+        if (ballCount > 0) {
+            outputVIew.printBall(ballCount);
         }
 
-        if (StrikeCount > 0) {
-            System.out.print(StrikeCount + STRIKE);
+        if (strikeCount > 0) {
+            outputVIew.printStrike(strikeCount);
         }
 
-        if (StrikeCount == 0 && BallCount == 0) {
-            System.out.print(NOTHING);
+        if (strikeCount == 0 && ballCount == 0) {
+            outputVIew.printNothing();
         }
 
         System.out.println();
     }
 
     public void printGameEndMessage() {
-        System.out.println(GAME_CLEAR_MESSAGE);
+        outputVIew.printGameClear();
         String input = Console.readLine();
 
         try {
@@ -103,12 +102,12 @@ public class GameService {
 
                 if (input.equals(GAME_OVER)) {
                     gamePause();
-                    System.out.println(GAME_OVER_MESSAGE);
+                    outputVIew.printGameOver();
                 }
             }
         } catch (IllegalArgumentException e) {
             gamePause();
-            System.out.println(WRONG_INPUT_MESSAGE);
+            outputVIew.printWrongInput();
             e.getMessage();
         }
     }
