@@ -16,6 +16,17 @@ public class GameResult {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }
+    public static GameResult init() {
+        return new GameResult(0, 0);
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
 
     public static GameResult from(int strikeCount, int ballCount) {
         checkStrikeAndBallTotalCount(strikeCount, ballCount);
