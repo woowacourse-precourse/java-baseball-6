@@ -28,6 +28,8 @@ public class BaseballGame {
         if (setGame()) {
             run();
         } else {
+            gameView.printExitGame();
+            return;
         }
 
 
