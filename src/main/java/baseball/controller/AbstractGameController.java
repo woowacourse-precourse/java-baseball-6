@@ -28,7 +28,7 @@ public abstract class AbstractGameController implements GameController {
     }
 
     private static boolean isCorrect(Map<String, Integer> scoreResult) {
-        return scoreResult.getOrDefault("홈런", 0) == 3;
+        return scoreResult.getOrDefault("스트라이크", 0) == 3;
     }
 
     public GameState getGameState() {

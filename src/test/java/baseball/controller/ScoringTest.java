@@ -15,17 +15,17 @@ class ScoringTest {
     }
 
     @Test
-    public void 홈런3() {
+    public void 스트라이크3() {
         Scoring scoring = new Scoring(123);
         Map<String, Integer> resultMap = scoring.score("123");
-        assertEquals(3, (int) resultMap.get("홈런"));
+        assertEquals(3, (int) resultMap.get("스트라이크"));
     }
 
     @Test
-    public void 홈런1_볼2() {
+    public void 스트라이크1_볼2() {
         Scoring scoring = new Scoring(123);
         Map<String, Integer> resultMap = scoring.score("132");
-        assertEquals(1, (int) resultMap.get("홈런"));
+        assertEquals(1, (int) resultMap.get("스트라이크"));
         assertEquals(2, (int) resultMap.get("볼"));
     }
 

@@ -14,8 +14,8 @@ public final class Scoring {
     public Map<String, Integer> score(String validUserInput) {
         Map<String, Integer> resultMap = new HashMap<>();
         for (int i = 0; i < answer.length(); i++) {
-            if (isHomerun(validUserInput, i)) {
-                resultMap.put("홈런", resultMap.getOrDefault("홈런", 0) + 1);
+            if (isStrike(validUserInput, i)) {
+                resultMap.put("스트라이크", resultMap.getOrDefault("스트라이크", 0) + 1);
             } else if (isBall(validUserInput, i)) {
                 resultMap.put("볼", resultMap.getOrDefault("볼", 0) + 1);
             }
@@ -23,7 +23,7 @@ public final class Scoring {
         return resultMap;
     }
 
-    private boolean isHomerun(String validUserInput, int i) {
+    private boolean isStrike(String validUserInput, int i) {
         return answer.charAt(i) == validUserInput.charAt(i);
     }
 
