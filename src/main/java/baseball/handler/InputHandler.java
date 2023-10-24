@@ -8,6 +8,7 @@ public class InputHandler {
     private final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private final InputValidator inputValidator;
+
     public InputHandler() {
         inputValidator = new InputValidator();
     }
@@ -15,7 +16,7 @@ public class InputHandler {
     public String getNumbers() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        inputValidator.doValidate(input);
+        inputValidator.validateInput(input);
         return input;
     }
 

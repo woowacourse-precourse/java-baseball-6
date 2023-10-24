@@ -17,21 +17,21 @@ class InputValidatorTest {
 
         String test1 = "1234";
 
-        Assertions.assertThatThrownBy(() -> inputValidator.doValidate(test1))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateInput(test1))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage(InputException.NOT_THREE.getMessage());
     }
 
     @Test
     void 숫자가_아닌_입력() {
         String test2 = "abc";
-        Assertions.assertThatThrownBy(() -> inputValidator.doValidate(test2))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateInput(test2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage(InputException.NOT_NUMBER.getMessage());
     }
 
     @Test
     void 중복_숫자_입력() {
         String test3 = "122";
-        Assertions.assertThatThrownBy(() -> inputValidator.doValidate(test3))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateInput(test3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(InputException.HAS_DUPLICATE_NUMBER.getMessage());
     }

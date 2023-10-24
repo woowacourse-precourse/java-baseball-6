@@ -1,6 +1,5 @@
 package baseball.Exception;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +9,7 @@ public class InputValidator {
     private final String QUIT_COMMAND = "2";
     private final int AVAIL_LENGTH = 3;
 
-    public void doValidate(String input) {
+    public void validateInput(String input) throws IllegalArgumentException {
         if (!isThreeLength(input)) {
             throw new IllegalArgumentException(InputException.NOT_THREE.getMessage());
         }
@@ -24,7 +23,7 @@ public class InputValidator {
         }
     }
 
-    public void validateCommand(String command) {
+    public void validateCommand(String command) throws IllegalArgumentException {
         if (!isCommand(command)) {
             throw new IllegalArgumentException(InputException.WRONG_COMMAND.getMessage());
         }
