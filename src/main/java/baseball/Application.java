@@ -8,9 +8,10 @@ import java.util.List;
 
 public class Application {
     public static int maxSize = 3;
-    //비교할 랜덤한 숫자 3개를 저장할 리스트
-    public static List<Integer> randomNumbers = generateRandomNumbers(); // 컴퓨터가 낸 답
+    //비교할 랜덤한 숫자 3개를 저장할 리스트 선언
+    public static List<Integer> randomNumbers;
     public static boolean playGame() {
+        System.out.println("randomNumbers: " + randomNumbers);
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
@@ -33,7 +34,6 @@ public class Application {
 
         printResult(strikes, balls);
         if (strikes == maxSize) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
         return true;
@@ -62,7 +62,7 @@ public class Application {
         int balls = 0;
         for (int i =0; i<maxSize; i++){
             for (int j =0; j<maxSize; j++){
-                if (i != j && numbers.get(i).equals(randomNumbers.get(i))){
+                if (i != j && numbers.get(i).equals(randomNumbers.get(j))){
                     balls++;
                 }
             }
@@ -72,6 +72,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        randomNumbers = generateRandomNumbers();
         boolean isContinue = true;
         while(isContinue){
             isContinue = playGame();
@@ -82,21 +83,26 @@ public class Application {
                 if ("2".equals(checkStart)){
                     System.out.println("게임 종료");
                     break;
+                } else {
+                    randomNumbers = generateRandomNumbers(); // 완전히 새로운 게임 시작 전 랜덤 숫자 재생성
+                    isContinue = true;
                 }
-                isContinue = true;
+
             }
         }
     }
 
     public static void printResult(int strikes, int balls){
-        if (strikes == 0 && balls == 0){
+        if (strikes == maxSize) {
+            System.out.println("3스트라이크");
+        } else if (strikes == 0 && balls == 0){
             System.out.println("낫싱");
         } else if (balls == 0) {
             System.out.println(strikes + "스트라이크");
         } else if (strikes == 0) {
             System.out.println(balls + "볼");
         } else {
-            System.out.println(balls + " 볼 " + strikes + " 스트라이크");
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
         }
     }
 
