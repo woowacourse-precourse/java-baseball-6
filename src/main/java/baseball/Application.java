@@ -16,6 +16,7 @@ public class Application {
     private static boolean isOver;
     private static String restartOrEndFlag;
     private static boolean isSucceed;
+    private static final String RESTART = "1";
     private static final String TERMINATE = "2";
 
     public static void main(String[] args) throws IllegalArgumentException {
@@ -37,6 +38,7 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restartOrEndFlag = Console.readLine();
+            isValidTerminationChoice();
             isOver();
         }
     }
@@ -119,6 +121,12 @@ public class Application {
     public static void isSucceed() {
         if (strike == 3) {
             isSucceed = true;
+        }
+    }
+
+    public static void isValidTerminationChoice() {
+        if (!(restartOrEndFlag.equals(TERMINATE) || restartOrEndFlag.equals(RESTART))) {
+            throw new IllegalArgumentException();
         }
     }
 
