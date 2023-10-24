@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
     }
 
@@ -16,7 +15,6 @@ public class Application {
         String input;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        outer:
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
@@ -24,9 +22,16 @@ public class Application {
             String comment = takeTurn(computer, inputNumbers);
             System.out.println(comment);
 
-            break outer;
+            if (isEnd(comment)) {
+                break;
+            }
         }
     }
+
+    private static boolean isEnd(String comment) {
+        return comment.contains("게임 종료");
+    }
+
 
     private static String takeTurn(List<Integer> computer, List<Integer> inputNumbers) {
         String comment = "";
