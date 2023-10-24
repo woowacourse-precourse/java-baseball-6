@@ -6,16 +6,14 @@ public class InputView {
     private static final String INPUT_REQUEST_MESSAGE = "숫자를 입력해주세요 : ";
 
 
-    public void printInputRequestMessage() {
+    public static void printInputRequestMessage() {
         System.out.print(INPUT_REQUEST_MESSAGE);
     }
 
-    public void printStartMessage() {
+    public static void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
-    public void printRestartMessage() {
+    public static void printRestartMessage() {
         System.out.println(RESTART_MESSAGE);
     }
-
-
 }
