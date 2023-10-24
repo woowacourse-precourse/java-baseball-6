@@ -8,6 +8,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import baseball.utils.ValidationUtils;
 
+import baseball.utils.NumberListGenerator;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -34,7 +36,7 @@ public class Application {
 
 
     private static void newGame() {
-        List<Integer> computer = generateUnique3DigitNum();
+        List<Integer> computer = NumberListGenerator.generateUnique3DigitNum();
         playGame(computer);
     }
 
@@ -94,20 +96,5 @@ public class Application {
         }
         return list;
     }
-
-
-
-    private static List<Integer> generateUnique3DigitNum() {
-        List<Integer> list = new ArrayList<>();
-        while (list.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!list.contains(randomNumber)) {
-                list.add(randomNumber);
-            }
-        }
-        return list;
-    }
-
-
 
 }
