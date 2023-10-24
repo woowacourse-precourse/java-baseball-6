@@ -3,7 +3,7 @@ package baseball.domain;
 public class Game {
     int strike;
     int ball;
-    int[] result_arr;
+    int[] randomNumbers;
 
     public void intiField() {
         strike = 0;
@@ -20,12 +20,12 @@ public class Game {
     }
 
 
-    public int[] getResult_arr() {
-        return result_arr;
+    public int[] getRandomNumbers() {
+        return randomNumbers;
     }
 
-    public void setResult_arr(int[] result_arr) {
-        this.result_arr = result_arr;
+    public void setRandomNumbers(int[] randomNumbers) {
+        this.randomNumbers = randomNumbers;
     }
 
     public void strikeCount() {
