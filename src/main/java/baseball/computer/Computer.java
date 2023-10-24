@@ -9,11 +9,11 @@ public class Computer {
     private static final List<Integer> randomList = new ArrayList<>();
 
     // 난수 생성
-    public void initComputerList() {
+    public void init() {
         randomList.clear();
     }
 
-    public List<Integer> createRandomList() {
+    public List<Integer> getNewRandomList() {
         while (randomList.size() < 3) {
             isContain(Randoms.pickNumberInRange(1, 9));
         }
