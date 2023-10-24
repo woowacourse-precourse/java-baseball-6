@@ -12,7 +12,8 @@ public class NumberBaseballGameController {
     private final NumberBaseballGameOutputView outputView;
     private final NumberBaseBallGame numberBaseBallGame;
 
-    public NumberBaseballGameController(NumberBaseballGameInputView inputView, NumberBaseballGameOutputView outputView,
+    public NumberBaseballGameController(NumberBaseballGameInputView inputView,
+                                        NumberBaseballGameOutputView outputView,
                                         NumberBaseBallGame numberBaseballgame) {
         this.inputView = inputView;
         this.outputView = outputView;
@@ -21,13 +22,15 @@ public class NumberBaseballGameController {
 
     public void playGame() {
         outputView.printStartGameMessage();
-        RoundEvaluationResult result;
-        do {
-            result = playRound();
+        while (true) {
+            RoundEvaluationResult result = playRound();
             if (result.isGameOver()) {
                 handleGameOver(result);
             }
-        } while (!result.isExit());
+            if (result.isExit()) {
+                break;
+            }
+        }
     }
 
     private RoundEvaluationResult playRound() {
@@ -40,7 +43,11 @@ public class NumberBaseballGameController {
 
     private void handleGameOver(RoundEvaluationResult result) {
         outputView.printGameOverMessage();
-        result.eveluateRestart(inputView.readRestartResponseInput());
+        result.evaluateRestart(inputView.readRestartResponseInput());
+        initGame();
+    }
+
+    private void initGame() {
         numberBaseBallGame.initRandomNumber();
     }
 }

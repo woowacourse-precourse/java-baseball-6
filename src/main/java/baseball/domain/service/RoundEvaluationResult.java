@@ -23,7 +23,7 @@ public class RoundEvaluationResult {
         return gameStatus == GameStatus.EXIT;
     }
 
-    public void eveluateRestart(String readRestartResponseInput) {
+    public void evaluateRestart(String readRestartResponseInput) {
         gameStatus = GameStatus.of(readRestartResponseInput);
     }
 }

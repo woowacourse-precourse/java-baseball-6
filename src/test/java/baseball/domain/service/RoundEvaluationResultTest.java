@@ -22,7 +22,7 @@ class RoundEvaluationResultTest {
             "1, true"
     })
     void eveluateRestart_게임종료_번호에_따라_게임상태가_올바르게_변경되어야함(String input, boolean expectedIsExit) {
-        result.eveluateRestart(input);
+        result.evaluateRestart(input);
 
         assertEquals(expectedIsExit, !result.isExit());
     }
