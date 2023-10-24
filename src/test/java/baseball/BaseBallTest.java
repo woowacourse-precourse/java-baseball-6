@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import baseball.domain.answer.Answer;
-import baseball.domain.game.Game;
 import baseball.domain.number.Number;
+import baseball.service.game.GameGenerator;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -80,7 +80,7 @@ public class BaseBallTest {
     @MethodSource("numberToTest")
     @DisplayName("인덱스를 비교하여 같으면 스트라이크, 같은 문자가 있다면 볼, 같은문자가 없으면 낫싱 출력")
     void compareTest(List<Integer> number1, List<Integer> number2, String message) {
-        String result = Game.compare(number1, number2);
+        String result = GameGenerator.compare(number1, number2);
         assertThat(result).isEqualTo(message);
     }
 

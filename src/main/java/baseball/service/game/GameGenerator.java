@@ -1,4 +1,4 @@
-package baseball.domain.game;
+package baseball.service.game;
 
 import baseball.domain.answer.Answer;
 import baseball.domain.number.Number;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Game {
+public class GameGenerator {
 
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
@@ -18,12 +18,13 @@ public class Game {
         String result = "";
         while (!result.equals(3 + STRIKE)) {
             Number inputNumber = new Number(Console.readLine());
-            result = Game.compare(inputNumber.toIntList(), answer.toIntList());
+            System.out.println(answer.toIntList());
+            result = GameGenerator.compare(inputNumber.toIntList(), answer.toIntList());
             System.out.println(result);
         }
     }
 
-    private static String compare(List<Integer> number1, List<Integer> number2) {
+    public static String compare(List<Integer> number1, List<Integer> number2) {
         String ballResult = ball(number1, number2);
         String strikeResult = strike(number1, number2);
         String nothingResult = nothing(number1, number2);

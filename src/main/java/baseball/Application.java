@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.domain.answer.Answer;
-import baseball.domain.game.Game;
+import baseball.service.game.GameGenerator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -10,10 +10,10 @@ public class Application {
         String chooseNumber;
         do {
             Answer answer = new Answer();
-            System.out.println(Game.gameStartLog());
-            Game.baseBallGame(answer);
-            System.out.println(Game.gameEndLog());
+            System.out.println(GameGenerator.gameStartLog());
+            GameGenerator.baseBallGame(answer);
+            System.out.println(GameGenerator.gameEndLog());
             chooseNumber = Console.readLine();
-        } while (!chooseNumber.equals("2"));
+        } while (chooseNumber.equals("1"));
     }
 }

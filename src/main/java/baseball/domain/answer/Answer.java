@@ -10,8 +10,7 @@ public class Answer {
     private final List<Integer> answer;
 
     public Answer() {
-        List<Integer> integerList = createAnswer();
-        this.answer = integerList;
+        this.answer = createAnswer();
     }
 
     public List<Integer> toIntList() {
