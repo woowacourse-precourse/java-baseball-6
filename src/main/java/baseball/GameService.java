@@ -9,13 +9,13 @@ public class GameService {
     private final InputService inputService;
     private final RandomService randomService;
     private final CompareService compareService;
-    private List<Integer> computer = new ArrayList<>();
+    private final List<Integer> computer = new ArrayList<>();
     private List<Integer> inputValueList;
 
-    public GameService(InputService inputService, RandomService randomService, CompareService compareService) {
-        this.inputService = inputService;
-        this.randomService = randomService;
-        this.compareService = compareService;
+    public GameService() {
+        this.inputService = new InputService();
+        this.randomService = new RandomService();
+        this.compareService = new CompareService();
     }
 
     public void run() {
