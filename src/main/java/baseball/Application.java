@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     private static String randomNumber;
     private static String inputNumber;
+    private static int ball;
+    private static int strike;
 
     public static void main(String[] args) throws IllegalArgumentException {
         //TODO: 숫자 야구 게임 구현
@@ -38,6 +40,18 @@ public class Application {
                 cnt++;
         }
         return cnt;
+    }
+
+    public static void printAnswerHint() {
+        strike = calculateStrikeCount();
+        ball = calculateBallCount();
+        if (ball == 0 && strike == 0)
+            System.out.print("낫싱");
+        if (ball > 0)
+            System.out.print(ball + "볼 ");
+        if (strike > 0)
+            System.out.print(strike + "스트라이크 ");
+        System.out.println();
     }
 
 }
