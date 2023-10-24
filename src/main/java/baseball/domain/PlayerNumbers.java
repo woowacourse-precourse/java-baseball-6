@@ -49,7 +49,8 @@ public class PlayerNumbers {
     private void throwExceptionIfDuplicatedNumber(List<Integer> numbers) {
         for (int indexOfCurrentNumber = 0; indexOfCurrentNumber < numbers.size(); indexOfCurrentNumber++) {
             List<Integer> remainingNumbers = numbers.subList(indexOfCurrentNumber + 1, numbers.size());
-            if (remainingNumbers.contains(numbers.get(indexOfCurrentNumber))) {
+            int currentNumber = numbers.get(indexOfCurrentNumber);
+            if (remainingNumbers.contains(currentNumber)) {
                 throw new IllegalArgumentException("[ERROR] 숫자는 서로 달라야 합니다.");
             }
         }
@@ -57,7 +58,8 @@ public class PlayerNumbers {
 
     public void checkForBallCount(ComputerNumbers computerNumbers, int digitNumber) {
         for (int indexOfPlayerNumber = 0; indexOfPlayerNumber < digitNumber; indexOfPlayerNumber++) {
-            computerNumbers.compare(numbers.get(indexOfPlayerNumber), indexOfPlayerNumber);
+            int playerNumber = numbers.get(indexOfPlayerNumber);
+            computerNumbers.compare(playerNumber, indexOfPlayerNumber);
         }
     }
 }

@@ -12,7 +12,8 @@ public class ComputerNumbers {
 
     public void compare(int playerNumber, int indexOfPlayerNumber) {
         for (int indexOfComputerNumber = 0; indexOfComputerNumber < numbers.size(); indexOfComputerNumber++) {
-            if (numbers.get(indexOfComputerNumber) == playerNumber) {
+            int computerNumber = numbers.get(indexOfComputerNumber);
+            if (computerNumber == playerNumber) {
                 ballCount(indexOfComputerNumber, indexOfPlayerNumber);
             }
         }
