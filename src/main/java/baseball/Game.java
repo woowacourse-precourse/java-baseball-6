@@ -17,7 +17,7 @@ public class Game {
     }
 
     public Result play(String userPrediction){
-        Result result =  resultFactory.getResult(answer.getHints(
+        Result result =  resultFactory.getResult(answer.getHintsWithUserPrediction(
                 new UserPrediction(
                         Integer.parseInt(String.valueOf(userPrediction.charAt(0))),
                         Integer.parseInt(String.valueOf(userPrediction.charAt(1))),

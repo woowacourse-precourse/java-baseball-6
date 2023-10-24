@@ -15,15 +15,15 @@ public class Answer {
         this.thirdNumber = thirdNumber;
     }
 
-    public List<Hint> getHints(UserPrediction prediction){
+    public List<Hint> getHintsWithUserPrediction(UserPrediction prediction){
         List<Hint> hints = new ArrayList<>();
-        hints.add(getHint(prediction.getFirstNumber(), Order.FIRST));
-        hints.add(getHint(prediction.getSecondNumber(), Order.SECOND));
-        hints.add(getHint(prediction.getThirdNumber(), Order.THIRD));
+        hints.add(getHintWithNumberAndOrder(prediction.getFirstNumber(), Order.FIRST));
+        hints.add(getHintWithNumberAndOrder(prediction.getSecondNumber(), Order.SECOND));
+        hints.add(getHintWithNumberAndOrder(prediction.getThirdNumber(), Order.THIRD));
         return hints;
     }
 
-    private Hint getHint(int number, Order order){
+    private Hint getHintWithNumberAndOrder(int number, Order order){
         if(numAt(order) == number){
             return Hint.STRIKE;
         }

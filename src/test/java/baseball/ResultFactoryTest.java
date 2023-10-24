@@ -11,7 +11,7 @@ class ResultFactoryTest {
         ResultFactory resultFactory = new ResultFactory();
         UserPrediction userPrediction = new UserPrediction(7,8,9);
         Answer answer = new Answer(7,8,9);
-        List<Hint> hints = answer.getHints(userPrediction);
+        List<Hint> hints = answer.getHintsWithUserPrediction(userPrediction);
 
         Result result = resultFactory.getResult(hints);
 
@@ -24,7 +24,7 @@ class ResultFactoryTest {
         ResultFactory resultFactory = new ResultFactory();
         UserPrediction userPrediction = new UserPrediction(1,2,3);
         Answer answer = new Answer(7,8,9);
-        List<Hint> hints = answer.getHints(userPrediction);
+        List<Hint> hints = answer.getHintsWithUserPrediction(userPrediction);
 
         Result result = resultFactory.getResult(hints);
 
@@ -37,7 +37,7 @@ class ResultFactoryTest {
         ResultFactory resultFactory = new ResultFactory();
         UserPrediction userPrediction = new UserPrediction(1,2,3);
         Answer answer = new Answer(3,1,2);
-        List<Hint> hints = answer.getHints(userPrediction);
+        List<Hint> hints = answer.getHintsWithUserPrediction(userPrediction);
 
         Result result = resultFactory.getResult(hints);
 
