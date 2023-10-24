@@ -7,8 +7,8 @@ public class StringToIntegerListConverter {
 
     private StringToIntegerListConverter() {
     }
-    
-    public static List<Integer> StringToList(String input) {
+
+    public static List<Integer> StringToIntegerList(String input) {
         return input.chars()
                 .map(Character::getNumericValue)
                 .boxed()

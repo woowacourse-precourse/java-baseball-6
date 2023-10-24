@@ -1,7 +1,7 @@
 package baseball.model.player;
 
 import static baseball.exception.GuessNumberValidator.isGuessNumbersValid;
-import static baseball.util.StringToIntegerListConverter.StringToList;
+import static baseball.util.StringToIntegerListConverter.StringToIntegerList;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class GuessNumber {
     public void input() {
         String input = Console.readLine();
         validateInputNumbers(input);
-        this.numbers = StringToList(input);
+        this.numbers = StringToIntegerList(input);
     }
 
     private void validateInputNumbers(String input) {

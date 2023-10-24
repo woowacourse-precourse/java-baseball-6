@@ -16,7 +16,7 @@ class StringToIntegerListConverterTest {
         List<Integer> expectedList = List.of(1, 2, 3, 4, 5);
 
         // when
-        List<Integer> resultList = StringToIntegerListConverter.StringToList(input);
+        List<Integer> resultList = StringToIntegerListConverter.StringToIntegerList(input);
 
         // then
         assertEquals(expectedList, resultList);
