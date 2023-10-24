@@ -16,7 +16,6 @@ public class inputView {
         printInputtMessage();
         userInputNumber();
         userNumberLst = userInputNumberStringToList(inputNumber);
-
         inputException.checkInputExection(userNumberLst);
         return userNumberLst;
 
